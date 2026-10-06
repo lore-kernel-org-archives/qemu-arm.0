@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A8BCA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 08:53:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C81CA6009
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 08:53:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xENB5-0007Q0-4C; Wed, 07 Oct 2026 04:39:07 -0400
+	id 1xENFZ-0000L0-U1; Wed, 07 Oct 2026 04:43:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEIZi-0005Bw-NR
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 23:44:30 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEJ8c-0002m8-KH
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 00:20:43 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEIZZ-0001do-PF
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 23:44:08 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-c2e5d08214dso522382966b.1
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 20:43:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEJ8X-0000Im-4i
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 00:20:16 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-49d0da752ffso30057115e9.3
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 21:20:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791344636; x=1791949436; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=b00qIVQjxzUez6mivBhAzHlvEuKBA7PieDHBj92W3ss=;
- b=pqRRBn33shVC0xDxdxg2Fw4cjD3uGZowhb2qxS1uPgssuS74hckBOSJDwSXr0RpKmL
- iMrKjmAzUgIt5cUfstGBUdYsM01/6RT9GPz9xKzC/ndkqVKfRiGF8dMuf0i3umgAABrF
- qQSm6iX/H0ko/re1YIrdXutIS1aJOFtImrAtFPLprp9wvNW8Vnxf3WdZOfSJ1jJVF+b8
- QG95BM27CJZKHbrjxRSIwcZN+m8X1R7/zSOMFOb75feQNbR6FL9s3Tc0b/JT6Dtb3J/W
- n77AnSqpZc0FXAiq/gvOKw78NXz1hecp6nCBQi8ma0LG2eOR+mFu0XGEnNuUM3OxFpHc
- V83w==
+ d=gmail.com; s=20251104; t=1791346807; x=1791951607; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=TSgSmbIol/w3uLzkMCO+LFEzRwoP9tuMmsJ3pCoOB1Y=;
+ b=bdm4cqsAWE1Q783UvaTwKdjwo5lVxlZlm1dbP1kOAYe4wzde77TDes96T5BitqYqmN
+ cczxVHWHM3aMYmop/AL55WHPnj1oyP8xf8qbR09E/zeXPxn7Llm4Zj/MsKqdufpXE0Lt
+ ALxP0RUVdLMFIIW/fAO2S0xoJzR8kAjm2kl306N835Vc6OvIw032sMCgFrUXrth/StAi
+ ybdx6rfGOWXlF98L783lJV43wqD51QuYUWvVWz22Vs4s1zKIUzzgk73AIHXNXebqJmwN
+ sRCw4LYWuQzsfZCGuA4tS/OBfKaM6mBe5wsJww9kySYOZOJL9P40Do+hyLjmIhoFgeIo
+ VY6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791344636; x=1791949436;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=b00qIVQjxzUez6mivBhAzHlvEuKBA7PieDHBj92W3ss=;
- b=U5swLWcg0YLHa99rfQX5ADn2m+Y1XO36cxEj30VDBjBksmTvPEnKRzMkcxF66FZGtE
- CDWdGfU2mReJYddWYUgpJbRv1xkSyFT0T7E8Yb1vibsUbZkZ+m36lN4uVG1q6ZMtE55+
- 7OCR3RAq1tA4LHA4jXa9umQp3LViSSFgB39U/CkgJNL92wN1G27D1cV0y/bksUt7vPhD
- lZdLG63smRxn28TuwX4XuKgAQ6hFoZUtWzTcBsEZgUI3L15SLU+5LHIqPDxNx78we8XZ
- AodxMrw2sTTfNlYXTITKoV6hNfTab3zx7cdQ6eHOS03SpN4YakPP37+392Hgn/9TmxDM
- 5Zfg==
+ d=1e100.net; s=20260707; t=1791346807; x=1791951607;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=TSgSmbIol/w3uLzkMCO+LFEzRwoP9tuMmsJ3pCoOB1Y=;
+ b=o8xnyH2gf7CIq6wjsEq9DyoTji4zo3yw5StSxq1h05C41J7Xke3RkfSPsnElcmEG3p
+ VAvKAI54sQstSiB0CRCPPLyy2FVPJuqILDPvwl5HryWkkcupms2J/E4/JxMa5qPyulpY
+ Uddqd+JRGDvUPlngsZfoGnGKSAfB5j77omLCD/rKPHOMxpNT139/Itz3fkLXYjDgKf4e
+ NM4heeFrbA9rnqBqsErVHN8SkkR1x8RoTOMqjp/IQqriGkpvFEA/G4aORr3/o8Ze4pSG
+ 7k+JGkv+mt8ax7eUcPwlhd6hzLETSGG8S+qoiLNEY5+Y5rZ7uX1Xb5Rolo2sEzXM5Zax
+ 8kLA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzLoH1ndWnhlkwnc6EtfhkJBTIml1ATScFGSj3ebr9wi3umUderzDEfAOnOBbWWSyWDyeh2n4LpXg==@nongnu.org
-X-Gm-Message-State: AFuF++nFxqz84iu2BIX84YTWHghsQsf0AzjoFi5kVKHcShCxErHH+R73
- JUB7vzhBN5fp9de93ZfqdRgPwWjHLd9AbLtJI+ZAmAVuWlTTSJ6QpIGZ9FLg0Q==
-X-Gm-Gg: AYBFou3+yq5+wLs+GkKsCxX3sitnliU0SmYzL2fhQHcU/muCVc2jTFVr75w95cCmzXz
- P+V4spoqJgVWShK0W1gDvynNg25vZVnCj9LSABKToeN0w2g45EqPhl3Prc+efjqaiiJVw5Pyt65
- uFofkHAurllg6t97abrn6HPL5hne1rNiVq0iAmIUDjwTRDIghuepkQr0MPGnjmaf5HQv2ZjIxP9
- ahYqzCi08ExavaMsMOR6TrL6cpql3Xn76fswKyFzG4AGaw2jghihQmxGrJdtMio6rDhbnvdMJ9v
- wkgs794qejFlGaghG5r9rVCNQDVtBqb7UzjeVqi+HRRCiA+VTetf8G2K2wYQGGYOMvZ6NN/Fdzh
- tvO3SsQc+j18elKKbrSCTn91bbzthFGUFaZB+azQVMO2YcYA7OWHPrR4ohho2U2aKY+B4ANJWSP
- i3KetduQCUc4IgPutH1Mg7y9ZDf7+kaWwfKODqVGFEATvCti3hk0MyEYr3hYqRObo6LZup6CVpS
- Ju1Qug5MxWTOWj3RSxxxWdyYPuFm2c8YA12pQ==
-X-Received: by 2002:a05:6000:29ce:b0:48c:67d6:a87a with SMTP id
- ffacd0b85a97d-48c67d6a90amr2803641f8f.32.1791275728163; 
- Tue, 06 Oct 2026 01:35:28 -0700 (PDT)
+ AKwUvBy2BYrAiN9Ns0dGcQI1/7VVqahbHEWJhyEgDLpcXaTSlAfcM5cKwhTI2JwLXRRX7gFWFFP4bO37oQ==@nongnu.org
+X-Gm-Message-State: AFuF++kWKieyC5cVc2nSOvcPq9gTKoanJy4VbJ34TR/tRJx30VZ9jB2w
+ zlu1zy/vIDVxNKpEdAnqfbIqbbI7FzPouj13LuopC9UjBzGtLRIYhRzch5EAtg==
+X-Gm-Gg: AYBFou0giXbgzOWAHJ3suSEYSki5wOtkIYvaLcjTPYAvSdwvL6zw5UelJ/4sZJB4FnA
+ X3v27P3H1SkLDlGhG342Xtrj1eLMriypzC3e/l0J1kpZBO6juDhT8O+jPf+DD5LVqpmlPgDidEh
+ SSLVHQFHvLJd9yrZ7QTWnCTbHdohiHGYrmVV5tzpFAUe2Z7Jh9MMqqdQ0dkXedSKlNlBierDikN
+ Y0cMySDci0wXQ4duqG4x7LfJXk/3am4FYhF/zwgSbi2m+pHsYVLTF9FTiQXaWs60BFkzFT1QXdD
+ VC0CfoR2/1Do2h9rjT8JXe3IHbKnTQBkyKgcxtuW2B04H6sw36gJg9od0q6C5+5hHpssLhuJ8zC
+ DTFSVGZxrZUzsfcSTCEq8IEaaabjZiLuHuNlrvu+Yz6AygaCfKFNOyhywE7PXlVd8RfxYDj24Mh
+ RWfuRydW9dO+G7F88vd1TjnR2ID44AhCvI7iY35vHtRt0QuHxlt6UKRA/YMEiQEFil+osYQY4RC
+ Y8NniRxgq/fYCDRD6jUCwqXCDNF8HFBwHK6pQ==
+X-Received: by 2002:a05:6000:24c6:b0:48a:f5cb:4356 with SMTP id
+ ffacd0b85a97d-48c4801ac46mr17402531f8f.45.1791275754413; 
+ Tue, 06 Oct 2026 01:35:54 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.27
+ ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2026 01:35:27 -0700 (PDT)
+ Tue, 06 Oct 2026 01:35:53 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
@@ -79,25 +78,23 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
  Jason Wang <jasowangio@gmail.com>,
  Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH v4 07/31] hw/arm/sabrelite: Have 4 CPUs and 1 GiB of RAM by
- default
-Date: Tue,  6 Oct 2026 10:34:19 +0200
-Message-ID: <20261006083445.30362-8-shentey@gmail.com>
+Subject: [PATCH v4 28/31] Kconfig: Extract config IMX_SPI from config IMX
+Date: Tue,  6 Oct 2026 10:34:40 +0200
+Message-ID: <20261006083445.30362-29-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
 References: <20261006083445.30362-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,65 +110,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Having four CPUs and 1 GiB of RAM matches real hardware. Fix the machine
-defaults to make its use more ergonomic and less error-prone. Also
-reflect this in the board documentation.
+Over time, QEMU has grown a number of i.MX boards and the monolithic
+config IMX drags in unneeded dependencies into each SoC model. Extract
+config IMX_SPI to eventually eliminate config IMX.
 
-To reproduce the old default behavior for e.g. migration purposes,
-`-smp 1 -m 128M` needs to be passed on the command line.
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Bin Meng <bin.meng@processmission.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- docs/system/arm/sabrelite.rst | 4 ++--
- hw/arm/sabrelite.c            | 3 +++
- 2 files changed, 5 insertions(+), 2 deletions(-)
+ hw/arm/Kconfig     | 5 +++++
+ hw/misc/Kconfig    | 1 -
+ hw/ssi/Kconfig     | 4 ++++
+ hw/ssi/meson.build | 2 +-
+ 4 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/docs/system/arm/sabrelite.rst b/docs/system/arm/sabrelite.rst
-index d3a3c01dd6..b8ac9548f5 100644
---- a/docs/system/arm/sabrelite.rst
-+++ b/docs/system/arm/sabrelite.rst
-@@ -55,7 +55,7 @@ To boot the newly built Linux kernel in QEMU with the SABRE Lite machine, use:
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index c21ad260a1..3f502685f4 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -522,6 +522,7 @@ config FSL_IMX6
+     select IMX_FEC
+     select IMX_GPT
+     select IMX_I2C
++    select IMX_SPI
+     select IMX_USBPHY
+     select CAN_FLEXCAN
+     select WDT_IMX2
+@@ -604,6 +605,7 @@ config FSL_IMX7
+     select IMX_GPCV2
+     select IMX_GPT
+     select IMX_I2C
++    select IMX_SPI
+     select WDT_IMX2
+     select PCI_EXPRESS_DESIGNWARE
+     select SDHCI
+@@ -625,6 +627,7 @@ config FSL_IMX8MP
+     select IMX_FEC
+     select IMX_GPT
+     select IMX_I2C
++    select IMX_SPI
+     select OR_IRQ
+     select PCI_EXPRESS_DESIGNWARE
+     select PCI_EXPRESS_FSL_IMX8M_PHY
+@@ -653,6 +656,7 @@ config FSL_IMX8MM
+     select IMX_FEC
+     select IMX_GPT
+     select IMX_I2C
++    select IMX_SPI
+     select OR_IRQ
+     select SDHCI
+     select PCI_EXPRESS_DESIGNWARE
+@@ -697,6 +701,7 @@ config FSL_IMX6UL
+     select IMX_GPCV2
+     select IMX_GPT
+     select IMX_I2C
++    select IMX_SPI
+     select IMX_USBPHY
+     select WDT_IMX2
+     select SDHCI
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index dbdef58505..ab238767b8 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -91,7 +91,6 @@ config ECCMEMCTL
  
- .. code-block:: bash
+ config IMX
+     bool
+-    select SSI
  
--  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
-+  $ qemu-system-arm -M sabrelite \
-       -display none -serial null -serial stdio \
-       -kernel arch/arm/boot/zImage \
-       -dtb arch/arm/boot/dts/imx6q-sabrelite.dtb \
-@@ -89,7 +89,7 @@ the -kernel argument, along with an SD card image with rootfs:
- 
- .. code-block:: bash
- 
--  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
-+  $ qemu-system-arm -M sabrelite \
-       -display none -serial null -serial stdio \
-       -kernel u-boot
- 
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 05dfabd937..34f302f83c 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -17,6 +17,7 @@
- #include "hw/core/boards.h"
- #include "hw/core/qdev-properties.h"
- #include "qemu/error-report.h"
-+#include "qemu/units.h"
- #include "system/qtest.h"
- 
- struct SabreliteMachineState {
-@@ -139,7 +140,9 @@ static void sabrelite_machine_class_init(ObjectClass *oc, const void *data)
-     mc->desc = "Freescale i.MX6 Quad SABRE Lite Board (Cortex-A9)";
-     mc->init = sabrelite_init;
-     mc->max_cpus = FSL_IMX6_NUM_CPUS;
-+    mc->default_cpus = FSL_IMX6_NUM_CPUS;
-     mc->ignore_memory_transaction_failures = true;
-+    mc->default_ram_size = 1 * GiB;
-     mc->default_ram_id = "sabrelite.ram";
-     mc->auto_create_sdcard = true;
- }
+ config IMX_CCM
+     bool
+diff --git a/hw/ssi/Kconfig b/hw/ssi/Kconfig
+index 1bd56463c1..d477d20e9b 100644
+--- a/hw/ssi/Kconfig
++++ b/hw/ssi/Kconfig
+@@ -32,3 +32,7 @@ config PNV_SPI
+ config ALLWINNER_A10_SPI
+     bool
+     select SSI
++
++config IMX_SPI
++    bool
++    select SSI
+diff --git a/hw/ssi/meson.build b/hw/ssi/meson.build
+index 6afb1ea200..f334e48e2f 100644
+--- a/hw/ssi/meson.build
++++ b/hw/ssi/meson.build
+@@ -9,7 +9,7 @@ system_ss.add(when: 'CONFIG_STM32F2XX_SPI', if_true: files('stm32f2xx_spi.c'))
+ system_ss.add(when: 'CONFIG_XILINX_SPI', if_true: files('xilinx_spi.c'))
+ system_ss.add(when: 'CONFIG_XILINX_SPIPS', if_true: files('xilinx_spips.c'))
+ system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-ospi.c'))
+-system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_spi.c'))
++system_ss.add(when: 'CONFIG_IMX_SPI', if_true: files('imx_spi.c'))
+ system_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_spi_host.c'))
+ system_ss.add(when: 'CONFIG_BCM2835_SPI', if_true: files('bcm2835_spi.c'))
+ system_ss.add(when: 'CONFIG_PNV_SPI', if_true: files('pnv_spi.c'))
 -- 
 2.56.0
 

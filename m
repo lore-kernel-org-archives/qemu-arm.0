@@ -4,97 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6DBCCA5FF1
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 04:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F8D2CA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 04:50:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEJYS-0006OC-4a; Wed, 07 Oct 2026 00:47:16 -0400
+	id 1xEJbN-0006ut-KH; Wed, 07 Oct 2026 00:50:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFm5-0005hd-3O
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:45:18 -0400
-Received: from mail-ej1-f43.google.com ([209.85.218.43])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xEG80-0000mJ-VA
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:07:52 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFls-0006TX-9N
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:44:40 -0400
-Received: by mail-ej1-f43.google.com with SMTP id
- a640c23a62f3a-c2e5e801487so178508966b.3
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 17:40:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xEG7c-0002OP-AV
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:07:16 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id
+ 41be03b00d2f7-cc4c7fab7b6so2414539a12.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 18:02:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791334926; cv=none;
+ d=google.com; s=arc-20260327;
+ b=QVbV06Yal4/2ildOWLcUQGwskM0w3oI8kHVcraiRb6FYLrCVutx4QTHxRc5n8/VhMX
+ O4EbTVv378uUA1TbErE+cst7hNuEZgxPURXUHhGnAXJ6YYpI8y8odiefuVungR9kH0lg
+ ZHuDpnEahWVD9NErZ8jHmFgmfzyhsnzaT45Ikuj2zqQ274OL0UJDsK7gyQ8N5RbqSmdB
+ 3UeyW1VZAh6ivLLcHSmRddlHkzB1QvrX4GwbwXLgPcu8r2mGM7rI+h3bLgqAAUvE98Py
+ Fy3NQ9yREEU8oDAgwlAx6Kvz6kKt/fVHhbCjWYE2qUl7wyBxotY0ScJwnsDBUcHsXgI7
+ jiYQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=rA6d3LHupZheAqdSUzkSD64WVV+9ZI/EreB9XaQHC/A=;
+ fh=Y/7C/wrpwWVjzemrmGWBzzqlWWZSFVNPq87pY3l68dA=;
+ b=awaQWSIxCZ7wvaEzrIRDv+Ue6BlD+HENH1dsclCQgQWqTY6279Bp8WIn37lKP4o7N/
+ kodfq++0xSJTIyJdVXxK525IuoCGHTsou91SeO8DLCFo4b0DFIWHbPjzNNjDVMxb++eV
+ C0sfyHqWqOI+kskkdMMzDFgrlJT50M4PpkYURdjSlOnHqDDYn8106+hnu4keF2gRmw3V
+ rA66yam4ECa9JAQTLtAysAkxzIZIinvPt57FesjGxi1zXI8c4kUBC4uWtnZvtifubr8A
+ TRmv3BJqNBgRm4tJVTR4UJ8LyooHytCN91bSkEzI8HBa73VBZYb0Z1e5bUooDNsJWJwD
+ StmQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791333615; x=1791938415; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=n+X9R9jlN+7vQGOVgR1i+/9dNr+MHCZvV0d0XgyV1TY=;
- b=XcZC1kTPvl67D2JNQS2RRSBQLjImZjMMbem9C3vWa3alGsdZElg/KPGdftXeFfXu4R
- LXfbWnuA/a11s/W88K08/zoYVMRqilj/vzcnofBEtYAola6BAGkh643meRUHRmZ/hqqU
- lnsIgD7wyu/2Sj+IcvtYSa+63T6Kf8PLcnoF+rMfiDxIw0h80NTSFrVB/Qp0bsvFl6We
- huovlr5FN4zIgq2fRMkeWyBDfRXQqye7zWEaE24mfARnaG1hxgRLDDEhznKhOkgj88J4
- u8/t24usSCsTjIj5iDXCAPuKSlNvVBUqw4I1WLrfDHpqcmdhG3oh+iwiIWih/oYpTxwY
- hNhA==
+ d=linaro.org; s=google; t=1791334926; x=1791939726; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=rA6d3LHupZheAqdSUzkSD64WVV+9ZI/EreB9XaQHC/A=;
+ b=hpV4+ph1VKDk33FAVHeuOoQAdV3eTDQukQCZJXBClNJSgxoBvR1iX83K3k+tmYeoGb
+ T2OGDUD4v35E9a3qZSnrEjcojDvOyA46L0hrNvI9VH98zNrrzv3R/96Ug659Ef9JoJXj
+ TDtZc3tH0Zsuuap/UsU04Pcyy714Ekth6OSmNvnSBN4paRWlFbQZQP+f4Y5d8+G5k8j9
+ ASyFwmsCC3A0vzACAzXCmzwPO7XHUT1vTuTJiKi9CZdYs++Riws5aWL8yKuyu15QsUkH
+ Xr7GIL3rCzxc1tYorAN8Xa728c7zSltGM3gPme7K1o5ucrY/eOl65Yz9RcXjpSL6efho
+ 4Ssw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791333615; x=1791938415;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=n+X9R9jlN+7vQGOVgR1i+/9dNr+MHCZvV0d0XgyV1TY=;
- b=kc0eahEcZOLK+jWh64LQrK/1nG3l/685Cdz/zb2hWpO7igBurCdszNyNAhmNM2Irfk
- 2BcZpsNVmKkbazfuwFAuNvRil9Ce9rAFzvjf2Yz4MnoLAplBSK17Wcs7GaGd6d/jFA+P
- wWHc+LQaZHYm1lf/orenq+B+vr+QsOOyH5M2ikA5j+OLpKLzOqXXUyeb8FSmNg2oWfCI
- lTftRd4gZGURWWL/mLptz6fLP7ZnFhaB9LlUuhLlHcuP/7YkNryDTssgchrr+62/dbUh
- EMdrFXeSW7Y5zS9kq9rauzMCTRp6/HE8Hc12Ds9oAz+1wZovi16oQwzM1k0pTiolmF5B
- ZCew==
+ d=1e100.net; s=20260707; t=1791334926; x=1791939726;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=rA6d3LHupZheAqdSUzkSD64WVV+9ZI/EreB9XaQHC/A=;
+ b=TD+ogOU1Jv82f/5yYb0Vz/ordwjm3fcYweJLGF7pyRllbtp0hwx79QsjBoMMplYXco
+ Ze+zofMMdWe+16DsflFVwB0x8EsW49IaQ/fwnAaK/ROAs8zGIVf6qM6CbNhhAabX5u0f
+ 1T3PoqGxd9vq6ad5d8ekoRJKUHDr1pcYJ3gOSNNifx5QPo222rasT3IaA5JnOVgrJIg1
+ lBQmRxmzsFBM/MeS6/NXdGBawy6kwiYT1S6ikgNb58oQbpOYGImPZLAoga3LaEN/sXST
+ s1LQBmJ813UruayzEpR7k0K8UrNFY+oUhTHgByJmD4toEKGKaFMl6t2hUlgz7JYnJcfZ
+ TJHQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxjzhbdYWptdhAPiw9qYFdHO7BAAAc6pExFQ6OrSp4bKCkRzTBAB9w6dWOQepM7gsf+9VY9VbtkCQ==@nongnu.org
-X-Gm-Message-State: AFq9FYISGMqUTutHb/h7QatWZOo0hQCknIaAGb1Bs4hEm64Y1c9x71CA
- vGSEcAhKhJOojm/iTVcPIoTUcPRzlqyoET/4dpLE6PJWRcm8M7WZpoDdCzIDhA==
-X-Gm-Gg: AYBFou3pvl8uyf8vX9EZ094Ye2JO2riGiYFWJ1q5xTuK9sXPY9I9wiaRf0BvwjjMWEz
- iBUyWfKKyTt8yhMgQvrZpVxtScOpeTlhYc6q3lz/VcbEDb2Cn5IEa/daGNSCjFJmHjz3P9G+pH1
- Tu/El7WW+k/zghDY1VMuz9v7nxdLj0ihARma8CziJzAaPuBkGXZ5Zc7HJWkhU2naIDujDQgACuE
- onskJqcjuTf4nZfFjneEatKHHI9LLlV82kLLJbzX7VPItzADR7paJq2xRcaHW74Hq9N3CLrt8/z
- OWlmR1AS1Pdwtu6kZMTycuIfhYfE+/hp9OrqXS5xL5Y97uZCc6xHcADGzeEV9znJ3kupyaola+I
- upmN+1C7y4agZiSQ9qU8QA50a9npGu1WeX94sKAOr0yk7ODmNnjo8ks9wE0UucNGL22Nf9W8CtC
- PKpdHp5JGIV2RJh5mhOanYnCetcIJZeFeKeS36Af1dPB3woiZD9D/WI+wCAllizFv0NNNrkl//j
- kmed5R/l90pwu5WQCendbzEbawC5QdFkLrYJow=
-X-Received: by 2002:a05:6000:4b02:b0:48b:451:4f19 with SMTP id
- ffacd0b85a97d-48c6d1ad0a5mr1051712f8f.51.1791275735359; 
- Tue, 06 Oct 2026 01:35:35 -0700 (PDT)
-Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2026 01:35:34 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bin Meng <bin.meng@processmission.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>,
- Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
- Jason Wang <jasowangio@gmail.com>,
- Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH v4 13/31] hw/arm/fsl-imx31: Derive from TYPE_SYS_BUS_DEVICE
-Date: Tue,  6 Oct 2026 10:34:25 +0200
-Message-ID: <20261006083445.30362-14-shentey@gmail.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
-References: <20261006083445.30362-1-shentey@gmail.com>
+ AKwUvBxqzryxxIcibR+hwuzfXfG7XZLmngsBPoTy1esLPAmBKpzehBqJKHaB7p0uMMEOjzq6ZPN3HVct2A==@nongnu.org
+X-Gm-Message-State: AFuF++mAqDxw2+D9IlfpIZIY2s6NtbvKWsr81EeOb0N5ZwXiwZ5fdW90
+ 1HSzGfL95ZXT7BwW1g9w1xmvOvECl1X5nK4AGnQH28M+duR/V7u1cmXTepB8y8+dcHP3HBOxhDK
+ 7epoWlopExMfdULOJ1zUQznZ1B7rnF2+WcEFzNK/raxV0QOzSDiyfqXQ=
+X-Gm-Gg: AYBFou1GzIhh+MeLPLxNPBailMvzEbxCGgYGrkGUQAov7ekyDvTg2g0F9HA1r+csD2g
+ Z27o7SAQKmemlo3zLAxYnVdYDGV7XOJ4Ry1k1e4yr82VNy3pDHEHEYupZhi6iYUL05nAIG5eEmm
+ IadC1uEHtl/rknTkQB/CFi6JXWop0qLPv1c3MTSUVqTPsV8121aLNrmOFQOioP4USaFIm9NwwAE
+ OyICJtjgMWZKqPZl/awJ4cxE3dtCOQWmmThDbM3Vm6mYugAED4TILyoh4b09KGlsOwSfOAb14Y0
+ ODRMn8UN6qScg2yH2BnhjYQqioUy4qVs4oiPWz5JIg4ztlk6a4JRMAYPJDbxotUKXOyCHEWD2XG
+ 1KFI7ouXErXSVOQ2hFCooE1A2FmuAlQL67v2APXs=
+X-Received: by 2002:a05:690c:a4c2:b0:8a8:466a:72a with SMTP id
+ 00721157ae682-8ae95adcf20mr30134807b3.67.1791288519607; Tue, 06 Oct 2026
+ 05:08:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=209.85.218.43; envelope-from=shentey@gmail.com;
- helo=mail-ej1-f43.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20260923214453.45335-1-manuele.conti@archimede-energia.com>
+ <20260923214453.45335-3-manuele.conti@archimede-energia.com>
+In-Reply-To: <20260923214453.45335-3-manuele.conti@archimede-energia.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Oct 2026 13:08:28 +0100
+X-Gm-Features: AclHuK-8UMHKAjJ5zTHc4ltC633LRsQFOwpjqDLQx6EXdJBO2C4fSFQuKJFbmpo
+Message-ID: <CAFEAcA_i-iRvgWMdiLstnaosHANJE-OG_5oNZkhwqXHPgPT_qQ@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/misc/stm32_rcc: mirror oscillator ready and system
+ clock status
+To: Manuele Conti <manuele.conti@archimede-energia.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,77 +121,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
-machine reset.
+On Wed, 23 Sept 2026 at 22:56, Manuele Conti
+<manuele.conti@archimede-energia.com> wrote:
+>
+> RM0090 7.3.1/7.3.3: HSERDY follows HSEON, PLLRDY follows PLLON and
+> SWS follows SW. Upstream stored raw values, so firmware polling for
+> ready or checking SWS never saw the expected state.
+>
+> Mirror enable bits into ready bits on CR writes and SW into SWS on
+> CFGR writes. Clock switching is instantaneous in QEMU. No oscillator
+> startup or PLL lock delay is modelled.
+>
+> Add qtest writing HSEON/PLLON/SW and checking HSERDY/PLLRDY/SWS,
+> including clearing again on HSEOFF/PLLOFF.
+>
+> Signed-off-by: Manuele Conti <manuele.conti@archimede-energia.com>
+> ---
+>  hw/misc/stm32_rcc.c              | 18 ++++++++++
+>  tests/qtest/meson.build          |  3 +-
+>  tests/qtest/stm32f405-rcc-test.c | 57 ++++++++++++++++++++++++++++++++
+>  3 files changed, 77 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/qtest/stm32f405-rcc-test.c
+>
+> diff --git a/hw/misc/stm32_rcc.c b/hw/misc/stm32_rcc.c
+> index 5cfb39e560..ba64a87bdd 100644
+> --- a/hw/misc/stm32_rcc.c
+> +++ b/hw/misc/stm32_rcc.c
+> @@ -90,6 +90,24 @@ static void stm32_rcc_write(void *opaque, hwaddr addr,
+>      }
+>
+>      switch (addr) {
+> +    case STM32_RCC_CR:
+> +        /*
+> +         * Oscillators become ready immediately in QEMU.
+> +         * Mirror enable bits into ready bits: HSEON->HSERDY,
+> +         * PLLON->PLLRDY. See RM0090 7.3.1.
+> +         */
+> +        value = deposit32(value, 17, 1, extract32(value, 16, 1));
+> +        value = deposit32(value, 25, 1, extract32(value, 24, 1));
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- include/hw/arm/fsl-imx31.h | 5 ++---
- hw/arm/fsl-imx31.c         | 7 +------
- hw/arm/kzm.c               | 2 +-
- 3 files changed, 4 insertions(+), 10 deletions(-)
+The manual says that also bit 27 is the RDY flag for bit 26
+(PLLI2SON) and bit 1 is the RDY flag for bit 0 (HSION).
+I think we should make those also follow their ON bits
+while we're here.
 
-diff --git a/include/hw/arm/fsl-imx31.h b/include/hw/arm/fsl-imx31.h
-index 41232a2237..ea916de15a 100644
---- a/include/hw/arm/fsl-imx31.h
-+++ b/include/hw/arm/fsl-imx31.h
-@@ -25,6 +25,7 @@
- #include "hw/i2c/imx_i2c.h"
- #include "hw/gpio/imx_gpio.h"
- #include "hw/watchdog/wdt_imx2.h"
-+#include "hw/core/sysbus.h"
- #include "system/memory.h"
- #include "target/arm/cpu.h"
- #include "qom/object.h"
-@@ -38,10 +39,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX31State, FSL_IMX31)
- #define FSL_IMX31_NUM_GPIOS 3
- 
- struct FslIMX31State {
--    /*< private >*/
--    DeviceState parent_obj;
-+    SysBusDevice parent_obj;
- 
--    /*< public >*/
-     ARMCPU         cpu;
-     IMXAVICState   avic;
-     IMX31CCMState  ccm;
-diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-index 190f863355..dd929c1085 100644
---- a/hw/arm/fsl-imx31.c
-+++ b/hw/arm/fsl-imx31.c
-@@ -224,16 +224,11 @@ static void fsl_imx31_class_init(ObjectClass *oc, const void *data)
- 
-     dc->realize = fsl_imx31_realize;
-     dc->desc = "i.MX31 SOC";
--    /*
--     * Reason: uses serial_hds in realize and the kzm board does not
--     * support multiple CPUs
--     */
--    dc->user_creatable = false;
- }
- 
- static const TypeInfo fsl_imx31_type_info = {
-     .name = TYPE_FSL_IMX31,
--    .parent = TYPE_DEVICE,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(FslIMX31State),
-     .instance_init = fsl_imx31_init,
-     .class_init = fsl_imx31_class_init,
-diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-index 387bf54ced..e9cc53ce01 100644
---- a/hw/arm/kzm.c
-+++ b/hw/arm/kzm.c
-@@ -69,7 +69,7 @@ static void kzm_init(MachineState *machine)
- 
-     object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IMX31);
- 
--    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
- 
-     /* Check the amount of memory is compatible with the SOC */
-     if (machine->ram_size > (FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_SIZE)) {
--- 
-2.56.0
+Otherwise this change looks good.
 
+thanks
+-- PMM
 

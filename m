@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF5B7CA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 07:57:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1DE6CA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 08:00:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEMW3-0002Je-EW; Wed, 07 Oct 2026 03:56:48 -0400
+	id 1xEMZs-0004Fl-El; Wed, 07 Oct 2026 04:00:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEH0W-0000KU-MP
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 22:03:59 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEGKn-0002dx-Um
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:20:52 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEH0Q-0004cs-MU
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 22:03:45 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-6ae185cc40fso2416264a12.1
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 19:01:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEGKf-00055z-8T
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:20:37 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-c2e2007dd8bso193613866b.2
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 18:15:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791338518; x=1791943318; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=BS+0+A7kr0tFImAK5onZ82iakCeBub9bNBk2830WfL0=;
- b=dQxQjVOK+UfJWVuoxVLPzUl5LVYGcKEtNW5kgVoRcf3sKo4vZZXEpqK52sRyI2mJHd
- aNRPKFlPN+opdnWFj3ZD3YORlYkg8mF/Amrermrgm4KXsjFW6LmVQzN1ze1K7dqS9SEr
- QQlzuDtR/ilqBRU7syteGFapZJejBe+0yYsc98MxL83qzVfvfjiKFB/huAyMwsyYlmcw
- 0lP5/v1eQZdHnXP8NVDv0sUMVDLktdOA7FUj3SkZ+zVC4pJoYTslaqKgSxfJ9mTyY/tA
- yO32IUFyC6VyZBlLmtLajKAMXx59HwganU8TTBAl5Zzn4OsIw75TcHAPqIOKSPbZvE8Z
- g95A==
+ d=gmail.com; s=20251104; t=1791335746; x=1791940546; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=uBan2vPnuxZmPsBXKSBaOr/VE/70/QAtNwrFSmFxYy0=;
+ b=Wh0RhwiUBFVAHuAmoIr1vWKOgMY5ktAl54RXbzdH63flobvEFOY+bCgBMCxkXNOIA4
+ m3RmNa3IRZP2LBtEhoFapDLjMw+zMUl7gwhP7NxgeYb+Y/VRRnS7aiQo1LKPQdQKC2ym
+ 37jWBu7jjgUiDUnCjPEkyyXa8GNc5AUEeomzraJHK2CYRx4OvdINOBsUkBn56ydGcV1G
+ JCXGg1q7CPkGYZu0msKwZsvMbjkp8Nh86pRB9gpDkLLTW2rA06KXOd2EB1R1O4TCZXV6
+ F2CS2dWSyolFeVjF31cDiOkTxKl1liabTg7+i1zsnVYlNjOaNdRY5x+ZmSY5sekBhh6P
+ bqEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791338518; x=1791943318;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=BS+0+A7kr0tFImAK5onZ82iakCeBub9bNBk2830WfL0=;
- b=BYBvh5GvbazIKYVtod77dPtnJv6NzaHxlb/DEiNChH2yRiJfvIZQlwvx/5WpfcU7kD
- 37muitx50o5/yzblBEG58z1RKFujY4sFT9oiCaeREPeFUz8uiBPxx9ozV1+zJSqgoDsa
- czpHpxdMxbi6ZxEO1DYxM7hkEPTFk1oIxjRPzXVIDN6mh3zLyjBAEDnudhof5DZTTonW
- apHDnbxzJYP6e01w0L0BH4GxMYam6250vP/E1zGms3blhnJdxxP9VXuVtgkK192yLiDG
- CkxSTsJf2Rp1MkzubBMq5hmb/SCLSdvM94o/PgQLGdg2rTeFcrPutCl7omc2mpx3dKzC
- s6tA==
+ d=1e100.net; s=20260707; t=1791335746; x=1791940546;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=uBan2vPnuxZmPsBXKSBaOr/VE/70/QAtNwrFSmFxYy0=;
+ b=pwSLSyPHI8c5ElvbECyTLUcHNQd7ngTP31aTR5vFD+aVhKW7e5J73uCYfZwqijc57n
+ f0Ey8vbsdcL4BeCZoq1y5s5iac/DxBySkUXdPuYUvJApelzAxtN3Y9lWAT3OoiLhAT2C
+ OX9V2b5nX6MRjafqsv5E3TEqmUE0XetiCaJ9fB2sHl2GPDrVez2mGSLGrMoQwiJZF7+4
+ 31FxNktEJ+1jA5cEbKCmnvfofuM1oTZd9PD1P+igLSPEtnZ2tS6oikthWM/0Qz4BOcH+
+ IY7y2xTdwLJdjtnKthLlaB4hFPXv86xo6fHl6TFLET5rSysWhc8C4/EUIN/IL9F+rYSf
+ skDQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzy3YKZm0JJgYsZr0YAXbt7+X7Dove8Mcn7bhPW+/YgDmYQZs/OazOkWYtbVD82zaQLaoFjhSrPoQ==@nongnu.org
-X-Gm-Message-State: AFuF++mJV2PfVzky3vqN5xOXBGttmQBKyItFGpdXhNQBle3XYM+ALXuQ
- OuvberFzvPK0nv4S2xrTEJJOVrZez5wSLuvV2mDt76ovJwwuFkxKT2NV3wxVUA==
-X-Gm-Gg: AYBFou3L45rXTOuiL/ahnSNqzFM8gnChnvWQknh4oVMccxJBdurZrj+qUdJ9Jw/Ypzn
- zO7kftoChnWvLhAKXkYj1CFqjRC6vQuvy6RRhO6r8Mxw/TOAmeGhhllrbs9LlmtPSxSVyKug1hY
- LocrbpNMYQYT0XPK1o85N0DZEjZwUHQQG9v/vbNgV1wtd+epURmPCw1jlj5R1CMNGNF68eSUq3+
- 7e80j2aOE/GbcoaHFu33rMosKOZ5AWgcZIyiSPp2sKZcQ2DOIEu+brnKUM1avE+HYPBv07eX9YW
- BtvsTwQxhaFjX6j3sOBth4uCzGrZO3EWyCryu1p3eIJIT0cPiuoRGiFQ4U2YrPGAO5NkQwvFz0A
- 2t0jUlpZPy/selxw2V8DxsuEY3r88MLnozoaAOZ2UxuFh1uMvCFcBPPCr6t907tmaN3CEiRmhu+
- 81zz+ORShKjB0azKo7RxUF0NJkUxtGVP0VXpGr9SH89itSKsoAMo//Ji0oB0mCg2GG1RYLOw4o4
- dTKajyHL5NqGB/qsR6gdS2a1hGUC6LzUhfLLw==
-X-Received: by 2002:a05:6000:4b11:b0:48c:511a:1f31 with SMTP id
- ffacd0b85a97d-48c6d1684f7mr1429663f8f.8.1791275724813; 
- Tue, 06 Oct 2026 01:35:24 -0700 (PDT)
+ AKwUvBwAcxeQHFkrzyP2PgtTrKPu7UAq8MdVTRgeV0QxtYNxsuWzoegGRrFzB9tRGu6QWUxWA8z2nrK1rw==@nongnu.org
+X-Gm-Message-State: AFuF++lIqRk4Y0KbNUFb3FHyfarNXCrgMF0zvaZVc3kAB1gHzQSz2nrQ
+ F8V56MKpLxbk1p0X2TDM9ye6PG9o+ubwW8+OB3vdcfVe1OWAKWiFrJUU+2KPIw==
+X-Gm-Gg: AYBFou2/ooJt8EnMvge+dn6ogXbEIGYquBWc8bNpOw/j2uyUv9NXmV3kjgkAWHxc61D
+ ArnPuqrc8MrfZUrBctJP/tV9/T34g52BlvxuVD6T0JCBdxmiGIIEiTve7bVoyAm7/YUoBGhnMKw
+ WbVZykDaee1Fo4/xODMTfYy4SBH3HeXPVUfdSafGQz69bp3JYv6erlzTfwFhSg8tv3Syi3j9RPM
+ bUfsm7cEZQ9keRyNaqTXd1iA9tqARidlaWwIywQaZuVd+6Oyt8rqwNj9rOUgbXDaneSaeFRNdkR
+ ZZrT6d4/mJslHQF+v1FhsFYXatYRi5FnQZhqnCc0n/j+5cAyJfN6tTQ5E7FeeARvJHC+rCLK9Y5
+ IfsJT2Io8thjCIHL1SU/a4tdDZKuRKoeo6VRX5Bq/fEHFF3iPjNILy7L6lhAw9BYYWSBsbR9JWy
+ QIhaZ1Fw3r8ldkEfbwwIiE7B3aspkHonrShNRnzlsBQ58LC4aMUEPF3UqgFLG0w9skVQZ1qj6kh
+ qfNlDvdKhFWzfQOQIYmzRHmwaabSSr4LNxxUA==
+X-Received: by 2002:a05:6000:1448:b0:48b:1ed:db34 with SMTP id
+ ffacd0b85a97d-48c6d1a5623mr1205063f8f.45.1791275726892; 
+ Tue, 06 Oct 2026 01:35:26 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.23
+ ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2026 01:35:24 -0700 (PDT)
+ Tue, 06 Oct 2026 01:35:26 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
@@ -78,16 +79,19 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
  Jason Wang <jasowangio@gmail.com>,
  Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH v4 04/31] hw/watchdog/wdt_imx2: Remove redundant attributes
-Date: Tue,  6 Oct 2026 10:34:16 +0200
-Message-ID: <20261006083445.30362-5-shentey@gmail.com>
+Subject: [PATCH v4 06/31] docs,
+ tests/functional: Drop redundant CLI arguments in imx8m*-evk
+ invocations
+Date: Tue,  6 Oct 2026 10:34:18 +0200
+Message-ID: <20261006083445.30362-7-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
 References: <20261006083445.30362-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,88 +114,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since WDT and WDE are write one once bits, their values always
-correspond with their respective locked attributes. Thus, the attributes
-are redundant. Take advantage of this observation to simplify the code.
+Both boards provide defaults matching real hardware. No need to ask
+users to repeat these. Also, remove these redundant arguments from the
+functional tests such that the defaults get tested.
 
-Note that removing the attributes changes the vmstate structure which
-constitutes a migration break. This is allowed since QEMU does not
-guarantee migration compatibility for i.MX devices between feature
-releases.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Bin Meng <bin.meng@processmission.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/watchdog/wdt_imx2.h |  2 --
- hw/watchdog/wdt_imx2.c         | 20 ++++----------------
- 2 files changed, 4 insertions(+), 18 deletions(-)
+ docs/system/arm/imx8m.rst                   | 2 +-
+ tests/functional/aarch64/test_imx8mm_evk.py | 4 +---
+ tests/functional/aarch64/test_imx8mp_evk.py | 4 +---
+ 3 files changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/watchdog/wdt_imx2.h b/include/hw/watchdog/wdt_imx2.h
-index fc01fc46e7..0bf2903959 100644
---- a/include/hw/watchdog/wdt_imx2.h
-+++ b/include/hw/watchdog/wdt_imx2.h
-@@ -84,8 +84,6 @@ struct IMX2WdtState {
-     uint16_t wmcr;
+diff --git a/docs/system/arm/imx8m.rst b/docs/system/arm/imx8m.rst
+index 1bcb8255be..5348757089 100644
+--- a/docs/system/arm/imx8m.rst
++++ b/docs/system/arm/imx8m.rst
+@@ -79,7 +79,7 @@ For i.MX 8M Mini EVK:
  
-     bool wcr_locked;            /* affects WDZST, WDBG, and WDW */
--    bool wcr_wde_locked;        /* affects WDE */
--    bool wcr_wdt_locked;        /* affects WDT, cleared on POR */
- };
+ .. code-block:: bash
  
- #endif /* WDT_IMX2_H */
-diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
-index a15f452d48..c19f0383ad 100644
---- a/hw/watchdog/wdt_imx2.c
-+++ b/hw/watchdog/wdt_imx2.c
-@@ -59,8 +59,6 @@ static void imx2_wdt_reset(DeviceState *dev)
- 
-     s->wicr_locked = false;
-     s->wcr_locked = false;
--    s->wcr_wde_locked = false;
--    s->wcr_wdt_locked = false;
- 
-     s->wcr = IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS;
-     s->wsr = 0;
-@@ -156,22 +154,13 @@ static void imx2_wdt_write(void *opaque, hwaddr addr,
-     switch (addr) {
-     case IMX2_WDT_WCR:
-         if (s->wcr_locked) {
-+            /* WDZST, WDBG, and WDW are write-once bits */
-             value &= ~IMX2_WDT_WCR_LOCK_MASK;
-             value |= (s->wcr & IMX2_WDT_WCR_LOCK_MASK);
-         }
-         s->wcr_locked = true;
--        if (s->wcr_wde_locked) {
--            value &= ~IMX2_WDT_WCR_WDE;
--            value |= (s->wcr & IMX2_WDT_WCR_WDE);
--        } else if (value & IMX2_WDT_WCR_WDE) {
--            s->wcr_wde_locked = true;
--        }
--        if (s->wcr_wdt_locked) {
--            value &= ~IMX2_WDT_WCR_WDT;
--            value |= (s->wcr & IMX2_WDT_WCR_WDT);
--        } else if (value & IMX2_WDT_WCR_WDT) {
--            s->wcr_wdt_locked = true;
--        }
-+        /* WDT and WDE are write one once bits */
-+        value |= (s->wcr & (IMX2_WDT_WCR_WDT | IMX2_WDT_WCR_WDE));
- 
-         s->wcr = value;
-         if (!(value & IMX2_WDT_WCR_SRS)) {
-@@ -234,13 +223,12 @@ static const MemoryRegionOps imx2_wdt_ops = {
- 
- static const VMStateDescription vmstate_imx2_wdt = {
-     .name = "imx2.wdt",
-+    .version_id = 1,
-     .fields = (const VMStateField[]) {
-         VMSTATE_PTIMER(timer, IMX2WdtState),
-         VMSTATE_PTIMER(itimer, IMX2WdtState),
-         VMSTATE_BOOL(wicr_locked, IMX2WdtState),
-         VMSTATE_BOOL(wcr_locked, IMX2WdtState),
--        VMSTATE_BOOL(wcr_wde_locked, IMX2WdtState),
--        VMSTATE_BOOL(wcr_wdt_locked, IMX2WdtState),
-         VMSTATE_UINT16(wcr, IMX2WdtState),
-         VMSTATE_UINT16(wsr, IMX2WdtState),
-         VMSTATE_UINT16(wrsr, IMX2WdtState),
+-  $ qemu-system-aarch64 -M imx8mm-evk -smp 4 -m 2G \
++  $ qemu-system-aarch64 -M imx8mm-evk \
+       -display none -serial null -serial stdio \
+       -kernel Image \
+       -dtb imx8mm-evk.dtb \
+diff --git a/tests/functional/aarch64/test_imx8mm_evk.py b/tests/functional/aarch64/test_imx8mm_evk.py
+index 86725991f1..73d286167c 100755
+--- a/tests/functional/aarch64/test_imx8mm_evk.py
++++ b/tests/functional/aarch64/test_imx8mm_evk.py
+@@ -52,9 +52,7 @@ def test_aarch64_imx8mm_evk_usdhc(self):
+         self.require_accelerator("tcg")
+         self.set_machine('imx8mm-evk')
+         self.vm.set_console(console_index=1)
+-        self.vm.add_args('-m', '2G',
+-                         '-smp', '4',
+-                         '-kernel', self.kernel_path,
++        self.vm.add_args('-kernel', self.kernel_path,
+                          '-initrd', self.initrd_path,
+                          '-dtb', self.dtb_path,
+                          '-append', 'root=/dev/mmcblk2p1',
+diff --git a/tests/functional/aarch64/test_imx8mp_evk.py b/tests/functional/aarch64/test_imx8mp_evk.py
+index 99ddcdef83..2ec421c326 100755
+--- a/tests/functional/aarch64/test_imx8mp_evk.py
++++ b/tests/functional/aarch64/test_imx8mp_evk.py
+@@ -52,9 +52,7 @@ def test_aarch64_imx8mp_evk_usdhc(self):
+         self.require_accelerator("tcg")
+         self.set_machine('imx8mp-evk')
+         self.vm.set_console(console_index=1)
+-        self.vm.add_args('-m', '2G',
+-                         '-smp', '4',
+-                         '-kernel', self.kernel_path,
++        self.vm.add_args('-kernel', self.kernel_path,
+                          '-initrd', self.initrd_path,
+                          '-dtb', self.dtb_path,
+                          '-append', 'root=/dev/mmcblk2p1',
 -- 
 2.56.0
 

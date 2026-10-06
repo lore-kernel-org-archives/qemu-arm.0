@@ -4,61 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41A6BCA5FF5
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 21:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82B8CCA5FFC
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 01:03:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDqUd-00050s-KB; Mon, 05 Oct 2026 17:45:07 -0400
+	id 1xEG2c-0008Mu-Ql; Tue, 06 Oct 2026 21:02:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xDqUb-000502-5i
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 17:45:05 -0400
-Received: from out-182.mta0.migadu.com ([2001:41d0:1004:224b::b6]
- helo=mta0.migadu.com)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFGC-0001Du-21
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:12:31 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xDqUZ-00034p-7w
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 17:45:04 -0400
-X-Envelope-To: qemu-arm@nongnu.org
-DKIM-Signature: a=rsa-sha256; bh=w0TIwQV2lUFcngUw95TlXoGDr2YHflHFzIEeIwp6s+Y=; 
- c=simple/simple; d=linux.dev;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1791236696; v=1; x=1791841496;
- b=GAw2o/dcPMfyekXJ6FPEg9H6oyfHDnOytR3GgPf3xJBnngtIBLOMqqC1oUGqkgpuFYDRu/0N
- Kt1pCcvUOYhDNiCQTkdMi3CAEM2Ifc+hUeqySj2dlWmauVX78ZkthgySI90doIrLhk4oZ5a80Fq
- s7c/pOJhMLDdwQNM6D1J/pXY=
-X-Envelope-To: qemu-arm@nongnu.org
-Received: by smtp.migadu.com with ESMTPS id e121de19412a3869;
- Mon, 05 Oct 2026 21:44:56 +0000
-X-Mizu-Trace-ID: e121de19412a3869
-X-Migadu-Flow: FLOW_OUT
-From: Fuad Tabba <fuad.tabba@linux.dev>
-To: Gustavo Romero <gromero@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Will Deacon <will@kernel.org>, Itaru Kitayama <itaru.kitayama@linux.dev>,
- Fuad Tabba <tabba@google.com>
-Subject: Re: [PATCH 1/2] target/arm: Clear TTBR[5:0] from a 52-bit table base
- address
-Date: Mon,  5 Oct 2026 22:44:51 +0100
-Message-Id: <20261005214451.1036668-1-fuad.tabba@linux.dev>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <l5hcpwnktn2hvbt55ux42xzb2euc5zqohnxtaiftr7lxynfx2g@myyytd4e4owp>
-References: <20261001175003.ttbr-baddr-52bit-0-fuad.tabba@linux.dev>
- <20261002070925.2627344-1-fuad.tabba@linux.dev>
- <l5hcpwnktn2hvbt55ux42xzb2euc5zqohnxtaiftr7lxynfx2g@myyytd4e4owp>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFF7-0000Tu-8J
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:10:57 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-6acbdbc1725so4833680a12.3
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 17:07:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791331629; x=1791936429; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=8K7Yq/KgL/Zin4VcTKhCZ6b8VSA0wVYhUmnTHSEofyE=;
+ b=mL+p+OsDgypPR/I8zJdq31oc04YDMI47RKxRlzWk+4On4LSC2mS3UvAQUOn4ghxM5P
+ wQMl1Lq4hLvTeYrNw1Jk7Ql8GHiRcR0RqH3FStDP/Qk/Tp6MnnuXN12o3XVbPtNkeuoH
+ udvacmhEed5zCndvZ/WXlIp7Ipm6e9M86x/QGnhOm916jxSekWf1QWimwJ5ED4WAByGc
+ lsVlBGHK+KGPl1lg7ZzJSvV7rtNE3WtEZbCKrOuPwQvTonNQeCZ+1ueWAuQfGmddUHsc
+ vcPoVpLr+QRd0BQJWOXXVaNO7qlyqP+hLRmE3P764V+FKWiNIjNrFfmEfasFK3KwzYLo
+ opZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791331629; x=1791936429;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=8K7Yq/KgL/Zin4VcTKhCZ6b8VSA0wVYhUmnTHSEofyE=;
+ b=oSGUEzHeVfvbQK8uAKsRtNJbQQdLwRAzmbLasNCrFAzLJpu6UMSAq6LFiMxpXB+Iv4
+ qe9MTCbjjGn/D0T/N8u68t6bZ1am6a0YUbrJOyLm3f+BV3b9ziHBzZwXudS5EknWTwnS
+ C2RqSyrvmEKv8goR8U4E8MWsudrCIdt5Ok1LmIZuMUOVF7YEzojBQukQ/y8VDsnPQdDL
+ QyIXU8nZ0NPj5B4gQenpVPzEGy6x3KumaJhmKuCvmE111e/aWsQmuZwIC8i69Gd3VkL7
+ HV2CSZoepReH3ipAuMeKZL8i/QsnLncg30Gu8w1N6Ea5vQK6W3fCqGK/APBAKBDhoe7X
+ Df2g==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwnogKaOt8kN19NnYJawOrjxn/2AtxTAY+XE6wB5U+i99rZxQ63A/TGvTQBA2BdHSr33VYhenF0XQ==@nongnu.org
+X-Gm-Message-State: AFq9FYKTmj6j1BB/U2GsrEEE7TX++HLqni66JFDPyhq7b5Y3ELb03kvT
+ 5ynQvQU4ms0a6syVuH4K7Gx7oxVnN3pbQ6qI/Ciz7SsnABCMXsVL9l4j+cnkuw==
+X-Gm-Gg: AYBFou0k8z0HKLH+UzuHgnX+hObN8zKlaK3OEe9PkOowfLNk+jfh2LgWnM8LNeF2Ysq
+ kVKlShgry/NteuEqctAqQKikRFogQG8SAM7XkSs4Dp+Yo+entwKMHqXoJ/7hyw2RoGpeu+ziyFB
+ hIDr9MXOzNEOWOLWCS91rTeQpPcyzy+kO8OFjrH93C6rJhdfiGz2C7YXLGRq99jNivHVfo/ewWC
+ 8Ru3zu3nb0rN7X53T6PhNj6GMPFWOs6TU5F/jcrbpb81ZMbG9wE3nGOqgP7Jfn43Uo7FxFsRN1P
+ +7WiEHmIbKGtLSnDNM0cciFo5n8XgKcCBcfZ3zESWfEHpv4/QbC3aWNQvQV7Unipprsy8UjPtfj
+ 1WBMYN/Vhiif4/s+kLRMIe9th8FjYC9gyqcs3cvfT+/UMRJSYTSS5WX3eFtkdBK6Vr9reLm3ORC
+ MyjEd7RIRH2glYtXUzkae7Oocq4UBF1ysXi5rSQEvvY7AkM+7DfFQv9PvEfQNvLvDRzqywxWAk0
+ R+wcHlR7YSHKJQgLrMcVJkpU4zFE68tWC4dVg==
+X-Received: by 2002:a5d:5f50:0:b0:488:8111:6f56 with SMTP id
+ ffacd0b85a97d-48c6d0f4c77mr1187617f8f.8.1791275721430; 
+ Tue, 06 Oct 2026 01:35:21 -0700 (PDT)
+Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Oct 2026 01:35:21 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bin Meng <bin.meng@processmission.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Jason Wang <jasowangio@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH v4 01/31] hw/watchdog/wdt_imx2: Preserve own locked bits in WCR
+Date: Tue,  6 Oct 2026 10:34:13 +0200
+Message-ID: <20261006083445.30362-2-shentey@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
+References: <20261006083445.30362-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:1004:224b::b6;
- envelope-from=fuad.tabba@linux.dev; helo=mta0.migadu.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,51 +110,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Gustavo,
+Apparently there is a typo in the WCR locked bits handling: The locked
+values for s->wcr must come from itself rather than from s->wicr, so fix
+that. Without it, guests such as u-boot may experience inadvertent
+reboots when configuring the WCR register.
 
-On Mon, 05 Oct 2026 21:06:44 +0100, Gustavo Romero <gromero@redhat.com> wrote:
+Fixes: daca13d495a1 ("hw/watchdog: Implement full i.MX watchdog support")
+cc: qemu-stable
+Reviewed-by: Bin Meng <bin.meng@processmission.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/watchdog/wdt_imx2.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-[...]
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index c83d4107c1..3283990bbf 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -156,18 +156,18 @@ static void imx2_wdt_write(void *opaque, hwaddr addr,
+     case IMX2_WDT_WCR:
+         if (s->wcr_locked) {
+             value &= ~IMX2_WDT_WCR_LOCK_MASK;
+-            value |= (s->wicr & IMX2_WDT_WCR_LOCK_MASK);
++            value |= (s->wcr & IMX2_WDT_WCR_LOCK_MASK);
+         }
+         s->wcr_locked = true;
+         if (s->wcr_wde_locked) {
+             value &= ~IMX2_WDT_WCR_WDE;
+-            value |= (s->wicr & ~IMX2_WDT_WCR_WDE);
++            value |= (s->wcr & ~IMX2_WDT_WCR_WDE);
+         } else if (value & IMX2_WDT_WCR_WDE) {
+             s->wcr_wde_locked = true;
+         }
+         if (s->wcr_wdt_locked) {
+             value &= ~IMX2_WDT_WCR_WDT;
+-            value |= (s->wicr & ~IMX2_WDT_WCR_WDT);
++            value |= (s->wcr & ~IMX2_WDT_WCR_WDT);
+         } else if (value & IMX2_WDT_WCR_WDT) {
+             s->wcr_wdt_locked = true;
+         }
+-- 
+2.56.0
 
-> > diff --git a/tests/tcg/aarch64/system/ttbr-baddr.c b/tests/tcg/aarch64/system/ttbr-baddr.c
-
-[...]
-
-> > +int main(void)
-
-[...]
-
-> > +    /* PARange 52 bits, TGran16 with 52-bit addresses (FEAT_LPA2) */
-> > +    if ((mmfr0 & 0xf) != 6 || ((mmfr0 >> 20) & 0xf) != 2) {
->
-> I understand you are checking PARange == 6 here for checking if FEAT_LPA (not
-> FEAT_LPA2) is also available? If so, maybe change the comment to:
->
-> /* PARange 52 bits (FEAT_LPA) and TGran16 with 52-bit addresses (FEAT_LPA2) */
->
-> ?
-
-Yes, the test's 52-bit PA and IPA both require FEAT_LPA. I'll take
-your comment for v2.
-
-> > +        ml_printf("SKIP: no 52-bit PA or no FEAT_LPA2 with 16KB\n");
-> > +        return 0;
->
-> Return 'ret' here for consistence?
-
-Sure, I'll change it in v2.
-
-> That's a nice test.
->
-> I'm wondering if the fixes should be separated from the tests as we usually do,
-> but feel free to wait for collecting more input from the other reviewers about
-> it.
-
-Thanks! I kept each test case with the fix it covers, so each patch
-carries a test case that fails without its fix. Both forms have gone
-into target/arm, including my last contribution. Happy to split if you
-prefer. I'll wait for more comments before doing that.
-
-Cheers,
-/fuad
 

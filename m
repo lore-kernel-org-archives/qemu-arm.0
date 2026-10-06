@@ -4,101 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B13CA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 07:51:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B275CA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 07:51:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEMQR-00007O-7T; Wed, 07 Oct 2026 03:51:05 -0400
+	id 1xEMQp-0000QN-W8; Wed, 07 Oct 2026 03:51:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEGCj-0001QK-J2
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:12:48 -0400
-Received: from mail-lf1-f45.google.com ([209.85.167.45])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEGCZ-0003kl-0y
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:12:15 -0400
-Received: by mail-lf1-f45.google.com with SMTP id
- 2adb3069b0e04-5bc18f54abbso2838115e87.1
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 18:08:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xEGr7-0007SE-SI
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:54:24 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xEGqp-0002Re-3l
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:53:52 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6966e9jq4103509
+ for <qemu-arm@nongnu.org>; Tue, 6 Oct 2026 09:25:06 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ vjsmGI3+0Kj3QJlqF5qadkvKS9KzSzr08O8yYgXEgN8=; b=MNN0NanlHRusbN88
+ z1x496f0bpreQjvwsqth9jjKMWPfxFDkmxlbZzcBSgSkJtxkPfpCvWgoADYGUbWJ
+ lxZ9GuP8mtePiZYJu1YhLRH6qA0QjvdS7L2ykPzS1BKlCxOzlfyovvQszmbOKq3G
+ BwvOsry7MAeleSU6e+tQLrm7YLsvixmjfMLdCFzOkVIIzbR70LWp/9JDFp79FWmO
+ SK9K8i+qlmleMWmHy61mUPhOah/6cnlPQSrn2L2YfbUwf8Ofrqa0SK9IWVJxju7f
+ xL7PyT+4ggnWD4ZKm/QO9z8QafDAiOWTPgLXaxv8ZhHOIH2Y+Cpuy3LDFnxYke1I
+ VcDyhw==
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h4gr0awvw-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 09:25:06 +0000 (GMT)
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-917870a9be3so13338156d6.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 02:25:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791335323; x=1791940123; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=8BXjIZy8oqNcUmbJ1VvNeAwbWNSakYWSUw60nLCGzDc=;
- b=EP1tWEwzJ4x6wsyvqubT6DVoMHSVK7m8fOpiL1o0m6ZhKZ0w1T52vKSN5DGc39Fkbj
- B/Rpy+DV7lStfe6Dd+Nq8dCK4OGwtnVR1N1qt7adtcalGfPARMupsDJ8PkxrL3nxlJ9R
- IKID7JWW1DTbnOC4V7dSJDZIIYNsb2/eTIDzIDxB7WCIzruFScB0FCuWj/Xj7bDLKvmb
- Gfs0mf8G/4l4UQsoi6HfN2V0rSJw1FAmAQkRpXSHwtXoL1V6BafJrlEDOuuVLzb6r21p
- KOOeqJsUELL2Lg6FSfaErWxoG2LrXXPbSGxkDiJNNNUCZ0G2lM3NfSm6PAVZzUip+R2e
- z5Lw==
+ d=oss.qualcomm.com; s=google; t=1791278706; x=1791883506; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=vjsmGI3+0Kj3QJlqF5qadkvKS9KzSzr08O8yYgXEgN8=;
+ b=LH2CyOjuX9+MNKhDxsUKixN0Ebm8JziV5vbzvtemu6hCKOYo5VUC4J3yD/+WmfiCWU
+ US94PZ4xSfBE7PQpcDhDtnJBQsGCcIQ0FDTJiN+c8sLUmRflLRaqht+VQHRGF8k2aPzy
+ bSFy0cJ8/biSPPr1auRvybRw9NH9iQAD7huzFc9pWwl3qeaQQKTfwohXeTP3quW98Tje
+ QbzTgXvgT5CuTMdRFYOi+gCgsnVUx9vGxbumwCyqJl+k1Ddj/M1X5Esqt1AtHBYs/d+Q
+ 1ridCNy7irFh69lYLLAcgpJOfXS0VTXWtVM89mmx9KIvVpgVa7UJraNLuwZ6g3UGyEa8
+ PpDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791335323; x=1791940123;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=8BXjIZy8oqNcUmbJ1VvNeAwbWNSakYWSUw60nLCGzDc=;
- b=TnNBCPJoRDxgVPv9AlKjWsurbfaPHyAsqv6nXefLd9Goy/+xEPKGqS0Pi/aeZyFH6I
- +cbNpKNo4tX7wEXFualOTHBjh/9nxEHrXPsEy4Ubip3fRAFYEAyoJGNrMeYVAFs6dX4h
- w3BWIMvYqVk/cKywrmeW0dTeANysmcQarxIOIdJBbj/Ny7CcE5v+bIZpKzmVgcwCKpc5
- d7RYQJDQ9LgSU5zR/hINomPNx9MZ3jJ1zKG2AU/G3DXWuZvFY7AaoK7CJ2R0vK9FClCW
- m4qBdCruP2bgnvrS2Y7QljjXak094NOM1KXrJvTPlejKIT6kKo6DV6TQ9t0OvPKGLn5S
- 1xbA==
+ d=1e100.net; s=20260707; t=1791278706; x=1791883506;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=vjsmGI3+0Kj3QJlqF5qadkvKS9KzSzr08O8yYgXEgN8=;
+ b=axsopu/LBGJF/9pK80L4/ba13fYvfTfI4xNToCKeeO8t5VdJpfe37T1B8OKRYZcrrq
+ HThibBLZ7SNulgGsWxiGO7asskOvlw/3MTpaLPCpQijddapweH51Ph5Ey5w9WK29/V6a
+ LUzsLHJTc4fuaTxHb35TRwJ43nuBnQNOYGD90j+Y8PjOvM3NERSrZckLTjIUXyUqqz9N
+ 3xZ+64ukPE61wLNnnLrXeYyOS0kqlN8gPXa7MfOYqa74ce2ACOJYifx5ng/1faiE5cwP
+ XBIln6y2qMbBX7jmkO3GdcBZUsNMforP7oCApepCX7CKFV4Tod6jGOIXWK2JnzKwY9f3
+ Z6lg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwQz33mMXLF4VZuEx1QDrYa7+w4iphyqFzu++vMN6sH/G2VTBKm2thyab4X6VhPizkGFyELP1DUsQ==@nongnu.org
-X-Gm-Message-State: AFq9FYKaP/CeRD85S0sBy0uf0dHJZflRYjXPrARjnSXDug5+R/leds5a
- T2M7O5rUVEqKNBIemJt5tdC1Y/PFkdUmh1UTHYV65+Y7q2qBd3QImFGvBE2R1w==
-X-Gm-Gg: AYBFou2NSssAzNHrMKXi3btrWPA2qxi80s6K3iXuHXB9ttAf1OVP2z/TJihGpxmGKW6
- n2TF2gxUcZZaz/8GF/nJKitBoSMxJcr2+RVV+rFEU+l93mUphnJpZ4fMGdDUWVn0JIuVmhp1b1U
- pam+fJubOocFlWDin6QapNyqN4aSTIH+Mnv/zF/n4qMCZVzkHZnHNRBbj3/yyNblfwju0gaGCHB
- Z8Tq8PJldGULBd8RNS2LQYQc34yisX65TpWw3RdNyFQbqeISmdbB6SnsuZ3MwoqhfqFiU116Vcd
- ftjk9+RoRyjjhoaWEW+jc7yh/KhsKKCWgwaqq6Qw8Rtd8nGDiRBYYnCZnnos9LYgUeSFOTJ7dIL
- iji2EitrMtiKzTHfEwqMvad8Wa7wd5muPoh+rvRW8+7/vbdSn/J1oqJtKKrWrbkJnHly9Nr55yg
- 0/wo2JM9GS/buMPi0Me759uisUQzVvXtpkkZTR9qt09/Yf9tgu5LZcPJvudUWXg6e6rs/T70RK4
- zf3cf+lYvPn2jyhmpGGXhleFvPNP0SEOhmMpZEQItg0lSVvOj7CkyCN9QKYXYZu2914eQ==
-X-Received: by 2002:a05:6000:98f:b0:488:7097:3b45 with SMTP id
- ffacd0b85a97d-48c47c8ece9mr15588590f8f.7.1791275850370; 
- Tue, 06 Oct 2026 01:37:30 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (p200300faaf09ae0068a1128771ce262f.dip0.t-ipconnect.de.
- [2003:fa:af09:ae00:68a1:1287:71ce:262f])
+ AKwUvBypeEnvXFss5Kucwn+Xy8OikRIZTuShlIIk+yFbxuNpUBN4EpZcOqFKSC50h63hs6J7wOTIleEZAQ==@nongnu.org
+X-Gm-Message-State: AFuF++kBVIyj2QgmQuwEQ2feSqWd6weHZRJGLdeaFEuEIN0ARoOW1q7O
+ hhnwoU+JzcFPoSK04XjUJDTrhAI+EF4akm+HS8SLQ5yHsfu8Qf2MOKMCBGaX+SRqTc80LYFK3AJ
+ /LU73sXamgzMzGVytYAtNr7pasq0sWQOh29DwyARQDliMZOMXwRTSIIM=
+X-Gm-Gg: AYBFou2uBG7Po7/OGEmHN1Wvnoquy4Hl9OWTs7MSxq08hSORzpzxBIwpEcKpinbyPtr
+ gvvdZ2vAI5dntzoHHta801DQeqOW2d9zzuDJs+AjAQePyJ/zxb59kP92LcLznaNn1jnLg0bxR5t
+ 4wKusEbudq5x744DXwP4v+WLZ+qrpcgO5lebwam0s+zxTylPf/TJ1QN9rH4TqQdtkMqsiDFC4Mp
+ pHXbZeFJJ8nBXBGJb56JDLlMILM/jBXr5xrxVifFOD9EkENv3m2y/+TE9i8ycz94yJkhbcifFsK
+ MixTT+u7Cc+6JESziMUDXUwGIB3oJLVgplvvTR22UGqmYnnPH3syS6LXEmStaxIHpyB58kD6MTv
+ x8/NZ5zmGmB6k2ThPve0lKeXfx9iwHqfooA==
+X-Received: by 2002:a05:620a:6287:b0:93c:7861:675 with SMTP id
+ af79cd13be357-93e85ea76ccmr398862485a.1.1791278705834; 
+ Tue, 06 Oct 2026 02:25:05 -0700 (PDT)
+X-Received: by 2002:a05:620a:6287:b0:93c:7861:675 with SMTP id
+ af79cd13be357-93e85ea76ccmr398859385a.1.1791278705341; 
+ Tue, 06 Oct 2026 02:25:05 -0700 (PDT)
+Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c63f6434esm8533619f8f.22.2026.10.06.01.37.29
+ ffacd0b85a97d-48c62100facsm9680689f8f.0.2026.10.06.02.25.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Oct 2026 01:37:29 -0700 (PDT)
-Date: Tue, 06 Oct 2026 08:37:23 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-CC: qemu-devel@nongnu.org, Gaurav Sharma <gaurav.sharma_7@nxp.com>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowangio@gmail.com>,
- qemu-arm@nongnu.org, Bin Meng <bin.meng@processmission.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v3_04/31=5D_hw/watchdog/wd?=
- =?US-ASCII?Q?t=5Fimx2=3A_Remove_redundant_attributes?=
-In-Reply-To: <CAEUhbmXuyb_2=JT0GDDPYaU=z0LycFo7GphY8AYD=hzZmEf82g@mail.gmail.com>
-References: <20261005101800.10821-1-shentey@gmail.com>
- <20261005101800.10821-5-shentey@gmail.com>
- <CAEUhbmXuyb_2=JT0GDDPYaU=z0LycFo7GphY8AYD=hzZmEf82g@mail.gmail.com>
-Message-ID: <72FFE9B5-7E46-49D5-989D-39D0ED2425FB@gmail.com>
+ Tue, 06 Oct 2026 02:25:04 -0700 (PDT)
+Message-ID: <e539b209-29db-494d-aaa2-a04e0af06e5c@oss.qualcomm.com>
+Date: Tue, 6 Oct 2026 11:25:03 +0200
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.167.45; envelope-from=shentey@gmail.com;
- helo=mail-lf1-f45.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 09/31] hw/arm/mcimx6ul-evk: Have 512 MiB of RAM by
+ default
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bin Meng <bin.meng@processmission.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-arm@nongnu.org,
+ Jason Wang <jasowangio@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20261006083445.30362-1-shentey@gmail.com>
+ <20261006083445.30362-10-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20261006083445.30362-10-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA2MDAzNyBTYWx0ZWRfX60XRjHJOll6z
+ +5jaNrN4dYOeRwdOEFHE5kHV7njutLfz1BWoGuKy6AaTD2YjBhCD5oKtqr9Qk31zT343Dr8U86U
+ EQ3NCoJ7CiYjDLxsVbZ9lpiKezgv86ZXyduNXfJTuXaYfwPS3l9TTbxRO/vV6OCwFtPnkg8FLyi
+ 1kceDUxsq9kzuAl+0LueADLaVD4XPR8w/vcxQ56PyULD9DBaF0qlDmTt2l02iZUneEf3Xzax5FF
+ znXeeHPpRsOuHX4oZbJyGbRECd9a0s2EOKcN8YbV70NSQ+0BPnUk4M/8dRISIkpCe9oFQJCMqAY
+ opINggHaGYltAB5vzUX9lYu9UHh248K6A4CQVe5qDA1SHV6DlO6EoCIHMeBvodsm2BmMkrIl6kA
+ MvIiQGGc1tj58aKjW3RHjhKhDjnVM0Kw78rBvu6/0gxB7o1taPPycRsKdczqlvrCJrohyBQIewH
+ hpXe37z+9c0yJJ4dvww==
+X-Proofpoint-GUID: gegdSnmQjj4VPbudl09N9mNJtMGmS9fx
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA2MDAzNyBTYWx0ZWRfX3sElSKUpXk9C
+ p4v8oz6uLim73CChaO0mOKukwIqEGUepSsKgAp0k22bGzfIfkDtEHcxbgBWaeZeVYhnOkElkMr4
+ u8d/oO6roSCPC9p8CPS8hvdM+iirMmo=
+X-Proofpoint-ORIG-GUID: gegdSnmQjj4VPbudl09N9mNJtMGmS9fx
+X-Authority-Analysis: v=2.4 cv=BrQIUoX5 c=1 sm=1 tr=0 ts=6ac4be72 cx=c_pps
+ a=wEM5vcRIz55oU/E2lInRtA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=FRSEYCzRAAAA:8 a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=OIgjcC2v60KrkQgK7BGD:22
+ a=H4N_Y-AU75W7NKDNhZlT:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-06_02,2026-10-05_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 suspectscore=0 bulkscore=0 spamscore=0 priorityscore=1501
+ malwarescore=0 phishscore=0 clxscore=1015 impostorscore=0 lowpriorityscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610060037
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,127 +164,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 6/10/26 10:34, Bernhard Beschow wrote:
+> Having 512 MiB of RAM matches real hardware. Fix the machine
+> default to make its use more ergonomic and less error-prone.
+> 
+> To reproduce the old default behavior for e.g. migration purposes,
+> `-m 128M` needs to be added to the command line.
+> 
+> Reviewed-by: Bin Meng <bin.meng@processmission.com>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/arm/mcimx6ul-evk.c | 1 +
+>   1 file changed, 1 insertion(+)
 
-
-Am 5=2E Oktober 2026 15:01:37 UTC schrieb Bin Meng <bmeng=2Ecn@gmail=2Ecom=
->:
->Hi Bernhard,
->
->On Mon, Oct 5, 2026 at 6:21=E2=80=AFPM Bernhard Beschow <shentey@gmail=2E=
-com> wrote:
->>
->> Since WDT and WDE are write one once bits, their values always
->> correspond with their respective locked attributes=2E Thus, the attribu=
-tes
->> are redundant=2E Take advantage of this observation to simplify the cod=
-e=2E
->>
->> Note that removing the attributes changes the vmstate structure which
->> constitutes a migration break=2E This is allowed since QEMU does not
->> guarantee migration compatibility for i=2EMX devices between feature
->> releases=2E
->>
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>  include/hw/watchdog/wdt_imx2=2Eh |  2 --
->>  hw/watchdog/wdt_imx2=2Ec         | 21 ++++-----------------
->>  2 files changed, 4 insertions(+), 19 deletions(-)
->>
->> diff --git a/include/hw/watchdog/wdt_imx2=2Eh b/include/hw/watchdog/wdt=
-_imx2=2Eh
->> index fc01fc46e7=2E=2E0bf2903959 100644
->> --- a/include/hw/watchdog/wdt_imx2=2Eh
->> +++ b/include/hw/watchdog/wdt_imx2=2Eh
->> @@ -84,8 +84,6 @@ struct IMX2WdtState {
->>      uint16_t wmcr;
->>
->>      bool wcr_locked;            /* affects WDZST, WDBG, and WDW */
->> -    bool wcr_wde_locked;        /* affects WDE */
->> -    bool wcr_wdt_locked;        /* affects WDT, cleared on POR */
->>  };
->>
->>  #endif /* WDT_IMX2_H */
->> diff --git a/hw/watchdog/wdt_imx2=2Ec b/hw/watchdog/wdt_imx2=2Ec
->> index a15f452d48=2E=2Ee9cb5819e4 100644
->> --- a/hw/watchdog/wdt_imx2=2Ec
->> +++ b/hw/watchdog/wdt_imx2=2Ec
->> @@ -59,8 +59,6 @@ static void imx2_wdt_reset(DeviceState *dev)
->>
->>      s->wicr_locked =3D false;
->>      s->wcr_locked =3D false;
->> -    s->wcr_wde_locked =3D false;
->> -    s->wcr_wdt_locked =3D false;
->>
->>      s->wcr =3D IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS;
->>      s->wsr =3D 0;
->> @@ -156,24 +154,14 @@ static void imx2_wdt_write(void *opaque, hwaddr a=
-ddr,
->>      switch (addr) {
->>      case IMX2_WDT_WCR:
->>          if (s->wcr_locked) {
->> +            /* WDZST, WDBG, and WDW are write-once bits */
->>              value &=3D ~IMX2_WDT_WCR_LOCK_MASK;
->>              value |=3D (s->wcr & IMX2_WDT_WCR_LOCK_MASK);
->>          }
->>          s->wcr_locked =3D true;
->> -        if (s->wcr_wde_locked) {
->> -            value &=3D ~IMX2_WDT_WCR_WDE;
->> -            value |=3D (s->wcr & IMX2_WDT_WCR_WDE);
->> -        } else if (value & IMX2_WDT_WCR_WDE) {
->> -            s->wcr_wde_locked =3D true;
->> -        }
->> -        if (s->wcr_wdt_locked) {
->> -            value &=3D ~IMX2_WDT_WCR_WDT;
->> -            value |=3D (s->wcr & IMX2_WDT_WCR_WDT);
->> -        } else if (value & IMX2_WDT_WCR_WDT) {
->> -            s->wcr_wdt_locked =3D true;
->> -        }
->>
->> -        s->wcr =3D value;
->> +        /* WDT and WDE are write one once bits */
->> +        s->wcr =3D value | (s->wcr & (IMX2_WDT_WCR_WDT | IMX2_WDT_WCR_=
-WDE));
->>          if (!(value & IMX2_WDT_WCR_SRS)) {
->>              s->wrsr =3D IMX2_WDT_WRSR_SFTW;
->>          }
->
->In the following codes:
->
->        if (!(value & (IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS)) ||
->            (!(value & IMX2_WDT_WCR_WT) && (value & IMX2_WDT_WCR_WDE))) {
->            watchdog_perform_action();
->        }
->
->Since you removed the part:
->
->        value |=3D (s->wcr & IMX2_WDT_WCR_{WDE,WDT})
->
->now 'value' does not contain the preserved WDE/WDT bits (they are only
->preserved in s->wcr in this patch), the watchdog_perform_action()
->won't be called=2E
-
-Fixed in v4 by preserving the value part=2E Thanks for catching this=2E
-
-Best regards,
-Bernhard
-
->
->> @@ -234,13 +222,12 @@ static const MemoryRegionOps imx2_wdt_ops =3D {
->>
->>  static const VMStateDescription vmstate_imx2_wdt =3D {
->>      =2Ename =3D "imx2=2Ewdt",
->> +    =2Eversion_id =3D 1,
->>      =2Efields =3D (const VMStateField[]) {
->>          VMSTATE_PTIMER(timer, IMX2WdtState),
->>          VMSTATE_PTIMER(itimer, IMX2WdtState),
->>          VMSTATE_BOOL(wicr_locked, IMX2WdtState),
->>          VMSTATE_BOOL(wcr_locked, IMX2WdtState),
->> -        VMSTATE_BOOL(wcr_wde_locked, IMX2WdtState),
->> -        VMSTATE_BOOL(wcr_wdt_locked, IMX2WdtState),
->>          VMSTATE_UINT16(wcr, IMX2WdtState),
->>          VMSTATE_UINT16(wsr, IMX2WdtState),
->>          VMSTATE_UINT16(wrsr, IMX2WdtState),
->
->Regards,
->Bin
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E851BCA6002
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 22:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04737CA6002
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 23:03:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEaXT-0003OX-7D; Wed, 07 Oct 2026 18:55:11 -0400
+	id 1xEafD-0004eb-AH; Wed, 07 Oct 2026 19:03:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEaXK-0003Nz-Tj
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 18:55:00 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1xEafA-0004dq-ME
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 19:03:04 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEaXH-0006tW-Vp
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 18:54:58 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-6afb793964eso3648491a12.0
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 15:54:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791413693; cv=none;
+ id 1xEaf8-0007d3-GR
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 19:03:04 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-c169ae1cb26so19511266b.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 16:03:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791414181; cv=none;
  d=google.com; s=arc-20260327;
- b=hKnv1jeWDhUh6DxJxdwxmS/Ui6AwnBZ/tGfHyk28Qfu2xizVtCUdAQ6Fco82tkH2xM
- 4xdy91IX6iYXLyqvSKhfd0j44wTqF+UWQEu/olKa3iZiy9OWrlXY3yROewg5ivDj0yKF
- 4Ap8xXxNH6oy6dHZDxYc3gOmujZ6u/4VfO/OXpHnqVBkpHw0QnE/AySmLgQpgtRJn/8M
- ZQkXqHLeJ+0SBsSbHo8pjgB5aCI55ytq6BGOIndXoReokY1ZCyyegfo/BzEj0qPcQIcg
- w0u3pw4Nvxqot/nnjRlqT9/B+7NkyIJRYgojBysuGQuSGEPrmDCQUS7bWBHn33NwpfKA
- CtDQ==
+ b=q8k1Lzvdvwx5ZuA+XCFLMoRAY2V03jtecWchjwuiDltDB94AJBKV7fJh2j27+v2aRv
+ Osowt0jt/iNhfzkRwgNYHODfAQhuxe8YRTijg+NepNzJlj73dhhxI8fkaQ6j4qluV7bg
+ XOpjVzk9biBxzHDMzPEs7M6RdHKsz3WORg7D4j1e9ApehifgEKUXiuo7t5D8/fYypB3c
+ zGxn8KL+on4F89TDqwsaJNJtM+E7TtFzY/AZUZsKd7zTlO4KvcsUhL8db/BIRcJ5M6RS
+ 3UUqb/UaMa2YEiLHfOH6cVSmyiH/t8ykV7orfxAUAcj1+aNZFx2QVdE3CEXn8obQLIxx
+ rK6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=zSjVc/tu+Y9ukXAP0Ef1p9qDGK6Rj596TGAY61jYM6s=;
- fh=W8lvjs8v/HolW/anBSrClTq104uAC3ZNXxwdelP2APE=;
- b=TClWVqqraeABsBmPI5Iu6WAHKXtSyBGjhvmp0Ky18/YR548DqkfotS3OZB8nN4YXQe
- pCOK5n6Rt6XjTFdoJDc2hUnX/17jOJdOq8On6p0BLTt7WcizB6nblMbspDLPmZJJ3P6i
- asau2NJ2fKzVCF3xo9dZ57nfWMr1211DB2thjP8SP34Ner6esdHqNLSsz6tpqR5loBQY
- LAfCLv7mqPOn5fSOxopPksYYSovaqlSLqA+77XjWJlGH6fGDJDJ74EQunhvUSHnD04gy
- 5+UkAKKuh/XDeBDT1fKzC4BuCd6MRcm9I1AMFbi069UtAaiNcHJ9oJbadWNxPwMr9F5F
- mcpQ==; darn=nongnu.org
+ bh=eZGM6Bm9f+pChsYBGl3aR4v3S8XlttTKcga5IZaRWho=;
+ fh=HdwEjYYxiZIM7RahxfxK5HXESN/DJNNgzI7AALKPgMk=;
+ b=Ium84vbMB0e6danEvPGHLqMO/RprXNucGzPtteZxKH/w4z4wXQeKCsAt9sRCoRuzSK
+ zwGtrQ48fx5BOT8H/csQdBfEMoNlzgsGDHa278yzxcums62uJMpw3fCOgtdPQOyXecrX
+ M9vSeXO9DtOTCwhNtmHtQ9eBqP4RKJalLXqD0uI1ePVu7gLTn936oiAHsmJUnw10NHJg
+ V6mpk+585bxgM5SluTlUVQomMW8zhQnj7e74Y0d84QImT2iO4nEQ+CvM5auOeIm4MmRO
+ fnO8L0c98keig3CvyMiraaDZLSgcWUrISoe6lo9aUs+Czd8zcS0uHc5uBT4GYQL4gXo6
+ sIvA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791413693; x=1792018493; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791414181; x=1792018981; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=zSjVc/tu+Y9ukXAP0Ef1p9qDGK6Rj596TGAY61jYM6s=;
- b=rU5C6yavrYJpmY+IjCkG6QUYpe2rDCULUHmHBbOqXyTEcq+PrKHPEGxeSlszmOsAt9
- 1GIn68d18ifakU2rlJxO/uHNFFjtbAbj8/wz3vYJqQfZIWH602cm+aWp2m2grg7uf3I8
- +6HLgIoxQZtfq4CjEVDYzhYx+n3mVRLFBS5O2wTX7DhWVQOy9kN9RVcLSTURQStukiee
- AqmrZ/2p8ca1IceAwG6qzQ+qTN+LB1iDyLlbI2MBL/w9cIY95cCt3W83gT7vbdol379g
- Wv/iTNpbd38cjWrtZiJyfehNnQ3pIgcxucNkvXYnnw+rrTyXPTIgGmawDg/Jn0QQyXn1
- 9RpA==
+ bh=eZGM6Bm9f+pChsYBGl3aR4v3S8XlttTKcga5IZaRWho=;
+ b=nstUwDjG3PYXqDgE0gnXgmJRv8Zgj/ClfydJawPZylYn0g9UfJ91oJqBspmip1Ld2S
+ t0y2Zv0//yL3dtv9X3QNSThTiU0GlC8rCacR18eNSRKoul1dUSw2+QEsGSRvHXyVgKWk
+ FpymQPgUuQuTtBIZ6xzIdx6pUtIQApgDN7MUtuY3bHTWd/vd49FxuiFHBzBZ6fdFoQvK
+ 80yjfgxQUF5W6/VsbQ33pugqZ0F48PHGl7o2Ag87qCtC/6qVrX1A0PFxZVmBFUukIbNy
+ BlNMIWPW/oG29TNWkshok9e0OAO3sRgEKFDNCXmwqZWm41UfBLVJWD45nXt+Lhdb/0UP
+ wnag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791413693; x=1792018493;
+ d=1e100.net; s=20260707; t=1791414181; x=1792018981;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=zSjVc/tu+Y9ukXAP0Ef1p9qDGK6Rj596TGAY61jYM6s=;
- b=hrnzRW6aUcwiQvqPvfZOaFmKmwE98W92gcfjwtjej346YWYY9cvgoWCapD87m7jtej
- jwwZgklWozJcjnqe+HKbAJ3sEGXkaI8vTRRAbDRSIW2sYD5cQ+aOMxUcSuqJp7LsNFkE
- 7xnMFedWhMw7/6PivaK9k6QV5vrh9BF/7wXQPqYOfBRDQ71YZ4T12M/9VNAmvJBmOnQl
- NQ0c80VlwW9WwRFEgtAENrJGHV5ACGmPXj5J5lB0nedaiCgL0ibP+qHwmhLe/sdqmtYF
- Wuy/1OO6DILHlYYvcYcRZBi5AWC5dnQOgGkTKMkts1aGWc78/8PCCebq8zv5GmRq0HgS
- MMng==
+ bh=eZGM6Bm9f+pChsYBGl3aR4v3S8XlttTKcga5IZaRWho=;
+ b=LZBI9L9iDiaDww/WxMZ65nDzIegBbpluE1RRse6s3jRsL9XUs54aUDucBQqSyUbyJX
+ H0yBITH5Hn69yPztAqxCu8R97eYrjNBI/W3LFMpc7ALEvdK9RpXsql0ApVvdR8RYNX+5
+ gZrwboo2fhd80lz4k7+C9nqy1TFQrR81Wz6goJNszzAKMRrRNj4Z1K0wnEHrFVUwE/Nr
+ wpjqlkS6QsdndBVqR5hNylHMb/8dGbsEkNsDqIys41tmsGiwpIkHWm35iFTQ2JAmRjg4
+ HDg8Qfb8h4LR47bKapB64gfhpSHMB1JQa8gXUSkw9MByKY9MxKlga08nezP591wTH5L+
+ vXIw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwuga4ovnSaJtutyPkd2T7upqIhWtxc0ubQFwQKYNUzhQ1+z3pae93MAs9qPIj0SNQFvwg8ayOchA==@nongnu.org
-X-Gm-Message-State: AFq9FYLrB9ifBBX4NGLzSP0sl7gptnmocJAcgRQGLqjNG2EeLlJErcPn
- HmFDfjDWcgJIGo1ht7f/4tPMRPEFp/M/fBB5QX7zEtUrbXCsaD0FS4e/umaP30hyHhs9uUE8375
- 8b6TpyVE/yhVK9uS84ThismmGi2fC8xI=
-X-Gm-Gg: AYBFou1ozzZN7Hh1rCl7KAEb2Ug9xCEqmo0knL3mjWs3IbpvZLiDeosq/qghzGCUaIB
- uffy6KzMqqFD6HDee1vYH7c19bXLbMrlSd+7kB0MpAsqFntlrCLnmpg2lhfcr/mGcSCHkYKBgLc
- PcDu/ULrRVb3/aTfwR2E5wfoBqnqjE56NG1jSzRLxXmvjsl5ysvAu7oYwiXyE54uxsjkDizk5rT
- Bs2jY4/3DLjsKpmu6Yh4mHbIKESha/g9kyOzssPGGHOOkW7BJQSrvKhZLP0pa3tlaHdS8h9g4ft
- mjRvM/+EjN+Zftf3XC2uQ0sQhtsMIJ8uuI2d1RuSy2XYxb0Snkf0x+67PNqvzq5OFQ==
-X-Received: by 2002:a05:6402:440b:b0:6aa:f937:106d with SMTP id
- 4fb4d7f45d1cf-6aff4551bcfmr3512929a12.36.1791413693172; Wed, 07 Oct 2026
- 15:54:53 -0700 (PDT)
+ AKwUvBw4k6yZRwvu7NOSqoR/kZW2dxXo5Ch75t2pgI59lqs0T/zq6fRMDmOhzIwS5VA5O4QdEQU4vQEXeA==@nongnu.org
+X-Gm-Message-State: AFuF++lf57isBEp4yQWgXA/7J/V7CYpIKNLRHN/sM2BAP25lD1p16XbE
+ AeAKWxiuOkB3W0wZzrmKtDnHwwwnjU/1+T4mZcLflryPxjNcrB1wbh+YAzpTo2gQJUCVR6hOEYQ
+ l5nPlGX0m0ooSSqmWtiOL7OBO5cLQVVg=
+X-Gm-Gg: AYBFou1lnC5S55hTiokYRFhqTkP1U2xykfTtqQPT7sCp1bCpoZElUDFJ1e1tdtcfLOE
+ 47DFRvw9aJxi+lHYhyikA4rtGewCyADtNfHiq8Yw2MdB8gMAq550NG05UDYUZX9DWYwK02Ne6pt
+ gubh3bsyngV4D2ig/Gc94DogAP1T5qLdxlKGGXWEF3jZILuBdABC+7/n0XEKIC9L45BdQk0yMVS
+ 4HnomIsns8OJLBbUBWLSpkHqjG7JctXP5FCoYcOJBANkswa4L3NzwJoYePry1L9jbjyv2E7VvMj
+ 1NbsK6aPtuowPWU3iGusvMRnm0hOGdXBs7HDSWibWR8ZLuxNW6banqE=
+X-Received: by 2002:a17:907:7211:b0:c2e:6570:6882 with SMTP id
+ a640c23a62f3a-c3191aefe1bmr47550666b.10.1791414180719; Wed, 07 Oct 2026
+ 16:03:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261007115253.328-1-luoyonggang@gmail.com>
  <20261007115253.328-5-luoyonggang@gmail.com>
@@ -90,9 +90,9 @@ References: <20261007115253.328-1-luoyonggang@gmail.com>
  <919a1a75-78b9-42a9-93ed-9edf6757f707@oss.qualcomm.com>
 In-Reply-To: <919a1a75-78b9-42a9-93ed-9edf6757f707@oss.qualcomm.com>
 From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 8 Oct 2026 06:54:40 +0800
-X-Gm-Features: AclHuK9kE16liw36x5Raqabdi5GZ-fn5rleuW_Jul-TKJagPE7aEBvcLgBxSY9o
-Message-ID: <CAE2XoE8G7Pyu-UaoW0BRxHqEX2aef_ak29mAkwwssSS5Rf_y5A@mail.gmail.com>
+Date: Thu, 8 Oct 2026 07:02:46 +0800
+X-Gm-Features: AclHuK97-4__VE_gu5Q2LVEVdudJU9WZ8bBVXNKl4QsfC6MqTigc3wyfr_Y9CLQ
+Message-ID: <CAE2XoE-XeHnywvAGOCgxO30a_qCMgxbnBF5kjtStGa9=5D=Rkg@mail.gmail.com>
 Subject: Re: [PATCH 4/8] target-info: replace QOM registration with a
  constructor list
 To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
@@ -116,8 +116,8 @@ Cc: qemu-devel@nongnu.org,
  Darren Kenny <darren.kenny@oracle.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -255,6 +255,38 @@ ecause
 > - system/vl.c:    module_call_init(MODULE_INIT_TARGET_INFO);
 > - tests/qtest/fuzz/fuzz.c:    module_call_init(MODULE_INIT_TARGET_INFO);
 > - tests/unit/test-multi-target.c:
+
+# Multi targets test
+if multi_target_objects !=3D []
+  test('test-multi-target',
+       executable('test-multi-target',
+                  sources: [multi_target_crates, files('test-multi-target.c=
+')],
+                  dependencies: multi_target_deps,
+                  objects: multi_target_objects,
+                  link_depends: [block_syms, qemu_syms],
+                  link_args: multi_target_link_args),
+       suite: ['unit'])
+endif
+
+I see this test, I am trying to add tests that do not pull so many
+multi_target_objects, as it would be huge.
+Just pull qom only.  And I am trying to call target_info() in
+object.c, as inspect machines with
+qemu-system is rejected, so maybe that's not an issue anymore
+
+
+I means Subject: [PATCH v3 00/10] machine: uniquify virt QOM names
+https://lore.kernel.org/qemu-devel/20260926081551.29-1-luoyonggang@gmail.co=
+m/#r
+
+So the current design always rejects types that do not belong to the
+current target. Listing them
+all is not an option at all. With this restriction, then these are
+indeed not needed.
+So I'll wait for your work first, otherwise it's always conflicting.
+
+
 > module_call_init(MODULE_INIT_TARGET_INFO);
 >
 > If we want more tests, I'm totally ok to move this init code to
@@ -294,25 +326,6 @@ y
 > >>
 > >> Is there another good value this list approach brings compared to what
 > >> exists?
-
-Sorry, I have to wait for your work to be done first.
-I have too many patches depending on this, and it seems hard to
-convince you. Let's just keep it as is.
-Maybe you can work them out in an easier way.
-
-My work is here.
-https://gitlab.com/lygstate-qemu/qemu/-/tree/combined-binary-multi-targets?=
-ref_type=3Dheads
-I am afraid of posting 300 pathces into threads to flood it(and
-disturbing yours). So I'll wait for your work first. and resolving
-conflicts later, that's really time-consuming.
-
-I did many explanations before. seems my explanation is too bad and
-not to give a clean picture for you, let's delay these first.
-
-I only sent these 8 patches for easier review. because too many
-patches won't be accepted either.
-
 > >>
 > >> Regards,
 > >> Pierrick

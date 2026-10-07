@@ -4,148 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55939CA6002
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 19:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2169BCA6004
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 20:26:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEXfE-0008Lm-4l; Wed, 07 Oct 2026 15:50:56 -0400
+	id 1xEYD7-00012U-Hf; Wed, 07 Oct 2026 16:25:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xEXf5-0008K0-Pz
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 15:50:48 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xEYD5-00012D-Vr
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:25:56 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xEXf2-00009d-8D
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 15:50:47 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xEYD3-0003Kw-AW
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:25:55 -0400
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 697JNwlh3835171
- for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 19:50:42 GMT
+ 697JNO834001766
+ for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 20:25:51 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- cWOIsz5HcI7ulNcjBrnIVjeK8Pfiw2Iowd25+PmhSkU=; b=fVEePjob4JzM8RoJ
- RLFNvgJnRN/AEe5e9eeGOYhA5ALV+Vpr2gz3jTNLHAlEVLhh86wv2Sv5xu3RXdxS
- zFS83cehWT+qHk/Wel+DKmS6Wd3J6s60QYuyYny4ipsaorHJQ6Kt/fngWwLX3a3f
- b4HrxQ/Hz6m2XFFk8hZCZbrcaiBC4fzEu0Wl1T5Y0KBG3ukO3uaZgV5m3Gvz8zmL
- qW+DhW6oIW/sXnLdOGQ9T0E0Tv5WHzvcCieT4NaYe28fWFYd/BQL4s8Zrznb/CLR
- iSIu/5TNZrddoCD8jrkCifEm2llI1lkKawmPNQM+Sh04LOIJwcqqXARMhS2Vk5ZI
- 7Kgwbg==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5mge25vq-1
+ +N1Cy01PH8bYn+xyS8dTvSdYJxHXVkq5SLvQYOZs6DY=; b=okeoFDenELBL03J/
+ oe3wiOEJXzKd6TEdGe59n1j5ycNrzYdsW11Mnq0oe/2nK5vJfjhjllWFCvYwy299
+ cDrRI+oCUBDeDgMkGjrC89muxhHqOJcYw0edB/nh23K4tpOpzP4k4bQb2Yc2+sRD
+ 8/Rn9RlhK6okP4Igj6yrRZMqmkDj2IAh7ppbM8RZY2/5zZZjTSs7uaUXMb1dIO1M
+ jbIF83RKYZdYtL6+MXV5uVbpZfBFTGFUvijykhHEyPM7pr+JAghyMg5MX7AvD/SE
+ V5ChdKgK+WCKI2W7s39wn1pzSMAvedEiV2mnwxjp6sPm/FDQj2Vah2tLNtmniZv7
+ QYk6TA==
+Received: from mail-dy1-f200.google.com (mail-dy1-f200.google.com
+ [74.125.82.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5tu80hjx-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 19:50:42 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-93ea8067974so102707885a.1
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 12:50:42 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 20:25:50 +0000 (GMT)
+Received: by mail-dy1-f200.google.com with SMTP id
+ 5a478bee46e88-34ef0362d95so8290712eec.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 13:25:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791402642; x=1792007442; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1791404750; x=1792009550; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=cWOIsz5HcI7ulNcjBrnIVjeK8Pfiw2Iowd25+PmhSkU=;
- b=IIl8oarGDzLsMFNkiH6NJVTHgD41HFjUTAORDEof9PKfXj5GKI7huIkMo3GlMEoFs/
- uoAf/dHquXEpunR6AmisthdnG+JWX85XFj1hMhrmvdCU0ldjcEuvvcTBialJr+exKjNn
- 5gXdMou75uOb1nab9Piy1EqPLrCoU+ZMeIwgsoh6sWbHQrBrVHodPbd0gzzHQMPNZiS5
- y4GF1N7ntj1drzM7k5keMcxqrOpokhbtB9rutFo3DrImtyjuCO74mWBXKcJZ36M40S/J
- r3tp+lhz2950gUlIf2chr0VPe+gLyDHKgGtcPIF3lY8SK9PlODbwarNTkEb8CuGWuAaC
- g8xg==
+ bh=+N1Cy01PH8bYn+xyS8dTvSdYJxHXVkq5SLvQYOZs6DY=;
+ b=Mlcg0hgS2MzjfR7x18m6KL6Ti6/kyKLgJd35Nm56Z+NL0uOE9In6idvJSIRLudqfUP
+ ErMywKK9IYNm3u9B9+zQLlUEYUfQzQEEUxJf3UTi1LgN8r1YxZfWvonIwv1/MbNNHtON
+ y7rWb1VlxXv3hyV5w7iKcG6DItElSH9ScmpnP8sVIH/0QQlrixvtC86g5E6NJh/YbTL1
+ MmZsgcpzGTNV2O6LveTMxVQ2RxSklUp0RtQLO4iYy9Ae46wK7X7jlYIFCpmKrwXqEWeQ
+ AXkoUh+/gaK30OnqEzpqJAy48xYzbX3NFuLeiE2nLtcT2Due84p5dLr7Gv33WRGnYbW1
+ 3mng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791402642; x=1792007442;
+ d=1e100.net; s=20260707; t=1791404750; x=1792009550;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=cWOIsz5HcI7ulNcjBrnIVjeK8Pfiw2Iowd25+PmhSkU=;
- b=NL7THnjkLWWY/k8gBBF81IorvGjbo6oRubpEAgwUuRfiTutTM+6jeVST9CCaIN0LCO
- ooeZJ8wUui5ykfk9OokLPWiVOEzk4XRIU+56y8HdxwjEZT5IM/hPoBFT0sa3XT8p1JB9
- MZJRSXKv7xPO8HyF6QUIGvjqCSSYlDqZ//u77egh5J0TZ9cJTxxGORiaLb+s/qqPCdEo
- JudYjWOfkh2mM9qvq083whfRqeKZC3mi85fAiLL0fYaNKoSrTRb/TSFFzpHjgVe/yZzR
- Vs1uEH542ruRu8eKGGeIP9OEhQfUruUpw86LQbrOVIqGRxRyCxC0MEFCie675MUkRqSt
- fsRA==
+ bh=+N1Cy01PH8bYn+xyS8dTvSdYJxHXVkq5SLvQYOZs6DY=;
+ b=Md2rctzKIql4cxDqP4s6zKGy/NTGrGQk+0cHUnN0Z9wy5VCZbtb53wlHuA2Rvqdnzr
+ L5CuVmum2rQC0G8ST/v+oRxeMmoBNgUyaxHRDhPm4Tug8x7WNe6epMyUdxNcALHoVvrE
+ tFBC0/aq6voIVxv5FKYUnslOgXG2uI6FLoaYkdRueRE3uCagyAbaebUZFgGEFxN9TEji
+ +X9oPydWeFLCTCXudYT3YJ8NtFxe32gRJBo7OFJ/wYGUGvU7pRGZ/aDQijHOdY+jsJd5
+ livZXzyx0VRnae2d3gvULZ8O/NQDH7y8KmIGGdmQyVQhaUQlbn7yc+23pOmpVj1zh+A4
+ M9Bw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwZFjS+TMvvzfTpVobH4m8wBE3b7mTrfzmjefSpLdUgjsgNG5v4HMbQunG1Xj4fvli7G8sfKkEkRg==@nongnu.org
-X-Gm-Message-State: AFuF++nugsvPpqsHQ1PdBd8TPdd3uAiehlkdWzqdY/MtuNtigFLmUeFn
- q3HTV/8hYK9VKR/BCRINptR6y6F7DbmCiyQ622490NH1OX0VulkExRsDwgQZGLFlKUwPyVmmlrw
- 8G80BZ7vfp5bVdymOpmhT/ZUM2+7Z7fJ4e7FL9jzxbDmqc6oRVJuib1I=
-X-Gm-Gg: AYBFou1mx7CwGTOyguiFpM4CnHtkWRFBtDIvgOHfGIiIMxsJ5voxSPW+J/m6sZj3tig
- Lj8QB4njEPRqRx/GN0nYYWHmdsZGHbtwbepKRJuRDrLSmpGHw9CT9CiPTOZ8LNmqK4lLG2zfb00
- fQaYRtlSUYQyMgq/HW1HHx7PXi/gm3U8ElUOD4n1E09SyDmqLDxT6QHV9LYi3BAtHfRkRz4fQuC
- KMtouYEWI0OVMHFEkUcsBMZIW0ydPcEq74C2bKVvHEkli/6W7s5/bV3s/cFN4l6B7/dqJb8vf1v
- F6aCAFh1DMKV0QL3M/kNY6VElDqjMXMRdi+W0mfe4LLAThnshEc5TGnNfgk0zscyvZRCOxnto+p
- 7dsHlVzqv0Dm0CRe1KY2r
-X-Received: by 2002:a05:620a:4555:b0:93b:bc51:b40 with SMTP id
- af79cd13be357-93e9b2ec13fmr618378285a.2.1791402641737; 
- Wed, 07 Oct 2026 12:50:41 -0700 (PDT)
-X-Received: by 2002:a05:620a:4555:b0:93b:bc51:b40 with SMTP id
- af79cd13be357-93e9b2ec13fmr618372685a.2.1791402641203; 
- Wed, 07 Oct 2026 12:50:41 -0700 (PDT)
-Received: from [10.251.42.73] ([212.136.9.21])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c317c37e400sm138903166b.87.2026.10.07.12.50.39
+ AKwUvBzWPFLoADgTGFpZVzIL8K/PqsGuEY5mInTlMs6eHMw7Rb1ThMv7IIxDL+PJNFu3qIGHclbJSdnxvA==@nongnu.org
+X-Gm-Message-State: AFuF++kKwXsX0zPuaiobSVPfCnWRRwNu6TuyURU50pwsHObjox4KdBA1
+ JVqTETVc9OwSiUWIql20tWl4Egl2ta0NHSbrBnDFKRmXH1EAVMYzOLNRAG5QGL/qkV7R2Tt3HEc
+ xr4x19OhxAD/x/gNqQeYsjAqHbiK9sHMN5p/W6K/n2PtjKLclsJyTl+c=
+X-Gm-Gg: AYBFou3NnUnvMX2TCf2EKH30KCsfPY0NlTzFha9Bd6lZTw4LArMDqqxEvZo7nohZyOA
+ vO2pOlKpcfNtvZOIJhIzWeNJE4BL7JJIMeq4jxgFeOPM884h9d/wf7AFAahoEbIjS5JzCT8o5HG
+ UULztaHbaXYz4skfmKRFw746PPCw/GZuYJWVD+14CMSiq78NMPrwRrlzsp93eZlvbgNU6DTeIyo
+ H+tvcE1MFo0Tf6AUT3plc4y0ZtLFvk0q8k2HJunGg4mLoGIC5VpYCEHMxTnW7Jt5C8v8aVkST2r
+ 44iZwasr8Zh1F2JdDO6WIuy82SmXWTj9+IH+gH6b2KSzbjWj8T/7jxX4wwYM5P/zMRpTQxvLoNo
+ AuOCczfjaydBnRVstA6b/8TfMFjF7jP/CxseooF+AV//zUWxg61gOjxvi9PIxjwZ78kVhGQ==
+X-Received: by 2002:a05:7022:43a5:b0:14c:c947:6afb with SMTP id
+ a92af1059eb24-1620374e1bfmr5197609c88.15.1791404749963; 
+ Wed, 07 Oct 2026 13:25:49 -0700 (PDT)
+X-Received: by 2002:a05:7022:43a5:b0:14c:c947:6afb with SMTP id
+ a92af1059eb24-1620374e1bfmr5197572c88.15.1791404749381; 
+ Wed, 07 Oct 2026 13:25:49 -0700 (PDT)
+Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
+ [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-163020ba64bsm13718365c88.23.2026.10.07.13.25.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2026 12:50:40 -0700 (PDT)
-Message-ID: <478c0311-b31e-4d38-af65-79508fca3021@oss.qualcomm.com>
-Date: Wed, 7 Oct 2026 21:50:38 +0200
+ Wed, 07 Oct 2026 13:25:48 -0700 (PDT)
+Message-ID: <2390b3d7-6918-41e3-8532-c19de4cdd1ff@oss.qualcomm.com>
+Date: Wed, 7 Oct 2026 13:25:46 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm/hvf: Retry RAM write faults only for dirty
- logging
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Peter Xu <peterx@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- "Scott J . Goldman" <scottjgo@gmail.com>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Mark Burton <mburton@qti.qualcomm.com>, qemu-stable@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-References: <20261007093001.74476-1-philmd@oss.qualcomm.com>
- <f0c07762-c115-41a0-b713-a47bdaa1f218@rsg.ci.i.u-tokyo.ac.jp>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: Re: [PATCH 0/8] qom: pass TargetInfo to the is_available callback
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Stafford Horne <shorne@gmail.com>, qemu-arm@nongnu.org,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Darren Kenny <darren.kenny@oracle.com>
+References: <20261007115253.328-1-luoyonggang@gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
-In-Reply-To: <f0c07762-c115-41a0-b713-a47bdaa1f218@rsg.ci.i.u-tokyo.ac.jp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA3OSBTYWx0ZWRfX+A3sOx77MDF/
- N/dHw/916ssDHVYwO0L79IXYMChIDkmhbNVS0T++W1Zg+e+4bwfyfW4PW2Q/nofxkq7/YfP69Ow
- O6xJsF3oK0TJMOolhXbsqdSk3nQ3w+8=
-X-Proofpoint-GUID: nymuq7mAvl08hhK_-UExjBpL240mzhth
-X-Authority-Analysis: v=2.4 cv=PdJqFShd c=1 sm=1 tr=0 ts=6ac6a292 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=/bviTfK1dmy+WGcHzWQ0gg==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=EUspDBNiAAAA:8 a=kamiFkjBJaVRGB_CLxwA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-ORIG-GUID: nymuq7mAvl08hhK_-UExjBpL240mzhth
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA3OSBTYWx0ZWRfX+kpoTk12r7MG
- 7MNwdLaGLwRKS3HHQh5JlVEsgofskeA1RVbnn/WXPuaq0Kj+iUVvcTHjYtaKJYtXg6WjzAj3e6f
- KG5A67jT7umLR4JYZSjUB8cCtioD72BLWXuV5bDnoyzCMEPNi8yDGIZsirxxplTo0kwsGaztMnS
- 6T19ld+roxETmvOr7xUzOBK/svMRwN6rx6Pt17vGY034ioQXSUSqYLD2BHuomGd3uVhksvkWXGu
- nQXDqzMJzqFUeemGVtxW7iTeYkg8DRCDh1GPPLvl2eMhhEfu/XRhBbqzjdiKXYTz0KeSPCjBIpU
- 99wqn9fP+KaSYr231CtuPIU1Zi1lp3teEJ4CGZ/HF1s0QoYOSbQ28F/iPf2S0CkE7TVqlC0bGE1
- jqewy3IFLAPH27S2QeWNc6CEKnM5GGV7NMOyVEmBBV9OAlM32akREv6UaKMjsCH3IJ8RMx7hNIB
- R6nURp4vrfGxK4oZ3Kg==
+In-Reply-To: <20261007115253.328-1-luoyonggang@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-ORIG-GUID: CMCz_MOgFMiEeBYa2xYDVO86Yg2dPL2Z
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA4MSBTYWx0ZWRfX2Cqoupd/c6bD
+ 3ytywQJ3moPi+/6E+6Cn7rdSA3FyGvdGMzBCjfrrJccSWrcwwiemt6aeOSmxI14gMSoujDfww7S
+ 04RxtOuuTcLuLY+efZpU2pbJVehAIoU=
+X-Authority-Analysis: v=2.4 cv=H75OUOYi c=1 sm=1 tr=0 ts=6ac6aace cx=c_pps
+ a=PfFC4Oe2JQzmKTvty2cRDw==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
+ a=VwQbUJbxAAAA:8 a=20KFwNOVAAAA:8 a=W3QROBFJkTBO-5vcJEQA:9 a=QEXdDO2ut3YA:10
+ a=6Ab_bkdmUrQuMsNx7PHu:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA4MSBTYWx0ZWRfXy3KpoaIQM1o3
+ fo6KFBx/0Rt5Nm4wNIM3sxOjdphBJLFOMMvOmgfCJxm8I18LWvmTYG9slzBd1e4F0zHm4IM0A3m
+ ICuoyBaskLfhKa8/L2MJzDfYURLBNlj7j6ZNZNru9L+CMKSGMQQ/pptsxVOAnOd6GwJ/WhYeAeH
+ oi+Yc5YSYWErd51i9O/jgAoeymqFtPubUUJpubHCumYahP59ZLr7oP+ZoDD54KjRCK7ls2mzGUR
+ U4CUOmKxYq8XX0y0EaO5BlW3hVURc7nX4u+Ztj2iOfLXV+ng9rt7/YyattvTObSweLnStBif8IZ
+ bOFqLmi8ZpeNTU7A6DyZjJBGLzP63Va80T7HDP3ShxdHD/JgS+3MxgIhmQZXwJT/KDmRdG+JGjL
+ xM1jglzboBcwz7PTxDSVtnT1w750ARgFA7U8YyCV16VwILmby1/pipFjAMRU3IaZ+YlcIWG1Whg
+ OxiGrkxuLp7myJMRI7A==
+X-Proofpoint-GUID: CMCz_MOgFMiEeBYa2xYDVO86Yg2dPL2Z
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-07_06,2026-10-06_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 priorityscore=1501 phishscore=0 suspectscore=0 spamscore=0
- lowpriorityscore=0 impostorscore=0 adultscore=0 bulkscore=0 malwarescore=0
+ adultscore=0 clxscore=1015 priorityscore=1501 spamscore=0 bulkscore=0
+ malwarescore=0 phishscore=0 impostorscore=0 lowpriorityscore=0 suspectscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610070079
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610070081
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -161,123 +170,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026-10-07 16:50, Akihiko Odaki wrote:
-> On 2026/10/07 18:30, Philippe Mathieu-Daudé wrote:
->> From: Mark Burton <mburton@qti.qualcomm.com>
->>
->> Dirty-page logging handles a RAM write fault by marking the page dirty,
->> restoring write permission, and retrying the guest instruction.
->>
->> The handler also retried when the resolved RAM region had no dirty-log
->> client.  This path neither restores permission nor advances the PC, so
->> the instruction can repeatedly exit to QEMU.
->>
->> Retry only after marking the page dirty and restoring write permission.
->> Otherwise, use the existing emulation path to complete the access and
->> advance the guest PC.
+On 10/7/2026 4:47 AM, Yonggang Luo wrote:
+> This allows a combined binary to register machine types from all its targets.
+> Consequently, QMP `query-machines` can return machine entries from every
+> target, even when `none` is selected. For example, a client can query the
+> combined machine list with:
 > 
-> I can identify three cases of RAM write faults. The existing code
-> handles all three, but this patch breaks the third:
+> ```json
+> { "execute": "query-machines" }
+> ```
 > 
-> 1. The RAM is read-only. assert(!mr->readonly) trips in this case.
+> The returned list includes the registered machine classes from all linked
+> targets. This is separate from selecting a machine: with `-target none`,
+> `-M virt` reports the targets that provide `virt` instead of choosing one
+> arbitrarily:
 > 
-> 2. Dirty logging is enabled. The vCPU marks the page dirty, restores
->     write permission, and retries the write.
+> ```text
+> qemu-system -target none -M virt
+> unsupported machine type: "virt" for target "none"
+> Available for targets:
+>   aarch64
+>   arm
+> ```
+>
+
+From the long conversation on a previous thread, I thought we reached
+the conclusion that if we didn't expose any ambiguous name, then -target
+option is unnecessary, or maybe I got lost on track of this thread.
+
+https://lore.kernel.org/qemu-devel/ar_coT44h5-zJPVV@redhat.com/
+
+I'm not sure which semantic we want to have with -target none. If there
+is no ambiguous name registered, we just don't need it at all. It's a
+win-win IMHO.
+
+> It moves target_info() to a shared location so object.c can call it when
+> checking machine availability. The series also replaces QOM-based target-info
+> registration with a constructor list and passes TargetInfo to the
+> is_available callback.
 > 
-> 3. Dirty logging is enabled when the fault occurs, but another thread
->     disables it before the vCPU acquires the BQL. The vCPU then observes
->     a zero dirty-log mask. The write still needs to be retried because
->     write permission has already been restored. The existing code does
->     this correctly, but this patch falls through to emulation instead.
+> Target metadata and architecture checks are generated from the configured
+> targets, there is too much arch to write biiolperate code. doing this for easier
+> Add TargetInfo* to is_available
 > 
-> This patch is useful only if there is another case that the existing
-> code does not handle correctly. Please describe that case and preserve
-> the retry behavior in case 3.
-Thanks for the deep review.
+> The target-info API and implementation are shared, rather than compiled
+> separately for every target.
+> 
+> This series removes the per-target source files "configs/targets/*.c".
+> Their target-specific parameters are collected in a generated
+> target-info-def.c for each softmmu target. This lays the groundwork for
+> QEMU system builds in which target-info-def.c is the only target-specific
+> source file compiled for each target. Using the same filename lets
+> meson.build handle these definitions uniformly.
+> 
+> The series adds unit-test coverage for target info and multi-target builds.
+> 
+> Pierrick Bouvier (2):
+>   configs/targets: remove target info definitions
+>   target-info: rename target-info-stub.c in target-info-def.c
+> 
+> Yonggang Luo (6):
+>   target-info: rename target-info-impl.h to target-info-def.h
+>   target-info: replace QOM registration with a constructor list
+>   tests/unit: add target-info coverage for multi-target builds
+>   meson: load all target .mak files into target_mak_all
+>   target-info: Replace handwritten architecture checks with generated
+>     code
+>   qom: pass TargetInfo to is_available for later use
+> 
+>  MAINTAINERS                             |   2 +-
+>  configs/targets/aarch64-softmmu.c       |  25 ------
+>  configs/targets/arm-softmmu.c           |  25 ------
+>  configs/targets/meson.build             |   6 --
+>  configs/targets/riscv32-softmmu.c       |  24 -----
+>  configs/targets/riscv64-softmmu.c       |  24 -----
+>  hw/arm/aspeed_ast27x0-fc.c              |   2 +-
+>  hw/arm/aspeed_ast27x0_evb.c             |   4 +-
+>  hw/arm/raspi.c                          |   4 +-
+>  hw/arm/raspi4b.c                        |   2 +-
+>  hw/arm/virt.c                           |   4 +-
+>  hw/m68k/virt.c                          |   4 +-
+>  hw/or1k/virt.c                          |   2 +-
+>  include/hw/core/cpu.h                   |   2 +-
+>  include/qemu/module.h                   |   1 -
+>  include/qemu/target-info-def.h          |  88 ++++++++++++++++++
+>  include/qemu/target-info-impl.h         |  42 ---------
+>  include/qemu/target-info-init.h         |  53 -----------
+>  include/qemu/target-info-qom.h          |  31 -------
+>  include/qemu/target-info.h              |  87 ++++--------------
+>  include/qom/object.h                    |  12 ++-
+>  meson.build                             |  52 ++++++++---
+>  page-vary-common.c                      |   2 +-
+>  page-vary-system.c                      |   2 +-
+>  qom/object.c                            |   3 +-
+>  scripts/gen-target-info.py              |  99 ++++++++++++++++++++
+>  system/vl.c                             |   4 -
+>  target-info-stub.c => target-info-def.c |   3 +-
+>  target-info-qom.c                       |  60 -------------
+>  target-info.c                           | 115 ++++++++++++------------
+>  tests/qtest/fuzz/fuzz.c                 |   3 -
+>  tests/unit/meson.build                  |   4 +
+>  tests/unit/test-multi-target.c          |  12 +--
+>  tests/unit/test-target-info.c           |  38 ++++++++
+>  34 files changed, 379 insertions(+), 462 deletions(-)
+>  delete mode 100644 configs/targets/aarch64-softmmu.c
+>  delete mode 100644 configs/targets/arm-softmmu.c
+>  delete mode 100644 configs/targets/meson.build
+>  delete mode 100644 configs/targets/riscv32-softmmu.c
+>  delete mode 100644 configs/targets/riscv64-softmmu.c
+>  create mode 100644 include/qemu/target-info-def.h
+>  delete mode 100644 include/qemu/target-info-impl.h
+>  delete mode 100644 include/qemu/target-info-init.h
+>  delete mode 100644 include/qemu/target-info-qom.h
+>  create mode 100644 scripts/gen-target-info.py
+>  rename target-info-stub.c => target-info-def.c (94%)
+>  delete mode 100644 target-info-qom.c
+>  create mode 100644 tests/unit/test-target-info.c
+> 
 
-The reporter said:
-
-   We reproduced is a level-2 translation fault, DFSC 0x06, on a
-   dynamic DMI RAM leaf that has no corresponding HVF mapping.
-   address_space_translate() resolves the leaf as RAM, but the dirty-log
-   mask is zero, no page is marked or unprotected, and the unconditional
-   retry makes no progress.
-
-That would be another case:
-
-   4. FlatView says RAM, but HVF has no mapping (nothing has changed
-      to make retry succeed).
-
-So to prevent retrying a known translation miss that cannot make any
-progress checking DFSC could be sufficient:
-
--- >8 --
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index b00a7e1a84..4faa21caa1 100644
-      case EC_DATAABORT: {
-          bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
-          bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
-          bool s1ptw = FIELD_EX32(syndrome, DABORT_ISS, S1PTW);
-          bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
-          uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
-          uint32_t len = 1 << sas;
-          uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
-          uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
-+        uint32_t fsc = FIELD_EX32(syndrome, DABORT_ISS, DFSC);
-+        bool l2_translation_fault = fsc == 0b000110;
-          uint64_t val = 0;
-          uint64_t ipa = excp->physical_address;
-          AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
-
-          trace_hvf_data_abort(excp->virtual_address, ipa, isv,
-                               iswrite, s1ptw, len, srt);
-
-          if (cm) {
-              /* We don't cache MMIO regions */
-              advance_pc = true;
-              break;
-          }
-
-          /* Handle dirty page logging for ram. */
-          if (iswrite) {
-              hwaddr xlat;
-              MemoryRegion *mr = address_space_translate(as, ipa, &xlat,
-                                                         NULL, true,
-  
-MEMTXATTRS_UNSPECIFIED);
--            if (memory_region_is_ram(mr)) {
-+            if (memory_region_is_ram(mr) && !s1ptw && 
-!l2_translation_fault) {
-                  uintptr_t page_size = qemu_real_host_page_size();
-                  intptr_t page_mask = -(intptr_t)page_size;
-                  uint64_t ipa_page = ipa & page_mask;
-
-                  /* TODO: Inject exception to the guest. */
-                  assert(!mr->readonly);
-
-                  if (memory_region_get_dirty_log_mask(mr)) {
-                      memory_region_set_dirty(mr, xlat, page_size);
-                      hvf_unprotect_dirty_range(ipa_page, page_size);
-                  }
-
-                  /* Retry with page writes enabled. */
-                  break;
-              }
-          }
-
-          /*
-           * TODO: If s1ptw, this is an error in the guest os page tables.
-           * Inject the exception into the guest.
-           */
-          assert(!s1ptw);
----
-(the !s1ptw guard is independent of the zero-mask race,
-  this is to ensure we cannot accidentally take the dirty-log retry
-  path when the page-table memory is RAM).
-
-But be wary because I'm way out of area of understanding here...
-
-Anyway I asked the reporter for more info and possible reproducer;
-and might add comments to the code to better follow the 1/2/3/4 paths.
-But after some sleep :)
 

@@ -4,99 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6E4ACA5FFC
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 12:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4CFBCA5FFC
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 13:09:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xER9L-0001v5-Ka; Wed, 07 Oct 2026 08:53:35 -0400
+	id 1xERO7-0005vv-5n; Wed, 07 Oct 2026 09:08:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xER9G-0001tK-NN
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:53:31 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xER9F-0006mb-3H
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:53:30 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-8ac9d666d4eso40290607b3.3
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 05:53:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791377607; cv=none;
- d=google.com; s=arc-20260327;
- b=UV04h841mfF8Jl6/M4y7h50bM7//fOLIglExnlqCCHpzqX1lmrhEYnTmoABQoLZVR0
- VzeBEckj8JtOC6/dTNMKYpUA1/agUufiVycifN+QXOibQQGcg7Nemb/DFKVyVSybD8A3
- fLj7g6+1yG0z681vnXVK9GPy27quLd0IEU200l8UmJZNRuBxQW7HTOzF/2tnfUpHhSI2
- UUFpnWyLIESDGD8lqE3NSERFNJeTFHe7sNaF5DNiRJyGWAP/oOJahKmrUdX6vPYEX2/x
- dWgMzoLbydLzRAvySW0jHuzdmTTb2dlWYVA66ECTDZzVrurT+1qiFqJ0GeNFtvkLy+iM
- eI7w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :dkim-signature;
- bh=AofFlWPWOabpA9EhCWh1GV/m9w1x1lBYtBymb1woM/8=;
- fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
- b=FX/eCKKdjrUw/oD+bP2FJ9dPG9Nj6IUMhU/V2XG6TY35LcouXi/Zj0fc2fPzYrG0Yo
- sNHKhv3+LTbLPYac+PD7B3xkg4UaHV+sovJ4ZqniJhFt+BCE1s75cCvVg9HX6JBb8EBw
- uNQEa+o+3/uRnMpTBu05F5P5DQBXdarcubuf1NnTG4883Que+9oqn2IoYDvcP+oh8EUT
- PVtImRSw63GrnOgOaeEDYU6pKVDTzLXIuAZ2yja6Pxt8yTYf6PEkQr+/lWhN4/sULf4m
- rer1QuMcRSFtq0wlp0zaoehZ2++uO76XfcvubCjwyl7pU10b3mlDaRAoJ8tka+eTiz8H
- 0xzQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791377607; x=1791982407; darn=nongnu.org;
- h=content-type:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=AofFlWPWOabpA9EhCWh1GV/m9w1x1lBYtBymb1woM/8=;
- b=IOzQc411rcElURkq6S04qnC/urxrwUY0DFdEZ6/tisiZxvMiWgy2JjTJfc/zXDkZLN
- cRnjxpg1xzBfmz2XDNZTqZi9jwCwjCdvHLIbGePVN1DypQe43N7hxMwgALptfo10qaiq
- C6TZZWVHKqkgouDvRCm3W19bckuML6+BRQYPZfHbuRxFjV/PdSzwsGdspr6mtTz0kpCb
- /KJnqeDa8DPxXt70IkpiPXZzGLQG2ghlb09Fra05kTBHKH3Jb1XPlTLeAHlpkIoAPwQn
- 6jWP5vmKWh0KO3N8oAr4PYE6EC6IvMVthFf8/G4ONo7u7pw8pAE8USDKXtipnlLX7t5C
- LPyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791377607; x=1791982407;
- h=content-type:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=AofFlWPWOabpA9EhCWh1GV/m9w1x1lBYtBymb1woM/8=;
- b=Gwa3WxAK0wpUai0NwrjWDqT1yramyJUhdua0lc72Qd7dxCOtoWSRlYGZ7vr9bV9dfX
- v5wemctbi0qEMrV0qhXmo8roHUHGn16/6tIWYBWbTZprY479g756MU3cdkuQUKEtqUE1
- tsPodr8HR9HNJF0Fh+FKer0ul9xJ0W9psgFyG5EpZ9GsrCOvamJHfgJCWsT0A1NtU/Fx
- j1QCTdLLxLdEYYMEC4BOWpDvkDJbp5AJ3PTT8DDb7Mc9uSHANwyHJiyU0TjXL4WyswWc
- S5FoY2ng+HMiaUsgjLTlVzy4pB9E8eAIpyQHh4+IUzeJy7Zn0HC8WVG8N2jr7iPDsfCf
- IMSQ==
-X-Gm-Message-State: AFq9FYKsMamMw5sTzp6hJUdsI0EpbP64iB8FsboO5ko+ZwvzK1YtzKY9
- mKDD7Qk+X/Ikbm3SiZlsnHdMEohlp3X1YlwcP0AEhY77MxMhsubDB/JT2iJrurFP7tKA3U93R9Y
- XY09/6EU2qNiuY0rGNiKCkIfgJISwFN+Jby4rsb22yOqYDoO4KfCP3e8=
-X-Gm-Gg: AYBFou0CeQGRaXdy1VvXYfWqh+ehYxgoO+NNijUDKIXdZP4T6XQGmHn+ZsyakA4q60Z
- hi5y2AfNhmJEIR75S5tmc2MWmFlfWEWlDanSRiQ/Gq6EE1/vnxLLqlCKQB92dYhoZasd9j38KZ8
- roXm7xzYwih3EBr/0IbE0wzlNfyCNCc7PNwW+ft64UAkWSwpvPPXZH9O3PA09x5p+BZqkTvxsCc
- NgnxWVX50T+cXH4kzms+2dIe1VWoYps46Qn9uyQZpUUic161OAoJtH773L5l8RIqqMwWZtry2PI
- XGnKDZbauoLO1stIwlkf2wMOCDwT/LcZpe5fx0nUbike+wrdkWHmknx6cRv2st5TAU3P33Ah5Mt
- Nvrv8eSTJsx81+kEwbAk5VxHj2Z6CdY/QyW/3jzs=
-X-Received: by 2002:a05:690c:e1d7:20b0:8a8:31af:381 with SMTP id
- 00721157ae682-8b05b16abb0mr11024357b3.83.1791377606335; Wed, 07 Oct 2026
- 05:53:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xERO1-0005vD-4H
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 09:08:46 -0400
+Received: from smtpout8.mo536.mail-out.ovh.net ([51.210.91.17])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xERNw-0008GO-Fi
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 09:08:43 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [79.137.60.223])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4j0D2q70fGz88R6;
+ Wed,  7 Oct 2026 13:08:35 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Wed,  7 Oct 2026 13:08:35 +0000 (UTC)
+Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.164.42])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4j0D2q317Dz1xrl; Wed,  7 Oct 2026 13:08:35 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
+ (Authenticated sender: clg@kaod.org)
+ by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 842651922C58; Wed,  7 Oct 2026 13:08:33 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G00607362911-8fae-4702-af6c-f2f90f0a929a,
+ 55F3741E86F82430FE8C443D65E56F6716F373F4) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 92.184.136.188
+Message-ID: <23d822c9-4c74-4e34-af38-237416cee439@kaod.org>
+Date: Wed, 7 Oct 2026 15:08:32 +0200
 MIME-Version: 1.0
-References: <20260914160020.327787-1-peter.maydell@linaro.org>
-In-Reply-To: <20260914160020.327787-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Oct 2026 13:53:14 +0100
-X-Gm-Features: AclHuK_bDTVMLk95Gy2HReWHRreUgHG3wWfY7M2VVSikSFCOYrFjuchpQM5v_tM
-Message-ID: <CAFEAcA_30Oq5e7U2+GKeE1YGF2F5hp8avDo6tJaAs3aLeD+_iA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/9] hw/intc/arm_gicv5: Minor fixes and cleanups
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] tests/functional/aarch64/test_aspeed_ast2700a2:
+ Add I2C test for IO expander 1
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20261005020428.3496039-1-jamin_lin@aspeedtech.com>
+ <20261005020428.3496039-3-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20261005020428.3496039-3-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 4923278821287767051
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGv9ncUogrE83oDH/5+N52iY1GKGKIZUSmnfpDcBTyw7FvZ2Ip7+Fp0ewWo2k73W0Ab+6ir9POEQaAkNIVN0oHxd3wU1U9CvO87uGFn+Fp/C89ZjzcbMW5uU9ylRrVP3f50vUOIdq868aXHkI45bsledf7oDl61+54gH6/WeYaUBrdKHlaoVLneIn3HukAVB83a33lk1+DVDkasQ0JlNZ7FSlBFZeCSllQfF6Fh0y8sU5EvAeZRUk4cV0jBYFvUnrp9HX2I5so/QY5KeqsgqZpV+oJwfyLnUe1AniYT+MPi2jVaLPpawttPnWkdAJISCZOKFJoWjDTerUv5OeJjnt/CNNl+xivLbAocz8LCqQNI5zYi6LvtFBcCpuOE4v3YylpN3ZJy9Wwk4O/LSNOtILkKng0k41RUpOEEPo5IMJSH/p+ifQdmqwPdHqqjjdYfGmM1lSl9P3ve9s14Ln9Re53ehGOgAbFLNFH9xRBJELtpX3SW328uv9HgfRg3mKL7ZuhmCjdIJKatgYvOHcclvXQHIZIwaYF52afDLkLoclMdZ5ItIrLzFlx/BbOVPEjIm3Tt+H1HSJ1JVfl14dezSKHdTGjN4QYeoJOdzRYV+O8IuRaJKnHWf7mPXDu6jtaUfHuQPJ9DtPiJxn+qd+MrVGIFz9bbH3CCVN0BHu+CNOUDTQ
+DKIM-Signature: a=rsa-sha256; bh=SV0MTsx7G7yOApnYx1aE0y7EEVL0SEvBEZ7p/p5ON/Q=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1791378517; v=1;
+ b=uHGXbzMoZe2IXQjKwXTHRohhqomRR738k9rjKkzw+2quAhMfxJgqc82Hit/OkAmPLhBV5Xjz
+ UyuhOX7W9VTqmkf72x8r0PLllJRhndai5XyeAvk29U8I3J5Ntfl8/WUuLXx5VgJL111CF/b2bTc
+ 8fCKjpPKPnoVWmXBExjCTmLU0s2UEigYMG5jjScRWyqG4/dbO9NF8XlyzCCBRUEswl0sNX4IwOb
+ /EM/xRNI0WDrar9zTqvfVNKOpXRMEXy+X5V/VGZ2+NDOMUtzLoXjFlJ7eX9Yk6LCRLLp8AQpg+/
+ V1NdVmRO2Rv9FmfB4s2R6eL8ND9+NUN4Lj2D6M/YuAr4w==
+Received-SPF: pass client-ip=51.210.91.17; envelope-from=clg@kaod.org;
+ helo=smtpout8.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,64 +135,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Ping for patch review on this series?
+On 10/5/26 04:04, Jamin Lin wrote:
+> The IO expander test only checks the I2C bus of IO expander 0. The I2C
+> buses of IO expander 1 are not tested, so a wrong interrupt wiring for
+> IO expander 1 can not be detected.
+> 
+> Add a TMP105 device on the first I2C bus of IO expander 1 and check that
+> it can be read from firmware.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   tests/functional/aarch64/test_aspeed_ast2700a2.py | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/tests/functional/aarch64/test_aspeed_ast2700a2.py b/tests/functional/aarch64/test_aspeed_ast2700a2.py
+> index 01c7c4fdbe..74ef93fc0d 100755
+> --- a/tests/functional/aarch64/test_aspeed_ast2700a2.py
+> +++ b/tests/functional/aarch64/test_aspeed_ast2700a2.py
+> @@ -196,10 +196,13 @@ def test_aarch64_ast2700a2_evb_ioexp_v11_03(self):
+>           self.vm.set_machine('ast2700a2-evb,fmc-model=w25q512jv')
+>           self.vm.add_args('-device',
+>                            'tmp105,bus=ioexp0.0,address=0x4d,id=tmp-test-16')
+> +        self.vm.add_args('-device',
+> +                         'tmp105,bus=ioexp1.0,address=0x4d,id=tmp-test-32')
+>           self.start_ast2700_test('ast2700-dcscm-image', 8)
+>           self.verify_openbmc_boot_and_login('ast2700-dcscm', False)
+>           self.do_ast2700_i2c_test(8)
+>           self.do_ast2700_i2c_test(16)
+> +        self.do_ast2700_i2c_test(32)
+>   
+>   if __name__ == '__main__':
+>       QemuSystemTest.main()
 
-thanks
--- PMM
 
-On Mon, 14 Sept 2026 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> This patchset is a compilation of minor fixes and cleanups to the
-> GICv5 code that I found in the course of implementing virtualization
-> support:
->
->  * Various in-memory data structures are defined to be aligned to
->    their size, even if the guest provides a base address that is less
->    aligned
->  * We had some extra blank lines that didn't match the style in the
->    rest of the file
->  * We were unnecessarily extracting a bit from a raw register value
->    when we already had it cached as a boolean in a struct
->  * We weren't tidying up our allocated memory on finalize
->  * We can re-use arm_cpu_set_irq() rather than implementing the
->    set/clear IRQ/FIQ/NMI locally. (This doesn't matter much for these,
->    but VIRQ/VFIQ/VINMI have more complex logic in arm_cpu_set_irq()
->    that we don't want to have to duplicate.)
->  * Now we have a 'max-v9' we can clean up how we deal with the GICv5
->    needing a v9 CPU
->  * having the cpuif identify itself by IAFFID and the IRS do an
->    IAFFID->cpu index lookup is unnecessarily clunky
->
-> Changes v1->v2:
->  * fixed the lack of ~ in masking calcs in patches 1 and 2
->  * patches 7-10 are new
->
-> Only patch 3 here has been reviewed.
->
-> thanks
-> -- PMM
->
-> Peter Maydell (9):
->   hw/intc/arm_gicv5: Ignore low bits in IRS_IST_BASER.ADDR
->   hw/intc/arm_gicv5: Ignore low bits in L1_ISTE.L2_ADDR
->   hw/intc/arm_gicv5: Regularize spacing in config_readl() switch
->   hw/intc/arm_gicv5: Use cached IRS_IST_BASER.VALID state
->   hw/intc/arm_gicv5: Free memory in finalize
->   target/arm: GICv5 cpuif: Use arm_cpu_set_irq() to set IRQ/FIQ status
->   target/arm: Only allow GICv5 on CPUs without AArch32 at EL1..3
->   hw/intc/arm_gicv5: Pass CPU index to CPU interface
->   hw/intc/arm_gicv5: Pass cpuidx rather than iaffid in gicv5_get_hppi()
->
->  hw/intc/arm_gicv5.c                | 72 +++++++++++++++++++++---------
->  hw/intc/arm_gicv5_common.c         |  5 ++-
->  include/hw/intc/arm_gicv5.h        |  1 +
->  include/hw/intc/arm_gicv5_stream.h | 10 +++--
->  target/arm/cpu-features.h          |  8 ++++
->  target/arm/cpu.c                   | 61 ++++++++++---------------
->  target/arm/cpu.h                   | 10 +++--
->  target/arm/internals.h             | 14 ++++++
->  target/arm/tcg/gicv5-cpuif.c       | 41 +++--------------
->  9 files changed, 120 insertions(+), 102 deletions(-)
->
-> --
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
 

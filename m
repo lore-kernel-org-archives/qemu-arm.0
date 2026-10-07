@@ -4,141 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954E9CA5FF1
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 13:20:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D631CCA5FF1
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 13:23:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xERZb-0000L0-NO; Wed, 07 Oct 2026 09:20:43 -0400
+	id 1xERcW-0000pH-I9; Wed, 07 Oct 2026 09:23:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xERZV-0000KV-8v
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 09:20:37 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xERZT-0001Bs-EV
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 09:20:37 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 697BV9wO3687353
- for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 13:20:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 3bAUurAMjdd9838yiMUYqDq5XOtd1Xca72ydMvrK1fc=; b=GCnxw9codYajiqoS
- 2dsD1I+cI9mvuZm61QtuCldono/qx9iFA9JaN4o8GhS163AtE2ksCDPqRe+blcU9
- OLuuyELRJRdwt7/dbpt6ti9h+Pk0So/rzOAfW6Cuy2maXCSv0UKUolJxkr1sEaW+
- 3rDzMqZqDVvx2Rw+RivocgPk1lXEyW5QA+vh2Y3WA1Hb1POQzZwDDctZOMMv27NQ
- IeXAN3dJa7fBM/50g6VZdIyT4eRG19atF3hEnC90CTEwm69tIm8bYHhDdHKHOxik
- GNGO6WHMQ5rtErmi/IyQD2q6p5BVR5y6czJJQOol2plM+mbesjspdV3WvE1fYDYP
- ocbUDg==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5mgr8k2m-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 13:20:32 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-93caa0ce0cdso500221985a.2
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 06:20:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xERcU-0000oq-Aj
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 09:23:42 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xERcS-0001QG-It
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 09:23:42 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-8ac4806e210so20263707b3.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 06:23:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791379419; cv=none;
+ d=google.com; s=arc-20260327;
+ b=a+40TG2pf4J3AMfI2sBt181Sr7cjymUwctH39GrmlagWcRWzRvxKZ2Eh6WJBFwFzCk
+ kEXPfpEs9yMnZJGbf9uotGvp+TIoaJPMNCcg9YrUFl15nMw5BjUk7MX5IGJf2m43HLE4
+ WfoGqczPE9x3Sk8LPfhTsUmY6rFqmeZkD5PPyzmuoZ+YcjObiWDB20yJFa6E8GobjPDP
+ upRyo5SKDZtd5OV8Q06CBMwxDtfQJoAiNgL4uH2hBOHFu7kgcnJK/+sKCrnw+Y4ypc7N
+ 3L8Hc0yq3npkJBVjIKNveybQONd8xtF00rhPmu/56IuwzUDNK1+SWgvKQ/PCqYgXAg1/
+ swQw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=aUJ5IAi2AORpFFqWJB4T93SJdjQ02ynmxKXHuvOmbQA=;
+ fh=s/2JdFTEIGAOxG0YOFMn8uoGxh7bYRdp4o3zw/ff+C0=;
+ b=actScFBhP8FgMWhQdfSozBWjM02diUAYv6xdhGCEWwMD9TdVPvlcVMmzEkCQJofNPQ
+ N5oPopRAXjNc39n4zd1lysA35dFWobdc6i3VR1qG0Hy4dSFYRXA6QJ1BKGRABjb0KjQe
+ 6/jwNFhCQPqSwm3gC2U1jKPTOym8AFn+PDy+evjAluCmKkNi+7dpWzIPHwB4IU1ywqru
+ evCNEr6u2LnJuei4ae37IyZAeYSW1yRgqUHheHM2npLoKhjZY7JZEV2WMnu8dXqsRlrD
+ pL6yrjcJuhlxWJ0c7zW0Bjm1HxDnUDPbY/fVoZ/I5EdiT/obvvdNVGLVB0E6H981t+pN
+ XvXg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791379232; x=1791984032; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=3bAUurAMjdd9838yiMUYqDq5XOtd1Xca72ydMvrK1fc=;
- b=JYKEB2stc9CKAjv/EdYUqcRWm8gQbik388o/6jPOouCAbmKCRECl+WGtkC9QE5hnQ8
- 8sd/xQ21Xrt72WXmngCVpozGxy+yggepEYzoOJCdCdCKi9LzsmeV6NYJHP4YdPDNZ58s
- Sv2ELFR40Ze2ytkN5X6621MudJmXXqJUjI16+GftNZogbuPBHpOAEENUCAXuoRCW0uBX
- 5gzHpFbtMBwEAW22CbcYOxlrWWdQjRfYL9Htpi9cp7nrKUn1GBlOhqOEqEnGfKEp5zQC
- H5PnG7cxS7DruWhocNIO7yIUVBTQ+NiUGsRzC6pbhUhGXrquk5RCuVt5Eeg+HEQeD6rj
- 0chw==
+ d=gmail.com; s=20251104; t=1791379419; x=1791984219; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=aUJ5IAi2AORpFFqWJB4T93SJdjQ02ynmxKXHuvOmbQA=;
+ b=IkyKbsZQZ3r6zzG60INtYB1JNJlF4JitkPdzN8JlhvVKn87Ws9cLQ/BWbt1YHJLcgo
+ j5+MaUyMSUnQK2S0TaFlqvrqV5nu0oTYJPNYir9ikFnVdPemexQAYIb+K2Ko/0qgdzBa
+ AmVx2PiUkUjkR8VOu2sJORlsDbuD2jMLuD/Ia5VRfMV39SOd8JYzezpdvwQ820JXegqd
+ QIedai6hovLR2ZkMa9pafD0a+r1rq6ugtx+Sj9Xu+EIxNUPUnfPpxHHEotbWbLS/YoW0
+ YVKQbea4qsP+43D78bwqk2UcXEv/9lZV05xbWcrlWZL3rcFWk0kxKtj/1stPbM73kZHY
+ NTxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791379232; x=1791984032;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=3bAUurAMjdd9838yiMUYqDq5XOtd1Xca72ydMvrK1fc=;
- b=gak3crk70sabozDkQulQS6C7zZQ1OaxG5HLpACMoFpfDJqahN4clmCME/ONwOR2sBk
- 8dsbFLiKEnNotboiQyWK71nBNdOxzKP2AKzQp6OSZg9LhAOlFqyIDvSVK3glYGGifi/U
- 03v6J7Un7c/Ts3hG0xUGocQv1ARHVJGVs2D4sFAcpEHZxCEPpKKf0VieQr0tQtaeXifI
- fLsZjbTQbLALDEjX3gMXYDE+zl8QL7lzOmKbDmQ3TPMPhtpC4YMrFbrvE3J8DlGEpkL2
- d9+vOF2/AIJgth3/IjG9l4+Sw6veQesYD1TNvinIq6d2OFPMRwhIiF0G5WEPyVdc4OIJ
- eSmw==
+ d=1e100.net; s=20260707; t=1791379419; x=1791984219;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=aUJ5IAi2AORpFFqWJB4T93SJdjQ02ynmxKXHuvOmbQA=;
+ b=QtClk518tVYCriDE8q1pN0FpdwS5NDFsMUB4hayV3UOoh8a7dDYjjBQ194Benh6T1U
+ 3RGOEr+bM6QRkNMNiEIeLM8AWKPD7H1HxIi9mwN3nN/j5ZD/rUGAnno6btGh99Tbp8mj
+ TemtGXpIy3ywPJZLJoLfhhmP1OboqBiguCOhFS2/6mSH7F2mim3c6rwCbAeWnUEIpgt8
+ ZLSkqYvCE9icGGVwMLUDZM5ze550OQQJ2YjY0cQVyByBNKHPOPTQxnHi6mZ2Tbg0aWeD
+ V7lBg782d8yTbXlhREZpQ84fHy4wTexKaskeFEZlpjN0IgC6eolmnvgy4A1xVg3bvk7U
+ KghQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwuFST1pH5RnGAijj3s3xw+afMc30nRcP/bij5MfxOcb4G3Ie2InEHScT3Wl+/oph2zQKxXO0HY8Q==@nongnu.org
-X-Gm-Message-State: AFuF++m5cHB/oHla/tAKj2BKXWaXgnMnnKIO2xql0WdDIIjSxAtV/cr4
- vE81H2VALiTff9NkXFCQRce33y7dFbu7a4NoXwRb2VdkiIET0Pkf6MBNHqSfCLUgI3hiG4N21jT
- slRUyGdjZanqIz+hbVrG37t7FuPu0LUDCYOBDwVkkIMt1D6a4tUhKbCg=
-X-Gm-Gg: AYBFou2OIqLW7RZHlT9lQFJ9Zc61MeuBk37si0/rlswN35coc35+XPIq+ZRtlWNiDYg
- qxrEynRrkW8c2h7QOTZv81tl64k95jLayHfAZVfCnIxktrX9eWTdqNt7ig+FGSSupj1V471MImE
- 6PxvzvfQj/tp7m3LrcJxnS40s4pRQ436lijyVQj6N1IWc5fSyJE4Isyg0MS/jXDl85FDKZKU4Fz
- JZfpNe14MPwkFCLlEOHK/wZXenqlBR73Qj+esoJMDZbHajdvpjan8mhjRCLV0ODV+ChLMcB5Ptr
- e17/RovoW6u5KDWXGzkH5FOLssyU/6U/HIIawJ+3ZX2ndvtfZ/BjkAaj2T7GpVMtYnjYdoErnlB
- vgZlrS+oFeYRbcyL24grDmSiYkiOl9CP6xg==
-X-Received: by 2002:a05:620a:27cd:b0:93d:78e0:30b2 with SMTP id
- af79cd13be357-93e9b721dd7mr451683285a.29.1791379231330; 
- Wed, 07 Oct 2026 06:20:31 -0700 (PDT)
-X-Received: by 2002:a05:620a:27cd:b0:93d:78e0:30b2 with SMTP id
- af79cd13be357-93e9b721dd7mr451677985a.29.1791379230783; 
- Wed, 07 Oct 2026 06:20:30 -0700 (PDT)
-Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a17a0fc2e4sm149808745e9.3.2026.10.07.06.20.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2026 06:20:30 -0700 (PDT)
-Message-ID: <79f974bd-dcda-42cf-be57-6360f796ab0d@oss.qualcomm.com>
-Date: Wed, 7 Oct 2026 15:20:29 +0200
+ AKwUvByRTey+Y7E6Wop3n1is66wmp1eHtHs2VNLx4P+wh5Lc2iJrvDrEO+PyjfX3rVPVg+leBsiBA+Un5Q==@nongnu.org
+X-Gm-Message-State: AFq9FYIBopOI/B57i0wQ07e/9A9S269lcXQeAdqsPS2b6TWRMWzTG1vR
+ 6uiUgKYCUX4LDHcf4KvCCpLoTVLmoWSX5sfJFzsARzZOmvPf1xyFgyAithA7/kMxd6VpHwx/pYJ
+ 3xDWxrfS7WbCfnjy9WSPQCPAQlSD0Q7M=
+X-Gm-Gg: AYBFou09RPvANQE0zkwQUT+Oodf4jBhaEiToSIDtoVMbkP9nOjNziGcGNQh0znRT+GU
+ UQTOSXnoLZacV/HJNjLJdifCkD8yDz/aJyEtzhhRLjR+gA2epc7iuH97yLl/qDUF3Rdj7NAiTkl
+ 993aD98SIEkIdDk2cO7d0VCYheaBnSPzdBkHVkTTNDqfYLF9LiztxQdYNNCVjH8gCWwW/BA5vzl
+ 7Oh9sCHWmGtVFuC5eZWaUp6QdeXIKwp+r7HpgwqbWYlkhSDE9VPljUuWUrZOQHgkYmwie5sMdnl
+ mL2jgdW/AmEf2mSyk61TCgpNvvthNbnXReJbkV7IFIZCOFwong4SRxU4V1dqT6VqdnAZLo8qVvT
+ XNQ==
+X-Received: by 2002:a05:690c:580c:b0:887:f4fc:ee35 with SMTP id
+ 00721157ae682-8b05b01c556mr14046337b3.19.1791379418877; Wed, 07 Oct 2026
+ 06:23:38 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 6/9] target/arm: GICv5 cpuif: Use arm_cpu_set_irq() to
- set IRQ/FIQ status
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20260914160020.327787-1-peter.maydell@linaro.org>
- <20260914160020.327787-7-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260914160020.327787-7-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA1MyBTYWx0ZWRfX9eHygjxzBePY
- 1ZAi6wVpd6K1d4TTN1Ko3h9vLO01ExYFOH8lqYh35MXHUdcull5cA/+HSgxQfPlSafkpy/W4Def
- svZZgMSlpSElDodBtpZp+G4GqdcbeTYst9FWG90J77FQ0R9ZqAW2lkQpYLcVyXQ37v5HDGloJke
- UFmNfxJTfp29Qg2hRwZuHpgQ58f7Z8Ao6PnXN+2G03LqAK91TWB5BNiYS5bsdRAKDxZD5WQG0N5
- xfpO0BfoS/taWDmz580K57t3xXnIO8JygnOfQx5XTo0aXPLRsJU222ppxBwjJCG8JcrqtOr9abS
- k767fPHalxcGbweMT6gAXZVwDA1hNTLmK7A26wzWv2ONPHs0HjccsEHooOV6sZ8h/divEbUlLGi
- Dl31ijiOqI2Pa/ge/COqZCE7txbvGH8xgaa0SnJwep1dRUHqI4NzwZzlGdllgPCEtdaLwAUClNx
- I4kyZ70eby187aMM6dA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA1MyBTYWx0ZWRfX65tBVTKNrpzX
- /fUYDbbJqQzydsB2/h2/OonUcswjWBUfrhm90eWqviRa5S5mZjp13hdp41VKW1ThMKpWjU2Iz8q
- E6wCPHR4r35R5CcPBhL1tD2fhizsADo=
-X-Proofpoint-ORIG-GUID: hErM-iG3O2ZMMeJBG8J4dkFH2Hh1PpKt
-X-Proofpoint-GUID: hErM-iG3O2ZMMeJBG8J4dkFH2Hh1PpKt
-X-Authority-Analysis: v=2.4 cv=OYkNnRTY c=1 sm=1 tr=0 ts=6ac64720 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=s5kuZBEdcB38ouE1BJ8A:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-07_04,2026-10-06_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 lowpriorityscore=0 clxscore=1015 spamscore=0 phishscore=0
- bulkscore=0 suspectscore=0 malwarescore=0 priorityscore=1501 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610070053
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20261004090500.3082641-1-bin.meng@processmission.com>
+ <20261004090500.3082641-2-bin.meng@processmission.com>
+ <CAFEAcA_U-Aoo1MmvAm61_HxhbA+1A-YX1g+oh=1THsi9QKBeOg@mail.gmail.com>
+ <CAEUhbmWxS3XRfP4-Uj8MuMoeBb05YCyhHAzJc+_My6kj7L_qKA@mail.gmail.com>
+ <CAFEAcA_KfCt-K3jb1+AzM74FH7x_ZfuzT7puJ4S=-p_C8SCQVQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_KfCt-K3jb1+AzM74FH7x_ZfuzT7puJ4S=-p_C8SCQVQ@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Wed, 7 Oct 2026 21:23:27 +0800
+X-Gm-Features: AclHuK9ExQ-5XxgAgrc_en-t6L4XHk2apzH6Qu_YUppIP-yU8ZmcSAQyzMqYCP8
+Message-ID: <CAEUhbmVm=8Q5Q+yPnKtPEqUcHC5zk6JhopF-Q5nNGcz4tSki=Q@mail.gmail.com>
+Subject: Re: [PATCH v3 01/10] hw/cpu: a15mpcore: Model the reserved page as
+ RAZ/WI
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
+ qemu-arm@nongnu.org, Tom Rini <trini@konsulko.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x1129.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -155,32 +125,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 14/9/26 18:00, Peter Maydell wrote:
-> Currently the GICv5 cpu interface directly calls cpu_interrupt() and
-> cpu_reset_interrupt() to raise and lower IRQ and FIQ.  This is almost
-> but not exactly what we do for GICv2/GICv3 external GPIO IRQ/FIQ line
-> changes.  Those are handled by arm_cpu_set_irq(), and as well as
-> calling cpu_interrupt() or cpu_reset_interrupt() they also update
-> env->irq_line_state.
-> 
-> For IRQ and FIQ it doesn't matter whether we set and clear the bits
-> in irq_line_state, because nothing looks at them.  But for VIRQ and
-> VFIQ it will matter, because VIRQ and VFIQ are the logical OR of the
-> line state and some bits in HCR_EL2.  We're going to need to call
-> arm_cpu_set_irq() for VIRQ and VFIQ; for consistency, handle IRQ and
-> FIQ that way too.
-> 
-> Since arm_cpu_set_irq() is now a function called from other parts of
-> the CPU code, we make its first argument a properly typed one, with a
-> wrapper taking void* for when we need to use it as a
-> qemu_irq_handler.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/cpu.c             | 14 +++++++++++---
->   target/arm/internals.h       | 14 ++++++++++++++
->   target/arm/tcg/gicv5-cpuif.c | 35 ++++-------------------------------
->   3 files changed, 29 insertions(+), 34 deletions(-)
+On Wed, Oct 7, 2026 at 8:49=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
+org> wrote:
+>
+> On Wed, 7 Oct 2026 at 11:09, Bin Meng <bmeng.cn@gmail.com> wrote:
+> >
+> > Hi Peter,
+> >
+> > On Wed, Oct 7, 2026 at 4:41=E2=80=AFPM Peter Maydell <peter.maydell@lin=
+aro.org> wrote:
+> > >
+> > > On Sun, 4 Oct 2026 at 10:05, Bin Meng <bin.meng@processmission.com> w=
+rote:
+> > > >
+> > > > U-Boot's shared i.MX6 identification code reads PERIPHBASE + 0x4 on
+> > > > MCIMX6UL-EVK. The first private peripheral page is currently unmapp=
+ed,
+> > > > so that access causes a data abort before the console is ready.
+> > > >
+> > > > The GIC-400 register map reserves offsets 0x0000 through 0x0fff and
+> > > > specifies read-as-zero, write-ignored accesses to reserved location=
+s.
+> > > > Model that page in the private peripheral device.
+> > > >
+> > > > Reference: GIC-400 TRM (ARM DDI 0471B), sections 3.1 and 3.2
+> > > > https://documentation-service.arm.com/static/5e8f15e27100066a414f74=
+24
+> > >
+> > > The Cortex-A15's internal GIC isn't a GIC-400, as far as I know.
+> >
+> > The Linux kernel says it is a GIC-400 on i.MX6UL
+> > https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/nxp/imx=
+/imx6ul.dtsi#L158
+> >
+> > intc: interrupt-controller@a01000 {
+> >     compatible =3D "arm,gic-400", "arm,cortex-a7-gic";
+>
+> Ah, is this a Cortex-A7? The TRM for the A7 says
+>
+> https://support.arm.com/documentation/ddi0464/f/Generic-Interrupt-Control=
+ler/GIC-functional-description/GIC-memory-map?lang=3Den#CHDEBJAJ
+>
+> "Access to reserved regions can result in a data abort exception to the
+> requesting processor."
+>
+> I'm not sure why that vaguely says "can" rather than "will", or
+> whether it's significant that the language is softer than the
+> A15 TRM uses.
+>
+> In any case, I think the DTB compat strings the kernel DTB uses
+> aren't necessarily indications of what the real hardware is.
+> See the commit message in kernel commit 61efb56e30:
+>
+>     The arm,gic-400 compatible is probably the best matching string for t=
+he
+>     GIC in most modern SoCs, but was only introduced later into the kerne=
+l.
+>     For historic reasons and to keep compatibility, some SoC DTs were thu=
+s
+>     using a combination of this name and one of the older strings
+>
+> [i.e. "arm,gic-400", "arm,cortex-a7-gic"]
+>
+> Kernel code correctly using the DTB binding will never touch the
+> reserved area, so it's not important that the DTB binding be able
+> to distinguish whether it faults or not.
+>
+> > > > Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> > >
+> > > RAZ/WI doesn't match the documented behaviour of the Cortex-A15
+> > > for this region in its TRM:
+> > >
+> > > https://support.arm.com/documentation/ddi0438/i/generic-interrupt-con=
+troller/gic-functional-description/gic-memory-map?lang=3Den
+> > >
+> > > "Read access to reserved regions results in a Data Abort exception to
+> > > the requesting processor. Write access to reserved regions results in
+> > > the assertion of nINTERRIRQ."
+> > >
+> >
+> > It seems the A15 manual and GIC-400 manual are contradictory. I am not
+> > sure how to proceed.
+>
+> Do we have real hardware where we can check what the actual
+> behaviour is? It's not unknown for TRMs to have errors, especially
+> in areas where the documentation is really saying "don't do this"
+> and the question is what exactly happens when software does
+> something it shouldn't. If we're confident the TRM documentation
+> is wrong we can follow the actual behaviour, as long as we have
+> some clear commentary about it.
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+I don't have real hardware at hand right now, but I bet hardware
+doesn't data abort otherwise it won't sit in the U-Boot codes for
+years.
+
+> Also, has anybody filed a bug against u-boot? This is clearly
+> a software bug to be trying to read this address at all. We
+> should record that bug issue number in the commit message here.
+>
+
+I've just sent a patch to U-Boot upstream (Cc Tom)
+https://lore.kernel.org/u-boot/20261007110316.143181-1-bin.meng@processmiss=
+ion.com/T/#u
+
+Regards,
+Bin
 

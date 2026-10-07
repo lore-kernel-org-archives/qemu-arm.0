@@ -4,98 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E029CA5FF1
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 08:42:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35CB7CA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 08:42:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEN96-00071h-2j; Wed, 07 Oct 2026 04:37:04 -0400
+	id 1xEN94-0006nC-NY; Wed, 07 Oct 2026 04:37:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEI6L-0001UT-1t
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 23:14:11 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEI67-0001S2-C1
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 23:13:45 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-c2e40d62e77so142006066b.1
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 20:12:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791342758; x=1791947558; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=4JrZ7jM3Cirkz5k2sQscGnyc7KzNuKYfGRblsF+5rVQ=;
- b=Ve6SluPB8DthkSdNfP0FrtKRqn1/kjdQ/aolQ1YOPcattEaiYdpIg49dJ4YwAfCPIy
- R+VQdA1V5NKSMFvv3CWXWcHYfYqJ/EPdLNN9hcciFX+4VJM43Zo4AzvpnVARZ+7U2sHV
- mSL/zywtdP/Iz7By/UaptHZREUxp0gUrKah2Zj9Hz4FIOlcw6Nxi0fPld0OqVIHAKtjy
- inF0ODk+mLNl3WQzkLCuXx6pV21j/iscO1qVKqvGpAR0v3ur9OmzmBr6KKfoGLDUcIsf
- 6wj1sbRghT+3H/MCFWNzWHUUvhLOzKoe5pt0dzlBmRf4sOj2gJEnVO6zqYlG+3LJDcwT
- xjoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791342758; x=1791947558;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=4JrZ7jM3Cirkz5k2sQscGnyc7KzNuKYfGRblsF+5rVQ=;
- b=H8AjDxX59dcD7mTcyqb4U7Jf1UL/8/EFGjWCHqMYvklb+oDQGo5JVzpHtBqMVdeAPa
- M0KMKvosldLRyR+F11Fdmxh8e9d41mzW6yVcqddPj1eQwOj2Awqi3ltgeg2OwpggOvWP
- kU50TgaE7sZN0Tt1rQt+ZIvTm12a3uaYNzzGNo87oIbXbosEDPFanJO0fYEIgwvAtBp5
- 0zwE2d+aKl+9jl589JgBgspEUMrgqFsUvXNZLfMy6RoxNC5k3Vt91aiUeBHWJX9ncm2O
- JOWLg8DLtC9YhUhGqOIbWX2H+TqnV1nfccXlRqB/x/gmmTnwXoeXOEAGCTfSvyXmvJgx
- DOYg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBw74jgScwpVDdNf/M9EuZIcf/zuIhUrALCYRLJD0ba4F5vJeU/IIw67QxkWwaIpsajJvpZ7bOQokg==@nongnu.org
-X-Gm-Message-State: AFuF++lZeZuoXRwrJDttdHhR5fxQ8O4BjPKLblG7XD7CKDr90iXBhOsc
- QIZXgpMo7x1Ms5fOI//DlUVD3KWK1cNn+dOLjameK6DHuZLPlue6cuLjCMJVOg==
-X-Gm-Gg: AYBFou3pv8PM+8StKo1wmu/tkGDo0k0FoiWeVYnGMam8/vfUi7dEDKktXYU4TpANWyc
- Fy7AoPt4vrnGteEDn9PNCD1iZX2VGhvdpST+hIuYAoamoj4CvegnL8y8FH5/7/P4ThR2nsYdnFv
- pY6X1bpxI5RQV74gTO65lfJ2NWfBrajgnIgV4K2aaAmujZta4zrz/pbF+juLJyUDw5CyQIXIpSW
- dHO5kT4cz48LjtiGjcuEeOuYGPsFnLkKpZ0DEozRgAJvSgm5/v7H/EBnupokBFgd6tGXmexp6Yl
- sHqB3lDHb386UBQAodvGt1nc3SEJY9gKF2pO72Mplt5gqo4aQebQMaQ58FMqrTT50qGHdDA1IeC
- yjuQtFMLsVDnXKEAh1d2kvZzM3RsVQOBYGsmghFd1HK1kclU5zpRnhBOsAoSZt4hJ9qTPxEdd9w
- flb9+2Qwyt3CEXZbldrPxyBzg36tByH72Sg0ODUYuviXqfTD0PlZVBrNB3vIi/Y8kxI+lL/p2is
- PizIMJrB/MifOHtJ9HLeNQJTbBI2C6OJzhnOZQ=
-X-Received: by 2002:a05:6000:40df:b0:48c:527e:92e0 with SMTP id
- ffacd0b85a97d-48c6d0ec634mr1664814f8f.8.1791275742958; 
- Tue, 06 Oct 2026 01:35:42 -0700 (PDT)
-Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2026 01:35:42 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bin Meng <bin.meng@processmission.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>,
- Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
- Jason Wang <jasowangio@gmail.com>,
- Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH v4 19/31] Kconfig: Extract config IMX_GPCV2 from config IMX
-Date: Tue,  6 Oct 2026 10:34:31 +0200
-Message-ID: <20261006083445.30362-20-shentey@gmail.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
-References: <20261006083445.30362-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1xEI4t-0001GS-DK; Tue, 06 Oct 2026 23:12:33 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1xEI4T-0000Ig-HD; Tue, 06 Oct 2026 23:12:21 -0400
+Received: from [192.168.10.153] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 69738nvq088535
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Wed, 7 Oct 2026 12:08:49 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=7OiV2XTbdLHwTCpnJ3Ni/aaSq0QDzDpbyoVquXUDln0=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Message-ID:To:Subject:Date;
+ s=rs20250326; t=1791342530; v=1;
+ b=VYs/wTUTOVHxdHAHlw7b8slm6R2QyB36NF8/i9h/0U3ajfcN1vAUVKaZwnoCbRR+
+ yCoQV2b4GDCW04I7xT1JGryGZ4HC3MJTNDYNdChkEod/BEcvQVsMKdDnKEU5DpwL
+ v3GkErAQIu+arrkQ7NJu52dpz3VgaaO0/3+iQKy314r32lA90BIKW4cCy8QT5jrW
+ pw29D+nFmcSb67gnpY/t6bIu/WyV+zZb04vw5V32hZGmmrBT2hkVa311zMBbhdrx
+ iMa9inlS1pVnqdJn7J7W9uUIct+YO916Tx7GxB/rXvczgrgBkxd+RVivle3IN6/I
+ v1/Ui4fnvFVx0VByMujQhw==
+Message-ID: <ef0df981-37ba-41e9-91f6-feee5a829671@rsg.ci.i.u-tokyo.ac.jp>
+Date: Wed, 7 Oct 2026 12:08:49 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/10] monitor/hmp: replace MonitorDef with GDB registers
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dave@treblig.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu@processmission.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>
+References: <20260911-query-reg-v1-0-0c04f0c02cf3@redhat.com>
+ <1b9d9cef-8f65-4e96-9e7b-fd136f64a75d@oss.qualcomm.com>
+ <33ad7803-82ad-49f0-b39d-d3a23807ab75@rsg.ci.i.u-tokyo.ac.jp>
+ <CAJ+F1C+0A4_VU3aNk=fWwvR=MPbe3Zw2zyeFnyCGmJET6fAoKg@mail.gmail.com>
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <CAJ+F1C+0A4_VU3aNk=fWwvR=MPbe3Zw2zyeFnyCGmJET6fAoKg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,67 +92,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Over time, QEMU has grown a number of i.MX boards and the monolithic
-config IMX drags in unneeded dependencies into each SoC model. Extract
-config IMX_GPCV2 to eventually eliminate config IMX.
+On 2026/10/06 23:31, Marc-André Lureau wrote:
+> Hi Akihiko
+> 
+> On Thu, Oct 1, 2026 at 12:03 PM Akihiko Odaki
+> <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+>>
+>> On 2026/10/01 2:18, Philippe Mathieu-Daudé wrote:
+>>> Cc'ing Akihiko who worked on gdbstub.
+>>>
+>>> On 11/9/26 14:27, Marc-AndrÃ© Lureau wrote:
+>>>> Hi,
+>>>>
+>>>> HMP monitor supports printing $register expression. The lookup
+>>>> was done via GDB stub registers, and supplementary MonitorDef
+>>>> HMP-specific tables.
+>>>>
+>>>> Migrate HMP registers to use the GDB infrastructure and remove the
+>>>> legacy HMP MonitorDef. Use a "qemu-debug" register group, as they are
+>>>> aliases or synthetic registers, but gdb doesn't seem to care.
+>>
+>> Unfortunately, these aliases and synthetic registers appear to have
+>> several problems:
+>>
+>> - GDB already provides writable pseudo-registers for SPARC64's asi and
+>>     pstate. The new QEMU registers shadow them but ignore writes, breaking
+>>     previously supported functionality. See:
+>>
+>> https://sourceware.org/git/?p=binutils-gdb.git;a=blob;f=gdb/sparc64-tdep.c;h=93db3417a2a9f64790acab33288eb05764112e0b;hb=6a5e5259790e5a854ddbb69eb486b9245fcfeee8#l976
+>>
+>> - GDB caches each raw register independently. Updating one alias can
+>>     leave another stale, causing incorrect reads or skipped writes.
+>>
+>> - The new raw aliases do not inherit the original registers' unwind
+>>     rules, leading to incorrect register values when selecting older
+>>     call frames.
+>>
+>> The latter two issues also affect the RISC-V aliases and cannot be
+>> resolved merely by changing QEMU's register read/write callbacks. I
+>> therefore think we need to retain HMP-specific handling for these aliases.
+> 
+> Thanks for the feedback and findings! Would it be an option to have
+> qemu/pseudo registers use a prefixed name like "qemu.", then it
+> shouldn't conflict with GDB. HMP would need to try with it if not
+> found. Wdyt?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/arm/Kconfig      | 2 ++
- hw/intc/Kconfig     | 3 +++
- hw/intc/meson.build | 2 +-
- 3 files changed, 6 insertions(+), 1 deletion(-)
+That would avoid the conflict, but "info registers" in GDB would then 
+list these extra registers. This makes the output noisier, and the 
+displayed values could still be misleading or inaccurate.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 030b218eb6..a33f5a46f9 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -581,6 +581,7 @@ config FSL_IMX7
-     select PCI
-     select IMX
-     select IMX_FEC
-+    select IMX_GPCV2
-     select IMX_I2C
-     select WDT_IMX2
-     select PCI_EXPRESS_DESIGNWARE
-@@ -661,6 +662,7 @@ config FSL_IMX6UL
-     select IMX
-     select IMX6UL_LCDIF
-     select IMX_FEC
-+    select IMX_GPCV2
-     select IMX_I2C
-     select IMX_USBPHY
-     select WDT_IMX2
-diff --git a/hw/intc/Kconfig b/hw/intc/Kconfig
-index 97355f9df7..98dba7efb8 100644
---- a/hw/intc/Kconfig
-+++ b/hw/intc/Kconfig
-@@ -8,6 +8,9 @@ config I8259
- config IMX_AVIC
-     bool
- 
-+config IMX_GPCV2
-+    bool
-+
- config PL190
-     bool
- 
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index 74d84b8ddc..2ac575095f 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -24,7 +24,7 @@ system_ss.add(when: 'CONFIG_GOLDFISH_PIC', if_true: files('goldfish_pic.c'))
- system_ss.add(when: 'CONFIG_HEATHROW_PIC', if_true: files('heathrow_pic.c'))
- system_ss.add(when: 'CONFIG_I8259', if_true: files('i8259_common.c', 'i8259.c'))
- system_ss.add(when: 'CONFIG_IMX_AVIC', if_true: files('imx_avic.c'))
--system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpcv2.c'))
-+system_ss.add(when: 'CONFIG_IMX_GPCV2', if_true: files('imx_gpcv2.c'))
- system_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic_common.c'), if_false: files('ioapic-stub.c'))
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_intc.c'))
- system_ss.add(when: 'CONFIG_OPENPIC', if_true: files('openpic.c'))
--- 
-2.56.0
+> 
+> Alternatively, keep the monitor specific register lookup, as a secondary path.
 
+Ultimately, the design trade-off comes down to:
+
+- The actual impact of exposing pseudo-registers via gdbstub.
+- The relative complexity of implementing pseudo-registers versus
+   keeping a monitor-specific lookup as a fallback.
+
+While the issues with pseudo-registers aren't critical, intuitively, 
+keeping the monitor-specific lookup as a fallback seems like it wouldn't 
+add much complexity, and might even be simpler. If so, I think keeping 
+the monitor-specific lookup is the better approach. Otherwise, we may 
+need to give this further consideration.
+
+Regards,
+Akihiko Odaki
 

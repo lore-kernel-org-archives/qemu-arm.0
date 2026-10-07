@@ -4,107 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E70CA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 11:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37FCDCA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 12:00:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEQD8-0008RK-6F; Wed, 07 Oct 2026 07:53:26 -0400
+	id 1xEQK4-00050l-NJ; Wed, 07 Oct 2026 08:00:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEQD6-0008PC-3z
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 07:53:24 -0400
-Received: from mail-dl1-x122b.google.com ([2607:f8b0:4864:20::122b])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEQJp-0004r1-3J
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:00:23 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEQD3-0007xD-0A
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 07:53:23 -0400
-Received: by mail-dl1-x122b.google.com with SMTP id
- a92af1059eb24-16079d54c17so678003c88.0
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 04:53:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEQJm-0000Lg-QG
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:00:20 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-48b03f23305so3404096f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 05:00:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791374000; x=1791978800; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=Abt7nJgfsy9RgUBd+yxg0ugqnqkJvrdlXYCqWBP2u9k=;
- b=ovxGsKEy2ZUJvI6cVOxr8+MJNld6uEWaZ7WuU9BGfODLpmrEjHsgZQFOxyfsWQh49c
- I6ND/m868eJGWHPpBtyxH5uNRL/BbYWCXuaQKW2CTNcAisZM+mUfEmesWZnm2Mlg7CIk
- 1O+R14f3733NWITOilxH7Xif4EfualsO2j9vEjMFHsXcsAQq3hE+b2mLsTCZMfN59qH1
- WY/xa80qOgTlAXe8yPtxU3jJBcGGvKeEECORlBAnOcUeuNv0wJEGNtla0f561xLYrz6a
- 47Ncn43nTx1GjTeNxNBbUsogT+SKe3tjDtkgev/lc5DB+T+uj0OMUvlLlhsWrnhXVt7d
- 1ydA==
+ d=gmail.com; s=20251104; t=1791374417; x=1791979217; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=8IM2yFcIuUTlPPR93lMuCwkoZS9UdQ+IlbsfQ+DAECU=;
+ b=MYgdAI7fheW1ajYEGhIPEb7gpl9I4dRxdJInskz1HgKAyTCqMZJPlzfarQ6UJ68nRa
+ nBo7JZPzwjXIsWfssuBHruANPwsUwShpynq2aD1W/yE8FDi4G/iZgKQRh/RjgRtiZVPk
+ QFBns5hmalTdDNPfozIrq+mTKKZQ4mVISx+/EVj2r8LPIyKm1YU8vJv0Qg2vlh+c3ppY
+ KYIX3Pt6g3NaJBbsfRG2sUYiEdgOLtp0G5eFbES/eaAL8WXaSIpcEJsT+YN2k8xwZIj8
+ YKKXGvbfVFZB29weRcdQHSTS3tgx5NXUFIY2pf0Pxxe5oOEH09e3aihKnRb5RVnPplGg
+ RCFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791374000; x=1791978800;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Abt7nJgfsy9RgUBd+yxg0ugqnqkJvrdlXYCqWBP2u9k=;
- b=ZDJbxakw+DXj/UVnrTsz0gFfSpOqsPAO7Y4UjWuThS6LF6N4gXp61FAwDAugdgY2qq
- Ynaws7wpa7KhpOyD/jNy9cSow60eTPTNaxX5cbAFXAkrbcmwVvqcpNXGdRtQOZPCei/x
- zjr8rbu9D5H5yLlLdogQxyhL7QzZ1xCvKYbb/9Ns4QtdRoTlKkdBmmvg0272iD15Y7yu
- EO2fYYDsVvoajvkgkQcl2fbryECOUV3QJGyOiyx1rGPeJ0J9DOY2fBo5YxbL/aKvDu2g
- zKSAoJ0atzGRWF9hfgn6Q8s9eBs3ZfUO0fuE1R2qUIBvEsEgEUaSXj4J+1x43cSTcl+e
- 6/0w==
+ d=1e100.net; s=20260707; t=1791374417; x=1791979217;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=8IM2yFcIuUTlPPR93lMuCwkoZS9UdQ+IlbsfQ+DAECU=;
+ b=IDAdVFlR6G5o3+w+nEIqb/3svdZ7W4x9ytGaxdRHWaCIh1h2nOttExjgwnIH12TnMv
+ dTyaqcCsvYmm7hln/MCEqRP6sEAOhgyQkesYyOBA0lqpoNddZO1qaKrXdSSMsqP7hDfg
+ tBEEvVFocXCd44PS32MVXaU9OuF4EhgXuWm56wgxtxd7f//QttbBaQNw1z3wQHENCa82
+ 7r8f46w8C3HLPKLqnlGJ1RcykZjCrRtXtDHOHApnZEiH4LO7b2nxHuXWB2OZvgZjD04m
+ RUuPZX1ersTlCJqgmkNJyEySALF4F6ylG0LIdEhTcyVw3fWZoc8bcAHHKKVQ+bDjH9A0
+ 4I/g==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzAzqaSqAI+5nGMthzkJe6JmsA7vIHiRdCeFPbOuQRzDUCG+mOIwXI9ZF7+/ut+SXaF17NFk2hdpw==@nongnu.org
-X-Gm-Message-State: AFuF++k0Ryf64WprZA123YqEFkl6cOUyHqNh8qPCImTxNXF3mhiH6w9z
- rtMIEuCEnkiVUnu0u4+In+koF5cnhMh/91kHXH2F68vT5BmZ5oKCg88f
-X-Gm-Gg: AYBFou2H4xAP848QfkHVWOiHPWNbimHsgJR0SbWbGQ6r3qZ5Mv+0fDxCCCIQ3sMoODW
- c93NIyN9TeKxG8h6FAXE7cMG0EOCQ62Ib8xR48h5lCO9zjrdOwJ4Vh1cdZf2eEFcRUJme9Z31Yk
- 0xP2aSb9JSaBgZzJQM/OtyBl7rl2R1JAkEsFApRCc/y0zkVUd46wUft8ZwjDeCmFIVeVpIn/u5i
- midUVDIWQ2Gg2gVKKTFLvA+7wBbWmcfpAcUgaYyZ4mg/RL9c0NKPcnjZr2J0spNLjPq0lrPE17/
- m3PL6It9qw+GjnpH8+QngjAuEZ7mKD7/Wsr+v/q/nN8SkOr7f7rnD2BvrNzWzd2BSTmlfOuR8Kv
- jJOgzoR5vH0hGZMm3s3ZW+oEKox64G4ntKi1aaBl72Q+EmUbTmnqtuN/pYFMa+7Kw3Kfhkv9YHC
- Re6VtaG41tALEL93y905biN2OlAwN3DiLF5/AnX5vBaMb7bkwE8dKSkrsL4HlgbFnou0pHv2vyK
- WWPEfYCF1GRAWlyoQ==
-X-Received: by 2002:a05:701b:4544:20b0:156:1d8:7026 with SMTP id
- a92af1059eb24-1620a1f04dbmr1998101c88.46.1791373999502; 
- Wed, 07 Oct 2026 04:53:19 -0700 (PDT)
-Received: from DESKTOP-Q716RM7 ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1616980c3b7sm6429520c88.16.2026.10.07.04.53.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Oct 2026 04:53:18 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
- Philippe Mathieu-Daude <philmd@mailo.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+ AKwUvBwmKUbPVlT7qY6He4oxFuBlOTI4V6BDoyJ0wG59RGKmP2RX8iatM78q1xV5XJiOUAX7VIFWHDhxng==@nongnu.org
+X-Gm-Message-State: AFq9FYLzcl/RRGkdUhEZkKNJ5t5oVQIZ1pXPUBrBy7r0RcGNw25xSVus
+ 2dWe5C6JQmwMnBoeDqNykUd6V29JGaKXMeSFjF1l58J/uRP4Z3UDAwGj
+X-Gm-Gg: AYBFou0plPxriQ9Z3OdXFlHOzIznUsDGN+63JGHd88Vmav5mRVMAqiEnIRyZzZQ4klr
+ DDpSOpHrgcYKikM8jY+UrlQrLxhH1irP9hocPMHt6RvMdH3rY0ERcgTfn/hWuNoYoU4MzKhdyvr
+ vd4G0igMWf29XvAtEzZ92fmz4Jd6Wq5idBLqZu+H6OpvLXc//aMvjlApQhPHw2IztcN4o/rA8Ke
+ F40xMn3ChvJdFpo8gwq7lYuY5F5zbq5iGAQFeQQVAl5i5O6V0BxPCEaEbzMADoLYrhm0juT7nrr
+ 6l2yT5Efv9IU5qU8ydLJ0GGT0HAr3NSadypkYpR7UIFMg0cLycFsfoskfIm4MnebprtIUWQAKV0
+ ifVhukgR6/DuedIH5Eehnb+o0UZwe3ai5VzssLetB3sZuIhAXOVltU3Bxws1Iyu5a1FDpr3AuLM
+ jbVvnO5hmTNXCChq/lOWFbNZ/jHfXZL1TJQF1GL6j5OOmAzKWFBwRENd55ZrgnOeJs6Y/im0MeW
+ +2LIjVpUlcCV5eg0ep/SQJbAYNjda2rHTJrGAAAkz+laSmCxShiJ5G9dfUe31RghlMFepx/NnBU
+ uObEYw==
+X-Received: by 2002:a05:6000:25f6:b0:48c:67d6:a87a with SMTP id
+ ffacd0b85a97d-48c72786a1emr4216404f8f.32.1791374416555; 
+ Wed, 07 Oct 2026 05:00:16 -0700 (PDT)
+Received: from ehlo.thunderbird.net
+ (p200300faaf09ae00acd063e77b8fcf27.dip0.t-ipconnect.de.
+ [2003:fa:af09:ae00:acd0:63e7:7b8f:cf27])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48c71d3f05asm7006854f8f.55.2026.10.07.05.00.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Oct 2026 05:00:15 -0700 (PDT)
+Date: Wed, 07 Oct 2026 12:00:12 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org
+CC: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>,
- Darren Kenny <darren.kenny@oracle.com>
-Subject: [PATCH 2/8] target-info: rename target-info-stub.c in
- target-info-def.c
-Date: Wed,  7 Oct 2026 19:47:59 +0800
-Message-ID: <20261007115253.328-3-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.55.0.windows.3
-In-Reply-To: <20261007115253.328-1-luoyonggang@gmail.com>
-References: <20261007115253.328-1-luoyonggang@gmail.com>
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bin Meng <bin.meng@processmission.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-arm@nongnu.org,
+ Jason Wang <jasowangio@gmail.com>, Alistair Francis <alistair@alistair23.me>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_12/31=5D_hw/arm/fsl-imx?=
+ =?US-ASCII?Q?25=3A_Derive_from_TYPE=5FSYS=5FBUS=5FDEVICE?=
+In-Reply-To: <9fff40ae-6378-41c8-9cff-74d4a15645de@oss.qualcomm.com>
+References: <20261006083445.30362-1-shentey@gmail.com>
+ <20261006083445.30362-13-shentey@gmail.com>
+ <d63caf07-24f1-4911-b0f9-f375c48b6159@oss.qualcomm.com>
+ <1EAADDBD-1ED9-47BA-81AA-E6539880B7E4@gmail.com>
+ <9fff40ae-6378-41c8-9cff-74d4a15645de@oss.qualcomm.com>
+Message-ID: <A8B6BD08-C23F-4029-91F6-575D04C7C3D2@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122b;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122b.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,51 +118,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
-Now it's the only file left to define target info, we call it def to
-make the intent more clear.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- include/hw/core/cpu.h                   | 2 +-
- meson.build                             | 2 +-
- target-info-stub.c => target-info-def.c | 0
- 3 files changed, 2 insertions(+), 2 deletions(-)
- rename target-info-stub.c => target-info-def.c (100%)
+Am 6=2E Oktober 2026 10:01:51 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
+hilmd@oss=2Equalcomm=2Ecom>:
+>On 2026-10-06 11:47, Bernhard Beschow wrote:
+>>=20
+>>=20
+>> Am 6=2E Oktober 2026 09:26:52 UTC schrieb "Philippe Mathieu-Daud=C3=A9"=
+ <philmd@oss=2Equalcomm=2Ecom>:
+>>> On 6/10/26 10:34, Bernhard Beschow wrote:
+>>>> Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset up=
+on
+>>>> machine reset=2E
+>>>>=20
+>>>> Reviewed-by: Bin Meng <bin=2Emeng@processmission=2Ecom>
+>>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>>> ---
+>>>>    include/hw/arm/fsl-imx25=2Eh | 5 ++---
+>>>>    hw/arm/fsl-imx25=2Ec         | 7 +------
+>>>>    hw/arm/imx25_pdk=2Ec         | 2 +-
+>>>>    3 files changed, 4 insertions(+), 10 deletions(-)
+>>>>=20
+>>>> diff --git a/include/hw/arm/fsl-imx25=2Eh b/include/hw/arm/fsl-imx25=
+=2Eh
+>>>> index b68d4334a0=2E=2E4bb4d5b3e5 100644
+>>>> --- a/include/hw/arm/fsl-imx25=2Eh
+>>>> +++ b/include/hw/arm/fsl-imx25=2Eh
+>>>> @@ -29,6 +29,7 @@
+>>>>    #include "hw/sd/sdhci=2Eh"
+>>>>    #include "hw/usb/chipidea=2Eh"
+>>>>    #include "hw/watchdog/wdt_imx2=2Eh"
+>>>> +#include "hw/core/sysbus=2Eh"
+>>>>    #include "system/memory=2Eh"
+>>>>    #include "target/arm/cpu=2Eh"
+>>>>    #include "qom/object=2Eh"
+>>>> @@ -45,10 +46,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX25State, FSL_IMX2=
+5)
+>>>>    #define FSL_IMX25_NUM_USBS 2
+>>>>      struct FslIMX25State {
+>>>> -    /*< private >*/
+>>>> -    DeviceState parent_obj;
+>>>> +    SysBusDevice parent_obj;
+>>>>    -    /*< public >*/
+>>>>        ARMCPU         cpu;
+>>>>        IMXAVICState   avic;
+>>>>        IMX25CCMState  ccm;
+>>>> diff --git a/hw/arm/fsl-imx25=2Ec b/hw/arm/fsl-imx25=2Ec
+>>>> index 7f65f4ca4b=2E=2Eefb22359c5 100644
+>>>> --- a/hw/arm/fsl-imx25=2Ec
+>>>> +++ b/hw/arm/fsl-imx25=2Ec
+>>>> @@ -317,16 +317,11 @@ static void fsl_imx25_class_init(ObjectClass *o=
+c, const void *data)
+>>>>        device_class_set_props(dc, fsl_imx25_properties);
+>>>>        dc->realize =3D fsl_imx25_realize;
+>>>>        dc->desc =3D "i=2EMX25 SOC";
+>>>> -    /*
+>>>> -     * Reason: uses serial_hds in realize and the imx25 board does n=
+ot
+>>>> -     * support multiple CPUs
+>>>> -     */
+>>>> -    dc->user_creatable =3D false;
+>>>=20
+>>> Can we explain this change?
+>>=20
+>> SysBus devices aren't user-creatable, are they?
+>
+>"Remove clearing user-creatable which is implicit for
+> SysBus-based devices" comment would have cleared any
+> doubts=2E
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 328e30045ce..ae66f5e33e3 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -601,7 +601,7 @@ QEMU_BUILD_BUG_ON(offsetof(CPUState, neg) !=
-  * Return the CPUArchState associated with the CPU.
-  */
- #define cpu_env(cpu) _Generic(cpu, \
--    /* We validate that CPUArchState follows CPUState in target-info-stub.c */ \
-+    /* We validate that CPUArchState follows CPUState in target-info-def.c */ \
-     CPUState *: \
-         (CPUArchState *)((cpu) + 1), \
-     const CPUState *: \
-diff --git a/meson.build b/meson.build
-index 64d3f7675f7..ac78c58cb91 100644
---- a/meson.build
-+++ b/meson.build
-@@ -4345,7 +4345,7 @@ foreach target : target_dirs
-     endif
-   endif
- 
--  arch_srcs += files('target-info-stub.c')
-+  arch_srcs += files('target-info-def.c')
- 
-   if target_base_arch in target_arch
-     t = target_arch[target_base_arch].apply(config_target, strict: false)
-diff --git a/target-info-stub.c b/target-info-def.c
-similarity index 100%
-rename from target-info-stub.c
-rename to target-info-def.c
--- 
-2.55.0.windows.3
+All patches are reviewed now, thanks! So this series probably won't need a=
+ respin in which case I had incorporated above sentence into the commit mes=
+sage myself=2E I'm fine if this got done when merging=2E
 
+Best regards,
+Bernhard
 

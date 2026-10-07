@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB951CA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 09:20:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFF48CA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 09:21:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xENeb-00052f-33; Wed, 07 Oct 2026 05:09:37 -0400
+	id 1xENc9-0001xu-2e; Wed, 07 Oct 2026 05:07:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xEMa3-0004NH-H1
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 04:01:00 -0400
-Received: from out-39.mta0.migadu.com ([2001:41d0:1004:224b::27]
+ id 1xEMaA-0004Pv-PI
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 04:01:04 -0400
+Received: from out-46.mta0.migadu.com ([2001:41d0:1004:224b::2e]
  helo=mta0.migadu.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xEMa1-0002zm-Tm
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 04:00:51 -0400
+ id 1xEMa8-000307-1x
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 04:00:58 -0400
 X-Envelope-To: qemu-arm@nongnu.org
-DKIM-Signature: a=rsa-sha256; bh=4+K7kjtnxVVTxDRVdX7b8BFOietGIl+KAntdxEKevao=; 
+DKIM-Signature: a=rsa-sha256; bh=nss3Hqr01vFUSgYIIam7NZUSf/Tjy1sPyQsAIFFF8KU=; 
  c=simple/simple; d=linux.dev;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1791360047; v=1; x=1791964847;
- b=XossW9TJKm57tWZRU/moV+idSlKKqJiX6CcWlwzCQ8/EGxt2gFwBiO9LA5IPY9HTGuv/vHBq
- hvF+2cXHNH3ff/xkP7xgimtHLLt9jifZ+w0ahoGaJNcdvyYMddEOGIu77N58G32Zwu1WcDxpq2T
- ClcJLVgtjNRQVLcflwdCEF+I=
+ t=1791360054; v=1; x=1791964854;
+ b=lG5mqYlaOKTCncoG7W0sjRp2VdkfHonnA7Rm6yowyRkfY3lqmjmYQdm1NBjqxnDy/qc44jUS
+ BKztXAd79itbr+yV7kFyt9/Svn89WPnaU59+vwr2B99JQSAPxGkwbupN016AjoO1cxVkQZoWgKF
+ UCZFvk88QCWT+zFm0qwT/TKw=
 X-Envelope-To: qemu-arm@nongnu.org
-Received: by smtp.migadu.com with ESMTPS id 5bd603d399fc8c14;
- Wed, 07 Oct 2026 08:00:47 +0000
-X-Mizu-Trace-ID: 5bd603d399fc8c14
+Received: by smtp.migadu.com with ESMTPS id 3aac927842e36481;
+ Wed, 07 Oct 2026 08:00:53 +0000
+X-Mizu-Trace-ID: 3aac927842e36481
 X-Migadu-Flow: FLOW_OUT
 From: Fuad Tabba <fuad.tabba@linux.dev>
 To: Peter Maydell <peter.maydell@linaro.org>
@@ -40,16 +40,16 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Gustavo Romero <gromero@redhat.com>, Will Deacon <will@kernel.org>,
  Itaru Kitayama <itaru.kitayama@linux.dev>, Fuad Tabba <tabba@google.com>
-Subject: [PATCH v2 1/3] target/arm: Clear TTBR[5:0] from a 52-bit table base
- address
-Date: Wed,  7 Oct 2026 09:00:17 +0100
-Message-Id: <20261007080019.350315-2-fuad.tabba@linux.dev>
+Subject: [PATCH v2 2/3] target/arm: Use the 52-bit TTBR base address layout
+ when TCR.DS is set
+Date: Wed,  7 Oct 2026 09:00:18 +0100
+Message-Id: <20261007080019.350315-3-fuad.tabba@linux.dev>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20261007080019.350315-1-fuad.tabba@linux.dev>
 References: <20261007080019.350315-1-fuad.tabba@linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:1004:224b::27;
+Received-SPF: pass client-ip=2001:41d0:1004:224b::2e;
  envelope-from=fuad.tabba@linux.dev; helo=mta0.migadu.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -72,58 +72,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-get_phys_addr_lpae() can read the first descriptor of a walk from the
-wrong address. This happens with a 52-bit OA when the initial lookup
-table has fewer than eight entries and its base address has bit 51 set,
-or bit 50 for a two-entry table. The walk then faults or translates
-through whatever that address holds. VTTBR walks for stage 2 take the
-same path.
+With TCR.DS set, TTBR[5:2] hold bits [51:48] of the translation table
+base address, whatever the OA size. If the effective OA size is below
+52 bits, setting any of them is a level 0 Address size fault
+(AArch64_S1TTBaseAddress(), AArch64_S1Walk()).
 
-For example, the 16KB granule with a 48-bit VA has a two-entry level 0
-(FEAT_LPA2). The 64KB granule with a 44-bit VA has a four-entry level 1
-(FEAT_LPA). KVM's page_fault_test hangs on this in its 16KB, 52-bit PA
-guest mode under TCG, as reported on kvmarm.
+get_phys_addr_lpae() uses the 52-bit layout only when the OA size is
+over 48 bits. With TCR.DS set and an IPS of 48 bits, it takes TTBR[5:2]
+as base address bits [5:2] instead. A guest that sets them gets no
+fault: the walk either succeeds with TTBR[5:2] ignored, or reads its
+first descriptor from the wrong address. VTTBR walks with VTCR.DS take
+the same path.
 
-With a 52-bit OA, TTBR[5:2] hold bits [51:48] of the base address. Such
-a table is 64-byte aligned (R_KBLCR), so bits [5:0] of the base address
-are zero. get_phys_addr_lpae() ORs TTBR[5:2] into bits [51:48], but
-then clears only the bits in indexmask. For these tables indexmask
-covers fewer than six bits, so TTBR[5] stays in the address, and
-TTBR[4] too for a two-entry table.
+Use the 52-bit layout whenever TCR.DS is set, and check the whole base
+address against the OA size.
 
-Clear TTBR[5:0] when forming a 52-bit table base address.
-
-Reported-by: Itaru Kitayama <itaru.kitayama@linux.dev>
-Link: https://lore.kernel.org/kvmarm/B4C0AC3E-6A4F-4A7B-B7BC-81207539115E@linux.dev/
-Fixes: 7a928f43d872 ("target/arm: Implement FEAT_LPA")
+Fixes: ef56c2425e5f ("target/arm: Implement FEAT_LPA2")
 Cc: qemu-stable@nongnu.org
 Signed-off-by: Fuad Tabba <fuad.tabba@linux.dev>
 ---
- target/arm/ptw.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ target/arm/ptw.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index de0435a58b..6cff52d592 100644
+index 6cff52d592..2e67d02493 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -2107,13 +2107,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+@@ -2107,18 +2107,21 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
      descaddr = extract64(ttbr, 0, 48);
  
      /*
--     * For FEAT_LPA and PS=6, bits [51:48] of descaddr are in [5:2] of TTBR.
-+     * With a 52-bit OA (FEAT_LPA or FEAT_LPA2), bits [51:48] of descaddr are
-+     * in [5:2] of TTBR, and bits [5:0] of the base address are zero: a table
-+     * under 64 bytes is still 64-byte aligned (R_KBLCR).
+-     * With a 52-bit OA (FEAT_LPA or FEAT_LPA2), bits [51:48] of descaddr are
+-     * in [5:2] of TTBR, and bits [5:0] of the base address are zero: a table
+-     * under 64 bytes is still 64-byte aligned (R_KBLCR).
++     * With a 52-bit OA (FEAT_LPA or FEAT_LPA2), or with TCR.DS set at any OA
++     * size, bits [51:48] of descaddr are in [5:2] of TTBR, and bits [5:0] of
++     * the base address are zero: a table under 64 bytes is still 64-byte
++     * aligned (R_KBLCR).
       *
-      * Otherwise, if the base address is out of range, raise AddressSizeFault.
-      * In the pseudocode, this is !IsZero(baseregister<47:outputsize>),
-      * but we've just cleared the bits above 47, so simplify the test.
+-     * Otherwise, if the base address is out of range, raise AddressSizeFault.
+-     * In the pseudocode, this is !IsZero(baseregister<47:outputsize>),
+-     * but we've just cleared the bits above 47, so simplify the test.
++     * If the base address is out of range, raise AddressSizeFault.
++     * In the pseudocode, this is !IsZero(address<NUM_PABITS-1:outputsize>)
++     * in AArch64_OAOutOfRange(), but descaddr has no bits set above 51,
++     * so simplify the test.
       */
-     if (outputsize > 48) {
-+        descaddr &= ~MAKE_64BIT_MASK(0, 6);
+-    if (outputsize > 48) {
++    if (outputsize > 48 || param.ds) {
+         descaddr &= ~MAKE_64BIT_MASK(0, 6);
          descaddr |= extract64(ttbr, 2, 4) << 48;
-     } else if (descaddr >> outputsize) {
+-    } else if (descaddr >> outputsize) {
++    }
++    if (descaddr >> outputsize) {
          level = 0;
+         fi->type = ARMFault_AddressSize;
+         goto do_fault;
 -- 
 2.39.5
 

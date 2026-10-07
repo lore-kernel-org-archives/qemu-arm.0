@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE7ECA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 20:36:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE7DCA6004
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 20:45:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEYN2-0003aW-0h; Wed, 07 Oct 2026 16:36:12 -0400
+	id 1xEYVL-0004eD-Fg; Wed, 07 Oct 2026 16:44:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xEYN0-0003aF-Lb
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:36:10 -0400
+ id 1xEYV7-0004cY-Mq
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:44:34 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xEYMy-0004NZ-Rs
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:36:10 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ id 1xEYV5-0004tu-Mz
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:44:33 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 697JNrHp1650955
- for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 20:36:06 GMT
+ 697JO4KT658433
+ for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 20:44:29 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- tincLlY51BeBIO8WOMtjDuc7KZgNUNib8lMdX2hKPyA=; b=pD/lEXFJHmskFGd6
- SZ9/ICNLurhdHV7yR70cZqsASixuUN+HlKzR50ixfgP9b6ZC83To/06jDkiZ3bqO
- DfoMRlOy8iPZfJ8dzeDuLAVzd7rCOymb1lhTM21MxIJEdzMgXmfeeDzLVJUTJBXp
- XsKwNqCpYMrXLtL1pKphEx/E0Pi0Z80UHkAzxDFlRNUWOXEJplo8N3785neEuWxS
- XUXuXesDfWac2Is+SWnvDZJE2nbNqsotFF1p4Ab5S710o3Vk6pq2WQBEftM/Hkdh
- rfkNsk5sarosVOLioN7rkiIUxGavDS0rObHZ5QbOzkSpy6ZesCcb3Uh3wt9IHDNO
- 3kSYdg==
-Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
- [74.125.82.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5fc5bch6-1
+ rpSJ/ZrysyVOV7lotqE++dBrBakcCvEs2ZV4gQpOGwM=; b=Z/6doW6VXl6Gy0zT
+ qv9d1CCmWJwOtqkiHMlboJNi0KFmP+xly0Ckx6clcs+adx7uqazIbaX8ojJwjmlK
+ R9ad0ytG+CdQLS8kDnxMk8NEZ3XGqcavoGvOCwAJvD7/PouqOJPKWYLnLDYhaw4q
+ NSzHez2txptMeZfsothvZgm6kH+/O6Gb1kfD0GnuLyTSgtiJ6zQvY60ApV9sf85q
+ qi1lVCd0VYc/1QI4XX9xYKhcpn+UfMTObX3scdWk0RWK4lC65AA8d7UjVC/zdvqN
+ 3bXcGej5JaWAeOncwUlZcfKAmCnET1ZRWDBZ/MfthvKpJgtut4RmkLzrVN3bCzo2
+ IboxDA==
+Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
+ [74.125.82.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5pv71quv-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 20:36:06 +0000 (GMT)
-Received: by mail-dy1-f197.google.com with SMTP id
- 5a478bee46e88-3516711cce6so905858eec.1
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 13:36:06 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 20:44:29 +0000 (GMT)
+Received: by mail-dy1-f198.google.com with SMTP id
+ 5a478bee46e88-3510562ef98so5950747eec.0
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 13:44:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791405366; x=1792010166; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1791405869; x=1792010669; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=tincLlY51BeBIO8WOMtjDuc7KZgNUNib8lMdX2hKPyA=;
- b=NxGRTNe7an0XOqIXTv+BhMTPKZXUndhJmdMHIFUch1xOFVjDgyyxJkX5TeMuN6SfFj
- HscNBW1MD2Eev82tIO6JGQ0SWTKYESADDLiYYnjLBV7D64kvR9MpQaOkP8Y8GxqR/fCq
- PpXC70pH+YAoKXVbBBjXUtZR3IODg+iPnsPC91dVNLzNu8eq1nZyQV6C434uT4CCY5cU
- Z9Lzs+tBmInfgxP5YM/dH5kRm+Lp6o4RRXummT4VjDbpFyvaP5ZrmDkeQLFnu/VFHXil
- 54mrTmLEq17qZ80wzzV/1S4rnCul3gvPsR7Q0iWYx546+Q0RVXLCohC6QepHOdetRPvw
- L2Uw==
+ bh=rpSJ/ZrysyVOV7lotqE++dBrBakcCvEs2ZV4gQpOGwM=;
+ b=ejMUsgkjjOphZ7iunghB6X4PX+yqoU9NFs4thy+WM2TtZQNfbafsvFB9yUYdrq3vwS
+ r3wrSSwBzNCuuHNnZD9CgukkrKJfw7pChFZx5klQF0tu2WbsZ3vX8r/IPSLRWqzpX+mR
+ o5V66nrAiRibberPIb2Mnl6k0MokerTi2nngBuo+W6eyn33N90qzwpAQnug7hgkNax4N
+ WdFjWi1FQiY6xiD9GlUW1gIpHbnbyEfYzQMNgVnV9iDyg+pXXBzVApOBAKrPieXg3bdM
+ MPivATqoK9IZSp62cYdVVotRHRPM+2bwiXrK5Eq1Bo6VtOk3ShWrh6BuW1ENr/mRLWXS
+ Vruw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791405366; x=1792010166;
+ d=1e100.net; s=20260707; t=1791405869; x=1792010669;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=tincLlY51BeBIO8WOMtjDuc7KZgNUNib8lMdX2hKPyA=;
- b=f4tuOsy9Y3ZaHnPJnNMC8BmORS+FAiyvctsaSAo7vdndB/vvloYmVbs3gkpA0TTeYB
- TcLVPn8vGf9txwr8tefca9kS6NZHqnLm1opld6SzgON095k5xcNGhAv938CLeEbCbWDQ
- wEMU9Oz/CIggw0fwG3Dn19Y8HUvOykN0OgscCn1Bipe1zMDXXKwylhnIjjB+uvqPyqL8
- /HOqCVlogLuGowHFTfUZTwU7rc0qaL4PknDPvcA40+n0PMNUieQjJulYknrvAZ2GYdRl
- X9Zc4acHDHveUyS3PkTOnOuKf0ZelAtxUa+pJed3N/p4QVTT9+e7My9u2lB7f5g4FVHD
- rKTg==
+ bh=rpSJ/ZrysyVOV7lotqE++dBrBakcCvEs2ZV4gQpOGwM=;
+ b=pKZIuTmJ0nh9kAoxmbrUCbETKfNjgLdW1lOWIcVdTn8AgxuGXEzHlDH/DOYRckDRu8
+ VBEKj5JzhFQFOdyFBCgS5/TZPF88D1CHs1wze8T5elSvprqgG30gqS5Wb6i87RhNjeS5
+ 6xPWfAWQEmzovrgZJW6yxqEvnsPtJMPQGDWh+8clZghat1+1QYptxJ2MMRl31RpduA46
+ Dwklpy4JKpgAtWmGqC4Z60Zq45l0Uk+8KXPGOgDD9zxyeNK4j8YFhFfLmLpL5NPs3jMB
+ aKNCDWgVm0x1lDar90wnQNR4aanaIO+kDc0texyl8GijgdMfZsrr+oJJvDMkbQR0TD7f
+ 8foA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx8XvGuhwK1zGogZksYksyEKAiRLDx3n6Lt2Dd5b6ubfla5rUXvajUmhMJmGX/8fcAWxxfRWBBRFQ==@nongnu.org
-X-Gm-Message-State: AFuF++klv+qWQvh5HxjjnwEv+xEMr0eUujfds54nrYpwZcJ6fZCk14yD
- hwRPUiTmGxZkjP26pyJ1wLi3DQ0wj1VcY1WBCw1o7P7E8c7QimvhdL/yTdOeMq+Ij2ES2riFjfj
- 27kg5hpvYdwF7uFH3gnA9hL0dZEO91cwfrQgvJiS8uzTU5yhOgQUPOV8=
-X-Gm-Gg: AYBFou3cZokrYzLwnVuyi1UhnQcZL1tzrZ6dqq/E0XSWVf/iud98j0oWx78x0iUxK26
- 5rSR/P9Ookjelr4ZiuYZvuUVvOnZ8DdSaPNdQC3pmJnnGi8iDJ1ls2jcmADyHPcSYHgdNmEsNqG
- EMvVi6kI+5TlzyVatP1BpDAz4DctPuCxWCn9lI68FTNrC+7lbGvKgO8u0Du58KtRvF+4JiDzHX9
- BZDYSFosoEyia4LbCQwGroaWgdLcv3C8i5Vvnww/2CWl4J7BQR7IsDuFpEDkJrNUiWgx+eKQjeO
- /kTJ3tSzNFHwo5E7RoOKoACMHu1Vt29yld7+mXlCrblRpMjJto/P784/9PfzDwySpUGPamwHeC8
- 6kYcGuwNzLG7gBXhvIOyBNuVRIDPQ6wj9XKzG2GoHx2g9XjTmLywITFkytbm0gVMXysedSA==
-X-Received: by 2002:a05:701b:270e:b0:144:eb3f:563a with SMTP id
- a92af1059eb24-165a64014d5mr311723c88.15.1791405365870; 
- Wed, 07 Oct 2026 13:36:05 -0700 (PDT)
-X-Received: by 2002:a05:701b:270e:b0:144:eb3f:563a with SMTP id
- a92af1059eb24-165a64014d5mr311691c88.15.1791405364944; 
- Wed, 07 Oct 2026 13:36:04 -0700 (PDT)
+ AKwUvBy26D6x27QPrmDv0GYZ7ypfcr/Mw+wwzCevna+xk7xDrucIH3tRwMEe2rCaZydKeM+UUIIjCJb5Rw==@nongnu.org
+X-Gm-Message-State: AFq9FYKeWUZY/RB5hZrtljeIkb4zJt4vZWg3nEHgl+f2G4ezareiR3Tr
+ jdQx7MhKr7XBQsnkeN/PYbniHy3O2oz34ktrqUP9UHLlyOrBJKMLsN/oe2kRtshA+BIycBntov0
+ psxbp1/sLN6u3LZiVRVzCOKOsZMysttdVRAJdSCA7O2mRG7uxuCP8OGg=
+X-Gm-Gg: AYBFou2FGg3dxyq26UgABA35jBWfG21qs3TsC4XoaWYMJW1Wa+PjysotHANzUbdEak7
+ IEesBwDzQjikA3nzLSuWxqO1OtXvsP030BC8rJL8VnHDxfV7p/EJhV/E+y7LMKwsKjdrJjTK7JA
+ tg0JUYInFSpCA5CGPMv9OONioOB8FfLkvnhUr9QzDEdKftHhFXCi8ROsKILE20raPkYBBjaXjnW
+ fcvm45CFGMor0IuRZbzi00rsSamgKZVI/jNp4xK8h/g+0KbZ+jB9yZ1BPZlIcP2AukIKSJb1QBa
+ LTwgw2pmdPqc1WA1094oW1qRemL0HkUEb2ybmrzffrYl1B8ReSH/aW+L4LUw6+PYFpVkRGsR9iV
+ eoPUqJacZrr/owZcDz1Y21pl/2zBijGhJAt7fuxLb74c/0E3+fJFy6uzMCboZzCs0e6bGYA==
+X-Received: by 2002:a05:7301:1827:b0:34c:e77c:f92f with SMTP id
+ 5a478bee46e88-3515de87218mr3185251eec.37.1791405868412; 
+ Wed, 07 Oct 2026 13:44:28 -0700 (PDT)
+X-Received: by 2002:a05:7301:1827:b0:34c:e77c:f92f with SMTP id
+ 5a478bee46e88-3515de87218mr3185219eec.37.1791405867771; 
+ Wed, 07 Oct 2026 13:44:27 -0700 (PDT)
 Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
  [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-3515afa61e8sm10632193eec.22.2026.10.07.13.36.02
+ 5a478bee46e88-3515afab2c5sm8924118eec.21.2026.10.07.13.44.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2026 13:36:04 -0700 (PDT)
-Message-ID: <51f90aaa-e37b-490f-a207-a31f14407df8@oss.qualcomm.com>
-Date: Wed, 7 Oct 2026 13:36:02 -0700
+ Wed, 07 Oct 2026 13:44:27 -0700 (PDT)
+Message-ID: <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
+Date: Wed, 7 Oct 2026 13:44:25 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 7/8] target-info: Replace handwritten architecture checks
- with generated code
+Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
 To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
@@ -114,39 +113,39 @@ Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  <marcandre.lureau@redhat.com>, Steven Lee <steven_lee@aspeedtech.com>,
  Alexander Bulekov <alxndr@bu.edu>, Darren Kenny <darren.kenny@oracle.com>
 References: <20261007115253.328-1-luoyonggang@gmail.com>
- <20261007115253.328-8-luoyonggang@gmail.com>
+ <20261007115253.328-9-luoyonggang@gmail.com>
 From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
-In-Reply-To: <20261007115253.328-8-luoyonggang@gmail.com>
+In-Reply-To: <20261007115253.328-9-luoyonggang@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfX5WkJdaSZHY2H
- +g/6D9R+udlvWlaRer8sfwZEcLi4pDQnEETQXnCIpduNkhPLvqJmqcORzhhUc1vmTV2QQaNZv1t
- yK5nA+AIz3ZhQGNpGjtvpQjlDOMr9cs=
-X-Proofpoint-GUID: Dd6THKaOx9YJYW2dX1s6Yc3xS6Hwl0f8
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfX8o8iRTffgqdP
- 41zZUnODYWuKvx7ZinrwEfNT55aF6r//IVFeSEGetgyMdww12jeZeC07g3HAdkPzSm3P7o22K5X
- H2SBlngKSfnWFYyP16d+CZopdzq3wo/2eG4PQE4hhrjGrVRgPE5kYV/uqaZPVhQc/pI3aY/q/kO
- S38znUKVoA3Hvw3NOeUsAxu7JuzOY+td9j4P9ZbHYemzckgCPY2gyVwvUrJiR8Cb5AmyR0SsVk3
- AzZ82KhvaiTuUMoAhqJMFZ1bsJQMNhZ+Rzw7J2AMUuSwmUJE0LPwwQ31xMJzGFPmBG2J0MozMM6
- 57cnKamIYc1F80BC9Oz0p6/+mRJ2Uf6E98OFydm5Xq7G01XeuMkB3QpgSFe/OPo4OJj/llTwRHk
- Or41079lmsvm3wMP+hqluKpVyurewFx/+W7daI7perp1y0lqcf243SknujtnQK9JnsOo3Ml4d7r
- UQffDMLfjPPWxLcSU8Q==
-X-Proofpoint-ORIG-GUID: Dd6THKaOx9YJYW2dX1s6Yc3xS6Hwl0f8
-X-Authority-Analysis: v=2.4 cv=a6+lZkSF c=1 sm=1 tr=0 ts=6ac6ad36 cx=c_pps
- a=Uww141gWH0fZj/3QKPojxA==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfXy/6eytnGwfoH
+ 6ydFZjmAXQ6jLVLUWHPwkEyhwwmq6GpitbCMvtSjsxKrDNPmBCb3o3WzJ5WJ/tbGJpT/PZTm1NU
+ gKNPPyZ2HsMVsk6t0/mofgofhvwJHAg=
+X-Authority-Analysis: v=2.4 cv=J4I/fwnS c=1 sm=1 tr=0 ts=6ac6af2d cx=c_pps
+ a=wEP8DlPgTf/vqF+yE6f9lg==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=pGLkceISAAAA:8 a=LWoprZIH4OQ42_rLm-wA:9 a=QEXdDO2ut3YA:10
- a=PxkB5W3o20Ba91AHUih5:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=pGLkceISAAAA:8 a=OUyg3ATPP_6f84ILN7EA:9 a=QEXdDO2ut3YA:10
+ a=bBxd6f-gb0O0v-kibOvt:22
+X-Proofpoint-ORIG-GUID: qLT86vEZ-V2k5u0qgUgwqE7y2_QVL64Z
+X-Proofpoint-GUID: qLT86vEZ-V2k5u0qgUgwqE7y2_QVL64Z
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfX0tVFgAppn0B1
+ 60/5QJ6dXPxH/KAG6z4ux6sqPXmPLFxJ8LThK0ZWnXIsfcxa39z2stexQ9yFoUHGd7NJRrNINk/
+ XY+Od5lSFhDIwzVl2sHLJefQ306SkZMOLyvwvhWQToxHpj6FHdk39hH4wi7Ul1yIQaEGLBJYAzF
+ DMFPCCU2L5u1gMJUei7kERdhrjjhiqNS5Qtu5qSCLj+1bdyqACHk2BN5hAG+MKzEhHukvhBgZb2
+ dQ7nnQ6b6xcDQz8DdNZnhet4DdW/fJ5D+5V9aX9SZmWJauKpakmeNfK2Tr336x2qX9Tw52O8ID5
+ W1bbhMvv6AffJBy+WLsq68oAbJFrKMGw++WrIgc6cKep0AoHTQ2F/nxy8pY3ZC+ooc0vqUS2cRE
+ NdqEsAjazhQ1XAvCCK/cu96lMSVZEHbZG3oe9xVvRuQKzajvy+Q8bCJYiaJKOwWZjNEF2ZsmBhz
+ oDLG/fzBtsCNweHwIlg==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-07_06,2026-10-06_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 adultscore=0 suspectscore=0 malwarescore=0
- lowpriorityscore=0 bulkscore=0 spamscore=0 clxscore=1015 impostorscore=0
- phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
+ impostorscore=0 adultscore=0 suspectscore=0 lowpriorityscore=0
+ priorityscore=1501 bulkscore=0 phishscore=0 clxscore=1015 malwarescore=0
+ spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
  definitions=main-2610070082
 Received-SPF: pass client-ip=205.220.168.131;
  envelope-from=pierrick.bouvier@oss.qualcomm.com;
@@ -174,36 +173,232 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/7/2026 4:48 AM, Yonggang Luo wrote:
-> Add scripts/gen-target-info.py to generate declarations and definitions
-> for exact-target and base-family architecture checks from system target
-> names and their TARGET_BASE_ARCH values.
+> Change TypeInfo.is_available to the new TypeIsAvailable type, which
+> takes a const TargetInfo *. Registration passes target_info(), so
+> behavior is unchanged. object.h only forward-declares TargetInfo.
 > 
-> Provide target_is_<arch>() and target_is_base_<family>() checks for an
-> explicit TargetInfo. Retain target_<arch>() and target_base_<family>()
-> as wrappers using the current target.
-> 
-> Wire the generator into Meson using all system target definitions so
-> the available checks do not depend on --target-list.
+> Switch the existing users (raspi, raspi4b, ast27x0 evb and fc) and the
+> generated machine parents to the matching target_is_<arch> helpers.
 > 
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
->  include/qemu/target-info.h | 76 ++++-------------------------
->  meson.build                | 16 ++++++
->  scripts/gen-target-info.py | 99 ++++++++++++++++++++++++++++++++++++++
->  target-info.c              | 62 +-----------------------
->  4 files changed, 125 insertions(+), 128 deletions(-)
->  create mode 100644 scripts/gen-target-info.py
+>  hw/arm/aspeed_ast27x0-fc.c  |  2 +-
+>  hw/arm/aspeed_ast27x0_evb.c |  4 ++--
+>  hw/arm/raspi.c              |  4 ++--
+>  hw/arm/raspi4b.c            |  2 +-
+>  hw/arm/virt.c               |  4 ++--
+>  hw/m68k/virt.c              |  4 ++--
+>  hw/or1k/virt.c              |  2 +-
+>  include/qom/object.h        | 12 +++++++++++-
+>  qom/object.c                |  3 ++-
+>  9 files changed, 24 insertions(+), 13 deletions(-)
 > 
+> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+> index 73362b60d2a..8a7c6a116ac 100644
+> --- a/hw/arm/aspeed_ast27x0-fc.c
+> +++ b/hw/arm/aspeed_ast27x0-fc.c
+> @@ -234,7 +234,7 @@ static const TypeInfo ast2700fc_types[] = {
+>          .parent         = TYPE_MACHINE,
+>          .class_init     = ast2700fc_class_init,
+>          .instance_size  = sizeof(Ast2700FCState),
+> -        .is_available   = target_aarch64,
+> +        .is_available   = target_is_aarch64,
+>      },
+>  };
+>  
+> diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.c
+> index 460c9ff0d2e..02a8cff1d9d 100644
+> --- a/hw/arm/aspeed_ast27x0_evb.c
+> +++ b/hw/arm/aspeed_ast27x0_evb.c
+> @@ -75,13 +75,13 @@ static const TypeInfo aspeed_ast27x0_evb_types[] = {
+>          .name          = MACHINE_TYPE_NAME("ast2700a1-evb"),
+>          .parent        = TYPE_ASPEED_MACHINE,
+>          .class_init    = aspeed_machine_ast2700a1_evb_class_init,
+> -        .is_available  = target_aarch64,
+> +        .is_available  = target_is_aarch64,
+>      },
+>      {
+>          .name          = MACHINE_TYPE_NAME("ast2700a2-evb"),
+>          .parent        = TYPE_ASPEED_MACHINE,
+>          .class_init    = aspeed_machine_ast2700a2_evb_class_init,
+> -        .is_available  = target_aarch64,
+> +        .is_available  = target_is_aarch64,
+>      }
+>  };
+>  
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index fadbacb2534..22b06c6ca22 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -403,12 +403,12 @@ static const TypeInfo raspi_machine_types[] = {
+>          .name           = MACHINE_TYPE_NAME("raspi3ap"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi3ap_machine_class_init,
+> -        .is_available   = target_aarch64,
+> +        .is_available   = target_is_aarch64,
+>      }, {
+>          .name           = MACHINE_TYPE_NAME("raspi3b"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi3b_machine_class_init,
+> -        .is_available   = target_aarch64,
+> +        .is_available   = target_is_aarch64,
+>      }, {
+>          .name           = TYPE_RASPI_MACHINE,
+>          .parent         = TYPE_RASPI_BASE_MACHINE,
+> diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+> index 566d64572db..a1dc477f25e 100644
+> --- a/hw/arm/raspi4b.c
+> +++ b/hw/arm/raspi4b.c
+> @@ -121,7 +121,7 @@ static const TypeInfo raspi4b_machine_type = {
+>      .parent         = TYPE_RASPI_BASE_MACHINE,
+>      .instance_size  = sizeof(Raspi4bMachineState),
+>      .class_init     = raspi4b_machine_class_init,
+> -    .is_available   = target_aarch64,
+> +    .is_available   = target_is_aarch64,
+>  };
+>  
+>  static void raspi4b_machine_register_type(void)
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9d192515d85..18160f7fad3 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -132,7 +132,7 @@ static void arm_virt_compat_default_set(MachineClass *mc)
+>          .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
+>          .parent = TYPE_VIRT_MACHINE, \
+>          .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
+> -        .is_available = target_base_arm, \
+> +        .is_available = target_is_base_arm, \
+>      }; \
+>      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
+>      { \
+> @@ -4430,7 +4430,7 @@ static const TypeInfo virt_machine_info = {
+>           { TYPE_HOTPLUG_HANDLER },
+>           { }
+>      },
+> -    .is_available = target_base_arm,
+> +    .is_available = target_is_base_arm,
+>  };
+>  
+>  static void machvirt_machine_init(void)
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index e52546e4fab..ad2a43ef3fb 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -327,7 +327,7 @@ static const TypeInfo virt_machine_info = {
+>      .parent       = TYPE_MACHINE,
+>      .abstract     = true,
+>      .class_init   = virt_machine_class_init,
+> -    .is_available = target_m68k,
+> +    .is_available = target_is_m68k,
+>  };
+>  
+>  static void virt_machine_register_types(void)
+> @@ -355,7 +355,7 @@ type_init(virt_machine_register_types)
+>          .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
+>          .parent = MACHINE_TYPE_NAME("virt"), \
+>          .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
+> -        .is_available = target_m68k, \
+> +        .is_available = target_is_m68k, \
+>      }; \
+>      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
+>      { \
+> diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
+> index a3ff903839b..89fb786641f 100644
+> --- a/hw/or1k/virt.c
+> +++ b/hw/or1k/virt.c
+> @@ -559,7 +559,7 @@ static const TypeInfo or1ksim_machine_typeinfo = {
+>      .parent     = TYPE_MACHINE,
+>      .class_init = openrisc_virt_machine_init,
+>      .instance_size = sizeof(OR1KVirtState),
+> -    .is_available = target_or1k,
+> +    .is_available = target_is_or1k,
+>  };
+>  
+>  static void or1ksim_machine_init_register_types(void)
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index 4c0645817a5..7d52a15f6b8 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -17,6 +17,7 @@
+>  #include "qapi/qapi-builtin-types.h"
+>  #include "qemu/module.h"
+>  
+> +typedef struct TargetInfo TargetInfo;
+>  struct TypeImpl;
+>  typedef struct TypeImpl *Type;
+>  
+> @@ -117,6 +118,15 @@ typedef void (ObjectUnparent)(Object *obj);
+>   */
+>  typedef void (ObjectFree)(void *obj);
+>  
+> +/**
+> + * typedef TypeIsAvailable:
+> + * @ti: TargetInfo to test.
+> + *
+> + * Returns whether a type is available for @ti. Typical implementations
+> + * are target_is_*().
+> + */
+> +typedef bool (TypeIsAvailable)(const TargetInfo *ti);
+> +
+>  #define OBJECT_CLASS_CAST_CACHE 4
+>  
+>  /**
+> @@ -498,7 +508,7 @@ struct TypeInfo
+>      void (*class_base_init)(ObjectClass *klass, const void *data);
+>      const void *class_data;
+>  
+> -    bool (*is_available)(void);
+> +    TypeIsAvailable *is_available;
+>      const InterfaceInfo *interfaces;
+>  };
+>  
+> diff --git a/qom/object.c b/qom/object.c
+> index 96498f3d001..253b9562b41 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -15,6 +15,7 @@
+>  #include "qom/compat-properties.h"
+>  #include "qom/object.h"
+>  #include "qom/object_interfaces.h"
+> +#include "qemu/target-info.h"
+>  #include "qemu/cutils.h"
+>  #include "qemu/memalign.h"
+>  #include "qapi/visitor.h"
+> @@ -167,7 +168,7 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
+>          abort();
+>      }
+>  
+> -    if (info->is_available && !info->is_available()) {
+> +    if (info->is_available && !info->is_available(target_info())) {
+>          return NULL;
+>      }
+>  
 
-If I had to pick between simple and manual boilerplate, and a python
-script generating C code, I would tend to choose the former.
-In this case, the set of targets is bounded, so manual code is really
-the way to go for me.
+```
+info->is_available(target_info())
+```
 
-If the repetition is really unbearable, macros are a way to deal with
-this. However, note that we will not need all the target_X to be
-defined, so I would prefer to not see any new variant added as long as
-it's not used.
+or
+
+```
+is_available() {
+  TargetInfo ti * = target_info();
+  ...
+}
+```
+
+Are doing the exact same thing today.
+
+So what is the future goal requiring to introduce this?
+
+It's something we asked multiple times, and until we don't have a short
+series doing this change + a single and minimal modification showing the
+reason, I will still be asking.
+
+If the goal is to implement some sort of classification for
+machines/cpus, I would suggest to just send a simple series doing this
+change (and only this - no additional cleanups/refactoring), and an
+example for a single machine + cpu, so we can talk about it.
 
 Regards,
 Pierrick

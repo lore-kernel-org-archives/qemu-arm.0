@@ -4,103 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37FCDCA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 12:00:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D88DCA5FF1
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 12:49:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEQK4-00050l-NJ; Wed, 07 Oct 2026 08:00:38 -0400
+	id 1xER5N-0008Pv-Pf; Wed, 07 Oct 2026 08:49:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEQJp-0004r1-3J
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:00:23 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xER5F-0008M6-OX
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:49:25 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEQJm-0000Lg-QG
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:00:20 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-48b03f23305so3404096f8f.1
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 05:00:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xER5D-00062D-V8
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 08:49:21 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-676858d42f8so1808543d50.2
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 05:49:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791377357; cv=none;
+ d=google.com; s=arc-20260327;
+ b=P4uqP0Fydy0qML+Vr+CYZY44fRtZCIpcnqdvSMzQyaNCdQRt+1EQE2UP2VbMsRhtF5
+ B9bv3GRR0aNKlAA0ZAq/dZDB4jJ8DKQWYzN+ohl6ZcTY+fhJYRByqlN5ocg9pM486809
+ zJRlT5bG1DjrU4LZftZ2cNhS4Prj+YB9lb/2mcT6VvK5iQFLFmb5piCJmxn2OvvPjrDr
+ LnHvkV/j6HOhLIdvUTGTpmYArO4ZQA6E8OxJvK184kaN/NujtDGKpVhVlNCDBNJybnxQ
+ AxXLzwpWEGx9/U9yuU1geVPOloHmc0I9ti9sJQuLxbb9IGqRv+dhzT+ph7W1iTcuNXWL
+ t4eA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=R2BoU3XEBISl6YKdYiPiNymMCWepUOJbwJbVJGJfbUk=;
+ fh=BurxIY2/rMOeReHmZzoR6lDAr3ZsZpwHSOJwZ+HT+Hc=;
+ b=Ic8pCY7XMMWQqTCXl731JizaWhHGXvX9Q/nxldQJeQFRTILxDjHZCqoTZ3oZsK7hxG
+ tZF7DUd2GW94KfUDzSe1wasgY27n/XLxx0E0tlbSf73p+/huR/+P9WQiOJj9g60TBTz2
+ IEqbqFxnmPXupqvUslwkgxhr8IirkeCrnjsFprvxsf727XidWsO8GJ9VD/ADPSFQF6Ve
+ 4UOuHtsXLYxDjh9NtWeWS+cEZj3hvaR+TG2mZnSzdIrWsqP+J5+NzYyAKUYt8p3cc3NE
+ 4vHSNrYs3ctBFuRlP87P8Tnh2i049Zn+tOU7I362AVE0YZ8Nc5CUz0Fc5te9GFl7yUkw
+ neBQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791374417; x=1791979217; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ d=linaro.org; s=google; t=1791377357; x=1791982157; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=8IM2yFcIuUTlPPR93lMuCwkoZS9UdQ+IlbsfQ+DAECU=;
- b=MYgdAI7fheW1ajYEGhIPEb7gpl9I4dRxdJInskz1HgKAyTCqMZJPlzfarQ6UJ68nRa
- nBo7JZPzwjXIsWfssuBHruANPwsUwShpynq2aD1W/yE8FDi4G/iZgKQRh/RjgRtiZVPk
- QFBns5hmalTdDNPfozIrq+mTKKZQ4mVISx+/EVj2r8LPIyKm1YU8vJv0Qg2vlh+c3ppY
- KYIX3Pt6g3NaJBbsfRG2sUYiEdgOLtp0G5eFbES/eaAL8WXaSIpcEJsT+YN2k8xwZIj8
- YKKXGvbfVFZB29weRcdQHSTS3tgx5NXUFIY2pf0Pxxe5oOEH09e3aihKnRb5RVnPplGg
- RCFw==
+ bh=R2BoU3XEBISl6YKdYiPiNymMCWepUOJbwJbVJGJfbUk=;
+ b=HTVS2xZaozmaOmb3o1q1dEgBi2smLj9/fxmOy7EPRYPQAh+9G6mB+4AQim6T/Ysyd1
+ tImItbBuCBABIdfLFu1RJ9vsMq1hWmhc/8Ua7RYTRzyX1ZuPB58IH7Eg4DEf+0KQqIqt
+ KQEI+7TrJpR4hNeswuLUsmh09RrkWrOsIwGtv8RIqzFkcynj6NOAttEWpl+tqpWJLXxA
+ FpFS9rsratKfMRk1HQGqCC/xyNmXlw76QufEKxFpXtig6wLPd6X1XbQtYr9nBCiNwW66
+ vzesoBl8FjmKaSPRzr9CiX3205lSMpdqWPztNwIn8SvKIur56IlOHMEtEVwz96Y96Xop
+ FG8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791374417; x=1791979217;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1791377357; x=1791982157;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=8IM2yFcIuUTlPPR93lMuCwkoZS9UdQ+IlbsfQ+DAECU=;
- b=IDAdVFlR6G5o3+w+nEIqb/3svdZ7W4x9ytGaxdRHWaCIh1h2nOttExjgwnIH12TnMv
- dTyaqcCsvYmm7hln/MCEqRP6sEAOhgyQkesYyOBA0lqpoNddZO1qaKrXdSSMsqP7hDfg
- tBEEvVFocXCd44PS32MVXaU9OuF4EhgXuWm56wgxtxd7f//QttbBaQNw1z3wQHENCa82
- 7r8f46w8C3HLPKLqnlGJ1RcykZjCrRtXtDHOHApnZEiH4LO7b2nxHuXWB2OZvgZjD04m
- RUuPZX1ersTlCJqgmkNJyEySALF4F6ylG0LIdEhTcyVw3fWZoc8bcAHHKKVQ+bDjH9A0
- 4I/g==
+ bh=R2BoU3XEBISl6YKdYiPiNymMCWepUOJbwJbVJGJfbUk=;
+ b=VeIANXH0kPuX9wVpS0wXKuQ1FpWtkMee8DfrdtoJq4mEaQ9HmkNBnGzyMHTBCcsW7d
+ VqgA7PaXULKz0jmrqQYSLw6hLYhZcIUupDR4WRlzY9iEyn+BYJDvkxg70fjGTJHb+9Bc
+ 4odSCQWp0Te75ZF/G7H1vJL5BTucYpDuOFufEEfGP5U1/5QJtN+QHJ3Mjl95gh5UbT/l
+ 3KbDItXp+xHiNcw6zNSZzSDoMiHSB1rcLftHeAGy79gWKk77pOkm+ADKdeG7vLiOSQ7W
+ L7GwExGu0iTjSiCrICTM2uQzBYupqdHsrDJf8UPDo9TUQUBOhJEh3XMPU1EJ16L7QKk/
+ kPyA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwmKUbPVlT7qY6He4oxFuBlOTI4V6BDoyJ0wG59RGKmP2RX8iatM78q1xV5XJiOUAX7VIFWHDhxng==@nongnu.org
-X-Gm-Message-State: AFq9FYLzcl/RRGkdUhEZkKNJ5t5oVQIZ1pXPUBrBy7r0RcGNw25xSVus
- 2dWe5C6JQmwMnBoeDqNykUd6V29JGaKXMeSFjF1l58J/uRP4Z3UDAwGj
-X-Gm-Gg: AYBFou0plPxriQ9Z3OdXFlHOzIznUsDGN+63JGHd88Vmav5mRVMAqiEnIRyZzZQ4klr
- DDpSOpHrgcYKikM8jY+UrlQrLxhH1irP9hocPMHt6RvMdH3rY0ERcgTfn/hWuNoYoU4MzKhdyvr
- vd4G0igMWf29XvAtEzZ92fmz4Jd6Wq5idBLqZu+H6OpvLXc//aMvjlApQhPHw2IztcN4o/rA8Ke
- F40xMn3ChvJdFpo8gwq7lYuY5F5zbq5iGAQFeQQVAl5i5O6V0BxPCEaEbzMADoLYrhm0juT7nrr
- 6l2yT5Efv9IU5qU8ydLJ0GGT0HAr3NSadypkYpR7UIFMg0cLycFsfoskfIm4MnebprtIUWQAKV0
- ifVhukgR6/DuedIH5Eehnb+o0UZwe3ai5VzssLetB3sZuIhAXOVltU3Bxws1Iyu5a1FDpr3AuLM
- jbVvnO5hmTNXCChq/lOWFbNZ/jHfXZL1TJQF1GL6j5OOmAzKWFBwRENd55ZrgnOeJs6Y/im0MeW
- +2LIjVpUlcCV5eg0ep/SQJbAYNjda2rHTJrGAAAkz+laSmCxShiJ5G9dfUe31RghlMFepx/NnBU
- uObEYw==
-X-Received: by 2002:a05:6000:25f6:b0:48c:67d6:a87a with SMTP id
- ffacd0b85a97d-48c72786a1emr4216404f8f.32.1791374416555; 
- Wed, 07 Oct 2026 05:00:16 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (p200300faaf09ae00acd063e77b8fcf27.dip0.t-ipconnect.de.
- [2003:fa:af09:ae00:acd0:63e7:7b8f:cf27])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c71d3f05asm7006854f8f.55.2026.10.07.05.00.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2026 05:00:15 -0700 (PDT)
-Date: Wed, 07 Oct 2026 12:00:12 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-CC: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bin Meng <bin.meng@processmission.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-arm@nongnu.org,
- Jason Wang <jasowangio@gmail.com>, Alistair Francis <alistair@alistair23.me>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_12/31=5D_hw/arm/fsl-imx?=
- =?US-ASCII?Q?25=3A_Derive_from_TYPE=5FSYS=5FBUS=5FDEVICE?=
-In-Reply-To: <9fff40ae-6378-41c8-9cff-74d4a15645de@oss.qualcomm.com>
-References: <20261006083445.30362-1-shentey@gmail.com>
- <20261006083445.30362-13-shentey@gmail.com>
- <d63caf07-24f1-4911-b0f9-f375c48b6159@oss.qualcomm.com>
- <1EAADDBD-1ED9-47BA-81AA-E6539880B7E4@gmail.com>
- <9fff40ae-6378-41c8-9cff-74d4a15645de@oss.qualcomm.com>
-Message-ID: <A8B6BD08-C23F-4029-91F6-575D04C7C3D2@gmail.com>
+ AKwUvByzr5jkJKCEI1Bps5X9AJmyKKUAVBIgnIlKVvIZLA5iQNyUMW3viSuJL60Zx1nkx0+azP6BKTSWZQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJ2kfzT5qCjoT0JoEU+uIXnSvAeI20h1IlGei/+K6fK+rpg3NgA
+ 2cJHkHyX9lrok9q3IeNAo0u4N3gWn1BobHsdbsnk4JIGOnOx6hQWVaJL5ROURoRae/TRnIXoHUn
+ EyTeTnqbz8IENIQT+8v2xCi94IScdaqGipQG1KCZWUSG35Zh2GHrQd2P2lw==
+X-Gm-Gg: AYBFou0Ov6XSvcL2pEh+jIHx7kXpSQunNPjteT1teIv1mWPqxQHZlkCWfmZl4ETTxqN
+ 7ted931XFocXdE/9fXF68VIYYsIwL06QjLxzmpmvaY7D0O3e9t6J0fqnUVt8tdGMyfOAa4vjsbx
+ 9xKvciOwn0+sRGsLZRB9/yyfy6j68nRR1tE7uEBKDDRK71k9BPLYognPKYZiLc0F95F4Js9x2n1
+ Dpvi0RoNSSkc9fb1AMOT814KtIJ1KsQAlXteZ4kjk4231EHNBE1aLYnCuGcAGCz9se7kpuDh8G2
+ NSGktBDPkHXCOgKOnUg+A+8mn5AFMihlj+LzWsZOugyKDFP4pnNj3urqf9PY6ovBtjVXAeMSR7y
+ /he25CNngXpGdy97IlWxbcj8UtR1P0YipsoN1zTw=
+X-Received: by 2002:a05:690e:4197:b0:677:c52c:9c47 with SMTP id
+ 956f58d0204a3-6790a457495mr1104695d50.136.1791377356613; Wed, 07 Oct 2026
+ 05:49:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+References: <20261004090500.3082641-1-bin.meng@processmission.com>
+ <20261004090500.3082641-2-bin.meng@processmission.com>
+ <CAFEAcA_U-Aoo1MmvAm61_HxhbA+1A-YX1g+oh=1THsi9QKBeOg@mail.gmail.com>
+ <CAEUhbmWxS3XRfP4-Uj8MuMoeBb05YCyhHAzJc+_My6kj7L_qKA@mail.gmail.com>
+In-Reply-To: <CAEUhbmWxS3XRfP4-Uj8MuMoeBb05YCyhHAzJc+_My6kj7L_qKA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 7 Oct 2026 13:49:05 +0100
+X-Gm-Features: AclHuK-YcxSX-08uOhRkB6sdmLOVkJGjrnvgM5J94oEA0f7-LKUhkXZwXWZClwQ
+Message-ID: <CAFEAcA_KfCt-K3jb1+AzM74FH7x_ZfuzT7puJ4S=-p_C8SCQVQ@mail.gmail.com>
+Subject: Re: [PATCH v3 01/10] hw/cpu: a15mpcore: Model the reserved page as
+ RAZ/WI
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -118,80 +124,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-Am 6=2E Oktober 2026 10:01:51 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
-hilmd@oss=2Equalcomm=2Ecom>:
->On 2026-10-06 11:47, Bernhard Beschow wrote:
->>=20
->>=20
->> Am 6=2E Oktober 2026 09:26:52 UTC schrieb "Philippe Mathieu-Daud=C3=A9"=
- <philmd@oss=2Equalcomm=2Ecom>:
->>> On 6/10/26 10:34, Bernhard Beschow wrote:
->>>> Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset up=
-on
->>>> machine reset=2E
->>>>=20
->>>> Reviewed-by: Bin Meng <bin=2Emeng@processmission=2Ecom>
->>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->>>> ---
->>>>    include/hw/arm/fsl-imx25=2Eh | 5 ++---
->>>>    hw/arm/fsl-imx25=2Ec         | 7 +------
->>>>    hw/arm/imx25_pdk=2Ec         | 2 +-
->>>>    3 files changed, 4 insertions(+), 10 deletions(-)
->>>>=20
->>>> diff --git a/include/hw/arm/fsl-imx25=2Eh b/include/hw/arm/fsl-imx25=
-=2Eh
->>>> index b68d4334a0=2E=2E4bb4d5b3e5 100644
->>>> --- a/include/hw/arm/fsl-imx25=2Eh
->>>> +++ b/include/hw/arm/fsl-imx25=2Eh
->>>> @@ -29,6 +29,7 @@
->>>>    #include "hw/sd/sdhci=2Eh"
->>>>    #include "hw/usb/chipidea=2Eh"
->>>>    #include "hw/watchdog/wdt_imx2=2Eh"
->>>> +#include "hw/core/sysbus=2Eh"
->>>>    #include "system/memory=2Eh"
->>>>    #include "target/arm/cpu=2Eh"
->>>>    #include "qom/object=2Eh"
->>>> @@ -45,10 +46,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX25State, FSL_IMX2=
-5)
->>>>    #define FSL_IMX25_NUM_USBS 2
->>>>      struct FslIMX25State {
->>>> -    /*< private >*/
->>>> -    DeviceState parent_obj;
->>>> +    SysBusDevice parent_obj;
->>>>    -    /*< public >*/
->>>>        ARMCPU         cpu;
->>>>        IMXAVICState   avic;
->>>>        IMX25CCMState  ccm;
->>>> diff --git a/hw/arm/fsl-imx25=2Ec b/hw/arm/fsl-imx25=2Ec
->>>> index 7f65f4ca4b=2E=2Eefb22359c5 100644
->>>> --- a/hw/arm/fsl-imx25=2Ec
->>>> +++ b/hw/arm/fsl-imx25=2Ec
->>>> @@ -317,16 +317,11 @@ static void fsl_imx25_class_init(ObjectClass *o=
-c, const void *data)
->>>>        device_class_set_props(dc, fsl_imx25_properties);
->>>>        dc->realize =3D fsl_imx25_realize;
->>>>        dc->desc =3D "i=2EMX25 SOC";
->>>> -    /*
->>>> -     * Reason: uses serial_hds in realize and the imx25 board does n=
-ot
->>>> -     * support multiple CPUs
->>>> -     */
->>>> -    dc->user_creatable =3D false;
->>>=20
->>> Can we explain this change?
->>=20
->> SysBus devices aren't user-creatable, are they?
+On Wed, 7 Oct 2026 at 11:09, Bin Meng <bmeng.cn@gmail.com> wrote:
 >
->"Remove clearing user-creatable which is implicit for
-> SysBus-based devices" comment would have cleared any
-> doubts=2E
+> Hi Peter,
+>
+> On Wed, Oct 7, 2026 at 4:41=E2=80=AFPM Peter Maydell <peter.maydell@linar=
+o.org> wrote:
+> >
+> > On Sun, 4 Oct 2026 at 10:05, Bin Meng <bin.meng@processmission.com> wro=
+te:
+> > >
+> > > U-Boot's shared i.MX6 identification code reads PERIPHBASE + 0x4 on
+> > > MCIMX6UL-EVK. The first private peripheral page is currently unmapped=
+,
+> > > so that access causes a data abort before the console is ready.
+> > >
+> > > The GIC-400 register map reserves offsets 0x0000 through 0x0fff and
+> > > specifies read-as-zero, write-ignored accesses to reserved locations.
+> > > Model that page in the private peripheral device.
+> > >
+> > > Reference: GIC-400 TRM (ARM DDI 0471B), sections 3.1 and 3.2
+> > > https://documentation-service.arm.com/static/5e8f15e27100066a414f7424
+> >
+> > The Cortex-A15's internal GIC isn't a GIC-400, as far as I know.
+>
+> The Linux kernel says it is a GIC-400 on i.MX6UL
+> https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/nxp/imx/i=
+mx6ul.dtsi#L158
+>
+> intc: interrupt-controller@a01000 {
+>     compatible =3D "arm,gic-400", "arm,cortex-a7-gic";
 
-All patches are reviewed now, thanks! So this series probably won't need a=
- respin in which case I had incorporated above sentence into the commit mes=
-sage myself=2E I'm fine if this got done when merging=2E
+Ah, is this a Cortex-A7? The TRM for the A7 says
 
-Best regards,
-Bernhard
+https://support.arm.com/documentation/ddi0464/f/Generic-Interrupt-Controlle=
+r/GIC-functional-description/GIC-memory-map?lang=3Den#CHDEBJAJ
+
+"Access to reserved regions can result in a data abort exception to the
+requesting processor."
+
+I'm not sure why that vaguely says "can" rather than "will", or
+whether it's significant that the language is softer than the
+A15 TRM uses.
+
+In any case, I think the DTB compat strings the kernel DTB uses
+aren't necessarily indications of what the real hardware is.
+See the commit message in kernel commit 61efb56e30:
+
+    The arm,gic-400 compatible is probably the best matching string for the
+    GIC in most modern SoCs, but was only introduced later into the kernel.
+    For historic reasons and to keep compatibility, some SoC DTs were thus
+    using a combination of this name and one of the older strings
+
+[i.e. "arm,gic-400", "arm,cortex-a7-gic"]
+
+Kernel code correctly using the DTB binding will never touch the
+reserved area, so it's not important that the DTB binding be able
+to distinguish whether it faults or not.
+
+> > > Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> >
+> > RAZ/WI doesn't match the documented behaviour of the Cortex-A15
+> > for this region in its TRM:
+> >
+> > https://support.arm.com/documentation/ddi0438/i/generic-interrupt-contr=
+oller/gic-functional-description/gic-memory-map?lang=3Den
+> >
+> > "Read access to reserved regions results in a Data Abort exception to
+> > the requesting processor. Write access to reserved regions results in
+> > the assertion of nINTERRIRQ."
+> >
+>
+> It seems the A15 manual and GIC-400 manual are contradictory. I am not
+> sure how to proceed.
+
+Do we have real hardware where we can check what the actual
+behaviour is? It's not unknown for TRMs to have errors, especially
+in areas where the documentation is really saying "don't do this"
+and the question is what exactly happens when software does
+something it shouldn't. If we're confident the TRM documentation
+is wrong we can follow the actual behaviour, as long as we have
+some clear commentary about it.
+
+Also, has anybody filed a bug against u-boot? This is clearly
+a software bug to be trying to read this address at all. We
+should record that bug issue number in the commit message here.
+
+thanks
+-- PMM
 

@@ -4,123 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EF4BCA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 21:42:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 201B4CA6009
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 22:06:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEZP6-00035F-Rm; Wed, 07 Oct 2026 17:42:25 -0400
+	id 1xEZla-0005ay-BU; Wed, 07 Oct 2026 18:05:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEZP3-0002xI-SR
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 17:42:23 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEZOz-0001EQ-73
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 17:42:20 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-6a642495d81so3760868a12.2
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 14:42:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791409335; cv=none;
- d=google.com; s=arc-20260327;
- b=MYcKpp13cRxdUsip8j7FAwdxLyVh7RyR00qkwhoMBDpwcPt9rvSTMYEyo6hUV7Dq2E
- e/ZJA3j5pYQzaEmbUXAVCG2oXvOgbCmGaa5pdkChU531IKfz7zwEBNKK+zK3F0OHbIGU
- jDdxSdBWxHXIw4NCbRy2nFZ5bvR3lGrtnfsd3AMOWmD1Nv/ae/dk0XpW1ec1D0eBipK/
- jWbidyn8ul0jLYyRigOV0BcQ8qNHRA63imZ0w8ucKW5sDuiCCnjgXnM477z0tnRmsUGh
- CbTn2gXyTeE427sCogq6ynCP1mh0jhYuoQF3r9WB6aol26AiZuhE/rOvWHUL1hz/QWEB
- Qynw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=ifvuOCNcDB8/LSO1lCX7Q/gMRQmkUUJ07GzL3LZ33z0=;
- fh=78ZGRKwQQFvCGTVx5EC4uKJspHbaT81C1jm10Ld8eSs=;
- b=C6/FoCnbsRqayF2OYcN6Kwyzqx98bls4J3S+JWQO2XhIfU/fBMB/MAKe2zS6Cbijz0
- zls946WJtYnytpLL+Req4Gt1J+9M/BO64LzbByLVLFrYDb4I/t4mAaUSmdTZB1qU1LZ0
- J5IFIczNbgItR2HTOwKNuhjJ83YALht0mkpEyV1D0rMAbr++Iy/C5hUiOeFGM9LSEBIi
- pDPWmadU6qt2MHFcYtElk/irs3HA6c5IUKVa2IHUL7LKXkfV0DB807EBmGX1CUso6ouJ
- pGs6f3FHQU483cjQArXa40TE/dzeOJUcj5AeQIcWqolbLiRFlkNlliVJer32mi7jfok6
- 9blg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xEZlW-0005Zu-N6
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 18:05:34 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xEZlR-00033O-Vh
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 18:05:34 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 697Lv2PS2099461
+ for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 22:05:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=qcppdkim1; bh=T/inq0ct7zbleLV0BfruSoQC
+ Rb4eLVpeD4pW786XTjs=; b=c4wkO+7FNSja4wp+vQSen1zD81ekxNfaWnXxNZdI
+ Y58cj6dfZLJ2W9VPPLwNVQv00s0mQbhyLpwXMOrlZE1elROgs2KoqUcJwIBwDZvF
+ ClFj2T6J278wlZZIrP3KN/oH5PzG7j/5Snd8ir1TQ1pDgmjKFHx0J4fTwpUumHSp
+ lVk2MoMi1aZkj2HCJzb6O6ubN0djo4PXVQ7JqHQuNkR3jAp2Fgedjb5Rv0EilBdU
+ ko9LNAVM7gJWmlQVMfIkqKPwd6kW1M96ftpqIcOJYh9yteuD/rUskK1Hjc1JliUL
+ NlRP4kK1O/FCBahDgvljGHSRzMYw9pASJuv/YJsod24RIw==
+Received: from mail-vk1-f200.google.com (mail-vk1-f200.google.com
+ [209.85.221.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5xefg1kh-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 22:05:25 +0000 (GMT)
+Received: by mail-vk1-f200.google.com with SMTP id
+ 71dfb90a1353d-5e8078ac577so119490e0c.3
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 15:05:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791409335; x=1792014135; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
+ d=oss.qualcomm.com; s=google; t=1791410724; x=1792015524; darn=nongnu.org;
+ h=in-reply-to:references:cc:to:from:content-language:subject
+ :user-agent:mime-version:date:message-id:content-type:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=ifvuOCNcDB8/LSO1lCX7Q/gMRQmkUUJ07GzL3LZ33z0=;
- b=mgd3HsQrFnfvgbtdBbS74FjGNLYB/w92nTCv0nP6VKwPfPtb2eAz28KEJs1Y6sGqPk
- tJ7JYi650Smc+33r1POvX8agzG+G5SMd+UxGNhSlMYQmAghCprLSnqYgA369+H1WAfxw
- CRUlIVI+eGE7LD+AGysGdiDBZRgmC4y/5OvBIdFTwgDtaiv2jn2F7aXEu05Kb2tFxl10
- fVTgO6EVfsoUNZz1h8ole3eRG1RCSF9GA+jBPq83RLctBftmJofKKEJyaFJ3a2zUji2i
- IE9a7yU9p6gSgYujL9pyPwL++xFCEK8DhBFFVoZXFf509JRA0lI3D7Ax84V0QQNyChoW
- 4GNA==
+ bh=T/inq0ct7zbleLV0BfruSoQCRb4eLVpeD4pW786XTjs=;
+ b=JDtep03JQPBsh6KigjpGde4NQWAEDRDM6yb+QjiJgNeV4rN0/kp9Z9BWPFa3pudPRH
+ S0BtkOsc5JYfsjQnVL1DXOiW9oUmYUBjSFbWoUY38zKuOFiopIsPIex6E+a5Z4zV7ZSn
+ rZmt5CGz6t4j7ZBDVMmMd3oJ9yNOFCFJfe+ULTFvCR1syD5FoZQIFjBAoas5MC8Fjdjr
+ bS0O2Zv/Em4sI9LnC9NFQMCfCwNXeNe0z+C+drEBRdILo/a+3S8iw/OAhMabvt9DSMxl
+ Ti4onZkAVfi0zHDP3ZMSYP8T2zjG/2ixJxRro1dP0W6YzAVri+2e9iAUKqeuvP8vOZ+A
+ Ljyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791409335; x=1792014135;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
+ d=1e100.net; s=20260707; t=1791410724; x=1792015524;
+ h=in-reply-to:references:cc:to:from:content-language:subject
+ :user-agent:mime-version:date:message-id:content-type:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=ifvuOCNcDB8/LSO1lCX7Q/gMRQmkUUJ07GzL3LZ33z0=;
- b=XnOCaac38iRdDCqE5eZfNYCPgNct7A0qK33gQL5h90u9D6QcftxX4HY0nYNZ7LULMC
- ysQtcHQssqau1ZuBPemBzI9gQ7jHGXcNwN6I7d+zb0KvekJtb3TSffu9eK8opFNxyzf0
- /tjJVPiUMeM96F9iVpUbWhPfY1Ye7iTsbjjLJsMiSYlIxPdVcMRtnmKnANC52L19QXI+
- hT2wB6RfsYJ/bzE/PN7DiYNMS86mbpIbFCqa0Aaf6SAxGJXbp+Gi9UHnpay1Fl4hFcbu
- 1KUqAfmMp76XUfx3h8FdydPQU+4doZTmSHm3vPz0LHw+6/v9pkbMzBtFSeBiLfjdw09q
- QNzg==
+ bh=T/inq0ct7zbleLV0BfruSoQCRb4eLVpeD4pW786XTjs=;
+ b=zmr615edgsxZ0EjN0XE8bu3kMJ9JKg6xZ/GkNfop8mffxevyCSJq9oCt+HDWvut6dQ
+ tbCT1dckeH88RxhfC96nxc0xSaYoDEdw7NpFIk/7+pmHJV81JxKYTbGTBGMNgdfuozGZ
+ H8sxX0VHnW5NoEBLynuvMZjHZhsNWf6pdpKawN4S0Pkt2Xdev9ZHn+xxJoBOpKjrOBWX
+ E/Em5/3GAxXj5F7Y1ylCklXxVux+nTrClIChLr1HPCI/2TPu8Y3kzd7U3XhmCJx+1tKH
+ OlnR2qhsCRE5Nb9MsgLg2yIOmOowP26DHmFFbeUDXRoMGSbBzg++DDO7CnpFeldaKuBA
+ qA+g==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzLQnZDbGO6oJfJ7RoQrOLZEwLuuBQ2Czmu7J8gLVwzFeQgr4IElHXdVLWdIQe033covJ0zASa2wA==@nongnu.org
-X-Gm-Message-State: AFq9FYLRdKmdP7RbhB3CqVja1qJx50VZBQ01ZIsiGDdZr1qnngLQwoTe
- bwIiNghZsWfKTboNCQWPmIlA8nwAAqn2IGqcAPI2LAr0V41UCybfo4Zr86ZI56ZvgzXxUaLrBID
- FK9fwp86U4R54Rh4ZFQtxtgUGaAI2he4=
-X-Gm-Gg: AYBFou0KNBqWCYtU9x+6+CMS8d7+V8Jdlyppt+0vl9jdwd8N2g1yDU5ja6CswOILzZq
- brAoNu54WsPdSFpQWoOPwpPbpszHOJ8CiMaItdLT7HxoSR2GCus4lN5z4AMQoUSooVawe8ke61n
- wwpNL1xMf5xLVhKRAip4xFHDZhPvOrAT7aSphPxtbhnGv1gvFUdGCGhqUtu7aUW0md09hp1fBQO
- eHZvwr8AyDR/vgAoW9T1EJBApumyNXMJJuHTvLnAsh5DqV/5f+mj8kivzs1t7u1hSWgrkpIHe38
- ae/Fch1+5TX9K/EhOsddisGP0Pd3IS/Mn0dG2wKHlNsw7h3VCl7fhIQ=
-X-Received: by 2002:a05:6402:440c:b0:6ad:b23f:e325 with SMTP id
- 4fb4d7f45d1cf-6aff45900d4mr3776151a12.20.1791409335321; Wed, 07 Oct 2026
- 14:42:15 -0700 (PDT)
+ AKwUvByVsUXMsR7NtYnJI9WOVJm4KsRgZScLi2t3wyTnc6jmPPhh+Vj9OhcFgN6u3g95VB07hatuJ0Mdvw==@nongnu.org
+X-Gm-Message-State: AFq9FYItzO8oyEgaxY43h/OZDagqIxXSXsmt5H2U2dX+RhaBKksllLWW
+ R1/21o9k32GR9I/QixN8E/8IAUbySxlr633WhKlN4oHwVNAZuVudN4hvBKYkAN3tyGMMxNkuRZC
+ boIt+5s/MYXFnPZmtvIIojQFT+SCe8ElqFYHkjIkVYTHdc8J+M2Y7IApP3DTnk0Z2IQ==
+X-Gm-Gg: AYBFou3z5ACXT1VmkytDgeOtx7zXsJIjq21WkIPTsy6eB9UYVBmttjibIy45yvp3oRb
+ acC6ECp7xfQzdDH3eGwKa0fgmfBCAY10+jaGeCI8NOpk0PE9jB+2dRuHVBB8pOQRYwPCbr9erSI
+ lcAZfnopdaeJ7OjBbA6nqynmkUUCBYODebWhzMtK5i2KE2OSflGojHwN+06yFCWrGGHgn5tmLsY
+ rT217RnM74MDLFwo7R5UkEm72NagmyoVhSpnscigJEQjELOCa/gScNhwQtvJB8AvAXJ7R8B+Ncr
+ ycV11IFhqyP8aD8iqhUb06Px5lVi5zZ8+RQ8dVYO+iSns5bXKf1GRtUrlSefQ88mfmHBW0s8MQC
+ CJaLk8zMKUFUw3tFncaTUm1CK2YwmVQdDnQ==
+X-Received: by 2002:a05:6102:50a7:b0:7b6:46f5:918f with SMTP id
+ ada2fe7eead31-7ca38800915mr844580137.13.1791410723820; 
+ Wed, 07 Oct 2026 15:05:23 -0700 (PDT)
+X-Received: by 2002:a05:6102:50a7:b0:7b6:46f5:918f with SMTP id
+ ada2fe7eead31-7ca38800915mr844571137.13.1791410723111; 
+ Wed, 07 Oct 2026 15:05:23 -0700 (PDT)
+Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48c71c0b860sm6788426f8f.11.2026.10.07.15.05.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Oct 2026 15:05:21 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="------------SuCawNJPPA1DCASeYQyZSMyS"
+Message-ID: <6f694401-3cc9-4c76-aa2d-3625773823c7@oss.qualcomm.com>
+Date: Thu, 8 Oct 2026 00:05:20 +0200
 MIME-Version: 1.0
-References: <20261007115253.328-1-luoyonggang@gmail.com>
- <20261007115253.328-9-luoyonggang@gmail.com>
- <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
-In-Reply-To: <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 8 Oct 2026 05:42:02 +0800
-X-Gm-Features: AclHuK-nyl-2YGeMlRyLTrHN6_wEb3WduM5B5iGfFbi7Roona1cuqAP59T0lymU
-Message-ID: <CAE2XoE8K+3e8h6H9NrPk1WWMmJfG807bN_Kh5qje-5pKWUUg5w@mail.gmail.com>
-Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
- qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
- Darren Kenny <darren.kenny@oracle.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm/hvf: Retry RAM write faults only for dirty
+ logging
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Xu <peterx@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ "Scott J . Goldman" <scottjgo@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mark Burton <mburton@qti.qualcomm.com>, qemu-stable@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+References: <20261007093001.74476-1-philmd@oss.qualcomm.com>
+ <f0c07762-c115-41a0-b713-a47bdaa1f218@rsg.ci.i.u-tokyo.ac.jp>
+ <478c0311-b31e-4d38-af65-79508fca3021@oss.qualcomm.com>
+In-Reply-To: <478c0311-b31e-4d38-af65-79508fca3021@oss.qualcomm.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA4OCBTYWx0ZWRfX8kXRAmwbn26q
+ q6GQFYLJOV7VRrOWMqE4ZSVOSrdva9KxpzyOVTdCdC9VUiYIAeYVeJGZ4YArpkit/Z/HiKx5dOi
+ Shi7fvhiQ8BK9+o9Cbdc2AiD2hEf0mQpOJF0/r1y5+dDnB8yhpcwhj2fGPHrc7Ka6H/1y1SuEwb
+ 2GS6umJOqQvZWrhMkHuEcWURWiAXKAsG9dThsB4WFJ41LapLxmpN1gvXniE7PyXrpevEpXkBm6F
+ jL6lNZqKr4mm44WDJntpDxGHSo2h8vlZmcT8YHaSKKtZGJLjx8HbVD70s69FhXWpuRqeE45H3Jt
+ yWesx9BueRqRCCK0rLzy04+D/MXyskEh3XQWRNi8rMVgXnYsl8U9p6XbYy/pZdGUoWeVn3Yqys+
+ /2OwrXJuecKoQP/OPVi72CnwS1JifB8jiVQXks5Kg9txye//d88AvqShe5xler2Y0Sidvfg3MTC
+ uBB+th7Ver9t97GNUlw==
+X-Proofpoint-ORIG-GUID: C2mThDAm_Y15c-zFCfUInLL_HNxdvORd
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA4OCBTYWx0ZWRfX9pcGESR8uH9x
+ 0JU2P2eFj4oTbsEg/vo+qsKkWRTnR9zK2uhkVsgD5oprQ1Ya3IUwsj/FsUCEkweZ2j3PaUyjiwW
+ gv43xanAhea0YofTnPz6Dop7FOlk6QU=
+X-Proofpoint-GUID: C2mThDAm_Y15c-zFCfUInLL_HNxdvORd
+X-Authority-Analysis: v=2.4 cv=YbwodARf c=1 sm=1 tr=0 ts=6ac6c226 cx=c_pps
+ a=wuOIiItHwq1biOnFUQQHKA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=r77TgQKjGQsHNAKrUKIA:9 a=EUspDBNiAAAA:8 a=Ty-P0fXYr5gAzqgR2TwA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=5mdJpvdji3gLl6Vxc0YA:9
+ a=pD6Z0FI6r1wA:10 a=XD7yVLdPMpWraOa8Un9W:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-07_07,2026-10-06_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 bulkscore=0 clxscore=1015 suspectscore=0 priorityscore=1501
+ spamscore=0 lowpriorityscore=0 impostorscore=0 adultscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610020000 definitions=main-2610070088
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -134,337 +158,468 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 8, 2026 at 4:44=E2=80=AFAM Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
->
-> On 10/7/2026 4:48 AM, Yonggang Luo wrote:
-> > Change TypeInfo.is_available to the new TypeIsAvailable type, which
-> > takes a const TargetInfo *. Registration passes target_info(), so
-> > behavior is unchanged. object.h only forward-declares TargetInfo.
-> >
-> > Switch the existing users (raspi, raspi4b, ast27x0 evb and fc) and the
-> > generated machine parents to the matching target_is_<arch> helpers.
-> >
-> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > ---
-> >  hw/arm/aspeed_ast27x0-fc.c  |  2 +-
-> >  hw/arm/aspeed_ast27x0_evb.c |  4 ++--
-> >  hw/arm/raspi.c              |  4 ++--
-> >  hw/arm/raspi4b.c            |  2 +-
-> >  hw/arm/virt.c               |  4 ++--
-> >  hw/m68k/virt.c              |  4 ++--
-> >  hw/or1k/virt.c              |  2 +-
-> >  include/qom/object.h        | 12 +++++++++++-
-> >  qom/object.c                |  3 ++-
-> >  9 files changed, 24 insertions(+), 13 deletions(-)
-> >
-> > diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-> > index 73362b60d2a..8a7c6a116ac 100644
-> > --- a/hw/arm/aspeed_ast27x0-fc.c
-> > +++ b/hw/arm/aspeed_ast27x0-fc.c
-> > @@ -234,7 +234,7 @@ static const TypeInfo ast2700fc_types[] =3D {
-> >          .parent         =3D TYPE_MACHINE,
-> >          .class_init     =3D ast2700fc_class_init,
-> >          .instance_size  =3D sizeof(Ast2700FCState),
-> > -        .is_available   =3D target_aarch64,
-> > +        .is_available   =3D target_is_aarch64,
-> >      },
-> >  };
-> >
-> > diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.c
-> > index 460c9ff0d2e..02a8cff1d9d 100644
-> > --- a/hw/arm/aspeed_ast27x0_evb.c
-> > +++ b/hw/arm/aspeed_ast27x0_evb.c
-> > @@ -75,13 +75,13 @@ static const TypeInfo aspeed_ast27x0_evb_types[] =
-=3D {
-> >          .name          =3D MACHINE_TYPE_NAME("ast2700a1-evb"),
-> >          .parent        =3D TYPE_ASPEED_MACHINE,
-> >          .class_init    =3D aspeed_machine_ast2700a1_evb_class_init,
-> > -        .is_available  =3D target_aarch64,
-> > +        .is_available  =3D target_is_aarch64,
-> >      },
-> >      {
-> >          .name          =3D MACHINE_TYPE_NAME("ast2700a2-evb"),
-> >          .parent        =3D TYPE_ASPEED_MACHINE,
-> >          .class_init    =3D aspeed_machine_ast2700a2_evb_class_init,
-> > -        .is_available  =3D target_aarch64,
-> > +        .is_available  =3D target_is_aarch64,
-> >      }
-> >  };
-> >
-> > diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> > index fadbacb2534..22b06c6ca22 100644
-> > --- a/hw/arm/raspi.c
-> > +++ b/hw/arm/raspi.c
-> > @@ -403,12 +403,12 @@ static const TypeInfo raspi_machine_types[] =3D {
-> >          .name           =3D MACHINE_TYPE_NAME("raspi3ap"),
-> >          .parent         =3D TYPE_RASPI_MACHINE,
-> >          .class_init     =3D raspi3ap_machine_class_init,
-> > -        .is_available   =3D target_aarch64,
-> > +        .is_available   =3D target_is_aarch64,
-> >      }, {
-> >          .name           =3D MACHINE_TYPE_NAME("raspi3b"),
-> >          .parent         =3D TYPE_RASPI_MACHINE,
-> >          .class_init     =3D raspi3b_machine_class_init,
-> > -        .is_available   =3D target_aarch64,
-> > +        .is_available   =3D target_is_aarch64,
-> >      }, {
-> >          .name           =3D TYPE_RASPI_MACHINE,
-> >          .parent         =3D TYPE_RASPI_BASE_MACHINE,
-> > diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-> > index 566d64572db..a1dc477f25e 100644
-> > --- a/hw/arm/raspi4b.c
-> > +++ b/hw/arm/raspi4b.c
-> > @@ -121,7 +121,7 @@ static const TypeInfo raspi4b_machine_type =3D {
-> >      .parent         =3D TYPE_RASPI_BASE_MACHINE,
-> >      .instance_size  =3D sizeof(Raspi4bMachineState),
-> >      .class_init     =3D raspi4b_machine_class_init,
-> > -    .is_available   =3D target_aarch64,
-> > +    .is_available   =3D target_is_aarch64,
-> >  };
-> >
-> >  static void raspi4b_machine_register_type(void)
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 9d192515d85..18160f7fad3 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -132,7 +132,7 @@ static void arm_virt_compat_default_set(MachineClas=
-s *mc)
-> >          .name =3D MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-> >          .parent =3D TYPE_VIRT_MACHINE, \
-> >          .class_init =3D MACHINE_VER_SYM(class_init, virt, __VA_ARGS__)=
-, \
-> > -        .is_available =3D target_base_arm, \
-> > +        .is_available =3D target_is_base_arm, \
-> >      }; \
-> >      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-> >      { \
-> > @@ -4430,7 +4430,7 @@ static const TypeInfo virt_machine_info =3D {
-> >           { TYPE_HOTPLUG_HANDLER },
-> >           { }
-> >      },
-> > -    .is_available =3D target_base_arm,
-> > +    .is_available =3D target_is_base_arm,
-> >  };
-> >
-> >  static void machvirt_machine_init(void)
-> > diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-> > index e52546e4fab..ad2a43ef3fb 100644
-> > --- a/hw/m68k/virt.c
-> > +++ b/hw/m68k/virt.c
-> > @@ -327,7 +327,7 @@ static const TypeInfo virt_machine_info =3D {
-> >      .parent       =3D TYPE_MACHINE,
-> >      .abstract     =3D true,
-> >      .class_init   =3D virt_machine_class_init,
-> > -    .is_available =3D target_m68k,
-> > +    .is_available =3D target_is_m68k,
-> >  };
-> >
-> >  static void virt_machine_register_types(void)
-> > @@ -355,7 +355,7 @@ type_init(virt_machine_register_types)
-> >          .name =3D MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-> >          .parent =3D MACHINE_TYPE_NAME("virt"), \
-> >          .class_init =3D MACHINE_VER_SYM(class_init, virt, __VA_ARGS__)=
-, \
-> > -        .is_available =3D target_m68k, \
-> > +        .is_available =3D target_is_m68k, \
-> >      }; \
-> >      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-> >      { \
-> > diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
-> > index a3ff903839b..89fb786641f 100644
-> > --- a/hw/or1k/virt.c
-> > +++ b/hw/or1k/virt.c
-> > @@ -559,7 +559,7 @@ static const TypeInfo or1ksim_machine_typeinfo =3D =
-{
-> >      .parent     =3D TYPE_MACHINE,
-> >      .class_init =3D openrisc_virt_machine_init,
-> >      .instance_size =3D sizeof(OR1KVirtState),
-> > -    .is_available =3D target_or1k,
-> > +    .is_available =3D target_is_or1k,
-> >  };
-> >
-> >  static void or1ksim_machine_init_register_types(void)
-> > diff --git a/include/qom/object.h b/include/qom/object.h
-> > index 4c0645817a5..7d52a15f6b8 100644
-> > --- a/include/qom/object.h
-> > +++ b/include/qom/object.h
-> > @@ -17,6 +17,7 @@
-> >  #include "qapi/qapi-builtin-types.h"
-> >  #include "qemu/module.h"
-> >
-> > +typedef struct TargetInfo TargetInfo;
-> >  struct TypeImpl;
-> >  typedef struct TypeImpl *Type;
-> >
-> > @@ -117,6 +118,15 @@ typedef void (ObjectUnparent)(Object *obj);
-> >   */
-> >  typedef void (ObjectFree)(void *obj);
-> >
-> > +/**
-> > + * typedef TypeIsAvailable:
-> > + * @ti: TargetInfo to test.
-> > + *
-> > + * Returns whether a type is available for @ti. Typical implementation=
-s
-> > + * are target_is_*().
-> > + */
-> > +typedef bool (TypeIsAvailable)(const TargetInfo *ti);
-> > +
-> >  #define OBJECT_CLASS_CAST_CACHE 4
-> >
-> >  /**
-> > @@ -498,7 +508,7 @@ struct TypeInfo
-> >      void (*class_base_init)(ObjectClass *klass, const void *data);
-> >      const void *class_data;
-> >
-> > -    bool (*is_available)(void);
-> > +    TypeIsAvailable *is_available;
-> >      const InterfaceInfo *interfaces;
-> >  };
-> >
-> > diff --git a/qom/object.c b/qom/object.c
-> > index 96498f3d001..253b9562b41 100644
-> > --- a/qom/object.c
-> > +++ b/qom/object.c
-> > @@ -15,6 +15,7 @@
-> >  #include "qom/compat-properties.h"
-> >  #include "qom/object.h"
-> >  #include "qom/object_interfaces.h"
-> > +#include "qemu/target-info.h"
-> >  #include "qemu/cutils.h"
-> >  #include "qemu/memalign.h"
-> >  #include "qapi/visitor.h"
-> > @@ -167,7 +168,7 @@ static TypeImpl *type_register_internal(const TypeI=
-nfo *info)
-> >          abort();
-> >      }
-> >
-> > -    if (info->is_available && !info->is_available()) {
-> > +    if (info->is_available && !info->is_available(target_info())) {
-> >          return NULL;
-> >      }
-> >
->
-> ```
-> info->is_available(target_info())
-> ```
->
-> or
->
-> ```
-> is_available() {
->   TargetInfo ti * =3D target_info();
->   ...
-> }
-> ```
->
-> Are doing the exact same thing today.
->
-> So what is the future goal requiring to introduce this?
+This is a multi-part message in MIME format.
+--------------SuCawNJPPA1DCASeYQyZSMyS
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-From Daniel P. Berrang=C3=A9's
-requesthttps://lore.kernel.org/qemu-devel/apAszS1ewxM0Y1XU@redhat.com/
-        I forgot to mention that this is also pretty important for making
-        introspection work, as we need to be able to say
+On 7/10/26 21:50, Philippe Mathieu-DaudÃ© wrote:
+> On 2026-10-07 16:50, Akihiko Odaki wrote:
+>> On 2026/10/07 18:30, Philippe Mathieu-Daudé wrote:
+>>> From: Mark Burton <mburton@qti.qualcomm.com>
+>>>
+>>> Dirty-page logging handles a RAM write fault by marking the page dirty,
+>>> restoring write permission, and retrying the guest instruction.
+>>>
+>>> The handler also retried when the resolved RAM region had no dirty-log
+>>> client.  This path neither restores permission nor advances the PC, so
+>>> the instruction can repeatedly exit to QEMU.
+>>>
+>>> Retry only after marking the page dirty and restoring write permission.
+>>> Otherwise, use the existing emulation path to complete the access and
+>>> advance the guest PC.
+>>
+>> I can identify three cases of RAM write faults. The existing code
+>> handles all three, but this patch breaks the third:
+>>
+>> 1. The RAM is read-only. assert(!mr->readonly) trips in this case.
+>>
+>> 2. Dirty logging is enabled. The vCPU marks the page dirty, restores
+>>     write permission, and retries the write.
+>>
+>> 3. Dirty logging is enabled when the fault occurs, but another thread
+>>     disables it before the vCPU acquires the BQL. The vCPU then observes
+>>     a zero dirty-log mask. The write still needs to be retried because
+>>     write permission has already been restored. The existing code does
+>>     this correctly, but this patch falls through to emulation instead.
+>>
+>> This patch is useful only if there is another case that the existing
+>> code does not handle correctly. Please describe that case and preserve
+>> the retry behavior in case 3.
+> Thanks for the deep review.
+> 
+> The reporter said:
+> 
+>    We reproduced is a level-2 translation fault, DFSC 0x06, on a
+>    dynamic DMI RAM leaf that has no corresponding HVF mapping.
+>    address_space_translate() resolves the leaf as RAM, but the dirty-log
+>    mask is zero, no page is marked or unprotected, and the unconditional
+>    retry makes no progress.
+> 
+> That would be another case:
+> 
+>    4. FlatView says RAM, but HVF has no mapping (nothing has changed
+>       to make retry succeed).
+> 
+> So to prevent retrying a known translation miss that cannot make any
+> progress checking DFSC could be sufficient:
+> 
+> -- >8 --
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index b00a7e1a84..4faa21caa1 100644
+>       case EC_DATAABORT: {
+>           bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
+>           bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
+>           bool s1ptw = FIELD_EX32(syndrome, DABORT_ISS, S1PTW);
+>           bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
+>           uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
+>           uint32_t len = 1 << sas;
+>           uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
+>           uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
+> +        uint32_t fsc = FIELD_EX32(syndrome, DABORT_ISS, DFSC);
+> +        bool l2_translation_fault = fsc == 0b000110;
+>           uint64_t val = 0;
+>           uint64_t ipa = excp->physical_address;
+>           AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
+> 
+>           trace_hvf_data_abort(excp->virtual_address, ipa, isv,
+>                                iswrite, s1ptw, len, srt);
+> 
+>           if (cm) {
+>               /* We don't cache MMIO regions */
+>               advance_pc = true;
+>               break;
+>           }
+> 
+>           /* Handle dirty page logging for ram. */
+>           if (iswrite) {
+>               hwaddr xlat;
+>               MemoryRegion *mr = address_space_translate(as, ipa, &xlat,
+>                                                          NULL, true,
+> 
+> MEMTXATTRS_UNSPECIFIED);
+> -            if (memory_region_is_ram(mr)) {
+> +            if (memory_region_is_ram(mr) && !s1ptw && ! 
+> l2_translation_fault) {
+>                   uintptr_t page_size = qemu_real_host_page_size();
+>                   intptr_t page_mask = -(intptr_t)page_size;
+>                   uint64_t ipa_page = ipa & page_mask;
+> 
+>                   /* TODO: Inject exception to the guest. */
+>                   assert(!mr->readonly);
+> 
+>                   if (memory_region_get_dirty_log_mask(mr)) {
+>                       memory_region_set_dirty(mr, xlat, page_size);
+>                       hvf_unprotect_dirty_range(ipa_page, page_size);
+>                   }
+> 
+>                   /* Retry with page writes enabled. */
+>                   break;
+>               }
+>           }
+> 
+>           /*
+>            * TODO: If s1ptw, this is an error in the guest os page tables.
+>            * Inject the exception into the guest.
+>            */
+>           assert(!s1ptw);
+> ---
+> (the !s1ptw guard is independent of the zero-mask race,
+>   this is to ensure we cannot accidentally take the dirty-log retry
+>   path when the page-table memory is RAM).
+> 
+> But be wary because I'm way out of area of understanding here...
+> 
+> Anyway I asked the reporter for more info and possible reproducer;
+> and might add comments to the code to better follow the 1/2/3/4 paths.
+> But after some sleep :)
+Still here... Asked AI for reproducer:
 
-          'qemu-system --machine none -qmp ...'
+-- >8 --
+AI-used-for: tests
+diff --git a/tests/tcg/aarch64/system/hvf-unmapped-ram.c 
+b/tests/tcg/aarch64/system/hvf-unmapped-ram.c
+new file mode 100644
+index 00000000000..45721134710
+--- /dev/null
++++ b/tests/tcg/aarch64/system/hvf-unmapped-ram.c
+@@ -0,0 +1,110 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++/*
++ * Reproducer for an HVF data abort on a RAM FlatView leaf without an HVF
++ * mapping.  Run manually on Apple Silicon (whose host page size is 16 
+KiB):
++ *
++ *   qemu-system-aarch64 -accel hvf -cpu host -nodefaults -M 
+virt,highmem-ecam=off -m 128M \
++ *     -display none -serial stdio -kernel 
+aarch64-softmmu-hvf-unmapped-ram.test \
++ *     -device pci-testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on
++ *
++ * The 4 KiB pci-testdev BAR2 is RAM, but its size and programmed 
+address are not
++ * host-page aligned.  HVF therefore leaves it unmapped.  A write to 
+the BAR
++ * takes a level-2 translation fault (DFSC 0x06); the handler must 
+emulate the
++ * access and advance PC instead of retrying it forever.
++ */
++
++#include <stdint.h>
++
++#define ECAM_BASE           UINT64_C(0x3f000000)
++#define TESTDEV_CONFIG      (ECAM_BASE + UINT64_C(0x8000))
++#define PCI_COMMAND         UINT64_C(0x04)
++#define PCI_COMMAND_MEMORY  UINT16_C(0x0002)
++#define PCI_BAR2_LO         UINT64_C(0x18)
++#define PCI_BAR2_HI         UINT64_C(0x1c)
++
++#define RAM_BAR             UINT64_C(0x10001000)
++#define BAR_ADDRESS_MASK    UINT32_C(0xfffffff0)
++#define SENTINEL            UINT32_C(0x1badb002)
++
++#define PL011_DR            UINT64_C(0x09000000)
++#define PL011_FR            (PL011_DR + UINT64_C(0x18))
++#define PL011_FR_TXFF       UINT32_C(0x20)
++
++#define PSCI_SYSTEM_OFF     UINT64_C(0x84000008)
++
++static inline uint16_t mmio_read16(uint64_t addr)
++{
++    return *(volatile uint16_t *)(uintptr_t)addr;
++}
++
++static inline uint32_t mmio_read32(uint64_t addr)
++{
++    return *(volatile uint32_t *)(uintptr_t)addr;
++}
++
++static inline void mmio_write16(uint64_t addr, uint16_t value)
++{
++    *(volatile uint16_t *)(uintptr_t)addr = value;
++}
++
++static inline void mmio_write32(uint64_t addr, uint32_t value)
++{
++    *(volatile uint32_t *)(uintptr_t)addr = value;
++}
++
++static inline void dsb_sy(void)
++{
++    asm volatile("dsb sy" : : : "memory");
++}
++
++static void uart_puts(const char *str)
++{
++    while (*str) {
++        while (mmio_read32(PL011_FR) & PL011_FR_TXFF) {
++        }
++        mmio_write32(PL011_DR, *str++);
++    }
++}
++
++static __attribute__((noreturn)) void system_off(void)
++{
++    register uint64_t x0 asm("x0") = PSCI_SYSTEM_OFF;
++
++    asm volatile("hvc #0" : "+r"(x0) : : "memory");
++    for (;;) {
++        asm volatile("wfi");
++    }
++}
++
++static __attribute__((noreturn)) void finish(int passed)
++{
++    uart_puts(passed ? "PASS\n" : "FAIL\n");
++    system_off();
++}
++
++int main(void)
++{
++    uint32_t bar;
++
++    /* Verify the fixed BDF exists before programming its 64-bit BAR2. */
++    if (mmio_read16(TESTDEV_CONFIG) == UINT16_MAX) {
++        finish(0);
++    }
++
++    mmio_write32(TESTDEV_CONFIG + PCI_BAR2_HI, 0);
++    mmio_write32(TESTDEV_CONFIG + PCI_BAR2_LO, RAM_BAR);
++    mmio_write16(TESTDEV_CONFIG + PCI_COMMAND,
++                 mmio_read16(TESTDEV_CONFIG + PCI_COMMAND) |
++                 PCI_COMMAND_MEMORY);
++    dsb_sy();
++
++    bar = mmio_read32(TESTDEV_CONFIG + PCI_BAR2_LO);
++    if ((bar & BAR_ADDRESS_MASK) != RAM_BAR) {
++        finish(0);
++    }
++
++    mmio_write32(RAM_BAR, SENTINEL);
++    dsb_sy();
++    finish(mmio_read32(RAM_BAR) == SENTINEL);
++}
+diff --git a/tests/tcg/aarch64/system/hvf-boot.S 
+b/tests/tcg/aarch64/system/hvf-boot.S
+new file mode 100644
+index 00000000000..bf9be89ee6d
+--- /dev/null
++++ b/tests/tcg/aarch64/system/hvf-boot.S
+@@ -0,0 +1,30 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++/*
++ * Minimal bootstrap for hvf-unmapped-ram.c.
++ *
++ * Unlike boot.S, this must not issue a semihosting call before entering C:
++ * HVF does not handle the semihosting HLT exception.  Direct -kernel 
+boot on
++ * the non-virtualized virt machine starts this ELF at EL1 with the MMU 
+off.
++ */
++
++    .text
++    .align  4
++    .global __start
++    .type   __start, %function
++__start:
++    /* Use SP_EL1 and provide the C code a private stack. */
++    msr     spsel, #1
++    ldr     x0, =stack_end
++    mov     sp, x0
++    bl      main
++
++1:  wfi
++    b       1b
++    .size   __start, . - __start
++
++    .bss
++    .align  12
++stack:
++    .space  4096
++stack_end:
+diff --git a/tests/tcg/aarch64/system/hvf-unmapped-ram.out 
+b/tests/tcg/aarch64/system/hvf-unmapped-ram.out
+new file mode 100644
+index 00000000000..7ef22e9a431
+--- /dev/null
++++ b/tests/tcg/aarch64/system/hvf-unmapped-ram.out
+@@ -0,0 +1 @@
++PASS
+diff --git a/tests/tcg/aarch64/system/meson.build 
+b/tests/tcg/aarch64/system/meson.build
+index f51feb253f9..0ee6ffeb527 100644
+--- a/tests/tcg/aarch64/system/meson.build
++++ b/tests/tcg/aarch64/system/meson.build
+@@ -14,6 +14,14 @@ qemu_base_args = ['-display', 'none',
+                    '-kernel']
+  qemu_def_args = ['-M', 'virt', '-cpu', 'max', qemu_base_args]
 
-        and connect to QMP to introspect the binary. Having to add a
-        '--target <name>' into that mix is undesirable, as it creates
-        a chicken & egg problem. You don't know what targets are built
-        into qemu-system without introspecting it and you can't
-        introspect it without selecting a target to introspect.
++# This payload must not use boot.S: that bootstrap invokes semihosting 
+before
++# main(), while the manual HVF run needs to start without any 
+semihosting exits.
++hvf_unmapped_ram_cflags = ['-nostdlib',
++                           '-ffreestanding',
++                           '-Wa,--noexecstack',
++                           files('hvf-boot.S')[0],
++                           '-Wl,-T', link_script]
++
+  # Multi arch tests - add cflags only once per src
+  multi_src = []
+  foreach t: tcg_tests['multiarch-softmmu']['tests']
+@@ -42,6 +50,14 @@ tests += {
+  tests += {
+    'asid2.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
+    'feat-xs.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
++  'hvf-unmapped-ram.c': {
++    'cflags': hvf_unmapped_ram_cflags,
++    'qemu_args': ['-nodefaults', '-M', 'virt,highmem-ecam=off', '-cpu', 
+'max', '-m', '128M',
++                  '-serial', 'stdio',
++                  '-device', 
+'pci-testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on',
++                  qemu_base_args],
++    'expected_output': 'hvf-unmapped-ram.out',
++  },
+    'gpc-test.c': {
+      'cflags': [cflags, '-DLOGGING_VECTOR_TABLE',
+                 '-Wno-main', '-Wno-unused-but-set-variable'],
+---
 
-From Pierrick's review
-https://lore.kernel.org/qemu-devel/557262df-b8e7-49b5-a245-ae46b8885b30@oss=
-.qualcomm.com/So,
-for existing binary: -M virt works as before.
+./qemu-system-aarch64 -accel hvf -cpu host -nodefaults \
+   -M virt,highmem-ecam=off -m 128M -display none -serial stdio \
+   -kernel ~/hvf-unmapped-mem-repro \
+   -device pci-testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on \
+   -trace hvf\*
+hvf_vm_map paddr:0x0000000000000000 size:0x04000000 vaddr:0x118000000 
+flags:0x05/R-X
+hvf_vm_map paddr:0x0000000004000000 size:0x04000000 vaddr:0x129904000 
+flags:0x05/R-X
+hvf_vm_map paddr:0x0000000040000000 size:0x08000000 vaddr:0x121900000 
+flags:0x07/RWX
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_data_abort data abort: [va=0x000000003f008000 pa=0x000000003f008000 
+isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+hvf_data_abort data abort: [va=0x000000003f00801c pa=0x000000003f00801c 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+isv=1 iswrite=1 s1ptw=0 len=2 srt=1]
+hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
+isv=1 iswrite=0 s1ptw=0 len=4 srt=0]
+hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x0Quit: 3
+(looping)
 
-        For new multi binary:
-        $ qemu-system -M virt:
-        Multiple machines were found, select one among:
-        - aarch64-virt
-        - riscv64-virt
+However I had to do this change in hvf_set_phys_mem():
 
-        Does it matches what you would expect?
+-- >8 --
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index 8bd9154a50b..7b34a5f586d 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -113,8 +113,14 @@ static void hvf_set_phys_mem(MemoryRegionSection 
+*section, bool add)
 
-From Daniel's review
-https://lore.kernel.org/qemu-devel/aro93NuZBXYGbD33@redhat.com/
-        We already have  'QemuTargetInfo' struct which is used
-        with 'query-target', that should also be used with the
-        new 'query-targets' command.
+      if (!QEMU_IS_ALIGNED(size, page_size) ||
+          !QEMU_IS_ALIGNED(gpa, page_size)) {
+-        /* Not page aligned, so we can not map as RAM */
+-        add = false;
++        return;
+      }
 
-        We need to add the 'endianness' field to QemuTargetInfo.
+      if (!add) {
+---
 
-        I don't think that we need to report machines though.
-        We already have 'query-machines' which gives much broader
-        information on the machines. "MachineInfo" needs to
-        gain
+because otherwise I was getting:
 
-        "targets": ["SysEmuTarget"]
+hvf_vm_map paddr:0x0000000000000000 size:0x04000000 vaddr:0x114b80000 
+flags:0x05/R-X
+hvf_vm_map paddr:0x0000000004000000 size:0x04000000 vaddr:0x118b84000 
+flags:0x05/R-X
+hvf_vm_map paddr:0x0000000040000000 size:0x08000000 vaddr:0x10cb7c000 
+flags:0x07/RWX
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_kick_vcpu_thread cpu:0 stop:0
+hvf_data_abort data abort: [va=0x000000003f008000 pa=0x000000003f008000 
+isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+hvf_data_abort data abort: [va=0x000000003f00801c pa=0x000000003f00801c 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
+isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+isv=1 iswrite=1 s1ptw=0 len=2 srt=1]
+hvf_vm_unmap paddr:0x0000000010001000 size:0x00001000
+qemu-system-aarch64: Error: ret = HV_BAD_ARGUMENT (0xfae94003, at 
+../../accel/hvf/hvf-all.c:123)
+Abort trap: 6
 
-        to list which target(s) a machine can be used with.
+(I'll look at that hvf_set_phys_mem change after some rest).
+--------------SuCawNJPPA1DCASeYQyZSMyS
+Content-Type: application/x-xz; name="hvf-unmapped-mem-repro.xz"
+Content-Disposition: attachment; filename="hvf-unmapped-mem-repro.xz"
+Content-Transfer-Encoding: base64
 
+/Td6WFoAAATm1rRGBMC4CfirCCEBFgAAAAAAAATpu/7iFfcEsF0AP5FFhGg9iabaisyW0qLC
+1nP4jECRpMeMMYZGnSbxRVnkHwV1qIP/e9fvkWKVt9xHzhyLwgGPmqqMAH8zyy+88jV0KVdC
+VrcxXl63b25jMyGj+82r9FnMyy4hDFLHB/CrT1EQiZ0t5/aVqxLRYA9k3XbM6Orzd5ITbXnV
+nuPBATi+RNk9M6YkCoF1eYdONiZcVyID8KRLHsCH/eeD/mmWND6qpsGbO+tqRWV0ls/a2mNn
+cGSd6vKbwLVZyIB8DtvxQeLREuoXNmYklF8LeOIEWmRte3DDf13r08pXvBOwYBm+pHTQ8SRV
+LRFXjpMfsNz1PO0oFdf8gE0CuImvKZafRu/j+3Gs8uPFvgXJIN9mpWiXS2zqF31pz2AUWMqz
+ZjswVXWMYZw4DjzKk7HMr+Kq8jmwbjz8avgzuHvygUODiry9E8yNbtXspL+a9qUn0uRSneUd
+oJx1rm/ulb0VnxKRMMZdZKUMNQ+H6aRiJdei9f0GlM9raXQmrZlwXMcumBaH2eCxT5wJRg6b
+BopTaaGaNAD15TdPtt+/YmOPC3YSCvU+IZc4N6ynOE7PAidiPq717dCKPhS5ZzpQ1Y8re1NG
+fTobEHZbFJDpNk009Um0GUMU52KCJL8l2bwhbzLAO5k3A+tqlxreii1dcpn8PBtXD+SgMW/E
+GHnMZLNyNh4AlFRnimFQmI8vrBfWPvvYwuYPgptCw4x/G7JN3U1OfPAvVJ3LpNBKFxrGTgAp
+DgEWEqAf3rTnK5dcJdc7lBHLWyOaKnrvl9SgQpDtXvYrGA19mXkJn9ezL3Qej4lkvhOcBBMU
+ukjx8uqZ2gSsyK/w31ei1UtzdYeL1Vu2BTdNuNGOYwMCeZ2hHn2xhmUQ1liWw0uYea4sbS2B
+Yqvq3ODvOKWlk0mev3YqzAPQNGfPDk+zbh0O5XIrEMYmZ90urvBGVg8o7pcOwoMnMMDx1ufq
+oeE+xxTlKdiETZdWZTyUo/vNWZ/7oM9QjxliStel45gpAWuPjydBMz5TkweP8mBd8UFWUGZn
+aA1i90jwT3SnnFdF5Kvo7IR/Ru4wKdMhAvDC36p/FcSrNoVU9kb+sTi9KQXml0SzUOTvd6Qt
+39cS/gMkZVUEIwCJOFt7NWHLEhiDRMr5xb/2JEvL+rC8JYep2w7WNYECFGJgjOIDpJv9dcHd
+AiEnNYkBuMkW9I4tuRxtNTu+Fq4DVA1+HCgcPxwJawppIf9DdctX4p3uzhXI1K/U5BfNcCyt
+keRns/xr8+OSpnzGoW9K/AdtprwYpOXS7M7Wc+x9B2y7PI8wfdecXGCBFndRPNFCLrAEnB8D
+LlVl55VctofSZyMWUVBMZ5kM4bl6oOFZW8nePiRplxUWg9WL96IojShk3v0G6c3b2u2mG2KE
+NyGc8CYhbdOraWeapT9Qp+qIBZel72PqZ20TA6UKC0FK0fePRD27q1S52lW5Dg66lkOgsLoj
+T8NbLpJGL9y/VBhVkD5TpXJBwatSxt5GE3vcFECvuTR2uCrZDUTR5UXRYHtz0griltINgmfx
+0HBtc7vYLzl3rGsHXfDkCm1/K3VJlNRC8Ge0q4w+3zT40U+0MYgQVlbd0yiuAOfonxoAAJKf
+3novjk8NAAHUCfirCABU7swZscRn+wIAAAAABFla
 
-To achieve these, we needs add TypeInfo parameter to it so that we can do
-
-static void report_unsupported_machine_type(const char *name, Error **errp)
-{
-    g_autoptr(GSList) machines =3D machine_class_get_list(true);
-    g_autoptr(GString) targets =3D g_string_new(NULL);
-    TargetInfoNode *node;
-    GSList *el;
-
-    error_setg(errp, "unsupported machine type: \"%s\" for target \"%s\"",
-               name, target_name());
-    QLIST_FOREACH(node, target_info_list(), next) {
-        for (el =3D machines; el; el =3D el->next) {
-            MachineClass *mc =3D el->data;
-
-            if ((!strcmp(mc->name, name) || !g_strcmp0(mc->alias, name)) &&
-                object_class_get_is_available(OBJECT_CLASS(mc))(node->info)=
-) {
-                g_string_append_printf(targets, "  %s\n",
-                                       node->info->target_name);
-                break;
-            }
-        }
-    }
-    if (targets->len) {
-        error_append_hint(errp, "Available for targets:\n%s", targets->str)=
-;
-    }
-}
-
-That is we can iterate on all target-list, and check if it's can be fitlere=
-d.
-
-
->
-> It's something we asked multiple times, and until we don't have a short
-> series doing this change + a single and minimal modification showing the
-> reason, I will still be asking.
->
-> If the goal is to implement some sort of classification for
-> machines/cpus, I would suggest to just send a simple series doing this
-> change (and only this - no additional cleanups/refactoring), and an
-> example for a single machine + cpu, so we can talk about it.
->
-> Regards,
-> Pierrick
-
-
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+--------------SuCawNJPPA1DCASeYQyZSMyS--
 

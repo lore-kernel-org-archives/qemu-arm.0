@@ -4,124 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 766C1CA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 20:50:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A417CA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 21:30:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEYan-0005wv-4F; Wed, 07 Oct 2026 16:50:25 -0400
+	id 1xEZD8-0001cH-Hc; Wed, 07 Oct 2026 17:30:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEYal-0005wc-PT
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:50:23 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
+ id 1xEZD5-0001bT-IR
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 17:30:00 -0400
+Received: from out-95.mta1.migadu.com ([2001:41d0:203:375::5f]
+ helo=mta1.migadu.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEYai-0005VR-RS
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:50:23 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-6afa651700eso3764404a12.2
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 13:50:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791406219; cv=none;
- d=google.com; s=arc-20260327;
- b=X5WATpNeKOEMMmPBRin3n1Ofebq6rJ1ZN42WB3/0dblD7qTtnfj+0B/C+yIv5GfMXD
- KFSHo6xvC964PQ050Agcvj+HgFRkaBg/+EO6UwdsOgKgxKNzSXWw1A6jIw9/hzCKv2Uq
- 6J+CnUiM8kmA++/OFt7BIj0zGKeVXBBbllK1EK6rzAm9xq2Y/Z5AnfvYVjidTSbMdBJC
- GgVyC68IwXUUpoaPvMPpMnG4A2oxy6A9RcxaMAQUDN8XIQtuxn89ChNHErv2NGMTY4+E
- v2wWnhOHI6jmN9ZYwBSDqQFnFSkakPywHuGqlc8roTIJGCdYRWqDyXX/TwEhNMv+khZ0
- jWwQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=TJ4jkUWFTCfZVR9xXVV6RT4cScHQ9uYu6NOq08HuMso=;
- fh=jteesMbL75Kiixrikdb47Gys9LcaEYalvIvU54iVWtE=;
- b=ERRNrVEhbVTrD9KRCWAeb7+5wjtM3c5oDKyzOSwtPKROmpoRNNA540PVc6hefWGiqY
- uT1j8y1xfCaoDMNvEUSYZTdz0xk+mZdzqBErk/ij56Rb1/ubgZZMqZQb0d9GoPJTiWhI
- ItZ0Zum41WkNUju26Ahy0welzsO6oq6/HpeXUYKg/fPpQnpiy0gjAiuV7+MRh9zCFDvJ
- GMk6AwnjV4i29g9lVszusl+6z1u1QeP1dGCyOWmV3OF2eYNQrJDxMXRLmez309C+4a6F
- Nv1+pUDXkyNFi1Aj911YwHRJOlalva+ssnlZdqTCjAxn4JApFippKpbKh0DNnbCGLQmI
- 4dng==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791406219; x=1792011019; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=TJ4jkUWFTCfZVR9xXVV6RT4cScHQ9uYu6NOq08HuMso=;
- b=i3q2KsWeQJLuX/AJPhe4QgC3tMpcztMTCXzZXSoVyPS2nddGpkaq/KHY6Vy+k/+Ib1
- o6hjz5X5TxqXKdC1fX2wRe3vrxG8xngrahua5t0Rc6Q3WXR/Bp5F8FlWw+Gx+XxFaz2g
- O7QoF4loJ1eHVEx0NLZZcWhTE7o3zy4hKyc8HEm8CWFEyalHgWJGrgBzrIF8bCL5m7uC
- ahR40qU/yOkdCQwp51euCs33OABhW+miMpZZBNJk1l1KY3gglAjoJSihiqIuuY8d0gH4
- 99eS+Hi2Cu/AyBuLXg+rnjjVJtUMf1W0hs9Kdp9ctbSiiwPp9eKfaMj+j1kioXS3BxjH
- eEVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791406219; x=1792011019;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=TJ4jkUWFTCfZVR9xXVV6RT4cScHQ9uYu6NOq08HuMso=;
- b=DITfBDbM/tLWA5341gQgvxTBJgAKFxkpXsjXOtGknKxj2RcDfVHAlvYihy9tuyy3Tm
- sj055MC/5WfBg+xbT8AQ4iWG8EOyYQlz4DslfhmofaJOWB3Hmzb/V1QDK2f+iUJstIEB
- VD7caDQx5zvq1Eb6HO3eZwQZJPgzt5TOAo87d313/SuZ8JztUfWE7W3AulcxMyRy6PIU
- XKNZNKCjC5pl/7BUW+O/FwWuzOElbj3cFPrMrZLJTI237LtQ+dajyxch7+mNn1ajFbJ/
- 7yb0Zu1mMOdsTB6ce1bcC1d2Rts7f+ywAxUeHMeZ9tobbNpGN6PukID7dwFZLI9OL35q
- JMZw==
+ (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
+ id 1xEZD3-0000Ar-96
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 17:29:59 -0400
+X-Envelope-To: qemu-arm@nongnu.org
+DKIM-Signature: a=rsa-sha256; bh=EFY0K+7wFpf/Ik/AB7Yke7xcUDcK6y2DfdWmZfQj8og=; 
+ c=simple/simple; d=linux.dev;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1791408592; v=1; x=1792013392;
+ b=WcpfX9y6vjxSa0+/MRbWL5G1UCKzNl9Rgn7wq0cRK9uad7vwNDnyVGHZOy9ukzYyMn88Ccr8
+ Tz7iHffTyuvbVXAFuG44VtU3k7OMkLqB6AXGwUFD4LHDJoqsU6x58GilDDhezRhjwNMcngyqnZn
+ UHrYZuHDIBp9uSXQHdlnryOM=
+X-Envelope-To: qemu-arm@nongnu.org
+Received: by smtp.migadu.com with ESMTPS id 94845c6a73d5a9c5;
+ Wed, 07 Oct 2026 21:29:52 +0000
+X-Mizu-Trace-ID: 94845c6a73d5a9c5
+X-Migadu-Flow: FLOW_OUT
+Received: by mail-ed1-f44.google.com with SMTP id
+ 4fb4d7f45d1cf-6afac79b3a3so1598a12.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 14:29:48 -0700 (PDT)
 X-Forwarded-Encrypted: i=1;
- AKwUvBzZKhK7Lej4tVK3aj5TIZp4E/TxeXy4j///D5slvRKl9GlPCF1nztJ7+QqCTaDHfTbIifxFPVOowg==@nongnu.org
-X-Gm-Message-State: AFq9FYK6Fzdjg7mGX/0ZKFxyDluRTkGBAXDI2/sdGpRyeZdReturSYSH
- DMPArObAVuGzmZB5oZ0DxIQGRBUDQXFjNXesQB7N1udbSsDrY2S676g7D6320VraufUrnW8FAkt
- iQkDbiyuQ+CqGW4tRd0mDcMZgxPSECO0=
-X-Gm-Gg: AYBFou1KvzRDkLOvC9eB1zxrlXfCdrbwCoVNMg3qCSCK9u3wt9MASnFqyaBLEcrw2D6
- 4rF17oBp7yYUHfonweYS5QuEYppYrsX18RTLroe5SnHsc21394BRhhpSGDTvYa7kGqWxPiMSr02
- 6Pol0VX0O/I0Pa/6WCUdTUMjFhkRP7x7YghGG5xDAfCz+zsuZ+UYulQg1Xu85SwsCvsE85AQKGM
- wq8x4Vk89MhNNNObHwgqSe/S3zjCQH3f1P0fO2BofhRwB37/V0X7upPqnuLzTpNtW9SA1wIwULp
- fSExazIzGt2Au/en7xth19eeKDh/E01ePEG+GCIhYe+nZjgF/3/AXCw=
-X-Received: by 2002:a05:6402:a0d4:b0:6aa:734b:1a2d with SMTP id
- 4fb4d7f45d1cf-6aff4575b77mr2791791a12.39.1791406218932; Wed, 07 Oct 2026
- 13:50:18 -0700 (PDT)
+ AKwUvBzYrsNw+CK4H3B0o/XeOvgIkjlHg+B80jAiToLoWuRqHsvmY5BOk3QNFSZTkKsQN2ew3vonOGPgZQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIXDJImqDzv8ijo6hkPRcQ1lvf9E6k6P6fniCRsnsrV3R06cqUM
+ 6wFzaB4vTf6L04crOh47q1I/5RZr04AxcTZPBzkOHxESFd+w19ulZcVYJh2oht0tFrhpIJMtQLD
+ LwLtZ3gsDtxavmhvghlibWV7YcQewPBRpiajj4aKv
+X-Received: by 2002:a05:6402:184c:b0:6ac:84a2:bdc7 with SMTP id
+ 4fb4d7f45d1cf-6b06cad7540mr4928a12.15.1791408587956; Wed, 07 Oct 2026
+ 14:29:47 -0700 (PDT)
 MIME-Version: 1.0
-References: <20261007115253.328-1-luoyonggang@gmail.com>
- <20261007115253.328-5-luoyonggang@gmail.com>
- <37275f1f-aee9-444b-aaed-3e0bf34b63cd@oss.qualcomm.com>
-In-Reply-To: <37275f1f-aee9-444b-aaed-3e0bf34b63cd@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 8 Oct 2026 04:50:05 +0800
-X-Gm-Features: AclHuK9MxsL8JYnxf00H6d8XmG9AGJkIDPOcHxv45UdNwcWLvmH2PFtRgT5Tsrg
-Message-ID: <CAE2XoE_GmDbA5SSUb3k_9HwE+bxnBjK+kBj-RE5BonEBC=GpMw@mail.gmail.com>
-Subject: Re: [PATCH 4/8] target-info: replace QOM registration with a
- constructor list
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
- qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
- Darren Kenny <darren.kenny@oracle.com>
+References: <20261007080019.350315-1-fuad.tabba@linux.dev>
+ <20261007080019.350315-4-fuad.tabba@linux.dev>
+ <4ajscli4c4ef7agtizxzdiopjseck5qwa6s4n4mmwwjdrqlnby@xit5l76dxm2w>
+In-Reply-To: <4ajscli4c4ef7agtizxzdiopjseck5qwa6s4n4mmwwjdrqlnby@xit5l76dxm2w>
+From: Fuad Tabba <fuad.tabba@linux.dev>
+Date: Wed, 7 Oct 2026 23:29:11 +0200
+X-Gmail-Original-Message-ID: <CA+EHjTxsC8K1Bw6fAMs6APaqVDpup8192dCeJs+vfeh2fN+6Aw@mail.gmail.com>
+X-Gm-Features: AclHuK9GL_w9fjaenMwGKT6eHXXVvWvr5zmbuhLlmuqLQjB8RqSfp1rSzFAzsME
+Message-ID: <CA+EHjTxsC8K1Bw6fAMs6APaqVDpup8192dCeJs+vfeh2fN+6Aw@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] tests/tcg/aarch64: Add a test for the 52-bit TTBR
+ base address layout
+To: Gustavo Romero <gromero@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>, Will Deacon <will@kernel.org>,
+ Itaru Kitayama <itaru.kitayama@linux.dev>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2001:41d0:203:375::5f;
+ envelope-from=fuad.tabba@linux.dev; helo=mta1.migadu.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -135,114 +83,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 8, 2026 at 4:29=E2=80=AFAM Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
+Hi Gustavo,
+
+On Wed, 07 Oct 2026 17:56:30 +0100, Gustavo Romero <gromero@redhat.com> wrote:
+[...]
+> > With a 52-bit OA, walk a two-entry level 0 table through an IPA with
+> > bit 50 set, which stage 2 maps back onto the table, so the walk
+> > succeeds only if TTBR[4] is cleared from bit 4 of the base address.
+> > With TCR.DS or VTCR.DS and a 48-bit OA, check that setting TTBR[5:2]
+> > is a level 0 Address size fault.
 >
-> On 10/7/2026 4:48 AM, Yonggang Luo wrote:
-> > Register target definitions through constructors instead of
-> > MODULE_INIT_TARGET_INFO, making target_info_list() and target_info()
-> > available on entry to main(), without explicit initialization or a
-> > call to module_call_init(MODULE_INIT_QOM).
-> >
-> > Keep the target list sorted by target_arch and default to its first
-> > entry. Provide an unknown TargetInfo fallback for target-independent
-> > tools such as qemu-img and unit tests that link no target-info-def.c
-> > objects.
-> >
-> > Remove the obsolete QOM target-info registration infrastructure and
-> > update the multi-target test to inspect target information before
-> > initializing QOM.
-> >
-> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > ---
-> >  include/qemu/module.h           |  1 -
-> >  include/qemu/target-info-def.h  | 56 +++++++++++++++++++++++++++---
-> >  include/qemu/target-info-init.h | 53 ----------------------------
-> >  include/qemu/target-info-qom.h  | 31 -----------------
-> >  include/qemu/target-info.h      |  9 +++++
-> >  meson.build                     |  6 ++--
-> >  system/vl.c                     |  4 ---
-> >  target-info-def.c               |  1 -
-> >  target-info-qom.c               | 60 --------------------------------
-> >  target-info.c                   | 61 ++++++++++++++++++++++++++++++++-
-> >  tests/qtest/fuzz/fuzz.c         |  3 --
-> >  tests/unit/test-multi-target.c  | 12 +++----
-> >  12 files changed, 129 insertions(+), 168 deletions(-)
-> >  delete mode 100644 include/qemu/target-info-init.h
-> >  delete mode 100644 include/qemu/target-info-qom.h
-> >  delete mode 100644 target-info-qom.c
-> >
+> Maybe move this commit message to ttbr-baddr.c header and just replace it with
+> something like "Add a test for checking if with a 52-bit OA a walk ...".
+
+Sure, I'll move it to the file header in v3.
+
+> I like better the test split done in v1. There there are two tests and the
+> changes are clear, helping to understand which parts of the test are related to
+> each fix.
 >
-> This approach (custom list based) was considered before implementing
-> things with QOM Types. The rationale I followed was that if everything
-> is in QOM, we might better follow that for consistency sake.
-> Yes, the compromise if that we need an extra init step, but it was not a
-> problem to add it.
-I have issue to add the init step for unit-tests, and hard to write the -ta=
-rget
-parse procedure and get it right. Not means this won't work. but for
-me, too much
-coupled.
-
-If we treat target_info as a QOM, but QOM needs target_info to set
-up(is_avaible). That makes
-the init sequence too much of a burden.
-
-
-is_available is depends on target_arch
-And before this patch, target_arch depends on QOM, pulls user/softmmu becau=
-se
-target_info_init. By moving target-info to be a custom list based, we
-can decouple
-target-info from qom/softmmu/user. and target-info will always
-available once "main(argv, argc)" is entered. We also have the
-advantage of doing all sorts
-of tests against it.
-
-
-Tools such as qemu-img and unit tests may link target-info.c without any
-target-info-def.c objects. Their target list remains empty, so use this
-fallback.
-
-
-static TypeImpl *type_register_internal(const TypeInfo *info)
-{
-    TypeImpl *ti;
-
-    if (!type_name_is_valid(info->name)) {
-        fprintf(stderr, "Registering '%s' with illegal type name\n",
-info->name);
-        abort();
-    }
-
-    if (info->is_available && !info->is_available()) {
-        return NULL;
-    }
-
-    ti =3D type_new(info);
-
-    type_table_add(ti);
-    return ti;
-}
-
+> So the organization I think is better for this series is:
 >
-> Is there another good value this list approach brings compared to what
-> exists?
+> Fix 0
+> Test 0
+> Fix 1
+> Test 1
+
+Ack.
+
+[...]
+
+> > +    /*
+> > +     * 52-bit OA: TTBR[4] is base address bit 50. Through stage 2, the
+> > +     * table at HIGH_IPA | s1_l0 is s1_l0, so the walk succeeds only if
 >
-> Regards,
-> Pierrick
+> I struggled a bit to make sense of this part: "Through Stage 2, the table
+> HIGH_IPA | s1_l0 is s1_l0 ...", not so much for the duplication of s1_l0 in the
+> text but because Stage 2 uses the s2_l* tables. Any chance you could enhance a
+> the explanation here?
 
+The level 0 table address is an IPA, and the s2_l2_high mapping is
+what brings it back to s1_l0. How about:
 
+        /*
+         * 52-bit OA: TTBR[4] is base address bit 50, so with it set the
+         * level 0 table is at IPA HIGH_IPA | s1_l0. Stage 2 maps that IPA
+         * onto s1_l0 (through s2_l2_high), so the walk succeeds only if
+         * TTBR[4] does not also offset the two-entry table by 0x10.
+         */
 
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+Thanks for the review. I'll respin once Richard and Peter have had a look.
+
+Cheers,
+/fuad
 

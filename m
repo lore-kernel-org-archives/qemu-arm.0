@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE7DCA6004
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 20:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2672CA6004
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 20:46:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEYVL-0004eD-Fg; Wed, 07 Oct 2026 16:44:47 -0400
+	id 1xEYWl-0005FP-Ke; Wed, 07 Oct 2026 16:46:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xEYV7-0004cY-Mq
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:44:34 -0400
+ id 1xEYWg-0005EX-Hu
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:46:14 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xEYV5-0004tu-Mz
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:44:33 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ id 1xEYWe-00059y-I9
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 16:46:10 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 697JO4KT658433
- for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 20:44:29 GMT
+ 697JNqC51650856
+ for <qemu-arm@nongnu.org>; Wed, 7 Oct 2026 20:46:07 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- rpSJ/ZrysyVOV7lotqE++dBrBakcCvEs2ZV4gQpOGwM=; b=Z/6doW6VXl6Gy0zT
- qv9d1CCmWJwOtqkiHMlboJNi0KFmP+xly0Ckx6clcs+adx7uqazIbaX8ojJwjmlK
- R9ad0ytG+CdQLS8kDnxMk8NEZ3XGqcavoGvOCwAJvD7/PouqOJPKWYLnLDYhaw4q
- NSzHez2txptMeZfsothvZgm6kH+/O6Gb1kfD0GnuLyTSgtiJ6zQvY60ApV9sf85q
- qi1lVCd0VYc/1QI4XX9xYKhcpn+UfMTObX3scdWk0RWK4lC65AA8d7UjVC/zdvqN
- 3bXcGej5JaWAeOncwUlZcfKAmCnET1ZRWDBZ/MfthvKpJgtut4RmkLzrVN3bCzo2
- IboxDA==
-Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
- [74.125.82.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5pv71quv-1
+ hALJsIxteHq5LguPN80STqaor0j/ofVWd51Vdf0QdoI=; b=X5BFFmYkaH7Gbfk5
+ hWyyZWGTKOq82AyAZaBVHDO4IAp4YwouK7iBq5+z6QaR/UNhEdnRpuEZ/DygrmGw
+ MQSewA8l3YoaBzbwNrqTE0l1+5Nh5sfS3Hgh5VjMYXmXZlWvRK9el39W21qXDRn6
+ oeYk1rqH8mw12M3Cxb/6aHMvzJkFYG2EbbwQAnhrib8UXmz1NF8uCSh/znIX+9zp
+ ff8h0SOjkZVky+z39XecTXw6ctgkdTtSHavfZ4NjCDU06Wm5WV0BvNs8JnTiS6IJ
+ UrOY2Wn4nfdjb1eQ8wLUDcFQ+7dzLjEyg48m1F5DdBtdg+qTDtw+MXXBUk7Schq4
+ 9U8rYw==
+Received: from mail-dy1-f199.google.com (mail-dy1-f199.google.com
+ [74.125.82.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5fc5bdej-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 20:44:29 +0000 (GMT)
-Received: by mail-dy1-f198.google.com with SMTP id
- 5a478bee46e88-3510562ef98so5950747eec.0
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 13:44:29 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 20:46:06 +0000 (GMT)
+Received: by mail-dy1-f199.google.com with SMTP id
+ 5a478bee46e88-34ef0362d95so8315848eec.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 13:46:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791405869; x=1792010669; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1791405966; x=1792010766; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=rpSJ/ZrysyVOV7lotqE++dBrBakcCvEs2ZV4gQpOGwM=;
- b=ejMUsgkjjOphZ7iunghB6X4PX+yqoU9NFs4thy+WM2TtZQNfbafsvFB9yUYdrq3vwS
- r3wrSSwBzNCuuHNnZD9CgukkrKJfw7pChFZx5klQF0tu2WbsZ3vX8r/IPSLRWqzpX+mR
- o5V66nrAiRibberPIb2Mnl6k0MokerTi2nngBuo+W6eyn33N90qzwpAQnug7hgkNax4N
- WdFjWi1FQiY6xiD9GlUW1gIpHbnbyEfYzQMNgVnV9iDyg+pXXBzVApOBAKrPieXg3bdM
- MPivATqoK9IZSp62cYdVVotRHRPM+2bwiXrK5Eq1Bo6VtOk3ShWrh6BuW1ENr/mRLWXS
- Vruw==
+ bh=hALJsIxteHq5LguPN80STqaor0j/ofVWd51Vdf0QdoI=;
+ b=EVmcg4wMIcgO2ILRGU0F+rugGkvS0F8tn7aRGAnYKGKLYSycLM+2odY3SrjITiNFlw
+ b1cp58RqyuM38Ji4WbzFMECmjieyczgDX+/syYOGfn5CNF+YdH/Zo9EJ+FezNskxRmtE
+ NbejqTsi+jvFmxnQ+Wk+sXXsM642RDp9wXewrUUuEqSUHGpoASNreBb48YZ3Z1akddDc
+ xlnIobFfSc/pXAInrg4STpTN8u5AXYOgiFC0ML3/OeP7a3nENuhgw3CTvb5sBeYNTlk2
+ uudINf8M1y96QFF2B7Xn1cCfoSmpWRyCyyLoTLR9exGIdCDAIEE0i5Z1tpGLQ5zfkQkb
+ +ntw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791405869; x=1792010669;
+ d=1e100.net; s=20260707; t=1791405966; x=1792010766;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=rpSJ/ZrysyVOV7lotqE++dBrBakcCvEs2ZV4gQpOGwM=;
- b=pKZIuTmJ0nh9kAoxmbrUCbETKfNjgLdW1lOWIcVdTn8AgxuGXEzHlDH/DOYRckDRu8
- VBEKj5JzhFQFOdyFBCgS5/TZPF88D1CHs1wze8T5elSvprqgG30gqS5Wb6i87RhNjeS5
- 6xPWfAWQEmzovrgZJW6yxqEvnsPtJMPQGDWh+8clZghat1+1QYptxJ2MMRl31RpduA46
- Dwklpy4JKpgAtWmGqC4Z60Zq45l0Uk+8KXPGOgDD9zxyeNK4j8YFhFfLmLpL5NPs3jMB
- aKNCDWgVm0x1lDar90wnQNR4aanaIO+kDc0texyl8GijgdMfZsrr+oJJvDMkbQR0TD7f
- 8foA==
+ bh=hALJsIxteHq5LguPN80STqaor0j/ofVWd51Vdf0QdoI=;
+ b=tlvrmE0AAJGWXs+6YoZubxAHnStTqCUvhS7PulbrxlS6ihVJd6HJlPWgtaWRdNo2Cv
+ E+mh8rRkb/V7Mlfxm8Qt7xcVhghFYrmElwarbqeikjSV+wFZJyXyAt66v3R9TdzPYPnM
+ xAE9jjEwEXIWWNCMCwG7SzyrBdYfMbjUsOAZhXCMpBzm/z1Wr2XtYXiZ1U0h/Xg7/Ma1
+ oXlBm0TDFw+AhZmY+e97KsWRA+f09c3Sp6wdssvvysuzFLZpLeKzAsK8YkBxizfYi2SR
+ U7zbabO5X7tzWKDcPzW74PSwx4X46T1veoP77cSqnazqlvrAkGfXiP7WaQLudaBVr1TG
+ Dfug==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy26D6x27QPrmDv0GYZ7ypfcr/Mw+wwzCevna+xk7xDrucIH3tRwMEe2rCaZydKeM+UUIIjCJb5Rw==@nongnu.org
-X-Gm-Message-State: AFq9FYKeWUZY/RB5hZrtljeIkb4zJt4vZWg3nEHgl+f2G4ezareiR3Tr
- jdQx7MhKr7XBQsnkeN/PYbniHy3O2oz34ktrqUP9UHLlyOrBJKMLsN/oe2kRtshA+BIycBntov0
- psxbp1/sLN6u3LZiVRVzCOKOsZMysttdVRAJdSCA7O2mRG7uxuCP8OGg=
-X-Gm-Gg: AYBFou2FGg3dxyq26UgABA35jBWfG21qs3TsC4XoaWYMJW1Wa+PjysotHANzUbdEak7
- IEesBwDzQjikA3nzLSuWxqO1OtXvsP030BC8rJL8VnHDxfV7p/EJhV/E+y7LMKwsKjdrJjTK7JA
- tg0JUYInFSpCA5CGPMv9OONioOB8FfLkvnhUr9QzDEdKftHhFXCi8ROsKILE20raPkYBBjaXjnW
- fcvm45CFGMor0IuRZbzi00rsSamgKZVI/jNp4xK8h/g+0KbZ+jB9yZ1BPZlIcP2AukIKSJb1QBa
- LTwgw2pmdPqc1WA1094oW1qRemL0HkUEb2ybmrzffrYl1B8ReSH/aW+L4LUw6+PYFpVkRGsR9iV
- eoPUqJacZrr/owZcDz1Y21pl/2zBijGhJAt7fuxLb74c/0E3+fJFy6uzMCboZzCs0e6bGYA==
-X-Received: by 2002:a05:7301:1827:b0:34c:e77c:f92f with SMTP id
- 5a478bee46e88-3515de87218mr3185251eec.37.1791405868412; 
- Wed, 07 Oct 2026 13:44:28 -0700 (PDT)
-X-Received: by 2002:a05:7301:1827:b0:34c:e77c:f92f with SMTP id
- 5a478bee46e88-3515de87218mr3185219eec.37.1791405867771; 
- Wed, 07 Oct 2026 13:44:27 -0700 (PDT)
+ AKwUvByym/nFxVIOb339GoEmTSbn8nD4xCQv04Skew1bKyzUbTxfYP6pqFjUhB5IqKkirc+rWAJdAQhqhQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIgNKB0gLlc2IZhEyzyeW28PTeMU8jXH9wtggIQwAfhLZt9RDAN
+ GmDTHVhbCpTi9/A0K5iNJ+eboxZ9v/6R1TFr10RQBI427eJzMCfNYE4mBdmz5bkwMyZMFvl7CaU
+ avvD+G48jE2NEVq3/QlfPoxvqqsJaPeDv2hQ5z9WIqLHgDFiNwKiRNYY=
+X-Gm-Gg: AYBFou2uSV1eJCXn4HFhGEiXWXjxs53gHA08bToIOXyjKUeM9qJPw6sskzJTERhIRrX
+ n3HZOhucQh9Q3AQJi2pY4sPgHoJOM/WI5FSU2p5RlTC46Zh+f/GtVq21pnn6N1Q065HTNvq+0qc
+ 3uscPhzh6QtMHsLJNWwQ/fRIy5QZmW+qb6b0iM5/idDNEkiuVvENHJQcOUa8aKMFbubMlctSqW2
+ WfpTf6TZhJzV9vbuu+A88xr3T5DmuFrtr7RwxNPhtzLLBvXtRrzcyrpzRe+gewLGIxujSH0CoJv
+ umELAMZxU2kF1cVV5ZMMPoJQDwTgfxxRhzCduIOBkkDM1w6N3dl+eKXRESteptVC5SYNNTeb2RP
+ NzWCBzO8kwTEb2W9WU9TH3q/aWILF9ieaw1SXqh2TfoRGccUQ7ot1kzihtiNdVD7Wj8wymw==
+X-Received: by 2002:a05:7300:d20b:b0:34b:88f3:3ccb with SMTP id
+ 5a478bee46e88-3515de0028bmr3675946eec.29.1791405965982; 
+ Wed, 07 Oct 2026 13:46:05 -0700 (PDT)
+X-Received: by 2002:a05:7300:d20b:b0:34b:88f3:3ccb with SMTP id
+ 5a478bee46e88-3515de0028bmr3675890eec.29.1791405965119; 
+ Wed, 07 Oct 2026 13:46:05 -0700 (PDT)
 Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
  [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-3515afab2c5sm8924118eec.21.2026.10.07.13.44.25
+ 5a478bee46e88-3515b03da93sm8213423eec.29.2026.10.07.13.46.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2026 13:44:27 -0700 (PDT)
-Message-ID: <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
-Date: Wed, 7 Oct 2026 13:44:25 -0700
+ Wed, 07 Oct 2026 13:46:04 -0700 (PDT)
+Message-ID: <3631c54a-5ad7-4037-a21b-37c3c61d712d@oss.qualcomm.com>
+Date: Wed, 7 Oct 2026 13:46:02 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
+Subject: Re: [PATCH 0/8] qom: pass TargetInfo to the is_available callback
 To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
@@ -113,39 +113,37 @@ Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  <marcandre.lureau@redhat.com>, Steven Lee <steven_lee@aspeedtech.com>,
  Alexander Bulekov <alxndr@bu.edu>, Darren Kenny <darren.kenny@oracle.com>
 References: <20261007115253.328-1-luoyonggang@gmail.com>
- <20261007115253.328-9-luoyonggang@gmail.com>
 From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
-In-Reply-To: <20261007115253.328-9-luoyonggang@gmail.com>
+In-Reply-To: <20261007115253.328-1-luoyonggang@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfXy/6eytnGwfoH
- 6ydFZjmAXQ6jLVLUWHPwkEyhwwmq6GpitbCMvtSjsxKrDNPmBCb3o3WzJ5WJ/tbGJpT/PZTm1NU
- gKNPPyZ2HsMVsk6t0/mofgofhvwJHAg=
-X-Authority-Analysis: v=2.4 cv=J4I/fwnS c=1 sm=1 tr=0 ts=6ac6af2d cx=c_pps
- a=wEP8DlPgTf/vqF+yE6f9lg==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfX36pRogLLga4t
+ COQTjXlwr8OZKgn0MBl80UQP+BJb1SxTuOx+xVjy4XgOXA/9Kd85sEm7NCpCYVjeeQxqXjvYjb1
+ AfnGxS203oXJHLXhLVAr/1bVLnN/IsA=
+X-Proofpoint-GUID: NgEcRChIYaY7Eh2cDgI-ntiyZ--0WUJe
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfX3wG5zC+IbDqU
+ tbtrVK18lyZzpvlDNKZftvc+N2v2XkbVjAmnxwhY/yFbEVKveasn4om1p9YFHGqK05EM9N3gWCi
+ Ul7iKbh+A7hCDQmnDutxKQ5AVtAKZNWwkF7566+3hEFcPtu06Sc0HqXlAyewmebUAyOWtEIIXgo
+ gczIZodaGQ1wDje+UM3N89H9AgkTb04XXZaXXW0isV6DB8qRKbSoKRYUQrcgzGDa6SKiF8tTJET
+ SAfmB2NRtQ/lQSaWsXySWAeBvir6lbfpn+LDA6mKzclSQAcsOY2nS8566UmxQuC+qAhGow5TxPD
+ Ib4hCKTTy729tkkXEU3ULTWeBbiYZuPUC9SaCpBxzPO3ywdG2iBzth6MRepRITN3Sr0dJbXSaM3
+ rOQFeE2cjlaJghSXX76o3Oxwyv19P34McXblfdbxl4Co3ucw5lCynPRMao8O+k7PVhSJ/hkGxAO
+ OZ8BTJ2mh5a4Kg4Q/VQ==
+X-Proofpoint-ORIG-GUID: NgEcRChIYaY7Eh2cDgI-ntiyZ--0WUJe
+X-Authority-Analysis: v=2.4 cv=a6+lZkSF c=1 sm=1 tr=0 ts=6ac6af8e cx=c_pps
+ a=cFYjgdjTJScbgFmBucgdfQ==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=pGLkceISAAAA:8 a=OUyg3ATPP_6f84ILN7EA:9 a=QEXdDO2ut3YA:10
- a=bBxd6f-gb0O0v-kibOvt:22
-X-Proofpoint-ORIG-GUID: qLT86vEZ-V2k5u0qgUgwqE7y2_QVL64Z
-X-Proofpoint-GUID: qLT86vEZ-V2k5u0qgUgwqE7y2_QVL64Z
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA4MiBTYWx0ZWRfX0tVFgAppn0B1
- 60/5QJ6dXPxH/KAG6z4ux6sqPXmPLFxJ8LThK0ZWnXIsfcxa39z2stexQ9yFoUHGd7NJRrNINk/
- XY+Od5lSFhDIwzVl2sHLJefQ306SkZMOLyvwvhWQToxHpj6FHdk39hH4wi7Ul1yIQaEGLBJYAzF
- DMFPCCU2L5u1gMJUei7kERdhrjjhiqNS5Qtu5qSCLj+1bdyqACHk2BN5hAG+MKzEhHukvhBgZb2
- dQ7nnQ6b6xcDQz8DdNZnhet4DdW/fJ5D+5V9aX9SZmWJauKpakmeNfK2Tr336x2qX9Tw52O8ID5
- W1bbhMvv6AffJBy+WLsq68oAbJFrKMGw++WrIgc6cKep0AoHTQ2F/nxy8pY3ZC+ooc0vqUS2cRE
- NdqEsAjazhQ1XAvCCK/cu96lMSVZEHbZG3oe9xVvRuQKzajvy+Q8bCJYiaJKOwWZjNEF2ZsmBhz
- oDLG/fzBtsCNweHwIlg==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=W3QROBFJkTBO-5vcJEQA:9 a=QEXdDO2ut3YA:10 a=scEy_gLbYbu1JhEsrz4S:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-07_06,2026-10-06_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 adultscore=0 suspectscore=0 lowpriorityscore=0
- priorityscore=1501 bulkscore=0 phishscore=0 clxscore=1015 malwarescore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
+ priorityscore=1501 adultscore=0 suspectscore=0 malwarescore=0
+ lowpriorityscore=0 bulkscore=0 spamscore=0 clxscore=1015 impostorscore=0
+ phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
  definitions=main-2610070082
 Received-SPF: pass client-ip=205.220.168.131;
  envelope-from=pierrick.bouvier@oss.qualcomm.com;
@@ -172,233 +170,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/7/2026 4:48 AM, Yonggang Luo wrote:
-> Change TypeInfo.is_available to the new TypeIsAvailable type, which
-> takes a const TargetInfo *. Registration passes target_info(), so
-> behavior is unchanged. object.h only forward-declares TargetInfo.
+On 10/7/2026 4:47 AM, Yonggang Luo wrote:
+> This allows a combined binary to register machine types from all its targets.
+> Consequently, QMP `query-machines` can return machine entries from every
+> target, even when `none` is selected. For example, a client can query the
+> combined machine list with:
 > 
-> Switch the existing users (raspi, raspi4b, ast27x0 evb and fc) and the
-> generated machine parents to the matching target_is_<arch> helpers.
+> ```json
+> { "execute": "query-machines" }
+> ```
 > 
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> ---
->  hw/arm/aspeed_ast27x0-fc.c  |  2 +-
->  hw/arm/aspeed_ast27x0_evb.c |  4 ++--
->  hw/arm/raspi.c              |  4 ++--
->  hw/arm/raspi4b.c            |  2 +-
->  hw/arm/virt.c               |  4 ++--
->  hw/m68k/virt.c              |  4 ++--
->  hw/or1k/virt.c              |  2 +-
->  include/qom/object.h        | 12 +++++++++++-
->  qom/object.c                |  3 ++-
->  9 files changed, 24 insertions(+), 13 deletions(-)
+> The returned list includes the registered machine classes from all linked
+> targets. This is separate from selecting a machine: with `-target none`,
+> `-M virt` reports the targets that provide `virt` instead of choosing one
+> arbitrarily:
 > 
-> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-> index 73362b60d2a..8a7c6a116ac 100644
-> --- a/hw/arm/aspeed_ast27x0-fc.c
-> +++ b/hw/arm/aspeed_ast27x0-fc.c
-> @@ -234,7 +234,7 @@ static const TypeInfo ast2700fc_types[] = {
->          .parent         = TYPE_MACHINE,
->          .class_init     = ast2700fc_class_init,
->          .instance_size  = sizeof(Ast2700FCState),
-> -        .is_available   = target_aarch64,
-> +        .is_available   = target_is_aarch64,
->      },
->  };
->  
-> diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.c
-> index 460c9ff0d2e..02a8cff1d9d 100644
-> --- a/hw/arm/aspeed_ast27x0_evb.c
-> +++ b/hw/arm/aspeed_ast27x0_evb.c
-> @@ -75,13 +75,13 @@ static const TypeInfo aspeed_ast27x0_evb_types[] = {
->          .name          = MACHINE_TYPE_NAME("ast2700a1-evb"),
->          .parent        = TYPE_ASPEED_MACHINE,
->          .class_init    = aspeed_machine_ast2700a1_evb_class_init,
-> -        .is_available  = target_aarch64,
-> +        .is_available  = target_is_aarch64,
->      },
->      {
->          .name          = MACHINE_TYPE_NAME("ast2700a2-evb"),
->          .parent        = TYPE_ASPEED_MACHINE,
->          .class_init    = aspeed_machine_ast2700a2_evb_class_init,
-> -        .is_available  = target_aarch64,
-> +        .is_available  = target_is_aarch64,
->      }
->  };
->  
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index fadbacb2534..22b06c6ca22 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -403,12 +403,12 @@ static const TypeInfo raspi_machine_types[] = {
->          .name           = MACHINE_TYPE_NAME("raspi3ap"),
->          .parent         = TYPE_RASPI_MACHINE,
->          .class_init     = raspi3ap_machine_class_init,
-> -        .is_available   = target_aarch64,
-> +        .is_available   = target_is_aarch64,
->      }, {
->          .name           = MACHINE_TYPE_NAME("raspi3b"),
->          .parent         = TYPE_RASPI_MACHINE,
->          .class_init     = raspi3b_machine_class_init,
-> -        .is_available   = target_aarch64,
-> +        .is_available   = target_is_aarch64,
->      }, {
->          .name           = TYPE_RASPI_MACHINE,
->          .parent         = TYPE_RASPI_BASE_MACHINE,
-> diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-> index 566d64572db..a1dc477f25e 100644
-> --- a/hw/arm/raspi4b.c
-> +++ b/hw/arm/raspi4b.c
-> @@ -121,7 +121,7 @@ static const TypeInfo raspi4b_machine_type = {
->      .parent         = TYPE_RASPI_BASE_MACHINE,
->      .instance_size  = sizeof(Raspi4bMachineState),
->      .class_init     = raspi4b_machine_class_init,
-> -    .is_available   = target_aarch64,
-> +    .is_available   = target_is_aarch64,
->  };
->  
->  static void raspi4b_machine_register_type(void)
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 9d192515d85..18160f7fad3 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -132,7 +132,7 @@ static void arm_virt_compat_default_set(MachineClass *mc)
->          .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
->          .parent = TYPE_VIRT_MACHINE, \
->          .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
-> -        .is_available = target_base_arm, \
-> +        .is_available = target_is_base_arm, \
->      }; \
->      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
->      { \
-> @@ -4430,7 +4430,7 @@ static const TypeInfo virt_machine_info = {
->           { TYPE_HOTPLUG_HANDLER },
->           { }
->      },
-> -    .is_available = target_base_arm,
-> +    .is_available = target_is_base_arm,
->  };
->  
->  static void machvirt_machine_init(void)
-> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-> index e52546e4fab..ad2a43ef3fb 100644
-> --- a/hw/m68k/virt.c
-> +++ b/hw/m68k/virt.c
-> @@ -327,7 +327,7 @@ static const TypeInfo virt_machine_info = {
->      .parent       = TYPE_MACHINE,
->      .abstract     = true,
->      .class_init   = virt_machine_class_init,
-> -    .is_available = target_m68k,
-> +    .is_available = target_is_m68k,
->  };
->  
->  static void virt_machine_register_types(void)
-> @@ -355,7 +355,7 @@ type_init(virt_machine_register_types)
->          .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
->          .parent = MACHINE_TYPE_NAME("virt"), \
->          .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
-> -        .is_available = target_m68k, \
-> +        .is_available = target_is_m68k, \
->      }; \
->      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
->      { \
-> diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
-> index a3ff903839b..89fb786641f 100644
-> --- a/hw/or1k/virt.c
-> +++ b/hw/or1k/virt.c
-> @@ -559,7 +559,7 @@ static const TypeInfo or1ksim_machine_typeinfo = {
->      .parent     = TYPE_MACHINE,
->      .class_init = openrisc_virt_machine_init,
->      .instance_size = sizeof(OR1KVirtState),
-> -    .is_available = target_or1k,
-> +    .is_available = target_is_or1k,
->  };
->  
->  static void or1ksim_machine_init_register_types(void)
-> diff --git a/include/qom/object.h b/include/qom/object.h
-> index 4c0645817a5..7d52a15f6b8 100644
-> --- a/include/qom/object.h
-> +++ b/include/qom/object.h
-> @@ -17,6 +17,7 @@
->  #include "qapi/qapi-builtin-types.h"
->  #include "qemu/module.h"
->  
-> +typedef struct TargetInfo TargetInfo;
->  struct TypeImpl;
->  typedef struct TypeImpl *Type;
->  
-> @@ -117,6 +118,15 @@ typedef void (ObjectUnparent)(Object *obj);
->   */
->  typedef void (ObjectFree)(void *obj);
->  
-> +/**
-> + * typedef TypeIsAvailable:
-> + * @ti: TargetInfo to test.
-> + *
-> + * Returns whether a type is available for @ti. Typical implementations
-> + * are target_is_*().
-> + */
-> +typedef bool (TypeIsAvailable)(const TargetInfo *ti);
-> +
->  #define OBJECT_CLASS_CAST_CACHE 4
->  
->  /**
-> @@ -498,7 +508,7 @@ struct TypeInfo
->      void (*class_base_init)(ObjectClass *klass, const void *data);
->      const void *class_data;
->  
-> -    bool (*is_available)(void);
-> +    TypeIsAvailable *is_available;
->      const InterfaceInfo *interfaces;
->  };
->  
-> diff --git a/qom/object.c b/qom/object.c
-> index 96498f3d001..253b9562b41 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -15,6 +15,7 @@
->  #include "qom/compat-properties.h"
->  #include "qom/object.h"
->  #include "qom/object_interfaces.h"
-> +#include "qemu/target-info.h"
->  #include "qemu/cutils.h"
->  #include "qemu/memalign.h"
->  #include "qapi/visitor.h"
-> @@ -167,7 +168,7 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
->          abort();
->      }
->  
-> -    if (info->is_available && !info->is_available()) {
-> +    if (info->is_available && !info->is_available(target_info())) {
->          return NULL;
->      }
->  
+> ```text
+> qemu-system -target none -M virt
+> unsupported machine type: "virt" for target "none"
+> Available for targets:
+>   aarch64
+>   arm
+> ```
+> 
+> It moves target_info() to a shared location so object.c can call it when
+> checking machine availability. The series also replaces QOM-based target-info
+> registration with a constructor list and passes TargetInfo to the
+> is_available callback.
+> 
+> Target metadata and architecture checks are generated from the configured
+> targets, there is too much arch to write biiolperate code. doing this for easier
+> Add TargetInfo* to is_available
+> 
+> The target-info API and implementation are shared, rather than compiled
+> separately for every target.
+> 
+> This series removes the per-target source files "configs/targets/*.c".
+> Their target-specific parameters are collected in a generated
+> target-info-def.c for each softmmu target. This lays the groundwork for
+> QEMU system builds in which target-info-def.c is the only target-specific
+> source file compiled for each target. Using the same filename lets
+> meson.build handle these definitions uniformly.
+> 
+> The series adds unit-test coverage for target info and multi-target builds.
+> 
+> Pierrick Bouvier (2):
+>   configs/targets: remove target info definitions
+>   target-info: rename target-info-stub.c in target-info-def.c
+> 
+> Yonggang Luo (6):
+>   target-info: rename target-info-impl.h to target-info-def.h
+>   target-info: replace QOM registration with a constructor list
+>   tests/unit: add target-info coverage for multi-target builds
+>   meson: load all target .mak files into target_mak_all
+>   target-info: Replace handwritten architecture checks with generated
+>     code
+>   qom: pass TargetInfo to is_available for later use
+> 
+>  MAINTAINERS                             |   2 +-
+>  configs/targets/aarch64-softmmu.c       |  25 ------
+>  configs/targets/arm-softmmu.c           |  25 ------
+>  configs/targets/meson.build             |   6 --
+>  configs/targets/riscv32-softmmu.c       |  24 -----
+>  configs/targets/riscv64-softmmu.c       |  24 -----
+>  hw/arm/aspeed_ast27x0-fc.c              |   2 +-
+>  hw/arm/aspeed_ast27x0_evb.c             |   4 +-
+>  hw/arm/raspi.c                          |   4 +-
+>  hw/arm/raspi4b.c                        |   2 +-
+>  hw/arm/virt.c                           |   4 +-
+>  hw/m68k/virt.c                          |   4 +-
+>  hw/or1k/virt.c                          |   2 +-
+>  include/hw/core/cpu.h                   |   2 +-
+>  include/qemu/module.h                   |   1 -
+>  include/qemu/target-info-def.h          |  88 ++++++++++++++++++
+>  include/qemu/target-info-impl.h         |  42 ---------
+>  include/qemu/target-info-init.h         |  53 -----------
+>  include/qemu/target-info-qom.h          |  31 -------
+>  include/qemu/target-info.h              |  87 ++++--------------
+>  include/qom/object.h                    |  12 ++-
+>  meson.build                             |  52 ++++++++---
+>  page-vary-common.c                      |   2 +-
+>  page-vary-system.c                      |   2 +-
+>  qom/object.c                            |   3 +-
+>  scripts/gen-target-info.py              |  99 ++++++++++++++++++++
+>  system/vl.c                             |   4 -
+>  target-info-stub.c => target-info-def.c |   3 +-
+>  target-info-qom.c                       |  60 -------------
+>  target-info.c                           | 115 ++++++++++++------------
+>  tests/qtest/fuzz/fuzz.c                 |   3 -
+>  tests/unit/meson.build                  |   4 +
+>  tests/unit/test-multi-target.c          |  12 +--
+>  tests/unit/test-target-info.c           |  38 ++++++++
+>  34 files changed, 379 insertions(+), 462 deletions(-)
+>  delete mode 100644 configs/targets/aarch64-softmmu.c
+>  delete mode 100644 configs/targets/arm-softmmu.c
+>  delete mode 100644 configs/targets/meson.build
+>  delete mode 100644 configs/targets/riscv32-softmmu.c
+>  delete mode 100644 configs/targets/riscv64-softmmu.c
+>  create mode 100644 include/qemu/target-info-def.h
+>  delete mode 100644 include/qemu/target-info-impl.h
+>  delete mode 100644 include/qemu/target-info-init.h
+>  delete mode 100644 include/qemu/target-info-qom.h
+>  create mode 100644 scripts/gen-target-info.py
+>  rename target-info-stub.c => target-info-def.c (94%)
+>  delete mode 100644 target-info-qom.c
+>  create mode 100644 tests/unit/test-target-info.c
+> 
 
-```
-info->is_available(target_info())
-```
-
-or
-
-```
-is_available() {
-  TargetInfo ti * = target_info();
-  ...
-}
-```
-
-Are doing the exact same thing today.
-
-So what is the future goal requiring to introduce this?
-
-It's something we asked multiple times, and until we don't have a short
-series doing this change + a single and minimal modification showing the
-reason, I will still be asking.
-
-If the goal is to implement some sort of classification for
-machines/cpus, I would suggest to just send a simple series doing this
-change (and only this - no additional cleanups/refactoring), and an
-example for a single machine + cpu, so we can talk about it.
+I'll pull the first three patches.
 
 Regards,
 Pierrick

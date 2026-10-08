@@ -4,124 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB912CA600A
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 07:52:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25599CA6007
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 09:03:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEivh-0003I8-VW; Thu, 08 Oct 2026 03:52:41 -0400
+	id 1xEk24-00041R-K3; Thu, 08 Oct 2026 05:03:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xEivg-0003He-Iw
- for qemu-arm@nongnu.org; Thu, 08 Oct 2026 03:52:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xEk23-00040u-FP; Thu, 08 Oct 2026 05:03:19 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xEive-0000Uq-Ms
- for qemu-arm@nongnu.org; Thu, 08 Oct 2026 03:52:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791445957;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Py7x+AATRs+M7CC5CAtcFn0GVg+kSB4pWlgQwH92zJU=;
- b=dWTWRe/d84JEgoJmXlbtCHjurgPKG4DGMiF6ki6Rb2vm+PdQ3NLXnYcjaoL78D8H3vI+U+
- tJe8fqKURpoXmlxHPNMLl/vp9l0UkN6v1goqdwzYFusiiPBA8Q0L/phs8HV9WdZN1KcutM
- 0HuVRyr3M4accGuj6R25S5Cmjskb/zo=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-68-kwAKtaDnNSW3AlSF2Ct-3Q-1; Thu, 8 Oct 2026 07:52:36 +0000
-X-MC-Unique: kwAKtaDnNSW3AlSF2Ct-3Q-1
-X-Mimecast-MFC-AGG-ID: kwAKtaDnNSW3AlSF2Ct-3Q_1791445955
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-486f9d150c3so2788349f8f.3
- for <qemu-arm@nongnu.org>; Thu, 08 Oct 2026 00:52:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791445955; x=1792050755;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=Py7x+AATRs+M7CC5CAtcFn0GVg+kSB4pWlgQwH92zJU=;
- b=sDY5ilbo7ahd8kaIlkwhz1oqxunY1eisOw/pPWSvYLGHz55LKuGXc1yqWfJLE1WzoA
- f/ti13727t3pRiSfDgvIBNpZ87DEjlRar/2QiFZyV4F98r+82DS41K9HxTBfrYWllmYd
- 5pPwyY62sYeAtgPcgHBcB4XkJpIUMUTIo3K/LcfKUqn6EYSloeoB9Ezu65z0TxZH43+U
- kr+tQOLYJnmQAt+sMzLULOifBN4Kvd7x+fobBZgqBw8yv8YyZ7u8sl9LMnycZwHiiyTT
- GjXvJ2WhRHEWVfmJhd73OaIj9Ie1drJWt1ERFSaAAavZHIBjN+AwfYcj9oY3uPXDuj2j
- xQ8w==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzwDluL+jpxGCzpTS1HjpPJUUuSjKWcypU5iOfNMMNDECUlHuFjipkOnXjFozaW7jn5GU3hsXi9Og==@nongnu.org
-X-Gm-Message-State: AFq9FYLOYQ44cSuSgvYgtubiFHgColkmuR6zeINfDVjOFunqGWZRS4lc
- tremyMCa9QI32mUIKr7HO0u8AWWXg654w7BrO44z6t1GzK80Q/0VzzlZ8GeznDlgdgPq0F7yBtu
- DFUWP0OVBL44abhkOS2Z3z6MJCQJsbmp5vtGQJxcw+OfjlKMNcQRafA==
-X-Gm-Gg: AYBFou3xhRn98QlDNyjBTimoqM+bcOzdOluFNIExcvjNWyomuhzDaFBw40fDRQ2NgUa
- eF1+CCD++/Ody7NddhQyyMyQMJLDgrxKpA1Cg7zE/xXnxofNyUdrcRCACRGeG8OBoF7kVczpSAg
- sCcdfMKDj3OPqJqlFn7pZmOlQqYmubiLp9sIp/wXzDHYRf/NLNbZZAnGlK+UTv9mhkTA9NpEESq
- ao2zVHNJo+WaU0oG1Uc79GuclNGxuMiAUm1nTNYRYM7cVs0VLLeSkLsUrcvNPRfWrYPH++rzsmG
- c4YiRBsmBja8yIY0W4mozVwUAdmE4VPjDoODEV95uJzV7niobACVLnILMRTjxexPuh8/sZb17oI
- 5oGPiy2qGFq8TpD47Sup/4X3RspetLE1zGSnTKS7l/+/xaiuU
-X-Received: by 2002:a05:6000:4818:b0:487:27f6:a4d3 with SMTP id
- ffacd0b85a97d-48c72884e65mr7905400f8f.35.1791445955209; 
- Thu, 08 Oct 2026 00:52:35 -0700 (PDT)
-X-Received: by 2002:a05:6000:4818:b0:487:27f6:a4d3 with SMTP id
- ffacd0b85a97d-48c72884e65mr7905271f8f.35.1791445952791; 
- Thu, 08 Oct 2026 00:52:32 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c724b660fsm9300871f8f.18.2026.10.08.00.52.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Oct 2026 00:52:32 -0700 (PDT)
-Message-ID: <df13670e-1502-4947-8a76-600dd045708b@redhat.com>
-Date: Thu, 8 Oct 2026 09:52:30 +0200
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xEk20-0000sh-Sa; Thu, 08 Oct 2026 05:03:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=E4vx6I42qxKxP9Hd17K8MdLjKiQnqiWaH7HxH0kXWoL3wPz1A0biEa4LsbUHAL2GsWLdOqP1em0/34xMoaPdlnUQ1o5CmHZA9COtSNFhVHC+730Xq/OeCaeCnC7bI0LtRWRWxJiPGiUas9JNFzwmzPsX6Hl0hN2XwtekQxEnHf8CEdErVmizogbuIJZ3le/n405D8r9AlePcRNL7uDAip9gvE1MaHxXSfduK7Gyzgj5F8LuYSmR8kWGgX/qo6Ljrm/x6LZoIcsDILOiTeMQfyA8fTOrWv4wQP+LJVz8XHVpl2PIficfXzAeEHKaA3eqD1FM5WPDT4UuWjy2b3928gA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X1iFly5BKK7tHEbVFrAahd4JHRdsJvRaoc8wOLzuqJk=;
+ b=KcGuftlMJkMzyEYs8syBamtZ1UlCSUXjg40Btg5HZft498eIivc9lzCnBapU0ZPYghRWyb+GLwmnJzDS6rdZlAcJEhLGcdg3Le8HUfjAqNkognkOdpB01ZJTTRu8C6X8Mrem5yPZSmSd67ou4tx9+82VkwFB579evpgdjhxaGe4D9YbSaSbBSkPSOynRGa6UVjV+JAD20gxKUFkoC+aP6X9IhA6m0QunbRyPdIbZAYnrnfi+zy64WnnCJJfvwEqdz5DEJ3od8SKc7oKZJofxwXv48t7qBM7T+s/pytjz+2skGvsTqu05+ebG9KMKkI1Lj9ZSECdrNI2LB9czOL0bVA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=X1iFly5BKK7tHEbVFrAahd4JHRdsJvRaoc8wOLzuqJk=;
+ b=h+5EXl5e9qljXS8eok/WedrESbtncfmS09fJIc/AlER2sHOKM6l9Tvyfuxl4tD4pmmFPoDcZX/JJZVXvgMA8oW6GRDYZ18PgCEoCIIR9i0xAihF5ZP5qogTVETKNuSNBpzhKC0qMxLGCm2VvVrAati+J+wFBkPNt96r7CH8JmAjzkf06cjTE3k7rAnwVF5av4EBuwYtVwX8FkKG/EPv5TKX3emDe2Mo2W58PPSkH/OAXi9OEB4uQLablXcnrXxW5P8Ruy7YzYAnFevpvoYLm05elv/zY+zuFZOpA2eBbPKyC8Xm7Wrk5pdFxmJvKHAkehX85kdWDFPH02Ge0GhfEhg==
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
+ by TYZPR06MB5998.apcprd06.prod.outlook.com (2603:1096:400:33f::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.17; Thu, 8 Oct
+ 2026 09:03:04 +0000
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0496.015; Thu, 8 Oct 2026
+ 09:03:04 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Emmanuel Blot
+ <emmanuel.blot@free.fr>, Fabiano Rosas <farosas@suse.de>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, Kane Chen
+ <kane_chen@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Laurent Vivier
+ <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?=
+ <philmd@oss.qualcomm.com>, Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Patrick Leis <venture@google.com>
+Subject: Re: [PATCH 48/50] hw/arm: minerva: add Facebook BMC machine
+Thread-Topic: [PATCH 48/50] hw/arm: minerva: add Facebook BMC machine
+Thread-Index: AQHdVwPAdJ2e4S1gnkWFGJsSpdSBKg==
+Date: Thu, 8 Oct 2026 09:03:04 +0000
+Message-ID: <SEZPR06MB736205BB571BC4FA9E89CD7EFC932@SEZPR06MB7362.apcprd06.prod.outlook.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TYZPR06MB5998:EE_
+x-ms-office365-filtering-correlation-id: 090e41f2-fe04-4254-e4a7-08df251af699
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|23010399003|366016|1800799024|38070700021|56012099006|10067099003|18002099003|8096899003|41080700001;
+x-microsoft-antispam-message-info: Jhb/KDDgJwbnOpuZ9w0SGmCBneQg9X1xtZ188D3qlabtP2ui2fMKkQM2l5IWuCi08XSfWUUAZmgSHAokrn0yzmaQ5MJN4D5Ojvvf8yBA4Gl1uF4k8Rvu/U2NGXUDIw+pO+6mUSk2FYAG5MfzEhYy70aj5oG9wb04zksbrXiWK0ZbWnt0c3FELJgnrzkyYrBBzR4/EJ6M1e3Ud1J0/2DMkbg1LHzDdsdOzSveZTUsjgSLe4C+wp2K6KUC8mbQ2VZU3MZKyo1OYOF0c4SwsGafTDSfW1Yy61j156MX1XvoNpktgY5Q7blDhUHTw7Iar9+jHMOwQXKgLFk+YhUjakA79tWmmRsOTG2pkCGBZy5iZ0C7OWk0ouQBXcJcOQ+BuVumcEL/cyvlDgJopRlOY1mf9K7EYa2hlRi7k7TGpR/XouszSKzldEjvNXNUI49bP6hVp+XvDiDTPzy1n36+35C543sVfGYqU/ssKygB/Zw3AZksdyFvzxiK2+GmHI3WDDT7WVN3HomXTKn2R38VpqpmyVsZviF0RuLXsnXbMLgyVOO6Y5B0WRD9hRGJUBbRoz6Do3tdAArK4INI9EDq4AbKZ1NIhV6y2oTV8Vo1j0i1IjqV9uwiEmUN+mG2LkD2Z0pz46lHefKFBvGEdKgxH32iOZ+B71Qbs2qeU6TBdlGV9VRgqomRarnxg1lH9pFpyjkMPCQvaFg2TRb/tPYKRAyS8MYYytHzsOgRuv+bOGMhZLjoQMBt2Ue2qshuBJG09Q1U
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(23010399003)(366016)(1800799024)(38070700021)(56012099006)(10067099003)(18002099003)(8096899003)(41080700001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?ChRWOKNAa4eD1n3MrpI39yqPnLueCuhxh+4x+P+8rTgMUadqpjcldFZ4dX?=
+ =?iso-8859-1?Q?oOSd6+H5d908LNSf/yNY6LWOGNimJ68pXJIFdulH/w0MxClzc8eDEzDCGI?=
+ =?iso-8859-1?Q?juTr0xMLaz0diIDAIhsLAghl4p6AVHOlTthH3gF27c7G8i46Khyq7jz9LM?=
+ =?iso-8859-1?Q?9QLXZAVLdEv/BaAY2Pqw9tNd9KyFYx0W+Ek/r0yYBPRtRvmHIZDjibe/0S?=
+ =?iso-8859-1?Q?tbr7msbrZ7w8aKc6zpE11FI/8ZRca1Jh6rW/BVgb3+o000Qc/UJ0JL2TkA?=
+ =?iso-8859-1?Q?A3Tn1lax+RmJUsU48u6/oLW7ZLlRC/Pzh2vwlZ1pUPsxEnEc8/WyethtQd?=
+ =?iso-8859-1?Q?myvrx/6dhZnI4gUozPDzaPyexDsY+4qrYBgJibNFF5GVmmaSKNjDlLhpq/?=
+ =?iso-8859-1?Q?1hI3NdKelT+w8CXgkqBl4Rc9rhwnvNsPC1UYwOWOPf1bQCLNEle6XOICx0?=
+ =?iso-8859-1?Q?FRSWV/Z7lEFTfaKevFzYt6RnI2MWhwK9Pvt4phONS1uZvARGjZbd9gduhd?=
+ =?iso-8859-1?Q?0gmnivvejavcbksK8tpsB0BQNNElLSRuqcItN9LYfyDn6fjPdTNFzm3+tt?=
+ =?iso-8859-1?Q?+lMRvIOdUDYuoV1uP9WDZ0ve30Fi2qXd+/Bn3ZD3/HvBTDzdd5fPpc6AmX?=
+ =?iso-8859-1?Q?zz07sIv1TZB4QD0ZENzcZ68YdLSdaUqt41GbPhSxUj8TLdK0yL1dqCyzih?=
+ =?iso-8859-1?Q?nqifLgjlID4ulCZS/QXme4wWA1qdyNRPW/y0KYlUIoUDpXwzw3YlC7lGLh?=
+ =?iso-8859-1?Q?3HGhyMYKvFiUTVy0GUZvH5HbTR7HvmXsRofM6gtgLF1llMpHO4jP5BmVAi?=
+ =?iso-8859-1?Q?aaxOSjzqWd8X2O60D1MHVW+K8sztwMntXzLXZxkBxBd2YYb9IlUxDLgcIg?=
+ =?iso-8859-1?Q?8gSS/ryY9dP2M9S8Pmat2Lx4o+X0W7TZaOJ+eyVleV1d7Jv0Z9QFDLak6P?=
+ =?iso-8859-1?Q?pYpuDsUE1Zw2LNXVwH7KpKG8JvvFa2aJxs3D6MC95hwM4QtNQirdJPGYai?=
+ =?iso-8859-1?Q?Y3CzemkklTKakPbQOsrQagrW0mlBrrQEOiQ/9ZeghlMLrzpbQ/suDCPPhX?=
+ =?iso-8859-1?Q?qXnaGe2Uge2Yk04oudUynnsg/so+SSkFZ0V/kphsHn+I6iJqt1qAeoHr04?=
+ =?iso-8859-1?Q?Hyi2Fp7r9IVj7ScxkQCVNNzRTnjIeEl8y6S5IoFslSeKzOLIz6sBxP81CE?=
+ =?iso-8859-1?Q?QmuisD9u+qhdirdelOtFutcdP4RtnEl5I35CHuZUsrxhLogBGMFjKhxFL/?=
+ =?iso-8859-1?Q?bNV62LFtC4aUrpJvVlYu6h7uavq8YGreaocXZeH5wiDuvlzSMykkZiG0cb?=
+ =?iso-8859-1?Q?SHcKFns0T1wdlmkgfBCNsvOl01U18oDLrK4wt8y0atSKSNvkQIV5/sSB/w?=
+ =?iso-8859-1?Q?1ZzsgAwJieZanxDRU493QOcHYppU+RwzLYMunJr5cyVU4mNODPcSgj9FhS?=
+ =?iso-8859-1?Q?dmb2SWgPKcKfPKX4vCprinGDnzd6OM2S7H+wcBZCGk7iY3f2ZoXZFZOYxV?=
+ =?iso-8859-1?Q?5D0+31mAhHLVLX0NTTXpPrch1tv1qzjzkkd8iLePIjB44qM6WaVrv7ac+M?=
+ =?iso-8859-1?Q?xBi7gdo+Z1HqF1DM+ofw8AFk40t9nkuXKo7EGKb9VFYcaVLwA+5b5I7zZa?=
+ =?iso-8859-1?Q?xHHMAczwGwb0qPxf+V3rNGHNjzgk4Wm8GNpP907382zVXEoILHBI8IGG6b?=
+ =?iso-8859-1?Q?r057FFP5ZIkdhdMw/LWmUqt6GZypz210r6CTwH1v6CKMpPwivFf8C6DUY1?=
+ =?iso-8859-1?Q?9WpArFdOab70gnGST/xQm0hfFskTIXwMPjkF7x8aNYzHmkfNkiNMnD7nF6?=
+ =?iso-8859-1?Q?gkMMB4sOFQ=3D=3D?=
+Content-Type: multipart/alternative;
+ boundary="_000_SEZPR06MB736205BB571BC4FA9E89CD7EFC932SEZPR06MB7362apcp_"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 16/26] target/arm/kvm: Apply SYSREG props to the final
- vcpu
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260916144721.751810-1-eric.auger@redhat.com>
- <20260916144721.751810-17-eric.auger@redhat.com>
- <5AC3258F-1F6E-491E-8B38-633C52199904@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <5AC3258F-1F6E-491E-8B38-633C52199904@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: KXB1LQ0oj0Fe_Hc7HZKNlPbjrOf0fjDCuqc6V7ebwzE_1791445955
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+X-Exchange-RoutingPolicyChecked: GFafzrYgKauW+Ge4z/PLsG7cM8Tvl0mvb9WEdL2CF9L/aBMmsbYLhT4XwVE5EsQdLBYAoAyifzEFuD3C3aTGwXooTf7HJXuUjyZc11NbUgyEaJGFGVDdAZ/8smXP6ShkyNI1L3iF97Rh5KxMZP0UP128YAo6VlrJh5pZPauEcpwz5Lhn5r0c/QJN7mjgF8dZEmNFQr+1sebBPHepF9MCS35MOv8+ZP187BA703IVRQhhSgpMSkqiNv60bzXuqHgJvgaDKmNV83rCW/Wx4VTWUa3I8b0ZhojcCK7XSas2IyOJY9VXWEo4a7b7a4G3SifFL9ESUYkkoxlGBpor1gxGwg==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 090e41f2-fe04-4254-e4a7-08df251af699
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Oct 2026 09:03:04.6016 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0vhWXV+0dzlvaHRw7RhZFqLPHyVOxHpx1WK1iF/tA9Cin3GC6BV7uWWW9qRqJfJk8Ks1aEmvw3Rv9aOI95Nb9wK4S3f1Of5wOOAvJeTtykU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB5998
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,166 +150,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+--_000_SEZPR06MB736205BB571BC4FA9E89CD7EFC932SEZPR06MB7362apcp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
 
-On 9/30/26 9:54 AM, Khushit Shah wrote:
->
->> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> SYSREG prop settings were recorded in a hashtable but they
->> are not yet injected on guest. Iterate over all set fields and
->> apply the new value through KVM_SET_ONE_REG. The new field
->> value overrides the current observable vcpu register value.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->> target/arm/kvm.c        | 65 +++++++++++++++++++++++++++++++++++++++++
->> target/arm/trace-events |  1 +
->> 2 files changed, 66 insertions(+)
->>
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index 3ec2618cc1..ddf320d0e6 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -343,6 +343,9 @@ static ARM64SysRegField *get_field(int i, ARM64SysReg *reg)
->> #define MAKE_IDREG_KEY(reg_idx, field_shift) \
->>     (((uint64_t)(reg_idx) << 8) | ((uint64_t)(field_shift) & 0xFF))
->>
->> +#define KEY_TO_REG_IDX(key)     ((uint32_t)(((uint64_t)(key)) >> 8))
->> +#define KEY_TO_SHIFT(key)       ((uint8_t)(((uint64_t)(key)) & 0xFF))
->> +
->> static void set_sysreg_prop(Object *obj, Visitor *v,
->>                             const char *name, void *opaque,
->>                             Error **errp)
->> @@ -2215,6 +2218,63 @@ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
->>     return 0;
->> }
->>
->> +static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
->> +{
->> +    uint64_t *idregs = cpu->isar.idregs;
->> +    gpointer key_ptr, value_ptr;
->> +    CPUState *cs = CPU(cpu);
->> +    GHashTableIter iter;
->> +
->> +    g_hash_table_iter_init(&iter, cpu->sysreg_props);
->> +
->> +    while (g_hash_table_iter_next(&iter, &key_ptr, &value_ptr)) {
->> +        uint64_t key = (uint64_t)key_ptr;
->> +        uint64_t value = (uint64_t)value_ptr;
->> +        uint32_t reg_idx = KEY_TO_REG_IDX(key);
->> +        uint8_t lower    = KEY_TO_SHIFT(key);
->> +        ARM64SysReg *reg = &arm64_id_regs[reg_idx];
->> +        struct kvm_one_reg kvm_reg;
->> +        uint64_t current, old, mask;
->> +        uint64_t kvm_idx;
->> +        ARM64SysRegField *field = get_field(lower, reg);
->> +        int length = field->length;
->> +        uint64_t oldfv;
->> +        int ret;
->> +
->> +        mask = MAKE_64BIT_MASK(lower, length);
->> +        value = value << lower;
->> +
->> +        old = idregs[reg_idx];
->> +
->> +        kvm_idx = idregs_sysreg_to_kvm_reg(id_register_sysreg[reg_idx]);
->> +        ret = read_sys_reg64(cs->kvm_fd, &current, kvm_idx);
->> +        if (ret) {
->> +            error_setg(errp, "failed to read the current value of %s",
->> +                       reg->name);
->> +            return ret;
->> +        }
->> +        oldfv = (current & mask) >> lower;
->> +
->> +        idregs[reg_idx] = current & ~mask;
->> +        idregs[reg_idx] |= value;
->> +
->> +        kvm_reg.id = kvm_idx;
->> +        kvm_reg.addr = (uintptr_t)&idregs[reg_idx];
->> +
->> +        ret = ioctl(cs->kvm_fd, KVM_SET_ONE_REG, &kvm_reg);
->> +        if (ret) {
->> +            error_setg(errp, "failed to apply new value 0x%"PRIx64" for field %s.%s "
->> +                       "(previous is 0x%"PRIx64"): %m", idregs[reg_idx],
->> +                       reg->name, field->name, oldfv);
->> +            return ret;
->> +        }
-> Hi Eric,
->
-> The above is the only KVM-related code here. Can we split this into
->     1. Apply SYSREG_ props callback which resides in cpu64.c?
->     2. The previous writeback to cpregs function that writes back ID registers to KVM?
+/*
+ * Minerva hardware values.
+ */
+#define MINERVA_BMC_HW_STRAP1 0x00002002
+#define MINERVA_BMC_HW_STRAP2 0x00000800
+#define MINERVA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
 
-the problem is the previous method was copying all the idregs that
-changed back to cpregs. But those idregs were populated from the "max"
-vcpu which in some cases led to inconsistency with the final vcpu
-setting. The setter now registers the new field value in a hash table.
-Maybe we can just rely on an arch callback to apply them on the guest
+Please drop ASPEED_RAM_SIZE
+https://github.com/qemu/qemu/commit/c5538ca99dff8b5a000b0e5d639d784eeb0d9f9=
+9
 
-Thanks
+Thanks,
+Jamin
 
-Eric
->
-> The reason being the SYSREG_ props otherwise do not work with any other accelerator.
-> We are already trying to make the SYSREG_ getter/setter accel-agnostic.
->
-> The above method still has the nicety that -cpu host without any SYSREG_ prop should
-> behave the same as previous :)
->
-> Side note:
-> While we don’t target TCG support currently, I tried your v8 + named models on TCG
-> (quick hack; ~20 LOC), and SYSREG_ props/named models works almost out of the box
-> there (very minimal testing), which was cool.
->
-> Thanks,
-> Khushit
->
->> +
->> +        trace_apply_sysreg_prop(reg->name, field->name, old, current,
->> +                                mask, value, idregs[reg_idx]);
->> +    }
->> +    return 0;
->> +}
->> +
->> int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
->> {
->>     int ret;
->> @@ -2315,6 +2375,11 @@ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
->>     }
->>     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
->>
->> +    ret = kvm_arm_apply_sysreg_props(cpu, errp);
->> +    if (ret) {
->> +        return ret;
->> +    }
->> +
->>     return kvm_arm_init_cpreg_list(cpu);
->> }
->>
->> diff --git a/target/arm/trace-events b/target/arm/trace-events
->> index d72ad6b671..b4d2b45a7d 100644
->> --- a/target/arm/trace-events
->> +++ b/target/arm/trace-events
->> @@ -18,6 +18,7 @@ kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint6
->> decode_idreg_writemap(const char* name, int lower, int upper, char *prop_name) "%s [%d:%d] is writable (prop %s)"
->> get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
->> set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
->> +apply_sysreg_prop(const char *reg_name, const char *field_name, uint64_t old, uint64_t current, uint64_t mask, uint64_t field_value, uint64_t new) "%s.%s old=0x%"PRIx64" current=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new=0x%"PRIx64
->> nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
->>
->> # cpu.c
->> -- 
->> 2.53.0
->>
 
+--_000_SEZPR06MB736205BB571BC4FA9E89CD7EFC932SEZPR06MB7362apcp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+/*</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+&nbsp;* Minerva hardware values.</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+&nbsp;*/</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+#define MINERVA_BMC_HW_STRAP1 0x00002002</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+#define MINERVA_BMC_HW_STRAP2 0x00000800</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+#define MINERVA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+Please drop ASPEED_RAM_SIZE</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+https://github.com/qemu/qemu/commit/c5538ca99dff8b5a000b0e5d639d784eeb0d9f9=
+9</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+Thanks,</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">
+Jamin</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+</body>
+</html>
+
+--_000_SEZPR06MB736205BB571BC4FA9E89CD7EFC932SEZPR06MB7362apcp_--
 

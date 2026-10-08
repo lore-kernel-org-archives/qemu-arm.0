@@ -4,102 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2F12CA600D
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 16:40:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1AE0CA6011
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 17:05:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xErAd-0002le-Ac; Thu, 08 Oct 2026 12:40:39 -0400
+	id 1xErXn-0006jx-3k; Thu, 08 Oct 2026 13:04:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
- id 1xErAc-0002fA-22
- for qemu-arm@nongnu.org; Thu, 08 Oct 2026 12:40:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
- id 1xErAa-0007yj-Ay
- for qemu-arm@nongnu.org; Thu, 08 Oct 2026 12:40:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791477635;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=43g9C1RPFzAiuQZ1xBBbot1se3n7VApX0Cnv5nQBlxw=;
- b=ON4fU672biuecZoFOhusl4PXf2mVtM0ufyM/dtoTI5aeyb/a4r9vSg6mrm/dc7XOOViP9T
- FMR9fAoBy/lDunVv7E+aQ+iJhGMO1AxvC2RgfRhz1XENbIJd0q9ujzIDiLJSOC68r/Ar+/
- GF3Jaf4zDHk5rbLk8L5gsXtrqewWeuk=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-539-EH0BA96rNAenqXrJ2H-4_w-1; Thu, 08 Oct 2026 12:40:33 -0400
-X-MC-Unique: EH0BA96rNAenqXrJ2H-4_w-1
-X-Mimecast-MFC-AGG-ID: EH0BA96rNAenqXrJ2H-4_w_1791477632
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-48af4a0bd0fso3087049f8f.2
- for <qemu-arm@nongnu.org>; Thu, 08 Oct 2026 09:40:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xErXd-0006eZ-1f
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2026 13:04:28 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xErXb-00027Y-Aw
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2026 13:04:24 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-6acb9c018ffso1630836a12.1
+ for <qemu-arm@nongnu.org>; Thu, 08 Oct 2026 10:04:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791479061; cv=none;
+ d=google.com; s=arc-20260327;
+ b=CetuV2LoAX+BdC6M8XVmrZgF1iz0BFwIuwxJDRb1l3HdmAaoG1qSVh/JdFxK2mxqLT
+ 66yI2woHKvJ1xnKwfVSmYtcOVL9UKNIG1SRv0HZylNXfQ06sSRtFXsljP2omgax5e5pp
+ kVqCk6usiMGRnQHtB211UxMllx6yrGZlTkwXAfsYPgz4vkwOc7Si/OEsBvoJEOKWnWxv
+ MjWtBRUUPiUvwX5poqO9yl+7bWYqSMhllie3Vr+qppzL4xxVZ0Mi1eqj3vhMgUKmjIl/
+ W1NyW4c/zUKiMQDD+/Jxxh2FiwbGbpr02n6pDBjQcu+xMtNCKyk1cryXwiiJA3b8DnfW
+ nQ5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :reply-to:in-reply-to:references:mime-version:dkim-signature;
+ bh=q/bYKfAD33Pc7+//Tf4tEpE4XctjvZAfka6zrYLc9uc=;
+ fh=CuC5HXwxv9Gpr8M3vT3YHRhP2R2dhMQuN9HfTFXOd7A=;
+ b=LaAe1/P8G7qOuFm5fuRmn42wy3UnOVZ+B05yVWLMd+3SjojoePorGPsEA7BPtfsq/+
+ 37wbjUQQHSiHTA+YHtVc7hBlNucjcJeqSR7NXWWjTTWr8T4lt93g0DpLm8iptxxM+m/2
+ qW3DNMUh/UdQxO6PEpqFIoX8aSZRzNX0ejuDK9sZDuVHru733U08x9TR92QjetxEs/FR
+ 7iSByx+SOojcokgzspucZzxDkYth96ZJz3i9Afu2stj46uYKrqO7YEioGKcegWRZrr8O
+ KKlegzQkNVtA1D4EieTkUTAQCU71kL/mrW2S/FlhPyAzaXWNmeiZCiHYRRIbZWn5jN9C
+ e7wQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791479061; x=1792083861; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=q/bYKfAD33Pc7+//Tf4tEpE4XctjvZAfka6zrYLc9uc=;
+ b=q35JHIUEF2MmMKHdEyNNizxQyV9+vCboGPkgQD0qFp9f3hFnXfWxrrCSh0EguLDKia
+ xTKKxASJFXsPZZmF0e69EQUEtBTxPvnNDHEy8wW76wj3Hlfv13BlYyGS5J5N5quY8/Un
+ 4oPdmgwRv6JPbZWxLlNcfRF0Lq+6HAxbUcP6iZjKuYi744rsHEPeWNC1Vdd5PYrtLdVe
+ 05U6FfwIjda4oUgArz3bYcncqOc10xv312jJNY4CZdgncVRFsP5NWN/+WVAbr461xAY7
+ 0yJ7qe7VD96RJtAYqSM+CXkmd5L7/M8wnDJQepUeC3sRN1bDVxw/9ap8agSas2MkTuw2
+ 2O9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791477632; x=1792082432;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1791479061; x=1792083861;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=43g9C1RPFzAiuQZ1xBBbot1se3n7VApX0Cnv5nQBlxw=;
- b=tN978vQhl9JG5h2N8ndncgy+/V8FbJpsJ39+LvSbDsogYLRRa7gQrBb1NzTIVatYeL
- gi+g5SOPBcIP89X5Yfjb8AUbIjxPZv86FSfld/VkB4RhmmjwAofHV7PB0SBn+BEgkLxr
- PaGq0UISOI4FVC0dGDpiv1M39qe7CU3P448j0RhGYOXHdZ3rzFD8NKKb0H8jxM2b2IzF
- poYXLC8+CcZV/fXhMWs2PZFSfA8394J1vMOzZAtlWPJvTKUUdOkBbBdCMFHt+DNQJYJZ
- sZ9KyhAB2ORLq7sbgmAYcGs7hVRDSPwvxJm5Smlr1vasqi0H/Mv4wJZVbaP4kOJ9pONF
- ArXg==
+ bh=q/bYKfAD33Pc7+//Tf4tEpE4XctjvZAfka6zrYLc9uc=;
+ b=ZxUsTNFqamnGUob3c5y8fa7fLbVHRF501P4VfEJy+8dluki22jqk/1tVTj6saoSHCr
+ 5nSdxCaxXFRTfwJkUx4m3aPR7VKv0gwYg+M1LW8s4bpIzcgUtT+GK1aGIxRKnvxejfkS
+ 8B82wO7Aq2azaToYgi9eZGBiDfR7/juXU1Jxbx/7jGBOTtFXOoL4iFfstRCHCKc01Vy3
+ vi0FBnAA4J5mtiVO1/2smtDmXKg1SbKWJxb3hsKgFfg0sfiI+S+tkXRQPWbR/i35GDQ1
+ XtAy466eADBFYZrJAt1bOIGn4OEVGk/R2mdgxCugfcLrNjd53WjldVARmQhzJzte6W7l
+ NJ0w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBygp9hV/Fl6ENayviE9w6zZd15vQkYVr1CSOggqpzV8aC1/DT59DX+oQmJyAI1tMkOZ20mKtg3w3A==@nongnu.org
-X-Gm-Message-State: AFq9FYLL2o8GEH37VJJrtKqLs5vndHGsdJxmgJKY1DmDDXczndncIPFq
- ZJ3u6st5Fi2dQyfWeX/ulKYGESfDxK6AoGYE+kotC8nMa9w0pPAvY8uyH6TmNS9FVIADsphOqYk
- Dzk/SNXIM5nsxGgFD29ynfbL4aXmk4uwWwdXsA5DuSGE0k8sZjCt/Hw==
-X-Gm-Gg: AYBFou2+PalyhKyQfZWPnTJbtjtsWd/ut+CC31N7BWND0Nl7CUW/Zs9Mxfc+n9Z8YhD
- oXirfOiebhmJa4wk9pdVMPS2bc2XRgXEV4Gki2rQPaWSJfQP4zSddlbRQV6XBGunznTiRHGlpNQ
- Bb509H3JY1z4RNoMNzXNVcEap3mQ5UG3WwZ3gtr1Q2GxDQycn7uURaMahTZMauOHXHLxg4KohDG
- Kbbc44VB8L9EyrUg6vRZBFnQgAE/WKQ76hNw8FlN30hYiHWePIRnqgPAFPCADrkMw/4HdNgelp6
- PEzNfqwgRcCrEeW6xAHJwLruUnmp55THpjglGtH+Ca3AfL5FKQ1MH2uL0g==
-X-Received: by 2002:a05:6000:2f83:b0:488:8882:d514 with SMTP id
- ffacd0b85a97d-48c72890fe7mr11904309f8f.49.1791477632122; 
- Thu, 08 Oct 2026 09:40:32 -0700 (PDT)
-X-Received: by 2002:a05:6000:2f83:b0:488:8882:d514 with SMTP id
- ffacd0b85a97d-48c72890fe7mr11904257f8f.49.1791477631683; 
- Thu, 08 Oct 2026 09:40:31 -0700 (PDT)
-Received: from x1 ([151.67.89.12]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48db63ce3f9sm452471f8f.2.2026.10.08.09.40.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Oct 2026 09:40:30 -0700 (PDT)
-Date: Thu, 8 Oct 2026 18:40:27 +0200
-From: Gustavo Romero <gromero@redhat.com>
-To: Fuad Tabba <fuad.tabba@linux.dev>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Will Deacon <will@kernel.org>, Itaru Kitayama <itaru.kitayama@linux.dev>
-Subject: Re: [PATCH v2 3/3] tests/tcg/aarch64: Add a test for the 52-bit TTBR
- base address layout
-Message-ID: <3dqmrslvb3zrr3ndzmcmy2tv5vqovntordzdjqkp2vn2deklua@qkcedhe4owgv>
-References: <20261007080019.350315-1-fuad.tabba@linux.dev>
- <20261007080019.350315-4-fuad.tabba@linux.dev>
- <4ajscli4c4ef7agtizxzdiopjseck5qwa6s4n4mmwwjdrqlnby@xit5l76dxm2w>
- <CA+EHjTxsC8K1Bw6fAMs6APaqVDpup8192dCeJs+vfeh2fN+6Aw@mail.gmail.com>
+ AKwUvByedIYQMC/wTvSXBZn5r/ioHRZYLHRx59Qcl0D0VlLTmmZUe8ePEw6uGbI2xtzVotbm5F2yY8crug==@nongnu.org
+X-Gm-Message-State: AFq9FYJhRhQNa+dWpUmgZSHjhXbhbIv5nPN+1bY2whiExq6bU5IFihT6
+ qFpLwKa5dEvSmu7K1cwxu3HVq7i0Biv67C316EVc7dAnrGM6U+6aC3fBXnW4tgECi9Di5OYbklp
+ qgi95Vue8vNZhCJ4zbxuHHdOzs0ANjGA=
+X-Gm-Gg: AYBFou3gc8N5TR9yEtKQGXAav4U04tKmqprTLk2bD1lKAiQNorx6O1NYGz+7BmYcOWd
+ ipLNPafPKfus9jNGSPvGnD0zb98k9L8L9zuoDDT1Dz6MOm/kdJEl98GBHYihuGCT2mWMp6GhdJS
+ tXmL/dCYQeth3wbcr0CYxUqNrVxHcNAQsiABHVCR3uzgnahNnDHRpOaCjrLCx9iZBPTY4tN3NWW
+ nb1cMH6E6bMUYm4ANgJcdF5B07lD2+uVdWXbHJxJ4wirHrBYfACODSWpsVq9myVHy6K/BH0hkK6
+ qFNn1Y1uzgClcXGeHI9d1oSzYyUrTDW8cvuwK7P5jnHmo8kfXwmxIE+ttrSRn9vGBQ==
+X-Received: by 2002:aa7:c981:0:b0:6ac:8181:3194 with SMTP id
+ 4fb4d7f45d1cf-6b011cc194dmr1953023a12.15.1791479060747; Thu, 08 Oct 2026
+ 10:04:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CA+EHjTxsC8K1Bw6fAMs6APaqVDpup8192dCeJs+vfeh2fN+6Aw@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GcfnaiA6vEfbR8hik0BjyMPkCL0qIGVfAqf3sQyHqII_1791477632
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gromero@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20261007115253.328-1-luoyonggang@gmail.com>
+ <20261007115253.328-9-luoyonggang@gmail.com>
+ <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
+ <CAE2XoE8K+3e8h6H9NrPk1WWMmJfG807bN_Kh5qje-5pKWUUg5w@mail.gmail.com>
+ <b2d89a92-0197-4873-b4ea-75bb21c0d0ae@oss.qualcomm.com>
+ <asdkF80SJzF2W3sD@redhat.com>
+ <CAE2XoE-Vc+CaE-3FerW3eXtTgspwxZJ6ZT0CZyg3ZYpoJ8xYXw@mail.gmail.com>
+ <98644e74-9219-42f0-bcf7-8cd7f02353af@oss.qualcomm.com>
+In-Reply-To: <98644e74-9219-42f0-bcf7-8cd7f02353af@oss.qualcomm.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Fri, 9 Oct 2026 01:04:08 +0800
+X-Gm-Features: AclHuK-toIfuEvTxSU46Bjv9lFt2gOkyCwbGKxlmQhAYL_o5vMGUzzoN9GJqqGw
+Message-ID: <CAE2XoE8qSVczu5R1HTwOV+PhPo7_wWzB=KSqhJroqbgcP5GDRQ@mail.gmail.com>
+Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ qemu-devel@nongnu.org, Cleber Rosa <crosa@redhat.com>, 
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
+ qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
+ Darren Kenny <darren.kenny@oracle.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,91 +139,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Fuad,
-
-On Wed, Oct 07, 2026 at 11:29:11PM +0200, Fuad Tabba wrote:
-> Hi Gustavo,
-> 
-> On Wed, 07 Oct 2026 17:56:30 +0100, Gustavo Romero <gromero@redhat.com> wrote:
-> [...]
-> > > With a 52-bit OA, walk a two-entry level 0 table through an IPA with
-> > > bit 50 set, which stage 2 maps back onto the table, so the walk
-> > > succeeds only if TTBR[4] is cleared from bit 4 of the base address.
-> > > With TCR.DS or VTCR.DS and a 48-bit OA, check that setting TTBR[5:2]
-> > > is a level 0 Address size fault.
+On Fri, Oct 9, 2026 at 12:01=E2=80=AFAM Pierrick Bouvier
+<pierrick.bouvier@oss.qualcomm.com> wrote:
+>
+> On 10/8/2026 2:56 AM, Yonggang Luo wrote:
+> >>> How about letting machines (and machines only first), have a new fiel=
+d
+> >>> 'targets', being a uint32_t mask with an array of EMU_TARGET?
+> >>> machine->targets =3D EMU_TARGET_X | EMU_TARGET_Y;
 > >
-> > Maybe move this commit message to ttbr-baddr.c header and just replace it with
-> > something like "Add a test for checking if with a 52-bit OA a walk ...".
-> 
-> Sure, I'll move it to the file header in v3.
-> 
-> > I like better the test split done in v1. There there are two tests and the
-> > changes are clear, helping to understand which parts of the test are related to
-> > each fix.
+> > To be explicit state what, I give you a pseudo code to compute
+> > machine->targets from TypeInfo::is_available(TargetInfo*)
+> > let targets=3D0
+> > foreach ti of TargetInfo list:
+> >    if (machine::TypeImpl::is_avaible(ti))
+> >          targets |=3D 1 << ti->target_arch
+> >    fi
+> > endif
+> > So they basically have equivalent effect, and is_available will handle
+> > other code-needed condition properly such as
+> > CPU/AccelClass. not restrict to targets, we can also attach the
+> > KConfig into TargetInfo, so is_available(TargetInfo*)
+> > also works for Kconfig. that's why I insist this way, it's solved all
+> > the issues around.
 > >
-> > So the organization I think is better for this series is:
+> > so  machine->targets =3D EMU_TARGET_X | EMU_TARGET_Y; is a good idea,
+> > and it can be implemented with TypeInfo::is_available(TargetInfo*)
+> > without much burden. and targets can be saved into a (machine or
+> > TypeImpl) for fast access when needed, we can compute it
+> > when the program starts.
 > >
-> > Fix 0
-> > Test 0
-> > Fix 1
-> > Test 1
-> 
-> Ack.
-> 
-> [...]
-> 
-> > > +    /*
-> > > +     * 52-bit OA: TTBR[4] is base address bit 50. Through stage 2, the
-> > > +     * table at HIGH_IPA | s1_l0 is s1_l0, so the walk succeeds only if
-> >
-> > I struggled a bit to make sense of this part: "Through Stage 2, the table
-> > HIGH_IPA | s1_l0 is s1_l0 ...", not so much for the duplication of s1_l0 in the
-> > text but because Stage 2 uses the s2_l* tables. Any chance you could enhance a
-> > the explanation here?
-> 
-> The level 0 table address is an IPA, and the s2_l2_high mapping is
-> what brings it back to s1_l0. How about:
-> 
->         /*
->          * 52-bit OA: TTBR[4] is base address bit 50, so with it set the
->          * level 0 table is at IPA HIGH_IPA | s1_l0. Stage 2 maps that IPA
->          * onto s1_l0 (through s2_l2_high), so the walk succeeds only if
->          * TTBR[4] does not also offset the two-entry table by 0x10.
->          */
+>
+> In what we described, there is no need to keep any kind of callback,
+> targets field is sufficient to filter any type declaratively.
+>
+> For the KConfig related types, I would really be keen to leave that
+> available for now, and add a proper error message later.
 
-Yep, that's good.
+Thanks, much clearer now, I was working for full KConfig related types supp=
+ort
+because I am trying to keep qemu-system-$arch to be a symlink to qemu-syste=
+m
+which will still work without breaking anything. If we do not keep this the=
+n
+I machine::targets or TypeInfo::targets would be the best solution, I think
+TypeInfo::targets is better, and copy it into TypeImpl::targets. and give a=
+ API
+to retrieve it, for example:
+uint64_t *object_class_get_targets(ObjectClass *klass);
 
-However, I missed one thing that I think is important to mention and that
-confused me after a while not looking at these TCG tests:
+Add "targets" struct members as TypeInfo::targets and TypeImpl::targets, an=
+d
+copy from TypeInfo into TypeImpl for later access with
+object_class_get_targets
+Then we can use it for filtering machines and cpus without burden.
 
-RAM_BASE is precisely defined as 1 << 30 because the way we link the tests based
-on the memory layout defined in tests/tcg/aarch64/system/kernel.ld, right?
+How to dealt with
+https://lore.kernel.org/qemu-devel/20261007-rv-dedup-v2-6-8a2f0f296a7f@rev.=
+ng/
 
-That's the bit that also confused me, like, how Stage 2 entries:
+It's using is_available.
 
-s2_l2[RAM_BASE >> 29] = RAM_BASE | S2_BLOCK;
-s2_l2_high[RAM_BASE >> 29] = RAM_BASE | S2_BLOCK 
-
-are taking us back to s1_l0. How s1_l0 ends up related to RAM_BASE :)
-
-Hence, I think it's worth mentioning that relationship also in this text. How
-about something like:
-
-"RAM_BASE is chosen to match the memory layout defined in kernel.ld. As a
-result, s1_l0 resides at an offset from RAM_BASE after linking."
-
-Wdyt?
+Maybe all using the way like
+Subject: [PATCH v2 07/18] target/riscv: Runtime register MAX and BARE CPUs
+https://lore.kernel.org/qemu-devel/20261007-rv-dedup-v2-7-8a2f0f296a7f@rev.=
+ng/
+>
+> Regards,
+> Pierrick
 
 
-> Thanks for the review. I'll respin once Richard and Peter have had a look.
 
-np! Sure ;)
-
-
-Cheers,
-Gustavo
-
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 

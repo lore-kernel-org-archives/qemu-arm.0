@@ -4,126 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4F1CA6007
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 02:08:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 215D6CA6007
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 05:53:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEdYf-00053s-FX; Wed, 07 Oct 2026 22:08:34 -0400
+	id 1xEh3q-0002iO-M3; Thu, 08 Oct 2026 01:52:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEdYX-00052M-31
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 22:08:27 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEdYS-0006ip-QS
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 22:08:24 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-6afe29c08ccso3307328a12.1
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 19:08:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791425298; cv=none;
- d=google.com; s=arc-20260327;
- b=IBMhHe9nxuLKQrMMZmUAnIXogAQJ2SLyGbDyFjfP7Fehe0CdVOTR1kPK6b71srsTBG
- OOR2Pn9wNZVX6O+2NwjcAs0I3zcrwNCvbnRJooKsVNJQ3RkfNHTsUETE4TKp4O8Lo9ps
- HRkw/7yyV3n+TtmBoUUQTwe+SP6ejZ2dKKUP7CKSi3u+Az/TKaT6aYNBpsxL2rVm3CTW
- W1PXi9OPbgbE3DZOll1D665SuUt61Dfp0icKX9nPccnn842zVNctFFPgoje6YA1ja7wc
- VmUpSYhqGKrhl7rNgYEvSU100W8etICcFd6sTt3LRTl3ChRZbu0zWyysw13FdxR+V7cS
- gqjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=qSrzfFb0X15GyzEAJXVEk07Y++jM+QdLCglM2n4l3QM=;
- fh=blkp6Y21jiJaILkbytQI5d8PKshgV+EEJpG2gTTbpP4=;
- b=cqEIQOtVcf+GI7czt96sYrBT4rSbUbtfgdT2GpokuOM5LLh7+dvgvL+W1VBCVy261I
- RZ0CUBsF1N/dtEYLeRbHTHzc/bZE4jsTEJZdCDXByi7LJ3W0nIkr46QuJR6dUlrc0kq3
- oD7Uqrga7v5sLi0epY2H0hmRd20bwks8nci0NZUSyGl5+LPlXJpMvo/qW6qC+tq4JNVg
- cpttij4GM9DRPs5aeof0YWoUZ9aMVsJafi2D430ei7MCK8DR7jhLsCHnRrL/ZNFYChXo
- BpSkhQeXN7HTR421C06Hbe67lramKEwCqTBk/HET8BGs4wx9ygBeeCKEhz2YnXFO1mp2
- sBHQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791425298; x=1792030098; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=qSrzfFb0X15GyzEAJXVEk07Y++jM+QdLCglM2n4l3QM=;
- b=nR0E6fGMNWCx9+mWPdFReisiKhBL7LGQN2LPfla8/33DCeamF0M7ZrUTLdB+iMsNBr
- 3yq7gPj0Ame4wn5c2VI0HiogaiImG2LdU4DtkzgNpfJQTES3yze0N8mWpSedJtzkuzNl
- J6cJzhqVvrR5loFMWLx82+ksKMzCLtAOYq6rHepiXVWgiaBJsThVvfCdKDnkZ/pfNCaJ
- nM1RJv8il+oV/itnhIcI7riCSmzFxX6zLCPM4QEchqjAMugFdzXIgawmODPf76WcrP8m
- kTjHC4N1OiYVvyzhRdAJAQH3WuX2K0YXnYbLutHXgz+ZSjbcwUbiDwrJVnVUtJsxHe8g
- Lr3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791425298; x=1792030098;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=qSrzfFb0X15GyzEAJXVEk07Y++jM+QdLCglM2n4l3QM=;
- b=ATkBdgsn0Phq53S/WAI4rzPyj9q5O5q5zi43VVFVM+D9Ln8MU0KaCE1fD9Xg/MVFRO
- 0qubJGfAeW2UzqkU++D1sxjRcGKvY9ekn8pXzrL6iF9LNXDpeav2NtDEZFvgAYotgtJT
- PVr1X+fYh4kGKMyqci+x6XOMEqR8Z9BjN9eTtckAM0zEDF2JPhpgTQKESHfHfjw1Q4f0
- HUu1wIIZONY2K/JYylmLXxZZV+urAYkqf+JLnke6mxIG6A63523T3PiOLvJeQX4w/Pg5
- EVnm4Dil3VXFZ/bZ8ptrCtf9o1zexXkaEhr+x5pqpfhIR5cuOEobBZ6UgvWyNkLKJ0u6
- ofkQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwPFvgUGwPvAHAmzIZZlpbsJvY7NhyzB5j5TDFDP+d70JFteMG6ufyLOslXlNz8uTlomAbwQFy7ZQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIfkyECUlufgWPKWKuVYov1Zhr6LbbdhbbMMRm+cXfrd+TS+sXk
- oWkCP3eTCYoJJ/DxUB2PC+NuIy9CEOwOSxQ/5YXDl/FXLNcQDQ94DFkfOwvbotC3Rl32IaDTMk1
- t8xVVotGdXTMvZRfMwUbqhMQTwN8XI4A=
-X-Gm-Gg: AYBFou3ZEoDfzkSn/zQl2UWvBdPBOcmwk6YDBvvEDpbO9k9Husk8TuU0x0CxOiWlWTH
- rVK0VuTPK69KTjuhr/i//eLq5Fjn6x3LyOrtaIZMDEM8ImADhWRR0Rx3/yqAejRbKVQxwdTp0Nq
- Pd7CZi7gtJQ3dUOasTkCZFmK7vGiqI4tv4w3biZcqy1B1Xgp/XjBcWucCmT93BHF25v8rc6tJgS
- WFhgIgcyI3ZvK7Z/u9MDzLAE20hJHu/DrvuWOxw0veZVxfli+mGg4kIPmTHKUIE1o80P3tg4Tu7
- j2M2kxQtcmx1rxisnv8I0C1AyaesXkpDyt2mvLN6Zk5OUvoILOGOYsA=
-X-Received: by 2002:a05:6402:1ece:b0:6ac:a828:c0cc with SMTP id
- 4fb4d7f45d1cf-6aff27b0449mr4186874a12.4.1791425297440; Wed, 07 Oct 2026
- 19:08:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1xEh3b-0002hn-U3; Thu, 08 Oct 2026 01:52:44 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1xEh3W-0007R5-Qe; Thu, 08 Oct 2026 01:52:43 -0400
+Received: from [133.11.54.183] (h183.csg.ci.i.u-tokyo.ac.jp [133.11.54.183])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 6985qGai096018
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Thu, 8 Oct 2026 14:52:16 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=mRcbI5KxehEiaB+U0zC/BBNJ/DaSg8JqIn5ZUB3Yo7M=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Message-ID:To:Subject:Date;
+ s=rs20250326; t=1791438736; v=1;
+ b=OTGWG5flLvvCT5A9mZUi1SRAyBechFEYRh1pCdclsj23h4NeMyUAO7Y8a3vsTXB1
+ ouKvCRbBRr4rTnrEKMo855YiGRk0DwMnmik+P6bk6gNq7RVSmQ+Mo2l+0CCvCzbA
+ YfgCp1Vgz5YTNsLzzq4+4Fs1MlHQhE1KoDkv9D4wi+t4o+OgVJ+Rqav6kZayMJbp
+ dWY+yBWwcLegjxu2o3UVUEZ4yZELaV31x9sTVRS0TYvuhrwJWqsArv+7ggwjsyLp
+ +zQCGm18D+7gyeN7F2YXAYiuPDqCGFnaXPK8AQTtp70Hbn8SZ9FFOpXU6/fj6BQS
+ F9/SR7rMWgtOuSGPhPofdQ==
+Message-ID: <be98c53b-d01f-4beb-8915-cc73f22e839a@rsg.ci.i.u-tokyo.ac.jp>
+Date: Thu, 8 Oct 2026 14:52:15 +0900
 MIME-Version: 1.0
-References: <20261007115253.328-1-luoyonggang@gmail.com>
- <20261007115253.328-9-luoyonggang@gmail.com>
- <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
- <CAE2XoE8K+3e8h6H9NrPk1WWMmJfG807bN_Kh5qje-5pKWUUg5w@mail.gmail.com>
- <b2d89a92-0197-4873-b4ea-75bb21c0d0ae@oss.qualcomm.com>
-In-Reply-To: <b2d89a92-0197-4873-b4ea-75bb21c0d0ae@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 8 Oct 2026 10:08:04 +0800
-X-Gm-Features: AclHuK_ka4Log0rcFdoI3Se7Wr5Boou6rb7bzwYDa0CeTBiNxl10Vr0RSYQJlJY
-Message-ID: <CAE2XoE-qDvOUG2+1yTTvBUyBLxoxCPPy464KQVLgSFx+tuQ2XQ@mail.gmail.com>
-Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
- qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
- Darren Kenny <darren.kenny@oracle.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm/hvf: Retry RAM write faults only for dirty
+ logging
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Xu <peterx@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ "Scott J . Goldman" <scottjgo@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mark Burton <mburton@qti.qualcomm.com>, qemu-stable@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+References: <20261007093001.74476-1-philmd@oss.qualcomm.com>
+ <f0c07762-c115-41a0-b713-a47bdaa1f218@rsg.ci.i.u-tokyo.ac.jp>
+ <478c0311-b31e-4d38-af65-79508fca3021@oss.qualcomm.com>
+ <6f694401-3cc9-4c76-aa2d-3625773823c7@oss.qualcomm.com>
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <6f694401-3cc9-4c76-aa2d-3625773823c7@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,746 +78,468 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 8, 2026 at 8:00=E2=80=AFAM Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
->
-> On 10/7/2026 2:42 PM, Yonggang Luo wrote:
-> > On Thu, Oct 8, 2026 at 4:44=E2=80=AFAM Pierrick Bouvier
-> > <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>
-> >> On 10/7/2026 4:48 AM, Yonggang Luo wrote:
-> >>> Change TypeInfo.is_available to the new TypeIsAvailable type, which
-> >>> takes a const TargetInfo *. Registration passes target_info(), so
-> >>> behavior is unchanged. object.h only forward-declares TargetInfo.
-> >>>
-> >>> Switch the existing users (raspi, raspi4b, ast27x0 evb and fc) and th=
-e
-> >>> generated machine parents to the matching target_is_<arch> helpers.
-> >>>
-> >>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >>> ---
-> >>>  hw/arm/aspeed_ast27x0-fc.c  |  2 +-
-> >>>  hw/arm/aspeed_ast27x0_evb.c |  4 ++--
-> >>>  hw/arm/raspi.c              |  4 ++--
-> >>>  hw/arm/raspi4b.c            |  2 +-
-> >>>  hw/arm/virt.c               |  4 ++--
-> >>>  hw/m68k/virt.c              |  4 ++--
-> >>>  hw/or1k/virt.c              |  2 +-
-> >>>  include/qom/object.h        | 12 +++++++++++-
-> >>>  qom/object.c                |  3 ++-
-> >>>  9 files changed, 24 insertions(+), 13 deletions(-)
-> >>>
-> >>> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-> >>> index 73362b60d2a..8a7c6a116ac 100644
-> >>> --- a/hw/arm/aspeed_ast27x0-fc.c
-> >>> +++ b/hw/arm/aspeed_ast27x0-fc.c
-> >>> @@ -234,7 +234,7 @@ static const TypeInfo ast2700fc_types[] =3D {
-> >>>          .parent         =3D TYPE_MACHINE,
-> >>>          .class_init     =3D ast2700fc_class_init,
-> >>>          .instance_size  =3D sizeof(Ast2700FCState),
-> >>> -        .is_available   =3D target_aarch64,
-> >>> +        .is_available   =3D target_is_aarch64,
-> >>>      },
-> >>>  };
-> >>>
-> >>> diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.=
-c
-> >>> index 460c9ff0d2e..02a8cff1d9d 100644
-> >>> --- a/hw/arm/aspeed_ast27x0_evb.c
-> >>> +++ b/hw/arm/aspeed_ast27x0_evb.c
-> >>> @@ -75,13 +75,13 @@ static const TypeInfo aspeed_ast27x0_evb_types[] =
-=3D {
-> >>>          .name          =3D MACHINE_TYPE_NAME("ast2700a1-evb"),
-> >>>          .parent        =3D TYPE_ASPEED_MACHINE,
-> >>>          .class_init    =3D aspeed_machine_ast2700a1_evb_class_init,
-> >>> -        .is_available  =3D target_aarch64,
-> >>> +        .is_available  =3D target_is_aarch64,
-> >>>      },
-> >>>      {
-> >>>          .name          =3D MACHINE_TYPE_NAME("ast2700a2-evb"),
-> >>>          .parent        =3D TYPE_ASPEED_MACHINE,
-> >>>          .class_init    =3D aspeed_machine_ast2700a2_evb_class_init,
-> >>> -        .is_available  =3D target_aarch64,
-> >>> +        .is_available  =3D target_is_aarch64,
-> >>>      }
-> >>>  };
-> >>>
-> >>> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> >>> index fadbacb2534..22b06c6ca22 100644
-> >>> --- a/hw/arm/raspi.c
-> >>> +++ b/hw/arm/raspi.c
-> >>> @@ -403,12 +403,12 @@ static const TypeInfo raspi_machine_types[] =3D=
- {
-> >>>          .name           =3D MACHINE_TYPE_NAME("raspi3ap"),
-> >>>          .parent         =3D TYPE_RASPI_MACHINE,
-> >>>          .class_init     =3D raspi3ap_machine_class_init,
-> >>> -        .is_available   =3D target_aarch64,
-> >>> +        .is_available   =3D target_is_aarch64,
-> >>>      }, {
-> >>>          .name           =3D MACHINE_TYPE_NAME("raspi3b"),
-> >>>          .parent         =3D TYPE_RASPI_MACHINE,
-> >>>          .class_init     =3D raspi3b_machine_class_init,
-> >>> -        .is_available   =3D target_aarch64,
-> >>> +        .is_available   =3D target_is_aarch64,
-> >>>      }, {
-> >>>          .name           =3D TYPE_RASPI_MACHINE,
-> >>>          .parent         =3D TYPE_RASPI_BASE_MACHINE,
-> >>> diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-> >>> index 566d64572db..a1dc477f25e 100644
-> >>> --- a/hw/arm/raspi4b.c
-> >>> +++ b/hw/arm/raspi4b.c
-> >>> @@ -121,7 +121,7 @@ static const TypeInfo raspi4b_machine_type =3D {
-> >>>      .parent         =3D TYPE_RASPI_BASE_MACHINE,
-> >>>      .instance_size  =3D sizeof(Raspi4bMachineState),
-> >>>      .class_init     =3D raspi4b_machine_class_init,
-> >>> -    .is_available   =3D target_aarch64,
-> >>> +    .is_available   =3D target_is_aarch64,
-> >>>  };
-> >>>
-> >>>  static void raspi4b_machine_register_type(void)
-> >>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> >>> index 9d192515d85..18160f7fad3 100644
-> >>> --- a/hw/arm/virt.c
-> >>> +++ b/hw/arm/virt.c
-> >>> @@ -132,7 +132,7 @@ static void arm_virt_compat_default_set(MachineCl=
-ass *mc)
-> >>>          .name =3D MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-> >>>          .parent =3D TYPE_VIRT_MACHINE, \
-> >>>          .class_init =3D MACHINE_VER_SYM(class_init, virt, __VA_ARGS_=
-_), \
-> >>> -        .is_available =3D target_base_arm, \
-> >>> +        .is_available =3D target_is_base_arm, \
-> >>>      }; \
-> >>>      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-> >>>      { \
-> >>> @@ -4430,7 +4430,7 @@ static const TypeInfo virt_machine_info =3D {
-> >>>           { TYPE_HOTPLUG_HANDLER },
-> >>>           { }
-> >>>      },
-> >>> -    .is_available =3D target_base_arm,
-> >>> +    .is_available =3D target_is_base_arm,
-> >>>  };
-> >>>
-> >>>  static void machvirt_machine_init(void)
-> >>> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-> >>> index e52546e4fab..ad2a43ef3fb 100644
-> >>> --- a/hw/m68k/virt.c
-> >>> +++ b/hw/m68k/virt.c
-> >>> @@ -327,7 +327,7 @@ static const TypeInfo virt_machine_info =3D {
-> >>>      .parent       =3D TYPE_MACHINE,
-> >>>      .abstract     =3D true,
-> >>>      .class_init   =3D virt_machine_class_init,
-> >>> -    .is_available =3D target_m68k,
-> >>> +    .is_available =3D target_is_m68k,
-> >>>  };
-> >>>
-> >>>  static void virt_machine_register_types(void)
-> >>> @@ -355,7 +355,7 @@ type_init(virt_machine_register_types)
-> >>>          .name =3D MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-> >>>          .parent =3D MACHINE_TYPE_NAME("virt"), \
-> >>>          .class_init =3D MACHINE_VER_SYM(class_init, virt, __VA_ARGS_=
-_), \
-> >>> -        .is_available =3D target_m68k, \
-> >>> +        .is_available =3D target_is_m68k, \
-> >>>      }; \
-> >>>      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-> >>>      { \
-> >>> diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
-> >>> index a3ff903839b..89fb786641f 100644
-> >>> --- a/hw/or1k/virt.c
-> >>> +++ b/hw/or1k/virt.c
-> >>> @@ -559,7 +559,7 @@ static const TypeInfo or1ksim_machine_typeinfo =
-=3D {
-> >>>      .parent     =3D TYPE_MACHINE,
-> >>>      .class_init =3D openrisc_virt_machine_init,
-> >>>      .instance_size =3D sizeof(OR1KVirtState),
-> >>> -    .is_available =3D target_or1k,
-> >>> +    .is_available =3D target_is_or1k,
-> >>>  };
-> >>>
-> >>>  static void or1ksim_machine_init_register_types(void)
-> >>> diff --git a/include/qom/object.h b/include/qom/object.h
-> >>> index 4c0645817a5..7d52a15f6b8 100644
-> >>> --- a/include/qom/object.h
-> >>> +++ b/include/qom/object.h
-> >>> @@ -17,6 +17,7 @@
-> >>>  #include "qapi/qapi-builtin-types.h"
-> >>>  #include "qemu/module.h"
-> >>>
-> >>> +typedef struct TargetInfo TargetInfo;
-> >>>  struct TypeImpl;
-> >>>  typedef struct TypeImpl *Type;
-> >>>
-> >>> @@ -117,6 +118,15 @@ typedef void (ObjectUnparent)(Object *obj);
-> >>>   */
-> >>>  typedef void (ObjectFree)(void *obj);
-> >>>
-> >>> +/**
-> >>> + * typedef TypeIsAvailable:
-> >>> + * @ti: TargetInfo to test.
-> >>> + *
-> >>> + * Returns whether a type is available for @ti. Typical implementati=
-ons
-> >>> + * are target_is_*().
-> >>> + */
-> >>> +typedef bool (TypeIsAvailable)(const TargetInfo *ti);
-> >>> +
-> >>>  #define OBJECT_CLASS_CAST_CACHE 4
-> >>>
-> >>>  /**
-> >>> @@ -498,7 +508,7 @@ struct TypeInfo
-> >>>      void (*class_base_init)(ObjectClass *klass, const void *data);
-> >>>      const void *class_data;
-> >>>
-> >>> -    bool (*is_available)(void);
-> >>> +    TypeIsAvailable *is_available;
-> >>>      const InterfaceInfo *interfaces;
-> >>>  };
-> >>>
-> >>> diff --git a/qom/object.c b/qom/object.c
-> >>> index 96498f3d001..253b9562b41 100644
-> >>> --- a/qom/object.c
-> >>> +++ b/qom/object.c
-> >>> @@ -15,6 +15,7 @@
-> >>>  #include "qom/compat-properties.h"
-> >>>  #include "qom/object.h"
-> >>>  #include "qom/object_interfaces.h"
-> >>> +#include "qemu/target-info.h"
-> >>>  #include "qemu/cutils.h"
-> >>>  #include "qemu/memalign.h"
-> >>>  #include "qapi/visitor.h"
-> >>> @@ -167,7 +168,7 @@ static TypeImpl *type_register_internal(const Typ=
-eInfo *info)
-> >>>          abort();
-> >>>      }
-> >>>
-> >>> -    if (info->is_available && !info->is_available()) {
-> >>> +    if (info->is_available && !info->is_available(target_info())) {
-> >>>          return NULL;
-> >>>      }
-> >>>
-> >>
-> >> ```
-> >> info->is_available(target_info())
-> >> ```
-> >>
-> >> or
-> >>
-> >> ```
-> >> is_available() {
-> >>   TargetInfo ti * =3D target_info();
-> >>   ...
-> >> }
-> >> ```
-> >>
-> >> Are doing the exact same thing today.
-> >>
-> >> So what is the future goal requiring to introduce this?
-> >
-> > From Daniel P. Berrang=C3=A9's
-> > requesthttps://lore.kernel.org/qemu-devel/apAszS1ewxM0Y1XU@redhat.com/
-> >         I forgot to mention that this is also pretty important for maki=
-ng
-> >         introspection work, as we need to be able to say
-> >
-> >           'qemu-system --machine none -qmp ...'
-> >
-> >         and connect to QMP to introspect the binary. Having to add a
-> >         '--target <name>' into that mix is undesirable, as it creates
-> >         a chicken & egg problem. You don't know what targets are built
-> >         into qemu-system without introspecting it and you can't
-> >         introspect it without selecting a target to introspect.
-> >
-> > From Pierrick's review
-> > https://lore.kernel.org/qemu-devel/557262df-b8e7-49b5-a245-ae46b8885b30=
-@oss.qualcomm.com/So,
-> > for existing binary: -M virt works as before.
-> >
-> >         For new multi binary:
-> >         $ qemu-system -M virt:
-> >         Multiple machines were found, select one among:
-> >         - aarch64-virt
-> >         - riscv64-virt
-> >
-> >         Does it matches what you would expect?
-> >
-> > From Daniel's review
-> > https://lore.kernel.org/qemu-devel/aro93NuZBXYGbD33@redhat.com/
-> >         We already have  'QemuTargetInfo' struct which is used
-> >         with 'query-target', that should also be used with the
-> >         new 'query-targets' command.
-> >
-> >         We need to add the 'endianness' field to QemuTargetInfo.
-> >
-> >         I don't think that we need to report machines though.
-> >         We already have 'query-machines' which gives much broader
-> >         information on the machines. "MachineInfo" needs to
-> >         gain
-> >
-> >         "targets": ["SysEmuTarget"]
-> >
-> >         to list which target(s) a machine can be used with.
-> >
-> >
-> > To achieve these, we needs add TypeInfo parameter to it so that we can =
-do
-> >
-> > static void report_unsupported_machine_type(const char *name, Error **e=
-rrp)
-> > {
-> >     g_autoptr(GSList) machines =3D machine_class_get_list(true);
-> >     g_autoptr(GString) targets =3D g_string_new(NULL);
-> >     TargetInfoNode *node;
-> >     GSList *el;
-> >
-> >     error_setg(errp, "unsupported machine type: \"%s\" for target \"%s\=
-"",
-> >                name, target_name());
-> >     QLIST_FOREACH(node, target_info_list(), next) {
-> >         for (el =3D machines; el; el =3D el->next) {
-> >             MachineClass *mc =3D el->data;
-> >
-> >             if ((!strcmp(mc->name, name) || !g_strcmp0(mc->alias, name)=
-) &&
-> >                 object_class_get_is_available(OBJECT_CLASS(mc))(node->i=
-nfo)) {
-> >                 g_string_append_printf(targets, "  %s\n",
-> >                                        node->info->target_name);
-> >                 break;
-> >             }
-> >         }
-> >     }
-> >     if (targets->len) {
-> >         error_append_hint(errp, "Available for targets:\n%s", targets->=
-str);
-> >     }
-> > }
-> >
-> > That is we can iterate on all target-list, and check if it's can be fit=
-lered.
-> >
->
-> Ok, I finally see where this is going.
->
-> So, based on all the previous conversations, we agreed to have a
-> qemu-system binary with all the QOM types available (for all targets).
->
-> I personally think that if we go this way, we should not have any
-> -target option, and even less a -target none option.
->
-> The current is_available() approach was made with filtering per target
-> in mind, which predates where things are now. So, it's a good time to
-> reevaluate how to do it.
->
-> This leaves us with (at least) two options:
-> - keep the callback and add TargetInfo parameter (what is done here)
-> - remove is_available, and adopt a more declarative approach
->
-> How about we (re)-explore the second one?
+On 2026/10/08 7:05, Philippe Mathieu-Daudé wrote:
+> On 7/10/26 21:50, Philippe Mathieu-DaudÃ© wrote:
+>> On 2026-10-07 16:50, Akihiko Odaki wrote:
+>>> On 2026/10/07 18:30, Philippe Mathieu-Daudé wrote:
+>>>> From: Mark Burton <mburton@qti.qualcomm.com>
+>>>>
+>>>> Dirty-page logging handles a RAM write fault by marking the page dirty,
+>>>> restoring write permission, and retrying the guest instruction.
+>>>>
+>>>> The handler also retried when the resolved RAM region had no dirty-log
+>>>> client.  This path neither restores permission nor advances the PC, so
+>>>> the instruction can repeatedly exit to QEMU.
+>>>>
+>>>> Retry only after marking the page dirty and restoring write permission.
+>>>> Otherwise, use the existing emulation path to complete the access and
+>>>> advance the guest PC.
+>>>
+>>> I can identify three cases of RAM write faults. The existing code
+>>> handles all three, but this patch breaks the third:
+>>>
+>>> 1. The RAM is read-only. assert(!mr->readonly) trips in this case.
+>>>
+>>> 2. Dirty logging is enabled. The vCPU marks the page dirty, restores
+>>>     write permission, and retries the write.
+>>>
+>>> 3. Dirty logging is enabled when the fault occurs, but another thread
+>>>     disables it before the vCPU acquires the BQL. The vCPU then observes
+>>>     a zero dirty-log mask. The write still needs to be retried because
+>>>     write permission has already been restored. The existing code does
+>>>     this correctly, but this patch falls through to emulation instead.
+>>>
+>>> This patch is useful only if there is another case that the existing
+>>> code does not handle correctly. Please describe that case and preserve
+>>> the retry behavior in case 3.
+>> Thanks for the deep review.
+>>
+>> The reporter said:
+>>
+>>    We reproduced is a level-2 translation fault, DFSC 0x06, on a
+>>    dynamic DMI RAM leaf that has no corresponding HVF mapping.
+>>    address_space_translate() resolves the leaf as RAM, but the dirty-log
+>>    mask is zero, no page is marked or unprotected, and the unconditional
+>>    retry makes no progress.
+>>
+>> That would be another case:
+>>
+>>    4. FlatView says RAM, but HVF has no mapping (nothing has changed
+>>       to make retry succeed).
+>>
+>> So to prevent retrying a known translation miss that cannot make any
+>> progress checking DFSC could be sufficient:
+>>
+>> -- >8 --
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index b00a7e1a84..4faa21caa1 100644
+>>       case EC_DATAABORT: {
+>>           bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
+>>           bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
+>>           bool s1ptw = FIELD_EX32(syndrome, DABORT_ISS, S1PTW);
+>>           bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
+>>           uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
+>>           uint32_t len = 1 << sas;
+>>           uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
+>>           uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
+>> +        uint32_t fsc = FIELD_EX32(syndrome, DABORT_ISS, DFSC);
+>> +        bool l2_translation_fault = fsc == 0b000110;
+>>           uint64_t val = 0;
+>>           uint64_t ipa = excp->physical_address;
+>>           AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
+>>
+>>           trace_hvf_data_abort(excp->virtual_address, ipa, isv,
+>>                                iswrite, s1ptw, len, srt);
+>>
+>>           if (cm) {
+>>               /* We don't cache MMIO regions */
+>>               advance_pc = true;
+>>               break;
+>>           }
+>>
+>>           /* Handle dirty page logging for ram. */
+>>           if (iswrite) {
+>>               hwaddr xlat;
+>>               MemoryRegion *mr = address_space_translate(as, ipa, &xlat,
+>>                                                          NULL, true,
+>>
+>> MEMTXATTRS_UNSPECIFIED);
+>> -            if (memory_region_is_ram(mr)) {
+>> +            if (memory_region_is_ram(mr) && !s1ptw && ! 
+>> l2_translation_fault) {
+>>                   uintptr_t page_size = qemu_real_host_page_size();
+>>                   intptr_t page_mask = -(intptr_t)page_size;
+>>                   uint64_t ipa_page = ipa & page_mask;
+>>
+>>                   /* TODO: Inject exception to the guest. */
+>>                   assert(!mr->readonly);
+>>
+>>                   if (memory_region_get_dirty_log_mask(mr)) {
+>>                       memory_region_set_dirty(mr, xlat, page_size);
+>>                       hvf_unprotect_dirty_range(ipa_page, page_size);
+>>                   }
+>>
+>>                   /* Retry with page writes enabled. */
+>>                   break;
+>>               }
+>>           }
+>>
+>>           /*
+>>            * TODO: If s1ptw, this is an error in the guest os page 
+>> tables.
+>>            * Inject the exception into the guest.
+>>            */
+>>           assert(!s1ptw);
+>> ---
+>> (the !s1ptw guard is independent of the zero-mask race,
+>>   this is to ensure we cannot accidentally take the dirty-log retry
+>>   path when the page-table memory is RAM).
+>>
+>> But be wary because I'm way out of area of understanding here...
 
-Indeed, I am doing
+Checking DFSC specifically for a translation fault feels arbitrary. The 
+broader lesson from case 3 is that the faulting condition can be 
+resolved concurrently before acquiring the BQL. That same race window 
+applies to case 4. Instead of matching on DFSC, we should re-check 
+whether the faulting condition persists after acquiring the BQL.
 
-- preserve is_available(TargetInfo*), and adopt a more declarative approach
+Filtering out s1ptw also seems extraneous. If the page-table memory 
+requires dirty logging, we should handle dirty-page tracking for it 
+rather than skipping it with an additional guard.
 
-/* Generated by scripts/gen-target-info.py. Do not edit. */
+>>
+>> Anyway I asked the reporter for more info and possible reproducer;
+>> and might add comments to the code to better follow the 1/2/3/4 paths.
+>> But after some sleep :)
+> Still here... Asked AI for reproducer:
+> 
+> -- >8 --
+> AI-used-for: tests
+> diff --git a/tests/tcg/aarch64/system/hvf-unmapped-ram.c b/tests/tcg/ 
+> aarch64/system/hvf-unmapped-ram.c
+> new file mode 100644
+> index 00000000000..45721134710
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/system/hvf-unmapped-ram.c
+> @@ -0,0 +1,110 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +
+> +/*
+> + * Reproducer for an HVF data abort on a RAM FlatView leaf without an HVF
+> + * mapping.  Run manually on Apple Silicon (whose host page size is 16 
+> KiB):
+> + *
+> + *   qemu-system-aarch64 -accel hvf -cpu host -nodefaults -M 
+> virt,highmem-ecam=off -m 128M \
+> + *     -display none -serial stdio -kernel aarch64-softmmu-hvf- 
+> unmapped-ram.test \
+> + *     -device pci-testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on
+> + *
+> + * The 4 KiB pci-testdev BAR2 is RAM, but its size and programmed 
+> address are not
+> + * host-page aligned.  HVF therefore leaves it unmapped.  A write to 
+> the BAR
+> + * takes a level-2 translation fault (DFSC 0x06); the handler must 
+> emulate the
+> + * access and advance PC instead of retrying it forever.
+> + */
+> +
+> +#include <stdint.h>
+> +
+> +#define ECAM_BASE           UINT64_C(0x3f000000)
+> +#define TESTDEV_CONFIG      (ECAM_BASE + UINT64_C(0x8000))
+> +#define PCI_COMMAND         UINT64_C(0x04)
+> +#define PCI_COMMAND_MEMORY  UINT16_C(0x0002)
+> +#define PCI_BAR2_LO         UINT64_C(0x18)
+> +#define PCI_BAR2_HI         UINT64_C(0x1c)
+> +
+> +#define RAM_BAR             UINT64_C(0x10001000)
+> +#define BAR_ADDRESS_MASK    UINT32_C(0xfffffff0)
+> +#define SENTINEL            UINT32_C(0x1badb002)
+> +
+> +#define PL011_DR            UINT64_C(0x09000000)
+> +#define PL011_FR            (PL011_DR + UINT64_C(0x18))
+> +#define PL011_FR_TXFF       UINT32_C(0x20)
+> +
+> +#define PSCI_SYSTEM_OFF     UINT64_C(0x84000008)
+> +
+> +static inline uint16_t mmio_read16(uint64_t addr)
+> +{
+> +    return *(volatile uint16_t *)(uintptr_t)addr;
+> +}
+> +
+> +static inline uint32_t mmio_read32(uint64_t addr)
+> +{
+> +    return *(volatile uint32_t *)(uintptr_t)addr;
+> +}
+> +
+> +static inline void mmio_write16(uint64_t addr, uint16_t value)
+> +{
+> +    *(volatile uint16_t *)(uintptr_t)addr = value;
+> +}
+> +
+> +static inline void mmio_write32(uint64_t addr, uint32_t value)
+> +{
+> +    *(volatile uint32_t *)(uintptr_t)addr = value;
+> +}
+> +
+> +static inline void dsb_sy(void)
+> +{
+> +    asm volatile("dsb sy" : : : "memory");
+> +}
+> +
+> +static void uart_puts(const char *str)
+> +{
+> +    while (*str) {
+> +        while (mmio_read32(PL011_FR) & PL011_FR_TXFF) {
+> +        }
+> +        mmio_write32(PL011_DR, *str++);
+> +    }
+> +}
+> +
+> +static __attribute__((noreturn)) void system_off(void)
+> +{
+> +    register uint64_t x0 asm("x0") = PSCI_SYSTEM_OFF;
+> +
+> +    asm volatile("hvc #0" : "+r"(x0) : : "memory");
+> +    for (;;) {
+> +        asm volatile("wfi");
+> +    }
+> +}
+> +
+> +static __attribute__((noreturn)) void finish(int passed)
+> +{
+> +    uart_puts(passed ? "PASS\n" : "FAIL\n");
+> +    system_off();
+> +}
+> +
+> +int main(void)
+> +{
+> +    uint32_t bar;
+> +
+> +    /* Verify the fixed BDF exists before programming its 64-bit BAR2. */
+> +    if (mmio_read16(TESTDEV_CONFIG) == UINT16_MAX) {
+> +        finish(0);
+> +    }
+> +
+> +    mmio_write32(TESTDEV_CONFIG + PCI_BAR2_HI, 0);
+> +    mmio_write32(TESTDEV_CONFIG + PCI_BAR2_LO, RAM_BAR);
+> +    mmio_write16(TESTDEV_CONFIG + PCI_COMMAND,
+> +                 mmio_read16(TESTDEV_CONFIG + PCI_COMMAND) |
+> +                 PCI_COMMAND_MEMORY);
+> +    dsb_sy();
+> +
+> +    bar = mmio_read32(TESTDEV_CONFIG + PCI_BAR2_LO);
+> +    if ((bar & BAR_ADDRESS_MASK) != RAM_BAR) {
+> +        finish(0);
+> +    }
+> +
+> +    mmio_write32(RAM_BAR, SENTINEL);
+> +    dsb_sy();
+> +    finish(mmio_read32(RAM_BAR) == SENTINEL);
+> +}
+> diff --git a/tests/tcg/aarch64/system/hvf-boot.S b/tests/tcg/aarch64/ 
+> system/hvf-boot.S
+> new file mode 100644
+> index 00000000000..bf9be89ee6d
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/system/hvf-boot.S
+> @@ -0,0 +1,30 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +
+> +/*
+> + * Minimal bootstrap for hvf-unmapped-ram.c.
+> + *
+> + * Unlike boot.S, this must not issue a semihosting call before 
+> entering C:
+> + * HVF does not handle the semihosting HLT exception.  Direct -kernel 
+> boot on
+> + * the non-virtualized virt machine starts this ELF at EL1 with the MMU 
+> off.
+> + */
+> +
+> +    .text
+> +    .align  4
+> +    .global __start
+> +    .type   __start, %function
+> +__start:
+> +    /* Use SP_EL1 and provide the C code a private stack. */
+> +    msr     spsel, #1
+> +    ldr     x0, =stack_end
+> +    mov     sp, x0
+> +    bl      main
+> +
+> +1:  wfi
+> +    b       1b
+> +    .size   __start, . - __start
+> +
+> +    .bss
+> +    .align  12
+> +stack:
+> +    .space  4096
+> +stack_end:
+> diff --git a/tests/tcg/aarch64/system/hvf-unmapped-ram.out b/tests/tcg/ 
+> aarch64/system/hvf-unmapped-ram.out
+> new file mode 100644
+> index 00000000000..7ef22e9a431
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/system/hvf-unmapped-ram.out
+> @@ -0,0 +1 @@
+> +PASS
+> diff --git a/tests/tcg/aarch64/system/meson.build b/tests/tcg/aarch64/ 
+> system/meson.build
+> index f51feb253f9..0ee6ffeb527 100644
+> --- a/tests/tcg/aarch64/system/meson.build
+> +++ b/tests/tcg/aarch64/system/meson.build
+> @@ -14,6 +14,14 @@ qemu_base_args = ['-display', 'none',
+>                     '-kernel']
+>   qemu_def_args = ['-M', 'virt', '-cpu', 'max', qemu_base_args]
+> 
+> +# This payload must not use boot.S: that bootstrap invokes semihosting 
+> before
+> +# main(), while the manual HVF run needs to start without any 
+> semihosting exits.
+> +hvf_unmapped_ram_cflags = ['-nostdlib',
+> +                           '-ffreestanding',
+> +                           '-Wa,--noexecstack',
+> +                           files('hvf-boot.S')[0],
+> +                           '-Wl,-T', link_script]
+> +
+>   # Multi arch tests - add cflags only once per src
+>   multi_src = []
+>   foreach t: tcg_tests['multiarch-softmmu']['tests']
+> @@ -42,6 +50,14 @@ tests += {
+>   tests += {
+>     'asid2.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
+>     'feat-xs.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
+> +  'hvf-unmapped-ram.c': {
+> +    'cflags': hvf_unmapped_ram_cflags,
+> +    'qemu_args': ['-nodefaults', '-M', 'virt,highmem-ecam=off', '-cpu', 
+> 'max', '-m', '128M',
+> +                  '-serial', 'stdio',
+> +                  '-device', 'pci- 
+> testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on',
+> +                  qemu_base_args],
+> +    'expected_output': 'hvf-unmapped-ram.out',
+> +  },
+>     'gpc-test.c': {
+>       'cflags': [cflags, '-DLOGGING_VECTOR_TABLE',
+>                  '-Wno-main', '-Wno-unused-but-set-variable'],
+> ---
+> 
+> ./qemu-system-aarch64 -accel hvf -cpu host -nodefaults \
+>    -M virt,highmem-ecam=off -m 128M -display none -serial stdio \
+>    -kernel ~/hvf-unmapped-mem-repro \
+>    -device pci-testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on \
+>    -trace hvf\*
+> hvf_vm_map paddr:0x0000000000000000 size:0x04000000 vaddr:0x118000000 
+> flags:0x05/R-X
+> hvf_vm_map paddr:0x0000000004000000 size:0x04000000 vaddr:0x129904000 
+> flags:0x05/R-X
+> hvf_vm_map paddr:0x0000000040000000 size:0x08000000 vaddr:0x121900000 
+> flags:0x07/RWX
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_data_abort data abort: [va=0x000000003f008000 pa=0x000000003f008000 
+> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+> hvf_data_abort data abort: [va=0x000000003f00801c pa=0x000000003f00801c 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+> isv=1 iswrite=1 s1ptw=0 len=2 srt=1]
+> hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
+> isv=1 iswrite=0 s1ptw=0 len=4 srt=0]
+> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x0Quit: 3
+> (looping)
+> 
+> However I had to do this change in hvf_set_phys_mem():
+> 
+> -- >8 --
+> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+> index 8bd9154a50b..7b34a5f586d 100644
+> --- a/accel/hvf/hvf-all.c
+> +++ b/accel/hvf/hvf-all.c
+> @@ -113,8 +113,14 @@ static void hvf_set_phys_mem(MemoryRegionSection 
+> *section, bool add)
+> 
+>       if (!QEMU_IS_ALIGNED(size, page_size) ||
+>           !QEMU_IS_ALIGNED(gpa, page_size)) {
+> -        /* Not page aligned, so we can not map as RAM */
+> -        add = false;
+> +        return;
+>       }
+> 
+>       if (!add) {
+> ---
+> 
+> because otherwise I was getting:
+> 
+> hvf_vm_map paddr:0x0000000000000000 size:0x04000000 vaddr:0x114b80000 
+> flags:0x05/R-X
+> hvf_vm_map paddr:0x0000000004000000 size:0x04000000 vaddr:0x118b84000 
+> flags:0x05/R-X
+> hvf_vm_map paddr:0x0000000040000000 size:0x08000000 vaddr:0x10cb7c000 
+> flags:0x07/RWX
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_kick_vcpu_thread cpu:0 stop:0
+> hvf_data_abort data abort: [va=0x000000003f008000 pa=0x000000003f008000 
+> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+> hvf_data_abort data abort: [va=0x000000003f00801c pa=0x000000003f00801c 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
+> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
+> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
+> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
+> isv=1 iswrite=1 s1ptw=0 len=2 srt=1]
+> hvf_vm_unmap paddr:0x0000000010001000 size:0x00001000
+> qemu-system-aarch64: Error: ret = HV_BAD_ARGUMENT (0xfae94003, at ../../ 
+> accel/hvf/hvf-all.c:123)
+> Abort trap: 6
+> 
+> (I'll look at that hvf_set_phys_mem change after some rest).
 
-static const TypeInfo target_machine_types[] =3D {
-    {
-        .name =3D TYPE_TARGET_BASE_ALPHA_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_alpha,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_ARM_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_arm,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_AVR_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_avr,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_HEXAGON_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_hexagon,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_HPPA_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_hppa,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_I386_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_i386,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_LOONGARCH_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_loongarch,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_M68K_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_m68k,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_MICROBLAZE_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_microblaze,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_MIPS_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_mips,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_NONE_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_none,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_OR1K_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_or1k,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_PPC_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_ppc,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_RISCV_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_riscv,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_RX_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_rx,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_S390X_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_s390x,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_SH4_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_sh4,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_SPARC_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_sparc,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_TRICORE_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_tricore,
-    },
-    {
-        .name =3D TYPE_TARGET_BASE_XTENSA_MACHINE,
-        .parent =3D TYPE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_base_xtensa,
-    },
-    {
-        .name =3D TYPE_TARGET_ALPHA_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_ALPHA_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_alpha,
-    },
-    {
-        .name =3D TYPE_TARGET_AARCH64_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_ARM_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_aarch64,
-    },
-    {
-        .name =3D TYPE_TARGET_ARM_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_ARM_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_arm,
-    },
-    {
-        .name =3D TYPE_TARGET_AVR_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_AVR_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_avr,
-    },
-    {
-        .name =3D TYPE_TARGET_HEXAGON_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_HEXAGON_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_hexagon,
-    },
-    {
-        .name =3D TYPE_TARGET_HPPA_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_HPPA_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_hppa,
-    },
-    {
-        .name =3D TYPE_TARGET_I386_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_I386_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_i386,
-    },
-    {
-        .name =3D TYPE_TARGET_X86_64_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_I386_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_x86_64,
-    },
-    {
-        .name =3D TYPE_TARGET_LOONGARCH64_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_LOONGARCH_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_loongarch64,
-    },
-    {
-        .name =3D TYPE_TARGET_M68K_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_M68K_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_m68k,
-    },
-    {
-        .name =3D TYPE_TARGET_MICROBLAZE_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_MICROBLAZE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_microblaze,
-    },
-    {
-        .name =3D TYPE_TARGET_MIPS_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_mips,
-    },
-    {
-        .name =3D TYPE_TARGET_MIPS64_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_mips64,
-    },
-    {
-        .name =3D TYPE_TARGET_MIPS64EL_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_mips64el,
-    },
-    {
-        .name =3D TYPE_TARGET_MIPSEL_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_mipsel,
-    },
-    {
-        .name =3D TYPE_TARGET_NONE_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_NONE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_none,
-    },
-    {
-        .name =3D TYPE_TARGET_OR1K_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_OR1K_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_or1k,
-    },
-    {
-        .name =3D TYPE_TARGET_PPC_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_PPC_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_ppc,
-    },
-    {
-        .name =3D TYPE_TARGET_PPC64_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_PPC_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_ppc64,
-    },
-    {
-        .name =3D TYPE_TARGET_RISCV32_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_RISCV_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_riscv32,
-    },
-    {
-        .name =3D TYPE_TARGET_RISCV64_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_RISCV_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_riscv64,
-    },
-    {
-        .name =3D TYPE_TARGET_RX_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_RX_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_rx,
-    },
-    {
-        .name =3D TYPE_TARGET_S390X_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_S390X_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_s390x,
-    },
-    {
-        .name =3D TYPE_TARGET_SH4_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_SH4_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_sh4,
-    },
-    {
-        .name =3D TYPE_TARGET_SH4EB_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_SH4_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_sh4eb,
-    },
-    {
-        .name =3D TYPE_TARGET_SPARC_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_SPARC_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_sparc,
-    },
-    {
-        .name =3D TYPE_TARGET_SPARC64_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_SPARC_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_sparc64,
-    },
-    {
-        .name =3D TYPE_TARGET_TRICORE_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_TRICORE_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_tricore,
-    },
-    {
-        .name =3D TYPE_TARGET_XTENSA_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_XTENSA_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_xtensa,
-    },
-    {
-        .name =3D TYPE_TARGET_XTENSAEB_MACHINE,
-        .parent =3D TYPE_TARGET_BASE_XTENSA_MACHINE,
-        .abstract =3D true,
-        .is_available =3D target_is_xtensaeb,
-    },
-};
-Other than these base machines, other machines are children of these
-base machines.
+The change to hvf_set_phys_mem() fixes error handling for misaligned
+memory mappings and is worth submitting as a separate patch.
 
-See these changes
-https://gitlab.com/lygstate-qemu/qemu/-/commit/c71da20c2483cdf577fd2a5548a8=
-0ca1e5099676
-https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e=
-19d8d9e5a146
-https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e=
-19d8d9e5a146
-https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e=
-19d8d9e5a146
-For ARM:
-https://gitlab.com/lygstate-qemu/qemu/-/commit/c42d5eb333fd3a7cab899c8df953=
-75dfc79aba40
+This also implies case 4 isn't fully understood yet. Ideally, whenever 
+FlatView resolves a region as RAM, HVF should have a mapping for it. A 
+host-page-misaligned region is one scenario where HVF cannot create a 
+mapping, but that previously triggered an assert (HV_BAD_ARGUMENT), 
+ruling it out as the reporter's original root cause.
 
-These base machine type is auto-generated in this MR.
-You can see at the branch
-https://gitlab.com/lygstate-qemu/qemu/-/commits/single-binary-arm-riscv?ref=
-_type=3Dheads
+Please investigate why case 4 occurs and whether HVF can map the RAM
+directly. If emulation is required, we should check for the specific
+condition that requires it rather than treating a translation fault
+alone as sufficient.
 
-And the inherit is done by commits
-qom: inherit is_available and filter after MODULE_INIT_QOM:
-https://gitlab.com/lygstate-qemu/qemu/-/commit/cb66474a36e03b4353c2f525ce78=
-21f2af779ea1
-qom: register late types through module_call_init_fn:
-https://gitlab.com/lygstate-qemu/qemu/-/commit/ba6a3d3fb6e4bfe35d88d3845abf=
-7b0ec8fbc337
-module: add before/after hooks and module_call_init_fn:
-https://gitlab.com/lygstate-qemu/qemu/-/commit/86c635f45e283b6d0f714a1a3a9d=
-9521b17d5152
+Please investigate why case 4 occurs in practice and consider adding a 
+missing mapping rather than relying on emulation. If emulation is 
+genuinely required, we should check for that specific condition rather 
+than assuming it for a translation fault.
 
-And the gitlab-ci is already passed
-
-
->
-> It's what we did in the past
-> (https://gitlab.com/qemu-project/qemu/-/commit/5de9216064d32eaac125dac4de=
-1878486c16d73e),
-
-Somewhat alike except I do not introduce many interface types. Just
-base machine types.
-
-> and that I removed recently, in favor of is_available.
-> My rationale was that it was incomplete, since we needed to filter types
-> per config also, and not only target.
-> Now that direction is to not filter anything, filter per config is
-> unneeded, and switching back to declarative instead of callback makes
-> total sense. Using interfaces like we did has its own issues, and I
-> would not like to see this coming back.
->
-> I'll do one very concrete proposal:
->
-> ```
-> How about letting machines (and machines only first), have a new field
-> 'targets', being a uint32_t mask with an array of EMU_TARGET?
-> machine->targets =3D EMU_TARGET_X | EMU_TARGET_Y;
-> ```
-
-From my experience at
-https://gitlab.com/lygstate-qemu/qemu/-/tree/combined-binary-multi-targets?=
-ref_type=3Dheads
-this is not enough, we still needs is_avaible, because for those
-machines that binding to
-KVM/WHPX and other accels, we need to use target_kconfig to handle
-them. That's why I choose to use a unified
-is_avaible(TargetInfo*).
-
-This new field only works if is_availbe still be a member of TypeInfo.
-machine->targets are not generic. Indeed CPU and ACCEL(kvm/whpx/hyp)
-types also need filtering.
-
->
-> @Daniel, IIUC, this is exactly the approach you proposed a few weeks
-> ago, just before I got frustrated and lost my patience against you. I
-> think it's more clear for me where you wanted to go. Sorry it took such
-> a large detour.
->
-> Yonggang, does that sounds good for you?
-> Daniel, does that sounds good for you also?
->
-> Regards,
-> Pierrick
-
-
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+Regards,
+Akihiko Odaki
 

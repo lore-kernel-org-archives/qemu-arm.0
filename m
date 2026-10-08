@@ -4,145 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60147CA6009
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 00:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4F1CA6007
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 02:08:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEcNE-00021d-QJ; Wed, 07 Oct 2026 20:52:41 -0400
+	id 1xEdYf-00053s-FX; Wed, 07 Oct 2026 22:08:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xEcND-00021J-VN; Wed, 07 Oct 2026 20:52:39 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xEcNB-00011V-BB; Wed, 07 Oct 2026 20:52:39 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tesrIvTs9jxxijRwlghdYx8LOPLaCyj8fRTFp9ezBn9zAASbZmU/tOAMqOTYmAoGxpvyXnv00qkEZNF7X2VXjR99lzqvVv5XktikQpKijGoLFxxrlPEfPL9CBn3DBGkRf7D743Lr1OQ/UKlbjYtrAqFQ0wn6F/bSxCF/pBNL6cJ+8B2P8mDWlzMK5dRfkmW1ppntTf27VZGWdNj3DroHRydi9s8hZDRkDT8x0tDmEGJjAJVQciQ20Lg/anglCNIXi32Jw5IwuOx1a8Q00pwWBuEi9rdIeHuGqjuVz19Zu0wh1H1pxlIH+jSzY6utf4EB2QNRImT7tQYgJNpyGYx1AA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ssSCkCzO7vYas+PUteOEfcj8kF1MYiBxupHGwBSvwi4=;
- b=Ed75mECJFFoOxub+nBC00XFd0tVvP/DHkdiaMQlykz1YQ/v5YonNhHSdE13/rXaG03uwbWLz+/6KaAlk/phcL6MwiugMqJq2WXnDWjKHExOhwdBP7tYVVq3w/MMQKTVLskV0enc6XpJIDhnO1N3HjAEM8/eYEt48YZq660UpfKl/bY8126AmtlGEg1HgYo/MdKihhq9lhEBgzY6T1Ot/cM0ODlRWio71V75v4ftjv6Zh26gmeqq9VpULjcL5CGbCS5cbRkTHkEt2ukog0dTk7TvQ6YvcJ1k5ld247YtjxSP52dSdro+jWeZzFzQU039KSXI674i6IvKFlBwOhiFZfw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ssSCkCzO7vYas+PUteOEfcj8kF1MYiBxupHGwBSvwi4=;
- b=T1lDIMRZanN5rp/aeNv9RF8I8llZCHMzn59sI9wBoMaUVw6Mgb3LewME4NQ2yUCcfpxBAZhNFnvGr5W1jLrvWIHgjCOiisa3hGdlzL4as7jKSVqeDrghDLn/F1u8s4WhI0rrfg1YlcqwWjW9FAZKZxOwNcngJrcDQuFS/TcWXYOmu6m8blBBu2TNzjjxO0xAvGaD/RwuQUl7AzxDZxjs5ILmIQLHYJ5YPGiwvEDvvWZZYLYUy5xaAw4Q3nFo/DO6k4J0Q81esmFUFWB2pLLQqJM1HPcFkGAmoPAOjL4YfQuTr8h87O2ZSwQaK4PPu7KPKH/yVGQzEDyKJAU1BB4SBw==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by SEYPR06MB5278.apcprd06.prod.outlook.com (2603:1096:101:83::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.16; Thu, 8 Oct
- 2026 00:52:29 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0496.015; Thu, 8 Oct 2026
- 00:52:29 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v2 0/2] hw/arm/aspeed: Sort device IDs and add IO expander
- test
-Thread-Topic: [PATCH v2 0/2] hw/arm/aspeed: Sort device IDs and add IO
- expander test
-Thread-Index: AQHdVG3aam/kyjNjPU6o7ye/dCCf4bbyEa+AgADCa/A=
-Date: Thu, 8 Oct 2026 00:52:28 +0000
-Message-ID: <SEZPR06MB73628EA88DE1E9610A0AB88FFC932@SEZPR06MB7362.apcprd06.prod.outlook.com>
-References: <20261005020428.3496039-1-jamin_lin@aspeedtech.com>
- <809fa0e8-889c-43a6-95bd-6a536b6bae93@kaod.org>
-In-Reply-To: <809fa0e8-889c-43a6-95bd-6a536b6bae93@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SEYPR06MB5278:EE_
-x-ms-office365-filtering-correlation-id: a7c8dedb-e91c-4122-8dd0-08df24d66d9b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|23010399003|1800799024|366016|18002099003|22082099003|4143699003|10067099003|38070700021|56012099006;
-x-microsoft-antispam-message-info: VLz7olM395/VCwaAUhVGZoh8gEGpvL0WlGavxhE4sp/8iQGlNKuUNTu/eWzYd+RzOmSgLLo7pZRL9l6ThAmhBAb9k6T9d41iyP8PPuSc3Z09GYQ4YoqDxct+/+S4BbkVTiwesq8Nmtz4VCsBKMZiLtwKGKfPLIA7ZuXhtSZW9DXrggSHKCh5GGbe2KoKgnWz1N2LR3cP0mc040DycgPvZjJbGZQG9Yjc1PTXuVknneuxyHaFVkCOqcleLD3/EyaiAnSo9fFWi7PhmCabD/gmOPbLcs017xyj8+hi2PCLa9a8OqiCBxFglRzrN5MJuMpux4UwfZS0HiCvvLhCx6frOpNW2oP+Z1cmFtWkEbxYixVPbtDaghN/VJ9T2BQp12Ej+NS3oSFD9a++9HNSSN+oQe6as8esFqjsZS/gECK++zpNaGbVCa4kePrF3WIU2xyYGV84R/RxXua/RiRa3+PW1reCtDdIpCo8NdNSuN82ul6w4WzBEAg7rklRRT2q0P42hcU+Pd4ifAHYapvw3NYrvvzYXhxF2M7IaLRMvL49htRFlqUzebKxynMLYYGwNS7zJquxLnYMvvT1PWBaCVlOmVNTDnr4C2hD37Uz1Ic6LGT5KH8R8YrAqTTGVPRgLlOmYMV2ZcoMNpn3q1UtVLtlvC3CyHoIKY5mn2HKeMkEedc=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(376014)(23010399003)(1800799024)(366016)(18002099003)(22082099003)(4143699003)(10067099003)(38070700021)(56012099006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VEhDMkEwLzh3QVp3OUVnZWZoTHRGNGZ5UnQ1MzhlbGl2bDlraXpvak5tWWxX?=
- =?utf-8?B?cjhNc2xmZjlPZWxmekNOdEtLTzN3d2R6Q0VDbEpzTWNHMGR2UDloZmdtQ08v?=
- =?utf-8?B?T1VTSzZ2K2hFaGpTTDBldDdhSUcrVERsTjYzYm8rZGU2VW1QRXJoMmZvNThG?=
- =?utf-8?B?SHQxK3BBd09aWVo0andBaWlRcXU2WUNiNnZCa2cwTlNDWFFLMmU1Njh5SkdG?=
- =?utf-8?B?VVVvNC9TVUlOMzNKUnVDZ0xqMU5FcFNkbHNoZTY2aEx3UkJDdjUvcnFBemhP?=
- =?utf-8?B?QkRLa1lDN2x6TUh0OEVKdE0yM1NWdkdYTEZ5Tzk5Z1FlVHNMcFBaOWhPeFNM?=
- =?utf-8?B?bDdMSzh0ZmRVa3RhbUVrdHp5a2d6WTdtZnJ1dGR0MW5vYTJWem42cG5oVHZF?=
- =?utf-8?B?ZlZCckNWZVFLZmxDVUpRYWcwN2poN1R5WkNWam9RYU1RcHR0dXJoUjJ4VEJX?=
- =?utf-8?B?WVlEaTN1L2lpR3BHeTQzZEVoSksyQmFrWk5DSktNd1RDOFJlSCtLUjY4blNy?=
- =?utf-8?B?YStLNnJGQnplTGN4djNEam05amlGNW9RbGp3UTlxUmRNNGJTaUxrZmkvbjBV?=
- =?utf-8?B?cFEzdUFDT2VoYm9MbVpFSXhDaDdYbUR5ekpzMkpMaE9qYnpWbXBDWDd3T3pM?=
- =?utf-8?B?dVRtakJ1QkJKWm5LcW51KzlqVlIzRnQzRm1ka0pYUnRVUDlXaEk0MklzMHJS?=
- =?utf-8?B?RDBMRENRdUJtWGxSUFRDaUJERWcvQmRuVHJXY3V6c0k0U29EMDFidHZnbW9S?=
- =?utf-8?B?cGRiZUF5d1haWjgvUkxpT2NoYy9YNE1JRGtqVEZLVTdwMlc3TFUwRzR6b0U2?=
- =?utf-8?B?QUhaMXhJQ2x6ZkNyYjIzZG11d3ZFcXRpQ3krZFlwa3R1cUFjUktmMXlObmp1?=
- =?utf-8?B?dExlY2ZJV2QvOXp3K1licmlzeWxxeXc4WGJGZHozTTB3SWRFNmpUSDF3VGlH?=
- =?utf-8?B?NlZnSXdOT2FaczQ3bmRuYlJRM0Y2Rnc2a3VzcXp0bHNaTkJJcW9EWGttQS9C?=
- =?utf-8?B?Y201MHh2ZkpjZndvRW8zdlVoS1pmMzBSVWtGbEJ1YW1jL2lSYyszbUVDM3NW?=
- =?utf-8?B?ZnJsSEpFS3BBRFF0SmlwUWxpZnRjRitCaFJyaFlmR3B1cUpmUEJSNUZnaGVC?=
- =?utf-8?B?VVVxSVh4azdCUHVMQ2tMZXlJWTIyMEQxNW1wR3RQdWtROCtxV1dMVjFDQ2RB?=
- =?utf-8?B?U3dXbWc0bWk3R2Vib05zbXQwcXMvSEgveDNObWY2Qjg2c1N2T1FzR3gzQVI2?=
- =?utf-8?B?ZE5yUUVzTnNFZHVCRHY0YkRNWnZWaFlKRDJGRTV6bU5PS2hub3dLb1pJQWpv?=
- =?utf-8?B?elQyOHFsUUxVR3dVck1XWU9XbnhwM0pIb2o3UDJPZ1FsYWJZVHpUOWdLam5Q?=
- =?utf-8?B?MU55UWhkK01QME1qYlJ6VzU2RGdKK1VWSEgxYlBCRkM2aC9mSGRhOEwrRWtW?=
- =?utf-8?B?SGJUUkNGR3ZDMTNXbGlaOWNkMFFHYTRwZU81YmU0YUFFa1hNZ2VSQWl2Y3Bv?=
- =?utf-8?B?Ti9LUFQ2L3JQUmN5ejhCbDEzcnYrOHg0cG9VYTBTRVNweTNUbDRwOUcyTWov?=
- =?utf-8?B?b3JrTUtlOFYzNTdrNjlDYWFEV2RDV0JZRWk0N1VXOWFmWlRnL0FkRTlvN1gr?=
- =?utf-8?B?RG5YMWorVndQZWZCbHN6dVZmT2V6VjcxWTQ2d0hzZlF6eEhZMlhXZ1hROENI?=
- =?utf-8?B?WlN0QklyaFFUVkovM2RJZk1yQ3M0amVJSlloSmpsbTdzZnBXZTR4cjJidDZq?=
- =?utf-8?B?U3djN1VNRFY1Y0FTKzVjcUZHRXVPcTdkRk1tN0hLQlJiZFFOVmpzZjVXaXVR?=
- =?utf-8?B?a2w3d0hpNXhTZmZFQW15eGFDbDB1RVdQY1VGRkw0RXJQelJvN2xCNmxVSTVH?=
- =?utf-8?B?QTJqOHRNdDc5c3MzS0xHSmtlWm8yMk8wUWdFNUZaT29OR3Z3U2F1K2ZIL0Zv?=
- =?utf-8?B?UHgvZXMwR2Z6d2hrdm95MklJTnpHL3hQcjhhZVF0UGljbXlCcjgrYlJGTzVF?=
- =?utf-8?B?cExNbElSUUVRVjE1NXludHVYampWdEVJek03aGU1K2s4aUdMSlA5WWlWOEtH?=
- =?utf-8?B?OGxqWHBmOC91QXNJaHE5bzVXOFNKellGeWZpaGRHRGxISzh1b0NJR2gwMXhO?=
- =?utf-8?B?ZkI5VEM0MFlvVFpjeE5PSDVqaHR0ZVVyeVZtWkxYS3JlUGRubFRFK2tKa2t2?=
- =?utf-8?B?M0ZybVhIbzRwS0MzbWZOVmRGcXBPNnFxVjUwajQraUZodVpOaGkwOUpRUnla?=
- =?utf-8?B?SDhDOXlOQ1luS0Nydis5OG1DV1JOdmR6TzZDeHVEeWI5ODRTQWp1WDN5SzQz?=
- =?utf-8?B?WHNRNDdhZnBTMThtNGRwbmtnZ0E4UjYxd3NtY3VhN2E2bU9MRVZtQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xEdYX-00052M-31
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 22:08:27 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xEdYS-0006ip-QS
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 22:08:24 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-6afe29c08ccso3307328a12.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2026 19:08:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791425298; cv=none;
+ d=google.com; s=arc-20260327;
+ b=IBMhHe9nxuLKQrMMZmUAnIXogAQJ2SLyGbDyFjfP7Fehe0CdVOTR1kPK6b71srsTBG
+ OOR2Pn9wNZVX6O+2NwjcAs0I3zcrwNCvbnRJooKsVNJQ3RkfNHTsUETE4TKp4O8Lo9ps
+ HRkw/7yyV3n+TtmBoUUQTwe+SP6ejZ2dKKUP7CKSi3u+Az/TKaT6aYNBpsxL2rVm3CTW
+ W1PXi9OPbgbE3DZOll1D665SuUt61Dfp0icKX9nPccnn842zVNctFFPgoje6YA1ja7wc
+ VmUpSYhqGKrhl7rNgYEvSU100W8etICcFd6sTt3LRTl3ChRZbu0zWyysw13FdxR+V7cS
+ gqjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :reply-to:in-reply-to:references:mime-version:dkim-signature;
+ bh=qSrzfFb0X15GyzEAJXVEk07Y++jM+QdLCglM2n4l3QM=;
+ fh=blkp6Y21jiJaILkbytQI5d8PKshgV+EEJpG2gTTbpP4=;
+ b=cqEIQOtVcf+GI7czt96sYrBT4rSbUbtfgdT2GpokuOM5LLh7+dvgvL+W1VBCVy261I
+ RZ0CUBsF1N/dtEYLeRbHTHzc/bZE4jsTEJZdCDXByi7LJ3W0nIkr46QuJR6dUlrc0kq3
+ oD7Uqrga7v5sLi0epY2H0hmRd20bwks8nci0NZUSyGl5+LPlXJpMvo/qW6qC+tq4JNVg
+ cpttij4GM9DRPs5aeof0YWoUZ9aMVsJafi2D430ei7MCK8DR7jhLsCHnRrL/ZNFYChXo
+ BpSkhQeXN7HTR421C06Hbe67lramKEwCqTBk/HET8BGs4wx9ygBeeCKEhz2YnXFO1mp2
+ sBHQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791425298; x=1792030098; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=qSrzfFb0X15GyzEAJXVEk07Y++jM+QdLCglM2n4l3QM=;
+ b=nR0E6fGMNWCx9+mWPdFReisiKhBL7LGQN2LPfla8/33DCeamF0M7ZrUTLdB+iMsNBr
+ 3yq7gPj0Ame4wn5c2VI0HiogaiImG2LdU4DtkzgNpfJQTES3yze0N8mWpSedJtzkuzNl
+ J6cJzhqVvrR5loFMWLx82+ksKMzCLtAOYq6rHepiXVWgiaBJsThVvfCdKDnkZ/pfNCaJ
+ nM1RJv8il+oV/itnhIcI7riCSmzFxX6zLCPM4QEchqjAMugFdzXIgawmODPf76WcrP8m
+ kTjHC4N1OiYVvyzhRdAJAQH3WuX2K0YXnYbLutHXgz+ZSjbcwUbiDwrJVnVUtJsxHe8g
+ Lr3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791425298; x=1792030098;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=qSrzfFb0X15GyzEAJXVEk07Y++jM+QdLCglM2n4l3QM=;
+ b=ATkBdgsn0Phq53S/WAI4rzPyj9q5O5q5zi43VVFVM+D9Ln8MU0KaCE1fD9Xg/MVFRO
+ 0qubJGfAeW2UzqkU++D1sxjRcGKvY9ekn8pXzrL6iF9LNXDpeav2NtDEZFvgAYotgtJT
+ PVr1X+fYh4kGKMyqci+x6XOMEqR8Z9BjN9eTtckAM0zEDF2JPhpgTQKESHfHfjw1Q4f0
+ HUu1wIIZONY2K/JYylmLXxZZV+urAYkqf+JLnke6mxIG6A63523T3PiOLvJeQX4w/Pg5
+ EVnm4Dil3VXFZ/bZ8ptrCtf9o1zexXkaEhr+x5pqpfhIR5cuOEobBZ6UgvWyNkLKJ0u6
+ ofkQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwPFvgUGwPvAHAmzIZZlpbsJvY7NhyzB5j5TDFDP+d70JFteMG6ufyLOslXlNz8uTlomAbwQFy7ZQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIfkyECUlufgWPKWKuVYov1Zhr6LbbdhbbMMRm+cXfrd+TS+sXk
+ oWkCP3eTCYoJJ/DxUB2PC+NuIy9CEOwOSxQ/5YXDl/FXLNcQDQ94DFkfOwvbotC3Rl32IaDTMk1
+ t8xVVotGdXTMvZRfMwUbqhMQTwN8XI4A=
+X-Gm-Gg: AYBFou3ZEoDfzkSn/zQl2UWvBdPBOcmwk6YDBvvEDpbO9k9Husk8TuU0x0CxOiWlWTH
+ rVK0VuTPK69KTjuhr/i//eLq5Fjn6x3LyOrtaIZMDEM8ImADhWRR0Rx3/yqAejRbKVQxwdTp0Nq
+ Pd7CZi7gtJQ3dUOasTkCZFmK7vGiqI4tv4w3biZcqy1B1Xgp/XjBcWucCmT93BHF25v8rc6tJgS
+ WFhgIgcyI3ZvK7Z/u9MDzLAE20hJHu/DrvuWOxw0veZVxfli+mGg4kIPmTHKUIE1o80P3tg4Tu7
+ j2M2kxQtcmx1rxisnv8I0C1AyaesXkpDyt2mvLN6Zk5OUvoILOGOYsA=
+X-Received: by 2002:a05:6402:1ece:b0:6ac:a828:c0cc with SMTP id
+ 4fb4d7f45d1cf-6aff27b0449mr4186874a12.4.1791425297440; Wed, 07 Oct 2026
+ 19:08:17 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: AvxjCfFiB2xK0ZWVgjQGCuVf6YGKNeTq/UeElS2hM9LpRxJbT1jPI1RSdi9IoqPCkZI0D3+8RcGLwV6d0691wEcsmXP4vpP0vlAZQt4ezBaj+NhuHYtc7i6nNUwLq2shoB433Xs99nk8hxZCUv4G6hnNP4/8qSFxxnNxrWVIUEfinbzzKQS1nrdnyvsopaA++CjnJUMrjFHkoEDawM52Unq1dQNZ8mD01KKSupfa3Ej7GHnDbZLk9Fp1aPebjHyIk5Q1T8WknMbCZQ6bDGfoVdnHmhiC2DIhqE0ZVev2Sy/xJaZv3On73XaqLYxNSzsr27nJnCz6eWbLbmUC0uaigg==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7c8dedb-e91c-4122-8dd0-08df24d66d9b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Oct 2026 00:52:28.9791 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: zSMUTPr+i9L2gwKE6MdCjNtujnjC8DnHj3Mq5c4PuS54uYrFBlt+G1k6iOwIIqvk9OdV0Y0Tsro0hzcgy8apCl1Fe5+9UJekBoxO3FTu3W4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB5278
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+References: <20261007115253.328-1-luoyonggang@gmail.com>
+ <20261007115253.328-9-luoyonggang@gmail.com>
+ <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
+ <CAE2XoE8K+3e8h6H9NrPk1WWMmJfG807bN_Kh5qje-5pKWUUg5w@mail.gmail.com>
+ <b2d89a92-0197-4873-b4ea-75bb21c0d0ae@oss.qualcomm.com>
+In-Reply-To: <b2d89a92-0197-4873-b4ea-75bb21c0d0ae@oss.qualcomm.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Thu, 8 Oct 2026 10:08:04 +0800
+X-Gm-Features: AclHuK_ka4Log0rcFdoI3Se7Wr5Boou6rb7bzwYDa0CeTBiNxl10Vr0RSYQJlJY
+Message-ID: <CAE2XoE-qDvOUG2+1yTTvBUyBLxoxCPPy464KQVLgSFx+tuQ2XQ@mail.gmail.com>
+Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
+ qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
+ Darren Kenny <darren.kenny@oracle.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,44 +136,746 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMC8yXSBody9hcm0vYXNwZWVk
-OiBTb3J0IGRldmljZSBJRHMgYW5kIGFkZCBJTw0KPiBleHBhbmRlciB0ZXN0DQo+IA0KPiBPbiAx
-MC81LzI2IDA0OjA0LCBKYW1pbiBMaW4gd3JvdGU6DQo+ID4gVGhpcyBzZXJpZXMgaXMgc3BsaXQg
-b3V0IGZyb20gIltQQVRDSCB2MSAwLzExXSBody9hcm0vYXNwZWVkOiBVc2UNCj4gPiB1bmltcCBh
-cnJheSBhbmQgdGFibGUgZm9yIHVuaW1wbGVtZW50ZWQgZGV2aWNlcyIgdG8gbWFrZSB0aGUgY2hh
-bmdlcw0KPiA+IGVhc2llciB0byByZXZpZXcuDQo+ID4NCj4gPiB2MQ0KPiA+ICAgMS4gc29ydHMg
-dGhlIEFTUEVFRCBkZXZpY2UgSURzIGFscGhhYmV0aWNhbGx5Lg0KPiANCj4gVGhpcyBpcyBhbHJl
-YWR5IGFwcGxpZWQgdG8gYXNwZWVkLW5leHQgYWxvbmcgd2l0aCA6DQo+IGh0dHBzOi8vbG9yZS5r
-ZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNjA5MzAwNzI1MDEuMjYxMjExOS0xLWphbWluX2xpbkBh
-cw0KPiBwZWVkdGVjaC5jb20vDQo+IA0KUGxlYXNlIGFwcGx5IHRoZSB2MiBwYXRjaCBpbnN0ZWFk
-Lg0KDQpUaGUgdjEgdmVyc2lvbiBicmVha3MgdGhlIEFTVDI3MDAgSU8gRXhwYW5kZXIgMSBmdW5j
-dGlvbmFsaXR5LiBUaGlzIGlzIGFsc28gd2h5IEkgYWRkZWQgYSBmdW5jdGlvbmFsIHRlc3QgaW4g
-djIgdG8gY2F0Y2ggdGhpcyBpc3N1ZS4gDQpBcyBhIHJlc3VsdCwgdGhlIGZ1bmN0aW9uYWwgdGVz
-dCBjdXJyZW50bHkgZmFpbHMgb24gYXNwZWVkLW5leHQgd2l0aCB0aGUgdjEgcGF0Y2ggYXBwbGll
-ZC4NCg0KVGhlIHYxIGNoYW5nZSBpczoNCg0KQVNQRUVEX0RFVl9JT0VYUDBfSTJDLA0KQVNQRUVE
-X0RFVl9JT0VYUDBfSTNDLA0KQVNQRUVEX0RFVl9JT0VYUDBfSU5UQ0lPLA0KQVNQRUVEX0RFVl9J
-T0VYUDFfSTJDLA0KQVNQRUVEX0RFVl9JT0VYUDFfSTNDLA0KQVNQRUVEX0RFVl9JT0VYUDFfSU5U
-Q0lPLA0KDQpUaGUgY29ycmVjdCBvcmRlcmluZyBpbiB2MiBpczoNCmh0dHBzOi8vcGF0Y2h3b3Jr
-Lmtlcm5lbC5vcmcvcHJvamVjdC9xZW11LWRldmVsL3BhdGNoLzIwMjYxMDA1MDIwNDI4LjM0OTYw
-MzktMi1qYW1pbl9saW5AYXNwZWVkdGVjaC5jb20vDQoNCisgICAgQVNQRUVEX0RFVl9JT0VYUDBf
-STJDLA0KKyAgICBBU1BFRURfREVWX0lPRVhQMV9JMkMsDQorICAgIEFTUEVFRF9ERVZfSU9FWFAw
-X0kzQywNCisgICAgQVNQRUVEX0RFVl9JT0VYUDFfSTNDLA0KKyAgICBBU1BFRURfREVWX0lPRVhQ
-MF9JTlRDSU8sDQorICAgIEFTUEVFRF9ERVZfSU9FWFAxX0lOVENJTywNCg0KVGhhbmtzIGZvciB5
-b3VyIGhlbHAgYW5kIHN1cHBvcnQuDQoNCkphbWluDQoNCj4gPiB2Mg0KPiA+ICAgMS4gU3BsaXQg
-dGhlIGRldmljZSBJRCBzb3J0aW5nIGNoYW5nZSBvdXQgaW50byBhIHNlcGFyYXRlIHNlcmllcy4N
-Cj4gPiAgIDIuIEZpeCB0aGUgSU8gZXhwYW5kZXIgZGV2aWNlIElEcyBpbiB0aGUgY29ycmVjdCBv
-cmRlci4NCj4gPiAgIDMuIEFkZCBhIGZ1bmN0aW9uYWwgdGVzdCBmb3IgSU8gRXhwYW5kZXIgMSBJ
-MkMuDQo+IA0KPiANCj4gDQo+IEFwcGxpZWQgcGF0Y2ggMiB0byA6DQo+IA0KPiAgICAgIGh0dHBz
-Oi8vZ2l0aHViLmNvbS9sZWdvYXRlci9xZW11IGFzcGVlZC1uZXh0DQo+IA0KPiBUaGFua3MsDQo+
-IA0KPiBDLg0KPiANCj4gDQo+ID4gSmFtaW4gTGluICgyKToNCj4gPiAgICBody9hcm0vYXNwZWVk
-OiBTb3J0IGRldmljZSBJRHMgYWxwaGFiZXRpY2FsbHkNCj4gPiAgICB0ZXN0cy9mdW5jdGlvbmFs
-L2FhcmNoNjQvdGVzdF9hc3BlZWRfYXN0MjcwMGEyOiBBZGQgSTJDIHRlc3QgZm9yIElPDQo+ID4g
-ICAgICBleHBhbmRlciAxDQo+ID4NCj4gPiAgIGluY2x1ZGUvaHcvYXJtL2FzcGVlZF9zb2MuaCAg
-ICAgICAgICAgICAgICAgICB8IDE3Ng0KPiArKysrKysrKystLS0tLS0tLS0NCj4gPiAgIC4uLi9h
-YXJjaDY0L3Rlc3RfYXNwZWVkX2FzdDI3MDBhMi5weSAgICAgICAgICB8ICAgMyArDQo+ID4gICAy
-IGZpbGVzIGNoYW5nZWQsIDkxIGluc2VydGlvbnMoKyksIDg4IGRlbGV0aW9ucygtKQ0KPiA+DQoN
-Cg==
+On Thu, Oct 8, 2026 at 8:00=E2=80=AFAM Pierrick Bouvier
+<pierrick.bouvier@oss.qualcomm.com> wrote:
+>
+> On 10/7/2026 2:42 PM, Yonggang Luo wrote:
+> > On Thu, Oct 8, 2026 at 4:44=E2=80=AFAM Pierrick Bouvier
+> > <pierrick.bouvier@oss.qualcomm.com> wrote:
+> >>
+> >> On 10/7/2026 4:48 AM, Yonggang Luo wrote:
+> >>> Change TypeInfo.is_available to the new TypeIsAvailable type, which
+> >>> takes a const TargetInfo *. Registration passes target_info(), so
+> >>> behavior is unchanged. object.h only forward-declares TargetInfo.
+> >>>
+> >>> Switch the existing users (raspi, raspi4b, ast27x0 evb and fc) and th=
+e
+> >>> generated machine parents to the matching target_is_<arch> helpers.
+> >>>
+> >>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> >>> ---
+> >>>  hw/arm/aspeed_ast27x0-fc.c  |  2 +-
+> >>>  hw/arm/aspeed_ast27x0_evb.c |  4 ++--
+> >>>  hw/arm/raspi.c              |  4 ++--
+> >>>  hw/arm/raspi4b.c            |  2 +-
+> >>>  hw/arm/virt.c               |  4 ++--
+> >>>  hw/m68k/virt.c              |  4 ++--
+> >>>  hw/or1k/virt.c              |  2 +-
+> >>>  include/qom/object.h        | 12 +++++++++++-
+> >>>  qom/object.c                |  3 ++-
+> >>>  9 files changed, 24 insertions(+), 13 deletions(-)
+> >>>
+> >>> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+> >>> index 73362b60d2a..8a7c6a116ac 100644
+> >>> --- a/hw/arm/aspeed_ast27x0-fc.c
+> >>> +++ b/hw/arm/aspeed_ast27x0-fc.c
+> >>> @@ -234,7 +234,7 @@ static const TypeInfo ast2700fc_types[] =3D {
+> >>>          .parent         =3D TYPE_MACHINE,
+> >>>          .class_init     =3D ast2700fc_class_init,
+> >>>          .instance_size  =3D sizeof(Ast2700FCState),
+> >>> -        .is_available   =3D target_aarch64,
+> >>> +        .is_available   =3D target_is_aarch64,
+> >>>      },
+> >>>  };
+> >>>
+> >>> diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.=
+c
+> >>> index 460c9ff0d2e..02a8cff1d9d 100644
+> >>> --- a/hw/arm/aspeed_ast27x0_evb.c
+> >>> +++ b/hw/arm/aspeed_ast27x0_evb.c
+> >>> @@ -75,13 +75,13 @@ static const TypeInfo aspeed_ast27x0_evb_types[] =
+=3D {
+> >>>          .name          =3D MACHINE_TYPE_NAME("ast2700a1-evb"),
+> >>>          .parent        =3D TYPE_ASPEED_MACHINE,
+> >>>          .class_init    =3D aspeed_machine_ast2700a1_evb_class_init,
+> >>> -        .is_available  =3D target_aarch64,
+> >>> +        .is_available  =3D target_is_aarch64,
+> >>>      },
+> >>>      {
+> >>>          .name          =3D MACHINE_TYPE_NAME("ast2700a2-evb"),
+> >>>          .parent        =3D TYPE_ASPEED_MACHINE,
+> >>>          .class_init    =3D aspeed_machine_ast2700a2_evb_class_init,
+> >>> -        .is_available  =3D target_aarch64,
+> >>> +        .is_available  =3D target_is_aarch64,
+> >>>      }
+> >>>  };
+> >>>
+> >>> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> >>> index fadbacb2534..22b06c6ca22 100644
+> >>> --- a/hw/arm/raspi.c
+> >>> +++ b/hw/arm/raspi.c
+> >>> @@ -403,12 +403,12 @@ static const TypeInfo raspi_machine_types[] =3D=
+ {
+> >>>          .name           =3D MACHINE_TYPE_NAME("raspi3ap"),
+> >>>          .parent         =3D TYPE_RASPI_MACHINE,
+> >>>          .class_init     =3D raspi3ap_machine_class_init,
+> >>> -        .is_available   =3D target_aarch64,
+> >>> +        .is_available   =3D target_is_aarch64,
+> >>>      }, {
+> >>>          .name           =3D MACHINE_TYPE_NAME("raspi3b"),
+> >>>          .parent         =3D TYPE_RASPI_MACHINE,
+> >>>          .class_init     =3D raspi3b_machine_class_init,
+> >>> -        .is_available   =3D target_aarch64,
+> >>> +        .is_available   =3D target_is_aarch64,
+> >>>      }, {
+> >>>          .name           =3D TYPE_RASPI_MACHINE,
+> >>>          .parent         =3D TYPE_RASPI_BASE_MACHINE,
+> >>> diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+> >>> index 566d64572db..a1dc477f25e 100644
+> >>> --- a/hw/arm/raspi4b.c
+> >>> +++ b/hw/arm/raspi4b.c
+> >>> @@ -121,7 +121,7 @@ static const TypeInfo raspi4b_machine_type =3D {
+> >>>      .parent         =3D TYPE_RASPI_BASE_MACHINE,
+> >>>      .instance_size  =3D sizeof(Raspi4bMachineState),
+> >>>      .class_init     =3D raspi4b_machine_class_init,
+> >>> -    .is_available   =3D target_aarch64,
+> >>> +    .is_available   =3D target_is_aarch64,
+> >>>  };
+> >>>
+> >>>  static void raspi4b_machine_register_type(void)
+> >>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >>> index 9d192515d85..18160f7fad3 100644
+> >>> --- a/hw/arm/virt.c
+> >>> +++ b/hw/arm/virt.c
+> >>> @@ -132,7 +132,7 @@ static void arm_virt_compat_default_set(MachineCl=
+ass *mc)
+> >>>          .name =3D MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
+> >>>          .parent =3D TYPE_VIRT_MACHINE, \
+> >>>          .class_init =3D MACHINE_VER_SYM(class_init, virt, __VA_ARGS_=
+_), \
+> >>> -        .is_available =3D target_base_arm, \
+> >>> +        .is_available =3D target_is_base_arm, \
+> >>>      }; \
+> >>>      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
+> >>>      { \
+> >>> @@ -4430,7 +4430,7 @@ static const TypeInfo virt_machine_info =3D {
+> >>>           { TYPE_HOTPLUG_HANDLER },
+> >>>           { }
+> >>>      },
+> >>> -    .is_available =3D target_base_arm,
+> >>> +    .is_available =3D target_is_base_arm,
+> >>>  };
+> >>>
+> >>>  static void machvirt_machine_init(void)
+> >>> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> >>> index e52546e4fab..ad2a43ef3fb 100644
+> >>> --- a/hw/m68k/virt.c
+> >>> +++ b/hw/m68k/virt.c
+> >>> @@ -327,7 +327,7 @@ static const TypeInfo virt_machine_info =3D {
+> >>>      .parent       =3D TYPE_MACHINE,
+> >>>      .abstract     =3D true,
+> >>>      .class_init   =3D virt_machine_class_init,
+> >>> -    .is_available =3D target_m68k,
+> >>> +    .is_available =3D target_is_m68k,
+> >>>  };
+> >>>
+> >>>  static void virt_machine_register_types(void)
+> >>> @@ -355,7 +355,7 @@ type_init(virt_machine_register_types)
+> >>>          .name =3D MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
+> >>>          .parent =3D MACHINE_TYPE_NAME("virt"), \
+> >>>          .class_init =3D MACHINE_VER_SYM(class_init, virt, __VA_ARGS_=
+_), \
+> >>> -        .is_available =3D target_m68k, \
+> >>> +        .is_available =3D target_is_m68k, \
+> >>>      }; \
+> >>>      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
+> >>>      { \
+> >>> diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
+> >>> index a3ff903839b..89fb786641f 100644
+> >>> --- a/hw/or1k/virt.c
+> >>> +++ b/hw/or1k/virt.c
+> >>> @@ -559,7 +559,7 @@ static const TypeInfo or1ksim_machine_typeinfo =
+=3D {
+> >>>      .parent     =3D TYPE_MACHINE,
+> >>>      .class_init =3D openrisc_virt_machine_init,
+> >>>      .instance_size =3D sizeof(OR1KVirtState),
+> >>> -    .is_available =3D target_or1k,
+> >>> +    .is_available =3D target_is_or1k,
+> >>>  };
+> >>>
+> >>>  static void or1ksim_machine_init_register_types(void)
+> >>> diff --git a/include/qom/object.h b/include/qom/object.h
+> >>> index 4c0645817a5..7d52a15f6b8 100644
+> >>> --- a/include/qom/object.h
+> >>> +++ b/include/qom/object.h
+> >>> @@ -17,6 +17,7 @@
+> >>>  #include "qapi/qapi-builtin-types.h"
+> >>>  #include "qemu/module.h"
+> >>>
+> >>> +typedef struct TargetInfo TargetInfo;
+> >>>  struct TypeImpl;
+> >>>  typedef struct TypeImpl *Type;
+> >>>
+> >>> @@ -117,6 +118,15 @@ typedef void (ObjectUnparent)(Object *obj);
+> >>>   */
+> >>>  typedef void (ObjectFree)(void *obj);
+> >>>
+> >>> +/**
+> >>> + * typedef TypeIsAvailable:
+> >>> + * @ti: TargetInfo to test.
+> >>> + *
+> >>> + * Returns whether a type is available for @ti. Typical implementati=
+ons
+> >>> + * are target_is_*().
+> >>> + */
+> >>> +typedef bool (TypeIsAvailable)(const TargetInfo *ti);
+> >>> +
+> >>>  #define OBJECT_CLASS_CAST_CACHE 4
+> >>>
+> >>>  /**
+> >>> @@ -498,7 +508,7 @@ struct TypeInfo
+> >>>      void (*class_base_init)(ObjectClass *klass, const void *data);
+> >>>      const void *class_data;
+> >>>
+> >>> -    bool (*is_available)(void);
+> >>> +    TypeIsAvailable *is_available;
+> >>>      const InterfaceInfo *interfaces;
+> >>>  };
+> >>>
+> >>> diff --git a/qom/object.c b/qom/object.c
+> >>> index 96498f3d001..253b9562b41 100644
+> >>> --- a/qom/object.c
+> >>> +++ b/qom/object.c
+> >>> @@ -15,6 +15,7 @@
+> >>>  #include "qom/compat-properties.h"
+> >>>  #include "qom/object.h"
+> >>>  #include "qom/object_interfaces.h"
+> >>> +#include "qemu/target-info.h"
+> >>>  #include "qemu/cutils.h"
+> >>>  #include "qemu/memalign.h"
+> >>>  #include "qapi/visitor.h"
+> >>> @@ -167,7 +168,7 @@ static TypeImpl *type_register_internal(const Typ=
+eInfo *info)
+> >>>          abort();
+> >>>      }
+> >>>
+> >>> -    if (info->is_available && !info->is_available()) {
+> >>> +    if (info->is_available && !info->is_available(target_info())) {
+> >>>          return NULL;
+> >>>      }
+> >>>
+> >>
+> >> ```
+> >> info->is_available(target_info())
+> >> ```
+> >>
+> >> or
+> >>
+> >> ```
+> >> is_available() {
+> >>   TargetInfo ti * =3D target_info();
+> >>   ...
+> >> }
+> >> ```
+> >>
+> >> Are doing the exact same thing today.
+> >>
+> >> So what is the future goal requiring to introduce this?
+> >
+> > From Daniel P. Berrang=C3=A9's
+> > requesthttps://lore.kernel.org/qemu-devel/apAszS1ewxM0Y1XU@redhat.com/
+> >         I forgot to mention that this is also pretty important for maki=
+ng
+> >         introspection work, as we need to be able to say
+> >
+> >           'qemu-system --machine none -qmp ...'
+> >
+> >         and connect to QMP to introspect the binary. Having to add a
+> >         '--target <name>' into that mix is undesirable, as it creates
+> >         a chicken & egg problem. You don't know what targets are built
+> >         into qemu-system without introspecting it and you can't
+> >         introspect it without selecting a target to introspect.
+> >
+> > From Pierrick's review
+> > https://lore.kernel.org/qemu-devel/557262df-b8e7-49b5-a245-ae46b8885b30=
+@oss.qualcomm.com/So,
+> > for existing binary: -M virt works as before.
+> >
+> >         For new multi binary:
+> >         $ qemu-system -M virt:
+> >         Multiple machines were found, select one among:
+> >         - aarch64-virt
+> >         - riscv64-virt
+> >
+> >         Does it matches what you would expect?
+> >
+> > From Daniel's review
+> > https://lore.kernel.org/qemu-devel/aro93NuZBXYGbD33@redhat.com/
+> >         We already have  'QemuTargetInfo' struct which is used
+> >         with 'query-target', that should also be used with the
+> >         new 'query-targets' command.
+> >
+> >         We need to add the 'endianness' field to QemuTargetInfo.
+> >
+> >         I don't think that we need to report machines though.
+> >         We already have 'query-machines' which gives much broader
+> >         information on the machines. "MachineInfo" needs to
+> >         gain
+> >
+> >         "targets": ["SysEmuTarget"]
+> >
+> >         to list which target(s) a machine can be used with.
+> >
+> >
+> > To achieve these, we needs add TypeInfo parameter to it so that we can =
+do
+> >
+> > static void report_unsupported_machine_type(const char *name, Error **e=
+rrp)
+> > {
+> >     g_autoptr(GSList) machines =3D machine_class_get_list(true);
+> >     g_autoptr(GString) targets =3D g_string_new(NULL);
+> >     TargetInfoNode *node;
+> >     GSList *el;
+> >
+> >     error_setg(errp, "unsupported machine type: \"%s\" for target \"%s\=
+"",
+> >                name, target_name());
+> >     QLIST_FOREACH(node, target_info_list(), next) {
+> >         for (el =3D machines; el; el =3D el->next) {
+> >             MachineClass *mc =3D el->data;
+> >
+> >             if ((!strcmp(mc->name, name) || !g_strcmp0(mc->alias, name)=
+) &&
+> >                 object_class_get_is_available(OBJECT_CLASS(mc))(node->i=
+nfo)) {
+> >                 g_string_append_printf(targets, "  %s\n",
+> >                                        node->info->target_name);
+> >                 break;
+> >             }
+> >         }
+> >     }
+> >     if (targets->len) {
+> >         error_append_hint(errp, "Available for targets:\n%s", targets->=
+str);
+> >     }
+> > }
+> >
+> > That is we can iterate on all target-list, and check if it's can be fit=
+lered.
+> >
+>
+> Ok, I finally see where this is going.
+>
+> So, based on all the previous conversations, we agreed to have a
+> qemu-system binary with all the QOM types available (for all targets).
+>
+> I personally think that if we go this way, we should not have any
+> -target option, and even less a -target none option.
+>
+> The current is_available() approach was made with filtering per target
+> in mind, which predates where things are now. So, it's a good time to
+> reevaluate how to do it.
+>
+> This leaves us with (at least) two options:
+> - keep the callback and add TargetInfo parameter (what is done here)
+> - remove is_available, and adopt a more declarative approach
+>
+> How about we (re)-explore the second one?
+
+Indeed, I am doing
+
+- preserve is_available(TargetInfo*), and adopt a more declarative approach
+
+/* Generated by scripts/gen-target-info.py. Do not edit. */
+
+static const TypeInfo target_machine_types[] =3D {
+    {
+        .name =3D TYPE_TARGET_BASE_ALPHA_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_alpha,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_ARM_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_arm,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_AVR_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_avr,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_HEXAGON_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_hexagon,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_HPPA_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_hppa,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_I386_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_i386,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_LOONGARCH_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_loongarch,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_M68K_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_m68k,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_MICROBLAZE_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_microblaze,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_MIPS_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_mips,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_NONE_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_none,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_OR1K_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_or1k,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_PPC_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_ppc,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_RISCV_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_riscv,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_RX_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_rx,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_S390X_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_s390x,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_SH4_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_sh4,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_SPARC_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_sparc,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_TRICORE_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_tricore,
+    },
+    {
+        .name =3D TYPE_TARGET_BASE_XTENSA_MACHINE,
+        .parent =3D TYPE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_base_xtensa,
+    },
+    {
+        .name =3D TYPE_TARGET_ALPHA_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_ALPHA_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_alpha,
+    },
+    {
+        .name =3D TYPE_TARGET_AARCH64_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_ARM_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_aarch64,
+    },
+    {
+        .name =3D TYPE_TARGET_ARM_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_ARM_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_arm,
+    },
+    {
+        .name =3D TYPE_TARGET_AVR_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_AVR_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_avr,
+    },
+    {
+        .name =3D TYPE_TARGET_HEXAGON_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_HEXAGON_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_hexagon,
+    },
+    {
+        .name =3D TYPE_TARGET_HPPA_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_HPPA_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_hppa,
+    },
+    {
+        .name =3D TYPE_TARGET_I386_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_I386_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_i386,
+    },
+    {
+        .name =3D TYPE_TARGET_X86_64_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_I386_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_x86_64,
+    },
+    {
+        .name =3D TYPE_TARGET_LOONGARCH64_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_LOONGARCH_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_loongarch64,
+    },
+    {
+        .name =3D TYPE_TARGET_M68K_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_M68K_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_m68k,
+    },
+    {
+        .name =3D TYPE_TARGET_MICROBLAZE_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_MICROBLAZE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_microblaze,
+    },
+    {
+        .name =3D TYPE_TARGET_MIPS_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_mips,
+    },
+    {
+        .name =3D TYPE_TARGET_MIPS64_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_mips64,
+    },
+    {
+        .name =3D TYPE_TARGET_MIPS64EL_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_mips64el,
+    },
+    {
+        .name =3D TYPE_TARGET_MIPSEL_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_MIPS_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_mipsel,
+    },
+    {
+        .name =3D TYPE_TARGET_NONE_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_NONE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_none,
+    },
+    {
+        .name =3D TYPE_TARGET_OR1K_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_OR1K_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_or1k,
+    },
+    {
+        .name =3D TYPE_TARGET_PPC_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_PPC_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_ppc,
+    },
+    {
+        .name =3D TYPE_TARGET_PPC64_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_PPC_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_ppc64,
+    },
+    {
+        .name =3D TYPE_TARGET_RISCV32_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_RISCV_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_riscv32,
+    },
+    {
+        .name =3D TYPE_TARGET_RISCV64_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_RISCV_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_riscv64,
+    },
+    {
+        .name =3D TYPE_TARGET_RX_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_RX_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_rx,
+    },
+    {
+        .name =3D TYPE_TARGET_S390X_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_S390X_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_s390x,
+    },
+    {
+        .name =3D TYPE_TARGET_SH4_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_SH4_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_sh4,
+    },
+    {
+        .name =3D TYPE_TARGET_SH4EB_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_SH4_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_sh4eb,
+    },
+    {
+        .name =3D TYPE_TARGET_SPARC_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_SPARC_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_sparc,
+    },
+    {
+        .name =3D TYPE_TARGET_SPARC64_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_SPARC_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_sparc64,
+    },
+    {
+        .name =3D TYPE_TARGET_TRICORE_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_TRICORE_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_tricore,
+    },
+    {
+        .name =3D TYPE_TARGET_XTENSA_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_XTENSA_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_xtensa,
+    },
+    {
+        .name =3D TYPE_TARGET_XTENSAEB_MACHINE,
+        .parent =3D TYPE_TARGET_BASE_XTENSA_MACHINE,
+        .abstract =3D true,
+        .is_available =3D target_is_xtensaeb,
+    },
+};
+Other than these base machines, other machines are children of these
+base machines.
+
+See these changes
+https://gitlab.com/lygstate-qemu/qemu/-/commit/c71da20c2483cdf577fd2a5548a8=
+0ca1e5099676
+https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e=
+19d8d9e5a146
+https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e=
+19d8d9e5a146
+https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e=
+19d8d9e5a146
+For ARM:
+https://gitlab.com/lygstate-qemu/qemu/-/commit/c42d5eb333fd3a7cab899c8df953=
+75dfc79aba40
+
+These base machine type is auto-generated in this MR.
+You can see at the branch
+https://gitlab.com/lygstate-qemu/qemu/-/commits/single-binary-arm-riscv?ref=
+_type=3Dheads
+
+And the inherit is done by commits
+qom: inherit is_available and filter after MODULE_INIT_QOM:
+https://gitlab.com/lygstate-qemu/qemu/-/commit/cb66474a36e03b4353c2f525ce78=
+21f2af779ea1
+qom: register late types through module_call_init_fn:
+https://gitlab.com/lygstate-qemu/qemu/-/commit/ba6a3d3fb6e4bfe35d88d3845abf=
+7b0ec8fbc337
+module: add before/after hooks and module_call_init_fn:
+https://gitlab.com/lygstate-qemu/qemu/-/commit/86c635f45e283b6d0f714a1a3a9d=
+9521b17d5152
+
+And the gitlab-ci is already passed
+
+
+>
+> It's what we did in the past
+> (https://gitlab.com/qemu-project/qemu/-/commit/5de9216064d32eaac125dac4de=
+1878486c16d73e),
+
+Somewhat alike except I do not introduce many interface types. Just
+base machine types.
+
+> and that I removed recently, in favor of is_available.
+> My rationale was that it was incomplete, since we needed to filter types
+> per config also, and not only target.
+> Now that direction is to not filter anything, filter per config is
+> unneeded, and switching back to declarative instead of callback makes
+> total sense. Using interfaces like we did has its own issues, and I
+> would not like to see this coming back.
+>
+> I'll do one very concrete proposal:
+>
+> ```
+> How about letting machines (and machines only first), have a new field
+> 'targets', being a uint32_t mask with an array of EMU_TARGET?
+> machine->targets =3D EMU_TARGET_X | EMU_TARGET_Y;
+> ```
+
+From my experience at
+https://gitlab.com/lygstate-qemu/qemu/-/tree/combined-binary-multi-targets?=
+ref_type=3Dheads
+this is not enough, we still needs is_avaible, because for those
+machines that binding to
+KVM/WHPX and other accels, we need to use target_kconfig to handle
+them. That's why I choose to use a unified
+is_avaible(TargetInfo*).
+
+This new field only works if is_availbe still be a member of TypeInfo.
+machine->targets are not generic. Indeed CPU and ACCEL(kvm/whpx/hyp)
+types also need filtering.
+
+>
+> @Daniel, IIUC, this is exactly the approach you proposed a few weeks
+> ago, just before I got frustrated and lost my patience against you. I
+> think it's more clear for me where you wanted to go. Sorry it took such
+> a large detour.
+>
+> Yonggang, does that sounds good for you?
+> Daniel, does that sounds good for you also?
+>
+> Regards,
+> Pierrick
+
+
+
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 

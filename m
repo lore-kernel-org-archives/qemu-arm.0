@@ -4,126 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A48CA6007
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 09:57:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75733CA600D
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 15:59:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEks5-0007Rg-FE; Thu, 08 Oct 2026 05:57:05 -0400
+	id 1xEqWV-0008UQ-D7; Thu, 08 Oct 2026 11:59:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEks1-0007Qo-4H
- for qemu-arm@nongnu.org; Thu, 08 Oct 2026 05:57:02 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xEkry-0006Ox-Ua
- for qemu-arm@nongnu.org; Thu, 08 Oct 2026 05:57:00 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-6aa850436d3so6745655a12.2
- for <qemu-arm@nongnu.org>; Thu, 08 Oct 2026 02:56:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791453417; cv=none;
- d=google.com; s=arc-20260327;
- b=ms9alDlOSJP9KeE2GDCJxC8Fd6CDIQgVQyz/FgxO68VZeJ2e41+PfbFCsSMG9PhhrK
- CQFcS5bPfPIeCo6PBMmFUV97Ocl5oGL63O5vpuyjEGBqJUAXw33mplhXeiRtkd2XT/US
- dM9G3VFA5sUPtcJrZQpEvswAsqQq4HPVYw+GFa4cnyc/cmLSX+ZD4NRPLoRCLMLtnY0Q
- 3YZR572pzY3YOvL8XYn68QBkBHG+eKdN1MKuaR2kCEDVumOrs1g7cry+gvsM6rox/K+z
- 1vZ11I5xnW0GOoqqvoOzKHauD7ZrqLMg2ZTuIccZOkrezMDf2ZXboFLBaoEkSJw35bGE
- hI9Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=GMQtsqQ1FJDRF98PcaOkHl7URCcYm64RX1SkqUFOO9g=;
- fh=sSwTzLeE/hVjP9MHdLoGXViy8dABypp7bf3hyb/iyhs=;
- b=FwXY19kHDvia/6CW7tVv2eZLR8ZyWlewAu+lfLgKr2wC+xJYPGO7ggD6SdP+8VMXPn
- 73ErMX8FWAdr7ZmuPVhV2CO5UnEfu4geSjFekPCuvnG7JV2hmplGjXKR1c8WPLqUjE9h
- RynsnpHxahiZCfWlsqxYOjG5xoquUT9HJnPZHzf+TfUukbVVBGwY2Ff+tHIu6gSNsxGn
- p+NVZOeY/XHL1EyjpqkF1A3GhiJNMSjZTKcUPTj32fNSYsn4JxZWIxoBqTSsvzOxiIx3
- ZamADmd61/ND24E1NBy0Eimdw1Q7b+4clFTSNkK+r2labs6DB8OnRZOJFWMvhmtk314d
- qy5A==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xEqWT-0008UH-SJ
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2026 11:59:09 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xEqWQ-0003Bd-SG
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2026 11:59:09 -0400
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 698EVSUw2801222
+ for <qemu-arm@nongnu.org>; Thu, 8 Oct 2026 15:59:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ LJKWCwj2Cjhss1wxdbYOVWFcTLGM9gKeaGl9Inqx3GQ=; b=FEw6NgMVUP4QRGN2
+ yqNBnGkRFOXV+fJhx6IZtl+Meu6aK+SnHsZoejYrQs27PmJp6sWJ6DAKFMrnD9q2
+ hssukO5OEa5wGSlGCQocc7KIX7gH7kMO9R1nJuFxScgO27wB2D2kyETOjIxBlblK
+ 9e6XbJeDJ6kzE4PbKLCeJ9wEEi4WFrYdCVTJ7WlJpVnJCU+X2Qgv5loQRnt7odeu
+ JfFu01wDwJs1LYZvyAxTjXEm80+g60/oUZPJoTNKvGcPNoQ+1lYQFsxCDuyGElXI
+ s9rnEzO83QhrQPnhtbZU1QFg7ZhWDE5LklFSqgq2ePy4bIQsUwmNKtwKGvp++AGm
+ PFTboA==
+Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
+ [74.125.82.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h5xe3kq1w-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 08 Oct 2026 15:59:03 +0000 (GMT)
+Received: by mail-dy1-f198.google.com with SMTP id
+ 5a478bee46e88-30bcb065bfdso10408085eec.0
+ for <qemu-arm@nongnu.org>; Thu, 08 Oct 2026 08:59:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791453417; x=1792058217; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=GMQtsqQ1FJDRF98PcaOkHl7URCcYm64RX1SkqUFOO9g=;
- b=Mo+wlr1ucu8MvqLTQOT9RujfRsfUSVZRlCpTRql45lumpEhRaCvSt2Cktd4NR4WzaF
- fGmBmNEJIBKUpldJ75N+xf8QRlipDvm4YiYR6StzO0jWnJ7YcE0qNHx9G21Qc4gnjPGy
- 7k0bTk683UcsIm5CpAQsiE9NKqnovII8uW17wCDYQwJ1yGaIw9UnLcBrwFU+63iff+HQ
- R/+3tju0vSs1DH4cUF6x9no67d07gWL45dVnOvdBRONxHkMPIPBm5WtWLSiweBzKSQgO
- l6sJvS198eZJHEvrYEN4beGzBbzzv+6JKILVd/qqrZ77ZlNHK6O2M9zSgdVO8VQoaIS0
- SQ3g==
+ d=oss.qualcomm.com; s=google; t=1791475142; x=1792079942; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=LJKWCwj2Cjhss1wxdbYOVWFcTLGM9gKeaGl9Inqx3GQ=;
+ b=kYPhUWD6GjWNUgp+rAxiJVjFGjHoNGwU4DJ5AcHykYWi5NP/l7B4oVI5Og82NOIvtZ
+ j2vLtbOj6BhqNQ70Pk7fjvZKGAvR5vSOCu8KG2jIsPW9qXf+cxKAHZOReKNpzjsGC60H
+ nJ8AEd5KBIx6k9zysbQmU2s4XrajkcLijb2px+5zKAsJRcQ8ceJUIltq0dGo+MaoVBQi
+ P6mUtMoa9Xg1oYmf7iNlgqGgTl862RtVV616u0iUR9CsvHJE/5t58X07bbmaPd5TvB22
+ 0KRMKn1q/Jm8iOH2Ps3PH0hJ+ftFEHijsRLmAMh+ldlKkiAlr1H48Rg/LzkZydOl8qWe
+ 0r+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791453417; x=1792058217;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=GMQtsqQ1FJDRF98PcaOkHl7URCcYm64RX1SkqUFOO9g=;
- b=KDGbs8FxMieLOWrZryWZpsJQd7P0ha94il+8BQad23Dbc1hcrZhyunc6Bb1WW0+5DF
- ipjEKyaHaQFx8Dc9SY2DXOE4C/t2aC9LazEO11tRfPzPtZAvsR+Zbk0CEvMlotx2zaQC
- b8Wub6ygSzU8UtV3OwLZiqxxaQRCn5uL2k1zOlsbpSuDkwXw7iAyDsEx15Dqf2T5bFC+
- dVlWvAEG3vncyGCShnS/+Tm1U1e7qmpRmZnXa5d1te7J1YjIzfzOAxmm4ZS9QN3XxCJ2
- sBBrbQkOfAcjPG1DATCpiraR18IPcuiQtRowxn4w8z+eff7p0XvmJ1GLkLw7WsKPBcP0
- jM9w==
+ d=1e100.net; s=20260707; t=1791475142; x=1792079942;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=LJKWCwj2Cjhss1wxdbYOVWFcTLGM9gKeaGl9Inqx3GQ=;
+ b=UAiPz8g2raPUFHocVW/TFdhinZfkAOZ436tx20YlQfmi2D7Vt0rMOoilXKvBw76OOu
+ uVufJ6VxHQ9Vh4Qq6ZAUr1aF1vU8/KGs9NNsQ8GQoZ9SdAMCkeIcTQY1vV4NvghZL6ts
+ L6e/3PaFr8bxs8FJlHJ1uB+dsJzMPyks1pcoQIxVa6Ia5Nzgwh2NU2tg12ek1oVh3lQg
+ M/vFeTUv5nlmeTK8OYLsYtail98a1Gk1N6wd/6sfQ5NdRK3mGfbf3uxRSRl82PGS6ATJ
+ ZuzrBpZ7dfmZjWTUrUEJKLSpJ/qukgdo+XEM6p013F/ejlVyLuKWQPBNLp7gtehdHaNQ
+ P7AA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByLPh1+xBfBnajtBnvY1ngQTDeKEiWAPGChNImiMZjbQPApOty8nw6TWGq1dRN6O8RVXa3XBmYoxA==@nongnu.org
-X-Gm-Message-State: AFq9FYL/riw3+Cl93b7lQ6lBj2hkvCyNKyeUOWeIJRRBxDKmA2hdjZWW
- e2i+fI7J7jo8hfA9aAq0yemEKI6Tbcfr3snGe4xaVu528Vx10o2pvyDUmDneOcCm+UGhkHn2EGB
- ZRwvM4Xvpj8SpnpTClRGM1+kknope0JA=
-X-Gm-Gg: AYBFou35fHkmxS0vy49Nx1GrYDuKspToIhY9ZDOwXv1emkMrPQ3aKpx6M8oRBk6161D
- +NrXCDSkXqqYN++ESDLQxBUjq6XLtXbhNyqWUheDN/o79YvcuXAuffsxshqmPYLN+teA66sWnu+
- p14G1rDXvl4fRJGvsyZ6Eiom6IaIjWXtvgpzu70IqJtfw142QaakpV4MRkY6nD/ux3Y7y0ouWH9
- PTTHDTqRhPN6IKHVI7CkfF3nv0MKnLV7VwRYcmTu0nLgdxe62zUqmc3IRtY3CcTyRDQ1pTlMT47
- 2I3Jhp37UGX7piHCB6003Gmw0fAOspKPMOhhkEh0+rMnRCZt3WQXLuQ=
-X-Received: by 2002:a05:6402:21d6:b0:6ac:bbd3:5b42 with SMTP id
- 4fb4d7f45d1cf-6aff377cac9mr4180458a12.11.1791453416755; Thu, 08 Oct 2026
- 02:56:56 -0700 (PDT)
+ AKwUvBzROfqQo4YWknAt0lHGU/yfbveUOc07ftzjTU+8xr2ijP//bn4mvJfbHwr70xicUmk2231ISq29lQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJXNfFhq+p6mI4T6TNbn8tzAxgsrsyjZipuYxgMER8zokzVEbAG
+ VtKqiSc6fcFwy9Qo//7Gvw9nHKakFVfWocq6b1vmgIx5b7wsmyUznx/h0wg4gYHQrjySfNMnFvE
+ 4HFi9C9kWdva0estGUf87Lndv/mdYuTXU+aL5e7Y0lAjlqPldgFsRwvs=
+X-Gm-Gg: AYBFou0PbHzyVm2cQ59wl0QsG7Q5RaljPkNroJ26x9tCpDTgUN6i1tnGf/o+hqRxZ8h
+ u+Jri0culDZzbpAyfL/ES0IB6rWkkzOl364rjJ3EKeEahwaLQmPE8HUjTjduMoV5dctjUqSfD0q
+ dJfwGS1xgxRmUhgeXtyvyU0EBgQfX/0VBfe6+kOzLY1ckq2GZG0SDu78TE+IAn57i85k2DhKULe
+ VelU2ZHvYdQZBgVH0/8mZNrGm9rElQ21gMgxLUcrGvlRH9K9ce+GBszRK0oit0cXRe9SP7tSs6y
+ QkpwcaFiQ1HtxGU9iycODJis/P+Pu91Mxz2bltPs+UnT6VLhCe56bYFFdQvqf61hewESre/NwXV
+ xFhgF0CyxKOMAq6pAIwLbkU+kS7imM2rmv8K6bHEQJImm45zdcDv+13mrYt2YWAz1a5m1sA==
+X-Received: by 2002:a05:7301:3d0e:b0:351:5112:ec4b with SMTP id
+ 5a478bee46e88-3515da5dc10mr6655953eec.2.1791475141955; 
+ Thu, 08 Oct 2026 08:59:01 -0700 (PDT)
+X-Received: by 2002:a05:7301:3d0e:b0:351:5112:ec4b with SMTP id
+ 5a478bee46e88-3515da5dc10mr6655905eec.2.1791475141191; 
+ Thu, 08 Oct 2026 08:59:01 -0700 (PDT)
+Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
+ [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-3515af90521sm29050543eec.19.2026.10.08.08.58.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Oct 2026 08:59:00 -0700 (PDT)
+Message-ID: <34ad2c3e-fa4b-47dc-a81e-38c7f561d2e9@oss.qualcomm.com>
+Date: Thu, 8 Oct 2026 08:58:58 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
+To: luoyonggang@gmail.com
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Stafford Horne <shorne@gmail.com>, qemu-arm@nongnu.org,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Darren Kenny <darren.kenny@oracle.com>
 References: <20261007115253.328-1-luoyonggang@gmail.com>
  <20261007115253.328-9-luoyonggang@gmail.com>
  <7fc0d377-a994-41f4-aa98-7ed56db11447@oss.qualcomm.com>
  <CAE2XoE8K+3e8h6H9NrPk1WWMmJfG807bN_Kh5qje-5pKWUUg5w@mail.gmail.com>
  <b2d89a92-0197-4873-b4ea-75bb21c0d0ae@oss.qualcomm.com>
- <asdkF80SJzF2W3sD@redhat.com>
-In-Reply-To: <asdkF80SJzF2W3sD@redhat.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 8 Oct 2026 17:56:42 +0800
-X-Gm-Features: AclHuK98ELtHsN7moD9Gh9l_YO5uyMakIWJzdpFSeXsEC2WYMYEMNGXjyRe2Y-Y
-Message-ID: <CAE2XoE-Vc+CaE-3FerW3eXtTgspwxZJ6ZT0CZyg3ZYpoJ8xYXw@mail.gmail.com>
-Subject: Re: [PATCH 8/8] qom: pass TargetInfo to is_available for later use
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
- qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
- Darren Kenny <darren.kenny@oracle.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <CAE2XoE-qDvOUG2+1yTTvBUyBLxoxCPPy464KQVLgSFx+tuQ2XQ@mail.gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <CAE2XoE-qDvOUG2+1yTTvBUyBLxoxCPPy464KQVLgSFx+tuQ2XQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA4MDA2MyBTYWx0ZWRfXyYaHePTZ/KCj
+ C/FQSPzJ6L+TXegizMXx73KpeHEX8b0Q9aWNg+4svmoX0FiKcjqwKuUJkiYILZeqOzmtZ0+PknC
+ I0zv5TL7fzImab7uhc+LVB4KMTEv+ac=
+X-Proofpoint-ORIG-GUID: KcA5GS-2drma5shU1A1dk7k2P8iMyor8
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA4MDA2MyBTYWx0ZWRfX7CSQZula4p1Y
+ L8DxYtpdN6cuv3GoXgAWS3MRj4kZcsH+ocvnHeW4yO91jeoEeBicXEG9a0awi4rvWD5KZeIK5v8
+ SNf93czT3QvzUcjyfV8UBtW/JSilgmzLqAhbvGnUnEs/YR9rdf6VIxwMQCuKcbCuZoZBTf16ZqM
+ aCky5bxloD5rziIxuSpNrsmdq/UB4BB6waQVorHL6KOp0ukUVEm22cO9UErzuIMREQdwFQmyqCh
+ aanjQzG7GQsUBiord7FiaUrvkG4Ac9oJ6ZPR5G8WYQvAjLXUyKhWKkYNH9KS14aPHSmtC1p3ZQW
+ whqGlXFuiNHC0saIYzhfv6pzZLHSGQnTzf0mZzAUKNtxiePgOdc1vcg3LOYTTx+gu6aZ6IJOtxE
+ VKfRdLp055WSO2Vd30zkQpw52v3pRXkBCjc5a06SSq9uyqTA9D9KI08Cao3uzxzCbwmb9NNlh/X
+ CRWA01NvtJDfKEpcH+A==
+X-Authority-Analysis: v=2.4 cv=IIuXmQvG c=1 sm=1 tr=0 ts=6ac7bdc7 cx=c_pps
+ a=wEP8DlPgTf/vqF+yE6f9lg==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=p0WdMEafAAAA:8 a=xOZJixWyuWTxZ7Atf4oA:9 a=QEXdDO2ut3YA:10
+ a=bBxd6f-gb0O0v-kibOvt:22
+X-Proofpoint-GUID: KcA5GS-2drma5shU1A1dk7k2P8iMyor8
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-08_05,2026-10-08_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 lowpriorityscore=0 impostorscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 malwarescore=0 suspectscore=0 clxscore=1015 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610020000 definitions=main-2610080063
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,250 +173,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 8, 2026 at 5:36=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange@re=
-dhat.com> wrote:
->
-> On Wed, Oct 07, 2026 at 05:00:06PM -0700, Pierrick Bouvier wrote:
-> > On 10/7/2026 2:42 PM, Yonggang Luo wrote:
-> > > On Thu, Oct 8, 2026 at 4:44=E2=80=AFAM Pierrick Bouvier
-> > > <pierrick.bouvier@oss.qualcomm.com> wrote:
-> > >>
-> > >> On 10/7/2026 4:48 AM, Yonggang Luo wrote:
-> > >>> Change TypeInfo.is_available to the new TypeIsAvailable type, which
-> > >>> takes a const TargetInfo *. Registration passes target_info(), so
-> > >>> behavior is unchanged. object.h only forward-declares TargetInfo.
-> > >>>
-> > >>> Switch the existing users (raspi, raspi4b, ast27x0 evb and fc) and =
-the
-> > >>> generated machine parents to the matching target_is_<arch> helpers.
-> > >>>
-> > >>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > >>> ---
-> > >>>  hw/arm/aspeed_ast27x0-fc.c  |  2 +-
-> > >>>  hw/arm/aspeed_ast27x0_evb.c |  4 ++--
-> > >>>  hw/arm/raspi.c              |  4 ++--
-> > >>>  hw/arm/raspi4b.c            |  2 +-
-> > >>>  hw/arm/virt.c               |  4 ++--
-> > >>>  hw/m68k/virt.c              |  4 ++--
-> > >>>  hw/or1k/virt.c              |  2 +-
-> > >>>  include/qom/object.h        | 12 +++++++++++-
-> > >>>  qom/object.c                |  3 ++-
-> > >>>  9 files changed, 24 insertions(+), 13 deletions(-)
->
-> snip
->
-> > >>> @@ -167,7 +168,7 @@ static TypeImpl *type_register_internal(const T=
-ypeInfo *info)
-> > >>>          abort();
-> > >>>      }
-> > >>>
-> > >>> -    if (info->is_available && !info->is_available()) {
-> > >>> +    if (info->is_available && !info->is_available(target_info())) =
-{
-> > >>>          return NULL;
-> > >>>      }
-> > >>>
-> > >>
-> > >> ```
-> > >> info->is_available(target_info())
-> > >> ```
-> > >>
-> > >> or
-> > >>
-> > >> ```
-> > >> is_available() {
-> > >>   TargetInfo ti * =3D target_info();
-> > >>   ...
-> > >> }
-> > >> ```
-> > >>
-> > >> Are doing the exact same thing today.
-> > >>
-> > >> So what is the future goal requiring to introduce this?
-> > >
-> > > From Daniel P. Berrang=C3=A9's
-> > > requesthttps://lore.kernel.org/qemu-devel/apAszS1ewxM0Y1XU@redhat.com=
-/
-> > >         I forgot to mention that this is also pretty important for ma=
-king
-> > >         introspection work, as we need to be able to say
-> > >
-> > >           'qemu-system --machine none -qmp ...'
-> > >
-> > >         and connect to QMP to introspect the binary. Having to add a
-> > >         '--target <name>' into that mix is undesirable, as it creates
-> > >         a chicken & egg problem. You don't know what targets are buil=
-t
-> > >         into qemu-system without introspecting it and you can't
-> > >         introspect it without selecting a target to introspect.
-> > >
-> > > From Pierrick's review
-> > > https://lore.kernel.org/qemu-devel/557262df-b8e7-49b5-a245-ae46b8885b=
-30@oss.qualcomm.com/So,
-> > > for existing binary: -M virt works as before.
-> > >
-> > >         For new multi binary:
-> > >         $ qemu-system -M virt:
-> > >         Multiple machines were found, select one among:
-> > >         - aarch64-virt
-> > >         - riscv64-virt
-> > >
-> > >         Does it matches what you would expect?
-> > >
-> > > From Daniel's review
-> > > https://lore.kernel.org/qemu-devel/aro93NuZBXYGbD33@redhat.com/
-> > >         We already have  'QemuTargetInfo' struct which is used
-> > >         with 'query-target', that should also be used with the
-> > >         new 'query-targets' command.
-> > >
-> > >         We need to add the 'endianness' field to QemuTargetInfo.
-> > >
-> > >         I don't think that we need to report machines though.
-> > >         We already have 'query-machines' which gives much broader
-> > >         information on the machines. "MachineInfo" needs to
-> > >         gain
-> > >
-> > >         "targets": ["SysEmuTarget"]
-> > >
-> > >         to list which target(s) a machine can be used with.
-> > >
-> > >
-> > > To achieve these, we needs add TypeInfo parameter to it so that we ca=
-n do
-> > >
-> > > static void report_unsupported_machine_type(const char *name, Error *=
-*errp)
-> > > {
-> > >     g_autoptr(GSList) machines =3D machine_class_get_list(true);
-> > >     g_autoptr(GString) targets =3D g_string_new(NULL);
-> > >     TargetInfoNode *node;
-> > >     GSList *el;
-> > >
-> > >     error_setg(errp, "unsupported machine type: \"%s\" for target \"%=
-s\"",
-> > >                name, target_name());
-> > >     QLIST_FOREACH(node, target_info_list(), next) {
-> > >         for (el =3D machines; el; el =3D el->next) {
-> > >             MachineClass *mc =3D el->data;
-> > >
-> > >             if ((!strcmp(mc->name, name) || !g_strcmp0(mc->alias, nam=
-e)) &&
-> > >                 object_class_get_is_available(OBJECT_CLASS(mc))(node-=
->info)) {
-> > >                 g_string_append_printf(targets, "  %s\n",
-> > >                                        node->info->target_name);
-> > >                 break;
-> > >             }
-> > >         }
-> > >     }
-> > >     if (targets->len) {
-> > >         error_append_hint(errp, "Available for targets:\n%s", targets=
-->str);
-> > >     }
-> > > }
-> > >
-> > > That is we can iterate on all target-list, and check if it's can be f=
-itlered.
-> > >
-> >
-> > Ok, I finally see where this is going.
-> >
-> > So, based on all the previous conversations, we agreed to have a
-> > qemu-system binary with all the QOM types available (for all targets).
->
-> ack.
->
-> > I personally think that if we go this way, we should not have any
-> > -target option, and even less a -target none option.
->
-> If we don't have a compelling need for -target to exist now, then
-> dropping it as a concept is good.
->
-> > The current is_available() approach was made with filtering per target
-> > in mind, which predates where things are now. So, it's a good time to
-> > reevaluate how to do it.
-> >
-> > This leaves us with (at least) two options:
-> > - keep the callback and add TargetInfo parameter (what is done here)
-> > - remove is_available, and adopt a more declarative approach
-> >
-> > How about we (re)-explore the second one?
-> >
-> > It's what we did in the past
-> > (https://gitlab.com/qemu-project/qemu/-/commit/5de9216064d32eaac125dac4=
-de1878486c16d73e),
-> > and that I removed recently, in favor of is_available.
-> > My rationale was that it was incomplete, since we needed to filter type=
-s
-> > per config also, and not only target.
-> > Now that direction is to not filter anything, filter per config is
-> > unneeded, and switching back to declarative instead of callback makes
-> > total sense. Using interfaces like we did has its own issues, and I
-> > would not like to see this coming back.
-> >
-> > I'll do one very concrete proposal:
-> >
-> > ```
-> > How about letting machines (and machines only first), have a new field
-> > 'targets', being a uint32_t mask with an array of EMU_TARGET?
-> > machine->targets =3D EMU_TARGET_X | EMU_TARGET_Y;
+On 10/7/2026 7:08 PM, Yonggang Luo wrote:
+>> So, based on all the previous conversations, we agreed to have a
+>> qemu-system binary with all the QOM types available (for all targets).
+>>
+>> I personally think that if we go this way, we should not have any
+>> -target option, and even less a -target none option.
+>>
+>> The current is_available() approach was made with filtering per target
+>> in mind, which predates where things are now. So, it's a good time to
+>> reevaluate how to do it.
+>>
+>> This leaves us with (at least) two options:
+>> - keep the callback and add TargetInfo parameter (what is done here)
+>> - remove is_available, and adopt a more declarative approach
+>>
+>> How about we (re)-explore the second one?
+> 
+> Indeed, I am doing
+> 
+> - preserve is_available(TargetInfo*), and adopt a more declarative approach
+> 
+> /* Generated by scripts/gen-target-info.py. Do not edit. */
+> 
 
-To be explicit state what, I give you a pseudo code to compute
-machine->targets from TypeInfo::is_available(TargetInfo*)
-let targets=3D0
-foreach ti of TargetInfo list:
-   if (machine::TypeImpl::is_avaible(ti))
-         targets |=3D 1 << ti->target_arch
-   fi
-endif
-So they basically have equivalent effect, and is_available will handle
-other code-needed condition properly such as
-CPU/AccelClass. not restrict to targets, we can also attach the
-KConfig into TargetInfo, so is_available(TargetInfo*)
-also works for Kconfig. that's why I insist this way, it's solved all
-the issues around.
+...
 
-so  machine->targets =3D EMU_TARGET_X | EMU_TARGET_Y; is a good idea,
-and it can be implemented with TypeInfo::is_available(TargetInfo*)
-without much burden. and targets can be saved into a (machine or
-TypeImpl) for fast access when needed, we can compute it
-when the program starts.
+>     {
+>         .name = TYPE_TARGET_BASE_ARM_MACHINE,
+>         .parent = TYPE_MACHINE,
+>         .abstract = true,
+>         .is_available = target_is_base_arm,
+>     },
 
+>     {
+>         .name = TYPE_TARGET_AARCH64_MACHINE,
+>         .parent = TYPE_TARGET_BASE_ARM_MACHINE,
+>         .abstract = true,
+>         .is_available = target_is_aarch64,
+>     },
+>     {
+>         .name = TYPE_TARGET_ARM_MACHINE,
+>         .parent = TYPE_TARGET_BASE_ARM_MACHINE,
+>         .abstract = true,
+>         .is_available = target_is_arm,
+>     },
 
-> > ```
-> >
-> > @Daniel, IIUC, this is exactly the approach you proposed a few weeks
-> > ago, just before I got frustrated and lost my patience against you. I
-> > think it's more clear for me where you wanted to go. Sorry it took such
-> > a large detour.
->
-> Not a problem. We were coming at the debate with different ideas of
-> where we were heading, so talking past each other at times.
->
-> >
-> > Yonggang, does that sounds good for you?
-> > Daniel, does that sounds good for you also?
->
-> Works for me.
->
-> With regards,
-> Daniel
-> --
-> |: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-> |: https://libvirt.org          ~~          https://entangle-photo.org :|
-> |: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+...
+
+> Other than these base machines, other machines are children of these
+> base machines.
+> 
+> See these changes
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/c71da20c2483cdf577fd2a5548a80ca1e5099676
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e19d8d9e5a146
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e19d8d9e5a146
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/252b8763fd74ec57f5762bf9c57e19d8d9e5a146
+> For ARM:
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/c42d5eb333fd3a7cab899c8df95375dfc79aba40
+> 
+> These base machine type is auto-generated in this MR.
+> You can see at the branch
+> https://gitlab.com/lygstate-qemu/qemu/-/commits/single-binary-arm-riscv?ref_type=heads
+> 
+> And the inherit is done by commits
+> qom: inherit is_available and filter after MODULE_INIT_QOM:
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/cb66474a36e03b4353c2f525ce7821f2af779ea1
+> qom: register late types through module_call_init_fn:
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/ba6a3d3fb6e4bfe35d88d3845abf7b0ec8fbc337
+> module: add before/after hooks and module_call_init_fn:
+> https://gitlab.com/lygstate-qemu/qemu/-/commit/86c635f45e283b6d0f714a1a3a9d9521b17d5152
+> 
+> And the gitlab-ci is already passed
+> 
 >
 
+The hierarchy based approach (we considered that also at the time) has a
+big caveat: a QOM type can only have one parent. There is no multi
+inheritance in our model.
 
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+You can easily merge arm and aarch64 under a base_arm parent. However,
+you can't express:
+- this machine is available for target X and Y (x-remote, nitro, null)
+
+That's why we chose interfaces based tagging 1.5 years ago, because they
+allow multi inheritance in some ways.
+
+>>
+>> It's what we did in the past
+>> (https://gitlab.com/qemu-project/qemu/-/commit/5de9216064d32eaac125dac4de1878486c16d73e),
+> 
+> Somewhat alike except I do not introduce many interface types. Just
+> base machine types.
+> 
+>> and that I removed recently, in favor of is_available.
+>> My rationale was that it was incomplete, since we needed to filter types
+>> per config also, and not only target.
+>> Now that direction is to not filter anything, filter per config is
+>> unneeded, and switching back to declarative instead of callback makes
+>> total sense. Using interfaces like we did has its own issues, and I
+>> would not like to see this coming back.
+>>
+>> I'll do one very concrete proposal:
+>>
+>> ```
+>> How about letting machines (and machines only first), have a new field
+>> 'targets', being a uint32_t mask with an array of EMU_TARGET?
+>> machine->targets = EMU_TARGET_X | EMU_TARGET_Y;
+>>
+
+For now, it's the best I can think of. I tried having an array of
+EMU_TARGET but declaring it was a verbose mess.
+The arch mask, that you or Daniel sugggested at some point IIRC, is the
+best compromise here: it's compact and readable.
+
+> 
+> From my experience at
+> https://gitlab.com/lygstate-qemu/qemu/-/tree/combined-binary-multi-targets?ref_type=heads
+> this is not enough, we still needs is_avaible, because for those
+> machines that binding to
+> KVM/WHPX and other accels, we need to use target_kconfig to handle
+> them. That's why I choose to use a unified
+> is_avaible(TargetInfo*).
+>
+
+Given our base assumption to expose all types, why should we care about
+kvm/whpx? If we don't have a proper message when user select a wrong
+machine/cpu type, we can simply add one.
+
+> This new field only works if is_availbe still be a member of TypeInfo.
+> machine->targets are not generic. Indeed CPU and ACCEL(kvm/whpx/hyp)
+> types also need filtering.
+>
+
+Yes, so CPU can have the same target field. Since we won't filter
+devices, I don't see a need to have this in object.c. Also, it can
+completely replace the existing is_available mechanic.
+
+Also, in multi-target.c test, we can add a new test to ensure all
+machines and all cpus that belongs to this binary have targets set.
+This allows to leave the rest of architectures as they are for now, and
+force to add this when we'll integrate them.
+
+Regards,
+Pierrick
 

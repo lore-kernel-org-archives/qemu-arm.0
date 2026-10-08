@@ -4,68 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 215D6CA6007
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 05:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15279CA600A
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Oct 2026 07:48:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEh3q-0002iO-M3; Thu, 08 Oct 2026 01:52:59 -0400
+	id 1xEira-0002U5-Ta; Thu, 08 Oct 2026 03:48:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1xEh3b-0002hn-U3; Thu, 08 Oct 2026 01:52:44 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xEirM-0002Sm-N7
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2026 03:48:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1xEh3W-0007R5-Qe; Thu, 08 Oct 2026 01:52:43 -0400
-Received: from [133.11.54.183] (h183.csg.ci.i.u-tokyo.ac.jp [133.11.54.183])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 6985qGai096018
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 8 Oct 2026 14:52:16 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=mRcbI5KxehEiaB+U0zC/BBNJ/DaSg8JqIn5ZUB3Yo7M=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1791438736; v=1;
- b=OTGWG5flLvvCT5A9mZUi1SRAyBechFEYRh1pCdclsj23h4NeMyUAO7Y8a3vsTXB1
- ouKvCRbBRr4rTnrEKMo855YiGRk0DwMnmik+P6bk6gNq7RVSmQ+Mo2l+0CCvCzbA
- YfgCp1Vgz5YTNsLzzq4+4Fs1MlHQhE1KoDkv9D4wi+t4o+OgVJ+Rqav6kZayMJbp
- dWY+yBWwcLegjxu2o3UVUEZ4yZELaV31x9sTVRS0TYvuhrwJWqsArv+7ggwjsyLp
- +zQCGm18D+7gyeN7F2YXAYiuPDqCGFnaXPK8AQTtp70Hbn8SZ9FFOpXU6/fj6BQS
- F9/SR7rMWgtOuSGPhPofdQ==
-Message-ID: <be98c53b-d01f-4beb-8915-cc73f22e839a@rsg.ci.i.u-tokyo.ac.jp>
-Date: Thu, 8 Oct 2026 14:52:15 +0900
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xEirK-0008PH-Cc
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2026 03:48:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1791445688;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VhqT6V8g++wjj1+3kNOgPTPfwiIr9x2IrkCVTplXw/o=;
+ b=XPBVnkMRE2pOS3VMYOQYqvaqhX3qHRkuF3XOxG8gZft3sxvncUlR+wYP6ViAc0Ezq6wji7
+ 7qv7hI5udZsKK/8IiWvglcgmkRa/Fige5lmaLbIlsKZWBqakQjhODCRsZ+mU4ccP6HMCsU
+ 3lWN0rvc5FQf4LqhDT6yyO+OpAgEKNo=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-122-AvNScy0RNayBMXpXPv58Tw-1; Thu, 8 Oct 2026 07:48:07 +0000
+X-MC-Unique: AvNScy0RNayBMXpXPv58Tw-1
+X-Mimecast-MFC-AGG-ID: AvNScy0RNayBMXpXPv58Tw_1791445686
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-486f9d150c3so2785668f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 08 Oct 2026 00:48:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791445686; x=1792050486;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=VhqT6V8g++wjj1+3kNOgPTPfwiIr9x2IrkCVTplXw/o=;
+ b=FfY78EIiww6S59Kq0qNUYdbgE7SM/0ixoJviIDj/H2gTiYGbbZZR25rRKPl/u43p3j
+ 9Lhbpd7mtH7DUEHHzs6k59U2o741G9JfcMYJg/1OCk3Dzn/WztJ8rLzkTr4u7QOGrXhF
+ 0HEU2fXR5iK5LAZALY4U7BSGkGdCKwQSh72bnQZXB/JyeSsk+e0/ctqkaR2ZmoGpEAVe
+ aH3BvAVfQyEWwaYNVXWR8uO9AHk+JPIVBxksenDAi0s0dObIc+vQiIhGfAOa/LUtVbYE
+ 98S4fss2pnDL5zzhcIFFadL2FmsE47Bab5stB0SKH5BN7K1p5p0pY6tz/6moZaxAETTY
+ I6Ew==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBw2TRBCrscZwVw+0JuvOoulGKka0oOkki0O49XRa5leGWUDMZrRFzqZEKWw8o68+j2SDWAK22OBhQ==@nongnu.org
+X-Gm-Message-State: AFuF++lfy/cCNLP/7LVwQGZYELgMCxe+A8VeuHGA1OfT5SRT/wpiMp/u
+ rDAMkHHwb1PpnvV4RVDlRZgHryjM3Lr9gIa7OC06JODKvtqZmqVY4Nouy1Z/bs2jOv+BBSH9Gs8
+ V9JMA2yCq76PY9QwsSWiN3BOTmAgERg1avGpy8i7gfFXenZdzPKFSBA==
+X-Gm-Gg: AYBFou3E38Yvp0WbiX9zUEbtUXrHeKcTO1qqJnDWs/m0LYsXu2F/ZSOYRM05kmuQIOc
+ 6rH3sJqka7IoHGbZnHa4hQV7RNKUEdsESsiD2ufJqLU7XVaHm1rexLKIkA9Rv7H1X/WTbtH8rSZ
+ ldyyEqAmgQcdFQ+JKNGrAUulso7/4WrCekz2SQdrVWk3yHbd1lyGdGodSOkySBIPSvdOlcK3SIJ
+ NWGa150RpDenUg/SSX1aU6L3rLXxNicXXsczef4WWTENlhH/NNA0xwTnLoIJrBhcKjh410Q95WK
+ aPU6LI8biufx07HFIpxM77Ri1WL8VYN7rV//5ik8LHoj0oTIdTFEgq6//NmgFWQGwFemC52DLSq
+ ZjMecK02FXJpw5vhARB+TE/fMS6XUa1t34/eD1V3705gQebDS
+X-Received: by 2002:a05:600c:83c4:b0:4a1:698d:3044 with SMTP id
+ 5b1f17b1804b1-4a180313c64mr78094515e9.11.1791445686252; 
+ Thu, 08 Oct 2026 00:48:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:83c4:b0:4a1:698d:3044 with SMTP id
+ 5b1f17b1804b1-4a180313c64mr78094025e9.11.1791445685869; 
+ Thu, 08 Oct 2026 00:48:05 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a18360c5ebsm43425585e9.3.2026.10.08.00.48.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Oct 2026 00:48:05 -0700 (PDT)
+Message-ID: <dc5aecf7-db4f-4b16-92fd-432d663ff900@redhat.com>
+Date: Thu, 8 Oct 2026 09:48:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm/hvf: Retry RAM write faults only for dirty
- logging
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Peter Xu <peterx@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- "Scott J . Goldman" <scottjgo@gmail.com>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Mark Burton <mburton@qti.qualcomm.com>, qemu-stable@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-References: <20261007093001.74476-1-philmd@oss.qualcomm.com>
- <f0c07762-c115-41a0-b713-a47bdaa1f218@rsg.ci.i.u-tokyo.ac.jp>
- <478c0311-b31e-4d38-af65-79508fca3021@oss.qualcomm.com>
- <6f694401-3cc9-4c76-aa2d-3625773823c7@oss.qualcomm.com>
+Subject: Re: [PATCH v9 17/26] target/arm/kvm: Add consistency checking for
+ SYSREG props
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260916144721.751810-1-eric.auger@redhat.com>
+ <20260916144721.751810-18-eric.auger@redhat.com>
+ <CECAE32E-9A75-4D8D-827D-9F25D026F364@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CECAE32E-9A75-4D8D-827D-9F25D026F364@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: h4VYxiznURvH6atfhW9kZDsAM9ljXBx80l_dNGLb_oM_1791445686
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <6f694401-3cc9-4c76-aa2d-3625773823c7@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,468 +134,188 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/10/08 7:05, Philippe Mathieu-Daudé wrote:
-> On 7/10/26 21:50, Philippe Mathieu-DaudÃ© wrote:
->> On 2026-10-07 16:50, Akihiko Odaki wrote:
->>> On 2026/10/07 18:30, Philippe Mathieu-Daudé wrote:
->>>> From: Mark Burton <mburton@qti.qualcomm.com>
->>>>
->>>> Dirty-page logging handles a RAM write fault by marking the page dirty,
->>>> restoring write permission, and retrying the guest instruction.
->>>>
->>>> The handler also retried when the resolved RAM region had no dirty-log
->>>> client.  This path neither restores permission nor advances the PC, so
->>>> the instruction can repeatedly exit to QEMU.
->>>>
->>>> Retry only after marking the page dirty and restoring write permission.
->>>> Otherwise, use the existing emulation path to complete the access and
->>>> advance the guest PC.
->>>
->>> I can identify three cases of RAM write faults. The existing code
->>> handles all three, but this patch breaks the third:
->>>
->>> 1. The RAM is read-only. assert(!mr->readonly) trips in this case.
->>>
->>> 2. Dirty logging is enabled. The vCPU marks the page dirty, restores
->>>     write permission, and retries the write.
->>>
->>> 3. Dirty logging is enabled when the fault occurs, but another thread
->>>     disables it before the vCPU acquires the BQL. The vCPU then observes
->>>     a zero dirty-log mask. The write still needs to be retried because
->>>     write permission has already been restored. The existing code does
->>>     this correctly, but this patch falls through to emulation instead.
->>>
->>> This patch is useful only if there is another case that the existing
->>> code does not handle correctly. Please describe that case and preserve
->>> the retry behavior in case 3.
->> Thanks for the deep review.
->>
->> The reporter said:
->>
->>    We reproduced is a level-2 translation fault, DFSC 0x06, on a
->>    dynamic DMI RAM leaf that has no corresponding HVF mapping.
->>    address_space_translate() resolves the leaf as RAM, but the dirty-log
->>    mask is zero, no page is marked or unprotected, and the unconditional
->>    retry makes no progress.
->>
->> That would be another case:
->>
->>    4. FlatView says RAM, but HVF has no mapping (nothing has changed
->>       to make retry succeed).
->>
->> So to prevent retrying a known translation miss that cannot make any
->> progress checking DFSC could be sufficient:
->>
->> -- >8 --
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index b00a7e1a84..4faa21caa1 100644
->>       case EC_DATAABORT: {
->>           bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
->>           bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
->>           bool s1ptw = FIELD_EX32(syndrome, DABORT_ISS, S1PTW);
->>           bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
->>           uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
->>           uint32_t len = 1 << sas;
->>           uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
->>           uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
->> +        uint32_t fsc = FIELD_EX32(syndrome, DABORT_ISS, DFSC);
->> +        bool l2_translation_fault = fsc == 0b000110;
->>           uint64_t val = 0;
->>           uint64_t ipa = excp->physical_address;
->>           AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
->>
->>           trace_hvf_data_abort(excp->virtual_address, ipa, isv,
->>                                iswrite, s1ptw, len, srt);
->>
->>           if (cm) {
->>               /* We don't cache MMIO regions */
->>               advance_pc = true;
->>               break;
->>           }
->>
->>           /* Handle dirty page logging for ram. */
->>           if (iswrite) {
->>               hwaddr xlat;
->>               MemoryRegion *mr = address_space_translate(as, ipa, &xlat,
->>                                                          NULL, true,
->>
->> MEMTXATTRS_UNSPECIFIED);
->> -            if (memory_region_is_ram(mr)) {
->> +            if (memory_region_is_ram(mr) && !s1ptw && ! 
->> l2_translation_fault) {
->>                   uintptr_t page_size = qemu_real_host_page_size();
->>                   intptr_t page_mask = -(intptr_t)page_size;
->>                   uint64_t ipa_page = ipa & page_mask;
->>
->>                   /* TODO: Inject exception to the guest. */
->>                   assert(!mr->readonly);
->>
->>                   if (memory_region_get_dirty_log_mask(mr)) {
->>                       memory_region_set_dirty(mr, xlat, page_size);
->>                       hvf_unprotect_dirty_range(ipa_page, page_size);
->>                   }
->>
->>                   /* Retry with page writes enabled. */
->>                   break;
->>               }
->>           }
->>
->>           /*
->>            * TODO: If s1ptw, this is an error in the guest os page 
->> tables.
->>            * Inject the exception into the guest.
->>            */
->>           assert(!s1ptw);
->> ---
->> (the !s1ptw guard is independent of the zero-mask race,
->>   this is to ensure we cannot accidentally take the dirty-log retry
->>   path when the page-table memory is RAM).
->>
->> But be wary because I'm way out of area of understanding here...
+Hi Khushit,
 
-Checking DFSC specifically for a translation fault feels arbitrary. The 
-broader lesson from case 3 is that the faulting condition can be 
-resolved concurrently before acquiring the BQL. That same race window 
-applies to case 4. Instead of matching on DFSC, we should re-check 
-whether the faulting condition persists after acquiring the BQL.
-
-Filtering out s1ptw also seems extraneous. If the page-table memory 
-requires dirty logging, we should handle dirty-page tracking for it 
-rather than skipping it with an additional guard.
-
+On 9/30/26 9:34 AM, Khushit Shah wrote:
+>
+>> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
 >>
->> Anyway I asked the reporter for more info and possible reproducer;
->> and might add comments to the code to better follow the 1/2/3/4 paths.
->> But after some sleep :)
-> Still here... Asked AI for reproducer:
-> 
-> -- >8 --
-> AI-used-for: tests
-> diff --git a/tests/tcg/aarch64/system/hvf-unmapped-ram.c b/tests/tcg/ 
-> aarch64/system/hvf-unmapped-ram.c
-> new file mode 100644
-> index 00000000000..45721134710
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/system/hvf-unmapped-ram.c
-> @@ -0,0 +1,110 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +
-> +/*
-> + * Reproducer for an HVF data abort on a RAM FlatView leaf without an HVF
-> + * mapping.  Run manually on Apple Silicon (whose host page size is 16 
-> KiB):
-> + *
-> + *   qemu-system-aarch64 -accel hvf -cpu host -nodefaults -M 
-> virt,highmem-ecam=off -m 128M \
-> + *     -display none -serial stdio -kernel aarch64-softmmu-hvf- 
-> unmapped-ram.test \
-> + *     -device pci-testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on
-> + *
-> + * The 4 KiB pci-testdev BAR2 is RAM, but its size and programmed 
-> address are not
-> + * host-page aligned.  HVF therefore leaves it unmapped.  A write to 
-> the BAR
-> + * takes a level-2 translation fault (DFSC 0x06); the handler must 
-> emulate the
-> + * access and advance PC instead of retrying it forever.
-> + */
-> +
-> +#include <stdint.h>
-> +
-> +#define ECAM_BASE           UINT64_C(0x3f000000)
-> +#define TESTDEV_CONFIG      (ECAM_BASE + UINT64_C(0x8000))
-> +#define PCI_COMMAND         UINT64_C(0x04)
-> +#define PCI_COMMAND_MEMORY  UINT16_C(0x0002)
-> +#define PCI_BAR2_LO         UINT64_C(0x18)
-> +#define PCI_BAR2_HI         UINT64_C(0x1c)
-> +
-> +#define RAM_BAR             UINT64_C(0x10001000)
-> +#define BAR_ADDRESS_MASK    UINT32_C(0xfffffff0)
-> +#define SENTINEL            UINT32_C(0x1badb002)
-> +
-> +#define PL011_DR            UINT64_C(0x09000000)
-> +#define PL011_FR            (PL011_DR + UINT64_C(0x18))
-> +#define PL011_FR_TXFF       UINT32_C(0x20)
-> +
-> +#define PSCI_SYSTEM_OFF     UINT64_C(0x84000008)
-> +
-> +static inline uint16_t mmio_read16(uint64_t addr)
-> +{
-> +    return *(volatile uint16_t *)(uintptr_t)addr;
-> +}
-> +
-> +static inline uint32_t mmio_read32(uint64_t addr)
-> +{
-> +    return *(volatile uint32_t *)(uintptr_t)addr;
-> +}
-> +
-> +static inline void mmio_write16(uint64_t addr, uint16_t value)
-> +{
-> +    *(volatile uint16_t *)(uintptr_t)addr = value;
-> +}
-> +
-> +static inline void mmio_write32(uint64_t addr, uint32_t value)
-> +{
-> +    *(volatile uint32_t *)(uintptr_t)addr = value;
-> +}
-> +
-> +static inline void dsb_sy(void)
-> +{
-> +    asm volatile("dsb sy" : : : "memory");
-> +}
-> +
-> +static void uart_puts(const char *str)
-> +{
-> +    while (*str) {
-> +        while (mmio_read32(PL011_FR) & PL011_FR_TXFF) {
-> +        }
-> +        mmio_write32(PL011_DR, *str++);
-> +    }
-> +}
-> +
-> +static __attribute__((noreturn)) void system_off(void)
-> +{
-> +    register uint64_t x0 asm("x0") = PSCI_SYSTEM_OFF;
-> +
-> +    asm volatile("hvc #0" : "+r"(x0) : : "memory");
-> +    for (;;) {
-> +        asm volatile("wfi");
-> +    }
-> +}
-> +
-> +static __attribute__((noreturn)) void finish(int passed)
-> +{
-> +    uart_puts(passed ? "PASS\n" : "FAIL\n");
-> +    system_off();
-> +}
-> +
-> +int main(void)
-> +{
-> +    uint32_t bar;
-> +
-> +    /* Verify the fixed BDF exists before programming its 64-bit BAR2. */
-> +    if (mmio_read16(TESTDEV_CONFIG) == UINT16_MAX) {
-> +        finish(0);
-> +    }
-> +
-> +    mmio_write32(TESTDEV_CONFIG + PCI_BAR2_HI, 0);
-> +    mmio_write32(TESTDEV_CONFIG + PCI_BAR2_LO, RAM_BAR);
-> +    mmio_write16(TESTDEV_CONFIG + PCI_COMMAND,
-> +                 mmio_read16(TESTDEV_CONFIG + PCI_COMMAND) |
-> +                 PCI_COMMAND_MEMORY);
-> +    dsb_sy();
-> +
-> +    bar = mmio_read32(TESTDEV_CONFIG + PCI_BAR2_LO);
-> +    if ((bar & BAR_ADDRESS_MASK) != RAM_BAR) {
-> +        finish(0);
-> +    }
-> +
-> +    mmio_write32(RAM_BAR, SENTINEL);
-> +    dsb_sy();
-> +    finish(mmio_read32(RAM_BAR) == SENTINEL);
-> +}
-> diff --git a/tests/tcg/aarch64/system/hvf-boot.S b/tests/tcg/aarch64/ 
-> system/hvf-boot.S
-> new file mode 100644
-> index 00000000000..bf9be89ee6d
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/system/hvf-boot.S
-> @@ -0,0 +1,30 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +
-> +/*
-> + * Minimal bootstrap for hvf-unmapped-ram.c.
-> + *
-> + * Unlike boot.S, this must not issue a semihosting call before 
-> entering C:
-> + * HVF does not handle the semihosting HLT exception.  Direct -kernel 
-> boot on
-> + * the non-virtualized virt machine starts this ELF at EL1 with the MMU 
-> off.
-> + */
-> +
-> +    .text
-> +    .align  4
-> +    .global __start
-> +    .type   __start, %function
-> +__start:
-> +    /* Use SP_EL1 and provide the C code a private stack. */
-> +    msr     spsel, #1
-> +    ldr     x0, =stack_end
-> +    mov     sp, x0
-> +    bl      main
-> +
-> +1:  wfi
-> +    b       1b
-> +    .size   __start, . - __start
-> +
-> +    .bss
-> +    .align  12
-> +stack:
-> +    .space  4096
-> +stack_end:
-> diff --git a/tests/tcg/aarch64/system/hvf-unmapped-ram.out b/tests/tcg/ 
-> aarch64/system/hvf-unmapped-ram.out
-> new file mode 100644
-> index 00000000000..7ef22e9a431
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/system/hvf-unmapped-ram.out
-> @@ -0,0 +1 @@
-> +PASS
-> diff --git a/tests/tcg/aarch64/system/meson.build b/tests/tcg/aarch64/ 
-> system/meson.build
-> index f51feb253f9..0ee6ffeb527 100644
-> --- a/tests/tcg/aarch64/system/meson.build
-> +++ b/tests/tcg/aarch64/system/meson.build
-> @@ -14,6 +14,14 @@ qemu_base_args = ['-display', 'none',
->                     '-kernel']
->   qemu_def_args = ['-M', 'virt', '-cpu', 'max', qemu_base_args]
-> 
-> +# This payload must not use boot.S: that bootstrap invokes semihosting 
-> before
-> +# main(), while the manual HVF run needs to start without any 
-> semihosting exits.
-> +hvf_unmapped_ram_cflags = ['-nostdlib',
-> +                           '-ffreestanding',
-> +                           '-Wa,--noexecstack',
-> +                           files('hvf-boot.S')[0],
-> +                           '-Wl,-T', link_script]
-> +
->   # Multi arch tests - add cflags only once per src
->   multi_src = []
->   foreach t: tcg_tests['multiarch-softmmu']['tests']
-> @@ -42,6 +50,14 @@ tests += {
->   tests += {
->     'asid2.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
->     'feat-xs.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
-> +  'hvf-unmapped-ram.c': {
-> +    'cflags': hvf_unmapped_ram_cflags,
-> +    'qemu_args': ['-nodefaults', '-M', 'virt,highmem-ecam=off', '-cpu', 
-> 'max', '-m', '128M',
-> +                  '-serial', 'stdio',
-> +                  '-device', 'pci- 
-> testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on',
-> +                  qemu_base_args],
-> +    'expected_output': 'hvf-unmapped-ram.out',
-> +  },
->     'gpc-test.c': {
->       'cflags': [cflags, '-DLOGGING_VECTOR_TABLE',
->                  '-Wno-main', '-Wno-unused-but-set-variable'],
-> ---
-> 
-> ./qemu-system-aarch64 -accel hvf -cpu host -nodefaults \
->    -M virt,highmem-ecam=off -m 128M -display none -serial stdio \
->    -kernel ~/hvf-unmapped-mem-repro \
->    -device pci-testdev,bus=pcie.0,addr=0x1,membar=4K,membar-backed=on \
->    -trace hvf\*
-> hvf_vm_map paddr:0x0000000000000000 size:0x04000000 vaddr:0x118000000 
-> flags:0x05/R-X
-> hvf_vm_map paddr:0x0000000004000000 size:0x04000000 vaddr:0x129904000 
-> flags:0x05/R-X
-> hvf_vm_map paddr:0x0000000040000000 size:0x08000000 vaddr:0x121900000 
-> flags:0x07/RWX
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_data_abort data abort: [va=0x000000003f008000 pa=0x000000003f008000 
-> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
-> hvf_data_abort data abort: [va=0x000000003f00801c pa=0x000000003f00801c 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
-> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
-> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
-> isv=1 iswrite=1 s1ptw=0 len=2 srt=1]
-> hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
-> isv=1 iswrite=0 s1ptw=0 len=4 srt=0]
-> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x0000000010001000 pa=0x0000000010001000 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x0Quit: 3
-> (looping)
-> 
-> However I had to do this change in hvf_set_phys_mem():
-> 
-> -- >8 --
-> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-> index 8bd9154a50b..7b34a5f586d 100644
-> --- a/accel/hvf/hvf-all.c
-> +++ b/accel/hvf/hvf-all.c
-> @@ -113,8 +113,14 @@ static void hvf_set_phys_mem(MemoryRegionSection 
-> *section, bool add)
-> 
->       if (!QEMU_IS_ALIGNED(size, page_size) ||
->           !QEMU_IS_ALIGNED(gpa, page_size)) {
-> -        /* Not page aligned, so we can not map as RAM */
-> -        add = false;
-> +        return;
->       }
-> 
->       if (!add) {
-> ---
-> 
-> because otherwise I was getting:
-> 
-> hvf_vm_map paddr:0x0000000000000000 size:0x04000000 vaddr:0x114b80000 
-> flags:0x05/R-X
-> hvf_vm_map paddr:0x0000000004000000 size:0x04000000 vaddr:0x118b84000 
-> flags:0x05/R-X
-> hvf_vm_map paddr:0x0000000040000000 size:0x08000000 vaddr:0x10cb7c000 
-> flags:0x07/RWX
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_kick_vcpu_thread cpu:0 stop:0
-> hvf_data_abort data abort: [va=0x000000003f008000 pa=0x000000003f008000 
-> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
-> hvf_data_abort data abort: [va=0x000000003f00801c pa=0x000000003f00801c 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x000000003f008018 pa=0x000000003f008018 
-> isv=1 iswrite=1 s1ptw=0 len=4 srt=1]
-> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
-> isv=1 iswrite=0 s1ptw=0 len=2 srt=0]
-> hvf_data_abort data abort: [va=0x000000003f008004 pa=0x000000003f008004 
-> isv=1 iswrite=1 s1ptw=0 len=2 srt=1]
-> hvf_vm_unmap paddr:0x0000000010001000 size:0x00001000
-> qemu-system-aarch64: Error: ret = HV_BAD_ARGUMENT (0xfae94003, at ../../ 
-> accel/hvf/hvf-all.c:123)
-> Abort trap: 6
-> 
-> (I'll look at that hvf_set_phys_mem change after some rest).
+>> !-------------------------------------------------------------------|
+>>  CAUTION: External Email
+>>
+>> |-------------------------------------------------------------------!
+>>
+>> Since legacy composite options (such as SVE, virtualization, ...)
+>> and new SYSREG props coexist, add some basic consistency checks.
+>>
+>> Those checks are performed both in kvm_arch_init_vcpu() before
+>> applying the SYSREG props at the end of the initialization chain.
+>>
+>> Some ID reg fields corresponding to legacy composite option scope
+>> are not writable. In that case we just check that the field has
+>> not become writable.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Hi Eric,
+>
+> Gave this another look. I suggest moving this to kvm_arm_expose_idreg_properties().
+> What I suggest specifically is:
+> - Have a list of ID register fields which conflicts with legacy props.
+this depends on the definition of "conflict". For instance does 
 
-The change to hvf_set_phys_mem() fixes error handling for misaligned
-memory mappings and is worth submitting as a separate patch.
+PMUVer conflicts with has_pmu?
 
-This also implies case 4 isn't fully understood yet. Ideally, whenever 
-FlatView resolves a region as RAM, HVF should have a mapping for it. A 
-host-page-misaligned region is one scenario where HVF cannot create a 
-mapping, but that previously triggered an assert (HV_BAD_ARGUMENT), 
-ruling it out as the reporter's original root cause.
+Nevertheless your suggested approach could work for props below which in case they show up would trigger
+        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
+                   propname);
 
-Please investigate why case 4 occurs and whether HVF can map the RAM
-directly. If emulation is required, we should check for the specific
-condition that requires it rather than treating a translation fault
-alone as sufficient.
+Thanks
 
-Please investigate why case 4 occurs in practice and consider adding a 
-missing mapping rather than relying on emulation. If emulation is 
-genuinely required, we should check for that specific condition rather 
-than assuming it for a translation fault.
+Eric
 
-Regards,
-Akihiko Odaki
+> - in kvm_arm_expose_idreg_properties() (the new field based approach) never expose fields
+>   which are part of the above list.
+>
+> This way the same consistency logic you have will carry over to named models by just adding different
+> setters for the above field.
+>
+> What are your thoughts on this?
+>
+> Thanks,
+> Khushit
+>> — 
+>> target/arm/kvm.c | 105 +++++++++++++++++++++++++++++++++++++++++++++++
+>> 1 file changed, 105 insertions(+)
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index ddf320d0e6..f52c03745e 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -340,6 +340,107 @@ static ARM64SysRegField *get_field(int i, ARM64SysReg *reg)
+>>     return NULL;
+>> }
+>>
+>> +
+>> +/**
+>> + * kvm_arm_vcpu_validate_sysreg:
+>> + *
+>> + * Validate a SYSREG field value is consistent with legacy composite options
+>> + * Some checks are not implemented because the corresponding sysreg field
+>> + * is not currently writable. In that case we make sure the field has not
+>> + * become writable, which would mean the user had the capability to set the
+>> + * corresponding property.
+>> + *
+>> + * return true if consistent. false if it is not, along with an error handle
+>> + */
+>> +static bool kvm_arm_vcpu_validate_sysreg(ARMCPU *cpu, ARM64SysRegField *field,
+>> +                                         uint64_t value, Error **errp)
+>> +{
+>> +    const char *fieldname = field->name;
+>> +    ARM64SysReg *sysregdesc = &arm64_id_regs[field->index];
+>> +    const char *regname = sysregdesc->name;
+>> +    g_autofree char *propname = g_strdup_printf("SYSREG_%s_%s", regname, fieldname);
+>> +
+>> +    /* virtualization */
+>> +    if (!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL2")) {
+>> +        /* consistency with machine virtualization property */
+>> +        if (cpu->has_el2 && value == 0) {
+>> +            error_setg(errp,
+>> +                "Inconsistent -machine virtualization=on and "
+>> +                "%s=0", propname);
+>> +            return false;
+>> +        } else if (!cpu->has_el2 && value > 0) {
+>> +            error_setg(errp,
+>> +                "Inconsistent -machine virtualization=off and "
+>> +                "%s > 0", propname);
+>> +            return false;
+>> +        }
+>> +    /* secure */
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL3") && value > 0) {
+>> +        /* consistency with machine secure property */
+>> +        error_setg(errp, "%s is set but qemu is not ready to support it",
+>> +                   propname);
+>> +        return false;
+>> +    /* MTE */
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64PFR1_EL1_MTE")) {
+>> +        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
+>> +                   propname);
+>> +        return false;
+>> +    /* SVE */
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_SVE")) {
+>> +        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
+>> +                   propname);
+>> +        return false;
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64ZFR0_EL1_SVEver")) {
+>> +        if (cpu_isar_feature(aa64_sve, cpu) && value == 0) {
+>> +            error_setg(errp, "sve is set but %s is set to 0", propname);
+>> +            return false;
+>> +        } else if (!cpu_isar_feature(aa64_sve, cpu) && value > 0) {
+>> +            error_setg(errp, "sve is not set but %s is greater than 0",
+>> +                       propname);
+>> +            return false;
+>> +        }
+>> +    /* PAUTH */
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_APA")) {
+>> +        /* PAUTH QARMA5 address authentification */
+>> +        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
+>> +                   propname);
+>> +        return false;
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_API")) {
+>> +        /* PAUTH Impl Defined address authentification */
+>> +        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
+>> +                   propname);
+>> +        return false;
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_GPA")) {
+>> +        /* QARMA5 generic code authentification */
+>> +        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
+>> +                   propname);
+>> +        return false;
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_GPI")) {
+>> +        /* QARMA5 generic code authentification */
+>> +        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
+>> +                   propname);
+>> +        return false;
+>> +    /* PMU */
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64DFR0_EL1_PMUVer")) {
+>> +        if (cpu->has_pmu && value == 0) {
+>> +            error_setg(errp, "%s is 0 whereas pmu is set", propname);
+>> +            return false;
+>> +        } else if (!cpu->has_pmu && value) {
+>> +            error_setg(errp, "%s is non null whereas pmu is unset", propname);
+>> +            return false;
+>> +        }
+>> +    /* aarch64 false */
+>> +    } else if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>> +        if ((!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL0") ||
+>> +             !strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL1") ||
+>> +             !strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL2")) && value < 2)
+>> +            error_setg(errp, "%s is < 2 while aarch64 is set to off",
+>> +                       propname);
+>> +            return false;
+>> +    }
+>> +    return true;
+>> +}
+>> +
+>> #define MAKE_IDREG_KEY(reg_idx, field_shift) \
+>>     (((uint64_t)(reg_idx) << 8) | ((uint64_t)(field_shift) & 0xFF))
+>>
+>> @@ -2241,6 +2342,10 @@ static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
+>>         uint64_t oldfv;
+>>         int ret;
+>>
+>> +        if (!kvm_arm_vcpu_validate_sysreg(cpu, field, value, errp)) {
+>> +            return -1;
+>> +        }
+>> +
+>>         mask = MAKE_64BIT_MASK(lower, length);
+>>         value = value << lower;
+>>
+>> -- 
+>> 2.53.0
+>>
+
 

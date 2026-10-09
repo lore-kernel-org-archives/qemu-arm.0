@@ -4,104 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE99FCA6012
-	for <qemu-arm@archiver.kernel.org>; Fri,  9 Oct 2026 08:14:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 421FACA5FED
+	for <qemu-arm@archiver.kernel.org>; Fri,  9 Oct 2026 09:09:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xF5k8-0007iz-A9; Fri, 09 Oct 2026 04:14:16 -0400
+	id 1xF6aN-0005Pt-5u; Fri, 09 Oct 2026 05:08:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
- id 1xF5jh-0007gb-ND
- for qemu-arm@nongnu.org; Fri, 09 Oct 2026 04:13:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1xF6aE-0005OR-V9; Fri, 09 Oct 2026 05:08:07 -0400
+Received: from mgamail.intel.com ([198.175.65.15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
- id 1xF5jf-00047Y-2o
- for qemu-arm@nongnu.org; Fri, 09 Oct 2026 04:13:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791533625;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=41gQb0etbYvNz0VPnWEcsAX1WcPaermMt2xzNHfKl4A=;
- b=EpeEZhyszI2jwODF28IdrgVScmZToSgCzX0tl/B9L7shiieFujnIkWdmL8WXDJTcDoe/EY
- CveC15H+0XhlRRUBVsn/Dbg8KFcVwP0oNJiB22zIyJRLfsLl1baw21TvFYtFqb9cHMEJAd
- o2IdVlnXfW2+mOQALJd0uxtrfNiEv3s=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-346-uabKIpE_P4Wjuj4vQbfRug-1; Fri, 9 Oct 2026 08:13:44 +0000
-X-MC-Unique: uabKIpE_P4Wjuj4vQbfRug-1
-X-Mimecast-MFC-AGG-ID: uabKIpE_P4Wjuj4vQbfRug_1791533623
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4a020cf06c3so35517655e9.3
- for <qemu-arm@nongnu.org>; Fri, 09 Oct 2026 01:13:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791533623; x=1792138423;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=41gQb0etbYvNz0VPnWEcsAX1WcPaermMt2xzNHfKl4A=;
- b=RIwev4RmYHGMdIqVSH55oLLw7n/p3htqVpkHXSCJ4KJYtYxAuLvcwKAhA4E29ac2EN
- YV+TI8ldcMGpHdn1WBMzSM/2ZO+iQPSTeHnOmtLvt4L6zxgMgxTQWu+u3FGumc7qbY9u
- 5sXc9H0pl68Ggg/e+OPnrFJVALQGvg+qKy/YBd3Hcg2WJnhbgkBKjvJyZZvCW0+1iBBT
- /qyl2sr/vVsA3N7KIkPOewCd59Om6EF8690O+xpI62JBvXeNRx2pIlPSc0y+Qu1lvQ8B
- apG48VaRlHYuo8cHnysjjU3/h0deg8VYtB/4DwFL69v2U1vN5AfPfXzw9fz8y0R6Obyb
- eZOg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxm+EuEqLbIagNcftWQVLsJxM+KTpIDW20F9Pz4zvYDAhwqsllOhbE1EaGSSgZ3y5m9gBvP2elY2Q==@nongnu.org
-X-Gm-Message-State: AFuF++loMlFRykX0RsjXbue+t4eZPEg/FQ3fzuGAtamG+/485+SYobd9
- tXBqtGIP1mgWZ/mfHPuUCzTqIZtBh4o8WXUCs19sbqCFGwZ0EyYaOGSFDPkozW2+GY4z9W+jDj3
- 4URlP7z/bfBRJ6SjGdchREN8XhANeTmUgH2AIw+9LMTuJGKPArQxAeA==
-X-Gm-Gg: AYBFou1ahTsqUHjp5cRU0F2/xtICbY8lvct9k3jFJpy8Iqr9MpZ9tBCrLfjZRu9iNXR
- +3v5C2q7U2gJwlv4NPSXhDzCYLSyT64yUXskAHUgWJ7V3Bk8V36Ax0vn8r2KccS0neDAgiFYCZY
- r0nL6H19fTSf4X/d8Jj+QQ6Nfso4Uuz5P2cJ90rhInhRevaTnt7jtuA4dRJfOEuqIN1WOErbASc
- 1UNnJ15cPkTDbJn9m7CleTCDZGZ7B7KfTXf81PRP1cp4eGxMLodJMsXnUweMD0eC9mMfBKU/+ta
- UT/LTGN4JYSgMdRhbFVbqCBra+vjIQQrEYttEaK91R7sg3rsNCp/thuv4w==
-X-Received: by 2002:a05:600c:810a:b0:4a0:2391:6533 with SMTP id
- 5b1f17b1804b1-4a18e4a954bmr15620485e9.21.1791533623287; 
- Fri, 09 Oct 2026 01:13:43 -0700 (PDT)
-X-Received: by 2002:a05:600c:810a:b0:4a0:2391:6533 with SMTP id
- 5b1f17b1804b1-4a18e4a954bmr15619905e9.21.1791533622596; 
- Fri, 09 Oct 2026 01:13:42 -0700 (PDT)
-Received: from x1 ([151.67.89.12]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18dd7a3e2sm35001475e9.0.2026.10.09.01.13.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Oct 2026 01:13:42 -0700 (PDT)
-Date: Fri, 9 Oct 2026 10:13:39 +0200
-From: Gustavo Romero <gromero@redhat.com>
-To: Fuad Tabba <fuad.tabba@linux.dev>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Will Deacon <will@kernel.org>, Itaru Kitayama <itaru.kitayama@linux.dev>
-Subject: Re: [PATCH v2 3/3] tests/tcg/aarch64: Add a test for the 52-bit TTBR
- base address layout
-Message-ID: <v3hmpi7kjifsrwxbznkqy2zrbi2i2hizrnia4bozu26f5my2xd@it654s63rz2t>
-References: <20261007080019.350315-1-fuad.tabba@linux.dev>
- <20261007080019.350315-4-fuad.tabba@linux.dev>
- <4ajscli4c4ef7agtizxzdiopjseck5qwa6s4n4mmwwjdrqlnby@xit5l76dxm2w>
- <CA+EHjTxsC8K1Bw6fAMs6APaqVDpup8192dCeJs+vfeh2fN+6Aw@mail.gmail.com>
- <3dqmrslvb3zrr3ndzmcmy2tv5vqovntordzdjqkp2vn2deklua@qkcedhe4owgv>
- <CA+EHjTwnpaFRFEzT8N34=t6JzKn+x=a6GUqa1U6vH2e+vW6C8g@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1xF6aD-0000ik-3A; Fri, 09 Oct 2026 05:08:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1791536885; x=1823072885;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=obnKKrY0MAp19AyT3+VnE8ESazmhFGpXNCF+LMPiYes=;
+ b=bq+Rh7BjfEGivkCMJNZBEmylnqWrWH87GS9b1DNeQiZoSV/pYh8Oo0Yv
+ tDNtS+vcOim3RYrzlhj8d7eghLJ3s1NPBxTb3G3S3QgIeLOybse7U3zGv
+ szBMXL3w7aKwA2quupOAcfP4p9mw7hKpEabpaKl7B564KO6thZaPW7BXF
+ ThZQjNRphNz4Sj+gNZxNb2+a6YEpSNzQzLt2H9AXbiMdAs5XaGyJTShMy
+ hExvDN4RVtAFvKHxgDLz6UYoHS3cy6zzV43EBD5PmQFRZAcClks7o86wu
+ 9awK6cDyx9gKQ04jTbpRmJX7+CCTET25Sb/uj2Uxdsv5SodtCz6o5I0Kt A==;
+X-CSE-ConnectionGUID: bjDC2v/kQdSmKJ5Y9MoKow==
+X-CSE-MsgGUID: Krmf5XAsT16xHMrlhky3+A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11929"; a="328519"
+X-IronPort-AV: E=Sophos;i="6.27,148,1787036400"; 
+   d="scan'208";a="328519"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2026 02:08:03 -0700
+X-CSE-ConnectionGUID: jNeNoTwsRd6rGPEH09l5bw==
+X-CSE-MsgGUID: p7Z8kOp9T/OkmhgRLZ0ilA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,148,1787036400"; 
+   d="scan'208";a="431398"
+Received: from unknown (HELO gnr-sp-2s-612.sh.intel.com) ([10.112.229.148])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2026 02:08:00 -0700
+From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+To: qemu-devel@nongnu.org
+Cc: alex@shazbot.org, clg@redhat.com, eric.auger@redhat.com, mst@redhat.com,
+ jasowangio@gmail.com, jgg@nvidia.com, nicolinc@nvidia.com,
+ skolothumtho@nvidia.com, joao.m.martins@oracle.com,
+ clement.mathieu--drif@bull.com, kevin.tian@intel.com, yi.l.liu@intel.com,
+ Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ Xudong Hao <xudong.hao@intel.com>, qemu-arm@nongnu.org
+Subject: [PATCH v8 3/6] backends/iommufd: Extend iommufd_backend_alloc_hwpt()
+ with fault_id
+Date: Fri,  9 Oct 2026 17:07:33 +0800
+Message-ID: <20261009090737.3930000-4-zhenzhong.duan@intel.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20261009090737.3930000-1-zhenzhong.duan@intel.com>
+References: <20261009090737.3930000-1-zhenzhong.duan@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <CA+EHjTwnpaFRFEzT8N34=t6JzKn+x=a6GUqa1U6vH2e+vW6C8g@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: gzJMp-_jPPIlb8GKZE5haZZsHmtyu55EQSE4-EWCjN0_1791533623
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gromero@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=198.175.65.15;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,48 +87,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Faud,
+We should set flags IOMMU_HWPT_FAULT_ID_VALID when pass in a fault
+object id in the caller.
 
-On Thu, Oct 08, 2026 at 07:01:41PM +0100, Fuad Tabba wrote:
-> Hi Gustavo,
-> 
-> On Thu, 08 Oct 2026 17:40:27 +0100, Gustavo Romero <gromero@redhat.com> wrote:
-> [...]
-> > RAM_BASE is precisely defined as 1 << 30 because the way we link the tests based
-> > on the memory layout defined in tests/tcg/aarch64/system/kernel.ld, right?
-> 
-> Yes. The tables are static, so they're linked a few MB above RAM_BASE,
-> inside the blocks both stages map at RAM_BASE (and stage 2 again at
-> HIGH_IPA | RAM_BASE).
-> 
-> > That's the bit that also confused me, like, how Stage 2 entries:
-> >
-> > s2_l2[RAM_BASE >> 29] = RAM_BASE | S2_BLOCK;
-> > s2_l2_high[RAM_BASE >> 29] = RAM_BASE | S2_BLOCK
-> >
-> > are taking us back to s1_l0. How s1_l0 ends up related to RAM_BASE :)
-> >
-> > Hence, I think it's worth mentioning that relationship also in this text. How
-> > about something like:
-> >
-> > "RAM_BASE is chosen to match the memory layout defined in kernel.ld. As a
-> > result, s1_l0 resides at an offset from RAM_BASE after linking."
-> >
-> > Wdyt?
-> 
-> Agree. The stage 1 and VTCR.DS stage 2 mappings depend on it too, so
-> I've put it on the RAM_BASE define for v3 rather than in that comment:
-> 
->         /*
->          * kernel.ld links the test at 1GB, so the tables below lie within the
->          * blocks mapped at RAM_BASE.
->          */
->         #define RAM_BASE    0x40000000UL
+Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Reviewed-by: Clement Mathieu--Drif <clement.mathieu--drif@bull.com>
+Reviewed-by: Yi Liu <yi.l.liu@intel.com>
+Tested-by: Xudong Hao <xudong.hao@intel.com>
+---
+ include/system/iommufd.h    | 4 ++--
+ backends/iommufd.c          | 7 ++++---
+ hw/arm/smmuv3-accel.c       | 6 +++---
+ hw/i386/intel_iommu_accel.c | 2 +-
+ hw/vfio/iommufd.c           | 2 +-
+ backends/trace-events       | 2 +-
+ 6 files changed, 12 insertions(+), 11 deletions(-)
 
-Excellent. Thank you.
-
-
-Cheers,
-Gustavo
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index 36b34b4899..79b8dabfb6 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -90,8 +90,8 @@ bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+                                 uint32_t pt_id, uint32_t flags,
+                                 uint32_t data_type, uint32_t data_len,
+-                                void *data_ptr, uint32_t *out_hwpt,
+-                                Error **errp);
++                                void *data_ptr, uint32_t fault_id,
++                                uint32_t *out_hwpt, Error **errp);
+ bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
+                                   uint32_t viommu_type, uint32_t hwpt_id,
+                                   void *data_ptr, uint32_t data_len,
+diff --git a/backends/iommufd.c b/backends/iommufd.c
+index 2775eef741..f46b3bfa7e 100644
+--- a/backends/iommufd.c
++++ b/backends/iommufd.c
+@@ -315,8 +315,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
+ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+                                 uint32_t pt_id, uint32_t flags,
+                                 uint32_t data_type, uint32_t data_len,
+-                                void *data_ptr, uint32_t *out_hwpt,
+-                                Error **errp)
++                                void *data_ptr, uint32_t fault_id,
++                                uint32_t *out_hwpt, Error **errp)
+ {
+     int ret, fd = be->fd;
+     struct iommu_hwpt_alloc alloc_hwpt = {
+@@ -327,11 +327,12 @@ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+         .data_type = data_type,
+         .data_len = data_len,
+         .data_uptr = (uintptr_t)data_ptr,
++        .fault_id = fault_id,
+     };
+ 
+     ret = ioctl(fd, IOMMU_HWPT_ALLOC, &alloc_hwpt);
+     trace_iommufd_backend_alloc_hwpt(fd, dev_id, pt_id, flags, data_type,
+-                                     data_len, (uintptr_t)data_ptr,
++                                     data_len, (uintptr_t)data_ptr, fault_id,
+                                      alloc_hwpt.out_hwpt_id, ret);
+     if (ret) {
+         error_setg_errno(errp, errno, "Failed to allocate hwpt");
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index 91aca1aa14..66e6a5011a 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -268,7 +268,7 @@ smmuv3_accel_dev_alloc_translate(SMMUv3AccelDevice *accel_dev, STE *ste,
+                                     accel->viommu->viommu_id, flags,
+                                     IOMMU_HWPT_DATA_ARM_SMMUV3,
+                                     sizeof(nested_data), &nested_data,
+-                                    &hwpt_id, errp)) {
++                                    0, &hwpt_id, errp)) {
+             return NULL;
+     }
+ 
+@@ -632,14 +632,14 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *hiodi,
+     if (!iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid, viommu_id,
+                                     0, IOMMU_HWPT_DATA_ARM_SMMUV3,
+                                     sizeof(abort_data), &abort_data,
+-                                    &accel->abort_hwpt_id, errp)) {
++                                    0, &accel->abort_hwpt_id, errp)) {
+         goto free_viommu;
+     }
+ 
+     if (!iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid, viommu_id,
+                                     0, IOMMU_HWPT_DATA_ARM_SMMUV3,
+                                     sizeof(bypass_data), &bypass_data,
+-                                    &accel->bypass_hwpt_id, errp)) {
++                                    0, &accel->bypass_hwpt_id, errp)) {
+         goto free_abort_hwpt;
+     }
+ 
+diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
+index c3677775e9..c8f2835204 100644
+--- a/hw/i386/intel_iommu_accel.c
++++ b/hw/i386/intel_iommu_accel.c
+@@ -100,7 +100,7 @@ static bool vtd_create_fs_hwpt(VTDHostIOMMUDevice *vtd_hiod,
+     return iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid,
+                                       hiodi->hwpt_id, flags,
+                                       IOMMU_HWPT_DATA_VTD_S1, sizeof(vtd), &vtd,
+-                                      fs_hwpt_id, errp);
++                                      0, fs_hwpt_id, errp);
+ }
+ 
+ static void vtd_destroy_old_fs_hwpt(VTDAccelPASIDCacheEntry *vtd_pce)
+diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+index 242644aa00..74a5d77dcc 100644
+--- a/hw/vfio/iommufd.c
++++ b/hw/vfio/iommufd.c
+@@ -476,7 +476,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
+     if (!iommufd_backend_alloc_hwpt(iommufd, vbasedev->devid,
+                                     container->ioas_id, flags,
+                                     IOMMU_HWPT_DATA_NONE, 0, NULL,
+-                                    &hwpt_id, errp)) {
++                                    0, &hwpt_id, errp)) {
+         return false;
+     }
+ 
+diff --git a/backends/trace-events b/backends/trace-events
+index b1c1d89dd8..2f242feb78 100644
+--- a/backends/trace-events
++++ b/backends/trace-events
+@@ -16,7 +16,7 @@ iommufd_backend_map_file_dma(int iommufd, uint32_t ioas, uint64_t iova, uint64_t
+ iommufd_backend_unmap_dma_non_exist(int iommufd, uint32_t ioas, uint64_t iova, uint64_t size, int ret) " Unmap nonexistent mapping: iommufd=%d ioas=%d iova=0x%"PRIx64" size=0x%"PRIx64" (%d)"
+ iommufd_backend_unmap_dma(int iommufd, uint32_t ioas, uint64_t iova, uint64_t size, int ret) " iommufd=%d ioas=%d iova=0x%"PRIx64" size=0x%"PRIx64" (%d)"
+ iommufd_backend_alloc_ioas(int iommufd, uint32_t ioas) " iommufd=%d ioas=%d"
+-iommufd_backend_alloc_hwpt(int iommufd, uint32_t dev_id, uint32_t pt_id, uint32_t flags, uint32_t hwpt_type, uint32_t len, uint64_t data_ptr, uint32_t out_hwpt_id, int ret) " iommufd=%d dev_id=%u pt_id=%u flags=0x%x hwpt_type=%u len=%u data_ptr=0x%"PRIx64" out_hwpt=%u (%d)"
++iommufd_backend_alloc_hwpt(int iommufd, uint32_t dev_id, uint32_t pt_id, uint32_t flags, uint32_t hwpt_type, uint32_t len, uint64_t data_ptr, uint32_t fault_id, uint32_t out_hwpt_id, int ret) " iommufd=%d dev_id=%u pt_id=%u flags=0x%x hwpt_type=%u len=%u data_ptr=0x%"PRIx64" fault_id=%u out_hwpt=%u (%d)"
+ iommufd_backend_alloc_faultq(int iommufd, uint32_t fault_id, uint32_t fault_fd, int ret) " iommufd=%d fault_id=%u fault_fd=%u (%d)"
+ iommufd_backend_free_id(int iommufd, uint32_t id, int ret) " iommufd=%d id=%d (%d)"
+ iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) " iommufd=%d hwpt=%u enable=%d (%d)"
+-- 
+2.52.0
 
 

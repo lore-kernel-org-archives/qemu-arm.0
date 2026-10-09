@@ -4,94 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 517B4CA601D
-	for <qemu-arm@archiver.kernel.org>; Fri,  9 Oct 2026 16:27:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 299E9CA601E
+	for <qemu-arm@archiver.kernel.org>; Fri,  9 Oct 2026 20:28:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFDQZ-0004rt-JW; Fri, 09 Oct 2026 12:26:35 -0400
+	id 1xFHBp-0000w2-V2; Fri, 09 Oct 2026 16:27:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
- id 1xFDQW-0004ov-Tb
- for qemu-arm@nongnu.org; Fri, 09 Oct 2026 12:26:33 -0400
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
- id 1xFDQU-0004qr-Ix
- for qemu-arm@nongnu.org; Fri, 09 Oct 2026 12:26:32 -0400
-Received: by mail-lf1-x130.google.com with SMTP id
- 2adb3069b0e04-5bcbb82dbadso4202392e87.2
- for <qemu-arm@nongnu.org>; Fri, 09 Oct 2026 09:26:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791563189; x=1792167989; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:sender:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=XgEXRkSo25Y8sk6rBrwjzcOhXbX2A8adbC7bH6qxi6E=;
- b=Rqe3P19XacQgNbrTsq/OCnnwgxTdBcP32jcy1Cas9j+ID3Qc6A7/tj5yMZQ6PE974z
- TkKO7wVeOjsTjCa0GBgLx+KpgV+6d39otmTWQ3jaiINfOIb9XyvPQHy7HlxnAke1vUOs
- IU1DGTIb68BrxURrc/aox9CIP8SItr29LKlEhvp8J69CL0Pk98EJtxIWWNyP6Xrp/CE0
- ayfKsIt1WS51Xrf7oXXcfXmf7TNFk8Bmij+d+yetS/iV/bcjbHzCyZMZpA7LzfjI9JAP
- censP7IgeQFhC3PK7X8bsAD0lST5YebLWY/+9Ym/DqWPfLs2ByC+oPt9B5dYFLx8d994
- Kxbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791563189; x=1792167989;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:sender:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=XgEXRkSo25Y8sk6rBrwjzcOhXbX2A8adbC7bH6qxi6E=;
- b=C0CD5BmRsDxGAqO/CNiVFoY6jT22QzzTlhO5rZN75UBChif2kcN/lI9ywOdE7W124r
- Xewt0rBUmMeVVLDT1tSA+idw5+gZhZt4sgut+vKowFO3a3W4MIDwPvoyes92IZC3hhM6
- Fu0IdKreA7hHA88CU2MJLQ6ROBu12Pf8T7Fns/GAWq7arrapoN9L4E2/yfKUNqg+F/6/
- wWI0pJKMSZP8mh0s7trMUiJ/1hP+rwBL9fBkaXHS1VFWKT6Qv8B6JKfk2Kk2+RctWgjm
- RvnxnEZDrgV1G4UB0D0B409gFTf1lx44rXqurxKV00OyTcCH+bHg4r8KKgQuDZcHlVOz
- IJ9w==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx2haOmZZGiFXzGhurE/uBxNMllYyLhUAr3sNYIXEkNRIsQ+tMkJGLFp8MUmmod7fumANMBwXV8yw==@nongnu.org
-X-Gm-Message-State: AFq9FYIYYwJX7Fl20skOaKQ277eYhsvn+Vcx1nhfYz5wGGGnz95MsR4z
- bdjKCyLWcg8Elb3TmxU8WWEA17S+QXPg3ct3hR3gyaPxjF7PsNCylT/3
-X-Gm-Gg: AYBFou3usagZeLJP+LJkvKulA/CojSKP3p7dQfi2hKjn7jT/oFELAGoUdNddUY0/ryP
- yUCMTYwnxtCQzC9VU3PiyjgBodPJs6ijo49nxLV+W24V4mqKcxeQnfIXQ2WonsLLjyNoKKQDB4z
- S34bYSt19WgyXPYUnWTpi4J1VcTKdhiAAdgzJCuuC3FgCekgGDn+4+UJ9fCbhoQZtH841av5EO9
- Q8B+dOYbFPX4lxFP1rg2Nvb4SE5SihuGjHsa+We9AqLiGZC+0JyfW3FIscpD+ZYluMhndvq25y2
- /i03Qm8dM0i1VMVPYLSE0o02giw6SZJzTssgPkPQ1Kw1nOYeWiG3OqwEqqcAP4+bGd2pvirwP9Y
- P3bXmG3qUaVao8sZGvyupnKTE46mxbC0fMk83YE4EuQYA2YrNRxSz+ic7TmAWnlCGb/6cY+AqmK
- IMbrmSVN288euc4vmVozOXk7LWWF5I9BVu80U1LgoknJkhPaxG4mpb/rD7raOgCk01liL6L72y8
- lI8d1IvYyK5Oq5OeGD8n3jG9WUFtZm/dUR7L7d+wRcfAcBfWzlojZHhO/k=
-X-Received: by 2002:a05:6512:108c:b0:5b6:1a7c:aa1a with SMTP id
- 2adb3069b0e04-5bcde8d9f25mr921166e87.50.1791563188529; 
- Fri, 09 Oct 2026 09:26:28 -0700 (PDT)
-Received: from [192.168.31.141] (213-65-111-204-no600.tbcn.telia.com.
- [213.65.111.204]) by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-5bce5bce999sm240217e87.79.2026.10.09.09.26.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Oct 2026 09:26:28 -0700 (PDT)
-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Date: Fri, 09 Oct 2026 18:26:10 +0200
-Subject: [PATCH 2/2] tests/qtest: Update Allwinner GPIO test
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1xFHBf-0000ux-To; Fri, 09 Oct 2026 16:27:28 -0400
+Received: from mail-eastus2azlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::3] helo=BN8PR05CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1xFHBe-0006XM-6P; Fri, 09 Oct 2026 16:27:27 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XtlEQKT+2CDLtGb44KvFotp63UxeUhvZ8T2Vc3AxoTZeRW17bB+Xcy3DQqI7sbWVq/gmHgPt8HK5T9vo4nW+92jE1gNep5Nxs+/qsoJYABiF37sllF9LNR7zeVKHLtYSdjI3PsRIBom/vSrgmV0jnremT5SNGrsGwIsOsfWdvhR/kdrUJtankdZ89P/ZfTdEorxrCnn67IyzbhWYjJ6xwBMk+odTAKRScCj/6gE0lueqcvMK8HBCQ/mkQsgdeT+3pCwz5J8kP/hzdGcvCAQjC80qiUEpXrrnAL58rxnMzjcVtIly5BuxqUzJ315bkkdRmOZoeyp/vTRGD0rL/90GwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=izEOPKZHwfs85ocYQ42SOKpL93PDZfeRHEroAJAPMbI=;
+ b=jJUUyJjL1zgFEon1KCR5xPuttyAmof5SP+u6YbV6A6ySgX9QWUV7/eiuMJxyfQRIAla7IrXJaKagzoFChjz9XSKRsT1KOdZjJaYfX/5SUgzQFI54QGpn6lEo6DaGlnlKEGdyzgSNMKMv8KQO+GxRr+ezpPneL4m9Ylk33/2QcTchYPUuQ5H0dBLjln69eDz/nE24SxjANPMW0IEdXVXXREqSmCPL01FyhUF2JYOKj/rEzIYTNuSLiPYGyr9g9/q7zFMZIG8harWWuwb7rgXat3tmfs4yMqCzQQU7CBru83fnh9CAF/NZwZbLl0KOtWlgjWGIj1etJWKwszLba5AZww==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=izEOPKZHwfs85ocYQ42SOKpL93PDZfeRHEroAJAPMbI=;
+ b=lHAxKHzGh3wq+yVGcYdLr38H8RM+2V7MDna3PzC/aRkcaC+llwo7h50dq0p4ygUbizMshva6TJmwVeEcn60TB76P5qhNCc7BpL2v7P9HrFNLa6OE7r6abu62oPdk7BOvoGuNiREZzKWREkqLARpD0/hR8liZqy5oA8XT+RuCJDDuRyFv0XcThdCjTsoZWIkqH9BZ2DikXpvvm74imMUckWddZ5xi6jXRPdgu7N8S4pElHbv2sbnSES8LTfzJMmAM/6PexDuR/P5Z2cHOb0+Xim8DfGgayyASrFyCJK+lUrUByLG0REC97fG/faylYKJtOTH+k3HbBF3FSzx6moGKSg==
+Received: from BN9PR03CA0846.namprd03.prod.outlook.com (2603:10b6:408:13d::11)
+ by PH7PR12MB7258.namprd12.prod.outlook.com (2603:10b6:510:206::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.16; Fri, 9 Oct
+ 2026 20:27:07 +0000
+Received: from BN2PEPF000044A6.namprd04.prod.outlook.com
+ (2603:10b6:408:13d:cafe::11) by BN9PR03CA0846.outlook.office365.com
+ (2603:10b6:408:13d::11) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.496.5 via Frontend Transport; Fri, 9
+ Oct 2026 20:27:07 +0000
+X-MS-Exchange-Authentication-Results: mx.microsoft.com 1; spf=pass (sender IP
+ is 216.228.117.161)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BN2PEPF000044A6.mail.protection.outlook.com (10.167.243.100) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.522.6 via Frontend Transport; Fri, 9 Oct 2026 20:27:06 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Fri, 9 Oct
+ 2026 13:26:41 -0700
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Fri, 9 Oct
+ 2026 13:26:41 -0700
+Received: from nvidia.com (10.127.8.14) by mail.nvidia.com (10.129.68.8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49 via Frontend
+ Transport; Fri, 9 Oct 2026 13:26:40 -0700
+Date: Fri, 9 Oct 2026 13:26:38 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Zhenzhong Duan <zhenzhong.duan@intel.com>
+CC: <qemu-devel@nongnu.org>, <alex@shazbot.org>, <clg@redhat.com>,
+ <eric.auger@redhat.com>, <mst@redhat.com>, <jasowangio@gmail.com>,
+ <jgg@nvidia.com>, <skolothumtho@nvidia.com>, <joao.m.martins@oracle.com>,
+ <clement.mathieu--drif@bull.com>, <kevin.tian@intel.com>,
+ <yi.l.liu@intel.com>, Xudong Hao <xudong.hao@intel.com>,
+ <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v8 3/6] backends/iommufd: Extend
+ iommufd_backend_alloc_hwpt() with fault_id
+Message-ID: <aslN/uXOIuJKP42Q@nvidia.com>
+References: <20261009090737.3930000-1-zhenzhong.duan@intel.com>
+ <20261009090737.3930000-4-zhenzhong.duan@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261009-allwinner-gpio-eint-v1-2-c55d2958ae0b@gmail.com>
-References: <20261009-allwinner-gpio-eint-v1-0-c55d2958ae0b@gmail.com>
-In-Reply-To: <20261009-allwinner-gpio-eint-v1-0-c55d2958ae0b@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-X-Mailer: b4 0.14.3
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=strahinja.p.jankovic@gmail.com; helo=mail-lf1-x130.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20261009090737.3930000-4-zhenzhong.duan@intel.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN2PEPF000044A6:EE_|PH7PR12MB7258:EE_
+X-MS-Office365-Filtering-Correlation-Id: 010d5867-892f-4467-07af-08df2643b031
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|23010399003|7416014|376014|82310400026|36860700016|1800799024|10067099003|56012099006|11063799006|4143699003|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: qpTjVKaO/CaR5itWPOfk4PJKyzfgencrqqlJoN8k8/RwBH7quj8wgbRr7K5ZreGFqvM2mRDKZQFk/4p6EvJG5eSpsUtW0eCWntao5AZK+Ur2VN8dFv9RPJXcbB2Fk0kpG/2gxMdSBK3jNSVlWeR0umtBSQVXhFXIE0LSLaw1u31fylUYYwbyxT8nfgXsnEJLWrDNsBYaP08VtxvYY8K0qgKDvWXqEt3HAla5Jof25lDFJ5gTpgj6+yB5vjf30zdgC6F3hi0UaxNVkyACS5AzqujMXZspKXoLT8hiT365QEp2qD02VXPG5j6AdmyLx2mAgWCN3pBJvnBJjDz9I1z91kEG1gv6EZgX8lThquH4OVSyKW6yANXlEb86Fd7nCL6gKN466wCh+/sGPOcD9oIarNN51LkVhBBOezNCmyw6ynNpoInWwrdywKzJWb/cwf6rjJsKmKj0UrzwuFjUeO7Bs+GGJj6wVOyBR6CuXVJWNOgPyhr5ZhJYaJN19lbIu1Q0Icf//L8LB0iEzMd4Ig6W+wstyJBOSUor9sfE85kb0PpdkkzfP874ZBv97yRLFb8NOJb3odqsajQZ9katpZ6be/DLqiTjuIcyqACwe9wxFKHpPVMdz1xK0TOBwU5w590KQXGWCp1+XbuGEa7ldXxKzvtSkT0OQU8hf+ijtUau1ZqJYcmKmnTa8ft/38weixR32WiPdMgwavm97s8tGFKV9g==
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(23010399003)(7416014)(376014)(82310400026)(36860700016)(1800799024)(10067099003)(56012099006)(11063799006)(4143699003)(22082099003)(18002099003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: D4guNNrS654g00CyQNvx9tR6Rt1kOYX4twgfQid66T5V4p8o9rKqJvMhtpXsIjANwrTqJwMycFG/jtXBVjklomsGesKuuoWO3qgecwZbn0HeOP6NqIjguLlBGcLTMYs6umjtOLpJP4U/bz8RcwpjPkJDKTFGoZfIQafkV1VW6RnECzW2I+5/kTxcfbNpvhzNntPSL0VLlhH2EsD4+TvppcMLtBp/eWi0yKPC9v0zCZ28eoh6RzxM81azJlUVnZHGB/AdxfTs/xByimhjpQVxsxfSdkUIvXpnPL+MUflm8OyX8M2zUkABDCVu07+5ZcFbnHydov4EBfA9DA30qEYKE+0goPo/L+LZkdXCK2eQfValbIBqT7UC02HDexduiKkhGL6T/DuEWJ20wzsvlUfOFYXTs9x8cXWE5uKTdcANYqz1/MVyBAB6GHr79uHU3X97
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Oct 2026 20:27:06.8708 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 010d5867-892f-4467-07af-08df2643b031
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000044A6.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB7258
+Received-SPF: permerror client-ip=2a01:111:f403:c110::3;
+ envelope-from=nicolinc@nvidia.com;
+ helo=BN8PR05CU002.outbound.protection.outlook.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,128 +137,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Fix tests to configure pin to EINT mode instead of input for interrupt
-testing.
-Also add test the configures pin to input mode and validates that
-manipulating input pin changed value in DAT register.
-
-Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
----
- tests/qtest/allwinner-gpio-test.c | 57 ++++++++++++++++++++++++++++-----------
- 1 file changed, 42 insertions(+), 15 deletions(-)
-
-diff --git a/tests/qtest/allwinner-gpio-test.c b/tests/qtest/allwinner-gpio-test.c
-index c048f0f88b..5c4a148d82 100644
---- a/tests/qtest/allwinner-gpio-test.c
-+++ b/tests/qtest/allwinner-gpio-test.c
-@@ -238,6 +238,32 @@ static void test_set_input_pins(const void *data)
-     qtest_quit(s);
- }
+On Fri, Oct 09, 2026 at 05:07:33PM +0800, Zhenzhong Duan wrote:
+> We should set flags IOMMU_HWPT_FAULT_ID_VALID when pass in a fault
+> object id in the caller.
+> 
+> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+> Reviewed-by: Clement Mathieu--Drif <clement.mathieu--drif@bull.com>
+> Reviewed-by: Yi Liu <yi.l.liu@intel.com>
+> Tested-by: Xudong Hao <xudong.hao@intel.com>
  
-+/*
-+ * Set pin to input, check that the value is written to DAT register
-+ */
-+static void test_get_input_pins(const void *data)
-+{
-+    PortPinTestParam *param = (PortPinTestParam *)data;
-+    g_autofree char *in_name = portname_in(param->port);
-+
-+    QTestState *s = qtest_init("-machine cubieboard");
-+
-+    /* Configure pin as input */
-+    update_cfg_reg(s, param->port, param->pin, AW_GPIO_CFG_IN);
-+    qtest_set_irq_in(s,
-+                     "/machine/soc/gpio", in_name, param->pin,
-+                     AW_GPIO_LEVEL_LOW);
-+    assert_data_reg(s, param->port, param->pin, AW_GPIO_LEVEL_LOW);
-+
-+    /* Change input value */
-+    qtest_set_irq_in(s,
-+                     "/machine/soc/gpio", in_name, param->pin,
-+                     AW_GPIO_LEVEL_HIGH);
-+    assert_data_reg(s, param->port, param->pin, AW_GPIO_LEVEL_HIGH);
-+
-+    qtest_quit(s);
-+}
-+
- /* Test rising edge interrupt */
- static void test_irq_pin_rising(const void *data)
- {
-@@ -251,9 +277,9 @@ static void test_irq_pin_rising(const void *data)
- 
-     qtest_irq_intercept_in(s, "/machine/soc");
- 
--    /* Configure as input and set pin low */
--    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
--    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
-+    /* Configure as EINT and set pin low */
-+    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-+    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-     qtest_set_irq_in(s,
-                      "/machine/soc/gpio", in_name, port_pin,
-                      AW_GPIO_LEVEL_LOW);
-@@ -296,9 +322,9 @@ static void test_irq_pin_falling(const void *data)
- 
-     qtest_irq_intercept_in(s, "/machine/soc");
- 
--    /* Configure as input and set pin high */
--    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
--    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
-+    /* Configure as EINT and set pin high */
-+    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-+    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-     qtest_set_irq_in(s,
-                      "/machine/soc/gpio", in_name, port_pin,
-                      AW_GPIO_LEVEL_HIGH);
-@@ -341,9 +367,9 @@ static void test_irq_pin_high_level(const void *data)
- 
-     qtest_irq_intercept_in(s, "/machine/soc");
- 
--    /* Configure as input and set pin low */
--    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
--    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
-+    /* Configure as EINT and set pin low */
-+    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-+    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-     qtest_set_irq_in(s,
-                      "/machine/soc/gpio", in_name, port_pin,
-                      AW_GPIO_LEVEL_LOW);
-@@ -394,9 +420,9 @@ static void test_irq_pin_low_level(const void *data)
- 
-     qtest_irq_intercept_in(s, "/machine/soc");
- 
--    /* Configure as input and set pin high */
--    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
--    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
-+    /* Configure as EINT and set pin high */
-+    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-+    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-     qtest_set_irq_in(s,
-                      "/machine/soc/gpio", in_name, port_pin,
-                      AW_GPIO_LEVEL_HIGH);
-@@ -447,9 +473,9 @@ static void test_irq_pin_both_edge(const void *data)
- 
-     qtest_irq_intercept_in(s, "/machine/soc");
- 
--    /* Configure as input and set pin low */
--    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
--    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
-+    /* Configure as EINT and set pin low */
-+    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-+    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
-     qtest_set_irq_in(s,
-                      "/machine/soc/gpio", in_name, port_pin,
-                      AW_GPIO_LEVEL_LOW);
-@@ -518,6 +544,7 @@ int main(int argc, char **argv)
-         const PortPinTestParam *p = &in_out_test_parameters[i];
-         add_test("set_output_pins", p, test_set_output_pins);
-         add_test("set_input_pins", p, test_set_input_pins);
-+        add_test("get_input_pins", p, test_get_input_pins);
-     }
-     qtest_add_func("/allwinner-cubieboard/gpio/reset_values",
-                         test_reset_values);
-
--- 
-2.56.0
-
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 

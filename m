@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E345CA9EBE
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 07:10:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55904CA9EBE
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 07:10:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFRDY-0001eQ-Rp; Sat, 10 Oct 2026 03:10:04 -0400
+	id 1xFRDc-0001mD-NG; Sat, 10 Oct 2026 03:10:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xFRDT-0001bh-F3
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:10:00 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1xFRDV-0001cL-6a
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:10:02 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xFRDR-0001BE-S6
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:09:59 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-48b9d8055dfso343581f8f.3
- for <qemu-arm@nongnu.org>; Sat, 10 Oct 2026 00:09:57 -0700 (PDT)
+ id 1xFRDT-0001Bj-MX
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:10:00 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-48b0946c2c2so206804f8f.3
+ for <qemu-arm@nongnu.org>; Sat, 10 Oct 2026 00:09:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791616196; x=1792220996; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791616198; x=1792220998; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=YvCmWBNKpCw559LBK1/4u4TqFg6AtOQbb6mofL8w7lc=;
- b=GaAAqXI9g7qxHr81qOEM4cY0gbLgnpljpyLZ/eHctrzPR6r9mWjp3WiGL9SHB9R05N
- NV/HsqAGHuBiuqovNjzs+gwnGwpTrI+/N0a809FrwENvZ7GgktL68HEfhZFkNaZxlOtF
- Fo4qURLq4/HRlZLkLMs3+LtE4IDp2Ow902ni3lMCTRbnaLJVuVqIPBEEu7Pqg0GBFCjP
- EGXw4CJC/J6ayvqeUAsVu/YVy7QEAB+I4lnGAtY8dw2wsloJI1uwN7npZ17MFBebbMLf
- aBK5cpgkPnOfFzOZ+0eiM5UAEg+CfLhd8P+rNoPPctEBm4JO4eYHWIF62fDXu3Xx3y6l
- 9Whg==
+ bh=NwIsN9jm4Pp0I9NysNqzSQvse4ptZc1j97sn0b4Mv3Q=;
+ b=XkC//Qo+UsFhdhIyyfa1LWbE3m7ehXePZ6LrgYSJWRmJoWtyFi2gJvLz+F1B2pd7Sd
+ LMVWyo84m7cMq6IPhzf3NBzLDKwE4CfS354GkFvC7W1nIVF6+agjyngCGEdoXo18Zjpd
+ Fxegwv/sxNbwmUgkt3h+7FdqefkO3YginIzR7uVYDpEKJ6DJuC8UobRH4vm3e63U5su0
+ mdUMMP9nZFEyrc3yF1qiSHgBUMv82WYP/pk0NZJOG97WGDMLt95zT80ax0hmPgajVCt6
+ 2QSVZrosbL94I6wZEjebhwaLxVOoQOh19fydqa6Hu/HcEntZ/eFRBd/ed/rwxE8AoRnz
+ kzrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791616196; x=1792220996;
+ d=1e100.net; s=20260707; t=1791616198; x=1792220998;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=YvCmWBNKpCw559LBK1/4u4TqFg6AtOQbb6mofL8w7lc=;
- b=M2c24qpBjMaCSEGV1gZ+SWMCb/vq41/tbufLhja8oyyW8guzrdrp+iXfqBnahZyeNx
- OhvrS/HYLoAJb0xojtdtYqPdZfGf88qasGqC1emvhVG4I7zROs9pEksOphbs/Mb4hmd3
- iGpIW86thfgHpDPBsLGhE2OclcGV+jELDKodmVmecgetJQ+h612FspD3DxTcnip6PDmV
- Vy+zuFGSNYh1tzJD0axmI4KukjpWctYuagRzlZImb1kOoz48fE5cFaeIgOH8WPgbV1Ui
- I0unPjGH9kGH8pu8q6H1fKhsg4WhwWlbUTG8h9ZWPb9jT0zxmUwVKWDgt9SVDLnXYaTx
- gOLA==
-X-Gm-Message-State: AFq9FYLk8DQG5Wn4Dbu+PpDaxhZgmBR591nOxP1Y67NWen+sCuYt0yfZ
- QKkPmaUnMhdWPvN7eYt4vIjFpg5KLiVD4sw313rQf51niIw2L/u82hH57JwiPk9SYFX8o5sr2AP
- pVcCopQ0=
-X-Gm-Gg: AYBFou06XGXI6e8iROhzPC2fA9igz7XeR3kznQlWSmpDkyQcXADvvYCXnO0MFsBkPhT
- GcUFHT1U+x+8H8J9uNiNc1pHzaIqvL8oz6SURMXlo8lWRC14JozPt53s2ISlXb7R+z7LzpuLVYj
- /cAJUF9hk55KqS2qfc/3hD3wIjKqCefgQP8L2qBIFv5UbhdZviOhYWkCaW/I1L0YFkkFPL2j4Bd
- 8crIo2PsG9d/yY7ATlryUiUiwVG/5OQeuaMejRif3aXyyBU9gpzdRU7ZQPMDp17IdCIlr/2MliT
- 1feFL7P4CZLmQ3dSuPUlagZCItES/y2+w0OSsJ/gidP5nMv1wkMUYM1zixWKbMcFJ5Me6crQaqg
- YyipBfTEo9fSv4MNNKNMln9wPUqRVy4J6zk98q/S4famrHDv5mKpV63KyAwT1agdU7L+AXeLu4J
- mmrX3hjDB9GsqeEQVvriJkLdKNeqBMCI+of7mtAwm7QuXPfL1F6J5VbI+py4ZlUpy7SjTz/J7GO
- qCdPhvIBPc=
-X-Received: by 2002:a05:6000:25c1:b0:48b:9d2:1a6a with SMTP id
- ffacd0b85a97d-48dba78a613mr7180094f8f.1.1791616196304; 
- Sat, 10 Oct 2026 00:09:56 -0700 (PDT)
+ bh=NwIsN9jm4Pp0I9NysNqzSQvse4ptZc1j97sn0b4Mv3Q=;
+ b=EmhRAs8XbdbaZcgoXuIgg4C+CoScZ6nYrKF3FIGwJQX1PGz77AWFcuye2r8JMvWVtd
+ 6i3BPVBl3XyRUd1rdbDe/mOYjX245F0ORYHkClYDFcyYeiGecgxTcYAF5CY4hz5u3/hK
+ J4DTV7iaChSkIqUhmlLH23Z5cwduo9TehAN7ZyE/LDWbWvjn/jQGaFvn1kVjRWXyjclP
+ 5NN79VPGPHdmunmIgoy6ZLBCUSe/I1bVmi6LFycU9RafQJoigVWnMpTlAZQvRofgHNTA
+ IcrMAL+gvqjwzx1Chvo1UYwC0pkMoCHoqbbarWjoTvRRKVqbathTyhqPA3H+gImgWHb8
+ ZoRg==
+X-Gm-Message-State: AFq9FYJl3l5yKQ61zyuvwJKsBPs9j7LUTKSc+bqc7U0BSK7vrIM9HTbe
+ 2aycWPWT5kIwFXh5tlx6ZVU1nwpgCoygplAKZSpwsiDmoXSTvC0dzvQVGaOfaZOQ6bQ=
+X-Gm-Gg: AYBFou28qCuxjFcMEPS7F8dhooWb8IRXbmOx4MiV1Cm+BALr5nV5AvmjsiFRFh5LbRF
+ I79vBohnhO9llt+eTmeenJJnJdSFJjHkAwYMZ/aTi1r5ShhaNQ0ex9J5X7ZlkpWKrXAI5/HiETv
+ hn2ZF4ZHv9wgqxjeSbcFbP2gUS37K6kRkkjPmC9dHMz6+lpUBlDXS7VvFiVwJn+FsKFlurogOdh
+ f9aaWKANfAl9LLcm4dgthLTJwv9cCghZx6z9rUyccgXcfUc7tr13bEHv34cyJ03a+OaU2nW+c4L
+ VaSUV0CS3Pjx26m6gbNqyUUzNPs+qo/3mqIzib2ohfP69Om3FE4w/F8Ffp51rvmSIOWjZi+yI+1
+ bgVpYed0KCc4uzFt6EerKWKn7uiEwclQR7wPFwl6MZKnNqd+nJW6MDfJR49mVgRajTqu7yJ1HlF
+ JUNaQUyPGXoYHbsSjiEUaIm2rbj4m1b3MFXdo4m+ccmUODQHUALGWJEzYjunhedij1GvYAqmMDe
+ 47KTP1j2OE=
+X-Received: by 2002:a05:600c:4e0e:b0:49e:7c8c:361d with SMTP id
+ 5b1f17b1804b1-4a18e4c3f32mr86691165e9.22.1791616198131; 
+ Sat, 10 Oct 2026 00:09:58 -0700 (PDT)
 Received: from stoup.local ([2a00:1e:e082:2901:a2d3:66fa:95e6:7d81])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48db9abda3csm7662252f8f.36.2026.10.10.00.09.55
+ ffacd0b85a97d-48db9abda3csm7662252f8f.36.2026.10.10.00.09.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Oct 2026 00:09:55 -0700 (PDT)
+ Sat, 10 Oct 2026 00:09:56 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 2/6] target/arm: Enable writes to SCR_EL3.TID{3,5}
-Date: Sat, 10 Oct 2026 09:09:48 +0200
-Message-ID: <20261010070952.323466-3-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v4 3/6] target/arm: Squash accessfn in
+ modify_arm_cp_regs_with_len
+Date: Sat, 10 Oct 2026 09:09:49 +0200
+Message-ID: <20261010070952.323466-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261010070952.323466-1-richard.henderson@linaro.org>
 References: <20261010070952.323466-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,57 +101,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+When reducing permission of ID registers for userspace
+access for an emulated kernel, drop the access check as well.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-features.h | 5 +++++
- target/arm/cpu.h          | 2 ++
- target/arm/helper.c       | 3 +++
- 3 files changed, 10 insertions(+)
+ target/arm/helper.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 2fc1bf02cbe..96ec12f64f4 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1408,6 +1408,11 @@ static inline bool isar_feature_aa64_idst(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64MMFR2, IDS) != 0;
- }
- 
-+static inline bool isar_feature_aa64_idte3(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64MMFR2, IDS) >= 2;
-+}
-+
- static inline bool isar_feature_aa64_half_evt(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64MMFR2, EVT) >= 1;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 06ebed4a8fd..a0355ba9e1a 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1811,6 +1811,8 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_EASE              (1ULL << 19)
- #define SCR_NMEA              (1ULL << 20)
- #define SCR_FIEN              (1ULL << 21)
-+#define SCR_TID3              (1ULL << 22)
-+#define SCR_TID5              (1ULL << 23)
- #define SCR_ENSCXT            (1ULL << 25)
- #define SCR_ATA               (1ULL << 26)
- #define SCR_FGTEN             (1ULL << 27)
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ff0b766b73d..187d0e9213d 100644
+index 187d0e9213d..a49dbc5acf2 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -960,6 +960,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_rng_trap, cpu)) {
-             valid_mask |= SCR_TRNDR;
-         }
-+        if (cpu_isar_feature(aa64_idte3, cpu)) {
-+            valid_mask |= SCR_TID5 | SCR_TID3;
-+        }
-     } else {
-         valid_mask &= ~(SCR_RW | SCR_ST);
-         if (cpu_isar_feature(aa32_ras, cpu)) {
+@@ -8398,11 +8398,13 @@ void modify_arm_cp_regs_with_len(ARMCPRegInfo *regs, size_t regs_len,
+             if (pat && g_pattern_match_string(pat, r->name)) {
+                 r->type = ARM_CP_CONST;
+                 r->access = PL0U_R;
++                r->accessfn = NULL;
+                 r->resetvalue = 0;
+                 /* continue */
+             } else if (strcmp(r->name, m->name) == 0) {
+                 r->type = ARM_CP_CONST;
+                 r->access = PL0U_R;
++                r->accessfn = NULL;
+                 r->resetvalue &= m->exported_bits;
+                 r->resetvalue |= m->fixed_bits;
+                 break;
 -- 
 2.53.0
 

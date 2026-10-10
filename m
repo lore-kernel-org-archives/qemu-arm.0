@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41B18CA6017
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9FECCA6017
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:40:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFXHX-0001v2-FJ; Sat, 10 Oct 2026 09:38:35 -0400
+	id 1xFXIG-0003Wd-OO; Sat, 10 Oct 2026 09:39:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXHV-0001uc-TS
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xFXIE-0003Jv-I7
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXHU-0004aY-AH
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:33 -0400
+ id 1xFXIB-0004fh-Tg
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791639511;
+ s=mimecast20190719; t=1791639555;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JIONCANj+MKk7AafgcfEQAY6C/fPP7uZSDIuv7Ano6A=;
- b=E1Iz+fGsIrEZ8Sdb7chBGeZZBkaK+8llPUH/IvdMwopKLgfjx4LvbPN/7pPIvDIvMcV33z
- Nc5+GHOhqDU7eIYVvolDnudmAjElEfdXyO8TS+11iwekwPxPEKcRmM3sMRCj/5EVdx8azE
- 0exm6MMN/WNA8au77eANsPVdOlKGhDs=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=dbX7/6NbWU/+92lr0pryibg29b53j8+3gzhn4Kx0DXg=;
+ b=VpPOowRSOgyj2FdawFoZcn55qvGc6dSZX/GznlOmbZr65iPTHyLhuw3ClyuskvZ10GM7TK
+ 4jbk5+93rnvDUmbR+FxCDWV6+8dhDzTCtuaIgzMIJm75YylHzJ1rST6PHxTDYqd+nBw2dW
+ VLvh9aj/dnnb0mD2WYgllwPbanrBUeM=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-547-t-MKfQVdMCGq7EYO8RpJwg-1; Sat,
- 10 Oct 2026 13:38:28 +0000
-X-MC-Unique: t-MKfQVdMCGq7EYO8RpJwg-1
-X-Mimecast-MFC-AGG-ID: t-MKfQVdMCGq7EYO8RpJwg_1791639506
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-592-fYQX9bN1O0qu-vdOe2UkIA-1; Sat,
+ 10 Oct 2026 13:39:07 +0000
+X-MC-Unique: fYQX9bN1O0qu-vdOe2UkIA-1
+X-Mimecast-MFC-AGG-ID: fYQX9bN1O0qu-vdOe2UkIA_1791639545
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1D0411956044; Sat, 10 Oct 2026 13:38:26 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B5CCD195D032; Sat, 10 Oct 2026 13:39:05 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4422230000E5; Sat, 10 Oct 2026 13:38:21 +0000 (UTC)
+ id EE70F30000E5; Sat, 10 Oct 2026 13:39:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,25 +57,27 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v10 10/26] target/arm/kvm: Retrieve writable ID reg map
-Date: Sat, 10 Oct 2026 15:36:14 +0200
-Message-ID: <20261010133725.642498-11-eric.auger@redhat.com>
+Subject: [PATCH v10 18/26] target/arm/cpu64: Introduce
+ arm_cpu_apply_sysreg_props
+Date: Sat, 10 Oct 2026 15:36:22 +0200
+Message-ID: <20261010133725.642498-19-eric.auger@redhat.com>
 In-Reply-To: <20261010133725.642498-1-eric.auger@redhat.com>
 References: <20261010133725.642498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Km4D8WyaObinCLaNWt8wrBeZcmB4BIdIJGjCNqq4jPg_1791639506
+X-Mimecast-MFC-PROC-ID: wL_msxqCyeJsYqMAM4yZHG82DFemLuNrCObYPDtnExE_1791639545
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 10
 X-Spam_score: 1.0
 X-Spam_bar: +
 X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -92,123 +94,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Cornelia Huck <cohuck@redhat.com>
-
-Add a helper to retrieve the writable id reg bitmask.
-
-then retrieve the writable_mask array and dispatch it in the writable_map
-field of arm64_id_regs[] elements.
+This helper walks through all stored SYSREG field values and
+apply them on the vcpu. It uses an accelerator specific callback
+to apply the field value on the vcpu. If the value is successfully
+applied, the cpu->isar.idregs[] value is updated accordingly.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-
 ---
+ target/arm/cpu-idregs.h | 18 +++++++++++++
+ target/arm/cpu64.c      | 57 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 75 insertions(+)
 
-v9 -> v10:
-- removed if (idx < 0 || idx > ARRAY_SIZE(arm64_id_regs)) check
-- commit description cleanup
-
-v7 -> v8
-- added kvm_enabled()
-
-v5 -> v6
-- use arm64_id_regs[].writable_map
-- squashed 2 commits (helper + user)
-- removed stub
----
- target/arm/kvm.c | 55 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
-
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 9d68801c26..2e68130611 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -28,6 +28,7 @@
- #include "kvm_arm.h"
- #include "cpu.h"
- #include "cpu-sysregs.h"
-+#include "cpu-idregs.h"
- #include "trace.h"
- #include "internals.h"
- #include "hw/pci/pci.h"
-@@ -51,6 +52,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
- static bool cap_has_mp_state;
- static bool cap_has_inject_serror_esr;
- static bool cap_has_inject_ext_dabt;
-+static bool writable_map_dispatched;
+diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
+index e0399e251b..56c2324359 100644
+--- a/target/arm/cpu-idregs.h
++++ b/target/arm/cpu-idregs.h
+@@ -38,4 +38,22 @@ typedef struct ARM64SysReg {
+  */
+ extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
  
- /**
-  * ARMHostCPUFeatures: information about the host CPU (identified
-@@ -312,6 +314,21 @@ static uint32_t kvm_arm_sve_get_vls(int fd)
-     return vls[0] & MAKE_64BIT_MASK(0, ARM_MAX_VQ);
- }
++/* accelerator specific callback used to apply a new field value on a vcpu */
++typedef int (*ARMSysregPropApplyFn)(ARMCPU *cpu, ARM64SysRegField *field,
++                                    uint64_t newfv, Error **errp);
++
++/**
++ * arm_cpu_apply_sysreg_props:
++ *
++ * Apply all SYSREG prop values
++ * @cpu:  vcpu on which the values are applied
++ * @accel_apply_fn: acceleration specific callback used to override
++ *                  a single field value
++ * @errp: error handle
++ *
++ * return 0 on sucess or negative value with errp set on failure
++ */
++int arm_cpu_apply_sysreg_props(ARMCPU *cpu, ARMSysregPropApplyFn accel_apply_fn,
++                               Error **errp);
++
+ #endif
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 9662608675..26baee102c 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -803,6 +803,63 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
  
-+static int kvm_feature_idx_to_idregs_idx(int kidx)
+ #define IDREG_FIELD_KEY(reg_idx, field_shift) \
+     (((uint64_t)(reg_idx) << 8) | ((uint64_t)(field_shift) & 0xFF))
++#define IDREG_FIELD_KEY_TO_REG_IDX(key) \
++    ((uint32_t)(((uint64_t)(key)) >> 8))
++#define IDREG_FIELD_KEY_TO_SHIFT(key) \
++    ((uint8_t)(((uint64_t)(key)) & 0xFF))
++
++static ARM64SysRegField *arm_sysreg_get_field(ARM64SysReg *reg, int bit)
 +{
-+    int op1, crm, op2;
-+    ARMSysRegs sysreg;
++    for (int f = 0; f < reg->fields_count; f++) {
++        ARM64SysRegField *field = &reg->fields[f];
++        int upper = field->shift + field->length - 1;
 +
-+    op1 = kidx / 64;
-+    if (op1 == 2) {
-+        op1 = 3;
-+    }
-+    crm = (kidx % 64) / 8;
-+    op2 = kidx % 8;
-+    sysreg = ENCODE_ID_REG(3, op1, 0, crm, op2);
-+    return get_sysreg_idx(sysreg);
-+}
-+
- static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
- {
-     /* Identify the feature bits corresponding to the host CPU, and
-@@ -523,9 +540,47 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     ahcf->features = features;
- }
- 
-+static int kvm_arm_get_writable_id_regs(uint64_t *idregmap)
-+{
-+    int cap_writable_id_regs;
-+    struct reg_mask_range range = {
-+        .range = KVM_ARM_FEATURE_ID_RANGE,
-+        .reserved = {0},
-+        .addr = (uint64_t)idregmap,
-+    };
-+
-+    cap_writable_id_regs =
-+        kvm_check_extension(kvm_state, KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES);
-+
-+    if (!cap_writable_id_regs ||
-+        !(cap_writable_id_regs & (1 << KVM_ARM_FEATURE_ID_RANGE))) {
-+        return -ENOSYS;
-+    }
-+
-+    return kvm_vm_ioctl(kvm_state, KVM_ARM_GET_REG_WRITABLE_MASKS, &range);
-+}
-+
- void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
- {
-     CPUARMState *env = &cpu->env;
-+    uint64_t *writable_map;
-+
-+    writable_map = g_new(uint64_t, KVM_ARM_FEATURE_ID_RANGE_SIZE);
-+
-+    if (kvm_enabled() && !writable_map_dispatched &&
-+        !kvm_arm_get_writable_id_regs(writable_map)) {
-+        for (int i = 0; i < KVM_ARM_FEATURE_ID_RANGE_SIZE; i++) {
-+            uint64_t mask = writable_map[i];
-+
-+            if (mask) {
-+                int idx = kvm_feature_idx_to_idregs_idx(i);
-+
-+                arm64_id_regs[idx].writable_mask = mask;
-+            }
++        if (bit >= field->shift && bit <= upper) {
++            return field;
 +        }
-+        writable_map_dispatched = true;
 +    }
-+    g_free(writable_map);
++    return NULL;
++}
++
++/**
++ * arm_cpu_apply_sysreg_props:
++ *
++ * Iterate over all SYSREG_* property overrides, and apply them on the vcpu
++ * using the accelerataor specific @accel_apply_fn callback.
++ */
++int arm_cpu_apply_sysreg_props(ARMCPU *cpu, ARMSysregPropApplyFn accel_apply_fn,
++                               Error **errp)
++{
++    gpointer key_ptr, value_ptr;
++    GHashTableIter iter;
++
++    g_hash_table_iter_init(&iter, cpu->sysreg_props);
++
++    while (g_hash_table_iter_next(&iter, &key_ptr, &value_ptr)) {
++        uint64_t key = (uint64_t)key_ptr;
++        uint64_t newfv = (uint64_t)value_ptr;
++        uint32_t reg_idx = IDREG_FIELD_KEY_TO_REG_IDX(key);
++        uint8_t lower = IDREG_FIELD_KEY_TO_SHIFT(key);
++        ARM64SysReg *reg = &arm64_id_regs[reg_idx];
++        ARM64SysRegField *field = arm_sysreg_get_field(reg, lower);
++        int ret;
++
++        if (!field) {
++            error_setg(errp, "SYSREG property key 0x%" PRIx64
++                       " does not match any field of %s", key, reg->name);
++            return -EINVAL;
++        }
++
++        ret = accel_apply_fn(cpu, field, newfv, errp);
++        if (ret) {
++            return ret;
++        }
++        cpu->isar.idregs[field->index] =
++            deposit64(cpu->isar.idregs[field->index],
++                      field->shift, field->length, newfv);
++    }
++    return 0;
++}
  
-     if (!arm_host_cpu_features.dtb_compatible) {
-         kvm_arm_get_host_cpu_features(&arm_host_cpu_features);
+ static void set_sysreg_prop(Object *obj, Visitor *v,
+                             const char *name, void *opaque,
 -- 
 2.53.0
 

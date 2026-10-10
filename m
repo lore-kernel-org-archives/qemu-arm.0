@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9FECCA6017
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CEBFCA9EBE
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:40:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFXIG-0003Wd-OO; Sat, 10 Oct 2026 09:39:20 -0400
+	id 1xFXIE-0003Jf-EK; Sat, 10 Oct 2026 09:39:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXIE-0003Jv-I7
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:18 -0400
+ id 1xFXID-0003FA-61
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXIB-0004fh-Tg
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:18 -0400
+ id 1xFXIB-0004fc-Kz
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791639555;
+ s=mimecast20190719; t=1791639554;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dbX7/6NbWU/+92lr0pryibg29b53j8+3gzhn4Kx0DXg=;
- b=VpPOowRSOgyj2FdawFoZcn55qvGc6dSZX/GznlOmbZr65iPTHyLhuw3ClyuskvZ10GM7TK
- 4jbk5+93rnvDUmbR+FxCDWV6+8dhDzTCtuaIgzMIJm75YylHzJ1rST6PHxTDYqd+nBw2dW
- VLvh9aj/dnnb0mD2WYgllwPbanrBUeM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=2e+3CcNTBkD4MMGpHP73g186a5p7lV5juXn4lBjmR0Q=;
+ b=FTBjoD4GwuNuiUkMvnd3QB/7El99cMxqtmRe9nlBgRMF8ZRr0vW7PjR39m5WEiTYT1gYJM
+ l608KB82OZRdEtFT4/T0JLaf8LTt6OuMk4mC/USSLNz2nKOyOda0EvdC5X5CeZbbhwo9kW
+ VsDhztexeVXca3wRwWmFug6lA+wokVk=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-592-fYQX9bN1O0qu-vdOe2UkIA-1; Sat,
- 10 Oct 2026 13:39:07 +0000
-X-MC-Unique: fYQX9bN1O0qu-vdOe2UkIA-1
-X-Mimecast-MFC-AGG-ID: fYQX9bN1O0qu-vdOe2UkIA_1791639545
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-312-HXkgVivpOn-D1dziElzKEQ-1; Sat,
+ 10 Oct 2026 13:39:12 +0000
+X-MC-Unique: HXkgVivpOn-D1dziElzKEQ-1
+X-Mimecast-MFC-AGG-ID: HXkgVivpOn-D1dziElzKEQ_1791639550
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B5CCD195D032; Sat, 10 Oct 2026 13:39:05 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 88E081944DF3; Sat, 10 Oct 2026 13:39:10 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EE70F30000E5; Sat, 10 Oct 2026 13:39:00 +0000 (UTC)
+ id 1C48330000E5; Sat, 10 Oct 2026 13:39:05 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,15 +57,14 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v10 18/26] target/arm/cpu64: Introduce
- arm_cpu_apply_sysreg_props
-Date: Sat, 10 Oct 2026 15:36:22 +0200
-Message-ID: <20261010133725.642498-19-eric.auger@redhat.com>
+Subject: [PATCH v10 19/26] target/arm/kvm: Apply SYSREG props
+Date: Sat, 10 Oct 2026 15:36:23 +0200
+Message-ID: <20261010133725.642498-20-eric.auger@redhat.com>
 In-Reply-To: <20261010133725.642498-1-eric.auger@redhat.com>
 References: <20261010133725.642498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: wL_msxqCyeJsYqMAM4yZHG82DFemLuNrCObYPDtnExE_1791639545
+X-Mimecast-MFC-PROC-ID: za0oG7zo7eTuhUemweS8Bwqz95QnOd0y_rJA25MmpyQ_1791639550
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -94,112 +93,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This helper walks through all stored SYSREG field values and
-apply them on the vcpu. It uses an accelerator specific callback
-to apply the field value on the vcpu. If the value is successfully
-applied, the cpu->isar.idregs[] value is updated accordingly.
+Now the infrastructure is in place let's trigger the
+SYSREG prop update in the KVM code. This is done in both
+kvm_arch_init_vcpu() and kvm_arm_reset_vcpu() after the final
+vcpu has been initialized with the proper kvm init settings and
+before kvmstate is synced back to the cpreg list.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- target/arm/cpu-idregs.h | 18 +++++++++++++
- target/arm/cpu64.c      | 57 +++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 75 insertions(+)
 
-diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
-index e0399e251b..56c2324359 100644
---- a/target/arm/cpu-idregs.h
-+++ b/target/arm/cpu-idregs.h
-@@ -38,4 +38,22 @@ typedef struct ARM64SysReg {
-  */
- extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
- 
-+/* accelerator specific callback used to apply a new field value on a vcpu */
-+typedef int (*ARMSysregPropApplyFn)(ARMCPU *cpu, ARM64SysRegField *field,
-+                                    uint64_t newfv, Error **errp);
-+
-+/**
-+ * arm_cpu_apply_sysreg_props:
-+ *
-+ * Apply all SYSREG prop values
-+ * @cpu:  vcpu on which the values are applied
-+ * @accel_apply_fn: acceleration specific callback used to override
-+ *                  a single field value
-+ * @errp: error handle
-+ *
-+ * return 0 on sucess or negative value with errp set on failure
-+ */
-+int arm_cpu_apply_sysreg_props(ARMCPU *cpu, ARMSysregPropApplyFn accel_apply_fn,
-+                               Error **errp);
-+
- #endif
+---
+
+v9 -> v10
+- use ValueRange
+---
+ target/arm/cpu64.c |  9 +++++----
+ target/arm/kvm.c   | 20 +++++++++++++++++++-
+ 2 files changed, 24 insertions(+), 5 deletions(-)
+
 diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 9662608675..26baee102c 100644
+index 26baee102c..ff178bcaf5 100644
 --- a/target/arm/cpu64.c
 +++ b/target/arm/cpu64.c
-@@ -803,6 +803,63 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
+@@ -883,10 +883,11 @@ static void set_sysreg_prop(Object *obj, Visitor *v,
+         return;
+     }
  
- #define IDREG_FIELD_KEY(reg_idx, field_shift) \
-     (((uint64_t)(reg_idx) << 8) | ((uint64_t)(field_shift) & 0xFF))
-+#define IDREG_FIELD_KEY_TO_REG_IDX(key) \
-+    ((uint32_t)(((uint64_t)(key)) >> 8))
-+#define IDREG_FIELD_KEY_TO_SHIFT(key) \
-+    ((uint8_t)(((uint64_t)(key)) & 0xFF))
+-    if (field->arch_vals) {
+-        /* this field has some enum values */
+-        for (int i = 0; i < field->arch_vals_count; i++) {
+-            if (value == field->arch_vals[i]) {
++    if (field->arch_value_ranges) {
++        for (uint32_t i = 0; i < field->arch_value_ranges_count; i++) {
++            const ARM64SysRegArchValueRange *r = &field->arch_value_ranges[i];
 +
-+static ARM64SysRegField *arm_sysreg_get_field(ARM64SysReg *reg, int bit)
++            if (value >= r->lo && value <= r->hi) {
+                 goto valid;
+             }
+         }
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index c6c9ea03a5..0c7e80aea8 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1247,7 +1247,7 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
+     return true;
+ }
+ 
+-static int G_GNUC_UNUSED
++static int
+ kvm_arm_override_idreg_field(int fd, ARM64SysRegField *field,
+                              uint64_t newfv, Error **errp)
+ {
+@@ -1291,6 +1291,17 @@ kvm_arm_override_idreg_field(int fd, ARM64SysRegField *field,
+     return 0;
+ }
+ 
++static int kvm_arm_apply_one_sysreg_prop(ARMCPU *cpu, ARM64SysRegField *field,
++                                         uint64_t newfv, Error **errp)
 +{
-+    for (int f = 0; f < reg->fields_count; f++) {
-+        ARM64SysRegField *field = &reg->fields[f];
-+        int upper = field->shift + field->length - 1;
-+
-+        if (bit >= field->shift && bit <= upper) {
-+            return field;
-+        }
-+    }
-+    return NULL;
++    return kvm_arm_override_idreg_field(CPU(cpu)->kvm_fd, field, newfv, errp);
 +}
 +
-+/**
-+ * arm_cpu_apply_sysreg_props:
-+ *
-+ * Iterate over all SYSREG_* property overrides, and apply them on the vcpu
-+ * using the accelerataor specific @accel_apply_fn callback.
-+ */
-+int arm_cpu_apply_sysreg_props(ARMCPU *cpu, ARMSysregPropApplyFn accel_apply_fn,
-+                               Error **errp)
++static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
 +{
-+    gpointer key_ptr, value_ptr;
-+    GHashTableIter iter;
-+
-+    g_hash_table_iter_init(&iter, cpu->sysreg_props);
-+
-+    while (g_hash_table_iter_next(&iter, &key_ptr, &value_ptr)) {
-+        uint64_t key = (uint64_t)key_ptr;
-+        uint64_t newfv = (uint64_t)value_ptr;
-+        uint32_t reg_idx = IDREG_FIELD_KEY_TO_REG_IDX(key);
-+        uint8_t lower = IDREG_FIELD_KEY_TO_SHIFT(key);
-+        ARM64SysReg *reg = &arm64_id_regs[reg_idx];
-+        ARM64SysRegField *field = arm_sysreg_get_field(reg, lower);
-+        int ret;
-+
-+        if (!field) {
-+            error_setg(errp, "SYSREG property key 0x%" PRIx64
-+                       " does not match any field of %s", key, reg->name);
-+            return -EINVAL;
-+        }
-+
-+        ret = accel_apply_fn(cpu, field, newfv, errp);
-+        if (ret) {
-+            return ret;
-+        }
-+        cpu->isar.idregs[field->index] =
-+            deposit64(cpu->isar.idregs[field->index],
-+                      field->shift, field->length, newfv);
-+    }
-+    return 0;
++    return arm_cpu_apply_sysreg_props(cpu, kvm_arm_apply_one_sysreg_prop, errp);
 +}
++
+ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+ {
+     int ret;
+@@ -1304,6 +1315,8 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+         abort();
+     }
  
- static void set_sysreg_prop(Object *obj, Visitor *v,
-                             const char *name, void *opaque,
++    kvm_arm_apply_sysreg_props(cpu, &error_abort);
++
+     if (!write_kvmstate_to_list(cpu)) {
+         fprintf(stderr, "write_kvmstate_to_list failed\n");
+         abort();
+@@ -2250,6 +2263,11 @@ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
+     }
+     SET_IDREG(&cpu->isar, MPIDR, mpidr);
+ 
++    ret = kvm_arm_apply_sysreg_props(cpu, errp);
++    if (ret) {
++        return ret;
++    }
++
+     cpu->mp_affinity = GET_IDREG(&cpu->isar, MPIDR) & ARM64_AFFINITY_MASK;
+ 
+     return kvm_arm_init_cpreg_list(cpu, errp);
 -- 
 2.53.0
 

@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82091CA6017
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C937ACA6017
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:38:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFXGw-0001Xu-2S; Sat, 10 Oct 2026 09:37:58 -0400
+	id 1xFXHF-0001dc-7H; Sat, 10 Oct 2026 09:38:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXGu-0001XI-57
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:37:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xFXHD-0001ct-7C
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXGr-0004Wi-Ci
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:37:55 -0400
+ id 1xFXH8-0004Yu-Vi
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791639472;
+ s=mimecast20190719; t=1791639490;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a91L6QEmpLwmcB+Y2iHHOG28lubjs5oHQAR7wAJRz4Q=;
- b=bV5hbGnlpbDmOf8UG48eSerzGv9oW6mnFNinADlojTwoqgqxHG5/ckaReu7ZzCjUs0eTtY
- sQpOZyw12ojkvTLP4ZtXQ5atk5oypDM4/tQgnCTIgqA3mJVlFP3M9cjvQi1a8/MYAMbkHS
- 6b2BpfphJEXdbo4/h8lozVxGdpUVAis=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=+7jpCnNWVONGrKduSQUm6TViuxQeMzjvlgr015jgBRY=;
+ b=NcruhP7IQ6/XFPpkbA5vonMDBv0++ueaUAti5TJweL+XpggXx0dsvB1tIw5cbAHxwWD99K
+ bG98qWBrehD4fsnY0B3cQC+X5k+I26UrHS/85wrS+NQJKeA29VfRYfal+rTGgHi9BOrEwm
+ oCu/dkOoNgtPohvQJaqD0c4SpynA24k=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-73-fF6osFzfNeaNMZaOsOLPMA-1; Sat,
- 10 Oct 2026 13:37:47 +0000
-X-MC-Unique: fF6osFzfNeaNMZaOsOLPMA-1
-X-Mimecast-MFC-AGG-ID: fF6osFzfNeaNMZaOsOLPMA_1791639465
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-692-pPR30kTvOl6fypfLPmiVBg-1; Sat,
+ 10 Oct 2026 13:38:07 +0000
+X-MC-Unique: pPR30kTvOl6fypfLPmiVBg-1
+X-Mimecast-MFC-AGG-ID: pPR30kTvOl6fypfLPmiVBg_1791639485
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E39851944B0E; Sat, 10 Oct 2026 13:37:44 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 19F1B1802141; Sat, 10 Oct 2026 13:38:05 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BB58F30000E5; Sat, 10 Oct 2026 13:37:39 +0000 (UTC)
+ id 63F8830001BB; Sat, 10 Oct 2026 13:38:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,26 +57,27 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v10 02/26] target/arm: Move MIDR into isar.idregs[] storage
-Date: Sat, 10 Oct 2026 15:36:06 +0200
-Message-ID: <20261010133725.642498-3-eric.auger@redhat.com>
+Subject: [PATCH v10 06/26] target/arm/cpu-idregs.h.inc: Generate with script
+Date: Sat, 10 Oct 2026 15:36:10 +0200
+Message-ID: <20261010133725.642498-7-eric.auger@redhat.com>
 In-Reply-To: <20261010133725.642498-1-eric.auger@redhat.com>
 References: <20261010133725.642498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: hsyPMXQz2ciQZdq2Ke5uk4yBDQoKivhlXGrPYuePF0U_1791639465
+X-Mimecast-MFC-PROC-ID: bzcafK3J0rLwzqcT52NTf91-CXel-bmop347PO_8h-I_1791639485
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 10
-X-Spam_score: 1.0
-X-Spam_bar: +
-X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,519 +93,843 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move MIDR into the isar.idregs[] array as other ID registers.
-This will allow to overwrite it as others.
+Introduce a script that takes as input the Registers.json file
+delivered in the AARCHMRS Features Model downloadable from the
+Arm Developer A-Profile Architecture Exploration Tools page:
+https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
+and automates the generation of system register properties definitions.
+
+generates target/arm/cpu-idregs.h.inc containing definitions for
+feature ID registers. Current generation is based on
+AARCHMRS_OPENSOURCE_A_profile_FAT-2026-03.
+
+We only care about IDregs with opcodes satisfying:
+op0 = 3, op1 = {0,1,3}, crn = 0, crm within [0, 7], op2 within [0, 7]
+
+Generate ID reg definitions with the scripts/update-aarch64-cpu-sysreg-properties.py
+based on AARCHMRS_OPENSOURCE_A_profile_FAT-2026-03 Registers.json
+
+Each register and fields are described with this pattern:
+
+IDREG_START(REG)
+IDREG_FIELD(REG, FIELD, SHIFT, LENGTH)
+...
+IDREG_END(REG)
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- target/arm/cpu.h             |  1 -
- target/arm/cpu-sysregs.h.inc |  1 +
- hw/intc/armv7m_nvic.c        |  2 +-
- target/arm/cpu-max.c         |  2 +-
- target/arm/cpu.c             |  2 +-
- target/arm/cpu64.c           |  2 +-
- target/arm/helper.c          | 13 +++++++------
- target/arm/hvf/hvf.c         |  4 ++--
- target/arm/tcg/cpu-v7m.c     | 14 +++++++-------
- target/arm/tcg/cpu32.c       | 33 +++++++++++++++++----------------
- target/arm/tcg/cpu64.c       | 22 +++++++++++-----------
- target/arm/whpx/whpx-all.c   |  4 ++--
- 12 files changed, 51 insertions(+), 49 deletions(-)
+Suggested-by: Khushit Shah <khushit.shah@nutanix.com>
+Suggested-by: Shaju Abraham <shaju.abraham@nutanix.com>
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index b2af36a8c3..dcdd4eb18e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1123,7 +1123,6 @@ struct ArchCPU {
-         uint64_t reset_pmcr_el0;
-         uint64_t idregs[NUM_ID_IDX];
-     } isar;
--    uint64_t midr;
-     uint32_t reset_fpsid;
-     uint64_t ctr;
-     uint32_t reset_sctlr;
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index 580d88d1f4..709dc8fc97 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -41,6 +41,7 @@ DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
- DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
- DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
- DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
-+DEF(MIDR_EL1, 3, 0, 0, 0, 0)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 1f56fff046..1f7209f6b6 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1053,7 +1053,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-         }
-         return GET_IDREG(isar, REVIDR);
-     case 0xd00: /* CPUID Base.  */
--        return cpu->midr;
-+        return GET_IDREG(isar, MIDR);
-     case 0xd04: /* Interrupt Control State (ICSR) */
-         /* VECTACTIVE */
-         val = cpu->env.v7m.exception;
-diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
-index b4e57a167d..c47db5251d 100644
---- a/target/arm/cpu-max.c
-+++ b/target/arm/cpu-max.c
-@@ -36,7 +36,7 @@ void aarch64_aa32_a57_init(ARMCPU *cpu, bool aarch64_enabled)
-     if (kvm_enabled()) {
-         cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
-     }
--    cpu->midr = 0x411fd070;
-+    SET_IDREG(isar, MIDR, 0x411fd070);
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x41034070;
-     cpu->isar.mvfr0 = 0x10110222;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 10ac6c9831..2f545482bc 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2501,7 +2501,7 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
- }
- 
- static const Property arm_cpu_properties[] = {
--    DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
-+    DEFINE_PROP_UINT64("midr", ARMCPU, isar.idregs[MIDR_EL1_IDX], 0),
-     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
-                         mp_affinity, ARM64_AFFINITY_INVALID),
-     DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 80c9c9e5b3..64103df0a7 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -716,7 +716,7 @@ static void aarch64_a53_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
--    cpu->midr = 0x410fd034;
-+    SET_IDREG(isar, MIDR, 0x410fd034);
-     SET_IDREG(isar, REVIDR, 0x00000100);
-     cpu->reset_fpsid = 0x41034070;
-     cpu->isar.mvfr0 = 0x10110222;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 41c0d0df12..dfd71f1b51 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7153,12 +7153,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "VPIDR", .state = ARM_CP_STATE_AA32,
-               .cp = 15, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 0,
-               .access = PL2_RW, .accessfn = access_el3_aa32ns,
--              .resetvalue = cpu->midr,
-+              .resetvalue = GET_IDREG(&cpu->isar, MIDR),
-               .type = ARM_CP_ALIAS | ARM_CP_EL3_NO_EL2_C_NZ,
-               .fieldoffset = offsetoflow32(CPUARMState, cp15.vpidr_el2) },
-             { .name = "VPIDR_EL2", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 0,
--              .access = PL2_RW, .resetvalue = cpu->midr,
-+              .access = PL2_RW, .resetvalue = GET_IDREG(&cpu->isar, MIDR),
-               .type = ARM_CP_EL3_NO_EL2_C_NZ,
-               .nv2_redirect_offset = 0x88,
-               .fieldoffset = offsetof(CPUARMState, cp15.vpidr_el2) },
-@@ -7377,7 +7377,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-              */
-             { .name = "MIDR",
-               .cp = 15, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = CP_ANY,
--              .access = PL1_R, .resetvalue = cpu->midr,
-+              .access = PL1_R, .resetvalue = GET_IDREG(&cpu->isar, MIDR),
-               .writefn = arm_cp_write_ignore, .raw_writefn = raw_write,
-               .readfn = midr_read,
-               .fieldoffset = offsetof(CPUARMState, cp15.c0_cpuid),
-@@ -7402,14 +7402,15 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         ARMCPRegInfo id_v8_midr_cp_reginfo[] = {
-             { .name = "MIDR_EL1", .state = ARM_CP_STATE_BOTH,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 0, .opc2 = 0,
--              .access = PL1_R, .type = ARM_CP_NO_RAW, .resetvalue = cpu->midr,
-+              .access = PL1_R, .type = ARM_CP_NO_RAW,
-+              .resetvalue = GET_IDREG(&cpu->isar, MIDR),
-               .fgt = FGT_MIDR_EL1,
-               .fieldoffset = offsetof(CPUARMState, cp15.c0_cpuid),
-               .readfn = midr_read },
-             /* crn = 0 op1 = 0 crm = 0 op2 = 7 : AArch32 aliases of MIDR */
-             { .name = "MIDR", .type = ARM_CP_ALIAS | ARM_CP_CONST,
-               .cp = 15, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 7,
--              .access = PL1_R, .resetvalue = cpu->midr },
-+              .access = PL1_R, .resetvalue = GET_IDREG(&cpu->isar, MIDR) },
-             { .name = "REVIDR_EL1", .state = ARM_CP_STATE_BOTH,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 0, .opc2 = 6,
-               .access = PL1_R,
-@@ -7420,7 +7421,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         ARMCPRegInfo id_v8_midr_alias_cp_reginfo = {
-             .name = "MIDR", .type = ARM_CP_ALIAS | ARM_CP_CONST | ARM_CP_NO_GDB,
-             .cp = 15, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 4,
--            .access = PL1_R, .resetvalue = cpu->midr
-+            .access = PL1_R, .resetvalue = GET_IDREG(&cpu->isar, MIDR)
-         };
-         ARMCPRegInfo id_cp_reginfo[] = {
-             /* These are common to v8 and pre-v8 */
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index b00a7e1a84..f9f3d22014 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1295,7 +1295,7 @@ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
-     cpu->isar = arm_host_cpu_features.isar;
-     cpu->env.features = arm_host_cpu_features.features;
--    cpu->midr = arm_host_cpu_features.midr;
-+    SET_IDREG(&cpu->isar, MIDR, arm_host_cpu_features.midr);
-     cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
-     cpu->sme_vq.supported = arm_host_cpu_features.sme_vq_supported;
- }
-@@ -1472,7 +1472,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
- 
-     /* Set CP_NO_RAW system registers on init */
-     ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MIDR_EL1,
--                              arm_cpu->midr);
-+                              GET_IDREG(&arm_cpu->isar, MIDR));
-     assert_hvf_ok(ret);
- 
-     ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MPIDR_EL1,
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-index e7c61d3c31..20d40f176d 100644
---- a/target/arm/tcg/cpu-v7m.c
-+++ b/target/arm/tcg/cpu-v7m.c
-@@ -49,7 +49,7 @@ static void cortex_m0_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V6);
-     set_feature(&cpu->env, ARM_FEATURE_M);
- 
--    cpu->midr = 0x410cc200;
-+    SET_IDREG(isar, MIDR, 0x410cc200);
- 
-     /*
-      * These ID register values are not guest visible, because
-@@ -83,7 +83,7 @@ static void cortex_m3_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7);
-     set_feature(&cpu->env, ARM_FEATURE_M);
-     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    cpu->midr = 0x410fc231;
-+    SET_IDREG(isar, MIDR, 0x410fc231);
-     cpu->pmsav7_dregion = 8;
-     SET_IDREG(isar, ID_PFR0, 0x00000030);
-     SET_IDREG(isar, ID_PFR1, 0x00000200);
-@@ -111,7 +111,7 @@ static void cortex_m4_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M);
-     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x410fc240; /* r0p0 */
-+    SET_IDREG(isar, MIDR, 0x410fc240); /* r0p0 */
-     cpu->pmsav7_dregion = 8;
-     cpu->isar.mvfr0 = 0x10110021;
-     cpu->isar.mvfr1 = 0x11000011;
-@@ -142,7 +142,7 @@ static void cortex_m7_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M);
-     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x411fc272; /* r1p2 */
-+    SET_IDREG(isar, MIDR, 0x411fc272); /* r1p2 */
-     cpu->pmsav7_dregion = 8;
-     cpu->isar.mvfr0 = 0x10110221;
-     cpu->isar.mvfr1 = 0x12000011;
-@@ -174,7 +174,7 @@ static void cortex_m33_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-     set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x410fd213; /* r0p3 */
-+    SET_IDREG(isar, MIDR, 0x410fd213); /* r0p3 */
-     cpu->pmsav7_dregion = 16;
-     cpu->sau_sregion = 8;
-     cpu->isar.mvfr0 = 0x10110021;
-@@ -210,7 +210,7 @@ static void cortex_m55_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-     set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x410fd221; /* r0p1 */
-+    SET_IDREG(isar, MIDR, 0x410fd221); /* r0p1 */
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->pmsav7_dregion = 16;
-     cpu->sau_sregion = 8;
-@@ -248,7 +248,7 @@ static void cortex_m85_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-     set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x411fd231; /* r1p1 */
-+    SET_IDREG(isar, MIDR, 0x411fd231); /* r1p1 */
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->pmsav7_dregion = 16;
-     cpu->sau_sregion = 8;
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index c02b737fc0..faeeeff4ea 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -27,7 +27,8 @@ static void arm926_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V5);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_TEST_CLEAN);
--    cpu->midr = 0x41069265;
-+    SET_IDREG(&cpu->isar, MIDR, 0x41069265);
+---
+
+v9 -> v10:
+- squashed the script and the generated header.
+- improved comments
+- some minor code rework like sorting inside the helper
+
+v5 -> v6
+- add ident
+---
+ target/arm/cpu-idregs.h.inc                   | 617 ++++++++++++++++++
+ .../update-aarch64-cpu-sysreg-properties.py   | 165 +++++
+ 2 files changed, 782 insertions(+)
+ create mode 100644 target/arm/cpu-idregs.h.inc
+ create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
+
+diff --git a/target/arm/cpu-idregs.h.inc b/target/arm/cpu-idregs.h.inc
+new file mode 100644
+index 0000000000..a10d750123
+--- /dev/null
++++ b/target/arm/cpu-idregs.h.inc
+@@ -0,0 +1,617 @@
++/* AUTOMATICALLY GENERATED, DO NOT MODIFY */
 +
-     cpu->reset_fpsid = 0x41011090;
-     cpu->ctr = 0x1dd20d2;
-     cpu->reset_sctlr = 0x00050078;
-@@ -54,7 +55,7 @@ static void arm946_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V5);
-     set_feature(&cpu->env, ARM_FEATURE_PMSA);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
--    cpu->midr = 0x41059461;
-+    SET_IDREG(&cpu->isar, MIDR, 0x41059461);
-     cpu->ctr = 0x0f004006;
-     cpu->reset_sctlr = 0x00000078;
- }
-@@ -68,7 +69,7 @@ static void arm1026_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_AUXCR);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_TEST_CLEAN);
--    cpu->midr = 0x4106a262;
-+    SET_IDREG(&cpu->isar, MIDR, 0x4106a262);
-     cpu->reset_fpsid = 0x410110a0;
-     cpu->ctr = 0x1dd20d2;
-     cpu->reset_sctlr = 0x00050078;
-@@ -117,7 +118,7 @@ static void arm1136_r2_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_DIRTY_REG);
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_BLOCK_OPS);
--    cpu->midr = 0x4107b362;
-+    SET_IDREG(isar, MIDR, 0x4107b362);
-     cpu->reset_fpsid = 0x410120b4;
-     cpu->isar.mvfr0 = 0x11111111;
-     cpu->isar.mvfr1 = 0x00000000;
-@@ -149,7 +150,7 @@ static void arm1136_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_DIRTY_REG);
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_BLOCK_OPS);
--    cpu->midr = 0x4117b363;
-+    SET_IDREG(isar, MIDR, 0x4117b363);
-     cpu->reset_fpsid = 0x410120b4;
-     cpu->isar.mvfr0 = 0x11111111;
-     cpu->isar.mvfr1 = 0x00000000;
-@@ -182,7 +183,7 @@ static void arm1176_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_DIRTY_REG);
-     set_feature(&cpu->env, ARM_FEATURE_CACHE_BLOCK_OPS);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
--    cpu->midr = 0x410fb767;
-+    SET_IDREG(isar, MIDR, 0x410fb767);
-     cpu->reset_fpsid = 0x410120b5;
-     cpu->isar.mvfr0 = 0x11111111;
-     cpu->isar.mvfr1 = 0x00000000;
-@@ -213,7 +214,7 @@ static void arm11mpcore_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_VAPA);
-     set_feature(&cpu->env, ARM_FEATURE_MPIDR);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
--    cpu->midr = 0x410fb022;
-+    SET_IDREG(isar, MIDR, 0x410fb022);
-     cpu->reset_fpsid = 0x410120b4;
-     cpu->isar.mvfr0 = 0x11111111;
-     cpu->isar.mvfr1 = 0x00000000;
-@@ -257,7 +258,7 @@ static void cortex_a8_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
--    cpu->midr = 0x410fc080;
-+    SET_IDREG(isar, MIDR, 0x410fc080);
-     cpu->reset_fpsid = 0x410330c0;
-     cpu->isar.mvfr0 = 0x11110222;
-     cpu->isar.mvfr1 = 0x00011111;
-@@ -335,7 +336,7 @@ static void cortex_a9_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7MP);
-     set_feature(&cpu->env, ARM_FEATURE_CBAR);
-     set_feature(&cpu->env, ARM_FEATURE_D32DIS);
--    cpu->midr = 0x410fc090;
-+    SET_IDREG(isar, MIDR, 0x410fc090);
-     cpu->reset_fpsid = 0x41033090;
-     cpu->isar.mvfr0 = 0x11110222;
-     cpu->isar.mvfr1 = 0x01111111;
-@@ -403,7 +404,7 @@ static void cortex_a7_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     set_feature(&cpu->env, ARM_FEATURE_D32DIS);
--    cpu->midr = 0x410fc075;
-+    SET_IDREG(isar, MIDR, 0x410fc075);
-     cpu->reset_fpsid = 0x41023075;
-     cpu->isar.mvfr0 = 0x10110222;
-     cpu->isar.mvfr1 = 0x11111111;
-@@ -455,7 +456,7 @@ static void cortex_a15_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     /* r4p0 cpu, not requiring expensive tlb flush errata */
--    cpu->midr = 0x414fc0f0;
-+    SET_IDREG(isar, MIDR, 0x414fc0f0);
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x410430f0;
-     cpu->isar.mvfr0 = 0x10110222;
-@@ -505,7 +506,7 @@ static void cortex_r5_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7MP);
-     set_feature(&cpu->env, ARM_FEATURE_PMSA);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
--    cpu->midr = 0x411fc153; /* r1p3 */
-+    SET_IDREG(isar, MIDR, 0x411fc153); /* r1p3 */
-     SET_IDREG(isar, ID_PFR0, 0x0131);
-     SET_IDREG(isar, ID_PFR1, 0x001);
-     SET_IDREG(isar, ID_DFR0, 0x010400);
-@@ -646,7 +647,7 @@ static void cortex_r52_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_BACKCOMPAT_CNTFRQ);
-     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-     set_feature(&cpu->env, ARM_FEATURE_AUXCR);
--    cpu->midr = 0x411fd133; /* r1p3 */
-+    SET_IDREG(isar, MIDR, 0x411fd133); /* r1p3 */
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x41034023;
-     cpu->isar.mvfr0 = 0x10110222;
-@@ -694,7 +695,7 @@ static void ti925t_initfn(Object *obj)
-     ARMCPU *cpu = ARM_CPU(obj);
-     set_feature(&cpu->env, ARM_FEATURE_V4T);
-     set_feature(&cpu->env, ARM_FEATURE_OMAPCP);
--    cpu->midr = ARM_CPUID_TI925T;
-+    SET_IDREG(&cpu->isar, MIDR, ARM_CPUID_TI925T);
-     cpu->ctr = 0x5109149;
-     cpu->reset_sctlr = 0x00000070;
- }
-@@ -706,7 +707,7 @@ static void sa1100_initfn(Object *obj)
-     cpu->dtb_compatible = "intel,sa1100";
-     set_feature(&cpu->env, ARM_FEATURE_STRONGARM);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
--    cpu->midr = 0x4401A11B;
-+    SET_IDREG(&cpu->isar, MIDR, 0x4401A11B);
-     cpu->reset_sctlr = 0x00000070;
- }
- 
-@@ -715,7 +716,7 @@ static void sa1110_initfn(Object *obj)
-     ARMCPU *cpu = ARM_CPU(obj);
-     set_feature(&cpu->env, ARM_FEATURE_STRONGARM);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
--    cpu->midr = 0x6901B119;
-+    SET_IDREG(&cpu->isar, MIDR, 0x6901B119);
-     cpu->reset_sctlr = 0x00000070;
- }
- 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index ac1dace1e4..d73d792ad9 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -47,7 +47,7 @@ static void aarch64_a35_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
- 
-     /* From B2.2 AArch64 identification registers. */
--    cpu->midr = 0x411fd040;
-+    SET_IDREG(isar, MIDR, 0x411fd040);
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->ctr = 0x84448004;
-     SET_IDREG(isar, ID_PFR0, 0x00000131);
-@@ -247,7 +247,7 @@ static void aarch64_a55_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR0, 0x10010131);
-     SET_IDREG(isar, ID_PFR1, 0x00011011);
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
--    cpu->midr = 0x412FD050;          /* r2p0 */
-+    SET_IDREG(isar, MIDR, 0x412FD050); /* r2p0 */
-     SET_IDREG(isar, REVIDR, 0);
- 
-     /* From B2.23 CCSIDR_EL1 */
-@@ -291,7 +291,7 @@ static void aarch64_a72_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL2);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
--    cpu->midr = 0x410fd083;
-+    SET_IDREG(isar, MIDR, 0x410fd083);
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x41034080;
-     cpu->isar.mvfr0 = 0x10110222;
-@@ -382,7 +382,7 @@ static void aarch64_a76_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR0, 0x10010131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
--    cpu->midr = 0x414fd0b1;          /* r4p1 */
-+    SET_IDREG(isar, MIDR, 0x414fd0b1); /* r4p1 */
-     SET_IDREG(isar, REVIDR, 0);
- 
-     /* From B2.18 CCSIDR_EL1 */
-@@ -455,7 +455,7 @@ static void aarch64_a78ae_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR0, 0x10010131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
--    cpu->midr = 0x410fd423;          /* r0p3 */
-+    SET_IDREG(isar, MIDR, 0x410fd423); /* r0p3 */
-     SET_IDREG(isar, REVIDR, 0);
- 
-     /* From 3.2.33 CCSIDR_EL1 */
-@@ -500,7 +500,7 @@ static void aarch64_a64fx_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL2);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
--    cpu->midr = 0x461f0010;
-+    SET_IDREG(isar, MIDR, 0x461f0010);
-     SET_IDREG(isar, REVIDR, 0);
-     cpu->ctr = 0x86668006;
-     cpu->reset_sctlr = 0x30000180;
-@@ -706,7 +706,7 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR0, 0x10010131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
--    cpu->midr = 0x414fd0c1;          /* r4p1 */
-+    SET_IDREG(isar, MIDR, 0x414fd0c1); /* r4p1 */
-     SET_IDREG(isar, REVIDR, 0);
- 
-     /* From B2.23 CCSIDR_EL1 */
-@@ -786,7 +786,7 @@ static void aarch64_neoverse_v1_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR0, 0x21110131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
--    cpu->midr = 0x411FD402;          /* r1p2 */
-+    SET_IDREG(isar, MIDR, 0x411FD402); /* r1p2 */
-     SET_IDREG(isar, REVIDR, 0);
- 
-     /*
-@@ -983,7 +983,7 @@ static void aarch64_a710_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
- 
-     /* Ordered by Section B.4: AArch64 registers */
--    cpu->midr          = 0x412FD471; /* r2p1 */
-+    SET_IDREG(isar, MIDR, 0x412FD471); /* r2p1 */
-     SET_IDREG(isar, REVIDR, 0);
-     SET_IDREG(isar, ID_PFR0, 0x21110131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-@@ -1086,7 +1086,7 @@ static void aarch64_neoverse_n2_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
- 
-     /* Ordered by Section B.5: AArch64 ID registers */
--    cpu->midr          = 0x410FD493; /* r0p3 */
-+    SET_IDREG(isar, MIDR, 0x410FD493); /* r0p3 */
-     SET_IDREG(isar, REVIDR, 0);
-     SET_IDREG(isar, ID_PFR0, 0x21110131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-@@ -1214,7 +1214,7 @@ void aarch64_max_v8_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, MIDR_EL1, PARTNUM, 'Q');
-     t = FIELD_DP64(t, MIDR_EL1, VARIANT, 0);
-     t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
--    cpu->midr = t;
-+    SET_IDREG(isar, MIDR, t);
- 
-     /*
-      * We're going to set FEAT_S2FWB, which mandates that CLIDR_EL1.{LoUU,LoUIS}
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 46f0b9524e..18009d6c8d 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -775,7 +775,7 @@ void whpx_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
-     cpu->isar = arm_host_cpu_features.isar;
-     cpu->env.features = arm_host_cpu_features.features;
--    cpu->midr = arm_host_cpu_features.midr;
-+    SET_IDREG(&cpu->isar, MIDR, arm_host_cpu_features.midr);
-     cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
- }
- 
-@@ -836,7 +836,7 @@ int whpx_init_vcpu(CPUState *cpu)
-     assert(write_cpustate_to_list(arm_cpu, false));
- 
-     /* Set CP_NO_RAW system registers on init */
--    val.Reg64 = arm_cpu->midr;
-+    val.Reg64 = GET_IDREG(&arm_cpu->isar, MIDR);
-     whpx_set_reg(cpu, WHvArm64RegisterMidrEl1,
-                               val);
- 
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++/* IDREG_START(REG) */
++/*     IDREG_FIELD(REG, FIELD, SHIFT, LENGTH) */
++/* ... */
++/* IDREG_END(REG) */
++
++IDREG_START(AIDR_EL1)
++IDREG_END(AIDR_EL1)
++
++IDREG_START(CCSIDR2_EL1)
++    IDREG_FIELD(CCSIDR2_EL1, NumSets, 0, 24)
++IDREG_END(CCSIDR2_EL1)
++
++IDREG_START(CCSIDR_EL1)
++    IDREG_FIELD(CCSIDR_EL1, NumSets, 32, 24)
++    IDREG_FIELD(CCSIDR_EL1, Associativity, 3, 21)
++    IDREG_FIELD(CCSIDR_EL1, LineSize, 0, 3)
++IDREG_END(CCSIDR_EL1)
++
++IDREG_START(CLIDR_EL1)
++    IDREG_FIELD(CLIDR_EL1, Ttype7, 45, 2)
++    IDREG_FIELD(CLIDR_EL1, Ttype6, 43, 2)
++    IDREG_FIELD(CLIDR_EL1, Ttype5, 41, 2)
++    IDREG_FIELD(CLIDR_EL1, Ttype4, 39, 2)
++    IDREG_FIELD(CLIDR_EL1, Ttype3, 37, 2)
++    IDREG_FIELD(CLIDR_EL1, Ttype2, 35, 2)
++    IDREG_FIELD(CLIDR_EL1, Ttype1, 33, 2)
++    IDREG_FIELD(CLIDR_EL1, ICB, 30, 3)
++    IDREG_FIELD(CLIDR_EL1, LoUU, 27, 3)
++    IDREG_FIELD(CLIDR_EL1, LoC, 24, 3)
++    IDREG_FIELD(CLIDR_EL1, LoUIS, 21, 3)
++    IDREG_FIELD(CLIDR_EL1, Ctype7, 18, 3)
++    IDREG_FIELD(CLIDR_EL1, Ctype6, 15, 3)
++    IDREG_FIELD(CLIDR_EL1, Ctype5, 12, 3)
++    IDREG_FIELD(CLIDR_EL1, Ctype4, 9, 3)
++    IDREG_FIELD(CLIDR_EL1, Ctype3, 6, 3)
++    IDREG_FIELD(CLIDR_EL1, Ctype2, 3, 3)
++    IDREG_FIELD(CLIDR_EL1, Ctype1, 0, 3)
++IDREG_END(CLIDR_EL1)
++
++IDREG_START(CTR_EL0)
++    IDREG_FIELD(CTR_EL0, TminLine, 32, 6)
++    IDREG_FIELD(CTR_EL0, DIC, 29, 1)
++    IDREG_FIELD(CTR_EL0, IDC, 28, 1)
++    IDREG_FIELD(CTR_EL0, CWG, 24, 4)
++    IDREG_FIELD(CTR_EL0, ERG, 20, 4)
++    IDREG_FIELD(CTR_EL0, DminLine, 16, 4)
++    IDREG_FIELD(CTR_EL0, L1Ip, 14, 2)
++    IDREG_FIELD(CTR_EL0, IminLine, 0, 4)
++IDREG_END(CTR_EL0)
++
++IDREG_START(DCZID_EL0)
++    IDREG_FIELD(DCZID_EL0, TBS, 5, 4)
++    IDREG_FIELD(DCZID_EL0, DZP, 4, 1)
++    IDREG_FIELD(DCZID_EL0, BS, 0, 4)
++IDREG_END(DCZID_EL0)
++
++IDREG_START(GMID_EL1)
++    IDREG_FIELD(GMID_EL1, BS, 0, 4)
++IDREG_END(GMID_EL1)
++
++IDREG_START(ID_AA64AFR0_EL1)
++IDREG_END(ID_AA64AFR0_EL1)
++
++IDREG_START(ID_AA64AFR1_EL1)
++IDREG_END(ID_AA64AFR1_EL1)
++
++IDREG_START(ID_AA64DFR0_EL1)
++    IDREG_FIELD(ID_AA64DFR0_EL1, HPMN0, 60, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, ExtTrcBuff, 56, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, BRBE, 52, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, MTPMU, 48, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, TraceBuffer, 44, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, TraceFilt, 40, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, DoubleLock, 36, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, PMSVer, 32, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, CTX_CMPs, 28, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, WRPs, 20, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, PMSS, 16, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, BRPs, 12, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, PMUVer, 8, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, TraceVer, 4, 4)
++    IDREG_FIELD(ID_AA64DFR0_EL1, DebugVer, 0, 4)
++IDREG_END(ID_AA64DFR0_EL1)
++
++IDREG_START(ID_AA64DFR1_EL1)
++    IDREG_FIELD(ID_AA64DFR1_EL1, ABL_CMPs, 56, 8)
++    IDREG_FIELD(ID_AA64DFR1_EL1, DPFZS, 52, 4)
++    IDREG_FIELD(ID_AA64DFR1_EL1, EBEP, 48, 4)
++    IDREG_FIELD(ID_AA64DFR1_EL1, ITE, 44, 4)
++    IDREG_FIELD(ID_AA64DFR1_EL1, ABLE, 40, 4)
++    IDREG_FIELD(ID_AA64DFR1_EL1, PMICNTR, 36, 4)
++    IDREG_FIELD(ID_AA64DFR1_EL1, SPMU, 32, 4)
++    IDREG_FIELD(ID_AA64DFR1_EL1, CTX_CMPs, 24, 8)
++    IDREG_FIELD(ID_AA64DFR1_EL1, WRPs, 16, 8)
++    IDREG_FIELD(ID_AA64DFR1_EL1, BRPs, 8, 8)
++    IDREG_FIELD(ID_AA64DFR1_EL1, SYSPMUID, 0, 8)
++IDREG_END(ID_AA64DFR1_EL1)
++
++IDREG_START(ID_AA64DFR2_EL1)
++    IDREG_FIELD(ID_AA64DFR2_EL1, TRBE_EXC, 24, 4)
++    IDREG_FIELD(ID_AA64DFR2_EL1, SPE_nVM, 20, 4)
++    IDREG_FIELD(ID_AA64DFR2_EL1, SPE_EXC, 16, 4)
++    IDREG_FIELD(ID_AA64DFR2_EL1, BWE, 4, 4)
++    IDREG_FIELD(ID_AA64DFR2_EL1, STEP, 0, 4)
++IDREG_END(ID_AA64DFR2_EL1)
++
++IDREG_START(ID_AA64FPFR0_EL1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8CVT, 31, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8FMA, 30, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8DP4, 29, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8DP2, 28, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8MM8, 27, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8MM4, 26, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F16MM2, 15, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8E4M3, 1, 1)
++    IDREG_FIELD(ID_AA64FPFR0_EL1, F8E5M2, 0, 1)
++IDREG_END(ID_AA64FPFR0_EL1)
++
++IDREG_START(ID_AA64ISAR0_EL1)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, RNDR, 60, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, TLB, 56, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, TS, 52, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, FHM, 48, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, DP, 44, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, SM4, 40, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, SM3, 36, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, SHA3, 32, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, RDM, 28, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, Atomic, 20, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, CRC32, 16, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, SHA2, 12, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, SHA1, 8, 4)
++    IDREG_FIELD(ID_AA64ISAR0_EL1, AES, 4, 4)
++IDREG_END(ID_AA64ISAR0_EL1)
++
++IDREG_START(ID_AA64ISAR1_EL1)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, LS64, 60, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, XS, 56, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, I8MM, 52, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, DGH, 48, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, BF16, 44, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, SPECRES, 40, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, SB, 36, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, FRINTTS, 32, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, GPI, 28, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, GPA, 24, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, LRCPC, 20, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, FCMA, 16, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, JSCVT, 12, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, API, 8, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, APA, 4, 4)
++    IDREG_FIELD(ID_AA64ISAR1_EL1, DPB, 0, 4)
++IDREG_END(ID_AA64ISAR1_EL1)
++
++IDREG_START(ID_AA64ISAR2_EL1)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, ATS1A, 60, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, LUT, 56, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, CSSC, 52, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, RPRFM, 48, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, PCDPHINT, 44, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, PRFMSLC, 40, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, SYSINSTR_128, 36, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, SYSREG_128, 32, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, CLRBHB, 28, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, PAC_frac, 24, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, BC, 20, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, MOPS, 16, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, APA3, 12, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, GPA3, 8, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, RPRES, 4, 4)
++    IDREG_FIELD(ID_AA64ISAR2_EL1, WFxT, 0, 4)
++IDREG_END(ID_AA64ISAR2_EL1)
++
++IDREG_START(ID_AA64ISAR3_EL1)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, LSCP, 44, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, LSCSHINT, 40, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, MTETC, 36, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, PAC_frac2, 32, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, FPRCVT, 28, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, LSUI, 24, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, OCCMO, 20, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, LSFE, 16, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, PACM, 12, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, TLBIW, 8, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, FAMINMAX, 4, 4)
++    IDREG_FIELD(ID_AA64ISAR3_EL1, CPA, 0, 4)
++IDREG_END(ID_AA64ISAR3_EL1)
++
++IDREG_START(ID_AA64MMFR0_EL1)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, ECV, 60, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, FGT, 56, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, ExS, 44, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran4_2, 40, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran64_2, 36, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran16_2, 32, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran4, 28, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran64, 24, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran16, 20, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, BigEndEL0, 16, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, SNSMem, 12, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, BigEnd, 8, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, ASIDBits, 4, 4)
++    IDREG_FIELD(ID_AA64MMFR0_EL1, PARange, 0, 4)
++IDREG_END(ID_AA64MMFR0_EL1)
++
++IDREG_START(ID_AA64MMFR1_EL1)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, ECBHB, 60, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, CMOW, 56, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, TIDCP1, 52, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, nTLBPA, 48, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, AFP, 44, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, HCX, 40, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, ETS, 36, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, TWED, 32, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, XNX, 28, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, SpecSEI, 24, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, PAN, 20, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, LO, 16, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, HPDS, 12, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, VH, 8, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, VMIDBits, 4, 4)
++    IDREG_FIELD(ID_AA64MMFR1_EL1, HAFDBS, 0, 4)
++IDREG_END(ID_AA64MMFR1_EL1)
++
++IDREG_START(ID_AA64MMFR2_EL1)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, E0PD, 60, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, EVT, 56, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, BBM, 52, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, TTL, 48, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, FWB, 40, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, IDS, 36, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, AT, 32, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, ST, 28, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, NV, 24, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, CCIDX, 20, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, VARange, 16, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, IESB, 12, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, LSM, 8, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, UAO, 4, 4)
++    IDREG_FIELD(ID_AA64MMFR2_EL1, CnP, 0, 4)
++IDREG_END(ID_AA64MMFR2_EL1)
++
++IDREG_START(ID_AA64MMFR3_EL1)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, Spec_FPACC, 60, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, ADERR, 56, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, SDERR, 52, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, ANERR, 44, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, SNERR, 40, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, D128_2, 36, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, D128, 32, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, MEC, 28, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, AIE, 24, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, S2POE, 20, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, S1POE, 16, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, S2PIE, 12, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, S1PIE, 8, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, SCTLRX, 4, 4)
++    IDREG_FIELD(ID_AA64MMFR3_EL1, TCRX, 0, 4)
++IDREG_END(ID_AA64MMFR3_EL1)
++
++IDREG_START(ID_AA64MMFR4_EL1)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, MTEFGT, 60, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, SCRX, 56, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, TEV, 52, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, TPS, 48, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, SRMASK, 44, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, TLBID, 40, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, E3DSE, 36, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, EAESR, 32, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, RMEGDI, 28, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, E2H0, 24, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, NV_frac, 20, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, FGWTE3, 16, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, HACDBS, 12, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, ASID2, 8, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, EIESB, 4, 4)
++    IDREG_FIELD(ID_AA64MMFR4_EL1, PoPS, 0, 4)
++IDREG_END(ID_AA64MMFR4_EL1)
++
++IDREG_START(ID_AA64PFR0_EL1)
++    IDREG_FIELD(ID_AA64PFR0_EL1, CSV3, 60, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, CSV2, 56, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, RME, 52, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, DIT, 48, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, AMU, 44, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, MPAM, 40, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, SEL2, 36, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, SVE, 32, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, RAS, 28, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, GIC, 24, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, AdvSIMD, 20, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, FP, 16, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, EL3, 12, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, EL2, 8, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, EL1, 4, 4)
++    IDREG_FIELD(ID_AA64PFR0_EL1, EL0, 0, 4)
++IDREG_END(ID_AA64PFR0_EL1)
++
++IDREG_START(ID_AA64PFR1_EL1)
++    IDREG_FIELD(ID_AA64PFR1_EL1, PFAR, 60, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, DF2, 56, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, MTEX, 52, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, THE, 48, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, GCS, 44, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, MTE_frac, 40, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, NMI, 36, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, CSV2_frac, 32, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, RNDR_trap, 28, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, SME, 24, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, MPAM_frac, 16, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, RAS_frac, 12, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, MTE, 8, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, SSBS, 4, 4)
++    IDREG_FIELD(ID_AA64PFR1_EL1, BT, 0, 4)
++IDREG_END(ID_AA64PFR1_EL1)
++
++IDREG_START(ID_AA64PFR2_EL1)
++    IDREG_FIELD(ID_AA64PFR2_EL1, VMTETCL, 44, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, VMTETC, 40, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, VMTE, 36, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, FPMR, 32, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, MPAM2, 28, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, FGDT, 24, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, MTEEIRG, 20, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, UINJ, 16, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, GCIE, 12, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, MTEFAR, 8, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, MTESTOREONLY, 4, 4)
++    IDREG_FIELD(ID_AA64PFR2_EL1, MTEPERM, 0, 4)
++IDREG_END(ID_AA64PFR2_EL1)
++
++IDREG_START(ID_AA64SMFR0_EL1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, FA64, 63, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, LUT6, 61, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, LUTv2, 60, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, SMEver, 56, 4)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, I16I64, 52, 4)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, F64F64, 48, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, I16I32, 44, 4)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, B16B16, 43, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, F16F16, 42, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, F8F16, 41, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, F8F32, 40, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, I8I32, 36, 4)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, F16F32, 35, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, B16F32, 34, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, BI32I32, 33, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, F32F32, 32, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, SF8FMA, 30, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, SF8DP4, 29, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, SF8DP2, 28, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, SBitPerm, 25, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, AES, 24, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, SFEXPA, 23, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, STMOP, 16, 1)
++    IDREG_FIELD(ID_AA64SMFR0_EL1, SMOP4, 0, 1)
++IDREG_END(ID_AA64SMFR0_EL1)
++
++IDREG_START(ID_AA64ZFR0_EL1)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, F64MM, 56, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, F32MM, 52, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, F16MM, 48, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, I8MM, 44, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, SM4, 40, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, SHA3, 32, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, B16B16, 24, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, BF16, 20, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, BitPerm, 16, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, EltPerm, 12, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, AES, 4, 4)
++    IDREG_FIELD(ID_AA64ZFR0_EL1, SVEver, 0, 4)
++IDREG_END(ID_AA64ZFR0_EL1)
++
++IDREG_START(ID_AFR0_EL1)
++IDREG_END(ID_AFR0_EL1)
++
++IDREG_START(ID_DFR0_EL1)
++    IDREG_FIELD(ID_DFR0_EL1, TraceFilt, 28, 4)
++    IDREG_FIELD(ID_DFR0_EL1, PerfMon, 24, 4)
++    IDREG_FIELD(ID_DFR0_EL1, MProfDbg, 20, 4)
++    IDREG_FIELD(ID_DFR0_EL1, MMapTrc, 16, 4)
++    IDREG_FIELD(ID_DFR0_EL1, CopTrc, 12, 4)
++    IDREG_FIELD(ID_DFR0_EL1, MMapDbg, 8, 4)
++    IDREG_FIELD(ID_DFR0_EL1, CopSDbg, 4, 4)
++    IDREG_FIELD(ID_DFR0_EL1, CopDbg, 0, 4)
++IDREG_END(ID_DFR0_EL1)
++
++IDREG_START(ID_DFR1_EL1)
++    IDREG_FIELD(ID_DFR1_EL1, HPMN0, 4, 4)
++    IDREG_FIELD(ID_DFR1_EL1, MTPMU, 0, 4)
++IDREG_END(ID_DFR1_EL1)
++
++IDREG_START(ID_ISAR0_EL1)
++    IDREG_FIELD(ID_ISAR0_EL1, Divide, 24, 4)
++    IDREG_FIELD(ID_ISAR0_EL1, Debug, 20, 4)
++    IDREG_FIELD(ID_ISAR0_EL1, Coproc, 16, 4)
++    IDREG_FIELD(ID_ISAR0_EL1, CmpBranch, 12, 4)
++    IDREG_FIELD(ID_ISAR0_EL1, BitField, 8, 4)
++    IDREG_FIELD(ID_ISAR0_EL1, BitCount, 4, 4)
++    IDREG_FIELD(ID_ISAR0_EL1, Swap, 0, 4)
++IDREG_END(ID_ISAR0_EL1)
++
++IDREG_START(ID_ISAR1_EL1)
++    IDREG_FIELD(ID_ISAR1_EL1, Jazelle, 28, 4)
++    IDREG_FIELD(ID_ISAR1_EL1, Interwork, 24, 4)
++    IDREG_FIELD(ID_ISAR1_EL1, Immediate, 20, 4)
++    IDREG_FIELD(ID_ISAR1_EL1, IfThen, 16, 4)
++    IDREG_FIELD(ID_ISAR1_EL1, Extend, 12, 4)
++    IDREG_FIELD(ID_ISAR1_EL1, Except_AR, 8, 4)
++    IDREG_FIELD(ID_ISAR1_EL1, Except, 4, 4)
++    IDREG_FIELD(ID_ISAR1_EL1, Endian, 0, 4)
++IDREG_END(ID_ISAR1_EL1)
++
++IDREG_START(ID_ISAR2_EL1)
++    IDREG_FIELD(ID_ISAR2_EL1, Reversal, 28, 4)
++    IDREG_FIELD(ID_ISAR2_EL1, PSR_AR, 24, 4)
++    IDREG_FIELD(ID_ISAR2_EL1, MultU, 20, 4)
++    IDREG_FIELD(ID_ISAR2_EL1, MultS, 16, 4)
++    IDREG_FIELD(ID_ISAR2_EL1, Mult, 12, 4)
++    IDREG_FIELD(ID_ISAR2_EL1, MultiAccessInt, 8, 4)
++    IDREG_FIELD(ID_ISAR2_EL1, MemHint, 4, 4)
++    IDREG_FIELD(ID_ISAR2_EL1, LoadStore, 0, 4)
++IDREG_END(ID_ISAR2_EL1)
++
++IDREG_START(ID_ISAR3_EL1)
++    IDREG_FIELD(ID_ISAR3_EL1, T32EE, 28, 4)
++    IDREG_FIELD(ID_ISAR3_EL1, TrueNOP, 24, 4)
++    IDREG_FIELD(ID_ISAR3_EL1, T32Copy, 20, 4)
++    IDREG_FIELD(ID_ISAR3_EL1, TabBranch, 16, 4)
++    IDREG_FIELD(ID_ISAR3_EL1, SynchPrim, 12, 4)
++    IDREG_FIELD(ID_ISAR3_EL1, SVC, 8, 4)
++    IDREG_FIELD(ID_ISAR3_EL1, SIMD, 4, 4)
++    IDREG_FIELD(ID_ISAR3_EL1, Saturate, 0, 4)
++IDREG_END(ID_ISAR3_EL1)
++
++IDREG_START(ID_ISAR4_EL1)
++    IDREG_FIELD(ID_ISAR4_EL1, SWP_frac, 28, 4)
++    IDREG_FIELD(ID_ISAR4_EL1, PSR_M, 24, 4)
++    IDREG_FIELD(ID_ISAR4_EL1, SynchPrim_frac, 20, 4)
++    IDREG_FIELD(ID_ISAR4_EL1, Barrier, 16, 4)
++    IDREG_FIELD(ID_ISAR4_EL1, SMC, 12, 4)
++    IDREG_FIELD(ID_ISAR4_EL1, Writeback, 8, 4)
++    IDREG_FIELD(ID_ISAR4_EL1, WithShifts, 4, 4)
++    IDREG_FIELD(ID_ISAR4_EL1, Unpriv, 0, 4)
++IDREG_END(ID_ISAR4_EL1)
++
++IDREG_START(ID_ISAR5_EL1)
++    IDREG_FIELD(ID_ISAR5_EL1, VCMA, 28, 4)
++    IDREG_FIELD(ID_ISAR5_EL1, RDM, 24, 4)
++    IDREG_FIELD(ID_ISAR5_EL1, CRC32, 16, 4)
++    IDREG_FIELD(ID_ISAR5_EL1, SHA2, 12, 4)
++    IDREG_FIELD(ID_ISAR5_EL1, SHA1, 8, 4)
++    IDREG_FIELD(ID_ISAR5_EL1, AES, 4, 4)
++    IDREG_FIELD(ID_ISAR5_EL1, SEVL, 0, 4)
++IDREG_END(ID_ISAR5_EL1)
++
++IDREG_START(ID_ISAR6_EL1)
++    IDREG_FIELD(ID_ISAR6_EL1, CLRBHB, 28, 4)
++    IDREG_FIELD(ID_ISAR6_EL1, I8MM, 24, 4)
++    IDREG_FIELD(ID_ISAR6_EL1, BF16, 20, 4)
++    IDREG_FIELD(ID_ISAR6_EL1, SPECRES, 16, 4)
++    IDREG_FIELD(ID_ISAR6_EL1, SB, 12, 4)
++    IDREG_FIELD(ID_ISAR6_EL1, FHM, 8, 4)
++    IDREG_FIELD(ID_ISAR6_EL1, DP, 4, 4)
++    IDREG_FIELD(ID_ISAR6_EL1, JSCVT, 0, 4)
++IDREG_END(ID_ISAR6_EL1)
++
++IDREG_START(ID_MMFR0_EL1)
++    IDREG_FIELD(ID_MMFR0_EL1, InnerShr, 28, 4)
++    IDREG_FIELD(ID_MMFR0_EL1, FCSE, 24, 4)
++    IDREG_FIELD(ID_MMFR0_EL1, AuxReg, 20, 4)
++    IDREG_FIELD(ID_MMFR0_EL1, TCM, 16, 4)
++    IDREG_FIELD(ID_MMFR0_EL1, ShareLvl, 12, 4)
++    IDREG_FIELD(ID_MMFR0_EL1, OuterShr, 8, 4)
++    IDREG_FIELD(ID_MMFR0_EL1, PMSA, 4, 4)
++    IDREG_FIELD(ID_MMFR0_EL1, VMSA, 0, 4)
++IDREG_END(ID_MMFR0_EL1)
++
++IDREG_START(ID_MMFR1_EL1)
++    IDREG_FIELD(ID_MMFR1_EL1, BPred, 28, 4)
++    IDREG_FIELD(ID_MMFR1_EL1, L1TstCln, 24, 4)
++    IDREG_FIELD(ID_MMFR1_EL1, L1Uni, 20, 4)
++    IDREG_FIELD(ID_MMFR1_EL1, L1Hvd, 16, 4)
++    IDREG_FIELD(ID_MMFR1_EL1, L1UniSW, 12, 4)
++    IDREG_FIELD(ID_MMFR1_EL1, L1HvdSW, 8, 4)
++    IDREG_FIELD(ID_MMFR1_EL1, L1UniVA, 4, 4)
++    IDREG_FIELD(ID_MMFR1_EL1, L1HvdVA, 0, 4)
++IDREG_END(ID_MMFR1_EL1)
++
++IDREG_START(ID_MMFR2_EL1)
++    IDREG_FIELD(ID_MMFR2_EL1, HWAccFlg, 28, 4)
++    IDREG_FIELD(ID_MMFR2_EL1, WFIStall, 24, 4)
++    IDREG_FIELD(ID_MMFR2_EL1, MemBarr, 20, 4)
++    IDREG_FIELD(ID_MMFR2_EL1, UniTLB, 16, 4)
++    IDREG_FIELD(ID_MMFR2_EL1, HvdTLB, 12, 4)
++    IDREG_FIELD(ID_MMFR2_EL1, L1HvdRng, 8, 4)
++    IDREG_FIELD(ID_MMFR2_EL1, L1HvdBG, 4, 4)
++    IDREG_FIELD(ID_MMFR2_EL1, L1HvdFG, 0, 4)
++IDREG_END(ID_MMFR2_EL1)
++
++IDREG_START(ID_MMFR3_EL1)
++    IDREG_FIELD(ID_MMFR3_EL1, Supersec, 28, 4)
++    IDREG_FIELD(ID_MMFR3_EL1, CMemSz, 24, 4)
++    IDREG_FIELD(ID_MMFR3_EL1, CohWalk, 20, 4)
++    IDREG_FIELD(ID_MMFR3_EL1, PAN, 16, 4)
++    IDREG_FIELD(ID_MMFR3_EL1, MaintBcst, 12, 4)
++    IDREG_FIELD(ID_MMFR3_EL1, BPMaint, 8, 4)
++    IDREG_FIELD(ID_MMFR3_EL1, CMaintSW, 4, 4)
++    IDREG_FIELD(ID_MMFR3_EL1, CMaintVA, 0, 4)
++IDREG_END(ID_MMFR3_EL1)
++
++IDREG_START(ID_MMFR4_EL1)
++    IDREG_FIELD(ID_MMFR4_EL1, EVT, 28, 4)
++    IDREG_FIELD(ID_MMFR4_EL1, CCIDX, 24, 4)
++    IDREG_FIELD(ID_MMFR4_EL1, LSM, 20, 4)
++    IDREG_FIELD(ID_MMFR4_EL1, HPDS, 16, 4)
++    IDREG_FIELD(ID_MMFR4_EL1, CnP, 12, 4)
++    IDREG_FIELD(ID_MMFR4_EL1, XNX, 8, 4)
++    IDREG_FIELD(ID_MMFR4_EL1, AC2, 4, 4)
++    IDREG_FIELD(ID_MMFR4_EL1, SpecSEI, 0, 4)
++IDREG_END(ID_MMFR4_EL1)
++
++IDREG_START(ID_MMFR5_EL1)
++    IDREG_FIELD(ID_MMFR5_EL1, nTLBPA, 4, 4)
++    IDREG_FIELD(ID_MMFR5_EL1, ETS, 0, 4)
++IDREG_END(ID_MMFR5_EL1)
++
++IDREG_START(ID_PFR0_EL1)
++    IDREG_FIELD(ID_PFR0_EL1, RAS, 28, 4)
++    IDREG_FIELD(ID_PFR0_EL1, DIT, 24, 4)
++    IDREG_FIELD(ID_PFR0_EL1, AMU, 20, 4)
++    IDREG_FIELD(ID_PFR0_EL1, CSV2, 16, 4)
++    IDREG_FIELD(ID_PFR0_EL1, State3, 12, 4)
++    IDREG_FIELD(ID_PFR0_EL1, State2, 8, 4)
++    IDREG_FIELD(ID_PFR0_EL1, State1, 4, 4)
++    IDREG_FIELD(ID_PFR0_EL1, State0, 0, 4)
++IDREG_END(ID_PFR0_EL1)
++
++IDREG_START(ID_PFR1_EL1)
++    IDREG_FIELD(ID_PFR1_EL1, GIC, 28, 4)
++    IDREG_FIELD(ID_PFR1_EL1, Virt_frac, 24, 4)
++    IDREG_FIELD(ID_PFR1_EL1, Sec_frac, 20, 4)
++    IDREG_FIELD(ID_PFR1_EL1, GenTimer, 16, 4)
++    IDREG_FIELD(ID_PFR1_EL1, Virtualization, 12, 4)
++    IDREG_FIELD(ID_PFR1_EL1, MProgMod, 8, 4)
++    IDREG_FIELD(ID_PFR1_EL1, Security, 4, 4)
++    IDREG_FIELD(ID_PFR1_EL1, ProgMod, 0, 4)
++IDREG_END(ID_PFR1_EL1)
++
++IDREG_START(ID_PFR2_EL1)
++    IDREG_FIELD(ID_PFR2_EL1, RAS_frac, 8, 4)
++    IDREG_FIELD(ID_PFR2_EL1, SSBS, 4, 4)
++    IDREG_FIELD(ID_PFR2_EL1, CSV3, 0, 4)
++IDREG_END(ID_PFR2_EL1)
++
++IDREG_START(MIDR_EL1)
++    IDREG_FIELD(MIDR_EL1, Implementer, 24, 8)
++    IDREG_FIELD(MIDR_EL1, Variant, 20, 4)
++    IDREG_FIELD(MIDR_EL1, Architecture, 16, 4)
++    IDREG_FIELD(MIDR_EL1, PartNum, 4, 12)
++    IDREG_FIELD(MIDR_EL1, Revision, 0, 4)
++IDREG_END(MIDR_EL1)
++
++IDREG_START(MPIDR_EL1)
++    IDREG_FIELD(MPIDR_EL1, Aff3, 32, 8)
++    IDREG_FIELD(MPIDR_EL1, U, 30, 1)
++    IDREG_FIELD(MPIDR_EL1, MT, 24, 1)
++    IDREG_FIELD(MPIDR_EL1, Aff2, 16, 8)
++    IDREG_FIELD(MPIDR_EL1, Aff1, 8, 8)
++    IDREG_FIELD(MPIDR_EL1, Aff0, 0, 8)
++IDREG_END(MPIDR_EL1)
++
++IDREG_START(MVFR0_EL1)
++    IDREG_FIELD(MVFR0_EL1, FPRound, 28, 4)
++    IDREG_FIELD(MVFR0_EL1, FPShVec, 24, 4)
++    IDREG_FIELD(MVFR0_EL1, FPSqrt, 20, 4)
++    IDREG_FIELD(MVFR0_EL1, FPDivide, 16, 4)
++    IDREG_FIELD(MVFR0_EL1, FPTrap, 12, 4)
++    IDREG_FIELD(MVFR0_EL1, FPDP, 8, 4)
++    IDREG_FIELD(MVFR0_EL1, FPSP, 4, 4)
++    IDREG_FIELD(MVFR0_EL1, SIMDReg, 0, 4)
++IDREG_END(MVFR0_EL1)
++
++IDREG_START(MVFR1_EL1)
++    IDREG_FIELD(MVFR1_EL1, SIMDFMAC, 28, 4)
++    IDREG_FIELD(MVFR1_EL1, FPHP, 24, 4)
++    IDREG_FIELD(MVFR1_EL1, SIMDHP, 20, 4)
++    IDREG_FIELD(MVFR1_EL1, SIMDSP, 16, 4)
++    IDREG_FIELD(MVFR1_EL1, SIMDInt, 12, 4)
++    IDREG_FIELD(MVFR1_EL1, SIMDLS, 8, 4)
++    IDREG_FIELD(MVFR1_EL1, FPDNaN, 4, 4)
++    IDREG_FIELD(MVFR1_EL1, FPFtZ, 0, 4)
++IDREG_END(MVFR1_EL1)
++
++IDREG_START(MVFR2_EL1)
++    IDREG_FIELD(MVFR2_EL1, FPMisc, 4, 4)
++    IDREG_FIELD(MVFR2_EL1, SIMDMisc, 0, 4)
++IDREG_END(MVFR2_EL1)
++
++IDREG_START(REVIDR_EL1)
++IDREG_END(REVIDR_EL1)
++
++IDREG_START(SMIDR_EL1)
++    IDREG_FIELD(SMIDR_EL1, NSMC, 56, 4)
++    IDREG_FIELD(SMIDR_EL1, HIP, 52, 4)
++    IDREG_FIELD(SMIDR_EL1, Affinity2, 32, 20)
++    IDREG_FIELD(SMIDR_EL1, Implementer, 24, 8)
++    IDREG_FIELD(SMIDR_EL1, Revision, 16, 8)
++    IDREG_FIELD(SMIDR_EL1, SMPS, 15, 1)
++    IDREG_FIELD(SMIDR_EL1, SH, 13, 2)
++    IDREG_FIELD(SMIDR_EL1, Affinity, 0, 12)
++IDREG_END(SMIDR_EL1)
++
+diff --git a/scripts/update-aarch64-cpu-sysreg-properties.py b/scripts/update-aarch64-cpu-sysreg-properties.py
+new file mode 100644
+index 0000000000..436e36ef58
+--- /dev/null
++++ b/scripts/update-aarch64-cpu-sysreg-properties.py
+@@ -0,0 +1,165 @@
++#!/usr/bin/env python3
++
++# This script takes as input the Registers.json file delivered in
++# the AARCHMRS Features Model downloadable from the Arm Developer
++# A-Profile Architecture Exploration Tools page:
++# https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
++# and outputs target/arm/cpu-idregs.h.inc content.
++# ID regs are defined using this pattern:
++#
++# IDREG_START(REG)
++#    IDREG_FIELD(REG, FIELD, SHIFT, LENGTH)
++# ...
++# IDREG_END(REG)
++#
++# Copyright (C) 2026 Red Hat, Inc.
++#
++# Authors: Eric Auger <eric.auger@redhat.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++
++import json
++import os
++import sys
++from aarch64_sysreg_helpers import extract_idregs_from_registers_json
++
++# look for all the fields belonging to a register fieldset
++# this is a recursive parser where bit_offset is used to convey
++# bit positions from the parent container if any
++def collect_fields(fieldset, bit_offset=0):
++    fields = []
++    if not isinstance(fieldset, dict):
++        return fields
++
++    _type = fieldset.get('_type', '')
++
++    # Leaf array type (for example CLIDR_EL1 Ctype<n>, Ttype<n>)
++    if _type == 'Fields.Array':
++        name_template = fieldset.get('name') or fieldset.get('label', '')
++        index_info = fieldset.get('indexes', [{}])[0]
++        start_idx = index_info.get('start', 0)
++        count = index_info.get('width', 0)
++
++        full_range = fieldset.get('rangeset', [{}])[0]
++        bit_start = full_range.get('start', 0) + bit_offset
++        elem_width = full_range.get('width', 0) // count if count else 0
++
++        for i in range(count):
++            idx = start_idx + i
++            # Append the actual index to the field by replacing <n>
++            field_name = name_template.replace('<n>', str(idx))
++            fields.append({
++                'name': field_name,
++                'rangeset': [{
++                    'start': bit_start + (i * elem_width),
++                    'width': elem_width
++                }],
++                '_type': 'Fields.Field'
++            })
++        return fields
++
++    # Conditional field which depend on specific FEAT_*
++    # like ID_AA64ZFR0_EL1_SVEver or ID_AA64MMFR4_EL1_E2H0
++    elif _type == 'Fields.ConditionalField':
++        container_bit_offset = bit_offset
++        if fieldset.get('rangeset'):
++            # Parent container defines the absolute start bit
++            container_bit_offset = fieldset['rangeset'][0].get('start', bit_offset)
++
++        for entry in fieldset.get('fields', []):
++            inner = entry.get('field')
++            if inner:
++                fields.extend(collect_fields(inner, container_bit_offset))
++        return fields
++
++    # Field Types
++    leaf_types = ['Fields.Field', 'Fields.ConstantField',
++                  'Fields.EnumeratedField', 'Fields.Bitfield']
++    if _type in leaf_types:
++        field_copy = fieldset.copy()
++        if field_copy.get('rangeset'):
++            new_ranges = []
++            for r in field_copy['rangeset']:
++                nr = r.copy()
++                nr['start'] = r.get('start', 0) + bit_offset
++                new_ranges.append(nr)
++            field_copy['rangeset'] = new_ranges
++        fields.append(field_copy)
++        return fields
++
++    # Traverse the hierarchy for other cases
++    for key in ['fields', 'values', 'fieldsets']:
++        for nested in fieldset.get(key, []):
++            fields.extend(collect_fields(nested, bit_offset))
++
++    return fields
++
++def generate_sysreg_properties_from_registers_json(idregs, raw_json_path):
++    with open(raw_json_path, 'r') as f:
++        register_data = json.load(f)
++
++    regs = {r.get('name'): r for r in register_data if r.get('_type') == 'Register'}
++
++    final_output = ""
++
++    for reg_name in idregs:
++        register = regs.get(reg_name)
++        if not register:
++            print(f"Error: Inconsistency when analyzing registers!", file=sys.stderr)
++            sys.exit(1)
++
++        final_output += f"IDREG_START({reg_name})\n"
++
++        unique_fields = {}
++        for fieldset in register.get('fieldsets', []):
++            candidates = collect_fields(fieldset)
++            for val in candidates:
++                name = (val.get('name') or val.get('label', '')).strip()
++                if not name or "RESERVED" in name.upper():
++                    continue
++                for r in val.get('rangeset', []):
++                    lsb = int(r.get('start'))
++                    width = r.get('width')
++                    msb = lsb + int(width) - 1
++
++                    # In json, some idregs may have multiple fielsets, depending
++                    # on some architecture configurations. If this happens, pick
++                    # up a single one with the largest msb (known one is CCSIDR
++                    # which is currently skipped)
++                    if name not in unique_fields or msb > unique_fields[name]['msb']:
++                       unique_fields[name] = {'lsb': lsb, 'msb': msb, 'width': width}
++
++        # Sort by decreasing lsbs
++        sorted_fields = sorted(unique_fields.items(),
++                               key=lambda x: x[1]['lsb'], reverse=True)
++
++        for name, bits in sorted_fields:
++            line = (f"    IDREG_FIELD({reg_name}, "
++                    f"{name}, {bits['lsb']}, {bits['width']})\n")
++            final_output += line
++        final_output += f"IDREG_END({reg_name})\n"
++        final_output += "\n"
++
++    os.makedirs("target/arm", exist_ok=True)
++    with open("target/arm/cpu-idregs.h.inc", 'w') as f:
++        f.write("/* AUTOMATICALLY GENERATED, DO NOT MODIFY */\n\n")
++        f.write("/* SPDX-License-Identifier: GPL-2.0-or-later */\n\n")
++        f.write("/* IDREG_START(REG) */\n")
++        f.write("/*     IDREG_FIELD(REG, FIELD, SHIFT, LENGTH) */\n")
++        f.write("/* ... */\n")
++        f.write("/* IDREG_END(REG) */\n\n")
++        f.write(final_output)
++
++if __name__ == "__main__":
++    if len(sys.argv) < 2:
++        print("Usage: python scripts/update-aarch64-cpu-sysreg-properties.py "
++              "<path_to_registers_json>")
++    else:
++        json_path = sys.argv[1]
++
++        idregs = extract_idregs_from_registers_json(json_path)
++
++        if idregs:
++            generate_sysreg_properties_from_registers_json(idregs, json_path)
++            print("Generated target/arm/cpu-idregs.h.inc")
 -- 
 2.53.0
 

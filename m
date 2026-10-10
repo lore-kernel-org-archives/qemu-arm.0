@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66C1CA9EBE
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE604CA6017
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:43:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFXHx-0002Vp-QV; Sat, 10 Oct 2026 09:39:02 -0400
+	id 1xFXIn-0004pF-Is; Sat, 10 Oct 2026 09:39:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXHk-0002K9-3b
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xFXIm-0004nt-4C
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXHi-0004c9-9T
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:47 -0400
+ id 1xFXIk-0004nE-82
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791639525;
+ s=mimecast20190719; t=1791639589;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Hsy8Wb76UKgAIrb0kzSti5SOHbp3tE79r/MLWon3/vk=;
- b=EKDOMAPwJtoZb2g2Q4TgyIaGX0iA7sOu7FgIEHNxPUCssN/C7hKNxmmlL1HB1U+9sWWGEQ
- 1K4YlKR++iYoKjJ/Sb8AjuaF/q54SpbMkhkjYia67+36KnzXRl2WNPpZ8z0o84zuiaphg9
- ob2N0j7eUsv4PuaCjBmIL6fgc6WwLAc=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=EbqisRaIUe/W7PEZdi6C4FJJ74syA8YTjrnLe5iUXKw=;
+ b=XSx6g6N835GE7mKrq5KmgcTYRtydtGPiHQNhhs/4VuMZWquAUk6UVrUgDm0f9h+GKVJsDK
+ +nbKs1PEgqcuZF97AGE7pDr0WELWNBRgAbYe/ZFsw7rJcDCKLapXM9Uytq5iSSGxxyCEDH
+ OT2Jwnl581yfFcO0cuszRbppSfeR9nE=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-400-PTvbiei3Nfir4CnuhCL_GA-1; Sat,
- 10 Oct 2026 13:38:42 +0000
-X-MC-Unique: PTvbiei3Nfir4CnuhCL_GA-1
-X-Mimecast-MFC-AGG-ID: PTvbiei3Nfir4CnuhCL_GA_1791639520
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-335-YyMV1p93OGu2Gdk2UjROhw-1; Sat,
+ 10 Oct 2026 13:39:45 +0000
+X-MC-Unique: YyMV1p93OGu2Gdk2UjROhw-1
+X-Mimecast-MFC-AGG-ID: YyMV1p93OGu2Gdk2UjROhw_1791639584
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7D7431800650; Sat, 10 Oct 2026 13:38:40 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1D911195DE58; Sat, 10 Oct 2026 13:39:44 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1646930000E5; Sat, 10 Oct 2026 13:38:35 +0000 (UTC)
+ id 462FE30000E5; Sat, 10 Oct 2026 13:39:35 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,27 +57,26 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v10 13/26] target/arm/cpu64: Add properties for writable IDReg
- fields
-Date: Sat, 10 Oct 2026 15:36:17 +0200
-Message-ID: <20261010133725.642498-14-eric.auger@redhat.com>
+Subject: [PATCH v10 25/26] arm-qmp-cmds: introspection for ID register props
+Date: Sat, 10 Oct 2026 15:36:29 +0200
+Message-ID: <20261010133725.642498-26-eric.auger@redhat.com>
 In-Reply-To: <20261010133725.642498-1-eric.auger@redhat.com>
 References: <20261010133725.642498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 8siL9Bjaivf2IH_T6b3PTMntBkHIiS0gY1Nayn3GRMM_1791639520
+X-Mimecast-MFC-PROC-ID: lKRvb-haProgCH5mrsTc7E_iIKVGxrWWHnIASpZUMVI_1791639584
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,205 +92,267 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For KVM vcpu models, we add properties for all writable
-ID reg fields. This relies on the idreg writable mask retrieved
-from KVM, which is matched aginst the register description
-found in target/arm/cpu-idregs.h.inc.
+From: Cornelia Huck <cohuck@redhat.com>
 
-The code is prepared to extend this capability to all ID
-register fields independently on their writability. This will
-be needed for named vcpu models which may want to relax some
-values to the host supported one.
+Enhance the current host model query-cpu-model-expansion with the
+capability to return SYSREG_* options and also test possible
+values.
 
-REVIDR_EL1 and AIDR_EL1 are writable but they do not expose any
-field. So they will need to be handled separately.
+If no SYSREG prop is set, query-cpu-model-expansion returns the
+default host values for all SYSREG properties. They are extracted
+from a scratch vcpu featuring all the KVM advertised capabilities.
 
-The setter and getter are not yet implemented and currently
-return an error.
+Here is a qmp-shell example:
 
-Note in the future, other acceleration types may benefit from
-those properties.
+(QEMU) query-cpu-model-expansion type=full model={"name":"host"}
+{"return": {"model": {"name": "host", "props": {"SYSREG_ID_AA64PFR0_EL1_EL3": 1,
+"SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0, "SYSREG_CTR_EL0_L1Ip": 3,
+"SYSREG_MIDR_EL1_PartNum": 3407, "SYSREG_CTR_EL0_DminLine": 4,
+"SYSREG_ID_AA64MMFR0_EL1_PARange": 5, "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0
+../..
+
+It becomes also possible to test new SYSREG property values.
+
+With Full expansion of the host model, the SYSREG props are tested
+against a scratch vcpu. With static expansion, no check is performed
+against KVM but only against qemu code (the value does not exceed the
+field size and if the field is associated to enum values, the set
+value belongs to the list of arch enum values.
+
+Examples
+(QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x13}}
+{"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x13) exceeds length of field (4)!"}}
+
+(QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x2}}
+{"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x2) does not match any arch valid enum value!"}}
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
 ---
-v9 -> v10
-- instead of parsing the writable mask, scroll through the fields
-  but still do some sanity checks. Add the writable param
-- move the code to cpu64.c Do not pass any ARM64SysReg handle
-  anymore. Rename the functions
 
-v7 -> v8
-- scratch the '!' in the error_setg
-- addapt to the removal of struct ArmIdRegArchVal
+v9 -> v10:
+- use new proto for kvm_arm_create_init_scratch_vcpu, rework error path
+  and fix visit_type_uint64 call
 
-v5 -> v6
-- for enum values, check against value value when setting the prop
-- do not check writable_map flag anymore
+v8 -> v9:
+- fix the leak reported by Khushit
+- implement static mode for host
 
-v4 -> v5:
-- free prop_name
-- check cpu->writable_map as a preamble in kvm_arm_expose_idreg_properties
+v7 -> v8:
+- do not check if the prop exists (this is checked elsewhere with a
+  different error message)
+- clarify that examples given in the commit msg are based on qmp-shell
+
+v5 -> v6:
+- add the write capability
 ---
- target/arm/cpu64.c      | 113 ++++++++++++++++++++++++++++++++++++++++
- target/arm/trace-events |   6 +++
- 2 files changed, 119 insertions(+)
+ target/arm/arm-qmp-cmds.c | 130 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 118 insertions(+), 12 deletions(-)
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 64103df0a7..b1738c9be3 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -37,6 +37,8 @@
- #include "hw/core/qdev-properties.h"
- #include "internals.h"
- #include "cpu-features.h"
-+#include "cpu-idregs.h"
-+#include "trace.h"
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 83ec95c290..2765594c68 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -21,6 +21,7 @@
+  */
  
- /* convert between <register>_IDX and SYS_<register> */
- #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
-@@ -798,6 +800,116 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
-     arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
-                                      UINT64_MAX, 0, ToleranceOnlySrcTestValue);
- }
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qemu/target-info.h"
+ #include "hw/core/boards.h"
+ #include "kvm_arm.h"
+@@ -30,6 +31,7 @@
+ #include "qapi/qapi-commands-machine.h"
+ #include "qapi/qapi-commands-misc-arm.h"
+ #include "qobject/qdict.h"
++#include "qobject/qnum.h"
+ #include "qom/qom-qobject.h"
+ #include "cpu.h"
+ 
+@@ -83,15 +85,24 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+                                                      CpuModelInfo *model,
+                                                      Error **errp)
+ {
++    bool use_scratch_vcpu = kvm_enabled() && type == CPU_MODEL_EXPANSION_TYPE_FULL;
+     CpuModelExpansionInfo *expansion_info;
++    ObjectPropertyIterator iter;
+     const QDict *qdict_in;
++    ObjectProperty *idregprop;
+     QDict *qdict_out;
+     ObjectClass *oc;
+     Object *obj;
++    Visitor *visitor = NULL;
++    Error *err = NULL;
++    bool scratch_created = false;
+     const char *name;
++    int fdarray[3];
++    int fd = -1;
+     int i;
+ 
+-    if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
++    /* we support static expansion for host model only */
++    if (type != CPU_MODEL_EXPANSION_TYPE_FULL && strcmp(model->name, "host")) {
+         error_setg(errp, "The requested expansion type is not supported");
+         return NULL;
+     }
+@@ -134,9 +145,6 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+     obj = object_new(object_class_get_name(oc));
+ 
+     if (model->props) {
+-        Visitor *visitor;
+-        Error *err = NULL;
+-
+         visitor = qobject_input_visitor_new(model->props);
+         if (!visit_start_struct(visitor, "model.props", NULL, 0, errp)) {
+             visit_free(visitor);
+@@ -146,6 +154,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+ 
+         qdict_in = qobject_to(QDict, model->props);
+         i = 0;
 +
-+static void set_sysreg_prop(Object *obj, Visitor *v,
-+                            const char *name, void *opaque,
-+                            Error **errp)
-+{
-+    error_setg(errp, "%s setter not yet implemented", name);
-+}
-+
-+static void get_sysreg_prop(Object *obj, Visitor *v,
-+                            const char *name, void *opaque,
-+                            Error **errp)
-+{
-+    error_setg(errp, "%s getter not yet implemented", name);
-+}
-+
-+/**
-+ * aarch64_add_idreg_properties: Add SYSREG_<REG>_<FIELD> properties
-+ * for named fields of an ID register
-+ *
-+ * @obj: CPU object
-+ * @reg: Description of the sysreg
-+ * @writable_only: if set, add a property only for writable fields,
-+ * otherwise, add properties unconditionnally
-+ *
-+ * Independently on @writable_only, always check the consistency between
-+ * writable_mask and register fields description: if a field is writable
-+ * make sure all its bits are writable. Also make sure only named fields
-+ * are writable.
-+ */
-+static int
-+aarch64_add_one_idreg_properties(Object *obj, ARM64SysReg *reg,
-+                                 bool writable_only)
-+{
-+    uint64_t map = reg->writable_mask;
-+    int nb_sysreg_props = 0;
-+
-+    for (int i = 0; i < reg->fields_count; i++) {
-+        ARM64SysRegField *field = &reg->fields[i];
-+        int lower = field->shift;
-+        int length = field->length;
-+        int upper = lower + length - 1;
-+        uint64_t field_writable_mask = extract64(map, lower, length);
-+        uint64_t field_mask = MAKE_64BIT_MASK(lower, length);
-+        char *prop_name;
-+
-+        /* skip reserved fields, but still account them in writable_mask */
-+        if (g_str_equal(field->name, "RES0") ||
-+            g_str_equal(field->name, "RES1") ||
-+            g_str_equal(field->name, "RAZ")) {
-+            map &= ~field_mask;
-+            continue;
++        /* Test legacy composite option settings */
+         while ((name = cpu_model_advertised_features[i++]) != NULL) {
+             if (qdict_get(qdict_in, name)) {
+                 if (!object_property_set(obj, name, visitor, &err)) {
+@@ -154,19 +164,89 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+             }
+         }
+ 
+-        if (!err) {
+-            visit_check_struct(visitor, &err);
+-        }
+         if (!err) {
+             arm_cpu_finalize_features(ARM_CPU(obj), &err);
+         }
++        if (err) {
++            goto bail_out;
 +        }
 +
-+        if (field_writable_mask &&
-+            field_writable_mask != MAKE_64BIT_MASK(0, length)) {
-+            /* only a part of the field is writable, this should never happen */
-+            error_report("field %s is not fully writable! (0x%"PRIx64")",
-+                         field->name, field_writable_mask);
-+        }
-+        map = map & ~field_mask;
-+
-+        if (writable_only && !field_writable_mask) {
-+            continue;
-+        }
-+
-+        prop_name = g_strdup_printf("SYSREG_%s_%s", reg->name, field->name);
-+        object_property_add(obj, prop_name, "uint64",
-+                            get_sysreg_prop, set_sysreg_prop, NULL, field);
-+        trace_add_idreg_property(prop_name, lower, upper, field_writable_mask);
-+        g_free(prop_name);
-+        nb_sysreg_props++;
-+    }
-+    if (map) {
-+        error_report("%s has writable bits which do not match "
-+                     "any named field! (0x%" PRIx64")", reg->name, map);
-+    }
-+    trace_nb_sysreg_props(reg->name, nb_sysreg_props);
-+    return 0;
-+}
-+
-+
-+/**
-+ * aarch64_add_idreg_properties:
-+ *
-+ * Add SYSREG_<REG>_<FIELD> properties for every IDReg fields
-+ *
-+ * @cpu: cpu the properties are attached to
-+ * @writable_only:  if set, properties are added only if the field is
-+ * writable. Otherwise, added unconditionnally
-+ */
-+static void aarch64_add_idreg_properties(Object *obj, bool writable_only)
-+{
-+    for (int i = 0; i < NUM_ID_IDX; i++) {
-+        ARM64SysReg *sysregdesc = &arm64_id_regs[i];
-+
-+        if (writable_only && !sysregdesc->writable_mask) {
-+            continue;
-+        }
-+        /*
-+         * special case REVIDR_EL1 and AIDR_EL1 which are writable but
-+         * do not expose named fields. They will need to be handled
-+         * separately
++        /**
++         * Test SYSREG option settings
++         * In full mode, build a scratch vcpu that reflects composite legacy
++         * options
 +         */
-+        if (!strcmp(sysregdesc->name, "REVIDR_EL1") ||
-+            !strcmp(sysregdesc->name, "AIDR_EL1")) {
++        if (use_scratch_vcpu) {
++            Error *local_err = NULL;
++            bool has_virt = object_property_get_bool(OBJECT(current_machine),
++                                                     "virtualization",
++                                                     &local_err);
++
++            if (local_err) {
++                error_free(local_err); /* the machine property does not exist */
++            } else {
++                if (!has_virt && object_property_find(obj, "has_el2")) {
++                    object_property_set_bool(obj, "has_el2", false, NULL);
++                }
++            }
++            fd = kvm_arm_create_init_scratch_vcpu(ARM_CPU(obj), fdarray, errp);
++            if (fd < 0) {
++                goto bail_out;
++            }
++            scratch_created = true;
++        }
++
++        qdict_in = qobject_to(QDict, model->props);
++        for (const QDictEntry *entry = qdict_first(qdict_in);
++                 entry != NULL; entry = qdict_next(qdict_in, entry)) {
++            const char *key = qdict_entry_key(entry);
++            QObject *val_obj = qdict_entry_value(entry);
++            ObjectProperty *prop;
++            Visitor *v;
++            uint64_t val;
++
++            if (!g_str_has_prefix(key, "SYSREG_")) {
++                continue;
++            }
++
++            prop = object_property_find(obj, key);
++
++            /* consume the prop to avoid unexpected parameter */
++            if (!visit_type_uint64(visitor, key, &val, errp)) {
++                goto bail_out;
++            }
++
++            v = qobject_input_visitor_new(val_obj);
++
++            if (!object_property_set(obj, key, v, errp)) {
++                visit_free(v);
++                goto bail_out;
++            }
++
++            if (use_scratch_vcpu && prop) {
++                ARM64SysRegField *field = (ARM64SysRegField *)prop->opaque;
++
++                if (!kvm_idreg_write_scratch_vcpu(ARM_CPU(obj), fd,
++                                                  field, val, errp)) {
++                    visit_free(v);
++                    goto bail_out;
++                }
++            }
++            visit_free(v);
++        }
++
++        visit_check_struct(visitor, &err);
++        if (err) {
++            goto bail_out;
++        }
++
++        if (scratch_created) {
++            kvm_arm_destroy_scratch_host_vcpu(fdarray);
++            scratch_created = false;
++        }
+         visit_end_struct(visitor, NULL);
+         visit_free(visitor);
+-        if (err) {
+-            object_unref(obj);
+-            error_propagate(errp, err);
+-            return NULL;
+-        }
++        visitor = NULL;
+     } else {
+         arm_cpu_finalize_features(ARM_CPU(obj), &error_abort);
+     }
+@@ -190,6 +270,18 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+         }
+     }
+ 
++    object_property_iter_init(&iter, obj);
++
++    while ((idregprop = object_property_iter_next(&iter))) {
++        QObject *value;
++
++        if (!g_str_has_prefix(idregprop->name, "SYSREG_")) {
 +            continue;
 +        }
-+        aarch64_add_one_idreg_properties(obj, sysregdesc, true);
++        value = object_property_get_qobject(obj, idregprop->name, &error_abort);
++        qdict_put_obj(qdict_out, idregprop->name, value);
 +    }
-+}
- #endif
- 
- void aarch64_host_initfn(Object *obj)
-@@ -815,6 +927,7 @@ void aarch64_host_initfn(Object *obj)
-     kvm_arm_set_cpreg_mig_tolerances(cpu);
-     kvm_arm_set_cpu_features_from_host(cpu);
-     aarch64_add_sve_properties(obj);
-+    aarch64_add_idreg_properties(obj, true);
- #elif defined(CONFIG_HVF)
-     hvf_arm_set_cpu_features_from_host(cpu);
- #elif defined(CONFIG_WHPX)
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 8c7faf57c7..ddc79eb666 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -19,6 +19,12 @@ get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value f
- arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
- arm_emulate_firmware_reset(uint64_t mp_aff, unsigned target_el) "cpu %" PRIu64 " @EL%u"
- 
-+# cpu64.c
-+add_idreg_property(const char* name, int lower, int upper, bool writable) "%s [%d:%d] writable=%d"
-+get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
-+set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
-+nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
 +
- # arm-powerctl.c
- arm_powerctl_set_cpu_on(uint64_t mp_aff, unsigned target_el, const char *mode, uint64_t entry, uint64_t context_id) "cpu %" PRIu64 " (EL %u, %s) @ 0x%" PRIx64 " with R0 = 0x%" PRIx64
- arm_powerctl_set_cpu_on_and_reset(uint64_t mp_aff) "cpu %" PRIu64
+     if (!qdict_size(qdict_out)) {
+         qobject_unref(qdict_out);
+     } else {
+@@ -199,6 +291,20 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+     object_unref(obj);
+ 
+     return expansion_info;
++
++bail_out:
++    if (scratch_created) {
++        kvm_arm_destroy_scratch_host_vcpu(fdarray);
++    }
++    if (visitor) {
++        visit_end_struct(visitor, NULL);
++        visit_free(visitor);
++    }
++    if (err) {
++        error_propagate(errp, err);
++    }
++    object_unref(obj);
++    return NULL;
+ }
+ 
+ static void arm_cpu_add_definition(gpointer data, gpointer user_data)
 -- 
 2.53.0
 

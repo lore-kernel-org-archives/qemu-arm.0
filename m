@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55904CA9EBE
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 07:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EED6CA6017
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 07:11:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFRDc-0001mD-NG; Sat, 10 Oct 2026 03:10:08 -0400
+	id 1xFRDZ-0001fc-Uy; Sat, 10 Oct 2026 03:10:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xFRDV-0001cL-6a
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:10:02 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1xFRDX-0001cn-53
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:10:03 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xFRDT-0001Bj-MX
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:10:00 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-48b0946c2c2so206804f8f.3
- for <qemu-arm@nongnu.org>; Sat, 10 Oct 2026 00:09:59 -0700 (PDT)
+ id 1xFRDV-0001CT-BT
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 03:10:02 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4a018dc1f98so3476815e9.3
+ for <qemu-arm@nongnu.org>; Sat, 10 Oct 2026 00:10:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791616198; x=1792220998; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791616200; x=1792221000; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=NwIsN9jm4Pp0I9NysNqzSQvse4ptZc1j97sn0b4Mv3Q=;
- b=XkC//Qo+UsFhdhIyyfa1LWbE3m7ehXePZ6LrgYSJWRmJoWtyFi2gJvLz+F1B2pd7Sd
- LMVWyo84m7cMq6IPhzf3NBzLDKwE4CfS354GkFvC7W1nIVF6+agjyngCGEdoXo18Zjpd
- Fxegwv/sxNbwmUgkt3h+7FdqefkO3YginIzR7uVYDpEKJ6DJuC8UobRH4vm3e63U5su0
- mdUMMP9nZFEyrc3yF1qiSHgBUMv82WYP/pk0NZJOG97WGDMLt95zT80ax0hmPgajVCt6
- 2QSVZrosbL94I6wZEjebhwaLxVOoQOh19fydqa6Hu/HcEntZ/eFRBd/ed/rwxE8AoRnz
- kzrg==
+ bh=VHCB9DX8tcxfGGEoMgC60hBr/Ih8fWzh/Zex2K4jIpc=;
+ b=wPeEy/QYIyMViDuqF5A1Qb1/ZUB4RA8IYyU6dZEZ7XroOm4uOY5G3oN9+EIOY0kgQV
+ i/872qIsT0dgqQ1aeKqfOhyaYY7qajJ7BTRji1EG3hgtExVmhoes7x6ciif7+551ixu9
+ Lc3AjybkMelo83q0qxpdj2tuq3ENGobGRuxyujRhO/Opg4bMBXtsBKIaO3L79KmGUgZ2
+ M00QVTsfdnvZzKhXYcbC3R6N4KdrYjVbXFxK0uXHshRdnId0/7FPerUUvl0JrzW3JoCh
+ SKroweip9y6DCAVUJ8Px3DdhRK5bGWy114sSAR3A586MxhrIZzCR/d8XE0UGLkUf4iro
+ mqqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791616198; x=1792220998;
+ d=1e100.net; s=20260707; t=1791616200; x=1792221000;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=NwIsN9jm4Pp0I9NysNqzSQvse4ptZc1j97sn0b4Mv3Q=;
- b=EmhRAs8XbdbaZcgoXuIgg4C+CoScZ6nYrKF3FIGwJQX1PGz77AWFcuye2r8JMvWVtd
- 6i3BPVBl3XyRUd1rdbDe/mOYjX245F0ORYHkClYDFcyYeiGecgxTcYAF5CY4hz5u3/hK
- J4DTV7iaChSkIqUhmlLH23Z5cwduo9TehAN7ZyE/LDWbWvjn/jQGaFvn1kVjRWXyjclP
- 5NN79VPGPHdmunmIgoy6ZLBCUSe/I1bVmi6LFycU9RafQJoigVWnMpTlAZQvRofgHNTA
- IcrMAL+gvqjwzx1Chvo1UYwC0pkMoCHoqbbarWjoTvRRKVqbathTyhqPA3H+gImgWHb8
- ZoRg==
-X-Gm-Message-State: AFq9FYJl3l5yKQ61zyuvwJKsBPs9j7LUTKSc+bqc7U0BSK7vrIM9HTbe
- 2aycWPWT5kIwFXh5tlx6ZVU1nwpgCoygplAKZSpwsiDmoXSTvC0dzvQVGaOfaZOQ6bQ=
-X-Gm-Gg: AYBFou28qCuxjFcMEPS7F8dhooWb8IRXbmOx4MiV1Cm+BALr5nV5AvmjsiFRFh5LbRF
- I79vBohnhO9llt+eTmeenJJnJdSFJjHkAwYMZ/aTi1r5ShhaNQ0ex9J5X7ZlkpWKrXAI5/HiETv
- hn2ZF4ZHv9wgqxjeSbcFbP2gUS37K6kRkkjPmC9dHMz6+lpUBlDXS7VvFiVwJn+FsKFlurogOdh
- f9aaWKANfAl9LLcm4dgthLTJwv9cCghZx6z9rUyccgXcfUc7tr13bEHv34cyJ03a+OaU2nW+c4L
- VaSUV0CS3Pjx26m6gbNqyUUzNPs+qo/3mqIzib2ohfP69Om3FE4w/F8Ffp51rvmSIOWjZi+yI+1
- bgVpYed0KCc4uzFt6EerKWKn7uiEwclQR7wPFwl6MZKnNqd+nJW6MDfJR49mVgRajTqu7yJ1HlF
- JUNaQUyPGXoYHbsSjiEUaIm2rbj4m1b3MFXdo4m+ccmUODQHUALGWJEzYjunhedij1GvYAqmMDe
- 47KTP1j2OE=
-X-Received: by 2002:a05:600c:4e0e:b0:49e:7c8c:361d with SMTP id
- 5b1f17b1804b1-4a18e4c3f32mr86691165e9.22.1791616198131; 
- Sat, 10 Oct 2026 00:09:58 -0700 (PDT)
+ bh=VHCB9DX8tcxfGGEoMgC60hBr/Ih8fWzh/Zex2K4jIpc=;
+ b=tfR8JCfxJB5SAmYOnuDF0XG+0qBNcg2wD5zS2J+j2+zDEPKFpWhGFrzev1p6tuwkmp
+ sOyxw6emDdjLR4mPiFmujfEth/0F/MAY/hMsVpH7/1vKP5n7PneqJZyYa7+hmMq7+FFX
+ Tv1o3zFVM43l4xsLZ8LxHJojZ9nGp3iSoNjXTurhOlXa4sYYFDGxSpRLA8czJPxql5Z/
+ fYx4UK49rKZS7KloNnEH3e87GoSg5x8Gx7/zEf6ZAIyUc9gkm6oZQINIAmGHIQEQBnNe
+ KDvNo3lBHtRg8lp0kAgg9GOYYtuJ1EW8Zk8P32NCUtQLnE+lCtVq8KDp3mpgC2DCOCb8
+ yI8w==
+X-Gm-Message-State: AFq9FYLQyCKxpema++v/OsNqkeQ4esU6W3COyTEBo1+c8bNw/KDKdzVY
+ zKOvaIsxlyU0vsiQovCQjqCgXTtr9gybnpEo65jay2ts5lgguBNKbx2szZ/I5OVo+x7L+lPGyRL
+ JvM4OkwY=
+X-Gm-Gg: AYBFou21gDL99m8m5msbpG6jH4NPgm2+a00q9rEit2h6qs7x/viAaqC7KkqK9JPaCLM
+ l3RDuDZtSK9M1E2ZfVrdw7Ak1g8QAz23KRrO31hMow400ev6ejalKRSMz6H/XEfliWZeBoKsBvS
+ 86Np+2VhGkcnUTneGQg+9g/hxR7X5kJHqJui0VAmNAG6RMuRl5qGBBAWzIIWgjd2jYO53hT80Sv
+ MxMJ8KcztAM6j2VmaQ1c9xwR9zCMQ86Z58qxakKgRvloXV5YOlpAy3u1HDQmuDZa+cW20m9tfOk
+ VHvaIcOcMBR3FdI+peTc4QTBs972igO98rQvkWnRwcLv52pSYsHL4d33jopSjluOU0oLxwJoOxk
+ uPiZ5ZXPnUbo/cESHHXNrVCYFyE/xMNrT5eFH0RZ0DTVKBdYFspj7OU6tSNO4TW/Cc5036Fr7p8
+ ZOk7MGa4Qo4kLdYBuGgSTLAVr4cnNaYTkqHg/CSHllbaXwa3AXwK1O6iiMZnDUleTHrwgc8d975
+ +17GiKt/3sj+uhI/fIdVg==
+X-Received: by 2002:a05:600c:8518:b0:49f:cbf3:551c with SMTP id
+ 5b1f17b1804b1-4a18e4a8ca6mr73389155e9.12.1791616199835; 
+ Sat, 10 Oct 2026 00:09:59 -0700 (PDT)
 Received: from stoup.local ([2a00:1e:e082:2901:a2d3:66fa:95e6:7d81])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48db9abda3csm7662252f8f.36.2026.10.10.00.09.56
+ ffacd0b85a97d-48db9abda3csm7662252f8f.36.2026.10.10.00.09.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Oct 2026 00:09:56 -0700 (PDT)
+ Sat, 10 Oct 2026 00:09:59 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v4 3/6] target/arm: Squash accessfn in
- modify_arm_cp_regs_with_len
-Date: Sat, 10 Oct 2026 09:09:49 +0200
-Message-ID: <20261010070952.323466-4-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v4 5/6] target/arm: Implement SCR_EL3.TID5
+Date: Sat, 10 Oct 2026 09:09:51 +0200
+Message-ID: <20261010070952.323466-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261010070952.323466-1-richard.henderson@linaro.org>
 References: <20261010070952.323466-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,32 +102,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When reducing permission of ID registers for userspace
-access for an emulated kernel, drop the access check as well.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 2 ++
- 1 file changed, 2 insertions(+)
+ target/arm/helper.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 187d0e9213d..a49dbc5acf2 100644
+index ae1b8a57617..1d78b14eaa0 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -8398,11 +8398,13 @@ void modify_arm_cp_regs_with_len(ARMCPRegInfo *regs, size_t regs_len,
-             if (pat && g_pattern_match_string(pat, r->name)) {
-                 r->type = ARM_CP_CONST;
-                 r->access = PL0U_R;
-+                r->accessfn = NULL;
-                 r->resetvalue = 0;
-                 /* continue */
-             } else if (strcmp(r->name, m->name) == 0) {
-                 r->type = ARM_CP_CONST;
-                 r->access = PL0U_R;
-+                r->accessfn = NULL;
-                 r->resetvalue &= m->exported_bits;
-                 r->resetvalue |= m->fixed_bits;
-                 break;
+@@ -5669,8 +5669,21 @@ static const ARMCPRegInfo dcpodp_reg[] = {
+ static CPAccessResult access_tid5(CPUARMState *env, const ARMCPRegInfo *ri,
+                                   bool isread)
+ {
+-    if ((arm_current_el(env) < 2) && (arm_hcr_el2_eff(env) & HCR_TID5)) {
+-        return CP_ACCESS_TRAP_EL2;
++    switch (arm_current_el(env)) {
++    case 1:
++        if (arm_hcr_el2_eff(env) & HCR_TID5) {
++            return CP_ACCESS_TRAP_EL2;
++        }
++        /* fall through */
++    case 2:
++        if (env->cp15.scr_el3 & SCR_TID5) {
++            return CP_ACCESS_TRAP_EL3;
++        }
++        break;
++    case 3:
++        break;
++    default:
++        g_assert_not_reached();
+     }
+ 
+     return CP_ACCESS_OK;
 -- 
 2.53.0
 

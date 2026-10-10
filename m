@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3266CCA6017
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:41:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F193BCA9EBE
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:42:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFXGy-0001Yx-Si; Sat, 10 Oct 2026 09:38:00 -0400
+	id 1xFXIX-0004Ak-0v; Sat, 10 Oct 2026 09:39:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXGx-0001YE-EY
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:37:59 -0400
+ id 1xFXIR-0003zp-U1
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXGv-0004XG-Nn
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:37:58 -0400
+ id 1xFXIN-0004hu-U0
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:39:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791639476;
+ s=mimecast20190719; t=1791639565;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iWQgwG64LSjw/q9IlyJDOWXuDx5P7x5+Mk1gkqqoXd4=;
- b=EFPqw4GAqCYOH65F1pJjFYAk5NdGrr6tI3CaHqt4aklfshVVTHf2igzQpDNDNhSQgWj0zZ
- 4ag2udUnmi2cixfBhw0hRfsHH+4TJhjfJ1kCSbrMdqXwKlii1byG50wu3DtvR6cYA3KNan
- dBgPo388/Ha48xNhwYrO512TwHLmNxI=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=v43ocM3DpQoBMOmnWjOUY1Uk4kwBrzKU6IVEiEb5hkU=;
+ b=WXNdOox0E0OSnyxIcDYXKZhtxABHiOeG2zflbcjgVq7senKG8lio/1cEK9c9eIAKos77LJ
+ Ji6vVu6mhxofAz6IXkl1N5RzxD8ubl95vhStUbkgItA5/YKp12RTDbPyAwDlJq0tswDCPv
+ 6ZMFR1rTgipCVLp9Q8k+aIT+aVKT11Q=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-463-l7bGL70SNLqaCXgtZg-jfA-1; Sat,
- 10 Oct 2026 13:37:52 +0000
-X-MC-Unique: l7bGL70SNLqaCXgtZg-jfA-1
-X-Mimecast-MFC-AGG-ID: l7bGL70SNLqaCXgtZg-jfA_1791639470
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-183-BPK8EFKOOj6vqxxTk1BCAQ-1; Sat,
+ 10 Oct 2026 13:39:22 +0000
+X-MC-Unique: BPK8EFKOOj6vqxxTk1BCAQ-1
+X-Mimecast-MFC-AGG-ID: BPK8EFKOOj6vqxxTk1BCAQ_1791639560
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5742B19560B7; Sat, 10 Oct 2026 13:37:50 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1C8F31944B01; Sat, 10 Oct 2026 13:39:20 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4B06630001BB; Sat, 10 Oct 2026 13:37:45 +0000 (UTC)
+ id AB66D30000E5; Sat, 10 Oct 2026 13:39:15 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,14 +57,15 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v10 03/26] target/arm: Enforce MPIDR into isar.idregs[] storage
-Date: Sat, 10 Oct 2026 15:36:07 +0200
-Message-ID: <20261010133725.642498-4-eric.auger@redhat.com>
+Subject: [PATCH v10 21/26] target/arm/cpu64: Add helper to test SYSREG props
+ against a scratch vcpu
+Date: Sat, 10 Oct 2026 15:36:25 +0200
+Message-ID: <20261010133725.642498-22-eric.auger@redhat.com>
 In-Reply-To: <20261010133725.642498-1-eric.auger@redhat.com>
 References: <20261010133725.642498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: ONMjb3VI6seS-RmPbsVTivBsokcmjRH2vcnfM-vBSOA_1791639470
+X-Mimecast-MFC-PROC-ID: 1m9DMygXdqTO5wRo6WCvoU6_6sBq_LhATT-9xuI8fvk_1791639560
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -92,149 +93,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-At the moment MPIDR_EL1 has no real storage. Instead cpu
-mp_affinity field stores the Aff0-Aff2 bits only and the
-ID register is reconstructed when needed. There is also
-an mp-affinity property used for TCG only.
-
-Keep the mp-affinity property and its associated storage
-while making sure the MPIDR_EL1 full register is stored
-in cpu->isar.idregs[] as other ID registers.
+Add kvm_idreg_write_scratch_vcpu helper that will be used
+by qmp_query_cpu_model_expansion code to test SYSREG settings
+against a scratch vcpu. Indeed when the expansion code is called
+the actual vcpu has not been initialized so we use a scratch vcpu.
+This latter has been initialized with features taken from
+legacy compositive options (EL2, SVE, ...). So the trial is
+very close to the final setup.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/cpu.h             |  8 +++++++-
- target/arm/cpu-sysregs.h.inc |  1 +
- target/arm/cpu.c             | 17 +++++++++++++++++
- target/arm/helper.c          | 14 +-------------
- target/arm/hvf/hvf.c         |  2 +-
- target/arm/kvm.c             |  1 +
- target/arm/whpx/whpx-all.c   |  2 +-
- 7 files changed, 29 insertions(+), 16 deletions(-)
+ target/arm/kvm_arm.h    |  4 ++++
+ target/arm/kvm-stub.c   |  7 +++++++
+ target/arm/kvm.c        | 21 +++++++++++++++++++++
+ target/arm/trace-events |  1 +
+ 4 files changed, 33 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index dcdd4eb18e..639be0713e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1128,7 +1128,13 @@ struct ArchCPU {
-     uint32_t reset_sctlr;
-     uint64_t pmceid0;
-     uint64_t pmceid1;
--    uint64_t mp_affinity; /* MP ID without feature bits */
-+    /*
-+     * MP ID without feature bits, ie. Aff0..Aff3 only
-+     * used to store the corresponding property value for TCG vcpus.
-+     * The MPIDR_EL1 value (affinity + feature bits) is stored in a
-+     * consistent manner in isar.idregs[MPIDR_EL1_IDX].
-+     */
-+    uint64_t mp_affinity;
-     uint64_t reset_cbar;
-     uint32_t reset_auxcr;
-     bool reset_hivecs;
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index 709dc8fc97..f148f6f565 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -42,6 +42,7 @@ DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
- DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
- DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
- DEF(MIDR_EL1, 3, 0, 0, 0, 0)
-+DEF(MPIDR_EL1, 3, 0, 0, 0, 5)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2f545482bc..bee74c0f94 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2174,6 +2174,23 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-                                                  ARM_DEFAULT_CPUS_PER_CLUSTER);
-     }
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index e7c40fb003..25a1dec095 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -14,6 +14,7 @@
+ #include "qapi/qapi-types-misc-arm.h"
+ #include "system/kvm.h"
+ #include "target/arm/cpu-qom.h"
++#include "cpu-idregs.h"
  
-+    /* Consistently update MPIDR_EL1 in isar.idregs[] by adding feature bits */
-+    {
-+        uint64_t mpidr = cpu->mp_affinity;
-+
-+        if (arm_feature(env, ARM_FEATURE_V7MP)) {
-+            mpidr |= (1U << 31);
-+            /*
-+             * Uniprocessor (non-coherent) cores that still implement the MP
-+             * extensions set U (bit 30), e.g. Cortex-R5.
-+             */
-+            if (cpu->mp_is_up) {
-+                mpidr |= (1u << 30);
-+            }
-+        }
-+        SET_IDREG(&cpu->isar, MPIDR, mpidr);
-+    }
-+
-     if (cpu->reset_hivecs) {
-             cpu->reset_sctlr |= (1 << 13);
-     }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index dfd71f1b51..36e8119f79 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3176,20 +3176,8 @@ static uint64_t midr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- static uint64_t mpidr_read_val(CPUARMState *env)
+ #define KVM_ARM_VGIC_V2   (1 << 0)
+ #define KVM_ARM_VGIC_V3   (1 << 1)
+@@ -240,4 +241,7 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
+  */
+ char *kvm_print_register_name(uint64_t regidx);
+ 
++bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, int cpufd,
++                                  ARM64SysRegField *field, uint64_t newfv,
++                                  Error **errp);
+ #endif
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 88cbe8d85c..8e6fae0a4d 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -119,3 +119,10 @@ char *kvm_print_register_name(uint64_t regidx)
  {
-     ARMCPU *cpu = env_archcpu(env);
--    uint64_t mpidr = cpu->mp_affinity;
- 
--    if (arm_feature(env, ARM_FEATURE_V7MP)) {
--        mpidr |= (1U << 31);
--        /*
--         * Cores which are uniprocessor (non-coherent)
--         * but still implement the MP extensions set
--         * bit 30. (For instance, Cortex-R5).
--         */
--        if (cpu->mp_is_up) {
--            mpidr |= (1u << 30);
--        }
--    }
--    return mpidr;
-+    return GET_IDREG(&cpu->isar, MPIDR);
+     g_assert_not_reached();
  }
- 
- static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f9f3d22014..4b947e9ba5 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1476,7 +1476,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     assert_hvf_ok(ret);
- 
-     ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MPIDR_EL1,
--                              arm_cpu->mp_affinity);
-+                              GET_IDREG(&arm_cpu->isar, MPIDR));
-     assert_hvf_ok(ret);
- 
-     pfr = GET_IDREG(&arm_cpu->isar, ID_AA64PFR0);
++
++bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, int cpufd,
++                                  ARM64SysRegField *field, uint64_t newfv,
++                                  Error **errp)
++{
++    g_assert_not_reached();
++}
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 3d905f8565..9d68801c26 100644
+index 0c7e80aea8..82ffcac7e3 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -2096,6 +2096,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     if (ret) {
-         return ret;
-     }
-+    SET_IDREG(&cpu->isar, MPIDR, mpidr);
-     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+@@ -1297,6 +1297,27 @@ static int kvm_arm_apply_one_sysreg_prop(ARMCPU *cpu, ARM64SysRegField *field,
+     return kvm_arm_override_idreg_field(CPU(cpu)->kvm_fd, field, newfv, errp);
+ }
  
-     return kvm_arm_init_cpreg_list(cpu);
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 18009d6c8d..024d18df04 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -842,7 +842,7 @@ int whpx_init_vcpu(CPUState *cpu)
++bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, int cpufd,
++                                  ARM64SysRegField *field, uint64_t newfv,
++                                  Error **errp)
++{
++    int ret;
++
++    if (!arm_cpu_validate_sysreg_prop(cpu, field, newfv, errp)) {
++        return false;
++    }
++
++    ret = kvm_arm_override_idreg_field(cpufd, field, newfv, errp);
++    if (ret) {
++        return false;
++    }
++
++    cpu->isar.idregs[field->index] =
++        deposit64(cpu->isar.idregs[field->index],
++                  field->shift, field->length, newfv);
++    return true;
++}
++
+ static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
+ {
+     return arm_cpu_apply_sysreg_props(cpu, kvm_arm_apply_one_sysreg_prop, errp);
+diff --git a/target/arm/trace-events b/target/arm/trace-events
+index 81564f1d96..a731b5d4ba 100644
+--- a/target/arm/trace-events
++++ b/target/arm/trace-events
+@@ -15,6 +15,7 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
+ kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
+ get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value for %s is 0x%"PRIx64
+ kvm_arm_override_idreg_field(const char *reg_name, const char *field_name, uint64_t currentfv, uint64_t newfv) "%s.%s current=0x%"PRIx64" new=0x%"PRIx64
++kvm_arm_idreg_write_scratch_vcpu(const char *name, uint64_t oldfv, uint64_t newfv, uint64_t actualfv) "successful dry-run for %s old=0x%"PRIx64" new=0x%"PRIx64" actual=0x%"PRIx64
  
-     clean_whv_register_value(&val);
- 
--    val.Reg64 = deposit64(arm_cpu->mp_affinity, 31, 1, 1 /* RES1 */);
-+    val.Reg64 = GET_IDREG(&arm_cpu->isar, MPIDR);
-     whpx_set_reg(cpu, WHvArm64RegisterMpidrEl1, val);
- 
-     clamp_id_aa64mmfr0_parange_to_ipa_size(&arm_cpu->isar);
+ # cpu.c
+ arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
 -- 
 2.53.0
 

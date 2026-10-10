@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F839CA9EBE
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:43:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66C1CA9EBE
+	for <qemu-arm@archiver.kernel.org>; Sat, 10 Oct 2026 13:43:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xFXGn-0001WF-HA; Sat, 10 Oct 2026 09:37:49 -0400
+	id 1xFXHx-0002Vp-QV; Sat, 10 Oct 2026 09:39:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXGm-0001Ve-2z
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:37:48 -0400
+ id 1xFXHk-0002K9-3b
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:51 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xFXGk-0004WN-9S
- for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:37:47 -0400
+ id 1xFXHi-0004c9-9T
+ for qemu-arm@nongnu.org; Sat, 10 Oct 2026 09:38:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791639465;
+ s=mimecast20190719; t=1791639525;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cv1mnVaaa2py2bLoOqax63rfmn2rgM5Tmv6Vdfg/Z40=;
- b=M7FA3k4xwvx8VYHm+n34bkXAje8As18OInZ7b9zFajyaE/ptSxCEQ2bBvhcBsQwY9RSVTL
- 2nhvh75pYVHA2hzVFzC7WyxvJ19aAdxB6KD7pfVQOXMOwo7VoygKV1jPPx4U6w8m9/iSbx
- OOOYu7Ymp/pA1mbLy2kyF3BiLdMCxK8=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Hsy8Wb76UKgAIrb0kzSti5SOHbp3tE79r/MLWon3/vk=;
+ b=EKDOMAPwJtoZb2g2Q4TgyIaGX0iA7sOu7FgIEHNxPUCssN/C7hKNxmmlL1HB1U+9sWWGEQ
+ 1K4YlKR++iYoKjJ/Sb8AjuaF/q54SpbMkhkjYia67+36KnzXRl2WNPpZ8z0o84zuiaphg9
+ ob2N0j7eUsv4PuaCjBmIL6fgc6WwLAc=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-616-AyibHwLoMQ63QlWei9-4Tw-1; Sat,
- 10 Oct 2026 13:37:42 +0000
-X-MC-Unique: AyibHwLoMQ63QlWei9-4Tw-1
-X-Mimecast-MFC-AGG-ID: AyibHwLoMQ63QlWei9-4Tw_1791639460
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-400-PTvbiei3Nfir4CnuhCL_GA-1; Sat,
+ 10 Oct 2026 13:38:42 +0000
+X-MC-Unique: PTvbiei3Nfir4CnuhCL_GA-1
+X-Mimecast-MFC-AGG-ID: PTvbiei3Nfir4CnuhCL_GA_1791639520
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 75EAF1944B01; Sat, 10 Oct 2026 13:37:39 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7D7431800650; Sat, 10 Oct 2026 13:38:40 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2E2D630001BB; Sat, 10 Oct 2026 13:37:33 +0000 (UTC)
+ id 1646930000E5; Sat, 10 Oct 2026 13:38:35 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,27 +57,27 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v10 01/26] target/arm: Move REVIDR into isar.idregs[] storage
-Date: Sat, 10 Oct 2026 15:36:05 +0200
-Message-ID: <20261010133725.642498-2-eric.auger@redhat.com>
+Subject: [PATCH v10 13/26] target/arm/cpu64: Add properties for writable IDReg
+ fields
+Date: Sat, 10 Oct 2026 15:36:17 +0200
+Message-ID: <20261010133725.642498-14-eric.auger@redhat.com>
 In-Reply-To: <20261010133725.642498-1-eric.auger@redhat.com>
 References: <20261010133725.642498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Grw-FpXEDR_R7blqoPLC-bL2yxP1swYiod77RDklN64_1791639460
+X-Mimecast-MFC-PROC-ID: 8siL9Bjaivf2IH_T6b3PTMntBkHIiS0gY1Nayn3GRMM_1791639520
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 10
-X-Spam_score: 1.0
-X-Spam_bar: +
-X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,233 +93,205 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move REVIDR into the isar.idregs[] array as other ID registers.
-This will allow to overwrite it as others.
+For KVM vcpu models, we add properties for all writable
+ID reg fields. This relies on the idreg writable mask retrieved
+from KVM, which is matched aginst the register description
+found in target/arm/cpu-idregs.h.inc.
+
+The code is prepared to extend this capability to all ID
+register fields independently on their writability. This will
+be needed for named vcpu models which may want to relax some
+values to the host supported one.
+
+REVIDR_EL1 and AIDR_EL1 are writable but they do not expose any
+field. So they will need to be handled separately.
+
+The setter and getter are not yet implemented and currently
+return an error.
+
+Note in the future, other acceleration types may benefit from
+those properties.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- target/arm/cpu.h             |  1 -
- target/arm/cpu-sysregs.h.inc |  1 +
- hw/intc/armv7m_nvic.c        |  2 +-
- target/arm/cpu-max.c         |  2 +-
- target/arm/cpu64.c           |  2 +-
- target/arm/helper.c          |  2 +-
- target/arm/tcg/cpu-v7m.c     |  4 ++--
- target/arm/tcg/cpu32.c       |  4 ++--
- target/arm/tcg/cpu64.c       | 20 ++++++++++----------
- 9 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 06ebed4a8f..b2af36a8c3 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1124,7 +1124,6 @@ struct ArchCPU {
-         uint64_t idregs[NUM_ID_IDX];
-     } isar;
-     uint64_t midr;
--    uint32_t revidr;
-     uint32_t reset_fpsid;
-     uint64_t ctr;
-     uint32_t reset_sctlr;
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index b5c7970971..580d88d1f4 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -44,3 +44,4 @@ DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
-+DEF(REVIDR_EL1, 3, 0, 0, 0, 6)
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 6bc392b0e3..1f56fff046 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1051,7 +1051,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-         if (!arm_feature(&cpu->env, ARM_FEATURE_V8_1M)) {
-             goto bad_offset;
-         }
--        return cpu->revidr;
-+        return GET_IDREG(isar, REVIDR);
-     case 0xd00: /* CPUID Base.  */
-         return cpu->midr;
-     case 0xd04: /* Interrupt Control State (ICSR) */
-diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
-index 2ed1cfef9b..b4e57a167d 100644
---- a/target/arm/cpu-max.c
-+++ b/target/arm/cpu-max.c
-@@ -37,7 +37,7 @@ void aarch64_aa32_a57_init(ARMCPU *cpu, bool aarch64_enabled)
-         cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
-     }
-     cpu->midr = 0x411fd070;
--    cpu->revidr = 0x00000000;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x41034070;
-     cpu->isar.mvfr0 = 0x10110222;
-     cpu->isar.mvfr1 = 0x12111111;
+---
+v9 -> v10
+- instead of parsing the writable mask, scroll through the fields
+  but still do some sanity checks. Add the writable param
+- move the code to cpu64.c Do not pass any ARM64SysReg handle
+  anymore. Rename the functions
+
+v7 -> v8
+- scratch the '!' in the error_setg
+- addapt to the removal of struct ArmIdRegArchVal
+
+v5 -> v6
+- for enum values, check against value value when setting the prop
+- do not check writable_map flag anymore
+
+v4 -> v5:
+- free prop_name
+- check cpu->writable_map as a preamble in kvm_arm_expose_idreg_properties
+---
+ target/arm/cpu64.c      | 113 ++++++++++++++++++++++++++++++++++++++++
+ target/arm/trace-events |   6 +++
+ 2 files changed, 119 insertions(+)
+
 diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index dcd0d698b3..80c9c9e5b3 100644
+index 64103df0a7..b1738c9be3 100644
 --- a/target/arm/cpu64.c
 +++ b/target/arm/cpu64.c
-@@ -717,7 +717,7 @@ static void aarch64_a53_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
-     cpu->midr = 0x410fd034;
--    cpu->revidr = 0x00000100;
-+    SET_IDREG(isar, REVIDR, 0x00000100);
-     cpu->reset_fpsid = 0x41034070;
-     cpu->isar.mvfr0 = 0x10110222;
-     cpu->isar.mvfr1 = 0x12111111;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ff0b766b73..41c0d0df12 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7415,7 +7415,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .access = PL1_R,
-               .accessfn = access_tid1,
-               .fgt = FGT_REVIDR_EL1,
--              .type = ARM_CP_CONST, .resetvalue = cpu->revidr },
-+              .type = ARM_CP_CONST, .resetvalue = GET_IDREG(&cpu->isar, REVIDR) },
-         };
-         ARMCPRegInfo id_v8_midr_alias_cp_reginfo = {
-             .name = "MIDR", .type = ARM_CP_ALIAS | ARM_CP_CONST | ARM_CP_NO_GDB,
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-index 48b31d5eac..e7c61d3c31 100644
---- a/target/arm/tcg/cpu-v7m.c
-+++ b/target/arm/tcg/cpu-v7m.c
-@@ -211,7 +211,7 @@ static void cortex_m55_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-     cpu->midr = 0x410fd221; /* r0p1 */
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->pmsav7_dregion = 16;
-     cpu->sau_sregion = 8;
-     /* These are the MVFR* values for the FPU + full MVE configuration */
-@@ -249,7 +249,7 @@ static void cortex_m85_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-     cpu->midr = 0x411fd231; /* r1p1 */
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->pmsav7_dregion = 16;
-     cpu->sau_sregion = 8;
-     /* These are the MVFR* values for the FPU + full MVE configuration */
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index f95051458d..c02b737fc0 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -456,7 +456,7 @@ static void cortex_a15_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     /* r4p0 cpu, not requiring expensive tlb flush errata */
-     cpu->midr = 0x414fc0f0;
--    cpu->revidr = 0x0;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x410430f0;
-     cpu->isar.mvfr0 = 0x10110222;
-     cpu->isar.mvfr1 = 0x11111111;
-@@ -647,7 +647,7 @@ static void cortex_r52_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-     set_feature(&cpu->env, ARM_FEATURE_AUXCR);
-     cpu->midr = 0x411fd133; /* r1p3 */
--    cpu->revidr = 0x00000000;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x41034023;
-     cpu->isar.mvfr0 = 0x10110222;
-     cpu->isar.mvfr1 = 0x12111111;
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 59692dddcf..ac1dace1e4 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -48,7 +48,7 @@ static void aarch64_a35_initfn(Object *obj)
+@@ -37,6 +37,8 @@
+ #include "hw/core/qdev-properties.h"
+ #include "internals.h"
+ #include "cpu-features.h"
++#include "cpu-idregs.h"
++#include "trace.h"
  
-     /* From B2.2 AArch64 identification registers. */
-     cpu->midr = 0x411fd040;
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->ctr = 0x84448004;
-     SET_IDREG(isar, ID_PFR0, 0x00000131);
-     SET_IDREG(isar, ID_PFR1, 0x00011011);
-@@ -248,7 +248,7 @@ static void aarch64_a55_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR1, 0x00011011);
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
-     cpu->midr = 0x412FD050;          /* r2p0 */
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
+ /* convert between <register>_IDX and SYS_<register> */
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
+@@ -798,6 +800,116 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
+     arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
+                                      UINT64_MAX, 0, ToleranceOnlySrcTestValue);
+ }
++
++static void set_sysreg_prop(Object *obj, Visitor *v,
++                            const char *name, void *opaque,
++                            Error **errp)
++{
++    error_setg(errp, "%s setter not yet implemented", name);
++}
++
++static void get_sysreg_prop(Object *obj, Visitor *v,
++                            const char *name, void *opaque,
++                            Error **errp)
++{
++    error_setg(errp, "%s getter not yet implemented", name);
++}
++
++/**
++ * aarch64_add_idreg_properties: Add SYSREG_<REG>_<FIELD> properties
++ * for named fields of an ID register
++ *
++ * @obj: CPU object
++ * @reg: Description of the sysreg
++ * @writable_only: if set, add a property only for writable fields,
++ * otherwise, add properties unconditionnally
++ *
++ * Independently on @writable_only, always check the consistency between
++ * writable_mask and register fields description: if a field is writable
++ * make sure all its bits are writable. Also make sure only named fields
++ * are writable.
++ */
++static int
++aarch64_add_one_idreg_properties(Object *obj, ARM64SysReg *reg,
++                                 bool writable_only)
++{
++    uint64_t map = reg->writable_mask;
++    int nb_sysreg_props = 0;
++
++    for (int i = 0; i < reg->fields_count; i++) {
++        ARM64SysRegField *field = &reg->fields[i];
++        int lower = field->shift;
++        int length = field->length;
++        int upper = lower + length - 1;
++        uint64_t field_writable_mask = extract64(map, lower, length);
++        uint64_t field_mask = MAKE_64BIT_MASK(lower, length);
++        char *prop_name;
++
++        /* skip reserved fields, but still account them in writable_mask */
++        if (g_str_equal(field->name, "RES0") ||
++            g_str_equal(field->name, "RES1") ||
++            g_str_equal(field->name, "RAZ")) {
++            map &= ~field_mask;
++            continue;
++        }
++
++        if (field_writable_mask &&
++            field_writable_mask != MAKE_64BIT_MASK(0, length)) {
++            /* only a part of the field is writable, this should never happen */
++            error_report("field %s is not fully writable! (0x%"PRIx64")",
++                         field->name, field_writable_mask);
++        }
++        map = map & ~field_mask;
++
++        if (writable_only && !field_writable_mask) {
++            continue;
++        }
++
++        prop_name = g_strdup_printf("SYSREG_%s_%s", reg->name, field->name);
++        object_property_add(obj, prop_name, "uint64",
++                            get_sysreg_prop, set_sysreg_prop, NULL, field);
++        trace_add_idreg_property(prop_name, lower, upper, field_writable_mask);
++        g_free(prop_name);
++        nb_sysreg_props++;
++    }
++    if (map) {
++        error_report("%s has writable bits which do not match "
++                     "any named field! (0x%" PRIx64")", reg->name, map);
++    }
++    trace_nb_sysreg_props(reg->name, nb_sysreg_props);
++    return 0;
++}
++
++
++/**
++ * aarch64_add_idreg_properties:
++ *
++ * Add SYSREG_<REG>_<FIELD> properties for every IDReg fields
++ *
++ * @cpu: cpu the properties are attached to
++ * @writable_only:  if set, properties are added only if the field is
++ * writable. Otherwise, added unconditionnally
++ */
++static void aarch64_add_idreg_properties(Object *obj, bool writable_only)
++{
++    for (int i = 0; i < NUM_ID_IDX; i++) {
++        ARM64SysReg *sysregdesc = &arm64_id_regs[i];
++
++        if (writable_only && !sysregdesc->writable_mask) {
++            continue;
++        }
++        /*
++         * special case REVIDR_EL1 and AIDR_EL1 which are writable but
++         * do not expose named fields. They will need to be handled
++         * separately
++         */
++        if (!strcmp(sysregdesc->name, "REVIDR_EL1") ||
++            !strcmp(sysregdesc->name, "AIDR_EL1")) {
++            continue;
++        }
++        aarch64_add_one_idreg_properties(obj, sysregdesc, true);
++    }
++}
+ #endif
  
-     /* From B2.23 CCSIDR_EL1 */
-     /* 32KB L1 dcache */
-@@ -292,7 +292,7 @@ static void aarch64_a72_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     cpu->midr = 0x410fd083;
--    cpu->revidr = 0x00000000;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->reset_fpsid = 0x41034080;
-     cpu->isar.mvfr0 = 0x10110222;
-     cpu->isar.mvfr1 = 0x12111111;
-@@ -383,7 +383,7 @@ static void aarch64_a76_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
-     cpu->midr = 0x414fd0b1;          /* r4p1 */
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
+ void aarch64_host_initfn(Object *obj)
+@@ -815,6 +927,7 @@ void aarch64_host_initfn(Object *obj)
+     kvm_arm_set_cpreg_mig_tolerances(cpu);
+     kvm_arm_set_cpu_features_from_host(cpu);
+     aarch64_add_sve_properties(obj);
++    aarch64_add_idreg_properties(obj, true);
+ #elif defined(CONFIG_HVF)
+     hvf_arm_set_cpu_features_from_host(cpu);
+ #elif defined(CONFIG_WHPX)
+diff --git a/target/arm/trace-events b/target/arm/trace-events
+index 8c7faf57c7..ddc79eb666 100644
+--- a/target/arm/trace-events
++++ b/target/arm/trace-events
+@@ -19,6 +19,12 @@ get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value f
+ arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
+ arm_emulate_firmware_reset(uint64_t mp_aff, unsigned target_el) "cpu %" PRIu64 " @EL%u"
  
-     /* From B2.18 CCSIDR_EL1 */
-     /* 64KB L1 dcache */
-@@ -456,7 +456,7 @@ static void aarch64_a78ae_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
-     cpu->midr = 0x410fd423;          /* r0p3 */
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
- 
-     /* From 3.2.33 CCSIDR_EL1 */
-     /* 64KB L1 dcache */
-@@ -501,7 +501,7 @@ static void aarch64_a64fx_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     cpu->midr = 0x461f0010;
--    cpu->revidr = 0x00000000;
-+    SET_IDREG(isar, REVIDR, 0);
-     cpu->ctr = 0x86668006;
-     cpu->reset_sctlr = 0x30000180;
-     SET_IDREG(isar, ID_AA64PFR0, 0x0000000101111111); /* No RAS Extensions */
-@@ -707,7 +707,7 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
-     cpu->midr = 0x414fd0c1;          /* r4p1 */
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
- 
-     /* From B2.23 CCSIDR_EL1 */
-     /* 64KB L1 dcache */
-@@ -787,7 +787,7 @@ static void aarch64_neoverse_v1_initfn(Object *obj)
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_PFR2, 0x00000011);
-     cpu->midr = 0x411FD402;          /* r1p2 */
--    cpu->revidr = 0;
-+    SET_IDREG(isar, REVIDR, 0);
- 
-     /*
-      * The Neoverse-V1 r1p2 TRM lists 32-bit format CCSIDR_EL1 values,
-@@ -984,7 +984,7 @@ static void aarch64_a710_initfn(Object *obj)
- 
-     /* Ordered by Section B.4: AArch64 registers */
-     cpu->midr          = 0x412FD471; /* r2p1 */
--    cpu->revidr        = 0;
-+    SET_IDREG(isar, REVIDR, 0);
-     SET_IDREG(isar, ID_PFR0, 0x21110131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_DFR0, 0x16011099);
-@@ -1087,7 +1087,7 @@ static void aarch64_neoverse_n2_initfn(Object *obj)
- 
-     /* Ordered by Section B.5: AArch64 ID registers */
-     cpu->midr          = 0x410FD493; /* r0p3 */
--    cpu->revidr        = 0;
-+    SET_IDREG(isar, REVIDR, 0);
-     SET_IDREG(isar, ID_PFR0, 0x21110131);
-     SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-     SET_IDREG(isar, ID_DFR0, 0x16011099);
++# cpu64.c
++add_idreg_property(const char* name, int lower, int upper, bool writable) "%s [%d:%d] writable=%d"
++get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
++set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
++nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
++
+ # arm-powerctl.c
+ arm_powerctl_set_cpu_on(uint64_t mp_aff, unsigned target_el, const char *mode, uint64_t entry, uint64_t context_id) "cpu %" PRIu64 " (EL %u, %s) @ 0x%" PRIx64 " with R0 = 0x%" PRIx64
+ arm_powerctl_set_cpu_on_and_reset(uint64_t mp_aff) "cpu %" PRIu64
 -- 
 2.53.0
 

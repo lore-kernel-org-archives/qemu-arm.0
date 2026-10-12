@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69E9FCA9EC5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 21:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D7B0CA9EC5
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 21:54:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGNxE-0000Uz-BR; Mon, 12 Oct 2026 17:53:08 -0400
+	id 1xGNxE-0000Ug-5J; Mon, 12 Oct 2026 17:53:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGNxC-0000Tj-7f
+ id 1xGNxC-0000Tt-NS
  for qemu-arm@nongnu.org; Mon, 12 Oct 2026 17:53:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGNxA-0006Pt-RW
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 17:53:05 -0400
+ id 1xGNxA-0006Px-Tg
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 17:53:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1791841984;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=x4iqiWKkdRpY9Q/RhKNFFfw8qRIJ87Igt70jRYdwTRo=;
- b=LcUhAkp8H0zk29FncoQccyjvl9zsnNtCN/hpKu/ZSfid5lF+A5ABJ1eYCIh3JyDarKEnqZ
- MFUHvty0yHdqCk8GThLqzF4lGr2VdCEx1fBd0cyJcsO+Ms8bY7sp7WPrxIxJv6f0RjXCPk
- SyUrfMS4+A6ZnGle8PbTEqo8oesp0i0=
+ bh=rLrZPxGvVn6bT6Rqj5TlcNXGmcoHhShQAmqHAjyBr8k=;
+ b=VYk2oMY+bGrzx3QvZ6hK4AQO6mkf6y2s8c7RtUwSmpv0yrmr5RnErkAlQYWIfgxE+WlWJi
+ UB0SvXaNM98htWYCBppXcUOw456C0cXHjhvo4KQ4edX2CF0/QpxCsTdjUhtjHxtZKBIgRb
+ RzllLuRJKPXH1eWHDp8i3cvs93RrJvE=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-297-hUle2ROgMbKegx6emwB7DA-1; Mon,
- 12 Oct 2026 21:52:59 +0000
-X-MC-Unique: hUle2ROgMbKegx6emwB7DA-1
-X-Mimecast-MFC-AGG-ID: hUle2ROgMbKegx6emwB7DA_1791841976
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-694-nNsT3KnZNqarF_RmQk4i5g-1; Mon,
+ 12 Oct 2026 21:53:02 +0000
+X-MC-Unique: nNsT3KnZNqarF_RmQk4i5g-1
+X-Mimecast-MFC-AGG-ID: nNsT3KnZNqarF_RmQk4i5g_1791841980
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D6F2A180057C; Mon, 12 Oct 2026 21:52:55 +0000 (UTC)
+ id 4E2C11800679; Mon, 12 Oct 2026 21:52:59 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AC7E318005AE; Mon, 12 Oct 2026 21:52:53 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 6AA7430000E7; Mon, 12 Oct 2026 21:52:58 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 13/16] tests/functional: add tuxrun kvm gdb test for
- arm64
+Subject: Re: [PATCH v2 14/16] tests/functional: split s390x tuxrun into tcg
+ and kvm run
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, 
@@ -74,34 +74,34 @@ Cc: qemu-devel@nongnu.org,
  Klaus Jensen <its@irrelevant.dk>, Song Gao <gaosong@loongson.cn>, 
  qemu-s390x@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
  Ilya Leoshkevich <iii@linux.ibm.com>
-In-Reply-To: <20261012170330.1144446-14-alex.bennee@linaro.org>
+In-Reply-To: <20261012170330.1144446-15-alex.bennee@linaro.org>
 References: <20261012170330.1144446-1-alex.bennee@linaro.org>
- <20261012170330.1144446-14-alex.bennee@linaro.org>
+ <20261012170330.1144446-15-alex.bennee@linaro.org>
 Date: Tue, 13 Oct 2026 01:52:29 +0400
-Message-Id: <179184194934.2190936.15054221597476398433.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=265;
+Message-Id: <179184194936.2190936.13610950904285285847.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=385;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Lw7LOumzPMJ/p1Cke3TYnD6IHVGeqQagWGxtRmyNpRQ=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzVaf6mfuz4Jpzjd1SW/6fsK2JLTeKXM53Y4dK
- XAPBpae2raJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCas1WnwAKCRDa6OEJdZac
- 5ZqREACOaOyRDYzYxIY1W7ERl7oGB5cThPBQppXchgzITz/c6dTWAgjKrYO/1KK2fWQ0QLhD4KF
- DuLHZWWlAc0HaiRir65QO9YnoUJP2bhNbgoqdVDio2ZUM+pRdni8DdQqR9dt4qEfJPOiBt0oJxH
- NLDIdC7FDbTD6jUfnjxaWB6AMtZPuGwt4cQNjHMHLe+UeK1Oy5PZ98v6YIHPThKDJFf+VAPiVEb
- 24NaZAfdIQt/l1XhvyEjRCT4WB1CytRPTtVZ2UgLBezLQXAEYdMlD++OJWJ1rf+suhfWJzuRfTG
- c/Q4mHxYtPtt25tdZNV7gvLmezgnxBwfxdt6HYZr7XeaKucGqJA9t1g2jY7wch8jW3PHFn6tFbO
- Eavj3WYNTRmfau9vl1Ijyv8UnIZayBUUiAlYxCrJYkzItwUctl9T8xBoMdNnzHOdyjpKv93wXbc
- iS0i4hkPF/5W/V6iXAKTkfBFgH9XrQbAbnr90wHDPWppEL8BpNwmXx+NF+qOOUgAxWNFZ15/o1b
- EhI3BIYgIAjXDBA5ODToqomy7RmcUdsLHSX7Busm1f4qk0+23leKvnHobvHYL3SkhqrWTj51OVD
- QMXtXFdpEQysKA4P/j2bmH/1f7eHd+qNdMZomOa/8KEWv+thAxD32IXC4dukM51CuzBSMviSk6m
- z181V7eLHXoFfRA==
+ bh=yCnIm+Ne+Unx6YSsDBKwjbgpTsTGflVtWw20mZCVwok=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzVaf88VvD7YBXZ/JDIwAgpECy64Z/yQB+jLiq
+ /+BJUpdNZ6JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCas1WnwAKCRDa6OEJdZac
+ 5TTAD/9Q+sYtQzCmKQBrqiA8hg5e+qck5yXlSrEW69uSxVLLICmlfpf8mhfnecfe8R1JVsG/r2E
+ Xs4aCRLzmoNpAj5P8/dqUTmd7/hJSoX+EhCgGhW3er3/ZDMWRQlf9aKVH+FxLdKYcRSc9IdANO/
+ ZrzpFhSG2qFyGY6xZKO6ZCmf4z903Nb+BPB2gL3h6RHVM9QKWiZUURcXhjS9FYVXZvSYfQnjIy/
+ Sz7mauL/RwSgX1S0Q/p7NEoj+CK+qshaLBSkT8DXfIQ4nPpnQeQeEGb7Z55wGDdeAFPgTw1kOa3
+ mPlVW1fUM9dpC3qPVCL2xQjvS3/tSdxf8791/sd+nACEW0nURL0AJukJdov2mpQOuM6N2bw9YUE
+ 7hXHkFzyS/VzARHX8SwqW1maqdHg53LRv5Lo3+AK21uysU57M9ngRDL2zZB3mLCq1iwdgMZB2t4
+ OYWmbWHB4aQK3cVsDQVs7hMTF2xFUmKT8rILry2BXjz2911Yr0vEQ8pg4aAwpoPStH4qFj4G/PB
+ o7G6WLORjKFqNbSLlPIazZzL3xqHzFcnxCLuOz7sS2I+JDJy/XTo0ifDyPUIhNa5pdHYC42Yj8O
+ G2qFVLWABKAAIpes06QSgHLnZ54oQBfca8RnvJbSvN8oEoRi+62xSs9aDYx8bQHBM28K3ir2jlQ
+ Okf7yOefqkPekow==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 2egMCmwUYGvV0sRr7pmoJJeXCwOmDfSdgDd5VjpASSQ_1791841976
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: q7Fb0cY2idpYh__pGS1pgIPPCXVD-K8sUxFrHVnRSFc_1791841980
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -22
@@ -109,8 +109,8 @@ X-Spam_score: -2.3
 X-Spam_bar: --
 X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,8 +126,10 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 12 Oct 2026 18:03:27 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
-> As with x86_64 we now have the bits to add a KVM gdb test
+On Mon, 12 Oct 2026 18:03:28 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
+> Add an explicit "kvm" run to the tuxrun tests. Although running on an
+> s390x host would probably have defaulted to "kvm" anyway we want to
+> exercise specific features later.
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 

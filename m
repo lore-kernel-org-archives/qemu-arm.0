@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE46CA9ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 15:16:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1EE8CA9EC5
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 15:17:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGHlB-0003iq-No; Mon, 12 Oct 2026 11:16:17 -0400
+	id 1xGHlz-0004GL-R9; Mon, 12 Oct 2026 11:17:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGHkw-0003YD-F0
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:16:10 -0400
-Received: from mail-wr1-f41.google.com ([209.85.221.41])
+ id 1xGHlv-00047O-I4
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:17:04 -0400
+Received: from mail-wr1-f45.google.com ([209.85.221.45])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGHkt-0008Ue-8D
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:16:02 -0400
-Received: by mail-wr1-f41.google.com with SMTP id
- ffacd0b85a97d-48c4d99c32bso1947858f8f.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 08:15:58 -0700 (PDT)
+ id 1xGHls-00009R-LU
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:17:03 -0400
+Received: by mail-wr1-f45.google.com with SMTP id
+ ffacd0b85a97d-48b060ec084so1231997f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 08:17:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791818158; x=1792422958;
+ d=1e100.net; s=20260707; t=1791818219; x=1792423019;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=hXF/Uyp0IqUhL1rx9an+YyWuRquSX9DskObYxu27U/A=;
- b=ZXRSMDctDbFm+OnmLLbUE7H2QMLuj/QgN3ERyZe/2CYav3EYqATRsUxzUOVilqHtUH
- u1wF6AO4F3amAXxin+BA+gDGbo5sbAewmMcjlZWq72C6hURp501EnbfRcTZJpDm5Esdb
- j6AVG2eSfmVrX4RsSnlvsje3RMejJUUu+QZYOSsfG7YRuKhyZtrY84KOynyr1ANL7Xp0
- petC8GRFLhWwkvEMkFeoVEFtOqxdM/Xf6bM6GFwHJYSyC1P0skInnSnZ8lv26buvBybr
- pLEvXIF9dZxdeU9Dbx2gAq3BKMHiApuMWmCkz7lfL1Voy1H4Oc4qUXuI4Wmex06QH59b
- bVgg==
+ bh=T0UIfa5fY9UvW53K8vxfMmiR1L171Gz3N0KwneftI8Y=;
+ b=uwPcixWbsIMA1zwHo/AQk9tGHoVBsCpsPQi7OGSGJUwd16Um+U5iQYOiXzDEYPhg3K
+ 86NRigVN3gYhatsKSAZ2QVdqrreFEDq3m6cuidjiaAo92sbX/Vg/roSwWxd1wDJT6VIM
+ 845dkUJzrQorUKvSNeDzT5XJ+oT0AkJXtzs9x63AZueQbpeQLToFGy1/LrnNkZBs/ifp
+ mwIaG/CY002cntXwgc2mtbVA07TwuHHLkly2ED1gkqKwVaJX/uXNTgTwrBuymJZ+RDFw
+ J/2E0HgzOxPbOcAsrmsfP06iZeXA+dkxcZ6WIa8WsJekMh6Yhx7/+JWpbp5VuJpoEFWk
+ bBpQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBytNCtazYzHTIPJTKLi7xCkKQ3IzajD3prTMtemS+L0c8OuThoOS4msb492851jOeAXkcW+mUUzNw==@nongnu.org
-X-Gm-Message-State: AFq9FYJQDFOgI+oOYz9LXKIJdPlPQlB2SQ1YTt9oXDRh3jt9AAAVyqQL
- Q2yJg5BNt5gLfL20hZr5VLNA7X7Sz+1hH5di+o3uMu6/+/2WxvN/qoYVMAUbU/wi
-X-Gm-Gg: AYBFou34xFUP0N7rsV4tR2508i3J7R4A79bcxYtVLWyrNrVLH5007uobgQisu+W2cE1
- 7eKjkjM20bXWOmy5VoJHlHn1NQCLfo3hdu6C91WbpRUV2laCJAE46uzR92H4Qad9fGdo2D/pdRv
- psgBLQ/nBo3TmveDU+On/R2Wvc7aguDB0MeqY2dPps3mw+0gClybbRZvC8KadhHBNsCfiMo0Nnj
- B++EAX8qkFFHtyj1tSA8Im0xVMurZzEPOqH4dEosahAReVena55IwsaMa1Nuxv7Z95uTEP3/HZS
- MkL9B21DlItFzUjPlqrT+lm7UqLn2ed2In3BihsWqDxruglN4wxZwJ+a08LKv03NYTepR3VEJPT
- TxZb/0/GBZ9kI+1sfSvXCWSnynBSVykRs3gzLb/npiyxpgrsbzctDVBGdhATs7JI+CeMnMQ1ieC
- CQCITfjUusz64QqwrmzHb5S2KuVsfad06ISYj8nMn9P2MWZPqpjqNlNpex5iJAEjums/e6Zx8VZ
- hTKyNfY1vEvIZqelxPBTap7olwVJurxDr2ha1QOZQjrgQ==
-X-Received: by 2002:a5d:6084:0:b0:488:8525:4979 with SMTP id
- ffacd0b85a97d-48dbacdb462mr14942243f8f.45.1791818157642; 
- Mon, 12 Oct 2026 08:15:57 -0700 (PDT)
+ AKwUvBz+CsrSi4T/HS/mCgC/FCjkySmkJ1BTC/TAPPU+GUhfpe5cvZ1/yBbrjhO1bE2y5QMH8ecA6xsxRA==@nongnu.org
+X-Gm-Message-State: AFq9FYJMGOfJtDI06jR9g3H0fqtLYxxHQcExGgTx1tz4fgGqqBr4Mml0
+ Dg6ZRXkt0WzKwzwbrqIW7pAn898nNpnUpZU3kRJzFnpFi0wsFjqvPlPo
+X-Gm-Gg: AYBFou3P5xsqJ0d40BD4ANDDzJSmHG51iHjI6g8TPbtlY2WcZX6yqqv5s1DawEFx2I9
+ QTc+NdhhzrTNgWaYLC9EHbm/CJDzYNyIuXqWPhsELbIzP7KZgnwHwKE9GWzgX1qvd44N/KaOYGZ
+ MP+OnhnJgFCKwKPqvI+0HexL1k8yPdbst/HYX1lw8h+CZ0j5EaH0CJs4NYbeayuxf/CWUePt28L
+ FWCTGlnyCLp/ANUfYwT75Lc9Ibnys+Y5GMhJuNAlOYE0jJA8VUIwCoCHohZ+hF9GOqZOUBa0UE8
+ PlVF8/pDKGSiljM/J6EP0Q30KljAy5cl+8PD9vDXEKpS4W32bWSh2ftPl9mChMqiHNzMfr+oP9q
+ 8ESGgFoDJBbZuqS5f9c1I5mJyq7RPZTqRegtqQqKRBE7DtNFG4AHqy6yLf4xwehRLJ+GHVhfbqO
+ SDRBzPLNcohUQ1rO39Icr2OgeIGowlJ5FZhRTmpJuoP5bi6QaKffbBwcLBBnAxrK+4hLvp3vY01
+ ZYvRXzlnrJaEH1DPICAJ88881txgSxoyorkcBFl09+eaMvmFKKi3WDSsw==
+X-Received: by 2002:a05:6000:1290:b0:488:83f7:633a with SMTP id
+ ffacd0b85a97d-48dbaaf0096mr12446491f8f.28.1791818218859; 
+ Mon, 12 Oct 2026 08:16:58 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0aaaad1sm9541f8f.17.2026.10.12.08.15.56
+ ffacd0b85a97d-48de0ab506bsm8143f8f.27.2026.10.12.08.16.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2026 08:15:56 -0700 (PDT)
-Date: Mon, 12 Oct 2026 16:32:16 +0200
-Subject: [PATCH v2 23/50] tests/qtest: ds1339: add RTC test
+ Mon, 12 Oct 2026 08:16:58 -0700 (PDT)
+Date: Mon, 12 Oct 2026 16:32:17 +0200
+Subject: [PATCH v2 24/50] tests/qtest: ds1339: cover power-on defaults and
+ reserved-bit masking
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261012-bmc-minerva-v2-23-4c3dff084ec9@free.fr>
+Message-Id: <20261012-bmc-minerva-v2-24-4c3dff084ec9@free.fr>
 References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
 In-Reply-To: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +78,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791815520; l=7120;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791815520; l=3426;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=3fFqJMbI+w2Mg/c2PcpO40N3CXUqXKnFcNeMq9t8SbQ=;
- b=6t130iCePXBh6J4cRIyZZ9rCE1CNs/1qc64NRzus65WZ8pJb3AHEQPZsMwhVfrqYyUXPmtMZy
- 0qpsD/GcGmVBNIeXasdSddzm+BRfrnE56Ha6nOMc1XAJaY/a1tAnIrt
+ bh=g7DB+ARtVObCPTzzGVKyyO/c/Gk+v4O2cZLGywD17yk=;
+ b=0+cnuysTYuhHUOyMTWnyYC3FsFUHKhO6Pbmrq+BoOdgYjrFpu2za3VffpGMlzdFCDTjxVI3yQ
+ zgrZLlPbxKjDknRoNhoPcgMLYp4Kixv2luYuNQoQW4ZMqEKRJTpf6Nf
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.41; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f41.google.com
+Received-SPF: pass client-ip=209.85.221.45; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f45.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -111,200 +112,85 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The variant had no test of its own. Cover its register map, the
-write-protection of the oscillator-stop flag, and the wrap of the
-register pointer at the end of the map.
+Neither the power-on defaults nor the reserved bits of the register
+file were pinned.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ds1339-test.c | 166 ++++++++++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build   |   1 +
- 2 files changed, 167 insertions(+)
+ tests/qtest/ds1339-test.c | 51 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
 diff --git a/tests/qtest/ds1339-test.c b/tests/qtest/ds1339-test.c
-new file mode 100644
-index 0000000000..08fc16acda
---- /dev/null
+index 08fc16acda..e9dcdc36da 100644
+--- a/tests/qtest/ds1339-test.c
 +++ b/tests/qtest/ds1339-test.c
-@@ -0,0 +1,166 @@
-+/*
-+ * QTest testcase for the DS1339 RTC
-+ *
-+ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bcd.h"
-+#include "libqos/i2c.h"
-+
-+#define DS1339_ADDR 0x68
-+
-+/* DS1339 register map */
-+#define DS1339_SECONDS   0x00
-+#define DS1339_MONTH     0x05
-+#define DS1339_YEAR      0x06
-+#define DS1339_ALARM1    0x07
-+#define DS1339_ALARM2    0x0b
-+#define DS1339_CONTROL   0x0e
-+#define DS1339_STATUS    0x0f
-+#define DS1339_TRICKLE   0x10
-+#define DS1339_NUM_REGS  0x11
-+
-+#define DS1339_STATUS_OSF 0x80
-+
-+/* The clock and calendar come up on the host time. */
-+static void test_time(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    uint8_t resp[7];
-+    time_t now = time(NULL);
-+    struct tm *tm_ptr = gmtime(&now);
-+
-+    i2c_read_block(i2cdev, DS1339_SECONDS, resp, sizeof(resp));
-+
-+    g_assert_cmpuint(from_bcd(resp[4]), ==, tm_ptr->tm_mday);
-+    g_assert_cmpuint(from_bcd(resp[5]), ==, 1 + tm_ptr->tm_mon);
-+    g_assert_cmpuint(2000 + from_bcd(resp[6]), ==, 1900 + tm_ptr->tm_year);
-+}
-+
-+/* Writable control bits round-trip; the reserved one reads back zero. */
-+static void test_control_register(void *obj, void *data,
-+                                  QGuestAllocator *alloc)
+@@ -74,6 +74,53 @@ static void test_osf_write_protect(void *obj, void *data,
+     g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS) & DS1339_STATUS_OSF, ==, 0);
+ }
+ 
++/* The control and status registers come up in their power-on state. */
++static void test_reset_defaults(void *obj, void *data, QGuestAllocator *alloc)
 +{
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +
-+    i2c_set8(i2cdev, DS1339_CONTROL, 0x1c);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_CONTROL), ==, 0x1c);
-+
-+    i2c_set8(i2cdev, DS1339_CONTROL, 0xff);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_CONTROL), ==, 0xbf);
-+
-+    i2c_set8(i2cdev, DS1339_CONTROL, 0x00);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_CONTROL), ==, 0x00);
-+}
-+
-+/* The oscillator-stop flag can only be cleared by a write, never set. */
-+static void test_osf_write_protect(void *obj, void *data,
-+                                   QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_CONTROL), ==, 0x18);
 +    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS) & DS1339_STATUS_OSF,
 +                    ==, DS1339_STATUS_OSF);
-+    i2c_set8(i2cdev, DS1339_STATUS, DS1339_STATUS_OSF);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS) & DS1339_STATUS_OSF,
-+                    ==, DS1339_STATUS_OSF);
-+
-+    i2c_set8(i2cdev, DS1339_STATUS, 0x00);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS) & DS1339_STATUS_OSF, ==, 0);
-+    i2c_set8(i2cdev, DS1339_STATUS, DS1339_STATUS_OSF);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS) & DS1339_STATUS_OSF, ==, 0);
 +}
 +
-+/* The register pointer wraps at the end of the map. */
-+static void test_address_wrap(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    i2c_set8(i2cdev, DS1339_CONTROL, 0x2a);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_CONTROL + DS1339_NUM_REGS),
-+                    ==, 0x2a);
-+}
-+
-+/* A block transfer off the end of the map carries on from the start. */
-+static void test_block_wrap(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    /* The alarm 2 block, then on into the time registers once it wraps. */
-+    const uint8_t out[11] = {
-+        0x0b, 0x0c, 0x0d,              /* alarm 2 */
-+        0x18,                          /* control */
-+        0x00,                          /* status */
-+        0xa5,                          /* trickle charger */
-+        0x30, 0x20, 0x10, 0x05, 0x12,  /* 10:20:30, day 5, the 12th */
-+    };
-+    uint8_t resp[11];
-+
-+    /* A month and year the wrapping write never reaches. */
-+    i2c_set8(i2cdev, DS1339_MONTH, 0x07);
-+    i2c_set8(i2cdev, DS1339_YEAR, 0x31);
-+
-+    i2c_write_block(i2cdev, DS1339_ALARM2, out, sizeof(out));
-+
-+    i2c_read_block(i2cdev, DS1339_SECONDS, resp, 7);
-+    g_assert_cmphex(resp[2], ==, 0x10);
-+    g_assert_cmphex(resp[3], ==, 0x05);
-+    g_assert_cmphex(resp[4], ==, 0x12);
-+    g_assert_cmphex(resp[5] & 0x1f, ==, 0x07);
-+    g_assert_cmphex(resp[6], ==, 0x31);
-+
-+    i2c_read_block(i2cdev, DS1339_ALARM2, resp, sizeof(resp));
-+    g_assert_cmphex(resp[0], ==, 0x0b);
-+    g_assert_cmphex(resp[1], ==, 0x0c);
-+    g_assert_cmphex(resp[2], ==, 0x0d);
-+    g_assert_cmphex(resp[3], ==, 0x18);
-+    g_assert_cmphex(resp[4], ==, 0x00);
-+    g_assert_cmphex(resp[5], ==, 0xa5);
-+    g_assert_cmphex(resp[8], ==, 0x10);
-+    g_assert_cmphex(resp[9], ==, 0x05);
-+    g_assert_cmphex(resp[10], ==, 0x12);
-+}
-+
-+/* The alarm and trickle registers are stored but never evaluated. */
-+static void test_alarm_registers(void *obj, void *data,
++/* Neither the reserved status bits nor the alarm flags are guest-writable. */
++static void test_status_register(void *obj, void *data,
 +                                 QGuestAllocator *alloc)
 +{
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    static const uint8_t regs[] = {
-+        DS1339_ALARM1, 0x08, 0x09, 0x0a,        /* alarm 1 */
-+        DS1339_ALARM2, 0x0c, 0x0d,              /* alarm 2 */
-+        DS1339_TRICKLE,
-+    };
-+    static const uint8_t vals[] = { 0xff, 0x00, 0x5a, 0xa5 };
-+    unsigned reg, val;
 +
-+    for (reg = 0; reg < ARRAY_SIZE(regs); reg++) {
-+        for (val = 0; val < ARRAY_SIZE(vals); val++) {
-+            i2c_set8(i2cdev, regs[reg], vals[val]);
-+            g_assert_cmphex(i2c_get8(i2cdev, regs[reg]), ==, vals[val]);
-+        }
-+    }
++    i2c_set8(i2cdev, DS1339_STATUS, 0x7c);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS), ==, 0x00);
++
++    i2c_set8(i2cdev, DS1339_STATUS, 0x03);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS), ==, 0x00);
++
++    i2c_set8(i2cdev, DS1339_STATUS, 0xff);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS), ==, 0x00);
 +}
 +
-+static void ds1339_register_nodes(void)
++/* Reserved time-register bits read back zero even with the clock stopped. */
++static void test_stopped_reserved_bits(void *obj, void *data,
++                                       QGuestAllocator *alloc)
 +{
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "address=0x68"
-+    };
-+    add_qi2c_address(&opts, &(QI2CAddress) { DS1339_ADDR });
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    const uint8_t all_ones[7] = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
++    uint8_t resp[7];
 +
-+    qos_node_create_driver("ds1339", i2c_device_create);
-+    qos_node_consumes("ds1339", "i2c-bus", &opts);
++    i2c_set8(i2cdev, DS1339_CONTROL, 0x18 | 0x80);
++    i2c_write_block(i2cdev, DS1339_SECONDS, all_ones, sizeof(all_ones));
 +
-+    qos_add_test("time", "ds1339", test_time, NULL);
-+    qos_add_test("control-register", "ds1339", test_control_register, NULL);
-+    qos_add_test("osf-write-protect", "ds1339", test_osf_write_protect, NULL);
-+    qos_add_test("address-wrap", "ds1339", test_address_wrap, NULL);
-+    qos_add_test("block-wrap", "ds1339", test_block_wrap, NULL);
-+    qos_add_test("alarm-registers", "ds1339", test_alarm_registers,
-+                 NULL);
++    i2c_read_block(i2cdev, DS1339_SECONDS, resp, sizeof(resp));
++    g_assert_cmphex(resp[0], ==, 0x7f);
++    g_assert_cmphex(resp[1], ==, 0x7f);
++    g_assert_cmphex(resp[2], ==, 0x7f);
++    g_assert_cmphex(resp[3], ==, 0x07);
++    g_assert_cmphex(resp[4], ==, 0x3f);
++    g_assert_cmphex(resp[5], ==, 0x9f);
++    g_assert_cmphex(resp[6], ==, 0xff);
 +}
 +
-+libqos_init(ds1339_register_nodes);
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index e05d8a07b9..e23eb9bbca 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -326,6 +326,7 @@ qos_test_ss.add(
-   'adm1272-test.c',
-   'adm1266-test.c',
-   'ds1338-test.c',
-+  'ds1339-test.c',
-   'e1000-test.c',
-   'eepro100-test.c',
-   'es1370-test.c',
+ /* The register pointer wraps at the end of the map. */
+ static void test_address_wrap(void *obj, void *data, QGuestAllocator *alloc)
+ {
+@@ -155,8 +202,12 @@ static void ds1339_register_nodes(void)
+     qos_node_consumes("ds1339", "i2c-bus", &opts);
+ 
+     qos_add_test("time", "ds1339", test_time, NULL);
++    qos_add_test("reset-defaults", "ds1339", test_reset_defaults, NULL);
+     qos_add_test("control-register", "ds1339", test_control_register, NULL);
++    qos_add_test("status-register", "ds1339", test_status_register, NULL);
+     qos_add_test("osf-write-protect", "ds1339", test_osf_write_protect, NULL);
++    qos_add_test("stopped-reserved-bits", "ds1339",
++                 test_stopped_reserved_bits, NULL);
+     qos_add_test("address-wrap", "ds1339", test_address_wrap, NULL);
+     qos_add_test("block-wrap", "ds1339", test_block_wrap, NULL);
+     qos_add_test("alarm-registers", "ds1339", test_alarm_registers,
 
 -- 
 2.50.1

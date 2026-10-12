@@ -4,101 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551AACA9ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:27:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 782B8CA9ED0
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:32:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGDFw-0007Kj-Kr; Mon, 12 Oct 2026 06:27:46 -0400
+	id 1xGDKr-00079B-JW; Mon, 12 Oct 2026 06:32:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGDFl-0007JV-VD
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:27:36 -0400
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ id 1xGDKq-00078Y-0l
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:32:48 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGDFj-00057Q-4l
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:27:32 -0400
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-8b0703011c2so11472877b3.2
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 03:27:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791800846; cv=none;
+ id 1xGDKo-0005wm-E4
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:32:47 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-8ae9bc9a2fcso28955287b3.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 03:32:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791801165; cv=none;
  d=google.com; s=arc-20260327;
- b=nCOaMMh5U4wqLUfPHJ5KSHKxgdIL6VnoXVJjS0dg8hkKzgynre1xEombd61BlGhhVb
- Zm1z4Lq0WtWmMHPltC+augpHDf8VhUIaMi1UgpQiWn4B3/huo8j+TlAF2MJI0YIABWsA
- M2EK6wUdgtreMWtRmX9S4laktGVpDG34jqLyML1edWIolk+OCLhxsMwl0U6hqbBzyBrz
- I3tsNXbUuggWPVCtuC8uyBS7U3dky8xbdmsyr1tsKggO/xOOLN3F8lz+Y2qSHAXXEZf3
- z2WQMGnUK5mbij5dUdRvcfkCCsIdKKw/XdlgFSO4ZrMuWqXkqSRhOngT8bapKDPsyLtE
- eajw==
+ b=kaFPmYXc6P+u+YkLLzwWpqVnBvj+iYpoNjEzGljIfT0O8rxqPjyEIyuyDt61YwwRyQ
+ pJNU23001b8njOiavyJlCli84b9r1K73ReCZp2/bshAsMCCoANC1Db4zm7jpaq7Y1DnB
+ Fz6WWs5sVxQmwMz8L54ZTvV+xQgjgyaYkNx9D7+e49VD0iMabfYGNT7BhPL7dISXFVGY
+ d4NWyPE/3mobk2oWfpHIhtsW6wOiEFE632hx6txKfDZANYb3A/79ovy+MEDpkLcttkZF
+ RgAXhgSUL4qEXgx2x3aecd18Czc8c6Q4XPs36KsYiiAvHSOlMZKFcV+YFlrCALFYGyBH
+ coiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=aW1fhbUGu6OqgjQI+qSffpqhlyHcxg/42Q5aUE4TzTA=;
- fh=RNet27Pdo9pvr5xPtoSFgNdj0c/evwxN747sdNsEZ9c=;
- b=TrBi8Kw6okIPRMIvbnzbtG+0C+3JEmI08saGRPCaHfHzXgpHUJjIf87WKzpRFQgtPp
- hfEOav4dNB/eW26R2l+1RULf/R7HhqDHNjpcAoDHkvaJ7V1kykkaBPFi6uw9rkkZrNN7
- a2qlVht9hPoDWpUYqzK70sudetpgthsIE9TH0ZanzfWsN14V90Ww0DjUIPz4pfNZCfjx
- XFimjA5lRcUb054s+D01mCO91TO1yn2Igy+aoK2Av4kq/6BEljmZhMiJ0LVAIuvEtt6a
- jx/LeUHmDDx3NiEao7KvplqcigZKnqDrq1dUo6hbV666MTY5DtCyIdU+Nsh07O6F+5qk
- jhDA==; darn=nongnu.org
+ bh=YQI/rTmZyoxAzzXUf/eoWI3j/Wdpv6I65MmZpfEGH8g=;
+ fh=JZDAJIA/2y5s9y13Dd9nhJKF+g6hgNgO/Z3UDk4IvqI=;
+ b=VA3HYMhh9XsrEhv/7q6oxHCyTT8+NrBhmBMqJlkiAE4lbzFsyhghATpjxVJhioep/5
+ HF/4ixlN4iNeodD271Ko3NoI/UEe3frWp2yO0mlRBgj7jS1/J0FR5uDtJhlCDxMv5oxp
+ XCeLQ3t3Tng/501woVbW/3h+s6+rpoS9wy6kuV7ZiSOefBRaiNU29iVdTXKArU3qBWgo
+ wXpCxn+Fnpuoz5tgoc3xFCGmnqsVcfG557tOl5EVJAEt1tYc97sL8c4p2vakWGClGiSk
+ obRf1VICo4PcU6jHPfmN1EDV0IvQlLxRafpJgN/DF/8xljwz7poUls/EXSy0b5Pi9WMO
+ aNPQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791800846; x=1792405646; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791801165; x=1792405965; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=aW1fhbUGu6OqgjQI+qSffpqhlyHcxg/42Q5aUE4TzTA=;
- b=N19mDcPKvhYgbKTJMBWmfZzvOnh+rwioUop7zZkT8mCKlDxFkF/9d9IktUSriT6pLC
- KQmEcn8sZtX3wsF8nqcScenexxGUVYBKnyLIYkAsRn0vHrcOeoqdjr3knohAzA+yu4n3
- LOxXj8Nz1ffooj9BOVmUo27eLVwWIYlUm/mwTb+sPQhymvZSJvQWhGZERZqjsQbdh1ga
- nLXpjxN3o8tDj0+xPRAPhuvcdHd1Bjqc5bJj0yvoBiS1IsjCUImjWzUaSibidsg5aJFN
- aBIYzjPqxNIwF+99cQsNYWEgpHZm/kjwH8eIDkNRNyTscnBec/CMZ/yilovDGvUs2S2b
- 5mXA==
+ :content-type; bh=YQI/rTmZyoxAzzXUf/eoWI3j/Wdpv6I65MmZpfEGH8g=;
+ b=P0JjeGifgKNmdkpgbVNGrKG9+4rgvW0mVxeG/2JGUbCGc4X0CsHodWiCBj3LKViXFq
+ cD6tYeOyHK589eCXQWJ6Z+C39F2Sc34lJ/B9U9eywBkM+fPQ8pefBHt+GERZv1VGnJfr
+ 7eDaCoNcKHXRy7X2MZWLuGAKF4UxCyJ1tIOMeyh4Z9o+VChMNHbF5eUanGRPOZRti5zg
+ ArmmUm9TRPDgCsoK1JHFxWXI5Jiq9+mJbBqJGcteLx3UVvP5J0WaZdknkoia/KC2nZLq
+ iqnLga1sKIRyHNqBQ5nDz9+6VA+Fzy9/q67l+eqevj/SNNrJL17z/TVCbyzmfBFnPLv8
+ /8jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791800846; x=1792405646;
+ d=1e100.net; s=20260707; t=1791801165; x=1792405965;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=aW1fhbUGu6OqgjQI+qSffpqhlyHcxg/42Q5aUE4TzTA=;
- b=RBDUkixJFxhEzYmPevxcnWQIyX4+fhLkBge2chx5FxuNjVe+lroEAcKQAhFW8tVe2h
- FJgp4mRF16qprQ/ZtMnPgoZtndz3QksXmJ4vYBctvW5pSM646fZ0KLDDPrC5TmCUn0Mv
- TUeFKGODkKDigNQBxq5nEX8LdOrApCA0c+ea+kjQF5hNbiE5Skj24r2yGZC37yMX9O3p
- KgQvS/RuHooiBoP7UGNvzj6t1CqLKocVBljQGf+GX3qgoCHUsiXpwWrnQrWl+i2WvFwp
- +rhFykZXI3rjcaoYvUyoDkdVRVq4BdP246Wv7uRF4F1bPNYVSr7v/5s2mt2V8V2YkuAC
- GENA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBz+ka0uB3zjBsp7OkpazYa/S0dw7RW/N1ZBzwZSPuosnPCrw7KioSOVpNhcXjg8PcF1AM0VPln34g==@nongnu.org
-X-Gm-Message-State: AFq9FYKD4u6d2mu7aMYfUB/r+irytR45TpT0sbsl2m6zGb+FouAptz6/
- UxUhr3HL6MwFcngmzv6qcrsPrTBgaFh1i0aveE7usiTxThRf/TQVKk+pib6pM7BHhQ1TZHiEpuf
- +3FOqbax/KDarpzX9e8aJn+DWwaD7L4mLQi16n0Rs2g==
-X-Gm-Gg: AYBFou2R7P4gvi7FWc3YtSxHqNFuqgipsFWpRq89TjI2b4lg55t00MpwMZPi9nJkUZ6
- zsdBSwGVSA8hl6/3jfPRcKj5Y8nrhHrci9IgpYDq9XxAdvFDUcQBHupOPpYLAYfkYlTIuYColId
- vkbRjrNZH27yma+jRIeNIYXoo4peiQovwnkuPgccITgQ0ptfNtd/1Qmo1+UU3bGoQQTyWvbI6/1
- 3fvPcVwDbTi3VYQtZ1fXtnc/TwEduux6azPhaREJx2dZcZvVVUn6TSxwb85e96REXrdXwqpiuBT
- 73+Cx8J04MprVvpOcbuzIp4QVHoGkSnJBqpNpRG4l7rCmAP33yhzHZhWkA0Om6U3ZnC1erZ0b2L
- hIhMBU0sLvsjAVWTyL5o1fW1HmSXrpc+VnGDAzvHtbpUzITCPIg==
-X-Received: by 2002:a05:690c:6182:b0:8a9:a921:13c7 with SMTP id
- 00721157ae682-8b07ee5880cmr30824607b3.44.1791800846408; Mon, 12 Oct 2026
- 03:27:26 -0700 (PDT)
+ bh=YQI/rTmZyoxAzzXUf/eoWI3j/Wdpv6I65MmZpfEGH8g=;
+ b=staGzVP2Y7wZyH+q1dZNIoDAShy1raOMoASh6U0RGFXnFRmSJq4fSU62nN74IKQoC4
+ 5E8aAkO/sPuGVrw1JgV3tAYrxSMncGeZwS8F6nDHI4z+1+pRBMzORdJXobXA5rLnyvj9
+ rCKhwdKdDGhulD450Flhu0ScgISTThsQuE+5mRdHnxDsIqG4nc7bojaQSKf0wxEuT/h+
+ GnuSUkzJT0oPLA+4CgLw1D2Jb8aCXDWcg8aqfMQYw3Sv0KXqfXhMsJ+nawqf11jHajgU
+ eVbWsf4SsIO3sBmWFOMCU/WrcJRqMa+WcF5IfVKJbyzJXkF7Ir81cf5+NFEOrGEpBsnV
+ nd+A==
+X-Gm-Message-State: AFq9FYLrdsM5AF811cGfEMb/DTZkQFNYNkaB+J6GGB5TgBCUrMbW6TAI
+ iq2kD+d1HJUpUG2uNIlgPQKfvsCpKPz5VVSZFBg9Jaj+ey0uQ4epzn6p4EOaXKbXxH+Rmm/ZckJ
+ QW8HrbTDv/dWXY35pbq87uZQyYxmaEyr4YEYx9IkJKQ==
+X-Gm-Gg: AYBFou2ribotmuK3aAtfHZyKr05XEKzI4ImkkBoRin8haJdLnKlRe+nkI26LWOeCd3z
+ RetkLTlD0QgL/f6dQfHzVUq8IzKhB52MGqnRvbX9NQvjWPHNr48HcL528hNhhtID9HL5P5Up4V5
+ R/b/accSETWaXAIoh3rAHVXSSNXc+hCVT41T+jpDUtrdImqvN3Q6SA9o2Ja2kY26DF4EZh7SSba
+ 0UReSihoxwzyZStw7B+gT1H+JjjGDF6tCnMIXN9KBQO4027OK2RLlBxENuglckaVSU7gt824ngN
+ 1upW87l+1MzPCeYEmYylaybIt1aGjUPz83jlwckxr9IWVII9A3FPcvyPrb4As9LRhDdJD+KHkn5
+ mTvXOrFKqIoc5clHejDBxPvodwwUT423Wwz2s3+c=
+X-Received: by 2002:a05:690c:56c6:b0:8ac:c329:682d with SMTP id
+ 00721157ae682-8b07ed09205mr21470367b3.11.1791801164938; Mon, 12 Oct 2026
+ 03:32:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <C38CE953-7A98-42C7-AE35-443BED94674D@archimede-energia.com>
-In-Reply-To: <C38CE953-7A98-42C7-AE35-443BED94674D@archimede-energia.com>
+References: <20261009115728.1299384-1-fuad.tabba@linux.dev>
+In-Reply-To: <20261009115728.1299384-1-fuad.tabba@linux.dev>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Oct 2026 11:27:14 +0100
-X-Gm-Features: AclHuK8qEJqKaQPW0mxOYfZgMRkvdQZ65BCP00AZQHP82bo0Kh9kMzPMwOuJeu4
-Message-ID: <CAFEAcA8d-jepdKubizqZKXPafY1jbLdbB8YjxcZ9MR38f_zp7A@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] STM32F405 timer and RCC fixes
-To: Manuele Conti <manuele.conti@archimede-energia.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "alistair@alistair23.me" <alistair@alistair23.me>,
- "farosas@suse.de" <farosas@suse.de>, 
- "lvivier@redhat.com" <lvivier@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
+Date: Mon, 12 Oct 2026 11:32:33 +0100
+X-Gm-Features: AclHuK8AFMvBxGnvEeYYBK6kDyub4SiDtm1qkQ6ht23RjHpdhp94I11GUJgw7qs
+Message-ID: <CAFEAcA8D-8SAtpCq1WV1zmHcJhieHRdG5Z_o=oiOYN4Ly+vYWA@mail.gmail.com>
+Subject: Re: [PATCH v3 0/4] target/arm: Fix the TTBR table base address in its
+ 52-bit layout
+To: Fuad Tabba <fuad.tabba@linux.dev>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Gustavo Romero <gromero@redhat.com>, 
+ Itaru Kitayama <itaru.kitayama@linux.dev>, Will Deacon <will@kernel.org>, 
+ Fuad Tabba <tabba@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,25 +119,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 7 Oct 2026 at 20:38, Manuele Conti
-<manuele.conti@archimede-energia.com> wrote:
+On Fri, 9 Oct 2026 at 12:57, Fuad Tabba <fuad.tabba@linux.dev> wrote:
 >
-> Hi Peter,
+> Hi folks,
 >
-> Here is the complete v2 series, resent as fresh emails with both patches
-> inline.
+> Changes since v2 [1]:
+>   - Each fix is now followed by its own test, and the test description
+>     moved from the commit message into the file header. (Gustavo)
+>   - Clarified the stage 2 comment in the test. (Gustavo)
+>   - Noted that RAM_BASE matches the address kernel.ld links the test
+>     at. (Gustavo)
+>   - Collected Reviewed-by from Gustavo on all patches. (thanks!)
 >
+> Two fixes to how get_phys_addr_lpae() forms the initial table base
+> address when TTBR uses its 52-bit layout, each followed by a TCG test.
+>
+> The first stops TTBR[5:4] leaking into the base address of a table
+> smaller than 64 bytes. KVM's page_fault_test hangs on it under TCG in
+> its 16KB, 52-bit PA guest mode. Itaru reported the 16KB hang on kvmarm
+> last year [2].
+>
+> The second uses the 52-bit layout whenever TCR.DS is set, as the
+> architecture does, where QEMU used it only with a 52-bit OA. With a
+> smaller OA a non-zero TTBR[5:2] is then an Address size fault.
+>
+> Based on QEMU master (f7ada39eda).
+>
+> Cheers,
+> /fuad
+>
+> [1] https://lore.kernel.org/r/20261007080019.350315-1-fuad.tabba@linux.dev
+> [2] https://lore.kernel.org/r/B4C0AC3E-6A4F-4A7B-B7BC-81207539115E@linux.dev
+>
+> Fuad Tabba (4):
+>   target/arm: Clear TTBR[5:0] from a 52-bit table base address
+>   tests/tcg/aarch64: Add a test for a two-entry 52-bit TTBR table
+>   target/arm: Use the 52-bit TTBR base address layout when TCR.DS is set
+>   tests/tcg/aarch64: Test the TTBR layout with TCR.DS and a 48-bit OA
 
-Thanks. I've applied this to target-arm.next.
 
-Something seems to have gone wrong with the threading on this series:
-the individual patches should be followups to the cover letter.
-This was OK in the first version of this series, but not for this v2.
-I picked the patches up manually, but the threading being wrong
-breaks the automated tooling, so you might want to look into that
-for next time. git format-patch produces a cover letter and patch
-emails that have the right headers to thread together.
 
-thanks
+Applied to target-arm.next, thanks.
+
 -- PMM
 

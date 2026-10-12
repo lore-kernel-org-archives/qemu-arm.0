@@ -4,96 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91ED6CA9ED0
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:37:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5017DCA9EC5
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 12:33:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGDOt-0008T5-3X; Mon, 12 Oct 2026 06:36:59 -0400
+	id 1xGFD7-0007GB-5t; Mon, 12 Oct 2026 08:32:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGDOq-0008SA-Mm
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:36:56 -0400
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ id 1xGFD3-0007FQ-HI
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 08:32:53 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGDOo-0006Rn-P0
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:36:56 -0400
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-888cbacf70eso19180087b3.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 03:36:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791801413; cv=none;
+ id 1xGFD1-0000CW-4h
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 08:32:53 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-66fca0709caso1359496d50.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 05:32:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791808369; cv=none;
  d=google.com; s=arc-20260327;
- b=cUp2yM4HLc+b8SS9RhRi2za1bdta0ldqO58WkfJnVTLAz9dUQSi7Bii52psrtRcdB2
- 79qw6mDHjThkFzHdFi8J/bw3Ul/sgmOPARatHbZpU4Y6DJZVz7DyBeLPGOuvUrT2PQCC
- d9FbA5Vo0xB5AHyl+75JmNU3fikW0FGebQjKHGE1D94bkPajErmF7Pzl+js6/sX/PgKx
- zaCGWWE1pt41BjS52T9Sv7SbA20Mom9v/wN8Ky3gOtqkVvrStyvTDX2yQfZR1b212kZC
- ktnFTKCb9lXQ5EPTEsYm5RFhPN27WFkxQg8m7mKj7XIvBk+OELuhzdhCte5cF9P9UigO
- LBEA==
+ b=gCxcmqlAGNn1SPnGWJB7gU7xoGjGnIoF5HF2jIqQfTb/1r4lcVQQaVqsgNnB3qE4qM
+ N2tbLa5n+27Fu0VJfJ1QNwYb2b/1ooors3otX8NB8r3M9ArunzwN61x889VQdP6ludKB
+ /sQ17RCRVC8m1AO9vQWz7lFPM8jwR1NSLrO0ROY5iwgN7qxJZMP5KL2j5taJZxz/BBgO
+ 3kpMsqMNlCdrXa1hzjvOTXF6b2+rvJ7SApLO1RDruo4P0pi2VwaTDgYUNrh/pgCcev7I
+ oUR8qFZIAkGRk0rqTchReu/TbPs3pBr/beza5d9SfdxLtlT2zOOXdmbnBJy2Px8qx9Rc
+ pUtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=Q4Pwj0umhNYnhJcqSnnypcfIwnJ9p2Z4oUzUhn6fJ4Y=;
- fh=+HFjpdpYJTS3BLVQzH87ap9apFTu3p7y9Tshnz6mjBw=;
- b=rT/Uy0oJg8Eb1+J8fc5J8GUa7rvJZI6ZEOKUrrdPSH+MbVusADwIEMOMT/8181H4cS
- 51sqW03AA+Rutvm/VUoI5beL0BZwzpEyxp2aCpbt0jyo6vFzS9Teatk1cklG50YPMtM7
- mUakDEiwjHcUPSKcsVEKPb/tLU9aI3i7s50Q55Xvq4UcH37kiavjXamjQUxcxlhmC3pV
- z8oPTtAb5/+PUeF7AxeeuX4VX1KW12sL7P//HSG8b51of5kl1/OQAA+ODSSTIV4m30Dc
- w6SwGDCaEKyEUuRKl+9Fo3S46dzQhCuW6TGw7yi07P2VcitHXiPm8J2wAAYcTyC7rxyN
- v9kg==; darn=nongnu.org
+ bh=46d0qPPxK7zwjPUS5yP8stjzanBYFETDa9PZ8JIKsoc=;
+ fh=ur+1WgxREHVx7q9QXrfAkVO5C3bmOdY7e6KlrRW9p9o=;
+ b=OP5DIC+S2vZvB7sneRih2JVBXUQIOMxiKXc9XRmE1q4xSokIurDkOrVKmoBEiEn8ge
+ 9o5D6q2i7WbZvSeQtQ6w9PeZnh/z/UfHa9qKxwMas0UANVhEBQPEn6SP87hgNaQHP64x
+ iFTbBOHOMCDh4ZDIA1Y0EDNVJfI2GgZb1q7o2fTEMppCThU4GPz3ne9UixPmvxRGttZA
+ 0m5Yb03xCiscjTJliv5rsE+ft+HulBq5sHHcgG40CBlJDu323+6usBIFQfXShs0S91Gw
+ PTHsb6WAD7R2bLGwMBxa93eTolsbI0e+9M76/ghgBeH4ye3k6Mh1+ajnFBrhMaFi4rRX
+ GRaQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791801413; x=1792406213; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791808369; x=1792413169; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=Q4Pwj0umhNYnhJcqSnnypcfIwnJ9p2Z4oUzUhn6fJ4Y=;
- b=PxLO/FOnj/wMShCPNG1Dp2eTzF6svOpzRVNqpuXuY8mRjWqE745PcE6H8bkQtNQfOe
- 64VrPfkV0YKo5FtjnjL8taoE+JeF7BANMs1esp5RW80KmyYcNxWj2MxP9vGTF+EXWhpg
- ZYNsFSIeY51yp3vhP+lt8YI281z97Qar0dG+tay9KTURVO7PTHzIchyeJk4YW64Ul99y
- DoOjj5L5ImLpHQWZSQE7z5+beosst4NGaXzxBZAqqs+KJDQxlkuBw8pNzDGrlct28Q/g
- lX9Y3IDoppuDsh1AwrRaPZCOpBXdkeRAjE6MuLeks23hU63Nfw0xr39AHiZ9uHMoWhRQ
- A9wA==
+ :content-type; bh=46d0qPPxK7zwjPUS5yP8stjzanBYFETDa9PZ8JIKsoc=;
+ b=IKh3fTAaJcS1F6AT3xGpQMcvCsvYLfbKLbE2IGirOdmQjDgaOwoD+zBGTk09ap3EfN
+ JZWhfc6sCFEGq9S3AFvahM4RpkmBV0fhOFbwfT0mIR9EtkUZBX/BAZNfV7KUoapnk8cZ
+ mo384sILcipAgc5ygbcWznPkR9jyor8wFP/5X/jMmlco/wMAMIx26jswUJYGNCJ7nNxw
+ OkZL5zLTB/R1utUT3aqEkxKeigweATUHmaHCAz1M/s5bJ8VWuBG4Vt/rLFj6eF6RmhC2
+ nSt1ugJlUCRCVSHeGDQZhUeTCCIgvzigFXEHsWJC1BugUCgC6jGPUvraFriYgmEBEK+1
+ 9chw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791801413; x=1792406213;
+ d=1e100.net; s=20260707; t=1791808369; x=1792413169;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=Q4Pwj0umhNYnhJcqSnnypcfIwnJ9p2Z4oUzUhn6fJ4Y=;
- b=MFjIskMfz4HYFjh8HlqVes42JlgmRP8eOrLMwQoNJqh/eoV536m1LyWFITI2bcnYmF
- DTy0ZpDWUIexwbyuCXk+MwM4RqlogDELfT+u5UIrXLaJOLv3IeqQjkA9GfeI5+HnZyVb
- RIuBx+m/2nt55d3oa6NSwg+27rKOkiVZV7P2/p4qrHI8e09QfgXd1AdZ0XDxlAfFqWH2
- /ZsKWlM86y/wkboM5skXTZE3v3rVr9+KltdZ1wyeDN/du2Lux/R0BwxNy01ROhRPtK5f
- rkymjber4TX2mpWoRM6CqkebAxm6fOFPVn3mCsQfvNtuKhxGscktMV7J9G4Y5Igrf7MT
- b3DA==
+ bh=46d0qPPxK7zwjPUS5yP8stjzanBYFETDa9PZ8JIKsoc=;
+ b=dMAD2OKPqK1IB11G9+sxveXLF+3NxRstETvVEVM+tIz5ON2XdTaxf8NTeF5vcoA3dc
+ TQTkrm4LynMKuUxpyl2k1NAKHACYmj9QxmHHeX+0K6nR8c0G7Tc+Glcxxe4KR21nkIBX
+ 9UY3xEwuD+4P+Af6qNVqtJHDERZFUEvFjWZe3iHiSqZsFuB5wlN5mraBvKxXMEqXVLvF
+ IdCEruhLqYLq97wnRObxP/yuBlo809QFhLAudQROoxUiEP6T36iUnaCE+2GCecgigE8H
+ k/pgOX4igTzQSVBSFs/6XdSieQNPeguyOx33QBLzkOyUFD4WwxFlE/OTYl4jDpk2kSLq
+ wkiw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzByEj3Kw9xADMT1X9Jl8q94THjYGNBrUjkFib+adrRkjaTuPgqz8SvRKR3rSkklimu/65s6SrHsQ==@nongnu.org
-X-Gm-Message-State: AFq9FYKYa7wm3xgCmVyvptpnXxbylQdIulyiuv8zxjmb5NzSm0OmgQWi
- mVaRSgxLXsYV49XBIt3UoIwHnkRvK/4s+MvbxmsPAJoDbuiNMEHF3F2wB8UkPm+LkSsxFfmcgAC
- 2dE9oIdOHBP8I3s04f6NtQQmWIH3aqyYKhp2wzmbrBg==
-X-Gm-Gg: AYBFou3MR2pV6WoEXQKVlZqtPS9EJM2L0FsL10DslgfD73UJzhgZr1Q/XS4lCgQ4nhU
- cMSwcdU2/d7H/49vbFSTpsJKbcToMToB7Zf2J8mP2sbUv3qxfjvSE++3UE66S+H+5e37ITvz7ub
- d5NB4yi3W/SuOxhTjp5nieFp9MafZpdjQ+LjKgYjdY0XKT/PvonRIqniPupwiyyBa1gfGpPKqqf
- uD7eX1HX9Q4oOIZtz8LUI8Ms9ZguqoZ+hVfBEEqogIo8SiMhxmpAeqyLncZD19B3KzZ4BNCt5h3
- SxHgmPBmJUoGfnhOZFp9I8lmoYXtVTP5Hk6WW3n2i37zo+ERl420403GEUD8or99wKQ1WBD+d6R
- q/bV2Vjl4ypPh2NFvxT4tmTWTIHCVj0f2q8eExc5e
-X-Received: by 2002:a05:690c:6509:b0:8ab:3dc2:a4d7 with SMTP id
- 00721157ae682-8b07ed90e24mr30426327b3.22.1791801413399; Mon, 12 Oct 2026
- 03:36:53 -0700 (PDT)
+ AKwUvBymn51nYPuxidB4jTKbyDGqYZrE11yLky0FNU6OtiYv/K6kI8Zzb+2nvoWjK9IzYrUfHW3KCQtt+g==@nongnu.org
+X-Gm-Message-State: AFq9FYKXSFl6Hu720LTQ8IxP/IDZZ7vQV+FJ7Zva4CPLa0fQYbxS/w8x
+ Mrg/+aO/hf1hURo1p5zNcLfTLWByq9treLy52SEVAXsQPDbC684527tpowJR3CJj4Dweu6nTVnv
+ 1De/y1MVKQpnmFAz2f19BO6yiyHCOildRqpeCE3iiYA==
+X-Gm-Gg: AYBFou1ae1rTY5iI39Hda1/gNDJ+5UV1ip3f7qHyEK3WcaxzAIqDshZNFGNTmGrwWd1
+ vnrYOnVfhk6xIHQcG0OpmHsN6nHU+5rXiCx+B+tH2yYXzG64XNXoZBrcAsxdIj5T99N/hUa+us0
+ 6gTsbtimgZBmI4IQmymLGWmXOkByGVxewUbYDG1pp6eacnNNQmCMhks8HeSEhGD+1rMArXiIuCn
+ VZlZ5rVOsRnMkPCGwYkQBx4Sl0Qva9XXMnKZXjYU6uCxKL9G+vEdJeUTsbAlnCiwaakCiML4pTX
+ 3i+D/yESZpEFCJAyoimj38uT5CfkI7DYCmfeui530TovwCSJibjlGz7MGniTrb+vf7CDh0GAzrU
+ diel+bEGIXS3Kl2yuCvxL51veYmALpG2InPxr8Ls=
+X-Received: by 2002:a05:690c:6e85:b0:8b0:a352:f96d with SMTP id
+ 00721157ae682-8b0a352fd2bmr11739437b3.11.1791808368621; Mon, 12 Oct 2026
+ 05:32:48 -0700 (PDT)
 MIME-Version: 1.0
-References: <20261010070952.323466-1-richard.henderson@linaro.org>
-In-Reply-To: <20261010070952.323466-1-richard.henderson@linaro.org>
+References: <20261004090500.3082641-1-bin.meng@processmission.com>
+ <20261004090500.3082641-2-bin.meng@processmission.com>
+In-Reply-To: <20261004090500.3082641-2-bin.meng@processmission.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Oct 2026 11:36:40 +0100
-X-Gm-Features: AclHuK-20_kwZsKo7IVLn4oF9imCQm3d7Q-BGTahwP9XSW9HzvoyA4LdWoYWips
-Message-ID: <CAFEAcA92eOaY_39yN9H-vXZ7A9=CSPK6LEOxbbKxREv_HYw_qg@mail.gmail.com>
-Subject: Re: [PATCH v4 0/6] target/arm: Implement FEAT_IDTE3
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Mon, 12 Oct 2026 13:32:34 +0100
+X-Gm-Features: AclHuK_MFJQiIRUZ3pR1LXKyfoDcxnnCZt20Dv1-e5MwI9M5YrjOpKmiVHOg3fc
+Message-ID: <CAFEAcA8AMsN15gpeQTOR39w4uhVAWsfa44drHgXP8NN+pYSkYQ@mail.gmail.com>
+Subject: Re: [PATCH v3 01/10] hw/cpu: a15mpcore: Model the reserved page as
+ RAZ/WI
+To: Bin Meng <bin.meng@processmission.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,30 +118,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 10 Oct 2026 at 08:10, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Sun, 4 Oct 2026 at 10:05, Bin Meng <bin.meng@processmission.com> wrote:
 >
-> Changes for v4:
->   - Squash accessfn when we don't need it.
->     Rather than confusingly add el0 to the access_tid3 switch,
->     complete the kernel emulation by squashing away the call.
+> U-Boot's shared i.MX6 identification code reads PERIPHBASE + 0x4 on
+> MCIMX6UL-EVK. The first private peripheral page is currently unmapped,
+> so that access causes a data abort before the console is ready.
 >
+> The GIC-400 register map reserves offsets 0x0000 through 0x0fff and
+> specifies read-as-zero, write-ignored accesses to reserved locations.
+> Model that page in the private peripheral device.
 >
-> r~
+> Reference: GIC-400 TRM (ARM DDI 0471B), sections 3.1 and 3.2
+> https://documentation-service.arm.com/static/5e8f15e27100066a414f7424
 >
+> Signed-off-by: Bin Meng <bin.meng@processmission.com>
+
+In the interests of un-stalling this, let's trust the in-practice
+observed by u-boot behaviour over the TRMs. I have some code
+review comments below on the specifics.
+
+> +#define TYPE_A15MPCORE_RESERVED "a15mpcore-reserved"
+> +DECLARE_INSTANCE_CHECKER(A15MPReservedState, A15MPCORE_RESERVED,
+> +                         TYPE_A15MPCORE_RESERVED)
+> +
+> +static uint64_t a15mp_reserved_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    return 0;
+> +}
+> +
+> +static void a15mp_reserved_write(void *opaque, hwaddr offset, uint64_t value,
+> +                                 unsigned size)
+> +{
+> +}
+
+We should make these read and write functions do a
+qemu_log_mask(LOG_GUEST_ERROR, ...) since guests accessing
+the region is a bug.
+
+> +
+> +static const MemoryRegionOps a15mp_reserved_ops = {
+> +    .read = a15mp_reserved_read,
+> +    .write = a15mp_reserved_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +};
+> +
+> +static void a15mp_reserved_initfn(Object *obj)
+> +{
+> +    A15MPReservedState *s = A15MPCORE_RESERVED(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &a15mp_reserved_ops, s,
+> +                          "a15mp-reserved", 0x1000);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
+> +}
+> +
+> +static void a15mp_reserved_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "Reserved private peripheral page";
+> +    /* This device is an internal child of a15mpcore_priv */
+> +    dc->user_creatable = false;
+> +}
+
+Defining a whole new class is overkill; just init the memory region
+in the a15mp_priv_initfn() (it doesn't need to be a sysbus MR).
+
+>  static void a15mp_priv_set_irq(void *opaque, int irq, int level)
+>  {
+>      A15MPPrivState *s = (A15MPPrivState *)opaque;
+> @@ -43,6 +81,8 @@ static void a15mp_priv_initfn(Object *obj)
+>      memory_region_init(&s->container, obj, "a15mp-priv-container", 0x8000);
+>      sysbus_init_mmio(sbd, &s->container);
 >
-> Richard Henderson (6):
->   target/arm: Rename isar_feature_aa64_idst
->   target/arm: Enable writes to SCR_EL3.TID{3,5}
->   target/arm: Squash accessfn in modify_arm_cp_regs_with_len
->   target/arm: Implement SCR_EL3.TID3
->   target/arm: Implement SCR_EL3.TID5
->   target/arm: Enable FEAT_IDTE3 for -cpu max
+> +    object_initialize_child(obj, "reserved", &s->reserved,
+> +                            TYPE_A15MPCORE_RESERVED);
+>      object_initialize_child(obj, "gic", &s->gic, gic_class_name());
+>      qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+>  }
+> @@ -131,6 +171,12 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
+>       *  0x5600-0x57ff -- GIC virtual interface control for CPU 3
+>       *  0x6000-0x7fff -- GIC virtual CPU interface
+>       */
 
+We should extend this comment to mention why we model the reserved area
+the way we do, e.g.
 
+  The Cortex-A15 and A7 TRMs suggest that the reserved region at offset 0
+  either will (A15) or "can" (A7) trigger a bus error; the TRM for the
+  related GIC-400 documents RAZ/WI behaviour. In practice, u-boot for the
+  A7-based i.MX6 boards tries to access this space, and does not fall over
+  on the real hardware. So we model them as RAZ/WI.
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM
 

@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 788E3CA9ED0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFDDFCA9EDD
 	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 17:04:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGJRp-0005PH-7y; Mon, 12 Oct 2026 13:04:26 -0400
+	id 1xGJRp-0005PI-7z; Mon, 12 Oct 2026 13:04:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xGJRZ-0005GZ-O3
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 13:04:11 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1xGJRL-0005CP-8c
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 13:03:55 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xGJRV-0007As-Cb
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 13:04:08 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4a1698ea378so17445605e9.2
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 10:04:02 -0700 (PDT)
+ id 1xGJRH-00075B-Sh
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 13:03:53 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-49ff680331aso16948895e9.3
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 10:03:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791824641; x=1792429441; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791824625; x=1792429425; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Ch2ZoIADYgnoxJF6H4RUbty/jOOihKcMHABghoAwLPQ=;
- b=ap42NfLMyMeAK9p1L/1RpWJJCUYIB6K5izVHR/z2CdMAdCQe/3OPpSswj5r4JccreL
- Hz+hTuluZAee7m2yI59W3rQg7tfZq+VPNqkTEgrW3I9n53cqKXsj0mQdp7PuanP8QfgJ
- 04ydecHDNRfIVTrlaAytqtMEzs0MCzVibN5eYRGqJbLy3Yc3NK/Dyj4G8BHkCIj2C2zJ
- I729346sWwG6K3M+gESF8HqyCac2iRUOons5DUujUxGRr8xIzhbW0K6ArNd3k72FVZBs
- mQks72zlEmxfCkMmdIZVg8UuelYvtCrll2tMILiCK8ejx4MdZkKWzONV3Us53S30s5Yt
- Hf3Q==
+ bh=EL0Vj3lE1wOMC+825DlATKPDfWDFpznI37+dufm74XU=;
+ b=fg4MZz2PYmPVYgoNs5wc/C3fbbRdP6XHjosp7FSU3i7Dia0+2OIrt5S3AAHieagwS2
+ w8L6tAGyxPZQ4OxPp38lHaTvjsxTrqciclcvZtdic8+M9+wntoExIJ5SZ+bz3fnBaknf
+ FqNwVjv8TzFcHESdxtX203B0oETJGEfwK3jiDlR+bbuquwSyuBp8vlqvPYYIUzwYo+Vt
+ +H7G2FVjGHi6xA2GJG6qxMfNQBfvvado5j6QRJOyoNUyVHprOvupgwus2KeM6St5g8/H
+ mIZcP/7srQM8WUE7gJY6WyHcepNGM9WOHo7bKvLvLkXegtOFCWAN+df5vnhdcHNTXv36
+ l+Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791824641; x=1792429441;
+ d=1e100.net; s=20260707; t=1791824625; x=1792429425;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Ch2ZoIADYgnoxJF6H4RUbty/jOOihKcMHABghoAwLPQ=;
- b=ptZgk/Hjog7XzXhru5/F5DRt8LqhxCmPlXLIID94ktmama6ejNFxeLIJ28DbJG+xSF
- vuJwv2lWTGdsOApawaFmAcVI/OuITqF49eILPrJWwSan1YoaR8aGMB+y84ET2FzFGk6H
- klVcsZx6CtO+LJaj3IWV+DPDzomd4OHjNeZENbhOT3jVhocylq/i9tLAwYaABOmHSKTj
- GykanJx+Jck5DG67A45B83MtnuFCJdtX9FF2MAbsKgTSVNJS1sDkAr+uoAA6O+9voSTh
- 0l9po7xzU368Pm4ElY80E7feGZ/rE2EXE9GqU5NIcmDscpq9bZfNGp0KZrEWOWDYeV/6
- gZ/Q==
+ bh=EL0Vj3lE1wOMC+825DlATKPDfWDFpznI37+dufm74XU=;
+ b=tGrWOK5Kz/8+kspQ2s+LP3rahqlxwT2AXnMQz0LEP9JlcVGBFynmPKpJ8Q46RGBPJc
+ q2Mn80iCtpFvu4zo1M5pKbOiAk/5UdbIXvUQXUdWp0XaaUHhZAZHjrd1ATNoiRf4ZHFU
+ hnV/KsB+uTrYD3E3Cmnq/5U+5iw2kxFzQy41nbMCavQxDQBeCc48mj6g7Tc1NygR+Itq
+ 4T6MsMBcBZY2Zf5yhUBSIumyHsCqfBtR962fP6fZx0iBDq3GBWs2ob0zbVDrSJo3N9QN
+ esL2dVVpqjrVx6NuDc0XhxIEp2ZZVI3206cmRUyLE9b8i26GveeoLYoRqLkswtLN3h+O
+ +uGA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxl/k2u9mZIFhQ0XxHXzJ7L5o2f1y9v0uVrwd28Sioz8CQtvxXbv0YmCfeaWBXH9mgrJJ9qQ/Z1og==@nongnu.org
-X-Gm-Message-State: AFq9FYI8bG9vI7KzejLzjtGU3Z9FWTMh0morZX4W1sqr4+NWgNNuK7QH
- JTLRCVpGKLsuBqUEUIu6grKaZol2434kQwgcxsoIkpLqJPmyxrwk56cAQYxjPJUOZ/c=
-X-Gm-Gg: AYBFou3T64sFSAt/PC60nx8cgTB5V8T7OYGJgss5GMEV3Fpv3YzcJB12cRqO+DBNGU1
- xAPwwvxReQRZ6BooEAdDS4A4ic+DyqDaAcPRkucXks3GQ8bfUXcG1/7FqCMXTXpQiLIm5szwBcm
- Gz/uee1fMcWOb/8j5yxFGJblXO4JzIqugnEf4ukOhCe54Qj2qp3je7Tzg1kvPiPcHZAmyIdxxNy
- ShyqU4+4rKwRL5xz/p6Czi3WfbPf4aWZD5rR64pGRcieyTx4EW6kr1D1gTXfsaTj2VDXizazD0z
- jg6VfQV60ayqBOO0bzRGzoYumzKcSOqaGldHh7hp0O42GCC50ySC54kr7ioaB5bZKz1vVrOJFQ4
- ztFEg9UKwfgo2oOawdJuMJdsZVA+a9T1NxQutsn9TjYiiY7fHo1EDCXa3AhL/ZtNiTrmAETUwzT
- ge7bbUi8njo8i05s1y2TP0PKxH0ynXB+2LIrsOIIexBDx/wRfQFSRni+MdxJ5znwdsIJQOW1pWB
- oXvW8ay
-X-Received: by 2002:a05:600c:310b:b0:4a1:7659:9b94 with SMTP id
- 5b1f17b1804b1-4a18e4a9774mr226157305e9.13.1791824641316; 
- Mon, 12 Oct 2026 10:04:01 -0700 (PDT)
+ AKwUvBzZb9W6IDLWFwa8ka++zgrGHT3A8dTDBcQhZ/+NbBk22GG2T9uMlwESCd5X4qDBTPrSUH5W0Tz/ug==@nongnu.org
+X-Gm-Message-State: AFq9FYJlUn1LRABv9b/TEqXy+LF/kxKb9xtspIaCV9w0ngYOOrBGo54q
+ nuUOf/O8A7Yh7ZOAcFr08T6PvRAGdGvE4hhSJrMAx59IK7K7a3zXfn7WJt1cwYAAjKM=
+X-Gm-Gg: AYBFou1gGRlxgdsVBwpL15P/1Bh3OEEn4gnJ7UWCdqiFk5gruy+ccy0mfS4SgnfKZR3
+ 3TIoVAA83kORHDivwwcX5eKG7YFATyZ2UpAr8/Sg8IikIM+EMmNz2GWZgVmYICI40x00G8Ss2Qd
+ BFlTuFpX21juMi+/SECVQbbv+5WpVvlcRBb7I0IZOnrarPyvwBxT9TMs8AQfCRvy+3D+oVEJstW
+ QiJKc7khadXxJfdaawNEHoZPGXFf3xnYEoBr52HM0Ifg5+M699nR3XYUgjulPOhJnMbaZkthB8u
+ jLC5s6SJB0C947g69LS/5NMogMVXr6L6zBcnRbnAQi7EU1KKTLjkzrVatLaGe9n+GdWxvg2uuM0
+ t+BniSsbtK4/Qbi3WLfaJn4VLF5QYzSAbSK79FQpHcgcQXewhwb4XsvHX1evp4tvKIYZ520amap
+ 10Au/o6xUzRLUAskY6yZFwxZabAjklEPQ5sL7AIxRbUDQ9U40KQQPoGwMsJlCyyA1mFetWwA==
+X-Received: by 2002:a05:600c:4747:b0:4a1:77db:45d9 with SMTP id
+ 5b1f17b1804b1-4a18e47aa9amr208081735e9.6.1791824624010; 
+ Mon, 12 Oct 2026 10:03:44 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18bbbdd75sm232040515e9.1.2026.10.12.10.03.51
+ ffacd0b85a97d-48de0aaaaebsm456786f8f.14.2026.10.12.10.03.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2026 10:03:57 -0700 (PDT)
+ Mon, 12 Oct 2026 10:03:33 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5337561703;
- Mon, 12 Oct 2026 18:03:32 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 21E9A5F8D4;
+ Mon, 12 Oct 2026 18:03:31 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
@@ -92,18 +91,18 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Peter Xu <peterx@redhat.com>,
  Klaus Jensen <its@irrelevant.dk>, Song Gao <gaosong@loongson.cn>,
  qemu-s390x@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v2 13/16] tests/functional: add tuxrun kvm gdb test for arm64
-Date: Mon, 12 Oct 2026 18:03:27 +0100
-Message-ID: <20261012170330.1144446-14-alex.bennee@linaro.org>
+ Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v2 01/16] tests/functional: test_acpi_bits requires TCG
+Date: Mon, 12 Oct 2026 18:03:15 +0100
+Message-ID: <20261012170330.1144446-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261012170330.1144446-1-alex.bennee@linaro.org>
 References: <20261012170330.1144446-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,55 +125,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-As with x86_64 we now have the bits to add a KVM gdb test
+Running a full thorough test suite on a KVM-only build fails due to
+acpi bits needing icount, therefor tcg. Declare the restriction so the
+test harness can skip it.
 
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Message-ID: <20260930164649.433573-2-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/functional/aarch64/test_tuxrun.py | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/tests/functional/aarch64/test_tuxrun.py b/tests/functional/aarch64/test_tuxrun.py
-index 6de02e1d8b2..2ff321582d3 100755
---- a/tests/functional/aarch64/test_tuxrun.py
-+++ b/tests/functional/aarch64/test_tuxrun.py
-@@ -11,7 +11,7 @@
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
+---
+v2
+  - add comment
+---
+ tests/functional/x86_64/test_acpi_bits.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/functional/x86_64/test_acpi_bits.py b/tests/functional/x86_64/test_acpi_bits.py
+index ec716d643bf..d445660f0ed 100755
+--- a/tests/functional/x86_64/test_acpi_bits.py
++++ b/tests/functional/x86_64/test_acpi_bits.py
+@@ -303,6 +303,9 @@ def test_acpi_smbios_bits(self):
+         """The main test case implementation."""
  
--from qemu_test import Asset
-+from qemu_test import Asset, skipIfMissingEnv
- from qemu_test.tuxruntest import TuxRunBaselineTest
- 
- class TuxRunAarch64Test(TuxRunBaselineTest):
-@@ -19,6 +19,9 @@ class TuxRunAarch64Test(TuxRunBaselineTest):
-     ASSET_ARM64_KERNEL = Asset(
-         'https://storage.tuxboot.com/kernels/6.18.54/arm64/Image.gz',
-         '39f4633bbcb444267d4d829bd28d8868a287c4c160cda64b0fd23fb090571c4e')
-+    ASSET_ARM64_VMLINUX = Asset(
-+        'https://storage.tuxboot.com/kernels/6.18.54/arm64/vmlinux.xz',
-+        '6487eb113ef6e841aedab6cb6fa704006377d68f64dd544570aa42f462a52b85')
-     ASSET_ARM64_ROOTFS = Asset(
-         'https://storage.tuxboot.com/buildroot/20260924/arm64/rootfs.ext4.zst',
-         '4ab8cec9d1e17dbb1abdf2ae1939ad4f9d0dc2466230f6a119a7c1845cdef0b1')
-@@ -42,6 +45,18 @@ def test_arm64_kvm(self):
-                            rootfs_asset=self.ASSET_ARM64_ROOTFS,
-                            accel="kvm")
- 
-+    @skipIfMissingEnv("QEMU_TEST_GDB")
-+    def test_arm64_kvm_gdb(self):
-+        self.set_machine('virt')
-+        self.require_accelerator('kvm')
-+        self.cpu='host'
-+        self.console='ttyAMA0'
-+        self.wait_for_shutdown=False
-+        self.common_tuxrun_gdb(kernel_asset=self.ASSET_ARM64_KERNEL,
-+                               vmlinux_asset=self.ASSET_ARM64_VMLINUX,
-+                               rootfs_asset=self.ASSET_ARM64_ROOTFS,
-+                               accel="kvm")
+         self.set_machine('pc')
++        # see icount comment below
++        self.require_accelerator('tcg')
 +
-     ASSET_ARM64BE_KERNEL = Asset(
-         'https://storage.tuxboot.com/buildroot/20241119/arm64be/Image',
-         'fd6af4f16689d17a2c24fe0053cc212edcdf77abdcaf301800b8d38fa9f6e109')
+         iso_file = self.scratch_file('bits-%d.iso' % self.BITS_INTERNAL_VER)
+ 
+         self.assertTrue(os.access(iso_file, os.R_OK))
 -- 
 2.47.3
 

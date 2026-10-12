@@ -4,114 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A43CCA9ED0
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 16:28:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B827FCA9ED0
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 16:59:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGIsH-0007u1-77; Mon, 12 Oct 2026 12:27:46 -0400
+	id 1xGJMn-00084h-0U; Mon, 12 Oct 2026 12:59:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1xGIs2-0007qr-Vg
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 12:27:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1xGJMN-0007ym-4D; Mon, 12 Oct 2026 12:58:49 -0400
+Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1xGIs1-0001lA-4y
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 12:27:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791822443;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=8qUAnI8acTN2uvO49satRDiIRVik09nJpUJ+5G4veTM=;
- b=Zwu8vD2N7Ubr2WkIkNoHbUnh7HuHM27/m1UFXvZvBjZadPg6wAJ6eoxpHm6G6tp5+u31YT
- SPslN77aTDcJypUQBqiKAun7mwks5LtxU8S5BiTn7szpJzAjz9ppAps3Hdd1dHW3uSgsgV
- rfCRvYLBN9Gi+wP9tjLAHv4LEXFa5ik=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-643-fhwyy5h7N0SXJk2QRPAHOQ-1; Mon,
- 12 Oct 2026 16:27:19 +0000
-X-MC-Unique: fhwyy5h7N0SXJk2QRPAHOQ-1
-X-Mimecast-MFC-AGG-ID: fhwyy5h7N0SXJk2QRPAHOQ_1791822438
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 291A218052C5; Mon, 12 Oct 2026 16:27:18 +0000 (UTC)
-Received: from [100.90.56.12] (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3102330000E7; Mon, 12 Oct 2026 16:27:15 +0000 (UTC)
-Message-ID: <b5d07378-d5c4-4186-aae9-9252a08852fd@redhat.com>
-Date: Mon, 12 Oct 2026 18:27:13 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH] target/arm: hold bql when SEV sets the event_register
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1xGJMK-0006BP-W2; Mon, 12 Oct 2026 12:58:46 -0400
+Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4j3Nw135JdzBqdB;
+ Mon, 12 Oct 2026 18:58:41 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
+ s=dkim; t=1791824321;
+ bh=8YhXGObb9R7y4NQD16UzBKhs9n3aO4Y8czE9nfrcr5Q=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=VChLSd4MyD6XgFpzIigfXVefaM8Vm1gzazXlMMiwY2Hi6CXtEq0M1eAFIPJ7y11Z6
+ JSq6piOUiU0tul8hIPbVPp7a1KGHtbrg4TOYEJw0kQqjlxlxYHmE5nC/SdtVytyZWr
+ X1VKldqcDF434hLqX3edWDvzX3Qm3UQWokd66yAjlCZ0PHrXhY33ap51UT/e3Z/aTZ
+ N/xt22c8DNTChYRqG2C8Oi9hpqBT1BayeE6xmcI15Ztbn+sd0psO2T0eHJm4Ia+W66
+ mDMY2kAAF7mmCBU1zj54slkKNJuUzRpEucLgyDuRGIaRukPOakRslawJal+cobWwc+
+ OgK7KNMrs3q2Q==
+Received: from localhost.localdomain (unknown [134.206.205.113])
+ (Authenticated sender: gilles.grimaud)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4j3Nw11wCTz83nb;
+ Mon, 12 Oct 2026 18:58:41 +0200 (CEST)
+From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+To: qemu-devel@nongnu.org
+Cc: alex.bennee@linaro.org, Gilles Grimaud <gilles.grimaud@univ-lille.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20261012134840.1051969-1-alex.bennee@linaro.org>
- <87fqybx97c.fsf@draig.linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Autocrypt: addr=pbonzini@redhat.com; keydata=
- xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
- CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
- hVopm9llFijNZpVIOGUTqzM4U55sdsCcZUluWM6x4HSOdw5F5Utxfp1wOjD/v92Lrax0hjiX
- DResHSt48q+8FrZzY+AUbkUS+Jm34qjswdrgsC5uxeVcLkBgWLmov2kMaMROT0YmFY6A3m1S
- P/kXmHDXxhe23gKb3dgwxUTpENDBGcfEzrzilWueOeUWiOcWuFOed/C3SyijBx3Av/lbCsHU
- Vx6pMycNTdzU1BuAroB+Y3mNEuW56Yd44jlInzG2UOwt9XjjdKkJZ1g0P9dwptwLEgTEd3Fo
- UdhAQyRXGYO8oROiuh+RZ1lXp6AQ4ZjoyH8WLfTLf5g1EKCTc4C1sy1vQSdzIRu3rBIjAvnC
- tGZADei1IExLqB3uzXKzZ1BZ+Z8hnt2og9hb7H0y8diYfEk2w3R7wEr+Ehk5NQsT2MPI2QBd
- wEv1/Aj1DgUHZAHzG1QN9S8wNWQ6K9DqHZTBnI1hUlkp22zCSHK/6FwUCuYp1zcAEQEAAc0j
- UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT7CwU0EEwECACMFAlRCcBICGwMH
- CwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRB+FRAMzTZpsbceDp9IIN6BIA0Ol7MoB15E
- 11kRz/ewzryFY54tQlMnd4xxfH8MTQ/mm9I482YoSwPMdcWFAKnUX6Yo30tbLiNB8hzaHeRj
- jx12K+ptqYbg+cevgOtbLAlL9kNgLLcsGqC2829jBCUTVeMSZDrzS97ole/YEez2qFpPnTV0
- VrRWClWVfYh+JfzpXmgyhbkuwUxNFk421s4Ajp3d8nPPFUGgBG5HOxzkAm7xb1cjAuJ+oi/K
- CHfkuN+fLZl/u3E/fw7vvOESApLU5o0icVXeakfSz0LsygEnekDbxPnE5af/9FEkXJD5EoYG
- SEahaEtgNrR4qsyxyAGYgZlS70vkSSYJ+iT2rrwEiDlo31MzRo6Ba2FfHBSJ7lcYdPT7bbk9
- AO3hlNMhNdUhoQv7M5HsnqZ6unvSHOKmReNaS9egAGdRN0/GPDWr9wroyJ65ZNQsHl9nXBqE
- AukZNr5oJO5vxrYiAuuTSd6UI/xFkjtkzltG3mw5ao2bBpk/V/YuePrJsnPFHG7NhizrxttB
- nTuOSCMo45pfHQ+XYd5K1+Cv/NzZFNWscm5htJ0HznY+oOsZvHTyGz3v91pn51dkRYN0otqr
- bQ4tlFFuVjArBZcapSIe6NV8C4cEiSTOwE0EVEJx7gEIAMeHcVzuv2bp9HlWDp6+RkZe+vtl
- KwAHplb/WH59j2wyG8V6i33+6MlSSJMOFnYUCCL77bucx9uImI5nX24PIlqT+zasVEEVGSRF
- m8dgkcJDB7Tps0IkNrUi4yof3B3shR+vMY3i3Ip0e41zKx0CvlAhMOo6otaHmcxr35sWq1Jk
- tLkbn3wG+fPQCVudJJECvVQ//UAthSSEklA50QtD2sBkmQ14ZryEyTHQ+E42K3j2IUmOLriF
- dNr9NvE1QGmGyIcbw2NIVEBOK/GWxkS5+dmxM2iD4Jdaf2nSn3jlHjEXoPwpMs0KZsgdU0pP
- JQzMUMwmB1wM8JxovFlPYrhNT9MAEQEAAcLBMwQYAQIACQUCVEJx7gIbDAAKCRB+FRAMzTZp
- sadRDqCctLmYICZu4GSnie4lKXl+HqlLanpVMOoFNnWs9oRP47MbE2wv8OaYh5pNR9VVgyhD
- OG0AU7oidG36OeUlrFDTfnPYYSF/mPCxHttosyt8O5kabxnIPv2URuAxDByz+iVbL+RjKaGM
- GDph56ZTswlx75nZVtIukqzLAQ5fa8OALSGum0cFi4ptZUOhDNz1onz61klD6z3MODi0sBZN
- Aj6guB2L/+2ZwElZEeRBERRd/uommlYuToAXfNRdUwrwl9gRMiA0WSyTb190zneRRDfpSK5d
- usXnM/O+kr3Dm+Ui+UioPf6wgbn3T0o6I5BhVhs4h4hWmIW7iNhPjX1iybXfmb1gAFfjtHfL
- xRUr64svXpyfJMScIQtBAm0ihWPltXkyITA92ngCmPdHa6M1hMh4RDX+Jf1fiWubzp1voAg0
- JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
- dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
- b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
-In-Reply-To: <87fqybx97c.fsf@draig.linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: ebA1i4d4T7hgc-_gUCDHdKDxumLKJvFGLTPWOqcuZsw_1791822438
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC PATCH 1/9] target/arm: add Cortex-M0+ CPU type
+Date: Mon, 12 Oct 2026 18:58:31 +0200
+Message-ID: <20261012165840.99050-2-gilles.grimaud@univ-lille.fr>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261012165840.99050-1-gilles.grimaud@univ-lille.fr>
+References: <20261012165840.99050-1-gilles.grimaud@univ-lille.fr>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+Received-SPF: pass client-ip=194.254.129.82;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,45 +72,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/12/26 16:52, Alex Bennée wrote:
->> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
->> index af56eff9f18..7c1fdab79d7 100644
->> --- a/target/arm/tcg/op_helper.c
->> +++ b/target/arm/tcg/op_helper.c
->> @@ -471,6 +471,9 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
->>   void HELPER(sev)(CPUARMState *env)
->>   {
->>       CPUState *cs = env_cpu(env);
->> +
->> +    BQL_LOCK_GUARD();
->> +
->>       CPU_FOREACH(cs) {
->>           ARMCPU *target_cpu = ARM_CPU(cs);
->>           target_cpu->env.event_register = true;
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+The Armv6-M Unprivileged/Privileged Extension is optional. While the
+Cortex-M0 does not implement it, the Cortex-M0+ may - and the RP2040
+Cortex-M0+ configuration in particular provides this extension.
 
-The use of cmpxchg in wfxt_timer_cb is fishy though.
+Add the cortex-m0plus CPU type, with explicit initialization of all
+architectural state. Enable ARM_FEATURE_M_UNPRIV (introduced by commit
+285e929908) and set the MIDR used by the RP2040. All ID registers are
+initialized explicitly, and their values inherited from Cortex-M0 have
+been verified to be appropriate for Cortex-M0+.
 
-Clearing HALT_WFE should be the task of the target CPU, not the timer. 
-The timer_mod() should be *after* halt_reason(*), and then you can just 
-do a qatomic_read() instead of a cmpxchg(**) in wfxt_timer_cb().
+Note: The MPU is optional on Cortex-M0+, so we do not configure the
+default 8 regions in the CPU type. The RP2040 machine correctly sets
+mpu-ns-regions = 8.
 
-However, I don't understand at all why wfxt_timer_cb needs to set 
-event_register to true.  It seems to me that a wfet + wfe sequence, 
-where the first wfet times out, *should* halt again on the second wfe; 
-but as the code is written it doesn't.
+Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+---
+ target/arm/tcg/cpu-v7m.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-I think wfxt_timer_cb only needs to call cpu_interrupt().
-
-Thanks,
-
-Paolo
-
-(*) always, even if the halt reason is not HALT_WFE, if only for consistency
-
-(**) you don't need a lock or acquire/release here, because the timer 
-callback always sees everything that happened before timer_mod().  In a 
-sense, timer_mod() *is* the release operation and starting the callback 
-is the acquire operation.
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index 48b31d5eac..975c712b61 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -76,6 +76,37 @@ static void cortex_m0_initfn(Object *obj)
+     SET_IDREG(isar, ID_ISAR6, 0x00000000);
+ }
+ 
++static void cortex_m0plus_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++    ARMISARegisters *isar = &cpu->isar;
++
++    /* Architectural state: M-profile, v6-M, with unprivileged extension */
++    set_feature(&cpu->env, ARM_FEATURE_V6);
++    set_feature(&cpu->env, ARM_FEATURE_M);
++    set_feature(&cpu->env, ARM_FEATURE_M_UNPRIV);
++
++    /* MIDR for Cortex-M0+, RP2040 variant */
++    cpu->midr = 0x410cc601;
++
++    /* ID registers: same as Cortex-M0, verified to be appropriate */
++    SET_IDREG(isar, ID_PFR0, 0x00000030);
++    SET_IDREG(isar, ID_PFR1, 0x00000200);
++    SET_IDREG(isar, ID_DFR0, 0x00100000);
++    SET_IDREG(isar, ID_AFR0, 0x00000000);
++    SET_IDREG(isar, ID_MMFR0, 0x00000030);
++    SET_IDREG(isar, ID_MMFR1, 0x00000000);
++    SET_IDREG(isar, ID_MMFR2, 0x00000000);
++    SET_IDREG(isar, ID_MMFR3, 0x00000000);
++    SET_IDREG(isar, ID_ISAR0, 0x01141110);
++    SET_IDREG(isar, ID_ISAR1, 0x02111000);
++    SET_IDREG(isar, ID_ISAR2, 0x21112231);
++    SET_IDREG(isar, ID_ISAR3, 0x01111110);
++    SET_IDREG(isar, ID_ISAR4, 0x01310102);
++    SET_IDREG(isar, ID_ISAR5, 0x00000000);
++    SET_IDREG(isar, ID_ISAR6, 0x00000000);
++}
++
+ static void cortex_m3_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -325,6 +356,8 @@ static void arm_v7m_class_init(ObjectClass *oc, const void *data)
+ static const ARMCPUInfo arm_v7m_cpus[] = {
+     { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
+                              .class_init = arm_v7m_class_init },
++    { .name = "cortex-m0plus", .initfn = cortex_m0plus_initfn,
++                             .class_init = arm_v7m_class_init },
+     { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
+                              .class_init = arm_v7m_class_init },
+     { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
+-- 
+2.55.0
 
 

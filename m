@@ -4,105 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD75CA9EC5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 13:11:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51448CA9EC5
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 13:49:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGFoC-0007Si-T1; Mon, 12 Oct 2026 09:11:16 -0400
+	id 1xGGOd-0004Jw-CM; Mon, 12 Oct 2026 09:48:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1xGFoB-0007SO-OI
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:11:15 -0400
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGGOb-0004Jf-Nk
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:48:53 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1xGFoA-0006ZI-17
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:11:15 -0400
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-8ac8a2ac52bso17024467b3.0
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 06:11:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791810672; cv=none;
- d=google.com; s=arc-20260327;
- b=dSl89w0m3VUZl4gEDmlYSkNOX6/n3wjbT2NxZy+dYyexnJIJrjDAdNEssBQ4iz6T4t
- hNx4Mi5wQUwf+Q4DhWLaVc7ngYDxEpA+kQzfgxsvsz+qCXT8tsZbw3gM1gANGbCjt3ry
- nqxXj523SRYiSQ8X+NtJvV0f/qhdGnkjuZZb9OzqqOwwil9AsTljipEP52O0cV1ZVmnM
- KnLCwch1ez14jgRJ4jPu6ezX0OeguAxhvs8fvkZuEsxtwT4tBJPPePcnBTA8x7+jnaiu
- /FGsLd8MqMlsd5JmOoFWCKFIvhIkRZnW7cT2kG1+rbShR+iEICloo+Z1251WvMTDp2ZV
- GJ3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=nmVFAm4wCjcnkBpWwyxQ/vyvNCASp8S+SH9ifUzW9Rs=;
- fh=/S1m1itOrO1hj94LQJIWwj4BK+wl75Z2+yQRw2D82og=;
- b=rz8bksINlopSV2IghYQVTOUHMb30GLPXGfO+ss4xszeL6ZOPYf0N7Mlm2iyj8J8w2k
- HNwfY9m/XhxanLLdu3Yx+7eMptLo509jDF32aE5gs0vsVIoFm6nSLRUqr6+i0XT7Lt0Z
- Ui1Kmc2FkAsRwA5NDiYIKgrqMjzPWVUAu3M6d7RP2m+INaX9J1e6DmsrQSNplsFIKiy0
- iUmW0pDpz27MnCM06qX23nIc3xCeQE9M1OYuR7nSbcLLBVXsQ6Yv0VSPMLOLZKdlbv6o
- QQaYRX9/xaUO+YC8BngzS9rrOMvYYKoU/14F10FyUFVvmu674qfOC0astX7bUfUVJrOc
- 3JZg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGGOZ-0003Su-01
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:48:52 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4a140e7405dso22496135e9.3
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 06:48:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791810672; x=1792415472; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=nmVFAm4wCjcnkBpWwyxQ/vyvNCASp8S+SH9ifUzW9Rs=;
- b=qF1ndjVN8xG5IJ0nOi7/Q+y8YEzBMwpkcy/mtlGpt6kmJlPXWRMbv8hhuy2NGjCS1z
- n2uaTsJg57bRlNCCWpneDD02EVU9Pe4j94XY03Aux+iX8KFEZfMIL6/figx8cBwdXi+r
- FxJ8TqLhDbQE1dYfG6WHUU9znKo0MrpRdw1i3s1Jva9H9635EH19ykLglwFthF1Xc8cu
- x7ZHGAgBJZOJ1XeAIzNd6KhpyiRLhAui7kdR+SCAq6TOVl4SrMdMAH+kTXXgGRfEbLOV
- Ym1KZLeKMlkpTgLw5JAQKRlJHXUDEZ5nJn9R19Ul/qvxK/nxOvRGGNJHnX85aTaL1Qqg
- zqGw==
+ d=linaro.org; s=google; t=1791812928; x=1792417728; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=9KMOnTIgzXJ5irf8RQDp+yn0jKO0xSxRv0zm0tDhx9s=;
+ b=AWB3lwZR6Ien/OEwWJC4UPXeINlpeF0Br8/KATVge5WU/WfuKuyQCOauq3tJpBEBra
+ aQzkByR4tIiPNXRAhvujmZq1otVOkQEWMESb8sthaHydNUqcXLYjyjcEuFp0NoTCoNl3
+ DnmHawoiQh/tFBt/Laz+AxZF3+Mekh5QJwd89XdEDF8RLH3LPLm4Xot9TVGKuLn7ZxL0
+ PrulSASicFIYdc2QSUaBPOlKLG04iNVU8HUB6pGWHvPoYbH/ZFldZlfqmHtXg3tEZD1f
+ YjWvnKPmxdmHa/GohSjXBOOayFecleoZjiDU+e8LNM7ClKLTa0F9xjJoMIkLxm3EI4uY
+ bOrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791810672; x=1792415472;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=nmVFAm4wCjcnkBpWwyxQ/vyvNCASp8S+SH9ifUzW9Rs=;
- b=w9+jigIN7s5B29XaNcm5CBcUeKEqATnHTsvPtK5BKB1kq0qW2/qlKTnQiVzUzRtSbr
- jvQHJ9R1mGqzA33lQ1FCjmbhSRgPWunOSj5ZhFEEQPQkw9JTXr5TeCOpA20OvYtn0Qqv
- JSqpXEktTDcXgR9aKugbsFt8ASKPz213FjnGIJPd8BMUru6CtMKBhpkTGLSOBUsYGyxg
- mIK48EUpdavEIzWGH1qILckCwT8HC+jRO/Sxpg40kMBItxW/Ay6auZUsL3qhoLuB9blG
- XvlEW6Z034ab9cm9v2r+ikO13QMoU2pUrKOtU9j7r1aFqgPPg3E7eYrSkvJTTCffxNXp
- ljhA==
+ d=1e100.net; s=20260707; t=1791812928; x=1792417728;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=9KMOnTIgzXJ5irf8RQDp+yn0jKO0xSxRv0zm0tDhx9s=;
+ b=gDbDj8/lBgoXMGyzF8cExaDSyJGb0g7YhLQkCw20McOVr6ksXo3FBiIkrHHQQN0M2b
+ rGJ/Lpk/yK/ndvTUxcj1s0Me8/6Cfx46FBws1AuXpFoKAavVvCrqQ8DF6PvuLrL5gQpd
+ JBDHTraozf60UgbH5zzGiCreILVrmqTo12wNKrMm/s1CbfgaVEepj3kB5AHX+AlpxOAE
+ eyEDpezQWVGcN/TxSeDVsej+LshbXloshrf1e07FLzyz8Qcjj2BezmPN2AbUzeY0wwwY
+ iiAQiqk9+/y8Oa+nhga4hgNw+YdRq7ZE2c4nbggtJfUrFoYZgp/CVM2isc/hZpqCDmde
+ FfHQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzvXepvbi51t5/udfT8vRytMw98vQTc+XKj9CxBR7qkWwlNVDwocNeLxo1jbbFXeHcWjf6ytgEHyw==@nongnu.org
-X-Gm-Message-State: AFq9FYIwHrrNY8ngfF8zcmojU90MXEtUTTFyZ1UoGAgi9dy5grJGg1sG
- IIRnB9V69TcNt0+sK9HtHqhDNEzYKS9Ccku5bNw+Op1Hn5LvOTF2s7oWhExYe1cTRvwH9zOpa7L
- vKUcqn4tXUsC1NZDfyFWSudvlF8vBVqk=
-X-Gm-Gg: AYBFou0YNA8GY0vIq4OFOJ/fSylsVEoJ6i0uZMmGZ6V2K/MXqQZ2K5U1RXECykDuYGC
- JU15kQWNgOpkuUxqxGKtgeNIAq0JJIQ2I9JuvSW2oZ6iR/ZAa1bQMvcHJev46CBvtBvmPTEQ0yh
- Uo2Btdlpo+1xAYp2FsM1N8Vn8aJ+m/3vfzUnYVXHRy7bwMzfVAqY5JQAkVF7oW0CSu7Hdw0Or1H
- G49dfMQwlxSwEY3YODI9JWPqA5Tt3oJw7E7ZSRtg4BnbcYdE4ZnZbrXvNv2Bp0u5melVszY41wz
- 4PPlUuu4xrg5jJKkePJlWDLtCjHcDwrTuxinyJP456vcPp2uZ4hOF5qoqcluwlNsDa6H2BJaGjk
- =
-X-Received: by 2002:a05:690c:6e81:b0:8ad:7131:9178 with SMTP id
- 00721157ae682-8b07d3bee19mr29079907b3.12.1791810672447; Mon, 12 Oct 2026
- 06:11:12 -0700 (PDT)
+ AKwUvBzMxGMpNOEkKP9ySZPWVks+6rhEh6JXtngfXPprP6+9ATIXhBVPEcmcPFuzXuCibC4xVvnWlhuUAg==@nongnu.org
+X-Gm-Message-State: AFq9FYL4JeZbSrJMMGWzmOUPLzXibXu9P1pciaHs+BvN/bd+cov+70Yl
+ cFbAA/1bGEyrnWTAe9IU2cHU6PM5dCpuzae6hVbgvDOIYv7nwVdF0H6u6SfJN5XUzLU=
+X-Gm-Gg: AYBFou0YO/4QChJgerEL8N0ZlRMRy67FPp4rwXIdS9XUg/EaGiciz91aXImAdBTVJ8b
+ ePrjILO3MDMqNwJMyiKu5SpX7v/UGwTKqqi1/MBEVNqQ87qRTcGVu+8f/Fn+f2zyoolpJk0qD9L
+ tSSMf/XO22/b2ToQvRUmhIfl6aaQRQkpKQG8fZ2W5h3caKATj0VQLfRsntBnTY4uou63tLI4dW0
+ sFc5mfzRKOosyi41/9jVjQPEXYmDvy7QkFIVsIUSc+fZ30qUQp29Ni4lWYQnQHSCF7ZOqueUGf5
+ v1XK7P23FH6ldW8nisQDtCjmxEkuqsV/wqPoYK+7Of3SXtaVLwuAK5zLY1lg2kEcSw5p7m9Q90j
+ eIpF9/w6PbN8akw2j+n/sewSweokw0tYg3tEnHR0tvi6FP28rjGx9QCTpDRttfOlMqo6PoL5YA5
+ 8HHtN+lsLVSsREHQ7zsKLmrrFd+fY7JAioBKLSwAp6KyTvFqWMWnTufw6P1TZdsQvMXJCX/g==
+X-Received: by 2002:a05:600c:c165:b0:4a1:706f:b40d with SMTP id
+ 5b1f17b1804b1-4a18e4988ecmr178045235e9.7.1791812928277; 
+ Mon, 12 Oct 2026 06:48:48 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a18bea1021sm266193165e9.10.2026.10.12.06.48.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Oct 2026 06:48:47 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 5022E5F8CE;
+ Mon, 12 Oct 2026 14:48:46 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC PATCH] target/arm: hold bql when SEV sets the event_register
+Date: Mon, 12 Oct 2026 14:48:40 +0100
+Message-ID: <20261012134840.1051969-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-References: <20261009-allwinner-gpio-eint-v1-0-c55d2958ae0b@gmail.com>
- <CAFEAcA9PfDvtOgXnUeWkB+h8bGTRzZLbsUeoLeORf-o1gF6jkQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9PfDvtOgXnUeWkB+h8bGTRzZLbsUeoLeORf-o1gF6jkQ@mail.gmail.com>
-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Date: Mon, 12 Oct 2026 15:11:02 +0200
-X-Gm-Features: AclHuK9RwxDuwqrOc8rAuF7wuuz8nP_t7ebqu0Bh5As2G-H1RVpvQcR67Sq1R0o
-Message-ID: <CABtshVQvYh_Kt0+hkXnQxEQgvEnTFUBxw0dLjbUR_VhuicHbrg@mail.gmail.com>
-Subject: Re: [PATCH 0/2] fix: Allwinner GPIO interrupt handling
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000a2d6ca065da46e29"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-yw1-x112f.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,135 +106,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000a2d6ca065da46e29
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+There is a race in qemu_process_cpu_events and sleeping on halt_cond
+where we can miss the setting of the event_register which would cause
+arm_cpu_has_work to report we shouldn't sleep. As by definition the
+bql has to be held when we go to sleep against halt_cond guard the
+kicking of the cpus by the SEV helper with the BQL to ensure things
+are properly serialised.
 
-Hi Peter,
+The other places that set event_register are fine as they are either
+in the same vCPU context or are already serialised by the BQL.
 
-Thanks for checking this and for detailed explanation. I will send new
-patches with the fixes.
+Also use qemu_cond_wait_bql like the other halt_cond users.
 
-Best regards,
-Strahinja
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4660
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ system/cpus.c              | 2 +-
+ target/arm/tcg/op_helper.c | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-On Mon, Oct 12, 2026, 3:03=E2=80=AFPM Peter Maydell <peter.maydell@linaro.o=
-rg>
-wrote:
+diff --git a/system/cpus.c b/system/cpus.c
+index e11a5aab6a6..985732217fb 100644
+--- a/system/cpus.c
++++ b/system/cpus.c
+@@ -412,7 +412,7 @@ void qemu_process_cpu_events(CPUState *cpu)
+             slept = true;
+             qemu_plugin_vcpu_idle_cb(cpu);
+         }
+-        qemu_cond_wait(cpu->halt_cond, &bql);
++        qemu_cond_wait_bql(cpu->halt_cond);
+     }
+     if (slept) {
+         qemu_plugin_vcpu_resume_cb(cpu);
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index af56eff9f18..7c1fdab79d7 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -471,6 +471,9 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
+ void HELPER(sev)(CPUARMState *env)
+ {
+     CPUState *cs = env_cpu(env);
++
++    BQL_LOCK_GUARD();
++
+     CPU_FOREACH(cs) {
+         ARMCPU *target_cpu = ARM_CPU(cs);
+         target_cpu->env.event_register = true;
+-- 
+2.47.3
 
-> On Fri, 9 Oct 2026 at 17:26, Strahinja Jankovic
-> <strahinja.p.jankovic@gmail.com> wrote:
-> >
-> > The original patches assumed that pin had to be configured as input in
-> > order to be able to receive interrupt. However, after additional testin=
-g
-> > with libgpiod and gpiomon, the pin is actually supposed to be configure=
-d
-> > as EINT (0x06). In the following example with PH1
-> >
-> > root@cubieboard-ng:~# gpioget -c 0 224
-> > allwinner_gpio_read [PH:CFG0] -> 0x1061061
-> > allwinner_gpio_write [PH:CFG0] <- 0x1061060
-> > allwinner_gpio_read [PH:DAT] -> 0x49
-> > "224"=3Dactive
-> > root@cubieboard-ng:~# gpiomon -c 0 224
-> > allwinner_gpio_read [PH:CFG0] -> 0x1061060
-> > allwinner_gpio_write [PH:CFG0] <- 0x1061066
-> > ...
-> >
-> > The CFG0 value on the lowest nibble changes from 0 to 6.
-> >
-> > This patch set fixes that behavior to expect that pin is configured as
-> > EINT in order to allow interrupt-related functionality.
-> >
-> > Tests are also updated to reflect this change, and a new test for pins
-> > configured as input is added.
-> >
-> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> > ---
-> > Strahinja Jankovic (2):
-> >       hw/gpio: Add EINT CFG to Allwinner GPIO, fix interrupt handling
-> >       tests/qtest: Update Allwinner GPIO test
->
-> This series fails "make check" when patch 1 is applied but not 2.
-> We need to retain "builds and passes tests" at every point in a
-> multiple-commit series, so that "git bisect" works.
->
-> I would suggest moving the minimal changes to update the test
-> to match the new behaviour into patch 1, and adding the new
-> get_input_pins patch in patch 2.
->
-> thanks
-> -- PMM
->
-
---000000000000a2d6ca065da46e29
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Hi Peter,<div dir=3D"auto"><br></div><div dir=3D"auto">Th=
-anks for checking this and for detailed explanation. I will send new patche=
-s with the fixes.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Best r=
-egards,</div><div dir=3D"auto">Strahinja=C2=A0</div></div><br><div class=3D=
-"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">O=
-n Mon, Oct 12, 2026, 3:03=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:pe=
-ter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px =
-#ccc solid;padding-left:1ex">On Fri, 9 Oct 2026 at 17:26, Strahinja Jankovi=
-c<br>
-&lt;<a href=3D"mailto:strahinja.p.jankovic@gmail.com" target=3D"_blank" rel=
-=3D"noreferrer">strahinja.p.jankovic@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; The original patches assumed that pin had to be configured as input in=
-<br>
-&gt; order to be able to receive interrupt. However, after additional testi=
-ng<br>
-&gt; with libgpiod and gpiomon, the pin is actually supposed to be configur=
-ed<br>
-&gt; as EINT (0x06). In the following example with PH1<br>
-&gt;<br>
-&gt; root@cubieboard-ng:~# gpioget -c 0 224<br>
-&gt; allwinner_gpio_read [PH:CFG0] -&gt; 0x1061061<br>
-&gt; allwinner_gpio_write [PH:CFG0] &lt;- 0x1061060<br>
-&gt; allwinner_gpio_read [PH:DAT] -&gt; 0x49<br>
-&gt; &quot;224&quot;=3Dactive<br>
-&gt; root@cubieboard-ng:~# gpiomon -c 0 224<br>
-&gt; allwinner_gpio_read [PH:CFG0] -&gt; 0x1061060<br>
-&gt; allwinner_gpio_write [PH:CFG0] &lt;- 0x1061066<br>
-&gt; ...<br>
-&gt;<br>
-&gt; The CFG0 value on the lowest nibble changes from 0 to 6.<br>
-&gt;<br>
-&gt; This patch set fixes that behavior to expect that pin is configured as=
-<br>
-&gt; EINT in order to allow interrupt-related functionality.<br>
-&gt;<br>
-&gt; Tests are also updated to reflect this change, and a new test for pins=
-<br>
-&gt; configured as input is added.<br>
-&gt;<br>
-&gt; Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.ja=
-nkovic@gmail.com" target=3D"_blank" rel=3D"noreferrer">strahinja.p.jankovic=
-@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt; Strahinja Jankovic (2):<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/gpio: Add EINT CFG to Allwinner GPIO, fix=
- interrupt handling<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0tests/qtest: Update Allwinner GPIO test<br>
-<br>
-This series fails &quot;make check&quot; when patch 1 is applied but not 2.=
-<br>
-We need to retain &quot;builds and passes tests&quot; at every point in a<b=
-r>
-multiple-commit series, so that &quot;git bisect&quot; works.<br>
-<br>
-I would suggest moving the minimal changes to update the test<br>
-to match the new behaviour into patch 1, and adding the new<br>
-get_input_pins patch in patch 2.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---000000000000a2d6ca065da46e29--
 

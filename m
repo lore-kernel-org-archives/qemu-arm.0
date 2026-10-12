@@ -4,104 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC4EDCA9EC5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 13:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD75CA9EC5
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 13:11:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGFhE-0005su-Mz; Mon, 12 Oct 2026 09:04:04 -0400
+	id 1xGFoC-0007Si-T1; Mon, 12 Oct 2026 09:11:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGFhC-0005rn-BS
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:04:02 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1xGFoB-0007SO-OI
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:11:15 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGFhA-0005GA-Qs
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:04:02 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-8ac8a2ac52bso16932517b3.0
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 06:04:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791810239; cv=none;
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1xGFoA-0006ZI-17
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 09:11:15 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-8ac8a2ac52bso17024467b3.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 06:11:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791810672; cv=none;
  d=google.com; s=arc-20260327;
- b=kVTjfLBKd2G25AgdOp/xEEGXwlximZ539eS+paloGe2VmFjxxqepURyWv2bVY0mRnn
- O7HOi87YSY/xsSxP53QboxSUZs8AKGJjG0T2vliw3jslGEU67b8hxU4jfV5X1SzwCnqm
- 4MEyzloxaFqfK2Nc5mJx2/++JLJp/n2eG5xhAFq5kbsr2G8IrxtG9+1biByDOUBBeVvr
- t6O+Mq8SJr1N6Ry5pAVb2CLsxjIDzNrIvSv1p8lykl3IugJaMXJvXr3U/hoV3Cm6KiJa
- elvARvNJTNU9DLGdWjod8HYrcRshPD3rn1FMcz00Y2XinzKmOpmoM5p3VFhDYamSS3H7
- khTA==
+ b=dSl89w0m3VUZl4gEDmlYSkNOX6/n3wjbT2NxZy+dYyexnJIJrjDAdNEssBQ4iz6T4t
+ hNx4Mi5wQUwf+Q4DhWLaVc7ngYDxEpA+kQzfgxsvsz+qCXT8tsZbw3gM1gANGbCjt3ry
+ nqxXj523SRYiSQ8X+NtJvV0f/qhdGnkjuZZb9OzqqOwwil9AsTljipEP52O0cV1ZVmnM
+ KnLCwch1ez14jgRJ4jPu6ezX0OeguAxhvs8fvkZuEsxtwT4tBJPPePcnBTA8x7+jnaiu
+ /FGsLd8MqMlsd5JmOoFWCKFIvhIkRZnW7cT2kG1+rbShR+iEICloo+Z1251WvMTDp2ZV
+ GJ3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=M1Ceg4BNxPx3Lp7b7T2/b14QKQtr9LAb4SftbUi0Pa0=;
- fh=YMUepzGprEfePr/tg3nRV/N6m4GbH/ARXhlcW8R5My0=;
- b=gvtfwK8G4qFZgisq/2myK9C5OAVkKLAhd6sIX1L8bfrTe8FtoPiFLlVq4RgGWIaVQt
- HRnrlgT407K8S5vlejH5OvS/zQqT2eFFZZO02IYPnKb0hmnX9AjMlGE23rnMlF4YW5HJ
- hZjsEmkciR+5otmh5MIZKgo1PI0MWngbRo78nE8rEFaXGOAAfx7TyhQ3gyepWHkpzbGn
- i8MBs0Da0mvJncRKx6xoumOQReSh12fVe0+35rSHXMGUj8HepsuWUZiHzii2wIOPGsz3
- B8qhDksxxcvbdCeSy4zXpO5FEdmTeK3XJ+mEHrNYcuy6o88j8FTHqd265DwD7Rc7j96Z
- 26Vg==; darn=nongnu.org
+ bh=nmVFAm4wCjcnkBpWwyxQ/vyvNCASp8S+SH9ifUzW9Rs=;
+ fh=/S1m1itOrO1hj94LQJIWwj4BK+wl75Z2+yQRw2D82og=;
+ b=rz8bksINlopSV2IghYQVTOUHMb30GLPXGfO+ss4xszeL6ZOPYf0N7Mlm2iyj8J8w2k
+ HNwfY9m/XhxanLLdu3Yx+7eMptLo509jDF32aE5gs0vsVIoFm6nSLRUqr6+i0XT7Lt0Z
+ Ui1Kmc2FkAsRwA5NDiYIKgrqMjzPWVUAu3M6d7RP2m+INaX9J1e6DmsrQSNplsFIKiy0
+ iUmW0pDpz27MnCM06qX23nIc3xCeQE9M1OYuR7nSbcLLBVXsQ6Yv0VSPMLOLZKdlbv6o
+ QQaYRX9/xaUO+YC8BngzS9rrOMvYYKoU/14F10FyUFVvmu674qfOC0astX7bUfUVJrOc
+ 3JZg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791810239; x=1792415039; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791810672; x=1792415472; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=M1Ceg4BNxPx3Lp7b7T2/b14QKQtr9LAb4SftbUi0Pa0=;
- b=Ds6xThXBMKgAV3kFQaEScYP9SWAgzepMWf/JrU2yF3Wpxq3vo9iMS6FWGhbAbK4eHL
- JGOtFQngWkdoNtFJiq5b/4Pa+jxgnZ3zA8MWXcFrgRpfF9L3zD5InJ2li8LgE+LUpust
- 2DB8CTfOYRvMQHwBjuKydBFTRa4bhG5k7zhz4anEExOLWq1m6kuRR55qJPTKQprEzGUS
- MM/5brIJJjonDKhO6ZVeUv7bQjdvv8nfQpCAa7a7INnt+Zy1ebQ7FYNlykXchedCMNPG
- RQC7dVi7x6IPq4G83IuE/7aGs3uJVzs2ZhOB25E2Vl/7MoEmOPXAIkYfudcoRXBuf01X
- pu6A==
+ :content-type; bh=nmVFAm4wCjcnkBpWwyxQ/vyvNCASp8S+SH9ifUzW9Rs=;
+ b=qF1ndjVN8xG5IJ0nOi7/Q+y8YEzBMwpkcy/mtlGpt6kmJlPXWRMbv8hhuy2NGjCS1z
+ n2uaTsJg57bRlNCCWpneDD02EVU9Pe4j94XY03Aux+iX8KFEZfMIL6/figx8cBwdXi+r
+ FxJ8TqLhDbQE1dYfG6WHUU9znKo0MrpRdw1i3s1Jva9H9635EH19ykLglwFthF1Xc8cu
+ x7ZHGAgBJZOJ1XeAIzNd6KhpyiRLhAui7kdR+SCAq6TOVl4SrMdMAH+kTXXgGRfEbLOV
+ Ym1KZLeKMlkpTgLw5JAQKRlJHXUDEZ5nJn9R19Ul/qvxK/nxOvRGGNJHnX85aTaL1Qqg
+ zqGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791810239; x=1792415039;
+ d=1e100.net; s=20260707; t=1791810672; x=1792415472;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=M1Ceg4BNxPx3Lp7b7T2/b14QKQtr9LAb4SftbUi0Pa0=;
- b=zw48Ou7KpKntorjnl1jPDqst+ybJ18CkTjVsPxKAUA3lcErxSCfWl/9AdNPtRW5YOD
- Z626OnGIqKBYruAfy0BGCcCdtLkpBVvwB/p2v3qktk7B2ZXGUrl8ZkxIyjl9Cgn0xd0g
- 3epZaZpDq5vn9F/IG7bYqhy+32fT308do40MIH9qs5quVGKcG/yjMfazbWwqonWFiR82
- FRZ9xKBWAXE8rpVgkm9s1k6Dvel0B0WOjVDusWly+qsrZQ+MjY6c0kRi8N626uxvMzfw
- Fxu5Rj+T/sOdEnO2FDbYfiGLwkNjYRcgBklTMUhgZRKOG15dDTi5fhLtLjrdFV7p7tiC
- sCFA==
+ bh=nmVFAm4wCjcnkBpWwyxQ/vyvNCASp8S+SH9ifUzW9Rs=;
+ b=w9+jigIN7s5B29XaNcm5CBcUeKEqATnHTsvPtK5BKB1kq0qW2/qlKTnQiVzUzRtSbr
+ jvQHJ9R1mGqzA33lQ1FCjmbhSRgPWunOSj5ZhFEEQPQkw9JTXr5TeCOpA20OvYtn0Qqv
+ JSqpXEktTDcXgR9aKugbsFt8ASKPz213FjnGIJPd8BMUru6CtMKBhpkTGLSOBUsYGyxg
+ mIK48EUpdavEIzWGH1qILckCwT8HC+jRO/Sxpg40kMBItxW/Ay6auZUsL3qhoLuB9blG
+ XvlEW6Z034ab9cm9v2r+ikO13QMoU2pUrKOtU9j7r1aFqgPPg3E7eYrSkvJTTCffxNXp
+ ljhA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByW7RGJXp+UUXt1wL1qonyiIRTd7LLWqDSEFb9Q9POr0iclfqA4JTXw/07ZTBUyVOHxZuCurrE7GQ==@nongnu.org
-X-Gm-Message-State: AFq9FYJ5kkw1YCiWrtRMmbYJPa58X4EhVGrBkwOF1P4UtPpjDvqBWKbB
- V+8l5ehIgSRx+RH5h9j6g8GapjUqPmkc74q4Sz2zPTpPeR69GatOo6CfQE1KvJR1bgycboH4iPU
- XspaWXSbE7z43QankBLiJTxNS3i4AcV8c0SDb2kKpfw==
-X-Gm-Gg: AYBFou0BFHhwxlL7ik7e7glLCZ3lDciF/mxiT4lHU1Dgqr+u3t7hBuumfiv6HiWAxS3
- NXGCf6nWJCrwS7/Rg39NwN9DZ0qiZtsmxvY7zF+UUDyFlCFW2hHd+BOnNllDkD/uM7qJa3RfSEV
- Aj9I+bIePlo1MLqmERumputvcNZ3VxeFl8dpYy+AQu3OJOl9OcnpeqUcs6WvtWRA1euj6QHnLoW
- MgFuGuNbE1NB3EcBybFGZveBjYHrc0Z+qW3Z9Xzitg9dgZDgt9Q39lqln+K2CgxzLDLWkCzuI0X
- BD8oc2ZBHvsRxqk4FwriElGUEiJgOlSpW4X0rFDkKQbj0amwT4UqeHS/Sjnbav4Qbl613HYrwsG
- nxQVcVisQ/txWmZFzNXsEkfHuJT8ce2fz6hnS8yA=
-X-Received: by 2002:a05:690c:9e:b0:8a9:a1e9:2665 with SMTP id
- 00721157ae682-8b07d3c4195mr32928067b3.6.1791810239141; Mon, 12 Oct 2026
- 06:03:59 -0700 (PDT)
+ AKwUvBzvXepvbi51t5/udfT8vRytMw98vQTc+XKj9CxBR7qkWwlNVDwocNeLxo1jbbFXeHcWjf6ytgEHyw==@nongnu.org
+X-Gm-Message-State: AFq9FYIwHrrNY8ngfF8zcmojU90MXEtUTTFyZ1UoGAgi9dy5grJGg1sG
+ IIRnB9V69TcNt0+sK9HtHqhDNEzYKS9Ccku5bNw+Op1Hn5LvOTF2s7oWhExYe1cTRvwH9zOpa7L
+ vKUcqn4tXUsC1NZDfyFWSudvlF8vBVqk=
+X-Gm-Gg: AYBFou0YNA8GY0vIq4OFOJ/fSylsVEoJ6i0uZMmGZ6V2K/MXqQZ2K5U1RXECykDuYGC
+ JU15kQWNgOpkuUxqxGKtgeNIAq0JJIQ2I9JuvSW2oZ6iR/ZAa1bQMvcHJev46CBvtBvmPTEQ0yh
+ Uo2Btdlpo+1xAYp2FsM1N8Vn8aJ+m/3vfzUnYVXHRy7bwMzfVAqY5JQAkVF7oW0CSu7Hdw0Or1H
+ G49dfMQwlxSwEY3YODI9JWPqA5Tt3oJw7E7ZSRtg4BnbcYdE4ZnZbrXvNv2Bp0u5melVszY41wz
+ 4PPlUuu4xrg5jJKkePJlWDLtCjHcDwrTuxinyJP456vcPp2uZ4hOF5qoqcluwlNsDa6H2BJaGjk
+ =
+X-Received: by 2002:a05:690c:6e81:b0:8ad:7131:9178 with SMTP id
+ 00721157ae682-8b07d3bee19mr29079907b3.12.1791810672447; Mon, 12 Oct 2026
+ 06:11:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261009-allwinner-gpio-eint-v1-0-c55d2958ae0b@gmail.com>
-In-Reply-To: <20261009-allwinner-gpio-eint-v1-0-c55d2958ae0b@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Oct 2026 14:03:47 +0100
-X-Gm-Features: AclHuK-Yhq9VknjquIDZElJveRyqvDNiTmgEqsgz-0iIk-SIKj9yfErrpsvrh-Q
-Message-ID: <CAFEAcA9PfDvtOgXnUeWkB+h8bGTRzZLbsUeoLeORf-o1gF6jkQ@mail.gmail.com>
+ <CAFEAcA9PfDvtOgXnUeWkB+h8bGTRzZLbsUeoLeORf-o1gF6jkQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9PfDvtOgXnUeWkB+h8bGTRzZLbsUeoLeORf-o1gF6jkQ@mail.gmail.com>
+From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Date: Mon, 12 Oct 2026 15:11:02 +0200
+X-Gm-Features: AclHuK9RwxDuwqrOc8rAuF7wuuz8nP_t7ebqu0Bh5As2G-H1RVpvQcR67Sq1R0o
+Message-ID: <CABtshVQvYh_Kt0+hkXnQxEQgvEnTFUBxw0dLjbUR_VhuicHbrg@mail.gmail.com>
 Subject: Re: [PATCH 0/2] fix: Allwinner GPIO interrupt handling
-To: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+Content-Type: multipart/alternative; boundary="000000000000a2d6ca065da46e29"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,46 +119,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 9 Oct 2026 at 17:26, Strahinja Jankovic
-<strahinja.p.jankovic@gmail.com> wrote:
->
-> The original patches assumed that pin had to be configured as input in
-> order to be able to receive interrupt. However, after additional testing
-> with libgpiod and gpiomon, the pin is actually supposed to be configured
-> as EINT (0x06). In the following example with PH1
->
-> root@cubieboard-ng:~# gpioget -c 0 224
-> allwinner_gpio_read [PH:CFG0] -> 0x1061061
-> allwinner_gpio_write [PH:CFG0] <- 0x1061060
-> allwinner_gpio_read [PH:DAT] -> 0x49
-> "224"=active
-> root@cubieboard-ng:~# gpiomon -c 0 224
-> allwinner_gpio_read [PH:CFG0] -> 0x1061060
-> allwinner_gpio_write [PH:CFG0] <- 0x1061066
-> ...
->
-> The CFG0 value on the lowest nibble changes from 0 to 6.
->
-> This patch set fixes that behavior to expect that pin is configured as
-> EINT in order to allow interrupt-related functionality.
->
-> Tests are also updated to reflect this change, and a new test for pins
-> configured as input is added.
->
-> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> ---
-> Strahinja Jankovic (2):
->       hw/gpio: Add EINT CFG to Allwinner GPIO, fix interrupt handling
->       tests/qtest: Update Allwinner GPIO test
+--000000000000a2d6ca065da46e29
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This series fails "make check" when patch 1 is applied but not 2.
-We need to retain "builds and passes tests" at every point in a
-multiple-commit series, so that "git bisect" works.
+Hi Peter,
 
-I would suggest moving the minimal changes to update the test
-to match the new behaviour into patch 1, and adding the new
-get_input_pins patch in patch 2.
+Thanks for checking this and for detailed explanation. I will send new
+patches with the fixes.
 
-thanks
--- PMM
+Best regards,
+Strahinja
+
+On Mon, Oct 12, 2026, 3:03=E2=80=AFPM Peter Maydell <peter.maydell@linaro.o=
+rg>
+wrote:
+
+> On Fri, 9 Oct 2026 at 17:26, Strahinja Jankovic
+> <strahinja.p.jankovic@gmail.com> wrote:
+> >
+> > The original patches assumed that pin had to be configured as input in
+> > order to be able to receive interrupt. However, after additional testin=
+g
+> > with libgpiod and gpiomon, the pin is actually supposed to be configure=
+d
+> > as EINT (0x06). In the following example with PH1
+> >
+> > root@cubieboard-ng:~# gpioget -c 0 224
+> > allwinner_gpio_read [PH:CFG0] -> 0x1061061
+> > allwinner_gpio_write [PH:CFG0] <- 0x1061060
+> > allwinner_gpio_read [PH:DAT] -> 0x49
+> > "224"=3Dactive
+> > root@cubieboard-ng:~# gpiomon -c 0 224
+> > allwinner_gpio_read [PH:CFG0] -> 0x1061060
+> > allwinner_gpio_write [PH:CFG0] <- 0x1061066
+> > ...
+> >
+> > The CFG0 value on the lowest nibble changes from 0 to 6.
+> >
+> > This patch set fixes that behavior to expect that pin is configured as
+> > EINT in order to allow interrupt-related functionality.
+> >
+> > Tests are also updated to reflect this change, and a new test for pins
+> > configured as input is added.
+> >
+> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> > ---
+> > Strahinja Jankovic (2):
+> >       hw/gpio: Add EINT CFG to Allwinner GPIO, fix interrupt handling
+> >       tests/qtest: Update Allwinner GPIO test
+>
+> This series fails "make check" when patch 1 is applied but not 2.
+> We need to retain "builds and passes tests" at every point in a
+> multiple-commit series, so that "git bisect" works.
+>
+> I would suggest moving the minimal changes to update the test
+> to match the new behaviour into patch 1, and adding the new
+> get_input_pins patch in patch 2.
+>
+> thanks
+> -- PMM
+>
+
+--000000000000a2d6ca065da46e29
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Hi Peter,<div dir=3D"auto"><br></div><div dir=3D"auto">Th=
+anks for checking this and for detailed explanation. I will send new patche=
+s with the fixes.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Best r=
+egards,</div><div dir=3D"auto">Strahinja=C2=A0</div></div><br><div class=3D=
+"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">O=
+n Mon, Oct 12, 2026, 3:03=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:pe=
+ter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px =
+#ccc solid;padding-left:1ex">On Fri, 9 Oct 2026 at 17:26, Strahinja Jankovi=
+c<br>
+&lt;<a href=3D"mailto:strahinja.p.jankovic@gmail.com" target=3D"_blank" rel=
+=3D"noreferrer">strahinja.p.jankovic@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; The original patches assumed that pin had to be configured as input in=
+<br>
+&gt; order to be able to receive interrupt. However, after additional testi=
+ng<br>
+&gt; with libgpiod and gpiomon, the pin is actually supposed to be configur=
+ed<br>
+&gt; as EINT (0x06). In the following example with PH1<br>
+&gt;<br>
+&gt; root@cubieboard-ng:~# gpioget -c 0 224<br>
+&gt; allwinner_gpio_read [PH:CFG0] -&gt; 0x1061061<br>
+&gt; allwinner_gpio_write [PH:CFG0] &lt;- 0x1061060<br>
+&gt; allwinner_gpio_read [PH:DAT] -&gt; 0x49<br>
+&gt; &quot;224&quot;=3Dactive<br>
+&gt; root@cubieboard-ng:~# gpiomon -c 0 224<br>
+&gt; allwinner_gpio_read [PH:CFG0] -&gt; 0x1061060<br>
+&gt; allwinner_gpio_write [PH:CFG0] &lt;- 0x1061066<br>
+&gt; ...<br>
+&gt;<br>
+&gt; The CFG0 value on the lowest nibble changes from 0 to 6.<br>
+&gt;<br>
+&gt; This patch set fixes that behavior to expect that pin is configured as=
+<br>
+&gt; EINT in order to allow interrupt-related functionality.<br>
+&gt;<br>
+&gt; Tests are also updated to reflect this change, and a new test for pins=
+<br>
+&gt; configured as input is added.<br>
+&gt;<br>
+&gt; Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.ja=
+nkovic@gmail.com" target=3D"_blank" rel=3D"noreferrer">strahinja.p.jankovic=
+@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt; Strahinja Jankovic (2):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0hw/gpio: Add EINT CFG to Allwinner GPIO, fix=
+ interrupt handling<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0tests/qtest: Update Allwinner GPIO test<br>
+<br>
+This series fails &quot;make check&quot; when patch 1 is applied but not 2.=
+<br>
+We need to retain &quot;builds and passes tests&quot; at every point in a<b=
+r>
+multiple-commit series, so that &quot;git bisect&quot; works.<br>
+<br>
+I would suggest moving the minimal changes to update the test<br>
+to match the new behaviour into patch 1, and adding the new<br>
+get_input_pins patch in patch 2.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+
+--000000000000a2d6ca065da46e29--
 

@@ -4,106 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 782B8CA9ED0
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:32:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91ED6CA9ED0
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:37:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGDKr-00079B-JW; Mon, 12 Oct 2026 06:32:49 -0400
+	id 1xGDOt-0008T5-3X; Mon, 12 Oct 2026 06:36:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGDKq-00078Y-0l
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:32:48 -0400
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ id 1xGDOq-0008SA-Mm
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:36:56 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGDKo-0005wm-E4
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:32:47 -0400
-Received: by mail-yw1-x112a.google.com with SMTP id
- 00721157ae682-8ae9bc9a2fcso28955287b3.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 03:32:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791801165; cv=none;
+ id 1xGDOo-0006Rn-P0
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:36:56 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-888cbacf70eso19180087b3.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 03:36:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791801413; cv=none;
  d=google.com; s=arc-20260327;
- b=kaFPmYXc6P+u+YkLLzwWpqVnBvj+iYpoNjEzGljIfT0O8rxqPjyEIyuyDt61YwwRyQ
- pJNU23001b8njOiavyJlCli84b9r1K73ReCZp2/bshAsMCCoANC1Db4zm7jpaq7Y1DnB
- Fz6WWs5sVxQmwMz8L54ZTvV+xQgjgyaYkNx9D7+e49VD0iMabfYGNT7BhPL7dISXFVGY
- d4NWyPE/3mobk2oWfpHIhtsW6wOiEFE632hx6txKfDZANYb3A/79ovy+MEDpkLcttkZF
- RgAXhgSUL4qEXgx2x3aecd18Czc8c6Q4XPs36KsYiiAvHSOlMZKFcV+YFlrCALFYGyBH
- coiw==
+ b=cUp2yM4HLc+b8SS9RhRi2za1bdta0ldqO58WkfJnVTLAz9dUQSi7Bii52psrtRcdB2
+ 79qw6mDHjThkFzHdFi8J/bw3Ul/sgmOPARatHbZpU4Y6DJZVz7DyBeLPGOuvUrT2PQCC
+ d9FbA5Vo0xB5AHyl+75JmNU3fikW0FGebQjKHGE1D94bkPajErmF7Pzl+js6/sX/PgKx
+ zaCGWWE1pt41BjS52T9Sv7SbA20Mom9v/wN8Ky3gOtqkVvrStyvTDX2yQfZR1b212kZC
+ ktnFTKCb9lXQ5EPTEsYm5RFhPN27WFkxQg8m7mKj7XIvBk+OELuhzdhCte5cF9P9UigO
+ LBEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=YQI/rTmZyoxAzzXUf/eoWI3j/Wdpv6I65MmZpfEGH8g=;
- fh=JZDAJIA/2y5s9y13Dd9nhJKF+g6hgNgO/Z3UDk4IvqI=;
- b=VA3HYMhh9XsrEhv/7q6oxHCyTT8+NrBhmBMqJlkiAE4lbzFsyhghATpjxVJhioep/5
- HF/4ixlN4iNeodD271Ko3NoI/UEe3frWp2yO0mlRBgj7jS1/J0FR5uDtJhlCDxMv5oxp
- XCeLQ3t3Tng/501woVbW/3h+s6+rpoS9wy6kuV7ZiSOefBRaiNU29iVdTXKArU3qBWgo
- wXpCxn+Fnpuoz5tgoc3xFCGmnqsVcfG557tOl5EVJAEt1tYc97sL8c4p2vakWGClGiSk
- obRf1VICo4PcU6jHPfmN1EDV0IvQlLxRafpJgN/DF/8xljwz7poUls/EXSy0b5Pi9WMO
- aNPQ==; darn=nongnu.org
+ bh=Q4Pwj0umhNYnhJcqSnnypcfIwnJ9p2Z4oUzUhn6fJ4Y=;
+ fh=+HFjpdpYJTS3BLVQzH87ap9apFTu3p7y9Tshnz6mjBw=;
+ b=rT/Uy0oJg8Eb1+J8fc5J8GUa7rvJZI6ZEOKUrrdPSH+MbVusADwIEMOMT/8181H4cS
+ 51sqW03AA+Rutvm/VUoI5beL0BZwzpEyxp2aCpbt0jyo6vFzS9Teatk1cklG50YPMtM7
+ mUakDEiwjHcUPSKcsVEKPb/tLU9aI3i7s50Q55Xvq4UcH37kiavjXamjQUxcxlhmC3pV
+ z8oPTtAb5/+PUeF7AxeeuX4VX1KW12sL7P//HSG8b51of5kl1/OQAA+ODSSTIV4m30Dc
+ w6SwGDCaEKyEUuRKl+9Fo3S46dzQhCuW6TGw7yi07P2VcitHXiPm8J2wAAYcTyC7rxyN
+ v9kg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791801165; x=1792405965; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791801413; x=1792406213; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=YQI/rTmZyoxAzzXUf/eoWI3j/Wdpv6I65MmZpfEGH8g=;
- b=P0JjeGifgKNmdkpgbVNGrKG9+4rgvW0mVxeG/2JGUbCGc4X0CsHodWiCBj3LKViXFq
- cD6tYeOyHK589eCXQWJ6Z+C39F2Sc34lJ/B9U9eywBkM+fPQ8pefBHt+GERZv1VGnJfr
- 7eDaCoNcKHXRy7X2MZWLuGAKF4UxCyJ1tIOMeyh4Z9o+VChMNHbF5eUanGRPOZRti5zg
- ArmmUm9TRPDgCsoK1JHFxWXI5Jiq9+mJbBqJGcteLx3UVvP5J0WaZdknkoia/KC2nZLq
- iqnLga1sKIRyHNqBQ5nDz9+6VA+Fzy9/q67l+eqevj/SNNrJL17z/TVCbyzmfBFnPLv8
- /8jQ==
+ :content-type; bh=Q4Pwj0umhNYnhJcqSnnypcfIwnJ9p2Z4oUzUhn6fJ4Y=;
+ b=PxLO/FOnj/wMShCPNG1Dp2eTzF6svOpzRVNqpuXuY8mRjWqE745PcE6H8bkQtNQfOe
+ 64VrPfkV0YKo5FtjnjL8taoE+JeF7BANMs1esp5RW80KmyYcNxWj2MxP9vGTF+EXWhpg
+ ZYNsFSIeY51yp3vhP+lt8YI281z97Qar0dG+tay9KTURVO7PTHzIchyeJk4YW64Ul99y
+ DoOjj5L5ImLpHQWZSQE7z5+beosst4NGaXzxBZAqqs+KJDQxlkuBw8pNzDGrlct28Q/g
+ lX9Y3IDoppuDsh1AwrRaPZCOpBXdkeRAjE6MuLeks23hU63Nfw0xr39AHiZ9uHMoWhRQ
+ A9wA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791801165; x=1792405965;
+ d=1e100.net; s=20260707; t=1791801413; x=1792406213;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=YQI/rTmZyoxAzzXUf/eoWI3j/Wdpv6I65MmZpfEGH8g=;
- b=staGzVP2Y7wZyH+q1dZNIoDAShy1raOMoASh6U0RGFXnFRmSJq4fSU62nN74IKQoC4
- 5E8aAkO/sPuGVrw1JgV3tAYrxSMncGeZwS8F6nDHI4z+1+pRBMzORdJXobXA5rLnyvj9
- rCKhwdKdDGhulD450Flhu0ScgISTThsQuE+5mRdHnxDsIqG4nc7bojaQSKf0wxEuT/h+
- GnuSUkzJT0oPLA+4CgLw1D2Jb8aCXDWcg8aqfMQYw3Sv0KXqfXhMsJ+nawqf11jHajgU
- eVbWsf4SsIO3sBmWFOMCU/WrcJRqMa+WcF5IfVKJbyzJXkF7Ir81cf5+NFEOrGEpBsnV
- nd+A==
-X-Gm-Message-State: AFq9FYLrdsM5AF811cGfEMb/DTZkQFNYNkaB+J6GGB5TgBCUrMbW6TAI
- iq2kD+d1HJUpUG2uNIlgPQKfvsCpKPz5VVSZFBg9Jaj+ey0uQ4epzn6p4EOaXKbXxH+Rmm/ZckJ
- QW8HrbTDv/dWXY35pbq87uZQyYxmaEyr4YEYx9IkJKQ==
-X-Gm-Gg: AYBFou2ribotmuK3aAtfHZyKr05XEKzI4ImkkBoRin8haJdLnKlRe+nkI26LWOeCd3z
- RetkLTlD0QgL/f6dQfHzVUq8IzKhB52MGqnRvbX9NQvjWPHNr48HcL528hNhhtID9HL5P5Up4V5
- R/b/accSETWaXAIoh3rAHVXSSNXc+hCVT41T+jpDUtrdImqvN3Q6SA9o2Ja2kY26DF4EZh7SSba
- 0UReSihoxwzyZStw7B+gT1H+JjjGDF6tCnMIXN9KBQO4027OK2RLlBxENuglckaVSU7gt824ngN
- 1upW87l+1MzPCeYEmYylaybIt1aGjUPz83jlwckxr9IWVII9A3FPcvyPrb4As9LRhDdJD+KHkn5
- mTvXOrFKqIoc5clHejDBxPvodwwUT423Wwz2s3+c=
-X-Received: by 2002:a05:690c:56c6:b0:8ac:c329:682d with SMTP id
- 00721157ae682-8b07ed09205mr21470367b3.11.1791801164938; Mon, 12 Oct 2026
- 03:32:44 -0700 (PDT)
+ bh=Q4Pwj0umhNYnhJcqSnnypcfIwnJ9p2Z4oUzUhn6fJ4Y=;
+ b=MFjIskMfz4HYFjh8HlqVes42JlgmRP8eOrLMwQoNJqh/eoV536m1LyWFITI2bcnYmF
+ DTy0ZpDWUIexwbyuCXk+MwM4RqlogDELfT+u5UIrXLaJOLv3IeqQjkA9GfeI5+HnZyVb
+ RIuBx+m/2nt55d3oa6NSwg+27rKOkiVZV7P2/p4qrHI8e09QfgXd1AdZ0XDxlAfFqWH2
+ /ZsKWlM86y/wkboM5skXTZE3v3rVr9+KltdZ1wyeDN/du2Lux/R0BwxNy01ROhRPtK5f
+ rkymjber4TX2mpWoRM6CqkebAxm6fOFPVn3mCsQfvNtuKhxGscktMV7J9G4Y5Igrf7MT
+ b3DA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzByEj3Kw9xADMT1X9Jl8q94THjYGNBrUjkFib+adrRkjaTuPgqz8SvRKR3rSkklimu/65s6SrHsQ==@nongnu.org
+X-Gm-Message-State: AFq9FYKYa7wm3xgCmVyvptpnXxbylQdIulyiuv8zxjmb5NzSm0OmgQWi
+ mVaRSgxLXsYV49XBIt3UoIwHnkRvK/4s+MvbxmsPAJoDbuiNMEHF3F2wB8UkPm+LkSsxFfmcgAC
+ 2dE9oIdOHBP8I3s04f6NtQQmWIH3aqyYKhp2wzmbrBg==
+X-Gm-Gg: AYBFou3MR2pV6WoEXQKVlZqtPS9EJM2L0FsL10DslgfD73UJzhgZr1Q/XS4lCgQ4nhU
+ cMSwcdU2/d7H/49vbFSTpsJKbcToMToB7Zf2J8mP2sbUv3qxfjvSE++3UE66S+H+5e37ITvz7ub
+ d5NB4yi3W/SuOxhTjp5nieFp9MafZpdjQ+LjKgYjdY0XKT/PvonRIqniPupwiyyBa1gfGpPKqqf
+ uD7eX1HX9Q4oOIZtz8LUI8Ms9ZguqoZ+hVfBEEqogIo8SiMhxmpAeqyLncZD19B3KzZ4BNCt5h3
+ SxHgmPBmJUoGfnhOZFp9I8lmoYXtVTP5Hk6WW3n2i37zo+ERl420403GEUD8or99wKQ1WBD+d6R
+ q/bV2Vjl4ypPh2NFvxT4tmTWTIHCVj0f2q8eExc5e
+X-Received: by 2002:a05:690c:6509:b0:8ab:3dc2:a4d7 with SMTP id
+ 00721157ae682-8b07ed90e24mr30426327b3.22.1791801413399; Mon, 12 Oct 2026
+ 03:36:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20261009115728.1299384-1-fuad.tabba@linux.dev>
-In-Reply-To: <20261009115728.1299384-1-fuad.tabba@linux.dev>
+References: <20261010070952.323466-1-richard.henderson@linaro.org>
+In-Reply-To: <20261010070952.323466-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Oct 2026 11:32:33 +0100
-X-Gm-Features: AclHuK8AFMvBxGnvEeYYBK6kDyub4SiDtm1qkQ6ht23RjHpdhp94I11GUJgw7qs
-Message-ID: <CAFEAcA8D-8SAtpCq1WV1zmHcJhieHRdG5Z_o=oiOYN4Ly+vYWA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/4] target/arm: Fix the TTBR table base address in its
- 52-bit layout
-To: Fuad Tabba <fuad.tabba@linux.dev>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>,
- Gustavo Romero <gromero@redhat.com>, 
- Itaru Kitayama <itaru.kitayama@linux.dev>, Will Deacon <will@kernel.org>, 
- Fuad Tabba <tabba@google.com>
+Date: Mon, 12 Oct 2026 11:36:40 +0100
+X-Gm-Features: AclHuK-20_kwZsKo7IVLn4oF9imCQm3d7Q-BGTahwP9XSW9HzvoyA4LdWoYWips
+Message-ID: <CAFEAcA92eOaY_39yN9H-vXZ7A9=CSPK6LEOxbbKxREv_HYw_qg@mail.gmail.com>
+Subject: Re: [PATCH v4 0/6] target/arm: Implement FEAT_IDTE3
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,43 +116,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 9 Oct 2026 at 12:57, Fuad Tabba <fuad.tabba@linux.dev> wrote:
+On Sat, 10 Oct 2026 at 08:10, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Hi folks,
+> Changes for v4:
+>   - Squash accessfn when we don't need it.
+>     Rather than confusingly add el0 to the access_tid3 switch,
+>     complete the kernel emulation by squashing away the call.
 >
-> Changes since v2 [1]:
->   - Each fix is now followed by its own test, and the test description
->     moved from the commit message into the file header. (Gustavo)
->   - Clarified the stage 2 comment in the test. (Gustavo)
->   - Noted that RAM_BASE matches the address kernel.ld links the test
->     at. (Gustavo)
->   - Collected Reviewed-by from Gustavo on all patches. (thanks!)
 >
-> Two fixes to how get_phys_addr_lpae() forms the initial table base
-> address when TTBR uses its 52-bit layout, each followed by a TCG test.
+> r~
 >
-> The first stops TTBR[5:4] leaking into the base address of a table
-> smaller than 64 bytes. KVM's page_fault_test hangs on it under TCG in
-> its 16KB, 52-bit PA guest mode. Itaru reported the 16KB hang on kvmarm
-> last year [2].
 >
-> The second uses the 52-bit layout whenever TCR.DS is set, as the
-> architecture does, where QEMU used it only with a 52-bit OA. With a
-> smaller OA a non-zero TTBR[5:2] is then an Address size fault.
->
-> Based on QEMU master (f7ada39eda).
->
-> Cheers,
-> /fuad
->
-> [1] https://lore.kernel.org/r/20261007080019.350315-1-fuad.tabba@linux.dev
-> [2] https://lore.kernel.org/r/B4C0AC3E-6A4F-4A7B-B7BC-81207539115E@linux.dev
->
-> Fuad Tabba (4):
->   target/arm: Clear TTBR[5:0] from a 52-bit table base address
->   tests/tcg/aarch64: Add a test for a two-entry 52-bit TTBR table
->   target/arm: Use the 52-bit TTBR base address layout when TCR.DS is set
->   tests/tcg/aarch64: Test the TTBR layout with TCR.DS and a 48-bit OA
+> Richard Henderson (6):
+>   target/arm: Rename isar_feature_aa64_idst
+>   target/arm: Enable writes to SCR_EL3.TID{3,5}
+>   target/arm: Squash accessfn in modify_arm_cp_regs_with_len
+>   target/arm: Implement SCR_EL3.TID3
+>   target/arm: Implement SCR_EL3.TID5
+>   target/arm: Enable FEAT_IDTE3 for -cpu max
+
 
 
 

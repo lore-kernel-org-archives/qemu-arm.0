@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89110CA9EC5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 15:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80A7CA9ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 15:25:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGHrt-0008VI-1Q; Mon, 12 Oct 2026 11:23:13 -0400
+	id 1xGHtE-0000yA-Bp; Mon, 12 Oct 2026 11:24:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGHrq-0008UC-Hj
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:23:10 -0400
-Received: from mail-wr1-f44.google.com ([209.85.221.44])
+ id 1xGHsr-0000m0-13
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:24:14 -0400
+Received: from mail-wm1-f42.google.com ([209.85.128.42])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGHro-00019J-Tt
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:23:10 -0400
-Received: by mail-wr1-f44.google.com with SMTP id
- ffacd0b85a97d-48c4d99c32bso1954730f8f.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 08:23:08 -0700 (PDT)
+ id 1xGHso-0001G0-7S
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:24:12 -0400
+Received: by mail-wm1-f42.google.com with SMTP id
+ 5b1f17b1804b1-4a01933b584so17681125e9.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 08:24:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791818587; x=1792423387;
+ d=1e100.net; s=20260707; t=1791818648; x=1792423448;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=UwwxETLAztE1k6Pih+RsWxpK5u/uYELdrNm5CxCbYqw=;
- b=lo382QbL9rNOIImoM08VJ5Qb0osK5M5tj6pV8oQr6yoA0zyJwJ+BJhUzSMjjJuRXbV
- JRvqxgPBSpi+flfIBdgF887jwXdKJyhicj+9J1ll81T4YxYQbj1EqCUfHNv4X2k6nsGI
- OLbM0C+0WuPqKFpU+q2+2cIVPQ3BAP35mAfjYqTsKhwo3cY+iakwGhS1JUaAEsXov3A8
- A9osZLbVzT5e5Fsvwwwzi3sWQSFsYLCtJKNrPwPoetQtpD9ixRLdZarGwGhaDfxhszQQ
- VABFnAZXdEdPse/yQG0gWGjEdqBtVaEZiSrQ9VdzrALYxeY9C5mkXhxvMmgGFAy3J0Du
- AZsA==
+ bh=RnkBBeLG1eQDE9P6Yi95zQOq3H0LATrNJD3fWP7niYw=;
+ b=rWMoKUVU1y8qX2pRtUFyXTRiLigU0KTXaldhdFZB4pW8vkQz5wncmXN8xYp6aRYKQa
+ R9yeONVyRr0diXQ6Rd+CXj3Psnxi2ppslYLRJu2WEe/aD2B0exm9Ilf2w/yQVRGRWHLY
+ TI1TRpsQPSX7qUV5/ylEjXlavQgoq/sBdaadI/bM4llYHaN6yW/6pW46glChqCKd4ZfI
+ 515Oxam49K1AItEJRGA/03Ng8vu0+A+jiMqqK0MR1jXRoj3ZzgErnjDDYUDn0l/yqXbR
+ 8Q+5w0qzyJ6I9zgxBo8Ts7PIjY1fIO3aAOIFyz56Vz/Y0LhKrPlbki3mK7pTOQ9EJx4F
+ dliQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBziDoOyygsPCRGzKZtRrv+GJJIM7JnUokGob6IrQb/ImO2GWeH36plrDUvkyIIHhFp36TXPrjyOrg==@nongnu.org
-X-Gm-Message-State: AFq9FYJrUvBDL4qbbMrECI8kWzkZyLs32t29L3T41QEjHCoTLcJuTcPK
- 33JQaj2z98QgE8kKNN6v3lj4E+UH7++MZZ8qc4MX86lTNo/tqHEgrH+E
-X-Gm-Gg: AYBFou3qzMymANcebSehqspV6GA0Kt7fiJ4+JzqRFEYAO0H1rP5za5kWPo4M5KUWIFg
- 3WsAp0XesnuqCIKHEwqiHYzdC2+mE0yd39gcgS1a6YOnsbgBB2UkQp7hdjIGkVqFABzFtL1hywF
- bQN7vtkq+Izbws10rq+FrvZcJX8vbBZbK06w5vDxdVVqwxGR95LZKUTybF34w65to8sNj0lZsvy
- EimDrOedetdllozrc2fpeSGDpYsqTSibrSkpQIt6MW5FojWjWaketZDamslVfEv8YCoO5rSTmFG
- u8NqO00E44KVtz36PMujAbR4KD4FfHLTSt/dgTKMGmwpz6sL3vFQBlkFy5AsC9a9LqOHqpTE3KB
- RmiEV1fiMkkzLFxgic+9VJOxl1a1jOgYk1th1gTGGL0EG4mO9vjXRQtGrzh+THMR6Yxsfvej9G4
- Jq+eEKKDAaT2Y/LuBFatxwzH1whiNcupyp8NAxik6/F5we07j7Dp9V1hneAwUwZ4QjZEtMmC5Re
- zIurFfXuFvHJWS6NyrIIAm8VhH3Wc7vPeRLVpNXfOnKjg==
-X-Received: by 2002:a05:6000:1ace:b0:48c:571a:a1aa with SMTP id
- ffacd0b85a97d-48dba9dacf6mr20300737f8f.19.1791818587322; 
- Mon, 12 Oct 2026 08:23:07 -0700 (PDT)
+ AKwUvByWB1IvGMVjFboIhmZywtE3NfwoGp8aLISppcFf+kVv7a/OoGsRJWpiamrRYCs+/5Kz217z/OH6VA==@nongnu.org
+X-Gm-Message-State: AFq9FYL0Gf8IO2szWX4xqymNWH+aToamfC6ENZlm84/mR4o7mAU0yB8r
+ HqOC7cMrmZxjbREObENblvQdslloGVUpV/2Ctiuu8BFnAtcElac1OtvM
+X-Gm-Gg: AYBFou2k5oAd6Jy6KnPS6+v4Faw6vcNiZWJ8rCuCa0Auaz3Zshr2wYVqAf89WGIV9ZK
+ 2adsPjHi/3Ma3YZXcEdZ3s/vgkmYZ1YZ+Rh2lxZT4bbkGDFbm1zqGFm4Eug6FReipSEXJQKIvl7
+ kDTpAqcv8dFu+XNKcE9eE4kdquRFZ/lMbclMyq98S0nsJlZGEodyuRMLlYzpzAhIBiTnJ6bzJhQ
+ +vUE3HgdD5ikhUZ3DYGw3oaTYC512K+C/KdcQ/sOTbPC90PSQEayGjbXOfPMm8Z918EHd7Gfawb
+ qZLCxJ6HmCj1iY7EbLu/dKM1g23S0EA9Gtg0/WRmAnvCF8qvQmxGWG9+V6k/kKZ5yQV/XYZeN6r
+ Txorx88OCnyuvtYTdsQmaijxy/jY5DFDu4popFu03oftqxQrAT6HGtoZwJVl5oWI69u2/aikV0z
+ ygcnOGcO42oE2folY9PRucNRT9VHN04ZDSpKcSWgzLjkgLVDTNs/s4AeNeE6DNVVK2CicwbmiRp
+ kMagGx7FYLcsNWFqLjwVyAGwhYPOcPROULCMG8moUzXAcKpdCgPZ9KH
+X-Received: by 2002:a05:600c:6208:b0:4a1:698d:3042 with SMTP id
+ 5b1f17b1804b1-4a18e493143mr173062925e9.6.1791818648485; 
+ Mon, 12 Oct 2026 08:24:08 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0ab48a7sm31524f8f.24.2026.10.12.08.23.06
+ ffacd0b85a97d-48de0aaaa21sm53474f8f.9.2026.10.12.08.24.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2026 08:23:06 -0700 (PDT)
-Date: Mon, 12 Oct 2026 16:32:23 +0200
-Subject: [PATCH v2 30/50] tests/qtest: ds1339: cover persist-on-reset
+ Mon, 12 Oct 2026 08:24:08 -0700 (PDT)
+Date: Mon, 12 Oct 2026 16:32:24 +0200
+Subject: [PATCH v2 31/50] tests/qtest: ds1339: cover the migration round trip
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261012-bmc-minerva-v2-30-4c3dff084ec9@free.fr>
+Message-Id: <20261012-bmc-minerva-v2-31-4c3dff084ec9@free.fr>
 References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
 In-Reply-To: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +77,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791815521; l=3347;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791815521; l=3500;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=40jEbTSK65E3MsKCMaeknpjZMmqbQRo2Y3v73NUToek=;
- b=kcRzjDxjALOy3ssy8xfSwO6TSEFkSkA6pMvfUJLNuyInT+kHRJRipoqafXS6LlQlBb1JKQDoU
- Ej+9jnT/xftATiqrtNUOu2D0fgmTKgWMBuToQ3ywFhKXP9v7t3UAGig
+ bh=BGMUGmamSzCjRMfmtfuZ7L1tiySTP5BVtx1tPB5MRVw=;
+ b=09msNMADcOqJDOIGdmsta2N/yH18MGNxRjUF0Rff6cXAuxImRJDWpc+ttxrlwq0cXac8nE9A/
+ x+KIUMwNB1SCuIrVo6W/R1zh1b7PQV+KwrWm5YiswCcVGQTCCmz2yeE
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.44; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f44.google.com
+Received-SPF: pass client-ip=209.85.128.42; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f42.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -111,95 +111,104 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The property was untested on this variant.
+Nothing covered the migration of the register file or the oscillator
+state, so a dropped field or a wrong version gate would have gone
+unnoticed.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ds1339-test.c | 56 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
+ tests/qtest/ds1339-test.c | 61 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
 diff --git a/tests/qtest/ds1339-test.c b/tests/qtest/ds1339-test.c
-index 12562eff5f..a1b5afb331 100644
+index a1b5afb331..ca2378aa34 100644
 --- a/tests/qtest/ds1339-test.c
 +++ b/tests/qtest/ds1339-test.c
-@@ -8,7 +8,10 @@
+@@ -7,9 +7,13 @@
+  */
  
  #include "qemu/osdep.h"
++
++#include <glib/gstdio.h>
++
  #include "qemu/bcd.h"
-+#include "libqtest.h"
-+#include "libqtest-single.h"
+ #include "libqtest.h"
+ #include "libqtest-single.h"
++#include "libqos/qgraph.h"
  #include "libqos/i2c.h"
-+#include "qobject/qdict.h"
+ #include "qobject/qdict.h"
  
- #define DS1339_ADDR 0x68
- 
-@@ -426,6 +429,52 @@ static void test_alarm_registers(void *obj, void *data,
-     }
+@@ -475,6 +479,62 @@ static void test_reset_persists(void *obj, void *data, QGuestAllocator *alloc)
+     check_reset((QI2CDevice *)obj, true);
  }
  
-+/* A reset restores the power-on state, unless persist-on-reset is set. */
-+static void check_reset(QI2CDevice *i2cdev, bool persists)
++/* The register file, the Century bit and a stopped clock all migrate. */
++static void test_migration(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    uint8_t year = i2c_get8(i2cdev, DS1339_YEAR);
-+    /* A year the clock is not already showing, so the check discriminates. */
-+    uint8_t marker = year == 0x42 ? 0x77 : 0x42;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    /* 23:59:59 on the last day of 2099, Century set. */
++    const uint8_t tod[7] = { 0x59, 0x59, 0x23, 0x03, 0x31, 0x8c, 0x99 };
++    g_autofree char *tmpfs = NULL;
++    g_autofree char *mig_path = NULL;
++    g_autofree char *uri = NULL;
++    GString *dest_cmdline;
++    GError *err = NULL;
++    QTestState *from, *to;
++    uint8_t resp[7];
 +    QDict *rsp;
 +
-+    i2c_set8(i2cdev, DS1339_ALARM1, 0xa5);
-+    i2c_set8(i2cdev, DS1339_STATUS, 0x00);
-+    i2c_set8(i2cdev, DS1339_YEAR, marker);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_ALARM1), ==, 0xa5);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1339_YEAR), ==, marker);
++    tmpfs = g_dir_make_tmp("ds1339-test-XXXXXX", &err);
++    g_assert_no_error(err);
++    g_assert(tmpfs);
 +
-+    rsp = qmp("{ 'execute': 'system_reset' }");
++    mig_path = g_strdup_printf("%s/socket.mig", tmpfs);
++    uri = g_strdup_printf("unix:%s", mig_path);
++
++    /* Stop the clock first, so both sides have the same time to compare. */
++    i2c_set8(i2cdev, DS1339_CONTROL, 0x18 | 0x80);
++    i2c_write_block(i2cdev, DS1339_SECONDS, tod, sizeof(tod));
++    i2c_set8(i2cdev, DS1339_ALARM1, 0xa5);
++
++    dest_cmdline = g_string_new(qos_get_current_command_line());
++    g_string_append_printf(dest_cmdline, " -incoming %s", uri);
++    to = qtest_init(dest_cmdline->str);
++
++    rsp = qmp("{ 'execute': 'migrate', 'arguments': { 'uri': %s } }", uri);
 +    g_assert(qdict_haskey(rsp, "return"));
 +    qobject_unref(rsp);
-+    qmp_eventwait("RESET");
 +
-+    if (persists) {
-+        g_assert_cmphex(i2c_get8(i2cdev, DS1339_ALARM1), ==, 0xa5);
-+        g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS), ==, 0x00);
-+        g_assert_cmphex(i2c_get8(i2cdev, DS1339_YEAR), ==, marker);
-+    } else {
-+        g_assert_cmphex(i2c_get8(i2cdev, DS1339_ALARM1), ==, 0x00);
-+        g_assert_cmphex(i2c_get8(i2cdev, DS1339_CONTROL), ==, 0x18);
-+        g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS), ==,
-+                        DS1339_STATUS_OSF);
-+        /* Back on host time, which is where the year came from. */
-+        g_assert_cmphex(i2c_get8(i2cdev, DS1339_YEAR), ==, year);
-+    }
-+}
++    qmp_eventwait("STOP");
++    qtest_qmp_eventwait(to, "RESUME");
 +
-+/* Without persist-on-reset, a reset takes the part back to power-on. */
-+static void test_reset_clears(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    check_reset((QI2CDevice *)obj, false);
-+}
++    from = i2cdev->bus->qts;
++    i2cdev->bus->qts = to;
 +
-+/* With persist-on-reset, the registers and the clock survive a reset. */
-+static void test_reset_persists(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    check_reset((QI2CDevice *)obj, true);
++    i2c_read_block(i2cdev, DS1339_SECONDS, resp, sizeof(resp));
++    g_assert_cmpmem(resp, sizeof(resp), tod, sizeof(tod));
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_ALARM1), ==, 0xa5);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_CONTROL), ==, 0x18 | 0x80);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_STATUS) & DS1339_STATUS_OSF,
++                    ==, DS1339_STATUS_OSF);
++
++    i2cdev->bus->qts = from;
++
++    qtest_quit(to);
++    g_unlink(mig_path);
++    g_rmdir(tmpfs);
++    g_string_free(dest_cmdline, true);
 +}
 +
  static void ds1339_register_nodes(void)
  {
      QOSGraphEdgeOptions opts = {
-@@ -459,6 +508,13 @@ static void ds1339_register_nodes(void)
-     qos_add_test("block-wrap", "ds1339", test_block_wrap, NULL);
+@@ -509,6 +569,7 @@ static void ds1339_register_nodes(void)
      qos_add_test("alarm-registers", "ds1339", test_alarm_registers,
                   NULL);
-+    qos_add_test("reset-clears", "ds1339", test_reset_clears, NULL);
-+
-+    opts.extra_device_opts = "address=0x68,persist-on-reset=on";
-+    qos_node_create_driver_named("ds1339-persist", "ds1339", i2c_device_create);
-+    qos_node_consumes("ds1339-persist", "i2c-bus", &opts);
-+
-+    qos_add_test("reset-persists", "ds1339-persist", test_reset_persists, NULL);
- }
+     qos_add_test("reset-clears", "ds1339", test_reset_clears, NULL);
++    qos_add_test("migration", "ds1339", test_migration, NULL);
  
- libqos_init(ds1339_register_nodes);
+     opts.extra_device_opts = "address=0x68,persist-on-reset=on";
+     qos_node_create_driver_named("ds1339-persist", "ds1339", i2c_device_create);
 
 -- 
 2.50.1

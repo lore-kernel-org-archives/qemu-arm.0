@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 043E2CA9EC5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 06:29:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EFBACA9EC5
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 06:29:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xG9W7-0004tA-6g; Mon, 12 Oct 2026 02:28:11 -0400
+	id 1xG9X8-0006al-9U; Mon, 12 Oct 2026 02:29:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9W3-0004rq-Ud
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:28:08 -0400
-Received: from smtpout10.mo536.mail-out.ovh.net ([51.210.91.19])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9X5-0006SQ-LJ
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:29:11 -0400
+Received: from smtpout3.mo536.mail-out.ovh.net ([51.210.91.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9W1-0005Ar-Vx
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:28:07 -0400
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net [79.137.60.221])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4j36wL4L1tz81xr;
- Mon, 12 Oct 2026 06:28:02 +0000 (UTC)
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net. [127.0.0.1])
- by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon, 12 Oct 2026 06:28:01 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.188])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4j36wK6jL4z6Mbs; Mon, 12 Oct 2026 06:28:01 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9X3-0005FV-OG
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:29:11 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [79.137.60.225])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4j36xb1ykQz88WS;
+ Mon, 12 Oct 2026 06:29:07 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon, 12 Oct 2026 06:29:07 +0000 (UTC)
+Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.8])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4j36xb1C9Xz6LhR; Mon, 12 Oct 2026 06:29:07 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
  (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- C3C4A2402C9A; Mon, 12 Oct 2026 06:28:00 +0000 (UTC)
+ by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ B74BF1922C92; Mon, 12 Oct 2026 06:29:05 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-111S0059261054f-a75a-45b5-ae94-6145259d1d1b,
+ (GARM-95G001b7d52a51-917f-454f-a655-f8f57132bebc,
  A46244FAB654B0099A82D276BA68AD972340DB92) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e9c099ce-6822-4a3b-ba74-747f716a14e4@kaod.org>
-Date: Mon, 12 Oct 2026 08:28:00 +0200
+Message-ID: <4e1be977-ecf6-403f-b206-380cae3acf7f@kaod.org>
+Date: Mon, 12 Oct 2026 08:29:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/11] hw/usb/aspeed-udc: Clear EP_POOL_ACK when no
- endpoint ack is left
+Subject: Re: [PATCH v2 10/11] hw/arm/aspeed_ast10x0: Add the USB device
+ controller
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -52,7 +52,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20261005064418.3060881-1-jamin_lin@aspeedtech.com>
- <20261005064418.3060881-4-jamin_lin@aspeedtech.com>
+ <20261005064418.3060881-11-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -97,29 +97,29 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261005064418.3060881-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261005064418.3060881-11-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 9075034724161530891
+x-ovh-tracer-id: 9093612074194086923
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGiAXR8Ifyh3wPP9AAtd2qH1u9lmye61BdmBwEWKdch04gisrlgLmuw3IEbF5uLpFHrk/uRdlOVR+kDsI+xu3nKO/fuVVjLG3PX2zxWCLwDgNCdKzoId2UfguIikkocDaGek3KRESdjB3ye3EDci79JTh6LPNu/Rghgk0abhqqr80Pea4nucPYwHMVVg0Eaf8zTI+2acLY2ARg8HmR48hjdSZpvFhw0Vl0zTGjx2Ms9ajql6SFHcaPjL4Jw9oXgCpnc2T02IAJ+ZUfVKk1AvDf5wTzVePQapJcczEAVacoOUY6Gy14P9ClMXgBs8K7cujMg/a9cD0lNXPrB82s9yi9GSQvCB92//jj/00Kvvnpg0lZE3tOO9s0ZYfHh5MJPdhdTND1jbJYFTn16DMwdcbkS10N2DSi3OZMk35UVeIH3p3vn5X22Nc8YHxs60BIHRajNzqaAOnCmPk71+O1/+E9uDSKXXkLn/shuKmn9AI4pC7vZvI9rJ3Xf1P0rDW2BO9R8QFPQmKojES+b6AbaXSmJJnTwLZqxyYbosL8WE0czgMjLf5LUVBXU4Z0FEeVfG2cw7+2pvMozR3deD59nXTAVhm0s9jfKAVpq29GPNwtx8mus+2LUqG1A10t8arAwFi20VtSWAXzBZLgoo7yT3R3FBFpm4dKFrzF4nyHUk/rD4g
-DKIM-Signature: a=rsa-sha256; bh=KnaQCARsyqP/THhZ8HdR20J8iRtjMi1e4ql39MEVSzI=; 
+X-VR-SPAMCAUSE: dmFkZTGKPEnPHmvyu3W1ULBW3Ua89lvNq9BGU+KEQnO30evsbrht7aRU9NPUW2Uei0nLNILn9GglPZIHLBdp3URCzyzKCLvGdGTPjsReLVmsqATWope8ujCB0btegPGW0ozwpn7Pj5p5bT77VfoqVMbeBaUFH+nZ89q7ebc0Gi9xb59p2/dS5okl17o7PUab1oFlp3f87wtSV3BYDpIcxUpFHAaMbbokTwe2oJuO+0FVGyt6WNdRRXBcwdst4j9690DoYZoGsTSG7SmqJ4EKVi0AdEb1Qv3vn50AiYNvPPFjOKYvs1NkqQ1s6VRVgxyOvfd4lPmSu2vdDXFlndhVSWMeHpLiJod2cjzVjJvfuNSm6nDtZ87c/Gxh5q40iw8xAssXz1ozTi89tfyJdy8dkGO35QAppw1sca6yFnLym/9OYX6rsICXgfKxomaMflb8xoOvgrIMu62/VntqF5tMUxhjyqVucaFQWXXZtZvPEmRQm87wRDfu5cJ6K2/gkDOy0UiUQLi12NID/BAr/rABgG3nxYm5Wm83n1RUrV4xysSs/S0Hp0Mr/FMjoHct58Avv8J57QGjftcJy5wQYIJQAWU3e0LptpeSIygEt6+NrAv2GFR9MS6Tf030xiXMOiOYbqkFGaXbnp4zAJM0Gegg59oCRxq90//rLekhqMfL7Fg3LiBr+w
+DKIM-Signature: a=rsa-sha256; bh=YlunV2W0MPR7Tr2h8q42m4XfEnno06Sif5a9AvRxmEg=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1791786484; v=1;
- b=KdfVwAIX0QOLuCnY9qXgsmXieuQrp3hjU2LFVgDYJwotKo67hcQd2BBmHhwWYzb5qPny8/FW
- wAPQJnoypKenqqjUgHUNY1In8WZOM4Db/4Qcvmqfu4EBkgkjKNlFjF44ohmRfDtM8GUf3zVuntB
- s7FinTtx4mIBIbAZ2h6LopMiWZZbcNu1SNrS8UipHWabWsQj9cMaKVwKZeSXA2C84SzS0NBvJzq
- ddsvEuqEI/0uWJWWYVggCx5V0TE5LAKc9CL/yEWvmjAn1fU/J4rtUlluq/NrltR3tzrJj/Sx6yQ
- 5sLI8c8Dw0QVjQlfQX1zDe5mLbdr8WVNFJqq0JeHH+SNA==
-Received-SPF: pass client-ip=51.210.91.19; envelope-from=clg@kaod.org;
- helo=smtpout10.mo536.mail-out.ovh.net
+ t=1791786547; v=1;
+ b=RgQHvZaxyNQcI2uCUsKXovoX/3XSVG5i4C8UNo30CX9zvsQ+TVlyB+Xv4SbwUu0wY3zBccKS
+ QSh6Y7qLA2mpWQKpRc8QoWF617MzzOfnCzchWFPErID6a4R5ENY/DsSdrcLmHXmjyU4imhNunUh
+ NBws+TVR2B7sYG7J3DGrL0gm88KYv/Oi+1VurA+TVgvNSX4bN51uQiWXPW5E3XxqIcdgeq4Yiau
+ fD3qPJQAeWlsl1YOgIt3+TMpca1pyJ/SEsr0EwplgmrYDSgaUtJYiGP7xSkUaHCcNzeKh12mn4x
+ /i+6oBn6I+X/4LvJVYl1f4nRlnm5x9CJ2W079vDLr+hog==
+Received-SPF: pass client-ip=51.210.91.12; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -137,35 +137,72 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/5/26 08:44, Jamin Lin wrote:
-> UDC_ISR.EP_POOL_ACK says that at least one endpoint in UDC_EP_ACK_ISR
-> has an ack. It is read only, so a write cannot clear it.
-> 
-> Clear it when bits 3:0 of UDC_EP_ACK_ISR are all 0, which means no
-> programmable endpoint has an ack.
+> Add the USB UDC device at 0x7E6A2000 with IRQ 9. The AST10x0 UDC
+> controller is compatible with the AST2600 one, so reuse TYPE_ASPEED_UDC.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/usb/aspeed-udc.c | 7 +++++++
->   1 file changed, 7 insertions(+)
+>   include/hw/arm/aspeed_soc.h |  1 +
+>   hw/arm/aspeed_ast10x0.c     | 17 +++++++++++++----
+>   2 files changed, 14 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/usb/aspeed-udc.c b/hw/usb/aspeed-udc.c
-> index 95fe823534..bdbd1a78b8 100644
-> --- a/hw/usb/aspeed-udc.c
-> +++ b/hw/usb/aspeed-udc.c
-> @@ -335,6 +335,13 @@ static void aspeed_udc_write(void *opaque, hwaddr offset, uint64_t data,
->           aspeed_udc_update_irq(s);
->           break;
->       case R_UDC_EP_ACK_ISR:
-> +        val &= 0x0000000f;
-> +        s->regs[reg] &= ~val;
-> +        if (!s->regs[R_UDC_EP_ACK_ISR]) {
-> +            s->regs[R_UDC_ISR] &= ~R_UDC_ISR_EP_POOL_ACK_MASK;
-> +        }
-> +        aspeed_udc_update_irq(s);
-> +        break;
->       case R_UDC_EP_NAK_ISR:
->           val &= 0x0000000f;
->           s->regs[reg] &= ~val;
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 38226d9b80..4459188c57 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -167,6 +167,7 @@ struct Aspeed10x0SoCState {
+>       AspeedSoCState parent;
+>   
+>       ARMv7MState armv7m;
+> +    AspeedUDCState udc;
+>   };
+>   
+>   #define TYPE_ASPEED10X0_SOC "aspeed10x0-soc"
+> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+> index aeb5a4423d..81f2d78a45 100644
+> --- a/hw/arm/aspeed_ast10x0.c
+> +++ b/hw/arm/aspeed_ast10x0.c
+> @@ -162,10 +162,11 @@ static void aspeed_soc_ast10x0_init(Object *obj, const char *socname)
+>       snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+>       object_initialize_child(obj, "hace", &s->hace, typename);
+>   
+> +    object_initialize_child(obj, "udc", &a->udc, TYPE_ASPEED_UDC);
+> +
+>       object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+>       object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
+>       object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
+> -    object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
+>       object_initialize_child(obj, "sgpiom", &s->sgpiom,
+>                               TYPE_UNIMPLEMENTED_DEVICE);
+>       object_initialize_child(obj, "jtag[0]", &s->jtag[0],
+> @@ -394,6 +395,17 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
+>                          aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_GPIO));
+>   
+> +    /* UDC - USB 2.0 Device Controller */
+> +    object_property_set_link(OBJECT(&a->udc), "dram",
+> +                             OBJECT(&s->sram[0]), &error_abort);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&a->udc), errp)) {
+> +        return false;
+> +    }
+> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->udc), 0,
+> +                    sc->memmap[ASPEED_DEV_UDC]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&a->udc), 0,
+> +                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_UDC));
+> +
+>       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),
+>                                     "aspeed.pwm",
+>                                     sc->memmap[ASPEED_DEV_PWM], 0x100);
+> @@ -402,9 +414,6 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
+>                                     "aspeed.espi",
+>                                     sc->memmap[ASPEED_DEV_ESPI], 0x800);
+>   
+> -    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->udc),
+> -                                  "aspeed.udc",
+> -                                  sc->memmap[ASPEED_DEV_UDC], 0x1000);
+>       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->sgpiom),
+>                                     "aspeed.sgpiom",
+>                                     sc->memmap[ASPEED_DEV_SGPIOM0], 0x100);
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

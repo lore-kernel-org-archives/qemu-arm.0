@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0400CA9ED2
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 21:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A86ECA9ED0
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 21:54:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGNxK-0000Xj-Dk; Mon, 12 Oct 2026 17:53:14 -0400
+	id 1xGNx2-0000QR-Us; Mon, 12 Oct 2026 17:52:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGNxI-0000Wj-Bb
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 17:53:12 -0400
+ id 1xGNx0-0000Oz-Np
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 17:52:54 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGNxH-0006RZ-3M
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 17:53:12 -0400
+ id 1xGNwz-0006NX-AB
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 17:52:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791841990;
+ s=mimecast20190719; t=1791841972;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hvRdGjmV0ppxdqjb1nHh6IosNEj3IaKtvWrxkVjnp00=;
- b=MUAnlBbEag8Y7lDKaXAbbcC+4h31kR4PtPBCcnLsHfYQ4OaYpdIEZuR/wEkj9D/Cwaouam
- AFSx6uz+dzOROp4XEj/e1V5Qymbk5o97hxLki6z/tGMORwOtom2uj93Kpi3Wa9m+qImkx8
- 8o8bTmnB7Gaab+NUPE4yBNP7av9pJuc=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=nqO+u64ko2DqHr6cEg2Hx5HDRMgfV1zle10AY70atRg=;
+ b=QP6qL9I2L7qNS24c3sxKrZEE2MyF+J1i0XAvoVaUQOIzEQZ6EFo97br2QRyAltBkEobrfJ
+ f5jQX3mH2bouX2ErhUqpV+wQmUkumdlICXvlbXTs4prEfjeCCq5pFAleCaBBkuJ9t5raUW
+ ak4QNCkicgQ2uV4AGAlH6TH7QO9IHjQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-5-Hj2CfromN7KNu2c3fyYLMg-1; Mon,
- 12 Oct 2026 21:53:05 +0000
-X-MC-Unique: Hj2CfromN7KNu2c3fyYLMg-1
-X-Mimecast-MFC-AGG-ID: Hj2CfromN7KNu2c3fyYLMg_1791841982
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-325-pBkhSiSjOTiXTm0xgdGCDA-1; Mon,
+ 12 Oct 2026 21:52:49 +0000
+X-MC-Unique: pBkhSiSjOTiXTm0xgdGCDA-1
+X-Mimecast-MFC-AGG-ID: pBkhSiSjOTiXTm0xgdGCDA_1791841966
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 92C4F1956055; Mon, 12 Oct 2026 21:53:02 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2417A1955DBD; Mon, 12 Oct 2026 21:52:46 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 982CB18004D2; Mon, 12 Oct 2026 21:53:01 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 1E8941956040; Mon, 12 Oct 2026 21:52:44 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 15/16] tests/functional: update s390x tuxrun images
+Subject: Re: [PATCH v2 11/16] tests/functional: split aarch64 tuxrun into
+ tcg and kvm run
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, 
@@ -73,30 +74,30 @@ Cc: qemu-devel@nongnu.org,
  Klaus Jensen <its@irrelevant.dk>, Song Gao <gaosong@loongson.cn>, 
  qemu-s390x@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
  Ilya Leoshkevich <iii@linux.ibm.com>
-In-Reply-To: <20261012170330.1144446-16-alex.bennee@linaro.org>
+In-Reply-To: <20261012170330.1144446-12-alex.bennee@linaro.org>
 References: <20261012170330.1144446-1-alex.bennee@linaro.org>
- <20261012170330.1144446-16-alex.bennee@linaro.org>
+ <20261012170330.1144446-12-alex.bennee@linaro.org>
 Date: Tue, 13 Oct 2026 01:52:29 +0400
-Message-Id: <179184194937.2190936.3981100108318633267.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=362;
+Message-Id: <179184194930.2190936.8012364654417559487.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=589;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=wx8HHLzmakCEvbSWMDTud8ToP+RykOdtopxEd6sBaQ0=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzVaggpAUv7uPdqWChvDmZXYWdFA1K99WIOMm2
- 0MzZg8ZoV6JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCas1WoAAKCRDa6OEJdZac
- 5ThrEACDvh3J6wXeNz1kcsc1B4rayCKQI5O71vJ5u4sAO+3wWSsH+ke0J+X0Nwi6ltEyMv5Pu73
- Lnxvodo3j4IcNrntAvzKqTfVSZOOSmYTgGjXf4VSrH+CoOess9+pTBuDO7eMd2T4l8LnxZEegFd
- IKuo/e2auBuUTFAjWpVAEtrmhUAZr/a4OkfBMGMfkx+triDhpEAIEufvW4lBtjl9DQ90bpP1rdw
- eG9COLTPPLLCErAOCcPbWiACoNcefKNEY6IW3G9TDCFs1sPgOiI/aZ/bnTaCUjAUMY9OErLndix
- m4/7y5ptEGF01/MwwX99Crbnc30xYwkGG4mbJz6118RW+7XilFb8nziD37zTkfjUpSVRJx43tGu
- w4z3EcKHPyVvFB9k9N/ng4D3lT2l7Fq+Y5BszwvgT5pZAIX6z4Jscg63lMpi87xZ1iYiDHSGQKq
- TIZPR8YPc30fwg1VU+bvLAPUDW4aHJ8hr557UfUL3wZoKbcBDU6iksx0/fswW18nsjKyLnChPyq
- 3PMSA3q/kggY/gP89QQG4x5awHladTQX+yzCoAooJp8E+t1vfaEhMEB/trP7eeYnWVo2BpvI+fX
- JMjZOsauzSOxpcSelsylFBV4QhQ+1+aBdGmpaxdDwoXJ6ag/NGLs9Ny154EZZRQyFlU4zufrs6B
- njjai8RO01TEYeA==
+ bh=4Hku+vanoRUZb/IA3EWpfYgLdiYuHTElOjM3dcYFL1Q=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzVafXosT6PveLogaJ2/5GnsVzkZYxziPtRhN7
+ gHXsvrO1GGJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCas1WnwAKCRDa6OEJdZac
+ 5Z5DEAC5LS1H06C57gV4PchTm8TGplXUy+vcGdwnQ+v5z1aLYcUz56h/Ek+xnkcrS5DvtGsxHOg
+ TzWYtmTGCGjytfWeV6aODAggcV9cA9kpJKE5uTCAJRkbZ3RqpmihQlCuTP/rZl/fHWaKgUd35LU
+ VO62FinlnSKBtnMJnQ0KUkanpbP4S7Ybe2ORTthDa/+/IiW5/QsSijiI82DODrZZtaLFEZpJkC3
+ Vao+oQ7klAqB046Ql8noQn8Z4yXtruvDrUf6TJrSAWUbUN7glVBim6/pM+alq97sfu08OV6jyv5
+ uc1swZmXnkPS8aHkQDFNzDOXFu0pljFFsXo6DiixCTb7LTxAgzIzQc76De/0n+xS8YgxwGelRzn
+ jFCjeKzxlT8kiYN97+JG+nUZdkIp2PuEmi6RgpFbXQuSJqJSadzxKreG94NTade4qOiMh0bNJpi
+ IqhEQbuFhG0HuK4WJZLNwuY0EuRmKIU8ygjV4AWYSlP3U1zo3RQlMnFVqnDehqHeZTY8aRRCLOO
+ Ls2w1tIvMXpi76No33/SLppPfkmKg7Y0wHK08gYo4k3yUOCHaaPg5XilJW9tK+Hbt6Hx1+pnyyA
+ DTKsS9pfI+jL9Ug28MfFqhlP0dU2JS/UhL9U/u4h8jmip8CFrzycwq45Zss1iowKTrmKZlzISn7
+ gYO7CVdjELCFr3A==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 15M4qQQhaLses2Hwo0OqHDS7pl-OvmipqjZB31J0At0_1791841982
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: JJaQNUwhgguLP__McSxJYd3fT1QV9RE9j5_ucsyj0IU_1791841966
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -125,10 +126,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 12 Oct 2026 18:03:29 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
-> We now split the fetching of the buildroot image from the kernel
-> itself. This is because we will want to access additional metadata in
-> future tests.
+On Mon, 12 Oct 2026 18:03:25 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
+> Add an explicit "kvm" run to the tuxrun tests. Although running on an
+> aarch64 host would probably have defaulted to "kvm" anyway we want to
+> exercise specific features later.
+> 
+> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> Message-ID: <20260930164649.433573-9-alex.bennee@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> [...]
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 

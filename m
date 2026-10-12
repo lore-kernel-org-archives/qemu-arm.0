@@ -4,96 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFCC5CA9EC5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 15:44:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A43CCA9ED0
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 16:28:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGIBi-0006QR-Kl; Mon, 12 Oct 2026 11:43:42 -0400
+	id 1xGIsH-0007u1-77; Mon, 12 Oct 2026 12:27:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGIBf-0006PE-4c
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:43:39 -0400
-Received: from mail-wm1-f54.google.com ([209.85.128.54])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGIBd-0004TK-Cy
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 11:43:38 -0400
-Received: by mail-wm1-f54.google.com with SMTP id
- 5b1f17b1804b1-4a16bc2278aso13967005e9.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 08:43:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791819816; x=1792424616;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=SvxLkYLFxBz+kmta5sRtklppBkoMZNtdkurTxLQZymc=;
- b=rqApqlOlE0t0eDCAXYplTlU3i2sigNs3f4EbIURNZ6Mhx56QEt3GBN3xWZQhUaDsCU
- ItUBnRn2Db12fz9n9moQB7FrdVoKgEpx1N2u32C9ox0LS9AXyf6qptvLM/lVEoWrcgCh
- hQX03dSLNuWDk0j7LhuVx2cQdUigEA0EpEId7COfY0s7VRb+mzHi1Pk5FeH+gM/mSwHt
- FwHFze7rN7y2/jZxDMA3mcWhTdvZzKnsgJzR+vPAqrf1b88eZsjDioeyMmDLo6xC+YrN
- 0xLd86dDTgG6XIgjWEmP0hSlKhpghZq8m4C7pghhkNdVZrgT45G5lCFWz33+RiENJEwd
- ervQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwno2aijdtn7k8aZoO5oXTLfy46datl7x6BFVEBR1RsndjarO2BYcx5/P3/9nbXK0AKix2nx/ru9g==@nongnu.org
-X-Gm-Message-State: AFq9FYJ/dn/459zCYuhXJv7Gbw63h68uB8nWin2Z8zUFeQSWEQ4/4qe3
- ruP9jaf3vgbD3RHY7U5DhF2bnFmIUBd7BCRHihMTczQQvwXdr72Z7EFG
-X-Gm-Gg: AYBFou2KOLIrPrmTo3H4vZxJOTo5CiMOjigtJKXPt9QTuqPAGS7xsJ1QteH0aeY0/yq
- dG26IwAURkiEDE9mhTcBlFQup8BNBtNtBkV6BWAkFwnqd6DpnRYUXymh/6lCbF1A2eciqnTIaoW
- bqS9PGt61JQmwF/7FnuALt2kWxcV66pZMrogl76a3k/ZhgZTHuo5WnutYZhDjf7e8tNoBxhznH6
- Xy1T/hesjlzfZ4Q5VK+sfYg4tWv4CxPPuAKwSvOEpc+zWfrJ/K/kKJbJlv84MuAbcILE4Do3UfB
- yPUWLUuyiMnCrBJbStNrmA+OKBxxWzyDTO7NlAeC/Kld0AB4YiqR5xP7fqbKixtHTM8vsmoLThi
- nY2qyYBN5c6WHNQh5qTrSdOaw0m2G4oLI3QSpwjmcao3rmjDxGIXDXyWtaydi6wfbwkPUC7LsCV
- kZOvDNF883NBCfhV3YLYD+tBFfxsTWa9BdK7csn72K9lHZhecR2ZkcdFjkbWsgp/i4pjOfCP4xC
- MsmYISLw7kfOOs+g3YnrjJNMqJd3EqDZqfAHKw4GzCFrA==
-X-Received: by 2002:a05:600c:46cf:b0:49e:8191:e5cb with SMTP id
- 5b1f17b1804b1-4a18e4a3ac7mr203566265e9.5.1791819815754; 
- Mon, 12 Oct 2026 08:43:35 -0700 (PDT)
-Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18bf2343asm549923185e9.9.2026.10.12.08.43.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2026 08:43:35 -0700 (PDT)
-Date: Mon, 12 Oct 2026 16:32:43 +0200
-Subject: [PATCH v2 50/50] tests/functional/arm: minerva: add BMC boot test
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1xGIs2-0007qr-Vg
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 12:27:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1xGIs1-0001lA-4y
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 12:27:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1791822443;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=8qUAnI8acTN2uvO49satRDiIRVik09nJpUJ+5G4veTM=;
+ b=Zwu8vD2N7Ubr2WkIkNoHbUnh7HuHM27/m1UFXvZvBjZadPg6wAJ6eoxpHm6G6tp5+u31YT
+ SPslN77aTDcJypUQBqiKAun7mwks5LtxU8S5BiTn7szpJzAjz9ppAps3Hdd1dHW3uSgsgV
+ rfCRvYLBN9Gi+wP9tjLAHv4LEXFa5ik=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-643-fhwyy5h7N0SXJk2QRPAHOQ-1; Mon,
+ 12 Oct 2026 16:27:19 +0000
+X-MC-Unique: fhwyy5h7N0SXJk2QRPAHOQ-1
+X-Mimecast-MFC-AGG-ID: fhwyy5h7N0SXJk2QRPAHOQ_1791822438
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 291A218052C5; Mon, 12 Oct 2026 16:27:18 +0000 (UTC)
+Received: from [100.90.56.12] (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3102330000E7; Mon, 12 Oct 2026 16:27:15 +0000 (UTC)
+Message-ID: <b5d07378-d5c4-4186-aae9-9252a08852fd@redhat.com>
+Date: Mon, 12 Oct 2026 18:27:13 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261012-bmc-minerva-v2-50-4c3dff084ec9@free.fr>
-References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
-In-Reply-To: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
- Patrick Leis <venture@google.com>, Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Emmanuel Blot <emmanuel.blot@free.fr>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791815522; l=2482;
- i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=zMnHp1SdNieEAjweeitFky57rPPnAgy18OpmLaUpJ1g=;
- b=nyi8/XBH9UGmX2jVpKGkPotKXBP+6qgCH8/kFF3zlDpCxKWzlCrCE5166Mwx1mGaS3fPQdgBt
- lC3vUfcIfIODPHsZmTDAwhyk09JVuJuoJKLKsYYO+a267DsTK/gtylH
-X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
- pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.54; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f54.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] target/arm: hold bql when SEV sets the event_register
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20261012134840.1051969-1-alex.bennee@linaro.org>
+ <87fqybx97c.fsf@draig.linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <87fqybx97c.fsf@draig.linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: ebA1i4d4T7hgc-_gUCDHdKDxumLKJvFGLTPWOqcuZsw_1791822438
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,81 +125,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
-From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a functional test booting the Facebook Minerva BMC machine.
+On 10/12/26 16:52, Alex Bennée wrote:
+>> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+>> index af56eff9f18..7c1fdab79d7 100644
+>> --- a/target/arm/tcg/op_helper.c
+>> +++ b/target/arm/tcg/op_helper.c
+>> @@ -471,6 +471,9 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
+>>   void HELPER(sev)(CPUARMState *env)
+>>   {
+>>       CPUState *cs = env_cpu(env);
+>> +
+>> +    BQL_LOCK_GUARD();
+>> +
+>>       CPU_FOREACH(cs) {
+>>           ARMCPU *target_cpu = ARM_CPU(cs);
+>>           target_cpu->env.event_register = true;
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Note: The boot image currently lives on a personal fork; a TODO in the
-test notes it should be relocated under legoater/qemu-aspeed-boot before
-upstreaming.
+The use of cmpxchg in wfxt_timer_cb is fishy though.
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
----
- tests/functional/arm/meson.build            |  2 ++
- tests/functional/arm/test_aspeed_minerva.py | 30 +++++++++++++++++++++++++++++
- 2 files changed, 32 insertions(+)
+Clearing HALT_WFE should be the task of the target CPU, not the timer. 
+The timer_mod() should be *after* halt_reason(*), and then you can just 
+do a qatomic_read() instead of a cmpxchg(**) in wfxt_timer_cb().
 
-diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
-index 61b00932db..dd1ddf7f6f 100644
---- a/tests/functional/arm/meson.build
-+++ b/tests/functional/arm/meson.build
-@@ -16,6 +16,7 @@ test_arm_timeouts = {
-   'aspeed_bletchley' : 480,
-   'aspeed_catalina' : 480,
-   'aspeed_gb200nvl_bmc' : 480,
-+  'aspeed_minerva' : 480,
-   'aspeed_rainier' : 480,
-   'bpim2u' : 500,
-   'collie' : 180,
-@@ -51,6 +52,7 @@ tests_arm_system_thorough = [
-   'aspeed_bletchley',
-   'aspeed_catalina',
-   'aspeed_gb200nvl_bmc',
-+  'aspeed_minerva',
-   'aspeed_rainier',
-   'bpim2u',
-   'canona1100',
-diff --git a/tests/functional/arm/test_aspeed_minerva.py b/tests/functional/arm/test_aspeed_minerva.py
-new file mode 100644
-index 0000000000..925a82b139
---- /dev/null
-+++ b/tests/functional/arm/test_aspeed_minerva.py
-@@ -0,0 +1,30 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots the ASPEED machines
-+#
-+# Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import Asset
-+from aspeed import AspeedTest
-+
-+
-+class MinervaMachine(AspeedTest):
-+
-+    # TODO: the boot image currently lives on a personal fork; move it under
-+    # legoater/qemu-aspeed-boot before upstreaming.
-+    ASSET_MINERVA_FLASH = Asset(
-+        'https://github.com/eblot/qemu-aspeed-boot/raw/refs/heads/minerva-bmc/images/minerva-bmc/openbmc-20260720025047/'
-+            'obmc-phosphor-image-minerva-20260720025047.static.mtd.xz',
-+        'bd713df39d3c09846299a2377315465187a4dcd33c29d3b3d683ef13b59f36bb')
-+
-+    def test_arm_ast2600_minerva_openbmc(self):
-+        image_path = self.uncompress(self.ASSET_MINERVA_FLASH)
-+
-+        self.do_test_arm_aspeed_openbmc('minerva-bmc', image=image_path,
-+                                        uboot='2019.04', cpu_id='0xf00',
-+                                        soc='AST2600 rev A3')
-+
-+if __name__ == '__main__':
-+    AspeedTest.main()
+However, I don't understand at all why wfxt_timer_cb needs to set 
+event_register to true.  It seems to me that a wfet + wfe sequence, 
+where the first wfet times out, *should* halt again on the second wfe; 
+but as the code is written it doesn't.
 
--- 
-2.50.1
+I think wfxt_timer_cb only needs to call cpu_interrupt().
+
+Thanks,
+
+Paolo
+
+(*) always, even if the halt reason is not HALT_WFE, if only for consistency
+
+(**) you don't need a lock or acquire/release here, because the timer 
+callback always sees everything that happened before timer_mod().  In a 
+sense, timer_mod() *is* the release operation and starting the callback 
+is the acquire operation.
 
 

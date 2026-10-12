@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07212CA9ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E9CFCA9ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:03:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGCr0-0008Ps-M4; Mon, 12 Oct 2026 06:01:58 -0400
+	id 1xGCr2-0008Qo-8s; Mon, 12 Oct 2026 06:02:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGCqi-0008Kd-FT
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:42 -0400
+ id 1xGCqy-0008Of-VR
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:57 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGCqh-0001c2-40
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:40 -0400
+ id 1xGCqw-0001eI-Ud
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791799298;
+ s=mimecast20190719; t=1791799314;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2Sutg9DXHSGWhavJIR+QhIrCJDkZ/DWA1IzcBn3s9ro=;
- b=QRpFa97AStV4pJ+JFV3mpGUwDU+DfkIlupQ5MreuKHkXpAywshJ4i95s5ttMY3cobJB4gQ
- ETEFY4Nh5HQuqVGIgDALOuaNvR+A2ddM7fKD4AzzjwAQ13xlWT5FHemUIqV0hiinjhyBei
- xfRVYj7E6ull0rOEjh6yj8YEgri7YtA=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=gBOGrkZWmPIb0gE0hvVFs2KOTYXgyxdbynVosJ+f0P0=;
+ b=GpdYCR4ChpnAmSLIWAkJoyX5+a9gxhgdMnyZHHokbv9LDW2gLrZHKDeC9kzOqWxAI963n8
+ 1vqD+Y0GNGfFFpmegJDQC6nh0ArxL7oU6hOL84Fdd3KJ42JWuppjOEyZlrq2cma2nnekjj
+ en6C8dRrnfl0rWWYH+n1yBoK5KISheg=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-668-6VzrhQ5TPSei82QRbipfVw-1; Mon,
- 12 Oct 2026 10:01:36 +0000
-X-MC-Unique: 6VzrhQ5TPSei82QRbipfVw-1
-X-Mimecast-MFC-AGG-ID: 6VzrhQ5TPSei82QRbipfVw_1791799294
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-356-ns3R8ml7OMag4gCxjFB2Pw-1; Mon,
+ 12 Oct 2026 10:01:46 +0000
+X-MC-Unique: ns3R8ml7OMag4gCxjFB2Pw-1
+X-Mimecast-MFC-AGG-ID: ns3R8ml7OMag4gCxjFB2Pw_1791799304
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B0CA1194510D; Mon, 12 Oct 2026 10:01:32 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 52B57195FD26; Mon, 12 Oct 2026 10:01:40 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id DA9F51955D47; Mon, 12 Oct 2026 10:01:30 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id CF08A426; Mon, 12 Oct 2026 10:01:38 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 6/8] hw/usb/redirect-server: Implement bulk and
- interrupt transfers
+Subject: Re: [PATCH v3 8/8] hw/arm/aspeed: Enable the usbredir server transport
 From: marcandre.lureau@redhat.com
 To: Jamin Lin <jamin_lin@aspeedtech.com>
 Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -61,30 +60,30 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
  "open list:All patches CC here" <qemu-devel@nongnu.org>, 
  Troy Lee <troy_lee@aspeedtech.com>
-In-Reply-To: <20261012021634.2006424-7-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261012021634.2006424-9-jamin_lin@aspeedtech.com>
 References: <20261012021634.2006424-1-jamin_lin@aspeedtech.com>
- <20261012021634.2006424-7-jamin_lin@aspeedtech.com>
+ <20261012021634.2006424-9-jamin_lin@aspeedtech.com>
 Date: Mon, 12 Oct 2026 14:01:11 +0400
-Message-Id: <179179927146.1642373.2907711602131535978.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=667;
+Message-Id: <179179927149.1642373.4444155646101667783.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=719;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=5va7ZZ9EFUfD0+PbbgI/GFbLy5jLTfCdfLz9i401JpU=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzK/pOSGP3a6iTF3lgtlrW71tw1OmaKVfrglih
- ezP6sCeD52JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasyv6QAKCRDa6OEJdZac
- 5Y0MD/4oOEtiy+oltQtWFUSLvvwVR8WXU+0ybwAsR3Vyvt4LefCmZxs2IjzKGdeGgzuXwjDYn+j
- f79CNXNzv251IHBMgpAEndrImdhPH5iKCl4ETobja0x7hm5nzE4NTpXQEpyRYOHiUZo/Eb/dEwP
- 6706T5e4U8zrPwGjAU26AE6uE0+Q0DgD7ySoSC9fpcajTMSREbtG5qyyjeGqVG8Jq7dqnMc/7PO
- kv5WkBXXUIFokxrdh/4BHC+M29QmmLq1AN5y4gXnU990lma6vDf5UJOKwgMUCyHT249V/vy94qg
- ELPB7ModKap2+rLQ4cR8ra5xXJjyAYcrEq7yU/Egafn+gS1PPcRCQMpZT/+i03jvl51Jx5TXpCN
- pE9oJdr5JRgPJOiPC4Ar4kVv9DszCe+OXhK3iyU1GpW62KKwd3GhdPDF02jSmVdX/oRZt7J+hLY
- WH9EPk0ip46N2Fmk4avh9Q6OtVC53L/tYI5qOtwubaKxrYWQzdIiOgXcGhgjImyGK1nWJMrkWTV
- EfHAIu8KKdNXazoAGwz4HdSNNY2QoRWXVEkycREOlYDFY1E6tFysxFp6bzJegTCa901ZdsML6Dd
- TcSSTwIDFLdYYGvnNIM2v9ISjUNfczcoQ8ilTbV3mNMsn1CkJpjyjkvPhd8miI2Zr3D/93hDqYp
- nYIFbBXKdb7pijg==
+ bh=DnepAXZQSu5awt5j5DCQGL6l7O/6ALwBqetC+Nj0D/0=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzK/q9J04icrUGacUA3QSC+hHDcgCvftYCiuUC
+ XhqzCoQVKqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasyv6gAKCRDa6OEJdZac
+ 5T4PEAC0Z4UEE2TWQzEQIGI14v30kuWBSQLYLGSVThWx0VDySHI36MBLoJH6a4X0Zs+9BfcauDs
+ G5bhi0z60ErhqfZahvSSUAUGvoBy2YoSgMmhtcAB60WK44uGDIsExFMmLH/yeSLqsR8I5wY8NqV
+ 3a0HbWsYJeqrvXrkgvPQEoYDlOp+VmLB798QPLjDOzZzGQtwfJOHmmeQATSLaVscvng0iWvHq8w
+ qOZ/YUSMnrE3SuI4FS3H7523cuxefrbv1zMgMmHmOaIdscSlb44oDdbNj0xcR06Q1P+Ee2GHmqy
+ LRINMKhEfGFUlFyVL3NNzFi8/pPl/lDDvuXtdL+sUVAOry/sKq1bnlKPe3melU8ZiUxii0Z8Ukm
+ UB6t1s8RKwqvutWNzr4pfAxumhVHXgSvGyiBUuXe7phgXD82RyYSuqcx4rjtBh9mn+wcyN9Iei4
+ sBXaZM2LIRmqbsZfbjDjoDEHEH8hsP7thZWFF/O5kZHCikZL3vwwY21NOGc+u20F+ghxB4M8GVe
+ qxLDoe/lhmYSyYj2kRKfWKXrZq+ZLsM0SVFfZQ8PKb628MWjnamfA0tk07ZdrZ0JeEfdUuJK0W+
+ +UxaZ3dfn2+9ryQelhCy7k1jpExrCJ3bAJyo8meTA9w30N8MSoRWdlCOpCKgGH4sMQc0Xu4B08S
+ h5F/kBYV/2w3A1A==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: 5uLpomUQN8_iQAQxQ-mUIG3KKz3V0PI6lXqDaxHL9Jg_1791799294
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: Oy9XLBXiEObCWijPZtdxeJppHOmo3M4VwRHruP7DGg8_1791799304
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -114,15 +113,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 12 Oct 2026 02:16:42 +0000, Jamin Lin <jamin_lin@aspeedtech.com> wrote:
-> Send bulk and interrupt packets to the device and return the result to
-> the host. Each one is a request and an answer, so they reuse the packet
-> tracking added for control transfers.
+On Mon, 12 Oct 2026 02:16:45 +0000, Jamin Lin <jamin_lin@aspeedtech.com> wrote:
+> Let the ASPEED machines accept "x-usb-redir-server" with -device, so a
+> UDC gadget can be exported to a USB host running in another QEMU:
 > 
-> A bulk request carries a 32 bit length, so the host can ask us to
-> allocate up to 4 GB. Refuse a request that big. Do not answer it with
-> fewer bytes instead: the host counts the bytes it gets back, and it
-> resets the device when some are missing.
+>   -device x-usb-redir-server,id=redirsrv,chardev=<chr>
+>   -device aspeed.udc-gadget,bus=redirsrv.0,udc=/machine/soc/udc
+> 
+> x-usb-redir-server sits on the main system bus so that the USB bus it
+> provides can be found by "bus=<id>.0". That makes it a sysbus device, and
+> a sysbus device can only be created with -device if the machine lists it.
 > 
 > [...]
 

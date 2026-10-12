@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E771DCA9EC5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 14:59:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF58CA9ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 15:00:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGHUM-0001Wu-Uv; Mon, 12 Oct 2026 10:58:56 -0400
+	id 1xGHV6-0001xo-VA; Mon, 12 Oct 2026 10:59:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGHUB-0001Ul-UE
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 10:58:48 -0400
-Received: from mail-wr1-f41.google.com ([209.85.221.41])
+ id 1xGHV3-0001qK-FP
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 10:59:37 -0400
+Received: from mail-wm1-f41.google.com ([209.85.128.41])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xGHU0-0005fB-7f
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 10:58:40 -0400
-Received: by mail-wr1-f41.google.com with SMTP id
- ffacd0b85a97d-48c02782159so1210675f8f.0
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 07:58:31 -0700 (PDT)
+ id 1xGHUz-0005kb-Es
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 10:59:36 -0400
+Received: by mail-wm1-f41.google.com with SMTP id
+ 5b1f17b1804b1-4a168355946so17200575e9.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 07:59:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791817111; x=1792421911;
+ d=1e100.net; s=20260707; t=1791817172; x=1792421972;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=cBS24KyVkFdx9K1mrb9mnaPLSyXbJlcPXKfV6TpuYbc=;
- b=nJsBMXsnLBXAIUbrFyv51cShA/VnuGfac1XugPNe8hVeMg7KSkTrL6j1v5WVsNEFRT
- JVPFHox7qZH/tVXSSqNmott/75NJ9lqJIkq+EetChnvBMCNLLEvHVQB04okVix2x7f/V
- teQ5XIx3B5IVD1pZdNSLxhDxh7icq3PBRBcS6r8W5M3RCV7v4C4GqNDsVBzsNK5TISNl
- aypT7/AF6sZldVbYHNOTNLryuuFkiPXDwz7919ylIY1gkNfWlExRULkHtqhKiR7lSE8s
- fsUedHAhpWK00WL5LJnKxuEiuQlHok4ea8SPHLzGHvRnZV/ymA+6efl4s50w32wpBgZV
- keRA==
+ bh=9Rfer8hh0Vvf5IwVCuxWXlCGZN/4Nsa/aOUTquN+KzI=;
+ b=bGDNbnHMm3VRrvwwVYWVD6hDhbgZ2zkjzNllvAsFz38OQC4UjVoJnU+TuPv8y7tvIg
+ BA5aZL0+j0wbn8mUmcBvPMLFMZRDhPcqeDKt7nmLc6W16c00031TLYk97My621EV8i9I
+ RLYXcRxxiphMmAdV2a777UFY/LYn3BafCJAOi+qIcKPAscHstEQEvKNKGVAcxenb339/
+ OxK6jRRP3a2zwi5vaKJo7NikMNDhHT3N05EjDk0nNV0HVzGu8ZChLFjqxGPIOyXtUzpB
+ 1fElFbYuIzNtNsuT66+XFWTex86O8SBzaGyNDH4IY94TcjnZ+Kyp6vaEgfU+nW8zSR9x
+ VTqA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxDF/PhTFINdXDpfSMGUYSeL4iViz+x6TO5IdduaEqF8UqGh1zj2wQivAO2WV5PBshQqm5iPTx5TA==@nongnu.org
-X-Gm-Message-State: AFq9FYKmGC8IlvySJm5wUuzhsvna9ISJqgH0eYPizdSDViL8AwS0ZNxA
- pjVWVEvrdAxEt9I+hg+12hObhPzY6BVTV1gQUn5BtSVFE1h6WAo7oPxZ
-X-Gm-Gg: AYBFou3XQr9ZcQ3gZvqo1C9VcQL+qQsio1o6aHfCoUB/3QhuNdeuiVOlT/oDj5TyLNY
- B0n4DM/eOrqDd0JR4yGS6d9sEmxpZDfykNR8bp5uE5MZhWN4d2iSRGKAmxoggAxKLzscfvcdqz6
- /FyuqV1SW1o7sK+ObuhOhOKDi1z4wSSrJfgdSl1S9QnzSY+bAEyPDRoMqyCktNBTlCQhkNBbfra
- B9f5jbEwCmA2mBJ0PWb8bUqvkrCQT0RlDNNCnGr5X9ujyWG5VJoy0mpyfB8zKtXtMZq6p38feb/
- nu9s4HmapokoDEJraTJV+Lrr2SlmPcseQQqfOtp2T4Wn4ytWcMMuEBIC7Q4y+jkjVdzk1bGJbpG
- QWIb92uXXfuxmQUF2ar1VuB/3/u+d9cqmwgqsxpn9oRD/vijDaewWFt5pDQpI95etk26OzzLCuq
- NHvE5KuA1rVEDXR+MBTE4XnE/ZI5UuNJsRRaI2U4PwEtIsh8CKibRUncvjJWXCXBI5TWaMd0asZ
- eLAsEQISz/u7OzMTzfpB2HYF6k0IKpO911TXH2nyfXaAA==
-X-Received: by 2002:a5d:5e01:0:b0:487:35d:cb0f with SMTP id
- ffacd0b85a97d-48dbaadde6dmr19172721f8f.14.1791817110618; 
- Mon, 12 Oct 2026 07:58:30 -0700 (PDT)
+ AKwUvBwqFSffwgLoFFbpp5q26/a74cRODhK2HRRRaVYhBvnx+s//RZhLipbmzYDU+h9cWaEtg9eB2FX/yg==@nongnu.org
+X-Gm-Message-State: AFq9FYLuAtyJNjgN7VbMARtn/uU0FVe39i7Yov9fTVCfCQQ/pm+2fd+w
+ OlnKV8HibQ399s6/BTxJ7s9RHSCESdsI7GwJsD5HRquPV2D3DZeUUgVF
+X-Gm-Gg: AYBFou3kF8DCC5qf5EtccrSs3BFWnyny4q5DJ/gb150FcRIDeHnLbENbeN5Uo/hRiUF
+ gYIfpeHnCGRvvFJgN8UjTc+7BroqGX7Ds2iHRAD186e+7AGD5imTM/rOys8FHbVOs1egHyCtSEf
+ ZYO7aLfvAFp7UpKv8tl/fuD+3vnGbL73lwZR/TeYFanN+1e5gtD1whOR0UgcMM0GalyO0poiEJ1
+ d3PGzdZbx7unklXUqG1RMVyt6/ddPc0lfD7ZJAzsjl4gpVd5OdH5dfm8bdBW0swsu4wnIUqY77G
+ jy5gf0NoavokVEBqz1OKlY9Z8yHgaXDDw1b+U8UhBHxpy045RK95+MZKXCse1isyTEBQZbbysVY
+ iwohl5aTmOoae+w/VlFbSwqZp4cprUSsnbGHPLz8KdT8bZzHfbRXxq81hrO3U3s7NCZrZ4+mkrE
+ 7HvmVtcVkxGLq3flMXoJqiPGd40vRdeTrAPM5lB1NzmbwprBNcaPrkjblqtDbG8TrVCTur/hUOa
+ xpwbr0l/e4IAqBNS+vZ21wUp8Ath7KgDREU3HnCi/aQYA==
+X-Received: by 2002:a05:600c:8b74:b0:4a0:2847:b6ee with SMTP id
+ 5b1f17b1804b1-4a18e4fb8c1mr183422435e9.35.1791817171791; 
+ Mon, 12 Oct 2026 07:59:31 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48db9acfa28sm20117000f8f.51.2026.10.12.07.58.29
+ 5b1f17b1804b1-4a18bf2e0dbsm312446465e9.11.2026.10.12.07.59.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2026 07:58:30 -0700 (PDT)
-Date: Mon, 12 Oct 2026 16:31:59 +0200
-Subject: [PATCH v2 06/50] hw/i2c: pca954x: migrate mux state
+ Mon, 12 Oct 2026 07:59:31 -0700 (PDT)
+Date: Mon, 12 Oct 2026 16:32:00 +0200
+Subject: [PATCH v2 07/50] tests/qtest: pca9545: add mux test
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261012-bmc-minerva-v2-6-4c3dff084ec9@free.fr>
+Message-Id: <20261012-bmc-minerva-v2-7-4c3dff084ec9@free.fr>
 References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
 In-Reply-To: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +77,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791815519; l=1912;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791815519; l=4644;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=6X3qtF5y9bDFv2QNu2TGa306El/FnP4ElGjKxh8N7cM=;
- b=a/5no+gY9vkPrY0vzsK8im6C2uagcbkgarXXe3eLjxbo6dEPrkuWZVv3+pquCSlmGHutp1fVZ
- M4UyIV9d2W9BZCOIO8chhhFYJQro60j5KZq24p4nRLpQIdLv5ilwr2h
+ bh=72voOzSuCaCvtExlGMvR/ZyC+1zQC+N/iYCSHIdJEEY=;
+ b=hO1AVeCoe5RAYmDOO8pUyHooRQL7tTrdKKZQeOgRAl1Th9ITISdPnVn/93Hehj7eU2IwO3M2G
+ GIclfDYxaB0AKAbZ1w+Cvvi/MeJPbsmacKlhwN4ijSOcWIxcJpi07fJ
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.41; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f41.google.com
+Received-SPF: pass client-ip=209.85.128.41; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f41.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -111,66 +111,149 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The pca954x model had no VMStateDescription, so neither the channel
-selection nor the PCA9545 interrupt status survived a migration.
-
-This changes the migration stream of the pre-existing PCA9546 and
-PCA9548, which an older QEMU rejects.
+Exercise the PCA9545 4-channel I2C mux: channel selection through the
+control byte, upper-nibble read-back, and interrupt logic.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/i2c/i2c_mux_pca954x.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ tests/qtest/meson.build    |   1 +
+ tests/qtest/pca9545-test.c | 116 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 117 insertions(+)
 
-diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
-index 4bb078a03c..597e57d99a 100644
---- a/hw/i2c/i2c_mux_pca954x.c
-+++ b/hw/i2c/i2c_mux_pca954x.c
-@@ -28,6 +28,7 @@
- #include "hw/core/irq.h"
- #include "hw/core/qdev.h"
- #include "hw/core/qdev-properties.h"
-+#include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/queue.h"
- #include "qom/object.h"
-@@ -270,6 +271,28 @@ static void pca954x_init(Object *obj)
-     }
- }
- 
-+static int pca954x_post_load(void *opaque, int version_id)
-+{
-+    Pca954xState *s = PCA954X(opaque);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 200abf6f36..e05d8a07b9 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -336,6 +336,7 @@ qos_test_ss.add(
+   'ne2000-test.c',
+   'tulip-test.c',
+   'nvme-test.c',
++  'pca9545-test.c',
+   'pca9552-test.c',
+   'pca9554-test.c',
+   'pca9555-test.c',
+diff --git a/tests/qtest/pca9545-test.c b/tests/qtest/pca9545-test.c
+new file mode 100644
+index 0000000000..91f56db92f
+--- /dev/null
++++ b/tests/qtest/pca9545-test.c
+@@ -0,0 +1,116 @@
++/*
++ * QTest testcase for the PCA9545 4-channel I2C switch with interrupt logic
++ *
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+    pca954x_enable_channel(s, s->control);
-+    qemu_set_irq(s->int_out, s->int_status == 0);
-+    return 0;
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "libqos/qgraph.h"
++#include "libqos/i2c.h"
++
++#define PCA9545_TEST_ID   "pca9545-test"
++#define PCA9545_TEST_ADDR 0x70
++#define PCA9545_TEST_PATH "/machine/peripheral/" PCA9545_TEST_ID
++
++/* INTn and INT are active low: level 0 is asserted. */
++#define INT_ASSERTED   0
++#define INT_RELEASED   1
++
++/* The mux has no register pointer: a read/write moves a single control byte. */
++static uint8_t pca9545_get(QI2CDevice *dev)
++{
++    uint8_t val;
++
++    qi2c_recv(dev, &val, 1);
++    return val;
 +}
 +
-+static const VMStateDescription vmstate_pca954x = {
-+    .name = "pca954x",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .post_load = pca954x_post_load,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_SMBUS_DEVICE(parent, Pca954xState),
-+        VMSTATE_UINT8(control, Pca954xState),
-+        VMSTATE_UINT8(int_status, Pca954xState),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
++static void pca9545_set(QI2CDevice *dev, uint8_t val)
++{
++    qi2c_send(dev, &val, 1);
++}
 +
- static const Property pca954x_props[] = {
-     DEFINE_PROP_STRING("name", Pca954xState, name),
- };
-@@ -287,6 +310,7 @@ static void pca954x_class_init(ObjectClass *klass, const void *data)
- 
-     dc->desc = "Pca954x i2c-mux";
-     dc->realize = pca954x_realize;
-+    dc->vmsd = &vmstate_pca954x;
- 
-     k->write_data = pca954x_write_data;
-     k->receive_byte = pca954x_read_byte;
++static void pca9545_set_int(unsigned chan, int level)
++{
++    qtest_set_irq_in(global_qtest, PCA9545_TEST_PATH, "interrupt", chan, level);
++}
++
++/* Channel selection is the lower nibble; the upper nibble reads back 0. */
++static void test_channel_select(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    g_assert_cmphex(pca9545_get(dev), ==, 0x00);
++
++    pca9545_set(dev, 0x05); /* channels 0 and 2 */
++    g_assert_cmphex(pca9545_get(dev), ==, 0x05);
++
++    pca9545_set(dev, 0x0f); /* all channels */
++    g_assert_cmphex(pca9545_get(dev), ==, 0x0f);
++
++    pca9545_set(dev, 0x00);
++    g_assert_cmphex(pca9545_get(dev), ==, 0x00);
++}
++
++/*
++ * The interrupt status is reported in the upper nibble (INT3..INT0) and is
++ * latched regardless of which channels are selected (PCA9545A Table 5).
++ */
++static void test_interrupt_status(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    pca9545_set_int(1, INT_ASSERTED);
++    g_assert_cmphex(pca9545_get(dev), ==, 0x20);
++
++    pca9545_set(dev, 0x01);
++    pca9545_set_int(3, INT_ASSERTED);
++    g_assert_cmphex(pca9545_get(dev), ==, 0xa1); /* INT3 | INT1 | channel 0 */
++
++    pca9545_set_int(1, INT_RELEASED);
++    g_assert_cmphex(pca9545_get(dev), ==, 0x81); /* INT3 | channel 0 */
++}
++
++/* The INT output is pulled low while any channel interrupt is active. */
++static void test_interrupt_output(void *obj, void *data, QGuestAllocator *alloc)
++{
++    qtest_irq_intercept_out_named(global_qtest, PCA9545_TEST_PATH,
++                                  "interrupt-out");
++
++    /*
++     * Interception starts with no recorded level, so drive an idle input
++     * first to make the mux publish the released state of its output.
++     */
++    pca9545_set_int(0, INT_RELEASED);
++    g_assert_true(get_irq(0));
++
++    pca9545_set_int(0, INT_ASSERTED);
++    g_assert_false(get_irq(0));
++
++    pca9545_set_int(2, INT_ASSERTED);
++    g_assert_false(get_irq(0));
++
++    pca9545_set_int(0, INT_RELEASED);
++    g_assert_false(get_irq(0));
++    pca9545_set_int(2, INT_RELEASED);
++    g_assert_true(get_irq(0));
++}
++
++static void pca9545_register_nodes(void)
++{
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" PCA9545_TEST_ID ",address=0x70"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { PCA9545_TEST_ADDR });
++
++    qos_node_create_driver("pca9545", i2c_device_create);
++    qos_node_consumes("pca9545", "i2c-bus", &opts);
++
++    qos_add_test("channel-select", "pca9545", test_channel_select, NULL);
++    qos_add_test("interrupt-status", "pca9545", test_interrupt_status, NULL);
++    qos_add_test("interrupt-output", "pca9545", test_interrupt_output, NULL);
++}
++libqos_init(pca9545_register_nodes);
 
 -- 
 2.50.1

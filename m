@@ -4,100 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E9CFCA9ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:03:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551AACA9ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:27:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGCr2-0008Qo-8s; Mon, 12 Oct 2026 06:02:00 -0400
+	id 1xGDFw-0007Kj-Kr; Mon, 12 Oct 2026 06:27:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGCqy-0008Of-VR
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGCqw-0001eI-Ud
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791799314;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gBOGrkZWmPIb0gE0hvVFs2KOTYXgyxdbynVosJ+f0P0=;
- b=GpdYCR4ChpnAmSLIWAkJoyX5+a9gxhgdMnyZHHokbv9LDW2gLrZHKDeC9kzOqWxAI963n8
- 1vqD+Y0GNGfFFpmegJDQC6nh0ArxL7oU6hOL84Fdd3KJ42JWuppjOEyZlrq2cma2nnekjj
- en6C8dRrnfl0rWWYH+n1yBoK5KISheg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-356-ns3R8ml7OMag4gCxjFB2Pw-1; Mon,
- 12 Oct 2026 10:01:46 +0000
-X-MC-Unique: ns3R8ml7OMag4gCxjFB2Pw-1
-X-Mimecast-MFC-AGG-ID: ns3R8ml7OMag4gCxjFB2Pw_1791799304
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 52B57195FD26; Mon, 12 Oct 2026 10:01:40 +0000 (UTC)
-Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CF08A426; Mon, 12 Oct 2026 10:01:38 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xGDFl-0007JV-VD
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:27:36 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xGDFj-00057Q-4l
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:27:32 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-8b0703011c2so11472877b3.2
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 03:27:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791800846; cv=none;
+ d=google.com; s=arc-20260327;
+ b=nCOaMMh5U4wqLUfPHJ5KSHKxgdIL6VnoXVJjS0dg8hkKzgynre1xEombd61BlGhhVb
+ Zm1z4Lq0WtWmMHPltC+augpHDf8VhUIaMi1UgpQiWn4B3/huo8j+TlAF2MJI0YIABWsA
+ M2EK6wUdgtreMWtRmX9S4laktGVpDG34jqLyML1edWIolk+OCLhxsMwl0U6hqbBzyBrz
+ I3tsNXbUuggWPVCtuC8uyBS7U3dky8xbdmsyr1tsKggO/xOOLN3F8lz+Y2qSHAXXEZf3
+ z2WQMGnUK5mbij5dUdRvcfkCCsIdKKw/XdlgFSO4ZrMuWqXkqSRhOngT8bapKDPsyLtE
+ eajw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=aW1fhbUGu6OqgjQI+qSffpqhlyHcxg/42Q5aUE4TzTA=;
+ fh=RNet27Pdo9pvr5xPtoSFgNdj0c/evwxN747sdNsEZ9c=;
+ b=TrBi8Kw6okIPRMIvbnzbtG+0C+3JEmI08saGRPCaHfHzXgpHUJjIf87WKzpRFQgtPp
+ hfEOav4dNB/eW26R2l+1RULf/R7HhqDHNjpcAoDHkvaJ7V1kykkaBPFi6uw9rkkZrNN7
+ a2qlVht9hPoDWpUYqzK70sudetpgthsIE9TH0ZanzfWsN14V90Ww0DjUIPz4pfNZCfjx
+ XFimjA5lRcUb054s+D01mCO91TO1yn2Igy+aoK2Av4kq/6BEljmZhMiJ0LVAIuvEtt6a
+ jx/LeUHmDDx3NiEao7KvplqcigZKnqDrq1dUo6hbV666MTY5DtCyIdU+Nsh07O6F+5qk
+ jhDA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1791800846; x=1792405646; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=aW1fhbUGu6OqgjQI+qSffpqhlyHcxg/42Q5aUE4TzTA=;
+ b=N19mDcPKvhYgbKTJMBWmfZzvOnh+rwioUop7zZkT8mCKlDxFkF/9d9IktUSriT6pLC
+ KQmEcn8sZtX3wsF8nqcScenexxGUVYBKnyLIYkAsRn0vHrcOeoqdjr3knohAzA+yu4n3
+ LOxXj8Nz1ffooj9BOVmUo27eLVwWIYlUm/mwTb+sPQhymvZSJvQWhGZERZqjsQbdh1ga
+ nLXpjxN3o8tDj0+xPRAPhuvcdHd1Bjqc5bJj0yvoBiS1IsjCUImjWzUaSibidsg5aJFN
+ aBIYzjPqxNIwF+99cQsNYWEgpHZm/kjwH8eIDkNRNyTscnBec/CMZ/yilovDGvUs2S2b
+ 5mXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791800846; x=1792405646;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=aW1fhbUGu6OqgjQI+qSffpqhlyHcxg/42Q5aUE4TzTA=;
+ b=RBDUkixJFxhEzYmPevxcnWQIyX4+fhLkBge2chx5FxuNjVe+lroEAcKQAhFW8tVe2h
+ FJgp4mRF16qprQ/ZtMnPgoZtndz3QksXmJ4vYBctvW5pSM646fZ0KLDDPrC5TmCUn0Mv
+ TUeFKGODkKDigNQBxq5nEX8LdOrApCA0c+ea+kjQF5hNbiE5Skj24r2yGZC37yMX9O3p
+ KgQvS/RuHooiBoP7UGNvzj6t1CqLKocVBljQGf+GX3qgoCHUsiXpwWrnQrWl+i2WvFwp
+ +rhFykZXI3rjcaoYvUyoDkdVRVq4BdP246Wv7uRF4F1bPNYVSr7v/5s2mt2V8V2YkuAC
+ GENA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBz+ka0uB3zjBsp7OkpazYa/S0dw7RW/N1ZBzwZSPuosnPCrw7KioSOVpNhcXjg8PcF1AM0VPln34g==@nongnu.org
+X-Gm-Message-State: AFq9FYKD4u6d2mu7aMYfUB/r+irytR45TpT0sbsl2m6zGb+FouAptz6/
+ UxUhr3HL6MwFcngmzv6qcrsPrTBgaFh1i0aveE7usiTxThRf/TQVKk+pib6pM7BHhQ1TZHiEpuf
+ +3FOqbax/KDarpzX9e8aJn+DWwaD7L4mLQi16n0Rs2g==
+X-Gm-Gg: AYBFou2R7P4gvi7FWc3YtSxHqNFuqgipsFWpRq89TjI2b4lg55t00MpwMZPi9nJkUZ6
+ zsdBSwGVSA8hl6/3jfPRcKj5Y8nrhHrci9IgpYDq9XxAdvFDUcQBHupOPpYLAYfkYlTIuYColId
+ vkbRjrNZH27yma+jRIeNIYXoo4peiQovwnkuPgccITgQ0ptfNtd/1Qmo1+UU3bGoQQTyWvbI6/1
+ 3fvPcVwDbTi3VYQtZ1fXtnc/TwEduux6azPhaREJx2dZcZvVVUn6TSxwb85e96REXrdXwqpiuBT
+ 73+Cx8J04MprVvpOcbuzIp4QVHoGkSnJBqpNpRG4l7rCmAP33yhzHZhWkA0Om6U3ZnC1erZ0b2L
+ hIhMBU0sLvsjAVWTyL5o1fW1HmSXrpc+VnGDAzvHtbpUzITCPIg==
+X-Received: by 2002:a05:690c:6182:b0:8a9:a921:13c7 with SMTP id
+ 00721157ae682-8b07ee5880cmr30824607b3.44.1791800846408; Mon, 12 Oct 2026
+ 03:27:26 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 8/8] hw/arm/aspeed: Enable the usbredir server transport
-From: marcandre.lureau@redhat.com
-To: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>, 
- Troy Lee <troy_lee@aspeedtech.com>
-In-Reply-To: <20261012021634.2006424-9-jamin_lin@aspeedtech.com>
-References: <20261012021634.2006424-1-jamin_lin@aspeedtech.com>
- <20261012021634.2006424-9-jamin_lin@aspeedtech.com>
-Date: Mon, 12 Oct 2026 14:01:11 +0400
-Message-Id: <179179927149.1642373.4444155646101667783.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=719;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=DnepAXZQSu5awt5j5DCQGL6l7O/6ALwBqetC+Nj0D/0=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzK/q9J04icrUGacUA3QSC+hHDcgCvftYCiuUC
- XhqzCoQVKqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasyv6gAKCRDa6OEJdZac
- 5T4PEAC0Z4UEE2TWQzEQIGI14v30kuWBSQLYLGSVThWx0VDySHI36MBLoJH6a4X0Zs+9BfcauDs
- G5bhi0z60ErhqfZahvSSUAUGvoBy2YoSgMmhtcAB60WK44uGDIsExFMmLH/yeSLqsR8I5wY8NqV
- 3a0HbWsYJeqrvXrkgvPQEoYDlOp+VmLB798QPLjDOzZzGQtwfJOHmmeQATSLaVscvng0iWvHq8w
- qOZ/YUSMnrE3SuI4FS3H7523cuxefrbv1zMgMmHmOaIdscSlb44oDdbNj0xcR06Q1P+Ee2GHmqy
- LRINMKhEfGFUlFyVL3NNzFi8/pPl/lDDvuXtdL+sUVAOry/sKq1bnlKPe3melU8ZiUxii0Z8Ukm
- UB6t1s8RKwqvutWNzr4pfAxumhVHXgSvGyiBUuXe7phgXD82RyYSuqcx4rjtBh9mn+wcyN9Iei4
- sBXaZM2LIRmqbsZfbjDjoDEHEH8hsP7thZWFF/O5kZHCikZL3vwwY21NOGc+u20F+ghxB4M8GVe
- qxLDoe/lhmYSyYj2kRKfWKXrZq+ZLsM0SVFfZQ8PKb628MWjnamfA0tk07ZdrZ0JeEfdUuJK0W+
- +UxaZ3dfn2+9ryQelhCy7k1jpExrCJ3bAJyo8meTA9w30N8MSoRWdlCOpCKgGH4sMQc0Xu4B08S
- h5F/kBYV/2w3A1A==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: Oy9XLBXiEObCWijPZtdxeJppHOmo3M4VwRHruP7DGg8_1791799304
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 10
-X-Spam_score: 1.0
-X-Spam_bar: +
-X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <C38CE953-7A98-42C7-AE35-443BED94674D@archimede-energia.com>
+In-Reply-To: <C38CE953-7A98-42C7-AE35-443BED94674D@archimede-energia.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 12 Oct 2026 11:27:14 +0100
+X-Gm-Features: AclHuK8qEJqKaQPW0mxOYfZgMRkvdQZ65BCP00AZQHP82bo0Kh9kMzPMwOuJeu4
+Message-ID: <CAFEAcA8d-jepdKubizqZKXPafY1jbLdbB8YjxcZ9MR38f_zp7A@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] STM32F405 timer and RCC fixes
+To: Manuele Conti <manuele.conti@archimede-energia.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "alistair@alistair23.me" <alistair@alistair23.me>,
+ "farosas@suse.de" <farosas@suse.de>, 
+ "lvivier@redhat.com" <lvivier@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,22 +121,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 12 Oct 2026 02:16:45 +0000, Jamin Lin <jamin_lin@aspeedtech.com> wrote:
-> Let the ASPEED machines accept "x-usb-redir-server" with -device, so a
-> UDC gadget can be exported to a USB host running in another QEMU:
-> 
->   -device x-usb-redir-server,id=redirsrv,chardev=<chr>
->   -device aspeed.udc-gadget,bus=redirsrv.0,udc=/machine/soc/udc
-> 
-> x-usb-redir-server sits on the main system bus so that the USB bus it
-> provides can be found by "bus=<id>.0". That makes it a sysbus device, and
-> a sysbus device can only be created with -device if the machine lists it.
-> 
-> [...]
+On Wed, 7 Oct 2026 at 20:38, Manuele Conti
+<manuele.conti@archimede-energia.com> wrote:
+>
+> Hi Peter,
+>
+> Here is the complete v2 series, resent as fresh emails with both patches
+> inline.
+>
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Thanks. I've applied this to target-arm.next.
 
--- 
-Marc-André Lureau <marcandre.lureau@redhat.com>
+Something seems to have gone wrong with the threading on this series:
+the individual patches should be followups to the cover letter.
+This was OK in the first version of this series, but not for this v2.
+I picked the patches up manually, but the threading being wrong
+breaks the automated tooling, so you might want to look into that
+for next time. git format-patch produces a cover letter and patch
+emails that have the right headers to thread together.
 
+thanks
+-- PMM
 

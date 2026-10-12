@@ -4,70 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC783CA9EDD
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 17:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DAB6CA9EDE
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 18:47:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGJmD-0000cS-RH; Mon, 12 Oct 2026 13:25:29 -0400
+	id 1xGL3K-00032k-9a; Mon, 12 Oct 2026 14:47:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <conor@kernel.org>)
- id 1xGJmD-0000cA-2T; Mon, 12 Oct 2026 13:25:29 -0400
-Received: from sea.source.kernel.org ([172.234.252.31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <conor@kernel.org>)
- id 1xGJmB-0001md-5R; Mon, 12 Oct 2026 13:25:28 -0400
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id 216A043929;
- Mon, 12 Oct 2026 17:25:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFD5C1F0089B;
- Mon, 12 Oct 2026 17:25:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1791825923;
- bh=GlgzHk6lBqYRVt9kvsS750ANy+S/ktfzU9rWOqrS8j4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To;
- b=IqfpQUy+whXAk2uj9jh1nzqavoYFe10o1iw6uzDto4ywooqYIyzocf8ivr4KxdRt+
- yK918O+150msMZGdDbNu2XVT5DSlMbkhkZezUM/kKEeSch47g9DjK/nygS38hOCWEF
- 2+aKZeAvZTP0IH9GXkh39DhreIwiabzeKGqg71YF7UbyLV0VDEznknvE8PP/e5YosD
- 4MgxrYvAGIt9xpBUmHq5hTmiMnaJMplFVZ+x5CBq/Vh9xHXNKivBv9YBoxY3ZCcs99
- SFa7uKe9dwpo4IbE4QuI5CTA/yRUK1wm3XqGIrC29iOh8CbH+QBd0Rlz4c7JM3jnJA
- Ipm5xa2EVNfaA==
-Date: Mon, 12 Oct 2026 18:25:16 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Bin Meng <bin.meng@processmission.com>
-Cc: QEMU <qemu-devel@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- Alistair Francis <alistair@alistair23.me>, Bin Meng <bmeng.cn@gmail.com>,
- Chao Liu <chao.liu@processmission.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Sebastian Huber <sebastian.huber@embedded-brains.de>,
- Thomas Huth <th.huth@posteo.eu>, Weiwei Li <liwei1518@gmail.com>,
- qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [PATCH v3 00/27] hw/riscv: Restore Microchip PolarFire SoC
- Icicle Kit firmware boot
-Message-ID: <20261012-evasive-constant-57bc85edf1d9@spud>
-References: <20261003170232.2450916-1-bin.meng@processmission.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGL3I-00032O-M5
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 14:47:12 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGL3G-0004vN-Mz
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 14:47:12 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4a1698ea378so18011705e9.2
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 11:47:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1791830827; x=1792435627; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=4ktBSx0EF4e5kZb9zdegnFmr2xMwSuGm6tA1OHAP+/Q=;
+ b=js2GBSFRI0YAwmca+FEVppHlDkAe4hRPixOmhDhhZbkmRoq4bAkdirQI+8h4zQY0Bz
+ S4bwBr+Krq6seVYb97ehaDk5EctnBZBRj0dAAgxQuk+XMqS6p7req5OZOyqOc7KlMpRh
+ mZaz6/Ib6SbfeWijfCPVPKynYTCB37/wWF0eHx4Z1qMuq5fyEjMSholljjBnQmDBaeI6
+ UVMHktxBhLJToi2l91fudmJ/jXWgolEYoO3x0xVqs7chEPGWAifWPwTXhT9NtkFeq5aA
+ /GH5GU05L3clE9BienLM+G0wGunbJdf+4C9a2ZlQ43+PW8DNIyg3evEYLPYMyRaH5RgV
+ LD0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791830827; x=1792435627;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=4ktBSx0EF4e5kZb9zdegnFmr2xMwSuGm6tA1OHAP+/Q=;
+ b=E8PZM5BUDpmLmBppIjkLlWCu/Z0kNHQTy4M65oJyMXiaK2vLRQQpK9SWwu9JIv9Xhk
+ CZMYL0i7H7p8jtG8FFprmh9GODZ5RijfVfF/53Ss+EESqao+sEJQgjD01RfGaAhvW1ZQ
+ tfjmng4fPW90X/BnTUwWSSZcIxfNCHO8Z8F9ewnSU0rZlofrSK9U6+vubbo4mzMSUwMP
+ 98DD0EytEEcuE3lhyW63WShvrADwJumWWiKW5W/05554gxGW2r+S0zGxBsKw3OFT4Lrl
+ PmOyjL8HFSc4pSTTozIaXbXKi2fDwEb/l+hagdspq/Qp9C5gfKFepyox/lpMQstcxjhB
+ sr2g==
+X-Forwarded-Encrypted: i=1;
+ AKwUvByyYncuNNBr3O09TxdNhjS3OWdojuaKZKt1L8aq/5zvEtw9KDf9btt6kgg+qBzjeT8VWidJcpFvzQ==@nongnu.org
+X-Gm-Message-State: AFq9FYKwGhOjja4wG0TiRfUzcAEQ9nPkKKDbqrARCsPmU+eWPasOEgR7
+ 60TS2ngVEan3f8l3nt6gAIw4+F2+st7vInrSD/l/Pd8OF4H0FwgwzTXsS5BuiOdhPbg=
+X-Gm-Gg: AYBFou3HmJ+GC4U2tp8ABWe4HPUlJ019a3f0xvvPmEFXb3sEjxrkqgjiIkQ6kAOQEAi
+ kbdrepu8F8wvEYFxgXXb6jzXLYIFVFXDncXDNgejofeXlssZq58BmZYi4VQNkXTRNk4kFqwfa7I
+ gWwws6wQKoqxeAI4OlRF2IgCufF5GSLQfAjvS3Vth/ZBFV7E4W4CGZk1s+OOugFsdtbqjgLGilP
+ vOSERkh971iNlhUSCYTjrM0huHr/DRiP+TeeMJ45Hf0nWRXjD/QlXryvCRpQgLtCoi481fyBfOL
+ KKrFqrYGCnGq5RVZeizAkEwEXQbHGVyKsxJa2YHqHZeFvnbgWDVtIoYlamTSd0saU3RQ7KaOmhk
+ Ce6wXpfrP8N4xiXguEt6fvD/D72mnOmeoxYWesEHpOvJvBpWl2WZASPfNozwcmacGKggpb+mS+O
+ bHy0cykY86vK4pmHudw+p6IK/7CdRTkxK/efynFcM5mm9vIxpIdByUgiAP2v7f7rhOOHhs8Q==
+X-Received: by 2002:a05:600c:3510:b0:4a1:7703:e549 with SMTP id
+ 5b1f17b1804b1-4a18e4c3fe4mr228604855e9.26.1791830826853; 
+ Mon, 12 Oct 2026 11:47:06 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a190344032sm310480465e9.15.2026.10.12.11.47.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Oct 2026 11:47:05 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id BF3215F808;
+ Mon, 12 Oct 2026 19:47:04 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org,  Richard Henderson
+ <richard.henderson@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: Re: [RFC PATCH] target/arm: hold bql when SEV sets the event_register
+In-Reply-To: <b5d07378-d5c4-4186-aae9-9252a08852fd@redhat.com> (Paolo
+ Bonzini's message of "Mon, 12 Oct 2026 18:27:13 +0200")
+References: <20261012134840.1051969-1-alex.bennee@linaro.org>
+ <87fqybx97c.fsf@draig.linaro.org>
+ <b5d07378-d5c4-4186-aae9-9252a08852fd@redhat.com>
+User-Agent: mu4e 1.14.4-pre6; emacs 30.1
+Date: Mon, 12 Oct 2026 19:47:04 +0100
+Message-ID: <87o6cyhi3b.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="y5BO9IpI+dz1AkEx"
-Content-Disposition: inline
-In-Reply-To: <20261003170232.2450916-1-bin.meng@processmission.com>
-Received-SPF: pass client-ip=172.234.252.31; envelope-from=conor@kernel.org;
- helo=sea.source.kernel.org
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,91 +111,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---y5BO9IpI+dz1AkEx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-On Sun, Oct 04, 2026 at 01:01:50AM +0800, Bin Meng wrote:
-> The microchip-icicle-kit machine was originally validated with an older
-> Hart Software Services (HSS) firmware stack. HSS v2024.06 cannot boot
-> through U-Boot to Linux because several firmware-visible parts of the
-> PolarFire SoC are missing or incomplete.
->=20
-> The first failure occurs before the UART is initialized because the L2
-> zero window is not mapped. HSS then needs additional L2 cache controller
-> and DDR training behavior. Later boot stages exercise system services,
-> the RTC, SDHC version 4 DMA, and high-capacity SD card block sizing,
-> along with the complete DDR aliases. The existing models ither reject
-> these accesses or expose behavior that does not match the hardware
-> specifications.
->=20
-> This series restores the complete firmware boot flow. With these
-> changes, QEMU boots the HSS v2024.06 eNVM image, loads its U-Boot
-> payload from an SD card, and reaches the Buildroot 2026.05 Linux
-> login prompt.
->=20
-> The changes are organized around the firmware boot sequence:
->=20
-> * Correct the L2-LIM size, map the L2 zero window, and provide the DMC
->   status transitions required by HSS DDR initialization.
-> * Model the documented L2CC Config, WayEnable, and WayMask registers,
->   and resize L2-LIM as cache ways are enabled.
-> * Complete SDHCI version 4 support used by the Cadence controller,
->   including Host Control 2, SDMA system addressing, 64-bit ADMA2
->   descriptors, and SDMA boundary continuation.
-> * Run ADMA from a bounded timer-driven engine instead of performing work
->   from command or unrelated MMIO accesses.  This keeps DMA progress
->   independent of guest register traffic and avoids consuming a polling
->   deadline inside the command write.
-> * Keep SDHC and SDXC memory transfers at their fixed 512-byte block
->   size, and advertise the Cadence controller's 64-bit system bus
->   support.
-> * Add the PolarFire SoC serial-number system service and RTC, and honor
->   the system-service notification control bit.
-> * Correct the DDR aliases and fix the board topology at its physical
->   configuration of 2 GiB of RAM and five harts.
-> * Document direct and HSS boot, add focused qtests and a full firmware
->   functional test, and restore the machine's Supported maintainer
->   status.
->=20
-> Testing performed:
->=20
-> * Built qemu-system-riscv64 and the documentation.
-> * Passed various newly added qtests.
-> * Booted HSS v2024.06, U-Boot, and Buildroot 2026.05 Linux to the login
->   prompt using the functional-test image.
->=20
-> The functional test uses the processmission/qemu-machine-images release
-> v1.0.0 tarball:
->=20
-> https://github.com/processmission/qemu-machine-images/releases/download/
-> v1.0.0/riscv64-microchip-icicle-kit-v1.0.0.tar.zst
->=20
-> When restoring the HSS boot support, 3 potential bugs were identified in
-> the upstream HSS source codes that either blocks the DDR training from
-> succeed or traps in a multi-core race at the very beginning or after
-> a succesfully DDR training but stuck at OpenSBI/U-Boot hand-off. There
-> are already bug reports filed aginst various upstream projects.
+> On 10/12/26 16:52, Alex Benn=C3=A9e wrote:
+>>> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+>>> index af56eff9f18..7c1fdab79d7 100644
+>>> --- a/target/arm/tcg/op_helper.c
+>>> +++ b/target/arm/tcg/op_helper.c
+>>> @@ -471,6 +471,9 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
+>>>   void HELPER(sev)(CPUARMState *env)
+>>>   {
+>>>       CPUState *cs =3D env_cpu(env);
+>>> +
+>>> +    BQL_LOCK_GUARD();
+>>> +
+>>>       CPU_FOREACH(cs) {
+>>>           ARMCPU *target_cpu =3D ARM_CPU(cs);
+>>>           target_cpu->env.event_register =3D true;
+> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+>
+> The use of cmpxchg in wfxt_timer_cb is fishy though.
+>
+> Clearing HALT_WFE should be the task of the target CPU, not the timer.
+> The timer_mod() should be *after* halt_reason(*), and then you can
+> just do a qatomic_read() instead of a cmpxchg(**) in wfxt_timer_cb().
+>
+> However, I don't understand at all why wfxt_timer_cb needs to set
+> event_register to true.  It seems to me that a wfet + wfe sequence,
+> where the first wfet times out, *should* halt again on the second wfe;
+> but as the code is written it doesn't.
+>
+> I think wfxt_timer_cb only needs to call cpu_interrupt().
 
-Due to post conference busy-ness, I'm not entirely sure when I'll get to
-provide a review on this, but for now
-Tested-by: Conor Dooley <conor.dooley@microchip.com> # with 2026.04.1 HSS +=
- provided sdcard.img
+Something like:
 
-Thanks,
-Conor.
+--8<---------------cut here---------------start------------->8---
+modified   =EE=98=9E target/arm/cpu.c
+@@ -877,25 +877,22 @@ bool arm_cpu_exec_halt(CPUState *cs)
+     bool leave_halt =3D cpu_has_work(cs);
+=20
+     if (leave_halt) {
+-        /* We're about to come out of WFI/WFE: disable the WFxT timer */
+         ARMCPU *cpu =3D ARM_CPU(cs);
++
++        qatomic_set(&cpu->env.halt_reason, NOT_HALTED);
++
+         if (cpu->wfxt_timer) {
+             timer_del(cpu->wfxt_timer);
+         }
+-        /* clear the halt reason */
+-        qatomic_set(&cpu->env.halt_reason, NOT_HALTED);
+     }
+     return leave_halt;
+ }
+ #endif
+=20
+ /*
+- * Unlike almost everything else that messes with the halt_reason and
+- * event_register details the timer callbacks are not in the vCPU
+- * context.
+- *
+- * To prevent races we atomically consume a HALT_WFE and set the event
+- * register. Either way we trigger the an exit event.
++ * Unlike almost everything else that messes with the halt_reason the
++ * timer callbacks are not in the vCPU context so we must use atomics
++ * to check it.
+  */
+ static void arm_wfxt_timer_cb(void *opaque)
+ {
+@@ -903,17 +900,15 @@ static void arm_wfxt_timer_cb(void *opaque)
+     CPUState *cs =3D CPU(cpu);
+     CPUARMState *env =3D &cpu->env;
+=20
+-    if (qatomic_cmpxchg(&env->halt_reason, HALT_WFE, NOT_HALTED)) {
+-        qatomic_set(&env->event_register, true);
++    if (qatomic_read(&env->halt_reason) =3D=3D HALT_WFE) {
++        /*
++         * We expect the CPU to be halted; this will cause arm_cpu_is_work=
+()
++         * to return true (so we will come out of halt even with no other
++         * pending interrupt), and the TCG accelerator's cpu_exec_interrup=
+t()
++         * function auto-clears the CPU_INTERRUPT_EXITTB flag for us.
++         */
++        cpu_interrupt(cs, CPU_INTERRUPT_EXITTB);
+     }
+-
+-    /*
+-     * We expect the CPU to be halted; this will cause arm_cpu_is_work()
+-     * to return true (so we will come out of halt even with no other
+-     * pending interrupt), and the TCG accelerator's cpu_exec_interrupt()
+-     * function auto-clears the CPU_INTERRUPT_EXITTB flag for us.
+-     */
+-    cpu_interrupt(cs, CPU_INTERRUPT_EXITTB);
+ }
+ #endif
+--8<---------------cut here---------------end--------------->8---
 
---y5BO9IpI+dz1AkEx
-Content-Type: application/pgp-signature; name=signature.asc
+?
 
------BEGIN PGP SIGNATURE-----
+>
+> Thanks,
+>
+> Paolo
+>
+> (*) always, even if the halt reason is not HALT_WFE, if only for consiste=
+ncy
+>
+> (**) you don't need a lock or acquire/release here, because the timer
+> callback always sees everything that happened before timer_mod().  In
+> a sense, timer_mod() *is* the release operation and starting the
+> callback is the acquire operation.
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCas0X/AAKCRB4tDGHoIJi
-0rBCAQDKoQPomJWCVV6MNfXvxGBe2r013pdb3CpfnF6aBjYMQwEAgd1aDFlJfewJ
-WdYFIUknMjVc+vFDgXbeDfeeIueXtgA=
-=/dfT
------END PGP SIGNATURE-----
-
---y5BO9IpI+dz1AkEx--
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

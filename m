@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA69CA9ED5
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 06:29:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71846CA9ED6
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 06:29:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xG9W7-0004td-H9; Mon, 12 Oct 2026 02:28:11 -0400
+	id 1xG9XJ-0007As-De; Mon, 12 Oct 2026 02:29:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9W4-0004rs-AN
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:28:09 -0400
-Received: from smtpout10.mo540.mail-out.ovh.net ([51.210.91.59])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9XI-00077L-3W
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:29:24 -0400
+Received: from smtpout5.mo538.mail-out.ovh.net ([51.210.91.34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9W1-0005AO-As
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:28:08 -0400
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net [79.137.60.223])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4j36w91Ryqz44Dx;
- Mon, 12 Oct 2026 06:27:52 +0000 (UTC)
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net. [127.0.0.1])
- by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon, 12 Oct 2026 06:27:52 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.231.92])
- by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4j36w83SRjz1xpT; Mon, 12 Oct 2026 06:27:52 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xG9XE-0005Hg-Ff
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 02:29:23 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4j36xp4Bcwz5vbF;
+ Mon, 12 Oct 2026 06:29:18 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon, 12 Oct 2026 06:29:18 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.65])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4j36xp2vmFz1xp3; Mon, 12 Oct 2026 06:29:18 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.6])
  (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 1A5302402C97; Mon, 12 Oct 2026 06:27:51 +0000 (UTC)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id E74A8941FDA; 
+ Mon, 12 Oct 2026 06:29:16 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-111S0051d8828d7-b66f-409b-9508-58f8c8e99cb4,
+ (GARM-110S0047c7e9177-c02f-4009-abda-c9f2b5d369ab,
  A46244FAB654B0099A82D276BA68AD972340DB92) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <959fd65c-64ee-4f89-88ec-07f7b14b898c@kaod.org>
-Date: Mon, 12 Oct 2026 08:27:50 +0200
+Message-ID: <696266dd-5a57-42b3-aa33-7c851a259cad@kaod.org>
+Date: Mon, 12 Oct 2026 08:29:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/11] hw/usb/aspeed-udc: Make the SETUP buffer byte
- addressable
+Subject: Re: [PATCH v2 09/11] hw/usb/aspeed-udc: Add trace events for the
+ transfer paths
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -52,7 +52,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20261005064418.3060881-1-jamin_lin@aspeedtech.com>
- <20261005064418.3060881-2-jamin_lin@aspeedtech.com>
+ <20261005064418.3060881-10-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -97,29 +97,28 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261005064418.3060881-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261005064418.3060881-10-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 9072501451517504523
+x-ovh-tracer-id: 9096708297752423435
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGiAXR8Ifyh3wPP9AAtd2qH1u9lmye61BdmBwEWKdch04gisrlgLmuw3IEbF5uLpFHrk/uRdlOVR+kDsI+xu3nKO/fuVVjLG3PX2zxWCLwDgNCdKzoId2UfguIikkocDaGek3KRESdjB3ye3EDci79JTh6LPNu/Rghgk0abhqqr80Pea4nucPYwHMVVg0Eaf8zTI+2acLY2ARg8HmR48hjdSZpvFhw0Vl0zTGjx2Ms9ajql6SFHcaPjL4Jw9oXgCpnc2T02IAJ+ZUfVKk1AvDf5wTzVePQapJcczEAVacoOUY6Gy14P9ClMXgBs8K7cujMg/a9cD0lNXPrB82s9yi9GJ76Acnd3vdnEso+7PHU0qn4xVwUpbVHP/4AjbfLIG4HDWLTLSh70zwSEGEHZLybY/EN1VQkC7OxPrur7GT/dfI5vSO1nbkq020yXm6KmGmbBu5T0G/TNLRCstsJamCPGL5MLMALDaUNyUgEryDlt4g4kfv5Zx3qoJkKJq+DChTUIRxjq96kiLD3gaWOcKsnu6WBq7bPkVCPPjGSuLlAx/XCnS3EWEYdQxELnSlbNuGXxq7CO5NYPYhft8yLEgkYwk7mYqlX0TVzpAbv+Fu/ASO2rvCPdL7tnJSn3sylaBQ036QLpHR5zzUvxGeT3b6kVecsNuXkUF1UQ10900uN0Cg
-DKIM-Signature: a=rsa-sha256; bh=oYWYWABiRhMf8QEHURmKfoWC95WIw9E12zH+NHYNBMM=; 
+X-VR-SPAMCAUSE: dmFkZTExQIOmOrxGw7upjPnLgJF+XauQiqkLipHOMz5rK93QK4NYPTUzRKh0359J+ZEqBR2RGsobn2GpvREXTHjb8ma7NQTMPT7FWsady6vi2jw70tFgx8+wME9aNeapC3oirH4WfJYe+usvpCA2eXWzV0orUrKT403Kh+B0Ut94R/8Bkn6UW1d5LZF7/+PPua+QKuvEs4Iz3/HakJB3SjGMReEum1ukiF316s34+5h1P6mQKNFMiJz71GyV85dxwFNYTdPKZGPVJshwTHbx+1dkx/zlhGiJtjV91gdmaU4aaDPj9EHDYHtO7OrS5dRkpoxo8YhbCNJQxYUB+uPyH1nKAAZzOdxH+q+AQuPeT2mrt0p9LkSltjGf6CyUQCXsfXom4e+M4RMUSsjDII7BUe7f4G5T+753uKi6RudPlr+8t/dwPxIPLHuTdGfFJygzROO7e49W7C3enmONb9HsucIGUllcfvjgk3V8MwhhA1uFZ3RNmu/YOBNfsHkRzOkyShylLI22q5+ywfF7+sqY8knqy1G/AhsS9M8W0LbOYpTS0TwMQYB9LwUnin+bqY3XseHMq8SXCz1HKbGHarU34jAUnHS6ojnV8w2gtcV3ivtNL1a4m7r8QFq3LvHKdrAP2kPEqZFSj1rmT/1TwoLV1vWp2uC6Wc5cKo9wMDnGxFXvUot13g
+DKIM-Signature: a=rsa-sha256; bh=/0TS4KwisEsCTsjOCLha9WepZBo0xPWQ4kjeId+PBdI=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1791786474; v=1;
- b=cUDPcHi1fgKP5ff5BMgTGI7G3pHGBAVObUDS2JJQ4efuoRjlIFiAhv5tJyWOCpQKrEbS9A9Z
- H3AYLkpckn/wF4BjZppAlxt8bu7BqL/MSURS8TXLuBx9L8GNmwNUccu51rTJcwQGJzDJjsohbxb
- C+Dv50jtNrNkmcwClHpkrjqUVzSa5M6u5pf+YHFHkhl19+P+xk8CmYaqRUvuxBVfxmTuWrdd1O3
- avJzfYxd/DF4S52aPNs+fkzXdn4t7dAajsU0h4Vp/IrbSLaU7cwY7vcvNx0ey6UUHBSQ1zj/bF+
- R3dbjXtl5jNI0XGD8U6N0COKKZYMdvpuD8D8ml5np6eZw==
-Received-SPF: pass client-ip=51.210.91.59; envelope-from=clg@kaod.org;
- helo=smtpout10.mo540.mail-out.ovh.net
+ t=1791786558; v=1;
+ b=AeEpX3bSz67B0vgx2eIilp86JzS4R6510xWAU5RQgrBoGg8bHpqzGCs78ZxtJzJmN7i398+O
+ plTpdDeOm6RUFKS8xDDeTXW6Xmka5yZgSWD77mZLxY4fWgyt+ykoJeGS98lCGW70E3A0ZGJebxI
+ JI7SkbQH+yAS0EOHtaEPc0yVJPlquwLb548qDJZpYPdOfua1t02LzZnt46WInQEnonxVdhp1UF7
+ vjss8o42RolbFgBW8jOf05qeF19mQdOpeqeqWGs3OfRMu2jmE3ymZBWH6kGcrnQHTKf1BSvRI0O
+ sXLi5ATIr2t4Oid/qn9CMOP1fJ6xTEy4oFY1DzG588Xiw==
+Received-SPF: pass client-ip=51.210.91.34; envelope-from=clg@kaod.org;
+ helo=smtpout5.mo538.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -137,164 +136,121 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/5/26 08:44, Jamin Lin wrote:
-> The controller registers need a 4 byte access, but the 8 bytes at 0x80
-> are not registers. They are a SRAM buffer holding the EP0 SETUP packet.
-> A read or a write that is not 4 bytes returned the wrong data, so the
-> driver saw a broken SETUP packet.
+> The register traces show what the guest wrote, but not which transfer
+> path the write chose, how much each call moved, or when the host gave up
+> on a packet.
 > 
-> Introduce a separate SETUP MMIO region that handles 1, 2 and 4 byte
-> reads and writes.
+> Add one event per path, so the name says which path ran and a single
+> path can be enabled on its own: a kick, a transfer result, and a
+> cancelled packet.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/usb/aspeed-udc.h | 11 ++++++--
->   hw/usb/aspeed-udc.c         | 56 +++++++++++++++++++++++++++++++++----
->   hw/usb/trace-events         |  2 ++
->   3 files changed, 61 insertions(+), 8 deletions(-)
+>   hw/usb/aspeed-udc.c | 23 +++++++++++++++++++++++
+>   hw/usb/trace-events |  7 +++++++
+>   2 files changed, 30 insertions(+)
 > 
-> diff --git a/include/hw/usb/aspeed-udc.h b/include/hw/usb/aspeed-udc.h
-> index 7701c1aa34..42916c0bd6 100644
-> --- a/include/hw/usb/aspeed-udc.h
-> +++ b/include/hw/usb/aspeed-udc.h
-> @@ -24,11 +24,14 @@ OBJECT_DECLARE_SIMPLE_TYPE(AspeedUDCState, ASPEED_UDC)
->   OBJECT_DECLARE_SIMPLE_TYPE(AspeedUDCGadget, ASPEED_UDC_GADGET)
->   
->   /*
-> - * Register map: root/global block at 0x000 - 0x087, then one 0x10 byte bank
-> - * per programmable endpoint from 0x200.
-> + * Register map: root/global block at 0x000 - 0x07f, the SETUP buffer at
-> + * 0x080 - 0x087, then one 0x10 byte bank per programmable endpoint from
-> + * 0x200.
->    */
->   #define ASPEED_UDC_MEM_SIZE     0x300
-> -#define ASPEED_UDC_ROOT_NR_REGS (0x88 >> 2)
-> +#define ASPEED_UDC_ROOT_NR_REGS (0x80 >> 2)
-> +#define ASPEED_UDC_SETUP_BASE   0x80
-> +#define ASPEED_UDC_SETUP_SIZE   0x08
->   #define ASPEED_UDC_EP_REG_BASE  0x200
->   #define ASPEED_UDC_EP_NR_REGS   (0x10 >> 2)
->   
-> @@ -62,9 +65,11 @@ struct AspeedUDCState {
->   
->       MemoryRegion udc_container;
->       MemoryRegion root_mr;
-> +    MemoryRegion setup_mr;
->       MemoryRegion *dram_mr;
->       AddressSpace dram_as;
->       uint32_t regs[ASPEED_UDC_ROOT_NR_REGS];
-> +    uint8_t setup_buf[ASPEED_UDC_SETUP_SIZE];
->       AspeedUDCEP ep[ASPEED_UDC_NUM_EP];
->       qemu_irq irq;
->   
 > diff --git a/hw/usb/aspeed-udc.c b/hw/usb/aspeed-udc.c
-> index 4c90b4f4c2..355512822b 100644
+> index 09f5913aef..1c99e45d9a 100644
 > --- a/hw/usb/aspeed-udc.c
 > +++ b/hw/usb/aspeed-udc.c
-> @@ -58,9 +58,6 @@ REG32(UDC_EP0_CTRL, 0x30)
->       FIELD(UDC_EP0_CTRL, STALL,              0, 1)
->   REG32(UDC_EP0_DATA_BUFF, 0x34)
->       FIELD(UDC_EP0_DATA_BUFF, BASE_ADDR,     0, 31)
-> -/* EP0 SETUP packet buffer: SETUP0 = bytes 0...3, SETUP1 = bytes 4...7 */
-> -REG32(UDC_SETUP0, 0x80)
-> -REG32(UDC_SETUP1, 0x84)
+> @@ -565,6 +565,9 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_in_desc(AspeedUDCState *s,
+>           aspeed_udc_raise_ep_ack(s, ep);
+>       }
 >   
->   /* Per programmable-endpoint registers (offset from the EP register base) */
->   REG32(EP_CONFIG, 0x00)
-> @@ -363,6 +360,45 @@ static const MemoryRegionOps aspeed_udc_ops = {
->       },
->   };
+> +    trace_aspeed_udc_ep_xfer_in_desc(ep, (uint32_t)p->actual_length,
+> +                                     done ? "done" : "more");
+> +
+>       return done ? ASPEED_UDC_XFER_DONE : ASPEED_UDC_XFER_MORE;
+>   }
 >   
-> +static uint64_t aspeed_udc_setup_read(void *opaque, hwaddr offset,
-> +                                      unsigned size)
-> +{
-> +    AspeedUDCState *s = ASPEED_UDC(opaque);
-> +    uint64_t value = 0;
-> +    int i;
+> @@ -606,6 +609,9 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_in_single(AspeedUDCState *s,
+>        * buffer, and the next IN request sends the rest.
+>        */
+>       if (e->single_buf_off < buf_len) {
+> +        trace_aspeed_udc_ep_xfer_in_single(ep,
+> +                                           (uint32_t)p->actual_length,
+> +                                           "buffer left");
+>           return ASPEED_UDC_XFER_DONE;
+>       }
+>   
+> @@ -619,6 +625,9 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_in_single(AspeedUDCState *s,
+>                                           PROC_STS, EP_DMA_CTRL_STS_TX_IDLE);
+>       aspeed_udc_raise_ep_ack(s, ep);
+>   
+> +    trace_aspeed_udc_ep_xfer_in_single(ep, (uint32_t)p->actual_length,
+> +                                       "done");
 > +
-> +    for (i = 0; i < size; i++) {
-> +        value |= (uint64_t)s->setup_buf[offset + i] << (8 * i);
-> +    }
+>       return ASPEED_UDC_XFER_DONE;
+>   }
+>   
+> @@ -664,9 +673,15 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_out_single(AspeedUDCState *s,
+>       aspeed_udc_raise_ep_ack(s, ep);
+>   
+>       if ((uint32_t)p->actual_length >= pktiov->size) {
+> +        trace_aspeed_udc_ep_xfer_out_single(ep,
+> +                                            (uint32_t)p->actual_length,
+> +                                            "done");
+>           return ASPEED_UDC_XFER_DONE;
+>       }
+>   
+> +    trace_aspeed_udc_ep_xfer_out_single(ep, (uint32_t)p->actual_length,
+> +                                        "more");
 > +
-> +    trace_aspeed_udc_setup_read(offset, size, value);
+>       return ASPEED_UDC_XFER_MORE;
+>   }
+>   
+> @@ -686,6 +701,8 @@ static void aspeed_udc_ep_in_kick_desc(AspeedUDCState *s, int ep,
+>       uint32_t cur_rptr = FIELD_EX32(old_val, EP_DMA_STS, RPTR);
+>       USBPacket *p = e->pkt;
+>   
+> +    trace_aspeed_udc_ep_in_kick_desc(ep);
 > +
-> +    return value;
-> +}
+>       /*
+>        * A normal kick only sets the write pointer and leaves the read-pointer
+>        * field 0 (the read pointer is ours to advance). The guest resets the ring
+> @@ -735,6 +752,8 @@ static void aspeed_udc_ep_in_kick_single(AspeedUDCState *s, int ep)
+>       AspeedUDCEP *e = &s->ep[ep];
+>       USBPacket *p = e->pkt;
+>   
+> +    trace_aspeed_udc_ep_in_kick_single(ep);
 > +
-> +static void aspeed_udc_setup_write(void *opaque, hwaddr offset,
-> +                                   uint64_t value, unsigned size)
-> +{
-> +    AspeedUDCState *s = ASPEED_UDC(opaque);
-> +    int i;
+>       /* Do nothing if no host request is waiting, or no buffer was queued. */
+>       if (!p || !FIELD_EX32(e->regs[R_EP_DMA_STS], EP_DMA_STS, WPTR)) {
+>           return;
+> @@ -770,6 +789,8 @@ static void aspeed_udc_ep_out_kick_single(AspeedUDCState *s, int ep)
+>       AspeedUDCEP *e = &s->ep[ep];
+>       USBPacket *p = e->pkt;
+>   
+> +    trace_aspeed_udc_ep_out_kick_single(ep);
 > +
-> +    trace_aspeed_udc_setup_write(offset, size, value);
-> +
-> +    for (i = 0; i < size; i++) {
-> +        s->setup_buf[offset + i] = value >> (8 * i);
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps aspeed_udc_setup_ops = {
-> +    .read = aspeed_udc_setup_read,
-> +    .write = aspeed_udc_setup_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 1,
-> +        .max_access_size = 4,
-> +    },
-> +};
-> +
->   /*
->    * Copy len bytes from guest memory at addr into the IN packet, going through
->    * a bounce buffer one buf-full at a time. Returns false on DMA failure.
-> @@ -708,6 +744,7 @@ static void aspeed_udc_reset_hold(Object *obj, ResetType type)
+>       /* nothing to do unless an OUT packet is waiting and a buffer is ready */
+>       if (!p || !FIELD_EX32(e->regs[R_EP_DMA_STS], EP_DMA_STS, WPTR)) {
+>           return;
+> @@ -1155,6 +1176,8 @@ static void aspeed_udc_gadget_cancel_packet(USBDevice *udev, USBPacket *p)
+>       AspeedUDCState *s = ASPEED_UDC_GADGET(udev)->udc;
 >       int i;
 >   
->       memset(s->regs, 0, sizeof(s->regs));
-> +    memset(s->setup_buf, 0, sizeof(s->setup_buf));
->       for (i = 0; i < ASPEED_UDC_NUM_EP; i++) {
->           memset(s->ep[i].regs, 0, sizeof(s->ep[i].regs));
->           s->ep[i].pkt = NULL;
-> @@ -754,6 +791,12 @@ static void aspeed_udc_realize(DeviceState *dev, Error **errp)
->                             ASPEED_UDC_ROOT_NR_REGS << 2);
->       memory_region_add_subregion(&s->udc_container, 0, &s->root_mr);
->   
-> +    memory_region_init_io(&s->setup_mr, OBJECT(s), &aspeed_udc_setup_ops,
-> +                          s, TYPE_ASPEED_UDC ".setup",
-> +                          ASPEED_UDC_SETUP_SIZE);
-> +    memory_region_add_subregion(&s->udc_container,
-> +                                ASPEED_UDC_SETUP_BASE, &s->setup_mr);
+> +    trace_aspeed_udc_cancel_packet(p->ep->nr);
 > +
->       /* Each programmable endpoint has its own register bank */
->       for (i = 0; i < ASPEED_UDC_NUM_EP; i++) {
->           g_autofree char *name = g_strdup_printf(TYPE_ASPEED_UDC ".ep%d", i);
-> @@ -918,8 +961,11 @@ static void aspeed_udc_gadget_handle_control(USBDevice *udev, USBPacket *p,
->        * Reconstruct the 8-byte SETUP packet into the SETUP data buffer where
->        * the guest gadget driver reads it from.
->        */
-> -    s->regs[R_UDC_SETUP0] = type | (req << 8) | ((value & 0xffff) << 16);
-> -    s->regs[R_UDC_SETUP1] = (index & 0xffff) | ((length & 0xffff) << 16);
-> +    s->setup_buf[0] = type;
-> +    s->setup_buf[1] = req;
-> +    stw_le_p(&s->setup_buf[2], value);
-> +    stw_le_p(&s->setup_buf[4], index);
-> +    stw_le_p(&s->setup_buf[6], length);
->   
->       /* A new SETUP clears the EP0 STALL condition */
->       s->regs[R_UDC_EP0_CTRL] &= ~R_UDC_EP0_CTRL_STALL_MASK;
+>       if (s->ep0_packet == p) {
+>           s->ep0_packet = NULL;
+>       }
 > diff --git a/hw/usb/trace-events b/hw/usb/trace-events
-> index 80ead23358..aa260dacad 100644
+> index aa260dacad..661011b07e 100644
 > --- a/hw/usb/trace-events
 > +++ b/hw/usb/trace-events
-> @@ -381,6 +381,8 @@ canokey_unrealize(void)
->   # aspeed-udc.c
->   aspeed_udc_read(uint64_t offset, uint32_t value) "offset 0x%" PRIx64 " value 0x%x"
->   aspeed_udc_write(uint64_t offset, uint32_t value) "offset 0x%" PRIx64 " value 0x%x"
-> +aspeed_udc_setup_read(uint64_t offset, unsigned size, uint64_t value) "offset 0x%" PRIx64 " size %u value 0x%" PRIx64
-> +aspeed_udc_setup_write(uint64_t offset, unsigned size, uint64_t value) "offset 0x%" PRIx64 " size %u value 0x%" PRIx64
->   aspeed_udc_ep_read(int ep, uint64_t offset, uint32_t value) "ep %d, offset 0x%" PRIx64 " value 0x%x"
->   aspeed_udc_ep_write(int ep, uint64_t offset, uint32_t value) "ep %d, offset 0x%" PRIx64 " value 0x%x"
->   aspeed_udc_pullup(int on, int attached) "on %d, attached %d"
-
+> @@ -395,3 +395,10 @@ aspeed_udc_handle_data(int ep_nr, const char *dir, uint32_t iov, int ep_idx) "ep
+>   aspeed_udc_ep_data_in(unsigned ep, uint32_t rptr, uint32_t wptr, uint32_t iov) "ep %u, rptr %u, wptr %u, iov %u"
+>   aspeed_udc_ep_data_out(unsigned ep, uint32_t wptr, uint32_t avail, uint32_t iov) "ep %u, wptr %u, avail %u, iov %u"
+>   aspeed_udc_ep_ack(unsigned ep) "ep %u"
+> +aspeed_udc_ep_in_kick_desc(int ep) "ep %d"
+> +aspeed_udc_ep_in_kick_single(int ep) "ep %d"
+> +aspeed_udc_ep_out_kick_single(int ep) "ep %d"
+> +aspeed_udc_ep_xfer_in_desc(int ep, uint32_t sent, const char *res) "ep %d, sent %u, %s"
+> +aspeed_udc_ep_xfer_in_single(int ep, uint32_t sent, const char *res) "ep %d, sent %u, %s"
+> +aspeed_udc_ep_xfer_out_single(int ep, uint32_t received, const char *res) "ep %d, received %u, %s"
+> +aspeed_udc_cancel_packet(int ep) "ep %d"
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

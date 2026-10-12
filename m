@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 818E3CA9ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:02:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C1CCA9ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Oct 2026 10:02:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGCqw-0008NL-I9; Mon, 12 Oct 2026 06:01:54 -0400
+	id 1xGCqw-0008NJ-HN; Mon, 12 Oct 2026 06:01:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGCqe-0008Je-Ei
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:38 -0400
+ id 1xGCqs-0008Lw-1G
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xGCqc-0001b1-9Y
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:35 -0400
+ id 1xGCqp-0001dK-Rd
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 06:01:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791799293;
+ s=mimecast20190719; t=1791799307;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gz7D96JRSsL1D/0RjiymvYm78Aa9cK7eXxPUGELstz0=;
- b=F26OIZVJHQGjU7y0uEK+vYeLwGpUY3EVqJ8Nk4TCddvbNeWsJeqyQzoxBItq3O2XqCi10P
- Gl3Gc3XWMgJeyZf23IDvpKxe598Y2K4Vm6orta8iOA+gkM2fw2sb5zlwtopCs+9E0k/gW/
- fTQQITYbvJOVJggcjxsc2PbfCNSu+Lk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=5zio4JvalMy2OeaFQWoIUBhQJ30vZf0WsQUTDb20jzA=;
+ b=Iv0kAXUha3w2PVkeCIBap311f83AErBgcqbupKqrwAsD5u6PDvFqcKB7awqHAS+asZSqr4
+ diwgUq7DUGDE89luyAhG17pPZSu6Dez0bGUJenMtV6MsWHbt+yd2t15VgZsd5qtq82SO5a
+ pea4gznb7mY9bZmaCGhZp8Y/WghZrgs=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-539-hTrexPuXOOCQFHzq03KrQg-1; Mon,
- 12 Oct 2026 10:01:27 +0000
-X-MC-Unique: hTrexPuXOOCQFHzq03KrQg-1
-X-Mimecast-MFC-AGG-ID: hTrexPuXOOCQFHzq03KrQg_1791799284
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-335-OdZMbbjRNwKG3b5h2RE8mg-1; Mon,
+ 12 Oct 2026 10:01:41 +0000
+X-MC-Unique: OdZMbbjRNwKG3b5h2RE8mg-1
+X-Mimecast-MFC-AGG-ID: OdZMbbjRNwKG3b5h2RE8mg_1791799299
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 132C51828B0E; Mon, 12 Oct 2026 10:01:24 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 30C1F18512C0; Mon, 12 Oct 2026 10:01:36 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 61EBF18002B7; Mon, 12 Oct 2026 10:01:22 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 0ED55195608E; Mon, 12 Oct 2026 10:01:34 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 4/8] hw/usb/redirect-server: Announce the exported
- device
+Subject: Re: [PATCH v3 7/8] hw/usb/redirect-server: Stream interrupt IN
+ endpoints
 From: marcandre.lureau@redhat.com
 To: Jamin Lin <jamin_lin@aspeedtech.com>
 Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -61,30 +61,30 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
  "open list:All patches CC here" <qemu-devel@nongnu.org>, 
  Troy Lee <troy_lee@aspeedtech.com>
-In-Reply-To: <20261012021634.2006424-5-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261012021634.2006424-8-jamin_lin@aspeedtech.com>
 References: <20261012021634.2006424-1-jamin_lin@aspeedtech.com>
- <20261012021634.2006424-5-jamin_lin@aspeedtech.com>
+ <20261012021634.2006424-8-jamin_lin@aspeedtech.com>
 Date: Mon, 12 Oct 2026 14:01:11 +0400
-Message-Id: <179179927145.1642373.4953023747837753145.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=624;
+Message-Id: <179179927148.1642373.12767301126353819945.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=768;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=HciilUiKELjZXH+HdLtu5IhMA8l//bfbU8a13WYRWOI=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzK/p9DqfCBQndUPaqzdB26LtaIO0AN3wX1IvQ
- 0bhCD/tygaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasyv6QAKCRDa6OEJdZac
- 5e/vEACw5ChstX+ZnLYbuiuGjy5qGWD90DZZ9nSCkiX0Ara4yBxaYr3pGDXeFWpJjBd3dJBUatB
- a82TQhr0nl+WLvVUeB4v9yP3Ak+1YZGd9b2BwAWBTBM+Elpt1AsOoa1M5m7DbPrKVk/Jxt2DZWP
- KiYQVe5WWjmzcPOReH0Ve6N2BTYQlZzFdn0WMA+UVIl9/oMVZGHXZxq/ONQQWx4j7wlLJp43lEB
- hLFM7wRHTxz9vFaZytZkFB3tQtRuHKciQFnYxdI46VSUZtgHx3rnAxs/ZpEukame3H40ws5YpS7
- UQkwc6r2Ng9wTD7mkMXghyYuo6TBdld4iF9qbUmAM7H+mGa4Dz417pL5qoH+dN5Oc7TTqNeyPvP
- tKNvkC9rJuwowK5BY7k0kvABptPvHzIN10GE0/HMHlFkj7Q7olDfrEa3l7ZqHF8dzdM5/PJ988O
- z5PtEa3a0jNpMJh3HOUexEp8xyFWOeM995O1LjqlrIsgx4Y0oQ4rnfsNXuFbcwX0+n0Spsck6Mt
- X+oqVT2HiskNfQlK4AM4turYCnm5RDddMC8sAbOpCLLJBtoyZke4/AQmNsZ/Q+G98jXKTI9fMeY
- 3zGgYUK8ACC/HY/udEpx0RRnfNG092TV4pCH/xo4FkkUNS8NblJMjdnhRwwR4WmUo4thpCtzmFv
- htW8GR9IJ2x7pSw==
+ bh=G2Ce4hr+XtMhh23mkACwuk6Ug5HQMtEy2Dk219Sd6qY=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqzK/pn8OKvsf+Mt5M1nRufvcX6xzPVp7o/qWxq
+ JlMd6/YNLqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasyv6QAKCRDa6OEJdZac
+ 5dLnD/9iXyeT8vTFZVJqfogWeX59Rk0wOQFugCUEF/bbpR1uZ9TRxtSs6ZoAODhReff/bjrOL1+
+ yamijSbEmOkHthYxHKxI/vzopvgm3fOM08P2JmQ3VSOfYBRJWWRUg4/CM+DDiUC7MOaw9OoF10o
+ +/Gk3+AOf0fEyjWxqEZp+UIqZdUTFI1FkR/wHTdXPskEnqNvdrOZnBvV5q05Af2aJsUMTBgDrdT
+ VD/Km6+x9yA+vnfEHG2/zPjKepkSS3LCzc+Zl3uuMcL6HTSAaYwUuNd57gchq/y3MWxn5EfmHY4
+ +S4iC04ghcIKzfidwVaLPQvzdFIvePFHtbpn4Pa0Z5c6VDozMO5Lhpg2xh/s88emCPSrrAoBmII
+ KaX4e4yCqZgeii+A/aDiyn/bsnbxJ+5sxVlA19Q9Qc49w9+rEwEQATvYe2cskuc9nHpCyMCDwBs
+ 6+nDDtfglHdGauRpHmfE4bq0cGC+qdNy+GleIWAGw2zRWmp5K5/MJpz2Rq0XpWwAPya9RUhRY78
+ K57VLq22M+jWJNc/qUZsWoR1ghwR16cYHr2zf/9TJ/NpkCoxIP9vUmT/msrl4ZGBfBKGUEDEkPu
+ dQKZMzdVhdy2KsgifsrYKTUAj6bMud1BoJFyLBuEuTt/pU5xtZPHZ3w3jYxstXesmGadQkfnLjD
+ PURIAEAMmgIFmng==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: Qxp5EMOMZ_eh2G8NV7XxjeTlKF2SGafxWAR_3SyVxw0_1791799284
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: xGNKMr9b6E66nV-_4isRewEsNOclkmlTBSbW07kGSac_1791799299
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -113,14 +113,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 12 Oct 2026 02:16:40 +0000, Jamin Lin <jamin_lin@aspeedtech.com> wrote:
-> Send device_connect when a device is attached and the host has greeted
-> us, device_disconnect when it goes away, and handle the bus reset the
-> host sends before enumerating.
+On Mon, 12 Oct 2026 02:16:43 +0000, Jamin Lin <jamin_lin@aspeedtech.com> wrote:
+> Interrupt IN is not a request and an answer in usbredir. The host asks
+> once with start_interrupt_receiving. After that it expects a packet
+> every time the device has data.
 > 
-> device_connect carries no identity. The peer asks the device itself with
-> GET_DESCRIPTOR as soon as it enumerates, so anything we put there would
-> be made up. The speed is real: it comes from the device on our port.
+> Park one IN packet on the device for each streaming endpoint. A device
+> that answers USB_RET_ASYNC holds the packet and completes it when it
+> has data. A device that answers USB_RET_NAK gives the packet back at
+> once, so park a new one when the bus reports a wakeup on that endpoint.
+> A slow timer parks one too, for a device that does not report a wakeup.
 > 
 > [...]
 

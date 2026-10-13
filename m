@@ -4,96 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34CFBCC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 10:03:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C765CC6B08
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 10:11:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGZLW-0001CU-I7; Tue, 13 Oct 2026 06:02:59 -0400
+	id 1xGZTg-0002gt-Fb; Tue, 13 Oct 2026 06:11:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xGZLQ-0001BH-R8
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:02:54 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGZTf-0002gd-NA
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:11:23 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xGZLO-0007u5-Po
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:02:52 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-48b0946c2c2so1659194f8f.3
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:02:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGZTd-0000pF-Fc
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:11:23 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-486e8faff03so1172628f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:11:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791885769; x=1792490569; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=9l8QxLsARWG71X43UIA7zF2h/xgxES9j9wgsYMacm1E=;
- b=jwWCO6yMWyGnTpqKDtI1sRtNwExlDxNFqjar7e5C5JDN+eLKQ8ZxEnyUuahPFG/EQM
- gBY2QpaCacVgQDueuE1zudI5tUFjmCr9dJ5EjeJqyn+aL4EpVHBEirWjWIalspcOhr30
- zhnb9oFlJY1urY0tDZIVeC04xQdrIT+JbckhNkwNckVC1Nqd5r1T1IILcXb3DcIk6JPl
- zy79ctU7toizNTQI+t6kKxFHVGR//yEgd2V6Z9H1TJlplLrEov7FgrSQBUxLbfilKmG/
- ag4GbMNw3RveH6fV1VCszYEanP6IRtwygZ2ybK0mQ32ooe2uZowTHAny23priuuV80b8
- VNEA==
+ d=linaro.org; s=google; t=1791886280; x=1792491080; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=pJdElpKWlFhUrwKPkmVz5oeKledBx1uB7YTI4ZaysUE=;
+ b=ixs6bNuTvxcH5hUuOp2uGUIszjvU6FH/1jiG+Zhbmxk0QheF9xf/QljYmMFzKh7Stg
+ gHrELPLZzXXZYddAP4oHsNENZsKK714JbIF6X967irRH5M4xTNZgFcQNFXtepXnm1OTt
+ JJgT5SR5h4hMtSsiP6K81KkdNtaGjgti9qKjTuBzMH9qz3kT4n6Gr4179f96XmAueHmC
+ xwYh/PUb6T5muAKCgLFNvLEJRRDB9qgeBg3Ddl93YgNuSx6Qv0fIkATvQ66VnNg86vOW
+ c0V86kqbNnx55D2R2+xrodcQckNLa3Yos7HTPi1p86b/uDqML6WWKXvaQRExuAEhpf5t
+ XbFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791885769; x=1792490569;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1791886280; x=1792491080;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=9l8QxLsARWG71X43UIA7zF2h/xgxES9j9wgsYMacm1E=;
- b=gKcS0OGvvPP2dONWz+bcKmXLBfw8TO84ojx0PIDFqScF7+QLN6W4j47gJRzf7/MHz/
- HCmJbb82GDo3YqSL0Oswc19O37DeWKSzKLb9getE7K4K9uY5LKjF8CUAivZYrOr3HiMA
- gIS9SDg3RHa0rhJQAMCW12xTXcHW5EVHmdJ5hTmmfvreFKAPspvWh7QJRI0Aiyf83uB7
- gXDwX4EV+q7zYOU+KpAiOGhRkHrzvjO8ikUr54Oa6o/c7yEF15A/UsBQcb1yw3JHPUV2
- J+caiw49L8zTQaOuRUHaRwFyj/FJVsHadrjBtu8A+4p3zKEZQc2zes/GAGFG4WAR9cji
- /iSQ==
+ bh=pJdElpKWlFhUrwKPkmVz5oeKledBx1uB7YTI4ZaysUE=;
+ b=mK27PCPyrSV295aohoYQnpJoevFhKyC8j5QgQ/sqzJWzxydrvoXmjXEUzw/1nbngfa
+ Y2XK06S9qZm1lfC/zg+EHKxyQt3yEvqhZ67IjOBnctfJW+eXwkPwNhYIig2cR1WXfDPm
+ nQLbuc22j3imh2VpuT7R/P5Jn45AP0SfALDKBsltT3RCpsGQcDLD2T4f2sRaUWPP/cqx
+ QtPqXlHsxZii5rsTJEC4JvGdgzj6/EIM3KYUnExzCRjP57JTAlO0XcPaLnHSsOjl0BNh
+ VASViHOreWkJ9Rpc4uomRfNb1t39EhWrnxvoEH5oh4l/659cZLlVRb1eqF13Y4RPNn/W
+ jS2Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvByM/deQEv6ZnsgkF7W3of05g+Dvo4FPqggZq0YyVz+zYqIx7Q5NRGCdMBxg/izfQ5LDeKmWOEqimA==@nongnu.org
-X-Gm-Message-State: AFq9FYJ9x0k1eOxGCdNSZhJCQj8jVegtHk49Jp1wIWh+0lIWCVkPn1nn
- /qhWafxZb7gz8ukY/oxIzFPaq8uMxdpC3Gbp6FUmPDiGZNsGxEHYqnCT
-X-Gm-Gg: AYBFou2//zwvBz4DSLrCbu4dHTCj3vbzWtfREOPmTD5xZ/LtX0mK/OVWlx/j5OPCFvY
- jZOgg/fGiML3Zk8nZ+IPqmjak6KxmyeR/8Ip4SA68LTcD4pbXdGAwSxX/8Eqpn4qTFOgdqSMrml
- BiQFO4zAwgr4jZ9n2b06pqJcr6VnT3Q9T4jOcmcMvnZSbg2LxuxfndWRA+FWgt2PITR+XKfb9AF
- v7teTrBEXcy0u1hCypjhUD2w7JLcJlRNh4iRuAsNtFPFvZr1CbvCsMLBAFjqEAh8blTwY+maIQT
- UpREvLdgltkrjlIs+25YY8YLxGmmyYE5I+LTINPpDCPs/QV4sGHWiyTSilYB8A48IDQLDpd91rO
- hY0FxjJyD7uo6yIWjxKBdW/Q3qDUv6NdGihY987sMNvMBF5rHl9PGHyiRsJauoNt2YnN4yOwMmy
- 5UEETGcJo2NVCK7/pfijW3pZf96nEkkjd2/Dppm43XoB6XhcG7hcRAO5dGtOSOvQTHwtqYl+Z95
- Fq+6pjubu1dM85/Uo2FKNrUp8/LXEVHA9qd1Bv533QsidsV3EcqdCV1BAgSj5EHcKN98Sw=
-X-Received: by 2002:a5d:4e4c:0:b0:48b:10c8:2181 with SMTP id
- ffacd0b85a97d-48dbaaec6a7mr17303506f8f.27.1791885768649; 
- Tue, 13 Oct 2026 03:02:48 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (p200300faaf35e00015f07061f2b3fa54.dip0.t-ipconnect.de.
- [2003:fa:af35:e000:15f0:7061:f2b3:fa54])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0bd1843sm4292643f8f.56.2026.10.13.03.02.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Oct 2026 03:02:47 -0700 (PDT)
-Date: Tue, 13 Oct 2026 10:02:43 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org, Bin Meng <bin.meng@processmission.com>,
- QEMU <qemu-devel@nongnu.org>
-CC: Bin Meng <bmeng.cn@gmail.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org
-Subject: Re: [PATCH v3 00/10] hw/arm: Enable U-Boot boot on MCIMX6UL-EVK
-In-Reply-To: <20261004090500.3082641-1-bin.meng@processmission.com>
-References: <20261004090500.3082641-1-bin.meng@processmission.com>
-Message-ID: <B64519F5-5D6E-4098-9B27-B2941EA0B2EF@gmail.com>
+ AKwUvBxmBvHz/EBSK8+wXs4FW+RV0IFQ6SnohlH4nNQhBD62QWhbA59dxw1LRTXfBNCTwMxD5xxowBs08Q==@nongnu.org
+X-Gm-Message-State: AFq9FYImmp7thJvT5J9GznPTCa50J+wS6G6PWLH0sYwtoItOUx01Dkq9
+ xhcxjaNMKLu1sn+eoUYzxAmK6ntKscgwYEDS4uGW7udjL5ieWK1Y2MuJyClehcV8vcA=
+X-Gm-Gg: AYBFou2ZO9caH0x6veGbrrKFfqfGs+ZTVaHyPXDA5CA04u6lncCHXT2nmP7KxRC/FEa
+ nV2qDpKdhKmYfaUZ7eo8WZSeDCBXJ3IEo4O6V7HKu1rS9ZCoDCzTiH7j8/KHCpDLG6eMGFfcXKC
+ XrmyGTbjPNscWNg3QxbdGjZswqjnjo5Hj44fAGEeWLZaF7IcO84s1nAG/gA2Gfw+rY5qyUJjin0
+ ppNm5O7RHMELJqGs12wPpLkr+vuSQZPlRnVRI6OVg4n2Kl4ngytSUyrohbQ2Noesz77ImCk/G/V
+ uVpTUFnkSVazyZICIeeFzSXHey0I2p2mMQ5sEODQsBQpevVQcJRxCuKSzR0OLWBsbwll1NxESsD
+ b8dFrUy2VKMZHzR0phYao+JbLyPPpEQ1B/LVlOpld3Q8cUqWJW+tmC37b53uHoymhENp7h1eyeU
+ Etx1FSGHCE13JwdB44OuYCB//oUewedGMuKyzrpJnvLA2ENB2ZS53zqshj54jbYCOWoPOVUgHbv
+ CS5CHp7
+X-Received: by 2002:a05:6000:491c:b0:488:8a5d:ffcc with SMTP id
+ ffacd0b85a97d-48dba9e6715mr23366203f8f.13.1791886279366; 
+ Tue, 13 Oct 2026 03:11:19 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48de0bc7299sm3577424f8f.53.2026.10.13.03.11.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Oct 2026 03:11:16 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 79BA45F8E5;
+ Tue, 13 Oct 2026 11:11:15 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,  Zhao Liu <zhao1.liu@intel.com>,  Kyle Evans
+ <kevans@freebsd.org>,  Brian Cain <brian.cain@oss.qualcomm.com>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Brad Smith <brad@comstyle.com>,
+ Ani Sinha <anisinha@redhat.com>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  Thomas Huth <th.huth+qemu@posteo.eu>,  Keith
+ Busch <kbusch@kernel.org>,  Matthew Rosato <mjrosato@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,  John Snow <jsnow@redhat.com>,  Eric
+ Farman <farman@linux.ibm.com>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Anders Roxell
+ <anders.roxell@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ Warner Losh <imp@bsdimp.com>,  qemu-arm@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Peter Xu <peterx@redhat.com>,  Klaus Jensen <its@irrelevant.dk>,  Song
+ Gao <gaosong@loongson.cn>,  qemu-s390x@nongnu.org,  Laurent Vivier
+ <laurent@vivier.eu>,  Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: Re: [PATCH v2 06/16] tests/functional: update x86_64 tuxrun images
+In-Reply-To: <as3_pJ-KTtbVMilK@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+ "Tue, 13 Oct 2026 10:53:40 +0100")
+References: <20261012170330.1144446-1-alex.bennee@linaro.org>
+ <20261012170330.1144446-7-alex.bennee@linaro.org>
+ <as3mM9XesjzPA0o4@redhat.com> <87cxtegcy6.fsf@draig.linaro.org>
+ <as3_pJ-KTtbVMilK@redhat.com>
+User-Agent: mu4e 1.14.4-pre6; emacs 30.1
+Date: Tue, 13 Oct 2026 11:11:15 +0100
+Message-ID: <871p9thpvg.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,76 +128,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
+> On Tue, Oct 13, 2026 at 10:35:45AM +0100, Alex Benn=C3=A9e wrote:
+>> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+>>=20
+>> > On Mon, Oct 12, 2026 at 06:03:20PM +0100, Alex Benn=C3=A9e wrote:
+>> >> We now split the fetching of the buildroot image from the kernel
+>> >> itself. This is because we will want to access additional metadata in
+>> >> future tests.
+>> >
+>> > This commit message appears unrelated to the patch content or subject
+>> > line.
+>>=20
+>> The kernel is now coming from: https://storage.tuxboot.com/kernels/6.18.=
+54/
+>> instead of part of the buildroot build in https://storage.tuxboot.com/bu=
+ildroot/20260924/x86_64/
+>
+> Ah ok, I misunderstood what the commit message was trying to say,
+> though I'm still underclear how the before/after  bzImage differ
+> from each other ?
+>
+> Is the  https://storage.tuxboot.com/kernels/6.18.54/ the
+> authoritative input for the process that produces
+>  https://storage.tuxboot.com/buildroot/20260924/x86_64/  ?
 
-Am 4=2E Oktober 2026 09:04:45 UTC schrieb Bin Meng <bin=2Emeng@processmiss=
-ion=2Ecom>:
->
->The mcimx6ul-evk machine can boot Linux directly, but it cannot run the
->U-Boot proper produced by Buildroot far enough to load a kernel from its
->SD card=2E Early U-Boot boot test accesses currently abort or observe
->placeholder values, and the i=2EMX uSDHC model exposes several issues=2E
->
->This series lets an unmodified Buildroot 2026=2E05 U-Boot 2024=2E07 image
->run on mcimx6ul-evk, load zImage and imx6ul-14x14-evk=2Edtb from USDHC2,
->start Linux, mount the SD card root file system, and reach the Buildroot
->login prompt=2E It also documents and tests the existing direct Linux boo=
-t
->path=2E
->
->Patches 1 through 4 provide the minimum early-firmware-visible state=2E
->Patches 5 through 8 address i=2EMX uSDHC behavior needed by U-Boot=2E The
->last two patches document both boot paths and add functional tests for
->U-Boot and direct Linux boot=2E
->
->This series is based on:
-><20261003170232=2E2450916-1-bin=2Emeng@processmission=2Ecom>
->as the sdhci changes have conflicts=2E
-
-Series applied cleanly for me onto latest master (615ece3c406b) with the f=
-unctional test passing=2E
-
-Best regards,
-Bernhard
+No - they are different builds, but the kernel builds have had the
+symbol generation turned on and the buildroot images are generic anyway
+which is why they still work together.
 
 >
->Changes in v3:
->- Rebase on the v3 PolarFire SoC Icicle Kit series
->- Model the full reserved page as a child of a15mpcore_priv
->- Validate MMDC RAM geometry and document supported capacities
->- Translate uSDHC vendor clock gates in its MMIO handlers
->- Cover partial reset accesses and migrate vendor clock state
->- Extend contiguous SDMA completion to both eSDHC byte orders
+> I see the later patch is pulling in vmlinuz.xz from the
+> former location, so I guess you're trying to just use
+> the common location for both kernel images ?=20
 >
->Bin Meng (10):
->  hw/cpu: a15mpcore: Model the reserved page as RAZ/WI
->  hw/misc: imx6ul_ccm: Update PMU_MISC0 reset value
->  hw/arm: fsl-imx6ul: Map early firmware register placeholders
->  hw/arm: fsl-imx6ul: Add a minimal MMDC geometry model
->  hw/sd: sdhci: Use a QEMU-local no-busy IRQ quirk bit
->  hw/sd: sdhci: Honor i=2EMX uSDHC vendor clock gates
->  hw/sd: sdhci: Preserve uSDHC status enables for U-Boot
->  hw/sd: sdhci: Skip SDMA boundary stops for eSDHC and uSDHC
->  docs/system/arm: Document MCIMX6UL-EVK Buildroot boot
->  tests/functional/arm: Add MCIMX6UL-EVK boot tests
+>>=20
+>> >
+>> >>=20
+>> >> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>> >> Message-ID: <20260930164649.433573-10-alex.bennee@linaro.org>
+>> >> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> >> ---
+>> >>  tests/functional/x86_64/test_tuxrun.py | 8 ++++----
+>> >>  1 file changed, 4 insertions(+), 4 deletions(-)
+>> >>=20
+>> >> diff --git a/tests/functional/x86_64/test_tuxrun.py b/tests/functiona=
+l/x86_64/test_tuxrun.py
+>> >> index 729f6447d05..026b373accb 100755
+>> >> --- a/tests/functional/x86_64/test_tuxrun.py
+>> >> +++ b/tests/functional/x86_64/test_tuxrun.py
+>> >> @@ -17,11 +17,11 @@
+>> >>  class TuxRunX86Test(TuxRunBaselineTest):
+>> >>=20=20
+>> >>      ASSET_X86_64_KERNEL =3D Asset(
+>> >> -        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzIma=
+ge',
+>> >> -        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed=
+5aef8')
+>> >> +        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/bzImage',
+>> >> +        '24a3ade610c2cc426ff821050de8a35930b0371357d94cc2c334abac665=
+8552b')
+>> >>      ASSET_X86_64_ROOTFS =3D Asset(
+>> >> -        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootf=
+s.ext4.zst',
+>> >> -        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb7=
+8a751')
+>> >> +        'https://storage.tuxboot.com/buildroot/20260924/x86_64/rootf=
+s.ext4.zst',
+>> >> +        '8e310455b0244414ccff29c507f7ccfd4032e3587cc405e49ab0322738e=
+3e27c')
+>> >>=20=20
+>> >>      def test_x86_64(self):
+>> >>          self.require_accelerator("tcg")
+>> >> --=20
+>> >> 2.47.3
+>> >>=20
+>> >
+>> > With regards,
+>> > Daniel
+>>=20
+>> --=20
+>> Alex Benn=C3=A9e
+>> Virtualisation Tech Lead @ Linaro
+>>=20
 >
-> MAINTAINERS                               |   1 +
-> docs/system/arm/mcimx6ul-evk=2Erst          |  72 +++++++++++
-> include/hw/arm/fsl-imx6ul=2Eh               |   2 +
-> include/hw/cpu/a15mpcore=2Eh                |   6 +
-> include/hw/sd/sdhci=2Eh                     |  10 +-
-> hw/arm/fsl-imx6ul=2Ec                       |  87 ++++++++++++-
-> hw/arm/mcimx6ul-evk=2Ec                     |   2 +
-> hw/cpu/a15mpcore=2Ec                        |  53 ++++++++
-> hw/misc/imx6ul_ccm=2Ec                      |   2 +-
-> hw/sd/sdhci=2Ec                             | 151 +++++++++++++++++-----
-> tests/functional/arm/meson=2Ebuild          |   2 +
-> tests/functional/arm/test_mcimx6ul_evk=2Epy |  69 ++++++++++
-> 12 files changed, 416 insertions(+), 41 deletions(-)
-> create mode 100644 tests/functional/arm/test_mcimx6ul_evk=2Epy
->
->---
->base-commit: 3ee3bacb1edd0896cb26f0f66493b4ab006fbffa
->branch: imx6ul-evk
->
+> With regards,
+> Daniel
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,97 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD63CC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 12:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F34CC6B08
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 12:48:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGbux-0006oV-9O; Tue, 13 Oct 2026 08:47:44 -0400
+	id 1xGbuv-0006oL-FV; Tue, 13 Oct 2026 08:47:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1xGbut-0006nd-53
+ id 1xGbus-0006nW-Ch
  for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:47:39 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1xGbup-0008R8-FI
+ id 1xGbum-0008QZ-Q7
  for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:47:38 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-48c4d870d54so1759912f8f.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 05:47:34 -0700 (PDT)
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4a01933b584so25667415e9.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 05:47:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1791895653; x=1792500453; darn=nongnu.org;
+ d=9elements.com; s=google; t=1791895650; x=1792500450; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=W0qLBGT/ni2GA1G/LlHRVXUZ6eR3v0vePEgZTdaYQIs=;
- b=HnwySVtDFJNS0RpJd/FYNXcEWPVKUYf+pg2sBurd6qXH/vxKMST1CDP1NTB43+xSWa
- guYqtq5A2B7rAJZ21jjNvHlIrReATj7j6Zgvs0dgZz4IgMUShgmQkstUlRdfOZMHpHHI
- g9gWdwimlXwvRSa2xd+JiXMt82HtVn0RzcmTFWW80+d4tOBAuRc93Z8LA9p8ABMtz5kv
- EGNgfRsdxfqWznD8Zk9wLw6+56t51EMUJ8WepuKkBpMDnlBhWM7mUNvm/ji3BF9owyVZ
- u9ZCIuB58t0iA637XVnMgE8RNkO5pzcA/6zQgGEU3D0uuMt0b14AZDcsSB8UspDyizUg
- fqmw==
+ bh=Bzd1uJ5ELI9MIEoN1BV9xiWkNnvI+NG1RM+6Al/wByc=;
+ b=BYgLaqwD4DiCcbLREx27blcvDqHkwHsaKDytlV4AZ9AfNRSgAi7jyx/YQ56rGvErtK
+ ZaxGI1lD6S4E20jgOPekEFdrME1yDraRxFywLEcGzc9OK/Bdvon2DZuVV+CuB9E2t/bR
+ q5ugiK7ohVHeji0Y56SgkKUD1l5cqRxdiVron5YnDFOji8PpFDjeLSrvh/Wf6WrRAaO5
+ tLVEHO3SUY07zjW8433RirhVh0dUdIaWM0AmwoDVMfxStEDnpypS86hZ7FPxMLkKiHyj
+ FGcUI4CUg4z2YamR8MXIB5n7uCoKxaSOctUDzqcYWAAj0Kj7zeTEzgwh5WS8RDVfINE/
+ 6nnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791895653; x=1792500453;
+ d=1e100.net; s=20260707; t=1791895650; x=1792500450;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=W0qLBGT/ni2GA1G/LlHRVXUZ6eR3v0vePEgZTdaYQIs=;
- b=QhCgLa13n+57cl5yrdfhVJ67lYS8gCHCNrIVVZPbrp6e+SSGL0E6MFT+Oxu1CMEwtk
- sALWChxwL/vicLHVOxpuu2ldTapsAaJq9I+m8slVDfrS+DtJuw4IV5Bv6aclRYmaaiaa
- 6IAs6h5vWOsFVcyWfqScQslJKcr2OOVc4DK5VJwYipXiOiG3eo7qNEXP8ABzc+h9K1/D
- Fn/9hcejrcysoRAOSEWHShdnl5cxO5J8b8s/N0F9sXwliFrBoQz5mZGV9zUk9/H0xiUh
- Y2qkeDasW8bf25ocDVXCIsD0rxkLxV858ET49ZPldxbKPP2uACOU2t+gTRHQ1vdVR1fu
- vnRw==
+ bh=Bzd1uJ5ELI9MIEoN1BV9xiWkNnvI+NG1RM+6Al/wByc=;
+ b=EfBxjz9eaPln7Za1LjI/hfbMCQ7UNQ6oaUKYkTJZ/oLcRRGbSYOCJQtCObI++88G+E
+ I0q9b4EIDjNx0wz/lFUG0ZwPCv1B5hoK6PIg/RqaNi2PJP8XIuNEWkpWpS1WI5XYXRUL
+ fITf9KJbdr51GBq+YlQkqhDRujCHm+egKIOz1PU4DtaAyCsdY5qwIuEj3P/nij5hB0f8
+ r36wmHsq47b+mz6O+GbZ82gXsJHtvg7kQMkA1ETFpNZqIGS6snhWsMUDbi+zyyFsmEIV
+ +YzS/cqMFn+7Lj4Hy8qsttneq7Ce0ZvES7JHImynbp/SAYucNAIGjx5SjIXkUDIgjsM0
+ n3cw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxAJYYMob/pO2guZoqtaGkbT1X99LaZfV79LwU+UBeK3haa5ioEOsmCNJfhPkwaUWTNrdTFUq9+Fg==@nongnu.org
-X-Gm-Message-State: AFq9FYLi/xRg+VxJvl41OvTEXt18cSR7hpmKTF77ernDYt7x5zBc/R8I
- 9cw3++vkaW0cdNU1VnqYT8ZxwrDViJ9+B4CQ9gyTBwE+7yHjgL6Q+yL57kEq5ZW11Aw=
-X-Gm-Gg: AYBFou0VVm2t47bWMFf+DBC/kryaVEkLPP0/Py+dGlhxtQ8hZBk3PrUBh7k/uWLRihT
- 9YghMAMTBwJDJZBWEICqworcKPzX3hb1ZnQEy6KumYWhQWSsNumH1b7f73Pc8Wl8Va6FppVpw9W
- jOsJn/dQ0UUtB9u2hlwg3TF3c2isM2NqXfyHg9jMZln/0vwKkUH0PcwjHpZzRxJpn7UYuYLWCBz
- S7CHKOoK2d7O7ldpHPewyvOlvk3COTmsso/bAwMq1F/92/Dj0y43gh2wLEosPnWy9uEeN4srjFP
- E33din4+qXcfjS7k429ySMJrgO+kOTHQ0k+F4AVYvFRYnS57GiSwPKnzIqb/1n6ihm25ep0WqZm
- Ys1bQENnmoBwaDDCbdCyWJOEoeNRB2B+irusHQWAD0otM8Xt00yh3B2hcbWlJmkqYF7+ZFob/+j
- 8U0RY9OXERyYK6EK8OfrewOWLHq6+pcYRVnmidY07wx/I60t4I0YJsSU/pbmlBgneNNoH+dYU7M
- CBSctj/9dtNBy4YR++zzRw=
-X-Received: by 2002:a05:600c:4f14:b0:4a0:89:6727 with SMTP id
- 5b1f17b1804b1-4a18e4adc5cmr250259535e9.16.1791895653405; 
- Tue, 13 Oct 2026 05:47:33 -0700 (PDT)
+ AKwUvByfVQIfctIGgpKY9G0tmRCGxCzM2KGDqDAUfH6MWvg/qB1/6U/1GOnsk0FPYTHU+nn5Zu1K4jt7fw==@nongnu.org
+X-Gm-Message-State: AFq9FYJqLnnEJJ77ya9Jl9EiUsxs3QqVPOrT3S590YbLtgOzgBEnAQYV
+ 8LikaieTQNHU6Q6TFXpy1HqrDyANfgGIoScxFXVh0X8PupISDtzb3m0pEeB7ouJwhxE=
+X-Gm-Gg: AYBFou3DO0v+X33zyZXvHFgo+/tC8ZueSIu4+AGkXMYde18PlR+35/c6OhXiAaJrNpN
+ 1R5bDvK5OKrKgiMiLCrcpbE4Rc+GiE/iXHs/DSeljWENDbkouKBpWMBCo606l1Q6Ch18mKuHC7+
+ 3qm2dTb07WIYlt/aTv63P+6QeURCcxPEviXMKKa5ibM20qTfGJEMMFnK2wnyu0wQKWB2Yl0Rz49
+ 8NVvTvGKqT43AexsTb0Yw/81NHdAOLKUl/j1uI0mpqfQ16d14OwMaRYfP3qBhpyRvnMM/USyXhh
+ VOn6SVF7Y4MpPUHHPoUDB2YgXSmacXq8vCqg5eV/DT6WN/ZVgx+3F2Qaerpb/ikWTFD0dSEST5g
+ QMu/6o28Nt9hJrjIBkS5F29RXpJiZUCPie7R/TUj4ZoMAM4GAwRperqxQADCk+j3/yZitK9rTj8
+ sH1uUk49s+5cjSYIZV8crjxvD3TFqWWZXj4X8cCryeh/k2WbqCYSAUeFnDg7B8Xm+sAc4cB+98k
+ gUfyF3wxw+Xjk4ilIt/phw=
+X-Received: by 2002:a05:600c:154c:b0:49f:ce78:3562 with SMTP id
+ 5b1f17b1804b1-4a18e4a9159mr266427485e9.19.1791895650031; 
+ Tue, 13 Oct 2026 05:47:30 -0700 (PDT)
 Received: from localhost.localdomain ([188.111.3.154])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0bc4ebbsm4768847f8f.45.2026.10.13.05.47.32
+ ffacd0b85a97d-48de0bc4ebbsm4768847f8f.45.2026.10.13.05.47.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 05:47:33 -0700 (PDT)
+ Tue, 13 Oct 2026 05:47:29 -0700 (PDT)
 From: <alexander.hansen@9elements.com>
 To: qemu-devel@nongnu.org
 Cc: eblot@meta.com, titusr@google.com, clg@kaod.org,
  Alexander Hansen <alexander.hansen@9elements.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
-Subject: [PATCH v8 2/5] ast2600: yosemite4 initial support
-Date: Tue, 13 Oct 2026 14:46:46 +0200
-Message-ID: <20261013124649.194808-3-alexander.hansen@9elements.com>
+ Patrick Leis <venture@google.com>, qemu-arm@nongnu.org
+Subject: [PATCH v8 1/5] hw/i2c: support PCA9544
+Date: Tue, 13 Oct 2026 14:46:45 +0200
+Message-ID: <20261013124649.194808-2-alexander.hansen@9elements.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261013124649.194808-1-alexander.hansen@9elements.com>
 References: <20261013124649.194808-1-alexander.hansen@9elements.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=alexander.hansen@9elements.com; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alexander.hansen@9elements.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,382 +108,240 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Alexander Hansen <alexander.hansen@9elements.com>
 
-Initial patch based on [1] to support yosemite v4 bmc emulation.
+Who to explain it better than the manufacturer:
 
-The goal of this machine support is to support OpenBMC development.
+```
+The PCA9544A is a 1-of-4 bidirectional translating multiplexer,
+controlled via the I2C-bus. The SCL/SDA upstream pair fans out to four
+SCx/SDx downstream pairs, or channels. Only one SCx/SDx channel is
+selected at a time, determined by the contents of the programmable
+control register.
+```
 
-Reference linux devicetree from openbmc linux is [2].
+The device updates the selected channel after STOP condition, not on
+the last byte written [1].
 
-Status:
-- Enclosure FRU:         showing up
-- Management Board FRU:  showing up
-- Blade Board FRU:       showing up
-- Blade Board sensors:   not implemented
-- Blade Chassis FRU:     showing up
-- Fan Board FRU:         both showing up
-- Fan Board sensors:     supported
+For this reason the parent event handler has to be hooked to prevent
+write-read sequence from updating channel selection before STOP
+condition.
 
-Overall the emulation is incomplete but already helpful in development
-and testing.
+Reset also had to be modified since a write would not apply the channel
+selection by itself.
 
-The focus of this initial support is on the FRU eeproms and fanboard
-sensors.
+This emulation is done to support yosemite4 machine emulation.
 
-Tested: booted an OpenBMC image for yosemite4 target.
+Interrupt forwarding is currently UNSUPPORTED.
 
 References:
-[1] https://github.com/9elements/qemu/commit/32139f913c2bd0ebe4bd26c46765861f6f9f2d49
-[2] arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-yosemite4.dts
-[3] https://github.com/legoater/qemu-aspeed-boot/pull/5
+[1] https://www.nxp.com/docs/en/data-sheet/PCA9544A.pdf
 
+Cc: Patrick Leis <venture@google.com> (maintainer:pca954x)
 Cc: Emmanuel Blot <eblot@meta.com>
 Cc: Titus Rwantare <titusr@google.com>
 Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
-Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
-Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
-Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
-Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
-Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
-Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
 Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
 Cc: qemu-devel@nongnu.org (open list:All patches CC here)
+
 Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
 ---
- docs/system/arm/aspeed.rst   |   5 +-
- hw/arm/aspeed_ast2600_fby4.c | 290 +++++++++++++++++++++++++++++++++++
- hw/arm/meson.build           |   1 +
- 3 files changed, 294 insertions(+), 2 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2600_fby4.c
+ hw/i2c/i2c_mux_pca954x.c         | 88 ++++++++++++++++++++++++++++----
+ include/hw/i2c/i2c_mux_pca954x.h |  1 +
+ 2 files changed, 78 insertions(+), 11 deletions(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 2d51ceeb84..f719a5cebb 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--===============================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fby4-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+=============================================================================================================================================================================================================================================================================================================================================================
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+index c603446028..19212dfa34 100644
+--- a/hw/i2c/i2c_mux_pca954x.c
++++ b/hw/i2c/i2c_mux_pca954x.c
+@@ -30,6 +30,10 @@
  
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
-@@ -33,6 +33,7 @@ AST2600 SoC based machines :
- - ``fuji-bmc``             Facebook Fuji BMC
- - ``bletchley-bmc``        Facebook Bletchley BMC
- - ``fby35-bmc``            Facebook fby35 BMC
-+- ``fby4-bmc``             Facebook fby4 BMC
- - ``anacapa-bmc``          Facebook Anacapa BMC
- - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+ #define PCA9548_CHANNEL_COUNT 8
+ #define PCA9546_CHANNEL_COUNT 4
++#define PCA9544_CHANNEL_COUNT 4
++
++/* enable bit */
++#define PCA9544_ENABLE 0x4
  
-diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.c
-new file mode 100644
-index 0000000000..8c14768030
---- /dev/null
-+++ b/hw/arm/aspeed_ast2600_fby4.c
-@@ -0,0 +1,290 @@
-+/*
-+ * Facebook Yosemite V4
-+ *
-+ * Copyright 2026 9elements.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+ /*
+  * struct Pca954xState - The pca954x state object.
+@@ -56,6 +60,11 @@ typedef struct Pca954xClass {
+     SMBusDeviceClass parent;
+ 
+     uint8_t nchans;
 +
-+#include "qemu/osdep.h"
-+#include "hw/sensor/adc128d818.h"
-+#include "hw/arm/aspeed.h"
-+#include "hw/arm/aspeed_soc.h"
-+#include "hw/nvram/eeprom_at24c.h"
-+#include "hw/i2c/i2c_mux_pca954x.h"
-+#include "hw/gpio/pca9552.h"
-+#include "hw/sensor/tmp105.h"
++    /* channel enable bit for mux devices, zero for switches */
++    uint8_t mux_enable;
 +
-+#define FBY4_BMC_RAM_SIZE (2 * GiB)
-+#define TYPE_DS1338 "ds1338"
++    int (*parent_event)(I2CSlave *s, enum i2c_event event);
+ } Pca954xClass;
+ 
+ #define TYPE_PCA954X "pca954x"
+@@ -99,28 +108,43 @@ static bool pca954x_match(I2CSlave *candidate, uint8_t address,
+     return broadcast;
+ }
+ 
+-static void pca954x_enable_channel(Pca954xState *s, uint8_t enable_mask)
++static void pca954x_enable_channel(Pca954xState *s, uint8_t control)
+ {
+     Pca954xClass *mc = PCA954X_GET_CLASS(s);
+     int i;
+ 
++    if (mc->mux_enable) {
++        uint8_t selected = control & (mc->mux_enable - 1);
++        bool enabled = control & mc->mux_enable;
 +
-+/* START OF EEPROM CONTENTS */
-+
-+/*
-+ *./frugen -s board.mfg="Wiwynn" \
-+ * --set board.pname="Fan Board FSC-MAX ADC-TI LED-NXP EFUSE-MAX" \
-+ * --set text:board.pn="BRD-PN-345" \
-+ * --board-date "10/1/2017 12:58:00" \
-+ * --set board.serial="123456" \
-+ * --set product.pname="Yosemite V4" \
-+ * --set product.mfg="Wiwynn" \
-+ * --set product.ver="v1.1" \
-+ * --set product.serial="123456" \
-+ * --set product.atag="PLACEHOLDER" \
-+ * --set product.custom="Fanboard Custom1" \
-+ * --set product.custom.1="Fanboard Custom2" \
-+ * --set text:product.pn="PN-345" \
-+ * fru-yv4-fanboard.bin
-+ */
-+/* EM Config: yosemite4_fanboard_fsc_max_adc_ti_led_nxp_ons_efuse_max.json */
-+/* Yosemite4 fan board */
-+static const uint8_t fru_yv4_fanboard_bin[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0b, 0x00, 0x00, 0xf3, 0x01, 0x0a, 0x19, 0xce,
-+    0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xea, 0x46, 0x61,
-+    0x6e, 0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x46, 0x53, 0x43, 0x2d,
-+    0x4d, 0x41, 0x58, 0x20, 0x41, 0x44, 0x43, 0x2d, 0x54, 0x49, 0x20, 0x4c,
-+    0x45, 0x44, 0x2d, 0x4e, 0x58, 0x50, 0x20, 0x45, 0x46, 0x55, 0x53, 0x45,
-+    0x2d, 0x4d, 0x41, 0x58, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42,
-+    0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00,
-+    0x00, 0x00, 0x00, 0xdb, 0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
-+    0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
-+    0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
-+    0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
-+    0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xd0, 0x46, 0x61, 0x6e, 0x62,
-+    0x6f, 0x61, 0x72, 0x64, 0x20, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x32,
-+    0xc1, 0x00, 0x00, 0x9d
-+};
-+static const size_t fru_yv4_fanboard_bin_len = sizeof(fru_yv4_fanboard_bin);
-+
-+/*
-+ *./frugen -s board.mfg="Wiwynn" \
-+ * --set board.pname="Sentinel Dome without Retimer" \
-+ * --set text:board.pn="BRD-PN-345" \
-+ * --board-date "10/1/2017 12:58:00" \
-+ * --set board.serial="123456" \
-+ * --set product.pname="Yosemite V4" \
-+ * --set product.mfg="Wiwynn" \
-+ * --set product.ver="v1.1" \
-+ * --set product.serial="123456" \
-+ * --set product.atag="PLACEHOLDER" \
-+ * --set product.custom="Yosemite V4 T1" \
-+ * --set product.custom.1="Yosemite V4 T1" \
-+ * --set text:product.pn="PN-345" \
-+ * fru-yv4-sentineldome-board.bin
-+ */
-+/* product.cust maps to PRODUCT_INFO_AM2 */
-+/* EM Config: yosemite4_sentineldome_t1.json */
-+/* Yosemite4 Sentinel Dome without Retimer Boards */
-+static const uint8_t fru_yv4_sentineldome_board_bin[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x09, 0x00, 0x00, 0xf5, 0x01, 0x08, 0x19, 0xce,
-+    0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xdd, 0x53, 0x65,
-+    0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x20,
-+    0x77, 0x69, 0x74, 0x68, 0x6f, 0x75, 0x74, 0x20, 0x52, 0x65, 0x74, 0x69,
-+    0x6d, 0x65, 0x72, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52,
-+    0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0x78,
-+    0x01, 0x09, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59,
-+    0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50,
-+    0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91,
-+    0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64,
-+    0x29, 0x03, 0xc0, 0xce, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65,
-+    0x20, 0x56, 0x34, 0x20, 0x54, 0x31, 0xc1, 0x00, 0x00, 0x00, 0x00, 0xeb
-+};
-+static const size_t fru_yv4_sentineldome_board_bin_len =
-+    sizeof(fru_yv4_sentineldome_board_bin);
-+
-+/*
-+ *./frugen -s board.mfg="Wiwynn" \
-+ * --set board.pname="Sentinel Dome" \
-+ * --set text:board.pn="BRD-PN-345" \
-+ * --board-date "10/1/2017 12:58:00" \
-+ * --set board.serial="123456" \
-+ * --set product.pname="Yosemite V4" \
-+ * --set product.mfg="Wiwynn" \
-+ * --set product.ver="v1.1" \
-+ * --set product.serial="123456" \
-+ * --set product.atag="PLACEHOLDER" \
-+ * --set text:product.pn="PN-345" \
-+ * fru-yv4-sentineldome-chassis.bin
-+ */
-+/* EM Config: yosemite4_sentineldome_chassis.json */
-+/* Yosemite 4 Sentinel Dome Chassis FRU */
-+static const uint8_t fru_yv4_sentineldome_chassis_bin[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x07, 0x00, 0x00, 0xf7, 0x01, 0x06, 0x19, 0xce,
-+    0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcd, 0x53, 0x65,
-+    0x6e, 0x74, 0x69, 0x6e, 0x65, 0x6c, 0x20, 0x44, 0x6f, 0x6d, 0x65, 0x85,
-+    0x91, 0x34, 0x51, 0x95, 0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e,
-+    0x2d, 0x33, 0x34, 0x35, 0xc0, 0xc1, 0x00, 0xb6, 0x01, 0x07, 0x19, 0xc6,
-+    0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34,
-+    0x35, 0xc4, 0x76, 0x31, 0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05,
-+    0x89, 0x30, 0x1b, 0x8e, 0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1,
-+    0x00, 0x00, 0x00, 0x59
-+};
-+static const size_t fru_yv4_sentineldome_chassis_bin_len =
-+    sizeof(fru_yv4_sentineldome_chassis_bin);
-+
-+/*
-+ *./frugen -s board.mfg="Wiwynn" \
-+ * --set board.pname="Management Board wBMC" \
-+ * --set text:board.pn="BRD-PN-345" \
-+ * --board-date "10/1/2017 12:58:00" \
-+ * --set board.serial="123456" \
-+ * --set product.pname="Yosemite V4" \
-+ * --set product.mfg="Wiwynn" \
-+ * --set product.ver="v1.1" \
-+ * --set product.serial="123456" \
-+ * --set product.atag="PLACEHOLDER" \
-+ * --set text:product.pn="PN-345" \
-+ * fru-yv4-eclosure.bin
-+ */
-+/* EM Config: yosemite4_chassis.json, yosemite4.json */
-+/* Yosemite 4 Sentinel Dome Enclosure FRU */
-+static const uint8_t fru_yv4_eclosure_bin[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0xf6, 0x01, 0x07, 0x19, 0xce,
-+    0xc2, 0xa8, 0xc6, 0x57, 0x69, 0x77, 0x79, 0x6e, 0x6e, 0xd5, 0x4d, 0x61,
-+    0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x42, 0x6f, 0x61,
-+    0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0x85, 0x91, 0x34, 0x51, 0x95,
-+    0x05, 0xca, 0x42, 0x52, 0x44, 0x2d, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35,
-+    0xc0, 0xc1, 0x00, 0x26, 0x01, 0x07, 0x19, 0xc6, 0x57, 0x69, 0x77, 0x79,
-+    0x6e, 0x6e, 0xcb, 0x59, 0x6f, 0x73, 0x65, 0x6d, 0x69, 0x74, 0x65, 0x20,
-+    0x56, 0x34, 0xc6, 0x50, 0x4e, 0x2d, 0x33, 0x34, 0x35, 0xc4, 0x76, 0x31,
-+    0x2e, 0x31, 0x85, 0x91, 0x34, 0x51, 0x95, 0x05, 0x89, 0x30, 0x1b, 0x8e,
-+    0x25, 0xfa, 0xb2, 0x64, 0x29, 0x03, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x59
-+};
-+static const size_t fru_yv4_eclosure_bin_len = sizeof(fru_yv4_eclosure_bin);
-+
-+/* END OF EEPROM CONTENTS */
-+
-+static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
-+{
-+    /* 2 fan boards */
-+    for (int i = 0; i <= 1; i++) {
-+        /* downstream bus */
-+        I2CBus *bus = pca954x_i2c_get_bus(fan_mux, i);
-+
-+        /* ti,adc128d818 @ 0x1f    (adc) */
-+        i2c_slave_create_simple(bus, TYPE_ADC128D818, 0x1f);
-+
-+        /* maxim,max31790 @ 0x20   (pwm) */
-+        /* TODO */
-+
-+        /*
-+         * ti,tca6424 @ 0x22       (gpio)
-+         * linux handles tca6424 with PCA953X_TYPE, same as pca9535
-+         * { "pca9535", 16 | PCA953X_TYPE | PCA_INT, },
-+         * { "tca6424", 24 | PCA953X_TYPE | PCA_INT, },
-+         * so we _could_ be fine here unless more than 16 gpios are used
-+         */
-+        i2c_slave_create_simple(bus, TYPE_PCA9535, 0x22);
-+
-+        /*
-+         * NOTE: above works and could use for gpio presence:
-+         * $ gpioget gpiochip2 2
-+         * 1
-+         */
-+
-+        /* maxim,max31790 @ 0x2f   (pwm) */
-+        /* TODO */
-+
-+        /* maxim,max11615 @ 0x33   (adc) */
-+        /* TODO */
-+
-+        at24c_eeprom_init_rom(bus, 0x52, eepromSize, fru_yv4_fanboard_bin,
-+                              fru_yv4_fanboard_bin_len);
-+
-+        /* LED blink driver / gpio expander */
-+        /* nxp,pca9552 @ 0x61   (gpio) */
-+        i2c_slave_create_simple(bus, TYPE_PCA9552, 0x61);
-+    }
-+}
-+
-+static void fby4_i2c_init_blade_chassis(I2CBus *bus, size_t eepromSize)
-+{
-+    /* Sentinel Dome Blade EEPROMS */
-+
-+    /* Board */
-+    at24c_eeprom_init_rom(bus, 0x54, eepromSize, fru_yv4_sentineldome_board_bin,
-+                          fru_yv4_sentineldome_board_bin_len);
-+
-+    /* Chassis */
-+    at24c_eeprom_init_rom(bus, 0x55, eepromSize,
-+                          fru_yv4_sentineldome_chassis_bin,
-+                          fru_yv4_sentineldome_chassis_bin_len);
-+}
-+
-+static void fby4_i2c_init_enclosure(I2CBus *busEnclosure)
-+{
-+    /* temperature-sensor@0x48 */
-+    i2c_slave_create_simple(busEnclosure, TYPE_TMP75, 0x48);
-+
-+    /* Enclosure (EM Config: yosemite4_chassis.json, yosemite4.json) */
-+    /* TODO: unsure if it's 0x50 or 0x54 */
-+    at24c_eeprom_init_rom(busEnclosure, 0x50, 128 * KiB, fru_yv4_eclosure_bin,
-+                          fru_yv4_eclosure_bin_len);
-+
-+    /* rtc@0x6f - nct3018y */
-+    i2c_slave_create_simple(busEnclosure, TYPE_DS1338, 0x6f);
-+}
-+
-+static void fby4_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = bmc->soc;
-+    I2CBus *i2c[16];
-+
-+    for (int i = 0; i < 16; i++) {
-+        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
++        for (i = 0; i < mc->nchans; i++) {
++            s->enabled[i] = enabled && i == selected;
++        }
++        return;
 +    }
 +
-+    I2CSlave *muxSlot1To4 = i2c_slave_create_simple(i2c[8], TYPE_PCA9544, 0x70);
+     /*
+-     * For each channel, check if their bit is set in enable_mask and if yes,
++     * For each channel, check if their bit is set in control and if yes,
+      * enable it, otherwise disable, hide it.
+      */
+     for (i = 0; i < mc->nchans; i++) {
+-        if (enable_mask & (1 << i)) {
+-            s->enabled[i] = true;
+-        } else {
+-            s->enabled[i] = false;
+-        }
++        s->enabled[i] = control & (1 << i);
+     }
+ }
+ 
+ static void pca954x_write(Pca954xState *s, uint8_t data)
+ {
+-    s->control = data;
+-    pca954x_enable_channel(s, data);
++    Pca954xClass *mc = PCA954X_GET_CLASS(s);
++    uint8_t data_writable = data;
++
++    if (mc->mux_enable) {
++        data_writable = data & 0x0f;
++    }
++
++    s->control = data_writable;
++    if (!mc->mux_enable) {
++        pca954x_enable_channel(s, data_writable);
++    }
+ 
+     trace_pca954x_write_bytes(data);
+ }
+@@ -128,6 +152,7 @@ static void pca954x_write(Pca954xState *s, uint8_t data)
+ static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
+ {
+     Pca954xState *s = PCA954X(d);
++    Pca954xClass *mc = PCA954X_GET_CLASS(s);
+ 
+     if (len == 0) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
+@@ -136,15 +161,17 @@ static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
+ 
+     /*
+      * len should be 1, because they write one byte to enable/disable channels.
++     * In case of PCA9544A, multiple bytes can be written but only the last one
++     * will be used.
+      */
+-    if (len > 1) {
++    if (len > 1 && !mc->mux_enable) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+             "%s: extra data after channel selection mask\n",
+             __func__);
+         return -1;
+     }
+ 
+-    pca954x_write(s, buf[0]);
++    pca954x_write(s, buf[len - 1]);
+     return 0;
+ }
+ 
+@@ -156,11 +183,33 @@ static uint8_t pca954x_read_byte(SMBusDevice *d)
+     return data;
+ }
+ 
++static int pca954x_event(I2CSlave *s, enum i2c_event event)
++{
++    Pca954xState *state = PCA954X(s);
++    Pca954xClass *mc = PCA954X_GET_CLASS(state);
++
++    int res = mc->parent_event(s, event);
 +
 +    /*
-+     * unused for performance reason
++     * When a channel is selected, it will become active after
++     * a STOP condition has been placed on the I2C-bus.
 +     */
-+    I2CSlave *muxSlot5To8 = i2c_slave_create_simple(i2c[9], TYPE_PCA9544, 0x70);
-+    (void)muxSlot5To8;
-+
-+    I2CSlave *muxEnclosure =
-+        i2c_slave_create_simple(i2c[12], TYPE_PCA9544, 0x70);
-+    I2CBus *busEnclosure = pca954x_i2c_get_bus(muxEnclosure, 0);
-+
-+    /* downstream bus */
-+    I2CBus *busSlot1 = pca954x_i2c_get_bus(muxSlot1To4, 0);
-+    I2CBus *busSlot2 = pca954x_i2c_get_bus(muxSlot1To4, 1);
-+    I2CBus *busSlot3 = pca954x_i2c_get_bus(muxSlot1To4, 2);
-+    (void)busSlot3;
-+    I2CBus *busSlot4 = pca954x_i2c_get_bus(muxSlot1To4, 3);
-+    (void)busSlot4;
-+
-+    fby4_i2c_init_enclosure(busEnclosure);
-+
-+    /* there is 8 blade chassis, but we only emulate 2 for performance reason */
-+    fby4_i2c_init_blade_chassis(busSlot1, 128 * KiB);
-+    fby4_i2c_init_blade_chassis(busSlot2, 128 * KiB);
-+
-+    /* Yv4 fanboard connection */
-+    I2CSlave *fan_mux = i2c_slave_create_simple(i2c[14], TYPE_PCA9546, 0x74);
-+
-+    fby4_i2c_init_fanboard(fan_mux, 128 * KiB);
++    if (mc->mux_enable && event == I2C_FINISH) {
++        pca954x_enable_channel(state, state->control);
++    }
++    return res;
 +}
 +
-+static void aspeed_machine_fby4_class_init(ObjectClass *oc, const void *data)
+ static void pca954x_enter_reset(Object *obj, ResetType type)
+ {
+     Pca954xState *s = PCA954X(obj);
++    Pca954xClass *mc = PCA954X_GET_CLASS(s);
+     /* Reset will disable all channels. */
+     pca954x_write(s, 0);
++
++    if (mc->mux_enable) {
++        pca954x_enable_channel(s, s->control);
++    }
+ }
+ 
+ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
+@@ -172,6 +221,13 @@ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
+     return pca954x->bus[channel];
+ }
+ 
++static void pca9544_class_init(ObjectClass *klass, const void *data)
 +{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc = "Facebook fby4 BMC (Cortex-A7)";
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->num_cs = 2;
-+    amc->macs_mask = ASPEED_MAC3_ON;
-+    amc->i2c_init = fby4_i2c_init;
-+    mc->default_ram_size = FBY4_BMC_RAM_SIZE;
-+    aspeed_machine_class_init_cpus_defaults(mc);
++    Pca954xClass *s = PCA954X_CLASS(klass);
++    s->nchans = PCA9544_CHANNEL_COUNT;
++    s->mux_enable = PCA9544_ENABLE;
 +}
 +
-+static const TypeInfo aspeed_ast2600_fby4_types[] = { {
-+    .name = MACHINE_TYPE_NAME("fby4-bmc"),
-+    .parent = MACHINE_TYPE_NAME("ast2600-evb"),
-+    .class_init = aspeed_machine_fby4_class_init,
-+} };
+ static void pca9546_class_init(ObjectClass *klass, const void *data)
+ {
+     Pca954xClass *s = PCA954X_CLASS(klass);
+@@ -221,8 +277,13 @@ static void pca954x_class_init(ObjectClass *klass, const void *data)
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     SMBusDeviceClass *k = SMBUS_DEVICE_CLASS(klass);
++    Pca954xClass *s = PCA954X_CLASS(klass);
 +
-+DEFINE_TYPES(aspeed_ast2600_fby4_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index bcc068de04..38fd7b35f0 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -61,6 +61,7 @@ arm_common_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2600_catalina.c',
-   'aspeed_ast2600_evb.c',
-   'aspeed_ast2600_fby35.c',
-+  'aspeed_ast2600_fby4.c',
-   'aspeed_ast2600_fuji.c',
-   'aspeed_ast2600_gb200nvl.c',
-   'aspeed_ast2600_rainier.c',
++    /* hook our parent event handler */
++    s->parent_event = sc->event;
+ 
+     sc->match_and_add = pca954x_match;
++    sc->event = pca954x_event;
+ 
+     rc->phases.enter = pca954x_enter_reset;
+ 
+@@ -245,6 +306,11 @@ static const TypeInfo pca954x_info[] = {
+         .class_init    = pca954x_class_init,
+         .abstract      = true,
+     },
++    {
++        .name          = TYPE_PCA9544,
++        .parent        = TYPE_PCA954X,
++        .class_init    = pca9544_class_init,
++    },
+     {
+         .name          = TYPE_PCA9546,
+         .parent        = TYPE_PCA954X,
+diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
+index 3dd25ec983..6449a6dfae 100644
+--- a/include/hw/i2c/i2c_mux_pca954x.h
++++ b/include/hw/i2c/i2c_mux_pca954x.h
+@@ -3,6 +3,7 @@
+ 
+ #include "hw/i2c/i2c.h"
+ 
++#define TYPE_PCA9544 "pca9544"
+ #define TYPE_PCA9546 "pca9546"
+ #define TYPE_PCA9548 "pca9548"
+ 
 -- 
 2.56.0
 

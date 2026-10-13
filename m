@@ -4,85 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD679CC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 02:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E2DCA9ED0
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 03:54:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGSUs-0002dB-OC; Mon, 12 Oct 2026 22:44:12 -0400
+	id 1xGTaE-00062s-Tc; Mon, 12 Oct 2026 23:53:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGSUm-0002c5-Ri
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 22:44:06 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGSUj-0008Jr-6X
- for qemu-arm@nongnu.org; Mon, 12 Oct 2026 22:44:03 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-6afa651700eso3615205a12.2
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 19:44:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791859440; cv=none;
- d=google.com; s=arc-20260327;
- b=ko5xZNhORLiDrYuXoVfmdazkka0ZBSffLxdND0YKeg9S4skcqjucT3snl8vU/bsvE0
- lA90wreI3xpE91eHq/W02XhJfz4jMlbvch7zlmER8XM5NZ+uc+MbKvJ7QCrIer3qiPcV
- oJ+7FjW+5kYA5lsSZ6PWTiTCw+hw0S7ZlDpVW9MW9qUm8s+u+lWps4VDjqbhJmCbiQGR
- HaHrcAapa2/RhEnsMzrKYI8CNyAtQ9ycfGJMTRjHtPqGwBbZRBZ50T5eEGSDzarPFdBL
- zpdK1zaysLANKRKhLWioCwQPNSnVajKGuSEx+VtadUmwyib+fQjUEO1OQJj4h26dPfJd
- OF5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=Y7gkPMEVzzW21UVYNugAEa18gFl3PM/FhZ5WgMxgA2M=;
- fh=n1ac0n1Z581ntGverqh7k2tipj9ZA0EPtr9B+F2qBtE=;
- b=dI2vMt6HeHPGgQWAUZoO3+yr8i0R+LHkqWsUUB4tkylcZjpG8psgGgYgC4FfMNvgK8
- N82GeFEPW4GTWErEQvDA8L0Gioomz0Ds9hez5bcqF5gH/gGcN1r2jCbQWKaqcFt3nwNx
- tKkYFmQm2Ts/cdkKIP58rU8FvbIMqyrtAoVy2r8lD15NftMLxfZhwfv6A0mlWGnPVoG9
- ZiRCSxOypQoOjsb8Ys4ZR12qkbu8sPut5Z431TP1C+d6bkc+dWuu3PTptDrwSSLsRuSN
- SDZGlG0esRLL9PmR/vwWfyFukIMOCeFRf25Wg6uIdprBHI4AOCpP6Lu214raomFxpRxN
- LHiw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xGTa3-00062I-8k
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 23:53:35 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xGTa0-000767-83
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 23:53:35 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69D216fs4071943
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:53:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ TPnY20xgv/vQyQ9LTgWQlZsJyE+nf9b0rfdPoi2iBUQ=; b=ojUl1ZiRndQe6zPS
+ LgSO3fyZhBhyxAPzY6JM1eVqeYTwWe6sa//e7HYAgFnrJ2+Il/gRPZC21dln4qio
+ boOzCHqBPCs7m2cT+BAVpzl9YZOY8ahzycb0k6kVCmQcTf5GM7NX+ztt9EIEi1cp
+ 9iLjgmPkh0Pf3qNl/Tl8jxLKLQiCmEMtjXc0PHDI4R4T1EjidPTRFmFvRZF54Qj5
+ lc6ROCGWVBk3vcwJDuGw1nlwocTYsvdx9WsdbGQhPvpQkrGnITXTMXKevylRAzAG
+ S+mgSkP7J2jEICoG7GuULRsOfcEf645SwK+baPFIhX+SD2rsl4TIpIO7VnzE7sgi
+ 47ZE9w==
+Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
+ [209.85.215.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h92jjth0q-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:53:28 +0000 (GMT)
+Received: by mail-pg1-f199.google.com with SMTP id
+ 41be03b00d2f7-cd3b9e70f88so3343672a12.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 20:53:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791859439; x=1792464239; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=Y7gkPMEVzzW21UVYNugAEa18gFl3PM/FhZ5WgMxgA2M=;
- b=FUMYesXrYyMHe12qbcF9L4GK37dQ23PBDhs8EC3FtHEaSVr7EXvlLK+z9Vu5orksgn
- +OSLI0yvm8apNrIIGjPmbbz+zE1pcH5aBB+7bvoikW8ZVxfZaDAGkQdIqqUenDWa1N9X
- NfNyfYg/hcGso23VWFVSe2xLBCS6DAoD7ODLNlo1i00bStVoL+hyNYDU5n2oGVGQn0AW
- Lma3NEKkQN2XLIcnxnmccmSYt0Qwlusvj9OeutMPdI+D/6IzK91pWmMsIghIqXTLowiS
- t61INTklP/JOrW65IdI2GkruitSbfqfegxIb+/ziN6aCyCpZhBYLNai6gdEIv+iFPzXz
- LxNQ==
+ d=oss.qualcomm.com; s=google; t=1791863607; x=1792468407; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=TPnY20xgv/vQyQ9LTgWQlZsJyE+nf9b0rfdPoi2iBUQ=;
+ b=epMFAiWgKJpMpCiVzFOZivQ/AsmA7Ro5HtnoPrvpCP6BTIUz6FeJ/zr4AfdNoC6c5I
+ TXOprKtPMKJpls5Fg5GTagGmhWS+MoImSAraYR5FlF9Jjg//XFegtRgY9NZEYR2PaAaX
+ Ijgwwv//2HkrQN5IPrSfM+AmfUnQhM+Tb2DdfRkAWZ1P9KXMLO/KS7aDjLQxdQlv7/BH
+ tqNBEEo/D/BecVcgCWV8bnmeYuW8VuJZBwKH7i4Wg9Wt7UgyxI8EeuBtKIQgswonaZjS
+ sQhzeN0dgU6V6AHWIYQxhm4Uq+ga41lm1fYoKJ24YZ3tHXfIHUlng7S7Nye3xEQ/I7zC
+ ZYrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791859440; x=1792464240;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Y7gkPMEVzzW21UVYNugAEa18gFl3PM/FhZ5WgMxgA2M=;
- b=j5yhoIieA4XHoYcGJ/blIFkKNjW8Eh3axqZIxFOlKVUzOEOdhQ1BjCYF72PE07tCnX
- J5nu1EfUb5tf9WaJ8W6hlOBxwockLdisb8I8iy4ZPhXfV5j6O5qhaERJi+W8/orjfftD
- XyUsPkGm9OkFhP70Y4SXJcsAR0Q1UA5h2EVnN21B5PQmrEJfJS1fkGipgaRINrLB+g/J
- D/MfGNJbD99uF8yFFRvaN4WRfQHjW+3N/m0I1YpNrNmJxRuFY/80NFz60APgaWGhhxTL
- xDyIPLhj1Dm2pF5OJk87yB+MctjIujKaJsP3DObdc2srMJXedx0zx2RNrsYJj9Vl3Cdt
- 4LJA==
+ d=1e100.net; s=20260707; t=1791863607; x=1792468407;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=TPnY20xgv/vQyQ9LTgWQlZsJyE+nf9b0rfdPoi2iBUQ=;
+ b=Tb/NXssrf7OHEvpv96V5tC4NMvnAKR8SF0lltHQqOzsaadjWtMEe2Dr+cwzypV45qw
+ bVrxeBk+5dFLCd1H8/0s2kkPrwaMJX2pajHLJqh8yLkZoyqpyp9uid+tocBuEzIlFlyc
+ ui+RhmECeuTfqeTDHVOlhZkbl7QM5Eondz4ef2wk06piLYuO3WyzImxs4o9ygL41vkAV
+ h6w8vWoQv6eVQW0GgtBr8X+v+lVw47NnNkWcP0+QjWcGBbYJ7D3vxaiR5pPKNiFVgqh0
+ ksKAQY/s31bn61IkkuncdOKYyKq20TcCGH55LYU77v3NP3xE5bgAOzbfTMUeNaVvFpy2
+ z1fg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy9O8TQ1Ac0Nuu8hrBIelWE8OF4iF8Jyz64x1bnN3SnzrjOefS9UgOiEKXqRmha4JsYgXGZBstc/w==@nongnu.org
-X-Gm-Message-State: AFq9FYI79jTLHTTTeHwzQwqLo57iJzivGp4c/bu6AsMU8HG3cKmoT36i
- 5cbyFMF85bds4mrCXy7ToMIuTD0nsyG9Dx00MKbDREgDgu2m0OAJrgfGeFFGuqLEqnQO+5LfssQ
- aiigTcAOToo9aCenWX/H6e71IMplSJ88=
-X-Gm-Gg: AYBFou0tdn2JnOtlZMp8WsREKrapaKdzFBkmGKEci2s1P9LNEhZUCX7KAYKMoGUvPkO
- CmDujGnglVft5T5FGWA+J499boWN1FKYV/vQTLSqr0i9bGOes6VwkHZK4qOokbfw4rW4OB/5oH1
- ynMdEkioUyOz78kU92t7tJMvQkPr8/OcN9ElytPzClawDCzvxUyk6qN209BzARQG3ZpyK3JspmP
- TYGs7SpYUGdJs5A6UxBSFw73MkIZtu6+dmDhYSH+C6NHiKZWUokDwz13SoGD8FaB95UjD8qePfh
- 2uwAtAK/8j3OFBGrdP9Xo2Gp10XwuwxSKb15p6+aXRrCF/ilKetC/ls=
-X-Received: by 2002:a05:6402:4486:b0:6aa:f630:f846 with SMTP id
- 4fb4d7f45d1cf-6b17c26a90fmr9728221a12.31.1791859439355; Mon, 12 Oct 2026
- 19:43:59 -0700 (PDT)
+ AKwUvBwIZHLe9WtLYYsHoRbUM29J4l7Q46ZauO83P5+trgDn8HwMX0ie4JlBNVebWsVDckVjrTqBYGqoPw==@nongnu.org
+X-Gm-Message-State: AFq9FYLZclRifsEhxNQMMITuhv0iRqqFB9UNMFXGLMepsf2IrdnyKx2g
+ qIxNWQ0fBWpZ25CgJhNRID3gDCh43m+0Zkhf9D8HBqiGdOaxA8/dqZpF37gkVzBEqjcXCXBq5+c
+ jDWarcslaxsUYjWLQGVPWexkfT2wcCM181ax8F5uv0l+2xKGWNNxei6Q=
+X-Gm-Gg: AYBFou0ZNCAp1reHePikqQb9K+Kz9UKTRKCgniMCLkKfncNyVUGiG965uK4Q6KSOqsZ
+ cL2omthwMhylPlwCLtR4Wd0rrfi2jA3GAiTF0SqaWZ+SdBRtuFtXSZiDjSNMSi8p/R5rG1VJUv1
+ 8r7t6TMTQQSoG0tDKtAF6cNznytAbNGQlYUghxux9jqMCIut6IrfDzXqBJgZB/bY6wTb4x1raNl
+ UPofN74mLs0zfY8q8pDOenpIfE22h1THLOllK9gbds1dTcVb3PeOdubG3vLSs45vWaULxVJu9hG
+ M+1RmiyiR05bwos6UwS25F7HHXVTseCblfebKx9q8IntoqRKm0FEfULT6AOfy3dEc4upVn/I4fB
+ X57TgFQajY26aNH+c6Ra+fyVEQO8/wPFxaBkMTM9R091AIXLt0ianc2rP
+X-Received: by 2002:a05:6a21:7314:b0:3dd:a197:edf4 with SMTP id
+ adf61e73a8af0-3e16bf5e701mr9422099637.67.1791863607354; 
+ Mon, 12 Oct 2026 20:53:27 -0700 (PDT)
+X-Received: by 2002:a05:6a21:7314:b0:3dd:a197:edf4 with SMTP id
+ adf61e73a8af0-3e16bf5e701mr9422053637.67.1791863606684; 
+ Mon, 12 Oct 2026 20:53:26 -0700 (PDT)
+Received: from [192.168.1.169] (192-80-163-190.dyn.novuscom.net.
+ [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-897fb87c459sm4301398b3a.50.2026.10.12.20.53.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Oct 2026 20:53:25 -0700 (PDT)
+Message-ID: <bfa70b6e-fc66-4607-bd45-b55ae2951d57@oss.qualcomm.com>
+Date: Mon, 12 Oct 2026 20:53:24 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/8] qom: pass TargetInfo to the is_available callback
+To: luoyonggang@gmail.com
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Stafford Horne <shorne@gmail.com>, qemu-arm@nongnu.org,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Darren Kenny <darren.kenny@oracle.com>
 References: <20261007115253.328-1-luoyonggang@gmail.com>
  <2390b3d7-6918-41e3-8532-c19de4cdd1ff@oss.qualcomm.com>
  <asdlbOZBSYIaCMIh@redhat.com>
@@ -95,42 +125,49 @@ References: <20261007115253.328-1-luoyonggang@gmail.com>
  <1a477877-516a-41b8-8548-598bfad74f25@oss.qualcomm.com>
  <CAE2XoE_MotPuxBBkLFWmcDf6ACva2r7y-7sRbQ3DNNwZvXcJFQ@mail.gmail.com>
  <ae0dcb2d-1488-4cea-8bc0-2a0cb2cd74be@oss.qualcomm.com>
-In-Reply-To: <ae0dcb2d-1488-4cea-8bc0-2a0cb2cd74be@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Tue, 13 Oct 2026 10:43:46 +0800
-X-Gm-Features: AclHuK9jmhqYMCRki5xsSX5FQKfrLz1BtUZP9c2TRveS9rt10eKENNqWPDFZ2Ec
-Message-ID: <CAE2XoE9B8RXg6=6kofVA=d6C5OBXT9GZ2cPceWUUDa4m9=_fRg@mail.gmail.com>
-Subject: Re: [PATCH 0/8] qom: pass TargetInfo to the is_available callback
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- qemu-devel@nongnu.org, Cleber Rosa <crosa@redhat.com>, 
- Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
- qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
- Darren Kenny <darren.kenny@oracle.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <CAE2XoE9B8RXg6=6kofVA=d6C5OBXT9GZ2cPceWUUDa4m9=_fRg@mail.gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <CAE2XoE9B8RXg6=6kofVA=d6C5OBXT9GZ2cPceWUUDa4m9=_fRg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: d1-B5iV4FbSeFacHOrWe8aHUpvn1ruxy
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDAxNSBTYWx0ZWRfX1DU6QC0ZoIkr
+ y4ReefVwuoAGscwxQbGDwkiXRU+w/6QoQU94DTNqvWBEBlIqG9ncnC/egmg4UHLmdOeJP5aneZJ
+ B0XOoe5tzTptbAUlcb8XEfYcOM3KjnY=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDAxNSBTYWx0ZWRfXwgbCmTjyTy15
+ EUwMmi9IZpbcDVEXHmEfyO2/rIWtHCy+Bg3NXQinP6swHTxDgYXsaTD0gHQQOw4HvNkNlKuFg2m
+ 4YDgJ9vRPuZ0Xp24TenJBN00MA3l32Z7ltPyZlkD1WPd0har+0oBxWzqGATc062lVIplGTaZTNK
+ Ikz3AJjT1835hT+y3HlEjcnCFaiq/gYc1MMYfmmYI4ghhhmWLlYIixKdSe8JbDMjkfsIOKKrmnP
+ FltxVD1Phw45gAlC8he0tEfh3nB6bkjCbltb+pKm/jx8sRYFqY6hbgH0LbtCuQG75IWUSKw5Iig
+ SeR5a4yHFuZEJI3cKClkWXKeGcM3PwgiNArGDYHhgokKZqts+8RxwcMplghYuyQR6QzqIC/Ittt
+ ancKiGFUeDMR6vq/9GNZcXWS1wFZQHS8Xg4MD39VNY4t2HiU+SknaD/XEg9CMRnhEoZqm3ha+Td
+ hMZoJEkxNk7y2KlYyTw==
+X-Authority-Analysis: v=2.4 cv=GfKCDgXL c=1 sm=1 tr=0 ts=6acdab38 cx=c_pps
+ a=Oh5Dbbf/trHjhBongsHeRQ==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=VwQbUJbxAAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=3FIP6tQh4CMdpZr6zwMA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=_Vgx9l1VpLgwpw_dHYaR:22
+X-Proofpoint-ORIG-GUID: d1-B5iV4FbSeFacHOrWe8aHUpvn1ruxy
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 lowpriorityscore=0 malwarescore=0 bulkscore=0 impostorscore=0
+ spamscore=0 adultscore=0 suspectscore=0 priorityscore=1501 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610130015
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,309 +180,260 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Oct 13, 2026 at 9:26=E2=80=AFAM Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
+On 10/12/26 7:43 PM, Yonggang Luo wrote:
+> On Tue, Oct 13, 2026 at 9:26 AM Pierrick Bouvier
+> <pierrick.bouvier@oss.qualcomm.com> wrote:
+>>
+>> On 10/11/26 9:26 PM, Yonggang Luo wrote:
+>>> On Mon, Oct 12, 2026 at 10:25 AM Pierrick Bouvier
+>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
+>>>>
+>>>> On 10/11/26 7:13 PM, Pierrick Bouvier wrote:
+>>>>> On 10/11/26 1:22 PM, Yonggang Luo wrote:
+>>>>>> On Fri, Oct 9, 2026 at 2:34 AM Pierrick Bouvier
+>>>>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
+>>>>>>>
+>>>>>>> On 10/8/2026 10:13 AM, Yonggang Luo wrote:
+>>>>>>>> On Fri, Oct 9, 2026 at 12:06 AM Pierrick Bouvier
+>>>>>>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
+>>>>>>>>>
+>>>>>>>>> On 10/8/2026 2:46 AM, Yonggang Luo wrote:
+>>>>>>>>>> On Thu, Oct 8, 2026 at 5:42 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
+>>>>>>>>>>>
+>>>>>>>>>>> On Wed, Oct 07, 2026 at 01:25:46PM -0700, Pierrick Bouvier wrote:
+>>>>>>>>>>>> On 10/7/2026 4:47 AM, Yonggang Luo wrote:
+>>>>>>>>>>>>> This allows a combined binary to register machine types from all its targets.
+>>>>>>>>>>>>> Consequently, QMP `query-machines` can return machine entries from every
+>>>>>>>>>>>>> target, even when `none` is selected. For example, a client can query the
+>>>>>>>>>>>>> combined machine list with:
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> ```json
+>>>>>>>>>>>>> { "execute": "query-machines" }
+>>>>>>>>>>>>> ```
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> The returned list includes the registered machine classes from all linked
+>>>>>>>>>>>>> targets. This is separate from selecting a machine: with `-target none`,
+>>>>>>>>>>>>> `-M virt` reports the targets that provide `virt` instead of choosing one
+>>>>>>>>>>>>> arbitrarily:
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> ```text
+>>>>>>>>>>>>> qemu-system -target none -M virt
+>>>>>>>>>>>>> unsupported machine type: "virt" for target "none"
+>>>>>>>>>>>>> Available for targets:
+>>>>>>>>>>>>>       aarch64
+>>>>>>>>>>>>>       arm
+>>>>>>>>>>>>> ```
+>>>>>>>>>>>>>
+>>>>>>>>>>>>
+>>>>>>>>>>>>     From the long conversation on a previous thread, I thought we reached
+>>>>>>>>>>>> the conclusion that if we didn't expose any ambiguous name, then -target
+>>>>>>>>>>>> option is unnecessary, or maybe I got lost on track of this thread.
+>>>>>>>>>>>>
+>>>>>>>>>>>> https://lore.kernel.org/qemu-devel/ar_coT44h5-zJPVV@redhat.com/
+>>>>>>>>>>>>
+>>>>>>>>>>>> I'm not sure which semantic we want to have with -target none. If there
+>>>>>>>>>>>> is no ambiguous name registered, we just don't need it at all. It's a
+>>>>>>>>>>>> win-win IMHO.
+>>>>>>>>>>>
+>>>>>>>>>>> Yes, if we expose unique names for every machine, then -target is then
+>>>>>>>>>>> redundant.
+>>>>>>>>>>
+>>>>>>>>>> so how to diff riscv32-virt and risv64-virt? oh so for this machine we
+>>>>>>>>>> needs two name?
+>>>>>>>>>> "virt" needs register twice for it? or register only a single time,
+>>>>>>>>>> but we prefix the target_name()
+>>>>>>>>>> automatically? for example machine::name === "virt", but we can use
+>>>>>>>>>> "riscv32-virt" "risv64-virt" to reach it?
+>>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> Yes, ideally we should have different variant of virt for 32/64 bit.
+>>>>>>>>> Same goes for cpu max types.
+>>>>>>>>>
+>>>>>>>>> QOM type is always registered unambiguously ("$arch-virt"). Then, for
+>>>>>>>>> the "alias" name, which is virt, in case multiple matches are found,
+>>>>>>>>> command line can return an error with list of unambiguous names to call it.
+>>>>>>>>>
+>>>>>>>>> $ qemu-system -M virt
+>>>>>>>>> Multiple virt machines are available. Please choose one of them:
+>>>>>>>>> - aarch64-virt
+>>>>>>>>> - riscv64-virt
+>>>>>>>>>
+>>>>>>>>> There is no "parsing" of the argument, it's just the real QOM type. Then
+>>>>>>>>> we can find which target it implements from mc->targets.
+>>>>>>>>> And then, we can automatically choose which cpus should be available
+>>>>>>>>> based on that, thanks to cpu->targets.
+>>>>>>>>>
+>>>>>>>>> For existing binaries, nothing change.
+>>>>>>>>
+>>>>>>>> Good, I think we found a clean way now, is_available should be
+>>>>>>>> removed, and TypeInfo::targets and TypeImpl::targets should be added.
+>>>>>>>
+>>>>>>> It goes into MachineClass only for now.
+>>>>>>>
+>>>>>>>> I think
+>>>>>>>> for "virt" we can add a shared hw/machine-virt.c instead, and forwarding to
+>>>>>>>> the $arch specific virt. so that we only have a single "virt" registered.
+>>>>>>>> And it's
+>>>>>>>> targets is
+>>>>>>>> QEMU_ARCH_I386 |
+>>>>>>>> QEMU_ARCH_ARM |
+>>>>>>>> QEMU_ARCH_RISCV |
+>>>>>>>> QEMU_ARCH_LOONGARCH |
+>>>>>>>> QEMU_ARCH_M68K |
+>>>>>>>> QEMU_ARCH_OR1K |
+>>>>>>>> QEMU_ARCH_XTENSA |
+>>>>>>>> QEMU_ARCH_HEXAGON
+>>>>>>>>
+>>>>>>>> So that we won't have a list of conflict QOM names for "virt" machines.
+>>>>>>>> As now we indeed have only a single "virt" machine that redirects to
+>>>>>>>> different targets.
+>>>>>>>>
+>>>>>>>
+>>>>>>> The idea looks appealing, but I don't think it solves the problem to
+>>>>>>> have multiple virt variants available at the same time.
+>>>>>>>
+>>>>>>> The "alias" idea you introduced before is good, we just need to add a
+>>>>>>> check if an alias is really unique, else return an error, as explained
+>>>>>>> previously.
+>>>>>>>
+>>>>>>> If "-M aarch64-virt" works for both the new and existing binary, and -M
+>>>>>>> virt only for existing binaries (and ambiguous for new one), I think
+>>>>>>> that's a safe approach.
+>>>>>>>
+>>>>>>>>
+>>>>>>>> For other types also conflict can be handled in the same way, such as
+>>>>>>>> "-cpu host" "-cpu max"
+>>>>>>>> maybe others, but I think they all have the same way to deal with.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> That's why  TypeInfo::targets and TypeImpl::targets better than sole
+>>>>>>>> Machine::targets
+>>>>>>>>
+>>>>>>>
+>>>>>>> One step at a time.
+>>>>>>> Let's keep focused on declaring targets for a single machine first.
+>>>>>>> Then we can iterate to solve the "virt" problem.
+>>>>>>> Then convert all the existing machines and add a check in machine-target.c
+>>>>>>> Then, and only then, we can see what happens with cpus.
+>>>>>>
+>>>>>> I tried this idea, but I faced a fatal error, because the
+>>>>>> target_info() is not available until
+>>>>>> the machine selected(the target arch will be select just along with
+>>>>>> the machine selected), so basically
+>>>>>> all calls to target_info() would raise an error(null pointer), how to
+>>>>>> deal with it?
+>>>>>>
+>>>>>
+>>>>> I see. Indeed, since we can't set a target before registering all types,
+>>>>> it implies that all the types class_init can't use target_* functions.
+>>>>>
+>>>>>
+>>>>> - register_accel_target_type
+>>>>> - cpu_max_v8_register_type
+>>>>>
+>>>>
+>>>> Sorry, mail sent to early.
+>>>>
+>>>> For the is_available callback usage, it should be easy to do the switch,
+>>>> since it's basically the same information that what we are trying to do
+>>>> - we can leave them for now.
+>>>>
+>>>> Some types (like accel and max mentioned above), explicitly change their
+>>>> definition depending on the target. It's a behavior we can't rely on
+>>>> anymore, and it means we need proper distinct types instead of a single
+>>>> one with dynamic definition driven by target-info.
+>>>>
+>>>> I think that's the preliminary work needed, before being able to go
+>>>> further: convert all existing usage in class_init with distinct types +
+>>>> is_available, and then we can do the switch from is_available to the new
+>>>> .targets approach.
+>>>
+>>> Hi Pierrick,
+>>> I have already tried that introducing new QOM names just to make class_init
+>>>    target-independent is too broad(means all usage of it should be handled)
+>>> and could complicate compatibility(changed too much code).
+>>> Can we avoid new names by some new means(ideas welcome)?
+>>>
+>>
+>> As a first step, I don't think we need new names, is_available can be
+>> used to selectively register one definition or another and avoid any
+>> clash. What is missing at the moment though, is that some types (like
+>> cpu max above) change their definition based on target definition.
+> 
+> 
+>>
+>> So for cpu max, we would have two distinct types, both named max, but
+>> one with is_available(target_arm), and other one with
+>> is_available(target_aarch64), so they are never registered at the same time.
+> 
+>>
+>> Same for virt machines. It's already what we have, duplication is
+>> handled at the moment with distinct is_available callbacks.
+>>
+>> Then, see below.
+>>
+>>>
+>>>>
+>>>> It's probably worth having the conversion in its own series (only
+>>>> cleanup usage of target_* in class_init), before trying to get rid of
+>>>> is_available.
+>>>
+>>>>
+>>>> For the implementation, you can use the multi-targets.c binary test to
+>>>> drive the change. Remove the module init for target info (leaving no
+>>>> target set), and add a hacky patch to skip call to is_available (and
+>>>> return true instead) and allow double definition (which will rely on
+>>>> is_available). Then, fix all the segfault. Once it compiles and runs,
+>>>> only double definition will be left, which can be handled by inserting
+>>>> the right is_available callbacks. Then in a subsequent series, the
+>>>> switch to .targets can be made.
+>>>
+>>>
+>>> Still have no clean clue about how to remove is_available , as we have many
+>>> "virt" machines. Do you means all "virt" machines with "virt-machine" QOM names
+>>> are inserted to the table? How to get it working because the "key" is string.
+>>>
+>>
+>> Once we have type definition which only depends on is_available, we can
+>> convert this to .targets, which would contain the same information.
+>> For the rest, I have some ideas, but I would like first we do the first
+>> part (convert to is_available), which is already a huge work in itself,
+>> and a series of its own.
+> 
+> Indeed I am confused .targets only exists on Machine, how is it
+> related to -cpu host -cpu max?
 >
-> On 10/11/26 9:26 PM, Yonggang Luo wrote:
-> > On Mon, Oct 12, 2026 at 10:25=E2=80=AFAM Pierrick Bouvier
-> > <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>
-> >> On 10/11/26 7:13 PM, Pierrick Bouvier wrote:
-> >>> On 10/11/26 1:22 PM, Yonggang Luo wrote:
-> >>>> On Fri, Oct 9, 2026 at 2:34=E2=80=AFAM Pierrick Bouvier
-> >>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>>>>
-> >>>>> On 10/8/2026 10:13 AM, Yonggang Luo wrote:
-> >>>>>> On Fri, Oct 9, 2026 at 12:06=E2=80=AFAM Pierrick Bouvier
-> >>>>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>>>>>>
-> >>>>>>> On 10/8/2026 2:46 AM, Yonggang Luo wrote:
-> >>>>>>>> On Thu, Oct 8, 2026 at 5:42=E2=80=AFPM Daniel P. Berrang=C3=A9 <=
-berrange@redhat.com> wrote:
-> >>>>>>>>>
-> >>>>>>>>> On Wed, Oct 07, 2026 at 01:25:46PM -0700, Pierrick Bouvier wrot=
-e:
-> >>>>>>>>>> On 10/7/2026 4:47 AM, Yonggang Luo wrote:
-> >>>>>>>>>>> This allows a combined binary to register machine types from =
-all its targets.
-> >>>>>>>>>>> Consequently, QMP `query-machines` can return machine entries=
- from every
-> >>>>>>>>>>> target, even when `none` is selected. For example, a client c=
-an query the
-> >>>>>>>>>>> combined machine list with:
-> >>>>>>>>>>>
-> >>>>>>>>>>> ```json
-> >>>>>>>>>>> { "execute": "query-machines" }
-> >>>>>>>>>>> ```
-> >>>>>>>>>>>
-> >>>>>>>>>>> The returned list includes the registered machine classes fro=
-m all linked
-> >>>>>>>>>>> targets. This is separate from selecting a machine: with `-ta=
-rget none`,
-> >>>>>>>>>>> `-M virt` reports the targets that provide `virt` instead of =
-choosing one
-> >>>>>>>>>>> arbitrarily:
-> >>>>>>>>>>>
-> >>>>>>>>>>> ```text
-> >>>>>>>>>>> qemu-system -target none -M virt
-> >>>>>>>>>>> unsupported machine type: "virt" for target "none"
-> >>>>>>>>>>> Available for targets:
-> >>>>>>>>>>>      aarch64
-> >>>>>>>>>>>      arm
-> >>>>>>>>>>> ```
-> >>>>>>>>>>>
-> >>>>>>>>>>
-> >>>>>>>>>>    From the long conversation on a previous thread, I thought =
-we reached
-> >>>>>>>>>> the conclusion that if we didn't expose any ambiguous name, th=
-en -target
-> >>>>>>>>>> option is unnecessary, or maybe I got lost on track of this th=
-read.
-> >>>>>>>>>>
-> >>>>>>>>>> https://lore.kernel.org/qemu-devel/ar_coT44h5-zJPVV@redhat.com=
-/
-> >>>>>>>>>>
-> >>>>>>>>>> I'm not sure which semantic we want to have with -target none.=
- If there
-> >>>>>>>>>> is no ambiguous name registered, we just don't need it at all.=
- It's a
-> >>>>>>>>>> win-win IMHO.
-> >>>>>>>>>
-> >>>>>>>>> Yes, if we expose unique names for every machine, then -target =
-is then
-> >>>>>>>>> redundant.
-> >>>>>>>>
-> >>>>>>>> so how to diff riscv32-virt and risv64-virt? oh so for this mach=
-ine we
-> >>>>>>>> needs two name?
-> >>>>>>>> "virt" needs register twice for it? or register only a single ti=
-me,
-> >>>>>>>> but we prefix the target_name()
-> >>>>>>>> automatically? for example machine::name =3D=3D=3D "virt", but w=
-e can use
-> >>>>>>>> "riscv32-virt" "risv64-virt" to reach it?
-> >>>>>>>>
-> >>>>>>>
-> >>>>>>> Yes, ideally we should have different variant of virt for 32/64 b=
-it.
-> >>>>>>> Same goes for cpu max types.
-> >>>>>>>
-> >>>>>>> QOM type is always registered unambiguously ("$arch-virt"). Then,=
- for
-> >>>>>>> the "alias" name, which is virt, in case multiple matches are fou=
-nd,
-> >>>>>>> command line can return an error with list of unambiguous names t=
-o call it.
-> >>>>>>>
-> >>>>>>> $ qemu-system -M virt
-> >>>>>>> Multiple virt machines are available. Please choose one of them:
-> >>>>>>> - aarch64-virt
-> >>>>>>> - riscv64-virt
-> >>>>>>>
-> >>>>>>> There is no "parsing" of the argument, it's just the real QOM typ=
-e. Then
-> >>>>>>> we can find which target it implements from mc->targets.
-> >>>>>>> And then, we can automatically choose which cpus should be availa=
-ble
-> >>>>>>> based on that, thanks to cpu->targets.
-> >>>>>>>
-> >>>>>>> For existing binaries, nothing change.
-> >>>>>>
-> >>>>>> Good, I think we found a clean way now, is_available should be
-> >>>>>> removed, and TypeInfo::targets and TypeImpl::targets should be add=
-ed.
-> >>>>>
-> >>>>> It goes into MachineClass only for now.
-> >>>>>
-> >>>>>> I think
-> >>>>>> for "virt" we can add a shared hw/machine-virt.c instead, and forw=
-arding to
-> >>>>>> the $arch specific virt. so that we only have a single "virt" regi=
-stered.
-> >>>>>> And it's
-> >>>>>> targets is
-> >>>>>> QEMU_ARCH_I386 |
-> >>>>>> QEMU_ARCH_ARM |
-> >>>>>> QEMU_ARCH_RISCV |
-> >>>>>> QEMU_ARCH_LOONGARCH |
-> >>>>>> QEMU_ARCH_M68K |
-> >>>>>> QEMU_ARCH_OR1K |
-> >>>>>> QEMU_ARCH_XTENSA |
-> >>>>>> QEMU_ARCH_HEXAGON
-> >>>>>>
-> >>>>>> So that we won't have a list of conflict QOM names for "virt" mach=
-ines.
-> >>>>>> As now we indeed have only a single "virt" machine that redirects =
-to
-> >>>>>> different targets.
-> >>>>>>
-> >>>>>
-> >>>>> The idea looks appealing, but I don't think it solves the problem t=
-o
-> >>>>> have multiple virt variants available at the same time.
-> >>>>>
-> >>>>> The "alias" idea you introduced before is good, we just need to add=
- a
-> >>>>> check if an alias is really unique, else return an error, as explai=
-ned
-> >>>>> previously.
-> >>>>>
-> >>>>> If "-M aarch64-virt" works for both the new and existing binary, an=
-d -M
-> >>>>> virt only for existing binaries (and ambiguous for new one), I thin=
-k
-> >>>>> that's a safe approach.
-> >>>>>
-> >>>>>>
-> >>>>>> For other types also conflict can be handled in the same way, such=
- as
-> >>>>>> "-cpu host" "-cpu max"
-> >>>>>> maybe others, but I think they all have the same way to deal with.
-> >>>>>>
-> >>>>>>
-> >>>>>> That's why  TypeInfo::targets and TypeImpl::targets better than so=
-le
-> >>>>>> Machine::targets
-> >>>>>>
-> >>>>>
-> >>>>> One step at a time.
-> >>>>> Let's keep focused on declaring targets for a single machine first.
-> >>>>> Then we can iterate to solve the "virt" problem.
-> >>>>> Then convert all the existing machines and add a check in machine-t=
-arget.c
-> >>>>> Then, and only then, we can see what happens with cpus.
-> >>>>
-> >>>> I tried this idea, but I faced a fatal error, because the
-> >>>> target_info() is not available until
-> >>>> the machine selected(the target arch will be select just along with
-> >>>> the machine selected), so basically
-> >>>> all calls to target_info() would raise an error(null pointer), how t=
-o
-> >>>> deal with it?
-> >>>>
-> >>>
-> >>> I see. Indeed, since we can't set a target before registering all typ=
-es,
-> >>> it implies that all the types class_init can't use target_* functions=
-.
-> >>>
-> >>>
-> >>> - register_accel_target_type
-> >>> - cpu_max_v8_register_type
-> >>>
-> >>
-> >> Sorry, mail sent to early.
-> >>
-> >> For the is_available callback usage, it should be easy to do the switc=
-h,
-> >> since it's basically the same information that what we are trying to d=
-o
-> >> - we can leave them for now.
-> >>
-> >> Some types (like accel and max mentioned above), explicitly change the=
-ir
-> >> definition depending on the target. It's a behavior we can't rely on
-> >> anymore, and it means we need proper distinct types instead of a singl=
-e
-> >> one with dynamic definition driven by target-info.
-> >>
-> >> I think that's the preliminary work needed, before being able to go
-> >> further: convert all existing usage in class_init with distinct types =
-+
-> >> is_available, and then we can do the switch from is_available to the n=
-ew
-> >> .targets approach.
-> >
-> > Hi Pierrick,
-> > I have already tried that introducing new QOM names just to make class_=
-init
-> >   target-independent is too broad(means all usage of it should be handl=
-ed)
-> > and could complicate compatibility(changed too much code).
-> > Can we avoid new names by some new means(ideas welcome)?
-> >
+
+We can introduce cpu.targets after machine.targets.
+First step is just to get something that works with is_available and 
+does not require any target info to be set.
+
+> 
+> I already have a working copy that does not depend on target_info()
+> and selects target_info() when the machine
+> is selected, no QOM name introduced. only for machines, we will have
+> $target_name-$machine_name as a name for selecting
+> the exact machine.
 >
-> As a first step, I don't think we need new names, is_available can be
-> used to selectively register one definition or another and avoid any
-> clash. What is missing at the moment though, is that some types (like
-> cpu max above) change their definition based on target definition.
+> The cpu max cpu host is dealt by moving the choose code out of
+> class_init, into object_init. I really did not get your idea by use
+> is_avaiable. because when I try to get all QOMs to be registered. then
+> I won't call is_available at all.
 
+As a first step, we rely on is_available, to work on distinguishing 
+proper types per target and break the dependency of multiple class_init 
+to target_info. Then, we can replace is_available with .targets.
 
+> because "is_available" depends on target_info(),(we won't have
+> target_info() till the machine is selected).
 >
-> So for cpu max, we would have two distinct types, both named max, but
-> one with is_available(target_arm), and other one with
-> is_available(target_aarch64), so they are never registered at the same ti=
-me.
 
->
-> Same for virt machines. It's already what we have, duplication is
-> handled at the moment with distinct is_available callbacks.
->
-> Then, see below.
->
-> >
-> >>
-> >> It's probably worth having the conversion in its own series (only
-> >> cleanup usage of target_* in class_init), before trying to get rid of
-> >> is_available.
-> >
-> >>
-> >> For the implementation, you can use the multi-targets.c binary test to
-> >> drive the change. Remove the module init for target info (leaving no
-> >> target set), and add a hacky patch to skip call to is_available (and
-> >> return true instead) and allow double definition (which will rely on
-> >> is_available). Then, fix all the segfault. Once it compiles and runs,
-> >> only double definition will be left, which can be handled by inserting
-> >> the right is_available callbacks. Then in a subsequent series, the
-> >> switch to .targets can be made.
-> >
-> >
-> > Still have no clean clue about how to remove is_available , as we have =
-many
-> > "virt" machines. Do you means all "virt" machines with "virt-machine" Q=
-OM names
-> > are inserted to the table? How to get it working because the "key" is s=
-tring.
-> >
->
-> Once we have type definition which only depends on is_available, we can
-> convert this to .targets, which would contain the same information.
-> For the rest, I have some ideas, but I would like first we do the first
-> part (convert to is_available), which is already a huge work in itself,
-> and a series of its own.
+We can imagine registering types in different buckets per target, which 
+would allow for duplication.
 
-Indeed I am confused .targets only exists on Machine, how is it
-related to -cpu host -cpu max?
-
-
-I already have a working copy that does not depend on target_info()
-and selects target_info() when the machine
-is selected, no QOM name introduced. only for machines, we will have
-$target_name-$machine_name as a name for selecting
-the exact machine.
-
-The cpu max cpu host is dealt by moving the choose code out of
-class_init, into object_init. I really did not get your idea by use
-is_avaiable. because when I try to get all QOMs to be registered. then
-I won't call is_available at all.
-because "is_available" depends on target_info(),(we won't have
-target_info() till the machine is selected).
-
->
-> Regards,
-> Pierrick
-
-
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+Regards,
+Pierrick
 

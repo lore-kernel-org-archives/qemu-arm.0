@@ -4,144 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89A4CCA9ED0
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 01:31:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD679CC6B03
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 02:44:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGRMH-0003vw-V2; Mon, 12 Oct 2026 21:31:19 -0400
+	id 1xGSUs-0002dB-OC; Mon, 12 Oct 2026 22:44:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xGRLb-0003hw-MW; Mon, 12 Oct 2026 21:30:38 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xGRLX-0008Cl-G3; Mon, 12 Oct 2026 21:30:30 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=DnMdjN0g/EMA17BcBhCo+SeLA17jD5xTn+zrjvfNBROxSk8Zbqs9/LduL96BT80zB3jSXmhrezco8d6pqD95NXrxCViXMer68fCh5Cw9YOd+UNPtLqfY6sTwobj2yxVA4sQapwbFhHHHHSA6pN29JA6PmS+mlQBEfQuhU6MV6RI2cbgqFpiUTHogCNCO/HF+zRGt5CENaOKnDnpiBeT8MMGmf8prtG41NuA6iSrij81da0OandvBnpYgqNIFva7XUQZMtsaFt5HEDY7eDwDCxzwb8KbADl8HnuBP1CDjaseXHvKo4MpHNMignuuTHfzR3ZGK7sZ9J8Vi2vpJQQ3r5Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8h3wOq3NDFN8ClVnZjDO8Z/TEq3RlIwm6Fj3Hv1sRGk=;
- b=O0k48NSrkhoU80fXpYX81cCSHA21JEVbKEPmHsR5Rqz2zttHem37S7rmV+957RNqHVKriQrrNR5clfpWzsozM0SRYj7jm2U08lBe8yBLFrrWmImJAgHt5mH8PGNsRrJoEWA6siLeH84ylcKZGJqndndV6kRzjHB6srgRcQ3efaZK6cZVzYu0MYq3+Z7sVNHvMxXwHbOaxSH9bdqOOCJEOWABRSg9SDNcD0ETJWjy9EB+z+DuRC5+ExosoonVoKpuNme1O7J22lC5JbFSekcnrfiUSKW9s30NEgUvm/hGa5Pbx1DdMHQLHeJcyS/ksv8ANY/nNEJwFgE8CRIEMgeCEw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8h3wOq3NDFN8ClVnZjDO8Z/TEq3RlIwm6Fj3Hv1sRGk=;
- b=o01FFWaMCklkScc6AdEkc6SIs81zvLMLnfRt4HC5IQ1LTX+373FyS2Y30HdCgLJXBIXhdsvnCrtfUknMtQyAwzCik/X+fxHiZvVlPbzBvnFOI/h17zTIXjTER82uAoU1eSaTJGNdbNNDkzugMBEiNimkAvyc+oQCI4MI8mWFYvPnKxchcAWo55YSJlE/9bUfcCFky99lOavzya8J1klWu9I1UAr9oGto/sJnbTP1GN7bYPHAIYDfprBBrFENKedmvh9obto3rdcZMgHOGqKAR/BZ4nSUyST/HbMcxX6hfDrE27NnhCJm8cTIJ7JTw9DsuPRYHtpYQGXjoByZ+pKu7g==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by TY0PR06MB5833.apcprd06.prod.outlook.com (2603:1096:400:32d::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.23; Tue, 13 Oct
- 2026 01:30:14 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0496.020; Tue, 13 Oct 2026
- 01:30:14 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>
-CC: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v3 5/8] hw/usb/redirect-server: Implement control transfers
-Thread-Topic: [PATCH v3 5/8] hw/usb/redirect-server: Implement control
- transfers
-Thread-Index: AQHdWe+4E7RfeF/bg06REPE3kuIe3bb5rViAgAEDWoA=
-Date: Tue, 13 Oct 2026 01:30:14 +0000
-Message-ID: <SEZPR06MB7362FC591BB95B31ACA066B5FC9E2@SEZPR06MB7362.apcprd06.prod.outlook.com>
-References: <20261012021634.2006424-1-jamin_lin@aspeedtech.com>
- <20261012021634.2006424-6-jamin_lin@aspeedtech.com>
- <179179927145.1642373.1827394110159975206.b4-review@b4>
-In-Reply-To: <179179927145.1642373.1827394110159975206.b4-review@b4>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TY0PR06MB5833:EE_
-x-ms-office365-filtering-correlation-id: aae40d5a-32b7-4558-25c5-08df28c98808
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|1800799024|366016|376014|6133799003|22082099003|18002099003|10067099003|5023799004|261009223027099003|38070700021|56012099006|4143699003;
-x-microsoft-antispam-message-info: 9PJON8jcgq9uzp6233aIuExLKDTzyDw9lfdXXgt5PAa6eA+MxAML9zmQR5sS0X2RiD54I3UiCCfMh2zrfFUL/7Uet60fdMGvypS5Vf4b61NJYP1/NUy/VeX1jOQmtcM1sPzfLKoe/N3wUT5eW+j69c0SXyPE/ubbNt13NGpa5VmVS0/h7NNQYnga64BJ3TWPlZo+ZVIMZTqmzBTGixvyJEHP4dMKqs6Tf3SrBd34NvH6xUtk4LXdTHN9+cgPwUJ3MQMIkFzt8biZGg2DpePjCVQdR9tILOmR9i3qxUeGg3m9nFajzll6Od8XTfB/oouwmDtS6qGQuCtothkAOlAbyqKn3+UYlQX+RAjEYx7sEIuJtn3plPF+d8mYuZFAxShH0oYckxXlAjLCQ153BNDw9LItH2QDWkxZ/Nt1BYKTCZj1YiV+LX/XrPaNgh5asnasSCGRgMZJEQrX2ghDlLogSnqgDQJ/ZmJLFfdTNSA4BCrjRu7NBYCBjNeOwczza2D/VJnboKPxtxdHbY0HzufSLWxWhgyDplqY+OTFyV7Tx8+uinmeCncxrMx6hyGH61yJP2aT308ShrpLlAejNlPhP8z3oyr+6wsX6EUCSy92xU9VtfJjFMfmKWaDpxofuqjr62KiQUNEcanJoOOLbWX+Yucuq6T+cEAMKovYa1OQTEEkPcqW6S2HSwyLHIYAtQo/il8rsOUZrSfVaWJIHTbTeLad2ICfWQIVfAVJLynomVg=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(23010399003)(1800799024)(366016)(376014)(6133799003)(22082099003)(18002099003)(10067099003)(5023799004)(261009223027099003)(38070700021)(56012099006)(4143699003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MjNlZjNSeHkrQktCWlN1blMrcnU5ZldlVEJhRGg2MjMwTGNDdlB4OUhxSk5E?=
- =?utf-8?B?V1dOU0Q5UlhNdnRBUVdVUkR2N21zTTBMeCs5YkhZc2ZHMzducnVZRWw2cGRI?=
- =?utf-8?B?bHNZaStlOXBMTFpvdTJHc0t4QTJQNFZIdE5VZFlyN2Q2Wm51Y1I5NU9HQ3Zv?=
- =?utf-8?B?c1p4Z2lLVlZ1V25OVHdtSVZhYzRQTkpyZ2xJOGFoazRsRUhGbUN6cnluNzZh?=
- =?utf-8?B?M1JhQTlDTkw1MWF6d0pJUjFlRzZibkVYRDZuMERFbW1IZUNkR3dWM2szODNt?=
- =?utf-8?B?bTBIc3J0TXZzdHo3SlBtY1lxQjVQYXpwQStlY1J5dmdPUWR2NHB5KysyZlpR?=
- =?utf-8?B?dS95NW1BNW5NdGcxT25jUmVmcDVCQU5nSXNWb1ZpRGFGYUM3Sm9DYVg5T3cy?=
- =?utf-8?B?dHQ5SXNOeEVJZDRsY2pVd1pCMUhmcUJnSDBKNWNJLzJ0WnEvMmdTcHVadnJm?=
- =?utf-8?B?ZG9nR2tBNFRJcVFsM0lTd1VWNEdUV1orMG9QUHhEZWVqaGt0Z1lWeHAxSVRy?=
- =?utf-8?B?Z0lIY3RGclo4S0krTUV5RFdjcnk0QS9oa2IwQjV5eHI3M2RCMXRpbUQ2N3Z3?=
- =?utf-8?B?NjZYVG4zSkFCUU9Ub2dsd2o0bXJUSXhoZ2w2SUQ3S1lrRzR2ck1vbWt6N01o?=
- =?utf-8?B?MDFaZmY4L2o3Y1ptRjk0U2NiQzlUbVROZ1VsUTlNbXpqdWxlemFScUMxTEgv?=
- =?utf-8?B?NnJZVVJ0MVQvZXZLOXpoMGwvSWpBcTZWZktiNG80RWFzdVJmeWRJOUcxdzgy?=
- =?utf-8?B?R3Yyc1I5QmN3YWJEbjVwMVNBTkdWMGR6ZDBYMW0ycktsdUFBMXJiTkNPZUJD?=
- =?utf-8?B?MEM4a2lWejZJK0NaU3FtWVo4eEtkV1N1bDV4Z05vZlJPclhvWkZpalJPbmFz?=
- =?utf-8?B?VklRVGh1UDQzOGJXL3ozOEczTllVTGdFcEJkUjQxRFdrRG5WenpXTVJxb2ts?=
- =?utf-8?B?cU84Mmc0NWhGZWlUazlLRm1Rdk1NcEM0cXI2UXdsUk9FdjdZeCs1Umh2MHVn?=
- =?utf-8?B?NlVDekJPdHBZekRXT0VtaXJMUnRsaVJwSnNPT1ZyZzZuU0YwSnM5V0laMWJu?=
- =?utf-8?B?Y1BuZGxudWZLUmRQWUQ0U2Z5S21KN1VSUzRrL21Wb2h6RmhyemlRZ052RDNs?=
- =?utf-8?B?eURHd1dKeUg5TlFiMFNSVk5SWWlKM2FscnpFK3dmRkdKc0xBNlBwUCtMRkFL?=
- =?utf-8?B?aHpVZ0FTd3pTWGxqckZPWkNNbUJIb3BabEJ6ekhkdkFKc2NyQlpKWnpKa3h6?=
- =?utf-8?B?NVBsVHpIdzQxVk9mUjNadkR0R1dOajdpaE54SlVGMmd4RjEyemhveUtMd2lD?=
- =?utf-8?B?eVlDVUMwajZ1MWZ5U1MwK0RiZXhudHZkR2VVcnl5UkhSVmdmOEZDbFhKVENI?=
- =?utf-8?B?Z2puWlFSd09rc1lZVmpBUDY1am00LzJkTmRpc0ptZ0RHZWpmUzBkZlVtM0dM?=
- =?utf-8?B?TGFBRUpIVHMvNlNIYVY2cE1iRlViWDUwMzkvWXZsOWRpSlFUYnVoQmZRSlh0?=
- =?utf-8?B?VmthOWdEbUMvWGNpQjdzQzhkdC84di9CaFJjaTU2NFJvS2FQOG5CMkFBV0FY?=
- =?utf-8?B?a3RoUUsxVE1Vdlg2QXFXKzNGdm5RdnoyRVpYZWJBS0d4WTBlYVM1azdmVkdq?=
- =?utf-8?B?dUQ0Qlo2TFZTM1BjSHpMTWxHT1BCenRvd1pER3JvcndoVktXMUxObnRTMk1n?=
- =?utf-8?B?YnFZdm1HdGJVSklXRjZhU0dyWnZ6K1NsZDZ4YU45UGFEeGJoaS96Tmc2Qldn?=
- =?utf-8?B?aFN3ZndiR0pvUlpBNzRHRS9JZktBRWRiak4vUDF0eTFxYW1SQTNxbFVXS0pO?=
- =?utf-8?B?OHBwZCtIOEhidytkVW9pMExBdTcwQlVmeURUY2FWcDk3RkY0N2RHT3MyK21m?=
- =?utf-8?B?VWs5VnZ1SmhSSWZuWWE2MlRqTHVUc3pFelZFVU5ZWW9CRHlFMU1mOXZJZnI1?=
- =?utf-8?B?N1pxZisrZ1FpbXJjbXB3SmhxUHhqT1F1ZCsyaGFnYzlYK0dSSHBtLyt0dlRy?=
- =?utf-8?B?YnBDMjZFMzhOZUNxT3NiWmVaT2w2Qis4c3dvbFV4NVBpUStFMFpJdTF0TjRm?=
- =?utf-8?B?c0llYTNPeGxzTmdzS3B6TWVTcE5SSyswakxWSU5LcDloNWRoVjBFWjM5K2Zy?=
- =?utf-8?B?Ykd0MGVNbGhPanNtd2tyUFg0WDZJc0dIMHBiK2o1bTAvWXdVY1FmZU5WNXNj?=
- =?utf-8?B?VmtLTzhXYUJFWisxUFJaUEx0WStsOEUxUVo4dGxGaktWMFR5Zk8rbGl1dFgv?=
- =?utf-8?B?SzF4NEpyQXh6T3NhamVvTjJ3dktKb1A0Zm9razlHZG15bmcrczYyS0NWNlBt?=
- =?utf-8?B?SUJyQVFiYy9HeEVGaEwvVTRRSHNyRkd1b05lTlprME5aNFZIMk4yZz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xGSUm-0002c5-Ri
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 22:44:06 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xGSUj-0008Jr-6X
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2026 22:44:03 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-6afa651700eso3615205a12.2
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2026 19:44:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791859440; cv=none;
+ d=google.com; s=arc-20260327;
+ b=ko5xZNhORLiDrYuXoVfmdazkka0ZBSffLxdND0YKeg9S4skcqjucT3snl8vU/bsvE0
+ lA90wreI3xpE91eHq/W02XhJfz4jMlbvch7zlmER8XM5NZ+uc+MbKvJ7QCrIer3qiPcV
+ oJ+7FjW+5kYA5lsSZ6PWTiTCw+hw0S7ZlDpVW9MW9qUm8s+u+lWps4VDjqbhJmCbiQGR
+ HaHrcAapa2/RhEnsMzrKYI8CNyAtQ9ycfGJMTRjHtPqGwBbZRBZ50T5eEGSDzarPFdBL
+ zpdK1zaysLANKRKhLWioCwQPNSnVajKGuSEx+VtadUmwyib+fQjUEO1OQJj4h26dPfJd
+ OF5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :reply-to:in-reply-to:references:mime-version:dkim-signature;
+ bh=Y7gkPMEVzzW21UVYNugAEa18gFl3PM/FhZ5WgMxgA2M=;
+ fh=n1ac0n1Z581ntGverqh7k2tipj9ZA0EPtr9B+F2qBtE=;
+ b=dI2vMt6HeHPGgQWAUZoO3+yr8i0R+LHkqWsUUB4tkylcZjpG8psgGgYgC4FfMNvgK8
+ N82GeFEPW4GTWErEQvDA8L0Gioomz0Ds9hez5bcqF5gH/gGcN1r2jCbQWKaqcFt3nwNx
+ tKkYFmQm2Ts/cdkKIP58rU8FvbIMqyrtAoVy2r8lD15NftMLxfZhwfv6A0mlWGnPVoG9
+ ZiRCSxOypQoOjsb8Ys4ZR12qkbu8sPut5Z431TP1C+d6bkc+dWuu3PTptDrwSSLsRuSN
+ SDZGlG0esRLL9PmR/vwWfyFukIMOCeFRf25Wg6uIdprBHI4AOCpP6Lu214raomFxpRxN
+ LHiw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791859439; x=1792464239; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=Y7gkPMEVzzW21UVYNugAEa18gFl3PM/FhZ5WgMxgA2M=;
+ b=FUMYesXrYyMHe12qbcF9L4GK37dQ23PBDhs8EC3FtHEaSVr7EXvlLK+z9Vu5orksgn
+ +OSLI0yvm8apNrIIGjPmbbz+zE1pcH5aBB+7bvoikW8ZVxfZaDAGkQdIqqUenDWa1N9X
+ NfNyfYg/hcGso23VWFVSe2xLBCS6DAoD7ODLNlo1i00bStVoL+hyNYDU5n2oGVGQn0AW
+ Lma3NEKkQN2XLIcnxnmccmSYt0Qwlusvj9OeutMPdI+D/6IzK91pWmMsIghIqXTLowiS
+ t61INTklP/JOrW65IdI2GkruitSbfqfegxIb+/ziN6aCyCpZhBYLNai6gdEIv+iFPzXz
+ LxNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791859440; x=1792464240;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=Y7gkPMEVzzW21UVYNugAEa18gFl3PM/FhZ5WgMxgA2M=;
+ b=j5yhoIieA4XHoYcGJ/blIFkKNjW8Eh3axqZIxFOlKVUzOEOdhQ1BjCYF72PE07tCnX
+ J5nu1EfUb5tf9WaJ8W6hlOBxwockLdisb8I8iy4ZPhXfV5j6O5qhaERJi+W8/orjfftD
+ XyUsPkGm9OkFhP70Y4SXJcsAR0Q1UA5h2EVnN21B5PQmrEJfJS1fkGipgaRINrLB+g/J
+ D/MfGNJbD99uF8yFFRvaN4WRfQHjW+3N/m0I1YpNrNmJxRuFY/80NFz60APgaWGhhxTL
+ xDyIPLhj1Dm2pF5OJk87yB+MctjIujKaJsP3DObdc2srMJXedx0zx2RNrsYJj9Vl3Cdt
+ 4LJA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBy9O8TQ1Ac0Nuu8hrBIelWE8OF4iF8Jyz64x1bnN3SnzrjOefS9UgOiEKXqRmha4JsYgXGZBstc/w==@nongnu.org
+X-Gm-Message-State: AFq9FYI79jTLHTTTeHwzQwqLo57iJzivGp4c/bu6AsMU8HG3cKmoT36i
+ 5cbyFMF85bds4mrCXy7ToMIuTD0nsyG9Dx00MKbDREgDgu2m0OAJrgfGeFFGuqLEqnQO+5LfssQ
+ aiigTcAOToo9aCenWX/H6e71IMplSJ88=
+X-Gm-Gg: AYBFou0tdn2JnOtlZMp8WsREKrapaKdzFBkmGKEci2s1P9LNEhZUCX7KAYKMoGUvPkO
+ CmDujGnglVft5T5FGWA+J499boWN1FKYV/vQTLSqr0i9bGOes6VwkHZK4qOokbfw4rW4OB/5oH1
+ ynMdEkioUyOz78kU92t7tJMvQkPr8/OcN9ElytPzClawDCzvxUyk6qN209BzARQG3ZpyK3JspmP
+ TYGs7SpYUGdJs5A6UxBSFw73MkIZtu6+dmDhYSH+C6NHiKZWUokDwz13SoGD8FaB95UjD8qePfh
+ 2uwAtAK/8j3OFBGrdP9Xo2Gp10XwuwxSKb15p6+aXRrCF/ilKetC/ls=
+X-Received: by 2002:a05:6402:4486:b0:6aa:f630:f846 with SMTP id
+ 4fb4d7f45d1cf-6b17c26a90fmr9728221a12.31.1791859439355; Mon, 12 Oct 2026
+ 19:43:59 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: SbPuCERhzTM5AQueo11jl8gGr9WY4zAp9GbLVv4eCs9kFbYgpj8UrIt4cIxGooAoihBme+Qaf5e/14IPra7oSG1e27AZt7J0CLTtwwBuNzPCsep3GFndiaPiB0mvYU2SY2qIaOBSc5TXYk19jh68VttmtjnwHG3McGbp/m4Twu4X9lihlfsWC0z/kQ+Jcs9I2WUtkxqAlK2Bf1sg5d3v4kbcX5FHo81xW3G+kauZQFBH3CivGYLDUL+4k/mSr24jb3bU1mZDCzwS2NqwIT0Wk2RyyOb+F50Fk/icX0cYXqqqfe1wndbDybjxobNegG+beCIMRBHZc6dk+mwThDvOHA==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aae40d5a-32b7-4558-25c5-08df28c98808
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Oct 2026 01:30:14.5643 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: v6jxdCHLD/ngQL2zxINT3G/6tA2MEIO0pdZsHNSt/rQ8nopPZhh1qIb3WOZlftPhNVkaZEKu856Te6QGGe80pYuC0y0BaOhmFFF300Ya6R4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5833
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+References: <20261007115253.328-1-luoyonggang@gmail.com>
+ <2390b3d7-6918-41e3-8532-c19de4cdd1ff@oss.qualcomm.com>
+ <asdlbOZBSYIaCMIh@redhat.com>
+ <CAE2XoE91XxoJRFpQ_1jhmX6LdxMyN16CF7RXxM62C5Ctkc1tig@mail.gmail.com>
+ <42fd67c0-c20d-4bc4-bede-79073e4be4a1@oss.qualcomm.com>
+ <CAE2XoE-gN5-vmE8r00Ds_Z=E1WePSFi_MJXjmy9ZuXEU_=o31g@mail.gmail.com>
+ <3034c146-0697-4db7-acd4-8076b317a09e@oss.qualcomm.com>
+ <CAE2XoE-gCTrpEeCROz9JMpPnTQXQ+AnBTR4RwdQhYizkExjK9w@mail.gmail.com>
+ <8cb24445-b659-4bd4-9497-888ce152e82d@oss.qualcomm.com>
+ <1a477877-516a-41b8-8548-598bfad74f25@oss.qualcomm.com>
+ <CAE2XoE_MotPuxBBkLFWmcDf6ACva2r7y-7sRbQ3DNNwZvXcJFQ@mail.gmail.com>
+ <ae0dcb2d-1488-4cea-8bc0-2a0cb2cd74be@oss.qualcomm.com>
+In-Reply-To: <ae0dcb2d-1488-4cea-8bc0-2a0cb2cd74be@oss.qualcomm.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Tue, 13 Oct 2026 10:43:46 +0800
+X-Gm-Features: AclHuK9jmhqYMCRki5xsSX5FQKfrLz1BtUZP9c2TRveS9rt10eKENNqWPDFZ2Ec
+Message-ID: <CAE2XoE9B8RXg6=6kofVA=d6C5OBXT9GZ2cPceWUUDa4m9=_fRg@mail.gmail.com>
+Subject: Re: [PATCH 0/8] qom: pass TargetInfo to the is_available callback
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ qemu-devel@nongnu.org, Cleber Rosa <crosa@redhat.com>, 
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
+ qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
+ Darren Kenny <darren.kenny@oracle.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -156,130 +143,309 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgTWFyYy1BbmRyw6kgTHVyZWF1DQoNCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MyA1LzhdIGh3
-L3VzYi9yZWRpcmVjdC1zZXJ2ZXI6IEltcGxlbWVudCBjb250cm9sDQo+IHRyYW5zZmVycw0KPiAN
-Cj4gPiBUaGUgaG9zdCBzZW5kcyBhIGNvbnRyb2xfcGFja2V0LiBUdXJuIGl0IGludG8gdGhlIFNF
-VFVQLCBEQVRBIGFuZA0KPiA+IFNUQVRVUyB0b2tlbnMgdGhlIFFFTVUgVVNCIGNvcmUgd2FudHMs
-IHJ1biB0aGVtIG9uIHRoZSBkZXZpY2UsIGFuZA0KPiA+IHNlbmQgdGhlIGFuc3dlciBiYWNrLg0K
-PiA+DQo+ID4gVGhlIGRldmljZSBtYXkgYW5zd2VyIGxhdGVyLCBzbyB3ZSBoYXZlIHRvIHJlbWVt
-YmVyIHRoZSBwYWNrZXRzIHdlDQo+ID4gc2VudC4gRWFjaCBvbmUgc3RheXMgb24gYSBsaXN0IHVu
-dGlsIGl0IGNvbWVzIGJhY2suIFdlIGRyb3AgdGhlIHdob2xlDQo+ID4gbGlzdCBvbiBhIGJ1cyBy
-ZXNldCBvciBhIGNoYXJkZXYgY2xvc2UuIFdoZW4gdGhlIGhvc3QgYXNrcyB1cyB0bw0KPiA+IGNh
-bmNlbCBhIHBhY2tldCwgd2UgYW5zd2VyIGl0IGFuZCBkcm9wIGl0Lg0KPiA+DQo+ID4gdXNicmVk
-aXIgaGFzIGl0cyBvd24gbWVzc2FnZXMgZm9yIHNldF9jb25maWd1cmF0aW9uLA0KPiA+IGdldF9j
-b25maWd1cmF0aW9uLCBzZXRfYWx0X3NldHRpbmcgYW5kIGdldF9hbHRfc2V0dGluZy4gRWFjaCBv
-bmUgaXMgYQ0KPiA+IGNvbnRyb2wgdHJhbnNmZXIsIHNvIHJ1biBpdCBsaWtlIG9uZSBhbmQgc2Vu
-ZCBiYWNrIHRoZSBzdGF0dXMgbWVzc2FnZS4NCj4gPg0KPiA+IHVzYnJlZGlyIHdhbnRzIGFuIGVw
-X2luZm8gbWVzc2FnZS4gSXQgc2F5cyB3aGF0IGtpbmQgZWFjaCBlbmRwb2ludCBpczoNCj4gPiBi
-dWxrLCBpbnRlcnJ1cHQgb3IgY29udHJvbC4gUUVNVSBjYW5ub3QgdGVsbCB1cy4gSXQgb25seSBr
-bm93cyBhZnRlcg0KPiA+IGl0IGhhcyByZWFkIHRoZSBkZXZpY2UncyBkZXNjcmlwdG9ycywgYW5k
-IGl0IG5ldmVyIHJlYWRzIHRoZW0gZm9yIGENCj4gPiBkZXZpY2UgdGhhdCBqdXN0IGZvcndhcmRz
-IHRyYW5zZmVycy4gU28gd2UgcmVhZCB0aGVtIG91cnNlbHZlczogdGhlDQo+ID4gY29uZmlndXJh
-dGlvbiBkZXNjcmlwdG9yIHBhc3NlcyB0aHJvdWdoIHVzIG9uIGl0cyB3YXkgdG8gdGhlIGhvc3Qu
-DQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBKYW1pbiBMaW4gPGphbWluX2xpbkBhc3BlZWR0ZWNo
-LmNvbT4NCj4gPiBNZXNzYWdlLUlEOiA8MjAyNjEwMTIwMjE2MzQuMjAwNjQyNC02LWphbWluX2xp
-bkBhc3BlZWR0ZWNoLmNvbT4NCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9ody91c2IvcmVkaXJlY3Qt
-c2VydmVyLmMgYi9ody91c2IvcmVkaXJlY3Qtc2VydmVyLmMgaW5kZXgNCj4gPiAwNWVlMGYzODcz
-NmUuLjIyMDgzMzk0YWI0MSAxMDA2NDQNCj4gPiAtLS0gYS9ody91c2IvcmVkaXJlY3Qtc2VydmVy
-LmMNCj4gPiArKysgYi9ody91c2IvcmVkaXJlY3Qtc2VydmVyLmMNCj4gPiBAQCAtNjMsOSArNjMs
-MTEgQEANCj4gPiAgI2luY2x1ZGUgInFvbS9vYmplY3QuaCINCj4gPg0KPiA+ICAjaW5jbHVkZSA8
-dXNicmVkaXJwYXJzZXIuaD4NCj4gPiArI2luY2x1ZGUgPHVzYnJlZGlycHJvdG8uaD4NCj4gPg0K
-PiA+ICAjaW5jbHVkZSAiaHcvY29yZS9xZGV2LXByb3BlcnRpZXMuaCINCj4gPiAgI2luY2x1ZGUg
-Imh3L2NvcmUvcWRldi1wcm9wZXJ0aWVzLXN5c3RlbS5oIg0KPiA+ICsjaW5jbHVkZSAiZGVzYy5o
-Ig0KPiA+ICAjaW5jbHVkZSAidHJhY2UuaCINCj4gPg0KPiA+ICAjZGVmaW5lIFRZUEVfVVNCX1JF
-RElSX1NFUlZFUiAieC11c2ItcmVkaXItc2VydmVyIg0KPiA+IEBAIC03Myw2ICs3NSw0MSBAQCBP
-QkpFQ1RfREVDTEFSRV9TSU1QTEVfVFlQRShVU0JSZWRpclNlcnZlciwNCj4gPiBVU0JfUkVESVJf
-U0VSVkVSKQ0KPiA+DQo+ID4gICNkZWZpbmUgVVNCUkVESVJfU0VSVkVSX1ZFUlNJT04gInFlbXUg
-IiBUWVBFX1VTQl9SRURJUl9TRVJWRVIgIg0KPiAiDQo+ID4gUUVNVV9WRVJTSU9ODQo+ID4NCj4g
-PiArLyoNCj4gPiArICogVGhlIHVzYnJlZGlyIGVwX2luZm8gbWVzc2FnZSBoYXMgb25lIHNsb3Qg
-cGVyIGVuZHBvaW50IGFuZCBkaXJlY3Rpb24uDQo+ID4gKyAqIEluZGV4IDAtMTUgYXJlIHRoZSBP
-VVQgZW5kcG9pbnRzLCAxNi0zMSB0aGUgSU4gb25lcy4NCj4gPiArICovDQo+ID4gKyNkZWZpbmUg
-VVNCUkVESVJfU0VSVkVSX01BWF9FUCAzMg0KPiA+ICsjZGVmaW5lIFVTQlJFRElSX1NFUlZFUl9F
-UF9JTl9CQVNFIDE2DQo+ID4gKw0KPiA+ICsjZGVmaW5lIFVTQlJFRElSX1NFUlZFUl9DVFJMX1NF
-VFVQIDANCj4gPiArI2RlZmluZSBVU0JSRURJUl9TRVJWRVJfQ1RSTF9TVEFUVVMgMQ0KPiA+ICsN
-Cj4gPiArLyogV2hpY2ggbWVzc2FnZSBhbnN3ZXJzIHRoZSBob3N0IHdoZW4gYSBjb250cm9sIHRy
-YW5zZmVyIGVuZHMuICovDQo+ID4gK3R5cGVkZWYgZW51bSB7DQo+ID4gKyAgICBVU0JSRURJUl9T
-RVJWRVJfUkVQTFlfQ09OVFJPTCwNCj4gPiArICAgIFVTQlJFRElSX1NFUlZFUl9SRVBMWV9DT05G
-SUcsDQo+ID4gKyAgICBVU0JSRURJUl9TRVJWRVJfUkVQTFlfQUxULA0KPiA+ICt9IFVTQlJlZGly
-U2VydmVyUmVwbHk7DQo+ID4gKw0KPiA+ICt0eXBlZGVmIHN0cnVjdCBVU0JSZWRpclNlcnZlclBr
-dCB7DQo+ID4gKyAgICBVU0JQYWNrZXQgcGt0Ow0KPiA+ICsNCj4gPiArICAgIC8qIFNhdmVkIGhl
-YWRlcnMgZm9yIHRoZSB1c2JyZWRpciByZXNwb25zZSAqLw0KPiA+ICsgICAgc3RydWN0IHVzYl9y
-ZWRpcl9jb250cm9sX3BhY2tldF9oZWFkZXIgY3RybF9oZHI7DQo+ID4gKw0KPiA+ICsgICAgLyoN
-Cj4gPiArICAgICAqIFRoZSBJT1YgcG9pbnRzIGhlcmUuIElOIGRhdGEgbGFuZHMgaW4gaXQsIE9V
-VCBkYXRhIGlzIGNvcGllZCBpbi4NCj4gPiArICAgICAqIEFsbG9jYXRlZCBhbmQgZnJlZWQgd2l0
-aCB0aGUgcGFja2V0OyBkYXRhX3NpemUgaXMgaG93IGJpZyBpdCBpcy4NCj4gPiArICAgICAqLw0K
-PiA+ICsgICAgdWludDhfdCAqZGF0YTsNCj4gPiArICAgIGludCBkYXRhX3NpemU7DQo+ID4gKyAg
-ICBRVEFJTFFfRU5UUlkoVVNCUmVkaXJTZXJ2ZXJQa3QpIG5leHQ7DQo+ID4gKyAgICBVU0JSZWRp
-clNlcnZlclJlcGx5IHJlcGx5Ow0KPiA+ICsgICAgdWludDY0X3QgcmVkaXJfaWQ7DQo+ID4gKyAg
-ICBpbnQgdHlwZTsNCj4gPiArfSBVU0JSZWRpclNlcnZlclBrdDsNCj4gPiArDQo+ID4gIHN0cnVj
-dCBVU0JSZWRpclNlcnZlciB7DQo+ID4gICAgICBTeXNCdXNEZXZpY2UgcGFyZW50X29iajsNCj4g
-Pg0KPiA+IEBAIC05Miw4ICsxMjksMjMgQEAgc3RydWN0IFVTQlJlZGlyU2VydmVyIHsNCj4gPiAg
-ICAgIGd1aW50IHdhdGNoOw0KPiA+ICAgICAgYm9vbCBob3N0X2Nvbm5lY3RlZDsNCj4gPiAgICAg
-IGJvb2wgZGV2aWNlX2Fubm91bmNlZDsNCj4gPiArDQo+ID4gKyAgICAvKiBJbi1mbGlnaHQgcGFj
-a2V0IHRyYWNraW5nICovDQo+ID4gKyAgICBRVEFJTFFfSEVBRCgsIFVTQlJlZGlyU2VydmVyUGt0
-KSBpbmZsaWdodDsNCj4gPiArICAgIHVpbnQ2NF90IG5leHRfaWQ7DQo+ID4gKw0KPiA+ICsgICAg
-LyogRW5kcG9pbnQgdGFibGVzIGZvciB0aGUgdXNicmVkaXIgZXBfaW5mbyBtZXNzYWdlLiAqLw0K
-PiA+ICsgICAgdWludDhfdCBlcF90eXBlW1VTQlJFRElSX1NFUlZFUl9NQVhfRVBdOw0KPiA+ICsg
-ICAgdWludDE2X3QgZXBfbWF4X3BhY2tldFtVU0JSRURJUl9TRVJWRVJfTUFYX0VQXTsNCj4gPiAr
-ICAgIHVpbnQ4X3QgZXBfaW50ZXJ2YWxbVVNCUkVESVJfU0VSVkVSX01BWF9FUF07DQo+ID4gKyAg
-ICB1aW50OF90IGVwX2lmYWNlW1VTQlJFRElSX1NFUlZFUl9NQVhfRVBdOw0KPiA+ICB9Ow0KPiA+
-DQo+ID4gK3N0YXRpYyB2b2lkIHVzYnJlZGlyX3NlcnZlcl9wa3RfZnJlZShVU0JSZWRpclNlcnZl
-clBrdCAqcnApOyBzdGF0aWMNCj4gPiArdm9pZCB1c2JyZWRpcl9zZXJ2ZXJfc3RvcF90cmFuc2Zl
-cnMoVVNCUmVkaXJTZXJ2ZXIgKnMpOyBzdGF0aWMgdm9pZA0KPiA+ICt1c2JyZWRpcl9zZXJ2ZXJf
-c2VuZF9jYW5jZWxsZWQoVVNCUmVkaXJTZXJ2ZXIgKnMsDQo+ID4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBVU0JSZWRpclNlcnZlclBrdA0KPiAqcnApOw0KPiA+
-ICsNCj4gPiAgLyoNCj4gPiAgICogVGhlIGRldmljZSBpcyB3aGF0ZXZlciBVU0JEZXZpY2UgdGhl
-IHVzZXIgcGx1Z2dlZCBpbnRvIG91ciBwb3J0IHdpdGgNCj4gPiAgICogIi1kZXZpY2UgPGRldmlj
-ZT4sYnVzPTxpZD4uMCIuIE5VTEwgdW50aWwgdGhlbi4NCj4gPiBAQCAtMTA0LDkgKzE1Niw5OCBA
-QCBzdGF0aWMgVVNCRGV2aWNlDQo+ID4gKnVzYnJlZGlyX3NlcnZlcl9kZXZpY2UoVVNCUmVkaXJT
-ZXJ2ZXIgKnMpICB9DQo+ID4NCj4gPiAgLyoNCj4gPiAtICogRGV2aWNlIGFubm91bmNlbWVudA0K
-PiA+ICsgKiBEZXNjcmlwdG9yIHNub29waW5nIGFuZCBkZXZpY2UgYW5ub3VuY2VtZW50DQo+ID4g
-ICAqLw0KPiA+DQo+ID4gK3N0YXRpYyB2b2lkIHVzYnJlZGlyX3NlcnZlcl9yZWNvcmRfZW5kcG9p
-bnQoVVNCUmVkaXJTZXJ2ZXIgKnMsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgY29uc3QgVVNCRGVzY3JpcHRvcg0KPiAqZGVzYywNCj4gPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1aW50OF90IGlmYWNlKSB7DQo+
-ID4gKyAgICB1aW50OF90IGFkZHI7DQo+ID4gKyAgICBpbnQgZXBfbnI7DQo+ID4gKyAgICBpbnQg
-aWR4Ow0KPiA+ICsNCj4gPiArICAgIGlmIChkZXNjLT5iTGVuZ3RoIDwgNykgew0KPiA+ICsgICAg
-ICAgIHJldHVybjsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAgICBhZGRyID0gZGVzYy0+dS5l
-bmRwb2ludC5iRW5kcG9pbnRBZGRyZXNzOw0KPiA+ICsgICAgZXBfbnIgPSBhZGRyICYgMHgwZjsN
-Cj4gPiArICAgIGlkeCA9IChhZGRyICYgVVNCX0RJUl9JTikgPyBlcF9uciArIFVTQlJFRElSX1NF
-UlZFUl9FUF9JTl9CQVNFIDoNCj4gZXBfbnI7DQo+ID4gKyAgICBpZiAoZXBfbnIgPCAxIHx8IGlk
-eCA+PSBVU0JSRURJUl9TRVJWRVJfTUFYX0VQKSB7DQo+ID4gKyAgICAgICAgcmV0dXJuOw0KPiA+
-ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIHMtPmVwX3R5cGVbaWR4XSA9IGRlc2MtPnUuZW5kcG9p
-bnQuYm1BdHRyaWJ1dGVzICYgMHgwMzsNCj4gPiArICAgIHMtPmVwX21heF9wYWNrZXRbaWR4XSA9
-IChkZXNjLT51LmVuZHBvaW50LndNYXhQYWNrZXRTaXplX2hpIDw8IDgpDQo+IHwNCj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGRlc2MtPnUuZW5kcG9pbnQud01heFBhY2tldFNpemVf
-bG87DQo+ID4gKyAgICBzLT5lcF9pbnRlcnZhbFtpZHhdID0gZGVzYy0+dS5lbmRwb2ludC5iSW50
-ZXJ2YWw7DQo+ID4gKyAgICBzLT5lcF9pZmFjZVtpZHhdID0gaWZhY2U7DQo+ID4gK30NCj4gPiAr
-DQo+ID4gKy8qDQo+ID4gKyAqIEEgZGV2aWNlIHRoYXQgb25seSBwYXNzZXMgdHJhbnNmZXJzIHRo
-cm91Z2ggbmV2ZXIgZ2V0cyBpdHMNCj4gPiArZW5kcG9pbnQNCj4gPiArICogdHlwZXMgZmlsbGVk
-IGluOiB0aGV5IHN0YXkgSU5WQUxJRCBhbmQgdGhlcmUgaXMgbm90aGluZyB0byBwdXQgaW4NCj4g
-PiArICogZXBfaW5mby4gVGFrZSB0aGVtIGZyb20gdGhlIGNvbmZpZ3VyYXRpb24gZGVzY3JpcHRv
-ciBhcyBpdCBnb2VzIHBhc3QuDQo+ID4gKyAqIFdpdGhvdXQgdGhlbSB0aGUgaG9zdCBzZWVzIHR5
-cGUgMjU1IGFuZCByZWZ1c2VzIHRvIG1vdmUgZGF0YS4NCj4gPiArICovDQo+ID4gK3N0YXRpYyB2
-b2lkIHVzYnJlZGlyX3NlcnZlcl9zbm9vcF9jb25maWdfZGVzYyhVU0JSZWRpclNlcnZlciAqcywN
-Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0
-IHVpbnQ4X3QNCj4gKmRhdGEsDQo+ID4gK2ludCBsZW4pIHsNCj4gPiArICAgIGNvbnN0IFVTQkRl
-c2NyaXB0b3IgKmRlc2M7DQo+ID4gKyAgICB1aW50OF90IGlmYWNlID0gMDsNCj4gPiArICAgIGlu
-dCBpID0gMDsNCj4gPiArDQo+ID4gKyAgICB3aGlsZSAoaSArIDIgPD0gbGVuKSB7DQo+ID4gKyAg
-ICAgICAgZGVzYyA9IChjb25zdCBVU0JEZXNjcmlwdG9yICopKGRhdGEgKyBpKTsNCj4gPiArDQo+
-ID4gKyAgICAgICAgaWYgKGRlc2MtPmJMZW5ndGggPCAyIHx8IGkgKyBkZXNjLT5iTGVuZ3RoID4g
-bGVuKSB7DQo+ID4gKyAgICAgICAgICAgIGJyZWFrOw0KPiA+ICsgICAgICAgIH0NCj4gPiArDQo+
-ID4gKyAgICAgICAgaWYgKGRlc2MtPmJEZXNjcmlwdG9yVHlwZSA9PSBVU0JfRFRfSU5URVJGQUNF
-ICYmDQo+IGRlc2MtPmJMZW5ndGggPj0gMykgew0KPiA+ICsgICAgICAgICAgICBpZmFjZSA9IGRl
-c2MtPnUuaW50ZXJmYWNlLmJJbnRlcmZhY2VOdW1iZXI7DQo+IA0KPiBUaGlzIHJlY29yZHMgdGhl
-IGludGVyZmFjZSBudW1iZXIgYnV0IG5vdCBiQWx0ZXJuYXRlU2V0dGluZy4gV2hlbiB0aGUgY29u
-ZmlnDQo+IGRlc2NyaXB0b3IgY2FycmllcyB0d28gYWx0ZXJuYXRlcyBmb3IgdGhlIHNhbWUgaW50
-ZXJmYWNlLCBib3RoIGFyZSB3YWxrZWQgYW5kDQo+IHRoZWlyIGVuZHBvaW50cyBvdmVyd3JpdGUg
-ZWFjaCBvdGhlciBpbiB0aGUgZXAgdGFibGVzLg0KPiBBZnRlciBTRVRfSU5URVJGQUNFIHNlbGVj
-dHMgYWx0ZXJuYXRlIDAsIGVwX2luZm8gbWF5IHN0aWxsIGRlc2NyaWJlIHRoZQ0KPiBlbmRwb2lu
-dHMgb2YgYWx0ZXJuYXRlIDEuDQo+IA0KPiBZb3Ugc2hvdWxkIGJlIGFibGUgdG8gY2FjaGUgdGhl
-IGNvbmZpZyBkZXNjcmlwdG9yIGFuZCByZS1wYXJzZXMgaXQgd2hlbiB0aGUNCj4gYWN0aXZlIGFs
-dGVybmF0ZSBjaGFuZ2VzIGF0IGN0cmxfc3RhdHVzX2NvbXBsZXRlKCksIHdoZW4gc2VuZGluZyB0
-aGUgbmV3DQo+IHNlbmRfZXBfaW5mbygpLg0KPiANCg0KVGhhbmtzIGZvciB0aGUgcmV2aWV3IGFu
-ZCBzdWdnZXN0aW9uLg0KV2lsbCBmaXggaXQuDQoNCkphbWluDQoNCj4gLS0NCj4gTWFyYy1BbmRy
-w6kgTHVyZWF1IDxtYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20+DQoNCg==
+On Tue, Oct 13, 2026 at 9:26=E2=80=AFAM Pierrick Bouvier
+<pierrick.bouvier@oss.qualcomm.com> wrote:
+>
+> On 10/11/26 9:26 PM, Yonggang Luo wrote:
+> > On Mon, Oct 12, 2026 at 10:25=E2=80=AFAM Pierrick Bouvier
+> > <pierrick.bouvier@oss.qualcomm.com> wrote:
+> >>
+> >> On 10/11/26 7:13 PM, Pierrick Bouvier wrote:
+> >>> On 10/11/26 1:22 PM, Yonggang Luo wrote:
+> >>>> On Fri, Oct 9, 2026 at 2:34=E2=80=AFAM Pierrick Bouvier
+> >>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
+> >>>>>
+> >>>>> On 10/8/2026 10:13 AM, Yonggang Luo wrote:
+> >>>>>> On Fri, Oct 9, 2026 at 12:06=E2=80=AFAM Pierrick Bouvier
+> >>>>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
+> >>>>>>>
+> >>>>>>> On 10/8/2026 2:46 AM, Yonggang Luo wrote:
+> >>>>>>>> On Thu, Oct 8, 2026 at 5:42=E2=80=AFPM Daniel P. Berrang=C3=A9 <=
+berrange@redhat.com> wrote:
+> >>>>>>>>>
+> >>>>>>>>> On Wed, Oct 07, 2026 at 01:25:46PM -0700, Pierrick Bouvier wrot=
+e:
+> >>>>>>>>>> On 10/7/2026 4:47 AM, Yonggang Luo wrote:
+> >>>>>>>>>>> This allows a combined binary to register machine types from =
+all its targets.
+> >>>>>>>>>>> Consequently, QMP `query-machines` can return machine entries=
+ from every
+> >>>>>>>>>>> target, even when `none` is selected. For example, a client c=
+an query the
+> >>>>>>>>>>> combined machine list with:
+> >>>>>>>>>>>
+> >>>>>>>>>>> ```json
+> >>>>>>>>>>> { "execute": "query-machines" }
+> >>>>>>>>>>> ```
+> >>>>>>>>>>>
+> >>>>>>>>>>> The returned list includes the registered machine classes fro=
+m all linked
+> >>>>>>>>>>> targets. This is separate from selecting a machine: with `-ta=
+rget none`,
+> >>>>>>>>>>> `-M virt` reports the targets that provide `virt` instead of =
+choosing one
+> >>>>>>>>>>> arbitrarily:
+> >>>>>>>>>>>
+> >>>>>>>>>>> ```text
+> >>>>>>>>>>> qemu-system -target none -M virt
+> >>>>>>>>>>> unsupported machine type: "virt" for target "none"
+> >>>>>>>>>>> Available for targets:
+> >>>>>>>>>>>      aarch64
+> >>>>>>>>>>>      arm
+> >>>>>>>>>>> ```
+> >>>>>>>>>>>
+> >>>>>>>>>>
+> >>>>>>>>>>    From the long conversation on a previous thread, I thought =
+we reached
+> >>>>>>>>>> the conclusion that if we didn't expose any ambiguous name, th=
+en -target
+> >>>>>>>>>> option is unnecessary, or maybe I got lost on track of this th=
+read.
+> >>>>>>>>>>
+> >>>>>>>>>> https://lore.kernel.org/qemu-devel/ar_coT44h5-zJPVV@redhat.com=
+/
+> >>>>>>>>>>
+> >>>>>>>>>> I'm not sure which semantic we want to have with -target none.=
+ If there
+> >>>>>>>>>> is no ambiguous name registered, we just don't need it at all.=
+ It's a
+> >>>>>>>>>> win-win IMHO.
+> >>>>>>>>>
+> >>>>>>>>> Yes, if we expose unique names for every machine, then -target =
+is then
+> >>>>>>>>> redundant.
+> >>>>>>>>
+> >>>>>>>> so how to diff riscv32-virt and risv64-virt? oh so for this mach=
+ine we
+> >>>>>>>> needs two name?
+> >>>>>>>> "virt" needs register twice for it? or register only a single ti=
+me,
+> >>>>>>>> but we prefix the target_name()
+> >>>>>>>> automatically? for example machine::name =3D=3D=3D "virt", but w=
+e can use
+> >>>>>>>> "riscv32-virt" "risv64-virt" to reach it?
+> >>>>>>>>
+> >>>>>>>
+> >>>>>>> Yes, ideally we should have different variant of virt for 32/64 b=
+it.
+> >>>>>>> Same goes for cpu max types.
+> >>>>>>>
+> >>>>>>> QOM type is always registered unambiguously ("$arch-virt"). Then,=
+ for
+> >>>>>>> the "alias" name, which is virt, in case multiple matches are fou=
+nd,
+> >>>>>>> command line can return an error with list of unambiguous names t=
+o call it.
+> >>>>>>>
+> >>>>>>> $ qemu-system -M virt
+> >>>>>>> Multiple virt machines are available. Please choose one of them:
+> >>>>>>> - aarch64-virt
+> >>>>>>> - riscv64-virt
+> >>>>>>>
+> >>>>>>> There is no "parsing" of the argument, it's just the real QOM typ=
+e. Then
+> >>>>>>> we can find which target it implements from mc->targets.
+> >>>>>>> And then, we can automatically choose which cpus should be availa=
+ble
+> >>>>>>> based on that, thanks to cpu->targets.
+> >>>>>>>
+> >>>>>>> For existing binaries, nothing change.
+> >>>>>>
+> >>>>>> Good, I think we found a clean way now, is_available should be
+> >>>>>> removed, and TypeInfo::targets and TypeImpl::targets should be add=
+ed.
+> >>>>>
+> >>>>> It goes into MachineClass only for now.
+> >>>>>
+> >>>>>> I think
+> >>>>>> for "virt" we can add a shared hw/machine-virt.c instead, and forw=
+arding to
+> >>>>>> the $arch specific virt. so that we only have a single "virt" regi=
+stered.
+> >>>>>> And it's
+> >>>>>> targets is
+> >>>>>> QEMU_ARCH_I386 |
+> >>>>>> QEMU_ARCH_ARM |
+> >>>>>> QEMU_ARCH_RISCV |
+> >>>>>> QEMU_ARCH_LOONGARCH |
+> >>>>>> QEMU_ARCH_M68K |
+> >>>>>> QEMU_ARCH_OR1K |
+> >>>>>> QEMU_ARCH_XTENSA |
+> >>>>>> QEMU_ARCH_HEXAGON
+> >>>>>>
+> >>>>>> So that we won't have a list of conflict QOM names for "virt" mach=
+ines.
+> >>>>>> As now we indeed have only a single "virt" machine that redirects =
+to
+> >>>>>> different targets.
+> >>>>>>
+> >>>>>
+> >>>>> The idea looks appealing, but I don't think it solves the problem t=
+o
+> >>>>> have multiple virt variants available at the same time.
+> >>>>>
+> >>>>> The "alias" idea you introduced before is good, we just need to add=
+ a
+> >>>>> check if an alias is really unique, else return an error, as explai=
+ned
+> >>>>> previously.
+> >>>>>
+> >>>>> If "-M aarch64-virt" works for both the new and existing binary, an=
+d -M
+> >>>>> virt only for existing binaries (and ambiguous for new one), I thin=
+k
+> >>>>> that's a safe approach.
+> >>>>>
+> >>>>>>
+> >>>>>> For other types also conflict can be handled in the same way, such=
+ as
+> >>>>>> "-cpu host" "-cpu max"
+> >>>>>> maybe others, but I think they all have the same way to deal with.
+> >>>>>>
+> >>>>>>
+> >>>>>> That's why  TypeInfo::targets and TypeImpl::targets better than so=
+le
+> >>>>>> Machine::targets
+> >>>>>>
+> >>>>>
+> >>>>> One step at a time.
+> >>>>> Let's keep focused on declaring targets for a single machine first.
+> >>>>> Then we can iterate to solve the "virt" problem.
+> >>>>> Then convert all the existing machines and add a check in machine-t=
+arget.c
+> >>>>> Then, and only then, we can see what happens with cpus.
+> >>>>
+> >>>> I tried this idea, but I faced a fatal error, because the
+> >>>> target_info() is not available until
+> >>>> the machine selected(the target arch will be select just along with
+> >>>> the machine selected), so basically
+> >>>> all calls to target_info() would raise an error(null pointer), how t=
+o
+> >>>> deal with it?
+> >>>>
+> >>>
+> >>> I see. Indeed, since we can't set a target before registering all typ=
+es,
+> >>> it implies that all the types class_init can't use target_* functions=
+.
+> >>>
+> >>>
+> >>> - register_accel_target_type
+> >>> - cpu_max_v8_register_type
+> >>>
+> >>
+> >> Sorry, mail sent to early.
+> >>
+> >> For the is_available callback usage, it should be easy to do the switc=
+h,
+> >> since it's basically the same information that what we are trying to d=
+o
+> >> - we can leave them for now.
+> >>
+> >> Some types (like accel and max mentioned above), explicitly change the=
+ir
+> >> definition depending on the target. It's a behavior we can't rely on
+> >> anymore, and it means we need proper distinct types instead of a singl=
+e
+> >> one with dynamic definition driven by target-info.
+> >>
+> >> I think that's the preliminary work needed, before being able to go
+> >> further: convert all existing usage in class_init with distinct types =
++
+> >> is_available, and then we can do the switch from is_available to the n=
+ew
+> >> .targets approach.
+> >
+> > Hi Pierrick,
+> > I have already tried that introducing new QOM names just to make class_=
+init
+> >   target-independent is too broad(means all usage of it should be handl=
+ed)
+> > and could complicate compatibility(changed too much code).
+> > Can we avoid new names by some new means(ideas welcome)?
+> >
+>
+> As a first step, I don't think we need new names, is_available can be
+> used to selectively register one definition or another and avoid any
+> clash. What is missing at the moment though, is that some types (like
+> cpu max above) change their definition based on target definition.
+
+
+>
+> So for cpu max, we would have two distinct types, both named max, but
+> one with is_available(target_arm), and other one with
+> is_available(target_aarch64), so they are never registered at the same ti=
+me.
+
+>
+> Same for virt machines. It's already what we have, duplication is
+> handled at the moment with distinct is_available callbacks.
+>
+> Then, see below.
+>
+> >
+> >>
+> >> It's probably worth having the conversion in its own series (only
+> >> cleanup usage of target_* in class_init), before trying to get rid of
+> >> is_available.
+> >
+> >>
+> >> For the implementation, you can use the multi-targets.c binary test to
+> >> drive the change. Remove the module init for target info (leaving no
+> >> target set), and add a hacky patch to skip call to is_available (and
+> >> return true instead) and allow double definition (which will rely on
+> >> is_available). Then, fix all the segfault. Once it compiles and runs,
+> >> only double definition will be left, which can be handled by inserting
+> >> the right is_available callbacks. Then in a subsequent series, the
+> >> switch to .targets can be made.
+> >
+> >
+> > Still have no clean clue about how to remove is_available , as we have =
+many
+> > "virt" machines. Do you means all "virt" machines with "virt-machine" Q=
+OM names
+> > are inserted to the table? How to get it working because the "key" is s=
+tring.
+> >
+>
+> Once we have type definition which only depends on is_available, we can
+> convert this to .targets, which would contain the same information.
+> For the rest, I have some ideas, but I would like first we do the first
+> part (convert to is_available), which is already a huge work in itself,
+> and a series of its own.
+
+Indeed I am confused .targets only exists on Machine, how is it
+related to -cpu host -cpu max?
+
+
+I already have a working copy that does not depend on target_info()
+and selects target_info() when the machine
+is selected, no QOM name introduced. only for machines, we will have
+$target_name-$machine_name as a name for selecting
+the exact machine.
+
+The cpu max cpu host is dealt by moving the choose code out of
+class_init, into object_init. I really did not get your idea by use
+is_avaiable. because when I try to get all QOMs to be registered. then
+I won't call is_available at all.
+because "is_available" depends on target_info(),(we won't have
+target_info() till the machine is selected).
+
+>
+> Regards,
+> Pierrick
+
+
+
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 

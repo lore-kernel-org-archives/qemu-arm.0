@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1D2ACA9ED2
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:43:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80070CA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:44:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY3d-0007aG-Ur; Tue, 13 Oct 2026 04:40:26 -0400
+	id 1xGY3p-00088X-G0; Tue, 13 Oct 2026 04:40:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3Q-00071p-0J
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:14 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1xGY3Q-00075l-V9
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:15 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3L-0007p3-HV
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:10 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4a16bc2278aso18549485e9.1
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:04 -0700 (PDT)
+ id 1xGY3L-0007cz-ID
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:12 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4a1682bff3cso12726895e9.1
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880804; x=1792485604; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880799; x=1792485599; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=8uQRGGo33+t5uuGFTo4Z4S7EgGCw82RRO0sVfMQiO1g=;
- b=pI23lG78nJg3xQ4N/7hdnQNGXYZwk/4oXoWd9bUNxrxBWTpOF4+1nlLyrhLoeiC8OE
- LbBR47IOIuDEQKOFrS3clwJKD7pxLzIaQI4NS3y66MI9Bn3qbAuvCN4yksZuPMV5utTu
- 3HYB6P89ZUsB2vmH433t2Xv1PbbRALYvGeVDuzAB+VyamSac9dVOvbvyH1HVQMq4Nl+E
- KjSOVOcY1IGxAIKuFGzyXbbJalwef77p6kSRO7lKt7bM+kD8Q9s1hjcexKEKeBE7y553
- 7jpuJqzEW+XVCR+8zEZaCCH0FngcQrFKeYD6RWXfJ30B5iCN3ql5fitgbfVc8Q5U62kt
- wtgw==
+ bh=7xlfYHyIYxKoALR890FGz7sTstMZUZWDOD7rBywE0fs=;
+ b=vF8XZMNfRabwmEJeKKFs9YYjE+l+gRDlxofuaZJYBecBDRR9OiYros4kQZ9JnH8bos
+ Ae6WiueLaGGMFdizoY+rYXQ1zRqisqnIGqVciA/WLA6bmTzPgDvUWE4jaoG/v4IJLqxK
+ xKF1aXE1vpbptyl1DVEnnLQWrPTDREaSX5LDJtUSoQ+8ZbNAb0DPOUnoO6ffiE8t4aqV
+ HbogZ6P67LRLQsh9CTdC58CtOqJcZvY8hDxWaN4z2G5QaZbgPUd5ERQYJ4pt+J/fZYtO
+ 7Z2giW1uV4hG0o2oIC/9ExNxbMIedPnE8m0YKATXBsN6nORFXxry1L4gnLUQzafMYe1m
+ lUow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880804; x=1792485604;
+ d=1e100.net; s=20260707; t=1791880799; x=1792485599;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=8uQRGGo33+t5uuGFTo4Z4S7EgGCw82RRO0sVfMQiO1g=;
- b=L0b4QudGb/Y6xomEODXZ3yzVxS6isx1lo5EOgsGkvKPAJ2IXb30jw3gyMSatUP5dym
- vEGRhny5yY1U0Jhy1zgJJVLiXuQcGFMyizzfEiqR1240jljSGg95YTkLq6aMbcYh0ODE
- T7Ky+KUSz0ojhoP64HihYJm9er9YG5ND8ZLerULky6YIXoD+MzCf0ASO+yfj5g+YxI/U
- 71GY6MBsH5Q3+sI8g4qbly5OO7qi5EwBw1j9WXjSNnzA/Hl9XRi4TUXX2vIFu5yOgqEX
- /lz/wqchfEjur8zffp9q9fWxGewPitPSrsvglVk/yxCJbchIrbVUWXAsU1/R8lCl8Ypz
- hS6w==
-X-Gm-Message-State: AFq9FYIzEhQ+4E9CGnY1+/Ze0n5bnCU+4qPhNFtyoUdIer22pBQ6dJxD
- sVAqhWYci3txh+t5GvY8CS/8x1wTAli3fhNnJ8NhnEJ0xqCh/hLqSSHLb17lfASKFB951ZQdDOM
- Nv4yfDyQ=
-X-Gm-Gg: AYBFou3E7Sibai/PF20pWXsqa9Fri/ndfRqv3rZfrKi7w/JaryCBO/VFN+uRrYC2FQf
- RabVHmFnl6TU70CvLAVU27HqBb2RNUPMUQSz8JXbOL1OxapV79DOY6zAqgRYeCAoeRXRxQ7eiBZ
- S5PZAqKiWiwcv+PZh7wgbIpwlUbszKvQlEjZKGGlBw61S7MuOvM2dfxPebjPznt49X9ANg5WkDw
- dxAeOwvz6BbfOl/dvoRp+pdXojnyHRD5WfsHjVU78KgDOxhRurFhY+PKGV7HhvGTWkt8/1xlwO5
- LuAqGqNwJDoHRWMR1liCsXHOgm2nRamQGRQikN0ccw1jJNAi9CUT+Qi3j9wvLh7qOlCiSd/XEv9
- Be3Ajy7Zbo3bq/Da+48oqsTn3f/otzt5JwxDm2yPJXrwFJrxjAtbguQF3wfijMXGVSUV+NtPngU
- zFMmI7VKFjza1dntCt0/tsxxk9ueHfdGGU7yH3F4hMNOOsZ8QLzNFW6W+pqfhP8mRlJp2AGH7FU
- 6izNLPF4lX831Re8HTZpl76FkVcfPxNxcWyR7ac2oEWyASb31PxN7bM1rliMjMslUtmC/9L92II
- vLuJxGIe26CEcQ==
-X-Received: by 2002:a05:600c:1d0e:b0:49f:ec98:f030 with SMTP id
- 5b1f17b1804b1-4a18e4e9db3mr236851375e9.33.1791880803659; 
- Tue, 13 Oct 2026 01:40:03 -0700 (PDT)
+ bh=7xlfYHyIYxKoALR890FGz7sTstMZUZWDOD7rBywE0fs=;
+ b=chd4MlyV9BjMp/mxfPVTYKsm7a4HKsk8bUUf9eE282A97AUOwsWtrU7j3lyC3Wa0nu
+ fEQdaD/eg2OHFpWIdjsW75SWO0Dm5d1gD1olQP/MPOpWnKxa+iecUf3lwfaLQMYN3iMy
+ KwvhJS77EZrNECiVK+RlhEv7XMHGybJ8HsO1xUpj3xr3V7V/ZE7q27ZOLE7TUm+fe8XQ
+ 4zXrALX3S96bysExqD3+zEmIMzNbzJ9H0zNJbU9ZlT/94DmiJvnRkMOeWDnqyZW6NIOS
+ +GXDxf8ngpYRvWRXcNHYxXC7pVCrPThSnjg6AlDwBH3PtOUbn3xhpOGcTXeiBV6nsqhD
+ ywAA==
+X-Gm-Message-State: AFq9FYIsMJyvm3R9zTiqBqtEGJusacfeVM3Wols7qwGvd4tyD3Xv+R23
+ ZS7dkUoYuQuvvEzdWhlXhMUFh+3nhqY0UfFQOG8PaVop2CXV17dVJw+Cy8/KNwhPvKOMvYicUh9
+ tDUSmT6A=
+X-Gm-Gg: AYBFou3iig4IyqhqGiTFTc2zkAYJSmEpRm5q5RxfjVRdiu4YEG7nW8SVw0O5kQfXrqA
+ Xca73ohzii1TzYNUkxKu+7wQkIABnsuJIGwoKvfGQ2FbLpSGmOZJVTbVT98uPPjfcO5k9cjnWCr
+ STM7dUdov+cd4A6lFafPsX+OtUihd9GMEoMO3Kp/J3ACQWlp3I/bEgyDxCjIZNDcPFTqdOXz9yL
+ km/qhjypCfbjiwzEFimLH1NrrworWM0PMqwnlOXg6DbgRsU8QUFH4JAdI+UikdvdBAAOtLXY+fx
+ 1Py1PoSB00T6BHjNEUkx01Q053SFWZ2FoF6hZ+n6qa8n2On772IvObaFoHR+0wEgPELfkru6CbI
+ LdVvLzB//fMdKRsFIfd9w7IeNZSkAQRaegmbgNj9JSmquB+uy5PshdnH014nuFigI9cMq6OUqaD
+ UuBRpcbaA1Flq4FLlx8O9mtxx3SbbdVYYv+amMvfjt3A3zYaiEMNUorxqmkbku3LKaYL9DFTv4Q
+ LYXGBmKjkdOUi3iI/M9GnmTfFfH5aFwa3tR6fPuZLV+1mg1BRwvbpDJgycuyxW1m4/49V4Nkor2
+ 0gcahfb2oX2Y+g==
+X-Received: by 2002:a05:600c:4593:b0:4a1:7ed5:99e8 with SMTP id
+ 5b1f17b1804b1-4a18e49bffbmr230919965e9.22.1791880799246; 
+ Tue, 13 Oct 2026 01:39:59 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.02
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.39.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:02 -0700 (PDT)
+ Tue, 13 Oct 2026 01:39:58 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 21/86] target/arm: GICv5 cpuif: Implement ICC_SRE_ELx
-Date: Tue, 13 Oct 2026 09:38:28 +0100
-Message-ID: <20261013083933.1024405-22-peter.maydell@linaro.org>
+Subject: [PATCH 18/86] target/arm: GICv5 cpuif: Implement GIC fine-grained
+ trap registers
+Date: Tue, 13 Oct 2026 09:38:25 +0100
+Message-ID: <20261013083933.1024405-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,75 +103,206 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When FEAT_GCIE and FEAT_EL2 are implemented, the GICv5 specification
-requires that the old GICv3 ICC_SRE_EL1 and ICC_SRE_EL2 registers are
-present, with RAO/WI bits, even if FEAT_GCIE_LEGACY is not
-implemented or enabled.  ICC_SRE_EL3 is not present, but the CPU
-behaves as if its Enable and SRE bits are always set. (See R_SLVXV,
-R_MCTMX, R_HQBBN.)
+The GICv5 cpu interface includes a set of fine-grained trap registers
+which allow a hypervisor to trap guest accesses to the various GIC
+cpu interface registers and instructions.  We implement this using
+the existing fine-grained-trap mechanism.
 
-Implement the ICC_SRE_EL1 and ICC_SRE_EL2 registers.  For QEMU, this
-"all bits RAO" is identical to how we implemented it for GICv3,
-because we didn't implement the memory-map register interface, we
-didn't support IRQ or FIQ bypass and we took advantage of the IMPDEF
-option to make the ENABLE bit RAO so we didn't need to trap lower-EL
-accesses to ICC_SRE_ELx.  The RAO behaviours correspond to "do
-nothing" -- don't trap system register accesses, no IRQ/FIQ bypass
-handling -- so we don't need any special handling in any part of the
-CPU implementation, just as we didn't for GICv3.
+This commit provides the definitions of the FGT register bits and the
+registers themselves; we will mark up the cpreg definitions with the
+fgt trap information in the following commit.
 
-Because ICC_SRE_EL1 is EL1-visible but only present when FEAT_EL2
-is implemented, we need to put it in a cpreg array that we only
-register when ARM_FEATURE_EL2 is set, rather than being able to
-list it in the main gicv5_cpuif_reginfo array and relying on the
-access field as we do for other FEAT_EL2 GICv5 registers.
+Note that because FGWTE3 has only write-traps and the indexes into
+fgt_read[] and fgt_write[] have to line up, we leave a gap in the
+fgt_read[] array for the unused slot.  We could have moved FGTWE3 to
+the end of the array, since the array location isn't encoded in the
+migration stream, but that only saves us 8 bytes in the CPU struct
+size and leaves the possibility that we forget about the need to
+align the read/write indexes next time we add an FGT feature.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/gicv5-cpuif.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ target/arm/cpregs.h          | 85 +++++++++++++++++++++++++++++++++++-
+ target/arm/cpu.h             | 10 +++--
+ target/arm/tcg/gicv5-cpuif.c | 22 ++++++++++
+ 3 files changed, 111 insertions(+), 6 deletions(-)
 
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index ce651a4faa6..e46c8c979e1 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -389,12 +389,16 @@ typedef enum CPAccessResult {
+ /* Indexes into fgt_read[] */
+ #define FGTREG_HFGRTR 0
+ #define FGTREG_HDFGRTR 1
+-/* Indexes into fgt_write[] */
++/* 2 unused: FGWTE3 doesn't have read-traps */
++#define FGTREG_ICH_HFGRTR 3 /* GICv5 */
++/* Indexes into fgt_write[]; these must align with the fgt_read[] ones */
+ #define FGTREG_HFGWTR 0
+ #define FGTREG_HDFGWTR 1
+ #define FGTREG_FGWTE3 2
+-/* Indexes into fgt_exec[] */
++#define FGTREG_ICH_HFGWTR 3 /* GICv5 */
++/* Indexes into fgt_exec[] (these don't have to line up with read/write) */
+ #define FGTREG_HFGITR 0
++#define FGTREG_ICH_HFGITR 1 /* GICv5 */
+ 
+ FIELD(HFGRTR_EL2, AFSR0_EL1, 0, 1)
+ FIELD(HFGRTR_EL2, AFSR1_EL1, 1, 1)
+@@ -720,6 +724,45 @@ FIELD(FGWTE3_EL3, TTBR0_EL3, 20, 1)
+ FIELD(FGWTE3_EL3, VBAR_EL3, 21, 1)
+ FIELD(FGWTE3_EL3, GPCBW_EL3, 22, 1)
+ 
++/* These are the GICv5 fine-grained trap registers */
++FIELD(ICH_HFGRTR_EL2, ICC_APR_EL1, 0, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_IDRN_EL1, 1, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_CR0_EL1, 2, 1)
++/* Bit 3 is RES1 */
++FIELD(ICH_HFGRTR_EL2, ICC_HPPIR_EL1, 4, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_PCR_EL1, 5, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_ICSR_EL1, 6, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_IAFFIDR_EL1, 7, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_PPI_HMRN_EL1, 16, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_PPI_ENABLERN_EL1, 17, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_PPI_PENDRN_EL1, 18, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_PPI_PRIORITYRN_EL1, 19, 1)
++FIELD(ICH_HFGRTR_EL2, ICC_PPI_ACTIVERN_EL1, 20, 1)
++/* All RES1 bits in this register */
++#define ICH_HFGRTR_EL2_RES1_MASK (1 << 3)
++
++/* Matches ICH_HFGRTR_EL2, but bits for RO regs are RES0 */
++FIELD(ICH_HFGWTR_EL2, ICC_APR_EL1, 0, 1)
++FIELD(ICH_HFGWTR_EL2, ICC_CR0_EL1, 2, 1)
++FIELD(ICH_HFGWTR_EL2, ICC_PCR_EL1, 5, 1)
++FIELD(ICH_HFGWTR_EL2, ICC_ICSR_EL1, 6, 1)
++FIELD(ICH_HFGWTR_EL2, ICC_PPI_ENABLERN_EL1, 17, 1)
++FIELD(ICH_HFGWTR_EL2, ICC_PPI_PENDRN_EL1, 18, 1)
++FIELD(ICH_HFGWTR_EL2, ICC_PPI_PRIORITYRN_EL1, 19, 1)
++FIELD(ICH_HFGWTR_EL2, ICC_PPI_ACTIVERN_EL1, 20, 1)
++
++FIELD(ICH_HFGITR_EL2, GICCDEN, 0, 1);
++FIELD(ICH_HFGITR_EL2, GICCDDIS, 1, 1);
++FIELD(ICH_HFGITR_EL2, GICCDPRI, 2, 1);
++FIELD(ICH_HFGITR_EL2, GICCDAFF, 3, 1);
++FIELD(ICH_HFGITR_EL2, GICCDPEND, 4, 1);
++FIELD(ICH_HFGITR_EL2, GICCDRCFG, 5, 1);
++FIELD(ICH_HFGITR_EL2, GICCDHM, 6, 1);
++FIELD(ICH_HFGITR_EL2, GICCDEOI, 7, 1);
++FIELD(ICH_HFGITR_EL2, GICCDDI, 8, 1);
++FIELD(ICH_HFGITR_EL2, GICRCDIA, 9, 1);
++FIELD(ICH_HFGITR_EL2, GICRCDNMIA, 10, 1);
++
+ FIELD(FGT, NXS, 13, 1) /* Honour HCR_EL2.FGTnXS to suppress FGT */
+ /* Which fine-grained trap bit register to check, if any */
+ FIELD(FGT, TYPE, 10, 3)
+@@ -798,6 +841,9 @@ typedef enum FGTBit {
+     FGT_HDFGWTR = FGT_W | (FGTREG_HDFGWTR << R_FGT_IDX_SHIFT),
+     FGT_HFGITR = FGT_EXEC | (FGTREG_HFGITR << R_FGT_IDX_SHIFT),
+     FGT_FGWTE3 = FGT_W | (FGTREG_FGWTE3 << R_FGT_IDX_SHIFT),
++    FGT_ICH_HFGRTR = FGT_RW | (FGTREG_ICH_HFGRTR << R_FGT_IDX_SHIFT),
++    FGT_ICH_HFGWTR = FGT_W | (FGTREG_ICH_HFGWTR << R_FGT_IDX_SHIFT),
++    FGT_ICH_HFGITR = FGT_EXEC | (FGTREG_ICH_HFGITR << R_FGT_IDX_SHIFT),
+ 
+     /* Trap bits in HFGRTR_EL2 / HFGWTR_EL2, starting from bit 0. */
+     DO_BIT(HFGRTR, AFSR0_EL1),
+@@ -955,6 +1001,41 @@ typedef enum FGTBit {
+     DO_EL3_BIT(FGWTE3, TTBR0_EL3),
+     DO_EL3_BIT(FGWTE3, VBAR_EL3),
+     DO_EL3_BIT(FGWTE3, GPCBW_EL3),
++
++    /*
++     * Trap bits in ICH_HFGRTR_EL2 / ICH_HFGWTR_EL2, starting from bit 0.
++     * These are all "trap on 0, don't trap on 1" and don't follow the
++     * "name starts with 'n' if sense is reversed" convention of the
++     * main FEAT_FGT registers.
++     */
++    DO_REV_BIT(ICH_HFGRTR, ICC_APR_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_IDRN_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_CR0_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_HPPIR_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_PCR_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_ICSR_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_IAFFIDR_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_PPI_HMRN_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_PPI_ENABLERN_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_PPI_PENDRN_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_PPI_PRIORITYRN_EL1),
++    DO_REV_BIT(ICH_HFGRTR, ICC_PPI_ACTIVERN_EL1),
++
++    /*
++     * Trap bits in ICH_HFGITR_EL2, starting from bit 0.  These also
++     * are all "trap on 0".
++     */
++    DO_REV_BIT(ICH_HFGITR, GICCDEN),
++    DO_REV_BIT(ICH_HFGITR, GICCDDIS),
++    DO_REV_BIT(ICH_HFGITR, GICCDPRI),
++    DO_REV_BIT(ICH_HFGITR, GICCDAFF),
++    DO_REV_BIT(ICH_HFGITR, GICCDPEND),
++    DO_REV_BIT(ICH_HFGITR, GICCDRCFG),
++    DO_REV_BIT(ICH_HFGITR, GICCDHM),
++    DO_REV_BIT(ICH_HFGITR, GICCDEOI),
++    DO_REV_BIT(ICH_HFGITR, GICCDDI),
++    DO_REV_BIT(ICH_HFGITR, GICRCDIA),
++    DO_REV_BIT(ICH_HFGITR, GICRCDNMIA),
+ } FGTBit;
+ 
+ #undef DO_BIT
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 4e7076a5339..276466d2b84 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -550,11 +550,13 @@ typedef struct CPUArchState {
+          * Fine-Grained Trap registers. We store these as arrays so the
+          * access checking code doesn't have to manually select
+          * HFGRTR_EL2 vs HFDFGRTR_EL2 etc when looking up the bit to test.
+-         * FEAT_FGT2 will add more elements to these arrays.
++         * These include the trap registers for all features which have
++         * FGT-style trapping: FEAT_FGT, FEAT_FGWTE3. GICv5, and (when we
++         * implement it) FEAT_FGT2.
+          */
+-        uint64_t fgt_read[2]; /* HFGRTR, HDFGRTR */
+-        uint64_t fgt_write[3]; /* HFGWTR, HDFGWTR, FGWTE3 */
+-        uint64_t fgt_exec[1]; /* HFGITR */
++        uint64_t fgt_read[4]; /* HFGRTR, HDFGRTR, unused, ICH_HFGRTR */
++        uint64_t fgt_write[4]; /* HFGWTR, HDFGWTR, FGWTE3, ICH_HFGWTR */
++        uint64_t fgt_exec[2]; /* HFGITR, ICH_HFGITR */
+ 
+         /* RME registers */
+         uint64_t gpccr_el3;
 diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index be34312d242..8cb790204f1 100644
+index ac667c84c2f..55dc2e3b3b2 100644
 --- a/target/arm/tcg/gicv5-cpuif.c
 +++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -1017,6 +1017,11 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .fieldoffset = offsetof(CPUARMState, cp15.fgt_read[FGTREG_ICH_HFGRTR]),
-         .resetvalue = ICH_HFGRTR_EL2_RES1_MASK,
+@@ -979,6 +979,28 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+         .accessfn = access_gicv5_ich_reg,
+         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ich_apr_el2),
      },
-+    {   .name = "ICC_SRE_EL2", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 5,
-+        .access = PL2_RW, .type = ARM_CP_NO_RAW | ARM_CP_CONST,
-+        .resetvalue = 0xf,
++    {   .name = "ICH_HFGRTR_EL2", .state = ARM_CP_STATE_AA64,
++        .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 4,
++        .access = PL2_RW, .type = ARM_CP_NO_RAW,
++        .nv2_redirect_offset = 0xb10,
++        .accessfn = access_gicv5_ich_reg,
++        .fieldoffset = offsetof(CPUARMState, cp15.fgt_read[FGTREG_ICH_HFGRTR]),
++        .resetvalue = ICH_HFGRTR_EL2_RES1_MASK,
 +    },
-     {   .name = "ICH_HFGWTR_EL2", .state = ARM_CP_STATE_AA64,
-         .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 6,
-         .access = PL2_RW, .type = ARM_CP_NO_RAW,
-@@ -1116,6 +1121,14 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-     },
- };
- 
-+static const ARMCPRegInfo gicv5_cpuif_el2_reginfo[] = {
-+    {   .name = "ICC_SRE_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 5,
-+        .access = PL1_RW, .type = ARM_CP_NO_RAW | ARM_CP_CONST,
-+        .resetvalue = 0x7,
++    {   .name = "ICH_HFGWTR_EL2", .state = ARM_CP_STATE_AA64,
++        .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 6,
++        .access = PL2_RW, .type = ARM_CP_NO_RAW,
++        .nv2_redirect_offset = 0xb10,
++        .accessfn = access_gicv5_ich_reg,
++        .fieldoffset = offsetof(CPUARMState, cp15.fgt_write[FGTREG_ICH_HFGWTR]),
 +    },
-+};
-+
- void define_gicv5_cpuif_regs(ARMCPU *cpu)
- {
-     if (cpu_isar_feature(aa64_gcie, cpu)) {
-@@ -1153,5 +1166,9 @@ void define_gicv5_cpuif_regs(ARMCPU *cpu)
-             };
-             define_one_arm_cp_reg(cpu, &ppi_prio);
-         }
-+
-+        if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
-+            define_arm_cp_regs(cpu, gicv5_cpuif_el2_reginfo);
-+        }
-     }
- }
++    {   .name = "ICH_HFGITR_EL2", .state = ARM_CP_STATE_AA64,
++        .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 9, .opc2 = 7,
++        .access = PL2_RW, .type = ARM_CP_NO_RAW,
++        .nv2_redirect_offset = 0xb10,
++        .accessfn = access_gicv5_ich_reg,
++        .fieldoffset = offsetof(CPUARMState, cp15.fgt_exec[FGTREG_ICH_HFGITR]),
++    },
+     /*
+      * Note that DVIR bits RAZ/WI when the PPI isn't assigned to the
+      * current domain, so we will need to mask them when we implement
 -- 
 2.43.0
 

@@ -4,115 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC6FECC6B0E
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 16:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB048CC6B12
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 18:57:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGfhk-0000rl-Px; Tue, 13 Oct 2026 12:50:20 -0400
+	id 1xGhg3-0002gW-UH; Tue, 13 Oct 2026 14:56:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGfhi-0000qm-AI
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 12:50:18 -0400
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGfhg-0000YS-MA
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 12:50:18 -0400
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-8ab38a051aaso25482187b3.3
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 09:50:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791910215; cv=none;
- d=google.com; s=arc-20260327;
- b=oDRoDXICs6Exxf6YIeyho8gUH6M6l93b4LLJBNZYx7VOk0tbcEljKAUkAyRmPqQDRg
- WELqbEIzElAHW6u/ORo7g6c0xXcwWRyLVFsJ7hnEVskaZbbvP0DmL/oDzjHYXHFHqcZM
- 0nwb3bCZ2bXZzaFoqSC4agpxm5sQDhUZw2RA50hJWd6PJe66TbEXilxArwRPdB+orRNm
- tjqe7WjCBbedeGaSEaWXLEbDK3kBWtmMdx30DAc2cKZg98vpv2vpiQSsKULQKuc9hJeT
- uW5NfXmutsiYsRkhgXpwaS88A2r0wOELwstRj5PB4s3YMQ3DMHkgWE6aX69NftIdWP2w
- hVxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=PIzUdYY4W2ouyygmVnyaVLbSOVBNraxuMdBlCjFXaJU=;
- fh=cxhT5a3TbBh0lQhAqt0el1phznTU5Y/nGyOTFZZ4FEc=;
- b=byfp2D5/NKPlXWlah97t7YcupAEAhVfK035JJIrVGeS43phhxpAYidyKdKS1G0m/gJ
- 7AlyqnOy18XkFUPP4U5615esodsj4lShCiT5SAbvpHaAIJyh5jSyBd89gFIsMRcrbGIf
- MIW8rirRJvVNF+RFvlbwBuWc+55cAr8Mo0dbkpyPxeV98ZSHFbR1cMNnE4aGf7OoJNmQ
- sSkmcDMqreoblDcWa5WF7CwHhuaNOhy4qX5ckv0JJeRx4cUf8Wb2SIeL3ex55vfGNk6q
- pEzEJGTlHDRq1VfCHwsxOlMPRqzJ9UFtoP8mnsjKdvdc9i06UhOsvtI1h9cPOTETv8EU
- uFWg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791910215; x=1792515015; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=PIzUdYY4W2ouyygmVnyaVLbSOVBNraxuMdBlCjFXaJU=;
- b=tNhEyeUM1DAo10GdiRYeOXQargNxQl7YZe4uWUeHcx8RxAPyiDrorz+Zdnz4CnrffP
- +3FLyOwrOcrlL5jpAl7rB0A7Be2X4G910aHo0W842IooRVFtnZSsb9KxoruAekNFvrDU
- P2JXTQADWc/qvnNTZAfwl8v4lliRMvNSobodsiIyHajT6nuQi5eNXR9bY3m+y4EDDPNd
- 2Kgj4ngx8b2QVDRwfWA+GhEa/fDieGx9p67giCNoWDeS+Edy+EgKn9p9tHUcr2Q83VoL
- z3tOMbzQAZueCBtltLnu0zOw2Mp+uV8LXDn29cl+do2rg5DAGEx/mTTlW5aox0UcYYJi
- 8PNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791910215; x=1792515015;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=PIzUdYY4W2ouyygmVnyaVLbSOVBNraxuMdBlCjFXaJU=;
- b=PiFm09DRcDBfOnW9gZr6JIbjevcQKmyQJwPVPXzvFxlm7Tp8jpIgkX2e9Tlu5aJUty
- /ts107AwVNs/x5Jr93c3lJS4O5WJgFrZR2frALXNr2CLrswM4TKacw+kDeQQ3Ld33/R6
- YlVY5V3u0hZwE9IRZZAug3kJ9nZ1U+hFd1mxTmPYv5Q50FTf9MaxYYRlK/0ISN64x2PI
- of5/oVMbv22IOhfIZQ29Xjw4hnNVR4LgCV6C+AsUqwA7zUUDZTXV/9npR3vgFtgvvdJd
- hyQZBLnDYIp5HkmYQuiO5lj0I2GuxJli9FdH+1FAIws2bidVFE5NWs/eTeiCe+MIk8TM
- tVIQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvByILCQqF34BMgcRvYMetxTcojbE7snWTMEmq8XEO2VN2xR6s1OgepijVpPvlgpwPIIp+x5dS4oltA==@nongnu.org
-X-Gm-Message-State: AFq9FYIyMZCJ/KKeVBTHNilfH24hKyBJVtQk4JiP7NDJxwLwLMgcZ64j
- GtcM4fCrlzRl6KfmCXfI9LvMXdG5Tu5kOU61hG85n4SXYaomb2D8RHvbOZD3uvcPvz0cj7bNdQx
- KmExOf+fSuT2qWjUUx0jam2Qa/ehvXECxSBbzhif8qQ==
-X-Gm-Gg: AYBFou0ATnj0DBFo5HRH9mfErj57MDIkF6JswxBFcd24c8m43x9zbZRlyxY/r8TqmNZ
- /Ju+J9nVWQiejU/M1LzZlvcVsUv7jVDkORYTJiPWNU6cdwTV6cbEyUK2qmkrsqM3R7y/obg8CFQ
- xAnKAQlUCeIuN8/O7pHJeqMqXRh7La6mUDY4KpuHTaIUEAwoQwlt+gtuHpmfqHaOMrc6JnRwwPT
- zrkiqy9U2VmzVZ+d12TaKPLCjBp8HKdZuJFyo3BMRmd6W4xIs2R9ASDAKooSIysCIAyvw9TiIkH
- 9K+QQCiv/2ccuzC2pL1KcN/fqlyPahwTCQKWks2MAgdL5eNNbZFj2/WwKB0uGgCk3241g1ERs6K
- B+TLmirIH0sJv9dOlKstwRfYWCF286fnzOApyZ3Q=
-X-Received: by 2002:a05:690c:4d81:b0:8aa:fbe8:8926 with SMTP id
- 00721157ae682-8b07eebd73cmr52433707b3.69.1791910214804; Tue, 13 Oct 2026
- 09:50:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1xGhfz-0002fU-Fl; Tue, 13 Oct 2026 14:56:39 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1xGhfx-00057Y-SF; Tue, 13 Oct 2026 14:56:39 -0400
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69DDpICG148960; Tue, 13 Oct 2026 18:56:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=GqdGoi
+ q31WhAEXRD61BSBGDSHgNgn7XYqpdq3YXfI28=; b=pys4FgiaFrpK2s+8DdHS8D
+ u6K1mZyBaH1qBf382tSbyWvuD5wSX+jC1TwFzKcPYWXU73m2cTXwozbHbcaWimqQ
+ oDxbzfur5afW0rDXiA+DR7cgTr/CUUXHAPs+vthcsd4T59W3SCE/spEdFnz0o4hx
+ DToIjfmS2Yl1oG1+Sdbzxb9iTIRF5kHobg8ao3fDIWuh9DkJUy5intvEbFnWddVu
+ t6WRppA6kE4qq3NNffDXP91xxQCY/yjoZVNonDztgVs2PnDmgn8X7TTUuwF9ZRuY
+ ewGAuPszWbNvKB2Tr5ccQHVVATS2SxyqGVzvHf7AvPxjArByGrD4EwCK1ikHzCDg
+ ==
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4h7dwhg9rt-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Tue, 13 Oct 2026 18:56:10 +0000 (GMT)
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69DIFpAS2709272; Tue, 13 Oct 2026 18:56:09 GMT
+Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4h816h3nst-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 13 Oct 2026 18:56:09 +0000 (GMT)
+Received: from smtpav06.fra02v.mail.ibm.com (smtpav06.fra02v.mail.ibm.com
+ [10.20.54.105])
+ by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 69DIu3TC44302622
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 13 Oct 2026 18:56:03 GMT
+Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6D9B320063;
+ Tue, 13 Oct 2026 18:56:03 +0000 (GMT)
+Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 32B852004B;
+ Tue, 13 Oct 2026 18:56:02 +0000 (GMT)
+Received: from [0.0.0.0] (unknown [9.111.35.59])
+ by smtpav06.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 13 Oct 2026 18:56:02 +0000 (GMT)
+Message-ID: <3d7caca8-e1cf-47af-bfea-810986174fe0@linux.ibm.com>
+Date: Tue, 13 Oct 2026 20:56:01 +0200
 MIME-Version: 1.0
-References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-11-aefe5e76a0e3@linux.microsoft.com>
-In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-11-aefe5e76a0e3@linux.microsoft.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Oct 2026 17:50:03 +0100
-X-Gm-Features: AclHuK_Io2BTarONqqWtYxaBJWwxe3rnQ5jHfWC3nmKtuvEs7aIE4FfWSMISC1g
-Message-ID: <CAFEAcA9xPn2MRjC_d9Gdb=d4-GHmcXPpsLP+WUOgCUhaPbZ2BQ@mail.gmail.com>
-Subject: Re: [PATCH v6 11/14] target/arm/mshv: add vCPU run loop
-To: Aastha Rawat <aastharawat@linux.microsoft.com>
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>, 
- Wei Liu <wei.liu@kernel.org>,
- =?UTF-8?Q?Doru_Bl=C3=A2nzeanu?= <dblanzeanu@linux.microsoft.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org, 
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/16] tests/functional: teach tuxrun about launching
+ gdb tests
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Kyle Evans <kevans@freebsd.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Brad Smith <brad@comstyle.com>, Ani Sinha <anisinha@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>, Keith Busch <kbusch@kernel.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, John Snow <jsnow@redhat.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Anders Roxell <anders.roxell@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Warner Losh <imp@bsdimp.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Peter Xu <peterx@redhat.com>, Klaus Jensen <its@irrelevant.dk>,
+ Song Gao <gaosong@loongson.cn>, qemu-s390x@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+References: <20261012170330.1144446-1-alex.bennee@linaro.org>
+ <20261012170330.1144446-10-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+In-Reply-To: <20261012170330.1144446-10-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDA3NCBTYWx0ZWRfX/+kPkQLrhGXe
+ ft/zuVevIwo6UcR70lOqg3SnjMbqbWKu9SzGKPjB1rKUytjgLbWAqx7zxAKnHqkcz1n2yTNk95l
+ fxeYxu8aEO5NNKS44Q5NvpMYBBtvEZs=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDA3NCBTYWx0ZWRfX6kKH9Z/o7iDI
+ ZexIKfQGwfyEXJKhwa12b3oyRrRrZXwLACJXJLBcLbpOaTmd/D1uFw3Jcw8tSJlSLfc9J7d7zIj
+ KA2X2TOpnKKBKD11xbvb7KQ+ISE6wtXeLumGWug1IoNeoCWrjP3CDkThDC6GsT2QZb4HPZr+FWf
+ Jb/SUzYHHiHZ5j4Lq1SEXuUcSX8hhYOrkOxn625dcVvmavtfjH+iXZJuz1y7R3Bzza1UKXVPGJ7
+ W2IGq3FMfz/9nB3PE0LpXH1BbGE3tXVAO9nu17ZvPDVr8eBUVS/1Jt9Ti6gTLWiQUq/KqSc3w4R
+ bRDpRzM/2L1YH58zXpTbHxeUTwcwWLofNMYa52lp6PbQ5UjVV3puT94NO8AteinT4Orb7Pp2N4X
+ PtKyRuxhrDfjG941YBSJUiZ/OsiliQRCchPq7MA1OcEOyZ7oYIYIDGQWhH1cj4cUihEtGCnIqIK
+ Zzy9RWEJqPXKuliJcVg==
+X-Proofpoint-GUID: hAiN5FtxTAiXva5wsVdKzCbTSnBa9gr5
+X-Authority-Analysis: v=2.4 cv=RoFQvymK c=1 sm=1 tr=0 ts=6ace7eca cx=c_pps
+ a=3Bg1Hr4SwmMryq2xdFQyZA==:117 a=3Bg1Hr4SwmMryq2xdFQyZA==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=uAbxVGIbfxUO_5tXvNgY:22 a=KKAkSRfTAAAA:8
+ a=vPZ34w9Z38mvNuj86ZMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: hAiN5FtxTAiXva5wsVdKzCbTSnBa9gr5
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 spamscore=0 phishscore=0 adultscore=0 bulkscore=0
+ impostorscore=0 suspectscore=0 malwarescore=0 clxscore=1011
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
+ definitions=main-2610130074
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,45 +147,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 1 Oct 2026 at 11:52, Aastha Rawat
-<aastharawat@linux.microsoft.com> wrote:
->
-> From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
->
-> Add the main vCPU run loop for MSHV using the MSHV_RUN_VP_IOCTL.
->
-> Handle MMIO exits by emulating the instruction using the syndrome
-> information from ESR_EL2.
->
-> Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+
+
+On 10/12/26 19:03, Alex Bennée wrote:
+> This resurrects the hand run test script from d84842be6c5 (tests:
+> remove test-gdbstub.py) and modernises it to use the shared test
+> infrastructure for run-test.
+> 
+> We then tweak the common tuxrun code to over an alternative "launch
+> via gdbstub" helper which reuses the existing code but:
+> 
+>    - needs a vmlinux with symbols
+>    - extend qargs with stuff normally added by vm.launch
+>    - passes kargs directly
+>    - runs with the gdb run-test script
+>    - log the run-test output to the console log
+> 
+> Message-ID: <20260930164649.433573-13-alex.bennee@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
 > ---
->  include/hw/hyperv/hvgdk_mini.h |  44 +++++++++++++++++
->  target/arm/mshv/mshv-all.c     | 107 +++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 151 insertions(+)
->
-> diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-> index 33c9e4f3e0..53dc58813e 100644
-> --- a/include/hw/hyperv/hvgdk_mini.h
-> +++ b/include/hw/hyperv/hvgdk_mini.h
-> @@ -896,6 +896,50 @@ struct hv_x64_memory_intercept_message {
->      uint8_t instruction_bytes[16];
->  } QEMU_PACKED;
->
-> +union hv_arm64_vp_execution_state {
-> +    uint16_t as_uint16;
-> +    struct {
-> +        uint16_t cpl:2;
-> +        uint16_t debug_active:1;
-> +        uint16_t interruption_pending:1;
-> +        uint16_t vtl:4;
-> +        uint16_t virtualization_fault_active:1;
-> +        uint16_t reserved:7;
-> +    };
-> +};
+> v2
+>    - add self.vm._machine to qargs
+>    - drop leading spaces in print () calls
+>    - add register read tests
+>    - use gdb.Breakpoint for hwbreak as for swbreak
+>    - drop flaky symbol evaluation, verify hit_count instead
+>    - explicit gdb.BP_BREAKPOINT for CatchBreakpoint
+> ---
+>   .../functional/gdb-scripts/kernel_gdb_test.py | 174 ++++++++++++++++++
+>   tests/functional/qemu_test/tuxruntest.py      |  96 +++++++++-
+>   2 files changed, 261 insertions(+), 9 deletions(-)
+>   create mode 100644 tests/functional/gdb-scripts/kernel_gdb_test.py
 
-This is an mshv specific file, but I would still recommend against
-bitfields-in-a-union as generally bad style.
+[...]
 
-thanks
--- PMM
+> -    def fetch_tuxrun_assets(self, kernel_asset, rootfs_asset, dtb_asset=None):
+> +    def fetch_tuxrun_assets(self, kernel_asset, rootfs_asset,
+> +                            dtb_asset=None, vmlinux_asset=None):
+>           """
+>           Fetch the TuxBoot assets.
+>           """
+>           kernel_image =  kernel_asset.fetch()
+>           disk_image = self.uncompress(rootfs_asset)
+>           dtb = dtb_asset.fetch() if dtb_asset is not None else None
+> +        vmlinux = self.uncompress(vmlinux_asset) if vmlinux_asset is not None else None
+>   
+> -        return (kernel_image, disk_image, dtb)
+> +        return (kernel_image, disk_image, dtb, vmlinux)
+
+pylint complains that unpacking in tests/functional/sh4/test_tuxrun.py
+will now fail.
+
+[...]
+
 

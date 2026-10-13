@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9D61CC6B1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 16:28:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7CC4CC6B12
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 16:28:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGfLh-0005NG-NT; Tue, 13 Oct 2026 12:27:35 -0400
+	id 1xGfM4-0005rd-QF; Tue, 13 Oct 2026 12:28:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xGfL6-00053O-04
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 12:26:57 -0400
-Received: from smtpout6.mo540.mail-out.ovh.net ([51.210.91.55])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1xGfLa-0005IG-QT; Tue, 13 Oct 2026 12:27:27 -0400
+Received: from 8.mo2.mail-out.ovh.net ([46.105.32.207])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xGfL2-00054I-Kd
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 12:26:55 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [79.137.60.226])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4j408m4Nvcz45Gs;
- Tue, 13 Oct 2026 16:26:48 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue, 13 Oct 2026 16:26:48 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.233])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4j408m3j5yz46ZX; Tue, 13 Oct 2026 16:26:48 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1xGfLY-0005C4-T2; Tue, 13 Oct 2026 12:27:26 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTPS id 4j409M6j1Tz441L;
+ Tue, 13 Oct 2026 16:27:19 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 13 Oct 2026 16:27:19 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.54.126])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4j409M5Lmcz1xtc; Tue, 13 Oct 2026 16:27:19 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
  (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 2010912E2CA5;
- Tue, 13 Oct 2026 16:26:46 +0000 (UTC)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 0FDE4202CA4; 
+ Tue, 13 Oct 2026 16:27:17 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-114S008f6c41d8d-4abb-4f4b-ba2c-d03962947c14,
+ (GARM-99G003feff8ed5-0ba8-478b-8a52-933f774f0895,
  3B5152602AE6D76A7CF2E50DC6ABDDC767F0B630) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <bc0899bb-734b-4288-903c-994ed648d6d2@kaod.org>
-Date: Tue, 13 Oct 2026 18:26:45 +0200
+Message-ID: <2cdab39a-08b7-48c3-b8f1-79d56c355dd5@kaod.org>
+Date: Tue, 13 Oct 2026 18:27:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/50] tests/qtest: pca9545: add mux test
+Subject: Re: [PATCH v2 01/50] docs/system/arm/aspeed: add the catalina-bmc
+ machine
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -53,7 +54,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
- <20261012-bmc-minerva-v2-7-4c3dff084ec9@free.fr>
+ <20261012-bmc-minerva-v2-1-4c3dff084ec9@free.fr>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -98,29 +99,28 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261012-bmc-minerva-v2-7-4c3dff084ec9@free.fr>
+In-Reply-To: <20261012-bmc-minerva-v2-1-4c3dff084ec9@free.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 6613536055656361005
+x-ovh-tracer-id: 6622261777485048877
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFJAA0Cff5mZHzxjOMf3vpdM/VfvcU3tzZqy3rh935Ggo91wXIdpJWVeOQBh0BtkSvpcDXPndRPnQDJ5NOOH3LTp7Nq6TOnz5gH/2/VElRGGUCKt+RHqpbTAnEaoqBeRCSlmVGALEzjKJy8O9LWHZZjTH8ta/3/Ns1/1dAtkg32q9bqR3JeX4KZeQ1ExBk2Xzh+zVJ5kZP+auzj5MEVRHRs1/p1H1NscUbI9FzfTnG2Wu2R/8O+EDjBsjafLViuNUeh8OdAkwN79Q2U1dqkbzpYq8JzfkLY8NR63te0LErTTbLj6jB1xH/iwK5utVdtxSHGcYHKT6mU1lwv9nag/pmKuA3kpvf+jJrll13BeptMffQ5vNb9ZnSDeGijfJSaTipHGBGuda8NuHxCIYuPzIqoLps5JXuUlq8QnrQXRvQGzCSPPgk2u1j6MzsyIwRHSMDG3/c6h6fMREFVUWMWBBnFkbKaQm0HPJgSfjVobPyJ1iKtS33AdLbaemHAchaLrsUhWLp/jK7fmA62cvK9xG6mXqoYl3gaCFgCep/CYT+9hZYzD9PeGLaABgH/PK2d7G9WQVD9t60xDnJ26M8foH/SCLQ+fMp6Jp4wTretCeNOC82BHVnOpZD+kXFtjngRoVly0TO+eRzITwWg9uZiQ3jEn4q3wQ5itvxNk1paQHvRBg
-DKIM-Signature: a=rsa-sha256; bh=ql+Rk2SNqQWeVFWzZaZUk3bFhljYo4dbSHtZ+KFTYsw=; 
+X-VR-SPAMCAUSE: dmFkZTG34d8/DCGA0V4UbDaJQmCayESbSVJtAYeKb4T6qfqn6yctmtN8+GjI1a5LaSO4UcBlS8XOwLiGnGYEvAu5WdmbGpqebb+ABY+7b9hkiUIz/GBdqFRSGKWKxULMSqGPvfT/MeB15wLsduNTE1Czh9wqBNGhYXKGXmqBcUqAOaH1Hwm/BX42CwirjgEnU/Cl9F7bY8RDBzXipYJAzLE91nGeVUA5tc96W3hRZE0scWzpdTGWiinaX+acN76RGihF5HmPELee/OrNzoTUcDm7dDKDJDl37zqHvKvqXHh8RQwGGvcjY4bQlQDnrVsik8rISZymzi3MQBYc9J3briVS2pirmhFgWgzaWO1YOJG5IKQiFPcBSCV5rHOfY9csrj9uQOpbH2tNmbB5MDc4NLWMVPpH3c2AQIYGP24Gzw5pD9DEiQ1unH0+NhVjr+t/4nLwDlXyH//KLU/5Dkp+QgujIr2RZsnwtlyOiOISKjxzWShWFnfDM59nb5dD6UUZxM13Fq2vN6CbsMi2KHkp1EbqP/+1EElMj2G2NKKM7/D8gFHxAekBhINmrmrS26PoetwJj42b5NAdhfE5loU/V2D7Nxsl5mpkXPvlz7YTizgtWKABgMPcO13vJvFZp2SKe6QMKlARNpPtGAOUEG54scIUgQoaCK454X3T4Koo7xwVIHAlwQ
+DKIM-Signature: a=rsa-sha256; bh=0wRYDojipcMZietJmLkdTyX+sKrGzkBGMuafc2+gB6I=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1791908809; v=1;
- b=PyeoR5vRzPVeGhUBG58xPF3/YsySIpdU2xTm/aIt+zx78nxnLGNBHPCTNeJf9ftf5aQgMRbh
- 0hH6G782oQpmCcJBQGf8J0VFTSkuEt6t0U22/0IBXJCWL2L+rIGBS21GotnPU0EYT0tNGyIqnWd
- LCalMT01iQI1EHvuD2uPH9cOtSlaYShc+BQQ5OU/rfJu4RLGUq8iiKM4qAhelto/lQX2hSOolNQ
- cU0vvkWtfdyWOwPc6ZiWl+GSMW5oE7YYf0nOndLsEkFhXC7H882MAJfZEo/yPeDyt4pIowIAVYg
- vT5KV4RbW/g4qJGfAMCmpYKCUZ9G7Y4IIZCFEb7yyOaIw==
-Received-SPF: pass client-ip=51.210.91.55; envelope-from=clg@kaod.org;
- helo=smtpout6.mo540.mail-out.ovh.net
+ t=1791908840; v=1;
+ b=Ut0TY6xOv577Cpo6nWbVmWgTWcVCgtVW0YdJLGyMDSRxYN1ieyk+q/1aGjIfDPH/kqBxiLEl
+ MR0Ofo2StamODrk8H5SNqbjLag6XhiU0zkSwN3W/+BVDZIsEilQ39v1wRAM756TfNaF1uHrs+ag
+ ABmYXVC3fCm9D7+h3dvSoeeCQYvODavB9gjk5nmf6YWU7zfPt28dWwXcj434TqjfdoKv5nGWMU6
+ EwYSVSWMd7qXzOFcMUfmaPhpKaASM/iCETNkLvQLBE7s9jL47NUpP6QSMD1Ffj2gtiINxj+nBgy
+ +fa7er/5sg5gl2PxQIX/pUk0jwD8cuPZAC8/5qfF5tZIw==
+Received-SPF: pass client-ip=46.105.32.207; envelope-from=clg@kaod.org;
+ helo=8.mo2.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -137,150 +137,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/12/26 16:32, Emmanuel Blot wrote:
-> Exercise the PCA9545 4-channel I2C mux: channel selection through the
-> control byte, upper-nibble read-back, and interrupt logic.
+On 10/12/26 16:31, Emmanuel Blot wrote:
+> The Facebook Catalina BMC machine is supported by hw/arm but has never
+> been listed in the Aspeed documentation. Add it to the AST2600 machine
+> table.
+> 
+> While at it, shorten the document title. Listing every machine name in
+> the title duplicates the tables right below it, and made the title (and
+> its underline) grow past 350 columns. The machine list stays available
+> where it is readable, in the per-SoC tables.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->   tests/qtest/meson.build    |   1 +
->   tests/qtest/pca9545-test.c | 116 +++++++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 117 insertions(+)
+>   docs/system/arm/aspeed.rst | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 200abf6f36..e05d8a07b9 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -336,6 +336,7 @@ qos_test_ss.add(
->     'ne2000-test.c',
->     'tulip-test.c',
->     'nvme-test.c',
-> +  'pca9545-test.c',
->     'pca9552-test.c',
->     'pca9554-test.c',
->     'pca9555-test.c',
-> diff --git a/tests/qtest/pca9545-test.c b/tests/qtest/pca9545-test.c
-> new file mode 100644
-> index 0000000000..91f56db92f
-> --- /dev/null
-> +++ b/tests/qtest/pca9545-test.c
-> @@ -0,0 +1,116 @@
-> +/*
-> + * QTest testcase for the PCA9545 4-channel I2C switch with interrupt logic
-> + *
-> + * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "libqtest-single.h"
-> +#include "libqos/qgraph.h"
-> +#include "libqos/i2c.h"
-> +
-> +#define PCA9545_TEST_ID   "pca9545-test"
-> +#define PCA9545_TEST_ADDR 0x70
-> +#define PCA9545_TEST_PATH "/machine/peripheral/" PCA9545_TEST_ID
-> +
-> +/* INTn and INT are active low: level 0 is asserted. */
-> +#define INT_ASSERTED   0
-> +#define INT_RELEASED   1
-> +
-> +/* The mux has no register pointer: a read/write moves a single control byte. */
-> +static uint8_t pca9545_get(QI2CDevice *dev)
-> +{
-> +    uint8_t val;
-> +
-> +    qi2c_recv(dev, &val, 1);
-> +    return val;
-> +}
-> +
-> +static void pca9545_set(QI2CDevice *dev, uint8_t val)
-> +{
-> +    qi2c_send(dev, &val, 1);
-> +}
-> +
-> +static void pca9545_set_int(unsigned chan, int level)
-> +{
-> +    qtest_set_irq_in(global_qtest, PCA9545_TEST_PATH, "interrupt", chan, level);
-> +}
-> +
-> +/* Channel selection is the lower nibble; the upper nibble reads back 0. */
-> +static void test_channel_select(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +
-> +    g_assert_cmphex(pca9545_get(dev), ==, 0x00);
-> +
-> +    pca9545_set(dev, 0x05); /* channels 0 and 2 */
-> +    g_assert_cmphex(pca9545_get(dev), ==, 0x05);
-> +
-> +    pca9545_set(dev, 0x0f); /* all channels */
-> +    g_assert_cmphex(pca9545_get(dev), ==, 0x0f);
-> +
-> +    pca9545_set(dev, 0x00);
-> +    g_assert_cmphex(pca9545_get(dev), ==, 0x00);
-> +}
-> +
-> +/*
-> + * The interrupt status is reported in the upper nibble (INT3..INT0) and is
-> + * latched regardless of which channels are selected (PCA9545A Table 5).
-> + */
-> +static void test_interrupt_status(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    QI2CDevice *dev = (QI2CDevice *)obj;
-> +
-> +    pca9545_set_int(1, INT_ASSERTED);
-> +    g_assert_cmphex(pca9545_get(dev), ==, 0x20);
-> +
-> +    pca9545_set(dev, 0x01);
-> +    pca9545_set_int(3, INT_ASSERTED);
-> +    g_assert_cmphex(pca9545_get(dev), ==, 0xa1); /* INT3 | INT1 | channel 0 */
-> +
-> +    pca9545_set_int(1, INT_RELEASED);
-> +    g_assert_cmphex(pca9545_get(dev), ==, 0x81); /* INT3 | channel 0 */
-> +}
-> +
-> +/* The INT output is pulled low while any channel interrupt is active. */
-> +static void test_interrupt_output(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    qtest_irq_intercept_out_named(global_qtest, PCA9545_TEST_PATH,
-> +                                  "interrupt-out");
-> +
-> +    /*
-> +     * Interception starts with no recorded level, so drive an idle input
-> +     * first to make the mux publish the released state of its output.
-> +     */
-> +    pca9545_set_int(0, INT_RELEASED);
-> +    g_assert_true(get_irq(0));
-> +
-> +    pca9545_set_int(0, INT_ASSERTED);
-> +    g_assert_false(get_irq(0));
-> +
-> +    pca9545_set_int(2, INT_ASSERTED);
-> +    g_assert_false(get_irq(0));
-> +
-> +    pca9545_set_int(0, INT_RELEASED);
-> +    g_assert_false(get_irq(0));
-> +    pca9545_set_int(2, INT_RELEASED);
-> +    g_assert_true(get_irq(0));
-> +}
-> +
-> +static void pca9545_register_nodes(void)
-> +{
-> +    QOSGraphEdgeOptions opts = {
-> +        .extra_device_opts = "id=" PCA9545_TEST_ID ",address=0x70"
-> +    };
-> +    add_qi2c_address(&opts, &(QI2CAddress) { PCA9545_TEST_ADDR });
-> +
-> +    qos_node_create_driver("pca9545", i2c_device_create);
-> +    qos_node_consumes("pca9545", "i2c-bus", &opts);
-> +
-> +    qos_add_test("channel-select", "pca9545", test_channel_select, NULL);
-> +    qos_add_test("interrupt-status", "pca9545", test_interrupt_status, NULL);
-> +    qos_add_test("interrupt-output", "pca9545", test_interrupt_output, NULL);
-> +}
-> +libqos_init(pca9545_register_nodes);
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index 2d51ceeb84..933df41f96 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -1,5 +1,5 @@
+> -Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+> -===============================================================================================================================================================================================================================================================================================================================================
+> +Aspeed family boards
+> +====================
+>   
+>   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+>   Aspeed evaluation boards. They are based on different releases of the
+> @@ -33,6 +33,7 @@ AST2600 SoC based machines :
+>   - ``fuji-bmc``             Facebook Fuji BMC
+>   - ``bletchley-bmc``        Facebook Bletchley BMC
+>   - ``fby35-bmc``            Facebook fby35 BMC
+> +- ``catalina-bmc``         Facebook Catalina BMC
+>   - ``anacapa-bmc``          Facebook Anacapa BMC
+>   - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+>   
 > 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>

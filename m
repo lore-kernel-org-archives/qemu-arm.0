@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4481CC6B1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 19:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA5ECC6B1A
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 19:31:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGi6a-0001C7-U7; Tue, 13 Oct 2026 15:24:08 -0400
+	id 1xGiCm-0004L9-3h; Tue, 13 Oct 2026 15:30:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1xGi6R-0001B3-0y; Tue, 13 Oct 2026 15:23:59 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ id 1xGiCj-0004Ik-70; Tue, 13 Oct 2026 15:30:29 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1xGi6N-0007lA-1O; Tue, 13 Oct 2026 15:23:58 -0400
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ id 1xGiCh-0008TG-Qg; Tue, 13 Oct 2026 15:30:28 -0400
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69DDpIFE148960; Tue, 13 Oct 2026 19:23:36 GMT
+ 69DDXLAI1934188; Tue, 13 Oct 2026 19:30:06 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=GkxCNh
- En8gXzPv23GujUcJkGK/QsDw9hXy2Kab3DUEQ=; b=PJG6o7apgWK2c6aiGeWIny
- 2IAKqZjkZgSzeYjTlK8z8oH3yKeIa6v8UrrT+XfMYOz/mcxaHliYYFqy/KWlSdU8
- dNH/FrguFbiSSj4fkqo8y6qSOzLzUpZ6n/Rju6zLvHZIivPgil2OQuj1yP75jN6Q
- CeU7Oz1zUgD7apWXo6gmHrPmR0MOeyYA9Tg7uUFnO5ocimNaX20/i++7WBWzA0mR
- UZyCP/WQXKDOEY9uqCaWvMwDXtHSCOST1m4FwsJ3WNHQXxnYYDbcAsPDMicqqO6k
- V/jS6shrnJuc5iwjXvNru7xNYxnNJGYVUOTuBWKgkjRtgi167N85BsWsGn2X5LIQ
+ :message-id:mime-version:references:subject:to; s=pp1; bh=o0NBUG
+ uLKT02bOi74RQQuoqyvMS80+6gkQyT6TkU+OQ=; b=jLOx8PdKWk0nLdZxis6Xof
+ 2HZncwldwUdhybXA56n343rdRE36Vbg+EA2O6a+n41EpjsW3AOJM/tS12QHD46t6
+ TRdkx9a9xL/6ePyP/cj567BtTUPMpkI7rA4OxxsNWpMnCUCmzLcIciP+SW36gWjg
+ a0TLDP6bbtED1xwAeDyLwSpehLBXedbUKHSi0tbJfxN3tQeaSaeqinej/l0dcSSc
+ VZIi7zvOyDDyCEMpfDjWvQ3sjSlH+pnbUQnB4IzDaNGCuTh1U+L6Su6G73LSR4K5
+ mHhheQybcF9Hs9L/blvizm62Mn5psbQr81lrFGFofzHoZPeUGL7vPQpDKMnhJz6g
  ==
-Received: from ppma23.wdc07v.mail.ibm.com
- (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4h7dwhgecw-1
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4h7e1w7yx4-1
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Tue, 13 Oct 2026 19:23:36 +0000 (GMT)
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma23.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69DILfKf2709317; Tue, 13 Oct 2026 19:23:35 GMT
-Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
- by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4h816h3t7c-1
+ Tue, 13 Oct 2026 19:30:06 +0000 (GMT)
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69DI0WcD3211855; Tue, 13 Oct 2026 19:30:05 GMT
+Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4h9q2yhbse-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 13 Oct 2026 19:23:35 +0000 (GMT)
-Received: from smtpav06.fra02v.mail.ibm.com (smtpav06.fra02v.mail.ibm.com
- [10.20.54.105])
- by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 69DJNUFF51511612
+ Tue, 13 Oct 2026 19:30:05 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
+ [10.20.54.103])
+ by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 69DJTxNh16974102
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 13 Oct 2026 19:23:30 GMT
-Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A2DB22004E;
- Tue, 13 Oct 2026 19:23:30 +0000 (GMT)
-Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8C42620040;
- Tue, 13 Oct 2026 19:23:29 +0000 (GMT)
+ Tue, 13 Oct 2026 19:29:59 GMT
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3AB7C2004E;
+ Tue, 13 Oct 2026 19:29:59 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D3EC720043;
+ Tue, 13 Oct 2026 19:29:57 +0000 (GMT)
 Received: from [0.0.0.0] (unknown [9.111.35.59])
- by smtpav06.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 13 Oct 2026 19:23:29 +0000 (GMT)
-Message-ID: <d5f4c9d6-a28f-43f2-a0bc-da9c2aca39bf@linux.ibm.com>
-Date: Tue, 13 Oct 2026 21:23:29 +0200
+ by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 13 Oct 2026 19:29:57 +0000 (GMT)
+Message-ID: <0a60be0e-3e8f-46cb-914e-84dcd33236ad@linux.ibm.com>
+Date: Tue, 13 Oct 2026 21:29:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 08/16] tests/guest-debug: add --symbols option to
- run-test
+Subject: Re: [PATCH v2 14/16] tests/functional: split s390x tuxrun into tcg
+ and kvm run
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
@@ -88,49 +88,48 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Song Gao <gaosong@loongson.cn>, qemu-s390x@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>
 References: <20261012170330.1144446-1-alex.bennee@linaro.org>
- <20261012170330.1144446-9-alex.bennee@linaro.org>
+ <20261012170330.1144446-15-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Ilya Leoshkevich <iii@linux.ibm.com>
-In-Reply-To: <20261012170330.1144446-9-alex.bennee@linaro.org>
+In-Reply-To: <20261012170330.1144446-15-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDA3NiBTYWx0ZWRfX03w37hi+6Q/Y
- MlIddqPO+9KWL+CDr8PEGa7+zOGiND57iF2QK8JH+Yppq622Z5P7/QAF2LxZKFpcLdaC8iW0hJb
- kFU9W31JVr2J/xaoQP0D4CESmOV3H8M=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDA3NiBTYWx0ZWRfXz+M4qY6uikHt
- 2IO7mAvX0xqiWd74m238YwbE3UhxwQSgd4oi/dtuHGe641GS1ajQG2i7f1thxV0qzAJSXeY8UUJ
- JoIkYz0R/syB+S5tflOmpRES04f7KAW95ZnyXdu5ozcJ3eYd3jGIDYf9FgLXdh7WERxjZkrium+
- XAZkrzDhYf5lD/lBb+RRxlKLsLKxk4oeSjNVEvqqO417A2OamQvIcxx5D59qMfwN2v0itkRrgkU
- IXeeBRVbiF9YqHJQlMvdR10qYqqykH5sGkQPOTRVhBw2U3iO7Q6PfCLRIS7jxsA9zNx/q+ciooo
- DfMh89J+OrIJnIzrEcE8KpCvFp8mP8K9SnbABIF+AH7YAzHLfTI9CBVogbGKGGOTn8bNBqUT85O
- XxzAa2c193uRfE07Ewwe/YeHUOl503BMW3g7s1quMKgNA3Nnyf26dNo2sej3HFlJHwK4mh9NfRe
- LmKzMIZOwHyYA1qMFWw==
-X-Proofpoint-GUID: 40_CXUF0SPAYz7Gr-GnTp4QLyGxgzkvL
-X-Authority-Analysis: v=2.4 cv=RoFQvymK c=1 sm=1 tr=0 ts=6ace8538 cx=c_pps
- a=3Bg1Hr4SwmMryq2xdFQyZA==:117 a=3Bg1Hr4SwmMryq2xdFQyZA==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDA3NiBTYWx0ZWRfX82bgxLNHXUlO
+ RrCuidwT7+2stTkjai7xwUEu6rGKWyF+vIUQePNNUByBS1kbRyIVaR6fl/oklqwT/rPg4y2a80V
+ e0scCX4j6Hw9pzdQk0Yi6ulcadDKae8=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDA3NiBTYWx0ZWRfX8RnWdjMmhaYb
+ 1UwhfvWAC4bq5f/mDhCG7jy6Vc+DkEd/TFaZT73o1bYuO23kW6mhrMTjOjK6cH4cFOFf51Upb5z
+ +vyrE//MtXWol6xFo1KJ+Wel7yHLyczilXdWq3PRklaF9JiPca79GPnVQiLcHRvygz79WJkG/Tf
+ 0CEd/rlCXUwfz5ly0/MRgsuXFAKOz+FbWsyYODcqrEfSLwpEBx02sR1/1oJcXctrc0Y82NCtFWE
+ NWIVbyxU8JCIF2lJ1DCya42O8MBZjlLjlhKEMbjgtkDVQQS2sA3kemUI/m4dgV2jZkF9gCfghiW
+ oonIlPGBglWeY5me+J3N3KlEKXT/GGJISJi4XyGyBgtP+Oy7qzD1/WPk6ThUH1Sy5uesfDN/E9g
+ aV9pjqnApmpiDXgPM8h1IYeWmtZ+PM6Duz8+uTynwBA47qWqO+Z0gAVfa/s5BSIR69Aq17ITM7X
+ i1pK2ae49FDhT2EWv1A==
+X-Authority-Analysis: v=2.4 cv=E6pYNqdl c=1 sm=1 tr=0 ts=6ace86be cx=c_pps
+ a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=uAbxVGIbfxUO_5tXvNgY:22 a=20KFwNOVAAAA:8
- a=KKAkSRfTAAAA:8 a=q9pDxlUirlqk2-u2i64A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=KKAkSRfTAAAA:8
+ a=VnNF1IyMAAAA:8 a=ejQurp_klumxt2yoR9kA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
  a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: 40_CXUF0SPAYz7Gr-GnTp4QLyGxgzkvL
+X-Proofpoint-ORIG-GUID: PniiQOeDl4m4wa37e45m5l1Ip_BsnuQS
+X-Proofpoint-GUID: PniiQOeDl4m4wa37e45m5l1Ip_BsnuQS
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 spamscore=0 phishscore=0 adultscore=0 bulkscore=0
- impostorscore=0 suspectscore=0 malwarescore=0 clxscore=1015
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
- definitions=main-2610130076
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
+ impostorscore=0 phishscore=0 clxscore=1015 bulkscore=0 priorityscore=1501
+ spamscore=0 adultscore=0 suspectscore=0 malwarescore=0 lowpriorityscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610130076
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
 X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -150,45 +149,14 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 On 10/12/26 19:03, Alex Bennée wrote:
-> Sometimes the debug symbols are not in the kernel binary image but in
-> a separate elf blob. Provide --symbols to facilitate using them.
+> Add an explicit "kvm" run to the tuxrun tests. Although running on an
+> s390x host would probably have defaulted to "kvm" anyway we want to
+> exercise specific features later.
 > 
-> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Message-ID: <20260930164649.433573-12-alex.bennee@linaro.org>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/guest-debug/run-test.py | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-> index 4aa24939b7d..0c7cbd137ef 100755
-> --- a/tests/guest-debug/run-test.py
-> +++ b/tests/guest-debug/run-test.py
-> @@ -28,6 +28,7 @@ def get_args():
->       parser.add_argument("--kargs", help="Kernel args to --append")
->       parser.add_argument("--binary", help="Binary to debug",
->                           required=True)
-> +    parser.add_argument("--symbols", help="Symbol file for binary to debug")
->       parser.add_argument("--test", help="GDB test script")
->       parser.add_argument('test_args', nargs='*',
->                           help="Additional args for GDB test script. "
-> @@ -114,6 +115,10 @@ def log(output, msg):
->       gdb_cmd += " -ex 'set confirm off'"
->       # connect to remote
->       gdb_cmd += " -ex 'target remote %s'" % (socket_name)
-> +
-> +    if args.symbols:
-> +        gdb_cmd += " -ex 'symbol-file %s'" % args.symbols
-> +
-
-I would consider shlex.quote() here too. Or maybe make gdb_cmd an
-array and use subprocess.call(shell=False)?
-
-Also, while it's probably a matter of existing code style and
-personal preferences, I would use an f-string instead of %.
-
->       # finally the test script itself
->       if args.test:
->           if args.test_args:
+>   tests/functional/s390x/test_tuxrun.py | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
+Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
 
 

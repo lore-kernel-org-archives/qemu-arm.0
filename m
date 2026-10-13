@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09E46CC6B08
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 365E8CC6B08
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:54:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY4Q-0001Bd-UY; Tue, 13 Oct 2026 04:41:15 -0400
+	id 1xGY58-0002Sz-CB; Tue, 13 Oct 2026 04:42:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3k-0007pt-5C
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:32 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1xGY42-00007F-Hw
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:52 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3i-0007xF-BS
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:31 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4a16c1608faso34528835e9.0
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:29 -0700 (PDT)
+ id 1xGY3x-00082D-KE
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:48 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4a140e7405dso30879695e9.3
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880828; x=1792485628; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880844; x=1792485644; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=RJzfMhjKu4TNbAp9oHPUvWIkRSlmWLw3udGjNBH4jJg=;
- b=S8LcU0/gBM0S6n+1I96LlQe9V5VzypPCosZIaLhK+ecFWP3GUEczP44w/g7dvpdSqK
- mDd3U8x8cy9SIhFA3o8bIPRvUMWg0l46moohU1PkHG9iz77fCx78GtTVh8LL3v6vS7hU
- 0AO1f9yzxMbMCkEMN9a8aPG/kul/wlhzWgjGMdDMZLmNBx2iltqEtIw2eCboVX4dJd5u
- oVFOF+T6EpPMc1H+LvaJBgvXrKcF3E4sVlYN7jYy4q6iNTLGVMMXy8OWfLOpbyPyKXIT
- OgIiAKPcrk6K5bu1MKXLTDnvVVNuaXaEh9r8O+Mzs2CLZ1ohFLTA7Py76BDPzo/CDLlm
- Bj1w==
+ bh=fxZZyr5tqmX4RAAPXJIUMSNXuOO4bc4vIMg/smsoxD4=;
+ b=TdxZ0gDjRFf0lUI9QzAAm6nmCCZdjR+L9T1QqPNDOh6M+Izlkx92H8w361Q6KmvG51
+ fx0dnYG9bzDO/SiByauG9MbT8ArMW8BdmlSkRbq97fZVrUoltKdggwe+I8WupBI8VeNC
+ L1iLqLFSX+qJ6YyM6sHz7O5PZfPYv/D/f0G7+ccTHDW+2Z4wCCxP/wQNYpKiq+j9LGwe
+ fo9r3WgW05IhRxQi0g0/EI32jPoTGURLl8LRqJpQ3x7powNYTpK4PY7xyj87xqbSmIcK
+ RtEBF86TD7Q8n2IbHSB00wqDZyX+B579mt5BWgnhMOwbxR1YOfLxHZEM0fw9ujdq2gwR
+ X+ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880828; x=1792485628;
+ d=1e100.net; s=20260707; t=1791880844; x=1792485644;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=RJzfMhjKu4TNbAp9oHPUvWIkRSlmWLw3udGjNBH4jJg=;
- b=oFLDmgTtvGQpBbFN2aFfO8vr3dTn0xWYikYveIechSPK9uXvlFKrQyFj8mJuxqGTag
- 261OSQMgTa+cmWzgJYCb6tGWRVhgxL0l2wLYM5eYoXCTsJYyNwBqdvgZx+llf3+PNMCn
- BCY4JYWF3HDIxdOFoFkRQBXN6OvT6fvRzbaPg2hyJlYOxSLg8eHy3ExBY1hYCT3rYkms
- qaGch31Ht4WaF5Zq+xeTpS5ou7v/PQMO0reB5eW18lxW3fMLonJxGTSCAox+BL0U5eV1
- LMSJZWs7URD8hmbACc0oExs4HrcMpkKjkMXvaRI76Bd9h8CWtQm3SUosIXBusNkBQFez
- K6aA==
-X-Gm-Message-State: AFq9FYIHy1h2zOOSM9tuffSljCR+JFwlfVnc8zbuDcWOJ1qrPnLI6fzs
- uvhNqNXhJZQRdDmt0/lmjP82i4QNst6Xd7hNctcMYwNO1ZvEVz0nBc12pH6ZVgUGIUg1AcRp9pg
- U+7YHjG8=
-X-Gm-Gg: AYBFou0Y90+W2U55Owar8HamTrh+z1LYmT0hrDs6VNqv1GVTGu4Dz4YKuiC+7W03/Kh
- tBHYA4LYczGgAVJP6NCXzsHAIGyPw/Y6POswZ77ayOahMR8EFTzrqLB7zyUDTAZMY8XoSmfBlrT
- VpTtRY5tFkpvATw0rvDYt1wkXXicztjEPUr3bPKi7A3BLvhug2sBKhM4z7XdbzdpQlCHgbvxVq1
- KhoWih1RXeYx2MocKtJbbG21JhgvA5fPyfiuNcsflCN/ktt2dCoOwQ6dkYZiFk2KuAhEstsyTc9
- w+qJFLoiZX8JCm+PJQQKLfUjVb11s0U8baLI/ZbA0a0pEzgPWtX1HQA2e+m8NVcswBrcXisXUbC
- OYnIXYf9fj2AKYJRKZ8mc04l2gDkjgV5hZ8tgkn6grCjWMxR8j7Do6bgDXln4i9UNMcpDY6GnDN
- giNT5pKFw3OgdPaEpaqK6VZS4kKEQzNLOqEzLOzOC9U0rGVVhR1ALenkfu5t93EG2gDeTSPa8Fy
- PmKAbN/ljz9RdYLqpJcl1IMorsJUN4Dw4OISrQi9PAhM45ixxeJzBCRFK78dTygjwfE5Ro3KnWX
- /lI=
-X-Received: by 2002:a05:600c:154e:b0:49f:ffa2:1c72 with SMTP id
- 5b1f17b1804b1-4a18e49ad83mr230799995e9.11.1791880828182; 
- Tue, 13 Oct 2026 01:40:28 -0700 (PDT)
+ bh=fxZZyr5tqmX4RAAPXJIUMSNXuOO4bc4vIMg/smsoxD4=;
+ b=Szri7YV3vPYxa+p0b4DnJo/8uRt1PQDCbJScauqxOc5JWugeDLPhpbNg3hlyx6yplN
+ VaN6SljIrYO6Y0GnidrMli+Oo8fgKMGuRQqaE3LafxO3RoPZK/vSrgsGJL/FQoYAm1UB
+ krVf4jUZXJ2LRae7XyNIWpueqxR78v+bH9/+0fEv3ss/xRbzQW+zm2U69uqk0mNrVH7Z
+ LUtwOXTWZXarEQMYfLa0Lu8WF5YamwxijrBM+Of6y4irs5P4bsowRU18zvTKXYicjN+A
+ zbbZ6fMfFgjxx+XH6NMwYgt4ZYVzUkTj8MDvvdStjHG5uTZogCiOGoh/D+pvMUduFE/V
+ qOXg==
+X-Gm-Message-State: AFq9FYLCwkVy7dKzdMrZK3lW7t6MB0EBDjsLTLCDVLtIN6dZ/TtBoClz
+ +FqlnEwUxmDCDfRhoXTVqr6LOvpNebbrC8pSccwBXpe3JqafcGAMownhodNVwSR3umdOdDdHClz
+ CJLyt2r8=
+X-Gm-Gg: AYBFou3geVJoyR7aohcIHSXCA/lq09D3Pem3yWjtqn34TkK3XFwnD1lfw46LcPu1jnl
+ G3bYSidh5dX8nk9cfQs+M0W+bo6NFB/IteVHfjSicJF4iDkZnnXJxuWlzwTmTM1UMPKCgD7VvdW
+ 8a3ZXapUjU8I07vnSv94MVAERrWkjb2J8OMa7lJdwg/3zMlBL7XKYinki/xvqQBBPKTSaJ8nWtv
+ E6CubELE+gBg0rN1SrHh5yITw0YlZiWOMYqCAdfD9SF9qbvtkWC3/3ftXlx6Og2qpOUHPFZhtNs
+ 3oZB0TWFHBjeGVfr6fNScQHm2hHG8cPgWnJXcXLs8SzeLTc2hqe6V6vqRd6YrsXfmJVS/Wi3Mge
+ 1BkNWDDg/D+XqeDfE/rA6bjTH8KBsqUGhsnbOZ4mAY4SkJzI16BSfE5AEKlFfhqQGTMkNeqoavi
+ V/RYogcZq00i6iGTPgra1PyEysIuah4iqkX/cuub/KQAs9OdVdaXGWIcQFtv1qBPsszRhGznniP
+ 6wD3pIZGZeTgddS7x/A/wo1YiIAy2xEdLSS7GSIyl/SMqvyZslcUuFqCpJ52qyIeYOIrvKz8CrX
+ 7hQgZ7W1jtvKgw==
+X-Received: by 2002:a05:600c:190a:b0:4a1:746e:589a with SMTP id
+ 5b1f17b1804b1-4a18e4aea54mr253139185e9.18.1791880843998; 
+ Tue, 13 Oct 2026 01:40:43 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.27
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:27 -0700 (PDT)
+ Tue, 13 Oct 2026 01:40:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 38/86] target/arm: GICv5 cpuif: Handle virtual interrupts for
- GIC CDEOI
-Date: Tue, 13 Oct 2026 09:38:45 +0100
-Message-ID: <20261013083933.1024405-39-peter.maydell@linaro.org>
+Subject: [PATCH 51/86] hw/intc/arm_gicv5: Ask CPUs whether IRS needs
+ virtualization support
+Date: Tue, 13 Oct 2026 09:38:58 +0100
+Message-ID: <20261013083933.1024405-52-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,62 +103,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-GIC CDEOI does a priority-drop for the current interrupt domain; when
-this is the virtual interrupt domain we must update the virtual APR
-register rather than a physical one.
+The GICv5 IRS must support virtualization if any CPU in the system
+has EL2 (by spec rule R_KDSPG).  Add a has_virt field to the
+GICv5Common struct to track this, and automatically set it if any
+connected CPU has EL2.
+
+We get the CPU to tell us whether it needs virtualization in the
+return value of gicv5_set_gicv5state(); this allows us to maintain
+the arm's-length relationship between the IRS and the CPU (and in
+particular we don't need to include cpu.h in arm_gicv5_common.c, as
+we would if we directly called arm_feature() there).
+
+We could alternatively have provided a has-virtualization QOM
+property, but then the board code would need to take care to
+explicitly configure the IRS to match the CPUs.
+
+(The GICv3 doesn't have an equivalent to this, because in the GICv3
+design virtualization is handled entirely by the CPU interface and
+software; in GICv5 the IRS has hardware support, to reduce the work
+software needs to do.)
+
+None of the code we are about to add in future commits that tests the
+has_virt flag will be accessible until we remove the check in virt.c
+that prevents creation of a machine with the GICv5 and an EL2 CPU, so
+no behaviour will change until we have completed the entire
+virtualization support feature and allow the user to select it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/gicv5-cpuif.c | 21 ++++++++++++++++-----
- target/arm/tcg/trace-events  |  1 +
- 2 files changed, 17 insertions(+), 5 deletions(-)
+ hw/intc/arm_gicv5_common.c         |  9 ++++++++-
+ include/hw/intc/arm_gicv5_common.h |  2 ++
+ include/hw/intc/arm_gicv5_stream.h | 15 +++++++++++----
+ target/arm/cpu.c                   | 17 +++++++++++------
+ 4 files changed, 32 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index f8d58b5a537..aeacc812fe0 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -1221,13 +1221,24 @@ static void gic_cdeoi_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      */
-     bool virtual;
-     GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
--    uint64_t *apr = &env->gicv5_cpuif.icc_apr[domain];
+diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
+index cfadfee4f05..17fd67b5ccd 100644
+--- a/hw/intc/arm_gicv5_common.c
++++ b/hw/intc/arm_gicv5_common.c
+@@ -176,11 +176,18 @@ static void gicv5_common_realize(DeviceState *dev, Error **errp)
+     }
  
--    trace_gicv5_cdeoi(domain);
-+    if (virtual) {
-+        uint64_t *apr = &env->gicv5_cpuif.ich_apr_el2;
+     for (int i = 0; i < cs->num_cpus; i++) {
+-        if (!gicv5_set_gicv5state(cs->cpus[i], cs, cs->cpu_iaffids[i], i)) {
++        switch (gicv5_set_gicv5state(cs->cpus[i], cs, cs->cpu_iaffids[i], i)) {
++        case GICV5_CPUIF_MISSING:
+             error_setg(errp,
+                        "CPU %d (IAFFID 0x%x) does not implement GICv5 CPU interface",
+                        i, cs->cpu_iaffids[i]);
+             return;
++        case GICV5_CPUIF_PRESENT:
++            break;
++        case GICV5_CPUIF_NEEDS_VIRT:
++            /* R_KDSPG: IRS must implement virtualization if any CPU has EL2 */
++            cs->has_virt = true;
++            break;
+         }
+     }
  
--    /* clear lowest bit, doing nothing if already zero */
--    *apr &= *apr - 1;
--    gicv5_update_irq_fiq(env);
-+        trace_gicv5_vcdeoi();
+diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
+index a47f639e84c..d8f6f5d5db9 100644
+--- a/include/hw/intc/arm_gicv5_common.h
++++ b/include/hw/intc/arm_gicv5_common.h
+@@ -127,6 +127,8 @@ struct GICv5Common {
+     uint32_t spi_base;
+     uint32_t spi_irs_range;
+     uint32_t spi_range;
 +
-+        /* clear lowest bit, doing nothing if already zero */
-+        *apr &= *apr - 1;
-+        gicv5_update_virq_vfiq(env);
-+    } else {
-+        uint64_t *apr = &env->gicv5_cpuif.icc_apr[domain];
++    bool has_virt;
+ };
+ 
+ struct GICv5CommonClass {
+diff --git a/include/hw/intc/arm_gicv5_stream.h b/include/hw/intc/arm_gicv5_stream.h
+index f6d32c6beca..ea27d6aec0f 100644
+--- a/include/hw/intc/arm_gicv5_stream.h
++++ b/include/hw/intc/arm_gicv5_stream.h
+@@ -16,6 +16,12 @@
+ 
+ typedef struct GICv5Common GICv5Common;
+ 
++typedef enum GICv5CPUIFStatus {
++    GICV5_CPUIF_MISSING, /* CPU does not have GICv5 cpuif support */
++    GICV5_CPUIF_PRESENT, /* CPU has GICv5 cpuif */
++    GICV5_CPUIF_NEEDS_VIRT, /* CPU has GICv5, and needs virt support in IRS */
++} GICv5CPUIFStatus;
 +
-+        trace_gicv5_cdeoi(domain);
-+
-+        /* clear lowest bit, doing nothing if already zero */
-+        *apr &= *apr - 1;
-+        gicv5_update_irq_fiq(env);
-+    }
+ /**
+  * gicv5_set_gicv5state
+  * @cpu: CPU object to tell about its IRS
+@@ -27,11 +33,12 @@ typedef struct GICv5Common GICv5Common;
+  * IRS must call this when it is realized, for each CPU it is
+  * connected to.
+  *
+- * Returns true on success, false if the CPU doesn't implement the
+- * GICv5 CPU interface.
++ * The return value indicates whether the CPU has a GICv5 CPU
++ * interface, and if it does whether it needs virtualization support
++ * from the IRS.
+  */
+-bool gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs, uint32_t iaffid,
+-                          uint32_t cpuidx);
++GICv5CPUIFStatus gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs,
++                                      uint32_t iaffid, uint32_t cpuidx);
+ 
+ /*
+  * The architected Stream Protocol is asynchronous; commands can be
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 4731d1cc7c4..62262d742a2 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1215,20 +1215,25 @@ static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
  }
  
- static void gic_cddi_write(CPUARMState *env, const ARMCPRegInfo *ri,
-diff --git a/target/arm/tcg/trace-events b/target/arm/tcg/trace-events
-index 75f40c44f26..8e7e4c119db 100644
---- a/target/arm/tcg/trace-events
-+++ b/target/arm/tcg/trace-events
-@@ -7,6 +7,7 @@ gicv5_recalc_virt_ppi_hppi(uint32_t id, uint8_t prio) "virtual domain new PPI HP
- gicv5_gicr_cdia_fail(int domain, const char *reason) "domain %d CDIA attempt failed: %s"
- gicv5_gicr_cdia(int domain, uint32_t id) "domain %d CDIA acknowledge of interrupt 0x%x"
- gicv5_cdeoi(int domain) "domain %d CDEOI performing priority drop"
-+gicv5_vcdeoi(void) "virtual interrupt domain CDEOI performing priority drop"
- gicv5_cddi(int domain, uint32_t id) "domain %d CDDI deactivating interrupt ID 0x%x"
- gicv5_update_irq_fiq(bool irq, bool fiq, bool nmi) "now IRQ %d FIQ %d NMI %d"
- gicv5_update_virq_vfiq(bool virq, bool vinmi) "now VIRQ %d VINMI %d"
+ #ifndef CONFIG_USER_ONLY
+-bool gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs, uint32_t iaffid,
+-                          uint32_t cpuidx)
++GICv5CPUIFStatus gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs,
++                                      uint32_t iaffid, uint32_t cpuidx)
+ {
+     /*
+-     * Set this CPU's gicv5state pointer to point to the GIC that we are
+-     * connected to, and record our IAFFID and CPU index.
++     * Set this CPU's gicv5state pointer to point to the GIC that we
++     * are connected to, record our IAFFID and cpuidx, and let the IRS
++     * know if it needs to implement virtualization support.
+      */
+     if (!cpu_isar_feature(aa64_gcie, cpu)) {
+-        return false;
++        return GICV5_CPUIF_MISSING;
+     }
+     cpu->env.gicv5.gicv5state = cs;
+     cpu->env.gicv5.iaffid = iaffid;
+     cpu->env.gicv5.cpuidx = cpuidx;
+-    return true;
++    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
++        return GICV5_CPUIF_NEEDS_VIRT;
++    } else {
++        return GICV5_CPUIF_PRESENT;
++    }
+ }
+ #endif
+ 
 -- 
 2.43.0
 

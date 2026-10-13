@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D1DFCC6B13
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50251CA9ED2
 	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:46:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY3q-0008Bq-CV; Tue, 13 Oct 2026 04:40:38 -0400
+	id 1xGY8e-0007vW-0A; Tue, 13 Oct 2026 04:45:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3P-00071k-UG
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:13 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1xGY4I-0000cO-Fw
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:06 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3I-0007bl-Ja
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:09 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-49d0da752ffso24453105e9.3
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:39:53 -0700 (PDT)
+ id 1xGY4F-0008AK-GK
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:06 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4a1af482519so1821785e9.1
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:41:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880792; x=1792485592; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880862; x=1792485662; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=UViGHcknrDhUYElC9wgz9XVN/w6c0++pkoJaAEN1syM=;
- b=GlGX8WyUZLOKbjKxltbHUCmR1yyx2myOzaF/2wgOIZplRM7kcGv9gud1A+ZKKAgIJ3
- zY6VvkdVG5DW0ETewJDu7FxLAdZpYUqsK8lHE/NAK7HplN4BvPMsKFgMF8kJkieQV9Bo
- ZpaNe0XQns9TYUcwRpx7zCnZj/ZA7HSeupth86XmcohhhUYV91sdgawQ/utW6TX/Dx3n
- uUAGufd5LZc1h1TiTO0z9svuw3AjzuACX6BYimYhA06jT1qTRDP0UK9c83BlY0u/13OT
- Hxf+miaZ+H6G2UR5QfghCzvVGlOqLzHH6jN1wRlROPtM0UQYCxDxxD+JCQjg0CTrwWkm
- khQg==
+ bh=wPv7Ak7ok91z1l/gQWZ23Vr8Ogtm8j6ZmfZUtTCQdFo=;
+ b=lU3Yxz1OHJLQD9YPuG9pRd4ykCAOgJPZ5OidntbYX0FKBWhDjTZBmVPgnw/5Nabdbp
+ OWq9dKTCTZX38VDuaD3PrxGwqXYei3YyNiP7+bVctwGqhDMvr6gdLZpU3eHoXV4HXB7x
+ TQkpEPr0+q1txBVdvOSNvLRlGqkTKP243iZ8VtukguhgE6lKHYjDNtddutzPVs8xnu8f
+ ow5X3m4cx/mWZ/mKt87cY1l+NYAk9ezwm/P22XLvN9AMi0frdDK5UqUanBVQ4rCiS1lU
+ dtwbuZfM5AYJYkqQ0b/WUA12SnkDtGOpk5clADCX+zUOy/iJ4ntPuw/JX0DJ9NkUyGJ3
+ LJZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880792; x=1792485592;
+ d=1e100.net; s=20260707; t=1791880862; x=1792485662;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=UViGHcknrDhUYElC9wgz9XVN/w6c0++pkoJaAEN1syM=;
- b=WK3zZPNrQOZcmyAZcWM7pK8G3qx78Q6qTy3DCQFO+Z578x7lxxVm9Mx1U5Jyxc6a6G
- 7DSOtyKF3ZTL1/HWQNB5TBYYe+hsuCYdBSnKhfa2NkdoW/nkqnlndoEjYwcj5HrQiHXi
- gEvyZLdzKta+6l1zyugVwV7o6ZV25SM743YRi5v8/ikUeBJW+sVO9mbJCi+5/SCrA6i1
- 8jSJin8O7qE42cwwYLhnOY8TC0uUbBCj8kFu1lo3Px94ycAs4ggm4Kzs3LJXJXs96a2N
- g9W1ZvJBKhvFdUh+XlfCfzlW2F71r7SNyhZ65eQapWlUCrD7lIBAQ5/jly+HzrMX+CCR
- dyRQ==
-X-Gm-Message-State: AFq9FYK//P4mQOA+zFrH4WTBhd0sogIahieDi6fq3p4Ym0BUGol+rh0l
- XjDqXBn2zEmBwBe5A1Ts7i7wJAMMr/aTEv+h6wml+d2rcikulyxjdD9mqBKgdxrAzLKTgiWlu6q
- wIj6rW9E=
-X-Gm-Gg: AYBFou2SX1XnFl10EUMAfk2hxAoPejn+gSMRuy7o0IKFhgRPK5fu8P+Ka0a93Ezfxje
- ySBmJtzPamTNVLNOx1KzdyFNTKZ+oFEcZjZIGoyJJme09Q+QUJMKwD3kgoIVGBSMVmNU6Ux8qNe
- Appa/C4Afu2KJcrXCp6z0j67ZPLiBsSAWaolJye1Iyr9WUFJiHpY77wnfkKqj1lMynQ4Z7zMV2t
- ekr3MtAwqgET5M24YRtTe11oxMHu6ZxLQZi7G8KLxG8mK6dIBKfRI6m33fuIExikoPV+fqrRxcT
- VMR1VdFqs3jdX/sSUAvFJLGGdJjg0apRsy6zyvrgX+fGCsVZPHxHSvZnQjCC4ZNFCTICai+pY+D
- skdQ2UYcLlupQCq2oKoQpjFKWwdoOzUkjsUjmv6vSgxc9ZDLXOhSQnoYkum0RAEgO6UMPVjRQdw
- YM6EHeCaGzHMiPqXS+GDanxfY+5rNNEil3V9hthEkOUe1Dcf0jcOXQP/fhPjInlHB6mkb66beH7
- qr2GbIghfQrr6gt4dGpx6DP8zmnSc12N7h8W6r99uvx4pgW5VACzONIoxMNpD5mvMxYqvEiha/j
- ToU=
-X-Received: by 2002:a05:600c:e549:20b0:4a1:9438:719e with SMTP id
- 5b1f17b1804b1-4a1943872ecmr113069885e9.9.1791880792088; 
- Tue, 13 Oct 2026 01:39:52 -0700 (PDT)
+ bh=wPv7Ak7ok91z1l/gQWZ23Vr8Ogtm8j6ZmfZUtTCQdFo=;
+ b=Lqb+G3GEaxVwNBx3C6bqAGEf0iui/X3dpepgeRHIEBnt8yNO+lBVF3FhCqaZY/C9LE
+ lYkUKNoxZHkV2ZMyUh4+aiL97Y6qAzLHGTrPqNI6ECRCK5vZd1CJ5pMlttCg88RFVp/j
+ P3pqib0NgoNIMZWefaHbew18lbow2/Jaz5YuGmbqfsYfiUQE/38qVLixVhiSu66hbGj5
+ uCshiahTRuWKXdTG+mzbCVWSygFlQSHrHs5151D8P+iFk8FD+O6cGUjseBvYid0czIp5
+ cLy+XmrM65SlveKKsi9Wkc9f21pBbX0rE++YY3A60krPHyrkfy22i0QsUuZTUDuH08cB
+ lBgQ==
+X-Gm-Message-State: AFq9FYJKWm97rOvrJFi1ax6aiW2RkHk3QJCkACWIiLGvn0CD4vlin+Hg
+ 219/AeU8V/LwNTt1+TosqlKo/HWz6tM1fPbO1yjLwuLkXclhlsx6xIav0TRCIzXyvnX/uOaf743
+ vFnYD9Xo=
+X-Gm-Gg: AYBFou3+BKSLhjpuF4O4TB35CREqdbN56noavLrQZpwjimDquSZ8NivufoaFkE3k498
+ hNNdNP0AKM6/WCzXJgQ9i8RRtWknt4Rwcx4yB48zK6UPYEJqCEWDQLtjOnN9uT6/qLaJXdVIuv1
+ sUhL7/3SovvJX+owQcAJPTo9vazXchDtAB7hEfnnOY53DBfReR7f53pZlQjxu4AEXATg8jokvuR
+ IWu7LyAALPv/+ynSdyPeI6iUnORtL8WrekyGNDW2Zm0qaFrZEoRlMYImjEN97cHBh5As5NEIuNN
+ NiYf7ijFPB3VeivClAStjF//+cpvckSygf6bn7ZuTeP0SPaZ3nLNd9+nhmokAvTIHLbWqAfUA0q
+ yOUi/EwZj6qSskyLPIqyUuoyKTNaegnZwIIGmowGOM729wfPiS0di/hkjb9sl9oHVTelCcBBzoA
+ 1rEovrmf3YqknSYS6/PZJMNg3TJ8CGlN+xftRNfdVI/p5ki1JhNl1HY1l3dfOb90O17FRLYY1J1
+ hyhHNo8phEPTa1RkY5I7kQLLr2IaZ+JBEYX4yUnpfOgWu05sNHsD9hW6RQji8UB2Kp0ecCJ650v
+ 7UU=
+X-Received: by 2002:a05:600c:4e92:b0:49e:63cc:6324 with SMTP id
+ 5b1f17b1804b1-4a18e4837e7mr230958985e9.6.1791880861802; 
+ Tue, 13 Oct 2026 01:41:01 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.39.51
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.41.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:39:51 -0700 (PDT)
+ Tue, 13 Oct 2026 01:41:01 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 12/86] hw/intc/arm_gicv5: Relax QEMU_GICV5_MIN_LPI_ID_BITS to 0
-Date: Tue, 13 Oct 2026 09:38:19 +0100
-Message-ID: <20261013083933.1024405-13-peter.maydell@linaro.org>
+Subject: [PATCH 67/86] hw/intc/arm_gicv5: Implement IRS_VPE_CR0
+Date: Tue, 13 Oct 2026 09:39:14 +0100
+Message-ID: <20261013083933.1024405-68-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,44 +102,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv5 specification allows implementations to declare a
-MIN_LPI_ID_BITS value in IST_IDR2, which specifies the minimum number
-of supported LPIs which can be configured (both for physical LPIs and
-for virtual LPIs in VMs).  It also notes (I_ZKLJR) that it doesn't
-expect most hardware implementations to require a minimum numberof
-LPI ID bits, and that this is mostly useful for the virtual IRS that
-a hypervisor might expose to a guest.
+IRS_VPE_CR0 is a 32-bit VPE configuration register which has
+semantics similar to IRS_VPE_DBR.  However, the only configuration
+field it has is for configuring 1-of-N VPE selection.  Since QEMU
+does not implement the optional 1-of-N handling, for us the entire
+register is RES0.
 
-QEMU generally prefers to offer the guest the highest-flexibility
-setting when it comes to this kind of IMPDEF value, so for instance
-we set our supported ID and IAFFID bit size to the maximum the spec
-permits.  Since this value is a minimum rather than a maximum,
-"highest-flexibility" means allowing the guest to configure a very
-small LPI range if it wants to.  Our current setting of 14 for
-QEMU_GICV5_MIN_LPI_ID_BITS is the least-flexible the architecture
-permits and requires that guests always configure large LPI ranges.
-
-Set QEMU_GICV5_MIN_LPI_ID_BITS to 0, as the spec suggests real
-hardware would.
+We don't need to implement the "writes to the register trigger a
+re-check of the validity of the VPE in IRS_VPE_SELR and update
+IRS_VPE_STATUSR.V" when the whole register is RES0, so our
+handling of the register can be simple.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/intc/arm_gicv5_common.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/intc/arm_gicv5.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
-index 59ac1c3880c..a47f639e84c 100644
---- a/include/hw/intc/arm_gicv5_common.h
-+++ b/include/hw/intc/arm_gicv5_common.h
-@@ -146,7 +146,7 @@ struct GICv5CommonClass {
- /* Number of INTID.ID bits we support */
- #define QEMU_GICV5_ID_BITS 24
- /* Min LPI_ID_BITS supported */
--#define QEMU_GICV5_MIN_LPI_ID_BITS 14
-+#define QEMU_GICV5_MIN_LPI_ID_BITS 0
- /* IAFFID bits supported */
- #define QEMU_GICV5_IAFFID_BITS 16
- /* Number of priority bits supported in the IRS */
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index f7d2d4a7143..18ca7034011 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -2334,6 +2334,10 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             *data = 0;
+         }
+         return true;
++    case A_IRS_VPE_CR0:
++        /* RES0 when VIRT_ONE_N is not implemented */
++        *data = 0;
++        return true;
+     case A_IRS_VPE_STATUSR:
+         if (gicv5_domain_has_virt(cs, domain)) {
+             *data = cs->irs_vpe_statusr[domain];
+@@ -2524,6 +2528,9 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+         irs_vpe_dbr_write(s, domain,
+                           deposit64(cs->irs_vpe_dbr[domain], 32, 32, data));
+         return true;
++    case A_IRS_VPE_CR0:
++        /* RES0 when VIRT_ONE_N is not implemented */
++        return true;
+     case A_IRS_SPI_SELR:
+         cs->irs_spi_selr[domain] = data;
+         return true;
 -- 
 2.43.0
 

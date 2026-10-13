@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C15CC6B10
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:46:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A3C4CC6B08
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:47:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY4X-0001ab-F7; Tue, 13 Oct 2026 04:41:22 -0400
+	id 1xGY6S-0004au-CG; Tue, 13 Oct 2026 04:43:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3g-0007f3-5i
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:28 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1xGY46-0000Im-T0
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:57 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3d-0007vd-Hi
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:27 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4a16c399641so26912005e9.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:24 -0700 (PDT)
+ id 1xGY43-00084b-VZ
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:54 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4a17baef589so22019835e9.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880823; x=1792485623; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880850; x=1792485650; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=gzfEd+fMuzIkl5MPbXsWVV3S6TkI1FXs7WFleXHIxOA=;
- b=lGCnE8plH62BTdjaKYZf+Uj2+2y9GUG25IoweJhfWi819KdsCxIpOk76/jgMV3DKLp
- MRoVrhxoKM4DKrI5Q9NhUxRyChiZphpx8Ux9OvFKm93kG6GBAcHdyP1NsBVn0UKbg9oW
- SDDhtHNpJvf31qJU5T1WuOHN1qD/XlWpwsq58kFzZe7Y8D+kpfCEyTMOLzibSWAeudKE
- n9paoYrdx0l2i5sZK88HoDcxHpHF+IElzAVtWb143G1w7A31/EXVB/Hl8uI4Ph+dfqcc
- S1EO00gSkKc21aIVujG3vP7j0oqaIEDZgrvPFjwrHK3YLxDGNw1x+EkZEk6jwdYJnynN
- pOng==
+ bh=Sw6qKX4jnZDlIg+Q6bC4x/Bq9Cid04bGlCnmLqCpsaM=;
+ b=WDfkel6Oj462W8rk/BzrAK5FKtOxOLWYIP1JfZkiWzCFCDH6iQauxHPa0iKnOeFp5D
+ U88x8ZMVLjMlzGW8xPnUUP377i2v7gdX3QV1abRZiPEBE90wVSV8Smt3CahFiWXo2cXW
+ eUk3qtzVIRz2BiQiBeyCujlGko49xgvOgPHrI0aLrRt1JsjGVNoJMmhEx815LIbamtsZ
+ R3VWDFA02RjeEm8yoF6Y0ZrviZcWNV/HSgX81UCmofoTkqJagKH43JEWubeSXzq37MQv
+ eVAoTshljLmp67J7FsY6+eHgS5K9joMrW5IEGr1uXSHtFnDAMr6cS4Ma8V79c1LccrH/
+ Q8Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880823; x=1792485623;
+ d=1e100.net; s=20260707; t=1791880850; x=1792485650;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=gzfEd+fMuzIkl5MPbXsWVV3S6TkI1FXs7WFleXHIxOA=;
- b=00SgSUD1sCJVuZzWvcgbePgZ+5p/LsIneZypRj+6wyu1T7NKsHZ7JA55iawpKuLneJ
- 9PGHwYO8N0au0sLRUbo2okVbRgVNZMwVIN4xEDZ3BxIWjhi/3qNvb06unLwogCzi3HP2
- xg9LGY4lV4kIgz/EaiSBknakHgzu9WgLUsibobEEJHeLj0lwjbsqfTOZe5PkBsxVD9JS
- GcfXPAx/g4VFTCw4v2NpVu8bzSgp+GeCXDbf+wVoJa21p5UovKAjepGKy9dNPwd+rk44
- 797RmXG+cbxo9UcG/9Va21U6ZU+mK/A6HW/NBOvxJbpq1JJnY7SmU+EGsaqtk3DTAYcX
- nE9Q==
-X-Gm-Message-State: AFq9FYLzvUvJVJK35EvRDk4uVjyzbI1I7d5bWt4Ol718w6UvDVw3LmVf
- wH7HesaXhib8OuFrKfQW9Sd3+Ov5hDefU9hm0hiAeuvFQl+woq4xaGJOHJUKa+3PB44RzzQONcl
- ipHZQDoA=
-X-Gm-Gg: AYBFou2YhxtoAg6xqhEhAicN8o/E2jLSQLEM7Dc9Mztjmda/50erlIXz7D64fwud0CP
- IAuT1Vej+7qzPktpYFEexpUqSYlNTSopuANaSMgpEFCd0ds/Cpo3liunuVbQy776xPYLNC6d1a/
- oHfen76UbAMDzull8S9cIZJV78SUsMo9jz0y/an2LekZy8pVtOrbrMsehvHVeMxZMDWMTbqGXiq
- qOqQ82PFdWK0W0NzjVdjTzvgXYGhHg/KPrR+A012Zf5+yvKAjMEQ8U5xA0bbps3d62sxXeDFk6u
- A/UHdTzra43kc5lykQZEKupdCq49gXmd2jzuC00okf8nItYTzBySawEf469nNnwiIGSODSOIiSP
- QJi1CLdGX8qI+kMOdOeECfwfMyrHgo6Czn0w+2tfCdoZ9VYgwk+lWsxRmjRiPg5ClEtjS9PPDwC
- 2tcEkMf/ELQ1czWHqSF0ebogjXzuHznkvFZ07UmGKuw+MI6hghrRebJl+Q/WdvuVJEjf8WmOJ/p
- roglTBuMwkaYVu1vyjW1jbZ9QnGHE4lEcTb9RyJBG3i03szLBy33q93b12EuhQo9kiL07lYJqCi
- hHjFEemBUSpG7w==
-X-Received: by 2002:a05:600c:674a:b0:4a1:7cf8:5433 with SMTP id
- 5b1f17b1804b1-4a18e443ee9mr218545885e9.3.1791880822894; 
- Tue, 13 Oct 2026 01:40:22 -0700 (PDT)
+ bh=Sw6qKX4jnZDlIg+Q6bC4x/Bq9Cid04bGlCnmLqCpsaM=;
+ b=G9AlMvgqQ7IBFapDb0axD4HhkWF4EalFUvqdmwkhxuVB/YiC/0H5UTPJp7Sfha3gNE
+ 6FnTcpqm/H3A418kExdW8+n01mBz7o6QDzADVagDu879bWJXpUDVbu8hOsUBB0ECvcJK
+ 81HHsqa4xJlqt2KGx2rQsWLYMSycKcYFTigA1agIJxK0Mw1TLXWJqPlUPIT02WT0/4oa
+ 7WtQoQyXPfPiFAqCE7uWjcBDHpJ4ecjCZXLv0oZIgF4be/3TgzzHYJLAga68qqtqPO8o
+ XCZGx5j8wxLg1RrN+uDh5oh9VEm6/5KcEmEqYvf1ofX3a0R4fsvbW0icqaVYMcSDlIRH
+ rApQ==
+X-Gm-Message-State: AFq9FYKBxTjHegEjHRweuIw/xtKEqPjOV3dGHH5gc43FtBKrjqQw/rMF
+ RJiTBueggcsBBpo6HA+xfgXaSEzhc5CR+20XG/MAQ0MIsgQ4unSGL66qGl9Fb28LZNCNRb59hvp
+ 5Q2m5yhU=
+X-Gm-Gg: AYBFou0zwD1FVX6eqBmCFrrh1Fnu6neSQlDSSGhGeYLvR2snax1V3aNcigrtCcO5Rxz
+ kvhhch2vXN/0AaG6zkebjPpDiBFmaCLxXSsMOlAUGUe228cP4zguB4Q6xwfmhz0IDpk9bnnE90E
+ DB99COJgdxHiUx+0UDZl+cGRhO710mZAZhVtH3B5ZsZsAGL7EM7+y9ueIupDzs/TUdz5Phy6CEw
+ nn6NE55g/itgvdO4E6M7QLTDx0CUwrcMWSaFKmCdhttBy4SylC9HMuD/o3qMigQLEJ/754V+CV7
+ PykDoOF/Kta0xJ/Y2MYle00FiUkT8HfgXjM+v+3hLLrvJPErhyd8PeQjn1YZeoOR4T0J13GKj4J
+ 3jyW7NBAI7MKVymBn/1ILhKvlgeNu5BQr+q1Q6WykgdIVHIoStC3XoCWPAyRkjp0Q4jHZxgVgye
+ DoPoHnXJUpesua7VfsnvJ0ieOxdIiLcoT1u6sxCvMjtxQc9v5Lhy1M4BV+xXaMg/ntyrdwIJdWY
+ R/iz7mTEuD/ntBa+yDwpxKib6z8KF82vWLx2X9gVIVPLNKo3kQrTp6VpSInkfRIpodMvoGQGQ+z
+ gYs=
+X-Received: by 2002:a05:600c:871b:b0:4a1:a2f3:e6f7 with SMTP id
+ 5b1f17b1804b1-4a1a2f3e8a9mr85732845e9.29.1791880849735; 
+ Tue, 13 Oct 2026 01:40:49 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.21
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:22 -0700 (PDT)
+ Tue, 13 Oct 2026 01:40:49 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 34/86] target/arm: GICv5 cpuif: Implement
- gicv5_update_virq_vfiq()
-Date: Tue, 13 Oct 2026 09:38:41 +0100
-Message-ID: <20261013083933.1024405-35-peter.maydell@linaro.org>
+Subject: [PATCH 56/86] hw/intc/arm_gicv5: Implement IRS_VMAP_VMR
+Date: Tue, 13 Oct 2026 09:39:03 +0100
+Message-ID: <20261013083933.1024405-57-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,135 +102,229 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement gicv5_update_virq_vfiq(), the virtual interrupt domain
-equivalent of gicv5_update_irq_fiq().  Based on the current highest
-priority pending interrupt for the virtual interrupt domain, we
-signal either the VIRQ or VINMI lines.
+The IRS_VMAP_VMR register lets the guest mark a VM as valid.  This is
+a 64-bit register similar in operation to IRS_VMAP_L2_VMTR.
 
-For VIRQ and VINMI it is important that we call arm_cpu_set_irq()
-rather than calling cpu_interrupt() and cpu_reset_interrupt()
-directly, because arm_cpu_set_irq() handles the logical OR of the
-state from the cpuif and the value of HCR_EL2.{VI,VINMI} to produce
-the VIRQ/VINMI signals seen by the rest of the CPU.
+We are eventually going to want to cache the information in a VM
+table entry, but for the moment implement the "make valid" operation
+as simply writing 1 to the VALID bit in the L2 VMTE.
+
+Note that unlike many of the other address fields in GICv5 data
+structures, we don't need to clear any of the low bits in
+L1_VMTE.L2_ADDR beyond masking with R_L1_VMTE_L2_ADDR_MASK.  This is
+because a level 2 VMT is always 4KB and so the alignment is fixed;
+the mask clears the low 12 bits, enforcing 4KB alignment.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/gicv5-cpuif.c | 43 +++++++++++++++++++++++++++++++++++-
- target/arm/tcg/trace-events  |  1 +
- 2 files changed, 43 insertions(+), 1 deletion(-)
+ hw/intc/arm_gicv5.c                | 94 ++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv5_common.c         |  1 +
+ hw/intc/trace-events               |  1 +
+ include/hw/intc/arm_gicv5_common.h |  1 +
+ include/hw/intc/arm_gicv5_regs.h   | 21 +++++++
+ 5 files changed, 118 insertions(+)
 
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index d2454011b40..a938428b20a 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -310,6 +310,35 @@ static void gicv5_update_irq_fiq(CPUARMState *env)
-     arm_cpu_set_irq(env_archcpu(env), ARM_CPU_NMI, superpriority);
- }
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index a81f7803ca5..f03b790cf41 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -1309,6 +1309,65 @@ static void irs_vmap_l2_vmtr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+         goto txfail;
+     }
  
-+static void gicv5_update_virq_vfiq(CPUARMState *env)
-+{
-+    /*
-+     * Update whether we are signalling VIRQ or VFIQ based on the
-+     * current state of the CPU interface.
-+     */
-+    GICv5PendingIrq current_hppi;
-+    bool virq, superpriority;
++    trace_gicv5_vmap_l2_vmtr(domain_name[domain], vmid);
 +
-+    /*
-+     * Only the legacy vCPU interface signals VFIQ, and we don't
-+     * implement that yet. So we leave ARM_CPU_VFIQ and ARM_CPU_VFNMI
-+     * at their default unasserted levels.
-+     */
++    return;
 +
-+    /*
-+     * We signal VIRQ if there is a HPPI of sufficient priority for
-+     * the virtual interrupt domain. It has Superpriority if its
-+     * priority is 0 (in which case it is CPU_INTERRUPT_VINMI).
-+     */
-+    current_hppi = gic_virt_hppi(env);
-+    superpriority = current_hppi.prio == 0;
-+    virq = current_hppi.prio != PRIO_IDLE && !superpriority;
-+
-+    trace_gicv5_update_virq_vfiq(virq, superpriority);
-+    arm_cpu_set_irq(env_archcpu(env), ARM_CPU_VIRQ, virq);
-+    arm_cpu_set_irq(env_archcpu(env), ARM_CPU_VINMI, superpriority);
++txfail:
++    /* Reportable with EC=0x0 if sw error reporting implemented */
++    qemu_log_mask(LOG_GUEST_ERROR, "L1 VMTE update failed for VMID 0x%x at "
++                  "physical address 0x" HWADDR_FMT_plx "\n", vmid, l1_addr);
 +}
 +
- static void gic_recalc_ppi_hppi(CPUARMState *env)
- {
-     /*
-@@ -398,6 +427,8 @@ static void gic_recalc_virt_ppi_hppi(CPUARMState *env)
- 
-     trace_gicv5_recalc_virt_ppi_hppi(env->gicv5_cpuif.virt_ppi_hppi.intid,
-                                      env->gicv5_cpuif.virt_ppi_hppi.prio);
++static void irs_vmap_vmr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
++{
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++    GICv5VMTConfig *cfg = &s->vmt_config[domain];
++    uint32_t vmid = FIELD_EX64(value, IRS_VMAP_VMR, VM_ID);
++    bool m = FIELD_EX64(value,  IRS_VMAP_VMR, M);
++    bool u = FIELD_EX64(value,  IRS_VMAP_VMR, U);
++    hwaddr l1_addr, l2_addr;
++    uint64_t l1_vmte, l2_vmte_0;
++    MemTxResult res;
 +
-+    gicv5_update_virq_vfiq(env);
- }
++    if (!gicv5_domain_has_virt(cs, domain) || !cfg->valid) {
++        /* Whole register RAZ/WI if no virt or no VM table */
++        return;
++    }
++
++    /* M bit is WO/UNKNOWN; write the other fields */
++    cs->irs_vmap_vmr[domain] = value & ~R_IRS_VMAP_VMR_M_MASK;
++
++    if (!m || vmid >= (1 << cfg->vm_id_bits)) {
++        return;
++    }
++
++    /* Find the L1 VMTE */
++    l1_addr = l1_vmte_addr(cs, cfg, vmid);
++    l1_vmte = address_space_ldq_le(&cs->dma_as, l1_addr, cfg->txattrs, &res);
++    if (res != MEMTX_OK) {
++        goto txfail;
++    }
++
++    if (FIELD_EX64(l1_vmte, L1_VMTE, VALID) == 0) {
++        /* No effect if L2 VM table is not valid */
++        return;
++    }
++
++    l2_addr = l1_vmte & R_L1_VMTE_L2_ADDR_MASK;
++
++    l2_vmte_0 = address_space_ldq_le(&cs->dma_as, l2_addr, cfg->txattrs, &res);
++    if (res != MEMTX_OK) {
++        goto txfail;
++    }
++
++    l2_vmte_0 = FIELD_DP64(l2_vmte_0, L2_VMTE_0, VALID, !u);
++
++    address_space_stq_le(&cs->dma_as, l2_addr, l2_vmte_0, cfg->txattrs, &res);
++    if (res != MEMTX_OK) {
++        goto txfail;
++    }
++
+     return;
  
- void gicv5_forward_interrupt(ARMCPU *cpu, GICv5Domain domain, bool virtual)
-@@ -408,7 +439,12 @@ void gicv5_forward_interrupt(ARMCPU *cpu, GICv5Domain domain, bool virtual)
-      * If this is a virtual interrupt, do similarly for VIRQ/VFIQ.
-      */
-     if (virtual) {
--        /* Here we will eventually update the VIRQ/VFIQ state */
-+        /*
-+         * We don't need to check here for a mismatch between domain
-+         * and the domain of the resident VPE, because that will
-+         * be checked when gic_virt_hppi() calls back into the IRS.
-+         */
-+        gicv5_update_virq_vfiq(&cpu->env);
-     } else {
-         gicv5_update_irq_fiq(&cpu->env);
-     }
-@@ -775,12 +811,14 @@ static void gic_ich_vctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                 uint64_t value)
- {
-     raw_write(env, ri, value);
-+    gicv5_update_virq_vfiq(env);
- }
- 
- static void gic_ich_vmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                uint64_t value)
- {
-     raw_write(env, ri, value);
-+    gicv5_update_virq_vfiq(env);
- }
- 
- /*
-@@ -798,6 +836,7 @@ static void gic_icc_apr_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     if (gicv5_icv_access(env)) {
-         env->gicv5_cpuif.ich_apr_el2 = value;
-+        gicv5_update_virq_vfiq(env);
-     } else {
-         GICv5Domain domain = gicv5_logical_domain(env);
-         env->gicv5_cpuif.icc_apr[domain] = value;
-@@ -844,6 +883,7 @@ static void gic_icc_cr0_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         vmcr = FIELD_DP64(vmcr, ICH_VMCR_EL2, EN,
-                           FIELD_EX64(value, ICC_CR0, EN));
-         env->gicv5_cpuif.ich_vmcr_el2 = vmcr;
-+        gicv5_update_virq_vfiq(env);
-     } else {
+ txfail:
+@@ -1472,6 +1531,22 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             *data = 0;
+         }
+         return true;
++    case A_IRS_VMAP_VMR:
++        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain].valid) {
++            *data = extract64(cs->irs_vmap_vmr[domain], 0, 32);
++        } else {
++            /* RAZ/WI if no virt or no VM table */
++            *data = 0;
++        }
++        return true;
++    case A_IRS_VMAP_VMR + 4:
++        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain].valid) {
++            *data = extract64(cs->irs_vmap_vmr[domain], 32, 32);
++        } else {
++            /* RAZ/WI if no virt or no VM table */
++            *data = 0;
++        }
++        return true;
+     case A_IRS_SPI_STATUSR:
          /*
-          * For our implementation the link to the IRI is always connected,
-@@ -889,6 +929,7 @@ static void gic_icc_pcr_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         vmcr = FIELD_DP64(vmcr, ICH_VMCR_EL2, VMPR,
-                           FIELD_EX64(value, ICC_PCR, PRIORITY));
-         env->gicv5_cpuif.ich_vmcr_el2 = vmcr;
-+        gicv5_update_virq_vfiq(env);
-     } else {
-         GICv5Domain domain = gicv5_logical_domain(env);
+          * QEMU writes to IRS_SPI_{CFGR,DOMAINR,SELR,VMR} take effect
+@@ -1604,6 +1679,14 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                                deposit64(cs->irs_vmap_l2_vmtr[domain],
+                                          32, 32, data));
+         return true;
++    case A_IRS_VMAP_VMR:
++        irs_vmap_vmr_write(s, domain,
++                           deposit64(cs->irs_vmap_vmr[domain], 0, 32, data));
++        return true;
++    case A_IRS_VMAP_VMR + 4:
++        irs_vmap_vmr_write(s, domain,
++                           deposit64(cs->irs_vmap_vmr[domain], 32, 32, data));
++        return true;
+     case A_IRS_SPI_SELR:
+         cs->irs_spi_selr[domain] = data;
+         return true;
+@@ -1704,6 +1787,14 @@ static bool config_readll(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             *data = 0;
+         }
+         return true;
++    case A_IRS_VMAP_VMR:
++        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain].valid) {
++            *data = cs->irs_vmap_l2_vmtr[domain];
++        } else {
++            /* RAZ/WI if no virt or no VM table */
++            *data = 0;
++        }
++        return true;
+     }
  
-diff --git a/target/arm/tcg/trace-events b/target/arm/tcg/trace-events
-index da25ec994cc..71f1369fcda 100644
---- a/target/arm/tcg/trace-events
-+++ b/target/arm/tcg/trace-events
-@@ -9,4 +9,5 @@ gicv5_gicr_cdia(int domain, uint32_t id) "domain %d CDIA acknowledge of interrup
- gicv5_cdeoi(int domain) "domain %d CDEOI performing priority drop"
- gicv5_cddi(int domain, uint32_t id) "domain %d CDDI deactivating interrupt ID 0x%x"
- gicv5_update_irq_fiq(bool irq, bool fiq, bool nmi) "now IRQ %d FIQ %d NMI %d"
-+gicv5_update_virq_vfiq(bool virq, bool vinmi) "now VIRQ %d VINMI %d"
- gicv5_update_ppi_state(int ppi, bool level) "PPI %d source level now %d"
+     return false;
+@@ -1722,6 +1813,9 @@ static bool config_writell(GICv5 *s, GICv5Domain domain, hwaddr offset,
+     case A_IRS_VMAP_L2_VMTR:
+         irs_vmap_l2_vmtr_write(s, domain, data);
+         return true;
++    case A_IRS_VMAP_VMR:
++        irs_vmap_vmr_write(s, domain, data);
++        return true;
+     }
+ 
+     return false;
+diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
+index 945257fef2c..19338ad5b9c 100644
+--- a/hw/intc/arm_gicv5_common.c
++++ b/hw/intc/arm_gicv5_common.c
+@@ -109,6 +109,7 @@ static void gicv5_common_reset_hold(Object *obj, ResetType type)
+         memset(cs->irs_vmt_baser, 0, sizeof(cs->irs_vmt_baser));
+         memset(cs->irs_vmt_cfgr, 0, sizeof(cs->irs_vmt_cfgr));
+         memset(cs->irs_vmap_l2_vmtr, 0, sizeof(cs->irs_vmap_l2_vmtr));
++        memset(cs->irs_vmap_vmr, 0, sizeof(cs->irs_vmap_vmr));
+     }
+ }
+ 
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 30e2fc42471..4b47b98e66c 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -248,6 +248,7 @@ gicv5_irs_recalc_hppi_fail(const char *domain, uint32_t iaffid, const char *reas
+ gicv5_irs_recalc_hppi(const char *domain, uint32_t iaffid, uint32_t id, uint8_t prio) "GICv5 IRS %s IAFFID %u: new HPPI ID 0x%x prio %u"
+ gicv5_vmt_valid(const char *domain, uint64_t base, uint8_t vm_id_bits, bool structure) "GICv5 IRS %s VM table now valid: base 0x%" PRIx64 " vm_id_bits %u 2-level %d"
+ gicv5_vmt_invalid(const char *domain) "GICv5 IRS %s VM table no longer valid"
++gicv5_vmap_l2_vmtr(const char *domain, uint32_t vmid) "GICv5 IRS %s VM ID %u now valid"
+ 
+ # arm_gicv5_common.c
+ gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
+diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
+index 19700c7d5e3..5707111b98a 100644
+--- a/include/hw/intc/arm_gicv5_common.h
++++ b/include/hw/intc/arm_gicv5_common.h
+@@ -92,6 +92,7 @@ struct GICv5Common {
+     uint64_t irs_vmt_baser[NUM_GICV5_DOMAINS];
+     uint32_t irs_vmt_cfgr[NUM_GICV5_DOMAINS];
+     uint64_t irs_vmap_l2_vmtr[NUM_GICV5_DOMAINS];
++    uint64_t irs_vmap_vmr[NUM_GICV5_DOMAINS];
+ 
+     /*
+      * Pointer to an array of state information for the SPIs.  Array
+diff --git a/include/hw/intc/arm_gicv5_regs.h b/include/hw/intc/arm_gicv5_regs.h
+index d675a10c37f..edc66887ac4 100644
+--- a/include/hw/intc/arm_gicv5_regs.h
++++ b/include/hw/intc/arm_gicv5_regs.h
+@@ -273,6 +273,27 @@ FIELD(L2_ISTE, IAFFID, 16, 16)
+ FIELD(L1_VMTE, VALID, 0, 1)
+ FIELD(L1_VMTE, L2_ADDR, 12, 44)
+ 
++/* The L2 VMTE is 32 bytes, four 64-bit words */
++FIELD(L2_VMTE_0, VALID, 0, 1)
++FIELD(L2_VMTE_0, VMD_ADDR, 3, 53)
++
++FIELD(L2_VMTE_1, VPET_ADDR, 3, 53)
++FIELD(L2_VMTE_1, VPE_ID_BITS, 59, 5)
++
++FIELD(L2_VMTE_2, LPI_IST_VALID, 0, 1)
++FIELD(L2_VMTE_2, LPI_IST_L2SZ, 1, 2)
++FIELD(L2_VMTE_2, LPI_IST_ADDR, 6, 50)
++FIELD(L2_VMTE_2, LPI_ISTSZ, 56, 2)
++FIELD(L2_VMTE_2, LPI_IST_STRUCTURE, 58, 1)
++FIELD(L2_VMTE_2, LPI_ID_BITS, 59, 5)
++
++FIELD(L2_VMTE_3, SPI_IST_VALID, 0, 1)
++FIELD(L2_VMTE_3, SPI_IST_L2SZ, 1, 2)
++FIELD(L2_VMTE_3, SPI_IST_ADDR, 6, 50)
++FIELD(L2_VMTE_3, SPI_ISTSZ, 56, 2)
++FIELD(L2_VMTE_3, SPI_IST_STRUCTURE, 58, 1)
++FIELD(L2_VMTE_3, SPI_ID_BITS, 59, 5)
++
+ /*
+  * L2 VMTEs are always 32 bytes, and the L2 table is always 4KB,
+  * so the lower 7 bits in a VM ID index the L2 table.
 -- 
 2.43.0
 

@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1956CA9ED2
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE26FCA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:53:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY8n-0000IQ-L0; Tue, 13 Oct 2026 04:45:46 -0400
+	id 1xGY4h-0001tK-4B; Tue, 13 Oct 2026 04:41:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY4d-0001nD-Qy
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:28 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1xGY3r-0008Dv-Pi
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:40 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY4c-0008Jb-6Q
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:27 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-49fbb2acc90so22389805e9.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:41:25 -0700 (PDT)
+ id 1xGY3p-0007zQ-EO
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:39 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-49d0da752ffso24461455e9.3
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880885; x=1792485685; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880836; x=1792485636; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=MeT+bQbA4mzMBemWeTOL9DdPMgcpzifck65oWgevcU0=;
- b=yHGLZ/l/OWbP5NKMO+/e6qdeVQ6RCI8H3lDsoJyYV/HjY2xQPQ/haMIL+k4QFB0ZE9
- jaD2ZsGIhh5SWr8nWbL09rPNaGajDxWRPEMCm8FWPwwzFbmwO0wyWIaEVmjgmQ5v6OHb
- 8uH9g+5zLQ6lS8upCIHRd/B/rzgr3ziBWIpww3hbMAHMVT6n7252Gr5j3ZTOVB2P/rMc
- uAN2L8lvZbtBtJuaEq9j44xjFqOIKkYlpJyvOYGdMOkvdw89V55MVUy5BygdrOnpueNg
- 9D1OhQOV2zPrpYVkR+IUB9TvR0DbFqyrgu9bKeG1TI6fzwCYQqwpY6LX3Jlt6n9Ycm6F
- qgRA==
+ bh=xzgSRPibV+W+TuXoD9LFFebcGlaP5K/iGBnAO14/huw=;
+ b=YoRRJsqEJnzWcEg2WqDBQrzvSQsyjmJTmriLnw65nQo24cHuKTYcIAwo4ODIeDTMoo
+ 0GjRGi/+bOugV0YQsu1AALL7l22frSSdZlWmkJqnB/lG9hfnnlwKdNkUgCYWlKscIAZZ
+ ogNp0gGxpzbrpAjmHsT7WFA2BAhNWsOxb4uhGxLDY3SqkI78Y8Of1bgeuod/eyOzpjVX
+ 9Tly1DfWSaEDxULtTUHGj2qimsssz4xUYzJzD3I+ClEFyZsZHe4IJHEo/++JcOclnrx3
+ grdkNh7SHhyLNVtwm+i6qCfwDa0UlzbipNHFqIKUgAo/3tfhXXhhbfGFN5p8nCT2FFGQ
+ 62yQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880885; x=1792485685;
+ d=1e100.net; s=20260707; t=1791880836; x=1792485636;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=MeT+bQbA4mzMBemWeTOL9DdPMgcpzifck65oWgevcU0=;
- b=hxMK063JhX4H3cHzxkK1reK3LEXXnR3SmplG2KWxSos1YnQaiV08jgUCEVq5ZnFBic
- AEmzEqHPWsck056jAfTPynGX/uN+M+4Wkvab5qJl/7YCz0irYAlcZFevIa6GFJAd7Ugt
- iqWH0fanrWbZqrPisldUWQmQuoGI/LrLlTBs0driwewLPmPoNn3Ghux97SUaXwgbEm8K
- /WrxxofAya3P/VWtzkaYFpsl4BEmckG63+sFJGNkRUIaAF2kNzA7PKqP7TtrhjACPub1
- 3SlUqzzKbns6a1rvbL7JhCxOBHnJhcnw6y4DVLJYaARTFFFptVx0SAWIrXMpCTmUdyeJ
- oDFg==
-X-Gm-Message-State: AFq9FYKgrBJR4f6nDYqYf47iJUJuceBiosBQFimYXR9uc2kCCP1Dx50I
- wdSpfhbJJPa2vdfEq2n5yvxPZhJEzFz0995riv+xW22gZt/ugtl6oM0S0qq0uCCeu93Q/KYY1I1
- P/Ov7nOs=
-X-Gm-Gg: AYBFou3rXQjCfqvQGZZuOxSqWAJPx6netOZ+G5hMCR4sHqIOQbHcT3JnkNlXKS4tpVG
- zO0PpbHJKFtD8UJ3BmPjs5asAMoaMc1p0OiUE/wblkeKaWqx+cgwaXVh+abeU2ROhFAsLmehigY
- o/8IDC+W1AtdLY6oEDbAZ68JDePPQpTgx3mR9CziogOayedjT90Uvbgk+H98b6QoBlYXu+5NzNT
- 3poJyVjw4u7irWH7ZrpjZwAaR83u2XSD9MRp/eyyeh1RH7X0v9QXtyR3VnEoC+FI99ffZEGRfEC
- fdU2V8rUDw3J3wJc0w8QiWt1hXTXa9KLhxvX3h45yzQGxOaIhf33slY7/Xjthpc23UZHrc6TSa5
- ah1BeucHYHslTsILuLYU6eH6YjvTdpDxagh1vEMmrfMJDUBJSnSJSQqfCpv2+T0ZeIHFsSxDGw8
- k8CZvT4fX0MAgNio4b5RW+0iFfZo86E0sONiSoctZHKfuaj5AMgYw2TYl400QbG0ZGrciKAGszI
- a/K5RInIx3/dQs8hqHSNHYk96cmKtbsHIOsSUcqr7kVJsDDO9Ng+50YBQSZXl2kR2llhhgGlSbO
- xOw=
-X-Received: by 2002:a05:600c:4689:b0:4a0:1cfd:321 with SMTP id
- 5b1f17b1804b1-4a18e4a9b31mr249422025e9.12.1791880884628; 
- Tue, 13 Oct 2026 01:41:24 -0700 (PDT)
+ bh=xzgSRPibV+W+TuXoD9LFFebcGlaP5K/iGBnAO14/huw=;
+ b=hyz0B5SptEHo222npM2lx7UK1XHmzJUTFKwIPUQUM7x1HSUlRegJzjkDP2YgkgjKe9
+ lQja2Pmgzp568tm5F2DUmBTePppadfJc5GtF8uZCW0z40OyGUP0PIWhipgBSDkGmuG9A
+ xrqSMjm3A5SNSy1fqrtyxktFxCC79TPONRDMgfjVByMfWLD3A3Ky5qjTLKNHjPlyCRJk
+ Wtju1tM2+t1ErzHS6pQoDsyiaa9qN9LhIxHlLtzd8Kj19QDxg6eI2KaHSdNC72qRjlaR
+ vM439zaXk/jOSU9SridQh4WCj35QwOTIXa12xhPG7IvF1S1aEnmi19/S+eJbNkeHIovW
+ S5Iw==
+X-Gm-Message-State: AFq9FYJLX3eJYJAkKtdsHSRq6/LifYjcMuURl1mJSDJz8UbtiKC2c5Ky
+ x5b36jUKP48BBwTJfHvoMBYmB5cwClQ3f4y/5TNVTpsNUynuqJnGQ5J6OJTOixTPgSb9CBngbsN
+ kM3r4fUU=
+X-Gm-Gg: AYBFou1TEPAe5CSo2j7Sss4hZezGbfEtgosUdbhGap8R4FHsK2rctXMQFGNxtf1UCvP
+ Y9vnb3SAVEjeUMZaHUGAzBR9Y2hyx6c2PcB/gADTFvDowRh9FB/TO4jszg4fWxTBMavaHOsKhpi
+ YzOLUzqWE+i/b5cEZIWfJR3Rbm1pE0lXJfN90p2IOeZs18ATcVPRIXvsw4F7k2rTzro53xFwatH
+ FjeOa1CVpCwEhCkZ2UkfL9dyr+ZhPXMWRy+HltFE/36N+wyJ1oDehsQZ72tJqTvpmwCgUWtFdTC
+ m8/NagIcIWn+cnq4wfMiWWrHqMDoqM5LotdKpe6R70wnWiC8Pwb2dLQDDx+f2UiZj2CFGfhYbms
+ KJn0Azzo2vISw14yCmAXCb9UhwC90cs0dwmAtv4nhWkE5WJXKtlOcIkBa8/IMCKHxWTSakHSXe2
+ lcNMZ2scXU+bSF5xalaASIVB3Yex1EsN75SXx4nplbP3gyTZYoCs0yiAR6WyixS28dxjNa3mZRs
+ EV3WocyvM7T/goDjTHY18fYPZzclmEn1n5aFp9JeI14wt187B8PseoGnBKoYIMPhmVYwRv33FGl
+ ths=
+X-Received: by 2002:a05:600c:8716:b0:4a1:62b8:9aa1 with SMTP id
+ 5b1f17b1804b1-4a18e44885dmr236696575e9.2.1791880835847; 
+ Tue, 13 Oct 2026 01:40:35 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.41.23
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:41:24 -0700 (PDT)
+ Tue, 13 Oct 2026 01:40:35 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 85/86] hw/intc/arm_gicv5: Implement no-passthrough IRS_SPI_VMR
-Date: Tue, 13 Oct 2026 09:39:32 +0100
-Message-ID: <20261013083933.1024405-86-peter.maydell@linaro.org>
+Subject: [PATCH 43/86] target/arm: GICv5 cpuif: Implement GIC LDnnn insns
+Date: Tue, 13 Oct 2026 09:38:50 +0100
+Message-ID: <20261013083933.1024405-44-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,94 +102,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv5 spec recommends, but does not require, that the IRS
-implements passthrough of SPIs to VMs.  Linux does not currently use
-SPI passthrough.
+The GIC cpu interface has a set of GIC LDnnn insns which behave
+exactly like the GIC CDnnn ones except that they always operate on
+the logical interrupt domain.  (EL3 can use these to examine and
+update the state of the interrupts in the physical interrupt domain
+for lower exception levels.)
 
-For our initial implementation, implement the IRS_SPI_VMR register as
-RAZ/WI, corresponding to "passthrough is not supported for any SPI",
-and with a LOG_UNIMP message if the guest attempts to configure
-passthrough for an SPI.
+We won't need these until we implement EL3 support, but since
+we've put in all the necessary groundwork for the reginfo
+structs to just work, we might as well add them now. The writefns
+will select the domain to use based on the opc1 field.
+
+As with VD, there is no LD insn for CDIA, CDNMIA or CDEOI.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ target/arm/tcg/gicv5-cpuif.c | 40 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index de595d93506..f380f144f6d 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -2582,6 +2582,24 @@ static uint64_t irs_save_vm_statusr_read(GICv5 *s, GICv5Domain domain)
-     return value;
- }
- 
-+static void irs_spi_vmr_write(GICv5 *s, GICv5Domain domain)
-+{
-+    GICv5Common *cs = ARM_GICV5_COMMON(s);
-+
-+    /* RAZ/WI if no virt */
-+    if (!gicv5_domain_has_virt(cs, domain)) {
-+        return;
-+    }
-+
-+    /*
-+     * The spec merely recommends that passthrough of SPIs is supported.
-+     * For an SPI where passthrough is not supported, IRS_SPI_VMR is
-+     * RAZ/WI (indicating "not passed through" and not permitting it to
-+     * be set to "passed through"). Log the missing functionality.
-+     */
-+    qemu_log_mask(LOG_UNIMP, "QEMU GICv5 SPI passthrough not implemented\n");
-+}
-+
- static void spi_sample(GICv5SPIState *spi)
- {
-     /*
-@@ -2873,6 +2891,11 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-             *data = 0;
-         }
-         return true;
-+    case A_IRS_SPI_VMR:
-+    case A_IRS_SPI_VMR + 4:
-+        /* Always RAZ/WI until we implement SPI passthrough */
-+        *data = 0;
-+        return true;
-     case A_IRS_VPE_CR0:
-         /* RES0 when VIRT_ONE_N is not implemented */
-         *data = 0;
-@@ -3077,6 +3100,12 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
-         irs_save_vmr_write(s, domain,
-                            deposit64(cs->irs_save_vmr[domain], 32, 32, data));
-         return true;
-+    case A_IRS_SPI_VMR:
-+        irs_spi_vmr_write(s, domain);
-+        return true;
-+    case A_IRS_SPI_VMR + 4:
-+        irs_spi_vmr_write(s, domain);
-+        return true;
-     case A_IRS_VPE_CR0:
-         /* RES0 when VIRT_ONE_N is not implemented */
-         return true;
-@@ -3244,6 +3273,10 @@ static bool config_readll(GICv5 *s, GICv5Domain domain, hwaddr offset,
-             *data = 0;
-         }
-         return true;
-+    case A_IRS_SPI_VMR:
-+        /* Always RAZ/WI until we implement SPI passthrough */
-+        *data = 0;
-+        return true;
-     }
- 
-     return false;
-@@ -3283,6 +3316,8 @@ static bool config_writell(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     case A_IRS_SAVE_VMR:
-         irs_save_vmr_write(s, domain, data);
-         return true;
-+    case A_IRS_SPI_VMR:
-+        irs_spi_vmr_write(s, domain);
-     }
- 
-     return false;
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index 64e59589cc7..69e51359f22 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -1501,6 +1501,46 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+         .accessfn = access_gicv5_ich_reg,
+         .writefn = gic_cdhm_write,
+     },
++    {   .name = "GIC_LDDIS", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 1, .opc2 = 0,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cddis_write,
++    },
++    {   .name = "GIC_LDEN", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 1, .opc2 = 1,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cden_write,
++    },
++    {   .name = "GIC_LDPRI", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 1, .opc2 = 2,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdpri_write,
++    },
++    {   .name = "GIC_LDAFF", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 1, .opc2 = 3,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdaff_write,
++    },
++    {   .name = "GIC_LDPEND", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 1, .opc2 = 4,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdpend_write,
++    },
++    {   .name = "GIC_LDRCFG", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 1, .opc2 = 5,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdrcfg_write,
++    },
++    {   .name = "GIC_LDDI", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 2, .opc2 = 0,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cddi_write,
++    },
++    {   .name = "GIC_LDHM", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 6, .crn = 12, .crm = 2, .opc2 = 1,
++        .access = PL3_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdhm_write,
++    },
+     {   .name = "ICC_IDR0_EL1", .state = ARM_CP_STATE_AA64,
+         .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 2,
+         .access = PL1_R, .type = ARM_CP_CONST | ARM_CP_NO_RAW,
 -- 
 2.43.0
 

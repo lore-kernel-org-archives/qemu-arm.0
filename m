@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACD6CCC6B13
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:46:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDCD3CC6B08
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:46:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY4S-0001Hh-Qk; Tue, 13 Oct 2026 04:41:16 -0400
+	id 1xGY3l-0007xu-PE; Tue, 13 Oct 2026 04:40:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3g-0007fU-Gq
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:28 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1xGY3P-00071h-UX
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:13 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3d-0007vq-Hw
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:28 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4a16bc2278aso18552035e9.1
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:25 -0700 (PDT)
+ id 1xGY3L-0007cM-Hg
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:10 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4a172eb31f0so20431165e9.1
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:39:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880824; x=1792485624; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880793; x=1792485593; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=vTvIfdyX/SM1rGf15Fby2Qgem7tDHZaoRHeVArtn0is=;
- b=Uv9Md4Bo/wJV2y1IN3oxZBgkOeaAvsqusKB0zpUJ5e+zy/7VAmQSQMHNDCl1PkjfuA
- bNXaga12nbumwQgbMgaaRYZ0LMKcfy8owDE2bugv3LHjYM1c5e5dr3ZStKE56Ja9wMhl
- neMfNFVOb2c/FrUIqd8YzTsYKks6q7Kl1cVUVE8QVXtJibcAkUQVPNaApCaMjk5vKXgH
- NmdzuOnj39Ly83D/TKxGvC6t4KrycqZUdOnkA7W5XF8a9YSZan6kf9DscLUiLstwZhio
- d2mz0D8DdxBN0MUmrY776o1W9ILuBGsvuXAONpugbXzDkI2q9ixn0qxiGR9P0MHAzfzO
- 3ESg==
+ bh=qpgEaqwbI8cXhwzqqc5V6TxLN3Im1mcvPlwe4PGvMA8=;
+ b=Mut4tNWg+ihZb04jsCn9gVV87CGjj81ZKQtFhZrBQcCPAVUOidAM3xfzySAB1nwHUC
+ RBHO0daEUeB0aWlR2yxXv1I/Ra2R305/HY1njSTarJBG9s+9uCHtPttXKpeCrO9Wv9nQ
+ dzmYRiRPmuvY16FQWv4bSc/CwUG19smi0JxkiXENFiyDEOtNIRpsW5w36djKRwlirW2b
+ DHeLD5WrQaxhbleco/8boDazsv9zeXMy9+oTbpeuR1X96RVi+tjHyHV53HNyy8p8608D
+ 49UZY+t+01y0nX2XQh4CamLznWGQtq1GUqa3OtORpIilIMvX57Vum8H97IVDEQbJOzCd
+ JAMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880824; x=1792485624;
+ d=1e100.net; s=20260707; t=1791880793; x=1792485593;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=vTvIfdyX/SM1rGf15Fby2Qgem7tDHZaoRHeVArtn0is=;
- b=ntMXiHgs71MVhEokT0wXBD5mjTnQYtmavIZ4206fKbnaIDYXaVCaBmb6hLWJU31gh/
- NK/uFRecw3Z06OrCoEkWMqtlK09JjK6ePkuF0Ttzse7RgLaKmqZsIMo8iR6geQNkG0YW
- wwu6jF3eyTfMQ6lXiBRZ/cHe7BlC3LPm7M38BInTcuWg0p01bLxJ5HhinxFmpp8OGhpl
- G9vJK/6WpDQ34pJQ0g4jfjIxkcTbZHZr9239nrKCQZxlRuc7r8TSQj4HNlwuf64OdlYj
- 95h8CjHK7Qh4XPVVjwrjOy4t8zlOUyyDOlkPauqIqxe+5GJwnTVNPY4awNkqG6mAU5lH
- o2XQ==
-X-Gm-Message-State: AFq9FYIKB9lwiZsN9QKSYHQSMzwwpTornB6WMFl0hk3iMNB75oW0hHD1
- 6pLMCYZwJgEEFreSBNfDI60/XXKSCCL470lhzbt/GTgVmHuXrnbbhXeKXbf4F7Z8KLnKz0ASYC2
- eJT+AAjc=
-X-Gm-Gg: AYBFou1CmqlY24rWBenfAnTQ8WHuB7W+aamgvkexw0sh1chljgMhuEwEidA9J5vpB8l
- PdOLBTUm8woMTFcj8p7dnWNjUAKvR74YIaHyLVvJZizJvLewXlVgWJenwqiQvrostEyKRkbTkgs
- yB/XcxEl1HQzjlsvhMQ19dqmHXrETb8Y2TR3MneFycNX4F6vlDmDaX4etfWydP2Y6R+op+h2tCJ
- XYwNiqN6wCWrxrox0rVE+9vMW5/8SnCf7zMkYD/hqzypI7rknFb0sj3L8NMVQJ7kWC+s0pGtKLx
- UhoM4fkfFGb3q+kfPBO8aeCLqimHHjgQPY6EdKVIPd1vwaXE3OhZgvg9m4n91EGQ2+swsW1RnLA
- 1MhHFuJhhOG/b3wqTX/wLAUvM333E3gMujf1de5Br7Eyf1LQisOR/I0X5wwyPs59D4btt4LW5XC
- bFUktu1pBm7SVin7meHpiJWmeIrOCuAYM5UYYgKG4yUyl8XxN+MFoJhAYLg1hgtfH0yhamHeRSH
- N/nDl3vt0N57o3n986ka29owoXtKMqnV3ns0ebchOAaXGl0KpjPLAcHScN9sQuc0mPvvFX9qqPn
- jP8=
-X-Received: by 2002:a05:600c:64c7:b0:4a1:8399:b74a with SMTP id
- 5b1f17b1804b1-4a18e4e5c7cmr216353315e9.31.1791880823818; 
- Tue, 13 Oct 2026 01:40:23 -0700 (PDT)
+ bh=qpgEaqwbI8cXhwzqqc5V6TxLN3Im1mcvPlwe4PGvMA8=;
+ b=fIqpoY9NYHo8DCiENfIbBxQBLE5iQnpzmG55+epJm4eMtiF3fYFvHq6h4QGHtFrOuB
+ ncK15B4ONc7pSGD87LPY4Rr3xvNZyiE/wE/7WFn64IG/NYKvInbv54+z1/70pqMl8R3Z
+ reiSRq25d07jOSYhpAjHNcOrnFBGLuzw4uWC8sQD9lW0/y1BolatYKWyNxbs38qwkC1B
+ Lo0Gy83WR0hOy5oQpp5VJbknaaZMZBWTBggaA8LFd6TgBjo9HhrAOfQJs9ur+6YqkpZC
+ 7KSknLyi4jSvHFl138GM7szfY8ZsN/cNIJ4JiUWIbomUAwiW0WytZCgfLBiUDk5jaFqe
+ h/6Q==
+X-Gm-Message-State: AFq9FYK2IE8lQUPhkBeNAnvnrF9MCHJ3nwnBoib+caPudH04H693dbz6
+ V7kihAJmS8M5wQb/omm/U5rRxLjD3Kcf0wqxp9gdqNFXVq6yHpcWR5uOzJZh/NUpa9+joS8+Ftk
+ /qKGUtFU=
+X-Gm-Gg: AYBFou2r3NPJVsqDODy97pCnnkbgNFfv4p9bUu8/GpAIznRE1NEa60mTqscBr0FdXBB
+ Z3m7yL0ggQ8omQ2H5tyMtJ1/FmJygGtLoT6A9JdEzaYDzEVWR2sSEP2k4AiRd9n9Pn+3Z8bxj0m
+ m6mETXaBlRo8pC8ETK0GFZXJh5Ofuu3acI7bz/NdcLf+KmZhCkZcugQDvsIy/AhF96sJfj7wuSs
+ LE8GxfIRYkSfHNXs9VZt0KO28dMuUuRhy2SDWcuCfX7477JztWS6LdK+81hLEm/5R82/rgC09Xp
+ npaueKos+8Q17IyNFLWUVe/XHZdu/DBbFWXQhnzJk17HutHpwK8iRpRohaJ1YSPWebPS00nOVge
+ SSWg3nvxdUNObb7AFsuAjMqwGoRSGMJfqQ96am+DwXOyCScMAyvsXwyqqBVC18SUQvBDR19G6qw
+ 5uzykWIycFff01zC5nb3rur4EIsY51CI0RfQJhjbs4Lzq2oR6Va4+q+GQJsGYYURIft7YmhtXYj
+ ZlH3Z1lCYYeww2ovZex0Q1oYsmfPeOeK2Q3WKJqsaIu0PI8cY55IyCss/eB/4tsiKaVvxH9l4/r
+ xALraiJk3QL9vA==
+X-Received: by 2002:a05:600c:3b1a:b0:49c:fa20:cbfd with SMTP id
+ 5b1f17b1804b1-4a18e4b91f8mr200321455e9.20.1791880793162; 
+ Tue, 13 Oct 2026 01:39:53 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.22
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.39.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:23 -0700 (PDT)
+ Tue, 13 Oct 2026 01:39:52 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 35/86] target/arm: GICv5 cpuif: Implement ICH_CONTEXTR_EL2
-Date: Tue, 13 Oct 2026 09:38:42 +0100
-Message-ID: <20261013083933.1024405-36-peter.maydell@linaro.org>
+Subject: [PATCH 13/86] target/arm: GICv5 cpuif: Implement ICH_APR_EL2
+Date: Tue, 13 Oct 2026 09:38:20 +0100
+Message-ID: <20261013083933.1024405-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,248 +102,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The ICH_CONTEXTR_EL2 register is how the hypervisor tells the GICv5
-to make a VCPU for a VM resident on a CPU, so that the IRS will
-forward virtual interrupts for that VCPU to this CPU. We implement
-this similarly to the GICv5 stream protocol, which uses a
-SetResident command to tell the IRS to make the VCPU resident.
-This will always fail until we have implemented the IRS's
-end of virtualization support.
+Implement the ICH_APR_EL2 register.  This is part of the hypervisor
+control register interface, and is the hypervisor-facing access to
+the state which holds the guest's its active priority register.
+
+The only slightly non-straightforward part of this is that because
+the GICv5 allows a hypervisor to give its guest a GICv3-compatible
+virtual CPU interface, this register has to UNDEF to the inner guest
+when legacy-vcpu operation is enabled.  We don't implement
+GCIE_LEGACY in QEMU yet, but since we expect to do so in future, the
+handling for this is implemented here.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c                |   8 ++
- include/hw/intc/arm_gicv5_stream.h |  30 +++++++
- target/arm/cpu.h                   |   1 +
- target/arm/tcg/gicv5-cpuif.c       | 121 +++++++++++++++++++++++++++++
- target/arm/tcg/trace-events        |   1 +
- 5 files changed, 161 insertions(+)
+ target/arm/cpu.h             |  2 ++
+ target/arm/tcg/gicv5-cpuif.c | 44 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 46 insertions(+)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index f714add1406..5ac50acc786 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -1263,6 +1263,14 @@ txfail:
-                   "physical address 0x" HWADDR_FMT_plx "\n", intid, l1_addr);
- }
- 
-+bool gicv5_set_resident(GICv5Common *cs, GICv5Domain domain, bool valid,
-+                        uint32_t vpeid, bool db, uint8_t dbpm, uint32_t vmid,
-+                        uint32_t cpuidx)
-+{
-+    /* Until we implement virtualization, SetResident always fails */
-+    return true;
-+}
-+
- /* Data we need to pass through to irs_clean_lpi_cache_entry() */
- typedef struct CleanLPICacheUserData {
-     GICv5Common *cs;
-diff --git a/include/hw/intc/arm_gicv5_stream.h b/include/hw/intc/arm_gicv5_stream.h
-index 21be859a233..162d55a8e6b 100644
---- a/include/hw/intc/arm_gicv5_stream.h
-+++ b/include/hw/intc/arm_gicv5_stream.h
-@@ -229,4 +229,34 @@ GICv5PendingIrq gicv5_get_hppi(GICv5Common *cs, GICv5Domain domain,
- void gicv5_deactivate(GICv5Common *cs, uint32_t id, GICv5Domain domain,
-                       GICv5IntType type, bool virtual);
- 
-+/**
-+ * gicv5_set_resident
-+ * @cs: GIC IRS to send command to
-+ * @domain: interrupt domain to act on
-+ * @valid: true if setting resident VPE, false to clear it
-+ * @vpeid: identifier of the VPE to make resident
-+ * @db: true to request a doorbell
-+ * @dbpm: doorbell priority mask
-+ * @vmid: Virtual Machine identifier
-+ * @cpuidx: IRS CPU index of this CPU interface
-+ *
-+ * Tell the IRS to make the specified VPE resident for this CPU. This
-+ * corresponds approximately to the stream protocol SetResident command.
-+ *
-+ * Returns the Fault state: false if the SetResident operation
-+ * succeeded, true if the VPE could not be made resident. Clearing the
-+ * VPE always succeeds and returns false.
-+ *
-+ * For QEMU this is a synchronous operation: the function does not return
-+ * until the IRS has either succeeded or failed in making the VPE resident
-+ * (including identifying whether there is a pending virtual interrupt for
-+ * the VPE and forwarding it by calling gicv5_forward_interrupt() if so).
-+ *
-+ * Unlike the stream protocol (where the IRS knows which CPU it is talking
-+ * to), we have to pass the cpuidx to tell the IRS which CPU we are.
-+ */
-+bool gicv5_set_resident(GICv5Common *cs, GICv5Domain domain, bool valid,
-+                        uint32_t vpeid, bool db, uint8_t dbpm, uint32_t vmid,
-+                        uint32_t cpuidx);
-+
- #endif
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index abaee5fc3a0..0d8c2176a43 100644
+index 82c13186b68..a93fd362417 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -599,6 +599,7 @@ typedef struct CPUArchState {
-         /* And for the virtual interrupt domain */
-         GICv5PendingIrq virt_ppi_hppi;
+@@ -594,6 +594,8 @@ typedef struct CPUArchState {
  
-+        uint64_t ich_contextr_el2;
-         uint64_t ich_apr_el2;
-         uint64_t ich_vctlr_el2;
-         uint64_t ich_vmcr_el2;
+         /* Cached highest-priority pending PPI for each domain */
+         GICv5PendingIrq ppi_hppi[NUM_GICV5_DOMAINS];
++
++        uint64_t ich_apr_el2;
+     } gicv5_cpuif;
+ 
+     struct {
 diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index a938428b20a..2eb8184e329 100644
+index 0b1033c1ef0..83c9be2b0e6 100644
 --- a/target/arm/tcg/gicv5-cpuif.c
 +++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -73,6 +73,14 @@ FIELD(ICH_VMCR_EL2, VMPR, 27, 5)
- FIELD(ICH_VCTLR_EL2, EN, 0, 1)
- FIELD(ICH_VCTLR_EL2, V3, 1, 1)
- 
-+FIELD(ICH_CONTEXTR_EL2, VM, 0, 16)
-+FIELD(ICH_CONTEXTR_EL2, VPE, 32, 16)
-+FIELD(ICH_CONTEXTR_EL2, DBPM, 55, 5)
-+FIELD(ICH_CONTEXTR_EL2, DB, 60, 1)
-+FIELD(ICH_CONTEXTR_EL2, IRICHPPIDIS, 61, 1)
-+FIELD(ICH_CONTEXTR_EL2, F, 62, 1)
-+FIELD(ICH_CONTEXTR_EL2, V, 63, 1)
-+
- /*
-  * We implement 24 bits of interrupt ID, the mandated 5 bits of priority,
-  * and no legacy GICv3.3 vcpu interface (yet)
-@@ -821,6 +829,110 @@ static void gic_ich_vmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     gicv5_update_virq_vfiq(env);
+@@ -90,6 +90,15 @@ static GICv5Common *gicv5_get_gic(CPUARMState *env)
+     return env->gicv5.gicv5state;
  }
  
-+static void gic_ich_contextr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   uint64_t value)
++/*
++ * Return true if GIC virtual interface legacy operation is enabled.
++ * We don't currently implement FEAT_GCIE_LEGACY.
++ */
++static bool gicv5_legacy_enabled(CPUARMState *env)
 +{
-+    GICv5Common *gic = gicv5_get_gic(env);
-+    GICv5Domain domain = gicv5_logical_domain(env);
-+    bool valid = FIELD_EX64(value, ICH_CONTEXTR_EL2, V);
-+    uint32_t vpe = FIELD_EX64(value, ICH_CONTEXTR_EL2, VPE);
-+    bool db = FIELD_EX64(value, ICH_CONTEXTR_EL2, DB);
-+    uint8_t dbpm = FIELD_EX64(value, ICH_CONTEXTR_EL2, DBPM);
-+    uint32_t vm = FIELD_EX64(value, ICH_CONTEXTR_EL2, VM);
-+    uint32_t cpuidx = env->gicv5.cpuidx;
-+    bool fault;
-+    uint64_t oldval = env->gicv5_cpuif.ich_contextr_el2;
-+    bool vm_vpe_changed = (oldval ^ value) & (R_ICH_CONTEXTR_EL2_VM_MASK |
-+                                              R_ICH_CONTEXTR_EL2_VPE_MASK);
-+    bool valid_changed = (oldval ^ value) & R_ICH_CONTEXTR_EL2_V_MASK;
-+
-+    /*
-+     * DB and DBPM are RAZ: they are write-only fields that have
-+     * an effect when V is changed from 1 to 0.
-+     */
-+    value &= ~(R_ICH_CONTEXTR_EL2_DB_MASK | R_ICH_CONTEXTR_EL2_DBPM_MASK);
-+
-+    raw_write(env, ri, value);
-+
-+    trace_gicv5_ich_contextr_write(cpuidx, value);
-+
-+    /*
-+     * Changing V definitely causes us to make a new VPE resident, or
-+     * remove the old one.
-+     *
-+     * Changing VPE or VM while V=1 is CONSTRAINED UNPREDICTABLE
-+     * (R_VFKHN): we choose to make the new VPE resident so that we
-+     * can trust that the information we have in the register matches
-+     * what the IRS thinks the resident VPE is.
-+     *
-+     * For writes that don't trigger a change of resident VPE, we only
-+     * need to update our copy of the register, and recalculate
-+     * interrupts if IIRICHPPIDIS changed.
-+     *
-+     * If we do change the resident VPE, the interrupt recalculation
-+     * will happen when the IRS calls gicv5_forward_interrupt().
-+     */
-+    if (!(valid_changed || (valid && vm_vpe_changed))) {
-+        if ((oldval & value) & R_ICH_CONTEXTR_EL2_IRICHPPIDIS_MASK) {
-+            gicv5_update_virq_vfiq(env);
-+        }
-+        return;
-+    }
-+
-+    if (valid) {
-+        /* Doorbell info is only relevant when clearing the VPE */
-+        dbpm = 0;
-+        db = false;
-+    } else {
-+        /* The IRS knows what the VPE is so we don't need to tell it */
-+        vm = 0;
-+        vpe = 0;
-+    }
-+
-+    fault = gicv5_set_resident(gic, domain, valid, vpe, db, dbpm, vm, cpuidx);
-+
-+    if (valid) {
-+        /*
-+         * We only update F for a VPE set, not a clear.
-+         *
-+         * On a failure, it is CONSTRAINED UNPREDICTABLE whether V
-+         * reads as 0 or 1 (R_NHCGW); we choose to set it to 0 so we
-+         * can reliably use it to track whether a VPE is resident.  We
-+         * use this for instance in GIC VDPEND: we trust the V and VM
-+         * fields to be accurate.
-+         */
-+        value = env->gicv5_cpuif.ich_contextr_el2;
-+        value = FIELD_DP64(value, ICH_CONTEXTR_EL2, F, fault);
-+        if (fault) {
-+            value = FIELD_DP64(value, ICH_CONTEXTR_EL2, V, 0);
-+        }
-+        env->gicv5_cpuif.ich_contextr_el2 = value;
-+    }
++    return false;
 +}
 +
-+static void gic_ich_contextr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+ static GICv5Domain gicv5_logical_domain(CPUARMState *env)
+ {
+     /*
+@@ -696,6 +705,34 @@ static void gic_cddi_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
+ }
+ 
++static CPAccessResult access_gicv5_ich_reg(CPUARMState *env,
++                                           const ARMCPRegInfo *ri,
++                                           bool isread)
 +{
 +    /*
-+     * This register resets to zero, which includes telling the IRS
-+     * that there is no longer a resident VPE for it.
++     * accessfn for GICv5 ICH regs. The NV behaviour here is a little
++     * different from usual because of the optional legacy GIC feature.
 +     *
-+     * It doesn't matter if the domain we pass here doesn't match the
-+     * domain of the VM/VPE: as with the GIC stream interface (see
-+     * rule R_PYWKM) our IRS ignores the mismatch for a SetResident
-+     * request with valid = false.
++     * At EL1, if GCIE_LEGACY is disabled or not implemented, these
++     * behave like normal EL2 registers, which is that they redirect
++     * to memory if NV2 is enabled and trap to EL2 if not.  If legacy
++     * operation is enabled, these registers must UNDEF to EL1
++     * (because from the inner guest's point of view it has a GICv3
++     * and this sysreg doesn't exist).
 +     *
-+     * As this is a reset fn we may get here before the GIC pointer
-+     * has been set up yet, so unusually we need to check for NULL>
++     * The UNDEF at EL1 when NV==0 is handled already because of the
++     * .access = PL2_RW setting on the cpreg.
 +     */
-+    raw_write(env, ri, 0);
-+    GICv5Common *gic = gicv5_get_gic(env);
-+
-+    if (gic) {
-+        gicv5_set_resident(gic, gicv5_logical_domain(env),
-+                           false, 0, false, 0, 0, env->gicv5.cpuidx);
++    if (arm_current_el(env) == 1 && gicv5_legacy_enabled(env)) {
++        return CP_ACCESS_UNDEFINED;
 +    }
++    /*
++     * continue to either redirect-to-memory, trap-to-EL2 or (if
++     * current EL is 2 or 3) access the register
++     */
++    return CP_ACCESS_OK;
 +}
 +
- /*
-  * ICC_APR_EL1 is banked and reads/writes as the version for the
-  * current logical interrupt domain.
-@@ -1500,6 +1612,15 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ich_vctlr_el2),
-         .writefn = gic_ich_vctlr_write,
+ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+     /*
+      * Barrier: wait until the effects of a cpuif system register
+@@ -893,6 +930,13 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+         .writefn = gic_icc_pcr_el1_write,
+         .resetfn = gic_icc_pcr_el1_reset,
      },
-+    {   .name = "ICH_CONTEXTR_EL2", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 6,
-+        .access = PL2_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .nv2_redirect_offset = 0xb08,
++    {   .name = "ICH_APR_EL2", .state = ARM_CP_STATE_AA64,
++        .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 8, .opc2 = 4,
++        .access = PL2_RW, .type = ARM_CP_NO_RAW,
++        .nv2_redirect_offset = 0xb00,
 +        .accessfn = access_gicv5_ich_reg,
-+        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ich_contextr_el2),
-+        .writefn = gic_ich_contextr_write,
-+        .resetfn = gic_ich_contextr_reset,
++        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ich_apr_el2),
 +    },
-     {   .name = "ICH_VMCR_EL2", .state = ARM_CP_STATE_AA64,
-         .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 11, .opc2 = 7,
-         .access = PL2_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-diff --git a/target/arm/tcg/trace-events b/target/arm/tcg/trace-events
-index 71f1369fcda..75f40c44f26 100644
---- a/target/arm/tcg/trace-events
-+++ b/target/arm/tcg/trace-events
-@@ -11,3 +11,4 @@ gicv5_cddi(int domain, uint32_t id) "domain %d CDDI deactivating interrupt ID 0x
- gicv5_update_irq_fiq(bool irq, bool fiq, bool nmi) "now IRQ %d FIQ %d NMI %d"
- gicv5_update_virq_vfiq(bool virq, bool vinmi) "now VIRQ %d VINMI %d"
- gicv5_update_ppi_state(int ppi, bool level) "PPI %d source level now %d"
-+gicv5_ich_contextr_write(uint32_t cpuidx, uint64_t value) "cpuidx %d ICH_CONTEXTR_WRITE 0x%" PRIx64
+ };
+ 
+ void define_gicv5_cpuif_regs(ARMCPU *cpu)
 -- 
 2.43.0
 

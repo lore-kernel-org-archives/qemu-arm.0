@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 365E8CC6B08
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A47CFCA9ED2
 	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:54:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY58-0002Sz-CB; Tue, 13 Oct 2026 04:42:01 -0400
+	id 1xGY38-0006s3-0j; Tue, 13 Oct 2026 04:39:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY42-00007F-Hw
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:52 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1xGY33-0006pi-R2
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:39:49 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3x-00082D-KE
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:48 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4a140e7405dso30879695e9.3
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:45 -0700 (PDT)
+ id 1xGY32-0007a5-1g
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:39:49 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4a17baef589so22009625e9.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:39:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880844; x=1792485644; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=fxZZyr5tqmX4RAAPXJIUMSNXuOO4bc4vIMg/smsoxD4=;
- b=TdxZ0gDjRFf0lUI9QzAAm6nmCCZdjR+L9T1QqPNDOh6M+Izlkx92H8w361Q6KmvG51
- fx0dnYG9bzDO/SiByauG9MbT8ArMW8BdmlSkRbq97fZVrUoltKdggwe+I8WupBI8VeNC
- L1iLqLFSX+qJ6YyM6sHz7O5PZfPYv/D/f0G7+ccTHDW+2Z4wCCxP/wQNYpKiq+j9LGwe
- fo9r3WgW05IhRxQi0g0/EI32jPoTGURLl8LRqJpQ3x7powNYTpK4PY7xyj87xqbSmIcK
- RtEBF86TD7Q8n2IbHSB00wqDZyX+B579mt5BWgnhMOwbxR1YOfLxHZEM0fw9ujdq2gwR
- X+ug==
+ d=linaro.org; s=google; t=1791880787; x=1792485587; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=OaiC0A3kyB7u1DNetaci/CV68nbx8shGZnFz0+Agagc=;
+ b=jbC+iR6IM/jPCOZ93TZBCKHTV/Rl0HR1ao7tSFPv5xTV/XV4EfrAPohihmASrv4l+3
+ 3dddkp9BjZXuwWeGWNW0qFExt3H7aiiveKFnxm+oanBvwCbji8p3/CC/bs09Xb5YJUel
+ nMnJvPGWg33K6E+89Jfeq7LMQWx2d7EZdFceGdZU0UaU+KCRwYsMa11zYQlvrw7S9A8Q
+ SnO35kmDoqrcrTJM1AgUBZQVclntjWkGo/Dx9GUNiJFM+KZoA3mgtprGHNtB5uLBAJ5W
+ pht2JFpYAdoxmEVq6RaCB/Qxakm0FAaB7yknll4whaka1scHTv0L5oKm81eOSOHHEfzI
+ v2Ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880844; x=1792485644;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=fxZZyr5tqmX4RAAPXJIUMSNXuOO4bc4vIMg/smsoxD4=;
- b=Szri7YV3vPYxa+p0b4DnJo/8uRt1PQDCbJScauqxOc5JWugeDLPhpbNg3hlyx6yplN
- VaN6SljIrYO6Y0GnidrMli+Oo8fgKMGuRQqaE3LafxO3RoPZK/vSrgsGJL/FQoYAm1UB
- krVf4jUZXJ2LRae7XyNIWpueqxR78v+bH9/+0fEv3ss/xRbzQW+zm2U69uqk0mNrVH7Z
- LUtwOXTWZXarEQMYfLa0Lu8WF5YamwxijrBM+Of6y4irs5P4bsowRU18zvTKXYicjN+A
- zbbZ6fMfFgjxx+XH6NMwYgt4ZYVzUkTj8MDvvdStjHG5uTZogCiOGoh/D+pvMUduFE/V
- qOXg==
-X-Gm-Message-State: AFq9FYLCwkVy7dKzdMrZK3lW7t6MB0EBDjsLTLCDVLtIN6dZ/TtBoClz
- +FqlnEwUxmDCDfRhoXTVqr6LOvpNebbrC8pSccwBXpe3JqafcGAMownhodNVwSR3umdOdDdHClz
- CJLyt2r8=
-X-Gm-Gg: AYBFou3geVJoyR7aohcIHSXCA/lq09D3Pem3yWjtqn34TkK3XFwnD1lfw46LcPu1jnl
- G3bYSidh5dX8nk9cfQs+M0W+bo6NFB/IteVHfjSicJF4iDkZnnXJxuWlzwTmTM1UMPKCgD7VvdW
- 8a3ZXapUjU8I07vnSv94MVAERrWkjb2J8OMa7lJdwg/3zMlBL7XKYinki/xvqQBBPKTSaJ8nWtv
- E6CubELE+gBg0rN1SrHh5yITw0YlZiWOMYqCAdfD9SF9qbvtkWC3/3ftXlx6Og2qpOUHPFZhtNs
- 3oZB0TWFHBjeGVfr6fNScQHm2hHG8cPgWnJXcXLs8SzeLTc2hqe6V6vqRd6YrsXfmJVS/Wi3Mge
- 1BkNWDDg/D+XqeDfE/rA6bjTH8KBsqUGhsnbOZ4mAY4SkJzI16BSfE5AEKlFfhqQGTMkNeqoavi
- V/RYogcZq00i6iGTPgra1PyEysIuah4iqkX/cuub/KQAs9OdVdaXGWIcQFtv1qBPsszRhGznniP
- 6wD3pIZGZeTgddS7x/A/wo1YiIAy2xEdLSS7GSIyl/SMqvyZslcUuFqCpJ52qyIeYOIrvKz8CrX
- 7hQgZ7W1jtvKgw==
-X-Received: by 2002:a05:600c:190a:b0:4a1:746e:589a with SMTP id
- 5b1f17b1804b1-4a18e4aea54mr253139185e9.18.1791880843998; 
- Tue, 13 Oct 2026 01:40:43 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1791880787; x=1792485587;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=OaiC0A3kyB7u1DNetaci/CV68nbx8shGZnFz0+Agagc=;
+ b=i7DAXVQHuLKzFbPkowP3JN9upi1M3byyGsXoK2HnAGaDFXbhTGsETcKv1OGop/Gq6r
+ gWB35PXlVg/ydHSk9t0lO6jO0AbQ9w6EWpSvsxemrUHwE6E8CQpVoVu12a2V4ZZcbG8G
+ z37qA11WRUk9mHNpx47X0v1mULZ615lduRMkUIm8rLlGs+tG3VphkEOS0WgZ76F1OJcI
+ RefK7Gno3KVXGgTucdNLog6sloJcJhS9IFZqagaTZDpOXAbaa7aVl8PTu12Z4AztPhML
+ pkgGaWOZJJADiLxk71bcFeCrWfdc93W/vn2rCMC66M/yFTzP0djoQ1YCRV73k9yWxUsq
+ ycbw==
+X-Gm-Message-State: AFq9FYJGsKjn/D+mK8M7DT+qlgUpb2JFi70DaS+Nvff9LnLSthzp2DmG
+ 1LuL64fxQ2VbcQxmhsJYEJsMA7t4ZNjdpp+OgBOOKb8hpdPdynYD5ev3Y/y24MQ7nvxyHTOrfvx
+ /EetvIdg=
+X-Gm-Gg: AYBFou0JwInF91zFsfWCnbPwhER3e+SGRTtWtvqKh6GBUsUiMtSKr5aoygIxi335RKe
+ whZQ9BLiHzoTTVryOzVhKOCGy5W16ceK0yEya3qNzqAb3aWcKE+ZgnsldtEOknQcF9d9Ufg26OZ
+ W/q+UVUao5TlAsvN+sfwrhRIWrm+RuQyW3L2xVsgfxzwgy3Arw4aXmbHP6dkW1fiiK3tJlx1tJt
+ AygOBKaBo6KI/vDz6aN7Yp3qnxSJa1rBEd7XURveSfrsvZAM0avfkPefguT7xK8U1t+90rq9o0j
+ zxvOlqnr52iWwhp+ANPZxIjD4Nq2t2RVBesoBqO+SecL74HGp/CceGXI7vGK48lMG3MZtp2ZIns
+ 1k1Tf2zsctkLkHnNsUtUmuqIiPOMKdmD7Po29VFpkA8gxOS1o1hi+TxuBJza4IXucBNYBeOkFgB
+ G0CpcIDvHG6saOl1qusQvhTsFPGx6Fa0+JUapFRqPKqSkhiyoKc/M9F2ASP2PgYmBPOjDTZf6CS
+ RvcczQonflKwWXtRW5a7/l7V8rT0VARonyzIkSd617FvmI9sGMXqtF4FftY99jP/K/9+H95LEPW
+ 3F0=
+X-Received: by 2002:a05:600c:c167:b0:4a1:a3cc:3c5c with SMTP id
+ 5b1f17b1804b1-4a1a3cc3c71mr70054675e9.16.1791880786633; 
+ Tue, 13 Oct 2026 01:39:46 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.43
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.39.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:43 -0700 (PDT)
+ Tue, 13 Oct 2026 01:39:45 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 51/86] hw/intc/arm_gicv5: Ask CPUs whether IRS needs
- virtualization support
-Date: Tue, 13 Oct 2026 09:38:58 +0100
-Message-ID: <20261013083933.1024405-52-peter.maydell@linaro.org>
+Subject: [PATCH 07/86] target/arm: GICv5 cpuif: Use arm_cpu_set_irq() to set
+ IRQ/FIQ status
+Date: Tue, 13 Oct 2026 09:38:14 +0100
+Message-ID: <20261013083933.1024405-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,147 +105,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv5 IRS must support virtualization if any CPU in the system
-has EL2 (by spec rule R_KDSPG).  Add a has_virt field to the
-GICv5Common struct to track this, and automatically set it if any
-connected CPU has EL2.
+Currently the GICv5 cpu interface directly calls cpu_interrupt() and
+cpu_reset_interrupt() to raise and lower IRQ and FIQ.  This is almost
+but not exactly what we do for GICv2/GICv3 external GPIO IRQ/FIQ line
+changes.  Those are handled by arm_cpu_set_irq(), and as well as
+calling cpu_interrupt() or cpu_reset_interrupt() they also update
+env->irq_line_state.
 
-We get the CPU to tell us whether it needs virtualization in the
-return value of gicv5_set_gicv5state(); this allows us to maintain
-the arm's-length relationship between the IRS and the CPU (and in
-particular we don't need to include cpu.h in arm_gicv5_common.c, as
-we would if we directly called arm_feature() there).
+For IRQ and FIQ it doesn't matter whether we set and clear the bits
+in irq_line_state, because nothing looks at them.  But for VIRQ and
+VFIQ it will matter, because VIRQ and VFIQ are the logical OR of the
+line state and some bits in HCR_EL2.  We're going to need to call
+arm_cpu_set_irq() for VIRQ and VFIQ; for consistency, handle IRQ and
+FIQ that way too.
 
-We could alternatively have provided a has-virtualization QOM
-property, but then the board code would need to take care to
-explicitly configure the IRS to match the CPUs.
+Since arm_cpu_set_irq() is now a function called from other parts of
+the CPU code, we make its first argument a properly typed one, with a
+wrapper taking void* for when we need to use it as a
+qemu_irq_handler.
 
-(The GICv3 doesn't have an equivalent to this, because in the GICv3
-design virtualization is handled entirely by the CPU interface and
-software; in GICv5 the IRS has hardware support, to reduce the work
-software needs to do.)
-
-None of the code we are about to add in future commits that tests the
-has_virt flag will be accessible until we remove the check in virt.c
-that prevents creation of a machine with the GICv5 and an EL2 CPU, so
-no behaviour will change until we have completed the entire
-virtualization support feature and allow the user to select it.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5_common.c         |  9 ++++++++-
- include/hw/intc/arm_gicv5_common.h |  2 ++
- include/hw/intc/arm_gicv5_stream.h | 15 +++++++++++----
- target/arm/cpu.c                   | 17 +++++++++++------
- 4 files changed, 32 insertions(+), 11 deletions(-)
+ target/arm/cpu.c             | 14 +++++++++++---
+ target/arm/internals.h       | 14 ++++++++++++++
+ target/arm/tcg/gicv5-cpuif.c | 35 ++++-------------------------------
+ 3 files changed, 29 insertions(+), 34 deletions(-)
 
-diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
-index cfadfee4f05..17fd67b5ccd 100644
---- a/hw/intc/arm_gicv5_common.c
-+++ b/hw/intc/arm_gicv5_common.c
-@@ -176,11 +176,18 @@ static void gicv5_common_realize(DeviceState *dev, Error **errp)
-     }
- 
-     for (int i = 0; i < cs->num_cpus; i++) {
--        if (!gicv5_set_gicv5state(cs->cpus[i], cs, cs->cpu_iaffids[i], i)) {
-+        switch (gicv5_set_gicv5state(cs->cpus[i], cs, cs->cpu_iaffids[i], i)) {
-+        case GICV5_CPUIF_MISSING:
-             error_setg(errp,
-                        "CPU %d (IAFFID 0x%x) does not implement GICv5 CPU interface",
-                        i, cs->cpu_iaffids[i]);
-             return;
-+        case GICV5_CPUIF_PRESENT:
-+            break;
-+        case GICV5_CPUIF_NEEDS_VIRT:
-+            /* R_KDSPG: IRS must implement virtualization if any CPU has EL2 */
-+            cs->has_virt = true;
-+            break;
-         }
-     }
- 
-diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
-index a47f639e84c..d8f6f5d5db9 100644
---- a/include/hw/intc/arm_gicv5_common.h
-+++ b/include/hw/intc/arm_gicv5_common.h
-@@ -127,6 +127,8 @@ struct GICv5Common {
-     uint32_t spi_base;
-     uint32_t spi_irs_range;
-     uint32_t spi_range;
-+
-+    bool has_virt;
- };
- 
- struct GICv5CommonClass {
-diff --git a/include/hw/intc/arm_gicv5_stream.h b/include/hw/intc/arm_gicv5_stream.h
-index f6d32c6beca..ea27d6aec0f 100644
---- a/include/hw/intc/arm_gicv5_stream.h
-+++ b/include/hw/intc/arm_gicv5_stream.h
-@@ -16,6 +16,12 @@
- 
- typedef struct GICv5Common GICv5Common;
- 
-+typedef enum GICv5CPUIFStatus {
-+    GICV5_CPUIF_MISSING, /* CPU does not have GICv5 cpuif support */
-+    GICV5_CPUIF_PRESENT, /* CPU has GICv5 cpuif */
-+    GICV5_CPUIF_NEEDS_VIRT, /* CPU has GICv5, and needs virt support in IRS */
-+} GICv5CPUIFStatus;
-+
- /**
-  * gicv5_set_gicv5state
-  * @cpu: CPU object to tell about its IRS
-@@ -27,11 +33,12 @@ typedef struct GICv5Common GICv5Common;
-  * IRS must call this when it is realized, for each CPU it is
-  * connected to.
-  *
-- * Returns true on success, false if the CPU doesn't implement the
-- * GICv5 CPU interface.
-+ * The return value indicates whether the CPU has a GICv5 CPU
-+ * interface, and if it does whether it needs virtualization support
-+ * from the IRS.
-  */
--bool gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs, uint32_t iaffid,
--                          uint32_t cpuidx);
-+GICv5CPUIFStatus gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs,
-+                                      uint32_t iaffid, uint32_t cpuidx);
- 
- /*
-  * The architected Stream Protocol is asynchronous; commands can be
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 4731d1cc7c4..62262d742a2 100644
+index 10ac6c98318..014ec6a945e 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -1215,20 +1215,25 @@ static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- }
+@@ -808,9 +808,8 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
+ 
  
  #ifndef CONFIG_USER_ONLY
--bool gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs, uint32_t iaffid,
--                          uint32_t cpuidx)
-+GICv5CPUIFStatus gicv5_set_gicv5state(ARMCPU *cpu, GICv5Common *cs,
-+                                      uint32_t iaffid, uint32_t cpuidx)
+-static void arm_cpu_set_irq(void *opaque, int irq, int level)
++void arm_cpu_set_irq(ARMCPU *cpu, int irq, int level)
+ {
+-    ARMCPU *cpu = opaque;
+     CPUARMState *env = &cpu->env;
+     CPUState *cs = CPU(cpu);
+     static const int mask[] = {
+@@ -862,6 +861,15 @@ static void arm_cpu_set_irq(void *opaque, int irq, int level)
+     }
+ }
+ 
++/*
++ * Wrapper of arm_cpu_set_irq with the right argument types to be a
++ * qemu_irq_handler function for our inbound GPIO lines.
++ */
++static void arm_cpu_gpio_set_irq(void *opaque, int irq, int level)
++{
++    arm_cpu_set_irq(opaque, irq, level);
++}
++
+ static bool arm_cpu_internal_is_big_endian(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -1265,7 +1273,7 @@ static void arm_cpu_initfn(Object *obj)
+          */
+         qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 6);
+     } else {
+-        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 6);
++        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_gpio_set_irq, 6);
+     }
+ 
+     qdev_init_gpio_out(DEVICE(cpu), cpu->gt_timer_outputs,
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index c41fa5225c7..9d817961c67 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1886,6 +1886,20 @@ void define_gcs_cpregs(ARMCPU *cpu);
+ /* Add the cpreg definitions for OMAP CP15 regs */
+ void define_omap_cp_regs(ARMCPU *cpu);
+ 
++#ifndef CONFIG_USER_ONLY
++/**
++ * arm_cpu_set_irq: Assert or clear an IRQ/FIQ/etc interrupt line
++ * @cpu: CPU to set interrupt on
++ * @irq: one of the ARM_CPU_IRQ/ARM_CPU_FIQ/ARM_CPU_VIRQ/etc values
++ * @level: 0 to deassert, non-zero to assert
++ *
++ * This function is called by the qemu_irq_handler function
++ * when IRQ etc are real inbound GPIO lines; it is also called
++ * directly by the GICv5 CPU interface.
++ */
++void arm_cpu_set_irq(ARMCPU *cpu, int irq, int level);
++#endif
++
+ /* Add the cpreg definitions for the GICv5 CPU interface */
+ void define_gicv5_cpuif_regs(ARMCPU *cpu);
+ 
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index a6e6c440849..517c780d1f7 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -173,33 +173,6 @@ static GICv5PendingIrq gic_hppi(CPUARMState *env, GICv5Domain domain)
+     return best;
+ }
+ 
+-static void cpu_interrupt_update(CPUARMState *env, int irqtype, bool new_state)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    /*
+-     * OPT: calling cpu_interrupt() and cpu_reset_interrupt() has the
+-     * correct behaviour, but is not optimal for the case where we're
+-     * setting the interrupt line to the same level it already has.
+-     *
+-     * Clearing an already clear interrupt is free (it's just doing an
+-     * atomic AND operation). Signalling an already set interrupt is a
+-     * bit less ideal (it might unnecessarily kick the CPU).
+-     *
+-     * We could potentially use cpu_test_interrupt(), like
+-     * arm_cpu_update_{virq,vfiq,vinmi,vserr}, since we always hold
+-     * the BQL here; or perhaps there is an abstraction we could
+-     * provide in the core code that all these places could call.
+-     *
+-     * For now, this is simple and definitely correct.
+-     */
+-    if (new_state) {
+-        cpu_interrupt(cs, irqtype);
+-    } else {
+-        cpu_reset_interrupt(cs, irqtype);
+-    }
+-}
+-
+ static void gicv5_update_irq_fiq(CPUARMState *env)
  {
      /*
--     * Set this CPU's gicv5state pointer to point to the GIC that we are
--     * connected to, and record our IAFFID and CPU index.
-+     * Set this CPU's gicv5state pointer to point to the GIC that we
-+     * are connected to, record our IAFFID and cpuidx, and let the IRS
-+     * know if it needs to implement virtualization support.
+@@ -243,12 +216,12 @@ static void gicv5_update_irq_fiq(CPUARMState *env)
+     /*
+      * Unlike a GICv3 or GICv2, there is no external IRQ or FIQ line
+      * to the CPU. Instead we directly signal the interrupt via
+-     * cpu_interrupt()/cpu_reset_interrupt().
++     * arm_cpu_set_irq().
       */
-     if (!cpu_isar_feature(aa64_gcie, cpu)) {
--        return false;
-+        return GICV5_CPUIF_MISSING;
-     }
-     cpu->env.gicv5.gicv5state = cs;
-     cpu->env.gicv5.iaffid = iaffid;
-     cpu->env.gicv5.cpuidx = cpuidx;
--    return true;
-+    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
-+        return GICV5_CPUIF_NEEDS_VIRT;
-+    } else {
-+        return GICV5_CPUIF_PRESENT;
-+    }
+     trace_gicv5_update_irq_fiq(irq, fiq, superpriority);
+-    cpu_interrupt_update(env, CPU_INTERRUPT_HARD, irq);
+-    cpu_interrupt_update(env, CPU_INTERRUPT_FIQ, fiq);
+-    cpu_interrupt_update(env, CPU_INTERRUPT_NMI, superpriority);
++    arm_cpu_set_irq(env_archcpu(env), ARM_CPU_IRQ, irq);
++    arm_cpu_set_irq(env_archcpu(env), ARM_CPU_FIQ, fiq);
++    arm_cpu_set_irq(env_archcpu(env), ARM_CPU_NMI, superpriority);
  }
- #endif
  
+ static void gic_recalc_ppi_hppi(CPUARMState *env)
 -- 
 2.43.0
 

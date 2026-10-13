@@ -4,114 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE3EBCC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 09:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 579A2CC6B03
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 09:54:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGYvm-0004zC-Fv; Tue, 13 Oct 2026 05:36:23 -0400
+	id 1xGZCv-00086K-J8; Tue, 13 Oct 2026 05:54:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xGYvj-0004xg-Q4
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 05:36:19 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xGYvh-0005PA-Vq
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 05:36:19 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-48c14a06c95so2085275f8f.1
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 02:36:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791884176; x=1792488976; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=zJ2B3YGLqa/fTs2h9W0STgtWAyJ5ITdQTOb2BD8LgU4=;
- b=R3EMy2C0M7xnDVcfcQKmFsjO3H9drEOhYAXwZqk8GKli5XuVUpTCFFfkfByMG6VKuy
- eeQ94PwaNBUNDmsvpE+/IxQVVzR41ncEtdkqF3RInPiKXfn7znt3+7yCsjoZBPn9yUGz
- v+sO7Dt7ywNV65IdE065khxwbRJvIfkqhKhFd/eNVvhbDrFF2ZH4fMzOG4tzlMjkwakL
- 5mOjzNHh3HFJlejUKLBDrd/34ZMECaX77L1rpUCmtxVlFFZ6KttuonvTTDVVt46ROHRo
- cHI1Xcj6HofDS4JijvqCDqrrQkmzL+aHDM1nzgFiQencBi7RXnFzxqTGhXKVpHorVdzT
- 0emQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791884176; x=1792488976;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=zJ2B3YGLqa/fTs2h9W0STgtWAyJ5ITdQTOb2BD8LgU4=;
- b=pE7s8Sut8IV8t5s7+eZor3mn0m4iwraSdotcLLEog3SGYAeUEWIhrX8JZiDgfglylJ
- 7VxYViucjKT6JAQ5626/01Si6oC4FeZKapVHaTyIeyroPwDq2ArPuqVDIK+xtuaqW61W
- WrjAxGsI4r35e7g3Xvkd+Bqii4CrpehTEz/ubXXw/TwCa0b8DFVN/1ZQMP8ymjGJHyRp
- 2XLVTE2EGnztkgCCPJtdxHLbHfpcSNOttY+V4FjHbEkORHPxyrQ/fBxieylduxmNpwnT
- TVVaBI21AZMw5Z6gIvyKcjV77p12PZpybuX9QU9esVrbXT7Ltst/k62FZ3oEq6+gtUQv
- uWFg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBz5t4xbAd88i4j4Gy7QbImzcH+Qm6GYjrbbdyWVTVt1AQxX2WcVL7PmGfT24o1SzyEdgdHY5P6IPA==@nongnu.org
-X-Gm-Message-State: AFq9FYIki6vuMAQbqqouX19fno+Q27vJUouoM5jpEraQzJSqcduE1DT4
- iIORPT5M96HDeOexb10eCvywUkx6ZBrfYK7iXkDS6ZX17VwaWtmetZJ8hZs61mh5D/Q=
-X-Gm-Gg: AYBFou0iN7PixPObkFfHYt97eQB0ljaSYHAix+obyDu/im1Y5H2uIIfteTzP8CdlTRC
- 72Cdm0ysZ6iQZmB88swxZlVsuAMDZZyAZI6aHi2PWGnAPEUwzV/183m1q8LxEq+2VC8fJ0/Xt3y
- V5LElUTkQeRTJvM/e+RCNqa8wqtF0usWHbq1/sy+tmaLJ1o3d0eDn98X3dajmgxTE3TLAzhc15s
- 2Z6ttKpeRZUucHMQ0uUEbdNt0fga3R+aGvAoLb8qXMGKPJYiJCb5aR9kvs7gFutqK9BK/9OWbbU
- 2Vx7FB/WgFGG/smCk1fq/QsHxk+iS2izWpK3/gZ8Aq6/8HkU6BmEB0ex93nv77TQQWjpAgfh797
- cdyDfrSBRvSOtgy1E8Mmo1X2Ro8qr+prPRJ6QUmjLR7n6dpJdzW1s3wxqoB6E1MQHDRP7A4zw+a
- mftaU5NoNmUNarosZcQTtx3v6gtwTH2eIq3BmtKdSzjFSHvt1VX01AuBG8aL1D+CzEIeXm3Xu59
- oed05nP
-X-Received: by 2002:a05:6000:60c:b0:48d:df08:307c with SMTP id
- ffacd0b85a97d-48ddf083082mr5615438f8f.44.1791884176073; 
- Tue, 13 Oct 2026 02:36:16 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0bd1843sm4170779f8f.56.2026.10.13.02.36.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 02:36:15 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 4BB425F8E5;
- Tue, 13 Oct 2026 10:36:14 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@oss.qualcomm.com>,  Zhao Liu <zhao1.liu@intel.com>,  Kyle Evans
- <kevans@freebsd.org>,  Brian Cain <brian.cain@oss.qualcomm.com>,  Richard
- Henderson <richard.henderson@linaro.org>,  Brad Smith <brad@comstyle.com>,
- Ani Sinha <anisinha@redhat.com>,  Christian Borntraeger
- <borntraeger@linux.ibm.com>,  Thomas Huth <th.huth+qemu@posteo.eu>,  Keith
- Busch <kbusch@kernel.org>,  Matthew Rosato <mjrosato@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,  John Snow <jsnow@redhat.com>,  Eric
- Farman <farman@linux.ibm.com>,  Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>,  Anders Roxell
- <anders.roxell@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
- Warner Losh <imp@bsdimp.com>,  qemu-arm@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  Yoshinori Sato <yoshinori.sato@nifty.com>,
- Peter Xu <peterx@redhat.com>,  Klaus Jensen <its@irrelevant.dk>,  Song
- Gao <gaosong@loongson.cn>,  qemu-s390x@nongnu.org,  Laurent Vivier
- <laurent@vivier.eu>,  Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: Re: [PATCH v2 12/16] tests/functional: update arm64 tuxrun images
-In-Reply-To: <as3nV9VtVFRYlgUc@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
- =?utf-8?Q?=C3=A9=22's?= message of
- "Tue, 13 Oct 2026 09:09:59 +0100")
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGZCt-00085P-Jy
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 05:54:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGZCp-0006rk-Sl
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 05:54:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1791885238;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zXbg3xUV0chzQ85LhVf4H/Va+2BpEgzoA9sziyKn/kQ=;
+ b=KUPL3BZtEpSlXrxjQPWVF7i4h4LLow+tFOB7ZP/MIeohom91yFBO5WjQEyA4nM3KbL9lh/
+ MUUBmvtAMweAXVEI2UXPL1cvKhx2AdKFIfVvJo4RazTBt6e+ignrfTUxN86AAWq9OnxP8c
+ 4mSlQDBmZbNE6A1ULV76LKaGRuPDz6g=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-425-rH5ru3Y4M7G9RciT2x_XiA-1; Tue,
+ 13 Oct 2026 09:53:55 +0000
+X-MC-Unique: rH5ru3Y4M7G9RciT2x_XiA-1
+X-Mimecast-MFC-AGG-ID: rH5ru3Y4M7G9RciT2x_XiA_1791885233
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6372D1945117; Tue, 13 Oct 2026 09:53:51 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 85F891800351; Tue, 13 Oct 2026 09:53:43 +0000 (UTC)
+Date: Tue, 13 Oct 2026 10:53:40 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Kyle Evans <kevans@freebsd.org>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Brad Smith <brad@comstyle.com>, Ani Sinha <anisinha@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>, Keith Busch <kbusch@kernel.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, John Snow <jsnow@redhat.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Anders Roxell <anders.roxell@linaro.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Warner Losh <imp@bsdimp.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Peter Xu <peterx@redhat.com>, Klaus Jensen <its@irrelevant.dk>,
+ Song Gao <gaosong@loongson.cn>, qemu-s390x@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: Re: [PATCH v2 06/16] tests/functional: update x86_64 tuxrun images
+Message-ID: <as3_pJ-KTtbVMilK@redhat.com>
 References: <20261012170330.1144446-1-alex.bennee@linaro.org>
- <20261012170330.1144446-13-alex.bennee@linaro.org>
- <as3nV9VtVFRYlgUc@redhat.com>
-User-Agent: mu4e 1.14.4-pre6; emacs 30.1
-Date: Tue, 13 Oct 2026 10:36:14 +0100
-Message-ID: <877bjmgcxd.fsf@draig.linaro.org>
+ <20261012170330.1144446-7-alex.bennee@linaro.org>
+ <as3mM9XesjzPA0o4@redhat.com> <87cxtegcy6.fsf@draig.linaro.org>
 MIME-Version: 1.0
+In-Reply-To: <87cxtegcy6.fsf@draig.linaro.org>
+User-Agent: Mutt/2.4.2 (2026-08-30)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: tu-LN-dOwIsPJye0ex13j9QMRgXxmq9pq6A_SDuwPHE_1791885233
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,62 +108,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+On Tue, Oct 13, 2026 at 10:35:45AM +0100, Alex Bennée wrote:
+> Daniel P. Berrangé <berrange@redhat.com> writes:
+> 
+> > On Mon, Oct 12, 2026 at 06:03:20PM +0100, Alex Bennée wrote:
+> >> We now split the fetching of the buildroot image from the kernel
+> >> itself. This is because we will want to access additional metadata in
+> >> future tests.
+> >
+> > This commit message appears unrelated to the patch content or subject
+> > line.
+> 
+> The kernel is now coming from: https://storage.tuxboot.com/kernels/6.18.54/
+> instead of part of the buildroot build in https://storage.tuxboot.com/buildroot/20260924/x86_64/
 
-> On Mon, Oct 12, 2026 at 06:03:26PM +0100, Alex Benn=C3=A9e wrote:
->> We now split the fetching of the buildroot image from the kernel
->> itself. This is because we will want to access additional metadata in
->> future tests.
->
-> The commit message looks unrelated
+Ah ok, I misunderstood what the commit message was trying to say,
+though I'm still underclear how the before/after  bzImage differ
+from each other ?
 
-Could I word it more clearly?
+Is the  https://storage.tuxboot.com/kernels/6.18.54/ the
+authoritative input for the process that produces
+ https://storage.tuxboot.com/buildroot/20260924/x86_64/  ?
 
->
->>=20
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>  tests/functional/aarch64/test_tuxrun.py | 8 ++++----
->>  1 file changed, 4 insertions(+), 4 deletions(-)
->>=20
->> diff --git a/tests/functional/aarch64/test_tuxrun.py b/tests/functional/=
-aarch64/test_tuxrun.py
->> index 0ef1b126fae..6de02e1d8b2 100755
->> --- a/tests/functional/aarch64/test_tuxrun.py
->> +++ b/tests/functional/aarch64/test_tuxrun.py
->> @@ -17,11 +17,11 @@
->>  class TuxRunAarch64Test(TuxRunBaselineTest):
->>=20=20
->>      ASSET_ARM64_KERNEL =3D Asset(
->> -        'https://storage.tuxboot.com/buildroot/20241119/arm64/Image',
->> -        'b74743c5e89e1cea0f73368d24ae0ae85c5204ff84be3b5e9610417417d2f2=
-35')
->> +        'https://storage.tuxboot.com/kernels/6.18.54/arm64/Image.gz',
->> +        '39f4633bbcb444267d4d829bd28d8868a287c4c160cda64b0fd23fb090571c=
-4e')
->>      ASSET_ARM64_ROOTFS =3D Asset(
->> -        'https://storage.tuxboot.com/buildroot/20241119/arm64/rootfs.ex=
-t4.zst',
->> -        'a1acaaae2068df4648d04ff75f532aaa8c5edcd6b936122b6f0db4848a07b4=
-65')
->> +        'https://storage.tuxboot.com/buildroot/20260924/arm64/rootfs.ex=
-t4.zst',
->> +        '4ab8cec9d1e17dbb1abdf2ae1939ad4f9d0dc2466230f6a119a7c1845cdef0=
-b1')
->>=20=20
->>      def test_arm64(self):
->>          self.set_machine('virt')
->> --=20
->> 2.47.3
->>=20
->
-> With regards,
-> Daniel
+I see the later patch is pulling in vmlinuz.xz from the
+former location, so I guess you're trying to just use
+the common location for both kernel images ? 
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> 
+> >
+> >> 
+> >> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> >> Message-ID: <20260930164649.433573-10-alex.bennee@linaro.org>
+> >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> >> ---
+> >>  tests/functional/x86_64/test_tuxrun.py | 8 ++++----
+> >>  1 file changed, 4 insertions(+), 4 deletions(-)
+> >> 
+> >> diff --git a/tests/functional/x86_64/test_tuxrun.py b/tests/functional/x86_64/test_tuxrun.py
+> >> index 729f6447d05..026b373accb 100755
+> >> --- a/tests/functional/x86_64/test_tuxrun.py
+> >> +++ b/tests/functional/x86_64/test_tuxrun.py
+> >> @@ -17,11 +17,11 @@
+> >>  class TuxRunX86Test(TuxRunBaselineTest):
+> >>  
+> >>      ASSET_X86_64_KERNEL = Asset(
+> >> -        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage',
+> >> -        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8')
+> >> +        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/bzImage',
+> >> +        '24a3ade610c2cc426ff821050de8a35930b0371357d94cc2c334abac6658552b')
+> >>      ASSET_X86_64_ROOTFS = Asset(
+> >> -        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst',
+> >> -        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751')
+> >> +        'https://storage.tuxboot.com/buildroot/20260924/x86_64/rootfs.ext4.zst',
+> >> +        '8e310455b0244414ccff29c507f7ccfd4032e3587cc405e49ab0322738e3e27c')
+> >>  
+> >>      def test_x86_64(self):
+> >>          self.require_accelerator("tcg")
+> >> -- 
+> >> 2.47.3
+> >> 
+> >
+> > With regards,
+> > Daniel
+> 
+> -- 
+> Alex Bennée
+> Virtualisation Tech Lead @ Linaro
+> 
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+
 

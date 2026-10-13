@@ -4,139 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 716BBCC6B0E
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 07:44:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D447FCC6B03
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:05:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGXAj-0000ln-E8; Tue, 13 Oct 2026 03:43:42 -0400
+	id 1xGXVp-0004Ya-G5; Tue, 13 Oct 2026 04:05:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xGXAf-0000ks-5B; Tue, 13 Oct 2026 03:43:39 -0400
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGXVn-0004Xh-TL
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:05:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xGXAc-0001mw-HH; Tue, 13 Oct 2026 03:43:36 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=iVFsVk9FYZImNDi4+sxi2WwTm+fPg/L/1cgTRFWmfKoPivCky0USaAm16sxhCF5Qv3K5Bd58HKLvH5cMpJABOaRylvE5ejZSjjnEbnpbfbk1k3bWI4o23sY8+wHakAq/kPPfHbDHKaQVN6GrQEsHThzXKBKOGXmoe02n/QArd4P2wpXugA2AX0n4FJ9gbLnhKARoY4jSD9P+Q1KVhvwch2vozWAn+zKKv00k4k31AxnKyEXaiDjwwqtrGSfnw6Mg7u0zhydnLdbQe8rZGDPMEMDAi+Xx2ma7aI0yVC8P8amFz1bdXCxLRLMOJxTF0QVD26xqDz80Ubg9r+ERTXPCfg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gQGIM9M0uOSqpP/UmMs0sk45sddLFhPbmjNnw0HE0BA=;
- b=mdD0+7HtnDegnOWTqRFj30pREgGwzLRbp2+hX3T9a6wylNvlgdF8mmMDnjHotgmOW4hCn6pM24KfGsCB0k/f58Agm1J3xmZ8Uyz7pkwEhdSNjNEOg4V0hfos1J3rX7T6XKY//d16aSF9mNdPJXCNHFb2rQhx+le2XXTR6AD6lW8P6cWwqWGWoHlRcQ/520MH2nlV82X5JZcnmvfKZTf5KGEZbiFspMXNm+mqIy3V3Jvt/sI3COl5qj91t3J8oRZzaCznTiOEVAsw+g+3ffXE9wQSwn2TJ11EDaxxwndPDJgXRZCmB6KlZfbJRagn+t26za0olYTzXQDRbwOPcJUE0w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gQGIM9M0uOSqpP/UmMs0sk45sddLFhPbmjNnw0HE0BA=;
- b=lCguEMB77p4PjfiH2wmWNZJvBeqqNJd/54wypeTCus4kjAPcqp3EL5xwgFUe8jAsm+b+9/tSUdCrp3YXuJ4gCVKl7R3TXeZc7w++hrvN/KVmrGyKFZww97BNVhBYi8s9O3+T+yBrPBckCMstTRxNUEb5q1WHWsR9k15BW1iLsthJUQoaBFraALfkgdLpfyueC2vg0NcmQ9JjCJugEiPfw3chthUyftvWkee4YqwRKbNj4/0OCIO2S0rPmyahyw0TuaJJvwS0lSZcK/Tka4L/vvnpmA9DC5l+glaU/+NsYmb+8ktEtLdtGReneLrBBl48ZyuxoKjYyYz3nAdbeV7vxA==
-Received: from TYZPR06MB7373.apcprd06.prod.outlook.com (2603:1096:405:a7::14)
- by SG2PR06MB5059.apcprd06.prod.outlook.com (2603:1096:4:1c7::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.23; Tue, 13 Oct
- 2026 07:43:24 +0000
-Received: from TYZPR06MB7373.apcprd06.prod.outlook.com
- ([fe80::9b90:c4d9:22de:2ac4]) by TYZPR06MB7373.apcprd06.prod.outlook.com
- ([fe80::9b90:c4d9:22de:2ac4%6]) with mapi id 15.21.0496.021; Tue, 13 Oct 2026
- 07:43:23 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Emmanuel Blot
- <emmanuel.blot@free.fr>, Fabiano Rosas <farosas@suse.de>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, Kane Chen
- <kane_chen@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?=
- <philmd@oss.qualcomm.com>, Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Patrick Leis <venture@google.com>
-Subject: Re: [PATCH v2 48/50] hw/arm: minerva: add Facebook BMC machine
-Thread-Topic: [PATCH v2 48/50] hw/arm: minerva: add Facebook BMC machine
-Thread-Index: AQHdWuZxsph/f01iJEiWxSk0J6PAhw==
-Date: Tue, 13 Oct 2026 07:43:23 +0000
-Message-ID: <TYZPR06MB73736F77F75E0CEE4765E3D1FC9E2@TYZPR06MB7373.apcprd06.prod.outlook.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB7373:EE_|SG2PR06MB5059:EE_
-x-ms-office365-filtering-correlation-id: e8009868-97cc-467c-1ca0-08df28fda8f4
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|1800799024|376014|366016|7416014|18002099003|10067099003|8096899003|261009223027099003|38070700021|56012099006|41080700001;
-x-microsoft-antispam-message-info: hJPo/AcIR2SYFpQlQAoo45Z70rDvn/fXNAd2bg4cAUhrwQmwZYWOZT6OTayZmaFWAs/JaX8Ze/Qayh0yCJVCMtKbp7r9OIft3GKB3ywkFaRnwcwra6nJzvaq29sqVMzzRdOcHO9cqvH9fgZUO3Qf/7O01QtkggLfX4mrfNUwmIllC4XRI78TGKwCRuZOB3yQ3vmw9B+Na48TO0g/dqOB95juCHZgwzK+nqgwfD/wMIkq4lXUaxhgyWzVIyEoHg6uOR5Kss77h0r8pSoQlS3riRX5f+DzhduP0f53w3kU3z+aIepGvSeVGbAvHOSzpTXoaq6Dg50W8eB/5BxBXe5DwqEBv+//zrLPkEm0Y2hlzg6MyW83H9JP4oJ9GlXyJyQUchCymnlaQswYCj66R9a5dfyroocaJ2z8hwQVEKQIZpIl7ucFuHF2sA9yNsN1QL/EZCyf6Ft90/DNv0gAvn09zE5cCA3uROCll62H2zPgxJyWDY+Y5mQe9RpK3XB5dT1v1CUQ2cL5Lu2hAag1wAYcOW8zE/RTApbUHz3XvFPgHVl1a+wFXWnPZ8Yru1DNUmVe5aHCgYVxQDNEnuIblBvbl/et9zbKEXh1/0njWc5IAhecuYtEJyJUGvVs0OWfY2uUjZPqjU8nPW0WcvkS63/t3LFGw8c+90yBNcNGBQ0azF6+p3PHZV0FfOmK+EhXkazrDoKHTZqj6DX6Fjx8QO4jJ4NxFoDpNF9FO2ZKtS5lB2GmIemt20OoT/1hGoiyPk0m
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYZPR06MB7373.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(23010399003)(1800799024)(376014)(366016)(7416014)(18002099003)(10067099003)(8096899003)(261009223027099003)(38070700021)(56012099006)(41080700001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?n6XqgEs586Gi29unefh8iiljGrkUCGKgGG1QBzSAkD+yMerjOG2D7p1NrU?=
- =?iso-8859-1?Q?O4UsaiTNs5Bf+T1+6WYOZgnfHq9UekHQnfbFaAme0fktcrCQtFe2HCTm3l?=
- =?iso-8859-1?Q?HAN7wIhpM26t+LJ/XzM3oqL0KL62QF3FcGe2x16skDoN8p0u3S2LtVet61?=
- =?iso-8859-1?Q?V7q2oCO3OBbsbJZevjfgHqOJdAjMwHQ8VQMr+r7a9bELmJCQ86bwkdWxnC?=
- =?iso-8859-1?Q?fQ+Aia5UJYPDVPwyT4ev2Ns8N+b5HF1MuOxx6Ep4la9+1WAviaBcUTc4dW?=
- =?iso-8859-1?Q?URYXoJILDOWLwnpU7OzrbEAEH0pb7z4RaCs/Iubx115TjbPWLmlVC6re9Q?=
- =?iso-8859-1?Q?udN7vllzF0EG4l4AK/T7h9FLP4Nic1I72tqV+UZdIfWeerFDEtGfDjX7fa?=
- =?iso-8859-1?Q?KZ1jZm9Bgn4yhxL3nLmuhkTl1Li9DWMcV2wkxswmOOODIiaiZcz5TR382R?=
- =?iso-8859-1?Q?tZrJRA3tYXCHzV/DUnt3Slm2/TBV0Fe58evzaisJ+MlS9zMX/jEm2T0BcG?=
- =?iso-8859-1?Q?zTFsYQuKFARXMtIT1+DUJAJww9l+FAzkYJFxQWH3yRWmJmKyFcbwa2TGPF?=
- =?iso-8859-1?Q?/dM6iBX48XUcdnEJ+BfnvBOKGzHbWBdlgN+ci8T/cpcxX9MVOkhWboxzuW?=
- =?iso-8859-1?Q?l8GRmn4c6ICP2YLKrWGIxl59bDgzZNKhhlOK+whrBFDtjSorx9A4RhRyFm?=
- =?iso-8859-1?Q?/NvBjL5/NBi5LhLjGRzzpZemujHnqRaicvuqdufc1nE8p7CbwA5oQG/hGN?=
- =?iso-8859-1?Q?18HztwthfijZJgZ5UwDhuvpKwKxv3Tz0qp1LKBDmd4qoVftOFzDWV+7X4m?=
- =?iso-8859-1?Q?kVjipikYsHBkhRHN5vHo1uq1aQI/PQs72Ud9wS4t+AhkwoSHt6uNZQ31Y+?=
- =?iso-8859-1?Q?aPA4L6XqEeLZihdWv18N+YW7MjHbWro3VSqCzVEtGWwXROWI7oswH3DeCE?=
- =?iso-8859-1?Q?MYj5TQDUAXp5n4/dfMU+hqcpb2XuaP2IEkVvyffvQxeatRP9MWTCS/PPKT?=
- =?iso-8859-1?Q?MnvxWI5MY+a8XqEXo5S0DySSlukDlXJYtgVXnGjRsCvievc+FQLrqRHTD2?=
- =?iso-8859-1?Q?1PvFbfxULL4FHJF4wziAAYpafyExAI0VFEo8Qt/kEipWZE+LWHxsTPtz/s?=
- =?iso-8859-1?Q?wUMXOhHaey3awa2C5ckonYN9PadHSxhXy06NX/k/s5okA2m3NQLyzRt+o8?=
- =?iso-8859-1?Q?Hm75V3yz7O2TxKXSoocLqXleX89jl5Yke22Xmb2n1ttCtPYmUfEnhmE/2B?=
- =?iso-8859-1?Q?gOIZYtMAzrUBESqA503ksBfupLqvEGuGTjC7bx5E9o5R1n7Xq6+XMZn+jn?=
- =?iso-8859-1?Q?F/oeG6bC8o1R5KUbk4MuRoJ1ckDukf4LM8hVG1aMa0UueGVTSMnoivOZax?=
- =?iso-8859-1?Q?zjB+J4Vq/ntTxq1Qu1bBpc5Ub9vaACgolQuNsXzt4dkIk4BsZfx7Fg/1U6?=
- =?iso-8859-1?Q?dRbT/WAeKqfW9z15XpGED5AZacetj9NnYsy8+JpfnbLU4c1cntJ/iGuX9/?=
- =?iso-8859-1?Q?Q0E79J572cjmW89tS+VPJ+BdewCly5gHiXG1OXdOtoDTKjRFO+MlWNM8R6?=
- =?iso-8859-1?Q?g44V9zmldRXJhdiY6xjJ/rwymi52husT5IGUDMPLAEAT8SCyhSZulB5PET?=
- =?iso-8859-1?Q?Nd01KZDbALxQE+z+SJ/tgmwVLewQo1SjYIlxQGPEYX4VUoUzxZVCGHIZ+1?=
- =?iso-8859-1?Q?ZYjMcMDBTarDqRGWMdqUvyJh2cedJUKovR6n0Hl9a11GjiDsfMkGGVVTKy?=
- =?iso-8859-1?Q?sKTc0GhMBHEFDUk+8a0pZEKbVk4qxGm8vRuwGgwJDB76NUI7+5/Kd521EO?=
- =?iso-8859-1?Q?U5avvWudZA=3D=3D?=
-Content-Type: multipart/alternative;
- boundary="_000_TYZPR06MB73736F77F75E0CEE4765E3D1FC9E2TYZPR06MB7373apcp_"
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGXVl-0003f4-VZ
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:05:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1791878725;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qoIxGDkBEU7fWV1bEU6mK34ka1bqiUC0KEprskzLzec=;
+ b=GUNda7BHi25Ruve4eIQk5hYaovJi7TWlj70oXmklI3GGTpvWDxNEAV4Pgs+YQqtwU1fe5e
+ NpZ1wjHmL70ZzJXNHPc89bRNFRT7XC+FmdKeMibfXwc0WTMaWBB4ix3PD0/BQrcBkiCv1i
+ gzBimfdBvRbrl0xczN/MQ+46uxY3EcM=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-377-vcAhfINfNMyBuE3D19rLNQ-1; Tue,
+ 13 Oct 2026 08:05:22 +0000
+X-MC-Unique: vcAhfINfNMyBuE3D19rLNQ-1
+X-Mimecast-MFC-AGG-ID: vcAhfINfNMyBuE3D19rLNQ_1791878719
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8B3D5195FD12; Tue, 13 Oct 2026 08:05:18 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 47B2A30001B9; Tue, 13 Oct 2026 08:05:10 +0000 (UTC)
+Date: Tue, 13 Oct 2026 09:05:07 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Kyle Evans <kevans@freebsd.org>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Brad Smith <brad@comstyle.com>, Ani Sinha <anisinha@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>, Keith Busch <kbusch@kernel.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, John Snow <jsnow@redhat.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Anders Roxell <anders.roxell@linaro.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Warner Losh <imp@bsdimp.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Peter Xu <peterx@redhat.com>, Klaus Jensen <its@irrelevant.dk>,
+ Song Gao <gaosong@loongson.cn>, qemu-s390x@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: Re: [PATCH v2 06/16] tests/functional: update x86_64 tuxrun images
+Message-ID: <as3mM9XesjzPA0o4@redhat.com>
+References: <20261012170330.1144446-1-alex.bennee@linaro.org>
+ <20261012170330.1144446-7-alex.bennee@linaro.org>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: gapkOS5lHmxi2XFFYfaxM9/tRm23a2pnobRwNflyOAP/+V3MimQPYqJszceFjzpmIM4gEe7df3Hyr89/bYBlfQNr9t9qQY4eBQtiQ/VQcKfCY64pToqKirpmIfKQmPOc3HWpKIeoxd2GJKnJdXypH31HXNCHVYHd3X1dZajFUXmr6CEKrlBn7S8cChIR2jbyhfO3VDyIvtDIoMb9o8KsvyWOq/eXqKCCXxcjZTbZUPYCIBmkmNyecpFd9sAv1K9k5pF8WOyxy5w9NYl1hxLuxibKcMw+HfsvjKkdLHbtqkC91GqWrSJqAT4ZAM0jBFsMj/hKayGd0rCEwcOstaS8FQ==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB7373.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e8009868-97cc-467c-1ca0-08df28fda8f4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Oct 2026 07:43:23.5907 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: s/rLhoF9umCOOifhE7oGsz46kn+Mn/K68rUU5lo08/lDGcISiKjErpm/gSiAsi6guGbCEbn3QAYIJW4deALOE3NiH6RNSZbkcfVjM/encpg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5059
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20261012170330.1144446-7-alex.bennee@linaro.org>
+User-Agent: Mutt/2.4.2 (2026-08-30)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: RYXmiNqzxHVJIC3tBxlmJxTbT02c3VOubcUGlU6fD7Q_1791878719
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,102 +107,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---_000_TYZPR06MB73736F77F75E0CEE4765E3D1FC9E2TYZPR06MB7373apcp_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+On Mon, Oct 12, 2026 at 06:03:20PM +0100, Alex Bennée wrote:
+> We now split the fetching of the buildroot image from the kernel
+> itself. This is because we will want to access additional metadata in
+> future tests.
 
->
-> Add a machine for the Facebook Minerva Chassis Management Module (BMC),
-> an AST2600-based board modelled from its device tree
-> (aspeed-bmc-facebook-minerva.dts).
->
-> The board uses INA230 and INA238 power monitors, TMP75 temperature
-> sensors, PCA9555 IO expanders, PCA9545 and PCA9548 I2C muxes, AT24C
-> EEPROMs and a DS1339 RTC.
->
-> Every device the Minerva device tree describes and QEMU already models
-> is instantiated. The remaining ones (LTC4287, XDP710, MAX31790, PCF8563
-> and IPMB) have no QEMU model and are left documented as comments.
+This commit message appears unrelated to the patch content or subject
+line.
 
-Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> 
+> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> Message-ID: <20260930164649.433573-10-alex.bennee@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  tests/functional/x86_64/test_tuxrun.py | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/tests/functional/x86_64/test_tuxrun.py b/tests/functional/x86_64/test_tuxrun.py
+> index 729f6447d05..026b373accb 100755
+> --- a/tests/functional/x86_64/test_tuxrun.py
+> +++ b/tests/functional/x86_64/test_tuxrun.py
+> @@ -17,11 +17,11 @@
+>  class TuxRunX86Test(TuxRunBaselineTest):
+>  
+>      ASSET_X86_64_KERNEL = Asset(
+> -        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage',
+> -        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8')
+> +        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/bzImage',
+> +        '24a3ade610c2cc426ff821050de8a35930b0371357d94cc2c334abac6658552b')
+>      ASSET_X86_64_ROOTFS = Asset(
+> -        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst',
+> -        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751')
+> +        'https://storage.tuxboot.com/buildroot/20260924/x86_64/rootfs.ext4.zst',
+> +        '8e310455b0244414ccff29c507f7ccfd4032e3587cc405e49ab0322738e3e27c')
+>  
+>      def test_x86_64(self):
+>          self.require_accelerator("tcg")
+> -- 
+> 2.47.3
+> 
 
---_000_TYZPR06MB73736F77F75E0CEE4765E3D1FC9E2TYZPR06MB7373apcp_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
-&gt;</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; Add a machine for the Facebook Minerva Chassis Management Module (BMC)=
-,</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; an AST2600-based board modelled from its device tree</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; (aspeed-bmc-facebook-minerva.dts).</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt;</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; The board uses INA230 and INA238 power monitors, TMP75 temperature</di=
-v>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; sensors, PCA9555 IO expanders, PCA9545 and PCA9548 I2C muxes, AT24C</d=
-iv>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; EEPROMs and a DS1339 RTC.</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt;</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; Every device the Minerva device tree describes and QEMU already models=
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-&gt; is instantiated. The remaining ones (LTC4287, XDP710, MAX31790, PCF856=
-3</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
-&gt; and IPMB) have no QEMU model and are left documented as comments.</div=
->
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
-olor: rgb(0, 0, 0);">
-Reviewed-by: Jamin Lin &lt;jamin_lin@aspeedtech.com&gt;</div>
-</body>
-</html>
-
---_000_TYZPR06MB73736F77F75E0CEE4765E3D1FC9E2TYZPR06MB7373apcp_--
 

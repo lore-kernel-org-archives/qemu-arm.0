@@ -4,96 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24365CA9ED2
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 12:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BDC2CC6B03
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 13:02:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGbv0-0006pz-J6; Tue, 13 Oct 2026 08:47:46 -0400
+	id 1xGc90-0002Zs-5s; Tue, 13 Oct 2026 09:02:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1xGbuy-0006oo-OO
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:47:44 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1xGc87-0002QI-5K
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 09:01:28 -0400
+Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1xGbuv-0008TH-Sk
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:47:44 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4a1b07c3c5fso1876465e9.1
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 05:47:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1xGc83-0001rl-0B
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 09:01:16 -0400
+Received: by mail-dy1-x132f.google.com with SMTP id
+ 5a478bee46e88-3115c4451c8so3045716eec.1
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 06:01:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791896473; cv=none;
+ d=google.com; s=arc-20260327;
+ b=IPjiqguauXJriKmzZsoc4Igj+pgmBO3Ij9cUl4rq/RipEKk7DtQDZx0+nJuTIaYsXz
+ BcVi37fDDonoUf2aXnPZsjAdO1zlsYWCYPw14xFCR9e2g8mJRxoUm6aojdd88RtcXgvz
+ Uk0hI6bCvu3/HiBmeO/a++bOz3QQ9c7++FHACUo08lGl2qzHGvKpSOqJtHAfuQBUb+P3
+ WoVZ/+v5cjGwd5qhv8I+vxmF+mlXuAOlHoIjWhk0N0vBr3Ko/QgD3yWJi1DFYuOcMTMe
+ j6xZ5RXds4P3he0RJ9QvdRmRrmKQQC71rRjZpaY3Y0FvY+wxRowasZC7cASYZX5nIqSa
+ 9Sbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=PGY+6jZg5SqUd4l7AQTPRlEv3Ac2ljFgLNWX6rF802E=;
+ fh=cGwHduh7cDTIfha5Ko6EWLDxBdRff30OaUtj6piloL0=;
+ b=bqUG0qJBldPE/yl1/3QA1IDlJ8WsoL4sJCvi8md9YSRlPYdO/SmMpoFienL7f6wtPs
+ MUqCqysq2rCep1XLfLZupyygFgypyRkEmhf0rzCOEVOfIz0ZheboyPXec9RQf+xFN8ks
+ SLhQz6Dg16k4arDSahbBcwHi0XTkDsrii+VVpP/FYa/n4JwwAib1hobvY0b5DFdgWIMp
+ hczK6f9wJpHF6ioSFxGaGjv/w0ZTwNFU298YoR31KsbCdumPSPz67+NnVuoUEcFfoojL
+ oNGKPeyGuY9hn0lcSs7VRQVPfWvlASgIFiK55VttojjCI6k73kivEsC90i1GAzCSuYM4
+ Rsog==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1791895659; x=1792500459; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ d=redhat.com; s=google; t=1791896473; x=1792501273; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=5V1ADJWSpqmE/0EppqJvQTXhFh4gYt9LFpGCgzibkxw=;
- b=ZjRIS2ll0LxHGwJc7ueAAoTOy4YPTrJyhisC7gPGemLF78FWxznRcrfNq8zoTuoJ9b
- WsMZZBuBzB0QO0oX/bvnOs6Touv6YvGlEav8MMU3fZJcti6SfwuObVZeaQkTCFDmyC2S
- Go86emwYeDu6uLSYJiIi6hqoyDCKcUoZwXtB3F7akZTk9NakedTwlnefvVciGCNpSs5q
- tBne+JY0+ZJTLu6Z6Pg41jkC/sJr/DyJdHkRBOKfIgkCqePGZ5Oyvn0Q2mzX25GdwlVo
- LU3sHMr6ZIHcYgrGb4BxFbgvNJpjYw3NPApNc5XQqnkYVRJ1A/NIaUHR+bsOHOjBG/CR
- gyaw==
+ bh=PGY+6jZg5SqUd4l7AQTPRlEv3Ac2ljFgLNWX6rF802E=;
+ b=LSuu6ve0vPwQb/oQjwAPPXgPmACPFsusqMi4Gj0Egcen9WUS7bp3tiFyWP68JpBDEB
+ VtLWgV25QeqjikqIc9MYhQKuN8jOilt6FF0g3tBcQSyNADCg5TzlFyj4DQr793sZJypv
+ sFwjdieXJaijYj1BNe1lO6NXNAY7//MNDFVkyU1wWYAbpjWvi3NkKEbWxEZJ2/wJAiUt
+ xxiNf7LT6Zr8gfkb62s1ipLdZuZ0CD2W+6WI7Mg2NHO+SoOE5KmCda6O9tIz8kPF+uMR
+ 4GKyUPJbLBlkZ0r9M/n2jaRtMZMh8N8jb9amXtLpsGy34wh6zt4xbO5TU+c9cGIC6Dkh
+ 3JYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791895659; x=1792500459;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ d=1e100.net; s=20260707; t=1791896473; x=1792501273;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=5V1ADJWSpqmE/0EppqJvQTXhFh4gYt9LFpGCgzibkxw=;
- b=rV/K/zMW0ujWLDiqFB1SsuAiirlhpizBAzjM9E9DEr9fW5m+Qm9xm/oNlbHN7Grkul
- wEdRA+xfYzu9lhqmEikPdE4AGF/zoTH5Vp0+1N+s6NaTPzyJ+TdYVMNAe8NQb3VDatLK
- HTWhm14lad4VH7JzjjyQvu8KcHlizeVPEvSslB/MP8jaUhPpl4kWxLSvogzQWbj8w5zi
- yz2tzpySu2R0FQDtig4w+p/Xu2uJ5XqBnF1fqTuDfhsXIF7w0UyJAMWDCGS78uhNrUs1
- rYtyZOnDv5M4ooWOdfyuQIrawTNunXduRg2lCV36PPFFTPgavawDxGyO14oCu2cUbvML
- iTdA==
+ bh=PGY+6jZg5SqUd4l7AQTPRlEv3Ac2ljFgLNWX6rF802E=;
+ b=TE4u1IkVIFnO11pJ1Nwglo07k/UU6bXpMP01wbfI6GTZMi3pqeWDq6OPV3O1hJIe8s
+ +P4B8HoN3zo10SRclo4qmoyIKpm8oqBTKS+zlkh07pOKCLyMeC8Fueqq59a5TzFbHstC
+ eXSBtIEC6wNxjiuZIs9USCYeSD1bBV8l+B/yqVoy8/2qEvD4ACp9McfEjzVJubQvhpCG
+ WvfSAL1L13nInPUq6zlJ0kRxEvjbHRJJEcescb/Ttc6Jjh8piDamPjCSRYaG64Nub8gS
+ QfWAbKwWJKlIFZsGRUgTtCIZZ8AwX/l22RIrhrvtcV63Di9QYwyk7e/AjraKXUeSZ7Pz
+ NCSA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzTIz7sY0ulsvajZ8ODppCjvrd3Q36cTKjfGwEprFDFI7lsD/t4cJvP+zjUK3X8aGQK4Bamd9uj3w==@nongnu.org
-X-Gm-Message-State: AFq9FYLzBfwQeeCmlUK59C5zoMZRC/4PEkP3yzUZPyPIg9jWg4yfSVAP
- 1nfKF54OKZmt+cjuyuIcgcibqgqmtMXZjovXjw8d/9WzTcJAVh2DDyEbB/JzAsHKU+s=
-X-Gm-Gg: AYBFou0U0YVKZ1SQqYCW/zsuiw/Uo+NYse8K8GrZisH3AvTNT0u4uBa4Qcr5elnj30d
- reZQLxVhaxwO1JxbXB2W4MgicIaj6eyYW1sE86nAnZjQwiWMFb3GDLyL8CxFGUR9aifNIg8ZqrM
- DIfNA4I3Mt2PIsH3/1jWjcoZLetfPLcduVTIygkDQfax5hubxTs3K0hjDExWeaFJui2ma/iz78M
- SY26hXytvTn2l3NHwWdQ9nHZFffWXts3KDDFubZ7uGN0R+4YsCiyFEZ9UBrzaNKaOCgL3JNQFls
- vHOwgAJSAT63Vc25+l7U0yKb2iTQdgP1ucRE3G1RI9hQjInUCv4j5/cSweHRppy0HHQMSLnFy9L
- EkM8jLNa+qurnp4RmOYrLDZltAYYw6/3z/I/2tXx3ut1jAHloK1TZhCxyDGWNu5Ag53daFHUL4N
- gFnPP+cTEFNWnZuZYEm8GKHQ1tG12gvDD1L5+NfXRyMwyJaAo/8L6GwnCdTwNZOUkg+ACr6Hki2
- BNbVIP0t7euSksEbgiNKm4=
-X-Received: by 2002:a05:600c:8b65:b0:4a1:742e:3 with SMTP id
- 5b1f17b1804b1-4a18e4ca244mr226734305e9.27.1791895659048; 
- Tue, 13 Oct 2026 05:47:39 -0700 (PDT)
-Received: from localhost.localdomain ([188.111.3.154])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0bc4ebbsm4768847f8f.45.2026.10.13.05.47.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 05:47:38 -0700 (PDT)
-From: <alexander.hansen@9elements.com>
-To: qemu-devel@nongnu.org
-Cc: eblot@meta.com, titusr@google.com, clg@kaod.org,
- Alexander Hansen <alexander.hansen@9elements.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v8 5/5] hw/sensor: support MAX11615
-Date: Tue, 13 Oct 2026 14:46:49 +0200
-Message-ID: <20261013124649.194808-6-alexander.hansen@9elements.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <20261013124649.194808-1-alexander.hansen@9elements.com>
-References: <20261013124649.194808-1-alexander.hansen@9elements.com>
+ AKwUvBz6KoPnBgWI4imJFtOmtTJPwLEWMdzg2hMXikaXcUi0MfTrN3CjNhbR911ea9b9lMuVIGKEyPm9zQ==@nongnu.org
+X-Gm-Message-State: AFq9FYKGjqmh85ArZ/lxbQdEV0U//HAJRCu3UQdoxJkqLq/cz6onwqa8
+ eerw30N7PS5LC3OvRTOxJt2zeyhOWQsAwSd8zVa45foi1JtikaYGOPqkwX7uYOcPR5TH4/nsXrH
+ JNpKnQV/uqyKnfWLImM1Z9jcBJDwmXcI=
+X-Gm-Gg: AYBFou20PEZSPditABd2j0ht7PM1wy7Qr9LEk9o9tO2fipYj3qvGuGD1h2P972VWKdE
+ pCyIUS6xBpxEtXDgd99vpxTvyDY0aN5nNa5sJpQOQafTi1AcayAY8uQbddeS9eVEzgWQmvVPqeb
+ Kpqt87jOzWN8vmjSwHccBtGDweavSXy2YcUEybMKeSBbVn4s/H11jBmCXLEJ6gc0GaG1rJcWWr6
+ edI1AnheHK973aGDs1cJAwqVLcNCcdsx+52WVT0PVT46scHt9gSJJtnqG9xBivo/NfkjmOdXlxd
+ opnvBpr3Y4tL3vWv3x+1HFisKWmXKe1MfKRoODjn+nAqpSrGzi1Hn86+MFeZ1IfK0U5DfTR/R7W
+ 3RamK9RG6rsI=
+X-Received: by 2002:a05:693c:811a:b0:351:7e5d:3caf with SMTP id
+ 5a478bee46e88-3537dfb8c44mr17683397eec.7.1791896472825; Tue, 13 Oct 2026
+ 06:01:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=alexander.hansen@9elements.com; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+References: <20261013-query-reg-v2-0-6f95a2e139a9@redhat.com>
+ <20261013-query-reg-v2-4-6f95a2e139a9@redhat.com>
+ <87ik36gfe6.fsf@draig.linaro.org>
+In-Reply-To: <87ik36gfe6.fsf@draig.linaro.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Tue, 13 Oct 2026 17:00:59 +0400
+X-Gm-Features: AclHuK_blaIwYzH5KQnLuLReYYXS7Ov9FVamAZSe3X0WjS8D3Um413MnIE6moeg
+Message-ID: <CAJ+F1CK938-GciwPJj_KjtvKZ04fvKhi8UcSHHORmoboVURzeQ@mail.gmail.com>
+Subject: Re: [PATCH v2 04/10] gdbstub: add gdb_register_internal_coprocessor()
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dave@treblig.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>, 
+ Glenn Miles <milesg@linux.ibm.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Chao Liu <chao.liu@processmission.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132f;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-dy1-x132f.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,509 +138,280 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Alexander Hansen <alexander.hansen@9elements.com>
+Hi
 
-Product: [1]
-Datasheet: [2]
+On Tue, Oct 13, 2026 at 12:51=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@lina=
+ro.org> wrote:
+>
+> Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
+>
+> > Add support for registering coprocessor features that are only visible
+> > to QEMU's internal APIs (HMP monitor $register expressions, plugins) bu=
+t
+> > hidden from GDB's target description XML.
+> >
+> > When a feature is registered as internal:
+> > - It is excluded from the target.xml sent to GDB
+> > - Its XML is not served via qXfer:features:read
+> > - 'p'/'P' packets for internal register numbers return E14
+> >
+> > This is useful for exposing system registers to the HMP monitor without
+> > affecting GDB's register namespace. Exposing aliases or synthetic
+> > registers through GDB's target description can cause problems: name
+> > collisions with GDB's pseudo-registers, independent register caching,
+> > and missing DWARF unwind rules.
+>
+> Hmm are they *that* useful for HMP then?
+>
+> The front-ends do limit what they export to gdb (see for example
+> ARM_CP_NO_GDB) generally because reading them causes side-effects. Those
+> restrictions are also a reason to limit them from the HMP interface.
 
-The ADC reads a pre-defined arbitrary value.
+I am not a user, but I can imagine they are useful for developers.
 
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/name
-max11615
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage0_raw
-722
-root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage_scale
-0.500000000
+I would like to be able to implement "info registers" purely based on
+QMP for ex.
 
-trace:
-less /tmp/qemu-trace.log | grep -i max116
-max11615_realize i2c_addr: 0x33
-max11615_realize i2c_addr: 0x33
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x0f
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x0f
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x01
-max11615_write_setup i2c_addr: 0x33, data: 0xd2
-max11615_write_config i2c_addr: 0x33, data: 0x61
-max11615_event i2c_addr: 0x33, event: 0x03
-max11615_event i2c_addr: 0x33, event: 0x00
-max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-max11615_recv_return i2c_addr: 0x33, returns: 0xfa
-max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-max11615_recv_return i2c_addr: 0x33, returns: 0xd2
-max11615_event i2c_addr: 0x33, event: 0x04
-max11615_event i2c_addr: 0x33, event: 0x03
-
-References:
-[1] https://www.analog.com/en/products/MAX11615.html
-[2] https://www.analog.com/media/en/technical-documentation/data-sheets/MAX11612-MAX11617.pdf
-
-Cc: Emmanuel Blot <eblot@meta.com>
-Cc: Titus Rwantare <titusr@google.com>
-Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org> (odd fixer:Overall sensors)
-Cc: Paolo Bonzini <pbonzini@redhat.com> (maintainer:Kconfig)
-Cc: Peter Maydell <peter.maydell@linaro.org> (supporter:ARM TCG CPUs)
-Cc: qemu-devel@nongnu.org (open list:All patches CC here)
-Cc: qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
----
- MAINTAINERS                              |   1 +
- hw/arm/Kconfig                           |   1 +
- hw/arm/aspeed_ast2600_fby4.c             |   3 +-
- hw/sensor/Kconfig                        |   4 +
- hw/sensor/max1161x.c                     | 314 +++++++++++++++++++++++
- hw/sensor/meson.build                    |   1 +
- hw/sensor/trace-events                   |   9 +
- include/hw/sensor/max1161x.h             |   7 +
- tests/functional/arm/test_aspeed_fby4.py |   9 +
- 9 files changed, 348 insertions(+), 1 deletion(-)
- create mode 100644 hw/sensor/max1161x.c
- create mode 100644 include/hw/sensor/max1161x.h
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 870152932c..6bd06dd3ab 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -4119,6 +4119,7 @@ S: Maintained
- F: hw/i2c/pmbus_device.c
- F: hw/sensor/adm1272.c
- F: hw/sensor/isl_pmbus_vr.c
-+F: hw/sensor/max1161x.c
- F: hw/sensor/max31790.c
- F: hw/sensor/max34451.c
- F: include/hw/i2c/pmbus_device.h
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index ac7e5096aa..25572cfe1b 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -546,6 +546,7 @@ config ASPEED_SOC
-     select MAX31785
-     select ADC128D818
-     select MAX31790
-+    select MAX1161X
-     select FSI_APB2OPB_ASPEED
-     select AT24C
-     select PCI_EXPRESS_ASPEED
-diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.c
-index 5e49c2e7ea..40c25477ee 100644
---- a/hw/arm/aspeed_ast2600_fby4.c
-+++ b/hw/arm/aspeed_ast2600_fby4.c
-@@ -11,6 +11,7 @@
- #include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
- #include "hw/nvram/eeprom_at24c.h"
-+#include "hw/sensor/max1161x.h"
- #include "hw/i2c/i2c_mux_pca954x.h"
- #include "hw/sensor/max31790.h"
- #include "hw/gpio/pca9552.h"
-@@ -188,7 +189,7 @@ static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
-         i2c_slave_create_simple(bus, TYPE_MAX31790, 0x2f);
- 
-         /* maxim,max11615 @ 0x33   (adc) */
--        /* TODO */
-+        i2c_slave_create_simple(bus, TYPE_MAX11615, 0x33);
- 
-         at24c_eeprom_init_rom(bus, 0x52, eepromSize, fru_yv4_fanboard_bin,
-                               fru_yv4_fanboard_bin_len);
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index 3eeffd32cd..c01d18a5fa 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -51,3 +51,7 @@ config MAX31785
- config MAX31790
-     bool
-     depends on I2C
-+
-+config MAX1161X
-+    bool
-+    depends on I2C
-diff --git a/hw/sensor/max1161x.c b/hw/sensor/max1161x.c
-new file mode 100644
-index 0000000000..69f7da0438
---- /dev/null
-+++ b/hw/sensor/max1161x.c
-@@ -0,0 +1,314 @@
-+/*
-+ * Maxim MAX11615 Low-Power 12 bit ADC
-+ * Models MAX11612,MAX11613,MAX11614,MAX11615,MAX11616,MAX11617
-+ *
-+ * Datasheet:
-+ * https://www.analog.com/media/en/technical-documentation/data-sheets/MAX11612-MAX11617.pdf
-+ *
-+ * Copyright 2026 9elements
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sensor/max1161x.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "trace.h"
-+
-+#define MAX11615_NUM_CHANNELS 8
-+
-+struct MAX11615State {
-+    I2CSlave i2c;
-+
-+    /* true: single-ended mode, false: differential mode */
-+    bool single_ended;
-+
-+    /*
-+     * Output data coding for the MAX11612–MAX11617 is
-+     * binary in unipolar mode and two’s complement in bipolar mode
-+     */
-+    bool bipolar;
-+
-+    /* The MAX11613/MAX11615/MAX11617 feature a 2.048V internal reference */
-+    uint16_t vref;
-+
-+    uint16_t channels[MAX11615_NUM_CHANNELS];
-+
-+    /* output buffer */
-+    uint8_t outlen;
-+    uint8_t outbuf[2];
-+
-+    /* selected channel for read/write operation */
-+    uint8_t pointer;
-+};
-+
-+struct MAX1161XClass {
-+    I2CSlaveClass parent_class;
-+
-+    uint8_t channel_select_mask;
-+    size_t n_channels;
-+};
-+
-+OBJECT_DECLARE_TYPE(MAX11615State, MAX1161XClass, MAX11615)
-+
-+static void max1161x_reset(MAX11615State *s)
-+{
-+    trace_max11615_reset(s->i2c.address);
-+
-+    s->single_ended = true;
-+    s->bipolar = false;
-+    s->vref = 2048;
-+    s->pointer = 0;
-+    s->outlen = 0;
-+
-+    MAX1161XClass *mc = MAX11615_GET_CLASS(s);
-+
-+    for (int i = 0; i < mc->n_channels; i++) {
-+        s->channels[i] = 0x2d2;
-+    }
-+}
-+
-+static void max11615_set_outbuf(MAX11615State *s, uint16_t value)
-+{
-+    uint8_t msb = value >> 8;
-+    uint8_t lsb = value & 0xff;
-+    s->outbuf[0] = 0xf0 | (msb & 0xf);
-+    s->outbuf[1] = lsb;
-+}
-+
-+static void max11615_read_single_ended(MAX11615State *s)
-+{
-+    /* Table 3. Channel Selection in Single-Ended Mode */
-+    /* read an ADC channel, first 4 bits must be high */
-+    uint16_t value = s->channels[s->pointer];
-+    /*
-+     * In single-ended mode, the MAX11612–MAX11617 always
-+     * operates in unipolar mode irrespective of BIP/UNI.
-+     */
-+    if (value > s->vref) {
-+        value = 0xfff;
-+    }
-+    max11615_set_outbuf(s, value);
-+}
-+
-+static int16_t max11615_differential_value(const MAX11615State *s)
-+{
-+    /* Table 4. Channel Selection in Differential Mode */
-+    size_t i1 = s->pointer;
-+    size_t i2 = (s->pointer % 2 == 0) ? s->pointer + 1 : s->pointer - 1;
-+
-+    const int16_t ch1 = s->channels[i1];
-+    const int16_t ch2 = s->channels[i2];
-+    return ch1 - ch2;
-+}
-+
-+static void max11615_read_differential(MAX11615State *s)
-+{
-+    const int16_t value = max11615_differential_value(s);
-+    uint16_t vu = value;
-+
-+    /* full-scale transition: Figure 12, Figure 13 */
-+    if (s->bipolar) {
-+        const uint16_t fs = s->vref / 2;
-+        if (value < -fs) {
-+            vu = 0x800;
-+        }
-+        if (value > fs) {
-+            vu = 0x7ff;
-+        }
-+    } else {
-+        /*
-+         * A negative differential analog input in unipolar mode causes the
-+         * digital output code to be zero
-+         */
-+        if (value < 0) {
-+            vu = 0;
-+        }
-+    }
-+
-+    max11615_set_outbuf(s, vu);
-+}
-+
-+static void max11615_read(MAX11615State *s)
-+{
-+    if (s->single_ended) {
-+        max11615_read_single_ended(s);
-+    } else {
-+        max11615_read_differential(s);
-+    }
-+}
-+
-+static void max11615_write_config_byte(MAX11615State *s, uint8_t data)
-+{
-+    trace_max11615_write_config(s->i2c.address, data);
-+
-+    uint8_t scan_select = (data >> 5) & 0x3;
-+
-+    if (scan_select != 0x3) {
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented scan select\n", __func__);
-+    }
-+
-+    const MAX1161XClass *mc = MAX11615_GET_CLASS(s);
-+
-+    uint8_t channel_select = (data >> 1) & mc->channel_select_mask;
-+
-+    /* Table 3. Channel Selection */
-+    if (channel_select >= mc->n_channels) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid channel select\n",
-+                      __func__);
-+        channel_select = mc->n_channels - 1;
-+    }
-+    s->pointer = channel_select;
-+    s->single_ended = data & 0x1;
-+}
-+
-+static void max11615_write_setup_byte(MAX11615State *s, uint8_t data)
-+{
-+    trace_max11615_write_setup(s->i2c.address, data);
-+    /* we ignore the setup byte, not implemented */
-+
-+    /* 1 = no action, 0 = resets the configuration register to default */
-+    const bool rst = ((data >> 1) & 0x1) == 0x0;
-+
-+    if (rst) {
-+        max1161x_reset(s);
-+    }
-+
-+    s->bipolar = ((data >> 2) & 0x1) == 0x1;
-+
-+    /* Table 6. Reference Voltage */
-+    const uint8_t sel = (data >> 4) & 0x7;
-+
-+    if (sel == 0x2 || sel == 0x3) {
-+        qemu_log_mask(LOG_UNIMP, "%s: unsupported: external vref\n", __func__);
-+    }
-+}
-+
-+static int max11615_send(I2CSlave *i2c, uint8_t data)
-+{
-+    MAX11615State *s = MAX11615(i2c);
-+    const uint8_t msb = (data >> 7) & 0x1;
-+
-+    if (msb) {
-+        max11615_write_setup_byte(s, data);
-+    } else {
-+        max11615_write_config_byte(s, data);
-+    }
-+
-+    s->outlen = 0;
-+    return 0;
-+}
-+
-+static uint8_t max11615_recv(I2CSlave *i2c)
-+{
-+    MAX11615State *s = MAX11615(i2c);
-+    trace_max11615_recv(s->i2c.address, s->pointer);
-+
-+    MAX1161XClass *mc = MAX11615_GET_CLASS(s);
-+
-+    if (s->outlen >= 2) {
-+        /* MAX11615 supports multichannel scan with wraparound */
-+        /* see datasheet page 17 */
-+
-+        s->outlen = 0;
-+
-+        s->pointer++;
-+        if (s->pointer >= mc->n_channels) {
-+            s->pointer = 0;
-+        }
-+    }
-+
-+    max11615_read(s);
-+
-+    const uint8_t data = s->outbuf[s->outlen++];
-+
-+    trace_max11615_recv_return(s->i2c.address, data);
-+    return data;
-+}
-+
-+static int max11615_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    MAX11615State *s = MAX11615(i2c);
-+
-+    trace_max11615_event(s->i2c.address, event);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        s->outlen = 0;
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_max11615 = {
-+    .name = TYPE_MAX11615,
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields =
-+        (const VMStateField[]){ VMSTATE_BOOL(single_ended, MAX11615State),
-+                                VMSTATE_BOOL(bipolar, MAX11615State),
-+                                VMSTATE_UINT16(vref, MAX11615State),
-+                                VMSTATE_UINT16_ARRAY(channels, MAX11615State,
-+                                                     MAX11615_NUM_CHANNELS),
-+                                VMSTATE_UINT8(outlen, MAX11615State),
-+                                VMSTATE_UINT8_ARRAY(outbuf, MAX11615State, 2),
-+                                VMSTATE_UINT8(pointer, MAX11615State),
-+                                VMSTATE_I2C_SLAVE(i2c, MAX11615State),
-+                                VMSTATE_END_OF_LIST() }
-+};
-+
-+static void max1161x_reset_hold(Object *obj, ResetType type)
-+{
-+    MAX11615State *s = MAX11615(obj);
-+
-+    max1161x_reset(s);
-+}
-+
-+static void max11615_realize(DeviceState *dev, Error **errp)
-+{
-+    MAX11615State *s = MAX11615(dev);
-+
-+    trace_max11615_realize(s->i2c.address);
-+}
-+
-+static void max1161x_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    MAX1161XClass *mc = MAX11615_CLASS(klass);
-+
-+    mc->n_channels = MAX11615_NUM_CHANNELS;
-+    /* max11615 can use 3 channel select bits */
-+    mc->channel_select_mask = 0x7;
-+
-+    dc->realize = max11615_realize;
-+    dc->desc = "Maxim MAX11615 12-bit ADC";
-+    dc->vmsd = &vmstate_max11615;
-+    rc->phases.hold = max1161x_reset_hold;
-+    k->event = max11615_event;
-+    k->recv = max11615_recv;
-+    k->send = max11615_send;
-+}
-+
-+static const TypeInfo max11615_info = {
-+    .name = TYPE_MAX11615,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(MAX11615State),
-+    .class_size = sizeof(MAX1161XClass),
-+    .class_init = max1161x_class_init,
-+};
-+
-+static void max1161x_register_types(void)
-+{
-+    type_register_static(&max11615_info);
-+}
-+
-+type_init(max1161x_register_types)
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index f2b6b07a78..efc3e6af0c 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -10,3 +10,4 @@ system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
- system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
- system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
- system_ss.add(when: 'CONFIG_MAX31790', if_true: files('max31790.c'))
-+system_ss.add(when: 'CONFIG_MAX1161X', if_true: files('max1161x.c'))
-diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-index 2041c91dd9..b0d46f3f01 100644
---- a/hw/sensor/trace-events
-+++ b/hw/sensor/trace-events
-@@ -25,3 +25,12 @@ max31790_fan_dynamics_read(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c
- max31790_fan_dynamics_write(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
- max31790_fan_config_read(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
- max31790_fan_config_write(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
-+
-+# max11615.c
-+max11615_write_setup(uint8_t i2c_addr, uint8_t send) "i2c_addr: 0x%02x, data: 0x%02x"
-+max11615_write_config(uint8_t i2c_addr, uint8_t send) "i2c_addr: 0x%02x, data: 0x%02x"
-+max11615_recv(uint8_t i2c_addr, uint8_t reg_addr) "i2c_addr: 0x%02x, reg_addr: 0x%02x"
-+max11615_recv_return(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x, returns: 0x%02x"
-+max11615_event(uint8_t i2c_addr, uint8_t event) "i2c_addr: 0x%02x, event: 0x%02x"
-+max11615_realize(uint8_t i2c_addr) "i2c_addr: 0x%02x"
-+max11615_reset(uint8_t i2c_addr) "i2c_addr: 0x%02x"
-diff --git a/include/hw/sensor/max1161x.h b/include/hw/sensor/max1161x.h
-new file mode 100644
-index 0000000000..be2e87bff4
---- /dev/null
-+++ b/include/hw/sensor/max1161x.h
-@@ -0,0 +1,7 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+#ifndef QEMU_MAX1161X_H
-+#define QEMU_MAX1161X_H
-+
-+#define TYPE_MAX11615 "max11615"
-+
-+#endif
-diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
-index be396f53bc..0d81638c82 100755
---- a/tests/functional/arm/test_aspeed_fby4.py
-+++ b/tests/functional/arm/test_aspeed_fby4.py
-@@ -81,6 +81,15 @@ def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
-         exec_command_and_wait_for_pattern(self,
-             "cat /sys/class/hwmon/hwmon3/fan1_input", "10347");
- 
-+        # MAX11615 test
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-0033/iio:device*/name", "max11615");
-+        # read the value configured in the machine emulation
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-0033/iio:device*/in_voltage0_raw", "722");
-+        exec_command_and_wait_for_pattern(self,
-+            "cat /sys/bus/i2c/devices/30-0033/iio:device*/in_voltage_scale", "0.500000000");
-+
-     def test_arm_ast2600_yosemitev4_openbmc(self):
-         image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
- 
--- 
-2.56.0
-
+>
+> >
+> > Internal features must be registered after all GDB-visible features to
+> > keep remote register numbering consistent. This ordering is enforced
+> > with an assertion.
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> >  gdbstub/gdbstub.c      | 71 ++++++++++++++++++++++++++++++++++++++++++=
+++------
+> >  include/exec/gdbstub.h | 21 +++++++++++++++
+> >  2 files changed, 84 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> > index 912e31b66744..ac0f76d62333 100644
+> > --- a/gdbstub/gdbstub.c
+> > +++ b/gdbstub/gdbstub.c
+> > @@ -54,6 +54,7 @@ typedef struct GDBRegisterState {
+> >      gdb_get_reg_cb get_reg;
+> >      gdb_set_reg_cb set_reg;
+> >      const GDBFeature *feature;
+> > +    bool internal; /* hidden from GDB, accessible via API/monitor */
+> >  } GDBRegisterState;
+> >
+> >  GDBState gdbserver_state;
+> > @@ -385,6 +386,11 @@ static const char *get_feature_xml(const char *p, =
+const char **newp,
+> >              }
+> >              for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
+> >                  r =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, =
+i);
+> > +                /* The core target.xml feature must never be internal.=
+ */
+> > +                g_assert(i > 0 || !r->internal);
+> > +                if (r->internal) {
+> > +                    continue;
+> > +                }
+> >                  g_ptr_array_add(
+> >                      xml,
+> >                      g_markup_printf_escaped("<xi:include href=3D\"%s\"=
+/>",
+> > @@ -400,6 +406,9 @@ static const char *get_feature_xml(const char *p, c=
+onst char **newp,
+> >      /* Is it one of the features? */
+> >      for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
+> >          r =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+> > +        if (r->internal) {
+> > +            continue;
+> > +        }
+> >          if (strncmp(p, r->feature->xmlname, len) =3D=3D 0) {
+> >              return r->feature->xml;
+> >          }
+> > @@ -563,13 +572,14 @@ int gdb_write_register(CPUState *cpu, uint8_t *me=
+m_buf, int reg)
+> >
+> >  static void gdb_register_feature(CPUState *cpu, int base_reg,
+> >                                   gdb_get_reg_cb get_reg, gdb_set_reg_c=
+b set_reg,
+> > -                                 const GDBFeature *feature)
+> > +                                 const GDBFeature *feature, bool inter=
+nal)
+> >  {
+> >      GDBRegisterState s =3D {
+> >          .base_reg =3D base_reg,
+> >          .get_reg =3D get_reg,
+> >          .set_reg =3D set_reg,
+> > -        .feature =3D feature
+> > +        .feature =3D feature,
+> > +        .internal =3D internal
+> >      };
+> >
+> >      trace_gdbxml_register_feature(feature->name, feature->xmlname,
+> > @@ -605,7 +615,7 @@ void gdb_init_cpu(CPUState *cpu)
+> >          assert(feature->base_reg =3D=3D 0);
+> >          gdb_register_feature(cpu, 0,
+> >                               cc->gdb_read_register, cc->gdb_write_regi=
+ster,
+> > -                             feature);
+> > +                             feature, false);
+> >          cpu->gdb_next_base_reg =3D cpu->gdb_num_g_regs =3D feature->nu=
+m_regs;
+> >      } else {
+> >          cpu->gdb_next_base_reg =3D cpu->gdb_num_g_regs =3D cc->gdb_num=
+_core_regs;
+> > @@ -616,20 +626,26 @@ void gdb_init_cpu(CPUState *cpu)
+> >                            cc->gdb_num_core_regs);
+> >  }
+> >
+> > -void gdb_register_coprocessor(CPUState *cpu,
+> > -                              gdb_get_reg_cb get_reg, gdb_set_reg_cb s=
+et_reg,
+> > -                              const GDBFeature *feature)
+> > +static void do_gdb_register_coprocessor(CPUState *cpu,
+> > +                                        gdb_get_reg_cb get_reg,
+> > +                                        gdb_set_reg_cb set_reg,
+> > +                                        const GDBFeature *feature,
+> > +                                        bool internal)
+> >  {
+> >      GDBRegisterState *s;
+> >      guint i;
+> >      int base_reg =3D cpu->gdb_next_base_reg;
+> >
+> >      for (i =3D 0; i < cpu->gdb_regs->len; i++) {
+> > -        /* Check for duplicates.  */
+> >          s =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+> > +        /* Check for duplicates.  */
+> >          if (s->feature =3D=3D feature) {
+> >              return;
+> >          }
+> > +        /* GDB-visible features must not follow internal ones.  */
+> > +        if (!internal) {
+> > +            g_assert(!s->internal);
+> > +        }
+> >      }
+> >
+> >      if (base_reg < feature->base_reg) {
+> > @@ -637,12 +653,27 @@ void gdb_register_coprocessor(CPUState *cpu,
+> >                                                feature->base_reg);
+> >          base_reg =3D feature->base_reg;
+> >      }
+> > -    gdb_register_feature(cpu, base_reg, get_reg, set_reg, feature);
+> > +    gdb_register_feature(cpu, base_reg, get_reg, set_reg, feature, int=
+ernal);
+> >
+> >      /* Add to end of list.  */
+> >      cpu->gdb_next_base_reg =3D base_reg + feature->num_regs;
+> >  }
+> >
+> > +void gdb_register_coprocessor(CPUState *cpu,
+> > +                              gdb_get_reg_cb get_reg, gdb_set_reg_cb s=
+et_reg,
+> > +                              const GDBFeature *feature)
+> > +{
+> > +    do_gdb_register_coprocessor(cpu, get_reg, set_reg, feature, false)=
+;
+> > +}
+> > +
+> > +void gdb_register_internal_coprocessor(CPUState *cpu,
+> > +                                       gdb_get_reg_cb get_reg,
+> > +                                       gdb_set_reg_cb set_reg,
+> > +                                       const GDBFeature *feature)
+> > +{
+> > +    do_gdb_register_coprocessor(cpu, get_reg, set_reg, feature, true);
+> > +}
+> > +
+> >  void gdb_unregister_coprocessor_all(CPUState *cpu)
+> >  {
+> >      /*
+> > @@ -1223,6 +1254,18 @@ static void handle_remove_bp(GArray *params, voi=
+d *user_ctx)
+> >   * the remote gdb to fallback to older methods.
+> >   */
+> >
+> > +static bool gdb_register_is_internal(CPUState *cpu, int reg)
+> > +{
+> > +    for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
+> > +        GDBRegisterState *r =3D &g_array_index(cpu->gdb_regs, GDBRegis=
+terState, i);
+> > +
+> > +        if (r->base_reg <=3D reg && reg < r->base_reg + r->feature->nu=
+m_regs) {
+> > +            return r->internal;
+> > +        }
+> > +    }
+> > +    return false;
+> > +}
+> > +
+> >  static void handle_set_reg(GArray *params, void *user_ctx)
+> >  {
+> >      int reg_size;
+> > @@ -1232,6 +1275,12 @@ static void handle_set_reg(GArray *params, void =
+*user_ctx)
+> >          return;
+> >      }
+> >
+> > +    if (gdb_register_is_internal(gdbserver_state.g_cpu,
+> > +                                 gdb_get_cmd_param(params, 0)->val_ull=
+)) {
+> > +        gdb_put_packet("E14");
+> > +        return;
+> > +    }
+> > +
+> >      reg_size =3D strlen(gdb_get_cmd_param(params, 1)->data) / 2;
+> >      gdb_hextomem(gdbserver_state.mem_buf, gdb_get_cmd_param(params, 1)=
+->data, reg_size);
+> >      gdb_write_register(gdbserver_state.g_cpu, gdbserver_state.mem_buf-=
+>data,
+> > @@ -1248,6 +1297,12 @@ static void handle_get_reg(GArray *params, void =
+*user_ctx)
+> >          return;
+> >      }
+> >
+> > +    if (gdb_register_is_internal(gdbserver_state.g_cpu,
+> > +                                 gdb_get_cmd_param(params, 0)->val_ull=
+)) {
+> > +        gdb_put_packet("E14");
+> > +        return;
+> > +    }
+> > +
+> >      reg_size =3D gdb_read_register(gdbserver_state.g_cpu,
+> >                                   gdbserver_state.mem_buf,
+> >                                   gdb_get_cmd_param(params, 0)->val_ull=
+);
+> > diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+> > index 75eb4d9c365e..1bc778324758 100644
+> > --- a/include/exec/gdbstub.h
+> > +++ b/include/exec/gdbstub.h
+> > @@ -40,6 +40,27 @@ void gdb_register_coprocessor(CPUState *cpu,
+> >                                gdb_get_reg_cb get_reg, gdb_set_reg_cb s=
+et_reg,
+> >                                const GDBFeature *feature);
+> >
+> > +/**
+> > + * gdb_register_internal_coprocessor() - register internal registers
+> > + *
+> > + * Like gdb_register_coprocessor(), but the feature is NOT exposed to
+> > + * GDB via the target description XML. The registers are only
+> > + * accessible through QEMU's internal APIs (HMP monitor ``$register``
+> > + * expressions via gdb_get_register_list()).
+> > + *
+> > + * Internal features must be registered after all GDB-visible features
+> > + * to avoid register numbering mismatches with GDB.
+> > + *
+> > + * @cpu - the CPU associated with registers
+> > + * @get_reg - get function
+> > + * @set_reg - set function
+> > + * @feature - the GDBFeature describing the registers
+> > + */
+> > +void gdb_register_internal_coprocessor(CPUState *cpu,
+> > +                                       gdb_get_reg_cb get_reg,
+> > +                                       gdb_set_reg_cb set_reg,
+> > +                                       const GDBFeature *feature);
+> > +
+> >  /**
+> >   * gdb_unregister_coprocessor_all() - unregisters supplemental set of =
+registers
+> >   * @cpu - the CPU associated with registers
+>
+> --
+> Alex Benn=C3=A9e
+> Virtualisation Tech Lead @ Linaro
+>
 

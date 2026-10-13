@@ -4,141 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 380D4CC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 12:10:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24E30CA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 12:10:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGbJx-0006K1-TD; Tue, 13 Oct 2026 08:09:29 -0400
+	id 1xGbK6-0006LQ-FH; Tue, 13 Oct 2026 08:09:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xGbJn-0006G9-Cv
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:09:21 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xGbJi-0003Cp-CH
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:09:19 -0400
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69D944QS483032
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 12:09:11 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- jDJpC0q/u6BCpQ6aMn/H9EUUQQvUxLmODL92KW0qpm4=; b=gIMyqtbwsRWx/PO4
- 2FdkoYcOKT3zQ077KjnqN4SfeJgceuZlfmXx+mukBJJmckLMlksv+pWTUPs7Lafa
- EM67ztEvizyzZEmf1eYr9SxcTcEckfkYNiJIwAxMTAlTmiVFVP1Ikqo8yaTbuSBr
- TlrwdQKyvq3v9FdTpOlxyGfN70rUS3mgM8dqCeGzanpbR3kCB1eBH1UVSXE2+ha5
- LRTkVU5EGArGnBdoL3PrjT0lvRC26QAFCqk0o8B3WRBgN/2PgB5gQqOknoYoNhgK
- Y8AclqEkl6X93oo2MdWfBqBccEuAQukolHo+APGg3EaZV/rR0Xpk3efKVMkQNHu8
- f1uadQ==
-Received: from mail-vk1-f199.google.com (mail-vk1-f199.google.com
- [209.85.221.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h9hpg8rj5-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 12:09:10 +0000 (GMT)
-Received: by mail-vk1-f199.google.com with SMTP id
- 71dfb90a1353d-5d88f5414dbso894844e0c.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 05:09:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jaminlin1207@gmail.com>)
+ id 1xGWVb-0001mF-HG
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 03:01:17 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jaminlin1207@gmail.com>)
+ id 1xGWVZ-0006Fb-8Z
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 03:01:10 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-c315729ad50so437095266b.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 00:01:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791874868; cv=none;
+ d=google.com; s=arc-20260327;
+ b=KMPmUG/+RzEBxsYwJwDPgz+Cjivi/CnDaTXAG6VoEnioz3B/e/czdy7Aq5dlwUesH5
+ 2zEAK08x3mmoVc5Y4uXzeO1KuPopNUBXNi4KkE0HkSIgg34et3MLvhtzXUuYxd2wfFO0
+ x0xQUbsM7+uUQ+oKPQ/ozQvlR2fiqm2nnHpqePQKRBhMSlCO9XLULTmbdntYdfkWh8Ls
+ QPyrWAzR2s9pvLhgCZLfMW/PoAg2WwbKu2qPInexV154oOugE23mkGCrldMSKDjpz6Ep
+ 9P8Z7a4TRciFjcesbQ+DUrEjglFafgC4YxBFAGZ4LuP65dWpExU8yeYYp4NHE+b5Sjig
+ r0FA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=TKCT5RnEV1vWOyylNVGqIx5R7i4UZOmdib+i9xrVYAQ=;
+ fh=FKLX4TXmaUu7Iy8r009pxUdqlnx9YLYfgxmmNkto+o4=;
+ b=h4dKXYtmqMOlu9WgZkeLwL6WslEX7GLzAuyQlqfnFjUmRBX7sk7aTes5BY3++VBXfi
+ CktNq/3ZI98MQSw1iTSdEHWfMglq5Z0QP4KJrJC2d10UdXMQdL9lYABxbsxX5vjKIppq
+ 6eOXZooGCBb6mzz4TklQTTQ+OZFvPlx/HVPjj3LFejBX6pVnYAL2nO9Es8r4RfGtIyti
+ Ga5u7BjM9PX0BhtIxcPeC+f+Dmr/eRt9/cmBcBmb5O7unNDU7ASdkwUpS/yKLKXIbkVa
+ wflIjcMRIax3V31YGsYifDXATh45EtNlcPaIgV95aD7XxkCdU5y3O5vssI3ZbF2vS6CJ
+ eAVQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791893350; x=1792498150; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=jDJpC0q/u6BCpQ6aMn/H9EUUQQvUxLmODL92KW0qpm4=;
- b=Jc0wsiHMUGnCe7qJRz0XYLzDmbX9XUCJsQRmJtEM6RdElCs1q+54OwW3rF6YMSdArZ
- 0rWCjYf2WHZWGKfVkKdXsAi+Mp2qBKY0cHte0cCKHzuYFKBub4gce5KOimQ7KEiKiCEw
- nkSCFH0TuHCIsvfDp0oaHtjmjzaovlEb8+BHoymfTRnrT3O9uqTbMPttIjaoiIa7x3uK
- MVPxzfpRCKsDAwDeaK9fOGQQr3Qh0fmgMAU2o9KnvgNmNnn7v8SGGPd3KFYItp1SpM1W
- yn6TPi29VkX5i0gixskCQnIbskVZ2MSqXnIjf7/Z8CeZFKTxR45LtbYtoaa+ERdNDzPZ
- sPsw==
+ d=gmail.com; s=20251104; t=1791874868; x=1792479668; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=TKCT5RnEV1vWOyylNVGqIx5R7i4UZOmdib+i9xrVYAQ=;
+ b=euDsU3nmDmV8pvwsq/RmQSM6yefFODWpYrQ911F4gUsavtNlacBv6ZjmuJeQl1XT42
+ e2o5LfHDD9H6dhgozDnVz/nNrpWcC6T9c1n8/geC3A9PQeN3xezfB0zAighk7DBaRaDJ
+ uHrXaoeVtHIkoeku+0Xh8z8CASfq0KV3pONFzFJigdzV3C/HlkZrqZYwjq4dnAOKuDJq
+ 7g5HflYa2WDbE/k045pKNJ6Y4XL+Elgkip1tBbNfxjJWeDmFcQhtc47OmtbpdYyNW6s9
+ O/hoplpkA6BMT9dkLf/20iN0WnMj0a/FIzKGxg15IQcYBa4uJIAz1RUYNnm2VzR3tVYQ
+ V/eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791893350; x=1792498150;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=jDJpC0q/u6BCpQ6aMn/H9EUUQQvUxLmODL92KW0qpm4=;
- b=xL/gpX8dakseqxI/MNwi/lI9aBq/2or53nicxEKuxFLBv9gID2HPssO+8UnuSouvXN
- 17IqdyrFjgkdaS/StI0rtWfN207Yn6K0cOm1YXK9xOB86Qd9inf5X4IOYXSL9gg1miVZ
- mwM6nT7/Kck+ZHL7v0vRN/9lvxkpsm0rmM0+hTF83uFInrWi5Q3/qvXt4BFElnR5pcd1
- FRgkZpBNoH+GY+Z2QG9+LJi9kaoddf3BxGAGgYo/NkHGOIZ+AhUualMjpTH2fr2VJIun
- b4veSkqGlDOx4Ycy6aCrrvTLI2hAVU+nu6JSGdHrEZTiGIqKk7YORdEcDc1OmgvjVOVX
- x3PA==
+ d=1e100.net; s=20260707; t=1791874868; x=1792479668;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=TKCT5RnEV1vWOyylNVGqIx5R7i4UZOmdib+i9xrVYAQ=;
+ b=EPwwr5Yi4t4rIyC7EDZ/G1npmy50oe6ubDXMknC7LiGSORaKZ586sGg1y1XYyVulUa
+ YnOIbLbZLicJr+F5E568Z+HUOagc7Q+Ns3NPmw9iARpeIrtGE+v5qXxVzfVdaQqM/rjx
+ ABdPVG59urBXcjw0fH6JMQIvDoUgCwTC03RjHHu0GC2zKNbczOhCE1B53Mwh/TMEHz7E
+ Dd7ovBafdXlubSvC38DJiibi4tmAskbe/FD8OFfkEKvOqVnoXdEgvDwVXlGoh20FunrM
+ L2ATvSj4Axj5msV3f97tbNgR4riHSfagC05m/F/cwyZGv+zLvV1LB+CFyywacyHrY1Lm
+ 9fIw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwdsSEkiyO8mq7U5DAlrA3ER9o73wC7lp6hgV5tEAklWKEnoa1di46K/92E1icBeRKGX5qqbVvCdw==@nongnu.org
-X-Gm-Message-State: AFq9FYKUOEmeWwJk3dRwseONrymVkt1DNjYxh2bI3pMUpZU9XpssWUqR
- t39DrWoDROMPMUP4GgEgAXPi8/qEcI4g9nhEeS0B8RKmZcdYuv3MpIIvWrJlt3iznMAayERXLrF
- IBw71+Fe9Zi3asdIXlEe9BS0Jq45nAVgZlXi1x7gOwPaSm61zDHv/lfc=
-X-Gm-Gg: AYBFou0RF1BgarQwsoVPCg4GjvPUQA6eCZIvZfn2UYxAbl8nwh+1HDsqnK7ac5gpSL/
- xIOODz2E6EknwJzpADjrlJ9aEYxOUUqI3PnHvFn3CEQe5cpXKhL1t7CPObFiB4NME9iss6/kjR2
- 4PanyRXvu0Mtaer2p3uho3J6YYXvr+x3B/uNRNbSnPGcnoAlxcwFQeVocDRuW7Hy/IwpucBmIY/
- 1AsR7a8By/3za2FMxV7yIE0eWSqDEBYLD2P5iaScv7WZptFhcGOm8G/6BjmH66l4xp/ccg15mon
- NhW/qFfoQ6iHm1Q0SCrrvtg19fcCP1eX/yrfnEL+yx/tFm+0upww1EkzR2VztJqZcVYABC5Z1aw
- keewVHJpbh5GghTtx9LXGPGO5Rb6TWN1l5A==
-X-Received: by 2002:a05:6122:3a06:b0:5c9:a60d:327d with SMTP id
- 71dfb90a1353d-5e91f518afamr3728782e0c.17.1791893350232; 
- Tue, 13 Oct 2026 05:09:10 -0700 (PDT)
-X-Received: by 2002:a05:6122:3a06:b0:5c9:a60d:327d with SMTP id
- 71dfb90a1353d-5e91f518afamr3728654e0c.17.1791893348748; 
- Tue, 13 Oct 2026 05:09:08 -0700 (PDT)
-Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18bf2343asm657347675e9.9.2026.10.13.05.09.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Oct 2026 05:09:08 -0700 (PDT)
-Message-ID: <57f772c4-ed27-42dc-a70a-a68d41e1e399@oss.qualcomm.com>
-Date: Tue, 13 Oct 2026 14:09:07 +0200
+ AKwUvBxnqwisYDLQkHMqo9erB6jcZPMowza+eNPqY8U+HULE9OApW9WRFU2BFMDGzfOQE9WGg6ZTfP5dLg==@nongnu.org
+X-Gm-Message-State: AFq9FYLYH/WRbP0ooPhtYn9s3lWtmHy759Z5IkGP0akd8FQz7yEw1EKu
+ YGkScp6pD71vxMjzUVhqo+YP8mMmGR9FgLdsEXphsj5UuVQaYUM9W+B53HoKNrnkizNn89O1wmE
+ KYQxBBlhJR5Y5nZhJK1DgTj/0Lux/2xY=
+X-Gm-Gg: AYBFou3z+c8XHbiD+mDFW1sC+NYMU/X9X1mkVlAIYq6UxlwyCnkm1eUhMdMGVy/QKlK
+ rK2fZCDSroaob2Rs65h+lIiVr86uPmkY/Zes/MdvB/6RSJwxuO5KXMVla/uoEiBLcAcheiwX8pd
+ uMy9CymPMHeWgntgFxL+EQd2n/5tQBlfjs3Dw8DOY7ceri2WT7l9aDFzQVKtAfm2joBHXsOwDMw
+ vXoos+1rqk7BFPRujbP4f/cSSwHcDtfhypqsK50xXBMuqyUVbs0SS1BlaxYPWBoyxogHtZ5sgtn
+ jYz8UKiSL0PUBaYi6DrAVD8qmu2hTuDURrl/vh98eqh9bf4bGBps
+X-Received: by 2002:a17:907:724b:b0:c2e:1d6a:6b78 with SMTP id
+ a640c23a62f3a-c31aa0e0cb8mr1176461466b.47.1791874867472; Tue, 13 Oct 2026
+ 00:01:07 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/86] hw/intc/arm_gicv5: Implement virtualization support
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20261013083933.1024405-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-GUID: 0fQS9n7dybmbndU04_JD9xAv0D3R4jU3
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDA0OCBTYWx0ZWRfX5WlYLRVocQxo
- c5K8hzKF6zMSPj14RViZ8TdG+/MXYeUJmobnpgdJxoHN5dbltH/3rBiadoJ3jRH7DvvE6EqT5+T
- SJ8ika61/T4EkRBsTyjuBLco2Lk1hUE=
-X-Proofpoint-ORIG-GUID: 0fQS9n7dybmbndU04_JD9xAv0D3R4jU3
-X-Authority-Analysis: v=2.4 cv=Z4Z5j3RA c=1 sm=1 tr=0 ts=6ace1f66 cx=c_pps
- a=+D9SDfe9YZWTjADjLiQY5g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=1X3lyv8EHgKgKI1ETugA:9 a=QEXdDO2ut3YA:10 a=vmgOmaN-Xu0dpDh8OwbV:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDA0OCBTYWx0ZWRfX3yirSONUXuUF
- Z5ZRAC8wCgJMB0IuOr/1Um0F4a7ynJ8O/7E0QCOryT3d+aiDuFKv2z2nFNwd4joXxSmtIsUuOt0
- RxEaz0l3pOkc1S/hm3USEUvN3PSOJbZrpRur5X36AE9SWnGeaA1ADEPb0pBXmoZlfgtlXI0IAtK
- 37W9Rma/0aUIzywUi0xDiTYkC6yiR/1lxPisqPe3pFc2EIsYMrfHbZzRQUJPhA/BZjjqL37BmR4
- me+i/mOow7S6Bbb+VED0TbUlGPcO8yE28z2huPxwJ2NVE4oJzfQq5ABJ+jE18AJ0sE2c46SqLYq
- 0gNT0kBHw+pfknS8OQNqG98vT7DrmXftUJx40E1wI0V0LtaiVMl9cEJRvJRIW2rKhBDJS/EYLgK
- oHsPNhpT80p1qHaxOzWY8DOlnocTyL10hAXEJk80D9bm7/2uYgcTnnddQwQcT9V+wo7SOjWpZbD
- AuyvBL+l1ikTQpBgHwA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 impostorscore=0 phishscore=0 bulkscore=0 adultscore=0
- malwarescore=0 clxscore=1015 priorityscore=1501 spamscore=0
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
- definitions=main-2610130048
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
+ <20261012-bmc-minerva-v2-3-4c3dff084ec9@free.fr>
+In-Reply-To: <20261012-bmc-minerva-v2-3-4c3dff084ec9@free.fr>
+From: =?UTF-8?B?5p6X5bu65piO?= <jaminlin1207@gmail.com>
+Date: Tue, 13 Oct 2026 15:00:55 +0800
+X-Gm-Features: AclHuK_0EmA86gxslNXKzkKFMXSLT-zOmF24a1p4E6djvihwlnmWjCpLOGNXMCs
+Message-ID: <CA+8rw5xkA0idsTC5e+G=YWLDn4cPLkvMiDNjcT9ef5Sh_3QMQQ@mail.gmail.com>
+Subject: Re: [PATCH v2 03/50] hw/arm: sanmiguel: remove the second SPI flash
+ controller
+To: Emmanuel Blot <emmanuel.blot@free.fr>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
+ Patrick Leis <venture@google.com>, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=jaminlin1207@gmail.com; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 13 Oct 2026 08:09:33 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,17 +130,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 13/10/26 10:38, Peter Maydell wrote:
-> This patchset adds virtualization support to our GICv5 model, and lets
-> the "virt" board use -machine gic-version=x-5,virtualization=on.
+>
+> The board only populates the flash device attached to the FMC
+> controller; the SoC SPI controllers are left unused. Advertising a
+> part there presents the guest with a flash device the hardware does
+> not have.
+>
+> While here, add the missing year to the copyright line.
+>
+> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+> ---
+>  hw/arm/aspeed_ast2600_sanmiguel.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
+> index 345a9c9416..ac2aef740a 100644
+> --- a/hw/arm/aspeed_ast2600_sanmiguel.c
+> +++ b/hw/arm/aspeed_ast2600_sanmiguel.c
+> @@ -1,7 +1,7 @@
+>  /*
+>   * Facebook SanMiguel BMC
+>   *
+> - * Copyright (c) Meta Platforms, Inc. and affiliates.
+> + * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
+>   *
+>   * SPDX-License-Identifier: GPL-2.0-or-later
+>   */
+> @@ -384,7 +384,7 @@ static void aspeed_machine_sanmiguel_class_init(ObjectClass *oc,
+>      amc->hw_strap1 = SANMIGUEL_BMC_HW_STRAP1;
+>      amc->hw_strap2 = SANMIGUEL_BMC_HW_STRAP2;
+>      amc->fmc_model = "mx66l1g45g";
+> -    amc->spi_model = "mx66l1g45g";
+> +    amc->spi_model = NULL;
+>      amc->num_cs    = 2;
+>      amc->macs_mask = ASPEED_MAC0_ON;
+>      amc->i2c_init  = sanmiguel_bmc_i2c_init;
+>
+> --
+> 2.50.1
+>
+>
 
-> In an ideal world I'd like to land this for 11.2, but I appreciate
-> that it's a lot of code to review and only two weeks til softfreeze;
-> we'll see how it goes.
-
-I did a "quick" review (2h...) and couldn't spot anything beside few
-typos w.r.t. the spec. The overall logic LGTM. Better if someone else
-can have a closer look at ARMCPRegInfo fields checked, but since this
-is experimental anyway I don't see any issue having it merged for 11.2.
-My 2 cents ;)
+Reviewed-by: Jamin Lin <jaminlin1207@gmail.com>
 

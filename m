@@ -4,144 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2684DCC6B1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 16:17:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA46CC6B1A
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 16:27:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGfBt-0001cR-Ir; Tue, 13 Oct 2026 12:17:25 -0400
+	id 1xGfL7-00053a-79; Tue, 13 Oct 2026 12:26:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xGfBs-0001c4-90
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 12:17:24 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1xGfKy-00051e-Sc; Tue, 13 Oct 2026 12:26:52 -0400
+Received: from smtpout4.mo536.mail-out.ovh.net ([51.210.91.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xGfBp-0002tw-8b
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 12:17:24 -0400
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69DE41mi900183
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 16:17:16 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- HkEV0KD3Yy2mDb8vl6QacftZwQHn3hdcVj9AFUlU2cY=; b=em4ehRpamqJ8gLHA
- 2oANGKcIRYcK6ktBxaudezKDgilqpqP1w7HJOHtZzbbg10swkPf+Ae972fVvD3tL
- Erot1IxhsKHPuX4frrx1OSTR4/c1h2w5BOMxXU0B0G9OBeiclFNZFMAqrBcgkYIT
- l6wgUph9Xkr52CMoTYC9JKfCQInb8+y9h17qArldhQdD3ZYNYpdRUFTuBdl37cXz
- R67+UCpiyehMmEGONfswrnsgvppC8XbmuxIwR1X/T6/SiLbHcE1kQHdFFv2laF8Y
- LTx57Jv6VC6tvYBaRwPO56U38FTlAWIo7VBUbhQwzJ64iDkmqG1dcHwMIYip2vGG
- lyOXFg==
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h9g7uj8m6-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 16:17:15 +0000 (GMT)
-Received: by mail-qv1-f71.google.com with SMTP id
- 6a1803df08f44-9179a2035a4so105013726d6.1
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 09:17:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791908235; x=1792513035; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=HkEV0KD3Yy2mDb8vl6QacftZwQHn3hdcVj9AFUlU2cY=;
- b=jcZs2bTKPjl9OJpX6kcF83seNXLQqZ5qCW5vd87ITyXjM5Si12TwCyyL8DoloGpNCz
- e9cYWotM34yyDkpKTc1GtqscRs2IsXqwamUjl189V6gX6046tfCY+QPG/8r7ETIzrecr
- /jCyDGupnxQuPAK7Rmt47lnp55wNFSUCHTtoocCM9XQRxtr7b8c77IoRZC5RihTwQ4//
- mht1a4/O7gYIKmPmmxEhqHCOCY2RA5DnpGUOCXx6UbgV/XW8wiCTz+CZh3P3FMTgxo9U
- N9sIVTL/17rXZcv6W669XJYw8Qucp73OvcMi+0eUsrs0FiyXjmGTLhNvFo5xxWenOMC4
- 35KQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791908235; x=1792513035;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=HkEV0KD3Yy2mDb8vl6QacftZwQHn3hdcVj9AFUlU2cY=;
- b=D2u9w16XN3WAhz/shCs/+K6VWLLXmR/u3DQV5aZ83tynFtCDyo2qAa6lZ9hPOa+So7
- oJombF2fIgqhhb9nZL48CMTUDPhLzrl8FpaSGHpunZ6hnEKBCde1VTKhIZ/xfqXVsYY6
- BSB2yMXKkSY/8OeAVSt1rQpqIjUjkcoIusRZ0VaK7ifEoXqXBfYvyBPHBtVXBBU9ieP0
- RQyplD+v52tfQoMQWif53wc+5DlgKujul/YAYj3VtHCLmhuwYFxfadsHTkXmQReOPQ0O
- 3afWkk6hM/cQPCkKnDgLVodwpegAT+/CKNayeEiGfs1Btas7SR3l91jXyWHokXYBqLpy
- PKww==
-X-Gm-Message-State: AFq9FYJjcpv9iOtTkoOzecg0ssgpEJGowPLP1D0D7gaysyeQfFBpcpT9
- ziUcNFZHsw1HUNF3w93RDQ4o3ePT7dA1vYg0u5RjsxYSnyMVL3wO4F3EAc96xLRID0NUHIj4OgD
- S9Sxn+7Q4o0Y6o5+3y/yC0fIzA95J8dtN6nl/d/Ge46+3H3MPSSK6NqI=
-X-Gm-Gg: AYBFou1F9n85DZJe/+W8SJ0IT3PiwR0j0pyPJVW2nQUaM1ly4qWSye2vN47T/jxOoYP
- U9+FQHjTVKS1+4oohvIMP+3vExhEo5gLhF35qH7ta1FXuUXUySq+8ForFpRZcuhdH4Dm3jMhrwP
- oLK/ceY4bK9UHogg058wvIKRBu3o/gr53gvGCxCnVpg82OwL+xL20BuxWVZGghuds7Ckrw2VZr7
- tVuCpgaKaQ49dijSBO4ZldshleSLYbMHO0Oy8wVcktke20g+lWEyExsqpjg5KB4joCXqGMGCNDg
- IJac/CVuWg9SSY45h1M4y4/KsGpw+kOqjy7SXFrLsKbLD/h4TC7I4mZui9VFPk9QaMp3EOQEqiA
- cC8hvc8xK7udulL18FSKBdA==
-X-Received: by 2002:a05:620a:40d2:b0:93c:7861:675 with SMTP id
- af79cd13be357-93eb93ef2cdmr2053518985a.1.1791908234515; 
- Tue, 13 Oct 2026 09:17:14 -0700 (PDT)
-X-Received: by 2002:a05:620a:40d2:b0:93c:7861:675 with SMTP id
- af79cd13be357-93eb93ef2cdmr2053515085a.1.1791908233918; 
- Tue, 13 Oct 2026 09:17:13 -0700 (PDT)
-Received: from [10.111.130.93] ([212.136.9.21])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0aaa9f9sm6200038f8f.19.2026.10.13.09.17.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Oct 2026 09:17:12 -0700 (PDT)
-Message-ID: <eea8bfcd-f1ab-4397-bc1b-f770ca7caaa8@oss.qualcomm.com>
-Date: Tue, 13 Oct 2026 18:17:10 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1xGfKu-00052M-Ou; Tue, 13 Oct 2026 12:26:47 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4j408c26nFz821T;
+ Tue, 13 Oct 2026 16:26:39 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 13 Oct 2026 16:26:39 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.184])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4j408b4Wrpz1xp2; Tue, 13 Oct 2026 16:26:39 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.4])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 5C7E9202CA3; 
+ Tue, 13 Oct 2026 16:26:37 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G003478d24aa-79d8-42c0-9ce9-5944aa59226e,
+ 3B5152602AE6D76A7CF2E50DC6ABDDC767F0B630) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <beae2a33-7a72-420c-a82d-6c33f6b2bfda@kaod.org>
+Date: Tue, 13 Oct 2026 18:26:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/20] hw/core: Introduce Remote Port Co-simulation
- Protocol
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>
-Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- peter.maydell@linaro.org, francisco.iglesias@amd.com,
- edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
- Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com
-References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+Subject: Re: [PATCH v2 06/50] hw/i2c: pca954x: migrate mux state
+To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ Patrick Leis <venture@google.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
+ <20261012-bmc-minerva-v2-6-4c3dff084ec9@free.fr>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20261012-bmc-minerva-v2-6-4c3dff084ec9@free.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDA2NCBTYWx0ZWRfXzjq6E3hWMU4d
- R1zTR7Bs8PaPsuG2o5me+lMgZAyEkO+tvtlAIYxuQDvSUPWmK4XZJf1fJA6XIq2u9TeYzgVpeQ2
- e07xTD7WI5sxk23Kmo3jQFhNnbaLPJppXSQBcqQR3RExPRpCH/QUQVUQDunblx2TUs0WBdvgk5R
- AiiGQk2ZWAneowzekAoLOOUjSI2FkEpy4UfJYOk0Y+oBaSpofzCJ+zhHgz5+r3PfkdceBeNOufQ
- JJ4Y44xtb6Q2VM6Pc6fMWEwkf5eeIXm1TEI6cYxohFUUON3TOl5yBps5iy24KEbaCDgcGwXxgEb
- 6OH0rnz2mzbeVqKlYVVnCBbZgrGH70s8PyMPvQbChAsWKdXu7mXUantrABpILnRK4+M8QaGzYKS
- kN8fh8mo+ntwItnRDp4t7/Nqu5TtEI0I1jzVs3rtBdwsYnq825YekrUDg8t9jqXOTwCGVRMHh6W
- fZ67MVqNHTq3n0cqhyw==
-X-Authority-Analysis: v=2.4 cv=Z495j3RA c=1 sm=1 tr=0 ts=6ace598b cx=c_pps
- a=UgVkIMxJMSkC9lv97toC5g==:117 a=/bviTfK1dmy+WGcHzWQ0gg==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
- a=69wJf7TsAAAA:8 a=NEAV23lmAAAA:8 a=javpHEMGAAAA:8 a=DBfv99YmAAAA:8
- a=Zv_7PsYmnftF76vf0H0A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=1HOtulTD9v-eNWfpl4qZ:22 a=Fg1AiH1G6rFz08G2ETeA:22 a=UTe8bF8JKSS6dPDzRicV:22
-X-Proofpoint-ORIG-GUID: 6KPX-Jb3t5muO8VnzHHLPugKKzvBvT7x
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDA2NCBTYWx0ZWRfX2llZl/HdJRUL
- qpolQ/q9v1Ztd2ZQ2EWYWZpUZDCDyxk5qi6hMRU2jgzOVYkFKi+hcG5Z9aa/+KPcDDR3UA+g/4r
- 299Orr3Uv6LeU7cWt3njRNDVz9JBISk=
-X-Proofpoint-GUID: 6KPX-Jb3t5muO8VnzHHLPugKKzvBvT7x
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 lowpriorityscore=0 bulkscore=0 adultscore=0 clxscore=1015
- malwarescore=0 priorityscore=1501 phishscore=0 suspectscore=0 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610130064
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+x-ovh-tracer-id: 6611002781404015661
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEy2TVmIGdJz9wb2lZxs6ZOYk0T6DuDjUbu8/zXGYTH4fUECEqloGjFfQQCwGTA+Qh7f8ykczPwXj/0yRHFk+ke0Oq8cqPzvgWUWqE52q4F8K7KHMRomHayz0KSPI3Kj1OS1RB4ltUXcr9VLwn8YMxu6kumcdPsPn14jLrFeI22oREKqPhMU2SvVrQ8KaXHRxjVPvt64nha3KIPtHpiy9r9K5jkCxjkBrKxyaee8ty7LwZMq0oVcVbO7WlIGgJOp6cyTRlPBQhZa3PdT41/UEK/QPowtMJd7DrnTJlu2XG9nN1MD1oRi9XLbB1T/tzjDKh80+WtaijTeEgascMvqUOAo8wlyyKTE58vv6KdWC3BynA6DoXlQpwBWKjXC6PHsZiFI1iWvgj3Ykgb8hiDVDl+zD1d8hjHIIm3GfXNkG5dnG/juHWFkyygybmMyfrlnpERMoJSZ3m7vdRKt96IZwtGefdGybqWcLi4andx/Fukcw/9osAeaf225phPoJgRhi5c1HnWFg58ETzbY13m9vPF1z3P7hMFAx33fXnZjVNh9FWG5DNKEzWPVoMB88Y/UDqDUOY9tr5eadOKTNum/KKVf6pqbNurNRTTm2fA8yJCSpewNbwkdZ+9eJhWiMJzLhPHEHXN4tezCr4R8AXcU2hFadNsluasUEOqrwrRrNPvVw
+DKIM-Signature: a=rsa-sha256; bh=vFIVezBGVrvD+tdflbN0Ri2lqEKKJxPozYcGL9BLBWQ=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1791908801; v=1;
+ b=PrWo0i5YEskEY7A3lITyzMHk6MRKR2YTo4aVsU6oNNFzr7LLggTG8LHsX928AjjMuTG3btep
+ rjOFRAwuwxlZFVso8UI74aI8U2Akd1ZvH7Oa+y/Jp0l2JkSDUqKbBetAyScN4rBl/p2b1FeWdfh
+ zn9NW5FmSfww1QcrleANrEOwJ0eTe39llZwxmYE8Abtc/S/OJ7rlDTe19x57lnNcwshGgXrVzOO
+ 6IJ6Zde1DSl4jmrrQ4jG0AfBWi6S8aFBpZ5eeu7ea8rj1CJgiwEDQA0WWVq6JIOVkj8eN7EqJIq
+ tcTMu5Y9HFfIEHKlSDXs4mhKiySEfXCBLApptuOcyJ2rg==
+Received-SPF: pass client-ip=51.210.91.13; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo536.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,148 +136,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026-09-15 18:00, Ruslan Ruslichenko wrote:
-> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+On 10/12/26 16:31, Emmanuel Blot wrote:
+> The pca954x model had no VMStateDescription, so neither the channel
+> selection nor the PCA9545 interrupt status survived a migration.
 > 
-> This patch series introduces the Remote Port (RP) subsystem, a framework designed to connect QEMU with external simulation environments (such as SystemC models or RTL simulators).
+> This changes the migration stream of the pre-existing PCA9546 and
+> PCA9548, which an older QEMU rejects.
+> 
+> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+> ---
+>   hw/i2c/i2c_mux_pca954x.c | 24 ++++++++++++++++++++++++
+>   1 file changed, 24 insertions(+)
+> 
+> diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+> index 4bb078a03c..597e57d99a 100644
+> --- a/hw/i2c/i2c_mux_pca954x.c
+> +++ b/hw/i2c/i2c_mux_pca954x.c
+> @@ -28,6 +28,7 @@
+>   #include "hw/core/irq.h"
+>   #include "hw/core/qdev.h"
+>   #include "hw/core/qdev-properties.h"
+> +#include "migration/vmstate.h"
+>   #include "qemu/log.h"
+>   #include "qemu/queue.h"
+>   #include "qom/object.h"
+> @@ -270,6 +271,28 @@ static void pca954x_init(Object *obj)
+>       }
+>   }
+>   
+> +static int pca954x_post_load(void *opaque, int version_id)
+> +{
+> +    Pca954xState *s = PCA954X(opaque);
+> +
+> +    pca954x_enable_channel(s, s->control);
+> +    qemu_set_irq(s->int_out, s->int_status == 0);
+> +    return 0;
+> +}
+> +
+> +static const VMStateDescription vmstate_pca954x = {
+> +    .name = "pca954x",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .post_load = pca954x_post_load,
+> +    .fields = (const VMStateField[]) {
+> +        VMSTATE_SMBUS_DEVICE(parent, Pca954xState),
+> +        VMSTATE_UINT8(control, Pca954xState),
+> +        VMSTATE_UINT8(int_status, Pca954xState),
+> +        VMSTATE_END_OF_LIST()
+> +    },
+> +};
+> +
+>   static const Property pca954x_props[] = {
+>       DEFINE_PROP_STRING("name", Pca954xState, name),
+>   };
+> @@ -287,6 +310,7 @@ static void pca954x_class_init(ObjectClass *klass, const void *data)
+>   
+>       dc->desc = "Pca954x i2c-mux";
+>       dc->realize = pca954x_realize;
+> +    dc->vmsd = &vmstate_pca954x;
+>   
+>       k->write_data = pca954x_write_data;
+>       k->receive_byte = pca954x_read_byte;
+> 
 
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-> Motivation
-> In modern SoC and FPGA development, specialized hardware blocks are often verified using SystemC, Verilog, or VHDL long before silicon is available. While QEMU is optimized for high-performance CPU emulation and software development, it requires hardware models to be rewritten in C, which is time-consuming and duplicates effort.
-> 
-> The Remote Port (RP) subsystem addresses this limitation by enabling a Co-simulation environment. It allows QEMU to act as the high-performance Processing Subsystem, booting complex operating systems (e.g. Linux), while delegating specific peripheral modeling to external simulators (SystemC, RTL) via a socket connection.
-> 
-> The Remote Port protocol provides a socket-based interface that supports:
-> 
-> Memory Transactions: Bidirectional memory accesses (Master and Slave) allowing QEMU to access remote devices and vice versa.
-> Interrupts/GPIO: Propagation of interrupt signals between QEMU and the remote peer.
-> IOMMU/ATS Support: Support for Address Translation Services, allowing remote devices to operate correctly behind IOMMU.
-> Time Synchronization: Keeps QEMU and the external simulator in sync by advancing time in fixed steps (quantums).
-> 
-> Integration with SystemC Ecosystem
-> 
-> To connect the simulation side, the open-source libsystemctlm-soc library [1] is used. It acts as a bridge, translating Remote Port protocol packets into standard SystemC/TLM-2.0 transactions [2]. This allows users to attach existing TLM-2.0 compliant models to QEMU.
-> 
-> Architecture Overview
-> 
-> The series is structured into the following logical components:
-> 
-> 1. Core Protocol & Infrastructure
-> 
-> Establishes the socket connection and handshake (Hello protocol).
-> Implements the packet dispatch loop and thread management.
-> 
-> 2. Memory Transaction Support
-> 
-> RP Memory Slave: Allows the remote peer to initiate bus transactions within QEMU.
-> RP Memory Master: Represents a memory region in QEMU that forwards accesses to the remote peer.
-> 
-> 3. Address Translation Services (ATS)
-> 
-> Implements the logic to handle ATS requests from remote masters.
-> Integrates with QEMU's IOMMU notifiers to manage translation caches.
-> 
-> 4. Device Tree (FDT) & Configuration
-> 
-> Added FDT support for Remote Port Memory Master and GPIO
-> 
-> Dependencies
-> 
-> Patches 19-20 in series are based on the following previously submitted series:
-> FDT based machine v3: https://lists.nongnu.org/archive/html/qemu-devel/2026-04/msg00415.html
-> 
-> Instantiation of Remote Port via FDT also registers its reset handler,
-> needed to start protocol thread.
-> 
-> Validation:
-> 
-> The Sample Project demonstrating test setup with QEMU/Remote Port and SystemC emulated PL011 UART module available by following link:
-> https://github.com/renesas/SysC_Island_MIT
-> 
-> 
-> Patch Summary
-> The series is organized as follows:
-> 
-> System/Global:
-> 
-> system/physmem: Add ats_do_translate helper
-> 
-> Remote Port Core:
-> 
-> hw/core: Add Remote Port protocol packet definition
-> hw/core: Add Remote Port header helpers
-> hw/core: Add Remote Port session state and hello protocol
-> hw/core: Add Remote Port object skeleton
-> hw/core: Add Remote Port protocol thread and handshake
-> hw/core: Implement Remote Port response handling
-> hw/core: Implement Remote Port time synchronization
-> hw/core: Implement Remote Port irq, sync and ATS helpers
-> hw/core: Add Remote Port files to build
-> 
-> Memory & Bus Access:
-> 
-> hw/core: Implement Remote Port bus access helpers
-> hw/core: Add Remote Port Memory Master object skeleton
-> hw/core: Implement Remote Port Memory Master bus transactions
-> hw/core: Add Remote Port memory slave device
-> 
-> ATS & Streams:
-> 
-> hw/core: Add Remote Port Stream device
-> hw/core: Add Remote Port ATS device skeleton
-> hw/core: Implement Remote Port ATS logic and cache management
-> 
-> FDT & GPIO:
-> 
-> hw/core: Add Remote Port GPIO/Interrupt bridge
-> hw/core: Add FDT support to Remote Port GPIO
-> hw/core: Add FDT support to Remote Port memory master
-> 
-> Links:
-> [1] libsystemctlm library: https://github.com/Xilinx/libsystemctlm-soc
-> 
-> [2] SystemC TLM description: https://systemc.org/overview/systemc-tlm/
+Thanks,
 
-Re-ordering this series logical groups and the internal
-QEMU APIs used:
+C.
 
-[1] Protocol and transport
-
-   Patch 1-4, (5), 7-9, 17
-
-[2] Memory management
-
-   Patch 10-15 — Memory, address translation logic and cache management
-
-   - get_system_memory()
-   - address_space_init()
-   - address_space_destroy()
-   - address_space_to_flatview()
-   - address_space_translate_internal()
-   - flatview_to_dispatch()
-   - dma_memory_rw()
-   - ats_do_translate()
-   - iommu_notifier_init()
-   - memory_region_get_iommu()
-   - memory_region_get_iommu_class_nocheck()
-   - memory_region_init_io()
-   - memory_region_iommu_attrs_to_index()
-   - memory_region_register_iommu_notifier()
-   - memory_region_unregister_iommu_notifier()
-
-   - sysbus_init_mmio()
-
-[3] GPIO and IRQ management
-
-   Patch (5), 16 — GPIO/Interrupt bridge
-
-   - qdev_init_gpio_in()
-   - qdev_init_gpio_out()
-   - qemu_set_irq()
-
-   - sysbus_init_irq()
-
-[4] QOM and QDev glue
-
-   Patch 6, 18-20
 

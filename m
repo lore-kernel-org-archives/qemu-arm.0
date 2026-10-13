@@ -4,93 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F34CC6B08
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 12:48:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB4A3CC6B03
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 12:48:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGbuv-0006oL-FV; Tue, 13 Oct 2026 08:47:41 -0400
+	id 1xGbuz-0006ps-Ih; Tue, 13 Oct 2026 08:47:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1xGbus-0006nW-Ch
+ id 1xGbut-0006nh-PJ
  for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:47:39 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1xGbum-0008QZ-Q7
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:47:38 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4a01933b584so25667415e9.0
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 05:47:31 -0700 (PDT)
+ id 1xGbur-0008Rg-Om
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 08:47:39 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4a17baef589so24774755e9.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 05:47:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1791895650; x=1792500450; darn=nongnu.org;
+ d=9elements.com; s=google; t=1791895655; x=1792500455; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Bzd1uJ5ELI9MIEoN1BV9xiWkNnvI+NG1RM+6Al/wByc=;
- b=BYgLaqwD4DiCcbLREx27blcvDqHkwHsaKDytlV4AZ9AfNRSgAi7jyx/YQ56rGvErtK
- ZaxGI1lD6S4E20jgOPekEFdrME1yDraRxFywLEcGzc9OK/Bdvon2DZuVV+CuB9E2t/bR
- q5ugiK7ohVHeji0Y56SgkKUD1l5cqRxdiVron5YnDFOji8PpFDjeLSrvh/Wf6WrRAaO5
- tLVEHO3SUY07zjW8433RirhVh0dUdIaWM0AmwoDVMfxStEDnpypS86hZ7FPxMLkKiHyj
- FGcUI4CUg4z2YamR8MXIB5n7uCoKxaSOctUDzqcYWAAj0Kj7zeTEzgwh5WS8RDVfINE/
- 6nnQ==
+ bh=YG0cRqgJeCblEwt/Ltv/1NRMuhNsZX2nbNBlMTJ0gDM=;
+ b=HXpkNq7IX+pKKfw8AJilcoLx4TWErNs3sNMPhtsXUxZiJDS/rrU5OnZqrhIofb208g
+ DPsBj9tdXKLorKPsJtxZoa5H5I7TAYYNs0eZnjUxTnUrzeOTRDfryz+SZDEqedwLGW1p
+ /wIkL6IK7z1Umo4yAbGoFrJ2A5XSsZfO5b2S6iu+F9ciEIDYN3XstvslqKTbAjQK2w+U
+ fk0vh/Vc0a2E6IZdMTzG5Egrwp2HHZ6PE0G8V3ovj/y5dS8GQUthwZEZA7RToyZT8VMe
+ 6YRbE6TLbc/ZISU9ujHngaXUdskXgEQ6SXvmboAF9lrC34B7db4+T9v+jTlUdAbISmug
+ raKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791895650; x=1792500450;
+ d=1e100.net; s=20260707; t=1791895655; x=1792500455;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Bzd1uJ5ELI9MIEoN1BV9xiWkNnvI+NG1RM+6Al/wByc=;
- b=EfBxjz9eaPln7Za1LjI/hfbMCQ7UNQ6oaUKYkTJZ/oLcRRGbSYOCJQtCObI++88G+E
- I0q9b4EIDjNx0wz/lFUG0ZwPCv1B5hoK6PIg/RqaNi2PJP8XIuNEWkpWpS1WI5XYXRUL
- fITf9KJbdr51GBq+YlQkqhDRujCHm+egKIOz1PU4DtaAyCsdY5qwIuEj3P/nij5hB0f8
- r36wmHsq47b+mz6O+GbZ82gXsJHtvg7kQMkA1ETFpNZqIGS6snhWsMUDbi+zyyFsmEIV
- +YzS/cqMFn+7Lj4Hy8qsttneq7Ce0ZvES7JHImynbp/SAYucNAIGjx5SjIXkUDIgjsM0
- n3cw==
+ bh=YG0cRqgJeCblEwt/Ltv/1NRMuhNsZX2nbNBlMTJ0gDM=;
+ b=ogBLNqM/3GqOXSQnLNmiqTV7qwn0M7HBfIuKaj+LUM5twwumXg1bNuBvpxn7UkZ5n5
+ kYgIEc17jVu5Jf9Oi87jL2Z6OlYyIiZnc89oZQjLyfPW8DcTllGMtoggAxcpkci3WWNO
+ Jm/FwapBtKnSBuijq08IBN6LHzXB2vQvHTH51Je1wZ9NwhWwv3vlvn9RtXOE4w7L5djG
+ ixibtUnxVO1p+5ElHsJofiM5rC6fsE394GxUlf91TvxzVoeMGLcwxVvg4Aw0svgbW31N
+ zWbJMIxvlGSDox9T63/Up/FRXf4qxtCaEl020qhB/bDtbyfjGaGPg23WoNPEYdLQBg2q
+ xc0g==
 X-Forwarded-Encrypted: i=1;
- AKwUvByfVQIfctIGgpKY9G0tmRCGxCzM2KGDqDAUfH6MWvg/qB1/6U/1GOnsk0FPYTHU+nn5Zu1K4jt7fw==@nongnu.org
-X-Gm-Message-State: AFq9FYJqLnnEJJ77ya9Jl9EiUsxs3QqVPOrT3S590YbLtgOzgBEnAQYV
- 8LikaieTQNHU6Q6TFXpy1HqrDyANfgGIoScxFXVh0X8PupISDtzb3m0pEeB7ouJwhxE=
-X-Gm-Gg: AYBFou3DO0v+X33zyZXvHFgo+/tC8ZueSIu4+AGkXMYde18PlR+35/c6OhXiAaJrNpN
- 1R5bDvK5OKrKgiMiLCrcpbE4Rc+GiE/iXHs/DSeljWENDbkouKBpWMBCo606l1Q6Ch18mKuHC7+
- 3qm2dTb07WIYlt/aTv63P+6QeURCcxPEviXMKKa5ibM20qTfGJEMMFnK2wnyu0wQKWB2Yl0Rz49
- 8NVvTvGKqT43AexsTb0Yw/81NHdAOLKUl/j1uI0mpqfQ16d14OwMaRYfP3qBhpyRvnMM/USyXhh
- VOn6SVF7Y4MpPUHHPoUDB2YgXSmacXq8vCqg5eV/DT6WN/ZVgx+3F2Qaerpb/ikWTFD0dSEST5g
- QMu/6o28Nt9hJrjIBkS5F29RXpJiZUCPie7R/TUj4ZoMAM4GAwRperqxQADCk+j3/yZitK9rTj8
- sH1uUk49s+5cjSYIZV8crjxvD3TFqWWZXj4X8cCryeh/k2WbqCYSAUeFnDg7B8Xm+sAc4cB+98k
- gUfyF3wxw+Xjk4ilIt/phw=
-X-Received: by 2002:a05:600c:154c:b0:49f:ce78:3562 with SMTP id
- 5b1f17b1804b1-4a18e4a9159mr266427485e9.19.1791895650031; 
- Tue, 13 Oct 2026 05:47:30 -0700 (PDT)
+ AKwUvBxKLooCXjbwfoIEN2JFlE8bNioOh7CFTLrJ+36LDqXwk1yx3ieky2jKED7xB9GxH5IHqYKbfDo4cw==@nongnu.org
+X-Gm-Message-State: AFq9FYJnbjUTsg8cXqdpFNFDQepRBgMTppflUJNGnJNT3YoTVd51eQ1/
+ IbaYxPoATPiTqUUrA1NjpepshChGNgTwqGW0whx/FsF59fyUw3naARK/AOuoxaszfvM=
+X-Gm-Gg: AYBFou2m4L5Q7kC7Oyc8TtBWMU+V9yRB6hTDbePfEXmd4yhAnhqk/qtnpn+SDqETvT6
+ Y8ItRidCDS8xCaNDBmexi1kSkC5GSFhePXoFQ9Mb/gnpV1s/wCVbQm72SsQBEMnhiybQHII1n86
+ 7iPWzgB6EAeE7OIRvtt2wJtxc9lT4P1q4CflfHT6r78EyOD5jgDUF3St+zoYSHLFqR5oZppMRkU
+ pnG1Y17pjcoscKIarEIZ7BcWLK9D9cpfWG4IhEClV8ok9vZj3hh/Czu5IGgKmrENNofhlPy92q4
+ RXNAqAXXmJROmeph25VmI+Z7v4ACAebKAXoP1bFTgqOmqM3Lij/ZEWWGEtkp5m+VKDCPKZZagKL
+ 8q+WmeUKk2uWl7NFjGeblZMD195jjvjVHHh3/5YbYIKyplsj4sYz7D5cJJh8TxvNFRNG9EreRD2
+ mnPbLrhoeMVIqTE+gH1YYMBf5PNchc47Hkiu+22J4dcmNogY7K4+Q0jqW54MxzZnSJKy5vWeP7x
+ nueeXKNSng2Xtao7K4RBAA=
+X-Received: by 2002:a05:600c:8105:b0:4a1:714d:eed with SMTP id
+ 5b1f17b1804b1-4a18e4841c1mr234784065e9.14.1791895655428; 
+ Tue, 13 Oct 2026 05:47:35 -0700 (PDT)
 Received: from localhost.localdomain ([188.111.3.154])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0bc4ebbsm4768847f8f.45.2026.10.13.05.47.29
+ ffacd0b85a97d-48de0bc4ebbsm4768847f8f.45.2026.10.13.05.47.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 05:47:29 -0700 (PDT)
+ Tue, 13 Oct 2026 05:47:35 -0700 (PDT)
 From: <alexander.hansen@9elements.com>
 To: qemu-devel@nongnu.org
 Cc: eblot@meta.com, titusr@google.com, clg@kaod.org,
  Alexander Hansen <alexander.hansen@9elements.com>,
- Patrick Leis <venture@google.com>, qemu-arm@nongnu.org
-Subject: [PATCH v8 1/5] hw/i2c: support PCA9544
-Date: Tue, 13 Oct 2026 14:46:45 +0200
-Message-ID: <20261013124649.194808-2-alexander.hansen@9elements.com>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v8 3/5] ast2600: yosemite4 functional test
+Date: Tue, 13 Oct 2026 14:46:47 +0200
+Message-ID: <20261013124649.194808-4-alexander.hansen@9elements.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261013124649.194808-1-alexander.hansen@9elements.com>
 References: <20261013124649.194808-1-alexander.hansen@9elements.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=alexander.hansen@9elements.com; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=alexander.hansen@9elements.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,240 +113,104 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Alexander Hansen <alexander.hansen@9elements.com>
 
-Who to explain it better than the manufacturer:
+Add a functional test for the Yosemite V4 (fby4-bmc) machine
+that validates:
+- U-Boot initialization and kernel boot sequence
 
-```
-The PCA9544A is a 1-of-4 bidirectional translating multiplexer,
-controlled via the I2C-bus. The SCL/SDA upstream pair fans out to four
-SCx/SDx downstream pairs, or channels. Only one SCx/SDx channel is
-selected at a time, determined by the contents of the programmable
-control register.
-```
+The test uses an OpenBMC image built for the yosemite4 board and
+validates console output through the boot process.
 
-The device updates the selected channel after STOP condition, not on
-the last byte written [1].
-
-For this reason the parent event handler has to be hooked to prevent
-write-read sequence from updating channel selection before STOP
-condition.
-
-Reset also had to be modified since a write would not apply the channel
-selection by itself.
-
-This emulation is done to support yosemite4 machine emulation.
-
-Interrupt forwarding is currently UNSUPPORTED.
-
-References:
-[1] https://www.nxp.com/docs/en/data-sheet/PCA9544A.pdf
-
-Cc: Patrick Leis <venture@google.com> (maintainer:pca954x)
 Cc: Emmanuel Blot <eblot@meta.com>
 Cc: Titus Rwantare <titusr@google.com>
 Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
+Cc: Peter Maydell <peter.maydell@linaro.org> (maintainer:ASPEED BMCs)
+Cc: Steven Lee <steven_lee@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Troy Lee <leetroy@gmail.com> (reviewer:ASPEED BMCs)
+Cc: Jamin Lin <jamin_lin@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Kane Chen <kane_chen@aspeedtech.com> (reviewer:ASPEED BMCs)
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au> (reviewer:ASPEED BMCs)
+Cc: Joel Stanley <joel@jms.id.au> (reviewer:ASPEED BMCs)
 Cc: qemu-arm@nongnu.org (open list:ASPEED BMCs)
 Cc: qemu-devel@nongnu.org (open list:All patches CC here)
-
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
 ---
- hw/i2c/i2c_mux_pca954x.c         | 88 ++++++++++++++++++++++++++++----
- include/hw/i2c/i2c_mux_pca954x.h |  1 +
- 2 files changed, 78 insertions(+), 11 deletions(-)
+ tests/functional/arm/meson.build         |  2 ++
+ tests/functional/arm/test_aspeed_fby4.py | 45 ++++++++++++++++++++++++
+ 2 files changed, 47 insertions(+)
+ create mode 100755 tests/functional/arm/test_aspeed_fby4.py
 
-diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
-index c603446028..19212dfa34 100644
---- a/hw/i2c/i2c_mux_pca954x.c
-+++ b/hw/i2c/i2c_mux_pca954x.c
-@@ -30,6 +30,10 @@
- 
- #define PCA9548_CHANNEL_COUNT 8
- #define PCA9546_CHANNEL_COUNT 4
-+#define PCA9544_CHANNEL_COUNT 4
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index 61b00932db..19331b3f16 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -15,6 +15,7 @@ test_arm_timeouts = {
+   'aspeed_anacapa' : 480,
+   'aspeed_bletchley' : 480,
+   'aspeed_catalina' : 480,
++  'aspeed_fby4': 480,
+   'aspeed_gb200nvl_bmc' : 480,
+   'aspeed_rainier' : 480,
+   'bpim2u' : 500,
+@@ -50,6 +51,7 @@ tests_arm_system_thorough = [
+   'aspeed_anacapa',
+   'aspeed_bletchley',
+   'aspeed_catalina',
++  'aspeed_fby4',
+   'aspeed_gb200nvl_bmc',
+   'aspeed_rainier',
+   'bpim2u',
+diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
+new file mode 100755
+index 0000000000..b6af9a21b7
+--- /dev/null
++++ b/tests/functional/arm/test_aspeed_fby4.py
+@@ -0,0 +1,45 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED machines
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-+/* enable bit */
-+#define PCA9544_ENABLE 0x4
- 
- /*
-  * struct Pca954xState - The pca954x state object.
-@@ -56,6 +60,11 @@ typedef struct Pca954xClass {
-     SMBusDeviceClass parent;
- 
-     uint8_t nchans;
++from qemu_test import Asset
++from qemu_test import wait_for_console_pattern
++from aspeed import AspeedTest
 +
-+    /* channel enable bit for mux devices, zero for switches */
-+    uint8_t mux_enable;
 +
-+    int (*parent_event)(I2CSlave *s, enum i2c_event event);
- } Pca954xClass;
- 
- #define TYPE_PCA954X "pca954x"
-@@ -99,28 +108,43 @@ static bool pca954x_match(I2CSlave *candidate, uint8_t address,
-     return broadcast;
- }
- 
--static void pca954x_enable_channel(Pca954xState *s, uint8_t enable_mask)
-+static void pca954x_enable_channel(Pca954xState *s, uint8_t control)
- {
-     Pca954xClass *mc = PCA954X_GET_CLASS(s);
-     int i;
- 
-+    if (mc->mux_enable) {
-+        uint8_t selected = control & (mc->mux_enable - 1);
-+        bool enabled = control & mc->mux_enable;
++class YosemiteV4Machine(AspeedTest):
 +
-+        for (i = 0; i < mc->nchans; i++) {
-+            s->enabled[i] = enabled && i == selected;
-+        }
-+        return;
-+    }
++    ASSET_YOSEMITE_V4_FLASH = Asset(
++        'https://github.com/pointbazaar/qemu-aspeed-boot/raw/refs/heads/update-yv4-image/images/yosemite4-bmc/openbmc-20260505132843/obmc-phosphor-image-yosemite4-20260505132843.static.mtd.xz',
++        '51dc13184810269399d4b47201ac8cc2e02839dd444f1b41a33ea9b9ee030c08')
 +
-     /*
--     * For each channel, check if their bit is set in enable_mask and if yes,
-+     * For each channel, check if their bit is set in control and if yes,
-      * enable it, otherwise disable, hide it.
-      */
-     for (i = 0; i < mc->nchans; i++) {
--        if (enable_mask & (1 << i)) {
--            s->enabled[i] = true;
--        } else {
--            s->enabled[i] = false;
--        }
-+        s->enabled[i] = control & (1 << i);
-     }
- }
- 
- static void pca954x_write(Pca954xState *s, uint8_t data)
- {
--    s->control = data;
--    pca954x_enable_channel(s, data);
-+    Pca954xClass *mc = PCA954X_GET_CLASS(s);
-+    uint8_t data_writable = data;
++    def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
++                                   cpu_id, soc):
 +
-+    if (mc->mux_enable) {
-+        data_writable = data & 0x0f;
-+    }
++        self.set_machine(machine)
++        self.vm.set_console()
++        self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
++                         '-snapshot')
++        self.vm.launch()
 +
-+    s->control = data_writable;
-+    if (!mc->mux_enable) {
-+        pca954x_enable_channel(s, data_writable);
-+    }
- 
-     trace_pca954x_write_bytes(data);
- }
-@@ -128,6 +152,7 @@ static void pca954x_write(Pca954xState *s, uint8_t data)
- static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
- {
-     Pca954xState *s = PCA954X(d);
-+    Pca954xClass *mc = PCA954X_GET_CLASS(s);
- 
-     if (len == 0) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
-@@ -136,15 +161,17 @@ static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
- 
-     /*
-      * len should be 1, because they write one byte to enable/disable channels.
-+     * In case of PCA9544A, multiple bytes can be written but only the last one
-+     * will be used.
-      */
--    if (len > 1) {
-+    if (len > 1 && !mc->mux_enable) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-             "%s: extra data after channel selection mask\n",
-             __func__);
-         return -1;
-     }
- 
--    pca954x_write(s, buf[0]);
-+    pca954x_write(s, buf[len - 1]);
-     return 0;
- }
- 
-@@ -156,11 +183,33 @@ static uint8_t pca954x_read_byte(SMBusDevice *d)
-     return data;
- }
- 
-+static int pca954x_event(I2CSlave *s, enum i2c_event event)
-+{
-+    Pca954xState *state = PCA954X(s);
-+    Pca954xClass *mc = PCA954X_GET_CLASS(state);
++        self.wait_for_console_pattern(f'U-Boot {uboot}')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
++        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
++        self.wait_for_console_pattern(f'ASPEED {soc}')
++        self.wait_for_console_pattern('/init as init process')
++        # yosemite v4 does not emit the hostname log which is
++        # different from the other machines.
++        self.wait_for_console_pattern('yosemite4 login:')
 +
-+    int res = mc->parent_event(s, event);
++    def test_arm_ast2600_yosemitev4_openbmc(self):
++        image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
 +
-+    /*
-+     * When a channel is selected, it will become active after
-+     * a STOP condition has been placed on the I2C-bus.
-+     */
-+    if (mc->mux_enable && event == I2C_FINISH) {
-+        pca954x_enable_channel(state, state->control);
-+    }
-+    return res;
-+}
++        self.do_test_arm_aspeed_openbmc_no_network('fby4-bmc', image=image_path,
++                                        uboot='2019.04', cpu_id='0xf00',
++                                        soc='AST2600 rev A3')
 +
- static void pca954x_enter_reset(Object *obj, ResetType type)
- {
-     Pca954xState *s = PCA954X(obj);
-+    Pca954xClass *mc = PCA954X_GET_CLASS(s);
-     /* Reset will disable all channels. */
-     pca954x_write(s, 0);
-+
-+    if (mc->mux_enable) {
-+        pca954x_enable_channel(s, s->control);
-+    }
- }
- 
- I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
-@@ -172,6 +221,13 @@ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
-     return pca954x->bus[channel];
- }
- 
-+static void pca9544_class_init(ObjectClass *klass, const void *data)
-+{
-+    Pca954xClass *s = PCA954X_CLASS(klass);
-+    s->nchans = PCA9544_CHANNEL_COUNT;
-+    s->mux_enable = PCA9544_ENABLE;
-+}
-+
- static void pca9546_class_init(ObjectClass *klass, const void *data)
- {
-     Pca954xClass *s = PCA954X_CLASS(klass);
-@@ -221,8 +277,13 @@ static void pca954x_class_init(ObjectClass *klass, const void *data)
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     SMBusDeviceClass *k = SMBUS_DEVICE_CLASS(klass);
-+    Pca954xClass *s = PCA954X_CLASS(klass);
-+
-+    /* hook our parent event handler */
-+    s->parent_event = sc->event;
- 
-     sc->match_and_add = pca954x_match;
-+    sc->event = pca954x_event;
- 
-     rc->phases.enter = pca954x_enter_reset;
- 
-@@ -245,6 +306,11 @@ static const TypeInfo pca954x_info[] = {
-         .class_init    = pca954x_class_init,
-         .abstract      = true,
-     },
-+    {
-+        .name          = TYPE_PCA9544,
-+        .parent        = TYPE_PCA954X,
-+        .class_init    = pca9544_class_init,
-+    },
-     {
-         .name          = TYPE_PCA9546,
-         .parent        = TYPE_PCA954X,
-diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
-index 3dd25ec983..6449a6dfae 100644
---- a/include/hw/i2c/i2c_mux_pca954x.h
-+++ b/include/hw/i2c/i2c_mux_pca954x.h
-@@ -3,6 +3,7 @@
- 
- #include "hw/i2c/i2c.h"
- 
-+#define TYPE_PCA9544 "pca9544"
- #define TYPE_PCA9546 "pca9546"
- #define TYPE_PCA9548 "pca9548"
- 
++if __name__ == '__main__':
++    AspeedTest.main()
 -- 
 2.56.0
 

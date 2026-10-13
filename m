@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEC3BCC6B08
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C9CCA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:48:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY6e-0005JZ-TS; Tue, 13 Oct 2026 04:43:34 -0400
+	id 1xGY6e-0005FF-B2; Tue, 13 Oct 2026 04:43:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY46-0000Hb-HI
+ id 1xGY48-0000JQ-5w
  for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:57 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY42-00084N-CF
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:54 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-48b042c0759so1998412f8f.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:49 -0700 (PDT)
+ id 1xGY44-00085I-Nn
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:55 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-486e70f2457so1159821f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880849; x=1792485649; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880851; x=1792485651; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=NCZsMS7sqb9Y3VaE0qbPpa4SMwY97DnFRVA8VMcGapM=;
- b=SCdh7EQLbpai6/47uTSd+7jtTc1DsCEOpnfNBBn88v47SNHF72N+XFjzICv96vBm4n
- 3s6qDQNNTH3UFepPuLN4ThRC+MDnxf9D+zbNRVTGyhQdoVla3sJg42uaCJukH3Mn+4Sg
- xOkZARmegfrD8eFVyKW14SfZceW5EcNlBM83IeX4F01zTnxsd3Ty0zk73SLfEbXdcpUh
- 9ViXkH1Isvpt1ADzsqE/oQSJDhzamvXuwr2kagcwmZwIMRomzw6dzVjhGpslaqwrrrrm
- x0S61nQAptxC5OTXH73MZ6ZIafc4F8Plnqk6DHAWnFkSens+XKh3Sssvu/CuRdS6ccUh
- xqTQ==
+ bh=Q24yZtF6JH+M8UUja9cJN6DozeEXycsaupE/igqjcjo=;
+ b=JisIGbKBSqpFdIKAURsQBtwt5M+GJfzxnMX+/SUsJzbUSF2QVGpTz40yDWetAr/v9i
+ w4lIQJbdVQkyuAD8as+As9dU93XUdqS6e+qFRh0+ysAqQW3Y2H7dPUZ407OgVTom49Kk
+ ws4mCyumt6hxHAPSDDhkO3kdx24AdL8uP2FllMgn7ilEF2yu3dEpb8Ke9BBLgt/28i/e
+ upJdjN2PCXbVS8sq4IaKtWdwW7OJNJb/boujccz440m88kDI1Qb+UTCwY9jKVTficiPR
+ v5hDCCCp+KnI1wT9Hcw6gf5ibY3VMXHmRLJo55cP46Wdcm/k71pdmuaZkJnkM9ax65yH
+ v9zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880849; x=1792485649;
+ d=1e100.net; s=20260707; t=1791880851; x=1792485651;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=NCZsMS7sqb9Y3VaE0qbPpa4SMwY97DnFRVA8VMcGapM=;
- b=vB2ZHmVHl2nSMh5F2GBZNderOhYofNXjTV/apMpWRmMx64/kiJY1iHac/LLiQo/c6U
- tjuvXsHjj2/8Pr92dV6Wjp4AWWw/Yp4n4tLL3adW1RtCuoFfiu/4/GqOCgolzcXfeGdw
- 4APvUQPz06JhrJiu9b/3JtzhdvjRWyKcqZfF4P14BYN+5AOecEZw1hI706iu5xtQUrrK
- o/4YPFD/2BY3KVdaiYA2fa8aC2H1v2N0DRuQzKrPuf5Q7LfpvJCIF58zFk0JgW8vkKXs
- fUJ5OpAxPki5B8UwcMjancVA5pX4pPTHy6pawVfptuyAwz6US36vd/ueyQ56ZpyQNg1X
- gaAA==
-X-Gm-Message-State: AFq9FYKDplTbGrEB9Sd7rJucHv+MmLr0iiXNnSwmvtrhsJ0zM0eHW0fn
- NQFW0DZyCtX9SBxrnFlO+eKZJksDjbn/W66V439bl2WlkbfZsvr/+UZ5CipfZSjLCrIpk/AGa80
- FSF6xXvQ=
-X-Gm-Gg: AYBFou0EhJTxls6Z6TPeXeWQTH959uV4TI+Cn+8XnAv/VPwJqgshXwAIYg92aXJempj
- cPAQjEGh46DWg6DtFdH/q5578Sogix7SKLWdmABPVGMuNEzZa7gVk07ysEv1Hx8Z3H9+eP133Zx
- 1XOjJyqJVRcD95pXzxhoeE354BPC7XC2dWfqaQ3ckU5QYDQx7UTV5GztnJBpaRDT2O77MAYy4Wn
- VCUqeTzUetJFNvI2LDBadxBFVxRJVE2OAy51atjih+2Zd/d+S8dZ5PySBO57K/sG4Ta6gl8ZkqO
- /ZjQg1/RIi6f6fMepbFgSBbwnM9qEuzXs3dXg9PaGsn2YHw8YdrmTc1mr4mJYrE48buUaCTTe+r
- 1CVve5z6fTZkKX9pXKEJ1dJmfI7P4CqdoftN3KTPuZKFU667J5eCq8u1DP85ucOzxf35x3cT84W
- /ustEuX2TZYPnT/RqG2XuB54mQ6SFtHTgd20Pz2G2KEeMxrdfGEBwKsZ0ehpWhKnHEys0EyFur5
- YidGBwW1RhdXPmI+h721/5sQQvIHXXfGPvs4femqJVML9004yniF5pOFD1aRNAoObqh7P6dNrgd
- oQw=
-X-Received: by 2002:a05:600c:e557:20b0:49f:dd9f:6038 with SMTP id
- 5b1f17b1804b1-4a18e4bff94mr148687545e9.25.1791880848728; 
- Tue, 13 Oct 2026 01:40:48 -0700 (PDT)
+ bh=Q24yZtF6JH+M8UUja9cJN6DozeEXycsaupE/igqjcjo=;
+ b=Gk9JgpUy5+R1SCzxhIyzBXTqLG8L2idncy10QysepHI1D4FtaPia7yfkP2sHsV+TIX
+ EL2+r5aiJimOt2orR80LPgJhMXVHqsOLVk0ksvsQynQkwVjKCZyNjORJd7HJTuKvZ1p6
+ +j4ImtJaMabQvy9E6nY/+V6h+s45ITQxFLu40YYYGJvJh5Dbh+0+AMqOOeV6uBWOlJKO
+ pkW/8d2j3Mk3n4hHXrmNdk1nAVnX3zA1sfCfEVLCqDa+74kNjRgqM9g6gTVqlTNdWxDI
+ aOjU+Cc3/Psyu7j4qmKUl8k93xoytjCVhBiyb+OHSZDENV9EOe4yvtuN8hlqCNaD6MUQ
+ pQKA==
+X-Gm-Message-State: AFq9FYI7S/YEFf/KQbjFQZeiRDUHuOAOKKm+Fe0siS9lxR4+XwhiQq4k
+ Q7qYEcopwTPGBO9on4lw1GKkjqB0DL8gGQ74wxzPp9I2NapMu9fKyq5aL4t81508jtCaCsrbsp3
+ C4ZjGx3w=
+X-Gm-Gg: AYBFou1fzhUnKc69eJm1iliTjyAUrfa86Q07incQCb7nQDmjZyIeqsE+SS6ieRRMHfk
+ 6h6bk0b3Leh8f/4InIDeFpOtiREdIy0p41D1SoVP/9FKI41eyTnTFDwpR+ndMh0fAw2gGpiWnlX
+ A4tAzE1gCh5QKSJkkGKkZKhqSJuCKK0iahgwHHwjXWLHdKsPzLH8FqHQn+upPCtXyy6vh2B3OiL
+ o4VBrZIiSkjaK3VTleU9zEy2yaDHHzRMDcOFFR4gKYCXwBCdqCeAwqt3r3csOdNxbt1wmlLhEUn
+ xhphEFMy9JhxP2SVr3NGJPAJUEbaT3P5rmyCyj7iLuvaY90/5w0afB1fTp+dN/fQ+jRMyniD4PQ
+ IAIt9yHl7C8MmMu4hHenGhWqCzRt6+kdQ55KPOesMbn3yL43EYthQTna3shC7OlB+Wh8Um7JoUU
+ fy9a1ainxLoAQEDYsXmQ7Mk3xOnI/RqztD9Dk/3ZG6fYYVjkVM1xZRSO/gmnlloX4wGG3uekMLO
+ T6KBfFK8qRgTRXP6G8C72D78bqcVbEnIYsiq7W9RuXPLQd+JuNrKTxOK6I55rE9A5QogRHPOBpb
+ ZN1z
+X-Received: by 2002:a05:600c:c107:b0:4a1:875b:8be4 with SMTP id
+ 5b1f17b1804b1-4a193f3b3a4mr144753915e9.8.1791880850917; 
+ Tue, 13 Oct 2026 01:40:50 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.47
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:47 -0700 (PDT)
+ Tue, 13 Oct 2026 01:40:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 55/86] hw/intc/arm_gicv5: Implement IRS_VMAP_L2_VMTR
-Date: Tue, 13 Oct 2026 09:39:02 +0100
-Message-ID: <20261013083933.1024405-56-peter.maydell@linaro.org>
+Subject: [PATCH 57/86] hw/intc/arm_gicv5: Factor out code to fill in a
+ GICv5ISTConfig
+Date: Tue, 13 Oct 2026 09:39:04 +0100
+Message-ID: <20261013083933.1024405-58-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,229 +103,225 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The IRS_VMAP_L2_VMTR register allows the guest to make a level 2 VM
-table valid.  It's similar to what the IRS_MAP_L2_ISTR register does
-for the IST, but it's 64 bits, and so it is R/W and has an M bit for
-"actually do the operation" so that the guest can write it as two 32
-bit halves.  Since we don't cache anything yet, all the "make valid"
-operation needs to do is write to the VALID bit in the L1 table entry
-in guest memory.
+irs_ist_baser_write() has code that fills in a GICv5ISTConfig based
+on various register fields, including sanitizing uses of reserved
+values, enforcing minimum and maximum values, and pre-calculating how
+many bits index the L2 table.
+
+We will want exactly the same logic for setting up GICv5ISTConfig
+structs for a VM's LPI and SPI IST structures based on the fields in
+the L2 VMTE.  Factor out the "fill in the GICv5ISTConfig" code to a
+separate function that we can call.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c                | 110 ++++++++++++++++++++++++++++-
- hw/intc/arm_gicv5_common.c         |   1 +
- include/hw/intc/arm_gicv5_common.h |   1 +
- include/hw/intc/arm_gicv5_regs.h   |   9 +++
- 4 files changed, 120 insertions(+), 1 deletion(-)
+ hw/intc/arm_gicv5.c | 181 ++++++++++++++++++++++++--------------------
+ 1 file changed, 100 insertions(+), 81 deletions(-)
 
 diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index e12b73dcefe..a81f7803ca5 100644
+index f03b790cf41..8cf7e363f29 100644
 --- a/hw/intc/arm_gicv5.c
 +++ b/hw/intc/arm_gicv5.c
-@@ -49,7 +49,6 @@ static const char *inttype_name(GICv5IntType t)
-     return names[t];
+@@ -976,6 +976,96 @@ void gicv5_deactivate(GICv5Common *cs, uint32_t id, GICv5Domain domain,
+     irs_recalc_hppi(s, domain, iaffid);
  }
  
++static void initialize_ist_config(GICv5Common *cs, GICv5Domain domain,
++                                  GICv5ISTConfig *cfg,
++                                  hwaddr base,
++                                  uint8_t id_bits, uint8_t istsz, uint8_t l2sz,
++                                  bool structure)
++{
++    uint8_t istbits, l2bits, l2_idx_bits;
++    int tableszbits;
++
++    switch (istsz) {
++    case 0:
++    case 3: /* reserved: acts like the minimum required size */
++        istbits = 2;
++        break;
++    case 1:
++        istbits = 3;
++        break;
++    case 2:
++        istbits = 4;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    switch (l2sz) {
++    case 0:
++    case 3: /* reserved; CONSTRAINED UNPREDICTABLE */
++        l2bits = 12; /* 4K: 12 bits */
++        break;
++    case 1:
++        l2bits = 14; /* 16K: 14 bits */
++        break;
++    case 2:
++        l2bits = 16; /* 64K: 16 bits */
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    /*
++     * Calculate how many bits of an ID index the L2 table
++     * (e.g. if we need 14 bits to index each byte in a 16K L2 table,
++     * but each entry is 4 bytes wide then we need 14 - 2 = 12 bits
++     * to index an entry in the table).
++     */
++    l2_idx_bits = l2bits - istbits;
++    cfg->base = base;
++    cfg->txattrs = irs_txattrs(cs, domain);
++    cfg->id_bits = id_bits;
++    cfg->istsz = 1 << istbits;
++    cfg->l2_idx_bits = l2_idx_bits;
++    cfg->l2bits = l2bits;
++    cfg->structure = structure;
++
++    /*
++     * Bits [N:0] of the base addr are ignored, to enforce that in a
++     * 1-level IST it is aligned to the size of the ISTE array,
++     * and in a 2-level IST it is aligned to the size of the L1 table.
++     * The spec defines N in terms of the raw L2SZ, ISTSZ and LPI_ID_BITS
++     * fields, but we have already sanitized these to
++     *  istbits = ISTSZ + 2
++     *  l2bits = (L2SZ * 2) + 12
++     *  id_bits = LPI_ID_BITS
++     * We have also already enforced the "bottom 6 bits are 0" via
++     * the fixed field mask, so can skip the Max() operation.
++     * We want tableszbits == the number of bits to zero, which is N + 1.
++     */
++    if (cfg->structure) {
++        /*
++         * L1 table is indexed by the (id_bits - l2_idx_bits) bits in
++         * the ID, so has 2^(id_bits - l2_idx_bits) entries, and each
++         * entry is 8 bytes == 2^3.
++         */
++        tableszbits = id_bits - l2_idx_bits + 3;
++    } else {
++        /* table has 2^id_bits entries of 2^istbits size each */
++        tableszbits = id_bits + istbits;
++    }
++    cfg->base &= ~MAKE_64BIT_MASK(0, tableszbits);
++
++    if (!cfg->lpi_cache) {
++        /*
++         * Keys are GINT_TO_POINTER(intid), so we want the g_direct_hash
++         * and g_direct_equal hash and equality functions. We don't
++         * want to free the keys, but we do want to free the values
++         * (which are pointer-to-uint32_t).
++         */
++        cfg->lpi_cache = g_hash_table_new_full(NULL, NULL, NULL, g_free);
++    }
++    cfg->valid = true;
++}
++
+ static void irs_map_l2_istr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+ {
+     GICv5Common *cs = ARM_GICV5_COMMON(s);
+@@ -1086,92 +1176,21 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+          * sanitize the reserved values, and expand fields out into byte counts.
+          */
+         GICv5ISTConfig *cfg = &s->phys_lpi_config[domain];
+-        uint8_t istbits, l2bits, l2_idx_bits;
+-        int tableszbits;
++        hwaddr base = cs->irs_ist_baser[domain] & R_IRS_IST_BASER_ADDR_MASK;
+         uint8_t id_bits = FIELD_EX64(cs->irs_ist_cfgr[domain],
+                                      IRS_IST_CFGR, LPI_ID_BITS);
+-        id_bits = MIN(MAX(id_bits, QEMU_GICV5_MIN_LPI_ID_BITS), QEMU_GICV5_ID_BITS);
 -
- #define IRS_DEVARCH_VALUE ((0x23b << 31) | (0x1 << 20) | 0x5a19)
+-        switch (FIELD_EX64(cs->irs_ist_cfgr[domain], IRS_IST_CFGR, ISTSZ)) {
+-        case 0:
+-        case 3: /* reserved: acts like the minimum required size */
+-            istbits = 2;
+-            break;
+-        case 1:
+-            istbits = 3;
+-            break;
+-        case 2:
+-            istbits = 4;
+-            break;
+-        default:
+-            g_assert_not_reached();
+-        }
+-        switch (FIELD_EX64(cs->irs_ist_cfgr[domain], IRS_IST_CFGR, L2SZ)) {
+-        case 0:
+-        case 3: /* reserved; CONSTRAINED UNPREDICTABLE */
+-            l2bits = 12; /* 4K: 12 bits */
+-            break;
+-        case 1:
+-            l2bits = 14; /* 16K: 14 bits */
+-            break;
+-        case 2:
+-            l2bits = 16; /* 64K: 16 bits */
+-            break;
+-        default:
+-            g_assert_not_reached();
+-        }
+-        /*
+-         * Calculate how many bits of an ID index the L2 table
+-         * (e.g. if we need 14 bits to index each byte in a 16K L2 table,
+-         * but each entry is 4 bytes wide then we need 14 - 2 = 12 bits
+-         * to index an entry in the table).
+-         */
+-        l2_idx_bits = l2bits - istbits;
+-        cfg->base = cs->irs_ist_baser[domain] & R_IRS_IST_BASER_ADDR_MASK;
+-        cfg->txattrs = irs_txattrs(cs, domain),
+-        cfg->id_bits = id_bits;
+-        cfg->istsz = 1 << istbits;
+-        cfg->l2_idx_bits = l2_idx_bits;
+-        cfg->l2bits = l2bits;
+-        cfg->structure = FIELD_EX64(cs->irs_ist_cfgr[domain],
++        uint8_t istsz = FIELD_EX64(cs->irs_ist_cfgr[domain],
++                                   IRS_IST_CFGR, ISTSZ);
++        uint8_t l2sz = FIELD_EX64(cs->irs_ist_cfgr[domain],
++                                  IRS_IST_CFGR, L2SZ);
++        bool structure = FIELD_EX64(cs->irs_ist_cfgr[domain],
+                                     IRS_IST_CFGR, STRUCTURE);
  
- static uint32_t gicv5_idreg(int regoffset)
-@@ -489,6 +488,19 @@ static void put_l2_iste(GICv5Common *cs, const GICv5ISTConfig *cfg,
-     write_l2_iste_mem(cs, cfg, h->l2_iste_addr, h->l2_iste);
- }
+-        /*
+-         * Bits [N:0] of the base addr are ignored, to enforce that in a
+-         * 1-level IST it is aligned to the size of the ISTE array,
+-         * and in a 2-level IST it is aligned to the size of the L1 table.
+-         * The spec defines N in terms of the raw L2SZ, ISTSZ and LPI_ID_BITS
+-         * fields, but we have already sanitized these to
+-         *  istbits = ISTSZ + 2
+-         *  l2bits = (L2SZ * 2) + 12
+-         *  id_bits = LPI_ID_BITS
+-         * We have also already enforced the "bottom 6 bits are 0" via
+-         * R_IRS_IST_BASER_ADDR_MASK, so can skip the Max() operation.
+-         * We want tableszbits == the number of bits to zero, which is N + 1.
+-         */
+-        if (cfg->structure) {
+-            /*
+-             * L1 table is indexed by the (id_bits - l2_idx_bits) bits in
+-             * the ID, so has 2^(id_bits - l2_idx_bits) entries, and each
+-             * entry is 8 bytes == 2^3.
+-             */
+-            tableszbits = id_bits - l2_idx_bits + 3;
+-        } else {
+-            /* table has 2^id_bits entries of 2^istbits size each */
+-            tableszbits = id_bits + istbits;
+-        }
+-        cfg->base &= ~MAKE_64BIT_MASK(0, tableszbits);
++        id_bits = MIN(MAX(id_bits, QEMU_GICV5_MIN_LPI_ID_BITS), QEMU_GICV5_ID_BITS);
++
++        initialize_ist_config(cs, domain, cfg, base, id_bits,
++                              istsz, l2sz, structure);
  
-+static hwaddr l1_vmte_addr(GICv5Common *cs, const GICv5VMTConfig *cfg,
-+                           uint32_t vmid)
-+{
-+    /*
-+     * In a 2-level VMT configuration, return the address of the L1
-+     * VMT entry for this VM ID.  The bottom VMT_L2_IDX_BITS of the
-+     * ID value are the index into the L2 table, and the higher bits
-+     * of the ID index the L1 table. The L1 table entries are 8 bytes.
-+     */
-+    uint32_t l1_index = vmid >> VMT_L2_IDX_BITS;
-+    return cfg->base + (l1_index * 8);
-+}
-+
- void gicv5_set_priority(GICv5Common *cs, uint32_t id, uint8_t priority,
-                         GICv5Domain domain, GICv5IntType type, bool virtual)
- {
-@@ -1249,6 +1261,62 @@ static void irs_vmt_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-     }
- }
- 
-+static void irs_vmap_l2_vmtr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-+{
-+    GICv5Common *cs = ARM_GICV5_COMMON(s);
-+    GICv5VMTConfig *cfg = &s->vmt_config[domain];
-+    uint32_t vmid = FIELD_EX64(value, IRS_VMAP_L2_VMTR, VM_ID);
-+    bool m = FIELD_EX64(value, IRS_VMAP_L2_VMTR, M);
-+    hwaddr l1_addr;
-+    uint64_t l1_vmte;
-+    MemTxResult res;
-+
-+    if (!gicv5_domain_has_virt(cs, domain) || !cfg->valid || !cfg->structure) {
-+        /*
-+         * The whole register is RAZ/WI if no virt, or if the VM
-+         * table is invalid or not 2 level.
-+         */
-+        return;
-+    }
-+
-+    /*
-+     * Otherwise, write to the register. The M bit is WO/UNKNOWN,
-+     * and we make sure it is 0, so that a 32-bit write to the low
-+     * half of the register never appears to have the M bit set.
-+     */
-+    cs->irs_vmap_l2_vmtr[domain] = value & ~R_IRS_VMAP_L2_VMTR_M_MASK;
-+
-+    if (!m || vmid >= (1 << cfg->vm_id_bits)) {
-+        /*
-+         * If guest didn't actually ask to make the L2 table valid, or
-+         * the ID is out of range, do nothing except the register update.
-+         */
-+        return;
-+    }
-+
-+    /* Find the relevant L1 VMTE and set its VALID bit */
-+    l1_addr = l1_vmte_addr(cs, cfg, vmid);
-+
-+    l1_vmte = address_space_ldq_le(&cs->dma_as, l1_addr, cfg->txattrs, &res);
-+    if (res != MEMTX_OK) {
-+        goto txfail;
-+    }
-+
-+    l1_vmte = FIELD_DP64(l1_vmte, L1_VMTE, VALID, 1);
-+
-+    address_space_stq_le(&cs->dma_as, l1_addr, l1_vmte, cfg->txattrs, &res);
-+    if (res != MEMTX_OK) {
-+        goto txfail;
-+    }
-+
-+    return;
-+
-+txfail:
-+    /* Reportable with EC=0x0 if sw error reporting implemented */
-+    qemu_log_mask(LOG_GUEST_ERROR, "L1 VMTE update failed for VMID 0x%x at "
-+                  "physical address 0x" HWADDR_FMT_plx "\n", vmid, l1_addr);
-+}
-+
- static void spi_sample(GICv5SPIState *spi)
- {
-     /*
-@@ -1386,6 +1454,24 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-             *data = 0;
-         }
-         return true;
-+    case A_IRS_VMAP_L2_VMTR:
-+        if (gicv5_domain_has_virt(cs, domain) &&
-+            s->vmt_config[domain].valid && s->vmt_config[domain].structure) {
-+            *data = extract64(cs->irs_vmap_l2_vmtr[domain], 0, 32);
-+        } else {
-+            /* RAZ/WI if no virt or no VM table or VM table not 2 level */
-+            *data = 0;
-+        }
-+        return true;
-+    case A_IRS_VMAP_L2_VMTR + 4:
-+        if (gicv5_domain_has_virt(cs, domain) &&
-+            s->vmt_config[domain].valid && s->vmt_config[domain].structure) {
-+            *data = extract64(cs->irs_vmap_l2_vmtr[domain], 32, 32);
-+        } else {
-+            /* RAZ/WI if no virt or no VM table or VM table not 2 level */
-+            *data = 0;
-+        }
-+        return true;
-     case A_IRS_SPI_STATUSR:
-         /*
-          * QEMU writes to IRS_SPI_{CFGR,DOMAINR,SELR,VMR} take effect
-@@ -1508,6 +1594,16 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
-             }
-         }
-         return true;
-+    case A_IRS_VMAP_L2_VMTR:
-+        irs_vmap_l2_vmtr_write(s, domain,
-+                               deposit64(cs->irs_vmap_l2_vmtr[domain],
-+                                         0, 32, data));
-+        return true;
-+    case A_IRS_VMAP_L2_VMTR + 4:
-+        irs_vmap_l2_vmtr_write(s, domain,
-+                               deposit64(cs->irs_vmap_l2_vmtr[domain],
-+                                         32, 32, data));
-+        return true;
-     case A_IRS_SPI_SELR:
-         cs->irs_spi_selr[domain] = data;
-         return true;
-@@ -1599,6 +1695,15 @@ static bool config_readll(GICv5 *s, GICv5Domain domain, hwaddr offset,
-             *data = 0;
-         }
-         return true;
-+    case A_IRS_VMAP_L2_VMTR:
-+        if (gicv5_domain_has_virt(cs, domain) &&
-+            s->vmt_config[domain].valid && s->vmt_config[domain].structure) {
-+            *data = cs->irs_vmap_l2_vmtr[domain];
-+        } else {
-+            /* RAZ/WI if no virt or no VM table or not 2-level */
-+            *data = 0;
-+        }
-+        return true;
-     }
- 
-     return false;
-@@ -1614,6 +1719,9 @@ static bool config_writell(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     case A_IRS_VMT_BASER:
-         irs_vmt_baser_write(s, domain, data);
-         return true;
-+    case A_IRS_VMAP_L2_VMTR:
-+        irs_vmap_l2_vmtr_write(s, domain, data);
-+        return true;
-     }
- 
-     return false;
-diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
-index 6a9d727bb65..945257fef2c 100644
---- a/hw/intc/arm_gicv5_common.c
-+++ b/hw/intc/arm_gicv5_common.c
-@@ -108,6 +108,7 @@ static void gicv5_common_reset_hold(Object *obj, ResetType type)
-     if (cs->has_virt) {
-         memset(cs->irs_vmt_baser, 0, sizeof(cs->irs_vmt_baser));
-         memset(cs->irs_vmt_cfgr, 0, sizeof(cs->irs_vmt_cfgr));
-+        memset(cs->irs_vmap_l2_vmtr, 0, sizeof(cs->irs_vmap_l2_vmtr));
-     }
- }
- 
-diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
-index fb88c39e8b4..19700c7d5e3 100644
---- a/include/hw/intc/arm_gicv5_common.h
-+++ b/include/hw/intc/arm_gicv5_common.h
-@@ -91,6 +91,7 @@ struct GICv5Common {
-     uint32_t irs_pe_selr[NUM_GICV5_DOMAINS];
-     uint64_t irs_vmt_baser[NUM_GICV5_DOMAINS];
-     uint32_t irs_vmt_cfgr[NUM_GICV5_DOMAINS];
-+    uint64_t irs_vmap_l2_vmtr[NUM_GICV5_DOMAINS];
- 
-     /*
-      * Pointer to an array of state information for the SPIs.  Array
-diff --git a/include/hw/intc/arm_gicv5_regs.h b/include/hw/intc/arm_gicv5_regs.h
-index 1d0fb8b147e..d675a10c37f 100644
---- a/include/hw/intc/arm_gicv5_regs.h
-+++ b/include/hw/intc/arm_gicv5_regs.h
-@@ -270,6 +270,15 @@ FIELD(L2_ISTE, HWU, 9, 2)
- FIELD(L2_ISTE, PRIORITY, 11, 5)
- FIELD(L2_ISTE, IAFFID, 16, 16)
- 
-+FIELD(L1_VMTE, VALID, 0, 1)
-+FIELD(L1_VMTE, L2_ADDR, 12, 44)
-+
-+/*
-+ * L2 VMTEs are always 32 bytes, and the L2 table is always 4KB,
-+ * so the lower 7 bits in a VM ID index the L2 table.
-+ */
-+#define VMT_L2_IDX_BITS 7
-+
- /*
-  * Format used for gicv5_request_config() return value, which matches
-  * the ICC_ICSR_EL1 bit layout.
+-        if (!cfg->lpi_cache) {
+-            /*
+-             * Keys are GINT_TO_POINTER(intid), so we want the g_direct_hash
+-             * and g_direct_equal hash and equality functions. We don't
+-             * want to free the keys, but we do want to free the values
+-             * (which are pointer-to-uint32_t).
+-             */
+-            cfg->lpi_cache = g_hash_table_new_full(NULL, NULL, NULL, g_free);
+-        }
+-        cfg->valid = true;
+         trace_gicv5_ist_valid(domain_name[domain], cfg->base, cfg->id_bits,
+                               cfg->l2_idx_bits, cfg->istsz, cfg->structure);
+         irs_recalc_hppi_all_cpus(s, domain);
 -- 
 2.43.0
 

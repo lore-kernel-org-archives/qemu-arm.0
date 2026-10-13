@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C7F4CC6B10
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:47:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2738FCA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:47:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY6C-0003jX-CZ; Tue, 13 Oct 2026 04:43:04 -0400
+	id 1xGY8b-0007mU-Lt; Tue, 13 Oct 2026 04:45:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY4F-0000WG-LD
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:04 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1xGY4K-0000j1-BW
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:08 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY4C-00088H-GN
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:03 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4a180fbeef5so24335195e9.1
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:41:00 -0700 (PDT)
+ id 1xGY4H-0008C3-Km
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:08 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4998b5a63e2so26712495e9.1
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:41:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880859; x=1792485659; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880864; x=1792485664; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=Hv2b30aoeb/vVaLxh8kGllfwSe/dat19ne3H7Em9MoA=;
- b=W2hrRBsZpmAyZ2b1z+XPfOqQFt8HdWQt6tu357k6OdNFMXkBa/HFwxYbwVv1v5cu4a
- bdTZt6nH2/wa+o/SR0YhQ90QHSakyF11FTq2td21p9CatRNPfb29dEm1cFOKm5SuwxsD
- 30BW7GfEasA51i6B44MSyztwmClAdrL2hAVulqx3Rcc6Gj85uodvcO1Qb8Hh9rs4r84z
- 1JREZrRLPzjeDSSNE1ON3o2hDFyWTdx0jKq0/I9eQtaELDzWPHH2PpE4vVWLG4Rhu8Eo
- eD3xjcREnDO7Xj+TmTPvIsD+OZUqA9tuJTSxnNgzzXHpBiyVugLB5nfev4QXZAcnjTuP
- OYFw==
+ bh=eQNIdAvJC1ZfTaJFOVCOusHjVQCsOoyi8FgUc8+Bmwg=;
+ b=Y/MOVzz55BlB3/QZht+ezX3th8qX83xVmnjQADy7ajPZQmxHspiyBEVZdhulGUlJUs
+ w1m5SDlkd2q7MKyJDpIGRkl18ZM9Zg7fYQ/k6rRSonjMNX2fkAMgUpci++RASkMMcplQ
+ Y7o34mcfzaDLVbMWGSKiVRNOocajvn5GG9YnLhGCGi5QTHxp54F8Ho3lJCECzCbbJnLe
+ 25hZ/H0qeocvJLhq8MehSIrz9UpXHKOZJ5ZBOG87FhvbVI61J3xCXR7bprHpOi4U0rUx
+ oXKhdKKInIb8tTQSQ1IlniAjb9bFAuR4WV0VR4dTc5ebesfzr530Dt3OTlfN81EM7RXM
+ ojGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880859; x=1792485659;
+ d=1e100.net; s=20260707; t=1791880864; x=1792485664;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=Hv2b30aoeb/vVaLxh8kGllfwSe/dat19ne3H7Em9MoA=;
- b=tp1L+qSqeeTRBcTUUNlWWMtseg6mvcBEAsX+AKamKUnKHSvuJVIwxJEUNY8SId/q3j
- 4aooFLIRULP/6KKz2Uq9a3pwE9UmFNmb5aNz1fXO00mqSXz3vSvfgPqlC5lywZJkm0oJ
- 5X+/ZGARQyWMkDCGyXjCqeH5PYEqC1BAQ1ecKGshWPjBKDwvinNl2+Hc6eVO+jJ9hqZj
- i7jtPLb3bhkAJz4rtqcwG5i5gM6v3MRNIOseJceHDtPSDA+QHTww/NElLXfTbZJ9s+yP
- 0RRVOo9t1UrGqCyNai/DdwJ7W7qUzq8EitVND6cPJQt6SEq2VfZ97JGC1Jg3Co7zFmLh
- vUCQ==
-X-Gm-Message-State: AFq9FYJjs7dGnOkOy14Il74Ctb84p6N3wx8a0XiWcx+kb5dEhDptGcWP
- XeMDSsqSRoyIIYCPDDQ5b0q1NdkAVUwbuF9t+Kj3/p0Qr8wSK96Q31Nh1PbshLXaQH9mFYHBJcM
- MwomWsbU=
-X-Gm-Gg: AYBFou12pG98dxiIbP5xPt5ZGO/RBnBhonRI1TLBuKqNRqzCtECs1AWvoh83IJYPxm1
- jduGFxFuVCBkZZZUi7Ur4bKIwsUvPmdUpU7K3yKeOYWf04WNDGK1iqNMqXUR7Mh8q0gFWNZgckg
- O8svwOWhdv5Sto2/R9WyJnmTXtqaeOIKl6NAKSECXCzFMzhUAyod+8+zabFdpT2XDsvWjp/glfB
- ET2KwwYuMqfMsOhtttbB9GAqx1VIh3sqz3ayB2qJYV6wurQ87xX0PZlaaah47lOz0tpeJahrvRe
- WdTIs2N7jPYN7b+qdPzs9vGkoL8+FXI7UZwoKrz2WFFfi/xWHH6y9+T3Q5WKlq4yGycRCv3i0/Z
- 62S8fX7p/Skb0D9HdIMmublPg0Sp7eJmjCfTbXIoG4ckL5MWPVlmf/3f7OxWGi50ei0LJ+vz37q
- 2+bWBok0wMIffI5/tkjD++Pd+DO/Lk+vkT3L4jX3jJriD6O/IWUKc42H3mmjFVu5BZQTUul7oPe
- l/4psQhI3v45DqVdBrzO0FX2GlvQBHWwcfLXICZh4dkjUYG0kaa+h3mDdFLqEv7UpqaQMHzJwGd
- sps=
-X-Received: by 2002:a05:600c:6097:b0:49f:bd3c:bc24 with SMTP id
- 5b1f17b1804b1-4a18e4b8885mr219396175e9.31.1791880858916; 
- Tue, 13 Oct 2026 01:40:58 -0700 (PDT)
+ bh=eQNIdAvJC1ZfTaJFOVCOusHjVQCsOoyi8FgUc8+Bmwg=;
+ b=cWlDjp7rdjmn8CPwxjDDhFzp8rCj/zqZ7eMv2ZEuuYvrB/kcC8J9gHJdUfq0QzQG+s
+ kvatx4cdTqzIP4W1f6jHmkD2ByG2j3aZlRSuwJCEYkDbrXiisBmSHMQkJ6egG/KnQYw7
+ N2LZRGJYy1FS3zU72DFMHlnw9fNlg3YBPqS1fKe5q4JaFQBOcr3OWlRWmKafk/NPUTTV
+ z7q7zAKdI1wVoEoLcXrqdrkKqrlcUoNKoGwIhNnw+MUt2RfG/TplyiN/THKi9pr/mXHP
+ SP2YSCQOoCtwRcanxMAMn6/9chwR1tXulva3SVoHJEBYKWUTivwyX7hE58a8MG5Y8LG3
+ uZkQ==
+X-Gm-Message-State: AFq9FYKm6kh6uAgAcQjzY82Vkc669lROWtlKw64XXorM3gTXEA7JNO0M
+ LaiGzuc/zj4x5c9jKfWC7+Kvtw1er91zIUSAeKiTD9F/Ff0+8sex3D1xI+iUkAZqMqprc+waUyC
+ tvlX4II4=
+X-Gm-Gg: AYBFou3euW8lFKO23FTnxkXXOJ/YnImmqBYxAej02kPfAxhD1vR51Pw2iSUfvX7ZeIR
+ h7ogwNVB1t+Ay2JSAy1vB8gWlQb8WA5gvwSc9kv/FBMwiT9CoAa5auJuH+YC0/tIx/D1N9eMNg7
+ WrNfknFCiWFmo2x4ra93Bjs+RBephPFnb1ffLn4gofDXYfcv8d9LYu5eijWRhVqk71D9IN5QztT
+ jUppjFGCSVvCDpPZgIMXJtruaUcVu+DC3/fLvoRRVVWwYgnm4Zc4W+hBeR8ECDNl0bm0JJvwWq7
+ OIiNe244avj9yS9NVpbiqjk5iGVS6kLZx8Y4TkogA7DiIN9AY2noprkrjTf1uClCPO8RjRm9yVc
+ qFSfeaBZSs3BizCduoTx3AowDtr6VabllPzWAhBZnB1bUpo/9PhF/9B9Vx3P75rZJHnmFxxVwPX
+ qSKIYCoGayiWdZ08mjic1YulbTtpVqy8c9sQRWsI7swAb3XGk5E8FZnKhlbCxc+xVGZW4t+zb1P
+ mC/H8HnF1O12eS0T1RIXzTGm5U1VjmRaQj4lkwGQcgv0vvgd0Ui5g5DWqV46hAjnQ6P+JcLsjqN
+ rLE=
+X-Received: by 2002:a05:600c:19cf:b0:4a0:168f:d962 with SMTP id
+ 5b1f17b1804b1-4a18e44363dmr226246925e9.3.1791880864055; 
+ Tue, 13 Oct 2026 01:41:04 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.57
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.41.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:58 -0700 (PDT)
+ Tue, 13 Oct 2026 01:41:02 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 64/86] hw/intc/arm_gicv5: Implement IRS_VMAP_VPER
-Date: Tue, 13 Oct 2026 09:39:11 +0100
-Message-ID: <20261013083933.1024405-65-peter.maydell@linaro.org>
+Subject: [PATCH 68/86] hw/intc/arm_gicv5: Implement gicv5_set_resident()
+Date: Tue, 13 Oct 2026 09:39:15 +0100
+Message-ID: <20261013083933.1024405-69-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,188 +102,249 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The IRS_VMAP_VPER allows software to mark a VPE as valid if
-it was not originally valid when the VM was created. For us
-this means updating the valid bit in our cached VPE struct
-and in the VPE table in guest memory.
+When the GICv5 CPU interface wants to make a VPE resident, it calls
+gicv5_set_resident(). Currently that is a do-nothing placeholder;
+implement the required behaviour of tracking on the IRS side that
+the VPE is resident on this CPU, and remembering the information
+about the doorbell interrupt.
+
+For each CPU, we keep a note of the current VPE that is resident (if
+any), so we have an easy way to get to that information given the CPU
+index in functions like gicv5_set_priority().  Since the only way to
+make a VPE invalid is to make the entire VM invalid, we only need to
+set this info in gicv5_set_resident() and then clear it when a VM
+becomes invalid or the whole VM table is made invalid.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c                | 94 ++++++++++++++++++++++++++++++
- hw/intc/arm_gicv5_common.c         |  1 +
- hw/intc/trace-events               |  1 +
- include/hw/intc/arm_gicv5_common.h |  1 +
- 4 files changed, 97 insertions(+)
+ hw/intc/arm_gicv5.c         | 115 +++++++++++++++++++++++++++++++++++-
+ hw/intc/trace-events        |   2 +
+ include/hw/intc/arm_gicv5.h |   5 ++
+ 3 files changed, 120 insertions(+), 2 deletions(-)
 
 diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index c3d824f045b..e762c058a98 100644
+index 18ca7034011..01ee303d393 100644
 --- a/hw/intc/arm_gicv5.c
 +++ b/hw/intc/arm_gicv5.c
-@@ -1890,6 +1890,65 @@ static void irs_vmap_l2_vistr_write(GICv5 *s, GICv5Domain domain,
-     map_l2_istr(cs, vist, intid);
- }
+@@ -29,11 +29,13 @@ typedef struct VMTE VMTE;
+ typedef struct VPE {
+     VMTE *vmte;
+     hwaddr vped_addr;
++    uint32_t cpuidx; /* CPU we're currently resident on */
+     uint32_t db_intid; /* doorbell interrupt ID */
+     uint8_t dbpm; /* doorbell priority mask */
+     bool valid; /* is the VPE valid? */
+     bool db_valid; /* are doorbell settings valid? */
+     bool db_req; /* is a doorbell requested? */
++    bool resident; /* is VPE resident on some CPU? */
+ } VPE;
  
-+static void irs_vmap_vper_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-+{
-+    GICv5Common *cs = ARM_GICV5_COMMON(s);
-+    GICv5VMTConfig *cfg = &s->vmt_config[domain];
-+    bool m = FIELD_EX64(value, IRS_VMAP_VPER, M);
-+    uint32_t vmid = FIELD_EX64(value, IRS_VMAP_VPER, VM_ID);
-+    uint32_t vpeid = FIELD_EX64(value, IRS_VMAP_VPER, VPE_ID);
+ /* In the GICv5VMTConfig::vm_cache this is how we store VMTE info */
+@@ -1182,8 +1184,89 @@ bool gicv5_set_resident(GICv5Common *cs, GICv5Domain domain, bool valid,
+                         uint32_t vpeid, bool db, uint8_t dbpm, uint32_t vmid,
+                         uint32_t cpuidx)
+ {
+-    /* Until we implement virtualization, SetResident always fails */
+-    return true;
 +    VMTE *vmte;
-+    hwaddr vpete_addr;
-+    MemTxResult res;
-+    uint64_t vpete;
++    VPE *vpe;
++    GICv5 *s = ARM_GICV5(cs);
++    GICv5VMTConfig *cfg = &s->vmt_config[domain];
++
++    assert(cpuidx < cs->num_cpus);
 +
 +    if (!gicv5_domain_has_virt(cs, domain) || !cfg->valid) {
-+        /* Whole register RAZ/WI if no virt or no VM table */
-+        return;
++        return true;
 +    }
 +
-+    /* M bit is WO/UNKNOWN; write the other fields */
-+    cs->irs_vmap_vper[domain] = value & ~R_IRS_VMAP_VPER_M_MASK;
-+
-+    /* M = 0 and bad VMID must be ignored */
-+    if (!m || vmid >= (1 << cfg->vm_id_bits)) {
-+        return;
-+    }
-+
-+    vmte = g_hash_table_lookup(cfg->vm_cache, GINT_TO_POINTER(vmid));
-+    if (!vmte) {
-+        /* VM is not valid */
-+        return;
-+    }
-+
-+    if (vpeid >= (1 << vmte->vpe_id_bits) || vmte->vpet[vpeid].valid) {
-+        /* Invalid VPE ID, VPE already valid */
-+        return;
-+    }
-+
-+    vpete_addr = vmte->vpet_addr + vpeid * 8;
-+    vpete = address_space_ldq_le(&cs->dma_as, vpete_addr, cfg->txattrs, &res);
-+    if (res != MEMTX_OK) {
-+        goto txfail;
-+    }
-+    vpete = FIELD_DP64(vpete, VPETE, VALID, 1);
-+    address_space_stq_le(&cs->dma_as, vpete_addr, vpete, cfg->txattrs, &res);
-+    if (res != MEMTX_OK) {
-+        goto txfail;
-+    }
-+
-+    init_vpe_from_vpete(&vmte->vpet[vpeid], vmte, vpete);
-+    trace_gicv5_irs_vmap_vper_write(domain_name[domain], vmte->vmid, vpeid);
-+
-+    return;
-+
-+txfail:
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "VPETE update failed for VMID 0x%x VPEID 0x%x at "
-+                  "physical address 0x" HWADDR_FMT_plx "\n",
-+                  vmid, vpeid, vpete_addr);
-+}
-+
- static void spi_sample(GICv5SPIState *spi)
- {
-     /*
-@@ -2093,6 +2152,22 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-             *data = 0;
-         }
-         return true;
-+    case A_IRS_VMAP_VPER:
-+        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain].valid) {
-+            *data = extract64(cs->irs_vmap_vper[domain], 0, 32);
-+        } else {
-+            /* RAZ/WI if no virt or no VM table */
-+            *data = 0;
++    /*
++     * R_PYWKM: if resident VPE is for wrong domain, then ignore
++     * attempts to set a resident VPE. Allow an attempt to clear the
++     * resident VPE, but treat DB as zero.
++     */
++    if (s->res_vpe[cpuidx] &&
++        s->res_vpe[cpuidx]->vmte->domain != domain) {
++        if (valid) {
++            return true;
 +        }
-+        return true;
-+    case A_IRS_VMAP_VPER + 4:
-+        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain].valid) {
-+            *data = extract64(cs->irs_vmap_vper[domain], 32, 32);
-+        } else {
-+            /* RAZ/WI if no virt or no VM table */
-+            *data = 0;
++        db = 0;
++    }
++
++    if (valid) {
++        /* Trying to make a VPE resident */
++
++        vmte = g_hash_table_lookup(cfg->vm_cache, GINT_TO_POINTER(vmid));
++        vpe = vpe_for_vpeid(vmte, vpeid);
++        if (!vpe) {
++            return true;
 +        }
-+        return true;
-     case A_IRS_SPI_STATUSR:
-         /*
-          * QEMU writes to IRS_SPI_{CFGR,DOMAINR,SELR,VMR} take effect
-@@ -2251,6 +2326,14 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
-                                 deposit64(cs->irs_vmap_vistr[domain],
-                                           32, 32, data));
-         return true;
-+    case A_IRS_VMAP_VPER:
-+        irs_vmap_vper_write(s, domain,
-+                            deposit64(cs->irs_vmap_vper[domain], 0, 32, data));
-+        return true;
-+    case A_IRS_VMAP_VPER + 4:
-+        irs_vmap_vper_write(s, domain,
-+                            deposit64(cs->irs_vmap_vper[domain], 32, 32, data));
-+        return true;
-     case A_IRS_SPI_SELR:
-         cs->irs_spi_selr[domain] = data;
-         return true;
-@@ -2375,6 +2458,14 @@ static bool config_readll(GICv5 *s, GICv5Domain domain, hwaddr offset,
-             *data = 0;
-         }
-         return true;
-+    case A_IRS_VMAP_VPER:
-+        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain].valid) {
-+            *data = cs->irs_vmap_vper[domain];
-+        } else {
-+            /* RAZ/WI if no virt or no VM table */
-+            *data = 0;
++
++        if (vpe->resident) {
++            /*
++             * Trying to make a VPE resident when it's already
++             * resident somewhere else is CONSTRAINED UNPREDICTABLE
++             * per R_JJKJV. We choose to fail the request.
++             */
++            return true;
 +        }
-+        return true;
-     }
- 
-     return false;
-@@ -2402,6 +2493,9 @@ static bool config_writell(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     case A_IRS_VMAP_L2_VISTR:
-         irs_vmap_l2_vistr_write(s, domain, data);
-         return true;
-+    case A_IRS_VMAP_VPER:
-+        irs_vmap_vper_write(s, domain, data);
-+        return true;
-     }
- 
-     return false;
-diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
-index b52dba3d3b4..6e0e2295fde 100644
---- a/hw/intc/arm_gicv5_common.c
-+++ b/hw/intc/arm_gicv5_common.c
-@@ -112,6 +112,7 @@ static void gicv5_common_reset_hold(Object *obj, ResetType type)
-         memset(cs->irs_vmap_vmr, 0, sizeof(cs->irs_vmap_vmr));
-         memset(cs->irs_vmap_vistr, 0, sizeof(cs->irs_vmap_vistr));
-         memset(cs->irs_vmap_l2_vistr, 0, sizeof(cs->irs_vmap_l2_vistr));
-+        memset(cs->irs_vmap_vper, 0, sizeof(cs->irs_vmap_vper));
-     }
++
++        vpe->resident = true;
++        vpe->cpuidx = cpuidx;
++
++        s->res_vpe[cpuidx] = vpe;
++        trace_gicv5_set_resident(domain_name[domain], vmid, vpeid, cpuidx);
++    } else {
++        vpe = s->res_vpe[cpuidx];
++        if (!vpe) {
++            /* Making non-resident when already no VPE resident */
++            return true;
++        }
++
++        vmte = vpe->vmte;
++
++        vpe->resident = false;
++        vpe->cpuidx = UINT32_MAX;
++        vpe->db_req = db;
++        if (db) {
++            vpe->dbpm = dbpm;
++        }
++        s->res_vpe[cpuidx] = NULL;
++
++        trace_gicv5_set_non_resident(domain_name[domain], cpuidx, db, dbpm);
++
++        /*
++         * TODO: when we implement VPE doorbells, we should check whether
++         * we should immediately generate a doorbell for a VPE that has
++         * just been made non-resident.
++         */
++    }
++
++    /*
++     * Tell the cpuif that the vHPPI for its resident VPE has changed;
++     * it will then call gicv5_get_hppi() which will return either
++     * IRQ_NONE if this is make-non-resident or the vHPPI for the
++     * now-resident VPE if this is make-resident.
++     */
++    gicv5_forward_interrupt(cs->cpus[cpuidx], vmte->domain, true);
++
++    /* SetResident succeeded */
++    return false;
  }
  
+ static bool read_first_vmte_word(GICv5Common *cs, GICv5VMTConfig *cfg,
+@@ -1566,6 +1649,8 @@ static void irs_vmt_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+             return;
+         }
+         irs_clean_vm_cache(cs, &s->vmt_config[domain]);
++        /* No VPE is now resident on any CPU */
++        memset(s->res_vpe, 0, sizeof(VPE) * cs->num_cpus);
+         cs->irs_vmt_baser[domain] = FIELD_DP64(cs->irs_vmt_baser[domain],
+                                                IRS_VMT_BASER, VALID, valid);
+         s->vmt_config[domain].valid = false;
+@@ -1713,6 +1798,20 @@ txfail:
+                   "physical address 0x" HWADDR_FMT_plx "\n", vmid, l1_addr);
+ }
+ 
++static void remove_res_vpe_by_vmid(GICv5 *s, uint32_t vmid)
++{
++    /* Remove all res_vpe cached information for VPEs for this VMID */
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++
++    for (int i = 0; i < cs->num_cpus; i++) {
++        VPE *vpe = s->res_vpe[i];
++
++        if (vpe && vpe->vmte->vmid == vmid) {
++            s->res_vpe[i] = NULL;
++        }
++    }
++}
++
+ static void irs_vmap_vmr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+ {
+     GICv5Common *cs = ARM_GICV5_COMMON(s);
+@@ -1762,6 +1861,7 @@ static void irs_vmap_vmr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+     }
+ 
+     if (u) {
++        remove_res_vpe_by_vmid(s, vmid);
+         g_hash_table_remove(cfg->vm_cache, GINT_TO_POINTER(vmid));
+     } else {
+         if (!read_other_vmte_words(cs, cfg, l2_addr, l2_vmte)) {
+@@ -2858,6 +2958,7 @@ static void gicv5_set_spi(void *opaque, int irq, int level)
+ static void gicv5_reset_hold(Object *obj, ResetType type)
+ {
+     GICv5 *s = ARM_GICV5(obj);
++    GICv5Common *cs = ARM_GICV5_COMMON(obj);
+     GICv5Class *c = ARM_GICV5_GET_CLASS(s);
+ 
+     if (c->parent_phases.hold) {
+@@ -2884,6 +2985,11 @@ static void gicv5_reset_hold(Object *obj, ResetType type)
+             g_hash_table_remove_all(s->vmt_config[i].vm_cache);
+         }
+     }
++
++    if (s->res_vpe) {
++        /* No VPE is now resident on any CPU */
++        memset(s->res_vpe, 0, sizeof(*s->res_vpe) * cs->num_cpus);
++    }
+ }
+ 
+ static void gicv5_set_idregs(GICv5Common *cs)
+@@ -2988,6 +3094,10 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
+             s->hppi[i] = g_new0(GICv5PendingIrq, cs->num_cpus);
+         }
+     }
++
++    if (cs->has_virt) {
++        s->res_vpe = g_new0(VPE *, cs->num_cpus);
++    }
+ }
+ 
+ static void gicv5_init(Object *obj)
+@@ -3012,6 +3122,7 @@ static void gicv5_finalize(Object *obj)
+ 
+         g_free(s->hppi[i]);
+     }
++    g_free(s->res_vpe);
+ }
+ 
+ static void gicv5_class_init(ObjectClass *oc, const void *data)
 diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 9057f83af57..79381c109b7 100644
+index b187ceefe45..6d646eacaeb 100644
 --- a/hw/intc/trace-events
 +++ b/hw/intc/trace-events
-@@ -252,6 +252,7 @@ gicv5_vmap_l2_vmtr(const char *domain, uint32_t vmid) "GICv5 IRS %s VM ID %u now
- gicv5_cache_vmte(const char *domain, uint32_t vmid) "GICv5 IRS %s VM ID %u valid and cached"
- gicv5_irs_vmap_vistr_write(const char *domain, uint32_t vmid, const char *type, const char *what) "GICv5 IRS %s VM ID %u %s IST now %s"
- gicv5_initialize_vpet(const char *domain, uint32_t vmid, uint32_t vpeid, bool valid) "GICv5 IRS %s VM ID %u VPE %u starts as valid %d"
-+gicv5_irs_vmap_vper_write(const char *domain, uint32_t vmid, uint32_t vpeid) "GICv5 IRS %s VM ID %u VPE %u now made valid"
+@@ -256,6 +256,8 @@ gicv5_irs_vmap_vper_write(const char *domain, uint32_t vmid, uint32_t vpeid) "GI
+ gicv5_irs_vpe_selr_write(const char *domain, uint64_t selr, uint32_t status) "GICv5 IRS %s IRS_VPE_SELR written 0x%" PRIx64 " IRS_VPE_STATUSR now 0x%x"
+ gicv5_irs_vpe_dbr_write(const char *domain, uint32_t vmid, uint32_t vpeid, uint8_t dbpm, uint32_t db_intid, bool db_req) "GICv5 IRS %s VM ID %u VPE %u IRS_VPE_DBR doorbell now valid: prio mask %u intid %u requested %d"
+ gicv5_irs_vpe_dbr_write_nv(const char *domain, uint32_t vmid, uint32_t vpeid) "GICv5 IRS %s VM ID %u VPE %u IRS_VPE_DBR doorbell info no longer valid"
++gicv5_set_resident(const char *domain, uint32_t vmid, uint32_t vpeid, uint32_t cpuidx) "GICv5 IRS %s VM ID %u VPE %u set_resident phys CPU idx %u: now resident"
++gicv5_set_non_resident(const char *domain, uint32_t cpuidx, bool db, uint8_t dbpm) "GICv5 IRS %s set_resident phys CPU idx %u: now no resident VPE; db_req %d dbpm %u"
  
  # arm_gicv5_common.c
  gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
-diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
-index 8103f14ba44..c8574f66a63 100644
---- a/include/hw/intc/arm_gicv5_common.h
-+++ b/include/hw/intc/arm_gicv5_common.h
-@@ -95,6 +95,7 @@ struct GICv5Common {
-     uint64_t irs_vmap_vmr[NUM_GICV5_DOMAINS];
-     uint64_t irs_vmap_vistr[NUM_GICV5_DOMAINS];
-     uint64_t irs_vmap_l2_vistr[NUM_GICV5_DOMAINS];
-+    uint64_t irs_vmap_vper[NUM_GICV5_DOMAINS];
+diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
+index 28417317376..ac85cad3eb5 100644
+--- a/include/hw/intc/arm_gicv5.h
++++ b/include/hw/intc/arm_gicv5.h
+@@ -40,6 +40,8 @@ typedef struct GICv5VMTConfig {
+     GHashTable *vm_cache;
+ } GICv5VMTConfig;
  
-     /*
-      * Pointer to an array of state information for the SPIs.  Array
++typedef struct VPE VPE;
++
+ /*
+  * This class is for TCG-specific state for the GICv5.
+  */
+@@ -53,6 +55,9 @@ struct GICv5 {
+ 
+     /* We cache the HPPI for each CPU for each domain here */
+     GICv5PendingIrq *hppi[NUM_GICV5_DOMAINS];
++
++    /* Array: for each CPU, either NULL or ptr to the resident VPE */
++    VPE **res_vpe;
+ };
+ 
+ struct GICv5Class {
 -- 
 2.43.0
 

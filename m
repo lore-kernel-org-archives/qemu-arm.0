@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8815ECC6B08
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:49:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AE45CA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:49:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY6K-0004E3-A1; Tue, 13 Oct 2026 04:43:12 -0400
+	id 1xGY9L-0000ae-Ss; Tue, 13 Oct 2026 04:46:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY42-00007G-JL
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:52 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1xGY4d-0001nE-RO
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:28 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3z-000836-Lc
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:49 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4a19cba5c14so20021775e9.3
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:47 -0700 (PDT)
+ id 1xGY4b-0008JB-Lr
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:41:27 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4a0213948d3so16346605e9.2
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:41:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880846; x=1792485646; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880884; x=1792485684; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=RpxSc5E6JZ85OCnxoQbmovvqMsjQZ6XLtXXpnhtsTUk=;
- b=XDOLGvT1ait4uHOStt0udr0pzwZGGkH5QCs4eIqjvm7Y+XUYNG5Pkhb8AnvoVAKak4
- EjkWRFf9qLiPbcXVXC4GaTql+39aKVfhnDaKHRV0I6726YNEaGVDrviqk2bbwl0g1/AF
- gPgaiVhOUZRLGbyQTOEMdkdj0ZApam8CAxBh8LQeyvrKZzKaKGsvwrAF8piXzy1hPhXa
- n37BggokmgyGNTRgWy8ZONR9vY3M2dit4QQamkMrSp4zzSGxHC1UZK7ifV9OrkFZoSev
- XhlMi3CjTttOb/fYYzTikJVQmXZK7nk5h2pY7u/wlw/NHv1tOxNw+pAW01VNeO4IBgu3
- jgeQ==
+ bh=uCpgab38MLMVKSwDafn5dl4ylWQwh1yRX8QFoIz4DxM=;
+ b=RBh3B2xWcN2bTkysZ5JAMPYDcCH7eprNE89ly59HcyrEjccuf/YwZz3Ruczhv1i+Cd
+ pEqxI5mdFRVA5SHJJyiz/cqdlV2/vx0D0BWl3w3pED+NhOqLPun1qeqt3dzjyly2D5Ep
+ jv/wNbgqDMK1Bwhi2uuScQqdojiActzXgPW9OO+554dnzOwOwSdcgxveTD/GiV9Gc3cB
+ Oput4qcZfBGHz/2wN/xnlY+wLPgywEe6mh1qiI8a0e4mjdB6rS50hkx6JXYLMsk2rHQA
+ p/XllIQJ8qSp01O0yChPkbYV8a3cSkPnFVczbgtjbFpiipA9lwJSSXI7VlFdqFJasNpe
+ BVHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880846; x=1792485646;
+ d=1e100.net; s=20260707; t=1791880884; x=1792485684;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=RpxSc5E6JZ85OCnxoQbmovvqMsjQZ6XLtXXpnhtsTUk=;
- b=Duu5Zt31WvCiHdeDGcRN2xiwdkM0ozdFNOPoSz7YoH0rnZgl/mxRBWYZlIK9hhUo9H
- dmh9E00HYEEB4sYw10IuRr9KA4sX/3Va6s2cV7wpzh5cAPV8rA5ZnEKfDrbPBYL8JT7F
- l6oPXlE0ZBnNYLn7NvObgyGpEmBwhvSba8FKpeQs9vImt4Qv8XREOuEq0VgVuLE5ccJX
- VBFI/MXTsPWlPHub3vkjZ49y3AV/iCO04Cugj4N2PgdR+C9V/RnQkdvyBhB5HYb30GX2
- l9T+1t7fIzc1VkMkeIT/r12ZeV3BHEenuiVX3yjdFfLuMO3VMifA9CenbhmxbL3ys/5R
- WeFw==
-X-Gm-Message-State: AFq9FYLO1V56B/anfakJF8gaHsV3VO1y0Kn0vwD5Qw8pJgBhcGHIO6OJ
- 9d5JfqLSYwihi73RmpGNAyAylnqOS9rM8A7HSZmqIzAyu46XulHqe3CWsPnYyE979xHKbawo3Bb
- bwCqu/7g=
-X-Gm-Gg: AYBFou1AC7VMsJkn08+IXcsjT8AiZYutJi9UxsBQn/cK7uujtVzrHaeDWyjUhYdfRqV
- ZK7xIkj3MNpBReTnng9DGBa2oOyqrTWBFTZgphIo4H6c7Bpdbc/Xn/7KW/xg4hM3xnRtQGvyxcD
- HGfQU8QPMCxpdI8OvBmr2sqYfAo0kEY+4TPvWxj80t1Lzc7w6w0zZbWsd2ve6pULl1o5NbPG5ov
- Eyjd6I8RXqYcQHRRSuO4RCe+aRiN1StP600LuWDdU3Ng9JVUFh2tWLbMzt15dFtfqqpttQgZoWg
- BznnCbnTcaGATV3OT6PCLF13Dy9d0ZGaHMVrbdk2iPwMz394SrnxVOOZHxfjYyEke5NDSF7Mix4
- VGAEhUdFMr6MGVzHGEvqbpq9pM6WPrbjpyP5rVnN1THd1czg0Sd4vZA+AJD3jmtRUjyIWUYR66I
- sWtUeOE9T4qi6trSVFOZwo8NZcImBEV1Hi2gBV7wkZ0T3hh1heuxKmNKrR03k6Cr7MBHEa7BOzz
- XAU3JaShZz2V2zX5WGFEydv9St5y/eW47Xi4/sO/SS4ObhslsuI8YUy66pEZhjx23L4uLQVeGIS
- 7Cc=
-X-Received: by 2002:a05:600c:3e8d:b0:4a1:7701:f863 with SMTP id
- 5b1f17b1804b1-4a18e4aeae4mr216049495e9.15.1791880846024; 
- Tue, 13 Oct 2026 01:40:46 -0700 (PDT)
+ bh=uCpgab38MLMVKSwDafn5dl4ylWQwh1yRX8QFoIz4DxM=;
+ b=qG4Y/X0vxS61vyJG+XSl6z0njvCneI5XiG6o4SnKrwoshjABqzXqwbWbtv3mBiVGkN
+ uYvHO4TABXj5KBgXnKFJigLCnc97ZOFf2ruYqky8mIOOhjj+JWs2opcI8hgdPiLN/hFl
+ 5wbyL/QQsDH2R/8cV62mhrYwozfc4WJ1uj27Bv+J+SAzMfmQoOj4pCVJCmi1aijFLEcW
+ ayD1hA3gvcfHfNoqZvgo7GcwMv3Q1HH6cZ5xr6TYBPoetyVZKEugveCo0M9Yrc45SNTx
+ LSaRpD8UvFAkaTbNkkYEo/cDNpWQCDA7YoouiKR2Cj4e+gVTdok4PucNj+S1DRnRazc4
+ 2LGQ==
+X-Gm-Message-State: AFq9FYLmiupjU1svtJyUfg1BurIvOIl5ukk4Aq88lD5IJmA8Fj5wCDLD
+ Xydt7Es6pMHSnoPjS6JfzQP43Q1UDvHk6GW/sgICurz8NFMT8NalJN+8ZFNQLsmW0orjXJ/w+25
+ bsXO6RyA=
+X-Gm-Gg: AYBFou3W8FlFnZs+rZo+lL1Ay+mtI54I4XGV4UYlQDSuVj1nQ+HNYc4Dv17CEk0aJi3
+ l1/tfaouDf30eKACFS7ppgFqlmb+wSaW7CugLF2KVRHBVYseNg0M3jTS7ac0y7S6VbI4xLZWv83
+ ZCvFkLmaWc+1MmdJpLwJ8hkZvAwmcmDfkaa0RuF50BFrYUADdMxEkKLWfYW3xJk1zUng9VxzkS9
+ 2T+cS6FlEnzGOe8zpcbWsw/wBv1LhbAo5D01UHU/Q/DYZEqGqHud15/N5208sKdZSpkFIfWr6vO
+ RHw8OfO0snFFSBeW5fWWgDjm/uStASo41CUipsIIClZt2GYwRBnN39/FxItGg6BBFBn0JjBfVbb
+ ft5009HLhSaxpBWIzGzAEf7UvWwZl64q2ZQL8LcBV8YLp2FS3S1ebrdqSfAHyFmBrDpdN2/TsDY
+ wRxOCu2KS7OMnPcHPQlORjhDMaM91iIUz9ZgYNs1mQdt5Ps/GVQgljgRPKbR9alNB/Ti9wlNZCi
+ ect8IOHFSamoWq6cUIvTbRCJa48M+BD7arhcLWS4W/1dio3DQgyF8uCBXA9qK0T3ptnUaoqoQoE
+ A5c=
+X-Received: by 2002:a05:600c:4e55:b0:49f:fe39:5bc8 with SMTP id
+ 5b1f17b1804b1-4a18e49c008mr209129145e9.12.1791880883687; 
+ Tue, 13 Oct 2026 01:41:23 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.45
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.41.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:45 -0700 (PDT)
+ Tue, 13 Oct 2026 01:41:23 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 53/86] hw/intc/arm_gicv5: Implement IRS_VMT_BASER and
- IRS_VMT_STATUSR
-Date: Tue, 13 Oct 2026 09:39:00 +0100
-Message-ID: <20261013083933.1024405-54-peter.maydell@linaro.org>
+Subject: [PATCH 84/86] hw/intc/arm_gicv5: Implement reporting of Quiesced state
+Date: Tue, 13 Oct 2026 09:39:31 +0100
+Message-ID: <20261013083933.1024405-85-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,177 +102,207 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement the GICv5 IRS_VMT_BASER register, which holds the base
-address of the VM table.  This is very similar to the IRS_IST_BASER
-register: it is 64 bits wide but can be accessed as two 32 bit
-pieces, it has a valid bit which the guest sets to make the table
-valid, and there is an associated IRS_VMT_STATUSR register which has
-an IDLE bit which the guest can read to find out when the write to
-VALID has completed.
+Implement the IRS_SAVE_VM_STATUSR register and its reporting of
+Quiescent state.  For QEMU, save-vm operations are instantaneous from
+the point of view of the guest, and so the IDLE bit is (as usual for
+these status registers) always 1.  The other bit in the register is
+Q, which reports whether the VM is still in the Quiesced state
+following some previous write of 1 to IRS_SAVE_VMR.S.
 
-Implement IRS_VMT_BASER and IRS_VMT_STATUSR, using the same pattern
-we have for IRS_IST_BASER and IRS_IST_STATUSR.
+As I_DSRQY notes, the set of conditions when Q is UNKNOWN give us
+the latitude to implement it as "always returns the current state,
+and the guest doesn't need to trigger an update by writing
+IRS_SAVE_VMR.{S,Q} to {0,1}".
+
+A VM is Quiesced (D_MGVXX) if:
+ * no VPEs in the VM are resident
+ * there is no change in the Pending state of any virtual interrupt
+ * there is no change to the number of valid VPEs in the VM
+ * the VM does not become invalid
+
+We can therefore track Quiesced state via a flag in our VMTE struct,
+which is set to 'true' on an IRS_SAVE_VM_STATUSR S=1 write, and then
+flipped to false for changes in Pending state, number of VPEs, and so
+on.  IRS_SAVE_VM_STATUSR.Q returns that flag value, or 0 if the
+VM selected by IRS_SAVE_VMR.VM_ID isn't valid.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c                | 73 ++++++++++++++++++++++++++++++
- hw/intc/arm_gicv5_common.c         |  4 ++
- hw/intc/trace-events               |  2 +
- include/hw/intc/arm_gicv5_common.h |  1 +
- 4 files changed, 80 insertions(+)
+ hw/intc/arm_gicv5.c  | 77 ++++++++++++++++++++++++++++++++++++++++++--
+ hw/intc/trace-events |  1 +
+ 2 files changed, 75 insertions(+), 3 deletions(-)
 
 diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 63e4a165eea..05c6b9c57fc 100644
+index e1796ec17a6..de595d93506 100644
 --- a/hw/intc/arm_gicv5.c
 +++ b/hw/intc/arm_gicv5.c
-@@ -1166,6 +1166,36 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+@@ -50,6 +50,7 @@ struct VMTE {
+     uint32_t vmid;
+     uint8_t vpe_id_bits;
+     GICv5Domain domain;
++    bool quiesced;
+     /* We don't cache the VMD_ADDR as we don't use VMDs */
+     /* We don't cache VALID: the existence of this struct implies VALID=1 */
+ };
+@@ -914,6 +915,8 @@ void gicv5_set_pending(GICv5Common *cs, uint32_t id, bool pending,
+         if (!set_pending_for_ist(cs, cfg, id, pending, &iaffid)) {
+             return;
+         }
++        /* changing Pending state breaks Quiesced */
++        vmte->quiesced = false;
+         irs_recalc_vhppi(s, vmte, iaffid);
+         return;
      }
+@@ -1171,7 +1174,8 @@ uint64_t gicv5_request_config(GICv5Common *cs, uint32_t id, GICv5Domain domain,
+ static bool activate_for_ist(GICv5Common *cs,
+                              const GICv5ISTConfig *cfg,
+                              uint32_t id,
+-                             uint32_t *iaffid)
++                             uint32_t *iaffid,
++                             bool *changed_pending)
+ {
+     L2_ISTE_Handle h;
+     uint32_t *l2_iste_p;
+@@ -1185,6 +1189,9 @@ static bool activate_for_ist(GICv5Common *cs,
+     *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, ACTIVE, true);
+     if (FIELD_EX32(*l2_iste_p, L2_ISTE, HM) == GICV5_EDGE) {
+         *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, PENDING, false);
++        if (changed_pending) {
++            *changed_pending = true;
++        }
+     }
+     *iaffid = FIELD_EX32(*l2_iste_p, L2_ISTE, IAFFID);
+     put_l2_iste(cs, cfg, &h);
+@@ -1201,10 +1208,15 @@ void gicv5_activate(GICv5Common *cs, uint32_t id, GICv5Domain domain,
+ 
+     if (virtual) {
+         const GICv5ISTConfig *cfg = ist_for_vint(s, cs, domain, type, cpuidx);
++        bool changed_pending = false;
+ 
+-        if (!activate_for_ist(cs, cfg, id, &iaffid)) {
++        if (!activate_for_ist(cs, cfg, id, &iaffid, &changed_pending)) {
+             return;
+         }
++        /* Changing Pending breaks Quiesced state */
++        if (changed_pending) {
++            s->res_vpe[cpuidx]->vmte->quiesced = false;
++        }
+         irs_recalc_vhppi(s, s->res_vpe[cpuidx]->vmte, iaffid);
+         return;
+     }
+@@ -1214,7 +1226,7 @@ void gicv5_activate(GICv5Common *cs, uint32_t id, GICv5Domain domain,
+     {
+         const GICv5ISTConfig *cfg = &s->phys_lpi_config[domain];
+ 
+-        if (!activate_for_ist(cs, cfg, id, &iaffid)) {
++        if (!activate_for_ist(cs, cfg, id, &iaffid, NULL)) {
+             return;
+         }
+         break;
+@@ -1484,6 +1496,10 @@ bool gicv5_set_resident(GICv5Common *cs, GICv5Domain domain, bool valid,
+         vpe->cpuidx = cpuidx;
+ 
+         s->res_vpe[cpuidx] = vpe;
++
++        /* Making a VPE resident breaks Quiesced state */
++        vmte->quiesced = false;
++
+         trace_gicv5_set_resident(domain_name[domain], vmid, vpeid, cpuidx);
+     } else {
+         vpe = s->res_vpe[cpuidx];
+@@ -2317,6 +2333,9 @@ static void irs_vmap_vper_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+     init_vpe_from_vpete(&vmte->vpet[vpeid], vmte, vpete);
+     trace_gicv5_irs_vmap_vper_write(domain_name[domain], vmte->vmid, vpeid);
+ 
++    /* Adding a VPE to the VM breaks it being Quiesced */
++    vmte->quiesced = false;
++
+     irs_recalc_vhppi(s, vmte, vpeid);
+ 
+     return;
+@@ -2514,11 +2533,55 @@ static void irs_save_vmr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+     }
+ 
+     trace_gicv5_irs_save_vmr_write(domain_name[domain], vmid);
++    /*
++     * Writing S = 1 is the start of a check for if the VM stays
++     * Quiesced. If some VPE is currently resident than the VM is not
++     * Quiesced. Other state changes later may also flip it to
++     * not-Quiesced.
++     */
++    vmte->quiesced = true;
++    for (uint32_t i = 0; i < (1 << vmte->vpe_id_bits); i++) {
++        VPE *vpe = &vmte->vpet[i];
++
++        if (vpe->valid && vpe->resident) {
++            vmte->quiesced = false;
++            break;
++        }
++    }
+ 
+     irs_sync_ist_to_memory(cs, &vmte->lpi_ist);
+     irs_sync_ist_to_memory(cs, &vmte->spi_ist);
  }
  
-+static void irs_vmt_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
++static uint64_t irs_save_vm_statusr_read(GICv5 *s, GICv5Domain domain)
 +{
 +    GICv5Common *cs = ARM_GICV5_COMMON(s);
++    GICv5VMTConfig *cfg = &s->vmt_config[domain];
++    uint32_t vmid;
++    VMTE *vmte;
++    /* IDLE always set; Q set only if VM is Quiesced */
++    uint64_t value = R_IRS_SAVE_VM_STATUSR_IDLE_MASK;
 +
-+    if (!gicv5_domain_has_virt(cs, domain)) {
-+        return;
++    vmid = FIELD_EX64(cs->irs_save_vmr[domain], IRS_SAVE_VMR, VM_ID);
++
++    if (!cfg->valid || vmid >= (1 << cfg->vm_id_bits)) {
++        return value;
 +    }
 +
-+    if (FIELD_EX64(cs->irs_vmt_baser[domain], IRS_VMT_BASER, VALID)) {
-+        /* If VALID is set, ADDR is RO and we can only update VALID */
-+        bool valid = FIELD_EX64(value, IRS_VMT_BASER, VALID);
-+
-+        if (valid) {
-+            /* Ignore 1->1 transition */
-+            return;
-+        }
-+        cs->irs_vmt_baser[domain] = FIELD_DP64(cs->irs_vmt_baser[domain],
-+                                               IRS_VMT_BASER, VALID, valid);
-+        trace_gicv5_vmt_invalid(domain_name[domain]);
-+        return;
++    vmte = g_hash_table_lookup(cfg->vm_cache, GINT_TO_POINTER(vmid));
++    if (!vmte) {
++        return value;
 +    }
 +
-+    cs->irs_vmt_baser[domain] = value;
++    trace_gicv5_irs_save_vm_statusr_read(domain_name[domain],
++                                         vmid, vmte->quiesced);
 +
-+    if (FIELD_EX64(cs->irs_vmt_baser[domain], IRS_VMT_BASER, VALID)) {
-+        trace_gicv5_vmt_valid(domain_name[domain],
-+                              cs->irs_vmt_baser[domain] & R_IRS_VMT_BASER_ADDR_MASK);
++    if (vmte->quiesced) {
++        value |= R_IRS_SAVE_VM_STATUSR_Q_MASK;
 +    }
++    return value;
 +}
 +
  static void spi_sample(GICv5SPIState *spi)
  {
      /*
-@@ -1271,6 +1301,31 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     case A_IRS_IST_CFGR:
-         *data = cs->irs_ist_cfgr[domain];
+@@ -2802,6 +2865,14 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             *data = 0;
+         }
          return true;
-+    case A_IRS_VMT_BASER:
++    case A_IRS_SAVE_VM_STATUSR:
 +        if (gicv5_domain_has_virt(cs, domain)) {
-+            *data = extract64(cs->irs_vmt_baser[domain], 0, 32);
++            *data = irs_save_vm_statusr_read(s, domain);
 +        } else {
++            /* RAZ if no virt */
 +            *data = 0;
 +        }
 +        return true;
-+    case A_IRS_VMT_BASER + 4:
-+        if (gicv5_domain_has_virt(cs, domain)) {
-+            *data = extract64(cs->irs_vmt_baser[domain], 32, 32);
-+        } else {
-+            *data = 0;
-+        }
-+        return true;
-+    case A_IRS_VMT_STATUSR:
-+        /*
-+         * QEMU writes to IRS_VMT_BASER and IRS_VMAP_* take effect
-+         * instantaneously, so the guest can never see the IDLE bit as 0.
-+         */
-+        if (gicv5_domain_has_virt(cs, domain)) {
-+            *data = R_IRS_VMT_STATUSR_IDLE_MASK;
-+        } else {
-+            *data = 0;
-+        }
-+        return true;
-     case A_IRS_SPI_STATUSR:
-         /*
-          * QEMU writes to IRS_SPI_{CFGR,DOMAINR,SELR,VMR} take effect
-@@ -1373,6 +1428,14 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     case A_IRS_MAP_L2_ISTR:
-         irs_map_l2_istr_write(s, domain, data);
-         return true;
-+    case A_IRS_VMT_BASER:
-+        irs_vmt_baser_write(s, domain,
-+                            deposit64(cs->irs_vmt_baser[domain], 0, 32, data));
-+        return true;
-+    case A_IRS_VMT_BASER + 4:
-+        irs_vmt_baser_write(s, domain,
-+                            deposit64(cs->irs_vmt_baser[domain], 32, 32, data));
-+        return true;
-     case A_IRS_SPI_SELR:
-         cs->irs_spi_selr[domain] = data;
-         return true;
-@@ -1457,6 +1520,13 @@ static bool config_readll(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     case A_IRS_IST_BASER:
-         *data = cs->irs_ist_baser[domain];
-         return true;
-+    case A_IRS_VMT_BASER:
-+        if (gicv5_domain_has_virt(cs, domain)) {
-+            *data = cs->irs_vmt_baser[domain];
-+        } else {
-+            *data = 0;
-+        }
-+        return true;
-     }
- 
-     return false;
-@@ -1469,6 +1539,9 @@ static bool config_writell(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     case A_IRS_IST_BASER:
-         irs_ist_baser_write(s, domain, data);
-         return true;
-+    case A_IRS_VMT_BASER:
-+        irs_vmt_baser_write(s, domain, data);
-+        return true;
-     }
- 
-     return false;
-diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
-index 17fd67b5ccd..89669493b83 100644
---- a/hw/intc/arm_gicv5_common.c
-+++ b/hw/intc/arm_gicv5_common.c
-@@ -104,6 +104,10 @@ static void gicv5_common_reset_hold(Object *obj, ResetType type)
-          */
-         cs->irs_spi_selr[i] = cs->spi_base + cs->spi_irs_range;
-     }
-+
-+    if (cs->has_virt) {
-+        memset(cs->irs_vmt_baser, 0, sizeof(cs->irs_vmt_baser));
-+    }
- }
- 
- static void gicv5_common_init(Object *obj)
+     case A_IRS_VPE_CR0:
+         /* RES0 when VIRT_ONE_N is not implemented */
+         *data = 0;
 diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 6681e32d1b7..3c7619cf3cd 100644
+index 9902cb97b8f..017f0fc21dc 100644
 --- a/hw/intc/trace-events
 +++ b/hw/intc/trace-events
-@@ -246,6 +246,8 @@ gicv5_deactivate(const char *domain, const char *type, bool virtual, uint32_t id
- gicv5_spi_state(uint32_t spi_id, bool level, bool pending, bool active) "GICv5 IRS SPI ID %u now level %d pending %d active %d"
- gicv5_irs_recalc_hppi_fail(const char *domain, uint32_t iaffid, const char *reason) "GICv5 IRS %s IAFFID %u: no HPPI: %s"
- gicv5_irs_recalc_hppi(const char *domain, uint32_t iaffid, uint32_t id, uint8_t prio) "GICv5 IRS %s IAFFID %u: new HPPI ID 0x%x prio %u"
-+gicv5_vmt_valid(const char *domain, uint64_t base) "GICv5 IRS %s VM table now valid: base 0x%" PRIx64
-+gicv5_vmt_invalid(const char *domain) "GICv5 IRS %s VM table no longer valid"
+@@ -262,6 +262,7 @@ gicv5_set_resident(const char *domain, uint32_t vmid, uint32_t vpeid, uint32_t c
+ gicv5_set_non_resident(const char *domain, uint32_t cpuidx, bool db, uint8_t dbpm) "GICv5 IRS %s set_resident phys CPU idx %u: now no resident VPE; db_req %d dbpm %u"
+ gicv5_irs_ring_doorbell(const char *domain, uint32_t vmid, uint32_t db_intid) "GICv5 IRS %s VM ID %u: ringing doorbell LPI %u"
+ gicv5_irs_save_vmr_write(const char *domain, uint32_t vmid) "GICv5 IRS %s VM ID %u saving IST data to memory"
++gicv5_irs_save_vm_statusr_read(const char *domain, uint32_t vmid, bool quiesced) "GICv5 IRS %s VM ID %u reporting quiesced %d"
  
  # arm_gicv5_common.c
  gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
-diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
-index 7b24cad211b..f134602d66e 100644
---- a/include/hw/intc/arm_gicv5_common.h
-+++ b/include/hw/intc/arm_gicv5_common.h
-@@ -89,6 +89,7 @@ struct GICv5Common {
-     uint32_t irs_cr0[NUM_GICV5_DOMAINS];
-     uint32_t irs_cr1[NUM_GICV5_DOMAINS];
-     uint32_t irs_pe_selr[NUM_GICV5_DOMAINS];
-+    uint64_t irs_vmt_baser[NUM_GICV5_DOMAINS];
- 
-     /*
-      * Pointer to an array of state information for the SPIs.  Array
 -- 
 2.43.0
 

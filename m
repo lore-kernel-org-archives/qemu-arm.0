@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B65D2CC6B12
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 16:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72767CC6B12
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 16:29:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGfMp-0006ru-Pg; Tue, 13 Oct 2026 12:28:44 -0400
+	id 1xGfNC-0007aT-3G; Tue, 13 Oct 2026 12:29:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xGfLp-0005VY-Kf; Tue, 13 Oct 2026 12:27:41 -0400
-Received: from 6.mo528.mail-out.ovh.net ([178.33.251.179])
+ id 1xGfLj-0005Oz-HR; Tue, 13 Oct 2026 12:27:35 -0400
+Received: from smtpout5.mo536.mail-out.ovh.net ([51.210.91.14])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xGfLn-0005Hs-DV; Tue, 13 Oct 2026 12:27:41 -0400
+ id 1xGfLh-0005FY-Rj; Tue, 13 Oct 2026 12:27:35 -0400
 Received: from director4.derp.mail-out.ovh.net
  (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4j409h6Q8dz6FKS;
- Tue, 13 Oct 2026 16:27:36 +0000 (UTC)
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4j409Z58Y0z89Kf;
+ Tue, 13 Oct 2026 16:27:30 +0000 (UTC)
 Received: from director4.derp.mail-out.ovh.net
  (director4.derp.mail-out.ovh.net. [127.0.0.1])
  by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue, 13 Oct 2026 16:27:36 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.125])
+ for <jamin_lin@aspeedtech.com>; Tue, 13 Oct 2026 16:27:30 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.31])
  by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4j409h5NZGz1xsk; Tue, 13 Oct 2026 16:27:36 +0000 (UTC)
+ 4j409Z422Sz1xsk; Tue, 13 Oct 2026 16:27:30 +0000 (UTC)
 Received: from kaod.org (unknown [10.1.6.1])
  (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 523EF941FD8; 
- Tue, 13 Oct 2026 16:27:34 +0000 (UTC)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id BDCAE941FD8; 
+ Tue, 13 Oct 2026 16:27:27 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-110S004522c1746-1d57-4614-a707-bafee614a12d,
+ (GARM-110S004d16a47f7-ec1f-41f7-8a85-442b1ad3f3c6,
  3B5152602AE6D76A7CF2E50DC6ABDDC767F0B630) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f7890cff-ac12-4cc6-9278-3bbd80f340ab@kaod.org>
-Date: Tue, 13 Oct 2026 18:27:34 +0200
+Message-ID: <d7e8e7ce-5ceb-4ebe-8585-d8b7e2bcffcf@kaod.org>
+Date: Tue, 13 Oct 2026 18:27:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/50] hw/rtc: ds1338: implement Resettable reset
+Subject: Re: [PATCH v2 03/50] hw/arm: sanmiguel: remove the second SPI flash
+ controller
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -53,7 +54,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
- <20261012-bmc-minerva-v2-10-4c3dff084ec9@free.fr>
+ <20261012-bmc-minerva-v2-3-4c3dff084ec9@free.fr>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -98,28 +99,29 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261012-bmc-minerva-v2-10-4c3dff084ec9@free.fr>
+In-Reply-To: <20261012-bmc-minerva-v2-3-4c3dff084ec9@free.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 6627046855325428781
+x-ovh-tracer-id: 6625358004107979821
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFJAA0Cff5mZHzxjOMf3vpdM/VfvcU3tzZqy3rh935Ggo91wXIdpJWVeOQBh0BtkSvpcDXPndRPnQDJ5NOOH3LTp7Nq6TOnz5gH/2/VElRGGUCKt+RHqpbTAnEaoqBeRCSlmVGALEzjKJy8O9LWHZZjTH8ta/3/Ns1/1dAtkg32q9bqR3JeX4KZeQ1ExBk2Xzh+zVJ5kZP+auzj5MEVRHRs1/p1H1NscUbI9FzfTnG2Wu2R/8O+EDjBsjafLViuNUeh8OdAkwN79Q2U1dqkbzpYq8JzfkLY8NR63te0LErTTbLj6jB1xH/iwK5utVdtxSHGcYHKT6mU1lwv9nag/pmKc/u77sbUum4ofTNB0XJY3e64FTzoFucwU2bQIUzPGScrKrl3XqCiwN9H50x4/3GrziRB60ZUp2bVNR1HVbwt+6F9rQlyJSysNKZwK1ejJ00tNnLRfLvTGCrcrXVdYvpDkbyINoSumQJAYhYOvs+MB/zNoyZk8cCiA26r3FXejj2ukewdpVAPv2Jvc1eLTX3MkcTNBPTkyJBAvalaaUOLHHuTTH2rJRVdu2so7iWQrrxI/mVY3Q8YvDfVqEwiF2ktwHmG+ynUMdGEcw1miYzDyezNHVvv2yyieOiJrg69gFHtbFJ/GSVtHhbZ7qI0FnagtU1VVsPJggVnca5i6ebiXg
-DKIM-Signature: a=rsa-sha256; bh=XxaOowC43oCgsIDl8GNhgCaSkmbvPsTfw86INwduuEk=; 
+X-VR-SPAMCAUSE: dmFkZTFJAA0Cff5mZHzxjOMf3vpdM/VfvcU3tzZqy3rh935Ggo91wXIdpJWVeOQBh0BtkSvpcDXPndRPnQDJ5NOOH3LTp7Nq6TOnz5gH/2/VElRGGUCKt+RHqpbTAnEaoqBeRCSlmVGALEzjKJy8O9LWHZZjTH8ta/3/Ns1/1dAtkg32q9bqR3JeX4KZeQ1ExBk2Xzh+zVJ5kZP+auzj5MEVRHRs1/p1H1NscUbI9FzfTnG2Wu2R/8O+EDjBsjafLViuNUeh8OdAkwN79Q2U1dqkbzpYq8JzfkLY8NR63te0LErTTbLj6jB1xH/iwK5utVdtxSHGcYHKT6mU1lwv9nag/pmKD07+aPSumqruOXe6qXcQMMEEGtsLKsp8wvlr/vWPePk4NuE2i5ovU0lLD8N/ANlk4sMcoy8DkcUavxUCznBB4L40P5EVLovIu3N6PV0SshheTLcwaUMYgAQqXL+kZQcxAVFknIIulxgugeB3KULnYj7w3hQqhAYXws5IE1vLv+mGxuQPUGHe8GLsYIfnlbmKvXzpXjzVO7Km1IsitopwwzN8NVcEKzxhLh+Z/w0FihmcnkzVOwHIZANihOq/nTedIzxk+c0ZlyncwSDDIP/Z8JsasJ40l/g2+51jQnEIiW2ZbrjRagkyel2/5zMWe2MiiKo2LfK5x7vIm6x657v5lg
+DKIM-Signature: a=rsa-sha256; bh=QVstO6Vk1+VBByl0ay6fm1fjhvzXar4mpMc1qwmgIdU=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1791908856; v=1;
- b=S7I0XoXM5lbk65bGtQ8f48AvyMAL/9zGRDlv+p+nijNhsTBvTi60ngBT/gaXuBdkD5nRoWr/
- Sgoi+q0oKEne5188xFM14bxiSPyXSFw56GJtMKRWJx/0kvVjf5EdgPQ0uYtX3uXYrvnrWjbqtyS
- 2dveS2OPJpNjSKtTZGv1KvemQOKSHfiade24DYo+tbRFunCFm9Ia5IovOza1agnRiz2YsUTN02p
- 7mpp6zPCZMhhLfdYcbeIFe/Jq66lmpJMeH3GBOhGtqJqupEWI8AmtOnlgcad5nHI6kTw+Bdc50N
- /du9arYruRF/yHwxckXxwZui8ZdOk5mIGVk/aEFmWW2GQ==
-Received-SPF: pass client-ip=178.33.251.179; envelope-from=clg@kaod.org;
- helo=6.mo528.mail-out.ovh.net
+ t=1791908850; v=1;
+ b=sG4aCGBhg/+Go9DV28mb7/BDO2DvKNJ3d3Kl+e1InQZPAFw2TojWubkgW/1cup0LD0EKNu3m
+ Yv4rKDhqL3v3V812Ln+rzqdE6z3CVmR/GJe3HEIFYlYfSVU0WzrKploM1yT2+9x5k1OgGP2fGit
+ frxr3U4thT+OoDiNxj0j+hHjclGQW53bfwxnv615Ut9RnoqoEJ6PSk7dnO6JGIv6dmA4Itedd4L
+ 2yoNJH/Ss0EjuZ8q7PNGU0a3VD2uqhF/JHYUKvvfZaFd1gBcMjpzGVoDlCBcSw//3bkzhCKOjQn
+ s55lhbei1iSB/nMlk9oW2Ms8Wikol/NpoUVzzsCPLh7yg==
+Received-SPF: pass client-ip=51.210.91.14; envelope-from=clg@kaod.org;
+ helo=smtpout5.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -136,46 +138,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/12/26 16:32, Emmanuel Blot wrote:
-> The device relied on device_class_set_legacy_reset(), a compatibility
-> shim around the legacy DeviceState reset hook. Convert ds1338_reset()
-> into a proper Resettable hold phase, dropping the legacy shim.
+On 10/12/26 16:31, Emmanuel Blot wrote:
+> The board only populates the flash device attached to the FMC
+> controller; the SoC SPI controllers are left unused. Advertising a
+> part there presents the guest with a flash device the hardware does
+> not have.
+> 
+> While here, add the missing year to the copyright line.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->   hw/rtc/ds1338.c | 7 ++++---
->   1 file changed, 4 insertions(+), 3 deletions(-)
+>   hw/arm/aspeed_ast2600_sanmiguel.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/rtc/ds1338.c b/hw/rtc/ds1338.c
-> index f8b3340bf0..74aee6c746 100644
-> --- a/hw/rtc/ds1338.c
-> +++ b/hw/rtc/ds1338.c
-> @@ -208,9 +208,9 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
->       return 0;
->   }
->   
-> -static void ds1338_reset(DeviceState *dev)
-> +static void ds1338_reset_hold(Object *obj, ResetType type)
->   {
-> -    DS1338State *s = DS1338(dev);
-> +    DS1338State *s = DS1338(obj);
->   
->       /* The clock is running and synchronized with the host */
->       s->offset = 0;
-> @@ -224,11 +224,12 @@ static void ds1338_class_init(ObjectClass *klass, const void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
->       I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
->   
->       k->event = ds1338_event;
->       k->recv = ds1338_recv;
->       k->send = ds1338_send;
-> -    device_class_set_legacy_reset(dc, ds1338_reset);
-> +    rc->phases.hold = ds1338_reset_hold;
->       dc->vmsd = &vmstate_ds1338;
->   }
->   
+> diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
+> index 345a9c9416..ac2aef740a 100644
+> --- a/hw/arm/aspeed_ast2600_sanmiguel.c
+> +++ b/hw/arm/aspeed_ast2600_sanmiguel.c
+> @@ -1,7 +1,7 @@
+>   /*
+>    * Facebook SanMiguel BMC
+>    *
+> - * Copyright (c) Meta Platforms, Inc. and affiliates.
+> + * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
+>    *
+>    * SPDX-License-Identifier: GPL-2.0-or-later
+>    */
+> @@ -384,7 +384,7 @@ static void aspeed_machine_sanmiguel_class_init(ObjectClass *oc,
+>       amc->hw_strap1 = SANMIGUEL_BMC_HW_STRAP1;
+>       amc->hw_strap2 = SANMIGUEL_BMC_HW_STRAP2;
+>       amc->fmc_model = "mx66l1g45g";
+> -    amc->spi_model = "mx66l1g45g";
+> +    amc->spi_model = NULL;
+>       amc->num_cs    = 2;
+>       amc->macs_mask = ASPEED_MAC0_ON;
+>       amc->i2c_init  = sanmiguel_bmc_i2c_init;
 > 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>

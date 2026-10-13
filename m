@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45BB4CC6B10
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21D1ECC6B19
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:49:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY6D-0003vI-VE; Tue, 13 Oct 2026 04:43:06 -0400
+	id 1xGY5A-0002TS-8F; Tue, 13 Oct 2026 04:42:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3x-0008Rk-1I
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:45 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1xGY3j-0007oL-5X
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:31 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3v-000817-0j
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:44 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4a022fee0caso24200005e9.1
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:42 -0700 (PDT)
+ id 1xGY3g-0007wp-SA
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:30 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4a1698ea378so21874095e9.2
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880841; x=1792485641; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880827; x=1792485627; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=/Sig7FVvdhb0+exNtEt5dl5MsuYM+MG8UgxMJ4WaGc0=;
- b=WZakO9FSXbZ7GJhLZFFphQyksUyduQemaTIU2ABp1QInl0ka/Nv50vbbufTK8d0WLU
- 3yFD2wig1fMtyKC5HIDGNP8Jf2agR+U20/St7bD+6BFHjHapSTX0MKyf3pGTe/rh9MjI
- YkO24KI7f+qmzkJ/EIm/ukv664w2f9Kf+AeLPdYMscuueMdd+4ouCtfPt9mOONtVKX2I
- SPWV8XAKC64SPdl9x48HjKIlB/84F56mvUCnHu9c/RSV8opmqOwDuLLaU+SLB75bKBhw
- 2+6+9KJLXEtGiC/9RxeRKuzOS/06jUF6KGF8zuPpKOJbVHitUBBz1KA7iJv5OfeOf/16
- icoA==
+ bh=EEvv5QuQZixZDbJ9DHZNjQdel6lxSlPk/jCh6hqlfL8=;
+ b=dAB5dnL5B/0akR6R9onUrEZouG+k3RApc9EvxmBYar9ozVaBbREXPbQgVp7U7bsiG9
+ lDUp2+AY24f7VUGZHKMaebjkfxlKQFhKdsUD172YNtGx9kawR7kv2p+P2/yGnHDxYIqU
+ AwGh0hYJsrG5XJ6D6Qd/F/3mPoAQm7wc93ytWgs9Lz9/xGFln/tBO/srDsyEm33ph84z
+ 9WBrMd1HjnJL3WKbBbvUigJo4+s5G3jzHzzcGIpjbvhbjxRF2Tu1C2wlfy/5dtMDaBNi
+ QybxcD7mRJ6xwiXZujekbbbjVcJ170q70f/zgabtNUI7SlvTYXoV5EgpFY9/ht3M1hCt
+ Vhqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880841; x=1792485641;
+ d=1e100.net; s=20260707; t=1791880827; x=1792485627;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=/Sig7FVvdhb0+exNtEt5dl5MsuYM+MG8UgxMJ4WaGc0=;
- b=TPlcPDm4dk/G+RXUSOL3b8xPMS+KFKSXVdGz1ZxhclkxzWWDQTIz89z5HmMZ0eiF8l
- qCv9KOyqnceawsizk0WDcohJ7zS60qgVqKqFM0zHVAQ/D6gl7wl/bdiuuFy1CdQ4DbJZ
- 7oEQ7ICp7/dao+XW6VeGKbeFH9sQDsvNsBd0QtqAZ2vT9iOSbdfqv27U02z1CjCkz6O9
- X37w8AU9TTDmz90WLLTs6S4dDhfyA3ZCDsZS47vQjVs0eolDoxQUDqhmVY+3zoVODM4i
- jw4JVIPGJJLvO924zdO7P/FzbObp4q6uvKhix/byCnUPwo5jhBXahBPwqtt62Vx2ZpfN
- yzNw==
-X-Gm-Message-State: AFq9FYKMgBwbEzrgRtoxNf6jy3EPneKfPeqTx38QFM8qW/ab7aWRHiJE
- aT9JoYTDHbCwlTflhW8Ml5tP6QMEufYccy/bo1wFXBVzhh+CA9GAw/NjE3QMGLBHhIdUy+5yRYK
- 2ArKMJOU=
-X-Gm-Gg: AYBFou1GOyo7HIfiQzoPs4DrSb/3FeSQVwQ4rd8AgmAikPyH8vTyG/xTJf474z2K23q
- 5BR4Vj51SgycUYDty/7uIRwGv2mnj0lOYdWVTur3HcnH+W6Uw0+sR9eHo0z7n9Bwk5gpoFJKKnF
- ZI4B0p/9nVHELg8OQUz0PnxLeTv6g3wlaQ8PMXUs5Z0fSsMVcCYXyNRNen3XvtedL1VFf4kqHpf
- y8Xjrb9JIykswgKa4taxkmMpkeZ21w3b7wF/smSznDpkozbbyRGYZX1EepleRzmX0FETCxgQo5o
- e9YdHtBe6vu1QKuX83NZUziRlhMbFIi9Q9ML/RHRdEyfOitV4dN+3tTwgq40R4qxtsi1lf+cWex
- ZAEzqeB9dZKwQPIF2GtDIbbSZHo/G0/bqxiBjdZ3NUHqPRbSOEBcM23xKEF+fMPKGSf3oFOQuBN
- aRNLdlfY+NNAfnxxPSyFa/E2LMMxCi/33JZO8oUAO8F3Alau/624/S2UNbAOZ1yjjBcOtuu74Uq
- azHso5Mbnmcpu1TXW5wRIrjdPaaSrF5Rlt1k1+JMGtyiCnRdNgOnknGW6yoJcQpG2uqzDcGjbN2
- QRQ=
-X-Received: by 2002:a05:600c:350b:b0:4a1:ad01:f8dc with SMTP id
- 5b1f17b1804b1-4a1ad01f924mr23664985e9.21.1791880841177; 
- Tue, 13 Oct 2026 01:40:41 -0700 (PDT)
+ bh=EEvv5QuQZixZDbJ9DHZNjQdel6lxSlPk/jCh6hqlfL8=;
+ b=1GWDLRHK5nfo6T5nV3BLlVwxQphfcVjHQVIydZqhDoHmSeQ3O80+VcdgHjQqHsQ2MV
+ W3QMTNCltdOh4wgmWW4yqFdCS0lmAmqIo+/m31hQVSL0T1v8tevN5byVoO8l3R6iOoId
+ zVqoHhw2pK8aTdmDWmYhPxy0YLyjES08u0q9gPyMuLavpskQ+MLo8AWKUGehPYdmbX7/
+ a5itrGNUb17yJfzPrWxTtGSrcpKClQthSV6wN1HwU4dYji3p0KNG8BiPsODAcLlMsNM9
+ 4EI/9e9AcTieTTV+SHUeC8H2JC+44bT/jAX/PJEpkSVflvSt8G3llT/ySjifTy9Brcj8
+ 762A==
+X-Gm-Message-State: AFq9FYIG/N9q6vyzSwgMujOsjdVUNm9hB0yiFo/dVrFYEjMmA24RRPK8
+ SoO/SBG78mQUnGSX1H9afuLKP1jUIO3U178OcCJfOQ68MZ5uS5rvPcHUbYcGpBIcyX1RnAVmzy8
+ xGS0uLU8=
+X-Gm-Gg: AYBFou0tmfduSy6cBvuwU9Jbz4P9MzqibmufocKaNi7aFD+0wBVekROZJI413Ya1wHl
+ zcoXrwl8onoomZ5ZFvuPKgj2BDcWwyDIa/9T9W7ZtceQ2oDrtvw9GpCD0NYUZLch5bnIls92D68
+ URl01W2DC+aXMAEHc1iP4zXEgjQyViXX6aWuvDYuXF6S86LYJeLO+sF3gqe8QStwSyQEVnDFJHH
+ TBnJAnqCmq9jFM3e63eZwMDLOqBoiXdhJvOvKwSGSPQXORETIuxagJpUw90kqFSb1v5288twoLS
+ kRjNtg45CTPZvAkf5VVEW8Ombi3/fGa5fp8DUBSf0razMTePK6wzJwrI3LefkrznF8PZp6Sck/A
+ 0+d+w4waH0TKqtY+y1XfZffT22WGRo/glPk9705cliYqG0O+Qv3c6VFHdTMM9qEVqUMhCNaHL0m
+ DpIcJIy6oA66xF+Xw1r0c83UMQOhup6ZYhd7aSM0OdSpraMgK2Xcbh+f6hm7auSX/ybz0tBvD6f
+ W0UHf9QSjq2bNmaQIpBNxap9Wk00hWwVPczSXb6m0VOSzkLc6rdFHHvhVwhrnUVEjFDVeCzFRTB
+ lsw=
+X-Received: by 2002:a05:600c:4ecc:b0:49c:fa21:e749 with SMTP id
+ 5b1f17b1804b1-4a18e4d55f2mr264357825e9.31.1791880827229; 
+ Tue, 13 Oct 2026 01:40:27 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.40
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:40 -0700 (PDT)
+ Tue, 13 Oct 2026 01:40:26 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 48/86] target/arm: GICv5 cpuif: Update VFIQ/VIRQ when
- direct-injected PPIs change
-Date: Tue, 13 Oct 2026 09:38:55 +0100
-Message-ID: <20261013083933.1024405-49-peter.maydell@linaro.org>
+Subject: [PATCH 37/86] target/arm: GICv5 cpuif: Handle LD/VD insns when
+ setting domain/virtual args
+Date: Tue, 13 Oct 2026 09:38:44 +0100
+Message-ID: <20261013083933.1024405-38-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,82 +103,203 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When a physical PPI changes its pending state we usually don't need
-to update the virtual PPI state.  However, if the PPI is
-direct-injected to the VM then we do need to do that update.  Make
-this check and call gic_recalc_virt_ppi_hppi() where we update
-physical PPI pending state.
+GIC system instructions come in several families where the prefix
+of the name indicates which interrupt domain they operate on:
+
+ - LD* commands (opc1 == 6) operate on the logical interrupt domain.
+ - VD* commands (opc1 == 4) operate on the virtual interrupt domain,
+   which is the domain of the current resident VM, which is the same
+   as the logical interrupt domain but with the virtual flag set.
+ - CD* commands (opc1 == 0) operate on the current domain, which is
+   the virtual one if ICC accesses redirect to ICV, and the current
+   physical interrupt domain otherwise.
+
+The actual operation of the command in each case is the same apart
+from the domain/virtual parameter selection.
+
+Currently we hardcode "virtual = false, domain = current physical
+interrupt domain" in our writefns for the system insns, which is
+only correct for the CD* commands when virtualization is not
+enabled.
+
+Generalize our code for implementing the various GIC system insns so
+they call a new function gicv5_domain_for_insn() which sets the
+domain and virtual parameters based on the insn family (which can be
+determined from the system insn's opc1 field) and whether the virtual
+CPU interface is enabled.  This will make the CD commands work
+correctly in the virtual CPU interface, and will let us use the same
+writefns for the LD and VD insns as we do for the CD insns.
+
+This change is all we need for the CD* commands to handle the virtual
+interrupt domain correctly in most cases; the commands which don't
+simply pass the argument through to the IRS (CDEOI, CDDI, CDIA,
+CDNMIA) need further changes which we will handle in the following
+commits.  VDPEND also needs adjustment as it has an extra argument
+from the guest to specify the VM (making it the only LD* or VD*
+command that has a different field layout from the CD* version).
+
+(The IRS will currently reject any commands with virtual=true;
+we add virtualization support to the IRS later in the series.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/gicv5-cpuif.c | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ target/arm/tcg/gicv5-cpuif.c | 71 +++++++++++++++++++++++++++---------
+ 1 file changed, 53 insertions(+), 18 deletions(-)
 
 diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index e7e3dc214d6..406c980af5e 100644
+index cbe233c61bf..f8d58b5a537 100644
 --- a/target/arm/tcg/gicv5-cpuif.c
 +++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -602,6 +602,28 @@ void gicv5_forward_interrupt(ARMCPU *cpu, GICv5Domain domain, bool virtual)
-     }
+@@ -154,6 +154,39 @@ static GICv5Domain gicv5_current_phys_domain(CPUARMState *env)
+     return gicv5_logical_domain(env);
  }
  
-+static void gic_recalc_virt_ppi_hppi_for_dvi(CPUARMState *env, int reg,
-+                                             uint64_t mask)
++static GICv5Domain gicv5_domain_for_insn(CPUARMState *env,
++                                         const ARMCPRegInfo *ri,
++                                         bool *virtual)
 +{
 +    /*
-+     * Called after the physical PPI pending state has changed for the
-+     * PPIs indicated by the mask and reg arguments.  If any of these
-+     * PPIs are direct-injected, we need to recalculate the virtual
-+     * HPPI.
++     * Return the domain and virtual flag to use when GIC system insns
++     * result in commands to the IRS.
 +     *
-+     * It is possible that even if the DVI bit is set we might not
-+     * actually be direct-injecting the PPI (e.g. if HVI is set, or if
-+     * timer-PPI redirection means we're ignoring this DVI bit), but
-+     * if so the recalculation will just do nothing. These cases are
-+     * "the guest did something valid but odd" in that it set a DVI
-+     * bit it knew wasn't going to have any effect, so not worth
-+     * trying to catch early.
++     * GIC system insns come in several families where the prefix of
++     * the name indicates which interrupt domain they operate on:
++     *
++     * LD* commands (opc1 == 6) operate on the logical interrupt domain.
++     * VD* commands (opc1 == 4) operate on the virtual interrupt domain,
++     *   which is the domain of the current resident VM, which is the
++     *   the logical interrupt domain but with the virtual flag set.
++     * CD* commands (opc1 == 0) operate on the current domain, which is
++     *   the virtual one if ICC accesses redirect to ICV, and the
++     *   current physical interrupt domain otherwise.
++     *
++     * Returns the domain to use, and updates *virtual to return
++     * whether this is the virtual interrupt domain. The caller can
++     * then pass domain and virtual directly to the IRS functions.
 +     */
-+    if (env->gicv5_cpuif.ich_ppi_dvi[reg] & mask) {
-+        gic_recalc_virt_ppi_hppi(env);
++    bool logical = ri->opc1 == 6;
++
++    *virtual = ri->opc1 == 4 || gicv5_icv_access(env);
++
++    if (logical || *virtual) {
++        return gicv5_logical_domain(env);
 +    }
++    return gicv5_current_phys_domain(env);
 +}
 +
- void gicv5_update_ppi_state(CPUARMState *env, int ppi, bool level)
+ static uint64_t gic_running_prio(CPUARMState *env, GICv5Domain domain)
  {
      /*
-@@ -627,6 +649,7 @@ void gicv5_update_ppi_state(CPUARMState *env, int ppi, bool level)
-         env->gicv5_cpuif.ppi_pend[0] =
-             deposit64(env->gicv5_cpuif.ppi_pend[0], ppi, 1, level);
-         gic_recalc_ppi_hppi(env);
-+        gic_recalc_virt_ppi_hppi_for_dvi(env, 0, 1ULL << ppi);
-     }
- }
+@@ -507,8 +540,8 @@ static void gic_cddis_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     GICv5Common *gic = gicv5_get_gic(env);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDDIS, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDDIS, ID);
+-    bool virtual = false;
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
  
-@@ -894,6 +917,7 @@ static void gic_ppi_cpend_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         uint64_t old = raw_read(env, ri);
-         raw_write(env, ri, old & ~value);
-         gic_recalc_ppi_hppi(env);
-+        gic_recalc_virt_ppi_hppi_for_dvi(env, reg, value);
-     }
+     gicv5_set_enabled(gic, id, false, domain, type, virtual);
  }
+@@ -519,8 +552,8 @@ static void gic_cden_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     GICv5Common *gic = gicv5_get_gic(env);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDEN, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDEN, ID);
+-    bool virtual = false;
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
  
-@@ -924,6 +948,7 @@ static void gic_ppi_spend_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         uint64_t old = raw_read(env, ri);
-         raw_write(env, ri, old | value);
-         gic_recalc_ppi_hppi(env);
-+        gic_recalc_virt_ppi_hppi_for_dvi(env, reg, value);
-     }
+     gicv5_set_enabled(gic, id, true, domain, type, virtual);
  }
+@@ -532,8 +565,8 @@ static void gic_cdpri_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     uint8_t priority = FIELD_EX64(value, GIC_CDPRI, PRIORITY);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDPRI, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDPRI, ID);
+-    bool virtual = false;
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
  
-@@ -1428,6 +1453,7 @@ static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
-             if (hm_edge) {
-                 /* handling mode is Edge: clear pending */
-                 env->gicv5_cpuif.ppi_pend[ppireg] &= ~ppibit;
-+                gic_recalc_virt_ppi_hppi_for_dvi(env, ppireg, ppibit);
-             }
-             gic_recalc_ppi_hppi(env);
-         }
+     gicv5_set_priority(gic, id, priority, domain, type, virtual);
+ }
+@@ -546,8 +579,8 @@ static void gic_cdaff_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     GICv5RoutingMode irm = FIELD_EX64(value, GIC_CDAFF, IRM);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDAFF, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDAFF, ID);
+-    bool virtual = false;
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
+ 
+     gicv5_set_target(gic, id, iaffid, irm, domain, type, virtual);
+ }
+@@ -559,8 +592,8 @@ static void gic_cdpend_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     bool pending = FIELD_EX64(value, GIC_CDPEND, PENDING);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDPEND, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDPEND, ID);
+-    bool virtual = false;
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
+ 
+     gicv5_set_pending(gic, id, pending, domain, type, virtual);
+ }
+@@ -571,8 +604,8 @@ static void gic_cdrcfg_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     GICv5Common *gic = gicv5_get_gic(env);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDRCFG, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDRCFG, ID);
+-    bool virtual = false;
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
+ 
+     env->gicv5_cpuif.icc_icsr_el1 =
+         gicv5_request_config(gic, id, domain, type, virtual);
+@@ -585,8 +618,8 @@ static void gic_cdhm_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     GICv5HandlingMode hm = FIELD_EX64(value, GIC_CDHM, HM);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDAFF, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDAFF, ID);
+-    bool virtual = false;
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
+ 
+     gicv5_set_handling(gic, id, hm, domain, type, virtual);
+ }
+@@ -1108,7 +1141,8 @@ static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     /* Acknowledge HPPI in the current interrupt domain */
+     GICv5Common *gic = gicv5_get_gic(env);
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
+     GICv5PendingIrq hppi = gic_hppi(env, domain);
+     GICv5IntType type = FIELD_EX64(hppi.intid, INTID, TYPE);
+     uint32_t id = FIELD_EX64(hppi.intid, INTID, ID);
+@@ -1185,7 +1219,8 @@ static void gic_cdeoi_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * Perform Priority Drop in the current interrupt domain.
+      * This is just clearing the lowest set bit in the APR.
+      */
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
+     uint64_t *apr = &env->gicv5_cpuif.icc_apr[domain];
+ 
+     trace_gicv5_cdeoi(domain);
+@@ -1203,10 +1238,10 @@ static void gic_cddi_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * current interrupt domain.
+      */
+     GICv5Common *gic = gicv5_get_gic(env);
+-    GICv5Domain domain = gicv5_current_phys_domain(env);
++    bool virtual;
++    GICv5Domain domain = gicv5_domain_for_insn(env, ri, &virtual);
+     GICv5IntType type = FIELD_EX64(value, GIC_CDDI, TYPE);
+     uint32_t id = FIELD_EX64(value, GIC_CDDI, ID);
+-    bool virtual = false;
+ 
+     trace_gicv5_cddi(domain, value);
+ 
 -- 
 2.43.0
 

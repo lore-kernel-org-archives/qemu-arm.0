@@ -4,86 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96753CC6B08
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 10:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 814A9CC6B03
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 10:55:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGa6s-0004kN-Fx; Tue, 13 Oct 2026 06:51:54 -0400
+	id 1xGa9u-0006Rw-1r; Tue, 13 Oct 2026 06:55:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGa6r-0004k7-DQ
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:51:53 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGa6p-00060l-OH
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:51:53 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4a020e65269so17666335e9.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:51:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xGa9s-0006R3-9T
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:55:00 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xGa9q-0006R9-D5
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:55:00 -0400
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69D9SYN23476214
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 10:54:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ hvWuEvNP+3saozX8oJUV0OWaeiW78/Qzn3EIdx3RLVY=; b=cqnH4UfgXWcyWBvW
+ 3gUhyGLoXTEio8hx/vDEwfl706fTG/Wg3V+yUJetAYA1r4TxslmppkY6tzQSv3Gq
+ KHSXp8AQpsMiTVTG1dTqoaNPUxoPPqHolI+KGVbyiSDo1PQ0iYZRF7SSyqVH579A
+ BiDvi//6/GFPY6qfJvbOiy3qfd1uYmpy2rvAQ4+NzIrMPlC9/yJt/kkSiNnVU9V6
+ 8oI73eU6Ah99yoj0vFJ6GRJlN8bXsHFgfWKM8nouTGtFAGtvfkqgDIKwBgDsi8HQ
+ kwCvshFnJKLMrdZdV08yVf6wL/GBPNtUwHaq09MZn/3NCyz6FT+b+dRo15Wb1OFK
+ 9xoftA==
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h9d7j9n6t-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 10:54:56 +0000 (GMT)
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-91b92acedd9so33043106d6.2
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:54:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791888710; x=1792493510; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=bRyz74roj7Gk7mgs1Uzn7YPeAkhJHfzrPoxB4VBW06s=;
- b=VFih+bF+wkPmDRSHT5MfWsbay3e9rdZuzpJ5cH0SWdzQhjEppRSqW/+wvosU37ev2D
- ixzIvz8xARkb0+sJcrK7fZAaLpkWNk4mKrov/KJXkNpVHZfekyRqZMGSVDAQMsb6ZHz3
- oMsfXeVjfghrNgNPhiSRRzDlMGJ16LtcJGhMTwIjskyxrvrdFw0+QB00FOH7+z6vA5xk
- RuFdkZuS3Lp8p4vZwqojnGYGA889S5zE4+sVcG07dPZduWKISFtG86IZLylK79wLyOqT
- 3XY3DqkI1HodXAVLjNEOGd5Xm4jcTWjepNzxj2fTzyLEje8YqozC0s9Zwhnq8Us7Fb5Q
- 3opQ==
+ d=oss.qualcomm.com; s=google; t=1791888895; x=1792493695; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=hvWuEvNP+3saozX8oJUV0OWaeiW78/Qzn3EIdx3RLVY=;
+ b=VchrnNfOhGRWzLJSEm07XreFQws2T/BazFUfqhkNsofv3e4wyFPRwF51R5Nyt1gq2p
+ yD8yifOVjyITcN3MvZDU0I2oiNLBiXFsz8bVGiGdOVEDv86MoUAiV/VY7l+gANurNP5x
+ Bu7XFBQ8A3G76k9pHSS2K6hHXHgBQpcX6S1EKakUZeLf4r9ggiPZnmraWyFVG1DQHzjB
+ JTOXQ5zoG/G0+HmofXbAS/4lnb5HsUDzTqzK2TeC2OY+oT81rmLd5T1oGVXeLFtVAQ9x
+ E4xIsW77uTQ8IJtlkFa2VTNbEf/IAq/2JmACd0JehDZdw8KCL+PQx/x9RxUwAcSr/atf
+ 9O1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791888710; x=1792493510;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=bRyz74roj7Gk7mgs1Uzn7YPeAkhJHfzrPoxB4VBW06s=;
- b=MuaPfr9tzzjBiBpFXUvbhWO/EmEvBh1/r2V3OtLtyOYXH/aF0btqU6s3FjCqdAbWFZ
- m58bASIIdoXTaqAkieAxyBdi5LMJKk0gQqBdBY3FITGcnP7BVQcm5mNzDywZIwnAHN5i
- oOx4EV35ZOTYmxeX/JfJYSh+QjkReYSVgcJjwFgDOQtweqI3+e2incd3rF/lKHkoRinx
- HfEUVml5ILj96bpJuDNZePzBQxulP3ygq8ZKKUJJX45BsU4s1guPEu26Qkw5UjOFoR0t
- 6p6MgWTOI7cRHmUqKBXTMGTbO8Z4dQekPQEfsJAtJWlRWmBXUn+TzwLU1lCBBmOLV1pO
- 9Bqg==
-X-Gm-Message-State: AFq9FYKM56NmvI5H2rGKze/o6xXhY12HBasOUaCUkjHDSVBiznwlJVfu
- kF5ug0UJlvR6sFidOtfwrUZjHvKnInn2JkT1180V4egFxupzEcAsPxR3U6JK7jrn4OlROV8vtk5
- nKAcvUuY=
-X-Gm-Gg: AYBFou2kTjqy43UGuxLWTC008ZzFLhh7sjJmhHQkC1s0LJTh7ljsiEjxNqbwtmjZpoX
- yUv/iSwLImW5B/IYDi/hD3tKs0ej6CJYAJrzZhAkEMhsCy2XDjPH+qslg4brbvaKUYm/OpDLDBo
- gRnG8p3TjoZjyHyGFgCh+YNqPUdJuLrAODoFkdiJcuTmQchOvvaegvcAy6fiKLQuvsgk2ipWHsx
- QR3Dw/G6kHqMDrumMQz5RqsHk8Aa2J/z+XtJDuAw4ybXpxQUmKOw8lAjj4IPP7tIrxlUHvArVEq
- UGymoBIYjmeYvoU4ND+2Iy2UQfD2SCypL3AWNkNiS0E/+lYhBuyPMfsnLGZ4SqIBqiWVYT7JpQd
- 3i/W1UJHOMHUVQ9GXAdZnOk/8THQ+6teY5rYtR/HL9+373m5VcUKYRy+9fUurkjxBLqaIgWAp8G
- Y116W9JogJ2EHglvC78gdjqi+C1jFFIELR/3SJKk/DynclcoRLktarFrTyMCE16Q5AUeg8E6uZC
- BophIzlenvv3PEW2egJXjLMD5TiCX1cBZt0PWnK7IJbLcCNAT7hua26NVlsNrSwc9hI8oRVgV8j
- 3WA=
-X-Received: by 2002:a05:600c:8206:b0:4a1:6811:8d with SMTP id
- 5b1f17b1804b1-4a18e4a3b34mr238630055e9.11.1791888709875; 
- Tue, 13 Oct 2026 03:51:49 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ d=1e100.net; s=20260707; t=1791888895; x=1792493695;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=hvWuEvNP+3saozX8oJUV0OWaeiW78/Qzn3EIdx3RLVY=;
+ b=wGGgCm7d01U1CexpuQdmdu1ZJ9LSLTaVo3a61ypeYamIcapjC3+uhPQjG/MRYKxp4R
+ VsA7wRkxGuZhK3SnJBMiPGqdq7Qe+KsagK86n44L1teW8Sx1zb6nD70PzlmlySRFD7kg
+ oeWNU1XL5wd+jQtXXsciRrvXqTrhotV/ixh9hbJdzJ+9HDydjm0zW0ViKs05R1dNqMnf
+ lxiXfxemvR/KiFAQIZeYrLnLBXHH0Ql2DC89UEefocvShz45kcGAQlk3gIPtS/SXCOyl
+ UyvxC/Fl4BdDQynjH0bWudYaizrtsg+8QXVQxU0RoSQir0TdSRftiGf4Aasz+/HG/vZM
+ aBgA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBztnFrgrZs/aPaMw28BC/wihElmtgJNZHT06Z4nO6jFtiB7yB4pvpDPAWIm+wOgAX7rO9+VyEzZYQ==@nongnu.org
+X-Gm-Message-State: AFq9FYKbm0kJc0XnH6SfgwyQimFABtumF4mlt2+OGWgymUeXzaalWsmh
+ QHfgOWjagsWvrkdV5Dc0LRdvUrdkyp25ycvdAjbb3KDYwsFjlJL8YyiNHOPBpPWv83Rj6BkJbXD
+ Pz3xY96fjhXnPIvBlJylO4DbApZaMNuFVWQCTvB9v+TnGaD8EZcN99fU=
+X-Gm-Gg: AYBFou2mhBNJTaSRfDDGqO1bDRyPK5Kgjch/WDtxwH51wCY3Soy3sBpxniwXWBL3syp
+ m2CfjAeYt6qQB+aYyLXBNBmGl4wa0ZFHLvZeZKdrfYvm4eXRh+afy9f03S+v468p+2kffuTQO12
+ 0ml/NAolnxDZ4b7YSIjPMFFsuzOWk1RpaO7xcRYHM2xDNcqQFNHGD8jex0Y/ocBGeBDiZzGTM0Y
+ 0reqTUHvra1HGSifVLt7jMJW/qOYCi/ETWPpjaeLMzHUP/C5M4h4TuMQjXCLY8Wnjo6MJCeboi/
+ 4B3JU5T0VceO1qPf1cg3m34PemmVTOWNkL2sVDNSiG/Q1/Nvhk06wsYd5E1DIzRZTFG7BdBt+Fm
+ FhqRg+6P90d5uRRYDiVU0vzNQMnJMWDnpmA==
+X-Received: by 2002:a05:620a:1991:b0:93b:db80:e0cf with SMTP id
+ af79cd13be357-93ebd281acbmr2046762385a.60.1791888895377; 
+ Tue, 13 Oct 2026 03:54:55 -0700 (PDT)
+X-Received: by 2002:a05:620a:1991:b0:93b:db80:e0cf with SMTP id
+ af79cd13be357-93ebd281acbmr2046760685a.60.1791888894904; 
+ Tue, 13 Oct 2026 03:54:54 -0700 (PDT)
+Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a19ba624b3sm242473825e9.2.2026.10.13.03.51.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 03:51:48 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH] target/arm: Deprecate using named CPU models with KVM
-Date: Tue, 13 Oct 2026 11:51:47 +0100
-Message-ID: <20261013105147.1070641-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ 5b1f17b1804b1-4a18be96549sm507270015e9.6.2026.10.13.03.54.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Oct 2026 03:54:54 -0700 (PDT)
+Message-ID: <a693c8e2-5a15-429c-9427-d8dc68096830@oss.qualcomm.com>
+Date: Tue, 13 Oct 2026 12:54:53 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 68/86] hw/intc/arm_gicv5: Implement gicv5_set_resident()
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20261013083933.1024405-1-peter.maydell@linaro.org>
+ <20261013083933.1024405-69-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20261013083933.1024405-69-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: 74eegLb1lNHwxiN3atA5RYd8K1psCcd_
+X-Proofpoint-ORIG-GUID: 74eegLb1lNHwxiN3atA5RYd8K1psCcd_
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDA0MyBTYWx0ZWRfX65mPblHwZP1W
+ ZGwRoFzdUGKH7v6nQhq6RIUAgs9daAOnFbN0EqEZJD9c7qiZVlEC/zJe2Nu7eqPqdlVYvoouRyD
+ HcbNYBRjN5pz8FTQnCDYq6xL6M3MxV8=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDA0MyBTYWx0ZWRfX+NtT6uEjqfbU
+ YuMaFjdMLKn75upwNcbUf0syVN+0a5u6wxl5mpQ+gWeDho0apmeOLU6EDrXYYf+w6R0P97kJkAs
+ 4pA3MmAZExFzGNiO19xGQ9xDa7GTen4afmWFxuqIe67AV2qi2PG07IpauZO451ZCEM244TaqjGm
+ S/vXc2ZfQQ5l9+5K3X81yUlmtlMFpLWFXYhOrxP7a2C2leHLTIxQzlgDlEqMyOMnN1zISMSAviT
+ rGGww5LoU6NwMHWnnF9AjueuCnNcjjQn5oJSxfnaApZytiSAojapPBrg+klw0VGY0+ujif8lt6J
+ r6uH9RzJ+Q/4Zkn4Gk2SKmcYGuwdL7mGZZKMDa9Q0unEKVD1Dcuf5zMkiG5Y1r056zK4mlmhAQH
+ XFJbcqtyUy/GaXYHmvDGiNN335+XmTk6BzeeRJiUP4itX7AJHjpduPAV88meSbF5dgWNiejOh7t
+ ODlrUoNqyvJkP9qoRfQ==
+X-Authority-Analysis: v=2.4 cv=PMGaavqC c=1 sm=1 tr=0 ts=6ace0e00 cx=c_pps
+ a=oc9J++0uMp73DTRD5QyR2A==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
+ a=KKAkSRfTAAAA:8 a=ecGInKZYiohcrdBcGAMA:9 a=QEXdDO2ut3YA:10
+ a=iYH6xdkBrDN1Jqds4HTS:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 bulkscore=0 impostorscore=0 malwarescore=0
+ lowpriorityscore=0 clxscore=1015 adultscore=0 spamscore=0 phishscore=0
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
+ definitions=main-2610130043
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,84 +155,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently when using KVM on Arm, the normal thing is to use either
-the 'host' or 'max' CPU types, both of which give the guest the same
-CPU as the host.  We also for legacy reasons allow 'cortex-a53' and
-'cortex-a57' CPU types, which will only work when the host CPU is
-exactly that matching CPU.  This is because the original idea of the
-KVM ABI was that userspace would request a particular CPU type by
-setting the target field in the KVM_ARM_VCPU_INIT ioctl to an
-appropriate KVM_ARM_TARGET_* constant.  However, it quickly became
-clear that this was a bad idea, and now everything uses
-KVM_ARM_TARGET_GENERIC_V8; the tiny number of existing CPU-specific
-target values behave identically to GENERIC_V8 except that they will
-only work if the host CPU matches them.
+On 13/10/26 10:39, Peter Maydell wrote:
+> When the GICv5 CPU interface wants to make a VPE resident, it calls
+> gicv5_set_resident(). Currently that is a do-nothing placeholder;
+> implement the required behaviour of tracking on the IRS side that
+> the VPE is resident on this CPU, and remembering the information
+> about the doorbell interrupt.
+> 
+> For each CPU, we keep a note of the current VPE that is resident (if
+> any), so we have an easy way to get to that information given the CPU
+> index in functions like gicv5_set_priority().  Since the only way to
+> make a VPE invalid is to make the entire VM invalid, we only need to
+> set this info in gicv5_set_resident() and then clear it when a VM
+> becomes invalid or the whole VM table is made invalid.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/intc/arm_gicv5.c         | 115 +++++++++++++++++++++++++++++++++++-
+>   hw/intc/trace-events        |   2 +
+>   include/hw/intc/arm_gicv5.h |   5 ++
 
-Future support for "show the KVM guest a CPU type that's not
-identical to the host" is going to work by telling it different ID
-register values.  Real Cortex-A53 and A57 CPUs are now all over a
-decade old and not in widespread use.  Deprecate the ability to use
-'-cpu cortex-a53' and '-cpu cortex-a57' with KVM, to get rid of this
-odd legacy corner and open up the opportunity in future to support
-named CPU types via ID register settings if we want that.
+(please enable scripts/git.orderfile to ease mailing list code review)
 
-For any situation where the cortex-a53 and cortex-a57 CPU types
-currently work with KVM, '-cpu host' or '-cpu max' will have
-identical behaviour.  (Though note that if you are using "KVM, but
-fall back to TCG" then the fallback under TCG will be different.)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Personally I doubt anybody is actually using these named
-CPU types...
----
- docs/about/deprecated.rst | 13 +++++++++++++
- target/arm/kvm.c          |  7 +++++++
- 2 files changed, 20 insertions(+)
+> @@ -1566,6 +1649,8 @@ static void irs_vmt_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+>               return;
+>           }
+>           irs_clean_vm_cache(cs, &s->vmt_config[domain]);
+> +        /* No VPE is now resident on any CPU */
+> +        memset(s->res_vpe, 0, sizeof(VPE) * cs->num_cpus);
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index ccbc4219497..153fe118151 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -234,6 +234,19 @@ in the QEMU object model anymore. ``Sun-UltraSparc-IIIi+`` and
- but for consistency these will get removed in a future release, too.
- Use ``Sun-UltraSparc-IIIi-plus`` and ``Sun-UltraSparc-IV-plus`` instead.
- 
-+``cortex-a53`` and ``cortex-a57`` CPU names with KVM on Arm (since 11.2)
-+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+QEMU currently allows the CPU name to be set to ``cortex-a53`` or
-+``cortex-a57`` when using KVM; this is identical to using ``host`` or
-+``max``, but it will only work when the host CPU is a Cortex-A53 or
-+Cortex-A57.  These CPUs are now over 10 years old, and the ability to
-+use the named CPU type like this is part of a legacy corner of the KVM
-+API, which doesn't work with any other host CPU types. Using these CPU
-+names with KVM enabled is deprecated; use ``host`` or ``max`` instead,
-+which will have identical behaviour on the hosts where using
-+``cortex-a53`` or ``cortex-a57`` works.
-+
- System emulator machines
- ------------------------
- 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 3d905f8565d..de09d63d2e3 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2015,6 +2015,13 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return -EINVAL;
-     }
- 
-+    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_CORTEX_A53 ||
-+        cpu->kvm_target == QEMU_KVM_ARM_TARGET_CORTEX_A57) {
-+        warn_report_once("Using the cortex-a53 and cortex-a57 CPU types "
-+                         "with KVM is deprecated. Use the max or host CPU "
-+                         "types instead.");
-+    }
-+
-     qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
- 
-     /* Determine init features for this CPU */
--- 
-2.43.0
+res_vpe is declared as:
+
+   VPE **res_vpe;
+
+so IIUC we should use sizeof(*VPE), or the sizeof(*s->res_vpe)
+used below to keep the same style.
+
+>           cs->irs_vmt_baser[domain] = FIELD_DP64(cs->irs_vmt_baser[domain],
+>                                                  IRS_VMT_BASER, VALID, valid);
+
+
+> @@ -2884,6 +2985,11 @@ static void gicv5_reset_hold(Object *obj, ResetType type)
+>               g_hash_table_remove_all(s->vmt_config[i].vm_cache);
+>           }
+>       }
+> +
+> +    if (s->res_vpe) {
+> +        /* No VPE is now resident on any CPU */
+> +        memset(s->res_vpe, 0, sizeof(*s->res_vpe) * cs->num_cpus);
+
+OK.
+
+> +    }
+>   }
+>   
+>   static void gicv5_set_idregs(GICv5Common *cs)
+> @@ -2988,6 +3094,10 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
+>               s->hppi[i] = g_new0(GICv5PendingIrq, cs->num_cpus);
+>           }
+>       }
+> +
+> +    if (cs->has_virt) {
+> +        s->res_vpe = g_new0(VPE *, cs->num_cpus);
+
+OK.
+
+> +    }
+>   }
+
+
+> diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
+> index 28417317376..ac85cad3eb5 100644
+> --- a/include/hw/intc/arm_gicv5.h
+> +++ b/include/hw/intc/arm_gicv5.h
+> @@ -40,6 +40,8 @@ typedef struct GICv5VMTConfig {
+>       GHashTable *vm_cache;
+>   } GICv5VMTConfig;
+>   
+> +typedef struct VPE VPE;
+> +
+>   /*
+>    * This class is for TCG-specific state for the GICv5.
+>    */
+> @@ -53,6 +55,9 @@ struct GICv5 {
+>   
+>       /* We cache the HPPI for each CPU for each domain here */
+>       GICv5PendingIrq *hppi[NUM_GICV5_DOMAINS];
+> +
+> +    /* Array: for each CPU, either NULL or ptr to the resident VPE */
+> +    VPE **res_vpe;
+>   };
+>   
+>   struct GICv5Class {
 
 

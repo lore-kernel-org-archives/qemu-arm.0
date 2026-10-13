@@ -4,131 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198F7CC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4591FCC6B08
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 09:27:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGYLk-0001mD-Iw; Tue, 13 Oct 2026 04:59:08 -0400
+	id 1xGYmb-0002qV-PP; Tue, 13 Oct 2026 05:26:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGYLj-0001lf-5s
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:59:07 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGYLg-0001s6-3Q
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:59:06 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-6afa651700eso3977421a12.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:59:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791881942; cv=none;
- d=google.com; s=arc-20260327;
- b=DZkPshj/YR7Z0zRXmSF51V7byfFFA2zunI7BoM2IlOQJEl2Fq7htlhznK0AjA9qOUF
- 3ubzM1sxtPLTW+2SYllWTOJKSMplb9v5pmwlGfPRwPaaNTQefc3QWgyNQfv91ZdWXIbP
- UCVnDDBcjJt822cpJP8ilbsmVzr8Cdy5LYqZcVOCI00axmZoPaSdqwqsHxapZfwDXk3v
- /z3IK4n0mcmfMwAu4p8rp8Pdc13YoMsLLGbFATsYCxR2jSB5/3lsOIRU9VW+uSG3anlw
- kjF4QFAPTh+78wszts05zQmdwBl/DcsvLpcWY8ZZfCPUBNLpAhdZmdHlQ6kvKWaO3S8a
- UNGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=Vnm56ae8KFEjUmzemm9bJyc3CFkQeFMKTOaDY/nxXz8=;
- fh=oFpYZ3ZkfG10yZ5JwvFSLAXbeaucvrWbD+r28lEwYjQ=;
- b=BHq376l0Lw9GVFxKsHlt6F6Ouoes+DkexKniK6KMjI78qD+qwdYQfN5uSxqj4HGOox
- sNwdBxjrdIJbx5lGfY75Kct6zdLXBpt6zs35Y7XBa/otgLVe+MqDKfbR0FGy8aw77I46
- ybbYsRI9dm0OXd4pPjXa/GDpdPF8ZjK2A4D2ycyhCSsrS4lc8MaYkrPBfkPWlBvyqeVh
- VdF0+4PLVOuk1QuBOYdBe9aVMzQ2DPH67vSQaGDjzzmlNc5ZuOWbqIZT/8jnXn3F3Bqj
- MljIvNnrkS4h6lpJL2XkbaMQiz3wQf7BKKENlmBNz9X8di3u7MAZ+f6EAuIZ2xfVgMJf
- LUMw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791881942; x=1792486742; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=Vnm56ae8KFEjUmzemm9bJyc3CFkQeFMKTOaDY/nxXz8=;
- b=s+5S5uxx0OaXjuLv+sabu4gR3bajPUEY4rqk2L/V4/N11DRVkwa2ABAYHK5E5aC1A5
- 84VRhzS8b7h7nE2dQsArL6QBZiqxifatMiuSh86kHqLEtclbI446wnCCtAgmM67jogqu
- Byb60p3Nn//eoLZgVSOLAZcXB/SvEjUBKeF+bHqRG34Ng86idL3gvSMp0VYgZ6N9eAae
- B6DYiZB20KR08Ii2zOG7khO0RkwiBxCplXFuyFOAxoeKFghoQUlrmTrGWqDl964giB2b
- jiWfAF8hfD/klK3wVqoXuOelsl1/rvtd/A8ffI0AnVHIYovd1Sat5l/omgF3sYRbyD5c
- VqSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791881942; x=1792486742;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Vnm56ae8KFEjUmzemm9bJyc3CFkQeFMKTOaDY/nxXz8=;
- b=TibEcLv5V/Zzs4znDoaISnnr0Aa3S6kjPXvjQHu9PFaOyw0L2qjfwtn225mOJz7y7z
- Fi2EgKlBycAxnRDGaZ92qHFYzb9W+E5CKM8HbTqG6BZbUyDZyrgkktnJIb8KTsCeoo2A
- OrTxis51LbL/uUy/ZMPtGzmG4rBMdWAXrtQTCOlOKN6Uc5HjVcOSt/a73smKCBQMcisi
- 17t8ay8VHYVH/pjpwpD2Zoj1O9tZ5bKFxtG5YNzibrKxV+w2FdTrE42xlAbJJMj0JvmP
- SdI8NXS8/zvQzM5Ht3H9GGL5/knq/qnCo1K+RL/PsM2zmmrA+iberNEBpYnPOUCtZufh
- 98Gw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzDz11kRJHO5KBZBarAKqnPr8mCjvgmZz4di5PmLzdoiDfBtHbiHT7/XsLIOwMKuBxlq+YZ/3pLag==@nongnu.org
-X-Gm-Message-State: AFq9FYK2qNCMq1Jf8NM7eLDDIoUs4nwo/nafW34M8Im/8KLt5Q9zBpw/
- 8uQ1NSwoQ1gOPQpaXY6oaaDPSIQ974KBlqtv1M5QCD8YyFdyRYp0FhNf/qcPPZ9QTwOn/gjoe2S
- GzVOapjimKySQTLS1R6AzWdSW/tnJ0fc=
-X-Gm-Gg: AYBFou1yceq5X0XkAHqkk55iZfgARSINcQ54pR6I/pUuG7rfRNHYj7vWwqiJGaYnLeY
- evvltP7njPBwZphshTrtuVQyyy9xj0nrcin/Dr7c0RmmOjbsTdJtTotPnQ/n3c88ru8PAHYXC15
- 8OE0ZL2KM7hwN5jSp9qgVqs4ZeQDDizYR9jDArJ9+iiOEfWhohp+wvIsqEwNgLu1BikZUoHen4X
- WH65HNJwhTItKnX0aPjE/OPaF4vHrAmRSI2zKR3IwFZzb82GSkFBm0MXtRQCFlPkOXktTXGHlA4
- gb0PZBwNwM3xSD4GmXM53NKVfIl6MT40Cx+BLrRRBUwNuENliabXMgM=
-X-Received: by 2002:a05:6402:46d2:b0:6b1:c265:a5ad with SMTP id
- 4fb4d7f45d1cf-6b1e0afc7a4mr1898211a12.32.1791881941828; Tue, 13 Oct 2026
- 01:59:01 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGYmX-0002oQ-Lh
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 05:26:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGYmT-0004Ut-7d
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 05:26:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1791883603;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=Q0OZL1995Bz696SPHYwnvGMDPJ13sGzioecQYMEGYjk=;
+ b=DdfFQg/YqEpA58cpwKC7Tyq1f4TfTYk0iw3JuSttSBj7qoRJHIBhaU5RHxbnDJEwusNBzM
+ HPSOYFwIw4BJHOp/OG2pDq+PeZDYqDShoDAQZluTkiB81Qu1oHb85RaFxu16xHQOPVHXOR
+ 2QQbc+iG25/rp3YST8B+FYn5UAhVtcY=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-d1s6RyTgMQaJ8obtjPUvHg-1; Tue,
+ 13 Oct 2026 09:26:39 +0000
+X-MC-Unique: d1s6RyTgMQaJ8obtjPUvHg-1
+X-Mimecast-MFC-AGG-ID: d1s6RyTgMQaJ8obtjPUvHg_1791883597
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id ECE3A180AD43; Tue, 13 Oct 2026 09:26:35 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B8D80195608B; Tue, 13 Oct 2026 09:26:28 +0000 (UTC)
+Date: Tue, 13 Oct 2026 10:26:25 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: luoyonggang@gmail.com, qemu-devel@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Stafford Horne <shorne@gmail.com>, qemu-arm@nongnu.org,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Darren Kenny <darren.kenny@oracle.com>
+Subject: Re: [PATCH 4/8] target-info: replace QOM registration with a
+ constructor list
+Message-ID: <as35QRodxSk16e-F@redhat.com>
 References: <20261007115253.328-1-luoyonggang@gmail.com>
  <20261007115253.328-5-luoyonggang@gmail.com>
  <37275f1f-aee9-444b-aaed-3e0bf34b63cd@oss.qualcomm.com>
  <CAE2XoE_GmDbA5SSUb3k_9HwE+bxnBjK+kBj-RE5BonEBC=GpMw@mail.gmail.com>
  <919a1a75-78b9-42a9-93ed-9edf6757f707@oss.qualcomm.com>
- <CAE2XoE-XeHnywvAGOCgxO30a_qCMgxbnBF5kjtStGa9=5D=Rkg@mail.gmail.com>
- <72ed88c4-5f31-46c3-ab48-fdaa7c2743b7@oss.qualcomm.com>
- <CAE2XoE8mHnaB8rgcE-ZsetpyK6dWSmU9dzRbdVJPb_w4F+1OWA@mail.gmail.com>
- <f011e6c6-4588-437b-ab22-ab83ed7b8850@oss.qualcomm.com>
-In-Reply-To: <f011e6c6-4588-437b-ab22-ab83ed7b8850@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Tue, 13 Oct 2026 16:58:48 +0800
-X-Gm-Features: AclHuK_93Yy1fp3OFygrTJ8--sqtaeYG50vBDHjf406EcbvlW3glakRj6pWYWbk
-Message-ID: <CAE2XoE9o2P66HSdjN934F3aySfCDvBA1DY1fu18P-Jp_RGin+A@mail.gmail.com>
-Subject: Re: [PATCH 4/8] target-info: replace QOM registration with a
- constructor list
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Cleber Rosa <crosa@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Laurent Vivier <lvivier@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Stafford Horne <shorne@gmail.com>,
- qemu-arm@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, Alexander Bulekov <alxndr@bu.edu>, 
- Darren Kenny <darren.kenny@oracle.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <CAE2XoE8G7Pyu-UaoW0BRxHqEX2aef_ak29mAkwwssSS5Rf_y5A@mail.gmail.com>
+ <578afeb7-d302-402e-bedf-43b29ef00d5b@oss.qualcomm.com>
+MIME-Version: 1.0
+In-Reply-To: <578afeb7-d302-402e-bedf-43b29ef00d5b@oss.qualcomm.com>
+User-Agent: Mutt/2.4.2 (2026-08-30)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: -ENjSiJlJ0Oor1VgF8rUObi_QuulIvZxYlxyCEX_ONk_1791883597
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,516 +107,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Oct 13, 2026 at 11:57=E2=80=AFAM Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
->
-> On 10/12/26 2:27 PM, Yonggang Luo wrote:
-> > On Thu, Oct 8, 2026 at 7:28=E2=80=AFAM Pierrick Bouvier
-> > <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>
-> >> On 10/7/2026 4:02 PM, Yonggang Luo wrote:
-> >>> On Thu, Oct 8, 2026 at 6:31=E2=80=AFAM Pierrick Bouvier
-> >>> <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>>>
-> >>>> On 10/7/2026 1:50 PM, Yonggang Luo wrote:
-> >>>>> On Thu, Oct 8, 2026 at 4:29=E2=80=AFAM Pierrick Bouvier
-> >>>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>>>>>
-> >>>>>> On 10/7/2026 4:48 AM, Yonggang Luo wrote:
-> >>>>>>> Register target definitions through constructors instead of
-> >>>>>>> MODULE_INIT_TARGET_INFO, making target_info_list() and target_inf=
-o()
-> >>>>>>> available on entry to main(), without explicit initialization or =
-a
-> >>>>>>> call to module_call_init(MODULE_INIT_QOM).
-> >>>>>>>
-> >>>>>>> Keep the target list sorted by target_arch and default to its fir=
-st
-> >>>>>>> entry. Provide an unknown TargetInfo fallback for target-independ=
-ent
-> >>>>>>> tools such as qemu-img and unit tests that link no target-info-de=
-f.c
-> >>>>>>> objects.
-> >>>>>>>
-> >>>>>>> Remove the obsolete QOM target-info registration infrastructure a=
-nd
-> >>>>>>> update the multi-target test to inspect target information before
-> >>>>>>> initializing QOM.
-> >>>>>>>
-> >>>>>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >>>>>>> ---
-> >>>>>>>   include/qemu/module.h           |  1 -
-> >>>>>>>   include/qemu/target-info-def.h  | 56 ++++++++++++++++++++++++++=
-+---
-> >>>>>>>   include/qemu/target-info-init.h | 53 --------------------------=
---
-> >>>>>>>   include/qemu/target-info-qom.h  | 31 -----------------
-> >>>>>>>   include/qemu/target-info.h      |  9 +++++
-> >>>>>>>   meson.build                     |  6 ++--
-> >>>>>>>   system/vl.c                     |  4 ---
-> >>>>>>>   target-info-def.c               |  1 -
-> >>>>>>>   target-info-qom.c               | 60 --------------------------=
-------
-> >>>>>>>   target-info.c                   | 61 ++++++++++++++++++++++++++=
-++++++-
-> >>>>>>>   tests/qtest/fuzz/fuzz.c         |  3 --
-> >>>>>>>   tests/unit/test-multi-target.c  | 12 +++----
-> >>>>>>>   12 files changed, 129 insertions(+), 168 deletions(-)
-> >>>>>>>   delete mode 100644 include/qemu/target-info-init.h
-> >>>>>>>   delete mode 100644 include/qemu/target-info-qom.h
-> >>>>>>>   delete mode 100644 target-info-qom.c
-> >>>>>>>
-> >>>>>>
-> >>>>>> This approach (custom list based) was considered before implementi=
-ng
-> >>>>>> things with QOM Types. The rationale I followed was that if everyt=
-hing
-> >>>>>> is in QOM, we might better follow that for consistency sake.
-> >>>>>> Yes, the compromise if that we need an extra init step, but it was=
- not a
-> >>>>>> problem to add it.
-> >>>>> I have issue to add the init step for unit-tests, and hard to write=
- the -target
-> >>>>> parse procedure and get it right. Not means this won't work. but fo=
-r
-> >>>>> me, too much
-> >>>>> coupled.
-> >>>>>
-> >>>>
-> >>>> We already have such a test upstream:
-> >>>> https://gitlab.com/qemu-project/qemu/-/blob/master/tests/unit/test-m=
-ulti-target.c#L35
-> >>>>
-> >>>> The init sequence is quite straightforward:
-> >>>>
-> >>>> ```
-> >>>> /* initialize target types, and only them */
-> >>>> module_call_init(MODULE_INIT_TARGET_INFO);
-> >>>>
-> >>>> /* we can get the list if we want, for -target or any other purpose =
-*/
-> >>>> g_autoptr(GSList) targets =3D object_class_get_list(TYPE_TARGET_INFO=
-, false);
-> >>>>
-> >>>> /* set the global target info from any element in this list */
-> >>>> TargetInfo* ti =3D ...;
-> >>>> target_info_qom_set_target_info(ti);
-> >>>>
-> >>>> /* register rest of QOM types */
-> >>>> module_call_init(MODULE_INIT_QOM);
-> >>>> ```
-> >>>>
-> >>>> It works fine to implement -target (if we would like to do it), sinc=
-e I
-> >>>> implemented it myself. That was also my initial motivation by the wa=
-y.
-> >>>>
-> >>>> Also, I appreciate that target-info is NULL by default, it crashes
-> >>>> loudly when it has not been set, and make it easy to find who depend=
-s on it.
-> >>>>
-> >>>>> If we treat target_info as a QOM, but QOM needs target_info to set
-> >>>>> up(is_avaible). That makes
-> >>>>> the init sequence too much of a burden.
-> >>>>>
-> >>>>
-> >>>> See sequence above, the solution is to initialize TARGET_INFO first,
-> >>>> before the rest of QOM. You end up with the same result than with a
-> >>>> statically initialized list.
-> >>>>
-> >>>>>
-> >>>>> is_available is depends on target_arch
-> >>>>> And before this patch, target_arch depends on QOM, pulls user/softm=
-mu because
-> >>>>> target_info_init. By moving target-info to be a custom list based, =
-we
-> >>>>> can decouple
-> >>>>> target-info from qom/softmmu/user. and target-info will always
-> >>>>> available once "main(argv, argc)" is entered. We also have the
-> >>>>> advantage of doing all sorts
-> >>>>> of tests against it.
-> >>>>>
-> >>>>
-> >>>> Which kind of tests are you trying to add?
-> >>>>
-> >>>> For now, the exact list of places where we need to do this initializ=
-e
-> >>>> target dance are:
-> >>>> - system/vl.c:    module_call_init(MODULE_INIT_TARGET_INFO);
-> >>>> - tests/qtest/fuzz/fuzz.c:    module_call_init(MODULE_INIT_TARGET_IN=
-FO);
-> >>>> - tests/unit/test-multi-target.c:
-> >>>
-> >>> # Multi targets test
-> >>> if multi_target_objects !=3D []
-> >>>    test('test-multi-target',
-> >>>         executable('test-multi-target',
-> >>>                    sources: [multi_target_crates, files('test-multi-t=
-arget.c')],
-> >>>                    dependencies: multi_target_deps,
-> >>>                    objects: multi_target_objects,
-> >>>                    link_depends: [block_syms, qemu_syms],
-> >>>                    link_args: multi_target_link_args),
-> >>>         suite: ['unit'])
-> >>> endif
-> >>>
-> >>> I see this test, I am trying to add tests that do not pull so many
-> >>> multi_target_objects, as it would be huge.
-> >>
-> >> Agree, we should not add more binary.
-> >> If you need truly multi targets test, this existing binary is a good
-> >> place to start: just add a second test in it.
-> >>
-> >>> Just pull qom only.  And I am trying to call target_info() in
-> >>> object.c, as inspect machines with
-> >>> qemu-system is rejected, so maybe that's not an issue anymore
-> >>>
-> >>
-> >> Seems like a good candidate for the multi-target.c test.
-> >>
-> >>>
-> >>> I means Subject: [PATCH v3 00/10] machine: uniquify virt QOM names
-> >>> https://lore.kernel.org/qemu-devel/20260926081551.29-1-luoyonggang@gm=
-ail.com/#r
-> >>>
-> >>> So the current design always rejects types that do not belong to the
-> >>> current target. Listing them
-> >>> all is not an option at all. With this restriction, then these are
-> >>> indeed not needed.
-> >>> So I'll wait for your work first, otherwise it's always conflicting.
-> >>>
-> >>>
-> >>>> module_call_init(MODULE_INIT_TARGET_INFO);
-> >>>>
-> >>>> If we want more tests, I'm totally ok to move this init code to
-> >>>> target-info.c, and replace call sites if needed.
-> >>>>
-> >>>>>
-> >>>>> Tools such as qemu-img and unit tests may link target-info.c withou=
-t any
-> >>>>> target-info-def.c objects. Their target list remains empty, so use =
-this
-> >>>>> fallback.
-> >>>>>
-> >>>>
-> >>>> Why should this tool get access to target list? qemu-img deals with =
-disk
-> >>>> images, and is unrelated to targets.
-> >>>>
-> >>>>>
-> >>>>> static TypeImpl *type_register_internal(const TypeInfo *info)
-> >>>>> {
-> >>>>>      TypeImpl *ti;
-> >>>>>
-> >>>>>      if (!type_name_is_valid(info->name)) {
-> >>>>>          fprintf(stderr, "Registering '%s' with illegal type name\n=
-",
-> >>>>> info->name);
-> >>>>>          abort();
-> >>>>>      }
-> >>>>>
-> >>>>>      if (info->is_available && !info->is_available()) {
-> >>>>>          return NULL;
-> >>>>>      }
-> >>>>>
-> >>>>>      ti =3D type_new(info);
-> >>>>>
-> >>>>>      type_table_add(ti);
-> >>>>>      return ti;
-> >>>>> }
-> >>>>>
-> >>>>>>
-> >>>>>> Is there another good value this list approach brings compared to =
-what
-> >>>>>> exists?
-> >>>>>>
-> >>>>>> Regards,
-> >>>>>> Pierrick
-> >>>>>
-> >>>>>
-> >>>>>
-> >>>>
-> >>>
-> >>>
-> >>
+On Wed, Oct 07, 2026 at 04:24:07PM -0700, Pierrick Bouvier wrote:
+> On 10/7/2026 3:54 PM, Yonggang Luo wrote:
+> > My work is here.
+> > https://gitlab.com/lygstate-qemu/qemu/-/tree/combined-binary-multi-targets?ref_type=heads
+> > I am afraid of posting 300 pathces into threads to flood it(and
+> > disturbing yours). So I'll wait for your work first. and resolving
+> > conflicts later, that's really time-consuming.
 > >
+> 
+> It's indeed not possible to send 300 patches and expect this to work,
+> whether it's on this mailing list, or any software forge also.
+> It's also not possible to send a link, and expect anyone to take a look
+> at the 373 commits sitting it on top of master. My name is not Claude.
+> Instead, humans have to progress step by step, based on feedback. Yes it
+> takes time and it can be frustrating. And yes, I've been there (and
+> frustrated) also, I feel sorry for you.
+> 
+> At the moment, if we want to make it move on, we need to focus on one
+> single thing:
+> "How to document/specify which targets a machine support".
+> 
+> > I did many explanations before. seems my explanation is too bad and
+> > not to give a clean picture for you, let's delay these first.
 > >
-> > Hi, the cycle dependencies issue happened again, deal with it's a bit
-> > nasty, there is workaround, but I think
-> > the constructor list is the best, here is the rationale:
-> >
-> >
-> > # Target discovery during QOM registration
-> >
-> > ## Problem
-> >
-> > Machine registration needs the list of targets compiled into the binary=
-.
-> > Currently, it obtains that list through:
-> >
-> > ```c
-> > object_class_get_list(TYPE_TARGET_INFO, false);
-> > ```
-> >
-> > Despite the filter, QOM initializes every registered type before checki=
-ng
-> > whether it implements the requested type.
-> >
-> > During `MODULE_INIT_QOM`, registration is only partially complete. A de=
-vice
-> > may already be registered while its parent's registration callback has =
-not
-> > run, causing failures such as:
-> >
-> > ```text
-> > Type 'sys-bus-device' is missing its parent 'device'
-> > ```
-> >
-> > The parent is linked into the binary. The problem is premature
-> > initialization, not a missing library.
-> >
-> > ## Option 1: cache target-info QOM classes
-> >
-> > Enumerate target-info classes once, before device registration starts.
-> > Machine registration then reads the cache instead of enumerating QOM.
-> >
-> > ### Demo
-> >
-> > Declare shared helpers:
-> >
-> > ```c
-> > void target_info_qom_init(void);
-> > const GSList *target_info_qom_get_targets(void);
-> > ```
-> >
-> > Implement the cache:
-> >
-> > ```c
-> > static GSList *target_info_classes;
-> > static bool target_info_initialized;
-> >
-> > void target_info_qom_init(void)
-> > {
-> >      if (target_info_initialized) {
-> >          return;
-> >      }
-> >
-> >      module_call_init(MODULE_INIT_TARGET_INFO);
-> >      target_info_classes =3D object_class_get_list(TYPE_TARGET_INFO, fa=
-lse);
-> >      target_info_initialized =3D true;
-> > }
-> >
-> > const GSList *target_info_qom_get_targets(void)
-> > {
-> >      assert(target_info_initialized);
-> >      return target_info_classes;
-> > }
-> > ```
-> >
-> > Initialize it before other QOM registration:
-> >
-> > ```c
-> > target_info_qom_init();
-> > module_call_init(MODULE_INIT_QOM);
-> > ```
-> >
-> > Machine registration uses the borrowed cache:
-> >
-> > ```c
-> > for (const GSList *l =3D target_info_qom_get_targets(); l; l =3D l->nex=
-t) {
-> >      const TargetInfo *ti =3D TARGET_INFO_CLASS(l->data)->target_info;
-> >
-> >      machine_register_virt_type_for_target(info, name_suffix, arch_mask=
-,
-> >                                           latest, ti);
-> > }
-> > ```
-> >
-> > `target_info_qom_set_target()` should also use the cached list instead =
-of
-> > enumerating QOM again.
-> >
-> > ### Advantages
-> >
-> > - Preserves the existing QOM-based representation.
-> > - Avoids enumeration during incomplete device registration.
-> > - Requires relatively small changes.
-> >
-> > ### Disadvantages
-> >
-> > - Every relevant executable and test must initialize the cache before
-> >    starting QOM registration.
-> > - `object_class_get_list()` allocates list nodes.
-> > - Callers borrow the list, so it cannot be freed while they are using i=
-t.
-> > - Cleanup is possible after all consumers finish, but requires an expli=
-cit
-> >    lifecycle policy. Keeping the cache until process exit is a lifetime
-> >    allocation, not inherently an unreachable memory leak.
-> > - Target-info types registered after cache creation are not included.
-> > - Target discovery remains coupled to QOM class initialization.
-> >
-> > ## Option 2: constructor-populated TargetInfo registry
-> >
-> > Each target registers its immutable `TargetInfo` pointer directly.
-> > Machine registration later iterates the registry without querying QOM.
-> >
-> > Use a statically allocated node per target so registration requires no
-> > heap allocation.
-> >
-> > ### Demo
-> >
-> > Define a registration node and accessors:
-> >
-> > ```c
-> > typedef struct TargetInfoRegistration {
-> >      const TargetInfo *info;
-> >      struct TargetInfoRegistration *next;
-> > } TargetInfoRegistration;
-> >
-> > void target_info_register(TargetInfoRegistration *entry);
-> > const TargetInfoRegistration *target_info_get_targets(void);
-> > ```
-> >
-> > Implement the registry in shared code:
-> >
-> > ```c
-> > static TargetInfoRegistration *target_info_targets;
-> >
-> > void target_info_register(TargetInfoRegistration *entry)
-> > {
-> >      entry->next =3D target_info_targets;
-> >      target_info_targets =3D entry;
-> > }
-> >
-> > const TargetInfoRegistration *target_info_get_targets(void)
-> > {
-> >      return target_info_targets;
-> > }
-> > ```
-> >
-> > Each target's translation unit provides its own static node and
-> > constructor. For example:
-> >
-> > ```c
-> > static TargetInfoRegistration target_info_registration =3D {
-> >      .info =3D &target_info_stub,
-> > };
-> >
-> > static void __attribute__((constructor)) register_target_info(void)
-> > {
-> >      target_info_register(&target_info_registration);
-> > }
-> > ```
-> >
-> > The constructor must run exactly once per node. The existing target-inf=
-o
-> > initialization macro can generate this registration code alongside the
-> > QOM registration code; user-mode target-info behavior should remain
-> > unchanged.
-> >
-> > Machine registration consumes the completed registry:
-> >
-> > ```c
-> > for (const TargetInfoRegistration *entry =3D target_info_get_targets();
-> >       entry;
-> >       entry =3D entry->next) {
-> >      machine_register_virt_type_for_target(info, name_suffix, arch_mask=
-,
-> >                                           latest, entry->info);
-> > }
-> > ```
-> >
-> > The sequence is:
-> >
-> > ```text
-> > Target constructors register static metadata pointers
-> >      =E2=86=93
-> > Startup constructors finish
-> >      =E2=86=93
-> > Machine registration iterates the completed registry
-> > ```
-> >
-> > QOM target-info classes can remain available for introspection.
-> >
-> > ### Advantages
-> >
-> > - Makes target discovery independent of QOM initialization.
-> > - Removes the explicit cache-initialization step from executables and t=
-ests.
-> > - Avoids premature initialization of unrelated device types.
-> > - Uses static storage: no allocated list nodes and no registry cleanup.
-> > - Does not require ordering between target constructors.
-> >
-> > ### Constraints
-> >
-> > - Constructors must only register metadata, not enumerate or initialize
-> >    QOM classes.
-> > - Consumers must run after startup constructors have completed.
-> > - Each registration node must be inserted exactly once.
-> > - Registry order must not be treated as a meaningful target ordering.
-> > - This simple design assumes compiled-in targets; runtime loading or
-> >    unloading would require additional lifecycle handling.
-> >
-> > ## Comparison
-> >
-> > | Aspect | QOM class cache | Static constructor registry |
-> > |---|---|---|
-> > | Discovery mechanism | QOM enumeration | Direct metadata registration =
-|
-> > | Explicit startup initialization | Required | Not required |
-> > | Heap allocation for list nodes | Yes | No |
-> > | Cleanup policy | Required if releasing the cache | No registry cleanu=
-p |
-> > | Dependency on QOM initialization | Yes | No |
-> > | Registration-order sensitivity | Avoided through explicit sequencing
-> > | Avoided by consuming after constructors |
-> > | Late target registration | Cache needs updating | Requires a defined
-> > runtime registration policy |
-> >
-> > ## Recommendation
-> >
-> > Prefer the constructor-populated registry with statically allocated nod=
-es.
-> >
-> > `TargetInfo` describes the binary's compiled-in capabilities. Accessing
-> > that metadata should not require initializing the device model or
-> > maintaining an allocated cache of QOM classes.
-> >
-> > The QOM cache fixes the immediate failure, but introduces an additional
-> > startup contract and ownership policy. A static constructor registry
-> > removes the underlying dependency and avoids heap allocation for the
-> > registry itself.
-> >
->
-> I will politely say one last time (and ignore this in the future):
+> 
+> If I can suggest something politely here, IMHO, alternating between
+> genuinely human written messages, and AI content sent as it is on email
+> or commit messages is not helping on the receiver side.
+> 
+> I would prefer anytime to deal with imperfect english (mine is imperfect
+> too, I'm not a native speaker neither), compared to read what
+> Claude/GPT/Deepseek generated that was pasted as it is.
+> I understand it's a good tool for helping on the language side, and
+> that's ok to fix grammar and sentence structure.
+> But asking "Please generate a summary from those email threads and
+> explain what the current series is doing", and paste this is doomed to fail.
+> 
+> It also has a very detrimental side effect: it makes me start to wonder
+> where the code is coming from also. Especially when seeing boilerplates
+> with lengthy comments written in perfect english. My 2 cents is, use AI
+> if you want/need, but make sure the result has this *human* touch.
 
-apologize, I am doing this mainly because my poor English, I am post a
-small patches instead.
+Although these are not yet final/commited, please bear in mind the
+proposed updated AI guidelines which broadly intend to forbid use
+of AI for authoring commit messages & cover letters:
+
+  https://lists.gnu.org/archive/html/qemu-devel/2026-09/msg00260.html
 
 
-> please do not copy paste AI summary to motivate any kind of design.
-> Also, please do not post inline patches. In case you would like to
-> develop an idea, send a minimal series (with one or two patches)
-> presenting the concept and implementation, it's more efficient for
-> collaboration.
->
-> Regards,
-> Pierrick
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
-
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
 

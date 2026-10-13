@@ -4,83 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B3F1CC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4BE4CA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:51:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY3y-0008UD-V2; Tue, 13 Oct 2026 04:40:47 -0400
+	id 1xGY9g-0002dy-JD; Tue, 13 Oct 2026 04:46:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3X-0007QF-FD
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:20 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGY6E-0003vc-2J
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:43:06 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3V-0007te-CS
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:19 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-4a16c1608faso34525265e9.0
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xGY68-0008Ua-Pz
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:43:04 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-48c411d6615so1899794f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:43:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880816; x=1792485616; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=Y8q71JbmtGZDvZaAdzWnKGUCtm5nx9NvXNrI90s4PFM=;
- b=DvzvNN8jECCQDSRyUL5rjWrPIMoK2ILMonvragJQuVPJew20Ojo7eptN/DUd0q3s4z
- iQJFWyDbWfO+aoQwL2Bi599cX36Qenk42QZzhEyUPrD5utsVRUDEWXEKcMvD4kJTiYz+
- mUcxVQ2rd2mWDDU+lwQqpX6XFLzgZNyF6phudzNGD9ByKWwtDUVq6L4WlemH5OW2zidj
- PtHFGDDtRSPt6emuz3BowIQKJJSPxPkWjEg35Lt59wa36aRlWrstcthaEndSlAJCl1Ib
- gkmz9KvIQ3AZC0f1K0mWEmth7SNfJ/MSciqZxlkl+VyOVYJsoQWXVeXRVb+gey7+I0i0
- Zcpw==
+ d=linaro.org; s=google; t=1791880979; x=1792485779; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=mnxj7h7HvIWfwoZQRTFXGU62+t1KiKfVReRxfjWSfds=;
+ b=E6h129X1h/qJ3fjBYxx+iq2eC/rYGIkNrrts6w4Jj33W1j2xp6sgD8JmkejWhdi3BL
+ penAaIDy4sLMxR0k9W4kdO8bJ3wiXk69029XCqHbYTWkXIKjUCz8R7qX7D2T2f8CrqAx
+ MDatoMK0Wg4KhZh8xcdm0cQGH/R9DMX2Q5nwO3429l8Pycnnuty6ewl9ImPG1V18Cmtc
+ MTBZy+jUmxZK7DegmoOHQ0zC0N7bIyuo6ZT+gTQAU89SZt3/Bjz2ebblwcyL1cB2zL93
+ T3azqWDEjZe6hjAYiIgZyq0xQppXiAiOSfrjS/+DuU4tlEWfkLAAF4FM8BC+Qw8cRdZy
+ MipA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880816; x=1792485616;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=Y8q71JbmtGZDvZaAdzWnKGUCtm5nx9NvXNrI90s4PFM=;
- b=Z0d+qRLejz32cWEP9wKK9N1qHWINBQ6r2f9KoiAlJml5VoxjiF8hbt/1FjqACaT0CI
- gBW8kXD23aZjr3Tr/4/SR53GcNh3j5FjG8rbC25T5Aw9RTNcnwiS/G7dVhZFDWeGKC/m
- Zg+cEPToSAxYwLizG2/31XlWI064bV49NLIFD0V3nUHlwBjHeREqwsPI23fF+ZPdXfiq
- 2qkfUQcymizn5pWpZNM9IwEXDbbLSTP03AkwsKyol8uq8C2zPY8UjbhLXkqiYaJH7Qdu
- dlF7ezbMXE4CrOSqsEPRWTP5rbVAQwov/D6y7AuDVb6PXYryqluxs9MpJOKOvYJXRTDz
- ulVQ==
-X-Gm-Message-State: AFq9FYIL6BgXixxum2YHdCxf65sfkOItFBTh5kGromp3/1v0l+Nb98tr
- RgPi1teRgV0isGNQQ3x+xDHRqgelCXlRmuz3IsHagf9Xn7hi6uNFz5EwQurnYf0DUqrIa9pNaed
- oRf0W260=
-X-Gm-Gg: AYBFou1N8+Nrl3xJtzLKRIrtfvBiJSHDTmyodNtudUfBAwUeQWi95v10BU3BmRgCasP
- Z4QbmAYEOq+xLwf5g36l+bqUlCme69C+0DmbCIbp9IWfiaqOAL0D2TJlZWvzfcpYUe57TpFsbMx
- Jw2DARFIm+6+P/2a53lCs9RbCi9ceIgftA3mUjZmUhUXAzZCQfev+Ajad3iZlMK/79kiVTbu23d
- ujW5ZQvcbgzZOY8Qt+GShmIhiSjyiLEakGGYW4yCfHDSb5J4gw5aS2BfW/IHFeeSe08GOy3Y/2E
- gLEv+4xW1Px+4FwJ8ZaZ81+0wU0tXjx7K4448R5l2jyQUwDChx80g4olkGgFtX0v1cuFuCcqLYU
- DMfXLClkX9ONZhs+Vs8JOLbhULHZqR/waSQtiSj4y+RjON1+zYn/IONxlfFMBvcP0h5JpLHywUJ
- Kpw/CHQ6XEWB2BJYRN/1mtDLC5ZCqXyWBzNAY/0Gk1AYEuuCo2YgWyTjOsDaPmOhw+/NeN4FrXt
- ghOr5/gEsh9FKeRgeUvl24ngVu96Puq4Wl/eoSG69ZttnCaF/f0QLk+G/Ax5QKf1LNcSgx0HUG+
- BTY=
-X-Received: by 2002:a05:600c:3512:b0:49f:c5aa:9ef4 with SMTP id
- 5b1f17b1804b1-4a18e4913c3mr198777055e9.8.1791880815822; 
- Tue, 13 Oct 2026 01:40:15 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.14
+ d=1e100.net; s=20260707; t=1791880979; x=1792485779;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=mnxj7h7HvIWfwoZQRTFXGU62+t1KiKfVReRxfjWSfds=;
+ b=EKmXJlGwuxdAbSQpdVTmwxfEcbP8HgI9zo2gVnMZXpQmv+LJd8uew/Lk4Xyy+XTY1k
+ n8rMV91rP+FW+8Ds5ANnvQp8pWWfy4xhQ+eQ4X+oOIunVERrSLGfgVCh3tJhtq9hohih
+ LDx5m6RBXKHUpLZ+XYG2BsKpTdEqR1jhvtnJwctBIUTDUCXxn7c5tdrjuM+G8RxqAByS
+ puGXSLYxlD+VF+AxY2kBjYEvRr9T00kIAEGABKv2VSFdlYI7LT/KRKm5Y+bu6HhSSudT
+ okWVm98twiTFKspH54p6bncERosxdtE76YMwhMDz22hHekpm+neN8eIY8v8FYAI0Hhwk
+ ZShQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvByB12f8FlnEnGk1qFBOQVoR3IWQ9M0zuZIrtHYEnDYQCoRf/Vf+5gWHCturNZxSeY1Xx8JDd9X2Ag==@nongnu.org
+X-Gm-Message-State: AFq9FYLKIOHoK95Swp4Hz+rHPprFYoZ90A3a/wkYDJynuDXo9H3ya+04
+ HBgnyemO070xwAp0WCq9QdBAnyaCYWB1oFyZoO2HBMUKR5vxCCuTcV/Rn/yImLRptWI=
+X-Gm-Gg: AYBFou14dXCmSegPzb/Ra0G/iQECtymmMIuyG5+7tGV1MpEpMObQEDAbo6XeqFzMd2I
+ IcGz6CPSvpXI7EPXwdsWV2lTkKozou1bBavG6u+2iO1d1AV5VW/+W6jUqfnNWWeM02ZsODEpEEK
+ i1NxuPftfYk2t0uGCQcJIsXUC7ij4wCUCLQRpLM2K6EYsPQEPHSRQXzi8wpZ13qXF4iW7e3K2OA
+ Zr2Ga/RHnyjc8n9i0LiRkHVaGkWuw53mO2zjs0y1MFVyy9EiMj5i1nzBL8TCyc2v9CVMDTcfbhH
+ kYw0sS1CeiaUUeiqhgjm61WN8od9MxVZF6qDhLUd8PCs6FcGrYW4zlo2Tj440VGZhISGkJp3fd2
+ 7QsyCLJQdNQVxJ36YOdw0SphxZmONViLb1ydOolDfZIPMRbf6qL/Xa0DBqqV+9JYQFIeL66zyq/
+ L9pmpB9Ffia0XBvQRAAL9f46QV5AWOiNwqmf7fx5wdvad/chWHAECDp734Mldznz+hS5gF4Q==
+X-Received: by 2002:a05:6000:4a14:b0:487:15a3:1cab with SMTP id
+ ffacd0b85a97d-48dbaadb081mr21260264f8f.18.1791880979139; 
+ Tue, 13 Oct 2026 01:42:59 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48de0ab5262sm3937232f8f.22.2026.10.13.01.42.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:14 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 29/86] target/arm: GICv5 cpuif: Implement
- ICV_PPI_CACTIVER<n>_EL1, ICV_PPI_SACTIVER<n>_EL1
-Date: Tue, 13 Oct 2026 09:38:36 +0100
-Message-ID: <20261013083933.1024405-30-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
-References: <20261013083933.1024405-1-peter.maydell@linaro.org>
+ Tue, 13 Oct 2026 01:42:58 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 4098C5F8E5;
+ Tue, 13 Oct 2026 09:42:57 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org,  "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,  Zhao
+ Liu
+ <zhao1.liu@intel.com>,  Peter Maydell <peter.maydell@linaro.org>,  Chinmay
+ Rath <rathc@linux.ibm.com>,  Nicholas Piggin <npiggin@gmail.com>,  Glenn
+ Miles <milesg@linux.ibm.com>,  Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,  Alistair Francis
+ <alistair.francis@wdc.com>,  Weiwei Li <liwei1518@gmail.com>,  Daniel
+ Henrique Barboza <daniel.barboza@oss.qualcomm.com>,  Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,  Chao Liu <chao.liu@processmission.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,  qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org,  qemu-riscv@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Laurent Vivier <laurent@vivier.eu>,  Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Artyom Tarasenko
+ <atar4qemu@gmail.com>,  Helge Deller <deller@gmx.de>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Warner Losh <imp@bsdimp.com>,  Kyle
+ Evans <kevans@freebsd.org>
+Subject: Re: [PATCH v2 04/10] gdbstub: add gdb_register_internal_coprocessor()
+In-Reply-To: <20261013-query-reg-v2-4-6f95a2e139a9@redhat.com>
+ (=?utf-8?Q?=22Marc-Andr=C3=A9?=
+ Lureau"'s message of "Tue, 13 Oct 2026 00:34:07 +0400")
+References: <20261013-query-reg-v2-0-6f95a2e139a9@redhat.com>
+ <20261013-query-reg-v2-4-6f95a2e139a9@redhat.com>
+User-Agent: mu4e 1.14.4-pre6; emacs 30.1
+Date: Tue, 13 Oct 2026 09:42:57 +0100
+Message-ID: <87ik36gfe6.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,103 +124,263 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement the redirection of ICC_PPI_CACTIVER<n>_EL1 and
-ICC_PPI_SACTIVER<n>_EL1 to the virtual ICV_ versions of these
-registers.  The underlying state here is held in
-ICH_PPI_ACTIVER<n>_EL2, but the inner-guest facing view has set/clear
-semantics.
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/gicv5-cpuif.c | 38 ++++++++++++++++++++++++++++++------
- 1 file changed, 32 insertions(+), 6 deletions(-)
+> Add support for registering coprocessor features that are only visible
+> to QEMU's internal APIs (HMP monitor $register expressions, plugins) but
+> hidden from GDB's target description XML.
+>
+> When a feature is registered as internal:
+> - It is excluded from the target.xml sent to GDB
+> - Its XML is not served via qXfer:features:read
+> - 'p'/'P' packets for internal register numbers return E14
+>
+> This is useful for exposing system registers to the HMP monitor without
+> affecting GDB's register namespace. Exposing aliases or synthetic
+> registers through GDB's target description can cause problems: name
+> collisions with GDB's pseudo-registers, independent register caching,
+> and missing DWARF unwind rules.
 
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index b55fe4991ba..876f5813d5a 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -442,20 +442,42 @@ static uint64_t gic_ppi_hmr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return value;
- }
- 
-+static uint64_t gic_ppi_active_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    if (gicv5_icv_access(env)) {
-+        uint64_t value = env->gicv5_cpuif.ich_ppi_active[ri->opc2 & 1];
-+
-+        value &= ~env->gicv5_cpuif.ich_ppi_hvi[ri->opc2 & 1];
-+        return value;
-+    } else {
-+        return raw_read(env, ri);
-+    }
-+}
-+
- static void gic_ppi_cactive_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   uint64_t value)
+Hmm are they *that* useful for HMP then?
+
+The front-ends do limit what they export to gdb (see for example
+ARM_CP_NO_GDB) generally because reading them causes side-effects. Those
+restrictions are also a reason to limit them from the HMP interface.
+
+>
+> Internal features must be registered after all GDB-visible features to
+> keep remote register numbering consistent. This ordering is enforced
+> with an assertion.
+>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  gdbstub/gdbstub.c      | 71 ++++++++++++++++++++++++++++++++++++++++++++=
+------
+>  include/exec/gdbstub.h | 21 +++++++++++++++
+>  2 files changed, 84 insertions(+), 8 deletions(-)
+>
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index 912e31b66744..ac0f76d62333 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -54,6 +54,7 @@ typedef struct GDBRegisterState {
+>      gdb_get_reg_cb get_reg;
+>      gdb_set_reg_cb set_reg;
+>      const GDBFeature *feature;
+> +    bool internal; /* hidden from GDB, accessible via API/monitor */
+>  } GDBRegisterState;
+>=20=20
+>  GDBState gdbserver_state;
+> @@ -385,6 +386,11 @@ static const char *get_feature_xml(const char *p, co=
+nst char **newp,
+>              }
+>              for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
+>                  r =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+> +                /* The core target.xml feature must never be internal. */
+> +                g_assert(i > 0 || !r->internal);
+> +                if (r->internal) {
+> +                    continue;
+> +                }
+>                  g_ptr_array_add(
+>                      xml,
+>                      g_markup_printf_escaped("<xi:include href=3D\"%s\"/>=
+",
+> @@ -400,6 +406,9 @@ static const char *get_feature_xml(const char *p, con=
+st char **newp,
+>      /* Is it one of the features? */
+>      for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
+>          r =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+> +        if (r->internal) {
+> +            continue;
+> +        }
+>          if (strncmp(p, r->feature->xmlname, len) =3D=3D 0) {
+>              return r->feature->xml;
+>          }
+> @@ -563,13 +572,14 @@ int gdb_write_register(CPUState *cpu, uint8_t *mem_=
+buf, int reg)
+>=20=20
+>  static void gdb_register_feature(CPUState *cpu, int base_reg,
+>                                   gdb_get_reg_cb get_reg, gdb_set_reg_cb =
+set_reg,
+> -                                 const GDBFeature *feature)
+> +                                 const GDBFeature *feature, bool interna=
+l)
+>  {
+>      GDBRegisterState s =3D {
+>          .base_reg =3D base_reg,
+>          .get_reg =3D get_reg,
+>          .set_reg =3D set_reg,
+> -        .feature =3D feature
+> +        .feature =3D feature,
+> +        .internal =3D internal
+>      };
+>=20=20
+>      trace_gdbxml_register_feature(feature->name, feature->xmlname,
+> @@ -605,7 +615,7 @@ void gdb_init_cpu(CPUState *cpu)
+>          assert(feature->base_reg =3D=3D 0);
+>          gdb_register_feature(cpu, 0,
+>                               cc->gdb_read_register, cc->gdb_write_regist=
+er,
+> -                             feature);
+> +                             feature, false);
+>          cpu->gdb_next_base_reg =3D cpu->gdb_num_g_regs =3D feature->num_=
+regs;
+>      } else {
+>          cpu->gdb_next_base_reg =3D cpu->gdb_num_g_regs =3D cc->gdb_num_c=
+ore_regs;
+> @@ -616,20 +626,26 @@ void gdb_init_cpu(CPUState *cpu)
+>                            cc->gdb_num_core_regs);
+>  }
+>=20=20
+> -void gdb_register_coprocessor(CPUState *cpu,
+> -                              gdb_get_reg_cb get_reg, gdb_set_reg_cb set=
+_reg,
+> -                              const GDBFeature *feature)
+> +static void do_gdb_register_coprocessor(CPUState *cpu,
+> +                                        gdb_get_reg_cb get_reg,
+> +                                        gdb_set_reg_cb set_reg,
+> +                                        const GDBFeature *feature,
+> +                                        bool internal)
+>  {
+>      GDBRegisterState *s;
+>      guint i;
+>      int base_reg =3D cpu->gdb_next_base_reg;
+>=20=20
+>      for (i =3D 0; i < cpu->gdb_regs->len; i++) {
+> -        /* Check for duplicates.  */
+>          s =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+> +        /* Check for duplicates.  */
+>          if (s->feature =3D=3D feature) {
+>              return;
+>          }
+> +        /* GDB-visible features must not follow internal ones.  */
+> +        if (!internal) {
+> +            g_assert(!s->internal);
+> +        }
+>      }
+>=20=20
+>      if (base_reg < feature->base_reg) {
+> @@ -637,12 +653,27 @@ void gdb_register_coprocessor(CPUState *cpu,
+>                                                feature->base_reg);
+>          base_reg =3D feature->base_reg;
+>      }
+> -    gdb_register_feature(cpu, base_reg, get_reg, set_reg, feature);
+> +    gdb_register_feature(cpu, base_reg, get_reg, set_reg, feature, inter=
+nal);
+>=20=20
+>      /* Add to end of list.  */
+>      cpu->gdb_next_base_reg =3D base_reg + feature->num_regs;
+>  }
+>=20=20
+> +void gdb_register_coprocessor(CPUState *cpu,
+> +                              gdb_get_reg_cb get_reg, gdb_set_reg_cb set=
+_reg,
+> +                              const GDBFeature *feature)
+> +{
+> +    do_gdb_register_coprocessor(cpu, get_reg, set_reg, feature, false);
+> +}
+> +
+> +void gdb_register_internal_coprocessor(CPUState *cpu,
+> +                                       gdb_get_reg_cb get_reg,
+> +                                       gdb_set_reg_cb set_reg,
+> +                                       const GDBFeature *feature)
+> +{
+> +    do_gdb_register_coprocessor(cpu, get_reg, set_reg, feature, true);
+> +}
+> +
+>  void gdb_unregister_coprocessor_all(CPUState *cpu)
+>  {
+>      /*
+> @@ -1223,6 +1254,18 @@ static void handle_remove_bp(GArray *params, void =
+*user_ctx)
+>   * the remote gdb to fallback to older methods.
+>   */
+>=20=20
+> +static bool gdb_register_is_internal(CPUState *cpu, int reg)
+> +{
+> +    for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
+> +        GDBRegisterState *r =3D &g_array_index(cpu->gdb_regs, GDBRegiste=
+rState, i);
+> +
+> +        if (r->base_reg <=3D reg && reg < r->base_reg + r->feature->num_=
+regs) {
+> +            return r->internal;
+> +        }
+> +    }
+> +    return false;
+> +}
+> +
+>  static void handle_set_reg(GArray *params, void *user_ctx)
+>  {
+>      int reg_size;
+> @@ -1232,6 +1275,12 @@ static void handle_set_reg(GArray *params, void *u=
+ser_ctx)
+>          return;
+>      }
+>=20=20
+> +    if (gdb_register_is_internal(gdbserver_state.g_cpu,
+> +                                 gdb_get_cmd_param(params, 0)->val_ull))=
  {
--    uint64_t old = raw_read(env, ri);
--    raw_write(env, ri, old & ~value);
--    gic_recalc_ppi_hppi(env);
-+    if (gicv5_icv_access(env)) {
-+        value &= ~env->gicv5_cpuif.ich_ppi_hvi[ri->opc2 & 1];
-+        env->gicv5_cpuif.ich_ppi_active[ri->opc2 & 1] &= ~value;
-+    } else {
-+        uint64_t old = raw_read(env, ri);
-+        raw_write(env, ri, old & ~value);
-+        gic_recalc_ppi_hppi(env);
-+    }
- }
- 
- static void gic_ppi_sactive_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   uint64_t value)
+> +        gdb_put_packet("E14");
+> +        return;
+> +    }
+> +
+>      reg_size =3D strlen(gdb_get_cmd_param(params, 1)->data) / 2;
+>      gdb_hextomem(gdbserver_state.mem_buf, gdb_get_cmd_param(params, 1)->=
+data, reg_size);
+>      gdb_write_register(gdbserver_state.g_cpu, gdbserver_state.mem_buf->d=
+ata,
+> @@ -1248,6 +1297,12 @@ static void handle_get_reg(GArray *params, void *u=
+ser_ctx)
+>          return;
+>      }
+>=20=20
+> +    if (gdb_register_is_internal(gdbserver_state.g_cpu,
+> +                                 gdb_get_cmd_param(params, 0)->val_ull))=
  {
--    uint64_t old = raw_read(env, ri);
--    raw_write(env, ri, old | value);
--    gic_recalc_ppi_hppi(env);
-+    if (gicv5_icv_access(env)) {
-+        value &= ~env->gicv5_cpuif.ich_ppi_hvi[ri->opc2 & 1];
-+        env->gicv5_cpuif.ich_ppi_active[ri->opc2 & 1] |= value;
-+    } else {
-+        uint64_t old = raw_read(env, ri);
-+        raw_write(env, ri, old | value);
-+        gic_recalc_ppi_hppi(env);
-+    }
- }
- 
- static void gic_ppi_cpend_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1043,6 +1065,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_ACTIVERN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[0]),
-+        .readfn = gic_ppi_active_read,
-         .writefn = gic_ppi_cactive_write,
-     },
-     {   .name = "ICC_PPI_CACTIVER1_EL1", .state = ARM_CP_STATE_AA64,
-@@ -1050,6 +1073,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_ACTIVERN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[1]),
-+        .readfn = gic_ppi_active_read,
-         .writefn = gic_ppi_cactive_write,
-     },
-     {   .name = "ICC_PPI_SACTIVER0_EL1", .state = ARM_CP_STATE_AA64,
-@@ -1057,6 +1081,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_ACTIVERN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[0]),
-+        .readfn = gic_ppi_active_read,
-         .writefn = gic_ppi_sactive_write,
-     },
-     {   .name = "ICC_PPI_SACTIVER1_EL1", .state = ARM_CP_STATE_AA64,
-@@ -1064,6 +1089,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_ACTIVERN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[1]),
-+        .readfn = gic_ppi_active_read,
-         .writefn = gic_ppi_sactive_write,
-     },
-     {   .name = "ICC_PPI_HMR0_EL1", .state = ARM_CP_STATE_AA64,
--- 
-2.43.0
+> +        gdb_put_packet("E14");
+> +        return;
+> +    }
+> +
+>      reg_size =3D gdb_read_register(gdbserver_state.g_cpu,
+>                                   gdbserver_state.mem_buf,
+>                                   gdb_get_cmd_param(params, 0)->val_ull);
+> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+> index 75eb4d9c365e..1bc778324758 100644
+> --- a/include/exec/gdbstub.h
+> +++ b/include/exec/gdbstub.h
+> @@ -40,6 +40,27 @@ void gdb_register_coprocessor(CPUState *cpu,
+>                                gdb_get_reg_cb get_reg, gdb_set_reg_cb set=
+_reg,
+>                                const GDBFeature *feature);
+>=20=20
+> +/**
+> + * gdb_register_internal_coprocessor() - register internal registers
+> + *
+> + * Like gdb_register_coprocessor(), but the feature is NOT exposed to
+> + * GDB via the target description XML. The registers are only
+> + * accessible through QEMU's internal APIs (HMP monitor ``$register``
+> + * expressions via gdb_get_register_list()).
+> + *
+> + * Internal features must be registered after all GDB-visible features
+> + * to avoid register numbering mismatches with GDB.
+> + *
+> + * @cpu - the CPU associated with registers
+> + * @get_reg - get function
+> + * @set_reg - set function
+> + * @feature - the GDBFeature describing the registers
+> + */
+> +void gdb_register_internal_coprocessor(CPUState *cpu,
+> +                                       gdb_get_reg_cb get_reg,
+> +                                       gdb_set_reg_cb set_reg,
+> +                                       const GDBFeature *feature);
+> +
+>  /**
+>   * gdb_unregister_coprocessor_all() - unregisters supplemental set of re=
+gisters
+>   * @cpu - the CPU associated with registers
 
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

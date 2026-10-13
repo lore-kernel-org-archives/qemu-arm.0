@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E66C9CA9ED2
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:45:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 452F6CC6B10
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 08:45:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGY4M-0000pU-HB; Tue, 13 Oct 2026 04:41:10 -0400
+	id 1xGY33-0006pI-C1; Tue, 13 Oct 2026 04:39:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3b-0007Ui-Bl
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:23 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1xGY30-0006n8-Ac
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:39:46 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xGY3W-0007uE-QG
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:40:23 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4a02667ccebso18657755e9.0
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:40:18 -0700 (PDT)
+ id 1xGY2y-0007Yw-5Q
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 04:39:45 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-48b042c0759so1997473f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 01:39:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791880817; x=1792485617; darn=nongnu.org;
+ d=linaro.org; s=google; t=1791880782; x=1792485582; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=Hrch6mWn18Vsni9ZYGMXpYD4co+MVRjdvkjQZHLk8Lc=;
- b=d2e+aPxgNxvYeNKooL417/DX2KuMKT2T7P3JQlVVciYfYTaxk4EncoJ+U4mr1qyHIo
- 0yGYkkCG6FLsiOdWTblj6bryp6lc4qCJJI7D21Z0AOp+jngDMaPqKo7FlFfiuhbb541f
- ymLPS41mwGHXsWXdtOfZ9qJsFYz782Dj9LtUaihWb9u7jdZZC4Xjukl9hrBOpjsqPtzC
- bosW3k7okVAIpYC8qP0pyuvs67ZqZuX2IjIR4rZ+qcUz9qr/lP9aUYpoxeTzgEoOarq2
- JCZft58VeVCS6DsNvyk5//AImbfdLguvrm1whNeLmzI5UjraTJE41oedG7gETp36ucI7
- Nxyg==
+ bh=9Vj/WyrTKsX+7lendkR52TtR2J1V9h9JXeBCl8flLS8=;
+ b=Tqww0j8K7ajZ62Kslu0le83xYKHxhRvWBXq7un8iZYTQ3dJYE3M7QpsIqa/QoN0Xuz
+ SRGbDZtq/coImPR/sUtouEURFFntZeDWohdS2gulzki2WdcskdULYiHTxYxZ3ueany+A
+ fKNVj/LkcWiuPptYzyQT5FykqAOa+sJdCft4edkLZ3E9hldngUiimSYPnVPmX7KrbIHO
+ wPZuBMsY1xylAu1cZOo0CZ1sHDkvKdNf1yRu7vy29g8SGzDM8USpsm0AtBTkW5Oticu9
+ /VhkjUTpbzd7E3clgMts3gagz8HQaYuzrWc3/ODhDvAgMbjdDmGqi3ccOVMnBwjIAM9U
+ pqng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791880817; x=1792485617;
+ d=1e100.net; s=20260707; t=1791880782; x=1792485582;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=Hrch6mWn18Vsni9ZYGMXpYD4co+MVRjdvkjQZHLk8Lc=;
- b=QzVI5LKdACakAbwONb26dKk3VOGllMJfZCaL/NylwsVaN8EdkgImSnnu8cepQApbjt
- Xo+MSf8qeNEv4iiQfKwN27XhDXC3tpAtWThJmoZIX38/PbnP24fnh5YC9e4bi6FhoRg0
- GQzef9m1y6QJmMqgJ8j3SLIHbnFOFdDtKkpuQfCyt9Ahr4cCY0xmnJerEgFrGbKHpGSZ
- 5t5D2yZuAmMDqOQUAgORYh98Voaodx3pweXBLiXGWhrpacljxg1lK5OeonWb2ZaY8BjE
- W4zpLIN/I+y+jCl3cocYuR0umsS6iGqsWTCGRSvNON1VWA18O+oalRFciZvD6p5ExgGV
- XjDw==
-X-Gm-Message-State: AFq9FYJEJly4bWvmrTVY+iwuh/NqmPS5TF7I0uZu2Ah0jQmy/z1yGpST
- AXJSKXLgqsNvsUAx9MKZVPuJc5DsFPuCmExSGWyEv0AYc+xyk/TtPlQXF6VvaunaPbMGAd2PWz1
- 5Yulp168=
-X-Gm-Gg: AYBFou2JyzumiWciMILN5Zg0AGR1H1yUzaLZ0A8b78SQdp8wGlWFnoKGTpMBxZ7/l8H
- f4B/RKNqH0ekBwUqIVXcQQlBradh03PCBGI8iTdDgWFAPRJKdUZnWZ4O/AU2QZaLMbgkpWSIL4k
- Fq7hOkcPNaecOFkR7tmnVJ7TLEmvGWutdLy5dhI2Rz9MtW5W86jZ84+3DHcN/NBFxcQfFWFFFAS
- ASPhiCNsqY/YFB9it38uEUKNkiL+Nx6YbOdAG+Vi/LurmLXGe8wVmkkbQHhPnbukjcXLNjYOKKP
- nGPEbbkJvd5PQEcOOPomgm+RxtTng8SXupjFsGWLbuCQlCUdu6HbXNbvBkh4PpZC2MSHKy4bUjp
- gmXyju4hlGorz/yzdhhitlwLv79ilId3sp0OAtfqR10MyokojRIpR9xoKUeQR+J491bvyt0DjYx
- MErPRCH5yCIgdLw+O3zR1C46Utlae9GgIV6RP5SlVwXdti2bkMaXVJeSHQ4Jw9pFCAU0d3dcig3
- irPqikOZWjX9/ExdU/BasU3NSGtf274knqanDUIPzTtrkLS64lcTNMw0u79YMbc/32hHCrC74Er
- 63c=
-X-Received: by 2002:a05:600c:6388:b0:4a1:ac66:5ffe with SMTP id
- 5b1f17b1804b1-4a1ac666396mr23901165e9.15.1791880816785; 
- Tue, 13 Oct 2026 01:40:16 -0700 (PDT)
+ bh=9Vj/WyrTKsX+7lendkR52TtR2J1V9h9JXeBCl8flLS8=;
+ b=IkgETTt4bVPapfIN6T8P0plhcuZMGF7MgURyZljRUGtBj01/9teEAjmsp2jG3g+B1y
+ 7/hxGgqolVxzK+tYXhBEzA7t0E+yg3EHGNhM9fdA49msMBputK6WpSE2t/zxipWfL8ZY
+ Nsj7cLVRyomirbSNGU8qyNysl/E7ffQUNeb4GYc3mf/Y1Y7Ihtp2FZtl7S6B90ycIwne
+ I9fOBGs32CTpwFoEvkGsNrw1oUyxDn7guwlYggFNUTPUH8iGZEf24A7FzIA7jDqn0dVp
+ VTwli7laWaQRLD/vLovSgCZAYJsxofX9L97QVwjbVQNV9X49+pxzh+o3D/yGI+yHwzMX
+ I45w==
+X-Gm-Message-State: AFq9FYJDIsSJj+RoE+zngJD69VALgUsCSLoSHchT7BX4tCAhQtuB0Y4s
+ RDzal3Tdb/YzpMfSATDsei033bDooBnDFbveDUJU8cupaPK5t6rSMPSvIH4KqoV51CdORFUyQOp
+ 75KHm36o=
+X-Gm-Gg: AYBFou2Vtw7aZAHpBoTF3vje1ouCug/8aW9tlVzUwkcNocM7+DnkbrLVeFhuOrfB5DI
+ D14cbWxKjAJXnkQttCq5azEcDM0pIBQgRzEs1gEWAbGDt2jzyJt9V0gAhziH0S6+3xbsI3t0FWC
+ 9Ga98j8Y9WlfrJq2dd/Pf437mKy8fohAUWU3Qc4AMEG3WX+DyWAoqCHao3Thb/8d5oipVDLm9hg
+ hPUI9vNWHhOiun+cayK0SX/L8TyvGQiNNRgfwaD5HBHQQpxy7YQshS376cBWz30wM5UIgXjkNh6
+ e2HBTiHX/HhyhCwVhiyRA7UeM3ILz67Mj/PeotUs624U2EV0T1NfekPvASI4EmWrwWoiwQpCpML
+ 8oFX695movi/QN3ZnU5my+lqPOLXGbjB9hYD4ZDH4lyY2mqSPNgbzwl60HCAhHOhS8wOnllZZP9
+ dtUqC46oaGA5i+Mo//IeNkE/JFrPeqsRM0HShMt23lZixsXye4Q/dogEJUBA6zEMiMZwL3+dgJa
+ 0pDNmdSqTJp7Q3FtLM7lbZF3P4IZ6P/XjfIvSLZujPPAJPxuTt/ht/1ma1ivVhNECgSNM8wh0cx
+ +IE=
+X-Received: by 2002:a05:600c:3b87:b0:4a0:1b15:8852 with SMTP id
+ 5b1f17b1804b1-4a18e4a977fmr291437115e9.16.1791880782604; 
+ Tue, 13 Oct 2026 01:39:42 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.40.15
+ 5b1f17b1804b1-4a18be96549sm495086735e9.6.2026.10.13.01.39.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2026 01:40:16 -0700 (PDT)
+ Tue, 13 Oct 2026 01:39:41 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 30/86] target/arm: GICv5 cpuif: Implement
- ICV_PPI_CPENDR<n>_EL1, ICV_PPI_SPENDR<n>_EL1
-Date: Tue, 13 Oct 2026 09:38:37 +0100
-Message-ID: <20261013083933.1024405-31-peter.maydell@linaro.org>
+Subject: [PATCH 03/86] hw/intc/arm_gicv5: Ignore low bits in L1_ISTE.L2_ADDR
+Date: Tue, 13 Oct 2026 09:38:10 +0100
+Message-ID: <20261013083933.1024405-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,110 +102,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement the redirection of ICC_PPI_CPENDR<n>_EL1 and
-ICC_PPI_SPENDoR<n>_EL1 to the virtual ICV_ versions of these
-registers.  The underlying state here is held in
-ICH_PPI_PENDR<n>_EL2, but the inner-guest facing view has set/clear
-semantics.
+The GICv5 spec defines that an L2 IST is always aligned to its size,
+by stating that bits [N:0] of the address are 0 where
+    N = 11 + (2 * L2SZ)
+
+We were missing this check, and only aligning by applying
+R_L1_ISTE_L2_ADDR_MASK, so we would only enforce 4K alignment even if
+the L2 IST was 16K or 64K.
+
+Add the missing masking of low bits.  We already needed to calculate
+the number of bits needed to index each byte in the L2 table, so add
+it to the GICv5ISTConfig to save having to re-calculate it later.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/gicv5-cpuif.c | 40 ++++++++++++++++++++++++++++++------
- 1 file changed, 34 insertions(+), 6 deletions(-)
+ hw/intc/arm_gicv5.c         | 6 ++++++
+ include/hw/intc/arm_gicv5.h | 1 +
+ 2 files changed, 7 insertions(+)
 
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index 876f5813d5a..96384c58726 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -480,26 +480,50 @@ static void gic_ppi_sactive_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     }
- }
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 3c50238634e..2b08f8feec2 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -595,6 +595,11 @@ static bool get_l2_iste_addr(GICv5Common *cs, const GICv5ISTConfig *cfg,
+             return false;
+         }
+         l2_base = l1_iste & R_L1_ISTE_L2_ADDR_MASK;
++        /*
++         * The effective base address of the L2 table is always
++         * aligned to the size of the L2 table.
++         */
++        l2_base &= ~MAKE_64BIT_MASK(0, cfg->l2bits);
+         id = extract32(id, 0, cfg->l2_idx_bits);
+     } else {
+         /* 1-level table */
+@@ -1358,6 +1363,7 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+         cfg->id_bits = id_bits;
+         cfg->istsz = 1 << istbits;
+         cfg->l2_idx_bits = l2_idx_bits;
++        cfg->l2bits = l2bits;
+         cfg->structure = FIELD_EX64(cs->irs_ist_cfgr[domain],
+                                     IRS_IST_CFGR, STRUCTURE);
  
-+static uint64_t gic_ppi_pend_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    if (gicv5_icv_access(env)) {
-+        uint64_t value = env->gicv5_cpuif.ich_ppi_pend[ri->opc2 & 1];
-+
-+        value &= ~env->gicv5_cpuif.ich_ppi_hvi[ri->opc2 & 1];
-+        return value;
-+    } else {
-+        return raw_read(env, ri);
-+    }
-+}
-+
- static void gic_ppi_cpend_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                 uint64_t value)
- {
--    uint64_t old = raw_read(env, ri);
-     /* If ICC_PPI_HMR_EL1[n].HM is 1, PEND bits are RO */
-     uint64_t hm = env->gicv5_cpuif.ppi_hm[ri->opc2 & 1];
-     value &= ~hm;
--    raw_write(env, ri, old & ~value);
--    gic_recalc_ppi_hppi(env);
-+
-+    if (gicv5_icv_access(env)) {
-+        value &= ~env->gicv5_cpuif.ich_ppi_hvi[ri->opc2 & 1];
-+        env->gicv5_cpuif.ich_ppi_pend[ri->opc2 & 1] &= ~value;
-+    } else {
-+        uint64_t old = raw_read(env, ri);
-+        raw_write(env, ri, old & ~value);
-+        gic_recalc_ppi_hppi(env);
-+    }
- }
- 
- static void gic_ppi_spend_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                 uint64_t value)
- {
--    uint64_t old = raw_read(env, ri);
-     /* If ICC_PPI_HMR_EL1[n].HM is 1, PEND bits are RO */
-     uint64_t hm = env->gicv5_cpuif.ppi_hm[ri->opc2 & 1];
-     value &= ~hm;
--    raw_write(env, ri, old | value);
--    gic_recalc_ppi_hppi(env);
-+
-+    if (gicv5_icv_access(env)) {
-+        value &= ~env->gicv5_cpuif.ich_ppi_hvi[ri->opc2 & 1];
-+        env->gicv5_cpuif.ich_ppi_pend[ri->opc2 & 1] |= value;
-+    } else {
-+        uint64_t old = raw_read(env, ri);
-+        raw_write(env, ri, old | value);
-+        gic_recalc_ppi_hppi(env);
-+    }
- }
- 
- static uint64_t gic_ppi_enable_read(CPUARMState *env, const ARMCPRegInfo *ri)
-@@ -1134,6 +1158,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_PENDRN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_pend[0]),
-+        .readfn = gic_ppi_pend_read,
-         .writefn = gic_ppi_cpend_write,
-     },
-     {   .name = "ICC_PPI_CPENDR1_EL1", .state = ARM_CP_STATE_AA64,
-@@ -1141,6 +1166,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_PENDRN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_pend[1]),
-+        .readfn = gic_ppi_pend_read,
-         .writefn = gic_ppi_cpend_write,
-     },
-     {   .name = "ICC_PPI_SPENDR0_EL1", .state = ARM_CP_STATE_AA64,
-@@ -1148,6 +1174,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_PENDRN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_pend[0]),
-+        .readfn = gic_ppi_pend_read,
-         .writefn = gic_ppi_spend_write,
-     },
-     {   .name = "ICC_PPI_SPENDR0_EL1", .state = ARM_CP_STATE_AA64,
-@@ -1155,6 +1182,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-         .fgt = FGT_ICC_PPI_PENDRN_EL1,
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_pend[1]),
-+        .readfn = gic_ppi_pend_read,
-         .writefn = gic_ppi_spend_write,
-     },
-     {   .name = "ICC_APR_EL1", .state = ARM_CP_STATE_AA64,
+diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
+index b8baf003ad6..d763a7939c7 100644
+--- a/include/hw/intc/arm_gicv5.h
++++ b/include/hw/intc/arm_gicv5.h
+@@ -23,6 +23,7 @@ typedef struct GICv5ISTConfig {
+     uint8_t id_bits; /* number of bits in an ID for this table */
+     uint8_t l2_idx_bits; /* number of ID bits that index into L2 table */
+     uint8_t istsz; /* L2 ISTE size in bytes */
++    uint8_t l2bits; /* bits needed to index L2 table in bytes */
+     bool structure; /* true if using 2-level table */
+     bool valid; /* true if this table is valid and usable */
+     /* This caches IST information about pending LPIs */
 -- 
 2.43.0
 

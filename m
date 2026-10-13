@@ -4,141 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 814A9CC6B03
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 10:55:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62191CA9ED2
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Oct 2026 10:57:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGa9u-0006Rw-1r; Tue, 13 Oct 2026 06:55:02 -0400
+	id 1xGaBz-0007an-Ey; Tue, 13 Oct 2026 06:57:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xGa9s-0006R3-9T
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:55:00 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xGa9q-0006R9-D5
- for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:55:00 -0400
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69D9SYN23476214
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 10:54:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- hvWuEvNP+3saozX8oJUV0OWaeiW78/Qzn3EIdx3RLVY=; b=cqnH4UfgXWcyWBvW
- 3gUhyGLoXTEio8hx/vDEwfl706fTG/Wg3V+yUJetAYA1r4TxslmppkY6tzQSv3Gq
- KHSXp8AQpsMiTVTG1dTqoaNPUxoPPqHolI+KGVbyiSDo1PQ0iYZRF7SSyqVH579A
- BiDvi//6/GFPY6qfJvbOiy3qfd1uYmpy2rvAQ4+NzIrMPlC9/yJt/kkSiNnVU9V6
- 8oI73eU6Ah99yoj0vFJ6GRJlN8bXsHFgfWKM8nouTGtFAGtvfkqgDIKwBgDsi8HQ
- kwCvshFnJKLMrdZdV08yVf6wL/GBPNtUwHaq09MZn/3NCyz6FT+b+dRo15Wb1OFK
- 9xoftA==
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h9d7j9n6t-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 10:54:56 +0000 (GMT)
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-91b92acedd9so33043106d6.2
- for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:54:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xGaBx-0007aS-M1
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:57:09 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xGaBw-0006po-9H
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2026 06:57:09 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4a1635f7c89so28250935e9.2
+ for <qemu-arm@nongnu.org>; Tue, 13 Oct 2026 03:57:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791888895; x=1792493695; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=hvWuEvNP+3saozX8oJUV0OWaeiW78/Qzn3EIdx3RLVY=;
- b=VchrnNfOhGRWzLJSEm07XreFQws2T/BazFUfqhkNsofv3e4wyFPRwF51R5Nyt1gq2p
- yD8yifOVjyITcN3MvZDU0I2oiNLBiXFsz8bVGiGdOVEDv86MoUAiV/VY7l+gANurNP5x
- Bu7XFBQ8A3G76k9pHSS2K6hHXHgBQpcX6S1EKakUZeLf4r9ggiPZnmraWyFVG1DQHzjB
- JTOXQ5zoG/G0+HmofXbAS/4lnb5HsUDzTqzK2TeC2OY+oT81rmLd5T1oGVXeLFtVAQ9x
- E4xIsW77uTQ8IJtlkFa2VTNbEf/IAq/2JmACd0JehDZdw8KCL+PQx/x9RxUwAcSr/atf
- 9O1A==
+ d=linaro.org; s=google; t=1791889026; x=1792493826; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=YVTpE+/AZZiNUJGmv/AwVAv8W313++v/rbdBRpNdNkE=;
+ b=I1yNLpE6EuJzkzmYzRcdWxvxw9DZsmJAeJuaNmWscSy2DjUP4nB0BOHMvVl5MfPb4e
+ LY3fzn5qcFMLw1frzxzTI5miqQu5zaSXvLJY5wRyWop6jO9OfkUNFzQFWZm0MuV0agU1
+ cuobePeR0NHkxNkWfhhb5SCYt4tRwd6ZfK7ad57L6/zvtiVpdGvyetcMgEkdVah0gLir
+ eF3iLkUpfMv+C/G3yJiNzxFqfbjcSZDPZjaFsyzwjCEtBaY7V32X/A+MVxyPQU4p0R0C
+ mdw3C+k+jPBe32OLy+KkXE24vyN+/iYZano5Sa1BSimIYCf/36s+0Vav516e4Hb9verl
+ aBgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791888895; x=1792493695;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=hvWuEvNP+3saozX8oJUV0OWaeiW78/Qzn3EIdx3RLVY=;
- b=wGGgCm7d01U1CexpuQdmdu1ZJ9LSLTaVo3a61ypeYamIcapjC3+uhPQjG/MRYKxp4R
- VsA7wRkxGuZhK3SnJBMiPGqdq7Qe+KsagK86n44L1teW8Sx1zb6nD70PzlmlySRFD7kg
- oeWNU1XL5wd+jQtXXsciRrvXqTrhotV/ixh9hbJdzJ+9HDydjm0zW0ViKs05R1dNqMnf
- lxiXfxemvR/KiFAQIZeYrLnLBXHH0Ql2DC89UEefocvShz45kcGAQlk3gIPtS/SXCOyl
- UyvxC/Fl4BdDQynjH0bWudYaizrtsg+8QXVQxU0RoSQir0TdSRftiGf4Aasz+/HG/vZM
- aBgA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBztnFrgrZs/aPaMw28BC/wihElmtgJNZHT06Z4nO6jFtiB7yB4pvpDPAWIm+wOgAX7rO9+VyEzZYQ==@nongnu.org
-X-Gm-Message-State: AFq9FYKbm0kJc0XnH6SfgwyQimFABtumF4mlt2+OGWgymUeXzaalWsmh
- QHfgOWjagsWvrkdV5Dc0LRdvUrdkyp25ycvdAjbb3KDYwsFjlJL8YyiNHOPBpPWv83Rj6BkJbXD
- Pz3xY96fjhXnPIvBlJylO4DbApZaMNuFVWQCTvB9v+TnGaD8EZcN99fU=
-X-Gm-Gg: AYBFou2mhBNJTaSRfDDGqO1bDRyPK5Kgjch/WDtxwH51wCY3Soy3sBpxniwXWBL3syp
- m2CfjAeYt6qQB+aYyLXBNBmGl4wa0ZFHLvZeZKdrfYvm4eXRh+afy9f03S+v468p+2kffuTQO12
- 0ml/NAolnxDZ4b7YSIjPMFFsuzOWk1RpaO7xcRYHM2xDNcqQFNHGD8jex0Y/ocBGeBDiZzGTM0Y
- 0reqTUHvra1HGSifVLt7jMJW/qOYCi/ETWPpjaeLMzHUP/C5M4h4TuMQjXCLY8Wnjo6MJCeboi/
- 4B3JU5T0VceO1qPf1cg3m34PemmVTOWNkL2sVDNSiG/Q1/Nvhk06wsYd5E1DIzRZTFG7BdBt+Fm
- FhqRg+6P90d5uRRYDiVU0vzNQMnJMWDnpmA==
-X-Received: by 2002:a05:620a:1991:b0:93b:db80:e0cf with SMTP id
- af79cd13be357-93ebd281acbmr2046762385a.60.1791888895377; 
- Tue, 13 Oct 2026 03:54:55 -0700 (PDT)
-X-Received: by 2002:a05:620a:1991:b0:93b:db80:e0cf with SMTP id
- af79cd13be357-93ebd281acbmr2046760685a.60.1791888894904; 
- Tue, 13 Oct 2026 03:54:54 -0700 (PDT)
-Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
+ d=1e100.net; s=20260707; t=1791889026; x=1792493826;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=YVTpE+/AZZiNUJGmv/AwVAv8W313++v/rbdBRpNdNkE=;
+ b=KYkLUI8hiGmpdQjBYFNb1/Fr7eGAPa1+m5Yp/XRXiwyZMZMt5/GG/e1IRfHAjzuErC
+ 7JS+nff+EWqNydm6VkgOUI97H8ULjpyCsrHxQmZ1n5rYsuUR0lFHtroRz4+qbUgrB4z2
+ 46rl7p+fvhb7pixtu6p9QpwC5BJSlZguhRDISNwBoDTES0MlYt52d1tst27jNMIGVpJj
+ /DQHvVYI+Cp8CzHg3rnsUFOh4kVRRGM9r6MMn0+mIr53psvUCMYpVa77ERmbYG54EIlF
+ dPQFV7w3DKNpBlWgWMT7VtI9jijtARqZ2l/PekuIZAzZAuspXRG5TqvGZSQ3GiNtUJBW
+ 1EEw==
+X-Gm-Message-State: AFq9FYI/0jn0OAik2oL+NrgOok8tttkUYNnFYFEfQ4udFsM3jjW/bOPa
+ mLbCEhzTHitAJ60xznoM0p367ugrO+xy+QZSk4wKzx1s5vimGH408qrxP9nOeUSEARlusMCE+mA
+ SXQ5ugbo=
+X-Gm-Gg: AYBFou17Mz2EGa7r2EAEXuLwBTIyGumegAfeMp9UNnWnfE8eqJqeiZjxCgfDSrLBtLD
+ x87x9/x8M69DaAtihb7HbmWGM1jeoTsjnKSpcppaAnKSeZ3zZ22R1Eyk3gxFRK71Bw85PfUoG3I
+ K5EXbfFkYPUAH5r9zRu0qrSS+M3DrVq/PgN+fGr0oKcvNz2jXvzDi2mWqqtCTPLe9v9mxHOyoK8
+ SWeGiFfAazTJtsNxY8MveBmFtPTK2/A5tH5A4p44gAwBQmRRIdjohmYKnH3GgQ9+rwis05JKihg
+ h14tTT8yhSIiezNjZUbUeBsSXjGkyQbx7hcFr3J03Y2/hsoA8OBdsoP3TpcpGALyDUc17bJYRCR
+ 3/atFwQG1K5NpBa8Jq15x/O6dUhOXvlnUpI7DMBV3VKduHqeGb4PS7CZXvfbC+tG6u3d8m2We/u
+ ZfQEp+T1ITXxeImrOISi+ahuwR1iTLGgyMMPjqQQpWn6Mic67aE252WSuPSDICSSPwb4NrBzCuz
+ YuGPgnGo3Ffe3ofCw2E7xedos6i3s+WYp2qR8RBgjOQYsy51x8ZjnmO9CR8kW2PbpmxGdHbpKYC
+ 35A=
+X-Received: by 2002:a05:600c:8214:b0:4a1:6425:be69 with SMTP id
+ 5b1f17b1804b1-4a18e4b4db8mr236641465e9.17.1791889026301; 
+ Tue, 13 Oct 2026 03:57:06 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18be96549sm507270015e9.6.2026.10.13.03.54.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Oct 2026 03:54:54 -0700 (PDT)
-Message-ID: <a693c8e2-5a15-429c-9427-d8dc68096830@oss.qualcomm.com>
-Date: Tue, 13 Oct 2026 12:54:53 +0200
+ 5b1f17b1804b1-4a18bf31b83sm366682725e9.12.2026.10.13.03.57.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Oct 2026 03:57:05 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH] target/arm/tcg/gicv5-cpuif: Fix typo in ICC_PPI_SPENDR1_EL1
+ name
+Date: Tue, 13 Oct 2026 11:57:04 +0100
+Message-ID: <20261013105704.1071427-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 68/86] hw/intc/arm_gicv5: Implement gicv5_set_resident()
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20261013083933.1024405-1-peter.maydell@linaro.org>
- <20261013083933.1024405-69-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20261013083933.1024405-69-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-GUID: 74eegLb1lNHwxiN3atA5RYd8K1psCcd_
-X-Proofpoint-ORIG-GUID: 74eegLb1lNHwxiN3atA5RYd8K1psCcd_
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDEzMDA0MyBTYWx0ZWRfX65mPblHwZP1W
- ZGwRoFzdUGKH7v6nQhq6RIUAgs9daAOnFbN0EqEZJD9c7qiZVlEC/zJe2Nu7eqPqdlVYvoouRyD
- HcbNYBRjN5pz8FTQnCDYq6xL6M3MxV8=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDEzMDA0MyBTYWx0ZWRfX+NtT6uEjqfbU
- YuMaFjdMLKn75upwNcbUf0syVN+0a5u6wxl5mpQ+gWeDho0apmeOLU6EDrXYYf+w6R0P97kJkAs
- 4pA3MmAZExFzGNiO19xGQ9xDa7GTen4afmWFxuqIe67AV2qi2PG07IpauZO451ZCEM244TaqjGm
- S/vXc2ZfQQ5l9+5K3X81yUlmtlMFpLWFXYhOrxP7a2C2leHLTIxQzlgDlEqMyOMnN1zISMSAviT
- rGGww5LoU6NwMHWnnF9AjueuCnNcjjQn5oJSxfnaApZytiSAojapPBrg+klw0VGY0+ujif8lt6J
- r6uH9RzJ+Q/4Zkn4Gk2SKmcYGuwdL7mGZZKMDa9Q0unEKVD1Dcuf5zMkiG5Y1r056zK4mlmhAQH
- XFJbcqtyUy/GaXYHmvDGiNN335+XmTk6BzeeRJiUP4itX7AJHjpduPAV88meSbF5dgWNiejOh7t
- ODlrUoNqyvJkP9qoRfQ==
-X-Authority-Analysis: v=2.4 cv=PMGaavqC c=1 sm=1 tr=0 ts=6ace0e00 cx=c_pps
- a=oc9J++0uMp73DTRD5QyR2A==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=KKAkSRfTAAAA:8 a=ecGInKZYiohcrdBcGAMA:9 a=QEXdDO2ut3YA:10
- a=iYH6xdkBrDN1Jqds4HTS:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 bulkscore=0 impostorscore=0 malwarescore=0
- lowpriorityscore=0 clxscore=1015 adultscore=0 spamscore=0 phishscore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
- definitions=main-2610130043
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -155,98 +102,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 13/10/26 10:39, Peter Maydell wrote:
-> When the GICv5 CPU interface wants to make a VPE resident, it calls
-> gicv5_set_resident(). Currently that is a do-nothing placeholder;
-> implement the required behaviour of tracking on the IRS side that
-> the VPE is resident on this CPU, and remembering the information
-> about the doorbell interrupt.
-> 
-> For each CPU, we keep a note of the current VPE that is resident (if
-> any), so we have an easy way to get to that information given the CPU
-> index in functions like gicv5_set_priority().  Since the only way to
-> make a VPE invalid is to make the entire VM invalid, we only need to
-> set this info in gicv5_set_resident() and then clear it when a VM
-> becomes invalid or the whole VM table is made invalid.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/intc/arm_gicv5.c         | 115 +++++++++++++++++++++++++++++++++++-
->   hw/intc/trace-events        |   2 +
->   include/hw/intc/arm_gicv5.h |   5 ++
+A cut-and-paste error meant that the cpreg for ICC_PPI_SPENDR1_EL1
+incorrectly named it SPENDR0; as these regs aren't exposed to gdb the
+string here is for debug only, so this has no visible consquences,
+but it's confusing.  Fix the error.
 
-(please enable scripts/git.orderfile to ease mailing list code review)
+Fixes: 585dad9e79e1 ("target/arm: GICv5 cpuif: Implement PPI pending status registers")
+Reported-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/tcg/gicv5-cpuif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-> @@ -1566,6 +1649,8 @@ static void irs_vmt_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
->               return;
->           }
->           irs_clean_vm_cache(cs, &s->vmt_config[domain]);
-> +        /* No VPE is now resident on any CPU */
-> +        memset(s->res_vpe, 0, sizeof(VPE) * cs->num_cpus);
-
-res_vpe is declared as:
-
-   VPE **res_vpe;
-
-so IIUC we should use sizeof(*VPE), or the sizeof(*s->res_vpe)
-used below to keep the same style.
-
->           cs->irs_vmt_baser[domain] = FIELD_DP64(cs->irs_vmt_baser[domain],
->                                                  IRS_VMT_BASER, VALID, valid);
-
-
-> @@ -2884,6 +2985,11 @@ static void gicv5_reset_hold(Object *obj, ResetType type)
->               g_hash_table_remove_all(s->vmt_config[i].vm_cache);
->           }
->       }
-> +
-> +    if (s->res_vpe) {
-> +        /* No VPE is now resident on any CPU */
-> +        memset(s->res_vpe, 0, sizeof(*s->res_vpe) * cs->num_cpus);
-
-OK.
-
-> +    }
->   }
->   
->   static void gicv5_set_idregs(GICv5Common *cs)
-> @@ -2988,6 +3094,10 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
->               s->hppi[i] = g_new0(GICv5PendingIrq, cs->num_cpus);
->           }
->       }
-> +
-> +    if (cs->has_virt) {
-> +        s->res_vpe = g_new0(VPE *, cs->num_cpus);
-
-OK.
-
-> +    }
->   }
-
-
-> diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
-> index 28417317376..ac85cad3eb5 100644
-> --- a/include/hw/intc/arm_gicv5.h
-> +++ b/include/hw/intc/arm_gicv5.h
-> @@ -40,6 +40,8 @@ typedef struct GICv5VMTConfig {
->       GHashTable *vm_cache;
->   } GICv5VMTConfig;
->   
-> +typedef struct VPE VPE;
-> +
->   /*
->    * This class is for TCG-specific state for the GICv5.
->    */
-> @@ -53,6 +55,9 @@ struct GICv5 {
->   
->       /* We cache the HPPI for each CPU for each domain here */
->       GICv5PendingIrq *hppi[NUM_GICV5_DOMAINS];
-> +
-> +    /* Array: for each CPU, either NULL or ptr to the resident VPE */
-> +    VPE **res_vpe;
->   };
->   
->   struct GICv5Class {
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index a6e6c440849..e847fc722b9 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -893,7 +893,7 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_pend[0]),
+         .writefn = gic_ppi_spend_write,
+     },
+-    {   .name = "ICC_PPI_SPENDR0_EL1", .state = ARM_CP_STATE_AA64,
++    {   .name = "ICC_PPI_SPENDR1_EL1", .state = ARM_CP_STATE_AA64,
+         .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 13, .opc2 = 7,
+         .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
+         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_pend[1]),
+-- 
+2.43.0
 
 

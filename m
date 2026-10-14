@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BD3CC6B1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 04:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA963CC6B19
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 04:58:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGr35-0006hP-0E; Wed, 14 Oct 2026 00:57:08 -0400
+	id 1xGr3G-0006lv-8s; Wed, 14 Oct 2026 00:57:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1xGr2f-0006ZK-Ra; Wed, 14 Oct 2026 00:56:43 -0400
+ id 1xGr2i-0006Zs-6j; Wed, 14 Oct 2026 00:56:45 -0400
 Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
  ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1xGr2e-0008Iu-8L; Wed, 14 Oct 2026 00:56:41 -0400
+ id 1xGr2g-0008Iu-Pz; Wed, 14 Oct 2026 00:56:43 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=q0EvqwFoldTzq8KtJZKZbfiOPsm3qrRvlroCjYXeGFjQ6YyTIMI2OEMxQUIRZZN+GlrzWcHVJQ6bK8xE4Hm8JA8ffkbZslebxkZ1SJpgZG2ajbMI+JJ/fnjsS0R0EKhLjEbQEK7UFAx1FnCu8nlGluGRQF8bBV7EAF0boA2Cw/qGcXu+F6N7qiP0gBY2kOT07MUmbBfdLr2Q2gFV5vgqWO9hRXaNpew2rwBtm17DoIua80BQ+B99MVgD/S6tbBhUZq+Ll4ZrM2YEaLa4h/ZBStxlQg39PKtMIei4Kqox81dlkIUTT0MhqMyOBtZswfgkzaXcUqLlitLnXy5C0ZOJVA==
+ b=SuWdP2wvcm9HejHmW5x4w6RNg2yaFv6ZFf1/2//tx3BIMuB6ek38HISVLuoh8mQ6+3SCBIwY8wlG0YOIM7tCc+xUrfH25tc/K8DYXrvb/BnDqzrTAqvTPoCL9tX1/AWE+VFvWj0LGSM/KPKnWuSJE6rmF9fuEAdbM/GhrAJWkEXzGuYXGNo8Puv7BTZvrhhSe7Kt4qThifvz7Jk0wBL0cwP62mf1q8jelOzG95Tg4WUGV2uhd5a55RHEXag0OVwLnaaPBH72u33oNPL7Djy1P1lwDAIyBTavNnNhOXxEbGDvMUCoWa5dEgVfwNjkyyLtjIK74m1pKRBhNWXGDlSJ+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=++h65M+p6ahosBIhJRpGF/xg7UyzNStDZDNhoL/BVtU=;
- b=V8QtoGCiu6Byny85PO3bDeRvqOurPsqoyq8SMSezuyhv3LeLifglVgqLg64GuhaOfHLvNmGuFni1cR3f/gQ/cewpFVvgGSngLOw2rbYef3ej3X8OyIWKQbJiIKH2GdMwylDA14+CrnxxBOPUT8jSLg31n9fDPvIG9AiMnTY3OgHZKRm5DuA0wxzbCay3n3anEY9ivaYeqO8uF0vjT644MOodgxqSGxDXsxB1lEzPJl0iaptsyVPLMa3etiTbdmln/xS336Xp64xb8jWm+Tza7cyj5uv00Exs3uF7016gKp07DInShewstxDYHaboFIEX9uGzFRazUeetL8FcL5qQ5w==
+ bh=KcT2OKzwtOZDlBK4wqXH7URnD869CTKb9O68kQbwqzE=;
+ b=M/p9n23zySVfjFcGS2GhARYB7oMHrN4clNvOhZhSdMkc+Jcl8NCESlEItIR1NIUt4j+/+IU5xy4YkE2/RYaxGWYrq5jde2T3l3Zxjf23OO0JEHcl6W7ffz0+6a0NDpDA8MLI6q+aHcze/5nm8kpfpyIfoKoP6LiD/RP44Xeh1+RXoO6GKba3h6HJfpaxviGQgKMhWTzTo9gL5kBko4upqYszFcD/fre9kvpSFjeEO6YI9e3GNyLFFmi0W8UxR4Kf5i572byeHU0uF895VzFfbP1JY8uTRZeosViNsegZSes59hAkDJN8A7g+i2h6fdbFIgGO5b5TPeiOZHhXyI88fw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,26 +33,27 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=++h65M+p6ahosBIhJRpGF/xg7UyzNStDZDNhoL/BVtU=;
- b=rFfsMJ4cZ2zVVVGon3QXU72rdNkDr2TJEwb5VGkxvTowhFPk7k4GYWOZYBZwN+hZdfRaaR/S5MI/feE/3etE+ZA7pnEoRpcI8YW982yjCWvhrazKtcHzsi2RDDJpsm+51wEQvwnm8n+mjIFRGRKLou2TLGa1/LM1W9lAhIzo6RiYdRZAQbc3EfVlbaDLltP0BSCnZSOShmXUJxzO9YFQFf+nC7amAmwkpOuq+BYSv5iTHvoDCX8BGdluq7v42k+raJP9yqdcfA3DarzVzIrg9uPLEMeaRD7FTA+6aV5PiqF/LTKPK+uBDyqo793MnGu16j+t3F5I/MEs2+p0UIY8AQ==
+ bh=KcT2OKzwtOZDlBK4wqXH7URnD869CTKb9O68kQbwqzE=;
+ b=hzuW0Y5tYvB9aMlkZ4DDJDrenLSur9uSOfetljbtnbkzePZM8Mry7+g9Kc11WQ29lv4yXVAaRmRifbsqXdKDz4IccplMsWx5dNiI8utTPw8gLKUabXWl0VFMxuTvVjcB1LKCJs3N6sHl2F0DFVzlfzqqFGRewEA54jh0a6H52wbO2Qlq8H3FfsXW17/H3+dADzqOdlH3Pp6vIsTazNdUKot7dBWavlhjWiqJFg6j6fpYjVezCxhHnl1ipoavDD5lQ9ZRhe65/gigl5/2f9KhoToHeOwdk9GllzIZipzpB2cEvckjIioTivu0auMhGV4A3uPDA0bUERgnNEukRsUrag==
 Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from KL1PR02MB6257.apcprd02.prod.outlook.com (2603:1096:820:da::11)
  by JH0PR02MB7213.apcprd02.prod.outlook.com (2603:1096:990:67::11)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.12; Wed, 14 Oct
- 2026 04:56:27 +0000
+ 2026 04:56:32 +0000
 Received: from KL1PR02MB6257.apcprd02.prod.outlook.com
  ([fe80::ecf9:e832:8196:215]) by KL1PR02MB6257.apcprd02.prod.outlook.com
  ([fe80::ecf9:e832:8196:215%6]) with mapi id 15.21.0496.021; Wed, 14 Oct 2026
- 04:56:27 +0000
+ 04:56:32 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v4 01/10] hw/cpu: a15mpcore: Model the reserved page as RAZ/WI
-Date: Wed, 14 Oct 2026 12:55:51 +0800
-Message-ID: <20261014045605.399684-2-bin.meng@processmission.com>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v4 03/10] hw/arm: fsl-imx6ul: Map early firmware register
+ placeholders
+Date: Wed, 14 Oct 2026 12:55:53 +0800
+Message-ID: <20261014045605.399684-4-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261014045605.399684-1-bin.meng@processmission.com>
 References: <20261014045605.399684-1-bin.meng@processmission.com>
@@ -64,56 +65,56 @@ X-ClientProxiedBy: TYWPR01CA0051.jpnprd01.prod.outlook.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: KL1PR02MB6257:EE_|JH0PR02MB7213:EE_
-X-MS-Office365-Filtering-Correlation-Id: 677e7dc9-68ea-421f-7382-08df29af813f
+X-MS-Office365-Filtering-Correlation-Id: 91b00db2-868e-4bb5-b8f6-08df29af8411
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|366016|23010399003|376014|10067099003|22082099003|18002099003|261009223027099003|56012099006;
-X-Microsoft-Antispam-Message-Info: Oa9+uthWNKysVWI9oup8KKduhkWrundIO65oLCahxiiaxPCHSgxw6zep4HOThJ3v2Jw3B6VrFlRd4qxbdlkYRRZUEeY76vZ4wB6BMO84UuuswBu7Td+UW/WTSzWgIYxvECU9HMNk/raxmxVExn4+0qhdGXtcfOSR8PcOXNNr3RgOlRKR5fSk0yIJV6t4Wi8l4rycGft3+AZYM8dgzINRrWZ+4BulB5+xdAwSeYqw00gdSQKp86J6zpH5IuEb6Fy7yVEnsogKGKbmn++ymGvQu+KoW8y2H10Qa0o/f0HJzan/Qf7dy95h6aQ9lLkDcMUt/d4GYSlUh7n9Jw3GdzcTsya6B3GZQ5CZCl6jISzi1HxP3j4TeAou66+lkq2lSnFtLEQ/vpJmQav0VUKc7ykPn7LRPYnQ0HoG3w+OE7qY57obIV0db5GpX5+j8S9DtjZQsBWMH1CgW7iRE9RkD8dngPDwiCvTqTLM2CafQFBQOcI/qxAM3sHnFYJDdzsSTKG6WnoDh3hiL9mz2eS9APQigSP5aCyhj/eyUaxQkqlP/M44FKszhHcRipDzQFnVqiSgMEc+dF9Z42H1Qy04DiaqGH7sajLFi7wREhDk7IjfP3hXJqv+TgTOX0UE0gTZMD/D
+ ARA:13230040|1800799024|366016|23010399003|376014|6133799003|10067099003|22082099003|18002099003|261009223027099003|56012099006;
+X-Microsoft-Antispam-Message-Info: g2MGdXNFwutYTfjZcOI9Q5v2dcI3ohtuEbd36hrbruY6Y3AUswJd4O3iYlYTdAmDKtVIUrZckuyp+jxu3OiFvBrbxeJ6zGY3rqWOyW0iKHdqSBuyidhTsafcdS6CS0JHxk2rONWM4RJWhVbfseXjMTTyBVoBABoQWsCIY4PjMYKJYOwapopWsKT4HuWyM+bm0VXHsT+9yYwOG+ZAqOrcJKX/5f1B75uPaBJ8L3HrKZHewDLIbZ9ut38pOkNbYUyJ8i3suqG+AE9/NSEdhoIUCE9Osmv5GWuaYEVGnLwp8WOGxlSpbylyWC3JU0pPD+cfz9ATVMl4+inU5w7yxen+to+LGMpJ5L5nmefEnMobg6T/iqIpt6VZZDMJvwL2tZJlb03MksMEdP6+LUplU/+TByHTECDFH0ilsDXtQJkXhak1BC0MX/7JaJiXmTMcCtPz+n89BLoof1Bp3gyT3Gt5kMOxZ2ujON7B/gh+L0dkoI+PVL6NluO/cdnxozBdVmIH3G5m5iITCb5jT01/uTQgyuz7Pair9gDb5dmWyS8CUnTsYSxgvXPNh0xFD7KKfD8XXQkMhQeRctJtlGAHT33xSqKUjfbDajptv90braDQm4x+AVilg4OBhQwct85ewHEy/TaA9kxFEpG7Ey+qRCw2qVxauxlQcMkjrd9v0Ybgygo=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:KL1PR02MB6257.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(10067099003)(22082099003)(18002099003)(261009223027099003)(56012099006);
+ SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(6133799003)(10067099003)(22082099003)(18002099003)(261009223027099003)(56012099006);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Ll3dpdA5Jibv0ZrPpPj4cNAjQqbfKkaNWaFYICw7bPHHA+ujzgDc9xmXg1HA?=
- =?us-ascii?Q?ixnnepiuaCQxkXw/B9kzmL+V7gEEeYiaYNgfGh1zkiWXYb+bTDGfPZzfyHFD?=
- =?us-ascii?Q?+uhpwSzSaU1OJSZhdQxlUjkWm8m6fV4aj83KFcKK74v3Aw7lyQ9BiyPR/eAl?=
- =?us-ascii?Q?x3RpPkTjWnn/6MUVyVl5K10sq6KSgpE99dxmDYDdN3akiDLexmxEqhvTm5R2?=
- =?us-ascii?Q?26M71td9EZb90ZIVOAwUfaUNOfZGde3qby8b6Sn3108HGmpSrsXa7xizx+Ds?=
- =?us-ascii?Q?AlTN3WMyFeu2ScdY7XnZ8jE0bkrmb2gK/p9Ww+kCjLJz4s/AhQ5n3ZL85Cj5?=
- =?us-ascii?Q?ZDahMPJJESgpiaot1CDzhZhCnRHZuEah/9wpCsQB5aoSmmrnTOJ4/+LJsfqV?=
- =?us-ascii?Q?Gs5x4vCUdFg4S94v8C/6BmAsWJiXcCKsWLpYGHqabVgG+u8TVrfBZ8bV5EqV?=
- =?us-ascii?Q?Nl9LuaMMT2VlLMk6Y2sN2eWuXAPY6wTNehwMiN0CIPvlEidIwnMbjZP3I5qR?=
- =?us-ascii?Q?hoZMGo+A/3bvKiAFvBa9XCKiYf4ygaLpE8nMACc2AHzzAV/MdHX6cUqUbigQ?=
- =?us-ascii?Q?5V1ViXpydfYNZuuRgGAENVEVQqH/+R6iDBW1BesaeRE8LCySPDElrnBGWvxa?=
- =?us-ascii?Q?xUiEQOjB7/ca5wj3XPAW98Yjg+jumA9r1EAQ74ROXX9ZOPNBcW6qEF57ySC+?=
- =?us-ascii?Q?cauqKbrvoEPo3OscsZ660SkxWKydBoQIo+TDRgQwCriLVGuOFkS0YsAQzhC7?=
- =?us-ascii?Q?51YLr+LA/DqtM7Spy0ZMWd9aRZSimjL7hP0gEe9PmMI6VCkr2+lVvF5K4kDZ?=
- =?us-ascii?Q?cg3UEx2ThZHVWnDljOe9ZpsXL9g7Nb5TLvG9HbHzUg4NJ0M/e5jLUp56nfDC?=
- =?us-ascii?Q?EbSgnJqXRUbgTsX8w/+zXqCNP9c7mKZvL/8JQVqR4V2wnYCpXXx8yQuqIXlW?=
- =?us-ascii?Q?ca9SJdYRJocUVUdMN63sHTulNo1TgHn5dX4Y6piGWR4YwczCNxwOQLferzZy?=
- =?us-ascii?Q?ILDmF7Jqx1uqdCcNDhZAsDfXqjvxV3cy2z3f2qe2oe8J08+1u4wHoe9+wZE8?=
- =?us-ascii?Q?cuI81HkmaoLDoX6xEn76UU6qKmHPL8QQGAfcKMIFZJ4Op81O8Q0KtWi7OyDq?=
- =?us-ascii?Q?b2htFLIMm7tih31UGBY6K6uO0MQp4L4RgF/7JPHJZTnKH7S+hQMFtxja4K/F?=
- =?us-ascii?Q?mSasHamr8eRSeMeg1ij6OoT/cCZcgZlhkFDWflTlgp3WU624jeAoALWDlf9u?=
- =?us-ascii?Q?W5uLs+JKM2NfcxTZ5OT65AmsgVxn9wpSZ2ivN17GCuZpAeIxgJaNGCRxqN7+?=
- =?us-ascii?Q?5HL6IwyqtW6l+nimShG9KhZENMGlFZmJkoV+nYFdkQP41ZrJ9N3TIDxxoIo6?=
- =?us-ascii?Q?XUzJrFGepzQ8uA0RikgClwIc9Xpj669dWWtrF+XfD0NN4jpnejnvVUhM0/t9?=
- =?us-ascii?Q?+71Bq95GiDfBwRgOf3Ll2I/4XG50U48RQqINZE9wFamkjpfddTdx4CuPLqNG?=
- =?us-ascii?Q?GIFOXrAUxpSUoUxd9AXbqTx7XDt5jyog2IjepdSafV9K3Luo0BdX8nv7hJjl?=
- =?us-ascii?Q?CaD9uNPMyupTiAXDljBiOiwGRpU/HhlCfzyU4Yd8omisuxLcWBp/U0vyFkB8?=
- =?us-ascii?Q?oaJG1P9zrgB9KgJxdtE6f3Mz0LGCJZKuJFkYzZ3QKo4tkTIUwl5/Al9z1EVE?=
- =?us-ascii?Q?1tclARnC3jViBe75J3WNKOaV/cR28l7TACuAofw02X3uzvFpZaIhsl7k2LN1?=
- =?us-ascii?Q?sSHcdZvJqqjupIgaIb3T03CS1NUhWag=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5gauMDMVKm+hzxotidbUuT3n41vJDAU+k82bxXtQq3chNLOwAVyP8GYvDd+u?=
+ =?us-ascii?Q?2HzJzpyyD9EUlHVYe+9Vf58e6ggel9uy/SCd1BIEsp75QohWL8m4BzWt8V56?=
+ =?us-ascii?Q?+W26cu1A1zjR5nXGi94NROsZN6CsbCh+7owUwLGjQxzxpSKY9IxmkyfV3wz3?=
+ =?us-ascii?Q?Y09+ehP1lT3GUduosBSFXF8SuH0NOWBqSkfXr4vZr0gXKNRvD2lCPm3rHq/M?=
+ =?us-ascii?Q?W3SQrbTQgrxsTPYm4mZjmbYkQ0Y0jJvvIxfpPCmLXwQW4npcrwSlmGaA+0m1?=
+ =?us-ascii?Q?pdyahbsR1nfH9PNa2TfZ08apOJaABTjWzjuUmgz/yfQMNaZORQGcGphIodlI?=
+ =?us-ascii?Q?h0M2yNAKh/TaPzXuZA1ux1wtu1judv1jpQBA9Er5kBevBkbw2cXkXezgFdXd?=
+ =?us-ascii?Q?IOaea/XXm2Nf1NAzNYEjUp/HgLAhVd1a85LsYScE62P0cFSF2L2QkF7RcoFw?=
+ =?us-ascii?Q?efu4kvQKW9OTab/IDLGrvxGnlKq8vfhbl2RDdm4CzIgNbhrsWAMEX7JHDRWk?=
+ =?us-ascii?Q?F3zq8BE3koolobY5K78D/oQz23xoDehlaVoYh1POjQSE2bb/uxrL34mtQhd9?=
+ =?us-ascii?Q?kTbhshGCmJtu8fw+IceDcpzz1gevpeel3s4aB1dEcN8HPwQZ3HfRZLpL5bxE?=
+ =?us-ascii?Q?wOVBi9OJN4zeurhuyLiMqRWhAhC4TFPBrcWY7AyKwRf3Zq8ZHOcmJatnU/P+?=
+ =?us-ascii?Q?FYaLsIO7qG6OgCarR3ErmFUOod9XGhoWbjhEuBoAWxkZIkzJW3CCil7w1kjI?=
+ =?us-ascii?Q?z6uRpCnrtbcsR6NHkoiRAHoGT3UtN4rshLq7ywT4OxzUsxwVbW7gyw6kPfR+?=
+ =?us-ascii?Q?R0UhTrARt9y2ipVpmFMt1bHuRTrspsJ91aJxpF0kWtTpbKXVym7UmalJsK2R?=
+ =?us-ascii?Q?bDsnETziAVL4vNU4dblBCRX7FIOTijrFIVxqKn7MAVDKjdBaPM90fm2ya3wI?=
+ =?us-ascii?Q?Ez0M4i9UVBbOaMG2NZakJONP/XMCdgdxdbhOuLWgaOCMCyLKuX2wKGgCtQpx?=
+ =?us-ascii?Q?/CErufWLpnLJmkht0aux/PTco2DAmyRvaWHSpFSvyO1lJGf3ywvwjaer3L70?=
+ =?us-ascii?Q?GFCz/uXslKTjs2Jh7oBRefelXp91iYbsuHB9F9DQZqEhtMLQSSwfCI24QA5Y?=
+ =?us-ascii?Q?WqOiU0C9tbyRzV23JJUOBzgq2fJx/KijKfzaiWkGyePDUxvTyLIq1iy7lwau?=
+ =?us-ascii?Q?13860ZH8eIUGbY90byUyMGqV3YSP/q4eG7XqLmNqVpxp4uUYZ3J5EOjMWKVD?=
+ =?us-ascii?Q?S9lzP2AbYz16urv1eZp7WzRJcXbNvG9TEmlf4Lgl171I+7GyO3yo3Y8ieMD8?=
+ =?us-ascii?Q?TCWBVFTmETeld3fZkupJBHa3qe4eBvkrHksgmHPGS4D7HWcE/d+ATmKSaHVT?=
+ =?us-ascii?Q?HUthbjrLKccMaqp/7QqxhyJmQobqwK/PSW2wZn6EerCHtUJxjx5eYPs8FO9p?=
+ =?us-ascii?Q?HY2YjzgZMVDKUKejQK6WEJbH3Ti/mZnU0OeWubjrgUbzcThbbPeTOyGrfl6/?=
+ =?us-ascii?Q?QAjZgZtCPmbx1/RfGMEHw6Nqc9yw/Vqh2f4oVKy94SUSDe64Kteq/uBiTEAn?=
+ =?us-ascii?Q?67cu5aMNNA0zCrczXJnBT8/gWjR1YbtIs4VNZWo/5UD3Rf6CApmLXBW1D0sS?=
+ =?us-ascii?Q?AV2fSBbc6kcaFyrDpZC5KM3MlrLo6WAl1rk2IeOu4pRCnK4po+IjjQIaeko1?=
+ =?us-ascii?Q?TcFnP1lO+1fGmR1cuHkMwjQubodU6QWiK9/r+Pzlm8lrfqvoeKkjIKytVqA6?=
+ =?us-ascii?Q?XLozXZ2i+vi2YImnEcNLsh6BO6jYDDE=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 677e7dc9-68ea-421f-7382-08df29af813f
+X-MS-Exchange-CrossTenant-Network-Message-Id: 91b00db2-868e-4bb5-b8f6-08df29af8411
 X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB6257.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2026 04:56:27.6012 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2026 04:56:32.2999 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: o/D7bX/e2c6jn6xQn6dgRgkJbXxC5MBUeyfzJ55iZjmNr7Jem7n/xfMuC6mvJY9NoDQyEvejOaw84rIvlGXs/O/Ds9zNU+qO5Vby2/Wv6Nc=
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZTqKZ/u70e+jyKGEvyyWYgtbsUkvstAV4QlxWaXNIVUQagqiooAn+UwmrlwBjVytKY3z8cc7cEcy7qPICj54i7tEY5KhJkneo+Rl8DyhyUY=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR02MB7213
 Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=bin.meng@processmission.com;
@@ -140,116 +141,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-U-Boot's shared i.MX6 identification code reads PERIPHBASE + 0x4 on
-MCIMX6UL-EVK. The first private peripheral page is currently unmapped,
-so that access causes a data abort before the console is ready.
+U-Boot configures the AIPS bus access controls and the i.MX6UL SNVS
+low-power registers before its console is available. Its timer setup
+also enables the system counter through the control window on AIPS2.
 
-The Cortex-A15 and Cortex-A7 TRMs describe errors for reserved
-accesses, while the related GIC-400 TRM documents RAZ/WI. Follow
-the behaviour relied on by existing U-Boot on i.MX6 boards and
-log these accesses as guest errors. Keep the reserved page in the
-private peripheral device.
-
-A U-Boot fix has been posted:
-<20261013232700.289717-1-bin.meng@processmission.com>
-
-Reference: GIC-400 TRM (ARM DDI 0471B), section 3.1 and 3.2
-https://documentation-service.arm.com/static/5e8f15e27100066a414f7424
+These blocks are not modeled yet. Map unimplemented regions at their
+documented addresses so early firmware accesses complete without
+falling through to unmapped memory.
 
 Signed-off-by: Bin Meng <bin.meng@processmission.com>
-
-
 ---
 
-Changes in v4:
-- Replace the reserved-page child device with a MemoryRegion
-- Log reserved reads and writes as guest errors
-- Explain the RAZ/WI compatibility choice and reference the U-Boot fix
+(no changes since v1)
 
-Changes in v3:
-- New
+ hw/arm/fsl-imx6ul.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
- include/hw/cpu/a15mpcore.h |  1 +
- hw/cpu/a15mpcore.c         | 32 ++++++++++++++++++++++++++++++++
- 2 files changed, 33 insertions(+)
-
-diff --git a/include/hw/cpu/a15mpcore.h b/include/hw/cpu/a15mpcore.h
-index 138f491c22..7b5269d626 100644
---- a/include/hw/cpu/a15mpcore.h
-+++ b/include/hw/cpu/a15mpcore.h
-@@ -38,6 +38,7 @@ struct A15MPPrivState {
-     uint32_t num_irq;
-     MemoryRegion container;
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 1863558a0d..92f8e4b4b2 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -201,6 +201,21 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("a7mpcore-dap", FSL_IMX6UL_A7MPCORE_DAP_ADDR,
+                                 FSL_IMX6UL_A7MPCORE_DAP_SIZE);
  
-+    MemoryRegion reserved;
-     GICState gic;
- };
- 
-diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
-index 28cda55ccf..f0e8b276b3 100644
---- a/hw/cpu/a15mpcore.c
-+++ b/hw/cpu/a15mpcore.c
-@@ -20,6 +20,7 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
-+#include "qemu/log.h"
- #include "qemu/module.h"
- #include "hw/cpu/a15mpcore.h"
- #include "hw/core/cpu.h"
-@@ -28,6 +29,28 @@
- #include "system/kvm.h"
- #include "target/arm/gtimer.h"
- 
-+static uint64_t a15mp_reserved_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "%s: read from reserved offset 0x%" HWADDR_PRIx "\n",
-+                  __func__, offset);
-+    return 0;
-+}
++    /* AIPS bus configuration */
++    create_unimplemented_device("aips1-config", FSL_IMX6UL_AIPS1_CFG_ADDR,
++                                FSL_IMX6UL_AIPS1_CFG_SIZE);
++    create_unimplemented_device("aips2-config", FSL_IMX6UL_AIPS2_CFG_ADDR,
++                                FSL_IMX6UL_AIPS2_CFG_SIZE);
 +
-+static void a15mp_reserved_write(void *opaque, hwaddr offset, uint64_t value,
-+                                 unsigned size)
-+{
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "%s: write to reserved offset 0x%" HWADDR_PRIx "\n",
-+                  __func__, offset);
-+}
++    /* SNVS low-power general-purpose registers */
++    create_unimplemented_device("snvs-lp", FSL_IMX6UL_SNVS_LP_ADDR,
++                                FSL_IMX6UL_SNVS_LP_SIZE);
 +
-+static const MemoryRegionOps a15mp_reserved_ops = {
-+    .read = a15mp_reserved_read,
-+    .write = a15mp_reserved_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+};
++    /* System counter control */
++    create_unimplemented_device("sys-counter-control",
++                                FSL_IMX6UL_SYS_CNT_CTRL_ADDR,
++                                FSL_IMX6UL_SYS_CNT_CTRL_SIZE);
 +
- static void a15mp_priv_set_irq(void *opaque, int irq, int level)
- {
-     A15MPPrivState *s = (A15MPPrivState *)opaque;
-@@ -43,6 +66,8 @@ static void a15mp_priv_initfn(Object *obj)
-     memory_region_init(&s->container, obj, "a15mp-priv-container", 0x8000);
-     sysbus_init_mmio(sbd, &s->container);
- 
-+    memory_region_init_io(&s->reserved, obj, &a15mp_reserved_ops, s,
-+                          "a15mp-reserved", 0x1000);
-     object_initialize_child(obj, "gic", &s->gic, gic_class_name());
-     qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
- }
-@@ -130,7 +155,14 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
-      *  0x5400-0x55ff -- GIC virtual interface control for CPU 2
-      *  0x5600-0x57ff -- GIC virtual interface control for CPU 3
-      *  0x6000-0x7fff -- GIC virtual CPU interface
-+     *
-+     * The Cortex-A15 TRM specifies a bus error for reserved accesses, and
-+     * the Cortex-A7 TRM says they can abort. The GIC-400 TRM instead
-+     * specifies RAZ/WI. Existing U-Boot code on i.MX6 boards relies on
-+     * these accesses completing without an abort, so use RAZ/WI here
-+     * for compatibility and log the invalid guest accesses.
+     /*
+      * MMDC
       */
-+    memory_region_add_subregion(&s->container, 0, &s->reserved);
-     memory_region_add_subregion(&s->container, 0x1000,
-                                 sysbus_mmio_get_region(busdev, 0));
-     memory_region_add_subregion(&s->container, 0x2000,
 -- 
 2.53.0
 

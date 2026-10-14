@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65594CC6B1D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 711B9CC6B1A
 	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:46:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvYb-0007s6-27; Wed, 14 Oct 2026 05:45:58 -0400
+	id 1xGvXV-0005er-L9; Wed, 14 Oct 2026 05:44:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvY5-0007AU-Sc
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:45:28 -0400
-Received: from mail-dy1-x1336.google.com ([2607:f8b0:4864:20::1336])
+ id 1xGvXH-00053t-LL
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:37 -0400
+Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvXy-0002Uk-1x
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:45:21 -0400
-Received: by mail-dy1-x1336.google.com with SMTP id
- 5a478bee46e88-35b2c599f43so4556236eec.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:45:16 -0700 (PDT)
+ id 1xGvX8-00026A-MV
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:28 -0400
+Received: by mail-dl1-x1236.google.com with SMTP id
+ a92af1059eb24-14394530ec6so2730117c88.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:44:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791971115; x=1792575915; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791971065; x=1792575865; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=3fUQiYjovRhBbOY9jZqr1EROLvDeVoIIJQ8l3JOg7Gk=;
- b=o/34U5nexp0IeGiAd6xIhWZn1RqnfgurT11nbZA+sNdlWRmCb9s9yUEQBAdUO4OSsM
- LcW5AVS4FTS5AROri3e4DBi1LkDouP3dvzXcB7mUCzB2RHXV/9lx4+Wtk3y8bJ3vxuYI
- O2rVItTdPTJIWqd7M6JsnNPrP33RsNr6rGZUtuuK6QMz6/VjE3NU70Q5kZHmQmkLheIe
- tZGBsV55VxcEWEDClTd/1tzohezaVpgbdltVxijJJWBXdtPHbR/Kc1kJetnGu5irLFOs
- dKmGNCsECjJUskOElpcEYDLi7Ky64LEJln9S8AmmLDs59X7s3jCjc9eDs/Oe/WYB6JIw
- rG/Q==
+ bh=KO0jK5ge8mQcD+JCrU2SKqU9WNdQjJjrvSJVIgwsHK4=;
+ b=fiKSLXk1gBPktQkd2RQFd8jEwjvdew9A+6VLJGsE93t1SYVtzCtNwDRfnGs2iurLNH
+ XP86gq9lBs2YePRGUlPxUFLMP5RzCnFvCJ79F8DHaUanumG/acw2TPmfYtUCzoky2oJR
+ QPwulIeZ/cWhKKOx58XW3Qh2zdYz1ZSg1s6Ht7hWUMjyZ1cCZRn19zR9BRbK27Vu1Uui
+ ehrWLRZG/7oUWI65Y5akmWseRVt8teGav99JI5xdHbYAMySzn/L5OcIYB9LAwMg8Xbiu
+ entDHed5WoWdOpOFXQLjJ8RmDa/hCt+PUKwT6b/ok4e5v3D0vD5doH0ipaKd3nSrIbRR
+ gZcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791971115; x=1792575915;
+ d=1e100.net; s=20260707; t=1791971065; x=1792575865;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=3fUQiYjovRhBbOY9jZqr1EROLvDeVoIIJQ8l3JOg7Gk=;
- b=m4DpRVVr4CF2Pwo0WnlQETUK6+ERIpao8YP4KwpwiStGhgYQGo/mmi/5nNgHxsUBFl
- 4QMwTuYb28zGs2A2vkCYi+QUqHMqz8Lvs0Ey22NO41BpKOFrZDyhqJU7MhDY3h4oorkz
- Y0thVGleVwBRTVK91B+OuvoHI/mKERcbVk6u1yRkiGsnJs0ig13kSOUtbPtH5tOhv4aF
- 5zZkekAeyEFhRp3Dm2MuWTuJQV2yVptRGvC1LFLIAi/6xJD4OgA0H8i7IcmkxP4FQ7Tl
- TSlyDEC8RRw12z5MfUo54IaQRdC9LtrLTy9LKrwbqDDVe8jniiqwE9UL7yPetC/jo6UZ
- qZaw==
+ bh=KO0jK5ge8mQcD+JCrU2SKqU9WNdQjJjrvSJVIgwsHK4=;
+ b=ozzshbEbw2pReK1BElmCrNi/GHRSPyBRAYsxR6L9frupY73ZnDS62q3DTWa7MuVKaW
+ BuVk14qfAXteMfMoCdkZgBYxIetp+sDZelT/73PfxKf6L+VerItcMfKg3XXmuwYSKrp9
+ Yp7+G4XXV4LFt6LKprruPnub4ST02jyTM0Hu89APcNYgU416btSCVQgh35a6V6ytIGub
+ aMko4O/0a97Igdlt8ewPyVqCcvgJjUYnMPaGji6eZRNS7jRYlRXslb48XmjSFoEkS4I+
+ cnMJZpU0OfwXH9ZMpVjYOHRbXVsqyrDIVJW/ABwT5AZfkk19i3+Di5D+X9bhpzuRfN0f
+ QJ0Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvByWT3cst0vm3+LDrAuGKbsGhQgGseB0Vkyxt8sCQvCHqSkZC5YAimtYVzBUqCeiRALPJqq4OGfcsA==@nongnu.org
-X-Gm-Message-State: AFq9FYJa7tZbJz5tkeS1Cxwm08ORzVoFjgCijRdj9ay6dumek1bYS/bp
- zx2qT19AP6mrbRI4xdIkCjQtT6hT8x12e3ycdjCgLEO7h0r6l+rH600t
-X-Gm-Gg: AYBFou0ISBwlqnq0IkidtKacOabHVHkrhHB0zRqjw9jRshbS3c4etfNU41i7n/JOyDJ
- xhWCtwnXB9CEHeXCOEgpr9BLHpn8IRy8NQeY14UTTXpcl88m4SiTFxKMlIULSt8KLzQr7uJaCX5
- UHQdSTuBq/peYywdrKxkiVAyycu5JAEuWb7MZh/wZzHJ2AkJ4RfUlWACOcyv+Gh5muXBefcgFAI
- RfkEBmdK6aLkTFN23CYlXm61UKCP0MdC1vDtkZxG+veY1ZvfCHcHFMlDxQIXB8BwFUsgCM2cR1a
- JBKLHjZGoEMFMMErBe/zISj3Wia3fSCw2aZ7ZhhchqrId4ksW8rdN2QUp8Sy6725DYo35l8/oI+
- zRVvU3xPVkgmC5LURht+MHf9iN5N4Ev5XDVbfOgJaiKcb6a2hIsAwTpBke0jo9Q1RDsb9asDUcY
- ZHT1Ek+5VfGHYIupSWsCEUUmJA047mQOzDBAktb/8//4SURlDVzYAHI1id5vWzODXYP+LakSaGl
- bUPcAh2EhQr98D44A==
-X-Received: by 2002:a05:701b:451c:20b0:14a:5d07:9b with SMTP id
- a92af1059eb24-16a5ea5d851mr19635817c88.28.1791971115165; 
- Wed, 14 Oct 2026 02:45:15 -0700 (PDT)
+ AKwUvBxGGHOzOzRPj8wIvF1P6lHs6jYb1XUQQzWRaTsBBMn/MOI7V3XQ+1TUieP3I9EFsBe1oCpt37zu0Q==@nongnu.org
+X-Gm-Message-State: AFq9FYLwQM4mnlO1q/oiJL7DD2+xcnfnvAyKR39OorihnSvNWkRmg6ys
+ H72s9SpcfKkTl6OgDLi2t9+XJpgiWrqR653aOiNG5HjHdPaU6JsxGWs/
+X-Gm-Gg: AYBFou1WkQvHEQcKARP+6OrVDXlUQolqTiede+oRqyA6fAlxoDMbhuSwIZ11ZrHlo9Z
+ 7Ia8lAsf/5T0jSPkIeCc4q8Nv3D8gZWZ1MBDAJjl8+R8B5l+b10fuUDxNFotGCMJJyfUdl2xMMJ
+ zOA8+FrB4IC3Q/IAFrCFviynKLnp68c6ZzYBGtktC40BfxSVfIyXO6PkwAEs8o20ajg7xa1VFQT
+ 5UkaifyGhTd1g97KE/RTZtdMoJUEw2UrFECBvK/QZ4jTW4+FyjEguoY9qaQxdBUAbUrG73L1NMw
+ hg61MA35SvJIfUKsZ6pkIj5FsU49mDCPy9B6UqlTQ3oyr+D9+FW+9oMbFckkQ7/OD7A0ppBfE5/
+ GMmKYJ0s1bgx2FoqV+xvmm5MJx9QhytOxzU5JQzHjljQocrHMGI0irzBsDDGDLq+9KowpV5wFyx
+ 7riy11fGl3/wEsXZY3rmtR5WBxAsYod41wig6cwPxSXPiW/i+nTu3s+KG9g5WqLs9VBIi2YEC7F
+ GulPxBr0DvIIJtiZw==
+X-Received: by 2002:a05:7022:7e08:b0:144:fa58:95d8 with SMTP id
+ a92af1059eb24-16a61a6ebb0mr28600435c88.27.1791971064923; 
+ Wed, 14 Oct 2026 02:44:24 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.45.06
+ a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.44.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:45:14 -0700 (PDT)
+ Wed, 14 Oct 2026 02:44:24 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -98,24 +98,23 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
  Darren Kenny <darren.kenny@oracle.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Stafford Horne <shorne@gmail.com>
-Subject: [PATCH 32/34] system/vl: select target from machine name in combined
- binaries
-Date: Wed, 14 Oct 2026 17:41:47 +0800
-Message-ID: <20261014094224.1976-17-luoyonggang@gmail.com>
+Subject: [PATCH 27/34] machine: match the versioned virt example to arm virt
+Date: Wed, 14 Oct 2026 17:41:42 +0800
+Message-ID: <20261014094224.1976-12-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014094224.1976-1-luoyonggang@gmail.com>
 References: <20261014094224.1976-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1336;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1336.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1236;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_FILL_THIS_FORM_SHORT=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,198 +130,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Match -machine $target_arch-$machine_name against registered machine
-names and aliases. Also accept -machine $machine_name when it uniquely
-identifies a machine; report architecture-qualified choices when it is
-ambiguous.
-
-This do not change single-target behavior.
+The comment still showed MACHINE_VER_TYPE_NAME("virt") and left out
+machine_class_set_name(). Show the arm-virt QOM type, keep the -M name
+as virt-<version>, and name the latest helper
+DEFINE_VIRT_MACHINE_AS_LATEST.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- system/vl.c | 133 ++++++++++++++++++++++++++++++++++++++++++++++++----
- 1 file changed, 124 insertions(+), 9 deletions(-)
+ include/hw/core/boards.h | 27 ++++++++++++++++++---------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
 
-diff --git a/system/vl.c b/system/vl.c
-index e2bd65ebd40..5d6ba08b591 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1205,6 +1205,77 @@ static int parse_fw_cfg(void *opaque, QemuOpts *opts, Error **errp)
-     return 0;
- }
- 
-+static bool machine_target_matches(MachineClass *mc, const TargetInfo *ti,
-+                                   const char *name)
-+{
-+    const char *names[] = { mc->name, mc->alias };
-+
-+    for (unsigned i = 0; i < ARRAY_SIZE(names); i++) {
-+        if (names[i]) {
-+            if (!strcmp(name, names[i])) {
-+                return true;
-+            }
-+            g_autofree char *qualified =
-+                g_strdup_printf("%s-%s", ti->target_name, names[i]);
-+
-+            if (!strcmp(name, qualified)) {
-+                return true;
-+            }
-+        }
-+    }
-+    return false;
-+}
-+
-+static MachineClass *machine_target_select(GSList *machines, GSList **targets,
-+                                           const char *name, Error **errp)
-+{
-+    ERRP_GUARD();
-+    MachineClass *machine = NULL;
-+    const TargetInfo *target = NULL;
-+    g_autoptr(GString) hints = g_string_new(NULL);
-+    unsigned count = 0;
-+    GSList *el;
-+    GSList *tel;
-+
-+    *targets = object_class_get_list(TYPE_TARGET_INFO, false);
-+    if (!name) {
-+        return NULL;
-+    }
-+
-+    for (el = machines; el; el = el->next) {
-+        MachineClass *mc = el->data;
-+
-+        for (tel = *targets; tel; tel = tel->next) {
-+            const TargetInfo *ti = TARGET_INFO_CLASS(tel->data)->target_info;
-+
-+            if ((mc->targets & QEMU_ARCH_BIT(ti->target_arch)) &&
-+                machine_target_matches(mc, ti, name)) {
-+                count++;
-+                machine = mc;
-+                target = ti;
-+                g_string_append_printf(hints, "  -machine %s-%s\n",
-+                                       ti->target_name, mc->name);
-+            }
-+        }
-+    }
-+    if (!count) {
-+        error_setg(errp, "unsupported machine type: \"%s\"", name);
-+        error_append_hint(errp, "Use -machine help to list supported names, "
-+                          "then select <arch>-<machine-name> or an "
-+                          "unambiguous <machine-name>\n");
-+        return NULL;
-+    }
-+    if (count != 1) {
-+        error_setg(errp, "machine name '%s' is ambiguous", name);
-+        error_append_hint(errp, "Select an architecture-prefixed name:\n%s",
-+                          hints->str);
-+        return NULL;
-+    }
-+
-+    target_info_qom_set_target_info(target);
-+    return machine;
-+}
-+
- static int device_help_func(void *opaque, QemuOpts *opts, Error **errp)
- {
-     return qdev_device_help(opts);
-@@ -1565,16 +1636,23 @@ static gint machine_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
- static void machine_help_func(const QDict *qdict)
- {
-     g_autoptr(GSList) machines = NULL;
-+    g_autoptr(GSList) targets = NULL;
-     GSList *el;
-+    GSList *tel;
-     const char *type = qdict_get_try_str(qdict, "type");
-+    MachineClass *machine_class = NULL;
- 
-     machines = object_class_get_list(TYPE_MACHINE, false);
--    if (type) {
--        ObjectClass *machine_class = OBJECT_CLASS(find_machine(type, machines));
--        if (machine_class) {
--            type_print_class_properties(object_class_get_name(machine_class));
--            return;
--        }
-+    if (target_combined_binary()) {
-+        machine_class = machine_target_select(machines, &targets, type,
-+                                              &error_fatal);
-+    } else if (type) {
-+        machine_class = find_machine(type, machines);
-+    }
-+    if (machine_class) {
-+        type_print_class_properties(
-+            object_class_get_name(OBJECT_CLASS(machine_class)));
-+        return;
-     }
- 
-     printf("Supported machines are:\n");
-@@ -1585,9 +1663,20 @@ static void machine_help_func(const QDict *qdict)
-             printf("%-20s %s (alias of %s)\n", mc->alias, mc->desc, mc->name);
-         }
-         printf("%-20s %s%s%s%s\n", mc->name, mc->desc,
--               mc->is_default ? " (default)" : "",
-+               mc->is_default && !target_combined_binary() ? " (default)" : "",
-                mc->deprecation_reason ? " (deprecated)" : "",
-                object_class_is_secure(OBJECT_CLASS(mc)) ? " (secure)" : "");
-+        for (tel = targets; tel; tel = tel->next) {
-+            const TargetInfo *ti = TARGET_INFO_CLASS(tel->data)->target_info;
-+
-+            if (mc->targets & QEMU_ARCH_BIT(ti->target_arch)) {
-+                printf("  %s-%s\n", ti->target_name, mc->name);
-+                if (mc->alias && strcmp(mc->name, mc->alias)) {
-+                    printf("  %s-%s (alias)\n",
-+                           ti->target_name, mc->alias);
-+                }
-+            }
-+        }
-     }
- }
- 
-@@ -1684,6 +1773,26 @@ static MachineClass *select_machine(QDict *qdict, Error **errp)
-     g_autoptr(GSList) machines = object_class_get_list(TYPE_MACHINE, false);
-     MachineClass *machine_class = NULL;
- 
-+    if (target_combined_binary()) {
-+        g_autoptr(GSList) targets = NULL;
-+
-+        if (!machine_type) {
-+            error_setg(errp, "No machine specified; combined binaries "
-+                       "have no default machine");
-+            error_append_hint(errp,
-+                              "Use -machine help to list supported names, "
-+                              "then select <arch>-<machine-name> or an "
-+                              "unambiguous <machine-name>\n");
-+            return NULL;
-+        }
-+        machine_class = machine_target_select(machines, &targets, machine_type,
-+                                              errp);
-+        if (machine_class) {
-+            qdict_del(qdict, "type");
-+        }
-+        return machine_class;
-+    }
-+
-     if (machine_type) {
-         machine_class = find_machine(machine_type, machines);
-         if (!machine_class) {
-@@ -2913,10 +3022,16 @@ void qemu_init(int argc, char **argv)
-     os_setup_limits();
- 
-     target_info_qom_init();
--    target_info_qom_set_target();
-+    if (!target_combined_binary()) {
-+        target_info_qom_set_target();
-+    }
- 
-     module_init_info(qemu_modinfo);
--    module_allow_arch(target_name());
-+    if (target_combined_binary()) {
-+        module_allow_all_arch();
-+    } else {
-+        module_allow_arch(target_name());
-+    }
- 
-     qemu_init_subsystems();
- 
+diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
+index 6e5c8dac2d1..66d530bedf5 100644
+--- a/include/hw/core/boards.h
++++ b/include/hw/core/boards.h
+@@ -480,28 +480,37 @@ struct MachineState {
+  * For example, a macro that can be used to define versioned
+  * 'virt' machine types would look like:
+  *
++ *  #define TYPE_VIRT_MACHINE (target_combined_binary() ? \
++ *                             MACHINE_TYPE_NAME("arm-virt") : \
++ *                             MACHINE_TYPE_NAME("virt"))
++ *
+  *  #define DEFINE_VIRT_MACHINE_IMPL(latest, ...) \
+  *      static void MACHINE_VER_SYM(class_init, virt, __VA_ARGS__)( \
+  *          ObjectClass *oc, \
+- *          void *data) \
++ *          const void *data) \
+  *      { \
+  *          MachineClass *mc = MACHINE_CLASS(oc); \
+  *          MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
+- *          mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " Virtual Machine"; \
++ *          mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) \
++ *                     " ARM Virtual Machine"; \
+  *          MACHINE_VER_DEPRECATION(__VA_ARGS__); \
++ *          machine_class_set_name(mc, "virt-" MACHINE_VER_STR(__VA_ARGS__)); \
+  *          if (latest) { \
+  *              mc->alias = "virt"; \
+  *          } \
+  *      } \
+- *      static const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = { \
+- *          .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
+- *          .parent = TYPE_VIRT_MACHINE, \
+- *          .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
+- *      }; \
+  *      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
+  *      { \
++ *          const TypeInfo virt_machine_info = \
++ *          { \
++ *              .name = target_combined_binary() ? \
++ *                      MACHINE_VER_TYPE_NAME("arm-virt", __VA_ARGS__) : \
++ *                      MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
++ *              .parent = TYPE_VIRT_MACHINE, \
++ *              .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
++ *          }; \
+  *          MACHINE_VER_DELETION(__VA_ARGS__); \
+- *          type_register_static(&MACHINE_VER_SYM(info, virt, __VA_ARGS__)); \
++ *          type_register_static(&virt_machine_info); \
+  *      } \
+  *      type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
+  *
+@@ -509,7 +518,7 @@ struct MachineState {
+  * whichever scenarios need to be catered for with a machine:
+  *
+  *  // Normal 2 digit, marked as latest e.g. 'virt-9.0'
+- *  #define DEFINE_VIRT_MACHINE_LATEST(major, minor) \
++ *  #define DEFINE_VIRT_MACHINE_AS_LATEST(major, minor) \
+  *      DEFINE_VIRT_MACHINE_IMPL(true, major, minor)
+  *
+  *  // Normal 2 digit e.g. 'virt-9.0'
 -- 
 2.55.0.windows.3
 

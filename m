@@ -4,137 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C640CC6B1D
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 10:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A45CC6B1D
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 11:24:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGwXh-0006i6-1z; Wed, 14 Oct 2026 06:49:05 -0400
+	id 1xGx5y-0007Zx-US; Wed, 14 Oct 2026 07:24:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGwXe-0006hM-FB
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 06:49:02 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGwXc-0000zW-LG
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 06:49:02 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-6b1ab2ad719so4896960a12.3
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 03:49:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791974939; cv=none;
- d=google.com; s=arc-20260327;
- b=EyyAUcjG7fS8FzASQNHuDKxgy9nk48jsujAt3AJZDc3kkpEpJibM7ususHNSHQRbJS
- YhD2bY9ve0QBEwtebP6j/ztPEE0oFdrcIQ9+DJ5sXKqR/bOTnHdO2kHXOWCIbZQ9sXOQ
- YWWVRplQNAAbyTvGt7Fe0NhCbO3kEe350drtXfA1ckywKFD6jWPrGwUeIGSVZArqJY3Y
- e3R8YVseCmiMrOF3z9rvdU5tI4dVgoJNd7rju2KJZIp2nTLeFvfHO1NmlcPHwwPIYz6X
- RlMobLi/PLdn0obKf61Yt1f+U25L6OwdCUvAyx+EUCSfUSy7YGQT/uJxkXOIpWdoL537
- XFpA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=Vm4UdWBLGMY1/33zteiFmhB7a2Bd38ynxMbjpAoT3XQ=;
- fh=kE/UtgG2syqPeZ6R1NhSKqoEcQHslcH3J/BbXv48C7g=;
- b=fu0cT7hJ2bhoPvSlkK8Tvn1KR5yGWynGb8V37yXtjlgfSbpXQizXoZsEToWYrtLVOO
- /B0a/8EnyzM0lpWQ6VuOnw7l8vrNceuwfiND8PIK3Iwo0FX4yW34I5az4tElZGT3Cvke
- GSTZ2ohXuz1kcac9aZnstt1/2p7NnM2bduSHmWhShmdsqIDfHQErtRBrQS5pZC48Xdbf
- thdzrmREAmCOoq3vlYWgkd9UUBQKKKXRD/OW2T69DyWjQtPNRGCUuJd7kBTt/5lxrOLh
- qSaDkNTk/1Kx23JKmw5yDa3NIbiLN5KoprZE1ZTeg0DL/KEloCCiDHxGyvRjvaKmxW9S
- Zrig==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791974939; x=1792579739; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=Vm4UdWBLGMY1/33zteiFmhB7a2Bd38ynxMbjpAoT3XQ=;
- b=dhmOeUn98u18Ozv6JjCQkWnOhHHL31N1FNiZCN3jR/CvfNgdAdUB79OazvNbw5XPsP
- +U8MvWQcPeC9u6J+WxoKBPU9tWhkh+4lnCzMYnbl1znimcI+1YASWATJ2qWTiVRfbWxm
- i7vRMssoyiWcedPyEyOvSbVYJ3wbPVzQUhhDMbkkoCM4/dkHE987vn7bWeI4F9GHJ+AO
- 3sWrp491NYwXh1jgU7g2pZoCCET5bFhrkzu7tFoO468TzBPJpuL/Dsms64lKtizRIpbN
- dUdqC+4ElLH0ItGdXRtx2qwRcndLhnsWjkfrxxuv4wONR8gOrQ5CQjyXp8jyBucY6xpM
- puvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791974939; x=1792579739;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Vm4UdWBLGMY1/33zteiFmhB7a2Bd38ynxMbjpAoT3XQ=;
- b=TTwwn7xWXTPXawg9c0f6NbO0IvkOr44nKgUeAMvPFOkUonkzqXDNPZipeFTG+5W5hA
- lVWwsPsxl5JnhvRYFVDcxLRKlVAMf7mOSjJ5/44dnrd1+ai9adT5rFoDyXK+XBSmOHBs
- 2L19ted31oWbYIuCICtntiAHfd1PexG55Q5dV2fiwauIS1v//WiBzVFa754CtyhWqJMI
- 67cVXuVPYYRjx2gXGuBgREpwGfTSzQPG89fpXWcZnKGECH7uWrc53ryvx3o3oVF6TqWE
- fAnkJrr9pPJ8XjJLLSx1Jq48pTanrjXOK8R/0P6MEuShoh7iFqOd9ct7UyWPWo1UEnPn
- BRvg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzPSLtO2jUFDcJFKmqrMi6DSAps4owKALqqOEt+jKsNJ8bqfa3E1tZx8okmaDEupxU+9Fk1IWLHlw==@nongnu.org
-X-Gm-Message-State: AFq9FYJRuLYpG0qR3U2lR331V/qyLDL6WZRUV/WfY5VllTcBKlaZ59rp
- LqRk0OH5M0r1HgOWhv8TOTiVw60+1s/oRplF906a2/4//xNIPWRDwimGXZ9ld24w01bQ0AzrhBL
- 2yn8RMMmHWxX+OGxcdZ24y3NZRczwYiI=
-X-Gm-Gg: AYBFou2G9lzsRhJO+KQqsj3a/VQNdgmKKlyp/nMLBJL6byVEpVyj68DTAfFG+cEjbBf
- UNkYkEKUT+6XWjmcYP5FOsuIKgoshEw4HHS0pkoR9tSaSX0x3nIb0McP7ViqplpMqCul+A+Emwa
- zQkfJZ+BYTVyg5Xd5JQy758pNqio1Vw4Muzp+B2SEY8qQaSOclRSKMNsd2iY039QbVWkxd/HSGt
- a44HmlAWqAZ7/rg0CtI9lcu7pLF3ss8gDjyODC3aMBnVELhplpB/05a7Q33akeJq9zFCDhQ5fGr
- 3D6nj1aVIJTFbYu4gH+dU+g+9uy3FnaVERIx5pkQBT/r2vvxzLM4pt0=
-X-Received: by 2002:a05:6402:44da:b0:6af:8022:ffe4 with SMTP id
- 4fb4d7f45d1cf-6b17c2b5870mr9690638a12.38.1791974938747; Wed, 14 Oct 2026
- 03:48:58 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xGx5x-0007ZG-K9
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 07:24:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xGx5u-0005eG-Ue
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 07:24:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1791977065;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ICxmSxA7fzkIRvEOP0m142eGhzSuJSs4m8P3Cr+XBi8=;
+ b=H655xoyH8xY6SGzLUoC5RQl5zQOOAl8iwM9ozzoMaFwTLmE0HyWVYzG21dxF5Z2SORe6ot
+ gwNmr8y0qskO7TtbWbRjAyRsmSBJWxoM7pvUaZW18UgYCAS7tg2hlVfywxnrihY6PMC620
+ UNup9sJtDJZckPgQc+8TRlNz1JdufbY=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-283-1mBhQQ_JMR6L__uTmXAY1Q-1; Wed,
+ 14 Oct 2026 11:24:21 +0000
+X-MC-Unique: 1mBhQQ_JMR6L__uTmXAY1Q-1
+X-Mimecast-MFC-AGG-ID: 1mBhQQ_JMR6L__uTmXAY1Q_1791977057
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BA247195606D; Wed, 14 Oct 2026 11:24:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 58FE41800446; Wed, 14 Oct 2026 11:24:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id EFC5F21E6A04; Wed, 14 Oct 2026 13:24:12 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org,  Eric Blake <eblake@redhat.com>,
+ qemu-riscv@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>,  Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,  Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-s390x@nongnu.org,  Song Gao <17746591750@163.com>,  Matthew Rosato
+ <mjrosato@linux.ibm.com>,  Alistair Francis <alistair.francis@wdc.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Fabiano Rosas <farosas@suse.de>,
+ Eric Farman <farman@linux.ibm.com>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  Stefan Hajnoczi <stefanha@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>,  Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Stafford Horne <shorne@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>,  Zhao Liu <zhao1.liu@intel.com>,
+ Weiwei Li <liwei1518@gmail.com>,  David Hildenbrand <david@kernel.org>,
+ Laurent Vivier <laurent@vivier.eu>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Fam Zheng <fam@euphon.net>,  "Edgar
+ E. Iglesias" <edgar.iglesias@gmail.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
+ =?utf-8?Q?=C3=A9?= <philmd@oss.qualcomm.com>,  Daniel Henrique Barboza
+ <daniel.barboza@oss.qualcomm.com>,  Palmer Dabbelt <palmer@dabbelt.com>,
+ qemu-arm@nongnu.org,  Chao Liu <chao.liu@processmission.com>,  Philippe
+ Mathieu-Daude <philmd@mailo.com>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,  Stefano Garzarella
+ <sgarzare@redhat.com>
+Subject: Re: [PATCH 04/34] qapi: rename SysEmuTarget to EmuTarget
+In-Reply-To: <20261014093152.834-5-luoyonggang@gmail.com> (Yonggang Luo's
+ message of "Wed, 14 Oct 2026 17:31:14 +0800")
 References: <20261014093152.834-1-luoyonggang@gmail.com>
- <20261014093152.834-6-luoyonggang@gmail.com>
- <e09a64d3-7632-4f90-bd69-0c6097f8cd78@oss.qualcomm.com>
- <as9ZvlmXQUwvm0vz@redhat.com>
- <5d86e4c0-43b3-475b-b135-29b9d685d13b@oss.qualcomm.com>
-In-Reply-To: <5d86e4c0-43b3-475b-b135-29b9d685d13b@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Wed, 14 Oct 2026 18:48:46 +0800
-X-Gm-Features: AclHuK9uPxvtfRhW7ESLgpVV_cu6gA6XspSKH1AK2-K599jdYaeO_JC3w74U-Vw
-Message-ID: <CAE2XoE9uPmQUDNUubFZ7v+E=++PDEmNTz7LXVpzHB-EdrJipfQ@mail.gmail.com>
-Subject: Re: [PATCH 05/34] qapi: add missing Linux user-mode targets to
- EmuTarget
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org, 
- Alexander Bulekov <alxndr@bu.edu>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Gerd Hoffmann <kraxel@redhat.com>, qemu-s390x@nongnu.org,
- Song Gao <17746591750@163.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Eric Farman <farman@linux.ibm.com>, 
- Brian Cain <brian.cain@oss.qualcomm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Darren Kenny <darren.kenny@oracle.com>, Ani Sinha <anisinha@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Stafford Horne <shorne@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Weiwei Li <liwei1518@gmail.com>, 
- Markus Armbruster <armbru@redhat.com>, David Hildenbrand <david@kernel.org>,
- Laurent Vivier <laurent@vivier.eu>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Fam Zheng <fam@euphon.net>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, 
- qemu-arm@nongnu.org, Chao Liu <chao.liu@processmission.com>, 
- Philippe Mathieu-Daude <philmd@mailo.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Max Filippov <jcmvbkbc@gmail.com>, Stefano Garzarella <sgarzare@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <20261014093152.834-5-luoyonggang@gmail.com>
+Date: Wed, 14 Oct 2026 13:24:12 +0200
+Message-ID: <87ecdscyoz.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: 4_J5VKHgjNHX56lfpKyjhdUeytlD2nq7Mu2o99JLzoo_1791977057
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,125 +107,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Oct 14, 2026 at 6:45=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
+Yonggang Luo <luoyonggang@gmail.com> writes:
+
+> As now it's also expressing user-mode targets.
 >
-> On 14/10/26 12:30, Daniel P. Berrang=C3=83=C2=A9 wrote:
-> > On Wed, Oct 14, 2026 at 12:24:57PM +0200, Philippe Mathieu-Daud=C3=A9 w=
-rote:
-> >> On 14/10/26 11:31, Yonggang Luo wrote:
-> >>> This usermode targets:
-> >>> aarch64_be
-> >>> armeb
-> >>> microblazeel
-> >>> mipsn32
-> >>> mipsn32el
-> >>> ppc64le
-> >>> sparc32plus
-> >>> are not in machine.json
-> >>>
-> >>> This is a prepare for directly using TARGET_ARCH_VARIANT latter.
-> >>>
-> >>> Also get target-info.c to be compatible with future TARGET_ARCH_VARIA=
-NT only usage.
-> >>> So that we can define TARGET_ARCH_VARIANT to target_name directly
-> >>>
-> >>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >>> ---
-> >>>    include/qemu/base-arch-defs.h | 13 +++++++++++++
-> >>>    qapi/machine.json             | 25 +++++++++++++------------
-> >>>    target-info.c                 | 26 +++++++++-----------------
-> >>>    3 files changed, 35 insertions(+), 29 deletions(-)
-> >>
-> >>
-> >>> diff --git a/qapi/machine.json b/qapi/machine.json
-> >>> index 07fac4f0764..a3d6e08a847 100644
-> >>> --- a/qapi/machine.json
-> >>> +++ b/qapi/machine.json
-> >>> @@ -15,11 +15,10 @@
-> >>>    ##
-> >>>    # @EmuTarget:
-> >>> -#     The comprehensive enumeration of QEMU system emulation
-> >>> -#     ("softmmu") targets.  Run "./configure --help" in the project
-> >>> -#     root directory, and look for the \*-softmmu targets near the
-> >>> -#     "--target-list" option.  The individual target constants are n=
-ot
-> >>> -#     documented here, for the time being.
-> >>> +#     The comprehensive enumeration of QEMU system and user-mode
-> >>> +#     emulation targets.  Run "./configure --help" in the project ro=
-ot
-> >>> +#     directory, and look for the targets near the "--target-list"
-> >>> +#     option.  Individual target constants are not documented here.
-> >>>    #
-> >>>    # @rx: since 5.0
-> >>>    #
-> >>> @@ -30,17 +29,19 @@
-> >>>    # @hexagon: since 11.0
-> >>>    #
-> >>>    # .. note:: The resulting QMP strings can be appended to the
-> >>> -#    "qemu-system-" prefix to produce the corresponding QEMU
-> >>> -#    executable name.  This is true even for "qemu-system-x86_64".
-> >>> +#    "qemu-system-" prefix for system emulation, or the "qemu-" pref=
-ix
-> >>> +#    for user-mode emulation, to produce the corresponding executabl=
-e
-> >>> +#    name, where that target supports the respective emulation mode.
-> >>>    #
-> >>>    # Since: 3.0
-> >>>    ##
-> >>>    { 'enum' : 'EmuTarget',
-> >>> -  'data' : [ 'aarch64', 'alpha', 'arm', 'avr', 'hexagon', 'hppa', 'i=
-386',
-> >>> -             'loongarch64', 'm68k', 'microblaze', 'mips', 'mips64',
-> >>> -             'mips64el', 'mipsel', 'or1k', 'ppc',
-> >>> -             'ppc64', 'riscv32', 'riscv64', 'rx', 's390x', 'sh4',
-> >>> -             'sh4eb', 'sparc', 'sparc64', 'tricore',
-> >>> +  'data' : [ 'aarch64', 'aarch64_be', 'alpha', 'arm', 'armeb', 'avr'=
-,
-> >>> +             'hexagon', 'hppa', 'i386', 'loongarch64', 'm68k', 'micr=
-oblaze',
-> >>> +             'microblazeel', 'mips', 'mips64', 'mips64el', 'mipsel',
-> >>> +             'mipsn32', 'mipsn32el', 'or1k', 'ppc', 'ppc64', 'ppc64l=
-e',
-> >>> +             'riscv32', 'riscv64', 'rx', 's390x', 'sh4', 'sh4eb', 's=
-parc',
-> >>> +             'sparc32plus', 'sparc64', 'tricore',
-> >>>                 'x86_64', 'xtensa', 'xtensaeb' ] }
-> >>
-> >> 'machine.json' is for system binaries.
-> >>
-> >> If we want to expose these QAPI types to the user binaries
-> >> (I'm not sure we want...) then this declaration block should
-> >> be moved in another {qapi}.json file. QAPI types are versioned,
-> >> so we'd need some "  @aarch64_be   # Since v13.0" comments.
-> >>
-> >> Anyway I doubt we want to alter EmuTarget, I'd rather let it
-> >> die as a legacy field, and expose {arch, wordsize, endianness}
-> >> to management layer if this is important to consume.
-> >
-> > Libvirt uses query-target so we don't want that data to go away.
-> > If we want to expose other data alongside the target name that's
-> > fine.
->
-> I'm not suggesting to change 'query-target' format; the opposite...
-> If we are going to add 'query-targets' (the plural form) then we
-> should report something more useful like {arch, wordsize, endianness}
-> but not that EmuTarget type which I consider legacy.
+> This changes the type name exposed by query-qmp-schema; enum values and
+> serialized target values remain unchanged.
 
-I think it should be moved to qapi.json. As I needed it, do you have a bett=
-er
-way to have an enum for mapping target-name to that enum?
+Are you sure?  query-qmp-schema masks the type names.
 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+[...]
+
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index 9b145c635ba..07fac4f0764 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -14,7 +14,7 @@
+>  { 'include': 'machine-common.json' }
+>  
+>  ##
+> -# @SysEmuTarget:
+> +# @EmuTarget:
+>  #     The comprehensive enumeration of QEMU system emulation
+>  #     ("softmmu") targets.  Run "./configure --help" in the project
+>  #     root directory, and look for the \*-softmmu targets near the
+   #     "--target-list" option.  The individual target constants are not
+   #     documented here, for the time being.
+
+Is this still correct?
+
+> @@ -35,7 +35,7 @@
+>  #
+>  # Since: 3.0
+>  ##
+> -{ 'enum' : 'SysEmuTarget',
+> +{ 'enum' : 'EmuTarget',
+>    'data' : [ 'aarch64', 'alpha', 'arm', 'avr', 'hexagon', 'hppa', 'i386',
+>               'loongarch64', 'm68k', 'microblaze', 'mips', 'mips64',
+>               'mips64el', 'mipsel', 'or1k', 'ppc',
+> @@ -95,7 +95,7 @@
+>                        'qom-path'     : 'str',
+>                        'thread-id'    : 'int',
+>                        '*props'       : 'CpuInstanceProperties',
+> -                      'target'       : 'SysEmuTarget' },
+> +                      'target'       : 'EmuTarget' },
+>    'discriminator' : 'target',
+>    'data'          : { 's390x'        : 'CpuInfoS390' } }
+>  
+> @@ -281,7 +281,7 @@
+>  # Since: 1.2
+>  ##
+>  { 'struct': 'QemuTargetInfo',
+> -  'data': { 'arch': 'SysEmuTarget' } }
+> +  'data': { 'arch': 'EmuTarget' } }
+>  
+>  ##
+>  # @query-target:
+> diff --git a/qapi/pragma.json b/qapi/pragma.json
+> index 342cedc42e7..93a710ee937 100644
+> --- a/qapi/pragma.json
+> +++ b/qapi/pragma.json
+> @@ -72,7 +72,7 @@
+>          'SsidSizeMode',
+>          'String',
+>          'StringWrapper',
+> -        'SysEmuTarget',
+> +        'EmuTarget',
+>          'ThrottleGroupProperties',
+>          'VncPrimaryAuth',
+>          'VncVencryptSubAuth',
+> @@ -109,7 +109,7 @@
+>          'QKeyCode',                 # send-key, input-sent-event
+>          'QapiErrorClass',           # QMP error replies
+>          'SshHostKeyCheckMode',      # blockdev-add, -blockdev
+> -        'SysEmuTarget',             # query-cpu-fast, query-target
+> +        'EmuTarget',                # query-cpu-fast, query-target
+>          'UuidInfo',                 # query-uuid
+>          'VncClientInfo',            # query-vnc, query-vnc-servers, ...
+>          'X86CPURegister32'          # qom-get of x86 CPU properties
+
+[...]
+
 

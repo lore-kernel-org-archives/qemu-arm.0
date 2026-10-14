@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7153FCC6B1F
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47B6ECC6B1F
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:36:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvLT-0002Em-Sy; Wed, 14 Oct 2026 05:32:23 -0400
+	id 1xGvOU-00060a-RT; Wed, 14 Oct 2026 05:35:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvLR-0002EF-Bb
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:21 -0400
-Received: from mail-dl1-x1231.google.com ([2607:f8b0:4864:20::1231])
+ id 1xGvNe-0005R1-1l
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:34:39 -0400
+Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvLP-0000KA-GF
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:21 -0400
-Received: by mail-dl1-x1231.google.com with SMTP id
- a92af1059eb24-154e9d2d979so563357c88.1
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:32:19 -0700 (PDT)
+ id 1xGvNc-0000ft-HE
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:34:37 -0400
+Received: by mail-dl1-x122d.google.com with SMTP id
+ a92af1059eb24-170135e43c7so1206632c88.0
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:34:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791970338; x=1792575138; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791970475; x=1792575275; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=rSqKSRhEqnstEH7SJXTfujA+NHTWwnjZ9T7JL0yO7Dk=;
- b=cbh2zRGNuE97IHFiDeTfDxakb8gs8WMtfdoKP3fI2zHZ3pPNP9p6hqna6fmCq3ZLed
- 7PGsK3kBHQai9I0F0Yh/pWGExUwUhE8giVaoC0ncIgbvyW/M362gO8wQiboNsF02A7zr
- iPby/q78GC/T3GXp2qEurgFSgfJpgxfibSzoj9RysXG9BprOfw4UHNy2Q73Meityl+Sk
- DmifPqbzRcFJmPOWJUOL4kpaEQOtLKMvquBpyeuo5cmpLqlXkhFvBoliO9Y+QtQMui4O
- I9hKZPWGFt4OzAZRWM0dDeChrp6G0kIBukhjudxv0vqYMsZVdFVc5gVnKnUdDQX859GR
- BXUA==
+ bh=IAa9EYHeaBZV1We1wS0Pw4Gbkg3A4EQ75sck0EgY0ZI=;
+ b=LbmZWUAIbHt3z2zBA75HKVQQGMDF8haaEm9QDZZV0AHaLV19EZYJPWPpBJyurG5+O2
+ naD2JSuweR9TaVypEddIlF45hTifdeTRP8tD8qzRiRHornQt/Wk0INl3ZkxUxmKQLNEM
+ YLuqGIR4VR7s+EfbEJwxz8SO6Z0KIVA5jiaSkllcsQ76GzY14DHu3vnu6/WmIEbm6WsN
+ BDXrJuDovWFr4Aq6tk0j2om/pXBjEDXXilvd+wMkJpjIIAh4PDOArYBvFWT9CIej8MgD
+ 2nDQJ+IxB1pRSrj5dWIoaTGXuqFfDW7vD8A/TeEH2D1I5BsJcBEL7GPmXhKRx0/V26CI
+ 8qCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791970338; x=1792575138;
+ d=1e100.net; s=20260707; t=1791970475; x=1792575275;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=rSqKSRhEqnstEH7SJXTfujA+NHTWwnjZ9T7JL0yO7Dk=;
- b=AlAbV85S/d1zljBU17eDMKKTWGdYcpXk4tWg89Ly4uMhdJVkH1B3mn1MxXfGwjVWfG
- bKtqK0BUBwbNY4gETWhM/bQZs/HPAmxKqyd1CMdQTRn5Ma4JrW7PSZ7TAJn25/xkRNXT
- k1dAwgnIKAUBFFzGy7NpZg3+Gi5FFeFNsinzk9YjMg3xEQ5aQ4EJhs9Aw4PCmxbF63Uu
- Ea8t2pn+5pr0o0l5rr8Y60sF7Y3/vjAMp2mlopnXVQr8yv9ITmCrLidONWIUDPzJdo40
- F+CgobwaUtmLsNtbMYqHA6IaOWno8T4u71aYQAb5SWQzDvctSWrADCduJtZm8XtO+tBz
- bn5Q==
+ bh=IAa9EYHeaBZV1We1wS0Pw4Gbkg3A4EQ75sck0EgY0ZI=;
+ b=iBI6g6KloyW8zFwNS2wPQu0WuQKIAEx+Vp8HJ3onWpO4Z1ik5beg3Z7VWN1BvQr7gk
+ 3IT6yw3JuezgtN+WpwW3Wg4LADrG/40+326p8Gb9cBT8a1ZhTdpJ/f1x+taPXPdiaEcj
+ SaSzwZOyWVJlC40EB1epqHG82HWDspF0QqMVr1l3jVdmU8rEvcmurEgS1raPHFfZ/3fg
+ h+xn145ZtCA5DDTGxCRKlXm1FsecNlBt+mfgSdr17wDJR7Dg44wZ3/lllxSe780Qhsbb
+ aOmn6JHWuLyc02xpfN+/kpCNqiFVSVR+P636UtmFZQ3LWuc1m3pbjj90hNXNCe1tZdom
+ EocQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwBYX5kou9UC9GbvNg3cp9AllQ+ABncQFsESJCsO/5S+SGNatDWKMtbKpUNpMODun2e81R7QDgdyA==@nongnu.org
-X-Gm-Message-State: AFq9FYJgYy06i8acWx6AnHQwzxGQBOKp5MBKW03cbk8yG27D7izYtwzL
- IkyDqP0QvfarsZV2DvT1+oPSH/gv0WsOsw0hcjQnI2rp05Aj/dUTlupw
-X-Gm-Gg: AYBFou1KA4IEA+7BlcArniFG9VluxR66pDpIxRa0VDXn4u9yVgHf1swDG8bp30MqINc
- 5OqPC+yxSzIs3xOdLFFuEdV01NOabD4kHg5MUfBuxftc/z0yHLia6IDbvusc0vBKuh90eCQCcxs
- xqDaNvz9+M958srUuBH0kWcbvle1jk1+keeHrxIyl+4TayQXSU7tqjGR2ZLgsCjUMyzLzdLDpI5
- 6tZve1V3nHIvja5pGBP6OXJn9imJpQOvWNaRBpKXHJS+dUe0IT2KhxlWisv1gdPO0qMkal1oiTV
- JrmbcHL7iYA5utIocaWm03o//jrel2yLAf8PjmiIUm09TSBJK61rk2VOHcHekGL+m7jTDoxcuuB
- 9lTSX6oWAxKtiHeQ1x0gTxa8DcmWuGF745dnFMXaM5TNa3zEi35Xg5g0kZ6oqRmZ4eK4r4dCdtY
- Gck+TyYJnaIVcD1Rbv5aVbrjvtcp4J8aA7nVfZcoAfb4JhdDlL4f1QASDUw2BRCswdtjfQKBlGI
- X1bcl5YYkTrwIEniH+VMZHZIYh2
-X-Received: by 2002:a05:7022:7e8c:b0:143:1bb1:b3c3 with SMTP id
- a92af1059eb24-16a5ce94210mr21692046c88.14.1791970337648; 
- Wed, 14 Oct 2026 02:32:17 -0700 (PDT)
+ AKwUvBxiMxiv0749Ri4ZOTaciEA1L0LgqT0jaCV2J/wA1Ik8O2gkauU/HOkaJBN3vU0oR6CigxIr3lmzhA==@nongnu.org
+X-Gm-Message-State: AFq9FYJXcoJ6tOfAn4x2R2ldTtrMkjsV5buH8gp3DlvDROtemtZhnAKb
+ jrt65oMbMCln8TjxHEng0zZAT3nr2ccENF8o7jh5yDUH8V9oD9E83i/5
+X-Gm-Gg: AYBFou2av9jZK0bwjAYFu6cnnCfegoeNtS9Xwtfi3Wo3unytsqX5ITlWNu7IEi8ed97
+ FiZtOslGhyUtIMxcqCWnDo1upFEHSbnOHoNM4ajDcwHt0aluQjWeSJQmEi2IqUPoUNq00Wc/tEN
+ 7lE9AFI76IFbOI6yY21jMLoIE42TuXoVug9nSJhZ7pH2GIEp9/r+sL6leQD1Mlt5F7alqapb9fI
+ inD+QeTzDlCUbaF2E5pXKCYnnmF6ppX7lbG/wpfTj62qRe3iIiX/WDgMrJzmlmmyTON1C36vy3i
+ GrJnd6D2PN6nprjzKqzJLIj6GnecRWkyIwvUAWpvftDZxbdoHWXVnxCQFYlKec/8q/rxLQmtXrA
+ LT9NO/7Wqysc/PvopYSWSqEEdUI8bX69GYgN21Fbkqja+4c6BUyVwL1vP2Id2DiUFvftaR01i6m
+ 6+rjCGWVQswb+bF0E9xN8YQmmY9tyMCV3ypAcyE/CmaAhhNB9XTbPkACxKsIhTfOEbTFEPyjgtE
+ ojoDpu57IZXorkHrA==
+X-Received: by 2002:a05:701b:2713:b0:168:6ad8:e8b0 with SMTP id
+ a92af1059eb24-16a6187f095mr23324103c88.14.1791970474962; 
+ Wed, 14 Oct 2026 02:34:34 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.32.08
+ a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.34.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:32:16 -0700 (PDT)
+ Wed, 14 Oct 2026 02:34:33 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
@@ -97,24 +97,24 @@ Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PATCH 01/34] qemu/base-arch-defs: extract QEMU_ARCH_BIT for
- QEMU_ARCH_* enums
-Date: Wed, 14 Oct 2026 17:31:11 +0800
-Message-ID: <20261014093152.834-2-luoyonggang@gmail.com>
+Subject: [PATCH 15/34] hw/scsi: Avoid guard loadparm with target_s390x() for
+ s390x in class_init
+Date: Wed, 14 Oct 2026 17:31:25 +0800
+Message-ID: <20261014093152.834-16-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014093152.834-1-luoyonggang@gmail.com>
 References: <20261014093152.834-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1231;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1231.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122d;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_75_100=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,83 +130,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This is for avoid call target_info() in class_init.
+Now we directly guard in scsi_property_set_loadparm instead.
+Don't know if its an API break, but the smallest change.
+
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/base-arch-defs.h | 60 ++++++++++++++++++-----------------
- 1 file changed, 31 insertions(+), 29 deletions(-)
+ hw/scsi/scsi-disk.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/include/qemu/base-arch-defs.h b/include/qemu/base-arch-defs.h
-index f33465738c9..806ad8094a4 100644
---- a/include/qemu/base-arch-defs.h
-+++ b/include/qemu/base-arch-defs.h
-@@ -9,36 +9,38 @@
+diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+index deb33ac1dda..276941ae537 100644
+--- a/hw/scsi/scsi-disk.c
++++ b/hw/scsi/scsi-disk.c
+@@ -3179,6 +3179,11 @@ static void scsi_property_set_loadparm(Object *obj, const char *value,
+ {
+     void *lp_str;
  
- #include "qapi/qapi-types-machine.h"
- 
-+#define QEMU_ARCH_BIT(target) (1UL << (target))
++    if (!target_s390x()) {
++        error_setg(errp, "'loadparm' is only supported on s390x");
++        return;
++    }
 +
- enum {
--    QEMU_ARCH_ALPHA =       (1UL << SYS_EMU_TARGET_ALPHA),
--    QEMU_ARCH_ARM =         (1UL << SYS_EMU_TARGET_ARM) |
--                            (1UL << SYS_EMU_TARGET_AARCH64),
--    QEMU_ARCH_I386 =        (1UL << SYS_EMU_TARGET_I386) |
--                            (1UL << SYS_EMU_TARGET_X86_64),
--    QEMU_ARCH_M68K =        (1UL << SYS_EMU_TARGET_M68K),
--    QEMU_ARCH_MICROBLAZE =  (1UL << SYS_EMU_TARGET_MICROBLAZE),
--    QEMU_ARCH_MIPS =        (1UL << SYS_EMU_TARGET_MIPS) |
--                            (1UL << SYS_EMU_TARGET_MIPSEL) |
--                            (1UL << SYS_EMU_TARGET_MIPS64) |
--                            (1UL << SYS_EMU_TARGET_MIPS64EL),
--    QEMU_ARCH_PPC =         (1UL << SYS_EMU_TARGET_PPC) |
--                            (1UL << SYS_EMU_TARGET_PPC64),
--    QEMU_ARCH_S390X =       (1UL << SYS_EMU_TARGET_S390X),
--    QEMU_ARCH_SH4 =         (1UL << SYS_EMU_TARGET_SH4) |
--                            (1UL << SYS_EMU_TARGET_SH4EB),
--    QEMU_ARCH_SPARC =       (1UL << SYS_EMU_TARGET_SPARC) |
--                            (1UL << SYS_EMU_TARGET_SPARC64),
--    QEMU_ARCH_XTENSA =      (1UL << SYS_EMU_TARGET_XTENSA) |
--                            (1UL << SYS_EMU_TARGET_XTENSAEB),
--    QEMU_ARCH_OR1K =        (1UL << SYS_EMU_TARGET_OR1K),
--    QEMU_ARCH_TRICORE =     (1UL << SYS_EMU_TARGET_TRICORE),
--    QEMU_ARCH_HPPA =        (1UL << SYS_EMU_TARGET_HPPA),
--    QEMU_ARCH_RISCV =       (1UL << SYS_EMU_TARGET_RISCV32) |
--                            (1UL << SYS_EMU_TARGET_RISCV64),
--    QEMU_ARCH_RX =          (1UL << SYS_EMU_TARGET_RX),
--    QEMU_ARCH_AVR =         (1UL << SYS_EMU_TARGET_AVR),
--    QEMU_ARCH_HEXAGON =     (1UL << SYS_EMU_TARGET_HEXAGON),
--    QEMU_ARCH_LOONGARCH =   (1UL << SYS_EMU_TARGET_LOONGARCH64),
-+    QEMU_ARCH_ALPHA =       QEMU_ARCH_BIT(SYS_EMU_TARGET_ALPHA),
-+    QEMU_ARCH_ARM =         QEMU_ARCH_BIT(SYS_EMU_TARGET_ARM) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_AARCH64),
-+    QEMU_ARCH_I386 =        QEMU_ARCH_BIT(SYS_EMU_TARGET_I386) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_X86_64),
-+    QEMU_ARCH_M68K =        QEMU_ARCH_BIT(SYS_EMU_TARGET_M68K),
-+    QEMU_ARCH_MICROBLAZE =  QEMU_ARCH_BIT(SYS_EMU_TARGET_MICROBLAZE),
-+    QEMU_ARCH_MIPS =        QEMU_ARCH_BIT(SYS_EMU_TARGET_MIPS) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_MIPSEL) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_MIPS64) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_MIPS64EL),
-+    QEMU_ARCH_PPC =         QEMU_ARCH_BIT(SYS_EMU_TARGET_PPC) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_PPC64),
-+    QEMU_ARCH_S390X =       QEMU_ARCH_BIT(SYS_EMU_TARGET_S390X),
-+    QEMU_ARCH_SH4 =         QEMU_ARCH_BIT(SYS_EMU_TARGET_SH4) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_SH4EB),
-+    QEMU_ARCH_SPARC =       QEMU_ARCH_BIT(SYS_EMU_TARGET_SPARC) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_SPARC64),
-+    QEMU_ARCH_XTENSA =      QEMU_ARCH_BIT(SYS_EMU_TARGET_XTENSA) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_XTENSAEB),
-+    QEMU_ARCH_OR1K =        QEMU_ARCH_BIT(SYS_EMU_TARGET_OR1K),
-+    QEMU_ARCH_TRICORE =     QEMU_ARCH_BIT(SYS_EMU_TARGET_TRICORE),
-+    QEMU_ARCH_HPPA =        QEMU_ARCH_BIT(SYS_EMU_TARGET_HPPA),
-+    QEMU_ARCH_RISCV =       QEMU_ARCH_BIT(SYS_EMU_TARGET_RISCV32) |
-+                            QEMU_ARCH_BIT(SYS_EMU_TARGET_RISCV64),
-+    QEMU_ARCH_RX =          QEMU_ARCH_BIT(SYS_EMU_TARGET_RX),
-+    QEMU_ARCH_AVR =         QEMU_ARCH_BIT(SYS_EMU_TARGET_AVR),
-+    QEMU_ARCH_HEXAGON =     QEMU_ARCH_BIT(SYS_EMU_TARGET_HEXAGON),
-+    QEMU_ARCH_LOONGARCH =   QEMU_ARCH_BIT(SYS_EMU_TARGET_LOONGARCH64),
-     QEMU_ARCH_ALL =         UINT32_MAX,
- };
+     if (object_property_get_int(obj, "bootindex", NULL) < 0) {
+         error_setg(errp, "'loadparm' is only valid for boot devices");
+         return;
+@@ -3196,14 +3201,11 @@ static void scsi_property_add_specifics(DeviceClass *dc)
+ {
+     ObjectClass *oc = OBJECT_CLASS(dc);
  
+-    /* The loadparm property is only supported on s390x */
+-    if (target_s390x()) {
+-        object_class_property_add_str(oc, "loadparm",
+-                                      scsi_property_get_loadparm,
+-                                      scsi_property_set_loadparm);
+-        object_class_property_set_description(oc, "loadparm",
+-                                              "load parameter (s390x only)");
+-    }
++    object_class_property_add_str(oc, "loadparm",
++                                  scsi_property_get_loadparm,
++                                  scsi_property_set_loadparm);
++    object_class_property_set_description(oc, "loadparm",
++                                          "load parameter (s390x only)");
+ }
+ 
+ static void scsi_disk_base_class_initfn(ObjectClass *klass, const void *data)
 -- 
 2.55.0.windows.3
 

@@ -4,134 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0198DCC6B1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 07:52:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EDFECC6B27
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 08:22:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGtkx-0005Y9-BF; Wed, 14 Oct 2026 03:50:35 -0400
+	id 1xGuFL-00082V-Nc; Wed, 14 Oct 2026 04:22:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xGtku-0005TA-Sf; Wed, 14 Oct 2026 03:50:32 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xGtks-0006yR-NU; Wed, 14 Oct 2026 03:50:32 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=X4An3NIyG44PCkmrlrZolaur5Eg0v9VsmUs+rNlpgjX8myv5TF4LWM2XP4/75TyVvZYka8cEWfEBj3bbfNGQQkfndU46zTQ3rWeabvx0YphFJN4pN8WcvgHSOlNTVsF0vQJJQ06iFW+Hd4ElX+BwFEkrExrWPe8CVr6ITcZQQa5oKddt9tgKZYoMDupiWQyIw4JxBkV2YA7DSzWPZDAvOV/JkA29OUrJqfj5WRHfDvv4Uw0vZCdlofomxaXi/N+7m4SnI4k6e/u6hCamqia1NnKUAzbvoXfjoYyMHKl/OpDANTBeaixXt2JFDNcIvvHuy99LcPa0777rEypdR+S6AA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PgDjjmk5aJEtzJDYSy+QAfsdDtiz+Zj2L+u3qb/6gB4=;
- b=xj0FvHgOV/ZpDFV0/zQ3rGdFe9iOjUgJ2/zKWZjXJ5/xNrt+kP++BFpmFbUMse1yF3MB1yc2cKSfUZQR4Y8OdzE/+XIdl+JRbEV5GO55o4D0xAmVLUFyHndAx6qDBherPQKOQ/1UoS8WL1ZAmMa0dTuhkmYt4S9NEzrJR5GuPySEYEnok/5mnYcJ3Q9MM1mbXxY1Y5D8BsldJR3ll5Vzap70CeaNTl2F7MTjQ8lY5KDPwxLZhjcWgFQCn5bgOaPfQr3zyiWjqtOluj77DZUVI5/InN2JZRglt372usce3eC8bp/ELO6Zyur1phgIQekDM7aNK8py8tb9t6KM4j+7FQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PgDjjmk5aJEtzJDYSy+QAfsdDtiz+Zj2L+u3qb/6gB4=;
- b=UHT8XDaK1kZ3SGMuqDAxJr4GYz7/j2PG8EeoUS2MzpNYLADhwFY7usSWoo1Z8ouRziaHMXvN+E/e/IQjaNuTIqN7efzErf41p2StwIIID0tjDovdABlA+eRmAEv5wvW7d+Kt9Q7r+tC2vCDxsU2OCjR4r5jquSIaPhBPf4Rtk7IKPO46YMPE8aUqRbojqO2v8YMh2LZFE/6qboBOxEr0sY/gG9AQsj+Fnir+TaXhd/PmFcDWoknHzRjH3BXoP9euQDq5LZAoL6u87VGgQ7zvD4RicDXgmO+31ZEsJl/MopMfIV8DWdC8u66rxhPa0YHGOLIDes+Dpx95EeVyTl1s7Q==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by SEYPR06MB6864.apcprd06.prod.outlook.com (2603:1096:101:1b4::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.13; Wed, 14 Oct
- 2026 07:50:17 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0522.012; Wed, 14 Oct 2026
- 07:50:17 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 4/8] hw/usb/redirect-server: Announce the exported device
-Thread-Topic: [PATCH v4 4/8] hw/usb/redirect-server: Announce the exported
- device
-Thread-Index: AQHdW7Cnmct61icUVEG1STKZc9V8MA==
-Date: Wed, 14 Oct 2026 07:50:17 +0000
-Message-ID: <20261014075011.2708115-5-jamin_lin@aspeedtech.com>
-References: <20261014075011.2708115-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20261014075011.2708115-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SEYPR06MB6864:EE_
-x-ms-office365-filtering-correlation-id: e173b212-a919-469f-fe64-08df29c7c9cd
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|376014|1800799024|366016|6133799003|10067099003|22082099003|18002099003|3023799007|921020|38070700021|5023799004|261009223027099003|56012099006;
-x-microsoft-antispam-message-info: YJ12DRV9OZbpXKWsYZHZkK1MHSufDPt1ikEvfGzJjHhZoC+hy9afugVPAIZmOIpTSmGJE3+AUyVr5d4KA4HN3P7SJYRAitEff5xeRUXwNLLTMfIo6JBrA9jtiK7f7zYthDaWHI61kSKD6Wr7YjeD6mYX2d3gWrK3Ao4yZI7FEuv7F11HLcYNuGSR6HOScR6x0HQ5P5Rb2YIV7HCCxyk+4cPw7L22J9Xmce4NX3LK0TkTncEwuiW9YW+tcM1KCWgtuLwkDgOoyke8Ffe9sfD30LgixF0SqPojZLZ/FF9vp8kDl0Qqg866r42yzrb/vkYruwkJfvX/rI7MGmSdt/9S2kCcn6R7kJ9149EVQ9fwJ2P7HhdHGXJjmDHAYlF4EaJ+YVvQcY97oVsxZ6b1sd4EFgcrZN5Ke5BIJOL7smEG94yATtBfzOtqKN6tjKUahzi9Qoq8CYst+hm2mw7BTqICie5ByEHmIIbt8iNTHJfrX/lNE/6paNPT621Up4h9PZNq+gbOJQltHf3/ekSCpKZXcxmhEiRoMv9tdr2k6XfwtdgOZeCu/1hdGBvKczsp8wspVgqtarVG3RrBZ7s8LCnRYhCWfkP653MG79uhWpQQF1hO+Psvs4OwC90T0IbFSqk7cDj3RxAWnCJsOpmXudaBT4eWt/9tYa62YVMnH7pZE0Dvj3fmpHvsn8Ri7rhDg2NyJuv3gmEVYqrVbFdwWKFf9G9ST2N7Qrc0+oYQUUMhbUJGdrwioDgw5Rx2iVfKnHTG
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(6133799003)(10067099003)(22082099003)(18002099003)(3023799007)(921020)(38070700021)(5023799004)(261009223027099003)(56012099006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?7Ms5iszyFNSXo6fTe2xNnNxbKhM0s1+S3IIAEjvqEwG1YHiA27pgHUEH/J?=
- =?iso-8859-1?Q?1D9ucCjADCgQZIclSfr1H4GREpBqZ4hoztBFBa5is5bl2bUGKTPLtwLuEr?=
- =?iso-8859-1?Q?s3P9GlVZgmwOvrRwz1aMSx0xYpxLdNpOJGTpwFxc/UBUhKILwNIc+d8Nhw?=
- =?iso-8859-1?Q?NTwFC3L/1lPNDHBZ27ocLOVa41YWjrH4OCmP4sClYVVdOi5U6Q3kAGkY2D?=
- =?iso-8859-1?Q?uQAtw4stwbPFfC54pyr/2/x8WbdSjNK30cXm0uilNzl+Bg/6TjgB1l63fU?=
- =?iso-8859-1?Q?JTkOXlnNSyr+ius3LtASToT1YcJ2UT2Y+Ipd0S+0WjabWu0g2JYNNkhVnd?=
- =?iso-8859-1?Q?4yMOgYsp/7ikbnkM1E8LeeqT5rmxu1tS+Na+PMrgwSUx14pZr4q1/1WbL+?=
- =?iso-8859-1?Q?+oieWmX+cXku+xPIOnDjs4J2hkpXHy6zoyyOdfnxgAoodwv+gEvRu5paxK?=
- =?iso-8859-1?Q?87tiegcZVYPCKvafhnbozSR5JHzTdbEALBa++YlYrFMVE2FhczQ65ry8Az?=
- =?iso-8859-1?Q?C9bYoP1ociZDdyCm/e2+RPoNhX/5BkE7YUrp8mYrMKcKJX4/Vr1YIsGUwm?=
- =?iso-8859-1?Q?OyegaBzaNaAhRVFPcUc1Jj9bm0/oMJahtf+JZW7qEupovDi4CYmup0cgtZ?=
- =?iso-8859-1?Q?K1sSG7PyVXwseKqVczYjbGAaVGCjrjvSpIC5+SikgJmazqYtFsNqLYLUJA?=
- =?iso-8859-1?Q?G6tQwlLCs3w5ooe686fM1xJ5PmRgnBoeKFkVRXDp+rwq6DKUxVaHZOp3I2?=
- =?iso-8859-1?Q?oIaJMoiLfuPFA5J9q6d6J1SgGuxoMvvsqvYMImskgVeFLc80/qKNbfJ3GZ?=
- =?iso-8859-1?Q?JJo1HdXlYKbBuyZRZ9+n/Kj6pRY/QluNPUV83azhkIO/Fwc8oL2i43Fwfc?=
- =?iso-8859-1?Q?YcgrbAvMdV5HD6Dr0wDbwao96qlFX3KwmQwjW/QK1SitwUigcRnt41mIMu?=
- =?iso-8859-1?Q?xgw6aIB5bAeECnTV5bSw1/StpR1vZRFlvfWtBgWhaQmaKY0m0ZGFiSNXDp?=
- =?iso-8859-1?Q?CssHl16vR4LZKUOJ+4C44Zzt/9cOQjJ5uNUwx5EOn/Kdjn9jSApxZcxn+b?=
- =?iso-8859-1?Q?srRimE8DYWj7VTqYoKfANBk2VnL/3aSZA3dk1ELLnYVvgVhcfAQ81uuSQb?=
- =?iso-8859-1?Q?ewHlz8lTPiCTY3YJt4cGZDJq0tC9W9pOf3V/Geh4nPacfA732NcaA6X/RC?=
- =?iso-8859-1?Q?XhSTT6VNlY8NPUgFGtuA+YHei0AWLhYD4UtXB7TO+p+Z0QQvCVzCyDyogA?=
- =?iso-8859-1?Q?Fc+/wtgeYTs6PAH/vJQbf/6+zzIY4y1mdRwIMPrinGAjTVH+9XhLc2j7I7?=
- =?iso-8859-1?Q?G48b3jpzebTjeKdvjTCHO0MGy+5Rpp4BKSwndgC4MAooGYKS9CZU2cXIia?=
- =?iso-8859-1?Q?QFPEA1deBcgl7GlHGaakkSy9DY+hmZeq3Y+1HbDrQeYKRH5xsmrCGuYjWg?=
- =?iso-8859-1?Q?BFaInXirXit/MX6KQQEQ0sYA83pLSY/RjuvjlOPgmvu1tSs3MTqWwo48so?=
- =?iso-8859-1?Q?mlPLxmbZp1G6r5l/vcCEChUHz5Eou2xlA6S9GGsRAHiV32WRrWUjpeLYpk?=
- =?iso-8859-1?Q?qGSgzbhlJQoYX5hG6HiIcEVm0b+8/3knuAwHs0LIfoblCjT47YOHDDTr7b?=
- =?iso-8859-1?Q?L+JIQ8MM3m6TdACC06EYSEDWYKQ41rO07q+5QKfwvsju91CEzuTjRg7Uc1?=
- =?iso-8859-1?Q?qdWGGKkOU+I0kqGwqXdXSGEEBggX9p1rt/Cff7BwxyklzW72y2ovSoN3ty?=
- =?iso-8859-1?Q?TTeTgV83RaasGdD+cohox4nFvpHw8KUIvMPx9i97XDGJHTMT1AiuQRKKAk?=
- =?iso-8859-1?Q?bw/GvpRCCA=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1xGuFK-00082D-Ch
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 04:21:58 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1xGuFI-00027r-BH
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 04:21:58 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-6aa9164072cso5618817a12.2
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 01:21:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791966114; x=1792570914; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=kv+VjdbdQL8xwxh6XECL7xWKmLM9OSB3JEyVeKt9p0M=;
+ b=jWz8io0yFjuVktPXmsLnVl2TyR3Jb+y0xahu4oZambFdb5UtE9rW5A2Krmu5fFbWwV
+ UXad0NdS/wpfFne1SLh6PM7Aozfwjp7SSnkdXMMMpeqGP0XrI3hrvOKDBLOzdAAATOj+
+ d/de9VNv9eIWPieVQRZXLQjS99bpqYyA5l6kkbS+pF60DtmqyuvxotvXyVOwAba5o03T
+ 1tZHcFkJWECfDURAOovczKY3UjJtJzVhVdhivZ4K8L67GI/9FZQ1yvo/8np1I3CUuXXb
+ 7L78jVOX9HMprQZH5IQiF8MueKlfjpaSemtd3mRfqZB5g76PA7AILXw/FptmCPxwCcbb
+ Nczg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791966114; x=1792570914;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=kv+VjdbdQL8xwxh6XECL7xWKmLM9OSB3JEyVeKt9p0M=;
+ b=V5DIGyvW00AOPlG54JcKO8riT+SMVethuXL6DqPkNs83tV5cEuicncIB0Q4FSzjJQT
+ guXP9ZIIEmlpIR/KOeICWYIYsL4DHABJz6fIfvv0fQCBjT0EhWKchkJhbfORz/o8AplP
+ q9aE4m60NndbnQI8JZtS4/eGcrlB9u05S6h8FyMGvRijGdJiUrDx/uEHwvTUtfgJh5D8
+ aWcsdygFIOTYH72OwleBJ+XV0345iAaHbQ7VRZJVtCK+mVirpt0C25QBE3V7/pLIBPDU
+ TypFHJPW4i02M9Z+4EccIXY7XcjPYU0CKFb8FIHNrLUT6tQpGZhTxujHu9C+ySIADkP3
+ O1jg==
+X-Gm-Message-State: AFq9FYKxhjVrW3qfGtWcdmjqPwdwTyHWqPhN5ONlqQCPBAcwK5OmpvGq
+ 7rlRMEiE80ST9mCPPJy8/rXQyYzYGVJpGZvm1m+c3kav+As1ka8/Dhu/
+X-Gm-Gg: AYBFou3gb/PXfYi1ALGAyzgjVKRYc1EptB+B2lWiKvM4/TfuDEE+2uFyP47uW97hhZr
+ n02y7tvd8aVgiLyqm6vw2Pcav9t/7/SHFrS9LP5YRrn8HZzMAByJo/TcN85rP1So/RspnouZAaO
+ xai7gxK9xldKAK0XQxQSSceaezn2z2USlqbzekHEUMRuwUlCLK7a1VkAFIUA+j5xj7GhE1Rmcto
+ N9fJMOv8PTq2M7y/RqMuGeYuM0Enam289vlY7lBk8VUVsR++pAY4SqIUzUWhtLrJm2rQh4tMUBG
+ V8UP7249TKlyzMRjQZgKjSA2jX39wqmFxRb+UL12IyUbBqAaa4TsIrz6Zv3KoKLJRjfD9Tw5P1g
+ 27CSuuG0eEJbDarTFZHGaD/P1tTOYpefB2YuqcmdhpcZoXvDgvV7PABtp6/PQ90blTguFOAyoP9
+ vYg68JAWzjFsBJD9iwGWQAsxSbxsl/DOnravDmfQeQbDrBLS5lMLjUGNuta7/L69f9DrOGLdH2n
+ dEHQLV076Aetr8Qi1WTdc4AAVilRsVHL8zV0jqK3A==
+X-Received: by 2002:a17:906:dc94:b0:c2d:dbfd:4314 with SMTP id
+ a640c23a62f3a-c31a9fff622mr1293814566b.46.1791966114141; 
+ Wed, 14 Oct 2026 01:21:54 -0700 (PDT)
+Received: from [192.168.1.130] (93-143-204-231.adsl.net.t-com.hr.
+ [93.143.204.231]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c34feaf0767sm324317466b.40.2026.10.14.01.21.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 14 Oct 2026 01:21:53 -0700 (PDT)
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+X-Google-Original-From: Ruslan Ruslichenko <ruslichenkor@gmail.com>
+Message-ID: <011b142e-feae-47e0-9c67-6cc7277c5113@gmail.com>
+Date: Wed, 14 Oct 2026 10:21:51 +0200
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: TtlcnqTa50n+kJadgDLJBvRbu2DUqZ2akIMFCmZ/Y6vebkvhPN6GQNYkwvAYcS3CEXio8D7jja5Fg49l1VRT2w9Re08QxOHVe0frBQAQrwkaglNEUx5Ncm6gO63MP0Wdr/yzQfWCBOEyKa4WlfYj/S1sY2lRb1PvAQdTnO1Dkmk/R7bOWHpTv/n97ZGxGJa5xmesFYmbGNDoCHjvBZO67XUDP1uQRebFQVM89UDEL50g2dhsovMAMI+Ps2jEMiiAvCBZYs763goWmTnN80ggBikWVLv+T2jW3dRVVt84xSq92d/1T83rEC0pr1TD/xBStwpX38JCa20PdozGpKCvwQ==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e173b212-a919-469f-fe64-08df29c7c9cd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Oct 2026 07:50:17.0263 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Tn2zSXx9Xc6LeVTIAeIB0FCfLfsRrMDrQsUt8V8FHodOpqSV8pypk7JJKujfV/BJQUQZLT8QlxL5XVc2ZE86UgB+lbKVA4EZ3fE1+N8+WcA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6864
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 12/20] system/physmem: Add ats_do_translate helper
+To: =?UTF-8?Q?Cl=C3=A9ment_MATHIEU--DRIF?= <clement.mathieu--drif@bull.com>,
+ Ruslan Ruslichenko <ruslichenko.r@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "artem_mygaiev@epam.com" <artem_mygaiev@epam.com>,
+ "volodymyr_babchuk@epam.com" <volodymyr_babchuk@epam.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "francisco.iglesias@amd.com" <francisco.iglesias@amd.com>,
+ "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "eugene@nuvacore.ai" <eugene@nuvacore.ai>,
+ "Ruslan_Ruslichenko@epam.com" <Ruslan_Ruslichenko@epam.com>,
+ "takahiro.nakata.wr@renesas.com" <takahiro.nakata.wr@renesas.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+ <20260915160044.345788-13-ruslichenko.r@gmail.com>
+ <07181e2fc148dce3c2152f450e9337b4b9a21f16.camel@bull.com>
+Content-Language: en-US
+In-Reply-To: <07181e2fc148dce3c2152f450e9337b4b9a21f16.camel@bull.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -148,236 +120,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Send device_connect when a device is attached and the host has greeted=0A=
-us, device_disconnect when it goes away, and handle the bus reset the=0A=
-host sends before enumerating.=0A=
-=0A=
-device_connect carries no identity. The peer asks the device itself with=0A=
-GET_DESCRIPTOR as soon as it enumerates, so anything we put there would=0A=
-be made up. The speed is real: it comes from the device on our port.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>=0A=
----=0A=
- hw/usb/redirect-server.c | 130 ++++++++++++++++++++++++++++++++++++++-=0A=
- hw/usb/trace-events      |   7 +++=0A=
- 2 files changed, 136 insertions(+), 1 deletion(-)=0A=
-=0A=
-diff --git a/hw/usb/redirect-server.c b/hw/usb/redirect-server.c=0A=
-index a48b821642..05ee0f3873 100644=0A=
---- a/hw/usb/redirect-server.c=0A=
-+++ b/hw/usb/redirect-server.c=0A=
-@@ -56,6 +56,7 @@=0A=
- #include "qemu/main-loop.h"=0A=
- #include "qemu/module.h"=0A=
- #include "migration/vmstate.h"=0A=
-+#include "qemu/cutils.h"=0A=
- #include "hw/core/sysbus.h"=0A=
- #include "hw/usb/usb.h"=0A=
- #include "chardev/char-fe.h"=0A=
-@@ -90,12 +91,88 @@ struct USBRedirServer {=0A=
-     bool in_write;=0A=
-     guint watch;=0A=
-     bool host_connected;=0A=
-+    bool device_announced;=0A=
- };=0A=
- =0A=
-+/*=0A=
-+ * The device is whatever USBDevice the user plugged into our port with=0A=
-+ * "-device <device>,bus=3D<id>.0". NULL until then.=0A=
-+ */=0A=
-+static USBDevice *usbredir_server_device(USBRedirServer *s)=0A=
-+{=0A=
-+    return s->port.dev;=0A=
-+}=0A=
-+=0A=
-+/*=0A=
-+ * Device announcement=0A=
-+ */=0A=
-+=0A=
-+static uint8_t usbredir_server_speed(USBDevice *device)=0A=
-+{=0A=
-+    switch (device->speed) {=0A=
-+    case USB_SPEED_LOW:=0A=
-+        return usb_redir_speed_low;=0A=
-+    case USB_SPEED_FULL:=0A=
-+        return usb_redir_speed_full;=0A=
-+    default:=0A=
-+        return usb_redir_speed_high;=0A=
-+    }=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_announce_device(USBRedirServer *s)=0A=
-+{=0A=
-+    USBDevice *device =3D usbredir_server_device(s);=0A=
-+    struct usb_redir_interface_info_header iface_info =3D {=0A=
-+        .interface_count =3D 0,=0A=
-+    };=0A=
-+    struct usb_redir_device_connect_header conn =3D {};=0A=
-+=0A=
-+    if (!s->host_connected || s->device_announced ||=0A=
-+        !device || !device->attached) {=0A=
-+        return;=0A=
-+    }=0A=
-+    s->device_announced =3D true;=0A=
-+    conn.speed =3D usbredir_server_speed(device);=0A=
-+=0A=
-+    /* Put the device in DEFAULT state. The host may not reset the bus. */=
-=0A=
-+    device->addr =3D 0;=0A=
-+    device->state =3D USB_STATE_DEFAULT;=0A=
-+=0A=
-+    /* Send this before device_connect. The peer needs it to accept us. */=
-=0A=
-+    usbredirparser_send_interface_info(s->parser, &iface_info);=0A=
-+    usbredirparser_do_write(s->parser);=0A=
-+=0A=
-+    trace_usbredir_server_announce(conn.speed);=0A=
-+    usbredirparser_send_device_connect(s->parser, &conn);=0A=
-+    usbredirparser_do_write(s->parser);=0A=
-+}=0A=
-+=0A=
- /*=0A=
-  * USB port ops=0A=
-  */=0A=
- =0A=
-+static void usbredir_server_port_attach(USBPort *port)=0A=
-+{=0A=
-+    USBRedirServer *s =3D port->opaque;=0A=
-+=0A=
-+    trace_usbredir_server_attach();=0A=
-+    usbredir_server_announce_device(s);=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_port_detach(USBPort *port)=0A=
-+{=0A=
-+    USBRedirServer *s =3D port->opaque;=0A=
-+=0A=
-+    trace_usbredir_server_detach(s->device_announced);=0A=
-+=0A=
-+    if (s->host_connected && s->parser && s->device_announced) {=0A=
-+        trace_usbredir_server_disconnect();=0A=
-+        usbredirparser_send_device_disconnect(s->parser);=0A=
-+        usbredirparser_do_write(s->parser);=0A=
-+    }=0A=
-+    s->device_announced =3D false;=0A=
-+}=0A=
-+=0A=
- static void usbredir_server_port_child_detach(USBPort *port, USBDevice *ch=
-ild)=0A=
- {=0A=
-     /* We only export the device on our own port. Nothing to do. */=0A=
-@@ -107,6 +184,8 @@ static void usbredir_server_port_wakeup(USBPort *port)=
-=0A=
- }=0A=
- =0A=
- static USBPortOps usbredir_server_port_ops =3D {=0A=
-+    .attach =3D usbredir_server_port_attach,=0A=
-+    .detach =3D usbredir_server_port_detach,=0A=
-     .child_detach =3D usbredir_server_port_child_detach,=0A=
-     .wakeup =3D usbredir_server_port_wakeup,=0A=
- };=0A=
-@@ -210,13 +289,53 @@ static int usbredir_server_write(void *priv, uint8_t =
-*data, int count)=0A=
-     return ret;=0A=
- }=0A=
- =0A=
--/* The remote host greets us once the socket is up. */=0A=
-+/*=0A=
-+ * usbredirparser message callbacks=0A=
-+ */=0A=
-+=0A=
- static void usbredir_server_hello(void *priv,=0A=
-                                   struct usb_redir_hello_header *hello)=0A=
- {=0A=
-     USBRedirServer *s =3D priv;=0A=
-+    char version[sizeof(hello->version) + 1];=0A=
-+=0A=
-+    pstrcpy(version, sizeof(version), hello->version);=0A=
-+    trace_usbredir_server_hello(version);=0A=
- =0A=
-     s->host_connected =3D true;=0A=
-+    usbredir_server_announce_device(s);=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_reset(void *priv)=0A=
-+{=0A=
-+    USBRedirServer *s =3D priv;=0A=
-+    USBDevice *device =3D usbredir_server_device(s);=0A=
-+=0A=
-+    trace_usbredir_server_bus_reset(device && device->attached);=0A=
-+    usb_device_reset(device);=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_filter_reject(void *priv)=0A=
-+{=0A=
-+    trace_usbredir_server_filter_reject();=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_filter_filter(void *priv,=0A=
-+    struct usbredirfilter_rule *rules, int rules_count)=0A=
-+{=0A=
-+    /* We accept any host. The callback owns the rules, so free them. */=
-=0A=
-+    free(rules);=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_device_disconnect_ack(void *priv)=0A=
-+{=0A=
-+    /* The host saw our device_disconnect. Nothing to do. */=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_interface_info(void *priv,=0A=
-+    struct usb_redir_interface_info_header *hdr)=0A=
-+{=0A=
-+    /* The host should not send this to a device. Nothing to do. */=0A=
- }=0A=
- =0A=
- /*=0A=
-@@ -240,6 +359,14 @@ static void usbredir_server_create_parser(USBRedirServ=
-er *s)=0A=
- =0A=
-     /* Callbacks for messages the remote host sends to us */=0A=
-     s->parser->hello_func =3D usbredir_server_hello;=0A=
-+    s->parser->reset_func =3D usbredir_server_reset;=0A=
-+=0A=
-+    /* The parser calls these directly, so they must not be NULL. */=0A=
-+    s->parser->filter_reject_func =3D usbredir_server_filter_reject;=0A=
-+    s->parser->filter_filter_func =3D usbredir_server_filter_filter;=0A=
-+    s->parser->device_disconnect_ack_func =3D=0A=
-+        usbredir_server_device_disconnect_ack;=0A=
-+    s->parser->interface_info_func =3D usbredir_server_interface_info;=0A=
- =0A=
-     /* Capabilities: 64-bit IDs, connect_device_version, ep_info sizes */=
-=0A=
-     usbredirparser_caps_set_cap(caps, usb_redir_cap_connect_device_version=
-);=0A=
-@@ -267,6 +394,7 @@ static void usbredir_server_create_parser(USBRedirServe=
-r *s)=0A=
- static void usbredir_server_destroy_parser(USBRedirServer *s)=0A=
- {=0A=
-     s->host_connected =3D false;=0A=
-+    s->device_announced =3D false;=0A=
- =0A=
-     g_clear_handle_id(&s->watch, g_source_remove);=0A=
- =0A=
-diff --git a/hw/usb/trace-events b/hw/usb/trace-events=0A=
-index d141661673..2cc6a244b9 100644=0A=
---- a/hw/usb/trace-events=0A=
-+++ b/hw/usb/trace-events=0A=
-@@ -399,3 +399,10 @@ usbredir_server_chardev_open(void) "chardev opened"=0A=
- usbredir_server_chardev_close(void) "chardev closed"=0A=
- usbredir_server_write_recursion(void) "recursive write, leaving it queued"=
-=0A=
- usbredir_server_log(const char *msg) "%s"=0A=
-+usbredir_server_hello(const char *version) "peer is %s"=0A=
-+usbredir_server_attach(void) "device attached"=0A=
-+usbredir_server_detach(bool announced) "device detached, was announced %d"=
-=0A=
-+usbredir_server_announce(uint8_t speed) "device_connect speed %u"=0A=
-+usbredir_server_disconnect(void) "device_disconnect sent"=0A=
-+usbredir_server_bus_reset(bool attached) "bus reset, attached %d"=0A=
-+usbredir_server_filter_reject(void) "host rejected our device"=0A=
--- =0A=
-2.43.0=0A=
+
+
+On 10/13/26 16:27, Clément MATHIEU--DRIF wrote:
+> Do you need to operate at physmem level?  
+> We have an API for PCI device for ATS and PRI (see pci_ats_request_translation and pci_pri_unregister_notifier)
+> 
+
+This helper is used by Remote-Port-ATS device, which is used for resolving ATS requests from remote masters via RemotePort link and it is TYPE_DEVICE itself.
+As it is not a PCI device itself, we cannot use PCI API unfortunately.
+
+> On Tue, 2026-09-15 at 18:00 +0200, Ruslan Ruslichenko wrote:
+>> From: Ruslan Ruslichenko <[Ruslan_Ruslichenko@epam.com](mailto:Ruslan_Ruslichenko@epam.com)>
+>>
+>> Add 'ats_do_translate' method to enable manual IOMMU address  
+>> translation.
+>>
+>> This allows the Remote Port subsystem to resolve guest virtual  
+>> addresses to physical addresses by querying the QEMU IOMMU  
+>> translation pipeline. This is required for the Remote Port  
+>> subsystem to support translation  requests from external masters  
+>> in a co-simulation environment.
+>>
+>> Signed-off-by: Edgar E. Iglesias <[edgar.iglesias@amd.com](mailto:edgar.iglesias@amd.com)>  
+>> Signed-off-by: Takahiro Nakata <[takahiro.nakata.wr@renesas.com](mailto:takahiro.nakata.wr@renesas.com)>  
+>> Signed-off-by: Ruslan Ruslichenko <[Ruslan_Ruslichenko@epam.com](mailto:Ruslan_Ruslichenko@epam.com)>  
+>> ---  
+>>  include/system/memory.h |  8 +++++++  
+>>  system/physmem.c        | 53 +++++++++++++++++++++++++++++++++++++++++  
+>>  2 files changed, 61 insertions(+)
+>>
+>> diff --git a/include/system/memory.h b/include/system/memory.h  
+>> index a7e03fc3e7..2032d3028d 100644  
+>> --- a/include/system/memory.h  
+>> +++ b/include/system/memory.h  
+>> @@ -2583,6 +2583,14 @@ static inline MemoryRegion *address_space_translate(AddressSpace *as,  
+>>                                addr, xlat, len, is_write, attrs);  
+>>  }  
+>>    
+>> +MemoryRegion *ats_do_translate(AddressSpace *as,  
+>> +    hwaddr addr,  
+>> +    hwaddr *xlat,  
+>> +    hwaddr *plen_out,  
+>> +    AddressSpace **target_as,  
+>> +    int *prot,  
+>> +    MemTxAttrs attrs);  
+>> +  
+>>  /* address_space_access_valid: check for validity of accessing an address  
+>>   * space range  
+>>   *  
+>> diff --git a/system/physmem.c b/system/physmem.c  
+>> index a4a6a4710c..1acda22ede 100644  
+>> --- a/system/physmem.c  
+>> +++ b/system/physmem.c  
+>> @@ -525,6 +525,59 @@ static MemoryRegionSection flatview_do_translate(FlatView *fv,  
+>>      return *section;  
+>>  }  
+>>    
+>> +/* This function is called from RCU critical section */  
+>> +MemoryRegion *ats_do_translate(AddressSpace *as,  
+>> +                               hwaddr addr,  
+>> +                               hwaddr *xlat,  
+>> +                               hwaddr *plen_out,  
+>> +                               AddressSpace **target_as,  
+>> +                               int *prot,  
+>> +                               MemTxAttrs attrs)  
+>> +{  
+>> +    MemoryRegionSection *section;  
+>> +    IOMMUMemoryRegion *iommu_mr;  
+>> +    hwaddr plen = (hwaddr)(-1);  
+>> +    FlatView *fv = address_space_to_flatview(as);  
+>> +    IOMMUMemoryRegionClass *imrc;  
+>> +    IOMMUTLBEntry iotlb;  
+>> +    int iommu_idx = 0;  
+>> +  
+>> +    if (!plen_out) {  
+>> +        plen_out = &plen;  
+>> +    }  
+>> +  
+>> +    /* This can be MMIO, so setup MMIO bit. */  
+>> +    section = address_space_translate_internal(  
+>> +            flatview_to_dispatch(fv), addr, xlat,  
+>> +            plen_out, true);  
+>> +  
+>> +    /* Illegal translation */  
+>> +    if (section->mr == &io_mem_unassigned) {  
+>> +        return NULL;  
+>> +    }  
+>> +  
+>> +    iommu_mr = memory_region_get_iommu(section->mr);  
+>> +    if (!iommu_mr) {  
+>> +        return NULL;  
+>> +    }  
+>> +  
+>> +    imrc = memory_region_get_iommu_class_nocheck(iommu_mr);  
+>> +  
+>> +    if (imrc->attrs_to_index) {  
+>> +        iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);  
+>> +    }  
+>> +  
+>> +    iotlb = imrc->translate(iommu_mr, addr, IOMMU_RO, iommu_idx);  
+>> +  
+>> +    *xlat = ((iotlb.translated_addr & ~iotlb.addr_mask)  
+>> +            | (addr & iotlb.addr_mask));  
+>> +    *plen_out = MIN(*plen_out, (addr | iotlb.addr_mask) - addr + 1);  
+>> +    *prot = iotlb.perm;  
+>> +    *target_as = iotlb.target_as;  
+>> +  
+>> +    return section->mr;  
+>> +}  
+>> +  
+>>  /* Called from RCU critical section */  
+>>  IOMMUTLBEntry address_space_get_iotlb_entry(AddressSpace *as, hwaddr addr,  
+>>                                              bool is_write, MemTxAttrs attrs)
+
 

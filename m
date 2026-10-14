@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF735CC6B1F
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E10CC6B1F
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:46:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvWx-0004ZM-HY; Wed, 14 Oct 2026 05:44:15 -0400
+	id 1xGvYF-0007Py-Dc; Wed, 14 Oct 2026 05:45:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvWs-0004SD-Ex
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:13 -0400
-Received: from mail-dl1-x1232.google.com ([2607:f8b0:4864:20::1232])
+ id 1xGvXf-0006S5-Pi
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:45:00 -0400
+Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvWp-000236-G6
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:10 -0400
-Received: by mail-dl1-x1232.google.com with SMTP id
- a92af1059eb24-157fe9d771bso1524574c88.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:44:07 -0700 (PDT)
+ id 1xGvXc-0002Ca-71
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:59 -0400
+Received: by mail-dl1-x122f.google.com with SMTP id
+ a92af1059eb24-16ad92569b5so3783422c88.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:44:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791971046; x=1792575846; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791971095; x=1792575895; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=q0y6iWTViEYs2Yni2aIzizLDmK3bL+XdOhnGK9u7D5w=;
- b=MbXxSYw82rLpmvpIWz96+OdSHpBzzlhv16KWdzhVgiJijsl544w519/N4EkRGuX0In
- os2AVNZiALogwupbCXkzYQHDvM1Bomh2Ynays7a9XjGp3prYNXmiwn/qrJe3g4PozIk7
- w8STSR77E+Zj8yysdKEDaVj0VPVXnyt0onhSk0Vl27Xd4gv3OwGHTnHbeZ4+P0Jli7Ym
- V7kGg1+JBDehGfvzmLoRs9nX0m1M6P95fqP//c1HotfS9v+6vKponf8kYIvNO1iIlI9w
- DcHZMD2/NY1Tqjh7HWVsca0qiKla5ZPisIPyKvE6v0JhmkQBHG2AL8YFVjdkuL7i+nm7
- Gigg==
+ bh=sIFDeCq7ZkSNZTlC5b7kyE+3BiZiRbc8X5G6/SCg8N8=;
+ b=Lo2kz5vK9IcxTGxb1w76FgxmXxhrNv01yrV1yBlC2RS9CRW55dh58U8ljb86XsXiV4
+ Y/UFXzctj88Ens4KuTI3fKKePuXwP4bqfktzuwk7Vzw2OAbV1qop36hiEd2X9/gsbQ83
+ ZyzxokbFUiw2kohn9qDV80nS68kmvo1DmWAnqcxGy0h9iucXv7qpBMxBLXAWoZXPbpYx
+ CfwY0dzdquDJkFt6/bY+ZM4j22b+qsIX4T4Pv06ba7P0P8e0eBBTX8cvZj+wJfP7FviB
+ rHIlQYNVEd6vKTEoi2s2y5IkLmOpXnbfChbIy3OCxDcGhHJhJ6E/hR5S/GqEoQFN5Mnn
+ iv3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791971046; x=1792575846;
+ d=1e100.net; s=20260707; t=1791971095; x=1792575895;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=q0y6iWTViEYs2Yni2aIzizLDmK3bL+XdOhnGK9u7D5w=;
- b=GpoPjctmav9sxEtlzvNLLiUcp27iPKIB7DWlLx9ARM/MLnMRdnUdlT5IMEPCmRz1Xt
- yRF/idrqiwDwBG1D3vQyulE/zqOAj9zy6aQkkMkduOCvGr+KdVBTysd7POKlLxPD2s8i
- nEkZXOOPXBXczuTh6sKBVWNKMNhHNEvp+++i7uy8vb9AI67XVbVYFl1BYGQIzF2MJZHy
- OQerxZ9MfsPSLPkmUL1f8BBgGT7YDZyhy9AuozMeNuytA85I79N0azuQ4DpjlcUkEo6f
- +Ox1iOZF+uq77Er/6OJB1FadvKdaJiZvtHSTNx9tU1I9eygeBZXc85d817sLapc7JIFt
- lgmA==
+ bh=sIFDeCq7ZkSNZTlC5b7kyE+3BiZiRbc8X5G6/SCg8N8=;
+ b=EM1WrIjjFiAnTMxLXu7WSU2DyZnW9LmmiV36M3wgfVrmYrHNMl/Wtia8p9aCSZ8ciT
+ WSMETBZ3qR8N0/9ohgstvEQ9ZIfAAisHbocL1hHAoZ90IHqsx93nSBOf26s+ZPtlzjuq
+ lKceP30fOtkCH16UrbZUAo2ruuB/ykC1m3KtH/fch6xZGpTHj7a1bDO7RH1iYQkAjD5O
+ AR4QXd69prj3GDyyM5mu7Zk0e61Ixs0c6Bha+uuQL/DA7fyuBWHVHA9LPcGET82kS2HP
+ hmDfIgVA4LlffTTXKr95IOAI9hwe6hWm77n8e0UmaCnkedkKJAU+Z+WIx7uTufbyYQwR
+ TmeA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwbX0LIUP4KGET8GeufJAoRNmMWLLY5ZZQhtmtom7BQEyzrbKWll+1jA0Y62NSiXpG9xhYWQ2EOkw==@nongnu.org
-X-Gm-Message-State: AFq9FYLcfTfUWDNPIYre5o1WOvKmxL5BcoQgArlOF8w/YdJrRtsueREP
- e+llp3zCOplK0EU9mBGXK8tFZ0kaukxWbC25bOC0oPwYe+RJscUXMhsI
-X-Gm-Gg: AYBFou2yyApB9n+AjRnnGZYZv+vGzBmDFiZ7nPocd7QQCGMZZBZmKbNIk81V7Diyfoo
- l3d7Ndt+xy/un4CyS/jUYkh/tDeVoK8HM5196yl7TY0Yo5niupmjIVySggQDAq5UYsPSfAX9D3h
- Ha30cTCS4AtQ20pgjzE2xHY1PtMUWCWa9fz2SEPSDaujdl/lHs360dCsq0DXbJEqmcjit5BCyRl
- YWoQNrfMfjEH6o4Grn4Be2MkQYZbOIsheS5OK0ImurvkSqB9cLZTGHCtGh/tqCi6hXGIAuiDh2O
- PDeLLsCqEN+LIHVRbc6ACnBEEdJnc1ftxvX+C5KEfb3tM2ERKHMx4iigHxqdvCLTVcXDxNS1ux8
- i7gHTJRXL0fBDcJ28xrkRvugT5B5+Ov02BEDWzl1fllIa81mUs8CdyXZnXsL7an9yzJYDpN4MSt
- 5qoIKoyoC1mQVDxJLgxjSdt+pl28RhQhfgnj3Ns+4kj/jP5LWxdKJCKMVOwMS+Q6lpJ/Nd6L2ky
- yFaIqYr4pcfGuCh7g==
-X-Received: by 2002:a05:7022:5f14:b0:168:6ad8:e89f with SMTP id
- a92af1059eb24-16a56c9dd9dmr20132931c88.3.1791971045771; 
- Wed, 14 Oct 2026 02:44:05 -0700 (PDT)
+ AKwUvBwkWocc6xdbef9LwT8I5MWtRfqAmcYuLvsiOvUnGiapXKQOhZTqlWlpz4OY8DgPrba+fBmUeJq17Q==@nongnu.org
+X-Gm-Message-State: AFq9FYJ5/Ja/j7WeLc3Z9OH3FzaC8UURSuD2DY0WK0I2Bv6mQeMnMRRj
+ JsmxIGUiYcd8pG2aVSIXW73tUTAlejGf49fTImTLCWIEtPWH5zEhXt3A
+X-Gm-Gg: AYBFou1l1nVXdIkiGAVKxo3KgQbkwH7xB5jxDDt2hNAiQweQlteSu6GP223GDDMVNhI
+ 8BaZ2H7/p4fh3gEZtFW/aM4sKdJpcziKeQ/LPWF+v2E2ew9Q7bqgTEk0hgcyzVT56Tj+OOb4zwM
+ S3Pv+rVVJdLmaM0ELdNHEEi1ioXqicm8NFBbLCxX+jT0T4a36jb6RsMhQ/YzPkHU3mJbjCH2xYD
+ ErTFZ0mpVXCcEs9ElE3aXr0HGLR0DVUMoWo9NPHw67+7HyO6w330gz36zu0Hva6VC0TDeoPoMsY
+ se6VKuOrrHJdl9C6RyWuDuo2vyZy07tR4Ts6OWdUto3ga7oS+jBWqh6qWDvBr/0PBoejoA7L1xW
+ +C3c67wIw5b19DFzO1jJjRls5EovthO+uWVRMyT9ADF+xIUBBaM8VXHIVpyc8Vu3oXU7fyvMJs2
+ mv0Bwl2nqehHuo0gI9FhV6jtKlHw3/5QcmCJ+0Z0qid86goGVArxVxRcnSooA7+XDlqFsUQe3Ci
+ AIKH2ldcWp7YGkS2eyLYLW0HY8H
+X-Received: by 2002:a05:7022:b047:10b0:144:ddf7:2570 with SMTP id
+ a92af1059eb24-16a5e8728dbmr22079430c88.39.1791971094591; 
+ Wed, 14 Oct 2026 02:44:54 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.43.57
+ a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.44.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:44:04 -0700 (PDT)
+ Wed, 14 Oct 2026 02:44:53 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -99,17 +99,18 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
  Darren Kenny <darren.kenny@oracle.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Stafford Horne <shorne@gmail.com>
-Subject: [PATCH 25/34] hw/xtensa/virt: use unique QOM name
-Date: Wed, 14 Oct 2026 17:41:40 +0800
-Message-ID: <20261014094224.1976-10-luoyonggang@gmail.com>
+Subject: [PATCH 30/34] meson: build combined qemu-system for multi-target
+ configurations
+Date: Wed, 14 Oct 2026 17:41:45 +0800
+Message-ID: <20261014094224.1976-15-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014094224.1976-1-luoyonggang@gmail.com>
 References: <20261014094224.1976-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1232;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1232.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,60 +133,198 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Register the board as xtensa-virt so Xtensa virt no longer collides
-with other virt-machine types in one process. Keep the -M / help /
-migration name as virt via machine_class_set_name().
+Build a top-level qemu-system executable when multiple supported targets
+are configured.
+
+Now the test-multi-target.c are testing under no target selected condition.
+That's guard for future breakage
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/xtensa/virt.c | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+ MAINTAINERS                    |  1 +
+ meson.build                    | 58 ++++++++++++++++++++++++++++++++++
+ qom/object.c                   |  4 ++-
+ system/target-info.c           | 10 ++++++
+ tests/unit/meson.build         |  4 +--
+ tests/unit/test-multi-target.c |  5 ++-
+ 6 files changed, 76 insertions(+), 6 deletions(-)
+ create mode 100644 system/target-info.c
 
-diff --git a/hw/xtensa/virt.c b/hw/xtensa/virt.c
-index 271f06e0953..d3c51f8158a 100644
---- a/hw/xtensa/virt.c
-+++ b/hw/xtensa/virt.c
-@@ -26,6 +26,7 @@
-  */
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 669814d29c5..51012672b0f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2147,6 +2147,7 @@ M: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+ M: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+ S: Supported
+ F: stubs/target-info.c
++F: system/target-info.c
+ F: include/qemu/target-info*.h
+ F: target-info*.c
+ F: tests/unit/test-multi-targets.c
+diff --git a/meson.build b/meson.build
+index f54687e19dc..6e90760c05a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4275,6 +4275,7 @@ multi_target_supported_targets = [
+   'rx-softmmu',
+   'tricore-softmmu',
+ ]
++multi_target_final_targets = []
+ 
+ emulators = {}
+ foreach target : target_dirs
+@@ -4436,6 +4437,7 @@ foreach target : target_dirs
+           multi_target_crates += crate
+         endif
+       endforeach
++      multi_target_final_targets += target
+     endif
+     execs = [{
+       'name': 'qemu-system-' + target_name,
+@@ -4540,6 +4542,62 @@ endforeach
+ multi_target_link_args = emulator_link_args
+ multi_target_link_args += enable_modules ? ['@block.syms', '@qemu.syms'] : []
+ 
++if multi_target_final_targets.length() > 1
++  qemu_system_name = 'qemu-system'
++  if host_os == 'darwin'
++    qemu_system_name += '-unsigned'
++  endif
++  multi_target_info_sources = files('system/target-info.c')
++  qemu_system_sources = [
++    multi_target_crates,
++    files('system/main.c'),
++    multi_target_info_sources,
++  ]
++  qemu_system = executable(qemu_system_name,
++                           sources: qemu_system_sources,
++                           dependencies: multi_target_deps + [sdl],
++                           objects: multi_target_objects,
++                           link_depends: [block_syms, qemu_syms],
++                           link_args: multi_target_link_args,
++                           build_by_default: true,
++                           install: true)
++  multi_target_info_objects = qemu_system.extract_objects(
++    multi_target_info_sources)
++  if host_os == 'darwin'
++    icon = 'pc-bios/qemu.rsrc'
++    build_input = [qemu_system, files(icon)]
++    install_input = [
++      get_option('bindir') / qemu_system_name,
++      meson.current_source_dir() / icon
++    ]
++    if 'CONFIG_HVF' in multi_target_config
++      entitlements = 'accel/hvf/entitlements.plist'
++      build_input += files(entitlements)
++      install_input += meson.current_source_dir() / entitlements
++    endif
++    emulators += {'qemu-system': custom_target('qemu-system',
++                 input: build_input,
++                 output: 'qemu-system',
++                 build_by_default: true,
++                 command: [entitlement, '@OUTPUT@', '@INPUT@'])
++    }
++    meson.add_install_script(entitlement, '--install',
++                             get_option('bindir') / 'qemu-system',
++                             install_input)
++  else
++    emulators += {'qemu-system': qemu_system}
++  endif
++else
++  error_str = f'''qemu-system only support targets:
++@multi_target_supported_targets@
++
++use ./configure --target-list= to choose at least one of them'''
++  t = custom_target(command: ['sh', '-c', 'echo "' + error_str + '" && exit 1'],
++                    output: 'none',
++                    build_by_default: false)
++  alias_target('qemu-system', t)
++endif
++
+ if get_option('plugins')
+   install_headers('include/plugins/qemu-plugin.h')
+   if host_os == 'windows'
+diff --git a/qom/object.c b/qom/object.c
+index 96498f3d001..f05456bd701 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -12,6 +12,7 @@
  
  #include "qemu/osdep.h"
-+#include "qemu/target-info.h"
  #include "qapi/error.h"
- #include "system/reset.h"
- #include "hw/core/boards.h"
-@@ -118,10 +119,29 @@ static void xtensa_virt_init(MachineState *machine)
- static void xtensa_virt_machine_init(MachineClass *mc)
- {
-     mc->desc = "virt machine (" XTENSA_DEFAULT_CPU_MODEL ")";
-+    machine_class_set_name(mc, "virt");
-     mc->init = xtensa_virt_init;
-     mc->max_cpus = 32;
-     mc->default_cpu_type = XTENSA_DEFAULT_CPU_TYPE;
-     mc->default_nic = "virtio-net-pci";
- }
++#include "qemu/target-info.h"
+ #include "qom/compat-properties.h"
+ #include "qom/object.h"
+ #include "qom/object_interfaces.h"
+@@ -167,7 +168,8 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
+         abort();
+     }
  
--DEFINE_MACHINE("virt", xtensa_virt_machine_init)
-+static void xtensa_virt_machine_class_init(ObjectClass *oc,
-+                                           const void *data)
-+{
-+    xtensa_virt_machine_init(MACHINE_CLASS(oc));
-+}
+-    if (info->is_available && !info->is_available()) {
++    if (!target_combined_binary()
++        && info->is_available && !info->is_available()) {
+         return NULL;
+     }
+ 
+diff --git a/system/target-info.c b/system/target-info.c
+new file mode 100644
+index 00000000000..fb13ea8ad22
+--- /dev/null
++++ b/system/target-info.c
+@@ -0,0 +1,10 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
 +
-+static void xtensa_virt_machine_register_types(void)
-+{
-+    const TypeInfo xtensa_virt_machine_typeinfo = {
-+        .name = target_combined_binary() ? MACHINE_TYPE_NAME("xtensa-virt") :
-+                                           MACHINE_TYPE_NAME("virt"),
-+        .parent = TYPE_MACHINE,
-+        .class_init = xtensa_virt_machine_class_init,
-+        .instance_size = sizeof(MachineState),
-+    };
-+    type_register_static(&xtensa_virt_machine_typeinfo);
-+}
++#include "qemu/osdep.h"
 +
-+type_init(xtensa_virt_machine_register_types)
++#include "qemu/target-info.h"
++
++bool target_combined_binary(void)
++{
++    return true;
++}
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index d17435c1877..4bc7c4c146f 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -217,12 +217,12 @@ foreach test_name, extra: tests
+ endforeach
+ 
+ # Multi targets test
+-if multi_target_objects != []
++if is_variable('qemu_system')
+   test('test-multi-target',
+        executable('test-multi-target',
+                   sources: [multi_target_crates, files('test-multi-target.c')],
+                   dependencies: multi_target_deps,
+-                  objects: multi_target_objects,
++                  objects: multi_target_objects + multi_target_info_objects,
+                   link_depends: [block_syms, qemu_syms],
+                   link_args: multi_target_link_args),
+        suite: ['unit'])
+diff --git a/tests/unit/test-multi-target.c b/tests/unit/test-multi-target.c
+index 704e3297ef9..ff81ea42a90 100644
+--- a/tests/unit/test-multi-target.c
++++ b/tests/unit/test-multi-target.c
+@@ -49,6 +49,8 @@ static bool target_arch_available(uint64_t arch_mask)
+ static void test_qom_types_are_unique(void)
+ {
+     g_assert(targets);
++    /* Verify this test runs like the combined qemu-system binary. */
++    g_assert_true(target_combined_binary());
+     /* trigger type_initialize for all types */
+     object_class_get_list("", false);
+ 
+@@ -89,9 +91,6 @@ int main(int argc, char **argv)
+     target_info_qom_init();
+     targets = target_info_qom_get_targets();
+ 
+-    const TargetInfo *first_ti = TARGET_INFO_CLASS(targets->data)->target_info;
+-    target_info_qom_set_target_info(first_ti);
+-
+     /* register all types */
+     module_call_init(MODULE_INIT_QOM);
+ 
 -- 
 2.55.0.windows.3
 

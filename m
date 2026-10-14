@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE6D1CC6B1F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873A8CC6B1A
 	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:45:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvXb-00069t-5j; Wed, 14 Oct 2026 05:44:56 -0400
+	id 1xGvXY-0005xY-Bb; Wed, 14 Oct 2026 05:44:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvXT-0005XJ-Qx
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:48 -0400
-Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
+ id 1xGvXK-0005BK-VD
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:39 -0400
+Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvXS-0002Ab-2a
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:47 -0400
-Received: by mail-dy1-x1335.google.com with SMTP id
- 5a478bee46e88-33c2520ad38so9002135eec.1
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:44:45 -0700 (PDT)
+ id 1xGvXI-00028Z-D6
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:44:38 -0400
+Received: by mail-dl1-x122a.google.com with SMTP id
+ a92af1059eb24-170135e43c7so1218187c88.0
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:44:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791971085; x=1792575885; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791971075; x=1792575875; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=sWqnMtVBapcAMkNSzz9Oucq2kSJcuJ58bnoxZuu8/QU=;
- b=h28cYMYx83AH/25b/yFQ9Y0kuo0M18OtVgEOL3QjFDsJxoYvInqVvMsHjoB/9vquzx
- +AEiYBpOwSb+p63YpzxMNPR96Qsd9D0yzDgNCRuq5hEq8PiUTedPmjzZ0UhJc+onuV54
- 7sPkbL24mSTF017grmOaP5BL1xWvClzRTo7dIR9bKyg24o1d9N4W+IDMQQpu8rl0lIux
- vtn8KsN/aUh7Jq73pc2BSSLwOTD6Bi28iSHa0PcJMNtkap6+IHf42eQ1Cuuuiy+eD9Vo
- CCIICYRWlx+uzwjVmM+SBbsCD+KxpXy3+gWLcUgEdaj9jlABpPMZIRGhRRvvi+SFMeZj
- 0eow==
+ bh=iMUZS7K52F//fkHbX7hXqIL5N3cFp0eM7Rhs0CpcbPY=;
+ b=ox+HgsBGA2etho5mvACO7WHp0Y13wyCqFm438de6182Tow5dGfuC0kungv+T2/25Ft
+ IXa8Dj5sREq2pKZEZiu05Cq5mmyxerFNzlNqurbRtB9mrE/tuDxtwACdY2h7M1wp1HfB
+ IWnQGRIxzzoE7f3zSjbaP1vNey3IQlkLo9uN/8zfjVPTD91o7lF0n2Y3q/64Z6KhBqBM
+ BvCWpqHyxC/Vvhph3tuzt2eqzMukCk41eNlZJLXviKResYqygYz1qgh3Lr0yGlWkNNkm
+ z8nL5deppOQi8EZkH5XdqY2ldn0k2dAOI4kqSfWzJJct/bvG4XIXSb0hGRuI0Mh41cEa
+ o0XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791971085; x=1792575885;
+ d=1e100.net; s=20260707; t=1791971075; x=1792575875;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=sWqnMtVBapcAMkNSzz9Oucq2kSJcuJ58bnoxZuu8/QU=;
- b=cFeL3yPKGw/DvJAjRm6+pmPRVjNAI6zCN4FmWCWjPuFEuKcMOgP84jyzLoDgc89tyz
- NZaJ5KrX9C8yo/GgFlUuFh4TD2DbWNJEhoYYXl+HC6xmNvP++ZQCPAj3GzV+wD0+hnD3
- k/tXl3NrwmQX0CM5+hygIU9gsiII8hLaZaiOvLLQu+UHqjXifvrQBiQh7D+lNH7Uiifl
- gPp2GKvg6EwXhs5k6AN7PWnRZkOyUyLltS4F1rvm99UcaoTcbqM2MVySK0gdTCBEcjij
- d3hwKpz8quXZ6LROMXJ9yyFNuNuDkLoZsM5occOUEmX9zGaAJV00hSHk4eNMTjtCLleD
- wcoQ==
+ bh=iMUZS7K52F//fkHbX7hXqIL5N3cFp0eM7Rhs0CpcbPY=;
+ b=qsq9l+DTRYYEEr9y39bK4Q4oL8UBTO0lP2eX5zV7qh3idZDKAJjQLh6p5DHF8QxTzZ
+ cRX0pWDhvaVbneVcSupysKMgSy8awcMSOhj24pfawgxwoE7kiRVbkL8mwUZeIA0LlRY3
+ yl029NySHdcjpfbHAmN/wPQwHgoeiNAlDkvLdWJzJRSPYwyL1RDs29I77sCV74Kq4tTk
+ 9zNiVdPliY/m1xplVZkHJ4KMw1pwBuNYMYo57uuyO5wJVb2Yy9qsCr6+rjB50L0VFPGq
+ 7aIWjEXeR2mx9Rq6RvKR0BrKuJ6HLPqt/1Ryl3Afyljd4UJVnMabkfKh91gFzVzkgDGu
+ NUbg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx1vo/c8RZ4C6M+w0nR1AJ8tz+YfBiAENY+o7bAwbbGSYkPtOoemd86Gci9jhgjJ5olz9OxHQMw1A==@nongnu.org
-X-Gm-Message-State: AFq9FYJYJ3V0f8B+5mccRrqEYUyhdj6zkq0yY8dn5tjbK4Ep38bD2uiw
- +tozikUgVgsA14DgYSO1WBYDKoh5nu3CPp/0B6SYG3UZotWPjUpjFeQG
-X-Gm-Gg: AYBFou0rQk8qrK09nUEDv7kiBIiDwj8FoLJWX+ocIjxejjF41CUmWx9uBgDe+YM06YV
- /eE9AmFsP/29COG0gFvwyD1QGHSRgqpuQ5iK2l+1YqV0juqraKNS05jnzQlI/EiONLvOIUXBp1N
- ElsZZ9E9cDxZsEyM6GuWR/PPjqDMehdVTzCxmOLAIOV8LoXQ1Mow9UifRJ2ZO+/w/zOyopG1Qg/
- eJSkp01lClJsJL7rm0QhBh9mBu6WMFKceTl3jzEoOPp+HYQG90k4X4fd2j/m7ihUZm6UUYNbknn
- rfP/HAokytz8YsDNAihWOlEww0sWbw6R3eoyRrzQMBnHBDCyOJizygmMpWGqeYDTUuOobgLwHts
- 16d0SeOUAzg2uZFaBck0CWmQ56Qu1Iue7BjJQLrBX37lFpZ3lB6NxLyOENngxg4InmWfnYUb0ao
- zn0BEXOCe7HFyHKgfeRHGtdd7VDW19cWEl4nzXJVW55CLemRlT5kSqIB3cljXB7hCGvYKCRbhUC
- 5O8db2Lg4KPn/75ew==
-X-Received: by 2002:a05:7022:7f14:b0:14d:c53a:f6a0 with SMTP id
- a92af1059eb24-16a5dcf6278mr21934044c88.13.1791971084559; 
- Wed, 14 Oct 2026 02:44:44 -0700 (PDT)
+ AKwUvBzcn6s20aiNWjXODjIo8HNDd8RLs13vNqQOVoB1gThs3ZNXFItPfjMNQWPofnOQYKHN/o/wjUVAKQ==@nongnu.org
+X-Gm-Message-State: AFq9FYK1qM8O0VOmVXpFSnF6v0p2V3tIhFtPxUN2iMgVRVIRDjkJrZ0l
+ rVXgkXVBWq2M0hvWwl3pFJ3n6FeNp/uF2bC8QcCLxh5TnkcDDWnKunN/
+X-Gm-Gg: AYBFou2HUDO53/poUkTaInCyi2QmeNhoGjgAqsoq6ewt3jXHpujurUPSbgsJkrj1/Ri
+ 0i/p1XrlDN8qEn4qRyYjuphnGh8GQTuZ9TyPGYhAFz0uW9SzxR3i6xDvjchhZIxEIslWINFc3W4
+ jX/QSWe66yBV0v/fgzuNK//0kMGXhD0jXhAhRPbznsACIPmqNxNsH6LODPTMXIsSAz3fBHEuTZM
+ PSNHpvHxDlPd4Ss9ixHvUaZa89OzXZLPU2fC2/WSkzKlKO4AqC4aoDbxAWgO/+QzVJoHWToqXGM
+ 1aBq0fsVOdr7JIo+KAHb/yzktOQMTZnGjSX9PrUREFsxrg01qnxHCuE28Sgw+X4gFwrvX9JcwdW
+ RqZzKkx/2Xol63NW+ossIBNa8hwwpM/Ya4S++U3Osj5L1jnQdAPM5+NrDK5wK2W7z7wdLck+uBZ
+ MZzP4dsr9ny+l5+XM3PihTeA81U3fpS8jFNnN9YyT50xw3COeFpVV/69dnhsr47NY10ziViTeES
+ 7DUMRYkq9qAt6RJbg==
+X-Received: by 2002:a05:701b:2612:b0:158:1ed2:cb58 with SMTP id
+ a92af1059eb24-16a65069ff4mr20170590c88.39.1791971074935; 
+ Wed, 14 Oct 2026 02:44:34 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.44.36
+ a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.44.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:44:43 -0700 (PDT)
+ Wed, 14 Oct 2026 02:44:33 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -98,17 +98,17 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
  Darren Kenny <darren.kenny@oracle.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Stafford Horne <shorne@gmail.com>
-Subject: [PATCH 29/34] system/arch_init: update qemu_arch_available to handle
- non-target select condition
-Date: Wed, 14 Oct 2026 17:41:44 +0800
-Message-ID: <20261014094224.1976-14-luoyonggang@gmail.com>
+Subject: [PATCH 28/34] hw: Add MachineClass.targets for all "virt" machines
+ for all possible targets
+Date: Wed, 14 Oct 2026 17:41:43 +0800
+Message-ID: <20261014094224.1976-13-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014094224.1976-1-luoyonggang@gmail.com>
 References: <20261014094224.1976-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1335;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122a;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,36 +131,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Under multi-target qemu, target may not selected when call to qemu_arch_available,
-return true for that.
+Those targets are ARM, RISC-V, LoongArch, M68K, OpenRISC, Hexagon and Xtensa
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- system/arch_init.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ hw/arm/virt.c       | 2 ++
+ hw/hexagon/virt.c   | 2 ++
+ hw/loongarch/virt.c | 2 ++
+ hw/m68k/virt.c      | 2 ++
+ hw/or1k/virt.c      | 2 ++
+ hw/riscv/virt.c     | 2 ++
+ hw/xtensa/virt.c    | 2 ++
+ 7 files changed, 14 insertions(+)
 
-diff --git a/system/arch_init.c b/system/arch_init.c
-index b8362b12a6d..5424ef8cf24 100644
---- a/system/arch_init.c
-+++ b/system/arch_init.c
-@@ -24,9 +24,17 @@
- #include "qemu/osdep.h"
- #include "qemu/base-arch-defs.h"
- #include "qemu/bitops.h"
-+#include "qemu/target-info.h"
-+#include "qemu/target-info-def.h"
- #include "qemu/target-info-qapi.h"
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ceb848ca386..b9f206f6cf0 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -29,6 +29,7 @@
+  */
  
- bool qemu_arch_available(uint64_t arch_bitmask)
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/datadir.h"
+ #include "qemu/units.h"
+ #include "qemu/option.h"
+@@ -4162,6 +4163,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+ 
++    mc->targets = QEMU_ARCH_ARM;
+     mc->init = machvirt_init;
+     /* Start with max_cpus set to 512, which is the maximum supported by KVM.
+      * The value may be reduced later when we have more information about the
+diff --git a/hw/hexagon/virt.c b/hw/hexagon/virt.c
+index ed086afe204..ee026730841 100644
+--- a/hw/hexagon/virt.c
++++ b/hw/hexagon/virt.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qapi/error.h"
+ #include "hw/hexagon/virt.h"
+ #include "elf.h"
+@@ -358,6 +359,7 @@ static void virt_class_init(ObjectClass *oc, const void *data)
  {
-+    if (target_combined_binary()) {
-+        /* Allow all architectures until machine selection sets TargetInfo. */
-+        if (!target_info()) {
-+            return true;
-+        }
-+    }
-     return extract64(arch_bitmask, target_arch(), 1);
- }
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
++    mc->targets = QEMU_ARCH_HEXAGON;
+     mc->desc = "Hexagon Virtual Machine";
+     machine_class_set_name(mc, "virt");
+     mc->init = virt_init;
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 5ca992a5ac7..f85a315388a 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -5,6 +5,7 @@
+  * Copyright (c) 2021 Loongson Technology Corporation Limited
+  */
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/units.h"
+ #include "qemu/datadir.h"
+ #include "qemu/cutils.h"
+@@ -1460,6 +1461,7 @@ static void virt_class_init(ObjectClass *oc, const void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+ 
++    mc->targets = QEMU_ARCH_LOONGARCH;
+     mc->init = virt_init;
+     mc->default_cpu_type = LOONGARCH_CPU_TYPE_NAME("la464");
+     mc->default_ram_id = "loongarch.ram";
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index 6f141488752..a00c226f559 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/target-info.h"
+ #include "qemu/units.h"
+ #include "qemu/guest-random.h"
+@@ -314,6 +315,7 @@ static void virt_init(MachineState *machine)
+ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
++    mc->targets = QEMU_ARCH_M68K;
+     mc->desc = "QEMU M68K Virtual Machine";
+     mc->init = virt_init;
+     mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
+diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
+index ec20045a3d0..4e9630656b2 100644
+--- a/hw/or1k/virt.c
++++ b/hw/or1k/virt.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/error-report.h"
+ #include "qemu/guest-random.h"
+ #include "qapi/error.h"
+@@ -549,6 +550,7 @@ static void openrisc_virt_machine_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
++    mc->targets = QEMU_ARCH_OR1K;
+     mc->desc = "or1k virtual machine";
+     machine_class_set_name(mc, "virt");
+     mc->init = openrisc_virt_init;
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index d8a2fd7d468..56033eaec79 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/units.h"
+ #include "qemu/error-report.h"
+ #include "qemu/guest-random.h"
+@@ -1133,6 +1134,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+ 
++    mc->targets = QEMU_ARCH_RISCV;
+     mc->desc = "RISC-V VirtIO board";
+     machine_class_set_name(mc, "virt");
+     mc->init = virt_machine_init;
+diff --git a/hw/xtensa/virt.c b/hw/xtensa/virt.c
+index d3c51f8158a..173ef28f28b 100644
+--- a/hw/xtensa/virt.c
++++ b/hw/xtensa/virt.c
+@@ -26,6 +26,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/target-info.h"
+ #include "qapi/error.h"
+ #include "system/reset.h"
+@@ -118,6 +119,7 @@ static void xtensa_virt_init(MachineState *machine)
+ 
+ static void xtensa_virt_machine_init(MachineClass *mc)
+ {
++    mc->targets = QEMU_ARCH_XTENSA;
+     mc->desc = "virt machine (" XTENSA_DEFAULT_CPU_MODEL ")";
+     machine_class_set_name(mc, "virt");
+     mc->init = xtensa_virt_init;
 -- 
 2.55.0.windows.3
 

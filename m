@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41EA7CC6B1D
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D9B1CC6B1D
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:43:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvVW-0002dB-CN; Wed, 14 Oct 2026 05:42:46 -0400
+	id 1xGvVp-0002pM-OE; Wed, 14 Oct 2026 05:43:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvVS-0002bz-Po
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:42:44 -0400
-Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
+ id 1xGvVm-0002p0-Rk
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:43:02 -0400
+Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvVO-0001d3-Rk
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:42:41 -0400
-Received: by mail-dy1-x1335.google.com with SMTP id
- 5a478bee46e88-35829219da8so816219eec.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:42:37 -0700 (PDT)
+ id 1xGvVj-0001j2-7O
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:43:02 -0400
+Received: by mail-dl1-x1229.google.com with SMTP id
+ a92af1059eb24-14394530ec6so2727886c88.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:42:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791970957; x=1792575757; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=RHkB+WJYVJh5gtDdYFA2dnLLdePZ0o1/JLEQILf+BW8=;
- b=NeX9NaMP+jC0Dw2V23aHsNO8tqXROi2vqcPlKIUG2UvXo45y6UsckJ7UNBYwpsRBHq
- esJ8iswhwnp9LHwzjTyzOZz4B3x5ySiIfnkhAtuXcibeBvGdaCs4TAcfAbPpIOml6H0Y
- i1EmB4V+ANRDxGmquRY6QPM621b31Y9WB5kZrxBtsHfWhDo12XsaGg2f9qyrSI/pNw8o
- wEJG1/g9sA5Le4g59DXECHJ1BwA+MpTtGN00YC44PufRSCgpw6pmWEgYQMS1q1c1RlAK
- 9TAXap/CdJ3b9VW5qtJowhRHqPsnkiDfk8IVMulY3WHG7nr5St7VXDlPf2E8Yq2woXtq
- l7yw==
+ d=gmail.com; s=20251104; t=1791970977; x=1792575777; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=zt4O6cH6itGslpdvLTM70yWl9Kh39depuXm/4+mt0R8=;
+ b=NHrZtzHIs8RnobGPf0lzbyBkdd7kdrnqgT1MtydC/Wbk6pmYcc37R52uHJc1H+OGlx
+ v7W1Q6GUuJxN+eGaGP5Jao8igP4HMZcyY+YiNzfklUlBGkO19PBhVbYaJud6EISAatuk
+ zHkVmHcVJD/Mislf82d/UR7HnPjPDrvTRDc3ga0Uj8SNHT2jiB+S4J2MiQx5ICEF6mu5
+ 1Z7pc3ApiAElCoZzPCHEAMV++6WEcVm5VBY2i9PILhB/DN2h77a7dohRHc2EL7wp5DeW
+ 520wk1yDhmbnxMKiW73cCWrbwXaZJqc+Xqrrbb9DhF3zZ03VZzPu7qA2DsdIY96VfCTv
+ QJYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791970957; x=1792575757;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=RHkB+WJYVJh5gtDdYFA2dnLLdePZ0o1/JLEQILf+BW8=;
- b=nqoqnuXvysnQnBTwPR64abvu9sQc82sOkQO+BhZqyD9m9Xi8nJTaKFD67+zAx4Xw0f
- WO+YFDUYRsGqGEaoPmnx5/GfbJM7DIHQNeAduTIeICUGdzegpaihbwOGsHA7i6hof/TN
- FSIsORH5AqogPRLCXshdpoNVlpV7rfOLuVieDv5jFb27bXbxScylTe6LAICBmhXq0pqW
- vERkssK4jM09Ym64zw0KxwGEzVlTKU1JbKE9m+I8AU4InxFjiONfkLkfgKT7AFWX4XSi
- 0RkCuCbyh2fKwdo0UC3Na+Du8cnmsNSmYI8uv7Lvv3iG0BRBwVt2xH60PEVx2IFL9OV5
- XLeQ==
+ d=1e100.net; s=20260707; t=1791970977; x=1792575777;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=zt4O6cH6itGslpdvLTM70yWl9Kh39depuXm/4+mt0R8=;
+ b=gqV0rMapbip++3mgIKmPEx5J47TK8orfyWViia6qPsMu3/kvInBeDMbuP40iPugkI+
+ +97kxAD+msvtVT7xCd3tbgrbQn+8JhTBFIXdBw60DwSySoSbmy7t1EXitaMniRjX9zhT
+ OiMf/jkmfCzVjieMT2lmgSyr/WUFe6ewOwLJf7jMNJwOG121Jn/p3H0B8t6m87x2+CDK
+ pObuY1Evd0ScSVIldu9XT09A6rxY1xFb0Tm8yWIFE/zf5E39w7w24HQs5HwwuyBL4/zb
+ HKcxrW566ZMMK9P5+tpP9QI4ZH+EzGtJLPGZlJQ1lLj4PURmO1Y00YuSfWsBC5jat3z3
+ s0dA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBydObVEA/4g6YLHP1pHJn+8jFB7GhamfaZFPBvmlHvEu46ODPYlXeILiwxDi5h33KqG7+CFz9GJEg==@nongnu.org
-X-Gm-Message-State: AFq9FYKyy/CFwLpbh9+1rj3ME9jhqMHlhqiEwkXQtpRyRa+5WgCD3fEH
- OrpUc5D3dN00jgGY45WnKs4jfBCfVlF0f5smkQWAHqryYnuWWzpNUaTw
-X-Gm-Gg: AYBFou2m6WvGpyMxYX6X54D4P6kMkvPn9t5Kv3FV4iaAK8YIXdPJON+dgYISoXUbEYJ
- 0nVC+HbX5vEtIQ7bQXq74wBSXdZqO4bCkppOzc+1+mb89K8zxhpJ0vN+WI7bW43qir566M7OO4j
- F6t7Ker1GQ8szFGnUTRKqLveEwcvKMSVYpZt7TMJPCzEfrZkx3I7jffL5LYR5MCmhkZzYck9XSt
- gvxItgefsxl4CbOFLy5Jo5NkEiyiZbmzOG2zEMyg5rfqHXRvGp5r3CZdpsgSaaOk2SysNi9qnV2
- 4aK/9xAmVm+JhlyWrSYjG93vTMAQB1Y2exrAGaPPpsFmJmHssrGqcpoUIgm/i8b6zA+RBVJsLUD
- w8orh9uQ2C5RcFSyVrzlGRDh/U3kJOr0S/wmHTrIT8H6BlEcXtx8teiFDxuXxE1VKEnnWRNbPTF
- lKGjcDQ6nNLulBLNfIbqnChsJyVvr/0D0d2d812n0K3YHGu7Yzct+BU+mnxoe9P3ExSlBHhv4rv
- Hhhp8hSRMvSX8tRRg==
-X-Received: by 2002:a05:7022:f51b:b0:15e:12b6:7365 with SMTP id
- a92af1059eb24-16a54fab7bemr18604751c88.2.1791970956468; 
- Wed, 14 Oct 2026 02:42:36 -0700 (PDT)
+ AKwUvBz338IZDWdSTWrGzvz8bWesXWwEMKyQNYxsinpRMFcoBLFGLsALxTQnrLP3MarPDlkOXepTDDJa4Q==@nongnu.org
+X-Gm-Message-State: AFq9FYLdRwgSDm6gTJ43svhbcAOsb26fYtp2kibK2QPzsxMBveJJwZl/
+ xZehHGHEoUntLE5sFx8cTBiHjUD4RQAICaS0Z2kpopg3hjXyw2wE0N+r
+X-Gm-Gg: AYBFou0/rjOMCPTb6utqjoa5TzowW8kr+fHF5lS2/Qsh1oqnDaeAhOakk8NAZNIEIZ8
+ 24gPouLa04WTtMDagv6sMw3WMHZGMLjuKjHGkGbBl1T2j9my1omqIwDXmquEPLJP0EGg+x6Q83z
+ zKDJK0qcBNAUx7B46EnufW0QMUCiUUz6Q9wyd9uft8K2JQOzROXgHIlbowQqou3ObjQM/VdW1Qd
+ ZMwWpp1ms75kk4fDn6ddRF+zrSs6DPhLQDtv8A4aKFmWoDfW1P4sc2WTwx0yZQZYdda+pFMYtHX
+ UwUzgw3UElOBPywYYLAeLIbCjcszbE8zTsQ0F1k3Emv7HXE9/6Q+g9a3EpoLlDjMR3IPqJLhu1h
+ bkCEAkdmN4Vso8zjLDvGPDveSlZS13obvb9EwsgWvaezkIRW5c1DBgv7ddgCcUzgv6kR90ApnGu
+ 9DODqehxwtJ7O9c2SpTkfmZIlUDbbzVq1lZL+4R+poQuhbVP2tFmfp18Ze6opSW2ya76Lr7vWqA
+ ymWYQ4RQmyErhX5UA==
+X-Received: by 2002:a05:701b:2705:b0:168:3243:c937 with SMTP id
+ a92af1059eb24-16a5fc9167bmr20167003c88.16.1791970976589; 
+ Wed, 14 Oct 2026 02:42:56 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.42.28
+ a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.42.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:42:35 -0700 (PDT)
+ Wed, 14 Oct 2026 02:42:55 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -97,22 +99,24 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
  Darren Kenny <darren.kenny@oracle.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Stafford Horne <shorne@gmail.com>
-Subject: [PATCH 16/34] hw/virtio/virtio-mem: Avoid call to target_info() in
- class_init
-Date: Wed, 14 Oct 2026 17:41:31 +0800
-Message-ID: <20261014094224.1976-1-luoyonggang@gmail.com>
+Subject: [PATCH 18/34] machine: allow -M name to differ from QOM type
+Date: Wed, 14 Oct 2026 17:41:33 +0800
+Message-ID: <20261014094224.1976-3-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
+In-Reply-To: <20261014094224.1976-1-luoyonggang@gmail.com>
+References: <20261014094224.1976-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1335;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1229;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1229.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,53 +132,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Done by merge virtio_mem_legacy_guests_properties into virtio_mem_properties.
-As we already have vmem->unplugged_inaccessible handle in virtio_mem_device_realize
-So we can reject the wrong option in virtio_mem_device_realize, then the call
-target_info() in class_init no need anymore.
+- Add machine_class_set_name() so boards can keep a stable -M name
+  when the QOM type is uniquified. machine_class_base_init still
+  defaults the name to the QOM type without -machine.
+- Document that MachineClass::name is the -M name, not the QOM type.
+- Sort -M help by MachineClass::name so order matches the printed names
+  when QOM types are prefixed (arm-virt-11.1-machine vs virt-11.1).
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/virtio/virtio-mem.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ hw/core/machine.c        |  6 ++++++
+ include/hw/core/boards.h | 12 +++++++++++-
+ system/vl.c              |  8 +++-----
+ 3 files changed, 20 insertions(+), 6 deletions(-)
 
-diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
-index a4110d61312..81e2192c2fb 100644
---- a/hw/virtio/virtio-mem.c
-+++ b/hw/virtio/virtio-mem.c
-@@ -879,7 +879,11 @@ static void virtio_mem_device_realize(DeviceState *dev, Error **errp)
-             break;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 5c6f3cb0f68..bcf15079cb9 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1222,6 +1222,12 @@ static void machine_class_init(ObjectClass *oc, const void *data)
+         "Memory size configuration");
+ }
+ 
++void machine_class_set_name(MachineClass *mc, const char *name)
++{
++    g_free(mc->name);
++    mc->name = g_strdup(name);
++}
++
+ static void machine_class_base_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
+index d7713c45836..6e5c8dac2d1 100644
+--- a/include/hw/core/boards.h
++++ b/include/hw/core/boards.h
+@@ -36,6 +36,16 @@ const char *machine_default_cpu_type(const MachineState *ms);
+  * @mc: Machine class
+  */
+ const char *machine_class_default_cpu_type(MachineClass *mc);
++/**
++ * machine_class_set_name: Set the -M name when it differs from the QOM type
++ * @mc: Machine class
++ * @name: Name used by -M lookup, help, and migration
++ *
++ * machine_class_base_init sets MachineClass::name from the QOM type with
++ * the -machine suffix removed. Call this from board class_init when the
++ * CLI name must stay stable after the QOM type is uniquified.
++ */
++void machine_class_set_name(MachineClass *mc, const char *name);
+ 
+ void machine_add_audiodev_property(MachineClass *mc);
+ void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp);
+@@ -274,7 +284,7 @@ struct MachineClass {
+     /*< public >*/
+ 
+     const char *family; /* NULL iff @name identifies a standalone machtype */
+-    char *name;
++    char *name; /* -M name; default is QOM type without -machine */
+     const char *alias;
+     const char *desc;
+     const char *deprecation_reason;
+diff --git a/system/vl.c b/system/vl.c
+index a7684abdd3a..e2bd65ebd40 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1538,10 +1538,9 @@ static gint machine_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
+     if (mc1->family == NULL) {
+         if (mc2->family == NULL) {
+             /* Compare standalone machine types against each other; they sort
+-             * in increasing order.
++             * in increasing order by the name shown in -M help.
+              */
+-            return strcmp(object_class_get_name(OBJECT_CLASS(mc1)),
+-                          object_class_get_name(OBJECT_CLASS(mc2)));
++            return strcmp(mc1->name, mc2->name);
          }
-     } else {
--        vmem->unplugged_inaccessible = ON_OFF_AUTO_ON;
-+        if (vmem->unplugged_inaccessible != ON_OFF_AUTO_ON) {
-+            error_setg(errp, "'%s' must be 'on' on non-x86 targets",
-+                       VIRTIO_MEM_UNPLUGGED_INACCESSIBLE_PROP);
-+            return;
-+        }
+ 
+         /* Standalone machine types sort after families. */
+@@ -1560,8 +1559,7 @@ static gint machine_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
      }
  
-     if (vmem->dynamic_memslots &&
-@@ -1568,9 +1572,6 @@ static const Property virtio_mem_properties[] = {
-                      early_migration, true),
-     DEFINE_PROP_BOOL(VIRTIO_MEM_DYNAMIC_MEMSLOTS_PROP, VirtIOMEM,
-                      dynamic_memslots, false),
--};
--
--static const Property virtio_mem_legacy_guests_properties[] = {
-     DEFINE_PROP_ON_OFF_AUTO(VIRTIO_MEM_UNPLUGGED_INACCESSIBLE_PROP, VirtIOMEM,
-                             unplugged_inaccessible, ON_OFF_AUTO_ON),
- };
-@@ -1635,9 +1636,6 @@ static void virtio_mem_class_init(ObjectClass *klass, const void *data)
-     RamDiscardSourceClass *rdsc = RAM_DISCARD_SOURCE_CLASS(klass);
+     /* Within the same family, machine types sort in decreasing order. */
+-    return strcmp(object_class_get_name(OBJECT_CLASS(mc2)),
+-                  object_class_get_name(OBJECT_CLASS(mc1)));
++    return strcmp(mc2->name, mc1->name);
+ }
  
-     device_class_set_props(dc, virtio_mem_properties);
--    if (virtio_mem_has_legacy_guests()) {
--        device_class_set_props(dc, virtio_mem_legacy_guests_properties);
--    }
-     dc->vmsd = &vmstate_virtio_mem;
- 
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ static void machine_help_func(const QDict *qdict)
 -- 
 2.55.0.windows.3
 

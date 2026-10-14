@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D04E3CC6B1D
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:36:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C6BACC6B2A
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:36:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvNR-0005EQ-Od; Wed, 14 Oct 2026 05:34:27 -0400
+	id 1xGvMP-00031P-RK; Wed, 14 Oct 2026 05:33:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvNJ-00056G-Ui
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:34:19 -0400
-Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
+ id 1xGvMF-0002rJ-12
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:11 -0400
+Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvNI-0000bx-74
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:34:17 -0400
-Received: by mail-dy1-x1331.google.com with SMTP id
- 5a478bee46e88-35834f72d94so7019118eec.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:34:15 -0700 (PDT)
+ id 1xGvMB-0000QE-Vm
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:10 -0400
+Received: by mail-dl1-x122d.google.com with SMTP id
+ a92af1059eb24-154e9d2d979so564260c88.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:33:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791970455; x=1792575255; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791970386; x=1792575186; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=n1Kznjn9gwc9J8CJXnPKY6p2oc96M5De/Smwcsx+f98=;
- b=E/Y48btEzOWxnsumy9XUq/joLWl0arMqLyG1YcRZA8OLIlWchtu6ns4B5Q0PrFcCLM
- CM5eIC8qcZWxyviYH4q3b0l0R9eNQdSBBxJWuEaHBay2F3NQGGPBVMR5OnkEiVQqlmDI
- 92jRPT3c5NZss4B1IFPrqSGq40QRD8RxGitGYYOevTCp6ooZ0nKK0d39CHMPxmwu3swn
- dj+piktJXyDTzquFf695PkT2EHkR9c9Cq6VUi1UfLlCMmQnId+4E6IVwMYWv4R+mGPmf
- hNvTDtSr8vN2IuPV/fJZjTfyx40u54OXp/tHsWjGA22OZ0+Mo7y+8QNPxaAS6NmhooIM
- t2uw==
+ bh=N92nFfVD3yppLw3bzN6p2rDF7VCVhKpNKJeukwohcLA=;
+ b=SNbLQoYUuVmvBbs/MS7q+CZHGDi7xP4hSRpAlb1kmFbeEkUVoPeaKb4y1imHsniZlJ
+ ZsslYGjnanerFu2cisHfZ6mL0nvmZkmyWyvkjxv1evD3q2uW+tGbgorH/2K14l0+aZ7Z
+ 8lv38Zlf18et2jB1Gb4QBTDeDVfXDtnCBnfEvvylZd+9sRmKw0rNOX9uBph809TZ41T0
+ dy3FoPmCBI9zyBHHpzIPX41CBQNE+0Cni4b4v6rgY0jDnJTckFo4AbqgJiKtMRM+EBDm
+ AdM1wQn5EPa+qpEfxT1PFSCSCax3sBTYsczC5ju+sxzPxNnBr1inwN482aKN0zHUNfAY
+ 4ynQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791970455; x=1792575255;
+ d=1e100.net; s=20260707; t=1791970386; x=1792575186;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=n1Kznjn9gwc9J8CJXnPKY6p2oc96M5De/Smwcsx+f98=;
- b=1kvT6krEDsO7HnOBCHn+WGs+m4N3CI+rCxGdFdnQFLow6V8m+oBzDV4LyoS7GVcrc8
- ThKIIyTOlJcpS/CRgFK7Es1/IjpdXgXCYAhfmTEncuFiVtjV8QUbcA7SNnnTeVFTVNFH
- o9873HAEZkBLzguOCg6Q3xEZwcOX6YRwcYgGMdsDQda3rYNteq7CIAf4s/KpAAtPIf71
- SabHNmYAZ2DkmuaxtyV+xfpjxD3QQCaJ6T/kQ8hZK4G36kq/EaCfLzGNTmncVct8wVWc
- 84lXoACst4cVoLQ5/U7luvy+RXGcwbU22LUYWWHk88qcTFzwGE3Tpt3SXGBoGNeU975l
- FCQA==
+ bh=N92nFfVD3yppLw3bzN6p2rDF7VCVhKpNKJeukwohcLA=;
+ b=vfwtL6q5VLi8eoS96iT4X01U/TqIhTAP8HSyJ1j5f8JR4UhdYtxMhzdEenJesx2Nuk
+ u7eD1UhdwoqXeuhQTCcMjZ6hC8nA3DcDWvp/AtLRDHILK7CpIGKeYo+6AagCMy2WZL19
+ N33vl+YW0awObGz+/qWwg81citjTaW+Pf86wU45cAYVL3z3mrkrFSGVOnmD5Qfg5BkLc
+ F3b5Mq+w14PH9HMXYWEn9hlJoPAZOTMf/6Tz8obyjis8VMPxDN0Q83yae+33x6RlqegV
+ uH3j4432lixGNpGLRBuYXSTVW6SYaGMjnKjat6KWuNgws7yHnneCkjMYhcwytkTKG/JF
+ 3PnQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy/2XpW70gSaay3Cn9E8LahI/oNln1USIxl+sLmB7q2OHL1TbNljzJaJ3ds2q/UU1H39sHyC0gLCQ==@nongnu.org
-X-Gm-Message-State: AFq9FYJ+tHKCuebFW2HVX3qybuWTSpO0HBvX3gENMC+m1qbhbhu2i5s6
- x5PTEQrlhgyj21GHqMpizj4DC3x7Q0c4gELaGCke0aHj62JseFMWXsas
-X-Gm-Gg: AYBFou2vn0mkC377XQc2iKLR4L/Eh5hqw2vAPMiiG9u1jelTfNusZy+pD1hKLkPrj6y
- KOFifrNT8UoKYZO3e9B+0H9q0i5syG5FG6zwUwskIX/lxrSy+Y4h2v9Y/mwoGj82GEQNyl59d8v
- SgrndFCH6/wG+c8Kd9+Yb8UQJwf+sWIZb4T9JQAQmrpJMbNmnx3WWDv15M4DAqzItCwxFabTMLK
- BVwTbwtz3u1AQG0sJJ30Go6HE5myCnmvmnTv2xF3QvOdtId2uKwHDt8e4iiHKQxWQPohAoeaFYC
- jPuweWuwaeTfs75FfrnWU2j/mHde3o+r/Co5hHFPMDI7mPcdudtcRpdkfA2xmyzUtubV+BBR+MA
- BQgQTV0EuYNYq2IWvw7X7S9xsapYRXseRGhSzicj/bryHm8oGy8lcZwop21yi83hDPEEs3sjRWV
- Upks7CMVCVJL5Wbbpn7bzOCcsZuMnWUOTcOSQklLEiwOI5s1vmYmLivr3URBdpAPGzX46yvC2tf
- DbV+KkO8X41OZn84w==
-X-Received: by 2002:a05:701b:450b:10b0:164:3237:4483 with SMTP id
- a92af1059eb24-16a6384f137mr18786492c88.42.1791970454472; 
- Wed, 14 Oct 2026 02:34:14 -0700 (PDT)
+ AKwUvBzrZyMSVsPxyKmx8Y2KeRqYJMgmcoj007MVYOflpjCWwlC7S26WLdBFrFMa3GzhoqL+O4jhJK73hA==@nongnu.org
+X-Gm-Message-State: AFq9FYIvH6pmZE3Ay0898YbpjwegoGheOMmlfFeUY0z/YLEHETC58/NN
+ N4zdC4+Dm9q292ouRA7qalQgSoDdevY5adccG3DwiSvZIA4Tc+yjqh8D
+X-Gm-Gg: AYBFou30HK5FfyE34zzvA11LfT4uwfcBxgKdMSdPmKOqH/+b0vGU4193+1SrPAeKnQ7
+ UEncJXLNg0PBI9mUdzTOpHkfdxtM5KtbW5O5oWnSlX6u1fL1PkklGFbiSRnE/INCTmttX4apHGL
+ +fcmSjuMpM7rDRgszLJ63h1j0WPlCCe7wjBfTBewppfEKggJWogn6j0a5gKC3FTV0qh0lu98ORH
+ 0OtFXtULEnkwkL/b2HOhdrytD61D9Ds0CothBj7Q+ERSdyhklFI65DWiuOuQPdtgapLh6g9ncDv
+ 7zLrqadCUXIe71nDYwWz4eaGUlYYo7jQmQGEHZmOYU/6p+/c4nLxbPBVJym4PLnCtBf6vQjsC4X
+ UxhYvaytFbcMfaalDVb66EYNlQJDmXmE/w6VB3s6fuCBTcvhNbJvgKfDJAerDKR/zhz738cuDfL
+ WloC7fXgm+39DpyqjP4AmBRBMKrJDJksFO5UwRGdiUVCQujy3sbZbV+iOSDwYLsi3nNGg3TWUYB
+ wooHjEbEvf36j0aSw==
+X-Received: by 2002:a05:7022:f51b:b0:15e:12b6:7365 with SMTP id
+ a92af1059eb24-16a54fab7bemr18580852c88.2.1791970386113; 
+ Wed, 14 Oct 2026 02:33:06 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.34.06
+ a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.32.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:34:13 -0700 (PDT)
+ Wed, 14 Oct 2026 02:33:05 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
@@ -97,17 +97,16 @@ Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PATCH 13/34] hw/microblaze: defer PetaLogix endianness default until
- init
-Date: Wed, 14 Oct 2026 17:31:23 +0800
-Message-ID: <20261014093152.834-14-luoyonggang@gmail.com>
+Subject: [PATCH 06/34] meson: define TARGET_ARCH_VARIANT to target_name only
+Date: Wed, 14 Oct 2026 17:31:16 +0800
+Message-ID: <20261014093152.834-7-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014093152.834-1-luoyonggang@gmail.com>
 References: <20261014093152.834-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1331;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1331.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122d;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,42 +129,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is for avoid call target_info() in class_init
+So target_arch() only related to target_name.to_upper(), simplify
+it's meaning
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/microblaze/petalogix_s3adsp1800_mmu.c | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+ meson.build | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-index c5f64319009..43140ad7bda 100644
---- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-+++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-@@ -83,7 +83,13 @@ petalogix_s3adsp1800_init(MachineState *machine)
-     MemoryRegion *phys_ram = g_new(MemoryRegion, 1);
-     qemu_irq irq[32];
-     MemoryRegion *sysmem = get_system_memory();
--    EndianMode endianness = psms->endianness;
-+    EndianMode endianness;
-+
-+    if (psms->endianness == ENDIAN_MODE_UNSPECIFIED) {
-+        psms->endianness = target_big_endian() ? ENDIAN_MODE_BIG :
-+                                           ENDIAN_MODE_LITTLE;
-+    }
-+    endianness = psms->endianness;
+diff --git a/meson.build b/meson.build
+index 255c887e8e6..3460d031a95 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3290,11 +3290,7 @@ fdt_required = []
+ foreach target : target_dirs
+   target_name = target.split('-')[0]
+   config_target = { 'TARGET_NAME': target_name }
+-  if target.endswith('linux-user')
+-    config_target += { 'TARGET_ARCH_VARIANT': 'TARGET_ARCH' }
+-  else
+-    config_target += { 'TARGET_ARCH_VARIANT': target_name.to_upper() }
+-  endif
++  config_target += { 'TARGET_ARCH_VARIANT': target_name.to_upper() }
  
-     cpu = MICROBLAZE_CPU(object_new(TYPE_MICROBLAZE_CPU));
-     object_property_set_str(OBJECT(cpu), "version", "7.10.d", &error_abort);
-@@ -178,8 +184,7 @@ static void petalogix_s3adsp1800_machine_class_init(ObjectClass *oc,
-                                           &EndianMode_lookup,
-                                           machine_get_endianness,
-                                           machine_set_endianness);
--    object_property_set_default_str(prop, target_big_endian() ? "big"
--                                                              : "little");
-+    object_property_set_default_str(prop, "unspecified");
-     object_class_property_set_description(oc, "endianness",
-             "Defines whether the machine runs in big or little endian mode");
- }
+   if target.endswith('linux-user')
+     if host_os != 'linux'
 -- 
 2.55.0.windows.3
 

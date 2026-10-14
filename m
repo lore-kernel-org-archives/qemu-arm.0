@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A33B5CC6B1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:33:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC042CC6B2A
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:33:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvM6-0002bD-54; Wed, 14 Oct 2026 05:33:02 -0400
+	id 1xGvMb-0003Ve-UT; Wed, 14 Oct 2026 05:33:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvM4-0002U0-G7
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:00 -0400
-Received: from mail-dl1-x1233.google.com ([2607:f8b0:4864:20::1233])
+ id 1xGvMZ-0003NM-Bv
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:31 -0400
+Received: from mail-dl1-x122e.google.com ([2607:f8b0:4864:20::122e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvM2-0000OK-8m
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:00 -0400
-Received: by mail-dl1-x1233.google.com with SMTP id
- a92af1059eb24-15ea896ddc8so1076996c88.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:32:57 -0700 (PDT)
+ id 1xGvMV-0000Sm-RO
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:30 -0400
+Received: by mail-dl1-x122e.google.com with SMTP id
+ a92af1059eb24-14394530ec6so2716609c88.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:33:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791970377; x=1792575177; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791970406; x=1792575206; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=MjVzzCq5lYIVN6hg7aa362sNxRreisqotHHSgGdfXuw=;
- b=hG5jIi7vdDBNA6FqomjqxxgXcfKsqoSZozd0OiVYXZKu9fy8+asgGmPd4i75QBv4IJ
- EUS9n5hwwP24WH7xTLSvEqSyCgzEgFfIkX8iyKDQvohtamL6WmrbBLYXJ/pe09Xud2cb
- txcGO5PBEDTCge0fqAmw50KucwRNGMEJibDGryWSEofiHq9fE3MV01GEtPRZxK3VGVU4
- /98BstAJddMThyXQgsoUYqJosdbHtvFR7CPpzQBdpHJInyhYHRxnGHk4LUCu0jKXTUJI
- lPNnyU9800hoWXtK+GWPBK6sXTkGvQYPPocP4X7czDGgg+my3TWUZgIvzr1AimtA1/aG
- vpiQ==
+ bh=11InmadDq7bj535f7c3NHs1B3mhGvA7oeUNBn5cdzMU=;
+ b=gc5r9k5vx4huZrRt+Uo7J7fWoVlrKMYVtkwiahF/aIOVFLsidDHH41HdUpCM71GBQS
+ kcyN0leUh60AaafmYUoPks8Re3n42p9BT1xmAYQ4O97V05v4rJiaL4rNJvWyTID/G+VJ
+ uxudsNVl8XHTXRuN9nk7fAQEwXHoMdtRqbydr410gY/VtaawwV0dh6OwPA5MEehuItH5
+ /IILKygCRZvl3QzSa97ny/ZlpsIWvgK0CqrVodKH7pRBbjNKo6IwgpB4M0wyXkZLxhbJ
+ izG4/WEWWy2dWKFq9HUYFH1e7dThjiAW8snxtSLvz5ZuCcec5L8OdAr2j73Xjze06enB
+ 4f4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791970377; x=1792575177;
+ d=1e100.net; s=20260707; t=1791970406; x=1792575206;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=MjVzzCq5lYIVN6hg7aa362sNxRreisqotHHSgGdfXuw=;
- b=ogk6WqAXZiBGPeXLu/I0NjqyFRqvt0d1vzY79PO5CN1ja8xFOtYf4SVJA7p7ycvO3j
- FW13hOA0xUF11OuNp0+NcSGVLfu38rvfO4jb3e/d7wr5dBi2HMbPks42d1A685R1/JEh
- 15i+FEt2m2cwwa5eKavlQPCGkbek37l2u9IoUBhJXnHBTHE7iyYWioNs9SdG8asxgxxm
- 0m+K9Wt5H/2lKH3xczczI1ycgZE7AwdJMY5pTcnr03HxXPi/nUgkxg5roMEoO5yEljk8
- 1BztkRz9vTo5DpiqOjXvk3/027lgFuIl6GPHcOXkltmfegOUVgNVRV44opTWXCU0cAHs
- H7gw==
+ bh=11InmadDq7bj535f7c3NHs1B3mhGvA7oeUNBn5cdzMU=;
+ b=FPCKo57RBJOlsTuLk3a2tMGVHHW8h2J46iEouJmzwvOlUAoy2eLL/BlPHO+3hNzJhj
+ 2Z5SwoNS8paeJyRdyOC8DV6A95bcpcm7yVv+Pm8afvVxjqkuOw/qV9WADrFTmvCyeYGp
+ Shm9joeTeIbf0nDBZPoQJFOIwSXbNf72GlarMRS0mkuFz8fctEa/zXrI5cFB6DLAB+p/
+ X0JQnqpZ0cZExBy5SEu7YvsHEPs0cpPXv4oTYVWnEWiViLjcbSuA2/D1KmeOw9kmdULg
+ XLFeRebWTGC4tpXCJQ75ZdLEBUC73FuTStnXItH9vkcdWKw7oG5N275JXJNfIffKJa/j
+ NrLw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzNlGd9PsHI9h/1rvTfBK2TGfafI7dn6ncN9tYlS/7398D7Gm8G+Qpcf4nLVeyQYQoVzEyyCFUPDg==@nongnu.org
-X-Gm-Message-State: AFq9FYJFjCOGWkh7QS2dzpXmcR965ol3Zr/skKw0UZVspbhPjl7u48Es
- 2RrXf3V/9XeS9lg2n0c+2oJtFznaztsYYQJG9lhdXof2k2tGRBPCTbDE
-X-Gm-Gg: AYBFou3CSNzT1kiIfuwQI4JePBwsquA2xWGFxY6CqQ6F15LMaxrLEQzaKbZ9ppGDggX
- Va7iw9WaV0jjrrU0qNWvAVRUSFAqfdyJkEVdqrtguxJuAuLcO2X6L7mB18M+T9fmNhM+rn79was
- Pzj2eQY2mh4O68uMpZXX708vrWFr+94+xlw3gsOCV1dHG+7EDfEicgzB60RQxguDaAihoe3LpGt
- GtVYbmQ8vzCCOInDNTihzrURpgLzXXywi3Bveeh+k98R9ERF1jdZEHrzT92PXOEbUo05m2wtoC/
- xsiG/lgKug/jl+2tgmxlSc2i4bzPc2aMOsA9R/T6c5z229MTe9LfdTIpb+YYsXTPyMltiZD5ZjB
- W85ObjvMTxwxWOrHRpX9Dyi8P8f8GiUx5s0XvR6cQeMj+5d8hBNkgJEDSwSorArlJDdSyqz8hSI
- vwoqXl4iZNVPDl/R/wgmrMrGKyvKQubAIM32vH1WMb1b5k1LtbAXt/ce7R/NVMlHYGlIO9pag8C
- FYOcFNfiU7sn1yZ4Q==
-X-Received: by 2002:a05:7022:171c:b0:14f:8e70:fad0 with SMTP id
- a92af1059eb24-16a6090d024mr20119702c88.33.1791970376544; 
- Wed, 14 Oct 2026 02:32:56 -0700 (PDT)
+ AKwUvBytaSvxrL0aM/W+g0SslaOYVEikGHPlU2rGE5CsFtnrt9bxtJM8wzPw9sCT4Hn29DXrWjmIpxwmvA==@nongnu.org
+X-Gm-Message-State: AFq9FYIVmhu9A3ikWU5rkYZzWfZTST53VlgFSf+sZ9RvVAXvfL8/VxRq
+ nhGFGZNpzF9MrwikdoAstGbjuvvTyrhEI3d3dlfSSHE4grOEMOe/Jp7c
+X-Gm-Gg: AYBFou3QmFASoTceGglujNfkI2k/uMW1IMfcbohSYw+y2FX9pSdd0HIjEV58OEyjmBf
+ khFmIm384eAFj5LmowE65NvDkvYsKjGR6iXU5+ebyZa+5lFLh/1IYhvid6ATE+yPZyIhXancfys
+ Jy+0AbqugGzQy/I/VxzatTv3Shm6ujmR3+3VVkh6FRb0IsmbppSlvqre1PRxTIBc9+wMnWx5T3F
+ 1LK4PMMc4nTl/+cGIX7N7uyL9FBkZfqhQGuqylH7ZvkoU5hG89GMre8jYNl1csAaPxfCIKmY0Iw
+ FDqQk5n5qzY0dkbh2NoQcAwnjnoYtrrOHX0zZZJeejsUuudwoQ+jv8SAZYPWu5xs4a7W967kgpy
+ 362RAlBeIpxkycrq7HKSOWiCweCodCQeOaOQu54JubifoiXLEuGtYqxPXhP8DXtrhj++qZPtPpo
+ jsgUsK9wGpwb63eJNX2GgEG5XInBIsSTsD/BxLdPq2cpQH/835+hQ3I4BF7BWCHXUEIrCM2/Fjv
+ /zhWkJoQoKkvQ4VAw==
+X-Received: by 2002:a05:701b:42c2:10b0:168:6ad8:e88c with SMTP id
+ a92af1059eb24-16a63757d80mr24501847c88.39.1791970405985; 
+ Wed, 14 Oct 2026 02:33:25 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.32.48
+ a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.33.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:32:55 -0700 (PDT)
+ Wed, 14 Oct 2026 02:33:25 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
@@ -97,23 +97,23 @@ Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PATCH 05/34] qapi: add missing Linux user-mode targets to EmuTarget
-Date: Wed, 14 Oct 2026 17:31:15 +0800
-Message-ID: <20261014093152.834-6-luoyonggang@gmail.com>
+Subject: [PATCH 08/34] hw: add MachineClass::targets with a usage and test
+Date: Wed, 14 Oct 2026 17:31:18 +0800
+Message-ID: <20261014093152.834-9-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014093152.834-1-luoyonggang@gmail.com>
 References: <20261014093152.834-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1233;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1233.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,184 +129,146 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This usermode targets:
-aarch64_be
-armeb
-microblazeel
-mipsn32
-mipsn32el
-ppc64le
-sparc32plus
-are not in machine.json
-
-This is a prepare for directly using TARGET_ARCH_VARIANT latter.
-
-Also get target-info.c to be compatible with future TARGET_ARCH_VARIANT only usage.
-So that we can define TARGET_ARCH_VARIANT to target_name directly
+Add a target bitmask to MachineClass, defaulting to QEMU_ARCH_ALL.
+Update "clipper" machine as a demo/test
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/base-arch-defs.h | 13 +++++++++++++
- qapi/machine.json             | 25 +++++++++++++------------
- target-info.c                 | 26 +++++++++-----------------
- 3 files changed, 35 insertions(+), 29 deletions(-)
+ hw/alpha/dp264.c               |  2 ++
+ hw/core/machine.c              |  3 +++
+ include/hw/core/boards.h       |  6 ++++++
+ tests/unit/test-multi-target.c | 33 ++++++++++++++++++++++++++++++++-
+ 4 files changed, 43 insertions(+), 1 deletion(-)
 
-diff --git a/include/qemu/base-arch-defs.h b/include/qemu/base-arch-defs.h
-index 7ddecc3d0be..6f3dadcc3a8 100644
---- a/include/qemu/base-arch-defs.h
-+++ b/include/qemu/base-arch-defs.h
-@@ -11,25 +11,38 @@
- 
- #define QEMU_ARCH_BIT(target) (1ULL << (target))
- 
-+/* Unsuffixed family masks cover system targets; _ALL includes user targets. */
- enum {
-     QEMU_ARCH_ALPHA =       QEMU_ARCH_BIT(EMU_TARGET_ALPHA),
-     QEMU_ARCH_ARM =         QEMU_ARCH_BIT(EMU_TARGET_ARM) |
-                             QEMU_ARCH_BIT(EMU_TARGET_AARCH64),
-+    QEMU_ARCH_ARM_ALL =     QEMU_ARCH_ARM |
-+                            QEMU_ARCH_BIT(EMU_TARGET_AARCH64_BE) |
-+                            QEMU_ARCH_BIT(EMU_TARGET_ARMEB),
-     QEMU_ARCH_I386 =        QEMU_ARCH_BIT(EMU_TARGET_I386) |
-                             QEMU_ARCH_BIT(EMU_TARGET_X86_64),
-     QEMU_ARCH_M68K =        QEMU_ARCH_BIT(EMU_TARGET_M68K),
-     QEMU_ARCH_MICROBLAZE =  QEMU_ARCH_BIT(EMU_TARGET_MICROBLAZE),
-+    QEMU_ARCH_MICROBLAZE_ALL = QEMU_ARCH_MICROBLAZE |
-+                               QEMU_ARCH_BIT(EMU_TARGET_MICROBLAZEEL),
-     QEMU_ARCH_MIPS =        QEMU_ARCH_BIT(EMU_TARGET_MIPS) |
-                             QEMU_ARCH_BIT(EMU_TARGET_MIPSEL) |
-                             QEMU_ARCH_BIT(EMU_TARGET_MIPS64) |
-                             QEMU_ARCH_BIT(EMU_TARGET_MIPS64EL),
-+    QEMU_ARCH_MIPS_ALL =    QEMU_ARCH_MIPS |
-+                            QEMU_ARCH_BIT(EMU_TARGET_MIPSN32) |
-+                            QEMU_ARCH_BIT(EMU_TARGET_MIPSN32EL),
-     QEMU_ARCH_PPC =         QEMU_ARCH_BIT(EMU_TARGET_PPC) |
-                             QEMU_ARCH_BIT(EMU_TARGET_PPC64),
-+    QEMU_ARCH_PPC_ALL =     QEMU_ARCH_PPC |
-+                            QEMU_ARCH_BIT(EMU_TARGET_PPC64LE),
-     QEMU_ARCH_S390X =       QEMU_ARCH_BIT(EMU_TARGET_S390X),
-     QEMU_ARCH_SH4 =         QEMU_ARCH_BIT(EMU_TARGET_SH4) |
-                             QEMU_ARCH_BIT(EMU_TARGET_SH4EB),
-     QEMU_ARCH_SPARC =       QEMU_ARCH_BIT(EMU_TARGET_SPARC) |
-                             QEMU_ARCH_BIT(EMU_TARGET_SPARC64),
-+    QEMU_ARCH_SPARC_ALL =   QEMU_ARCH_SPARC |
-+                            QEMU_ARCH_BIT(EMU_TARGET_SPARC32PLUS),
-     QEMU_ARCH_XTENSA =      QEMU_ARCH_BIT(EMU_TARGET_XTENSA) |
-                             QEMU_ARCH_BIT(EMU_TARGET_XTENSAEB),
-     QEMU_ARCH_OR1K =        QEMU_ARCH_BIT(EMU_TARGET_OR1K),
-diff --git a/qapi/machine.json b/qapi/machine.json
-index 07fac4f0764..a3d6e08a847 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -15,11 +15,10 @@
- 
- ##
- # @EmuTarget:
--#     The comprehensive enumeration of QEMU system emulation
--#     ("softmmu") targets.  Run "./configure --help" in the project
--#     root directory, and look for the \*-softmmu targets near the
--#     "--target-list" option.  The individual target constants are not
--#     documented here, for the time being.
-+#     The comprehensive enumeration of QEMU system and user-mode
-+#     emulation targets.  Run "./configure --help" in the project root
-+#     directory, and look for the targets near the "--target-list"
-+#     option.  Individual target constants are not documented here.
- #
- # @rx: since 5.0
- #
-@@ -30,17 +29,19 @@
- # @hexagon: since 11.0
- #
- # .. note:: The resulting QMP strings can be appended to the
--#    "qemu-system-" prefix to produce the corresponding QEMU
--#    executable name.  This is true even for "qemu-system-x86_64".
-+#    "qemu-system-" prefix for system emulation, or the "qemu-" prefix
-+#    for user-mode emulation, to produce the corresponding executable
-+#    name, where that target supports the respective emulation mode.
- #
- # Since: 3.0
- ##
- { 'enum' : 'EmuTarget',
--  'data' : [ 'aarch64', 'alpha', 'arm', 'avr', 'hexagon', 'hppa', 'i386',
--             'loongarch64', 'm68k', 'microblaze', 'mips', 'mips64',
--             'mips64el', 'mipsel', 'or1k', 'ppc',
--             'ppc64', 'riscv32', 'riscv64', 'rx', 's390x', 'sh4',
--             'sh4eb', 'sparc', 'sparc64', 'tricore',
-+  'data' : [ 'aarch64', 'aarch64_be', 'alpha', 'arm', 'armeb', 'avr',
-+             'hexagon', 'hppa', 'i386', 'loongarch64', 'm68k', 'microblaze',
-+             'microblazeel', 'mips', 'mips64', 'mips64el', 'mipsel',
-+             'mipsn32', 'mipsn32el', 'or1k', 'ppc', 'ppc64', 'ppc64le',
-+             'riscv32', 'riscv64', 'rx', 's390x', 'sh4', 'sh4eb', 'sparc',
-+             'sparc32plus', 'sparc64', 'tricore',
-              'x86_64', 'xtensa', 'xtensaeb' ] }
- 
- ##
-diff --git a/target-info.c b/target-info.c
-index 241be2b5563..b2abcd55bd3 100644
---- a/target-info.c
-+++ b/target-info.c
+diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+index f928e0cee82..6be573c88bc 100644
+--- a/hw/alpha/dp264.c
++++ b/hw/alpha/dp264.c
 @@ -7,6 +7,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/base-arch-defs.h"
+ #include "target/alpha/cpu.h"
+ #include "exec/target_page.h"
+ #include "elf.h"
+@@ -203,6 +204,7 @@ static void clipper_init(MachineState *machine)
+ 
+ static void clipper_machine_init(MachineClass *mc)
+ {
++    mc->targets = QEMU_ARCH_ALPHA;
+     mc->desc = "Alpha DP264/CLIPPER";
+     mc->init = clipper_init;
+     mc->block_default_type = IF_IDE;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index d9ac4b419a3..5c6f3cb0f68 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/units.h"
+ #include "qemu/accel.h"
+ #include "system/replay.h"
+@@ -1068,6 +1069,8 @@ static void machine_class_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
++    mc->targets = QEMU_ARCH_ALL;
++
+     /* Default 128 MB as guest ram size */
+     mc->default_ram_size = 128 * MiB;
+     mc->rom_file_has_mr = true;
+diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
+index d0e4ad98201..d7713c45836 100644
+--- a/include/hw/core/boards.h
++++ b/include/hw/core/boards.h
+@@ -186,6 +186,11 @@ typedef struct {
+  * MachineClass:
+  * @deprecation_reason: If set, the machine is marked as deprecated. The
+  *    string should provide some clear information about what to use instead.
++ * @targets: bitmask of EmuTarget values supported by this machine. Each
++ *    target is represented by QEMU_ARCH_BIT(EMU_TARGET_*).
++ *    QEMU_ARCH_* masks may be used when the machine supports every target
++ *    in that architecture family. Defaults to QEMU_ARCH_ALL; machines that
++ *    support a narrower set of targets should declare that set explicitly.
+  * @max_cpus: maximum number of CPUs supported. Default: 1
+  * @min_cpus: minimum number of CPUs supported. Default: 1
+  * @default_cpus: number of CPUs instantiated if none are specified. Default: 1
+@@ -273,6 +278,7 @@ struct MachineClass {
+     const char *alias;
+     const char *desc;
+     const char *deprecation_reason;
++    uint64_t targets;
+ 
+     void (*init)(MachineState *state);
+     void (*reset)(MachineState *state, ResetType type);
+diff --git a/tests/unit/test-multi-target.c b/tests/unit/test-multi-target.c
+index a91fe8e6d07..c2922e0fed5 100644
+--- a/tests/unit/test-multi-target.c
++++ b/tests/unit/test-multi-target.c
+@@ -13,6 +13,8 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "hw/core/boards.h"
++#include "qemu/base-arch-defs.h"
+ #include "qemu/module.h"
  #include "qemu/target-info.h"
- #include "qemu/target-info-qapi.h"
- #include "qemu/target-info-def.h"
-@@ -44,23 +45,19 @@ bool target_big_endian(void)
+ #include "qemu/target-info-qom.h"
+@@ -32,6 +34,17 @@ int (*qemu_main)(void);
  
- bool target_base_arm(void)
+ static GSList *targets;
+ 
++static bool target_arch_available(uint64_t arch_mask)
++{
++    for (GSList *l = targets; l; l = l->next) {
++        const TargetInfo *ti = TARGET_INFO_CLASS(l->data)->target_info;
++        if (QEMU_ARCH_BIT(ti->target_arch) & arch_mask) {
++            return true;
++        }
++    }
++    return false;
++}
++
+ static void test_qom_types_are_unique(void)
  {
--    switch (target_arch()) {
--    case EMU_TARGET_ARM:
--    case EMU_TARGET_AARCH64:
--        return true;
--    default:
--        return false;
--    }
-+    return (QEMU_ARCH_ARM_ALL & QEMU_ARCH_BIT(target_arch())) != 0;
+     g_assert(targets);
+@@ -41,6 +54,22 @@ static void test_qom_types_are_unique(void)
+     g_assert_true(targets == target_info_qom_get_targets());
  }
  
- bool target_arm(void)
++static void test_machine_targets(void)
++{
++    ObjectClass *oc;
++
++    oc = object_class_by_name(TYPE_MACHINE);
++    g_assert_nonnull(oc);
++    g_assert_cmpuint(MACHINE_CLASS(oc)->targets, ==, QEMU_ARCH_ALL);
++
++    if (target_arch_available(QEMU_ARCH_ALPHA)) {
++        oc = object_class_by_name(MACHINE_TYPE_NAME("clipper"));
++        g_assert_nonnull(oc);
++        g_assert_cmpuint(MACHINE_CLASS(oc)->targets, ==,
++                         QEMU_ARCH_BIT(EMU_TARGET_ALPHA));
++    }
++}
++
+ int main(int argc, char **argv)
  {
--    return target_arch() == EMU_TARGET_ARM;
-+    return target_arch() == EMU_TARGET_ARM ||
-+           target_arch() == EMU_TARGET_ARMEB;
+     g_test_init(&argc, &argv, NULL);
+@@ -54,6 +83,8 @@ int main(int argc, char **argv)
+     module_call_init(MODULE_INIT_QOM);
+ 
+     g_test_add_func("/multi-targets/qom-types-are-unique",
+-                   test_qom_types_are_unique);
++                    test_qom_types_are_unique);
++    g_test_add_func("/multi-targets/machine-targets",
++                    test_machine_targets);
+     return g_test_run();
  }
- 
- bool target_aarch64(void)
- {
--    return target_arch() == EMU_TARGET_AARCH64;
-+    return target_arch() == EMU_TARGET_AARCH64 ||
-+           target_arch() == EMU_TARGET_AARCH64_BE;
- }
- 
- bool target_m68k(void)
-@@ -75,13 +72,7 @@ bool target_or1k(void)
- 
- bool target_base_ppc(void)
- {
--    switch (target_arch()) {
--    case EMU_TARGET_PPC:
--    case EMU_TARGET_PPC64:
--        return true;
--    default:
--        return false;
--    }
-+    return (QEMU_ARCH_PPC_ALL & QEMU_ARCH_BIT(target_arch())) != 0;
- }
- 
- bool target_ppc(void)
-@@ -91,7 +82,8 @@ bool target_ppc(void)
- 
- bool target_ppc64(void)
- {
--    return target_arch() == EMU_TARGET_PPC64;
-+    return target_arch() == EMU_TARGET_PPC64 ||
-+           target_arch() == EMU_TARGET_PPC64LE;
- }
- 
- bool target_s390x(void)
 -- 
 2.55.0.windows.3
 

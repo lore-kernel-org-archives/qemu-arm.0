@@ -4,95 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4296ECC6B27
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 08:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3ACCC6B2A
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:33:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGuHb-0000Ae-C9; Wed, 14 Oct 2026 04:24:20 -0400
+	id 1xGvLe-0002Gv-E7; Wed, 14 Oct 2026 05:32:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1xGuHV-0000A2-KC
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 04:24:14 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xGvLb-0002G4-FP
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:31 -0400
+Received: from mail-dl1-x1231.google.com ([2607:f8b0:4864:20::1231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1xGuHR-0002EY-2R
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 04:24:13 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-6b1aa27963eso4044688a12.1
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 01:24:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xGvLZ-0000Ks-TA
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:31 -0400
+Received: by mail-dl1-x1231.google.com with SMTP id
+ a92af1059eb24-15dd124bbe7so7346040c88.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:32:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791966247; x=1792571047; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=E77zUabWfnWHHLgTNO0YwCzccziQx5/PzVOktJEn4XU=;
- b=aypEhdxYbi/UpDHGwN9ain4lrQh98G/V6ceCUzKd4YbtHqmFDTV2a+WcKA/k6HFtRt
- BvbwsgeaJVrTz2wkEw5D5yQJqPLXmLwtoYrGcPjgZBL0EKxK9/e1iR3PyNSmulfRQ923
- dKoKuaL7/ZqOt4aEdP1sPW3RbNVa4t1+hlS9j6ncckSh7zrusoGI/UEsXnRgt5PSnqjM
- 94kb/OFYss2FSHKfV//L5nqjusenw3WdhSG6/FRHcIz4KHnKai4+/lk4RabG4LNgiMpB
- 85+MR0kiKrjpTiNsTOKj/rjZZbVcP4ngLuDchrPEsgSYGItChM5cVAw0c2bJcFalfeIL
- k4sA==
+ d=gmail.com; s=20251104; t=1791970347; x=1792575147; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Ujyr7Jx7RdrtwSaEiPldTVT9GggNzUt/ZtswxjPgnhE=;
+ b=RRajW/42VlApdrxrDCRkHamvfRHd50yhHuu73+ZMj2rqYMwoUsAOoXeuxi4/4FDNLs
+ n1rXgohJwDuevzEKzq9ANEg58WhqTHIG36WeoGiC+083LEPEs/NZdL3iz7kO4atZwx+u
+ 98Zfd+37PxwHjd1/3abhU2FUdUMysMsroTp0/3K+/D1GJqUKTiYWoV8F3OQCjhyipb/W
+ JY4OxvintrIOHqFfMDdZqOpJoE0tRptGyTF9fig9GLuBJNch0NrcJkX7bSnu/ok1brFJ
+ dNIT9zpcddBsbnuCIL+fwbcBxOI25f52ck4mJVgCnghUgX2/3rjIpiHuTOeQ2oVXYhrE
+ HNsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791966247; x=1792571047;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=E77zUabWfnWHHLgTNO0YwCzccziQx5/PzVOktJEn4XU=;
- b=UnWFZjY+e9YOwsVRyrz9PMUSQucqw7CmYSRYcaauiRgLD44oL+W9GP+niwOsbfYEOt
- Mx4geZU1539sA218y80tmqVSylUfCuGXEcOSBXrC9gK2+ynZ+MUjq6DGy/XknsGUtKvn
- BRTkxG8JTfqLReqQQoykPl1LDBXJyvwB7Q5EeTVxhMk0jr8Kk+qSCEQd5OBuc+b6pY0Q
- Qhoo0YfRIsLTiflrZNRiL4jO9HxINNWhf7q+IAnpVWmn/T3syGSuXSqbl/aMHF1Aqki6
- s4H5zrAgfLVnPg3EfLJArEYykTv0M2zuqET78yotrkIbgeCQbb0x71fT1SBvkaXMDNLO
- i1zw==
-X-Gm-Message-State: AFq9FYKJUed79YWiyuLGvzySXsXv9umo3HzpRKV7atkcL/W4RiimS0zm
- uEH6AAjFxFmJaK6LMCJGy0CyZTbHBuHeR7+p4pzbB80/i2SB3T5EB8Hp
-X-Gm-Gg: AYBFou3Xc/wK5t2pVUgxDKWhVd4RPX1IljWY17gkvtEIAVU44aVK5BmWiBWeNnygSmU
- DbTfT0hW7N7YcYyqUDI/abCe/WATn5Sva3b7+Eg8PN8f+3ge16EW/wIzNa2iIvI2CR49b0p4QEZ
- ckfZvintXc6XRHqjkxbTArvfASwNSJDbhk9eNSBBb3x7xW8XXa9JxLgY0khHmnDhYHiMVwPF2FH
- Ew5JH3L1vbhMFJqBbnEMj1djUIto6wUy0dJmTzfYjcAGc6jfLV7aYlVlTup6vBAgsTLRBG3AV3Y
- Non0AaJeonNlZA3ukPOqDyUmYE4oN/bRXfcl48C/YMgvI8NnJiM90CzQ9R9cy9LSlyQQjPmwJPg
- iPVYkxtlJhzziwIu7cVn8JSxgEkr/1HnWmDMu1cWXOky1Hyy/QdqztPjMMCnPrL3HcChgisntjp
- LJAuly+oohUwOxayeTannMWbLcW+isOOjD4dJm3VLAZaqvA8Xhgx+LfwK3l1nTzDeyVuD5P98/t
- CeZx3JyedwLRb4Sep+ZmfcmKFgVmYBrGq40+1y9VA==
-X-Received: by 2002:a17:906:730f:b0:c2d:d4dd:8b5 with SMTP id
- a640c23a62f3a-c31a9fc0b88mr1422037866b.19.1791966247252; 
- Wed, 14 Oct 2026 01:24:07 -0700 (PDT)
-Received: from [192.168.1.130] (93-143-204-231.adsl.net.t-com.hr.
- [93.143.204.231]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c31b8c4b407sm635010866b.0.2026.10.14.01.24.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Oct 2026 01:24:06 -0700 (PDT)
-From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-X-Google-Original-From: Ruslan Ruslichenko <ruslichenkor@gmail.com>
-Message-ID: <ea850fd3-1712-470d-a010-465aae705690@gmail.com>
-Date: Wed, 14 Oct 2026 10:24:05 +0200
+ d=1e100.net; s=20260707; t=1791970347; x=1792575147;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=Ujyr7Jx7RdrtwSaEiPldTVT9GggNzUt/ZtswxjPgnhE=;
+ b=QSMToju4QqQpOMq0ZL1nXNp4A8LBYd7Ogi/x73Z75ufViCleCU3GWdVasKJhgsg+rJ
+ 7W6uXmvHrtEcm/uLBUcfSrf6GCP5wW6RzB9Y5GqmvKN1zAdsGGMHGqvZeQrX6m4OVnND
+ /LXx9odzU9c4CulkDc/yH3ltneCmYH9QBo/nENCrhd9UK3lJG7XpReuPdmH9PpW2mSIH
+ EuFpRIsluSNOTD2C9NDFeMJZe1u6Ts4UuNakaqAnzaUrIqVB3oB1ukC3LpqY12i4c6nz
+ ssE5M8qevKFPhE66ouUuYkvc2Tgn/YY/yicm6+90Q8hIiqjbMoCpLOj83nxobaKWYnhQ
+ RCHg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBw1MX/nNkCvm2/OfmVLztDmscrIa3Vc21Djo46C/Qw5DatpNRyKPcYpMDTF1+ySDmGY+jQuBsVUxg==@nongnu.org
+X-Gm-Message-State: AFq9FYILXAkFwfM9ad/t5X7BWnQrQWVFC/TfxARNyNP0AWJBczabcHyq
+ lzG7Xxqd/JrPSaYxpm9N9e4u3TW+bwMOsnY2Gw0AwxgrFqQVdzpVANgt
+X-Gm-Gg: AYBFou1v0W4biLnxGVfjrxqiIgHK8fCCL61HZC/1fOugkm0pz2bITwe6jbQeqo6QyA8
+ nC+GsY84okSSic2q8gUDIfNmXP2+RKREEOWMA9db/IaKus8i3LRb5ABpFGdm9mEFTI6q0JGk1YH
+ Mg2u1K5d5vFafNqTONtKPVM5VxUecQ7X7gbFHI5V0PK/He4xVlP3WhCOxSSSO2Gnl5sW/M7k9Be
+ yE2MD8DehOaLLew+amTuPeMPZtJ/KqyznQhIrUAX99Wp0b9P51gUw42vdIAcs6GfjX+w8Y0GsFJ
+ 49rkAlQyu0jifyXo6sKIn1mSbU9H0nHGHohCKb4Zh4F5EsYHYQ0PIYjMiljXeiCz1vgHaJLEuah
+ 7D8aUKytrC4HiyS5MHIwphacXPHoLgjDwTkL2JlYPev29vF6W9eR908muSWfWadEmgXQUjyqbhe
+ /77VNeP+CilMxqMTx0ZAkFtTPtuaykmuHqDqh0XoEkAlryL25bPa7D1K26mBpaJliaperqx4hO7
+ qdG6RqNArDs5b14TA==
+X-Received: by 2002:a05:701b:451c:20b0:14a:5d07:9b with SMTP id
+ a92af1059eb24-16a5ea5d851mr19602319c88.28.1791970347413; 
+ Wed, 14 Oct 2026 02:32:27 -0700 (PDT)
+Received: from DESKTOP-Q716RM7 ([103.94.185.75])
+ by smtp.googlemail.com with ESMTPSA id
+ a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.32.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 14 Oct 2026 02:32:26 -0700 (PDT)
+From: Yonggang Luo <luoyonggang@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-s390x@nongnu.org, Song Gao <17746591750@163.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Eric Farman <farman@linux.ibm.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stafford Horne <shorne@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Weiwei Li <liwei1518@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ David Hildenbrand <david@kernel.org>, Laurent Vivier <laurent@vivier.eu>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Fam Zheng <fam@euphon.net>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-arm@nongnu.org,
+ Chao Liu <chao.liu@processmission.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Subject: [PATCH 02/34] qemu: Use SYS_EMU_TARGET__MAX to define QEMU_ARCH_ALL
+Date: Wed, 14 Oct 2026 17:31:12 +0800
+Message-ID: <20261014093152.834-3-luoyonggang@gmail.com>
+X-Mailer: git-send-email 2.55.0.windows.3
+In-Reply-To: <20261014093152.834-1-luoyonggang@gmail.com>
+References: <20261014093152.834-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/20] hw/core: Implement Remote Port Memory Master bus
- transactions
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Ruslan Ruslichenko <ruslichenko.r@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- peter.maydell@linaro.org, francisco.iglesias@amd.com,
- edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
- Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
- <20260915160044.345788-12-ruslichenko.r@gmail.com>
- <8f0cfc4a-060c-41a9-81e4-111e0019392f@oss.qualcomm.com>
- <981c4de8-2b09-49df-bcfa-c1f4fdbf3cfb@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <981c4de8-2b09-49df-bcfa-c1f4fdbf3cfb@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1231;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1231.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,285 +129,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Philippe,
+This is more precise, so we can iterate all target_arch with QEMU_ARCH_ALL
 
-On 10/13/26 18:10, Philippe Mathieu-Daudé wrote:
-> On 2026-10-13 18:09, Philippe Mathieu-Daudé wrote:
->> Hi,
->>
->> On 2026-09-15 18:00, Ruslan Ruslichenko wrote:
->>> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->>>
->>> Implement the core access handlers for the Remote Port Memory
->>> Master device, which enables QEMU to initiate memory-mapped
->>> transaction to remote peers.
->>>
->>> The patch adds support for:
->>> - Translation of QEMU memory region read/write into Remote Port
->>> read/write packets
->>> - Support for propagating of transaction attributes
->>> (Secure, MasterID)
->>> - Synchronous response waiting with optional timeout (timeout
->>>    configuration to be added within later patches)
->>> - Add trace events for monitoring TX/RX bus transactions
->>>
->>> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
->>> Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
->>> Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->>> ---
->>>   hw/core/remote-port-memory-master.c | 191 +++++++++++++++++++++++++++-
->>>   hw/core/remote-port.c               |   5 +
->>>   hw/core/trace-events                |   4 +
->>>   include/hw/core/remote-port.h       |  11 ++
->>>   4 files changed, 207 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote- port-memory-master.c
->>> index 4b0283f9fe..41ef1df518 100644
->>> --- a/hw/core/remote-port-memory-master.c
->>> +++ b/hw/core/remote-port-memory-master.c
->>> @@ -29,18 +29,201 @@
->>>   #define RP_MAX_ACCESS_SIZE 4096
->>> +static int rp_mm_get_timeout(RPMemoryTransaction *tr)
->>> +{
->>> +    RemotePortMap *map = tr->opaque;
->>> +    RemotePortMemoryMaster *s;
->>> +
->>> +    if (!map || !map->parent ||
->>> +        !object_dynamic_cast(OBJECT(map->parent),
->>> +                             TYPE_REMOTE_PORT_MEMORY_MASTER)) {
->>> +        return 0;
->>> +    }
->>> +    s = REMOTE_PORT_MEMORY_MASTER(map->parent);
->>> +    return s->rp_timeout;
->>> +}
->>> +
->>> +MemTxResult rp_mm_access_with_def_attr(RemotePort *rp, uint32_t rp_dev,
->>> +                                       struct rp_peer_state *peer,
->>> +                                       RPMemoryTransaction *tr,
->>> +                                       bool relative, uint64_t offset,
->>> +                                       uint32_t def_attr)
->>> +{
->>> +    uint64_t addr = tr->addr;
->>> +    RemotePortRespSlot *rsp_slot;
->>> +    RemotePortDynPkt *rsp;
->>> +    struct  {
->>> +        struct rp_pkt_busaccess_ext_base pkt;
->>> +        uint8_t reserved[RP_MAX_ACCESS_SIZE];
->>> +    } pay;
->>> +    uint8_t *data = rp_busaccess_tx_dataptr(peer, &pay.pkt);
->>> +    struct rp_encode_busaccess_in in = {0};
->>> +    int i;
->>> +    int len;
->>> +    int rp_timeout = rp_mm_get_timeout(tr);
->>> +    MemTxResult ret;
->>> +
->>> +    if (tr->rw) {
->>> +        /* Data up to 8 bytes is passed as values.  */
->>> +        if (tr->size <= 8) {
->>> +            for (i = 0; i < tr->size; i++) {
->>> +                data[i] = tr->data.u64 >> (i * 8);
->>> +            }
->>> +        } else {
->>> +            memcpy(data, tr->data.p8, tr->size);
->>> +        }
->>> +    }
->>> +
->>> +    addr += relative ? 0 : offset;
->>> +
->>> +    in.cmd = tr->rw ? RP_CMD_write : RP_CMD_read;
->>> +    in.id = rp_new_id(rp);
->>> +    in.dev = rp_dev;
->>> +    in.clk = rp_normalized_vmclk(rp);
->>> +    in.master_id = tr->attr.requester_id;
->>> +    in.addr = addr;
->>> +    in.attr = def_attr;
->>> +    in.attr |= tr->attr.secure ? RP_BUS_ATTR_SECURE : 0;
->>> +    in.size = tr->size;
->>> +    in.stream_width = tr->size;
->>> +    len = rp_encode_busaccess(peer, &pay.pkt, &in);
->>> +    len += tr->rw ? tr->size : 0;
->>> +
->>> +    trace_remote_port_memory_master_tx_busaccess(rp_cmd_to_string(in.cmd),
->>> +        in.id, in.flags, in.dev, in.addr, in.size, in.attr);
->>> +
->>> +    rp_rsp_mutex_lock(rp);
->>> +    rp_write(rp, (void *) &pay, len);
->>> +
->>> +    if (!rp_timeout) {
->>> +        rsp_slot = rp_dev_wait_resp(rp, in.dev, in.id);
->>> +    } else {
->>> +        rsp_slot = rp_dev_timed_wait_resp(rp, in.dev, in.id, rp_timeout);
->>> +        if (rsp_slot->valid == false) {
->>> +            /*
->>> +             * Timeout error
->>> +             */
->>> +            rp_rsp_mutex_unlock(rp);
->>> +            return MEMTX_ERROR;
->>> +        }
->>> +    }
->>> +    rsp = &rsp_slot->rsp;
->>> +
->>> +    /* We dont support out of order answers yet.  */
->>> +    assert(rsp->pkt->hdr.id == in.id);
->>> +
->>> +    switch (rp_get_busaccess_response(rsp->pkt)) {
->>> +    case RP_RESP_OK:
->>> +        ret = MEMTX_OK;
->>> +        break;
->>> +    case RP_RESP_ADDR_ERROR:
->>> +        ret = MEMTX_DECODE_ERROR;
->>> +        break;
->>> +    default:
->>> +        ret = MEMTX_ERROR;
->>> +        break;
->>> +    }
->>> +
->>> +    if (ret == MEMTX_OK && !tr->rw) {
->>> +        data = rp_busaccess_rx_dataptr(peer, &rsp->pkt- >busaccess_ext_base);
->>> +        /* Data up to 8 bytes is return as values.  */
->>> +        if (tr->size <= 8) {
->>> +            for (i = 0; i < tr->size; i++) {
->>> +                tr->data.u64 |= ((uint64_t) data[i]) << (i * 8);
->>> +            }
->>> +        } else {
->>> +            memcpy(tr->data.p8, data, tr->size);
->>
->> I don't understand this direct memory access.
->>
->> Shouldn't this be handled by the FlatView and end as a subpage_t
->> leaf instead?
->>
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+---
+ include/qemu/base-arch-defs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thank you for the catch!
-In fact this is a leftover of handling MemoryTransaction's: https://lore.kernel.org/qemu-devel/20260205195824.2610192-14-ruslichenko.r@gmail.com/,
-which were used for RemotePort memory access in v1 patch series.
-
-In Xilinx tree, large access sizes are possible thanks to downstream patch: https://github.com/Xilinx/qemu/commit/063b379d47856e1e0f71f93974157b76d51a3106,
-which is not present in upstream.
-
-For Remote Port v2 series, switched to standard (read|write)_with_attrs to simplify things for now, so those need to be cleaned-up.
-
---
-BR,
-Ruslan
-
->> Doing some archeology to understand:
->> https://lore.kernel.org/qemu-devel/20170204115048.GM12995@toto/
-> 
-> I meant v3:
-> https://lore.kernel.org/qemu-devel/1493391576-29401-1-git-send-email-fred.konrad@greensocs.com/
-> 
->>
->> Amusingly a related backtrace:
->> https://lore.kernel.org/qemu-devel/CAKmqyKOqbJ+-t0SeyZDzDM9RLEQX63WM3- wyJTbiMGHRKtHPYQ@mail.gmail.com/
->>
->>> +        }
->>> +    }
->>> +
->>> +    trace_remote_port_memory_master_rx_busaccess(
->>> +        rp_cmd_to_string(rsp->pkt->hdr.cmd), rsp->pkt->hdr.id,
->>> +        rsp->pkt->hdr.flags, rsp->pkt->hdr.dev, rsp->pkt- >busaccess.addr,
->>> +        rsp->pkt->busaccess.len, rsp->pkt->busaccess.attributes);
->>> +
->>> +    if (rp_timeout) {
->>> +        for (i = 0; i < ARRAY_SIZE(rp->dev_state[rp_dev].rsp_queue); i++) {
->>> +            if (rp->dev_state[rp_dev].rsp_queue[i].used &&
->>> +                rp->dev_state[rp_dev].rsp_queue[i].valid) {
->>> +                rp_resp_slot_done(rp, &rp- >dev_state[rp_dev].rsp_queue[i]);
->>> +            }
->>> +        }
->>> +    } else {
->>> +        rp_resp_slot_done(rp, rsp_slot);
->>> +    }
->>> +    rp_rsp_mutex_unlock(rp);
->>> +
->>> +    /*
->>> +     * For strongly ordered or transactions that don't allow Early Acking,
->>> +     * we need to drain the pending RP processing queue here. This is
->>> +     * because RP handles responses in parallel with normal requests so
->>> +     * they may get reordered. This becomes visible for example with reads
->>> +     * to read-to-clear registers that clear interrupts. Even though the
->>> +     * lowering of the interrupt-wires arrives to us before the read- resp,
->>> +     * we may handle the response before the wire update, resulting in
->>> +     * spurious interrupts.
->>> +     *
->>> +     * This has some room for optimization but for now we use the big hammer
->>> +     * and drain the entire qeueue.
->>> +     */
->>> +    rp_process(rp);
->>> +
->>> +    /* Reads are sync-points, roll the sync timer.  */
->>> +    rp_restart_sync_timer(rp);
->>> +    return ret;
->>> +}
->>> +
->>> +MemTxResult rp_mm_access(RemotePort *rp, uint32_t rp_dev,
->>> +                         struct rp_peer_state *peer,
->>> +                         RPMemoryTransaction *tr,
->>> +                         bool relative, uint64_t offset)
->>> +{
->>> +    return rp_mm_access_with_def_attr(rp, rp_dev, peer, tr, relative, offset,
->>> +                                      0);
->>> +}
->>> +
->>>   static MemTxResult rp_mm_read(void *opaque, hwaddr addr, uint64_t *data,
->>>                                    unsigned size, MemTxAttrs attrs)
->>>   {
->>> -    /* TBD */
->>> -    return MEMTX_OK;
->>> +    MemTxResult ret;
->>> +    RemotePortMap *map = opaque;
->>> +    RemotePortMemoryMaster *s = map->parent;
->>> +
->>> +    RPMemoryTransaction tr = {};
->>> +
->>> +    tr.opaque = map;
->>> +    tr.rw = false;
->>> +    tr.addr = addr;
->>> +    tr.size = size;
->>> +    tr.attr = attrs;
->>> +
->>> +    ret = rp_mm_access(s->rp, s->rp_dev, s->peer, &tr, s->relative,
->>> +                map->offset);
->>> +
->>> +    if (ret == MEMTX_OK) {
->>> +        *data = tr.data.u64;
->>> +    }
->>> +
->>> +    return ret;
->>>   }
->>>   static MemTxResult rp_mm_write(void *opaque, hwaddr addr, uint64_t data,
->>>                                     unsigned size, MemTxAttrs attrs)
->>>   {
->>> -    /* TBD */
->>> -    return MEMTX_OK;
->>> +    RemotePortMap *map = opaque;
->>> +    RemotePortMemoryMaster *s = map->parent;
->>> +
->>> +    RPMemoryTransaction tr = {};
->>> +
->>> +    tr.opaque = map;
->>> +    tr.rw = true;
->>> +    tr.addr = addr;
->>> +    tr.size = size;
->>> +    tr.attr = attrs;
->>> +    tr.data.u64 = data;
->>> +
->>> +    return rp_mm_access(s->rp, s->rp_dev, s->peer, &tr, s->relative,
->>> +                    map->offset);
->>>   }
->>>   static const MemoryRegionOps rp_ops_template = {
->>> diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
->>> index b4c9fa1528..6a6effdd19 100644
->>> --- a/hw/core/remote-port.c
->>> +++ b/hw/core/remote-port.c
->>> @@ -39,6 +39,11 @@ static void rp_event_read_and_process(RemotePort *s);
->>>   static void sync_timer_hit(void *opaque);
->>>   static void syncresp_timer_hit(void *opaque);
->>> +uint32_t rp_new_id(RemotePort *s)
->>> +{
->>> +    return qatomic_fetch_inc(&s->current_id);
->>> +}
-> 
+diff --git a/include/qemu/base-arch-defs.h b/include/qemu/base-arch-defs.h
+index 806ad8094a4..a6478c2d3ff 100644
+--- a/include/qemu/base-arch-defs.h
++++ b/include/qemu/base-arch-defs.h
+@@ -41,7 +41,7 @@ enum {
+     QEMU_ARCH_AVR =         QEMU_ARCH_BIT(SYS_EMU_TARGET_AVR),
+     QEMU_ARCH_HEXAGON =     QEMU_ARCH_BIT(SYS_EMU_TARGET_HEXAGON),
+     QEMU_ARCH_LOONGARCH =   QEMU_ARCH_BIT(SYS_EMU_TARGET_LOONGARCH64),
+-    QEMU_ARCH_ALL =         UINT32_MAX,
++    QEMU_ARCH_ALL =         QEMU_ARCH_BIT(SYS_EMU_TARGET__MAX) - 1,
+ };
+ 
+ QEMU_BUILD_BUG_ON(SYS_EMU_TARGET__MAX > 32);
+-- 
+2.55.0.windows.3
 
 

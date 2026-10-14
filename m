@@ -4,117 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88700CC6B1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AC68CC6B1D
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 10:26:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvZJ-0000yY-S0; Wed, 14 Oct 2026 05:46:42 -0400
+	id 1xGwAd-0001GS-3v; Wed, 14 Oct 2026 06:25:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvYK-0007eW-6d
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:45:43 -0400
-Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvYG-0002Yw-DQ
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:45:39 -0400
-Received: by mail-dl1-x122a.google.com with SMTP id
- a92af1059eb24-1419d3416ceso1196626c88.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:45:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xGwAa-0001Fd-Az
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 06:25:13 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xGwAW-0006ei-4e
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 06:25:10 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69E6dMEp3103929
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 10:25:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ zQHXFqL1YaKMQAAXiXei3wUvfurLP9yTfTV0PqMA474=; b=Tvqx2jDjnqT0Ma7X
+ MNzvcwTO0oipEctZ+Vd/cs223Lk9EvmSafYh/CmsR9/UoduVZ+zSu6ThGl7mGRkN
+ pfCDagaoNQxTREcsIDfF6+xXrz+FW3+FUFVMB1S7S3LmrwC4TPMJDlbp37sKOagz
+ mpDYPnoHmbViIwTX44Qut8F0T57tJ9YyEyXJsdeiyguDQs0p1SLwb943b4AaS7ev
+ sZdhgbLGSO5deHKyRA7bcwzfgoUegD6ZB2iqi7Ii1/fUjcUTtNlI6dRcAgoLEnPI
+ 7viVAtFZJzpGyIF5jjyhBV5jVpEG/ya97wdzgxM+6EbM09zt/s+tRRUUhiQwKGMN
+ f/BPOw==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h9wgt2fbv-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 10:25:01 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-93e46c120dfso22775485a.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 03:25:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791971134; x=1792575934; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=47rkJyHTHaoX94n5mXjj187II58O48Rz7ARv90xXfM0=;
- b=ONtSK1PeuUDT4UL24kOqydC8AucdycHLbBv5rqEnzcHHzdIMT85fMSx0eV3xW95yzF
- 1w6hr1dT0aXRzVOKYNx76+L4bhgNizVjfe1m9O7946GIpK1kkGN+tH54kvzuSpJD3T0Q
- A0bPTBsAHyTZCsf1Qb/60YSNzYpBEilGkHDiIyMZKt6F9MY51I4rTrdcSkD/noXvyRsu
- 0OVoXyHitUhSKG6cWIoD0FWtRi+FxZB9aPisEovQqyEhPIOd3w6iN6KRt/OMn1Lr7KNe
- zaf6XMzjybqP0RZHsWkZ0GHZ9UZcThJLkQh94dDs7X0W+W+cYo6l0gUrBTjqp5xwXiy3
- apvQ==
+ d=oss.qualcomm.com; s=google; t=1791973501; x=1792578301; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=zQHXFqL1YaKMQAAXiXei3wUvfurLP9yTfTV0PqMA474=;
+ b=ciINwLbkJEQkZsQGBa3PN+zbFvPPuGKZrXGLY+/sX0LpSPqQLA1KpAwz1DF8TnF39S
+ Rhw3dO4Yw4xVkvGTFsxcREkSRf3O5NG4Exkpeudy/2CcWV4YgzExE/mWl9aPN503Rec4
+ im+/9DOa5Ofv154Wfqxk9eOywhi8uzLNzZAvWnMvllHe5+GUWw2SzH+YQmjMfliE764i
+ w6CaMijfpSfS267AM5wVLJ+46KXFsrmB38qTa4X/pau2gSIFyWm+tLyQm4GOVF7xLo+r
+ WC6TCbyOLQOw6r8xN3js6SiN0b5aTt6Fn9sEiNcp09E+iUmPUg70VNFk9Ijf5Sk/Sw4F
+ J9Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791971134; x=1792575934;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=47rkJyHTHaoX94n5mXjj187II58O48Rz7ARv90xXfM0=;
- b=qXceDHgBWz8v3/0qDbg6TDk5weTKh5xvYtx62xgBWpXJAV8dQFSEeol2Fjh3FSsEjN
- 7Zcg2paNKesosRHYybJYJeObQn5lYilQrxVQM+hMwVBDkab3g8jdq3RKnuDZgj6P66yZ
- WDBmbfmb14+vRAnx5OpTzg3DcvJwg+ySDAZsAUP2upV9p2fIM0ft2yiPYunHQ1+VM2XD
- AWPV9LGvOz16YikMUUnbLxch+fiNHxLJTgCMBHC7YJl/UAf9bPpyGFpk1jXX2ZhWSSBL
- BmiRD1FmUc+bhV8dd51jUDo6/UYW1j3jVmyKG2JUP/GFyLf0+qE/vIG1znMYufptrecR
- XvLw==
+ d=1e100.net; s=20260707; t=1791973501; x=1792578301;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=zQHXFqL1YaKMQAAXiXei3wUvfurLP9yTfTV0PqMA474=;
+ b=qJRUZLMSyIP71WV5ZfEEvy3zUZatOyQKhstMD0N42q0CN07pM0ft/uJ+Q2zAIt9GWN
+ v7N7QeVoQ0g7faNaEEsWLMS5//YqrTJu3jNfO2d8FURaax1icZLhsKpakItyBKK64sGl
+ PDiAj5P09xk7dVGiyt8C+Em/A5HnNUUYL8fLJHotJRPUGVs9HZzfoCaykh7W2w0VKPOe
+ UQiCg3CPqXV/HmurDdtZ+mxWfTcv4xOj8x8mBz/kV0en6za2V6GD8kPg0aBO6GrQ2wXq
+ kpQKDOtKW+ODdbn3bH0F2unPRmDiTojs+sdKm5Qyhi2nwDgzsWI4d4l7fLL1I6xGDWfR
+ 5vQA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwBkmBNVyoGkz0yiC8xqLeVi4UPkG1e5H7UT26SgbFnbLN3AASWewrTOaVb6RvM0EregmYbtQCVGw==@nongnu.org
-X-Gm-Message-State: AFq9FYKCdh+IhvvU8WQCDW4qDoLLlumASB3qbbmEA1JYOIQTNbyJQ6q1
- UfVADty0OxGQZUBWp5PEvpkhsbg/06NzpGODiVD4G2+3IlF1ArObHYNk1LrDkmGisUA=
-X-Gm-Gg: AYBFou371dpVnFobDQgiLbSHSjrYh1Nkocujmj/u2mz+rQyQ5hb3+Wb2vYWzRh69gCe
- RsNWGQdWbcr4s+x0e/6pI3Ly5kmXmUA0nwTFqaWJDqtzPGziJDU82y7y0qgIas6rL8lpd+UUii2
- KWAGQA84RZBW3o5mP6G14FmHhwn+KAIoXpi+rnLxjDrWiMKliWMDCl4kxNXtjxGNUAhIWbGKVse
- JP1J5XgAV2uYZyj/NNmaNPuCRi2NxOvoHNa8FDVSiB8zEJoy1XW4+F7d3ko+ZvRftWPZATVjp84
- 1McOisodwtvk1qWuAgEm4EjMJpRRnlB5ZePaibJfgdCfln3M0FS3XdSf3+MgFKcb3Q+nZEHcsSF
- 2NavQ/hwcXsWRBdH1PDyJM7LuJ+gF7h69p0duX9uHTYBHXMisS7JVnKtEY27PrnWmw0jshYXWxx
- B1MzxaPNP3XTJrQJVBl1JTOQ7gDHZJF/BmNsEREE9We1EPOhREMcqMxlZCz5si/y6bhK7bcAboD
- IKBld+6HkVqd6SUOw==
-X-Received: by 2002:a05:7022:1582:b0:143:298e:913d with SMTP id
- a92af1059eb24-16a63b2edc7mr29904960c88.47.1791971134432; 
- Wed, 14 Oct 2026 02:45:34 -0700 (PDT)
-Received: from DESKTOP-Q716RM7 ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.45.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:45:33 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair.francis@wdc.com>,
- Cornelia Huck <cohuck@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Philippe Mathieu-Daude <philmd@mailo.com>, Eric Blake <eblake@redhat.com>,
- Eric Farman <farman@linux.ibm.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-s390x@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>,
- David Hildenbrand <david@kernel.org>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Alexander Bulekov <alxndr@bu.edu>, Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Fabiano Rosas <farosas@suse.de>,
- Song Gao <17746591750@163.com>, Fam Zheng <fam@euphon.net>,
- Markus Armbruster <armbru@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Chao Liu <chao.liu@processmission.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Darren Kenny <darren.kenny@oracle.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Stafford Horne <shorne@gmail.com>
-Subject: [PATCH 34/34] qdev: Handle device alias ambiguous under multi-target
- qemu
-Date: Wed, 14 Oct 2026 17:41:49 +0800
-Message-ID: <20261014094224.1976-19-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.55.0.windows.3
-In-Reply-To: <20261014094224.1976-1-luoyonggang@gmail.com>
-References: <20261014094224.1976-1-luoyonggang@gmail.com>
+ AKwUvBzw/iCFquUuSSVlrbQuzcTOYLMicKNkZbLx2UI8hwzXLyu7CxaCQjtAPCS/OKLYXpOoicZ+t4sSVA==@nongnu.org
+X-Gm-Message-State: AFq9FYI5aaW4Yr6RcPAehy3oB/DD2Vs43s3WM+NMsqpjZt4Vw3mhprmM
+ 0+rM5igmi8cGOqiGuwFOh7XKhw1frKfsNglU6ZqemlrSXsqcZlQm8lmuk+YiUT7oPFmUSnz9lDW
+ +AtlUdKtYxf8QFJhhPseWJpuSrIZPJXaM+eRhQtaKdSlAWB+sUoBjDMg=
+X-Gm-Gg: AYBFou0A428Tcm2g4GoJSdxEsBPai3v6zpR4vrPY4fPSdECBYhxlic9X61fmDmY257/
+ bZZ4GGgUH6pMZ3sPNKdMqiZwfA2lQoqtLMRfcV7NGQRqVTD3hbXCD4Abj4L5yBHv8U+V4v0upHM
+ HZAScxiwDW85zmIMTAt+BfTeAf83A4+SdGC1WAjCSCrZ9vqBOqbpoR94EJOp4AtC4T4ysbRwQjR
+ i4pKp9xaOjb4O/Unr9J2akU0IfAfxoTZp7y9NEA+WNNe/g83Pkldb+WyzUTUO+jrTDoXXtPuRDG
+ Li+zvxoSy76QhSkoFx6NI2udAbC5V7B6sNdu5qzmtjmTkQ2FhOTUhKR8ijNWyp9evdojtBV+vRt
+ Ci3q5tSuztl0zhtoBNbAMCQpz6bitdbAmtw==
+X-Received: by 2002:a05:620a:2691:b0:93b:d7a2:dd2c with SMTP id
+ af79cd13be357-93ebd2823e2mr2344806685a.60.1791973500857; 
+ Wed, 14 Oct 2026 03:25:00 -0700 (PDT)
+X-Received: by 2002:a05:620a:2691:b0:93b:d7a2:dd2c with SMTP id
+ af79cd13be357-93ebd2823e2mr2344801685a.60.1791973500323; 
+ Wed, 14 Oct 2026 03:25:00 -0700 (PDT)
+Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a19c8244edsm263631425e9.2.2026.10.14.03.24.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 14 Oct 2026 03:24:59 -0700 (PDT)
+Message-ID: <e09a64d3-7632-4f90-bd69-0c6097f8cd78@oss.qualcomm.com>
+Date: Wed, 14 Oct 2026 12:24:57 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122a;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/34] qapi: add missing Linux user-mode targets to
+ EmuTarget
+Content-Language: en-US
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-s390x@nongnu.org, Song Gao <17746591750@163.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Eric Farman <farman@linux.ibm.com>, Brian Cain
+ <brian.cain@oss.qualcomm.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stafford Horne <shorne@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Weiwei Li <liwei1518@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ David Hildenbrand <david@kernel.org>, Laurent Vivier <laurent@vivier.eu>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Fam Zheng <fam@euphon.net>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-arm@nongnu.org,
+ Chao Liu <chao.liu@processmission.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+References: <20261014093152.834-1-luoyonggang@gmail.com>
+ <20261014093152.834-6-luoyonggang@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20261014093152.834-6-luoyonggang@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE0MDA0MSBTYWx0ZWRfX0dUWjQUatuOd
+ BPUJTIO+3LrQAhPSlHVjI9wIZosmXBhvtW7LWhdqfD9RHoi6NcRvG74Yq8uDcDf2v1LRcaUnuI3
+ tOyu4/4bToEzYuwCsplXRgK8pTWExcErmkwXoWFO1u3ue/ypNu6g92HaYqwW6CkzIcjYoc3DrR1
+ F4azIQk0Tg4Ul01sXmoJS/nF9OLDO0SA5oL8qP2sKUd4/Ox/zNf73gjF1GQs/KXPuAtZ4dG+5y0
+ wNLc+sjS/1YhVBQjnZf0JFm4Z/V7d+YW5VoMjD01X83ZrXKMHLToB1+bJkA1npVjlihU5quSz6i
+ 2XHDuVSnD+uxDVboyPKMQgT2RlLq97r2Zd7JFhLKfe9tLwXtrIDxrys3yQ7FYH7ocAN3d15IWfl
+ +iYLYwHE0RkE/dJh+ZTt+Un9qYUUx3neMC4jKIWLgKvcKxZ+lOj5tckercUvXAUMlE726egicFC
+ sGH4dZpRm94PlfMw2nA==
+X-Authority-Analysis: v=2.4 cv=Jp1kP84C c=1 sm=1 tr=0 ts=6acf587d cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=pGLkceISAAAA:8 a=DWE_nywp-m4US2QJ7CsA:9 a=QEXdDO2ut3YA:10
+ a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-GUID: lPa7LN8uoVXZPhdBO2kYQnxh03Rrh_VE
+X-Proofpoint-ORIG-GUID: lPa7LN8uoVXZPhdBO2kYQnxh03Rrh_VE
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE0MDA0MSBTYWx0ZWRfX83rLzHSa1DwN
+ WHc2aboH3lYDPIIBQyqkEg/HYPqyFnB2Jxmj+jTEcWoYDlJ2CfUV3npiKl4akF3wfhKkxkekZeo
+ Nfgrni7qMuYpfT4M4xDl9eXK0WZ5s98=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-13_01,2026-10-09_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 suspectscore=0 lowpriorityscore=0 clxscore=1015 spamscore=0
+ priorityscore=1501 bulkscore=0 adultscore=0 impostorscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610140041
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,158 +180,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For example:
+On 14/10/26 11:31, Yonggang Luo wrote:
+> This usermode targets:
+> aarch64_be
+> armeb
+> microblazeel
+> mipsn32
+> mipsn32el
+> ppc64le
+> sparc32plus
+> are not in machine.json
+> 
+> This is a prepare for directly using TARGET_ARCH_VARIANT latter.
+> 
+> Also get target-info.c to be compatible with future TARGET_ARCH_VARIANT only usage.
+> So that we can define TARGET_ARCH_VARIANT to target_name directly
+> 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>   include/qemu/base-arch-defs.h | 13 +++++++++++++
+>   qapi/machine.json             | 25 +++++++++++++------------
+>   target-info.c                 | 26 +++++++++-----------------
+>   3 files changed, 35 insertions(+), 29 deletions(-)
 
-./qemu-system -device virtio-blk,help
 
-will raise the following error:
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index 07fac4f0764..a3d6e08a847 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -15,11 +15,10 @@
+>   
+>   ##
+>   # @EmuTarget:
+> -#     The comprehensive enumeration of QEMU system emulation
+> -#     ("softmmu") targets.  Run "./configure --help" in the project
+> -#     root directory, and look for the \*-softmmu targets near the
+> -#     "--target-list" option.  The individual target constants are not
+> -#     documented here, for the time being.
+> +#     The comprehensive enumeration of QEMU system and user-mode
+> +#     emulation targets.  Run "./configure --help" in the project root
+> +#     directory, and look for the targets near the "--target-list"
+> +#     option.  Individual target constants are not documented here.
+>   #
+>   # @rx: since 5.0
+>   #
+> @@ -30,17 +29,19 @@
+>   # @hexagon: since 11.0
+>   #
+>   # .. note:: The resulting QMP strings can be appended to the
+> -#    "qemu-system-" prefix to produce the corresponding QEMU
+> -#    executable name.  This is true even for "qemu-system-x86_64".
+> +#    "qemu-system-" prefix for system emulation, or the "qemu-" prefix
+> +#    for user-mode emulation, to produce the corresponding executable
+> +#    name, where that target supports the respective emulation mode.
+>   #
+>   # Since: 3.0
+>   ##
+>   { 'enum' : 'EmuTarget',
+> -  'data' : [ 'aarch64', 'alpha', 'arm', 'avr', 'hexagon', 'hppa', 'i386',
+> -             'loongarch64', 'm68k', 'microblaze', 'mips', 'mips64',
+> -             'mips64el', 'mipsel', 'or1k', 'ppc',
+> -             'ppc64', 'riscv32', 'riscv64', 'rx', 's390x', 'sh4',
+> -             'sh4eb', 'sparc', 'sparc64', 'tricore',
+> +  'data' : [ 'aarch64', 'aarch64_be', 'alpha', 'arm', 'armeb', 'avr',
+> +             'hexagon', 'hppa', 'i386', 'loongarch64', 'm68k', 'microblaze',
+> +             'microblazeel', 'mips', 'mips64', 'mips64el', 'mipsel',
+> +             'mipsn32', 'mipsn32el', 'or1k', 'ppc', 'ppc64', 'ppc64le',
+> +             'riscv32', 'riscv64', 'rx', 's390x', 'sh4', 'sh4eb', 'sparc',
+> +             'sparc32plus', 'sparc64', 'tricore',
+>                'x86_64', 'xtensa', 'xtensaeb' ] }
 
-qemu-system: -device virtio-blk,help: Device alias 'virtio-blk' is ambiguous without a selected machine
-Specify -machine <arch>-<machine-name> or an unambiguous <machine-name>, or use a concrete device name:
-  virtio-blk-device
-  virtio-blk-pci
+'machine.json' is for system binaries.
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- include/monitor/qdev.h |  7 ++++++
- system/qdev-monitor.c  | 52 ++++++++++++++++++++++++++++++++++++++----
- system/vl.c            |  7 +++---
- 3 files changed, 58 insertions(+), 8 deletions(-)
+If we want to expose these QAPI types to the user binaries
+(I'm not sure we want...) then this declaration block should
+be moved in another {qapi}.json file. QAPI types are versioned,
+so we'd need some "  @aarch64_be   # Since v13.0" comments.
 
-diff --git a/include/monitor/qdev.h b/include/monitor/qdev.h
-index 8f7e2f616cf..92dd4e35351 100644
---- a/include/monitor/qdev.h
-+++ b/include/monitor/qdev.h
-@@ -10,6 +10,13 @@ void hmp_info_qtree(MonitorHMP *hmp, const QDict *qdict);
- void hmp_info_qdm(MonitorHMP *hmp, const QDict *qdict);
- void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp);
- 
-+/**
-+ * qdev_device_help: print device listing or property help when requested.
-+ * @opts: device options
-+ *
-+ * Returns: 0 if no help was requested, 1 if handled, or -1 if an ambiguous
-+ * alias prevented help. Other property-help errors retain the handled result.
-+ */
- int qdev_device_help(QemuOpts *opts);
- DeviceState *qdev_device_add(QemuOpts *opts, Error **errp);
- DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
-index b3ca619f3c9..8ab19568b0d 100644
---- a/system/qdev-monitor.c
-+++ b/system/qdev-monitor.c
-@@ -24,6 +24,8 @@
- #include "monitor/monitor.h"
- #include "monitor/qdev.h"
- #include "qemu/base-arch-defs.h"
-+#include "qemu/target-info.h"
-+#include "qemu/target-info-def.h"
- #include "system/runstate.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-qdev.h"
-@@ -217,10 +219,18 @@ static void qdev_print_devinfos(bool show_no_user)
-     g_slist_free(list);
- }
- 
--static const char *find_typename_by_alias(const char *alias)
-+static const char *find_typename_by_alias(const char *alias, Error **errp)
- {
-+    ERRP_GUARD();
-+    bool unselected = target_combined_binary() && !target_info();
-+    const char *match = NULL;
-+    g_autoptr(GString) hints = NULL;
-+    unsigned count = 0;
-     int i;
- 
-+    if (unselected) {
-+        hints = g_string_new(NULL);
-+    }
-     for (i = 0; qdev_alias_table[i].alias; i++) {
-         if (qdev_alias_table[i].arch_mask &&
-             !qemu_arch_available(qdev_alias_table[i].arch_mask)) {
-@@ -228,11 +238,32 @@ static const char *find_typename_by_alias(const char *alias)
-         }
- 
-         if (strcmp(qdev_alias_table[i].alias, alias) == 0) {
--            return qdev_alias_table[i].typename;
-+            const char *typename = qdev_alias_table[i].typename;
-+
-+            if (!unselected) {
-+                return typename;
-+            }
-+            ObjectClass *oc = module_object_class_by_name(typename);
-+
-+            if (!object_class_dynamic_cast(oc, TYPE_DEVICE) ||
-+                object_class_is_abstract(oc)) {
-+                continue;
-+            }
-+            match = typename;
-+            count++;
-+            g_string_append_printf(hints, "  %s\n", typename);
-         }
-     }
- 
--    return NULL;
-+    if (count > 1) {
-+        error_setg(errp, "Device alias '%s' is ambiguous without a "
-+                   "selected machine", alias);
-+        error_append_hint(errp, "Specify -machine <arch>-<machine-name> or "
-+                          "an unambiguous <machine-name>, or use a "
-+                          "concrete device name:\n%s", hints->str);
-+        return NULL;
-+    }
-+    return match;
- }
- 
- static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
-@@ -243,7 +274,13 @@ static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
- 
-     oc = module_object_class_by_name(*driver);
-     if (!oc) {
--        const char *typename = find_typename_by_alias(*driver);
-+        Error *local_err = NULL;
-+        const char *typename = find_typename_by_alias(*driver, &local_err);
-+
-+        if (local_err) {
-+            error_propagate(errp, local_err);
-+            return NULL;
-+        }
- 
-         if (typename) {
-             *driver = typename;
-@@ -308,7 +345,12 @@ int qdev_device_help(QemuOpts *opts)
-     }
- 
-     if (!object_class_by_name(driver)) {
--        const char *typename = find_typename_by_alias(driver);
-+        const char *typename = find_typename_by_alias(driver, &local_err);
-+
-+        if (local_err) {
-+            error_report_err(local_err);
-+            return -1;
-+        }
- 
-         if (typename) {
-             driver = typename;
-diff --git a/system/vl.c b/system/vl.c
-index bad13393f24..068fa5e12ad 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -2795,9 +2795,10 @@ static void qemu_process_help_options(void)
-         exit(0);
-     }
- 
--    if (qemu_opts_foreach(qemu_find_opts("device"),
--                          device_help_func, NULL, NULL)) {
--        exit(0);
-+    int device_help = qemu_opts_foreach(qemu_find_opts("device"),
-+                                      device_help_func, NULL, NULL);
-+    if (device_help) {
-+        exit(device_help < 0 ? EXIT_FAILURE : EXIT_SUCCESS);
-     }
- 
-     /* -L help lists the data directories and exits. */
--- 
-2.55.0.windows.3
-
+Anyway I doubt we want to alter EmuTarget, I'd rather let it
+die as a legacy field, and expose {arch, wordsize, endianness}
+to management layer if this is important to consume.
 

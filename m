@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3ACCC6B2A
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:33:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C41CC6B1A
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:33:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvLe-0002Gv-E7; Wed, 14 Oct 2026 05:32:35 -0400
+	id 1xGvLw-0002Mw-Ih; Wed, 14 Oct 2026 05:32:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvLb-0002G4-FP
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:31 -0400
-Received: from mail-dl1-x1231.google.com ([2607:f8b0:4864:20::1231])
+ id 1xGvLp-0002L3-8P
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:48 -0400
+Received: from mail-dl1-x1235.google.com ([2607:f8b0:4864:20::1235])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvLZ-0000Ks-TA
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:31 -0400
-Received: by mail-dl1-x1231.google.com with SMTP id
- a92af1059eb24-15dd124bbe7so7346040c88.1
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:32:28 -0700 (PDT)
+ id 1xGvLk-0000MI-TT
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:32:43 -0400
+Received: by mail-dl1-x1235.google.com with SMTP id
+ a92af1059eb24-15354aa70e8so1827644c88.1
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:32:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791970347; x=1792575147; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791970357; x=1792575157; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Ujyr7Jx7RdrtwSaEiPldTVT9GggNzUt/ZtswxjPgnhE=;
- b=RRajW/42VlApdrxrDCRkHamvfRHd50yhHuu73+ZMj2rqYMwoUsAOoXeuxi4/4FDNLs
- n1rXgohJwDuevzEKzq9ANEg58WhqTHIG36WeoGiC+083LEPEs/NZdL3iz7kO4atZwx+u
- 98Zfd+37PxwHjd1/3abhU2FUdUMysMsroTp0/3K+/D1GJqUKTiYWoV8F3OQCjhyipb/W
- JY4OxvintrIOHqFfMDdZqOpJoE0tRptGyTF9fig9GLuBJNch0NrcJkX7bSnu/ok1brFJ
- dNIT9zpcddBsbnuCIL+fwbcBxOI25f52ck4mJVgCnghUgX2/3rjIpiHuTOeQ2oVXYhrE
- HNsQ==
+ bh=kvgVTHS4oUEIV4ErChzaNlj22uaMiM4VXxQneYOKsCI=;
+ b=oTakKepTPXDeXA8+VrSHF1w6Sbdp1/mi+8uPLZGnt9G7EJkHSLLBxgJgKOYsIcVq47
+ QJhNdGgL5kfgvLkHKyBhB0eXbkAWCziEk2VhI3cG6CO4IHK3d8i8mi23T4uvR9AKOqTe
+ fjL0jBW87CYienVCZHpn+M0tJzhvnDXRBG2O2XBAQIw5xbiiesr/29CxOvRSBzKu99hW
+ +WP45j99LLmqq1YxinId1zlnu1790u3kzbdW16tB+1auy6A0ukmMil61IzdGpKMmi9kD
+ DfYRGF8qIdmsOB4sazeOb7gBQOj4qo9urIUF9QzRRK+8QQTh+NT2TK6W2R2k5ekjpUGM
+ luYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791970347; x=1792575147;
+ d=1e100.net; s=20260707; t=1791970357; x=1792575157;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Ujyr7Jx7RdrtwSaEiPldTVT9GggNzUt/ZtswxjPgnhE=;
- b=QSMToju4QqQpOMq0ZL1nXNp4A8LBYd7Ogi/x73Z75ufViCleCU3GWdVasKJhgsg+rJ
- 7W6uXmvHrtEcm/uLBUcfSrf6GCP5wW6RzB9Y5GqmvKN1zAdsGGMHGqvZeQrX6m4OVnND
- /LXx9odzU9c4CulkDc/yH3ltneCmYH9QBo/nENCrhd9UK3lJG7XpReuPdmH9PpW2mSIH
- EuFpRIsluSNOTD2C9NDFeMJZe1u6Ts4UuNakaqAnzaUrIqVB3oB1ukC3LpqY12i4c6nz
- ssE5M8qevKFPhE66ouUuYkvc2Tgn/YY/yicm6+90Q8hIiqjbMoCpLOj83nxobaKWYnhQ
- RCHg==
+ bh=kvgVTHS4oUEIV4ErChzaNlj22uaMiM4VXxQneYOKsCI=;
+ b=15KgoCwDUPuIJ5olyMTl0vjlzRl/ji6PiUcvbNpl6hT437TIJdfFbAWOkxq5M8MG49
+ FYHJBGC6QkYyafYlGG4n/UD5olef3EY5HBhIcD2Q4Ez8viIo2/ZX9MrYhjxiWK3bI0e9
+ jKm3xOojLM9A/tvoJwY7+OgFdzYoFRjJo13z14mIE+/uQwpVHw7kOL+0EHQC3HljZxos
+ 0Fn2A0Zs+EN4t1RakjCa51JP0Rhe0yxzeRONtfN2TDGDoggUUbS2eyKlJ/HrfdzsN9OO
+ U9gZ1SS30mQDWZ/kIDDr64PxC6/y1dZj2H93NVC2/EGjgx+blbnN+eoE1stZrhJSFoep
+ oRXw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw1MX/nNkCvm2/OfmVLztDmscrIa3Vc21Djo46C/Qw5DatpNRyKPcYpMDTF1+ySDmGY+jQuBsVUxg==@nongnu.org
-X-Gm-Message-State: AFq9FYILXAkFwfM9ad/t5X7BWnQrQWVFC/TfxARNyNP0AWJBczabcHyq
- lzG7Xxqd/JrPSaYxpm9N9e4u3TW+bwMOsnY2Gw0AwxgrFqQVdzpVANgt
-X-Gm-Gg: AYBFou1v0W4biLnxGVfjrxqiIgHK8fCCL61HZC/1fOugkm0pz2bITwe6jbQeqo6QyA8
- nC+GsY84okSSic2q8gUDIfNmXP2+RKREEOWMA9db/IaKus8i3LRb5ABpFGdm9mEFTI6q0JGk1YH
- Mg2u1K5d5vFafNqTONtKPVM5VxUecQ7X7gbFHI5V0PK/He4xVlP3WhCOxSSSO2Gnl5sW/M7k9Be
- yE2MD8DehOaLLew+amTuPeMPZtJ/KqyznQhIrUAX99Wp0b9P51gUw42vdIAcs6GfjX+w8Y0GsFJ
- 49rkAlQyu0jifyXo6sKIn1mSbU9H0nHGHohCKb4Zh4F5EsYHYQ0PIYjMiljXeiCz1vgHaJLEuah
- 7D8aUKytrC4HiyS5MHIwphacXPHoLgjDwTkL2JlYPev29vF6W9eR908muSWfWadEmgXQUjyqbhe
- /77VNeP+CilMxqMTx0ZAkFtTPtuaykmuHqDqh0XoEkAlryL25bPa7D1K26mBpaJliaperqx4hO7
- qdG6RqNArDs5b14TA==
-X-Received: by 2002:a05:701b:451c:20b0:14a:5d07:9b with SMTP id
- a92af1059eb24-16a5ea5d851mr19602319c88.28.1791970347413; 
- Wed, 14 Oct 2026 02:32:27 -0700 (PDT)
+ AKwUvBwldti8dVdXTttJNbXcf7+mP0z4xlkVE5yNI+30s9JOskfh+2S6p8Tzkfa3nHUBt0S1Z0CxBnQ4lg==@nongnu.org
+X-Gm-Message-State: AFq9FYInIsu4vKfJ7DCWvSgM/hbCJrsG6BHIq9FqU3ouGToZx4obsMwt
+ A3stt8hFq139/U0nYW7KgGtZkhOCeJ8P8orYkBObSJjBgST8ruDGNHNj
+X-Gm-Gg: AYBFou0GLEd9pLR5noo6rjNdAk1WCa8Um6zXn+DUixEUIee6CAYC0x08v9c+1dbCYe1
+ FkD484EEFO9oVXjrZx9LG+cjbBMv8t86yHxG1vG55aDJ59BLcKHaQZ+FOqiKqZKolFQ2bMuu9Gc
+ ace90UT2y+hTYPEXXuBLhdVBdBi4gpJE4FGOVmNIRYiUWQFon/rXOIcUH7DrthN+BlU+TVsYdsN
+ buZrvALfqjqbt6Giy34lNnOzwBVN8MWMJcK6jo+0p9bVQiVn+TmF+JVNP6zy4SeIj3r2Dv9mgnH
+ dbKhN8Qs3c8agM7XNsVSzeu9207azoeeEnp6ye2QOTqh4AJn80XlRJ13YUEp3EGFJD35XhQZiYu
+ VMYP3dv36u8B4J7HvdMS0OhDYCs/dE5dlAV+BDg53/4b861eBZF/nk9tq1+svfkbcjPCiJg61m/
+ TQnOnle4/uuth5KP7aC/7lh4ccL7Wn0HqRuPisHiK6OXM9slGVXiq88c2xgKeIkD8UVOHcvNUUp
+ lZyRoZhYXGmvoJF6A==
+X-Received: by 2002:a05:7022:3c0b:b0:17c:a0c5:8c9a with SMTP id
+ a92af1059eb24-17ca0c58cf0mr3156015c88.42.1791970356809; 
+ Wed, 14 Oct 2026 02:32:36 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.32.19
+ a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.32.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:32:26 -0700 (PDT)
+ Wed, 14 Oct 2026 02:32:36 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
@@ -97,23 +97,24 @@ Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PATCH 02/34] qemu: Use SYS_EMU_TARGET__MAX to define QEMU_ARCH_ALL
-Date: Wed, 14 Oct 2026 17:31:12 +0800
-Message-ID: <20261014093152.834-3-luoyonggang@gmail.com>
+Subject: [PATCH 03/34] qemu: increase width of QEMU_ARCH_* masks enums to be
+ 64 bits
+Date: Wed, 14 Oct 2026 17:31:13 +0800
+Message-ID: <20261014093152.834-4-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014093152.834-1-luoyonggang@gmail.com>
 References: <20261014093152.834-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1231;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1231.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1235;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1235.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,26 +130,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is more precise, so we can iterate all target_arch with QEMU_ARCH_ALL
+SYS_EMU_TARGET__MAX is already 29, nearing the 32-target limit.
+So increase width of QEMU_ARCH_* masks enums and related types;
+So that we can add needed Linux user-mode targets to EmuTarget;
+And also enabled the possibility add more system-mode targets in future.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/base-arch-defs.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/qemu/base-arch-defs.h  | 7 ++++---
+ monitor/monitor-hmp-internal.h | 2 +-
+ system/arch_init.c             | 4 ++--
+ system/qdev-monitor.c          | 2 +-
+ system/vl.c                    | 2 +-
+ 5 files changed, 9 insertions(+), 8 deletions(-)
 
 diff --git a/include/qemu/base-arch-defs.h b/include/qemu/base-arch-defs.h
-index 806ad8094a4..a6478c2d3ff 100644
+index a6478c2d3ff..f2e3bc54203 100644
 --- a/include/qemu/base-arch-defs.h
 +++ b/include/qemu/base-arch-defs.h
-@@ -41,7 +41,7 @@ enum {
-     QEMU_ARCH_AVR =         QEMU_ARCH_BIT(SYS_EMU_TARGET_AVR),
-     QEMU_ARCH_HEXAGON =     QEMU_ARCH_BIT(SYS_EMU_TARGET_HEXAGON),
-     QEMU_ARCH_LOONGARCH =   QEMU_ARCH_BIT(SYS_EMU_TARGET_LOONGARCH64),
--    QEMU_ARCH_ALL =         UINT32_MAX,
-+    QEMU_ARCH_ALL =         QEMU_ARCH_BIT(SYS_EMU_TARGET__MAX) - 1,
+@@ -9,7 +9,7 @@
+ 
+ #include "qapi/qapi-types-machine.h"
+ 
+-#define QEMU_ARCH_BIT(target) (1UL << (target))
++#define QEMU_ARCH_BIT(target) (1ULL << (target))
+ 
+ enum {
+     QEMU_ARCH_ALPHA =       QEMU_ARCH_BIT(SYS_EMU_TARGET_ALPHA),
+@@ -44,7 +44,8 @@ enum {
+     QEMU_ARCH_ALL =         QEMU_ARCH_BIT(SYS_EMU_TARGET__MAX) - 1,
  };
  
- QEMU_BUILD_BUG_ON(SYS_EMU_TARGET__MAX > 32);
+-QEMU_BUILD_BUG_ON(SYS_EMU_TARGET__MAX > 32);
++/* Keep target-specific masks within qemu_opt_set_number()'s int64_t range. */
++QEMU_BUILD_BUG_ON(SYS_EMU_TARGET__MAX > 63);
+ 
+ /**
+  * qemu_arch_available:
+@@ -52,6 +53,6 @@ QEMU_BUILD_BUG_ON(SYS_EMU_TARGET__MAX > 32);
+  *
+  * Return whether the current target architecture is contained in @arch_bitmask
+  */
+-bool qemu_arch_available(uint32_t arch_bitmask);
++bool qemu_arch_available(uint64_t arch_bitmask);
+ 
+ #endif
+diff --git a/monitor/monitor-hmp-internal.h b/monitor/monitor-hmp-internal.h
+index 4e2430551ab..b61d2717076 100644
+--- a/monitor/monitor-hmp-internal.h
++++ b/monitor/monitor-hmp-internal.h
+@@ -69,7 +69,7 @@ typedef struct HMPCommand {
+      *     Allow to restrict the command for a particular set of
+      *     target architectures.
+      */
+-    uint32_t arch_bitmask;
++    uint64_t arch_bitmask;
+     bool coroutine;
+ } HMPCommand;
+ 
+diff --git a/system/arch_init.c b/system/arch_init.c
+index 1ad2f3d6f78..b8362b12a6d 100644
+--- a/system/arch_init.c
++++ b/system/arch_init.c
+@@ -26,7 +26,7 @@
+ #include "qemu/bitops.h"
+ #include "qemu/target-info-qapi.h"
+ 
+-bool qemu_arch_available(uint32_t arch_bitmask)
++bool qemu_arch_available(uint64_t arch_bitmask)
+ {
+-    return extract32(arch_bitmask, target_arch(), 1);
++    return extract64(arch_bitmask, target_arch(), 1);
+ }
+diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
+index 8185822daa7..b3ca619f3c9 100644
+--- a/system/qdev-monitor.c
++++ b/system/qdev-monitor.c
+@@ -54,7 +54,7 @@ typedef struct QDevAlias
+ {
+     const char *typename;
+     const char *alias;
+-    uint32_t arch_mask;
++    uint64_t arch_mask;
+ } QDevAlias;
+ 
+ /* default virtio transport per architecture */
+diff --git a/system/vl.c b/system/vl.c
+index 468a9fc247a..fbe580746d3 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -928,7 +928,7 @@ typedef struct QEMUOption {
+     const char *name;
+     int flags;
+     int index;
+-    uint32_t arch_mask;
++    uint64_t arch_mask;
+ } QEMUOption;
+ 
+ static const QEMUOption qemu_options[] = {
 -- 
 2.55.0.windows.3
 

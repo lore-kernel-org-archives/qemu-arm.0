@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C747ECC6B1F
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:34:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBB9CC6B1F
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:34:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvMk-0003pU-5N; Wed, 14 Oct 2026 05:33:42 -0400
+	id 1xGvN2-0004Km-WB; Wed, 14 Oct 2026 05:34:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvMh-0003g8-Bw
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:39 -0400
-Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
+ id 1xGvN1-0004Ec-09
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:59 -0400
+Received: from mail-dl1-x122b.google.com ([2607:f8b0:4864:20::122b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvMf-0000Vr-Ay
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:39 -0400
-Received: by mail-dl1-x122f.google.com with SMTP id
- a92af1059eb24-141395927feso7368343c88.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:33:36 -0700 (PDT)
+ id 1xGvMz-0000Y7-1q
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:33:58 -0400
+Received: by mail-dl1-x122b.google.com with SMTP id
+ a92af1059eb24-16079d54c17so4958215c88.0
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:33:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791970416; x=1792575216; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791970436; x=1792575236; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=jFyMk/+YVZ0ocRUJE83NYvrijKAU06rfQuE3NqKtQGU=;
- b=Ni8RjBmr52RFhyLabbbmCE1son+i76vE44F6NJULjxREeOuYA+l6rUU2aMf/ByU1lr
- +Owg4KCQOE7JIAdkyqEJ1xOUA/3iE4xQGeAJzm60FpvWVjY68dHN3rYZmzAl68F9ocbx
- /pyjugTQk8acLvt4OREP+dc9gs7aNGi172zq3Q+rdheS66KlRTlHiNArCYQmHQa+Q5Ry
- QaaY5XZtf4uyXuUu6rIs1TF2I4JSoawIMfc6AGs7GiX528Jf2qh6ohOIviktpsJw6RDk
- YT40stw3UEGrgZfQteVmFRBEHeZXMPq0EAP+WiLCIcGmW7oW6wwqWdwT4CVsNQxEDXBF
- D1XQ==
+ bh=yB3NWO2pJlVWPSGtlDu3f8MOoC7RbZF39joZfz1c1og=;
+ b=mVYC+Ti1k+9o6cByT419DUh/KOz9tLGXc/2PSBVNdlImw4vaKMRdW9jqTWJOGEaMzv
+ putafJy8sTueT+LRqjDT7CmBlZXnACeExk09iTxGS4vjEJx4gH4C0bTFw+wOyQ7lJjCF
+ ZgV6PRRBRPPr2WCQzfvL2/i38sQsBtuzwlBEAufLnGpFOifxPh+QuME4Cdm/LBp6GiHP
+ 3MhC7qjhoipT5FytPQLF61Fjol1B8tIuEiArGegPncXX6BmabtP8lBHuTEU02rg9OcHP
+ AdnCW8pyQ1SxUg0gWOjiIXLucCVw2Dqs6FBkBbi7HoCdV9gz/31hG7fb0CN7MAAgPw5c
+ /SOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791970416; x=1792575216;
+ d=1e100.net; s=20260707; t=1791970436; x=1792575236;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=jFyMk/+YVZ0ocRUJE83NYvrijKAU06rfQuE3NqKtQGU=;
- b=GpfHVU/6HfalgrdHGknPIBehG5pZqiUJnhnTMsMt3mMcuRc2TdOjy95Iqc2CnzXkfH
- +zCKAmvGczxMMIvn7H5qXFYBEFkOmw+ZLD+TihjWbFQUDTq2ZkzjywXRs2So1Ta3nidM
- daDLBh3FdodnKfO68xOBnJCjVoaFqbuLb1KL642S9sngLbY5IO4KR+tTVOW/Quv8IyyI
- bZLS8J156sSEOyBzDm91kfgN8W1DyzM68B4cmbAGcyzoiF8RfBjx+rnr6xWaApc3Iq8g
- DYCcCGRYNJciQnT3n71Z6rML6QurIC+zzqubot7S8BUs2Z6OaQ7byEPcfrseR9UJ64cQ
- DLoA==
+ bh=yB3NWO2pJlVWPSGtlDu3f8MOoC7RbZF39joZfz1c1og=;
+ b=eQu+FtlYaYmMD02ciwwziWf2YlgoVMS9N/XqOUQPAF/tLQ5g+9gEHjs6Ni0bzRcEfk
+ VIKNTiM0hEoKV3oXJH3BvGXsTbt8QOYaP9JRW5cHUgAPSTSmIeiOZ264P7Lxmh/71m+r
+ zp2G+I+gIRLWjyHWdP6utpFlKobtxl20/S0ZzLbV67vSz5l805lk0ldQyG8GmhnqfY+j
+ emNl5igLIHqQsrzWS0sqmZMN4SIRtwwGlINMar97PdyYC46URTLjPcDpb2CuBYx4sXRd
+ cruCFjbSYViVEQVG17Hxcxcp95Boy5ZaBJttCxwl7K037J2pbklVWq6x+50OfxiHebqJ
+ LXrw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxBD97QoWXGA9MlkvuFU3rCiF+Oz99Vtbh+4zYGul3IVvqeadHja5arvp4793yRK1stBst652GBOA==@nongnu.org
-X-Gm-Message-State: AFq9FYJzzKMGNnmC9a3w513FZ4tklP8D9aF7mmQxg4NgW6Q820QaM4wP
- F6l+0QhoNy5ZBA/pGpATamqSeiN7BCZbOnMkvD2QDrCieuJN73L7YnL3
-X-Gm-Gg: AYBFou0VuFFtiyCrD+XIO5KEJ/zaf4cWazIiefAiZ1oOiTAyqTkskfum8gaRdgH7WSt
- k27F1ZJ8uUDaw+ORO/rmC4ob0l+aBsvzXXZn4ZPsj/GmcOEosCpZ887d3uLitpUfjBVlH7vU+rK
- vR8RU+nufRoTuMlI7I3fkQXwvU3NXMsCvWIiTpiBe0zZHavZ3ItsZo1mmp7l2UaXoeeo0u6xFym
- Ov56vAPvPWolCmMQVZpoI3Q7UA5BGNELRdUmEvyrvTBVwB4zABo6SrU2KZr1IGi6plwF3yt9dH/
- pItZkYxMWi4HKDBjvIOYuWLybB4haxVl7rJUHUC/z2qKqroessyECr6YsWxhxXEyDl057ZEcZd2
- 1dZ8XRrsNecVndKTAgIf6MiNDgZoCkML2jgMAHrypQ/wn4X2CnY5oCxqG5MWYeEQFcUGaZqPeqG
- awSa3NR+KM6WAMCFiGOgFEcJRcBjxtWImoaT8yAbrK4/d7xT8gGzll+0TSQOXFRT/7/kRopttU9
- E03cuQLbPWmPbydOg==
-X-Received: by 2002:a05:701b:2803:b0:16a:b995:dc7c with SMTP id
- a92af1059eb24-16ab995dd20mr21112448c88.21.1791970415751; 
- Wed, 14 Oct 2026 02:33:35 -0700 (PDT)
+ AKwUvBzq9Ugg7TKn/VpKFBMJubhTjngMzxEAjIrl7UuTk1J96iAAspf0ucEk5YH0QWCiUmG9YcGw+tktbQ==@nongnu.org
+X-Gm-Message-State: AFq9FYK2jQMYJppPpiTv6bfU5qKoOWCYKZ6+T5zRUCOxryuqYqtocS0A
+ Cv8uwQrNzwEiyGodw1WMK8ixhpKQEsiJQkrDYhbUhUzCElIpzkrnwZJI
+X-Gm-Gg: AYBFou2uzAcqAE/EvPqZ8wp+lytOxOx2kIxlRJ1LmPgAviYMvJp+fkKSaKlDqUwVjfS
+ DQl0MxzEj/3luCaI7U6nb7/Ir/WycuhJY01nJQHy9xnPdf8ogN5WhA4YvyYnBWyuwYfzQ1WlEhV
+ Io3PJZzT41kWa5Jey798QYqZJ9nUUgfsI5YR0zf8bKT20PBE+PhchphSiXkMrnG5ZoVf6KBrMN0
+ MOHWQlF9IKCee22pQuMlPvJmmw2GgxLn+uGLq71A+KYBY5p/kwScCwU9OWjamTaeRoVrM5ffzGL
+ Tg6xZpOowD8BXZrmTgRPbPshFSAPq67lHZzm5ZSJ2j8NHkqx5NsIQYEH75IaJH2dKrmzHXaWN0m
+ yZcz3y1/W8ooLZELIfxBK+5mclcGQ0IAbNTqYx+fGu380hpCP7B0ycRy35KoxYU0Qg7u45eFA2y
+ 3OKW4ciejsls97mbZh5twCW32Nq/5/qX87uFhGaO/jO+oXXgwnZnTeOs/Dso/reAYuJyJozkofo
+ tBQ/KGsDa2tIn3ieg==
+X-Received: by 2002:a05:7022:1706:b0:144:c122:6cc6 with SMTP id
+ a92af1059eb24-16a5ec48b8amr22398014c88.32.1791970435513; 
+ Wed, 14 Oct 2026 02:33:55 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.33.27
+ a92af1059eb24-1698de65af7sm48769303c88.0.2026.10.14.02.33.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:33:34 -0700 (PDT)
+ Wed, 14 Oct 2026 02:33:54 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
@@ -97,16 +97,17 @@ Cc: Eric Blake <eblake@redhat.com>, qemu-riscv@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PATCH 09/34] accel: register CPU parent for each target
-Date: Wed, 14 Oct 2026 17:31:19 +0800
-Message-ID: <20261014093152.834-10-luoyonggang@gmail.com>
+Subject: [PATCH 11/34] module: Add module_allow_all_arch for allow all modules
+ be loaded
+Date: Wed, 14 Oct 2026 17:31:21 +0800
+Message-ID: <20261014093152.834-12-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014093152.834-1-luoyonggang@gmail.com>
 References: <20261014093152.834-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122b;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,162 +130,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now we need use the prepared target-list to register different accel-$cpu_type
-parent QOM type. So that multi-target won't error missing parent for different
-accel for different arch.
-
-Also add a test for it in test-multi-target.c
+In multi-target qemu, we want all modules to be loaded without condition.
+So add this function for latter usage.
+Add this independent function for decouple only
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- accel/accel-common.c           |  6 ++----
- accel/accel-internal.h         |  1 +
- accel/accel-system.c           | 24 ++++++++++++++++++++++++
- accel/accel-user.c             |  7 +++++++
- tests/unit/test-multi-target.c | 15 +++++++++++++++
- 5 files changed, 49 insertions(+), 4 deletions(-)
+ include/qemu/module.h |  2 ++
+ util/module.c         | 10 +++++++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/accel/accel-common.c b/accel/accel-common.c
-index 00a400243f0..0f4e202d8f8 100644
---- a/accel/accel-common.c
-+++ b/accel/accel-common.c
-@@ -130,9 +130,9 @@ static const TypeInfo accel_types[] = {
+diff --git a/include/qemu/module.h b/include/qemu/module.h
+index fccf017bf9e..6268c3a8d75 100644
+--- a/include/qemu/module.h
++++ b/include/qemu/module.h
+@@ -100,6 +100,8 @@ int module_load(const char *prefix, const char *name, Error **errp);
+ int module_load_qom(const char *type, Error **errp);
+ void module_load_qom_all(void);
+ void module_allow_arch(const char *arch);
++/* Allow every arch-tagged module without selecting an architecture. */
++void module_allow_all_arch(void);
  
- DEFINE_TYPES(accel_types)
+ /**
+  * DOC: module info annotation macros
+diff --git a/util/module.c b/util/module.c
+index 8f8e6994f11..b7253fbd065 100644
+--- a/util/module.c
++++ b/util/module.c
+@@ -119,6 +119,7 @@ static const QemuModinfo module_info_stub[] = { {
+ } };
+ static const QemuModinfo *module_info = module_info_stub;
+ static const char *module_arch;
++static bool module_all_archs;
  
--static void register_accel_target_type(void)
-+void accel_register_cpu_type(const char *cpu_type)
+ void module_init_info(const QemuModinfo *info)
  {
--    g_autofree char *name = g_strconcat("accel-", target_cpu_type(), NULL);
-+    g_autofree char *name = g_strconcat("accel-", cpu_type, NULL);
-     const TypeInfo accel_cpu_type = {
-         .name = name,
-         .parent = TYPE_OBJECT,
-@@ -142,5 +142,3 @@ static void register_accel_target_type(void)
- 
-     type_register_static(&accel_cpu_type);
- }
--
--type_init(register_accel_target_type);
-diff --git a/accel/accel-internal.h b/accel/accel-internal.h
-index d3a4422cbf7..2b6f58526d3 100644
---- a/accel/accel-internal.h
-+++ b/accel/accel-internal.h
-@@ -13,5 +13,6 @@
- #include "qemu/accel.h"
- 
- void accel_init_ops_interfaces(AccelClass *ac);
-+void accel_register_cpu_type(const char *cpu_type);
- 
- #endif /* ACCEL_SYSTEM_H */
-diff --git a/accel/accel-system.c b/accel/accel-system.c
-index 1325b23864c..fdfa85179ee 100644
---- a/accel/accel-system.c
-+++ b/accel/accel-system.c
-@@ -25,6 +25,8 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/accel.h"
-+#include "qemu/target-info-def.h"
-+#include "qemu/target-info-qom.h"
- #include "qom/compat-properties.h"
- #include "qapi/qapi-commands-accelerator.h"
- #include "monitor/monitor.h"
-@@ -32,6 +34,7 @@
- #include "hw/core/boards.h"
- #include "hw/core/cpu.h"
- #include "accel/accel-ops.h"
-+#include "accel/accel-cpu.h"
- #include "accel/accel-cpu-ops.h"
- #include "system/cpus.h"
- #include "qemu/error-report.h"
-@@ -124,6 +127,27 @@ static const TypeInfo accel_ops_type_info = {
- 
- static void accel_system_register_types(void)
+@@ -128,11 +129,17 @@ void module_init_info(const QemuModinfo *info)
+ void module_allow_arch(const char *arch)
  {
-+    GSList *targets = target_info_qom_get_targets();
-+    const TargetInfo *ti, *prev_ti;
-+
-     type_register_static(&accel_ops_type_info);
-+
-+    for (GSList *l = targets; l; l = l->next) {
-+        bool duplicate = false;
-+
-+        ti = TARGET_INFO_CLASS(l->data)->target_info;
-+        for (GSList *prev = targets; prev != l; prev = prev->next) {
-+            prev_ti = TARGET_INFO_CLASS(prev->data)->target_info;
-+            if (g_str_equal(prev_ti->cpu_type, ti->cpu_type)) {
-+                duplicate = true;
-+                break;
-+            }
-+        }
-+        if (duplicate) {
-+            continue;
-+        }
-+
-+        accel_register_cpu_type(ti->cpu_type);
-+    }
- }
- type_init(accel_system_register_types);
-diff --git a/accel/accel-user.c b/accel/accel-user.c
-index 7d192306a65..85ede70e5bd 100644
---- a/accel/accel-user.c
-+++ b/accel/accel-user.c
-@@ -9,8 +9,15 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/accel.h"
-+#include "qemu/target-info.h"
- #include "accel-internal.h"
- 
-+static void register_accel_target_type(void)
-+{
-+    accel_register_cpu_type(target_cpu_type());
-+}
-+type_init(register_accel_target_type);
-+
- void accel_init_ops_interfaces(AccelClass *ac)
- {
-     /* nothing */
-diff --git a/tests/unit/test-multi-target.c b/tests/unit/test-multi-target.c
-index c2922e0fed5..704e3297ef9 100644
---- a/tests/unit/test-multi-target.c
-+++ b/tests/unit/test-multi-target.c
-@@ -17,6 +17,7 @@
- #include "qemu/base-arch-defs.h"
- #include "qemu/module.h"
- #include "qemu/target-info.h"
-+#include "qemu/target-info-def.h"
- #include "qemu/target-info-qom.h"
- #include "qom/object.h"
- 
-@@ -70,6 +71,18 @@ static void test_machine_targets(void)
-     }
- }
- 
-+static void test_accel_cpu_parent_per_target(void)
-+{
-+    g_assert(targets);
-+
-+    for (GSList *l = targets; l; l = l->next) {
-+        const TargetInfo *ti = TARGET_INFO_CLASS(l->data)->target_info;
-+        g_autofree char *name = g_strconcat("accel-", ti->cpu_type, NULL);
-+
-+        g_assert_nonnull(object_class_by_name(name));
-+    }
+     module_arch = arch;
++    module_all_archs = false;
 +}
 +
- int main(int argc, char **argv)
- {
-     g_test_init(&argc, &argv, NULL);
-@@ -86,5 +99,7 @@ int main(int argc, char **argv)
-                     test_qom_types_are_unique);
-     g_test_add_func("/multi-targets/machine-targets",
-                     test_machine_targets);
-+    g_test_add_func("/multi-targets/accel-cpu-parent-per-target",
-+                    test_accel_cpu_parent_per_target);
-     return g_test_run();
++void module_allow_all_arch(void)
++{
++    module_all_archs = true;
  }
+ 
+ static bool module_check_arch(const QemuModinfo *modinfo)
+ {
+-    if (modinfo->arch) {
++    if (modinfo->arch && !module_all_archs) {
+         if (!module_arch) {
+             /* no arch set -> ignore all */
+             return false;
+@@ -400,6 +407,7 @@ const QemuModinfo qemu_modinfo[] = {};
+ 
+ void module_init_info(const QemuModinfo *info) {}
+ void module_allow_arch(const char *arch) {}
++void module_allow_all_arch(void) {}
+ void qemu_load_module_for_opts(const char *group) {}
+ int module_load(const char *prefix, const char *name, Error **errp) { return 2; }
+ int module_load_qom(const char *type, Error **errp) { return 2; }
 -- 
 2.55.0.windows.3
 

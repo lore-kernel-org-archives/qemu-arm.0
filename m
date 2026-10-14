@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C3B5CC6B1D
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:44:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD06ECC6B1A
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Oct 2026 09:44:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xGvWd-0003le-Gl; Wed, 14 Oct 2026 05:43:55 -0400
+	id 1xGvVe-0002jM-B0; Wed, 14 Oct 2026 05:42:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvWb-0003aR-KW
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:43:54 -0400
-Received: from mail-dl1-x1234.google.com ([2607:f8b0:4864:20::1234])
+ id 1xGvVb-0002h3-Ra
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:42:51 -0400
+Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xGvWZ-0001zH-H4
- for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:43:53 -0400
-Received: by mail-dl1-x1234.google.com with SMTP id
- a92af1059eb24-157fe9d771bso1524342c88.0
- for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:43:48 -0700 (PDT)
+ id 1xGvVY-0001g6-Cc
+ for qemu-arm@nongnu.org; Wed, 14 Oct 2026 05:42:51 -0400
+Received: by mail-dl1-x122f.google.com with SMTP id
+ a92af1059eb24-15ea896ddc8so1087392c88.0
+ for <qemu-arm@nongnu.org>; Wed, 14 Oct 2026 02:42:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791971027; x=1792575827; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791970967; x=1792575767; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=synPi8hnFDON0bf/QeszSpYclzjkqZ5u8lY6d12QrFA=;
- b=qofgqE2dAD1vZmTunii07qV6aGlw+TBpUNOdNFa0gIHzeirFPzVg5UjOgPFLfg0VVe
- 2fuKwm+EIep57oJ/wKYSqyZYXr9575RNwfienxveWBl52wFWVITwwgxkhEtNhPPx1TbG
- 6v0KL84gsGf3i2wG8O83mYIyA+Aokab3QJ6/4wDHupaUVZT/kNeRsqiGdxrV5ahJaeTg
- AVnV56SeI4GE7/vZmRItykPtZzUBiagvGMKvmqEJcHxSyxNq9J7Fon7sHgemRmPdZJy8
- KTBPvcTmXk6qeFUt/QnAy9mKaEP/nEzVVP5i0PsI5bouLsqSGoIDKbK7QiKJ5zgHkQmg
- VzxA==
+ bh=UMv3P7LT5eVeaLvzcHhKXPCVXwqK6FvuxNT3/ZpShFM=;
+ b=Sr1SLthT5dT4d9y603sBsDCyRfbin4szv7Ivv/1w1uNXV0NxnPnSevDDZ40kImTE12
+ wBuuFSx9rFI4cWu+s8qHNAqWFMsSDz7Wax8m8qnITtl8pxpgE8motXXUaU7bn3ITOQkp
+ d6vUg3VF6IgQy7KJnmixPMr4cTQNUmKSnozDWxLj4aoXrqGVUQigTYZxpGTTbU7nh921
+ hJCw6CFCTuDOeu3P91VqJJn8ZhSZrDOThsQA2c4oXBubjTUr2mCGgsc/K45KhRglbuM/
+ 68CNNjmq81g8yzBvmv8Glu1KrKDCJ0Gbf0uXu0w2aNlQGIPYsyNcRtI6GZdy8Ze1JMFY
+ fXsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791971027; x=1792575827;
+ d=1e100.net; s=20260707; t=1791970967; x=1792575767;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=synPi8hnFDON0bf/QeszSpYclzjkqZ5u8lY6d12QrFA=;
- b=NsKapVGKUJTV1PTQJaSOp9ELr0fnMSg+Wl+gJp4w+EnVrdw5J3EJQPWccajIXcTgiT
- DbLCjvj4qgW/9w/TQDiXGkdQjTJxttrf+lRSXnfPmsWjzmtRZfdI0ZDp7NREdK7YEeHz
- AS18sst+jB7olo5k3fx3qMQfWZFtZfEQtuWe/qYWQEZDXZexuiDXsdmOm/UxynhgDnE5
- j7hA/W9LNAyej2Hu9QkHeuc3iG5whMLVtZF8jC13F9tyWZ7gNY+r4lPOpean7FwT5Lwo
- jyk2UDdOPcm/m6D50jbm7WCSg/hzmOU7HqmTjTPGXt3NBm1KuKozAcbJ14Ja83ncJLpH
- Bz7Q==
+ bh=UMv3P7LT5eVeaLvzcHhKXPCVXwqK6FvuxNT3/ZpShFM=;
+ b=yb48GC/mWk9SNkkImEdHpUAYIxvi0DqNh9Uao0+gI70S8MVYn59li70Xy+14p7Bm+G
+ Bs05tHKzmNFEnYPTsorI2NUeqO2DxtlcFNdebKGByCStQKIGQigNgAiZDZDxSy8MfTbQ
+ 1WPbZDTi7IuZt3+5vLZLgEnzxlITLSrpSiYpBCHUBUetkF4UjY07albDC8huH23a0BGg
+ ov9TF7CZLFREcN1OxLqyRRykb1BAi8bZP/41fz59hgfb+jViiPqBWTsySpTdHnvlz425
+ Z9V+ksrgcewSUt3xMpMJVNubVXtVwJY6WHxyX2q1WRM1hvyn58coy+s+0Nqp/3J7E2Ew
+ orgw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwIDGV5E7Q6AYxBj2kitfz54oEN3rHFcnRx0sUwLxcr+zT3q0zJFinMV3kO56hz1H54la6Hkj322g==@nongnu.org
-X-Gm-Message-State: AFq9FYKlWF9QizxZ8T1nWPyDLlwQriJMa3umOkzbJoBof/+f4ahoOPkm
- mC2K4ZD3PP4iOJn85aEWMj1u+RX/6756RuGuky6k6p3bztauOFnxKK5A
-X-Gm-Gg: AYBFou3qzHvNV8vewt0r+aKM4XZ0QANPesiVaRSaLDDUCOin/EfgDc7ftGCcZyCn0wH
- iFhv02lerAZ/IHg9WsDDMHFj8a7/qpD2Hy1jj+zxmYdBcH+Y8dJoJvQQ74hVhZmiUmLyv38025i
- 38lG1auZU9bHYsO7KToMOnsLh+niN8ls1pAFszGWxCTzLQTx+3W725hBH4NbHM0W2GZUwubh+Ro
- /ThDPRWbHn88fNKzMo7sEBU0ok4eRonwBFL9mloPHEjMnl84mXw+5pnbBUY+/fm9rC36w/C3i/2
- EecMHLSuCpRkguyHpbgaKKx6MDMBtzoxyDFTlLhRbkX7PCfPFVxvaB2y6KVj5ymvN2EeDY5vCM4
- GMAaNs3H5okXVUTIKaVgAks9zr3y1D233OjIXNOcc3hntKmx/XwKqpvhSXKGXfOEgyvin+IICg6
- flSk51b1dHiY4GixBJ5fqMRyaGXn1oWHWCUk9YUBkytGOdBk3BBJuHROhURmx3cCUr4hK2GpbD4
- HzN5q6MSnEklKFb5g==
-X-Received: by 2002:a05:7022:3b87:b0:164:7bbe:b609 with SMTP id
- a92af1059eb24-16a611c0785mr24546593c88.38.1791971026715; 
- Wed, 14 Oct 2026 02:43:46 -0700 (PDT)
+ AKwUvByugzuZsSpawc/P2i7vFb8jfIUWsZnZYpOSa8iyQAGJr0/ve8X79M9ZH2KBLP/5Llyewx2H1jQFmQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJlqn0ZSoldhwufpyLEkAP3vZguUe1JGqN/pj/ohPdi+4VZ8jVa
+ XtoVC1vrL3T3ihRwpVqX24jBgxbLEMDi8aIndxgO5Dm/BmuMRlrtTbp5
+X-Gm-Gg: AYBFou0SgmvDZfgypoFCjJ15cZuyRU2Xh4Djpn+cy77BTsWNOPpZRxwc3ILpDvaR6cZ
+ O2WY3PphMGlHxdVkTgee2JbdUbXfMefB4tMOH8DuqchlEwGiJky5h3EzLZis4Y/hMyIjMs+TU41
+ C3ry0lFpaTXu4uWxOchv0hN2sg0nfx2qA1MVPsaKFb836Vwa/EFrbM/9z89M0f1LrINlu4QGB3C
+ tgRSnFa7xLGqkYjWKSqjGsAc/XXJitQ9qzDH1UseFZNF+f6pUxauq8bh8J512PXvKZcY0NCzEhz
+ YcK8Hfzk/OdvEfxOtMDFv3nqC1XBhOiqk3EBZLthukhDXplvTu5scEM1J+YsEymEkzjdHyoLxfI
+ a6u+PmXWw5KsjQit4CCVeC4WxGj43jNtY6KV0jQLnH8tNfLqfaTccQ58UlJEKXp0qxp15syXEtI
+ chCMCmqGSqx9ChGyC+EBhxks5GtsxipHD5UG8r+pOiqg6MeEiktXwhZ616zxmDTSBaCU1GYiQ6N
+ AblyPa5xA4xhPcCYw==
+X-Received: by 2002:a05:701b:2403:b0:145:152:b547 with SMTP id
+ a92af1059eb24-16a56ab0d40mr20014077c88.1.1791970966688; 
+ Wed, 14 Oct 2026 02:42:46 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.43.38
+ a92af1059eb24-169a31f6f5csm44348380c88.11.2026.10.14.02.42.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2026 02:43:45 -0700 (PDT)
+ Wed, 14 Oct 2026 02:42:45 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -99,24 +99,24 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
  Darren Kenny <darren.kenny@oracle.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Stafford Horne <shorne@gmail.com>
-Subject: [PATCH 23/34] hw/loongarch/virt: use unique QOM name
-Date: Wed, 14 Oct 2026 17:41:38 +0800
-Message-ID: <20261014094224.1976-8-luoyonggang@gmail.com>
+Subject: [PATCH 17/34] target-info: add a combined-binary query stub
+Date: Wed, 14 Oct 2026 17:41:32 +0800
+Message-ID: <20261014094224.1976-2-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261014094224.1976-1-luoyonggang@gmail.com>
 References: <20261014094224.1976-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1234;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1234.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,115 +132,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Set TYPE_LOONGARCH_VIRT_MACHINE to MACHINE_TYPE_NAME("loongarch-virt")
-so LoongArch virt no longer collides with other virt-machine types in
-one process. Keep the -M / help / migration name as virt-* via
-machine_class_set_name().
+Declare target_combined_binary() in target-info.h and provide a stub
+implementation in stubs/target-info.c that returns false.
+
+This lets target-independent tools and single-target binaries use the
+query without a combined qemu-system implementation. A combined binary
+can provide its own implementation returning true.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/loongarch/virt.c         | 45 ++++++++++++++++++++-----------------
- include/hw/loongarch/virt.h |  5 ++++-
- 2 files changed, 28 insertions(+), 22 deletions(-)
+ MAINTAINERS                |  1 +
+ include/qemu/target-info.h |  7 +++++++
+ stubs/meson.build          |  1 +
+ stubs/target-info.c        | 10 ++++++++++
+ 4 files changed, 19 insertions(+)
+ create mode 100644 stubs/target-info.c
 
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 9c5371af9de..5ca992a5ac7 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -1543,21 +1543,24 @@ static void virt_class_init(ObjectClass *oc, const void *data)
-         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
-         mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " LoongArch Virtual Machine"; \
-         MACHINE_VER_DEPRECATION(__VA_ARGS__); \
-+        machine_class_set_name(mc, "virt-" MACHINE_VER_STR(__VA_ARGS__)); \
-         if (latest) { \
-             mc->alias = "virt"; \
-             mc->is_default = true; \
-         } \
-     } \
--    static const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = \
--    { \
--        .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
--        .parent = TYPE_LOONGARCH_VIRT_MACHINE, \
--        .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
--    }; \
-     static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-     { \
-+        const TypeInfo virt_machine_info = \
-+        { \
-+            .name = target_combined_binary() ? \
-+                    MACHINE_VER_TYPE_NAME("loongarch-virt", __VA_ARGS__) : \
-+                    MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-+            .parent = TYPE_LOONGARCH_VIRT_MACHINE, \
-+            .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
-+        }; \
-         MACHINE_VER_DELETION(__VA_ARGS__); \
--        type_register_static(&MACHINE_VER_SYM(info, virt, __VA_ARGS__)); \
-+        type_register_static(&virt_machine_info); \
-     } \
-     type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
+diff --git a/MAINTAINERS b/MAINTAINERS
+index fc60193aa3f..669814d29c5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2146,6 +2146,7 @@ TargetInfo API
+ M: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+ M: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+ S: Supported
++F: stubs/target-info.c
+ F: include/qemu/target-info*.h
+ F: target-info*.c
+ F: tests/unit/test-multi-targets.c
+diff --git a/include/qemu/target-info.h b/include/qemu/target-info.h
+index adda363ac39..9704ee32605 100644
+--- a/include/qemu/target-info.h
++++ b/include/qemu/target-info.h
+@@ -42,6 +42,13 @@ const char *target_cpu_type(void);
+  */
+ bool target_big_endian(void);
  
-@@ -1579,22 +1582,22 @@ static void virt_instance_finalize(Object *obj)
-     g_free(lvms->oem_table_id);
- }
- 
--static const TypeInfo virt_machine_info = {
--    .name           = TYPE_LOONGARCH_VIRT_MACHINE,
--    .parent         = TYPE_MACHINE,
--    .abstract       = true,
--    .instance_size  = sizeof(LoongArchVirtMachineState),
--    .class_init     = virt_class_init,
--    .instance_init  = virt_initfn,
--    .instance_finalize = virt_instance_finalize,
--    .interfaces = (InterfaceInfo[]) {
--        { TYPE_HOTPLUG_HANDLER },
--        { }
--    },
--};
--
- static void machvirt_machine_init(void)
- {
-+    const TypeInfo virt_machine_info = {
-+        .name = TYPE_LOONGARCH_VIRT_MACHINE,
-+        .parent = TYPE_MACHINE,
-+        .abstract = true,
-+        .instance_size = sizeof(LoongArchVirtMachineState),
-+        .class_init = virt_class_init,
-+        .instance_init = virt_initfn,
-+        .instance_finalize = virt_instance_finalize,
-+        .interfaces = (InterfaceInfo[]) {
-+            { TYPE_HOTPLUG_HANDLER },
-+            { }
-+        },
-+    };
++/**
++ * target_combined_binary:
++ *
++ * Returns: %true if this is the combined qemu-system binary.
++ */
++bool target_combined_binary(void);
 +
-     type_register_static(&virt_machine_info);
- }
+ /**
+  * target_base_arm:
+  *
+diff --git a/stubs/meson.build b/stubs/meson.build
+index 29b6644b254..ed7aeb61d0d 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -3,6 +3,7 @@
+ # below, so that it is clear who needs the stubbed functionality.
  
-diff --git a/include/hw/loongarch/virt.h b/include/hw/loongarch/virt.h
-index d39a9bbf5dd..9a5f6486c0f 100644
---- a/include/hw/loongarch/virt.h
-+++ b/include/hw/loongarch/virt.h
-@@ -9,6 +9,7 @@
- #define HW_LOONGARCH_H
- 
- #include "hw/core/boards.h"
+ stub_ss.add(files('cpu-get-clock.c'))
++stub_ss.add(files('target-info.c'))
+ stub_ss.add(files('fdset.c'))
+ stub_ss.add(files('iothread-lock.c'))
+ stub_ss.add(files('is-daemonized.c'))
+diff --git a/stubs/target-info.c b/stubs/target-info.c
+new file mode 100644
+index 00000000000..8873aa21594
+--- /dev/null
++++ b/stubs/target-info.c
+@@ -0,0 +1,10 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#include "qemu/osdep.h"
++
 +#include "qemu/target-info.h"
- #include "qemu/queue.h"
- #include "hw/block/flash.h"
- #include "hw/loongarch/boot.h"
-@@ -130,7 +131,9 @@ struct LoongArchVirtMachineState {
-     bool highmem_mmio;
- };
- 
--#define TYPE_LOONGARCH_VIRT_MACHINE  MACHINE_TYPE_NAME("virt")
-+#define TYPE_LOONGARCH_VIRT_MACHINE \
-+    (target_combined_binary() ? MACHINE_TYPE_NAME("loongarch-virt") : \
-+                                MACHINE_TYPE_NAME("virt"))
- OBJECT_DECLARE_SIMPLE_TYPE(LoongArchVirtMachineState, LOONGARCH_VIRT_MACHINE)
- void virt_acpi_setup(LoongArchVirtMachineState *lvms);
- void virt_fdt_setup(LoongArchVirtMachineState *lvms);
++
++bool target_combined_binary(void)
++{
++    return false;
++}
 -- 
 2.55.0.windows.3
 

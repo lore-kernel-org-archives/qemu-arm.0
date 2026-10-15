@@ -4,95 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E94CC6B34
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADF3FCC6B30
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:51:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHIxN-0008Oi-8B; Thu, 15 Oct 2026 06:45:05 -0400
+	id 1xHJ2w-0001UH-BD; Thu, 15 Oct 2026 06:50:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHIxK-0008Mi-O3
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:45:02 -0400
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ id 1xHJ2t-0001Tb-TJ
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:50:47 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHIxI-0006rD-6k
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:45:02 -0400
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-8a83d2706fdso18874177b3.0
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:44:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792061099; cv=none;
+ id 1xHJ2p-0007dr-7Z
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:50:46 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-c3fd91337baso19159266b.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:50:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792061430; cv=none;
  d=google.com; s=arc-20260327;
- b=ehVh3kTjLLms3kdqPO7aIV+gZ2/yIKALQFAh4Preizlfp5AI7NVupGY5axsyYRLwUI
- feSaFIvi833Ukn40DKZdIs9HOfjpbgxQEAg1ILXao0b5Nl2HzNMA0jCMqx2lyGoJM4Vi
- ClilVtCvWr4mTGfWxflEQNT8i/DVHHwGvnONVLku3yRbmgeTccakeLewfPaOykVQf0Yi
- ISOdCmzeTke6L7oFc9MgTiBBXY8ekQEa6G1qCKg67Qm4PWXe4Ys5qdQ+x9RLN+69K/zO
- GuhtXNxArfn5wB5DOUcFAmXzNn+v9T90YZIFjAM0MN59tfp0+V35B/nt/TcDJh5nhw5Y
- MT7A==
+ b=O3fSom8T5iaST62soj8TTcfAyVqdqHd7300KkOarEsGENXchFpZlw/rVcdNjAoU/O6
+ zfsl2oK7KDWhcJLLr6yEkTh1pBalAw8zeA0kO8IgbV6zNyU9o2Y+bUX9i1x0bkJp7RKY
+ SYCxJIxcIR1036U3zk5iNDWPnz1EwJr10JG3bckROr9p+phYvopEhLrEmg81AsDbfwkf
+ 6I5Rhr4O9iJqxmtTesd+KS+XQjSxdQ6h92ZaxTDt9OedmEtPZRsFMAyqBu79NMDvOX27
+ gGFAXxgUKi1K0PkRkFXartU/NTWINn87gSMnfDnkPhdLXOHmQuqDNX2zkmxfasc/zsTP
+ 5Gvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :dkim-signature;
- bh=VeK25S39q0agAlFTm8ppyZypDBOICxzXmnVPINozsHk=;
- fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
- b=sGsa+RkVkmGe7jV/yZxw7/OJW+d/uI8ct5wB+e83g8DFKXAaTBRXDDfO3qSa0C08A1
- pRkFUygvLXkXw38ATIqy/dDgbYdl1wy4iD9uVTIDb9iC7OocQFaCoZFlC/cg5Kk61YdV
- VgFPPNapyqpHESv/rSY6twqOVC9ZKp7r7akJSly34h28lq48kDqq2wITevUZR4dCSlxt
- S7jIDyVDPiEQGyQA6Kb5alsRHIMcMhs2bYrY0+TFmxpoWJWrHVdWW7am43Zqo6UPMEnJ
- DZNCJLLQiVLQ42F5dEikxUtlLIehY1SI61CDCOvvH3exGuH+tJZjC1cw/7MC2BQQdhnV
- OQZg==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=Q4AO9bxH+tgTrPhIoG66FprxezF6tidCBv/9483EfV8=;
+ fh=bylHTlXKagR60JR6hlKikcBZkjoax/Kz3v/HLA7SjSY=;
+ b=V6D8Xdq/rgRvkU5DOf5QmccEsTcenlYCoHVhALAZETYS0a/NAOnE2WNkUTH2LTReGe
+ uzRW7wwv8WKh5taApSKyNf8Slcna/d4EbclCUbkfkf5DRUUTFybPMdto672fA8Ghl2B1
+ EjU5ljPl6uUDzAYtgZGumFT9s8ajh6t6Zki0IZBFFjp3bqbLG+3RbWTPbQdpMmlAi0N7
+ 92rZVwPPpCN2KYVl4mdUyxqiXbWQfs7XsBsmJRzNDhxTRGYG3T6JBqxS3pymdbInpPHO
+ QOi2+LHahQmqLutGu9j/2H30LfIUhJmyEVunurqbBK13wQFpQc2KVUNhVIE7mCfarJmQ
+ GUyQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792061099; x=1792665899; darn=nongnu.org;
- h=content-type:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=VeK25S39q0agAlFTm8ppyZypDBOICxzXmnVPINozsHk=;
- b=NQU5YCmzlDf6bajD+u4Ct1h7P0fy77IznI4vE0P5FcAOFIYAbbUY2/2XvbE7Oz2ihG
- 7zvGoD98/ibIFeDyF+93Z1pD8TLFf0CdM5ebtdWfDk95bIupDDwZjW2UntYpGKGzEqE0
- NdCXapILgrwoneoOkI4KsmvquRQ7cV1GeB15oESiHJUdrPq8OoHdwlLvgPh1Os6YKfe/
- wsijrrx8Fg0YwOpkRFuc2XIuG83GMQNP55oGITH+N0uu6NUzvtesZOrKGGmnnjrx8xlk
- R+BAio7FgCg9tj1KCsOJO463vTl7MGpHu0TGrz0aGaFJkxdxgLFW9ofUi84aUlEhpqz0
- kpvg==
+ d=linaro.org; s=google; t=1792061430; x=1792666230; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=Q4AO9bxH+tgTrPhIoG66FprxezF6tidCBv/9483EfV8=;
+ b=TQRo9IGqn3T0Hz0OZQGo50lo6ZANMArCbFceJ00Mb2ZFJCBcGeKFExiVwyVZJMfbpZ
+ q/f6VPN2ZUJEz0nXjovMt4BdQH364QjyzcHJrHz1P2JMWR3wamUyhqsiiTasYERb9d3i
+ 4uQiX7xXfC3xFFx6ARjm2nzE41z88f1HWi6bO5J2le3QddkIL0OFTFZmiC/USxg6fGzC
+ z1xHb/uE6ZAe2nChlV6vHWf7mKdUhgjYp8ZJNAL1t9D0te62IywFElVIa8+Ni+jRyV5W
+ TuJh3h8iJRFVPCwVqAvp4VLwl9yITi78uhTNsIgr+JmZYAOTUkAv5Cn6M+hLP8eeIuZF
+ cD9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792061099; x=1792665899;
- h=content-type:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=VeK25S39q0agAlFTm8ppyZypDBOICxzXmnVPINozsHk=;
- b=JStSqvtJMW/ThGId0wHKNMnirv33vLi4FOBf32SGJW6XxyrdOWk2290ffdnV0BiAkV
- OiRqM26Z1HfLdOX9pwPguqTNQ7OkwAQrSyOVO/epzKvb7SOIjpka/bKhJNeHtEvaccov
- jdnFYW5vt/2wsejzMARPOuph/BC8ph57jNd+FT/46Zfv1IyxhFaG16uPEhuWJjMwrrCf
- BIO5sGXjW1Ke12irisbAyjW7x0rax/Spn4PYwhPZZQHBTNlNu0bqgfdWRcnNMRQUF54p
- qLCieK+7xfyKVCPslyqUsayxAky8EnLHKTF48t1+n140P+j1iopk0/PwFg8M1ya697uo
- WP+A==
-X-Gm-Message-State: AFq9FYJvYlB40jePfZvGp8Ouf6qb9C1CancQHTf40P9BWOgILQ2NwNRj
- LRjNC7pw8aDog1u0yoieI+1QWZfzNh32XLWD2+HS4IQk7VtwxUsdNUKzgvOCVfS59ugDKQwVNQj
- aC3HyNxnoIfUDtibFkKHEu4YlWAo2jJt0AHCjVG7L5YH2F07t5Nun9/0=
-X-Gm-Gg: AYBFou3NIZ59OD7QoYcUgCH3DWdJG1lPnBPuqwYPwB6gjilTcN/pRmSGvuxJzX05lN8
- ZLPaeeud2WXHQ0hhOH57+9yGh4nYAZASn+008Fq5bdgBecCn3DzirrMaeerAIm80wsbLj2xz8is
- dccdb24prGGXDLv7uAR5bmy7peznN51yJQURpnhORKCzIFSvOyB0+jHQe6Eu+sv7wvvZimRIwWv
- QYuGhmOsCXRH4W5eSTjQYrZydp84IRhWDS7NVPT0eaCQVtBxSY3l5guhwpLr5KZ6/efJZKmUpdw
- 8UINt4998r9erRpXN/Aobb0Xw3v7KGYCdBb1gTlIwhk49P77KGHBh4xP/OJC+r8HMJiRx358rCP
- BW8jyKQFProvFVZf/r0ef8o6V3pLVYb/tp3Mrh/g=
-X-Received: by 2002:a05:690c:c4f1:b0:8b0:a957:80d4 with SMTP id
- 00721157ae682-8b0a957861cmr38502717b3.20.1792061098493; Thu, 15 Oct 2026
- 03:44:58 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1792061430; x=1792666230;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=Q4AO9bxH+tgTrPhIoG66FprxezF6tidCBv/9483EfV8=;
+ b=GkisDEZG7qTGiUEWrhEDtUXjGvL6WLcTKwa4vZh8Yfe7MHhWwEF70VDTrJkv5zmBb3
+ jl2j9wsNuLlutGc/RePlrD4wy95jCCFHcLrqG7oizaoKAdZ4Jy8SKePE+0OSX7I77/UQ
+ qa9gYy6HUYioEBJUrwU5Nj89NRV9TI0dkC463sdpv1gAzALbkAjbV4vc85EfOhlwu8lp
+ NcH0FqxnBU09FT41Enwv2OH0+JATvOAzu8912Fo2MwXaeaEUhlAdtlkPqU1eUIN0hVXe
+ JjmOZkcREtdeE8/aLTLtm7TIR8l67UnLEFNe8Yvslw/qyv2LdDy9Ki4pyKwbrmQGTi0A
+ /xCQ==
+X-Gm-Message-State: AFq9FYL6IkKkRVDfX6HzFCGY5P+1mbvji7PMFt4KOdQ6Ea039IpT2jmH
+ iZUaP9zrStwN5oBJ8zgUSqHgSdwJwY315kmba76O6AqdNjf7hTEbdG4ChLvCfFAIaDDjuN8LLMt
+ CTgt3laK20o13kKxybrinkXhgj1Cfp2SemYd/YVcnGA==
+X-Gm-Gg: AYBFou353vWp4/9vY8qqRW8mhDhgCRsA0wG6U5kH7d/2LwVR/Kwd/77EXd6+wOZ1TGD
+ 4CefMX5flejZXuAkmqGn9071sqAPjUHXS2xon+U4vyXI46Y0pgNXdmFsVajhN6vcYtl4jpj7X5T
+ JUTZg7/F2Rb+MIo1TaNmcN0LxFK+TKRGmW3CaqPh1SRtP3TcUyB9Ryv7BvNiSQ/b9oGpxdIJahT
+ EYH0M0RLVxzXlBF4MdOOTECfXdYkn8oLP76RycPRHtoMatBJu0rMMaRbr2gMGEpc8V2oDM+iOA8
+ NERojdfQmwIMb3HzgY0b63lMnT70LTJO/fxO3hTdqxON2CGVnG3Q5jv58QBoboedfhb44CHm3JC
+ ct7XcnP2Wm8w75o241wxm0VKFRKGWXorVmhJ2JyY=
+X-Received: by 2002:a05:6938:a082:10b0:c3e:f39b:2286 with SMTP id
+ a640c23a62f3a-c3ef39b2474mr118063566b.0.1792061429972; Thu, 15 Oct 2026
+ 03:50:29 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
- <20261013083933.1024405-46-peter.maydell@linaro.org>
-In-Reply-To: <20261013083933.1024405-46-peter.maydell@linaro.org>
+ <20261013083933.1024405-57-peter.maydell@linaro.org>
+ <8a030bca-4697-405a-aaa8-017baed8ab55@oss.qualcomm.com>
+In-Reply-To: <8a030bca-4697-405a-aaa8-017baed8ab55@oss.qualcomm.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Oct 2026 11:44:46 +0100
-X-Gm-Features: AclHuK_ttN2KSCuGuhflcafMj_TsXvjLxdxzYKAKelL-cFqGoltBNz86LukSdK8
-Message-ID: <CAFEAcA9kpkC65TgGkh+7shjvckOUj3d-RN0FP4PWtrBPz4AU5A@mail.gmail.com>
-Subject: Re: [PATCH 45/86] target/arm: GICv5 cpuif: Handle PPI injection in
- vPPI pending writes
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Thu, 15 Oct 2026 11:50:16 +0100
+X-Gm-Features: AclHuK88lg45P4EkvW9HrI8lz9zJgYYWo6jTVyjchPgx-fRU5L14eo76rAgVhK0
+Message-ID: <CAFEAcA9yv0GDLT5XTp_2_FRO_xRhPdGjhKbjkdfUfh=epaDNPQ@mail.gmail.com>
+Subject: Re: [PATCH 56/86] hw/intc/arm_gicv5: Implement IRS_VMAP_VMR
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,62 +119,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 13 Oct 2026 at 09:40, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, 13 Oct 2026 at 11:12, Philippe Mathieu-Daud=C3=A9
+<philmd@oss.qualcomm.com> wrote:
 >
-> In this commit we update the logic for writes to the virtual PPI
-> pending state by the guest using the PPI_CPEND or PPI_SPEND registers
-> to honour the DVI registers, so that the pending state of the
-> underlying physical PPI is updated.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/tcg/gicv5-cpuif.c | 69 ++++++++++++++++++++++++++++++++----
->  1 file changed, 63 insertions(+), 6 deletions(-)
->
-> diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-> index cdde759bf41..5a2927faf75 100644
-> --- a/target/arm/tcg/gicv5-cpuif.c
-> +++ b/target/arm/tcg/gicv5-cpuif.c
-> @@ -816,16 +816,61 @@ static uint64_t gic_ppi_pend_read(CPUARMState *env, const ARMCPRegInfo *ri)
->      }
->  }
->
-> +static uint64_t gic_ppi_vpend_to_ppend(CPUARMState *env,
-> +                                       uint64_t value, int reg)
-> +{
-> +    /*
-> +     * Given a mask of bits which are virtual PPI pending bits being
-> +     * changed, output the mask of bits which are to be changed in the
-> +     * physical PPI pending state, by adjusting them for the the timer
-> +     * PPI redirection.  We require that the input value has already
-> +     * had the bits masked out for vPPIs that are not direct-injected.
-> +     */
-> +    if (reg == 0 && (arm_hcr_el2_eff(env) & (HCR_NV | HCR_NV1)) == HCR_NV) {
-> +        if (arm_is_secure_below_el3(env)) {
-> +            /* vPPI 20 is pPPI 30; vPPI 19 is pPPI 27 */
-> +            if (value & (1 << 20)) {
-> +                value |= 1 << 30;
-> +            }
-> +            if (value & (1 << 19)) {
-> +                value |= 1 << 27;
-> +            }
-> +        } else {
-> +            /* vPPI 26 is pPPI 30; vPPI 28 is pPPI 27 */
-> +            if (value & (1 << 26)) {
-> +                value |= 1 << 30;
-> +            }
-> +            if (value & (1 << 28)) {
-> +                value |= 1 << 27;
-> +            }
-> +        }
-> +        value &= ~((1 << 26) | (1 << 28));
+> On 13/10/26 10:39, Peter Maydell wrote:
+> > The IRS_VMAP_VMR register lets the guest mark a VM as valid.  This is
+> > a 64-bit register similar in operation to IRS_VMAP_L2_VMTR.
 
-This "clear bits 26 and 28" line should be inside the "else" block,
-and the "if" block should have an equivalent line for "clear bits 19 and 20".
+> > @@ -1604,6 +1679,14 @@ static bool config_writel(GICv5 *s, GICv5Domain =
+domain, hwaddr offset,
+> >                                  deposit64(cs->irs_vmap_l2_vmtr[domain]=
+,
+> >                                            32, 32, data));
+> >           return true;
+> > +    case A_IRS_VMAP_VMR:
+> > +        irs_vmap_vmr_write(s, domain,
+> > +                           deposit64(cs->irs_vmap_vmr[domain], 0, 32, =
+data));
+> > +        return true;
+> > +    case A_IRS_VMAP_VMR + 4:
+> > +        irs_vmap_vmr_write(s, domain,
+> > +                           deposit64(cs->irs_vmap_vmr[domain], 32, 32,=
+ data));
+> > +        return true;
+> >       case A_IRS_SPI_SELR:
+> >           cs->irs_spi_selr[domain] =3D data;
+> >           return true;
+> > @@ -1704,6 +1787,14 @@ static bool config_readll(GICv5 *s, GICv5Domain =
+domain, hwaddr offset,
+> >               *data =3D 0;
+> >           }
+> >           return true;
+> > +    case A_IRS_VMAP_VMR:
+> > +        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain]=
+.valid) {
+> > +            *data =3D cs->irs_vmap_l2_vmtr[domain];
+>
+> irs_vmap_l2_vmtr[] or irs_vmap_vmr[]?
 
-> +    }
-> +    return value;
-> +}
+Should be irs_vmap_vmr[]; silly copy-paste mistake.
 
+thanks
 -- PMM
 

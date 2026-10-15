@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4782BCC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E36FCC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:32:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHIgo-0006O1-Dw; Thu, 15 Oct 2026 06:27:58 -0400
+	id 1xHIh4-0007OX-9K; Thu, 15 Oct 2026 06:28:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIfP-0002g8-9c
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:26:32 -0400
-Received: from mail-wm1-f47.google.com ([209.85.128.47])
+ id 1xHIgE-0003yU-DY
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:27:23 -0400
+Received: from mail-wm1-f48.google.com ([209.85.128.48])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIfN-0003w8-7n
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:26:31 -0400
-Received: by mail-wm1-f47.google.com with SMTP id
- 5b1f17b1804b1-4a16af2a232so40038395e9.1
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:26:28 -0700 (PDT)
+ id 1xHIgB-00045r-DL
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:27:22 -0400
+Received: by mail-wm1-f48.google.com with SMTP id
+ 5b1f17b1804b1-49d05d51553so12626285e9.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:27:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792059988; x=1792664788;
+ d=1e100.net; s=20260707; t=1792060038; x=1792664838;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=oYoBAtb0sGasvrkB8IWuXlvz+SK9VWJjTLvw46YHTLI=;
- b=AKMcHA0TcZuYStSCBS64vAfTIhWpECVf5o5eJwu1dvNvOAq+SK17BjTPTbQMRb6XWT
- DdAt+VhjGUh/wrg6ujjdpr4C1HjwQ5H4D+HqrbK8G6FP3ouERqDJ4UNsxjBNEj/YYYJo
- 8HSRH66LRj6uUToF9f8fF9tiDHFKhxbNTw+ug0rhZXDUlGxsu0y31BKAjI3QE746ZR4L
- 9nDCOy8VLcX6IZYx54SXiziVWNoFlR4cuWGVNULb46iXENFTsA9RRvbgZNp3wCISVeWm
- bpV7p1+67CCLh1ePhQ1xrvTMIwNNhX2qTrdZbKNfEoToAIMfTYRhDgCQrauiCr9WqIFJ
- 3GRg==
+ bh=D3hF72qvu3mgNYGBtKwkXMBkTiV/O1VMMDWIM4mwyd4=;
+ b=WbfC1/Nlaz7ivjWeQpFORQNqPOWSZ1ktdwq1hTvtfDkPlI7dCsyd1Nd4aKPyCBqi8f
+ 2jfu3Q23POV46zYJYzUJUxI5lwQ2l5snY6OM1E8dI0I3tof9TSuhcvcmE2DCRFMPu8ax
+ OpOeA3NGh1dGpsEXeR1HojqBR1my/s+1sY3F7lqyPDjr2mJ0Kyw7EaPgQeNcOsa3Xfmg
+ k8j4Ub/w2vkMm8FFDHsUo2grqz/JMvpXTSadefcJCwPo+YoihmckNdY9PltbBmcafuVE
+ RW3akm/AYTwk80Y8/VbZcoeJEyv+7TC1Sk6NF5f9dPB/5U5IJ2GFhm7L/VrauPri7za2
+ AqAA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxw/29N26sxKDexiRnhizbkGbHnHISvimVWCv8dNADCdp4p1O64Zi79Ll/z9+MSQk2OkGkvFCzgvg==@nongnu.org
-X-Gm-Message-State: AFq9FYKlzoLUwR9i2dpBqWol9BuJ94D0yKWZRDBU4acbnR/mKHo19yo6
- Lz83YMjfFcGIPD3SV04fXLGADM0rgS7Z9/UpoYA+Wv9QIujdJcZXMhHu
-X-Gm-Gg: AYBFou3308YgEWPbilQdqC5VnxswQnw0kY9SJjvCysBxr4cTWJzV8qqBBeNmgsbWlcY
- yN0VQCDpXxL3tdImHzeSOYM651nUU9xRuxxfZiVrTVg2o69z97MuGXEKPXnCF8DL/PI9BMAgGHE
- DW3JD/atkurBObWdmplSxhTUJOZuA+FwNlkJre9JxRkEIIpaAIP0NpH6AoOG1afgEQ9twvkYruZ
- NKwsaqacrhSFmliyKuuNJR3smNps+S/erPgW9fz95E9FWwmmP+ZKO4IH3lf5zR+Bnt/eHKDmMI5
- RSSRh8Yjih1HJFlRVfzZAwDQt8rwrLoglw7wLSxCO2zmuclFUSIYCsAw1MXmYdPUOTDEBozt+y+
- QxgoizpWVaXcE37CKdxLdRTwQ/PPCbf87m9n15zqEDPwbq9nQdzTFShMztqMspwSsGVeKv1+vhq
- NMMqdKYpfAb78C6xg3QHGurkJ8+Zz+lzyI4FW5prDH1iyOFvHw5SSJ/ltQUqb6vBtgy7CbAKIz0
- /lAk8Dbx3qkYvBKVSV7ZLBoL+Br4YPOXde/bwsCndi0RA==
-X-Received: by 2002:a05:600c:e558:20b0:4a1:946c:953f with SMTP id
- 5b1f17b1804b1-4a1946c9744mr194405325e9.20.1792059987590; 
- Thu, 15 Oct 2026 03:26:27 -0700 (PDT)
+ AKwUvBwMll9NLRTvKsbfTTppLVtmRkwB5Q7u4hmqZovTMhYbQXRwLVcANtf8P7If9nnoBVjN7WTN1wkRnA==@nongnu.org
+X-Gm-Message-State: AFq9FYIoRaGCaUA637Wymr0WFaspuElTK8RkQlW7DK+LI1MmNZysFR8J
+ BaBEJuFUUEsKbsP2+eDAexBmOzZfiC4RnbNSo8JZpPQVcqIA68B6j6+j
+X-Gm-Gg: AYBFou1D6kJsXNVgu71cNUY2IzrodMWWTEmkytN0UkFlsUotd+ef5SZ4LX5fm3gc7ja
+ UhYiG4PbJoggT+AqEnLlH93TISl3Y//iWCxjtiowTVns61irJjBX3A7pBp3VYQWbkA7iHeFpdRq
+ sIoz2hE4zRsMQWswc0CS8GrvHucvTBdvBFW0cyl9nGYbkrVPXKyFN1Jtrj5+eWNai9AQlah4EXw
+ gABMkCQG+2pb9jh8Nsui/ziDQP89yQWCsJ/1h68j1mJ7kwVNIbkwFaI0pgwx9+vMbBMJGsEZr2s
+ 9zudQ03jT8unMc2Tb0O+1x+SabhQDaLGgL+SwhKY15fiXiskklpZhRuZ1F3vAR0q44ujfKn4tf+
+ QpMkr+1Qj2QoFuoLKIdZg9klZqRdXXNAsVSe38w5vDxrbE9BW5jNhEI28rEz8P54VmEvJaw7lAA
+ D3WKSZDa0VEIrnryn849OEAE/XzxxbpBQH7qlR5eZxS0UJMRaPw/8LYythirXbXlCy6bH8vXImK
+ Uw7IXt7o5IRxTMquhoCy6si7fWRfqGustbba2N33C9G/g==
+X-Received: by 2002:a05:600c:6215:b0:49f:ff32:8044 with SMTP id
+ 5b1f17b1804b1-4a18e47a88fmr344547825e9.7.1792060037886; 
+ Thu, 15 Oct 2026 03:27:17 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0ac4f65sm18038435f8f.39.2026.10.15.03.26.27
+ 5b1f17b1804b1-4a1bd9a8a22sm67733135e9.5.2026.10.15.03.27.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 03:26:27 -0700 (PDT)
-Date: Thu, 15 Oct 2026 11:28:08 +0200
-Subject: [PATCH v3 21/50] tests/qtest: ds1338: cover the reserved bits of
- the time registers
+ Thu, 15 Oct 2026 03:27:16 -0700 (PDT)
+Date: Thu, 15 Oct 2026 11:28:15 +0200
+Subject: [PATCH v3 28/50] tests/qtest: ds1339: cover the 12-hour format
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-minerva-v3-21-7d50c8a108e5@free.fr>
+Message-Id: <20261015-bmc-minerva-v3-28-7d50c8a108e5@free.fr>
 References: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 In-Reply-To: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +77,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056475; l=2167;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056476; l=3522;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=suWA8DePj/ePX9LP9LtQ2tCEt/OdWCTqNVEUhuz1G58=;
- b=+ZuLY7a8CHeahUH1ED4xvngjh43Dac+KT7VlkbboLvKBgSPq8/FiSa0jiHbeMo7XjKIM29LCL
- 8x786UP6CB0BiLQiehgRgXYE0SDpPlf84NxO2RcEu8PfI5WULukX65L
+ bh=H+2NRBVduAD0kusIRvsLO1TF7emsp4ss30ZRGVmVNhU=;
+ b=kgK1KOPriKfBLbra3npt1yfQDCgIZ5Ia6Ofrho6uYIjWiv8TpzKN46QhjNPpHBvqVL30yNJIW
+ NTjCTEsudIYDN/W7HJUesZVdgUjISErDmefewuWFeR0ayIImBYX2DXK
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.47; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f47.google.com
+Received-SPF: pass client-ip=209.85.128.48; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f48.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,53 +111,91 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Nothing pinned which bits of a time register survive a write.
+Both directions of the 12-hour conversion carry a fixup for midnight
+and noon, and neither had been exercised.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ds1338-test.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ tests/qtest/ds1339-test.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/tests/qtest/ds1338-test.c b/tests/qtest/ds1338-test.c
-index 1b9c02d931..9e2e257307 100644
---- a/tests/qtest/ds1338-test.c
-+++ b/tests/qtest/ds1338-test.c
-@@ -125,6 +125,26 @@ static void test_clock_halt(void *obj, void *data, QGuestAllocator *alloc)
-                     ==, DS1338_CTRL_OSF);
+diff --git a/tests/qtest/ds1339-test.c b/tests/qtest/ds1339-test.c
+index 7eec163049..3259fa1df3 100644
+--- a/tests/qtest/ds1339-test.c
++++ b/tests/qtest/ds1339-test.c
+@@ -14,6 +14,7 @@
+ 
+ /* DS1339 register map */
+ #define DS1339_SECONDS   0x00
++#define DS1339_HOURS     0x02
+ #define DS1339_DATE      0x04
+ #define DS1339_MONTH     0x05
+ #define DS1339_YEAR      0x06
+@@ -26,6 +27,9 @@
+ 
+ #define DS1339_STATUS_OSF 0x80
+ 
++#define DS1339_HOURS_12  0x40
++#define DS1339_HOURS_PM  0x20
++
+ /* The clock and calendar come up on the host time. */
+ static void test_time(void *obj, void *data, QGuestAllocator *alloc)
+ {
+@@ -170,6 +174,46 @@ static void test_eosc_restart(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(resp[6], ==, 0x31);
  }
  
-+/* Reserved time-register bits read back zero even with the clock halted. */
-+static void test_stopped_reserved_bits(void *obj, void *data,
-+                                       QGuestAllocator *alloc)
++/* Midnight and noon are the hours the 12-hour encoding special-cases. */
++static void test_hour_mode_12(void *obj, void *data, QGuestAllocator *alloc)
 +{
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    const uint8_t all_ones[7] = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
-+    uint8_t resp[7];
++    const uint8_t tod[3] = {
++        0x59, 0x59, DS1339_HOURS_12 | DS1339_HOURS_PM | 0x11 /* 11:59:59 PM */
++    };
++    unsigned idx;
 +
-+    i2c_write_block(i2cdev, DS1338_SECONDS, all_ones, sizeof(all_ones));
++    i2c_set8(i2cdev, DS1339_HOURS, DS1339_HOURS_12 | 0x12);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_HOURS), ==,
++                    DS1339_HOURS_12 | 0x12);          /* 12 AM is midnight */
 +
-+    i2c_read_block(i2cdev, DS1338_SECONDS, resp, sizeof(resp));
-+    g_assert_cmphex(resp[0], ==, 0xff);   /* the halt bit is writable here */
-+    g_assert_cmphex(resp[1], ==, 0x7f);
-+    g_assert_cmphex(resp[2], ==, 0x7f);
-+    g_assert_cmphex(resp[3], ==, 0x07);
-+    g_assert_cmphex(resp[4], ==, 0x3f);
-+    g_assert_cmphex(resp[5], ==, 0x1f);   /* no century bit on this part */
-+    g_assert_cmphex(resp[6], ==, 0xff);
++    i2c_set8(i2cdev, DS1339_HOURS, DS1339_HOURS_12 | DS1339_HOURS_PM | 0x12);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_HOURS), ==,
++                    DS1339_HOURS_12 | DS1339_HOURS_PM | 0x12); /* 12 PM noon */
++
++    i2c_set8(i2cdev, DS1339_HOURS, DS1339_HOURS_12 | DS1339_HOURS_PM | 0x01);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_HOURS), ==,
++                    DS1339_HOURS_12 | DS1339_HOURS_PM | 0x01);
++
++    i2c_set8(i2cdev, DS1339_HOURS, DS1339_HOURS_12 | 0x11);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_HOURS), ==,
++                    DS1339_HOURS_12 | 0x11);
++
++    i2c_set8(i2cdev, DS1339_HOURS, 0x13);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_HOURS), ==, 0x13);
++
++    /* An elapsed midnight moves 11 PM on to 12 AM, not to 00 or 13. */
++    i2c_write_block(i2cdev, DS1339_SECONDS, tod, sizeof(tod));
++    for (idx = 0; idx < 50; idx++) {
++        if (i2c_get8(i2cdev, DS1339_HOURS) != tod[2]) {
++            break;
++        }
++        g_usleep(100 * 1000);
++    }
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_HOURS), ==,
++                    DS1339_HOURS_12 | 0x12);
 +}
 +
- /* The user RAM returns what the guest wrote to it. */
- static void test_nvram(void *obj, void *data, QGuestAllocator *alloc)
- {
-@@ -207,6 +227,8 @@ static void ds1338_register_nodes(void)
-     qos_add_test("control-register", "ds1338", test_control_register, NULL);
-     qos_add_test("osf-write-protect", "ds1338", test_osf_write_protect, NULL);
-     qos_add_test("clock-halt", "ds1338", test_clock_halt, NULL);
-+    qos_add_test("stopped-reserved-bits", "ds1338",
-+                 test_stopped_reserved_bits, NULL);
-     qos_add_test("nvram", "ds1338", test_nvram, NULL);
-     qos_add_test("address-wrap", "ds1338", test_address_wrap, NULL);
-     qos_add_test("reset-clears", "ds1338", test_reset_clears, NULL);
+ /* Program 23:59:59 on the last day of a month and run the clock past it. */
+ static void check_month_rollover(QI2CDevice *i2cdev,
+                                  uint8_t date, uint8_t month, uint8_t year,
+@@ -370,6 +414,7 @@ static void ds1339_register_nodes(void)
+     qos_add_test("eosc-restart", "ds1339", test_eosc_restart, NULL);
+     qos_add_test("stopped-reserved-bits", "ds1339",
+                  test_stopped_reserved_bits, NULL);
++    qos_add_test("hour-mode-12", "ds1339", test_hour_mode_12, NULL);
+     qos_add_test("month-28-days", "ds1339", test_month_28_days, NULL);
+     qos_add_test("month-29-days", "ds1339", test_month_29_days, NULL);
+     qos_add_test("month-30-days", "ds1339", test_month_30_days, NULL);
 
 -- 
 2.53.0-Meta

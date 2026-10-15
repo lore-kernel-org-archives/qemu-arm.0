@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 809FCCC6B30
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D324CC6B3C
 	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:33:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHIlY-0004a6-3F; Thu, 15 Oct 2026 06:32:52 -0400
+	id 1xHIdm-0000g4-B9; Thu, 15 Oct 2026 06:24:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIhr-0007ys-Kn
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:29:09 -0400
-Received: from mail-wm1-f50.google.com ([209.85.128.50])
+ id 1xHIdk-0000eC-IS
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:24:48 -0400
+Received: from mail-wm1-f51.google.com ([209.85.128.51])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIho-0004Tn-Ff
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:29:03 -0400
-Received: by mail-wm1-f50.google.com with SMTP id
- 5b1f17b1804b1-4a16c1608faso66551785e9.0
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:28:59 -0700 (PDT)
+ id 1xHIdg-0003Gr-Qc
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:24:48 -0400
+Received: by mail-wm1-f51.google.com with SMTP id
+ 5b1f17b1804b1-49fbb2acc90so43199355e9.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:24:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792060138; x=1792664938;
+ d=1e100.net; s=20260707; t=1792059881; x=1792664681;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=fQuO1OoAvVLPWqu+N7yVLkIN0/A7JAcl4F1lEKElbWw=;
- b=L0HckEx3Uim7Qj+cGdCz7KG6vw7Rdm6G7xJuwT3/jhcQBU0ahgpdthiY9tNSHhBc+b
- hWCPRm1wJeUS59luEB6ueMSuCTdxauUay34Dfw0uZcHOixLZ6pVaUBq8iGhE3iklUnll
- SMx+4QJmzVhqYkt8staMWufHO3tSKgfVbJ0IydPcTSnqffBwYWMu8Tt3kMsA97Yxr5y8
- aQaUT8RSXVl5HgOTPSi9aAbZhWqYXyK0o1m67GT0N0pTERUAHGRI01O0o0jkp5anllkB
- h9HG7WGOYVX4tCG+HyGseZqFPI7TwTqysS5pbAObtPnZhneNzjufUdYwmAANFgQ5QMk2
- C/rg==
+ bh=X3AXgFUD8AgKXPTW4/FZ6BTazwwBpf6seraziZlMdxg=;
+ b=KlTe6pN+0uKNe6z16UL0Qxzj2ELSxQlOZ0vHixA6QQ8asweAm0PyGyWabGv1e+/pXC
+ Y0VR23z5G3XkYfiy0cx0HwTlBEdana0FdgNUFlXpDKyBOYTiqrAxFt8Wxa+0ChPyJqSc
+ daNU3cItcmWTjcRUBBarYseA/C1BbPOX5OaSqn6jfddb+12o2GL1LOzwYH0ouOJCxMKw
+ QAfIceaM2BM0ofnaFgm/NfLU3pzeUOjcUsoWAaFEeWEmjLK1adn0lpFXuvfFS7YGfzu+
+ nhtxMWQZpSxQEphFt2mQCgx2DPR9pAj4YKKNnxRY/TR8t0EpizBMDLsHDCYSDV2WUftX
+ o8Eg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwNUJhFRKqAx3DAeOHmbFKoEWxrh8rYZ52ex/BkrTlF1Z5Fw5DCT4Q97wqjLq5+Y8WNS+/8sstgfg==@nongnu.org
-X-Gm-Message-State: AFq9FYLNotdI6SUEJp5qeH1c/RQu7ZAOdYxRdULDPQPNgRZcat0wykuG
- WufTaRcfkWcL+KuGbHREKEThGKiFOua/briHjvglHBNA4ox8281fmiYh
-X-Gm-Gg: AYBFou34FXDqrFWu8GGZz70foX1DTppyjljOxF15fcZXNaGuCyanTAa5VoyKBlR+k0z
- YLtpkSsh26kmRbPPntObkxVj2W7Tkn3QNPVwJZz2ZsYo1LmKGbXzmvYt7STNa0qnM0BS2pOKXZf
- YbdhZP50BXTkR0sWZn/hlaIyNIi3ChONDNL3OMkB801/LGafkc9gRtXybAaKWOPbCfvz/EqpWhI
- EXJzwzwEhFrtlDHthdOjfGwFyNHSx07CLvqjUKAWtRxOZjhY6gCeOBq8q0U4i0kV64BtKHig0xV
- iE/3ILiI+xnTvuSMzge8fBdV11xDhFHLbV5ikR1G7OpdUtGZuZSSY3pWHjn1MYImDWxYa5nEAHX
- wv2EmF4N3rnBe/fXZxd+zzeVSe/h0CxidFXXfG7dAcgnHzcYNaEhiCJOTdrKnljXILVDkmpCpeu
- QaHiMUwaBmKl+Sg0EKZnRyDOjknzJNFUEWArvUj8Uy7VKx2OBIPHZJi+MqHkflL9Dotblr2wWY4
- OnWF6u7CbA/a39rlXb0TLUwDFhFVbN+MILYxTBeupBm9g==
-X-Received: by 2002:a05:600c:620d:b0:4a1:8d46:6235 with SMTP id
- 5b1f17b1804b1-4a18e483d48mr342766665e9.3.1792060138069; 
- Thu, 15 Oct 2026 03:28:58 -0700 (PDT)
+ AKwUvBwLJX7qRipO7F0DWg588AliOBr/B42VWFDgE8mHzDLyypFjo6lLkU4zkKG/8IRyFlKUilKb1ekjVQ==@nongnu.org
+X-Gm-Message-State: AFq9FYI8MVv2p4fLLB4I7Yy5tC8uYMtxHMXaz2T1mX04oAL/zLIUwRIv
+ sYSwWRI2hRSPs+ofwC/Qv5Qqnq6VMByxj7OB6dSf1BygEP9Bmu1O4008
+X-Gm-Gg: AYBFou1oGo1iKDUVHEDb0rTNy016ZZT4346eNamOyJEl9jp4pdHM2HF87+qT+3kk6HX
+ M+uOh2zvTXL+s4NX1Az9OzBIAv5ozz11/A8BLBQHHmNb1b7zatNHLDF78yEsv846BRcB6ab88x5
+ 5tDU5MS0zF2miIp6XUkrLk/rcwitaIpaN2HGjm7VvumBIx5EAMlgPHihveeTJgRJN1UJ+il9Paj
+ E5wy5hIMRbEMa5dk+y7Yav0l7qagwI1B3Nj7AJQUMEzFZq0+AQk72AyUGilUVuQBSy6GWYMiXU1
+ Pd9OI2pw6ngNcVwILy5Qlk653fJgZnwfNqGHzmIufKgcGsd7IGvPXmJjjq2vIMWt1oGp8BI/z3E
+ szId+mSdkW+/Tjpdescc8h1Dm9INv47BUplkBB0moYVkYL5HPaJpYs1xNa/b4e36d/iaCwHwo/8
+ zrx+Ui7GoNDCn1wa7KVFkUiWvxpcq/07WSW40fFH8t/ckHnqNVKIh6Y4LL92+1P0BcyjA+XtuNL
+ ps3ktgNZAY8tlDTrwFjKJVWUGeHBGYnaUM3SIENR2qOLw==
+X-Received: by 2002:a05:600c:8b74:b0:4a0:2847:b6ee with SMTP id
+ 5b1f17b1804b1-4a18e4fb8c1mr378168995e9.35.1792059881396; 
+ Thu, 15 Oct 2026 03:24:41 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd97ed33sm69798235e9.5.2026.10.15.03.28.51
+ 5b1f17b1804b1-4a1bd5f4319sm27078275e9.0.2026.10.15.03.24.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 03:28:54 -0700 (PDT)
-Date: Thu, 15 Oct 2026 11:28:29 +0200
-Subject: [PATCH v3 42/50] tests/qtest: ina238: cover voltage/temperature
- injection and derivation
+ Thu, 15 Oct 2026 03:24:40 -0700 (PDT)
+Date: Thu, 15 Oct 2026 11:27:52 +0200
+Subject: [PATCH v3 05/50] hw/i2c: pca954x: add PCA9545 4-channel mux model
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-minerva-v3-42-7d50c8a108e5@free.fr>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20261015-bmc-minerva-v3-5-7d50c8a108e5@free.fr>
 References: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 In-Reply-To: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 To: qemu-devel@nongnu.org
@@ -76,17 +75,18 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>
+ Emmanuel Blot <emmanuel.blot@free.fr>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056477; l=7015;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056474; l=6669;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=NE+vwOg7NY0/COEtyB9HSra4PfJKCB6NE5KYmmh/nfk=;
- b=tA1VejM1wsL6C9qnmxTbEGVklU6oShqEl3vy8eqkPA4Dg3GGcQoTQMp8gIkwcRPbQ2qTjBOyL
- WjseqtOWLspDxX+QtOFjd5sdAqCsRyVmd4T2qH87VrQRNdbbn3NDPSH
+ bh=ykcUlVqHhqJGuTff7Rzxb+RiDS389J6oA8jUVbC79jg=;
+ b=5txR5Ef196CTG75Bcpc4to3b7o5Wn9yehvmwClGsUT3x3/apdycdPTJlArnF//6UXbEzeTM6P
+ hIiyA5i++iiCGMKdRmog2S5PLus+z4swWqy7sIEcAijGmWQTgo5teG4
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.50; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f50.google.com
+Received-SPF: pass client-ip=209.85.128.51; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f51.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,197 +112,205 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Cover the shunt-, bus- and die-temperature injection properties and the
-current and power values derived through the Shunt Calibration register,
-including the zero-calibration case, the ADCRANGE rescaling and the
-clamp/overflow edges.
+The PCA9545 is a 4-channel I2C mux/switch. What sets it apart from the
+plain PCA9546 is its interrupt logic: one INTn input per channel and a
+shared INT output, both active low, asserted whenever any channel
+interrupt is active.
 
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+Model this behind a new has_irq class flag. The PCA9545 gains four named
+"interrupt" GPIO inputs and an "interrupt-out" output, and its control
+read-back merges the latched status nibble; the plain PCA9546/PCA9548
+switches keep their previous behaviour.
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ina238-test.c | 156 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 156 insertions(+)
+ hw/i2c/i2c_mux_pca954x.c         | 71 ++++++++++++++++++++++++++++++++++++++--
+ include/hw/i2c/i2c_mux_pca954x.h |  1 +
+ 2 files changed, 70 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/ina238-test.c b/tests/qtest/ina238-test.c
-index 6e59ed30b5..693139f988 100644
---- a/tests/qtest/ina238-test.c
-+++ b/tests/qtest/ina238-test.c
-@@ -89,6 +89,20 @@ static void qmp_ina238_set(const char *property, int value)
-     qobject_unref(resp);
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+index c8e75da8b2..4bb078a03c 100644
+--- a/hw/i2c/i2c_mux_pca954x.c
++++ b/hw/i2c/i2c_mux_pca954x.c
+@@ -12,12 +12,20 @@
+  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+  * for more details.
++ *
++ * Limitations:
++ * - A control write longer than one byte is rejected rather than retaining the
++ *   last received byte as the datasheet specifies.
++ * - On reset the cached per-channel interrupt state is cleared; a downstream
++ *   INT input that stays asserted across the reset is not re-sampled until it
++ *   next toggles.
+  */
+ 
+ #include "qemu/osdep.h"
+ #include "hw/i2c/i2c.h"
+ #include "hw/i2c/i2c_mux_pca954x.h"
+ #include "hw/i2c/smbus_slave.h"
++#include "hw/core/irq.h"
+ #include "hw/core/qdev.h"
+ #include "hw/core/qdev-properties.h"
+ #include "qemu/log.h"
+@@ -26,11 +34,15 @@
+ #include "trace.h"
+ 
+ #define PCA9548_CHANNEL_COUNT 8
++#define PCA9545_CHANNEL_COUNT 4
+ #define PCA9546_CHANNEL_COUNT 4
+ 
+ /*
+  * struct Pca954xState - The pca954x state object.
+  * @control: The value written to the mux control.
++ * @int_status: Per-channel interrupt status, for parts with interrupt logic.
++ * @int_out: The mux INT output, driven low while any channel interrupt is
++ * active.
+  * @channel: The set of i2c channel buses that act as channels which own the
+  * i2c children.
+  */
+@@ -38,6 +50,8 @@ typedef struct Pca954xState {
+     SMBusDevice parent;
+ 
+     uint8_t control;
++    uint8_t int_status;
++    qemu_irq int_out;
+ 
+     bool enabled[PCA9548_CHANNEL_COUNT];
+     I2CBus *bus[PCA9548_CHANNEL_COUNT];
+@@ -48,11 +62,13 @@ typedef struct Pca954xState {
+ /*
+  * struct Pca954xClass - The pca954x class object.
+  * @nchans: The number of i2c channels this device has.
++ * @has_irq: Whether the part implements interrupt logic.
+  */
+ typedef struct Pca954xClass {
+     SMBusDeviceClass parent;
+ 
+     uint8_t nchans;
++    bool has_irq;
+ } Pca954xClass;
+ 
+ #define TYPE_PCA954X "pca954x"
+@@ -116,8 +132,10 @@ static void pca954x_enable_channel(Pca954xState *s, uint8_t enable_mask)
+ 
+ static void pca954x_write(Pca954xState *s, uint8_t data)
+ {
+-    s->control = data;
+-    pca954x_enable_channel(s, data);
++    Pca954xClass *c = PCA954X_GET_CLASS(s);
++
++    s->control = c->has_irq ? data & ((1 << c->nchans) - 1) : data;
++    pca954x_enable_channel(s, s->control);
+ 
+     trace_pca954x_write_bytes(data);
+ }
+@@ -148,16 +166,45 @@ static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
+ static uint8_t pca954x_read_byte(SMBusDevice *d)
+ {
+     Pca954xState *s = PCA954X(d);
++    Pca954xClass *c = PCA954X_GET_CLASS(s);
+     uint8_t data = s->control;
++
++    /*
++     * On parts with interrupt logic the read-back byte carries the per-channel
++     * interrupt status in the upper nibble.
++     */
++    if (c->has_irq) {
++        data = (s->int_status << 4) | (s->control & 0x0f);
++    }
++
+     trace_pca954x_read_data(data);
+     return data;
  }
  
-+static int qmp_ina238_get(const char *property)
++/*
++ * A downstream device drives one of the INTn inputs. INTn and INT are active
++ * low, and both carry the physical level: 0 is asserted, 1 is idle.
++ */
++static void pca954x_irq_handler(void *opaque, int n, int level)
 +{
-+    QDict *resp;
-+    int ret;
++    Pca954xState *s = PCA954X(opaque);
 +
-+    resp = qmp("{ 'execute': 'qom-get', 'arguments':"
-+               " { 'path': %s, 'property': %s } }",
-+               INA238_TEST_ID, property);
-+    g_assert(qdict_haskey(resp, "return"));
-+    ret = qdict_get_int(resp, "return");
-+    qobject_unref(resp);
-+    return ret;
++    if (level) {
++        s->int_status &= ~(1 << n);
++    } else {
++        s->int_status |= (1 << n);
++    }
++
++    qemu_set_irq(s->int_out, s->int_status == 0);
 +}
 +
- /* Power-on-reset default values and the ID registers */
- static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
+ static void pca954x_enter_reset(Object *obj, ResetType type)
  {
-@@ -160,6 +174,139 @@ static void test_config_wmask(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, CONFIG_POR);
+     Pca954xState *s = PCA954X(obj);
+     /* Reset will disable all channels. */
+     pca954x_write(s, 0);
++    s->int_status = 0;
++    qemu_set_irq(s->int_out, 1); /* INT released */
  }
  
-+/* Shunt voltage register */
-+static void test_shunt_injection(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+
-+    qmp_ina238_set("shunt-voltage", 97200000);
-+    g_assert_cmphex(i2c_get16(dev, REG_VSHUNT), ==, 0x4BF0);
-+
-+    qmp_ina238_set("shunt-voltage", -80000000);
-+    g_assert_cmphex(i2c_get16(dev, REG_VSHUNT), ==, 0xC180);
-+
-+    g_assert_cmpint(qmp_ina238_get("shunt-voltage"), ==, -80000000);
-+}
-+
-+/* Bus voltage register */
-+static void test_bus_injection(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+
-+    qmp_ina238_set("bus-voltage", 48000000);
-+    g_assert_cmphex(i2c_get16(dev, REG_VBUS), ==, 0x3C00);
-+
-+    qmp_ina238_set("bus-voltage", 12000000);
-+    g_assert_cmphex(i2c_get16(dev, REG_VBUS), ==, 0x0F00);
-+}
-+
-+/* Die temperature register */
-+static void test_temp_injection(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+
-+    qmp_ina238_set("die-temperature", 25000);
-+    g_assert_cmphex(i2c_get16(dev, REG_DIETEMP), ==, 0x0C80);
-+
-+    qmp_ina238_set("die-temperature", -25000);
-+    g_assert_cmphex(i2c_get16(dev, REG_DIETEMP), ==, 0xF380);
-+
-+    g_assert_cmpint(qmp_ina238_get("die-temperature"), ==, -25000);
-+}
-+
-+/* Calibration-derived current */
-+static void test_calibration_current(void *obj, void *data,
-+                                     QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+    qmp_ina238_set("shunt-voltage", 97200000);
-+
-+    i2c_set16(dev, REG_SHUNT_CAL, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x0000);
-+
-+    i2c_set16(dev, REG_SHUNT_CAL, 0x0FD2);
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x4CCC);
-+}
-+
-+/* Calibration-derived power */
-+static void test_power(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+    qmp_ina238_set("shunt-voltage", 97200000);
-+    qmp_ina238_set("bus-voltage", 48000000);
-+    i2c_set16(dev, REG_SHUNT_CAL, 0x0FD2);
-+
-+    g_assert_cmpuint(i2c_get24(dev, REG_POWER), ==, 4718400);
-+}
-+
-+/* With SHUNT_CAL == 0 the current and power registers stay zero */
-+static void test_zero_cal(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+    i2c_set16(dev, REG_SHUNT_CAL, 0x0000);
-+    qmp_ina238_set("shunt-voltage", 97200000);
-+    qmp_ina238_set("bus-voltage", 48000000);
-+
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x0000);
-+    g_assert_cmpuint(i2c_get24(dev, REG_POWER), ==, 0);
-+}
-+
-+/* ADCRANGE changes the shunt LSB, not the current divisor. */
-+static void test_adcrange(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+
-+    qmp_ina238_set("shunt-voltage", 20000000);
-+    g_assert_cmphex(i2c_get16(dev, REG_VSHUNT), ==, 0x0FA0);
-+
-+    i2c_set16(dev, REG_SHUNT_CAL, 0x0800);
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x1F40);
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_ADCRANGE);
-+    g_assert_cmphex(i2c_get16(dev, REG_VSHUNT), ==, 0x3E80);
-+
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x7D00);
-+
-+    i2c_set16(dev, REG_SHUNT_CAL, 0x2000);
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x1F40);
-+}
-+
-+/* Clamping at full scale and the MATHOF flag */
-+static void test_overflow(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_ADCRANGE);
-+    qmp_ina238_set("shunt-voltage", 97200000);
-+    g_assert_cmphex(i2c_get16(dev, REG_VSHUNT), ==, 0x7FFF);
-+    qmp_ina238_set("shunt-voltage", -97200000);
-+    g_assert_cmphex(i2c_get16(dev, REG_VSHUNT), ==, 0x8000);
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_POR);
-+    qmp_ina238_set("shunt-voltage", 163835000);
-+    i2c_set16(dev, REG_SHUNT_CAL, 0x0001);
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x7FFF);
-+    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_MATHOF, ==,
-+                    DIAG_MATHOF);
-+}
-+
-+/* Shunt over-limit alert (transparent mode) */
- static void ina238_register_nodes(void)
- {
-     QOSGraphEdgeOptions opts = {
-@@ -173,5 +320,14 @@ static void ina238_register_nodes(void)
-     qos_add_test("defaults", "ina238", test_defaults, NULL);
-     qos_add_test("soft-reset", "ina238", test_soft_reset, NULL);
-     qos_add_test("config-wmask", "ina238", test_config_wmask, NULL);
-+    qos_add_test("shunt-injection", "ina238", test_shunt_injection, NULL);
-+    qos_add_test("bus-injection", "ina238", test_bus_injection, NULL);
-+    qos_add_test("temp-injection", "ina238", test_temp_injection, NULL);
-+    qos_add_test("calibration-current", "ina238", test_calibration_current,
-+                 NULL);
-+    qos_add_test("power", "ina238", test_power, NULL);
-+    qos_add_test("zero-cal", "ina238", test_zero_cal, NULL);
-+    qos_add_test("adcrange", "ina238", test_adcrange, NULL);
-+    qos_add_test("overflow", "ina238", test_overflow, NULL);
+ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
+@@ -169,6 +216,13 @@ I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
+     return pca954x->bus[channel];
  }
- libqos_init(ina238_register_nodes);
+ 
++static void pca9545_class_init(ObjectClass *klass, const void *data)
++{
++    Pca954xClass *s = PCA954X_CLASS(klass);
++    s->nchans = PCA9545_CHANNEL_COUNT;
++    s->has_irq = true;
++}
++
+ static void pca9546_class_init(ObjectClass *klass, const void *data)
+ {
+     Pca954xClass *s = PCA954X_CLASS(klass);
+@@ -184,12 +238,20 @@ static void pca9548_class_init(ObjectClass *klass, const void *data)
+ static void pca954x_realize(DeviceState *dev, Error **errp)
+ {
+     Pca954xState *s = PCA954X(dev);
++    Pca954xClass *c = PCA954X_GET_CLASS(dev);
+     DeviceState *d = DEVICE(s);
+     if (s->name) {
+         d->id = g_strdup(s->name);
+     } else {
+         d->id = g_strdup_printf("pca954x[%x]", s->parent.i2c.address);
+     }
++
++    if (c->has_irq) {
++        /* One INTn input per channel, plus the shared INT output. */
++        qdev_init_gpio_in_named(dev, pca954x_irq_handler, "interrupt",
++                                c->nchans);
++        qdev_init_gpio_out_named(dev, &s->int_out, "interrupt-out", 1);
++    }
+ }
+ 
+ static void pca954x_init(Object *obj)
+@@ -242,6 +304,11 @@ static const TypeInfo pca954x_info[] = {
+         .class_init    = pca954x_class_init,
+         .abstract      = true,
+     },
++    {
++        .name          = TYPE_PCA9545,
++        .parent        = TYPE_PCA954X,
++        .class_init    = pca9545_class_init,
++    },
+     {
+         .name          = TYPE_PCA9546,
+         .parent        = TYPE_PCA954X,
+diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
+index 3dd25ec983..19a1050505 100644
+--- a/include/hw/i2c/i2c_mux_pca954x.h
++++ b/include/hw/i2c/i2c_mux_pca954x.h
+@@ -3,6 +3,7 @@
+ 
+ #include "hw/i2c/i2c.h"
+ 
++#define TYPE_PCA9545 "pca9545"
+ #define TYPE_PCA9546 "pca9546"
+ #define TYPE_PCA9548 "pca9548"
+ 
 
 -- 
 2.53.0-Meta

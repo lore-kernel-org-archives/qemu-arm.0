@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18935CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FD6FCC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:14:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN89-0001L0-Bt; Thu, 15 Oct 2026 11:12:29 -0400
+	id 1xHN8v-0002e2-DB; Thu, 15 Oct 2026 11:13:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN86-0001EV-UM
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:12:27 -0400
-Received: from mail-wm1-f45.google.com ([209.85.128.45])
+ id 1xHN8h-0002SM-Jp
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:13:04 -0400
+Received: from mail-wr1-f46.google.com ([209.85.221.46])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN83-0001zM-Ah
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:12:26 -0400
-Received: by mail-wm1-f45.google.com with SMTP id
- 5b1f17b1804b1-4a1698ea378so44685935e9.2
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:12:22 -0700 (PDT)
+ id 1xHN8d-000257-Kv
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:13:03 -0400
+Received: by mail-wr1-f46.google.com with SMTP id
+ ffacd0b85a97d-48df0fa43c5so77400f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:12:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792077142; x=1792681942;
+ d=1e100.net; s=20260707; t=1792077178; x=1792681978;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Wz917+uBupSyWRH1dqvy7enyaP5Nw7m4IxLZ4sXKP08=;
- b=ecD/8f5KVh8oYI+0DvLMfD7E/juqkwPDy1oaTNELIou6onLPXeKxKBRKBw/pPPiV3C
- ZBcCJIohqYx/+9hayQ+voWG1/782fcD4FqB2Sugl439g75GefFLKK4HzSaxfcsw+FQ8G
- cv0xCFuYI3Zmy0ghcgEgunPS2hwB1E+LY73R/dtMo2vhHCXrvka7Wewwtjk1i3WMBLLL
- 5m4i8Y+J+3WLaKNMF3R3eBvbSelDp8qrwIjR+pqimG70rDbsFNiPY3v3/h4vnFCFvFr6
- 6Lsr8tHiC7JTTqYarpdlxxMbkPx+6Vk3LAAOV8KHW8bcdWMhDw2/hVm4ijLuE3xoBgKt
- OHcA==
+ bh=3yP+FXKcD6pJvxi0D3uT9X7r+VbROBZd6mc1leYlxy0=;
+ b=ifdU0CQZsSDjtt1obsJZ7WMScF3FNxiPD6z+BRwDapRJkI2GVNm/+s5QPO1lTSyDuQ
+ GlreHC9fASK4OdOwocWcX/8NbKkwtSbEdjjG0+4puAgmXKChb1fumSCN6yjnEuIarIye
+ TtQzijCs8tnsigcCvloS0qr5onEyiLFXJOrHt4SqHaP5zsIZwtWenVrMAJ6dGNiyleo3
+ q9HE+v0fRBBsjJMQGdeEsGnNKX1d/5MrfCQ0G1R91o4hgLL8vzBZcGK/QSZo6iirMsZd
+ 4A1jxTWMkOhkxbDy8s0PxxH75SnJ97+S+UAPM7heFp+oyDWjaA+0v/CE+M1qPVhC8uZG
+ CRwg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxXghlmUDv4JOvtcmObgP0u78wI35hnKsIGMhR70GGwv9NkB23NQ/Y8rPLQTmZeJnmxvHqTNbmChw==@nongnu.org
-X-Gm-Message-State: AFq9FYItHQRF4wwDJJqy0NjIWjP0SRLmPvPa9/7Qm3azjIxySgkSga9d
- O8X5j4zDMrC19ast/14YztMPRJa7jv78+jKCKxjVRH8jHIb+Gla0iE00
-X-Gm-Gg: AYBFou17DfWa8kdbDRMS+C3xMKZRS/ZCOQSsV4cybd1gm9SiFD+O7oBVlzIioLAWu/F
- ocYG5INoDTLDb8NuLYpvNytNgxkDxispl/7e5wfFK9O4ERqa3NqtTrL5D+8J/xenAx9XJl63hvp
- glC6awybKAz2BqirqfqMph7qTnBxNuWQvelJqOsQ7Ph3KW74p169MQZ1DaHdWeJXsei70g7k0cV
- dfg7evg5xvR/1IsGOU+NLlUPDVEuRw1C5LWEk8Ozf4UpwE3GC/pkvsvlQNjN9hqm3dhOVOHfSNA
- 09/RtOfrPiOgjNIeTDxjZuPAw/oSEVmeGaVtdGmR+ZJs27YeQt+4QiqCjX68WJZ3QwWGPLxJ6qA
- hTM9Pl9uvDedYTZLvE+OY6lSmlnk0sjt+qt2dE5m+YyiiPz+mX8+NGsreZoOZF/vAkFQspDr8Ty
- NFHpCatvWbXPlu0mI/TCxxaizEF9DrrezvrJBxezQN0kzlcVZ+xknbY1zvzu/bNA8RQ6ou3LYCY
- 3MAnRUFlaILitcL/2CWFHnKcnkHk/0SbbX38Af7ZmmIyw==
-X-Received: by 2002:a05:600c:3e8c:b0:49e:6861:50f7 with SMTP id
- 5b1f17b1804b1-4a18e49d251mr364033375e9.5.1792077141562; 
- Thu, 15 Oct 2026 08:12:21 -0700 (PDT)
+ AKwUvBw3TioXFE/8GyIGxsLpQ70TMzoC0TJl+K5OixXfs8IJb0GFn0CeE8z1QT9ulOfrZYQbBhsOuV7fnQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIHwvcbB3n7l4RVvhWglj1/LNxPJyoxjY1t7ERU/7nExx8Lb0jQ
+ Y2v3WybKYpW2V+B8ZCrMW9ZbTldCugre7pC2B5hGdN5DHhMwOjLv3bGv
+X-Gm-Gg: AYBFou33dyw4rpYBnvYiDDtPOJ3TnffHO57NzSpfrrzOVcoUtID8C3azNUDmGQauzD9
+ F17gDPmqGdknKFXRVsdppY3fBWK9BcDjYn9PAP1/K6hCItFimsyGsc53js4c8hWHspyQ7B8jeKS
+ keoqjBwrd0Le6cC832UxEvrxn5BTg6phWHF3KNkU8zQaXaPZMl16+LOq+xK6F1fmqeiPb4WRwfa
+ sm6yfgeq4WCZae/XVHpazN265jFEalRQc2QAJZDFM/sK057KhwBgLEXMOSBtbp48+mC5DVcEskA
+ SgPpPJQmCY/hgnHJ1O17ZWd7ksusNnNaRZ1cxI7JuTgKTlHbr4wb1Js9oaSi0oiVC9oPBgJrwWo
+ Me2xA/5R77SvUoNRr3NW2Uuee1xsnqzFY6EgLepQNCPz00mfbCm+ze6f1DjuKvyjq3ZXiZn2sAT
+ jSoSDP2jmE9ZEmIRCJuX51kUSbrVzhDWMeMt6imc7zGhljcNJbhUlIcbuwYR8bYJrvgKQ4PC56T
+ ZKPqRntfm4ZT9pm7dm7yrXN0rbfHnfsVEaLC9E92gzVSg==
+X-Received: by 2002:a05:6000:480d:b0:48d:eac6:5c2c with SMTP id
+ ffacd0b85a97d-48dfae65e0cmr805196f8f.15.1792077177782; 
+ Thu, 15 Oct 2026 08:12:57 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bdc036a4sm89459775e9.11.2026.10.15.08.12.17
+ ffacd0b85a97d-48defca3fd0sm8759732f8f.15.2026.10.15.08.12.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:12:18 -0700 (PDT)
-Date: Thu, 15 Oct 2026 13:57:55 +0200
-Subject: [PATCH 17/22] hw/sensor: tmp105: add the TMP1075 variant
+ Thu, 15 Oct 2026 08:12:57 -0700 (PDT)
+Date: Thu, 15 Oct 2026 13:57:59 +0200
+Subject: [PATCH 21/22] hw/arm: clemente: add Facebook Clemente BMC machine
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-clemente-v1-17-bf591886b5b6@free.fr>
+Message-Id: <20261015-bmc-clemente-v1-21-bf591886b5b6@free.fr>
 References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 To: qemu-devel@nongnu.org
@@ -76,15 +76,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=8350;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065466; l=10967;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=yuPMFyntZoIKyBRcJ/PEi8kqrviD7nEvWLABiSDbjNo=;
- b=/DA700DdktBm2jgRRZSTsxbDMloG3YmYfPNerMT57DG19YJKNpl9DW+QpjizHHP69k5VTXGJ1
- KglcVC35cvCAUOe4+pG4+d+/VPjKCThuaLhgsteQZdmlyJwqku8Df3G
+ bh=fwMwMQY6LSTYt7Hp6GyO3Lc9Qc0OdqMAb6qHtBu1+ig=;
+ b=ob5hVBrScDNSj5fFqftf6O3Keq9g58N4ApiDtO+GG5qmqXJLSOSwxF7MSQFlCwsb/lccRrmZP
+ x6TZn4gMeesCj+vpDTi8wiUPHwcHrvT0z9KMivtoWmQqwkjaeOw8JF2
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.45; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f45.google.com
+Received-SPF: pass client-ip=209.85.221.46; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f46.google.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
@@ -110,246 +110,288 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The TMP1075 is register-compatible with the xx75 family but widens the
-Config register to 16 bits and adds a read-only Device ID register.
-Model it as a new variant of the shared TMP105 device: the control bits
-keep the legacy layout in the upper byte, the lower byte has no function
-of its own but is writable, and single-byte access stays compatible with
-the 8-bit parts. The converter is fixed at 12 bits and the fault queue
-matches the TMP75.
+Add the 'clemente-bmc' machine type, an AST2600-based BMC, modelled
+from its device tree (aspeed-bmc-facebook-clemente.dts).
+
+The board uses TMP75, TMP1075, LM75B and TMP421 temperature sensors,
+PCA9535, PCA9554 and PCA9555 IO expanders, PCA9546 and PCA9548 I2C
+muxes, AT24C EEPROMs and a DS1338 RTC.
+
+Every device the Clemente device tree describes and QEMU already models
+is instantiated. The remaining ones (LM5066I power monitors, MAX31790
+fan controllers, MAX1363 ADCs, RAA228004 voltage regulators, the
+SLB9670 SPI TPM, SSIF-BMC and MCTP) have no QEMU model and are left
+documented as comments.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/sensor/tmp105.c              | 85 ++++++++++++++++++++++++++++++++++++++++-
- include/hw/sensor/tmp105.h      |  2 +
- include/hw/sensor/tmp105_regs.h |  5 +++
- 3 files changed, 91 insertions(+), 1 deletion(-)
+ docs/system/arm/aspeed.rst       |   1 +
+ hw/arm/aspeed_ast2600_clemente.c | 232 +++++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build               |   1 +
+ 3 files changed, 234 insertions(+)
 
-diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-index ece0650d70..c5aa553d9a 100644
---- a/hw/sensor/tmp105.c
-+++ b/hw/sensor/tmp105.c
-@@ -1,5 +1,5 @@
- /*
-- * Texas Instruments TMP105/TMP75/TMP175/LM75B temperature sensor.
-+ * Texas Instruments TMP105/TMP75/TMP175/TMP1075/LM75B temperature sensor.
-  *
-  * Copyright (C) 2008 Nokia Corporation
-  * Written by Andrzej Zaborowski <andrew@openedhand.com>
-@@ -51,6 +51,7 @@ struct TMP105State {
- 
-     uint8_t pointer;
-     uint8_t config;
-+    uint8_t config_lsb;
-     int16_t temperature;
-     int16_t limit[2];
-     uint8_t faults;
-@@ -76,6 +77,12 @@ struct TMP105State {
-  * @fixed_res: converter resolution field pinned by the device, or -1 when it is
-  * software-selectable.
-  * @limit_lsb_mask: low-byte mask applied to the T_LOW/T_HIGH limit registers.
-+ * @config16: the Config register is 16 bits wide over I2C. Its control bits
-+ * occupy the upper byte (mirroring the 8-bit layout); the lower byte has no
-+ * function of its own but is writable, and comes up as 0xff. Single-byte
-+ * access stays compatible with the 8-bit parts.
-+ * @die_id: value of the read-only Device ID register, or 0 when the device has
-+ * none.
-  */
- struct TMP105Class {
-     I2CSlaveClass parent_class;
-@@ -84,6 +91,8 @@ struct TMP105Class {
-     int8_t fixed_res;
-     uint8_t limit_lsb_mask;
-     bool tm_change_clears_alert;
-+    bool config16;
-+    uint16_t die_id;
- };
- 
- FIELD(CONFIG, SHUTDOWN_MODE,        0, 1)
-@@ -185,6 +194,13 @@ static void tmp105_read(TMP105State *s)
-         tmp105_interrupt_update(s);
-     }
- 
-+    if (tc->die_id && (s->pointer & 0x0f) == TMP105_REG_DIE_ID) {
-+        s->buf[s->len++] = tc->die_id >> 8;
-+        s->buf[s->len++] = tc->die_id & 0xff;
-+        trace_tmp105_read(s->parent_obj.address, s->pointer);
-+        return;
-+    }
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index bbd3d9cdf4..db0035189b 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -34,6 +34,7 @@ AST2600 SoC based machines :
+ - ``bletchley-bmc``        Facebook Bletchley BMC
+ - ``fby35-bmc``            Facebook fby35 BMC
+ - ``catalina-bmc``         Facebook Catalina BMC
++- ``clemente-bmc``         Facebook Clemente BMC
+ - ``sanmiguel-bmc``        Facebook SanMiguel BMC
+ - ``anacapa-bmc``          Facebook Anacapa BMC
+ - ``minerva-bmc``          Facebook Minerva BMC
+diff --git a/hw/arm/aspeed_ast2600_clemente.c b/hw/arm/aspeed_ast2600_clemente.c
+new file mode 100644
+index 0000000000..bf5a13bc49
+--- /dev/null
++++ b/hw/arm/aspeed_ast2600_clemente.c
+@@ -0,0 +1,232 @@
++/*
++ * Facebook Clemente BMC
++ *
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Current limitations: the following devices from the device tree have no
++ * QEMU model and are therefore not emulated:
++ *   - ti,lm5066i power monitors
++ *   - maxim,max31790 fan controllers
++ *   - maxim,max1363 ADCs (leak sensors)
++ *   - renesas,raa228004 voltage regulators
++ *   - infineon,slb9670 TPM (SPI)
++ *   - ssif-bmc SSIF interface
++ *   - mctp-i2c-controller MCTP endpoints
++ */
 +
-     switch (s->pointer & 3) {
-     case TMP105_REG_TEMPERATURE:
-         res = tc->fixed_res >= 0 ? tc->fixed_res :
-@@ -196,6 +212,9 @@ static void tmp105_read(TMP105State *s)
- 
-     case TMP105_REG_CONFIG:
-         s->buf[s->len++] = s->config;
-+        if (tc->config16) {
-+            s->buf[s->len++] = s->config_lsb;
-+        }
-         break;
- 
-     case TMP105_REG_T_LOW:
-@@ -220,11 +239,29 @@ static void tmp105_write(TMP105State *s)
- 
-     trace_tmp105_write(s->parent_obj.address, s->pointer);
- 
-+    if (tc->die_id && (s->pointer & 0x0f) == TMP105_REG_DIE_ID) {
-+        return; /* Device ID register is read-only */
-+    }
++#include "qemu/osdep.h"
++#include "hw/arm/aspeed.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/i2c/i2c_mux_pca954x.h"
++#include "hw/gpio/pca9552.h"
++#include "hw/gpio/pca9554.h"
++#include "hw/nvram/eeprom_at24c.h"
++#include "hw/rtc/ds1338.h"
++#include "hw/sensor/tmp105.h"
++#include "hw/sensor/tmp421.h"
 +
-     switch (s->pointer & 3) {
-     case TMP105_REG_TEMPERATURE:
-         break;
- 
-     case TMP105_REG_CONFIG:
-+        /*
-+         * The control bits live in the first data byte for every variant (the
-+         * upper byte of the TMP1075 16-bit register); a second byte is the low
-+         * byte, which drives nothing but keeps what it is given.
-+         */
-+        if (s->len == 3) {
-+            if (tc->config16) {
-+                s->config_lsb = s->buf[1];
-+            }
-+            break;
-+        }
-+        if (s->len != 2) {
-+            break;
-+        }
-         config = s->buf[0] & tc->config_wmask;
-         if (FIELD_EX8(config & ~s->config, CONFIG, SHUTDOWN_MODE)) {
-             trace_tmp105_write_shutdown(s->parent_obj.address);
-@@ -334,6 +371,13 @@ static bool fault_count_needed(void *opaque)
-     return s->fault_count != 0;
- }
- 
-+static bool config_lsb_needed(void *opaque)
++/* Clemente hardware values. */
++#define CLEMENTE_BMC_HW_STRAP1 0x00002002
++#define CLEMENTE_BMC_HW_STRAP2 0x00000800
++#define CLEMENTE_BMC_RAM_SIZE (2 * GiB)
++
++/*
++ * E1.S backplane hanging off a PCA9546 channel: an FRU EEPROM plus a
++ * second PCA9546 fronting per-drive NVMe SSD FRU EEPROMs.
++ */
++static void clemente_e1s_backplane_init(I2CBus *bus)
 +{
-+    TMP105State *s = opaque;
++    /* eeprom@56 - atmel,24c128 */
++    at24c_eeprom_init(bus, 0x56, 16 * KiB);
 +
-+    return TMP105_GET_CLASS(s)->config16 && s->config_lsb != 0xff;
++    /* i2c-mux@74 - PCA9546 */
++    I2CSlave *mux = i2c_slave_create_simple(bus, TYPE_PCA9546, 0x74);
++    /* eeprom@53 - atmel,24c02, channels 0 and 2 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(mux, 0), 0x53, 256);
++    at24c_eeprom_init(pca954x_i2c_get_bus(mux, 2), 0x53, 256);
 +}
 +
- static const VMStateDescription vmstate_tmp105_detect_falling = {
-     .name = "TMP105/detect-falling",
-     .version_id = 1,
-@@ -356,6 +400,17 @@ static const VMStateDescription vmstate_tmp105_fault_count = {
-     }
- };
- 
-+static const VMStateDescription vmstate_tmp105_config_lsb = {
-+    .name = "TMP105/config-lsb",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = config_lsb_needed,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT8(config_lsb, TMP105State),
-+        VMSTATE_END_OF_LIST()
++/*
++ * IO Mezzanine hanging off a PCA9546 channel: an I/O expander plus the
++ * mezzanine and OSFP FRU EEPROMs.
++ */
++static void clemente_io_mezz_init(I2CBus *bus, uint8_t exp_addr)
++{
++    /* gpio@20/21 - nxp,pca9535 */
++    i2c_slave_create_simple(bus, TYPE_PCA9535, exp_addr);
++    /* eeprom@50 - atmel,24c64 (mezzanine FRU) */
++    at24c_eeprom_init(bus, 0x50, 8 * KiB);
++    /* eeprom@52 - atmel,24c128 (OSFP FRU) */
++    at24c_eeprom_init(bus, 0x52, 16 * KiB);
++}
++
++static void clemente_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    /* Reference: aspeed-bmc-facebook-clemente.dts */
++
++    AspeedSoCState *soc = bmc->soc;
++    I2CBus *i2c[16] = {};
++    I2CSlave *i2c_mux;
++
++    for (unsigned idx = 0; idx < ARRAY_SIZE(i2c); idx++) {
++        i2c[idx] = aspeed_i2c_get_bus(&soc->i2c, idx);
++    }
++
++    /* &i2c0 */
++    /* i2c-mux@71 (PCA9546) */
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
++    /* channel 1 - HDD FRU eeprom@56 and E1.S backplane */
++    clemente_e1s_backplane_init(pca954x_i2c_get_bus(i2c_mux, 1));
++
++    /* i2c-mux@72 (PCA9546) */
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x72);
++    /* channel 1 - IO Mezz 0 (io_expander7 @20) */
++    clemente_io_mezz_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x20);
++
++    /* i2c-mux@73 (PCA9546) - channels empty */
++    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x73);
++
++    /* i2c-mux@75 (PCA9546) */
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
++    /* channel 1 - HDD FRU eeprom@56 and E1.S backplane */
++    clemente_e1s_backplane_init(pca954x_i2c_get_bus(i2c_mux, 1));
++
++    /* i2c-mux@76 (PCA9546) */
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x76);
++    /* channel 1 - IO Mezz 1 (io_expander8 @21) */
++    clemente_io_mezz_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x21);
++
++    /* i2c-mux@77 (PCA9546) */
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x77);
++    /* channel 1 - boot drive FRU eeprom@53 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x53, 256);
++
++    /* &i2c1 */
++    /* power-monitor@12/14 - ti,lm5066i (no model) */
++    /* fan-controller@20/23/2c/2f - maxim,max31790 (no model) */
++    /* adc@34/35 - maxim,max1363 (no model) */
++    /* temperature-sensor@4e - ti,tmp1075 */
++    i2c_slave_create_simple(i2c[1], TYPE_TMP1075, 0x4e);
++    /* eeprom@50 - atmel,24c02 (PDB FRU) */
++    at24c_eeprom_init(i2c[1], 0x50, 256);
++    /* vrm@60/61 - renesas,raa228004 (no model) */
++    /* i2c-mux@70 (PCA9548) - interposer */
++    i2c_mux = i2c_slave_create_simple(i2c[1], TYPE_PCA9548, 0x70);
++    /* channel 5 - interposer */
++    /* temperature-sensor@4f - ti,tmp75 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
++    /* eeprom@54 - atmel,24c64 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB);
++    /* channel 6 - io_expander5 gpio@27 - nxp,pca9554 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6),
++                            TYPE_PCA9554, 0x27);
++    /* channel 7 - FIO */
++    /* temperature-sensor@4b - ti,tmp75 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
++    /* eeprom@51 - atmel,24c64 */
++    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 7), 0x51, 8 * KiB);
++
++    /* &i2c2 */
++    /* gpio@20/21/27 - nxp,pca9555 */
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x20);
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x21);
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x27);
++    /* eeprom@50/51 - atmel,24c64 (module aux) */
++    at24c_eeprom_init(i2c[2], 0x50, 8 * KiB);
++    at24c_eeprom_init(i2c[2], 0x51, 8 * KiB);
++
++    /* &i2c3 - empty */
++    /* &i2c4 - empty */
++    /* &i2c5 - empty */
++
++    /* &i2c6 */
++    /* gpio@21 - nxp,pca9555 */
++    i2c_slave_create_simple(i2c[6], TYPE_PCA9555, 0x21);
++    /* rtc@6f - nuvoton,nct3018y */
++    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x6f);
++
++    /* &i2c7 - empty */
++    /* &i2c8 - empty */
++
++    /* &i2c9 */
++    /* temperature-sensor@4b - national,lm75b */
++    i2c_slave_create_simple(i2c[9], TYPE_LM75B, 0x4b);
++    /* gpio@4f - nxp,pca9555 */
++    i2c_slave_create_simple(i2c[9], TYPE_PCA9555, 0x4f);
++    /* eeprom@50 - atmel,24c64 (SCM FRU) */
++    at24c_eeprom_init(i2c[9], 0x50, 8 * KiB);
++    /* eeprom@56 - atmel,24c64 (BSM FRU) */
++    at24c_eeprom_init(i2c[9], 0x56, 8 * KiB);
++
++    /* &i2c10 */
++    /* mctp@10 - mctp-i2c-controller (no model) */
++    /* temperature-sensor@1f - ti,tmp421 (OCP NIC0) */
++    i2c_slave_create_simple(i2c[10], TYPE_TMP421, 0x1f);
++    /* eeprom@50 - atmel,24c64 (OCP NIC0 FRU) */
++    at24c_eeprom_init(i2c[10], 0x50, 8 * KiB);
++
++    /* &i2c11 */
++    /* ssif-bmc@10 - ssif-bmc (no model) */
++
++    /* &i2c12 */
++    /* eeprom@50 - atmel,24c64 (HPM 1 FRU) */
++    at24c_eeprom_init(i2c[12], 0x50, 8 * KiB);
++    /* eeprom@54/55 - atmel,24c02 (CBC 2/3 FRU) */
++    at24c_eeprom_init(i2c[12], 0x54, 256);
++    at24c_eeprom_init(i2c[12], 0x55, 256);
++
++    /* &i2c13 */
++    /* eeprom@50 - atmel,24c64 (HPM FRU) */
++    at24c_eeprom_init(i2c[13], 0x50, 8 * KiB);
++    /* eeprom@54/55 - atmel,24c02 (CBC 0/1 FRU) */
++    at24c_eeprom_init(i2c[13], 0x54, 256);
++    at24c_eeprom_init(i2c[13], 0x55, 256);
++    /* eeprom@57 - atmel,24c02 (HMC FRU) */
++    at24c_eeprom_init(i2c[13], 0x57, 256);
++
++    /* &i2c14 */
++    /* gpio@10/11/12/13/14 - nxp,pca9555 (PDB CPLD) */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x10);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x11);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x12);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x13);
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x14);
++
++    /* &i2c15 */
++    /* mctp@10 - mctp-i2c-controller (no model) */
++    /* temperature-sensor@1f - ti,tmp421 (OCP NIC1) */
++    i2c_slave_create_simple(i2c[15], TYPE_TMP421, 0x1f);
++    /* eeprom@52 - atmel,24c64 (OCP NIC1 FRU) */
++    at24c_eeprom_init(i2c[15], 0x52, 8 * KiB);
++}
++
++static void aspeed_machine_clemente_class_init(ObjectClass *oc,
++                                               const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Facebook Clemente BMC (Cortex-A7)";
++    amc->soc_name  = "ast2600-a3";
++    amc->hw_strap1 = CLEMENTE_BMC_HW_STRAP1;
++    amc->hw_strap2 = CLEMENTE_BMC_HW_STRAP2;
++    amc->fmc_model = "mx66l1g45g";
++    amc->spi_model = NULL;
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
++    amc->i2c_init  = clemente_bmc_i2c_init;
++    mc->default_ram_size = CLEMENTE_BMC_RAM_SIZE;
++    aspeed_machine_class_init_cpus_defaults(mc);
++}
++
++static const TypeInfo aspeed_ast2600_clemente_types[] = {
++    {
++        .name          = MACHINE_TYPE_NAME("clemente-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_clemente_class_init,
 +    }
 +};
 +
- static const VMStateDescription vmstate_tmp105 = {
-     .name = "TMP105",
-     .version_id = 0,
-@@ -375,6 +430,7 @@ static const VMStateDescription vmstate_tmp105 = {
-     .subsections = (const VMStateDescription * const []) {
-         &vmstate_tmp105_detect_falling,
-         &vmstate_tmp105_fault_count,
-+        &vmstate_tmp105_config_lsb,
-         NULL
-     }
- };
-@@ -387,6 +443,7 @@ static void tmp105_reset_hold(Object *obj, ResetType type)
-     s->temperature = 0;
-     s->pointer = 0;
-     s->config = 0;
-+    s->config_lsb = tc->config16 ? 0xff : 0;
-     s->faults = tc->faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
-     s->fault_count = 0;
-     s->alarm = 0;
-@@ -447,6 +504,8 @@ static void tmp105_class_init(ObjectClass *klass, const void *data)
-     tc->fixed_res = -1;
-     tc->limit_lsb_mask = 0xf0;
-     tc->tm_change_clears_alert = false;
-+    tc->config16 = false;
-+    tc->die_id = 0;
- }
- 
- static void tmp175_class_init(ObjectClass *klass, const void *data)
-@@ -482,6 +541,25 @@ static void lm75b_class_init(ObjectClass *klass, const void *data)
-     tc->tm_change_clears_alert = false;
- }
- 
-+/*
-+ * The TMP1075 fixes the converter at 12 bits (its R1:R0 bits select the
-+ * conversion rate instead, which this instantaneous model does not track), uses
-+ * the TMP75 fault-queue mapping, exposes a 16-bit Config register and answers
-+ * the Device ID register with 0x7500.
-+ */
-+static void tmp1075_class_init(ObjectClass *klass, const void *data)
-+{
-+    TMP105Class *tc = TMP105_CLASS(klass);
-+
-+    tc->faultq = tmp105_faultq[1];
-+    tc->config_wmask = 0xff;
-+    tc->fixed_res = 3;
-+    tc->limit_lsb_mask = 0xf0;
-+    tc->tm_change_clears_alert = true;
-+    tc->config16 = true;
-+    tc->die_id = TMP1075_DEVICE_ID;
-+}
-+
- static const TypeInfo tmp105_types[] = {
-     {
-         .name          = TYPE_TMP105,
-@@ -506,6 +584,11 @@ static const TypeInfo tmp105_types[] = {
-         .parent        = TYPE_TMP105,
-         .class_init    = lm75b_class_init,
-     },
-+    {
-+        .name          = TYPE_TMP1075,
-+        .parent        = TYPE_TMP105,
-+        .class_init    = tmp1075_class_init,
-+    },
- };
- 
- DEFINE_TYPES(tmp105_types)
-diff --git a/include/hw/sensor/tmp105.h b/include/hw/sensor/tmp105.h
-index 0698aeead7..6a30504c7c 100644
---- a/include/hw/sensor/tmp105.h
-+++ b/include/hw/sensor/tmp105.h
-@@ -19,5 +19,7 @@
- #define TYPE_TMP175 "tmp175"
- #define TYPE_TMP75  "tmp75"
- #define TYPE_LM75B  "lm75b"
-+/* TMP1075 adds a 16-bit Config register and a Device ID register. */
-+#define TYPE_TMP1075 "tmp1075"
- 
- #endif
-diff --git a/include/hw/sensor/tmp105_regs.h b/include/hw/sensor/tmp105_regs.h
-index ef015ee5cf..ecd0510c2e 100644
---- a/include/hw/sensor/tmp105_regs.h
-+++ b/include/hw/sensor/tmp105_regs.h
-@@ -21,6 +21,7 @@
-  * @TMP105_REG_CONFIG: Configuration register
-  * @TMP105_REG_T_LOW: Low temperature register (also known as T_hyst)
-  * @TMP105_REG_T_HIGH: High temperature register (also known as T_OS)
-+ * @TMP105_REG_DIE_ID: Device ID register (TMP1075 only)
-  *
-  * The following temperature sensors are
-  * compatible with the TMP105 registers:
-@@ -46,6 +47,10 @@ typedef enum TMP105Reg {
-     TMP105_REG_CONFIG,
-     TMP105_REG_T_LOW,
-     TMP105_REG_T_HIGH,
-+    TMP105_REG_DIE_ID = 0x0f,
- } TMP105Reg;
- 
-+/* Value returned by the TMP1075 Device ID register. */
-+#define TMP1075_DEVICE_ID 0x7500
-+
- #endif
++DEFINE_TYPES(aspeed_ast2600_clemente_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index a9e8270b85..4189de2aaa 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -59,6 +59,7 @@ arm_common_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600_anacapa.c',
+   'aspeed_ast2600_bletchley.c',
+   'aspeed_ast2600_catalina.c',
++  'aspeed_ast2600_clemente.c',
+   'aspeed_ast2600_evb.c',
+   'aspeed_ast2600_fby35.c',
+   'aspeed_ast2600_fuji.c',
 
 -- 
 2.53.0-Meta

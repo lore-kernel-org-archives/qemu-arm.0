@@ -4,105 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB134CC6B34
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 13:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CAF1CC6B3A
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 14:02:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHLw5-0003vO-BZ; Thu, 15 Oct 2026 09:55:57 -0400
+	id 1xHM1s-0005Jp-7z; Thu, 15 Oct 2026 10:01:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHLvy-0003ts-7F
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 09:55:53 -0400
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ id 1xHM1q-0005JU-IP
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:01:54 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHLvw-0001FN-JB
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 09:55:50 -0400
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-8ac9d666d4eso20483357b3.3
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 06:55:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792072547; cv=none;
+ id 1xHM1n-0001wy-Sn
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:01:53 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-8a83d2706fdso21023397b3.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 07:01:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792072910; cv=none;
  d=google.com; s=arc-20260327;
- b=MPRIIaBlfZrWo0UwjBwCkvKoKJxc4+NloI65xC7NM33e35ounqx8Bpj1myGCLEmM/A
- N4s/ULdr7lcQ4+YbrV5VZEWOWzT8An9hzOsnNdyRBbHEesi8jFwNmpSqu0L4im9J/p6R
- 8U7PclZ2eLrbQblpb+BzAPtAFRTl9teNlPtJ5KAXBT5o45GdnUMBIfuDKC1L6wuSE+rs
- 9QaXl2NEeSugTu94OGv3powh9y/+oDbZC0bzftUxPEXq3B0BhK4OkSO2PzpM7Bf/06ww
- G9Ua+8cNgYcRPMqxyqFscRTOLG8fC4pbXx/I8rOORyXZ7anTzv5xerKcldd2kIIwdCpz
- RirA==
+ b=VKZt2cSuyQfUk06NGTQCyVSg7/XCtIJHPaNipy9jR4dc7qAYCei2OF3FJvYbELk1kj
+ S5v8OndQAzxBRVYRivhUkyOLPLITojyQ8AP7l/quHvp6OVTJnAmkdN4Aq83qXztt/KW5
+ ZI4Sl2OEPfJS2x4WjvnoRMvrS+ghfeuy+GKnElWoPxTdvHsT6GlGq3gAwSHZeDgTuE8j
+ h5VrwJ9zaQltcXdhTyVL3Yyp5s/C+jhksnG6qGOEr6AMKVx/HQNT1nHzZzNsnuEEHwyJ
+ O4ZTtn4GQPRn7uBfn5FJRihFxuNCtCSMSYNRI1YaLcjYrj+shzhPbDBN74ji4Re1ZcaK
+ 7mxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=M0gpN+JJF2TYnnPqlU+Vv4DSdt+bcp5pdt9jGNK5vkU=;
- fh=opWmL91d2hiqkiNMTG2W81MFz9cX+jj4i0gUKxliHUk=;
- b=renMdLk2ynmaOaTacgFd23CMVBE6rOSqG47SGMBYFW/vlWoXVC3fql+/D8lMGEIYZ3
- Skv65E0jDwmnr/P+hv1nTGpI/4uMv2+9yEha6k/7sJgVrjWbzdpxKRtEjUYPl7hIAEPn
- limiQpYHGScOG4H5R/ffpQl3keDmau0TIVIzuHw3mc+1aAvMjxY1dTGh8O8p0fXEmoem
- DmVqI0R5nk6oIohl6Wt3G2QCm5YYQqKBzJM05Z1kH2OZji+ROv1thqhxjRP9zi64a3eI
- YaKh0IOVTHsqZzs2rCkFVYNlt5pQNoOK+yZyHffgLj/BE1k1pv066mrkQsr7XbvN2JRz
- 5yRQ==; darn=nongnu.org
+ bh=7oNQfHG6Y05NR+ProUSz8aihaiu4aa6Lf03BAJlyuYg=;
+ fh=kGvGFvaY2MjY10de3CFpiXszMVc9c/ZxXkuWpnaGUko=;
+ b=L/LMTwBVdcy76eyjqk0VfySMPgMkbjyQWkME5pD8S7jzobb7i5cEORrs8Nryl638gb
+ KArk0tsIIuhqgx14B7wspgz4h5wdCBwALqvDbkjCh/OE0gYcEVaCYVoxPEPQB2l7lcLe
+ b0CfrBBbYZTTqdmOdlFLYDZpbzeU9ZiXOvgk11qv43JK3iWv93//pKq4Gp0XGkV6EFVR
+ 4oPhnHBjEiO+8T3FlFSSH5BaUZS23u+ErcAVS/TLeWHMAG7eT8x8aEfpYyr6hnoD/O1w
+ unXAUmO9Chr2VmpoTR+MvX4pTyUtNsOCbdsh1lS4nrAhvtfvIefhFtRhOWari/cRxpWy
+ ccYg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792072547; x=1792677347; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792072910; x=1792677710; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=M0gpN+JJF2TYnnPqlU+Vv4DSdt+bcp5pdt9jGNK5vkU=;
- b=mNF2krjVyavyp3fYz6LPRktcTYNscm35hI1JVODqH2Xlj5wYcodTqDsxjnF+MiwWPB
- ftPUJSS9FNrzFrmr5CjI3qf5+pOpDqK8sWkDqcfoHw0x1A3iuGkt89Pj3n43YBLpR43L
- wKpF3GtQbX9FwcUNut63bDiQjMMgUdQO/wTT/2rIb70FnC7tnOUUl1fAZ/DDaaWATflQ
- vCHk5xMdN1G4LV10NUlF1k2RCogcVwjQljXBHYP1IIU4rQqSiA8zVj2/Gbs9rjiMyuod
- o1waYDVTmF7giVaaQaPdLrBRQX/mliXoc6YdGA4Hb9dwSYx+xrK+FTodUHnweL/qBumD
- 9m/w==
+ :content-type; bh=7oNQfHG6Y05NR+ProUSz8aihaiu4aa6Lf03BAJlyuYg=;
+ b=kfvi7/2kL1PKAA2mxWp4T9DzkrHYoVAygIKsbGkuR2cDfgpQ2ws0RG319NtHdWZdKR
+ YKIk22RpBeXCNpmxY2ph8Kz8UJ/GusCt69A1i56BmQm9kPahfFM5YFMO4kw/E/wxpF5N
+ NcBVYNIhZZA76aE/6n/AP5qVw9GbipzULH7L5Y+Hu8kTZEWjulohHQ5NHDQP3fSRdmEj
+ hlPCkBNlc2ZxiQwhygj4XZhgTyjI4Py8wEcZc9a0/Uw0t04iH4mHXWsyzKlve3Mn9EbO
+ Zst0ppxVLaUxPMmOxUURKz8juTZ7RqOcmScbFOh3Q0PS969nBKNEFJv1hFiBRtqfRaZW
+ 02tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792072547; x=1792677347;
+ d=1e100.net; s=20260707; t=1792072910; x=1792677710;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=M0gpN+JJF2TYnnPqlU+Vv4DSdt+bcp5pdt9jGNK5vkU=;
- b=hcGgVlhqxUNlY+8Bj18r3n481jhKdaXyb0u66PxJ3B72yg8x2FJh2znb5NDUdEPB9s
- 8v4b7CtOmJ9Ldd6hWCImUqdb+BGjK8FvaHnMJexvnIh/2F7EavDwc34nZdLYy4MqZ0TI
- AsX9LYDkWTgF0jlUL3tJRiM1ZBHXz95Szc9vJNbhcV9bQr+Loj2fL/5+/lEey/Mzn5CD
- HZJIfjXGcTZHJT4d1BEphCo+X0L2hjfgADDw5TYYdBNSsMpmCwhJvdbV/7EDXp7RhLMF
- +g8ruLHPvFastLt0/fWPG0/XH+11nKfH4lG4Ga+KwbuUumt7hTkzS2edl0P4HENpBIoA
- JFyA==
+ bh=7oNQfHG6Y05NR+ProUSz8aihaiu4aa6Lf03BAJlyuYg=;
+ b=SicyfYdb4oddySf12HfgaYUXbY0hlBNL9m+xrkyFiQkqbVI4C6jDrK7nNHzVrsUHt1
+ AQ89xLZI5ypLU/UTlYfbo9nGJlJBw/edvgUmhvDOWUneA6DxSvS1Ea7u19UbF6w/Emft
+ xtI5LOwvKaKD37wERUb1kbapwd9lPwueoO/stEKOCRQjPWKbrZDUIFm9sb+LkYENXOde
+ gscEV7vCBD7BTKSFYT50XkOou+uHgFDyrfXvLxS7hKwK/RFodQ5Efpm5TUvvJ/ESREfX
+ toAOBmxJapISejen2YeQ2Jwot+9bHhywunKu8UhhtzTfaiN8C7mNGBmGp5r434rwo5ge
+ 1VOg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwvBm7EexkdHpbkoMSLvDYMZl6Fsbcm65lMs+4ekRHAkSMePZoqGv2aZ/0NEm40CP0VOcuBEZ436g==@nongnu.org
-X-Gm-Message-State: AFq9FYJgz1W6SBU+BU1ANw2rGOLw4x6IYLTHEGz0Zdr88VIuPgo5sW1J
- +uuNJxqIaQz0xO47f6SVrWipeFjprL6BG5ATME5vFcIlDWVL4wiIu0NhOHNQLEW/eEhAsVxCIMR
- UMEWKiJXiJJmUHmMb/SfkFMmJgD1u1vT7ro2HTLP9xA==
-X-Gm-Gg: AYBFou2BfaFUty71D2G7uHDH1t5d3PmK5eCCES4v1PR/v27n0If8JqO0q8t4OirAFbQ
- mDxAhfLuaNCLkdMKW+AO/IUUWSc9h4bSfgSsdz+fGJAfgOcEJCLUy07l5nbF87FqCEcJDdjmAf/
- bU99JvzzUft6P8Z1OET9SPxFVk4PFedVfwpzO4wzs6QRY6DrmE+9xOFLsmW6BeQUWSFHvNc7WQ8
- dBxqBJmChgohNyzbU8tEqG2+r7bekUqXuAc/71OMDsr9if3cNszwltITAULD7bwdq80zLW2nwlL
- +U0gtr0kK922vzpH3oKKML1sF2Xnn40prTXuUIXcFXz9qMith9jmkcoeJPrVuDuxWBVmruDc04T
- Y3ix/FP7QfUC5elRMNW3go19msqB2NbarZHHFn/Q=
-X-Received: by 2002:a05:690c:7447:b0:883:b158:49e7 with SMTP id
- 00721157ae682-8b07edb8f64mr63710757b3.24.1792072546632; Thu, 15 Oct 2026
- 06:55:46 -0700 (PDT)
+ AKwUvBxe5b3GICO2/giXc4QuOJdYwbq+lR6Hl9gy8YGbyqT+nZ8r40GgvjfVN0DO6Fc8BN4WhGHgGdAXYw==@nongnu.org
+X-Gm-Message-State: AFq9FYJiZirVzK5rQ06LXNHypQDE1U3CYQlXK/L7O22M0GHeLXovLLM+
+ q3hBiQwekDSH/63QLNGIvv+U74yG/fY/ouLqdbuJkXtZp3NRTjuXmYDkh5j9grvzETecy4+rhyI
+ NOnN0/ozU+KgE3JiNR4qvNfthoAFPXPYE8EoBnT+XzNbt7dUb+lO2xkM=
+X-Gm-Gg: AYBFou3H5OWOWuWtzlqN6JyTLCmncMjdBbMRxsEXVOBDHoIydnG2eweJHImW++X1m8v
+ bwodNrQDQ5uRQ4phwKzMvzT1nqL9wpWx5zXuH+5KaODMq8bznIgBG/q7mC6sayt+t+1paGCUQIR
+ L+N+4ecBrBdhPxScSj3+baPczgP3NlQEc6CBGHruGhRIs4da779nyIcrH6xSKdy/hi+Sqz04kJt
+ ADBQ5pOYW4vuAzC0t8oluBIJq1Qa2ltjh9rcO7gSU8lWmsKSF4RiDwl8BQAw+FZ2kpMAOyDD2HP
+ bpUSaqjAcDL16BwptQmbIzJ9KxYkOexJKutjro+1M8sdrOGV7p3vvM72L5NDFBrs7QLiGumtfgH
+ Iv+EsJxzoTUOOUS0ctpG+QzXKagZuEj8gBVvzvIY=
+X-Received: by 2002:a05:690c:e1cf:10b0:8ab:3246:4abd with SMTP id
+ 00721157ae682-8b07ee00c32mr45113657b3.57.1792072908857; Thu, 15 Oct 2026
+ 07:01:48 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260811143557.7862-1-marcelomanzo@gmail.com>
-In-Reply-To: <20260811143557.7862-1-marcelomanzo@gmail.com>
+References: <20261014045605.399684-1-bin.meng@processmission.com>
+ <20261014045605.399684-2-bin.meng@processmission.com>
+In-Reply-To: <20261014045605.399684-2-bin.meng@processmission.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Oct 2026 14:55:34 +0100
-X-Gm-Features: AclHuK9725igU50cCxm947ufpQXnYLIptKQMBhaQ8cS6EWuDU6ZauTOTTQ8FQVE
-Message-ID: <CAFEAcA8Jj=+Lh1vkk9Zytst06cwD72EPy0VQ5759OG2xhx8Vww@mail.gmail.com>
-Subject: Re: [PATCH v2 00/19] hw/arm/raspi4b: working PCIe and GENET (real
- networking)
-To: Marcelo Manzo <marcelomanzo@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Date: Thu, 15 Oct 2026 15:01:37 +0100
+X-Gm-Features: AclHuK8O0VgXq5DeTKRBO1XxrYp12VcAG0ZgJ-ioRxFsP-v4hCjkf2-e1cxUVt0
+Message-ID: <CAFEAcA8vYgmm+8YZtcAHccP9KUt8oJjc2WAS9OgEHAsa9fMTBw@mail.gmail.com>
+Subject: Re: [PATCH v4 01/10] hw/cpu: a15mpcore: Model the reserved page as
+ RAZ/WI
+To: Bin Meng <bin.meng@processmission.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,26 +118,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 11 Aug 2026 at 15:35, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
+On Wed, 14 Oct 2026 at 05:56, Bin Meng <bin.meng@processmission.com> wrote:
 >
-> This series gets raspi4b's PCIe root complex and GENET Ethernet
-> controller working end to end: the PCIe link comes up and devices on
-> it actually enumerate, and GENET passes real network traffic (DHCP,
-> SSH) under both older and newer guest kernels.
+> U-Boot's shared i.MX6 identification code reads PERIPHBASE + 0x4 on
+> MCIMX6UL-EVK. The first private peripheral page is currently unmapped,
+> so that access causes a data abort before the console is ready.
+>
+> The Cortex-A15 and Cortex-A7 TRMs describe errors for reserved
+> accesses, while the related GIC-400 TRM documents RAZ/WI. Follow
+> the behaviour relied on by existing U-Boot on i.MX6 boards and
+> log these accesses as guest errors. Keep the reserved page in the
+> private peripheral device.
+>
+> A U-Boot fix has been posted:
+> <20261013232700.289717-1-bin.meng@processmission.com>
+>
+> Reference: GIC-400 TRM (ARM DDI 0471B), section 3.1 and 3.2
+> https://documentation-service.arm.com/static/5e8f15e27100066a414f7424
+>
+> Signed-off-by: Bin Meng <bin.meng@processmission.com>
 
-> Marcelo Manzo (10):
->   hw/arm/bcm2838_pcie: add BCM2838 PCIe Root Complex
->   hw/arm/bcm2838_pcie: add BCM2838 PCIe host
->   hw/arm/bcm2838: enable BCM2838 PCIe host bridge
->   hw/net/bcm2838_genet: add GENET stub device
->   hw/arm/bcm2838: enable BCM2838 GENET controller
->   hw/net/bcm2838_genet: fix PHY autonegotiation-restart deadlock
->   hw/net/bcm2838_genet: fix bogus RX checksum reporting
->   hw/net/bcm2838_genet: fix TX ring activation check
-
-These three patches are all bugfixes to the code introduced
-in the previous patches -- you should fold those in instead
-of having them be separate commits.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

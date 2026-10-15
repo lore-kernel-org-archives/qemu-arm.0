@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C36CC6B3C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EEDECC6B34
 	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:33:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHIdZ-0000Z5-9o; Thu, 15 Oct 2026 06:24:37 -0400
+	id 1xHIhM-0007hq-HU; Thu, 15 Oct 2026 06:28:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIdF-0000Vi-Jm
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:24:17 -0400
-Received: from mail-wm1-f43.google.com ([209.85.128.43])
+ id 1xHIfz-0003Wz-J7
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:27:10 -0400
+Received: from mail-wm1-f44.google.com ([209.85.128.44])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIdD-0003BP-SF
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:24:17 -0400
-Received: by mail-wm1-f43.google.com with SMTP id
- 5b1f17b1804b1-4a16bc2278aso36362165e9.1
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:24:15 -0700 (PDT)
+ id 1xHIfx-00041u-Qz
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:27:07 -0400
+Received: by mail-wm1-f44.google.com with SMTP id
+ 5b1f17b1804b1-4a16af2a232so40043625e9.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:27:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792059854; x=1792664654;
+ d=1e100.net; s=20260707; t=1792060024; x=1792664824;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=vlJ0YMKurtXs9nd1yudaJA57cD2SNCrzN2aA7xi4zDY=;
- b=zCc67vEZ+IOqZeW1cbiLkyIFDGc9lEEx/38SVTOkBgC8MsS+qDYs5xEhHk7Gp+o2t1
- afyYuXpzdRZ1p7QFohaWu+4443HVM+mmPApzudd30iSiyiqU+5eNO0b0vH8ZnFgoMvVb
- 6DZu7o30AwoMCXUjbVe7pW/3C5+6S6MJEW43xqUzmZALV1IiXsp9mUXINNfCI8bw67pf
- IBPAsoEQXtdQIHthwq4T2OLj8L4PNUnJrVjenqQsEf0XESSuyHKoudXrD/7kwC03UPv5
- pMzF3Mff4p1mYlRRDmuJ17oLMu5Wvzi+hsPqdftflxDVrF/OenH0mhf/McCGBdBDDhLL
- QddQ==
+ bh=Zzjq066d1DK9BL6AffnijbYCb4eLXuskQFLQ8zYtsCk=;
+ b=mTulVmcVghFPH70DaxXGupsBNjeVeDj7kqETHWKBT35QzG6SPIJmhMd0QpG3GaMDGq
+ j6ZmbKUWGuBXtv+mfR1Ua8vX5CUzQj5OBKwp4AmwNnsrGdYXzoNeKGc83ECEbY8sbjhs
+ 6U1jiMe94oZschNXTSIQgsH6ZEPc1CZOECwyR/PvR9yJbXWRWY1mbZMbaJgHlSCcA4up
+ OsWomrJX8euFIfCGOY/XbYQ2IIWfpTmps2EeW637T/m0hSqsB7iTYSL28tOe8ErTiTse
+ t53g2qkxzTdFK8s+eW98SsFiwucxQEGFo82hO72Q7/TWnecxFhLoGIz9JUfLRKYxwvLU
+ lHKg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxORteDHvY6d7cYpLoJ35U/6EbxftxoH20Aa5UcSQCM/3YIukKb+0xp9pIkzy/GDzhunhpmI19+Fg==@nongnu.org
-X-Gm-Message-State: AFq9FYK6u+G24KvXbRKRxhiZk4JXi2lAgawfMqbLAORzagqaTSullhh2
- kznUUJTwVRPmfEDoZOO42dZlLH2G6c/r27hiPerc6LUcoQoLJHcZODFP
-X-Gm-Gg: AYBFou3gdk6rPXlIAaQgrLUfy9NCLJBx3wcsAW0rTgeVe385Csm6XZZIK7qKgWTF55E
- vjDKAjqiihyjcUrB2bi6rhvGB+7jJsC0E+tm5eajtFMS3YT/D6o74gnXR5qMaTWHc9k5wg/zL3t
- OI+05Xv+Qc/kK3mRWLL/m3+FCdolnKztFPPYQ7EPCII5tZ7m5aVMMDPccMaevSo3rBmivNk7Juh
- ChacsKYqQU6Ke1PpeorpAPfODNXv/ZQEUga1hbRYN0wj9DkouVBeTEb9EaZm30OSdYh3QNTDdb7
- fS6UJ8WfGzSHeNI6G7HlRMmM6cDmCIqHQYmroI+upiaUoPfryqxeKrUMkfr68dTAx7YH9uaYNu+
- UP4i5nEB9i6sDzM1mQO43nqFmnetK65vtqFdsl7ujmhOMB/jsXZB0HD1avWcc4ypgPGosv0NgLn
- czkvKA4o9Jdk025RarEd/0czD7wbEwu+Y0E+S9keSJD45YBFQf8qFSX+zMhaKbrfL6NfDC3ZQq+
- Z5032bE5Sxi7VWvZLoSFH9kgxIq+jdfhlNq+CR8sZxrFQ==
-X-Received: by 2002:a05:600d:82e4:b0:4a1:a45a:88f with SMTP id
- 5b1f17b1804b1-4a1a45a08f7mr231984865e9.20.1792059854088; 
- Thu, 15 Oct 2026 03:24:14 -0700 (PDT)
+ AKwUvBzItArZrnAl8xaqGkrD1WDsfnTgHlqMVmfPCEu/wkBCg3I4E+dgfTP4kVUama+J4Qb8E7sDnnrZoQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLMtaVXH0wJ34uTyabrU8Zb1jB2uC888qvWE+Z/svY1/ZeYf6PI
+ qx18z9jSo1MR2+qijCT8wGJotmgLiQ3GDQVoXCNq8pRY4OohLqocs74S
+X-Gm-Gg: AYBFou2+HzZHlgUw5gsUPxcfaph38ozoQ43P1j5yjH9RSrVxTCf72mcvHUMqsE2yPbY
+ Igwl19N0U/Bbe5eMdPr8G44PvVPD42LYegDUXwXA73FEwvwn+iVjaP87iSLstByIZIZB8AXCh+0
+ Gatocpzth6MCdHC6YAN8CA88wnc7Rv5O8Vu7vtdVsYPrxLijNME6u/u+jxruA8fiOAQJxmWIBF+
+ /C2mvt0Gyg7QU2rymjI4pJqSG/v+/9m/3bBv5v53AxtrJISmswyak7p83hla/Y0T/MQUYtVGDPG
+ GXnlXM2j3gjpIyxMJK79PM+UrblMI+ut1Eqk1uCxAlp6382rZWFkNZ6/KAaT5Dtuw0D173QFQ1f
+ XSCZ8uc5rsp7TUymL4/FgajdR6+bm04Inkt+a6X5C3LHcvjI7PNuzRsyOgVIeQApg0gRm0+k0of
+ 07SsC4+k37z8/I4Qwei25b8SnAZEGLvrUodGOBYLqsu62x6CMFWl2K3EiN6cvzzEIs3qPTR5OeS
+ IMuB7p4wYniIz4wRnetQn5tl62lbOhYbdLOjoIou1XoJA==
+X-Received: by 2002:a05:600c:154c:b0:49f:ce78:3562 with SMTP id
+ 5b1f17b1804b1-4a18e4a9159mr394581205e9.19.1792060024134; 
+ Thu, 15 Oct 2026 03:27:04 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd68144fsm43698635e9.4.2026.10.15.03.24.13
+ 5b1f17b1804b1-4a1c1eb3907sm38605165e9.7.2026.10.15.03.27.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 03:24:13 -0700 (PDT)
-Date: Thu, 15 Oct 2026 11:27:48 +0200
-Subject: [PATCH v3 01/50] docs/system/arm/aspeed: add the catalina-bmc machine
+ Thu, 15 Oct 2026 03:27:03 -0700 (PDT)
+Date: Thu, 15 Oct 2026 11:28:13 +0200
+Subject: [PATCH v3 26/50] tests/qtest: ds1339: cover the Century bit
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20261015-bmc-minerva-v3-1-7d50c8a108e5@free.fr>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261015-bmc-minerva-v3-26-7d50c8a108e5@free.fr>
 References: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 In-Reply-To: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 To: qemu-devel@nongnu.org
@@ -75,18 +75,17 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Emmanuel Blot <emmanuel.blot@free.fr>, Jamin Lin <jaminlin1207@gmail.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+ Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056474; l=2095;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056476; l=3691;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=ohO/cxfhzUynwcpNUOnDO3N8MbcDCcR99qBjLp7ftAQ=;
- b=ZKsJLrtK7bOG060LP680C6YTJKyi/EjFZFOJ/P4eeqVxAIDrSPCn/737cUSu4Exy21Ag4JMsf
- xBXb2C5eUyLC7z3z0GM9LpOxpFlMcRaifRPj9Xe87pn7RY1SeXko9Wr
+ bh=a51PVO883sS5BmzswPWqVtyHVJ/pN81H084v6xEIBwk=;
+ b=DjlpsYHB2et3L4f5LHVoFOtXHc+eZ1C8rXyAtVcsY7BqfmEmXTTDq0vTZ1m56jqEA2azplSrn
+ rDqZMvBqHqHC/8p6NpfoaOyyNjjvN7tBE7M3qTfJf1+RhPLhGwXJxc3
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.43; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f43.google.com
+Received-SPF: pass client-ip=209.85.128.44; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f44.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,42 +111,92 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Facebook Catalina BMC machine is supported by hw/arm but has never
-been listed in the Aspeed documentation. Add it to the AST2600 machine
-table.
+The Century bit had no coverage: neither its guest read/write
+behaviour, nor the rule that only an elapsed rollover toggles it.
 
-While at it, shorten the document title. Listing every machine name in
-the title duplicates the tables right below it, and made the title (and
-its underline) grow past 350 columns. The machine list stays available
-where it is readable, in the per-SoC tables.
-
-Reviewed-by: Jamin Lin <jaminlin1207@gmail.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- docs/system/arm/aspeed.rst | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ tests/qtest/ds1339-test.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 2d51ceeb84..933df41f96 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--===============================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards
-+====================
+diff --git a/tests/qtest/ds1339-test.c b/tests/qtest/ds1339-test.c
+index ac19ebd71d..8c144579e6 100644
+--- a/tests/qtest/ds1339-test.c
++++ b/tests/qtest/ds1339-test.c
+@@ -169,6 +169,62 @@ static void test_eosc_restart(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(resp[6], ==, 0x31);
+ }
  
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
-@@ -33,6 +33,7 @@ AST2600 SoC based machines :
- - ``fuji-bmc``             Facebook Fuji BMC
- - ``bletchley-bmc``        Facebook Bletchley BMC
- - ``fby35-bmc``            Facebook fby35 BMC
-+- ``catalina-bmc``         Facebook Catalina BMC
- - ``anacapa-bmc``          Facebook Anacapa BMC
- - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
- 
++/* The Century bit is guest-writable and survives an oscillator restart. */
++static void test_century_bit(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    i2c_set8(i2cdev, DS1339_MONTH, 0x86); /* Century | June */
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x80);
++
++    i2c_set8(i2cdev, DS1339_CONTROL, 0x18 | 0x80);
++    i2c_set8(i2cdev, DS1339_CONTROL, 0x18);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x80);
++
++    i2c_set8(i2cdev, DS1339_MONTH, 0x06); /* June, century clear */
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x00);
++}
++
++/* A guest write never toggles the Century bit. */
++static void test_century_write_no_toggle(void *obj, void *data,
++                                         QGuestAllocator *alloc)
++{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    i2c_set8(i2cdev, DS1339_MONTH, 0x86);
++    i2c_set8(i2cdev, DS1339_YEAR, 0x99);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x80);
++    i2c_set8(i2cdev, DS1339_YEAR, 0x00);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x80);
++
++    i2c_set8(i2cdev, DS1339_MONTH, 0x06);
++    i2c_set8(i2cdev, DS1339_YEAR, 0x99);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x00);
++    i2c_set8(i2cdev, DS1339_YEAR, 0x00);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x00);
++}
++
++/* A clock-driven year rollover from 99 to 00 toggles the Century bit. */
++static void test_century_rollover(void *obj, void *data,
++                                  QGuestAllocator *alloc)
++{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    const uint8_t tod[7] = { 0x59, 0x59, 0x23, 0x01, 0x31, 0x12, 0x99 };
++    unsigned idx;
++
++    i2c_write_block(i2cdev, DS1339_SECONDS, tod, sizeof(tod));
++
++    for (idx = 0; idx < 50; idx++) {
++        if (i2c_get8(i2cdev, DS1339_YEAR) == 0x00) {
++            break;
++        }
++        g_usleep(100 * 1000);
++    }
++
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_YEAR), ==, 0x00);
++    g_assert_cmphex(i2c_get8(i2cdev, DS1339_MONTH) & 0x80, ==, 0x80);
++}
++
+ /* The register pointer wraps at the end of the map. */
+ static void test_address_wrap(void *obj, void *data, QGuestAllocator *alloc)
+ {
+@@ -258,6 +314,10 @@ static void ds1339_register_nodes(void)
+     qos_add_test("eosc-restart", "ds1339", test_eosc_restart, NULL);
+     qos_add_test("stopped-reserved-bits", "ds1339",
+                  test_stopped_reserved_bits, NULL);
++    qos_add_test("century-bit", "ds1339", test_century_bit, NULL);
++    qos_add_test("century-write-no-toggle", "ds1339",
++                 test_century_write_no_toggle, NULL);
++    qos_add_test("century-rollover", "ds1339", test_century_rollover, NULL);
+     qos_add_test("address-wrap", "ds1339", test_address_wrap, NULL);
+     qos_add_test("block-wrap", "ds1339", test_block_wrap, NULL);
+     qos_add_test("alarm-registers", "ds1339", test_alarm_registers,
 
 -- 
 2.53.0-Meta

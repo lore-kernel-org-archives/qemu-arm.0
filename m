@@ -4,92 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 694F3CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 18:11:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6153EC2D0A6
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 18:12:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHPvS-0001PH-TF; Thu, 15 Oct 2026 14:11:34 -0400
+	id 1xHPvf-0001Yd-C9; Thu, 15 Oct 2026 14:11:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xHPvP-0001KT-7U
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:31 -0400
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
+ id 1xHPvW-0001R5-BA
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:38 -0400
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xHPvM-0001SI-AU
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:30 -0400
-Received: by mail-qt1-x835.google.com with SMTP id
- d75a77b69052e-53381e53b80so69279081cf.1
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 11:11:27 -0700 (PDT)
+ id 1xHPvU-0001Ur-DI
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:37 -0400
+Received: by mail-qt1-x82d.google.com with SMTP id
+ d75a77b69052e-533778ab0bdso63111061cf.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 11:11:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792087887; x=1792692687; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1792087895; x=1792692695; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=GAb6DRBQWxAa5egNLTGVIXmqe9+CtTh5JAcsxwRZ7Io=;
- b=b5ZVklApkuGSzPcegXHrpfP3ctVDWzS39Yej3zfXbS6of9wMiAgVHrFDqAac6cSi3L
- 562LAFzmV4719gW/7PruwhyvgTUsYjAQRtGsTxsvAurxvcK3MtlWotvGhwpacLNo+7MW
- F14Dy6DCax6YtpJ9O+LwLrp9ZFOkO+wrlS/5zt5lcWYK9wyEpZEj/YA2MxEN+EO7DHsu
- Js303KdytluA0XigQw/Pc/DtzFuMjVzdwPHHa0GW3YiA+BREPEptS7ZmaCoEV136zA9c
- hewnj9c5T3Rqfikg5htpSNN34prOKhTowXw+eDhEnTlRvwXwEf1d7W1NXBejb48d88l1
- iwDw==
+ bh=7unXkoT3XogwOhwce0TFVzqa7G8zr+SIbPjFPlse5tU=;
+ b=q2m1RcOtYA5W5WyEtWplqMsOOIpJgsBye8p2oHxe3+59lg4soDBG+f1i+2VBgmVJCr
+ FUEoS6To+9PA4OULxQpIJwLRsuGpQxZu1YL8L3RXICaynnbfgDFq7DzCFThsyANVANQC
+ jzoSOIrVdFXCPWoJyudB8riZwQB4z7WitppOr6wMS8JZ+kD726P608ZZ3N1oZDflBg0b
+ bOlzXgjtQXDyphXAmZ7eh2MvIoTbje5AANVIchZSxGc50GIbzfxOZV0wSScuwRABOdPX
+ LYESmmPDRFWRS6rjkKoi+euxy6AP1AQhcZwtdtSc3qQUMdg4IxrU4nMrgiTbxuv5/6R4
+ /X1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792087887; x=1792692687;
+ d=1e100.net; s=20260707; t=1792087895; x=1792692695;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=GAb6DRBQWxAa5egNLTGVIXmqe9+CtTh5JAcsxwRZ7Io=;
- b=0ipQAMZFUauFWZUNew+P2zB0ZxD9fOTpLhQNP1SXBrRNNt8Vd34xz3w7rjAI+p9lvC
- 15kvJ6wiHAjvvVM9MvCfcamSMshLYCjyvClGWEzJ81eTV4UMJrh3s7zglOZzAbAPBgzq
- j3rHMdDU47U5A85Oq4+Fcw7l3vwxUihqwVJMam9nPw1JSzFYgvIpq736smTcDg1tBJtV
- D4IBDQgIj+tuv20sWvVudsHt0y8UiK1g2gZQ/i9AA3SV2TJ5oLuse0WOL6DSqK/Z3v8B
- iPouzVDvB9F4/jXfAgRHOtEBRmJINaWi6pllhDQpM0hOHjtJk8I9oMbIia/1TBfXIb8G
- +4DQ==
+ bh=7unXkoT3XogwOhwce0TFVzqa7G8zr+SIbPjFPlse5tU=;
+ b=U5PMbW4GRo1rApruu9CIZ/hd+O1K05kztlR2ETuQAvOB7shzr2xrfMlbmkZ69pzZeB
+ swLd72xDnmC2BDcScCKRh/NppUsnlrDCAvTRA71ACglP8z70GFf5Zy8Z+BAXGiEPsGAj
+ S7YNGhA6NnTfSpr+Ed3zxrPtAzZyClSPIA1fO1Zz4IxIQDXOneUGYb2FUpNn+zepFC+o
+ NwFiaf8TYG35ZYAAq+rf5kSWGFgzmysAgmhnzONnOAsoTXCWdZCigS5PVhU7jdoAEgII
+ IQe2M2I+VeyEb5ujgPDJHzIWEQREa7QM6kANyuGPHun9r6qGBXcP5ul6ujBDHAshtPjB
+ +fGg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw8yA8uE2yZ4yAK9wc1/txqGoOu6+OQCpDvu663aTer20JqBSfl30/d21S++UfvQ13A1FKvrLJO+w==@nongnu.org
-X-Gm-Message-State: AFq9FYIcBBC8T8OoV0KT3d2EC1sOGraGJycFDCzHlB1FFvPSRpiQsXXy
- 3nf+piZsuU9/WJ9TYy0s/TI1rtwcC7Xk9bjl5UFhHsK7C3QAgp0Om1z5uv8hPQhg
-X-Gm-Gg: AYBFou1OdLFcOxTqsYyVwsQD8ZGMU6lEtkS9w/UTVFnuyMUxeYU3nPjLloUayuTe9sJ
- 90qDFstSuNVh+68ffeWkcbENpjR0ht6EbTiYvIG/GIRq7KkDO+f5TYEA7gBhNYEOOQSbTFMzX1P
- 8wD/TV9YjHEcg545IUuecSHeN4TpKvlJaa3UmmCB3ZcLpFQlkbaoi+gPSD1BdqSwfYpStftvroK
- KjIwnLuAKrfowh2lBJTNVGxBdnj+zTXbRkKbrkOvz/U/fMf/lMCWkLPp8HJCip1TPb0elhOw6Gu
- 4fI79Xl4cKN+A8/R6N+OiSp5IvyI1na/6n0dUSsKkqvGuBOQ5XAplyaRpQ/XbEMdv0d6ReM8ipa
- ZDZmzpsaaqHeAIwsoiSRy3GE2wn/52Yc/fwBtpc6lTNtjN/jfMC8r5l1gyFKzVqXnVMiLSNEoXL
- wJh4xvc4rn77mzfYXFt2zCyLY9E2cfCMvbATNiG2K6i16CsPDwhTjTNQjx9VGPDMQykBlDsMCtw
- gtDM+28QDxl5s4B61aR/ron2U5BMVmMPZBehqej7vdMPhvF+UBAZ/9NQvnA3c8IwcKvrA==
-X-Received: by 2002:a05:622a:8ce:b0:530:e1b1:eaeb with SMTP id
- d75a77b69052e-5359fa73749mr296768161cf.21.1792087886946; 
- Thu, 15 Oct 2026 11:11:26 -0700 (PDT)
+ AKwUvBy1YNTIhcclZ9Z/QV/a5qJ4NG1VWqNQpXgrxka1ZjbKkQOixH/fjpwTKIPQ8rQcHo45yR8kOOTbyA==@nongnu.org
+X-Gm-Message-State: AFq9FYIUCl8wDO+Zcp4/Ua3a40xcXGFamqidvE6dhcL2cS9DmCQhL9gT
+ GOTJ2pwbH93x9rsfSdxx4bgHnuH4O8NHnXdyOaGLGbQN3CUf2jD13ogX
+X-Gm-Gg: AYBFou144Ix9PSp1W10StIVrdB7klyPKiHWkpvAoac2k8LIeZnepjh0XSTY9h0oWKGD
+ RttmGmLbdQndoGLW1cxuIRtOEe1v6TiWY7w7DPk2uN4w70hjVcPuwppgqPNZS0ReQiaE1n5om6+
+ zwCGybj1x/ZbnvndbeLc6FuJHueJ6hv8motYr5n7eTtj0vfB4VnOMZhQPXMdSFIemFYe7ynfCGY
+ 1s3YBNJjXD+umbbG9/dsAPL4dcUTOLAS37km+1AU2FIO8QfIUsgkJxxA82pAsqb3BRRjNA2guyH
+ pb/K52HoXZ5xPBlSOKtydkg2LAhybHec3QICt7J33dATdvMYmP4qs3XR1cS+VPxHG/JSmY/T8Q9
+ VvJsy24/94yj8zkH2w83LXTCSkQaZbVYOVSLozjA5FYoqoPBzvobv6H2vAoRjnNR7EGtBiv4tTG
+ i6UmG8SdJjgBRgCFRv/ZauX8Mzs8kn4v7bPuh5bfs27jN9ZRp77DWq4MJcbfm2qiDRQXmAP8zrC
+ G6QbwWpMOyqeon1vC7cbXhSThs09RpTBPOQvcWZYKiqVyzITS3zF8maGC2LA/2kgF4dag==
+X-Received: by 2002:a05:622a:c18:b0:534:e675:471c with SMTP id
+ d75a77b69052e-5359fb3371bmr347721831cf.29.1792087895384; 
+ Thu, 15 Oct 2026 11:11:35 -0700 (PDT)
 Received: from localhost.localdomain ([2606:6d00:159:2900:919:5388:4e10:5949])
  by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-536127efe4asm32130611cf.19.2026.10.15.11.11.25
+ d75a77b69052e-536127efe4asm32130611cf.19.2026.10.15.11.11.34
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Oct 2026 11:11:26 -0700 (PDT)
+ Thu, 15 Oct 2026 11:11:35 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH v3 02/16] hw/arm/bcm2838_pcie: add BCM2838 PCIe host
-Date: Thu, 15 Oct 2026 14:11:07 -0400
-Message-ID: <20261015181122.60608-3-marcelomanzo@gmail.com>
+ Sergey Kambalin <serg.oker@gmail.com>,
+ Sergey Kambalin <sergey.kambalin@auriga.com>,
+ Marcelo Manzo <marcelomanzo@gmail.com>, Jason Wang <jasowangio@gmail.com>
+Subject: [PATCH v3 09/16] hw/net/bcm2838_genet: add GENET register access
+ macros
+Date: Thu, 15 Oct 2026 14:11:14 -0400
+Message-ID: <20261015181122.60608-10-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261015181122.60608-1-marcelomanzo@gmail.com>
 References: <20261015181122.60608-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::835;
- envelope-from=marcelomanzo@gmail.com; helo=mail-qt1-x835.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-qt1-x82d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,342 +108,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add the BCM2838 PCIe host bridge model: config space, MMIO window,
-and register access for the root port.
+From: Sergey Kambalin <serg.oker@gmail.com>
 
-Per Peter Maydell's review of a later follow-up series, fold in what
-was originally a separate bugfix here, since this device isn't in
-upstream git yet and the bug was in code this patch itself introduces.
-Four defects fixed, all on the enumeration path (none of this was
-exercised until a later patch actually attaches a PCI device):
+Add offsetof()-based byte-offset macros for the register block
+layouts added in the previous patches (INTRL0/1, UMAC, TDMA/RDMA
+and their per-ring registers, HFB filters), used by the MMIO
+read/write dispatch implemented in the following patches.
 
-1. bcm2838_pcie_host_read/write computed
-   "offset - PCIE_CONFIG_SPACE_SIZE" on an unsigned hwaddr, which
-   underflows for every offset below 4KB. The root port's own config
-   space -- including vendor/device ID at offset 0 -- therefore always
-   fell into the out-of-range branch and read back as all-ones, i.e.
-   "no device present", so the guest stopped scanning immediately.
+Part of Sergey Kambalin's original Raspberry Pi 4B PCIe/GENET
+networking series (patchwork series 829638, posted to qemu-devel in
+2024, never merged). Carried forward and completed by Marcelo Manzo.
 
-2. pcie_host_mmcfg_init() was never called, yet both accessors
-   dereference pcie_hb->mmio.ops to service EXT_CFG_DATA. Once (1) was
-   fixed and the guest actually reached that path, it touched an
-   uninitialised MemoryRegion.
-
-3. The root port overrode PCIDeviceClass::config_read/config_write with
-   plain pci_default_*_config(). That bypasses rp_write_config() ->
-   pci_bridge_write_config(), so programming the bridge's memory window
-   never updated the bridge's address space and BARs behind the root
-   port stayed unreachable. Drop the overrides and dispatch through
-   pci_host_config_{read,write}_common() so the device's real handlers
-   run.
-
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 ---
- hw/arm/bcm2838_pcie.c         | 226 ++++++++++++++++++++++++++++++++++
- hw/arm/trace-events           |   4 +
- include/hw/arm/bcm2838_pcie.h |  22 ++++
- 3 files changed, 252 insertions(+)
+ include/hw/net/bcm2838_genet.h | 78 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 78 insertions(+)
 
-diff --git a/hw/arm/bcm2838_pcie.c b/hw/arm/bcm2838_pcie.c
-index 96a45c1863..88166d1f44 100644
---- a/hw/arm/bcm2838_pcie.c
-+++ b/hw/arm/bcm2838_pcie.c
-@@ -11,12 +11,237 @@
- #include "qapi/error.h"
- #include "hw/core/irq.h"
- #include "hw/pci-host/gpex.h"
-+#include "hw/pci/pci_host.h"
- #include "hw/core/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "hw/arm/bcm2838_pcie.h"
- #include "trace.h"
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index 12439b580d..b9895933b6 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -22,9 +22,87 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_DMA_RING_CNT      17
+ #define BCM2838_GENET_DMA_RING_DEFAULT  (BCM2838_GENET_DMA_RING_CNT - 1)
  
-+static uint64_t bcm2838_pcie_host_read(void *opaque, hwaddr offset,
-+                                       unsigned size) {
-+    hwaddr mmcfg_addr;
-+    uint64_t value = ~0;
-+    BCM2838PcieHostState *s = opaque;
-+    PCIExpressHost *pcie_hb = PCIE_HOST_BRIDGE(s);
-+    uint8_t *root_regs = s->root_port.regs;
-+    uint32_t *cfg_idx = (uint32_t *)(root_regs + BCM2838_PCIE_EXT_CFG_INDEX
-+                                     - PCIE_CONFIG_SPACE_SIZE);
-+
-+    if (offset < PCIE_CONFIG_SPACE_SIZE) {
-+        /*
-+         * The first 4KB of the window is the root port's own PCI config
-+         * space (vendor/device ID, BARs, capabilities). Serve it from the
-+         * real PCIDevice, not from the raw regs[] shadow buffer, which is
-+         * only backing store for the controller registers above 4KB.
-+         */
-+        value = pci_host_config_read_common(PCI_DEVICE(&s->root_port),
-+                                            offset, PCIE_CONFIG_SPACE_SIZE,
-+                                            size);
-+    } else if (offset - PCIE_CONFIG_SPACE_SIZE + size
-+               <= sizeof(s->root_port.regs)) {
-+        switch (offset) {
-+        case BCM2838_PCIE_EXT_CFG_DATA
-+            ... BCM2838_PCIE_EXT_CFG_DATA + PCIE_CONFIG_SPACE_SIZE - 1:
-+            mmcfg_addr = *cfg_idx
-+                | PCIE_MMCFG_CONFOFFSET(offset - BCM2838_PCIE_EXT_CFG_DATA);
-+            value = pcie_hb->mmio.ops->read(opaque, mmcfg_addr, size);
-+            break;
-+        default:
-+            memcpy(&value, root_regs + offset - PCIE_CONFIG_SPACE_SIZE, size);
-+        }
-+    } else {
-+        qemu_log_mask(
-+            LOG_GUEST_ERROR,
-+            "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
-+            __func__, size, offset);
-+    }
-+
-+    trace_bcm2838_pcie_host_read(size, offset, value);
-+    return value;
-+}
-+
-+static void bcm2838_pcie_host_write(void *opaque, hwaddr offset,
-+                                    uint64_t value, unsigned size) {
-+    hwaddr mmcfg_addr;
-+    BCM2838PcieHostState *s = opaque;
-+    PCIExpressHost *pcie_hb = PCIE_HOST_BRIDGE(s);
-+    uint8_t *root_regs = s->root_port.regs;
-+    uint32_t *cfg_idx = (uint32_t *)(root_regs + BCM2838_PCIE_EXT_CFG_INDEX
-+                                     - PCIE_CONFIG_SPACE_SIZE);
-+
-+    trace_bcm2838_pcie_host_write(size, offset, value);
-+
-+    if (offset < PCIE_CONFIG_SPACE_SIZE) {
-+        /* Root port's own PCI config space -- see read path above */
-+        pci_host_config_write_common(PCI_DEVICE(&s->root_port), offset,
-+                                     PCIE_CONFIG_SPACE_SIZE, value, size);
-+    } else if (offset - PCIE_CONFIG_SPACE_SIZE + size
-+               <= sizeof(s->root_port.regs)) {
-+        switch (offset) {
-+        case BCM2838_PCIE_EXT_CFG_DATA
-+            ... BCM2838_PCIE_EXT_CFG_DATA + PCIE_CONFIG_SPACE_SIZE - 1:
-+            mmcfg_addr = *cfg_idx
-+                | PCIE_MMCFG_CONFOFFSET(offset - BCM2838_PCIE_EXT_CFG_DATA);
-+            pcie_hb->mmio.ops->write(opaque, mmcfg_addr, value, size);
-+            break;
-+        default:
-+            memcpy(root_regs + offset - PCIE_CONFIG_SPACE_SIZE, &value, size);
-+        }
-+    } else {
-+        qemu_log_mask(
-+            LOG_GUEST_ERROR,
-+            "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
-+            __func__, size, offset);
-+    }
-+}
-+
-+static const MemoryRegionOps bcm2838_pcie_host_ops = {
-+    .read = bcm2838_pcie_host_read,
-+    .write = bcm2838_pcie_host_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {.max_access_size = sizeof(uint64_t)},
-+};
-+
-+int bcm2838_pcie_host_set_irq_num(BCM2838PcieHostState *s, int index, int spi)
-+{
-+    if (index >= BCM2838_PCIE_NUM_IRQS) {
-+        return -EINVAL;
-+    }
-+
-+    s->irq_num[index] = spi;
-+    return 0;
-+}
-+
-+static void bcm2838_pcie_host_set_irq(void *opaque, int irq_num, int level)
-+{
-+    BCM2838PcieHostState *s = opaque;
-+
-+    qemu_set_irq(s->irq[irq_num], level);
-+}
-+
-+static PCIINTxRoute bcm2838_pcie_host_route_intx_pin_to_irq(void *opaque,
-+                                                            int pin)
-+{
-+    PCIINTxRoute route;
-+    BCM2838PcieHostState *s = opaque;
-+
-+    route.irq = s->irq_num[pin];
-+    route.mode = route.irq < 0 ? PCI_INTX_DISABLED : PCI_INTX_ENABLED;
-+
-+    return route;
-+}
-+
-+static int bcm2838_pcie_host_map_irq(PCIDevice *pci_dev, int pin)
-+{
-+    return pin;
-+}
-+
-+static void bcm2838_pcie_host_realize(DeviceState *dev, Error **errp)
-+{
-+    PCIHostState *pci = PCI_HOST_BRIDGE(dev);
-+    BCM2838PcieHostState *s = BCM2838_PCIE_HOST(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
-+
-+    int i;
-+
-+    /*
-+     * Initialise the ECAM config-space window. The BCM2838 does not expose
-+     * it to the guest directly; config accesses are made indirectly through
-+     * the EXT_CFG_INDEX/EXT_CFG_DATA register pair, which dispatch into
-+     * pex->mmio. Without this the ops pointer is never set up.
-+     */
-+    pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
-+
-+    memory_region_init_io(&s->cfg_regs, OBJECT(s), &bcm2838_pcie_host_ops, s,
-+                          "bcm2838_pcie_cfg_regs", BCM2838_PCIE_REGS_SIZE);
-+    sysbus_init_mmio(sbd, &s->cfg_regs);
-+
-+    /*
-+     * The MemoryRegions io_mmio and io_ioport that we pass to
-+     * pci_register_root_bus() are not the same as the MemoryRegions
-+     * io_mmio_window and io_ioport_window that we expose as SysBus MRs.
-+     * The difference is in the behavior of accesses to addresses where no PCI
-+     * device has been mapped.
-+     *
-+     * io_mmio and io_ioport are the underlying PCI view of the PCI address
-+     * space, and when a PCI device does a bus master access to a bad address
-+     * this is reported back to it as a transaction failure.
-+     *
-+     * io_mmio_window and io_ioport_window implement "unmapped addresses read as
-+     * -1 and ignore writes"; this is a traditional x86 PC behavior, which is
-+     * not mandated properly by the PCI spec but expected by the majority of
-+     * PCI-using guest software, including Linux.
-+     *
-+     * We implement it in the PCIe host controller, by providing the *_window
-+     * MRs, which are containers with io ops that implement the 'background'
-+     * behavior and which hold the real PCI MRs as sub-regions.
-+     */
-+    memory_region_init(&s->io_mmio, OBJECT(s), "bcm2838_pcie_mmio", UINT64_MAX);
-+    memory_region_init(&s->io_ioport, OBJECT(s), "bcm2838_pcie_ioport",
-+                       64 * 1024);
-+
-+    memory_region_init_io(&s->io_mmio_window, OBJECT(s),
-+                            &unassigned_io_ops, OBJECT(s),
-+                            "bcm2838_pcie_mmio_window", UINT64_MAX);
-+    memory_region_init_io(&s->io_ioport_window, OBJECT(s),
-+                            &unassigned_io_ops, OBJECT(s),
-+                            "bcm2838_pcie_ioport_window", 64 * 1024);
-+
-+    memory_region_add_subregion(&s->io_mmio_window, 0, &s->io_mmio);
-+    memory_region_add_subregion(&s->io_ioport_window, 0, &s->io_ioport);
-+    sysbus_init_mmio(sbd, &s->io_mmio_window);
-+    sysbus_init_mmio(sbd, &s->io_ioport_window);
-+
-+    for (i = 0; i < BCM2838_PCIE_NUM_IRQS; i++) {
-+        sysbus_init_irq(sbd, &s->irq[i]);
-+        s->irq_num[i] = -1;
-+    }
-+
-+    pci->bus = pci_register_root_bus(dev, "pcie.0", bcm2838_pcie_host_set_irq,
-+                                     bcm2838_pcie_host_map_irq, s, &s->io_mmio,
-+                                     &s->io_ioport, 0, BCM2838_PCIE_NUM_IRQS,
-+                                     TYPE_PCIE_BUS);
-+    pci_bus_set_route_irq_fn(pci->bus, bcm2838_pcie_host_route_intx_pin_to_irq);
-+    qdev_realize(DEVICE(&s->root_port), BUS(pci->bus), &error_fatal);
-+}
-+
-+static const char *bcm2838_pcie_host_root_bus_path(PCIHostState *host_bridge,
-+                                                   PCIBus *rootbus)
-+{
-+    return "0000:00";
-+}
-+
-+static void bcm2838_pcie_host_class_init(ObjectClass *class, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(class);
-+    PCIHostBridgeClass *hc = PCI_HOST_BRIDGE_CLASS(class);
-+
-+    hc->root_bus_path = bcm2838_pcie_host_root_bus_path;
-+    dc->realize = bcm2838_pcie_host_realize;
-+    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-+    dc->fw_name = "pci";
-+}
-+
-+static void bcm2838_pcie_host_initfn(Object *obj)
-+{
-+    BCM2838PcieHostState *s = BCM2838_PCIE_HOST(obj);
-+    BCM2838PcieRootState *root = &s->root_port;
-+
-+    object_initialize_child(obj, "root_port", root, TYPE_BCM2838_PCIE_ROOT);
-+    qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-+    qdev_prop_set_bit(DEVICE(root), "multifunction", false);
-+}
-+
-+static const TypeInfo bcm2838_pcie_host_info = {
-+    .name       = TYPE_BCM2838_PCIE_HOST,
-+    .parent     = TYPE_PCIE_HOST_BRIDGE,
-+    .instance_size = sizeof(BCM2838PcieHostState),
-+    .instance_init = bcm2838_pcie_host_initfn,
-+    .class_init = bcm2838_pcie_host_class_init,
-+};
-+
- /*
-  * RC root part (D0:F0)
-  */
-@@ -77,6 +302,7 @@ static const TypeInfo bcm2838_pcie_root_info = {
- static void bcm2838_pcie_register(void)
- {
-     type_register_static(&bcm2838_pcie_root_info);
-+    type_register_static(&bcm2838_pcie_host_info);
- }
++#define BCM2838_GENET_HFB_FILTER_REGS     offsetof(BCM2838GenetRegs, hfb)
++#define BCM2838_GENET_HFB_FILTER_REG(reg) (BCM2838_GENET_HFB_FILTER_REGS \
++                                           + offsetof(BCM2838GenetRegsHfb, reg))
+ #define BCM2838_GENET_HFB_FILTER_CNT      48
+ #define BCM2838_GENET_HFB_FILTER_SIZE     128
  
- type_init(bcm2838_pcie_register)
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 1b16f710fe..579d4b12c2 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -96,3 +96,7 @@ z2_aer915_event(int8_t event, int8_t len) "i2c event =0x%x len=%d bytes"
++#define BCM2838_GENET_INTRL0_REG(reg)   (offsetof(BCM2838GenetRegs, intrl0) \
++                                        + offsetof(BCM2838GenetRegsIntrl0, reg))
++#define BCM2838_GENET_INTRL0_SET        BCM2838_GENET_INTRL0_REG(set)
++#define BCM2838_GENET_INTRL0_CLEAR      BCM2838_GENET_INTRL0_REG(clear)
++#define BCM2838_GENET_INTRL0_MASK_SET   BCM2838_GENET_INTRL0_REG(mask_set)
++#define BCM2838_GENET_INTRL0_MASK_CLEAR BCM2838_GENET_INTRL0_REG(mask_clear)
++
++#define BCM2838_GENET_INTRL1_REG(reg)   (offsetof(BCM2838GenetRegs, intrl1) \
++                                        + offsetof(BCM2838GenetRegsIntrl1, reg))
++#define BCM2838_GENET_INTRL1_SET        BCM2838_GENET_INTRL1_REG(set)
++#define BCM2838_GENET_INTRL1_CLEAR      BCM2838_GENET_INTRL1_REG(clear)
++#define BCM2838_GENET_INTRL1_MASK_SET   BCM2838_GENET_INTRL1_REG(mask_set)
++#define BCM2838_GENET_INTRL1_MASK_CLEAR BCM2838_GENET_INTRL1_REG(mask_clear)
++
++#define BCM2838_GENET_UMAC_REG(reg)     (offsetof(BCM2838GenetRegs, umac) \
++                                         + offsetof(BCM2838GenetRegsUmac, reg))
++#define BCM2838_GENET_UMAC_CMD          BCM2838_GENET_UMAC_REG(cmd)
++#define BCM2838_GENET_UMAC_MAC0         BCM2838_GENET_UMAC_REG(mac0)
++#define BCM2838_GENET_UMAC_MAC1         BCM2838_GENET_UMAC_REG(mac1)
++#define BCM2838_GENET_UMAC_MDIO_CMD     BCM2838_GENET_UMAC_REG(mdio_cmd)
++
++#define BCM2838_GENET_TDMA_REGS         offsetof(BCM2838GenetRegs, tdma)
++#define BCM2838_GENET_TDMA_REG(reg)     (BCM2838_GENET_TDMA_REGS \
++                                         + offsetof(BCM2838GenetRegsTdma, reg))
++#define BCM2838_GENET_TDMA_RINGS        BCM2838_GENET_TDMA_REG(rings)
++#define BCM2838_GENET_TDMA_RING_CFG     BCM2838_GENET_TDMA_REG(ring_cfg)
++#define BCM2838_GENET_TDMA_CTRL         BCM2838_GENET_TDMA_REG(ctrl)
++#define BCM2838_GENET_TDMA_STATUS       BCM2838_GENET_TDMA_REG(status)
++
++#define BCM2838_GENET_RDMA_REGS         offsetof(BCM2838GenetRegs, rdma)
++#define BCM2838_GENET_RDMA_REG(reg)     (BCM2838_GENET_RDMA_REGS \
++                                         + offsetof(BCM2838GenetRegsRdma, reg))
++#define BCM2838_GENET_RDMA_RINGS        BCM2838_GENET_RDMA_REG(rings)
++#define BCM2838_GENET_RDMA_RING_CFG     BCM2838_GENET_RDMA_REG(ring_cfg)
++#define BCM2838_GENET_RDMA_CTRL         BCM2838_GENET_RDMA_REG(ctrl)
++#define BCM2838_GENET_RDMA_STATUS       BCM2838_GENET_RDMA_REG(status)
++
++#define BCM2838_GENET_TRING_REG(reg)    offsetof(BCM2838GenetTdmaRing, reg)
++#define BCM2838_GENET_TRING_WRITE_PTR BCM2838_GENET_TRING_REG(write_ptr)
++#define BCM2838_GENET_TRING_WRITE_PTR_HI BCM2838_GENET_TRING_REG(write_ptr_hi)
++#define BCM2838_GENET_TRING_PROD_INDEX BCM2838_GENET_TRING_REG(prod_index)
++#define BCM2838_GENET_TRING_CONS_INDEX BCM2838_GENET_TRING_REG(cons_index)
++#define BCM2838_GENET_TRING_RING_BUF_SIZE BCM2838_GENET_TRING_REG(ring_buf_size)
++#define BCM2838_GENET_TRING_RING_START_ADDR BCM2838_GENET_TRING_REG(start_addr)
++#define BCM2838_GENET_TRING_RING_START_ADDR_HI BCM2838_GENET_TRING_REG(start_addr_hi)
++#define BCM2838_GENET_TRING_RING_END_ADDR BCM2838_GENET_TRING_REG(end_addr)
++#define BCM2838_GENET_TRING_RING_END_ADDR_HI BCM2838_GENET_TRING_REG(end_addr_hi)
++#define BCM2838_GENET_TRING_RING_MBUF_DONE_TRESH BCM2838_GENET_TRING_REG(mbuf_done_tresh)
++#define BCM2838_GENET_TRING_RING_FLOW_PERIOD BCM2838_GENET_TRING_REG(flow_period)
++#define BCM2838_GENET_TRING_RING_READ_PTR BCM2838_GENET_TRING_REG(read_ptr)
++#define BCM2838_GENET_TRING_RING_READ_PTR_HI BCM2838_GENET_TRING_REG(read_ptr_hi)
++
++#define BCM2838_GENET_RRING_REG(reg)    offsetof(BCM2838GenetRdmaRing, reg)
++#define BCM2838_GENET_RRING_WRITE_PTR BCM2838_GENET_RRING_REG(write_ptr)
++#define BCM2838_GENET_RRING_WRITE_PTR_HI BCM2838_GENET_RRING_REG(write_ptr_hi)
++#define BCM2838_GENET_RRING_PROD_INDEX BCM2838_GENET_RRING_REG(prod_index)
++#define BCM2838_GENET_RRING_CONS_INDEX BCM2838_GENET_RRING_REG(cons_index)
++#define BCM2838_GENET_RRING_RING_BUF_SIZE BCM2838_GENET_RRING_REG(ring_buf_size)
++#define BCM2838_GENET_RRING_RING_START_ADDR BCM2838_GENET_RRING_REG(start_addr)
++#define BCM2838_GENET_RRING_RING_START_ADDR_HI BCM2838_GENET_RRING_REG(start_addr_hi)
++#define BCM2838_GENET_RRING_RING_END_ADDR BCM2838_GENET_RRING_REG(end_addr)
++#define BCM2838_GENET_RRING_RING_END_ADDR_HI BCM2838_GENET_RRING_REG(end_addr_hi)
++#define BCM2838_GENET_RRING_RING_MBUF_DONE_TRESH BCM2838_GENET_RRING_REG(mbuf_done_tresh)
++#define BCM2838_GENET_RRING_RING_XON_XOFF_TRESH BCM2838_GENET_RRING_REG(xon_xoff_tresh)
++#define BCM2838_GENET_RRING_RING_READ_PTR BCM2838_GENET_RRING_REG(read_ptr)
++#define BCM2838_GENET_RRING_RING_READ_PTR_HI BCM2838_GENET_RRING_REG(read_ptr_hi)
++
++
++#define BCM2838_GENET_PHY_REG(reg)      (offsetof(BCM2838GenetPhyRegs, reg) / 2)
++#define BCM2838_GENET_PHY_BMCR          BCM2838_GENET_PHY_REG(bmcr)
++#define BCM2838_GENET_PHY_AUX_CTL       BCM2838_GENET_PHY_REG(aux_ctl)
++#define BCM2838_GENET_PHY_SHD           BCM2838_GENET_PHY_REG(shd)
++#define BCM2838_GENET_EXP_DATA          BCM2838_GENET_PHY_REG(exp_data)
++#define BCM2838_GENET_EXP_SEL           BCM2838_GENET_PHY_REG(exp_ctrl)
++
+ #define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
+ #define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
  
- # bcm2838.c
- bcm2838_gic_set_irq(int irq, int level) "gic irq:%d lvl:%d"
-+
-+# bcm2838_pcie.c
-+bcm2838_pcie_host_read(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
-+bcm2838_pcie_host_write(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
-diff --git a/include/hw/arm/bcm2838_pcie.h b/include/hw/arm/bcm2838_pcie.h
-index fe7a6cff19..18ab04f24a 100644
---- a/include/hw/arm/bcm2838_pcie.h
-+++ b/include/hw/arm/bcm2838_pcie.h
-@@ -16,6 +16,9 @@
- #include "hw/pci/pcie_port.h"
- #include "qom/object.h"
- 
-+#define TYPE_BCM2838_PCIE_HOST "bcm2838-pcie-host"
-+OBJECT_DECLARE_SIMPLE_TYPE(BCM2838PcieHostState, BCM2838_PCIE_HOST)
-+
- #define TYPE_BCM2838_PCIE_ROOT "bcm2838-pcie-root"
- OBJECT_DECLARE_TYPE(BCM2838PcieRootState, BCM2838PcieRootClass,
-                     BCM2838_PCIE_ROOT)
-@@ -50,4 +53,23 @@ struct BCM2838PcieRootClass {
- };
- 
- 
-+struct BCM2838PcieHostState {
-+    /*< private >*/
-+    PCIExpressHost parent_obj;
-+
-+    /*< public >*/
-+    BCM2838PcieRootState root_port;
-+
-+    MemoryRegion cfg_regs;
-+    MemoryRegion io_ioport;
-+    MemoryRegion io_mmio;
-+    MemoryRegion io_ioport_window;
-+    MemoryRegion io_mmio_window;
-+
-+    qemu_irq irq[BCM2838_PCIE_NUM_IRQS];
-+    int irq_num[BCM2838_PCIE_NUM_IRQS];
-+};
-+
-+int bcm2838_pcie_host_set_irq_num(BCM2838PcieHostState *s, int index, int spi);
-+
- #endif /* BCM2838_PCIE_H */
 -- 
 2.55.0
 

@@ -4,95 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613B1CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:17:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 451F8CCA463
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 16:07:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN6s-0006aP-4p; Thu, 15 Oct 2026 11:11:10 -0400
+	id 1xHNz0-0001XN-EZ; Thu, 15 Oct 2026 12:07:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN6q-0006UX-RB
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:08 -0400
-Received: from mail-wr1-f53.google.com ([209.85.221.53])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN6p-0001iF-1J
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:08 -0400
-Received: by mail-wr1-f53.google.com with SMTP id
- ffacd0b85a97d-48c4be28b82so562347f8f.2
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:11:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792077065; x=1792681865;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=QALtB1JjwJWKzUBaARxhOo0RyLWLhPW//31H+iGWjAk=;
- b=E8i+sajTUR1jlbfyFa5cxeSfmPgDllbmM9rP1W4DGx/cwmjaQ/F8w/5VLWZCdH2jw2
- T3dTPf1ctQxualUN2MzUCWmSrLE1CDZRdiojlm0F+KqdqUEeZ0d3tJBOIyWbDZzS0w1Y
- RY8Lp+XXIYvKD74AZ2oiRPwzPL4uVRAjLOang2f1qofvL+4HscX8zEtwrkYOBBI3bit9
- o4m2CdFT036AB1M5yJYMxW90Ao2bzDyeOadpGdOuok6Vf6tE/A7kLyfMmDOJ3DsThtQy
- Gge9jtz+GpCAxUmPglm4ZAFKih06tm2cd0HQMTpbugsCDw9guxj1d7aa4eBiOArTaOHh
- OhfA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBz0njEQPRNMd/TyhH0VxfUzfp8RORRQ8Moko7ZBG4J1+9+1/I+yMIIqUzMlm5luejryIYwzmpXilA==@nongnu.org
-X-Gm-Message-State: AFq9FYLu9x1k30U3SyGCB3FyZJcM68hvgS+8FZC/pxb51I/zowawe2HD
- LYkBszQYD3qHc0JKKzXtgnwr8+GCo8Kj+n8hRx8l/BgZry4yuPUJ8dI9
-X-Gm-Gg: AYBFou15wtuDlPJLSE3lW9zdmolx7uuVdtrJIjrc6TAqEQTDGKKhNjQBoEL3L3DhyA8
- 3GSFzISUUjIr9P+nU+q9gsiXKmw9FgbjC4TSAopqkS1Ik/iDlm07d/b2sQBiAq1XAxOp0Sxc4QP
- YuU2MWWHGxtalqIwRqKzSsyMab430mnuNdYhYHVjUzAFZ3AkzQJniX8QH0HIvbNKUmRgP/EymsA
- PLeGwDUWW3TuNiPOYprjGH09Ln+wQYVzyD/8uEjVqjLmbcDrAhhwdZhFtbpUF/64acM/2PKu0We
- UerQmjNQ80Wy4G3jFd1nTq45QWklZ3V0Z+/JjHuBE7fv7tFfk93MiZx5aV7ZGnZIBQWwR7b9Rv9
- Mnshazr4hli2JBU1ibWwUOQLquiP+lawRyTMOmqONGJZrbkJkydIOwqy/SqRuNKlXQBtCMq9Vpa
- CDu/G4rsFgGqj2cXLAmo+w6XbN5qccinroH81CLVf0ISCPa1Wdcypnj7INPNc3gvR3hgdGf4cZl
- sJUIiKExRHj75Xn2qf2KT3+kTmcKVL9AfMzT9kGYNePeg==
-X-Received: by 2002:a05:6000:2606:b0:48d:eb45:742d with SMTP id
- ffacd0b85a97d-48deb45757dmr10400041f8f.22.1792077065222; 
- Thu, 15 Oct 2026 08:11:05 -0700 (PDT)
-Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48de0ac5265sm20302446f8f.41.2026.10.15.08.11.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:11:03 -0700 (PDT)
-Date: Thu, 15 Oct 2026 13:57:47 +0200
-Subject: [PATCH 09/22] hw/sensor: tmp421: migrate the exact measurement
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHNyy-0001Wz-Am
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 12:07:04 -0400
+Received: from smtpout10.mo538.mail-out.ovh.net ([51.210.91.39])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHNyv-0007KC-It
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 12:07:03 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [79.137.60.225])
+ by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4j5Ccy1ZW7z5vlT;
+ Thu, 15 Oct 2026 16:06:57 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 15 Oct 2026 16:06:57 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.64])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4j5Ccx3q5kz6MYb;
+ Thu, 15 Oct 2026 16:06:57 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.5])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id D5D16202BDF; 
+ Thu, 15 Oct 2026 16:06:56 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-108S00286f4d019-78fa-41a3-b5ab-c9f8449c867b,
+ 39EAFCA45846CB7F25CFDE7C5DD07A896C21AD00) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <653d7a76-323a-4ab0-831c-1d61763abc49@kaod.org>
+Date: Thu, 15 Oct 2026 18:06:56 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-clemente-v1-9-bf591886b5b6@free.fr>
-References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
-In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+To: "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ARM cores" <qemu-arm@nongnu.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+Cc: 'Jamin Lin' <jamin_lin@aspeedtech.com>,
  Emmanuel Blot <emmanuel.blot@free.fr>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=3784;
- i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=WkdVkGiPzxeWatF4oFQP9cdVEfej5xbiLCyVJyd/Exg=;
- b=iTInpBgYCl9BA8spP92Lp0rju5OGi6Ykf9mvFhRxNkqTIW6K6EIizFAEUjgVD8Eh5sLol4dj2
- iMHQ7e+ePNlApbO+C2RWgUwGVgNV5pw0daZjYdZBZfl7npDyKU4ULV2
-X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
- pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.53; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f53.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Subject: Aspeed series for QEMU 11.2
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 18023687185740835851
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTED+3/Lr0Q5HWnK1OuMNOpXmHEzCMvbB/zGMTDO1ecbYJem3i0DJ/gTzjA91y9/Wr+c36SQDnO/B4eZZ9UTZjghG6ssHrRwiDdQjs+a54N5lSVA/bnf1qB8BZGgi/yjNZALjy+O0axf4NRPxxkGRypY4iThgqDk5Xt7XXHcJQ7TDn50DXyGQfZSbiEtuoNa3Oo1OxJxUFL9kIAnefuI/IWLOu8MF7/jbFYHJTAdO2YxZJkiuJr75hClbDXGAMieq+KmCJiPR2DGmc1XjaubHxyntTr71pZV6WKQMUXLJUavMjf/FigvcOvymhHIYhV/qloKZ3QlxAoa7MgZPDlCa2wuAAqF9tmZWhVt7ddJ8KoaFibCxjNDHy/8ljlPyhiFq7t64MQNsb8I/WgED0CDJ+7UTgYcZBIN44qCBLHLk6NU/Po/F0sxh5ZWa3pH1GNqhWe+RK8tqXUETZm25YosY4I/15h2g4M6yIWJfhaEAAU5X42beWP8Asf7UbkPN9Zj8wWL/gF3M5h+mJmv8EWt4HGO2r0/aHKIaKN0/jEW4F7lr/TOwIeqqYURoIPp+TIP4hFwFXZsq2SjW00D/Gh229CdiOD27A6RWgJsr1rUlKCtoSrjwgKIV9MLJJbA4dR4JmroG2Ba9BtCu6AxZqFQjQRXEgaKCMBAJxgjAmFCjwTihA
+DKIM-Signature: a=rsa-sha256; bh=9MymVRGhB1bVk17JaU3B6twDdqP/0kZ+1jqiwyTs1yk=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1792080418; v=1;
+ b=rv82+C8W72XOIxXYNJDfvReHLhWPxZ886JNu1Qe54T6ZNrxEPdve0fTiruDKwR4acef2fNtd
+ VYuDJCorIGoB9YBpSW51BGbYNoXQQ7Btpso0ItUDsxkMiLxQfHm4/bUgpJxgdpwHt6eWUr6YjX4
+ nu1buWO1/aPWBwgNs3mkRNOZUS6GLuEvisZ+6+xElwUq24Ow9ZqLHnJ5z3tSwqcSN2+lHBncav6
+ +qTl8C8LwsH6pPnGlum/2H2wPT0lGkJlfwZy9QRgXl2Wd1wuwj+YcdssU6OMCXDGJ95SDViGgqY
+ u9OYozB3TJSBVKO712mWssWMBykmUTW4eJ0QCHtB25vpQ==
+Received-SPF: pass client-ip=51.210.91.39; envelope-from=clg@kaod.org;
+ helo=smtpout10.mo538.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,120 +125,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
-From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The register form the stream carries only resolves a sixteenth of a
-degree, so a temperature set through the property does not survive a
-round trip unless it happens to fall on that grid.
+Hello !
 
-Add a subsection holding the measurement itself, sent only when the
-register form cannot reproduce it. A stream from a sensor holding an
-expressible value -- the usual case, boards preset whole degrees --
-therefore stays loadable by a QEMU that knows nothing of it.
+I will be out next week and we are getting close to soft freeze. Here
+is a status of the Aspeed series that we could merge in this cycle :
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
----
- hw/sensor/tmp421.c | 60 ++++++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 58 insertions(+), 2 deletions(-)
+Close to be ready :
 
-diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-index 1e061045cb..e391bb20e1 100644
---- a/hw/sensor/tmp421.c
-+++ b/hw/sensor/tmp421.c
-@@ -59,6 +59,7 @@ struct TMP421State {
- 
-     /* migration only: the register form the stream carries */
-     int16_t temperature[4];
-+    bool temp_mc_loaded;
- 
-     uint8_t status;
-     uint8_t config[2];
-@@ -379,6 +380,56 @@ static const VMStateDescription vmstate_tmp421_n_correct = {
-     }
- };
- 
-+/*
-+ * That form only resolves a sixteenth of a degree, so the measurement itself
-+ * travels in a subsection -- sent only when the register form cannot
-+ * reproduce it, which leaves the usual stream loadable by a QEMU that does
-+ * not know the subsection.
-+ */
-+static bool tmp421_temp_mc_needed(void *opaque)
-+{
-+    TMP421State *s = opaque;
-+    bool ext_range = s->config[0] & TMP421_CONFIG_RANGE;
-+    int32_t offset = ext_range ? TMP421_EXT_OFFSET : 0;
-+
-+    /*
-+     * The register form reproduces a measurement when the conversion divides
-+     * exactly and the encoder had nothing to clamp. Asking the decoder
-+     * instead would settle the question with the function whose result the
-+     * subsection exists to protect, and hide any error it has.
-+     */
-+    for (unsigned channel = 0; channel < ARRAY_SIZE(s->temp_mc); channel++) {
-+        int32_t scaled = s->temp_mc[channel] * 256;
-+
-+        if (scaled % 1000 ||
-+            (uint16_t)(scaled / 1000 + offset) != tmp421_encode(s, channel)) {
-+            return true;
-+        }
-+    }
-+
-+    return false;
-+}
-+
-+static int tmp421_temp_mc_post_load(void *opaque, int version_id)
-+{
-+    TMP421State *s = opaque;
-+
-+    s->temp_mc_loaded = true;
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_tmp421_temp_mc = {
-+    .name = "TMP421/temperature-mc",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = tmp421_temp_mc_needed,
-+    .post_load = tmp421_temp_mc_post_load,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_INT32_ARRAY(temp_mc, TMP421State, 4),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- /*
-  * The stream carries the register form of the measurement: that is what a
-  * QEMU predating the millidegree state writes, and what it expects back.
-@@ -398,9 +449,13 @@ static int tmp421_post_load(void *opaque, int version_id)
- {
-     TMP421State *s = opaque;
- 
--    for (unsigned channel = 0; channel < ARRAY_SIZE(s->temp_mc); channel++) {
--        s->temp_mc[channel] = tmp421_decode(s, s->temperature[channel]);
-+    if (!s->temp_mc_loaded) {
-+        for (unsigned channel = 0; channel < ARRAY_SIZE(s->temp_mc);
-+             channel++) {
-+            s->temp_mc[channel] = tmp421_decode(s, s->temperature[channel]);
-+        }
-     }
-+    s->temp_mc_loaded = false;
- 
-     return 0;
- }
-@@ -423,6 +478,7 @@ static const VMStateDescription vmstate_tmp421 = {
-         VMSTATE_END_OF_LIST()
-     },
-     .subsections = (const VMStateDescription * const []) {
-+        &vmstate_tmp421_temp_mc,
-         &vmstate_tmp421_n_correct,
-         NULL
-     }
++ (v5) hw/usb: Add a usbredir server transport
+   https://lore.kernel.org/qemu-devel/20261015093417.573063-2-jamin_lin@aspeedtech.com
++ (v2) hw/usb/aspeed-udc: Add AST1030 UDC support
+   https://lore.kernel.org/qemu-devel/20261005064418.3060881-2-jamin_lin@aspeedtech.com
 
--- 
-2.53.0-Meta
+Please help Emmanuel get this reviewed  :
 
++ (v3) Aspeed: I2C device models and the Minerva BMC
+   https://lore.kernel.org/qemu-devel/20261015-bmc-minerva-v3-1-7d50c8a108e5@free.fr
+
+Look simple enough for QEMU 11.2, will check when I am back :
+
++ (v1) hw/arm/aspeed: Add AST1040 FMC/SPI controllers and
+   https://lore.kernel.org/qemu-devel/20261015055642.106204-2-jamin_lin@aspeedtech.com
++ (v1) hw/arm/aspeed: Add AST1080 SoC and EVB support
+   https://lore.kernel.org/qemu-devel/20261015063625.186708-2-jamin_lin@aspeedtech.com
+
+This didn't get any reviews yet (so for later)
+
++ (v2) Add ASPEED VGA PCI device support
+   https://lore.kernel.org/qemu-devel/20260910014447.4110781-2-jamin_lin@aspeedtech.com
+
+There are others as well, but honestly, I think this update is already
+significant enough.
+
+Thanks,
+
+C.
 

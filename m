@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B3DECC6B30
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:33:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2847FCC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:33:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHIgT-0004Sr-VT; Thu, 15 Oct 2026 06:27:38 -0400
+	id 1xHIj3-0000OP-Hk; Thu, 15 Oct 2026 06:30:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIew-0001vi-9g
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:26:02 -0400
-Received: from mail-wm1-f48.google.com ([209.85.128.48])
+ id 1xHIgo-0006Qo-UA
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:27:59 -0400
+Received: from mail-wr1-f43.google.com ([209.85.221.43])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIeu-0003qC-FK
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:26:01 -0400
-Received: by mail-wm1-f48.google.com with SMTP id
- 5b1f17b1804b1-4a19cba5c14so46017895e9.3
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:26:00 -0700 (PDT)
+ id 1xHIgl-0004Dt-Cs
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:27:58 -0400
+Received: by mail-wr1-f43.google.com with SMTP id
+ ffacd0b85a97d-48dee593f18so191215f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:27:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792059959; x=1792664759;
+ d=1e100.net; s=20260707; t=1792060074; x=1792664874;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=xmNroMpGWl2lemJA5PX/kG1o2rPRZcL22w1qYRUbH5U=;
- b=fqlsdZMeTvMfbIHKLz8o9PUlxzi7tFU97ZYOcJDEPiIFKaeGE1Q5tmkC6THEN/5wRL
- 265L93nKU10nGnEL0SBC52F/mGEH3SwqTLnjbY7g6EPdQ2u7CsRBSy24gv85u8LBPPl2
- b2Sl8No7yNZ0mFTTuFkt6glEhDsXAVqDcQkF6uSLWkxP4EY+tKn5Otasi+2MEUpgpr/b
- BfxgHxVDZl5IohgDhrZ94uh3QOtpUjpZivQS3jUEC0KzQFfLPbjTMyu+MqcdGpqbRa7D
- eF/aLqOdYq6WeHi7fIONwxSE6kYzlju/guKKQsZyn9o0bdHkzTJNSAJ58w8i859SvZwX
- Z/eQ==
+ bh=OBv6qYNLLciafZOhSz3JBSI4BbufyYmKgKzWmwX1St0=;
+ b=U4PngCBZXV3oiTxasD9onPX911foWCn73cvtvQg2Iy7rifQQgBFoYdYYieTPMhHYxU
+ WujG6UNysdLGgoKxt8hWsdKoJm9VEw6Dlh84oiK3XykeXOUKcncgIQpClfZmfoXwMgvf
+ oxLL3UKhgtGUZhJt29nCJSK2GAS9C3+qFninTSve3bCnHDARsUIk67CnF1Scx3n1BWKT
+ MudEChvHgVgWnqihB6Mrus8xxTGPBOr4mREXA0nyuXllJEaOZp30xBS5JxvRiKeEKxln
+ Ow+oOM0sB8OiMFNZkuR/df6+21DStaXoi3HyJ2PwVth8/GyadoC0h84Oiu15vyqA5AaV
+ 5JfQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwD0qCbDzyC1qmp9WNg0bMgo30L/KMkr13viLMbHCt89saX7cZKfCEKyit3/hqQ/ApMBErNoEKgSw==@nongnu.org
-X-Gm-Message-State: AFq9FYJSBva5epEnTBdTLr9v+Lv0r1T4IE4SPIOqLVSr2BOebM6YePSm
- nQ0PMTkdxwfKoDZ+9fZDvBmtx9wBjiARDnKES+x8ETr01n+i/TpS36fU
-X-Gm-Gg: AYBFou3xmpuc9HsDwNMkJb1GlEhTXuxjdML9JF9UmugVHxSsrdowCKDWZWNtYDKicgC
- 1woyBHLt6Vcruei2vpeqcZ5HEjES3yO8GGzfrcc+1my8CTHbogtYrWSl3YXrTl3MBnKlmlSY+aK
- M5GJNmjPrquiFNlnjvib2SiOUnWcSaFvGzeQoEkTyZ1n9+xAvwKh1Uvn1MhghUWB+ICtHo6IuzN
- pLdkQlUdVMJjNPWKTINdA58uiy2402/FS2nMHtoz7+1vcsq0/NggmZizynL9c+CRRRqiGhbQj1z
- w6RXHXadMVqAAV0xzvcluEGoq3CUqFBXmwtXd9rD9cipnJfFByc+Va3vLeYJuzL8nZfE70BAKHo
- JyG5jy8/3T7seWnXZWBfk6c5ebPLCsiFSIXtL8KYLrYfQ/nUwJ8LloUZfFGpBFMmySJKqw1OldG
- tHf5OTNAq8rvIc1DOVI0utRyQ4g7aRVk4o99+/gm3CzQZs0E+OdWgv5kOblQORAnvR4YpjG92bX
- LfLhsXN3MzdjoL2Bdyu5OVw5aLn+rjDOmAf1131xlOIkZU=
-X-Received: by 2002:a05:600c:1c21:b0:49c:cee0:f383 with SMTP id
- 5b1f17b1804b1-4a18e4b6241mr446293375e9.16.1792059958924; 
- Thu, 15 Oct 2026 03:25:58 -0700 (PDT)
+ AKwUvBxFnjwBARi0OVkvqS6BkpyoUjz8RkZQXJjWTbJtx8bKO6HJRp3dON4HdW8w9lss8fRvjmTVTwtjtQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLPDfnU95s9oP/a+YtGYPWn1q5C7+T3BOSOmFT3390ejlxUSl4V
+ 993YLuuxCiW39WbrT77PV+pH5RpFyHYBQYvehikYFEpX6n5X3nVbV/YT
+X-Gm-Gg: AYBFou3LeBimwgpuIWrxzLwKuBoI9K48eeUDEcpshv+oY8LIacVoaWLTvWfRx7NSyxL
+ KrWODGnTl4KnAUbt4vcA8I7LFltMZJ/7roq2UatQ+P6Dn6TqswJ9UkRIyNnPcb1neXmeGgNWjXa
+ L5F9TlzF1SRemZEX2mmUgrXEwpgvDSw/Aw3dGmylWnHDXvvVLcAd+QyqUPBC2/PL0y+jrJb+qMI
+ p4ti2eESyQoYifz9iXrWqDxvAGYMlLVpNfy8IrHQJ+htE+CVF/Ttpxx4xiLFOkDSm7EvkPjlfKX
+ Z8Ym8FnySkr9v1zuy9mMTB4XoMGbOML2l6RkqPEd+MKLDHKz01tYsMaGbQOS/PT51KleVVrLK3R
+ M+Mfxa+Xw5PgCsm8eGtI6kTsPvFYYHwh4qtIMJPRRZVfT1RVwXkxG2ojoqIIf3zcHLRVvkDx/xy
+ hOCLYvFQqrPVbfjorPEXkBZmx3fybAKRDkNLnmhRiltdBi/8407zsY9PJnouTVj8HzHIlDjo43v
+ l7yqbgOyGoUZ016Uw+RQvagEzYRJ7vDIHdA/Jo49kNByQ==
+X-Received: by 2002:a05:6000:288a:b0:48a:f11e:6d57 with SMTP id
+ ffacd0b85a97d-48dbaadb3a5mr35381074f8f.19.1792060073591; 
+ Thu, 15 Oct 2026 03:27:53 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd91c55bsm54623395e9.0.2026.10.15.03.25.58
+ ffacd0b85a97d-48de77606fbsm10345542f8f.53.2026.10.15.03.27.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 03:25:58 -0700 (PDT)
-Date: Thu, 15 Oct 2026 11:28:04 +0200
-Subject: [PATCH v3 17/50] tests/qtest: ds1338: cover the DS1338-specific
- register map
+ Thu, 15 Oct 2026 03:27:51 -0700 (PDT)
+Date: Thu, 15 Oct 2026 11:28:20 +0200
+Subject: [PATCH v3 33/50] tests/qtest: ina230: add current/voltage/power
+ monitor test
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-minerva-v3-17-7d50c8a108e5@free.fr>
+Message-Id: <20261015-bmc-minerva-v3-33-7d50c8a108e5@free.fr>
 References: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 In-Reply-To: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 To: qemu-devel@nongnu.org
@@ -76,17 +76,17 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Emmanuel Blot <emmanuel.blot@free.fr>
+ Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056475; l=4130;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056476; l=5246;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=rUA8d+d6nAk/JSdhMcKg9/bMZjbXLM8xkCDgafupUKA=;
- b=WV8kiec4D8UG1IPo0+OIdQ65s2MIYFxffCzb8BWuC0TXdr93lt8ByV+s8nGEupUodQriReOi3
- ES2dwfXGyyJCTJrSxO+xxQRiCpTyDBlc0FgHw6umwEo+bO0ygqwO8vB
+ bh=Nj7wqb099sQ6QPxOG660lZxYcYR7RY9dHgiEiUL9nR4=;
+ b=ArDjQ2tTw/XPuf+svFeDR9XSRMQllwGJSXPxsXkBu3GV3wiGBxl6fBPPFXsdHaAC5qZM+MjJX
+ pz3859askf2CT9G8Q8ycgJRhJ9hPAkO4Qu2/lpU8sOOAwqhD/7xfQ9Q
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.48; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f48.google.com
+Received-SPF: pass client-ip=209.85.221.43; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f43.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,114 +112,151 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The register map is a set of per-model class properties. Pin the
-values it holds for this part, so a later change cannot alter them
-unnoticed.
+Introduce the INA230 qtest: the qgraph node and the register map. Cover
+the power-on-reset defaults and Die ID, the software reset, and the
+Configuration register write mask. The QMP voltage-injection helpers
+arrive with the following commit that exercises them.
 
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ds1338-test.c | 67 ++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 66 insertions(+), 1 deletion(-)
+ tests/qtest/ina230-test.c | 115 ++++++++++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build   |   1 +
+ 2 files changed, 116 insertions(+)
 
-diff --git a/tests/qtest/ds1338-test.c b/tests/qtest/ds1338-test.c
-index b8d0e65ec4..6066a34846 100644
---- a/tests/qtest/ds1338-test.c
-+++ b/tests/qtest/ds1338-test.c
-@@ -24,6 +24,15 @@
- 
- #define DS1338_ADDR 0x68
- 
-+/* DS1338 register map */
-+#define DS1338_SECONDS   0x00
-+#define DS1338_CONTROL   0x07
-+#define DS1338_NVRAM     0x08
-+#define DS1338_NUM_REGS  0x40
+diff --git a/tests/qtest/ina230-test.c b/tests/qtest/ina230-test.c
+new file mode 100644
+index 0000000000..f7aefd2d97
+--- /dev/null
++++ b/tests/qtest/ina230-test.c
+@@ -0,0 +1,115 @@
++/*
++ * QTest testcase for the INA230 current/voltage/power monitor
++ *
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+#define DS1338_CTRL_OSF  0x20
++#include "qemu/osdep.h"
++#include "libqos/i2c.h"
++#include "libqos/qgraph.h"
++#include "libqtest-single.h"
++#include "qobject/qdict.h"
 +
-+/* The clock and calendar come up on the host time. */
- static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
- {
-     QI2CDevice *i2cdev = (QI2CDevice *)obj;
-@@ -32,7 +41,7 @@ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
-     time_t now = time(NULL);
-     struct tm *tm_ptr = gmtime(&now);
- 
--    i2c_read_block(i2cdev, 0, resp, sizeof(resp));
-+    i2c_read_block(i2cdev, DS1338_SECONDS, resp, sizeof(resp));
- 
-     /* check retrieved time against local time */
-     g_assert_cmpuint(from_bcd(resp[4]), == , tm_ptr->tm_mday);
-@@ -40,6 +49,56 @@ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmpuint(2000 + from_bcd(resp[6]), == , 1900 + tm_ptr->tm_year);
- }
- 
-+/* Writable control bits round-trip; the reserved ones read back zero. */
-+static void test_control_register(void *obj, void *data,
-+                                  QGuestAllocator *alloc)
++#define INA230_TEST_ID      "ina230-test"
++#define INA230_TEST_ADDR    0x40
++
++/* Register pointer addresses */
++#define REG_CONFIG          0x00
++#define REG_SHUNT           0x01
++#define REG_BUS             0x02
++#define REG_POWER           0x03
++#define REG_CURRENT         0x04
++#define REG_CALIBRATION     0x05
++#define REG_MASK_ENABLE     0x06
++#define REG_ALERT_LIMIT     0x07
++#define REG_DIE_ID          0xFF
++
++/* Configuration register bits */
++#define CONFIG_POR          0x4127
++#define CONFIG_RST          0x8000
++
++/* Mask/Enable register bits */
++#define ME_LEN              0x0001
++#define ME_APOL             0x0002
++#define ME_OVF              0x0004
++#define ME_CVRF             0x0008
++#define ME_AFF              0x0010
++#define ME_CNVR             0x0400
++#define ME_POL              0x0800
++#define ME_BUL              0x1000
++#define ME_BOL              0x2000
++#define ME_SUL              0x4000
++#define ME_SOL              0x8000
++
++/* Injected-input scaling (datasheet fixed LSBs) */
++#define SHUNT_LSB_NV        2500
++#define BUS_LSB_UV          1250
++
++#define DIE_ID_VAL          0x2310
++
++/* Power-on-reset default values and the Die ID */
++static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    QI2CDevice *dev = (QI2CDevice *)obj;
 +
-+    i2c_set8(i2cdev, DS1338_CONTROL, 0x93);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1338_CONTROL), ==, 0x93);
-+
-+    i2c_set8(i2cdev, DS1338_CONTROL, 0x4c);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1338_CONTROL), ==, 0x00);
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, CONFIG_POR);
++    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_POWER), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIE_ID), ==, DIE_ID_VAL);
 +}
 +
-+/* The oscillator-stop flag can only be cleared by a write, never set. */
-+static void test_osf_write_protect(void *obj, void *data,
-+                                   QGuestAllocator *alloc)
++/* Software reset via the Configuration RST bit */
++static void test_soft_reset(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    QI2CDevice *dev = (QI2CDevice *)obj;
 +
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1338_CONTROL) & DS1338_CTRL_OSF,
-+                    ==, DS1338_CTRL_OSF);
-+    i2c_set8(i2cdev, DS1338_CONTROL, 0x00);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1338_CONTROL) & DS1338_CTRL_OSF, ==, 0);
-+    i2c_set8(i2cdev, DS1338_CONTROL, DS1338_CTRL_OSF);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1338_CONTROL) & DS1338_CTRL_OSF, ==, 0);
++    i2c_set16(dev, REG_CALIBRATION, 0x1234);
++    i2c_set16(dev, REG_MASK_ENABLE, ME_SOL);
++    i2c_set16(dev, REG_ALERT_LIMIT, 0x0500);
++
++    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x1234);
++    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0500);
++
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, CONFIG_POR);
++    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0000);
 +}
 +
-+/* The user RAM returns what the guest wrote to it. */
-+static void test_nvram(void *obj, void *data, QGuestAllocator *alloc)
++/* Every bit except the self-clearing RST is writable and reads back */
++static void test_config_wmask(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    QI2CDevice *dev = (QI2CDevice *)obj;
 +
-+    i2c_set8(i2cdev, 0x08, 0xaa);
-+    i2c_set8(i2cdev, 0x20, 0x55);
-+    i2c_set8(i2cdev, 0x3f, 0xc3);
++    /* Reserved bits are not forced: the guest value is retained */
++    i2c_set16(dev, REG_CONFIG, 0x0007);
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, 0x0007);
 +
-+    g_assert_cmphex(i2c_get8(i2cdev, 0x08), ==, 0xaa);
-+    g_assert_cmphex(i2c_get8(i2cdev, 0x20), ==, 0x55);
-+    g_assert_cmphex(i2c_get8(i2cdev, 0x3f), ==, 0xc3);
++    i2c_set16(dev, REG_CONFIG, 0x7FFF);
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, 0x7FFF);
 +}
 +
-+/* The register pointer wraps at the end of the map. */
-+static void test_address_wrap(void *obj, void *data, QGuestAllocator *alloc)
++static void ina230_register_nodes(void)
 +{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" INA230_TEST_ID ",address=0x40"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { INA230_TEST_ADDR });
 +
-+    i2c_set8(i2cdev, DS1338_NVRAM, 0x5a);
-+    g_assert_cmphex(i2c_get8(i2cdev, DS1338_NVRAM + DS1338_NUM_REGS), ==, 0x5a);
++    qos_node_create_driver("ina230", i2c_device_create);
++    qos_node_consumes("ina230", "i2c-bus", &opts);
++
++    qos_add_test("defaults", "ina230", test_defaults, NULL);
++    qos_add_test("soft-reset", "ina230", test_soft_reset, NULL);
++    qos_add_test("config-wmask", "ina230", test_config_wmask, NULL);
 +}
-+
- static void ds1338_register_nodes(void)
- {
-     QOSGraphEdgeOptions opts = {
-@@ -49,6 +108,12 @@ static void ds1338_register_nodes(void)
- 
-     qos_node_create_driver("ds1338", i2c_device_create);
-     qos_node_consumes("ds1338", "i2c-bus", &opts);
-+
-     qos_add_test("tx-rx", "ds1338", send_and_receive, NULL);
-+    qos_add_test("control-register", "ds1338", test_control_register, NULL);
-+    qos_add_test("osf-write-protect", "ds1338", test_osf_write_protect, NULL);
-+    qos_add_test("nvram", "ds1338", test_nvram, NULL);
-+    qos_add_test("address-wrap", "ds1338", test_address_wrap, NULL);
- }
-+
- libqos_init(ds1338_register_nodes);
++libqos_init(ina230_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index e23eb9bbca..e413a0cc75 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -330,6 +330,7 @@ qos_test_ss.add(
+   'e1000-test.c',
+   'eepro100-test.c',
+   'es1370-test.c',
++  'ina230-test.c',
+   'lsm303dlhc-mag-test.c',
+   'isl_pmbus_vr-test.c',
+   'max34451-test.c',
 
 -- 
 2.53.0-Meta

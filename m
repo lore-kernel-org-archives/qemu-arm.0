@@ -4,96 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A14CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 14:56:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3231DCC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:10:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHMsK-00021Q-FN; Thu, 15 Oct 2026 10:56:08 -0400
+	id 1xHN5o-0005Vc-8f; Thu, 15 Oct 2026 11:10:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xHMsG-00020g-DH
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:56:04 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1xHN5c-0005To-Vo
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:09:55 -0400
+Received: from mail-wr1-f41.google.com ([209.85.221.41])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xHMsE-0008Vv-6z
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:56:04 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-6af9a90e4bbso5807350a12.0
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 07:56:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792076160; x=1792680960; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=g32trlGyDzah+dddiDX4dEQov5de09hHHaVwMj9ZkK0=;
- b=h9neFD+Og7tyVzBEigp8Z3spBvHtStPBrpVBwKmEaGjU7N32rZ772u7wdOp+7sVcYA
- flE810hJsk/8BsW9VSVQsaKfcslTSp7R4kgc3Z8r3goOujj5baaISnjSa1B9nZcLAChZ
- us+vFBt6Dkp2syw/ki7IA5eGd6KwCSa0YomPQMnTePIVSAdegEVwvzhtk35l7n/4I2lY
- Zc0+AILtgswIdVMoerRmth2A7/0h2x+roonnpNkAL6m1wy5391kQuIWLzHwoYKyKk6yS
- nP7Asx8coAVJHIcBgynuAfQ56gx6To/oeDALbKZe35vxSmy4oDYwhS5oRjHA/WTiJHtv
- DVag==
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1xHN5a-0001ON-Iq
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:09:52 -0400
+Received: by mail-wr1-f41.google.com with SMTP id
+ ffacd0b85a97d-48c45111bebso3467402f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:09:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792076160; x=1792680960;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=g32trlGyDzah+dddiDX4dEQov5de09hHHaVwMj9ZkK0=;
- b=VYzT4DW1+aG9BpoDTkIb9yF68Ha7wu7V0g5dVjqgjvEWFCyA43j3MhGeVSiUvJlQ0x
- EPbXsODKQAF1bjlP0As9HMkW7ywbK4UN3wLuSpaMWVD+qx+aOfcURb+Kn4oO3KdIWN/P
- l2v04uz3VDzTJgsb+3fn7lUBnQr1pDbf6xARftPpP88FkV4zMz/9xIG0CNuEvP3mXQjo
- BqfEKHgPi12ftmF1ped4Jhl2USanWO6sshwUtIeh01dIsH1dq5QSoi2yf9iIskN/T34G
- 3duvwb+jNWI/noarMUG/ZcgwKOBQ2ElXo4iLrkGAM2T/SmysrJkfkPFL7bfIdTVumcKT
- To+Q==
+ d=1e100.net; s=20260707; t=1792076989; x=1792681789;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=hZuyob+ovQFH/gM76ih2SzJ8peHZvlXMktkW8YUoZ8E=;
+ b=gk4zvVYccf05ym6cdNbMNKFaf6wQH+y9ELLo+bmmZHiHmfObLmNVNTjzU1S9dEKwQN
+ N0nkXwUA6bhTSW2i1mvRX5H2k1Km8lPKcKgImosDXtrvXpdm/v3iTGEcV0X0lk88IyxW
+ Ylycen8fbtXh2hbuWUO1JJFXqYe4UgK4h5y8nIo8GooD3TBN2qAYkoKtS6duy938EcWm
+ /7QlXMN3aFk0fiGZkQmEP6dg3PbUAaiK0t2tVXyk8JKpAH89Ldnc2bmvW7P0yw5ltS5H
+ wrfTTtnF9+T8wqE1rIe4zwQudsteRMGABW8OPnifxpKwNCTRl7VDMVuZXXkIRTkJfzwE
+ IfmQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwmiumcDcdvF0DzG2xnK07rMiCW8urwzPoO8u5q7XamSvK6Iwm/IhY9wUGuWvdraMNvlLfgZs1TSA==@nongnu.org
-X-Gm-Message-State: AFq9FYIqjR8oNPtiLlKFhA3ieFnk7pguxjwzbLko072xkcCpvS+R/KOQ
- pycJ0hE1hpLSQ1h0+Kd+NjBC3Dysv+K5JH3TiAv1pA4yW7jM9qwWRRHKlKy/o3BojI8bwatMTLh
- 3AX1koBw=
-X-Gm-Gg: AYBFou1TSzhG02JrEaFtON4oSoamfXpl/0BVovjXHUA7eHpRrQftCz1jPOG2MzL8U4L
- RFqDjx6bLTd4+WFEozqfFAKhYcnYPr4Dxx3yh7kcuLGvxFbDcc9kQ4AYjrgBe4BHxd83PoTmnx0
- J/6RqjjI95SgHTDlCdKzzc6BwTH0JuUue4VGRpW5yqxNeCIlI5sr5PXzl5fQJ2bUockSTJMCDgM
- KC4R74ydADiDodNn2blwil4WjSemuWob6k4u5kIeNOnPHiChn9Q5WeoxSZD+5FvS4KZxEldXYWl
- OzW90FnZ8zjTZMoadS/feBKW2xok14T2tkJWNCH6PIk5HiDxI9Qbf/FYUOCYalde1Q+m816h89e
- zgeQmpjYZ18yopOYjhH0A7KU1S2vSo7+/aUQXPx6O+Q50lct8V/aY0b8fzaKfOPE9lsGS9u31uR
- jZR5P9BOdNwefc8tXeZ86eTpb64PoD+0AV6pD8i1yWk84xwoJ8Mo0dn08T53k7Heg8xPOPBTjFV
- Z3MBt3PMnowR6HjW2RyML1NN0yvVuXZ51nE3gObFZ3RxOz6eIgOhTC9YFBZxD4f/bQdVMzt2m/W
- 7V/Lot/ejM9+PcVBO8OvTG0nW6B4WQj+P0xJNJE8ItQ=
-X-Received: by 2002:a05:6402:320e:b0:6b1:d841:deaf with SMTP id
- 4fb4d7f45d1cf-6b1d841e0e1mr11391427a12.24.1792076160471; 
- Thu, 15 Oct 2026 07:56:00 -0700 (PDT)
-Received: from ?IPV6:2003:ca:3f0f:8b00:6e0e:d1a6:87ab:6860?
- (p200300ca3f0f8b006e0ed1a687ab6860.dip0.t-ipconnect.de.
- [2003:ca:3f0f:8b00:6e0e:d1a6:87ab:6860])
+ AKwUvBzoy+pM9Dsok3nkasQu05kUAOSxSuvzsicfLU++VaZ36yyZcBS0HVSybrh0Zy+CEuC9NuTs3blFBw==@nongnu.org
+X-Gm-Message-State: AFq9FYK7Lo8BiwgaybmciA7I1SuF3kIVisX03Pi8ypiJTgMEvsQCun1a
+ l/9cuXKqfKDn5yHK+5zU3W7Te7hThkf1gouiQe8d1pMn8Gqozk537AQX
+X-Gm-Gg: AYBFou3OExhNjVQKR5+fwwG7xoRL3Mx9jJOtGU7F4oaXDZtQ0VAXl6TIcAVZyqbVKPc
+ J9WpWWo9IbKg7OdXJE4EHYU7aLmOmbAk2+omUtBaL+UTAiD6xrx4KrKeT9h7bOtuKFmQ9oMUP4C
+ oAdgWEqynyXcptM3FzQS4qrJwRx9OPABYAgBYD/q1vfSqe4X96rJIfcfg5IoCm4nLvnHClQorWO
+ CQStC8KNPDhwyx6+NOS06KTVvpbFjlSetyykplz19jymxQGIkK2r1xwGtUv38HfT+EE8BuY1hMl
+ owh4OolBa+G4Y6CeZGkyZsZ8nofo7w3HP8riJLVRBc+9Jb6faHEwJuTIKh7N/5b2PovPs1qkFZu
+ QSzEqYwEEzEEK4bwZPvqOReCRSDwDOVJoNzwQXTdgolAPDIF39hqO4YxzTueh+iXy6tLkkzwdF/
+ r/+VTd3ptTB+1ZKuzJp3ymNBpIqy4IhnQjhH+ROcORP5ACA1gZRskIk76hHJyTv7zVMBjLWKwJy
+ nBS3igCIOpuKRuopR/w0WslLBJWNSulzuWxumR7Cm5OTA==
+X-Received: by 2002:a5d:5885:0:b0:48d:f7f0:327d with SMTP id
+ ffacd0b85a97d-48df7f03308mr3494199f8f.29.1792076988777; 
+ Thu, 15 Oct 2026 08:09:48 -0700 (PDT)
+Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6b20386327csm2514421a12.18.2026.10.15.07.55.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Oct 2026 07:55:59 -0700 (PDT)
-Message-ID: <727d00d4-c3a9-4e09-89b1-98f3bbfbf93d@linaro.org>
-Date: Thu, 15 Oct 2026 16:55:54 +0200
+ ffacd0b85a97d-48df8f9ee47sm2435883f8f.45.2026.10.15.08.09.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Oct 2026 08:09:48 -0700 (PDT)
+Subject: [PATCH 00/22] Aspeed: TMP421 and TMP1075 sensors, and the Clemente
+ BMC machine
+Date: Thu, 15 Oct 2026 13:57:38 +0200
+Message-Id: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 00/21] aspeed queue
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20261015122151.889017-1-clg@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NQW7DIBQFr2KxLtWHhI+xoqr3qLLA8JxQBScFx
+ 6oU5e61nS5Hem/mISpKQhVd8xAFc6rpOi6g3hoRzn48Qaa4sNCkmRxZ2ecgwwUZ4wRJZDgyW7b
+ KiuVyKxjS76b7Or643vtvhGl1/C8Kfu5LZ3rNREatfut0zWHNKFJmy+Q0osxezjtJ0kZDofWKW
+ pjPoQDvQ/lYjb2vkOGac5q6hpVBwC7siXvN2jmGYTdoB89ApNiqsI9tFMfn8w9FmWIX/AAAAA=
+ =
+X-Change-ID: 20260907-bmc-clemente-0056d6676717
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065464; l=7193;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=iydWwc1WObcU7xqqvK5Efg+4Nf+SqeMppXxCXaC0b3M=;
+ b=YryBHCazq2cFEHUQL7BiOfXsB7VaAsKF3A8rUUJUCQA0ZitgziWOw6BwZUEuxD9O+BXfSykU2
+ po0M/wM1cHSCMdVB8/QehX3gARdckUiWosUDW0Axboga8OHGrWknOri
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=209.85.221.41; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f41.google.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,38 +109,139 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
+From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/15/26 14:21, Cédric Le Goater wrote:
-> The following changes since commit d5b5083cb783c447001e862c2b525e59f48ad78c:
-> 
->    Merge tag 'block-pull-request' ofhttps://gitlab.com/stefanha/qemu into staging (2026-10-15 11:53:41 +0200)
-> 
-> are available in the Git repository at:
-> 
->    https://github.com/legoater/qemu/ tags/pull-aspeed-20261015
-> 
-> for you to fetch changes up to 4cf1f0e37d9491eb8b0c8be8dd9dab9260b8fa36:
-> 
->    tests/functional: give the set_machine probe VM the test workdir (2026-10-15 13:14:09 +0200)
-> 
-> ----------------------------------------------------------------
-> aspeed queue:
-> 
-> * Fix OOB read in HACE has_padding() when padding_size is zero
-> * Allocate ACRY RSA qtest SRAM buffers on the heap to reduce stack usage
-> * Consolidate OTP layout definitions between aspeed_otp and aspeed_sbc
-> * Derive ABR and secure boot state from OTP config straps, removing
->    the "emmc-abr" and "signing-settings" machine properties
-> * Sort device IDs alphabetically
-> * Add I2C test for IO expander 1 on the AST2700A2
-> * Update ASPEED BMCs reviewer list
-> * Add a create_unimplemented_devices() helper and convert all Aspeed
->    SoCs and coprocessors to table-driven unimplemented devices
-> * Fix the set_machine probe VM to use the test workdir
+Add the clemente-bmc machine and the temperature sensors it needs.
 
-Applied, thanks.
+The TMP421 variants are now described by a class descriptor instead
+of a lookup table. Channel enablement, register write masks, the
+one-shot trigger and the per-channel N-factor registers are modelled,
+reset follows Resettable API, and the variant type names move to a
+header so boards stop open-coding the strings.
 
-r~
+The TMP1075 is a TMP105 with a 16-bit Config register and a read-only
+device ID.
+
+The new TMP421 state is stored in optional subsections.
+
+The clemente-bmc machine is derived from the platform device tree and
+instantiates every device that is supported in QEMU. FRU EEPROMs are
+sanitised images taken from real hardware.
+
+New qtest for the TMP421 family, plus TMP105 cases for the TMP1075.
+Both check a migration round trip.
+
+Based-on: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
+
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+Emmanuel Blot (22):
+      hw/sensor: tmp421: do not report a stale errno on a parse failure
+      hw/sensor: tmp421: name the parent object field parent_obj
+      hw/sensor: tmp421: implement Resettable reset
+      hw/sensor: tmp421: model device variants with a class descriptor
+      hw/sensor: tmp421: honor per-variant channels and channel enablement
+      hw/sensor: tmp421: implement register write masks, one-shot and N-factor
+      hw/sensor: tmp421: describe the temperature properties
+      hw/sensor: tmp421: keep the measurement across a range change
+      hw/sensor: tmp421: migrate the exact measurement
+      hw/sensor: tmp421: publish the variant type names
+      hw/arm/aspeed: use the TMP421 type-name macros
+      tests/qtest: tmp421: cover device IDs and reset defaults
+      tests/qtest: tmp421: cover temperature encoding and range
+      tests/qtest: tmp421: cover per-variant channels and enablement
+      tests/qtest: tmp421: cover software reset and N-factor registers
+      tests/qtest: tmp421: cover the register form of the migration stream
+      hw/sensor: tmp105: add the TMP1075 variant
+      tests/qtest: tmp105: cover the TMP1075 device ID and reset defaults
+      tests/qtest: tmp105: cover the TMP1075 config register width
+      tests/qtest: tmp105: cover the Config low byte across a migration
+      hw/arm: clemente: add Facebook Clemente BMC machine
+      hw/arm: clemente: populate the FRU EEPROMs
+
+ docs/system/arm/aspeed.rst                |    1 +
+ hw/arm/aspeed_ast2400_palmetto.c          |    3 +-
+ hw/arm/aspeed_ast2400_supermicrox11.c     |    3 +-
+ hw/arm/aspeed_ast2500_supermicro-x11spi.c |    3 +-
+ hw/arm/aspeed_ast2500_tiogapass.c         |   10 +-
+ hw/arm/aspeed_ast2500_witherspoon.c       |    7 +-
+ hw/arm/aspeed_ast2500_yosemitev2.c        |   10 +-
+ hw/arm/aspeed_ast2600_bletchley.c         |    3 +-
+ hw/arm/aspeed_ast2600_catalina.c          |    3 +-
+ hw/arm/aspeed_ast2600_clemente.c          | 1154 +++++++++++++++++++++++++++++
+ hw/arm/aspeed_ast2600_fby35.c             |    2 +-
+ hw/arm/aspeed_ast2600_fuji.c              |    3 +-
+ hw/arm/aspeed_ast2600_rainier.c           |   13 +-
+ hw/arm/meson.build                        |    1 +
+ hw/sensor/tmp105.c                        |   85 ++-
+ hw/sensor/tmp421.c                        |  429 ++++++++---
+ include/hw/sensor/tmp105.h                |    2 +
+ include/hw/sensor/tmp105_regs.h           |    5 +
+ include/hw/sensor/tmp421.h                |   19 +
+ tests/qtest/meson.build                   |    1 +
+ tests/qtest/tmp105-test.c                 |  111 +++
+ tests/qtest/tmp421-test.c                 |  326 ++++++++
+ 22 files changed, 2050 insertions(+), 144 deletions(-)
+---
+base-commit: 615ece3c406b262996e569f29ea6eed0d81c4d8d
+change-id: 20260907-bmc-clemente-0056d6676717
+prerequisite-message-id: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
+prerequisite-patch-id: 5aae2c14351eb51fea0cb307bedf21021730debd
+prerequisite-patch-id: 4d9a408b21353dda070052227302e799e4c01726
+prerequisite-patch-id: 01470b3e3d522778ea23f39f03a3b82a2a0f2d3e
+prerequisite-patch-id: 11d0a41b1b3009d95ddf51d9bde960658c924ac1
+prerequisite-patch-id: f1072c7d99e462e1c85ecace78eef33bc6e8778a
+prerequisite-patch-id: 8897466a7505261a1060243ca01572c3a8874068
+prerequisite-patch-id: f35c864317c68dd2b9ca969bec243fafd80497e6
+prerequisite-patch-id: 8b05ecb9c1191509e7e4cc76944c88f4f7891ca2
+prerequisite-patch-id: 78155b4352683ffc03826038c3d8160b788c29ff
+prerequisite-patch-id: e0af745b421c39fd47311ca21576c510bc961526
+prerequisite-patch-id: c14af0a372dcb314ef92a04a47e5bedc846281c8
+prerequisite-patch-id: 684f5ec9f4ac0640438d1eead20832c529d67508
+prerequisite-patch-id: e09c684b2002e30ae14a11bfe409869478d104bd
+prerequisite-patch-id: 09afec3682584cbda09b00c0ac87dc60835454d7
+prerequisite-patch-id: a89dfec61a795b84c3cf02927fd7c40bc6f694ae
+prerequisite-patch-id: 6a23cb3b1362aaf70fe73f554d9d5fcf2e72c3ec
+prerequisite-patch-id: 7c11c16803a5b96be5653a05acf8b46a3020e8d9
+prerequisite-patch-id: b9251deb99859cc30a9c67b5dba3066124f32033
+prerequisite-patch-id: 87291d7798b6bddde6242c651f0e03deb96ab559
+prerequisite-patch-id: caac35561ca8b2bdd86101f943e93aa7bcd3a90c
+prerequisite-patch-id: 27b0b37242fba900f982f9bcaca36f48c6a115bb
+prerequisite-patch-id: 1259c5fbfeb5d2bf1760e7b12df59f182528cee6
+prerequisite-patch-id: 2654532e955554fbae6ffcdf6ff3b38bb03fbbd5
+prerequisite-patch-id: ff0505a46b3604ba502834d3f5bf17ab85b3c5fa
+prerequisite-patch-id: 250958c152f11026aa98d334892132f9ab7467db
+prerequisite-patch-id: f3d938264fb2f0c2c292dbb4fb218e5b8d22c3d9
+prerequisite-patch-id: 06602fc849e499131998af486ae455497a4245c1
+prerequisite-patch-id: d857ee22db2d62a98f4f2054d1966cce7ed39452
+prerequisite-patch-id: 7909e49ac93573ebd56424a556d4e4872e9778eb
+prerequisite-patch-id: 53cd0411fed556e85f6557cab6fc32056c24bddc
+prerequisite-patch-id: 71752a32c10eacd296f62bcc94c09db5d54007c3
+prerequisite-patch-id: 7a21b5fabeddff9c08d6b532b2a398737f375a06
+prerequisite-patch-id: c6154dd1e7a48decd770f062fb57f32cfb2e1826
+prerequisite-patch-id: b94e4e3d83aa013ffd05267e20d48d6813ca2d7c
+prerequisite-patch-id: 23716ee3fbb2395d0fc33922433fb6d708081fae
+prerequisite-patch-id: 2e57dc2effacfdfb8adb93f5e33bfefdb7c28dc0
+prerequisite-patch-id: 2400063e36ca403574b812436fef8c38608e6005
+prerequisite-patch-id: 557a2e98bce9c59d1d4513207e021e217d9dcc59
+prerequisite-patch-id: db5ca53f9dccded71da127446b4870678640c86f
+prerequisite-patch-id: ddf5d85c6eb13a9121342263b6f0ee9902b40d06
+prerequisite-patch-id: d9e3e31b88133c8d2ffac7c931d9ab153cf20af7
+prerequisite-patch-id: 7ed25d5dc6b899645ef98cdb591344042b77c41f
+prerequisite-patch-id: 6c70cb570c5c6bfe0d61cb4c5260e6d8f195f383
+prerequisite-patch-id: 3caea8b32b51fa447ee21565594b6465d2e51670
+prerequisite-patch-id: 758236b35dcee46e176a7167e703048e11f6e634
+prerequisite-patch-id: 0521a46d473cad9f3924b4e0f86473fe237c1982
+prerequisite-patch-id: 819077eedcc252ade342c8288af2d57e0c8ece6f
+prerequisite-patch-id: 913f8260d8274a1c1706d09915cf75c0dd11061c
+prerequisite-patch-id: b0913e3e23d3bd41ffb248a3afecdbfe93b4915d
+prerequisite-patch-id: ef2e1478aad5f5722a2d021b424803d7cb2cdc4c
+
+Best regards,
+--  
+Emmanuel Blot <emmanuel.blot@free.fr>
+
 

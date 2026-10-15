@@ -4,93 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF927CC6B34
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 07:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04641CC6B34
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 08:42:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHGCj-0008Ck-Qd; Thu, 15 Oct 2026 03:48:45 -0400
+	id 1xHH2B-0004WB-8y; Thu, 15 Oct 2026 04:41:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ghoffman@redhat.com>)
- id 1xHGCi-0008CA-HV
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 03:48:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHH1z-0004UC-IG
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 04:41:43 -0400
+Received: from smtpout1.mo537.mail-out.ovh.net ([51.210.91.20])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ghoffman@redhat.com>)
- id 1xHGCg-00044N-6P
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 03:48:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792050520;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VvrAb39CBS/m6Qa501kHY6otTYYAf79JfX8qgJU3AIw=;
- b=BF3La7rZFbFGIv6ZKW7uq710v+etUlSPsSA5Y01ZQnmBa+ThDFZI8Aln9xp7Xd8hELPIqk
- SFcCpO8QyTYMGhMppZuFcmdVpwbsMMIx0201kjHyzvF8ZBkXXzA7sFfoMYbteFOxA3cCLI
- /rD20ArdkDgcOvBqsLQ9w3kbr+2tWAo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-357-hqMu0piFMT-ze9S6kHYBVw-1; Thu,
- 15 Oct 2026 07:48:36 +0000
-X-MC-Unique: hqMu0piFMT-ze9S6kHYBVw-1
-X-Mimecast-MFC-AGG-ID: hqMu0piFMT-ze9S6kHYBVw_1792050514
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F2AE918004DB; Thu, 15 Oct 2026 07:48:33 +0000 (UTC)
-Received: from nucbdw.ghoffman.csb.home.kraxel.org
- (headnet04.pony-001.prod.iad2.dc.redhat.com [10.2.32.116])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E7EC8195608A; Thu, 15 Oct 2026 07:48:32 +0000 (UTC)
-Received: by nucbdw.ghoffman.csb.home.kraxel.org (Postfix, from userid 11758)
- id BD34D40785FB; Thu, 15 Oct 2026 09:48:30 +0200 (CEST)
-Date: Thu, 15 Oct 2026 09:48:30 +0200
-From: Gerd Hoffman <kraxel@redhat.com>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, Brian Cain <brian.cain@oss.qualcomm.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Stefano Garzarella <sgarzare@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>, 
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
- Jared Rossi <jrossi@linux.ibm.com>, Zhuoying Cai <zycai@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Jason Herne <jjherne@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, 
- David Hildenbrand <david@kernel.org>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 7/9] igvm: release found memory region on success
-Message-ID: <atCEEIRn9yFLj1hg@nucbdw.ghoffman.csb.home.kraxel.org>
-References: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
- <20260906-nohmp-next-v1-7-2b21e63974f3@redhat.com>
- <CAJ+F1C+NLd2Nzmg1eLnH1La2yA1vw8dm7nEb2k93tcUCK4LzrA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHH1v-0000VD-2b
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 04:41:43 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [79.137.60.225])
+ by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4j51l23fnGz3wdy;
+ Thu, 15 Oct 2026 08:41:33 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 15 Oct 2026 08:41:33 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.3])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4j51l15lLmz5vLZ;
+ Thu, 15 Oct 2026 08:41:33 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
+ (Authenticated sender: clg@kaod.org)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ C22382402CB9; Thu, 15 Oct 2026 08:41:31 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-98R0029b981eaf-9198-4b4d-9fa8-091ae1bb4bad,
+ 39EAFCA45846CB7F25CFDE7C5DD07A896C21AD00) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <059ada7e-1147-4bd8-b0ca-212cb58d5fe5@kaod.org>
+Date: Thu, 15 Oct 2026 10:41:31 +0200
 MIME-Version: 1.0
-In-Reply-To: <CAJ+F1C+NLd2Nzmg1eLnH1La2yA1vw8dm7nEb2k93tcUCK4LzrA@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: DSn7Of3332n5pIuJpICrchUfCG8igb66Lo4a1RflJxg_1792050514
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 12/50] hw/rtc: ds1338: parameterise the register map
+ via a device class
+To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ Patrick Leis <venture@google.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
+ <20261012-bmc-minerva-v2-12-4c3dff084ec9@free.fr>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20261012-bmc-minerva-v2-12-4c3dff084ec9@free.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=ghoffman@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+x-ovh-tracer-id: 10501549907263401005
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGYPHbKaUDx2U8j6haCXe+72+ZjA4sKgsWOvXkO38jkeRj3unjdS/nLI+gUwDWAXMWDFr7OyX0bbGp1DRb2crdiF0gVjLDdpmC4LT0tn3bO+ovrCNzIo3Df3GrBdlKGmxfCaY3gobztYERel7qm2D4xIOcw3BtdHMeivXI7q4RwQdCQScV0DVscn+7PGu1pxFyQAdCWHij+yrVjQA0Xc5ahiJY8n7XhHnzVVjvt4/qq6utUW7RjJjqghjBJvi4tuq/bpgospbEjBB1fsJHEiMJw7vZ7u55NvKTq/MAu/bdSe734MpUgZuetfD0+bjA9Bj8R1ak0BdMMIW+MD85TLZQ5YGSrqOSXxObU9pcEYpOSaqX4z6tz4GJVoWGqvMDaAeSdrA+c3nX1NBgjb08xOE5KJwVJAeisVxYYTs17tIsmSw0zXxETYzP7uy+CG47Ysrrz0k0SiG1Mma2gyqH4p53Pi9nBxJoEAZ3JWdejC7SWN8YN+CARhHfz2YUS2D5wnwo/hOeDvL8WCRiprZZ16GiKWXYhLl8ZxhZOlA8J0grOlENB3lmB8DzT9l8YMDo1pSBStHnKh6fgbR42Y5/MlihfANKnSmDTvfGajAXXcWC74Z2NRaS9ORW/Urx82WLmKzXRqmy1CifMQMkD1SsJ9EUXSzASJlQ61XEuOKZPm0vv9Q
+DKIM-Signature: a=rsa-sha256; bh=dGqBYFGI9TJn1266Qal9LY5sKgaq/pRXLwu0poCR+YM=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1792053695; v=1;
+ b=OPjc/7+R4oIqNajRzY2Z90TtpMFJmMPK5+eo5qhTpfkhzMzAvVD1vHUWpRaT13/mfKcOrpX6
+ qQUzQdqCa7uyo8W2sGQl+KVdpOVDy+pNNoqfo4zXfNJwA5Uwuvsdyp6HdEFvSf5xFaOsTFnmDi3
+ 51UYVcKG4ih1IkCAeBg1ybiT2e1jmbHNa/ABtGrgpa7NmXC8xlg11/udceCgd9RuRD1lWAhx7qV
+ neoavuTfIszmtxaOQFk8SklESxV6P9pOc3l+EP0gAewRu53UgGb6MNFSs9NHnDqQT6qrkwlZ98B
+ Q4IvIvYhtneqtVw8fwJDO4UNicyEIypAKwise/LqXFvXg==
+Received-SPF: pass client-ip=51.210.91.20; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo537.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,28 +138,183 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Oct 13, 2026 at 05:31:41PM +0400, Marc-André Lureau wrote:
-> Hi
+On 10/12/26 16:32, Emmanuel Blot wrote:
+> In preparation for a register-compatible variant, refactor DS1338
+> register map. Introduce DS1338Class, carrying the register-pointer wrap
+> boundary and the control/OSF register location and masks, and drive
+> inc_regptr() and the control-register handling.
 > 
-> On Sun, Sep 6, 2026 at 12:55 PM Marc-André Lureau
-> <marcandre.lureau@redhat.com> wrote:
-> >
-> > Not only in error paths must the mrs.mr be released.
-> >
-> > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > ---
+> The control-register power-on value is parameterised along with them,
+> so the part comes up holding the contents its datasheet specifies
+> rather than zero, and its oscillator-stop flag now reads set at
+> power-on.
 > 
-> ping
+> Encode the year register modulo 100 (tm_year % 100) instead of
+> tm_year - 100.
+> 
+> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+> ---
+>   hw/rtc/ds1338.c | 71 ++++++++++++++++++++++++++++++++++++++++++---------------
+>   1 file changed, 53 insertions(+), 18 deletions(-)
+> 
+> diff --git a/hw/rtc/ds1338.c b/hw/rtc/ds1338.c
+> index 1755a3a37c..7eaa663113 100644
+> --- a/hw/rtc/ds1338.c
+> +++ b/hw/rtc/ds1338.c
+> @@ -30,7 +30,14 @@
+>   #define HOURS_PM   0x20
+>   #define CTRL_OSF   0x20
+>   
+> -OBJECT_DECLARE_SIMPLE_TYPE(DS1338State, DS1338)
+> +/* DS1338 register map */
+> +#define DS1338_NUM_REGS    NVRAM_SIZE   /* 0x00..0x3f, then wraps */
+> +#define DS1338_CONTROL     0x07
+> +#define DS1338_CTRL_MASK   0xb3         /* bits 2, 3 and 6 read back as zero */
+> +/* POR: OUT, OSF, SQWE and both rate-select bits come up set. */
+> +#define DS1338_CTRL_RESET  0xb3
+> +
+> +OBJECT_DECLARE_TYPE(DS1338State, DS1338Class, DS1338)
+>   
+>   struct DS1338State {
+>       I2CSlave parent_obj;
+> @@ -42,6 +49,17 @@ struct DS1338State {
+>       bool addr_byte;
+>   };
+>   
+> +struct DS1338Class {
+> +    I2CSlaveClass parent_class;
+> +
+> +    uint8_t num_regs;       /* register-pointer wrap boundary */
+> +    uint8_t ctrl_addr;      /* control register address */
+> +    uint8_t ctrl_mask;      /* writable/read-back bits of the control reg */
+> +    uint8_t osf_addr;       /* register holding the OSF flag */
+> +    uint8_t osf_mask;       /* OSF bit within osf_addr */
+> +    uint8_t ctrl_reset;     /* control-register power-on value */
+> +};
+> +
+>   static const VMStateDescription vmstate_ds1338 = {
+>       .name = "ds1338",
+>       .version_id = 2,
+> @@ -82,16 +100,19 @@ static void ds1338_capture_current_time(DS1338State *s)
+>       s->nvram[3] = (now.tm_wday + s->wday_offset) % 7 + 1;
+>       s->nvram[4] = to_bcd(now.tm_mday);
+>       s->nvram[5] = to_bcd(now.tm_mon + 1);
+> -    s->nvram[6] = to_bcd(now.tm_year - 100);
+> +    s->nvram[6] = to_bcd(now.tm_year % 100);
+>   }
+>   
+>   static void ds1338_inc_regptr(DS1338State *s)
+>   {
+> -    /* The register pointer wraps around after 0x3F; wraparound
+> -     * causes the current time/date to be retransferred into
+> -     * the secondary registers.
+> +    DS1338Class *k = DS1338_GET_CLASS(s);
+> +
+> +    /*
+> +     * The register pointer wraps around after the last register; wraparound
+> +     * causes the current time/date to be retransferred into the secondary
+> +     * registers.
+>        */
+> -    s->ptr = (s->ptr + 1) & (NVRAM_SIZE - 1);
+> +    s->ptr = (s->ptr + 1) % k->num_regs;
+>       if (!s->ptr) {
+>           ds1338_capture_current_time(s);
+>       }
+> @@ -136,11 +157,12 @@ static uint8_t ds1338_recv(I2CSlave *i2c)
+>   static int ds1338_send(I2CSlave *i2c, uint8_t data)
+>   {
+>       DS1338State *s = DS1338(i2c);
+> +    DS1338Class *k = DS1338_GET_CLASS(i2c);
+>   
+>       trace_ds1338_send(s->ptr, data);
+>   
+>       if (s->addr_byte) {
+> -        s->ptr = data & (NVRAM_SIZE - 1);
+> +        s->ptr = data % k->num_regs;
+>           s->addr_byte = false;
+>           return 0;
+>       }
+> @@ -190,18 +212,19 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
+>               break;
+>           }
+>           s->offset = qemu_timedate_diff(&now);
+> -    } else if (s->ptr == 7) {
+> -        /* Control register. */
+> -
+> -        /* Ensure bits 2, 3 and 6 will read back as zero. */
+> -        data &= 0xB3;
+> -
+> -        /* Attempting to write the OSF flag to logic 1 leaves the
+> -           value unchanged. */
+> -        data = (data & ~CTRL_OSF) | (data & s->nvram[s->ptr] & CTRL_OSF);
+> -
+> -        s->nvram[s->ptr] = data;
+>       } else {
+> +        if (s->ptr == k->ctrl_addr) {
+> +            /* Control register: reserved bits read back as zero. */
+> +            data &= k->ctrl_mask;
+> +        }
+> +        if (s->ptr == k->osf_addr) {
+> +            /*
+> +             * Attempting to write the OSF flag to logic 1 leaves the
+> +             * value unchanged.
+> +             */
+> +            data = (data & ~k->osf_mask) |
+> +                   (data & s->nvram[s->ptr] & k->osf_mask);
+> +        }
+>           s->nvram[s->ptr] = data;
+>       }
+>       ds1338_inc_regptr(s);
+> @@ -211,11 +234,13 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
+>   static void ds1338_reset_hold(Object *obj, ResetType type)
+>   {
+>       DS1338State *s = DS1338(obj);
+> +    DS1338Class *k = DS1338_GET_CLASS(s);
+>   
+>       /* The clock is running and synchronized with the host */
+>       s->offset = 0;
+>       s->wday_offset = 0;
+>       memset(s->nvram, 0, NVRAM_SIZE);
+> +    s->nvram[k->ctrl_addr] = k->ctrl_reset;
+>       s->ptr = 0;
+>       s->addr_byte = false;
+>   }
+> @@ -225,12 +250,21 @@ static void ds1338_class_init(ObjectClass *klass, const void *data)
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>       ResettableClass *rc = RESETTABLE_CLASS(klass);
+> +    DS1338Class *dsc = DS1338_CLASS(klass);
+>   
+>       k->event = ds1338_event;
+>       k->recv = ds1338_recv;
+>       k->send = ds1338_send;
+>       rc->phases.hold = ds1338_reset_hold;
+> +    dc->desc = "DS1338 I2C RTC with 56-byte NV RAM";
+>       dc->vmsd = &vmstate_ds1338;
+> +
+> +    dsc->num_regs   = DS1338_NUM_REGS;
+> +    dsc->ctrl_addr  = DS1338_CONTROL;
+> +    dsc->ctrl_mask  = DS1338_CTRL_MASK;
+> +    dsc->osf_addr   = DS1338_CONTROL;
+> +    dsc->osf_mask   = CTRL_OSF;
+> +    dsc->ctrl_reset = DS1338_CTRL_RESET;
+>   }
+>   
+>   static const TypeInfo ds1338_types[] = {
+> @@ -238,6 +272,7 @@ static const TypeInfo ds1338_types[] = {
+>           .name          = TYPE_DS1338,
+>           .parent        = TYPE_I2C_SLAVE,
+>           .instance_size = sizeof(DS1338State),
+> +        .class_size    = sizeof(DS1338Class),
+>           .class_init    = ds1338_class_init,
+>       },
+>   };
+> 
 
-Sorry, slipped though.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-Ani, you looked into this recently, any comment?
+Thanks,
 
-Also: what is the overall state if this series?  There is another igvm
-patch (8/9), but trying to apply the whole series fails due to conflicts
-in the igvm code.
-
-take care,
-  Gerd
+C.
 
 

@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 370E5CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:16:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613B1CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:17:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN7x-0000lk-KA; Thu, 15 Oct 2026 11:12:17 -0400
+	id 1xHN6s-0006aP-4p; Thu, 15 Oct 2026 11:11:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN7w-0000hG-DO
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:12:16 -0400
-Received: from mail-wm1-f50.google.com ([209.85.128.50])
+ id 1xHN6q-0006UX-RB
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:08 -0400
+Received: from mail-wr1-f53.google.com ([209.85.221.53])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN7t-0001y7-Uk
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:12:16 -0400
-Received: by mail-wm1-f50.google.com with SMTP id
- 5b1f17b1804b1-49ff680331aso25056265e9.3
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:12:13 -0700 (PDT)
+ id 1xHN6p-0001iF-1J
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:08 -0400
+Received: by mail-wr1-f53.google.com with SMTP id
+ ffacd0b85a97d-48c4be28b82so562347f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:11:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792077132; x=1792681932;
+ d=1e100.net; s=20260707; t=1792077065; x=1792681865;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=hRQau7jFOLMcW9cDld4PZy7QHA0r3DkmWSHU69Dv0ic=;
- b=R8iI302cDOxS0l38EwQxmgwh2QYTE73GFL73J3+OUkIQVQVxesf/RuiwOhRcskIiAs
- ENSI0xH8+wxA22ze2rdSQg6BBhzCMh5OIrYkr3wD6D+OxgWzNuhQpqphwqOcdK9pCG8o
- qBnl8fSimlQx+CA1BAtaXZsBYGF9Ba6WdBeZs4cIXG+LPPbN5GSBldDkxH7ZA8S98SX6
- sq6DuRWq3g1k0ZkfZA8VjNCXgyK7n2PHcmfxZPs9XgiYFS+Y9BrS/psS4Sd3SebSZcGX
- ZJqbB4saJptwUGYD8d/J+oeQr+Hlrmsi8yKbiMRLhzQGvB8PaMG4NikwYswtmfUuetiB
- RaVw==
+ bh=QALtB1JjwJWKzUBaARxhOo0RyLWLhPW//31H+iGWjAk=;
+ b=E8i+sajTUR1jlbfyFa5cxeSfmPgDllbmM9rP1W4DGx/cwmjaQ/F8w/5VLWZCdH2jw2
+ T3dTPf1ctQxualUN2MzUCWmSrLE1CDZRdiojlm0F+KqdqUEeZ0d3tJBOIyWbDZzS0w1Y
+ RY8Lp+XXIYvKD74AZ2oiRPwzPL4uVRAjLOang2f1qofvL+4HscX8zEtwrkYOBBI3bit9
+ o4m2CdFT036AB1M5yJYMxW90Ao2bzDyeOadpGdOuok6Vf6tE/A7kLyfMmDOJ3DsThtQy
+ Gge9jtz+GpCAxUmPglm4ZAFKih06tm2cd0HQMTpbugsCDw9guxj1d7aa4eBiOArTaOHh
+ OhfA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByWe9v/5UBqYkyXAWtd15gdLC9aU9DPUPaiAtuQ0l0RAir6TgQvYs1Mx9MNnYhO5+9fjRVyuFddhA==@nongnu.org
-X-Gm-Message-State: AFq9FYJOVHMXiR/OdxN/vYJgjk1nd+QQpn0hflqGzcu6NDPquxeYP1V2
- T6xs58RmZ3+n0QPxzj2QaXUV6hwUBcN5rSU2GQzMe4HL0cDCqfOuPfDI
-X-Gm-Gg: AYBFou3//lEm51tQWIfFUSB8g8tXpoMeKp1rdYTZmZXF6bL9CNiO2mRlCSnQkHLQzpI
- xljYLl5lAVc+TwkJD/KMZoMwf4YQJctpayUZvBwm2NnzmVTcBe1HE3v76XQWjwAySTMo5277xRY
- tBaDe9ASuXkPGFI/NSvPekG8NsgobEaHkVIes+8f2CZ7hZsXr9fhI9OzEuxrwp4TJjhHFsNJyV+
- 4sBBkxzzVh4uI1d5wqDwxNDhoRR1Zset7sCuGo053FvukrcD07e6C8A494q2SVBNoSNoWQdSct6
- hbjhnzSe3CQh3WHDTm1DyKB/mchfmgAfvy0ZDgI8KQscyMKAkqEtdjhobbchNfUbwwHb1WCSzcR
- SX+o0Gjtme0ib1uekugXfnlTNmqUSfrL6s38iC0hmXqedyPzCyNNPOh+BWdrh2HpY3c0a59y8xp
- aZv60SrMyGj/RjShX94qQrwkLLe4nPckTERH2FqVCQyzG6ToRCkQNDqjCJ6tYH7iHnJzderlcY2
- Wb2U19tn/EZzTJmtct9NtBC7AhNZKrlLyPmQBiPPXBkqBs=
-X-Received: by 2002:a05:600c:4e89:b0:4a0:12d7:4c88 with SMTP id
- 5b1f17b1804b1-4a18e4ac77amr434246385e9.30.1792077132261; 
- Thu, 15 Oct 2026 08:12:12 -0700 (PDT)
+ AKwUvBz0njEQPRNMd/TyhH0VxfUzfp8RORRQ8Moko7ZBG4J1+9+1/I+yMIIqUzMlm5luejryIYwzmpXilA==@nongnu.org
+X-Gm-Message-State: AFq9FYLu9x1k30U3SyGCB3FyZJcM68hvgS+8FZC/pxb51I/zowawe2HD
+ LYkBszQYD3qHc0JKKzXtgnwr8+GCo8Kj+n8hRx8l/BgZry4yuPUJ8dI9
+X-Gm-Gg: AYBFou15wtuDlPJLSE3lW9zdmolx7uuVdtrJIjrc6TAqEQTDGKKhNjQBoEL3L3DhyA8
+ 3GSFzISUUjIr9P+nU+q9gsiXKmw9FgbjC4TSAopqkS1Ik/iDlm07d/b2sQBiAq1XAxOp0Sxc4QP
+ YuU2MWWHGxtalqIwRqKzSsyMab430mnuNdYhYHVjUzAFZ3AkzQJniX8QH0HIvbNKUmRgP/EymsA
+ PLeGwDUWW3TuNiPOYprjGH09Ln+wQYVzyD/8uEjVqjLmbcDrAhhwdZhFtbpUF/64acM/2PKu0We
+ UerQmjNQ80Wy4G3jFd1nTq45QWklZ3V0Z+/JjHuBE7fv7tFfk93MiZx5aV7ZGnZIBQWwR7b9Rv9
+ Mnshazr4hli2JBU1ibWwUOQLquiP+lawRyTMOmqONGJZrbkJkydIOwqy/SqRuNKlXQBtCMq9Vpa
+ CDu/G4rsFgGqj2cXLAmo+w6XbN5qccinroH81CLVf0ISCPa1Wdcypnj7INPNc3gvR3hgdGf4cZl
+ sJUIiKExRHj75Xn2qf2KT3+kTmcKVL9AfMzT9kGYNePeg==
+X-Received: by 2002:a05:6000:2606:b0:48d:eb45:742d with SMTP id
+ ffacd0b85a97d-48deb45757dmr10400041f8f.22.1792077065222; 
+ Thu, 15 Oct 2026 08:11:05 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd64b5e7sm77275735e9.2.2026.10.15.08.12.11
+ ffacd0b85a97d-48de0ac5265sm20302446f8f.41.2026.10.15.08.11.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:12:11 -0700 (PDT)
-Date: Thu, 15 Oct 2026 13:57:54 +0200
-Subject: [PATCH 16/22] tests/qtest: tmp421: cover the register form of the
- migration stream
+ Thu, 15 Oct 2026 08:11:03 -0700 (PDT)
+Date: Thu, 15 Oct 2026 13:57:47 +0200
+Subject: [PATCH 09/22] hw/sensor: tmp421: migrate the exact measurement
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-clemente-v1-16-bf591886b5b6@free.fr>
+Message-Id: <20261015-bmc-clemente-v1-9-bf591886b5b6@free.fr>
 References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +76,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=3815;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=3784;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=KCKssRn/w/mRE8Rh274RLtAfGbpNnr2ePuT78VSY79A=;
- b=Px6Rno0FU9aNGFRQDDqZEW7yiUg/GPF11gsY4AdAEFz9J6+BMnEu32N755/95aExgtsl5nHL2
- 7iX3si4AryyBgt6jBkA5QExdH963O4CoSMQ/cDBusoVseVD6i+dk7fG
+ bh=WkdVkGiPzxeWatF4oFQP9cdVEfej5xbiLCyVJyd/Exg=;
+ b=iTInpBgYCl9BA8spP92Lp0rju5OGi6Ykf9mvFhRxNkqTIW6K6EIizFAEUjgVD8Eh5sLol4dj2
+ iMHQ7e+ePNlApbO+C2RWgUwGVgNV5pw0daZjYdZBZfl7npDyKU4ULV2
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.50; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f50.google.com
+Received-SPF: pass client-ip=209.85.221.53; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f53.google.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
@@ -111,108 +110,113 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-A stream with no measurement subsection has the shape of every stream
-written before that subsection existed; loading one exercises the
-conversion back from the register form. The temperature is picked so
-that form reproduces it exactly, and picked in the extended range,
-where the top register bit is part of the value rather than a sign.
+The register form the stream carries only resolves a sixteenth of a
+degree, so a temperature set through the property does not survive a
+round trip unless it happens to fall on that grid.
+
+Add a subsection holding the measurement itself, sent only when the
+register form cannot reproduce it. A stream from a sensor holding an
+expressible value -- the usual case, boards preset whole degrees --
+therefore stays loadable by a QEMU that knows nothing of it.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/tmp421-test.c | 66 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 66 insertions(+)
+ hw/sensor/tmp421.c | 60 ++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 58 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/tmp421-test.c b/tests/qtest/tmp421-test.c
-index 6c5332211b..5be2abc822 100644
---- a/tests/qtest/tmp421-test.c
-+++ b/tests/qtest/tmp421-test.c
-@@ -8,6 +8,8 @@
+diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
+index 1e061045cb..e391bb20e1 100644
+--- a/hw/sensor/tmp421.c
++++ b/hw/sensor/tmp421.c
+@@ -59,6 +59,7 @@ struct TMP421State {
  
- #include "qemu/osdep.h"
+     /* migration only: the register form the stream carries */
+     int16_t temperature[4];
++    bool temp_mc_loaded;
  
-+#include <glib/gstdio.h>
-+#include "libqtest.h"
- #include "libqtest-single.h"
- #include "libqos/qgraph.h"
- #include "libqos/i2c.h"
-@@ -224,6 +226,69 @@ static void test_n_correct(void *obj, void *data, QGuestAllocator *alloc)
+     uint8_t status;
+     uint8_t config[2];
+@@ -379,6 +380,56 @@ static const VMStateDescription vmstate_tmp421_n_correct = {
      }
- }
+ };
  
-+static int qtest_get_temperature(QTestState *qts, const char *id,
-+                                 unsigned channel)
-+{
-+    g_autofree char *prop = g_strdup_printf("temperature%u", channel);
-+    QDict *response;
-+    int ret;
-+
-+    response = qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments': "
-+                         "{ 'path': %s, 'property': %s } }", id, prop);
-+    g_assert(qdict_haskey(response, "return"));
-+    ret = qdict_get_int(response, "return");
-+    qobject_unref(response);
-+    return ret;
-+}
-+
 +/*
-+ * A stream written before the measurement was held in millidegrees carries
-+ * only the register form. The subsection holding the measurement is left out
-+ * whenever that form can reproduce it, so an exactly representable extended
-+ * range temperature -- whose register value has its top bit set, and is not
-+ * a negative number -- travels the same path such a stream takes.
++ * That form only resolves a sixteenth of a degree, so the measurement itself
++ * travels in a subsection -- sent only when the register form cannot
++ * reproduce it, which leaves the usual stream loadable by a QEMU that does
++ * not know the subsection.
 + */
-+static void test_migration(void *obj, void *data, QGuestAllocator *alloc)
++static bool tmp421_temp_mc_needed(void *opaque)
 +{
-+    QI2CDevice *i2cdev = obj;
-+    g_autofree char *tmpfs = NULL;
-+    g_autofree char *mig_path = NULL;
-+    g_autofree char *uri = NULL;
-+    GString *dest_cmdline;
-+    GError *err = NULL;
-+    QTestState *to;
-+    QDict *rsp;
++    TMP421State *s = opaque;
++    bool ext_range = s->config[0] & TMP421_CONFIG_RANGE;
++    int32_t offset = ext_range ? TMP421_EXT_OFFSET : 0;
 +
-+    tmpfs = g_dir_make_tmp("tmp421-test-XXXXXX", &err);
-+    g_assert_no_error(err);
-+    g_assert(tmpfs);
++    /*
++     * The register form reproduces a measurement when the conversion divides
++     * exactly and the encoder had nothing to clamp. Asking the decoder
++     * instead would settle the question with the function whose result the
++     * subsection exists to protect, and hide any error it has.
++     */
++    for (unsigned channel = 0; channel < ARRAY_SIZE(s->temp_mc); channel++) {
++        int32_t scaled = s->temp_mc[channel] * 256;
 +
-+    mig_path = g_strdup_printf("%s/socket.mig", tmpfs);
-+    uri = g_strdup_printf("unix:%s", mig_path);
++        if (scaled % 1000 ||
++            (uint16_t)(scaled / 1000 + offset) != tmp421_encode(s, channel)) {
++            return true;
++        }
++    }
 +
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, TMP421_CONFIG_RANGE);
-+    set_temperature(TMP421_TEST_ID, 0, 100000);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0xA400);
-+
-+    dest_cmdline = g_string_new(qos_get_current_command_line());
-+    g_string_append_printf(dest_cmdline, " -incoming %s", uri);
-+    to = qtest_init(dest_cmdline->str);
-+
-+    rsp = qmp("{ 'execute': 'migrate', 'arguments': { 'uri': %s } }", uri);
-+    g_assert(qdict_haskey(rsp, "return"));
-+    qobject_unref(rsp);
-+
-+    qmp_eventwait("STOP");
-+    qtest_qmp_eventwait(to, "RESUME");
-+
-+    g_assert_cmpint(qtest_get_temperature(to, TMP421_TEST_ID, 0), ==, 100000);
-+
-+    qtest_quit(to);
-+    g_unlink(mig_path);
-+    g_rmdir(tmpfs);
-+    g_string_free(dest_cmdline, true);
++    return false;
 +}
 +
- static void tmp421_register_node(const TMP421Variant *var, const char *type,
-                                  uint8_t addr)
++static int tmp421_temp_mc_post_load(void *opaque, int version_id)
++{
++    TMP421State *s = opaque;
++
++    s->temp_mc_loaded = true;
++    return 0;
++}
++
++static const VMStateDescription vmstate_tmp421_temp_mc = {
++    .name = "TMP421/temperature-mc",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = tmp421_temp_mc_needed,
++    .post_load = tmp421_temp_mc_post_load,
++    .fields = (const VMStateField[]) {
++        VMSTATE_INT32_ARRAY(temp_mc, TMP421State, 4),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ /*
+  * The stream carries the register form of the measurement: that is what a
+  * QEMU predating the millidegree state writes, and what it expects back.
+@@ -398,9 +449,13 @@ static int tmp421_post_load(void *opaque, int version_id)
  {
-@@ -255,6 +320,7 @@ static void tmp421_register_nodes(void)
-     /* Temperature encoding is variant-independent; exercise it once. */
-     qos_add_test("temperature", "tmp421", test_temperature, NULL);
-     qos_add_test("range-saturation", "tmp421", test_range_saturation, NULL);
-+    qos_add_test("migration", "tmp421", test_migration, NULL);
- }
+     TMP421State *s = opaque;
  
- libqos_init(tmp421_register_nodes);
+-    for (unsigned channel = 0; channel < ARRAY_SIZE(s->temp_mc); channel++) {
+-        s->temp_mc[channel] = tmp421_decode(s, s->temperature[channel]);
++    if (!s->temp_mc_loaded) {
++        for (unsigned channel = 0; channel < ARRAY_SIZE(s->temp_mc);
++             channel++) {
++            s->temp_mc[channel] = tmp421_decode(s, s->temperature[channel]);
++        }
+     }
++    s->temp_mc_loaded = false;
+ 
+     return 0;
+ }
+@@ -423,6 +478,7 @@ static const VMStateDescription vmstate_tmp421 = {
+         VMSTATE_END_OF_LIST()
+     },
+     .subsections = (const VMStateDescription * const []) {
++        &vmstate_tmp421_temp_mc,
+         &vmstate_tmp421_n_correct,
+         NULL
+     }
 
 -- 
 2.53.0-Meta

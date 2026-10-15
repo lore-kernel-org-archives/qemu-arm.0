@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43FC5CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:11:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E29F6CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:11:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN5y-0005fd-H8; Thu, 15 Oct 2026 11:10:14 -0400
+	id 1xHN60-0005gS-NC; Thu, 15 Oct 2026 11:10:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN5j-0005Ua-OK
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:01 -0400
-Received: from mail-wm1-f41.google.com ([209.85.128.41])
+ id 1xHN5w-0005ep-Ax
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:12 -0400
+Received: from mail-wm1-f49.google.com ([209.85.128.49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN5h-0001PO-WB
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:09:59 -0400
-Received: by mail-wm1-f41.google.com with SMTP id
- 5b1f17b1804b1-4a161d9b8c7so38715525e9.3
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:09:57 -0700 (PDT)
+ id 1xHN5u-0001dM-Ko
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:12 -0400
+Received: by mail-wm1-f49.google.com with SMTP id
+ 5b1f17b1804b1-4a022fee0caso51306675e9.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:10:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792076996; x=1792681796;
+ d=1e100.net; s=20260707; t=1792077009; x=1792681809;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=74etoE1H4Vt/KU4xZOoXzZ54Zty9qqrQvEaIpDfvh7E=;
- b=bd4sNxqCpXhpVM2CmwFiyKQWrqvtYmBzPqYspEnOmYvpV9d5IKiGzmBoOwTbZdwi9W
- GzveT5ebnD+RfQBqxTwD98K3U4UuU+KyM/Rz//f+vmhjtiPnl4I8yP+pUo6m+xmO8BN4
- sHRjmQdJKdUwtviIuZKb7bf3toztnEPolJz3P0jY0Iu3TfekweDNV5eaxR3JeAmGSIeS
- pAqDToyZM50dBFwdYWRdAGjLUwhrzSrHknkPt2yaWJAX9dlxmuikPSe36ZQd/67gTUA9
- 1hLAgO6o4OdcLVzyfjm+ysE8CY3ASI6Hsymwbz0U7rREuGrYacGGLZZ19nLWYaV5RPEV
- qFVg==
+ bh=tMgSw4UUJMwBSnxsh5UNM4ZZEUwyYmjlfix+bmhPnj0=;
+ b=zRDzCCEdC+6PBiefiYqzrVNXtmhYGEuKmDLBM6DtYAElOIMEawRj/q87vdVtKkNE9G
+ iBs1MblqwcKNZk2ybqSxUqrKfK4ACyi1nFcEgP65aaf4AAs3aJiCQnjQPBAhTvb6PTuc
+ ozHNfsjBJtYes2W1R5lmfK11EIvfVelxxDbxrSobC0qiSLPWB3HhoMimnBsC2wcCrP5p
+ uHc3CP74rjLflDY0GOhM+3czkxgWXKWlYIXjNgz7y3zeoykioDdphe7CdMwuSsmcu70b
+ p/A4qfqIUF5uxDeRBCE1HKgH0aNGIAL+Y6FL2t54gYcdjrU6yP3sdCMrR9L7TFULNGFQ
+ Uivg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw6m8NDFaUafxKNT0y64pQSbGVt7pUvedR0dw2HCGZ+m7fjrNwoVU5PUf0AT3bvOunlwZTyOJq7sg==@nongnu.org
-X-Gm-Message-State: AFq9FYLYn7Ak3AaH1+0WZhE3v5+h88Bm9ayB507Yz/9PlD4r0yu94vlO
- kT/IbkpauixFYgEYmBN9lceLTyCRKPTUh8vg3YyevZBnBBVjGKdQqOoH
-X-Gm-Gg: AYBFou0BskGKLxvtqwKsPLKiZcCM3VtmP0xZ2Lhf6hd4L3rhjuryue+EKEiBbSD/+Bs
- 6kB+onMCAg3TRYAddfkxSGB8Jr6iGlGtpuW9hWN1QOQpKzgO7pA0JxNGB6V8U7TuDUmABeBhk/3
- 3r6ZyrbObS+qlkV9JnOl/t3exzGPYPyozyK9BTHTpnX769w3dyAlgfTXVIfP+cI/akRNOoWRWgT
- oH2ElEAoCO9TrY0eoL8HS4D0ASl8QJIB4Le8PxzIoibOsqv5H8s+1032ydN4INqXef1E23Qgl+F
- Eyp0jaFIEupO5TybV6CUA/tFHiNqNwP30ZVYrxMlpBsm6W+ECGKER2nJx8R85MYWLnrICXJJW1P
- FZF+g51YpdndBWlVkO6dcFplEGITCdQ0UlrS6d56q/dDuI0B3+1egNzb53aS3/64OaLxU0fa4nE
- olK/3L0Ko0t2ecZ4jq5g+bpSP+BAV1GETcHHIxLDQ7nY6FV0CJyABfEzxNZnxKqcvUrb06x28mI
- RErqa9YUXiYSRS+2EkrEaXmYZRqiGRqSPjnTUg9fBAMQQ==
-X-Received: by 2002:a05:600d:82e4:b0:4a1:a45a:88f with SMTP id
- 5b1f17b1804b1-4a1a45a08f7mr248945935e9.20.1792076995953; 
- Thu, 15 Oct 2026 08:09:55 -0700 (PDT)
+ AKwUvBzkSS0tvEwqd/Szhw/WHfTaKAwNHtwXzADNvMSXcNHoZhyt4PFdSoV0Zs8Zsh4xqKQEZnjdjRZ/0Q==@nongnu.org
+X-Gm-Message-State: AFq9FYLiDcgvsY552Q21nV1lLVk+yNvWN6IbFFtcSPf4BQb+PFHz46Hs
+ Se9Fhe5VOmeQZTyz0sXYT1IqxIQNzJ+IkEsNwjALntt2jJGfvQx2M3lK
+X-Gm-Gg: AYBFou32TmGRxTIR/4t4U+kBsO+nAEcGPNVoecI58IgxiwvyrE2ufP2079LKHyczoco
+ xWJlGzL3lgh0Lnw6Tw05mRXx7YwAxdaep/QMoWp2jkGZobmwesq+52EPayN3U8pNC5JFXZCuBt+
+ W8AS7xmytE9yQIjCh/umy0TwQYrMHBR2imnbmT16f1rJetscNh6g+xPqrkHoge83Njiy3X4ETch
+ 7G4aVzH/L17MTzDCKQGI+C1RcuGwQjb3XVHuHYgtuKm9nP+gji8s30A2nu8fXp7I/9RhcPfIEns
+ CwbVxc2JW8ZVhLZX4lcdiz4+te+TcEzL6ZIAt0/WPjXf/P6Pceyx4uEGgDPutLPYarMYJZVGR/f
+ Kd6nyTSgrrO28v6CNNs5aD61+I5GMiLyZbmjaQjtJUtlCnWRG8ltOci9J12lLhnTSYnOPjGtXlK
+ yJJNbeALFYxxuLUM7sa5i+gZZlMWBC3oM/ZLXYIfm29GA4/Q2UhZdrrBCoxjZKESpm4fWLAL623
+ tSpIKQCuZ+DEx8RmZLecHKd6nnG32sIA69rsjuR8rz66g==
+X-Received: by 2002:a05:600c:4e91:b0:4a1:7ec7:a479 with SMTP id
+ 5b1f17b1804b1-4a18e4f56bcmr398107885e9.33.1792077008886; 
+ Thu, 15 Oct 2026 08:10:08 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1c50689e6sm21829695e9.5.2026.10.15.08.09.54
+ 5b1f17b1804b1-4a1bd97349esm77230245e9.3.2026.10.15.08.10.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:09:54 -0700 (PDT)
-Date: Thu, 15 Oct 2026 13:57:39 +0200
-Subject: [PATCH 01/22] hw/sensor: tmp421: do not report a stale errno on a
- parse failure
+ Thu, 15 Oct 2026 08:10:08 -0700 (PDT)
+Date: Thu, 15 Oct 2026 13:57:41 +0200
+Subject: [PATCH 03/22] hw/sensor: tmp421: implement Resettable reset
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-clemente-v1-1-bf591886b5b6@free.fr>
+Message-Id: <20261015-bmc-clemente-v1-3-bf591886b5b6@free.fr>
 References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +76,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065464; l=1336;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=2741;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=XVWhDGukLr6PXwfmY7rmr+tRBguotXtnONw9Q1wdDtg=;
- b=WmgsaWFpkmIFw+F3nWjd/O7l2l0iYLNlbzlXG4rsJ9GkxrZ0G9HrP2bFGhYNFKh9dkwshkYry
- 1NBe7mpQ9NqDSbPJ82IP+/UD+Ts0qtl+iRTfBZYTh9VYxKTnHqa0Fny
+ bh=tvoqjrv2J/EoPO9TG+O1KcuhmkCkE0+CZRSFQBVZEPU=;
+ b=bfuAI4tj6xSx6us8DxH28R9e4wNaTF5rDzWe5qWPiOQmlr3R0AAkHJiAe8eEx8IuQ2u9yxBex
+ ct1l++VAwwxBWrVT58OcbaAj9U70VV/yorE5z644+jKHHPLPspaIcZC
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.41; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f41.google.com
+Received-SPF: pass client-ip=209.85.128.49; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f49.google.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
@@ -111,39 +110,91 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The temperature property accessors decode the channel index out of the
-property name and report a failure with error_setg_errno(). sscanf()
-does not set errno when it matches fewer items than expected, so the
-message is suffixed with whatever unrelated error was left behind by an
-earlier call. The bounds check right below already uses plain
-error_setg() for the same condition.
+Wire the reset through the Resettable hold phase instead of only
+calling it from realize, so bus and system resets re-initialise the
+device. The measured temperatures are no longer cleared on reset: they
+represent the physical input the ADC re-samples, and boards may preset
+them before the machine-wide power-on reset.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/sensor/tmp421.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/sensor/tmp421.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-index 127edd0ba5..fde41b2323 100644
+index e7927699ce..a9d15601cb 100644
 --- a/hw/sensor/tmp421.c
 +++ b/hw/sensor/tmp421.c
-@@ -117,7 +117,7 @@ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
-     int tempid;
- 
-     if (sscanf(name, "temperature%d", &tempid) != 1) {
--        error_setg_errno(errp, errno, "error reading %s", name);
-+        error_setg(errp, "error reading %s", name);
-         return;
+@@ -224,7 +224,7 @@ static void tmp421_read(TMP421State *s)
      }
+ }
  
-@@ -154,7 +154,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
-     }
+-static void tmp421_reset(I2CSlave *i2c);
++static void tmp421_reset(TMP421State *s);
  
-     if (sscanf(name, "temperature%d", &tempid) != 1) {
--        error_setg_errno(errp, errno, "error reading %s", name);
-+        error_setg(errp, "error reading %s", name);
-         return;
+ static void tmp421_write(TMP421State *s)
+ {
+@@ -239,7 +239,7 @@ static void tmp421_write(TMP421State *s)
+         s->config[1] = s->buf[0];
+         break;
+     case TMP421_RESET:
+-        tmp421_reset(I2C_SLAVE(s));
++        tmp421_reset(s);
+         break;
      }
+ }
+@@ -303,17 +303,18 @@ static const VMStateDescription vmstate_tmp421 = {
+     }
+ };
+ 
+-static void tmp421_reset(I2CSlave *i2c)
++static void tmp421_reset(TMP421State *s)
+ {
+-    TMP421State *s = TMP421(i2c);
+     TMP421Class *sc = TMP421_GET_CLASS(s);
+ 
+-    memset(s->temperature, 0, sizeof(s->temperature));
++    /*
++     * The measured temperatures are not cleared: they model the physical
++     * input the ADC re-samples after reset, and boards may preset them.
++     */
+     s->pointer = 0;
++    s->config[0] = 0;
+ 
+-    s->config[0] = 0; /* TMP421_CONFIG_RANGE */
+-
+-     /* resistance correction and channel enablement */
++    /* resistance correction and channel enablement */
+     switch (sc->dev->model) {
+     case TMP421_DEVICE_ID:
+         s->config[1] = 0x1c;
+@@ -330,23 +331,22 @@ static void tmp421_reset(I2CSlave *i2c)
+     s->status = 0;
+ }
+ 
+-static void tmp421_realize(DeviceState *dev, Error **errp)
++static void tmp421_reset_hold(Object *obj, ResetType type)
+ {
+-    TMP421State *s = TMP421(dev);
+-
+-    tmp421_reset(&s->parent_obj);
++    tmp421_reset(TMP421(obj));
+ }
+ 
+ static void tmp421_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
+     TMP421Class *sc = TMP421_CLASS(klass);
+ 
+-    dc->realize = tmp421_realize;
+     k->event = tmp421_event;
+     k->recv = tmp421_rx;
+     k->send = tmp421_tx;
++    rc->phases.hold = tmp421_reset_hold;
+     dc->vmsd = &vmstate_tmp421;
+     sc->dev = (DeviceInfo *) data;
  
 
 -- 

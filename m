@@ -4,92 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98461C2D0A6
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 18:14:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDF94CC6B38
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 18:15:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHPvW-0001RB-El; Thu, 15 Oct 2026 14:11:39 -0400
+	id 1xHPvh-0001eD-7z; Thu, 15 Oct 2026 14:11:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xHPvQ-0001Mr-TI
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:33 -0400
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+ id 1xHPvW-0001R4-Ai
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:38 -0400
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xHPvO-0001T1-O6
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:32 -0400
-Received: by mail-qt1-x836.google.com with SMTP id
- d75a77b69052e-533952f3714so58609881cf.2
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 11:11:30 -0700 (PDT)
+ id 1xHPvT-0001Ud-HS
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:37 -0400
+Received: by mail-qt1-x832.google.com with SMTP id
+ d75a77b69052e-5339381b46eso55141931cf.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 11:11:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792087890; x=1792692690; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1792087894; x=1792692694; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=nJZbRETEH1TC0hWBcbogoC++OYHq/p68Xc08YmFNLLU=;
- b=aPwL7+WRtArfvxwhVF7IU2F/wfT0EJ/J+B64fCexIZ6YHBNpjAEXl0D8Ll98tswJJM
- IJ6tWaa+cK4P8P/HpPrFFTdyvZnJfW8rMqQrFb34GW95AZD+FusL3a0082qzpj9eh4or
- ApHeMBD2H31fQBS/m8/tkqtfIwou3shypnpu2uUDgB72lrgCaOQHo8pd+5oMPSCar5IA
- EqMhmRpy3oWfbOJSLQsiEDX5oLJsIZyNrEJNoT17Z5dydwJxm1lFluD1dJB8W3OGwhlu
- 2RPVJXYBr0i4sWhDe+i/XOB5U0dfNYiXWSrOiMRS4PgVSHoVFKaES8UdhjFX41mYZbX1
- bNLg==
+ bh=0QOAyRwe4/bt3bQDCy6W5zVkYCsMuZ0faJBwW6eD+5s=;
+ b=dZFUrUXUL9EepU/yUnNL0daGEXtr+4aXgpWU+FoandyIC45qSWA2ixcUBKz+2AMtaE
+ kyEXJgOxAmR/74OG8BnxgdC42aWWfps6w1KkH2xeb1q4R2NPEB5sar7OtAzqTFgulZLn
+ IxF+vFliIORRDNLadf8OD3gmAuRqhBflaNeCyddYR7cv/H3mtpJ9eC2pkxCzZgq7pK19
+ FJBFwFrZtvuz/eyK8TevVRIu75N4DDO+QPRxqVVDt7KESZTTccbCOOl3+UWefXVMot3G
+ i1y3lBJLfljbN5a/KMuLQ+4awInaFVITpoAx5E68Im3D5chj7ZGwMaKyIHn0vD7Z1Ejc
+ yj1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792087890; x=1792692690;
+ d=1e100.net; s=20260707; t=1792087894; x=1792692694;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=nJZbRETEH1TC0hWBcbogoC++OYHq/p68Xc08YmFNLLU=;
- b=d5ftl859+A2GN0dA9+Ad9dELj8j9Uz+It6duVUDngrHCm8uU0WK3GRMxVtP6GvPTIj
- GzgyYQnkGKCqLyP6iijm259XNeTjS6KwHtgTuXcVPzgLzZ16UsnEkpqruqtRb1Fy7bQt
- QvyQOISg3pO4zJnw7cxkgN5vraPjuGyQpbIqAQ/xZ4koINUYE+6IpS3RbWh/+pginhN+
- lbC6b3zlI4024/eNM0ttY3gQ0BZeJSh+lCcIY9PRTdzmB5tP6MmNTydb8IFq/PGekq3v
- MjBKkGqIVx+UN/LqVrr8NJ89FPnd6llghbE09ahNMMlNmN6Xvgd9PznDlHFNo5HynhiO
- 5p4w==
+ bh=0QOAyRwe4/bt3bQDCy6W5zVkYCsMuZ0faJBwW6eD+5s=;
+ b=adWqnyZ8q4Mvi8SWsMieAyfaTbHMN7nGYCtlnNVfioAHXtHhB06Ju7LCYINr5qwJcf
+ gsslw2i3TT4kXhI/OqVYiq2BSjRVGd164xWYPG30x5ZaoppBUnmwA1zSBTmuz+SrCvKw
+ d+2bjVM08PMgVtHwyE0HZcOQqUxZ7Hf6DqOVjls/eeEKWzhatDV7Xdf/18lIkVCt2gI4
+ N1HbFhKjXGnj0qFUlxK09wazVhez8tLfc5xZDTqLjKHX41WpdjcSzsUMeFEG2uIh+ftC
+ z9+190fQVC7kiLyiTNZysDrKZnPD4pK6COfg0++9joqsYzd5KWocO8DvljZzvjgoDv0P
+ 8JPA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxpyafqg7m9UMDgtO7zy0Tr/sWXEd5G4hv/jTbKlfQInYgxLg0mrMJX7xJLSpMboefJmdoHbs7R4w==@nongnu.org
-X-Gm-Message-State: AFq9FYLMt8nH0aLecsKVjLC10z9CFdr+Yg0afTsKUhGhDRcD3lc3JSOY
- bIzDE5219XxBxClJTk9Rv0Uo4etiKnJOs06ilQHRyvTiqE5uYhZB2oLLkv59kYdU
-X-Gm-Gg: AYBFou040ry0tbo8R3PvdoHuBp8vq/Mmpw/1HrJ8hjQeAd+QMx+ycZlXNG2CTdPKHJJ
- GUpllnn5RsUFA91nCNwKr1m+2wrfKosTRFrGxQrYYZyyHVZxO+pS/6zLCGIPS7Ba1wglQW2mI2p
- BjrhTcqV1R7oJwpxP3By+hwLG+kolVnpZ8HozWUcrdJ0zuUSD7KbBhx5nJcXc2qf7sQF34OmxXD
- 4bUDWjCqsFaHg6Qc8qy24lHcP+DLi4T0clJZnM2MfqYhnrqtgpnOcTxbaShQUxzqpSBa41He5su
- wlceWzti6LRga85vn5HAvBiAo4LuzuYs0kc1usogHqF7Qc/LdKYKUub7IW0YR7jghIo5zIs4vlC
- zdij2XD7m246TXLRd3fZHcsC2aqGhFg/q4/rHB8vijVe1GCs6aWAMXqORJOnDx6F2ymrj9rbmlH
- P0oGsAWMKe9VWs+383/0/Ert4IOMVGVaVYde7r3uQN3+Zh65EWOf3EabXNw72k1U3/Da7QXAH0o
- svev73ifYkiOhRTR/Ebd8wgLiO/EfISnARG4PMUGnCK3zm2sIq2toXYSzIQw4hZixmQGg==
-X-Received: by 2002:a05:622a:130c:b0:532:e4bc:b80f with SMTP id
- d75a77b69052e-5359fdf65efmr326730931cf.60.1792087889530; 
- Thu, 15 Oct 2026 11:11:29 -0700 (PDT)
+ AKwUvByXzqG8B9aiXL4lChq4DqsxUaa4lz4iXQ1Ea8NCu/x4Bem9wbOTCCmfEPYqAtFjri4bN+gg+4vmGQ==@nongnu.org
+X-Gm-Message-State: AFq9FYL5R9e/IQ305uDr8oqQI2ng/U0pnM1qRkoRGDYNBLt9YbNBw7eS
+ aiv+6EASJdQop5yzmbFjMSTT3go9xbCFsMbUeiiQstgiLX8YegZJydrh
+X-Gm-Gg: AYBFou1Q+0Li2YwR+tg44CG4WnoY9UYMm1ys4WgQjlODHqoei/ZOfGsFxQGnTjbhLN2
+ 7em0CGQ1leBIFXBWougREIfbd9KjE2kZ1Z5kSlemV1eDiRyDyftbo1eyy89W9C5Yz0NODb1pdDd
+ r79keLWh2d5oUkEadIVxQuUzatK/YJ9aJIK4aR6P77k7ldPJJw0y3YnsonNagT0uWEp8+Io+g4/
+ NSvhwwm0dD1uwmUL/N78SkBtSFBr/v64LL9c23tprzcrLWjYxkhLmWvKN8MdYQPoSPjLPx+0VG9
+ 6Vkn6WmMdVXS9NbqYVowBj3tpYNYfTDpcQHSkgOhY2a3u2UVVwvV4XdZrvIrGsm93URNtBWs6fF
+ XTv3tlz+tfqyE/hctzo7Qc0jXHz3Ic5TmqwkdB50bJwGDEb0OPBLFmxJWPF4hiPZrQpL5/P7jsG
+ mNPsQh4v0C2PWRYi9w9E3Ns6jZmb9koadbGPTTyiZiHWHKR0V60bgk8Z3d8t7RP8SjHnofUS3Gh
+ zAv/TUE1vDfr3iMM3PQlnLJMAb9nyIRC4mx9mUIrEuQVFICFGOirRaf0vpVH3Jmz7TsHbsx6Abg
+ u9ab
+X-Received: by 2002:ac8:5d8e:0:b0:535:863a:7cd5 with SMTP id
+ d75a77b69052e-5359fba2498mr336773771cf.41.1792087894305; 
+ Thu, 15 Oct 2026 11:11:34 -0700 (PDT)
 Received: from localhost.localdomain ([2606:6d00:159:2900:919:5388:4e10:5949])
  by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-536127efe4asm32130611cf.19.2026.10.15.11.11.28
+ d75a77b69052e-536127efe4asm32130611cf.19.2026.10.15.11.11.33
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Oct 2026 11:11:29 -0700 (PDT)
+ Thu, 15 Oct 2026 11:11:33 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Sergey Kambalin <serg.oker@gmail.com>,
+ Sergey Kambalin <sergey.kambalin@auriga.com>,
  Marcelo Manzo <marcelomanzo@gmail.com>, Jason Wang <jasowangio@gmail.com>
-Subject: [PATCH v3 04/16] hw/net/bcm2838_genet: add GENET stub device
-Date: Thu, 15 Oct 2026 14:11:09 -0400
-Message-ID: <20261015181122.60608-5-marcelomanzo@gmail.com>
+Subject: [PATCH v3 08/16] hw/net/bcm2838_genet: add GENET register structs,
+ part 4/4
+Date: Thu, 15 Oct 2026 14:11:13 -0400
+Message-ID: <20261015181122.60608-9-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261015181122.60608-1-marcelomanzo@gmail.com>
 References: <20261015181122.60608-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
- envelope-from=marcelomanzo@gmail.com; helo=mail-qt1-x836.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::832;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-qt1-x832.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,233 +109,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a bare-bones BCM2838 GENET (Gigabit Ethernet) sysbus device:
-MMIO region registration, an out-of-range read/write handler that
-just logs, and a reset callback. No register-level behavior yet;
-that comes in the following patches.
+From: Sergey Kambalin <serg.oker@gmail.com>
 
-Adapted from patch 19/41 of Sergey Kambalin's Raspberry Pi 4B
-series (patchwork series 829638) against current QEMU master. The
-reset callback and class_init() use the current Resettable-phases
-API (ResettableClass / resettable_class_set_parent_phases()) rather
-than the plain DeviceClass::reset hook the original patch used, and
-headers moved under hw/core/, both API changes since the series was
-originally posted.
+Add the PHY "shadow" register structs (BCM54213PE PHY-specific
+clock control, RGMII mode, LED, and expansion-block registers
+accessed via the AUX_CTL/EXP_SHD indirection scheme) used by the
+MDIO emulation added in a later patch.
 
+Part of Sergey Kambalin's original Raspberry Pi 4B PCIe/GENET
+networking series (patchwork series 829638, posted to qemu-devel in
+2024, never merged). Carried forward and completed by Marcelo Manzo.
+
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 ---
- hw/net/bcm2838_genet.c               | 103 +++++++++++++++++++++++++++
- hw/net/meson.build                   |   2 +
- hw/net/trace-events                  |  16 +++++
- include/hw/arm/bcm2838_peripherals.h |   2 +
- include/hw/net/bcm2838_genet.h       |  40 +++++++++++
- 5 files changed, 163 insertions(+)
- create mode 100644 hw/net/bcm2838_genet.c
- create mode 100644 include/hw/net/bcm2838_genet.h
+ include/hw/net/bcm2838_genet.h | 37 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-new file mode 100644
-index 0000000000..2ff93a3417
---- /dev/null
-+++ b/hw/net/bcm2838_genet.c
-@@ -0,0 +1,103 @@
-+/*
-+ * BCM2838 Gigabit Ethernet emulation
-+ *
-+ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/module.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "net/eth.h"
-+#include "qapi/error.h"
-+#include "hw/core/irq.h"
-+#include "net/checksum.h"
-+#include "system/dma.h"
-+#include "hw/core/resettable.h"
-+#include "hw/net/bcm2838_genet.h"
-+#include "trace.h"
-+
-+
-+static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    uint64_t value = ~0;
-+
-+    qemu_log_mask(
-+        LOG_GUEST_ERROR,
-+        "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
-+        __func__, size, offset);
-+
-+    trace_bcm2838_genet_read(size, offset, value);
-+    return value;
-+}
-+
-+static void bcm2838_genet_write(void *opaque, hwaddr offset, uint64_t value,
-+                                unsigned size) {
-+    qemu_log_mask(
-+        LOG_GUEST_ERROR,
-+        "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
-+        __func__, size, offset);
-+}
-+
-+static const MemoryRegionOps bcm2838_genet_ops = {
-+    .read = bcm2838_genet_read,
-+    .write = bcm2838_genet_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {.max_access_size = 4},
-+    .valid = {.min_access_size = 4},
-+};
-+
-+
-+static void bcm2838_genet_realize(DeviceState *dev, Error **errp)
-+{
-+    BCM2838GenetState *s = BCM2838_GENET(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    /* Controller registers */
-+    memory_region_init_io(&s->regs_mr, OBJECT(s), &bcm2838_genet_ops, s,
-+                          "bcm2838_genet_regs", sizeof(s->regs));
-+    sysbus_init_mmio(sbd, &s->regs_mr);
-+}
-+
-+static void bcm2838_genet_phy_reset(BCM2838GenetState *s)
-+{
-+    trace_bcm2838_genet_phy_reset("done");
-+}
-+
-+static void bcm2838_genet_reset(Object *obj, ResetType type)
-+{
-+    BCM2838GenetState *s = BCM2838_GENET(obj);
-+
-+    memset(&s->regs, 0x00, sizeof(s->regs));
-+
-+    trace_bcm2838_genet_reset("done");
-+
-+    bcm2838_genet_phy_reset(s);
-+}
-+
-+static void bcm2838_genet_class_init(ObjectClass *class, const void *data)
-+{
-+    static ResettablePhases unused_parent_phases;
-+    DeviceClass *dc = DEVICE_CLASS(class);
-+    ResettableClass *rc = RESETTABLE_CLASS(class);
-+
-+    dc->realize = bcm2838_genet_realize;
-+    resettable_class_set_parent_phases(rc, NULL, bcm2838_genet_reset, NULL,
-+                                       &unused_parent_phases);
-+}
-+
-+static const TypeInfo bcm2838_genet_info = {
-+    .name       = TYPE_BCM2838_GENET,
-+    .parent     = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2838GenetState),
-+    .class_init = bcm2838_genet_class_init,
-+};
-+
-+static void bcm2838_genet_register(void)
-+{
-+    type_register_static(&bcm2838_genet_info);
-+}
-+
-+type_init(bcm2838_genet_register)
-diff --git a/hw/net/meson.build b/hw/net/meson.build
-index 63b0e96245..ef85b85adf 100644
---- a/hw/net/meson.build
-+++ b/hw/net/meson.build
-@@ -70,4 +70,6 @@ if have_hmp
-   system_ss.add(files('rocker/rocker-hmp-cmds.c'))
- endif
- 
-+system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_genet.c'))
-+
- subdir('can')
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 001a20b0e2..2dde33e892 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -528,3 +528,19 @@ xen_netdev_rx(int dev, int idx, int status, int flags) "vif%u idx %d status %d f
- ethlite_pkt_lost(uint32_t rx_ctrl) "rx_ctrl:0x%" PRIx32
- ethlite_pkt_size_too_big(uint64_t size) "size:0x%" PRIx64
- ethlite_pkt_tx_size_too_big(uint64_t size) "size:0x%" PRIx64
-+# bcm2838_genet.c
-+bcm2838_genet_read(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04" PRIx64 ": 0x%016" PRIx64
-+bcm2838_genet_write(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04" PRIx64 ": 0x%016" PRIx64
-+bcm2838_genet_can_receive(const char *state) "receive is %s"
-+bcm2838_genet_receive(ssize_t bytes_received) "%zd bytes received"
-+bcm2838_genet_phy_update_link(const char *link_state) "link is %s"
-+bcm2838_genet_phy_reset(const char *status) "PHY reset %s"
-+bcm2838_genet_reset(const char *status) "MAC reset %s"
-+bcm2838_genet_mac_address(const char *info) "%s"
-+bcm2838_genet_tx_dma(const char *dma_state) "TX DMA %s"
-+bcm2838_genet_tx_dma_ring(uint32_t ring_en) "TX DMA enabled rings: 0x%05x"
-+bcm2838_genet_tx_dma_ring_buf(uint32_t ring_buf_en) "TX DMA enabled ring buffers: 0x%05x"
-+bcm2838_genet_tx_dma_ring_active(unsigned int ring, const char *ring_state) "ring %u is %s"
-+bcm2838_genet_tx_request(unsigned int ring_idx, uint32_t prod_idx, uint32_t cons_idx) "ring %u, PROD_INDEX %u, CONS_INDEX %u"
-+bcm2838_genet_tx(unsigned int ring_idx, uint64_t desc_idx, uint32_t desc_status, uint64_t data_addr) "ring %u, descriptor %" PRIu64 ": 0x%08x, data @ 0x%08" PRIx64
-+bcm2838_genet_rx_dma_ring_active(unsigned int ring, const char *ring_state) "ring %u is %s"
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 7fe92789e8..2a4307bed7 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -52,6 +52,8 @@
- #define BCM2838_MPHI_OFFSET     0xb200
- #define BCM2838_MPHI_SIZE       0x200
- 
-+#define GENET_OFFSET            0x1580000
-+
- #define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
- OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
-                     BCM2838_PERIPHERALS)
 diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
-new file mode 100644
-index 0000000000..91cf1773d5
---- /dev/null
+index fedfbde066..12439b580d 100644
+--- a/include/hw/net/bcm2838_genet.h
 +++ b/include/hw/net/bcm2838_genet.h
-@@ -0,0 +1,40 @@
-+/*
-+ * BCM2838 Gigabit Ethernet emulation
-+ *
-+ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+@@ -25,6 +25,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_HFB_FILTER_CNT      48
+ #define BCM2838_GENET_HFB_FILTER_SIZE     128
+ 
++#define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
++#define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
 +
-+#ifndef BCM2838_GENET_H
-+#define BCM2838_GENET_H
++#define BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT 256
++#define BCM2838_GENET_PHY_EXP_SHD_REGS_CNT   256
 +
-+#include "net/net.h"
-+#include "hw/core/sysbus.h"
-+
-+#define TYPE_BCM2838_GENET "bcm2838-genet"
-+OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
-+
-+#define BCM2838_GENET_REV_MAJOR         6
-+#define BCM2838_GENET_REV_MINOR         0
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -273,6 +279,34 @@ typedef struct {
+     uint16_t rdb_data;
+ } BCM2838GenetPhyRegs;
+ 
++typedef struct {
++    uint16_t reserved_0_2[3];
++    uint16_t clk_ctl;
++    uint16_t scr2;
++    uint16_t scr3;
++    uint16_t reserved_6_9[4];
++    uint16_t apd;
++    uint16_t rgmii_mode;
++    uint16_t reserved_12;
++    uint16_t leds1;
++    uint16_t reserved_14_18[5];
++    uint16_t _100fx_ctrl;
++    uint16_t ssd;
++    uint16_t reserved_21_30[10];
++    uint16_t mode;
++} BCM2838GenetPhyShdRegs;
 +
 +typedef struct {
-+    uint8_t stub_area[0x10000]; /* temporary stub */
-+} BCM2838GenetRegs;
++    uint16_t auxctl;
++    uint16_t reserved_1_6[BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE - 2];
++    uint16_t misc;
++} BCM2838GenetPhyAuxShdRegs;
 +
-+struct BCM2838GenetState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
++typedef struct {
++    uint16_t regs[BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT]
++                 [BCM2838_GENET_PHY_EXP_SHD_REGS_CNT];
++} BCM2838GenetPhyExpShdRegs;
 +
-+    /*< public >*/
-+
-+    MemoryRegion regs_mr;
-+    AddressSpace dma_as;
-+
-+    BCM2838GenetRegs regs;
-+
-+    qemu_irq irq_default;
-+    qemu_irq irq_prio;
-+};
-+
-+#endif /* BCM2838_GENET_H */
+ struct BCM2838GenetState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -284,6 +318,9 @@ struct BCM2838GenetState {
+ 
+     BCM2838GenetRegs regs;
+     BCM2838GenetPhyRegs phy_regs;
++    BCM2838GenetPhyShdRegs phy_shd_regs;
++    BCM2838GenetPhyAuxShdRegs phy_aux_ctl_shd_regs;
++    BCM2838GenetPhyExpShdRegs phy_exp_shd_regs;
+ 
+     qemu_irq irq_default;
+     qemu_irq irq_prio;
 -- 
 2.55.0
 

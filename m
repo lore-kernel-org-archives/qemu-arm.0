@@ -4,106 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADF3FCC6B30
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C806CC6B30
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:53:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHJ2w-0001UH-BD; Thu, 15 Oct 2026 06:50:51 -0400
+	id 1xHJ4k-0002SR-Hv; Thu, 15 Oct 2026 06:52:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHJ2t-0001Tb-TJ
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:50:47 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ id 1xHJ4j-0002Qn-E3
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:52:41 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHJ2p-0007dr-7Z
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:50:46 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-c3fd91337baso19159266b.3
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:50:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792061430; cv=none;
+ id 1xHJ4h-0007qc-Oj
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:52:41 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-c3f04e0e65fso102405266b.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:52:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792061558; cv=none;
  d=google.com; s=arc-20260327;
- b=O3fSom8T5iaST62soj8TTcfAyVqdqHd7300KkOarEsGENXchFpZlw/rVcdNjAoU/O6
- zfsl2oK7KDWhcJLLr6yEkTh1pBalAw8zeA0kO8IgbV6zNyU9o2Y+bUX9i1x0bkJp7RKY
- SYCxJIxcIR1036U3zk5iNDWPnz1EwJr10JG3bckROr9p+phYvopEhLrEmg81AsDbfwkf
- 6I5Rhr4O9iJqxmtTesd+KS+XQjSxdQ6h92ZaxTDt9OedmEtPZRsFMAyqBu79NMDvOX27
- gGFAXxgUKi1K0PkRkFXartU/NTWINn87gSMnfDnkPhdLXOHmQuqDNX2zkmxfasc/zsTP
- 5Gvw==
+ b=cf6vnKO6JeU2GL6QZ4I4yr/3HVURir5/2O25qU64rG08ssk8rlmkE98cc6ClTxQqGM
+ RmXotCCwkV1u2B1TkaxRgEPwgMFTncrsIo1nvcB8k6T4rWsCie0PR2exbCnBVlKXbULQ
+ v/muMsLR79bUoOs3ITJhYxc07ZNY4Snxh7vKjdAsuQTlTgjTO0wfMYkmV1KeKgDxVtm3
+ RNZQGFhenCcxlQwn6My6RQ3N26bWpfaUP3cFUCPJRFDZklXuhaGGrcveyBfcey7d6BrS
+ sPemebTnjN5Rv36anLPT9slopMchjopdP/qyK4NxQTPvdchGDxessx7Vl+VaDIT7T+7y
+ T1NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=Q4AO9bxH+tgTrPhIoG66FprxezF6tidCBv/9483EfV8=;
- fh=bylHTlXKagR60JR6hlKikcBZkjoax/Kz3v/HLA7SjSY=;
- b=V6D8Xdq/rgRvkU5DOf5QmccEsTcenlYCoHVhALAZETYS0a/NAOnE2WNkUTH2LTReGe
- uzRW7wwv8WKh5taApSKyNf8Slcna/d4EbclCUbkfkf5DRUUTFybPMdto672fA8Ghl2B1
- EjU5ljPl6uUDzAYtgZGumFT9s8ajh6t6Zki0IZBFFjp3bqbLG+3RbWTPbQdpMmlAi0N7
- 92rZVwPPpCN2KYVl4mdUyxqiXbWQfs7XsBsmJRzNDhxTRGYG3T6JBqxS3pymdbInpPHO
- QOi2+LHahQmqLutGu9j/2H30LfIUhJmyEVunurqbBK13wQFpQc2KVUNhVIE7mCfarJmQ
- GUyQ==; darn=nongnu.org
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :dkim-signature;
+ bh=82nOw34p6r8quozBtV6O6375kWs8MNR6yskY5g7RwKI=;
+ fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+ b=OHIhyBeJXN1hP5acU8rkmTJMUzBXUuFi+Up8R3mQD0xe/3OyqBdfSflhMlAVNMC7W1
+ s/TUM/jQ0zCU7MIeHM8azg1nsuXDulNWF4DuseyXGadjWNOkUpE6EahoEmckRRk5VQXI
+ D+6VdOaT0Sg3DERTbk5SqyjdOIjhEd+cjpu/lQBArjwG91EaS9kuCCPQVWk/822vtEcl
+ LHnJ13R4iYtd1ed71j7YFAZjQFwH8d/2OLNiU3K1K3W0/wtcnUEvruvZvks5kBjA7ExQ
+ Ody0u/UQygbnhNqHrnKMBRLK3Shn2VJ/TUL7+qjwN84JjrahvQmeQPyc2/3q6JpLJARl
+ y6yw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792061430; x=1792666230; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=Q4AO9bxH+tgTrPhIoG66FprxezF6tidCBv/9483EfV8=;
- b=TQRo9IGqn3T0Hz0OZQGo50lo6ZANMArCbFceJ00Mb2ZFJCBcGeKFExiVwyVZJMfbpZ
- q/f6VPN2ZUJEz0nXjovMt4BdQH364QjyzcHJrHz1P2JMWR3wamUyhqsiiTasYERb9d3i
- 4uQiX7xXfC3xFFx6ARjm2nzE41z88f1HWi6bO5J2le3QddkIL0OFTFZmiC/USxg6fGzC
- z1xHb/uE6ZAe2nChlV6vHWf7mKdUhgjYp8ZJNAL1t9D0te62IywFElVIa8+Ni+jRyV5W
- TuJh3h8iJRFVPCwVqAvp4VLwl9yITi78uhTNsIgr+JmZYAOTUkAv5Cn6M+hLP8eeIuZF
- cD9Q==
+ d=linaro.org; s=google; t=1792061558; x=1792666358; darn=nongnu.org;
+ h=content-type:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=82nOw34p6r8quozBtV6O6375kWs8MNR6yskY5g7RwKI=;
+ b=lQ//XKDrAZVW+30z5tGkccE6dMRIMia8XI1GMC2t+YgWkdaQ57yXffQErDSPzH5kTs
+ O+rzgp87u0Hc5v18H/i0XHX5Ythjuz5HEXdGz6qGKNt5DmC666D2XXRr5Kl3KQ1CUN0e
+ Vmbm5SmidCU6gy6FuE9RID8VR65ygovLvyKACrLHLJUvq/s/E6F/CRoEQArrYt8VAUhS
+ oJqU54jry4BqLjdYtruOD8raao2ULCq7Qz1q2FCw949ZHxdUEgfYZlDr0z1R70GZwvT8
+ rfYtPzYpF89hN9m+qoNXn01S+ORe7/HJjGXj/Bum8XhH5pZ4mBr8e7CBPU3KCR6A0Um+
+ oi/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792061430; x=1792666230;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Q4AO9bxH+tgTrPhIoG66FprxezF6tidCBv/9483EfV8=;
- b=GkisDEZG7qTGiUEWrhEDtUXjGvL6WLcTKwa4vZh8Yfe7MHhWwEF70VDTrJkv5zmBb3
- jl2j9wsNuLlutGc/RePlrD4wy95jCCFHcLrqG7oizaoKAdZ4Jy8SKePE+0OSX7I77/UQ
- qa9gYy6HUYioEBJUrwU5Nj89NRV9TI0dkC463sdpv1gAzALbkAjbV4vc85EfOhlwu8lp
- NcH0FqxnBU09FT41Enwv2OH0+JATvOAzu8912Fo2MwXaeaEUhlAdtlkPqU1eUIN0hVXe
- JjmOZkcREtdeE8/aLTLtm7TIR8l67UnLEFNe8Yvslw/qyv2LdDy9Ki4pyKwbrmQGTi0A
- /xCQ==
-X-Gm-Message-State: AFq9FYL6IkKkRVDfX6HzFCGY5P+1mbvji7PMFt4KOdQ6Ea039IpT2jmH
- iZUaP9zrStwN5oBJ8zgUSqHgSdwJwY315kmba76O6AqdNjf7hTEbdG4ChLvCfFAIaDDjuN8LLMt
- CTgt3laK20o13kKxybrinkXhgj1Cfp2SemYd/YVcnGA==
-X-Gm-Gg: AYBFou353vWp4/9vY8qqRW8mhDhgCRsA0wG6U5kH7d/2LwVR/Kwd/77EXd6+wOZ1TGD
- 4CefMX5flejZXuAkmqGn9071sqAPjUHXS2xon+U4vyXI46Y0pgNXdmFsVajhN6vcYtl4jpj7X5T
- JUTZg7/F2Rb+MIo1TaNmcN0LxFK+TKRGmW3CaqPh1SRtP3TcUyB9Ryv7BvNiSQ/b9oGpxdIJahT
- EYH0M0RLVxzXlBF4MdOOTECfXdYkn8oLP76RycPRHtoMatBJu0rMMaRbr2gMGEpc8V2oDM+iOA8
- NERojdfQmwIMb3HzgY0b63lMnT70LTJO/fxO3hTdqxON2CGVnG3Q5jv58QBoboedfhb44CHm3JC
- ct7XcnP2Wm8w75o241wxm0VKFRKGWXorVmhJ2JyY=
-X-Received: by 2002:a05:6938:a082:10b0:c3e:f39b:2286 with SMTP id
- a640c23a62f3a-c3ef39b2474mr118063566b.0.1792061429972; Thu, 15 Oct 2026
- 03:50:29 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1792061558; x=1792666358;
+ h=content-type:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=82nOw34p6r8quozBtV6O6375kWs8MNR6yskY5g7RwKI=;
+ b=BC7RovOrefQelurdAT60GH8FD589VJnr86dIASaxBbI96EYEfrk33ZtHh5zAsTEeM5
+ J5EBMHw9U++9YDFbS4nPZ8pl9Xta8vtJRt6ZNzTHPqCbzQ6ZvRIeRnDXOM27GLEDDcD7
+ 7LTBdTwF3GV+79MCCiAua1wcCE0bHCQ5ptQZJBcX0LzVQFlgucXczkHY6bILz6boUEti
+ 2uQ5Ois06Nll3o2ACZtGHXTLqDeKJePR5TsLDfRLMox4vWr3rf1WHEH5jn4BtuNb5Vfa
+ ahmGjhaHfMFGef/O4z/AGJlWVgeKIKhZtgo0Gybh8edsL9aMa3x7MEnb2wP8mwRHzL/+
+ 7w8A==
+X-Gm-Message-State: AFq9FYIcaFDNdrodNCnVX4nAoMpJjR8OPPIhHAM54DMazfz3Iw+3aJyp
+ nm+ySp5f4ZNTL9d8MEE8dZq2ZuFTvBFRAP7IiO8OCJoNDAHyyC2FHGEfafWsPIPABDLQNyBNfQG
+ TwML9VcDAfpcjmte/5cFzpaZXUqpaj9cWtEknXhUwhs68/E/uegHYOro=
+X-Gm-Gg: AYBFou0I7mqTRaNqyaf9Ytz9LaUwi6g+HytXdEAANBPHE97UVV4eq918TQNUHz8pN6H
+ RjzbLI0Wj4f8FNdZUBawr362yYQHjYFC7H03QnQ14g4Lo88O6GfmqIwCFM1T8MUmbudcdLMeu7h
+ 2R72d3zM3snxDINDLRiQX/pTyuykTWLDR2zSQADHLFFqZCX5QWQBhnhnMG60PMOLvKkOJct2ezL
+ aBjyvFZCqCR/MJhKiWo7pqKgGGqNBES+Kt54SOCbhoMnpzkQQfYiwSrlfgMAmr2tWjpWoPNzh5x
+ pPipt5KHtFkZOuzGi2kgPZRLhoYZUo+e+PM7E5OMb4eGOrtySBk/Xq3SfzVEw53nAJbwwFBVV4Z
+ YkYDDXWmRcP2G7pvRQCrVf+qeCHjWwL6umPSFCik=
+X-Received: by 2002:a17:907:2d88:b0:c2e:4373:521 with SMTP id
+ a640c23a62f3a-c31aa0d2286mr1589276966b.46.1792061558337; Thu, 15 Oct 2026
+ 03:52:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261013083933.1024405-1-peter.maydell@linaro.org>
- <20261013083933.1024405-57-peter.maydell@linaro.org>
- <8a030bca-4697-405a-aaa8-017baed8ab55@oss.qualcomm.com>
-In-Reply-To: <8a030bca-4697-405a-aaa8-017baed8ab55@oss.qualcomm.com>
+ <20261013083933.1024405-56-peter.maydell@linaro.org>
+In-Reply-To: <20261013083933.1024405-56-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Oct 2026 11:50:16 +0100
-X-Gm-Features: AclHuK88lg45P4EkvW9HrI8lz9zJgYYWo6jTVyjchPgx-fRU5L14eo76rAgVhK0
-Message-ID: <CAFEAcA9yv0GDLT5XTp_2_FRO_xRhPdGjhKbjkdfUfh=epaDNPQ@mail.gmail.com>
-Subject: Re: [PATCH 56/86] hw/intc/arm_gicv5: Implement IRS_VMAP_VMR
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Thu, 15 Oct 2026 11:52:25 +0100
+X-Gm-Features: AclHuK_Vll3GDo6Gs_0u4ampo0VYsopa_vjcc0BCMlP0LZz7a0eKc9ItaJEhrfI
+Message-ID: <CAFEAcA8SkMpPwVPB1NWXpuPo+AWtCBY4uWqE2Zxfrqc19KWeBw@mail.gmail.com>
+Subject: Re: [PATCH 55/86] hw/intc/arm_gicv5: Implement IRS_VMAP_L2_VMTR
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,46 +114,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 13 Oct 2026 at 11:12, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
+On Tue, 13 Oct 2026 at 09:40, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> On 13/10/26 10:39, Peter Maydell wrote:
-> > The IRS_VMAP_VMR register lets the guest mark a VM as valid.  This is
-> > a 64-bit register similar in operation to IRS_VMAP_L2_VMTR.
-
-> > @@ -1604,6 +1679,14 @@ static bool config_writel(GICv5 *s, GICv5Domain =
-domain, hwaddr offset,
-> >                                  deposit64(cs->irs_vmap_l2_vmtr[domain]=
-,
-> >                                            32, 32, data));
-> >           return true;
-> > +    case A_IRS_VMAP_VMR:
-> > +        irs_vmap_vmr_write(s, domain,
-> > +                           deposit64(cs->irs_vmap_vmr[domain], 0, 32, =
-data));
-> > +        return true;
-> > +    case A_IRS_VMAP_VMR + 4:
-> > +        irs_vmap_vmr_write(s, domain,
-> > +                           deposit64(cs->irs_vmap_vmr[domain], 32, 32,=
- data));
-> > +        return true;
-> >       case A_IRS_SPI_SELR:
-> >           cs->irs_spi_selr[domain] =3D data;
-> >           return true;
-> > @@ -1704,6 +1787,14 @@ static bool config_readll(GICv5 *s, GICv5Domain =
-domain, hwaddr offset,
-> >               *data =3D 0;
-> >           }
-> >           return true;
-> > +    case A_IRS_VMAP_VMR:
-> > +        if (gicv5_domain_has_virt(cs, domain) && s->vmt_config[domain]=
-.valid) {
-> > +            *data =3D cs->irs_vmap_l2_vmtr[domain];
+> The IRS_VMAP_L2_VMTR register allows the guest to make a level 2 VM
+> table valid.  It's similar to what the IRS_MAP_L2_ISTR register does
+> for the IST, but it's 64 bits, and so it is R/W and has an M bit for
+> "actually do the operation" so that the guest can write it as two 32
+> bit halves.  Since we don't cache anything yet, all the "make valid"
+> operation needs to do is write to the VALID bit in the L1 table entry
+> in guest memory.
 >
-> irs_vmap_l2_vmtr[] or irs_vmap_vmr[]?
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Should be irs_vmap_vmr[]; silly copy-paste mistake.
+> +static void irs_vmap_l2_vmtr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+> +{
+> +    GICv5Common *cs = ARM_GICV5_COMMON(s);
+> +    GICv5VMTConfig *cfg = &s->vmt_config[domain];
+> +    uint32_t vmid = FIELD_EX64(value, IRS_VMAP_L2_VMTR, VM_ID);
+> +    bool m = FIELD_EX64(value, IRS_VMAP_L2_VMTR, M);
+> +    hwaddr l1_addr;
+> +    uint64_t l1_vmte;
+> +    MemTxResult res;
+> +
+> +    if (!gicv5_domain_has_virt(cs, domain) || !cfg->valid || !cfg->structure) {
+> +        /*
+> +         * The whole register is RAZ/WI if no virt, or if the VM
+> +         * table is invalid or not 2 level.
+> +         */
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * Otherwise, write to the register. The M bit is WO/UNKNOWN,
+> +     * and we make sure it is 0, so that a 32-bit write to the low
+> +     * half of the register never appears to have the M bit set.
+> +     */
+> +    cs->irs_vmap_l2_vmtr[domain] = value & ~R_IRS_VMAP_L2_VMTR_M_MASK;
+> +
+> +    if (!m || vmid >= (1 << cfg->vm_id_bits)) {
+> +        /*
+> +         * If guest didn't actually ask to make the L2 table valid, or
+> +         * the ID is out of range, do nothing except the register update.
+> +         */
+> +        return;
+> +    }
+> +
+> +    /* Find the relevant L1 VMTE and set its VALID bit */
+> +    l1_addr = l1_vmte_addr(cs, cfg, vmid);
+> +
+> +    l1_vmte = address_space_ldq_le(&cs->dma_as, l1_addr, cfg->txattrs, &res);
+> +    if (res != MEMTX_OK) {
+> +        goto txfail;
+> +    }
+> +
+> +    l1_vmte = FIELD_DP64(l1_vmte, L1_VMTE, VALID, 1);
 
-thanks
+This is missing a check for "is the VALID bit already set in the L1_VMTE?"
+(which per the spec is supposed to be a "has no effect" situation). In this
+patch the lack of a check is harmless, but when we add the code later to
+cache VM table entries we'll fall through into that and incorrectly
+corrupt the cached VM table entries by re-initializing them.
+
+> +
+> +    address_space_stq_le(&cs->dma_as, l1_addr, l1_vmte, cfg->txattrs, &res);
+> +    if (res != MEMTX_OK) {
+> +        goto txfail;
+> +    }
+> +
+> +    return;
+> +
+> +txfail:
+> +    /* Reportable with EC=0x0 if sw error reporting implemented */
+> +    qemu_log_mask(LOG_GUEST_ERROR, "L1 VMTE update failed for VMID 0x%x at "
+> +                  "physical address 0x" HWADDR_FMT_plx "\n", vmid, l1_addr);
+> +}
+> +
+
 -- PMM
 

@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3231DCC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECEFBCCA463
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:10:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN5o-0005Vc-8f; Thu, 15 Oct 2026 11:10:07 -0400
+	id 1xHN66-0005hs-Vi; Thu, 15 Oct 2026 11:10:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN5c-0005To-Vo
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:09:55 -0400
-Received: from mail-wr1-f41.google.com ([209.85.221.41])
+ id 1xHN65-0005hR-1U
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:21 -0400
+Received: from mail-wr1-f43.google.com ([209.85.221.43])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN5a-0001ON-Iq
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:09:52 -0400
-Received: by mail-wr1-f41.google.com with SMTP id
- ffacd0b85a97d-48c45111bebso3467402f8f.0
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:09:50 -0700 (PDT)
+ id 1xHN62-0001e4-5o
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:20 -0400
+Received: by mail-wr1-f43.google.com with SMTP id
+ ffacd0b85a97d-48c4d870d54so3482081f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:10:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792076989; x=1792681789;
- h=cc:to:content-transfer-encoding:content-type:mime-version
- :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=hZuyob+ovQFH/gM76ih2SzJ8peHZvlXMktkW8YUoZ8E=;
- b=gk4zvVYccf05ym6cdNbMNKFaf6wQH+y9ELLo+bmmZHiHmfObLmNVNTjzU1S9dEKwQN
- N0nkXwUA6bhTSW2i1mvRX5H2k1Km8lPKcKgImosDXtrvXpdm/v3iTGEcV0X0lk88IyxW
- Ylycen8fbtXh2hbuWUO1JJFXqYe4UgK4h5y8nIo8GooD3TBN2qAYkoKtS6duy938EcWm
- /7QlXMN3aFk0fiGZkQmEP6dg3PbUAaiK0t2tVXyk8JKpAH89Ldnc2bmvW7P0yw5ltS5H
- wrfTTtnF9+T8wqE1rIe4zwQudsteRMGABW8OPnifxpKwNCTRl7VDMVuZXXkIRTkJfzwE
- IfmQ==
+ d=1e100.net; s=20260707; t=1792077017; x=1792681817;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=DrWxbSnsvaHk4FolD7xYhC/5nO5JDheWb9wR5efBY2k=;
+ b=C6X0Jz1+ItvRHQ9Bu8LNjvp9yXsj/52EVM8aaweqtI2NlJy1ynnjaEv5u+W8hRKquR
+ HL4iIuPt4G/LGe1s/ZgYTtJISv3O6v0W5G4Aw8hIGt5HUTCZmNHZ8E397EIixzKMFYCL
+ OaDzRXjNsu4DwBwL2c2jUhWAQ+RYisqtOnuPy+99oe+87vAiSy/dmE0can/jHCA/B7d3
+ 4VYUiHbA9AOpYuGCZoAjZW2+4zhWQhBn9GfhqCZzl/JX9bXjZvM/VmsswXQWLNp8Bsrz
+ Eq9s1KwBKyNzCYlUnQsXxvJFG7jh36Zs4R3N11ni4Kv2feBXdFeHf59N90eRwhuWOyBZ
+ Lepg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzoy+pM9Dsok3nkasQu05kUAOSxSuvzsicfLU++VaZ36yyZcBS0HVSybrh0Zy+CEuC9NuTs3blFBw==@nongnu.org
-X-Gm-Message-State: AFq9FYK7Lo8BiwgaybmciA7I1SuF3kIVisX03Pi8ypiJTgMEvsQCun1a
- l/9cuXKqfKDn5yHK+5zU3W7Te7hThkf1gouiQe8d1pMn8Gqozk537AQX
-X-Gm-Gg: AYBFou3OExhNjVQKR5+fwwG7xoRL3Mx9jJOtGU7F4oaXDZtQ0VAXl6TIcAVZyqbVKPc
- J9WpWWo9IbKg7OdXJE4EHYU7aLmOmbAk2+omUtBaL+UTAiD6xrx4KrKeT9h7bOtuKFmQ9oMUP4C
- oAdgWEqynyXcptM3FzQS4qrJwRx9OPABYAgBYD/q1vfSqe4X96rJIfcfg5IoCm4nLvnHClQorWO
- CQStC8KNPDhwyx6+NOS06KTVvpbFjlSetyykplz19jymxQGIkK2r1xwGtUv38HfT+EE8BuY1hMl
- owh4OolBa+G4Y6CeZGkyZsZ8nofo7w3HP8riJLVRBc+9Jb6faHEwJuTIKh7N/5b2PovPs1qkFZu
- QSzEqYwEEzEEK4bwZPvqOReCRSDwDOVJoNzwQXTdgolAPDIF39hqO4YxzTueh+iXy6tLkkzwdF/
- r/+VTd3ptTB+1ZKuzJp3ymNBpIqy4IhnQjhH+ROcORP5ACA1gZRskIk76hHJyTv7zVMBjLWKwJy
- nBS3igCIOpuKRuopR/w0WslLBJWNSulzuWxumR7Cm5OTA==
-X-Received: by 2002:a5d:5885:0:b0:48d:f7f0:327d with SMTP id
- ffacd0b85a97d-48df7f03308mr3494199f8f.29.1792076988777; 
- Thu, 15 Oct 2026 08:09:48 -0700 (PDT)
+ AKwUvBxhAUrdGWsQKOJEfYcaZb4hpFEGkIm29A+Eh2wogMYj+h/DXgeW8nyZ/TOl3Y2gHnN4yaJ2M+MCbA==@nongnu.org
+X-Gm-Message-State: AFq9FYLhvZ4vaOjw/GqIei68dmib0QzQiagJgKaOnA7v4Rn2VWBcwxUz
+ IzkacooM8rl3y6x3QIcrTFBSkS/2R/RbvaLzhWc3GyAQPO1yfoP0SLg9
+X-Gm-Gg: AYBFou2MrbFgCgfs99+qDo+PpHpt6Gx4eJIuJ6lTBWd5oOG2U4RzwgafPVF3lOqyV02
+ VM37f20Uevc90/ohe+EQN/ko8fC0GFMIaZMp6s+mVPr60wFd+SEN7psmMxS8Svx6rmba69iSybL
+ bfV9oYUAmGP6ehFNxoeroePnR9Lan7qMwYxAmPvIOExDtY7k0oWDMt2/a5db5Q4PJIWp4tYnUj/
+ CLNK5Jgwjaijq3gzrjEYY0ZYwxYt5bDh5h9rVekDoHBiXX+Cqdi4A9pw0NMcxU160BG9TfvVUmH
+ 1QiZSz8K8hPp0WaQT+n4/SX+XGQwjXRlrdK0nluHa06S3GVbGUvnMVRKTj4O5b94UnzSVjugzlt
+ I/x1kX2NlAn0Ib89MU79w8t7fH+gMcoLfi+CLC2lmt4Gfg1Pl2NG50Ez+7JqWl+O/9Q4rTXYrDZ
+ IV1UDIjLkxAQic6Nw33uqvwnVw+VMTQ1n3hXoK8Y7E+CLFoam0gKLBcYHQ9bOViI+varp5wnNWj
+ siSl8tjlh/dlVXue9q90QNR0WclQ72WWgKinsakuYl3JVA+PjsubfoX
+X-Received: by 2002:a05:6000:290f:b0:48d:f485:5f34 with SMTP id
+ ffacd0b85a97d-48df4855fbfmr5188731f8f.45.1792077016245; 
+ Thu, 15 Oct 2026 08:10:16 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48df8f9ee47sm2435883f8f.45.2026.10.15.08.09.47
+ ffacd0b85a97d-48defca4013sm9546455f8f.9.2026.10.15.08.10.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:09:48 -0700 (PDT)
-Subject: [PATCH 00/22] Aspeed: TMP421 and TMP1075 sensors, and the Clemente
- BMC machine
-Date: Thu, 15 Oct 2026 13:57:38 +0200
-Message-Id: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
+ Thu, 15 Oct 2026 08:10:15 -0700 (PDT)
+Date: Thu, 15 Oct 2026 13:57:42 +0200
+Subject: [PATCH 04/22] hw/sensor: tmp421: model device variants with a
+ class descriptor
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NQW7DIBQFr2KxLtWHhI+xoqr3qLLA8JxQBScFx
- 6oU5e61nS5Hem/mISpKQhVd8xAFc6rpOi6g3hoRzn48Qaa4sNCkmRxZ2ecgwwUZ4wRJZDgyW7b
- KiuVyKxjS76b7Or643vtvhGl1/C8Kfu5LZ3rNREatfut0zWHNKFJmy+Q0osxezjtJ0kZDofWKW
- pjPoQDvQ/lYjb2vkOGac5q6hpVBwC7siXvN2jmGYTdoB89ApNiqsI9tFMfn8w9FmWIX/AAAAA=
- =
-X-Change-ID: 20260907-bmc-clemente-0056d6676717
+Message-Id: <20261015-bmc-clemente-v1-4-bf591886b5b6@free.fr>
+References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
+In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -80,15 +77,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065464; l=7193;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=4905;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=iydWwc1WObcU7xqqvK5Efg+4Nf+SqeMppXxCXaC0b3M=;
- b=YryBHCazq2cFEHUQL7BiOfXsB7VaAsKF3A8rUUJUCQA0ZitgziWOw6BwZUEuxD9O+BXfSykU2
- po0M/wM1cHSCMdVB8/QehX3gARdckUiWosUDW0Axboga8OHGrWknOri
+ bh=nYz/UVk+7v4ORl7v0nKTPKyz2xEqXKmkO03V/LuED0w=;
+ b=lHK58tIcIUrhEryl11iCJpmtCXq0KyJvgFDG2jm21GX8BmIYvGomljYK4GFTqHVTXU7FxtNlH
+ 2KabCzGnjO/ASoBs8smE7id2Fbx3LYtbE2GBMlPY8ESAAUpu6Ciyj04
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.41; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f41.google.com
+Received-SPF: pass client-ip=209.85.221.43; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f43.google.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
@@ -114,134 +111,168 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add the clemente-bmc machine and the temperature sensors it needs.
+Replace the ad-hoc DeviceInfo table and its manual type-registration
+loop with per-variant fields on the device class, set by a dedicated
+class_init for each part and registered through DEFINE_TYPES. This
+drops the abstract base type in favour of the TMP421 acting as the base
+for its TMP422/TMP423 supersets.
 
-The TMP421 variants are now described by a class descriptor instead
-of a lookup table. Channel enablement, register write masks, the
-one-shot trigger and the per-channel N-factor registers are modelled,
-reset follows Resettable API, and the variant type names move to a
-header so boards stop open-coding the strings.
-
-The TMP1075 is a TMP105 with a 16-bit Config register and a read-only
-device ID.
-
-The new TMP421 state is stored in optional subsections.
-
-The clemente-bmc machine is derived from the platform device tree and
-instantiates every device that is supported in QEMU. FRU EEPROMs are
-sanitised images taken from real hardware.
-
-New qtest for the TMP421 family, plus TMP105 cases for the TMP1075.
-Both check a migration round trip.
-
-Based-on: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
+The three instantiable type names are unchanged, but TYPE_TMP421 now
+spells "tmp421" rather than the abstract "tmp421-generic", which no
+longer exists, and a TMP421 cast now succeeds for the two supersets.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
-Emmanuel Blot (22):
-      hw/sensor: tmp421: do not report a stale errno on a parse failure
-      hw/sensor: tmp421: name the parent object field parent_obj
-      hw/sensor: tmp421: implement Resettable reset
-      hw/sensor: tmp421: model device variants with a class descriptor
-      hw/sensor: tmp421: honor per-variant channels and channel enablement
-      hw/sensor: tmp421: implement register write masks, one-shot and N-factor
-      hw/sensor: tmp421: describe the temperature properties
-      hw/sensor: tmp421: keep the measurement across a range change
-      hw/sensor: tmp421: migrate the exact measurement
-      hw/sensor: tmp421: publish the variant type names
-      hw/arm/aspeed: use the TMP421 type-name macros
-      tests/qtest: tmp421: cover device IDs and reset defaults
-      tests/qtest: tmp421: cover temperature encoding and range
-      tests/qtest: tmp421: cover per-variant channels and enablement
-      tests/qtest: tmp421: cover software reset and N-factor registers
-      tests/qtest: tmp421: cover the register form of the migration stream
-      hw/sensor: tmp105: add the TMP1075 variant
-      tests/qtest: tmp105: cover the TMP1075 device ID and reset defaults
-      tests/qtest: tmp105: cover the TMP1075 config register width
-      tests/qtest: tmp105: cover the Config low byte across a migration
-      hw/arm: clemente: add Facebook Clemente BMC machine
-      hw/arm: clemente: populate the FRU EEPROMs
+ hw/sensor/tmp421.c | 98 +++++++++++++++++++++++++-----------------------------
+ 1 file changed, 46 insertions(+), 52 deletions(-)
 
- docs/system/arm/aspeed.rst                |    1 +
- hw/arm/aspeed_ast2400_palmetto.c          |    3 +-
- hw/arm/aspeed_ast2400_supermicrox11.c     |    3 +-
- hw/arm/aspeed_ast2500_supermicro-x11spi.c |    3 +-
- hw/arm/aspeed_ast2500_tiogapass.c         |   10 +-
- hw/arm/aspeed_ast2500_witherspoon.c       |    7 +-
- hw/arm/aspeed_ast2500_yosemitev2.c        |   10 +-
- hw/arm/aspeed_ast2600_bletchley.c         |    3 +-
- hw/arm/aspeed_ast2600_catalina.c          |    3 +-
- hw/arm/aspeed_ast2600_clemente.c          | 1154 +++++++++++++++++++++++++++++
- hw/arm/aspeed_ast2600_fby35.c             |    2 +-
- hw/arm/aspeed_ast2600_fuji.c              |    3 +-
- hw/arm/aspeed_ast2600_rainier.c           |   13 +-
- hw/arm/meson.build                        |    1 +
- hw/sensor/tmp105.c                        |   85 ++-
- hw/sensor/tmp421.c                        |  429 ++++++++---
- include/hw/sensor/tmp105.h                |    2 +
- include/hw/sensor/tmp105_regs.h           |    5 +
- include/hw/sensor/tmp421.h                |   19 +
- tests/qtest/meson.build                   |    1 +
- tests/qtest/tmp105-test.c                 |  111 +++
- tests/qtest/tmp421-test.c                 |  326 ++++++++
- 22 files changed, 2050 insertions(+), 144 deletions(-)
----
-base-commit: 615ece3c406b262996e569f29ea6eed0d81c4d8d
-change-id: 20260907-bmc-clemente-0056d6676717
-prerequisite-message-id: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
-prerequisite-patch-id: 5aae2c14351eb51fea0cb307bedf21021730debd
-prerequisite-patch-id: 4d9a408b21353dda070052227302e799e4c01726
-prerequisite-patch-id: 01470b3e3d522778ea23f39f03a3b82a2a0f2d3e
-prerequisite-patch-id: 11d0a41b1b3009d95ddf51d9bde960658c924ac1
-prerequisite-patch-id: f1072c7d99e462e1c85ecace78eef33bc6e8778a
-prerequisite-patch-id: 8897466a7505261a1060243ca01572c3a8874068
-prerequisite-patch-id: f35c864317c68dd2b9ca969bec243fafd80497e6
-prerequisite-patch-id: 8b05ecb9c1191509e7e4cc76944c88f4f7891ca2
-prerequisite-patch-id: 78155b4352683ffc03826038c3d8160b788c29ff
-prerequisite-patch-id: e0af745b421c39fd47311ca21576c510bc961526
-prerequisite-patch-id: c14af0a372dcb314ef92a04a47e5bedc846281c8
-prerequisite-patch-id: 684f5ec9f4ac0640438d1eead20832c529d67508
-prerequisite-patch-id: e09c684b2002e30ae14a11bfe409869478d104bd
-prerequisite-patch-id: 09afec3682584cbda09b00c0ac87dc60835454d7
-prerequisite-patch-id: a89dfec61a795b84c3cf02927fd7c40bc6f694ae
-prerequisite-patch-id: 6a23cb3b1362aaf70fe73f554d9d5fcf2e72c3ec
-prerequisite-patch-id: 7c11c16803a5b96be5653a05acf8b46a3020e8d9
-prerequisite-patch-id: b9251deb99859cc30a9c67b5dba3066124f32033
-prerequisite-patch-id: 87291d7798b6bddde6242c651f0e03deb96ab559
-prerequisite-patch-id: caac35561ca8b2bdd86101f943e93aa7bcd3a90c
-prerequisite-patch-id: 27b0b37242fba900f982f9bcaca36f48c6a115bb
-prerequisite-patch-id: 1259c5fbfeb5d2bf1760e7b12df59f182528cee6
-prerequisite-patch-id: 2654532e955554fbae6ffcdf6ff3b38bb03fbbd5
-prerequisite-patch-id: ff0505a46b3604ba502834d3f5bf17ab85b3c5fa
-prerequisite-patch-id: 250958c152f11026aa98d334892132f9ab7467db
-prerequisite-patch-id: f3d938264fb2f0c2c292dbb4fb218e5b8d22c3d9
-prerequisite-patch-id: 06602fc849e499131998af486ae455497a4245c1
-prerequisite-patch-id: d857ee22db2d62a98f4f2054d1966cce7ed39452
-prerequisite-patch-id: 7909e49ac93573ebd56424a556d4e4872e9778eb
-prerequisite-patch-id: 53cd0411fed556e85f6557cab6fc32056c24bddc
-prerequisite-patch-id: 71752a32c10eacd296f62bcc94c09db5d54007c3
-prerequisite-patch-id: 7a21b5fabeddff9c08d6b532b2a398737f375a06
-prerequisite-patch-id: c6154dd1e7a48decd770f062fb57f32cfb2e1826
-prerequisite-patch-id: b94e4e3d83aa013ffd05267e20d48d6813ca2d7c
-prerequisite-patch-id: 23716ee3fbb2395d0fc33922433fb6d708081fae
-prerequisite-patch-id: 2e57dc2effacfdfb8adb93f5e33bfefdb7c28dc0
-prerequisite-patch-id: 2400063e36ca403574b812436fef8c38608e6005
-prerequisite-patch-id: 557a2e98bce9c59d1d4513207e021e217d9dcc59
-prerequisite-patch-id: db5ca53f9dccded71da127446b4870678640c86f
-prerequisite-patch-id: ddf5d85c6eb13a9121342263b6f0ee9902b40d06
-prerequisite-patch-id: d9e3e31b88133c8d2ffac7c931d9ab153cf20af7
-prerequisite-patch-id: 7ed25d5dc6b899645ef98cdb591344042b77c41f
-prerequisite-patch-id: 6c70cb570c5c6bfe0d61cb4c5260e6d8f195f383
-prerequisite-patch-id: 3caea8b32b51fa447ee21565594b6465d2e51670
-prerequisite-patch-id: 758236b35dcee46e176a7167e703048e11f6e634
-prerequisite-patch-id: 0521a46d473cad9f3924b4e0f86473fe237c1982
-prerequisite-patch-id: 819077eedcc252ade342c8288af2d57e0c8ece6f
-prerequisite-patch-id: 913f8260d8274a1c1706d09915cf75c0dd11061c
-prerequisite-patch-id: b0913e3e23d3bd41ffb248a3afecdbfe93b4915d
-prerequisite-patch-id: ef2e1478aad5f5722a2d021b424803d7cb2cdc4c
+diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
+index a9d15601cb..7f0e3b3214 100644
+--- a/hw/sensor/tmp421.c
++++ b/hw/sensor/tmp421.c
+@@ -38,17 +38,6 @@
+ #define TMP422_DEVICE_ID                0x22
+ #define TMP423_DEVICE_ID                0x23
+ 
+-typedef struct DeviceInfo {
+-    int model;
+-    const char *name;
+-} DeviceInfo;
+-
+-static const DeviceInfo devices[] = {
+-    { TMP421_DEVICE_ID, "tmp421" },
+-    { TMP422_DEVICE_ID, "tmp422" },
+-    { TMP423_DEVICE_ID, "tmp423" },
+-};
+-
+ struct TMP421State {
+     /*< private >*/
+     I2CSlave parent_obj;
+@@ -68,10 +57,14 @@ struct TMP421State {
+ 
+ struct TMP421Class {
+     I2CSlaveClass parent_class;
+-    const DeviceInfo *dev;
++
++    uint8_t device_id;
++    uint8_t config2_reset;
+ };
+ 
+-#define TYPE_TMP421 "tmp421-generic"
++#define TYPE_TMP421 "tmp421"
++#define TYPE_TMP422 "tmp422"
++#define TYPE_TMP423 "tmp423"
+ OBJECT_DECLARE_TYPE(TMP421State, TMP421Class, TMP421)
+ 
+ 
+@@ -177,7 +170,7 @@ static void tmp421_read(TMP421State *s)
+         s->buf[s->len++] = TMP421_MANUFACTURER_ID;
+         break;
+     case TMP421_DEVICE_ID_REG:
+-        s->buf[s->len++] = sc->dev->model;
++        s->buf[s->len++] = sc->device_id;
+         break;
+     case TMP421_CONFIG_REG_1:
+         s->buf[s->len++] = s->config[0];
+@@ -313,20 +306,7 @@ static void tmp421_reset(TMP421State *s)
+      */
+     s->pointer = 0;
+     s->config[0] = 0;
+-
+-    /* resistance correction and channel enablement */
+-    switch (sc->dev->model) {
+-    case TMP421_DEVICE_ID:
+-        s->config[1] = 0x1c;
+-        break;
+-    case TMP422_DEVICE_ID:
+-        s->config[1] = 0x3c;
+-        break;
+-    case TMP423_DEVICE_ID:
+-        s->config[1] = 0x7c;
+-        break;
+-    }
+-
++    s->config[1] = sc->config2_reset;
+     s->rate = 0x7;       /* 8Hz */
+     s->status = 0;
+ }
+@@ -348,7 +328,9 @@ static void tmp421_class_init(ObjectClass *klass, const void *data)
+     k->send = tmp421_tx;
+     rc->phases.hold = tmp421_reset_hold;
+     dc->vmsd = &vmstate_tmp421;
+-    sc->dev = (DeviceInfo *) data;
++
++    sc->device_id = TMP421_DEVICE_ID;
++    sc->config2_reset = 0x1c;
+ 
+     object_class_property_add(klass, "temperature0", "int",
+                               tmp421_get_temperature,
+@@ -364,28 +346,40 @@ static void tmp421_class_init(ObjectClass *klass, const void *data)
+                               tmp421_set_temperature, NULL, NULL);
+ }
+ 
+-static const TypeInfo tmp421_info = {
+-    .name          = TYPE_TMP421,
+-    .parent        = TYPE_I2C_SLAVE,
+-    .instance_size = sizeof(TMP421State),
+-    .class_size    = sizeof(TMP421Class),
+-    .abstract      = true,
++static void tmp422_class_init(ObjectClass *klass, const void *data)
++{
++    TMP421Class *sc = TMP421_CLASS(klass);
++
++    sc->device_id = TMP422_DEVICE_ID;
++    sc->config2_reset = 0x3c;
++}
++
++static void tmp423_class_init(ObjectClass *klass, const void *data)
++{
++    TMP421Class *sc = TMP421_CLASS(klass);
++
++    sc->device_id = TMP423_DEVICE_ID;
++    sc->config2_reset = 0x7c;
++}
++
++static const TypeInfo tmp421_types[] = {
++    {
++        .name          = TYPE_TMP421,
++        .parent        = TYPE_I2C_SLAVE,
++        .instance_size = sizeof(TMP421State),
++        .class_size    = sizeof(TMP421Class),
++        .class_init    = tmp421_class_init,
++    },
++    {
++        .name          = TYPE_TMP422,
++        .parent        = TYPE_TMP421,
++        .class_init    = tmp422_class_init,
++    },
++    {
++        .name          = TYPE_TMP423,
++        .parent        = TYPE_TMP421,
++        .class_init    = tmp423_class_init,
++    },
+ };
+ 
+-static void tmp421_register_types(void)
+-{
+-    int i;
+-
+-    type_register_static(&tmp421_info);
+-    for (i = 0; i < ARRAY_SIZE(devices); ++i) {
+-        TypeInfo ti = {
+-            .name       = devices[i].name,
+-            .parent     = TYPE_TMP421,
+-            .class_init = tmp421_class_init,
+-            .class_data = &devices[i],
+-        };
+-        type_register_static(&ti);
+-    }
+-}
+-
+-type_init(tmp421_register_types)
++DEFINE_TYPES(tmp421_types)
 
-Best regards,
---  
-Emmanuel Blot <emmanuel.blot@free.fr>
+-- 
+2.53.0-Meta
 
 

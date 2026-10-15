@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71983CC6B34
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:24:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7145CC6B34
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:24:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHKTK-0004xC-5a; Thu, 15 Oct 2026 08:22:10 -0400
+	id 1xHKU3-00076D-Pc; Thu, 15 Oct 2026 08:22:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTG-0004ox-LN
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTg-0006PA-PP
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTE-0005XI-LS
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:06 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTe-0005eg-Og
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792066924;
+ s=mimecast20190719; t=1792066950;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CkRVfEpXYMnyfG9yh5h4tsLjoXXIzPwfDpnhTe/js40=;
- b=M1moKxWcccXLjmpAIE2kyc+BUlBL/CZKnL8J9Ui/6xSWbLicSJLW0SCOOvF9TYEPEkdi6P
- xje0fYkkvnTruunqbA65yV78KMe6FNURwgn4pI1tc+FDNW0gsN1gPgL2b1CWBesB5ERcOp
- 80EqD7jcS1EqznB6YtRjmikeREN3Nj0=
+ bh=fxlJtqmlJvIWo994dWX3nFn/piew3FHGHM33tiIRTdI=;
+ b=A1jIiRfumP3QBu1rdbbJoxdF6qgxURtXVgFmQVYnNzVMJ4GOHTFt+ZQcoHedD86DdiIhUR
+ bH7/yhETqQccuCzLHMPgiWgbDaSWPh8Lw9L16tO7RhlNAgdVG5I1mklrDUhWrKuTCOi875
+ IHPlFDcN8vw7+LJMZ+l7mTZpsG/iBRc=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-252-tR66jFoRPXqP7sAsRkSNSQ-1; Thu,
- 15 Oct 2026 12:22:00 +0000
-X-MC-Unique: tR66jFoRPXqP7sAsRkSNSQ-1
-X-Mimecast-MFC-AGG-ID: tR66jFoRPXqP7sAsRkSNSQ_1792066919
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-661--0Jaii1oPcuvzwXwqu9wug-1; Thu,
+ 15 Oct 2026 12:22:26 +0000
+X-MC-Unique: -0Jaii1oPcuvzwXwqu9wug-1
+X-Mimecast-MFC-AGG-ID: -0Jaii1oPcuvzwXwqu9wug_1792066945
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4E0D71956072; Thu, 15 Oct 2026 12:21:59 +0000 (UTC)
+ id 898E61955F78; Thu, 15 Oct 2026 12:22:25 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.67])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5BB8A7D5; Thu, 15 Oct 2026 12:21:57 +0000 (UTC)
+ id E2B8A7D5; Thu, 15 Oct 2026 12:22:23 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 02/21] tests/qtest/aspeed-acry: Allocate SRAM buffers on the
- heap
-Date: Thu, 15 Oct 2026 14:21:32 +0200
-Message-ID: <20261015122151.889017-3-clg@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PULL 15/21] hw/arm/aspeed: Remove unused unimplemented device fields
+Date: Thu, 15 Oct 2026 14:21:45 +0200
+Message-ID: <20261015122151.889017-16-clg@redhat.com>
 In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
 References: <20261015122151.889017-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 8Y45UB3TzOp5YQSYl2Fw79ifG1cwVMGoemIpKGN7UKs_1792066919
+X-Mimecast-MFC-PROC-ID: PzyxHIQu0NJty7X4HyeuthrTgtJ8T36UWDVfiIb_mbQ_1792066945
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 10
 X-Spam_score: 1.0
 X-Spam_bar: +
 X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -90,55 +88,50 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The ACRY RSA qtest allocates two ACRY_SRAM_SIZE buffers on the
-stack. Since each buffer is nearly 9 KiB, this unnecessarily increases
-the stack usage of test_modexp_rsa() and may cause unexpected failures
-on environments with a limited stack size.
+All Aspeed SoCs now use the unimp_devs table and
+create_unimplemented_devices() for their unimplemented devices. Remove
+the old fields in AspeedSoCState and the ASPEED_JTAG_NUM define, which
+are not used anymore.
 
-This reduces the stack usage while preserving the existing test
-behavior.
+No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Link: https://lore.kernel.org/qemu-devel/20260910012422.4065857-1-jamin_lin@aspeedtech.com
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Link: https://lore.kernel.org/qemu-devel/20261012064445.2571633-8-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed-acry-test.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/arm/aspeed_soc.h | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-diff --git a/tests/qtest/aspeed-acry-test.c b/tests/qtest/aspeed-acry-test.c
-index ec348c220664..51048d697cf6 100644
---- a/tests/qtest/aspeed-acry-test.c
-+++ b/tests/qtest/aspeed-acry-test.c
-@@ -327,8 +327,8 @@ static void test_modexp_rsa(const void *opaque)
-         .alg = QCRYPTO_AK_CIPHER_ALGO_RSA,
-         .u.rsa.padding_alg = QCRYPTO_RSA_PADDING_ALGO_RAW,
-     };
--    uint8_t dram_buf[ACRY_SRAM_SIZE] = { 0 };
--    uint8_t sram_buf[ACRY_SRAM_SIZE] = { 0 };
-+    g_autofree uint8_t *dram_buf = g_malloc0(ACRY_SRAM_SIZE);
-+    g_autofree uint8_t *sram_buf = g_malloc0(ACRY_SRAM_SIZE);
-     uint8_t result[ACRY_MAX_BYTES] = { 0 };
-     QTestState *qts;
- 
-@@ -345,7 +345,7 @@ static void test_modexp_rsa(const void *opaque)
-     put_bignum_be_bytes(dram_buf, ACRY_MOD_OFFSET, t->n, t->n_len);
-     put_bignum_be_bytes(dram_buf, ACRY_DATA_OFFSET, t->m, t->m_len);
- 
--    qtest_memwrite(qts, c->dram_addr, dram_buf, sizeof(dram_buf));
-+    qtest_memwrite(qts, c->dram_addr, dram_buf, ACRY_SRAM_SIZE);
- 
-     qtest_writel(qts, c->acry_addr + ACRY_DMA_CMD, ACRY_DMA_CMD_DMEM_AHB);
-     qtest_writel(qts, c->acry_addr + ACRY_DMA_SRC, c->dram_addr);
-@@ -362,7 +362,7 @@ static void test_modexp_rsa(const void *opaque)
-     g_assert_cmphex(qtest_readl(qts, c->acry_addr + ACRY_STATUS), ==,
-                     ACRY_STATUS_RSA_DONE);
- 
--    qtest_memread(qts, c->sram_addr, sram_buf, sizeof(sram_buf));
-+    qtest_memread(qts, c->sram_addr, sram_buf, ACRY_SRAM_SIZE);
-     get_bignum_be_bytes(sram_buf, ACRY_DATA_OFFSET, result, t->c_len);
-     g_assert_cmpmem(result, t->c_len, t->c, t->c_len);
- 
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 82e394f08539..b47ac5aa05b5 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -59,7 +59,6 @@
+ #define ASPEED_CPUS_NUM  4
+ #define ASPEED_MACS_NUM  4
+ #define ASPEED_UARTS_NUM 13
+-#define ASPEED_JTAG_NUM  2
+ #define ASPEED_PCIE_NUM  3
+ #define ASPEED_INTC_NUM  2
+ #define ASPEED_IOEXP_NUM 2
+@@ -110,15 +109,6 @@ struct AspeedSoCState {
+     AspeedPECIState peci;
+     SerialMM uart[ASPEED_UARTS_NUM];
+     Clock *sysclk;
+-    UnimplementedDeviceState iomem;
+-    UnimplementedDeviceState iomem0;
+-    UnimplementedDeviceState iomem1;
+-    UnimplementedDeviceState video;
+-    UnimplementedDeviceState emmc_boot_controller;
+-    UnimplementedDeviceState dpmcu;
+-    UnimplementedDeviceState espi;
+-    UnimplementedDeviceState udc;
+-    UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
+     AspeedAPB2OPBState fsi[2];
+     AspeedLTPIState ltpi_ctrl[ASPEED_IOEXP_NUM];
+     AspeedAST1700SoCState ioexp[ASPEED_IOEXP_NUM];
 -- 
 2.56.0
 

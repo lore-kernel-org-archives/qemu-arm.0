@@ -4,73 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC518CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:24:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86A9FCC6B34
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:33:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHKUE-000811-Py; Thu, 15 Oct 2026 08:23:06 -0400
+	id 1xHKe3-0006du-Mq; Thu, 15 Oct 2026 08:33:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTt-0006aQ-Qr
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTr-0005hR-1E
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792066962;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=C4yhV8gin0bBNvjAJGUiYpUCeI6/UNdoO79uPqOAcsk=;
- b=QezCwLFTJlq0TjecGRDf4uV0OTlA3V8oKp3sk+qmwcnmBQ6nJ57dU0Wd46EON8Ammr1GM7
- z1gxDc+oB6/OsHEWn7Zpi374vQSS9BQDXccVnefb7INxK9Mb2m6wTSxaUTNjsojApzhYWH
- E8v5yysTm7cWEABJzr2c8KlyRau2bOo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-664-WUthmCK7MNS_2T8Jv2QMdQ-1; Thu,
- 15 Oct 2026 12:22:39 +0000
-X-MC-Unique: WUthmCK7MNS_2T8Jv2QMdQ-1
-X-Mimecast-MFC-AGG-ID: WUthmCK7MNS_2T8Jv2QMdQ_1792066958
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2CFCA18011C8; Thu, 15 Oct 2026 12:22:38 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.44.48.67])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A2BB37D5; Thu, 15 Oct 2026 12:22:36 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 21/21] tests/functional: give the set_machine probe VM the test
- workdir
-Date: Thu, 15 Oct 2026 14:21:51 +0200
-Message-ID: <20261015122151.889017-22-clg@redhat.com>
-In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
-References: <20261015122151.889017-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xHKe1-0006dO-NJ
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:33:13 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xHKdz-0006ua-Td
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:33:13 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-8b06c0794cfso21447967b3.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 05:33:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792067590; cv=none;
+ d=google.com; s=arc-20260327;
+ b=Exbl9YoNVqGDPakXYmpOdilCndp8juVIecZAzq8Id3Uhk/6Hv8rRJCOiToTLEuB6zx
+ VOgGMQ742sxU5Qi86UloBnxWsvyQAZNv+M03ljRppBKMIPrAOXBSgzjd41rKKp3icG2s
+ PimhJ3wKf6Muw8sCkdDGIWTxsmIslNMvbEBRk/FE7aqsXJvDrTyPwxg7mqHdETnPGYEv
+ e3EVwt4ULXMW3v9sbi7WDhsjYNf77LUDCttySv6sw+JUwnwrDeCeex8bB3A9lyza3Pr1
+ 4PuFUe52HvzctXvqJWNnFg2CGKryuEEp4tF1T9HUQxsvQV8ugEgmWKv9sxlITdCpXPqp
+ x8Ng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=m5KJty38CRnym4hNOjpybq5CBojULdf02RdOpPHIuhI=;
+ fh=bylHTlXKagR60JR6hlKikcBZkjoax/Kz3v/HLA7SjSY=;
+ b=SoH3eeyTjcqBcNu1inM3HZD7jgRWMfa64C0WjRVV+o1TdF3oLGh97qhy88ziPvw5t+
+ AHaANzMtubcxCfjSUrTvtMaXdMBnXCNDrSBebgoB5Tu1bzQFtla2Ni+EdniVTpNFBFzh
+ pNhPnVQ+NhFsHCrzUuqCQkoMLiZSEOJB24ZV6Jsu8gzyVdDu0J3nf8Cq2XbWC22ASJgr
+ M8GaCntyNtCcez0ioTV9m9qpqs+jwI/ZX58VJp1VxN55ThR4PdwZaQbfeshOe66g7ilk
+ o7aUrg6BD/vo1+WbaSnVfkKm+hH2lmPbDmEyRgP7+HBx4giKH2LNZRcJOWiFXId1xUnn
+ zmdg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792067590; x=1792672390; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=m5KJty38CRnym4hNOjpybq5CBojULdf02RdOpPHIuhI=;
+ b=ep7QsJ3rZ1RP9O/9Iz4qHjCEpVJlQQk9ZBmEOjsU0kfDhYBJh4k0wNBZLaigsHxQ+y
+ 6xyk+dcziDKcdi6sUiIgwJtPH8H/nqqWzi1YU0djaWroWTLyZxpfoy3euSRJp7v5B5mg
+ CS+g3PWb2x9Q227FOohhEbQP8FEv6B+kNygzA6+b5PxuabYgZ5Tax+zgJtOTWhMRfsf1
+ 2ElvIRnoFQWP6hxrrZ3rvjorHSlJ2Z9S7oMG4xtnSUA5B0S6eK0Hzh5BVSouBv4Pj7rh
+ zysWg0vPiI5Zm2cF+3PcHiE7kYps/urwIS/9fXF0cIaW491BBu97XX0IWvSeVfGWpB3T
+ oIDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792067590; x=1792672390;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=m5KJty38CRnym4hNOjpybq5CBojULdf02RdOpPHIuhI=;
+ b=nFCs4asfPcrAxWajljUMXlRgVhaiJN/0SUBrT3bBgbikVBpHddncATVMo707E9QQaw
+ nF5OL9nrxnOq4xde/AZiGs5QpCbgfyUjcOtj0o//gHrlmOmMEfIZ8aXw+do4ORAmz+R/
+ 3RhcfW5Ncg22tOl6UCrr1M88itCtSC8IFsGgIj0WxbpHJLKIMSauVZDl+/qGR2nPnpJS
+ kaS8CbvrX6LHV1whQ+rRPvIaDfp0kpBekXnl5NpUBcI3IIw0C3LRVojLR88R4F9pAJzt
+ rfZtvezbLtkWFvbYwE6dDv4JePSpf5fC4nmsNwRtX6R52STH3m9DAo8bM0/x7JNQGZBe
+ ylpg==
+X-Gm-Message-State: AFq9FYKxnDoi+rxojnUcsti3wOf36CMIw8tT8DzcsuajeR8KJrelJSlU
+ uBcFA2C3lPb93qpgO1ClRge03E0ytqVTqS4VwEumni4hfMa8vJZ7C/EEefoSCZph8tgOKRmcakT
+ pTaoX5hspr6a5DDGe3Vda9xi3qUKaQqbq2um7It5quA==
+X-Gm-Gg: AYBFou0hsoJJcGMWjb0hVBJZd9sKmB7qncHzIJEa9O5F5UVrFnA7wvVwt9nVR+p21FA
+ 2WQMguHb2OgS4FT9eMDkt3EHU75H30d2pt/iYX+q0UkzIxQJAOJoVDdQoVt3cLbZhuXDRcIskSw
+ zkGxzhXwJSKp+40mk3DOz4wOMnSLyycVtPeoFXCL7rB36F7UrSvOiyuRhxIDrZ86IN6VduPzY2o
+ wG/s4HGXMVQcfjvNWGPVm/hzJZxY5MLqzEvESPjtMKly/0yEmm91EjJx/9d89t8iAG/+WPmA78K
+ 63Tab1XYwsJHuuF/r6ssJTe2RmAS4f0KEP5y1l+Z9/n0LhJxeqcXT2Dq/wzEQ1MOU7UQxU/nko3
+ sirXPlYjjrHz/HxnyXW8S47F1dw+TKHwPTxp8+HA=
+X-Received: by 2002:a05:690c:6604:b0:870:c600:686c with SMTP id
+ 00721157ae682-8b07edcea14mr84077067b3.18.1792067590213; Thu, 15 Oct 2026
+ 05:33:10 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: XVanWS7xvBs3deAXfaGHCDE0EPKAlQ3cZy-_k0Mu-U4_1792066958
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+References: <20261013083933.1024405-1-peter.maydell@linaro.org>
+ <20261013083933.1024405-50-peter.maydell@linaro.org>
+ <58c816ff-3678-479a-b8b0-df1f22a78486@oss.qualcomm.com>
+In-Reply-To: <58c816ff-3678-479a-b8b0-df1f22a78486@oss.qualcomm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Oct 2026 13:32:57 +0100
+X-Gm-Features: AclHuK_7gbDfABo9IfRt_T9m70qfaa-QSP6MlaMdKGdTnaNywL3T3qcKvgVfsiA
+Message-ID: <CAFEAcA8sdXhM9+dBArALfMo0h-Dr6yCJv5JLHk+0iphPRT_=QA@mail.gmail.com>
+Subject: Re: [PATCH 49/86] hw/intc: Move GICv5 register and data definitions
+ into a header
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,37 +120,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+On Tue, 13 Oct 2026 at 12:05, Philippe Mathieu-Daud=C3=A9
+<philmd@oss.qualcomm.com> wrote:
+>
+> On 13/10/26 10:38, Peter Maydell wrote:
+> > We put the definitions of GICv5 IRS registers and guest-memory data
+> > structures directly into arm_gicv5.c.  It turns out that there are a
+> > few cases where we would like them outside that file (for instance
+> > register reset is handled in arm_gicv5_common.c).
+> >
+> > Move the definitions to their own header file.
+>
+> There are pre-existing typo worth fixing before moving IMO.
 
-set_machine() launches a throwaway QEMUMachine to query the available
-machine types, but constructs it without base_temp_dir, so it falls back
-to the hardcoded "/var/tmp" default instead of the writable per-test
-workdir that the actual test VM already uses. Pass base_temp_dir=
-self.workdir for consistency; this also fixes VM launch on hosts where
-/var/tmp is not writable.
+Yep, good idea. (None of these are in registers the current
+code is using, so they're harmless right now and don't need
+a stable backport.)
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-17-1266926ba769@free.fr
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- tests/functional/qemu_test/testcase.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >   hw/intc/arm_gicv5.c              | 270 +----------------------------
+> >   include/hw/intc/arm_gicv5_regs.h | 286 ++++++++++++++++++++++++++++++=
++
+> >   2 files changed, 287 insertions(+), 269 deletions(-)
+> >   create mode 100644 include/hw/intc/arm_gicv5_regs.h
+>
+>
+> > -REG64(IRS_VPE_SELR, 0x240)
+> > -    FIELD(IRS_VPE_SELR, VM_ID, 0, 16)
+> > -    FIELD(IRS_VPE_SELR, VPE_ID, 32, 16)
+> > -    FIELD(IRS_VPE_SELR, S, 63, 1)
+> > -
+> > -REG64(IRS_VPE_DBR, 0x248)
+> > -    FIELD(IRS_VPE_DBR, INTID, 0, 24)
+> > -    FIELD(IRS_VPE_DBR, DBPM, 32, 5)
+> > -    FIELD(IRS_VPE_DBR, REQ_DB, 62, 1)
+> > -    FIELD(IRS_VPE_DBR, DBV, 63, 1)
+> > -
+> > -REG32(IRS_VPE_HPPIR, 0x250)
+>
+> Pre-existing (or maybe that changed since previous releases)
+> this register is 64-bit.
 
-diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-index bf2dc1dc101c..d4aee359517d 100644
---- a/tests/functional/qemu_test/testcase.py
-+++ b/tests/functional/qemu_test/testcase.py
-@@ -317,7 +317,7 @@ def set_machine(self, machinename):
-         cls = type(self)
- 
-         if not hasattr(cls, "_machines"):
--            tmp_vm = QEMUMachine(self.qemu_bin)
-+            tmp_vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir)
-             tmp_vm.set_machine('none')
- 
-             try:
--- 
-2.56.0
+I think I must have just copy-pasted it wrong.
 
+> > -    FIELD(IRS_VPE_HPPIR, ID, 0, 24)
+> > -    FIELD(IRS_VPE_HPPIR, TYPE, 29, 3)
+> > -    FIELD(IRS_VPE_HPPIR, HPPIV, 32, 1)
+>
+> (thus the expanded HPPIV definitions might be wrong).
+
+Luckily FIELD() doesn't depend on the REG32 vs REG64 macro
+The only difference between REG32 and REG64 is how they define the
+R_FOO constants, which I don't use in this series, which is
+why this typo didn't have any visible effects.
+
+thanks
+-- PMM
 

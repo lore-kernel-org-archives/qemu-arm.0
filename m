@@ -4,111 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79FE0CC6B3A
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 14:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A14CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 14:56:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHMKJ-0001W7-T7; Thu, 15 Oct 2026 10:20:59 -0400
+	id 1xHMsK-00021Q-FN; Thu, 15 Oct 2026 10:56:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHMKG-0001Ui-Hr
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:20:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHMKE-00041S-2b
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:20:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792074051;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DD5iEbr+JLWkq6bQIgWITScf5DDXuPDK80oahfo5A0o=;
- b=Vetj8vD+AH3EakcsbheWvQvtev3YTSPHT4TZCsTvdbjqbEoFzl8n9o4h3js3XGTGTGN15R
- VhHCiQ/kQqbgRwIwcnxJjnUfAFhEj1lgC5fHPTJQ3g9SZYefzqvXOMaOlmcZb4JBLlLf8t
- Le4ZVsG/nicwJod8GaL4im6+o65F4+w=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-252-3RzfYLnuNaWea9kbRJrJuw-1; Thu, 15 Oct 2026 14:20:49 +0000
-X-MC-Unique: 3RzfYLnuNaWea9kbRJrJuw-1
-X-Mimecast-MFC-AGG-ID: 3RzfYLnuNaWea9kbRJrJuw_1792074048
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4994d67d0e3so15139705e9.2
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 07:20:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xHMsG-00020g-DH
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:56:04 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xHMsE-0008Vv-6z
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 10:56:04 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-6af9a90e4bbso5807350a12.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 07:56:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792076160; x=1792680960; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=g32trlGyDzah+dddiDX4dEQov5de09hHHaVwMj9ZkK0=;
+ b=h9neFD+Og7tyVzBEigp8Z3spBvHtStPBrpVBwKmEaGjU7N32rZ772u7wdOp+7sVcYA
+ flE810hJsk/8BsW9VSVQsaKfcslTSp7R4kgc3Z8r3goOujj5baaISnjSa1B9nZcLAChZ
+ us+vFBt6Dkp2syw/ki7IA5eGd6KwCSa0YomPQMnTePIVSAdegEVwvzhtk35l7n/4I2lY
+ Zc0+AILtgswIdVMoerRmth2A7/0h2x+roonnpNkAL6m1wy5391kQuIWLzHwoYKyKk6yS
+ nP7Asx8coAVJHIcBgynuAfQ56gx6To/oeDALbKZe35vxSmy4oDYwhS5oRjHA/WTiJHtv
+ DVag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792074048; x=1792678848;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=DD5iEbr+JLWkq6bQIgWITScf5DDXuPDK80oahfo5A0o=;
- b=PkSwussyQuE9RDYXdEAd8lBfpD+wCWq1iddxEGskbCVVbeg6QklzDcCF8Wj8Sf3VIv
- Ne+H6DmfADZd34f4l7QoRJJdmaA6T8PwPpMNMyJM67PpmmUSvlE0b9yEQbkU0VWQy9hl
- SX1C/SaOJzQBSVhd9fHNdJ19C9dsCvTiYOlu7O5GZ3mr1u5n9spJc/xBrRbnZgrcky/o
- 86IwINuqsVQ5OrsZc3tAA9g6OumPPzrAV40ehFYWd1CZMwYe7Q0UmrdxnqWZsvc3tKEj
- aW1Qe93frs3Vqnldo+gvlMcqBlRKr/v9LznPUGZU8Dm5nFsCkz73lKC/sCTHF8xQUbZB
- r3tw==
+ d=1e100.net; s=20260707; t=1792076160; x=1792680960;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=g32trlGyDzah+dddiDX4dEQov5de09hHHaVwMj9ZkK0=;
+ b=VYzT4DW1+aG9BpoDTkIb9yF68Ha7wu7V0g5dVjqgjvEWFCyA43j3MhGeVSiUvJlQ0x
+ EPbXsODKQAF1bjlP0As9HMkW7ywbK4UN3wLuSpaMWVD+qx+aOfcURb+Kn4oO3KdIWN/P
+ l2v04uz3VDzTJgsb+3fn7lUBnQr1pDbf6xARftPpP88FkV4zMz/9xIG0CNuEvP3mXQjo
+ BqfEKHgPi12ftmF1ped4Jhl2USanWO6sshwUtIeh01dIsH1dq5QSoi2yf9iIskN/T34G
+ 3duvwb+jNWI/noarMUG/ZcgwKOBQ2ElXo4iLrkGAM2T/SmysrJkfkPFL7bfIdTVumcKT
+ To+Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvByMExDnoMrLO5g1sjnE1qg5ng/aLz8mgKM3EE9L089HJGtbTOg1e/JZ3KI5HSYJD21FGD5n8shEgA==@nongnu.org
-X-Gm-Message-State: AFq9FYLg1uyxvxO6olpToxaxvLAFDEhqWYt1NVNRW8BVvGTuWI1Lnwqf
- oG4UanChwLeURWr94gYOLFvXd+JG29xPjQs99bOfo8a3KK14K6Mfs1uXUsJooStKx3o/Jp+E6Ok
- 8ECQOKLWqrqN53DEM1CiVnNZenFxVjtKva8nQWA9dXsMUmm1Z1oJvnQ==
-X-Gm-Gg: AYBFou0KhyuaL534gxEKyDJ17DPjTnoG+St1xLxs/PTtasfnikT4am/8Uz/Fa1r8Pir
- 5gtHwSPXNqhA9Lxk8oQ2cY/mauPyXErQm7K0IddTLfwqacI2I4xcV76CRg0yfDU6f2NhvXknbTi
- wnRVIUnsrZxtyyKwfYcDo6/qpCKpSDeIU5p7uJ64VR7Yw++Naz7m6DCGk6/FKr8wRZP/hFnlysz
- gK+OWhCZbS3GX5NwlsqAYt50GK/BuLIUlR38COZzJuinWpog9tTXavtnJgtVAAblBQHbCm0d2aw
- gFilk3IF4jDw8FewFSj1qy5tMCsasStCvQBQnEGj1DcCFUdwLK0whKFms8+ccAAzSSalI3AqegM
- /JAfTvDvBE0vDoX55XfRvJ9HRiP4/wjWDLDOpYVtULnCY1ZQl
-X-Received: by 2002:a05:600c:a4b:b0:4a0:23f:8b0d with SMTP id
- 5b1f17b1804b1-4a1af68d397mr173679285e9.2.1792074048075; 
- Thu, 15 Oct 2026 07:20:48 -0700 (PDT)
-X-Received: by 2002:a05:600c:a4b:b0:4a0:23f:8b0d with SMTP id
- 5b1f17b1804b1-4a1af68d397mr173678615e9.2.1792074047479; 
- Thu, 15 Oct 2026 07:20:47 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AKwUvBwmiumcDcdvF0DzG2xnK07rMiCW8urwzPoO8u5q7XamSvK6Iwm/IhY9wUGuWvdraMNvlLfgZs1TSA==@nongnu.org
+X-Gm-Message-State: AFq9FYIqjR8oNPtiLlKFhA3ieFnk7pguxjwzbLko072xkcCpvS+R/KOQ
+ pycJ0hE1hpLSQ1h0+Kd+NjBC3Dysv+K5JH3TiAv1pA4yW7jM9qwWRRHKlKy/o3BojI8bwatMTLh
+ 3AX1koBw=
+X-Gm-Gg: AYBFou1TSzhG02JrEaFtON4oSoamfXpl/0BVovjXHUA7eHpRrQftCz1jPOG2MzL8U4L
+ RFqDjx6bLTd4+WFEozqfFAKhYcnYPr4Dxx3yh7kcuLGvxFbDcc9kQ4AYjrgBe4BHxd83PoTmnx0
+ J/6RqjjI95SgHTDlCdKzzc6BwTH0JuUue4VGRpW5yqxNeCIlI5sr5PXzl5fQJ2bUockSTJMCDgM
+ KC4R74ydADiDodNn2blwil4WjSemuWob6k4u5kIeNOnPHiChn9Q5WeoxSZD+5FvS4KZxEldXYWl
+ OzW90FnZ8zjTZMoadS/feBKW2xok14T2tkJWNCH6PIk5HiDxI9Qbf/FYUOCYalde1Q+m816h89e
+ zgeQmpjYZ18yopOYjhH0A7KU1S2vSo7+/aUQXPx6O+Q50lct8V/aY0b8fzaKfOPE9lsGS9u31uR
+ jZR5P9BOdNwefc8tXeZ86eTpb64PoD+0AV6pD8i1yWk84xwoJ8Mo0dn08T53k7Heg8xPOPBTjFV
+ Z3MBt3PMnowR6HjW2RyML1NN0yvVuXZ51nE3gObFZ3RxOz6eIgOhTC9YFBZxD4f/bQdVMzt2m/W
+ 7V/Lot/ejM9+PcVBO8OvTG0nW6B4WQj+P0xJNJE8ItQ=
+X-Received: by 2002:a05:6402:320e:b0:6b1:d841:deaf with SMTP id
+ 4fb4d7f45d1cf-6b1d841e0e1mr11391427a12.24.1792076160471; 
+ Thu, 15 Oct 2026 07:56:00 -0700 (PDT)
+Received: from ?IPV6:2003:ca:3f0f:8b00:6e0e:d1a6:87ab:6860?
+ (p200300ca3f0f8b006e0ed1a687ab6860.dip0.t-ipconnect.de.
+ [2003:ca:3f0f:8b00:6e0e:d1a6:87ab:6860])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd97ed33sm85893405e9.5.2026.10.15.07.20.45
+ 4fb4d7f45d1cf-6b20386327csm2514421a12.18.2026.10.15.07.55.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Oct 2026 07:20:46 -0700 (PDT)
-Message-ID: <543a8f0a-bd66-4c13-8117-07f069a754d8@redhat.com>
-Date: Thu, 15 Oct 2026 16:20:45 +0200
+ Thu, 15 Oct 2026 07:55:59 -0700 (PDT)
+Message-ID: <727d00d4-c3a9-4e09-89b1-98f3bbfbf93d@linaro.org>
+Date: Thu, 15 Oct 2026 16:55:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v4 23/25] qmp: add query-cpu-props-info command
-To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-Cc: cohuck@redhat.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
- armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
- shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
- ping@khushitshah.com, sandesh.patel@nutanix.com
-References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
- <20260921123249.1708067-24-khushit.shah@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260921123249.1708067-24-khushit.shah@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -RwQ8blBrLbzSHMFd2EnzLKUxSI3zAp8FvLYPVKB7rc_1792074048
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PULL 00/21] aspeed queue
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20261015122151.889017-1-clg@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,181 +106,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 10/15/26 14:21, Cédric Le Goater wrote:
+> The following changes since commit d5b5083cb783c447001e862c2b525e59f48ad78c:
+> 
+>    Merge tag 'block-pull-request' ofhttps://gitlab.com/stefanha/qemu into staging (2026-10-15 11:53:41 +0200)
+> 
+> are available in the Git repository at:
+> 
+>    https://github.com/legoater/qemu/ tags/pull-aspeed-20261015
+> 
+> for you to fetch changes up to 4cf1f0e37d9491eb8b0c8be8dd9dab9260b8fa36:
+> 
+>    tests/functional: give the set_machine probe VM the test workdir (2026-10-15 13:14:09 +0200)
+> 
+> ----------------------------------------------------------------
+> aspeed queue:
+> 
+> * Fix OOB read in HACE has_padding() when padding_size is zero
+> * Allocate ACRY RSA qtest SRAM buffers on the heap to reduce stack usage
+> * Consolidate OTP layout definitions between aspeed_otp and aspeed_sbc
+> * Derive ABR and secure boot state from OTP config straps, removing
+>    the "emmc-abr" and "signing-settings" machine properties
+> * Sort device IDs alphabetically
+> * Add I2C test for IO expander 1 on the AST2700A2
+> * Update ASPEED BMCs reviewer list
+> * Add a create_unimplemented_devices() helper and convert all Aspeed
+>    SoCs and coprocessors to table-driven unimplemented devices
+> * Fix the set_machine probe VM to use the test workdir
 
+Applied, thanks.
 
-On 9/21/26 2:32 PM, Khushit Shah wrote:
-> Introduce the 'query-cpu-props-info' QMP command. For each CPU model
-> property, it reports the type (boolean or number) and the set of values
-> supported under the active accelerator and host.
->
-> This helps the management stack to discover which values are supported
-> for a given CPU property. This is especially important for non-boolean
-> properties, where knowing that the host has value 'x' does not
-> inherently reveal the full range of valid values supported on the host.
-> For example, an Arm host with CTR_EL0.L1Ip=3 (PIPT) also allows 2
-> (VIPT) but a host with CTR_EL0.L1Ip=2 does not allow CTR_EL0.L1Ip=3
-> for a guest.
->
-> For numerical properties, the supported values are expressed as a list
-> of inclusive {min, max} ranges. For boolean properties, they are
-> represented as a list of true/false values.
->
-> The command and its return types (CpuPropertyType, CpuPropertyInfo and
-> friends) are defined in qapi/machine.json rather than an Arm-specific
-> schema, since the concept applies to other targets (e.g. x86, RISC-V)
-> too. Targets that do not implement it return an error.
-> (The following commit implements the command for Arm KVM.)
->
-> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
-> ---
->  qapi/machine.json          | 82 ++++++++++++++++++++++++++++++++++++++
->  stubs/meson.build          |  1 +
->  stubs/qmp-cpu-props-info.c | 12 ++++++
->  tests/qtest/qmp-cmd-test.c |  1 +
->  4 files changed, 96 insertions(+)
->  create mode 100644 stubs/qmp-cpu-props-info.c
->
-> diff --git a/qapi/machine.json b/qapi/machine.json
-> index 2d63c1bac3..6e65bdad86 100644
-> --- a/qapi/machine.json
-> +++ b/qapi/machine.json
-> @@ -2291,3 +2291,85 @@
->  # Since: 1.2
->  ##
->  { 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'] }
-> +
-> +##
-> +# @CpuPropertyType:
-> +#
-> +# The type of a CPU model property.
-> +#
-> +# @boolean: the property is of type boolean.
-> +#
-> +# @number: the property is of type unsigned integer.
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'enum': 'CpuPropertyType',
-> +  'data': [ 'boolean', 'number' ] }
-why do we still need the boolean type? Can't we simplify and stick to
-uint64_t for all SYSREG props?
-> +
-> +##
-> +# @CpuPropertyValueRange:
-> +#
-> +# An inclusive range of numeric values supported for the property.
-> +#
-> +# @min: the lowest supported value.
-> +#
-> +# @max: the highest supported value.
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'struct': 'CpuPropertyValueRange',
-> +  'data': { 'min': 'uint64', 'max': 'uint64' } }
-> +
-> +##
-> +# @CpuPropertyInfoBoolean:
-> +#
-> +# @supported-values: list of boolean values supported for the
-> +#     property.
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'struct': 'CpuPropertyInfoBoolean',
-> +  'data': { 'supported-values': ['bool'] } }
-why can't you model that with a range too?
-> +
-> +##
-> +# @CpuPropertyInfoNumber:
-> +#
-> +# @supported-values: list of numeric value ranges supported
-> +#     for the property.
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'struct': 'CpuPropertyInfoNumber',
-> +  'data': { 'supported-values': ['CpuPropertyValueRange'] } }
-> +
-> +##
-> +# @CpuPropertyInfo:
-> +#
-> +# Information about a single CPU model property, including the values
-> +# the host/accelerator supports for it.
-> +#
-> +# @name: the name of the property.
-> +#
-> +# @type: the type of the property, which selects the layout of
-> +#     @supported-values.
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'union': 'CpuPropertyInfo',
-> +  'base': { 'name': 'str',
-> +            'type': 'CpuPropertyType' },
-> +  'discriminator': 'type',
-> +  'data': { 'boolean': 'CpuPropertyInfoBoolean',
-> +            'number': 'CpuPropertyInfoNumber' } }
-> +
-> +##
-> +# @query-cpu-props-info:
-> +#
-> +# Return information about the CPU model properties.  For each
-> +# property it reports the values supported under the active
-> +# accelerator and host.
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'command': 'query-cpu-props-info',
-> +  'returns': ['CpuPropertyInfo'] }
-> diff --git a/stubs/meson.build b/stubs/meson.build
-> index 3b2f2680b1..3bb4028bab 100644
-> --- a/stubs/meson.build
-> +++ b/stubs/meson.build
-> @@ -83,6 +83,7 @@ if have_system
->    stub_ss.add(files('qmp-i386-sgx.c'))
->    stub_ss.add(files('qmp-i386-xen.c'))
->    stub_ss.add(files('qmp-cpu.c'))
-> +  stub_ss.add(files('qmp-cpu-props-info.c'))
->    stub_ss.add(files('qmp-cpu-s390x.c'))
->    stub_ss.add(files('qmp-cpu-s390x-kvm.c'))
->    stub_ss.add(files('hmp-cmd-info_mem.c'))
-> diff --git a/stubs/qmp-cpu-props-info.c b/stubs/qmp-cpu-props-info.c
-> new file mode 100644
-> index 0000000000..36b0530b98
-> --- /dev/null
-> +++ b/stubs/qmp-cpu-props-info.c
-> @@ -0,0 +1,12 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "qapi/qapi-commands-machine.h"
-> +
-> +CpuPropertyInfoList *
-> +qmp_query_cpu_props_info(Error **errp)
-> +{
-> +    error_setg(errp, "query-cpu-props-info not supported on this target");
-> +    return NULL;
-> +}
-> diff --git a/tests/qtest/qmp-cmd-test.c b/tests/qtest/qmp-cmd-test.c
-> index 279a8f5614..2c25dbd8cb 100644
-> --- a/tests/qtest/qmp-cmd-test.c
-> +++ b/tests/qtest/qmp-cmd-test.c
-> @@ -100,6 +100,7 @@ static bool query_is_ignored(const char *cmd)
->          "add-fd",
->          /* Success depends on target arch: */
->          "query-cpu-definitions",  /* arm, i386, ppc, s390x */
-> +        "query-cpu-props-info", /* arm + kvm */
->          "query-gic-capabilities", /* arm */
->          "query-s390x-cpu-polarization", /* s390x */
->          /* Success depends on target-specific build configuration: */
-Thanks
-
-Eric
-
+r~
 

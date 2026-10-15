@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79B73CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 893DDCC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:22:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHKTS-0005V4-5A; Thu, 15 Oct 2026 08:22:19 -0400
+	id 1xHKTI-0004sm-QX; Thu, 15 Oct 2026 08:22:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTO-00058l-6G
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTG-0004pi-SN
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTM-0005Za-8T
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:13 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTE-0005XD-Hg
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792066931;
+ s=mimecast20190719; t=1792066923;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ARFFXC2/ymVhZH3WtCkVYfkqKj6V6tiDGlg5gQ88kqU=;
- b=QpSL/51+YK2not95kvnvk9v3f6tdqRToGfr45iygZRiNodIFOwm8p/73fEJpSX5VtJJf0F
- F9PePzlRj4wT4TY4xkBe0sfkyou2NFHfVxsW22FI8g5UHpKqDBSfpAUCw4uZP3yIITsx+B
- sX03l2UFKHTvWrceC5Gxj3gKCXX9hm4=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=ftEMjTCPBHxRYxwUjhjRcVDB9wdmRD/+znyo8qNYU4s=;
+ b=RqClmRX+zsjeQQR2jWnZ9ZC7FZCJ3mzGsCOcOrnJSQHZPSpk7XWZ1ZurhsoB21YlLbyOrw
+ 7PzKr/V7ONQETlxfknx2rN7ABg38J3fuB/CR2ssdYrz8mKocKDy6iy7FiUJT1zqGZGDvms
+ bAARhwgDvQNJTN0jgxIUYFxRqKAL6tE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-345-6kj69M9XPBueJhI7ItblLA-1; Thu,
- 15 Oct 2026 12:22:08 +0000
-X-MC-Unique: 6kj69M9XPBueJhI7ItblLA-1
-X-Mimecast-MFC-AGG-ID: 6kj69M9XPBueJhI7ItblLA_1792066927
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-484-ROh4FiA3PQGgt55f96Wj3Q-1; Thu,
+ 15 Oct 2026 12:22:02 +0000
+X-MC-Unique: ROh4FiA3PQGgt55f96Wj3Q-1
+X-Mimecast-MFC-AGG-ID: ROh4FiA3PQGgt55f96Wj3Q_1792066921
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 12E221801352; Thu, 15 Oct 2026 12:22:07 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 591BE1955F7F; Thu, 15 Oct 2026 12:22:01 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.67])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A374A7D8; Thu, 15 Oct 2026 12:22:05 +0000 (UTC)
+ id B9F2D7D5; Thu, 15 Oct 2026 12:21:59 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 06/21] hw/arm/aspeed: Sort device IDs alphabetically
-Date: Thu, 15 Oct 2026 14:21:36 +0200
-Message-ID: <20261015122151.889017-7-clg@redhat.com>
+Subject: [PULL 03/21] hw/nvram/aspeed_otp,
+ hw/misc/aspeed_sbc: Consolidate OTP layout definitions
+Date: Thu, 15 Oct 2026 14:21:33 +0200
+Message-ID: <20261015122151.889017-4-clg@redhat.com>
 In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
 References: <20261015122151.889017-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 4yA10ENGzjpEK8O_jax51yqU7sYQpN8PdUwpZxYHbHY_1792066927
+X-Mimecast-MFC-PROC-ID: 4TlmHJ_sSyykNqVPT0N5b-j0GgTTpGNpdnm2LKvVG98_1792066921
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,234 +87,145 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Kane Chen <kane_chen@aspeedtech.com>
 
-The ASPEED device ID enum has grown over time without a consistent
-ordering rule. This makes it difficult to determine where new device
-IDs should be added and reduces readability and maintainability as
-more devices are introduced.
+Move the OTP address-space layout definitions from aspeed_sbc.c to
+aspeed_otp.h, as they describe the OTP device layout.
 
-Sort the device IDs alphabetically to provide a consistent ordering
-rule. Keep related numbered devices together, such as SPI0, SPI1 and
-SPI2.
+Add an aspeed_otp_read() helper to reduce duplicated OTP read code.
+
+Remove the redundant OTP address bounds checks, as invalid accesses
+are already handled by the OTP address space.
 
 No functional change.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20261005020428.3496039-2-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260918065347.3713868-2-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_soc.h | 176 ++++++++++++++++++------------------
- 1 file changed, 88 insertions(+), 88 deletions(-)
+ include/hw/nvram/aspeed_otp.h | 13 +++++++++
+ hw/misc/aspeed_sbc.c          | 52 +++++++++++------------------------
+ 2 files changed, 29 insertions(+), 36 deletions(-)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 38226d9b8049..a11038574338 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -195,64 +195,56 @@ struct AspeedSoCClass {
- };
+diff --git a/include/hw/nvram/aspeed_otp.h b/include/hw/nvram/aspeed_otp.h
+index 375235386079..2b6c2eaaa353 100644
+--- a/include/hw/nvram/aspeed_otp.h
++++ b/include/hw/nvram/aspeed_otp.h
+@@ -16,6 +16,19 @@
+ #define TYPE_ASPEED_OTP "aspeed-otp"
+ OBJECT_DECLARE_SIMPLE_TYPE(AspeedOTPState, ASPEED_OTP)
  
- enum {
--    ASPEED_DEV_VBOOTROM,
--    ASPEED_DEV_SPI_BOOT,
--    ASPEED_DEV_IOMEM,
--    ASPEED_DEV_IOMEM0,
--    ASPEED_DEV_IOMEM1,
--    ASPEED_DEV_UART0,
--    ASPEED_DEV_UART1,
--    ASPEED_DEV_UART2,
--    ASPEED_DEV_UART3,
--    ASPEED_DEV_UART4,
--    ASPEED_DEV_UART5,
--    ASPEED_DEV_UART6,
--    ASPEED_DEV_UART7,
--    ASPEED_DEV_UART8,
--    ASPEED_DEV_UART9,
--    ASPEED_DEV_UART10,
--    ASPEED_DEV_UART11,
--    ASPEED_DEV_UART12,
--    ASPEED_DEV_UART13,
--    ASPEED_DEV_VUART,
--    ASPEED_DEV_FMC,
--    ASPEED_DEV_SPI0,
--    ASPEED_DEV_SPI1,
--    ASPEED_DEV_SPI2,
-+    ASPEED_DEV_ACRY,
-+    ASPEED_DEV_ADC,
-+    ASPEED_DEV_DP,
-+    ASPEED_DEV_DPMCU,
-     ASPEED_DEV_EHCI1,
-     ASPEED_DEV_EHCI2,
-     ASPEED_DEV_EHCI3,
-     ASPEED_DEV_EHCI4,
--    ASPEED_DEV_VIC,
--    ASPEED_DEV_INTC,
--    ASPEED_DEV_INTCIO,
--    ASPEED_DEV_SDMC,
--    ASPEED_DEV_SCU,
--    ASPEED_DEV_ADC,
--    ASPEED_DEV_SBC,
-+    ASPEED_DEV_EMMC,
-     ASPEED_DEV_EMMC_BC,
--    ASPEED_DEV_VIDEO,
--    ASPEED_DEV_SRAM0,
--    ASPEED_DEV_SRAM1,
--    ASPEED_DEV_SDHCI,
-+    ASPEED_DEV_ESPI,
-+    ASPEED_DEV_ETH1,
-+    ASPEED_DEV_ETH2,
-+    ASPEED_DEV_ETH3,
-+    ASPEED_DEV_ETH4,
-+    ASPEED_DEV_FMC,
-+    ASPEED_DEV_FSI1,
-+    ASPEED_DEV_FSI2,
-     ASPEED_DEV_GPIO,
-     ASPEED_DEV_GPIO_1_8V,
--    ASPEED_DEV_SGPIOM0,
--    ASPEED_DEV_SGPIOM1,
--    ASPEED_DEV_RTC,
--    ASPEED_DEV_TIMER1,
--    ASPEED_DEV_TIMER2,
--    ASPEED_DEV_TIMER3,
--    ASPEED_DEV_TIMER4,
--    ASPEED_DEV_TIMER5,
--    ASPEED_DEV_TIMER6,
--    ASPEED_DEV_TIMER7,
--    ASPEED_DEV_TIMER8,
--    ASPEED_DEV_WDT,
--    ASPEED_DEV_PWM,
--    ASPEED_DEV_LPC,
--    ASPEED_DEV_IBT,
-+    ASPEED_DEV_HACE,
-     ASPEED_DEV_I2C,
-+    ASPEED_DEV_I3C,
-+    ASPEED_DEV_IBT,
-+    ASPEED_DEV_INTC,
-+    ASPEED_DEV_INTCIO,
-+    ASPEED_DEV_IOMEM,
-+    ASPEED_DEV_IOMEM0,
-+    ASPEED_DEV_IOMEM1,
-+    ASPEED_DEV_IOEXP0_I2C,
-+    ASPEED_DEV_IOEXP1_I2C,
-+    ASPEED_DEV_IOEXP0_I3C,
-+    ASPEED_DEV_IOEXP1_I3C,
-+    ASPEED_DEV_IOEXP0_INTCIO,
-+    ASPEED_DEV_IOEXP1_INTCIO,
-+    ASPEED_DEV_IPC0,
-+    ASPEED_DEV_IPC1,
-+    ASPEED_DEV_JTAG0,
-+    ASPEED_DEV_JTAG1,
-+    ASPEED_DEV_KCS,
-+    ASPEED_DEV_LPC,
-+    ASPEED_DEV_LTPI_CTRL1,
-+    ASPEED_DEV_LTPI_CTRL2,
-+    ASPEED_DEV_LTPI_IO0,
-+    ASPEED_DEV_LTPI_IO1,
-+    ASPEED_DEV_MII1,
-+    ASPEED_DEV_MII2,
-+    ASPEED_DEV_MII3,
-+    ASPEED_DEV_MII4,
-+    ASPEED_DEV_OTP,
-     ASPEED_DEV_PCIE0,
-     ASPEED_DEV_PCIE1,
-     ASPEED_DEV_PCIE2,
-@@ -263,49 +255,57 @@ enum {
-     ASPEED_DEV_PCIE_MMIO1,
-     ASPEED_DEV_PCIE_MMIO2,
-     ASPEED_DEV_PECI,
--    ASPEED_DEV_ETH1,
--    ASPEED_DEV_ETH2,
--    ASPEED_DEV_ETH3,
--    ASPEED_DEV_ETH4,
--    ASPEED_DEV_MII1,
--    ASPEED_DEV_MII2,
--    ASPEED_DEV_MII3,
--    ASPEED_DEV_MII4,
--    ASPEED_DEV_SDRAM,
--    ASPEED_DEV_XDMA,
--    ASPEED_DEV_EMMC,
--    ASPEED_DEV_KCS,
--    ASPEED_DEV_HACE,
--    ASPEED_DEV_ACRY,
--    ASPEED_DEV_DPMCU,
--    ASPEED_DEV_DP,
--    ASPEED_DEV_I3C,
--    ASPEED_DEV_ESPI,
--    ASPEED_DEV_UDC,
--    ASPEED_DEV_JTAG0,
--    ASPEED_DEV_JTAG1,
--    ASPEED_DEV_FSI1,
--    ASPEED_DEV_FSI2,
-+    ASPEED_DEV_PRIC0,
-+    ASPEED_DEV_PRIC1,
-+    ASPEED_DEV_PWM,
-+    ASPEED_DEV_RTC,
-+    ASPEED_DEV_SBC,
-+    ASPEED_DEV_SCU,
-     ASPEED_DEV_SCUIO,
-+    ASPEED_DEV_SDHCI,
-+    ASPEED_DEV_SDMC,
-+    ASPEED_DEV_SDRAM,
-+    ASPEED_DEV_SGPIOM0,
-+    ASPEED_DEV_SGPIOM1,
-     ASPEED_DEV_SLI,
-     ASPEED_DEV_SLIIO,
-+    ASPEED_DEV_SPI_BOOT,
-+    ASPEED_DEV_SPI0,
-+    ASPEED_DEV_SPI1,
-+    ASPEED_DEV_SPI2,
-+    ASPEED_DEV_SRAM0,
-+    ASPEED_DEV_SRAM1,
-+    ASPEED_DEV_TIMER1,
-+    ASPEED_DEV_TIMER2,
-+    ASPEED_DEV_TIMER3,
-+    ASPEED_DEV_TIMER4,
-+    ASPEED_DEV_TIMER5,
-+    ASPEED_DEV_TIMER6,
-+    ASPEED_DEV_TIMER7,
-+    ASPEED_DEV_TIMER8,
-+    ASPEED_DEV_UART0,
-+    ASPEED_DEV_UART1,
-+    ASPEED_DEV_UART2,
-+    ASPEED_DEV_UART3,
-+    ASPEED_DEV_UART4,
-+    ASPEED_DEV_UART5,
-+    ASPEED_DEV_UART6,
-+    ASPEED_DEV_UART7,
-+    ASPEED_DEV_UART8,
-+    ASPEED_DEV_UART9,
-+    ASPEED_DEV_UART10,
-+    ASPEED_DEV_UART11,
-+    ASPEED_DEV_UART12,
-+    ASPEED_DEV_UART13,
-+    ASPEED_DEV_UDC,
-+    ASPEED_DEV_VBOOTROM,
-+    ASPEED_DEV_VIC,
-+    ASPEED_DEV_VIDEO,
-+    ASPEED_DEV_VUART,
-+    ASPEED_DEV_WDT,
-+    ASPEED_DEV_XDMA,
-     ASPEED_GIC_DIST,
-     ASPEED_GIC_REDIST,
--    ASPEED_DEV_IPC0,
--    ASPEED_DEV_IPC1,
--    ASPEED_DEV_LTPI_CTRL1,
--    ASPEED_DEV_LTPI_CTRL2,
--    ASPEED_DEV_LTPI_IO0,
--    ASPEED_DEV_LTPI_IO1,
--    ASPEED_DEV_IOEXP0_I2C,
--    ASPEED_DEV_IOEXP1_I2C,
--    ASPEED_DEV_IOEXP0_INTCIO,
--    ASPEED_DEV_IOEXP1_INTCIO,
--    ASPEED_DEV_IOEXP0_I3C,
--    ASPEED_DEV_IOEXP1_I3C,
--    ASPEED_DEV_PRIC0,
--    ASPEED_DEV_PRIC1,
--    ASPEED_DEV_OTP,
- };
++#define OTP_MEMORY_SIZE                 0x4000
++
++/*
++ * The OTP address space is indexed by dword address and is split into
++ * two regions:
++ *
++ *  - [0, OTP_DATA_DWORD_COUNT]: the data region. Each address contains
++ *    64 bits of data.
++ *  - [OTP_DATA_DWORD_COUNT, OTP_MEMORY_SIZE / 4]: the configuration
++ *    region. Each address contains 32 bits of data.
++ */
++#define OTP_DATA_DWORD_COUNT            (0x800)
++
+ typedef struct AspeedOTPState {
+     DeviceState parent_obj;
  
- const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index 5c193d9086ed..3402cef5c3ec 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -66,15 +66,11 @@
+ #define QSR_RSA_MASK           (0x3 << 12)
+ #define QSR_HASH_MASK          (0x3 << 10)
+ 
+-#define OTP_MEMORY_SIZE 0x4000
+ /* OTP command */
+ #define SBC_OTP_CMD_READ 0x23b1e361
+ #define SBC_OTP_CMD_WRITE 0x23b1e362
+ #define SBC_OTP_CMD_PROG 0x23b1e364
+ 
+-#define OTP_DATA_DWORD_COUNT        (0x800)
+-#define OTP_TOTAL_DWORD_COUNT       (0x1000)
+-
+ /* Voltage mode */
+ #define MODE_REGISTER               (0x1000)
+ #define MODE_REGISTER_A             (0x3000)
+@@ -96,43 +92,34 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+     return s->regs[addr];
+ }
+ 
+-static bool aspeed_sbc_otp_read(AspeedSBCState *s,
+-                                   uint32_t otp_addr)
++static bool aspeed_otp_read(AspeedSBCState *s, uint32_t otp_addr,
++                             uint32_t *value)
+ {
+-    MemTxResult ret;
+-    AspeedOTPState *otp = &s->otp;
+-    uint32_t value, otp_offset;
+-    bool is_data = false;
+-
+-    if (otp_addr < OTP_DATA_DWORD_COUNT) {
+-        is_data = true;
+-    } else if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
++    if (address_space_read(&s->otp.as, otp_addr << 2, MEMTXATTRS_UNSPECIFIED,
++                            value, sizeof(*value)) != MEMTX_OK) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+-                      "Invalid OTP addr 0x%x\n",
++                      "Failed to read OTP memory, addr = %x\n",
+                       otp_addr);
+         return false;
+     }
+ 
+-    otp_offset = otp_addr << 2;
+-    ret = address_space_read(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
+-                             &value, sizeof(value));
+-    if (ret != MEMTX_OK) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "Failed to read OTP memory, addr = %x\n",
+-                      otp_addr);
++    return true;
++}
++
++static bool aspeed_sbc_otp_read(AspeedSBCState *s,
++                                   uint32_t otp_addr)
++{
++    uint32_t value;
++    bool is_data = otp_addr < OTP_DATA_DWORD_COUNT;
++
++    if (!aspeed_otp_read(s, otp_addr, &value)) {
+         return false;
+     }
+     s->regs[R_CAMP1] = value;
+     trace_aspeed_sbc_otp_read(otp_addr, value);
+ 
+     if (is_data) {
+-        ret = address_space_read(&otp->as, otp_offset + 4,
+-                                 MEMTXATTRS_UNSPECIFIED,
+-                                 &value, sizeof(value));
+-        if (ret != MEMTX_OK) {
+-            qemu_log_mask(LOG_GUEST_ERROR,
+-                          "Failed to read OTP memory, addr = %x\n",
+-                          otp_addr);
++        if (!aspeed_otp_read(s, otp_addr + 1, &value)) {
+             return false;
+         }
+         s->regs[R_CAMP2] = value;
+@@ -181,13 +168,6 @@ static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
+     uint32_t value = s->regs[R_CAMP1];
+     uint32_t otp_offset = otp_addr << 2;
+ 
+-    if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "Invalid OTP addr 0x%x\n",
+-                      otp_addr);
+-        return false;
+-    }
+-
+     ret = address_space_write(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
+                               &value, sizeof(value));
+     if (ret != MEMTX_OK) {
 -- 
 2.56.0
 

@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FD8CCA462
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:12:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0578CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:12:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN7U-0007o2-AN; Thu, 15 Oct 2026 11:11:49 -0400
+	id 1xHN6z-0006t1-Ly; Thu, 15 Oct 2026 11:11:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN7P-0007aV-OD
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:44 -0400
-Received: from mail-wm1-f52.google.com ([209.85.128.52])
+ id 1xHN6y-0006oQ-J5
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:16 -0400
+Received: from mail-wm1-f53.google.com ([209.85.128.53])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN7M-0001qS-W2
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:42 -0400
-Received: by mail-wm1-f52.google.com with SMTP id
- 5b1f17b1804b1-4a0286c981dso20940155e9.2
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:11:40 -0700 (PDT)
+ id 1xHN6w-0001jG-Oa
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:11:16 -0400
+Received: by mail-wm1-f53.google.com with SMTP id
+ 5b1f17b1804b1-4a1635f7c89so22595885e9.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:11:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792077100; x=1792681900;
+ d=1e100.net; s=20260707; t=1792077073; x=1792681873;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=ZT03pXOUyF1VnCcltW3we9XEJr4ijAWCTIBb53nAbTQ=;
- b=tO10jeZQXKPYOVE/pWxxUPmOnjxYbUdsaL1yJRlPiCe6ks/lXTuL4UPjMah8WTKJXW
- QSEYubsXtnrxeGERdVUOYYPXosLTmtwqmJp8EwicXQe3RQRgbG3832QiUighPG87YOnc
- eFVRTfOGKkhrjZOZLj3fiYwlRCHOg3ccnmLFLaEUk3ieSzq3NXrJWudSED3LVFomYncP
- D2ugQSKAVue8c2vIBczKPayuCA9jx4HwLF3g3VEiKgYEL1EbO0Iokh4bHPzvYM5sAJGJ
- M+Lf1i80z/YWDK3Rs5dAZGTsrcasOv4zbszwY3yUDmGE59acoeerNpuOTeET+6My5zwx
- hw9Q==
+ bh=h/jBhx8TqfsnPUJuouPhKp95SfbgVptMIf/ysrEaIhQ=;
+ b=0plFLDfTSz7CGZKr2fbcjUpCPJ/dArakx6TiYc9207wCA4bqU5WMZNO23QBdf+jt7Z
+ bUYhY8P472XoqxMz8+AewwG5VIS5GYphAVlBbtARJ4o08L1IUtL+pbk+PjfWtpEJv4gu
+ hnMvPECfvKfs/7qD4kUH9b3km5tEWNyXsQbYf+Quznve/1zfM1EicXsftLqHH2jVhe52
+ 4ThzeW1NoKhfXzJLSUlT9PDCQKV7ZwuDTgf59mS9hls/y3y1xbEa3azvdLYkdDsRd1e3
+ bXUtPkSM4PQVRFWH1AcO85QNRsGPppkafsQhc0v7tD/w9rG/xLxXdOuLZQOIIMPr2Eoc
+ Q4aw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxARXPKPNWivkNAQTxe9cOLr9JLBtQz40LdKXtwOT1hP0tXtKfXuuMMCSgij6ww6oYXGvB1996a3w==@nongnu.org
-X-Gm-Message-State: AFq9FYKvTFN6qnXWcNEm3R/oLhvfYZGoxKgfaGPex7gbzQgAyEDCLNFf
- VCpxayjAefbbT0iRY/lo31fVvevczqASt1bApBrkd3y18swBxOdiQ/6J
-X-Gm-Gg: AYBFou2+hcUgKzleWv43HwJD2af7t1lE1f4HQkY8OXZcottN/rINJxUe60xXnHsI+D3
- brfXiobR/Ae78KxQ2JQUKAV0yrFvdrQpY8X89K+EnfGjhsqu8z8BregQoCUDUViBalgN85sT6+6
- RfqrI3xjeQtji7eR0Qq6cQDEMm9tipB+Huqep2ph9oWR8zW9GUYlcWSOJABQ7DrLlRZXK8bJi67
- RmwJ5WmR5CsldNTlM5uEeiza7h1HGlXC5D5q7zVztXqONvvyo+i3e3XAspB9SszcWvx/wBZ+cu+
- GN21XwTGUcEoUhkkGvSAd8d6lRcF0C4Jt01ZDWM1JxRsce1P9XZXjrUIX87Z6UuctjTRCkd2k2X
- Ah2jTlZLbMROhV9NOoo3o7FRD8dWhzxzfjUk3Hz5q5URqV2vFsaUSpWHM/KoW33jNPt933tZN5g
- B/Szt7uaUpPByaYI347UXfp2VIlN6zi8tEtunPGAJdSXrc1U8GBB1GCIOShfbv3EThyj1dXk/MM
- g8TiVEghbNu6NbqQ3H4AEtknJMvL7IAgrbC5ErehQVkGBwWjLCYKSqaCw==
-X-Received: by 2002:a05:600c:8b06:b0:4a1:7ce1:2eaf with SMTP id
- 5b1f17b1804b1-4a18e4e0963mr401128545e9.34.1792077099451; 
- Thu, 15 Oct 2026 08:11:39 -0700 (PDT)
+ AKwUvBy1fRn09tB5bATUC4Ci99e0BSZSp+F1TPPSQ2jpfQLEEyq2I2kvjEluWVAPsnQVJSI703vqgPB4qw==@nongnu.org
+X-Gm-Message-State: AFq9FYL1IhR5xiviouTJrok1A2+UDrWFU21O0ggpuKFQj5sEu1/8Kzl1
+ K6vwKH1pGsFg79MnCeGOJJj0EvCgmgzi48UjSo9VANV16vo93XH7g/DZ
+X-Gm-Gg: AYBFou2zApEPafEOjo/9PdJsmqmcwwLNMsXL52NQcC1C533KOMJrzFUeiFddZBMMPqg
+ TB4o4Ko2jD5W42+fwskkJEyHZfWaVMVMlLz7p7NwPKsW4oT7k2o++mXZ+vL4Uxi1wWRYiS4+5h+
+ dLbY/EC8e0vVqohZw+S2GAycsFi7D419OSlG7+sNOs1asANamGqW5dix2mUksq1bqpqhnqcdcGP
+ fSJy0hB6Zx8frrAoIjk1hkEGxRzK2hc1wOcv28CVV5SKMbbg3Jt+ihOz9y5O4LVLyTshfBL4e9Q
+ 0nJO07m3Kx9ork//TFPjFdnKwuslzDazDYeu/GqNofGZctVIFqw0QlWuFan3fqG1PFwilCzBDgt
+ 9RvoSFcjO9UGbyS7gjX/p8aJzCOXIqXSLPCqP5gwBoVrc6NnPXx7P6sDUGuybw2kJxmnYrEzq4V
+ wWZ5AHNyNl9v0/0wL2VEVc+Zj4MZr68ZyQ0brz7O5B56GmoHTZ3yWYZK6gqjlVYrtawjZ9+8X+m
+ 46lFloPaixGeoG9M+54yO3BSVLCk/q80NEsqkMB3pcRYjWTEr4chunMYg==
+X-Received: by 2002:a05:600c:4ecb:b0:4a1:76c9:5408 with SMTP id
+ 5b1f17b1804b1-4a18e4a510emr394094355e9.11.1792077073123; 
+ Thu, 15 Oct 2026 08:11:13 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd5ec195sm73095455e9.0.2026.10.15.08.11.38
+ 5b1f17b1804b1-4a1beb77054sm52640165e9.1.2026.10.15.08.11.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:11:38 -0700 (PDT)
-Date: Thu, 15 Oct 2026 13:57:51 +0200
-Subject: [PATCH 13/22] tests/qtest: tmp421: cover temperature encoding and
- range
+ Thu, 15 Oct 2026 08:11:11 -0700 (PDT)
+Date: Thu, 15 Oct 2026 13:57:48 +0200
+Subject: [PATCH 10/22] hw/sensor: tmp421: publish the variant type names
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-clemente-v1-13-bf591886b5b6@free.fr>
+Message-Id: <20261015-bmc-clemente-v1-10-bf591886b5b6@free.fr>
 References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +76,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=6462;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=1627;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=AEzQURKuJZlDUat8fg72pNeAc6ypqWG6k7Vbs2+CVL0=;
- b=FxUvpuxrGsxanAAo9GuczGCFhcMe3pGZNR2l4tjgPP5c6ZXWCSuttDzbEKWfJ4v5nJxhHx+IS
- enJzZ+GywB2AWOfWmddbTCRt0l9SCssxwu4uuN/5+YxfRhufZ9Myp0Q
+ bh=8uCJ56eVIcCR8z+k4HKJzPHWZ54KMlo/ENguxWLEwls=;
+ b=PWfPkiOW1sGzox04JJcNLsWYGWYKGKZXs4ZX3ccT1Yf4RpTdJd+FzZ3P+utkCha+d8LUtcWpg
+ sTqueunC8FwAFPtW2AGhntp85idvyY5QZ+lDaFjtwSX5I1lMlOw8SYB
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.52; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f52.google.com
+Received-SPF: pass client-ip=209.85.128.53; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f53.google.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
@@ -111,154 +110,63 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Set a temperature over QMP and read it back through the two-byte and
-single-byte register paths, checking the fixed-point encoding and the
-extended-range offset. A second case pins the saturation: a temperature
-the standard range cannot express reads back clamped, without harming
-the measurement itself.
+Move TYPE_TMP421/TYPE_TMP422/TYPE_TMP423 from tmp421.c into a new
+include/hw/sensor/tmp421.h, so boards instantiating the device share
+one definition instead of repeating the type strings locally.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/tmp421-test.c | 102 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
+ hw/sensor/tmp421.c         |  4 +---
+ include/hw/sensor/tmp421.h | 19 +++++++++++++++++++
+ 2 files changed, 20 insertions(+), 3 deletions(-)
 
-diff --git a/tests/qtest/tmp421-test.c b/tests/qtest/tmp421-test.c
-index 2307e5f603..390f17b6b2 100644
---- a/tests/qtest/tmp421-test.c
-+++ b/tests/qtest/tmp421-test.c
-@@ -18,9 +18,13 @@
-  * shared with the model, so the test states the values it expects
-  * independently of the implementation it is checking.
-  */
-+#define TMP421_TEMP_MSB0                0x00
- #define TMP421_CONFIG_REG_1             0x09
-+#define    TMP421_CONFIG_RANGE            (1 << 2)
- #define TMP421_CONFIG_REG_2             0x0A
- #define TMP421_CONVERSION_RATE_REG      0x0B
-+#define TMP421_TEMP_LSB0                0x10
-+#define TMP421_RESET                    0xFC
- #define TMP421_MANUFACTURER_ID_REG      0xFE
- #define TMP421_DEVICE_ID_REG            0xFF
+diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
+index e391bb20e1..5c04960b29 100644
+--- a/hw/sensor/tmp421.c
++++ b/hw/sensor/tmp421.c
+@@ -41,6 +41,7 @@
+ #include "qapi/visitor.h"
+ #include "qemu/module.h"
+ #include "qom/object.h"
++#include "hw/sensor/tmp421.h"
+ 
+ /* Manufacturer / Device ID's */
  #define TMP421_MANUFACTURER_ID          0x55
-@@ -44,6 +48,36 @@ static const TMP421Variant tmp421_variant = { TMP421_TEST_ID, 0x21, 0x1c, 2 };
- static const TMP421Variant tmp422_variant = { TMP422_TEST_ID, 0x22, 0x3c, 3 };
- static const TMP421Variant tmp423_variant = { TMP423_TEST_ID, 0x23, 0x7c, 4 };
+@@ -79,9 +80,6 @@ struct TMP421Class {
+     uint8_t config2_reset;
+ };
  
-+static QDict *qmp_get_temperature(const char *id, unsigned channel)
-+{
-+    g_autofree char *prop = g_strdup_printf("temperature%u", channel);
-+
-+    return qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
-+               "'property': %s } }", id, prop);
-+}
-+
-+static int get_temperature(const char *id, unsigned channel)
-+{
-+    QDict *response = qmp_get_temperature(id, channel);
-+    int ret;
-+
-+    g_assert(qdict_haskey(response, "return"));
-+    ret = qdict_get_int(response, "return");
-+    qobject_unref(response);
-+    return ret;
-+}
-+
-+static void set_temperature(const char *id, unsigned channel, int value)
-+{
-+    g_autofree char *prop = g_strdup_printf("temperature%u", channel);
-+    QDict *response;
-+
-+    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
-+                   "'property': %s, 'value': %d } }", id, prop, value);
-+    g_assert(qdict_haskey(response, "return"));
-+    qobject_unref(response);
-+}
-+
- static void test_ids(void *obj, void *data, QGuestAllocator *alloc)
- {
-     const TMP421Variant *var = data;
-@@ -58,6 +92,70 @@ static void test_ids(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(i2c_get8(i2cdev, TMP421_CONVERSION_RATE_REG), ==, 0x07);
- }
+-#define TYPE_TMP421 "tmp421"
+-#define TYPE_TMP422 "tmp422"
+-#define TYPE_TMP423 "tmp423"
+ OBJECT_DECLARE_TYPE(TMP421State, TMP421Class, TMP421)
  
-+static void test_temperature(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = obj;
-+
-+    /* A whole degree lands on a whole register value, fraction cleared. */
-+    set_temperature(TMP421_TEST_ID, 0, 25000);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0x1900);
-+
-+    /* The standard range is two's complement below 0 C. */
-+    set_temperature(TMP421_TEST_ID, 0, -25000);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0xE700);
-+
-+    /* A temperature the register form represents exactly. */
-+    set_temperature(TMP421_TEST_ID, 0, 25063);
-+    g_assert_cmpint(get_temperature(TMP421_TEST_ID, 0), ==, 25063);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0x1910);
-+
-+    /* A lone low-byte read returns the same conversion as the pair. */
-+    g_assert_cmphex(i2c_get8(i2cdev, TMP421_TEMP_LSB0), ==, 0x10);
-+
-+    /* Extended range encodes the same measurement with a +64 C offset. */
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, TMP421_CONFIG_RANGE);
-+    set_temperature(TMP421_TEST_ID, 0, 25063);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0x5910);
-+
-+    /* Leaving it, whether by a write or a reset, reports the same value */
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, 0);
-+    g_assert_cmpint(get_temperature(TMP421_TEST_ID, 0), ==, 25063);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0x1910);
-+
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, TMP421_CONFIG_RANGE);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0x5910);
-+    i2c_set8(i2cdev, TMP421_RESET, 0);
-+    g_assert_cmpint(get_temperature(TMP421_TEST_ID, 0), ==, 25063);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0x1910);
-+
-+    /* The extended range is unsigned: it reaches past +64 C (Table 1). */
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, TMP421_CONFIG_RANGE);
-+    set_temperature(TMP421_TEST_ID, 0, 100063);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0xA410);
-+}
-+
+ 
+diff --git a/include/hw/sensor/tmp421.h b/include/hw/sensor/tmp421.h
+new file mode 100644
+index 0000000000..fbfdd87b7a
+--- /dev/null
++++ b/include/hw/sensor/tmp421.h
+@@ -0,0 +1,19 @@
 +/*
-+ * A temperature the standard range cannot express saturates at +127 C (7Fh)
-+ * instead of wrapping, and the extended range still reports it in full: the
-+ * range picks an encoding, it does not alter the measurement.
++ * Texas Instruments TMP421/TMP422/TMP423 temperature sensor
++ *
++ * Browse the data sheet:
++ *
++ *    https://www.ti.com/lit/gpn/tmp421
++ *
++ * Copyright (c) 2016 IBM Corporation.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+static void test_range_saturation(void *obj, void *data,
-+                                  QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = obj;
++#ifndef HW_SENSOR_TMP421_H
++#define HW_SENSOR_TMP421_H
 +
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, TMP421_CONFIG_RANGE);
-+    set_temperature(TMP421_TEST_ID, 0, 149938);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0xD5F0);
++#define TYPE_TMP421 "tmp421"
++#define TYPE_TMP422 "tmp422"
++#define TYPE_TMP423 "tmp423"
 +
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, 0);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0x7FF0);
-+    g_assert_cmpint(get_temperature(TMP421_TEST_ID, 0), ==, 149938);
-+
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, TMP421_CONFIG_RANGE);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0xD5F0);
-+}
-+
- static void tmp421_register_node(const TMP421Variant *var, const char *type,
-                                  uint8_t addr)
- {
-@@ -79,6 +177,10 @@ static void tmp421_register_nodes(void)
-     tmp421_register_node(&tmp421_variant, "tmp421", 0x4c);
-     tmp421_register_node(&tmp422_variant, "tmp422", 0x4d);
-     tmp421_register_node(&tmp423_variant, "tmp423", 0x4e);
-+
-+    /* Temperature encoding is variant-independent; exercise it once. */
-+    qos_add_test("temperature", "tmp421", test_temperature, NULL);
-+    qos_add_test("range-saturation", "tmp421", test_range_saturation, NULL);
- }
- 
- libqos_init(tmp421_register_nodes);
++#endif
 
 -- 
 2.53.0-Meta

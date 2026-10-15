@@ -4,96 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 262F5CCA464
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 18:17:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9339CCC6B38
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 18:17:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHPvH-0000zl-MU; Thu, 15 Oct 2026 14:11:23 -0400
+	id 1xHPvK-00019M-Ei; Thu, 15 Oct 2026 14:11:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xHPvE-0000oq-Fi
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:20 -0400
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+ id 1xHPvF-0000rR-4A
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:21 -0400
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xHPvB-0001ON-63
+ id 1xHPvC-0001PB-FB
  for qemu-arm@nongnu.org; Thu, 15 Oct 2026 14:11:20 -0400
-Received: by mail-qv1-xf30.google.com with SMTP id
- 6a1803df08f44-9178d514951so15060566d6.0
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 11:11:16 -0700 (PDT)
+Received: by mail-qv1-xf2f.google.com with SMTP id
+ 6a1803df08f44-91b9e758c50so3630266d6.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 11:11:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792087876; x=1792692676; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=Q6ZzcCN/48+ddiMOZle0TgzJkgvqGX4oc6Q3aSB1qFo=;
- b=clgVj8CQxOzTk42wSxQ/JXQTcIaGEIfDIJqQTaSFiE62ITRPhactEXUbBmCmeWRgq6
- kJJ1Fh3m75Z5KxorktUHB0R/eu9DPCVcs79WsSJHkKPhwZayqJXR+gMD3k42wkuTb/hn
- u6tIEqtei4sg5jPGqRupcR2vqYun5U/u60AYc9T19tYNyJV2g4537G6ikml2wryNwb3P
- mU0GnM6e86EZAV/QsBHXva+w9H1JuJU1042G2+KPKzeZEAYwTUXV66AtfSnol9DDxzRL
- wOZ5wra5ShetgOEeQ4WGFI6Geyl8uzTv0C0q1NSpGSYANUcovDyJRCLFfSOqcLZuMS8X
- rROQ==
+ d=gmail.com; s=20251104; t=1792087877; x=1792692677; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=NtyH1JrbjE6E6ExgzJYIuvOowriA6YLfrM9Heqe8B7Q=;
+ b=bcuuuSncitbJl/kug2/GR6na8UCzCwOM6rxAHmDv4AMUukNr0kRDsGfJYOVoHKgRo4
+ UhnI+qgWy1309OcY8LOByu0f6o1gvVZrRFHslTKbLdaa2li6M2/JfiRHB62qrTXg/1OI
+ uJUBG91D/rxWcIsipc5M+anDiGGdTeva+VX73Xo8w9qMci7atXssfwKrKhUJTA0wOnE5
+ C2ta0+oZyDUD2I/2FfnCVn0HIaMoJXC5tarq1oD5CIfErKT8aAODyg1uiKrFBkjIT+z9
+ KO1JPaCeLRdbAlozxbno7j7TnqWNpZ6Kker1tRtcMsdLzpVEeywXZgMBac868WBLPZRJ
+ gj+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792087876; x=1792692676;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Q6ZzcCN/48+ddiMOZle0TgzJkgvqGX4oc6Q3aSB1qFo=;
- b=khWBEcUmzrZ+dYXIbZF8YowKNVwu9ej1F31w9GmNWr7jY+6c2YW9mwUJRjhgnexnCW
- gTUh7mglwnhAZMvkqbGouTdYgRNP672HYNzMa3j6m9IQulD0h8lgNp00PDti3pKDrttb
- iA86yHaIbMD22dklvq+lJZJAox+mTwPdqc38+/f3w6enodRceUgq3sx4FQ+VkWvZOOer
- pYCyl5uZZNqFPRGWLDGJiKlSwKJakHSD/3UTCn8jCFOgoHGHpqDml++cjutgK5lpTQN1
- Zco96pw81RAqcJNLpFpOYF2gHFRNwMBSG6SDxt7BmjR7AhaG+EDWUVyv+/pjr2wqTe6/
- 0xoQ==
+ d=1e100.net; s=20260707; t=1792087877; x=1792692677;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=NtyH1JrbjE6E6ExgzJYIuvOowriA6YLfrM9Heqe8B7Q=;
+ b=mo6n786EHZ1GdZRvtIuII8YW9+KvqY1o9EOVp0m46r+ZAj9EVxNs7zezrQsq87Utfx
+ JD2O561njzlXf8KBBlk4Tt3OMry8OxnfUkIlHNVQBceim790iIHVUf1rbwyKQ4SbRnTA
+ fjumOPrOH8QLnmq0dCMZLPnlS55/4G8QOY9T2461Oy32zzmeBDGpjWU0sy86jYXn9k4O
+ mUqCjjsbMRo2enqyvgxX6eC9vkASPwOxmuWftd2rYQaNJjK4N+l9iIE8R84eH52Z3sKA
+ IYoFXGZoxxuOqymGn7FCdS+IyLFEoDjjA5dU9PlO2aEEGgba694DCtj6Y6iD6eOm+7Q0
+ EXuw==
 X-Forwarded-Encrypted: i=1;
- AKwUvByGoGMA29vtZ/6kddI+dXYplack0V0Z1dWXkz7fjjO1fXsbcmrzMH6o1RLtaSCvnWKDbr5F/ogshA==@nongnu.org
-X-Gm-Message-State: AFq9FYIXGwUxkwLguwfbxsuny59By8zDvGid2Xtidap1fcbEs4pe2mrX
- rKYCaX0ZAl5FqJGHJw/PeidkwbfctsFftFKZab++eWtPnohh27CwmHoR
-X-Gm-Gg: AYBFou39OhrwgMaqbBIr3CvnQVdYPw7c1ZGnlFl4xVg+zVNCpznPfPWnXON/E40MeqX
- Sr8AjJf3KM1t/+08I4KqiUbEMLMJ//2/cLCevKkPfr0uFs983m9E/EgPZ4v0tbKFCh+oMSq8R95
- w8BFVthmV+bilquE09XP+U8Z/TOO0dSz5q+p047a03aWKCaoU/OJrMBFOzI0id53fA0OhSkTcpT
- 5vXFzGrQ6XSULuuO8MUoPxAWZAsZ613lloA7jaIPFGPGrP3Pb18lrTRqgGdL8VPGSd3BgDYv+Go
- ZtW/1cFsEOccsQQqoXnFMxUFUyTfxCnafEB0c60Iayz4n4LD6FWWmztXIkCjuoGFkt5hwGLRQ8O
- cAmzX3BGclGyehwfOu+UsAl8GFW0L2clrI0mc9exdhf5IvVcAi78mEjn8/nkmaNZXlXAw4os/L2
- M/8ZltKR7CuHyJlPlujDokMpaw3RSUV4JPTFMcD10mrz1qhtv15q2Y8YG4PH0mhUimYVh++vwQR
- C+IybqPLkDruIRB5W6E+pDj7N2ACT94v/DkN0GDg9GYrFbWPbTAPwFdPVoJhvNwy/wKTA==
-X-Received: by 2002:a05:6214:458b:b0:91b:8b44:d4be with SMTP id
- 6a1803df08f44-91b8b44da3bmr183022846d6.28.1792087875991; 
- Thu, 15 Oct 2026 11:11:15 -0700 (PDT)
+ AKwUvBz+mQGlSSCq4Kxga3SJj6C/yMacAXJwtAJTP0ADgAu+ikQ6HDSFhbjX28BoyOma2BMLl5HVnlLFwA==@nongnu.org
+X-Gm-Message-State: AFq9FYIbq3tKhKqYSfegnaRVMj/DrUKG3GK/RWMDXzE5PHY9T7msncxf
+ GrKmCMdcATOzyDyJZ4uQ5i+tUrrdktxXe+/dapR9fQ5RMuyu3uNzxbQu
+X-Gm-Gg: AYBFou3u2Q7hOqtpCRVpVAddUPn7Uo60hFWucG97I2jOE7yywfq/+UviyiXoCKKlmAw
+ Kskx2iat5a1bwdk/7u5WEeH5eI43JwODrwLvxvRjx92u1WLodXRlPzrM2pbiPGcx9oFRJ5sncs1
+ IbIlYLMiXHbSu+2H0VTsNEHrrDbgtZCzbq14hDE09RRxRkBweK0ytgzKVH4963ZudSLJSo3X9fS
+ a9mSIdRQFj0s8DyijQ472W7npflfcp6Uv859Zo2p4XkmJ4EeZPBkLSsdb4o6TFl/a/eJTPyM4AX
+ uBWAd1MW/K8F3LfkSbZ5Damct5NYPRDgyoTwZo/RTVMxlT3IZ3kZPuvQxtW7PGmPdw5fhMr7k6V
+ oL8kXg8owDqUWAREcU3mzg3DZpEBB6meFwzVTaHrrIMCvYeGpZO8cBDBwYQBnwB97LBs9ybQ9w8
+ SrU56dXMbK/qcCtGrzPeVZ/wWJ0OivnxxshktphaVw+a1JAOW6ceOrSHAa28f7p5GYQPLsmt62L
+ p/WBBCFcWjteKoXLfMFOMEWCrVvyM4saEA1ISWhvcOO3KRPw8AsVaxxAA1jzV6xozLa+g==
+X-Received: by 2002:a05:6214:628:b0:914:40f4:d4b9 with SMTP id
+ 6a1803df08f44-91bc91d3159mr15796716d6.12.1792087877520; 
+ Thu, 15 Oct 2026 11:11:17 -0700 (PDT)
 Received: from localhost.localdomain ([2606:6d00:159:2900:919:5388:4e10:5949])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-91bcba45dffsm1816206d6.12.2026.10.15.11.11.15
+ 6a1803df08f44-91bcba45dffsm1816206d6.12.2026.10.15.11.11.16
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Oct 2026 11:11:15 -0700 (PDT)
+ Thu, 15 Oct 2026 11:11:17 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Sergey Kambalin <serg.oker@gmail.com>,
- Sergey Kambalin <sergey.kambalin@auriga.com>,
  Marcelo Manzo <marcelomanzo@gmail.com>
-Subject: [PATCH v2 3/5] hw/misc/bcm2838_thermal: add BCM2838 thermal sensor
-Date: Thu, 15 Oct 2026 14:11:09 -0400
-Message-ID: <20261015181111.60491-4-marcelomanzo@gmail.com>
+Subject: [PATCH v2 5/5] tests/functional/aarch64: add raspi4b RNG200/thermal
+ test
+Date: Thu, 15 Oct 2026 14:11:11 -0400
+Message-ID: <20261015181111.60491-6-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261015181111.60491-1-marcelomanzo@gmail.com>
 References: <20261015181111.60491-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
- envelope-from=marcelomanzo@gmail.com; helo=mail-qv1-xf30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2f;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-qv1-xf2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,180 +106,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Sergey Kambalin <serg.oker@gmail.com>
+Extend test_arm_raspi4_initrd to exercise the RNG200 and thermal
+sensor devices added in this series: confirm the RNG200 driver probes
+it ("hwrng registered" in the kernel log), then once at a shell
+confirm the thermal zone reports the expected fixed reading and that
+/dev/hwrng actually yields data rather than just existing.
 
-Add a dummy BCM2838 (BCM2711/Raspberry Pi 4B) thermal sensor: a
-single status register that always reports a fixed 25C reading with
-both "valid" bits set. Real hardware reports live temperature; a
-fixed reading is enough for guests that just probe the sensor and
-read it, without modeling actual thermal behavior.
+These checks go into the existing initrd boot test rather than a new
+test, to avoid spending test time booting the same kernel again.
 
-Part of Sergey Kambalin's original Raspberry Pi 4B series (patchwork
-series 829638, posted to qemu-devel in 2024, never merged). Ported
-to current master by Marcelo Manzo: header paths moved under
-hw/core/, class_init()'s const void *data. No functional change
-otherwise (this device has no reset or migration state to begin
-with).
+Verified locally against this series with the exact kernel/initrd
+assets this file already pins.
 
-Boot-tested: guest's thermal_zone0/temp reports 25310 (25.31C),
-matching the fixed reading this device returns.
-
-Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/bcm2838_thermal.c         | 98 +++++++++++++++++++++++++++++++
- hw/misc/meson.build               |  1 +
- include/hw/misc/bcm2838_thermal.h | 23 ++++++++
- 3 files changed, 122 insertions(+)
- create mode 100644 hw/misc/bcm2838_thermal.c
- create mode 100644 include/hw/misc/bcm2838_thermal.h
+ tests/functional/aarch64/test_raspi4.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/hw/misc/bcm2838_thermal.c b/hw/misc/bcm2838_thermal.c
-new file mode 100644
-index 0000000000..40148ddbb9
---- /dev/null
-+++ b/hw/misc/bcm2838_thermal.c
-@@ -0,0 +1,98 @@
-+/*
-+ * BCM2838 dummy thermal sensor
-+ *
-+ * Copyright (C) 2022 Maksim Kopusov <maksim.kopusov@auriga.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "hw/misc/bcm2838_thermal.h"
-+#include "hw/core/registerfields.h"
-+#include "migration/vmstate.h"
-+#include "qemu/error-report.h"
-+
-+REG32(STAT, 0x200)
-+FIELD(STAT, DATA, 0, 10)
-+FIELD(STAT, VALID_1, 10, 1)
-+FIELD(STAT, VALID_2, 16, 1)
-+
-+#define BCM2838_THERMAL_SIZE 0xf00
-+
-+#define THERMAL_OFFSET_C 410040
-+#define THERMAL_COEFF  (-487.0f)
-+#define MILLIDEGREE_COEFF 1000
-+
-+static uint16_t bcm2838_thermal_temp2adc(int temp_C)
-+{
-+    return (temp_C * MILLIDEGREE_COEFF - THERMAL_OFFSET_C) / THERMAL_COEFF;
-+}
-+
-+static uint64_t bcm2838_thermal_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    uint32_t val = 0;
-+
-+    switch (addr) {
-+    case A_STAT:
-+        /* Temperature is always 25°C */
-+        val = FIELD_DP32(val, STAT, DATA, bcm2838_thermal_temp2adc(25));
-+        val = FIELD_DP32(val, STAT, VALID_1, 1);
-+        val = FIELD_DP32(val, STAT, VALID_2, 1);
-+
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s can't access addr: 0x%"HWADDR_PRIx,
-+                     TYPE_BCM2838_THERMAL, addr);
-+    }
-+    return val;
-+}
-+
-+static void bcm2838_thermal_write(void *opaque, hwaddr addr,
-+                                      uint64_t value, unsigned size)
-+{
-+    qemu_log_mask(LOG_GUEST_ERROR, "%s: write 0x%" PRIx64
-+                                " to 0x%" HWADDR_PRIx "\n",
-+                __func__, value, addr);
-+}
-+
-+static const MemoryRegionOps bcm2838_thermal_ops = {
-+    .read = bcm2838_thermal_read,
-+    .write = bcm2838_thermal_write,
-+    .impl.max_access_size = 4,
-+    .valid.min_access_size = 4,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+};
-+
-+static void bcm2838_thermal_realize(DeviceState *dev, Error **errp)
-+{
-+    Bcm2838ThermalState *s = BCM2838_THERMAL(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2838_thermal_ops,
-+                          s, TYPE_BCM2838_THERMAL, BCM2838_THERMAL_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-+}
-+
-+static void bcm2838_thermal_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = bcm2838_thermal_realize;
-+
-+    /* This device has no state: no need for vmstate or reset */
-+}
-+
-+static const TypeInfo bcm2838_thermal_info = {
-+    .name = TYPE_BCM2838_THERMAL,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(Bcm2838ThermalState),
-+    .class_init = bcm2838_thermal_class_init,
-+};
-+
-+static void bcm2838_thermal_register_types(void)
-+{
-+    type_register_static(&bcm2838_thermal_info);
-+}
-+
-+type_init(bcm2838_thermal_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 0d07fcbc20..078996b881 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -98,6 +98,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
-   'bcm2835_cprman.c',
-   'bcm2835_powermgt.c',
-   'bcm2838_rng200.c',
-+  'bcm2838_thermal.c',
- ))
- system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
-diff --git a/include/hw/misc/bcm2838_thermal.h b/include/hw/misc/bcm2838_thermal.h
-new file mode 100644
-index 0000000000..1ba524ed8b
---- /dev/null
-+++ b/include/hw/misc/bcm2838_thermal.h
-@@ -0,0 +1,23 @@
-+/*
-+ * BCM2838 dummy thermal sensor
-+ *
-+ * Copyright (C) 2022 Maksim Kopusov <maksim.kopusov@auriga.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef BCM2838_THERMAL_H
-+#define BCM2838_THERMAL_H
-+
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_BCM2838_THERMAL "bcm2838-thermal"
-+OBJECT_DECLARE_SIMPLE_TYPE(Bcm2838ThermalState, BCM2838_THERMAL)
-+
-+struct Bcm2838ThermalState {
-+    SysBusDevice busdev;
-+    MemoryRegion iomem;
-+};
-+
-+#endif /* BCM2838_THERMAL_H */
+diff --git a/tests/functional/aarch64/test_raspi4.py b/tests/functional/aarch64/test_raspi4.py
+index bacecbbe9c..c61014b5fa 100755
+--- a/tests/functional/aarch64/test_raspi4.py
++++ b/tests/functional/aarch64/test_raspi4.py
+@@ -80,6 +80,8 @@ def test_arm_raspi4_initrd(self):
+         #                '-device', 'qemu-xhci,bus=pcie.1,id=xhci',
+         #                '-device', 'usb-kbd,bus=xhci.0',
+         self.vm.launch()
++        self.wait_for_console_pattern(
++            'iproc-rng200 fe104000.rng: hwrng registered')
+         self.wait_for_console_pattern('Boot successful.')
+ 
+         exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
+@@ -103,6 +105,11 @@ def test_arm_raspi4_initrd(self):
+                            'memory node above the 1 GiB peripheral hole '
+                            'is probably not being added' % mem_total_kb)
+ 
++        exec_command_and_wait_for_pattern(
++            self, 'cat /sys/devices/virtual/thermal/thermal_zone0/temp',
++            '25310')
++        exec_command_and_wait_for_pattern(self, 'head -c 8 /dev/hwrng | xxd',
++                                                '00000000:')
+         exec_command_and_wait_for_pattern(self, 'halt', 'reboot: System halted')
+         # TODO: Raspberry Pi4 doesn't shut down properly with recent kernels
+         # Wait for VM to shut down gracefully
 -- 
 2.55.0
 

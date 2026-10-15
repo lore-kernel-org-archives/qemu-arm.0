@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B77CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81877CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:12:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN6V-0005nA-Ld; Thu, 15 Oct 2026 11:10:47 -0400
+	id 1xHN6c-0005oX-4q; Thu, 15 Oct 2026 11:10:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN6T-0005md-Lg
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:45 -0400
-Received: from mail-wm1-f52.google.com ([209.85.128.52])
+ id 1xHN6a-0005o7-1M
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:52 -0400
+Received: from mail-wm1-f54.google.com ([209.85.128.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN6R-0001gO-SE
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:45 -0400
-Received: by mail-wm1-f52.google.com with SMTP id
- 5b1f17b1804b1-4a1880e1bf1so20493705e9.1
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:10:43 -0700 (PDT)
+ id 1xHN6Y-0001h6-9W
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:51 -0400
+Received: by mail-wm1-f54.google.com with SMTP id
+ 5b1f17b1804b1-4a0213948d3so33735225e9.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:10:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792077042; x=1792681842;
+ d=1e100.net; s=20260707; t=1792077049; x=1792681849;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=AXWD4+zwD5+znWTjB90+sqSvptsRhK2GKfreGaEa0pg=;
- b=2Rs5Iix/pUgb+gx++6k3Njh8DGqMX9R0MKA+0cWhJ6aX5uAwjabpaPzzn/hqDL3OWK
- KwlaGTqm9NwiVrBRlx4+IkdtM9vpsM7R4HwjWL23krR4jFzC1YObWonXOhGvjtkIyDmR
- r6lA06gUO/jjASpspThKCU0ZHbEKWvY0tp+Pd9ouxAa8TEP+RM37kEBrSzB32SYqCZ++
- OrMX8EL0tcHuhb8rnRqOlVMebJK9ZCDExW10cQoQvISFd+EpJ4gsGfaM3i/UpWo11+hk
- HYrcV2XEKGZ96A1OEKDe1xkCwwtIzSrQhPu4A/uLxVK22IlO8GpfgikD//nABrQqGtCA
- C8tQ==
+ bh=Hmi3ycbafsBZqQdN90IKJvQBv3NLUgGj3AYEGDMYcqU=;
+ b=eikKHoLbE4aNqBmgyYFZ1DWjmwrKy+kbbE3piQPcTViEuZmg4VwBC7oh5I8pTBS9YH
+ PASwTYVbyNre3lljxC4IkaK0tan9IRa4v8Dmx4aeV8QIji+jOAoBc6f5qRt75yJmqgL6
+ EJ3/UHJq0OIhhhBhAmTarx4lo794uf76fYWt3AKFIIw4q29Qbf7/0JTEd++RRvqKBDny
+ 02TPIZUTc428n7GDNWd0WMvbGAvjrIKD23jUOssnpvAEFKqIUE1qBvaNDKqNX6XSy/V8
+ 2Mb9UozM4i6bJg83Knjr0yE5SI1k16Pc7p7YJSjK0u5Qi9+DcAsuEpj3FzkSzkGBxFqt
+ wI/w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzsIZcTCENLaK2lHoyJB2Ip+kYfp94JpC4fvshOBy1sWN3vutbd0HryrusxGE4xzEcB7TAiFf6ndw==@nongnu.org
-X-Gm-Message-State: AFq9FYJy6UqPvaywHD7DUNx2l8itRbq8yRhUAs2A317wA7vmnIko9O15
- WLoG+AJKEQZBvmUoNEngQ9YBtqKqyR5CV5g0b5a2ZoSdOEzO3x7A+6FKaJtr2A==
-X-Gm-Gg: AYBFou2cLAz69NvMqfd7uNP20W2ZkgnI4Fng4VT2SQAN/7HrGVSVWOnGPls6i7E9poD
- HDZoRRAQNcwQDgPHJhGGLLjm3Z7p0SocO5bL0at0c47D8Wr6EtZWBBFp4rto6y8P+VVPSiBkvhZ
- gPGXQA/NL+ZmqUzE1uKwNYCescOxm2KyQUEiL600Qla2pGSeykDx30g8Lga876QN/ER0+0MnVGT
- p99LrTqz0hRsrnsMfYHH1u4Y7TFIKtLk2ClrxPonw/uhPoT7zXie37/yonXZJda/kFSd9aovP9F
- 8j4Ec55EpINXpgFHKEPLRMukr2ugux9b91iwT4Ylsl7XHAEqF2COh4jbxPUjTDVkp9+gRwr8u/L
- d7p4O9Gn+yAx0q2nYLfcWMfm2y+LFiH1NmFABU1bH8SlKjB5pmTLKTquxSbbaG3WcatZT6F1Jq4
- 0XQFtv8wEprZuxW1YESdpSdIRahxJ6/FYY7yAclr8DIImkqsSF+aLKUSNH5+Za41j0siF7oaJMn
- +5xOQ6bUSuJWdHrmPDSSUljT5nS4Pp//82vuKYCwCCLRQ==
-X-Received: by 2002:a05:600c:e549:20b0:4a1:9438:719e with SMTP id
- 5b1f17b1804b1-4a1943872ecmr225766815e9.9.1792077041969; 
- Thu, 15 Oct 2026 08:10:41 -0700 (PDT)
+ AKwUvByzB3Nk0o2KjhYEgkKKRUtO4QY/p18yRjTZCcHexCxn+2oGjpnxaJcfIxEqQ2BBQlL3gqZDNQkWYQ==@nongnu.org
+X-Gm-Message-State: AFq9FYK4Fc8hMel8xsJYWTEOtTnV/TF71QQVXDUQ3CAcQawi+Jxrd3K/
+ yn3RowzuCt6o8RgX7JLlh8ISftD/r/5qBjtnFbIW+bquk5NIts+yOLNv
+X-Gm-Gg: AYBFou16fg+blIRp3PssCX7vo001POEDtbP5Dlqehdg86US13ZOz9IRn3GJ2ZNWI/Gr
+ 15i1hIAGTCZ0Cx3c0CTwjXQd3Zvw2F3At5EDaSpknjv2HNGY4joZr2Rcs7o5Q169KOQCU+nft+q
+ +q49zw9PTYfWZgijp5Vwd4MHgYWgnT4SXtdWp1gxBKXx0xv05uD7bPWFbm84mOjGiC9lMmiAgVt
+ f2pYlEk/BrqIF3ainOc2o7WK+M7ZZw8HrQpVbmiyowbizqkUmvTr8dtZdfGuCgO8aeCU4GOPHot
+ tqAFfJeKbJdWkbYDul8PtT/nq8j35LxCO3JWJuXrWo9s0WEWjAr1iVd3OQXTmDngXKBAhCMpHvg
+ Ju3IuBMio9DK+1XCHS1EXCHKOO6n9zgjwnwXigFn7QkmGVvNzM2kyMwxMyNNBARJKc8gtS/xT1X
+ HuUunnd4WakAnQJgwCLzk9yV11LAki7hIcB7bp1gN749XJqAEddAi3SVc6vyDzRTh2gqIPIY/MP
+ Tkk8jPNuS4IV6aaxXY90zJFgTlddorQIB3FvHxW0P9Z6A==
+X-Received: by 2002:a05:600c:c113:b0:4a1:985b:83a9 with SMTP id
+ 5b1f17b1804b1-4a1985b87f5mr232108635e9.4.1792077048648; 
+ Thu, 15 Oct 2026 08:10:48 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bdbb4a30sm74559955e9.15.2026.10.15.08.10.31
+ 5b1f17b1804b1-4a1bf63567esm111132515e9.10.2026.10.15.08.10.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:10:35 -0700 (PDT)
-Date: Thu, 15 Oct 2026 13:57:44 +0200
-Subject: [PATCH 06/22] hw/sensor: tmp421: implement register write masks,
- one-shot and N-factor
+ Thu, 15 Oct 2026 08:10:47 -0700 (PDT)
+Date: Thu, 15 Oct 2026 13:57:45 +0200
+Subject: [PATCH 07/22] hw/sensor: tmp421: describe the temperature properties
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-clemente-v1-6-bf591886b5b6@free.fr>
+Message-Id: <20261015-bmc-clemente-v1-7-bf591886b5b6@free.fr>
 References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +76,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=5041;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=747;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=cin5ptKk8HcvGgeoKuQLp36sHnFJYgrk5/pmB0x+vAw=;
- b=QVwfojw1gxHqFWDhmpboOeQ8XeQotUnSJWdU1soj9tRyGgP8yR88CckaOWS9vd63aY3K2anfT
- 9/LII9Zitq+AP137nHCV0UN+LUGkrRX7vG1Q5rFOUkVUw5CGOO6+l46
+ bh=M1t+L7+uRqimR0C44vmJeOL7CEkGaHASB3lV1y0GENQ=;
+ b=01ccWiDvVWr21jIf4Btm8NLVrKNY0zHN++JvPc+v0bFKRm5zQpB8LqkVvLQVolw6xbMJKHzUP
+ bS75t4ZzwVCBPHqm/kA6be+hlCswf+uZfbBwRrDnTdZwkAbpD4qSxuz
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.52; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f52.google.com
+Received-SPF: pass client-ip=209.85.128.54; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f54.google.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
@@ -111,146 +110,27 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Mask out reserved and absent-channel bits on writes to the two
-configuration registers and the conversion rate, accept the one-shot
-trigger, and back the per-remote-channel N-factor correction registers
-with real storage. The N-factor state migrates through an optional
-subsection.
+Attach a description to each temperature property so it shows up in
+qom-list-properties.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/sensor/tmp421.c | 65 +++++++++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 60 insertions(+), 5 deletions(-)
+ hw/sensor/tmp421.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-index 8bacd7d05e..9e1249afb8 100644
+index 9e1249afb8..ec3a9a9760 100644
 --- a/hw/sensor/tmp421.c
 +++ b/hw/sensor/tmp421.c
-@@ -22,6 +22,16 @@
-  *
-  * You should have received a copy of the GNU General Public License along
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ *
-+ * Limitations:
-+ * - Conversions are instantaneous. The conversion-rate register and the
-+ *   shutdown bit are stored but do not decide when a measurement appears,
-+ *   and a one-shot write is accepted without scheduling anything: a read
-+ *   always returns a fresh value.
-+ * - The N-factor correction registers are stored and never applied. The model
-+ *   has no ideality factor to correct for.
-+ * - The sensor-fault OPEN bit and the PVLD bit of the temperature low byte are
-+ *   never set, so neither an open circuit nor a low supply is reported.
-  */
- 
- #include "qemu/osdep.h"
-@@ -44,6 +54,7 @@ struct TMP421State {
-     /*< public >*/
- 
-     int16_t temperature[4];
-+    uint8_t n_correct[3];   /* remote channels only */
- 
-     uint8_t status;
-     uint8_t config[2];
-@@ -85,6 +96,8 @@ OBJECT_DECLARE_TYPE(TMP421State, TMP421Class, TMP421)
- #define TMP421_CONVERSION_RATE_REG      0x0B
- #define TMP421_ONE_SHOT                 0x0F
- 
-+#define TMP421_N_CORRECT                0x21
-+
- #define TMP421_RESET                    0xFC
- #define TMP421_MANUFACTURER_ID_REG      0xFE
- #define TMP421_DEVICE_ID_REG            0xFF
-@@ -203,6 +216,11 @@ static void tmp421_read(TMP421State *s)
-         s->buf[s->len++] = tmp421_temp_low(s, s->pointer - TMP421_TEMP_LSB0);
-         return;
+@@ -393,6 +393,8 @@ static void tmp421_initfn(Object *obj)
+         object_property_add(obj, name, "int",
+                             tmp421_get_temperature,
+                             tmp421_set_temperature, NULL, NULL);
++        object_property_set_description(obj, name,
++                            "Temperature, in millidegrees Celsius");
      }
-+    if (s->pointer >= TMP421_N_CORRECT && s->pointer < TMP421_N_CORRECT + 3) {
-+        unsigned idx = s->pointer - TMP421_N_CORRECT;
-+        s->buf[s->len++] = idx + 1 < sc->nchannels ? s->n_correct[idx] : 0;
-+        return;
-+    }
- 
-     switch (s->pointer) {
-     case TMP421_MANUFACTURER_ID_REG:
-@@ -233,15 +251,29 @@ static void tmp421_reset(TMP421State *s);
- 
- static void tmp421_write(TMP421State *s)
- {
-+    TMP421Class *sc = TMP421_GET_CLASS(s);
-+
-+    if (s->pointer >= TMP421_N_CORRECT && s->pointer < TMP421_N_CORRECT + 3) {
-+        unsigned idx = s->pointer - TMP421_N_CORRECT;
-+        if (idx + 1 < sc->nchannels) {
-+            s->n_correct[idx] = s->buf[0];
-+        }
-+        return;
-+    }
-+
-     switch (s->pointer) {
--    case TMP421_CONVERSION_RATE_REG:
--        s->rate = s->buf[0];
--        break;
-     case TMP421_CONFIG_REG_1:
--        s->config[0] = s->buf[0];
-+        s->config[0] = s->buf[0] &
-+                       (TMP421_CONFIG_RANGE | TMP421_CONFIG_SHUTDOWN);
-         break;
-     case TMP421_CONFIG_REG_2:
--        s->config[1] = s->buf[0];
-+        s->config[1] = s->buf[0] & sc->config2_reset;
-+        break;
-+    case TMP421_CONVERSION_RATE_REG:
-+        s->rate = s->buf[0] & 0x07;
-+        break;
-+    case TMP421_ONE_SHOT:
-+        /* starts a conversion in shutdown; conversions are immediate here */
-         break;
-     case TMP421_RESET:
-         tmp421_reset(s);
-@@ -291,6 +323,24 @@ static int tmp421_event(I2CSlave *i2c, enum i2c_event event)
-     return 0;
  }
  
-+static bool tmp421_n_correct_needed(void *opaque)
-+{
-+    TMP421State *s = opaque;
-+
-+    return s->n_correct[0] || s->n_correct[1] || s->n_correct[2];
-+}
-+
-+static const VMStateDescription vmstate_tmp421_n_correct = {
-+    .name = "TMP421/n-correct",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = tmp421_n_correct_needed,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT8_ARRAY(n_correct, TMP421State, 3),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_tmp421 = {
-     .name = "TMP421",
-     .version_id = 0,
-@@ -305,6 +355,10 @@ static const VMStateDescription vmstate_tmp421 = {
-         VMSTATE_INT16_ARRAY(temperature, TMP421State, 4),
-         VMSTATE_I2C_SLAVE(parent_obj, TMP421State),
-         VMSTATE_END_OF_LIST()
-+    },
-+    .subsections = (const VMStateDescription * const []) {
-+        &vmstate_tmp421_n_correct,
-+        NULL
-     }
- };
- 
-@@ -316,6 +370,7 @@ static void tmp421_reset(TMP421State *s)
-      * The measured temperatures are not cleared: they model the physical
-      * input the ADC re-samples after reset, and boards may preset them.
-      */
-+    memset(s->n_correct, 0, sizeof(s->n_correct));
-     s->pointer = 0;
-     s->config[0] = 0;
-     s->config[1] = sc->config2_reset;
 
 -- 
 2.53.0-Meta

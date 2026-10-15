@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77AD6CC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B68E0CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:24:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHKUC-0007px-55; Thu, 15 Oct 2026 08:23:04 -0400
+	id 1xHKU6-0007PC-Df; Thu, 15 Oct 2026 08:22:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTo-0006VC-Na
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:43 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKU1-0006vU-E3
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:54 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTn-0005gi-5Y
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTz-0005if-NC
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792066958;
+ s=mimecast20190719; t=1792066971;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=x780Qwu4DyDPA0XrLdqR/NLP5zJS+gjx8v9Bh1RsCZs=;
- b=IELYWljOkv8S8TiVEUuXxpIXZ45IppBB9/Vuc25ZIl7VTwJobEZ8bzF0Dve0hEVsojAY3R
- xQWwtLeBv79vCmQPa9u8buo/zzCog46D5Dt7loJTrz+Mmanys2x4hyk8XUS/kgW4QwYKhd
- irc/f+rY7F2beg3uhQx97aixoh+kLio=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=yUNerIV+Tay3eIz8ic0hFzW0xK9rX+Akwem+nb3nvEs=;
+ b=XXfws4d+s6YPsT2UT/pZOqoa4zrlu5QCMwF6jYJTHRufMVNHe2DSDAfbK1KgKmLGLCECKi
+ /TZ0IABmwbTF0A7IyITTeRTeMv/7OrhZs5uZRV0CicGomgXA7DmD3aDKVohC/c48lJ3Vij
+ TJ/89nQTXMYvge42SjXIX6Eh0OnxXC4=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-458-NqLboqnnNT2qsTPR9uQxFA-1; Thu,
- 15 Oct 2026 12:22:35 +0000
-X-MC-Unique: NqLboqnnNT2qsTPR9uQxFA-1
-X-Mimecast-MFC-AGG-ID: NqLboqnnNT2qsTPR9uQxFA_1792066954
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-110-KHgo0vEQPv6TIS3bUOB-vw-1; Thu,
+ 15 Oct 2026 12:22:37 +0000
+X-MC-Unique: KHgo0vEQPv6TIS3bUOB-vw-1
+X-Mimecast-MFC-AGG-ID: KHgo0vEQPv6TIS3bUOB-vw_1792066956
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 225671955E7B; Thu, 15 Oct 2026 12:22:34 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5F0701956063; Thu, 15 Oct 2026 12:22:36 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.67])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 718257D5; Thu, 15 Oct 2026 12:22:32 +0000 (UTC)
+ id 8DD057D9; Thu, 15 Oct 2026 12:22:34 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PULL 19/21] hw/arm/aspeed_ast1700: Remove unused unimplemented
- device field
-Date: Thu, 15 Oct 2026 14:21:49 +0200
-Message-ID: <20261015122151.889017-20-clg@redhat.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 20/21] hw/arm/aspeed: Remove unused
+ aspeed_mmio_map_unimplemented()
+Date: Thu, 15 Oct 2026 14:21:50 +0200
+Message-ID: <20261015122151.889017-21-clg@redhat.com>
 In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
 References: <20261015122151.889017-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: YpsvXasmr5FQQwDr42W-clbYWPHjUAAcqlRvRJ51_OY_1792066954
+X-Mimecast-MFC-PROC-ID: OOzvmUKCId809WxigZg7R61cuVXMQhAcOs33IMqSqpM_1792066956
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -90,34 +90,58 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-AST1700 now uses create_unimplemented_devices() for its unimplemented
-devices. Remove the old "i3c" field in AspeedAST1700SoCState, which is
-not used anymore.
+All Aspeed SoCs now use create_unimplemented_devices() to create and
+map their unimplemented devices. Remove aspeed_mmio_map_unimplemented(),
+which is not used anymore.
 
 No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Link: https://lore.kernel.org/qemu-devel/20261012064445.2571633-12-jamin_lin@aspeedtech.com
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20261012064445.2571633-13-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_ast1700.h | 2 --
- 1 file changed, 2 deletions(-)
+ include/hw/arm/aspeed_soc.h |  3 ---
+ hw/arm/aspeed_soc_common.c  | 11 -----------
+ 2 files changed, 14 deletions(-)
 
-diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-index 39c5977cf109..d30483c88a69 100644
---- a/include/hw/arm/aspeed_ast1700.h
-+++ b/include/hw/arm/aspeed_ast1700.h
-@@ -47,8 +47,6 @@ struct AspeedAST1700SoCState {
-     AspeedI2CState i2c;
-     AspeedPWMState pwm;
-     AspeedWDTState wdt[AST1700_WDT_NUM];
--
--    UnimplementedDeviceState i3c;
- };
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index b47ac5aa05b5..338496a4210a 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -307,9 +307,6 @@ void aspeed_soc_uart_set_chr(SerialMM *uart, int dev, int uarts_base,
+ bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+ void aspeed_mmio_map(MemoryRegion *memory, SysBusDevice *dev, int n,
+                      hwaddr addr);
+-void aspeed_mmio_map_unimplemented(MemoryRegion *memory, SysBusDevice *dev,
+-                                   const char *name, hwaddr addr,
+-                                   uint64_t size);
+ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+                                unsigned int count, int unit0);
+ void aspeed_write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
+diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
+index fd08793575ab..54a128c96591 100644
+--- a/hw/arm/aspeed_soc_common.c
++++ b/hw/arm/aspeed_soc_common.c
+@@ -104,17 +104,6 @@ void aspeed_mmio_map(MemoryRegion *memory, SysBusDevice *dev, int n,
+     memory_region_add_subregion(memory, addr, sysbus_mmio_get_region(dev, n));
+ }
  
- #endif /* ASPEED_AST1700_H */
+-void aspeed_mmio_map_unimplemented(MemoryRegion *memory, SysBusDevice *dev,
+-                                   const char *name, hwaddr addr, uint64_t size)
+-{
+-    qdev_prop_set_string(DEVICE(dev), "name", name);
+-    qdev_prop_set_uint64(DEVICE(dev), "size", size);
+-    sysbus_realize(dev, &error_abort);
+-
+-    memory_region_add_subregion_overlap(memory, addr,
+-                                        sysbus_mmio_get_region(dev, 0), -1000);
+-}
+-
+ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+                                unsigned int count, int unit0)
+ {
 -- 
 2.56.0
 

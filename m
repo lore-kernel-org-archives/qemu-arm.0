@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAE3ECC6B3E
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6559FCC6B3D
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 10:36:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHIlP-0003gE-QI; Thu, 15 Oct 2026 06:32:44 -0400
+	id 1xHIlZ-0004l3-GE; Thu, 15 Oct 2026 06:32:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIh9-0007X4-AP
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:28:21 -0400
-Received: from mail-wr1-f54.google.com ([209.85.221.54])
+ id 1xHIiH-0008KW-Sq
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:29:31 -0400
+Received: from mail-wr1-f41.google.com ([209.85.221.41])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHIh6-0004IT-2L
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:28:18 -0400
-Received: by mail-wr1-f54.google.com with SMTP id
- ffacd0b85a97d-48c14a06c95so4168108f8f.1
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:28:14 -0700 (PDT)
+ id 1xHIiD-0004a9-9G
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 06:29:28 -0400
+Received: by mail-wr1-f41.google.com with SMTP id
+ ffacd0b85a97d-48af27fe287so213220f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 03:29:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792060094; x=1792664894;
+ d=1e100.net; s=20260707; t=1792060164; x=1792664964;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=AHne2JcHx+O7G4KfyAccP7ggw7u1GmKaKZ5l2ViY6Cs=;
- b=RN3YgE5MnFKMIc5tmCJobIsEpWrhLYTr/X4gXG7RQBSD2hTkwWx7Qjv8x3AIDTYNBz
- MQvk/Tmk0chXadsk++CNA0ZRoxA011/so4KQTjBmNRT1h7lZ9hLr61tgb6KsI/ha1H5s
- o2GdnD2+8dHSIM0N1+NB/C0d9MHnLJUZ0c/KGK/1O0b7sgkW6OOjbtjCRK5iCFMrhiXE
- JNO/r3gFnWCx8yk6gWfmCKgERImX0MUMi0giVT4QVBsvbBk6pgkVLXdmTsGXUu1+JXkc
- U4XMJv3C6cbBn4eDpRO5nCS1NUEvelc8nV3xVPv1P6YH3DBV5VYCIkiUFzcZUoaQOkUU
- YzwQ==
+ bh=c6Lwpzu4bQyFqEheBTwdIlkXZjUIiiE3va3aldXb5fM=;
+ b=hTuBcQR4vh+6GvJ42KJvJK9e0+X35zQ9qQKAQCttFf7B+H0kKPU/GH4m37+v8XGeLO
+ 0fzk/bVpv2S+21k9NAt177r2szUe6zWCdpI1l0AdVrjsKin7WuA3Q6/eYAxYAPKmK613
+ sgwNzB/n5A/NSKH9bcbdJwuHrrSYYlWHpkGKc9Qxxh18jsr36syI6X0jruQY2gmQLFZ+
+ R2SQmDPzLBhyGonmyeYiKuo59ASMZdltUUSuULvsqJOIefnqzJ8rGosOasGOvXpdoHo8
+ eW0RCIbViG8x+jhu2gUHJarm6634FS28TTsDW1iErbcdtHOBl4e0b+3qFbX0IlIQ0Czm
+ P57Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvByP3sXc9LHmlAPJe+s++dRMTchZjXe1Wltaatc5t8ufdUHTYPomiDfJNvQhe7s3xOW51HbqBzL0XQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIUhHqD6gaxqgJ1U19khCrhSr2s7cvDO/Mmrn6olwRLZmE7huaY
- cPPM3ruD7+p1zvYK41kh4d763Hisd4vUYXKN3K1qRAX3ovicszgxoknG
-X-Gm-Gg: AYBFou0xvCCMbLIcJxf0gTygN4SDU0moM2hlWuTNLlRmR8DolipY+iH7vI2orFg2J9g
- 6EzNTZHAHE8RetIYnonMDBP/TrmfB43Y9f2qAFTHsx6aLTcEyhRx8dbFXqqHHpfd+PyF16SJFuG
- IuNkDY2yX93l1siMf8iL89dvEb/RaNZtOULgWuLmpwuc/qi6OEnOVnZN8CYZ5DhOvnbkw/ihxQl
- Oqwtdr9I6w8uMqC7FQpoT+9PucImz7B0ZMg2eJBlrei+M0hAR4tw23WwFUfuFJNA0DUUwWDJ3vp
- zhixyjWzR3PViu7ddPntB3r8orVW2Ds+M9OPPskuCjUv7ismPrppWa5Fyfv8xRD5In6hKgIlZzy
- 0+Z0tCDhNBBYeKeIA3V1GoYWX+gEnBUQi/3SzcHPD7AWi/18O2QC2EyY8U9opc8tFeOEHL/o7WF
- Ap55Jk7tAgkgKiESeBJ69Dcvg+iEYmQv4zflYbcB3gCg70yZXT70SuClMfj+4NY/jUvge/5uZOH
- UjGz7OaOB1EmXrRaz/8Ha+WD48tsc2M8fNmi09BdaQ1MFPCrQg3rPLz
-X-Received: by 2002:a05:600c:c16f:b0:49f:ed8c:6cad with SMTP id
- 5b1f17b1804b1-4a18e4ca869mr344997495e9.19.1792060093579; 
- Thu, 15 Oct 2026 03:28:13 -0700 (PDT)
+ AKwUvBzndVkVK3vQd4/BBqqDpAXcpjG+xLVcruLgdhLSpxvmznqh1IbY96RKMJhvuN7MvvJpDdCAQ58Jvg==@nongnu.org
+X-Gm-Message-State: AFq9FYLlmXNZiAzsRHqpJHqFU6RSTxDnkraOZcEZ9CPUfxksBRvAinql
+ PwjG/iAOlv5ue0dEEKlxYk+a2HqmM4aPQr+V1R3MfB3nVrJ+cuCW/Wuh
+X-Gm-Gg: AYBFou02RramH0Kr9j+X9uN68jZHL1A/5a/CR2DCvoTwiENQ4P2Yqq1XbScS5x1YS+I
+ HlrZczS46h8WJZTpwIcjgFc2WqslWupo/5Yz2LeCfsoGqvWJiLFce1CEd41dZSa+Fz1p4T6b9kb
+ liicL//ZwC7tSTJY0pDUa4E/+JPnnX+5g2BqqcO1Ocsz67e6BVZN9La9MCWHqHtHPuBvOwa7mjf
+ JPoiV5obD9C88lMvQNUgsBx7esmbM9k5XFM3NA/6H82ZVHDveYwxHytaA98DUKDljuRHQBTqePf
+ lG7zdn7Y3fC/LdsDX5QQ5b5d96KEFkuuFNN6KTjGh7ByE1ZGgDTECTiQAn2in9z4dSmESj/e6Yi
+ dS1U2RCBfkjN4OzQXbJVOSGdi+mGL+9OT8dQLYJciNYvpIL1WoTHJXL5FyObQ0e67NSBQx3vjBl
+ JUPQ1QNBgKVroLqvM9rFhWYIePWRlUOerDgIKYusePhcdEafV4t/j6LzcEVxkPUc0SqhJtvHZ5s
+ /W3HhW1FhLkmGxBA6FIRFI2WXCYWkknGLqse3E44CQfnQ==
+X-Received: by 2002:a05:600c:1909:b0:4a1:722a:d2a3 with SMTP id
+ 5b1f17b1804b1-4a18e4a3f5amr413285845e9.23.1792060163587; 
+ Thu, 15 Oct 2026 03:29:23 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd99febesm69235935e9.15.2026.10.15.03.28.12
+ 5b1f17b1804b1-4a1bd97ed6asm60537935e9.6.2026.10.15.03.29.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 03:28:12 -0700 (PDT)
-Date: Thu, 15 Oct 2026 11:28:23 +0200
-Subject: [PATCH v3 36/50] tests/qtest: ina230: cover the injection-property
- limits
+ Thu, 15 Oct 2026 03:29:23 -0700 (PDT)
+Date: Thu, 15 Oct 2026 11:28:33 +0200
+Subject: [PATCH v3 46/50] tests/qtest: ina238: cover conversion-ready and
+ alert-latch semantics
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-minerva-v3-36-7d50c8a108e5@free.fr>
+Message-Id: <20261015-bmc-minerva-v3-46-7d50c8a108e5@free.fr>
 References: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 In-Reply-To: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +78,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056476; l=4069;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792056477; l=6851;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=3UD9l/AEvavR8S7pGFg9evzwIlCmssJcXuU0S21eH1k=;
- b=NPCmA6pKJA3ME7i3oNsU8qqFMPaRLvHWa7ZqKDoxfOQwLNfQaqvv+Ht/FfeW0rK5FBZOGA/2q
- NBrG+DNvL6tDk7MwtYBnH5q7wBP7MM5EJ84xm8qAYVH98drTwQkDVtk
+ bh=RdMmfGACFu+w8i2ytQE/+wzOyY16K5WkLJ6oJOceA5s=;
+ b=ve2uV7WG0dY71mw/JESMZcvZHEfWsfc6Do7QWfX3cZuOjB3b31ZI/QO5FlSbW7XYCMFsaEA8k
+ MEI7OoqMYQ5AXdZLNeMHkhqZ2QHHe7Hq10BhRBervDSBis/BlyIuAsK
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.54; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f54.google.com
+Received-SPF: pass client-ip=209.85.221.41; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f41.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,107 +112,169 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Verify that the extremes of the shunt- and bus-voltage injection ranges
-round-trip through the QOM property without truncation or wraparound,
-and that values just outside are rejected rather than silently wrapped.
+Add coverage for the DIAG_ALRT flag-clearing rules: which of a read and
+a write clears CNVRF and the limit flags in each alert mode, and that a
+conversion only re-evaluates the flags of the channels it converted.
 
 Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ina230-test.c | 59 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 59 insertions(+)
+ tests/qtest/ina238-test.c | 127 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 127 insertions(+)
 
-diff --git a/tests/qtest/ina230-test.c b/tests/qtest/ina230-test.c
-index 1c55028fcb..36c899efee 100644
---- a/tests/qtest/ina230-test.c
-+++ b/tests/qtest/ina230-test.c
-@@ -47,6 +47,11 @@
- #define SHUNT_LSB_NV        2500
- #define BUS_LSB_UV          1250
- 
-+/* Injection-property limits (see ina230.c) */
-+#define SHUNT_MIN_NV        (-81920000)
-+#define SHUNT_MAX_NV        81917500
-+#define BUS_MAX_UV          36000000
-+
- #define DIE_ID_VAL          0x2310
- 
- /* QMP helpers for injecting the physical inputs */
-@@ -76,6 +81,18 @@ static int qmp_ina230_get(const char *property)
-     return ret;
+diff --git a/tests/qtest/ina238-test.c b/tests/qtest/ina238-test.c
+index fb7bcc265c..e7dd50a822 100644
+--- a/tests/qtest/ina238-test.c
++++ b/tests/qtest/ina238-test.c
+@@ -494,6 +494,106 @@ static void test_alert_latch(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==, 0);
  }
  
-+/* A qom-set expected to be rejected (value outside the supported range) */
-+static void qmp_ina230_set_fail(const char *property, int64_t value)
-+{
-+    QDict *resp;
-+
-+    resp = qmp("{ 'execute': 'qom-set', 'arguments':"
-+               " { 'path': %s, 'property': %s, 'value': %lld } }",
-+               INA230_TEST_ID, property, (long long)value);
-+    g_assert(qdict_haskey(resp, "error"));
-+    qobject_unref(resp);
-+}
-+
- /* Power-on-reset default values and the Die ID */
- static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
- {
-@@ -307,6 +324,46 @@ static void test_cvrf(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE) & ME_CVRF, ==, 0);
- }
- 
-+/* Shunt-voltage injection limits */
-+static void test_shunt_limits(void *obj, void *data, QGuestAllocator *alloc)
++/* In latch mode a read releases the flag even while the fault persists. */
++static void test_alert_latch_persist(void *obj, void *data,
++                                     QGuestAllocator *alloc)
 +{
 +    QI2CDevice *dev = (QI2CDevice *)obj;
 +
 +    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++    i2c_set16(dev, REG_SOVL, 0x1000);
++    i2c_set16(dev, REG_DIAG_ALRT, DIAG_ALATCH);
 +
-+    qmp_ina230_set("shunt-voltage", SHUNT_MAX_NV);
-+    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x7FFF);
-+    g_assert_cmpint(qmp_ina230_get("shunt-voltage"), ==, SHUNT_MAX_NV);
++    qmp_ina238_set("shunt-voltage", 97200000);
 +
-+    qmp_ina230_set("shunt-voltage", SHUNT_MIN_NV);
-+    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x8000);
-+    g_assert_cmpint(qmp_ina230_get("shunt-voltage"), ==, SHUNT_MIN_NV);
++    /* First read shows the latched flag and clears it */
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==,
++                    DIAG_SHNTOL);
 +
-+    qmp_ina230_set_fail("shunt-voltage", (int64_t)SHUNT_MAX_NV + 1);
-+    qmp_ina230_set_fail("shunt-voltage", (int64_t)SHUNT_MIN_NV - 1);
-+    g_assert_cmpint(qmp_ina230_get("shunt-voltage"), ==, SHUNT_MIN_NV);
-+    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x8000);
++    /* Fault still present but no new conversion: the flag stays cleared */
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==, 0);
++
++    qmp_ina238_set("shunt-voltage", 97200000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==,
++                    DIAG_SHNTOL);
 +}
 +
-+/* Bus-voltage injection limits. */
-+static void test_bus_limits(void *obj, void *data, QGuestAllocator *alloc)
++/*
++ * In transparent mode a limit flag follows the live condition: a read leaves
++ * it set while the fault persists.
++ */
++static void test_alert_transparent_persist(void *obj, void *data,
++                                           QGuestAllocator *alloc)
 +{
 +    QI2CDevice *dev = (QI2CDevice *)obj;
 +
 +    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++    i2c_set16(dev, REG_SOVL, 0x1000);
 +
-+    qmp_ina230_set("bus-voltage", 0);
-+    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x0000);
++    qmp_ina238_set("shunt-voltage", 97200000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==,
++                    DIAG_SHNTOL);
 +
-+    qmp_ina230_set("bus-voltage", BUS_MAX_UV);
-+    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x7080);
-+    g_assert_cmpint(qmp_ina230_get("bus-voltage"), ==, BUS_MAX_UV);
++    /* Repeated reads do not clear the flag while the fault is still present. */
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==,
++                    DIAG_SHNTOL);
 +
-+    qmp_ina230_set_fail("bus-voltage", (int64_t)BUS_MAX_UV + 1);
-+    qmp_ina230_set_fail("bus-voltage", -1);
-+    g_assert_cmpint(qmp_ina230_get("bus-voltage"), ==, BUS_MAX_UV);
++    /* A conversion with the fault gone clears it. */
++    qmp_ina238_set("shunt-voltage", 5000000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==, 0);
 +}
 +
- static void ina230_register_nodes(void)
++/* A DIAG_ALRT write releases a latched limit flag as a read does. */
++static void test_alert_latch_write_clears(void *obj, void *data,
++                                          QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++    i2c_set16(dev, REG_SOVL, 0x1000);
++    i2c_set16(dev, REG_DIAG_ALRT, DIAG_ALATCH);
++
++    qmp_ina238_set("shunt-voltage", 97200000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==,
++                    DIAG_SHNTOL);
++
++    /* The read above cleared it; re-latch it with another conversion. */
++    qmp_ina238_set("shunt-voltage", 97200000);
++
++    /* A write (keeping latch mode) clears the flag while the fault persists. */
++    i2c_set16(dev, REG_DIAG_ALRT, DIAG_ALATCH);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==, 0);
++
++    /* The next conversion re-asserts the still-present fault. */
++    qmp_ina238_set("shunt-voltage", 97200000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==,
++                    DIAG_SHNTOL);
++}
++
++/*
++ * A conversion only re-evaluates the flags of the channels it converted: the
++ * shunt register a bus-only conversion left stale must not resurrect one.
++ */
++static void test_alert_channel(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++    i2c_set16(dev, REG_SOVL, 0x1000);
++    i2c_set16(dev, REG_DIAG_ALRT, DIAG_ALATCH);
++
++    qmp_ina238_set("shunt-voltage", 97200000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==,
++                    DIAG_SHNTOL);
++
++    /* Continuous bus-only mode */
++    i2c_set16(dev, REG_ADC_CONFIG, 0x9000);
++    qmp_ina238_set("bus-voltage", 12000000);
++
++    g_assert_cmphex(i2c_get16(dev, REG_VSHUNT), ==, 0x4BF0);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_SHNTOL, ==, 0);
++}
++
+ /* DIAG_ALRT control bits are writable; status bits are read-only */
+ static void test_diag_control(void *obj, void *data, QGuestAllocator *alloc)
  {
-     QOSGraphEdgeOptions opts = {
-@@ -322,6 +379,8 @@ static void ina230_register_nodes(void)
-     qos_add_test("config-wmask", "ina230", test_config_wmask, NULL);
-     qos_add_test("shunt-injection", "ina230", test_shunt_injection, NULL);
-     qos_add_test("bus-injection", "ina230", test_bus_injection, NULL);
-+    qos_add_test("shunt-limits", "ina230", test_shunt_limits, NULL);
-+    qos_add_test("bus-limits", "ina230", test_bus_limits, NULL);
-     qos_add_test("calibration-current", "ina230", test_calibration_current,
-                  NULL);
-     qos_add_test("power", "ina230", test_power, NULL);
+@@ -529,6 +629,25 @@ static void test_cnvrf(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_CNVRF, ==, 0);
+ }
+ 
++/* A DIAG_ALRT write clears CNVRF only in latch mode. */
++static void test_cnvrf_write(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    /* Latch mode: a write clears CNVRF. */
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++    i2c_set16(dev, REG_DIAG_ALRT, DIAG_ALATCH);
++    qmp_ina238_set("shunt-voltage", 20000000);
++    i2c_set16(dev, REG_DIAG_ALRT, DIAG_ALATCH);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_CNVRF, ==, 0);
++
++    /* Transparent mode: a write does not clear CNVRF. */
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++    qmp_ina238_set("shunt-voltage", 20000000);
++    i2c_set16(dev, REG_DIAG_ALRT, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIAG_ALRT) & DIAG_CNVRF, ==, DIAG_CNVRF);
++}
++
+ /* Shunt-voltage injection limits */
+ static void test_shunt_limits(void *obj, void *data, QGuestAllocator *alloc)
+ {
+@@ -625,7 +744,15 @@ static void ina238_register_nodes(void)
+     qos_add_test("alert-power", "ina238", test_alert_power, NULL);
+     qos_add_test("alert-multi", "ina238", test_alert_multi, NULL);
+     qos_add_test("alert-latch", "ina238", test_alert_latch, NULL);
++    qos_add_test("alert-latch-persist", "ina238", test_alert_latch_persist,
++                 NULL);
++    qos_add_test("alert-transparent-persist", "ina238",
++                 test_alert_transparent_persist, NULL);
++    qos_add_test("alert-latch-write-clears", "ina238",
++                 test_alert_latch_write_clears, NULL);
++    qos_add_test("alert-channel", "ina238", test_alert_channel, NULL);
+     qos_add_test("diag-control", "ina238", test_diag_control, NULL);
+     qos_add_test("cnvrf", "ina238", test_cnvrf, NULL);
++    qos_add_test("cnvrf-write", "ina238", test_cnvrf_write, NULL);
+ }
+ libqos_init(ina238_register_nodes);
 
 -- 
 2.53.0-Meta

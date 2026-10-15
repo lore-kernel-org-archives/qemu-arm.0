@@ -4,137 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DD3CC6B38
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 06:01:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA0EFCC6B34
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 06:21:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHESX-0001l0-0Q; Thu, 15 Oct 2026 01:56:57 -0400
+	id 1xHEph-0002fR-N1; Thu, 15 Oct 2026 02:20:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xHESU-0001jg-KO; Thu, 15 Oct 2026 01:56:54 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHEpf-0002em-M4
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 02:20:51 -0400
+Received: from smtpout8.mo537.mail-out.ovh.net ([51.210.91.27])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xHEST-0003Cs-3w; Thu, 15 Oct 2026 01:56:54 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BhKnxP6YLGKfDX1eN20/cWhQQF9UQ+hha6CPX1CRZr/ZDYFjkdkv4CymVFPR0dxiM28dzdtyKzHvbHzr9wpH2wR09m/3YUFbBLSZm8eZaSNA6SnR7wewzae4aJKYoRZt7YGGtKw8bQpo91XkhhEbgzEPdzO12AuX6Y8oMN4XdegKzib8nq1kUMpQdiv5ObkRu2TFDveIFR9cu2uemL9S0OiH7dJ+ERmXjyZBCK6Fl/dXUX2u43dkmpwrJz8+Vn5e1o1iYXerKiEI3xlQ4SwYUirXRa2ecfIPrQfDWmey4HqzceabUqhFMysH8Xj+BiJePw8dPQkkcE/IsasSu5uA5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GYJDZ7gK/D9WcCW9rhczK+VHbhP0V3qozQjMQoCsACc=;
- b=Lo+9sWXUNW3+AQl1kDGxyQTwkmSTrnasjLkbFwCRBaqQ1xz8pCb/rjEbiIZGWX15wcbkGqFEPPmtENeuwnUh+xrqBcRYMLPwAOt9ZRyaxZOcpYLXs2J371DeZQ5FdFRAUsrn5dhE5dbwsHdATZXt7eWu1KrJR+OiO163fKbF0b7nYPKMRPytnOxLHrwewkazeGJtMY9+qwRGWX4mn2S/XNds3BY/gLReoNs9VqMB5CobMMAeo63fV8kp7OUXGG/vn6jHoJCrBscztal/50jWgsKTQ3HoSqxtYxoMZ9L8hfoTZiXuNwP6d0im6KbQsgMI1sSsuw0eKoSpy7uexUaZxA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GYJDZ7gK/D9WcCW9rhczK+VHbhP0V3qozQjMQoCsACc=;
- b=bvapOTMO3a1kh1Ek4da7ajTI2fmiX4OF8PZ8NXotLqGnRzwjjEbsoHH7zAnL4+O8s/w4W4R28N0CA0NQt3//GWdaNieBmYD6MOWC4qiHBAOmGSmYfu18/0ehSD2jpRI/jrgodx7eJey54SKawa0Ze9x4bRTw6cDCIi0Qf2pkUE/O+GOiFUEzyIZt3zhwbIq/keA94TyOqi+g/BdvsY9Il1tJV115iREssPwwwQQCOdqG53kFk76mS5ETVT7t2kauHQevmtcOystPAT8Xcgl0eyrzq+hptZ3W6wFG+lYa5Yn8bWbRxzEyQKmXiaukOnJrU2qIwrxnrx5XL2I8IAO5JQ==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by PUZPR06MB5820.apcprd06.prod.outlook.com (2603:1096:301:f2::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.12; Thu, 15 Oct
- 2026 05:56:45 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0522.012; Thu, 15 Oct 2026
- 05:56:44 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Alistair
- Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz
- <hreitz@redhat.com>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 01/14] hw/ssi/aspeed_smc: Fix AST2700 segment end address
- decoding
-Thread-Topic: [PATCH v1 01/14] hw/ssi/aspeed_smc: Fix AST2700 segment end
- address decoding
-Thread-Index: AQHdXGn1I+GLxGB7t0ivTTYc6lEc3Q==
-Date: Thu, 15 Oct 2026 05:56:44 +0000
-Message-ID: <20261015055642.106204-2-jamin_lin@aspeedtech.com>
-References: <20261015055642.106204-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20261015055642.106204-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|PUZPR06MB5820:EE_
-x-ms-office365-filtering-correlation-id: 1504ad80-1366-487a-725b-08df2a8117ab
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|7416014|1800799024|376014|366016|22082099003|10067099003|18002099003|38070700021|261009223027099003|921020|56012099006;
-x-microsoft-antispam-message-info: R6cDCCZukl8srO3kzlvWBJPDR6RcPiDtLEtqSadHod75pB2dMeQXbVt9BEnTWaiwpYZAo/ld89yUB36LZ9LIn3So9s+nU8ztrC+Bb95HMTK76DbEW1uLrDdXPggU2Aul1fLFHVce6RykXH39qcHKcMFtNmL+VqzcDyyXEzPUtto9CqDKvKvq8XJoiQrY7/vVmKwRBvMLIXA+mENt0bBKJCjYQzMUNSjyrQjqf9d7+VyXjgvD4mbUyZ5KDhPMBtUK5/hQT2+pcAKkZfKZJj0XJaahvXL1IIUO5vqaVbWm+2reRZQTCGgs77OlzVpSn7fv6qejiDR8MChOChMwsBBz3c7iSxzH0zW/r3SDCRVNztDVRpmgjddyN32+KQQQCOQynFU4yxlBVmgO1zKA9Umv7YppnTKRI3S9Em3y8oYHDrDugCcMykXjz8fRL1ayuVRt7OJeoYQrBe4mirfQrbicUhmKECj747qpGdMWLmyhji+fw626fofE9eb7inQOg6K8SW7FCfIaXfoTYdFh/LsxDY3CE6bSkQtCbDgSOUr2Ut43Zdt8X/pPMGX+777CByfoEpPzvCwAyGhOt1qoMhf615rV8GCVneG4ckMo7QlWczMenKr0kUfq9uBlURJzxHECm+8UJZV/5B5hSkX+LZee1fnWixes4KEMNF6K18GGxkig6YWf4pQWJfcy5WRSC7sl9Jn2smCiH9GpkCjmDFj5P2JrMz6iA/FXBidnurkqolreZV/AwSbQlzFIQCdHsevr
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(7416014)(1800799024)(376014)(366016)(22082099003)(10067099003)(18002099003)(38070700021)(261009223027099003)(921020)(56012099006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?alvGni34HD2NrX+++tc++QChO+Wr0VXfiCBZpfG3R88A1LwrO/V0oPhgN6?=
- =?iso-8859-1?Q?7WvoiwqlcHPdVKNWuwY3XJnjZHcFlHbZ62O7clFVFfimyF/HGyhZqEJ8PA?=
- =?iso-8859-1?Q?LoS4+mgAjJ5WoCBPA5QSFFnDirKvm1A0XYJZacK6MMdH70aoxFONSiUXi0?=
- =?iso-8859-1?Q?wBi9R4Ws+vi9F456UX4827MZ2nJTiNWpAurM4GuGbEabszqSW1yiOtcd9F?=
- =?iso-8859-1?Q?1XvhihcNNAKdtONhA/YvoV20pjCVjHI7QZL8FBLMDqB0nZ481xo0MF7OlT?=
- =?iso-8859-1?Q?pDWyigjYQvCQnf/Pafk8faRSTjQ0h0RG1XPMWE3Oeg8CT3GTO0dZGG4bQ6?=
- =?iso-8859-1?Q?urVJiuhAQarcE3nQVXbMnlzu/9MO+8/HxxlHCC0wmN/vWu7ux5WMS32YtN?=
- =?iso-8859-1?Q?FNGwaiJlfCINQZ3tr4WR9TzGu31BTcGL2QtpvKk4bKAYztNhruWm5oGeeJ?=
- =?iso-8859-1?Q?9oc2XgDYUoOYwL/CtpQR7X9wnp42nqYHNY3IgvA6seQnmK2hldilfjxt14?=
- =?iso-8859-1?Q?Er6oGwODVGDLIGi6RIVa6DgYxOL4YRz8zVWbfcS1mL8tF+xNnxtg2kjW8F?=
- =?iso-8859-1?Q?FB8yuo1WgT5uX0pzt+JWwNSv47MNPZJoAgFcvWJyr6dHrHCNzFNmbrd3NL?=
- =?iso-8859-1?Q?RpAPQZj5axwNfzjChPL51Jj907/lS4cY9/VwxpKiOlENPc0CAom6Vl7kiu?=
- =?iso-8859-1?Q?rLjGEScL6DaYQn2lbAHt4pR3Qex0YHzUFjTsbOKcSmbbQgk2v0MGkfni/i?=
- =?iso-8859-1?Q?SQemwNFih9rT0jx0G0Yt65J756uQU3onxLtyYRHn+aipbSg3RiS3j5fwMH?=
- =?iso-8859-1?Q?6U/PNjHFKhWzn6eOri9T39A3H1BY0sBsxdDIRi6Y/YJpDMN5cbCaQyu01K?=
- =?iso-8859-1?Q?/dH8upjfqo3FzvDZCA1u3AK1Mtg5D2D171yyNb2lvj8VjKsGSTSh6JfHlu?=
- =?iso-8859-1?Q?73hDysHLLURqrlmW+tz1+hcQp084p5a6/iPXbqbtxm2Y6lWmn/ZwXS+u/R?=
- =?iso-8859-1?Q?K8h4Pssee2jo2QC2WiSxGEIV1RfmroBFBSvrHL0Gyir9d6c/xg3QUm6XDB?=
- =?iso-8859-1?Q?d04ZFPAmG1QWuz5urB3BfVCA5xWO+1TsWkp8OegvwsNhNM4N5HBw7utsVG?=
- =?iso-8859-1?Q?151ux7LNXEWmuf7MC8VNrOH7KehU4ES+zVzV5qMkzm2IBPFirB0tz4xwQo?=
- =?iso-8859-1?Q?i2vUyDVsrZYidlbQpa3taC2qth8Iwv9c1Ck7BlBmUrDlO87TN75Iz8lhf8?=
- =?iso-8859-1?Q?cmjpLD7b1prhnZ/KGiQm/AUINVmXt3hXLWABpTVQ/67jD51Z113agUaz64?=
- =?iso-8859-1?Q?Yaa3k7CPmREX8W3zeGzz8MkRM2Giyh6dfABUA1br5EKeji3kCh5/dOeLe+?=
- =?iso-8859-1?Q?5a0s94Zgln8GFB5QE4hw321vPBTVCJCxWqC5GKsP1/NDxhv57ua3iE/gmS?=
- =?iso-8859-1?Q?lOo0x2x5df4fc1Qt/s0Rloh1wBDL98l4SHY7uYmUT4INwSx2qjP1eIpV/g?=
- =?iso-8859-1?Q?TN8j3PlelUT7x/SBAjM4sEou3L9aQ8XlYT5RgKCVkLA3BMo6knM2Mt9BAJ?=
- =?iso-8859-1?Q?UHz5HZ1hgWR1+776barlmSDYqvsZ1OyFRtUqf/Jy1z14GoF7pBorNwS5tR?=
- =?iso-8859-1?Q?auo7TGiU59dAksO90K6HQXRRh0RkgkjUzYIkHaeuSzJG/uCwOZLKq76Bja?=
- =?iso-8859-1?Q?JC6Qwb00Ap0rgg0Mx/GwfilR0Uh5thGWYIQSYPjp4C8tRzlCB8FJl2hslP?=
- =?iso-8859-1?Q?S1o3Iwtkys8hjced9LZqQTkTWBAuDd0yB5Gqs2lsFH9Gnk3UQwuAOvYA6L?=
- =?iso-8859-1?Q?XhvBQ+uOxg=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHEpd-0005HZ-Cy
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 02:20:51 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [79.137.60.225])
+ by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4j4ycX1RQ9z43WS;
+ Thu, 15 Oct 2026 06:20:44 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alistair@alistair23.me>; Thu, 15 Oct 2026 06:20:44 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.96.193])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4j4ycX0Mknz5vLZ; Thu, 15 Oct 2026 06:20:44 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.4])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 098A71B42CB8;
+ Thu, 15 Oct 2026 06:20:41 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R005d1f06cb3-f418-4883-a7e5-6746d6db4819,
+ 39EAFCA45846CB7F25CFDE7C5DD07A896C21AD00) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <ede46cde-e280-440b-a527-05dad685ef58@kaod.org>
+Date: Thu, 15 Oct 2026 08:20:41 +0200
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: TPWZvasRujeQKUX19dbo7Z32wwtaEDLzQohkoSHoDJACRTUzhZeYjnR8hYKQ1mF8qWR6XgGJsNAU4v7uqXLwGYve/3wLWv2l2yp/a300ZT+2W/IfNSJboP9cGvVKaBlX60nNUrQ/ZvmkTAXsywVnWAdJKcg4rybcXrvKEQaBW7RKw79Oh9Ao3cczYfvAzDaIeTySGlEe4ug8NojAglHfa+bR67iVjGecaDeXeEBl6y1GMognYPsUte6CbQEl6wuCNqwpGYkySeNEer2bWiht0VTbSarwBf3oUF/+XlBfPv770AMKITuJOFByugR7aZ369dgxi+to/dqXXQY4oRbShw==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1504ad80-1366-487a-725b-08df2a8117ab
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Oct 2026 05:56:44.5534 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Y5/MniQXLX4xuvXiIv+GRHORstX9fuHx3AJq7drQpxQHYt0ApxCTjblyH7SJHBQmrpml+fIick4LE/jXX10yumwnEVHc26EJ0gogigVlIe8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5820
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 00/14] hw/arm/aspeed: Add AST1040 FMC/SPI controllers
+ and unimplemented devices
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20261015055642.106204-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20261015055642.106204-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 8123367830765939757
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEwgDTtQp1PCuwSJLIHmh8lkvy8lwsipne3MMMqqwlo/HUoT6Z16mSOc5XeBMCQfzZiarB4R8/Zk/NZ/9161XiVOfm5I7g+GARGZC8mMKbEVpPZutiUlo/bRE7clmALsI0KWTgxfHgFdItMwWtIGHZ9uUlKAJUKY0PZrAJ+HVPBqazPN5ZSw4KmZ70onsZOFLQIMiX4OQ2QKmc18mIM/pLgJToib9ifQwdzHwegmtKyDSNa+IBmlj469piZKhf94Lqah4Yp0hL0DtCVW8bFxdIYFob9WCn1e7NvMIqjfYV4gKd9hdqdeETAezKSZvw65cMqLRdJY6eXp9hcahO0jmgHSwOaK6IfziSryCAnFwD+bl13ctKF1rRgisX0AFp/tRnfNf4LX1sbtgX/BVK9qhH2/lcFb7YmaaPBzcnJTYS54k7GQF/1vztx/6wgX0cuVqFiL7rtE7Zw1DNslD5mA/ztOMJ+jm3z7zK/BA1BHBvEeafNSjNDtJW7aN5OnKtCEq/3dN3WwIqCkaj/9qZR2DZTH5YzeqNn+LkHItvpslxDl6P3RpAQ3ca66B7W7BcpkvwjYkqD0Cmho5oiFP1bGuy6jR7KTkSlog1rLMH4nlyc1Ar7+vc52RiRD2EubHgi6mkZSGZFczSnVGUfm3dNb7Jl9niQCjnukhenLBhq8V1HIg
+DKIM-Signature: a=rsa-sha256; bh=AVlsGYd4rTnV03++VXbQpDVqFYx5zAvUXGpLY5TWx8I=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1792045245; v=1;
+ b=gwHoUFuuqAD9gZidvIA6rHckp9spIonH/LqUC7Wuzfuj9NyxKrL686LPlN+9mL3YcA6v4i4+
+ fmv4KiD45WamrNXvaMst7+S5jk4ebt3i2sRVLqxWT8gKgmAgaPAKe6C18ImTXXU0gYORRnMABxh
+ V1Zb6XcQbwSYUuz2waNxjC1XyqNTlcigALEt1yjQeRx2dFLr9rKeFVjhwVntxV57L9w4Srz4fF4
+ WRvtTnnUoQOcyRwGkWXAN9sIshMIV/KRWBBkepAmZl3b2wsrENbsqlsP9/LlUraM5dmF9ImKVdH
+ 5SAKeBuIKMyuf/kVvaDFXIFScAE6gRYdBu04PyHoSjEgA==
+Received-SPF: pass client-ip=51.210.91.27; envelope-from=clg@kaod.org;
+ helo=smtpout8.mo537.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -151,68 +139,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The AST2700 Address Decoding Range Registers (SPI030 - SPI03C) define=0A=
-the end address as an exclusive upper bound, with a unit of 64KB:=0A=
-=0A=
-  StartAdr <=3D CEx < EndAdr=0A=
-=0A=
-When the start address equals the end address, the decoding is=0A=
-disabled.=0A=
-=0A=
-However, aspeed_2700_smc_segment_to_reg() and=0A=
-aspeed_2700_smc_reg_to_segment() treat the end address as inclusive.=0A=
-=0A=
-The end offset is programmed as (addr + size - 1) and an extra 64KB is=0A=
-added back when decoding it. As a result, every segment is 64KB larger=0A=
-than the range defined by the register and overlaps the next chip=0A=
-select.=0A=
-=0A=
-The issue can be reproduced by booting an AST2700 ASPEED SDK image=0A=
-with "-d guest_errors", which reports a lot of segment overlap errors=0A=
-such as:=0A=
-=0A=
-  aspeed_smc_flash_set_segment: new segment for CS0 is not aligned :=0A=
-    [ 0x100000000 - 0x108010000 ]=0A=
-  aspeed_smc_flash_overlap: new segment CS1 [ 0x108000000 - 0x110010000 ]=
-=0A=
-    overlaps with CS0 [ 0x100000000 - 0x108010000 ]=0A=
-=0A=
-Fix the segment helpers to use an exclusive end address, so that the=0A=
-decoded segments match the definition in the AST2700 datasheet.=0A=
-=0A=
-Fixes: bdb3748dba30 ("aspeed/smc: Add AST2700 support")=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
----=0A=
- hw/ssi/aspeed_smc.c | 4 ++--=0A=
- 1 file changed, 2 insertions(+), 2 deletions(-)=0A=
-=0A=
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c=0A=
-index bf596f7b2d..10ea9e5aa0 100644=0A=
---- a/hw/ssi/aspeed_smc.c=0A=
-+++ b/hw/ssi/aspeed_smc.c=0A=
-@@ -1823,7 +1823,7 @@ static uint32_t aspeed_2700_smc_segment_to_reg(const =
-AspeedSMCState *s,=0A=
-     }=0A=
- =0A=
-     reg |=3D (seg->addr & AST2700_SEG_ADDR_MASK) >> 16; /* start offset */=
-=0A=
--    reg |=3D (seg->addr + seg->size - 1) & AST2700_SEG_ADDR_MASK; /* end o=
-ffset */=0A=
-+    reg |=3D (seg->addr + seg->size) & AST2700_SEG_ADDR_MASK; /* end offse=
-t */=0A=
-     return reg;=0A=
- }=0A=
- =0A=
-@@ -1836,7 +1836,7 @@ static void aspeed_2700_smc_reg_to_segment(const Aspe=
-edSMCState *s,=0A=
- =0A=
-     if (reg) {=0A=
-         seg->addr =3D asc->flash_window_base + start_offset;=0A=
--        seg->size =3D end_offset + (64 * KiB) - start_offset;=0A=
-+        seg->size =3D end_offset - start_offset;=0A=
-     } else {=0A=
-         seg->addr =3D asc->flash_window_base;=0A=
-         seg->size =3D 0;=0A=
--- =0A=
-2.53.0=0A=
+Hello Jamin,
+
+On 10/15/26 07:56, Jamin Lin wrote:
+> Dependency:
+> 
+> This series is based on the aspeed-next branch:
+> https://github.com/legoater/qemu/commits/aspeed-next
+
+I appreciate all these new additions, but there are also pending proposals
+that require some feedback too ...
+
+Thanks,
+
+C.
+
+
+> 
+> v1:
+>   1. Fix AST2700 segment end address decoding
+>   2. Fix AST2700 DMA flash address mask
+>   3. Rename w25q32dw to w25q33pw and add the SFDP table for the W25Q33PW,
+>   4. Correct the AST1040 A0 silicon revision ID
+>   5. Add FMC and SPI controllers
+>   6. Add the FMC/SPI filters, OTP, ATC, I3C and Caliptra register
+>      regions as unimplemented device
+>   7. Update the AST1040 functional test to use the official pre-built
+>      image from aspeed-mcu-fw-hub v01.00.
+> 
+> Jamin Lin (14):
+>    hw/ssi/aspeed_smc: Fix AST2700 segment end address decoding
+>    hw/ssi/aspeed_smc: Fix AST2700 DMA flash address mask
+>    hw/block/m25p80: Rename w25q32dw to w25q33pw
+>    hw/block/m25p80: Add SFDP table for Winbond W25Q33PW flash
+>    hw/misc/aspeed_scu: Correct AST1040 A0 revision ID
+>    hw/ssi/aspeed_smc: Add AST1040 FMC and SPI controllers
+>    hw/arm/aspeed_ast1040: Add FMC and SPI controllers
+>    hw/arm/aspeed_ast1040: Add FMC and SPI filters as unimplemented
+>      devices
+>    hw/arm/aspeed_ast1040: Add OTP as an unimplemented device
+>    hw/arm/aspeed_ast1040: Add Anti-Tamper Controller (ATC) as an
+>      unimplemented device
+>    hw/arm/aspeed_ast1040: Add I3C as an unimplemented device
+>    hw/arm/aspeed_ast1040: Add Caliptra as an unimplemented device
+>    tests/qtest/aspeed_smc: Add AST1040 SMC tests
+>    tests/functional/arm/test_aspeed_ast1040: Update AST1040 image to
+>      aspeed-mcu-fw-hub v01.00
+> 
+>   hw/block/m25p80_sfdp.h                      |   1 +
+>   include/hw/misc/aspeed_scu.h                |   2 +-
+>   hw/arm/aspeed_ast1040.c                     |  45 ++++++++
+>   hw/block/m25p80.c                           |   3 +-
+>   hw/block/m25p80_sfdp.c                      |  36 ++++++
+>   hw/ssi/aspeed_smc.c                         | 121 +++++++++++++++++++-
+>   tests/qtest/aspeed_smc-test.c               |  61 ++++++++++
+>   tests/functional/arm/test_aspeed_ast1040.py |  12 +-
+>   8 files changed, 268 insertions(+), 13 deletions(-)
+> 
+
 

@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E9FCC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43FC5CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 15:11:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHN6G-0005lF-7T; Thu, 15 Oct 2026 11:10:32 -0400
+	id 1xHN5y-0005fd-H8; Thu, 15 Oct 2026 11:10:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN6D-0005kP-Hj
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:30 -0400
-Received: from mail-wm1-f43.google.com ([209.85.128.43])
+ id 1xHN5j-0005Ua-OK
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:01 -0400
+Received: from mail-wm1-f41.google.com ([209.85.128.41])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xHN6A-0001fC-MG
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:10:29 -0400
-Received: by mail-wm1-f43.google.com with SMTP id
- 5b1f17b1804b1-4a02667ccebso39769015e9.0
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:10:26 -0700 (PDT)
+ id 1xHN5h-0001PO-WB
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 11:09:59 -0400
+Received: by mail-wm1-f41.google.com with SMTP id
+ 5b1f17b1804b1-4a161d9b8c7so38715525e9.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 08:09:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792077025; x=1792681825;
+ d=1e100.net; s=20260707; t=1792076996; x=1792681796;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=OlcJaO13/HWgHXhBu0C0Yz3eZ87xrrYAWtMGnHtQsnk=;
- b=SyPku94YmmAG6YxiXr3AApttCPEsKT50QUaXcDCVrX9n8S18ZKrkIR9UFpk6AnLV6y
- ekHKxVW3xM66q7PiCO8Smj1SiC7o9A9l7mePMgcy+XTPNwKGdEsTX7Z7/AcVzfsYESjN
- 1vG1FQloTpUKDjLFe9AXOMJoJWkIxcvLQ7LHvsTqvvDvpYfjQPB+/ck26ZnLhgGMzIrc
- YxB2k3Wrc2itOUNHTBaUzboHud9SoJWLtb/PCGWiDURkb5WhhDuWE6wDxEIAk1mM94eN
- /CWj8i3lNeUNHkngpqp+I8wy8uw0Og0hUPMzXKoJKEIEweKhLP8nrrBQDQLXE7UYpLpG
- IyQw==
+ bh=74etoE1H4Vt/KU4xZOoXzZ54Zty9qqrQvEaIpDfvh7E=;
+ b=bd4sNxqCpXhpVM2CmwFiyKQWrqvtYmBzPqYspEnOmYvpV9d5IKiGzmBoOwTbZdwi9W
+ GzveT5ebnD+RfQBqxTwD98K3U4UuU+KyM/Rz//f+vmhjtiPnl4I8yP+pUo6m+xmO8BN4
+ sHRjmQdJKdUwtviIuZKb7bf3toztnEPolJz3P0jY0Iu3TfekweDNV5eaxR3JeAmGSIeS
+ pAqDToyZM50dBFwdYWRdAGjLUwhrzSrHknkPt2yaWJAX9dlxmuikPSe36ZQd/67gTUA9
+ 1hLAgO6o4OdcLVzyfjm+ysE8CY3ASI6Hsymwbz0U7rREuGrYacGGLZZ19nLWYaV5RPEV
+ qFVg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwqqotrVjd+k5e9txiOJSmt30I/5v6M/YP84YAgqs8+StfgvcRL56jTNudo0Rqx7qpPS+/QCk8lKQ==@nongnu.org
-X-Gm-Message-State: AFq9FYK8AEATXEHRsqN+KqaZ9dsTPhdLruYP+FrDqnxmRGvWdvUctgP1
- epGjfSPUSfr+ycxdmvkvRSQuGA5ZshLW6QJYCjKS0sgoBwTqTIdpQlB1
-X-Gm-Gg: AYBFou3OshEDIWi2lEPr+HoJ2zs5lCt7W27gXt+/1dne1bcP1VcXvuAw2NiGw2Cch5L
- QtjnlZb2rDqpQwKr6cMizTeVryesp2hRtSSjszlY7xmX76XR9bV5FHVaERaMPUnYlcTU3S4Zm6e
- esfdpEGgX7RuaJhcmmC+5yLGgdfCYuwYGEMBp6IL2R3iyrimBfTP2v+WFb2onCZxy7Y8Sf76Cpf
- /8fmoprw308J0bk+qysVNv3ZySikSJlWuujLGsSm92MSBoM6Iy8x4SbU6lhdHebegQJhcDzQDyZ
- uZdZRDtlOCUgO6QTTumvvolumRFZG4GoTjWNnkZbBeYm+KYiq23AWTYT1bw7NjacGbbfg75Q1Ww
- DPQzgV79PygTsHYF/6NqIC2g9nkqL5soKfhv49MoDPQ+dNW7+0rY0cWFLuirEInaJzX1Ja2kT/c
- pRWuFNEu7816106Y8QoFgoQ3SvFv29P2mJsYPJmrxGKKv5IyYRNMFG+E8mh/hkAoIdyTPCS7+SU
- fU7PWpblT2GXSiDsIP060WfyA08YFFTyBRTPfZsYD0xuA==
-X-Received: by 2002:a05:600c:3e8f:b0:4a0:1c0e:b057 with SMTP id
- 5b1f17b1804b1-4a18e44653cmr399949475e9.4.1792077025117; 
- Thu, 15 Oct 2026 08:10:25 -0700 (PDT)
+ AKwUvBw6m8NDFaUafxKNT0y64pQSbGVt7pUvedR0dw2HCGZ+m7fjrNwoVU5PUf0AT3bvOunlwZTyOJq7sg==@nongnu.org
+X-Gm-Message-State: AFq9FYLYn7Ak3AaH1+0WZhE3v5+h88Bm9ayB507Yz/9PlD4r0yu94vlO
+ kT/IbkpauixFYgEYmBN9lceLTyCRKPTUh8vg3YyevZBnBBVjGKdQqOoH
+X-Gm-Gg: AYBFou0BskGKLxvtqwKsPLKiZcCM3VtmP0xZ2Lhf6hd4L3rhjuryue+EKEiBbSD/+Bs
+ 6kB+onMCAg3TRYAddfkxSGB8Jr6iGlGtpuW9hWN1QOQpKzgO7pA0JxNGB6V8U7TuDUmABeBhk/3
+ 3r6ZyrbObS+qlkV9JnOl/t3exzGPYPyozyK9BTHTpnX769w3dyAlgfTXVIfP+cI/akRNOoWRWgT
+ oH2ElEAoCO9TrY0eoL8HS4D0ASl8QJIB4Le8PxzIoibOsqv5H8s+1032ydN4INqXef1E23Qgl+F
+ Eyp0jaFIEupO5TybV6CUA/tFHiNqNwP30ZVYrxMlpBsm6W+ECGKER2nJx8R85MYWLnrICXJJW1P
+ FZF+g51YpdndBWlVkO6dcFplEGITCdQ0UlrS6d56q/dDuI0B3+1egNzb53aS3/64OaLxU0fa4nE
+ olK/3L0Ko0t2ecZ4jq5g+bpSP+BAV1GETcHHIxLDQ7nY6FV0CJyABfEzxNZnxKqcvUrb06x28mI
+ RErqa9YUXiYSRS+2EkrEaXmYZRqiGRqSPjnTUg9fBAMQQ==
+X-Received: by 2002:a05:600d:82e4:b0:4a1:a45a:88f with SMTP id
+ 5b1f17b1804b1-4a1a45a08f7mr248945935e9.20.1792076995953; 
+ Thu, 15 Oct 2026 08:09:55 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd96f9a0sm75740515e9.1.2026.10.15.08.10.22
+ 5b1f17b1804b1-4a1c50689e6sm21829695e9.5.2026.10.15.08.09.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2026 08:10:23 -0700 (PDT)
-Date: Thu, 15 Oct 2026 13:57:43 +0200
-Subject: [PATCH 05/22] hw/sensor: tmp421: honor per-variant channels and
- channel enablement
+ Thu, 15 Oct 2026 08:09:54 -0700 (PDT)
+Date: Thu, 15 Oct 2026 13:57:39 +0200
+Subject: [PATCH 01/22] hw/sensor: tmp421: do not report a stale errno on a
+ parse failure
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261015-bmc-clemente-v1-5-bf591886b5b6@free.fr>
+Message-Id: <20261015-bmc-clemente-v1-1-bf591886b5b6@free.fr>
 References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +77,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065465; l=6605;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792065464; l=1336;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=YX60yitZnrhatj4jjBlP51Qv1RKMFJvzEHfnfBzeo04=;
- b=kUaFbYlvh4B8rmDjh265ZPMM7QwzqZqcCCi0ck8Vu0/3/WJ0IMfOBLSbZjYBoFQZUwG7dEK4S
- ZbUnuBfKYecBFqqCKi9HYy0Kxx20dpgFgnUjcaTYF+Fe7sAzGXaUNV4
+ bh=XVWhDGukLr6PXwfmY7rmr+tRBguotXtnONw9Q1wdDtg=;
+ b=WmgsaWFpkmIFw+F3nWjd/O7l2l0iYLNlbzlXG4rsJ9GkxrZ0G9HrP2bFGhYNFKh9dkwshkYry
+ 1NBe7mpQ9NqDSbPJ82IP+/UD+Ts0qtl+iRTfBZYTh9VYxKTnHqa0Fny
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.43; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f43.google.com
+Received-SPF: pass client-ip=209.85.128.41; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f41.google.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
@@ -111,183 +111,40 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Each part exposes a different number of temperature channels; register
-only the temperature properties that exist and gate the temperature
-register reads on both channel presence and the configuration enable
-bits. A disabled or absent channel now reads back zero instead of stale
-data, resolving the long-standing FIXME.
+The temperature property accessors decode the channel index out of the
+property name and report a failure with error_setg_errno(). sscanf()
+does not set errno when it matches fewer items than expected, so the
+message is suffixed with whatever unrelated error was left behind by an
+earlier call. The bounds check right below already uses plain
+error_setg() for the same condition.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/sensor/tmp421.c | 100 +++++++++++++++++++++++++++++++----------------------
- 1 file changed, 58 insertions(+), 42 deletions(-)
+ hw/sensor/tmp421.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-index 7f0e3b3214..8bacd7d05e 100644
+index 127edd0ba5..fde41b2323 100644
 --- a/hw/sensor/tmp421.c
 +++ b/hw/sensor/tmp421.c
-@@ -59,6 +59,7 @@ struct TMP421Class {
-     I2CSlaveClass parent_class;
+@@ -117,7 +117,7 @@ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
+     int tempid;
  
-     uint8_t device_id;
-+    uint8_t nchannels;      /* local + remote */
-     uint8_t config2_reset;
- };
- 
-@@ -159,12 +160,50 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
-     s->temperature[tempid] = (int16_t) ((temp * 256 - 128) / 1000) + offset;
- }
- 
-+static bool tmp421_channel_enabled(TMP421State *s, unsigned channel)
-+{
-+    TMP421Class *sc = TMP421_GET_CLASS(s);
-+
-+    return channel < sc->nchannels &&
-+           (s->config[1] & (1 << (3 + channel)));
-+}
-+
-+/*
-+ * A disabled or absent channel reads back zero. The low byte carries the
-+ * temperature fraction in its upper nibble.
-+ */
-+static uint8_t tmp421_temp_high(TMP421State *s, unsigned channel)
-+{
-+    uint16_t reg = s->temperature[channel];
-+
-+    return tmp421_channel_enabled(s, channel) ? reg >> 8 : 0;
-+}
-+
-+static uint8_t tmp421_temp_low(TMP421State *s, unsigned channel)
-+{
-+    uint16_t reg = s->temperature[channel];
-+
-+    return tmp421_channel_enabled(s, channel) ? reg & 0xf0 : 0;
-+}
-+
- static void tmp421_read(TMP421State *s)
- {
-     TMP421Class *sc = TMP421_GET_CLASS(s);
- 
-     s->len = 0;
- 
-+    if (s->pointer <= TMP421_TEMP_MSB3) {
-+        /* high byte read latches the paired low byte from one conversion */
-+        unsigned channel = s->pointer - TMP421_TEMP_MSB0;
-+        s->buf[s->len++] = tmp421_temp_high(s, channel);
-+        s->buf[s->len++] = tmp421_temp_low(s, channel);
-+        return;
-+    }
-+    if (s->pointer >= TMP421_TEMP_LSB0 && s->pointer <= TMP421_TEMP_LSB3) {
-+        s->buf[s->len++] = tmp421_temp_low(s, s->pointer - TMP421_TEMP_LSB0);
-+        return;
-+    }
-+
-     switch (s->pointer) {
-     case TMP421_MANUFACTURER_ID_REG:
-         s->buf[s->len++] = TMP421_MANUFACTURER_ID;
-@@ -184,35 +223,8 @@ static void tmp421_read(TMP421State *s)
-     case TMP421_STATUS_REG:
-         s->buf[s->len++] = s->status;
-         break;
--
--        /* FIXME: check for channel enablement in config registers */
--    case TMP421_TEMP_MSB0:
--        s->buf[s->len++] = (((uint16_t) s->temperature[0]) >> 8);
--        s->buf[s->len++] = (((uint16_t) s->temperature[0]) >> 0) & 0xf0;
--        break;
--    case TMP421_TEMP_MSB1:
--        s->buf[s->len++] = (((uint16_t) s->temperature[1]) >> 8);
--        s->buf[s->len++] = (((uint16_t) s->temperature[1]) >> 0) & 0xf0;
--        break;
--    case TMP421_TEMP_MSB2:
--        s->buf[s->len++] = (((uint16_t) s->temperature[2]) >> 8);
--        s->buf[s->len++] = (((uint16_t) s->temperature[2]) >> 0) & 0xf0;
--        break;
--    case TMP421_TEMP_MSB3:
--        s->buf[s->len++] = (((uint16_t) s->temperature[3]) >> 8);
--        s->buf[s->len++] = (((uint16_t) s->temperature[3]) >> 0) & 0xf0;
--        break;
--    case TMP421_TEMP_LSB0:
--        s->buf[s->len++] = (((uint16_t) s->temperature[0]) >> 0) & 0xf0;
--        break;
--    case TMP421_TEMP_LSB1:
--        s->buf[s->len++] = (((uint16_t) s->temperature[1]) >> 0) & 0xf0;
--        break;
--    case TMP421_TEMP_LSB2:
--        s->buf[s->len++] = (((uint16_t) s->temperature[2]) >> 0) & 0xf0;
--        break;
--    case TMP421_TEMP_LSB3:
--        s->buf[s->len++] = (((uint16_t) s->temperature[3]) >> 0) & 0xf0;
-+    default:
-+        s->buf[s->len++] = 0;
-         break;
+     if (sscanf(name, "temperature%d", &tempid) != 1) {
+-        error_setg_errno(errp, errno, "error reading %s", name);
++        error_setg(errp, "error reading %s", name);
+         return;
      }
- }
-@@ -316,6 +328,19 @@ static void tmp421_reset_hold(Object *obj, ResetType type)
-     tmp421_reset(TMP421(obj));
- }
  
-+static void tmp421_initfn(Object *obj)
-+{
-+    TMP421Class *sc = TMP421_GET_CLASS(obj);
-+
-+    for (unsigned channel = 0; channel < sc->nchannels; channel++) {
-+        g_autofree char *name = g_strdup_printf("temperature%u", channel);
-+
-+        object_property_add(obj, name, "int",
-+                            tmp421_get_temperature,
-+                            tmp421_set_temperature, NULL, NULL);
-+    }
-+}
-+
- static void tmp421_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -331,19 +356,7 @@ static void tmp421_class_init(ObjectClass *klass, const void *data)
+@@ -154,7 +154,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
+     }
  
-     sc->device_id = TMP421_DEVICE_ID;
-     sc->config2_reset = 0x1c;
--
--    object_class_property_add(klass, "temperature0", "int",
--                              tmp421_get_temperature,
--                              tmp421_set_temperature, NULL, NULL);
--    object_class_property_add(klass, "temperature1", "int",
--                              tmp421_get_temperature,
--                              tmp421_set_temperature, NULL, NULL);
--    object_class_property_add(klass, "temperature2", "int",
--                              tmp421_get_temperature,
--                              tmp421_set_temperature, NULL, NULL);
--    object_class_property_add(klass, "temperature3", "int",
--                              tmp421_get_temperature,
--                              tmp421_set_temperature, NULL, NULL);
-+    sc->nchannels = 2;
- }
+     if (sscanf(name, "temperature%d", &tempid) != 1) {
+-        error_setg_errno(errp, errno, "error reading %s", name);
++        error_setg(errp, "error reading %s", name);
+         return;
+     }
  
- static void tmp422_class_init(ObjectClass *klass, const void *data)
-@@ -352,6 +365,7 @@ static void tmp422_class_init(ObjectClass *klass, const void *data)
- 
-     sc->device_id = TMP422_DEVICE_ID;
-     sc->config2_reset = 0x3c;
-+    sc->nchannels = 3;
- }
- 
- static void tmp423_class_init(ObjectClass *klass, const void *data)
-@@ -360,6 +374,7 @@ static void tmp423_class_init(ObjectClass *klass, const void *data)
- 
-     sc->device_id = TMP423_DEVICE_ID;
-     sc->config2_reset = 0x7c;
-+    sc->nchannels = 4;
- }
- 
- static const TypeInfo tmp421_types[] = {
-@@ -367,6 +382,7 @@ static const TypeInfo tmp421_types[] = {
-         .name          = TYPE_TMP421,
-         .parent        = TYPE_I2C_SLAVE,
-         .instance_size = sizeof(TMP421State),
-+        .instance_init = tmp421_initfn,
-         .class_size    = sizeof(TMP421Class),
-         .class_init    = tmp421_class_init,
-     },
 
 -- 
 2.53.0-Meta

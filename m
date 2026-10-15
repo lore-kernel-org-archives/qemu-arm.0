@@ -4,137 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67BCCC6B33
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 09:36:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA6C1CC6B38
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 09:38:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHHrC-0000JW-Ll; Thu, 15 Oct 2026 05:34:38 -0400
+	id 1xHHuu-0004Dp-HM; Thu, 15 Oct 2026 05:38:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xHHr6-0000IG-Ra; Thu, 15 Oct 2026 05:34:33 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xHHr4-0006Dg-3u; Thu, 15 Oct 2026 05:34:31 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=qNs0mV0seGgR0/qmEPnBQFtqKokvjS81w6tgi+VShgij+C96GWIbMQCVFmB7WbDK93g2Q1H/QYiIIaG3y5FjL40Z0yp2fagje5DOl8ZxxM5HFYPwtvNlV+G6iW9eszoxzOFQCXaNfom3R+LX2wxgkuzqYCKVtYsbdTSjPcJ1UfZ6nCTGebT6V6WDvZ+wb8EQd4k4W0LaYcDyspcbAaB7ToDNovR8syWjP52sUrQL7/MDY+yar8Vxmdx41Gsy0GlYcaOAGSNhKvXN6Xue9ycMYGK4YzmmMp2meCvSIOXB5lAc/HJ5J91ur/KtJn0cmwwNQAzF3jZdRj583kUyFluipA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=U23PJIr2zCrBIIO4P8/Pf2Wi0Fn8XpWOLAS+gb5zWYI=;
- b=EFjyOzxGc2555D/Ec96x9G5iFkoMdP/In/IMjWx65GztR5xZz8ciHmE8AvKy5F4aDEHDQYrAkHd2UhdET32sR/zWqGis9NF5TCvVgFX/UQEXHLvrdqtV912ilopTVbqHAyIabh/vIuo3f0afhONeruayCQfo8ditMFr8F9Xekh2nvKuGm/Y+BAzH+uyI3kV+7RThH9pcCzZSIAPgKF297gSy71ajD1eVPr8+L2ZUuRFX+dy4FYb0v4KBBUURjWig2HcytG2IZQJxcWokuQCuMNIAki3y2PP1K14oNYX7QFHZYEUaS/3WcgsjKFbeSMjkjtzExICZm1PK9bMBfCclfA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=U23PJIr2zCrBIIO4P8/Pf2Wi0Fn8XpWOLAS+gb5zWYI=;
- b=WIPRrJBC3bftheCA+nrVvTBHDmZwbHFMxOh3wn97FT9paoLZA/noLh8MyZ9ZEljUWYM1lGhcKvn8ZQSJp+VwDcqjqbbI4B4pG/50tyULE/Nv1DMSHLlfHWgYMfRK6z1/QXefgWmqI4pBzcEfyDv2XgDveAHS0JlBVDG0butwYOIqRKvIdz3d2PV1Lm301WWJyHnswz7Y0/uGJGAybCoXBU+JQclm0mRDs/E4/nr16cB/YvV4rli+TbS5K10DZpy/hxgnL1h97esol2R/3L582Y86fkh2op/+0ENy7mdKK2vXd7wesd9bsm84X9vvaYEhahdAJeQPTR4Czt37qitZGA==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by TYZPR06MB5527.apcprd06.prod.outlook.com (2603:1096:400:28d::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.13; Thu, 15 Oct
- 2026 09:34:19 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0522.012; Thu, 15 Oct 2026
- 09:34:19 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v5 1/8] hw/usb/bus: Let a bus opt out of automatic hub
- insertion
-Thread-Topic: [PATCH v5 1/8] hw/usb/bus: Let a bus opt out of automatic hub
- insertion
-Thread-Index: AQHdXIha49Zdbi3VXUq1mz9fB1z7xw==
-Date: Thu, 15 Oct 2026 09:34:19 +0000
-Message-ID: <20261015093417.573063-2-jamin_lin@aspeedtech.com>
-References: <20261015093417.573063-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20261015093417.573063-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TYZPR06MB5527:EE_
-x-ms-office365-filtering-correlation-id: 756b9227-d947-48d9-4f8e-08df2a9f7cbd
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|366016|1800799024|23010399003|38070700021|56012099006|921020|22082099003|10067099003|18002099003;
-x-microsoft-antispam-message-info: jXsyCNJNvXB8QRS3kFMrgUeu9jEnVnSCjoBPyOR5wSW2ktudbDhyG/9Dy9Q0lLVjikYZxW6G1YCUXV79zjlz9jPk5C/uF/ZCSvKEkcfzbhTA/4YcdxwhGzB/K7nM9+Ny5+yy2KX0HQ+33Zw9aAc9sxRc5ZeCAPbAphfGRA9i5tSJyjEtUiOuu7qI4kWiDSoPE/W/MND/lY2QrNpaQrRLvZ4tZeGxGE58vYibZFjqLITPizzBA4pc0BRlyJOSLgFGBQOSeb950nG0JtzO5t2x4Zsw4k/qy2PMPqjrVc079kyW16RLwzooxqb1G6d9lJEuQJS3sN3IYz9rh6svHDeFwB1icR/tT8ZDgKX24yFvF84QZFKd5+dEK31abaAwYnwyhx/jE2N7fb6JlZ5zoM5LsDxRcwKFjqA5xRbwBss5lOHvXwch/cqOU3IF4y9nn8DLzu0oCQDclibObR5GmFAweOMUmnxPmG7O2vks/GjPwhZq7ZxBax8r4W1IpPVlej3qMnhnE5ljIyXXgMg/j4ZE45Mo10v6G2BFcnZp4G39IN2puGFUYYNcyYeyfcapj1otUFSia2zNHRyW/7zRl3zMfkefCfeIksE/dnsGrPb9R34IyMdjJdu0BBJd8vxWUpA3g9rjHerChN0Wsam9zlILbCBiw2AhR/x9IVcPEaMRvBbvZd9n9vShbYAmWvI5Ep7uD40IfwJsJWwsC/j+ei0GtQ/K+cJi+1BhXIvl1yWIAl0d/+TnV7Y27c5ZaAXA3w7m
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(23010399003)(38070700021)(56012099006)(921020)(22082099003)(10067099003)(18002099003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?kq3swfZgc4UqzxORMAhrRLjJDtsu3gTlIwDfqeKFDVw9bV8LsXmt4uZnWX?=
- =?iso-8859-1?Q?l9KtJqRXmBXszuNZzlzftQS8IvMnl3xs8102ghtdfSHv4kfqMiYUl3cqTC?=
- =?iso-8859-1?Q?qd98US+udJ+OsTPhJ2duBvCzUwCiPBRJoOIPFAurFdeMwJ8Y0COGaMuVUc?=
- =?iso-8859-1?Q?dAQRF5TerszNPVX5VFX6Dn3Bk2bU9K2KzywWv03toLZwKp7WzvgZRcLvoB?=
- =?iso-8859-1?Q?owut9+8CgNR5VNlS6XQ+ue1SB3mNsEuAc5L32ZTaBz1FSL9nQHRIedl0l7?=
- =?iso-8859-1?Q?Y9TMSsHdaliQlmqhu63WbMFIOmcNT3X4EklJVbyqwQjZNcqlK6ckS0jzD3?=
- =?iso-8859-1?Q?rWJj2lH9/C13WbV0lfYkcK1oKUUjJqiK2vBt7L24Jf32bIx2aFpia0wHOE?=
- =?iso-8859-1?Q?zVt3Jb2hgjqbWZLgelHq51jM6C1TAoypdxJDBJW1mci58MWbcZWzkkasfw?=
- =?iso-8859-1?Q?tCPaAx7KxwEiRlKZWVHkeVIeSNWel44oh548a9TlUeXSOlqu12smG4MftL?=
- =?iso-8859-1?Q?85buuUl4zTUMNqDwJBmCjUNoTu+4O+1btGUigbhXOvNxWDPB4VavyntLob?=
- =?iso-8859-1?Q?cDAYX12ZnCDKbE7JNaj8H7dDDPQa1JukmmVbJgXObTrZBxrxRvhWKF86rX?=
- =?iso-8859-1?Q?RpIsuBifZlFmenr436hTxUlyaCcE5D4Db9ehs9Sb3++ZbTUNHPgQbipGrS?=
- =?iso-8859-1?Q?lGAWURoRzHzPAR7PhInwGdkas+XHPNzG3o1Q/ZgroMgSkEMJZL1RnhrrXW?=
- =?iso-8859-1?Q?ciFlFwQwQXNZpjpkP6fXgerkRu8SquNmNiT2qaTEnVJB27Dl0ymSKxR2Hd?=
- =?iso-8859-1?Q?D359h6gRuiiomFeVqAwpFPEI+xW6aZrqZUXIFVtYPN3weO8+FlRywSgQUH?=
- =?iso-8859-1?Q?pfkRy4NIWUT/YYVFDXwT9wPAdj+FbWuoH/z+LRWRU5hAPBqQS9stjOI86m?=
- =?iso-8859-1?Q?usQbAepOabYEaeAoEJ0mvcq0j0u/y5igV9ZrWG0UnQ5ZeEfNdOpfGNuPkq?=
- =?iso-8859-1?Q?B6Tp6upDL03h1dYb4LzjAkhi77AldGYQnOXpAd9xOSoBQZQMaSly3yiT2v?=
- =?iso-8859-1?Q?2LrlaK+PxTOKSpElA4JWGhsI8fvc1Lae6CCqfNfZHoMY9ge4OLw5ZZm741?=
- =?iso-8859-1?Q?fxpguDr2GTF8dudCARiMnj2wYd4qyxZezl/MT4Y56ke7jCjKVGFYIMqpf/?=
- =?iso-8859-1?Q?R1BMaRzQ7I+8kL0mVd+mPnVHHjHRrN4JPIkGWPdylsxI4HzWhIRZVk529n?=
- =?iso-8859-1?Q?m9yEfoVf/pc06ITbJcHntvsiXlIuAgasma54Vd7i8Z5PwMLklNOgOsb1Jp?=
- =?iso-8859-1?Q?IPszzLso1tS/spIy8SANGcmiiW/rosnQH/IeRjePOM+okGFCG9llgZ/v/r?=
- =?iso-8859-1?Q?Js6MKIfbV8s5xnWnSzR/TYfOqoABxWsvbhR1s+XFSBgVdG2MzvYOtTtd0y?=
- =?iso-8859-1?Q?xW3CSMiNxFWsuYT7dX802YLLEf4lfkpR0+ye09GmdXY7SoL2TnEK7GCHYE?=
- =?iso-8859-1?Q?xWpzLG7VwLK1xpUrewaACxwnXso6hcv7cjzCuvKkPSGbotNOPPDgAfLDzI?=
- =?iso-8859-1?Q?SfyLKEQGBuIkwgB7HcC/1VutlM6S0CP1PNu8pyLS9HUWFWx0BO3BuYl6D+?=
- =?iso-8859-1?Q?QmkgvOLAlt3bxT4aqGsGfVa5GMXllajrx5FNl1NAEvHtK9G6g0QMpBwHq+?=
- =?iso-8859-1?Q?XWm+xxXMpjuB8edS26krp7htTQWOufV/AspSW1roD80Q4PEiXoJ+GG2FJr?=
- =?iso-8859-1?Q?igAxKj5Dmtz2HmeSqOwXjwtmMslkn6C4L5C3JYPyMFF1Xs85CRyGY72QTa?=
- =?iso-8859-1?Q?oBGQCA5fOg=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xHHus-0004Ch-DO
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 05:38:26 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xHHup-0006bN-BS
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 05:38:26 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-c2acc1e170cso860025166b.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2026 02:38:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792057100; cv=none;
+ d=google.com; s=arc-20260327;
+ b=ek+RKOReh8WvQXfV9W01EQ9TiwcleelfG9WXRn5SE4IAG307niNRbfwsBS02AwcPg8
+ sOwXVIz5N1+VMRMV0Nur+1MKZ5x1jmHtO6rhrKRLAga0sU2+7HFvkqGA+QCQOi1AFyKm
+ yNgfbM/1uBz9APy+4kv0yOQaYOHsaEaIVd+2ZhT2CXN91N3OBgEniN3TsmQ60LdPwWIW
+ dABpSnExAXFWrTHx8vxR16Qfu3l56HI5rmL6JaqIcEKs5yPKjiDGZXwkrtyeMLimP1Ge
+ Uw8W5BzqLqLDK3J8JiiZQx5I/j5OKFY7o9Ko3+fsMyRwoihx1giVT6cQzUBuPdbqjQi/
+ hEJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :reply-to:in-reply-to:references:mime-version:dkim-signature;
+ bh=r5G0BsDa9TUzuCzRry+HFI28e0hkmXpHpz9bsdrKKew=;
+ fh=xNNMKGUU8LRH7pbRGkEcCK+F4dOqTEJ2VbsHtot5pvI=;
+ b=CO2rqxiHiEB+0KXMg2fzHtuc6/VkWSo8xx2rqrvIJUH830UGBCXScpIsR9xa2OC1KN
+ zmAS1/E8MyqfDUg0PHJZU9wPNbctU3vpGwIAyOJ8jb+XZNMe0Z2SysZZNo+Hxs5nWM6h
+ ceYAetxjpH+J2/pBP6+gYP/OL3bHalLnkmyuE1euv9RLInfPALI+SJKTKL6Tjmjgum9g
+ vSNneY5xqDV7spCuxTeWjDx6+SIqOHkypU0vAsdkhocOeHsjFu3AOBf5nz9SM1dkwRO8
+ M3xScKi7Kk8sVv1B8R7JaaHJCPRGkJ934cxmkG3SAFvMNubWV3W1LBO0brt1+CiHl63/
+ ed0Q==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1792057100; x=1792661900; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=r5G0BsDa9TUzuCzRry+HFI28e0hkmXpHpz9bsdrKKew=;
+ b=qLNp4n2+xMdE6saiQGY7qiym8S4r7/BgO2tPc/NAzBPLXX0FdVbeDJDL+68IVoehrA
+ I8kJjS/FCtmOPN7zYppbb4lKEIW/Nhz/Emlw6ECXW5Vz2YtPngtsbiFvI21maARoX1z8
+ 22RC9QgPNA97od9JUXz/DsVRvR9j8G6RoxBvztwrQdgd9CRT59Wkrb+sGiH1m9QJTq5x
+ clJmU6Gt3JPplEcLHfP8pUJA9yaTQXO69PgG03OtobtY9DhAzdbeYJwFCwkBUPU/NzE1
+ WWdepP4BjjNvRgJ87l/whv8RVEHoDglEyirDv+00ZCcjgmX+QHH32DEYPY+ABSa+21KB
+ 9BBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792057100; x=1792661900;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=r5G0BsDa9TUzuCzRry+HFI28e0hkmXpHpz9bsdrKKew=;
+ b=DL7WWrUd+4WZw8eJ0o2XXQR5w2CBWdEP70jf+Ku7YabFxd4wedQQ48hMc5ik4W0G/c
+ pBvjV2kYVPzxf6PHTfx5ZynWX1HCcd7jgJQlwPugK2kSnZpehD1zAU4f5NNebVU5Q1s/
+ lZSHTH4e31N8ZsrlbzTXPmCvswC8QdAl1hige88XgnPncOue6lv1cdYp3AndV71NJyeu
+ Epr/uOQtiR9K92nVC+dZH/KjSNJiVTajHg/MVVuRwJ9SQvlh2UI3OuhDruS2SD2iL1OT
+ AUAvlwwh0dkg1f0LjVEuJe4AzgTVwXhgIYyaWNtwAodN58D17lRRGu+MWkCKFmiplS3C
+ URYQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBx6+Sp5WSlwkY4g3tBl7GqB28n9UAczqouwm+r2U8zGHwwlhZPPXe9pl/6tuUrviQQJOUXVB/lIFQ==@nongnu.org
+X-Gm-Message-State: AFq9FYI+eYSvuX9ADo1dl18aXoDSEeNwvCO7D1aLa8CAVvpzviSciTtN
+ ADN2BFJE5rK7l5ljU/0tU8NgNf5MOuQzL/6FrUj/AhlD3mU7iJ9tBzTO0dVipYx5UNJqInG8Epe
+ ffIm8iXNOeNWb9M4F35E8Wv/izLQBHMw=
+X-Gm-Gg: AYBFou0FvaZ+J094uOyQffsBYUqCOtnJJkkS8ssswgUlOQMcv0pYWTsNk/uGRmWpS9T
+ niaQJTKoLWQgiUjGRlB04PrS/zbqEzT876wujXPvLfv7zoi1QFVNEqxuZos0rn8RrqAC4CiOKgO
+ 5Lz1AaALS9SrAFolUNwRVn9RfVfcG8XhI0Xe7BVhRggrD/n8t23snp7BZ6Q0M9aEny1yiwblGYF
+ N+BFBGyyOSw4jyWMXDQu1xrwF9BWlMmIUkChBVC16GWZbBUCFS6K2SXMmGzSR85EfKNcC6Sedd5
+ 2ZEyAqhxBbnA6JEO4g7STKiGya/ibA9kCfNgyyIvJbnuxTP17F432rBQQ0BCvFOwpw==
+X-Received: by 2002:a17:907:c21:b0:c2d:cdc6:827e with SMTP id
+ a640c23a62f3a-c31aa0a2ce0mr1864751066b.41.1792057100205; Thu, 15 Oct 2026
+ 02:38:20 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: rr3STks5PvC78/5kBaY6kMj8m5aa38UpHRb1dN9F903EJuOOF51O7qyY6zQhAO2elZ4eonPJETWyx7ubgpAKnr9xQrvJkludImLGlQVKtUIM+cAdqyzKqk9swaT4huefQx1cT8i9b8Se/MuKGTTLkUy+6svHEuaradAdHkugwrSQdk+PE5WlXYkrVNMpnhBgJeRVA3V+K/dEmL6RmJS5WLUcNsqY/byeItimmIZoNm0oclS4cBLAODfThSX/S36zmB8EqFBk69Q9G17qlqYt/rFiFMlAf3Ml7UhxUyosKubt5l3yoQ6ai+hV0nbfOXwJqtxq3+W1iYVyWKZmNWHoyQ==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 756b9227-d947-48d9-4f8e-08df2a9f7cbd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Oct 2026 09:34:19.0691 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7Db24XSkuuwXkUKJBBOtWl7GOnUf7fPkP853UKkM+iXKEKweiJm1TYyBIdL8nJFrj6OWTjbRXtqO5ItqRBs2iw9y5tUXeey8Xvm8ANVaND8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB5527
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+References: <20261015044104.879-1-luoyonggang@gmail.com>
+ <CAFEAcA8n9E1jpcOCat0kzv0Q++x7YwK_MNJBJ0qGdtX1-As4zg@mail.gmail.com>
+In-Reply-To: <CAFEAcA8n9E1jpcOCat0kzv0Q++x7YwK_MNJBJ0qGdtX1-As4zg@mail.gmail.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Thu, 15 Oct 2026 17:38:07 +0800
+X-Gm-Features: AclHuK8ImpVzSLpzl3F37S2gKdr6BmHMTgfbVwm-E2c2iARD0v6BZKeBj8njzKc
+Message-ID: <CAE2XoE-fgq_c9qONyvfbNi3Ys_hv7yKvGCkk+Wz+rHPW0p65Eg@mail.gmail.com>
+Subject: Re: [PATCH] target-info: dispatch CPU QMP, dump, monitor,
+ and Angel semihosting
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-riscv@nongnu.org, 
+ David Hildenbrand <david@kernel.org>, Glenn Miles <milesg@linux.ibm.com>,
+ Zhao Liu <zhao1.liu@intel.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
+ Cornelia Huck <cohuck@redhat.com>, Weiwei Li <liwei1518@gmail.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Bibo Mao <maobibo@loongson.cn>, Artyom Tarasenko <atar4qemu@gmail.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, Song Gao <17746591750@163.com>, 
+ Chinmay Rath <rathc@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Brian Cain <brian.cain@oss.qualcomm.com>, Aleksandar Rikalo <arikalo@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eric Farman <farman@linux.ibm.com>, 
+ Philippe Mathieu-Daude <philmd@mailo.com>, Xianglai Li <lixianglai@loongson.cn>,
+ Chao Liu <chao.liu@processmission.com>, qemu-s390x@nongnu.org, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Laurent Vivier <laurent@vivier.eu>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,55 +144,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-usb_claim_port() inserts a usb-hub when a device is plugged in and only=0A=
-one port is still free, so that more devices can follow. That is what a=0A=
-host controller with root ports wants.=0A=
-=0A=
-It is wrong for a transport that carries exactly one device. The hub=0A=
-takes the last port, and the device that was being plugged in ends up=0A=
-behind the hub instead of on the port the controller watches.=0A=
-=0A=
-Add no_auto_hub for such a bus. It keeps the ports it registered, and=0A=
--device fails with "no free ports" once they are used up.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>=0A=
----=0A=
- include/hw/usb/usb.h | 1 +=0A=
- hw/usb/bus.c         | 3 ++-=0A=
- 2 files changed, 3 insertions(+), 1 deletion(-)=0A=
-=0A=
-diff --git a/include/hw/usb/usb.h b/include/hw/usb/usb.h=0A=
-index cbd4711933..ab96812adb 100644=0A=
---- a/include/hw/usb/usb.h=0A=
-+++ b/include/hw/usb/usb.h=0A=
-@@ -484,6 +484,7 @@ struct USBBus {=0A=
-     int busnr;=0A=
-     int nfree;=0A=
-     int nused;=0A=
-+    bool no_auto_hub;=0A=
-     QTAILQ_HEAD(, USBPort) free;=0A=
-     QTAILQ_HEAD(, USBPort) used;=0A=
-     QTAILQ_ENTRY(USBBus) next;=0A=
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c=0A=
-index 5cc5ffec33..8a24b1837a 100644=0A=
---- a/hw/usb/bus.c=0A=
-+++ b/hw/usb/bus.c=0A=
-@@ -413,7 +413,8 @@ void usb_claim_port(USBDevice *dev, Error **errp)=0A=
-             return;=0A=
-         }=0A=
-     } else {=0A=
--        if (bus->nfree =3D=3D 1 && strcmp(object_get_typename(OBJECT(dev))=
-, "usb-hub") !=3D 0) {=0A=
-+        if (bus->nfree =3D=3D 1 && !bus->no_auto_hub &&=0A=
-+            strcmp(object_get_typename(OBJECT(dev)), "usb-hub") !=3D 0) {=
-=0A=
-             /* Create a new hub and chain it on */=0A=
-             hub =3D USB_DEVICE(qdev_try_new("usb-hub"));=0A=
-             if (hub) {=0A=
--- =0A=
-2.43.0=0A=
+On Thu, Oct 15, 2026 at 5:20=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+>
+> On Thu, 15 Oct 2026 at 05:41, Yonggang Luo <luoyonggang@gmail.com> wrote:
+> >
+> > Put query-cpu-definitions, dump notes, monitor, and Angel semihosting o=
+n
+> > TargetOps[SYS_EMU_TARGET__MAX] and look up by target_arch().
+> > Keep the table in target-ops.c and with a stub
+> >
+> > - Register with a QEMU_ARCH_* bitmask so shared base-arch objects
+> >   can fill both slots (e.g. QEMU_ARCH_ARM is ARM|AARCH64).
+> > - TARGET_INFO_CPU_OP is type_init. A NULL member means no handler.
+> > - Drop stubs/qmp-cpu.c
+> >        stubs/hmp-cmd-info_tlb.c
+> >        stubs/hmp-cmd-info_mem.c
+> >        stubs/dump.c
+> >
+> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> > ---
+> >  MAINTAINERS                           |  1 -
+> >  hw/core/cpu-system.c                  | 23 ++++++++++
+> >  hw/core/machine-qmp-cmds.c            | 27 ++++++++++++
+> >  include/qemu/target-ops.h             | 59 +++++++++++++++++++++++++
+> >  include/semihosting/common-semi.h     | 63 ++++++++++++++++++++++++---
+> >  meson.build                           |  1 +
+> >  monitor/hmp.c                         | 25 +++++++++++
+> >  stubs/dump.c                          | 27 ------------
+> >  stubs/hmp-cmd-info_mem.c              | 12 -----
+> >  stubs/hmp-cmd-info_tlb.c              | 12 -----
+> >  stubs/meson.build                     |  4 --
+> >  stubs/qmp-cpu.c                       | 21 ---------
+> >  target-ops.c                          | 49 +++++++++++++++++++++
+> >  target/arm/arch_dump.c                |  8 +++-
+> >  target/arm/arm-qmp-cmds.c             | 15 +++++--
+> >  target/arm/common-semi-target.c       | 26 ++++++++---
+> >  target/arm/meson.build                |  7 +--
+> >  target/hexagon/common-semi-target.c   | 26 ++++++++---
+> >  target/i386/arch_dump.c               |  8 +++-
+> >  target/i386/cpu-system.c              | 12 +++--
+> >  target/i386/cpu.c                     |  6 ++-
+> >  target/i386/monitor.c                 |  8 +++-
+> >  target/loongarch/arch_dump.c          |  8 +++-
+> >  target/loongarch/loongarch-qmp-cmds.c | 15 +++++--
+> >  target/m68k/monitor.c                 |  4 +-
+> >  target/mips/system/mips-qmp-cmds.c    | 15 +++----
+> >  target/ppc/arch_dump.c                |  8 +++-
+> >  target/ppc/monitor.c                  |  4 +-
+> >  target/ppc/ppc-qmp-cmds.c             | 15 +++----
+> >  target/riscv/arch_dump.c              |  8 +++-
+> >  target/riscv/common-semi-target.c     | 28 ++++++++----
+> >  target/riscv/meson.build              |  4 +-
+> >  target/riscv/monitor.c                |  4 +-
+> >  target/riscv/riscv-qmp-cmds.c         | 15 +++++--
+> >  target/s390x/arch_dump.c              |  8 +++-
+> >  target/s390x/cpu_models_system.c      | 15 +++++--
+> >  target/sh4/monitor.c                  |  4 +-
+> >  target/sparc/monitor.c                |  4 +-
+> >  target/xtensa/monitor.c               |  4 +-
+> >  39 files changed, 428 insertions(+), 175 deletions(-)
+> >  create mode 100644 include/qemu/target-ops.h
+> >  delete mode 100644 stubs/dump.c
+> >  delete mode 100644 stubs/hmp-cmd-info_mem.c
+> >  delete mode 100644 stubs/hmp-cmd-info_tlb.c
+> >  delete mode 100644 stubs/qmp-cpu.c
+> >  create mode 100644 target-ops.c
+>
+> Too big a patch touching stuff all over the place with
+> insufficient explanation of what it's doing or why.
+
+Oh, sorry, I post is just for demo(DRAFT) for other place to
+reference, but git-publish have no way
+to title it(maybe because I use it wrongly).
+>
+> thanks
+> -- PMM
+
+
+
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 

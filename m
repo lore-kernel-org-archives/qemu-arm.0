@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A33E1CC6B3C
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:23:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25333CC6B34
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:23:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHKTu-0006bV-6m; Thu, 15 Oct 2026 08:22:48 -0400
+	id 1xHKTr-0006Xe-HA; Thu, 15 Oct 2026 08:22:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTd-0006DM-Sl
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:30 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTa-0005x8-AQ
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:26 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTa-0005dO-De
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:29 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTY-0005co-AK
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792066945;
+ s=mimecast20190719; t=1792066943;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TdSDI4L0PkUyATVEQukscE+KxGua2cTbmsX02E7F6Kc=;
- b=MISqT0+KBKhGFlKbTg5Trj2gpOA65B8/Pu1y7Fobnw1kSIb+NyJwIg5FHyhQD+l7T0oY2J
- fRjlmLZDlTWmggmwN3UvEwzTJy1VxsdatFLxcxeOdasZyAhW3aSl8rIFGXnLtZrXSxWChv
- G6aslIY9FMw9Amlq9YAdwbCaP8kbJk8=
+ bh=UbHdsbD+UMw1rg2dwdbPIZly5FNZ2fGF7EZZV6CD/ic=;
+ b=F/ocWLgIYHoEvcImvXvErzjzGyV4AbtDVDZnq4yET25g2ZlZIziUENQq5734vRXRTMd1YS
+ Y5SPX7H2JSSRmk9wm/THVyVb6dUJ8mo3ta3xFu9Ze72a+JKzm5FSjZb469mpvtP3VLBAT5
+ CtluSWOncXx+ts0ljgsNnovyaa6Pvk8=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-394-utoW-PNDPrOLLkUlEonxYg-1; Thu,
- 15 Oct 2026 12:22:22 +0000
-X-MC-Unique: utoW-PNDPrOLLkUlEonxYg-1
-X-Mimecast-MFC-AGG-ID: utoW-PNDPrOLLkUlEonxYg_1792066941
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-48-8LUAOALBMFqTdbmNKMdBdw-1; Thu,
+ 15 Oct 2026 12:22:20 +0000
+X-MC-Unique: 8LUAOALBMFqTdbmNKMdBdw-1
+X-Mimecast-MFC-AGG-ID: 8LUAOALBMFqTdbmNKMdBdw_1792066939
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 63A8F1956076; Thu, 15 Oct 2026 12:22:21 +0000 (UTC)
+ id 4F7A51954235; Thu, 15 Oct 2026 12:22:19 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.67])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BC3907D8; Thu, 15 Oct 2026 12:22:19 +0000 (UTC)
+ id A77827D5; Thu, 15 Oct 2026 12:22:17 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 13/21] hw/arm/aspeed_ast10x0: Use a table for unimplemented
+Subject: [PULL 12/21] hw/arm/aspeed_ast27x0: Use a table for unimplemented
  devices
-Date: Thu, 15 Oct 2026 14:21:43 +0200
-Message-ID: <20261015122151.889017-14-clg@redhat.com>
+Date: Thu, 15 Oct 2026 14:21:42 +0200
+Message-ID: <20261015122151.889017-13-clg@redhat.com>
 In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
 References: <20261015122151.889017-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: Rgo8Y91OYt4oeImVi-kTVLOKlLNv_PZwmSh100PdlXo_1792066941
+X-Mimecast-MFC-PROC-ID: Ez8MNquLo8N71R3_WYbsUaBrkpcAuVkJncv8uKgurnI_1792066939
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -98,131 +98,106 @@ Aspeed2600SoCState also has "udc" as the real UDC model.
 Use the unimp_devs table in AspeedSoCClass to describe the
 unimplemented devices, and use create_unimplemented_devices() to create
 and map them. This makes the code easier to maintain and read. Convert
-AST1030/AST1060 to use them.
-
-This also fixes a type mismatch. AST10x0 used the "pwm" field
-(AspeedPWMState) and the "sgpiom" field (AspeedSGPIOState array) to
-create unimplemented devices. They are not used for that anymore.
+AST2700 to use them.
 
 No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20261012064445.2571633-6-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20261012064445.2571633-5-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast10x0.c | 55 +++++++++++------------------------------
- 1 file changed, 15 insertions(+), 40 deletions(-)
+ hw/arm/aspeed_ast27x0.c | 41 ++++++++++++-----------------------------
+ 1 file changed, 12 insertions(+), 29 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index aeb5a4423dd3..07908597351a 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -17,8 +17,6 @@
- #include "hw/misc/unimp.h"
- #include "hw/arm/aspeed_soc.h"
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 6365dbd638b5..2ef29e31e9a5 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -24,10 +24,6 @@
+ #include "qobject/qlist.h"
+ #include "qemu/log.h"
  
--#define ASPEED_SOC_IOMEM_SIZE 0x00200000
+-#define AST2700_SOC_IO_SIZE          0x00FE0000
+-#define AST2700_SOC_IOMEM_SIZE       0x01000000
+-#define AST2700_SOC_DPMCU_SIZE       0x00040000
 -
- static const hwaddr aspeed_soc_ast1030_memmap[] = {
-     [ASPEED_DEV_SRAM0]     = 0x00000000,
-     [ASPEED_DEV_SRAM1]     = 0x79000000, /* SEC SRAM */
-@@ -99,6 +97,17 @@ static const int aspeed_soc_ast1030_irqmap[] = {
-     [ASPEED_DEV_JTAG1]     = 53,
+ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_VBOOTROM]  =  0x00000000,
+     [ASPEED_DEV_IOMEM]     =  0x00020000,
+@@ -263,6 +259,14 @@ static const struct gic_intc_irq_info ast2700_gic_intcmap[] = {
+     {201, 3, 1, ast2700_gic201_intcmap},
  };
  
-+static const UnimplementedDeviceConfig aspeed_soc_ast10x0_unimp_devs[] = {
-+    { "iomem", "aspeed.io", 0x7E600000, 0x00200000, -1000 },
-+    { "pwm", "aspeed.pwm", 0x7E610000, 0x100, -1000 },
-+    { "espi", "aspeed.espi", 0x7E6EE000, 0x800, -1000 },
-+    { "udc", "aspeed.udc", 0x7E6A2000, 0x1000, -1000 },
-+    { "sgpiom", "aspeed.sgpiom", 0x7E780500, 0x100, -1000 },
-+    { "jtag[0]", "aspeed.jtag0", 0x7E6E4000, 0x20, -1000 },
-+    { "jtag[1]", "aspeed.jtag1", 0x7E6E4100, 0x20, -1000 },
++static const UnimplementedDeviceConfig aspeed_soc_ast2700_unimp_devs[] = {
++    { "dpmcu", "aspeed.dpmcu", 0x11000000, 0x00040000, -1000 },
++    { "iomem", "aspeed.io", 0x00020000, 0x00FE0000, -1000 },
++    { "iomem0", "aspeed.iomem0", 0x12000000, 0x01000000, -1000 },
++    { "iomem1", "aspeed.iomem1", 0x14000000, 0x01000000, -1000 },
 +    { }
 +};
 +
- static qemu_irq aspeed_soc_ast1030_get_irq(AspeedSoCState *s, int dev)
+ static qemu_irq aspeed_soc_ast2700_get_irq(AspeedSoCState *s, int dev)
  {
-     Aspeed10x0SoCState *a = ASPEED10X0_SOC(s);
-@@ -161,17 +170,6 @@ static void aspeed_soc_ast10x0_init(Object *obj, const char *socname)
- 
-     snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-     object_initialize_child(obj, "hace", &s->hace, typename);
+     Aspeed27x0SoCState *a = ASPEED27X0_SOC(s);
+@@ -558,15 +562,6 @@ static void aspeed_soc_ast2700_init(Object *obj)
+         qdev_prop_set_uint32(DEVICE(&s->ioexp[i]), "silicon-rev",
+                              sc->silicon_rev);
+     }
 -
--    object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
--    object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
--    object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
--    object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
--    object_initialize_child(obj, "sgpiom", &s->sgpiom,
+-    object_initialize_child(obj, "dpmcu", &s->dpmcu,
 -                            TYPE_UNIMPLEMENTED_DEVICE);
--    object_initialize_child(obj, "jtag[0]", &s->jtag[0],
+-    object_initialize_child(obj, "iomem", &s->iomem,
 -                            TYPE_UNIMPLEMENTED_DEVICE);
--    object_initialize_child(obj, "jtag[1]", &s->jtag[1],
+-    object_initialize_child(obj, "iomem0", &s->iomem0,
+-                            TYPE_UNIMPLEMENTED_DEVICE);
+-    object_initialize_child(obj, "iomem1", &s->iomem1,
 -                            TYPE_UNIMPLEMENTED_DEVICE);
  }
  
- static void aspeed_soc_ast1030_init(Object *obj)
-@@ -215,11 +213,8 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
-         return false;
+ /*
+@@ -1137,22 +1132,8 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+         }
      }
  
--    /* General I/O memory space to catch all unimplemented device */
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu),
+-                                  "aspeed.dpmcu",
+-                                  sc->memmap[ASPEED_DEV_DPMCU],
+-                                  AST2700_SOC_DPMCU_SIZE);
 -    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->iomem),
 -                                  "aspeed.io",
 -                                  sc->memmap[ASPEED_DEV_IOMEM],
--                                  ASPEED_SOC_IOMEM_SIZE);
+-                                  AST2700_SOC_IO_SIZE);
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->iomem0),
+-                                  "aspeed.iomem0",
+-                                  sc->memmap[ASPEED_DEV_IOMEM0],
+-                                  AST2700_SOC_IOMEM_SIZE);
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->iomem1),
+-                                  "aspeed.iomem1",
+-                                  sc->memmap[ASPEED_DEV_IOMEM1],
+-                                  AST2700_SOC_IOMEM_SIZE);
 +    /* Unimplemented devices */
 +    create_unimplemented_devices(OBJECT(s), s->memory, sc->unimp_devs);
-     /* AST10x0 CPU Core */
-     armv7m = DEVICE(&a->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);
-@@ -394,28 +389,6 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-                        aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_GPIO));
- 
--    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),
--                                  "aspeed.pwm",
--                                  sc->memmap[ASPEED_DEV_PWM], 0x100);
--
--    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->espi),
--                                  "aspeed.espi",
--                                  sc->memmap[ASPEED_DEV_ESPI], 0x800);
--
--    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->udc),
--                                  "aspeed.udc",
--                                  sc->memmap[ASPEED_DEV_UDC], 0x1000);
--    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->sgpiom),
--                                  "aspeed.sgpiom",
--                                  sc->memmap[ASPEED_DEV_SGPIOM0], 0x100);
--
--    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[0]),
--                                  "aspeed.jtag",
--                                  sc->memmap[ASPEED_DEV_JTAG0], 0x20);
--    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[1]),
--                                  "aspeed.jtag",
--                                  sc->memmap[ASPEED_DEV_JTAG1], 0x20);
--
-     return true;
  }
  
-@@ -503,6 +476,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, const void *data)
-     sc->uarts_base = ASPEED_DEV_UART1;
-     sc->irqmap = aspeed_soc_ast1030_irqmap;
-     sc->memmap = aspeed_soc_ast1030_memmap;
-+    sc->unimp_devs = aspeed_soc_ast10x0_unimp_devs;
-     sc->num_cpus = 1;
+ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
+@@ -1183,6 +1164,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
+     sc->uarts_base   = ASPEED_DEV_UART0;
+     sc->irqmap       = aspeed_soc_ast2700a1_irqmap;
+     sc->memmap       = aspeed_soc_ast2700_memmap;
++    sc->unimp_devs   = aspeed_soc_ast2700_unimp_devs;
  }
  
-@@ -529,6 +503,7 @@ static void aspeed_soc_ast1060_class_init(ObjectClass *klass, const void *data)
-     sc->uarts_base = ASPEED_DEV_UART5;
-     sc->irqmap = aspeed_soc_ast1030_irqmap;
-     sc->memmap = aspeed_soc_ast1030_memmap;
-+    sc->unimp_devs = aspeed_soc_ast10x0_unimp_devs;
-     sc->num_cpus = 1;
+ static void aspeed_soc_ast2700a2_class_init(ObjectClass *oc, const void *data)
+@@ -1213,6 +1195,7 @@ static void aspeed_soc_ast2700a2_class_init(ObjectClass *oc, const void *data)
+     sc->uarts_base   = ASPEED_DEV_UART0;
+     sc->irqmap       = aspeed_soc_ast2700a1_irqmap;
+     sc->memmap       = aspeed_soc_ast2700_memmap;
++    sc->unimp_devs   = aspeed_soc_ast2700_unimp_devs;
  }
  
+ static const TypeInfo aspeed_soc_ast27x0_types[] = {
 -- 
 2.56.0
 

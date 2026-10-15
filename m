@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C4E4CC6B3C
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:22:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79B73CC6B33
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:22:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHKTN-00058f-SV; Thu, 15 Oct 2026 08:22:14 -0400
+	id 1xHKTS-0005V4-5A; Thu, 15 Oct 2026 08:22:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTK-0004x6-6I
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:10 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTO-00058l-6G
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTI-0005Yg-8w
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:09 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTM-0005Za-8T
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792066927;
+ s=mimecast20190719; t=1792066931;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9M2xBgQWPWaVKo67VqFCMKG1rJuA68OyjWlVr/7Q7pw=;
- b=NqgeHjRO9kW2NCG4akZ/Z9xWBd2iIqwyAxcAK53+OJ5gAcMmUcrpzONh5JjHPxhfDpoIT5
- KXy92s2aFrrniOxPO9Y+PVJkA5dashp9BBJDxZDS+UtQ2BNgQDx3DWNBhn/lCY/DGYXfae
- zPr2mybNds/KWvjgeletJkd/xeWhs1w=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=ARFFXC2/ymVhZH3WtCkVYfkqKj6V6tiDGlg5gQ88kqU=;
+ b=QpSL/51+YK2not95kvnvk9v3f6tdqRToGfr45iygZRiNodIFOwm8p/73fEJpSX5VtJJf0F
+ F9PePzlRj4wT4TY4xkBe0sfkyou2NFHfVxsW22FI8g5UHpKqDBSfpAUCw4uZP3yIITsx+B
+ sX03l2UFKHTvWrceC5Gxj3gKCXX9hm4=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-625-eLSo1SugP4KErEfol1qAYQ-1; Thu,
- 15 Oct 2026 12:22:06 +0000
-X-MC-Unique: eLSo1SugP4KErEfol1qAYQ-1
-X-Mimecast-MFC-AGG-ID: eLSo1SugP4KErEfol1qAYQ_1792066925
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-345-6kj69M9XPBueJhI7ItblLA-1; Thu,
+ 15 Oct 2026 12:22:08 +0000
+X-MC-Unique: 6kj69M9XPBueJhI7ItblLA-1
+X-Mimecast-MFC-AGG-ID: 6kj69M9XPBueJhI7ItblLA_1792066927
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 37AFE1944D20; Thu, 15 Oct 2026 12:22:05 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 12E221801352; Thu, 15 Oct 2026 12:22:07 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.67])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C9B4F7D8; Thu, 15 Oct 2026 12:22:03 +0000 (UTC)
+ id A374A7D8; Thu, 15 Oct 2026 12:22:05 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Kane Chen <kane_chen@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 05/21] hw/misc/aspeed_sbc: Derive secure boot state from OTP
- config
-Date: Thu, 15 Oct 2026 14:21:35 +0200
-Message-ID: <20261015122151.889017-6-clg@redhat.com>
+Subject: [PULL 06/21] hw/arm/aspeed: Sort device IDs alphabetically
+Date: Thu, 15 Oct 2026 14:21:36 +0200
+Message-ID: <20261015122151.889017-7-clg@redhat.com>
 In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
 References: <20261015122151.889017-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: XIBkbOinRbY5OR2euMmjnInfOT4b2d2VjiOxbioVhb0_1792066925
+X-Mimecast-MFC-PROC-ID: 4yA10ENGzjpEK8O_jax51yqU7sYQpN8PdUwpZxYHbHY_1792066927
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 10
-X-Spam_score: 1.0
-X-Spam_bar: +
-X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,97 +85,234 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Kane Chen <kane_chen@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The secure boot state is currently controlled by the
-"signing-settings" machine property instead of the OTP configuration.
+The ASPEED device ID enum has grown over time without a consistent
+ordering rule. This makes it difficult to determine where new device
+IDs should be added and reduces readability and maintainability as
+more devices are introduced.
 
-Derive SECURE_BOOT_EN and R_QSR from the OTP configuration when the
-registers are read.
+Sort the device IDs alphabetically to provide a consistent ordering
+rule. Keep related numbered devices together, such as SPI0, SPI1 and
+SPI2.
 
-Remove the "signing-settings" property as the secure boot state is now
-derived from OTP.
+No functional change.
 
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260918065347.3713868-4-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20261005020428.3496039-2-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/misc/aspeed_sbc.h |  2 --
- hw/misc/aspeed_sbc.c         | 22 +++++++++++++---------
- 2 files changed, 13 insertions(+), 11 deletions(-)
+ include/hw/arm/aspeed_soc.h | 176 ++++++++++++++++++------------------
+ 1 file changed, 88 insertions(+), 88 deletions(-)
 
-diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-index b210ffb8aa86..7f3fa7062f96 100644
---- a/include/hw/misc/aspeed_sbc.h
-+++ b/include/hw/misc/aspeed_sbc.h
-@@ -32,8 +32,6 @@ OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
- struct AspeedSBCState {
-     SysBusDevice parent;
- 
--    uint32_t signing_settings;
--
-     MemoryRegion iomem;
- 
-     uint32_t regs[ASPEED_SBC_NR_REGS];
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-index 6cec9ad3daf0..ad4c2b4b1d0c 100644
---- a/hw/misc/aspeed_sbc.c
-+++ b/hw/misc/aspeed_sbc.c
-@@ -79,6 +79,8 @@
- #define MODE_REGISTER_A             (0x3000)
- #define MODE_REGISTER_B             (0x5000)
- 
-+static bool aspeed_sbc_otp_read(AspeedSBCState *s, uint32_t otp_addr);
-+
- static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
- {
-     AspeedSBCState *s = ASPEED_SBC(opaque);
-@@ -102,8 +104,16 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
-             val &= ~ABR_EN;
-         }
- 
-+        if (aspeed_otp_read_config(&s->otp, 0) & BIT(1)) {
-+            val |= SECURE_BOOT_EN;
-+        } else {
-+            val &= ~SECURE_BOOT_EN;
-+        }
-+
-         return val;
-     }
-+    case R_QSR:
-+        return aspeed_otp_read_config(&s->otp, 0);
-     default:
-         return s->regs[addr];
-     }
-@@ -406,16 +416,11 @@ static void aspeed_sbc_reset_hold(Object *obj, ResetType type)
-     memset(s->regs, 0, sizeof(s->regs));
- 
-     /*
--     * ABR_EN is derived from OTP on every read, see aspeed_sbc_read().
--     * Set secure boot enabled with RSA4096_SHA256.
-+     * ABR_EN and SECURE_BOOT_EN are derived from OTP on every read, see
-+     * aspeed_sbc_read(), since the SBC status register is just a
-+     * reflection of the OTP fuse state.
-      */
-     s->regs[R_STATUS] = OTP_IDLE | OTP_MEM_IDLE;
--
--    if (s->signing_settings) {
--        s->regs[R_STATUS] &= SECURE_BOOT_EN;
--    }
--
--    s->regs[R_QSR] = s->signing_settings;
- }
- 
- static void aspeed_sbc_instance_init(Object *obj)
-@@ -468,7 +473,6 @@ static const VMStateDescription vmstate_aspeed_sbc = {
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 38226d9b8049..a11038574338 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -195,64 +195,56 @@ struct AspeedSoCClass {
  };
  
- static const Property aspeed_sbc_properties[] = {
--    DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_settings, 0),
-     DEFINE_PROP_LINK("sram", AspeedSBCState, sram,
-                      TYPE_MEMORY_REGION, MemoryRegion *),
+ enum {
+-    ASPEED_DEV_VBOOTROM,
+-    ASPEED_DEV_SPI_BOOT,
+-    ASPEED_DEV_IOMEM,
+-    ASPEED_DEV_IOMEM0,
+-    ASPEED_DEV_IOMEM1,
+-    ASPEED_DEV_UART0,
+-    ASPEED_DEV_UART1,
+-    ASPEED_DEV_UART2,
+-    ASPEED_DEV_UART3,
+-    ASPEED_DEV_UART4,
+-    ASPEED_DEV_UART5,
+-    ASPEED_DEV_UART6,
+-    ASPEED_DEV_UART7,
+-    ASPEED_DEV_UART8,
+-    ASPEED_DEV_UART9,
+-    ASPEED_DEV_UART10,
+-    ASPEED_DEV_UART11,
+-    ASPEED_DEV_UART12,
+-    ASPEED_DEV_UART13,
+-    ASPEED_DEV_VUART,
+-    ASPEED_DEV_FMC,
+-    ASPEED_DEV_SPI0,
+-    ASPEED_DEV_SPI1,
+-    ASPEED_DEV_SPI2,
++    ASPEED_DEV_ACRY,
++    ASPEED_DEV_ADC,
++    ASPEED_DEV_DP,
++    ASPEED_DEV_DPMCU,
+     ASPEED_DEV_EHCI1,
+     ASPEED_DEV_EHCI2,
+     ASPEED_DEV_EHCI3,
+     ASPEED_DEV_EHCI4,
+-    ASPEED_DEV_VIC,
+-    ASPEED_DEV_INTC,
+-    ASPEED_DEV_INTCIO,
+-    ASPEED_DEV_SDMC,
+-    ASPEED_DEV_SCU,
+-    ASPEED_DEV_ADC,
+-    ASPEED_DEV_SBC,
++    ASPEED_DEV_EMMC,
+     ASPEED_DEV_EMMC_BC,
+-    ASPEED_DEV_VIDEO,
+-    ASPEED_DEV_SRAM0,
+-    ASPEED_DEV_SRAM1,
+-    ASPEED_DEV_SDHCI,
++    ASPEED_DEV_ESPI,
++    ASPEED_DEV_ETH1,
++    ASPEED_DEV_ETH2,
++    ASPEED_DEV_ETH3,
++    ASPEED_DEV_ETH4,
++    ASPEED_DEV_FMC,
++    ASPEED_DEV_FSI1,
++    ASPEED_DEV_FSI2,
+     ASPEED_DEV_GPIO,
+     ASPEED_DEV_GPIO_1_8V,
+-    ASPEED_DEV_SGPIOM0,
+-    ASPEED_DEV_SGPIOM1,
+-    ASPEED_DEV_RTC,
+-    ASPEED_DEV_TIMER1,
+-    ASPEED_DEV_TIMER2,
+-    ASPEED_DEV_TIMER3,
+-    ASPEED_DEV_TIMER4,
+-    ASPEED_DEV_TIMER5,
+-    ASPEED_DEV_TIMER6,
+-    ASPEED_DEV_TIMER7,
+-    ASPEED_DEV_TIMER8,
+-    ASPEED_DEV_WDT,
+-    ASPEED_DEV_PWM,
+-    ASPEED_DEV_LPC,
+-    ASPEED_DEV_IBT,
++    ASPEED_DEV_HACE,
+     ASPEED_DEV_I2C,
++    ASPEED_DEV_I3C,
++    ASPEED_DEV_IBT,
++    ASPEED_DEV_INTC,
++    ASPEED_DEV_INTCIO,
++    ASPEED_DEV_IOMEM,
++    ASPEED_DEV_IOMEM0,
++    ASPEED_DEV_IOMEM1,
++    ASPEED_DEV_IOEXP0_I2C,
++    ASPEED_DEV_IOEXP1_I2C,
++    ASPEED_DEV_IOEXP0_I3C,
++    ASPEED_DEV_IOEXP1_I3C,
++    ASPEED_DEV_IOEXP0_INTCIO,
++    ASPEED_DEV_IOEXP1_INTCIO,
++    ASPEED_DEV_IPC0,
++    ASPEED_DEV_IPC1,
++    ASPEED_DEV_JTAG0,
++    ASPEED_DEV_JTAG1,
++    ASPEED_DEV_KCS,
++    ASPEED_DEV_LPC,
++    ASPEED_DEV_LTPI_CTRL1,
++    ASPEED_DEV_LTPI_CTRL2,
++    ASPEED_DEV_LTPI_IO0,
++    ASPEED_DEV_LTPI_IO1,
++    ASPEED_DEV_MII1,
++    ASPEED_DEV_MII2,
++    ASPEED_DEV_MII3,
++    ASPEED_DEV_MII4,
++    ASPEED_DEV_OTP,
+     ASPEED_DEV_PCIE0,
+     ASPEED_DEV_PCIE1,
+     ASPEED_DEV_PCIE2,
+@@ -263,49 +255,57 @@ enum {
+     ASPEED_DEV_PCIE_MMIO1,
+     ASPEED_DEV_PCIE_MMIO2,
+     ASPEED_DEV_PECI,
+-    ASPEED_DEV_ETH1,
+-    ASPEED_DEV_ETH2,
+-    ASPEED_DEV_ETH3,
+-    ASPEED_DEV_ETH4,
+-    ASPEED_DEV_MII1,
+-    ASPEED_DEV_MII2,
+-    ASPEED_DEV_MII3,
+-    ASPEED_DEV_MII4,
+-    ASPEED_DEV_SDRAM,
+-    ASPEED_DEV_XDMA,
+-    ASPEED_DEV_EMMC,
+-    ASPEED_DEV_KCS,
+-    ASPEED_DEV_HACE,
+-    ASPEED_DEV_ACRY,
+-    ASPEED_DEV_DPMCU,
+-    ASPEED_DEV_DP,
+-    ASPEED_DEV_I3C,
+-    ASPEED_DEV_ESPI,
+-    ASPEED_DEV_UDC,
+-    ASPEED_DEV_JTAG0,
+-    ASPEED_DEV_JTAG1,
+-    ASPEED_DEV_FSI1,
+-    ASPEED_DEV_FSI2,
++    ASPEED_DEV_PRIC0,
++    ASPEED_DEV_PRIC1,
++    ASPEED_DEV_PWM,
++    ASPEED_DEV_RTC,
++    ASPEED_DEV_SBC,
++    ASPEED_DEV_SCU,
+     ASPEED_DEV_SCUIO,
++    ASPEED_DEV_SDHCI,
++    ASPEED_DEV_SDMC,
++    ASPEED_DEV_SDRAM,
++    ASPEED_DEV_SGPIOM0,
++    ASPEED_DEV_SGPIOM1,
+     ASPEED_DEV_SLI,
+     ASPEED_DEV_SLIIO,
++    ASPEED_DEV_SPI_BOOT,
++    ASPEED_DEV_SPI0,
++    ASPEED_DEV_SPI1,
++    ASPEED_DEV_SPI2,
++    ASPEED_DEV_SRAM0,
++    ASPEED_DEV_SRAM1,
++    ASPEED_DEV_TIMER1,
++    ASPEED_DEV_TIMER2,
++    ASPEED_DEV_TIMER3,
++    ASPEED_DEV_TIMER4,
++    ASPEED_DEV_TIMER5,
++    ASPEED_DEV_TIMER6,
++    ASPEED_DEV_TIMER7,
++    ASPEED_DEV_TIMER8,
++    ASPEED_DEV_UART0,
++    ASPEED_DEV_UART1,
++    ASPEED_DEV_UART2,
++    ASPEED_DEV_UART3,
++    ASPEED_DEV_UART4,
++    ASPEED_DEV_UART5,
++    ASPEED_DEV_UART6,
++    ASPEED_DEV_UART7,
++    ASPEED_DEV_UART8,
++    ASPEED_DEV_UART9,
++    ASPEED_DEV_UART10,
++    ASPEED_DEV_UART11,
++    ASPEED_DEV_UART12,
++    ASPEED_DEV_UART13,
++    ASPEED_DEV_UDC,
++    ASPEED_DEV_VBOOTROM,
++    ASPEED_DEV_VIC,
++    ASPEED_DEV_VIDEO,
++    ASPEED_DEV_VUART,
++    ASPEED_DEV_WDT,
++    ASPEED_DEV_XDMA,
+     ASPEED_GIC_DIST,
+     ASPEED_GIC_REDIST,
+-    ASPEED_DEV_IPC0,
+-    ASPEED_DEV_IPC1,
+-    ASPEED_DEV_LTPI_CTRL1,
+-    ASPEED_DEV_LTPI_CTRL2,
+-    ASPEED_DEV_LTPI_IO0,
+-    ASPEED_DEV_LTPI_IO1,
+-    ASPEED_DEV_IOEXP0_I2C,
+-    ASPEED_DEV_IOEXP1_I2C,
+-    ASPEED_DEV_IOEXP0_INTCIO,
+-    ASPEED_DEV_IOEXP1_INTCIO,
+-    ASPEED_DEV_IOEXP0_I3C,
+-    ASPEED_DEV_IOEXP1_I3C,
+-    ASPEED_DEV_PRIC0,
+-    ASPEED_DEV_PRIC1,
+-    ASPEED_DEV_OTP,
  };
+ 
+ const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
 -- 
 2.56.0
 

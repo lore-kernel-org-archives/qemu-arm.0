@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55835CC6B34
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:24:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71983CC6B34
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Oct 2026 12:24:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHKTZ-0005s0-86; Thu, 15 Oct 2026 08:22:25 -0400
+	id 1xHKTK-0004xC-5a; Thu, 15 Oct 2026 08:22:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTU-0005YX-BJ
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:20 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTG-0004ox-LN
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:06 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTS-0005bU-Cw
- for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:20 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xHKTE-0005XI-LS
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2026 08:22:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792066937;
+ s=mimecast20190719; t=1792066924;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uNoELrlgMsrXFiUnOLWVdQdQwMaebCX35+/HiwhaaW0=;
- b=WS/nMZ6lj3uYSXk8zjSvDE+fBRsEMJFMp3x9j6Se7eYkM4omFLM5hqHa9/idbA5E1sUoay
- x90pS2h+xG6McW482a6B6n1oXntcZUf4grI9Ugk3Jxv2jKeIGdImYzbwf32uT4XgTLudNa
- X1DvlfcRB/6367jWvIflm4mF6xuYg+k=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=CkRVfEpXYMnyfG9yh5h4tsLjoXXIzPwfDpnhTe/js40=;
+ b=M1moKxWcccXLjmpAIE2kyc+BUlBL/CZKnL8J9Ui/6xSWbLicSJLW0SCOOvF9TYEPEkdi6P
+ xje0fYkkvnTruunqbA65yV78KMe6FNURwgn4pI1tc+FDNW0gsN1gPgL2b1CWBesB5ERcOp
+ 80EqD7jcS1EqznB6YtRjmikeREN3Nj0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-608-XgBs26-VNJeLWQcVFCZsBQ-1; Thu,
- 15 Oct 2026 12:22:14 +0000
-X-MC-Unique: XgBs26-VNJeLWQcVFCZsBQ-1
-X-Mimecast-MFC-AGG-ID: XgBs26-VNJeLWQcVFCZsBQ_1792066933
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-252-tR66jFoRPXqP7sAsRkSNSQ-1; Thu,
+ 15 Oct 2026 12:22:00 +0000
+X-MC-Unique: tR66jFoRPXqP7sAsRkSNSQ-1
+X-Mimecast-MFC-AGG-ID: tR66jFoRPXqP7sAsRkSNSQ_1792066919
 Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2A9081955F0C; Thu, 15 Oct 2026 12:22:13 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4E0D71956072; Thu, 15 Oct 2026 12:21:59 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.67])
  by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6DF817D9; Thu, 15 Oct 2026 12:22:11 +0000 (UTC)
+ id 5BB8A7D5; Thu, 15 Oct 2026 12:21:57 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 09/21] hw/misc/unimp: Add create_unimplemented_devices() helper
-Date: Thu, 15 Oct 2026 14:21:39 +0200
-Message-ID: <20261015122151.889017-10-clg@redhat.com>
+Subject: [PULL 02/21] tests/qtest/aspeed-acry: Allocate SRAM buffers on the
+ heap
+Date: Thu, 15 Oct 2026 14:21:32 +0200
+Message-ID: <20261015122151.889017-3-clg@redhat.com>
 In-Reply-To: <20261015122151.889017-1-clg@redhat.com>
 References: <20261015122151.889017-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: FkYzNXK-iL8r_jCxDPuw58NnaZu35MPpaFN3SQEZv5c_1792066933
+X-Mimecast-MFC-PROC-ID: 8Y45UB3TzOp5YQSYl2Fw79ifG1cwVMGoemIpKGN7UKs_1792066919
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,87 +90,55 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Several boards and SoCs create many unimplemented devices. Each of them
-uses its own structure and helper to describe and map these devices.
+The ACRY RSA qtest allocates two ACRY_SRAM_SIZE buffers on the
+stack. Since each buffer is nearly 9 KiB, this unnecessarily increases
+the stack usage of test_modexp_rsa() and may cause unexpected failures
+on environments with a limited stack size.
 
-Add an UnimplementedDeviceConfig structure and a
-create_unimplemented_devices() helper. The helper creates an
-unimplemented device for each entry of a table, adds it as a QOM child
-of the parent object, and maps it in a memory region container with
-the given priority. The table is terminated by an empty entry.
+This reduces the stack usage while preserving the existing test
+behavior.
 
-Suggested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20261012064445.2571633-2-jamin_lin@aspeedtech.com
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Link: https://lore.kernel.org/qemu-devel/20260910012422.4065857-1-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/misc/unimp.h | 21 +++++++++++++++++++++
- hw/misc/unimp.c         | 20 ++++++++++++++++++++
- 2 files changed, 41 insertions(+)
+ tests/qtest/aspeed-acry-test.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/misc/unimp.h b/include/hw/misc/unimp.h
-index 77a5077511f2..073575159d60 100644
---- a/include/hw/misc/unimp.h
-+++ b/include/hw/misc/unimp.h
-@@ -25,6 +25,27 @@ struct UnimplementedDeviceState {
-     uint64_t size;
- };
+diff --git a/tests/qtest/aspeed-acry-test.c b/tests/qtest/aspeed-acry-test.c
+index ec348c220664..51048d697cf6 100644
+--- a/tests/qtest/aspeed-acry-test.c
++++ b/tests/qtest/aspeed-acry-test.c
+@@ -327,8 +327,8 @@ static void test_modexp_rsa(const void *opaque)
+         .alg = QCRYPTO_AK_CIPHER_ALGO_RSA,
+         .u.rsa.padding_alg = QCRYPTO_RSA_PADDING_ALGO_RAW,
+     };
+-    uint8_t dram_buf[ACRY_SRAM_SIZE] = { 0 };
+-    uint8_t sram_buf[ACRY_SRAM_SIZE] = { 0 };
++    g_autofree uint8_t *dram_buf = g_malloc0(ACRY_SRAM_SIZE);
++    g_autofree uint8_t *sram_buf = g_malloc0(ACRY_SRAM_SIZE);
+     uint8_t result[ACRY_MAX_BYTES] = { 0 };
+     QTestState *qts;
  
-+typedef struct UnimplementedDeviceConfig {
-+    const char *qom_name;
-+    const char *region_name;
-+    uint64_t offset;
-+    uint64_t size;
-+    int priority;
-+} UnimplementedDeviceConfig;
-+
-+/**
-+ * create_unimplemented_devices:
-+ * @parentobj: the parent object
-+ * @container: a #MemoryRegion within which @addr is a relative address
-+ * @devconfigs: NULL terminated array of #UnimplementedDeviceConfig
-+ *
-+ * For each entries in @devconfigs, create a TYPE_UNIMPLEMENTED_DEVICE
-+ * and mmap it in @container at UnimplementedDeviceConfig::offset.
-+ * @container is expected to be a QOM child of @parentobj.
-+ */
-+void create_unimplemented_devices(Object *parentobj, MemoryRegion *container,
-+                                  const UnimplementedDeviceConfig *devconfigs);
-+
- /**
-  * create_unimplemented_device: create and map a dummy device
-  * @name: name of the device for debug logging
-diff --git a/hw/misc/unimp.c b/hw/misc/unimp.c
-index 521b84bf20bf..4c8dcbdff336 100644
---- a/hw/misc/unimp.c
-+++ b/hw/misc/unimp.c
-@@ -96,3 +96,23 @@ static void unimp_register_types(void)
- }
+@@ -345,7 +345,7 @@ static void test_modexp_rsa(const void *opaque)
+     put_bignum_be_bytes(dram_buf, ACRY_MOD_OFFSET, t->n, t->n_len);
+     put_bignum_be_bytes(dram_buf, ACRY_DATA_OFFSET, t->m, t->m_len);
  
- type_init(unimp_register_types)
-+
-+void create_unimplemented_devices(Object *parentobj, MemoryRegion *container,
-+                                  const UnimplementedDeviceConfig *devconfigs)
-+{
-+    const UnimplementedDeviceConfig *cfg;
-+
-+    for (cfg = devconfigs; cfg->qom_name; cfg++) {
-+        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
-+        SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+        object_property_add_child(parentobj, cfg->qom_name, OBJECT(dev));
-+        qdev_prop_set_string(dev, "name", cfg->region_name);
-+        qdev_prop_set_uint64(dev, "size", cfg->size);
-+        sysbus_realize_and_unref(sbd, &error_fatal);
-+
-+        memory_region_add_subregion_overlap(container, cfg->offset,
-+                                            sysbus_mmio_get_region(sbd, 0),
-+                                            cfg->priority);
-+    }
-+}
+-    qtest_memwrite(qts, c->dram_addr, dram_buf, sizeof(dram_buf));
++    qtest_memwrite(qts, c->dram_addr, dram_buf, ACRY_SRAM_SIZE);
+ 
+     qtest_writel(qts, c->acry_addr + ACRY_DMA_CMD, ACRY_DMA_CMD_DMEM_AHB);
+     qtest_writel(qts, c->acry_addr + ACRY_DMA_SRC, c->dram_addr);
+@@ -362,7 +362,7 @@ static void test_modexp_rsa(const void *opaque)
+     g_assert_cmphex(qtest_readl(qts, c->acry_addr + ACRY_STATUS), ==,
+                     ACRY_STATUS_RSA_DONE);
+ 
+-    qtest_memread(qts, c->sram_addr, sram_buf, sizeof(sram_buf));
++    qtest_memread(qts, c->sram_addr, sram_buf, ACRY_SRAM_SIZE);
+     get_bignum_be_bytes(sram_buf, ACRY_DATA_OFFSET, result, t->c_len);
+     g_assert_cmpmem(result, t->c_len, t->c, t->c_len);
+ 
 -- 
 2.56.0
 

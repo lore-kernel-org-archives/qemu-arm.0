@@ -4,105 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6858CCA462
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 10:21:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB8DCCA464
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 11:02:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHf3X-00047g-RY; Fri, 16 Oct 2026 06:20:55 -0400
+	id 1xHfi1-0003tK-FL; Fri, 16 Oct 2026 07:02:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHf3W-00047X-Q1
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 06:20:54 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xHf3V-0002rr-7s
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 06:20:54 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-8ab3d3c5761so52516797b3.1
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 03:20:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792146051; cv=none;
- d=google.com; s=arc-20260327;
- b=ZX/XpoaR30pe+KZCU2uKq3NqmVfYFaNIsYVvibjdlgXD/twFpvJDWwPOtTeya1S45Z
- jJf9vx2MnZA1zqbBwPGZKgTtiPG4fd1iV+EeWESHNiQL64tJBvAn7jiOV/EhzVlmVReQ
- XmbXOr43Irymliheo7R6hpzeDJAhMAOPgQB+W7glquO5DIrSS+cH9ej2ZTL8DekUqcmc
- FfMHSEKzr+U0k2rr3Y106gPFXIkkRyzeCn2YuMUXOKRLTTA6YBrguV1fTiK/NxrgAADW
- zt1YOSCUVTeu5IWHhSL2/c7jFy9BYD5Jjl5yPADgS0Y8/hk4TXN14ZFtaDaKX8CGuNUU
- 2EZg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=+lR+yCq7Sj2LV7d8680iILAoFQX7r0VH1tOrFRtbZ7g=;
- fh=gEYKyBQ6KEo+GGzpTdTY3h0BQbVAV50s0pLnzGdCPqs=;
- b=nNgJ7TfGS4ZRIB9sofoAKGxnqJUHCW1zftqBlmMFzLeOcWJj2dyUmMAnsGlu5q3GEq
- 35oaxNm+zCitDltsi9VXDaK6r72PBZyq68QSPs5UFSavtS+MA23NbtQx7OCD6W6DDLTB
- /MPCUvrQyKulDv91VPosTp2Ud4OYHt5vDHrQCnuXGmKZ0fygYL2QODU2VJ9I0POwOsY1
- 4t1AJSM1yufhWlHFmHHz7rZoj4O3ip2/9q6k4LlPvGpxCGF3j4PgptXxNT1bKvj95hdf
- STWRhm3v/OJLFgsk8DWDtRnFGNoZ5e4HPSgF97E4Z/pF0q2oLGKAJuQ2B1a0FnBZMIU5
- IEYA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
+ id 1xHfhv-0003qy-Hk
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 07:02:39 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
+ id 1xHfht-0007dS-Mf
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 07:02:39 -0400
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69GAAEnU1647704
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 11:02:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=qcppdkim1; bh=8VDCgOWO3CNU+1gP6G7Xltlc
+ S9rhKx8joyJ5bbcFRag=; b=HzGlpKWLDQO4nNm6t2uStrg7B8Dsj/merEPZr6bQ
+ liGhq4yNWcI4RBKKEj6G6mG5t/k6lNtA+HKJdhMcRc+3t2rZzZLGJ0gqoHaks3Sa
+ WtvIXOFSBKwoetb5oDLF0BONqjJR2V8TARzbD+H7MUeDndJcImLnRw9phZsiOSjX
+ Sh5QxI1m9x2SA+GkE+2oeOrNbdJ21SSM+jsgTegtPINYhR3gyD3q29wcUZ2U3Prs
+ Gser4SFbKDT27EgSEUaTWCKhZghPrXVrNRgI7vsmrQs0ZDRq5dX6pSALildUlY4f
+ wU3DRJnzO8L8eFSsA6mv/tv/X+i1SXvLeVnOarKYv2CBuQ==
+Received: from mail-vk1-f199.google.com (mail-vk1-f199.google.com
+ [209.85.221.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hbhumr6vf-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 11:02:33 +0000 (GMT)
+Received: by mail-vk1-f199.google.com with SMTP id
+ 71dfb90a1353d-5e96da6866cso830339e0c.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 04:02:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792146051; x=1792750851; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=+lR+yCq7Sj2LV7d8680iILAoFQX7r0VH1tOrFRtbZ7g=;
- b=rnl2EoNq34uDqmATu80EhNE0EkgAfyvuZPc0cK9q6s52yYOZ4hy6TfsNhq4xos54SJ
- r/1+G091HWsihX8ztnglawe1XRWyagkGHbglBtZWWjUFQrYKnvSPoHdO/01U1J8FMAjQ
- S2LS157V84f/fwNAVygKBSjt+SP7kzXoAgee71wUTvIRsfVSBvO7+JYBNgR9dYogc9Ti
- Go+cU1sAXclloK9kYsnaKr2j6tomikstNA3hU99AZKGPtqjO5oYtznTXQuAfrCR9yOhA
- YgW0dTXbApBLBNvua6qMFIkxMqGF/vGdj4ibYU6NkNl4a5C+IguGmM73kbbktQn/WnVF
- ZpNw==
+ d=oss.qualcomm.com; s=google; t=1792148553; x=1792753353; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=8VDCgOWO3CNU+1gP6G7XltlcS9rhKx8joyJ5bbcFRag=;
+ b=j2WTQSOeGtKLnPoTTqzuBgJewzRdG/MpGfUOCttMrRxTzI1XxetjTaZUY/CA+/Rf5v
+ r8u5wIcjD5otiIqlzteLllfDP7dmITh0RPufoOsqjQ/KtaJI8cZAm1UuIT/5OdCPzE/c
+ dDQbQhObzX3bgXeG/q6M58RYvSnoG5qTRQaEgLk9J4G/eIVPNv4HtpvXb4QMnWBq3xof
+ aBkNAyebcxOfDR9V0SAhQpe53XqiVcdN9xWT06Vtd9WzJ3LWtWS7m/wDWKjvwpycesk2
+ TyHqHUbV5XfaV6Mh+nRJion7P4AKyuo6Tw7RnPl2Q7FeF5fD902jFEMZy2udNxC5puWl
+ uQqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792146051; x=1792750851;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=+lR+yCq7Sj2LV7d8680iILAoFQX7r0VH1tOrFRtbZ7g=;
- b=MINNAQVRtnS0T75m53C4lScFlCMbvHCF7uJS74YCKHPlELuOcpzE4+7emxdhqzZBSM
- l7B8tZYM/dBuC+LeX7msOQy9AgnZjkKmkAnZtvCVCMb8rI+Pfp+c+2pEE/oDZDVr9wRj
- IX8ieAExuUUKAvv9jlwYn39vshMDf3K8EG6eKH113gyuyaOm1K150CAx9dykPoYN2bBX
- gtjBNxGFoFu5K8ctqEl5ED3e1jj/i2/mhHdUFIfdxLB8krSUcw00GzMEcwGrPYuW5X0l
- Qw93L56hBKbYyjcvJJUlOF9E3r43Xy9+usRMqO3KC4hTcuwlRFwn9QNuwQj8LQZxX0sK
- NrsQ==
+ d=1e100.net; s=20260707; t=1792148553; x=1792753353;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=8VDCgOWO3CNU+1gP6G7XltlcS9rhKx8joyJ5bbcFRag=;
+ b=QC5RJTR1pJUQ4udmnN3e+IwdhTFMhvr1IXuKsUgT+Aptlc7841GQpEdRWRH5U8oXmn
+ v6gtgSnDBgIW+Wd+/XnllJqOGP5F7fhWA+7PH04rLvHA9ckDD6JFsIXMEu5soL+5SOc2
+ wnlHYMIfVXSG0DbXEc1NXSvURdFFOyTJobpi586OZ+s07ex2w/BDl07elzZ1hSaE97Eg
+ cNu4rixCJyBZlSM9jhsuBygSrn4DeTVxcGI/PZlK+Y2SuAuxwsiEC0UOF0sGxwT88wu1
+ 5VZ8Y5F5yUPLtI9nFYlTPv0a8+itvHu30axJXZRLc9NAJHLMJtBnFQqtmxBJl6x8SHDo
+ yJTQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwA0A/v/8Ce0Ar0+lgwhkmW3BE3EYHPtoNL9PjIR78TZmkgyPqu31pd67rl3jGLXeiAS5Uoq3EXxg==@nongnu.org
-X-Gm-Message-State: AFq9FYIMbhpmiyZxe8a/idwhDuSqPkJKZmJVXh+ZVF73JUSrLYiNRkgG
- sJyIsnHFZUie6ORkEIpYxyZCwLRFRfFLGkaR+WcYEO3wahYeajbrwjcsMgkxFpv+s5wicFmRZsB
- r8p+E/Nt18JyxgVbisKN/UPaoaavXIAMl5lOZf2u0fA==
-X-Gm-Gg: AYBFou0j9yIt3EP6fY3LJThr9BXkGXj+gwMfjegaC55CzFiNurFn1Fb73U66DmLdNe8
- Bp+frrwozzd/b8ODt65VuOc39Ppn26gJAF4/y4YNOeZ/cNFz80SuYKlP62VPK/95GeHilrssRoY
- Nz2/qQh0ckchjk7MZUjCagKPhczKc58GancmujLUsQ2TW5wxbkhKnWc/DaQxX/S0fbKbNn3Hb8u
- Vame9sYew+iKFPY4wON3f8WGWWkZPF3kQQvbGyBC99mGT6S/XtJp3R+mx9OAVHKbz88JPKrAWEo
- ZwATy8Fdpl59dGbexR250S75GEE1Qblxw3IgaA0OwdyZU70sf4S76nmFXyhhRwJOIodJSgNg6x/
- DXnvJc5xPZtUGUSDRpxHH3Kma7ueL/+uTTdan4ho=
-X-Received: by 2002:a05:690c:6e87:b0:8b0:76e5:ecf0 with SMTP id
- 00721157ae682-8b07eca01c7mr85352197b3.4.1792146051284; Fri, 16 Oct 2026
- 03:20:51 -0700 (PDT)
+ AKwUvBwKZS3o7n1qiqFJr3JT8N+ZkyNGf74yBmubssUNDo78LRL60ZlZdSocS++iNB8TPpFd2ZeesJ8s7A==@nongnu.org
+X-Gm-Message-State: AFq9FYIFAMcuYVmR81oDpG0PnPsSJ+c9ovKsbiYmizq6auKTyzsa49kR
+ ykMZl5QH5kNSKB0PRcvAO/tPiDvLpVpsc1aCbikKTGvSK3Jz8BSyrxd/RLpniFLkl0fDPXQYCcU
+ daruiea8cIdO3A4WMkKkOqDPXDo3yl+pTJS4F9mHTVaq2rBRjvoutQGA=
+X-Gm-Gg: AYBFou0pzU+Gs27PmZ62M8U6rClGcNqQrxLiLdoSDzI8d/BPic/HD/QTVjm2PfFcG/+
+ taOxR4q/n9YTW+P0ZZoeqihbxwTjj5H7uLc0hNdx5JZ/+1pU4Y0S4s/gZb+5dyHV22yFDeYtNxI
+ 6SOkrjCjHZOEKsmnS3H+J/yKyyfX8ngi2+WhmAQDc0lRQoHCxd3GqJGps/Tx99M3sgcAJTNYTiI
+ kU25ybWGKAd8ZlukLa4tW9oT1hP9IbERsth9zlJgWXoA9jA18i4Iof2QVe3Ln+vi60LGqVagoES
+ TMe7Ku9ZIz7CYgck0Xz7RSI+0LVOqteCgnsCO8nwrUB/PMrak/zkdnyust9pZYQsvhliLU6vJ3r
+ 1u90WP92nIcztQGeyGfh2/7zMtfA0hn/U8POrLlbkWKxVjjTZOBKMr2QamE0odLaggJkK+Fa2Lw
+ ==
+X-Received: by 2002:a05:6122:218f:b0:5d9:82c1:b343 with SMTP id
+ 71dfb90a1353d-5e91f250d84mr7310029e0c.1.1792148552862; 
+ Fri, 16 Oct 2026 04:02:32 -0700 (PDT)
+X-Received: by 2002:a05:6122:218f:b0:5d9:82c1:b343 with SMTP id
+ 71dfb90a1353d-5e91f250d84mr7309995e0c.1.1792148552333; 
+ Fri, 16 Oct 2026 04:02:32 -0700 (PDT)
+Received: from leviathan ([2a0d:3344:316:5100:f22f:74ff:fe21:6f68])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48dfdeb18f8sm3795411f8f.20.2026.10.16.04.02.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Oct 2026 04:02:30 -0700 (PDT)
+Date: Fri, 16 Oct 2026 12:02:28 +0100
+From: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+To: Jim MacArthur <jim.macarthur@linaro.org>
+Cc: qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 2/2] hw/arm/sbsa-ref.c: Increase SMMU space for Root
+ registers
+Message-ID: <atIERMvh5tFG7Uwi@leviathan>
+References: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
+ <20261016-jmac-smmu-root-registers-v1-2-e78e8879d347@linaro.org>
 MIME-Version: 1.0
-References: <tencent_22E95650AA60C6E59860452C0D61A21F1105@qq.com>
-In-Reply-To: <tencent_22E95650AA60C6E59860452C0D61A21F1105@qq.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Oct 2026 11:20:39 +0100
-X-Gm-Features: AclHuK8ndLRSRJrGsRvAby9xi6rLxv6SVuahyYs5pcQX4zLAV6e0Eey50G4DPd4
-Message-ID: <CAFEAcA8MyrqWC7=A5Bw0G5G-2J64iTLmfY33dNDLm0jvmRb+Eg@mail.gmail.com>
-Subject: Re: [PATCH 00/37] Add Arm MPAM emulation
-To: Jinjie Ruan <2118537295@qq.com>
-Cc: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com, 
- imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com, 
- pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- ruanjinjie@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261016-jmac-smmu-root-registers-v1-2-e78e8879d347@linaro.org>
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE2MDA0MyBTYWx0ZWRfX9AYkfY501Ht+
+ KvQQ+yAHysQWWUSdGq1yWAiZBdz10kRTymUWZcIDRwdO65r4/nAPoJpOdo4hTAaoLXr5CTxheDp
+ MWQ4sGtBlVHPCVEH3/t7Kcv/3P55EBk=
+X-Authority-Analysis: v=2.4 cv=H+BOUOYi c=1 sm=1 tr=0 ts=6ad20449 cx=c_pps
+ a=+D9SDfe9YZWTjADjLiQY5g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22 a=KKAkSRfTAAAA:8
+ a=EUspDBNiAAAA:8 a=iN6TQegEkVnv5H5OV8oA:9 a=CjuIK1q_8ugA:10
+ a=vmgOmaN-Xu0dpDh8OwbV:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: 5o2P7Set46-4CuvrdtRGuOmPWrvhawgD
+X-Proofpoint-ORIG-GUID: 5o2P7Set46-4CuvrdtRGuOmPWrvhawgD
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE2MDA0MyBTYWx0ZWRfXzooS0HlWNUJN
+ 5jIBwkLQw9o31uXE+v5Go6GpgFMCMw+0gP59SS3fD+PjK8iqlQuBxZpVqNK/abhVEnkx9mpE6/I
+ v4LlYjuLiF1HoABWmErDugkKKOLJ+FBs18jodc1oBWbA8qef/XQeNYLbtttDpxupF9K4BgS+bOw
+ 4mKCvLlcIuApOL+SEiR7fzoP3LLIvFisNvJudppdIrUQPZyg6M3TZa0MBUF5GZ4PfUf8JfQr9EO
+ 134ffQfgxZ310x9ZMA3nAjLArJlCu17FfmaN9HFvOKnMkkZJ21Y7rLvRrQZmDn+4OSiQuF/KSOO
+ Caw4Oy/R2uMbBIX4tfDb4dIBSnZqtOBnfuiTzCuRTfvqDTXQQmLVLA+cCdTDnMesD4HZVFAuglr
+ 8+H8z3NyO5NLuQzw/MaiMqf6Kuw2iSHInR9O9X0FKRBHj3sMl1nSl9gdDO+12UmDpUYpQumryXB
+ /cmlwkKYyaM9JtDYrnA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-16_01,2026-10-14_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 malwarescore=0 bulkscore=0 phishscore=0 priorityscore=1501
+ adultscore=0 clxscore=1011 lowpriorityscore=0 impostorscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610160043
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=leif.lindholm@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,41 +154,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 16 Oct 2026 at 10:47, Jinjie Ruan <2118537295@qq.com> wrote:
->
-> From: Jinjie Ruan <ruanjinjie@huawei.com>
->
-> MPAM (Memory System Resource Partitioning and Monitoring) is Arm's
-> architecture for partitioning and monitoring system memory resources
-> - Cache portions
-> - Capacity limits
-> - Memory bandwidth and priority
->
-> And MPAM is the Arm counterpart of x86 RDT, which Linux exposes to user
-> space via resctrl.
->
-> QEMU so far has no MPAM support at all: the CPU-side system registers
-> are missing (a guest kernel that probes FEAT_MPAM takes an UNDEFINED
-> exception), and there are no Memory System Components (MSCs), so a virt
-> guest cannot exercise resctrl on Arm.
->
-> This series adds MPAM 1.1 emulation for the virt machine,
-> and the structure is as below:
+On Fri, Oct 16, 2026 at 10:40:52 +0100, Jim MacArthur wrote:
+> In our implementation, SMMU Root registers are directly after the
+> non-optional SMMU registers. Realms registers will be added above the
+> root registers later.
+> 
+> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 
-> With this, a Linux guest booted with -M virt,mpam=on (plus NUMA nodes)
-> mounts resctrl with the full schemata set (L2/L3 CAT, capacity, MBA,
-> priority), and MBM bandwidth and L2/L3 occupancy counters track the
-> configured controls.
+Acked-by: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
 
-I guess my question here is "how much is this actually doing,
-and how much is it 'we provide enough software-facing interface
-to keep the guest happy'" ? My (rather shallow) understanding of
-MPAM is that it's essentially adding tags to memory transactions
-and then accounting how much bandwidth each tag is using. That
-seems obviously infeasible for emulation, but on the other hand
-this looks like it's rather larger than a minimal "we provide
-the register interface but it does nothing", so what are we doing?
-
-thanks
--- PMM
+> ---
+>  hw/arm/sbsa-ref.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 158b461eb4..0747f5ca9f 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -129,7 +129,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+>      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
+>      [SBSA_SECURE_UART] =        { 0x60030000, 0x00001000 },
+>      [SBSA_SECURE_UART_MM] =     { 0x60040000, 0x00001000 },
+> -    [SBSA_SMMU] =               { 0x60050000, 0x00020000 },
+> +    [SBSA_SMMU] =               { 0x60050000, 0x00040000 },
+>      /* Space here reserved for more SMMUs */
+>      [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
+>      [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
+> 
+> -- 
+> 2.43.0
+> 
 

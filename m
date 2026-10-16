@@ -4,98 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C98F4CCA462
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 17:14:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65E8FCCF2C3
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 19:29:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHlVp-0005Qa-3C; Fri, 16 Oct 2026 13:14:33 -0400
+	id 1xHnbw-0001Ui-U7; Fri, 16 Oct 2026 15:29:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xHlVk-0005QE-5O
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 13:14:28 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1xHnbv-0001Sx-61
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 15:28:59 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xHlVh-0007Oc-0C
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 13:14:27 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-88bc25fcd0eso111694b3a.2
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 10:14:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1xHnbt-0001QW-2l
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 15:28:58 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-c413dea9ca6so39159466b.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 12:28:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792170863; x=1792775663; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=5HJrOnAZYpIuuAfp/L5yO221qV9COB5ByPC6P2WDsDo=;
- b=sVuWKMnqG0y61Kg+D9BnAcxBFTqC8xC7+P9Pxf0Ksfl39HGxt2u1ktltucpXzEDkL0
- 0eLWfjvJwTpRfu7aLt85hJy8g9x/e8dZH/P7HoBt/Q8wDj7l46aG/VGfTxN0/P//eQuj
- kMyHQknOxBGd0LH9v0zUjSMs7PAXZcNFHDOuSGTnQsA/Z+NYNCBEcXkL0k76M+Ou5ghu
- y15SZEJWsaj7r4AlxlYXL/OtLjntDLRBcedZFOSvLAyLXBh4pgnL4q61NeaoLMUx/5wt
- nmxQbG3hqXET+2ZhkDXg+RzvYu6LR8x0pqlvJNahikEl70U122RVmWz93cD2ersU8dmv
- KTrA==
+ d=gmail.com; s=20251104; t=1792178935; x=1792783735; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=ixIt9onMN2WRQoT1uwDGZiP6wgR14STx1KgXhX0nwtk=;
+ b=QgF5BTUkC240CF9qycQKjy2TkTWWGQ/upP86w6bdh9Yk8IlP1wsfH6RZ+o3VUPtfVp
+ E+ptd1Mvsy+hqYZB9EHg9jDiX9df2KtE6qpqQo9V3JJ6jyKkVV7k4Wy2AwuDtm/YCAue
+ OrFkEOfmi2qfv+qBAyvf4LTDcw/AqSor/p5Xz+OQx0i8/Zglsu0+1G0yYiPsoExYkJTB
+ cICVLF8Rexn3x8mrTgJp9siigX4vGP04OQVVe3H0plQdX6DpkIzY5CyQuUNhIOMsbdzJ
+ xXwS6dM8lZ5sG0gh2yCumGS5EX1MtqBFQGyjbG27p8GsRPnCkReZkqgQauaFY42QhppV
+ hUPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792170863; x=1792775663;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=5HJrOnAZYpIuuAfp/L5yO221qV9COB5ByPC6P2WDsDo=;
- b=yiPuPulswO5JSQQ8rH+yk11KXyQ7D7hR1mRm1CCzKiwX6WuKho5gxGUCwM1FrryWef
- wrwSA2U25EqXmYKw/hiLfOmAtZ4C34IROZvx+tvVzQx2hVybSuIlMKhjrM+bPBNhgQzv
- TK67B0iNb0uIGXoopcoQUPfce9PQoQ9cYE/QWqsN9b7LqyytVyOAkVUHNDObB5aoPOCr
- L/q72JXDTR3wn3WHmEwPdDePdcT6bTg8Ililv7tO/VImhGNBbYPsSZuAQYfhxusyJhOg
- wPWPgbMo0UM+D7oZgv395039+zX4oaowx+uUz9guOhKTGKF/6aGu9ldJQO+K10iqhe56
- LfFw==
-X-Forwarded-Encrypted: i=1;
- AKwUvByj9eM3d1+dIhXJfkXh8aV2n5iq1WmkF/vuUSve0eOkFQ1Iy1uoiojiiI7CPe7alhZYC1IZx56r5w==@nongnu.org
-X-Gm-Message-State: AFq9FYLe3AFYDPEKBCooldmliXjZAufLsrZtaKwm0jTOH8kxol5Dso3i
- nfGVF60C/cKGMQOAkVi4rN/aj7cNUmVhjcKyO8SmJzwE4Png5DWwA3uR/+DnQ0cT60U=
-X-Gm-Gg: AYBFou15E080hxse9m7BKBncCSE/TX4BPOaN4b5Zc5w/H5sQzbea7CF9+Snp9BjiXvx
- JWiRd3Uy+l6t8hQY5jdKmI9KlOhe/W/3jpT4n5d1/p4vuqcSR5rq4WrR+YYY1yD1PjGaFjnYg0J
- dm7QsFqPQrOef3pFFe/cn+LmM7qm6BRQ731+/c+2aX42deF1y7+UhI6XMMP4ssSGCDeZpufxxxT
- HVB3nhHJ1uZIPKAx6kUQtKjCMqGzyLx4IZmEmvDTYqla/qwY9HmYaT5aLplUo+cwUJQFiO8xHzD
- JQbjvhR1qlnYNch0wgfuV9JceCIi4GBmWu0OiL5BAbVvD2Eml2nJZmfFsNojnREFoOQ1IR0j18H
- niTFp9bKpFj0sDwD0mxkObaodnXeFmwxVpqSL64QhX+V4sLKsUhPabfZEEpuD+zIpnhF4MVgNJ9
- XOSJqzEtATIbQTglcij4Ge9KV8tnD05gC+Oy/L4CEZXmQI769aVTim6DXUR00fnQAA04FTjzN7o
- Q==
-X-Received: by 2002:a05:6a00:4404:b0:89e:df2e:cebb with SMTP id
- d2e1a72fcca58-8a04d33cba9mr189265b3a.59.1792170862923; 
- Fri, 16 Oct 2026 10:14:22 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:ff2f:8a9c:5623:f753])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-89f579464besm1491750b3a.34.2026.10.16.10.14.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Oct 2026 10:14:22 -0700 (PDT)
-Date: Fri, 16 Oct 2026 11:14:19 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Gavin Shan <gshan@redhat.com>
-Cc: berrange@redhat.com, kchamart@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
- mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
- eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
- enju.kohei@fujitsu.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvm@vger.kernel.org
-Subject: Re: [RFC v4 10/24] target/arm/kvm-rme: Keep track of images loaded
- in Realm memory
-Message-ID: <atJbayxYy4qePc_2@p14s>
-References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <20260903193611.1058589-11-mathieu.poirier@linaro.org>
- <062da66b-73fa-40e5-94cc-80b1ca760687@redhat.com>
+ d=1e100.net; s=20260707; t=1792178935; x=1792783735;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=ixIt9onMN2WRQoT1uwDGZiP6wgR14STx1KgXhX0nwtk=;
+ b=lCDj2+w3+k8C1+VmvotkIIRdDZK2kFG9iH+OIVDcI2YiKAO57yXTizeyeBxIuqtdpl
+ 9ejC/WddEUC6wnxX3vEGbWVEef/WXtObkQGwikK6XioIyyJk1Xn95+Hl2/K7Z6LXU/Ys
+ c4j/o47hDthl0KFBVoyKi1ougeQYhlr4Z6dXIYuQ9miS2siAoaO57XzMRaDzEMVQKhek
+ EfdLH9KjqFANpPOX4M0Sc7r82hF4ePa/11nhTCoK+XR1WqlDxu80tg7od1WxnRJEC/TP
+ 1m/maGfwXZmniC9BfzP/KVkPyJQi+Ubb+Hx/HCTwB36sHJkvZ+DxzaFKF1PQ7JC+myS/
+ sbpg==
+X-Gm-Message-State: AFq9FYIz3VaXbTYC0/41BrXEWul15+v0FyxOrquvBh6KmR7BSx76t+aO
+ TDH/DcUKxK5g+JPvvren8UCu0/pRYmyoaHDWXG4EbUycCIAxX9ddRxmW
+X-Gm-Gg: AYBFou1asAcdLvWhHq/i63Qu10xxWRiVvBO+rmHWLfVwS+9+3KYJsWjkDYb2/2ipTqW
+ v4ChTI/DS0yCArOS8wUjPwqQ2cu2rQGYeJET7yTP+iqk2YRVjqNaUy09GiNUC9ISVMef5Z0pseL
+ BdzNYRjuykxNViQYQ1Bnk4SisQJ35An3ZYwsiNRY9j4HwkRGYLdznaZ0XW3FoUySa/Yxv/O5FrS
+ 8197597bVB+QU93RGwS13X7jOC9808JB3lq18g0ILMKGFAOlaCxmzn9JBw/YeHx22wvDpVoump6
+ 0zOZtG4P6JrGudZstsSgiqSAO2p0wozpPHt3z0T6zHx0UDc1To3vO6JhXZvxrR2fTGwsmUN6/3S
+ ZlawMcwDS/udoGa1W0yC+2exkzNYfkIti/liJjTRPyrKtA4l45xEfxrnsGlZb1MqP02x3Dj9uB9
+ CLNgX8uOabjLrJo6xQxYJcChgAd41T/Q+5HcAGGkJUtf8twxErY+C4/QHqBxE3RCWKU6Zj32QBk
+ mIoRXYT1xxjMhyYoyo8JFjfSOQ7KtpRMKb92J0a99TnHRd10P7I
+X-Received: by 2002:a17:907:c008:b0:c2d:c17f:205b with SMTP id
+ a640c23a62f3a-c419fef7b50mr66085966b.40.1792178934900; 
+ Fri, 16 Oct 2026 12:28:54 -0700 (PDT)
+Received: from [192.168.1.130] (93-143-197-174.adsl.net.t-com.hr.
+ [93.143.197.174]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c40919bde49sm96022766b.55.2026.10.16.12.28.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Oct 2026 12:28:54 -0700 (PDT)
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+X-Google-Original-From: Ruslan Ruslichenko <ruslichenkor@gmail.com>
+Message-ID: <068f6239-9a04-4182-9e45-19fe38106184@gmail.com>
+Date: Fri, 16 Oct 2026 21:28:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <062da66b-73fa-40e5-94cc-80b1ca760687@redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x435.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 12/20] system/physmem: Add ats_do_translate helper
+To: =?UTF-8?Q?Cl=C3=A9ment_MATHIEU--DRIF?= <clement.mathieu--drif@bull.com>,
+ Ruslan Ruslichenko <ruslichenko.r@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "artem_mygaiev@epam.com" <artem_mygaiev@epam.com>,
+ "volodymyr_babchuk@epam.com" <volodymyr_babchuk@epam.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "francisco.iglesias@amd.com" <francisco.iglesias@amd.com>,
+ "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "eugene@nuvacore.ai" <eugene@nuvacore.ai>,
+ "Ruslan_Ruslichenko@epam.com" <Ruslan_Ruslichenko@epam.com>,
+ "takahiro.nakata.wr@renesas.com" <takahiro.nakata.wr@renesas.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+ <20260915160044.345788-13-ruslichenko.r@gmail.com>
+ <07181e2fc148dce3c2152f450e9337b4b9a21f16.camel@bull.com>
+ <011b142e-feae-47e0-9c67-6cc7277c5113@gmail.com>
+ <d29965e800482e96e8f42c8307900f665eb61a69.camel@bull.com>
+Content-Language: en-US
+In-Reply-To: <d29965e800482e96e8f42c8307900f665eb61a69.camel@bull.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,111 +122,164 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Oct 02, 2026 at 11:23:58AM +1000, Gavin Shan wrote:
-> On 9/4/26 5:35 AM, Mathieu Poirier wrote:
-> > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > 
-> > Add a Rom notifier to keep track of binary blobs loaded in Realm memory.
-> > That way we can deterministically calculate the Realm Initial Measurement (RIM).
-> > 
-> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
-> > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> > ---
-> >   target/arm/kvm-rme.c | 52 ++++++++++++++++++++++++++++++++++++++++++++
-> >   1 file changed, 52 insertions(+)
-> > 
-> > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> > index f7c2cc786e2c..9985f5daba89 100644
-> > --- a/target/arm/kvm-rme.c
-> > +++ b/target/arm/kvm-rme.c
-> > @@ -10,6 +10,7 @@
-> >   #include "hw/core/boards.h"
-> >   #include "hw/core/cpu.h"
-> > +#include "hw/core/loader.h"
-> >   #include "kvm_arm.h"
-> >   #include "migration/blocker.h"
-> >   #include "qapi/error.h"
-> > @@ -22,8 +23,18 @@
-> >   #define TYPE_RME_GUEST "rme-guest"
-> >   OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
-> > +#define RME_PAGE_SIZE qemu_real_host_page_size()
-> > +
-> > +typedef struct {
-> > +    hwaddr base;
-> > +    hwaddr size;
-> > +    uint8_t *data;
-> > +} RmeRamRegion;
-> > +
-> 
-> This is the equivalent to 'RomLoaderNotifyData' defined in PATCH[09/24]. We may
-> use 'RomLoaderNotifyData' if it can be renamed to reflect its purpose, no need
-> to define an identical structure.
->
 
-I ended up using 'RomLoaderNotifyData' in kvm-rme.c instead of 'RmeRamRegion'.
- 
-> >   struct RmeGuest {
-> >       ConfidentialGuestSupport parent_obj;
-> > +    Notifier rom_load_notifier;
-> > +    GSList *ram_regions;
-> >   };
-> >   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-> > @@ -41,6 +52,44 @@ static void rme_vm_state_change(void *opaque, bool running, RunState state)
-> >       kvm_mark_guest_state_protected();
-> >   }
-> > +static gint rme_compare_ram_regions(gconstpointer a, gconstpointer b)
-> > +{
-> > +    const RmeRamRegion *ra = a;
-> > +    const RmeRamRegion *rb = b;
-> > +
-> > +    g_assert(ra->base != rb->base);
-> > +    return ra->base < rb->base ? -1 : 1;
-> > +}
-> > +
-> > +static void rme_rom_load_notify(Notifier *notifier, void *data)
-> > +{
-> > +    RmeRamRegion *region;
-> > +    RomLoaderNotifyData *rom = data;
-> > +
-> > +    if (rom->addr == -1) {
-> > +        /*
-> > +         * These blobs (ACPI tables) are not loaded into guest RAM at reset.
-> > +         * Instead the firmware will load them via fw_cfg and measure them
-> > +         * itself.
-> > +         */
-> > +        return;
-> > +    }
-> > +
-> > +    region = g_new0(RmeRamRegion, 1);
-> > +    region->base = rom->addr;
-> > +    region->size = rom->len;
-> > +    region->data = rom->data;
-> > +
-> > +    /*
-> > +     * The Realm Initial Measurement (RIM) depends on the order in which we
-> > +     * initialize and populate the RAM regions. To help a verifier
-> > +     * independently calculate the RIM, sort regions by GPA.
-> > +     */
-> > +    rme_guest->ram_regions = g_slist_insert_sorted(rme_guest->ram_regions,
-> > +                                                   region,
-> > +                                                   rme_compare_ram_regions);
-> > +}
-> > +
-> >   static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
-> >   {
-> >       KVMState *s = KVM_STATE(current_accel());
-> > @@ -58,6 +107,9 @@ static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
-> >       error_setg(&rme_mig_blocker, "RME: migration is not implemented");
-> >       migrate_add_blocker(&rme_mig_blocker, &error_fatal);
-> > +    rme_guest->rom_load_notifier.notify = rme_rom_load_notify;
-> > +    rom_add_load_notifier(&rme_guest->rom_load_notifier);
-> > +
-> >       /*
-> >        * The realm activation is done last, when the VM starts, after all images
-> >        * have been loaded and all vcpus finalized.
+
+On 10/15/26 11:40, Clément MATHIEU--DRIF wrote:
 > 
-> Thanks,
-> Gavin
+> On Wed, 2026-10-14 at 10:21 +0200, Ruslan Ruslichenko wrote:
+>> Caution: External email. Do not open attachments or click links, unless this email comes from a known sender and you know the content is safe.
+>>
+>>
+>> On 10/13/26 16:27, Clément MATHIEU--DRIF wrote:
+>>
+>>> Do you need to operate at physmem level?
+>>> We have an API for PCI device for ATS and PRI (see pci_ats_request_translation and pci_pri_unregister_notifier)
+>>>
+>>
+>>
+>> This helper is used by Remote-Port-ATS device, which is used for resolving ATS requests from remote masters via RemotePort link and it is TYPE_DEVICE itself.  
+>> As it is not a PCI device itself, we cannot use PCI API unfortunately.
+>>
 > 
+> Ok, I see,
+> 
+> The issue I see here is that we are basically re-implemeting what IOMMUs already do through the PCI API.  
+> It looks like there is a risk here as some IOMMUs might want to update their state when being called on ATS/PRI, which won't be done here.
+> 
+> I'm not super familiar with RemotePort but I have a high level overview of what some companies do to bridge rtl simulators with a PCI bus in Qemu.  
+> IIUC, the bus type of the simulator is known, and their bridge allocates an emulated device of the matching type in Qemu so they can call the official APIs as if there was a "real" emulated device.
+> 
+> In your use case, what kind of devices are you running in the external simulator? PCI I guess?
+> 
+
+
+The most common usage of ATS and remote-port-ats is indeed bound to PCI subsystem.
+For reference, in Remote Port subsystem it is used by remote-port-pci-device and remote-port-pcie-root-port in Xilinx tree:
+https://github.com/Xilinx/qemu/blob/master/hw/core/remote-port-pci-device.c
+https://github.com/Xilinx/qemu/blob/master/hw/core/remote-port-pcie-root-port.c
+
+And since there is already existing 'pci_ats_request_translation' API, I agree it is a cleaner and more correct approach.
+I think, ATS device can use PCIDevice created by those models and call pci_ats_request_translation(), which removes the need for physmem-level helper.
+Although, the 'ats_request_translation' is currently implemented only by the Intel IOMMU, ARM SMMU don't implement it, so this needs to be done too.
+
+In our case we have a use case where a device on the platform bus, behind SMMU also wants to use ATS requests.
+But those likely require separate approach and it belongs to SMMU for platform bus series, such as:
+https://lists.nongnu.org/archive/html/qemu-devel/2025-12/msg02637.html
+
+So will drop 'ats_do_translate' for the next revision. 
+
+Thanks for the feedback!
+
+--
+Best Regards,
+Ruslan
+
+>>
+>>> On Tue, 2026-09-15 at 18:00 +0200, Ruslan Ruslichenko wrote:
+>>>
+>>>> From: Ruslan Ruslichenko <[[Ruslan_Ruslichenko@epam.com](mailto:Ruslan_Ruslichenko@epam.com)](mailto:[Ruslan_Ruslichenko@epam.com](mailto:Ruslan_Ruslichenko@epam.com))>
+>>>>
+>>>> Add 'ats_do_translate' method to enable manual IOMMU address
+>>>> translation.
+>>>>
+>>>> This allows the Remote Port subsystem to resolve guest virtual
+>>>> addresses to physical addresses by querying the QEMU IOMMU
+>>>> translation pipeline. This is required for the Remote Port
+>>>> subsystem to support translation  requests from external masters
+>>>> in a co-simulation environment.
+>>>>
+>>>> Signed-off-by: Edgar E. Iglesias <[[edgar.iglesias@amd.com](mailto:edgar.iglesias@amd.com)](mailto:[edgar.iglesias@amd.com](mailto:edgar.iglesias@amd.com))>
+>>>> Signed-off-by: Takahiro Nakata <[[takahiro.nakata.wr@renesas.com](mailto:takahiro.nakata.wr@renesas.com)](mailto:[takahiro.nakata.wr@renesas.com](mailto:takahiro.nakata.wr@renesas.com))>
+>>>> Signed-off-by: Ruslan Ruslichenko <[[Ruslan_Ruslichenko@epam.com](mailto:Ruslan_Ruslichenko@epam.com)](mailto:[Ruslan_Ruslichenko@epam.com](mailto:Ruslan_Ruslichenko@epam.com))>
+>>>> ---
+>>>>  include/system/memory.h |  8 +++++++
+>>>>  system/physmem.c        | 53 +++++++++++++++++++++++++++++++++++++++++
+>>>>  2 files changed, 61 insertions(+)
+>>>>
+>>>> diff --git a/include/system/memory.h b/include/system/memory.h
+>>>> index a7e03fc3e7..2032d3028d 100644
+>>>> --- a/include/system/memory.h
+>>>> +++ b/include/system/memory.h
+>>>> @@ -2583,6 +2583,14 @@ static inline MemoryRegion *address_space_translate(AddressSpace *as,
+>>>>                                addr, xlat, len, is_write, attrs);
+>>>>  }
+>>>>
+>>>> +MemoryRegion *ats_do_translate(AddressSpace *as,
+>>>> +    hwaddr addr,
+>>>> +    hwaddr *xlat,
+>>>> +    hwaddr *plen_out,
+>>>> +    AddressSpace **target_as,
+>>>> +    int *prot,
+>>>> +    MemTxAttrs attrs);
+>>>> +
+>>>>  /* address_space_access_valid: check for validity of accessing an address
+>>>>   * space range
+>>>>   *
+>>>> diff --git a/system/physmem.c b/system/physmem.c
+>>>> index a4a6a4710c..1acda22ede 100644
+>>>> --- a/system/physmem.c
+>>>> +++ b/system/physmem.c
+>>>> @@ -525,6 +525,59 @@ static MemoryRegionSection flatview_do_translate(FlatView *fv,
+>>>>      return *section;
+>>>>  }
+>>>>
+>>>> +/* This function is called from RCU critical section */
+>>>> +MemoryRegion *ats_do_translate(AddressSpace *as,
+>>>> +                               hwaddr addr,
+>>>> +                               hwaddr *xlat,
+>>>> +                               hwaddr *plen_out,
+>>>> +                               AddressSpace **target_as,
+>>>> +                               int *prot,
+>>>> +                               MemTxAttrs attrs)
+>>>> +{
+>>>> +    MemoryRegionSection *section;
+>>>> +    IOMMUMemoryRegion *iommu_mr;
+>>>> +    hwaddr plen = (hwaddr)(-1);
+>>>> +    FlatView *fv = address_space_to_flatview(as);
+>>>> +    IOMMUMemoryRegionClass *imrc;
+>>>> +    IOMMUTLBEntry iotlb;
+>>>> +    int iommu_idx = 0;
+>>>> +
+>>>> +    if (!plen_out) {
+>>>> +        plen_out = &plen;
+>>>> +    }
+>>>> +
+>>>> +    /* This can be MMIO, so setup MMIO bit. */
+>>>> +    section = address_space_translate_internal(
+>>>> +            flatview_to_dispatch(fv), addr, xlat,
+>>>> +            plen_out, true);
+>>>> +
+>>>> +    /* Illegal translation */
+>>>> +    if (section->mr == &io_mem_unassigned) {
+>>>> +        return NULL;
+>>>> +    }
+>>>> +
+>>>> +    iommu_mr = memory_region_get_iommu(section->mr);
+>>>> +    if (!iommu_mr) {
+>>>> +        return NULL;
+>>>> +    }
+>>>> +
+>>>> +    imrc = memory_region_get_iommu_class_nocheck(iommu_mr);
+>>>> +
+>>>> +    if (imrc->attrs_to_index) {
+>>>> +        iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
+>>>> +    }
+>>>> +
+>>>> +    iotlb = imrc->translate(iommu_mr, addr, IOMMU_RO, iommu_idx);
+>>>> +
+>>>> +    *xlat = ((iotlb.translated_addr & ~iotlb.addr_mask)
+>>>> +            | (addr & iotlb.addr_mask));
+>>>> +    *plen_out = MIN(*plen_out, (addr | iotlb.addr_mask) - addr + 1);
+>>>> +    *prot = iotlb.perm;
+>>>> +    *target_as = iotlb.target_as;
+>>>> +
+>>>> +    return section->mr;
+>>>> +}
+>>>> +
+>>>>  /* Called from RCU critical section */
+>>>>  IOMMUTLBEntry address_space_get_iotlb_entry(AddressSpace *as, hwaddr addr,
+>>>>                                              bool is_write, MemTxAttrs attrs)
+>>>
+>>
+
 

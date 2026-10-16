@@ -4,94 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF3EBCC6B38
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 09:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5BB7CCA462
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 09:43:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHeRV-00085B-Qg; Fri, 16 Oct 2026 05:41:37 -0400
+	id 1xHeTO-0000qX-RH; Fri, 16 Oct 2026 05:43:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xHeRU-00084L-8T
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:41:36 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xHeRQ-00071p-Nv
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:41:35 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4a01933b584so52831805e9.0
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 02:41:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792143691; x=1792748491; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=QMuWtTbJe6HaHVUeISmXFKSp463/r6hE6STO/fYosIY=;
- b=t/ltPJLLXxkyGuHdZeSw+ITf6Y7oIU6jhD3kXTeoOP+kkVem+U9hetpxAlB+rHJMtz
- uztnxTGE90b8k8QPt18WkbZFO61N0nxTEPemXa95QnvrlcMoO0P6och2W39JH6h2qsf/
- DsTBYCvoOmyJfDqZK9v8hTRLz4GttPNs27cwE36wcjYqN6k1VvkEkqNgB9ItS6F3x8/K
- 75vM2/qK8/R+b7LPmjbeAGQTz064E7uP8+//rPtpSS6chHzFJIvGRhJUAeIrJFIztIv6
- 8GXgbs6d4b1turfqd+ZoJESjD20Vkhy1tc9TJG+XkJh89oa+DKiNedrS7IVIxVjCzfEa
- KKqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792143691; x=1792748491;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=QMuWtTbJe6HaHVUeISmXFKSp463/r6hE6STO/fYosIY=;
- b=jNs909y/YDx08XRvqSZIrAFduniL/nAaZEwmRN8/YIWLBwWXrKOKBV5Q+NfrXHeDoC
- P7OViRd+MAY16lu5g5UlguszuNTFEDB2+VqAUWqimrE4gEBXM/AlVqba1cmcrTInvzTo
- s/WWHAH4nfvSRcrTVyfD6ATtYFHve3YlMq96Vt9dWlv0ga6Ysm524aw5xSmrCZWWKBL7
- y/lXyRld+P7BflH5bAKjeh4AMImXRoztf9ToAAwgHdcsddco28XqFZcLKekDHel9rVzQ
- bTIwXIHP4bg5UNt/gWDGR+6HEVv9OxkkaQ2g3r0KBu5W42yovegtkvDYS3fjr2Zx/1Ep
- Nx6Q==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx86UqugU53+tmac+ZPfgX0bTxDmd15+qMJScgBadITgKNvcnMRBhJAdmBGD4KLB5YLw2R518FIJw==@nongnu.org
-X-Gm-Message-State: AFq9FYKwpYLV9Rra0uq22AAkRxF/UeA8nO5iVyZclSN/juxdi88LcSJ5
- Tx5gAXxUUdanXwr384ulNIY9o6CPFZQbtBnN0nT4PlOKqC64Mx71VDzGJ5bFfh5LFTM=
-X-Gm-Gg: AYBFou2NMxpIq/XKCTQAtCcg37h58u8wbSRUuUrJhUdEMdnW3EjeENPC9ro7SdRAg7I
- zfx0UKHCrRuuwVx90YYrGry7Lj2v+cnLqAo66bhvMCEiW64lYzNl7GbQVpQNOCElPvDLYHR3Rxf
- +4ZHzj7X20hL7m+ReyD/iDNNFLeu1YbajUaBtcvkGFikwqU6wOiGzl6sxWRkRG7/ZRxuJg0Xw40
- gYOjJuhyjxX5GgzRFdp0/ZFU6721W5PXUtJE1xWMXtK8fE8nk1sXzlKF+qTO4kG49Y3KV+DIi2W
- +ZVCW65fcoVv2hfdCLZqE5iDFtzzXY9BcBTBqsc7O2yPqenyVpb1AycelNmTIt//2pm2ryo6w5t
- t0u9YDRaV0VNnuqHc2Ouxs3HbE0RyhCqh51ItegCt0XJRO0FXm0+7Qg83Gi5y8oYWuv88cz6ess
- P/Ijh/VHaMTRE5k6QRkKrQqBtBcp8mx8nPaPtPcAu+28t6fkYyLbIw74+99TvlXTu/5+dL03yN3
- Q==
-X-Received: by 2002:a05:600c:154c:b0:49f:ce78:3562 with SMTP id
- 5b1f17b1804b1-4a18e4a9159mr460498265e9.19.1792143690985; 
- Fri, 16 Oct 2026 02:41:30 -0700 (PDT)
-Received: from [127.0.1.1] ([2a10:d582:31e:0:8f73:128f:8f43:e3ec])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1cf05009csm28649385e9.10.2026.10.16.02.41.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Oct 2026 02:41:30 -0700 (PDT)
-From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Fri, 16 Oct 2026 10:40:51 +0100
-Subject: [PATCH 1/2] hw/arm/smmuv3: define Root registers
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xHeTN-0000pT-0F; Fri, 16 Oct 2026 05:43:33 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xHeTK-0007Hq-Br; Fri, 16 Oct 2026 05:43:32 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=dfOEQCI8fEsRPYA6N8Z6kpICuGClFjChex2vnJWFaMBSuUJh1Q41IJME1UASqgj9SpKhvnoHjd7XB849zsu+8J1KK3tzzontDtTX2RayV+Ool7jS4dtstr7JoCmikzuXVuLEfOfofFAwq/AV9wcQvF+UcKXOzqd6iHaf2gYLHH1USS+j+1iEtillVEBOW5b6oD13aamyFPavdzQaXpdNaa7OU565+mqqxdKKs4tbaQzMYwD1MAts/lox/7QrXwmGOzVN0rT94JtI3Z56JngCusD8Vw49s9dMchgTSVhpV0mMb0jcfh0fWEMUHat+dugmRXzE7J+3WDkcZZX/eXpi7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=stpMrkOUCQawQ7vwvpGByilVQvYKiUrQjoX0tLC7tJ0=;
+ b=rd32cRFlsYA29IGdm8gQGT2G6QeZ6d5XX5l0NlmslW4G9IqrVV+5O7Vk3oI4J7f6bcybvmnXTnPtWkIjx8lxhwZpa1t99ez2ks76leXf5G+mkdzDmtJpZ8d8JZMG1TV0dz8hjlXfl+kbS3Hih/CtCcZuL/f8+5XnS/p+E7bWiBWhd/JfXQ5EIUPtrw6So3/R1MahTKGDlvav1ZB5eq576ZvrGJKHSa4ZH/vT3lQJ4+Ks0549STZnZZIsCTH8vl5NGLsCiGhq+HFsZ+xvepctMHHDsQWj3mZdBjl3qml19z7JvlEaV7bsacuRrSI+2dCp+N9BKFHyLZgiH4BAg8oTyg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=stpMrkOUCQawQ7vwvpGByilVQvYKiUrQjoX0tLC7tJ0=;
+ b=WQIsS9hgPoARc+eX7Ny2swpiiq1eIbOgIxr3zW1x60l18x2S+TyQTYtaL1500ffaicDufitxjXfs72+MhSHxxRIUF7DVJV1eIUPNCVYizkfPiz/7vEt15sxFslvCnQCqHiKey+SeayNhWqye1Y6CHA6upKJ92lqYxDaQHdEDXIjhgfgAwkoc52KXhna5qyCqm1wgwFRDu7a/ZdnKmIw3ngeTAIR2ZhpNX/gw0uU2s4jPgmtjohj9KUyo36btU6ePlUqEHIQuojgDFB3SIE7CCWGoJ1dgXRFiWOPNBYpFyklwtF7X6tGK2fWXm1DspP1ZK743iBrRzXR+Ssq89gM+4g==
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
+ by SEYPR06MB6664.apcprd06.prod.outlook.com (2603:1096:101:176::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.15; Fri, 16 Oct
+ 2026 09:43:21 +0000
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0522.013; Fri, 16 Oct 2026
+ 09:43:20 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Emmanuel Blot
+ <emmanuel.blot@free.fr>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Kane Chen
+ <kane_chen@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, Patrick Leis <venture@google.com>, Fabiano Rosas
+ <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@oss.qualcomm.com>, Glenn
+ Miles <milesg@linux.ibm.com>
+Subject: RE: [PATCH v2 00/50] Aspeed: I2C device models and the Minerva BMC
+ machine
+Thread-Topic: [PATCH v2 00/50] Aspeed: I2C device models and the Minerva BMC
+ machine
+Thread-Index: AQHdWttneyMnc1G7/EmpD7Pf4OOALLb7AcpQgAAD7QCABOk8wA==
+Date: Fri, 16 Oct 2026 09:43:20 +0000
+Message-ID: <SEZPR06MB73628B7F0581B8DBF62DC72DFC9B2@SEZPR06MB7362.apcprd06.prod.outlook.com>
+References: <20261012-bmc-minerva-v2-0-4c3dff084ec9@free.fr>
+ <d7da10db-04a0-4699-8a96-44e98170f863@kaod.org>
+ <TYZPR06MB73731318F235CD2797C03D2FFC9E2@TYZPR06MB7373.apcprd06.prod.outlook.com>
+ <fbead52a-4ac2-48d2-8cac-fe1f24005caf@kaod.org>
+In-Reply-To: <fbead52a-4ac2-48d2-8cac-fe1f24005caf@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SEYPR06MB6664:EE_
+x-ms-office365-filtering-correlation-id: d1412bfa-ab95-4e6c-49a4-08df2b69ea15
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|1800799024|7416014|23010399003|10067099003|22082099003|18002099003|261009223027099003|4143699003|38070700021|56012099006|41080700001;
+x-microsoft-antispam-message-info: ucjvZAz+Uvnmc7L+ICrwRsycfO0pqOefTT6Z0iJWECTUOPha+QK4JdZ/Lt0CWTKNPovx98CvhXI1MFnJXSD9XS9gvBz9utyt3bemsebQWGskylD+Hrm1lGx6hS1ULWQD9wO3KH2LFqc1k89QiOLZ7f4ketrEgtWU8WX/ileEvyfHFEBSL+3FcbWPv+I0qD8Grb/4SX7HqjZZevIJXJ1D1f5BlkpPEVYcC5j05wHHw/1ljv9dBkfxxq5bfcFalKYxepwHOtRSauSKAan5XZsKjrrDiv5BZ37u488RWvIYiR5QZ4NUq1PCZmlWSdWPdJE9u7DfO6GR8qrzU3gM+pSL5FURkJtFbV5Sglp4vQa34Okc0E0i/Z2vHIApNI+usaetqPHdnv7XvmVrAscUtXqA0yJJGdR/VBLssSjrNGF0ByPTrTnCh9s7VmksCQ7ZqW8fZJzI+EFeltkuu7gvOFmuxBxSdEoCGmd7J1mE1zbMh6vVdGm5o9hodcUe5eGevmBisTkOiawLygofzk5M8lXEC926Yyz9lXau8JZKxZBPuKNh7fQVWnTas/XbWL/n27l8npdzOSy6kop0LP7rpdJOA5s89vCwfW7ZQTnr4LZPmybjjspZjfsy+41eZXYedXaSFiwQICtC1/3qgbu43+SYcOIXyvozz0LMXpdsV3k9ZzvF6AgQzoUdZjNjhgqh7MCfsFkd5JWLwc4kUfOBvALpiw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024)(7416014)(23010399003)(10067099003)(22082099003)(18002099003)(261009223027099003)(4143699003)(38070700021)(56012099006)(41080700001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aGxwdmdLRGVyRlhPUHl2ZmhzRTVTdUtPN0xkenlhQVFpaWZCTjh2bGwwLzI4?=
+ =?utf-8?B?QU5jaEhMUWwwMGk1TlVFMDhkQTlkZzN0ZEY1clRnZkI3VFB3NGJQTnR6U3FE?=
+ =?utf-8?B?Tm1ybUlRbnU1SWZYTVlnR2pIMjhZdTdlbndORXhMZHlTVXFybHFjekNjQUhP?=
+ =?utf-8?B?cVF4OEVsK05CMEZma29GdGRjTld6ajl1U1lxaHAxT3pPNFBzWEptWUxXbHJz?=
+ =?utf-8?B?Y1h1Q0o5T0ZucnR1eGZUUzB1Ym5jQXZnS0RJakZONDlTd0hWMkZ2bXIxRlhG?=
+ =?utf-8?B?L1p3WDB6QmpUTDZ4NUU2UERoTDZidjFGSHc4MVlSTkxYNUI2dGNmeGxkbngv?=
+ =?utf-8?B?YXhUNkFPSXkyMVVxR0I3cXZBMHF0ZnNSVlZ0ZmNnZi9TTVREbTQ5dWpnbUxD?=
+ =?utf-8?B?SFB5UDdjR0ZkRnV5TGlMVElVNTBsTjRzSTNzTHF3SjJZQWdIcVZ4K0k3aGZy?=
+ =?utf-8?B?N3ErUjR0bS9aVWJaZG9IcXlMelEvTk5NNDE4TGd1L1dEYXM2STJqVVZvcmQw?=
+ =?utf-8?B?cENWSmYxTENDZWNKaE5IVlpPYngyZ2p0SGFmVjhUd1d0YlNRK20vQ0YvZ0xR?=
+ =?utf-8?B?dWZpWTNCUTNnL1NOOXY0eU1obU9HVlhQaFhJMVBQSThPWjZScXlBK3lQeDEz?=
+ =?utf-8?B?YTdBdUkySkxwcldISXhDZk5nY1piZ1RsZnFEZnJmMEFVZ0kvclNSd2hvbmV4?=
+ =?utf-8?B?RkxRTWNSVmozWG9YOTFvZzlLQkwwdFBvYUQ1ZjV4MmpyUXN6a1kxdkdWM2hP?=
+ =?utf-8?B?emFmN0ZpWDFCd0ZSSUYyVGdTNGtjamtJS0ErbVl5R2pwbDJEeG94ZUg2b2dU?=
+ =?utf-8?B?bWpyRGlqeFJmSko0TkVmWVE1THh0QVRqUWRRUHdvV0lnRjJMUmswMVpwbVJi?=
+ =?utf-8?B?RVlPSHNPVGZyTkk0blJucTRkZC9XT2tESjVPb3Jpb042MFJiNUZvL2RkQ2tB?=
+ =?utf-8?B?eWdUdUZqUEtsQXhPTTBLRnBUN3p0SXhvb01sUUNiQk5nWURiZUxGOUxvZTZV?=
+ =?utf-8?B?MndLemlNOUhGKzJEMzVTdEN6dWhicjVZdTBFSTJxZk05SThGWkwxN0dBeXhr?=
+ =?utf-8?B?b2ZtNE8xeXdaOHBLdkt3MW81TFhFaTV1dTlBWnBOelJRdm9yNnZDU2pFMVh4?=
+ =?utf-8?B?S21wME4vbnJkVGhvc292UzdYMncvcUUyZ0o0d1drOGNsT3V5TkxlWmRiTDky?=
+ =?utf-8?B?emhUSnBta2N0b3EzMGdlbWlwU2tXRUhwNHRwUld3WUZFa3dSbGZtME5ranFy?=
+ =?utf-8?B?b0QxS1RaR05OcDJoeDJuUGtTQlpXd244Y3kyVzNXM0o1ckkzZHFSMmw5ZnND?=
+ =?utf-8?B?TFVxUjZDZ1hUMjNDb3cwNGJiOWIyYjhEWHRHY1g1S3lUOWo2Unh1ZGx4QWFn?=
+ =?utf-8?B?c0xyNW0yMmFtY0dyOVo3SHVTbllPa0xwbHFMbm1pTXZ1UFJ1aVVLT1IwVVFH?=
+ =?utf-8?B?SVF6dkZSOTdzdFJNUVRzL2poeCtDelFHZkdYd1RZK01QODhPMXNVNENmQzFs?=
+ =?utf-8?B?VGpoQUFGM0o4VUxQMndHU1BuaE9ZaUwrTlV2T2poa1R4V2trNHR1OEkyeGZ4?=
+ =?utf-8?B?WmtPWHNsY3hkejd4aXdORnE0Q3ZWdE5IUnVhSUJHZEgxdFpGK1JURVdXOUZt?=
+ =?utf-8?B?bDQ0dVgzMXliWlVacmp6alhVc0FOeGJ0SUgrYmMrc2k0SjRKNjNmK1J4MllE?=
+ =?utf-8?B?Z1RCMFg5eVMwVUJXeWMyeTVwQVNrSFJPWitkc2NmYTJNSllQRlZuV0xjTkpu?=
+ =?utf-8?B?S3pudUhCVGFDVGFhVkRWTThWYTl1eGVlc05UcHRvTTJYMTMrSk1GVmZTVENp?=
+ =?utf-8?B?YWVNYllqZ1hjRERKTjUrbkNNK21SQ2hBcjVaQXhPRE9IcHVONExWbUpjYUlR?=
+ =?utf-8?B?YzBRT0sxTmxyaXE1ZVFHcUJiWFVPbHk3RERHMzhiZ1N4eFBvdlVxZU94d3BQ?=
+ =?utf-8?B?akZ5OU9BQjZBVTlLRGd6R2Vhb3hpYWtaRklXRHd1MmdSR0F6YnpKaCtEcmRK?=
+ =?utf-8?B?SExkNzZVbDFDNHVaVG1BWjh3VURRZXNOL2JLYXFjTDFBaHNxcElhOUpaSW1z?=
+ =?utf-8?B?ZXZQNmo5bS9jclBETUZaY3N1K3ZNT0ZiMWR1QjBvbkVIRkVRU0pzNXdYNmI4?=
+ =?utf-8?B?d1BkS3AzZ1cxOUdkM0hEdDNjaW5KWmJLdytvRDh4Mld1WExMNS8veGQ1TmRU?=
+ =?utf-8?B?a3lnUE56cWRmendQTEZhZ2ZjNjJ0NkowVVJheVdOZTl3YmttRCtyeXhoUnQ3?=
+ =?utf-8?B?d0NrUHhyd29OazJha0ZNc3VSZ3pseVZPblIrZVh0VFFpcEQwMWY3RkZJS1Ja?=
+ =?utf-8?B?S1Y1ZVZhek41b0hvaVBrdjRZejBRaFZCTmdVR3lkY2xnc3JIVmRIZz09?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261016-jmac-smmu-root-registers-v1-1-e78e8879d347@linaro.org>
-References: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
-In-Reply-To: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
- Jim MacArthur <jim.macarthur@linaro.org>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-X-Mailer: b4 0.17-dev-6be7c
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x334.google.com
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: e8XtIHQf5dzShx4Zdz54GNIfjQ96oWwlsgII7g8ebfNVdGPofNWBK4mHoA9aDGr41ITN9ffjlrERzZhUFbR6L08YZmSf7mzKyYDfOwkMeDLqFJ7WoOFAhWf3t8izbo3eSh8VH6q6IZuAPLHLjGDt740CYUrVuHq5p7bsJZL+9gRoJI4lDvo0XshR95ppXNmgZ901uxL4KaxQcpGCz44EzIpeIRPcdFRsxFDQQuFHjXFfilscJ++oMgukbXGzASp1geFp2Cr0XUK4QfXFIXf3cAdg6SdLuzvmk9Sa8EH+cKFnlqYcaMuOvXn7gXLgXdaD8JYKYhq25IoeWWEIB0/PNg==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d1412bfa-ab95-4e6c-49a4-08df2b69ea15
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Oct 2026 09:43:20.8387 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9Weyu+wxiNahdbDDW+sZzxk3SbJizHnuZuTTtUd9zSO+KTP2hWak8eeTQDheqTkXlHtROh0eG8/SY7WmcNsEGxYG3aGEi/mPcKbdr0BAu0E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6664
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,355 +167,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-
-Adds all the non-optional SMMUv3.3 Root registers. These registers
-do nothing at the moment, but RW registers can be written and all
-registers can be read.
-
-Based on original work by Pierrick Bouvier <pierrick.bouvier@linaro.org>
-
-Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
----
- hw/arm/smmuv3.c                | 229 +++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/smmuv3-common.h |  22 ++++
- include/hw/arm/smmuv3.h        |  13 +++
- 3 files changed, 264 insertions(+)
-
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ed19536a4d..9d9bc2601b 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -316,6 +316,11 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
-     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
-     s->aidr = 0x1;
-     smmuv3_accel_idr_override(s);
-+
-+    /* Initialize Root bank */
-+    s->root.idr0 = FIELD_DP32(s->root.idr0, ROOT_IDR0, ROOT_IMPL, 1);
-+    /* Set this to 1 when SMMU Realms are implemented */
-+    s->root.idr0 = FIELD_DP32(s->root.idr0, ROOT_IDR0, REALM_IMPL, 0);
- }
- 
- bool smmuv3_ats_enabled(SMMUv3State *s)
-@@ -1769,6 +1774,111 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-     return MEMTX_OK;
- }
- 
-+/*
-+ * Check we are from the Root PA space to read from or write to the
-+ * SMMU Root register area.
-+ */
-+static bool smmu_check_root_access(SMMUv3State *s, MemTxAttrs attrs,
-+                                     hwaddr offset, bool is_read)
-+{
-+    /* Check if the access is from Root PA */
-+    if (!(attrs.space == ARMSS_Root)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: Non-root %s attempt at offset 0x%" PRIx64 " (%s)\n",
-+            __func__, is_read ? "read" : "write", offset,
-+            is_read ? "RAZ" : "WI");
-+        return false;
-+    }
-+    return true;
-+}
-+
-+static MemTxResult smmu_root_writel(SMMUv3State *s, hwaddr offset,
-+                                    uint64_t data, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_ROOT_IDR0:
-+    case A_ROOT_IIDR:
-+    case A_ROOT_CR0ACK:
-+        /* RO registers, write ignored */
-+        return MEMTX_OK;
-+    case A_ROOT_TLBI_CTRL:
-+        /* Optional, not implemented. Present if IDR0.RGPTM == 1 */
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_BASE_UPDATE:
-+        /* Unimplemented at present; has side effects */
-+        return MEMTX_OK;
-+    case A_ROOT_CR0:
-+        s->root.cr0 = data;
-+        s->root.cr0ack = s->root.cr0;
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s unhandled 32-bit access at 0x%"PRIx64" (WI)\n",
-+                      __func__, offset);
-+        /*
-+         * Locations not associated with a register (including registers that we
-+         * have not implemented yet) are RES0, and will follow RAZ/WI behaviour.
-+         */
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult smmu_root_writell(SMMUv3State *s, hwaddr offset,
-+                                     uint64_t data, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_ROOT_GPT_BASE:
-+        s->root.gpt_base = data;
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_BASE_CFG:
-+        s->root.gpt_base_cfg = data;
-+        return MEMTX_OK;
-+    case A_ROOT_GPF_FAR:
-+        s->root.gpf_far = data;
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_CFG_FAR:
-+        s->root.gpt_cfg_far = data;
-+        return MEMTX_OK;
-+    case A_ROOT_TLBI:
-+        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_BASE2:
-+        s->root.gpt_base2 = data;
-+        return MEMTX_OK;
-+    case A_ROOT_GPCBW:
-+        /* Optional, not implemented. Present if ROOT_IDR0.GPTS == 1 */
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s unhandled 64-bit access at 0x%"PRIx64" (WI)\n",
-+                      __func__, offset);
-+        /* RES0; See smmu_root_writel */
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult smmu_write_mmio_root(SMMUv3State *s, hwaddr offset,
-+                                        uint64_t data, unsigned size,
-+                                        MemTxAttrs attrs)
-+{
-+    MemTxResult r;
-+
-+    switch (size) {
-+    case 8:
-+        r = smmu_root_writell(s, offset, data, attrs);
-+        break;
-+    case 4:
-+        r = smmu_root_writel(s, offset, data, attrs);
-+        break;
-+    default:
-+        r = MEMTX_ERROR;
-+        break;
-+    }
-+
-+    trace_smmuv3_write_mmio(offset, data, size, r);
-+    return r;
-+}
-+
- static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-                                    unsigned size, MemTxAttrs attrs)
- {
-@@ -1776,6 +1886,18 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-     SMMUv3State *s = ARM_SMMUV3(sys);
-     MemTxResult r;
- 
-+    if (offset >= SMMU_ROOT_REG_START) {
-+        if (!smmu_check_root_access(s, attrs, offset, false)) {
-+            /*
-+             * As per 6.2.8, accesses in any PA space other
-+             * than Root are completed as RAZ/WI.
-+             */
-+            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
-+            return MEMTX_OK;
-+        }
-+        return smmu_write_mmio_root(s, offset, data, size, attrs);
-+    }
-+
-     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
-     offset &= ~0x10000;
- 
-@@ -1918,6 +2040,100 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-     }
- }
- 
-+static MemTxResult smmu_root_readl(SMMUv3State *s, hwaddr offset,
-+                                   uint64_t *data, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_ROOT_IDR0:
-+        *data = s->root.idr0;
-+        return MEMTX_OK;
-+    case A_ROOT_IIDR:
-+        *data = s->root.iidr;
-+        return MEMTX_OK;
-+    case A_ROOT_TLBI_CTRL:
-+        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
-+        *data = 0;
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_BASE_UPDATE:
-+        /* Not a regular register; reads as 0 once update is complete */
-+        *data = 0;
-+        return MEMTX_OK;
-+    case A_ROOT_CR0:
-+        *data = s->root.cr0;
-+        return MEMTX_OK;
-+    case A_ROOT_CR0ACK:
-+        *data = s->root.cr0ack;
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s unhandled 32-bit access at 0x%"PRIx64" (RAZ)\n",
-+                      __func__, offset);
-+        *data = 0;
-+        /* RES0; See smmu_root_writel */
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult smmu_root_readll(SMMUv3State *s, hwaddr offset,
-+                                    uint64_t *data, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_ROOT_GPT_BASE:
-+        *data = s->root.gpt_base;
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_BASE_CFG:
-+        *data = s->root.gpt_base_cfg;
-+        return MEMTX_OK;
-+    case A_ROOT_GPF_FAR:
-+        *data = s->root.gpf_far;
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_CFG_FAR:
-+        *data = s->root.gpt_cfg_far;
-+        return MEMTX_OK;
-+    case A_ROOT_TLBI:
-+        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
-+        *data = 0;
-+        return MEMTX_OK;
-+    case A_ROOT_GPT_BASE2:
-+        *data = s->root.gpt_base2;
-+        return MEMTX_OK;
-+    case A_ROOT_GPCBW:
-+        /* Optional, not implemented. Present if ROOT_IDR0.GPTS == 0 */
-+        *data = 0;
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s unhandled 64-bit access at 0x%"PRIx64" (RAZ)\n",
-+                      __func__, offset);
-+        *data = 0;
-+        /* RES0; See smmu_root_writel */
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult smmu_read_mmio_root(SMMUv3State *s, hwaddr offset,
-+                                       uint64_t *data, unsigned size,
-+                                       MemTxAttrs attrs)
-+{
-+    MemTxResult r;
-+
-+    switch (size) {
-+    case 8:
-+        r = smmu_root_readll(s, offset, data, attrs);
-+        break;
-+    case 4:
-+        r = smmu_root_readl(s, offset, data, attrs);
-+        break;
-+    default:
-+        r = MEMTX_ERROR;
-+        break;
-+    }
-+
-+    trace_smmuv3_read_mmio(offset, *data, size, r);
-+    return r;
-+}
-+
-+
- static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
-                                   unsigned size, MemTxAttrs attrs)
- {
-@@ -1925,6 +2141,19 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
-     SMMUv3State *s = ARM_SMMUV3(sys);
-     MemTxResult r;
- 
-+    if (offset >= SMMU_ROOT_REG_START) {
-+        if (!smmu_check_root_access(s, attrs, offset, true)) {
-+            /*
-+             * As per 6.2.8, accesses in any PA space other
-+             * than Root are completed as RAZ/WI.
-+             */
-+            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
-+            return MEMTX_OK;
-+        }
-+
-+        return smmu_read_mmio_root(s, offset, data, size, attrs);
-+    }
-+
-     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
-     offset &= ~0x10000;
- 
-diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-index 4609975edf..a538334066 100644
---- a/include/hw/arm/smmuv3-common.h
-+++ b/include/hw/arm/smmuv3-common.h
-@@ -411,6 +411,28 @@ REG32(EVENTQ_IRQ_CFG2,     0xbc)
- 
- #define A_IDREGS           0xfd0
- 
-+#define SMMU_ROOT_REG_START 0x20000
-+
-+REG32(ROOT_IDR0,            0x0)
-+    FIELD(ROOT_IDR0, ROOT_IMPL,   0,  1)
-+    FIELD(ROOT_IDR0, BGTPM,       1,  1)
-+    FIELD(ROOT_IDR0, RGPTM,       2,  1)
-+    FIELD(ROOT_IDR0, REALM_IMPL,  3,  1)
-+    FIELD(ROOT_IDR0, BA_REALM,   22, 10)
-+
-+REG32(ROOT_IIDR,             0x8)
-+REG32(ROOT_CR0,             0x20)
-+REG32(ROOT_CR0ACK,          0x24)
-+REG64(ROOT_GPT_BASE,        0x28)
-+REG64(ROOT_GPT_BASE_CFG,    0x30)
-+REG64(ROOT_GPF_FAR,         0x38)
-+REG64(ROOT_GPT_CFG_FAR,     0x40)
-+REG64(ROOT_TLBI,            0x50)
-+REG32(ROOT_TLBI_CTRL,       0x58)
-+REG64(ROOT_GPT_BASE2,       0x60)
-+REG32(ROOT_GPT_BASE_UPDATE, 0x68)
-+REG32(ROOT_GPCBW,           0x70)
-+
- /* Commands */
- 
- typedef enum SMMUCommandType {
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index d39fe8850b..e2708e13fe 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -34,6 +34,18 @@ typedef struct SMMUQueue {
-      uint8_t log2size;
- } SMMUQueue;
- 
-+typedef struct SMMUv3RootRegBank {
-+    uint32_t idr0;
-+    uint32_t iidr;
-+    uint32_t cr0;
-+    uint32_t cr0ack;
-+    uint64_t gpt_base;
-+    uint64_t gpt_base_cfg;
-+    uint64_t gpf_far;
-+    uint64_t gpt_cfg_far;
-+    uint64_t gpt_base2;
-+} SMMUv3RootRegBank;
-+
- struct SMMUv3State {
-     SMMUState     smmu_state;
- 
-@@ -80,6 +92,7 @@ struct SMMUv3State {
-     OnOffAuto cmdqv;
- 
-     Notifier machine_done;
-+    SMMUv3RootRegBank root;
- };
- 
- typedef enum {
-
--- 
-2.43.0
-
+SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMDAvNTBdIEFzcGVlZDogSTJD
+IGRldmljZSBtb2RlbHMgYW5kIHRoZSBNaW5lcnZhDQo+IEJNQyBtYWNoaW5lDQo+IA0KPiBPbiAx
+MC8xMy8yNiAwODozMiwgSmFtaW4gTGluIHdyb3RlOg0KPiA+IEhpIEPDqWRyaWMsIEVtbWFudWVs
+DQo+ID4NCj4gPiBEdWUgdG8gYW4gaXNzdWUgd2l0aCB0aGUgQVNQRUVEIG1haWwgc2VydmVyLCB3
+ZSBjYW5ub3QgcmVjZWl2ZSBwYXRjaGVzDQo+IGRpc3RyaWJ1dGVkIHRocm91Z2ggdGhlIFFFTVUg
+bWFpbGluZyBsaXN0LiBXZSBjYW4gb25seSByZWNlaXZlIGVtYWlscyBzZW50DQo+IGRpcmVjdGx5
+IHRvIG91ciBBU1BFRUQgYWRkcmVzc2VzLA0KPiANCj4gVGFrZSBhIGxvb2sgYXQgbGVpIDoNCj4g
+DQo+ICAgIGh0dHBzOi8vcGVvcGxlLmtlcm5lbC5vcmcvbW9uc2lldXJpY29uL2xvcmUtbGVpLXBh
+cnQtMS1nZXR0aW5nLXN0YXJ0ZWQNCj4gDQo+IEl0J3MgYSB2ZXJ5IHVzZWZ1bCB0b29sIHRvIGNv
+bGxlY3QgbWFpbGluZyBsaXN0IGRpc2N1c3Npb25zLg0KPiANClRoYW5rcyBmb3IgeW91ciBzdWdn
+ZXN0aW9ucyBhbmQgaGVscC4NCg0KSSBub3RpY2VkIHRoYXQgbXkgcGVyc29uYWwgR21haWwgYWNj
+b3VudCBzb21ldGltZXMgbWlzc2VzIGVtYWlscyBmcm9tIHRoZSBRRU1VIG1haWxpbmcgbGlzdC4N
+CkkgY2FuIG5vdyB1c2UgbGVpIHRvIHJldHJpZXZlIFFFTVUgcGF0Y2hlcyByZWxhdGVkIHRvIEFT
+UEVFRCBpbiBteSBsb2NhbCBWTSBhbmQgbXV0dCB3aXRoIG15IHBlcnNvbmFsIEdtYWlsIGFjY291
+bnQgdG8gcmVwbHkgdG8gcGF0Y2ggcmV2aWV3cy4NCg0KVGhhbmtzIGFnYWluLCBKYW1pbg0KDQo+
+ID4gZm9yIGV4YW1wbGUsIGJ5IGluY2x1ZGluZyAtLXRvIGphbWluX2xpbkBhc3BlZWR0ZWNoLmNv
+bSwgLS1jYw0KPiBqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20gb3IgLS10by1jbWQgIi4vc2NyaXB0
+cy9nZXRfbWFpbnRhaW5lci5wbCAqLnBhdGNoIg0KPiBpbiB0aGUgZ2l0IHNlbmQtZW1haWwgY29t
+bWFuZC4NCj4gPiBJIHdpbGwgdXNlIG15IHBlcnNvbmFsIEdNQUlMIHRvIHJlcGx5IHRoaXMgcGF0
+Y2ggc2VyaWVzLg0KPiA+IGphbWlubGluMTIwN0BnbWFpbC5jb20NCj4gDQo+IFRoYW5rcyBhIGxv
+dCwNCj4gDQo+IEMuDQo=
 

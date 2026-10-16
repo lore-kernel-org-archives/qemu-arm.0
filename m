@@ -4,112 +4,172 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420B9CCA462
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D619CC6B38
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:52:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhuh-0002g2-0B; Fri, 16 Oct 2026 09:23:59 -0400
+	id 1xHiLQ-0001kM-HE; Fri, 16 Oct 2026 09:51:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHhuf-0002fk-Bh
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:23:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <brian.cain@oss.qualcomm.com>)
+ id 1xHiL7-0001fD-Rd
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:51:18 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHhud-0007qI-Dd
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:23:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792157034;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SE9V4G/G/hYgWtus+HDIk8cYxijfE4z5gZCyCIy9Vw4=;
- b=PkVDstdOS301iYWVEYiaK60QDnr3IYgxRLrTxZgAnpX4DCJIaxLUn37A9Ay9HJ9lpoqCbW
- 27opKFhFs0rxd1mkCmnDSE/7PfFEClzsMXr+74NIinBsW4LHOTd30jtvdBxcRCieagl34Z
- rBDoR7wPi1qDP79CcwTNEhuKUi1Cd48=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-145-Eea6Z524OXOmnkJTrG40iw-1; Fri, 16 Oct 2026 13:23:53 +0000
-X-MC-Unique: Eea6Z524OXOmnkJTrG40iw-1
-X-Mimecast-MFC-AGG-ID: Eea6Z524OXOmnkJTrG40iw_1792157032
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4a1d15e7bfaso4272725e9.1
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:23:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <brian.cain@oss.qualcomm.com>)
+ id 1xHiL4-00037D-En
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:51:17 -0400
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69GAvPEI1504047
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 13:51:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ aaiMzdN1FsAMDpjCoJ/kd+lYlLRQUSBvNZtGlnn0IvM=; b=pPrDeSBhH2nGbyOF
+ 1jUg79meTVM/JIo5nl4OxEHKgVybjTboO+tJkFdw7UmoZvV6ee/YZ1r2zq5VAEuP
+ sAWa26kfkXhB1yxGvI0Fhh3eHaYoy9dqwy28d2hXUgJViVXPhcmV9D6gjaMYJ8yF
+ 3CACgvcsQJsnGHNH3pcUR322YCII624ALnL6mgN9x7VBp2aqdFM3yCgMIIw0kleX
+ r5ddF8c7iiRhin+r6REftGChWq3iOVAVSAvwqFQPE4g2kMt83NzeOLFYS/2CTQ2l
+ y4d/kW317v22Jb7KUEHxxfXlQn4vKPfadp21K4NIclZ6jfD1/gKe9P5cwk8gF5dJ
+ uVAkgg==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hbjmf8knd-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 13:51:12 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-93f26dd2165so36193985a.3
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:51:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1792158671; x=1792763471; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=aaiMzdN1FsAMDpjCoJ/kd+lYlLRQUSBvNZtGlnn0IvM=;
+ b=YUa4ysl1m31p28+LC3Sq93gc16Wm6criwX8KTtZmhnCKGhH1Qec8X5TGbf9hWB+XZy
+ JOhyQwADfdQ2h3sMOUXVhRW3a65z1n5Idwnu6D6H/mwzFw1Hm4KTXkIrR828xkD6Kiqy
+ JZMYWfAFAc7/PG52isZgmyEEV/3/vlskVGOVXVlh9CI8/dakyV/VrTi9+NbC2AJU2RST
+ s1fUE3koPCPjre1nfOI0L3kP88UlVlMSR9Hyq77JaPipI4uCLCI+2zxpvQD3hX4duhbH
+ C+Zgo10xnjAHNB98aUZcjrmt3RFYC1nQUsV5BVVnO2XRKFT1B7H1hIrvhrEacICyeZs9
+ FA/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792157032; x=1792761832;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ d=1e100.net; s=20260707; t=1792158671; x=1792763471;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=SE9V4G/G/hYgWtus+HDIk8cYxijfE4z5gZCyCIy9Vw4=;
- b=JIhWf281mzFhsMPxSPAUAVxUU/y7uOkKrJPvIXIcdUZwUNus0EPnVYV/Qp60hF5eRz
- 5BWISmSqAWLtHAUuZE25EaP1/USciJi5CqJnD85ikHV5YDjMKVv8NkRGrY3yMjrRSZRL
- Fd7dpLcKppzgFWaGIRo3VbjRKGMm6B68YoyZHI27lIa4Z7ljeK6RzhWSNXiI42pvuHEY
- huyu9OQcII7MNw7NyInXsVQizBL9Qs65fvH52Qir34eyRHfeKVKTSU32u9DKkJReIy0l
- 788h6tORcpwFRXRxLQ3UcbMdIkUPN7boj/6zVrE9RDDoA+bkOWLTrR+2mAyla0Zc/Biq
- 7JrQ==
+ bh=aaiMzdN1FsAMDpjCoJ/kd+lYlLRQUSBvNZtGlnn0IvM=;
+ b=P5TO819MLc5rlI6PgmnAVNFORKbBKyAWIzSmrgf+X5gbmkfX9ESdjo19PV7BdDQrDn
+ bT+ib5Qz4gz1kvUtlM5gs69gfS+gargUZ4sLc8DAq0tUTgNiJ7n40BHt8r2xjlpCqMBh
+ T50ntgmlja8xcIkrWeeGx8HqXpv6ZdbNnMrweeezAEVvrZu/opX/2VPrPPFhLg5TgNi0
+ Ug+cMFUeI5emOza8vGVoD/7fM1XBLfIhYdo+HoytMbhwr18EgRvQuk5qPKASf3T4TSKS
+ JqMI74S3BIb/4yxXIhBkle+GYDVXKg+o78FN/SKbpPS53UAx/tini+H21n1q7m7VSH7R
+ O+Mg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw6FUeQrTmYiKzTsF61Y9eVNJuOYqmr0WuxKbWm4tTS92pIcMA1EjtBcnBlNtdVL82iwAJsAUq8PQ==@nongnu.org
-X-Gm-Message-State: AFq9FYLF2g7+M/sl12WtxZFXxesDI8glH9BJBlIMeABQBkab5kwy+Gtz
- SIINOERSAOWIfM4iwmnRYEI62wt+dLvbchUS7pKWHN1Nc2O1zG9x1J7ccV89mQLGntLBh17ul1T
- fPdciFNozRJvyvEfrRVgZxHGdwIa0taeZeFidtxS2tILx9XnEQ1fJBQ==
-X-Gm-Gg: AYBFou1hYxYfQi74A4QYCbQsw4Gc6tx9g/rTAu1ciAd231LJE/eTKmQmso0q75DKmDk
- 6bmVRF+EaBaIj3RwgS35dTStA/nlAqOsyykPIlRiYTSt6/zE7913vNP7zjxFQhuD3+3HP5p3bV2
- p+OvlU2SdydABK0W82WE/3eHi7cNlMyXd8C7BSeEEiZisNl8/xpwPuYQJfew2Gz05LGimbo5x+B
- 8oAY2f6Jzsn6s9VIdMCNpyrIXTxaValp0AHrSBNyX8KkvwkQTZ4pQJqxZ7mOmU50BQj1Oj5/X9n
- KvveKoeFYMLvcz8aVA66JNNQYYdtmC5hWmisNpwoq6RF8IGIcevoTotagdErcRo0KEm0/G1wKB+
- fpUG1bA8nok7+D2nMkEh4f33ugW5w24od9mMl8bHPHTSJ0jM1
-X-Received: by 2002:a05:600c:c113:b0:4a1:985b:83a9 with SMTP id
- 5b1f17b1804b1-4a1985b87f5mr280530355e9.4.1792157031830; 
- Fri, 16 Oct 2026 06:23:51 -0700 (PDT)
-X-Received: by 2002:a05:600c:c113:b0:4a1:985b:83a9 with SMTP id
- 5b1f17b1804b1-4a1985b87f5mr280529705e9.4.1792157031375; 
- Fri, 16 Oct 2026 06:23:51 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1bd9b8b5fsm164077725e9.9.2026.10.16.06.23.49
+ AKwUvBzyWDMLwBgnIoidPPlkcAe1iWBikrFBDJHUpMdnAgnlf7ZVZerZ+RbuMTViFy0slxkg29MZSH7CRg==@nongnu.org
+X-Gm-Message-State: AFq9FYKXBowvEBYcKG5+haknlA41TdrDls20CflwVvx2yffJCyV/vh2f
+ cG+VcF1DzKU5n0cqxoMR5PpkOeLUGNk/bl7IUBX0OcEO3+Od1rCIghk31OidSufUKQ/HaHzhsDh
+ bFJoIigXk5LS3XODuNb0PA2CvWaTNTicH4KPhN4HNkCNvyTm8UMl/UJA=
+X-Gm-Gg: AYBFou2dMZtw45xsvx3Na8FBKJY3Gfr6PawkwOZJw+9YaAf0l4pXrT9AphrcIH/hiNC
+ 0kWVTss3Tu/gv/Jk5BxB3Gnrzed3GFcygoz8aADUpaAcw66QY9iG7WWZmeSUclYhQAUJQkRXSpK
+ Z03d0m4w/JONAJD2DHDqROVFGBS3GQSJSDZ7WizxVMG7VQreZy5NnCgJJI5MLjYNTxwB32eofAM
+ cJUAilkdqLjUxPGce+j+p42ePveOrI0qnSVK88X8Ej0dAagwvFVNwS0Bgpp60210gZb6xVT0X5j
+ bJ14GteF6YqQ4xRxZyZvk2qOvYpmFELCuOMOIRhMf48xxdfieRu/fiC4jA4lB16KCRUasQlZZlK
+ BS2st/7ffo2DMOH16MDUi7aXY7UcGH0UyfoW4aziqFL2/+E3rRBTZU9L4+YalG3S0
+X-Received: by 2002:a05:620a:2248:20b0:93f:11ee:ba5f with SMTP id
+ af79cd13be357-93f11eee5edmr579328985a.79.1792158670986; 
+ Fri, 16 Oct 2026 06:51:10 -0700 (PDT)
+X-Received: by 2002:a05:620a:2248:20b0:93f:11ee:ba5f with SMTP id
+ af79cd13be357-93f11eee5edmr579324585a.79.1792158670463; 
+ Fri, 16 Oct 2026 06:51:10 -0700 (PDT)
+Received: from [10.222.168.219] (Global_NAT1_IAD_FW.qualcomm.com.
+ [129.46.232.65]) by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-93f1a1690fdsm216994685a.11.2026.10.16.06.51.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Oct 2026 06:23:50 -0700 (PDT)
-Message-ID: <1dcb8628-2b99-4af1-92f4-08dcae197e82@redhat.com>
-Date: Fri, 16 Oct 2026 15:23:49 +0200
+ Fri, 16 Oct 2026 06:51:09 -0700 (PDT)
+Message-ID: <077274ba-002e-4241-9158-13a3270bddaa@oss.qualcomm.com>
+Date: Fri, 16 Oct 2026 08:51:00 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v4 24/25] target/arm/qmp: implement
- query-cpu-props-info for KVM
-To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-Cc: cohuck@redhat.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
- armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
- shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
- ping@khushitshah.com, sandesh.patel@nutanix.com
-References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
- <20260921123249.1708067-25-khushit.shah@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260921123249.1708067-25-khushit.shah@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: IZCQ8hwulbS275jyamByvUzc-zgk3FvwaH4QKj36OgE_1792157032
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH] target-info: dispatch CPU QMP, dump, monitor, and Angel
+ semihosting
+To: luoyonggang@gmail.com, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-riscv@nongnu.org,
+ David Hildenbrand <david@kernel.org>,
+ Glenn Miles <milesg@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Bibo Mao <maobibo@loongson.cn>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Song Gao <17746591750@163.com>, Chinmay Rath <rathc@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aleksandar Rikalo <arikalo@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eric Farman <farman@linux.ibm.com>, Philippe Mathieu-Daude
+ <philmd@mailo.com>, Xianglai Li <lixianglai@loongson.cn>,
+ Chao Liu <chao.liu@processmission.com>, qemu-s390x@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>
+References: <20261015044104.879-1-luoyonggang@gmail.com>
+ <CAFEAcA8n9E1jpcOCat0kzv0Q++x7YwK_MNJBJ0qGdtX1-As4zg@mail.gmail.com>
+ <CAE2XoE-fgq_c9qONyvfbNi3Ys_hv7yKvGCkk+Wz+rHPW0p65Eg@mail.gmail.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+From: Brian Cain <brian.cain@oss.qualcomm.com>
+In-Reply-To: <CAE2XoE-fgq_c9qONyvfbNi3Ys_hv7yKvGCkk+Wz+rHPW0p65Eg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: NHAvmptOrM8L1TIYD2oUGSL5mHer-eSq
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE2MDA1NSBTYWx0ZWRfX89ywnTLrBqZW
+ kRgu+zbAM1NPMBbheMC3FXVa+WlsHugNB6nLjzmh4hRcfI+VxnEa5g67gCo3d6vl0AJRToROjtB
+ 1OR0RReqRyn0hu0lAeZdbpYsBGS3Pyo=
+X-Authority-Analysis: v=2.4 cv=SrAFe/O0 c=1 sm=1 tr=0 ts=6ad22bd0 cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=C3Dk8TwHQYyIj7nOf9RCJw==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
+ a=KKAkSRfTAAAA:8 a=pGLkceISAAAA:8 a=X7ICM6PgokHMk0l1ZBYA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: NHAvmptOrM8L1TIYD2oUGSL5mHer-eSq
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE2MDA1NSBTYWx0ZWRfXw2IorUHqdK64
+ ae+p+FbJfJghg9bP8ApFjXsX0ah0uVH3WRWkMzVYYXRKgfnhrprp/PDgqS1AE6VMXkyy/BmTHVI
+ zQa/vJKGMeHJ8WAr8oMWDP4H+nticgrqqsBxz4aJ/dwh1wS6lGIE5ICJ1u7BSD7KgaMJtbjlH6q
+ 37q26itcQ4DncbANCtfSXtF2vm05mU34Of1a/aw1YosMAQf86vSnuoQUhbFQBX9Wo6mPYHI4QfZ
+ 8eqfViV1W+3wYs8VOJ0hk0AAuDoAC6yko3oPiKLZMcwU0hOzGNVPszZ9XG9QN4O/dAH/Nl+N1Jp
+ kxyS6FnT341RmNJOGMYxTZ6h3qoODzcuv1BR0FnVkYCbYGHrwVVERzoI6fDHVLFDAC9TCrToyFj
+ A4mijwkoGRCMGncwF9dxaGyM7Kfo6iKKDMi+ID+rsBrjlll2slaKdxDlUMHj12sX0smd0O+5icq
+ F1DntWQ4NQxzbuWE3hA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-16_01,2026-10-14_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 suspectscore=0 bulkscore=0 spamscore=0 phishscore=0
+ clxscore=1015 malwarescore=0 priorityscore=1501 adultscore=0
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
+ definitions=main-2610160055
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=brian.cain@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,124 +182,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
+On 10/15/2026 4:38 AM, Yonggang Luo wrote:
+> On Thu, Oct 15, 2026 at 5:20 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>> On Thu, 15 Oct 2026 at 05:41, Yonggang Luo <luoyonggang@gmail.com> wrote:
+>>> Put query-cpu-definitions, dump notes, monitor, and Angel semihosting on
+>>> TargetOps[SYS_EMU_TARGET__MAX] and look up by target_arch().
+>>> Keep the table in target-ops.c and with a stub
+>>>
+>>> - Register with a QEMU_ARCH_* bitmask so shared base-arch objects
+>>>    can fill both slots (e.g. QEMU_ARCH_ARM is ARM|AARCH64).
+>>> - TARGET_INFO_CPU_OP is type_init. A NULL member means no handler.
+>>> - Drop stubs/qmp-cpu.c
+>>>         stubs/hmp-cmd-info_tlb.c
+>>>         stubs/hmp-cmd-info_mem.c
+>>>         stubs/dump.c
+>>>
+>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+>>> ---
+>>>   MAINTAINERS                           |  1 -
+>>>   hw/core/cpu-system.c                  | 23 ++++++++++
+>>>   hw/core/machine-qmp-cmds.c            | 27 ++++++++++++
+>>>   include/qemu/target-ops.h             | 59 +++++++++++++++++++++++++
+>>>   include/semihosting/common-semi.h     | 63 ++++++++++++++++++++++++---
+>>>   meson.build                           |  1 +
+>>>   monitor/hmp.c                         | 25 +++++++++++
+>>>   stubs/dump.c                          | 27 ------------
+>>>   stubs/hmp-cmd-info_mem.c              | 12 -----
+>>>   stubs/hmp-cmd-info_tlb.c              | 12 -----
+>>>   stubs/meson.build                     |  4 --
+>>>   stubs/qmp-cpu.c                       | 21 ---------
+>>>   target-ops.c                          | 49 +++++++++++++++++++++
+>>>   target/arm/arch_dump.c                |  8 +++-
+>>>   target/arm/arm-qmp-cmds.c             | 15 +++++--
+>>>   target/arm/common-semi-target.c       | 26 ++++++++---
+>>>   target/arm/meson.build                |  7 +--
+>>>   target/hexagon/common-semi-target.c   | 26 ++++++++---
+>>>   target/i386/arch_dump.c               |  8 +++-
+>>>   target/i386/cpu-system.c              | 12 +++--
+>>>   target/i386/cpu.c                     |  6 ++-
+>>>   target/i386/monitor.c                 |  8 +++-
+>>>   target/loongarch/arch_dump.c          |  8 +++-
+>>>   target/loongarch/loongarch-qmp-cmds.c | 15 +++++--
+>>>   target/m68k/monitor.c                 |  4 +-
+>>>   target/mips/system/mips-qmp-cmds.c    | 15 +++----
+>>>   target/ppc/arch_dump.c                |  8 +++-
+>>>   target/ppc/monitor.c                  |  4 +-
+>>>   target/ppc/ppc-qmp-cmds.c             | 15 +++----
+>>>   target/riscv/arch_dump.c              |  8 +++-
+>>>   target/riscv/common-semi-target.c     | 28 ++++++++----
+>>>   target/riscv/meson.build              |  4 +-
+>>>   target/riscv/monitor.c                |  4 +-
+>>>   target/riscv/riscv-qmp-cmds.c         | 15 +++++--
+>>>   target/s390x/arch_dump.c              |  8 +++-
+>>>   target/s390x/cpu_models_system.c      | 15 +++++--
+>>>   target/sh4/monitor.c                  |  4 +-
+>>>   target/sparc/monitor.c                |  4 +-
+>>>   target/xtensa/monitor.c               |  4 +-
+>>>   39 files changed, 428 insertions(+), 175 deletions(-)
+>>>   create mode 100644 include/qemu/target-ops.h
+>>>   delete mode 100644 stubs/dump.c
+>>>   delete mode 100644 stubs/hmp-cmd-info_mem.c
+>>>   delete mode 100644 stubs/hmp-cmd-info_tlb.c
+>>>   delete mode 100644 stubs/qmp-cpu.c
+>>>   create mode 100644 target-ops.c
+>> Too big a patch touching stuff all over the place with
+>> insufficient explanation of what it's doing or why.
+> Oh, sorry, I post is just for demo(DRAFT) for other place to
+> reference, but git-publish have no way
+> to title it(maybe because I use it wrongly).
 
-On 9/21/26 2:32 PM, Khushit Shah wrote:
-> Implement query-cpu-props-info for ARM64/KVM by creating and finalizing
-> a temporary "host" CPU object and then walking its QOM properties.
-side note: the new qmp command shall be documented in
-docs/system/arm/cpu-features.rst
+git publish has `--subject-prefix=PREFIX` - that will let you qualify 
+this as DRAFT/RFC.
 
-Eric
->
-> For numeric SYSREG_ properties, report the host-supported value ranges
-> computed by kvm_arm_field_get_supported_values(). For boolean
-> properties, report false as always supported and true as supported when
-> the QOM property value is true.
->
-> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
-> ---
->  target/arm/arm-qmp-cmds.c | 84 +++++++++++++++++++++++++++++++++++++++
->  1 file changed, 84 insertions(+)
->
-> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-> index 0940285af1..ba488d5c01 100644
-> --- a/target/arm/arm-qmp-cmds.c
-> +++ b/target/arm/arm-qmp-cmds.c
-> @@ -84,6 +84,90 @@ static const char *cpu_model_advertised_features[] = {
->      NULL
->  };
->  
-> +CpuPropertyInfoList *qmp_query_cpu_props_info(Error **errp)
-> +{
-> +    CpuPropertyInfoList *head = NULL;
-> +    const ARMISARegisters *host_isar;
-> +    ObjectPropertyIterator iter;
-> +    ObjectProperty *prop;
-> +    Error *err = NULL;
-> +    ObjectClass *oc;
-> +    Object *obj;
-> +
-> +    if (!kvm_enabled()) {
-> +        error_setg(errp, "query-cpu-props-info requires KVM");
-> +        return NULL;
-> +    }
-> +
-> +    oc = cpu_class_by_name(TYPE_ARM_CPU, "host");
-> +    if (!oc) {
-> +        error_setg(errp, "The 'host' CPU type is not available");
-> +        return NULL;
-> +    }
-> +
-> +    host_isar = kvm_arm_get_host_isar();
-> +
-> +    /* Spin up a scratch "host" vCPU object and walk its QOM properties. */
-> +    obj = object_new_with_class(oc);
-> +    arm_cpu_finalize_features(ARM_CPU(obj), &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        object_unref(obj);
-> +        return NULL;
-> +    }
-> +
-> +    object_property_iter_init(&iter, obj);
-> +    while ((prop = object_property_iter_next(&iter))) {
-> +        CpuPropertyInfo *info;
-> +
-> +        if (g_str_has_prefix(prop->name, "SYSREG_")) {
-> +            const ARM64SysRegField *field = prop->opaque;
-> +            CpuPropertyValueRangeList *ranges = NULL;
-> +            ArmFieldValueSet *vs = NULL;
-> +
-> +            info = g_new0(CpuPropertyInfo, 1);
-> +            info->name = g_strdup(prop->name);
-> +            info->type = CPU_PROPERTY_TYPE_NUMBER;
-> +
-> +            kvm_arm_field_get_supported_values(field, host_isar, &vs);
-> +            for (size_t k = 0; k < vs->n_ranges; k++) {
-> +                CpuPropertyValueRange *r = g_new0(CpuPropertyValueRange, 1);
-> +                r->min = vs->ranges[k].min;
-> +                r->max = vs->ranges[k].max;
-> +                QAPI_LIST_PREPEND(ranges, r);
-> +            }
-> +            info->u.number.supported_values = ranges;
-> +
-> +            g_free(vs->ranges);
-> +            g_free(vs);
-> +        } else if (g_strv_contains(cpu_model_advertised_features, prop->name)) {
-> +            bool cur = object_property_get_bool(obj, prop->name, &error_abort);
-> +            boolList *values = NULL;
-> +
-> +            info = g_new0(CpuPropertyInfo, 1);
-> +            info->name = g_strdup(prop->name);
-> +            info->type = CPU_PROPERTY_TYPE_BOOLEAN;
-> +
-> +            /*
-> +             * "off" is always supported. "on" is only supported when the
-> +             * host already has the feature enabled.
-> +             */
-> +            QAPI_LIST_PREPEND(values, false);
-> +            if (cur) {
-> +                QAPI_LIST_PREPEND(values, true);
-> +            }
-> +            info->u.boolean.supported_values = values;
-> +        } else {
-> +            continue;
-> +        }
-> +
-> +        QAPI_LIST_PREPEND(head, info);
-> +    }
-> +
-> +    object_unref(obj);
-> +    return head;
-> +}
-> +
->  CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->                                                       CpuModelInfo *model,
->                                                       Error **errp)
 
+>> thanks
+>> -- PMM
+>
+>
 

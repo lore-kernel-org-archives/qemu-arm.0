@@ -4,87 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 388FACC6B38
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 09:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420B6CC6B38
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 09:41:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHeRY-000869-HF; Fri, 16 Oct 2026 05:41:40 -0400
+	id 1xHeRU-00084K-3N; Fri, 16 Oct 2026 05:41:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xHeRU-00084u-Pi
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:41:36 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1xHeRS-00083x-Pq
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:41:34 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xHeRT-00072K-56
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:41:36 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4a1d293b293so1154005e9.2
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 02:41:34 -0700 (PDT)
+ id 1xHeRQ-00071k-Lf
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:41:34 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4a018dc1f98so49585415e9.3
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 02:41:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792143694; x=1792748494; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=JaV6zcQXKCHcnVPOydiraqRohmCcTct76VZifDwNpIQ=;
- b=nqQuQc3GRWy28yL2eAc8Mh00PBpPCLFuaVsTc9nwOaGd4mstH3scZxEe/sB2wmiOsH
- aXBKTvuDWWJ70XFZuAzTP3R6j4QWs+QjT7G4Y7c6Q7O6G4rLCHST7Lac61dATJ79Zvd/
- +oILprUmhjh4Ifasx0yJFxyRuJ8tmmKf2q0thTq0Uxi4ZkXLHb+ifFLm42Vnl4q5pomz
- g32KX8wLhqWKlYSnw8DhxTH2y2/b/8tgxrp6Ze8KFvHdg6+6RZ6zxhAwhU353P84onq0
- kLXKau1ZvFml/3mfmvuGvKVdMB+RsbW2sjqL3tO9jSxmdyGZCjC7aujydHuLJ0FexJBc
- c2fQ==
+ d=linaro.org; s=google; t=1792143690; x=1792748490; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=66EECe90o14dw0yTOpJUJ+OjrObtLrPJ5Zqjapy5tkc=;
+ b=BTcAXJeU+lYhg7XobWIbFjGwHuKY0lLFLVJBFbuSWh9wTRQD/scgwja+Ecji9U9Eat
+ m/pnIsYNz6jx3sqJM+OWukYyHisPzGoli2xlWgwqSvrmvsKNY4PwquOvtVGDnxW2cMGM
+ +QUOZHRamSlRRWntGD3m6J3nZJEGiQPIv5WF3gUZxW/bzuFiygJkNGA7XcLLFB8LGTD0
+ qrAClT7SwqQDluWzgY2Doo2rjMcSg7NzDnDChKabx5HA/9cOuj/fWUgFaDekoH/C9GX4
+ qu3OE5tql4NtMfvMyu53gyvCLpCQNx/iPnyOb/m4SpR5IUy2cgEbS14lwFlLMZIAZfol
+ 5/sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792143694; x=1792748494;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=JaV6zcQXKCHcnVPOydiraqRohmCcTct76VZifDwNpIQ=;
- b=aOZj+BqSBjaxHZLhN4CkGTucnpgcuFrgs1TovgBr3bAAgsKMRLRmPPJOsoz7QC8GUl
- /Zmff071/az/VVKc2yMjVx8VmSEsjktqB0hxxwW++qLObRtMgyKG2YuCsMNXZP4saIwa
- xqRRPj8d2zEfHaURQB7quPvDHGKF0j7uWrzyvGwQqjFExfzlEqiwO8E86XTCfgIGMCjy
- QiejeR8Xc8XH0aKA4gqGgR/y/1naXUq4nj0OBXGuhI3jnSTHEsunVhzavyhbxPkaHG5A
- mYFbgjXrxgeZ1nHsRPVdRryj/Jr30tnUTweysnTAMDulpEauf5WzgZXAPyXpMkYt1AHF
- Jysw==
+ d=1e100.net; s=20260707; t=1792143690; x=1792748490;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=66EECe90o14dw0yTOpJUJ+OjrObtLrPJ5Zqjapy5tkc=;
+ b=yrR4NlDWsqtAmBw8BV2bAlVLhL3iUpi38RyyMIY/z3BFXcFr9YM1tIbgWzDKZ0KfTO
+ xHlj3Rw55PAILQJOcF/iyYgwvgneBvrO1alVDonnhkoJ0Sbgr3yr/p/DjNjpyWPkalNo
+ 9OonwiVctpUccV24WlF4gAJ0aTaFZ1ObkgGt/C4dObqBJUpnDGGyfOYVeMO0+ulxGp13
+ 7RKQZtgopd6gEdm7Y4HRnqaV4DRWVlSoEVMMhmMcdLd2KKKlJIddYI8jgL+meD1cTVHd
+ 3bPRrvskfpjyD/4Tsz7bk2WpWtOMei0pO6CeyxupVDnSF1ZbgyFekkToTUAVf0fKdrH2
+ HiEQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzVNSLlN+IfvUm8k71d4YdEuC+65G0PL8JKRCU8FRyxrpuWpB22GVEjbWO4E986Pv3wpeGxzCFvtQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIVxkIGRuVYasK3H9Ajat3YBrEexwa/JNGTQeyZPcKMdc6KzaEc
- muZhLyJAWsUWXie+UJ7h5C8I2psFikziCIJYTsHdLENlBnC4TxkFFXD6pwLu0gzVpDE=
-X-Gm-Gg: AYBFou1KUUqNqdBmiTEIGvRiF5o17vqzmXWZt/MOrIv2vk2ZBdSRk5xUN9bcogxzAa9
- AAO39ldJeI+N4Ded0xta7CKQYi39S0hocM4OOfidmz1G33BB+FaNlt9BvDjhwmOiZzrd4UM6MZI
- M6et1uSz0qVSGp2FJ+M8AAmZGRMK7GadoiaY4CDc9feEB3uGn8VfEdSomonrSD3cGYpv00HKEZl
- 7+dfMlIgcQKDIws+2CpnA+pweccGrtE34SvNTJMnTuu3JgsVT7hk4iTq/4ht2/Z4iFwMasHxzcR
- rVaOr/HffsoK1v+vU4txWTiSC1HnBQtHQn80e4FD4CqnBLBwcwV+0P3tplMWIjwxGWGI93Rc5oX
- OyHJLJ22Cz91WF/4sN7CT+DPuq6mSLsg2+jeNkywLZxmGsVPm6bymWbVEehsffQxUEOLQwrvC5k
- bM7Epp1rgzspk50mQolkCbZKI+Mp629+0Ge8hNmVi349ySNx8gv20KSmTVcMAwGuvGkwOCwDuP6
- chzXgaQ9dx2
-X-Received: by 2002:a05:600c:19ca:b0:4a1:7e76:d02f with SMTP id
- 5b1f17b1804b1-4a18e4ac650mr436698005e9.14.1792143691853; 
- Fri, 16 Oct 2026 02:41:31 -0700 (PDT)
+ AKwUvBwjjE6NqYGAXOQKx1TjjQzLSa9ufauNVcvjZvXQfKYCzjhA93kNMa4TlC1qCBM9avDfh2a4CkJS5w==@nongnu.org
+X-Gm-Message-State: AFq9FYLYF7uFfUiGCw7jvmUF+ryovcs39NXUxAdRzCG325iYjqexVbma
+ iqAAFR9CjY4xt64KcJTy6mAuIPOW9Xnzd4+7PAXPtAIGSNBtUdpvkCR+U7W14EuH/+Y=
+X-Gm-Gg: AYBFou1LqTAQKmbrvxKEwrkxuRAWfqGNq0gqMRY77eRdC7BWCw7ouA/8FtLHPQ8EQ/X
+ U6cFYEGe5/aAklgDTtJDmp1W3BJFqypQ3ZLItI9QTYKiFdQmPW6YXHKSraeQaClNEFCd+QhUCwB
+ VJywOLXrrLLhoZoiIe1sVmpWK+fvYPGVpelGnymigNJILjueBq3PP9lTUypiSkXLoMYizWqrb7B
+ Q3b9hj2NwQ0OaPV3gXmt9gJrLmmAiABXngekw1UhW46dE2+J+ngB/7WiIgcKBAyTIwuow0hqjFj
+ hQo6n+IUGTc7JLYTfQK07kI8qddnXictk5jVdcXhI8Mc/tP3D/0NaTboLjkXWuQfV1lPoJM/JHX
+ V9jUJ7PF8elZGAdLFNuEZEiUe3/0y0s90DaAU4n2Na1QS5sF9ePHWAK4Xv1h4CrAWfGpiCYWCJI
+ zv5mBDXHQozRrZPFUWqiOkckq8TS84DvCE9jzYu+ph2nM4gizR7bj58VUizKMtKMRfTryMVRBYH
+ w==
+X-Received: by 2002:a05:600c:4e8a:b0:4a1:78dd:dd28 with SMTP id
+ 5b1f17b1804b1-4a18e4d2b31mr446516035e9.27.1792143690239; 
+ Fri, 16 Oct 2026 02:41:30 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:8f73:128f:8f43:e3ec])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1cf05009csm28649385e9.10.2026.10.16.02.41.31
+ 5b1f17b1804b1-4a1cf05009csm28649385e9.10.2026.10.16.02.41.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Oct 2026 02:41:31 -0700 (PDT)
+ Fri, 16 Oct 2026 02:41:29 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Fri, 16 Oct 2026 10:40:52 +0100
-Subject: [PATCH 2/2] hw/arm/sbsa-ref.c: Increase SMMU space for Root registers
+Subject: [PATCH 0/2] Add SMMUv3 Root registers
+Date: Fri, 16 Oct 2026 10:40:50 +0100
+Message-Id: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261016-jmac-smmu-root-registers-v1-2-e78e8879d347@linaro.org>
-References: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
-In-Reply-To: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
+X-B4-Tracking: v=1; b=H4sIACfx0WoC/yXMQQ6CMBBG4auQWTsJrcLCqxgXpfzgkJSamWJMC
+ He36vJbvLeTQQVG12YnxUtM8lrhTg3FR1hnsIzV5Fvfu9Z1vKQQ2VLaWHMurJjFCtR4jJfJwYf
+ +PHRU86dikvdvfbv/bduwIJbvj47jA9DsA1Z8AAAA
+X-Change-ID: 20261015-jmac-smmu-root-registers-dc4f1e2a63b5
 To: qemu-devel@nongnu.org
 Cc: Eric Auger <eric.auger@redhat.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
- Jim MacArthur <jim.macarthur@linaro.org>
+ Jim MacArthur <jim.macarthur@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 X-Mailer: b4 0.17-dev-6be7c
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,30 +109,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In our implementation, SMMU Root registers are directly after the
-non-optional SMMU registers. Realms registers will be added above the
-root registers later.
+This is preparatory work for further SMMUv3.3 features including RME-DA.
+We are adding in patches originally authored by Pierrick Bouvier 
+<pierrick.bouvier@linaro.org> and Gustavo Romero <gustavo.romero@linaro.org>
+in a way that will avoid conflicts with Tao Tang's upcoming SMMUv3 Secure
+state patches. Since Root registers do not use the banking system, this
+should only conflict around the offset check near smmu_write_mmio and
+smmu_read_mmio.
 
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- hw/arm/sbsa-ref.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Jim MacArthur (1):
+      hw/arm/sbsa-ref.c: Increase SMMU space for Root registers
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 158b461eb4..0747f5ca9f 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -129,7 +129,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
-     [SBSA_SECURE_UART] =        { 0x60030000, 0x00001000 },
-     [SBSA_SECURE_UART_MM] =     { 0x60040000, 0x00001000 },
--    [SBSA_SMMU] =               { 0x60050000, 0x00020000 },
-+    [SBSA_SMMU] =               { 0x60050000, 0x00040000 },
-     /* Space here reserved for more SMMUs */
-     [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
-     [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
+Pierrick Bouvier (1):
+      hw/arm/smmuv3: define Root registers
 
--- 
-2.43.0
+ hw/arm/sbsa-ref.c              |   2 +-
+ hw/arm/smmuv3.c                | 229 +++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/smmuv3-common.h |  22 ++++
+ include/hw/arm/smmuv3.h        |  13 +++
+ 4 files changed, 265 insertions(+), 1 deletion(-)
+---
+base-commit: 5acdfee7f068d88813c989c52f76bb64a06121ca
+change-id: 20261015-jmac-smmu-root-registers-dc4f1e2a63b5
+
+Best regards,
+--  
+Jim MacArthur <jim.macarthur@linaro.org>
 
 

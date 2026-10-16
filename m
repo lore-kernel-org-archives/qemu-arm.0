@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCB5CCF2C2
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A19A4CCA46C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZJ-0006Ko-79; Fri, 16 Oct 2026 09:01:54 -0400
+	id 1xHhZL-0006Pk-O1; Fri, 16 Oct 2026 09:01:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef1-0007Jp-QY
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:35 -0400
-Received: from out162-62-57-137.mail.qq.com ([162.62.57.137])
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHf04-0003Kj-AP; Fri, 16 Oct 2026 06:17:20 -0400
+Received: from out162-62-57-210.mail.qq.com ([162.62.57.210])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeez-0000Qt-AN
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:35 -0400
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHf01-0002Sl-WB; Fri, 16 Oct 2026 06:17:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792144529; bh=brp23fJA2yAN9/CTw2NxwDN4h2X1SVIO3Ep9wCGihF0=;
+ t=1792145831; bh=F+3NBbYQ7duTjQJsFBNeVolVsHxcmA5pPgQyf+ycFoE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=OgjylBXJU4/zVqOJEXC7wNK/qXptaGrq3vJXqOQnhywDwx9sOjGJrEVx86rQjJgl0
- /rxH77dFAedEEpeKDiFGluDTQraicVgLoQGAP3Ssl6uL3JhB3jBPz5SftXm6eBoc0I
- rGFYH1+Pi3Z5Y/y0Dr/8XfJM8vZ/fOLzENL4gMRo=
+ b=gAW9AU2/iH+JKadfWDSA3meg3tRy1YznHn2h0O7aaY/hNqoNbyiPPOx9952kzOdVW
+ 1F7esqhDMbE5qHntilOwnmaAp7JkeSGGnzFJJ6wwCnAqlJaBkRfTC0klq3VUXWh1KB
+ HIS36pY25xfxJaTRQ6VmCa2GGRjzrUUC3iBIwpl8=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
- id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
-X-QQ-mid: xmsmtpt1792144080th0nhfjzc
-Message-ID: <tencent_2A6A4523CD66C21191EC56406A7866E2B805@qq.com>
-X-QQ-XMAILINFO: NAvK98dRmgdft9v3NnDrrX+syVMeGMiE1oTrvB++xMtW4qtE60U+LstPJ+JMnS
- RvkTBVBwr3IWTu+ILFHcc2YzVunGTzCCGAW3Pc7EIJCVJsFE6mR1w4OSv2u093R4Oo0z8bYsoHB2
- R75Piv8Y3YXFFcnpzo1FpsYO/KH0k/aaUODzGJtSwu0qMUv73TEIjK7ARTKBuwZYDOs9PLZR/EG8
- +YkrLd7C6JgmJxfG74huwYAoKhW7fuuyKk4Yk9GScIZgQvhtgJ1YrFwfP7iRW0N3SY7g5mvKEOIb
- 0lam7/cr/TTY1eMKuZWHI4LHHzskzcw7MGAi/vUxhu0RbMqZJMM7VNvz/jBiQotgz7JGWwXZwREC
- GBZBxRUB84xfy1nznxAyNp3B8M8C0PzOqY86OIA1LNPKB8DGJ5GOdOO3OQ9mbN/v/gHcd+sCM8bh
- Z6p5FrUWXVvS45mrG+P59sRIbFSabMnCO/yS1xEqyTY7E1B8a24I3YYraQq30s9fa62DfYlVoCUB
- CPBG5YZulB+iLeag69HR6wZwbFTVLXPfV4gJfzs92GdwIsKJ7oRlmfMAf8PywQaJSdMtnVqRPK6G
- fG7rP1g6HpSa0EN3tqGCEvzg5q6lYjhZJu2mtgt8uAC9tvgQRpYgN7y/m4RKoJMxo8ibfA/IN2nQ
- l3VAYt3hcTFsJxnu78dZi4AgBc0aUd8/7Kgz/YsgMZop8NBgm3C5PKLm3ZtA9qFwgIiD1f6QTHdJ
- Whk1chaxGdtsEPbwTvmntZ3poxrZoNmnVyGOtmhOjcIB8a8Me9IGDVnfAM7pvQ3RignNCU/YkENL
- iqQA/dWMuxXRRQm2zUcErrfkV8qs00iLJOJ7BpF2UcuPR+OkmXHqarJmJzrC5dZMYx+k4f6hD9aB
- HmgFc+IjV3EdtXLazwkhQyY6AcvsfpSJetda9xzVLpNdxQSX9Xaj0JLVkqxCinv5Oi8inI+esLjQ
- ij97lH6aaohOyrKHA4Q3NZDEXbN9KmvPOh8g7GmMa9AB+TTWuG3LQ3vmHL+9SNOUCgy+Qa6hHDie
- Rmb3I7GyE8Txh1GQMrHpQvAbphchdi7WM18hqBGQ25RcvIQS2sf+bOIdqqkCTNttbV0v80JRz9rB
- hHWVmG
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
+ by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
+ id 449272A2; Fri, 16 Oct 2026 18:17:09 +0800
+X-QQ-mid: xmsmtpt1792145829treu3uonw
+Message-ID: <tencent_C427298A199263A6959A34FE890C44CEDB07@qq.com>
+X-QQ-XMAILINFO: MQehWLKhaMl1koD2t9N9QwSwL9G1E6oPi5l5iyZuygQGv9l7BD/RnVb8XVap0O
+ kZ//dji7uAujNZzoBCFK6C0caYYneE9F5nCEYy1PwP4Cu/EaTJ89BHUGq04k1Jd/DAN0jgg254l/
+ UMeN8QukCzRBQk51EUuW98acF7mghIDoP+ndc3+E4sV9VPWjkWfYrJ7LNSqXqSTMoBwk/B3Tw/l6
+ vBHYqMR1NzZ/bQRUjxCtwXyrOzomqvDVyMTPL1Mxt4ZJvFHpanLSgOUvo+fX1GPiBiKnZgoFe7LN
+ dNBpsOgKlk/vrmGaTU5jPtJUDsSHNatxls3trN729xfuXXSdAL43Y3OZnZ6+31KEw/mkKSVBs5np
+ unqOsm1adbM1irJzceDPGtQtPfH7ez4pMGk0fqOzP+oE4Y/jWZ3jHMzYyctrYUnNamNvdjGxcgOl
+ kEYmcBIZCJ8sFVv9FVKWkmetjWRd5YV7WMyQAOInGeUwy09pCHmlUU7Mcj3LCt10DbWpmisUDLIJ
+ xTO/kCxyy3gAObCFFlugAnx+reLha5BZVKSZ7nKTVmy69sxOKVghb4TfWu6dsa3yPaKcmAWkGXkA
+ sDZSAXnE2YmIYvZi4QychkNP8AB0G4CNFu5S3CEvFQT/FPe2tSPBaKgBUwrZ9HJJXH2eC8XkfI8+
+ BzOdiFS6ZyIaFnBbU5+slhDvjhzjRsmjuadzfiEi7KvhAix3TaHhjrk2d2UeuNju+3s+QYx/+Y9F
+ nTDHKR8gqvMkqDmFw53pxubMRqop4ZhAccQrT8GWp+LIwUc9vUaeWREjCwHOwmVQBm8e9+ujQW9I
+ ktPQc1ZqyefueC3oY7yWa/g3e298HpNbhkutNAa4Txpx+korFWTd+9qKaHHpYK7CAdYygW4sge0D
+ FdndqzeL0PDe8KotAC6mvYS+CegjzeYb+8+KMZkZ+I5MbD2x8G+oHXCODXErvynKTuP/u+ZkmPMX
+ 4HbRwUthbOeMLggG33ST4qoDtH8hIlUUs/6s9ndQ7HA9Ead1WVd5nvGBi+S50sMZlciQsyHLb5OG
+ FPXQd5wJyqxT2K0xJY5KpSbArJ8hQ7spp0klJ3s3pDbxPEiOxKM2r6PGl7Z9ECj1d0WuwC0g==
+X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 07/37] hw/arm/mpam: Add mpam-msc-mem memory-side MSC subtype
-Date: Fri, 16 Oct 2026 17:47:01 +0800
-X-OQ-MSGID: <20261016094733.1898485-8-2118537295@qq.com>
+Subject: [PATCH 21/37] hw/arm/virt: Create L2/L3 cache MPAM MSCs
+Date: Fri, 16 Oct 2026 18:10:41 +0800
+X-OQ-MSGID: <20261016101058.1900808-7-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
-References: <20261016094733.1898485-1-2118537295@qq.com>
+In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
+References: <20261016101058.1900808-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.137; envelope-from=2118537295@qq.com;
- helo=out162-62-57-137.mail.qq.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Received-SPF: pass client-ip=162.62.57.210; envelope-from=2118537295@qq.com;
+ helo=out162-62-57-210.mail.qq.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:47 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:48 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,127 +85,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Add the mpam-msc-mem subtype for memory-side components.  Its
-realize assembles the identity view of MPAMF_IDR (PARTID space,
-optional RIS support, HAS_ESR/HAS_EXTD_ESR, HAS_PARTID_NRW when
-the internal PARTID space is smaller) plus IIDR/AIDR, and
-advertises no partitioning features yet: the bandwidth controls
-come with the MBW patch.
+Derive the L2/L3 cache MSCs from the smp cache topology: the
+sharing step comes from machine_get_cache_topo_level() so L3 MSCs
+group per socket and L2 MSCs per cluster, and each MSC's cache id
+(cpu | level << 16 | type << 24) matches the PPTT cache node the
+MPAM table will point at.
 
-Based on an RFC series by Jonathan Cameron.
+Based on an RFC series by Jonathan Cameron, adapted to the current
+cache topology API.
 
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/mpam.c | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 68 insertions(+)
+ hw/arm/virt.c | 57 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 57 insertions(+)
 
-diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-index b1d6472..8a85c3b 100644
---- a/hw/arm/mpam.c
-+++ b/hw/arm/mpam.c
-@@ -260,8 +260,15 @@ typedef struct MPAMMSCState {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 77942e7..a57ba56 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2144,6 +2144,60 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+ #define MPAM_VIRT_NUM_PARTID     256
+ #define MPAM_VIRT_NUM_INTPARTID  32
  
- } MPAMMSCState;
- 
-+typedef struct MPAMMSCMemState {
-+    MPAMMSCState parent;
-+} MPAMMSCMemState;
++static void create_mpam_msc_cache(VirtMachineState *vms, int level,
++                                  hwaddr *base)
++{
++    MachineState *ms = MACHINE(vms);
++    const CPUArchIdList *cpu_list = ms->possible_cpus;
++    DeviceState *dev;
++    int step, i;
++    CpuTopologyLevel topo;
 +
- DECLARE_INSTANCE_CHECKER(MPAMMSCState, MPAM_MSC_DEVICE, TYPE_MPAM_MSC);
- 
-+DECLARE_INSTANCE_CHECKER(MPAMMSCMemState, MPAM_MSC_MEM_DEVICE,
-+                         TYPE_MPAM_MSC_MEM);
++    /*
++     * Work out how many CPUs share a cache at this level, so each MSC
++     * covers exactly one cache, and the cache_id (derived from the
++     * first CPU of the group) matches the PPTT cache node the MPAM
++     * table points at.
++     */
++    topo = (level == 3) ?
++        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3) :
++        machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2);
 +
- static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-                                   unsigned size)
- {
-@@ -367,6 +374,52 @@ static void mpam_msc_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
- }
- 
-+static void mpam_msc_mem_realize(DeviceState *dev, Error **errp)
-+{    MPAMMSCState *s = MPAM_MSC_DEVICE(dev);
-+    int i;
++    if (topo == CPU_TOPOLOGY_LEVEL_SOCKET && ms->smp.sockets > 0) {
++        step = cpu_list->len / ms->smp.sockets;
++    } else if (topo == CPU_TOPOLOGY_LEVEL_CLUSTER && ms->smp.clusters > 0) {
++        /*
++         * ms->smp.clusters is per socket; possible_cpus is ordered
++         * socket-major, so dividing by the total cluster count keeps
++         * each group inside one cluster.
++         */
++        step = cpu_list->len / (ms->smp.sockets * ms->smp.clusters);
++    } else {
++        step = ms->smp.threads;
++    }
++    if (step < 1) {
++        step = 1;
++    }
 +
-+    mpam_msc_realize(dev, errp);
-+
-+    for (i = 0; i < s->num_ris; i++) {
-+        Mpamf *mpamf = &s->mpamf[i];
-+
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, PART_ID_MAX,
-+                                s->num_partid - 1);
-+        /* No PCMG for now */
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, PMG_MAX, 0);
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, EXT, 1);
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_RIS, s->num_ris > 1);
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, RIS_MAX,
-+                                  s->num_ris > 1 ? s->num_ris - 1 : 0);
-+         /* Optional - test with and without */
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_ESR, 1);
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_EXTD_ESR, 1);
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PARTID_NRW,
-+                                s->num_int_partid < s->num_partid);
-+
-+        /* We won't implement any implementation specific stuff */
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, NO_IMPL_PART, 1);
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, NO_IMPL_MSMON, 1);
-+
-+        mpamf->iidr = FIELD_DP64(mpamf->iidr, MPAMF_IIDR, IMPLEMENTER,
-+                                 MPAM_IIDR_IMPLEMENTER);
-+        mpamf->iidr = FIELD_DP64(mpamf->iidr, MPAMF_IIDR, REVISION, 0);
-+        mpamf->iidr = FIELD_DP64(mpamf->iidr, MPAMF_IIDR, VARIANT, 0);
-+        /* FIXME get allocation for this emulation */
-+        mpamf->iidr = FIELD_DP64(mpamf->iidr, MPAMF_IIDR, PRODUCT_ID, 42);
-+
-+        mpamf->aidr = FIELD_DP64(mpamf->aidr, MPAMF_AIDR, ARCH_MINOR_REV, 1);
-+        mpamf->aidr = FIELD_DP64(mpamf->aidr, MPAMF_AIDR, ARCH_MAJOR_REV, 1);
-+
-+        if (s->num_int_partid < s->num_partid) {
-+            mpamf->partid_nrw_idr = FIELD_DP32(mpamf->partid_nrw_idr,
-+                                               MPAMF_PARTID_NRW_IDR,
-+                                               INTPARTID_MAX,
-+                                               s->num_int_partid - 1);
-+        }
++    for (i = 0; i < cpu_list->len; i += step) {
++        dev = qdev_new(TYPE_MPAM_MSC_CACHE);
++        object_property_set_uint(OBJECT(dev), "num-ris", 1, &error_fatal);
++        object_property_set_uint(OBJECT(dev), "num-partid",
++                                 MPAM_VIRT_NUM_PARTID, &error_fatal);
++        object_property_set_uint(OBJECT(dev), "num-int-partid",
++                                 MPAM_VIRT_NUM_INTPARTID,
++                                 &error_fatal);
++        object_property_set_uint(OBJECT(dev), "cache-level", level,
++                                 &error_fatal);
++        object_property_set_uint(OBJECT(dev), "cache-type", UNIFIED_CACHE,
++                                 &error_fatal);
++        object_property_set_uint(OBJECT(dev), "cpu", i, &error_fatal);
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, *base);
++        *base += MPAM_SIZE;
 +    }
 +}
 +
- static const Property mpam_msc_props[] = {
-     DEFINE_PROP_UINT8("num-ris", MPAMMSCState, num_ris, 1),
-     DEFINE_PROP_UINT32("num-partid", MPAMMSCState, num_partid, 1),
-@@ -380,6 +433,13 @@ static void mpam_msc_init(ObjectClass *klass, const void *data)
-     device_class_set_props(dc, mpam_msc_props);
- }
- 
-+static void mpam_msc_mem_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = mpam_msc_mem_realize;
-+}
-+
- static const TypeInfo mpam_msc_info = {
-     .name = TYPE_MPAM_MSC,
-     .parent = TYPE_SYS_BUS_DEVICE,
-@@ -387,8 +447,16 @@ static const TypeInfo mpam_msc_info = {
-     .class_init = mpam_msc_init
- };
- 
-+static const TypeInfo mpam_msc_mem_info = {
-+    .name = TYPE_MPAM_MSC_MEM,
-+    .parent = TYPE_MPAM_MSC,
-+    .instance_size = sizeof(MPAMMSCMemState),
-+    .class_init = mpam_msc_mem_init
-+};
-+
- static void mpam_register_types(void)
+ static void create_mpam_msc(VirtMachineState *vms, Error **errp)
  {
-     type_register_static(&mpam_msc_info);
-+    type_register_static(&mpam_msc_mem_info);
+     MachineState *ms = MACHINE(vms);
+@@ -2199,6 +2253,9 @@ static void create_mpam_msc(VirtMachineState *vms, Error **errp)
+         sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+         base += MPAM_SIZE;
+     }
++
++    create_mpam_msc_cache(vms, 3, &base);
++    create_mpam_msc_cache(vms, 2, &base);
  }
- type_init(mpam_register_types);
+ 
+ static void create_pcie(VirtMachineState *vms)
 -- 
 2.43.0
 

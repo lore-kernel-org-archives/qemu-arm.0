@@ -4,141 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB8DCCA464
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 11:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D63DCCA462
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 12:08:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHfi1-0003tK-FL; Fri, 16 Oct 2026 07:02:46 -0400
+	id 1xHgj2-0001gt-Cn; Fri, 16 Oct 2026 08:07:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
- id 1xHfhv-0003qy-Hk
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 07:02:39 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xHgj1-0001gd-GH
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 08:07:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
- id 1xHfht-0007dS-Mf
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 07:02:39 -0400
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69GAAEnU1647704
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 11:02:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=8VDCgOWO3CNU+1gP6G7Xltlc
- S9rhKx8joyJ5bbcFRag=; b=HzGlpKWLDQO4nNm6t2uStrg7B8Dsj/merEPZr6bQ
- liGhq4yNWcI4RBKKEj6G6mG5t/k6lNtA+HKJdhMcRc+3t2rZzZLGJ0gqoHaks3Sa
- WtvIXOFSBKwoetb5oDLF0BONqjJR2V8TARzbD+H7MUeDndJcImLnRw9phZsiOSjX
- Sh5QxI1m9x2SA+GkE+2oeOrNbdJ21SSM+jsgTegtPINYhR3gyD3q29wcUZ2U3Prs
- Gser4SFbKDT27EgSEUaTWCKhZghPrXVrNRgI7vsmrQs0ZDRq5dX6pSALildUlY4f
- wU3DRJnzO8L8eFSsA6mv/tv/X+i1SXvLeVnOarKYv2CBuQ==
-Received: from mail-vk1-f199.google.com (mail-vk1-f199.google.com
- [209.85.221.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hbhumr6vf-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 11:02:33 +0000 (GMT)
-Received: by mail-vk1-f199.google.com with SMTP id
- 71dfb90a1353d-5e96da6866cso830339e0c.2
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 04:02:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792148553; x=1792753353; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=8VDCgOWO3CNU+1gP6G7XltlcS9rhKx8joyJ5bbcFRag=;
- b=j2WTQSOeGtKLnPoTTqzuBgJewzRdG/MpGfUOCttMrRxTzI1XxetjTaZUY/CA+/Rf5v
- r8u5wIcjD5otiIqlzteLllfDP7dmITh0RPufoOsqjQ/KtaJI8cZAm1UuIT/5OdCPzE/c
- dDQbQhObzX3bgXeG/q6M58RYvSnoG5qTRQaEgLk9J4G/eIVPNv4HtpvXb4QMnWBq3xof
- aBkNAyebcxOfDR9V0SAhQpe53XqiVcdN9xWT06Vtd9WzJ3LWtWS7m/wDWKjvwpycesk2
- TyHqHUbV5XfaV6Mh+nRJion7P4AKyuo6Tw7RnPl2Q7FeF5fD902jFEMZy2udNxC5puWl
- uQqA==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xHgiy-0007iQ-3V
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 08:07:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1792152466;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ju0nFAYOk2Czky0zNl7ufn2mbubdX/H/KKmBDyLc6mA=;
+ b=cNUUL+uphzJy7j66gdZnjnUY8TRbe7E5fHLyxgLhrzH8c5ZEEqzZBA0fU3OVwoa8JP9W0I
+ SSBsKqS69RxnAKeX1aLeCs8eM0YNkaznep40DICxK7Lc859F6e0ExcqGk83co6SFLFFCGk
+ hJsR640gztLoXNwr2ywW1Wh5K9wKfn0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-255-dKr6TiF9OcGh__vqPsWEbA-1; Fri, 16 Oct 2026 12:07:43 +0000
+X-MC-Unique: dKr6TiF9OcGh__vqPsWEbA-1
+X-Mimecast-MFC-AGG-ID: dKr6TiF9OcGh__vqPsWEbA_1792152462
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-4870142f030so3864081f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 05:07:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792148553; x=1792753353;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=8VDCgOWO3CNU+1gP6G7XltlcS9rhKx8joyJ5bbcFRag=;
- b=QC5RJTR1pJUQ4udmnN3e+IwdhTFMhvr1IXuKsUgT+Aptlc7841GQpEdRWRH5U8oXmn
- v6gtgSnDBgIW+Wd+/XnllJqOGP5F7fhWA+7PH04rLvHA9ckDD6JFsIXMEu5soL+5SOc2
- wnlHYMIfVXSG0DbXEc1NXSvURdFFOyTJobpi586OZ+s07ex2w/BDl07elzZ1hSaE97Eg
- cNu4rixCJyBZlSM9jhsuBygSrn4DeTVxcGI/PZlK+Y2SuAuxwsiEC0UOF0sGxwT88wu1
- 5VZ8Y5F5yUPLtI9nFYlTPv0a8+itvHu30axJXZRLc9NAJHLMJtBnFQqtmxBJl6x8SHDo
- yJTQ==
+ d=1e100.net; s=20260707; t=1792152462; x=1792757262;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Ju0nFAYOk2Czky0zNl7ufn2mbubdX/H/KKmBDyLc6mA=;
+ b=2z7X2cVueqZGBR+1CLBvnfa2kX8z1WUtFh+XIQFnuf/DHIaR+m3Cgu4jsDeiQc0rn8
+ GtY4Lp3jlisQ068pdQdI8W4o+AcasqlU2iwNFgAN9Rcpb9FLXlFNf6L6RAXggNy1V5RF
+ QkXZJHuKuPLlGH9OYGWDFzEHibW9E1rdnyBP4xBw+Y9tttsV3QqN3kPtsAGrtu0/WM0s
+ 6rPFk73adER/kPf378ALkI+za0Z+g0VfMwnBe47czAqdzVQ4FCwlMAUWCVee+Zkyb7HZ
+ nf2MVx4nXPoxBZu5RnLc4WB0w/JOrNFhhmBbUdDWKqDCjin8DC8CKN4FBaswYXTQSkpG
+ 0i/g==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwKZS3o7n1qiqFJr3JT8N+ZkyNGf74yBmubssUNDo78LRL60ZlZdSocS++iNB8TPpFd2ZeesJ8s7A==@nongnu.org
-X-Gm-Message-State: AFq9FYIFAMcuYVmR81oDpG0PnPsSJ+c9ovKsbiYmizq6auKTyzsa49kR
- ykMZl5QH5kNSKB0PRcvAO/tPiDvLpVpsc1aCbikKTGvSK3Jz8BSyrxd/RLpniFLkl0fDPXQYCcU
- daruiea8cIdO3A4WMkKkOqDPXDo3yl+pTJS4F9mHTVaq2rBRjvoutQGA=
-X-Gm-Gg: AYBFou0pzU+Gs27PmZ62M8U6rClGcNqQrxLiLdoSDzI8d/BPic/HD/QTVjm2PfFcG/+
- taOxR4q/n9YTW+P0ZZoeqihbxwTjj5H7uLc0hNdx5JZ/+1pU4Y0S4s/gZb+5dyHV22yFDeYtNxI
- 6SOkrjCjHZOEKsmnS3H+J/yKyyfX8ngi2+WhmAQDc0lRQoHCxd3GqJGps/Tx99M3sgcAJTNYTiI
- kU25ybWGKAd8ZlukLa4tW9oT1hP9IbERsth9zlJgWXoA9jA18i4Iof2QVe3Ln+vi60LGqVagoES
- TMe7Ku9ZIz7CYgck0Xz7RSI+0LVOqteCgnsCO8nwrUB/PMrak/zkdnyust9pZYQsvhliLU6vJ3r
- 1u90WP92nIcztQGeyGfh2/7zMtfA0hn/U8POrLlbkWKxVjjTZOBKMr2QamE0odLaggJkK+Fa2Lw
- ==
-X-Received: by 2002:a05:6122:218f:b0:5d9:82c1:b343 with SMTP id
- 71dfb90a1353d-5e91f250d84mr7310029e0c.1.1792148552862; 
- Fri, 16 Oct 2026 04:02:32 -0700 (PDT)
-X-Received: by 2002:a05:6122:218f:b0:5d9:82c1:b343 with SMTP id
- 71dfb90a1353d-5e91f250d84mr7309995e0c.1.1792148552333; 
- Fri, 16 Oct 2026 04:02:32 -0700 (PDT)
-Received: from leviathan ([2a0d:3344:316:5100:f22f:74ff:fe21:6f68])
+ AKwUvBwVQ88zcPHZKGIBYEZQu38Jnib4GxQ6baMjYXpni2o53pwbzbsTipdW2/cAShm/zuDFVBvEVIgjMQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJOJr5JPxl37p3NG+mUwU1P1kLKWeTXgAFeRPhItHRxWtLPK+eg
+ REXvZKrsUUjFVDzSr4CVDVYS7M/S7Bx3V+PSD5f0Rgr33CjmkNv0ltcndT5qFQjHjT6+757k7Vs
+ mJH01IR5O4wSfThQTN7PHGYX/8zFHfRAqXnbLNyiI33HWlcGXkQTcqw==
+X-Gm-Gg: AYBFou1SKyOjI1cp4aeZYVXRBhP+Ec8TgbKKq8clfbH57ba96R9pSr/rgRaQ32ktdkg
+ NEYGa8/II7Kz2H6VDG6lcxMJljUmymGo4qOuduTw60mYQ5uVS23d2+QXOTZzujhHHlVJZ721ssK
+ Vf+m577tKu/mZrltLVzzxb2+jtV3uqOFtO1Vz3emV+1Lo4B3Qd0yZvC0/2bOv+5OMWUhBqz5iWO
+ B8p/dkjl+9DaCxp5BuTOBd5BgcHbwa7MGifi/w3QVwS8hxwY9/AcaPoIdewDU6guiuU4K3FpG+M
+ zI8fu4IQybUo9sYlMg4WkzD+Isi7r5fkcFuIW4rTD2Drf+kkM6nUMEezwYteoJri9jW2VjH3a1E
+ Y6VHS/+oeCnXQFvtUhB+kA1CYA7Nxd/9umFXg3UnbA45bThmk
+X-Received: by 2002:a05:6000:987:b0:488:7787:469d with SMTP id
+ ffacd0b85a97d-48df14ed887mr13718647f8f.25.1792152462184; 
+ Fri, 16 Oct 2026 05:07:42 -0700 (PDT)
+X-Received: by 2002:a05:6000:987:b0:488:7787:469d with SMTP id
+ ffacd0b85a97d-48df14ed887mr13718556f8f.25.1792152461547; 
+ Fri, 16 Oct 2026 05:07:41 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48dfdeb18f8sm3795411f8f.20.2026.10.16.04.02.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Oct 2026 04:02:30 -0700 (PDT)
-Date: Fri, 16 Oct 2026 12:02:28 +0100
-From: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-To: Jim MacArthur <jim.macarthur@linaro.org>
-Cc: qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 2/2] hw/arm/sbsa-ref.c: Increase SMMU space for Root
- registers
-Message-ID: <atIERMvh5tFG7Uwi@leviathan>
-References: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
- <20261016-jmac-smmu-root-registers-v1-2-e78e8879d347@linaro.org>
+ ffacd0b85a97d-48dfd503a24sm4678122f8f.49.2026.10.16.05.07.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Oct 2026 05:07:40 -0700 (PDT)
+Message-ID: <45c37754-2244-4336-9aa8-12d0b89840d4@redhat.com>
+Date: Fri, 16 Oct 2026 14:07:39 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261016-jmac-smmu-root-registers-v1-2-e78e8879d347@linaro.org>
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE2MDA0MyBTYWx0ZWRfX9AYkfY501Ht+
- KvQQ+yAHysQWWUSdGq1yWAiZBdz10kRTymUWZcIDRwdO65r4/nAPoJpOdo4hTAaoLXr5CTxheDp
- MWQ4sGtBlVHPCVEH3/t7Kcv/3P55EBk=
-X-Authority-Analysis: v=2.4 cv=H+BOUOYi c=1 sm=1 tr=0 ts=6ad20449 cx=c_pps
- a=+D9SDfe9YZWTjADjLiQY5g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22 a=KKAkSRfTAAAA:8
- a=EUspDBNiAAAA:8 a=iN6TQegEkVnv5H5OV8oA:9 a=CjuIK1q_8ugA:10
- a=vmgOmaN-Xu0dpDh8OwbV:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: 5o2P7Set46-4CuvrdtRGuOmPWrvhawgD
-X-Proofpoint-ORIG-GUID: 5o2P7Set46-4CuvrdtRGuOmPWrvhawgD
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE2MDA0MyBTYWx0ZWRfXzooS0HlWNUJN
- 5jIBwkLQw9o31uXE+v5Go6GpgFMCMw+0gP59SS3fD+PjK8iqlQuBxZpVqNK/abhVEnkx9mpE6/I
- v4LlYjuLiF1HoABWmErDugkKKOLJ+FBs18jodc1oBWbA8qef/XQeNYLbtttDpxupF9K4BgS+bOw
- 4mKCvLlcIuApOL+SEiR7fzoP3LLIvFisNvJudppdIrUQPZyg6M3TZa0MBUF5GZ4PfUf8JfQr9EO
- 134ffQfgxZ310x9ZMA3nAjLArJlCu17FfmaN9HFvOKnMkkZJ21Y7rLvRrQZmDn+4OSiQuF/KSOO
- Caw4Oy/R2uMbBIX4tfDb4dIBSnZqtOBnfuiTzCuRTfvqDTXQQmLVLA+cCdTDnMesD4HZVFAuglr
- 8+H8z3NyO5NLuQzw/MaiMqf6Kuw2iSHInR9O9X0FKRBHj3sMl1nSl9gdDO+12UmDpUYpQumryXB
- /cmlwkKYyaM9JtDYrnA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-16_01,2026-10-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 malwarescore=0 bulkscore=0 phishscore=0 priorityscore=1501
- adultscore=0 clxscore=1011 lowpriorityscore=0 impostorscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610160043
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=leif.lindholm@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v4 12/25] target/arm: add arm-v9.0-a-v1 named CPU model
+To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+Cc: cohuck@redhat.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
+ armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
+ shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
+ ping@khushitshah.com, sandesh.patel@nutanix.com
+References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
+ <20260921123249.1708067-13-khushit.shah@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260921123249.1708067-13-khushit.shah@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: sxnW6iArBGui2TmiYYpaLH9ew71q4AbT-U__jhYhdUo_1792152462
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,37 +121,230 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Oct 16, 2026 at 10:40:52 +0100, Jim MacArthur wrote:
-> In our implementation, SMMU Root registers are directly after the
-> non-optional SMMU registers. Realms registers will be added above the
-> root registers later.
-> 
-> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
+Hi Khushit,
 
-Acked-by: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-
+On 9/21/26 2:32 PM, Khushit Shah wrote:
+> Add a KVM-only named CPU model for the Armv9.0-A baseline, following
+> DDI0487 revision M.c. The property list is the architecture-mandated
+> ID-register field view.
+>
+> Pointer authentication is omitted because a v9.0-A core may implement
+> any PAuth algorithm.
+>
+> Named models start from a zeroed ID-register view, so features whose
+> "not implemented" encoding is non-zero (for example TGran64=0xF,
+> DoubleLock=0xF) are set explicitly.
+>
+> The model is not realizable on its own; implementation-defined fields
+> such as CTR_EL0.{CWG,ERG} and ID_AA64DFR0_EL1.CTX_CMPs still have to be
+> supplied on the command line. However, this provides a useful baseline
+> for upcoming reference core models.
+>
+> Final ID register state requested from KVM for "arm-v9.0-a-v1":
+> [  0] AIDR_EL1                 = 0x0000000000000000
+> [  1] CLIDR_EL1                = 0x0000000000000000
+> [  2] CTR_EL0                  = 0x0000000080008000
+> [  3] DCZID_EL0                = 0x0000000000000000
+> [  4] GMID_EL1                 = 0x0000000000000000
+> [  5] ID_AA64AFR0_EL1          = 0x0000000000000000
+> [  6] ID_AA64AFR1_EL1          = 0x0000000000000000
+> [  7] ID_AA64DFR0_EL1          = 0x000000f000000009
+> [  8] ID_AA64DFR1_EL1          = 0x0000000000000000
+> [  9] ID_AA64DFR2_EL1          = 0x0000000000000000
+> [ 10] ID_AA64FPFR0_EL1         = 0x0000000000000000
+> [ 11] ID_AA64ISAR0_EL1         = 0x0221100010210000
+> [ 12] ID_AA64ISAR1_EL1         = 0x0000011100211002
+> [ 13] ID_AA64ISAR2_EL1         = 0x0000000000000000
+> [ 14] ID_AA64ISAR3_EL1         = 0x0000000000000000
+> [ 15] ID_AA64MMFR0_EL1         = 0x000001110f000000
+> [ 16] ID_AA64MMFR1_EL1         = 0x0000000000211000
+> [ 17] ID_AA64MMFR2_EL1         = 0x1001001100000011
+> [ 18] ID_AA64MMFR3_EL1         = 0x0000000000000000
+> [ 19] ID_AA64MMFR4_EL1         = 0x000000000f000000
+> [ 20] ID_AA64PFR0_EL1          = 0x1101000010110011
+> [ 21] ID_AA64PFR1_EL1          = 0x0000000000000001
+> [ 22] ID_AA64PFR2_EL1          = 0x0000000000000000
+> [ 23] ID_AA64SMFR0_EL1         = 0x0000000000000000
+> [ 24] ID_AA64ZFR0_EL1          = 0x0000000000000000
+> [ 25] ID_AFR0_EL1              = 0x0000000000000000
+> [ 26] ID_DFR0_EL1              = 0x0000000000000000
+> [ 27] ID_DFR1_EL1              = 0x0000000000000000
+> [ 28] ID_ISAR0_EL1             = 0x0000000000000000
+> [ 29] ID_ISAR1_EL1             = 0x0000000000000000
+> [ 30] ID_ISAR2_EL1             = 0x0000000000000000
+> [ 31] ID_ISAR3_EL1             = 0x0000000000000000
+> [ 32] ID_ISAR4_EL1             = 0x0000000000000000
+> [ 33] ID_ISAR5_EL1             = 0x0000000000000000
+> [ 34] ID_ISAR6_EL1             = 0x0000000000000000
+> [ 35] ID_MMFR0_EL1             = 0x0000000000000000
+> [ 36] ID_MMFR1_EL1             = 0x0000000000000000
+> [ 37] ID_MMFR2_EL1             = 0x0000000000000000
+> [ 38] ID_MMFR3_EL1             = 0x0000000000000000
+> [ 39] ID_MMFR4_EL1             = 0x0000000000000000
+> [ 40] ID_MMFR5_EL1             = 0x0000000000000000
+> [ 41] ID_PFR0_EL1              = 0x0000000000000000
+> [ 42] ID_PFR1_EL1              = 0x0000000000000000
+> [ 43] ID_PFR2_EL1              = 0x0000000000000000
+> [ 44] MIDR_EL1                 = 0x0000000000000000
+> [ 45] MPIDR_EL1                = 0x0000000080000000
+> [ 46] MVFR0_EL1                = 0x0000000000000000
+> [ 47] MVFR1_EL1                = 0x0000000000000000
+> [ 48] MVFR2_EL1                = 0x0000000000000000
+> [ 49] REVIDR_EL1               = 0x0000000000000000
+> [ 50] SMIDR_EL1                = 0x0000000000000000
+>
+> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
 > ---
->  hw/arm/sbsa-ref.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index 158b461eb4..0747f5ca9f 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -129,7 +129,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
->      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
->      [SBSA_SECURE_UART] =        { 0x60030000, 0x00001000 },
->      [SBSA_SECURE_UART_MM] =     { 0x60040000, 0x00001000 },
-> -    [SBSA_SMMU] =               { 0x60050000, 0x00020000 },
-> +    [SBSA_SMMU] =               { 0x60050000, 0x00040000 },
->      /* Space here reserved for more SMMUs */
->      [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
->      [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
-> 
-> -- 
-> 2.43.0
-> 
+>  hw/arm/virt.c           |  3 ++
+>  target/arm/cpu-models.c | 75 +++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 78 insertions(+)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index e7a56e37f7..01381ab5e7 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -4144,6 +4144,9 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
+>          g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-v1")));
+>          g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-n2")));
+>      }
+> +    if (kvm_enabled() && target_aarch64()) {
+> +        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("arm-v9.0-a-v1")));
+> +    }
+>      if (target_aarch64()) {
+>          g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a53")));
+>          g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a57")));
+> diff --git a/target/arm/cpu-models.c b/target/arm/cpu-models.c
+> index 153ee10ae6..7394dd358e 100644
+> --- a/target/arm/cpu-models.c
+> +++ b/target/arm/cpu-models.c
+> @@ -39,7 +39,82 @@
+>  /* Maximum parent-chain depth for named CPU models. */
+>  #define ARM_NAMED_CPU_MODEL_MAX_DEPTH 16
+>  
+> +/* Arm-v9.0-a mandatory features. */
+> +static const ArmModelPropValue arm_v9_0_a_v1_props[] = {
+> +    /* ID_AA64PFR0_EL1 */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_EL0", NUM, 1), /* only FEAT_AA64EL0 (Armv9.0) */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_EL1", NUM, 1), /* only FEAT_AA64EL1 (Armv9.0) */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_RAS", NUM, 1), /* FEAT_RAS (Armv8.2) */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_DIT", NUM, 1), /* FEAT_DIT (Armv8.4) */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV2", NUM, 1), /* FEAT_CSV2 (Armv8.5) */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV3", NUM, 1), /* FEAT_CSV3 (Armv8.5) */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 1), /* FEAT_FP16 */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 1), /* FEAT_FP16 */
+I have not found that FP+AdvSIMD (ie FEAT_FP16) were mandated by v9.0
+amybe you want this model to implement FP16 but it does not seems
+strictly mandated in v9.0
+so it might be distinguished from other settings that are truly mandated.
+
+> +
+> +    /* ID_AA64PFR1_EL1 */
+> +    /* KVM zeroes out these field when MTE is not enabled. */
+> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_MTE_frac", NUM, 0),
+useless as default is 0, no?
+> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_BT", NUM, 1), /* FEAT_BTI (Armv8.5) */
+
+
+> +
+> +    /* ID_AA64MMFR0_EL1 */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64", NUM, 0xF), /* not mandatory */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4", NUM, 0), /* 4K granular support */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16_2", NUM, 1), /* not mandatory */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64_2", NUM, 1), /* not mandatory */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4_2", NUM, 1), /* not mandatory */
+so the top comment, ie. 
+
++/* Arm-v9.0-a mandatory features. */
+
+should really be updated accordingly. None of that is mandated by v9.0
+spec, right?
+
+|
+|
+> +
+> +    /* ID_AA64DFR0_EL1 */
+> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DebugVer", NUM, 9), /* FEAT_Debugv8p4 (Armv8.4) */
+> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DoubleLock", NUM, 0xF), /* not implemented */
+I understand this is mandated by v9.0, ie v9Ap0 ==> (!FEAT_DoubleLock)
+> +    /* no PMU for named models */
+> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_PMUVer", NUM, 0),
+not needed? 
+
+> +
+> +    /* CTR_EL0 */
+> +    MODEL_PROP("SYSREG_CTR_EL0_L1Ip", NUM, 2), /* FEAT_IVIPT: VIPT cache impl. */
+ARMv8.0
+> +
+> +    /* ID_AA64MMFR4_EL1 */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR4_EL1_E2H0", NUM, 0xF), /* FEAT_E2H0 not mandatory */
+not mandatory. All the non mandatory settings might rather go in the
+neoverse child, no? That way it is easier to understand the role of this
+parent which enforce mandatory features only
+> +
+> +    /* ID_AA64ISAR0_EL1 */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_CRC32", NUM, 1), /* FEAT_CRC32 (Armv8.1) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_Atomic", NUM, 2), /* FEAT_LSE (Armv8.1) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_TS", NUM, 2), /* FEAT_FlagM2 (Armv9.0 & FP) */
+this is required because FP was opt-in. Otherwise v9.0 does not require
+2. As far as I understand there is no  v9Ap0 ==> FEAT_FP
+
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_TLB", NUM, 2), /* FEAT_TLBIRANGE (Armv8.4) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_RDM", NUM, 1), /* FEAT_RDM (Armv9.0 & FP) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_DP", NUM, 1), /* FEAT_DotProd (Armv9.0 & FP) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_FHM", NUM, 1), /* FEAT_FHM (Armv9.0 & FP) */
+> +
+> +    /* ID_AA64ISAR1_EL1 */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_LRCPC", NUM, 2), /* FEAT_LRCPC2 (Armv8.4) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_FRINTTS", NUM, 1), /* FEAT_FRINTTS (v9.0 & FP) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_FCMA", NUM, 1), /* FEAT_FCMA (Armv9.0 & FP) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_JSCVT", NUM, 1), /* FEAT_JSCVT (Armv9.0 & FP) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DPB", NUM, 2), /* FEAT_DPB2 (Armv8.5) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_SB", NUM, 1), /* FEAT_SB (Armv8.5) */
+> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_SPECRES", NUM, 1), /* FEAT_SPECRES (Armv8.5) */
+
+For readability please groups all fields that are mandated if v9.0 + FP
++ AdvSIMD. This is still arguable if this shall be part of this model
+though
+> +    /*
+> +     * FEAT_PAuth is mandated by Armv8.3 but is excluded here as reference
+> +     * core can choose to implement any PAuth algorithm (APA/API/APA3).
+Can you set a default value then? GPI/API <= 1 or GPA3/APA3.  This mens
+the child will need to override.
+Without that you cannot claim this model to ve v9.0 compliant.
+
+I guess you need to document all named vcpu models in either
+docs/system/arm/cpu-features.rst
+There is also docs/system/qemu-cpu-models.rst
+> +     */
+> +
+> +    /* ID_AA64MMFR1_EL1 */
+nit reorder after AA64_MFR0. All values below look good to me
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HPDS", NUM, 1), /* FEAT_HPDS (Armv8.1) */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_LO", NUM, 1), /* FEAT_LOR (Armv8.1) */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_PAN", NUM, 2), /* FEAT_PAN2 (Armv8.2) */
+> +
+> +    /* ID_AA64MMFR2_EL1 */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_UAO", NUM, 1), /* FEAT_UAO (Armv8.2) */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_CnP", NUM, 1), /* FEAT_TTCNP (Armv8.2) */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_TTL", NUM, 1), /* FEAT_TTL (Armv8.4) */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_AT", NUM, 1), /* FEAT_LSE2 (Armv8.4) */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_IDS", NUM, 1), /* FEAT_IDST (Armv8.4) */
+> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_E0PD", NUM, 1), /* FEAT_E0PD (Armv8.5) */
+> +
+> +    MODEL_PROP_END,
+> +};
+> +
+>  static const ArmNamedCpuModel arm_cpu_models[] = {
+> +    {"arm-v9.0-a-v1", NULL, arm_v9_0_a_v1_props},
+>      {NULL, NULL, NULL}
+>  };
+>  
+Thanks
+
+Eric
+
 

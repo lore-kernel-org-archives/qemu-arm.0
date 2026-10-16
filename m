@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730D6CC6B38
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70D0ECC6B38
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:09:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhaB-0007Jc-Ip; Fri, 16 Oct 2026 09:02:47 -0400
+	id 1xHhaD-0007Nt-Ip; Fri, 16 Oct 2026 09:02:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf8x-0005M9-Le; Fri, 16 Oct 2026 06:26:31 -0400
-Received: from out203-205-221-209.mail.qq.com ([203.205.221.209])
+ id 1xHf9x-0005nQ-Jj; Fri, 16 Oct 2026 06:27:37 -0400
+Received: from out203-205-221-239.mail.qq.com ([203.205.221.239])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf8v-0003ij-9A; Fri, 16 Oct 2026 06:26:31 -0400
+ id 1xHf9u-0003nt-4A; Fri, 16 Oct 2026 06:27:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792146384; bh=1GpgKwB0bmpbKNIFXlk8Nx7covMNDnoFypQxv4WefDM=;
+ t=1792146445; bh=HJBSNhy30ysWNl8lFPWtNESXuXw0iirx7WNezPjoAwU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=eE0kekHI09bll6jeFWRz0mEEi1VOAXBX25gVsr5SykVIzbVShW/2EaUF9FhdrTBR1
- 73OLvkqIA+KHrK8UkGucpaP77cg88GozhsSsR6mZU//P4b3fv/zl5nrV+xdosiPM1z
- Q8Agu26gDkJhHLYl4LcJi9wifSdhkCUrbF5a1oyE=
+ b=qI0p5ky7EVtzl4bqpFOYH0UDUQvYiL70P+yy/fmJ16lxJINJFmgvzXzl7PcQ7d5Gn
+ ZdBxB0AOF5jI59CavwMXlKQijDsGuuFha3wj0xGvTWd2aG3MDlGKwiGPaY4AyIbRBT
+ LbCUGHfYRWjL9H3gZwJkoy/cl1V06e2h97maJdCk=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrszc56-0.qq.com (NewEsmtp) with SMTP
- id 695804A3; Fri, 16 Oct 2026 18:26:21 +0800
-X-QQ-mid: xmsmtpt1792146381t42u9d0z1
-Message-ID: <tencent_091C67ACF8A6E14D582142DD224A35CCC80A@qq.com>
-X-QQ-XMAILINFO: MKFQA+k1yb/2+U2gT5C+lywAmskh+mPtHqAbT+VwO4j8zYBf0p6ixW66x9wAv/
- M/EiNpGODctEh1LTa0dlgWx/g7wKdAicjrsvaaE4Nx0fbcoS3i7bZl6U3SoJx9O3EsirhzDk4a+E
- az1cHVegUBk/l9DjtotNFtVyS7mo9/aM8CGiiZQCdXO3jFnOWT5ylwQ1KljZFjkr52bJ1gyhCIVT
- Ba0OdhX3lbvUz402Ghy9+YJRi8gtesWza8axrZoqUgYhCOe01SVIPSk9v9bllF03fn+H/sTSk7xM
- VIAXQvhkxEGalEw30I63j3MLxmYqcMXzf0aPRc/UsTbNLC8Jk17zw26tSJ1AcFYeSixqMB+sedUm
- ehQJk/PsbkLoFuONVGCvLW5RL4MQv6bEM+a8PowYw6DcAwPbI9Szocr8XY/KAReImrbvof34NcnV
- VuyymW9vVEgn+jF6y5G5PLAiVTe6sfPC3peYwc/VMarm0fipeKsyvAbw7CsIwPTD24GtiTG2lWUp
- gxdxvAa2AFp34grieagNkD0XfUD5h/qSqD0xq5rPGmbnd4ImLbftNOXhJdP0uYcyfUJg6uAnLp65
- gxKm+VwGZRt8fxMRqCn5vpc7sdU8XcLw785tWOOc5q2WMA7jlOSk+LZiiMj9wVss3QPthIatbXfu
- hG/M/NUiNEvGzLY0EW0Ic3Kg1yfsJKcTJ6fLhOJ65V/co09ZcCZUo6Y8lmkyyGm9TuBnEP8kuv+d
- pcdLSM/sXwCSzTrsWS77Oky3RgwelrEOlE4rOH2letfYpXTyAHiBe2E2NDQE2oe4GwGPGKk1H/O2
- fWvCd+RjJFHhimeBmBeHxgMSWDMP3JakAJV83RXASpMwPGn3P4OMjAh+zFQh8v5dL0gINf8BNWhs
- IrzWHcn2+0NoWo4pL+OmtYTtY/r5a8dPyy51ZrqbRIKOYBbs8rdvNIoqO916vLrk4nzUf8G303VG
- jRIqb7fa/TFLNO76jUofDW3EdWL+QbxQP4bJiuicJkipwfvOV1J1YKy06HRyXc4vCZ5C6BQA2lFF
- 35gUMoAcblEuQXtGCdSDxAn3hUZRqf4aXhR9uayDFgMCVPApJVgjBY27p2rjMCxknUWg/89A==
-X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+ by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
+ id 6D696459; Fri, 16 Oct 2026 18:27:22 +0800
+X-QQ-mid: xmsmtpt1792146442tvnvsqu9n
+Message-ID: <tencent_A847C7182BCA69DC138B882EB70852E13308@qq.com>
+X-QQ-XMAILINFO: M84Ob7gbJGBW758zOf2+QdbF/xGFXbc91ouTVNx+etWcPwedY34Nc3dtgO/IjC
+ 8Lo0zwHhZeGnucfWWztGb3I/tQUVDr1UqiAChm7fD57RRHbU2qeECOnLbbvMh2NRcPKEueJtsBRt
+ YWcjvYYUCzWWAFpHo+3kS8GejOdkzAUNzrv3cOZEdpODYamAq4Sh0nyV6pu8F3FIkjeSNI2/CiHW
+ NfSQxzyub25Lbqn36BFCcJXSWlFGjjiGOZiB1TV/NvMRGzei5IcECK7PiXpppdkKj2EYLUxOHT+L
+ /QJ5FbLtDlTGgnonAq8czIz52+70RX5Q3/KP+N2bq6HGaKlxIcPwTf41zdSKpmkHC8r2qpYyjTnk
+ n1N/e174rao2uVDPKjzHljCES9V+b6E0ErriwoM1ay76b64Zfiaaf/lj3vGl4m5lwTvFJBG4/NZX
+ n3XhxafbN14cTWQruWERNpaFItuYyVVlsBk8JBlq2VFyZ8xraRr5vzNoZD6nmhGRNBWsjFP6wL0X
+ 3ESBcMRtNxZ6Yv4PDFOjflhypiXMMeC8rgWKnFs4NVIrcoMvytJsDAYuqRD5DvVcVmwxvc0RBKr5
+ Y0MmmvGASdRkZPomrfqYnugjezj0d/artqzoe6MRGEIElYt0z5Vvq+tILofMP0UyHQCTx/anIW9D
+ y+AcDzD/tPNsUtu4Q+kEpazTbLNocbuSaELQYVkkY1lZ4xauwDWB29zavCdp+4rubVjf5ugoNE+p
+ FXW9A2CPtR+ui9T4UHi/reEIMlCccdLUgrN1jJv12UcBIdo9FmxSHZgRoq4XuxNODseghTerTDk4
+ NHLFMktOzW7jvOyE4Ybirruu2/FzWd+07roKeZ3GC9DjIa+34kG70xOS1TERZHOjRjCxiY9tGqrS
+ 941n2nZzaDiuQuVvB/xf1Dn6A3klqzt0SdIOgcX/aUToPpJF8dZYNkWNPapTI0tHdDEE00C3dJG2
+ Gf/nqV+yOsETfSlrgJ2Wu83rsw747cliRujvA7T8N3/eaR/aw2PWPZzj+CYPYL/F2VWrAGdvhfYu
+ EuvNUyzr7ZoKEa5PYUm0ZU3n7GwHSa5SlVvG1deTl9zujNilXjdusLLRcgjeW3oWHj6NkBrFpcJR
+ fW2dVa
+X-QQ-XMRINFO: MFuljud3PUW4Hy49K308V+nvGr8SioTB3Q==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 30/37] hw/arm/mpam: Handle ECR/ESR as MSC-global registers
-Date: Fri, 16 Oct 2026 18:10:50 +0800
-X-OQ-MSGID: <20261016101058.1900808-16-2118537295@qq.com>
+Subject: [PATCH 31/37] hw/arm/mpam: Add device reset and power-on state
+ initialisation
+Date: Fri, 16 Oct 2026 18:10:51 +0800
+X-OQ-MSGID: <20261016101058.1900808-17-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
 References: <20261016101058.1900808-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=203.205.221.209; envelope-from=2118537295@qq.com;
- helo=out203-205-221-209.mail.qq.com
+Received-SPF: pass client-ip=203.205.221.239; envelope-from=2118537295@qq.com;
+ helo=out203-205-221-239.mail.qq.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -87,100 +89,137 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-MPAMF_ECR and MPAMF_ESR are single per-MSC registers (IHI 0099
-4.3), independent of the RIS selection, but the model stored them
-per RIS.  Move the live copy to MSC level: ECR/ESR reads and the
-extended ESR upper half (guarded on MPAMF_IDR.EXT) come from the
-MSC-global view, ECR writes store masked and ESR writes deposit
-into either half, and mpam_msc_sync_esr_ecr() keeps the per-RIS
-export copies (used by the QMP introspection) in sync.
+Move the power-on initialisation out of realize into
+mpam_msc_state_init() (shared with the new legacy reset callback):
+selection state and ECR/ESR cleared, per-RIS partition and monitor
+storage zeroed, the PARTID narrowing map identity-wrapped so the
+indirection is always in range before the driver programs it, and
+MBW_MAX reset to 0xffff (full bandwidth) -- an unprogrammed PARTID
+must not read as zero bandwidth.
+
+Also fix the realize error message for num-partid == 0, which
+repeated the num-ris text.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/mpam.c | 48 +++++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 45 insertions(+), 3 deletions(-)
+ hw/arm/mpam.c | 78 +++++++++++++++++++++++++++++++++++++++------------
+ 1 file changed, 60 insertions(+), 18 deletions(-)
 
 diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-index 6c93ead..fe78adb 100644
+index fe78adb..c4a7567 100644
 --- a/hw/arm/mpam.c
 +++ b/hw/arm/mpam.c
-@@ -353,6 +353,14 @@ typedef struct MPAMMSCState {
-     uint32_t num_csu_mon;
-     uint64_t csu_capacity;
+@@ -1041,6 +1041,63 @@ static const MemoryRegionOps mpam_msc_ops = {
+     },
+ };
  
-+    /*
-+     * MPAMF_ECR / MPAMF_ESR are single per-MSC registers (IHI 0099 4.3),
-+     * independent of the RIS selection.  The 64-bit ESR records the RIS
-+     * the error was detected against in its top half.
-+     */
-+    uint32_t ecr;
-+    uint64_t esr;
 +
-     /*
-      * Wired-interrupt GSIVs the board assigned (INTID = SPI + 32).  Zero
-      * means "no wired interrupt"; the ACPI MPAM table reports them as-is.
-@@ -409,6 +417,20 @@ static uint32_t mpam_nrw_id_for(MPAMMSCState *s, Mpamf *mf, uint32_t partid)
-     return intpartid % s->num_int_partid;
- }
- 
 +/*
-+ * Keep the per-RIS copies in Mpamf (exported through the QMP/PPTT path)
-+ * in sync with the MSC-level ECR/ESR view the MMIO handlers use.
++ * Power-on state of the MSC, shared between realize and reset: ID narrowing
++ * map identity-wrapped, partition config at reset values, monitors off.
 + */
-+static void mpam_msc_sync_esr_ecr(MPAMMSCState *s)
++static void mpam_msc_state_init(MPAMMSCState *s)
 +{
 +    int i;
 +
++    s->ris = 0;
++    s->part_sel = 0;
++    s->internal_part_sel = false;
++    s->mon_sel = 0;
++    s->ecr = 0;
++    s->esr = 0;
++
 +    for (i = 0; i < s->num_ris; i++) {
-+        s->mpamf[i].ecr = s->ecr;
-+        s->mpamf[i].esr = (uint32_t)s->esr;
++        Mpamf *mpamf = &s->mpamf[i];
++        int p;
++
++        mpamf->ecr = 0;
++        mpamf->esr = 0;
++        memset(mpamf->per_nrw_id, 0,
++               sizeof(MpamfPerNrwId) * s->num_int_partid);
++        memset(mpamf->cfg_intpartid, 0,
++               sizeof(uint32_t) * s->num_partid);
++        memset(mpamf->mbwu_mons, 0,
++               sizeof(MpamMbwuMon) * s->num_mbwu_mon);
++        memset(mpamf->csu_mons, 0, sizeof(MpamCsuMon) * s->num_csu_mon);
++
++        /*
++         * Until resctrl programs the map, wrap each request PARTID onto an
++         * internal PARTID so the narrowing indirection is always in range.
++         */
++        for (p = 0; p < s->num_partid; p++) {
++            mpamf->cfg_intpartid[p] = p % s->num_int_partid;
++        }
++        /*
++         * per_nrw_id is indexed by INTERNAL PARTID: it has
++         * num_int_partid entries, not num_partid.  Writing it with the
++         * request-PARTID count overflowed the allocation by 224 entries
++         * (malloc(): corrupted top size once the struct grew).
++         */
++        for (p = 0; p < s->num_int_partid; p++) {
++            /* MBW_MAX resets to full bandwidth on real hardware */
++            mpamf->per_nrw_id[p].cfg_mbw_max = 0xffff;
++        }
 +    }
 +}
 +
- static Mpamf *mpam_mon_ris(MPAMMSCState *s)
++static void mpam_msc_reset(DeviceState *dev)
++{
++    MPAMMSCState *s = MPAM_MSC_DEVICE(dev);
++
++    mpam_msc_state_init(s);
++}
++
+ static void mpam_msc_realize(DeviceState *dev, Error **errp)
  {
-     unsigned ris = FIELD_EX32(s->mon_sel, MSMON_CFG_MON_SEL, RIS);
-@@ -685,9 +707,16 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-     case A_MPAMF_ERR_MSI_ATTR:
-         return mpamf->err_msi_attr;
-     case A_MPAMF_ECR:
--        return mpamf->ecr;
-+        return s->ecr;
-     case A_MPAMF_ESR:
--        return mpamf->esr;
-+        return s->esr;
-+    case A_MPAMF_ESR + 0x4:
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, EXT)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected read of extended ESR\n");
-+            return 0;
-+        }
-+        return s->esr >> 32;
-     case A_MPAMF_CFG_PART_SEL:
-         return mpamf->cfg_part_sel;
-     case A_MPAMF_MPAMCFG_INTPARTID: {
-@@ -975,7 +1004,20 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
-                           "MPAM: Unexpected write to ECR Mask=%x Value=%lx\n",
-                           MPAMF_ECR_WRITE_MASK, value);
-         }
--        mpamf->ecr = value;
-+        s->ecr = value & MPAMF_ECR_WRITE_MASK;
-+        mpam_msc_sync_esr_ecr(s);
-+        return;
-+    case A_MPAMF_ESR:
-+        /*
-+         * Software clears an error by writing ERRCODE as zero; writing a
-+         * non-zero ERRCODE activates the level error interrupt (8.2).
-+         */
-+        s->esr = deposit64(s->esr, 0, 32, value);
-+        mpam_msc_sync_esr_ecr(s);
-+        return;
-+    case A_MPAMF_ESR + 0x4:
-+        s->esr = deposit64(s->esr, 32, 32, value);
-+        mpam_msc_sync_esr_ecr(s);
+     MPAMMSCState *s = MPAM_MSC_DEVICE(dev);
+@@ -1052,7 +1109,7 @@ static void mpam_msc_realize(DeviceState *dev, Error **errp)
          return;
-     default:
-         qemu_log_mask(LOG_UNIMP,
+     }
+     if (s->num_partid == 0) {
+-        error_setg(errp, "num-ris must be <= 16");
++        error_setg(errp, "num-partid must be nonzero");
+         return;
+     }
+     if (s->num_int_partid == 0) {
+@@ -1061,28 +1118,12 @@ static void mpam_msc_realize(DeviceState *dev, Error **errp)
+ 
+     s->mpamf = g_new0(Mpamf, s->num_ris);
+     for (i = 0; i < s->num_ris; i++) {
+-        int p;
+-
+         s->mpamf[i].per_nrw_id = g_new0(MpamfPerNrwId, s->num_int_partid);
+         s->mpamf[i].cfg_intpartid = g_new0(uint32_t, s->num_partid);
+         s->mpamf[i].mbwu_mons = g_new0(MpamMbwuMon, s->num_mbwu_mon);
+         s->mpamf[i].csu_mons = g_new0(MpamCsuMon, s->num_csu_mon);
+-        /*
+-         * Until resctrl programs the map, wrap each request PARTID onto an
+-         * internal PARTID so the narrowing indirection is always in range.
+-         */
+-        for (p = 0; p < s->num_partid; p++) {
+-            s->mpamf[i].cfg_intpartid[p] = p % s->num_int_partid;
+-        }
+-        /*
+-         * per_nrw_id is indexed by INTERNAL PARTID: it has num_int_partid
+-         * entries, not num_partid.
+-         */
+-        for (p = 0; p < s->num_int_partid; p++) {
+-            /* MBW_MAX resets to full bandwidth on real hardware */
+-            s->mpamf[i].per_nrw_id[p].cfg_mbw_max = 0xffff;
+-        }
+     }
++    mpam_msc_state_init(s);
+ 
+     memory_region_init_io(&s->mr, OBJECT(s), &mpam_msc_ops, s, "mpam_msc",
+                           MPAM_SIZE);
+@@ -1301,6 +1342,7 @@ static void mpam_msc_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     device_class_set_props(dc, mpam_msc_props);
++    device_class_set_legacy_reset(dc, mpam_msc_reset);
+ }
+ 
+ static void mpam_msc_mem_init(ObjectClass *klass, const void *data)
 -- 
 2.43.0
 

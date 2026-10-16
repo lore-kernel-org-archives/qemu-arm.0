@@ -4,78 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D21E2CCA48B
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 09:58:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6858CCA462
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 10:21:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHegs-0007TE-Q4; Fri, 16 Oct 2026 05:57:32 -0400
+	id 1xHf3X-00047g-RY; Fri, 16 Oct 2026 06:20:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1xHegU-0007Ri-GC; Fri, 16 Oct 2026 05:57:08 -0400
-Received: from sender6-of-o54.zoho.com ([165.173.180.54])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1xHegQ-0000Wf-Nk; Fri, 16 Oct 2026 05:57:06 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1792144576; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=B6Eul7ZIGHe/GzN4pDyEj+HBZR2lWEqGz53THOKxS+hzjT4deYsT8xQjYMRjMA3KiphrrgNpmItBjtaWc26TgqYPP9IuQmh7iRKMYxW7MLO8o1snOB0XKMbJpDADL4yMzDdsxVDFuUygn8o9Qi1QfqF9duVvudpdq3RDQfrLDWM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1792144576;
- h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=c0WsNYJz56dq7mul1SOpEcLPMZo+1/7AwrdNNoV+PGc=; 
- b=CHQtfSG1EeofnCgRkdJ3C+aFfBJFPaq/PC3KGqQjrcmL+UVIei7s2Q3bT9zeho0ElYJVx1Lz2jpe0Y7MZMdaM1knFXenwceUdCs8xU3PdniQfPZirmhrgQr8sul8soeTB2+Y794BY3tyqPCLYeFyWDeNfoi7cieDHxvXkojubO0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=anirudhrb.com;
- spf=pass  smtp.mailfrom=anirudh@anirudhrb.com;
- dmarc=pass header.from=<anirudh@anirudhrb.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1792144576; 
- s=zoho; d=anirudhrb.com; i=anirudh@anirudhrb.com;
- h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
- bh=c0WsNYJz56dq7mul1SOpEcLPMZo+1/7AwrdNNoV+PGc=;
- b=l3e8jfwzPXdf2UX3CH82Q7TbXWX/VML/hHkDB0bqWXDWf9YaqWwHlloonEJZxXNw
- YPvyJ2S5M9lekKeSZ2LnuB2HBgxtieWWm9BkbtWnEuG6EnaTJFgPDFFcosLWIIYm/dK
- TY9AG5s9ZxeF+p6MLHBjA6nJH2tWvneBd3PF1nvI=
-Received: by smtp.zohomail.com with SMTPS id 1792144572614344.79024324113675; 
- Fri, 16 Oct 2026 02:56:12 -0700 (PDT)
-Date: Fri, 16 Oct 2026 09:56:05 +0000
-From: Anirudh Rayabharam <anirudh@anirudhrb.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-devel@nongnu.org,
- Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>,
- Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: Re: [PATCH v6 11/14] target/arm/mshv: add vCPU run loop
-Message-ID: <20261016-adamant-modest-caterpillar-4dadbb@anirudhrb>
-References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-11-aefe5e76a0e3@linux.microsoft.com>
- <CAFEAcA9xPn2MRjC_d9Gdb=d4-GHmcXPpsLP+WUOgCUhaPbZ2BQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xHf3W-00047X-Q1
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 06:20:54 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xHf3V-0002rr-7s
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 06:20:54 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-8ab3d3c5761so52516797b3.1
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 03:20:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792146051; cv=none;
+ d=google.com; s=arc-20260327;
+ b=ZX/XpoaR30pe+KZCU2uKq3NqmVfYFaNIsYVvibjdlgXD/twFpvJDWwPOtTeya1S45Z
+ jJf9vx2MnZA1zqbBwPGZKgTtiPG4fd1iV+EeWESHNiQL64tJBvAn7jiOV/EhzVlmVReQ
+ XmbXOr43Irymliheo7R6hpzeDJAhMAOPgQB+W7glquO5DIrSS+cH9ej2ZTL8DekUqcmc
+ FfMHSEKzr+U0k2rr3Y106gPFXIkkRyzeCn2YuMUXOKRLTTA6YBrguV1fTiK/NxrgAADW
+ zt1YOSCUVTeu5IWHhSL2/c7jFy9BYD5Jjl5yPADgS0Y8/hk4TXN14ZFtaDaKX8CGuNUU
+ 2EZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=+lR+yCq7Sj2LV7d8680iILAoFQX7r0VH1tOrFRtbZ7g=;
+ fh=gEYKyBQ6KEo+GGzpTdTY3h0BQbVAV50s0pLnzGdCPqs=;
+ b=nNgJ7TfGS4ZRIB9sofoAKGxnqJUHCW1zftqBlmMFzLeOcWJj2dyUmMAnsGlu5q3GEq
+ 35oaxNm+zCitDltsi9VXDaK6r72PBZyq68QSPs5UFSavtS+MA23NbtQx7OCD6W6DDLTB
+ /MPCUvrQyKulDv91VPosTp2Ud4OYHt5vDHrQCnuXGmKZ0fygYL2QODU2VJ9I0POwOsY1
+ 4t1AJSM1yufhWlHFmHHz7rZoj4O3ip2/9q6k4LlPvGpxCGF3j4PgptXxNT1bKvj95hdf
+ STWRhm3v/OJLFgsk8DWDtRnFGNoZ5e4HPSgF97E4Z/pF0q2oLGKAJuQ2B1a0FnBZMIU5
+ IEYA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792146051; x=1792750851; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=+lR+yCq7Sj2LV7d8680iILAoFQX7r0VH1tOrFRtbZ7g=;
+ b=rnl2EoNq34uDqmATu80EhNE0EkgAfyvuZPc0cK9q6s52yYOZ4hy6TfsNhq4xos54SJ
+ r/1+G091HWsihX8ztnglawe1XRWyagkGHbglBtZWWjUFQrYKnvSPoHdO/01U1J8FMAjQ
+ S2LS157V84f/fwNAVygKBSjt+SP7kzXoAgee71wUTvIRsfVSBvO7+JYBNgR9dYogc9Ti
+ Go+cU1sAXclloK9kYsnaKr2j6tomikstNA3hU99AZKGPtqjO5oYtznTXQuAfrCR9yOhA
+ YgW0dTXbApBLBNvua6qMFIkxMqGF/vGdj4ibYU6NkNl4a5C+IguGmM73kbbktQn/WnVF
+ ZpNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792146051; x=1792750851;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=+lR+yCq7Sj2LV7d8680iILAoFQX7r0VH1tOrFRtbZ7g=;
+ b=MINNAQVRtnS0T75m53C4lScFlCMbvHCF7uJS74YCKHPlELuOcpzE4+7emxdhqzZBSM
+ l7B8tZYM/dBuC+LeX7msOQy9AgnZjkKmkAnZtvCVCMb8rI+Pfp+c+2pEE/oDZDVr9wRj
+ IX8ieAExuUUKAvv9jlwYn39vshMDf3K8EG6eKH113gyuyaOm1K150CAx9dykPoYN2bBX
+ gtjBNxGFoFu5K8ctqEl5ED3e1jj/i2/mhHdUFIfdxLB8krSUcw00GzMEcwGrPYuW5X0l
+ Qw93L56hBKbYyjcvJJUlOF9E3r43Xy9+usRMqO3KC4hTcuwlRFwn9QNuwQj8LQZxX0sK
+ NrsQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwA0A/v/8Ce0Ar0+lgwhkmW3BE3EYHPtoNL9PjIR78TZmkgyPqu31pd67rl3jGLXeiAS5Uoq3EXxg==@nongnu.org
+X-Gm-Message-State: AFq9FYIMbhpmiyZxe8a/idwhDuSqPkJKZmJVXh+ZVF73JUSrLYiNRkgG
+ sJyIsnHFZUie6ORkEIpYxyZCwLRFRfFLGkaR+WcYEO3wahYeajbrwjcsMgkxFpv+s5wicFmRZsB
+ r8p+E/Nt18JyxgVbisKN/UPaoaavXIAMl5lOZf2u0fA==
+X-Gm-Gg: AYBFou0j9yIt3EP6fY3LJThr9BXkGXj+gwMfjegaC55CzFiNurFn1Fb73U66DmLdNe8
+ Bp+frrwozzd/b8ODt65VuOc39Ppn26gJAF4/y4YNOeZ/cNFz80SuYKlP62VPK/95GeHilrssRoY
+ Nz2/qQh0ckchjk7MZUjCagKPhczKc58GancmujLUsQ2TW5wxbkhKnWc/DaQxX/S0fbKbNn3Hb8u
+ Vame9sYew+iKFPY4wON3f8WGWWkZPF3kQQvbGyBC99mGT6S/XtJp3R+mx9OAVHKbz88JPKrAWEo
+ ZwATy8Fdpl59dGbexR250S75GEE1Qblxw3IgaA0OwdyZU70sf4S76nmFXyhhRwJOIodJSgNg6x/
+ DXnvJc5xPZtUGUSDRpxHH3Kma7ueL/+uTTdan4ho=
+X-Received: by 2002:a05:690c:6e87:b0:8b0:76e5:ecf0 with SMTP id
+ 00721157ae682-8b07eca01c7mr85352197b3.4.1792146051284; Fri, 16 Oct 2026
+ 03:20:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9xPn2MRjC_d9Gdb=d4-GHmcXPpsLP+WUOgCUhaPbZ2BQ@mail.gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/292.122.61
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=165.173.180.54;
- envelope-from=anirudh@anirudhrb.com; helo=sender6-of-o54.zoho.com
+References: <tencent_22E95650AA60C6E59860452C0D61A21F1105@qq.com>
+In-Reply-To: <tencent_22E95650AA60C6E59860452C0D61A21F1105@qq.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 16 Oct 2026 11:20:39 +0100
+X-Gm-Features: AclHuK8ndLRSRJrGsRvAby9xi6rLxv6SVuahyYs5pcQX4zLAV6e0Eey50G4DPd4
+Message-ID: <CAFEAcA8MyrqWC7=A5Bw0G5G-2J64iTLmfY33dNDLm0jvmRb+Eg@mail.gmail.com>
+Subject: Re: [PATCH 00/37] Add Arm MPAM emulation
+To: Jinjie Ruan <2118537295@qq.com>
+Cc: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com, 
+ imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com, 
+ pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ ruanjinjie@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -92,57 +119,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Oct 13, 2026 at 05:50:03PM +0100, Peter Maydell wrote:
-> On Thu, 1 Oct 2026 at 11:52, Aastha Rawat
-> <aastharawat@linux.microsoft.com> wrote:
-> >
-> > From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
-> >
-> > Add the main vCPU run loop for MSHV using the MSHV_RUN_VP_IOCTL.
-> >
-> > Handle MMIO exits by emulating the instruction using the syndrome
-> > information from ESR_EL2.
-> >
-> > Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
-> > ---
-> >  include/hw/hyperv/hvgdk_mini.h |  44 +++++++++++++++++
-> >  target/arm/mshv/mshv-all.c     | 107 +++++++++++++++++++++++++++++++++++++++++
-> >  2 files changed, 151 insertions(+)
-> >
-> > diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-> > index 33c9e4f3e0..53dc58813e 100644
-> > --- a/include/hw/hyperv/hvgdk_mini.h
-> > +++ b/include/hw/hyperv/hvgdk_mini.h
-> > @@ -896,6 +896,50 @@ struct hv_x64_memory_intercept_message {
-> >      uint8_t instruction_bytes[16];
-> >  } QEMU_PACKED;
-> >
-> > +union hv_arm64_vp_execution_state {
-> > +    uint16_t as_uint16;
-> > +    struct {
-> > +        uint16_t cpl:2;
-> > +        uint16_t debug_active:1;
-> > +        uint16_t interruption_pending:1;
-> > +        uint16_t vtl:4;
-> > +        uint16_t virtualization_fault_active:1;
-> > +        uint16_t reserved:7;
-> > +    };
-> > +};
-> 
-> This is an mshv specific file, but I would still recommend against
-> bitfields-in-a-union as generally bad style.
+On Fri, 16 Oct 2026 at 10:47, Jinjie Ruan <2118537295@qq.com> wrote:
+>
+> From: Jinjie Ruan <ruanjinjie@huawei.com>
+>
+> MPAM (Memory System Resource Partitioning and Monitoring) is Arm's
+> architecture for partitioning and monitoring system memory resources
+> - Cache portions
+> - Capacity limits
+> - Memory bandwidth and priority
+>
+> And MPAM is the Arm counterpart of x86 RDT, which Linux exposes to user
+> space via resctrl.
+>
+> QEMU so far has no MPAM support at all: the CPU-side system registers
+> are missing (a guest kernel that probes FEAT_MPAM takes an UNDEFINED
+> exception), and there are no Memory System Components (MSCs), so a virt
+> guest cannot exercise resctrl on Arm.
+>
+> This series adds MPAM 1.1 emulation for the virt machine,
+> and the structure is as below:
 
-Hi Peter,
+> With this, a Linux guest booted with -M virt,mpam=on (plus NUMA nodes)
+> mounts resctrl with the full schemata set (L2/L3 CAT, capacity, MBA,
+> priority), and MBM bandwidth and L2/L3 occupancy counters track the
+> configured controls.
 
-We source these definitions pretty much verbatim from the hypervisor
-headers. Having them as close as possible to the hypervisor headers
-would it make it easier to maintain. We do make some cosmetic changes
-w.r.t naming style and QEMU_PACKED instead of __packed__ etc but that's
-about it.
+I guess my question here is "how much is this actually doing,
+and how much is it 'we provide enough software-facing interface
+to keep the guest happy'" ? My (rather shallow) understanding of
+MPAM is that it's essentially adding tags to memory transactions
+and then accounting how much bandwidth each tag is using. That
+seems obviously infeasible for emulation, but on the other hand
+this looks like it's rather larger than a minimal "we provide
+the register interface but it does nothing", so what are we doing?
 
-Alsoe, there are existing definitions in this file using the same style.
-
-Thanks,
-Anirudh.
-
+thanks
+-- PMM
 

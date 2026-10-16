@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 880E4CCA46C
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:03:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51077CCF2C1
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:03:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZV-0006dT-BO; Fri, 16 Oct 2026 09:02:05 -0400
+	id 1xHhZO-0006Ty-L4; Fri, 16 Oct 2026 09:01:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf11-0003Us-Uz; Fri, 16 Oct 2026 06:18:19 -0400
-Received: from out162-62-57-210.mail.qq.com ([162.62.57.210])
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef3-0007KH-2t
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:37 -0400
+Received: from out203-205-221-205.mail.qq.com ([203.205.221.205])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf0z-0002Um-3I; Fri, 16 Oct 2026 06:18:19 -0400
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef0-0000R8-Fq
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792145892; bh=86sTBapwQiSDrYD5ErNUQ+RgQt/BnCmBs1DfUgrcRjE=;
+ t=1792144531; bh=3CnT9kdTlSHd++88hWxgxba4/tcTn0GXZXLU8Jlv2O4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=zz/wOfXlLa8+G0NNfVYMTVHXAjB7LMsDJIPOUMO+loxeMzAxgak5yY4o52rM7tu+x
- lOw7X4W0NghSPBj167z05pREdGd1Q+JuN2aPG8giAtgMSvKhbBnXCY4H0dlzjegxfw
- vy7haPgYcWpxfYrJzGRTwV7+C8wPArzdXR7NOhAE=
+ b=wpMz3FpavBR1GR1jSNx4XwDF2dk9AnmTz7vai5O9Fst6eDfdjES2QONFgutyJv+yM
+ edKMgm0lnYUKnNd7gI1giie33XoToRH9mWA2J4KAPuvnGz8XbX/MCW6XINEWda71Xr
+ u3KlN+WmxS9w8l1Rheq0pkgZqnt5ug3ltooseMm4=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrsza73-0.qq.com (NewEsmtp) with SMTP
- id 48A3704A; Fri, 16 Oct 2026 18:18:10 +0800
-X-QQ-mid: xmsmtpt1792145890t9aepixc8
-Message-ID: <tencent_9B35CD72A206F1E676456A66E6F898612505@qq.com>
-X-QQ-XMAILINFO: MLINc68tus9/i0LV/YdTp8mS+PFAaIH55Q2YLpMh0/EShlEeRFJ7w/SxyJ6bpe
- d4PIUSjs1qyx7LYMsR5gzjcqatuExxkAj0q8CgpalitLsMM0Tuj20YxREJUSWB/PovECAI0wN9sX
- Ss/nkdK4A19+GI6CsXr9jn1EE+Vvi/UBfd7JgJyufcPqSGWRpL65G6B+kFRAQxYzBCgbxVUZx+qw
- znWCP3jbsPM0+FivhTb6MvHbxo5Nr4ITN/+fb5//CwgcWST97bjC86koam6Z/n/sSsSUEF1FKaPK
- kbr44npYZKLuo+bu+srQTHnSpZ1ZLacnxe2tmd9dIJSscq3bigAIvcn0PMXkPjRGXsuOXCxK0w+L
- weOju7hVykOqx3d2L9aH720F5S6v7qcMBcAoevW7SFIvMoQ2VbY0ww4kEIpYNm0WytppJC9+J8in
- PImfCQPhlyxp0JZjKc+wu0k5RssS/vxxHu1hHvZLzYucLLbpHPbVsnFmn/ovOgi/bZXXXJ632gnF
- wjPkRn8u/5hMSSW7qNhFZRx9RV3jjCb7jbEEHoZ/JHGFZWqlqUdRT2eaPVS7eU/Z4gF4j1N3e3nt
- tL9TeOjAnkMVkyM2FevmHPgg6cvWyl2vpT7c9sxoIcPQj/NbKZr/ISoyNEEygUHhYZLL3W6xVCN+
- YXgFp5P9nxVJeJTUBtGU9Uy0UftEX25zKApq09LnvyDWbmUgRgoYq58iyYDIxzC9Jupx319B0fat
- uF/iP8NXdSZY8mJnQXwB6UYnI42mllQGRe2e8Qjo08tFTWEphq0qSU3F7AEzberH7weAoEkqXpri
- /0wHpikHIBNupF6xbaWO8LqO7BplCtFShgOXeoxNy6+501Y4MZlGSmPWwUr1nvZu/rSuSzJnCLoP
- dDcfrfH/VVZUFxD1ZNSCuosq+By8hb+j2GSIsrmhK9n0r+lEsSsZDZcma8yW55dhGRnVlPRHaAXX
- 8LTj/ALEHQja9AQSFtehpfgTuAWrAzC0eZRUiCLoxcfNDFO3Qza+RGP8djSGF8IoVmIllVeNId5U
- bSWE7KQEwf40B6s7s0N8S144XRs+uUEG5Q2wnuVjWlOkBtZEQTvs6ByWvYgidMTzMsa0LWiQ==
-X-QQ-XMRINFO: NmyfvsrRkCkJAbzJWTXK6qOFf6uNn0Tzaw==
+ by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
+ id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
+X-QQ-mid: xmsmtpt1792144086tbe93o6yk
+Message-ID: <tencent_9549CC801F23AD64A5614E042356DD964B0A@qq.com>
+X-QQ-XMAILINFO: M1rD3f8svNznS+EJIUUkXFuQYzhvkFBVNbVgcyZpjflCp2c/AsmbIzNWSPWX+d
+ yFK6QHQYUN5JuySH2pHsuQCleU9eQY5qeJxCJ+bn09JFN8sJdwlA8ViFssmfro3KXnLrp4RNbBrx
+ PZjjqdwJyOisAg3cmwqPV6mHubh8+g6R5ZK/94BbYWKftDUaYo4CdquwfM2OOc//GL9peKzQFAJp
+ IOcOAwVtgTV59dnGn4lUx06v4iSVDHd+NmIAhAwW2sjYBt9s5aUY5Kdf4EsXzQNSHcsNDyeSWGb8
+ 07Y0/NCvXGCIWVKFCqE6xSx6KSeRGUZSkXxLNtod4L51WQJRbJ7jpzSezqwQR/Bv7Cgg/neKng+/
+ SDXz3LDzj3UVIRrMM9rhLSRmqCmJYI1ulA6YVIcPkpqeogSX8TCvNBEqMkxFTv0ubk5epQknUOE0
+ mgT12R2KJbhaPMfbNQoejdJ57XtNr5KYOlZdufRarDvc/sUGl+3mZH0AafCwIw5FLTxzP4LAHKcp
+ +ha/S3VW1ZCpZpBHdFKAv5phkIYktzeWICVTHcRbSYB/Ejo5wVgdq/NTh+Qc0KeLh1M63i1Gpiv/
+ l4EW6pvERyr5z+gmlKdkCiLBTq44/FFM+OgKyVAM5Y5r9zIjlLukBElJYOe2VPL6PykohkQHsIdu
+ d/I+9QmyKbtQWjJTiayDAao79tPjHJSh2ciKJceWLyEIi2fmNXuyl3ob2P7rNLHP7VGk5GGZJz1S
+ jVlsV4sZnlM9gj3TpIjtDQP2zux+EZPB9JLIslulbM2FLRebLUPLIS/oaz4xwtWeFsUnMFATmuZG
+ wVa5r0BPrEjb88DNmzVHL+DgMIINTlWs5MoncKDGb0RDuUOa5nO+GITtLrxRh1MEIF9tWXFH2lU2
+ Z7Dfhi5rs/eF+7GGWEk6eF4SJaIiZD+/6m+t3NA1W3r+hRrvJyzCF8Xi/K0wwT10djEQ5kl64xlg
+ 9ciAIsnEdc75kqTZ4pQsmdaevyuq9wyFk60DgjwG5rm0ZBk0ayG31mBLaegIaiHgii2Gcyd5hUnd
+ FkBzx3zX0SfnuknVDzCTRkvAhMIGs9Wh4/vAMmtqHvk0ffySm3
+X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 22/37] hw/acpi: Add MPAM table MSC node builders
-Date: Fri, 16 Oct 2026 18:10:42 +0800
-X-OQ-MSGID: <20261016101058.1900808-8-2118537295@qq.com>
+Subject: [PATCH 12/37] hw/arm/mpam: Implement MBW bandwidth partitioning
+Date: Fri, 16 Oct 2026 17:47:06 +0800
+X-OQ-MSGID: <20261016094733.1898485-13-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
-References: <20261016101058.1900808-1-2118537295@qq.com>
+In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
+References: <20261016094733.1898485-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.210; envelope-from=2118537295@qq.com;
- helo=out162-62-57-210.mail.qq.com
+Received-SPF: pass client-ip=203.205.221.205; envelope-from=2118537295@qq.com;
+ helo=out203-205-221-205.mail.qq.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -68,9 +68,9 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:48 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,168 +87,146 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Add the DEN0065 MSC node builders for the MPAM table: the
-interrupt entry (flags 0 = wired, level per Table 5; GSIV 0 means
-not present) and the memory-controller and cache-controller node
-layouts (fixed 72-byte header plus one 24-byte resource node per
-RIS, MAX_NRDY_USEC 100) with the matching locators (proximity
-domain for memory, PPTT cache id for caches).
+Add the memory-bandwidth controls: MPAMF_MBW_IDR (16-bit BWA_WD
+fraction, MIN/MAX/PBM/PROP support, BWPBM_WD = MPAM_MBW_PART)
+with HAS_MBW_PART on the memory subtype, and read/write handling
+for MBW_MIN, MBW_MAX, MBW_PROP and the MBW_PBM bitmap per
+selected internal PARTID.
 
-Static helpers; wired into the generated table by the next patch.
+Note the MBW_MIN write mask check references the CMIN mask --
+a leftover fixed later by the CMIN/CASSOC patch.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/virt-acpi-build.c | 130 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 130 insertions(+)
+ hw/arm/mpam.c | 73 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 73 insertions(+)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index d368913..871ee45 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -52,6 +52,7 @@
- #include "hw/pci/pci_bus.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/arm/virt.h"
-+#include "hw/arm/mpam.h"
- #include "hw/intc/arm_gicv3_its_common.h"
- #include "hw/mem/nvdimm.h"
- #include "hw/core/platform-bus.h"
-@@ -855,6 +856,135 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     acpi_table_end(linker, &table);
- }
+diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
+index 2b1401e..7c33ec4 100644
+--- a/hw/arm/mpam.c
++++ b/hw/arm/mpam.c
+@@ -363,6 +363,8 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+             return 0;
+         }
+         return mpamf->cpor_idr;
++    case A_MPAMF_MBW_IDR:
++        return mpamf->mbw_idr;
+     case A_MPAMF_PARTID_NRW_IDR: {
+         return mpamf->partid_nrw_idr;
+     }
+@@ -374,6 +376,12 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+         return mpamf->mbwumon_idr;
+     case A_MPAMF_CFG_PART_SEL:
+         return mpamf->cfg_part_sel;
++    case A_MPAMF_MPAMCFG_MBW_MIN:
++        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min;
++    case A_MPAMF_MPAMCFG_MBW_MAX:
++        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max;
++    case A_MPAMF_MPAMCFG_MBW_PROP:
++        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop;
+     case A_MPAMF_MPAMCFG_CPBM0...
+         (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
+     {
+@@ -387,6 +395,19 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+         array_offset = (offset - A_MPAMF_MPAMCFG_CPBM0) / sizeof(uint32_t);
+         return mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset];
+     }
++    case A_MPAMF_MPAMCFG_MBW_PBM0...
++            (A_MPAMF_MPAMCFG_MBW_PBM0 + ((MPAM_MBW_PART + 31) / 32 - 1) * 4):
++    {
++        uint32_t array_offset;
++
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                "MPAM: Unexpected read of MBW_PBM with no MBW_PART support\n");
++            return 0;
++        }
++        array_offset = (offset - A_MPAMF_MPAMCFG_MBW_PBM0) / sizeof(uint32_t);
++        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_pbm[array_offset];
++    }
+     default:
+         qemu_log_mask(LOG_UNIMP,
+                       "MPAM: Unexpected read of %lx\n", offset);
+@@ -430,6 +451,30 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
+         mpamf = &s->mpamf[s->ris];
+         mpamf->cfg_part_sel = value;
+         return;
++    case A_MPAMF_MPAMCFG_MBW_MIN:
++        if (value & ~MPAMF_MPAMCFG_CMIN_WRITE_MASK) {
++            qemu_log_mask(LOG_UNIMP,
++                          "MPAM: Unexpected write to CMAX Mask=%x Value=%lx\n",
++                          MPAMF_MPAMCFG_CMIN_WRITE_MASK, value);
++        }
++        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min = value;
++        return;
++    case A_MPAMF_MPAMCFG_MBW_MAX:
++        if (value & ~MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK) {
++            qemu_log_mask(LOG_UNIMP,
++                          "MPAM: Unexpected write to MBW_MAX Mask=%x Value=%lx\n",
++                          MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK, value);
++        }
++        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max = value;
++        return;
++    case A_MPAMF_MPAMCFG_MBW_PROP:
++        if (value & ~MPAMF_MPAMCFG_MBW_PROP_WRITE_MASK) {
++            qemu_log_mask(LOG_UNIMP,
++                          "MPAM: Unexpected write to MBW_PROP Mask=%x Value=%lx\n",
++                          MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK, value);
++        }
++        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop = value;
++        return;
+     case A_MPAMF_MPAMCFG_CPBM0...
+         (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
+     {
+@@ -445,6 +490,22 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
+         mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset] = value;
+         return;
+     }
++    case A_MPAMF_MPAMCFG_MBW_PBM0...
++        (A_MPAMF_MPAMCFG_MBW_PBM0 + ((MPAM_MBW_PART + 31) / 32 - 1) * 4):
++    {
++        uint32_t array_offset;
++
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                          "MPAM: Unexpected write to MBW_PBM when !HAS_MBW_PART\n");
++            return;
++        }
++        /* TODO: Figure out write mask to check this stays in write bits */
++        array_offset = (offset - A_MPAMF_MPAMCFG_MBW_PBM0) / sizeof(uint32_t);
++
++        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_pbm[array_offset] = value;
++        return;
++    }
+     default:
+         qemu_log_mask(LOG_UNIMP,
+                       "MPAM: Write to unexpected register Addr %lx Value=%lx\n",
+@@ -522,6 +583,8 @@ static void mpam_msc_mem_realize(DeviceState *dev, Error **errp)
+         /* We won't implement any implementation specific stuff */
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, NO_IMPL_PART, 1);
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, NO_IMPL_MSMON, 1);
++        /* Memory specific bit */
++        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_MBW_PART, 1);
  
-+/*
-+ * DEN0065 3.0 Table 5: interrupt flags bit0 = mode (0 level, 1 edge),
-+ * bits[2:1] = type (00b wired), bit4 = affinity valid (must be 0 for an
-+ * SPI).  The MSC model signals both interrupts level, so flags are 0.
-+ * GSIV 0 means the interrupt is not present.
-+ */
-+/*
-+ * DEN0065 4.0: an MSC node is a 72-byte fixed header plus one 24-byte
-+ * resource node per RIS.  MAX_NRDY_USEC 100 is the default ready-time.
-+ */
-+#define MPAM_MSC_NODE_HDR_LEN   72
-+#define MPAM_MSC_RIS_ENTRY_LEN   24
-+#define MPAM_MSC_MAX_NRDY_USEC  100
+         mpamf->iidr = FIELD_DP64(mpamf->iidr, MPAMF_IIDR, IMPLEMENTER,
+                                  MPAM_IIDR_IMPLEMENTER);
+@@ -533,6 +596,16 @@ static void mpam_msc_mem_realize(DeviceState *dev, Error **errp)
+         mpamf->aidr = FIELD_DP64(mpamf->aidr, MPAMF_AIDR, ARCH_MINOR_REV, 1);
+         mpamf->aidr = FIELD_DP64(mpamf->aidr, MPAMF_AIDR, ARCH_MAJOR_REV, 1);
+ 
++        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, BWA_WD, 16);
++        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MIN, 1);
++        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MAX, 1);
++        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PBM, 1);
++        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PROP, 1);
 +
-+static void build_msc_interrupt(GArray *table_data, uint32_t gsiv)
-+{
-+    build_append_int_noprefix(table_data, gsiv, 4);
-+    build_append_int_noprefix(table_data, 0 /* wired, level */, 4);
-+}
++        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, WINDWR, 0);
++        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR,
++                                    BWPBM_WD, MPAM_MBW_PART);
 +
-+static void build_msc_memory_controller(GArray *table_data, int identifier,
-+                                        hwaddr base_addr, uint32_t mpam_id,
-+                                        int num_ris, uint64_t *nodes,
-+                                        uint32_t oflow_gsiv,
-+                                        uint32_t err_gsiv)
-+{
-+    int length = MPAM_MSC_NODE_HDR_LEN + MPAM_MSC_RIS_ENTRY_LEN * num_ris;
-+    int i;
-+
-+    build_append_int_noprefix(table_data, length, 2);
-+    /* Interface Type */
-+    build_append_int_noprefix(table_data, 0 /* MMIO */, 1);
-+    /* Reserved */
-+    build_append_int_noprefix(table_data, 0, 1);
-+    build_append_int_noprefix(table_data, identifier, 4);
-+    build_append_int_noprefix(table_data, base_addr, 8);
-+    build_append_int_noprefix(table_data, MPAM_SIZE, 4);
-+    /* Overflow interrupt */
-+    build_msc_interrupt(table_data, oflow_gsiv);
-+    /* Reserved */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Overflow Int Affinity */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Error interrupt */
-+    build_msc_interrupt(table_data, err_gsiv);
-+    /* More reserved */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Error Int Affinity */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* MAX_NRDY_USEC */
-+    build_append_int_noprefix(table_data, MPAM_MSC_MAX_NRDY_USEC, 4);
-+    /* Linked Device - none for now */
-+    build_append_int_noprefix(table_data, 0, 8);
-+    /* _UID of linked device */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    build_append_int_noprefix(table_data, num_ris, 4);
-+    /* Build a memory controller resource */
-+    for (i = 0; i < num_ris; i++) {
-+        build_append_int_noprefix(table_data, mpam_id, 4);
-+        build_append_int_noprefix(table_data, i, 1);
-+        /* Reserved1 */
-+        build_append_int_noprefix(table_data, 0, 2);
-+        /* Locator type - 1 = Memory */
-+        build_append_int_noprefix(table_data, 1, 1);
-+        /* Locator part 1 Node */
-+        build_append_int_noprefix(table_data, nodes[i], 8);
-+        /* Locator part 2 reserved */
-+        build_append_int_noprefix(table_data, 0, 4);
-+        /* Num functional dependencies */
-+        build_append_int_noprefix(table_data, 0, 4);
-+    }
-+}
-+
-+static void build_msc_cache_controller(GArray *table_data, int identifier,
-+                                       hwaddr base_addr, uint32_t mpam_id,
-+                                       int num_ris, uint64_t *cache_id,
-+                                       uint32_t oflow_gsiv,
-+                                       uint32_t err_gsiv)
-+{
-+    int length = MPAM_MSC_NODE_HDR_LEN + MPAM_MSC_RIS_ENTRY_LEN * num_ris;
-+    int i;
-+
-+    build_append_int_noprefix(table_data, length, 2);
-+    /* Interface Type */
-+    build_append_int_noprefix(table_data, 0 /* MMIO */, 1);
-+    /* Reserved */
-+    build_append_int_noprefix(table_data, 0, 1);
-+    build_append_int_noprefix(table_data, identifier, 4);
-+    build_append_int_noprefix(table_data, base_addr, 8);
-+    build_append_int_noprefix(table_data, MPAM_SIZE, 4);
-+    /* Overflow interrupt */
-+    build_msc_interrupt(table_data, oflow_gsiv);
-+    /* Reserved */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Overflow Int Affinity */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Error interrupt */
-+    build_msc_interrupt(table_data, err_gsiv);
-+    /* More reserved */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Error Int Affinity */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* MAX_NRDY_USEC */
-+    build_append_int_noprefix(table_data, MPAM_MSC_MAX_NRDY_USEC, 4);
-+    /* Linked Device - none for now */
-+    build_append_int_noprefix(table_data, 0, 8);
-+    /* _UID of linked device */
-+    build_append_int_noprefix(table_data, 0, 4);
-+    /* Num resource nodes */
-+    build_append_int_noprefix(table_data, num_ris, 4);
-+    /* Build a cache resource */
-+    for (i = 0; i < num_ris; i++) {
-+        /* Identifier */
-+        build_append_int_noprefix(table_data, mpam_id, 4);
-+        /* RIS index */
-+        build_append_int_noprefix(table_data, i, 1);
-+        /* Reserved1 */
-+        build_append_int_noprefix(table_data, 0, 2);
-+        /* Locator type - 0 = Cache */
-+        build_append_int_noprefix(table_data, 0, 1);
-+        /* Locator part 1 PPTT ID */
-+        build_append_int_noprefix(table_data, cache_id[i], 8);
-+        /* Locator part 2 reserved */
-+        build_append_int_noprefix(table_data, 0, 4);
-+        /* Num functional dependencies */
-+        build_append_int_noprefix(table_data, 0, 4);
-+    }
-+}
-+
- /*
-  * ACPI spec, Revision 6.5
-  * 5.2.25 Generic Timer Description Table (GTDT)
+         if (s->num_int_partid < s->num_partid) {
+             mpamf->partid_nrw_idr = FIELD_DP32(mpamf->partid_nrw_idr,
+                                                MPAMF_PARTID_NRW_IDR,
 -- 
 2.43.0
 

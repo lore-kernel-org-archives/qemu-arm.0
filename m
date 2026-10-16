@@ -4,171 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D619CC6B38
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:52:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8706FCCA462
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:55:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHiLQ-0001kM-HE; Fri, 16 Oct 2026 09:51:36 -0400
+	id 1xHiOm-0003fj-Ab; Fri, 16 Oct 2026 09:55:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brian.cain@oss.qualcomm.com>)
- id 1xHiL7-0001fD-Rd
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:51:18 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xHiOl-0003fa-Es
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:55:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brian.cain@oss.qualcomm.com>)
- id 1xHiL4-00037D-En
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:51:17 -0400
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69GAvPEI1504047
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 13:51:12 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- aaiMzdN1FsAMDpjCoJ/kd+lYlLRQUSBvNZtGlnn0IvM=; b=pPrDeSBhH2nGbyOF
- 1jUg79meTVM/JIo5nl4OxEHKgVybjTboO+tJkFdw7UmoZvV6ee/YZ1r2zq5VAEuP
- sAWa26kfkXhB1yxGvI0Fhh3eHaYoy9dqwy28d2hXUgJViVXPhcmV9D6gjaMYJ8yF
- 3CACgvcsQJsnGHNH3pcUR322YCII624ALnL6mgN9x7VBp2aqdFM3yCgMIIw0kleX
- r5ddF8c7iiRhin+r6REftGChWq3iOVAVSAvwqFQPE4g2kMt83NzeOLFYS/2CTQ2l
- y4d/kW317v22Jb7KUEHxxfXlQn4vKPfadp21K4NIclZ6jfD1/gKe9P5cwk8gF5dJ
- uVAkgg==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hbjmf8knd-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 13:51:12 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-93f26dd2165so36193985a.3
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:51:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792158671; x=1792763471; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=aaiMzdN1FsAMDpjCoJ/kd+lYlLRQUSBvNZtGlnn0IvM=;
- b=YUa4ysl1m31p28+LC3Sq93gc16Wm6criwX8KTtZmhnCKGhH1Qec8X5TGbf9hWB+XZy
- JOhyQwADfdQ2h3sMOUXVhRW3a65z1n5Idwnu6D6H/mwzFw1Hm4KTXkIrR828xkD6Kiqy
- JZMYWfAFAc7/PG52isZgmyEEV/3/vlskVGOVXVlh9CI8/dakyV/VrTi9+NbC2AJU2RST
- s1fUE3koPCPjre1nfOI0L3kP88UlVlMSR9Hyq77JaPipI4uCLCI+2zxpvQD3hX4duhbH
- C+Zgo10xnjAHNB98aUZcjrmt3RFYC1nQUsV5BVVnO2XRKFT1B7H1hIrvhrEacICyeZs9
- FA/A==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xHiOi-0003MQ-FO
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:55:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1792158898;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=S3owZnDxfPPBPVhBKp7S/V/dJ4O1D5PPO4EeDa7UuIg=;
+ b=iGA34F8N4hSIQ2GZCSndpRLc48WchGwg68K8lsVNFYRhynsQxkO2UqAVqNwxvmrhvv946U
+ 1NGRYA6b56u32ArMhMa5/VSvRC+DnvRi+VdAslEbcT1BwtjE8HgSWFZRuizg13gx/ut4xZ
+ ebZoflH1cC3/eWJzU6/cw3AUWbxfAYI=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-507-VoO42N_vPiSb0vqw0tJzmw-1; Fri, 16 Oct 2026 13:54:57 +0000
+X-MC-Unique: VoO42N_vPiSb0vqw0tJzmw-1
+X-Mimecast-MFC-AGG-ID: VoO42N_vPiSb0vqw0tJzmw_1792158896
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4a1d15e7bfaso4517235e9.1
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:54:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792158671; x=1792763471;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
+ d=1e100.net; s=20260707; t=1792158896; x=1792763696;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=aaiMzdN1FsAMDpjCoJ/kd+lYlLRQUSBvNZtGlnn0IvM=;
- b=P5TO819MLc5rlI6PgmnAVNFORKbBKyAWIzSmrgf+X5gbmkfX9ESdjo19PV7BdDQrDn
- bT+ib5Qz4gz1kvUtlM5gs69gfS+gargUZ4sLc8DAq0tUTgNiJ7n40BHt8r2xjlpCqMBh
- T50ntgmlja8xcIkrWeeGx8HqXpv6ZdbNnMrweeezAEVvrZu/opX/2VPrPPFhLg5TgNi0
- Ug+cMFUeI5emOza8vGVoD/7fM1XBLfIhYdo+HoytMbhwr18EgRvQuk5qPKASf3T4TSKS
- JqMI74S3BIb/4yxXIhBkle+GYDVXKg+o78FN/SKbpPS53UAx/tini+H21n1q7m7VSH7R
- O+Mg==
+ bh=S3owZnDxfPPBPVhBKp7S/V/dJ4O1D5PPO4EeDa7UuIg=;
+ b=sLiC9cE/6qppdYVOI7OQdwy3fG9pKTrbBjrqwy6ZpCLQfl9SfqyretFQexzTcJzdTD
+ GUspkeH4qiow2QcjCMDBdMNOdQVAv2FIwbvg/76fT1ATwLz9CJk/eyaseP5L5+1cyRgQ
+ GLk9Jd/AIgewiRMd8SUZGijxvh8At1qVDIQGTYqGNiaz4Qqjkn15elHeO4kY2mcy2XDL
+ Wz6SUPv7YgkFep/WdtnsABIy2/oGdb5wysL8Lz038+t/giDECEewmFh99yRZxcYQ+Fkw
+ +z6L3cVLj49i3ip8JfijgMqgGhsgiAOAGZlgZAJvmIn3zsfg7/KEPLYiAihr3w7CsNFS
+ fnHw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzyWDMLwBgnIoidPPlkcAe1iWBikrFBDJHUpMdnAgnlf7ZVZerZ+RbuMTViFy0slxkg29MZSH7CRg==@nongnu.org
-X-Gm-Message-State: AFq9FYKXBowvEBYcKG5+haknlA41TdrDls20CflwVvx2yffJCyV/vh2f
- cG+VcF1DzKU5n0cqxoMR5PpkOeLUGNk/bl7IUBX0OcEO3+Od1rCIghk31OidSufUKQ/HaHzhsDh
- bFJoIigXk5LS3XODuNb0PA2CvWaTNTicH4KPhN4HNkCNvyTm8UMl/UJA=
-X-Gm-Gg: AYBFou2dMZtw45xsvx3Na8FBKJY3Gfr6PawkwOZJw+9YaAf0l4pXrT9AphrcIH/hiNC
- 0kWVTss3Tu/gv/Jk5BxB3Gnrzed3GFcygoz8aADUpaAcw66QY9iG7WWZmeSUclYhQAUJQkRXSpK
- Z03d0m4w/JONAJD2DHDqROVFGBS3GQSJSDZ7WizxVMG7VQreZy5NnCgJJI5MLjYNTxwB32eofAM
- cJUAilkdqLjUxPGce+j+p42ePveOrI0qnSVK88X8Ej0dAagwvFVNwS0Bgpp60210gZb6xVT0X5j
- bJ14GteF6YqQ4xRxZyZvk2qOvYpmFELCuOMOIRhMf48xxdfieRu/fiC4jA4lB16KCRUasQlZZlK
- BS2st/7ffo2DMOH16MDUi7aXY7UcGH0UyfoW4aziqFL2/+E3rRBTZU9L4+YalG3S0
-X-Received: by 2002:a05:620a:2248:20b0:93f:11ee:ba5f with SMTP id
- af79cd13be357-93f11eee5edmr579328985a.79.1792158670986; 
- Fri, 16 Oct 2026 06:51:10 -0700 (PDT)
-X-Received: by 2002:a05:620a:2248:20b0:93f:11ee:ba5f with SMTP id
- af79cd13be357-93f11eee5edmr579324585a.79.1792158670463; 
- Fri, 16 Oct 2026 06:51:10 -0700 (PDT)
-Received: from [10.222.168.219] (Global_NAT1_IAD_FW.qualcomm.com.
- [129.46.232.65]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-93f1a1690fdsm216994685a.11.2026.10.16.06.51.02
+ AKwUvBwzLQ2n29J1VFDMDtuD297xR6PoOUY5vl8pRX9YyJ0Pdz5kY7iJLFlyS+/14RWzyBPCI277qX7E4A==@nongnu.org
+X-Gm-Message-State: AFq9FYIIBABikTfM/qw21FRkADxoUnA/o/hZ/vNBDBkyrBWvkqnFiVFv
+ ko7dRqczkr1juAITZrriPelKkGgTRAqoCNPi5pJeN9dciQhsREVI2o2tAUYWnPz5plcdjuidA/S
+ dF6TpL6CNQPKssWG7X4hqfBS41nBlT/gBVffpad2aLWyNd11TYtouKQ==
+X-Gm-Gg: AYBFou1GYOz14RUMtpe0lS6KJZnoD4MI1pNpLLLFgXdyIXmnLgpeJyNcj9OBj7bn884
+ m5QnfFCnRmzAXPtBQhfLWyc+IXXfoJCz+GHzExJ1ergaFBvsKs91MFholXFqN5bdT1q61K2hOeJ
+ RPFuyWf7YKeG0lY9RRFPnb+capwqK3u/x0fH2aBi7A0N9SlINbFr44M5ILVuxl1dHySYYS3835U
+ YIQ5MAvqu8q474wOtcy8OteixuwNFVBTF4EIQgEQJfRwmhKrOAEPmh5M1WB5wem7QXZDfyXd3KF
+ 1PGnMLRupgzPEKtENXfGjR0X+hjepbzlBftXirJQ9Tps5Es75qkkBizwmudwM1cDP50PE/h/uWN
+ qx2v/ZtdH2QHFKpUiGOvu6Lqmfdp1345uWtooahhOphjgnCQp
+X-Received: by 2002:a05:600d:8488:10b0:4a1:9078:911 with SMTP id
+ 5b1f17b1804b1-4a190780997mr316217885e9.31.1792158896266; 
+ Fri, 16 Oct 2026 06:54:56 -0700 (PDT)
+X-Received: by 2002:a05:600d:8488:10b0:4a1:9078:911 with SMTP id
+ 5b1f17b1804b1-4a190780997mr316217355e9.31.1792158895821; 
+ Fri, 16 Oct 2026 06:54:55 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a1bd9a88bbsm154675415e9.3.2026.10.16.06.54.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Oct 2026 06:51:09 -0700 (PDT)
-Message-ID: <077274ba-002e-4241-9158-13a3270bddaa@oss.qualcomm.com>
-Date: Fri, 16 Oct 2026 08:51:00 -0500
+ Fri, 16 Oct 2026 06:54:55 -0700 (PDT)
+Message-ID: <89403aff-9082-40fb-bd62-a13638bde9f7@redhat.com>
+Date: Fri, 16 Oct 2026 15:54:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target-info: dispatch CPU QMP, dump, monitor, and Angel
- semihosting
-To: luoyonggang@gmail.com, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@kernel.org>,
- Glenn Miles <milesg@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
- Weiwei Li <liwei1518@gmail.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Bibo Mao <maobibo@loongson.cn>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Song Gao <17746591750@163.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aleksandar Rikalo <arikalo@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Eric Farman <farman@linux.ibm.com>, Philippe Mathieu-Daude
- <philmd@mailo.com>, Xianglai Li <lixianglai@loongson.cn>,
- Chao Liu <chao.liu@processmission.com>, qemu-s390x@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Matthew Rosato
- <mjrosato@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>
-References: <20261015044104.879-1-luoyonggang@gmail.com>
- <CAFEAcA8n9E1jpcOCat0kzv0Q++x7YwK_MNJBJ0qGdtX1-As4zg@mail.gmail.com>
- <CAE2XoE-fgq_c9qONyvfbNi3Ys_hv7yKvGCkk+Wz+rHPW0p65Eg@mail.gmail.com>
+Subject: Re: [RFC PATCH v4 25/25] target/arm/qmp: hook blockers in
+ query-cpu-definitions
+To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+Cc: cohuck@redhat.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
+ armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
+ shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
+ ping@khushitshah.com, sandesh.patel@nutanix.com
+References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
+ <20260921123249.1708067-26-khushit.shah@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260921123249.1708067-26-khushit.shah@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: jGmhwnf31MBJfIHIiKVMDuJCAPdMRlhEUmq85HnXBgI_1792158896
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Brian Cain <brian.cain@oss.qualcomm.com>
-In-Reply-To: <CAE2XoE-fgq_c9qONyvfbNi3Ys_hv7yKvGCkk+Wz+rHPW0p65Eg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: NHAvmptOrM8L1TIYD2oUGSL5mHer-eSq
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE2MDA1NSBTYWx0ZWRfX89ywnTLrBqZW
- kRgu+zbAM1NPMBbheMC3FXVa+WlsHugNB6nLjzmh4hRcfI+VxnEa5g67gCo3d6vl0AJRToROjtB
- 1OR0RReqRyn0hu0lAeZdbpYsBGS3Pyo=
-X-Authority-Analysis: v=2.4 cv=SrAFe/O0 c=1 sm=1 tr=0 ts=6ad22bd0 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=C3Dk8TwHQYyIj7nOf9RCJw==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
- a=KKAkSRfTAAAA:8 a=pGLkceISAAAA:8 a=X7ICM6PgokHMk0l1ZBYA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: NHAvmptOrM8L1TIYD2oUGSL5mHer-eSq
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE2MDA1NSBTYWx0ZWRfXw2IorUHqdK64
- ae+p+FbJfJghg9bP8ApFjXsX0ah0uVH3WRWkMzVYYXRKgfnhrprp/PDgqS1AE6VMXkyy/BmTHVI
- zQa/vJKGMeHJ8WAr8oMWDP4H+nticgrqqsBxz4aJ/dwh1wS6lGIE5ICJ1u7BSD7KgaMJtbjlH6q
- 37q26itcQ4DncbANCtfSXtF2vm05mU34Of1a/aw1YosMAQf86vSnuoQUhbFQBX9Wo6mPYHI4QfZ
- 8eqfViV1W+3wYs8VOJ0hk0AAuDoAC6yko3oPiKLZMcwU0hOzGNVPszZ9XG9QN4O/dAH/Nl+N1Jp
- kxyS6FnT341RmNJOGMYxTZ6h3qoODzcuv1BR0FnVkYCbYGHrwVVERzoI6fDHVLFDAC9TCrToyFj
- A4mijwkoGRCMGncwF9dxaGyM7Kfo6iKKDMi+ID+rsBrjlll2slaKdxDlUMHj12sX0smd0O+5icq
- F1DntWQ4NQxzbuWE3hA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-16_01,2026-10-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 bulkscore=0 spamscore=0 phishscore=0
- clxscore=1015 malwarescore=0 priorityscore=1501 adultscore=0
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
- definitions=main-2610160055
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=brian.cain@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -182,85 +122,227 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi,
 
-On 10/15/2026 4:38 AM, Yonggang Luo wrote:
-> On Thu, Oct 15, 2026 at 5:20 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->> On Thu, 15 Oct 2026 at 05:41, Yonggang Luo <luoyonggang@gmail.com> wrote:
->>> Put query-cpu-definitions, dump notes, monitor, and Angel semihosting on
->>> TargetOps[SYS_EMU_TARGET__MAX] and look up by target_arch().
->>> Keep the table in target-ops.c and with a stub
->>>
->>> - Register with a QEMU_ARCH_* bitmask so shared base-arch objects
->>>    can fill both slots (e.g. QEMU_ARCH_ARM is ARM|AARCH64).
->>> - TARGET_INFO_CPU_OP is type_init. A NULL member means no handler.
->>> - Drop stubs/qmp-cpu.c
->>>         stubs/hmp-cmd-info_tlb.c
->>>         stubs/hmp-cmd-info_mem.c
->>>         stubs/dump.c
->>>
->>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
->>> ---
->>>   MAINTAINERS                           |  1 -
->>>   hw/core/cpu-system.c                  | 23 ++++++++++
->>>   hw/core/machine-qmp-cmds.c            | 27 ++++++++++++
->>>   include/qemu/target-ops.h             | 59 +++++++++++++++++++++++++
->>>   include/semihosting/common-semi.h     | 63 ++++++++++++++++++++++++---
->>>   meson.build                           |  1 +
->>>   monitor/hmp.c                         | 25 +++++++++++
->>>   stubs/dump.c                          | 27 ------------
->>>   stubs/hmp-cmd-info_mem.c              | 12 -----
->>>   stubs/hmp-cmd-info_tlb.c              | 12 -----
->>>   stubs/meson.build                     |  4 --
->>>   stubs/qmp-cpu.c                       | 21 ---------
->>>   target-ops.c                          | 49 +++++++++++++++++++++
->>>   target/arm/arch_dump.c                |  8 +++-
->>>   target/arm/arm-qmp-cmds.c             | 15 +++++--
->>>   target/arm/common-semi-target.c       | 26 ++++++++---
->>>   target/arm/meson.build                |  7 +--
->>>   target/hexagon/common-semi-target.c   | 26 ++++++++---
->>>   target/i386/arch_dump.c               |  8 +++-
->>>   target/i386/cpu-system.c              | 12 +++--
->>>   target/i386/cpu.c                     |  6 ++-
->>>   target/i386/monitor.c                 |  8 +++-
->>>   target/loongarch/arch_dump.c          |  8 +++-
->>>   target/loongarch/loongarch-qmp-cmds.c | 15 +++++--
->>>   target/m68k/monitor.c                 |  4 +-
->>>   target/mips/system/mips-qmp-cmds.c    | 15 +++----
->>>   target/ppc/arch_dump.c                |  8 +++-
->>>   target/ppc/monitor.c                  |  4 +-
->>>   target/ppc/ppc-qmp-cmds.c             | 15 +++----
->>>   target/riscv/arch_dump.c              |  8 +++-
->>>   target/riscv/common-semi-target.c     | 28 ++++++++----
->>>   target/riscv/meson.build              |  4 +-
->>>   target/riscv/monitor.c                |  4 +-
->>>   target/riscv/riscv-qmp-cmds.c         | 15 +++++--
->>>   target/s390x/arch_dump.c              |  8 +++-
->>>   target/s390x/cpu_models_system.c      | 15 +++++--
->>>   target/sh4/monitor.c                  |  4 +-
->>>   target/sparc/monitor.c                |  4 +-
->>>   target/xtensa/monitor.c               |  4 +-
->>>   39 files changed, 428 insertions(+), 175 deletions(-)
->>>   create mode 100644 include/qemu/target-ops.h
->>>   delete mode 100644 stubs/dump.c
->>>   delete mode 100644 stubs/hmp-cmd-info_mem.c
->>>   delete mode 100644 stubs/hmp-cmd-info_tlb.c
->>>   delete mode 100644 stubs/qmp-cpu.c
->>>   create mode 100644 target-ops.c
->> Too big a patch touching stuff all over the place with
->> insufficient explanation of what it's doing or why.
-> Oh, sorry, I post is just for demo(DRAFT) for other place to
-> reference, but git-publish have no way
-> to title it(maybe because I use it wrongly).
-
-git publish has `--subject-prefix=PREFIX` - that will let you qualify 
-this as DRAFT/RFC.
-
-
->> thanks
->> -- PMM
+On 9/21/26 2:32 PM, Khushit Shah wrote:
+> Report blockers for named CPU models in query-cpu-definitions.
 >
+> Efficiently do this by validating the realized ID register values
+> against the host values. sveNNNN properties need special handling
+> because they are not stored in ID registers.
 >
+> This way, we need not instantiate each model to check if it can be
+> realized on the host, and we also get granular information about the ID
+> register fields blocking realization.
+>
+> Introduce arm_cpu_class_check_missing_features() and
+> kvm_arm_idregs_get_blockers() to achieve this.
+
+I would recommend to show an excerpt of the output
+>
+> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+> ---
+>  target/arm/arm-qmp-cmds.c    | 12 +++++++++
+>  target/arm/cpu-models-stub.c |  5 ++++
+>  target/arm/cpu-models.c      | 35 +++++++++++++++++++++++++
+>  target/arm/cpu-models.h      |  2 ++
+>  target/arm/kvm.c             | 50 ++++++++++++++++++++++++++++++++++++
+>  target/arm/kvm_arm.h         | 13 ++++++++++
+>  6 files changed, 117 insertions(+)
+>
+> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+> index ba488d5c01..d837ec6653 100644
+> --- a/target/arm/arm-qmp-cmds.c
+> +++ b/target/arm/arm-qmp-cmds.c
+> @@ -379,6 +379,18 @@ static void arm_cpu_add_definition(gpointer data, gpointer user_data)
+>      info->name = cpu_model_from_type(typename);
+>      info->q_typename = g_strdup(typename);
+>  
+> +    /* calculate blockers */
+> +    if (kvm_enabled()
+> +            && !g_str_equal(info->name, "host")
+> +            && !g_str_equal(info->name, "max")
+> +            && arm_find_model(info->name) != NULL) {
+> +        arm_cpu_class_check_missing_features(ARM_CPU_CLASS(oc),
+> +                                    &info->unavailable_features);
+> +        if (info->unavailable_features) {
+> +            info->has_unavailable_features = true;
+> +        }
+> +    }
+> +
+>      QAPI_LIST_PREPEND(*cpu_list, info);
+>  }
+>  
+> diff --git a/target/arm/cpu-models-stub.c b/target/arm/cpu-models-stub.c
+> index 48f712d648..2d1be49e0a 100644
+> --- a/target/arm/cpu-models-stub.c
+> +++ b/target/arm/cpu-models-stub.c
+> @@ -11,3 +11,8 @@ const ArmNamedCpuModel *arm_find_model(const char *name)
+>  {
+>      return NULL;
+>  }
+> +
+> +void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers)
+> +{
+> +    return;
+> +}
+> diff --git a/target/arm/cpu-models.c b/target/arm/cpu-models.c
+> index 855eb5ee6b..9591b6dbfc 100644
+> --- a/target/arm/cpu-models.c
+> +++ b/target/arm/cpu-models.c
+> @@ -477,6 +477,41 @@ static void arm_named_cpu_initfn(Object *obj)
+>      arm_named_cpu_zero_unknown_feature_ids(cpu, &error_abort);
+>  }
+>  
+> +void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers)
+> +{
+> +    Error *err = NULL;
+> +    Object *obj = object_new_with_class(OBJECT_CLASS(acc));
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    if (!kvm_enabled() || !arm_find_model(acc->info->name)) {
+> +        goto out;
+> +    }
+> +
+> +    if (cpu_isar_feature(aa64_sve, cpu)) {
+> +        aarch64_cpu_sve_finalize(cpu, &err);
+> +        if (err) {
+> +            error_free(err);
+> +            err = NULL;
+> +            uint32_t host_vq_map = cpu->sve_vq.supported;
+> +            uint32_t model_vq_map = cpu->sve_vq.map;
+> +
+> +            if ((model_vq_map & host_vq_map) != model_vq_map) {
+> +                for (int vq = 1; vq <= ARM_MAX_VQ; vq++) {
+> +                    uint32_t vq_bit = (1 << (vq - 1));
+> +                    if ((model_vq_map & vq_bit) && !(host_vq_map & vq_bit)) {
+> +                        QAPI_LIST_PREPEND(*blockers,
+> +                            g_strdup_printf("sve%d", vq * 128));
+> +                    }
+> +                }
+> +            }
+> +        }
+> +    }
+> +
+> +    kvm_arm_idregs_get_blockers(cpu, kvm_arm_get_host_isar(), blockers);
+> +out:
+> +    object_unref(obj);
+> +}
+> +
+>  void arm_register_named_cpu_models(void)
+>  {
+>      static ARMCPUInfo *arm_named_cpu_infos;
+> diff --git a/target/arm/cpu-models.h b/target/arm/cpu-models.h
+> index 144778744e..41bb15d928 100644
+> --- a/target/arm/cpu-models.h
+> +++ b/target/arm/cpu-models.h
+> @@ -4,6 +4,7 @@
+>  
+>  #include "qapi/error.h"
+>  #include "qom/object.h"
+> +#include "cpu.h"
+>  
+>  typedef enum ArmModelPropType {
+>      ARM_MODEL_PROP_BOOL,
+> @@ -32,5 +33,6 @@ void arm_apply_model_props(Object *obj, const ArmModelPropValue *props,
+>                             Error **errp);
+>  void arm_realize_model_chain(Object *obj, const ArmNamedCpuModel *model,
+>                               Error **errp);
+> +void arm_cpu_class_check_missing_features(ARMCPUClass *acc, strList **blockers);
+>  
+>  #endif /* ARM_CPU_MODELS_H */
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index bb74f8c274..ca3da80262 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -1485,6 +1485,56 @@ arm_field_skip_writeback_if_not_writable(const ARM64SysRegField *field)
+>      return field_matches(field, ID_DFR0_EL1_IDX, "PerfMon");
+>  }
+>  
+> +void kvm_arm_idregs_get_blockers(ARMCPU *cpu,
+> +                                 const ARMISARegisters *host_isar,
+> +                                 strList **blockers)
+> +{
+> +    for (int i = 0; i < NUM_ID_IDX; i++) {
+> +        ARM64SysReg *reg = &arm64_id_regs[i];
+> +
+> +        if (!reg->name) {
+> +            continue;
+> +        }
+> +
+> +        for (uint32_t j = 0; j < reg->fields_count; j++) {
+> +            const ARM64SysRegField *field = &reg->fields[j];
+> +            ArmFieldValueSet *vs = NULL;
+> +            bool supported = false;
+> +            uint64_t model_val;
+> +
+> +            /* Not a blocker if the field is never written back to KVM. */
+> +            if (arm_field_skip_writeback_always(field) ||
+> +                (!arm_field_is_writable(field) &&
+> +                 arm_field_skip_writeback_if_not_writable(field))) {
+> +                continue;
+> +            }
+> +
+> +            model_val = extract64(cpu->isar.idregs[field->index],
+> +                                  field->shift, field->length);
+nit I see you use that several times, you could introduce a helper
+> +
+> +            /*
+> +             * If the field is written back, make sure a "supported" value
+> +             * is requested.
+> +             */
+> +            kvm_arm_field_get_supported_values(field, host_isar, &vs);
+> +            for (size_t k = 0; k < vs->n_ranges; k++) {
+> +                if (model_val >= vs->ranges[k].min &&
+> +                    model_val <= vs->ranges[k].max) {
+> +                    supported = true;
+> +                    break;
+> +                }
+> +            }
+> +            g_free(vs->ranges);
+> +            g_free(vs);
+> +
+> +            if (!supported) {
+> +                QAPI_LIST_PREPEND(*blockers,
+> +                    g_strdup_printf("SYSREG_%s_%s", reg->name, field->name));
+> +            }
+> +        }
+> +    }
+> +}
+> +
+>  /*
+>   * Copy writable ID reg fields from isar.idregs[] into the KVM cpreg list,
+>   * so the subsequent write_list_to_kvmstate() pushes them to KVM.
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index ab01ce8665..59832d8063 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -205,6 +205,19 @@ void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
+>                                          const ARMISARegisters *host_isar,
+>                                          ArmFieldValueSet **value_set);
+>  
+> +/**
+> + * kvm_arm_idregs_get_blockers:
+> + * @cpu: ARMCPU
+> + * @host_isar: The host ISAR registers
+> + * @blockers: The list of blockers
+> + *
+> + * Get the list of "blockers" in @cpu's idregs state for the given
+> + * @host_isar.
+> + */
+> +void kvm_arm_idregs_get_blockers(ARMCPU *cpu,
+> +                                 const ARMISARegisters *host_isar,
+> +                                 strList **blockers);
+> +
+>  /**
+>   * kvm_arm_steal_time_finalize:
+>   * @cpu: ARMCPU for which to finalize kvm-steal-time
+Thanks
+
+Eric
+
 

@@ -4,122 +4,199 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20901CCA462
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 06:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C93CC6B38
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 06:51:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHba8-0000Wv-Pc; Fri, 16 Oct 2026 02:38:20 -0400
+	id 1xHbmP-0004qV-V9; Fri, 16 Oct 2026 02:51:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHba7-0000Wl-Eq
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 02:38:19 -0400
-Received: from smtpout10.mo539.mail-out.ovh.net ([51.210.91.49])
+ (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
+ id 1xHbmM-0004q8-R1; Fri, 16 Oct 2026 02:50:59 -0400
+Received: from mx0a-002c1b01.pphosted.com ([148.163.151.68])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xHba3-0006c4-PO
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 02:38:19 -0400
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net [79.137.60.223])
- by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4j5ZyB1yxHz42BR;
- Fri, 16 Oct 2026 06:38:09 +0000 (UTC)
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net. [127.0.0.1])
- by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Fri, 16 Oct 2026 06:38:09 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.187])
- by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4j5Zy94NcWz1xp9; Fri, 16 Oct 2026 06:38:09 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.1])
- (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- C4B342402CC4; Fri, 16 Oct 2026 06:38:07 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G001ec1da373-2883-4b99-aa6a-696e3d4a43e3,
- 0C85999E399CE1B7F5342D8E40E21A4D75FD0E11) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <32d54002-dd14-4e3e-8838-4097a6f9cb03@kaod.org>
-Date: Fri, 16 Oct 2026 08:38:07 +0200
+ (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
+ id 1xHbmK-0007mw-JW; Fri, 16 Oct 2026 02:50:58 -0400
+Received: from pps.filterd (m0127839.ppops.net [127.0.0.1])
+ by mx0a-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69FKUAhO4081735; Thu, 15 Oct 2026 23:50:16 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ cc:content-id:content-transfer-encoding:content-type:date:from
+ :in-reply-to:message-id:mime-version:references:subject:to; s=
+ proofpoint20171006; bh=BQP/6n4KjG/NfqRB9EClGOC54anjJhxN5ft9BIgY/
+ /Q=; b=FlwbKNHHB5q2IGAo18a2CwwxxtqVDVdugn1X0ZUsBsc6sZDLSG2xsstGq
+ bdHiDUJhuxDv5mAH53qZnjMcW29tXYYnT7ZLHSqeA9rhi/746CwfHKURsro9A+Oq
+ 9e7qGuj0+2xmL/zPe3CE2mR2Wty3/++AWnqvNq0YMAFHDZzs0cM80Lm9/tk0dfzy
+ BhjXlhWRPh8cuV08RYE4qwqLKVjDPSablUikA3GVRIwv3SmY3QSAO45WmWiIYLvZ
+ y68iRHN2Vqe3bnsZI4XvZS5aDIzHr0JzJlD85EkJiciMa6q52s3HdNAWvdtJWb1Q
+ MmDEpZBucFpp2l4FnYB4mwdsOaa1A==
+Received: from bn1pr04cu002.outbound.protection.outlook.com
+ (mail-eastus2azon11020104.outbound.protection.outlook.com [52.101.56.104])
+ by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4haxj929xe-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Thu, 15 Oct 2026 23:50:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Ng/mHbSNYkoSWvbqiALhilCVPgp943FplemIaRQ7Olx6FtN8Wn/+sg+WWBzZXuOgXjhBtk17lCjHC7ADs7rOvH4msSBDD+7lIKhkvYzX8L6Bo7p2Pdzx6JxVzuNrC39uvz5hu0wSejrx3j7IO3yRxH5aaK4zkRZbcw9aMVtDSOJvFADmUqTQmOaQL23hTUr7VTa0PSJ4tL4c8nrJOlfBTHk17zj5Yx9ZLaeWdEFJqWZ9Fno8KXQzrWN9RevSKKrTtykyaNcN8AoQA3bxBwkNzyFIA/k499szoEksZ9aGm7jqAtM0JpSggq3B3WMZW+HkAIivmayJooItfWpGGec/Aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=BQP/6n4KjG/NfqRB9EClGOC54anjJhxN5ft9BIgY//Q=;
+ b=ACYSXQVkiGv7sg5VnwW+V+tKmT1KBynIBSvYOj0peKicXOkCE/BFRvLTy0v7Fc7+tI53mjrSHxVTwIYYRFXDc/Mmji38Ya99LgIu6NjJDF4JUBxlzeTSXImv81iYxyYq2Fc2DzZx4LgXM6BD8kNecbNjnTOqrBp/SQeE9BNsWoZpum4YpZmV2OnbcBs1PzUD4X5Avnbu+bp4AvLKBRWaYtTBXO8XnpNKrfmQ8X7km3dMBV4v2DB5Ou7X8s/4u8ixzpxJZeABYMIWJQgxy7cMQq0SMz+6FslRBZREffdUpczankhij6tJTEBXF3Xw5ip6hhabtoqaPrtjMxWorwVlUw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BQP/6n4KjG/NfqRB9EClGOC54anjJhxN5ft9BIgY//Q=;
+ b=ZJEZoy8nFRXhPwVvKr+czz595EZSr5VnWnlpwj0od0QYKXWTvTqbgEfifO3SHyZ6CtTKkEW3HR9sAKFgH0XAFYr9lB98xn7zd8MjQijyLd0CrAa13d8u04mmDfcuDJ712aROidlv+2bA+YLitv3r9LRe49s3PHWJ7Dewuh49Ox1vC81uGC+jlPEWCXZ4N9h2XdauqiNvvuLy8kX7ExWJpDG78AFefyxx3Ytm2sg1S1Z/rddyssNM7INx+AmwAQJ+a7Q6T3IhCBKbjhy1/yEjpfx7KHP+9DI0ijWFJsPCRa48BkB0mKWvNkmvf4OeE9rePxiuYudINWMunTc7DyyIIQ==
+Received: from SA2PR02MB7564.namprd02.prod.outlook.com (2603:10b6:806:146::23)
+ by PH8PR02MB11928.namprd02.prod.outlook.com (2603:10b6:510:40a::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.23; Fri, 16 Oct
+ 2026 06:48:07 +0000
+Received: from SA2PR02MB7564.namprd02.prod.outlook.com
+ ([fe80::1ea5:acb6:ebe1:e1c4]) by SA2PR02MB7564.namprd02.prod.outlook.com
+ ([fe80::1ea5:acb6:ebe1:e1c4%5]) with mapi id 15.21.0522.013; Fri, 16 Oct 2026
+ 06:48:06 +0000
+From: Khushit Shah <khushit.shah@nutanix.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>
+CC: Peter Maydell <peter.maydell@linaro.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>, "cohuck@redhat.com"
+ <cohuck@redhat.com>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>, "berrange@redhat.com"
+ <berrange@redhat.com>, "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>, "gshan@redhat.com"
+ <gshan@redhat.com>, "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
+ <armbru@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>, Shaju Abraham
+ <shaju.abraham@nutanix.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ "ping@khushitshah.com" <ping@khushitshah.com>, Sandesh Patel
+ <sandesh.patel@nutanix.com>
+Subject: Re: [RFC PATCH v4 14/25] target/arm: add neoverse-v2-v2 named CPU
+ model
+Thread-Topic: [RFC PATCH v4 14/25] target/arm: add neoverse-v2-v2 named CPU
+ model
+Thread-Index: AQHdScVqjCKnYjJuMUuIeI2Bc+PBfrb+qYeAgAACjoCAABzrgIABGACA
+Date: Fri, 16 Oct 2026 06:48:06 +0000
+Message-ID: <0F5C73CF-185D-405B-BF81-2FF065C1CAD7@nutanix.com>
+References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
+ <20260921123249.1708067-15-khushit.shah@nutanix.com>
+ <395b66c9-4173-401b-b469-8972b710aae2@redhat.com>
+ <CAFEAcA8DcLLYJeE_NUKrFTKfYvHp+6YYAmCdZnBfz2AjRNDnzw@mail.gmail.com>
+ <a1245318-1843-45c8-9822-bea483a3e660@redhat.com>
+In-Reply-To: <a1245318-1843-45c8-9822-bea483a3e660@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nutanix.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA2PR02MB7564:EE_|PH8PR02MB11928:EE_
+x-ms-office365-filtering-correlation-id: 02461b82-e1e5-406e-ecf0-08df2b516f4a
+x-proofpoint-crosstenant: true
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|366016|7416014|1800799024|23010399003|4143699003|38070700021|56012099006|18002099003|22082099003|10067099003|261009223027099003;
+x-microsoft-antispam-message-info: UTN2MuEPbnI/s2ug9By0LWHjzn0akp5GmS3mkHXILSMzuCw2PIz+95exh9sm8EoCdMcrJyGDkEJZkb77+BS6rmynuefP1k2OyvLNEYwo4SGuRaffSxrc4pqe5TyaMJ3WLnQvoO8DXjKYcRdPl79Ue9+e8frxwCv/jUk+hMpSWukPb9Bgs0UQEZy98d6/cFGbUyxt2dOtZPXsQ4dqC+u9W1XEoLY1eoMqKYPXbB0ymjZMUJTUvGrPcGNVyFLeiGdCqHxAhIBPz67/V4MZg05u9bLCLH84ElqKfmYPcOIlOijYCYc4EIycrvcGXvG2m1RfOCxkzubtkAMFrqeUz5Ec4dGs3l81a+5eAa2Dkco0ATb9g3ZdMH6Hdp+cP2UtwkYDERxnU7k53REiwUXNtcF7jHLjZCR63z5UnfwgLZXBZdQ5pFLb0gjZjEfVX1RyylgOj2vM3dMTjQv72yKywI23Qmqj6/cG9zE/rDcERijg+ldoDJXa/HfqqOmqUZoAqJiTXw+aw6mCXMcJq2sPIYuwZchuqv/Z7ieRxPW5nNetFrgenjUDvsdgacynrae3xRJ/dXc+o2wYlwiIoaSP0IQarEjJtLqERLs6gHFvqYmb8z4KfKAl/OVcGOFClTdSOCE5MLkF0BOcFaXqII9LUMxS2q4eqniNmU+bn85u06PEoC4wYmjjLOZNkAiPenk8uJ87ioSHJNPR22G3LmUL2Fdiml1r/KtdRTtBwzfoIDQyIEM=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA2PR02MB7564.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(7416014)(1800799024)(23010399003)(4143699003)(38070700021)(56012099006)(18002099003)(22082099003)(10067099003)(261009223027099003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cVMra2RCYTFsY2N1MGdZSmcyTml6UWRkWUw4NStiY1pWL3FZRW1wODBLcFpV?=
+ =?utf-8?B?MHZPN3pRcjJuU0w4WWdNbmtrUE4zQU1CTHdzNHBFd1ZFUml1VWZWWEhkeVFs?=
+ =?utf-8?B?Qlo2SXJJNDgzQ21nYzJPZ0xWcjVXazRYMTR5RitkQzBLNGxTdVEzY3lzUk1Y?=
+ =?utf-8?B?aWZKcXg0RGFDRS9ZaGJBUmJESS9ZT1poYytOdWNlTjk2ZmozZHA1OGFJei9v?=
+ =?utf-8?B?a1lrbzQzaDFFeEdJUnA0eExMUm9zSzNNUFBnNGlKb2RpTnh4aWZ0NnI4RGlw?=
+ =?utf-8?B?VTk4MHFGa0t5b3F2RFZtcHRlbVE2ZWFLNmVUT0dqUVVHSC9LRUJrWGY5MEdS?=
+ =?utf-8?B?OGNmQU1qa0laSzNSMTdjVVdZU3lVeFpVd1krN3lMWjlCdnFVdUhHdGlXdm1P?=
+ =?utf-8?B?Qlk4ZzI4UTFXQy9MeEgvZ3Ryb1l2a1h0cW1qYkhOYWtqVWJKWklMWUhMY2I2?=
+ =?utf-8?B?cXErMmFYTC95eEdqVTlqSkRxeVg1NGdQUkxrQ0ZseFVpdjlzUjd2TEFrVjF0?=
+ =?utf-8?B?NEczK1JqMC9ZVzErOGZINS8yUHgxSjNIT0I2aWRjcXVvY3VMUHdRU1pKSjBF?=
+ =?utf-8?B?ckN6Nm5BYXF5YXZBU0ZuY3V0YXBoUmVpMDNYVEpOelhycFNaMTZ2UGhwelBw?=
+ =?utf-8?B?TjBxdzNicWNWL3pndElKd0xhV2RseWF1MmlULzNPZlNzYmE0STZEOS91Zi94?=
+ =?utf-8?B?YVJSZ1hqUTJ4STNpUkxjTHE4V0dGRlQ3TW1rQXU5aGxsRGZXamU4YWNwSmgy?=
+ =?utf-8?B?bnFuaXN2ZkpmOFc3Y2FSWEZTamZRcGE1S0xmZzVieHlmZTRPMmxzSzBUZ08v?=
+ =?utf-8?B?QTY4U1VVNUhKNzJuVnlXL0dCeG9DZU9naFUyVE04NjlQcU9EYitSejQrbktw?=
+ =?utf-8?B?OWtReHk3cjI2V3ZmaGxSalhYRG9JcGpuUEtSZHUxa01xV1VCNWpTbHlhNEVz?=
+ =?utf-8?B?NnRjQXJhRGgxRlBaUGlKeXpuNHpNd3BSWHhZSnhMalBPRW5yeFF6TzRjOGx3?=
+ =?utf-8?B?aHE0b1FCc2pCd1JZR2pZTzh5TUpUc1Y1UWV3RCtieHNLMnNneGZaQnJFMGZE?=
+ =?utf-8?B?aW9iU0U1Z042bXJRUjd4dXRyOFdmQlIwTjNuRFcrcG9KSlBBd2dHNjVmVS9l?=
+ =?utf-8?B?YXMzV1NvRjJ5WEVJNjhtWXJHampoTFlXSDFIWnJpcGk1aGFXejlLNjAvTkwz?=
+ =?utf-8?B?dmpMdUdkTXYzNUh0b0c2ei9UN2d1ZUlRRWtSb09qNmxBQ3JYQXFqWUF3T3pW?=
+ =?utf-8?B?azJQc1NqVTNxMk1GYi9rQm9INGhqM0JuOEw4bFdoWGVlcVArVkFQbXpKazJr?=
+ =?utf-8?B?Mk1ybjVIZTQrb2NGRDN0TzZMU2VBRmlObzQwb3BkbUxpOTA2SGMzR1lYYlp5?=
+ =?utf-8?B?cTRCNVZmU2VXMU1QcytIcGFSYU90Y3ppeWJoaHdPYmx3enkyMmZjRzlib2x6?=
+ =?utf-8?B?ZXEwQkdjZmw0NFQ4NUozL2NyejkwbXBFUDk5eVFQQlZrbjMrWGlvN1pXcUxr?=
+ =?utf-8?B?NmJOdWZFNGc1dXhTQ0xweTZZRTZsS0l0RXR3TFpSN2x4dHoyWVRKQnFSbzJl?=
+ =?utf-8?B?QXJMRGlXSVdMV1pkbHdLRHpzQVlmTktjSEtiK2RjaEtOWURRV2tZMytWNEd0?=
+ =?utf-8?B?dG1JMjdYMFZHYUVOZUF0WWsrUXZKWk9qSkg2QTE3am5TTkRUNkFDdFVWeUlx?=
+ =?utf-8?B?T0p6Vnk4OTJ4UXg3U2FCTU5RcjN1UlQwc3RhSjJPbXlpTzBXdm1tdWpkWnFW?=
+ =?utf-8?B?UHNtTUFMZDN6eWNPcXRjSm1leU5XQnRVVDJhL01ZekZES1lvNDRmYnA3NmRD?=
+ =?utf-8?B?UUhTMmZ1ZUhldVk5b0orcnc1SjNBMDA4T0NNaW14SXh5TlhqS2d6WUVXeWNs?=
+ =?utf-8?B?ZnRzbmJ5a0FOSjlLVHVjMU1yV0pIZU84bTA4TmRiS05tNGc4bUNwQ2FmTTlP?=
+ =?utf-8?B?TXFYblRDR3RpT21mZG83N2ladjluTWV2ajNlb1dKYTVWVHlhOTU1QkR1UndO?=
+ =?utf-8?B?Q2hxaVIvdC93cG1WMjJNSnZ3dHM4ck9hYnYxbytMcnlUUjNxNy9qNWpQN0k2?=
+ =?utf-8?B?YjZMZmgvcUNQWFhqOXI0azNTSFQ3a1lUVWhrMUZScEJyVzcwbEd5eXd2MVNG?=
+ =?utf-8?B?YjRYb3NHTWVpdy9yUTUvVGh2b0Zxc1o1T0RzWDE3NzNMNmgzMFJVWWFUdnpm?=
+ =?utf-8?B?a2tJSGdCYmdzUlJ4YkhveGFCZWEzY1pGTmlUOG5wb25QeUxQMUNMdlJkTUg2?=
+ =?utf-8?B?WHRKbGxtTXFleWdmOWpDZjJQZU1VOHJVM3hiZGFsZlZzWVI3cWdpRlBaRDR0?=
+ =?utf-8?B?akdnKzRVWWltTDA3V3JqSXJ3b2IwUndwZmZBMHQ4VVRreUo0TGNpR1VCRHhI?=
+ =?utf-8?Q?Bk3hIFLiVKT2nq+w=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <2B3F0A84B5DF7042BDC832F4B8E1ADB9@namprd02.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/8] hw/usb: Add a usbredir server transport
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20261015093417.573063-1-jamin_lin@aspeedtech.com>
- <SEZPR06MB736219AC450D3B79101424E7FC9B2@SEZPR06MB7362.apcprd06.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SEZPR06MB736219AC450D3B79101424E7FC9B2@SEZPR06MB7362.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 14290203095211944987
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEEM965OfELArTrNFY2cQZvN34fUFOPOUsUJSZr7HVJnD1G1YkbOrh1h+vbTPDB5NEt4nqrPAPBtu8XkvCMm1aXCG4Q66/2izgAQZmSTwdATEl4evScjK8z43YWj6jVZqzBWkFpbAJYOKnhHbQo1rHWmE/Rhq/p51411N2m2exFMmevInKOwKnMDfojMhltrn+6GjWElbBfrotlYdtC+6Ov9nwQWmmpGyy4BzjGDKDDP44ng5z9HMsQBR9NRkge9H2QAUz4FWdYvEoLUecGjioUfv5W9mcnLJJ83Y3IfgUrKFMDNgV6siiH6/j/M6yYJPU3FhOu0qKzxAb6sCVz8QWMgie/J0FEMAN96bAfL637fA6XEipEvJwp8JgudzKe2KLDGnFoP6zij0W+umJfZ+cX+RVESAs0+8vfwEu7+DAodBk6zvw4S+aYajIddFTbIydOUlf5bWEi34X2lSUnqNV5qs8e/q7cgY0Zd5EckP3rkXpmmpbeVV6x0APTRUnHyAw6kqfBQIVxhNHfL+EqM9pQxjxrrMGD639BhGNQEHNYn/ybhqIt3w0AuoWdmXS122Cr5CoICp1m9UT8RGrGNyFs1Ha8TbLW4OxGQwNcjmHPTk6qKuOY/1HJKQQJd932unu8hhUCNyvEKC2vJ4ZwKkh6PGup2op09CSHkdUWiEH0wA
-DKIM-Signature: a=rsa-sha256; bh=0siq1Js3wdnLQgDXqGB9IaGfBnOYPkQ/rCk4d0daUos=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1792132691; v=1;
- b=fLtOBUmzYQirkV8jYJiHRyC9/WSN9faDzLhDqEjjXumztxDPguRXah6WFd+ol/3dpRI0a3yI
- +nv152SMVaSu6/cOm55f0Rxzgmxyk1vsHjm6VrGUnn4exeSV+t7sPqvGbkAJ6GOj8pNZjO0ZoHJ
- gd5Sv6wVjdgDbzuoJP4aMRgRA3TqK5kuXUhIw0LN0waU6msJCudn/emgnMiqa5WJpVzP1y9g3Uw
- kcmN+c5fo+1vmttvmK23cnkx2vvOCe9ZsvNQfuJH8UphFu8lxdcsw3JA99uMdvqh77pNwtK0X6R
- qs+hFBZgAEY3Kp4hPGlNpu5sOCW0c+xBt7beChU7q99Pw==
-Received-SPF: pass client-ip=51.210.91.49; envelope-from=clg@kaod.org;
- helo=smtpout10.mo539.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Exchange-RoutingPolicyChecked: A2nr7bT8t/Cqaa2Nn6fLz3+gVE+Admvz4+SFNIbJpUojPxJ4uQ8cTMp/OhzuC1xShVFFEL1mpxtqu6BwCShWP0vb/VWR8AcNJubbUrDNmBqkCL8nGPgQOKE+zfDTvx2IS8cOzQPCQ4MbMS4Qk0C7yrdOh0ehqTpx/fLpJcKGZtvC0Na01cQPtwlGFR13U8Uw8GiCmEWE98GkeQ/0ay/+2sLDpjvrs0cXVq6LJ9FLf5l3H65jQs0pcMHGCP4zcglPDO3XUcmAtlPdT8BBdJI6srCh12cuXiixTDpmKMLFN5uemvso0vHA4Dgf1QR86C2hxHp9UE1P3QiAZNr23VYUtA==
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA2PR02MB7564.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 02461b82-e1e5-406e-ecf0-08df2b516f4a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Oct 2026 06:48:06.8520 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: n/jM9MyZ7axZyoTQ68WnEqSOvs3c4X+unfXPEmQJojyhCYiA0hCcE30u5p71alj2mGjUFmUHDt3maBqVB1t7UfKsJvz0Zp90C+GaJiUzHB8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR02MB11928
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE2MDAyNyBTYWx0ZWRfXyI4giuMeuCQV
+ D3BG053RiZWMnyxh5FkMZufl4C91AFdaryHW0y8tTOnA+3kqQfn+egGPMUrtafO+FtSQeopS7cT
+ SZrIHGXeV2OMk2pLM2E9BpFYMr/8LPM=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE2MDAyNyBTYWx0ZWRfXzpx3/lwEn3sO
+ Bdv0icBFpCXKld59DT9B2dULjDCUpnGD1tEcsyUXGt0E3YF10I257k4cgvPOg5aXcOVvfi1GeEm
+ 3xoKWN+LTJI19LN/oSLBdngr3ErXZ5WOAkfXLe9VxYzuc3GH7nTmnnZuqahoV8TgFbSPUKqUMIC
+ 0YSl4N2EfGimBcANSh7cFywcdahIRXlHn266WwuAjv/cv6GCk3k7ocucjZj+ka3VSCnMEHS+ECr
+ /PiWV20cnpsiD0vArRfi+x1azuTUIa5FfPizJIYWiV4k9aH1fjS+E9fZR46uoUwyARKHks8FSns
+ mdqnbYwDKyJTqPqxffG/LwcUOD74OrMl/pL/aUAz7z12bHJQATtxL+HQzYb6IROq794XCeS5Qae
+ nYixo5Gc8RWaxAVOCPCChjsq56F9Oj2Jpa3DVOT09JPA4vygD47oEGdRA04Q4loXM6QzASy0InE
+ 1hnC3bLNxNLrtGpdw8w==
+X-Proofpoint-ORIG-GUID: X7c2_9aQS0VPUbYfQVfQ7SnNdg6ZJEXA
+X-Authority-Analysis: v=2.4 cv=ItOL47/g c=1 sm=1 tr=0 ts=6ad1c928 cx=c_pps
+ a=5NNvN2rzT21obmmZ06/h6g==:117 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=660iZSQnnn4A:10 a=0kUYKlekyDsA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VofLwUrZ8Iiv6rRUPXIb:22 a=y4UcunY2MAxhM4LwGdWI:22 a=20KFwNOVAAAA:8
+ a=mHAJEDQxa4AdBeop7B4A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: X7c2_9aQS0VPUbYfQVfQ7SnNdg6ZJEXA
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-14_01,2026-10-14_01,2025-10-01_01
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.151.68;
+ envelope-from=khushit.shah@nutanix.com; helo=mx0a-002c1b01.pphosted.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -136,201 +213,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/16/26 08:31, Jamin Lin wrote:
-> 
-> 
->> Subject: [PATCH v5 0/8] hw/usb: Add a usbredir server transport
->>
->> This series adds a usbredir server transport to redirect a USB device emulated
->> in one QEMU instance to a USB host controller emulated in another one over
->> the usbredir protocol.
->>
->> The v1 series included both the usbredir server transport and the ASPEED
->> AST1030 USB Device Controller (UDC) support. Following review feedback, this
->> series contains only the usbredir server transport. The ASPEED
->> AST1030 UDC support will be sent separately.
->>
->> This work is part of a larger plan to model USB device-side support on ASPEED
->> BMC/BIC SoCs, which has three goals:
->>
->> 1. Model the ASPEED UDC (AST2600 / AST1030). The AST2600 also has USB
->> host
->>     (EHCI) controllers, so that work targets the AST2600 UDC: its gadget can
->>     be attached to the SoC's own EHCI bus, letting the guest enumerate its
->>     own gadget and exercise the UDC end-to-end.  [Done]
->>
->> https://lore.kernel.org/qemu-devel/20260902021542.3194812-1-jamin_lin@as
->> peedtech.com/
->>
->> 2. AST1030 UDC. The AST1030 has no USB host controller, so testing its UDC
->>     needs a second QEMU instance. The UDC gadget is redirected out of the
->>     guest with libusbredir and attached to another QEMU that runs a USB host
->>     (a VMM, or an AST2600 / AST2700 guest).  [this series]
->>
->> 3. ASPEED vHub, as a longer-term goal towards BMC KVM / Virtual Media
->>     support in QEMU.  [future]
->>
->> This series implements goal 2.
->>
->> The transport
->> =============
->>
->> x-usb-redir-server exports a locally emulated USB device to a remote USB host
->> over the usbredir protocol, so a device emulated in one QEMU instance can be
->> enumerated by a host controller emulated in another one.
->>
->> The left column is a request going to the device. The right column is the
->> answer coming back. The middle hop carries usbredir messages over a socket.
->> The top and bottom hops carry USBPackets inside QEMU.
->>
->>      remote QEMU: guest driver -> EHCI/XHCI
->>               |                     ^
->>     USBPacket |                     | USBPacket
->>               v                     |
->>      "usb-redir" (the client)
->>               |                     ^
->>      usbredir |   chardev socket    | usbredir
->>               v                     |
->>      x-usb-redir-server (the server, this series)
->>               |                     ^
->>     USBPacket |                     | USBPacket
->>               v                     |
->>      any USBDevice, "-device <dev>,bus=<id>.0"
->>
->> "usb-redir" (hw/usb/redirect.c) is the client:
->>    - it takes a USBPacket from the remote guest and writes it to the socket
->>      as a usbredir message
->>    - it reads the answer from the socket and completes the USBPacket
->>
->> x-usb-redir-server is the server. It does the same thing, but backwards:
->>    - it reads a usbredir message from the socket and runs it as a USBPacket
->>      on the bus below
->>    - it takes the result of that USBPacket and writes it back to the same
->>      socket as a usbredir message, for the client to read
->>
->> A USB device has to sit on a USB bus, and in QEMU a USB bus is always made
->> by a host controller. So x-usb-redir-server makes one and acts as the host
->> controller on this side. It models no real chip: its cable is the chardev socket.
->> The real host is in the other QEMU.
->>
->> The type name has an "x-" prefix because the device is experimental. It has to
->> sit on the sysbus so that "-device <dev>,bus=<id>.0" can find the USB bus it
->> provides, and that may change later.
->>
->> usbredir carries one device, not a bus. A hub cannot be exported: the protocol
->> has no device address field. To export several devices, run one
->> x-usb-redir-server per device, each with its own chardev.
->>
->> Testing
->> =======
->>
->> A plain usb-storage device was used to test the transport. The storage device is
->> attached to x-usb-redir-server and exported over a Unix socket:
->>
->> $ qemu-system-aarch64 ...
->> -chardev socket,id=usbredir0,path=/tmp/usbredir0.sock,server=on,wait=off
->> -device x-usb-redir-server,id=usbredir0,chardev=usbredir0
->> -drive id=usbdisk,if=none,file=image0.ext4,format=raw
->> -device usb-storage,bus=usbredir0.0,id=mystorage,drive=usbdisk
->>
->> The exported device can then be attached to EHCI bus 3 of an AST2700 guest
->> using the existing usb-redir client:
->>
->>      -chardev socket,id=storage,path=/tmp/usbredir0.sock,reconnect-ms=1000
->> \
->>      -device usb-redir,chardev=storage,bus=usb-bus.3
->>
->> The AST2700 Linux guest enumerates the redirected USB storage device:
->>
->> root@ast2700-default:~# lsusb
->> unable to initialize usb spec
->> Bus 001 Device 001: ID 1d6b:0001 Linux 6.18.36-v00.08.03-gaf2f426c5786
->> uhci_hcd Generic UHCI Host Controller Bus 002 Device 001: ID 1d6b:0002
->> Linux 6.18.36-v00.08.03-gaf2f426c5786 ehci_hcd EHCI Host Controller Bus 002
->> Device 002: ID 46f4:0001 QEMU QEMU USB HARDDRIVE
->>
->> This also demonstrates that x-usb-redir-server is not specific to the ASPEED
->> UDC. Any USBDevice can be attached to its USB bus and exported to a host
->> controller in another QEMU instance.
->>
->> v1:
->>    1. Add a usbredir server device
->>    2. Announce the exported device
->>    3. Implement control transfers
->>    4. Implement bulk and interrupt transfers
->>    5. Stream interrupt IN endpoints
->>
->> v2:
->>    1. Split the original series into USB and ASPEED parts as suggested
->>       during review.
->>    2. Keep this series focused on the usbredir server transport.
->>    3. Move the ASPEED UDC changes, AST1030 UDC support and its functional
->>       test to a separate series.
->>
->> v3:
->>     1. Move include/hw/usb/redirect-server.h into redirect-server.c.
->>     2. Drop the announce timer. The firmware does not toggle the pull-up,
->>        and the delay would be machine specific anyway.
->>     3. Rename the type to "x-usb-redir-server" to mark it experimental.
->>
->> v4:
->>    1. ep_info now says what the host chose, both the configuration and the
->>       alternate setting. Keep every configuration descriptor, not just the last
->> one.
->>    2. look at the request type too, not only the number
->>    3. wait for the endpoint's bInterval before asking the device
->>       again.
->>
->> Patch 7 lost its Reviewed-by because it changed. It used to ask the device again
->> from a bottom half, which runs as soon as the main loop comes back. So there
->> was no wait at all.
->>
->> A keyboard answers NAK while no key is down, and the retry timer paces that,
->> so it looked fine. usb-net's status endpoint answers every time.
->> The loop never stopped: ask, answer, ask again, about 17000 times a second.
->> The same main loop runs the guest's timers, and it had no room left. The guest
->> stopped feeding its watchdog, and the watchdog reset the machine.
->>
->> bInterval is the rate the endpoint asks to be polled at, and the rate a real host
->> controller uses. The stream now waits for it.
->>
->> v5:
->>    1. Use a separate timer and bottom half for each endpoint.
->>
->> Jamin Lin (8):
->>    hw/usb/bus: Let a bus opt out of automatic hub insertion
->>    hw/usb/redirect-server: Add a usbredir server device
->>    hw/usb/redirect-server: Connect usbredirparser to a chardev
->>    hw/usb/redirect-server: Announce the exported device
->>    hw/usb/redirect-server: Implement control transfers
->>    hw/usb/redirect-server: Implement bulk and interrupt transfers
->>    hw/usb/redirect-server: Stream interrupt IN endpoints
->>    hw/arm/aspeed: Enable the usbredir server transport
->>
->>   include/hw/usb/usb.h     |    1 +
->>   hw/arm/aspeed.c          |    7 +
->>   hw/usb/bus.c             |    3 +-
->>   hw/usb/redirect-server.c | 1812
->> ++++++++++++++++++++++++++++++++++++++
->>   hw/usb/meson.build       |    3 +-
->>   hw/usb/trace-events      |   31 +
->>   6 files changed, 1855 insertions(+), 2 deletions(-)  create mode 100644
->> hw/usb/redirect-server.c
->>
->> --
->> 2.43.0
-> 
-> 
-> Patch 3 does not build on current master since
-> 
->    13d2f5e4b0 ("chardev: add CHR_EVENT_RESIZE")
-> 
-> QEMUChrEvent gained a value and the switch does not handle it. I will
-> fix it and send v5.
-
-yes. That's an easy fix. Please let people take a look first before
-sending a v6.
-
-C.
-
+DQoNCj4gT24gMTUgT2N0IDIwMjYsIGF0IDc6MzXigK9QTSwgRXJpYyBBdWdlciA8ZXJpYy5hdWdl
+ckByZWRoYXQuY29tPiB3cm90ZToNCj4gDQo+ICEtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfA0KPiAgQ0FVVElPTjogRXh0
+ZXJuYWwgRW1haWwNCj4gDQo+IHwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIQ0KPiANCj4gDQo+IA0KPiBPbiAxMC8xNS8y
+NiAyOjIyIFBNLCBQZXRlciBNYXlkZWxsIHdyb3RlOg0KPj4gT24gVGh1LCAxNSBPY3QgMjAyNiBh
+dCAxMzoxMywgRXJpYyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPiB3cm90ZToNCj4+PiBI
+aSBLaHVzaGl0LA0KPj4+IA0KPj4+IE9uIDkvMjEvMjYgMjozMiBQTSwgS2h1c2hpdCBTaGFoIHdy
+b3RlOg0KPj4+PiBBZGQgYSBLVk0tb25seSBuYW1lZCBDUFUgbW9kZWwgZm9yIE5lb3ZlcnNlIFYy
+IHIwcDEgKFRSTSAxMDIzNzUpLA0KPj4+PiBpbmhlcml0aW5nIGZyb20gbmVvdmVyc2UtdjItdjEg
+KHIwcDApLg0KPj4+PiANCj4+Pj4gcjBwMSBvbmx5IGNoYW5nZXMgTUlEUl9FTDEuUmV2aXNpb24g
+YW5kIGFkZHMgRkVBVF9FQ0JIQg0KPj4+PiAoSURfQUE2NE1NRlIxX0VMMS5FQ0JIQikuDQo+Pj4+
+IHN0YXRpYyBjb25zdCBBcm1OYW1lZENwdU1vZGVsIGFybV9jcHVfbW9kZWxzW10gPSB7DQo+Pj4+
+ICAgICB7ImFybS12OS4wLWEtdjEiLCBOVUxMLCBhcm1fdjlfMF9hX3YxX3Byb3BzfSwNCj4+Pj4g
+ICAgIHsibmVvdmVyc2UtdjItdjEiLCAiYXJtLXY5LjAtYS12MSIsIG5lb3ZlcnNlX3YyX3YxX3By
+b3BzfSwNCj4+Pj4gKyAgICB7Im5lb3ZlcnNlLXYyLXYyIiwgIm5lb3ZlcnNlLXYyLXYxIiwgbmVv
+dmVyc2VfdjJfdjJfcHJvcHN9LA0KPj4+IG5pdCBJIHdvdWxkIGNhbGwgaXQgZGlyZWN0bHkgbmVv
+dmVyc2UtdjItcjBwMSBhbmQgbGVhdmUgdGhlIC12PG4+IHN1ZmZpeA0KPj4+IGZvciBwb3RlbnRp
+YWwgZml4ZXMuIFNhbWUgZm9yIHIwcDAgb2J2aW91c2x5Lg0KPj4gSSdtIG5vdCB2ZXJ5IGVudGh1
+c2lhc3RpYyBhYm91dCBhY2N1bXVsYXRpbmcgZGlmZmVyZW50IENQVSBtb2RlbHMNCj4+IGZvciBh
+bGwgdGhlIGRpZmZlcmVudCByWHBZIHZhcmlhdGlvbnMgdGhhdCBhcHBlYXIuIFdlIHVzZWQgdG8g
+aGF2ZQ0KPj4gYSB0b24gb2YgYmFzaWNhbGx5IGlkZW50aWNhbCBweGE3MjAgdmFyaWFudHMgYW5k
+IEkgd2FzIGdsYWQgdG8gYmUNCj4+IGFibGUgdG8gZHJvcCB0aG9zZSB3aGVuIHdlIGRlcHJlY2F0
+ZWQtYW5kLWRyb3BwZWQgdGhlIHB4YSBzdXBwb3J0Lg0KPj4gDQo+PiBJcyBhbnkgdXNlciBhY3R1
+YWxseSBnb2luZyB0byBjYXJlIGFib3V0IHRoZSBkaWZmZXJlbmNlIGJldHdlZW4NCj4+IHIwcDAg
+YW5kIHIwcDEgPyBJbiBwYXJ0aWN1bGFyIHBYIGNoYW5nZXMgYXJlIGp1c3QgaGFyZHdhcmUNCj4+
+IGJ1Z2ZpeGVzIHRoYXQgUUVNVSB3YXMgdW5saWtlbHkgdG8gYmUgbW9kZWxsaW5nIGluIHRoZSBm
+aXJzdCBwbGFjZS4NCj4gSSBkbyBhZ3JlZS4gSW4gdGVybXMgb2YgSUQgcmVnLCB0aGVyZSBpcyB2
+ZXJ5IGxpdHRsZSBkaWZmZXJlbmNlIGJldHdlZW4NCj4gYm90aC4gTW9kZWxpbmcgYSBzaW5nbGUg
+b25lIG1heSBiZSBzdWZmaWNpZW50DQo+IA0KTm90ZWQsIHdpbGwgb25seSBrZWVwIG9uZSBOZW92
+ZXJzZS12Mi4NCg0KVGhhbmtzLA0KS2h1c2hpdA0KDQo+IFRoYW5rcw0KPiANCj4gRXJpYw0KPj4g
+DQo+PiB0aGFua3MNCj4+IC0tIFBNTQ0KPj4gDQo+IA0KDQo=
 

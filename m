@@ -4,61 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D6A3CCA46C
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2DA5CCA46C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZP-0006Uq-W3; Fri, 16 Oct 2026 09:02:00 -0400
+	id 1xHhZm-0006mB-Hj; Fri, 16 Oct 2026 09:02:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <junjie.cao@linux.dev>)
- id 1xHcsn-0001Hu-Ni
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 04:01:42 -0400
-Received: from out-54.mta0.migadu.com ([2001:41d0:1004:224b::36]
- helo=mta0.migadu.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <junjie.cao@linux.dev>)
- id 1xHcsk-0005Lp-TT
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 04:01:41 -0400
-X-Envelope-To: qemu-arm@nongnu.org
-DKIM-Signature: a=rsa-sha256; bh=69aTHhIYHsOoZl/V19r+fpdM6yp3IXUoZ6jee1rzEjU=; 
- c=simple/simple; d=linux.dev;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1792137694; v=1; x=1792742494;
- b=jVnTAdMZEWz2CMfDxKGs7enaG8TYzSUnzDetZ6U9L0zbWw3EBU+KbqKLx8sAwdA9glJ/FYF4
- Srv9sF+XGMJ6xUrkla7YYhJWkrkA50TykDKO4TOYmYGtVWle7nl1xzUASpJ8H3N4L5NcDq27mSD
- 94gVXnPc3DKxzGfnBPlG4MJQ=
-X-Envelope-To: qemu-arm@nongnu.org
-Received: by smtp.migadu.com with ESMTPS id 0e9cc5ca80046c94;
- Fri, 16 Oct 2026 08:01:34 +0000
-X-Mizu-Trace-ID: 0e9cc5ca80046c94
-X-Migadu-Flow: FLOW_OUT
-From: Junjie Cao <junjie.cao@linux.dev>
-To: jamin_lin@aspeedtech.com
-Cc: marcandre.lureau@redhat.com, clg@kaod.org, peter.maydell@linaro.org,
- steven_lee@aspeedtech.com, leetroy@gmail.com, kane_chen@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, troy_lee@aspeedtech.com, junjie.cao@intel.com
-Subject: Re: [PATCH v5 5/8] hw/usb/redirect-server: Implement control transfers
-Date: Fri, 16 Oct 2026 08:01:24 +0000
-Message-ID: <20261016080125.418342-1-junjie.cao@linux.dev>
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef4-0007Kl-3D
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:38 -0400
+Received: from out203-205-221-221.mail.qq.com ([203.205.221.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef1-0000R7-LB
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+ t=1792144531; bh=CFUuWfDjwJ1xmZXGGkNFyAd7r7YLRzsuXu6bJyNXd4w=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=R9yUYRRLH/PBQz6EdSjtuLuaUNQFA39ni3uLSwN0ALZ1BPlevtwp5armKEOOfefDE
+ to9kvyPsIVbcJ28Q3GlL3i9//I2I2k+651rv9lHazYQYfdXUaEPghHyA8ajYI3vzfg
+ RvHR9/b03Zf91mm2R7a48YqRYKvtLJHr6v9K05nA=
+Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
+ by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
+ id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
+X-QQ-mid: xmsmtpt1792144085tnxi1b822
+Message-ID: <tencent_6C7ED336265811796EE3A442668C8E275709@qq.com>
+X-QQ-XMAILINFO: NmhoXJR/eu5xX3X8CfzNyecIooM8VpASQpoaR1xUWNRPTamGHhZWO4bn1LnsRN
+ OBoX4M8sLO5WOioD+MsDbjRt+LO+ZLRh+HUe7dShVNxj5Cb7OrYOdcP5UMZZz8TiYSborE2qta0s
+ GrRTcNsN9FTI8elN6Y/7uBY4qXa9uiTjwYFyYMnfKbYxzYlWh5unjo3Tbxeuj3BMjdJNxDK14bX9
+ WpN7RgdFhYGzv4RdPemmU+rB5mqQGkMScN6GebPk9jd3Xc3H0zhZa1dXq1JjEhipA788OWu4jBfZ
+ d3R7mrBWNX5FSUIxc7l0bchWG3LGtgplQx3fzpbWkewQH5MN60u/NAnhYKkGTtGLsKxDvxsr2gZM
+ +iQoAAuSkearn3THT2mSJWv/igSOHo5gZpqj8v9KD+3EPkns3GwQbkeJDGHipobjLIDPdxRH3IPt
+ DZHjh81qKAxhmBemw2QvNoDwHjkp8E6/3JrrJjT656We8M0N/+AJHiMdyKjWJjcxAH6fECzw5HO9
+ LcHJwlEHRs+Tpbq9HRkg2nuewraipQOEsfVRggR+VzoGl1zUsPlc7mQwg7ZPMCasGwJDtXoEaVkM
+ scZXQDUdFbowRIyU7AxBGnQQ3B+mUfd5mqGa+FG5dHJzHuMWRezXkrbKKjIKoxMKUUqPFjuMIsk/
+ STKcwAy7HWHDln8r1w/R233IW4vyNZrVsJ2jkXqphz8lxRTFQEkDfRMqlm8kEPLh/2Alur5JoF4c
+ 0SQ577mNWJtaBFUnisF+0vhR4i6YS8fo6SmUV5nefLuUKjzwVgQIsiIa6xbVMrGk4kLcrqFbeZ41
+ a0jFA8GlPjvBjarwSA1w4OBjz948vqBAQyTXHV/7BzAvLvrrhYaYp+SOvs/arcTN80cYPL5y3dT6
+ oQSpJADgCQXUsUSwGJuWcjWfHnOVSyJ6VYc3TtRmrTQMuVl4rIkReb0T/gpnYPkOtEYyXDKRuZ+E
+ 1sAtM+GVNjmUNxkKuVGH9lCzJmNIU2G/lAvqz537gnHPNfvSzT31yvUNDA7R/Pi2ssgcbOXdCsyq
+ G1Fd+OkIQvBzrgJ+uTS1Wcqo+kocd4nog5Q9tL25g7L4C5Rft0jP/eLlrXxQSHjP7lvjKGbVsV1+
+ Zu7dOU
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
+From: Jinjie Ruan <2118537295@qq.com>
+To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
+ imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: ruanjinjie@huawei.com
+Subject: [PATCH 11/37] hw/arm/mpam: Implement CPOR cache portion partitioning
+Date: Fri, 16 Oct 2026 17:47:05 +0800
+X-OQ-MSGID: <20261016094733.1898485-12-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261015093417.573063-6-jamin_lin@aspeedtech.com>
-References: <20261015093417.573063-1-jamin_lin@aspeedtech.com>
- <20261015093417.573063-6-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
+References: <20261016094733.1898485-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:1004:224b::36;
- envelope-from=junjie.cao@linux.dev; helo=mta0.migadu.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+Received-SPF: pass client-ip=203.205.221.221; envelope-from=2118537295@qq.com;
+ helo=out203-205-221-221.mail.qq.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:51 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,47 +86,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Junjie Cao <junjie.cao@intel.com>
+From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Hi Jamin,
+Add the cache-portion controls: MPAMF_CPOR_IDR advertises the
+CPBM bitmap width (MPAM_CACHE_PART portions) and the cache
+subtype sets HAS_CPOR_PART, and the CPBM array registers become
+readable and writable per selected internal PARTID.  Reads and
+writes of CPOR_IDR/CPBM on an MSC without CPOR support are
+logged and ignored.
 
-The tests below were run on v4; patches 5 and 6 are unchanged in v5.
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+ hw/arm/mpam.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-> +    usbredir_server_do_control(priv, id, hdr, data, data_len,
-> +                               USBREDIR_SERVER_REPLY_CONTROL);
+diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
+index cce9355..2b1401e 100644
+--- a/hw/arm/mpam.c
++++ b/hw/arm/mpam.c
+@@ -356,6 +356,13 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+             return 0;
+         }
+         return mpamf->impl_idr;
++    case A_MPAMF_CPOR_IDR:
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                "MPAM: Unexpected read of CPOR_IDR with no CPOR support\n");
++            return 0;
++        }
++        return mpamf->cpor_idr;
+     case A_MPAMF_PARTID_NRW_IDR: {
+         return mpamf->partid_nrw_idr;
+     }
+@@ -367,6 +374,19 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+         return mpamf->mbwumon_idr;
+     case A_MPAMF_CFG_PART_SEL:
+         return mpamf->cfg_part_sel;
++    case A_MPAMF_MPAMCFG_CPBM0...
++        (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
++    {
++        uint32_t array_offset;
++
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                "MPAM: Unexpected read of CPBM with no CPOR support\n");
++            return 0;
++        }
++        array_offset = (offset - A_MPAMF_MPAMCFG_CPBM0) / sizeof(uint32_t);
++        return mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset];
++    }
+     default:
+         qemu_log_mask(LOG_UNIMP,
+                       "MPAM: Unexpected read of %lx\n", offset);
+@@ -410,6 +430,21 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
+         mpamf = &s->mpamf[s->ris];
+         mpamf->cfg_part_sel = value;
+         return;
++    case A_MPAMF_MPAMCFG_CPBM0...
++        (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
++    {
++        uint32_t array_offset;
++
++        /* TODO: Figure out write mask to check this stays in write bits */
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                          "MPAM: Unexpected write to CPMB when !HAS_CPORT_PART\n");
++            return;
++        }
++        array_offset = (offset - A_MPAMF_MPAMCFG_CPBM0) / sizeof(uint32_t);
++        mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset] = value;
++        return;
++    }
+     default:
+         qemu_log_mask(LOG_UNIMP,
+                       "MPAM: Write to unexpected register Addr %lx Value=%lx\n",
+@@ -538,6 +573,8 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
+         /* Need to implement for RME */
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, SP4, 0);
+ 
++        /* Cache specific bit */
++        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART, 1);
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PARTID_NRW,
+                                 s->num_int_partid < s->num_partid);
+ 
+@@ -551,6 +588,10 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
+         mpamf->aidr = FIELD_DP32(mpamf->aidr, MPAMF_AIDR, ARCH_MINOR_REV, 1);
+         mpamf->aidr = FIELD_DP32(mpamf->aidr, MPAMF_AIDR, ARCH_MAJOR_REV, 1);
+ 
++        /* Portion */
++        mpamf->cpor_idr = FIELD_DP32(mpamf->cpor_idr, MPAMF_CPOR_IDR, CPBM_WD,
++                                     MPAM_CACHE_PART);
++
+         if (s->num_int_partid < s->num_partid) {
+             mpamf->partid_nrw_idr = FIELD_DP32(mpamf->partid_nrw_idr,
+                                                MPAMF_PARTID_NRW_IDR,
+-- 
+2.43.0
 
-The callback owns data, but do_control() copies it without freeing the
-original buffer. In a test with usb-storage, 100 vendor control OUT
-requests carrying 64 bytes each complete with STALL, but LSan reports
-6,400 bytes leaked in 100 parser allocations.
-
-Could we call usbredirparser_free_packet_data() after do_control()
-returns, and free data on every exit from the bulk and interrupt
-callbacks in patch 6?
-
-> +    QTAILQ_REMOVE(&s->inflight, rp, next);
-> +    usb_packet_cleanup(&rp->pkt);
-
-A test device returning async IOERROR for the first of two bulk OUT
-requests reproduces an assertion here. The core calls back for the
-second packet with USB_RET_REMOVE_FROM_QUEUE, but leaves it QUEUED on
-ep->queue. usb_packet_cleanup() then hits its
-!usb_packet_is_inflight() assertion.
-
-Could we call usb_cancel_packet() for that status before cleanup?
-For a QUEUED packet it removes the core queue entry without calling
-the device's cancel callback.
-
-In the not-found case of usbredir_server_cancel_data_packet():
-
-> +    usbredirparser_send_control_packet(s->parser, id, &resp, NULL, 0);
-
-If the original reply is already queued when the cancel arrives, the
-QEMU client consumes its cancelled-ID entry when it receives that
-reply. The extra control packet then sends a second reply for the
-same ID.
-
-Could we omit this reply when the transfer is not found?
-usbredirhost_cancel_data_packet() also sends no additional reply
-in that case.
 

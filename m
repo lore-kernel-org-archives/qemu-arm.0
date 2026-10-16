@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51077CCF2C1
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78663CCA46C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:03:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZO-0006Ty-L4; Fri, 16 Oct 2026 09:01:58 -0400
+	id 1xHhbH-0000Uk-Sp; Fri, 16 Oct 2026 09:03:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef3-0007KH-2t
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:37 -0400
-Received: from out203-205-221-205.mail.qq.com ([203.205.221.205])
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHfEx-0006hc-Ej; Fri, 16 Oct 2026 06:32:43 -0400
+Received: from out203-205-221-231.mail.qq.com ([203.205.221.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef0-0000R8-Fq
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:36 -0400
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHfEt-0004q9-GA; Fri, 16 Oct 2026 06:32:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792144531; bh=3CnT9kdTlSHd++88hWxgxba4/tcTn0GXZXLU8Jlv2O4=;
+ t=1792146753; bh=+pvtlscJyweE+6uH1ANFrshUnjzzvMWtiPvGlUo8ChY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=wpMz3FpavBR1GR1jSNx4XwDF2dk9AnmTz7vai5O9Fst6eDfdjES2QONFgutyJv+yM
- edKMgm0lnYUKnNd7gI1giie33XoToRH9mWA2J4KAPuvnGz8XbX/MCW6XINEWda71Xr
- u3KlN+WmxS9w8l1Rheq0pkgZqnt5ug3ltooseMm4=
+ b=EmvebSVGQL0FcKgU2h46R7CG4k9SFVjntKDOyzyNTepMttTSKgryb7Ra01iPfT7E7
+ 3pmhXz2vqDAIAztvYjnQqKQY0LaTkA+/hGXMhBWSFq/KXYgN+i4GF+rOp8fPsEJyja
+ GVeIilJiBHQRdejxbJ7CXoozcmqn+soLDh30xGok=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
- id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
-X-QQ-mid: xmsmtpt1792144086tbe93o6yk
-Message-ID: <tencent_9549CC801F23AD64A5614E042356DD964B0A@qq.com>
-X-QQ-XMAILINFO: M1rD3f8svNznS+EJIUUkXFuQYzhvkFBVNbVgcyZpjflCp2c/AsmbIzNWSPWX+d
- yFK6QHQYUN5JuySH2pHsuQCleU9eQY5qeJxCJ+bn09JFN8sJdwlA8ViFssmfro3KXnLrp4RNbBrx
- PZjjqdwJyOisAg3cmwqPV6mHubh8+g6R5ZK/94BbYWKftDUaYo4CdquwfM2OOc//GL9peKzQFAJp
- IOcOAwVtgTV59dnGn4lUx06v4iSVDHd+NmIAhAwW2sjYBt9s5aUY5Kdf4EsXzQNSHcsNDyeSWGb8
- 07Y0/NCvXGCIWVKFCqE6xSx6KSeRGUZSkXxLNtod4L51WQJRbJ7jpzSezqwQR/Bv7Cgg/neKng+/
- SDXz3LDzj3UVIRrMM9rhLSRmqCmJYI1ulA6YVIcPkpqeogSX8TCvNBEqMkxFTv0ubk5epQknUOE0
- mgT12R2KJbhaPMfbNQoejdJ57XtNr5KYOlZdufRarDvc/sUGl+3mZH0AafCwIw5FLTxzP4LAHKcp
- +ha/S3VW1ZCpZpBHdFKAv5phkIYktzeWICVTHcRbSYB/Ejo5wVgdq/NTh+Qc0KeLh1M63i1Gpiv/
- l4EW6pvERyr5z+gmlKdkCiLBTq44/FFM+OgKyVAM5Y5r9zIjlLukBElJYOe2VPL6PykohkQHsIdu
- d/I+9QmyKbtQWjJTiayDAao79tPjHJSh2ciKJceWLyEIi2fmNXuyl3ob2P7rNLHP7VGk5GGZJz1S
- jVlsV4sZnlM9gj3TpIjtDQP2zux+EZPB9JLIslulbM2FLRebLUPLIS/oaz4xwtWeFsUnMFATmuZG
- wVa5r0BPrEjb88DNmzVHL+DgMIINTlWs5MoncKDGb0RDuUOa5nO+GITtLrxRh1MEIF9tWXFH2lU2
- Z7Dfhi5rs/eF+7GGWEk6eF4SJaIiZD+/6m+t3NA1W3r+hRrvJyzCF8Xi/K0wwT10djEQ5kl64xlg
- 9ciAIsnEdc75kqTZ4pQsmdaevyuq9wyFk60DgjwG5rm0ZBk0ayG31mBLaegIaiHgii2Gcyd5hUnd
- FkBzx3zX0SfnuknVDzCTRkvAhMIGs9Wh4/vAMmtqHvk0ffySm3
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
+ by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
+ id 81E21EB9; Fri, 16 Oct 2026 18:32:30 +0800
+X-QQ-mid: xmsmtpt1792146750tu45fhs72
+Message-ID: <tencent_E9186FE529AD6EC21F51EF364CEA6426EF05@qq.com>
+X-QQ-XMAILINFO: MRMtjO3A6C9XzRRe3Ik1rmuLLx10trhHlRxVD6VbSkk1/DA4tWrBQi6MmdofJH
+ cDWp7bPRKYw1NepyHDMqmwZLY9siGz1Gcd2TrDGP8bhGtifFBVSBnthRSP8MF1J3MsmdfHgm7S+B
+ D9uVaZkSxjKnvkaqUappiahyIevU2aDWu5aqNmCnrNr3Gi0yXwgQxA0xhpeElP/P4l9DkZQGt/tD
+ xK+5farQzA7wtdy45rw4bZwb3uOmjAfkhbd7zncHKf4VqwpqV4Lh/FB11E0O8BSSW0ANUYpZgA7K
+ NmUwc72A7IE4JRmnrcofuvzzsNSaT3JBsQZSFIwnN4czOAgALWF/TLAQY5nFVT6rL6CYiLJ+a/dT
+ y05doqr5sRl3HdBvvxotXRZmlszYR7dlYAn0vOr9UAM/tXzdGd0FX5eAyY/TmRknSjQ9uXLGudnw
+ XWseTWF40LxGaXzxPHGW3irgZ/16UEub61vY5KkvCE4WPM6X7lc1yjtecBzwqyBFq2clPuO3bHqz
+ 6IRdN5NPt3WhRIsQ3P3Qlcco3KGiOci7ZF428ykcr9IZziMUxABJEv2K/TlkZ4m7u1hqwwVe0TNU
+ zcgLPZqlCaHHxjX35iFX6H912LxYjok5dMKDUARh5wXCLJMqUztxDjRQ73BPyX2VW76tshwCW122
+ bjKoTk4hsxrGXCFzeQgS8QmkOGdWHJJ6a02Pr4DKEtycG+kT1WM2faFT5rR2ZTlMrqEy7phfJCj1
+ 1DG1a+4b266kVk10YYjCZgmo4O9+ZyxeizbCI5CECd2rgOPmMvoqtaP4wqnEh49jdd3edc4aUPDE
+ jbieKHc1HMKlmJ5Zj1Hn+qZkPdeL5hkCTn51Tr4NDRWsxj/EFRSHlZG7uf3qK6V2ILU3OJ6qnOmH
+ LHIk1SB4hEK2VhtJELc0oX5lh3imMdVpWfmFempu4CDaIYq1asCG6EaA2KwmkKo6UOVXCj9LS85X
+ /tBmAwH56pd4cvlK8BlrFRfYleoC5c3d4BCs6RHJgSpS/ChbNCCV40HgN7SyjTTCn0qqRmoM7OKB
+ K52XZth35YHmnptvZMCrj9qAQ6lqwROPg1YHfedRJYH1imk585x8vpv1DeIkuJUDbf13o98QBxT+
+ LN7Ip3tj+DfOrsaiKXR6DYNlIgqg==
+X-QQ-XMRINFO: OW8WShJdN8S2Y5iKw6Z8myepVl+s6/kk+g==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 12/37] hw/arm/mpam: Implement MBW bandwidth partitioning
-Date: Fri, 16 Oct 2026 17:47:06 +0800
-X-OQ-MSGID: <20261016094733.1898485-13-2118537295@qq.com>
+Subject: [PATCH 36/37] qapi: Add MPAM cache introspection schema and stub
+Date: Fri, 16 Oct 2026 18:10:56 +0800
+X-OQ-MSGID: <20261016101058.1900808-22-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
-References: <20261016094733.1898485-1-2118537295@qq.com>
+In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
+References: <20261016101058.1900808-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=203.205.221.205; envelope-from=2118537295@qq.com;
- helo=out203-205-221-205.mail.qq.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=203.205.221.231; envelope-from=2118537295@qq.com;
+ helo=out203-205-221-231.mail.qq.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:47 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:50 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,148 +86,211 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jinjie Ruan <ruanjinjie@huawei.com>
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-Add the memory-bandwidth controls: MPAMF_MBW_IDR (16-bit BWA_WD
-fraction, MIN/MAX/PBM/PROP support, BWPBM_WD = MPAM_MBW_PART)
-with HAS_MBW_PART on the memory subtype, and read/write handling
-for MBW_MIN, MBW_MAX, MBW_PROP and the MBW_PBM bitmap per
-selected internal PARTID.
+Add the query-mpam-cache QMP command schema: the MpamBm bitmap
+type, the per-RIS MpamRegs state and the MpamCacheInfo summary of
+a cache MSC, plus an optional cache level filter.  The command is
+stubbed to return NULL so the generated marshal links; the real
+implementation walks the device tree in the next patch.
 
-Note the MBW_MIN write mask check references the CMIN mask --
-a leftover fixed later by the CMIN/CASSOC patch.
+Based on an RFC series by Jonathan Cameron, adapted to the current
+qapi documentation rules.
 
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/mpam.c | 73 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 73 insertions(+)
+ hw/arm/meson.build       |   1 +
+ hw/arm/mpam-qapi-stubs.c |  14 +++++
+ qapi/meson.build         |   1 +
+ qapi/mpam.json           | 120 +++++++++++++++++++++++++++++++++++++++
+ qapi/qapi-schema.json    |   1 +
+ 5 files changed, 137 insertions(+)
+ create mode 100644 hw/arm/mpam-qapi-stubs.c
+ create mode 100644 qapi/mpam.json
 
-diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-index 2b1401e..7c33ec4 100644
---- a/hw/arm/mpam.c
-+++ b/hw/arm/mpam.c
-@@ -363,6 +363,8 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-             return 0;
-         }
-         return mpamf->cpor_idr;
-+    case A_MPAMF_MBW_IDR:
-+        return mpamf->mbw_idr;
-     case A_MPAMF_PARTID_NRW_IDR: {
-         return mpamf->partid_nrw_idr;
-     }
-@@ -374,6 +376,12 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-         return mpamf->mbwumon_idr;
-     case A_MPAMF_CFG_PART_SEL:
-         return mpamf->cfg_part_sel;
-+    case A_MPAMF_MPAMCFG_MBW_MIN:
-+        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min;
-+    case A_MPAMF_MPAMCFG_MBW_MAX:
-+        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max;
-+    case A_MPAMF_MPAMCFG_MBW_PROP:
-+        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop;
-     case A_MPAMF_MPAMCFG_CPBM0...
-         (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
-     {
-@@ -387,6 +395,19 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-         array_offset = (offset - A_MPAMF_MPAMCFG_CPBM0) / sizeof(uint32_t);
-         return mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset];
-     }
-+    case A_MPAMF_MPAMCFG_MBW_PBM0...
-+            (A_MPAMF_MPAMCFG_MBW_PBM0 + ((MPAM_MBW_PART + 31) / 32 - 1) * 4):
-+    {
-+        uint32_t array_offset;
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 42ca75b..adf9146 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -107,6 +107,7 @@ arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
+ arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
+ arm_common_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
+ arm_common_ss.add(when: 'CONFIG_MPAM', if_true: files('mpam.c'))
++arm_common_ss.add(files('mpam-qapi-stubs.c'))
+ arm_common_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+ arm_common_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
+ arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
+diff --git a/hw/arm/mpam-qapi-stubs.c b/hw/arm/mpam-qapi-stubs.c
+new file mode 100644
+index 0000000..77735ed
+--- /dev/null
++++ b/hw/arm/mpam-qapi-stubs.c
+@@ -0,0 +1,14 @@
++/*
++ * QEMU MPAM QMP command stubs
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qapi/qapi-commands-mpam.h"
 +
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                "MPAM: Unexpected read of MBW_PBM with no MBW_PART support\n");
-+            return 0;
-+        }
-+        array_offset = (offset - A_MPAMF_MPAMCFG_MBW_PBM0) / sizeof(uint32_t);
-+        return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_pbm[array_offset];
-+    }
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "MPAM: Unexpected read of %lx\n", offset);
-@@ -430,6 +451,30 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
-         mpamf = &s->mpamf[s->ris];
-         mpamf->cfg_part_sel = value;
-         return;
-+    case A_MPAMF_MPAMCFG_MBW_MIN:
-+        if (value & ~MPAMF_MPAMCFG_CMIN_WRITE_MASK) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to CMAX Mask=%x Value=%lx\n",
-+                          MPAMF_MPAMCFG_CMIN_WRITE_MASK, value);
-+        }
-+        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min = value;
-+        return;
-+    case A_MPAMF_MPAMCFG_MBW_MAX:
-+        if (value & ~MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to MBW_MAX Mask=%x Value=%lx\n",
-+                          MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK, value);
-+        }
-+        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max = value;
-+        return;
-+    case A_MPAMF_MPAMCFG_MBW_PROP:
-+        if (value & ~MPAMF_MPAMCFG_MBW_PROP_WRITE_MASK) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to MBW_PROP Mask=%x Value=%lx\n",
-+                          MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK, value);
-+        }
-+        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop = value;
-+        return;
-     case A_MPAMF_MPAMCFG_CPBM0...
-         (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
-     {
-@@ -445,6 +490,22 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
-         mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset] = value;
-         return;
-     }
-+    case A_MPAMF_MPAMCFG_MBW_PBM0...
-+        (A_MPAMF_MPAMCFG_MBW_PBM0 + ((MPAM_MBW_PART + 31) / 32 - 1) * 4):
-+    {
-+        uint32_t array_offset;
++MpamCacheInfoList *qmp_query_mpam_cache(bool has_level, int64_t level,
++                                        Error **errp)
++{
++    return NULL;
++}
+diff --git a/qapi/meson.build b/qapi/meson.build
+index a46269b..c6663e5 100644
+--- a/qapi/meson.build
++++ b/qapi/meson.build
+@@ -42,6 +42,7 @@ qapi_all_modules = [
+   'machine-s390x',
+   'migration',
+   'misc',
++  'mpam',
+   'net',
+   'pragma',
+   'qom',
+diff --git a/qapi/mpam.json b/qapi/mpam.json
+new file mode 100644
+index 0000000..ff476a1
+--- /dev/null
++++ b/qapi/mpam.json
+@@ -0,0 +1,120 @@
++# -*- Mode: Python -*-
++# vim: filetype=python
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to MBW_PBM when !HAS_MBW_PART\n");
-+            return;
-+        }
-+        /* TODO: Figure out write mask to check this stays in write bits */
-+        array_offset = (offset - A_MPAMF_MPAMCFG_MBW_PBM0) / sizeof(uint32_t);
++##
++# = ARM MPAM State Introspection
++##
 +
-+        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_pbm[array_offset] = value;
-+        return;
-+    }
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "MPAM: Write to unexpected register Addr %lx Value=%lx\n",
-@@ -522,6 +583,8 @@ static void mpam_msc_mem_realize(DeviceState *dev, Error **errp)
-         /* We won't implement any implementation specific stuff */
-         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, NO_IMPL_PART, 1);
-         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, NO_IMPL_MSMON, 1);
-+        /* Memory specific bit */
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_MBW_PART, 1);
- 
-         mpamf->iidr = FIELD_DP64(mpamf->iidr, MPAMF_IIDR, IMPLEMENTER,
-                                  MPAM_IIDR_IMPLEMENTER);
-@@ -533,6 +596,16 @@ static void mpam_msc_mem_realize(DeviceState *dev, Error **errp)
-         mpamf->aidr = FIELD_DP64(mpamf->aidr, MPAMF_AIDR, ARCH_MINOR_REV, 1);
-         mpamf->aidr = FIELD_DP64(mpamf->aidr, MPAMF_AIDR, ARCH_MAJOR_REV, 1);
- 
-+        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, BWA_WD, 16);
-+        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MIN, 1);
-+        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MAX, 1);
-+        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PBM, 1);
-+        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PROP, 1);
++##
++# @MpamBm:
++#
++# A bitmap control value, as used by MPAM cache-portion (CPBM) and
++# memory-bandwidth-portion (MBW_PBM) controls.  The value is
++# carried as an array of 32-bit words, least significant first.
++#
++# @words: The bitmap, one element per 32-bits of the control
++#
++# Since: 10.1
++##
++{ 'struct': 'MpamBm',
++  'data' : { 'words' : [ 'int' ]
++           }
++}
 +
-+        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR, WINDWR, 0);
-+        mpamf->mbw_idr = FIELD_DP32(mpamf->mbw_idr, MPAMF_MBW_IDR,
-+                                    BWPBM_WD, MPAM_MBW_PART);
++##
++# @MpamRegs:
++#
++# Per RIS register state of an emulated MPAM Memory System Component.
++#
++# @idr: MPAMF_IDR, the MPAM features identification register
++#
++# @iidr: MPAMF_IIDR, the MPAM implementer identification register
++#
++# @aidr: MPAMF_AIDR, the MPAM architecture identification register
++#
++# @cpor-idr: MPAMF_CPOR_IDR, cache-portion feature register
++#
++# @ccap-idr: MPAMF_CCAP_IDR, cache-capacity feature register
++#
++# @mbw-idr: MPAMF_MBW_IDR, memory-bandwidth feature register
++#
++# @pri-idr: MPAMF_PRI_IDR, priority feature register
++#
++# @partid-nrw-idr: MPAMF_PARTID_NRW_IDR, PARTID narrowing register
++#
++# @msmon-idr: MPAMF_MSMON_IDR, monitor feature register
++#
++# @csumon-idr: MPAMF_CSUMON_IDR, cache-usage monitor register
++#
++# @mbwumon-idr: MPAMF_MBWUMON_IDR, memory-bandwidth monitor register
++#
++# @ecr: MPAMF_ECR, the error control register
++#
++# @esr: MPAMF_ESR, the error status register
++#
++# @cfg-part-sel: MPAMCFG_PART_SEL, the partition-selection register
++#
++# @cfg-cpbm: The configured cache-portion bitmaps, one per
++#     internal PARTID
++#
++# Since: 10.1
++##
++{ 'struct' : 'MpamRegs',
++  'data' : { 'idr' : 'int',
++             'iidr' : 'int',
++             'aidr' : 'int',
++             'cpor-idr': 'int',
++             'ccap-idr': 'int',
++             'mbw-idr': 'int',
++             'pri-idr': 'int',
++             'partid-nrw-idr': 'int',
++             'msmon-idr': 'int',
++             'csumon-idr': 'int',
++             'mbwumon-idr': 'int',
++             'ecr': 'int',
++             'esr': 'int',
++             'cfg-part-sel': 'int',
++             'cfg-cpbm': ['MpamBm']#lazy
++          }
++}
 +
-         if (s->num_int_partid < s->num_partid) {
-             mpamf->partid_nrw_idr = FIELD_DP32(mpamf->partid_nrw_idr,
-                                                MPAMF_PARTID_NRW_IDR,
++##
++# @MpamCacheInfo:
++#
++# Information about an MPAM cache Memory System Component.
++#
++# @cpu: First CPU of the set associated with the cache
++#
++# @level: Level of cache
++#
++# @type: Type of cache
++#
++# @regs: The per RIS register state
++#
++# Since: 10.1
++##
++{ 'struct': 'MpamCacheInfo',
++  'data' : { 'cpu' : 'int',
++             'level' : 'int',
++             'type' : 'int',
++             'regs' : ['MpamRegs']
++           }
++}
++
++##
++# @query-mpam-cache:
++#
++# Get a list of MpamCacheInfo for all Cache related MSC
++#
++# @level: Provide a cache level to filter against
++#
++# Returns: a list of @MpamCacheInfo describing all
++#   the MPAM cache MSC instances
++#
++# Since: 10.1
++##
++{ 'command': 'query-mpam-cache',
++  'data': { '*level': 'int' },
++  'returns' : ['MpamCacheInfo'],
++  'allow-preconfig': true }
+diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+index b93dd68..cef175d 100644
+--- a/qapi/qapi-schema.json
++++ b/qapi/qapi-schema.json
+@@ -64,6 +64,7 @@
+ { 'include': 'replay.json' }
+ { 'include': 'yank.json' }
+ { 'include': 'misc.json' }
++{ 'include': 'mpam.json' }
+ { 'include': 'misc-arm.json' }
+ { 'include': 'misc-i386.json' }
+ { 'include': 'audio.json' }
 -- 
 2.43.0
 

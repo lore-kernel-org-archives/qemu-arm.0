@@ -4,74 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73178CCA462
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 454B7CCF2C1
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:12:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZN-0006Sd-IP; Fri, 16 Oct 2026 09:01:57 -0400
+	id 1xHhjQ-0007nx-Ay; Fri, 16 Oct 2026 09:12:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHex5-0001vU-3C; Fri, 16 Oct 2026 06:14:15 -0400
-Received: from out162-62-57-252.mail.qq.com ([162.62.57.252])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xHhjG-0007kC-Lw
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:12:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHex2-00025D-Pt; Fri, 16 Oct 2026 06:14:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792145647; bh=Ya5tqjBgZhnAuHGiFuAXbgQ5Ff0e+cdVNdUEh01SWZU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=FMj5ADnooz+ay653PAnKBpKsv9uIPyYMYq7p8cafI2soqiD+MfDot0K2U7gq2MDkH
- 1uPSS7ENTfBdtovA8P64VbY1R7LYQInEGZmQe3WkwJeJWUJ3lkHYr7zkSR64bQ2vN3
- xaLf5a6yw+ZllvInasC3tHD00lCncjF7N7GLF7XU=
-Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
- id 38486EEC; Fri, 16 Oct 2026 18:14:04 +0800
-X-QQ-mid: xmsmtpt1792145644tnpmj9yw6
-Message-ID: <tencent_48E88E1B57F8D2D027AA10AB6E9FA4486609@qq.com>
-X-QQ-XMAILINFO: NCvoIAqeA6m0+p6EOexeD+ZoFb0l6Dpkj6gJEBKXrxsU5DRvGRe/Vo4xAVViZ0
- FKrgpD/7KamHtbt5olWNVAyUaAcebJRE2PYdEc3ooT2xHM1Ym7PHl+WicX/TXS7Xk09GNlM0Jyhr
- t2AYJb/+v2CPR2gWUWjwYVoZWDYgR/yB0udJQpAOoIHdf8Cz/FtmNu+q5awUHCIKY2FtB6otUG3y
- 09SIzPLJqMBqmUAZZZwUTQFN14s8T8V8nTdLr6Avi7B8+6k5n+wStrsNlqS4CdInqevrbh7Zma2B
- yWZVMcLtDcIxMj7Pb1s+vqHgVy9XF0VrHUquKS4iO7XrGvQCyUBfc8RkjAw9Lhz5WLx/kU9vdSKy
- d72jaf30kpr2KKxpmWEQIJnVnVoZRdKvLRB9DokOwGpSWr0MKb7bZ6AdB75K+yZFOEZdvr+6AfMe
- Ah2Ty2jFaiDkCpZguznK81Njuxq5UuOF17BuR7/uEIfsY+lGNzaHfHpih+6cnoU+lSKWt0COP1BZ
- A/wvQS7wd5M7B12yIfOcSm+8ehAUXaWzAHBsKcF6g08juPRuUSguxg2Jr1ItRBWB/hCDi3/grfwm
- XLI03vBEmSPQkkbSIB96o3xdhBsTW3VnUL9jvWzVr8y8AP2F9shPo2zuHsfwTiaYjtWfyzeQ0cqx
- UQBc8PYrLg8FqtSWKF1lsBtfZv2EICjeJ8d/YGzM5i20CnMW9VcfVosG3urE6YV5pww5v8Bo/g/g
- JhZ37VeQ0+TDycC4qH3ZBnCZJl/Ibq5hg+PlQfVRoisVHcFTpCeG0s53hYnZuJwFM/TmNzCpPNJt
- Smx9E+HmF6aCSwMInfj33+/YX/FEEzuWumSOiwNQoZNVWeUmx9ycPvGMJCMcqB/BzQslWWyhIyuS
- /Ccdf7G5PZgCe3Ofvb0DTyWBSvw8XKbDkQpH5XklCS1o89dpMiKbIzSou0YJ9t5qTAxTYrtnKAMh
- SfjeQyU0dhsOvruOSrAY5J16vAJjVtmRiN9f3PEFvQ0P/5o6u/UB7cL5f3jyYfd6YTkcxEaxnO8I
- AJc6H1rqMG6NuoHy3jkX0BsZuLUYX3zbZZjmNZDCrX+FZJJBqiLtgQw0i3Mrh/9o+/uhzQ1pZ/Qp
- c6c41OrOc9R7teEnLEEk4mHXhPNg==
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-From: Jinjie Ruan <2118537295@qq.com>
-To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
- imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: ruanjinjie@huawei.com
-Subject: [PATCH 18/37] hw/arm/virt: Reserve the MPAM MSC MMIO window
-Date: Fri, 16 Oct 2026 18:10:38 +0800
-X-OQ-MSGID: <20261016101058.1900808-4-2118537295@qq.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
-References: <20261016101058.1900808-1-2118537295@qq.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xHhjE-0006uJ-TB
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:12:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1792156327;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NqAlwmurey0eGwhQI19UUFnkpSWK92NIkqItN6DRKHs=;
+ b=AYiHtoDIKBBMzSfAcrmQ4vcfZ05Zyz/+gAsBxLN+mO/vci1NjxO5/HimCkMgrixBIlU2tk
+ qt7BaB80DpiHrFRXqNArguXdxvxmm6P9PmwKnFqX+qaH3h0jFblMNm/Dlo4DqksR78J7Ld
+ PnA3cT/fViDhAJHByBA1liVsksl40wU=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-614-B1D9YO1LPo2E4mrBNCLX-g-1; Fri, 16 Oct 2026 13:12:06 +0000
+X-MC-Unique: B1D9YO1LPo2E4mrBNCLX-g-1
+X-Mimecast-MFC-AGG-ID: B1D9YO1LPo2E4mrBNCLX-g_1792156325
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4a16db51147so41549865e9.3
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:12:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792156325; x=1792761125;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=NqAlwmurey0eGwhQI19UUFnkpSWK92NIkqItN6DRKHs=;
+ b=N7obhiz4AsCqZDIuq+iQDdRNX9wA4bBkRRG9hPa4DeBpvbC0AhavbZePH0LZqqSdW5
+ nkkmcviLXp1VIxdHpMttDI3ZjDeYxLSzNL+NCX+woMa8d23YWwsJwDQVa8arC8uB9A19
+ vyZAz/SfCuRaa3CfeQLAdDIoSAJ1/xPUfn1CnELkbn1Jljc1Zf9FuYU507Wc70wJG0DR
+ Q4HgSYtT5QfK75PH8XsuwASsGFvpbRPhP4N82vSaOvofaAUMa4RtO5m5VrJwCElkopv1
+ 2Gfj9YfwP8yE8cdRKh3TEHrSVlJfQBBIcZAovMp6qgfyfFxFs5tbzfl+I1EDub+wDu9j
+ qXHA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBx0i7aFJSc5V2MS+49bfvvBuPqm+G0l/f5b8rNYtRgoQqECxzOmXYNwqTuZp793z/zHjcmQOOQ0aw==@nongnu.org
+X-Gm-Message-State: AFq9FYInvtf72A05uKHgNDrzW0Ww4lT1087QE6RbCSK+g6lTJoRxVUhP
+ HmHnVzzK8UnQyWSLd65/+PhwSXY0knBkoc4NMVk7FCURjB4LJvBmPFroyi0icV+GKlxyca3ahyU
+ zh8/nGpgrHOsE3JQUZfnq5G3Yybtc+qgM8VqWncHI9RZiBTdC5uSLUg==
+X-Gm-Gg: AYBFou1f0uXbmAB6ze3M0olKeGwv4k/tyR2/DZpbEoMFa08TDhFJ/3jxuG1PofPxHL3
+ gZ8Z57pSymX/V5+nVJgBJoGhfp6Er6S7j3SZG4HOLwHSTs8TcQ2ayGpdCauBbNrUqQ5rnMa8Nz2
+ E+geIgpe0KFsKQdXg4s+9qU8JPhluyBK/CBZn4ofiahh7S9G6mxqDJfrTcVPVs7zEUVAXH0vkff
+ GCjH8ovjAQCcM4SMcblha1Bc+w30e7N30EDLN4VozGjfuctelUilkWZv36rgKT4HT33cshMqEeO
+ rGRKijUOolP5NQKr/rtEZ+F0v/zmSJz0tvS9y/boLDeS73H9dVchMlK1ptmNWn1s+XbX78eNgCF
+ yRvoY5CI8n79ajS8uTV5HUWjjKE7RtZj4fQ==
+X-Received: by 2002:a05:600c:3e07:b0:4a1:a009:9724 with SMTP id
+ 5b1f17b1804b1-4a1a00997f1mr285782675e9.7.1792156324969; 
+ Fri, 16 Oct 2026 06:12:04 -0700 (PDT)
+X-Received: by 2002:a05:600c:3e07:b0:4a1:a009:9724 with SMTP id
+ 5b1f17b1804b1-4a1a00997f1mr285782155e9.7.1792156324572; 
+ Fri, 16 Oct 2026 06:12:04 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48dfd4c5957sm4960343f8f.9.2026.10.16.06.12.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Oct 2026 06:12:04 -0700 (PDT)
+Message-ID: <0a1a763d-c95d-413c-ac11-384d5db599c2@redhat.com>
+Date: Fri, 16 Oct 2026 15:12:02 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.252; envelope-from=2118537295@qq.com;
- helo=out162-62-57-252.mail.qq.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v4 21/25] target/arm: report 0 as supported for ID
+ fields gated by vCPU init flags
+To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+Cc: cohuck@redhat.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
+ armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
+ shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
+ ping@khushitshah.com, sandesh.patel@nutanix.com
+References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
+ <20260921123249.1708067-22-khushit.shah@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260921123249.1708067-22-khushit.shah@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: J6R8X8_EsGNkOrsSPH463H9OCo1-4bT97EkB8ChS0vg_1792156325
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:48 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,55 +122,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Reserve a 1 MiB MMIO window at 0x0b006000 for the MPAM MSCs
-(MPAM_SIZE * 256 slots, right above the virtio MMIO transports)
-and add the VIRT_MPAM_MSC memmap entry the creation code uses.
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
----
- hw/arm/virt.c         | 3 +++
- include/hw/arm/virt.h | 1 +
- 2 files changed, 4 insertions(+)
+On 9/21/26 2:32 PM, Khushit Shah wrote:
+> When QEMU queries the host ISAR via KVM, it uses a scratch vCPU
+> initialized with all host-supported features (like SVE and PAuth).
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index aaadff6..3ad7de8 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -90,6 +90,7 @@
- #include "hw/virtio/virtio-md-pci.h"
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
-+#include "hw/arm/mpam.h"
- #include "hw/core/cpu.h"
- #include "hw/cxl/cxl.h"
- #include "hw/cxl/cxl_host.h"
-@@ -211,6 +212,8 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
-     [VIRT_ACPI_PCIHP] =         { 0x090c0000, ACPI_PCIHP_SIZE },
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-+    /* MPAM MSC MMIO windows: MPAM_SIZE (16 KiB) each, 256 slots (1 MiB). */
-+    [VIRT_MPAM_MSC] =           { 0x0b006000, MPAM_SIZE * 256 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-     [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index c847136..56bee15 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -81,6 +81,7 @@ enum {
-     VIRT_SMMU,
-     VIRT_UART0,
-     VIRT_MMIO,
-+    VIRT_MPAM_MSC,
-     VIRT_RTC,
-     VIRT_FW_CFG,
-     VIRT_PCIE,
--- 
-2.43.0
+So I expect this patch is not needed anymore after rebase on v9/v10
+
+Eric
+>
+> KVM exposes the corresponding ID register fields (e.g.,
+> ID_AA64ISAR1_EL1.APA) as read-only. The supported-values list only
+> shows the enabled host value (e.g., 5). This falsely flags a model as
+> blocked, even though the features can be masked by omitting those flags
+> during vCPU initialization. For these fields, even if KVM reports them as
+> non-writable, we explicitly append "0" to the list of supported values
+> if the host value is non-zero.
+>
+> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+> ---
+>  target/arm/kvm.c | 25 +++++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+>
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 77b1bcdf55..0b5fb49dff 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -1346,6 +1346,24 @@ static void ranges_add(GArray *ranges, uint64_t min, uint64_t max)
+>      g_array_append_val(ranges, r);
+>  }
+>  
+> +/*
+> + * Some fields are reported as non-writable by KVM but can still be
+> + * disabled by not requesting the corresponding vCPU init feature flag
+> + * (SVE, pauth). The supported values are derived from a scratch vCPU
+> + * whose init flags may differ from the real vCPU, so for these fields
+> + * "off" (0) is a supported value in addition to the host value.
+> + */
+> +static bool kvm_arm_field_off_via_vcpu_flags(const ARM64SysRegField *field)
+> +{
+> +    return field_matches(field, ID_AA64PFR0_EL1_IDX, "SVE")   ||
+> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "APA")  ||
+> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "API")  ||
+> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "GPA")  ||
+> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "GPI")  ||
+> +           field_matches(field, ID_AA64ISAR2_EL1_IDX, "APA3") ||
+> +           field_matches(field, ID_AA64ISAR2_EL1_IDX, "GPA3");
+> +}
+> +
+>  void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
+>                                          const ARMISARegisters *host_isar,
+>                                          ArmFieldValueSet **value_set)
+> @@ -1358,6 +1376,13 @@ void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
+>      /* A non-writable field can only ever hold the host value. */
+>      if (!arm_field_is_writable(field)) {
+>          ranges_add(ranges, host, host);
+> +        /*
+> +         * ...unless it is one of the fields that can still be turned off
+> +         * via vCPU init flags, in which case "off" (0) is also supported.
+> +         */
+> +        if (host != 0 && kvm_arm_field_off_via_vcpu_flags(field)) {
+> +            ranges_add(ranges, 0, 0);
+> +        }
+>          goto done;
+>      }
+>  
 
 

@@ -4,113 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F144CC6B38
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:11:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33706CCF2C1
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:11:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhhV-0002vr-H7; Fri, 16 Oct 2026 09:10:21 -0400
+	id 1xHhZN-0006TD-Qz; Fri, 16 Oct 2026 09:01:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHhhU-0002n0-62
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:10:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHf24-0003cl-18; Fri, 16 Oct 2026 06:19:24 -0400
+Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHhhR-0006mS-Eq
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:10:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792156216;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2Af5urTeD3afgs1G+MH27XDb+cPeKPt9pbqkwAvjLXI=;
- b=GqPkkeE8IGTDGo5JxKVexa7AGBpGYbOC5nZdHXfz8Vr818aDI6peYfRbQKoXvGWEdYRS06
- KASv7c5PLUonX7o8dCjVB15Wm7KH9rFpV7K1cfoRPylBOosRM5N+0JZdjSBGzw8Dzt12KX
- X8zqyYthWWGfhXokEd3s7zMXiPETtVQ=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-687-kZVemAfLO6-eWm2A23GhmQ-1; Fri, 16 Oct 2026 13:10:14 +0000
-X-MC-Unique: kZVemAfLO6-eWm2A23GhmQ-1
-X-Mimecast-MFC-AGG-ID: kZVemAfLO6-eWm2A23GhmQ_1792156214
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4a0228f4a1bso37434755e9.1
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:10:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792156213; x=1792761013;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=2Af5urTeD3afgs1G+MH27XDb+cPeKPt9pbqkwAvjLXI=;
- b=SZzLVF7pVUPTchxcweCVmpt7Drl9DfDDhYBVoi25DpVKxkLsMuzzOh/U8CRZ4fI6v4
- 9PdChyzWEVbyuEcza4Cq+ivLEcEYCkMogLYE0Xw4tCSk/fLwizAgY1PluBBqXj1LX6Ik
- 1sWpKVDb2qeddFhvN2RPDswahBWSBluBbCBDINsI5FbTTckJU2R4mhmcORonI0YqDyfa
- S0QEtZSlZFeIhOWdX2TrW8+zG5HXeOE592+93lTdQ/ckLZ5wJrkcErY4aBs0DN1Of3IL
- seakB0sdVsf/ROCklV3BNrfnr9Wc4kxNaGiTYGA8e4eaM1RdzJJa5PNC2V/TJkDs+5p9
- aEcg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBygdlacz4PXE8YAaTochL/bTTEjYNydL96BKYhFbxDzKSnS79kSW2ydDSrAtxUIULg1bpIuQu23Bw==@nongnu.org
-X-Gm-Message-State: AFq9FYJqeJ+eM2j42gHvqkFYccKeIE4+QHUx+ruUOo39elEgAZ+Z6wyZ
- snGNAt4s9L1/oR7PZNVQgwuhUF/hsGRRjTxcIlu3+zQ0PU+YHq4jBENI+I8dUQ0GXHW8LRiRE0l
- ua0DjLcMyeXk4MrvougdNaSU2V6Wx1JiGSvvDDnieyG0t9KNuuQ/Dmg==
-X-Gm-Gg: AYBFou09XCUxoyr2y/zh6UskHSvL+GrZe92k0AXUHicFdnoICMU7Dt15DAsYR2eay9Y
- iun98/ys4QaecPc5P9j0q6RZkMsLRVmIpjeA4a3Pq6GAcrBt95OZkS3Xd+UwVK/Jhp7AOAw9mac
- EnbX4eMfT/yPk9tFqfbwvdcZ5XFrJ3fRT3qLrDtZYQD9bPvg3HAw5uFVSZrWgVUjTitF5vli5uR
- Eob57w2/RwrSkvK8yctxouXVkINQTprkBMiHFjhD327xI7Lvd20FNitW39sgtSujE2npKpuAzKV
- 1JU0IUEt5EoRRPaUPxCpU8u64anae3QI/FK1C/0yXneTECWqWD3FIpB+dAFOM5r2MkET3zjRjHN
- HcKMjOpB1WXuGEuqxz4mHe9rCCDht8ZmDC/8lBNXyLEb19PvY
-X-Received: by 2002:a05:600c:8b78:b0:4a1:813f:2a60 with SMTP id
- 5b1f17b1804b1-4a18e47acf5mr511272045e9.11.1792156213462; 
- Fri, 16 Oct 2026 06:10:13 -0700 (PDT)
-X-Received: by 2002:a05:600c:8b78:b0:4a1:813f:2a60 with SMTP id
- 5b1f17b1804b1-4a18e47acf5mr511271195e9.11.1792156212849; 
- Fri, 16 Oct 2026 06:10:12 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48dfd4f8d12sm5106320f8f.36.2026.10.16.06.10.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Oct 2026 06:10:12 -0700 (PDT)
-Message-ID: <3e20590e-4276-4166-91d4-47db4875543b@redhat.com>
-Date: Fri, 16 Oct 2026 15:10:09 +0200
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHf20-0002aJ-6i; Fri, 16 Oct 2026 06:19:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+ t=1792145954; bh=C2RTZzq4u5bztMTFK6ZL+O4cEDg7+Arn/hMSjcudkEQ=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=vkipGbqRPc2bLbGIX2ymJ9E/abomOIXz6wlbxet3hpEpTcd2dqYkkJG0kPMjcu2zx
+ YqH6Pyv7unjBLczT1QQt1Rb1swRh4kYeIE25HPjX9fVku3m61Jy7Xmxb7oU/R65P7M
+ F4Xnrexi0EMrK8hjKJNOos3OqrqrCt6jnvpgRaiw=
+Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
+ by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
+ id 4CB98E55; Fri, 16 Oct 2026 18:19:11 +0800
+X-QQ-mid: xmsmtpt1792145951tem50wlp4
+Message-ID: <tencent_CCF4A4F14E44206EDE9A4871CF981EA7AE0A@qq.com>
+X-QQ-XMAILINFO: M9YlfoOVRfpP2rsiYzRd0CqcQjpaosD4aLnbzdTGSNGdTrnX3OFqPqtz9aLACl
+ tSAXL2O2kWiiKmMdwBkJ5bHFKMBI2LCdLhauCVfPnLLFbN1yKp+wGhVNWnH2pGQ44xb6JxutKwKo
+ TEk5ZIygF4sN3ulBDzkWsQtCcXNZqLLsbq/JhuRTibJpiQG6xmvphSkujoNXWpYjz1dv5p3Gvccq
+ TUqcR4OTqLcyzGQQBj2MisFEKg2TkZppgg3GfTn0Q2E5+xwi+3B1Zaj3wq7NBAEKOJ3WZFm1G8tM
+ P4J8zsYNepPkTIbSzMINPoLTcDj22YY7t0VusIcGcgmv6U2O1e56QbKN25Vivif0GeDfj5Nmz91G
+ DzoHjXKrqN1uWVZ9651D8kWzdhS0CqdLWeUP7hs+oyC8k9xjF9MSbcI9T/8YQnkOWh6Sm/mUG7zD
+ V3B6G0AbWImm0gWAL+gDrwPiagl2+wGa/FsEI/V4zSaf5VcgtsLslXCMXIVwif5ebdm5D7LGUN6O
+ 9lh0iNANA14FDKzzE+tDLZNGezcxKxj5tdND1u1OSFAqgqVhGbf/X3xdG1z7hkVIS2MUGlQGLgRi
+ kpXghsRXrCzWJ24T3H37AzIHnh+ZV7NUd4AEhiOECSLOHdCX0N7voFJHq305ORyAXGnf0KH3ufFN
+ /SofPzjCrGaq5cFNmKMO2q9FXqJeTp+Ruth6Bt75AqcR7xRA88YwvdNYeOceYgH0K9j5cmcfiL8b
+ q8X4VZZ9bmE2UmCNsevSNREIjRmJZGjKbWHqTwdXnwBCKEtZXkdq5hJqTZrFf3xLA0AO8q1F8lUe
+ JZA+xFPFQPj7wQwuOmNG3t5GuSJSL0joQavoMDS1IQw09cjIJf559toQduNm2S/2ySvUYmKpfN+A
+ TCTmKBNf4zwOxNPiQZPHk9nYBcLwIKXBs/ABltT4EgLMWLsoHjMyptNFgrqOhUuXgY7dJOcAkrww
+ 0MFpCG3iV4cbVCUGo5x9tcTAVYWJJNA4DfoQ7fZbmldU1sE0bk3fvJ1JTxaB5AReoRpCQg+OUpuk
+ NTi/Lhyg2XtDQLxYJbWEvJudEnJpr8oPVbBDsK92Vj5PHb82/SwJgQlSs7A5CVjuxKgoNh0M9v0z
+ nTwXro
+X-QQ-XMRINFO: MFuljud3PUW4Hy49K308V+nvGr8SioTB3Q==
+From: Jinjie Ruan <2118537295@qq.com>
+To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
+ imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: ruanjinjie@huawei.com
+Subject: [PATCH 23/37] hw/acpi: Build the MPAM ACPI table
+Date: Fri, 16 Oct 2026 18:10:43 +0800
+X-OQ-MSGID: <20261016101058.1900808-9-2118537295@qq.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
+References: <20261016101058.1900808-1-2118537295@qq.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v4 20/25] target/arm/kvm: compute host-supported
- values for ID register fields
-To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-Cc: cohuck@redhat.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
- armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
- shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
- ping@khushitshah.com, sandesh.patel@nutanix.com
-References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
- <20260921123249.1708067-21-khushit.shah@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260921123249.1708067-21-khushit.shah@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Z4fI1JDkIh2NH0lKYgucNAGuMUDiJqzfbWPKentbNJs_1792156214
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=162.62.57.87; envelope-from=2118537295@qq.com;
+ helo=out162-62-57-87.mail.qq.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:48 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,206 +83,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
+From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-On 9/21/26 2:32 PM, Khushit Shah wrote:
-> Add kvm_arm_field_get_supported_values() which, for a given ID register
-> field, builds the set of values KVM allows it to take on the given host.
->
-> Non-writable fields are pinned to the host value. Writable fields follow
-> their per-field constraints. This function must be updated when KVM
-> starts exposing a new writable field that is not lower-safe; hence the
-> special handling of TGranX_2/SpecSEI/L1Ip/MIDR/REVIDR/AIDR.
+Assemble the MPAM table when vms->mpam is set: walk the QOM tree
+for the board-created MSCs and emit each as a memory-controller or
+cache-controller node with its MMIO base, wired interrupt GSIVs
+and per-RIS locators -- per-node instances scope their locator to
+their own NUMA node, single-MSC instances span every memory node,
+and cache nodes carry the PPTT-referencing cache id.
 
-This effectively advocates for having a snapshot of all the IDREGS that
-are known to be writable and handled by the qemu code. Because otherwise
-we may return wrong safe values for a given prop.
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+ hw/arm/virt-acpi-build.c | 101 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 101 insertions(+)
 
-> signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
->
-> --------
-> Note:
-> - We should have an authoritative static list of "writable" fields in
->   QEMU.
-> ---
->  target/arm/kvm-stub.c |  7 +++
->  target/arm/kvm.c      | 99 +++++++++++++++++++++++++++++++++++++++++++
->  target/arm/kvm_arm.h  | 28 ++++++++++++
->  3 files changed, 134 insertions(+)
->
-> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-> index d263adc921..c9cd47bf47 100644
-> --- a/target/arm/kvm-stub.c
-> +++ b/target/arm/kvm-stub.c
-> @@ -144,3 +144,10 @@ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray)
->  {
->      g_assert_not_reached();
->  }
-> +
-> +void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
-> +                                        const ARMISARegisters *host_isar,
-> +                                        ArmFieldValueSet **value_set)
-> +{
-> +    g_assert_not_reached();
-> +}
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 6f704c0509..77b1bcdf55 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -1324,6 +1324,105 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
->      return true;
->  }
->  
-> +static bool arm_field_is_signed(const ARM64SysRegField *field)
-> +{
-> +    return field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran4")    ||
-> +           field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran64")   ||
-> +           field_matches(field, ID_MMFR0_EL1_IDX, "InnerShr")      ||
-> +           field_matches(field, ID_MMFR0_EL1_IDX, "OuterShr")      ||
-> +           field_matches(field, ID_AA64DFR0_EL1_IDX, "DoubleLock") ||
-> +           field_matches(field, ID_AA64DFR0_EL1_IDX, "PMUVer")     ||
-> +           field_matches(field, ID_DFR0_EL1_IDX, "PerfMon")        ||
-> +           field_matches(field, ID_AA64PFR1_EL1_IDX, "MTE_frac")   ||
-> +           field_matches(field, ID_AA64MMFR4_EL1_IDX, "E2H0")      ||
-> +           field_matches(field, ID_DFR1_EL1_IDX, "MTPMU")          ||
-> +           field_matches(field, ID_AA64PFR0_EL1_IDX, "FP")         ||
-> +           field_matches(field, ID_AA64PFR0_EL1_IDX, "AdvSIMD");
-> +}
-> +
-> +static void ranges_add(GArray *ranges, uint64_t min, uint64_t max)
-> +{
-> +    ArmFieldRange r = { .min = min, .max = max };
-> +    g_array_append_val(ranges, r);
-> +}
-> +
-> +void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
-> +                                        const ARMISARegisters *host_isar,
-> +                                        ArmFieldValueSet **value_set)
-> +{
-> +    bool is_signed = arm_field_is_signed(field);
-> +    uint64_t host = extract64(host_isar->idregs[field->index],
-> +                              field->shift, field->length);
-> +    GArray *ranges = g_array_new(false, false, sizeof(ArmFieldRange));
-> +
-> +    /* A non-writable field can only ever hold the host value. */
-> +    if (!arm_field_is_writable(field)) {
-> +        ranges_add(ranges, host, host);
-> +        goto done;
-> +    }
-> +
-> +    if (field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran4_2")  ||
-> +        field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran16_2") ||
-> +        field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran64_2")) {
-> +        /* Either support the host value or the "off" value */
-> +        ranges_add(ranges, host, host);
-> +        if (host != 1) { /* 1 = "off" */
-> +            ranges_add(ranges, 1, 1);
-those are tagged with SAFE_EXACT policy in the kernel. Could you elaborate?
-> +        }
-> +    } else if (field_matches(field, CTR_EL0_IDX, "L1Ip")) {
-> +        /* Only safe to downgrade to VIPT, other values are reserved. */
-> +        ranges_add(ranges, host, host);
-> +        if (host != 2) { /* 2 = "VIPT" */
-> +            ranges_add(ranges, 2, 2);
-*ID_AA64FPFR0_EL1_F8* hals have* EXACT policy and I don't see them
-special cased here.
-
-
-> +        }
-> +    } else if (field_matches(field, ID_AA64MMFR1_EL1_IDX, "SpecSEI") ||
-> +               field_matches(field, ID_MMFR4_EL1_IDX, "SpecSEI")) {
-> +        /* It is safe to upgrade SpecSEI to 1, other values are reserved. */
-> +        ranges_add(ranges, host, host);
-> +        if (host != 1) {
-> +            ranges_add(ranges, 1, 1);
-> +        }
-> +    } else if (field->index == MIDR_EL1_IDX ||
-> +               field->index == REVIDR_EL1_IDX ||
-> +               field->index == AIDR_EL1_IDX) {
-> +        /*
-> +         * No restriction on value that can be set for implementation ID
-> +         * registers fields.
-> +         */
-> +        uint64_t max = 0;
-> +        if (field->length == 64) {
-> +            max = ~0ULL;
-> +        } else {
-> +            max = (1ULL << field->length) - 1;
-> +        }
-> +        ranges_add(ranges, 0, max);
-> +    } else {
-> +        /*
-> +         * After handling the special cases, other writable fields are
-> +         * either lower-safe or signed lower-safe.
-> +         */
-> +        if (field->arch_vals_count) {
-> +            for (uint32_t i = 0; i < field->arch_vals_count; i++) {
-> +                uint64_t av = field->arch_vals[i];
-> +                int64_t v = is_signed ?
-> +                    sextract64(av, 0, field->length) : (int64_t)av;
-> +                int64_t hv = is_signed ?
-> +                    sextract64(host, 0, field->length) : (int64_t)host;
-> +                if (v <= hv) {
-> +                    ranges_add(ranges, av, av);
-> +                }
-> +            }
-> +        } else {
-> +            g_assert(!is_signed); /* No signed field with no arch vals */
-> +            ranges_add(ranges, 0, host);
-> +        }
-> +    }
-> +done:
-> +    *value_set = g_new0(ArmFieldValueSet, 1);
-> +    (*value_set)->n_ranges = ranges->len;
-> +    (*value_set)->ranges = (ArmFieldRange *)g_array_free(ranges, false);
-> +}
-> +
->  static bool arm_field_skip_writeback_always(const ARM64SysRegField *field)
->  {
->      /*
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 4e563fab96..9481e56412 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -175,6 +175,34 @@ int kvm_arm_read_sys_reg64(int fd, uint64_t *val,
->   */
->  void kvm_arm_add_vcpu_properties(ARMCPU *cpu);
->  
-> +typedef struct ARM64SysReg ARM64SysReg;
-> +typedef struct ARM64SysRegField ARM64SysRegField;
-> +typedef struct ARMISARegisters ARMISARegisters;
-> +
-> +typedef struct ArmFieldRange {
-> +    uint64_t min;
-> +    uint64_t max;
-> +} ArmFieldRange;
-> +
-> +typedef struct ArmFieldValueSet {
-> +    ArmFieldRange *ranges;
-> +    size_t n_ranges;
-> +} ArmFieldValueSet;
-> +
-> +/**
-> + * kvm_arm_field_get_supported_values:
-> + * @field: The field to get the supported values for
-> + * @host_isar: The host ISAR registers
-> + * @value_set: The set of supported values for the @field
-> + *
-> + * Will be allocated and filled in with the supported values for the @field
-> + * based on the host_isar and whether the field is writable or not.
-> + * The caller must free the value_set.
-> + */
-> +void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
-> +                                        const ARMISARegisters *host_isar,
-> +                                        ArmFieldValueSet **value_set);
-> +
->  /**
->   * kvm_arm_steal_time_finalize:
->   * @cpu: ARMCPU for which to finalize kvm-steal-time
-Eric
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 871ee45..3b71af9 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -985,6 +985,102 @@ static void build_msc_cache_controller(GArray *table_data, int identifier,
+     }
+ }
+ 
++struct mpam_stat {
++    MachineState *ms;
++    GArray *table_data;
++    hwaddr base_addr;
++    int count;
++    int cpu_count;
++    uint32_t mpam_id; /* Just needs to be unique */
++};
++
++static int mpam_add_msc(Object *obj, void *opaque)
++{
++    if (object_dynamic_cast(obj, TYPE_MPAM_MSC_MEM)) {
++        struct mpam_stat *mpam_s = opaque;
++        SysBusDevice *s = SYS_BUS_DEVICE(obj);
++        int num_ris = object_property_get_uint(obj, "num-ris", &error_fatal);
++        uint32_t oflow_gsiv = object_property_get_uint(obj, "oflow-gsiv",
++                                                       &error_fatal);
++        uint32_t err_gsiv = object_property_get_uint(obj, "err-gsiv",
++                                                     &error_fatal);
++        uint64_t *ids = g_new0(uint64_t, num_ris);
++        int j = 0;
++        int i;
++
++        /*
++         * Locator for each RIS.  A per-node instance (node property set)
++         * covers exactly its own NUMA node; a single-MSC instance spans
++         * every memory-bearing node, one RIS each.
++         */
++        if (object_property_get_uint(obj, "node", &error_fatal) != UINT16_MAX) {
++            ids[j++] = object_property_get_uint(obj, "node", &error_fatal);
++        }
++        for (i = 0; i < mpam_s->ms->numa_state->num_nodes; i++) {
++            if (j >= num_ris) {
++                break;
++            }
++            if (mpam_s->ms->numa_state->nodes[i].node_mem) {
++                ids[j++] = i;
++            }
++        }
++
++        build_msc_memory_controller(mpam_s->table_data, mpam_s->count,
++                                    s->mmio[0].addr, mpam_s->mpam_id++,
++                                    num_ris, ids, oflow_gsiv, err_gsiv);
++        mpam_s->count++;
++        g_free(ids);
++    }
++
++    if (object_dynamic_cast(obj, TYPE_MPAM_MSC_CACHE)) {
++        struct mpam_stat *mpam_s = opaque;
++        SysBusDevice *s = SYS_BUS_DEVICE(obj);
++        int num_ris = 1;
++        uint64_t *ids = g_new0(uint64_t, num_ris);
++        uint8_t cache_level = object_property_get_uint(obj, "cache-level",
++                                                       &error_fatal);
++        uint8_t cache_type = object_property_get_uint(obj, "cache-type",
++                                                      &error_fatal);
++        uint16_t cpu = object_property_get_uint(obj, "cpu", &error_fatal);
++        uint32_t oflow_gsiv = object_property_get_uint(obj, "oflow-gsiv",
++                                                       &error_fatal);
++        uint32_t err_gsiv = object_property_get_uint(obj, "err-gsiv",
++                                                     &error_fatal);
++
++        ids[0] = PPTT_CACHE_ID(cache_type, cache_level, cpu);
++        build_msc_cache_controller(mpam_s->table_data, mpam_s->count,
++                                   s->mmio[0].addr, mpam_s->mpam_id++,
++                                   num_ris, ids, oflow_gsiv, err_gsiv);
++        mpam_s->count++;
++        g_free(ids);
++    }
++
++    return 0;
++}
++
++static void
++build_mpam(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++{
++    AcpiTable table = {
++        .sig = "MPAM",
++        .rev = 1,
++        .oem_id = vms->oem_id,
++        .oem_table_id = vms->oem_table_id,
++    };
++    struct mpam_stat mpam_s = {
++        .ms = MACHINE(vms),
++        .count = 0,
++        .base_addr = vms->memmap[VIRT_MPAM_MSC].base,
++        .table_data = table_data,
++    };
++
++    acpi_table_begin(&table, table_data);
++
++    object_child_foreach_recursive(object_get_root(), mpam_add_msc, &mpam_s);
++
++    acpi_table_end(linker, &table);
++}
++
+ /*
+  * ACPI spec, Revision 6.5
+  * 5.2.25 Generic Timer Description Table (GTDT)
+@@ -1517,6 +1613,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker, vms, wdt && !has_wdat);
+ 
++    if (vms->mpam) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_mpam(tables_blob, tables->linker, vms);
++    }
++
+     acpi_add_table(table_offsets, tables_blob);
+     {
+         AcpiMcfgInfo mcfg = {
+-- 
+2.43.0
 
 

@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78663CCA46C
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:03:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4755DCCA46C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:04:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhbH-0000Uk-Sp; Fri, 16 Oct 2026 09:03:56 -0400
+	id 1xHhZS-0006Z8-JA; Fri, 16 Oct 2026 09:02:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHfEx-0006hc-Ej; Fri, 16 Oct 2026 06:32:43 -0400
-Received: from out203-205-221-231.mail.qq.com ([203.205.221.231])
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeb1-0006tr-CM
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:51:27 -0400
+Received: from xmbghk7.mail.qq.com ([43.163.128.47])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHfEt-0004q9-GA; Fri, 16 Oct 2026 06:32:43 -0400
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeaz-0008Jr-3H
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:51:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792146753; bh=+pvtlscJyweE+6uH1ANFrshUnjzzvMWtiPvGlUo8ChY=;
+ t=1792144282; bh=4K4tXuy4N/WfzhzqSSLfGlX3v0njMaVxf+lSPeD2XV0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=EmvebSVGQL0FcKgU2h46R7CG4k9SFVjntKDOyzyNTepMttTSKgryb7Ra01iPfT7E7
- 3pmhXz2vqDAIAztvYjnQqKQY0LaTkA+/hGXMhBWSFq/KXYgN+i4GF+rOp8fPsEJyja
- GVeIilJiBHQRdejxbJ7CXoozcmqn+soLDh30xGok=
+ b=N57ZF7+izkhNNhsTA+TWMc2crWwBxWp4PFBDSR/7tCFx0JgiL5IgcMveFeW4KJ1nX
+ Ahd/etlhnVL+Oc+4rNI/r6//MeVj/s02RDuWO1Rw+s052zheSVWVdYvbRnoreymT2s
+ fiK5WS6wwYwKrdsnd/s6rCisL29J6k+AIJIJ8Ktg=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
- id 81E21EB9; Fri, 16 Oct 2026 18:32:30 +0800
-X-QQ-mid: xmsmtpt1792146750tu45fhs72
-Message-ID: <tencent_E9186FE529AD6EC21F51EF364CEA6426EF05@qq.com>
-X-QQ-XMAILINFO: MRMtjO3A6C9XzRRe3Ik1rmuLLx10trhHlRxVD6VbSkk1/DA4tWrBQi6MmdofJH
- cDWp7bPRKYw1NepyHDMqmwZLY9siGz1Gcd2TrDGP8bhGtifFBVSBnthRSP8MF1J3MsmdfHgm7S+B
- D9uVaZkSxjKnvkaqUappiahyIevU2aDWu5aqNmCnrNr3Gi0yXwgQxA0xhpeElP/P4l9DkZQGt/tD
- xK+5farQzA7wtdy45rw4bZwb3uOmjAfkhbd7zncHKf4VqwpqV4Lh/FB11E0O8BSSW0ANUYpZgA7K
- NmUwc72A7IE4JRmnrcofuvzzsNSaT3JBsQZSFIwnN4czOAgALWF/TLAQY5nFVT6rL6CYiLJ+a/dT
- y05doqr5sRl3HdBvvxotXRZmlszYR7dlYAn0vOr9UAM/tXzdGd0FX5eAyY/TmRknSjQ9uXLGudnw
- XWseTWF40LxGaXzxPHGW3irgZ/16UEub61vY5KkvCE4WPM6X7lc1yjtecBzwqyBFq2clPuO3bHqz
- 6IRdN5NPt3WhRIsQ3P3Qlcco3KGiOci7ZF428ykcr9IZziMUxABJEv2K/TlkZ4m7u1hqwwVe0TNU
- zcgLPZqlCaHHxjX35iFX6H912LxYjok5dMKDUARh5wXCLJMqUztxDjRQ73BPyX2VW76tshwCW122
- bjKoTk4hsxrGXCFzeQgS8QmkOGdWHJJ6a02Pr4DKEtycG+kT1WM2faFT5rR2ZTlMrqEy7phfJCj1
- 1DG1a+4b266kVk10YYjCZgmo4O9+ZyxeizbCI5CECd2rgOPmMvoqtaP4wqnEh49jdd3edc4aUPDE
- jbieKHc1HMKlmJ5Zj1Hn+qZkPdeL5hkCTn51Tr4NDRWsxj/EFRSHlZG7uf3qK6V2ILU3OJ6qnOmH
- LHIk1SB4hEK2VhtJELc0oX5lh3imMdVpWfmFempu4CDaIYq1asCG6EaA2KwmkKo6UOVXCj9LS85X
- /tBmAwH56pd4cvlK8BlrFRfYleoC5c3d4BCs6RHJgSpS/ChbNCCV40HgN7SyjTTCn0qqRmoM7OKB
- K52XZth35YHmnptvZMCrj9qAQ6lqwROPg1YHfedRJYH1imk585x8vpv1DeIkuJUDbf13o98QBxT+
- LN7Ip3tj+DfOrsaiKXR6DYNlIgqg==
-X-QQ-XMRINFO: OW8WShJdN8S2Y5iKw6Z8myepVl+s6/kk+g==
+ by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
+ id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
+X-QQ-mid: xmsmtpt1792144079tevvq26r1
+Message-ID: <tencent_8C2C6D66A20C91FD7641EA7206ED18672505@qq.com>
+X-QQ-XMAILINFO: OVFdYp27KdlJwtG1cvhK1i+V9L1xqqZom1L/uELsKkJJOB3fKQcZtWCgHSXv2N
+ w/7JgILA5StTVY3rnC+heyDoVSC5tWgubJV5Uy9n3xI/5GmLoxdOTD7YrH58Rjo2K2FlyrMh8I10
+ r96cYdVTVZuRnNaI1RcEDsy/CwIV7CBR0mz7cKcCox6NB8qUjxU4na5sirJ0JEnm36ZUJr/mlido
+ OV6kPvjnixwsSk8aIb+W1BvzY5aCMoDDkADP9gBjW6hFo1eO3JVmvhaHDiUReP16cMS/8nuSzmRy
+ U6goKonseMavLC6HAR8eVx5RtzDg3F8pUjWm1B5UjxAROwTt6rO2Hpgfjn07og4S6iabnz/korLR
+ C92U89HIuBvL8DTIT4XdfLeWQqBxIRrBV5SlzdYFhom204WkxeRNYTl1DHbNaNeoVXYmaTcroduD
+ ycT19kKNoWxC1QhrKxWfR/vx6E56VKOW9ouOP8u7KGdSVqZLgdIHJ8c82A82RGs09SKSmMkG9GBP
+ t1/Ser65L2FkHG6bIe1GGMvTdE+1mliFmr/vWGzUq/ULBU4B6Ot9eN8LpBEco9kFqtBx70/s+cFl
+ g8svfCw4mVUfWhVQqLt0Lc4vaW34K/4GuoMJlSFoGato3Nrp2vPXQVJb/HTwknTYUa7C8AwOdnAY
+ Ohsr0AytXmywehj2Sg/gFUjkxvRlAiznfW6HPVRvDM5dsKVc9OsAN+lL4mV10ovrDIeNhZ9m6Qtb
+ 14fgAHJ1X+/8KCsugmhcWhFOpYupWdeorQTIetDvCtAQg8CBzyslbgUn4En3ygCN8qO6TNwAHbsk
+ WfCFctL+DImSRFr5EC9fcrOt2nPKCnBcGIVKQPHM8Fzp78E8CvUYpsYrrAJOdOT678ZMRL+3lWGN
+ h8QaVqD6Eldp5ZzFbwZfwunKtEuDLSMhWf5Z55KNrnxXI3txj25w/rPYIDKo99tHIWgpMkQJOU3p
+ 9liFviCIZOaHknnv4DRXlyb24fGnlK020a91VVyC/S4AiChkMAv3DV1ibA3rl4QOqrApMqcyqIxu
+ yZW8rvYX5ChvjDNHobLRZ26Vxyo7K1Y9miXJXtW2vEXC1ex5t8
+X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 36/37] qapi: Add MPAM cache introspection schema and stub
-Date: Fri, 16 Oct 2026 18:10:56 +0800
-X-OQ-MSGID: <20261016101058.1900808-22-2118537295@qq.com>
+Subject: [PATCH 06/37] hw/arm/mpam: Add MPAM MSC base device
+Date: Fri, 16 Oct 2026 17:47:00 +0800
+X-OQ-MSGID: <20261016094733.1898485-7-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
-References: <20261016101058.1900808-1-2118537295@qq.com>
+In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
+References: <20261016094733.1898485-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=203.205.221.231; envelope-from=2118537295@qq.com;
- helo=out203-205-221-231.mail.qq.com
+Received-SPF: pass client-ip=43.163.128.47; envelope-from=2118537295@qq.com;
+ helo=xmbghk7.mail.qq.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
 X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:50 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:45 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,209 +87,205 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-Add the query-mpam-cache QMP command schema: the MpamBm bitmap
-type, the per-RIS MpamRegs state and the MpamCacheInfo summary of
-a cache MSC, plus an optional cache level filter.  The command is
-stubbed to return NULL so the generated marshal links; the real
-implementation walks the device tree in the next patch.
+Add the mpam-msc sysbus device core:
+- Per-RIS register storage(Mpamf)
+- The device state (selector state, num-ris/num-partid/
+  num-int-partid properties), realize with the per-RIS allocation
+  and the MMIO region (MPAM_SIZE window).
+- The MMIO handlers covering the identification registers (MPAMF_IDR
+  with its 64-bit EXT view IIDR, AIDR, IMPL_IDR, PARTID_NRW_IDR
+  and the MSMON IDRs that read as zero until monitoring is implemented).
 
-Based on an RFC series by Jonathan Cameron, adapted to the current
-qapi documentation rules.
+The base type registers no features; the mpam-msc-mem and
+mpam-msc-cache subtypes assemble their feature IDR fields.
+
+Based on an RFC series by Jonathan Cameron.
 
 Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/meson.build       |   1 +
- hw/arm/mpam-qapi-stubs.c |  14 +++++
- qapi/meson.build         |   1 +
- qapi/mpam.json           | 120 +++++++++++++++++++++++++++++++++++++++
- qapi/qapi-schema.json    |   1 +
- 5 files changed, 137 insertions(+)
- create mode 100644 hw/arm/mpam-qapi-stubs.c
- create mode 100644 qapi/mpam.json
+ hw/arm/mpam.c | 171 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 171 insertions(+)
 
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 42ca75b..adf9146 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -107,6 +107,7 @@ arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
- arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
- arm_common_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
- arm_common_ss.add(when: 'CONFIG_MPAM', if_true: files('mpam.c'))
-+arm_common_ss.add(files('mpam-qapi-stubs.c'))
- arm_common_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
- arm_common_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
- arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
-diff --git a/hw/arm/mpam-qapi-stubs.c b/hw/arm/mpam-qapi-stubs.c
-new file mode 100644
-index 0000000..77735ed
---- /dev/null
-+++ b/hw/arm/mpam-qapi-stubs.c
-@@ -0,0 +1,14 @@
-+/*
-+ * QEMU MPAM QMP command stubs
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qapi/qapi-commands-mpam.h"
+diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
+index 772a120..b1d6472 100644
+--- a/hw/arm/mpam.c
++++ b/hw/arm/mpam.c
+@@ -221,3 +221,174 @@ REG32(MPAMF_MPAMCFG_MBW_PBM0, 0x2000)
+ #define MPAM_CACHE_PART 32
+ /* MPAMF_IIDR.IMPLEMENTER: ARM JEP106 code for Huawei (0x736). */
+ #define MPAM_IIDR_IMPLEMENTER 0x736
 +
-+MpamCacheInfoList *qmp_query_mpam_cache(bool has_level, int64_t level,
-+                                        Error **errp)
++typedef struct Mpamf {
++    uint64_t idr;
++    uint32_t iidr;
++    uint32_t aidr;
++    uint32_t impl_idr;
++    uint32_t cpor_idr;
++    uint32_t ccap_idr;
++    uint32_t mbw_idr;
++    uint32_t pri_idr;
++    uint32_t partid_nrw_idr;
++    uint32_t msmon_idr;
++    uint32_t csumon_idr;
++    uint32_t mbwumon_idr;
++    uint32_t err_msi_mpam;
++    uint32_t err_msi_addr_l;
++    uint32_t err_msi_addr_h;
++    uint32_t err_msi_data;
++    uint32_t err_msi_attr;
++    uint32_t ecr;
++    uint32_t esr;
++    uint32_t cfg_part_sel;
++} Mpamf;
++
++typedef struct MPAMMSCState {
++    SysBusDevice parent_obj;
++
++    Mpamf *mpamf;
++
++    uint8_t ris;
++    uint16_t part_sel; /* Technically per ris, but in same reg */
++    bool internal_part_sel;
++    struct MemoryRegion mr;
++    uint32_t num_partid;
++    uint32_t num_int_partid;
++    uint8_t num_ris;
++
++} MPAMMSCState;
++
++DECLARE_INSTANCE_CHECKER(MPAMMSCState, MPAM_MSC_DEVICE, TYPE_MPAM_MSC);
++
++static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
++                                  unsigned size)
 +{
-+    return NULL;
-+}
-diff --git a/qapi/meson.build b/qapi/meson.build
-index a46269b..c6663e5 100644
---- a/qapi/meson.build
-+++ b/qapi/meson.build
-@@ -42,6 +42,7 @@ qapi_all_modules = [
-   'machine-s390x',
-   'migration',
-   'misc',
-+  'mpam',
-   'net',
-   'pragma',
-   'qom',
-diff --git a/qapi/mpam.json b/qapi/mpam.json
-new file mode 100644
-index 0000000..ff476a1
---- /dev/null
-+++ b/qapi/mpam.json
-@@ -0,0 +1,120 @@
-+# -*- Mode: Python -*-
-+# vim: filetype=python
-+# SPDX-License-Identifier: GPL-2.0-or-later
++    MPAMMSCState *s = MPAM_MSC_DEVICE(opaque);
++    Mpamf *mpamf = &s->mpamf[s->ris];
 +
-+##
-+# = ARM MPAM State Introspection
-+##
-+
-+##
-+# @MpamBm:
-+#
-+# A bitmap control value, as used by MPAM cache-portion (CPBM) and
-+# memory-bandwidth-portion (MBW_PBM) controls.  The value is
-+# carried as an array of 32-bit words, least significant first.
-+#
-+# @words: The bitmap, one element per 32-bits of the control
-+#
-+# Since: 10.1
-+##
-+{ 'struct': 'MpamBm',
-+  'data' : { 'words' : [ 'int' ]
-+           }
-+}
-+
-+##
-+# @MpamRegs:
-+#
-+# Per RIS register state of an emulated MPAM Memory System Component.
-+#
-+# @idr: MPAMF_IDR, the MPAM features identification register
-+#
-+# @iidr: MPAMF_IIDR, the MPAM implementer identification register
-+#
-+# @aidr: MPAMF_AIDR, the MPAM architecture identification register
-+#
-+# @cpor-idr: MPAMF_CPOR_IDR, cache-portion feature register
-+#
-+# @ccap-idr: MPAMF_CCAP_IDR, cache-capacity feature register
-+#
-+# @mbw-idr: MPAMF_MBW_IDR, memory-bandwidth feature register
-+#
-+# @pri-idr: MPAMF_PRI_IDR, priority feature register
-+#
-+# @partid-nrw-idr: MPAMF_PARTID_NRW_IDR, PARTID narrowing register
-+#
-+# @msmon-idr: MPAMF_MSMON_IDR, monitor feature register
-+#
-+# @csumon-idr: MPAMF_CSUMON_IDR, cache-usage monitor register
-+#
-+# @mbwumon-idr: MPAMF_MBWUMON_IDR, memory-bandwidth monitor register
-+#
-+# @ecr: MPAMF_ECR, the error control register
-+#
-+# @esr: MPAMF_ESR, the error status register
-+#
-+# @cfg-part-sel: MPAMCFG_PART_SEL, the partition-selection register
-+#
-+# @cfg-cpbm: The configured cache-portion bitmaps, one per
-+#     internal PARTID
-+#
-+# Since: 10.1
-+##
-+{ 'struct' : 'MpamRegs',
-+  'data' : { 'idr' : 'int',
-+             'iidr' : 'int',
-+             'aidr' : 'int',
-+             'cpor-idr': 'int',
-+             'ccap-idr': 'int',
-+             'mbw-idr': 'int',
-+             'pri-idr': 'int',
-+             'partid-nrw-idr': 'int',
-+             'msmon-idr': 'int',
-+             'csumon-idr': 'int',
-+             'mbwumon-idr': 'int',
-+             'ecr': 'int',
-+             'esr': 'int',
-+             'cfg-part-sel': 'int',
-+             'cfg-cpbm': ['MpamBm']#lazy
-+          }
++    switch (offset) {
++    case A_MPAMF_IDR:
++        switch (size) {
++        case 4:
++            return mpamf->idr & 0xffffffff;
++        case 8:
++            return mpamf->idr;
++        default:
++            qemu_log_mask(LOG_UNIMP, "MPAM: Unexpected read size\n");
++            return 0;
++        }
++    case A_MPAMF_IDR + 0x04:
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, EXT)) {
++            qemu_log_mask(LOG_UNIMP, "MPAM: Unexpected read of top of IDR\n");
++            return 0;
++        }
++        switch (size) {
++        case 4:
++            return mpamf->idr >> 32;
++        default:
++            qemu_log_mask(LOG_UNIMP, "MPAM: Unexpected read size\n");
++            return 0;
++        }
++    case A_MPAMF_IIDR:
++        return mpamf->iidr;
++    case A_MPAMF_AIDR:
++        return mpamf->aidr;
++    case A_MPAMF_IMPL_IDR:
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_IMPL_IDR)) {
++            qemu_log_mask(LOG_UNIMP,
++                "MPAM: Accessing IMPL_IDR which isn't suported\n");
++            return 0;
++        }
++        return mpamf->impl_idr;
++    case A_MPAMF_PARTID_NRW_IDR: {
++        return mpamf->partid_nrw_idr;
++    }
++    case A_MPAMF_MSMON_IDR:
++        return mpamf->msmon_idr;
++    case A_MPAMF_CSUMON_IDR:
++        return mpamf->csumon_idr;
++    case A_MPAMF_MBWUMON_IDR:
++        return mpamf->mbwumon_idr;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "MPAM: Unexpected read of %lx\n", offset);
++        return 0x0;
++    }
 +}
 +
-+##
-+# @MpamCacheInfo:
-+#
-+# Information about an MPAM cache Memory System Component.
-+#
-+# @cpu: First CPU of the set associated with the cache
-+#
-+# @level: Level of cache
-+#
-+# @type: Type of cache
-+#
-+# @regs: The per RIS register state
-+#
-+# Since: 10.1
-+##
-+{ 'struct': 'MpamCacheInfo',
-+  'data' : { 'cpu' : 'int',
-+             'level' : 'int',
-+             'type' : 'int',
-+             'regs' : ['MpamRegs']
-+           }
++static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
++                               unsigned size)
++{
++    switch (offset) {
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "MPAM: Write to unexpected register Addr %lx Value=%lx\n",
++                      offset, value);
++    }
 +}
 +
-+##
-+# @query-mpam-cache:
-+#
-+# Get a list of MpamCacheInfo for all Cache related MSC
-+#
-+# @level: Provide a cache level to filter against
-+#
-+# Returns: a list of @MpamCacheInfo describing all
-+#   the MPAM cache MSC instances
-+#
-+# Since: 10.1
-+##
-+{ 'command': 'query-mpam-cache',
-+  'data': { '*level': 'int' },
-+  'returns' : ['MpamCacheInfo'],
-+  'allow-preconfig': true }
-diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
-index b93dd68..cef175d 100644
---- a/qapi/qapi-schema.json
-+++ b/qapi/qapi-schema.json
-@@ -64,6 +64,7 @@
- { 'include': 'replay.json' }
- { 'include': 'yank.json' }
- { 'include': 'misc.json' }
-+{ 'include': 'mpam.json' }
- { 'include': 'misc-arm.json' }
- { 'include': 'misc-i386.json' }
- { 'include': 'audio.json' }
++static const MemoryRegionOps mpam_msc_ops = {
++    .read = mpam_msc_read_reg,
++    .write = mpam_msc_write_reg,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 8,
++        .unaligned = false,
++    },
++    .impl = {
++        .min_access_size = 1,
++        .max_access_size = 8,
++    },
++};
++
++static void mpam_msc_realize(DeviceState *dev, Error **errp)
++{
++    MPAMMSCState *s = MPAM_MSC_DEVICE(dev);
++
++    /* IHI 0099: MPAMF_CFG_PART_SEL.RIS is 4 bits, so at most 16 RIS. */
++    if (s->num_ris > 16) {
++        error_setg(errp, "num-ris must be <= 16");
++        return;
++    }
++    if (s->num_partid == 0) {
++        error_setg(errp, "num-ris must be <= 16");
++        return;
++    }
++    if (s->num_int_partid == 0) {
++        s->num_int_partid = s->num_partid;
++    }
++
++    s->mpamf = g_new0(Mpamf, s->num_ris);
++    memory_region_init_io(&s->mr, OBJECT(s), &mpam_msc_ops, s, "mpam_msc",
++                          MPAM_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
++}
++
++static const Property mpam_msc_props[] = {
++    DEFINE_PROP_UINT8("num-ris", MPAMMSCState, num_ris, 1),
++    DEFINE_PROP_UINT32("num-partid", MPAMMSCState, num_partid, 1),
++    DEFINE_PROP_UINT32("num-int-partid", MPAMMSCState, num_int_partid, 0),
++};
++
++static void mpam_msc_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_props(dc, mpam_msc_props);
++}
++
++static const TypeInfo mpam_msc_info = {
++    .name = TYPE_MPAM_MSC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(MPAMMSCState),
++    .class_init = mpam_msc_init
++};
++
++static void mpam_register_types(void)
++{
++    type_register_static(&mpam_msc_info);
++}
++type_init(mpam_register_types);
 -- 
 2.43.0
 

@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 454B7CCF2C1
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:12:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DAC1CCA462
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:22:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhjQ-0007nx-Ay; Fri, 16 Oct 2026 09:12:20 -0400
+	id 1xHhsj-000263-JR; Fri, 16 Oct 2026 09:21:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHhjG-0007kC-Lw
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:12:10 -0400
+ id 1xHhsg-00025O-Or
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:21:55 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xHhjE-0006uJ-TB
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:12:10 -0400
+ id 1xHhse-0007mW-KR
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 09:21:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792156327;
+ s=mimecast20190719; t=1792156911;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NqAlwmurey0eGwhQI19UUFnkpSWK92NIkqItN6DRKHs=;
- b=AYiHtoDIKBBMzSfAcrmQ4vcfZ05Zyz/+gAsBxLN+mO/vci1NjxO5/HimCkMgrixBIlU2tk
- qt7BaB80DpiHrFRXqNArguXdxvxmm6P9PmwKnFqX+qaH3h0jFblMNm/Dlo4DqksR78J7Ld
- PnA3cT/fViDhAJHByBA1liVsksl40wU=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=nvNMJKy5hEsNmX3h2yw6AJYeXfgIvjlosnD74UtrqYM=;
+ b=Skh15PCIZdaPGZcf484xyrsacEtd2KwR/FtuWtrHMGc7dPYlIwikAYivSFXtT2D0e8/a+T
+ kmWMUYn+/1/NzUKjn2pHCnPwVwRijHY0mnIs0PP+HJKnaIw30NGI4NBui2TXrXuP0Ym2sZ
+ +R32vMI8KswPJaFw3vwWcZf5lv3tyTs=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-614-B1D9YO1LPo2E4mrBNCLX-g-1; Fri, 16 Oct 2026 13:12:06 +0000
-X-MC-Unique: B1D9YO1LPo2E4mrBNCLX-g-1
-X-Mimecast-MFC-AGG-ID: B1D9YO1LPo2E4mrBNCLX-g_1792156325
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4a16db51147so41549865e9.3
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:12:06 -0700 (PDT)
+ us-mta-128-uwakDtHTNNGUKIYgpSAqBg-1; Fri, 16 Oct 2026 13:21:48 +0000
+X-MC-Unique: uwakDtHTNNGUKIYgpSAqBg-1
+X-Mimecast-MFC-AGG-ID: uwakDtHTNNGUKIYgpSAqBg_1792156908
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-48e011829easo365864f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 06:21:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792156325; x=1792761125;
+ d=1e100.net; s=20260707; t=1792156907; x=1792761707;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=NqAlwmurey0eGwhQI19UUFnkpSWK92NIkqItN6DRKHs=;
- b=N7obhiz4AsCqZDIuq+iQDdRNX9wA4bBkRRG9hPa4DeBpvbC0AhavbZePH0LZqqSdW5
- nkkmcviLXp1VIxdHpMttDI3ZjDeYxLSzNL+NCX+woMa8d23YWwsJwDQVa8arC8uB9A19
- vyZAz/SfCuRaa3CfeQLAdDIoSAJ1/xPUfn1CnELkbn1Jljc1Zf9FuYU507Wc70wJG0DR
- Q4HgSYtT5QfK75PH8XsuwASsGFvpbRPhP4N82vSaOvofaAUMa4RtO5m5VrJwCElkopv1
- 2Gfj9YfwP8yE8cdRKh3TEHrSVlJfQBBIcZAovMp6qgfyfFxFs5tbzfl+I1EDub+wDu9j
- qXHA==
+ bh=nvNMJKy5hEsNmX3h2yw6AJYeXfgIvjlosnD74UtrqYM=;
+ b=yN2KAERbzVrx38a59ADbCReco8lbreNYfVrTrqUsvfZCaMUoPFGlInDoUNoelP/h+S
+ 9gU6NWQPh7YhiosuU/1yy8WheyPj+xYJC4Zsd59bktFEmW9hhgxMGsoR9b+yJH7JXclV
+ TvhR3X1K8Rxz1Pcj2LWG5pi5AIqPg9shiVz7HqbcKtirikxL44vKYfoJ/ze71Zpg3rqo
+ KT/o1NDqTHE0i8gPTFy9AO3juX6SIhnuYRHAjshDZgmL10NkvH3yu3AgGp18COWDPmrw
+ zHuGEqoPDmnDAfiyFdZL0e0mog5aihpHi6h7KchPbVqnzv+4eSHXKm5UurBr4Ch0Sd8d
+ hs9g==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx0i7aFJSc5V2MS+49bfvvBuPqm+G0l/f5b8rNYtRgoQqECxzOmXYNwqTuZp793z/zHjcmQOOQ0aw==@nongnu.org
-X-Gm-Message-State: AFq9FYInvtf72A05uKHgNDrzW0Ww4lT1087QE6RbCSK+g6lTJoRxVUhP
- HmHnVzzK8UnQyWSLd65/+PhwSXY0knBkoc4NMVk7FCURjB4LJvBmPFroyi0icV+GKlxyca3ahyU
- zh8/nGpgrHOsE3JQUZfnq5G3Yybtc+qgM8VqWncHI9RZiBTdC5uSLUg==
-X-Gm-Gg: AYBFou1f0uXbmAB6ze3M0olKeGwv4k/tyR2/DZpbEoMFa08TDhFJ/3jxuG1PofPxHL3
- gZ8Z57pSymX/V5+nVJgBJoGhfp6Er6S7j3SZG4HOLwHSTs8TcQ2ayGpdCauBbNrUqQ5rnMa8Nz2
- E+geIgpe0KFsKQdXg4s+9qU8JPhluyBK/CBZn4ofiahh7S9G6mxqDJfrTcVPVs7zEUVAXH0vkff
- GCjH8ovjAQCcM4SMcblha1Bc+w30e7N30EDLN4VozGjfuctelUilkWZv36rgKT4HT33cshMqEeO
- rGRKijUOolP5NQKr/rtEZ+F0v/zmSJz0tvS9y/boLDeS73H9dVchMlK1ptmNWn1s+XbX78eNgCF
- yRvoY5CI8n79ajS8uTV5HUWjjKE7RtZj4fQ==
-X-Received: by 2002:a05:600c:3e07:b0:4a1:a009:9724 with SMTP id
- 5b1f17b1804b1-4a1a00997f1mr285782675e9.7.1792156324969; 
- Fri, 16 Oct 2026 06:12:04 -0700 (PDT)
-X-Received: by 2002:a05:600c:3e07:b0:4a1:a009:9724 with SMTP id
- 5b1f17b1804b1-4a1a00997f1mr285782155e9.7.1792156324572; 
- Fri, 16 Oct 2026 06:12:04 -0700 (PDT)
+ AKwUvBxNIrBFu/WJrtNzi8iiFMrxCEY6cLTJCMtT82ZrfYPJ11VtKQUQsSxSOU/OiDM0GXsAGSGB17TIdQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLjfv1UFF37zDTdTSWWu4reabXjbSoGSw4HPsyOc7UeVyufgYHb
+ 4n6CPeSkM1CvjHGWwaeEhRk5o7wREFjJUzKhmALY2TpVR3z7TQ0t2bBQhNRk1n9KmLkR1qriVP9
+ IOqX22EmDnA6aJcpZYDJzdUVDx1RaHaUWlhH/wD7GZCh/BVduj+Nn9A==
+X-Gm-Gg: AYBFou3pxe9DkuTp0icjEthwpFjzDlX5aSzKri6iUDcILdmNlMlbWT9BMXXu41L/WXt
+ XhTtPy8J9M1NEhYX5j5E7Av3j+tGsXyRe4woDFAp4R5f1RyuBF/UTxeV13s1v6kro0Rbzd6MTPC
+ cfqWxVQzikfUHUNawR0PyKXpsL8OH79xPN4EEByEinbZeRHTuclheILj40J7bjktFDZ9b4k1MMO
+ eHGbYvKfccQetsRCXeRw/6q2aaMyqiLdaHFqcmg8o2W7TVet4lBuSx+ZpVjN/69tCXAP2cIuKuz
+ GbWtT6/XQabgoRsR/4/j6bGPl1H7hBPv08WY21FzOUKg7GXY2cdKI+Ig669kmMACbLM7jU9+KDM
+ N11y+KhxAPZ+b6OWx/woJrVlvp8wm/g9dUaG6IeZP5e575TVW
+X-Received: by 2002:a05:6000:4b15:b0:48d:fbee:3dec with SMTP id
+ ffacd0b85a97d-48dfbee3fa9mr5402028f8f.29.1792156907541; 
+ Fri, 16 Oct 2026 06:21:47 -0700 (PDT)
+X-Received: by 2002:a05:6000:4b15:b0:48d:fbee:3dec with SMTP id
+ ffacd0b85a97d-48dfbee3fa9mr5401985f8f.29.1792156907098; 
+ Fri, 16 Oct 2026 06:21:47 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48dfd4c5957sm4960343f8f.9.2026.10.16.06.12.03
+ ffacd0b85a97d-48dfe4d2321sm5067555f8f.19.2026.10.16.06.21.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Oct 2026 06:12:04 -0700 (PDT)
-Message-ID: <0a1a763d-c95d-413c-ac11-384d5db599c2@redhat.com>
-Date: Fri, 16 Oct 2026 15:12:02 +0200
+ Fri, 16 Oct 2026 06:21:46 -0700 (PDT)
+Message-ID: <4c9d85b0-4dac-40f8-8541-d79bb3670f12@redhat.com>
+Date: Fri, 16 Oct 2026 15:21:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v4 21/25] target/arm: report 0 as supported for ID
- fields gated by vCPU init flags
+Subject: Re: [RFC PATCH v4 24/25] target/arm/qmp: implement
+ query-cpu-props-info for KVM
 To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev
 Cc: cohuck@redhat.com, peter.maydell@linaro.org,
@@ -92,11 +92,11 @@ Cc: cohuck@redhat.com, peter.maydell@linaro.org,
  shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
  ping@khushitshah.com, sandesh.patel@nutanix.com
 References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
- <20260921123249.1708067-22-khushit.shah@nutanix.com>
+ <20260921123249.1708067-25-khushit.shah@nutanix.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260921123249.1708067-22-khushit.shah@nutanix.com>
+In-Reply-To: <20260921123249.1708067-25-khushit.shah@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: J6R8X8_EsGNkOrsSPH463H9OCo1-4bT97EkB8ChS0vg_1792156325
+X-Mimecast-MFC-PROC-ID: DDzsKlkcJZr0nMqDQVy-BbK_5ce0UeN8h316mRRxvSs_1792156908
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -126,71 +126,128 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
+Hi Khushit,
 
 On 9/21/26 2:32 PM, Khushit Shah wrote:
-> When QEMU queries the host ISAR via KVM, it uses a scratch vCPU
-> initialized with all host-supported features (like SVE and PAuth).
-
-So I expect this patch is not needed anymore after rebase on v9/v10
-
-Eric
+> Implement query-cpu-props-info for ARM64/KVM by creating and finalizing
+> a temporary "host" CPU object and then walking its QOM properties.
 >
-> KVM exposes the corresponding ID register fields (e.g.,
-> ID_AA64ISAR1_EL1.APA) as read-only. The supported-values list only
-> shows the enabled host value (e.g., 5). This falsely flags a model as
-> blocked, even though the features can be masked by omitting those flags
-> during vCPU initialization. For these fields, even if KVM reports them as
-> non-writable, we explicitly append "0" to the list of supported values
-> if the host value is non-zero.
+> For numeric SYSREG_ properties, report the host-supported value ranges
+> computed by kvm_arm_field_get_supported_values(). For boolean
+> properties, report false as always supported and true as supported when
+I am not sure false shall be always permitted. for instance iirc
+aarch64=off requires a special KVM capability which is not tested here.
+
+it is worth to emphasize those are the theoretical values that can be
+easily guessed, this does not check cross feature consistency which can
+only be tested when applying the values at KVM level I guess. So let's
+do not pretend that this is fully reliable. I think the only way to
+double check the chosen values is to do a full expansion for this models
+featuring the new values
+> the QOM property value is true.
 >
 > Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
 > ---
->  target/arm/kvm.c | 25 +++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
+>  target/arm/arm-qmp-cmds.c | 84 +++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 84 insertions(+)
 >
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 77b1bcdf55..0b5fb49dff 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -1346,6 +1346,24 @@ static void ranges_add(GArray *ranges, uint64_t min, uint64_t max)
->      g_array_append_val(ranges, r);
->  }
+> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+> index 0940285af1..ba488d5c01 100644
+> --- a/target/arm/arm-qmp-cmds.c
+> +++ b/target/arm/arm-qmp-cmds.c
+> @@ -84,6 +84,90 @@ static const char *cpu_model_advertised_features[] = {
+>      NULL
+>  };
 >  
-> +/*
-> + * Some fields are reported as non-writable by KVM but can still be
-> + * disabled by not requesting the corresponding vCPU init feature flag
-> + * (SVE, pauth). The supported values are derived from a scratch vCPU
-> + * whose init flags may differ from the real vCPU, so for these fields
-> + * "off" (0) is a supported value in addition to the host value.
-> + */
-> +static bool kvm_arm_field_off_via_vcpu_flags(const ARM64SysRegField *field)
+> +CpuPropertyInfoList *qmp_query_cpu_props_info(Error **errp)
 > +{
-> +    return field_matches(field, ID_AA64PFR0_EL1_IDX, "SVE")   ||
-> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "APA")  ||
-> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "API")  ||
-> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "GPA")  ||
-> +           field_matches(field, ID_AA64ISAR1_EL1_IDX, "GPI")  ||
-> +           field_matches(field, ID_AA64ISAR2_EL1_IDX, "APA3") ||
-> +           field_matches(field, ID_AA64ISAR2_EL1_IDX, "GPA3");
+> +    CpuPropertyInfoList *head = NULL;
+> +    const ARMISARegisters *host_isar;
+> +    ObjectPropertyIterator iter;
+> +    ObjectProperty *prop;
+> +    Error *err = NULL;
+> +    ObjectClass *oc;
+> +    Object *obj;
+> +
+> +    if (!kvm_enabled()) {
+> +        error_setg(errp, "query-cpu-props-info requires KVM");
+> +        return NULL;
+> +    }
+> +
+> +    oc = cpu_class_by_name(TYPE_ARM_CPU, "host");
+> +    if (!oc) {
+> +        error_setg(errp, "The 'host' CPU type is not available");
+> +        return NULL;
+> +    }
+> +
+> +    host_isar = kvm_arm_get_host_isar();
+> +
+> +    /* Spin up a scratch "host" vCPU object and walk its QOM properties. */
+> +    obj = object_new_with_class(oc);
+> +    arm_cpu_finalize_features(ARM_CPU(obj), &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        object_unref(obj);
+> +        return NULL;
+> +    }
+> +
+> +    object_property_iter_init(&iter, obj);
+> +    while ((prop = object_property_iter_next(&iter))) {
+> +        CpuPropertyInfo *info;
+> +
+> +        if (g_str_has_prefix(prop->name, "SYSREG_")) {
+> +            const ARM64SysRegField *field = prop->opaque;
+> +            CpuPropertyValueRangeList *ranges = NULL;
+> +            ArmFieldValueSet *vs = NULL;
+> +
+> +            info = g_new0(CpuPropertyInfo, 1);
+> +            info->name = g_strdup(prop->name);
+> +            info->type = CPU_PROPERTY_TYPE_NUMBER;
+> +
+> +            kvm_arm_field_get_supported_values(field, host_isar, &vs);
+> +            for (size_t k = 0; k < vs->n_ranges; k++) {
+> +                CpuPropertyValueRange *r = g_new0(CpuPropertyValueRange, 1);
+> +                r->min = vs->ranges[k].min;
+> +                r->max = vs->ranges[k].max;
+> +                QAPI_LIST_PREPEND(ranges, r);
+> +            }
+> +            info->u.number.supported_values = ranges;
+> +
+> +            g_free(vs->ranges);
+> +            g_free(vs);
+> +        } else if (g_strv_contains(cpu_model_advertised_features, prop->name)) {
+> +            bool cur = object_property_get_bool(obj, prop->name, &error_abort);
+> +            boolList *values = NULL;
+> +
+> +            info = g_new0(CpuPropertyInfo, 1);
+> +            info->name = g_strdup(prop->name);
+> +            info->type = CPU_PROPERTY_TYPE_BOOLEAN;
+> +
+> +            /*
+> +             * "off" is always supported. "on" is only supported when the
+> +             * host already has the feature enabled.
+> +             */
+> +            QAPI_LIST_PREPEND(values, false);
+> +            if (cur) {
+> +                QAPI_LIST_PREPEND(values, true);
+> +            }
+> +            info->u.boolean.supported_values = values;
+> +        } else {
+> +            continue;
+> +        }
+> +
+> +        QAPI_LIST_PREPEND(head, info);
+> +    }
+> +
+> +    object_unref(obj);
+> +    return head;
 > +}
 > +
->  void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
->                                          const ARMISARegisters *host_isar,
->                                          ArmFieldValueSet **value_set)
-> @@ -1358,6 +1376,13 @@ void kvm_arm_field_get_supported_values(const ARM64SysRegField *field,
->      /* A non-writable field can only ever hold the host value. */
->      if (!arm_field_is_writable(field)) {
->          ranges_add(ranges, host, host);
-> +        /*
-> +         * ...unless it is one of the fields that can still be turned off
-> +         * via vCPU init flags, in which case "off" (0) is also supported.
-> +         */
-> +        if (host != 0 && kvm_arm_field_off_via_vcpu_flags(field)) {
-> +            ranges_add(ranges, 0, 0);
-> +        }
->          goto done;
->      }
->  
+>  CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>                                                       CpuModelInfo *model,
+>                                                       Error **errp)
+Thanks
+
+Eric
 
 

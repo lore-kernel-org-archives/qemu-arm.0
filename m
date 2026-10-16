@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01092CCA46C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16AADCCF2C1
 	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZK-0006OK-Hc; Fri, 16 Oct 2026 09:01:54 -0400
+	id 1xHhZL-0006Py-P3; Fri, 16 Oct 2026 09:01:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef2-0007Jx-GK
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef2-0007Jy-G8
  for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:36 -0400
-Received: from out162-62-57-49.mail.qq.com ([162.62.57.49])
+Received: from xmbghk7.mail.qq.com ([43.163.128.50])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeez-0000Qq-BH
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeez-0000R3-SJ
  for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792144529; bh=Je8Vl34WaovwXjpZ6RKU7YgeK1lXyC858OkOtBCiXj4=;
+ t=1792144530; bh=XMLWzmJb/VELiyr9yAs14OIoFKaAF5VKvBCXpEgo478=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=JYdC5vCJs13OO97QH8ATGGG/YAShtki9UraOje7Yg1dppUWx/x59sFyjXXOdGPOm6
- UOC5IT7MM6ZBO6uqQgCHBYMdP9pTDwG0/FmjK4vgt94X88Uz+QmM6UwqiFjjqDVVlO
- a/3mAMW9NFwa06XccRnXRoLV0XQWA63MTP+TcY7Y=
+ b=SU5B26UhDkDiP8pV9q6FvnqntbHqXoBidHDoMEnSnvKHwnKE492o7TCnkHhfB4Hea
+ A9X3NahkLtFbfoWmL+bFTP0hGgp3KVJyNR7i1cqGYvW3seA690nigFgT9A8uNETtd1
+ dk37jXstuzDQFT0kELgd8+6pHshy108yymyfDYfc=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
  by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
  id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
-X-QQ-mid: xmsmtpt1792144076t36y0hpub
-Message-ID: <tencent_83B7D852163320C7882BE1690E1334883308@qq.com>
-X-QQ-XMAILINFO: NFhlv/8JdUU2cDXwar4GrmSxC/LsX4PLR96aypQYqeFb/LHxPzs9Lyb33269X1
- InbK5M/6O8INkc0MNAzaStPa8ZpP5BoJYQhtIxOEEpbibtEoLPdypipPDwdV9A0jySfdB351OGzj
- zNA+tR+8PMF3N7i3Kl7RD5oOHg6sN/YFzwd+wWvm137a/++j9HftAJ9ltu5DQdkvHToggTlhc2XE
- eWCI2/lzkInFJka0wixrBsgEK4Jc65pBn3OM4hXSwGEfDkPERjQBTkNASF/gtZ2+HW5lJqMLjwVs
- OrJjE3n/ilolTlPMaG2Ayoe1YhfOYXRUFmbwx+sj36u9lKE2T6JQY7CRDJNjzQAd3MTcuOVIgrAS
- k9iVq+g7w/mAh3ieuHPtMIptpDhsXQoUjTqWJ+c+wcYO4QAVw/FxgTke+Kbz9aTtvLCtaMl0V5sZ
- 1i2fdx33sinzCamsGEX72lFl7M857NSagVbmB83FXtpV6J4RO0XEGSTcQy5GkseVb9vkNhfQVglS
- ACygNEnFdJkbZ57wV8GPnnWdVbcLiUUcYac/bLV7gT7Y1BLUb7vxxXxRNPwix4QrCLGFberL4X3H
- g+idY/ye9FG/Lk5RIK9A70Y9QMoVq+Wqif+3xJh43Gg9jieigOpJXauPlTardU36pmrvDZa+5/Vb
- bps1+HCaG2OGhXGuF/vYF2vbEcdytRUrlOFFgxktCAZFbONVkNfoQJc9C3S92K+hpQftAfNEM2qx
- 1qYXDPW7CZJ39R+rhmWb1fmrU7ifEfc6u3xVxXrAPBvb5322RiB71qBmU08BUWp87dLqLc78z+I3
- WmKvoCaz/rVQnS6StLfUDOKrB70+blD6CJB+hrFcqSMQeLdsFQF6HytPdQ3bjS3nYZWOWJAmJvQm
- dQ3Ln4MqjmcRite32n7fe4Gs0Xzj+lLsRyWY2Vr/95el3t7UCrEi/nGWJbLU15MDyLsZD8k8Q+AX
- VPnWPqSA4uEQIdkuIyTNve6g0FDtyD+QcxeuvjZMSBP5WCSoAMVbMqgLqV/0W/sBp3Rv/dvH1g8T
- qSY8BZxJEMKPFHeKPXpqoNWkKFAhTcn6TwQSHVEo6RiWRwon447euagMeA6qlVo73UVZKB8hPDjn
- MOmPKL
-X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
+X-QQ-mid: xmsmtpt1792144087t0c4az0uj
+Message-ID: <tencent_22716EE5A5A467448FFD5664D320278E1109@qq.com>
+X-QQ-XMAILINFO: OATpkVjS499uRbsdK0rqHNxbIkuN45Ww2+o1yojN8nxiGBLG1WDBQ3w0cMHCw6
+ P7YFYj5ZBHEkekEshf2IsKyQCEvLV5w+9yuSXRJuR9sOC3uLo+8qrZ2bC2oRGTrJhTK+XR54Gt4k
+ kTQySHzJyZQSL4Gp7A8EcBFGoS1bNHICbrYnma5nIFgA7xZFty9ekHFFHXGmTymqKP/HDqnXQxdI
+ TC0BEen9S486OEmaSi8L6mLOWLFN9bfNBgE3G3Ep34EAMkcONWJpIl4wLXSW99wykGd/whnWE7V6
+ +SjuJXUKqMwNiY0XX0NddQ3c4fay8j0nNnDtJXSu2szwFpWLEcCpXCHTl8pPp3RoD+BwC4uZ0Utk
+ VpB+63fJUPrB+IgSsnehN1ItrlJmsuzAwNp0HYQHRRSQMuT3ZkLJRL9tgSjH6FPRuygMrbFxij7w
+ u2AfYJnq/gw4ZpHBayNqxcpetwPASR6GuDtX/fG9ZW8ch6iD2J2MFEgHyZZZSeJinEmQinPJCuau
+ 3H3ZjGfRpXZaSPbTBKnRVTNYUI/Z8j9LI0hh92dQE0YdwqdfyzOBpfG2hPYuMe9RnWPE0N7x2xwV
+ DNAdrE1Ybtbq2niFcYXMhu9ZuiIV9tOXoiaqxMv1cX7Eb2sTzmjSCpcbGE/ZlLqnILasHpWlS8hb
+ bAk1W3VCD+K7xu9ML2MQmfDhvSPtE0i17fX6pkVfSRIJqb3HmpdYhtOaF+SMcZqWoIniA4/3i6Nh
+ o4aHIxpTCVU/V2qwKovDmxGOWEiQ/Zb8fcvuhI4J8joNjLHiwst+onRLMl1gpLU8jyiPrbXdslAT
+ kFYiZZIBgHwqzvtZvGSk5/rwSinPsSHg5plxyu+rST/dMbEGP2tOUhkOUwpacxng/l9wd+CDLEYf
+ iY9g5ffuBQEquoS1iO/tVO6k77IwIDgysN+W1o49pZvvOb51sNp5uLT2DFGR9emJkGV3OE1dVj6T
+ Asae9jZtYc7Crk9GbIi4cSvtLI+inDUdBtRtxySvzYJMlzyFA8ucydkz9LM5QNavJOXM8ZmtGCfj
+ +hu5MYaP4mLTJwU8a+/VMO1tNlRE42m3NAWuLrMGlz+iFDMmH99g6vlW2UxlPLgrllDOJJCQ==
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 03/37] target/arm: Add MPAMSM_EL1 register
-Date: Fri, 16 Oct 2026 17:46:57 +0800
-X-OQ-MSGID: <20261016094733.1898485-4-2118537295@qq.com>
+Subject: [PATCH 13/37] hw/arm/mpam: Implement PRI priority partitioning
+Date: Fri, 16 Oct 2026 17:47:07 +0800
+X-OQ-MSGID: <20261016094733.1898485-14-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
 References: <20261016094733.1898485-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.49; envelope-from=2118537295@qq.com;
- helo=out162-62-57-49.mail.qq.com
+Received-SPF: pass client-ip=43.163.128.50; envelope-from=2118537295@qq.com;
+ helo=xmbghk7.mail.qq.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
 X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,47 +87,92 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-FEAT_MPAM_SMS's MPAMSM_EL1 (S3_0_C10_C5_3) was missing, so a v7.x
-guest with SME enabled took an UNDEFINED instruction in
-cpu_enable_mpam(), which writes the register unconditionally when
-ARM64_SME is present. Register it backed by CPU state like the other
-MPAM registers, letting linux v7.x boot with -cpu max unmodified.
+Add the priority controls: MPAMF_PRI_IDR advertises a 2-bit
+INTPRI (0 = low) with no DSPRI, HAS_PRI_PART is set on the cache
+subtype, and MPAMCFG_PRI is readable and writable per selected
+internal PARTID, logging writes of DSPRI/INTPRI fields the IDR
+does not implement.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- target/arm/cpu.h    | 1 +
- target/arm/helper.c | 6 ++++++
- 2 files changed, 7 insertions(+)
+ hw/arm/mpam.c | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 218923a..c60ec62 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -761,6 +761,7 @@ typedef struct CPUArchState {
-     uint64_t mpam1_el1;
-     uint64_t mpam2_el2;
-     uint64_t mpamhcr_el2;
-+    uint64_t mpamsm_el1;
-     /* Optional fault info across tlb lookup. */
-     ARMMMUFaultInfo *tlb_fi;
+diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
+index 7c33ec4..94e517b 100644
+--- a/hw/arm/mpam.c
++++ b/hw/arm/mpam.c
+@@ -365,6 +365,13 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+         return mpamf->cpor_idr;
+     case A_MPAMF_MBW_IDR:
+         return mpamf->mbw_idr;
++    case A_MPAMF_PRI_IDR:
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_PRI_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                "MPAM: Unexpected read of PRI_IDR with no PRI PART support\n");
++            return 0;
++        }
++        return mpamf->pri_idr;
+     case A_MPAMF_PARTID_NRW_IDR: {
+         return mpamf->partid_nrw_idr;
+     }
+@@ -380,6 +387,8 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+         return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min;
+     case A_MPAMF_MPAMCFG_MBW_MAX:
+         return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max;
++    case A_MPAMF_MPAMCFG_PRI:
++        return mpamf->per_nrw_id[nrw_part_sel].cfg_pri;
+     case A_MPAMF_MPAMCFG_MBW_PROP:
+         return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop;
+     case A_MPAMF_MPAMCFG_CPBM0...
+@@ -467,6 +476,24 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
+         }
+         mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max = value;
+         return;
++    case A_MPAMF_MPAMCFG_PRI:
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_PRI_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                          "MPAM: Unexpected write to CFG_PRI when !HAS_PRI_PART\n");
++        } else {
++            if (!FIELD_EX32(mpamf->pri_idr, MPAMF_PRI_IDR, HAS_DSPRI) &&
++                FIELD_EX32(value, MPAMF_MPAMCFG_PRI, DSPRI)) {
++                qemu_log_mask(LOG_UNIMP,
++                              "MPAM: Unexpected write to CFGP_PRI DSPRI when !HAS_DSPRI\n");
++            }
++            if (!FIELD_EX32(mpamf->pri_idr, MPAMF_PRI_IDR, HAS_INTPRI) &&
++                FIELD_EX32(value, MPAMF_MPAMCFG_PRI, INTPRI)) {
++                qemu_log_mask(LOG_UNIMP,
++                              "MPAM: Unexpected write to CFGP_PRI INTPRI when !HAS_INTPRI\n");
++            }
++        }
++        mpamf->per_nrw_id[nrw_part_sel].cfg_pri = value;
++        return;
+     case A_MPAMF_MPAMCFG_MBW_PROP:
+         if (value & ~MPAMF_MPAMCFG_MBW_PROP_WRITE_MASK) {
+             qemu_log_mask(LOG_UNIMP,
+@@ -648,6 +675,7 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
  
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d5d96d5..a9b1521 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6912,6 +6912,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_tid3,
-               .resetvalue = cpu->isar.mpamidr_el1 },
-+            { .name = "MPAMSM_EL1", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0xa, .crm = 5, .opc2 = 3,
-+              .access = PL1_RW, .type = ARM_CP_ALIAS,
-+              .accessfn = access_tid3,
-+              .fieldoffset = offsetof(CPUARMState, mpamsm_el1),
-+            },
-             { .name = "MPAM0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0xa, .crm = 5, .opc2 = 1,
-               .access = PL1_RW, .type = ARM_CP_ALIAS,
+         /* Cache specific bit */
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART, 1);
++        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PRI_PART, 1);
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PARTID_NRW,
+                                 s->num_int_partid < s->num_partid);
+ 
+@@ -665,6 +693,14 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
+         mpamf->cpor_idr = FIELD_DP32(mpamf->cpor_idr, MPAMF_CPOR_IDR, CPBM_WD,
+                                      MPAM_CACHE_PART);
+ 
++        /* Priority */
++        mpamf->pri_idr = FIELD_DP32(mpamf->pri_idr, MPAMF_PRI_IDR,
++                                    HAS_INTPRI, 1);
++        mpamf->pri_idr = FIELD_DP32(mpamf->pri_idr, MPAMF_PRI_IDR,
++                                    INTPRI_0_IS_LOW, 1);
++        mpamf->pri_idr = FIELD_DP32(mpamf->pri_idr, MPAMF_PRI_IDR,
++                                    INTPRI_WD, 2);
++
+         if (s->num_int_partid < s->num_partid) {
+             mpamf->partid_nrw_idr = FIELD_DP32(mpamf->partid_nrw_idr,
+                                                MPAMF_PARTID_NRW_IDR,
 -- 
 2.43.0
 

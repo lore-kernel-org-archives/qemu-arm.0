@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33706CCF2C1
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:11:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A927CCA462
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:11:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZN-0006TD-Qz; Fri, 16 Oct 2026 09:01:57 -0400
+	id 1xHhZN-0006SM-DR; Fri, 16 Oct 2026 09:01:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf24-0003cl-18; Fri, 16 Oct 2026 06:19:24 -0400
-Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
+ id 1xHfDy-0006ZS-S5; Fri, 16 Oct 2026 06:31:42 -0400
+Received: from out203-205-221-209.mail.qq.com ([203.205.221.209])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf20-0002aJ-6i; Fri, 16 Oct 2026 06:19:23 -0400
+ id 1xHfDv-0004ko-3Z; Fri, 16 Oct 2026 06:31:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792145954; bh=C2RTZzq4u5bztMTFK6ZL+O4cEDg7+Arn/hMSjcudkEQ=;
+ t=1792146691; bh=nQuUQzk0s+Oj9Xb/wCLE9CX/lkMW9AotEI2rbeosXxw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=vkipGbqRPc2bLbGIX2ymJ9E/abomOIXz6wlbxet3hpEpTcd2dqYkkJG0kPMjcu2zx
- YqH6Pyv7unjBLczT1QQt1Rb1swRh4kYeIE25HPjX9fVku3m61Jy7Xmxb7oU/R65P7M
- F4Xnrexi0EMrK8hjKJNOos3OqrqrCt6jnvpgRaiw=
+ b=ztpGR/oV/k8Go+eLHaFHRBMuoJYYGKGZUnJPZs1q8XKkvGytkHAeUa5a3eaQI9LTS
+ UIQVrijodwpkKB62HV+kOoQSrEnQUbQdHiaNcMpUukntQ8omrCydg21ZkQWmlsJ3Ep
+ A+eH3dko6wRbodFzS1bR0zQYTUO8akcjOQ0Z9DXk=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
- id 4CB98E55; Fri, 16 Oct 2026 18:19:11 +0800
-X-QQ-mid: xmsmtpt1792145951tem50wlp4
-Message-ID: <tencent_CCF4A4F14E44206EDE9A4871CF981EA7AE0A@qq.com>
-X-QQ-XMAILINFO: M9YlfoOVRfpP2rsiYzRd0CqcQjpaosD4aLnbzdTGSNGdTrnX3OFqPqtz9aLACl
- tSAXL2O2kWiiKmMdwBkJ5bHFKMBI2LCdLhauCVfPnLLFbN1yKp+wGhVNWnH2pGQ44xb6JxutKwKo
- TEk5ZIygF4sN3ulBDzkWsQtCcXNZqLLsbq/JhuRTibJpiQG6xmvphSkujoNXWpYjz1dv5p3Gvccq
- TUqcR4OTqLcyzGQQBj2MisFEKg2TkZppgg3GfTn0Q2E5+xwi+3B1Zaj3wq7NBAEKOJ3WZFm1G8tM
- P4J8zsYNepPkTIbSzMINPoLTcDj22YY7t0VusIcGcgmv6U2O1e56QbKN25Vivif0GeDfj5Nmz91G
- DzoHjXKrqN1uWVZ9651D8kWzdhS0CqdLWeUP7hs+oyC8k9xjF9MSbcI9T/8YQnkOWh6Sm/mUG7zD
- V3B6G0AbWImm0gWAL+gDrwPiagl2+wGa/FsEI/V4zSaf5VcgtsLslXCMXIVwif5ebdm5D7LGUN6O
- 9lh0iNANA14FDKzzE+tDLZNGezcxKxj5tdND1u1OSFAqgqVhGbf/X3xdG1z7hkVIS2MUGlQGLgRi
- kpXghsRXrCzWJ24T3H37AzIHnh+ZV7NUd4AEhiOECSLOHdCX0N7voFJHq305ORyAXGnf0KH3ufFN
- /SofPzjCrGaq5cFNmKMO2q9FXqJeTp+Ruth6Bt75AqcR7xRA88YwvdNYeOceYgH0K9j5cmcfiL8b
- q8X4VZZ9bmE2UmCNsevSNREIjRmJZGjKbWHqTwdXnwBCKEtZXkdq5hJqTZrFf3xLA0AO8q1F8lUe
- JZA+xFPFQPj7wQwuOmNG3t5GuSJSL0joQavoMDS1IQw09cjIJf559toQduNm2S/2ySvUYmKpfN+A
- TCTmKBNf4zwOxNPiQZPHk9nYBcLwIKXBs/ABltT4EgLMWLsoHjMyptNFgrqOhUuXgY7dJOcAkrww
- 0MFpCG3iV4cbVCUGo5x9tcTAVYWJJNA4DfoQ7fZbmldU1sE0bk3fvJ1JTxaB5AReoRpCQg+OUpuk
- NTi/Lhyg2XtDQLxYJbWEvJudEnJpr8oPVbBDsK92Vj5PHb82/SwJgQlSs7A5CVjuxKgoNh0M9v0z
- nTwXro
-X-QQ-XMRINFO: MFuljud3PUW4Hy49K308V+nvGr8SioTB3Q==
+ by newxmesmtplogicsvrsza73-0.qq.com (NewEsmtp) with SMTP
+ id 7DCA540D; Fri, 16 Oct 2026 18:31:28 +0800
+X-QQ-mid: xmsmtpt1792146688tfoe4fvo9
+Message-ID: <tencent_EA6765326D6BC209B1EEF6434A6E46E93805@qq.com>
+X-QQ-XMAILINFO: N8JXP6LS4uUrOMb6qXpTQ2tSLI0J2hDNEVzTUSeW1fTv9fGVF1vIYRM1nputGC
+ yrvwxksGR2783X/8WMUpX/1kZy2oib/CKHW+prU6PhG227VnZ+cQmcvgQ5RjBobRT3iZma7vNCc0
+ DuZSzRQHvH8Bo+oR19+yzHVTBGlCvkTYcReKTfdXZcNr5MvNEvnnCrD8fpXq97fAf4PQMv0Dqs/+
+ beoiLofK/lmnIAB6ii1c7PMW7ww/yxkHEQCMNP4Aj5PHxUx8a+kigJmq9qsa2ogbXaS11O6HOb4o
+ apH3lkCCkRsSqTuW6JYc7MD0HNsRuwdB8TDyh5xssOXIP71H6yvqmGUZ5FBPxwnu/8P+OzQ0JrUP
+ xbTHqKgpTgbpPQwLbU46Lssv36yg1UWqnj/es3U2gazu7jLSB/RTRRBNAq+Vsp0Lh+oq3a0lg/e/
+ 7l/JBXNvUx4uIEZqcKVJxUKDzwS6Sm4+lmWGmBM6mGO9jzyURkl3JtCt7BNj7ZvT0kixPxQJp0Rb
+ ScqmHxntLIYcFMQ3QHrev3G9ZYIYYM3pGEzX4CCuzhLL+O0wvtGWWc2CRL4ZWF+NthsdYVrM0y/9
+ mxNVuPXYAYJh91eb8TWDsJoIqkXUoVPU2ae3GlJIDtuo0jR7DjKgoCo2WypPhvdMqwgqiyFn5RhG
+ QZVaqFVI4Ue/tfYHfnORD+nTa+Y/cgyPGOiXLYktepqzy4CxBW5wlHifdLJ+9n7U0gtFXGW9ISUY
+ Ul4y2M8zMfOHrZwIyYTihQ5/uapO0wREuxaAsOvcN061RxnKz0cMbI1VapcUsZpCVzOcgNTaUucI
+ bkN88vkcdyS90rQCzJgibX81U7CUEPID8oOcvZPEofFpapOduI3il9f7y8SJ754midt02Q0vo5kj
+ mV47Sbo71vekG1GL1Gj/lkaPDazVi2j+wOpwP9SiURfC/MGCXh6dRRiXbyb3g+AE0GPKUYnxDbZQ
+ qGZtc2S5O1ttFMP2+Nkjbr2ExX7HF7TH/0+7/FZSTF8qBbznw7wB+H2r7YFRFevy6IKf9XLQbn17
+ rwm5fjmJa6ztf4hiwk4Fxndd7MJ9itZkmLnAI88i/e+gQA7zGS0GKNzZgd6wAntsjwhkp9xB+Lke
+ GC4/6aZoJ1txM2qOi9JqqPi+pCDDArpr38FY+m69u3xY46paQ=
+X-QQ-XMRINFO: NIY0FsY06mWik60O6xSizP/2tkZG+oPoPQ==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 23/37] hw/acpi: Build the MPAM ACPI table
-Date: Fri, 16 Oct 2026 18:10:43 +0800
-X-OQ-MSGID: <20261016101058.1900808-9-2118537295@qq.com>
+Subject: [PATCH 35/37] hw/arm/virt: Default to implicit node 0 for MPAM
+ without -numa
+Date: Fri, 16 Oct 2026 18:10:55 +0800
+X-OQ-MSGID: <20261016101058.1900808-21-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
 References: <20261016101058.1900808-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.87; envelope-from=2118537295@qq.com;
- helo=out162-62-57-87.mail.qq.com
+Received-SPF: pass client-ip=203.205.221.209; envelope-from=2118537295@qq.com;
+ helo=out203-205-221-209.mail.qq.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -71,7 +72,7 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:48 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:50 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,137 +89,62 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Assemble the MPAM table when vms->mpam is set: walk the QOM tree
-for the board-created MSCs and emit each as a memory-controller or
-cache-controller node with its MMIO base, wired interrupt GSIVs
-and per-RIS locators -- per-node instances scope their locator to
-their own NUMA node, single-MSC instances span every memory node,
-and cache nodes carry the PPTT-referencing cache id.
+Instead of failing with 'MPAM support requires NUMA nodes to be
+specified', -M virt,mpam=on with no -numa now treats all RAM as one
+implicit node 0 and creates a single memory MSC for it (node 0, one
+RIS, same partitioning configuration as a per-node instance).  The
+ACPI MPAM locator keeps proximity domain 0, which the mainline
+arm_mpam driver resolves to node 0 via its pxm_to_node()
+NUMA_NO_NODE fallback; no SRAT is fabricated and the guest stays
+non-NUMA-aware.  Cache MSC creation is unaffected, and explicit
+-numa / mpam-min-msc paths are unchanged.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/virt-acpi-build.c | 101 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 101 insertions(+)
+ hw/arm/virt.c | 30 +++++++++++++++++++++++++-----
+ 1 file changed, 25 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 871ee45..3b71af9 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -985,6 +985,102 @@ static void build_msc_cache_controller(GArray *table_data, int identifier,
-     }
- }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4ef7aed..ee4308e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2244,11 +2244,31 @@ static void create_mpam_msc(VirtMachineState *vms, Error **errp)
+     hwaddr base = vms->memmap[VIRT_MPAM_MSC].base;
  
-+struct mpam_stat {
-+    MachineState *ms;
-+    GArray *table_data;
-+    hwaddr base_addr;
-+    int count;
-+    int cpu_count;
-+    uint32_t mpam_id; /* Just needs to be unique */
-+};
-+
-+static int mpam_add_msc(Object *obj, void *opaque)
-+{
-+    if (object_dynamic_cast(obj, TYPE_MPAM_MSC_MEM)) {
-+        struct mpam_stat *mpam_s = opaque;
-+        SysBusDevice *s = SYS_BUS_DEVICE(obj);
-+        int num_ris = object_property_get_uint(obj, "num-ris", &error_fatal);
-+        uint32_t oflow_gsiv = object_property_get_uint(obj, "oflow-gsiv",
-+                                                       &error_fatal);
-+        uint32_t err_gsiv = object_property_get_uint(obj, "err-gsiv",
-+                                                     &error_fatal);
-+        uint64_t *ids = g_new0(uint64_t, num_ris);
-+        int j = 0;
-+        int i;
-+
+     if (ms->numa_state->num_nodes == 0) {
+-        error_setg(errp,
+-                   "MPAM support requires NUMA nodes to be specified");
+-        return;
+-    }
+-    if (!vms->mpam_min_msc) {
 +        /*
-+         * Locator for each RIS.  A per-node instance (node property set)
-+         * covers exactly its own NUMA node; a single-MSC instance spans
-+         * every memory-bearing node, one RIS each.
++         * No -numa: treat all RAM as one implicit node 0 -- a single
++         * memory MSC with one RIS.  The ACPI locator keeps proximity
++         * domain 0, which the arm_mpam driver resolves to node 0 via its
++         * pxm_to_node() NUMA_NO_NODE fallback; no SRAT is fabricated and
++         * the guest stays non-NUMA-aware.
 +         */
-+        if (object_property_get_uint(obj, "node", &error_fatal) != UINT16_MAX) {
-+            ids[j++] = object_property_get_uint(obj, "node", &error_fatal);
-+        }
-+        for (i = 0; i < mpam_s->ms->numa_state->num_nodes; i++) {
-+            if (j >= num_ris) {
-+                break;
-+            }
-+            if (mpam_s->ms->numa_state->nodes[i].node_mem) {
-+                ids[j++] = i;
-+            }
-+        }
++        int err_spi, oflow_spi;
 +
-+        build_msc_memory_controller(mpam_s->table_data, mpam_s->count,
-+                                    s->mmio[0].addr, mpam_s->mpam_id++,
-+                                    num_ris, ids, oflow_gsiv, err_gsiv);
-+        mpam_s->count++;
-+        g_free(ids);
-+    }
-+
-+    if (object_dynamic_cast(obj, TYPE_MPAM_MSC_CACHE)) {
-+        struct mpam_stat *mpam_s = opaque;
-+        SysBusDevice *s = SYS_BUS_DEVICE(obj);
-+        int num_ris = 1;
-+        uint64_t *ids = g_new0(uint64_t, num_ris);
-+        uint8_t cache_level = object_property_get_uint(obj, "cache-level",
-+                                                       &error_fatal);
-+        uint8_t cache_type = object_property_get_uint(obj, "cache-type",
-+                                                      &error_fatal);
-+        uint16_t cpu = object_property_get_uint(obj, "cpu", &error_fatal);
-+        uint32_t oflow_gsiv = object_property_get_uint(obj, "oflow-gsiv",
-+                                                       &error_fatal);
-+        uint32_t err_gsiv = object_property_get_uint(obj, "err-gsiv",
-+                                                     &error_fatal);
-+
-+        ids[0] = PPTT_CACHE_ID(cache_type, cache_level, cpu);
-+        build_msc_cache_controller(mpam_s->table_data, mpam_s->count,
-+                                   s->mmio[0].addr, mpam_s->mpam_id++,
-+                                   num_ris, ids, oflow_gsiv, err_gsiv);
-+        mpam_s->count++;
-+        g_free(ids);
-+    }
-+
-+    return 0;
-+}
-+
-+static void
-+build_mpam(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-+{
-+    AcpiTable table = {
-+        .sig = "MPAM",
-+        .rev = 1,
-+        .oem_id = vms->oem_id,
-+        .oem_table_id = vms->oem_table_id,
-+    };
-+    struct mpam_stat mpam_s = {
-+        .ms = MACHINE(vms),
-+        .count = 0,
-+        .base_addr = vms->memmap[VIRT_MPAM_MSC].base,
-+        .table_data = table_data,
-+    };
-+
-+    acpi_table_begin(&table, table_data);
-+
-+    object_child_foreach_recursive(object_get_root(), mpam_add_msc, &mpam_s);
-+
-+    acpi_table_end(linker, &table);
-+}
-+
- /*
-  * ACPI spec, Revision 6.5
-  * 5.2.25 Generic Timer Description Table (GTDT)
-@@ -1517,6 +1613,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     acpi_add_table(table_offsets, tables_blob);
-     build_gtdt(tables_blob, tables->linker, vms, wdt && !has_wdat);
- 
-+    if (vms->mpam) {
-+        acpi_add_table(table_offsets, tables_blob);
-+        build_mpam(tables_blob, tables->linker, vms);
-+    }
-+
-     acpi_add_table(table_offsets, tables_blob);
-     {
-         AcpiMcfgInfo mcfg = {
++        dev = qdev_new(TYPE_MPAM_MSC_MEM);
++        object_property_set_uint(OBJECT(dev), "node", 0, &error_fatal);
++        object_property_set_uint(OBJECT(dev), "num-ris", 1, &error_fatal);
++        object_property_set_uint(OBJECT(dev), "num-partid",
++                                 MPAM_VIRT_NUM_PARTID, &error_fatal);
++        object_property_set_uint(OBJECT(dev), "num-int-partid",
++                                 MPAM_VIRT_NUM_INTPARTID, &error_fatal);
++        mpam_msc_assign_irqs(dev, &err_spi, &oflow_spi, &next_spi);
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
++        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
++                           qdev_get_gpio_in(vms->gic, err_spi));
++        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 1,
++                           qdev_get_gpio_in(vms->gic, oflow_spi));
++        base += MPAM_SIZE;
++    } else if (!vms->mpam_min_msc) {
+         for (i = 0; i < ms->numa_state->num_nodes; i++) {
+             /* at most 16 mem MSCs (4-bit selector space, SPI budget) */
+             if (ms->numa_state->nodes[i].node_mem > 0 && count < 16) {
 -- 
 2.43.0
 

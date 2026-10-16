@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70D0ECC6B38
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3840CCCA462
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:09:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhaD-0007Nt-Ip; Fri, 16 Oct 2026 09:02:50 -0400
+	id 1xHhZQ-0006WT-Ur; Fri, 16 Oct 2026 09:02:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf9x-0005nQ-Jj; Fri, 16 Oct 2026 06:27:37 -0400
-Received: from out203-205-221-239.mail.qq.com ([203.205.221.239])
+ id 1xHf62-0004kW-5u; Fri, 16 Oct 2026 06:23:30 -0400
+Received: from out203-205-221-240.mail.qq.com ([203.205.221.240])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf9u-0003nt-4A; Fri, 16 Oct 2026 06:27:33 -0400
+ id 1xHf5z-00037d-RD; Fri, 16 Oct 2026 06:23:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792146445; bh=HJBSNhy30ysWNl8lFPWtNESXuXw0iirx7WNezPjoAwU=;
+ t=1792146200; bh=P4QEWHWxu3smbmXGTdRl4D3hYj1Tmc5JUeNQNVV/GXo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=qI0p5ky7EVtzl4bqpFOYH0UDUQvYiL70P+yy/fmJ16lxJINJFmgvzXzl7PcQ7d5Gn
- ZdBxB0AOF5jI59CavwMXlKQijDsGuuFha3wj0xGvTWd2aG3MDlGKwiGPaY4AyIbRBT
- LbCUGHfYRWjL9H3gZwJkoy/cl1V06e2h97maJdCk=
+ b=j2J0iqwoonXmQB6Y/HE/iFugjNNhIWa2QPZr5YQsiOw6Dsn5w6dwKbNu79KfctO9m
+ c9u4WcTb6QZhLbBIiEAqG1fFG6HJxP4LqJ2T5kzAD0JqHZulrELKmouV4AAxsLMc8y
+ Gv1G/sI4GeQL3xS090lYMIczQbjKuuSrIXRj/Gas=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
- id 6D696459; Fri, 16 Oct 2026 18:27:22 +0800
-X-QQ-mid: xmsmtpt1792146442tvnvsqu9n
-Message-ID: <tencent_A847C7182BCA69DC138B882EB70852E13308@qq.com>
-X-QQ-XMAILINFO: M84Ob7gbJGBW758zOf2+QdbF/xGFXbc91ouTVNx+etWcPwedY34Nc3dtgO/IjC
- 8Lo0zwHhZeGnucfWWztGb3I/tQUVDr1UqiAChm7fD57RRHbU2qeECOnLbbvMh2NRcPKEueJtsBRt
- YWcjvYYUCzWWAFpHo+3kS8GejOdkzAUNzrv3cOZEdpODYamAq4Sh0nyV6pu8F3FIkjeSNI2/CiHW
- NfSQxzyub25Lbqn36BFCcJXSWlFGjjiGOZiB1TV/NvMRGzei5IcECK7PiXpppdkKj2EYLUxOHT+L
- /QJ5FbLtDlTGgnonAq8czIz52+70RX5Q3/KP+N2bq6HGaKlxIcPwTf41zdSKpmkHC8r2qpYyjTnk
- n1N/e174rao2uVDPKjzHljCES9V+b6E0ErriwoM1ay76b64Zfiaaf/lj3vGl4m5lwTvFJBG4/NZX
- n3XhxafbN14cTWQruWERNpaFItuYyVVlsBk8JBlq2VFyZ8xraRr5vzNoZD6nmhGRNBWsjFP6wL0X
- 3ESBcMRtNxZ6Yv4PDFOjflhypiXMMeC8rgWKnFs4NVIrcoMvytJsDAYuqRD5DvVcVmwxvc0RBKr5
- Y0MmmvGASdRkZPomrfqYnugjezj0d/artqzoe6MRGEIElYt0z5Vvq+tILofMP0UyHQCTx/anIW9D
- y+AcDzD/tPNsUtu4Q+kEpazTbLNocbuSaELQYVkkY1lZ4xauwDWB29zavCdp+4rubVjf5ugoNE+p
- FXW9A2CPtR+ui9T4UHi/reEIMlCccdLUgrN1jJv12UcBIdo9FmxSHZgRoq4XuxNODseghTerTDk4
- NHLFMktOzW7jvOyE4Ybirruu2/FzWd+07roKeZ3GC9DjIa+34kG70xOS1TERZHOjRjCxiY9tGqrS
- 941n2nZzaDiuQuVvB/xf1Dn6A3klqzt0SdIOgcX/aUToPpJF8dZYNkWNPapTI0tHdDEE00C3dJG2
- Gf/nqV+yOsETfSlrgJ2Wu83rsw747cliRujvA7T8N3/eaR/aw2PWPZzj+CYPYL/F2VWrAGdvhfYu
- EuvNUyzr7ZoKEa5PYUm0ZU3n7GwHSa5SlVvG1deTl9zujNilXjdusLLRcgjeW3oWHj6NkBrFpcJR
- fW2dVa
-X-QQ-XMRINFO: MFuljud3PUW4Hy49K308V+nvGr8SioTB3Q==
+ by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
+ id 5D1998CC; Fri, 16 Oct 2026 18:23:17 +0800
+X-QQ-mid: xmsmtpt1792146197ts5j1n7n3
+Message-ID: <tencent_E465298E19C263CF95CFB481097FC4B25B07@qq.com>
+X-QQ-XMAILINFO: NXatl/9/kmcOe3wy+VEszbEf28EQsUO76bs7lfNvwF/s4DlVU1VEFAnJOLzA+g
+ 3ndxsNDY+Nzcit8hkJdYkjHGwY3H9s8RQNdhviT0ag64eMT0v8c3OnSA71v8VSkPxC6PxwkE7FcH
+ dGquo31YR8GolO/pa6S3A47wCO6xNZZ2E/9is1DH+2XIqAqfmmUuSgeT75Qkh5fg+rRy103KRxHh
+ FTJilC64i9kIxVTZee5JBsKDwUKX/HD8dHhwrhXyMB3CJYs4cCh8XSMoaK7nnW3V4Mj0cZ6Bqklu
+ oB0k7m4jGhGuJ+QXf/Vbz+i6Xs6pcl+1u405LgLDlXGmHH7o+mo3oAQOqbK+AdD1B5/KtCGVBaTd
+ HHka+7xRNCtriD6OpMLzDVj0n/nJZ1QgeT+PIHIN9qUdNYxarmGJeyYIP7ZkOSjVEqzUtraXMQGs
+ im1avYLGLM+LdjcuW/ENrJVVF8jMTviH1RCB3Vtbyu19MFVpbuZF2ILZmQOolhtW68+5s2NSkQ75
+ nwdGuhkjMMLzIQzF/R58CzBL0YThbgYzh4WqtoKqtjmDE/dGu1cMytNwaPgsTpxA/s2ZdXNIwUpJ
+ u214w/QsLQxezRDRZH1Y4riEMrw+8k0xUVWNwf6iA7zgoZtzfEZlVX0erglwnk03zGRgYCihC4zD
+ Cpd9MaqGBSLhJYOp6Nrqnnxm9xBQWW0sBQXA8RxW0woevKRuXF0pgmWt5Y5tOcgNHQPDuT2wI82l
+ ajsXIqQRJlwPZSi1Q8/1oHC2EZG2WixJSg3mCuAsbyfpyQgEdlH90CH/osLFEHip+t6lCtqCs5sL
+ O/GsJlJYK6+doCo0bDOmMRC2JXwQUX8FIvc5cHcM0t0fWLojuVSddrt5c+0G9A7oLHwJHSy/mYfH
+ 1M0rZvxgRaFZWqCWyPh+ZM0IUoVS24/UlcHlz54LIRhEKtE1OCXwVJR7C2EysB9GBNWFr5wQ8pjM
+ LM/hgQNbOM5r8GFYCxCmPWzsXbMi4cDcd2gftIEhaWFB7WxfaJz+9YNRMO6kBhHfHhxGjidMf8np
+ eK8v+s/aOQUeUYC4C77S26BOJd76h9ewYQFZJG6lK6rOMYu43w+wqGM9vSKOfTTQEClgNoclFVNK
+ ud/d3z
+X-QQ-XMRINFO: NV153Ut7BKVGEBPxNGBppa2DJCr1urzIPw==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 31/37] hw/arm/mpam: Add device reset and power-on state
- initialisation
-Date: Fri, 16 Oct 2026 18:10:51 +0800
-X-OQ-MSGID: <20261016101058.1900808-17-2118537295@qq.com>
+Subject: [PATCH 27/37] hw/arm/mpam: Advertise PRI on memory-side MSCs
+Date: Fri, 16 Oct 2026 18:10:47 +0800
+X-OQ-MSGID: <20261016101058.1900808-13-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
 References: <20261016101058.1900808-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=203.205.221.239; envelope-from=2118537295@qq.com;
- helo=out203-205-221-239.mail.qq.com
+Received-SPF: pass client-ip=203.205.221.240; envelope-from=2118537295@qq.com;
+ helo=out203-205-221-240.mail.qq.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -89,137 +88,40 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Move the power-on initialisation out of realize into
-mpam_msc_state_init() (shared with the new legacy reset callback):
-selection state and ECR/ESR cleared, per-RIS partition and monitor
-storage zeroed, the PARTID narrowing map identity-wrapped so the
-indirection is always in range before the driver programs it, and
-MBW_MAX reset to 0xffff (full bandwidth) -- an unprogrammed PARTID
-must not read as zero bandwidth.
-
-Also fix the realize error message for num-partid == 0, which
-repeated the num-ris text.
+The arm_mpam driver picks the MBA-backing class for the MBPRI
+pseudo-resource, which requires the memory-side MSC to advertise
+HAS_PRI_PART -- without it the driver never exposes MBPRI even
+though the register is handled.  Assemble the same PRI_IDR view
+(INTPRI, 2 bits, 0 = low) as the cache subtype.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/mpam.c | 78 +++++++++++++++++++++++++++++++++++++++------------
- 1 file changed, 60 insertions(+), 18 deletions(-)
+ hw/arm/mpam.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
 diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-index fe78adb..c4a7567 100644
+index 1bd76ba..50c8a8e 100644
 --- a/hw/arm/mpam.c
 +++ b/hw/arm/mpam.c
-@@ -1041,6 +1041,63 @@ static const MemoryRegionOps mpam_msc_ops = {
-     },
- };
- 
-+
-+/*
-+ * Power-on state of the MSC, shared between realize and reset: ID narrowing
-+ * map identity-wrapped, partition config at reset values, monitors off.
-+ */
-+static void mpam_msc_state_init(MPAMMSCState *s)
-+{
-+    int i;
-+
-+    s->ris = 0;
-+    s->part_sel = 0;
-+    s->internal_part_sel = false;
-+    s->mon_sel = 0;
-+    s->ecr = 0;
-+    s->esr = 0;
-+
-+    for (i = 0; i < s->num_ris; i++) {
-+        Mpamf *mpamf = &s->mpamf[i];
-+        int p;
-+
-+        mpamf->ecr = 0;
-+        mpamf->esr = 0;
-+        memset(mpamf->per_nrw_id, 0,
-+               sizeof(MpamfPerNrwId) * s->num_int_partid);
-+        memset(mpamf->cfg_intpartid, 0,
-+               sizeof(uint32_t) * s->num_partid);
-+        memset(mpamf->mbwu_mons, 0,
-+               sizeof(MpamMbwuMon) * s->num_mbwu_mon);
-+        memset(mpamf->csu_mons, 0, sizeof(MpamCsuMon) * s->num_csu_mon);
-+
+@@ -991,6 +991,18 @@ static void mpam_msc_mem_realize(DeviceState *dev, Error **errp)
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_MSMON, 1);
+         /* Memory specific bit */
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_MBW_PART, 1);
 +        /*
-+         * Until resctrl programs the map, wrap each request PARTID onto an
-+         * internal PARTID so the narrowing indirection is always in range.
++         * Priority partitioning on the memory side too: the driver exposes
++         * the MBPRI pseudo-resource from the class backing MBA, which
++         * requires the memory-side MSC to advertise HAS_PRI_PART.
 +         */
-+        for (p = 0; p < s->num_partid; p++) {
-+            mpamf->cfg_intpartid[p] = p % s->num_int_partid;
-+        }
-+        /*
-+         * per_nrw_id is indexed by INTERNAL PARTID: it has
-+         * num_int_partid entries, not num_partid.  Writing it with the
-+         * request-PARTID count overflowed the allocation by 224 entries
-+         * (malloc(): corrupted top size once the struct grew).
-+         */
-+        for (p = 0; p < s->num_int_partid; p++) {
-+            /* MBW_MAX resets to full bandwidth on real hardware */
-+            mpamf->per_nrw_id[p].cfg_mbw_max = 0xffff;
-+        }
-+    }
-+}
-+
-+static void mpam_msc_reset(DeviceState *dev)
-+{
-+    MPAMMSCState *s = MPAM_MSC_DEVICE(dev);
-+
-+    mpam_msc_state_init(s);
-+}
-+
- static void mpam_msc_realize(DeviceState *dev, Error **errp)
- {
-     MPAMMSCState *s = MPAM_MSC_DEVICE(dev);
-@@ -1052,7 +1109,7 @@ static void mpam_msc_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     if (s->num_partid == 0) {
--        error_setg(errp, "num-ris must be <= 16");
-+        error_setg(errp, "num-partid must be nonzero");
-         return;
-     }
-     if (s->num_int_partid == 0) {
-@@ -1061,28 +1118,12 @@ static void mpam_msc_realize(DeviceState *dev, Error **errp)
++        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PRI_PART, 1);
++        mpamf->pri_idr = FIELD_DP32(mpamf->pri_idr, MPAMF_PRI_IDR,
++                                    HAS_INTPRI, 1);
++        mpamf->pri_idr = FIELD_DP32(mpamf->pri_idr, MPAMF_PRI_IDR,
++                                    INTPRI_0_IS_LOW, 1);
++        mpamf->pri_idr = FIELD_DP32(mpamf->pri_idr, MPAMF_PRI_IDR,
++                                    INTPRI_WD, 2);
  
-     s->mpamf = g_new0(Mpamf, s->num_ris);
-     for (i = 0; i < s->num_ris; i++) {
--        int p;
--
-         s->mpamf[i].per_nrw_id = g_new0(MpamfPerNrwId, s->num_int_partid);
-         s->mpamf[i].cfg_intpartid = g_new0(uint32_t, s->num_partid);
-         s->mpamf[i].mbwu_mons = g_new0(MpamMbwuMon, s->num_mbwu_mon);
-         s->mpamf[i].csu_mons = g_new0(MpamCsuMon, s->num_csu_mon);
--        /*
--         * Until resctrl programs the map, wrap each request PARTID onto an
--         * internal PARTID so the narrowing indirection is always in range.
--         */
--        for (p = 0; p < s->num_partid; p++) {
--            s->mpamf[i].cfg_intpartid[p] = p % s->num_int_partid;
--        }
--        /*
--         * per_nrw_id is indexed by INTERNAL PARTID: it has num_int_partid
--         * entries, not num_partid.
--         */
--        for (p = 0; p < s->num_int_partid; p++) {
--            /* MBW_MAX resets to full bandwidth on real hardware */
--            s->mpamf[i].per_nrw_id[p].cfg_mbw_max = 0xffff;
--        }
-     }
-+    mpam_msc_state_init(s);
- 
-     memory_region_init_io(&s->mr, OBJECT(s), &mpam_msc_ops, s, "mpam_msc",
-                           MPAM_SIZE);
-@@ -1301,6 +1342,7 @@ static void mpam_msc_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     device_class_set_props(dc, mpam_msc_props);
-+    device_class_set_legacy_reset(dc, mpam_msc_reset);
- }
- 
- static void mpam_msc_mem_init(ObjectClass *klass, const void *data)
+         mpamf->msmon_idr = FIELD_DP32(mpamf->msmon_idr,
+                                       MPAMF_MSMON_IDR, MSMON_MBWU, 1);
 -- 
 2.43.0
 

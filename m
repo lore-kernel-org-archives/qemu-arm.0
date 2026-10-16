@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6412CCA46C
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1027DCCA46C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:07:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZO-0006Ti-Aw; Fri, 16 Oct 2026 09:01:58 -0400
+	id 1xHha5-00070u-TD; Fri, 16 Oct 2026 09:02:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf50-0004ft-Sf; Fri, 16 Oct 2026 06:22:26 -0400
-Received: from out203-205-221-149.mail.qq.com ([203.205.221.149])
+ id 1xHew5-0001jy-Mu; Fri, 16 Oct 2026 06:13:14 -0400
+Received: from out203-205-221-155.mail.qq.com ([203.205.221.155])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xHf4y-00033c-4m; Fri, 16 Oct 2026 06:22:26 -0400
+ id 1xHew2-000222-Ps; Fri, 16 Oct 2026 06:13:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792146139; bh=y/RBAlSCh9zMEN28g7qg1jlC0rjSzUH/G7Hw96xdDRs=;
+ t=1792145586; bh=T2aVuixcbXg2L63BOa+6sJHS5UVg7DPyy+uwZi5T7tw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=dVumTicQ4Uq5tW70uhfel5vsl6OTa2xmed/UqE+e++/Idx0hVWRRJkLtjwn6+eQxB
- 4FaiRQ89gmx010cDeMhRDd3VcMSZr52nTTWznzP6i0QVAJEo94MRknEHaIGTYw0zGk
- Q4qxhDvfHBhNF13Z72Q0O0uC+HVbR5fiZQpc7N10=
+ b=wSn4XXs0W1mySK9lgAPN0KnFNCU57/K0/Pao598cATXb8bgJdz5ztebOJeTx4oOD+
+ qJ2257yyLlJn9HDI3iRVdY6ABoh2FBCMt4eir+GhfMAxmeoWZFc++tQzPGzCLTe/Qq
+ DCYyfolgHtqvdfe8bNAm/lglpPJLYCDNgMuMhFVo=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
- by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
- id 5902369E; Fri, 16 Oct 2026 18:22:16 +0800
-X-QQ-mid: xmsmtpt1792146136twqecr64s
-Message-ID: <tencent_F831FACA6B5AD20402E2C3ED9594C28CD806@qq.com>
-X-QQ-XMAILINFO: OXZEp4Z5NI29ihMuTY6xOYMu/8lQAzXlTwUxEVy+cJQvQa57Iayp7LP94K+ODU
- 8u53urp3da8976D5JM0tBfHazbRqIrMFHFsUcF/pXOPjvajOLOTH8MuMT5BNHUcY7VbXpLYm8rfg
- UgEZhr2t76/cV9wAa3NIjjfOnEOEboOQF0T5kRfUzX9THJgMzyrBLCjU453XL8BwSTRQY5qrPaYW
- MO6gKZqOulbXbFUDm6FRUOFE3h7CP4o4glziUq6f8GwPxDlhDhYmO4XW9fpZELctX9oxOvG5XI6l
- yzmYwHHC3itH38GvtzaFG5auH/tB01ZoNh1K67r3fDep8zR17YPWDYUp76clWAGsH5QVj6r2NTss
- XMoFY3/ZsQDpRQlO8soAsDEhwdNNCDPlPCVyeBed1oOOk0OYgnpYMrjz//J+UnxERc0AeAB0UStV
- PPfKoW1xfQIIzf78Kb4P9C0X8dCav2iYzBzcf0bVr+f5uAQWTvTjIIjq1t11H1gUlKpc7SkTL9Cm
- Oe1Yl005au1CzhX+P067Q2IaaCssB4bzv6jenwZSu1drzbj63UX8EqFeBraz1T2h8E1Dz32cKnyf
- aJG7I4+UDYDLeqhqcpYQHzCiPyRxx1y5BzsPDVYzdJGamkzK20y03kqd6AawugYEkG7WUl1oOJFl
- EFxIqxQsteQJJFxHXkFseyTCtHCc7uvahSqIycxGztmPyVMsHkhMfP5lIBYVv92+jUEIWSiDFfZ4
- 6D7V5bx7ZpTKrjeXR/HixsMSqax36ztHXaQ9cTYKrCUoMWHJue3F3mUyVAe0+IjW+9SYbEESVlKl
- P7b11KJ4ehrpheQhgCLyLpn99TZAe2qfgkBApx91IO7Is/xLVy4utWOSe6pWLpq0l/fLsPKliaog
- Jjhu20A1OJ6imuBiAZzfq3lRKf5xnsOZmUYy8JqwKaeEG03oyyX/awubfkkPtKJAIFQZYUk+myuo
- +g2U+ISsCXIzxzlVyfq5lQ3RxfmPf9QhLbYZIPwvV729pu4FWGN6U4xXzwGvg4DzInAjwAdbHn08
- eC5KGjNz9MRM2w/3SrvvCLVPdayFLpdR13Nyqic07zmMZB2Ivnzj+FBk86kSeAMCL83CElDQ==
-X-QQ-XMRINFO: MFuljud3PUW4Hy49K308V+nvGr8SioTB3Q==
+ by newxmesmtplogicsvrszb51-1.qq.com (NewEsmtp) with SMTP
+ id 343008B3; Fri, 16 Oct 2026 18:13:03 +0800
+X-QQ-mid: xmsmtpt1792145583t6pns1ewc
+Message-ID: <tencent_88B063FC15FDB4BD89164484DB67A9B61907@qq.com>
+X-QQ-XMAILINFO: Mpk1SqVBRfAQ6JqY3QMRRJ5HkzCkyYB4xjUI95uJg/3U3QYE9USr+HDeOLn8xq
+ uGtP2TE1LaTm96Trj1SQ5NY+dVEny56lLa3+xjkhjw5cLtSs0wx/SEEigkWsWlGluLyIRQ+KcRF1
+ HRJHRSZIp5CPb35EjDs0I9audG4ohQpuRZEaK8N6edcrtWKyxMitJLA3ozYXbknZowrq6PLmx13w
+ 3eswCz2nnLb0Ff4fVuo+1VnwlnWY3ZeAn2+kWa0DK5xRBqy3LKRqXHWEgzO1gQNeT7zSLc/G7XXD
+ N2YKtvO/5pROpjSUwohdpQ7fMbo/p0Or+jqu2lAwBHhvU7GUwTV7NvK0bI03cLzMYWGgmEOAU+AO
+ JPfpRHvMeyu+/iYFNSIZhbDvdFxsZIR8FpajeGEIqAqYE5yLF1ozNnQ0EpDfmKjqNOS+TTVxs6bq
+ GQ3ToNATpVznV7D5RxDA2khw1y2C+q6iZ446BVhWXQZVYyZsVRb10qNkvsT5NcVVRv83ED6W0/5Q
+ +8NEop/9ulySebocRlq8fgDX2XsWT6j+LvDK70EnS2R9ZehgI1/c9d2oZ+15LUSEvgicDsdZ1d8F
+ CZxgom0Uo9uFaIUMVQgRzJHs5aOOrjeLYjbIXu+XZhawBjIwUGxM7NAbZwy0kKqeciJuRuO+5mVm
+ KJ54Rwd2cJgMhqyEperLRwYmFS17yK2RxtOJ/Et7mivTtIBoKajUHKSsjSmcbHi7IoIqI1L3wGP4
+ zGm2H1Jz08lInMc9r/qdmxSgkOXGg3wwt4UPH7bH5ivzWx1LTtMoysNfQreuwl2K6He2kb3lwKaq
+ rCa5J5n6d4FQEuTnMAKKp5zBmEcOOSGIHSQjRQvUqebYdVm0Y4iivumQ3OtY2o5NFmpbgcYCAvDu
+ BHsyrwrTwu44ZIfZR81yjX/+4hMhtNIvk+aRIFnX8jGYmDnsbyUfNQuYRvk3ChcadORtO9Qbq/67
+ dvpF6fWMJc/3bXt4bginoPfV1mAvAq5wFdAcS3IvMPUCfC7gwfqDkCb1A3XzTLsGQludCFhA1cWC
+ lGO16Oi7XXdzh2tHOifnqUNVEqnciDJsG273mjGdpkR3+zgurs2Ulv65+F5QX+wosMPvvuVFig2V
+ GLZ+GADYeCatSR6xaeFADCXAjgaA3TTTRm2Unt6hzk1DYaYtaxBD9DjSP/KA==
+X-QQ-XMRINFO: N+gupeqCsbX2VDY1MJ80Zvm2Nd9q8sTYww==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 26/37] hw/arm/mpam: Implement CMIN/CASSOC storage
-Date: Fri, 16 Oct 2026 18:10:46 +0800
-X-OQ-MSGID: <20261016101058.1900808-12-2118537295@qq.com>
+Subject: [PATCH 17/37] hw/arm/virt: Add mpam and mpam-min-msc machine
+ properties
+Date: Fri, 16 Oct 2026 18:10:37 +0800
+X-OQ-MSGID: <20261016101058.1900808-3-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261016101058.1900808-1-2118537295@qq.com>
 References: <20261016101058.1900808-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=203.205.221.149; envelope-from=2118537295@qq.com;
- helo=out203-205-221-149.mail.qq.com
+Received-SPF: pass client-ip=203.205.221.155; envelope-from=2118537295@qq.com;
+ helo=out203-205-221-155.mail.qq.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -70,7 +72,7 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:49 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,86 +89,103 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-MPAMF_CCAP_IDR advertised HAS_CMIN/HAS_CASSOC (since the CCAP
-patch) but the MPAMCFG_CMIN and MPAMCFG_CASSOC registers had no
-storage or read/write cases, so L2MIN/L3MIN schemata values were
-dropped and read back as 0.  Add the per-internal-PARTID storage
-and read/write handling, both guarded on CCAP support.
-
-Also fix the MBW_MIN write mask check, which referenced the CMIN
-mask (and logged it as "CMAX") since the device model was
-introduced.
+Add the two MPAM machine properties: mpam=on enables MSC emulation
+for the virt board, and mpam-min-msc=on collapses the per-node
+memory MSCs into a single MSC with one RIS per node.  The state
+fields and the property accessors only; MSC creation arrives with
+the later patches.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/mpam.c | 36 ++++++++++++++++++++++++++++++++++--
- 1 file changed, 34 insertions(+), 2 deletions(-)
+ hw/arm/virt.c         | 47 +++++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h |  2 ++
+ 2 files changed, 49 insertions(+)
 
-diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-index 610ae88..1bd76ba 100644
---- a/hw/arm/mpam.c
-+++ b/hw/arm/mpam.c
-@@ -260,6 +260,8 @@ typedef struct MpamfPerNrwId {
-         uint32_t cfg_mbw_pbm[(MPAM_MBW_PART + 31) / 32];
-         uint32_t cfg_pri;
-         uint32_t cfg_cmax;
-+        uint32_t cfg_cmin;
-+        uint32_t cfg_cassoc;
-         uint32_t cfg_mbw_min;
-         uint32_t cfg_mbw_max;
-         uint32_t cfg_mbw_prop;
-@@ -635,6 +637,20 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-             return 0;
-         }
-         return mpamf->per_nrw_id[nrw_part_sel].cfg_cmax;
-+    case A_MPAMF_MPAMCFG_CMIN:
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                "MPAM: Unexpected read of CMIN with no CCAP support\n");
-+            return 0;
-+        }
-+        return mpamf->per_nrw_id[nrw_part_sel].cfg_cmin;
-+    case A_MPAMF_MPAMCFG_CASSOC:
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                "MPAM: Unexpected read of CASSOC with no CCAP support\n");
-+            return 0;
-+        }
-+        return mpamf->per_nrw_id[nrw_part_sel].cfg_cassoc;
-     case A_MPAMF_MPAMCFG_MBW_MIN:
-         return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min;
-     case A_MPAMF_MPAMCFG_MBW_MAX:
-@@ -746,12 +762,28 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
-         }
-         mpamf->per_nrw_id[nrw_part_sel].cfg_cmax = value;
-         return;
--    case A_MPAMF_MPAMCFG_MBW_MIN:
-+    case A_MPAMF_MPAMCFG_CMIN:
-         if (value & ~MPAMF_MPAMCFG_CMIN_WRITE_MASK) {
-             qemu_log_mask(LOG_UNIMP,
--                          "MPAM: Unexpected write to CMAX Mask=%x Value=%lx\n",
-+                          "MPAM: Unexpected write to CMIN Mask=%x Value=%lx\n",
-                           MPAMF_MPAMCFG_CMIN_WRITE_MASK, value);
-         }
-+        mpamf->per_nrw_id[nrw_part_sel].cfg_cmin = value;
-+        return;
-+    case A_MPAMF_MPAMCFG_CASSOC:
-+        if (value & ~MPAMF_MPAMCFG_CASSOC_WRITE_MASK) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to CASSOC Mask=%x Value=%lx\n",
-+                          MPAMF_MPAMCFG_CASSOC_WRITE_MASK, value);
-+        }
-+        mpamf->per_nrw_id[nrw_part_sel].cfg_cassoc = value;
-+        return;
-+    case A_MPAMF_MPAMCFG_MBW_MIN:
-+        if (value & ~MPAMF_MPAMCFG_MBW_MIN_WRITE_MASK) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to MBW_MIN Mask=%x Value=%lx\n",
-+                          MPAMF_MPAMCFG_MBW_MIN_WRITE_MASK, value);
-+        }
-         mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min = value;
-         return;
-     case A_MPAMF_MPAMCFG_MBW_MAX:
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9d19251..aaadff6 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2133,6 +2133,14 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+     }
+ }
+ 
++/*
++ * Partitioning geometry for board-created MSCs: 256 request PARTIDs
++ * narrowed to 32 internal PARTIDs (enables HAS_PARTID_NRW, so resctrl
++ * reports num_closids=32).
++ */
++#define MPAM_VIRT_NUM_PARTID     256
++#define MPAM_VIRT_NUM_INTPARTID  32
++
+ static void create_pcie(VirtMachineState *vms)
+ {
+     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
+@@ -3498,6 +3506,34 @@ static void virt_set_virtio_transports(Object *obj, Visitor *v,
+     vms->virtio_transports = transports;
+ }
+ 
++static bool virt_get_mpam(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->mpam;
++}
++
++static void virt_set_mpam(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->mpam = value;
++}
++
++static bool virt_get_mpam_min_msc(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->mpam_min_msc;
++}
++
++static void virt_set_mpam_min_msc(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->mpam_min_msc = value;
++}
++
+ static bool virt_get_dtb_randomness(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -4303,6 +4339,17 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+                                           "guest CPU which implements the ARM "
+                                           "Memory Tagging Extension");
+ 
++    object_class_property_add_bool(oc, "mpam", virt_get_mpam, virt_set_mpam);
++    object_class_property_set_description(oc, "mpam",
++                                          "Set on/off to enable/disable "
++                                          "emulation of MPAM MSCs");
++
++    object_class_property_add_bool(oc, "mpam-min-msc", virt_get_mpam_min_msc,
++                                   virt_set_mpam_min_msc);
++    object_class_property_set_description(oc, "mpam-min-msc",
++                                          "Use RIS to reduce the number of "
++                                          "MSCs exposed");
++
+     object_class_property_add_bool(oc, "its", virt_get_its,
+                                    virt_set_its);
+     object_class_property_set_description(oc, "its",
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 22e66d1..c847136 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -177,6 +177,8 @@ struct VirtMachineState {
+     bool ras;
+     bool mte;
+     bool dtb_randomness;
++    bool mpam;
++    bool mpam_min_msc;
+     bool second_ns_uart_present;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
 -- 
 2.43.0
 

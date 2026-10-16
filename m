@@ -4,47 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2DA5CCA46C
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 141FDCCA46C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZm-0006mB-Hj; Fri, 16 Oct 2026 09:02:24 -0400
+	id 1xHhZP-0006Uo-Vn; Fri, 16 Oct 2026 09:02:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef4-0007Kl-3D
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:38 -0400
-Received: from out203-205-221-221.mail.qq.com ([203.205.221.221])
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHeXq-00060A-Bu; Fri, 16 Oct 2026 05:48:10 -0400
+Received: from xmbghk7.mail.qq.com ([43.163.128.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHef1-0000R7-LB
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:55:37 -0400
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
+ id 1xHeXl-0007jz-Gf; Fri, 16 Oct 2026 05:48:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792144531; bh=CFUuWfDjwJ1xmZXGGkNFyAd7r7YLRzsuXu6bJyNXd4w=;
+ t=1792144077; bh=YI1uTqwk6PgPa+hxwugkU+IJlKdvsHWkdlHjHmZxlKA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=R9yUYRRLH/PBQz6EdSjtuLuaUNQFA39ni3uLSwN0ALZ1BPlevtwp5armKEOOfefDE
- to9kvyPsIVbcJ28Q3GlL3i9//I2I2k+651rv9lHazYQYfdXUaEPghHyA8ajYI3vzfg
- RvHR9/b03Zf91mm2R7a48YqRYKvtLJHr6v9K05nA=
+ b=WCpwYVeMYzsXDnoTvP2iC7aGJu96dKV8F1iutBeZ7v4STAQ6LHJLBr2KYtIFxDEwl
+ pjySy6LAr8EvwjbQEXR5BdnTlDQnPc5rv0qj0wJF2yk+EZ9XLSTFReNdElF2RUi2oL
+ kX574cTyngqhsCyg5l7QTW9SXaoh7WHIu+T8V0Gs=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
  by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
  id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
-X-QQ-mid: xmsmtpt1792144085tnxi1b822
-Message-ID: <tencent_6C7ED336265811796EE3A442668C8E275709@qq.com>
-X-QQ-XMAILINFO: NmhoXJR/eu5xX3X8CfzNyecIooM8VpASQpoaR1xUWNRPTamGHhZWO4bn1LnsRN
- OBoX4M8sLO5WOioD+MsDbjRt+LO+ZLRh+HUe7dShVNxj5Cb7OrYOdcP5UMZZz8TiYSborE2qta0s
- GrRTcNsN9FTI8elN6Y/7uBY4qXa9uiTjwYFyYMnfKbYxzYlWh5unjo3Tbxeuj3BMjdJNxDK14bX9
- WpN7RgdFhYGzv4RdPemmU+rB5mqQGkMScN6GebPk9jd3Xc3H0zhZa1dXq1JjEhipA788OWu4jBfZ
- d3R7mrBWNX5FSUIxc7l0bchWG3LGtgplQx3fzpbWkewQH5MN60u/NAnhYKkGTtGLsKxDvxsr2gZM
- +iQoAAuSkearn3THT2mSJWv/igSOHo5gZpqj8v9KD+3EPkns3GwQbkeJDGHipobjLIDPdxRH3IPt
- DZHjh81qKAxhmBemw2QvNoDwHjkp8E6/3JrrJjT656We8M0N/+AJHiMdyKjWJjcxAH6fECzw5HO9
- LcHJwlEHRs+Tpbq9HRkg2nuewraipQOEsfVRggR+VzoGl1zUsPlc7mQwg7ZPMCasGwJDtXoEaVkM
- scZXQDUdFbowRIyU7AxBGnQQ3B+mUfd5mqGa+FG5dHJzHuMWRezXkrbKKjIKoxMKUUqPFjuMIsk/
- STKcwAy7HWHDln8r1w/R233IW4vyNZrVsJ2jkXqphz8lxRTFQEkDfRMqlm8kEPLh/2Alur5JoF4c
- 0SQ577mNWJtaBFUnisF+0vhR4i6YS8fo6SmUV5nefLuUKjzwVgQIsiIa6xbVMrGk4kLcrqFbeZ41
- a0jFA8GlPjvBjarwSA1w4OBjz948vqBAQyTXHV/7BzAvLvrrhYaYp+SOvs/arcTN80cYPL5y3dT6
- oQSpJADgCQXUsUSwGJuWcjWfHnOVSyJ6VYc3TtRmrTQMuVl4rIkReb0T/gpnYPkOtEYyXDKRuZ+E
- 1sAtM+GVNjmUNxkKuVGH9lCzJmNIU2G/lAvqz537gnHPNfvSzT31yvUNDA7R/Pi2ssgcbOXdCsyq
- G1Fd+OkIQvBzrgJ+uTS1Wcqo+kocd4nog5Q9tL25g7L4C5Rft0jP/eLlrXxQSHjP7lvjKGbVsV1+
- Zu7dOU
+X-QQ-mid: xmsmtpt1792144075t6er0iz2l
+Message-ID: <tencent_44485284331CC7902B6C69F413CC882EB708@qq.com>
+X-QQ-XMAILINFO: OKOirRU4nj6hIs9I8I91mvScjlibRL7iyLA5H5Jmq8YxBn417PVsbQ1PmBlFqS
+ VJxjPlHFupsmfei7LvVa3Vb5i+tKtJ4L2IfxpgvXRNZmGvr50Q6SQ5Q+p7IpC2XSdPiyCXkb6G1J
+ ObyO9OfA7lZUhbeDOzNYYo9UcGO9B/HR4yuptAThEPcKztEHV/aPY/2+RH7RzaPqQYwPHqIx+cQG
+ iVU8kPkn9ErAbG1TZ816DgX1yN/UU7PT8PYQF/WIHvB1iXEbQXH9i3bIGnRXlVRlH0neR4wbxPLd
+ 4awh8xqLVFa0cTZMTKTQkw90g5pMRSIQnjeuYyDYmJjgh9J0ETkaVh5R7AvoNjZYeAwANk7rhU/r
+ KS8cR87qO85GN+9PB5vLk+Nu14EpSk94Wlu02bP1fjfbGVT8baPiZ94oWPV+EoXBuB1ZeJS5BZqE
+ b5lBE6HiMcptFMR2Xx7l7HxG40Pu99nPJl3R7+9rjIP/wE05UYT8P+wgJiZBTNroEPnoPRyjotOz
+ yQb+FcKmbuDkQ/FPSaxUnL+CFrC7v7LDfUx+jAge1XhgsKaev9PqerCktHOMGI/CHUHy4TKTWR5w
+ a1EEPo2zUfzoy0VJbh2RuWSuqnoxmtxAXHuP77C4Vkd3gaHemAyV5P+sg8YngFv7VrCSH+M6kM65
+ f4Xb9tlrEQBSR9cpxyyZ2IqMykG5q6rbifYXtSUvqsyWyyTwdae2HnjVvOzr6ctffSo+Ok0H2jo5
+ aZ9xBLeNg2RZpqqSi7FNEg55QQO8ozzTjsuU2FjXP2ZrtjHtAHrqDdUQbIYHdycxprvE7nmvD5Gx
+ 3g1Pe4eZQfK/42H08xpUDmjshL48ChGUIE+rNgiyNRmKWrxI3qv0Tz0zu/+ncpAWr7l6Lt8CACg9
+ A72172wY4h0/z74v1KUIWvuSqiZhwApd8BubDmTax8oQDH7vOWEwUsR2FNmMhKpkufUqRUiNZaVq
+ l3JHm68HcvFNJ/3hKbbcC8WgbSZnNjyjiy9pRDQhumSg04fxsnttjDXQC2yRJ8SxpXvvhDjJTabU
+ V2Q1P3jDcfMEgO06icEK5XzqrSGZWqyy9kQfrS2A==
 X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
@@ -52,26 +51,26 @@ To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 11/37] hw/arm/mpam: Implement CPOR cache portion partitioning
-Date: Fri, 16 Oct 2026 17:47:05 +0800
-X-OQ-MSGID: <20261016094733.1898485-12-2118537295@qq.com>
+Subject: [PATCH 02/37] target/arm: Add MPAM2_EL2 and MPAMHCR_EL2 registers
+Date: Fri, 16 Oct 2026 17:46:56 +0800
+X-OQ-MSGID: <20261016094733.1898485-3-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
 References: <20261016094733.1898485-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=203.205.221.221; envelope-from=2118537295@qq.com;
- helo=out203-205-221-221.mail.qq.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=43.163.128.54; envelope-from=2118537295@qq.com;
+ helo=xmbghk7.mail.qq.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:47 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:17 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,98 +87,53 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Add the cache-portion controls: MPAMF_CPOR_IDR advertises the
-CPBM bitmap width (MPAM_CACHE_PART portions) and the cache
-subtype sets HAS_CPOR_PART, and the CPBM array registers become
-readable and writable per selected internal PARTID.  Reads and
-writes of CPOR_IDR/CPBM on an MSC without CPOR support are
-logged and ignored.
+FEAT_MPAM's EL2 registers were missing, so a guest kernel that owns
+or drops out of EL2 takes an UNDEFINED exception the first time it
+runs its MPAM capability enable callback, which unconditionally
+clears MPAM2_EL2 (and MPAMHCR_EL2 when HAS_HCR is present).
+
+Register both as normal EL2 read/write registers backed by CPU state.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/mpam.c | 41 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+ target/arm/cpu.h    |  2 ++
+ target/arm/helper.c | 10 ++++++++++
+ 2 files changed, 12 insertions(+)
 
-diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-index cce9355..2b1401e 100644
---- a/hw/arm/mpam.c
-+++ b/hw/arm/mpam.c
-@@ -356,6 +356,13 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-             return 0;
-         }
-         return mpamf->impl_idr;
-+    case A_MPAMF_CPOR_IDR:
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                "MPAM: Unexpected read of CPOR_IDR with no CPOR support\n");
-+            return 0;
-+        }
-+        return mpamf->cpor_idr;
-     case A_MPAMF_PARTID_NRW_IDR: {
-         return mpamf->partid_nrw_idr;
-     }
-@@ -367,6 +374,19 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-         return mpamf->mbwumon_idr;
-     case A_MPAMF_CFG_PART_SEL:
-         return mpamf->cfg_part_sel;
-+    case A_MPAMF_MPAMCFG_CPBM0...
-+        (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
-+    {
-+        uint32_t array_offset;
-+
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                "MPAM: Unexpected read of CPBM with no CPOR support\n");
-+            return 0;
-+        }
-+        array_offset = (offset - A_MPAMF_MPAMCFG_CPBM0) / sizeof(uint32_t);
-+        return mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset];
-+    }
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "MPAM: Unexpected read of %lx\n", offset);
-@@ -410,6 +430,21 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
-         mpamf = &s->mpamf[s->ris];
-         mpamf->cfg_part_sel = value;
-         return;
-+    case A_MPAMF_MPAMCFG_CPBM0...
-+        (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
-+    {
-+        uint32_t array_offset;
-+
-+        /* TODO: Figure out write mask to check this stays in write bits */
-+        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to CPMB when !HAS_CPORT_PART\n");
-+            return;
-+        }
-+        array_offset = (offset - A_MPAMF_MPAMCFG_CPBM0) / sizeof(uint32_t);
-+        mpamf->per_nrw_id[nrw_part_sel].cfg_cpbm[array_offset] = value;
-+        return;
-+    }
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "MPAM: Write to unexpected register Addr %lx Value=%lx\n",
-@@ -538,6 +573,8 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
-         /* Need to implement for RME */
-         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, SP4, 0);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 51a36fa..218923a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -759,6 +759,8 @@ typedef struct CPUArchState {
  
-+        /* Cache specific bit */
-+        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART, 1);
-         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PARTID_NRW,
-                                 s->num_int_partid < s->num_partid);
+     uint64_t mpam0_el1;
+     uint64_t mpam1_el1;
++    uint64_t mpam2_el2;
++    uint64_t mpamhcr_el2;
+     /* Optional fault info across tlb lookup. */
+     ARMMMUFaultInfo *tlb_fi;
  
-@@ -551,6 +588,10 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
-         mpamf->aidr = FIELD_DP32(mpamf->aidr, MPAMF_AIDR, ARCH_MINOR_REV, 1);
-         mpamf->aidr = FIELD_DP32(mpamf->aidr, MPAMF_AIDR, ARCH_MAJOR_REV, 1);
- 
-+        /* Portion */
-+        mpamf->cpor_idr = FIELD_DP32(mpamf->cpor_idr, MPAMF_CPOR_IDR, CPBM_WD,
-+                                     MPAM_CACHE_PART);
-+
-         if (s->num_int_partid < s->num_partid) {
-             mpamf->partid_nrw_idr = FIELD_DP32(mpamf->partid_nrw_idr,
-                                                MPAMF_PARTID_NRW_IDR,
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 896ac0e..d5d96d5 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6924,6 +6924,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .accessfn = access_tid3,
+               .fieldoffset = offsetof(CPUARMState, mpam1_el1),
+             },
++            { .name = "MPAM2_EL2", .state = ARM_CP_STATE_AA64,
++              .opc0 = 3, .opc1 = 4, .crn = 0xa, .crm = 5, .opc2 = 0,
++              .access = PL2_RW, .type = ARM_CP_ALIAS,
++              .fieldoffset = offsetof(CPUARMState, mpam2_el2),
++            },
++            { .name = "MPAMHCR_EL2", .state = ARM_CP_STATE_AA64,
++              .opc0 = 3, .opc1 = 4, .crn = 0xa, .crm = 4, .opc2 = 0,
++              .access = PL2_RW, .type = ARM_CP_ALIAS,
++              .fieldoffset = offsetof(CPUARMState, mpamhcr_el2),
++            },
+             { .name = "MVFR1_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 1,
+               .access = PL1_R, .type = ARM_CP_CONST,
 -- 
 2.43.0
 

@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 758D4CCA462
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0968CCCF2C1
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Oct 2026 13:02:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHhZT-0006aS-BH; Fri, 16 Oct 2026 09:02:03 -0400
+	id 1xHhZP-0006Um-UZ; Fri, 16 Oct 2026 09:01:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeb2-0006u2-Qz
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:51:28 -0400
-Received: from xmbghk7.mail.qq.com ([43.163.128.54])
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeZ5-0006a6-Jl
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:49:28 -0400
+Received: from xmbghk7.mail.qq.com ([43.163.128.52])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeb0-0008K3-PY
- for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:51:28 -0400
+ (Exim 4.90_1) (envelope-from <2118537295@qq.com>) id 1xHeZ2-0007vn-QH
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 05:49:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1792144284; bh=WdrxrySbz6u27/kiKDAkrxpedauoXC1uwQh9a2Y8kVk=;
+ t=1792144159; bh=3vYhGAIKKYn5YofW8KolAqXQsn7SxRlVZelFtJY0UFI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=cY8m6rLxNDNBzDvznH7GuIbgAZ8jTNw+JgNOiuP2fYGOsy6SZgx3alyzaQhbhG/5G
- JoVMOYYRXdnK0nIkwEF7TNrF8+u2fYCM15rrov2joXil1+scXTDsmRY6e7YTqOvnsF
- X2O2p7R1x6Jr9OckAG1pbrFZX23ZQP8p/WdIcdaY=
+ b=LTejMrIjxJA2thf75CoIuNymXx7HDpjp1aZXX707NZNYq7EctkDaDoB/oO6ZIxpXK
+ IfK/4UVNYqp7GpVjpqinWJ7qjbdrLZhp/kiGk84drX5EUB0nmO315LlGF2Xoa9EHpv
+ mpDrztbCXXKYfu7QPf3Q2HTv+TqqUzxQXyfK5FoU=
 Received: from r00799764-ThinkCentre-M920t-N000.. ([139.159.170.67])
  by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
  id BF4A1837; Fri, 16 Oct 2026 17:47:52 +0800
-X-QQ-mid: xmsmtpt1792144082tajq8s6yq
-Message-ID: <tencent_841229DA998C63C495D7B4DB092844DA5B07@qq.com>
-X-QQ-XMAILINFO: NRE3CqqEpmvHoNtYfPL6qsxEQQWlsMrbAJGWEJE93PRqrEKcGMR5+kKfJ2mFW1
- gUhSC+8xxnjuiZD80qOP193GlP3/zAB/WQM0ay9H7VTkZuF3HRsq4YCtn56IaPD9qUh+pi8eZ0Gd
- Z2li9M/qL/qUoH5sTtReffKLUgPa9f8tQAflhSfMRxRwaaNrc3jP82/w5YX4Zbw7CRX6VYJfsQR2
- xEihSO/7Ba4fR3GCtDscOYRj8uXggP0cvV/KPn8cYca8phbaZT3KuVYcm0UdNodGM8rmTfWimoue
- 3U7Ow9CJVciGy9+rNeEa62UTKfjsQoP6Ujs2/NzWHVl5pQ4WTd1kdeMOXs3hTVMCgi/rNjzT3NH0
- Yf8DJGjAIRolnV9qxlXLVa2RgaC9sCRpssa80GqYF8LlIBP0xa3o0Tf69F6Z8b4NMgj7NOVZqfPN
- FFqLvh3lQHhti/t5iVF3i8If5nNLR/XTNCTBaM+gitfq6vHGbzdW3ZKMpIa7ygxZ/ahD1vRdBScM
- zO9pcEV6KcYwqWzISQYqbJRXFHK6WsJDQP1KhH+HZxklw54vE1NJTAHujI5lmKiWHXeVUYpJzM+O
- tcABn6jhp36FrxJLv2yL6VeMNMqfdlnX6o5FtEYE6qA9mFpFklDzcv30knocDZV4Of5uKIAU+W82
- DVsGfxBt1s3vWXoTO7rVOqKEOB5NsLdRdzwOlbbxgWHCP+MZrep9TGcqspNYlc32cTseU4q/wcQB
- PegtZ4bD0fUUkp+ew3UgBUjD7oaEoXbJSyoQuUgPAy9hloB+TRXa1FuSoIkPILdt/Cw48KdfD3HH
- bN7xDzSZfvGGPQCcY7YZPfUIL+oJ+RzXIVl9sZZGkSpxbDv7lwP81LimiyGlJlswRVauVOEPtJn1
- UT+HPNFExMUXsVYHl1tLrG2DxhBAWbgTUUlnX1Gr2chQ7uTRV++mhdTTHLvUqJ/xOc80j0QZCPc6
- gMzPQEh4Pl5bJoU+ZEKOwnh0FIldGeVTNyCSYgJndS5RKDGDJsaPcpDXVB0mV8VkRZwWoEQ0aS0S
- YSFCXvayhBla2vuwAr2S5+kvrQSVxJcv2u76ztn2dxZQm7rcSK/Iib4Oq1cDgzNL4E7htzwiCR3M
- Y/AQQv
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
+X-QQ-mid: xmsmtpt1792144088t1c6ayxko
+Message-ID: <tencent_BD96274E101F6E25A4DA661A8FB55764D209@qq.com>
+X-QQ-XMAILINFO: OFArnyxfXusvJV/Rzv92LdpYiFfL5ZqrdnYccoVmwikk62Tjl1bgImInW6IdyP
+ mxx6VIZ5kYbtOQ784/BrmWxmQ+fFiaclkJUF+bWFJdkeABzcXqZBEcaKWyOWlZm/DwJ420ZFz3VW
+ A8huht3B8t5MT70hIcz9ogQOaD0h79ugZWmamJSum2da08vZuxx0/8Z8HSVMnJy1MK7zr6pQgjFo
+ JklEhSdoheWITps+4CLmW+5hb5oONYS+FFh5VZB15RhvYpNapC8qq8mf4Xr432QXIyZu5ef1c8cc
+ LPuhJ8SIab5gIhZsLqYGqS3Ptax3kR224GafhcHd5ZlLLQVBQ/VSBrRsIIbacF5XN4bQZmrF12Ro
+ +jciTwRE2+WXC4RrcP5ouldGdZQBiMa3rYjG+cet6nQ1B8YGkSZesvE7Mdx2JX/5x4oVt7G3LxjU
+ IEsCMaKfP3N351kyPAeSbjqM4TsD0nGWwRh3qu3rak7glM2WbRhVQIXJFma2dZi+TJhTVzZgCdT2
+ d9sXAll8nY/vZNcQiy9gdkt4jd+JFEztjlWXAOc3ANhAszBFvwYVav2UE5menf4q+MCId4pZS82U
+ dk2meWLCOy2T4irQXahKWShscjxfYF7qGywsf0y4ywys06u2wVct22jXtAXs0ICt6BUHPUSIbaEc
+ 0aeRN/HF21NY6LPFhW7ts/NhJpeE79ZxEIX9W4ai3Nvw4OKM7cqmqvqSsvy05RnshAJsFb9ssbam
+ EWcwg+Ctghig+PjZuzisWSeEJnWoyk0cDdNw1J9TuJDxjKXdmdAGXwOJp2y/GvG9n5d74J167hh+
+ WvikMkifKI/eO3hNAbUvr/ASQN0brWpkpCFNAyhwX/WKhfiX/KjSLu32QQ8chmAr6oJeUvMngZ3V
+ kXZtZ0mrCAYs5Q/H/m0NcAXgFVTruMUrDDEFWlYW8ppuVfIQmd8LZzOHbFfMULud7EoWaUBWmUTY
+ PdcJ0MeARfSeFwQoI745b69SQoGIdJE9xWJIZIRTZxswxgbm9YyMPJ3of1Mg4SR9MX4ea243WsOq
+ M8i+d2JVHLQycfSsgFpOFjg7wU+iazFkAYqZXhMr71g1Pvt+0Jgqdthi0BgQNw8tzzMp2a+rZfzr
+ xfvzJXZ+x09WpOo5JD0DmS8zcTyw==
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
 From: Jinjie Ruan <2118537295@qq.com>
 To: anisinha@redhat.com, armbru@redhat.com, eblake@redhat.com,
  imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: ruanjinjie@huawei.com
-Subject: [PATCH 09/37] hw/arm/mpam: Handle MPAMCFG_PART_SEL selection
-Date: Fri, 16 Oct 2026 17:47:03 +0800
-X-OQ-MSGID: <20261016094733.1898485-10-2118537295@qq.com>
+Subject: [PATCH 14/37] hw/arm/mpam: Implement CCAP capacity partitioning
+Date: Fri, 16 Oct 2026 17:47:08 +0800
+X-OQ-MSGID: <20261016094733.1898485-15-2118537295@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261016094733.1898485-1-2118537295@qq.com>
 References: <20261016094733.1898485-1-2118537295@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=43.163.128.54; envelope-from=2118537295@qq.com;
+Received-SPF: pass client-ip=43.163.128.52; envelope-from=2118537295@qq.com;
  helo=xmbghk7.mail.qq.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
@@ -71,7 +71,7 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:45 -0400
+X-Mailman-Approved-At: Fri, 16 Oct 2026 09:01:31 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,69 +88,93 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 
-Add read/write handling for the MPAMCFG_PART_SEL selector: the
-RIS field switches the per-RIS register bank (rejecting RIS
-values beyond num-ris, and nonzero RIS on an MSC without RIS
-support), and PARTID_SEL/INTERNAL record the selected partition
-for the configuration registers.  Writes are stored per RIS so
-the selector reads back as written.
+Add the cache-capacity controls: MPAMF_CCAP_IDR (4-bit CMAX/CASSOC
+band widths, HAS_CMIN/HAS_CASSOC advertised ahead of their storage,
+CMAX soft-limit support) with HAS_CCAP_PART on the cache subtype,
+and read/write handling for MPAMCFG_CMAX per selected internal
+PARTID, guarded on CCAP support.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- hw/arm/mpam.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ hw/arm/mpam.c | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
 diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-index 17ca286..c21a737 100644
+index 94e517b..fafe74f 100644
 --- a/hw/arm/mpam.c
 +++ b/hw/arm/mpam.c
-@@ -329,6 +329,8 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
-         return mpamf->csumon_idr;
-     case A_MPAMF_MBWUMON_IDR:
+@@ -363,6 +363,13 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
+             return 0;
+         }
+         return mpamf->cpor_idr;
++    case A_MPAMF_CCAP_IDR:
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART)) {
++            qemu_log_mask(LOG_UNIMP,
++                "MPAM: Unexpected read of CCAP_IDR with no CCAP support\n");
++            return 0;
++        }
++        return mpamf->ccap_idr;
+     case A_MPAMF_MBW_IDR:
+         return mpamf->mbw_idr;
+     case A_MPAMF_PRI_IDR:
+@@ -383,6 +390,13 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
          return mpamf->mbwumon_idr;
-+    case A_MPAMF_CFG_PART_SEL:
-+        return mpamf->cfg_part_sel;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "MPAM: Unexpected read of %lx\n", offset);
-@@ -339,7 +341,37 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
- static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
-                                unsigned size)
- {
-+    MPAMMSCState *s = MPAM_MSC_DEVICE(opaque);
-+    /* Update in the ris setting path */
-+    Mpamf *mpamf = &s->mpamf[s->ris];
-+
-     switch (offset) {
-+    case A_MPAMF_CFG_PART_SEL:
-+        if (value & ~MPAMF_CFG_PART_SEL_WRITE_MASK) {
+     case A_MPAMF_CFG_PART_SEL:
+         return mpamf->cfg_part_sel;
++    case A_MPAMF_MPAMCFG_CMAX:
++        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART)) {
 +            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write to CFG_PART_SEL Mask=%x Value=%lx\n",
-+                          MPAMF_CFG_PART_SEL_WRITE_MASK, value);
++                "MPAM: Unexpected read of CMAX with no CCAP support\n");
++            return 0;
 +        }
-+        /* Field matches for all RIS */
-+        if (!FIELD_EX64(mpamf->idr, MPAMF_IDR, HAS_RIS) &&
-+            FIELD_EX32(value, MPAMF_CFG_PART_SEL, RIS) != 0) {
++        return mpamf->per_nrw_id[nrw_part_sel].cfg_cmax;
+     case A_MPAMF_MPAMCFG_MBW_MIN:
+         return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min;
+     case A_MPAMF_MPAMCFG_MBW_MAX:
+@@ -460,6 +474,14 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
+         mpamf = &s->mpamf[s->ris];
+         mpamf->cfg_part_sel = value;
+         return;
++    case A_MPAMF_MPAMCFG_CMAX:
++        if (value & ~MPAMF_MPAMCFG_CMAX_WRITE_MASK) {
 +            qemu_log_mask(LOG_UNIMP,
-+                          "MPAM: Unexpected write of non 0 RIS on MSC with !HAS_RIS\n");
-+            return;
++                          "MPAM: Unexpected write to CMAX Mask=%x Value=%lx\n",
++                          MPAMF_MPAMCFG_CMAX_WRITE_MASK, value);
 +        }
-+        if (FIELD_EX32(value, MPAMF_CFG_PART_SEL, RIS) >= s->num_ris) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "MPAM: RIS %d out of range (num-ris %d)\n",
-+                          FIELD_EX32(value, MPAMF_CFG_PART_SEL, RIS),
-+                          s->num_ris);
-+            return;
-+        }
-+        s->ris = FIELD_EX32(value, MPAMF_CFG_PART_SEL, RIS);
-+        s->part_sel = FIELD_EX32(value, MPAMF_CFG_PART_SEL, PARTID_SEL);
-+        s->internal_part_sel = FIELD_EX32(value, MPAMF_CFG_PART_SEL, INTERNAL);
-+        mpamf = &s->mpamf[s->ris];
-+        mpamf->cfg_part_sel = value;
++        mpamf->per_nrw_id[nrw_part_sel].cfg_cmax = value;
 +        return;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "MPAM: Write to unexpected register Addr %lx Value=%lx\n",
+     case A_MPAMF_MPAMCFG_MBW_MIN:
+         if (value & ~MPAMF_MPAMCFG_CMIN_WRITE_MASK) {
+             qemu_log_mask(LOG_UNIMP,
+@@ -675,6 +697,7 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
+ 
+         /* Cache specific bit */
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_CPOR_PART, 1);
++        mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART, 1);
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PRI_PART, 1);
+         mpamf->idr = FIELD_DP64(mpamf->idr, MPAMF_IDR, HAS_PARTID_NRW,
+                                 s->num_int_partid < s->num_partid);
+@@ -701,6 +724,20 @@ static void mpam_msc_cache_realize(DeviceState *dev, Error **errp)
+         mpamf->pri_idr = FIELD_DP32(mpamf->pri_idr, MPAMF_PRI_IDR,
+                                     INTPRI_WD, 2);
+ 
++        /* Capacity Partitioning */
++        mpamf->ccap_idr = FIELD_DP32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
++                                     HAS_CMAX_SOFTLIM, 1);
++        mpamf->ccap_idr = FIELD_DP32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
++                                     NO_CMAX, 0);
++        mpamf->ccap_idr = FIELD_DP32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
++                                     HAS_CMIN, 1);
++        mpamf->ccap_idr = FIELD_DP32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
++                                     HAS_CASSOC, 1);
++        mpamf->ccap_idr = FIELD_DP32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
++                                     CASSOC_WD, 4); /* Not much flex on this */
++        mpamf->ccap_idr = FIELD_DP32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
++                                     CMAX_WD, 4);
++
+         if (s->num_int_partid < s->num_partid) {
+             mpamf->partid_nrw_idr = FIELD_DP32(mpamf->partid_nrw_idr,
+                                                MPAMF_PARTID_NRW_IDR,
 -- 
 2.43.0
 

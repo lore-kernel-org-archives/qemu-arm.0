@@ -4,106 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F125CCF2C4
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 13:13:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE8D8CCF2C4
+	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 13:15:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xI4Dp-0005oI-48; Sat, 17 Oct 2026 09:13:13 -0400
+	id 1xI4FP-0006F8-GH; Sat, 17 Oct 2026 09:14:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI4Dn-0005o3-JA
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 09:13:11 -0400
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ id 1xI4FA-0006B4-UC
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 09:14:37 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI4Dk-0006wU-7N
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 09:13:09 -0400
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-8b0d63f60bcso5802827b3.3
- for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 06:13:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792242787; cv=none;
+ id 1xI4F9-0006xz-81
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 09:14:36 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-8b0db268bd8so4195287b3.1
+ for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 06:14:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792242874; cv=none;
  d=google.com; s=arc-20260327;
- b=epW7f8eHhvqyE7y7/6shQ7jvPv6tlcJCVJffHQkpChxE6Vb5o++Rs2mAcs7fussoCj
- PV7ZjRXNPWWXf8N44LKmOoQas4UgnV6HYUGQCeHoDCyJaTYJj5zQC6VGAjn5/ELBYG7V
- dPA3+pXvdbg5rb8qMVjOJTsmAC0wV0NKnSjUg74IMXKvnzRpWvZ4PbI4EU4+hVDAgnJ4
- LJF5YrB68ezN3muXwBmbsUTeW4GfVPpc6Qf/cCo3egOI9Wocyrn7VdwSpt+ajaJ9/qDG
- PKjBZ/0cnQrC6HNs6BQsRGecGY4c4ngDtSTtaXREaMFJzUyGpJUDgOwsmmxwWL6gA1b8
- mdBA==
+ b=StzHJ+OADBu2X2HZalOkHq3VIjQoZ71oWTo9dvLjv4wOLFbYzSJ8SMr5mGgwYv8mVK
+ UXsqlKNcuWOjdw1ONT3eMmN6z7EIm3pBFzkcAp3CZWD7+bu6D+AbSwnNzacJ7XMA3x7J
+ ugCgUQpGTmnkq703TOaEfTBH6Ohg2kE0Oj12jcbv+v5lZuwQHDrSo3Iyato4ePAusut/
+ ZMUiSQ8kEMDcWr7Yub4KpOuxq/XmzS1GwAH13A2z63ASs2QhcVmXjn9nyLaQxyqN5+JW
+ 0ZXxPRn1KepcOhskc+0zi3ofF6VxhnxK+D3b09hngOVWZNh7oPHVE7tiie0S8yRTRyS4
+ qv4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=KiH9lCN80VTfNm8iRgopCmf+VLX6kHS52Kc2gPJrrXI=;
- fh=0A7VoBDyscqyUMIW2T/p8buePGLbnJ8hFuo/Bu4GaAQ=;
- b=sHO50CKIPwPD0d/JOaXBkRXbR/DtHq588NWDuWNegCYGIEkTdbI7MAcwmHB2osdUMu
- DfirUC3eSFwM93nMEEh5TIzTeGJeVBVeMKWu3vGmTfuCmLxpdWpfo9C6GW4famRs0Z7R
- 8DKYb/e50OaphxnNPZrVOK2OYx55PJke+1dH9kT8uLyB+Lh98jcrjOz2qsAEO7OQPKfS
- GNRTUE6HeP3ddcoCZJd0oW67IDSt6LrP6LOraiGwP6l9rgr8RA8HV/qcQthdbhSe1R4h
- kXUefWqX0o0LLVf28j7BrHY3OcOyJnT0jSbVGs29TDKcJAO2bfUD1w737Q8ZiUE2RMbQ
- BrDA==; darn=nongnu.org
+ bh=qEWOcn5RYwvYVIGDAT1q/wdyqeEISGmxEITvVszWRNc=;
+ fh=PXpyShR+LMquinamJJv4uqqHjXS42Q61JW4lEVgki5U=;
+ b=BSK/rt4/qxFLJo9LG9HK87bc/eIJEIRkx65wPjL5RNiW3vwF6Yn2EYr7MmQWAzuze1
+ dp7IFQAo6M5wGyH7gGdQsHTj0HjgAxZ4cZszWpxvRwBnus5FVU+Aj4Br2yNmaVm3Y422
+ y5vrBpg6vDb98igppfPGeZOmqzl6xJ7GzK1SRy2cEHSxRlTngL049+exC6SQv5ExwmuR
+ c90mYhzOtWUj7Ul7hJD+wVo2oZzAfXz0qCgQp+TNB3v+ef+x+TAlJw5sWw5H5e79CdDz
+ 2I6rUcBsS7f9ULRKaX8rDEBd+RliQ9xBmG0NBO7DW1QdyPEyjXQkeWK7rjBJtvpj+w/e
+ OwPg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792242787; x=1792847587; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792242874; x=1792847674; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=KiH9lCN80VTfNm8iRgopCmf+VLX6kHS52Kc2gPJrrXI=;
- b=n9VWJROeqk7Pgo5G0Axc2bTaAwIJUkuTFt7wnE/3KP0jAkhXd/MmpQo3/2yEaXqKD1
- GQtYLT6gQv3F42f/NPRgpWMNyHmtfLo++mSiYMI0iie+hjJqMGowTdw5cKFqJVMOcM9a
- 8PKCnpVSdMavw4i+U8td0gdHHwwC54mhdBQMbLzuZsyD0yf6DgtCpZOWFkfqQWA0uozv
- bhxniF5byU+sFb/YzGCksK8OPb8v2r72LcR4Wk1FRPE5PDcdiETzHi70njYo0QIwXnE/
- zaX0wI8zjBg9QwaTSIapudOIJ2jlv8WfuibTtcabyQUDSCAbGJ6yXCSPfLU7pDTYe/lo
- y5zA==
+ :content-type; bh=qEWOcn5RYwvYVIGDAT1q/wdyqeEISGmxEITvVszWRNc=;
+ b=sSiHce37PiyniKcAJtzquj888uyRCgwTg6bhsAj/TVvuzexNtmyIQ3qa4vgUiINz8t
+ BeF3RmOO+amVrdloO5rsITotleGs8plsR7xQ2pFKtUe8uvgP7VYW4JQwISQ37vpd1Dsf
+ juYK0hK3iTdX/QOTLk8g04bxLdhEFNJpk3DKJH6nnXPLCc7eOavva8goQ7xLBWrRgt+F
+ j3JVNGFwgQAzNFq6LJ6MI5caBiLG5p7HSe+wfgNkYHITgViSONeNHlsI9TJ23UobFqGl
+ Lu66dBEWjWO0YLjWM75RouXUWje646B4i7ChDpqT8XVmgPBIws5dU9xU7StCLOn0QQXq
+ yjJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792242787; x=1792847587;
+ d=1e100.net; s=20260707; t=1792242874; x=1792847674;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=KiH9lCN80VTfNm8iRgopCmf+VLX6kHS52Kc2gPJrrXI=;
- b=qyh7tHdX0j87FgWbl2ZTcQbZz15Tc8ehrII7/Sbvd/cOJoUBThE7Ny64NEyrVXoIKd
- sjSL1qfI1gNmbyMxYyJj8u5WXaYFFgqMTizx1DE3mqKhhlk9YrgBUCZK4aNM/W6O/ssb
- V99GXmJe5qxDP+mf6fi+xBGuXWlrISCNNlQ7ZyFnXe8sg3XTKVrYxxbauOTNnsgetK+u
- YxTBIqfNIYJKuLoQy8icDGXmxi2rUjROJURiF3UV7wfLjHqf+eX1Xe+qOd3k0TPv3vIg
- t8lXCPNMFl6PxNk/VafH2Ax7BYpnA1wspb8I6cAVwWKpJsmqBWCwXbp641A0oZhqkZvX
- qN+Q==
+ bh=qEWOcn5RYwvYVIGDAT1q/wdyqeEISGmxEITvVszWRNc=;
+ b=EGlmZXE+aoXK3vunBbTW3Bd+iK7mnwYugDNU2WnHqyqVF58Xe4CbBAG+w1j4HXQFIg
+ kzdKHtJC0fcJABEnAUyT9BimmLMSUFLCft90q+LuNxtrIS/O9GXKsUAhGfFkz+TmD7EV
+ Y3s/xsE6K+08v641xU1cAq/uVMYxbTQ2KwmFpMr+NKWT0YjxvSeTGbmMPOhYSqSS0JjS
+ n0KtGlSTUOz/xS/6bbhDqBDeLfyhgI9cZPpoIZclmWQXPhG4c2BBMQJlrP/gK9BG2NLv
+ ax/k2FlHHIOPNCPMspGWez/cv6dxUDMSlfa7ee3OTnXmEXSrBamSxun4pqECaZ2fpOS+
+ LgBw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzy4McC5lR6cRZxU3JMJKizKSdih2NgOi70mKO4+QvgNHz6+Br/U30xHCpnSJ0waNDY9tRvqJIZ/w==@nongnu.org
-X-Gm-Message-State: AFq9FYIXvacde9syb1DwNEYeYLD6ZKuudywjX1It5Qa+c+j8h7QqQdi6
- Z7Dd8nrm8IDli/sc58+Gn9g4TGmKqFyI8LYUISrSqWp9q/x0290LcbHhEGpIu7D8zmqqRewgXtZ
- +ssJSKo6KJKKv0qrgtNSz8veCZNV0+OCKrXvfvXMruw==
-X-Gm-Gg: AYBFou0/K7rsNrOCkoumagxq+C3gpi6kGuio4gS4QGaG9sb+RWx7NXSErolW1sH/7ML
- MnxoAIRNZl580h0Lrm40ttahJ8sy386hWbRk3X85HfN61hIGvRdzMRp56rT4FvDAseT3dmk0npU
- 7K3lPz1Fn5TkOxdgUyvuuyBNvMV1a5ysOB9Xhq5ZpVRVDPRUS/josy7yumjvaC8HJq81WuBgWQN
- EOzaTdFwrFmaQrxGzIpqlORcuRhjhU/jznLE1SfUUWWj9mQLw9WuyEUg1aGduMh2M1T5qvfRy0T
- CcUfqoTnHqqqRUhLxpozxDXYCirzuq4bEcLEsWylkjVOYJjIWAi8nsIo7Yuqe6K42/RS5HyqAW6
- hmzEYEF5Q5xwU86dUIL2dqvgqh0EuJEnmsvc41ic=
-X-Received: by 2002:a05:690c:a0ce:b0:8b0:dd35:7b9b with SMTP id
- 00721157ae682-8b0f222e104mr7761717b3.67.1792242786578; Sat, 17 Oct 2026
- 06:13:06 -0700 (PDT)
+ AKwUvBy4dnp+Ojr4txiReEz7OmXQ8x4I7eNwG/vXyEhnH//TbmEsNdml6awSMAPU/3yCljmUfP+wLLsUyg==@nongnu.org
+X-Gm-Message-State: AFq9FYKzeHI1H+GZArdlURXxW+1kUYtTC5XzJ+sdoN3mqOBQURcJKo/m
+ MgC0xKUoVj2rozIs3dLSHBCJwKbDLgXP50S6ao/6K2xA5GdmkXxZ9O1f+j0lkkNIY+P9aJmo49C
+ I15Z9jLAb2m9JP5u2w0Jhe/gMbNO8GVvHm4q8GpsUVQ==
+X-Gm-Gg: AYBFou0jU7OAu1lgu96gMzVH7t3PlSkJwR13s4M4pnAti7GDNB3Yzzjx1ukkxmJHwza
+ Rrh3FGDEdkcFJPzwJ+aMMBp6V8T6Viw68LtE1cAdpkM6zxRmvdzsfJ7WN6ZdWJrlHRG69hAfteS
+ xPVqI5xdfi1p942zdu7GxqsXQA+M9eaPhUdyRiWdLfvszYUcixOfJGd9JLIXO0a4xuGOAEXOqBG
+ +YWqUlWiAtlGWP7R3QqErT1LdOPi/4eJIEDPptRXZ+H7rYZnkckCG86taF2nQZmm7BeYuzSRTKa
+ CrfE9B466b+9+ESaAzv6DNq4H3IfQWuJdE90Q4xOF8LIGR9BkjoAExzBX5m0DtMGWcKh8tH8OtV
+ /XHaXG97Kx8NbNkuoa+BL6jgj7heeV8Rf1D/Mi7VHH8k/mWU25g==
+X-Received: by 2002:a05:690c:6893:b0:8b0:ecff:f223 with SMTP id
+ 00721157ae682-8b0f2188e80mr10625377b3.37.1792242873821; Sat, 17 Oct 2026
+ 06:14:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261015181122.60608-1-marcelomanzo@gmail.com>
- <20261015181122.60608-17-marcelomanzo@gmail.com>
-In-Reply-To: <20261015181122.60608-17-marcelomanzo@gmail.com>
+ <20261015181122.60608-15-marcelomanzo@gmail.com>
+In-Reply-To: <20261015181122.60608-15-marcelomanzo@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 17 Oct 2026 14:12:54 +0100
-X-Gm-Features: AclHuK_9VqJFOLR9L-ked9MBiuBAPGh6za91QteeWgHb04ED9396j7sWa9Wq5DM
-Message-ID: <CAFEAcA9n+Y+nWZwNukc92iT2vg+x_5uEWieDrcziaD7oCoeXNg@mail.gmail.com>
-Subject: Re: [PATCH v3 16/16] tests/functional/aarch64: add raspi4b GENET
- networking test
+Date: Sat, 17 Oct 2026 14:14:22 +0100
+X-Gm-Features: AclHuK_zYUtq4yQVq23K3JynxC_1UL7quBQsPnT4HXp_V0ngxKXhI966H8ryyyM
+Message-ID: <CAFEAcA8_voS7tWiBSgdgmJ35+zqpuoUK929sXVgGb_OHewutNA@mail.gmail.com>
+Subject: Re: [PATCH v3 14/16] hw/arm/bcm2838: enable BCM2838 GENET controller
 To: Marcelo Manzo <marcelomanzo@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,45 +120,25 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
 >
-> Add test_arm_raspi4_genet, exercising the raspi4b GENET controller
-> end to end: boot with a -nic bcm2838-genet device attached, confirm
-> the guest driver probes it ("GENET 5.0 EPHY" in the kernel log),
-> reach a shell, and confirm the link actually comes up
-> ("ip link show eth0" reports LOWER_UP) rather than just that the
-> device exists.
+> Wire the BCM2838 GENET device (added in the previous patches) into
+> the SoC: instantiate it in the peripherals block with
+> qemu_configure_nic_device() so it picks up a -nic/-netdev from the
+> command line, map its register region at the real BCM2711 physical
+> offset, and route its two interrupt lines through the GIC. Also stop
+> raspi4b from masking out the "brcm,bcm2711-genet-v5" device-tree
+> node, now that the controller it describes is actually implemented.
 >
-> Verified locally against this series with the exact kernel/initrd
-> assets this file already pins (raspberrypi-kernel_1.20230106-1 /
-> groeck linux-build-test rootfs). The link only comes up because the
-> MDIO patch handles the PHY autonegotiation-restart request (BMCR
-> ANRESTART) correctly; without that the link never comes up and this
-> test would hang at the "ip link show eth0" step, so it also serves
-> as a regression test for it.
+> Adapted from patches 19-29/41 of Sergey Kambalin's Raspberry Pi 4B
+> series (patchwork series 829638) against current QEMU master.
 >
 > Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 > ---
->  tests/functional/aarch64/test_raspi4.py | 30 +++++++++++++++++++++++++
->  1 file changed, 30 insertions(+)
->
-> diff --git a/tests/functional/aarch64/test_raspi4.py b/tests/functional/aarch64/test_raspi4.py
-> index bacecbbe9c..f703fc69ae 100755
-> --- a/tests/functional/aarch64/test_raspi4.py
-> +++ b/tests/functional/aarch64/test_raspi4.py
-> @@ -109,5 +109,35 @@ def test_arm_raspi4_initrd(self):
->          #self.vm.wait()
->
->
-> +    def test_arm_raspi4_genet(self):
 
-I think you need
-
-        self.require_netdev('user')
-
-here, to skip the test on builds which were configured without
-the usermode networking backend.
-
-Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+(you can keep that R-by even with the rebase fixup that
+the nodes_to_remove processing loop goes away when this
+lands after the RNG200 series.)
 
 thanks
 -- PMM

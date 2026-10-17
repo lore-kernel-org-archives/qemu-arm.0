@@ -4,99 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09D72CCF2C4
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 12:43:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F336CCF2C4
+	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 12:51:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xI3kV-0001C0-Qy; Sat, 17 Oct 2026 08:42:55 -0400
+	id 1xI3si-0002KQ-Fv; Sat, 17 Oct 2026 08:51:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI3kR-00019f-5T
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:42:51 -0400
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ id 1xI3sf-0002ID-HE
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:51:21 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI3kO-0004Jp-BO
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:42:50 -0400
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-8ab38a051aaso6028457b3.3
- for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 05:42:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792240964; cv=none;
+ id 1xI3sd-0005Oh-RD
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:51:21 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-8ab3d3c5761so5830267b3.1
+ for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 05:51:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792241478; cv=none;
  d=google.com; s=arc-20260327;
- b=V92bXGXJQ1vUGGD7Un8XSDSpP6ngHhMc7YzmXz2hK/6sR1bhJbUuzfaIBGFMm+OIKP
- kaAM+iFhpMZTnlXGPHrpXNTSL2f9Ev4tjOsIoNgNpw1/NrBALGrgE1XrXTOtD20cyLgi
- ccJ6fD1w6QUYmoOxBoZQ2lyyk/8pUmjJGECK9iWfqrcOYMAIZPhACQ8huePRzyAILE6V
- sRQaoAyRcq0B7TjUc/k6YSJ036AT5GIr6ZGV3YMQpjLQpaLiBWhuY7+4bZkUzSDaKguq
- 3lA1OJtISm1bd7dOzVn42fOKsJswA/kohc4qF+QvlRfYUo/YtsCT10ixEDoiRPHOUIzB
- 1JAw==
+ b=nr8WeKqtI9exVINP8/F195g4AYx+2P/dEgbzQ0SvywSED1k7wMP+ebvGm4MVUot28n
+ UoAS4cVRfVn4m1+71Aiv+55NhnxWMO67vdGO/P6BQIV8d4/NV5fqNTYh83/8WXgNQgx8
+ 97PshKXxxw60mBUdset5t0AdG/q91aFHGWO3icOLrJ0kKa7lTqeli0StyfSl+BvXmxjV
+ +CiyKlRUvwwsLRf5jeE7QliSq3kJyY3VED1OQ/AUceKw7br1W80BCPVhM3XgV9ZgH2CS
+ 0bjAs3EAck8Ebnq+DQRPhkEqp1hMAyhgOoZS35rBXHlo2KH/MKP3FJ4rhF5H5O9YjB1H
+ Wkxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=Lws8Tb4aw4cS+GBBTx89l9hWdf4AfSDK+rtzkOVpL/Y=;
- fh=7L6KPGvgcyakQWY1OD5Tl1VHbbPB5OP/U+Bqibx7pPk=;
- b=pXrnChnQgveynhuA+1o4F1gf04I2wPsVdE77QTJdFhWmXaDvCNnZjDhKD9NrJAb25e
- KYaZ4eRVa15iyImcW8mOr4djnNaTe8DExVPV0H81VQBvDmj1X+yBELqaLvjSb4mYk5mF
- 71MNVx4LKST47EkdjXYOaAoqCuKVbUhS3NGrN9NRcmq9JdOiQqaetTh0f3mjtEsrdkfJ
- +d7lEG0BuczO6LyxJfwKwTWnrIXI7aJmX7q7osZUKiqS2PWBf5PGLH7b3qQ+WEClhSiv
- KcisFuH7WcsGyHpNnffaGu7quIuqKcGjZzyuQu+S62dPzyknheaqZ0HxFbn6JBH99bga
- 6G1Q==; darn=nongnu.org
+ bh=eXJF3tbfz+IBq6aBn5AYVC3J+Uli4/6ndluaMW70gIc=;
+ fh=mLl5vojYXolykJjIiqc6X+kuqoWu2TyONeXenY0DHlA=;
+ b=X/q6Tu0GMeJCyWMgyk3f+7Rovn8R51GohJHK48yUnbMZsIkf2tu1dso1/Vvq/yOHt6
+ rKXzmvlVDaaPsYAqY2pEnrgSRBl329LR+nkNYlfcxDYbUpavU+nyRGN2D+kj1lcD+z1e
+ Wxy60Bk/zJoLaKlZe9CFVOxU5DPiCRhIgC6LkeOMY+p0eHp7ivjZgMWwKqd2UShFjqKf
+ aBiPfzE92z9B9DdJfd47opN1k31HZ1sHp4U8hwxgosTaTZASsQkwNgaM6EEqwrpo5mEL
+ H5CbLAnmSIK9ZIPDG4QAlhKGxqoarYRkJtp1+YXrxK9nBtDZij01QTWNUfdXs2KrFvxF
+ QkIw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792240964; x=1792845764; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792241478; x=1792846278; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=Lws8Tb4aw4cS+GBBTx89l9hWdf4AfSDK+rtzkOVpL/Y=;
- b=o0wi3W4AZ8OwgqvxyDAcK/ufKHNJkRKI2BQ3dUdMubeWp7bbobkgm8LT95LtHZP2fY
- KaHtPVYmn+AfgDprACa84qsgko6H6Rw3vCeJ+5mDhX0yhxqRJhZ/n1M80lFLn8U2zd59
- YVNfxcVyBNcIxxyZg2LGuQe+L8AIGLrXvc0SBCfkkyq23r5kctbxsK/ferED0ETu9Grm
- cyiBIzXphiG3pzkduwqEOv7mwNR2eULPvdyJDW0T5ZXoEpNRYw7gA4TxwtbVJ5dOQhbo
- YUVBOh6HUymlRaQHIJT0yLPRfYeyLl6lq14ry+QwLyMtybV1Tp6pvVYOpcsRaMjpiT5Y
- 2f2g==
+ :content-type; bh=eXJF3tbfz+IBq6aBn5AYVC3J+Uli4/6ndluaMW70gIc=;
+ b=vkJALNmY4Vd0LdDf08CkDlFaCa1/nQl2iP92Uf9XAmRCsfQ/pBqzzC9XDlmkFZ6Ke/
+ AqBXB1A/ZZdpMM15AFrDb7Qq+hRRv1T/1PCChGBBJWgG2oD6SkoPdQZc5Fy0oFbtXM5J
+ T3gAY9crpfpb3bFUM/QdraxCmRdxWU07+KdNTE/SdFkiAl9YO59LPhvYjMqXIX+GC2ZB
+ sWkboWq5oi1GG9Lj8nBIbvnv4nUIe0KrY28BBo8dVdkmp7JPx7ToiBr0JQ5xlnWalBO1
+ Qtl/3mCTI5R0LBvv2VwWGghIOGJjW/Bl6jlPE7IwEvuor1O+lRfqmQL+5QdVRXuUcmcT
+ hFdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792240964; x=1792845764;
+ d=1e100.net; s=20260707; t=1792241478; x=1792846278;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=Lws8Tb4aw4cS+GBBTx89l9hWdf4AfSDK+rtzkOVpL/Y=;
- b=zQGMezpBy70iWzjq3uHbO9yH1WlvJdxQxsRErr1i6HIvZSsCUXRsTTR+ps3SWgyZh9
- BuDqKjjCX6Kh9YzWgawZqHskydG6evt4s0NTjU2W3RZXh+L/RK8t5A6C668FRV3Bhbxa
- wq+iMCtRKnpxdmeEoGHJtmcEj0q1OvnxFWp0Q97tIVqambnf5E5E8VPQ2wyRoNPrIibS
- ycVEr7NLoxqmkMC7VvgX0gecF33MXvOQhxBW7VbJ+2ojQSBBfY5TwLe0pRufJFTSikd7
- 5YlVizNZc3Kh1zXw1APP6uvEk7pcCW1AaSpkaBOE+JELV0K1wXqz4xwl/Li+D+9Brlki
- D/Lg==
+ bh=eXJF3tbfz+IBq6aBn5AYVC3J+Uli4/6ndluaMW70gIc=;
+ b=Au39EUeUMv48jw0ims79n4cEaLKJ+XuUc9sZ5eBOSI79TGsOzpI1ZiMVQEHMBukRng
+ at+KmjkIp8bJaDfWGpH+8QQ2ddr13qtTHT8bVTYeNbIj+2Il2xBev8DARlf8nyCh44XV
+ NdyBwu6UX2lr8E4uShQiMybcbrp3TzPy4Zfrfp0ruLGw4qeb8z2fC7vK+H8s5X4dH1iN
+ BYnqaJggA0qprX8nHTLgcT/rkfYeuHWixISmreaIyo8dsXjgBLBiB5XC+n3sGpRHrxGE
+ icw1MV1KCzle7CxiQQ8SaGahQ6TFoHWNGczJAW9Id9ZxtSxZafNN3BXbmaOoacD/0nhe
+ 5VNA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxPT6czFIigW8ubRdSIwSAyHudjYaXZ20L8AAEdkQosBop5LJE7968JdSkgkl9qAXcsEcdit19D0A==@nongnu.org
-X-Gm-Message-State: AFq9FYLhpsnm6HhqT6OaJExhQUYTZxh8pMWe0ymo123YK+oduXUPEcx0
- WClaUk6kpf5/2u4iryBiVrF16KTVGKbNMrlVGPHgTFicwgiMJXf2zGQENPMKCqoMn/AjQ2ul9US
- CNiiDTUcIag/lj/d8CJLQBQnGdl23ASNUOHH0YoDhDg==
-X-Gm-Gg: AYBFou3n/ZQTHNzv5EwM7WArf7VMoDyXX6rVDNou/3BdqXE0bKMysnN/ZxlM4pCXMMc
- KDciU1h9A4CwHMOlhWF135JNJhSLZ22gCRz9Dn1DdZtlRznem0v0vVTIt5naSoxHj0+ZS+K387G
- DL6ETUjAkTidAURkZLJGONMUMENx3xDqUIhRVzXy78r0WaCgf60ffrdF/qhG8md5ksE/+yue4oN
- gUX6eOWvW7f/X7e1DTJ2X8PR/AnMBHehXRFhTMpPzkOVcAPWQmUdjkb0IcMPxV4MOGisXRTAnl5
- /m8olhuUZWfpIxCvWZJKX3for1uRi6koc9MXclxVG2tB1nBd6lC30xsvfkqqxK/cRXusaHQTfOx
- i3Rs6/BveUe/0lDuFfW0K5UnB05wZyThU1B/WQSo=
-X-Received: by 2002:a05:690c:9a13:b0:873:5c7b:c102 with SMTP id
- 00721157ae682-8b0f222301amr9707397b3.58.1792240964239; Sat, 17 Oct 2026
- 05:42:44 -0700 (PDT)
+ AKwUvBx+5vABT0FM+isQKEvH1ssPMT6SZCjSJfRlYHmSBPWg2yZBlpQGpmiG6QLPjKsP9QqFLY1tWVf4/A==@nongnu.org
+X-Gm-Message-State: AFq9FYLIbGPgkoEhIBApb5F5uj5bNaV+TlCz0XYZpp5ydnAoJNis1Ozt
+ qi6FQzBWGmmlj3q9/QzW5Yird3UrfhqjaEAUsc96HsfXUNs2gH4HVfglKXzSg0dkRW7uTBsniWg
+ 53cDMzCfVr/cSTa2Jvg6vW8TSSGn8wr87ubrFM8YPPQ==
+X-Gm-Gg: AYBFou2vHsWAt9SlHlkgMas2s+6dZqItnt8VXm8rFPM/iTrJbbmUjjxwXe/MnQ1ESJV
+ qkBke7Yt8fjO3yyWE5TfeukMOmmAWAmRPsrELyH6Jur2MpF90YCy14JLnqg2Imau7VBNMNa1+N6
+ W4T6SgMzwcjy1JFfFNvJxRy0YzcW7wNLizzgF7kgdLrGFWiK8AgZW+NXo86bOXoH0YqJJFejSBb
+ VIY/BooOdLIkaTZpUhLMMR4UZElSGlqct/NNVy3qU30L6s7DRUKZ4vOHFWuxXgWn90972LyU407
+ EAEWaJokWXBPJd6W4zIBJY77T3H0kPZ/hShoVueAc9pB8FXsT86PDPaSUxYDaICThatIlS/tb1J
+ +wXtEF3tqJo0TlsWDHNXfRiPzhPnuagjUA3YnghU=
+X-Received: by 2002:a05:690c:ec3:b0:8ae:dfee:cd12 with SMTP id
+ 00721157ae682-8b0f217b5abmr12668677b3.22.1792241477845; Sat, 17 Oct 2026
+ 05:51:17 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261015181122.60608-1-marcelomanzo@gmail.com>
- <20261015181122.60608-5-marcelomanzo@gmail.com>
-In-Reply-To: <20261015181122.60608-5-marcelomanzo@gmail.com>
+ <20261015181122.60608-4-marcelomanzo@gmail.com>
+In-Reply-To: <20261015181122.60608-4-marcelomanzo@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 17 Oct 2026 13:42:33 +0100
-X-Gm-Features: AclHuK_mJv06pfcsn4a94sOCKn9v_eJXQ6gDrvsM81IlSNFD1ymKxmelB0lmX3w
-Message-ID: <CAFEAcA-D7rmx-YC1TTra0Bv-P9rzjbz=2AJ4XUgdDWntBTs23g@mail.gmail.com>
-Subject: Re: [PATCH v3 04/16] hw/net/bcm2838_genet: add GENET stub device
+Date: Sat, 17 Oct 2026 13:51:06 +0100
+X-Gm-Features: AclHuK_yK10GXt5RYq12rQwiAf5AKkLREftR2PO_LiVUm2RQSZCQp0sduHBFkPI
+Message-ID: <CAFEAcA_Ac9NO8=kckPEVXa_J2Bj79YENVS+7zZcNDO2kCPe=zA@mail.gmail.com>
+Subject: Re: [PATCH v3 03/16] hw/arm/bcm2838: enable BCM2838 PCIe host bridge
 To: Marcelo Manzo <marcelomanzo@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Jason Wang <jasowangio@gmail.com>
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,20 +120,20 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
 >
-> Add a bare-bones BCM2838 GENET (Gigabit Ethernet) sysbus device:
-> MMIO region registration, an out-of-range read/write handler that
-> just logs, and a reset callback. No register-level behavior yet;
-> that comes in the following patches.
+> Wire the BCM2838 PCIe host bridge into the SoC's peripheral block:
+> instantiate it, map its RC registers and MMIO window.
 >
-> Adapted from patch 19/41 of Sergey Kambalin's Raspberry Pi 4B
-> series (patchwork series 829638) against current QEMU master. The
-> reset callback and class_init() use the current Resettable-phases
-> API (ResettableClass / resettable_class_set_parent_phases()) rather
-> than the plain DeviceClass::reset hook the original patch used, and
-> headers moved under hw/core/, both API changes since the series was
-> originally posted.
+> Per Peter Maydell's review of a later follow-up series, fold in the
+> remaining defect from what was originally a separate bugfix here,
+> since this device isn't in upstream git yet: the PCI MMIO window was
+> mapped at the ARM base address with no address translation, even
+> though PCIE_MMIO_OFFSET was defined for exactly that purpose (and
+> otherwise unused). The DTB declares CPU 0x600000000 as mapping to PCI
+> 0xc0000000, so a guest would read PCI address 0 where it expected a
+> device BAR. Map an alias at the correct PCI offset instead.
 >
 > Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
+> ---
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

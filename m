@@ -4,108 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3110BCCF2C1
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 15:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB3F5CCF2C4
+	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 15:16:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xI638-0008HE-CK; Sat, 17 Oct 2026 11:10:18 -0400
+	id 1xI69O-0001x4-2f; Sat, 17 Oct 2026 11:16:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI637-0008Gg-BN
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 11:10:17 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
+ id 1xI69K-0001wf-Sl
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 11:16:43 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI635-0008H2-Fd
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 11:10:17 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-8ab432273c5so6367297b3.3
- for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 08:10:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792249814; cv=none;
+ (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
+ id 1xI69H-0000Eb-Nl
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 11:16:41 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-8ac525c1f05so6146757b3.1
+ for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 08:16:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792250198; cv=none;
  d=google.com; s=arc-20260327;
- b=DjT1zrFovFi+aOBMLKgVbiabPH3xzyt00undozdF65ig7JoPByQozdJEaSBjr3uV1R
- pbVutO4s3wbG7bv8sKy9M/tnPUBwLBv9c4AXxJzGOXoEpcdsNNUmasdYN2zDfM9kj9fo
- dkkLmiplDG0teADyNOfqzUUYxsCdnGLLuZF3lJtXICmPuuQI0vkFPXIavAuiHx9doydA
- ypoLICDaYIcv+tgkYU2ydQxpU1p999l5vi8aieor7gFrqGLAPTWwpy8EJI4UURSH5Tz4
- 3j1SjOLyKnO57ZSjxaHSe6vUNqisJqJ9F4Mb6lP6SoBJTegZJswvUBnvmA0NJ0INw4TR
- DPbQ==
+ b=XzI/nrHrNjihb9/Qqi8MNfGmBJrV4PfeCNJ4thV1hCKMRqmgbUNn38H961VP1eSLyJ
+ Bj1h09t4boR1iQfiUt7+iKgtqeOB/wwJQEq8lWy04xdbbVT7F+rEtmiYfD0LzOT3QwQa
+ cPSyGvhYYmIcRZjrfS5P49MIaYg1cIbo/KWTBVNuYjqNhCFGuBefdluq9nDiQ1b5WLWP
+ t4G43htcS1LZln1m9ATT1GNN47XyJdwxMVsyn+yd5VR7yFpcGL8By6C6iyUe+UZzow15
+ VtD8r5TF+fLMWZ3c8PcW+kOGrr5InywI4CcejeJn7OZM2Nrgajq6OaAZvc8NoLkb/U5F
+ Kouw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=pt+SArkaDsI2Ryo6Mc6L8DDlkKjMFRuH8nMTSTCp9zQ=;
- fh=H+sSBXFDBtdwlZWW+05WRaIN01VihMMfVDkCqcR3610=;
- b=jKZQtOHnTFdT2YOTigw3QIqEcyOZfGfAWsvsw36YSWbXuc/6fEtHAPft+/iXbzvZQ2
- CRjl/WM0W43ELudxi1Xb3IogFycLM/X6+u0KWKPBOZqymin3Pt01U8RCrsRvaEWF4K7h
- VvUbmwoJ5deJOIrmFJKPIQyd3G5Xr+GlQXilWReQCZ6kp8Bcnr0bMfRc2bBK9fUWu6J/
- FdI8HFt3GffmUSUB1et114eL19xvtVpwOb22hxjvsr+s2VMVyaN/8DO3oMqFnnM25t9r
- MfwXyZiNB3xZPAfq08vrZlCcHoYKo/XeE3cCv0e9sC9sE3PkNdyqGoJnLHb5hMfdvNEs
- 1Xag==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:mime-version:references:in-reply-to
+ :from:dkim-signature;
+ bh=maaAqlgh83vcmnpfx6TsWNN/WbZcgj0cRWJY5xLvsdQ=;
+ fh=vgVSfzLf4xceDPqB7JhBxqkoPRBs93r8XOlhg1XilqQ=;
+ b=eIdnqJc/8oF43uFpAR9EyqfV9SSRF03zi7qMAN90e5x6zcp88c/73wFfB2mJLAbr3v
+ xv5qNVtdI8qFuRICehw2+eJOWQTZRd8P6Zr7t3dmIaqCg+Efz6KBsqFoFnZ1wWMxcSTu
+ OVZ5t3Nq9y/i5/7pmu1NWIxn4vcO7ehS2ObNypqGs0GXfwZuNQmO000JY27pLqvEYNQm
+ oLlLYTCBdPxEpQ+D1AvxygAMUalbTOQWpFnzfmKjbNhcssfCH7KWV499c9CdpZIOG4hW
+ CJgM0XI7Qrcz/Dg/vyvn4eQI28YVM9VAIKu2LyjBoYRD0KjIG1qb1AdOXjirg1l5leWJ
+ U7Yw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792249814; x=1792854614; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=pt+SArkaDsI2Ryo6Mc6L8DDlkKjMFRuH8nMTSTCp9zQ=;
- b=fJfwWETEn08+4opbJ/qkEi4j4Re0cIKsLILlWmWWKd3DAyH1+R4M7fmGt33V96Yf5E
- T9q9rUcmSPwLsdiAFOHDb3V8k8I87LR4pk1veASdcok9bRSo5JiKlrmZxADb0PCQ5AKC
- RSqw40a/T6AoNQY0imMwa9N+Z+QEtQAgOFxSzdBur+00NFt9hJnaAOhl/XH/oJuW2Y3q
- R5A8++/ZDoxRbRpVuX3ZH6fe5e15zGnx2oRBukau/cG4hEvDw+xWecOixrWnGF1aHTLC
- ug0F8Vdx2nijbimt7mSBdzLp5MkGY0TXjl/+wBS1xtu/xWpnXWm2dhl3bGXBjw1BVCdW
- c+GQ==
+ d=gmail.com; s=20251104; t=1792250198; x=1792854998; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:mime-version:references
+ :in-reply-to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=maaAqlgh83vcmnpfx6TsWNN/WbZcgj0cRWJY5xLvsdQ=;
+ b=eaCqrZDtNNR07euLHrEgZtO17BLN/hDDrhCQtaGCdRAy+VlvH9l+gemsy1ppDJZMLw
+ MKdsrv0O4wtjr9y6WoFKVZbzsSJH62EGE9+czJ8W/8DjiSp9fPiCsGys5ne+OPO/bHL6
+ 7fuw46gDAsU6gq0H/9Wx7rmDQkmcm+++Ew6f0IVma887v4hMYSXesbdGlIfur/+hN98d
+ 6W+bepA9CrcHHDnBiUOqc9LQ+JdR5blBVfM/C3LZSae1lFOC5l6XR1UWJ7KfkX2Su55X
+ b2r/rFgc+esRxu6cFwGCqMKy0TcUrCZOth5Mng7G4+UDKj9YC3rJ/4+gIoSpAK+DGAtK
+ 5K3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792249814; x=1792854614;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=pt+SArkaDsI2Ryo6Mc6L8DDlkKjMFRuH8nMTSTCp9zQ=;
- b=2ZuPDqHq/4xKnxpX694jQuZ7lhj03NuL2hQzKhq0KN/GDPWv9nyDbi7JNrf1wOQ4kU
- HkcnFKZK/H/NS+eJO1xSpbRQkJAKmdTJhFz/3ytG6LdVcLbMc5GbjWKMfl6DtiPevFWB
- vl8SF2BIpXnig3Ttp4d0HktYVIkcf0MIjgAPmnV5Thn7/06y7gOnuL0s/cwrRHt1Fl3P
- EF03/rwkCuCWZNHFt4yRbfSk9QYn6nt8NN1qcyOBQ5TRSWgTCukivQebAXn7G+qLcV9g
- tAXiQGqwbH8FI3cg7uUOvYX2uam9ZLNojU1wEzXqiDFM2MRdFwfI7d2xnPqyrZqSy3ef
- 1/MQ==
+ d=1e100.net; s=20260707; t=1792250198; x=1792854998;
+ h=content-type:cc:to:subject:message-id:date:mime-version:references
+ :in-reply-to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=maaAqlgh83vcmnpfx6TsWNN/WbZcgj0cRWJY5xLvsdQ=;
+ b=KR7JjodR05Ia5BxLFvWOAAdXNpJ+hYLrRd0bsXmEGiZK9+R26JPrr8SO8mjlBxxJCJ
+ F7HgLjzEUlEdXEhRaLt/NvkyrciJAT6kV1uXTxMeCmJfMrrJS4qNXqSwwEu9LIxw2TKZ
+ itZlRk8QNM9h8wVDSDObO3tA45P46HL36uYTwQ9CROvLgjO1XcUM1pQGt4gxYFfcknuh
+ 3Do3hapzVuCcxtOne94Lvvp88rqzYlZernSmZirmg6mkNVxjJLEtGgRO2pNa93HAshdr
+ 2zQNQjHyFK7nuWtLfcBLjBH9DJfHjrZNPyIXWG/Z8CrU6Uj6QwAuUFCzgTZEww6BFRxs
+ ruqQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzoOhlZAugT3udRC2bjoWYN4qJkbBtRhK73KjJ4baRWILJbKyqDG4u0Ni14uKTtOnQLUsxaQDwaRQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIYTxb6TjHdX57w9505Quu7troPonqL9mmXTtiXYRyWqLZfImns
- SgOgIxoL96RZt1ha+68eoUHjRs9wbOySTtUbg8I1wn7CnsNh/WqeTcYsA1V0yCKsNHKvx0G2n1X
- w/TNvgtSWzmhVvHruZrJndrsz16Z1vAUV1rmmPE91mQ==
-X-Gm-Gg: AYBFou3qz4hae3rTlfHPVGtnjYa7QMaxus7kkugcUlZY2o65X7OxpitJkoDxaZUoVJf
- Gy63RK2Nu0BQYX2F7Vp0GYk9ek5kTvOa3Wb1KSnbpbWwWGJPagOFySVc8b7DGjDrz0oFO+iSpZY
- vItHstZVKDM4w7fST2+JosfRuYCXt2oLRoPAG4fm6jF9sL6ZIK7VA0958Jud3P+HRj74wYPxZfe
- pzBuMFg6UE6uCU8NMB+HK6frYAmrClW928ta8+V0Y3zSK2nCxpymcPxqSkN1nRUfLseunKNFPw1
- xgwrqDskCBYSqhk3pm6HJQELaw+xXEY00t9n5SziqzDuubRNQ8TYNU63GUTxaD9/21d21QlvZ2h
- DnOWXnjH6iwQFKk6RIzwgqrjfPihOyaLHiZppCutTQDqfAjvoyw==
-X-Received: by 2002:a05:690c:e641:b0:8b0:ac82:afc3 with SMTP id
- 00721157ae682-8b0f2170907mr8560797b3.21.1792249813806; Sat, 17 Oct 2026
- 08:10:13 -0700 (PDT)
+ AKwUvBxRPNbkyI8UEiXzVMlAEB3tiVXVVmQ9aEdV9LFlcp7gL6QeKDd1fyHHM/rx3KG+lsqaZDNVzm6qsg==@nongnu.org
+X-Gm-Message-State: AFq9FYKOrj9rNDkQmHmLvw41mAFTut9dh5/0KDhFYM1dIsvFchpkwicB
+ 9ezugaWKiZq+IO4jf8uzPDJLAcYdg0muiDwlVy2AZUmBlJuIvCPQ+kzx+zLdtBQA2RqLvbM0z1a
+ bvgNbcHKuIVXFZ5f7PsMxN1WAfIuCCqI=
+X-Gm-Gg: AYBFou171ctUXv3Y4S9WGYBVIDgRIvuTZUJZEKUfOzHcwuTAxGVywQsnx6top3xJmpz
+ olB4+98kT874HpLljasVWEylKR2q7kr3SNOP8p9WtooQ9jHH7eS+iRJknFuz62JYKSUFHfCIFqP
+ D0nNyMzrqlBTbFXxSokREpQugYiEEevZeRt30hn0UBRmQNg7uoDIiWMqz43e3CBZ2JuG//u1gxp
+ n4J2mItbtprNWEKwa7p2v824GuEWcmdp3p1psyLdfD6efHuQ10Rr51yOvqGOtoZFXTF4rHFURY7
+ R33a4S651ItMxuuZ8GEi+HhhgR/1LXtSb0g4/at5Af/rJVYjE/wocxa1eEvU83rGvqHAPsutlNI
+ diCsjx/2oDs1gHRqv0ANXdpu1ZWGpSHnzUtrQhU+hlnZBRAThNQ==
+X-Received: by 2002:a05:690c:c512:b0:8b0:e030:8999 with SMTP id
+ 00721157ae682-8b0f2140293mr12299287b3.19.1792250198367; Sat, 17 Oct 2026
+ 08:16:38 -0700 (PDT)
+Received: from 101988054943 named unknown by gmailapi.google.com with
+ HTTPREST; Sat, 17 Oct 2026 08:16:37 -0700
+Received: from 101988054943 named unknown by gmailapi.google.com with
+ HTTPREST; Sat, 17 Oct 2026 10:16:36 -0500
+From: Marcelo Manzo <marcelomanzo@gmail.com>
+In-Reply-To: <CAFEAcA85iTUU=Pf8h-Ojc3jiBbW44V-1XRheVW=JqN-4xNLc=Q@mail.gmail.com>
+References: <CAFEAcA85iTUU=Pf8h-Ojc3jiBbW44V-1XRheVW=JqN-4xNLc=Q@mail.gmail.com>
 MIME-Version: 1.0
-References: <20261015181122.60608-1-marcelomanzo@gmail.com>
- <20261015181122.60608-12-marcelomanzo@gmail.com>
-In-Reply-To: <20261015181122.60608-12-marcelomanzo@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 17 Oct 2026 16:10:02 +0100
-X-Gm-Features: AclHuK97aNdt-24ThOwA2Ew67A1b_KAw2OI5w4LKkbam5ey8FMzWpNJB9fkbP6o
-Message-ID: <CAFEAcA8gZXznfO1Y9X+jvRyLekMf2omWRfyyjBewOKyAu5mi9g@mail.gmail.com>
-Subject: Re: [PATCH v3 11/16] hw/net/bcm2838_genet: implement GENET MDIO
-To: Marcelo Manzo <marcelomanzo@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Sergey Kambalin <serg.oker@gmail.com>,
- Sergey Kambalin <sergey.kambalin@auriga.com>, 
- Jason Wang <jasowangio@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Date: Sat, 17 Oct 2026 08:16:37 -0700
+X-Gm-Features: AclHuK97vYZWIUo4wythsN_IAmCNHFzwyBOrTwm2dZXqnRhE1JpkdOaZzM1a314
+Message-ID: <CAGaQodL0CNKahvtmSj3ssbZpVdXZEEZ_oR=Pcbr=Gnh-jUmaWw@mail.gmail.com>
+Subject: Re: Re: Re: [PATCH v3 15/16] docs/system/arm/raspi: move PCIe/GENET
+ from missing to implemented
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, philmd@oss.qualcomm.com, 
+ pierrick.bouvier@oss.qualcomm.com
+Content-Type: multipart/alternative; boundary="0000000000006c21de065e0ac499"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,147 +122,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
->
-> From: Sergey Kambalin <serg.oker@gmail.com>
->
-> Implement the MDIO command register handling used to read/write the
-> BCM54213PE PHY's standard MII registers (BMCR, BMSR, LPA, ...) plus
-> its vendor "shadow" register blocks reached through the AUX_CTL/
-> EXP_SHD indirection scheme, and a simple link-state model (PHY
-> starts down, comes up once BMCR is programmed and autonegotiation
-> is (re)started).
->
-> Part of Sergey Kambalin's original Raspberry Pi 4B PCIe/GENET
-> networking series (patchwork series 829638, posted to qemu-devel in
-> 2024, never merged). Carried forward and completed by Marcelo Manzo.
->
-> While carrying this forward, fix the autonegotiation-restart handling
-> in bcm2838_genet_mdio_cmd(): the guest PHY driver sets BMCR.ANRESTART
-> and polls BMCR until it reads back as cleared, but the result of
-> FIELD_DP16() (which returns a new value rather than modifying its
-> argument) was discarded, so the bit never cleared and the guest
-> spun forever at boot. Also refresh the link state once the restart
-> has been handled.
->
-> Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
-> Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
-> ---
->  hw/net/bcm2838_genet.c         | 139 ++++++++++++++++++++++++++++++++-
->  include/hw/net/bcm2838_genet.h |   3 +-
->  2 files changed, 139 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-> index f3c5ca26c5..fe2a3cf890 100644
-> --- a/hw/net/bcm2838_genet.c
-> +++ b/hw/net/bcm2838_genet.c
-> @@ -20,6 +20,8 @@
->  #include "hw/net/bcm2838_genet.h"
->  #include "trace.h"
->
-> +static void bcm2838_genet_phy_update_link(BCM2838GenetState *s);
-> +
->  /* GENET layouts */
->  REG32(GENET_SYS_REV_CTRL,              0)
->  FIELD(GENET_SYS_REV_CTRL, GPHY_REV,    0, 16)
-> @@ -216,6 +218,7 @@ FIELD(GENET_PHY_STAT_1000, LOCALRXOK, 13, 1)
->  FIELD(GENET_PHY_STAT_1000, MSRES,     14, 1)
->  FIELD(GENET_PHY_STAT_1000, MSFAIL,    15, 1)
->
-> +/* There are two data representations for PHY_AUX_CTRL register */
->  REG16(GENET_PHY_AUX_CTRL_0,              0)
->  FIELD(GENET_PHY_AUX_CTRL_0, REG_ID_MASK, 0, 3)
->  FIELD(GENET_PHY_AUX_CTRL_0, RSVD_3,      3, 1)
-> @@ -272,6 +275,134 @@ static void bcm2838_genet_set_irq_prio(BCM2838GenetState *s)
->      qemu_set_irq(s->irq_prio, level);
->  }
->
-> +static void bcm2838_genet_phy_aux_ctl_write(BCM2838GenetState *s,
-> +                                            uint16_t value)
-> +{
-> +    uint16_t reg_id = FIELD_EX16(value, GENET_PHY_AUX_CTRL_0, REG_ID);
-> +    uint16_t reg_id_mask = FIELD_EX16(value, GENET_PHY_AUX_CTRL_0, REG_ID_MASK);
-> +    uint16_t misc_wren = FIELD_EX16(value, GENET_PHY_AUX_CTRL_0, MISC_WREN);
-> +    uint16_t reg_data = FIELD_EX16(value, GENET_PHY_AUX_CTRL_0, REG_DATA);
-> +    uint16_t reg_data12 = FIELD_EX16(value, GENET_PHY_AUX_CTRL_1, REG_DATA);
-> +
-> +    uint16_t *phy_aux_ctl_shd_reg_id =
-> +        (uint16_t *)&s->phy_aux_ctl_shd_regs + reg_id;
-> +    uint16_t *phy_aux_ctl_shd_reg_id_mask =
-> +        (uint16_t *)&s->phy_aux_ctl_shd_regs + reg_id_mask;
+--0000000000006c21de065e0ac499
+Content-Type: text/plain; charset="UTF-8"
 
-Here again we are taking a pointer to a struct and assuming we
-can also treat it as effectively an array of uint16_t. In this
-case BCM2838GenetPhyAuxShdRegs is all uint16_t, but it would be
-clearer IMHO to define it as an array of uint16_t rather than
-as a struct, as we do with BCM2838GenetPhyExpShdRegs.
+On 17 Oct 2026, Peter Maydell wrote:
+>
+> Does the system end up with the "msi_nonbroken" global set to
+> "false" or "true" ?
 
-> +
-> +    if (reg_id_mask == BCM2838_GENET_PHY_AUX_CTL_MISC) {
-> +        if (reg_id == BCM2838_GENET_PHY_AUX_CTL_MISC) {
-> +            if (misc_wren == 0) {
-> +                /* write for subsequent read (8-bit from AUX_CTL_MISC) */
-> +                FIELD_DP16(value, GENET_PHY_AUX_CTRL_0, REG_DATA,
-> +                          *phy_aux_ctl_shd_reg_id);
-> +            } else {
-> +                /* write 8 bits to AUX_CTL_MISC */
-> +                *phy_aux_ctl_shd_reg_id_mask = reg_data;
+It ends up true. aspeed_pcie_rc_class_init() sets msi_nonbroken, and
+class_init runs for every class at startup, so any qemu-system-aarch64
+has it set whichever machine is selected. That's why qemu-xhci ends up
+with MSI-X enabled and needs msix=off.
 
-8 bits? This pointer is a uint16_t *.
+thanks for the R-b
+-- Marcelo
 
-> +            }
-> +        } else {
-> +            /* write for subsequent read (12-bit) */
-> +            FIELD_DP16(value, GENET_PHY_AUX_CTRL_1, REG_DATA,
-> +                      *phy_aux_ctl_shd_reg_id);
-> +        }
-> +    } else {
-> +        /* write 12 bits */
-> +        *phy_aux_ctl_shd_reg_id_mask = reg_data12;
-> +    }
-> +
-> +    s->phy_regs.aux_ctl = value;
-> +}
-> +
-> +static void bcm2838_genet_phy_shadow_write(BCM2838GenetState *s,
-> +                                           uint16_t value)
-> +{
-> +    uint16_t reg_id = FIELD_EX16(value, GENET_PHY_SHADOW, REG_ID);
-> +    uint16_t wr = FIELD_EX16(value, GENET_PHY_SHADOW, WR);
-> +    uint16_t reg_data = FIELD_EX16(value, GENET_PHY_SHADOW, REG_DATA);
-> +
-> +    uint16_t *phy_shd_reg = (uint16_t *)&s->phy_shd_regs + reg_id;
-> +
-> +    if (wr == 0) {
-> +        FIELD_DP16(value, GENET_PHY_SHADOW, REG_DATA, *phy_shd_reg);
-> +    } else {
-> +        *phy_shd_reg = reg_data;
-> +    }
-> +
-> +    s->phy_regs.shd = value;
-> +}
-> +
-> +static void bcm2838_genet_phy_exp_shadow_write(BCM2838GenetState *s,
-> +                                               uint16_t value)
-> +{
-> +    /*
-> +     * TODO Stub implementation without side effect,
-> +     * just storing registers values
-> +     */
-> +    uint16_t reg_id = FIELD_EX16(s->phy_regs.exp_ctrl,
-> +                                 GENET_PHY_EXP_SEL, REG_ID);
-> +    uint16_t block_id = FIELD_EX16(s->phy_regs.exp_ctrl,
-> +                                   GENET_PHY_EXP_SEL, BLOCK_ID);
-> +
-> +    s->phy_exp_shd_regs.regs[block_id][reg_id] = value;
+On Sat, Oct 17, 2026 10:24 AM, Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-I think it would be nice to have some (preferably ARRAY_SIZE-based,
-but maybe that's tricky for a 2D array) asserts here that the indexes
-aren't out of range. In this case they can't be, because the fields
-are both 8 bits and the arrays are 256 elements, but an assert()
-guards against future danger and saves the reader having to go look up
-the details.
+> On Sat, 17 Oct 2026 at 14:31, Marcelo Manzo <marcelomanzo@gmail.com>
+> wrote:
+> >
+> > On 17 Oct 2026, Peter Maydell wrote:
+> > >
+> > > Do you know what's missing for the MSI support to work?
+> >
+> > I think it's the controller's built-in MSI receiver, which we don't
+> > model.
+> >
+> > From the Linux driver (drivers/pci/controller/pcie-brcmstb.c): the guest
+> > programs an MSI target address into PCIE_MISC_MSI_BAR_CONFIG_LO/HI
+> > (0x4044/0x4048, bit 0 = enable) and the message data into
+> > PCIE_MISC_MSI_DATA_CONFIG (0x404c). A device's MSI write then goes to
+> > that target address (0xfffffffc, or 0xffffffffc if the inbound window
+> > extends above 4GB) with data 0x6540 | vector. The controller is supposed
+> > to catch that write, set bit <vector> in its MSI_INTR2 block at 0x4500
+> > (STATUS 0x4500, CLR 0x4508, MASK_SET 0x4510, MASK_CLR 0x4514), and
+> > assert the second interrupt of the pcie DT node ("msi") towards the GIC.
+> >
+> > Right now none of that exists: the MSI_INTR2 registers are plain backing
+> > bytes in regs[] with no status/clear/mask behaviour, nothing in the PCI
+> > bus address space claims the target address so the device's write goes
+> > nowhere, and the "msi" interrupt isn't wired to the GIC.
+> >
+> > I think it needs a small doorbell MemoryRegion in the PCI address space
+> > at the target address, the INTR2 register semantics, and one more SPI --
+> > on the order of 100-150 lines. I left it out of this series since INTx
+> > covers what I've needed, but I'm happy to do it as a follow-up if you'd
+> > like.
+>
+> So if I understand right this is because the SoC doesn't implement
+> MSI interrupts by having a GICv3 ITS or a GICv2m, but it does it
+> in the PCIe controller ? Let's get the base support in before we
+> think about implementing that. (The aspeed pcie controller also
+> handles MSI interrupts, so we have some existing code models to
+> look at if necessary.)
+>
+> Does the system end up with the "msi_nonbroken" global set to
+> "false" or "true" ? I think since we don't have a gicv3 or gicv2m
+> we ought to have it still at its default "false" value, but if it's
+> false I'm not sure why we need to explicitly turn off MSIs
+> with msi=off,msix=off.  (This isn't worth spending too much time
+> investigating, though.)
+>
+> Anyway for this patch
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> thanks
+> -- PMM
+>
 
-thanks
--- PMM
+--0000000000006c21de065e0ac499
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body><div dir=3D"auto">On 17 Oct 2026, Peter Maydell wrote:<br>&gt;<=
+br>&gt; Does the system end up with the &quot;msi_nonbroken&quot; global se=
+t to<br>&gt; &quot;false&quot; or &quot;true&quot; ?<br><br>It ends up true=
+. aspeed_pcie_rc_class_init() sets msi_nonbroken, and<br>class_init runs fo=
+r every class at startup, so any qemu-system-aarch64<br>has it set whicheve=
+r machine is selected. That&#39;s why qemu-xhci ends up<br>with MSI-X enabl=
+ed and needs msix=3Doff.<br><br>thanks for the R-b<br>-- Marcelo<br></div><=
+/body></html><br><div class=3D"gmail_extra"><div>On Sat, Oct 17, 2026 10:24=
+ AM, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.ma=
+ydell@linaro.org</a>&gt; wrote:<br><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On Sat, =
+17 Oct 2026 at 14:31, Marcelo Manzo &lt;<a href=3D"mailto:marcelomanzo@gmai=
+l.com" target=3D"_blank">marcelomanzo@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On 17 Oct 2026, Peter Maydell wrote:<br>
+&gt; &gt;<br>
+&gt; &gt; Do you know what&#39;s missing for the MSI support to work?<br>
+&gt;<br>
+&gt; I think it&#39;s the controller&#39;s built-in MSI receiver, which we =
+don&#39;t<br>
+&gt; model.<br>
+&gt;<br>
+&gt; From the Linux driver (drivers/pci/controller/pcie-b<wbr>rcmstb.c): th=
+e guest<br>
+&gt; programs an MSI target address into PCIE_MISC_MSI_BAR_CONFIG_LO/HI<br>
+&gt; (0x4044/0x4048, bit 0 =3D enable) and the message data into<br>
+&gt; PCIE_MISC_MSI_DATA_CONFIG (0x404c). A device&#39;s MSI write then goes=
+ to<br>
+&gt; that target address (0xfffffffc, or 0xffffffffc if the inbound window<=
+br>
+&gt; extends above 4GB) with data 0x6540 | vector. The controller is suppos=
+ed<br>
+&gt; to catch that write, set bit &lt;vector&gt; in its MSI_INTR2 block at =
+0x4500<br>
+&gt; (STATUS 0x4500, CLR 0x4508, MASK_SET 0x4510, MASK_CLR 0x4514), and<br>
+&gt; assert the second interrupt of the pcie DT node (&quot;msi&quot;) towa=
+rds the GIC.<br>
+&gt;<br>
+&gt; Right now none of that exists: the MSI_INTR2 registers are plain backi=
+ng<br>
+&gt; bytes in regs[] with no status/clear/mask behaviour, nothing in the PC=
+I<br>
+&gt; bus address space claims the target address so the device&#39;s write =
+goes<br>
+&gt; nowhere, and the &quot;msi&quot; interrupt isn&#39;t wired to the GIC.=
+<br>
+&gt;<br>
+&gt; I think it needs a small doorbell MemoryRegion in the PCI address spac=
+e<br>
+&gt; at the target address, the INTR2 register semantics, and one more SPI =
+--<br>
+&gt; on the order of 100-150 lines. I left it out of this series since INTx=
+<br>
+&gt; covers what I&#39;ve needed, but I&#39;m happy to do it as a follow-up=
+ if you&#39;d<br>
+&gt; like.<br>
+<br>
+So if I understand right this is because the SoC doesn&#39;t implement<br>
+MSI interrupts by having a GICv3 ITS or a GICv2m, but it does it<br>
+in the PCIe controller ? Let&#39;s get the base support in before we<br>
+think about implementing that. (The aspeed pcie controller also<br>
+handles MSI interrupts, so we have some existing code models to<br>
+look at if necessary.)<br>
+<br>
+Does the system end up with the &quot;msi_nonbroken&quot; global set to<br>
+&quot;false&quot; or &quot;true&quot; ? I think since we don&#39;t have a g=
+icv3 or gicv2m<br>
+we ought to have it still at its default &quot;false&quot; value, but if it=
+&#39;s<br>
+false I&#39;m not sure why we need to explicitly turn off MSIs<br>
+with msi=3Doff,msix=3Doff.=C2=A0 (This isn&#39;t worth spending too much ti=
+me<br>
+investigating, though.)<br>
+<br>
+Anyway for this patch<br>
+Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" =
+target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+
+--0000000000006c21de065e0ac499--
 

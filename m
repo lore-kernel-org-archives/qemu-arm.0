@@ -4,65 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 537E0CCA463
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 07:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49117CCF2C9
+	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 09:16:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHz7s-0007xE-UZ; Sat, 17 Oct 2026 03:46:44 -0400
+	id 1xI0Wa-0004Oa-Cr; Sat, 17 Oct 2026 05:16:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lpieralisi@kernel.org>)
- id 1xHz7r-0007wu-EU; Sat, 17 Oct 2026 03:46:43 -0400
-Received: from sea.source.kernel.org ([172.234.252.31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lpieralisi@kernel.org>)
- id 1xHz7o-0000xE-1B; Sat, 17 Oct 2026 03:46:42 -0400
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id 444024139E;
- Sat, 17 Oct 2026 07:46:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 667E01F000C4;
- Sat, 17 Oct 2026 07:46:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1792223196;
- bh=HmX3jzMkFY0zwkJ48oK1hoCmfL54tnoQ+urHGzunEpQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To;
- b=ekbWevkSwqtKGYlH5/47qX+XYYb4ifs+7YHczo2FbLZJrMI9AxXMz9obCuUYUyz3C
- vwSFmRTyB4QTET5xLYNAi+uFtlmEyH5jaNzdpjUmmqLDtBGLSMPTPTYyYIjsuwEIaS
- ZUwvZaiJjQtC5SGyby4C35rLf1eb7bjDW0XlS2i3TdYxs4aqr8AWy70/iRVGPRToBc
- mYFg7Px6yqE1++W+97KXY9qlnUGrzmbhBG4gJmU1REg82CV4r3RyDpdFRI/A/rUKhI
- KLhARIZCtjdcUcnTJCtC9v1XLJqNtRcAqryITOJgIs9ZGUihX7/mrYntDVki7pXPD+
- teVuMeyYBjdMQ==
-Date: Sat, 17 Oct 2026 09:46:29 +0200
-From: Lorenzo Pieralisi <lpieralisi@kernel.org>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
- kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
- peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
- pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com,
- lorenzo.pieralisi@linaro.org, enju.kohei@fujitsu.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [RFC v4 11/24] target/arm/kvm-rme: Populate Realm with runtime
- images
-Message-ID: <atMn1R9ye4F34G1I@red-moon>
-References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <20260903193611.1058589-12-mathieu.poirier@linaro.org>
- <3257a387-490f-44bb-bd44-dbe06036fd52@redhat.com>
- <atKEWmnXA-Gu1Y9T@p14s>
- <cbdab55e-8556-454d-ad66-37f035b57906@redhat.com>
+ (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
+ id 1xI0WM-0004Me-Tc
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 05:16:09 -0400
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
+ id 1xI0WJ-0001fY-NS
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 05:16:06 -0400
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-5be47aa555cso728484e87.3
+ for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 02:16:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1792228561; x=1792833361; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:sender:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=XabNco4fHbGNpg34t8je7iOzxvV1puOHb7Nk47Y3M1c=;
+ b=Icwnjv6sGjioLyHJYGtgrS83sgLHOhULwLw4obaOZgtMMemFbf06NRKgz+UtcQ1gDS
+ 8wsPjTGXKprf6vxQkrp8/bnPXDlmyiHkFIyvqpJiG8055iCg7Ruyfag/1nKqE3/edyqO
+ AtETn7V7xiaf5TT093VBQlQATUTIw7JpJZCOiCYLD9OgpGKdLIA3mYfo+IcHdywUoSY7
+ A1bCKuOoUleaD4ZKuLd8anw51VDfKP92Yk+vQGol0qouPLlMu/43pG6z4g3iFygu6mMf
+ zY11Ks+hmx5QsVAobU+m2HM0TkdCJ4OZ3C+5LPmvwYFaBX7/3IDlvqmaSLJcUID/HImi
+ Xg5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792228561; x=1792833361;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:sender:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=XabNco4fHbGNpg34t8je7iOzxvV1puOHb7Nk47Y3M1c=;
+ b=BcSOcobCkPCXgGE/p1+GNPn9w5GqS2rHneve0deflGRSVeiAGTZxHOmN8lPYL4avJ7
+ QRyI41g9DGEeQmlXs2UknMELn+MiyJIRQyYro7MUTysuNQ6TcuYwkqZEVWPmLdJA1Fmu
+ AtxhDqKUP9wIfGxOmmyiWCQRkDr7XwBeRuoicKM6zjcOGhaX1mrlKDRejhVIGU3Zx4rm
+ +jiM9phGxHugSQj1ZBPUACaj+8lLHocXOOsw0JKgll0N2YHIop6xmZZ1S0UgIdD01ToT
+ ESdRRAbEBR04shB/q9i6rAUiIWJowcKkMaFkH5ShZNY9ceyrjKjwl9HCn6QD4or/5Wr3
+ dH9Q==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzIJ7PhrCuzh4vTuV/N/OEWQTle1ssAQ5HAkOQtRyO6L+VVjC3rM73CBXZ8bACXPkEldff9fue3Cg==@nongnu.org
+X-Gm-Message-State: AFq9FYIe1/YVyxhpYsbZwR1pOKPaVtP179o0MnPQ/fb5LAvstfPeW18F
+ 5pJntkdG5Igi1Ud4d89mQkppFtyw71DvBVnlNEp0GDls1DvLPSvm2Vmy
+X-Gm-Gg: AYBFou1++SqvAsMAljyW4cYyZXpyAWrrKBdAOAaxQqwRLYtak6sh0JLGbP/qhxwoAB1
+ DP0NDes2ha5gCEKVFlEbZWDEB/C3LHXWevov7QLkxSTaDuReUN+pfzkYmejGXS639eKkHh3uUGF
+ ajMIC11j5e24A8YJ3kZEDMDTkGD34q8YLINuvnEMxO1qgoeLUQf6eMtc39J6sMHcFPpkC4hRg1E
+ HoJC9IywlIU2/8HMX9pI98T5PS8r2Ut7GUDzLVsnNR1mmHu8wkERrnoZnwdYeaOwCw9wGNZ22pH
+ Llm1MZZTeRHOAMV6iHmHN144yCPZXxs5eSazu9l28syaZwWht3Qc1ZnJn/JBaG1N58ELe0GGms7
+ PwJYXgOh9/+rt5psstfPmB5x97JDR6b0ZXbQZsdB32OmPBuv2vKek41NoyRJQdwK+yaPal7T0en
+ hOQ61jfbI8hcS5B4poTt1d4i4xKuZDZrmisP1WI17ZNH/bV1x512ZFSxZucksIoOGc/0WjytarA
+ 5gngy5lQvXyloOBG0BIsu8WM4+VqpDAw7EuCbcHMgUNP9noQ3I8+aHaWkg=
+X-Received: by 2002:a05:6512:1396:b0:5b7:6590:a8e0 with SMTP id
+ 2adb3069b0e04-5be50a886b8mr655881e87.57.1792228560414; 
+ Sat, 17 Oct 2026 02:16:00 -0700 (PDT)
+Received: from [192.168.31.141] (213-65-111-204-no600.tbcn.telia.com.
+ [213.65.111.204]) by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5be4a633f54sm853132e87.60.2026.10.17.02.15.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 17 Oct 2026 02:15:59 -0700 (PDT)
+From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Date: Sat, 17 Oct 2026 11:15:32 +0200
+Subject: [PATCH v2 1/2] hw/gpio: Add EINT CFG to Allwinner GPIO, fix
+ interrupt handling
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cbdab55e-8556-454d-ad66-37f035b57906@redhat.com>
-Received-SPF: pass client-ip=172.234.252.31;
- envelope-from=lpieralisi@kernel.org; helo=sea.source.kernel.org
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261017-allwinner-gpio-eint-v2-1-82906f440378@gmail.com>
+References: <20261017-allwinner-gpio-eint-v2-0-82906f440378@gmail.com>
+In-Reply-To: <20261017-allwinner-gpio-eint-v2-0-82906f440378@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+X-Mailer: b4 0.14.3
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=strahinja.p.jankovic@gmail.com; helo=mail-lf1-x132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,169 +108,167 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Oct 17, 2026 at 11:06:49AM +1000, Gavin Shan wrote:
-> On 10/17/26 6:08 AM, Mathieu Poirier wrote:
-> > On Fri, Oct 02, 2026 at 01:45:40PM +1000, Gavin Shan wrote:
-> > > On 9/4/26 5:35 AM, Mathieu Poirier wrote:
-> > > > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > > 
-> > > > Once the Realm descriptor has been created, tell KVM to transfer runtime
-> > > > images (kernel, DT, and rootfs) from guest memory to Realm memory.
-> > > > 
-> > > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > > Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
-> > > > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> > > > ---
-> > > >    target/arm/kvm-rme.c | 76 ++++++++++++++++++++++++++++++++++++++++++++
-> > > >    1 file changed, 76 insertions(+)
-> > > > 
-> > > > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> > > > index 9985f5daba89..c082a5d8f3d1 100644
-> > > > --- a/target/arm/kvm-rme.c
-> > > > +++ b/target/arm/kvm-rme.c
-> > > > @@ -15,6 +15,7 @@
-> > > >    #include "migration/blocker.h"
-> > > >    #include "qapi/error.h"
-> > > >    #include "qemu/error-report.h"
-> > > > +#include "qemu/memalign.h"
-> > > >    #include "qom/object_interfaces.h"
-> > > >    #include "system/confidential-guest-support.h"
-> > > >    #include "system/kvm.h"
-> > > > @@ -43,12 +44,87 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-> > > >    static RmeGuest *rme_guest;
-> > > > +static int rme_populate_range(const RmeRamRegion *region, bool measure,
-> > > > +                              Error **errp)
-> > > > +{
-> > > > +    int ret;
-> > > > +    void *buffer;
-> > > > +    hwaddr size = region->size;
-> > > > +    hwaddr base = region->base;
-> > > > +    hwaddr start = QEMU_ALIGN_DOWN(base, RME_PAGE_SIZE);
-> > > > +    hwaddr end = QEMU_ALIGN_UP(base + size, RME_PAGE_SIZE);
-> > > > +    struct kvm_arm_rmi_populate populate_args;
-> > > > +    size_t aligned_size = ROUND_UP(region->size, qemu_real_host_page_size());
-> > > 
-> > > s/qemu_real_host_page_size()/RME_PAGE_SIZE
-> > 
-> > I refactored this function in V5 [1], along with the above declarations.
-> > 
-> > [1]. https://lore.kernel.org/kvm/20261002202026.1204110-10-mathieu.poirier@linaro.org/
-> > 
-> > > 
-> > > > +
-> > > > +    if (!region->data) {
-> > > > +        return -ENODEV;
-> > > > +    }
-> > > > +
-> > > > +    ret = kvm_set_memory_attributes_private(start, end - start);
-> > > > +    if (ret) {
-> > > > +        error_report("RME: failed to configure initial"
-> > > > +                     "private guest memory");
-> > > > +        return ret;
-> > > > +    }
-> > > > +
-> > > > +    /* Allocate page-aligned memory */
-> > > > +    buffer = qemu_memalign(qemu_real_host_page_size(), aligned_size);
-> > > > +
-> > > > +    if (!buffer) {
-> > > > +        return -ENOMEM;
-> > > > +    }
-> > > > +
-> > > > +    memset(buffer, 0, aligned_size);
-> > > > +    memcpy(buffer, region->data, region->size);
-> > > > +
-> > > > +    populate_args = (struct kvm_arm_rmi_populate) {
-> > > > +        .base = start,
-> > > > +        .size = end - start,
-> > > > +        .source_uaddr = (uintptr_t)buffer,
-> > > > +        .flags = measure ? KVM_ARM_RMI_POPULATE_FLAGS_MEASURE : 0,
-> > > > +    };
-> > > > +
-> > > > +    while (populate_args.size > 0) {
-> > > > +        ret = kvm_vm_ioctl(kvm_state, KVM_ARM_RMI_POPULATE, &populate_args, 0);
-> > > > +        if (ret) {
-> > > > +            error_setg_errno(errp, -ret,
-> > > > +                "failed to populate realm [0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
-> > > > +                start, end);
-> > > > +            break;
-> > > > +        }
-> > > > +    }
-> > > > +
-> > > > +    qemu_vfree(buffer);
-> > > > +
-> > > > +    return ret;
-> > > > +}
-> > > > +
-> > > 
-> > > I doubt that the unaligned regions (RmeRamRegion) are allowed. For example,
-> > > the region [4KB 64KB+4KB] is turned to the aligned range [0 128KB] when RME_PAGE_SIZE
-> > > is 64KB. The question is how do we know the added regions due to the alignment
-> > > ([0 4KB] and [64KB+4KB 128KB]) are safe for kvm_vm_ioctl(KVM_ARM_RMI_POPULATE).
-> > > I guess we probably just reject unaligned regions if they're not expected.
-> > 
-> > To make sure I understand your point, please expand on what would be an
-> > unaligned regions.  In your example, [0 128KB] is aligned on 64KB boundries.
-> > 
-> > > 
-> > > Even if the unaligned regions are allowed, they seem not well handled.
-> > > 
-> > > - @aligned_size is still 64KB instead of the 128KB ?
-> > 
-> > I'm confused.  ROUND_UP(64KB+4KB, 64KB) would be 128KB.  What am I missing?
-> > 
-> 
-> ROUND_UP(64KB+4KB, 64KB) corresponds to ROUND_UP(size+base, 64KB) for local
-> variable @end instead of @aligned_size. @aligned_size is calculated as
-> ROUND_UP(64KB, 64KB) and the output is still 64KB.
-> 
-> > > - In "memcpy(buffer, region->data, region->size);", the blob data would be copied to
-> > >    [4KB, 4KB+64KB]. However, we're copying the data to [0 64KB] now.
-> > 
-> > I agree with you.  That part was refactored in V5 [1]:
-> > 
-> >          memcpy(buffer + (base - start), region->data, region->size);
+The original Allwinner GPIO implementation assumed pin had to be
+configured as input (CFG 0x0) in order to be able to handle interrupts
+on interrupt-capable pins.
+However, libgpiod configures those pins in EINT mode (CFG 0x06) when
+gpiomon is used, so this patch fixes interrupt path to expect pin
+configuration to be set to EINT.
 
-I misunderstood Gavin's comment on this, so the issue isn't the memcpy per-se
-(that was the impression I had) but rather in relation to using the buffer in
+Also update interrupt handling tests for the correct functionality.
 
-kvm_vm_ioctl(kvm_state, KVM_ARM_RMI_POPULATE, &populate_args, 0);
+Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+---
+ hw/gpio/allwinner-gpio.c              | 19 ++++++++++++++-----
+ include/hw/gpio/allwinner-gpio-regs.h |  5 +----
+ tests/qtest/allwinner-gpio-test.c     | 30 +++++++++++++++---------------
+ 3 files changed, 30 insertions(+), 24 deletions(-)
 
-with populate_args.base = start (that was aligned down).
+diff --git a/hw/gpio/allwinner-gpio.c b/hw/gpio/allwinner-gpio.c
+index e3bda7cb76..19176e7c56 100644
+--- a/hw/gpio/allwinner-gpio.c
++++ b/hw/gpio/allwinner-gpio.c
+@@ -114,7 +114,7 @@ static inline bool gpio_is_output(AWPortMap *port, uint32_t pin)
+     uint32_t cfg_n = pin / CFG_PINS_PER_REG;
+     uint32_t pin_shift = (pin % CFG_PINS_PER_REG) * CFG_PIN_STRIDE;
+     return (extract32(port->cfg[cfg_n], pin_shift, CFG_PIN_STRIDE - 1) ==
+-        CFG_OUTPUT_MASK);
++        AW_GPIO_CFG_OUT);
+ }
+ 
+ static inline bool gpio_is_input(AWPortMap *port, uint32_t pin)
+@@ -122,7 +122,15 @@ static inline bool gpio_is_input(AWPortMap *port, uint32_t pin)
+     uint32_t cfg_n = pin / CFG_PINS_PER_REG;
+     uint32_t pin_shift = (pin % CFG_PINS_PER_REG) * CFG_PIN_STRIDE;
+     return (extract32(port->cfg[cfg_n], pin_shift, CFG_PIN_STRIDE - 1) ==
+-        CFG_INPUT_MASK);
++        AW_GPIO_CFG_IN);
++}
++
++static inline bool gpio_is_eint(AWPortMap *port, uint32_t pin)
++{
++    uint32_t cfg_n = pin / CFG_PINS_PER_REG;
++    uint32_t pin_shift = (pin % CFG_PINS_PER_REG) * CFG_PIN_STRIDE;
++    return (extract32(port->cfg[cfg_n], pin_shift, CFG_PIN_STRIDE - 1) ==
++        AW_GPIO_CFG_EINT);
+ }
+ 
+ static inline int int_ctl_cfg(AWGPIOState *s, int irq_line)
+@@ -155,8 +163,8 @@ static void allwinner_gpio_set_int_line(AWGPIOState *s, int port,
+         return;
+     }
+ 
+-    /* if this signal isn't configured as an input signal, nothing to do */
+-    if (!gpio_is_input(&o->ports[port], line)) {
++    /* if this signal isn't configured as an EINT, nothing to do */
++    if (!gpio_is_eint(&o->ports[port], line)) {
+         return;
+     }
+ 
+@@ -225,7 +233,8 @@ static void allwinner_gpio_set(void *opaque, int port, int line, int level)
+     AWPortsOverlay *o = (AWPortsOverlay *)s->regs;
+     AWGPIOLevel aw_level = level ? AW_GPIO_LEVEL_HIGH : AW_GPIO_LEVEL_LOW;
+ 
+-    if (gpio_is_input(&o->ports[port], line)) {
++    if (gpio_is_input(&o->ports[port], line) ||
++        gpio_is_eint(&o->ports[port], line)) {
+ 
+         trace_allwinner_gpio_set(portname(port), line, aw_level);
+ 
+diff --git a/include/hw/gpio/allwinner-gpio-regs.h b/include/hw/gpio/allwinner-gpio-regs.h
+index a435b87ec4..5e969c23f6 100644
+--- a/include/hw/gpio/allwinner-gpio-regs.h
++++ b/include/hw/gpio/allwinner-gpio-regs.h
+@@ -73,9 +73,6 @@ static const AWPortResetVals aw_gpio_port_reset[] = {
+ #define DEFAULT_DRV_MASK    0xffffffff
+ #define DEFAULT_PUL_MASK    0xffffffff
+ 
+-#define CFG_INPUT_MASK      0x0
+-#define CFG_OUTPUT_MASK     0x1
+-#define CFG_IO_MASK         0x1
+ #define CFG_PIN_STRIDE      4
+ #define CFG_PINS_PER_REG    (AW_GPIO_PIN_COUNT / CFG_PIN_STRIDE)
+ 
+@@ -172,7 +169,7 @@ typedef enum AWGPIOLevel {
+ typedef enum AWGPIOCfg {
+     AW_GPIO_CFG_IN = 0,
+     AW_GPIO_CFG_OUT = 1,
+-    AW_GPIO_CFG_FUN = 2,
++    AW_GPIO_CFG_EINT = 6,
+ } AWGPIOCfg;
+ 
+ typedef enum AWGPIOIrqCfg {
+diff --git a/tests/qtest/allwinner-gpio-test.c b/tests/qtest/allwinner-gpio-test.c
+index c048f0f88b..7ad89f6e0a 100644
+--- a/tests/qtest/allwinner-gpio-test.c
++++ b/tests/qtest/allwinner-gpio-test.c
+@@ -251,9 +251,9 @@ static void test_irq_pin_rising(const void *data)
+ 
+     qtest_irq_intercept_in(s, "/machine/soc");
+ 
+-    /* Configure as input and set pin low */
+-    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
+-    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
++    /* Configure as EINT and set pin low */
++    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
++    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
+     qtest_set_irq_in(s,
+                      "/machine/soc/gpio", in_name, port_pin,
+                      AW_GPIO_LEVEL_LOW);
+@@ -296,9 +296,9 @@ static void test_irq_pin_falling(const void *data)
+ 
+     qtest_irq_intercept_in(s, "/machine/soc");
+ 
+-    /* Configure as input and set pin high */
+-    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
+-    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
++    /* Configure as EINT and set pin high */
++    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
++    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
+     qtest_set_irq_in(s,
+                      "/machine/soc/gpio", in_name, port_pin,
+                      AW_GPIO_LEVEL_HIGH);
+@@ -341,9 +341,9 @@ static void test_irq_pin_high_level(const void *data)
+ 
+     qtest_irq_intercept_in(s, "/machine/soc");
+ 
+-    /* Configure as input and set pin low */
+-    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
+-    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
++    /* Configure as EINT and set pin low */
++    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
++    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
+     qtest_set_irq_in(s,
+                      "/machine/soc/gpio", in_name, port_pin,
+                      AW_GPIO_LEVEL_LOW);
+@@ -394,9 +394,9 @@ static void test_irq_pin_low_level(const void *data)
+ 
+     qtest_irq_intercept_in(s, "/machine/soc");
+ 
+-    /* Configure as input and set pin high */
+-    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
+-    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
++    /* Configure as EINT and set pin high */
++    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
++    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
+     qtest_set_irq_in(s,
+                      "/machine/soc/gpio", in_name, port_pin,
+                      AW_GPIO_LEVEL_HIGH);
+@@ -447,9 +447,9 @@ static void test_irq_pin_both_edge(const void *data)
+ 
+     qtest_irq_intercept_in(s, "/machine/soc");
+ 
+-    /* Configure as input and set pin low */
+-    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
+-    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
++    /* Configure as EINT and set pin low */
++    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
++    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_EINT);
+     qtest_set_irq_in(s,
+                      "/machine/soc/gpio", in_name, port_pin,
+                      AW_GPIO_LEVEL_LOW);
 
-Thanks,
-Lorenzo
+-- 
+2.56.0
 
-> > > 
-> > > > +static void rme_populate_ram_region(gpointer data, gpointer err)
-> > > > +{
-> > > > +    Error **errp = err;
-> > > > +    const RmeRamRegion *region = data;
-> > > > +
-> > > > +    if (*errp) {
-> > > > +        return;
-> > > > +    }
-> > > > +
-> > > > +    rme_populate_range(region, /* measure */ true, errp);
-> > > > +}
-> > > > +
-> > > >    static void rme_vm_state_change(void *opaque, bool running, RunState state)
-> > > >    {
-> > > > +    Error *errp = NULL;
-> > > > +
-> > > >        if (!running) {
-> > > >            return;
-> > > >        }
-> > > > +    g_slist_foreach(rme_guest->ram_regions, rme_populate_ram_region, &errp);
-> > > > +    g_slist_free_full(g_steal_pointer(&rme_guest->ram_regions), g_free);
-> > > > +    if (errp) {
-> > > > +        return;
-> > > > +    }
-> > > > +
-> > > >        kvm_mark_guest_state_protected();
-> > > >    }
-> > > 
-> 
-> Thanks,
-> Gavin
-> 
 

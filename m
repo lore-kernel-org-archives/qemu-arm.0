@@ -4,107 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99EA6CCF2C7
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 14:36:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69658CCF2C4
+	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 15:01:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xI5WV-0001ji-5f; Sat, 17 Oct 2026 10:36:36 -0400
+	id 1xI5uj-00078F-BM; Sat, 17 Oct 2026 11:01:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xI5WS-0001jH-Ul
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 10:36:33 -0400
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xI5uf-00077Z-R2
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 11:01:34 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xI5WQ-0005MO-FD
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 10:36:32 -0400
-Received: by mail-oa1-x36.google.com with SMTP id
- 586e51a60fabf-48ed188ee81so539194fac.1
- for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 07:36:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792247784; cv=none;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xI5ud-0007Sm-2r
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 11:01:32 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-8ab432273c5so6322287b3.3
+ for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 08:01:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792249289; cv=none;
  d=google.com; s=arc-20260327;
- b=aDL4EenbojhQrWBAdd809LucIUqOk97T4mHQSuL6xVQO2iR3vX9RLuhTW3Vv9bSLQd
- S0CMcC8iLAlHWci8APflErTO2tUS9/jKBXIu4+cWqAdHojQUrHKvDFFgVjI2NrJTLcJk
- RiC4mVqadHfc17IgNbfWDgeEf7hpIc7tAXQt/5+7y9VMCXxHBj0+MP1D32zK1myYtGIB
- 970HxcczyQ336oIyX1A17XNk0qNcQDrrqienI1+Dg2UvjodQX56ZSs5VizgCIgQ+fG3x
- 8hm7Q9f83siz/ib84alWFTVkvmzodaGGtqpyRdP55EQlVb/NXSkEJZSWKiW1/4iyHGul
- bYCA==
+ b=Uq+OlICLIhKiPmkaiosYfou/q1W1hg+aPCVWmXsgmt238zdUo7ss5dUMSQ6mj489Sf
+ 9DYTVes7uwwJanns2++qasjkBTuZIL0GBoZDmWWr5VJlKZUczPJjRtCoas8+vfmlmYQP
+ NGPmyTjUGrFMCUUTvnIaTZML6glnA8sdo3vo/k0ZLsYk81RjNF8JCAoifWcYD5Uf4/0S
+ bnsDL+T2DaKV4TBOe14XzbFq2NDM1G6aB3LfUojNmDmKQluLDPgBUYzmcv5lr9r1JvLd
+ XDsdSjKcpJH/1GP5a/6MayyNwIbg2FklEH/engAzv0AaDJ5mK2D9anHIhCcldNMNW6ZZ
+ tX5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:mime-version:references:in-reply-to
- :from:dkim-signature;
- bh=YFO6ezWk7P1yALE4X/Y4jAo8zNFKuEjjOKI0yWlF/Vk=;
- fh=+kSgZy0uObx0n3y5Ti1T0UE+phZ8GIpg8JszhyK+U74=;
- b=A7DYmSNmH2MPHjMAYyIWwFDZ3hGAmA6TlcuQWQK2DviIYJ8T1QG9A2nDghP1xM7cry
- km6DG5IAvD5TZUJsJkvwmuENcJeYUQWpBlBSH7Nxh4oxpLSlRRZX9Ma9plMyVj4I0V/k
- 3DBzPj+RiKOd0MZtfS6jTGGpc6PErViUhGMtSGCtbxuqwM8JFw3dD+JQN4T0XMb3NwcW
- YP+e7wYqM/p1uJMCfu5xCblJe6W5fRKWfLbMlH/uSJQOOd6/nj3JwzQ2aplgwoP7FLdO
- H/Lm7HeKmMBQ15bpqycQrktm7NROnNC7SPb2q/MDCMHWGKMZQ0Bgmg6cEG92nrQU1+O0
- uMGQ==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=SLBCU2hF9JhXZVyaz8NCtFu3yStGcGQNfZsb5pFrDMk=;
+ fh=g7t7DZdm3Vt5T33W9hyfCcXB8n1yzMeOOdI5/Bfon4Q=;
+ b=Cx3eZcsV1mJGOQb7n+Q3cfRGgElgdUvfH47Mupog2w9G9KAWVTGqBIDDNCce9IUvpz
+ b2smjnH4cAblVouOgEd8OplJ6zPozAvfOi+oApp32U8Qg44ICz4xFGSLdyzPbSpGOddM
+ yefShHAdEKb/dvOfI0Z/8m6ZqWUvmo2qcAbDY5VA6J0vhU7Meodn+zTtrmIeVMWBV3Ed
+ y1hBHKnYYCjYY8VqV7FIBvwDJxfQgHwXJnqkWFgCNLLuev3XvPnrpZJXgWHMougYsg61
+ tiFpT/DE4Xqu6+gQGZxTMZN0en+syCpdlZtkQJ43u6gNCdy0YdXtlRtQNf+GtxaXW/zi
+ SUNA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792247784; x=1792852584; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:mime-version:references
- :in-reply-to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=YFO6ezWk7P1yALE4X/Y4jAo8zNFKuEjjOKI0yWlF/Vk=;
- b=VzbvFfG62buq9RVLH6pSILOw6Gq/mpohY3xXFT5m7yPLRBasbEtp9H5b2PHV5hnCDC
- hPmuMVjqUmwlNPtmJexaRez+saL1vvyLca/+j6NSlIKKZ80LZXxtQ3wdrTkgbt05+tPY
- baYNHwI+/CxMBU0czsia5UziDeQgZVTg0nF/qMigQ4bKxT9CDXBfAo9oElDDFDzeZkeS
- HZqpk/bxoMvZMCx1UT7T/eO2QyhL63JS2IXunXAWjr81byRnf0i3MPenAcY3PH2Uugfq
- B6gEUCoroFNem2ErgZJzTF4CJbuoTK+5owbxeMbgIMOlNAuxRENTPd9lSpr0r4zgB9n9
- NLXw==
+ d=linaro.org; s=google; t=1792249289; x=1792854089; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=SLBCU2hF9JhXZVyaz8NCtFu3yStGcGQNfZsb5pFrDMk=;
+ b=xSNUo3tIyDdE5HlEY3IgTQGOjxiBBcAJtZQEFGDSohWkL1IT+q/qKTR8akHMVreb7Q
+ fCOnW79+ju3jMJ5brkTgORYHk2aqFyZTI8RnjY2cOF1jS4PveBBZe+WgdKUur/c9fiUj
+ BoIsJvydeorjspQa+NtOD7mdmjWDfiOkFl6AS0Hztm3gElB4eN7vMT5GH+SPD5Hz4gxK
+ YQs8DuaG/obsc1NjHSqwVgEyC9Hv/aRU5iMP6kALrcz2XuZRHmIMExy4oe6b3IjE+rVV
+ bIaSnQ34RqJNp/VW3T5kH3QbWYGKgb7qeQXKEDGMETOnqZ27QL4cssHd6fCd6vy3zjtp
+ guyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792247784; x=1792852584;
- h=content-type:cc:to:subject:message-id:date:mime-version:references
- :in-reply-to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=YFO6ezWk7P1yALE4X/Y4jAo8zNFKuEjjOKI0yWlF/Vk=;
- b=EkDF2lQnc8jIfLY5DNRxSXv9UqVTPqdRPr50MO69rXPCtCnjQhhs7U/Fl53msz2o9Q
- hMVlihXlLZachSLu8Db8yYvibv9/VX2CUMPQNuqr9wqu7BedVlyH2/S+k+XKObJuS84l
- hjEVBPC/PZKmuQPFKUxUlfIDlmQZ0oK/gIY7OAy2hEBK3DzU04+i2jh++lAlZ0HwTt7X
- CfARpMB6kG0t5tQPEsTaWJKU2aq2QlXKQrV1erBd8ihRg8ZCbyGZvW1PnVno3L0HluJx
- 1wZVpvV5LO/2DY0xqefduVP1YMh+xlA1oAQOhuQIZXu4+ZQ0BoXXs4Qdr96X+HuaefcH
- ZxqA==
+ d=1e100.net; s=20260707; t=1792249289; x=1792854089;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=SLBCU2hF9JhXZVyaz8NCtFu3yStGcGQNfZsb5pFrDMk=;
+ b=N/hNKHad+0pSlssG3JbUPIBQ/qtf3HYieHnTtQO9dk2JpzgAh0Yc79Dkd7hnbH92gq
+ uWLKqChpQ6ed50h+u1sz03rAm/TsaFJXsWdE4tQJgOdXSJfu0ZCrfD63RK1ejRqCwLj1
+ DZFS4jXWDiM6YW0V9hJSxDRsNXd4/rLsglikE5vF0rtOVQu8Xbysa7sdEGAdANIQ+CjW
+ jHk759L7ekXtR2jWURQ9EDmWBZUcM5pmr9k/GGCWTK52ehrx7x9b0LPTMlbgvRDy34MR
+ m+Cv4/x2dSqtJOYdGzZRs7UC1nDfyHOGXXrg1nwo7J0rk8Fwbsn0GUYUE7XYCNmuubxG
+ j+qw==
 X-Forwarded-Encrypted: i=1;
- AKwUvByob1iV/tde8HxPDfScik2lXsaOCE2bmNOmLcSqMAZ2JkS532xSOQ1C2toWwP/R3hg7UpDl8uN+4w==@nongnu.org
-X-Gm-Message-State: AFq9FYKcbQpU0DmvbLSDLTbCHcEIb+pQUeVZ89YTzXhWK2chaq3jb39V
- iq802pJf43afJL6FzMdlQzoh8RHFZyPnWGamPDrFIXV57GsWKaDEpW7quvS0UOJdYC/+d3pbM6O
- fJ+Z26J3LtM6GpoUjGm5nOrg8Z1qW5Js=
-X-Gm-Gg: AYBFou3i/GqyZe5RV4Mqp0TkPWggkZeCckHS/5l6w1MB6p995wM6QGrKjTjvEo7Q4Am
- 5FrLyODpG4yUph4ipDyiex9pCIhTyqz7YxCnI9LvOHGbpSjb/nGGXZYeZmjBLOhLS6RNgKxEJM6
- UaREBIf6mxNtfOycnfwl3iP+PhaMsJimGma1AQzsLciqsHOcs/mCEuzWacaW7sMFG9etBLF7jkA
- Twbz9wDgVhBaB9PR++22MUE9RiCSKEDVM9ZbSH/hwOjIyeOrs1ma0BKeX58cNcehntQj59Jxqf6
- Tru2WUYfjI9cHKIL8ZUkkg/yRwKnbLBwqOk4BIQ9dsDcfD2YqJWzhDYjkBySgOVtcHnliktgXx/
- Ymp3UysiZO8tAIsPFWl9NKuEEyOhksy+ixnTYS+A=
-X-Received: by 2002:a05:6870:ae06:b0:464:76c:297f with SMTP id
- 586e51a60fabf-4a7579e447bmr2220257fac.9.1792247784532; Sat, 17 Oct 2026
- 07:36:24 -0700 (PDT)
-Received: from 101988054943 named unknown by gmailapi.google.com with
- HTTPREST; Sat, 17 Oct 2026 07:36:24 -0700
-Received: from 101988054943 named unknown by gmailapi.google.com with
- HTTPREST; Sat, 17 Oct 2026 10:36:23 -0400
-From: Marcelo Manzo <marcelomanzo@gmail.com>
-In-Reply-To: <CAFEAcA9rc=7CYSeq1AL240WjO47=t_1OJDEnfD_FU0NkHKUM-g@mail.gmail.com>
-References: <CAFEAcA9rc=7CYSeq1AL240WjO47=t_1OJDEnfD_FU0NkHKUM-g@mail.gmail.com>
+ AKwUvBySf8+WmosPjCRgb8o4JPXv/7GaoEI/dOiPKvH93vV/aPN2gNhHxG85WO02sJkhioDslQuRUhkNTA==@nongnu.org
+X-Gm-Message-State: AFq9FYKOgu4BCk8DZIqKVGrjZyefZm3m/WIte0yWmHLO/3RaBsPEPwWn
+ +W2RoRBwZE/ih7XhuCPb5zlxTFO9UvEwuJ1r+qWC1vHCvlJ1Dzni4TNBxtNKaii+W6AgEDC4hJ0
+ z5aRyBfbZ0YAbMgSeTjhQWNBqGAikn85yhfP8F0eHVA==
+X-Gm-Gg: AYBFou1BbdaLii9SwLYMbe/UCxebCbC/cjKjy0UAgy4gf69liw236gsZMxHiBidCUH0
+ fmhFhd2lFsMXyG61PJbmIk3bgJGGJ+H0DYkpAThnekq9Y+jKN6DVtshBFTEIoTy95c6LZtm/u6N
+ +8YgT1wttB/N+Jnr0LJzVvbOVGdLNRdkjRaQpxBiGh0xUpLPxwIQLztfytBJ+lbnzNg1LB54Tm+
+ 2mqO+4FEac7GL0PFsgRujg09YytSu8EV2vfllBQ9zJ4iIkIHayzPw129BLkISD09E1pRtT+koKq
+ I/4niNASN8k4JmRScq9NVDJxV/qEQolLhbwVXy0MsqlQlhs1v1tGfdjFex4qYg20qt+K1kzbFN0
+ rfntnpRF7VqEwTSFctVnNC4djjHD8glRnA9lCZ7s=
+X-Received: by 2002:a05:690c:6d01:b0:8b0:88b7:cfe3 with SMTP id
+ 00721157ae682-8b0f21cbcc0mr11285387b3.40.1792249288457; Sat, 17 Oct 2026
+ 08:01:28 -0700 (PDT)
 MIME-Version: 1.0
-Date: Sat, 17 Oct 2026 07:36:23 -0700
-X-Gm-Features: AclHuK93kft5ix2Jw3EEonSlI8C-l1tHW0zL8vJnJVAk9byl9DEABkzxNWgGbUY
-Message-ID: <CAGaQodKv9cwb9WaZYw14h=pQsvgrsUEAcH-4PmQXDTEkVwv46w@mail.gmail.com>
-Subject: Re: Re: [PATCH v3 02/16] hw/arm/bcm2838_pcie: add BCM2838 PCIe host
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, philmd@oss.qualcomm.com, 
- eric.auger@redhat.com
-Content-Type: multipart/alternative; boundary="0000000000008bf01e065e0a3460"
-Received-SPF: pass client-ip=2001:4860:4864:20::36;
- envelope-from=marcelomanzo@gmail.com; helo=mail-oa1-x36.google.com
+References: <20261015181122.60608-1-marcelomanzo@gmail.com>
+ <20261015181122.60608-11-marcelomanzo@gmail.com>
+In-Reply-To: <20261015181122.60608-11-marcelomanzo@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 17 Oct 2026 16:01:16 +0100
+X-Gm-Features: AclHuK_4-b3qdQL9B1fS1k4p-xIQ0f17XwkLcfHkQc4F88A-Vr9d1dO4Z3aTAno
+Message-ID: <CAFEAcA_dVK5kr3bBcDvYCJaWL19qBh-W+H3anKqP4dio-j+NQQ@mail.gmail.com>
+Subject: Re: [PATCH v3 10/16] hw/net/bcm2838_genet: implement GENET register
+ ops
+To: Marcelo Manzo <marcelomanzo@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Sergey Kambalin <serg.oker@gmail.com>,
+ Sergey Kambalin <sergey.kambalin@auriga.com>, 
+ Jason Wang <jasowangio@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,360 +122,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---0000000000008bf01e065e0a3460
-Content-Type: text/plain; charset="UTF-8"
-
-On 17 Oct 2026, Peter Maydell wrote:
+On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
 >
-> I think these read and write functions have endianness issues.
-> [...]
-> You probably want to define that the regs[] array is bytes
-> to be treated as little-endian order, and then use
-> ldn_le_p()/stn_le_p() to write an arbitrary sized value into
-> it
+> From: Sergey Kambalin <serg.oker@gmail.com>
+>
+> Replace the stub MMIO read/write handlers with real dispatch over
+> the register offsets from the previous patches: SYS revision
+> control, INTRL0/1 status/mask registers, UMAC command/MAC-address/
+> MDIO-command registers, and TDMA/RDMA ring configuration, wired up
+> to the NIC's realize()/reset() and qdev NIC properties
+> (DEFINE_NIC_PROPERTIES) so the device gets a MAC address and peer
+> netdev from the command line.
+>
+> Part of Sergey Kambalin's original Raspberry Pi 4B PCIe/GENET
+> networking series (patchwork series 829638, posted to qemu-devel in
+> 2024, never merged). Carried forward and completed by Marcelo Manzo:
+> adapted to the current Property/class_init/Resettable APIs, with no
+> functional change to the register dispatch logic itself.
+>
+> Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+> Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 
-Agreed, thanks -- I'll do that in v4 (regs[] as little-endian bytes,
-accessed with ldn_le_p()/stn_le_p(), and ldl_le_p() for the EXT_CFG_INDEX
-value instead of the uint32_t * overlay).
 
-> It's not clear to me if we need this -- most PCI controllers don't
-> seem to call pci_bus_set_route_irq_fn(). I have a feeling this is
-> only relevant for PCI passthrough. Eric, do you know ?
 
-I had a look, and I think you're right. The only users of
-pci_device_route_intx_to_irq() are VFIO, the x86 PIIX/Xen code and the
-multi-process proxy. VFIO only calls it when KVM is active with irqfds
-and resamplefds enabled; there is a comment in vfio_intx_enable() saying
-it is conditional "to avoid generating error messages on platforms where
-we won't actually use the result anyway".
+>  static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
+>  {
+>      uint64_t value = ~0;
+> +    BCM2838GenetState *s = opaque;
+>
+> -    qemu_log_mask(
+> -        LOG_GUEST_ERROR,
+> -        "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
+> -        __func__, size, offset);
+> +    if (offset + size < sizeof(s->regs)) {
+> +        memcpy(&value, (uint8_t *)&s->regs + offset, size);
 
-raspi4b runs under TCG only, so none of those can apply. I copied this
-from the original series (and gpex, which has it for VFIO under KVM)
-without needing it.
+This has endianness problems, because not everything in s->regs
+is a host uint32_t. It works for the uint32_t fields because we
+force that only 4-byte accesses are valid and 'value' here is
+in host order, but in e.g. BCM2838GenetRegsHfb the flt[] array
+is uint8_t. (Plus it looks on the face of it like it will handle
+an arbitrary offset/size but it won't work on big-endian hosts
+for anything except 4/4.) Similarly for the write memcpy.
 
-I also tried it: with the hook, the irq_num[] storage and
-bcm2838_pcie_host_set_irq_num() removed, a qemu-xhci with a usb-kbd on
-the root port still enumerates and takes its INTx interrupts exactly as
-before. So I'll drop it in v4.
+This kind of thing is why devices tend to either
+(a) have a uint32_t regs[] array, and use "s->regs[offset >> 2] = value"
+as their default "set the register", or
+(b) have structs where the fields are named after the registers, and
+have switch(offset) statements which handle each register case
+separately with "s->myfield = value", and don't try to have a default
+case that handles most registers.
 
-Eric, shout if you know of a reason to keep it.
+
+> +    } else {
+> +        qemu_log_mask(
+> +            LOG_GUEST_ERROR,
+> +            "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
+> +            __func__, size, offset);
+> +    }
+>
+>      trace_bcm2838_genet_read(size, offset, value);
+>      return value;
+>  }
+>
+>  static void bcm2838_genet_write(void *opaque, hwaddr offset, uint64_t value,
+> -                                unsigned size) {
+> -    qemu_log_mask(
+> -        LOG_GUEST_ERROR,
+> -        "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
+> -        __func__, size, offset);
+> +                                unsigned size)
+> +{
+> +    BCM2838GenetState *s = opaque;
+> +    MACAddr *mac = &s->nic_conf.macaddr;
+> +    NetClientState *ncs = qemu_get_queue(s->nic);
+> +
+> +    trace_bcm2838_genet_write(size, offset, value);
+> +
+> +    if (offset + size < sizeof(s->regs)) {
+> +        switch (offset) {
+> +        case BCM2838_GENET_INTRL0_SET:
+> +            s->regs.intrl0.stat |= value;
+> +            break;
+> +        case BCM2838_GENET_INTRL0_CLEAR:
+> +            s->regs.intrl0.stat &= ~value;
+> +            break;
+> +        case BCM2838_GENET_INTRL0_MASK_SET:
+> +            s->regs.intrl0.mask_status |= value;
+> +            break;
+> +        case BCM2838_GENET_INTRL0_MASK_CLEAR:
+> +            s->regs.intrl0.mask_status &= ~value;
+> +            break;
+> +        case BCM2838_GENET_INTRL1_SET:
+> +            s->regs.intrl1.stat |= value;
+> +            break;
+> +        case BCM2838_GENET_INTRL1_CLEAR:
+> +            s->regs.intrl1.stat &= ~value;
+> +            break;
+> +        case BCM2838_GENET_INTRL1_MASK_SET:
+> +            s->regs.intrl1.mask_status |= value;
+> +            break;
+> +        case BCM2838_GENET_INTRL1_MASK_CLEAR:
+> +            s->regs.intrl1.mask_status &= ~value;
+> +            break;
+> +        case BCM2838_GENET_UMAC_CMD:
+> +            /* Complete SW reset as soon as it has been requested */
+> +            if (FIELD_EX32(value, GENET_UMAC_CMD, SW_RESET) == 1) {
+> +                device_cold_reset(DEVICE(s));
+> +                value = FIELD_DP32(value, GENET_UMAC_CMD, SW_RESET, 0);
+> +            }
+> +            break;
+> +        /*
+> +         * TODO: before changing MAC address we'd better inform QEMU
+> +         * network subsystem about freeing previously used one, but
+> +         * qemu_macaddr_set_free function isn't accessible for us (marked
+> +         * as static in net/net.c), see also https://lists.nongnu.org/
+> +         * archive/html/qemu-devel/2022-07/msg02123.html
+> +         */
+> +        case BCM2838_GENET_UMAC_MAC0:
+> +            mac->a[0] = FIELD_EX32(value, GENET_UMAC_MAC_0, ADDR_0);
+> +            mac->a[1] = FIELD_EX32(value, GENET_UMAC_MAC_0, ADDR_1);
+> +            mac->a[2] = FIELD_EX32(value, GENET_UMAC_MAC_0, ADDR_2);
+> +            mac->a[3] = FIELD_EX32(value, GENET_UMAC_MAC_0, ADDR_3);
+> +            qemu_macaddr_default_if_unset(mac);
+
+No other network device uses this function like this. This is the
+function for "in your realize method, if the user didn't specify
+a MAC address via config, let the net code pick one for them".
+
+Maybe (as per the linked email thread) the APIs here could be
+improved, but a new device model isn't the place to start doing
+something that no other device is doing. The standard thing seems
+to be that we call qemu_format_nic_info_str() with the new MAC and
+call that good enough.
+
+If we want to fix bugs in the MAC address APIs we should do that
+as a separate patchset that proposes its change and implements it
+in the existing device models.
+
+> +            qemu_format_nic_info_str(ncs, mac->a);
+> +            trace_bcm2838_genet_mac_address(ncs->info_str);
+> +            break;
+> +        case BCM2838_GENET_UMAC_MAC1:
+> +            mac->a[4] = FIELD_EX32(value, GENET_UMAC_MAC_1, ADDR_4);
+> +            mac->a[5] = FIELD_EX32(value, GENET_UMAC_MAC_1, ADDR_5);
+> +            qemu_macaddr_default_if_unset(mac);
+> +            qemu_format_nic_info_str(ncs, mac->a);
+> +            trace_bcm2838_genet_mac_address(ncs->info_str);
+> +            break;
 
 thanks
--- Marcelo
-
-On Sat, Oct 17, 2026 09:07 AM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo <marcelomanzo@gmail.com>
-> wrote:
-> >
-> > Add the BCM2838 PCIe host bridge model: config space, MMIO window,
-> > and register access for the root port.
-> >
-> > Per Peter Maydell's review of a later follow-up series, fold in what
-> > was originally a separate bugfix here, since this device isn't in
-> > upstream git yet and the bug was in code this patch itself introduces.
-> > Four defects fixed, all on the enumeration path (none of this was
-> > exercised until a later patch actually attaches a PCI device):
-> >
-> > 1. bcm2838_pcie_host_read/write computed
-> >    "offset - PCIE_CONFIG_SPACE_SIZE" on an unsigned hwaddr, which
-> >    underflows for every offset below 4KB. The root port's own config
-> >    space -- including vendor/device ID at offset 0 -- therefore always
-> >    fell into the out-of-range branch and read back as all-ones, i.e.
-> >    "no device present", so the guest stopped scanning immediately.
-> >
-> > 2. pcie_host_mmcfg_init() was never called, yet both accessors
-> >    dereference pcie_hb->mmio.ops to service EXT_CFG_DATA. Once (1) was
-> >    fixed and the guest actually reached that path, it touched an
-> >    uninitialised MemoryRegion.
-> >
-> > 3. The root port overrode PCIDeviceClass::config_read/config_write with
-> >    plain pci_default_*_config(). That bypasses rp_write_config() ->
-> >    pci_bridge_write_config(), so programming the bridge's memory window
-> >    never updated the bridge's address space and BARs behind the root
-> >    port stayed unreachable. Drop the overrides and dispatch through
-> >    pci_host_config_{read,write}_common() so the device's real handlers
-> >    run.
-> >
-> > Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
->
-> > +static uint64_t bcm2838_pcie_host_read(void *opaque, hwaddr offset,
-> > +                                       unsigned size) {
-> > +    hwaddr mmcfg_addr;
-> > +    uint64_t value = ~0;
-> > +    BCM2838PcieHostState *s = opaque;
-> > +    PCIExpressHost *pcie_hb = PCIE_HOST_BRIDGE(s);
-> > +    uint8_t *root_regs = s->root_port.regs;
-> > +    uint32_t *cfg_idx = (uint32_t *)(root_regs +
-> BCM2838_PCIE_EXT_CFG_INDEX
-> > +                                     - PCIE_CONFIG_SPACE_SIZE);
->
-> I think these read and write functions have endianness issues.
-> In a read/write function the values are host-order, but we are
-> updating the regs[] array by simple memcpy(), which means that
-> on a big-endian host the guest will see the wrong thing if it
-> writes as 32-bits and then reads back as 8-bits.
->
-> You probably want to define that the regs[] array is bytes
-> to be treated as little-endian order, and then use
-> ldn_le_p()/stn_le_p() to write an arbitrary sized value into
-> it, or lduw_le_p()/stw_le_p() for fixed-sized accesses, etc.
-> (pci.h wraps the latter into pci_{set,get}_{word,long,...}
-> accessors for this kind of "access config space" purpose, but
-> has no equivalent wrapper of the ldn/stn fns for "N byte access".)
->
-> > +
-> > +    if (offset < PCIE_CONFIG_SPACE_SIZE) {
-> > +        /*
-> > +         * The first 4KB of the window is the root port's own PCI config
-> > +         * space (vendor/device ID, BARs, capabilities). Serve it from
-> the
-> > +         * real PCIDevice, not from the raw regs[] shadow buffer, which
-> is
-> > +         * only backing store for the controller registers above 4KB.
-> > +         */
-> > +        value = pci_host_config_read_common(PCI_DEVICE(&s->root_port),
-> > +                                            offset,
-> PCIE_CONFIG_SPACE_SIZE,
-> > +                                            size);
-> > +    } else if (offset - PCIE_CONFIG_SPACE_SIZE + size
-> > +               <= sizeof(s->root_port.regs)) {
-> > +        switch (offset) {
-> > +        case BCM2838_PCIE_EXT_CFG_DATA
-> > +            ... BCM2838_PCIE_EXT_CFG_DATA + PCIE_CONFIG_SPACE_SIZE - 1:
-> > +            mmcfg_addr = *cfg_idx
-> > +                | PCIE_MMCFG_CONFOFFSET(offset -
-> BCM2838_PCIE_EXT_CFG_DATA);
-> > +            value = pcie_hb->mmio.ops->read(opaque, mmcfg_addr, size);
-> > +            break;
-> > +        default:
-> > +            memcpy(&value, root_regs + offset - PCIE_CONFIG_SPACE_SIZE,
-> size);
-> > +        }
-> > +    } else {
-> > +        qemu_log_mask(
-> > +            LOG_GUEST_ERROR,
-> > +            "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64
-> "\n",
-> > +            __func__, size, offset);
-> > +    }
-> > +
-> > +    trace_bcm2838_pcie_host_read(size, offset, value);
-> > +    return value;
-> > +}
->
-> > +static PCIINTxRoute bcm2838_pcie_host_route_intx_pin_to_irq(void
-> *opaque,
-> > +                                                            int pin)
-> > +{
-> > +    PCIINTxRoute route;
-> > +    BCM2838PcieHostState *s = opaque;
-> > +
-> > +    route.irq = s->irq_num[pin];
-> > +    route.mode = route.irq < 0 ? PCI_INTX_DISABLED : PCI_INTX_ENABLED;
-> > +
-> > +    return route;
-> > +}
->
-> It's not clear to me if we need this -- most PCI controllers don't
-> seem to call pci_bus_set_route_irq_fn(). I have a feeling this is
-> only relevant for PCI passthrough. Eric, do you know ?
->
-> thanks
-> -- PMM
->
-
---0000000000008bf01e065e0a3460
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<html><body><div dir=3D"auto">On 17 Oct 2026, Peter Maydell wrote:<br>&gt;<=
-br>&gt; I think these read and write functions have endianness issues.<br>&=
-gt; [...]<br>&gt; You probably want to define that the regs[] array is byte=
-s<br>&gt; to be treated as little-endian order, and then use<br>&gt; ldn_le=
-_p()/stn_le_p() to write an arbitrary sized value into<br>&gt; it<br><br>Ag=
-reed, thanks -- I&#39;ll do that in v4 (regs[] as little-endian bytes,<br>a=
-ccessed with ldn_le_p()/stn_le_p(), and ldl_le_p() for the EXT_CFG_INDEX<br=
->value instead of the uint32_t * overlay).<br><br>&gt; It&#39;s not clear t=
-o me if we need this -- most PCI controllers don&#39;t<br>&gt; seem to call=
- pci_bus_set_route_irq_fn(). I have a feeling this is<br>&gt; only relevant=
- for PCI passthrough. Eric, do you know ?<br><br>I had a look, and I think =
-you&#39;re right. The only users of<br>pci_device_route_intx_to_irq() are V=
-FIO, the x86 PIIX/Xen code and the<br>multi-process proxy. VFIO only calls =
-it when KVM is active with irqfds<br>and resamplefds enabled; there is a co=
-mment in vfio_intx_enable() saying<br>it is conditional &quot;to avoid gene=
-rating error messages on platforms where<br>we won&#39;t actually use the r=
-esult anyway&quot;.<br><br>raspi4b runs under TCG only, so none of those ca=
-n apply. I copied this<br>from the original series (and gpex, which has it =
-for VFIO under KVM)<br>without needing it.<br><br>I also tried it: with the=
- hook, the irq_num[] storage and<br>bcm2838_pcie_host_set_irq_num() removed=
-, a qemu-xhci with a usb-kbd on<br>the root port still enumerates and takes=
- its INTx interrupts exactly as<br>before. So I&#39;ll drop it in v4.<br><b=
-r>Eric, shout if you know of a reason to keep it.<br><br>thanks<br>-- Marce=
-lo<br></div></body></html><br><div class=3D"gmail_extra"><div>On Sat, Oct 1=
-7, 2026 09:07 AM, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.=
-org">peter.maydell@linaro.org</a>&gt; wrote:<br><blockquote class=3D"gmail_=
-quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1=
-ex">On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo &lt;<a href=3D"mailto:marce=
-lomanzo@gmail.com" target=3D"_blank">marcelomanzo@gmail.com</a>&gt; wrote:<=
-br>
-&gt;<br>
-&gt; Add the BCM2838 PCIe host bridge model: config space, MMIO window,<br>
-&gt; and register access for the root port.<br>
-&gt;<br>
-&gt; Per Peter Maydell&#39;s review of a later follow-up series, fold in wh=
-at<br>
-&gt; was originally a separate bugfix here, since this device isn&#39;t in<=
-br>
-&gt; upstream git yet and the bug was in code this patch itself introduces.=
-<br>
-&gt; Four defects fixed, all on the enumeration path (none of this was<br>
-&gt; exercised until a later patch actually attaches a PCI device):<br>
-&gt;<br>
-&gt; 1. bcm2838_pcie_host_read/write computed<br>
-&gt;=C2=A0 =C2=A0 &quot;offset - PCIE_CONFIG_SPACE_SIZE&quot; on an unsigne=
-d hwaddr, which<br>
-&gt;=C2=A0 =C2=A0 underflows for every offset below 4KB. The root port&#39;=
-s own config<br>
-&gt;=C2=A0 =C2=A0 space -- including vendor/device ID at offset 0 -- theref=
-ore always<br>
-&gt;=C2=A0 =C2=A0 fell into the out-of-range branch and read back as all-on=
-es, i.e.<br>
-&gt;=C2=A0 =C2=A0 &quot;no device present&quot;, so the guest stopped scann=
-ing immediately.<br>
-&gt;<br>
-&gt; 2. pcie_host_mmcfg_init() was never called, yet both accessors<br>
-&gt;=C2=A0 =C2=A0 dereference pcie_hb-&gt;mmio.ops to service EXT_CFG_DATA.=
- Once (1) was<br>
-&gt;=C2=A0 =C2=A0 fixed and the guest actually reached that path, it touche=
-d an<br>
-&gt;=C2=A0 =C2=A0 uninitialised MemoryRegion.<br>
-&gt;<br>
-&gt; 3. The root port overrode PCIDeviceClass::config_read/co<wbr>nfig_writ=
-e with<br>
-&gt;=C2=A0 =C2=A0 plain pci_default_*_config(). That bypasses rp_write_conf=
-ig() -&gt;<br>
-&gt;=C2=A0 =C2=A0 pci_bridge_write_config(), so programming the bridge&#39;=
-s memory window<br>
-&gt;=C2=A0 =C2=A0 never updated the bridge&#39;s address space and BARs beh=
-ind the root<br>
-&gt;=C2=A0 =C2=A0 port stayed unreachable. Drop the overrides and dispatch =
-through<br>
-&gt;=C2=A0 =C2=A0 pci_host_config_{read,write}_c<wbr>ommon() so the device&=
-#39;s real handlers<br>
-&gt;=C2=A0 =C2=A0 run.<br>
-&gt;<br>
-&gt; Signed-off-by: Marcelo Manzo &lt;<a href=3D"mailto:marcelomanzo@gmail.=
-com" target=3D"_blank">marcelomanzo@gmail.com</a>&gt;<br>
-<br>
-&gt; +static uint64_t bcm2838_pcie_host_read(void *opaque, hwaddr offset,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsig=
-ned size) {<br>
-&gt; +=C2=A0 =C2=A0 hwaddr mmcfg_addr;<br>
-&gt; +=C2=A0 =C2=A0 uint64_t value =3D ~0;<br>
-&gt; +=C2=A0 =C2=A0 BCM2838PcieHostState *s =3D opaque;<br>
-&gt; +=C2=A0 =C2=A0 PCIExpressHost *pcie_hb =3D PCIE_HOST_BRIDGE(s);<br>
-&gt; +=C2=A0 =C2=A0 uint8_t *root_regs =3D s-&gt;root_port.regs;<br>
-&gt; +=C2=A0 =C2=A0 uint32_t *cfg_idx =3D (uint32_t *)(root_regs + BCM2838_=
-PCIE_EXT_CFG_INDEX<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- PCIE_CONFI=
-G_SPACE_SIZE);<br>
-<br>
-I think these read and write functions have endianness issues.<br>
-In a read/write function the values are host-order, but we are<br>
-updating the regs[] array by simple memcpy(), which means that<br>
-on a big-endian host the guest will see the wrong thing if it<br>
-writes as 32-bits and then reads back as 8-bits.<br>
-<br>
-You probably want to define that the regs[] array is bytes<br>
-to be treated as little-endian order, and then use<br>
-ldn_le_p()/stn_le_p() to write an arbitrary sized value into<br>
-it, or lduw_le_p()/stw_le_p() for fixed-sized accesses, etc.<br>
-(pci.h wraps the latter into pci_{set,get}_{word,long,...}<br>
-accessors for this kind of &quot;access config space&quot; purpose, but<br>
-has no equivalent wrapper of the ldn/stn fns for &quot;N byte access&quot;.=
-)<br>
-<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (offset &lt; PCIE_CONFIG_SPACE_SIZE) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* The first 4KB of the window is th=
-e root port&#39;s own PCI config<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* space (vendor/device ID, BARs, ca=
-pabilities). Serve it from the<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* real PCIDevice, not from the raw =
-regs[] shadow buffer, which is<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* only backing store for the contro=
-ller registers above 4KB.<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D pci_host_config_read_common(PC<=
-wbr>I_DEVICE(&amp;s-&gt;root_port),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 offset, PCIE_CONFIG_SPACE_SIZE,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 size);<br>
-&gt; +=C2=A0 =C2=A0 } else if (offset - PCIE_CONFIG_SPACE_SIZE + size<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&lt;=3D sizeof=
-(s-&gt;root_port.regs)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 switch (offset) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 case BCM2838_PCIE_EXT_CFG_DATA<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ... BCM2838_PCIE_EXT_CFG_DA=
-TA + PCIE_CONFIG_SPACE_SIZE - 1:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mmcfg_addr =3D *cfg_idx<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | PCIE_MMCFG_=
-CONFOFFSET(offset - BCM2838_PCIE_EXT_CFG_DATA);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D pcie_hb-&gt;mmio.=
-ops-&gt;read(opaque<wbr>, mmcfg_addr, size);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memcpy(&amp;value, root_reg=
-s + offset - PCIE_CONFIG_SPACE_SIZE, size);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 } else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 LOG_GUEST_ERROR,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;%s: out-of-range acce=
-ss, %u bytes @ offset 0x%04&quot; PRIx64 &quot;\n&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, size, offset);<br=
->
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 trace_bcm2838_pcie_host_read(s<wbr>ize, offset, value);=
-<br>
-&gt; +=C2=A0 =C2=A0 return value;<br>
-&gt; +}<br>
-<br>
-&gt; +static PCIINTxRoute bcm2838_pcie_host_route_intx_p<wbr>in_to_irq(void=
- *opaque,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 int pin)=
-<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 PCIINTxRoute route;<br>
-&gt; +=C2=A0 =C2=A0 BCM2838PcieHostState *s =3D opaque;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 route.irq =3D s-&gt;irq_num[pin];<br>
-&gt; +=C2=A0 =C2=A0 route.mode =3D route.irq &lt; 0 ? PCI_INTX_DISABLED : P=
-CI_INTX_ENABLED;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return route;<br>
-&gt; +}<br>
-<br>
-It&#39;s not clear to me if we need this -- most PCI controllers don&#39;t<=
-br>
-seem to call pci_bus_set_route_irq_fn(). I have a feeling this is<br>
-only relevant for PCI passthrough. Eric, do you know ?<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---0000000000008bf01e065e0a3460--
+-- PMM
 

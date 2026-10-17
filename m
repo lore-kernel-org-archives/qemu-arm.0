@@ -4,127 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4427FCCA490
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 00:12:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CAB1CCA46C
+	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 01:07:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xHs2N-00032O-8e; Fri, 16 Oct 2026 20:12:37 -0400
+	id 1xHstR-0003CW-5D; Fri, 16 Oct 2026 21:07:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deepagupta@nvidia.com>)
- id 1xHr01-0000Uv-2M; Fri, 16 Oct 2026 19:06:05 -0400
-Received: from mail-southcentralusazlp170120001.outbound.protection.outlook.com
- ([2a01:111:f403:c10d::1] helo=SN4PR2101CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xHstB-0003BY-LD
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 21:07:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deepagupta@nvidia.com>)
- id 1xHqzz-00083P-Fr; Fri, 16 Oct 2026 19:06:04 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ZC1/HwhkWiefHwFgBjC8Pw34fUk64BHknHP4e6sCQxnqjrJnkYAIZIFBlAloNotq+FnsFgh6A/3NUovFq8hzpmvjjBzWqV0PsrqaOfc4vDsvjKuRBa9wRuXU44/zJbcpdJzoMLeO553nHtqap0lX8VsU3v335b4ufd1tarRGUZNFKZCKYxRUTToCvG0WxAj2nXPHUreRVGYdnYkNEqdxtcHSGnsq1XCmSnc1oTeath1avcokZffd/AenODIdCWSwECaBykW5DxXVy9KxIBZqpUrSbJiEZV5s4dDOPi5IYMRn//xeLev8EZjWm5OmWpjP4j8g7uwNsWjLnGhhcIOOyg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mQiwG3l/lMKHybtHjCIhCA8ZE99dp+VVT9vCu+Ln+fc=;
- b=um9oB9rg2Ep4ampWo4806MSLjPMqbiZ9iCTpAgsOsRZ9YwvekyCgEHXHfRiOR5HCzLHg6Lolt8Dx5qzT6UcWUOwpFbqQb1AqZW3LANxIi4G8pGGN6apsmBzy9/EEzWqVvqZpgDS/Pgwpew2+ydgj5jR7rMNi/M3asUZTyAinywj3f30MwV3ccDTbPV+T3CHUqbEnLGEf8/EMX9veevfc2+FBKyLeO8Wcv5Yyz2UWegHm/uh9vXN00uasTWZx2+lXDXgC0ZUE0ZE+gcbAMJgt0SYALcueNVu57XOu8TyMfGSZucPW/j0AppaKT47bIlBrP9+AjCYlPmvAti1B/QmQyQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mQiwG3l/lMKHybtHjCIhCA8ZE99dp+VVT9vCu+Ln+fc=;
- b=grlSIrx5xmsbqATTw9k75BMAVLk8gz42a7P/+LIY41UNCGniQ5b+zpMIEOviKLlDswAeqKOouOUOpjhIKdYuY7e4Ytk3vdtr3FvhEKACpUcoxoQ09yAFVUOO5t/anuX+kauXvVTs4VWXI4sQVE7omcnyv8zkVRdUybvr698114jhFthu5zwH+FWYqwCaPRS4rxShKvZnpe9yeLy1aYnFoHvoqXgNht8xg2hIYQwDnIpj75KMZ4XSgCJRxnfWQmQHbdL1GZ5csq9XjZwgw1dnCR23gFTe9IYEdooj5LrL/OXqlWMXij4Qvrx3LNKGlJRftXporo4GBN2nOcyKpNA2IA==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH0PR12MB5201.namprd12.prod.outlook.com (2603:10b6:610:b8::21)
- by CH9PR12MB167381.namprd12.prod.outlook.com (2603:10b6:610:314::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.14; Fri, 16 Oct
- 2026 23:05:51 +0000
-Received: from CH0PR12MB5201.namprd12.prod.outlook.com
- ([fe80::fa53:495c:c3d5:243]) by CH0PR12MB5201.namprd12.prod.outlook.com
- ([fe80::fa53:495c:c3d5:243%4]) with mapi id 15.21.0522.012; Fri, 16 Oct 2026
- 23:05:50 +0000
-From: Deepak Gupta <deepagupta@nvidia.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, kvm@vger.kernel.org, kvmarm@lists.linux.dev,
- peter.maydell@linaro.org, pbonzini@redhat.com, mchehab+huawei@kernel.org,
- jiaqiyan@google.com, oliver.upton@linux.dev
-Subject: [PATCH 0/1] target/arm/kvm: handle KVM_EXIT_ARM_SEA
-Date: Fri, 16 Oct 2026 23:05:40 +0000
-Message-ID: <cover.1792191544.git.deepagupta@nvidia.com>
-X-Mailer: git-send-email 2.53.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SA9PR13CA0062.namprd13.prod.outlook.com
- (2603:10b6:806:23::7) To CH0PR12MB5201.namprd12.prod.outlook.com
- (2603:10b6:610:b8::21)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xHst9-00020N-GJ
+ for qemu-arm@nongnu.org; Fri, 16 Oct 2026 21:07:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1792199219;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+vVmZ5kkrfr2JMM5xTb3EDhNT9+b+mkLGuq3qOJQaFk=;
+ b=W+rMANDmIFAAix2vUZPOlQfFClXvF8uaRZWH1fmc5QttDnUeV/FmME4mzdxP3PzR+rkyAw
+ bKuhSOxv5E2skgXax66KsC1N6IlgftKGp/LU6DADymWWqCFlGiRRBP4WzlCp/2/nW9DNKb
+ VsSwA3BQ4kEyn1qj1RaufoecgSiqCuw=
+Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
+ [209.85.215.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-115-6zFo4QR9NIqCRCDCf042Gg-1; Sat, 17 Oct 2026 01:06:58 +0000
+X-MC-Unique: 6zFo4QR9NIqCRCDCf042Gg-1
+X-Mimecast-MFC-AGG-ID: 6zFo4QR9NIqCRCDCf042Gg_1792199217
+Received: by mail-pg1-f200.google.com with SMTP id
+ 41be03b00d2f7-cc435388657so486763a12.3
+ for <qemu-arm@nongnu.org>; Fri, 16 Oct 2026 18:06:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792199217; x=1792804017;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=+vVmZ5kkrfr2JMM5xTb3EDhNT9+b+mkLGuq3qOJQaFk=;
+ b=sNYV1H7xZ3F7HisNFjoTCl3etNLGlcukkKOi/LjRez0lmlWs9QprVDX6dvY+Fb2N0K
+ DcuRqpJmvPPBEORglM+cDbK1cSc54LmQomUYe1jxCs990TJtwHUKy0FNtznOXXicb6np
+ PJW3ojuelsJrQ/q1fAchj8wju74VFMH7UH+M6AoKm+WF0On0XAiSl3WOWidCSDuIRayl
+ zDu4ccXV+Ak8vJoISHEu809BHaOGYeuxwlx7gCUlXbbt6uTyinwBa1LDpQ+H7/95ECpZ
+ kJk4EHE76PTxT9BIBSOTQtY4RPHIiFtiDeOiYtC6QwEVkbkwKKGS70W+MgZNTdtF/ZPj
+ 9aMQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwR9emp3A0C/H0X5v8bYYvqLX5k9FXI4teA8Kh41c5Cqao7xHkn7RycsphEhyTQaAo0WKOhgbwqdQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLi8MF8JkCtsDZQMVcqtDe/ROM4Ha2T216gfr+2qT1+/7GxIm//
+ cZpc32M1/7+zXFMu84jIEciBoF6RSNP+ei+D3Qkwz4/VVJDyVGskY2jAiEPSDOEwMamAPgJVrzk
+ p+b+PMohnBCnct9JbORvUy4qHtvI92o04rCYjBQMP/afzkB6rOIhjtg==
+X-Gm-Gg: AYBFou2LCvEg4Ar1CEMyOQ9tsdezf9WDQrMXn6YUBTHPJxbrWLXAUvsxpefiyPuhp51
+ 70C4eQx51/cODYnREeQDtwomeB10MCQhpk56TiNe++fL+GvhktpFrsOPEpxv2XdPEE6OqD5X9G+
+ fiv7lx8o8EZj04/LXsBjI66XrtVVsIXt/agqxsdaUEZ48R/0DhXFrizYErCoIhuNPMvSAucK89F
+ NhhM6Ah34TV0tBSufk7BIweDriJBj9mkipfattgclwOs+7A7Tc3DIqkSpeWlc1ppZHGTChbKgg8
+ FA8AtEVIuGZ3wCFwMptjEF6opNrsWQBrcnCj2QD6hU0G1QfXiYiAf54e3jRGlL2/OrJp+dUkyly
+ zB/Det6WTINZKNSZXXz1yAMXLHwbq9ca1J7CH8H8sPw==
+X-Received: by 2002:a17:90a:e7c9:b0:3a4:ca46:8d44 with SMTP id
+ 98e67ed59e1d1-3aceeb95e4cmr1332791a91.18.1792199216815; 
+ Fri, 16 Oct 2026 18:06:56 -0700 (PDT)
+X-Received: by 2002:a17:90a:e7c9:b0:3a4:ca46:8d44 with SMTP id
+ 98e67ed59e1d1-3aceeb95e4cmr1332766a91.18.1792199216281; 
+ Fri, 16 Oct 2026 18:06:56 -0700 (PDT)
+Received: from [192.168.68.52] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3acc38b457esm6669073a91.0.2026.10.16.18.06.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Oct 2026 18:06:55 -0700 (PDT)
+Message-ID: <cbdab55e-8556-454d-ad66-37f035b57906@redhat.com>
+Date: Sat, 17 Oct 2026 11:06:49 +1000
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR12MB5201:EE_|CH9PR12MB167381:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0919bbf4-a07d-4b0c-4fe3-08df2bda0574
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|23010399003|56012099006|11063799006|261009223027099003|10067099003|18002099003;
-X-Microsoft-Antispam-Message-Info: IkiZ4pvuzYv7/G/vrJuBChwckQ+aBYxNLSnBryPA6xHn+/axESqKOo5T97DZIdnKozyyLJP9Uh1thGHBD/Mio9nvv4jVijykD5vpzIK92Jzf+Z+rUV1kc9+8DXB5Ab9kJEBGo7bprzQ4S0bgKSbaw6hFm34I5jl8UfWYiok3UoGBx0whaFgw69WW17/63jY+Pw4HOXzG/imxdAngpvx6fyS6sDkCo8SfethtCexSn71CDSiKadTjPumjwmhv9E9P7EXnnIfUlXOUgt8o6970IA/TuoJKIwhhSal2L1P4VnXO+bFK5cZH9fbizZybMjeQAuzhdXuQAIyt90+SxmKTWF8vQsVJT03nKIpxfHh5x952cQYJcAKeGhtXRd+A9delf9lodINAG1FHc2bL44kmGZfPepqypGsSj5K96jvpXIbY5irfRarnx3MGqPTDPN49/DqMCC3d+DV8Lh0ZDbp4PxYUZ18FNOqAnw5THKiKvxqPbf/PY0CHtKz7rHR41qy0uTMee8Uk6KNzOnkR/ZA5KhonA6vSfus77QXiO1dY0MwLxnjGmAnvZLdzoY9ihaRAGyspW/kCV3MhG+T58l72+pQK2eupBlCq9lq4F81NHUaG6/JmM6N2CJNxfvjl5jvQ3badIdrfoAHrqftXKnlPcybyo70H0SK/bPBxFYs/tj8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH0PR12MB5201.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016)(23010399003)(56012099006)(11063799006)(261009223027099003)(10067099003)(18002099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?b73gkxGDSgEhYRmTGn+XlnMkpp/wgtyctdBexf4qH6KtrCUhC9YbpbYBZiXH?=
- =?us-ascii?Q?Vt+9wiHyxaKXXIhobYMNOSCpVx8J+qQ0iw+orlll0lDqlBE56tMcQvaxScH0?=
- =?us-ascii?Q?3S9sRCeTh58jXBSx3gP7X4O8NHGKvrH8cDXaybTLk4MQvBDU+X8KqperSpqt?=
- =?us-ascii?Q?dZ4g2p8c5YyPRE6CMFpoFR0ldMdQiIupbi5pzIE9Owxyd6xV5w68qKbBYJPv?=
- =?us-ascii?Q?ymvh/ZudhA0Xh9NQdwQ5QGWRE8cvtuM7IgXMVX/mrkQuN4nhjA+fZl2PLGeH?=
- =?us-ascii?Q?c3ExKSb/b+8oTstyRplZcssBJJ3AdO+IWdLjwlO+R3IiGIoZs0jbPYSB7A09?=
- =?us-ascii?Q?w84/O5OY7QJe0wdp2GXY9CQvh3CfzJzjAQ236aJ6NlRjLeBcOYAIjSgLo2gr?=
- =?us-ascii?Q?/ZcZTeX9j0S33xK7H7BxFlzp1CdFi/yrtPdyOG7o0o51cOdbVywrNzFmNN9Y?=
- =?us-ascii?Q?X26t+n2b1Z6rinaGz+S6R3nPCO6KKdW6aqqI0GFH9H2685/JAlnb2Y5FqRQA?=
- =?us-ascii?Q?+w74oXl3kzSr/TIPCmXh/pf3FP7lNH7OQ+fH8OcKDHA/Jw9i/f0HrsqUCGp8?=
- =?us-ascii?Q?n16gZzUc22djLR6kFCOS/8rh4SCkBamKe5oJDUx3Qa/7X+7kUuqMpeF3F59S?=
- =?us-ascii?Q?mKAwtODSeRDfrRQoFsSbHYJ8osBIFzo1ZFoVK8Px0hraZTpf6gr5Hq8JgXrJ?=
- =?us-ascii?Q?UGUoAUZwv6e/PQuVSalu28z5nNRb38Ilf3cFVNUJat0y2BmYwNqcfkqLu6+J?=
- =?us-ascii?Q?FP6CBGLdwHmCx2bg1rVEnJwPvEsOEvZx6KF3dnZNjg3tocsqFJriPOPIFB1B?=
- =?us-ascii?Q?zvebkr1CCtbliHnZc0Ue3fjmGaPwWIVZTLu35un/97QDngls8ocxu4oO0KZk?=
- =?us-ascii?Q?AfjIyH37THv0mOJ4wEJOxm219EeKQFz6kORSsaqiGjmJNWrCVeupD70TLP/e?=
- =?us-ascii?Q?o0MGbfjC8L1hvuOI9Yy5eLEuP9FAxIzocR3Txa7XQIzZUe55vaZZEWeCKkkV?=
- =?us-ascii?Q?GNJWLFLx0YolH6OCoUrbwg6sFoHKgfAKniTpcIg9k58axsVpk0540nnD7rVO?=
- =?us-ascii?Q?qHX3+QLuPqWRNVctpBuWXBSlBhgdNMgS/fVP5RbEDDJ86izFiMTCiRB7gBTm?=
- =?us-ascii?Q?DUpN7hy2u0ublRiiNS4uzqYT+6pbP+CFpl6kZZ/B1yOGpaOLJaklneizhEXW?=
- =?us-ascii?Q?qVQ07/YNaSn5Wpqk+1NpLJqvVs0oPcdllRl40speduVnIAR1ZsxURy+2hL0q?=
- =?us-ascii?Q?J3vgW/ehiw/VfVwAqSA/LqsedykpNP+kEGxwp2RCD0srj56LU+S0py2HLoQ6?=
- =?us-ascii?Q?y1R+qxYCuQSV3qJr/i8+FpDy/iB4XG0mdUSxV+xm7ARybF8ePbJddnaK9qd8?=
- =?us-ascii?Q?E2RiU3pznJP2U30+a9rXqzDvevmZ3WUwTbHTxQwshezlA/jXC6kp62jgCmzW?=
- =?us-ascii?Q?wRq5qhjVcQe07CMQBXpAYiX0O4DjVJNdP3dqv4RrOcaisK0Z1uGZ2OjvUWE+?=
- =?us-ascii?Q?o8HEeuOtjHjsH4ut6jA/eiSso+KrOWnFl7BPoj1+bJlUoivUP8/kRZCDciM6?=
- =?us-ascii?Q?FGsoZBxrcGvzm5WmQgsAMwX4OgIeibsiFRpZbzY8IfYFPKXyH4bPqqqdfzZa?=
- =?us-ascii?Q?SlzXjvklkLXBWYm3dx7TPtgLMAWLTHh1MpuHmFjhBtTdJtqFTPI9cW+ilc9E?=
- =?us-ascii?Q?K5M5gPjkDqHxKWMzhmSlCKPMD0KlPtMHzXt3aJiA6tm3g+9kv1IUu1X5PuB8?=
- =?us-ascii?Q?4D/h/xweXA=3D=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0919bbf4-a07d-4b0c-4fe3-08df2bda0574
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR12MB5201.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Oct 2026 23:05:50.5643 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4iRV1/xyUqdczX0t81bTG2g+1ZabXNeQrLSnOwFJDaBa4tx8cdZmZ1Tbbwz8rHXpBt5fuJrvp/Tj2+Lj02Otjw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH9PR12MB167381
-Received-SPF: permerror client-ip=2a01:111:f403:c10d::1;
- envelope-from=deepagupta@nvidia.com;
- helo=SN4PR2101CU001.outbound.protection.outlook.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v4 11/24] target/arm/kvm-rme: Populate Realm with runtime
+ images
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org, mst@redhat.com,
+ cohuck@redhat.com, pbonzini@redhat.com, eblake@redhat.com,
+ armbru@redhat.com, lorenzo.pieralisi@linaro.org, enju.kohei@fujitsu.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <20260903193611.1058589-12-mathieu.poirier@linaro.org>
+ <3257a387-490f-44bb-bd44-dbe06036fd52@redhat.com> <atKEWmnXA-Gu1Y9T@p14s>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <atKEWmnXA-Gu1Y9T@p14s>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: jmNY74fuhc56SpWTmxZMxQTDHgk60-JksCYiso4W020_1792199217
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Oct 2026 20:12:13 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -139,64 +119,158 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+On 10/17/26 6:08 AM, Mathieu Poirier wrote:
+> On Fri, Oct 02, 2026 at 01:45:40PM +1000, Gavin Shan wrote:
+>> On 9/4/26 5:35 AM, Mathieu Poirier wrote:
+>>> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>>>
+>>> Once the Realm descriptor has been created, tell KVM to transfer runtime
+>>> images (kernel, DT, and rootfs) from guest memory to Realm memory.
+>>>
+>>> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>>> Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
+>>> Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+>>> ---
+>>>    target/arm/kvm-rme.c | 76 ++++++++++++++++++++++++++++++++++++++++++++
+>>>    1 file changed, 76 insertions(+)
+>>>
+>>> diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+>>> index 9985f5daba89..c082a5d8f3d1 100644
+>>> --- a/target/arm/kvm-rme.c
+>>> +++ b/target/arm/kvm-rme.c
+>>> @@ -15,6 +15,7 @@
+>>>    #include "migration/blocker.h"
+>>>    #include "qapi/error.h"
+>>>    #include "qemu/error-report.h"
+>>> +#include "qemu/memalign.h"
+>>>    #include "qom/object_interfaces.h"
+>>>    #include "system/confidential-guest-support.h"
+>>>    #include "system/kvm.h"
+>>> @@ -43,12 +44,87 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
+>>>    static RmeGuest *rme_guest;
+>>> +static int rme_populate_range(const RmeRamRegion *region, bool measure,
+>>> +                              Error **errp)
+>>> +{
+>>> +    int ret;
+>>> +    void *buffer;
+>>> +    hwaddr size = region->size;
+>>> +    hwaddr base = region->base;
+>>> +    hwaddr start = QEMU_ALIGN_DOWN(base, RME_PAGE_SIZE);
+>>> +    hwaddr end = QEMU_ALIGN_UP(base + size, RME_PAGE_SIZE);
+>>> +    struct kvm_arm_rmi_populate populate_args;
+>>> +    size_t aligned_size = ROUND_UP(region->size, qemu_real_host_page_size());
+>>
+>> s/qemu_real_host_page_size()/RME_PAGE_SIZE
+> 
+> I refactored this function in V5 [1], along with the above declarations.
+> 
+> [1]. https://lore.kernel.org/kvm/20261002202026.1204110-10-mathieu.poirier@linaro.org/
+> 
+>>
+>>> +
+>>> +    if (!region->data) {
+>>> +        return -ENODEV;
+>>> +    }
+>>> +
+>>> +    ret = kvm_set_memory_attributes_private(start, end - start);
+>>> +    if (ret) {
+>>> +        error_report("RME: failed to configure initial"
+>>> +                     "private guest memory");
+>>> +        return ret;
+>>> +    }
+>>> +
+>>> +    /* Allocate page-aligned memory */
+>>> +    buffer = qemu_memalign(qemu_real_host_page_size(), aligned_size);
+>>> +
+>>> +    if (!buffer) {
+>>> +        return -ENOMEM;
+>>> +    }
+>>> +
+>>> +    memset(buffer, 0, aligned_size);
+>>> +    memcpy(buffer, region->data, region->size);
+>>> +
+>>> +    populate_args = (struct kvm_arm_rmi_populate) {
+>>> +        .base = start,
+>>> +        .size = end - start,
+>>> +        .source_uaddr = (uintptr_t)buffer,
+>>> +        .flags = measure ? KVM_ARM_RMI_POPULATE_FLAGS_MEASURE : 0,
+>>> +    };
+>>> +
+>>> +    while (populate_args.size > 0) {
+>>> +        ret = kvm_vm_ioctl(kvm_state, KVM_ARM_RMI_POPULATE, &populate_args, 0);
+>>> +        if (ret) {
+>>> +            error_setg_errno(errp, -ret,
+>>> +                "failed to populate realm [0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
+>>> +                start, end);
+>>> +            break;
+>>> +        }
+>>> +    }
+>>> +
+>>> +    qemu_vfree(buffer);
+>>> +
+>>> +    return ret;
+>>> +}
+>>> +
+>>
+>> I doubt that the unaligned regions (RmeRamRegion) are allowed. For example,
+>> the region [4KB 64KB+4KB] is turned to the aligned range [0 128KB] when RME_PAGE_SIZE
+>> is 64KB. The question is how do we know the added regions due to the alignment
+>> ([0 4KB] and [64KB+4KB 128KB]) are safe for kvm_vm_ioctl(KVM_ARM_RMI_POPULATE).
+>> I guess we probably just reject unaligned regions if they're not expected.
+> 
+> To make sure I understand your point, please expand on what would be an
+> unaligned regions.  In your example, [0 128KB] is aligned on 64KB boundries.
+> 
+>>
+>> Even if the unaligned regions are allowed, they seem not well handled.
+>>
+>> - @aligned_size is still 64KB instead of the 128KB ?
+> 
+> I'm confused.  ROUND_UP(64KB+4KB, 64KB) would be 128KB.  What am I missing?
+> 
 
-Linux 6.19 added KVM_CAP_ARM_SEA_TO_USER [1]: with the capability
-enabled, KVM returns a guest synchronous external abort that the host
-could not claim through APEI to userspace as KVM_EXIT_ARM_SEA, instead
-of injecting a virtual SError. QEMU does not consume the exit yet, so on
-a host whose HEST has no SEA-notified GHES source every guest-consumed
-memory error still ends in a guest "Asynchronous SError Interrupt"
-panic.
+ROUND_UP(64KB+4KB, 64KB) corresponds to ROUND_UP(size+base, 64KB) for local
+variable @end instead of @aligned_size. @aligned_size is calculated as
+ROUND_UP(64KB, 64KB) and the output is still 64KB.
 
-This patch enables the capability, handles the exit by recording a GHES
-memory error (when the exit carries an address backed by guest RAM) and
-injecting a synchronous external abort that mirrors the original one,
-and wires up the BUS_MCEERR_AO SIGBUS case so the guest learns about the
-poisoned page asynchronously when the exit itself carried no address.
+>> - In "memcpy(buffer, region->data, region->size);", the blob data would be copied to
+>>    [4KB, 4KB+64KB]. However, we're copying the data to [0 64KB] now.
+> 
+> I agree with you.  That part was refactored in V5 [1]:
+> 
+>          memcpy(buffer + (base - start), region->data, region->size);
+> 
+>>
+>>> +static void rme_populate_ram_region(gpointer data, gpointer err)
+>>> +{
+>>> +    Error **errp = err;
+>>> +    const RmeRamRegion *region = data;
+>>> +
+>>> +    if (*errp) {
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    rme_populate_range(region, /* measure */ true, errp);
+>>> +}
+>>> +
+>>>    static void rme_vm_state_change(void *opaque, bool running, RunState state)
+>>>    {
+>>> +    Error *errp = NULL;
+>>> +
+>>>        if (!running) {
+>>>            return;
+>>>        }
+>>> +    g_slist_foreach(rme_guest->ram_regions, rme_populate_ram_region, &errp);
+>>> +    g_slist_free_full(g_steal_pointer(&rme_guest->ram_regions), g_free);
+>>> +    if (errp) {
+>>> +        return;
+>>> +    }
+>>> +
+>>>        kvm_mark_guest_state_protected();
+>>>    }
+>>
 
-Points I would like feedback on:
-
- * Injection: I reuse the existing kvm_inject_arm_sea() route
-   (arm_cpu_do_interrupt() after kvm_cpu_synchronize_state()) and let it
-   pass the sanitised ESR fields (EC, IL, FnV, EA, CM, WnR, xFSC, SET)
-   and the FAR through to the guest. KVM_SET_VCPU_EVENTS with
-   ext_dabt_pending can only produce a data abort with FAR taken from
-   the last exit, and the documentation restricts it to MMIO/NISV/
-   LDST64B exits, so it did not seem a good fit; happy to switch if that
-   is preferred.
-
- * The BUS_MCEERR_AO record goes on ACPI_HEST_SRC_ID_QMP, which ghes.h
-   documents as being for QMP-injected errors, because it is the only
-   GED-notified source the virt machine has. If a dedicated source id
-   for host-originated asynchronous records is preferred I can add one.
-
- * With the pre-10.1 single-block HEST layout (no GED-notified source)
-   the AO record is dropped with a warning rather than written into the
-   synchronous source's block.
-
-Testing: arm64 host whose HEST has only GSIV/SDEI-notified sources,
-EINJ uncorrectable memory error into a page mapped by a guest, consumed
-by a guest process (-machine virt,ras=on). Before: guest panic. After:
-SIGBUS to the process, GHES record and hwpoison in the guest, guest
-stays up. Also checked: the pre-existing BUS_MCEERR_AR SIGBUS path still
-works (it is taken when the host's memory_failure() wins the race),
-ras=off (bare external abort to the guest, no record), -machine
-virt-10.0 (the AR path still delivers the synchronous record, the AO
-record is dropped with the warning),
-check-unit and check-qtest-aarch64 on the host.
-
-[1] https://lore.kernel.org/r/20251013185903.1372553-1-jiaqiyan@google.com
-
-
-Deepak Gupta (1):
-  target/arm/kvm: handle KVM_EXIT_ARM_SEA and report BUS_MCEERR_AO
-
- target/arm/kvm.c        | 164 +++++++++++++++++++++++++++++++++++-----
- target/arm/trace-events |   1 +
- 2 files changed, 146 insertions(+), 19 deletions(-)
-
--- 
-2.53.0
+Thanks,
+Gavin
 
 

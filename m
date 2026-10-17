@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DD5ACCF2C4
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 12:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C4ACCF2C4
+	for <qemu-arm@archiver.kernel.org>; Sat, 17 Oct 2026 12:42:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xI3j7-0007f6-MF; Sat, 17 Oct 2026 08:41:29 -0400
+	id 1xI3jL-0007wi-9q; Sat, 17 Oct 2026 08:41:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI3j6-0007a3-6k
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:41:28 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ id 1xI3jI-0007v7-FV
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:41:40 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xI3j4-000486-Kq
- for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:41:27 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-8ad98c3fb15so5928327b3.2
- for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 05:41:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792240884; cv=none;
+ id 1xI3jH-00049R-21
+ for qemu-arm@nongnu.org; Sat, 17 Oct 2026 08:41:40 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-8b0a921ee46so5917917b3.2
+ for <qemu-arm@nongnu.org>; Sat, 17 Oct 2026 05:41:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792240898; cv=none;
  d=google.com; s=arc-20260327;
- b=EwlL15aMIFpt9BqjFkUhEfZJp12i7tDvyI2QzegXbT1g2fo7EBGwlU3x8EzaXER3LH
- SpQQcQcvktCaFjhyYPRrEFid9bX+Be/cEOKhZUxnY6cAD4SeLFAfN6WfJapCcifgF7gT
- T7wbqtx7ya6s0bsyYo7BoiwQiYMbERolve4JwLncbp32ZVWOqaWmJ5pHUfUoWSf+q0rZ
- IN7NmhHu3V5bbHesHi6sPtizc7WYLkWl6XJ0T/xQ6d3mBSdozZDa0zWWr80BKhJ8ncfb
- ohkgHEGxH+sFavShvGNp2ZtOjKtIVC0mWikdZFne4zN8esMaUHYN94T8f3tvv0Fg7gwO
- RZKA==
+ b=Hu5pxY0EskHzlzhOVrzu1C25MNO5EwCi4osYLlwxtvUbE5/w1AdonpHIVkfbLQZoGM
+ BzqbotjWCtZmwjparaTOjQGedzOJCLQPNQ1t94Y5zUYtLFAMrxu9TXybr7Kl5YKjmTS+
+ Fs10PWA8K1Un/ZrcW8IyD97ZvMXM2MQxBgiW79KXyx5yj+mVciVGhsQ5t9ZimGsSq7AN
+ Wv63PgRQCWqTKY7eBSvAOTDoG8l2/LEWyzdYcrue837pKUYae2l/eubTxMCbYdIXpWb2
+ VueftzOnB492HgVAPnz3GsV8gr7NqEUqE0eulBE3wD4QenX8pz1hz8JA05JvgIyiT+id
+ X5WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=BnxfMvd8hzhoJRjxUTNsa+DrzjsydedZmNeDt5wN43o=;
- fh=8rZU27bgpAZ8zCoE+iyODEwghXCt0UVXml0kPKlYOLg=;
- b=W0PM+UEPZQdFSN/SRNyo/oLJ+VepzzDzksr7rAaRTllfkoZWILrZqMeuhrKQQoFnkh
- YeVRiM64LJWILHiyJbidD7SWKRHekC/JUdA6JyrS7TNRIEKFV1HFD4Qln40JnUXcibhP
- FHtq/o+h0Obcybh7QKcreOiK+AhQoOcPuKwsKRWRBMSKwAGvNxJ3+N+gpDtIBJlYvxKZ
- b/nFmjfbKCHzO8qO4Z3P08CCLGT9i6y9FuuwiWBpvvVMUR/UYP00t/8tIIpwO6UfZg7G
- vhyalHlVA9MleFn5FbF428LdsSiUgAQaDt0mMiPDuCrORqk7KryJlfuLC5VOzqT6TnRm
- xuIA==; darn=nongnu.org
+ bh=NZdKfx+Etpoc3S2ApHYXl84B2+t+hA73P89U2cSWRX8=;
+ fh=qkMOd6TBuKGr2U7R4CEyuRRF+5vozV9yS3xP2bWB9nQ=;
+ b=kb4zImRjcnBFxcCcHFbChKuxJmF7zuUoGmMeUdFoHkw5YGq/wmMQzAFj/eSyezSV5Y
+ zNW8qTzXSS5gaId+bEiD4gdQecNR0A2gS8YtDqbbfd+/+NCU4ntULzGbU5atJqli4xCE
+ v0Ce9WiK6kCOmcE4uEeP+1QYU3nnW4XA1T94VRGRr5ySjuiqOxYRQJeFPenMeiea+Fhd
+ qy5OuJUc/IXnY7D5kZVYmFOiwMxM6MvPIXSjGu75pzMAOiBJ+2IyymcRVIfAqtKIIIwc
+ O2AjOWOc9EVLb22BQjh5nA9bycVjTaoHP4ituFYAfQ2DQ3qIFDgAmjfXXTUx2nfZEEjl
+ 3oXg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792240884; x=1792845684; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792240898; x=1792845698; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=BnxfMvd8hzhoJRjxUTNsa+DrzjsydedZmNeDt5wN43o=;
- b=iD/6PIzzbf69sJmnhPI45HE0qcIPZfvsADcgKOxSWRG7vPRwHygbRaMJN2/eAdVTPH
- 5g9uVhkuS7y/5//yd3WHTnDLMQLVOHy0gHhnDj8dhwAcy97+fzLYreysSo+4XJNY7h2w
- Wy5itUqVRZjj+GenrXmhm8gsflv4nI9cqaJvsyyYyeXbzAaZtdCwhJpWxbnoS7zQRw7H
- DTs86jSZ5JasKzim7MWm04uxP3QEOYGSNDCvqZ/lzmqWzTpzMc2Xi7NuTotO3BrqTMx6
- gEyhv+BHAkgNHnFTdESerxpNA2kdrFdHiVi5gdjoWLTbeiRltzteoq0SRpa9gjT5MMTX
- NT3Q==
+ :content-type; bh=NZdKfx+Etpoc3S2ApHYXl84B2+t+hA73P89U2cSWRX8=;
+ b=PAIgGmvAAHLj+Ed/woaC4Geo5ttk93S9wFBEEwbNx2Pr8Qhcx+xpRGTjEqCEbQAcRa
+ kQEMsy2yIdo21zOD5wcxL+h3xuXVEz6Y6ei/0S1o5P6x1g6vXEnGInn8Uq7TN98g6ShW
+ VIg8sNn713/NtOSdrE2llCSoB86n90a3xCh8dbNbzMrs2i8IZxvFWIZ2vtgMdQu0JfpG
+ /BUrld42IL1xhUK2qa1kX4g3NCLhsmFqTBmAbOucH3jm1wOpMX2rVgoS8F1G212vxy+U
+ yQkDDG2fVCA7eNn5wAwz0EFk+L7stq+jOTFhJm7vD6SIEJQ1kpz22LW3hAAZsVT/OPhk
+ 7idw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792240884; x=1792845684;
+ d=1e100.net; s=20260707; t=1792240898; x=1792845698;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=BnxfMvd8hzhoJRjxUTNsa+DrzjsydedZmNeDt5wN43o=;
- b=0VgTZed5t9oVg9Cy4BlBXWiUgn7nyhQruUsmkElvjVQLwwD6bmzqDr51sVL9cYbbXf
- 4gBB8baDy2aLZoPfAiH+fQuOnNrr9tzhO2EA2QySjve/K5K7C3bHoGQKR/QcOj0PNBjG
- 6sJSQ2ExUKeE3Td1Mp/2CqLmstWswzNzKNQeGaJrrmtJPLMDNSI5l4dZ6kC/RFCodBTF
- g4cwijebn0hSlHQ4WoiLeSJ5vGm7je3o8rD6KzzbvjpWmc7KiJcHMUX6TwRiKGuL/97M
- 104LdaL3TdImpkQbopndGdEiVstRRH4XwodF2tScNa3OQWbSQdWxnWABaCm/XK/CYkA7
- hggw==
+ bh=NZdKfx+Etpoc3S2ApHYXl84B2+t+hA73P89U2cSWRX8=;
+ b=RrEf8YLa906pdKFN/fZHwFwpY29mKqPbQMWEQzbZ6YQ8r2fAemDh2zclkICmTkxOcB
+ CDiPmDxQhSe1ZeCmByzqHzDLNVO6ZiX6zFPws9e6VFfKL1eVelTyWsMeZoN/1ZKHwWNw
+ bKmY9XBNGEMbbRp7AZZ4/UgyIm3tApm/ndHFcLiPKrr3ey61FxQG9GjwWSUDQ0o37EoB
+ pocn9erPDIoGkjsRipM6iEtm5sQziy4w4OpM9SkxItSsnXmZHPC6yOS+ldQSeU5+/OFP
+ eLViRlllQwGAUBCt6p4iKAfGBgJKtv3FDqlCp463OAWNTnVim5O3qVTbIxf+PaoMdS3P
+ e3aQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxHAKS0fiNkTj5ey4pqV1OweNcnhVIksfbPez6ZLbpNjCcbhc3Q9Xym8rJmAheAR5Rt8tz3TFxJRw==@nongnu.org
-X-Gm-Message-State: AFq9FYL7TeKVo3uv8KqnIfYZcSj7XXcKqDzKCGodpfUQ/1Z8Yvv7zqZh
- YW48Ieg48j0/27eG1fcteLY566lfcB1f+NQou4c7MTlFeuaC162rMBbT7lWaM1jwL+fYS9dtXlL
- CnrsiRF+lA6jOW5eDMzfmBzicpEVy+bdRwo9j3UWNVA==
-X-Gm-Gg: AYBFou2yaSZ8AO4Be8VR1HMs27VkEZDRqWqZKbQ6qSRTLhPQhBhzpAwiHfRhmn3PqPO
- 7XMUFYmLJrw8RHYVVahcPq9ReHoHKa26I0gC4RbPLVcnJZKgtEx8/OYCjQAgAvKgP8bvQUmFdh5
- gzdUzDDbAaWlVqlkVe4wbWFHYNwD9YfNtDLAAbEB2bIFBN9VkFZGVkdFjAV4pns3naoMvGgaGbV
- ez9BK3RMvWao5oYa3KNDDpKP/yVG8E8wSAmBF9/KpXHZgop2Fp2xmHoTzy3v6Ul7Ipq3Q1yMjE1
- LFy4on/F7eTl04DkZWZZNDQaLqCOMD2WbYBA+GloY4XFLasqsHERYKv8vAHBqGdGZozNJkiuSV/
- MrW6rZa+NVc4O0qC7gfTBmhwsZaWymAxdBYXf7o0=
-X-Received: by 2002:a05:690c:dc7:b0:8b0:a64c:bb37 with SMTP id
- 00721157ae682-8b0f21d78b4mr10467927b3.43.1792240884274; Sat, 17 Oct 2026
- 05:41:24 -0700 (PDT)
+ AKwUvByhzNv2cj9YLQjdBG3o3WtIJqr7fOYwBNowFo4UNKPgKg2vb+Kul47XeOWrm/HBh7RfFCDposEaGg==@nongnu.org
+X-Gm-Message-State: AFq9FYKPRut1ginY9wPPvi+i4ThiOEPJv/QXI8GTEXezIrXWYSs5lxFw
+ qHLYhVcVTXIqXhHH67aI/2ecQ37iZTEnsqReGwu3yOFKU7PlUUqnbrSTtSIWGBYpG5Mq6ez1NfL
+ FZ1T2CvVbobzggjqf4qsWFUca5mrSlYfD4OA2MTQxZw==
+X-Gm-Gg: AYBFou2BGOsfKMGstosFE+mCIICuSVztLmx4YGv9eG5ogl4e3k9XO+lz8JEuzdMvwAm
+ lWeYt02kppHiWhklsMTdfBj1btJJuOuSRja98s315DthAYzbfig//MYZsqGAs0K/xP1ghKrEVLv
+ OE5Qa9rPY9e4Myaq4MQB8HsyQme0tF09+sSEaslBSPC51RZ9MHg85ZS35HZ4wInB9HlZWCHpS8m
+ 3sgBnrG13r/fSzwWamgxDr4Sb/oSZpHi9BKKmNgxCK9ZLArwLthbiN4WM67ci6AlS4Ao+/4vu2B
+ /TYPw5D27izEyh9cgjCThSi8+3u+aLOcnYlFCLNIyN/VspIU8NvJ0ZFis7ka3AfjswHQeqSRadV
+ bUPXF6llzh5dibAb5cnbORfA/g0cZybqoyYCgrajWpXVHJ1lHRCw=
+X-Received: by 2002:a05:690c:f09:b0:873:5ddf:d872 with SMTP id
+ 00721157ae682-8b0f21f0f15mr8429097b3.61.1792240897814; Sat, 17 Oct 2026
+ 05:41:37 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261015181122.60608-1-marcelomanzo@gmail.com>
- <20261015181122.60608-7-marcelomanzo@gmail.com>
-In-Reply-To: <20261015181122.60608-7-marcelomanzo@gmail.com>
+ <20261015181122.60608-8-marcelomanzo@gmail.com>
+In-Reply-To: <20261015181122.60608-8-marcelomanzo@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 17 Oct 2026 13:41:12 +0100
-X-Gm-Features: AclHuK8s_6G-7H-gcymbN_BdTHpDigsmc-tqiQK5w4TQHN0NJBnDkWMl-K1kUrs
-Message-ID: <CAFEAcA_8t57R_zRkP5Y=5H=aidoTp1Q9pfk0Z1-mdV3tex-riA@mail.gmail.com>
-Subject: Re: [PATCH v3 06/16] hw/net/bcm2838_genet: add GENET register
- structs, part 2/4
+Date: Sat, 17 Oct 2026 13:41:25 +0100
+X-Gm-Features: AclHuK-9JkQz8yv7JvdeeFSMwQ_f9aBH7f9X99Kn4HPrQbFEf9TMiyT-muZEFzc
+Message-ID: <CAFEAcA8xkU4UdTt3W=TsiaoziRxiJDucxDnJ1OAe7LaPXhmGzQ@mail.gmail.com>
+Subject: Re: [PATCH v3 07/16] hw/net/bcm2838_genet: add GENET register
+ structs, part 3/4
 To: Marcelo Manzo <marcelomanzo@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
@@ -98,8 +98,8 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Sergey Kambalin <sergey.kambalin@auriga.com>, 
  Jason Wang <jasowangio@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,9 +126,9 @@ On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
 >
 > From: Sergey Kambalin <serg.oker@gmail.com>
 >
-> Add the UMAC (CMD, MAC address, MDIO command) and DMA (ring config,
-> control, producer/consumer index, status, RX descriptor
-> length/status) register layouts and their field accessors.
+> Add the TDMA (transmit DMA ring/length-status) register layout and
+> field accessors, and the PHY BMCR/BMSR MII register field
+> definitions.
 >
 > Part of Sergey Kambalin's original Raspberry Pi 4B PCIe/GENET
 > networking series (patchwork series 829638, posted to qemu-devel in
@@ -137,6 +137,9 @@ On Thu, 15 Oct 2026 at 19:11, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
 > Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 > Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 > ---
+>  hw/net/bcm2838_genet.c         | 88 ++++++++++++++++++++++++++++++++++
+>  include/hw/net/bcm2838_genet.h | 88 ++++++++++++++++++++++++++++++++++
+>  2 files changed, 176 insertions(+)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

@@ -1,110 +1,100 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 379AB606A31D
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 18:59:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA37A606A322
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 19:25:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=sU2ptv8H
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=mWhDDRCF
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIsZd-00017h-Fn; Mon, 19 Oct 2026 14:59:05 -0400
+	id 1xIsye-0007sq-Et; Mon, 19 Oct 2026 15:24:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <samanyu.goel16@gmail.com>)
- id 1xIqAz-0001aC-IF
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:25:29 -0400
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xIsyb-0007qu-VG
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:24:54 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <samanyu.goel16@gmail.com>)
- id 1xIqAx-0001PJ-R8
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:25:29 -0400
-Received: by mail-qv1-xf35.google.com with SMTP id
- 6a1803df08f44-91b83459526so29671066d6.2
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:25:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792427127; cv=none;
- d=google.com; s=arc-20260327;
- b=il3WeKv3hrdSNmMorxF+BuN/a404hjX+/xeIcmvqHd2KBl2x1KaVezQWyNHeWk9LQt
- SewUDnAOZZNsk5TOW3tqJYzxvBG+ZswGaGkS53XlBRJpsHc+P/frha4SgqQsKt7Z64yl
- 3JoiumfSuWH77UxwNZGilHPwvxlXpTIrMisekBXoLy5DpxgmPrLqCaVQAa2SJflzTYM0
- zeydVPFzX7jDsJzAv8T0lcDtkDLPluU6ntIVHI1ElmYX/BluWGEOvPSe4X6Xx0ft7joC
- el1hIp8uA4MqeuvPPjbVn2Glq233PghTb25Kx0tYwc2gtkToA7UMdq3wKfnMUdn8cM8W
- 1jBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Kl9iXwi4LOXMFWUH/bOEVH1gGOQOhUX9QNpEdl9gE5s=;
- fh=k1bgjbt5LrbswjVL1W4AwAdHoogIDY/vxBHHqYHVqug=;
- b=l7UrTW4NLvPwO3I2a7JFo1y/KavWOnMZKsSkj16Q9EMJaM3NFgu7PYfEdbwKcSmQJE
- hOLTdzg570+s8Izil4wWiXOO9qeM1cDvOOA2tugJimq7AjiuaNq9eHvjcVjtj9gatp+t
- dz5IlVgiqBWE02F8IM1Y41UBwOvy9aYFPwOeOE19Ds8UMTmFljfqV9rpIFQSnixfJMx/
- VH8dHfnKJbaKVGRXqSL4+rtqw5Px5/K9IMprYCTVgxQUplBO8lrUFzMigm1Y2HHSiKjo
- 8miZYCYnIa3ihtAmauY5ypur/hVkbt5sgKZIS0jMLm8HvgPQKxjxQrRScDa/lItgJ0QK
- bXsA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xIsyZ-0002mS-UH
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:24:53 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4a1f403aca0so414895e9.3
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 12:24:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792427127; x=1793031927; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=Kl9iXwi4LOXMFWUH/bOEVH1gGOQOhUX9QNpEdl9gE5s=;
- b=sU2ptv8HVHkWLiemf0lv0Wg2yrbwMr7gqIDK+gobyw4Kj5F8TFTtCowR6M+67xqSvw
- d15/CuH/rKMu7k0jI1omNLOvfaVp/HETmpbreEudsONwTALMJtCgKOf1qnLVk/mFblhI
- gCy3s2WkQ+fSaS/A1Wt9kV4BG6khx1XR6IogoRGQt16/t6n+CdWFSFyKUIFWGXMpctqg
- ZtuV+ATetaSPdrByrG/j0qXKV6gnSbBi0+aTP+H+jR4ifegSjv5HwtZ6bBBalsJwN8qk
- iz5lyE5lG/TR5DR28HvMI1srBq3xpcFoYA6vrlJagZV5tPFiGGz8TJoybzQ+dKRdeKnW
- W4Ng==
+ d=gmail.com; s=20251104; t=1792437888; x=1793042688; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=dEhS52YSSx+Bo4+B0YLxWr+435JocJm9cSkUC1QQivI=;
+ b=mWhDDRCFwB3ACNzKsETORXUIeVw/ctwQp/JqVao697nevdUCirQ09NX5RvXN4kYFbM
+ WY2I5SOLlPOWUnipf+HEFHDDgnmPz66jBnEWqnYR2KDmA8KaJ9Q8uy7j/OBa8O3tAzo7
+ QGM6GCQYX5PZ1qAArIxPU84vbW+NVaFkZCIhDkBKMNR/cjOICsydt9nWbA6CuheKfgD+
+ Xiz/wpFkcFeqLKm1R5faKt0N7GKK4uI8eB0jLueF2XV3eTpJoZ6CCUgIAj8P/FHxYZXx
+ PVOUbW/cybZ37uh5o1eNPfe0H3Lo/uZf9FwiKAvUT36u+Rzw8kPZjWMtd12GBJE0w0UU
+ H73A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792427127; x=1793031927;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=Kl9iXwi4LOXMFWUH/bOEVH1gGOQOhUX9QNpEdl9gE5s=;
- b=ru2bYKv55dAh4WV0x6PXsVkpOE6Q/8RQuiEyBIRujNWctCPme0WaF2yypG4dMfHXJ8
- 2IKcXAJfZ9rymnxk6NdyTS38a5YQkAkD35QuFwh6YdptBojchw0MJTAp63JuCzuyQg7n
- kwTphEqUpjSO27buP7+7Csb1uPR9zZNYdJ8khfemA5ipVFMgM5GWQIeP7ZVinfzn608R
- 9oFoOdNDXrzy8nmwyp5T8qot9CvMgncHwTCdL/f9QdmKkxLNgSfbyq1uv0mGrgdQra/W
- P7+7J8AR4UOjt49JtKopimXVdeXFEaw+GNeZIW5Q5qa+DaPV0kPXr2V6A1I4AI8Z0yJH
- eemg==
+ d=1e100.net; s=20260707; t=1792437888; x=1793042688;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=dEhS52YSSx+Bo4+B0YLxWr+435JocJm9cSkUC1QQivI=;
+ b=LvJao+Rgtcjzvi/M9DWqGZbspbCZbaTYWlNJ+LYYp3uc/m8Ptx/polrUPUeaoUM1Ap
+ RY7LltwqHNDhHhtMCicg3+VFhcWTW3FXMni/WgjMVwF35GF/yopFaSxhYE//FmKlsndN
+ z9kJW6VS3pMC0kHr/CvFqkzgADbrBtu1vb/3fgadBrDeEyfi1npGpz4pQwrVxXqLQ2oy
+ JLW0Lx6TnGBTktimMDfdTZBichmEpwRYsKq/LzXN0JEbO6u2ihog9Vl2g1+sx6pMjKx3
+ p9E4WPevay0XmQEcgohxXdxcG4kKWq+EtVHB7XhhVK78AujazsidzOqXlP90dm+IyIrS
+ KPDw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwxLHs4GZLp870mAoiFqbG0SDLUnT52fR8kvP2kY1OFqou2gUe0+ds+Jj8Smm2t5LlfzII0d9LjEQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIsbHLTPjTfrp8o55b535zreqI33fpbIq2rE6xHEOOh1Qho/GbH
- zWgcAadjfywP2VYEzCwIGoNx+rgbjtJpeYoHeDPGb3tp9RbWV7RZW4cD/Xa+VV0cyGH1B8K30PT
- Dkg/t9qLkk8QD9PZgemU516zhc8OtzeM=
-X-Gm-Gg: AYBFou06ITAfBKD0IoNeqPegooQrox63uxpflPNeaPxp8CcRRf/09/r9m8IiRjLBqlq
- /GCFrQPhiZ7W9Dk06qR3YEJGr49SKqwrg+3DL411xznH5fXUXas4QLRaT8r82XVvVqVpsKSF4gD
- aon/4eE+1smjkk7ycdkcVo7vxblvotEjgmAbAfDUkxu1xhtw8ByB46o3YqtNvgqkdTnxxSsQnna
- hZR7fnMpPafmBxKS/vC5iXxoy00X+xCW7UpxMgZaNR+/wthDNipH2He5tGqYk6G0M9bhi7yzObi
- eH93AksxxBEqHeCs3Zy3C8DVvqSwLutdtZmzmryABG2kpAk4BNCLbUbKUAgLjBk2ioUTSmnBPM1
- 1FzfX0hYU4FVFQ8LlxKcavWojworsLT8A9TnwBrg=
-X-Received: by 2002:a05:6214:2e48:b0:914:40fb:8e89 with SMTP id
- 6a1803df08f44-91bdefbc857mr130146526d6.16.1792427126643; Mon, 19 Oct 2026
- 09:25:26 -0700 (PDT)
+ AKwUvBzQ26+fzN3+uA4Yk6/xtYGVaXpBIe/U+hxl1ab+f1KHUtHP3kU2gUJsGBb9WqhGajcpx9UyrxKHWQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLlZtgjlRrv5RgWVZLfSxyVAejEpb6EoNvjPs6teebGIA2Rk3JR
+ OjDyN96kV2ayk+yOJ//fpKmNTuC4tUC3H5n5qFQChXf92DjNgzTbyzLf
+X-Gm-Gg: AYBFou2+nVs4e7Gu5qWSW6HOiCT4mkJh2jWvLtcdTXGvGbfm57yt6sCarAopvInOlok
+ d2GDudu3l194vJcZcuFGLL8/r/6LQLfl5BOpEaUsbFPrixsx3//HU5P5gHUHry+P5vgw8hzU883
+ IvohlADDJGi+am7K+LaKDN1xP3J/w2Zv5P5hSa1BRn6hQYKTNAjPGxv9jwYnNVYnV3P6nKV2DgR
+ o38g4of/xpPFV9Nv7szwYbyhWD4EPqTVIP6pwgHeRjMv73YyS2FsCsCln8V9yUkHaPDJOZb6zS3
+ WleU7YY5Iy5yw2HLKenzzYER+XsSuwxy6tf+PTPfCXOkZXc92lfVRVMh/ueTB+DySTEJueRo2F5
+ DrEvpZ5FQR6Hx5TBKjmAXyQT1y7zIjbcRHuyMV9yzC8DMTFAOsCOMD0MHmUyqZwHSTRvsY9Orml
+ S1tQrXNHNawFm0EazNmOavyJWVR1G3r6j5OJ5z2FQXFfrerZMDuqTHrPScIDpQ4RdHz0Ww4fjhK
+ vEO2OfHlOBkLULm5aSfL60syQOqv5N+THR2pp+PpfA2orSmNS5KxjKLdHac5iMLPGEQxldawfoE
+ PSXSqkPP1NwBTASQVsk=
+X-Received: by 2002:a05:600c:e549:20b0:4a1:811c:8078 with SMTP id
+ 5b1f17b1804b1-4a1d7624601mr113658355e9.26.1792437887909; 
+ Mon, 19 Oct 2026 12:24:47 -0700 (PDT)
+Received: from ehlo.thunderbird.net
+ (dynamic-2a02-3100-1ca4-1800-ec6b-a832-f355-434e.310.pool.telefonica.de.
+ [2a02:3100:1ca4:1800:ec6b:a832:f355:434e])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a1f2cce2fbsm11868055e9.10.2026.10.19.12.24.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 19 Oct 2026 12:24:47 -0700 (PDT)
+Date: Mon, 19 Oct 2026 19:24:41 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org, Bin Meng <bin.meng@processmission.com>,
+ QEMU <qemu-devel@nongnu.org>
+CC: Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_02/10=5D_hw/misc=3A_imx6u?=
+ =?US-ASCII?Q?l=5Fccm=3A_Update_PMU=5FMISC0_reset_value?=
+In-Reply-To: <20261014045605.399684-3-bin.meng@processmission.com>
+References: <20261014045605.399684-1-bin.meng@processmission.com>
+ <20261014045605.399684-3-bin.meng@processmission.com>
+Message-ID: <DA4CAD0B-7AE8-4486-AFF5-E156CEA09F8E@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261019155519.1302964-1-samanyu.goel16@gmail.com>
- <CAFEAcA_QYXpjXdC8oiTfn2Z3E99hW0j-mcDSqGLhKfKKex8VsA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_QYXpjXdC8oiTfn2Z3E99hW0j-mcDSqGLhKfKKex8VsA@mail.gmail.com>
-From: Samanyu Goel <samanyu.goel16@gmail.com>
-Date: Mon, 19 Oct 2026 21:55:13 +0530
-X-Gm-Features: AclHuK9DfyJEFY0MWupTHVEG_JtaPCW-ax_PvkOfeG_WeYxSbGhg25GiD-Awng4
-Message-ID: <CAL3-oQiGT2OSxq7casnW7JuwrCM5wa2L4SDpDe_As7+1hyEuww@mail.gmail.com>
-Subject: Re: [PATCH] hw/intc/exynos4210_combiner: Fix out of bounds access
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000002b5f11065e33f621"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f35;
- envelope-from=samanyu.goel16@gmail.com; helo=mail-qv1-xf35.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 19 Oct 2026 14:58:53 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,106 +105,48 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,HTML_MESSAGE,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---0000000000002b5f11065e33f621
-Content-Type: text/plain; charset="UTF-8"
 
-Thanks Peter! Good catch on the read function, I totally missed that part
-of it while focusing just on the main issue.
 
-It makes complete sense to clean up both functions together in your fix.
-This was a great learning experience for me, so thank you for taking the
-time to review and share feedback.
-
-Best,
-Samanyu
-
-On Mon, Oct 19, 2026, 21:46 Peter Maydell <peter.maydell@linaro.org> wrote:
-
-> On Mon, 19 Oct 2026 at 16:55, Samanyu Goel <samanyu.goel16@gmail.com>
-> wrote:
-> >
-> > In exynos4210_combiner_write(), the bounds check used req_quad_base_n
-> > instead of grp_quad_base_n. Because req_quad_base_n counts 4-group blocks
-> > rather than individual groups, invalid offsets were allowed through.
-> >
-> > For example, writing to offset 0x100 resulted in req_quad_base_n = 16,
-> > passing the check (16 < 64). As verified in GDB, this caused
-> > grp_quad_base_n to reach 64, leading to an out-of-bounds write at
-> > s->group[64].
-> >
-> > Signed-off-by: Samanyu Goel <samanyu.goel16@gmail.com>
-> > ---
+Am 14=2E Oktober 2026 04:55:52 UTC schrieb Bin Meng <bin=2Emeng@processmis=
+sion=2Ecom>:
+>Commit 56a11a9b7580 ("hw/misc: imx6_ccm: Update PMU_MISC0 reset value")
+>updated the i=2EMX6 CCM model so U-Boot sees PMU_MISC0[REFTOP_VBGUP]
+>set after reset=2E The i=2EMX6UL CCM model still returns this bit clear,
+>causing U-Boot init_bandgap() to wait for a state that the model
+>never reaches=2E
 >
-> This is https://gitlab.com/qemu-project/qemu/-/work_items/4709.
+>Apply the same reset behavior to the i=2EMX6UL CCM model so U-Boot
+>can observe that the bandgap has stabilized=2E
 >
-> You've missed the equivalent check in the read function.
+>Signed-off-by: Bin Meng <bin=2Emeng@processmission=2Ecom>
+>---
 >
-> As it happens I was working on this bug this afternoon; I have
-> a patch nearly ready to send which fixes this and also cleans up
-> some other oddities about the checks in these functions.
+>(no changes since v1)
 >
-> thanks
-> -- PMM
+> hw/misc/imx6ul_ccm=2Ec | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 >
+>diff --git a/hw/misc/imx6ul_ccm=2Ec b/hw/misc/imx6ul_ccm=2Ec
+>index c4f6e372fe=2E=2E4accbcbeed 100644
+>--- a/hw/misc/imx6ul_ccm=2Ec
+>+++ b/hw/misc/imx6ul_ccm=2Ec
+>@@ -592,7 +592,7 @@ static void imx6ul_ccm_reset(DeviceState *dev)
+>     s->analog[PMU_REG_3P0] =3D 0x00000F74;
+>     s->analog[PMU_REG_2P5] =3D 0x00001073;
+>     s->analog[PMU_REG_CORE] =3D 0x00482012;
+>-    s->analog[PMU_MISC0] =3D 0x04000000;
+>+    s->analog[PMU_MISC0] =3D 0x04000080;
+>     s->analog[PMU_MISC1] =3D 0x00000000;
+>     s->analog[PMU_MISC2] =3D 0x00272727;
+>     s->analog[PMU_LOWPWR_CTRL] =3D 0x00004009;
 
---0000000000002b5f11065e33f621
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Thanks Peter! Good catch on the read function, I totally =
-missed that part of it while focusing just on the main issue.<div dir=3D"au=
-to">=C2=A0=C2=A0</div><div dir=3D"auto">It makes complete sense to clean up=
- both functions together in your fix. This was a great learning experience =
-for me, so thank you for taking the time to review and share feedback.</div=
-><div dir=3D"auto">=C2=A0=C2=A0</div><div dir=3D"auto">Best,</div><div dir=
-=3D"auto">Samanyu</div></div><br><div class=3D"gmail_quote gmail_quote_cont=
-ainer"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Oct 19, 2026, 21:46 Pe=
-ter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@l=
-inaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On Mon, =
-19 Oct 2026 at 16:55, Samanyu Goel &lt;<a href=3D"mailto:samanyu.goel16@gma=
-il.com" target=3D"_blank" rel=3D"noreferrer">samanyu.goel16@gmail.com</a>&g=
-t; wrote:<br>
-&gt;<br>
-&gt; In exynos4210_combiner_write(), the bounds check used req_quad_base_n<=
-br>
-&gt; instead of grp_quad_base_n. Because req_quad_base_n counts 4-group blo=
-cks<br>
-&gt; rather than individual groups, invalid offsets were allowed through.<b=
-r>
-&gt;<br>
-&gt; For example, writing to offset 0x100 resulted in req_quad_base_n =3D 1=
-6,<br>
-&gt; passing the check (16 &lt; 64). As verified in GDB, this caused<br>
-&gt; grp_quad_base_n to reach 64, leading to an out-of-bounds write at<br>
-&gt; s-&gt;group[64].<br>
-&gt;<br>
-&gt; Signed-off-by: Samanyu Goel &lt;<a href=3D"mailto:samanyu.goel16@gmail=
-.com" target=3D"_blank" rel=3D"noreferrer">samanyu.goel16@gmail.com</a>&gt;=
-<br>
-&gt; ---<br>
-<br>
-This is <a href=3D"https://gitlab.com/qemu-project/qemu/-/work_items/4709" =
-rel=3D"noreferrer noreferrer" target=3D"_blank">https://gitlab.com/qemu-pro=
-ject/qemu/-/work_items/4709</a>.<br>
-<br>
-You&#39;ve missed the equivalent check in the read function.<br>
-<br>
-As it happens I was working on this bug this afternoon; I have<br>
-a patch nearly ready to send which fixes this and also cleans up<br>
-some other oddities about the checks in these functions.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---0000000000002b5f11065e33f621--
+Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
 

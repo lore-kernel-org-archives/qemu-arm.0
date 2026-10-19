@@ -1,295 +1,186 @@
-Return-Path: <qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org>
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
-	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9D67CCF2D6
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 12:45:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07FDD606A31D
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 16:09:38 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=fY3tAwHX
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xImk9-00049p-4H; Mon, 19 Oct 2026 08:45:33 -0400
+	id 1xIpvU-0004AF-QB; Mon, 19 Oct 2026 12:09:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xImjG-0003y9-A6
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 08:44:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xImjC-0003QN-Q1
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 08:44:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792413874;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RfUSFJmBxuGSfG7eFu9XQ03IgfV4XCagYd4Bn2ozT3M=;
- b=dNFvzYnLTk23rwwaUhCSrn3w41XPp0pqaXsNSocC78lkLYmDigKcTmI7etwNZYO1P3+cb7
- /nDhxdhjy2TG/CW5vE3cr4bXUWO4tS2LgwwKCrLEGKjnWMRl8ls6XbxymSayN3yqNMgDXa
- I8DtVqEm23irKGeo/b+SGkjrIxrdAbc=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-262-zxWsQA21PnWc0wnK6B2qMA-1; Mon,
- 19 Oct 2026 12:44:29 +0000
-X-MC-Unique: zxWsQA21PnWc0wnK6B2qMA-1
-X-Mimecast-MFC-AGG-ID: zxWsQA21PnWc0wnK6B2qMA_1792413868
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2A1DE1800644; Mon, 19 Oct 2026 12:44:28 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2BA3C30000E3; Mon, 19 Oct 2026 12:44:26 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xIpvQ-00049O-Hz
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:09:24 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xIpvO-0007xt-Oa
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:09:24 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4a1635f7c89so22416275e9.2
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:09:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792426161; x=1793030961; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=xja6PBXFp8FsYYM+xp0Zv9dptIGMTCJ4I04YmDvqHj0=;
+ b=fY3tAwHX3l5VZmDm3oJveKDY9FioEhx8KISuKjapiAqDhgN2UotOvtn49uWrg/fUHU
+ KSg4EPzXVuoXaWGAcCRPYXOHlV6v9giaNdcNqKw7AcyK9XGjEgdjetg5bSm03fEGXWhD
+ bzTLxDRw7WGevcSt7ojLH7n5vUWnmek5Mfawd8wtaLoiMBXqp0XuRgAjSRmcYWY7Sr9m
+ 1CCvGEQPZtVR3+dTmLkaIaZrTcDBQAa5iNSk6cre8KfAovhZUJjDKfFn2WyPZhtxpEcI
+ o7aGTuBU9e9xHmtSUoY3yzTobIK67Mfx5k+hSWwjUY0jXV6MdbW9ldPvFeh5qlkM21Uq
+ xbHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792426161; x=1793030961;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=xja6PBXFp8FsYYM+xp0Zv9dptIGMTCJ4I04YmDvqHj0=;
+ b=H5HB0jsFcNtqTo/0UCHogBQJuKQSqJbnjgcPqNjdKd2WrN4Lqj5zfnivVvIk1ir94+
+ B3Gc5f1QE7RlaAfMFAPxZ42/bP2HxW9m0IR1UumEm4tVeWXHpY4A+0Fxc2spmF0HMfLo
+ yU4+Vq3D4LeGWffBl5iFi1UL12aJ3e4tpWBxC2kiCxJrADNCOcY1G6Fv5Ua9tCLZc2XF
+ 3tm8Cb4/rjqhoByfYgYhAHC4KhrSaKuA8acfJGVRmtzKyWxmXBdbpFseAd8Jc/qfFQfi
+ rp9Myr1+34lTFiRuuiVh4UZQUA1dxHzRytFwv5dqiJ+qROBvkds2/q8xSw7lztjwQ0we
+ aSJA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzVuKcxsSQL0y1PYLPSdTykId//HmL+C0aPXIiOK5pjMaq7s7McvaQNV1D2DUOytIt84I5zbY7iOQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLaByJLqFB5sVfSJBciTSyoyrgghaAVjumNL+WX7GSsoskRJhWY
+ plJvr+JHNMzbRsyonEnqti+Uz0MCGremlXmlfnOI3DA0x/oD9FQMHmGfIYS2WfbUaJo=
+X-Gm-Gg: AYBFou1NnS8w372JkVFVYzQ/LRkRFO3L4Ct9GWYLj0Wi5T3wzLm14n9vMKYEw4Qdavx
+ EY5heCP/FLGpmNJTk/Ngsyqp84nlZ3o0cfHEsJlXfXokuB0PXWgCpLWgYZnwDytJ07SHGgz4MRL
+ 1gHwocqstxDBsaMgJsp0NJCjpDr/3ojL7aOo3Gj8ide/grcWq81OT1L3uTTlD1dj8nIzI7p2Gg2
+ e0UYd6iYlil/WOvVHx1QDjoJndY2q1ItgRi7XFNRvS2MUvWFAhGRQUF+GyB/fg79ho1vET/P6PJ
+ dShNFvVt+x/Fs8O+tMkeQOARixsVme0bVNK+HGYWtT9GGVgP5neL/Mx4rvclEK7jas2e0OIiYwd
+ 9lYbVS3sBPsJKvWFpEtMo8sS157lPIwvmKrBY4rgkjmx3BKcncAEm1qOVJ8O9tx6AjW5BwGTQ8A
+ ahJq28hWERt2MWCkfR/5T6MgUKSNQSsn4ona0hGtAyUHRTHWQbnpT+dlXqh4lAc/GWRbSgr9d4Y
+ 8UoJYxk
+X-Received: by 2002:a05:600c:870b:b0:4a1:d0e4:2bc7 with SMTP id
+ 5b1f17b1804b1-4a1d7608614mr159430875e9.15.1792426160698; 
+ Mon, 19 Oct 2026 09:09:20 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48dfd4e28bcsm24268982f8f.23.2026.10.19.09.09.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 19 Oct 2026 09:09:10 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 662DB5F879;
+ Mon, 19 Oct 2026 17:09:09 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Ilya Leoshkevich <iii@linux.ibm.com>
+Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,  Zhao Liu <zhao1.liu@intel.com>,  Kyle Evans
+ <kevans@freebsd.org>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Brian
+ Cain <brian.cain@oss.qualcomm.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Brad Smith <brad@comstyle.com>,  Ani
+ Sinha <anisinha@redhat.com>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  Thomas Huth <th.huth+qemu@posteo.eu>,  Keith
+ Busch <kbusch@kernel.org>,  Matthew Rosato <mjrosato@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,  John Snow <jsnow@redhat.com>,  Eric
+ Farman <farman@linux.ibm.com>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Anders Roxell
+ <anders.roxell@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ Warner Losh <imp@bsdimp.com>,  qemu-arm@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Peter Xu <peterx@redhat.com>,  Klaus Jensen <its@irrelevant.dk>,  Song
+ Gao <gaosong@loongson.cn>,  qemu-s390x@nongnu.org,  Laurent Vivier
+ <laurent@vivier.eu>
+Subject: Re: [PATCH v2 08/16] tests/guest-debug: add --symbols option to
+ run-test
+In-Reply-To: <d5f4c9d6-a28f-43f2-a0bc-da9c2aca39bf@linux.ibm.com> (Ilya
+ Leoshkevich's message of "Tue, 13 Oct 2026 21:23:29 +0200")
+References: <20261012170330.1144446-1-alex.bennee@linaro.org>
+ <20261012170330.1144446-9-alex.bennee@linaro.org>
+ <d5f4c9d6-a28f-43f2-a0bc-da9c2aca39bf@linux.ibm.com>
+User-Agent: mu4e 1.14.4; emacs 30.1
+Date: Mon, 19 Oct 2026 17:09:09 +0100
+Message-ID: <87a4o94qqi.fsf@draig.linaro.org>
+X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v6 7/8] hw/usb/redirect-server: Stream interrupt IN
- endpoints
-From: marcandre.lureau@redhat.com
-To: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: junjie.cao@linux.dev, junjie.cao@intel.com, marcandre.lureau@redhat.com, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Kane Chen <kane_chen@aspeedtech.com>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>, 
- Troy Lee <troy_lee@aspeedtech.com>
-In-Reply-To: <20261019092448.278079-8-jamin_lin@aspeedtech.com>
-References: <20261019092448.278079-1-jamin_lin@aspeedtech.com>
- <20261019092448.278079-8-jamin_lin@aspeedtech.com>
-Date: Mon, 19 Oct 2026 16:44:13 +0400
-Message-Id: <179241385397.2501033.1379443947607439383.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7091;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=XGQjGNWMZ2aqHCVwBxyOSb9zimvkA/sUSgcqL0F/MXM=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq1hCgQjj8n02rjtpQfb0BDo+3pVhTeu85q6km0
- RrUSuI/HjOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatYQoAAKCRDa6OEJdZac
- 5U7DD/4miNWQ/G/W4uEVebHJqdtwWic6U37y61Q9wi2kZ0/cn3YUDwbTgeOZgG449Z14qcU52pu
- 2cxqbjK9F7JjN7GECTpmTXrJT7eA4atltnSwejFMNeWm8gq8OOEvMgdVb5cwGOcQBQSkNVXB/YO
- wEReL3hz/lV9axcBaG5GqWP8g0vJReIsc6bq94ojLdsQHloNRk3im2xqAAJFWU1cQFYVDh7YK7d
- F3f3d3jka/w5686x50VF2rIz3BXplIQ0cCc6wAsMWi+RDCe7ZaZvaEwGyKiWHRBPQ7IE7rQiuhE
- uezEdRm+CEIRoEQNVTBdxTyCF4nPrzHKCUd7vCIzP1X5jBG4rTykYILvotINnBNSOFdhKox+ZY8
- VmPJHaruwUUuXE4QrntcR3oEsUZtzqMFYhwCT2QwQ7MFc/fc7r+Zyq7maBdwVWMizSSAe4d6CCX
- wnK6vntBqwChqADekIsBhk/csAEUCKDS9tx/ZKFUOflwmcIoFuzcZjHqqO7eIW8KUD+b/rZ6x/L
- Z2vIhgg8OhDfH/07MiE5jtVUOd0l175nK8F4wcvIifbvn51183d2XbBUSBgYPM+smFmzT7bdzvZ
- FP9OFn0FWsHx2/N8fsNMJc+8uM2iIzhzkcV41PZ3oOQol17cizd/CxPaw9GJWiKFPQVNlw6X9Fi
- W93WDxd53JD0KCg==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: MDP8tombjV_-sWNMZBuZijUxB2aMT1oUv43HCmuRkjs_1792413868
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
 List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	RCVD_IN_DNSWL_BLOCKED,RCVD_IN_ZEN_BLOCKED_OPENDNS,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
+	aws-us-west-2-korg-listserv-alma10-1
 
-> Interrupt IN is not a request and an answer in usbredir. The host asks
-> once with start_interrupt_receiving. After that it expects a packet
-> every time the device has data.
-> 
-> Park one IN packet on the device for each streaming endpoint. A device
-> that answers USB_RET_ASYNC holds the packet and completes it when it
-> has data. A device that answers USB_RET_NAK gives the packet back at
-> once, so park a new one when the bus reports a wakeup on that endpoint.
-> A slow timer parks one too, for a device that does not report a wakeup.
-> 
-> Wait for the endpoint's bInterval before parking the next one. Some
-> devices answer every time. Without the wait we would ask as fast as
-> the main loop runs, and the guest would get no time.
-> 
-> Give every endpoint its own timer and bottom half. We ask each endpoint
-> at its own rate.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Message-ID: <20261019092448.278079-8-jamin_lin@aspeedtech.com>
+Ilya Leoshkevich <iii@linux.ibm.com> writes:
+
+> On 10/12/26 19:03, Alex Benn=C3=A9e wrote:
+>> Sometimes the debug symbols are not in the kernel binary image but in
+>> a separate elf blob. Provide --symbols to facilitate using them.
+>> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>> Message-ID: <20260930164649.433573-12-alex.bennee@linaro.org>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>   tests/guest-debug/run-test.py | 5 +++++
+>>   1 file changed, 5 insertions(+)
+>> diff --git a/tests/guest-debug/run-test.py
+>> b/tests/guest-debug/run-test.py
+>> index 4aa24939b7d..0c7cbd137ef 100755
+>> --- a/tests/guest-debug/run-test.py
+>> +++ b/tests/guest-debug/run-test.py
+>> @@ -28,6 +28,7 @@ def get_args():
+>>       parser.add_argument("--kargs", help=3D"Kernel args to --append")
+>>       parser.add_argument("--binary", help=3D"Binary to debug",
+>>                           required=3DTrue)
+>> +    parser.add_argument("--symbols", help=3D"Symbol file for binary to =
+debug")
+>>       parser.add_argument("--test", help=3D"GDB test script")
+>>       parser.add_argument('test_args', nargs=3D'*',
+>>                           help=3D"Additional args for GDB test script. "
+>> @@ -114,6 +115,10 @@ def log(output, msg):
+>>       gdb_cmd +=3D " -ex 'set confirm off'"
+>>       # connect to remote
+>>       gdb_cmd +=3D " -ex 'target remote %s'" % (socket_name)
+>> +
+>> +    if args.symbols:
+>> +        gdb_cmd +=3D " -ex 'symbol-file %s'" % args.symbols
+>> +
 >
-> diff --git a/hw/usb/redirect-server.c b/hw/usb/redirect-server.c
-> index f81dbae2d0b2..6b2e65c1268e 100644
-> --- a/hw/usb/redirect-server.c
-> +++ b/hw/usb/redirect-server.c
-> @@ -56,6 +56,7 @@
->  #include "qemu/main-loop.h"
->  #include "qemu/module.h"
->  #include "migration/vmstate.h"
-> +#include "qemu/timer.h"
->  #include "qemu/cutils.h"
->  #include "hw/core/sysbus.h"
->  #include "hw/usb/usb.h"
-> @@ -82,16 +83,30 @@ OBJECT_DECLARE_SIMPLE_TYPE(USBRedirServer, USB_REDIR_SERVER)
->  #define USBREDIR_SERVER_MAX_EP 32
->  #define USBREDIR_SERVER_EP_IN_BASE 16
->  
-> +/* An endpoint number is 4 bits, so 0 to 15. */
-> +#define USBREDIR_SERVER_MAX_EP_NR 16
-> +
->  /*
->   * The bulk length field is 32 bits, so the host can ask for up to 4 GB.
->   * This is the largest transfer accepted.
->   */
->  #define USBREDIR_SERVER_MAX_BULK (1 * MiB)
->  
-> +/* Buffer size for an interrupt IN endpoint before its descriptor is seen. */
-> +#define USBREDIR_SERVER_INTR_DEFAULT_LEN 64
-> +
-> +/*
-> + * Ask again this often after an endpoint answered NAK. Most devices wake
-> + * the bus when data arrives, and then the next ask happens at once. This
-> + * timer is for the devices that do not wake the bus.
-> + */
-> +#define USBREDIR_SERVER_INTR_RETRY_MS 1000
-> +
->  #define USBREDIR_SERVER_CTRL_SETUP 0
->  #define USBREDIR_SERVER_CTRL_STATUS 1
->  #define USBREDIR_SERVER_BULK 2
->  #define USBREDIR_SERVER_INTR 3
-> +#define USBREDIR_SERVER_INTR_STREAM 4
->  
->  /* Which message answers the host when a control transfer ends. */
->  typedef enum {
-> @@ -120,6 +135,14 @@ typedef struct USBRedirServerPkt {
->      int type;
->  } USBRedirServerPkt;
->  
-> +typedef struct USBRedirServerIntrStream {
-> +    USBRedirServer *s;
-> +    QEMUTimer *timer;
-> +    bool started;
-> +    QEMUBH *bh;
-> +    uint8_t nr;
-> +} USBRedirServerIntrStream;
-> +
->  struct USBRedirServer {
->      SysBusDevice parent_obj;
->  
-> @@ -140,6 +163,15 @@ struct USBRedirServer {
->      bool host_connected;
->      bool device_announced;
->  
-> +    /*
-> +     * Interrupt IN streaming, indexed by endpoint number. Every endpoint
-> +     * has its own timer and bottom half, because every one wants to be
-> +     * asked at its own rate. The timer asks the device again, after the
-> +     * endpoint's interval or after a NAK. The bottom half asks at once
-> +     * when the device says it has data.
-> +     */
-> +    USBRedirServerIntrStream intr_stream[USBREDIR_SERVER_MAX_EP_NR];
-> +
->      /* In-flight packet tracking */
->      QTAILQ_HEAD(, USBRedirServerPkt) inflight;
->      uint64_t next_id;
-> @@ -580,6 +612,90 @@ static void usbredir_server_intr_complete(USBRedirServer *s,
->      usbredirparser_do_write(s->parser);
->  }
->  
-> +/*
-> + * How long to wait before asking the device again. bInterval means
-> + * different things at different speeds: a number of frames at low and
-> + * full speed, an exponent at high speed.
-> + */
-> +static int64_t usbredir_server_intr_period_ns(USBRedirServer *s, int ep_nr)
-> +{
-> +    uint8_t interval = s->ep_interval[ep_nr + USBREDIR_SERVER_EP_IN_BASE];
-> +    USBDevice *device = usbredir_server_device(s);
-> +
-> +    if (interval == 0) {
-> +        interval = 1;
-> +    }
-> +
-> +    if (device && device->speed == USB_SPEED_HIGH) {
-> +        interval = MIN(interval, 16);
-> +        return (1LL << (interval - 1)) * 125 * SCALE_US;
-> +    }
-> +
-> +    return (int64_t)interval * SCALE_MS;
-> +}
-> +
-> +/*
-> + * The device answered a parked request. Send the answer to the host, then
-> + * ask again, because the host still wants more. Do not ask from here: the
-> + * device may answer at once, and this function would call itself over and
-> + * over. Arm the timer instead. It also waits for the endpoint's bInterval.
-> + */
-> +static void usbredir_server_intr_stream_complete(USBRedirServer *s,
-> +                                                 USBRedirServerPkt *rp)
-> +{
-> +    struct usb_redir_interrupt_packet_header resp = rp->intr_hdr;
-> +    struct usb_redir_interrupt_receiving_status_header st;
-> +    int ep_nr = resp.endpoint & 0x0f;
-> +    USBPacket *p = &rp->pkt;
-> +    int actual = p->actual_length;
-> +    bool retry = false;
-> +    int64_t delay_ns;
-> +
-> +    trace_usbredir_server_intr_stream_complete(ep_nr, p->status, actual);
-> +
-> +    switch (p->status) {
-> +    case USB_RET_SUCCESS:
-> +        resp.status = usb_redir_success;
-> +        resp.length = actual;
-> +        usbredirparser_send_interrupt_packet(s->parser, 0, &resp,
-> +                                             actual ? rp->data : NULL,
-> +                                             actual);
-> +        usbredirparser_do_write(s->parser);
-> +        break;
-> +    case USB_RET_NAK:
-> +        /* nothing to report yet; ask again shortly */
-> +        retry = true;
-> +        break;
-> +    default:
-> +        /*
-> +         * The endpoint failed. There is no data, so send a status
-> +         * message instead. The host gives it to its guest.
-> +         *
-> +         * redirect.c ends the stream only on a stall, so do the same
-> +         * here. If we end it on any other error, the host still
-> +         * thinks the stream runs, and it never asks again.
-> +         */
-> +        st.endpoint = resp.endpoint;
-> +        st.status = usbredir_server_status(p->status);
-> +        usbredirparser_send_interrupt_receiving_status(s->parser, 0, &st);
-> +        usbredirparser_do_write(s->parser);
-> +        if (p->status == USB_RET_STALL) {
-> +            s->intr_stream[ep_nr].started = false;
-> +        }
-> +        break;
-> +    }
+> I would consider shlex.quote() here too. Or maybe make gdb_cmd an
+> array and use subprocess.call(shell=3DFalse)?
 
-Minor: for a persistent non-stall error (e.g. a usb-host device returning
-ioerror), the stream stays started and the timer below re-arms at bInterval.
-That sends an interrupt_receiving_status every period, 1000 messages a second
-for a 1 ms endpoint, Would it make sense to back off with
-USBREDIR_SERVER_INTR_RETRY_MS after an error, as is done for NAK?
+I have made it an array in the new version.
 
--- 
-Marc-André Lureau <marcandre.lureau@redhat.com>
+>
+> Also, while it's probably a matter of existing code style and
+> personal preferences, I would use an f-string instead of %.
+>
+>>       # finally the test script itself
+>>       if args.test:
+>>           if args.test_args:
 
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

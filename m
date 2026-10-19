@@ -1,93 +1,89 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06030606A31B
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 16:22:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 162BB606A31F
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 16:23:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=XYHJf3n4
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=KZz+ud+X
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIq8D-0007cc-K3; Mon, 19 Oct 2026 12:22:37 -0400
+	id 1xIq85-0007Zm-Ul; Mon, 19 Oct 2026 12:22:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIq8B-0007aq-Dy
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:22:35 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1xIq85-0007Ze-Dr
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:22:29 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIq89-00010W-Jk
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:22:35 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4a1df146015so12568105e9.0
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:22:33 -0700 (PDT)
+ id 1xIq83-0000zb-6b
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:22:29 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4a1e34ecb02so10420065e9.2
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:22:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792426952; x=1793031752; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=pZLtA2h0wZBQwTqX3pZWTJnQIrYGZbHc9AyenCmoNFk=;
- b=XYHJf3n4j5aeRIRu8AgolMlWwnA/Lb9nPOTpN9/Lo58gRWzGtl3xaioibWwQJpAreL
- Fz0ZOPgidILNKHWZZjDjUM1v/K0upplAVbB9n5dyMXoqaUwvOSbIXJ8ZVFyVG87tFHq5
- wN0GTXjf7WHec3RRiBOmkpvy6DvufbloVrgvAdKfSELpNmHWKAu7HmwQ4EFUOSjhMzbL
- AAL05teySVLC6NL8/clALrBYvTSPPdyJLKe6lQQvkqSUPsrHVZZclOETmeCtU5DVgU96
- Kxc2k8f4ZBThTdcWXKI4yVk2WjfKV12hkku8fuujoQzywAsxdzpevyZeoEajYKKf/W0T
- ykYg==
+ d=linaro.org; s=google; t=1792426945; x=1793031745; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=ASvd06Vj/QEZKs5daEjChhsW+tV/2E9ZjYHvF+a12V8=;
+ b=KZz+ud+Xy64SaBnJJUcIhBMoBPJ2PI5XFwUMnsBbblX4GFiR1MSdO74xYi7XnV6Q4V
+ dCPKoHRCDL/8RlmMo++UOUmhtLuujSybEDaQ3tPvOzRt95g1V6rLfN5sKH1bqa9UPG5B
+ lGyCCVy3DIn4fttg66Aykzqi00ABy3EjknQs77n5G7j9xM14rKKidpoUf9zY7EqIxsjS
+ RJfMxb5bmlPrKykANyElVa4+VRXWyCyc/J9yjbC1a7+6uvK3aFuAn5SzQ+utAq7U0j/c
+ glFvT5WALlGYlYhi2OJSKElfUfj6u4MlmHmOwx4FlnxftCsLzw4vDPLu27Kp/6sRuV2G
+ jL7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792426952; x=1793031752;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=pZLtA2h0wZBQwTqX3pZWTJnQIrYGZbHc9AyenCmoNFk=;
- b=foFcrYzSu4w9kC7CLBRazWsqW3740edfIkNYyoPMtRHjk8xMpq8VPqHXC8tX2MUmKN
- CcIwduNEq1OmRaio1+D3mEG3TEB+JgSZcJo4yzeZmumjUJVMb3Br0/HcmEf8ESXeeIa/
- ccE9B7UpktWSMSYmBgJwld1RAtfTxaTWLTas717moPgN2bF1nUF40O6e7rKMDSnu+pnb
- Pp+iPDaVmPDd4sYGHMx0SqDEWjHQByvuUXlEU3f0IU9W7GAy7Bw+4BleCpCrLXuWA1NY
- jnoZihjPgrqmsR3lb0ZBvVzqMenAtlwsINE26Svf4cVtxiBm+Ik/nXPf0R+Ah7PyADuF
- vkcw==
-X-Gm-Message-State: AFq9FYLeKA0NUl/lNk8L8aN826gep9M7l3MlLfiTKzJJLiWq5tH8SvcC
- aA5BEGdhyNqDRkdg4TFWFPU5QQaihP0zUDqs7axXoBDkf4tuICPoGHEz0zOQMG8RDuOjDbjweRV
- GdYNlvLU=
-X-Gm-Gg: AYBFou3biUunS4d/o0bawnp8KArLvUDzGAj8lNEstjXEuto30j2F0FR3/FECQoWR/ul
- JauoGMoGcFe8qJpSu8BV+USuRW7F5dkQN/Hv8SiTHH2b3P3siLJ11k7SL2IUfpfoukPIZtUu8Ic
- gsre3AmM2lWhWUBn+3GY/Ao/tk0AzIWdL6XnwfH9qynpB9XOel5JLriqAcLYMvG2sk4daV8DSg+
- iGYfQbasOrlSHV+/8C/jWs06cslwSY1Cl0KXTdcgUsYvozc7TQUUeECb09hAptiCORyY3oYEOFT
- cfdHwPdWGJkE7pZWnBfYpzU43w/QOOm2mTpCaZQ5GHloK396+qv0V6FS2e9OnTF8fWubidNfeOo
- 9M3CBE8Z5DjNsitUY3nq+Vr+abuhHKH72UGSxNVezXMEyp+Yz85sLOyRrUQOGcCUtM2uZJE4+An
- gh9Pukixgud27nNEoVz6dXybdn/wc2UjWwPt91E9gWifIApJY1ubVerENv4oyh/9DvBL7dJgZh6
- HDwtOiEfn00k8WVfnl3olR7uApTi3zbju0iyre9Ads3m0k0Ks7s2QqXZk4dyHZRu//m4yz1Nzcd
- jig/
-X-Received: by 2002:a05:600c:19d2:b0:4a1:d10c:7170 with SMTP id
- 5b1f17b1804b1-4a1d76262e1mr170915605e9.31.1792426952072; 
- Mon, 19 Oct 2026 09:22:32 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1792426945; x=1793031745;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=ASvd06Vj/QEZKs5daEjChhsW+tV/2E9ZjYHvF+a12V8=;
+ b=oTtInTLgU0taZ6V4Pdi2Z5vNHCFPmbfl9Pn54cImgC/GJZ2e4v3sr4OqBdFl4cBPjb
+ 9QLDYiPd6GQIIGsd5syIdIMWX7w1UTHrRm63FSTtppjIlHpXosl4EtK+P4h++opEpQoH
+ xoMPcYld78qtdc5bnhDqFmgkSqnrLul8z31kiYt7poiRAdrFeVIn0uyn1gFHhoI/MCPs
+ foPHjFEXyw3bzOCol4amwLUwTHvLBrrAAS9cdpI/Cc5BS3zuKVrClhg9p4agGchm1Szx
+ 57EY2SNNt0pJie9TwEIPkhkTMuE8Pf332KhY/Ux9kb0RcrTetJdCi5kFTw/JWnanwAIj
+ 6zFg==
+X-Gm-Message-State: AFq9FYKVVPjlHbojIu/d4MMkYNvz44XSyjaEEcAsRGK6/24+s6XKTGO4
+ r1xZB2cRWelxB7TxONM5WGHvQfKw4YbOmi1wJVBYrxzWPvR6S60+mxK20wWJHcORNuSleEXJg8z
+ W5YVycXE=
+X-Gm-Gg: AYBFou2cxZA1kscw5jo44cBpPtliwatXXyFpbgFUaPsN7y3ImeSUY40Ogjhbbu93HB2
+ vsU/LZ3hpvnxKNT5GrxhU2LDgwYk1X95ylEtq/sAKXYu03qE+L4UIj38o1TotqXBbbHGfK04Fjm
+ u7bKaY9huGfc+SqCW4/cjRQmkSeqodgL6jkUsuuv0REw7HqeXFYKCpVJufI3A5eKYdRXtOOZzVb
+ oY+Us+Z+2GGCNwlb1/7f7RumRfo7KxXkB+7obwUEEaVTGA9Fj0dEMduh5hq/8fZhrGVQI+bK/R9
+ 4ehpFCoPq81hkKcLMY8m9V0f3EKiQDgFcwSZRxBVtDGmQ2IWdpcGxXStzZ6xLOBK6hX2Upoe4FT
+ h4PoG0cut8uNgZDNEtsnTzAwD7T095PbWqFAOncwWVN+fIiayqSiIgVdKWz/Cv3HKoclz4DTCaH
+ CfP28vMyEQz9vOsSPi0f4AZo9Pg97+kzVB5PFyKfgRLtT1gdSXbXdx+Jf4mX9VsKcbO5SeQeL15
+ 4BpnmuurQ6Naw7+Xfh3jNik1lWV9RGHJBKm5s6eFcucpAXvshZnR/UsfjMFynOmbSmlWk+LinhM
+ R5Y=
+X-Received: by 2002:a05:600c:4fce:b0:4a0:1b14:e283 with SMTP id
+ 5b1f17b1804b1-4a1d75ac25cmr194943135e9.1.1792426943894; 
+ Mon, 19 Oct 2026 09:22:23 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1f2cdc342sm3100095e9.13.2026.10.19.09.22.30
+ 5b1f17b1804b1-4a1f2cdc342sm3100095e9.13.2026.10.19.09.22.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2026 09:22:31 -0700 (PDT)
+ Mon, 19 Oct 2026 09:22:17 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/4] hw/intc/exynos4210_combiner: Clean up reg_set[] bounds
- checks
-Date: Mon, 19 Oct 2026 17:22:15 +0100
-Message-ID: <20261019162217.3272337-3-peter.maydell@linaro.org>
+Subject: [PATCH 0/4] hw/intc/exynos4210_combiner: fix misc range check issues
+Date: Mon, 19 Oct 2026 17:22:13 +0100
+Message-ID: <20261019162217.3272337-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261019162217.3272337-1-peter.maydell@linaro.org>
-References: <20261019162217.3272337-1-peter.maydell@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,66 +95,36 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	RCVD_IN_DNSWL_BLOCKED,RCVD_IN_ZEN_BLOCKED_OPENDNS,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,RCVD_IN_DNSWL_BLOCKED,RCVD_IN_ZEN_BLOCKED_OPENDNS,
+	SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-In the exynos420_combiner read and write functions, we check whether
-offset >> 2 is too large for the s->reg_set[] array we're about to
-access.  This is written to log a guest error if it happens, but in
-fact the condition can't be true unless there's a QEMU bug:
+This patchset's meat is patch 1, which fixes an incorrect range check
+that allows us to index off the end of an array.  The other three are
+cleanups that I noticed while fixing that, where some checks that we
+were reporting as LOG_GUEST_ERROR should be "never happens" asserts,
+and an array we use for register contents has an extra unreachable
+element at the end.
 
- * we have already dealt with and returned early for registers
-   beyond the "sets of 4" range, by checking grp_quad_base_n;
-   this accounts for all offsets 0x100 and above
- * this means offset >> 2 is at most 0x3F
- * IIC_REGSET_SIZE is 0x41, which is in fact one larger than it
-   needs to be, but in any case the offset can't be out of range
+thanks
+-- PMM
 
-Use assert() checking against ARRAY_SIZE for this sanity check, as
-failing it would be a QEMU bug, not a guest bug.
+Peter Maydell (4):
+  hw/intc/exynos4210_combiner: Fix group register range check
+  hw/intc/exynos4210_combiner: Clean up reg_set[] bounds checks
+  hw/intc/exynos4210_combiner: Make reg_set[] only as large as it needs
+    to be
+  hw/intc/exynos4210_combiner: write default case is unreachable, not
+    guest error
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/exynos4210_combiner.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+ include/hw/intc/exynos4210_combiner.h |  6 +++++-
+ hw/intc/exynos4210_combiner.c         | 25 +++++++------------------
+ 2 files changed, 12 insertions(+), 19 deletions(-)
 
-diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
-index 4f079fedaff..2bdb9a0152c 100644
---- a/hw/intc/exynos4210_combiner.c
-+++ b/hw/intc/exynos4210_combiner.c
-@@ -119,12 +119,7 @@ exynos4210_combiner_read(void *opaque, hwaddr offset, unsigned size)
-                 s->group[grp_quad_base_n + 3].src_pending) << 24;
-         break;
-     default:
--        if (offset >> 2 >= IIC_REGSET_SIZE) {
--            qemu_log_mask(LOG_GUEST_ERROR,
--                          "exynos4210.combiner: overflow of reg_set by 0x"
--                          HWADDR_FMT_plx "offset\n", offset);
--            return 0;
--        }
-+        assert((offset >> 2) < ARRAY_SIZE(s->reg_set));
-         val = s->reg_set[offset >> 2];
-     }
-     return val;
-@@ -199,12 +194,7 @@ static void exynos4210_combiner_write(void *opaque, hwaddr offset,
-         return;
-     }
- 
--    if (offset >> 2 >= IIC_REGSET_SIZE) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "exynos4210.combiner: overflow of reg_set by 0x"
--                      HWADDR_FMT_plx "offset\n", offset);
--        return;
--    }
-+    assert((offset >> 2) < ARRAY_SIZE(s->reg_set));
-     s->reg_set[offset >> 2] = val;
- 
-     switch (reg_n) {
 -- 
 2.43.0
 

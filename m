@@ -4,92 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23ADCCF2D3
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 08:10:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79894CCF2DA
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 09:16:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIiRX-0003UQ-S7; Mon, 19 Oct 2026 04:10:04 -0400
+	id 1xIjTr-0006OG-AX; Mon, 19 Oct 2026 05:16:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xIiRT-0003Qx-Hy
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 04:09:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xIiRO-0004MA-Sr
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 04:09:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792397394;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:resent-to:
- resent-from:resent-message-id:in-reply-to:in-reply-to:  references:references; 
- bh=IaoiWq5RwFbEFX82Ws7GGNe6sahRjgrmqS5d8bY6QEY=;
- b=VC3b2vtnvBW8UPDP4sndNhr60E3+oWMeFBJjXVRqRky91SKv0hSdgQupE5GKUcg2aFhiX5
- aK61cLPOfcI+2IHDi0KUEgbBLzkzs2K8jH5i/vF5u9QqYSttJjR7LxTWOd8HjB0VHY5vwd
- 9CknzUamN7omRoR9CL8NzhiNMSnmtEI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-587-zV76_5wBO4i8uEPk00E6Bg-1; Mon,
- 19 Oct 2026 08:09:51 +0000
-X-MC-Unique: zV76_5wBO4i8uEPk00E6Bg-1
-X-Mimecast-MFC-AGG-ID: zV76_5wBO4i8uEPk00E6Bg_1792397389
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7420118001E1; Mon, 19 Oct 2026 08:09:49 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1C7791800642; Mon, 19 Oct 2026 08:09:49 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D191621E6A04; Mon, 19 Oct 2026 10:09:46 +0200 (CEST)
-Resent-To: michael.roth@amd.com, jic23@kernel.org, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, elena.ufimtseva@oracle.com,
- jag.raman@oracle.com, philmd@oss.qualcomm.com,
- pierrick.bouvier@oss.qualcomm.com, linux-cxl@vger.kernel.org
-Resent-From: Markus Armbruster <armbru@redhat.com>
-Resent-Date: Mon, 19 Oct 2026 10:09:46 +0200
-Resent-Message-ID: <87qzhm1585.fsf@pond.sub.org>
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org,  Markus Armbruster <armbru@redhat.com>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,
- Michael Roth <michael.roth@amd.com>,  Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@oss.qualcomm.com>,  Peter Maydell <peter.maydell@linaro.org>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,  Jagannathan Raman
- <jag.raman@oracle.com>,  Jonathan Cameron <jic23@kernel.org>,
- qemu-arm@nongnu.org,  linux-cxl@vger.kernel.org
-Subject: Re: [PATCH v5 45/62] include: add QEMU_REPEAT helper macro
-In-Reply-To: <20260911-qom-qapi-v5-45-7732a55b7760@redhat.com>
- (=?utf-8?Q?=22Marc-Andr=C3=A9?=
- Lureau"'s message of "Fri, 11 Sep 2026 20:35:19 +0400")
-References: <20260911-qom-qapi-v5-0-7732a55b7760@redhat.com>
- <20260911-qom-qapi-v5-45-7732a55b7760@redhat.com>
-Date: Mon, 19 Oct 2026 09:45:32 +0200
-Message-ID: <87fqy22kwz.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xIjTp-0006Nc-RI
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:16:29 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xIjTn-0002Is-Or
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:16:29 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4980fe6b3beso18097245e9.0
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 02:16:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792401369; x=1793006169; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=/qQefFFGLYZu6otAuLTo/hYtsr8+bw6w89hpD6t4Hmc=;
+ b=I1t2Wzv+JscQ4VmYmxRZxvyc+9VvhnytlUCcrhtcYzI48WxQl7hJSumgXJdWc2EzN8
+ kWTmI2tvt4PcuuziUxx8Dw/ZrgIp9Ev6Pk0uy2fHtLhOA87a9yunVoY4kq4y/NBfRoqd
+ gNy6GnyXddlh6TGmIc0k2Dss/Yc45sTQdjhOqIGzdaF3DoIxryskOUdu00Hm3A462Bn4
+ 6gZ5PvuRzIXeoOEfEN1l232x7wfSupKkQPYlvi5m5efYl7mwlaTCBKCIkM/4czq4ZB+a
+ UN1o4UIUGfRSFK7dKTl4UpW8PRX7Mlkmd35HuFLCdKSk+oFRo27sy8+luWfIaLqzoxFm
+ Vbyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792401369; x=1793006169;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=/qQefFFGLYZu6otAuLTo/hYtsr8+bw6w89hpD6t4Hmc=;
+ b=tno+FR7iCOFwH/MBHuXM4yPNiL1zUOf4dWp8zFui/SHIp6WjU3XNKwDH7e6ZDbEudx
+ iwDg2tFbKkrmUQh6CKIMPYlNaTX+8LjuJfOY8Trk+CAL8cFs4FI3Y1NQIVq7KvBV6Bub
+ VI0upO1idB004vJXof67hhkQVl5wlnRWsymdqXIqihk4Cdl4rX5e4I04YjzkDkS6E/BE
+ Hg+hiafmUPo3Cl1SI6yv0Zzn+05rnqVfd/WbKuZLhBqPxa2ovAXVyeEv/7oBJsJZ/+e3
+ oqBiup2wrC/ztL/Dn9v4Buz05y92AnPyGI4qZK3IfmLv5ENA60OmRhEmEkaY8fpabDHl
+ Mk3w==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBx3R7ufC8wLidCxLHFM4/bfxODIQRyvBQxfW1INsNNNR9entGnF8zm657rlzTjNnZT2UvFdwztEAA==@nongnu.org
+X-Gm-Message-State: AFq9FYJyBHM0P91M+Qk3hAyVYbsKoRDaQ4eBHS7cxPhNENe+249e2HrK
+ hChDg+otxt0pzWRER+w6lAgx8gO0LtRPcVRYIr8YsgXp56lILKgFNoggIdSILyb5wG8=
+X-Gm-Gg: AYBFou241mbtlHPxn42dMD7Sbe0Rzu/bge9mkeNmjT5NpwyucfOlc2RTnaFuqc914/f
+ HfycGZekFU5mfxOPSEQ+a8fCU1TK7uY//LcYghzrTTWCHFxU+oXkCb0qUiPmM4JegkMkmvNz+Mj
+ EqLCq43E8wewf2UNte7YRcGyMDOCHt693Cl+CkmIbQGIpAG77UMQOWKI56ev0eptXWDVPWdG1MC
+ RltjFApjVfhVR4CkKpdMnt2xxlx9Hvnldy3GklZ/Ww1z3PXEpmirTXufzbn5K9H94Ym/C1jtBa7
+ 3F1fMm3cy6/r7J387NboBfS2Q0OMuPrnnQZg4DNv7byyoEdOB/2VgMEA6xfHVJvSQuaJdXNEK60
+ WcoMqgFGtwBqyHaOPJFj06yhz5Z8Lr+6HiimwtnTaDpNXsQPdlAV2uUDUy3m+7jTNVv1YnDT/Ar
+ 47KqaJhHWeRdMqMjiVwvXvqWkc2T1XdfJS+u5N/aNnqb44xk3MlwlICqwNU7YcRRjK+LwToA==
+X-Received: by 2002:a05:600c:1d04:b0:4a1:7f96:9b42 with SMTP id
+ 5b1f17b1804b1-4a1d76121a2mr166900265e9.15.1792401369082; 
+ Mon, 19 Oct 2026 02:16:09 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a1cc642573sm214098465e9.2.2026.10.19.02.16.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 19 Oct 2026 02:16:08 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 2BE9A5F87D;
+ Mon, 19 Oct 2026 10:16:07 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Jinjie Ruan <2118537295@qq.com>
+Cc: anisinha@redhat.com,  armbru@redhat.com,  eblake@redhat.com,
+ imammedo@redhat.com,  michael.roth@amd.com,  mst@redhat.com,
+ pbonzini@redhat.com,  peter.maydell@linaro.org,  qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,  ruanjinjie@huawei.com
+Subject: Re: [PATCH 01/37] target/arm: Add support for MPAM CPU registers
+In-Reply-To: <tencent_0D8D61C20611EC56598A6F86E7B869052E05@qq.com> (Jinjie
+ Ruan's message of "Fri, 16 Oct 2026 17:46:55 +0800")
+References: <20261016094733.1898485-1-2118537295@qq.com>
+ <tencent_0D8D61C20611EC56598A6F86E7B869052E05@qq.com>
+User-Agent: mu4e 1.14.4; emacs 30.1
+Date: Mon, 19 Oct 2026 10:16:07 +0100
+Message-ID: <87fqy23vag.fsf@draig.linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: rm9oFVX4RWZzgv7THG_cuq76OhT1xrUiSz1uwZccTMo_1792397389
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,58 +110,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
+Jinjie Ruan <2118537295@qq.com> writes:
 
-> Introduce a macro used in following commit, and convert a few existing
-> candidates. Inspired by a similar macro in Linux kernel/trace/bpf_trace.c
+> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 >
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Add the MPAM system registers for TCG: MPAMIDR_EL1 (RO) reporting 64
+> PARTIDs and 4 PMGs, and MPAM0_EL1/MPAM1_EL1 (RW, of which only
+> MPAM1_EL1.MPAMEN is architecturally reset). Advertise FEAT_MPAM via
+> ID_AA64PFR0.MPAM for TCG CPUs.
+>
+> It is common to support MPAM on CPU cores, but not in the rest of the
+> system, so there is little disadvantage in always enabling these.
+>
+> Based on an RFC series by Jonathan Cameron, adapted to the current
+> idregs[] storage and access_tid3() naming.
+>
+> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 
-[...]
+Something is wrong with this thread, when I was reading the cover letter
+I couldn't find the rest of the thread. How did you post this series? It
+looks like the cover letter, first 16 and remaining patches where sent
+in separate batches?
 
-> diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
-> index 7e6819f670b5..84c3ff05cfb8 100644
-> --- a/hw/remote/vfio-user-obj.c
-> +++ b/hw/remote/vfio-user-obj.c
-> @@ -496,22 +496,11 @@ static size_t vfu_object_bar_rw(PCIDevice *pci_dev,=
- int pci_bar,
->                                   buf, count, is_write);                 =
-       \
->      }                                                                   =
-       \
-> =20
-> -VFU_OBJECT_BAR_HANDLER(0)
-> -VFU_OBJECT_BAR_HANDLER(1)
-> -VFU_OBJECT_BAR_HANDLER(2)
-> -VFU_OBJECT_BAR_HANDLER(3)
-> -VFU_OBJECT_BAR_HANDLER(4)
-> -VFU_OBJECT_BAR_HANDLER(5)
-> -VFU_OBJECT_BAR_HANDLER(6)
-> +QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER)
-> =20
-> +#define VFU_OBJECT_BAR_HANDLER_PTR(BAR_NO) vfu_object_bar##BAR_NO##_hand=
-ler,
+> ---
+>  target/arm/cpu-features.h | 11 +++++++++++
+>  target/arm/cpu.c          | 10 +++++++++-
+>  target/arm/cpu.h          |  3 +++
+>  target/arm/helper.c       | 17 +++++++++++++++++
+>  4 files changed, 40 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index a9eebb4..4b7d47b 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -459,6 +459,17 @@ FIELD(DBGDEVID, DOUBLELOCK, 20, 4)
+>  FIELD(DBGDEVID, AUXREGS, 24, 4)
+>  FIELD(DBGDEVID, CIDMASK, 28, 4)
+>=20=20
+> +FIELD(MPAMIDR, PARTID_MAX, 0, 16)
+> +FIELD(MPAMIDR, HAS_HCR, 17, 1)
+> +FIELD(MPAMIDR, VMR_MAX, 18, 3)
+> +FIELD(MPAMIDR, PMG_MAX, 32, 8)
+> +FIELD(MPAMIDR, HAS_ALTSP, 57, 1)
+> +FIELD(MPAMIDR, HAS_TIDR, 58, 1)
+> +FIELD(MPAMIDR, SP4, 59, 1)
+> +FIELD(MPAMIDR, HAS_FORCE_NS, 60, 1)
+> +FIELD(MPAMIDR, HAS_SDEFLT, 61, 1)
+> +FIELD(MPAM1_EL1, MPAMEN, 63, 1)
+> +
+>  FIELD(DBGDEVID1, PCSROFFSET, 0, 4)
+>=20=20
+>  FIELD(MVFR0, SIMDREG, 0, 4)
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 10ac6c9..e7529d5 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -439,6 +439,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType=
+ type)
+>          /* Sample rvbar at reset.  */
+>          env->cp15.rvbar =3D cpu->rvbar_prop;
+>          env->pc =3D env->cp15.rvbar;
+> +
+> +        env->mpam1_el1 =3D R_MPAM1_EL1_MPAMEN_MASK;
+>  #endif
+>      } else {
+>  #if defined(CONFIG_USER_ONLY)
+> @@ -452,6 +454,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType=
+ type)
+>              env->cp15.rvbar =3D cpu->rvbar_prop;
+>              env->regs[15] =3D cpu->rvbar_prop;
+>          }
+> +
+> +        env->mpam1_el1 =3D R_MPAM1_EL1_MPAMEN_MASK;
+>      }
+>=20=20
+>  #if defined(CONFIG_USER_ONLY)
+> @@ -2333,7 +2337,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Er=
+ror **errp)
+>          FIELD_DP64_IDREG(isar, ID_AA64PFR0, AMU, 0);
+>          FIELD_DP32_IDREG(isar, ID_PFR0, AMU, 0);
+>          /* FEAT_MPAM (Memory Partitioning and Monitoring Extension) */
+> -        FIELD_DP64_IDREG(isar, ID_AA64PFR0, MPAM, 0);
+> +        FIELD_DP64_IDREG(isar, ID_AA64PFR0, MPAM, 1);
+> +        cpu->isar.mpamidr_el1 =3D
+> +            FIELD_DP64(cpu->isar.mpamidr_el1, MPAMIDR, PARTID_MAX, 63);
+> +        cpu->isar.mpamidr_el1 =3D
+> +            FIELD_DP64(cpu->isar.mpamidr_el1, MPAMIDR, PMG_MAX, 3);
+>      }
+>=20=20
+>      /* MPU can be configured out of a PMSA CPU either by setting has-mpu
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 06ebed4..51a36fa 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -757,6 +757,8 @@ typedef struct CPUArchState {
+>      struct CPUBreakpoint *cpu_breakpoint[16];
+>      struct CPUWatchpoint *cpu_watchpoint[16];
+>=20=20
+> +    uint64_t mpam0_el1;
+> +    uint64_t mpam1_el1;
+>      /* Optional fault info across tlb lookup. */
+>      ARMMMUFaultInfo *tlb_fi;
+>=20=20
+> @@ -1121,6 +1123,7 @@ struct ArchCPU {
+>          uint32_t dbgdevid;
+>          uint32_t dbgdevid1;
+>          uint64_t reset_pmcr_el0;
+> +        uint64_t mpamidr_el1;
+>          uint64_t idregs[NUM_ID_IDX];
+>      } isar;
+>      uint64_t midr;
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index ff0b766..896ac0e 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6907,6 +6907,23 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>                .access =3D PL1_R, .type =3D ARM_CP_CONST,
+>                .accessfn =3D access_tid3,
+>                .resetvalue =3D cpu->isar.mvfr0 },
+> +            { .name =3D "MPAMIDR_EL1", .state =3D ARM_CP_STATE_AA64,
+> +              .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0xa, .crm =3D 4, .opc2 =
+=3D 4,
+> +              .access =3D PL1_R, .type =3D ARM_CP_CONST,
+> +              .accessfn =3D access_tid3,
+> +              .resetvalue =3D cpu->isar.mpamidr_el1 },
+> +            { .name =3D "MPAM0_EL1", .state =3D ARM_CP_STATE_AA64,
+> +              .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0xa, .crm =3D 5, .opc2 =
+=3D 1,
+> +              .access =3D PL1_RW, .type =3D ARM_CP_ALIAS,
+> +              .accessfn =3D access_tid3,
+> +              .fieldoffset =3D offsetof(CPUARMState, mpam0_el1),
+> +            },
+> +            { .name =3D "MPAM1_EL1", .state =3D ARM_CP_STATE_AA64,
+> +              .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0xa, .crm =3D 5, .opc2 =
+=3D 0,
+> +              .access =3D PL1_RW, .type =3D ARM_CP_ALIAS,
+> +              .accessfn =3D access_tid3,
+> +              .fieldoffset =3D offsetof(CPUARMState, mpam1_el1),
+> +            },
+>              { .name =3D "MVFR1_EL1", .state =3D ARM_CP_STATE_AA64,
+>                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 3, .opc2 =
+=3D 1,
+>                .access =3D PL1_R, .type =3D ARM_CP_CONST,
 
-scripts/checkpatch.pl
-
-    ERROR: Macros with complex values should be enclosed in parenthesis
-
-False positive, I guess.  Can't see offhand how to avoid it.
-
->  static vfu_region_access_cb_t *vfu_object_bar_handlers[PCI_NUM_REGIONS] =
-=3D {
-> -    &vfu_object_bar0_handler,
-> -    &vfu_object_bar1_handler,
-> -    &vfu_object_bar2_handler,
-> -    &vfu_object_bar3_handler,
-> -    &vfu_object_bar4_handler,
-> -    &vfu_object_bar5_handler,
-> -    &vfu_object_bar6_handler,
-> +    QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER_PTR)
->  };
-> =20
->  /**
-
-[...]
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

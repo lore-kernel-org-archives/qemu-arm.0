@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB919606A31D
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 19:27:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A246E606A31D
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 19:27:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=vRROTqVj
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=v6jGR0vX
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIt0u-0000SI-1D; Mon, 19 Oct 2026 15:27:16 -0400
+	id 1xIt1I-0000f9-Fb; Mon, 19 Oct 2026 15:27:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xIt0q-0000Rl-L1
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:12 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1xIt0z-0000T6-CW
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:22 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xIt0m-00033G-RV
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:11 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4a1b07c3c5fso26477985e9.1
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 12:27:08 -0700 (PDT)
+ id 1xIt0w-00034q-E9
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:21 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-48afcfc4bf5so2060485f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 12:27:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792438027; x=1793042827; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792438034; x=1793042834; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=EL0Vj3lE1wOMC+825DlATKPDfWDFpznI37+dufm74XU=;
- b=vRROTqVjNVxVlqUwYJUoBWeUbvjq3p6Xu69/zBWVnl5OV13wEpXIruK3UWIoOyqFqI
- 022WE0aj1KKIh030q0NAceDfAvLhK4nFdfprSM8rHENHRjpCJ1jDzCRI0dXbkqVIjQve
- MAsOiFMQLC3aaXo2n9i8VtsrxHdQIxG6UjpRWFAYMQWEfQK2yJ6Dd6aK6CwCoZhfbvBX
- y9+8HFnPye6N+5G2jpUhHQDu/V20KkLf8A/QvkD2PAzBHo+GThmAyIEUBAsD6fiSxgy2
- HvYwJbzHqle3O0yYe26eCR4hWWMjJA9rpXUQaVzK/NRCQhrm3fVdUNXqFQMQVOwj0/AC
- vU6w==
+ bh=z+hzAC5Hq510CpP4qtWjwafBYrnKIC1zr/PjN6LgqaI=;
+ b=v6jGR0vXzb7sEpxG2RalkEL702LmmLpgUAWw8vukHBAjDkvFCNPUhO1vCdglrbiX0h
+ 5vUeXcw44rHWn3XvsrdhZDEDvLDjKO30XwCRXRc4sQLqgNFfdkyj1zxE2c9fVgUhgd+G
+ f4rJSYKuyGFTJhRawwNf1rvXmXcqBUULtoXa48o+mO9Rm1Yc2dDUYdg7b+icwGDU5qwn
+ 9ZOSpBr1sJZKNDc4cfkBhhFZvnlTCqqHTOlrMwfSNQ+0BeqRywjnjTUWzQsRXR8RUyUN
+ N+LmhuBLLkwilHAN0Tai8bLNyKcuXWl/NGkR/dWNjotDqUgCPoVguZ1ykHEJO6a1xzbm
+ 1Cwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792438027; x=1793042827;
+ d=1e100.net; s=20260707; t=1792438034; x=1793042834;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=EL0Vj3lE1wOMC+825DlATKPDfWDFpznI37+dufm74XU=;
- b=opSgp/nCkRgD/c33WlrzEg/9J7tSC4jQPhJD6d+V/esZLsgKM9HZxcxB5r0D0nwtqS
- 9XKPhhJXhtG612HrG3LWKrmwj9wU8YeY+Qhk7OGJJTxzpkZs3aQQwk5L8ucKpeA5v2aj
- cG7FI2tTaSlm0TJWdjKhO61yUWpyx32e3jew0N39h4oZDfobWswbEfMCEu7gPcBus+IF
- Lo3h4rcJE/+70SK0Mhdfmuylm4dnIpm5ipfnr+MXbuhTquG5SJSUzGXvIwFQJ4WnhaOM
- wp+OhyCsC7aklvax3diO6b95hPOcFHtVUZjXy0/NzsGwqZEUG8RCxXf1tEJvHjJWwrwt
- r4Lw==
+ bh=z+hzAC5Hq510CpP4qtWjwafBYrnKIC1zr/PjN6LgqaI=;
+ b=yHCiEJhRBAGEoemDlShmD0I+ek5693PoE1cWR8X2+Gw4EkHahiDvw/aRP6uakE1FPM
+ vqBJh2hOD2JFOmDKg6tXHRf/bcay6ZIXqGZ1BCbnClZ6gYtyCgy8vMyGyIqX2pHb7+ps
+ Qf7oX0GWQs9m/WpAX00NKTiIfjWfRRWHrc+Kwu3zTpTPDVjQgnPIPj50aY8glGY8Jec6
+ jocg6ge40rrIy8REcl22hwUiSfOLN7KV5gFLLKHxfn75hzWKh8QhWkF3kJdO/qCCSEvh
+ 5uS9JwmthhJl41h+Js0PjfdGwwEK8iQZZcYBf3kVca7zwP+F2jEMLALpHnYBiUo4ia+Q
+ e0sg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzLdovLNU0TOs/mc1qBW0r04lfiT4jobg82TbW9QyBWc484l4swrDw5fT+/RDjC5HUAaBADiAk6fw==@nongnu.org
-X-Gm-Message-State: AFq9FYJekxiOEa8ixHyBChgng7DKU1J+52LNbEBZOIujo1ndv1IkQb96
- oPflYHycAxDVTrt2vbLOfgkshqt2kS5xMyZxU7w2yHA81BT7ukHuFL4Z9habyY+GpOg=
-X-Gm-Gg: AYBFou1cNxI/UmWAWziOx3AwsohrAUr/IuVkaH61fmOLkdzVuaQvyuAJava3A3dBzBu
- lNT9lbLKJIreqioTW6EO/Qr6YAHo3HHVhprs058Aq71xWg8ZxMH3RXr7FWhw72xiMWT4u3IZNim
- QDWEOeYO/TQNjPNWxhiYBEyhSDm2FZE5DS3uvyQ8UsF/7sI6JMqJKExNs5f55sfL522hc2D7inp
- YnljgGqRtVDMp0C/oIdsVkaY/E2p59l1GAtAbns8TjYEOroalgTwrY08CtzEqP8U70TG1UMISKo
- yUrGc1sv94/08MTnfZp48rF6DGgXYQMo/CIjGTD6HH3EFenXPdOkMVQVuIOMvO1W/bO7po8fsI6
- uiu9rC8FQN+eHbEo7r+RFq0Xqb0Pku/4iku+FMmFTACIo1GlTMu+1R1MJwjqy9bqlZzJaksHyF5
- CWVM6JKRiSSA6ayXv0QH4nDTnn+tUUUnC8Px1ez0LF0Y1VTe3RjbGttq+hkcYtJL58Zeboog==
-X-Received: by 2002:a05:600c:4f95:b0:4a1:706f:b40d with SMTP id
- 5b1f17b1804b1-4a1d75e6f9bmr193127455e9.7.1792438026676; 
- Mon, 19 Oct 2026 12:27:06 -0700 (PDT)
+ AKwUvBzgPV3Yhs1MtrmapHHCqmvVltHhjt1VdyEIgPcV2k0T1zsIIDKlX1lEXpVWyWdwTiVMtqNkpJUUDA==@nongnu.org
+X-Gm-Message-State: AFq9FYKCtN3SJI4aHps1Gf5wgv+1xhGggkgPC+IvRSrLz1RuT0MukgCZ
+ +cfLCaIGGhjDXdkBn39MupyG7He7d089nVHXTwckkLaJAi59wvxS3KwtOVUyT3snHmw=
+X-Gm-Gg: AYBFou0h4q284pH+36WBIYR0c+ousMWviZ0anTaY1825WAnduQ9FlBLAyR0ujMGqwb+
+ O+HBXNLmGZGdN4QDJSBdDcaBbxYayx+SAkIYgbWNN79VDUAV24GCksW9vd2wCv6HYXdRM2HbSIy
+ M8wzyUJ2IqFaNo00aBwdi473UZSx2KKQhAdImwybTjIPccd69hiVfrrpc1PlJW1UpDx9gku3qSD
+ /F9zwlUlBhM19ngidYlLLJ7LqOzxAJWUmo9nKBwE4IfTBDvV+4a6mD3Vw4owa2y04Ft1bXseRDK
+ mwk4Jt4XOxjHq8GqT7WhAW8ICBnSoIezb/GtEIOaYhPMaPVa8FZeGxw+uyJFLF3d4ddGZ/YJvT8
+ jaRImSVk++K1zKvoT6drDGzwX+Gpnu9UalVZx3NIoKLr+52CyOvo4jsf2A2vxo+LVaJnODrvN9C
+ 0LFgFIblej9NN3Hk6hYK0D4doamDxAALWdpMGpzOlbgzZy/1+OuL78rpjyTMHc/k78k7VejEw=
+X-Received: by 2002:a05:6000:2484:b0:485:8cc8:1f5f with SMTP id
+ ffacd0b85a97d-48e07fa892amr17250660f8f.42.1792438034445; 
+ Mon, 19 Oct 2026 12:27:14 -0700 (PDT)
 Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1f2c242dcsm13709675e9.0.2026.10.19.12.27.05
+ ffacd0b85a97d-48e1d820714sm799256f8f.35.2026.10.19.12.27.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2026 12:27:05 -0700 (PDT)
+ Mon, 19 Oct 2026 12:27:11 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 1A31F5F8DC;
+ by draig.lan (Postfix) with ESMTP id D3FA95FB4A;
  Mon, 19 Oct 2026 20:27:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -91,11 +91,10 @@ Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <th.huth+qemu@posteo.eu>,
  Richard Henderson <richard.henderson@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>,
- Klaus Jensen <its@irrelevant.dk>, John Snow <jsnow@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v3 01/19] tests/functional: test_acpi_bits requires TCG
-Date: Mon, 19 Oct 2026 20:26:46 +0100
-Message-ID: <20261019192704.3220373-2-alex.bennee@linaro.org>
+ Klaus Jensen <its@irrelevant.dk>, John Snow <jsnow@redhat.com>
+Subject: [PATCH v3 08/19] tests/guest-debug: convert gdb_cmd to an array
+Date: Mon, 19 Oct 2026 20:26:53 +0100
+Message-ID: <20261019192704.3220373-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261019192704.3220373-1-alex.bennee@linaro.org>
 References: <20261019192704.3220373-1-alex.bennee@linaro.org>
@@ -103,8 +102,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,37 +129,80 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Running a full thorough test suite on a KVM-only build fails due to
-acpi bits needing icount, therefor tcg. Declare the restriction so the
-test harness can skip it.
+Passing a plain string to subprocess involves making sure the escaping
+is correct so the underlying shell doesn't get confused. This can be
+tricky to track across multiple  processes. To simplify this build the
+command as an array and execute gdb directly without involving the
+shell.
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Message-ID: <20260930164649.433573-2-alex.bennee@linaro.org>
+We add a mini-helper to make the log output a bit more copy and paste
+friendly.
+
+Suggested-by: Ilya Leoshkevich <iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - add comment
----
- tests/functional/x86_64/test_acpi_bits.py | 3 +++
- 1 file changed, 3 insertions(+)
+ tests/guest-debug/run-test.py | 26 +++++++++++++++-----------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
 
-diff --git a/tests/functional/x86_64/test_acpi_bits.py b/tests/functional/x86_64/test_acpi_bits.py
-index ec716d643bf..d445660f0ed 100755
---- a/tests/functional/x86_64/test_acpi_bits.py
-+++ b/tests/functional/x86_64/test_acpi_bits.py
-@@ -303,6 +303,9 @@ def test_acpi_smbios_bits(self):
-         """The main test case implementation."""
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 838c1c26971..e8b69f85cd1 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -51,6 +51,10 @@ def log(output, msg):
+         print(msg)
  
-         self.set_machine('pc')
-+        # see icount comment below
-+        self.require_accelerator('tcg')
+ 
++def format_cmd(cmd):
++    return " ".join(f'"{arg}"' if ' ' in arg else arg for arg in cmd)
 +
-         iso_file = self.scratch_file('bits-%d.iso' % self.BITS_INTERNAL_VER)
++
+ if __name__ == '__main__':
+     args = get_args()
  
-         self.assertTrue(os.access(iso_file, os.R_OK))
+@@ -98,32 +102,32 @@ def log(output, msg):
+     inferior = subprocess.Popen(shlex.split(cmd))
+ 
+     # Now launch gdb with our test and collect the result
+-    gdb_cmd = "%s %s" % (args.gdb, args.binary)
++    gdb_cmd = [args.gdb, args.binary]
+     if args.gdb_args:
+-        gdb_cmd += " %s" % (args.gdb_args)
++        gdb_cmd.extend(shlex.split(args.gdb_args))
++
+     # run quietly and ignore .gdbinit
+-    gdb_cmd += " -q -n -batch"
++    gdb_cmd.extend(["-q", "-n", "-batch"])
+     # disable pagination
+-    gdb_cmd += " -ex 'set pagination off'"
++    gdb_cmd.extend(["-ex", "set pagination off"])
+     # disable prompts in case of crash
+-    gdb_cmd += " -ex 'set confirm off'"
++    gdb_cmd.extend(["-ex", "set confirm off"])
+     # connect to remote
+-    gdb_cmd += " -ex 'target remote %s'" % (socket_name)
++    gdb_cmd.extend(["-ex", f"target remote {socket_name}"])
+     # finally the test script itself
+     if args.test:
+         if args.test_args:
+-            gdb_cmd += f" -ex \"py sys.argv={args.test_args}\""
+-        gdb_cmd += " -x %s" % (args.test)
+-
++            gdb_cmd.extend(["-ex", f"py sys.argv={args.test_args}"])
++        gdb_cmd.extend(["-x", args.test])
+ 
+     sleep(1)
+-    log(output, "GDB CMD: %s" % (gdb_cmd))
++    log(output, "GDB CMD: %s" % (format_cmd(gdb_cmd)))
+ 
+     gdb_env = dict(os.environ)
+     gdb_pythonpath = gdb_env.get("PYTHONPATH", "").split(os.pathsep)
+     gdb_pythonpath.append(os.path.dirname(os.path.realpath(__file__)))
+     gdb_env["PYTHONPATH"] = os.pathsep.join(gdb_pythonpath)
+-    result = subprocess.call(gdb_cmd, shell=True, stdout=output, stderr=stderr,
++    result = subprocess.call(gdb_cmd, stdout=output, stderr=stderr,
+                              env=gdb_env)
+ 
+     # A result of greater than 128 indicates a fatal signal (likely a
 -- 
 2.47.3
 

@@ -1,73 +1,74 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98C83606A320
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 19:30:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 246AD606A31C
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 19:30:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=n0AGh9Da
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=YQaKC2PW
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIt26-0001P7-C5; Mon, 19 Oct 2026 15:28:30 -0400
+	id 1xIt3M-0003Qh-HZ; Mon, 19 Oct 2026 15:29:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xIt10-0000TA-1d
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:24 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1xIt18-0000Zb-Ji
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:32 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xIt0x-00035D-K1
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:21 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-49d05d51553so17278205e9.2
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 12:27:17 -0700 (PDT)
+ id 1xIt16-0003A2-Ju
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 15:27:30 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-48b042c0728so700538f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 12:27:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792438036; x=1793042836; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792438047; x=1793042847; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=iXTLXKXswaoS8fK2iy7Al3ZjuS4aIMD3U9wC6kd44r8=;
- b=n0AGh9DaoCOQCYAZWet0okFe+4EGsCdwmJfg9HVQcf9OcvHeMIw6nAZo4ho9CgEOuj
- SR9kaxVfvFBb9VmXNvddclVI9s4O/U6NJVzvbPl9L6kbNoMS012MJKzvlNyU81H9sRuR
- IUNGOCsxvR7Tm6Br1jDdV+KwyErMFsSDLPram7o6iZ9n8Xz94n+8kga/VwcBgDJMLejw
- v92jxI0zcker3Hzvi9pLs3vk5BPoEN4z4b75tD8Y+nPr7ijJa+p+lRiuVuDU9uVM/3ZM
- tNJDJ7rhDyzITlxERNV3/fvDFM18fqs574pa4ZiF9LYWUwDpZCtRrrWBC85HSkcYAl/1
- YFxw==
+ bh=iFID69NcWz9vXlIEc3jHs50omc79b9q17ny7SoNjtkw=;
+ b=YQaKC2PWWdG7T0yN2t4L4ztMB4yAbB3c/7eOdA1xLAEK7i+OuHxPvKn0G5mWzZCuxX
+ tPxdEJ5YdC0FbOdjDTs9qWPgmYoQCwwpgg6i9MYyaBV79H/3IE2LrIva3ZRDj2Vz3EU9
+ tim8GISNqqfgcObzumO1vuN7kLuLBI3FZfGnKbecYPa4vMx0jfe3bMzNttkmgQMBuRX1
+ r8t+EiWvBX0UmIXXKUVMa7YyX7eEJU5Jcwrip4AB0TvrlFqQVM4seFQxM5ZLMq7/gER3
+ GQOLyf0uZY6pv7Uy6qrjPx4/OxSvW8Do0OvPeDR532Q3/k9V4dVAkKl0dsnRo21rjQ/n
+ Is4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792438036; x=1793042836;
+ d=1e100.net; s=20260707; t=1792438047; x=1793042847;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=iXTLXKXswaoS8fK2iy7Al3ZjuS4aIMD3U9wC6kd44r8=;
- b=KzUvFf+4ghkYM5jYcwn7o2hfwAb2NnQoL6o/GglTETseNW18h56UDWfglqOR5MD1ZC
- 6h94RMNpSMkxdQLClmxGZbgQ0z+nhnKb1Un0THioszgN/AXtdI9JxE5+0C1kL44BViJ1
- eTeB4aSdRgfSKMXO69OpMwhZ4hJz6pF4pNUQCxIPfB7stVkgGbMEAaO2NfP+BGrRupO0
- qTDt0hqWAonbbu5+y4HVOAANNqIyqvAzdMdBmSK0wpYsLJhHABMLUPRw3qQGB4bo7ts5
- G6A5Tcz+HfDquDPnO2RdOH5FFkQQq6pXVxYoBoc39JCCiVb/aNe6Mlrls4owobasycen
- IJxA==
+ bh=iFID69NcWz9vXlIEc3jHs50omc79b9q17ny7SoNjtkw=;
+ b=26eu5IvRuRphhuFIE69syQDJFKOgHFWFjySKATr+B3m4IDmlNYYnAmRBZZ9vWdJv3r
+ 0jQTzVAHYt3ZMerPR5QpVKl/uwIOgUWKY0gx/TpdkAzfKUj5yEIP69b2LFHkkueASkqS
+ HqorpLhjF58RQs6r2cvX6PkH1jmaX9ugZx08VrN60HE2zwYO1CWMVwfOVerpo/w8+GVu
+ xojNGvJhMGDRSjv2XfWrkfYl3xFF7Co1e/7VFxVERd9/d9Kn7a8KSBfENvYWSStxiV8S
+ y9kYgHsYheBFLgb96ZDJcNlcFgVVvHgVoJvzPokG2UnNatPEDZ+QS5pDuLDMq6q1wxJu
+ a0iw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBylu0CfxakhRf2zzoZJz1cBn29OiZpNDSOSq3pQnG/80YlOqCA/a+dncNuCl9NhZq2oXi2OHIz//w==@nongnu.org
-X-Gm-Message-State: AFq9FYJOZN5o0Tm6RWjY+sgZli4WYpTACrcy49NtULoYNoMpnpmIbjGH
- /kpi4B7r2g5jrvDsR3Zx3ldj8gOZG52apnLhP4XU39TVl3NmtQMTiGVxO90qk0A8lY8=
-X-Gm-Gg: AYBFou3MQvAjc3v11/hovaIbr3UdOABfDU0RvI5ymcnN9kQGVmGcjSVbYrjZOXboy0k
- VrLpLjnZC6gwueqerIY9drX6Zu5D6FoYcGKPvGsCCTI9cx6Xa1bnx7ozn6zcc2whWhvpmVoJN2D
- BC6vt0D1hVt445EeM0MggSp5cMzfm9H9RgbkBbLARkTFVjz5wcZDuTN0z2Avwy+m+M0guHSIWq4
- MeCX+ibcS5mefB5fgH8DgGuxx3NTzE6/CEx0O5/FBnQA6hIugIe1mM7MEnE6LandpNdYPMx0vgd
- 2IIzsQcTqN5OfvjEKNjTje9VZtDNCc3SvjgSOSPpO5syHEHO/LhVaaqUdyZ+gJYA+v6WNR01Ud7
- fMPH2ugSI/1NE89Xd3eZR+9sYw5U5mRgGa2HygB9nWirhiFrPncmEYjPPWoNSRaBQdXDVr6c9ih
- nCQ1i7fiiThC8pf9ry2GqKzsCnD8j60xxGvt/wsMcAWJrJxztEV/b8boTArtDnjJYdss4e1Q==
-X-Received: by 2002:a05:600c:1f86:b0:4a1:93fd:8f8 with SMTP id
- 5b1f17b1804b1-4a1d75ab363mr195854185e9.4.1792438036190; 
- Mon, 19 Oct 2026 12:27:16 -0700 (PDT)
+ AKwUvByhrlnlz0SvNhtsJvx3bNCYV63ZPRb28hHxubTdann7Au/dAofdT74u0AzwiQ3NMykXvs01f3rsVw==@nongnu.org
+X-Gm-Message-State: AFq9FYLuDELOaMtE2bcaBdiP/W3g4uIcnUS08YbomK7kwylGxZZUQVw9
+ SzKiGFjWmSWwFzhirUenSZZLIkggA0M6Mhv+tLDABrJAgWL/YHgsEZts2Gz31+uWgDk=
+X-Gm-Gg: AYBFou3sLd+bhBgz28JhjSPyQgEpj8Ji8iKg2kVhd3PV0nk/AschIRV1+vW5Wr8bjvl
+ PPbWLxLRrn3QpHYHXwbrxwWz7hRYbzvI5zPNs6XkoJi9lrDz9kUwmhLhfhtGgMCXAPxyfABvWPp
+ d9fnd+R570E1Lr1Jc3Iy0GG0sE43E8BSOinKuqALRwG2scsfcIYhVOkbR9TfV4B5TIg8Lt+9ba+
+ lspeInZSI3raa98Fikvrlot8lIBHrzp0KdVmgf3vVLCm+Yc5DzfaGYzm9JB4/aNZKYj3w2guq1M
+ zY7LVHu/yUapXjtxcv0pbfbalHQGattrJ4XqPGoLkTyGv9NTp4Ppko55MsbqdPCxGOqsra3Ek5W
+ w2clh2wCLjmXSWt4So11E/txewQd7gclWndF6dwAOP7jfIaDkQSYgE1V9E95coKWB09jdBUZWMD
+ 2tP5oOaHl1lFFQ0Bn/nVGwFYfNJ7S4heksjX21Sg3b96X2sZWwNNMcttNXmSn0L+kjhkkvFoo0s
+ Rbi8+tK
+X-Received: by 2002:a5d:60cc:0:b0:48d:f14a:9177 with SMTP id
+ ffacd0b85a97d-48e07fb9180mr12657017f8f.56.1792438046511; 
+ Mon, 19 Oct 2026 12:27:26 -0700 (PDT)
 Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1ce33ad3fsm249105425e9.5.2026.10.19.12.27.08
+ ffacd0b85a97d-48e1d6dc034sm827547f8f.3.2026.10.19.12.27.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2026 12:27:11 -0700 (PDT)
+ Mon, 19 Oct 2026 12:27:20 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id BAC905FACD;
- Mon, 19 Oct 2026 20:27:05 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 292985FCBC;
+ Mon, 19 Oct 2026 20:27:06 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <th.huth+qemu@posteo.eu>,
@@ -92,9 +93,9 @@ Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <th.huth+qemu@posteo.eu>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>,
  Klaus Jensen <its@irrelevant.dk>, John Snow <jsnow@redhat.com>
-Subject: [PATCH v3 07/19] tests/functional: update x86_64 tuxrun images
-Date: Mon, 19 Oct 2026 20:26:52 +0100
-Message-ID: <20261019192704.3220373-8-alex.bennee@linaro.org>
+Subject: [PATCH v3 11/19] tests/guest-debug: add --symbols option to run-test
+Date: Mon, 19 Oct 2026 20:26:56 +0100
+Message-ID: <20261019192704.3220373-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261019192704.3220373-1-alex.bennee@linaro.org>
 References: <20261019192704.3220373-1-alex.bennee@linaro.org>
@@ -102,8 +103,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,42 +126,47 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-We now split the fetching of the buildroot image from the kernel
-itself. This is because we will want to access additional metadata in
-future tests.
+Sometimes the debug symbols are not in the kernel binary image but in
+a separate elf blob. Provide --symbols to facilitate using them.
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Message-ID: <20260930164649.433573-10-alex.bennee@linaro.org>
+Message-ID: <20260930164649.433573-12-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/functional/x86_64/test_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/x86_64/test_tuxrun.py b/tests/functional/x86_64/test_tuxrun.py
-index 729f6447d05..026b373accb 100755
---- a/tests/functional/x86_64/test_tuxrun.py
-+++ b/tests/functional/x86_64/test_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunX86Test(TuxRunBaselineTest):
- 
-     ASSET_X86_64_KERNEL = Asset(
--        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage',
--        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8')
-+        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/bzImage',
-+        '24a3ade610c2cc426ff821050de8a35930b0371357d94cc2c334abac6658552b')
-     ASSET_X86_64_ROOTFS = Asset(
--        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst',
--        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751')
-+        'https://storage.tuxboot.com/buildroot/20260924/x86_64/rootfs.ext4.zst',
-+        '8e310455b0244414ccff29c507f7ccfd4032e3587cc405e49ab0322738e3e27c')
- 
-     def test_x86_64(self):
-         self.require_accelerator("tcg")
+---
+v3
+  - fix merge conflict now we use array for gdb_cmd
+---
+ tests/guest-debug/run-test.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 782c0c5da19..e74bb489ee1 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -28,6 +28,7 @@ def get_args():
+     parser.add_argument("--kargs", help="Kernel args to --append")
+     parser.add_argument("--binary", help="Binary to debug",
+                         required=True)
++    parser.add_argument("--symbols", help="Symbol file for binary to debug")
+     parser.add_argument("--test", help="GDB test script")
+     parser.add_argument('test_args', nargs='*',
+                         help="Additional args for GDB test script. "
+@@ -127,6 +128,10 @@ def format_cmd(cmd):
+     gdb_cmd.extend(["-ex", "set confirm off"])
+     # connect to remote
+     gdb_cmd.extend(["-ex", f"target remote {socket_name}"])
++
++    if args.symbols:
++        gdb_cmd.extend(["-ex", f"symbol-file {args.symbols}"])
++
+     # finally the test script itself
+     if args.test:
+         if args.test_args:
 -- 
 2.47.3
 

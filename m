@@ -4,111 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4368CCF2DA
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 09:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C34CCF2D6
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 09:25:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIjbr-0000c1-He; Mon, 19 Oct 2026 05:24:47 -0400
+	id 1xIjcI-000143-8u; Mon, 19 Oct 2026 05:25:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIjbp-0000Zj-Ay
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:24:45 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIjbm-0002om-Ky
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:24:45 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-677bc4704cbso1546377d50.0
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 02:24:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792401880; cv=none;
- d=google.com; s=arc-20260327;
- b=RUhepxCsfVArXYXVcGMmI5gu8yB8TLsllUZkHvc1rILhN3mJALAxTEswU3NeJpuDbR
- 6VZ+SAQeZ33AtAm/aIKEIZ1bYKTMh7qXbLoEJ+IV/icMIdbkrRZLcre+DbMwh427umrK
- AuNiQfMRHZyEfnE5jA9/7l+hUzX51O3wuuLzEw0uVJ22W8vUei3sW5Fa8prc0vXrFlM6
- unmN44XiGuGreCZbptCl3NcwbSRbH07s9GF38HrNy51eK8bqLBv7pDr9jclhyjZC+e6h
- IfJk0TAQ3Oc8oXSyu83WT1F5ODec7sKzQQnGdzC1P+44GFHdMav6QLTSkfU4w1rUpS0t
- ir6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=MNENA/MC9L+77hx3g/q/IU25eQjNwPssmSWwXIKL5Tc=;
- fh=VhhhGvLx7QAExOLblMIUptHCvkpGg4JB/miT/hTatmE=;
- b=NO8/PRSiFhqiau+OESniapnASX+rHydA1f+UFPCsEc21R+6NmnDX51/qLt6xHYRteV
- uxLY37dh8fn2shuOfy3eaEgkCNkFF6upDNhJ2Aef5Aaee38+SN8X1hbwRxHKXtfbrBNV
- qSE2A9dlquQJxGzYNIToxwMiTz+SulgXw7Fq5qDwVd1JvII6XlwscxIXvhGynyykGVve
- FOdiHmXP19g4Z5ZeYgtHp74i4QNhuf35OH/5XVe3lxm4ogvoLJiTfZYfLbd0AUkQ9NOT
- JZgTab5QTBxFsSxYkmKvuFSBhC3EtVjXHnBgjoiK5jsvQm4A7UV+ux3MyLbX2NY6Sax7
- Pxww==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792401880; x=1793006680; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=MNENA/MC9L+77hx3g/q/IU25eQjNwPssmSWwXIKL5Tc=;
- b=Y7HZ6afo52d6BNX3aU5mbQC3KW2DMdzuc6gehxXTgRIiYaDs6wFoNVdX3e1McBZw63
- eTSYH2W89qx2RXdqbRSNm9xJdIdd/4n5Zumig97lHR7eWyoGBijjbwOxEBMt5JfOwxYi
- DgrMJHCLlY3ZkggeptOyKhZq+Z//9vilqJA54njteAhjTMaoth/tdEKF/YBbVyDwCSZW
- prMCdSujWs/yqXrpPO9QO0F7spBCHnzCqqrUMR/oeQrivnB4+eOdLIB4pCvAMw3kcCPd
- 6SzHvKAF776+aPjUzX0LJ3Q3dMO0fbFMgcrYi+mO7ifFNivCjaKGaCJ2hfCzXLmeuAPM
- wH/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792401880; x=1793006680;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=MNENA/MC9L+77hx3g/q/IU25eQjNwPssmSWwXIKL5Tc=;
- b=wtYCdSxeotD9LodlPN2xC0Xm2+xnSTyxXDoTPu7qtX/ovcTph9lBLWsCI0YypU1XRZ
- xd6kjow45aKMuZUl++bhRii05Byzfr+skdCVDIUcoBNssrsQK2GGqz7wvDlRlxIAdgQi
- Lh50mNuDQD4cTBt89Pf/ER9cyHbMqo75zktyc5tY7rJ09kiVD4XthcfQ185LyyrZ1hgG
- a+w+jlfAyZPlamoUs8fgiI2m6LcshwpllMJMpr8RP8NOvQ6cmUZPeeKWHPl7RtAM/liN
- g5lOX+nfA6fE4DwZ6Y4/3DfDIqb9eEQmO2SOTb9/NjX19OWtcRZh/ngjuCvgSjsvVFXN
- 87iA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzHyUV/Ey7xwX1on1A/3xDjkBI/9HDHaPKQ6oHyB7rmpYUvsUCBX1Q2oxkKpmZSmTMGDyU1QAFGNg==@nongnu.org
-X-Gm-Message-State: AFq9FYIOaXIWThPN2J7ReWqMWUfCpyQVRSpVfMQxwsWF7Gj8vixLwnDy
- gf92mW80nxYwhdDpDIJhc8oCw5V98vNWluhg89m0iz5CxnuMHkz8F7NdUtWbMCljIt6nGHpFY3r
- 1Y1RiuRilwHPr26wifT9xRPcfXlOP0uA/C9hSZwx47w==
-X-Gm-Gg: AYBFou0DnqxzIK9nZPo7BmNfjsT4PLDJlVq0769fxp6R6Sm35lG0A9lIjurhgqbEAHP
- f0+kkgWWmAa5QWRlWxZr6P9q7x3V6eVUr5TfcJIsdhu+3+fzzRNHzUJvWsLn0vGN4carpFwjvQg
- Tur4GZhjgFhRONac3VmR644IGRVISdfibMBZ6Yc3ArxOPWD4ZJQexhbbtfuYm8QM8/lrGWI9GuE
- d4V2yBFJEuA3Jvzku4dlEYybVmLZvRcEJvu/dxKyiR6PCFJx+CAI1C+wCP7pZ0lHPL2ar4pUhVN
- X4JlfAYpmdGV77/GhHIw8GDhTH3uZyzKAF/Ukvv49vm9nhO5DE+LGIztH7zm4HrUeClGtud7REo
- /ysnRd5mzyXTk3bOMbydqOElOBIFAXFQ+d1SXGMM=
-X-Received: by 2002:a05:690e:e89:b0:679:9c43:8599 with SMTP id
- 956f58d0204a3-679ca573adfmr1752717d50.8.1792401879841; Mon, 19 Oct 2026
- 02:24:39 -0700 (PDT)
-MIME-Version: 1.0
-References: <tencent_22E95650AA60C6E59860452C0D61A21F1105@qq.com>
- <CAFEAcA8MyrqWC7=A5Bw0G5G-2J64iTLmfY33dNDLm0jvmRb+Eg@mail.gmail.com>
- <27040691-e4b6-44f3-b588-cbbbee13cde2@huawei.com>
-In-Reply-To: <27040691-e4b6-44f3-b588-cbbbee13cde2@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Oct 2026 10:24:28 +0100
-X-Gm-Features: AclHuK8T7IlPIQFv-s8rGXV6qKTa6j_RBW8npIig5AVCHtrtgTbHRe0lx-FU40k
-Message-ID: <CAFEAcA_4xb3CBL9TTAdKMOG_ijWpt9wsveCp0R602VoFaWUH1Q@mail.gmail.com>
-Subject: Re: [PATCH 00/37] Add Arm MPAM emulation
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: Jinjie Ruan <2118537295@qq.com>, anisinha@redhat.com, armbru@redhat.com, 
- eblake@redhat.com, imammedo@redhat.com, michael.roth@amd.com,
- mst@redhat.com, 
- pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xIjc4-0000nj-UO; Mon, 19 Oct 2026 05:25:02 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xIjc2-0002px-R7; Mon, 19 Oct 2026 05:25:00 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=gABvTYFBNFC+hGJTo51TMyUoV1fXe3BKFF870+SZuaWIymClYwz0tAf+XwteUyihc8WONGX8fbdXZVRgmyZi2JOFD2C5T35X+fg2/9DgJGP0GB7cXn6R35PtMcz9wP4VyyXTTXFoJ/EFAdkyJfFHbzB+Lt9SVXSH5y5qBC0nMfbQeIxttb0uv4TTPtrfosePA6wSJkZy12CUqpJAGEqICenb2x6kolrEfy92mLyDU5VGgvSxbXYNBGkkF3eq1S/VMoIwdDjLmeHwqpaGr8gE5SC4V6kH6Y/5pZ+KXEJAi6en+Tm/l5iOXyCUCfPK31N8lA+MdCUaUFYRfclodptaCg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=U23PJIr2zCrBIIO4P8/Pf2Wi0Fn8XpWOLAS+gb5zWYI=;
+ b=x0hfrFDUOABRKN6MvemgClrhifJqmgAFlpVIyJk5ABftA+mAUz1lQeXxnVJyps4lHArt3tRs7j9XGRzMirxQL79XchmM4ANRIo2Y2XQtNtf2yyGMbXTJOQ0LkvPf/AFU14LhR/5keZQL/BYRMfb2GEwpkV2wq/yAHrMkFvqs6tZPSWAdJJnYtX9BJdgI2Spu3aQ0NgSNMOfvxoksRVxG+WS/IzAzWNiTP1LnQ2+cDk8wZ+JMD6aJvx1L2Tyv2duIlduB1nM2StNQwIdKr+GD6NOySPaDLekprqW+N8t8UOuIQ2RFoKO9Lf//Q7Owg9CjtoXaioO+MMKWYt2suKkRTA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=U23PJIr2zCrBIIO4P8/Pf2Wi0Fn8XpWOLAS+gb5zWYI=;
+ b=QiUg0fkLQlKDmOd1YfXfaDvfAaQYI9aNKfQfGTmOat24QgKNH5E1gMPy+KJXwiDWDaTtjY5C9t38KLh/o2jclVST3TXnkEbttHwNNvsSs0GXuxbyPJ4Ot8YlQ5WA9AQv7Dfl4LS0qZ3kuLaQnBgyWlpe1FlIbMLiaHFIykYff+ge1JCX14JXp60wK0KPFijEO25TTsJPU5DvBtmBL/jzb6n7Er6irINoDd30SEQCt/brruB+tWWQsHVo3q/D7nYiqkzVP623QkCNB2tiXIWSLxKPoQLucjqbqJa/Yw6eyx64nZeO3evPCR02G90P1WgRh4QYX5GD2Byq8A1up/C/0Q==
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
+ by KUYPR06MB8674.apcprd06.prod.outlook.com (2603:1096:d10:8c::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.19; Mon, 19 Oct
+ 2026 09:24:51 +0000
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0522.017; Mon, 19 Oct 2026
+ 09:24:50 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: "junjie.cao@linux.dev" <junjie.cao@linux.dev>, "junjie.cao@intel.com"
+ <junjie.cao@intel.com>, "marcandre.lureau@redhat.com"
+ <marcandre.lureau@redhat.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Kane Chen
+ <kane_chen@aspeedtech.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hub
+ insertion
+Thread-Topic: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hub
+ insertion
+Thread-Index: AQHdX6uxp6OpQ9yqq0CEeDiwsS34zQ==
+Date: Mon, 19 Oct 2026 09:24:50 +0000
+Message-ID: <20261019092448.278079-2-jamin_lin@aspeedtech.com>
+References: <20261019092448.278079-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261019092448.278079-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|KUYPR06MB8674:EE_
+x-ms-office365-filtering-correlation-id: bd47be02-c069-4ffb-ed78-08df2dc2d38e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|23010399003|1800799024|376014|22082099003|18002099003|38070700021|10067099003|56012099006;
+x-microsoft-antispam-message-info: +yKmiVzMIWf3BGrb9F5HuJIKI3jHCBElwvlqVuDLp9SkmMmA1UcToz/LnA2TmwTfy4tGqXke1XFBpA+1fch7rsdvG2S3D7rciWhBDrjZ41DFg0e98qBwp9z3D5fNzjdJBpWktIP3+qcO3Bx/9tLGr2G8QzNkzXb2F5p3I1e4ZDXum0I4Y7066m3PsCZwQe7+fexv6JDiLLCW5zSnBJxCdml/iLvjMTUYDM4TLye4U5rpuQ0niYqi0kKH6Vqe5k5f4jyWUC08jfEFD7+7ucJ7Kks9jc0MCiBmQyJVDW0t7vnkQdPVUPBP9Nr5QDWOV0eSFRDZeGI6LdRRx/ryJ3zUkQGl3iBODl7PoGc6hTEb1gIWYse1ndLUocrCM8PkAHJoyNrDZm75m+wRhIz25gIjG1bNhSMVHnwG/0+s06B8vIwYnMi+7HY0DJRtoQ56JM1LJ/vN/2VSvO39axVl7MnTyqAJuqGMgz7cVafk6yCtGWFvLuMLB3lRslaSNPfCLbWtO+VZJqa5Y4y9zNUbLjeArqlth2uAZm2cYBK7CfEK6dXGiTe9b+3YKtjSCmvN5fJmkuCxoWXGYdjGrGAHNYO/kOXcyVBJgSepMrHvIW62/j+COWNwMbFlIQS67PgTvqkVj0/IwteC6jEr8t3yyirtz8xqA1b6Y/aq7G2xIqIqMKLul9yaKPNoXlxT796oY64Vzty5S2qkn0xypDqXOCtLsO2A1se56agd8sStSCj45Ok=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(22082099003)(18002099003)(38070700021)(10067099003)(56012099006);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?ODWRkFApBW/CSZTGYZ/ttSeOsZwDrza+S0TxV561tfA14aN/W+KjLfr6RZ?=
+ =?iso-8859-1?Q?IOCVF0ZGEQ2nbB/gzM/fD6LwPK7GQIqiBiaTPOw3qzIri1GL0eRXyJS3F0?=
+ =?iso-8859-1?Q?IMKiDlIumeF4Es0A6slLQs4PP8wM3qVsyNEmwJm6uYzILnngLNv6gVjB4M?=
+ =?iso-8859-1?Q?DDKuZ9BSOj7vZuRBl/a6/XceKSIfQ5LxbfPq0RYKs1d4jAdIC1pTh6NAqQ?=
+ =?iso-8859-1?Q?+rXGZZXsSTNR9wProqkTbDxzM3vP/pPrN5ueahTAjARHzChzvoyTdl02Kn?=
+ =?iso-8859-1?Q?yaq+DNgVtb4AUWc7OtsQUHwffctp2BUs5csKtu73FsSzg2tLeMgXFZf33Z?=
+ =?iso-8859-1?Q?1IxIctmMgtUWQb3O9SZmCRyl9LZJd3+WCO9xwlPxdOXO3ikNJI4ts86Srv?=
+ =?iso-8859-1?Q?0AWPMjWvGfq4QvRFGm5dN7/sp7LW8Vxh9PmyxaV9kfElrxyLIG5PYqC/Ep?=
+ =?iso-8859-1?Q?imZza2S9wzG4amYK6/+Rgr8u50TLyFtqJ+mmtIIfP0U6Fx1GDUcqh4IrO7?=
+ =?iso-8859-1?Q?r5mzA5QB9DZWrYFBe5aAE7jE7qfYS24sMa8/JdSnZfXFt70aBMz+q+cBCO?=
+ =?iso-8859-1?Q?e52w517TF37RFnymN8HZjI/L2LVY6k96gCwnAM3NJNWkSpuGvanjRZN9lJ?=
+ =?iso-8859-1?Q?LeVtjF0tbXxO+fbl61C6GKJoWMLSuazJmsLzYNDsPfo81nMlTpjOkqUcrY?=
+ =?iso-8859-1?Q?DGsbgHX8D/Vpbb+I0vgPk82HZqnksYz7Rk0UEEV/wbk88wD0Dj5r5YzT6K?=
+ =?iso-8859-1?Q?HCWHEl4jYR9o2CgT8NqLdlaNopmKh7zXEg5L7RgWhCXprV1bHoN4LfWX4x?=
+ =?iso-8859-1?Q?Cc0Rb4eOinPu4/Gw+ndHwE5IF7HIQMyXQUx5L3DDeBG2Sp2Ieo8RLKZPve?=
+ =?iso-8859-1?Q?mffNNd+g9qD1CWBxzuhMg9rLiJez4P6VzBvgRj4UlDv7JqSTOJc/SIvCQi?=
+ =?iso-8859-1?Q?pqHjjv8rB2wLNJg58sYyppp/3juSbfHfuKnTt2tYfvlUWYlEI8jw+X7XrO?=
+ =?iso-8859-1?Q?3zVeXe/zF4mMIVrpYRAgXq8IAL3yeA1d5Z8MMvs073i8i5+esqA9wMiD7W?=
+ =?iso-8859-1?Q?qf8jTsHTLLoIjx2K2Go6nP8AJpqbnA2EuOJLAqWLQgaNUU6Wh5CD9F1YRX?=
+ =?iso-8859-1?Q?SawWYb5QWiERGXufK8ILH3bfP8TGicXaCleee3MbD5c/fHkdGDHnp7N2RS?=
+ =?iso-8859-1?Q?X/XQQ1NITFLnqA/g7ZfsZxCsPfv6H9LrmXA6kDnjDFEWVbxybdrAjYfjYX?=
+ =?iso-8859-1?Q?8VLBeT4xFHsJLRugkXyvwgKQxA5B0EXoVebk6tZxwk+Cemkn/HGnDfxnRD?=
+ =?iso-8859-1?Q?fwpkg8iXcPBeGV/XZiqxAn6iQjbxU4XmnMiYO4pcNGFVR60CxNajEo9A/1?=
+ =?iso-8859-1?Q?Dz0TGF7x22ewO/N52rhfze+929uJUeKiD/yZuOY/bzdmbYqdblWaKS7/id?=
+ =?iso-8859-1?Q?+ocWXL+24ri9bmR/rJeQ0QRMF9vlk4LQzUPr3/QAIA7m4pPr+2KBLF0uy9?=
+ =?iso-8859-1?Q?UdQLDMTqXDCgeU5RDnAPVjDNo6KQpREeLEec3bQztR2nW1QulwT9U1NTI9?=
+ =?iso-8859-1?Q?ik4Idbu+ACAxjau2i5bj+q5jqGDUYY1eBbgTrOb5hvjhpiQdH/hax4ROkv?=
+ =?iso-8859-1?Q?ZDixvbVQQ3E9eIvwIRfx+zxvz1kB+Y1Db/zRwCsupE863fBgILZfAsMc57?=
+ =?iso-8859-1?Q?WyVKUhW1I7p2e3UEnkKAh4uMa2HvQTrJA+AvUbyzM88s9uws+BB3Z1sS+W?=
+ =?iso-8859-1?Q?RAL+YXHoTUl8mN90NPVjDlO31vF1ZGP6qpiuAfpAXtEVUQbLl6D03vQ3b1?=
+ =?iso-8859-1?Q?+QfkvH83fA=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+MIME-Version: 1.0
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bd47be02-c069-4ffb-ed78-08df2dc2d38e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Oct 2026 09:24:50.5945 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: imuJUXOD8BFFv0dw5R5IRAg/PXKxWJcMrr2tIu3GmioeGEbvg60R0UDmmr4T9HmUqaEHwC4qS/+50UvGp0BRnwuc5aYyKvT1OGWDu3GTbeM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUYPR06MB8674
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,44 +148,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 19 Oct 2026 at 02:57, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
-> =E5=9C=A8 2026/10/16 18:20, Peter Maydell =E5=86=99=E9=81=93:
-> > I guess my question here is "how much is this actually doing,
-> > and how much is it 'we provide enough software-facing interface
-> > to keep the guest happy'" ? My (rather shallow) understanding of
-> > MPAM is that it's essentially adding tags to memory transactions
-> > and then accounting how much bandwidth each tag is using. That
-> > seems obviously infeasible for emulation, but on the other hand
->
-> Hi Peter,
->
-> Yes, I agree with you.
->
-> Implementing MPAM bandwidth control and partitioning at the
-> performance-effect level in QEMU is neither feasible nor necessary, and
-> it is not in line with QEMU=E2=80=99s original purpose as a fast function=
-al
-> emulator.
->
-> We only need to implement the functionality-related parts (i.e., the
-> register interfaces and control flow) to ensure that the software stack
-> can correctly recognize and configure MPAM, without simulating the real
-> performance impact produced by those configurations.
->
-> > this looks like it's rather larger than a minimal "we provide
-> > the register interface but it does nothing", so what are we doing?
->
-> By implementing MPAM-related register interfaces and control flow, as
-> well as the MSC hardware topology in QEMU, we can understand the resctrl
-> framework and interfaces in Linux, along with the related hardware
-> topology discovery process. This facilitates kernel debugging and
-> pre-silicon testing, and also allows us to debug and test test cases,
-> avoiding the complexity and slowness of testing on FPGA.
-
-Yes, but what is your implementation actually *doing* ? If
-software reads some MPAM resource monitor, does it read zeroes,
-or something else, or do we implement no monitors at all?
-2400 lines is a lot of code for "nothing actually happens".
-
--- PMM
+usb_claim_port() inserts a usb-hub when a device is plugged in and only=0A=
+one port is still free, so that more devices can follow. That is what a=0A=
+host controller with root ports wants.=0A=
+=0A=
+It is wrong for a transport that carries exactly one device. The hub=0A=
+takes the last port, and the device that was being plugged in ends up=0A=
+behind the hub instead of on the port the controller watches.=0A=
+=0A=
+Add no_auto_hub for such a bus. It keeps the ports it registered, and=0A=
+-device fails with "no free ports" once they are used up.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+Reviewed-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>=0A=
+---=0A=
+ include/hw/usb/usb.h | 1 +=0A=
+ hw/usb/bus.c         | 3 ++-=0A=
+ 2 files changed, 3 insertions(+), 1 deletion(-)=0A=
+=0A=
+diff --git a/include/hw/usb/usb.h b/include/hw/usb/usb.h=0A=
+index cbd4711933..ab96812adb 100644=0A=
+--- a/include/hw/usb/usb.h=0A=
++++ b/include/hw/usb/usb.h=0A=
+@@ -484,6 +484,7 @@ struct USBBus {=0A=
+     int busnr;=0A=
+     int nfree;=0A=
+     int nused;=0A=
++    bool no_auto_hub;=0A=
+     QTAILQ_HEAD(, USBPort) free;=0A=
+     QTAILQ_HEAD(, USBPort) used;=0A=
+     QTAILQ_ENTRY(USBBus) next;=0A=
+diff --git a/hw/usb/bus.c b/hw/usb/bus.c=0A=
+index 5cc5ffec33..8a24b1837a 100644=0A=
+--- a/hw/usb/bus.c=0A=
++++ b/hw/usb/bus.c=0A=
+@@ -413,7 +413,8 @@ void usb_claim_port(USBDevice *dev, Error **errp)=0A=
+             return;=0A=
+         }=0A=
+     } else {=0A=
+-        if (bus->nfree =3D=3D 1 && strcmp(object_get_typename(OBJECT(dev))=
+, "usb-hub") !=3D 0) {=0A=
++        if (bus->nfree =3D=3D 1 && !bus->no_auto_hub &&=0A=
++            strcmp(object_get_typename(OBJECT(dev)), "usb-hub") !=3D 0) {=
+=0A=
+             /* Create a new hub and chain it on */=0A=
+             hub =3D USB_DEVICE(qdev_try_new("usb-hub"));=0A=
+             if (hub) {=0A=
+-- =0A=
+2.43.0=0A=
 

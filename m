@@ -1,112 +1,99 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07FDD606A31D
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 16:09:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB1DF606A31E
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 16:16:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=fY3tAwHX
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=YtsVf9kS
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIpvU-0004AF-QB; Mon, 19 Oct 2026 12:09:30 -0400
+	id 1xIq2E-0005qW-Hj; Mon, 19 Oct 2026 12:16:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xIpvQ-00049O-Hz
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:09:24 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xIq25-0005pE-DH
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:16:23 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xIpvO-0007xt-Oa
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:09:24 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4a1635f7c89so22416275e9.2
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:09:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xIq22-0000Gm-I9
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:16:15 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-8b0f59a5fdaso14475167b3.3
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:16:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792426572; cv=none;
+ d=google.com; s=arc-20260327;
+ b=TT1aG7nKhkw88lsgocjAoL2WMeI6zCgg7+LFG9Nsc0VjJ5fcA7IdTDanVThj4ojemq
+ c1+Pddx4KM0fkWSm2Po49i4s6bNaRBj4RT/eHheWPCmGsBLNJUwTP/Lkm12arRBVTMV0
+ kYZcCmBZxESMCMAalwB6PJSAGFM1oT+prkBcKatxrluI1VnBI8H6ZV+Y4Z1mDh237sPO
+ W8hpCEG+fy/QRh9ctldX/aHcT+Lt9ntoZhP1J6PEi0Wqo01R0habM2FQZ08ZHqTwCP11
+ gp2Ks8VgauuOqNU7BGSlbld8AWQsKx55V1Hc31xC4sseJos8mPSp0m8lrvs9/imuCc1i
+ iBPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=cjTRbU1LBZ9spSw2mK1PCuLTMulEv+5KOYY8wSAXEXw=;
+ fh=YFizooBTFJB6e7araPb33LRwZXDAgN9YsCVEuJYw018=;
+ b=dxhbTWeXSwdzF7Tpqc+U4cXY/5jX0XIoS3cwV6r+XdYzn0rM+nljCxjzgjn9+ohVMl
+ ZKZLY+GCovIYNbDyE5Fob4UPalQQdGOAAfXXynNLQ+ImZcthzRcNE0uEdo1yPGKvKz7K
+ bxdyJQGvI6v0XBsslG9b9BcMh2uqQ2Qbge2WLgiX3JdOFuEGZh/rgi2xhUqImRRYDVhR
+ Xq/LTqz8U52J9g111wO17ewiqSQdusRCFxfEafDJqEHvJLGckDlJEwgvUbMGyfjDC9N+
+ nkZasTM1Ajzsm76yqNjpQFZ+uY0ZfmwHox7KNOS1Nx5Rw1C1DIOSe2ZVqYMH5lanvlU1
+ J6iA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792426161; x=1793030961; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=xja6PBXFp8FsYYM+xp0Zv9dptIGMTCJ4I04YmDvqHj0=;
- b=fY3tAwHX3l5VZmDm3oJveKDY9FioEhx8KISuKjapiAqDhgN2UotOvtn49uWrg/fUHU
- KSg4EPzXVuoXaWGAcCRPYXOHlV6v9giaNdcNqKw7AcyK9XGjEgdjetg5bSm03fEGXWhD
- bzTLxDRw7WGevcSt7ojLH7n5vUWnmek5Mfawd8wtaLoiMBXqp0XuRgAjSRmcYWY7Sr9m
- 1CCvGEQPZtVR3+dTmLkaIaZrTcDBQAa5iNSk6cre8KfAovhZUJjDKfFn2WyPZhtxpEcI
- o7aGTuBU9e9xHmtSUoY3yzTobIK67Mfx5k+hSWwjUY0jXV6MdbW9ldPvFeh5qlkM21Uq
- xbHA==
+ d=linaro.org; s=google; t=1792426572; x=1793031372; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=cjTRbU1LBZ9spSw2mK1PCuLTMulEv+5KOYY8wSAXEXw=;
+ b=YtsVf9kSQDjjeB1HYJNk1vnwOLensmS/Z7nnU8bewQrRwus36y6eIYuprC0pOFq34V
+ ybxLUeq/4bJT34RcsP4m9ryNmU3Lj7iMzirJAQsdSz1S5wGVymwpiFopKe1XY5v6y4yG
+ WTMCKuhoT9pqHgsQn9dl+zVd5o4L7uISazYY1ygA4F1BtuMRxSFvjWuzqFuIfTD6NQLW
+ scV6npIMtvxi6Pgbfx7UIVCOQaOYnysvU8vTsemSlfxl/2GxRwdAr57QNwIYXiCBQvdx
+ itpW8gPKxITXKpgemmY9eJMv3s3DF0upT7TifUSzJ+4B5qccvo7wK+g54wEqLOGXj6pm
+ Om+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792426161; x=1793030961;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=xja6PBXFp8FsYYM+xp0Zv9dptIGMTCJ4I04YmDvqHj0=;
- b=H5HB0jsFcNtqTo/0UCHogBQJuKQSqJbnjgcPqNjdKd2WrN4Lqj5zfnivVvIk1ir94+
- B3Gc5f1QE7RlaAfMFAPxZ42/bP2HxW9m0IR1UumEm4tVeWXHpY4A+0Fxc2spmF0HMfLo
- yU4+Vq3D4LeGWffBl5iFi1UL12aJ3e4tpWBxC2kiCxJrADNCOcY1G6Fv5Ua9tCLZc2XF
- 3tm8Cb4/rjqhoByfYgYhAHC4KhrSaKuA8acfJGVRmtzKyWxmXBdbpFseAd8Jc/qfFQfi
- rp9Myr1+34lTFiRuuiVh4UZQUA1dxHzRytFwv5dqiJ+qROBvkds2/q8xSw7lztjwQ0we
- aSJA==
+ d=1e100.net; s=20260707; t=1792426572; x=1793031372;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=cjTRbU1LBZ9spSw2mK1PCuLTMulEv+5KOYY8wSAXEXw=;
+ b=vizWhOhL1ji+wAOrQC/kFhSZGouSRpo7ln0nhzng9fJPEvOjO4RURKF4Nh+PnxqBlo
+ NIraArtobjE46y/EXw2O9AUNsbVi2OexFQKcoUR6RCyrfGOrKMwLUf5X/LfwAugtDFhX
+ SJ4ZMmXQzEyDnfezRh6wwN0PXDS2M0d2Si25Pa4rZkRAzeXvsLh+7hmQU43C3Soszs8U
+ QgB/9gB4pOWvyJPloyImF6S7jPpIVxyGcKyAyOM9r+Wak+sfr7wR3kTOuT5PkIVTx7U2
+ kRWh00pBxbfZNpf8iZehwt1720uz1hxIg1mnn9nytX+ndj/q3xr2HFKuSTmjB+8e9/uG
+ qUIg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzVuKcxsSQL0y1PYLPSdTykId//HmL+C0aPXIiOK5pjMaq7s7McvaQNV1D2DUOytIt84I5zbY7iOQ==@nongnu.org
-X-Gm-Message-State: AFq9FYLaByJLqFB5sVfSJBciTSyoyrgghaAVjumNL+WX7GSsoskRJhWY
- plJvr+JHNMzbRsyonEnqti+Uz0MCGremlXmlfnOI3DA0x/oD9FQMHmGfIYS2WfbUaJo=
-X-Gm-Gg: AYBFou1NnS8w372JkVFVYzQ/LRkRFO3L4Ct9GWYLj0Wi5T3wzLm14n9vMKYEw4Qdavx
- EY5heCP/FLGpmNJTk/Ngsyqp84nlZ3o0cfHEsJlXfXokuB0PXWgCpLWgYZnwDytJ07SHGgz4MRL
- 1gHwocqstxDBsaMgJsp0NJCjpDr/3ojL7aOo3Gj8ide/grcWq81OT1L3uTTlD1dj8nIzI7p2Gg2
- e0UYd6iYlil/WOvVHx1QDjoJndY2q1ItgRi7XFNRvS2MUvWFAhGRQUF+GyB/fg79ho1vET/P6PJ
- dShNFvVt+x/Fs8O+tMkeQOARixsVme0bVNK+HGYWtT9GGVgP5neL/Mx4rvclEK7jas2e0OIiYwd
- 9lYbVS3sBPsJKvWFpEtMo8sS157lPIwvmKrBY4rgkjmx3BKcncAEm1qOVJ8O9tx6AjW5BwGTQ8A
- ahJq28hWERt2MWCkfR/5T6MgUKSNQSsn4ona0hGtAyUHRTHWQbnpT+dlXqh4lAc/GWRbSgr9d4Y
- 8UoJYxk
-X-Received: by 2002:a05:600c:870b:b0:4a1:d0e4:2bc7 with SMTP id
- 5b1f17b1804b1-4a1d7608614mr159430875e9.15.1792426160698; 
- Mon, 19 Oct 2026 09:09:20 -0700 (PDT)
-Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48dfd4e28bcsm24268982f8f.23.2026.10.19.09.09.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2026 09:09:10 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 662DB5F879;
- Mon, 19 Oct 2026 17:09:09 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Ilya Leoshkevich <iii@linux.ibm.com>
-Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@oss.qualcomm.com>,  Zhao Liu <zhao1.liu@intel.com>,  Kyle Evans
- <kevans@freebsd.org>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Brian
- Cain <brian.cain@oss.qualcomm.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Brad Smith <brad@comstyle.com>,  Ani
- Sinha <anisinha@redhat.com>,  Christian Borntraeger
- <borntraeger@linux.ibm.com>,  Thomas Huth <th.huth+qemu@posteo.eu>,  Keith
- Busch <kbusch@kernel.org>,  Matthew Rosato <mjrosato@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,  John Snow <jsnow@redhat.com>,  Eric
- Farman <farman@linux.ibm.com>,  Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>,  Anders Roxell
- <anders.roxell@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
- Warner Losh <imp@bsdimp.com>,  qemu-arm@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  Yoshinori Sato <yoshinori.sato@nifty.com>,
- Peter Xu <peterx@redhat.com>,  Klaus Jensen <its@irrelevant.dk>,  Song
- Gao <gaosong@loongson.cn>,  qemu-s390x@nongnu.org,  Laurent Vivier
- <laurent@vivier.eu>
-Subject: Re: [PATCH v2 08/16] tests/guest-debug: add --symbols option to
- run-test
-In-Reply-To: <d5f4c9d6-a28f-43f2-a0bc-da9c2aca39bf@linux.ibm.com> (Ilya
- Leoshkevich's message of "Tue, 13 Oct 2026 21:23:29 +0200")
-References: <20261012170330.1144446-1-alex.bennee@linaro.org>
- <20261012170330.1144446-9-alex.bennee@linaro.org>
- <d5f4c9d6-a28f-43f2-a0bc-da9c2aca39bf@linux.ibm.com>
-User-Agent: mu4e 1.14.4; emacs 30.1
-Date: Mon, 19 Oct 2026 17:09:09 +0100
-Message-ID: <87a4o94qqi.fsf@draig.linaro.org>
+ AKwUvBzFNaF3/6RPzXoiwxUHaobMPb4hPM+uHzPkl9L+UQYTGKd5EXNq5lopu3KtykGbutCk86y/8FdF+w==@nongnu.org
+X-Gm-Message-State: AFq9FYKBShhA3kehppp1z3/0acTT0CWj4NJYyJ8pyZ79azfutND6qgCC
+ sd2Sp5F0TpGqCQMhBaTxg10o7Fd6526LZ3iltyK7zBGR8T0HozcdxyZWhOIQBU1BDINT7Ncf83q
+ yiptg2r8HoJohe4DlbVYF+L1ESoLjhadn9y/0NUV1fg==
+X-Gm-Gg: AYBFou1v4qr5fmloA3KPughKZbBq8UaeWorKu3mDF5WEVjwy6VSqtFwbIk0vruE6/0j
+ mu0YGNABlAmk1NoEhTVZZKuc5Hp4eho34R+3AUIFkflLTBcDnbpBf9Tii8jLYjOIIb4sA7vHboC
+ QzSxNxVGMWvjYWkXrPB7gHaNPr0TuUrtStvo2FQmhMGXq+qYJvEI6AtFFjwUmO/QtbssctVSxzc
+ RnoAZryg9ipY9hnRmxU81PxhD5FOtCdSPZehHaDK5GDVB7RvlimLC0DUY6uZwgfrf+fUF+XQyUP
+ cqICMmVj7CV0pLC41lgyVuLv/HIYZzKt7XWwRIA0bjeOhLZTT+gpDqNgVflwVzrXB8HaRctQQ36
+ N5UGj6f937y1GeQZ5J0rdBughHXhfN9Yzqy+WyBg75pCp3LSfZA==
+X-Received: by 2002:a05:690c:298:b0:8b0:a176:fa5b with SMTP id
+ 00721157ae682-8b0f21e1720mr28769197b3.64.1792426571839; Mon, 19 Oct 2026
+ 09:16:11 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+References: <20261019155519.1302964-1-samanyu.goel16@gmail.com>
+In-Reply-To: <20261019155519.1302964-1-samanyu.goel16@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 19 Oct 2026 17:15:59 +0100
+X-Gm-Features: AclHuK8ez5_ajExezvsC1O8Vj8rqTc91RB6BJ4JOKwGWecPbsGmlu_WHh9eqrO4
+Message-ID: <CAFEAcA_QYXpjXdC8oiTfn2Z3E99hW0j-mcDSqGLhKfKKex8VsA@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/exynos4210_combiner: Fix out of bounds access
+To: Samanyu Goel <samanyu.goel16@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,60 +114,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
 	RCVD_IN_DNSWL_BLOCKED,RCVD_IN_ZEN_BLOCKED_OPENDNS,SPF_HELO_PASS,
 	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Ilya Leoshkevich <iii@linux.ibm.com> writes:
-
-> On 10/12/26 19:03, Alex Benn=C3=A9e wrote:
->> Sometimes the debug symbols are not in the kernel binary image but in
->> a separate elf blob. Provide --symbols to facilitate using them.
->> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->> Message-ID: <20260930164649.433573-12-alex.bennee@linaro.org>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>   tests/guest-debug/run-test.py | 5 +++++
->>   1 file changed, 5 insertions(+)
->> diff --git a/tests/guest-debug/run-test.py
->> b/tests/guest-debug/run-test.py
->> index 4aa24939b7d..0c7cbd137ef 100755
->> --- a/tests/guest-debug/run-test.py
->> +++ b/tests/guest-debug/run-test.py
->> @@ -28,6 +28,7 @@ def get_args():
->>       parser.add_argument("--kargs", help=3D"Kernel args to --append")
->>       parser.add_argument("--binary", help=3D"Binary to debug",
->>                           required=3DTrue)
->> +    parser.add_argument("--symbols", help=3D"Symbol file for binary to =
-debug")
->>       parser.add_argument("--test", help=3D"GDB test script")
->>       parser.add_argument('test_args', nargs=3D'*',
->>                           help=3D"Additional args for GDB test script. "
->> @@ -114,6 +115,10 @@ def log(output, msg):
->>       gdb_cmd +=3D " -ex 'set confirm off'"
->>       # connect to remote
->>       gdb_cmd +=3D " -ex 'target remote %s'" % (socket_name)
->> +
->> +    if args.symbols:
->> +        gdb_cmd +=3D " -ex 'symbol-file %s'" % args.symbols
->> +
+On Mon, 19 Oct 2026 at 16:55, Samanyu Goel <samanyu.goel16@gmail.com> wrote:
 >
-> I would consider shlex.quote() here too. Or maybe make gdb_cmd an
-> array and use subprocess.call(shell=3DFalse)?
-
-I have made it an array in the new version.
-
+> In exynos4210_combiner_write(), the bounds check used req_quad_base_n
+> instead of grp_quad_base_n. Because req_quad_base_n counts 4-group blocks
+> rather than individual groups, invalid offsets were allowed through.
 >
-> Also, while it's probably a matter of existing code style and
-> personal preferences, I would use an f-string instead of %.
+> For example, writing to offset 0x100 resulted in req_quad_base_n = 16,
+> passing the check (16 < 64). As verified in GDB, this caused
+> grp_quad_base_n to reach 64, leading to an out-of-bounds write at
+> s->group[64].
 >
->>       # finally the test script itself
->>       if args.test:
->>           if args.test_args:
+> Signed-off-by: Samanyu Goel <samanyu.goel16@gmail.com>
+> ---
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+This is https://gitlab.com/qemu-project/qemu/-/work_items/4709.
+
+You've missed the equivalent check in the read function.
+
+As it happens I was working on this bug this afternoon; I have
+a patch nearly ready to send which fixes this and also cleans up
+some other oddities about the checks in these functions.
+
+thanks
+-- PMM
 

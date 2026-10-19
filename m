@@ -4,90 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D22CCF2C9
-	for <qemu-arm@archiver.kernel.org>; Sun, 18 Oct 2026 13:40:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479C3CCA490
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 01:59:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIR3v-0002ZF-BQ; Sun, 18 Oct 2026 09:36:31 -0400
+	id 1xIceF-00076T-G6; Sun, 18 Oct 2026 21:58:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xIR3p-0002RR-Em
- for qemu-arm@nongnu.org; Sun, 18 Oct 2026 09:36:25 -0400
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xIR3l-0002JR-JC
- for qemu-arm@nongnu.org; Sun, 18 Oct 2026 09:36:25 -0400
-Received: by mail-qk1-x736.google.com with SMTP id
- af79cd13be357-93a40a9a01aso325877485a.0
- for <qemu-arm@nongnu.org>; Sun, 18 Oct 2026 06:36:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792330580; x=1792935380; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=loq/9z2qITmRvVK4fBqH6nfcxD/uwFc4DDxvLDl7qWg=;
- b=RtQgSQZOKy1dgoiom+MeUSyAPBNSFgCVBlpcEq4DT3ry+Ib49mUyhY5NRSP2Gj8Fr+
- ccr/H8ufSL1cgNcnqSXOZCcOk9tZz9DM5WAeh16UTIl3BXA18jN4irfVNhA/QtDElNol
- 7TWBaHKeYNNRTT+GR0bkaLmhKoHM6Z+2ekuDJFg7BrN317kfSX42zVCG0WhbdNNMOUla
- nnSYkADcti/i2rHAvDuDs884Fclsf1QNnZpmpVUtbRbUmofAuMmtz8rQz2TBRyIbu0zY
- cHXncZ9RHo7Ro1vix8kzTgfoBspopAiW3ugFH4FS55QQ52eYHlH0AstJLHBk7RAZ7fP0
- WdmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792330580; x=1792935380;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=loq/9z2qITmRvVK4fBqH6nfcxD/uwFc4DDxvLDl7qWg=;
- b=032cA60p08kIf3uDmalrD6XzVLv/uqNQTlzgXG1s0iW+3qFiSWjWE3BtL6Cic/8KZT
- 2EyDP3nqeO5wbA/npXjJ0hQ3WCdrmNwFKX9gr5LU0AIwmO6QoPEqQIps7IaeuUD8syJ6
- tM1h1HWIcjH/2jCndLY7z4awALeEJ5OlId8/EOByBwbSm8gpaBrxqxiiG8I4VvCGmCfj
- MN1838mR9qv+UYJwF+bxJbx8wOgP9s9UQoTLrHA/MwCz5HoCPDZ4ZGcy8+TAx3qmLcSw
- 1XRME1veKApxzZCMSi0DNzkPEEfHMY2lH976Fhi3KyfaKtIFZ484GeVnSZLp0UZ9a5k3
- yrjw==
-X-Forwarded-Encrypted: i=1;
- AKwUvByQ9Sbcm/4h4HhDoTSk7uQVHS/5D0ELhOxXBvajrV2cMDNSqRxhv1qfXuf8N0GqfiitL7PUUgYw1g==@nongnu.org
-X-Gm-Message-State: AFq9FYJnJzdb5I2/j2ONTZN2Fhqg8cbN+hDqMpnUpvmWXLOrlGrZEkwU
- trNbMmyAPYSDQd74+fxV0sxmp5ZLP0bSSDG4iJ4IfBfowlng3yU+vSSIejDyq3Ym
-X-Gm-Gg: AYBFou3c+HQTkktrXjBBlxaaBEECllxgiR44Nb7MrWDsKvcJJqR4OXxdgD+g4hoZo6E
- SCHncnnmTLDOpbDxCI7FlwLi9aDFcTLPRF01U33ZMYkTAKus4lahzALTHNhvGpmYu4bSJeDbORa
- H/Alk4WcmHb5nCkgNpIk3TuQMpJiVk4kZ89kO6IYZFmS8B3tswj/tqT+qY8X/vL50W95VeLl5uk
- JuqpnDt16hICnLrG6EjsDbWYd5K8TSOl5i7E0Ws2yk5lqYxFJ0evDfhNEWW/dJ89dXv5eno0CtV
- Kyrj/IKal2EaEzVqs61mMZzjR2xSLkwhQRms9h95f5MyCeMkVjB5JgmpNDcSN0bf+PzFksws7Ve
- mopGF6uPssoyYTC/FNtdx+nsCWq/U2jUrN9QGMTS0ybDd3E7bktbNo6oaKNmLkbMNC51KS4pIx7
- UuORoTG8coo6bL7NeYTmMXuHx3vi2HT/IJrswoXzBgjFiuVrMAbgcmjzjjpNRwUTosFwqZ7e8L8
- WqMQannGYS43IF/fpdazGJrOu5PRTBTjin1dHNRHdFumRHaTRWg9meDJYuLffgP0WTjNaw=
-X-Received: by 2002:a05:620a:3196:b0:93e:5534:e63 with SMTP id
- af79cd13be357-93f29c8858fmr821602985a.13.1792330580080; 
- Sun, 18 Oct 2026 06:36:20 -0700 (PDT)
-Received: from localhost.localdomain ([2606:6d00:159:2900:ecfc:9d0d:b95b:11bf])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-93f2a854bb7sm459056485a.23.2026.10.18.06.36.19
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 18 Oct 2026 06:36:19 -0700 (PDT)
-From: Marcelo Manzo <marcelomanzo@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, philmd@oss.qualcomm.com,
- Marcelo Manzo <marcelomanzo@gmail.com>, Jason Wang <jasowangio@gmail.com>
-Subject: [PATCH v4 14/17] hw/net/bcm2838_genet: add migration state
-Date: Sun, 18 Oct 2026 09:36:00 -0400
-Message-ID: <20261018133603.64323-15-marcelomanzo@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261018133603.64323-1-marcelomanzo@gmail.com>
-References: <20261018133603.64323-1-marcelomanzo@gmail.com>
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1xIce9-00075u-R0; Sun, 18 Oct 2026 21:58:42 -0400
+Received: from canpmsgout02.his.huawei.com ([113.46.200.217])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1xIce6-0007bq-4N; Sun, 18 Oct 2026 21:58:41 -0400
+dkim-signature: v=1; a=rsa-sha256; d=huawei.com; s=dkim;
+ c=relaxed/relaxed; q=dns/txt; h=From;
+ bh=JwGY3r1v5cG1PUwqtuk03i32AyWJXqANzH+KJKEIxlU=;
+ b=ico/C3Y/Deh4Y7ijwJlUxk/VqGS5Bn+yz44mJvlqVYhl2b2fdAzPBcfAN6xpgVkei/kbJyNbg
+ qLAABquOItY81g0dDhSa3IJimBj45TSRk8cFxQINbRFKQp25kFLhOJIOdyX98+UcblRvxU+Le6b
+ klqvlxz1Bq5VJR7ArYd6Q4c=
+Received: from mail.maildlp.com (unknown [172.19.163.0])
+ by canpmsgout02.his.huawei.com (SkyGuard) with ESMTPS id 4j7JZZ0FRdzcb3L;
+ Mon, 19 Oct 2026 09:57:10 +0800 (CST)
+Received: from kwepemk200008.china.huawei.com (unknown [7.202.194.74])
+ by mail.maildlp.com (Postfix) with ESMTPS id B1C2740537;
+ Mon, 19 Oct 2026 09:57:15 +0800 (CST)
+Received: from [10.67.110.68] (10.67.110.68) by kwepemk200008.china.huawei.com
+ (7.202.194.74) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Mon, 19 Oct
+ 2026 09:57:14 +0800
+Message-ID: <27040691-e4b6-44f3-b588-cbbbee13cde2@huawei.com>
+Date: Mon, 19 Oct 2026 09:57:14 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/37] Add Arm MPAM emulation
+To: Peter Maydell <peter.maydell@linaro.org>, Jinjie Ruan <2118537295@qq.com>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <eblake@redhat.com>,
+ <imammedo@redhat.com>, <michael.roth@amd.com>, <mst@redhat.com>,
+ <pbonzini@redhat.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <tencent_22E95650AA60C6E59860452C0D61A21F1105@qq.com>
+ <CAFEAcA8MyrqWC7=A5Bw0G5G-2J64iTLmfY33dNDLm0jvmRb+Eg@mail.gmail.com>
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+In-Reply-To: <CAFEAcA8MyrqWC7=A5Bw0G5G-2J64iTLmfY33dNDLm0jvmRb+Eg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::736;
- envelope-from=marcelomanzo@gmail.com; helo=mail-qk1-x736.google.com
+X-Originating-IP: [10.67.110.68]
+X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
+ kwepemk200008.china.huawei.com (7.202.194.74)
+Received-SPF: pass client-ip=113.46.200.217;
+ envelope-from=ruanjinjie@huawei.com; helo=canpmsgout02.his.huawei.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,75 +75,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The device had no VMStateDescription, so none of its register or PHY
-state was saved or migrated. Describe the MAC register block and the
-PHY, shadow and expansion registers, and re-evaluate the interrupt
-outputs after load, since they are derived from the registers.
 
-Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
----
- hw/net/bcm2838_genet.c | 33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-index e20358c8e7..643ee3ec0b 100644
---- a/hw/net/bcm2838_genet.c
-+++ b/hw/net/bcm2838_genet.c
-@@ -17,6 +17,7 @@
- #include "system/dma.h"
- #include "hw/core/registerfields.h"
- #include "hw/core/resettable.h"
-+#include "migration/vmstate.h"
- #include "hw/net/bcm2838_genet.h"
- #include "trace.h"
- 
-@@ -1129,6 +1130,37 @@ static const Property genet_properties[] = {
-     DEFINE_NIC_PROPERTIES(BCM2838GenetState, nic_conf),
- };
- 
-+static int bcm2838_genet_post_load(void *opaque, int version_id)
-+{
-+    BCM2838GenetState *s = opaque;
-+
-+    /* The interrupt outputs are derived from the register state */
-+    bcm2838_genet_set_irq_default(s);
-+    bcm2838_genet_set_irq_prio(s);
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_bcm2838_genet = {
-+    .name = "bcm2838-genet",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .post_load = bcm2838_genet_post_load,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_BUFFER_UNSAFE(regs, BCM2838GenetState, 0,
-+                              sizeof(BCM2838GenetRegs)),
-+        VMSTATE_BUFFER_UNSAFE(phy_regs, BCM2838GenetState, 0,
-+                              sizeof(BCM2838GenetPhyRegs)),
-+        VMSTATE_BUFFER_UNSAFE(phy_shd_regs, BCM2838GenetState, 0,
-+                              sizeof(BCM2838GenetPhyShdRegs)),
-+        VMSTATE_BUFFER_UNSAFE(phy_aux_ctl_shd_regs, BCM2838GenetState, 0,
-+                              sizeof(BCM2838GenetPhyAuxShdRegs)),
-+        VMSTATE_BUFFER_UNSAFE(phy_exp_shd_regs, BCM2838GenetState, 0,
-+                              sizeof(BCM2838GenetPhyExpShdRegs)),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static void bcm2838_genet_class_init(ObjectClass *class, const void *data)
- {
-     static ResettablePhases unused_parent_phases;
-@@ -1136,6 +1168,7 @@ static void bcm2838_genet_class_init(ObjectClass *class, const void *data)
-     ResettableClass *rc = RESETTABLE_CLASS(class);
- 
-     dc->realize = bcm2838_genet_realize;
-+    dc->vmsd = &vmstate_bcm2838_genet;
-     resettable_class_set_parent_phases(rc, NULL, bcm2838_genet_reset, NULL,
-                                        &unused_parent_phases);
-     device_class_set_props(dc, genet_properties);
+在 2026/10/16 18:20, Peter Maydell 写道:
+> On Fri, 16 Oct 2026 at 10:47, Jinjie Ruan <2118537295@qq.com> wrote:
+>>
+>> From: Jinjie Ruan <ruanjinjie@huawei.com>
+>>
+>> MPAM (Memory System Resource Partitioning and Monitoring) is Arm's
+>> architecture for partitioning and monitoring system memory resources
+>> - Cache portions
+>> - Capacity limits
+>> - Memory bandwidth and priority
+>>
+>> And MPAM is the Arm counterpart of x86 RDT, which Linux exposes to user
+>> space via resctrl.
+>>
+>> QEMU so far has no MPAM support at all: the CPU-side system registers
+>> are missing (a guest kernel that probes FEAT_MPAM takes an UNDEFINED
+>> exception), and there are no Memory System Components (MSCs), so a virt
+>> guest cannot exercise resctrl on Arm.
+>>
+>> This series adds MPAM 1.1 emulation for the virt machine,
+>> and the structure is as below:
+> 
+>> With this, a Linux guest booted with -M virt,mpam=on (plus NUMA nodes)
+>> mounts resctrl with the full schemata set (L2/L3 CAT, capacity, MBA,
+>> priority), and MBM bandwidth and L2/L3 occupancy counters track the
+>> configured controls.
+> 
+> I guess my question here is "how much is this actually doing,
+> and how much is it 'we provide enough software-facing interface
+> to keep the guest happy'" ? My (rather shallow) understanding of
+> MPAM is that it's essentially adding tags to memory transactions
+> and then accounting how much bandwidth each tag is using. That
+> seems obviously infeasible for emulation, but on the other hand
+
+Hi Peter,
+
+Yes, I agree with you.
+
+Implementing MPAM bandwidth control and partitioning at the
+performance-effect level in QEMU is neither feasible nor necessary, and
+it is not in line with QEMU’s original purpose as a fast functional
+emulator.
+
+We only need to implement the functionality-related parts (i.e., the
+register interfaces and control flow) to ensure that the software stack
+can correctly recognize and configure MPAM, without simulating the real
+performance impact produced by those configurations.
+
+> this looks like it's rather larger than a minimal "we provide
+> the register interface but it does nothing", so what are we doing?
+
+By implementing MPAM-related register interfaces and control flow, as
+well as the MSC hardware topology in QEMU, we can understand the resctrl
+framework and interfaces in Linux, along with the related hardware
+topology discovery process. This facilitates kernel debugging and
+pre-silicon testing, and also allows us to debug and test test cases,
+avoiding the complexity and slowness of testing on FPGA.
+
+Through this series of QEMU implementations, I discovered many kernel
+issues and test-case issues in advance before FPGA testing, accelerating
+the development and testing of new kernel features (such as narrow PARTID).
+
+Moreover, as far as I understand, many hardware vendors have not yet
+implemented MPAM. Implementing it in QEMU helps enable MPAM on Linux,
+and then understand, learn, test, and even develop some MPAM-related
+features.
+
+Link:
+https://lore.kernel.org/all/20261012082337.822258-1-ruanjinjie@huawei.com/
+
+> 
+> thanks
+> -- PMM
+
 -- 
-2.55.0
+Best regards,
+Jinjie
 
 

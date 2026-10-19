@@ -4,109 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88047CCF2D6
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 09:26:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B02FCCF2DA
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 09:30:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIjdM-0003Jn-JI; Mon, 19 Oct 2026 05:26:20 -0400
+	id 1xIjgj-00068N-DM; Mon, 19 Oct 2026 05:29:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIjdH-00038X-CG
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:26:15 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ id 1xIjgh-00067f-Bn
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:29:47 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIjdF-0003Ai-Tk
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:26:15 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-8ac525c1f05so12587347b3.1
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 02:26:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792401972; cv=none;
+ id 1xIjgf-0003LE-Pk
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 05:29:47 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-8ac525c1f05so12611477b3.1
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 02:29:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792402184; cv=none;
  d=google.com; s=arc-20260327;
- b=bEd0Zoscn4CisO7MxwV73eVWbU1rHJ6D5pudhdNIltmZInndV23J80LSG/7bkFoWw7
- /u6383WX69ksFxdxX91Eh7ASPgXL4qW5xiz6nYCqT+pzZrEI4KoEFoI8UDUPTezc/dT2
- TWj8ULWicRs6ze2xLZ8VJb6BzOMGSXQCxL+Mf8P5kfLv272zDLXXRH0HgsVmBebCvSlx
- i6alydrYMXv/P9QCVn057kc1z8rYP/w3m+6GuwwVVO3KtMuEwFzta8hqDtAgFylQwLhc
- X1XpEbs+u2zra25iVe2CTaB8qX+GeINDa7WPQAokINdOwmsicEaaly6tpat1OMEKo6XC
- WQEg==
+ b=NuPQDzAVkTFnV4X1r1vnCV8m6bjdbnqlsGlogV0FjrDkKLwXFAIBr+MqsF2iNZMMTf
+ CkRLs3qmaat7eBcfLjaIydcv9JBwCMr1wllty6+18jXZimYN+0ipkAg2fsiJo7NwjmAI
+ CtVslMX3bZGwsxD5YCNpictTygRRoem2/MEIcYSBwV8Q/xybOvXnQpyfzWIVR+9RxO1/
+ i1imoffZaxXh8azSMWLnMUWWadSqEsY4DzAA9eP8EI3MQYo/MBxG9PefBv1SA5HVo/OQ
+ So2jWhllvudRgIDuqR50ecrwcFUg73x6iA+NBndlcbhjr4FXxBiz6XUbukoz9c5fvj0X
+ JfZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=K+sUOHqMJuWYC1Gv3HZka1+w61ATk4ITWajchGwQUUM=;
- fh=qCPFtfdTwSZnaTPI+Q6weJRB8WTmG5ycB76eKsGS568=;
- b=PCGHWs16xD40FzAP9b4/9DYm+MnDuXMfD2nn7iCFwnkh/xhh/0STsU1kCtxwPTZjkM
- fkOQhWydxyQSBIbqK9DogaMTxMezZiFv8NiWM4s182BUWixC/rdwXssuC0AU3m4LXe/f
- XahCDPnfq+nhtTp6+t0CBgNrPJ4klS5APBTWCpCHu1bhKCwC1qja4OMOYuHJ8NLVAmVn
- KABeG2czZ8LwEt1LFHavG1m+DOc1XPuuvIlwFDvfq+YgV3mqWuWLRomfwnZZse0lvE9w
- C4a2jwp3lpUelYaOFBiM9ke94qVU2vlBH/dM39/kv1obswcleqsV4fOUIsJjuPLL12qS
- ukRw==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=Wu/aJVrJjYsU7n16Y8vhi1YVFKpn9Ard0xiCuPPmtaE=;
+ fh=R3R353c33aU2sQisylhxeEFfrH2i76q0LRF5YYD0n80=;
+ b=FvC1Wvd8Dhp7MLsQbhiVfzxOMMHirO6GddaHJtU4/xMyIvrGV9shDjKPWYyT9eA6Lm
+ rTraohmTMst0RG8k1IJpaogKHUaw2ssmLr3d23cZE5Jsou502yvAvY2M0d9bYYzTMD/H
+ 1Iluh90S2UWy6PPkCjvH5H5bds7/WM20KGvuRd2DU+ZsBQgoSblvyDVocow+EgIUCsWZ
+ NSzs6HrNAFAhgXTyxU9FFPF5hDQeDMN17OvDdJEH0usw/SsyquyKq6sJWW4O4crVYa9J
+ NMFITfsgvHkA5B3jCqmDRHo7z0f1lKjrJfERck/W0z74v0lM02ULMenXHMl9ofG9QMyy
+ G+Lg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792401972; x=1793006772; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=K+sUOHqMJuWYC1Gv3HZka1+w61ATk4ITWajchGwQUUM=;
- b=WmCy4zz2sCTftSbAX0Mg7ezF6i4IpEEbaDXvg7+2Ugzrwd8y24oAY2U634UrTo4nUM
- APy5hBK3d8wWqnuRfLxYe8h3jygFs/jF2sFs925yXPTvsm2Qo5glrOxdAxsk0e7Pi74w
- ttUes1JM/NsFCGQbZ/oiUU2Zp1YobShnwRjkhlbPNZ8J2Ysn1Z2Ph/4TIYBOzOC3D6z5
- kxHJAX2qnNNukgPMYQUs1PEh3GznYYMrT563uWcdR5PlJ8P2qXBjXxOOh+SsS0JgvciW
- zbYgWYmUmB2rFf1/5BRBsMqDuQW7jVkYXqlBmVPTokfSA9SeV+fKU0LqhKr8XHAn8Mkf
- 02DA==
+ d=linaro.org; s=google; t=1792402184; x=1793006984; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=Wu/aJVrJjYsU7n16Y8vhi1YVFKpn9Ard0xiCuPPmtaE=;
+ b=AHrCL7twMCDT2lj3OjlhI39eKhTXbUwFQXk6naXjFbBDUiYc8hkt1Bl4lukjd1HJr4
+ 0cbcPxd6LVBb2tDbiNYGPa3V+7290C5r4tv8emFHxkRNOG74phPZxpRl9wBnYLMGRV8M
+ XpJ224LlIGjlPytPUTVFDbZ+WfvLNgD0Rc+gVMmV0Gb2XXHW0P3PopYwYNpDYNnOZN9l
+ Y3De9k1YFNicYqaQkOPH3Wkn/E84mcE0eWSxp2zGcu65cKawh3Zwm+aqWTf86SH7angW
+ q6Mosc1Pph7vUuflKzpwFFjhS93jbpdYSMAE8C7AlVUPEUqOe5ynwDe2MhNMS8U4Om+C
+ mOFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792401972; x=1793006772;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=K+sUOHqMJuWYC1Gv3HZka1+w61ATk4ITWajchGwQUUM=;
- b=r7PS5y49iq3XF7rTlaeYOmo4b4pt6urjNgTM/qUqiqAHc7A+Vas8o+NF5rDdpaaoG1
- LizRUw+wGHaKv/M5mHwG356OzanzF47Hg30WURnnwhsTF3MC0AsGwGWtQQ/DOiCVpemX
- jzz3Gnz70GT3HnPyNn+YR6gcaC/y38/eG64iADKPaHEgzXUtqpqFVvrHrypon7ixz9kE
- cZNTVX7zK2yTRfa9RyoiWwmuvbzPwtkT9j2VgkQQZ/IwsvnoDBzWJh1Ot0VCPGcNvJXX
- D9SEOZ1TlgqkvKgy2OYoqIN1dT2faaguvcsyMwxOTeh1CpqmbnZFX0fDWXlszB1l8T7D
- XMRQ==
+ d=1e100.net; s=20260707; t=1792402184; x=1793006984;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=Wu/aJVrJjYsU7n16Y8vhi1YVFKpn9Ard0xiCuPPmtaE=;
+ b=fByUAivfUccNguKNWux9S/d8+rAkjPWplGb6nGZH9jt05EQiO/vjJQoCirZFe0Jry/
+ FO7RrUbp7F4lQltVVgqZGk08OmMxeojvEmvXV8SSnYLOjhjAvt5jU0aU3bubY/yxReiR
+ IKlxdpy2lN+udoDo0o9t0h4sw6AskSmcDVpLbKRMI/DPmugtYwJtUUODWvwH6ItI1NfR
+ WRbulqRh3jx3G5WMD6HTmIRVnRnbegU0RrVHF7Ov3k1Q5KofVkWXFBIB5vEPH016zqb9
+ PsW1oIM1tSxNpm1IQEDQ4cSe7kQlc3xmUcmfS0y2A5TefAZo4vLpmyJ+3EQ1L/R4MbSd
+ Chwg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByq6jAoNohBp1PMueh6fvCHxAf3dvRpXGbFH2zgvGTa6eUOIdyOEBvjXcLEQKwYn/SCGIfB802I/Q==@nongnu.org
-X-Gm-Message-State: AFq9FYKX6dGXWY8k14zm82FqO5//qH1mA6t3qIbNmK2yyOFWQA0Sdjao
- P3l5/LWPbPh1YTkqtLcojjJc2Q8ufibC0bJYREjj5nXsJ1q9LGqdx9OnsSdh9QHWFOL0MHoagui
- hUzY9xuWtUgSKgOvorKS4Y/atD1Os+YLKMqmtyBthlQ==
-X-Gm-Gg: AYBFou0N0zv6VeFilMKBwlCwb0u0EFW02EoMdzXG8+aJ1F8/K6XpN0kNscqdXjw8un2
- CAHQuD9Ec0jeOdH5Ycrog+w4sS3RrOdmea5rx7HQGc2pOdH5rrcI6C80p/aPOHM8MybUxIxrfxy
- gwTZWgDYmC2O+fCIoq9acB/Ta8tOYWE+N4pHySub2dBtKAXfMqP0pQxk4y6eB9Dur/lKuZMfYCy
- 4FyHKSfkr/2ATsq4kopGoUatI0qNwzgexl9Hf4x6dnJzoXJJD2qljgkujMC0EKv/stLz+Wyy5ki
- Vcg1WJus2/6GBH6eueem9z/yxReILVrVgge1zIU1CjlOZ4vtOcnJidi4zLiCRaRXMD+U1r/mySX
- s37E8OmfEHxICge7QSEvzneugaAILIuF/txvnebLEukccnNkrzw==
-X-Received: by 2002:a05:690c:c507:b0:8b0:ad62:19ca with SMTP id
- 00721157ae682-8b0f2142987mr23530427b3.15.1792401972098; Mon, 19 Oct 2026
- 02:26:12 -0700 (PDT)
+ AKwUvByGiqJ8nMwOXcsKNDAVra9mxx8CF2uOE5SQhDvJ1816qtWS/hDrVMiSbGlOXUij4vmbQFjrAUP+jA==@nongnu.org
+X-Gm-Message-State: AFq9FYLmyOAaVzZhF3m9tE6AhS6mPxF9rJe4XQdJkhoToaMiaA8BQOAY
+ zRfW343/HdqkKlxEkDnjTD1eQu45Mn4P3lxzjUftEcC9VmnG1T3cwuGJR1cmo0gJJgdhhMG7l7f
+ cPQ6S1bQ2CXYODZrGrMe0X93o+g1z/9hZ3QwCzzzmwA==
+X-Gm-Gg: AYBFou3BqBX/hZ6ZS21J+Wwsz9K+rOeq4VFKhX1xmM0Wz7hh2gm48MqtsHnPnJ4xLia
+ gr/BZ1Zbg2x3wEs8RCDQi9fjxDCAOj8DVADndfTJCl7SKaSjKpql+hfcsFzwd0g5jCtLQPyEgQw
+ 6MD2x69Q6J7sao97eeqmTY85BDNYIpmGCv1jElr8ykgE60vadBmPIvIKfgRGYDe+VjIp84TGmqg
+ bruNRh78MecqgE/gBXG9vNhQNU+vgI4ZeYFaSlwD/Odwhmd8IUTF52L/p8GMWDEV69Eq33fMtWP
+ b3n/U4RRfSIpFYp6ELAdDcvQsHFS6lM+I8kQp1mapMM6/s/DI+IDvLTtrYmg4NYkUbQCS1NIxwv
+ vLoCpmV/GxMJxwJBRBozXPzZKacZM1FIhMUtvM6o=
+X-Received: by 2002:a05:690c:582:b0:8b0:ad5b:d466 with SMTP id
+ 00721157ae682-8b0f2169b86mr25778217b3.25.1792402184296; Mon, 19 Oct 2026
+ 02:29:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20261019024441.3554329-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20261019024441.3554329-1-jamin_lin@aspeedtech.com>
+References: <20261016094733.1898485-1-2118537295@qq.com>
+ <tencent_0D8D61C20611EC56598A6F86E7B869052E05@qq.com>
+ <87fqy23vag.fsf@draig.linaro.org>
+ <bbdf0c72-b842-4c06-b4d8-85c6613fb64f@huawei.com>
+In-Reply-To: <bbdf0c72-b842-4c06-b4d8-85c6613fb64f@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Oct 2026 10:25:58 +0100
-X-Gm-Features: AclHuK_cQ1YYp4Z2U_eo2-jzA9kk8--xLfqa3f7PuAFhRmf9jupm1MaOgm2SnJ0
-Message-ID: <CAFEAcA8fpUjzHCW=36_P_t=P7RLa7XN1xKJwJgaTdPywcK3rtw@mail.gmail.com>
-Subject: Re: [PATCH v1] hw/pci-host/aspeed_pcie: Fix global MSI setting during
- class initialization
-To: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: "marcelomanzo@gmail.com" <marcelomanzo@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Kane Chen <kane_chen@aspeedtech.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Troy Lee <troy_lee@aspeedtech.com>
+Date: Mon, 19 Oct 2026 10:29:32 +0100
+X-Gm-Features: AclHuK_83zqwDeRCTJnjFQoF8lhhb65lU7wQASrI2Z2OJ6aeMdRsqZRi4pGZUMA
+Message-ID: <CAFEAcA-vWJ2iMoGhF6kcKWH18cH=gy79X3-2PdQ_sNrz1-iJZA@mail.gmail.com>
+Subject: Re: [PATCH 01/37] target/arm: Add support for MPAM CPU registers
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Jinjie Ruan <2118537295@qq.com>, anisinha@redhat.com, armbru@redhat.com, 
+ eblake@redhat.com, imammedo@redhat.com, michael.roth@amd.com, mst@redhat.com, 
+ pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,48 +125,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 19 Oct 2026 at 03:44, Jamin Lin <jamin_lin@aspeedtech.com> wrote:
+On Mon, 19 Oct 2026 at 10:21, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 >
-> Setting msi_nonbroken in class_init() affects all machine types,
-> even when the ASPEED PCIe controller is not used.
 >
-> Move msi_nonbroken to realize() to ensure it is only set when
-> the ASPEED PCIe controller is realized.
 >
-> Reported-by: Marcelo Manzo <marcelomanzo@gmail.com>
-> Fixes: f002aa35f3205d55bbe4a68670ba19a6dcf1d6a8 ("hw/pci-host/aspeed: Add AST2600 PCIe config space and host bridge")
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> =E5=9C=A8 2026/10/19 17:16, Alex Benn=C3=A9e =E5=86=99=E9=81=93:
+> > Jinjie Ruan <2118537295@qq.com> writes:
+> >
+> >> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> >>
+> >> Add the MPAM system registers for TCG: MPAMIDR_EL1 (RO) reporting 64
+> >> PARTIDs and 4 PMGs, and MPAM0_EL1/MPAM1_EL1 (RW, of which only
+> >> MPAM1_EL1.MPAMEN is architecturally reset). Advertise FEAT_MPAM via
+> >> ID_AA64PFR0.MPAM for TCG CPUs.
 
-This should also be
-
-Cc: qemu-stable@nongnu.org
-
-> ---
->  hw/pci-host/aspeed_pcie.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> > Something is wrong with this thread, when I was reading the cover lette=
+r
+> > I couldn't find the rest of the thread. How did you post this series? I=
+t
+> > looks like the cover letter, first 16 and remaining patches where sent
+> > in separate batches?
 >
-> diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-> index b46eb74234..ceb010f213 100644
-> --- a/hw/pci-host/aspeed_pcie.c
-> +++ b/hw/pci-host/aspeed_pcie.c
-> @@ -181,6 +181,8 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
->      g_autofree char *dram_alias_name = NULL;
->      g_autofree char *root_bus_name = NULL;
+> Hi Alex,
 >
-> +    msi_nonbroken = true;
-> +
->      /* PCI configuration space */
->      pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
->      sysbus_init_mmio(sbd, &pex->mmio);
-> @@ -294,8 +296,6 @@ static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
+> Sorry, due to SMTP rate limiting, this series has been split into
+> multiple threads. The complete 37 patches are as follows:
 >
->      hc->root_bus_path = aspeed_pcie_rc_root_bus_path;
->      device_class_set_props(dc, aspeed_pcie_rc_props);
-> -
-> -    msi_nonbroken = true;
->  }
+> - cover letter:
+> https://lore.kernel.org/all/tencent_22E95650AA60C6E59860452C0D61A21F1105@=
+qq.com/
+>
+> - patch 1 ~ 16:
+> https://lore.kernel.org/all/tencent_0D8D61C20611EC56598A6F86E7B869052E05@=
+qq.com/
+>
+>
+> - patch 17 ~ 37:
+> https://lore.kernel.org/all/tencent_88B063FC15FDB4BD89164484DB67A9B61907@=
+qq.com/#t
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This is OK for initial first pass human review, but you'll need
+to fix this for future submissions, because it breaks the automated
+patch handling tooling. I do fix this up for first-time submitters
+for small series, but 37 patches is way too many to fix up by hand,
+so this isn't going to get applied unless it appears as a complete
+series in one thread on the list.
+
+Note that you don't need to *send* all 38 emails in one big lump,
+you just need to send them so they all have the right threading
+headers.
 
 thanks
 -- PMM

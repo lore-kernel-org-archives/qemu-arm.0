@@ -1,85 +1,86 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8A91606A328
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 16:19:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2B44606A31E
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Oct 2026 16:22:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=KgaeJa5M
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Ig050lYi
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xIq4r-0006Yg-Ow; Mon, 19 Oct 2026 12:19:10 -0400
+	id 1xIq8B-0007ay-Hw; Mon, 19 Oct 2026 12:22:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIq4q-0006Xv-4e
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:19:08 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1xIq8A-0007aQ-4i
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:22:34 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xIq4n-0000ZU-BJ
- for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:19:07 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-4a1dede3c2cso25710455e9.2
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:19:04 -0700 (PDT)
+ id 1xIq88-00010N-C4
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2026 12:22:33 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4a1635f7c89so22528285e9.2
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2026 09:22:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792426744; x=1793031544; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=JWKsK7Snh0t1KTXHB45+a2dEyoOgG32jtYKITcCtOtI=;
- b=KgaeJa5MsR3Ma9z2CB606P7AcD5UuZpScbzwY3uphgMMTtH+h+yvm7AnGinhIREIAv
- gZHT8gUMBC7Y1lPgm0D545ko/bCa5HoDqiWhC0T3zmibBnTGNHMEaCDlw9ZPqh5Hk8B5
- C3b34153/88KrSv/2qM0fjaH24opDYbG3uK510QQ2BpqBpHYy9NiXMHJ0otUt/qHK0G9
- rqW643stacRAwLI3y+h390cTEjSDmcacm56DmQvSUURXnDLDkBuY0UZyTfIH+XLqyY54
- tEgYWKKzTCqnAE/uoqE3bhXbrbhJCngCaoAXJ3/6nBCoxQePuFQycD3uvDo5LrCXEHkS
- xmEA==
+ d=linaro.org; s=google; t=1792426951; x=1793031751; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=Iick0y2AGxfKXDLVnntT9WyV/jbAX0Ak+ln5YPzpJ0o=;
+ b=Ig050lYiL8CXEIKyvLff7r6qP0COYDt3FqLjsucto+fnvzXBwR7Lex/szBlH7a1ruD
+ cxEfL2af5FsRWMr0sLVFDUVkGNztqHkOkdK3Vq3uqfosRe1P3OvBYBO8aJc+kMTWXzkS
+ O9OeVKarQkggGL7vNRzM83tF6wxqvB6WL6xaoFos7LjLgJgQARx/TS8diAIT6Vzm91Fd
+ lDmfeeCJTXZSf0M5EN3aBG80wih9QRyyjo80AFEffIG8yxHDRLXFtWPAS9zHCVXNV88r
+ MvzVMz1lXyjGZgJ32buvHddqPdhr3co8iguoG6kYePWzaU306bdfbPA8lwbj9TRIA+oS
+ qcsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792426744; x=1793031544;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=JWKsK7Snh0t1KTXHB45+a2dEyoOgG32jtYKITcCtOtI=;
- b=c3jh1y45mi7+0qTeYpSDs3qzcodfno+DQ6o9PFjzMUdphwZHNDU7anz6926XrO0C8P
- liI2zKZuXGkImVBH+Jt3jBuVj9XaKqqQWBKa/4TOd291ubXQGh5mx+J4cLtEiI+ZQS8y
- cVEgPcZr6LrNVjxTguOoQpsT1gYlG/oHxx2z6LtJw8LZds/eXrj/irALFf3OG0bw0pcI
- GF4x3l7sEOgjD0iKbUyCin2m+iarRRzFUm9WriVBAE/nvGMBDt1c3S2E1HGW4a+Jzi/N
- WkhxIJ+4jhz8YuK0vAIVlFtsQuCYiFMow9hqeDRAUi+H8ZD9JiZNa0pH1y+Y/NOQyWzz
- i7FQ==
-X-Gm-Message-State: AFq9FYJcIBy17KhXY40/wpiffiL34HndvCJu2/hD0d455EKOsqLq6qoc
- E+6dh9cHJNZAToQTOxLP2/yyyngFfL+eMiTJqHa9Xi9ZVuHdBHqfZTnOpen0e4ov4yofsnAwYeq
- GGbJ++kE=
-X-Gm-Gg: AYBFou1LRQfblydtRHCvy1VdLb1/cgD2edInLFSPGoJQg5u3WHAiU58AxgDJo/c7DPk
- yfDgnjVDMj5Hd69RqPxTOAK/7SWwC4dRHnu36qlooMnDMU7MVDilBcRg+VMdqq5iVvEq5dusvb5
- Jfu1vQsUgM4cE+8ms+vZTCKfpNFrwh1s9rqYrrXIm/fjyDwis7c+ELCGvZ9MN3ZkjY6J5XEc073
- B8DRo99HymR/UVvvcP2icK4zMFOcoycN5j7KJblhu4N7T5UyYrESamRNts9qPcLaJzxHR7hEcOq
- dKpUJ6BNjltYZorBwuDqy3qUOjJLhGEcbdxLXHq3KOGnGan0Ensp+/pCcCXRGWpkTyDd5QE9O8t
- LEkPm7Z59zcfoecFuTJ3IK21tTr8MvAkbE2adcc7jA0byEKNkRwDH4t9lZHf4sDVGWotncAe2I0
- jTTPfURzWjvXQccwYn4vHQpzBa3knDxKjrJPv9INy5Xt1hMfFcRkSvPyQWzWdpLPSVRyL5pD3o9
- lovDXrBawX5dMjG4eC0LO8O2EItsb26zfcwgZw8x+s0FhBlFW+kNhOgTKix/ngtYvJ3TltjLVJd
- M6c=
-X-Received: by 2002:a05:600d:849a:10b0:49f:e8bf:8f9b with SMTP id
- 5b1f17b1804b1-4a1d75af354mr127906835e9.4.1792426742771; 
- Mon, 19 Oct 2026 09:19:02 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1792426951; x=1793031751;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to:content-type;
+ bh=Iick0y2AGxfKXDLVnntT9WyV/jbAX0Ak+ln5YPzpJ0o=;
+ b=VEtSaG3gfLhlOBG2XTPPOZ2r0AEVyH0T/O1+GEoF++oeEcGXE2I2+QXmLNZ3TV6rds
+ oHzn9UOrBo4k+GqDNI5oCs6fzRQFljfSMTu4suGXlW6yHeWfoyL05y6+utDbljHfFOIH
+ E5c2GUP8k6+yJk81Kmwj4+jX+zhf+SWs3gK114pT1606CKktWah/dJzeNqJFd+FH6K+3
+ yc4H/ISZE090KvYTFbfU2IqNqHln6+B6CdMsxknmkpIGD/AL3vWlumOMccvuchgwGsKm
+ LzYI+rJpb0TQABq4arMcdAIch92IM+GhoSQg2qrJVl3/MuZ/7/On7FGYKcqKTptwv5P+
+ uZcw==
+X-Gm-Message-State: AFq9FYJb9pXG8W3EHa39NHbRxwUwH2slBs+Sl0pY5hNYyyaE67EEZ8b6
+ EieayFX7IvMSb14Mt1sRX7GCLfBQhO9B94rfa27asHwHUnruKvetnRrbIHyWtU9djc1KEGMWJxe
+ QVe6yEp8=
+X-Gm-Gg: AYBFou0Aqxk9047Q2aQUMEA+raWYdnWyyM/B7T23DYEnTe9oS5pRKB8svU8O39lVYQu
+ b+n8INgZAdVfTSiwN45YNztF0rcP+Nc2c3W2aix7KZD0ed5KbbzJj2Gw+h+2We4JrQz9GMXUYt9
+ gp42ndpGOoiPgGD2MiyJBb23UbL8q3oWkssJcRxH1Jg4a8i/oenhplJwT7Y/WN8JUBRuNEyN6Ra
+ B2a/huIGjDJivuMyD+/T2aC50nir+sEJtmq1997rgtdSceJqsViFE9SRpTgZsHaVJ7Pfyc1kJNH
+ i3/Ogn2fYlawYJT618m1usG9+OIZOh98OsQ/BgSJXGFZpZrKUH19pfGVBESOMUO3pdXn40P/xXH
+ EI6M77L/l4QUULAsKv39H07bjT9Wb/VY7rcDk9vrJLUNfsMRtlrYAqPNq/T2CZ82dPaZUC10rXB
+ 8lM4NySMsoIHnj0yk/fi4qraa7xXp8/296xCcYvQsRdnkUa8djIFdvxdvFvZ0LEchUyvydBtw/i
+ 8D8ocGS6eKD1XU3E6DTJaVaxCM606gnpDMd2vQ39O7E1ZqVnXonDUkgpHnmSbwt6jvEkS0RnpPr
+ IrB9Y9udWj9/cg==
+X-Received: by 2002:a05:600c:3547:b0:4a1:7c56:d4e2 with SMTP id
+ 5b1f17b1804b1-4a1d7608dcemr170293325e9.16.1792426950700; 
+ Mon, 19 Oct 2026 09:22:30 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1cca26dc8sm205855445e9.3.2026.10.19.09.19.01
+ 5b1f17b1804b1-4a1f2cdc342sm3100095e9.13.2026.10.19.09.22.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2026 09:19:01 -0700 (PDT)
+ Mon, 19 Oct 2026 09:22:29 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH] hw/misc/bcm2835_cprman: Treat invalid clock mux source select
- as GND
-Date: Mon, 19 Oct 2026 17:19:00 +0100
-Message-ID: <20261019161900.3271815-1-peter.maydell@linaro.org>
+Subject: [PATCH 1/4] hw/intc/exynos4210_combiner: Fix group register range
+ check
+Date: Mon, 19 Oct 2026 17:22:14 +0100
+Message-ID: <20261019162217.3272337-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261019162217.3272337-1-peter.maydell@linaro.org>
+References: <20261019162217.3272337-1-peter.maydell@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,33 +108,70 @@ X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The clock mux control registers in bcm2835_cprman have a 4 bit SRC
-field that selects the input clock source to use.  There are only 10
-valid SRC values.  Treat the invalid values as producing no clock
-output, as if the GND clock source was used or the mux was disabled.
-This avoids reading off the end of the mux->srcs[] array.
+The exynos4210 combiner has registers arranged in sets of 4:
+ offset 0x0: IIESR0 (handles interrupt groups 0..3)
+ offset 0x4: IIECR0
+ offset 0x8: IISTR0
+ offset 0xc: IIMSR0
+ offset 0x10: IIESR1 (handles interrupt groups 4..7)
+ offset 0x14: IIECR1
+
+and so on for a total of 16 sets of registers, which puts the final
+IIMSR15 at offset 0xfc.  After that come two registers which aren't
+grouped, ICIPSR0 at 0x100 and ICIPSR1 at 0x104.  The entire register
+memory region is thus 0x108 bytes.
+
+The logic which separates out the "offset is in one of the sets of
+registers" from "offset is one of the ICIPSRn registers" is
+incorrect, and so a write to offset 0x10448100 (which should be
+ICIPSR0) falls through into the code for handling accesses to a set
+of registers, and indexes off the end of the s->group[] array.
+
+For an input offset of, say, 0x3C, req_quad_base_n is 0x3, because
+this is in the 3rd set of registers.  grp_quad_base_n is then 0xC,
+because this set of registers handles interrupt groups 12..15, and we
+will index s->group[] with grp_quad_base_n through to grp_quad_base_n
++ 3.  IIC_NGRP is the size of the group[] array, and so we need to
+check grp_quad_base_n against it, not req_quad_base_n.
+
+Fix the bounds check, and add an assertion that the code path
+where we are beyond the register-set range isn't going to
+overrun its array, which we know to be true because of the
+size used for the MemoryRegion.
 
 Cc: qemu-stable@nongnu.org
-Fixes: fc9840850ba ("hw/misc/bcm2835_cprman: implement clock mux behaviour")
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4695
+Fixes: 8e03cf1eeb1f9e0 ("ARM: exynos4210: IRQ subsystem support.")
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4709
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/bcm2835_cprman.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/intc/exynos4210_combiner.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index f9a77ff9bb0..10cad07623d 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -271,7 +271,7 @@ static void clock_mux_update(CprmanClockMuxState *mux)
+diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
+index dbbdee4d316..4f079fedaff 100644
+--- a/hw/intc/exynos4210_combiner.c
++++ b/hw/intc/exynos4210_combiner.c
+@@ -91,8 +91,9 @@ exynos4210_combiner_read(void *opaque, hwaddr offset, unsigned size)
+     grp_quad_base_n = req_quad_base_n << 2;
+     reg_n = (offset - (req_quad_base_n << 4)) >> 2;
  
-     *mux->reg_ctl = FIELD_DP32(*mux->reg_ctl, CM_CLOCKx_CTL, BUSY, enabled);
- 
--    if (!enabled) {
-+    if (!enabled || src >= ARRAY_SIZE(mux->srcs)) {
-         clock_update(mux->out, 0);
-         return;
+-    if (req_quad_base_n >= IIC_NGRP) {
+-        /* Read of ICIPSR register */
++    if (grp_quad_base_n >= IIC_NGRP) {
++        /* Read of ICIPSR register. MR size ensures this must be in bounds */
++        assert(reg_n < ARRAY_SIZE(s->icipsr));
+         return s->icipsr[reg_n];
      }
+ 
+@@ -184,7 +185,7 @@ static void exynos4210_combiner_write(void *opaque, hwaddr offset,
+     grp_quad_base_n = req_quad_base_n << 2;
+     reg_n = (offset - (req_quad_base_n << 4)) >> 2;
+ 
+-    if (req_quad_base_n >= IIC_NGRP) {
++    if (grp_quad_base_n >= IIC_NGRP) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "exynos4210.combiner: unallowed write access at offset 0x"
+                       HWADDR_FMT_plx "\n", offset);
 -- 
 2.43.0
 

@@ -1,165 +1,120 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87235606A31D
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:50:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3464606A31C
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:50:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=SLlkQpRv
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=h69dCYmf
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Nm-0001vx-SL; Tue, 20 Oct 2026 06:47:51 -0400
+	id 1xJ7Je-0004CO-P3; Tue, 20 Oct 2026 06:43:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Mi-0000iR-0C
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Mf-00059u-V7
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493201;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=W4iwz5jM7eZNLXaBc15ajfHMaIvbcteyV5+hzYG/iP8=;
- b=SLlkQpRvaUYUG3WJCK0MK/novWAKX5fb8GoR3DH+FLV5vovW2jNUuS2tNB9w44mGJZ0wCM
- THyWMJ3mr25+tTwey2GLVsrtPKuC7zq8n4GQj+34/s6ICAEVtXZuDYEUw1QzSzPhRNGRfA
- dVa5V+iAbfF11YR6OezIKKmvrnFb8vY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-300-zY61osTGPTaA1pnSKnNHFQ-1; Tue,
- 20 Oct 2026 10:46:38 +0000
-X-MC-Unique: zY61osTGPTaA1pnSKnNHFQ-1
-X-Mimecast-MFC-AGG-ID: zY61osTGPTaA1pnSKnNHFQ_1792493194
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5CC261955D69; Tue, 20 Oct 2026 10:46:33 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 14CBF30000E7; Tue, 20 Oct 2026 10:46:29 +0000 (UTC)
-From: marcandre.lureau@redhat.com
-Date: Tue, 20 Oct 2026 14:45:21 +0400
-Subject: [PATCH v7 04/65] qapi/introspect: Don't elide types
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJ7Jc-000490-0d
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:32 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJ7JU-0004JS-Or
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:30 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4a1e266fca2so15990375e9.3
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 03:43:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792493003; x=1793097803; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=3NNeDfISu2gpg9ZYXN0W5UQrgwObRlFXGjX8CXeq/qY=;
+ b=h69dCYmfoPKNF1jFib4GFauJXecSl7LUYpU07Fszgl4Ef2VzCTxYoLXOFfNZ/Xd7BZ
+ Dfh8ChJqacvyiwHu/tO+UW/cNyjBZtBzrxjnWaHNvvriyjAOrixW+F+JadSQOlpNZYuN
+ a40TFL8m/x7XsWNJh1ePuL8ZH5BvwA+kw1MEMhTg3zXJe/yKlxO/mEiZZfnMGnE3EvnB
+ FhZq4H1ezyB1sPCejQ92hiocdyLhvRVPd9wR0Jmwu4A9HjEJ5u7SsrqPqNw3mwXGerLs
+ qRb9v0ASlPuskDVgEIbYwxDzwoiQEiy2JPwgwOH5Mm1XJh84QoxFOuplA49sekqlCfTr
+ Y9CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792493003; x=1793097803;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=3NNeDfISu2gpg9ZYXN0W5UQrgwObRlFXGjX8CXeq/qY=;
+ b=JVgzKQCgh7m83cHf1bgrZRn3UHg8U8lcWqbEFIkMv35xIFuTC0Do/b5KrQebNyRCiv
+ b34c+q9V/9l6GTU/XmOCsfpd1+bAcdkDDA9QoHmxMZis73CovbjOFvAWzz/+a1bPr6Xq
+ UQeTnrQzGypxmsYZvOFtMjRwA6Nq7RIMQ+jRA/6xRWeiuJehuVr7htCARMk98zqOe28z
+ ohjgzVeif0qc3IRHb71BbHcKNlMGonrWTtCWy6Wb3Fd0LX8TjHF4UNyoEcAKxvl/EO8S
+ ZRN9qXeM3HInBPQwcLiwe3xiNKISJEQTpSdv4KA7AzJSmBbS/ydikQC8QBXm+cn1B7ts
+ 8dRg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBynUsNGMhIl8KWRP9XUEJcUwgEU/WiUAXLSjnR+S+NZWBB3kmRKuMhkF3GNxrxF2yhjOXaK3ikn4A==@nongnu.org
+X-Gm-Message-State: AFq9FYJ+VkR79KpwPgH557tk7TG50i1Rl4wDO+hQ8CUUYxkByiDg9hTT
+ vdcLlA/BPQ3G519audfs4+QTIlVdtD/4wWx7FRkn+jJAPM26vS9p4QO7UGIMArffdQY=
+X-Gm-Gg: AYBFou0u64ddNythRaL7wMMQMquDPypMU6UGg3tMvAE4HzMGL7PyL5Q20PNkVPrkADT
+ SuhGWzYxcbjOwbur2GW17Qjk7v6ruHXlV4S8KjC+U63HMG/L4t/63LiW/xHbiwO3g2JPwBxt8b4
+ cSllE9d2g/vcmbc8wWk4c+BpXxYlzOLoQdO9TX9kncvBeKt0WSeFs+aXwolMWrj3w54YK8FnurU
+ J4tKvUSIUfK5B/FqL+R/0c9Jdh0YhVKMHOVCqVD4ntYc3jky7UNUTZ1vD5xOqjLu6zB7Kf0iE9U
+ XlfLvczA3VkYV+VdjLjnZJhwajpn+G7vywDvqfWwGDpuS11tIW7BL+0d2PNuLd6NN7oor2oBVMQ
+ dOdM1wnn3LEB176cSB8bGavG4IrD5GSMXCcorSTtONYdG9aqDc/S1XTOF1M70i4mk0heAA8xHV2
+ WBsbik+3boSxRgmJNz2wyz3bPsRRS2iF+EKgY4Dea/eo7qG0/LEdYTIdd+Sd4aL0QTwu/5De6cz
+ IpSiqZ1
+X-Received: by 2002:a05:600c:608e:b0:4a1:e08e:46b5 with SMTP id
+ 5b1f17b1804b1-4a1e08e4871mr157389645e9.16.1792493003076; 
+ Tue, 20 Oct 2026 03:43:23 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a1ce325107sm289903195e9.3.2026.10.20.03.43.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Oct 2026 03:43:21 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 37ED55F8DC;
+ Tue, 20 Oct 2026 11:43:20 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Bibo Mao <maobibo@loongson.cn>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+ Song Gao <17746591750@163.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ David Hildenbrand <david@kernel.org>, Bernhard Beschow <shentey@gmail.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Paul Durrant <paul@xen.org>,
+ =?UTF-8?q?Bj=C3=B6rn=20Walk?= <bwalk@linux.ibm.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-s390x@nongnu.org,
+ David Woodhouse <dwmw2@infradead.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-ppc@nongnu.org,
+ Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org,
+ qemu-arm@nongnu.org, linux-edac@vger.kernel.org,
+ Glenn Miles <milesg@linux.ibm.com>, Chao Liu <chao.liu@processmission.com>,
+ Cornelia Huck <cohuck@redhat.com>, Gautam Menghani <gautam@linux.ibm.com>,
+ Xianglai Li <lixianglai@loongson.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Chinmay Rath <rathc@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Amit Machhiwal <amachhiw@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Weiwei Li <liwei1518@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 00/23] kvm: introduce KVMCPUOps
+Date: Tue, 20 Oct 2026 11:42:54 +0100
+Message-ID: <20261020104320.3686723-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-4-431a86b02b58@redhat.com>
-References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
-In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, 
- Michael Roth <michael.roth@amd.com>, John Snow <jsnow@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, Eric Blake <eblake@redhat.com>, 
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Jason Wang <jasowangio@gmail.com>, Marcelo Tosatti <mtosatti@redhat.com>, 
- kvm@vger.kernel.org, Alberto Garcia <berto@igalia.com>, 
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Zhao Liu <zhao1.liu@intel.com>, Jonathan Cameron <jic23@kernel.org>, 
- Junjie Cao <junjie.cao@intel.com>, Anisa Su <anisa.su@samsung.com>, 
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, 
- Jagannathan Raman <jag.raman@oracle.com>, 
- John Levon <john.levon@nutanix.com>, 
- Thanos Makatos <thanos.makatos@nutanix.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-block@nongnu.org, 
- linux-cxl@vger.kernel.org, qemu-s390x@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>, Sergio Lopez <slp@redhat.com>, 
- qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Chao Liu <chao.liu@processmission.com>, qemu-riscv@nongnu.org, 
- Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>, 
- Xianglai Li <lixianglai@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Pedro Barbuda <pbarbuda@microsoft.com>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Amit Machhiwal <amachhiw@linux.ibm.com>, qemu-ppc@nongnu.org, 
- Zhang Chen <zhangckid@gmail.com>, Li Zhijian <lizhijian@fujitsu.com>, 
- Alistair Francis <alistair@alistair23.me>, Alexander Graf <graf@amazon.com>, 
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
- zhenwei pi <zhenwei.pi@linux.dev>, Ani Sinha <anisinha@redhat.com>, 
- Luc Michel <luc@lmichel.fr>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Samuel Tardieu <sam@rfc1149.net>, "Denis V. Lunev" <den@openvz.org>, 
- FangSheng Huang <FangSheng.Huang@amd.com>, Tyrone Ting <kfting@nuvoton.com>, 
- Hao Wu <wuhaotsh@google.com>, Keith Busch <kbusch@kernel.org>, 
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
- Aditya Gupta <adityag@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>, 
- Conor Dooley <conor@kernel.org>, 
- Sebastian Huber <sebastian.huber@embedded-brains.de>, 
- Halil Pasic <pasic@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Jason Herne <jjherne@linux.ibm.com>, Titus Rwantare <titusr@google.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony PERARD <anthony@xenproject.org>, Peter Xu <peterx@redhat.com>, 
- Chinmay Rath <rathc@linux.ibm.com>, 
- Hendrik Brueckner <brueckner@linux.ibm.com>, xen-devel@lists.xenproject.org, 
- Roman Bolshakov <rbolshakov@ddn.com>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, Fam Zheng <fam@euphon.net>, 
- Farhan Ali <alifm@linux.ibm.com>, Alex Williamson <alex@shazbot.org>, 
- Tao Tang <tangtao1634@phytium.com.cn>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, 
- Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
- Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5331;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=mh48JZUSGfIpAp1DsQ/GZxfBrxYDTkjYALDPFWkE2w0=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZXTj6BLvZgq0XBaDnDR415+cGHcMUxi/2dk
- ZicZ3/0CO+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGVwAKCRDa6OEJdZac
- 5cNFEACs0g3nYzOw9mcOrDPnlJXKJuNeci0n6VbAEXZsFCZ1u4JNtS1ifs+0pHvISJaoZta0my6
- lvkGupWdwq079dv7nvmOoT5lGQxsx41FDbzeMAh2AqGRiaoTGIR34hQFf3sOLgmZraxp30Lt33v
- I9FftBFuBgNH1cHh44kywesPPVrmlfX1fGV1hURBsBolTEkpUT+VNW3Si1XrztZk2PXf1zupIB1
- 6v4kYskKQkdj6v95qbfwBDHaMsgyUWRuc4dE9BsDkCCULJcdcOw0jQy+xkShVjgbTzRG/spQtdm
- OJgHTTwkqlLpLSzKkiZiWk130rNvNbU9ZPZZ7pWrSjD87w4sUoVTVlLNx7btfbj6VpkVI/lsNHX
- eXEv52qGqAcZCZptkK8oP/CIE6nCQvMdxcZ31fqe3HxosbVA5tVjhnoeC/tQyiJZuiyExxkFiJ7
- 0ZbpjT/AIjGFffTJ3IYXzUgPfgdB1arCF3YD86a2cQEZgHpGQtJ675JNQAPfC7Gbgpu/znK2Txl
- QskafbOYE8+L5oukgyV+eYRWnqzZsRIXJeUrRhCXcOW2+NOIDZyh5yfQvEaIefITC4ILWuwtEEF
- F1kFYI7xr5ozlv5mmkOq6tEUPt+N9cLcy/vZVW0O4PEQCCt0FJuN5TvgfUPN9YjLObVm6vjQw9L
- JjRCn7EZx7/9Trw==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: eI7IK1M9j9QA0VcoP3bkmipxNNrAKk5NRiv4U4JsWwc_1792493194
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -171,144 +126,111 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Markus Armbruster <armbru@redhat.com>
+There is a world coming where we can have a KVM interface which
+supports multiple architectures. The old style approach of using
+linking to resolve per arch kvm_arch_foo handlers won't scale and is
+also slightly antithetical to the flexible not-quite object orientated
+way we do things in QEMU.
 
-query-qmp-schema elides types not reachable from commands and events.
-It currently emits 1251 out of 1385 definitions, and elides 134 types.
-Whether that's worthwhile is debatable.
+Taking TCGCpuOps as a reference this implements KVMCpuOps as the
+shared function dispatcher for CPU specific KVM operations.
 
-Marc-André Lureau would like to make QOM introspection (qom-list &
-friends) refer to QAPI types.  We additionally need types reachable
-from QOM properties.
+A couple of open questions:
 
-Unfortunately, the QAPI generator knows nothing about QOM properties.
+  - should we consider some sort of shared AccelInfo region for
+  CPUState instead of a bunch of mutually unused bits
+  - how can we improve coverage of KVM testing?
 
-We could manually mark the QAPI types to elide, or the QAPI types not
-to elide even though they are not reachable from commands and events.
-Feels very much not worthwhile to me.
+The main driver for writing:
 
-We could conservatively approximate "reachable from QOM properties" by
-"available for use with QOM properties".  These are the built-in and
-user-defined types, and their arrays.  With that, we'd elide just 38
-out of 1385 definitions.  Too few to be worthwhile.
+  Message-ID: <20261019192704.3220373-1-alex.bennee@linaro.org>
+  Date: Mon, 19 Oct 2026 20:26:45 +0100
+  Subject: [PATCH v3 00/19] testing/next: functional testing updates for gdb (pre-PR)
+  From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 
-Simply emit everything.
+was so I could be sure the KVMCpuOps where properly working. I don't
+think we have that much that exercises KVM in our CI system anyway
+because most runners don't give access to HW virtualisation. I have
+tested this on:
 
-Output of query-qmp-schema grows from 247KiB to 274KiB for me.
+  - x86_64 (on my dev box)
+  - aarch64 (on my personal dev box and the aarch64 ci machine)
+  - s390x (on devcloud instance, same as the s390x runner)
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- docs/devel/qapi-code-gen.rst |  2 --
- scripts/qapi/introspect.py   | 31 ++++---------------------------
- 2 files changed, 4 insertions(+), 29 deletions(-)
+Notably I wasn't able to test the riscv64, loongarch64 or ppc64
+behaviour. I do have access to the OSUL ppc runner but it doesn't
+support nested virt and testing on that machine needs some love anyway
+(see #3207).
 
-diff --git a/docs/devel/qapi-code-gen.rst b/docs/devel/qapi-code-gen.rst
-index b1cc5b5f0db1..77f08bb68cac 100644
---- a/docs/devel/qapi-code-gen.rst
-+++ b/docs/devel/qapi-code-gen.rst
-@@ -1250,8 +1250,6 @@ JSON array of strings.
- To examine a type, start with a command or event using it, then follow
- references by name.
- 
--QAPI schema definitions not reachable that way are omitted.
--
- The SchemaInfo for a command has meta-type "command", and variant
- members "arg-type", "ret-type" and "allow-oob".  On the wire, the
- "arguments" member of a client's "execute" command must conform to the
-diff --git a/scripts/qapi/introspect.py b/scripts/qapi/introspect.py
-index 49d1ed2897e8..15302ecf155a 100644
---- a/scripts/qapi/introspect.py
-+++ b/scripts/qapi/introspect.py
-@@ -28,9 +28,7 @@
- from .schema import (
-     QAPISchema,
-     QAPISchemaAlternatives,
--    QAPISchemaArrayType,
-     QAPISchemaBranches,
--    QAPISchemaEntity,
-     QAPISchemaEnumMember,
-     QAPISchemaFeature,
-     QAPISchemaIfCond,
-@@ -175,7 +173,6 @@ def __init__(self, prefix: str, unmask: bool):
-         self._unmask = unmask
-         self._schema: Optional[QAPISchema] = None
-         self._trees: List[Annotated[SchemaInfo]] = []
--        self._used_types: List[QAPISchemaType] = []
-         self._genc.add(mcgen('''
- #include "qemu/osdep.h"
- #include "%(prefix)sqapi-introspect.h"
-@@ -187,10 +184,6 @@ def visit_begin(self, schema: QAPISchema) -> None:
-         self._schema = schema
- 
-     def visit_end(self) -> None:
--        # visit the types that are actually used
--        for typ in self._used_types:
--            typ.visit(self)
--        # generate C
-         name = c_name(self._prefix, protect=False) + 'qmp_schema_qlit'
-         self._genh.add(mcgen('''
- #include "qobject/qlit.h"
-@@ -205,32 +198,12 @@ def visit_end(self) -> None:
-                              c_string=_tree_to_qlit(self._trees)))
-         self._schema = None
-         self._trees = []
--        self._used_types = []
--
--    def visit_needed(self, entity: QAPISchemaEntity) -> bool:
--        # Ignore types on first pass; visit_end() will pick up used types
--        return not isinstance(entity, QAPISchemaType)
- 
-     def _name(self, name: str) -> str:
-         assert self._schema
-         return self._schema.definition_introspection_name(name, self._unmask)
- 
-     def _use_type(self, typ: QAPISchemaType) -> str:
--        assert self._schema is not None
--
--        # Map the various integer types to plain int
--        if typ.json_type() == 'int':
--            type_int = self._schema.lookup_type('int')
--            assert type_int
--            typ = type_int
--        elif (isinstance(typ, QAPISchemaArrayType) and
--              typ.element_type.json_type() == 'int'):
--            type_intlist = self._schema.lookup_type('intList')
--            assert type_intlist
--            typ = type_intlist
--        # Add type to work queue if new
--        if typ not in self._used_types:
--            self._used_types.append(typ)
-         return self._name(typ.name)
- 
-     @staticmethod
-@@ -295,6 +268,8 @@ def _gen_variant(self, variant: QAPISchemaVariant
- 
-     def visit_builtin_type(self, name: str, info: Optional[QAPISourceInfo],
-                            json_type: str) -> None:
-+        if json_type == 'int' and name != 'int':
-+            return
-         self._gen_tree(name, 'builtin', {'json-type': json_type})
- 
-     def visit_enum_type(self, name: str, info: Optional[QAPISourceInfo],
-@@ -312,6 +287,8 @@ def visit_enum_type(self, name: str, info: Optional[QAPISourceInfo],
-     def visit_array_type(self, name: str, info: Optional[QAPISourceInfo],
-                          ifcond: QAPISchemaIfCond,
-                          element_type: QAPISchemaType) -> None:
-+        if element_type.json_type() == 'int' and name != 'intList':
-+            return
-         element = self._use_type(element_type)
-         self._gen_tree(name, 'array', {'element-type': element}, ifcond)
- 
+Anyway I await your discussion ;-)
+
+Alex.
+
+Alex Bennée (23):
+  accel: introduce KVMAccelClass and KVMCPUOps
+  target/i386: wire up empty KVMAccelCPUClass
+  target/ppc: wire up empty KVMAccelCPUClass
+  target/riscv: wire up empty KVMAccelCPUClass
+  target/arm: wire up empty KVMAccelCPUClass
+  target/s390x: wire up empty KVMAccelCPUClass
+  target/loongarch: wire up empty KVMAccelCPUClass
+  accel/kvm: port kvm_arch_pre_run to KVMCPUOps
+  accel/kvm: port kvm_arch_post_run to KVMCPUOps
+  accel/kvm: port kvm_arch_handle_exit to KVMCPUOps
+  accel/kvm: port kvm_arch_process_async_events to KVMCPUOps
+  accel/kvm: port kvm_arch_[put|get]_registers to KVMCPUOps
+  accel/kvm: port kvm_arch_pre_create_vcpu to KVMCPUOps
+  accel/kvm: port kvm_arch_init_vcpu to KVMCPUOps
+  accel/kvm: port kvm_arch_destroy_vcpu to KVMCPUOps
+  accel/kvm: port kvm_arch_vpcu_id to KVMCPUOps
+  accel/kvm: port kvm_arch_update_guest_debug to KVMCPUOps
+  accel/kvm: port kvm_arch_[insert|remove]_hw_breakpoints to KVMCPUOps
+  accel/kvm: remove TARGET_KVM_HAVE_GUEST_DEBUG
+  accel/kvm: port kvm_arch_stop_on_emulation_error to KVMCPUOps
+  accel/kvm: port kvm_arch_on_sigbus_vcpu to KVMCPUOps
+  accel/kvm: cache KVMCPUOps
+  accel/kvm: remove redundant ops checks for kvm_get_cpu_ops
+
+ docs/specs/acpi_hest_ghes.rst           |   3 +-
+ configs/targets/aarch64-softmmu.mak     |   1 -
+ configs/targets/i386-softmmu.mak        |   1 -
+ configs/targets/loongarch64-softmmu.mak |   1 -
+ configs/targets/ppc-softmmu.mak         |   1 -
+ configs/targets/ppc64-softmmu.mak       |   1 -
+ configs/targets/riscv64-softmmu.mak     |   1 -
+ configs/targets/s390x-softmmu.mak       |   1 -
+ configs/targets/x86_64-softmmu.mak      |   1 -
+ include/accel/kvm/cpu-ops.h             | 171 ++++++++++++++++++++++
+ include/hw/core/cpu.h                   |   3 +
+ include/system/kvm.h                    |  42 +-----
+ include/system/kvm_int.h                |   2 -
+ target/i386/kvm/kvm_i386.h              |  20 +++
+ accel/kvm/kvm-accel-ops.c               |  13 +-
+ accel/kvm/kvm-all.c                     | 183 +++++++++++++++++-------
+ accel/tcg/cpu-exec.c                    |   2 +-
+ hw/i386/kvm/xen_evtchn.c                |   6 +-
+ hw/intc/openpic_kvm.c                   |   4 +-
+ hw/intc/spapr_xive_kvm.c                |  10 +-
+ hw/intc/xics_kvm.c                      |   6 +-
+ target/arm/kvm.c                        |  96 +++++++------
+ target/i386/kvm/kvm-cpu.c               |  26 +++-
+ target/i386/kvm/kvm.c                   |  42 +++---
+ target/loongarch/cpu.c                  |   8 +-
+ target/loongarch/kvm/kvm.c              |  96 ++++++-------
+ target/ppc/kvm.c                        |  75 +++++-----
+ target/riscv/kvm/kvm-cpu.c              |  95 +++++-------
+ target/s390x/kvm/kvm.c                  |  89 +++++++-----
+ 29 files changed, 628 insertions(+), 372 deletions(-)
+ create mode 100644 include/accel/kvm/cpu-ops.h
 
 -- 
-2.56.0.116.g6de20f6092dc
+2.47.3
 
 

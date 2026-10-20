@@ -1,58 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FC8C606A319
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:15:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A827606A32F
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:16:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Y36V/X5b
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Z8lS75wz
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Od-0003BT-FY; Tue, 20 Oct 2026 06:48:48 -0400
+	id 1xJ7Td-0003f8-Jx; Tue, 20 Oct 2026 06:53:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7NT-0001Gw-28
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:38 -0400
+ id 1xJ7Ql-0008GM-HS
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:50:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7NN-0005Hq-Po
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:28 -0400
+ id 1xJ7Qh-0006P3-6E
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:50:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493243;
+ s=mimecast20190719; t=1792493449;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=T3j8f+7qjazkHlU3ibuflAeMZnSK6eTgFQwyyu7+HY4=;
- b=Y36V/X5bILt/yVyj3JcN5YEY+D/Pdd2UJe/MWZS+6k9HQPglhJgmCXh26TiKlhZcID/67o
- PSX08uhX32U6ib35PyNQgF9PnQkuGgtvthdGfl3aVJjweYCPmfOKROrUnGBBvnomVj9Eix
- G/14YwfwEMj7EEzUDbbuyV6aA7epQ84=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=S8kTexksySb92RkWPQob17KtLeYJq8y0yNIndqLcc+s=;
+ b=Z8lS75wzcChZmK+IAj6UeCAhW/MWPErgMN2qYB8ST7M3+q3Uy2VKFA4briUSK6R+o9vV8H
+ UGFNaMCg3XyO8loeItTDoprLyfbynuecsGl7YGs2boQeHeokzqX/hgrfnIZB+mfFAzluJt
+ ogZDpTugsOtDeDdUysCqaHO5WijGr8I=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-261-ihbyk2kzMnWd3H-QsJ0KOQ-1; Tue,
- 20 Oct 2026 10:47:20 +0000
-X-MC-Unique: ihbyk2kzMnWd3H-QsJ0KOQ-1
-X-Mimecast-MFC-AGG-ID: ihbyk2kzMnWd3H-QsJ0KOQ_1792493236
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-7M2NqJufMDOobZCWpwZs9w-1; Tue,
+ 20 Oct 2026 10:50:45 +0000
+X-MC-Unique: 7M2NqJufMDOobZCWpwZs9w-1
+X-Mimecast-MFC-AGG-ID: 7M2NqJufMDOobZCWpwZs9w_1792493441
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EFDAD18007F6; Tue, 20 Oct 2026 10:47:15 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5E3CE1954AF3; Tue, 20 Oct 2026 10:50:41 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AC08B1800586; Tue, 20 Oct 2026 10:47:12 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 4CA251956095; Tue, 20 Oct 2026 10:50:38 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:45:28 +0400
-Subject: [PATCH v7 11/65] qom: add qapi_type field to ObjectProperty
+Date: Tue, 20 Oct 2026 14:46:06 +0400
+Subject: [PATCH v7 49/65] include: add QEMU_REPEAT helper macro
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-11-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-49-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -127,38 +127,38 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1530;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5069;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=2OIgxeWqZ6otP2YGCtYtdyJ3HEK4Fvyx/L7bWvHPHdk=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZYjp5Y+KqlnMbXKVbPp8oeCxnUXz1KL4/P8
- K4p+GJF/R2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWAAKCRDa6OEJdZac
- 5TnHEACR1GhcDzcI8DmQKfHIpJvlmkNBtahkon1/NhI0x7islO7obbKLlwPWCy4wQP0LWmjiFde
- xdHBmPABE8w+GBhIOHh7SA0bED9tVk5Z/KKlUlLW05WmHAclgZP0w/6d5wvOkytAsYlsqG3VRxy
- pzheoaZub7M/f1Vel44KT2PyTTkmTa/qOXxEwlb0xyleSWHAWJ9YwJZGDMVgrIazoCrrCjuu3I7
- iTedHPzNeu958dcqBAk2k83xJ9h7d8l/nOwWQBatA7434OZv4mQjeA8o1Ofgcbi65KOPJGxySd/
- zpF8bho145/tHV1hb2kOE9AJZWK5EagdnYfGHXBmTDKlj+Th/DTIwXSf5tt/sZhF0vRDi1iPq/I
- LKCOU9KvJA+kSgItubIrwmplrAZNenxsHtooqhUGlhbPvcmEcxvBEYCswzXAevfatbwJoe7DFxw
- Q+8H0wl+PDfMBiyBB0MAjrQjDNAgi3DiW+nG2xFvGonrsvQbamKdlaKdTC0x/2QCSiZM65jfyJv
- qZtODKR7Ucan3Z0MVy9Ve7TFMgJLRkBuEHYeUxKnLwFChoZ5UPUii0h9F/SrqgDGCI5+Y7VLkFR
- PA/35B9aACGPcf7BnkarTv8euSmDQVmF5eXIH82cCmx+dLkD7Y0WERC0r9g9iDHW6Ux3KE0GVqX
- 9APAXx+LTkI4QMg==
+ bh=QfToyuYJOLlF7sVISH3TkcbrVSBGm2Ii2KsCu8httjE=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZctD1NQTngqU/jBCkEfMek9xa0vMpb6NJE8
+ n3GhucWk+2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
+ 5Ql3D/wOI62xjJd8gtsu1K015Mj1esGNk3N1OdLVzhvzC8XbQvPEjY9tEjanTvUT/tSDkebzQqp
+ wfSbuNHZo2LWhz4d7Wb0804H4k/QbpWXXItKX82506hR5MwcSm8hUjY/X6b3sz99rcdsWT0OYuB
+ N2PLFvmXrXrT34rd2lk3l9IEv008VGElWvHn+lGOsyEFdIi/zoDQuQTkGXQNX9r8iwDerholxzT
+ +YZ5vO9NOWYzlEcvAPuA1dqTZKv0M9sHG++CE+6rKm7la2iiLolf0dIPC9Lek616L5XTeNy7Con
+ EF8tZhpLovhA6XrZr2f/PiaJxHf5yCU0Sq0nNl8Fbybo63RLmGHKN3Eu3hwqRCLDy9l1/5v++ol
+ S9hoHIJukwRZWnX0ts9nDy7TeFwjlL2jTa5zYCWg9W7/sdnOtFpaRYdj/lgqkMlTa+D86mUvx9a
+ 9InKktX0yyqWi5G5hNKi9NOS0lo8H7z0cS/vAMcv16S106YylJ7/t+pIcH0uo8VsZZRuXZ7h/LE
+ P4apvjyFIb53bu2HO5H2KfwPzrSgW8jM6CGO9+0RBtkG7nQ+6OYilLtspSRo2mGJD8ejzD5m8U6
+ /mj9N3MBuGZckwN2lJSTywe0n7qy4Ybb5v/f4A7HZtbB78gEulqlZppqsvIUcivzHg3tITYzqlL
+ tsVVC+qXxIFzhWg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 0bY-n5GMQPrPvo4lIjRR3ZOBOdjXqrKSAIvCsicUxm0_1792493236
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: fC6Mj-5F9FMGgdxOWzaaXwYmGfRP6NU8y7EyBlmhFaE_1792493441
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -177,50 +177,141 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add a const pointer to QAPITypeInfo in ObjectProperty. NULL for now,
-but future patches will add means to make it non-null. The
-QAPITypeInfo will then be used by QOM introspection to tie the
-property to a QAPI type.
+Introduce a macro used in following commit, and convert a few existing
+candidates. Inspired by a similar macro in Linux kernel/trace/bpf_trace.c
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/qom/object.h | 2 ++
- qom/object.c         | 1 +
- 2 files changed, 3 insertions(+)
+ hw/misc/tz-ppc.c               | 19 ++-----------------
+ hw/remote/vfio-user-obj.c      | 17 +++--------------
+ include/hw/cxl/cxl_component.h |  5 +----
+ include/qemu/osdep.h           | 33 +++++++++++++++++++++++++++++++++
+ 4 files changed, 39 insertions(+), 35 deletions(-)
 
-diff --git a/include/qom/object.h b/include/qom/object.h
-index 90c1a34e49aa..e9b380462ded 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -15,6 +15,7 @@
- #define QEMU_OBJECT_H
+diff --git a/hw/misc/tz-ppc.c b/hw/misc/tz-ppc.c
+index 6f820430eed8..5f09ce164c19 100644
+--- a/hw/misc/tz-ppc.c
++++ b/hw/misc/tz-ppc.c
+@@ -303,26 +303,11 @@ static const VMStateDescription tz_ppc_vmstate = {
  
- #include "qapi/qapi-builtin-types.h"
-+#include "qapi/qapi-type-info.h"
- #include "qemu/module.h"
+ #define DEFINE_PORT(N)                                          \
+     DEFINE_PROP_LINK("port[" #N "]", TZPPC, port[N].downstream, \
+-                     TYPE_MEMORY_REGION, MemoryRegion *)
++                     TYPE_MEMORY_REGION, MemoryRegion *),
  
- struct TypeImpl;
-@@ -91,6 +92,7 @@ struct ObjectProperty
-     char *name;
-     char *type;
-     char *description;
-+    const QAPITypeInfo *qapi_type;
-     ObjectPropertyAccessor *get;
-     ObjectPropertyAccessor *set;
-     ObjectPropertyResolve *resolve;
-diff --git a/qom/object.c b/qom/object.c
-index 96498f3d001c..c34b47312f29 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -3171,6 +3171,7 @@ object_property_add_alias(Object *obj, const char *name,
-                              property_release_alias,
-                              prop);
-     op->resolve = property_resolve_alias;
-+    op->qapi_type = target_prop->qapi_type;
-     if (target_prop->defval) {
-         op->defval = qobject_ref(target_prop->defval);
-     }
+ static const Property tz_ppc_properties[] = {
+     DEFINE_PROP_UINT32("NONSEC_MASK", TZPPC, nonsec_mask, 0),
+-    DEFINE_PORT(0),
+-    DEFINE_PORT(1),
+-    DEFINE_PORT(2),
+-    DEFINE_PORT(3),
+-    DEFINE_PORT(4),
+-    DEFINE_PORT(5),
+-    DEFINE_PORT(6),
+-    DEFINE_PORT(7),
+-    DEFINE_PORT(8),
+-    DEFINE_PORT(9),
+-    DEFINE_PORT(10),
+-    DEFINE_PORT(11),
+-    DEFINE_PORT(12),
+-    DEFINE_PORT(13),
+-    DEFINE_PORT(14),
+-    DEFINE_PORT(15),
++    QEMU_REPEAT(TZ_NUM_PORTS, DEFINE_PORT)
+ };
+ 
+ static void tz_ppc_class_init(ObjectClass *klass, const void *data)
+diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
+index 7e6819f670b5..84c3ff05cfb8 100644
+--- a/hw/remote/vfio-user-obj.c
++++ b/hw/remote/vfio-user-obj.c
+@@ -496,22 +496,11 @@ static size_t vfu_object_bar_rw(PCIDevice *pci_dev, int pci_bar,
+                                  buf, count, is_write);                        \
+     }                                                                          \
+ 
+-VFU_OBJECT_BAR_HANDLER(0)
+-VFU_OBJECT_BAR_HANDLER(1)
+-VFU_OBJECT_BAR_HANDLER(2)
+-VFU_OBJECT_BAR_HANDLER(3)
+-VFU_OBJECT_BAR_HANDLER(4)
+-VFU_OBJECT_BAR_HANDLER(5)
+-VFU_OBJECT_BAR_HANDLER(6)
++QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER)
+ 
++#define VFU_OBJECT_BAR_HANDLER_PTR(BAR_NO) vfu_object_bar##BAR_NO##_handler,
+ static vfu_region_access_cb_t *vfu_object_bar_handlers[PCI_NUM_REGIONS] = {
+-    &vfu_object_bar0_handler,
+-    &vfu_object_bar1_handler,
+-    &vfu_object_bar2_handler,
+-    &vfu_object_bar3_handler,
+-    &vfu_object_bar4_handler,
+-    &vfu_object_bar5_handler,
+-    &vfu_object_bar6_handler,
++    QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER_PTR)
+ };
+ 
+ /**
+diff --git a/include/hw/cxl/cxl_component.h b/include/hw/cxl/cxl_component.h
+index ffc82202206c..fca8b7055ccd 100644
+--- a/include/hw/cxl/cxl_component.h
++++ b/include/hw/cxl/cxl_component.h
+@@ -186,10 +186,7 @@ REG32(CXL_HDM_DECODER_GLOBAL_CONTROL, CXL_HDM_REGISTERS_OFFSET + 4)
+ /* Support 4 decoders at all levels of topology */
+ #define CXL_HDM_DECODER_COUNT 4
+ 
+-HDM_DECODER_INIT(0);
+-HDM_DECODER_INIT(1);
+-HDM_DECODER_INIT(2);
+-HDM_DECODER_INIT(3);
++QEMU_REPEAT(CXL_HDM_DECODER_COUNT, HDM_DECODER_INIT)
+ 
+ /*
+  * CXL r3.1 Section 8.2.4.21: CXL Extended Security Capability Structure
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 1ec5b42230be..a5e7ff99cb89 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -191,6 +191,39 @@ extern "C" {
+ 
+ #include "qemu/typedefs.h"
+ 
++/*
++ * QEMU_REPEAT(n, m) - invoke m(0) m(1) ... m(n-1)
++ *
++ * Expands to n invocations of m, each with a literal integer argument.
++ * n must be a compile-time constant in 0..16.
++ *
++ * Example - generate 4 per-index function definitions:
++ *
++ *   #define DEFINE_GETTER(i) \
++ *   static int get_##i(void) { return values[i]; }
++ *
++ *   QEMU_REPEAT(4, DEFINE_GETTER)
++ */
++#define QEMU_REPEAT_0(m)
++#define QEMU_REPEAT_1(m)   QEMU_REPEAT_0(m)   m(0)
++#define QEMU_REPEAT_2(m)   QEMU_REPEAT_1(m)   m(1)
++#define QEMU_REPEAT_3(m)   QEMU_REPEAT_2(m)   m(2)
++#define QEMU_REPEAT_4(m)   QEMU_REPEAT_3(m)   m(3)
++#define QEMU_REPEAT_5(m)   QEMU_REPEAT_4(m)   m(4)
++#define QEMU_REPEAT_6(m)   QEMU_REPEAT_5(m)   m(5)
++#define QEMU_REPEAT_7(m)   QEMU_REPEAT_6(m)   m(6)
++#define QEMU_REPEAT_8(m)   QEMU_REPEAT_7(m)   m(7)
++#define QEMU_REPEAT_9(m)   QEMU_REPEAT_8(m)   m(8)
++#define QEMU_REPEAT_10(m)  QEMU_REPEAT_9(m)   m(9)
++#define QEMU_REPEAT_11(m)  QEMU_REPEAT_10(m)  m(10)
++#define QEMU_REPEAT_12(m)  QEMU_REPEAT_11(m)  m(11)
++#define QEMU_REPEAT_13(m)  QEMU_REPEAT_12(m)  m(12)
++#define QEMU_REPEAT_14(m)  QEMU_REPEAT_13(m)  m(13)
++#define QEMU_REPEAT_15(m)  QEMU_REPEAT_14(m)  m(14)
++#define QEMU_REPEAT_16(m)  QEMU_REPEAT_15(m)  m(15)
++#define QEMU_REPEAT_(n, m) QEMU_REPEAT_##n(m)
++#define QEMU_REPEAT(n, m)  QEMU_REPEAT_(n, m)
++
+ /**
+  * Mark a function that executes in coroutine context
+  *
 
 -- 
 2.56.0.116.g6de20f6092dc

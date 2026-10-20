@@ -1,73 +1,73 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E0CB760A2605
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:49:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF6F0606A31E
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:49:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=gQNXc43X
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=EN8IUvj3
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7MQ-0000Pe-Ly; Tue, 20 Oct 2026 06:46:27 -0400
+	id 1xJ7Kf-00055c-07; Tue, 20 Oct 2026 06:44:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xJ7KA-0004iD-Fg
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:44:06 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1xJ7Jx-0004Qm-TN
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:54 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xJ7Jk-0004UU-9k
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:44:06 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-48b060ec084so2157159f8f.0
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 03:43:39 -0700 (PDT)
+ id 1xJ7Jf-0004R8-Cy
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:53 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4a018dc1f98so21975295e9.3
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 03:43:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792493018; x=1793097818; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792493014; x=1793097814; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=FGqirORdiYAHpa8WKE6kkRgcY8UYqpJTtFDjbgGTNq4=;
- b=gQNXc43Xd1+ACu6H7IdDP7o3weBOa8ijZDg2K0BK3aZeuVZ5GH2iStovwFmNldp3LM
- xtFceYeo6X+15ZaMtXMafXdd5sk8miAF6jR+ufjJo7fl/Fh0VlzUGdafx+0Ggxx3eR5G
- 2rXBU8qPVk5pff7vBBY2vz8B4NifgsEIiYc+bjcHxdJ2zAXnp/3n9we5pIpWCQgka2+Q
- 7W8EkTuI08kyV2TpanoDo3FTTNv35bXNf841xo/RrCtCc6sbTVta7SzYWtAfoQxFM3xK
- Cp+DH4EA8jUku0DWyVfB2TdgiZf//MA0SbCdwPLVkFVzmnciB8tq+naxFf3jF0j21N00
- hJTw==
+ bh=BSBV/g6ALpQ14y7y92FmMnIwbYri89hzMlxCn9KKLwg=;
+ b=EN8IUvj3UCHggYEy1wvBuXQOwcF6CO3je86+SnlK+Pn9tLPisfoO/tQDwUzNvSVgil
+ xdrHuakjMyLWXyl+mvGrIzQ9PB6VU1q5QvoOBiGMkqgrKubkv7sOfih/mktrcGA7Cpp/
+ +TIv0NAC5bEXto9n6y2MF31QjXN4hPCgpNsbiVR4U4Okvc7h0CYKRZPCOOxxRMd0ybRa
+ O7Or3rQyrlkGQc82i2s7cNOE5tweHZv/rGFEjptp4q8gpWP1ZJL3D/UqCTVw4HyXxuc/
+ tkceQakHNhjTmW/VU39e8TlEQwGgQ+YS7tZshK7uXz0OXc5OdY8woyVc/vkpf0au0ZEb
+ rcWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792493018; x=1793097818;
+ d=1e100.net; s=20260707; t=1792493014; x=1793097814;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=FGqirORdiYAHpa8WKE6kkRgcY8UYqpJTtFDjbgGTNq4=;
- b=DXcJ28GD353RqbcHgKAJ67A7MDNGadvw/l9toMovK6SXsDPdkWwUDlrG90zAvS0XWc
- H4NFr1CBwZOTnV6SY5q841lFTS77KfJ9SguPVER+HQkqgJe4prpjYfF6j1+7IKEX+LWT
- 6MBtHn0VQU3VM86aJcr4vlOL82MZzX+Vn1wT5CtROTId6Cv0TFeTZb9lFAzk08zppe34
- 2XN2Q9/3Yk+21UReV3N2da+zboMrf71M7fqOYNbfqVYpgeqki0hdV59FzF4DEUTTpV5K
- Xf4s5c+TJwj1nf17SUyAvKg7iBfm+Bxr4tbp7b54OcLqI07wFjZUNF/9gx21D3Z7TkRd
- myyg==
+ bh=BSBV/g6ALpQ14y7y92FmMnIwbYri89hzMlxCn9KKLwg=;
+ b=KYMsg0zY5Nb3U+YBdhrQX1XkQd57C16CWPZonemFvenP/7uLcKfY0TwjIx5Zbe1Pao
+ hbMj/Amy8bIFt+/VhIwyqzhVuAFWDM/LoLUn2atoazx/mXFC3tMrPVjTEUB3yPlFwbSg
+ HjoNt/Hji3za1YSKYtPBsNoFA0QQbX2XTIawQzqVtH0sDcNIvsM3Wqs0EZspDr1/UC9a
+ XCELJgjRHxHfkFmhrAP9smUAgtMihUGgIfw89lg0mQ2FmCwt1a1j3Aczgyeak07CqRwh
+ NlFusCl6x1P+f5W1wkB6VDYQyShT1576F5bx9ZAo3LPaV8pUU3F5KIwYy0rMzn0z4PMc
+ byow==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy/3Ge93CTP0yz3y8Jcd5X7GtVTIx0HBorbRPzJ2ixVpLCPgPV7JjS3xTOo/m3uJOkvgum1y8UxUA==@nongnu.org
-X-Gm-Message-State: AFq9FYLGRVJHvxR05mibaFULl07+LwX7acssBD1Uri/qTCtHc+WB0Y/D
- yyxtdlbjpOHYnFZFsbUvbg/7VNRahMNbf+MJx/RKqgf0hqRIKAN+83I/DA94fKC/vWQ=
-X-Gm-Gg: AYBFou1P9viMVtE1A3VnLh8P7FjRcr6rkE6LU/ZBb3OXkBqwzmlueiYe+h1jUF7yDWG
- DfxBepgF60JYpILPPTzeCIKHmze0nSvhMUeJJBHGUOlseM8K9oOQIGf4WhLZohN+q2qRSRY+cMP
- VG7UgR7WMNoSTOT1aO4MnwN9KaXX75L8VWB9u0bNKv0rgZgTmYCydM6Wssh5brtg9RM0w9HDn+n
- ZCfWTyDZC6WpgPRPCejfQhwRvg2Ox5kafZQdjok+snco7FUE27yZ6InBF8JnfygOh+ycN6D1hiw
- HHYe8nSn4+qurqSl1IsPZgjAI3IqHmvFkqHXn2LP1fb9nRzUGw1NZeGic9p3Usliv/kNiw0RYzx
- aWPcHA7j76MZ/QLkHtjf8oXNdHsWhWUuVwQoIObUbwUgB16tfhn9lOTw2vPTLvWn4r7hiVLOdED
- K3yTSOaDV70wtEDy5CjdKqDbOhYqyjNb3QXjVuXtSSRskPwar2kCzhZf9dsJD4ay5+1Cg8Yg==
-X-Received: by 2002:a05:6000:186e:b0:48d:ee0d:8b3d with SMTP id
- ffacd0b85a97d-48e07f9d49fmr23637520f8f.28.1792493018396; 
- Tue, 20 Oct 2026 03:43:38 -0700 (PDT)
+ AKwUvBwrbdwlOK6K+UlUIhsjlnRh6eqOVkBBfMLLq8TK/uTt7zM+JoB3hIGOlVg/jTddRdx1OsofjVCLMw==@nongnu.org
+X-Gm-Message-State: AFq9FYJu/L55nt1lu3JOhCvb8xTcV+phTBky49i0kBwh4v1uEncmigB0
+ E3N/GutHRaIA4K4L6vy7/vFg5eG27OTvBI65d/Zzh+GD5xpt7ZrTHovFqGHI9wBED38=
+X-Gm-Gg: AYBFou1lx0WaeDRHFtaG4UYhBDKH5MzJlYsQsE0cWtHqDa1/kgfJMpVf4vwblQ6LpJo
+ T03Rf73jre6lpDBbWjdZpL3xHsTEWuNVIEaEvMqoZSu2SBRnKPoGYKxwUXF2I7+OK0d14OjjLgv
+ oeSKKmC1i1XlgbHZ4xjajLCynthgIiOlh5tE8Q66ITcmt74O9RTfVkMRv1fKVUsm9+h+BHSq8Sg
+ /GijpVzHCfODmtm7PGjIftWfTpwDmdJYQkFfDAh3vI3f5J3jEnooPKeTcfTSHyXdOgfeEDhP+Jt
+ J0VswVmabe2L5WzN+qhcjMEyIAGoupU8Y6QwsO4SDGRkvkIQTe7pIDIPa5xn6pAC5ZIT2oMkF27
+ M/YIRCg18mxyFNNZYbaVUYsocdp1CK/LSzUZYi8GQMOZKWz534ZeLDU85ryD3UrbP+CSaL3OJUy
+ dYsMbJwR96zV13d3Vug+o7cwXJcqjiLHs1aygeb5KBxiQ/tCSPM84Ijo3sVuNIBNiOit0zAg==
+X-Received: by 2002:a05:600c:8b6f:b0:4a1:ce33:1536 with SMTP id
+ 5b1f17b1804b1-4a1d75e37ecmr193768375e9.9.1792493013721; 
+ Tue, 20 Oct 2026 03:43:33 -0700 (PDT)
 Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e1d83a338sm5303864f8f.59.2026.10.20.03.43.27
+ ffacd0b85a97d-48e1d830e91sm5425066f8f.54.2026.10.20.03.43.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2026 03:43:28 -0700 (PDT)
+ Tue, 20 Oct 2026 03:43:27 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B49C25FF9E;
- Tue, 20 Oct 2026 11:43:24 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 7E0E15F8DC;
+ Tue, 20 Oct 2026 11:43:23 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Bibo Mao <maobibo@loongson.cn>,
@@ -99,10 +99,9 @@ Cc: Bibo Mao <maobibo@loongson.cn>,
  Weiwei Li <liwei1518@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-riscv@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 23/23] accel/kvm: remove redundant ops checks for
- kvm_get_cpu_ops
-Date: Tue, 20 Oct 2026 11:43:17 +0100
-Message-ID: <20261020104320.3686723-24-alex.bennee@linaro.org>
+Subject: [PATCH 17/23] accel/kvm: port kvm_arch_update_guest_debug to KVMCPUOps
+Date: Tue, 20 Oct 2026 11:43:11 +0100
+Message-ID: <20261020104320.3686723-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261020104320.3686723-1-alex.bennee@linaro.org>
 References: <20261020104320.3686723-1-alex.bennee@linaro.org>
@@ -110,8 +109,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,71 +132,481 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-We assert that we should always be able to retrieve KVMCPUOps on an
-initialised system so remove the redundant checks.
+As well as sw breakpoints.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- accel/kvm/kvm-all.c | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ include/accel/kvm/cpu-ops.h | 17 +++++++++++++++++
+ include/system/kvm.h        |  8 +-------
+ target/i386/kvm/kvm_i386.h  |  3 +++
+ accel/kvm/kvm-all.c         | 34 +++++++++++++++++++++++++++++-----
+ target/arm/kvm.c            | 12 +++++++++---
+ target/i386/kvm/kvm-cpu.c   |  3 +++
+ target/i386/kvm/kvm.c       |  6 +++---
+ target/loongarch/kvm/kvm.c  | 12 +++++++++---
+ target/ppc/kvm.c            | 12 +++++++++---
+ target/riscv/kvm/kvm-cpu.c  | 19 ++++++++++++++++---
+ target/s390x/kvm/kvm.c      | 12 +++++++++---
+ 11 files changed, 108 insertions(+), 30 deletions(-)
 
+diff --git a/include/accel/kvm/cpu-ops.h b/include/accel/kvm/cpu-ops.h
+index be4031d9011..d2374e91cef 100644
+--- a/include/accel/kvm/cpu-ops.h
++++ b/include/accel/kvm/cpu-ops.h
+@@ -71,6 +71,20 @@ struct kvm_run;
+  *                        return EXCP_HLT, or 0 if execution can proceed.
+  *                        May be NULL if the target does not require event
+  *                        processing before execution.
++ * @update_guest_debug: Optional callback executed when updating KVM guest
++ *                      debug structures for the vCPU. Used to configure
++ *                      architecture-specific debug control flags and hardware
++ *                      or software breakpoint descriptors in @dbg.
++ *                      May be NULL if the target does not require
++ *                      architecture-specific guest debug setup.
++ * @insert_sw_breakpoint: Optional callback to insert an architecture-specific
++ *                        software breakpoint instruction at @bp->pc and save
++ *                        the overwritten instruction in @bp->saved_insn.
++ *                        Returns 0 on success, or a negative errno on failure.
++ * @remove_sw_breakpoint: Optional callback to remove an architecture-specific
++ *                        software breakpoint, restoring @bp->saved_insn at
++ *                        @bp->pc.
++ *                        Returns 0 on success, or a negative errno on failure.
+  */
+ typedef struct KVMCPUOps {
+     int (*pre_create_vcpu)(CPUState *cpu, Error **errp);
+@@ -83,6 +97,9 @@ typedef struct KVMCPUOps {
+     MemTxAttrs (*post_run)(CPUState *cpu, struct kvm_run *run);
+     int (*handle_exit)(CPUState *cpu, struct kvm_run *run);
+     int (*process_async_events)(CPUState *cpu);
++    void (*update_guest_debug)(CPUState *cpu, struct kvm_guest_debug *dbg);
++    int (*insert_sw_breakpoint)(CPUState *cpu, struct kvm_sw_breakpoint *bp);
++    int (*remove_sw_breakpoint)(CPUState *cpu, struct kvm_sw_breakpoint *bp);
+ } KVMCPUOps;
+ 
+ #define TYPE_KVM_ACCEL_CPU "kvm-accel-cpu"
+diff --git a/include/system/kvm.h b/include/system/kvm.h
+index 2ecae10cdff..52b7a63a0b3 100644
+--- a/include/system/kvm.h
++++ b/include/system/kvm.h
+@@ -229,7 +229,7 @@ void kvm_irqchip_change_notify(void);
+  * @reinject_trap: KVM trap injection control
+  *
+  * There are usually per-arch specifics which will be handled by
+- * calling down to kvm_arch_update_guest_debug after the generic
++ * calling down to the KVMCPUOps::update_guest_debug callback after the generic
+  * fields have been set.
+  */
+ #ifdef TARGET_KVM_HAVE_GUEST_DEBUG
+@@ -394,18 +394,12 @@ struct kvm_sw_breakpoint *kvm_find_sw_breakpoint(CPUState *cpu,
+ 
+ int kvm_sw_breakpoints_active(CPUState *cpu);
+ 
+-int kvm_arch_insert_sw_breakpoint(CPUState *cpu,
+-                                  struct kvm_sw_breakpoint *bp);
+-int kvm_arch_remove_sw_breakpoint(CPUState *cpu,
+-                                  struct kvm_sw_breakpoint *bp);
+ int kvm_arch_insert_gdbstub_hw_breakpoint(vaddr addr, vaddr len,
+                                           GdbBreakpointType type);
+ int kvm_arch_remove_gdbstub_hw_breakpoint(vaddr addr, vaddr len,
+                                           GdbBreakpointType type);
+ void kvm_arch_remove_all_gdbstub_hw_breakpoints(void);
+ 
+-void kvm_arch_update_guest_debug(CPUState *cpu, struct kvm_guest_debug *dbg);
+-
+ bool kvm_arch_stop_on_emulation_error(CPUState *cpu);
+ 
+ int kvm_vm_check_extension(KVMState *s, unsigned int extension);
+diff --git a/target/i386/kvm/kvm_i386.h b/target/i386/kvm/kvm_i386.h
+index f189bb92bb9..27eea1f65ff 100644
+--- a/target/i386/kvm/kvm_i386.h
++++ b/target/i386/kvm/kvm_i386.h
+@@ -43,6 +43,9 @@ void x86_kvm_pre_run(CPUState *cpu, struct kvm_run *run);
+ MemTxAttrs x86_kvm_post_run(CPUState *cpu, struct kvm_run *run);
+ int x86_kvm_handle_exit(CPUState *cs, struct kvm_run *run);
+ int x86_kvm_process_async_events(CPUState *cs);
++void x86_kvm_update_guest_debug(CPUState *cpu, struct kvm_guest_debug *dbg);
++int x86_kvm_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp);
++int x86_kvm_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp);
+ void kvm_arch_after_reset_vcpu(X86CPU *cpu);
+ void kvm_arch_do_init_vcpu(X86CPU *cs);
+ uint32_t kvm_arch_get_supported_cpuid(KVMState *env, uint32_t function,
 diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 041113ed9b5..8b719d6eb44 100644
+index f10d93a98df..24ded4b1804 100644
 --- a/accel/kvm/kvm-all.c
 +++ b/accel/kvm/kvm-all.c
-@@ -455,11 +455,7 @@ static void kvm_create_vcpu_internal(CPUState *cpu, KVMState *s, int kvm_fd)
- unsigned long kvm_vcpu_id(CPUState *cpu)
+@@ -3866,6 +3866,7 @@ static void kvm_invoke_set_guest_debug(CPUState *cpu, run_on_cpu_data data)
+ 
+ int kvm_update_guest_debug(CPUState *cpu, unsigned long reinject_trap)
  {
-     const KVMCPUOps *ops = kvm_get_cpu_ops(cpu);
--
--    if (ops && ops->vcpu_id) {
--        return ops->vcpu_id(cpu);
--    }
--    return cpu->cpu_index;
-+    return ops->vcpu_id ? ops->vcpu_id(cpu) : cpu->cpu_index;
++    const KVMCPUOps *ops = kvm_get_cpu_ops(cpu);
+     struct kvm_set_guest_debug_data data;
+ 
+     data.dbg.control = reinject_trap;
+@@ -3877,7 +3878,9 @@ int kvm_update_guest_debug(CPUState *cpu, unsigned long reinject_trap)
+             data.dbg.control |= KVM_GUESTDBG_BLOCKIRQ;
+         }
+     }
+-    kvm_arch_update_guest_debug(cpu, &data.dbg);
++    if (ops && ops->update_guest_debug) {
++        ops->update_guest_debug(cpu, &data.dbg);
++    }
+ 
+     run_on_cpu(cpu, kvm_invoke_set_guest_debug,
+                RUN_ON_CPU_HOST_PTR(&data));
+@@ -3891,16 +3894,22 @@ int kvm_insert_gdbstub_breakpoint(CPUState *cpu, GdbBreakpointType type,
+     int err;
+ 
+     if (type == GDB_BREAKPOINT_SW) {
++        const KVMCPUOps *ops = kvm_get_cpu_ops(cpu);
++
+         bp = kvm_find_sw_breakpoint(cpu, addr);
+         if (bp) {
+             bp->use_count++;
+             return 0;
+         }
+ 
++        if (!ops || !ops->insert_sw_breakpoint) {
++            return -ENOSYS;
++        }
++
+         bp = g_new(struct kvm_sw_breakpoint, 1);
+         bp->pc = addr;
+         bp->use_count = 1;
+-        err = kvm_arch_insert_sw_breakpoint(cpu, bp);
++        err = ops->insert_sw_breakpoint(cpu, bp);
+         if (err) {
+             g_free(bp);
+             return err;
+@@ -3930,6 +3939,8 @@ int kvm_remove_gdbstub_breakpoint(CPUState *cpu, GdbBreakpointType type,
+     int err;
+ 
+     if (type == GDB_BREAKPOINT_SW) {
++        const KVMCPUOps *ops = kvm_get_cpu_ops(cpu);
++
+         bp = kvm_find_sw_breakpoint(cpu, addr);
+         if (!bp) {
+             return -ENOENT;
+@@ -3940,7 +3951,11 @@ int kvm_remove_gdbstub_breakpoint(CPUState *cpu, GdbBreakpointType type,
+             return 0;
+         }
+ 
+-        err = kvm_arch_remove_sw_breakpoint(cpu, bp);
++        if (!ops || !ops->remove_sw_breakpoint) {
++            return -ENOSYS;
++        }
++
++        err = ops->remove_sw_breakpoint(cpu, bp);
+         if (err) {
+             return err;
+         }
+@@ -3965,15 +3980,24 @@ int kvm_remove_gdbstub_breakpoint(CPUState *cpu, GdbBreakpointType type,
+ 
+ void kvm_remove_all_gdbstub_breakpoints(CPUState *cpu)
+ {
++    const KVMCPUOps *ops = kvm_get_cpu_ops(cpu);
+     struct kvm_sw_breakpoint *bp, *next;
+     KVMState *s = cpu->kvm_state;
+     CPUState *tmpcpu;
+ 
+     QTAILQ_FOREACH_SAFE(bp, &s->kvm_sw_breakpoints, entry, next) {
+-        if (kvm_arch_remove_sw_breakpoint(cpu, bp) != 0) {
++        int ret = -ENOENT;
++
++        if (ops && ops->remove_sw_breakpoint) {
++            ret = ops->remove_sw_breakpoint(cpu, bp);
++        }
++        if (ret != 0) {
+             /* Try harder to find a CPU that currently sees the breakpoint. */
+             CPU_FOREACH(tmpcpu) {
+-                if (kvm_arch_remove_sw_breakpoint(tmpcpu, bp) == 0) {
++                const KVMCPUOps *tmpops = kvm_get_cpu_ops(tmpcpu);
++
++                if (tmpops && tmpops->remove_sw_breakpoint &&
++                    tmpops->remove_sw_breakpoint(tmpcpu, bp) == 0) {
+                     break;
+                 }
+             }
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index ad8166e0b41..a4f063f2efb 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1649,7 +1649,8 @@ static void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr)
+     }
  }
  
- static int kvm_rebind_vcpus(Error **errp)
-@@ -3190,7 +3186,7 @@ static int kvm_handle_internal_error(CPUState *cpu, struct kvm_run *run)
-         bool stop = true;
+-void kvm_arch_update_guest_debug(CPUState *cs, struct kvm_guest_debug *dbg)
++static void arm_kvm_update_guest_debug(CPUState *cs,
++                                       struct kvm_guest_debug *dbg)
+ {
+     if (kvm_sw_breakpoints_active(cs)) {
+         dbg->control |= KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_SW_BP;
+@@ -2538,7 +2539,8 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+ /* C6.6.29 BRK instruction */
+ static const uint32_t brk_insn = 0xd4200000;
  
-         fprintf(stderr, "emulation failure\n");
--        if (ops && ops->stop_on_emulation_error) {
-+        if (ops->stop_on_emulation_error) {
-             stop = ops->stop_on_emulation_error(cpu);
+-int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int arm_kvm_insert_sw_breakpoint(CPUState *cs,
++                                        struct kvm_sw_breakpoint *bp)
+ {
+     if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 0) ||
+         cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk_insn, 4, 1)) {
+@@ -2547,7 +2549,8 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     return 0;
+ }
+ 
+-int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int arm_kvm_remove_sw_breakpoint(CPUState *cs,
++                                        struct kvm_sw_breakpoint *bp)
+ {
+     static uint32_t brk;
+ 
+@@ -2652,6 +2655,9 @@ static const KVMCPUOps arm_kvm_cpu_ops = {
+     .pre_run = arm_kvm_pre_run,
+     .post_run = arm_kvm_post_run,
+     .handle_exit = arm_kvm_handle_exit,
++    .update_guest_debug = arm_kvm_update_guest_debug,
++    .insert_sw_breakpoint = arm_kvm_insert_sw_breakpoint,
++    .remove_sw_breakpoint = arm_kvm_remove_sw_breakpoint,
+ };
+ 
+ static void kvm_cpu_accel_class_init(ObjectClass *oc, const void *data)
+diff --git a/target/i386/kvm/kvm-cpu.c b/target/i386/kvm/kvm-cpu.c
+index 6990cd8d5c4..0cd0884be30 100644
+--- a/target/i386/kvm/kvm-cpu.c
++++ b/target/i386/kvm/kvm-cpu.c
+@@ -245,6 +245,9 @@ static const KVMCPUOps x86_kvm_cpu_ops = {
+     .post_run = x86_kvm_post_run,
+     .handle_exit = x86_kvm_handle_exit,
+     .process_async_events = x86_kvm_process_async_events,
++    .update_guest_debug = x86_kvm_update_guest_debug,
++    .insert_sw_breakpoint = x86_kvm_insert_sw_breakpoint,
++    .remove_sw_breakpoint = x86_kvm_remove_sw_breakpoint,
+ };
+ 
+ static void kvm_cpu_accel_class_init(ObjectClass *oc, const void *data)
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index a3076d43b45..4ee7f53c2a8 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -6128,7 +6128,7 @@ static int kvm_handle_tpr_access(X86CPU *cpu)
+     return 1;
+ }
+ 
+-int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++int x86_kvm_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     static const uint8_t int3 = 0xcc;
+ 
+@@ -6139,7 +6139,7 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     return 0;
+ }
+ 
+-int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++int x86_kvm_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     uint8_t int3;
+ 
+@@ -6292,7 +6292,7 @@ static int kvm_handle_debug(X86CPU *cpu,
+     return ret;
+ }
+ 
+-void kvm_arch_update_guest_debug(CPUState *cpu, struct kvm_guest_debug *dbg)
++void x86_kvm_update_guest_debug(CPUState *cpu, struct kvm_guest_debug *dbg)
+ {
+     const uint8_t type_code[] = {
+         [GDB_BREAKPOINT_HW] = 0x0,
+diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
+index 97b6b448edf..0899aef552e 100644
+--- a/target/loongarch/kvm/kvm.c
++++ b/target/loongarch/kvm/kvm.c
+@@ -1518,14 +1518,16 @@ bool kvm_arch_stop_on_emulation_error(CPUState *cs)
+     return true;
+ }
+ 
+-void kvm_arch_update_guest_debug(CPUState *cpu, struct kvm_guest_debug *dbg)
++static void loongarch_kvm_update_guest_debug(CPUState *cpu,
++                                             struct kvm_guest_debug *dbg)
+ {
+     if (kvm_sw_breakpoints_active(cpu)) {
+         dbg->control |= KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_SW_BP;
+     }
+ }
+ 
+-int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int loongarch_kvm_insert_sw_breakpoint(CPUState *cs,
++                                              struct kvm_sw_breakpoint *bp)
+ {
+     if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 0) ||
+         cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk_insn, 4, 1)) {
+@@ -1535,7 +1537,8 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     return 0;
+ }
+ 
+-int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int loongarch_kvm_remove_sw_breakpoint(CPUState *cs,
++                                              struct kvm_sw_breakpoint *bp)
+ {
+     static uint32_t brk;
+ 
+@@ -1640,6 +1643,9 @@ static const KVMCPUOps loongarch_kvm_cpu_ops = {
+     .put_registers = loongarch_kvm_put_registers,
+     .handle_exit = loongarch_kvm_handle_exit,
+     .process_async_events = loongarch_kvm_process_async_events,
++    .update_guest_debug = loongarch_kvm_update_guest_debug,
++    .insert_sw_breakpoint = loongarch_kvm_insert_sw_breakpoint,
++    .remove_sw_breakpoint = loongarch_kvm_remove_sw_breakpoint,
+ };
+ 
+ static void kvm_cpu_accel_class_init(ObjectClass *oc, const void *data)
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index ffc7a33bf17..4b2e42ef163 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -1366,7 +1366,8 @@ static int kvmppc_handle_dcr_write(CPUPPCState *env,
+     return 0;
+ }
+ 
+-int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int ppc_kvm_insert_sw_breakpoint(CPUState *cs,
++                                        struct kvm_sw_breakpoint *bp)
+ {
+     /* Mixed endian case is not handled */
+     uint32_t sc = debug_inst_opcode;
+@@ -1380,7 +1381,8 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     return 0;
+ }
+ 
+-int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int ppc_kvm_remove_sw_breakpoint(CPUState *cs,
++                                        struct kvm_sw_breakpoint *bp)
+ {
+     uint32_t sc;
+ 
+@@ -1515,7 +1517,8 @@ void kvm_arch_remove_all_gdbstub_hw_breakpoints(void)
+     nb_hw_breakpoint = nb_hw_watchpoint = 0;
+ }
+ 
+-void kvm_arch_update_guest_debug(CPUState *cs, struct kvm_guest_debug *dbg)
++static void ppc_kvm_update_guest_debug(CPUState *cs,
++                                       struct kvm_guest_debug *dbg)
+ {
+     int n;
+ 
+@@ -3069,6 +3072,9 @@ static const KVMCPUOps ppc_kvm_cpu_ops = {
+     .put_registers = ppc_kvm_put_registers,
+     .handle_exit = ppc_kvm_handle_exit,
+     .process_async_events = ppc_kvm_process_async_events,
++    .update_guest_debug = ppc_kvm_update_guest_debug,
++    .insert_sw_breakpoint = ppc_kvm_insert_sw_breakpoint,
++    .remove_sw_breakpoint = ppc_kvm_remove_sw_breakpoint,
+ };
+ 
+ static void kvm_cpu_accel_class_init(ObjectClass *oc, const void *data)
+diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
+index d9984828048..8a82160a7bf 100644
+--- a/target/riscv/kvm/kvm-cpu.c
++++ b/target/riscv/kvm/kvm-cpu.c
+@@ -2168,11 +2168,21 @@ void riscv_kvm_cpu_finalize_features(RISCVCPU *cpu, Error **errp)
+     kvm_riscv_destroy_scratch_vcpu(&kvmcpu);
+ }
+ 
++static int riscv_kvm_insert_sw_breakpoint(CPUState *cs,
++                                          struct kvm_sw_breakpoint *bp);
++static int riscv_kvm_remove_sw_breakpoint(CPUState *cs,
++                                          struct kvm_sw_breakpoint *bp);
++static void riscv_kvm_update_guest_debug(CPUState *cs,
++                                         struct kvm_guest_debug *dbg);
++
+ static const KVMCPUOps riscv_kvm_cpu_ops = {
+     .init_vcpu = riscv_kvm_init_vcpu,
+     .get_registers = riscv_kvm_get_registers,
+     .put_registers = riscv_kvm_put_registers,
+     .handle_exit = riscv_kvm_handle_exit,
++    .update_guest_debug = riscv_kvm_update_guest_debug,
++    .insert_sw_breakpoint = riscv_kvm_insert_sw_breakpoint,
++    .remove_sw_breakpoint = riscv_kvm_remove_sw_breakpoint,
+ };
+ 
+ static void kvm_cpu_accel_class_init(ObjectClass *oc, const void *data)
+@@ -2225,7 +2235,8 @@ DEFINE_TYPES(riscv_kvm_cpu_type_infos)
+ static const uint32_t ebreak_insn = 0x00100073;
+ static const uint16_t c_ebreak_insn = 0x9002;
+ 
+-int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int riscv_kvm_insert_sw_breakpoint(CPUState *cs,
++                                          struct kvm_sw_breakpoint *bp)
+ {
+     if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 2, 0)) {
+         return -EINVAL;
+@@ -2245,7 +2256,8 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     return 0;
+ }
+ 
+-int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int riscv_kvm_remove_sw_breakpoint(CPUState *cs,
++                                          struct kvm_sw_breakpoint *bp)
+ {
+     uint32_t ebreak;
+     uint16_t c_ebreak;
+@@ -2286,7 +2298,8 @@ void kvm_arch_remove_all_gdbstub_hw_breakpoints(void)
+     /* TODO; To be implemented later. */
+ }
+ 
+-void kvm_arch_update_guest_debug(CPUState *cs, struct kvm_guest_debug *dbg)
++static void riscv_kvm_update_guest_debug(CPUState *cs,
++                                         struct kvm_guest_debug *dbg)
+ {
+     if (kvm_sw_breakpoints_active(cs)) {
+         dbg->control |= KVM_GUESTDBG_ENABLE;
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index 7400fe41f87..12695376442 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -825,7 +825,8 @@ static void determine_sw_breakpoint_instr(void)
          }
-         if (!stop) {
-@@ -4004,7 +4000,7 @@ void kvm_remove_all_gdbstub_breakpoints(CPUState *cpu)
-     QTAILQ_FOREACH_SAFE(bp, &s->kvm_sw_breakpoints, entry, next) {
-         int ret = -ENOENT;
+ }
  
--        if (ops && ops->remove_sw_breakpoint) {
-+        if (ops->remove_sw_breakpoint) {
-             ret = ops->remove_sw_breakpoint(cpu, bp);
-         }
-         if (ret != 0) {
-@@ -4021,7 +4017,7 @@ void kvm_remove_all_gdbstub_breakpoints(CPUState *cpu)
-         QTAILQ_REMOVE(&s->kvm_sw_breakpoints, bp, entry);
-         g_free(bp);
-     }
--    if (ops && ops->remove_all_hw_breakpoints) {
-+    if (ops->remove_all_hw_breakpoints) {
-         ops->remove_all_hw_breakpoints(cpu);
-     }
+-int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int s390x_kvm_insert_sw_breakpoint(CPUState *cs,
++                                          struct kvm_sw_breakpoint *bp)
+ {
+     determine_sw_breakpoint_instr();
  
-@@ -4116,7 +4112,7 @@ int kvm_on_sigbus(int code, void *addr)
-     assert(code != BUS_MCEERR_AR);
-     assert(first_cpu);
-     ops = kvm_get_cpu_ops(first_cpu);
--    if (ops && ops->on_sigbus_vcpu) {
-+    if (ops->on_sigbus_vcpu) {
-         ops->on_sigbus_vcpu(first_cpu, code, addr);
-         return 0;
-     }
+@@ -837,7 +838,8 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     return 0;
+ }
+ 
+-int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++static int s390x_kvm_remove_sw_breakpoint(CPUState *cs,
++                                          struct kvm_sw_breakpoint *bp)
+ {
+     uint8_t t[MAX_ILEN];
+ 
+@@ -956,7 +958,8 @@ void kvm_arch_remove_all_gdbstub_hw_breakpoints(void)
+     hw_breakpoints = NULL;
+ }
+ 
+-void kvm_arch_update_guest_debug(CPUState *cpu, struct kvm_guest_debug *dbg)
++static void s390x_kvm_update_guest_debug(CPUState *cpu,
++                                         struct kvm_guest_debug *dbg)
+ {
+     int i;
+ 
+@@ -2647,6 +2650,9 @@ static const KVMCPUOps s390x_kvm_cpu_ops = {
+     .put_registers = s390x_kvm_put_registers,
+     .handle_exit = s390x_kvm_handle_exit,
+     .process_async_events = s390x_kvm_process_async_events,
++    .update_guest_debug = s390x_kvm_update_guest_debug,
++    .insert_sw_breakpoint = s390x_kvm_insert_sw_breakpoint,
++    .remove_sw_breakpoint = s390x_kvm_remove_sw_breakpoint,
+ };
+ 
+ static void kvm_cpu_accel_class_init(ObjectClass *oc, const void *data)
 -- 
 2.47.3
 

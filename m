@@ -1,59 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7614E606A323
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:15:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BAF6F606A31B
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:15:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=D+56EUPz
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Pma88dWq
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7QI-00079R-Qs; Tue, 20 Oct 2026 06:50:26 -0400
+	id 1xJ7Td-0003dc-8k; Tue, 20 Oct 2026 06:53:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Ot-0003NO-RK
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:00 -0400
+ id 1xJ7RO-0000gd-RH
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:36 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Os-0005ej-4e
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:48:59 -0400
+ id 1xJ7RL-0006aF-01
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493337;
+ s=mimecast20190719; t=1792493490;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=neSxnRoG/OmCl+kteGebRHQJWP0OZxqFcRCZ8c/QA3c=;
- b=D+56EUPzRbElijTdR0D6J/jyH4jZohB3dtoXFhLIWoEnYwVOMRgaQWuc9dqtd3oQfJ5GT5
- Geigx0td7O0X+r6vQTCdsWYiY5AMB9y1NAkyZo4y0gQST/VefdjlbqM383/ElXdM4Eht20
- peNKeG+hhHE1P5UZ8wciIvGIw+nIf/o=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=0exBW/XllTPTbSwFohqKA2w8apHuJMdvUCko9RJ056E=;
+ b=Pma88dWqnTmc4FPmMNkYkgNUTRvQZ2HY3kR7RsYoRLUoQJ0FXkp8KgmATBtb+RTbDvRM9N
+ ZZCVCo/bsC3Uv1XcTFzW+AOuAEAKgb2gt+q+ZXtf5Re27G4KejpIzMnvk+z20sPWf/v5z7
+ wUVcfzqLGrrEepRyA6SU4O6Oq3itDdA=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-561--SDF1wKINiCajNC4XN8nVg-1; Tue,
- 20 Oct 2026 10:48:53 +0000
-X-MC-Unique: -SDF1wKINiCajNC4XN8nVg-1
-X-Mimecast-MFC-AGG-ID: -SDF1wKINiCajNC4XN8nVg_1792493329
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-365-se9LWCHqPrS8GDVKoZHxeg-1; Tue,
+ 20 Oct 2026 10:51:26 +0000
+X-MC-Unique: se9LWCHqPrS8GDVKoZHxeg-1
+X-Mimecast-MFC-AGG-ID: se9LWCHqPrS8GDVKoZHxeg_1792493482
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C281219560AD; Tue, 20 Oct 2026 10:48:49 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5E2BF1800878; Tue, 20 Oct 2026 10:51:22 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CC00130000E7; Tue, 20 Oct 2026 10:48:46 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3CCCA18005B3; Tue, 20 Oct 2026 10:51:19 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:45:46 +0400
-Subject: [PATCH v7 29/65] whpx: convert OnOffAuto hyperv property to
- QAPI-aware registration
+Date: Tue, 20 Oct 2026 14:46:14 +0400
+Subject: [PATCH v7 57/65] target/riscv: convert PropertyInfo definitions to
+ use qapi_type
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-29-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-57-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -128,38 +128,38 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2624;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5488;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=fGCiDH3DKuAcB7LiCAkFXJHjeu1egNzKD2fVY9nF9O8=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZaOCCAg3rKTDCUl37+MgI4Ayhi8dunIN41j
- jugR4kjAkCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWgAKCRDa6OEJdZac
- 5b6WEACNN5lLKAUjdYB4zCcQJTY9b/clU3Ul2ZqrNT8WzHUQ+fqxHO7sMKEnV/KpehWqsAYB7Wa
- TcTcGvlU8B+Rp77AddGo/jHP3KiihUrvHM5s2QNpNKBTkpdE/FtNtDGvtY7Rl7BnE0I4ur8xacz
- HXMHNM++tzb2u4VkpDDbgWl8A7MUiCYAu2iAC93LMBoFtVGYq/tjz4PQr2gFfLvNxJ8hh8g+2iu
- smVuhJO5UxVs/qkZoh6kIe0LZ6WvLafLB9/AU4a+YYPl0g7G3gvQV+Pzb64VIcibMzpV8qJ8b8M
- t+/BnO1YoRZPZ11BLDzxA83zKDcZQWNwtNYWZCCxAgLA9Evb3RKKpX3ezykZW625hA11ml8/USP
- Ng9IwZx3DS+SVp66cPB3YD4Vblja8jaJLVCuGSQnNstkM9jWJ41xW1pTt/RQn1TsRK/t7qyBtO1
- kHBG4Xp7bkht89XuKnLvIPrFH/W85g9KGuerywfZYfz/FobiX2GdtR3qPJiq0+oIJa2vLvqAjID
- 3M72ERKY7E2DdWkQ/qN6y7zsbhicNq980YAI7vae2/ht1mYnRZYyo4tF62m7MjopLEjAufj+RHB
- jZQHwA8CL5TVxFAQmJ8wDFE+5CAwj4qru7MbpAYn1njH780Iqg5frmuGfrB2B5bUXeimrR8uppN
- FX/dQnG4r/dU1+A==
+ bh=XKjrfhJ2Z/vpJVDltF2KXqS9w+wUXXQdOLcco6lHE08=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10Zc82i8KNdsFK3/pKeHfVnxA4m/fOSulmH97
+ UqyLuCWFoWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
+ 5Z6cD/40rHcZVYX8wDxKQt8xTbOSbGFHhrkGBp+FJMr/D3qXf1CzfRM/zrW7BsamxNoTKamLgia
+ vG/IF1pMis4auL226bPWZSNCw1wM64OiZLp34N3g6ajQDAnS4jfnerIAq7txzCCJUbSjDZABnY+
+ O/X/WwsFuXapBnFcvD2GRf7OtzeasFepDj3L1mQI9qlcIH41qkSHstkXLXEuCxStBNzaQuJ+1nT
+ f8elVasH3Qez1yhQlVLkdcseJ+WxT9culB/RhJzlcYMOY3ijoorNNWBmNMniKWqUHM380+dg4mi
+ s5Xym63nleHU9QrcqKokpmXEO6nqQXGl5BVpG/+GI8J37DOJEBt7FopbJ8Qa/Prf2L0HVZ2F4Ri
+ v52x6jhQ2cVDf52+6cx4EEUH1NulOv3VMoE+O/9QeuJjD6NvDl0kfVkgV83mliwEwc7vahuvnT6
+ MZHRXzDT5gm/k1ueiE/SDcCEv9mGmfnj3XnZ7GWpLcbscFJebhqv5NagTK8eB75QcE5f7Li5RfK
+ wc2VMbA5H3KXsbPLwfv0Bwcz8Ok9gFGyw0cb4nah/uS/gLpuvZSH3RlnyRCw3dHiiNOvmw9ktLa
+ bEN7ShgjTnPCfdQW49hOPBZARpkjinKmx6OFPDecrZiaNqDlQaduXgMnp5B749lfM7OBJ8Ch+S8
+ 7b7viGC9MASEqng==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 5n-_oFB9A7QFj_7JHnTok-KWtaATC6M6h-1--MzB0Bc_1792493329
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: PhU0VA4m4LzuInpT5Jz7c_TTpWAOHyOFVUb84c37sFo_1792493482
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,79 +178,164 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Convert the hyperv OnOffAuto property from manual visitor-based
-callbacks to property_add_qapi_enum().
+Mechanical conversion of all local PropertyInfo definitions in
+target/riscv/cpu.c
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- accel/whpx/whpx-common.c | 29 ++++++++++-------------------
- 1 file changed, 10 insertions(+), 19 deletions(-)
+ target/riscv/cpu.c | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index 247e12db8128..187938c02b51 100644
---- a/accel/whpx/whpx-common.c
-+++ b/accel/whpx/whpx-common.c
-@@ -22,6 +22,7 @@
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qapi/qapi-types-common.h"
-+#include "qapi/qapi-type-infos-common.h"
- #include "qapi/qapi-visit-common.h"
- #include "migration/blocker.h"
- #include "accel/accel-cpu-target.h"
-@@ -470,18 +471,11 @@ static void whpx_set_kernel_irqchip(Object *obj, Visitor *v,
-     }
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index 664c1a767950..28bfcb36ecb7 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -1704,7 +1704,7 @@ static void prop_pmu_num_get(Object *obj, Visitor *v, const char *name,
  }
  
--static void whpx_set_hyperv(Object *obj, Visitor *v,
--                                   const char *name, void *opaque,
--                                   Error **errp)
-+static void whpx_set_hyperv(Object *obj, int value, Error **errp)
- {
-     struct whpx_state *whpx = &whpx_global;
--    OnOffAuto mode;
- 
--    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
--        return;
--    }
--
--    switch (mode) {
-+    switch (value) {
-     case ON_OFF_AUTO_ON:
-         whpx->hyperv_enlightenments_allowed = true;
-         whpx->hyperv_enlightenments_required = true;
-@@ -497,11 +491,7 @@ static void whpx_set_hyperv(Object *obj, Visitor *v,
-         whpx->hyperv_enlightenments_required = false;
-         break;
-     default:
--        /*
--         * The value was checked in visit_type_OnOffAuto() above. If
--         * we get here, then something is wrong in QEMU.
--         */
--        abort();
-+        g_assert_not_reached();
-     }
+ static const PropertyInfo prop_pmu_num = {
+-    .type = "uint8",
++    .qapi_type = &uint8_type_info,
+     .description = "pmu-num",
+     .get = prop_pmu_num_get,
+     .set = prop_pmu_num_set,
+@@ -1746,7 +1746,7 @@ static void prop_pmu_mask_get(Object *obj, Visitor *v, const char *name,
  }
  
-@@ -533,11 +523,12 @@ static void whpx_accel_class_init(ObjectClass *oc, const void *data)
-         NULL, NULL);
-     object_class_property_set_description(oc, "kernel-irqchip",
-         "Configure WHPX in-kernel irqchip");
--    object_class_property_add(oc, "hyperv", "OnOffAuto",
--        NULL, whpx_set_hyperv,
--        NULL, NULL);
--    object_class_property_set_description(oc, "hyperv",
--        "Configure Hyper-V enlightenments");
-+    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
-+        .name = "hyperv",
-+        .description = "Configure Hyper-V enlightenments",
-+        .qapi_type = &OnOffAuto_type_info,
-+        .set = whpx_set_hyperv,
-+    ));
- 
-     whpx_arch_accel_class_init(oc);
+ static const PropertyInfo prop_pmu_mask = {
+-    .type = "uint32",
++    .qapi_type = &uint32_type_info,
+     .description = "pmu-mask",
+     .get = prop_pmu_mask_get,
+     .set = prop_pmu_mask_set,
+@@ -1778,7 +1778,7 @@ static void prop_mmu_get(Object *obj, Visitor *v, const char *name,
  }
+ 
+ static const PropertyInfo prop_mmu = {
+-    .type = "bool",
++    .qapi_type = &bool_type_info,
+     .description = "mmu",
+     .get = prop_mmu_get,
+     .set = prop_mmu_set,
+@@ -1811,7 +1811,7 @@ static void prop_pmp_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_pmp = {
+-    .type = "bool",
++    .qapi_type = &bool_type_info,
+     .description = "pmp",
+     .get = prop_pmp_get,
+     .set = prop_pmp_set,
+@@ -1851,7 +1851,7 @@ static void prop_num_pmp_regions_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_num_pmp_regions = {
+-    .type = "uint8",
++    .qapi_type = &uint8_type_info,
+     .description = "num-pmp-regions",
+     .get = prop_num_pmp_regions_get,
+     .set = prop_num_pmp_regions_set,
+@@ -1889,7 +1889,7 @@ static void prop_pmp_granularity_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_pmp_granularity = {
+-    .type = "uint32",
++    .qapi_type = &uint32_type_info,
+     .description = "pmp-granularity",
+     .get = prop_pmp_granularity_get,
+     .set = prop_pmp_granularity_set,
+@@ -1965,7 +1965,7 @@ static void prop_priv_spec_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_priv_spec = {
+-    .type = "str",
++    .qapi_type = &str_type_info,
+     .description = "priv_spec",
+     /* FIXME enum? */
+     .get = prop_priv_spec_get,
+@@ -1998,7 +1998,7 @@ static void prop_vext_spec_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_vext_spec = {
+-    .type = "str",
++    .qapi_type = &str_type_info,
+     .description = "vext_spec",
+     /* FIXME enum? */
+     .get = prop_vext_spec_get,
+@@ -2041,7 +2041,7 @@ static void prop_vlen_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_vlen = {
+-    .type = "uint16",
++    .qapi_type = &uint16_type_info,
+     .description = "vlen",
+     .get = prop_vlen_get,
+     .set = prop_vlen_set,
+@@ -2082,7 +2082,7 @@ static void prop_elen_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_elen = {
+-    .type = "uint16",
++    .qapi_type = &uint16_type_info,
+     .description = "elen",
+     .get = prop_elen_get,
+     .set = prop_elen_set,
+@@ -2118,7 +2118,7 @@ static void prop_cbom_blksize_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_cbom_blksize = {
+-    .type = "uint16",
++    .qapi_type = &uint16_type_info,
+     .description = "cbom_blocksize",
+     .get = prop_cbom_blksize_get,
+     .set = prop_cbom_blksize_set,
+@@ -2154,7 +2154,7 @@ static void prop_cbop_blksize_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_cbop_blksize = {
+-    .type = "uint16",
++    .qapi_type = &uint16_type_info,
+     .description = "cbop_blocksize",
+     .get = prop_cbop_blksize_get,
+     .set = prop_cbop_blksize_set,
+@@ -2190,7 +2190,7 @@ static void prop_cboz_blksize_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_cboz_blksize = {
+-    .type = "uint16",
++    .qapi_type = &uint16_type_info,
+     .description = "cboz_blocksize",
+     .get = prop_cboz_blksize_get,
+     .set = prop_cboz_blksize_set,
+@@ -2226,7 +2226,7 @@ static void prop_mvendorid_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_mvendorid = {
+-    .type = "uint32",
++    .qapi_type = &uint32_type_info,
+     .description = "mvendorid",
+     .get = prop_mvendorid_get,
+     .set = prop_mvendorid_set,
+@@ -2262,7 +2262,7 @@ static void prop_mimpid_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_mimpid = {
+-    .type = "uint64",
++    .qapi_type = &uint64_type_info,
+     .description = "mimpid",
+     .get = prop_mimpid_get,
+     .set = prop_mimpid_set,
+@@ -2319,7 +2319,7 @@ static void prop_marchid_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_marchid = {
+-    .type = "uint64",
++    .qapi_type = &uint64_type_info,
+     .description = "marchid",
+     .get = prop_marchid_get,
+     .set = prop_marchid_set,
 
 -- 
 2.56.0.116.g6de20f6092dc

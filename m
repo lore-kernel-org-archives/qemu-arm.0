@@ -1,68 +1,69 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59CE9606A31C
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:22:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C833606A319
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:23:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=YYtCwb7j
+	dkim=pass (2048-bit key, unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=sTfKGFM1
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7uq-0007HY-M8; Tue, 20 Oct 2026 07:22:00 -0400
+	id 1xJ7wC-0000Gt-GE; Tue, 20 Oct 2026 07:23:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1xJ7uo-0007Fh-Vj; Tue, 20 Oct 2026 07:21:58 -0400
+ id 1xJ7wA-0000En-1j; Tue, 20 Oct 2026 07:23:22 -0400
 Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1xJ7un-0003Cy-4W; Tue, 20 Oct 2026 07:21:58 -0400
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ id 1xJ7w8-0003Ln-AJ; Tue, 20 Oct 2026 07:23:21 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69K1E5DP3640696; Tue, 20 Oct 2026 11:21:30 GMT
+ 69K1EFj81255163; Tue, 20 Oct 2026 11:23:04 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=CvmCqN
- 6gfp0ltMv3NR0TI9VtE3LUEDjKPVakM7HvCRk=; b=YYtCwb7jmpDJvzLDhsNLcS
- JaD6MolhrTDEo56n1dtBb8H+YBCPK3FTTrqJWBc07Ke805wtLAVk0OXdyEQE0w8L
- I9HSGpZ/BhPh+zPnfuIvqlFjLs8uiDVsETHOubcs11AoeruE0H4i3Ix/DGBgvOKt
- yfO5S5my5cHkwEba8a76B+7B5GqsxsUeBe2GWVmDRcNadWQ65peUl4xRGlnX+Oqm
- k05OVSefB811fuER3gpY6LDErDEJxu5AQf4hGE19OmycDZoMnQpifgFGPKPV1Heg
- qTZkmB14/yMLiRMGvbrbGmED2EWoaLLDmwW8Am+ZJV1DPP/vxbJoGMuRZR9NEgkA
+ :message-id:mime-version:references:subject:to; s=pp1; bh=/IJxX9
+ KbUPtYr3sxTE6lkQYigwMzTKTrznt04sRNU4g=; b=sTfKGFM1I76eNCyU/3bkE7
+ Kj8yXUqPZZeI9qWjOw1CF135bKbIvNuqH80gTlXsQByUBUx8BbkPfy593mmqTg/3
+ pN5mOp1BdB9cb8IM0rPfp3KObGpVk0UmcslsDid9VWfFuG0fznAfIlcJUmcoe+iR
+ Ozt4eEqKHbM7OsmLCRr1dSTZC5q3Zou6u0KlOEleavnVXhepqiLlBenrnhJ/SfxJ
+ snUK533PjeV/ktliF1BL+EesY1OQjFZ4E/uuFvZxnMLWP86AD1z1stUGqs8GRuYg
+ NT398sBa1VszWnR95+6mKU+fh93yGSe0w7p/ox2cOzq4ZBFMewWEKir8H3hyLnUg
  ==
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4hdw5bagkm-1
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4hdw58jgpd-1
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Tue, 20 Oct 2026 11:21:30 +0000 (GMT)
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69KBLBIm1371188; Tue, 20 Oct 2026 11:21:29 GMT
-Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4he7bs000d-1
+ Tue, 20 Oct 2026 11:23:04 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69KANZHJ1346883; Tue, 20 Oct 2026 11:23:03 GMT
+Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4he6gq86st-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 20 Oct 2026 11:21:29 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com
- [10.20.54.101])
- by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 69KBLOV951642800
+ Tue, 20 Oct 2026 11:23:03 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
+ [10.20.54.103])
+ by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 69KBMxV525952656
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 20 Oct 2026 11:21:24 GMT
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id BD69B20043;
- Tue, 20 Oct 2026 11:21:24 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D7A5C20040;
- Tue, 20 Oct 2026 11:21:23 +0000 (GMT)
+ Tue, 20 Oct 2026 11:22:59 GMT
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7B5CC20065;
+ Tue, 20 Oct 2026 11:22:59 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 973092004D;
+ Tue, 20 Oct 2026 11:22:58 +0000 (GMT)
 Received: from [0.0.0.0] (unknown [9.87.149.137])
- by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 20 Oct 2026 11:21:23 +0000 (GMT)
-Message-ID: <91dcf5d8-f319-49d5-820b-fd6c4da8d08e@linux.ibm.com>
-Date: Tue, 20 Oct 2026 13:21:23 +0200
+ by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 20 Oct 2026 11:22:58 +0000 (GMT)
+Message-ID: <f7a43a1c-9097-4341-bdc6-8e3d29631d81@linux.ibm.com>
+Date: Tue, 20 Oct 2026 13:22:58 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 08/19] tests/guest-debug: convert gdb_cmd to an array
+Subject: Re: [PATCH v3 09/19] tests/guest-debug: convert cmd to an qemu_cmd
+ array
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <th.huth+qemu@posteo.eu>,
@@ -87,39 +88,39 @@ Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <th.huth+qemu@posteo.eu>,
  Yoshinori Sato <yoshinori.sato@nifty.com>,
  Klaus Jensen <its@irrelevant.dk>, John Snow <jsnow@redhat.com>
 References: <20261019192704.3220373-1-alex.bennee@linaro.org>
- <20261019192704.3220373-9-alex.bennee@linaro.org>
+ <20261019192704.3220373-10-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Ilya Leoshkevich <iii@linux.ibm.com>
-In-Reply-To: <20261019192704.3220373-9-alex.bennee@linaro.org>
+In-Reply-To: <20261019192704.3220373-10-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: mTzydUMgJl6M_JeTD-pSCqoUG796NSxI
-X-Proofpoint-ORIG-GUID: mTzydUMgJl6M_JeTD-pSCqoUG796NSxI
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIwMDA0NCBTYWx0ZWRfX6/VVWFWQaTdT
- tZMGIA8MPapav9Dnq1IN4nee+1qgxaCQTH5W5a3EoEEGkyr1CHCoM+JPmno6a1n7ZhyBR9di8hl
- Kt66YkaP6lyQOcANwt/gf9pztQOp9dQ=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDA0NCBTYWx0ZWRfX8GQcTTigDpS/
- i8I4B+DGfVGlXl1nrxdTfHwdb3Y7xjGaM7LcxZp9AmGAQmT3jCJx4KDRbtRfSWUd2AAytNgf0rq
- ezTI2CzXy26+zKaUY+C00xVglvCoLvcEkNXFUI3UzDzopY2Lt6Kn31WvMWbZCdjCdAg0E1pM9T/
- UureZraU+NbEG/uPKFl7xfz1JL1W+/Zfm+k0Iq17NutGtwxbc8gCrBRwqfCrYPfh4LVx9AiG54T
- ZktG3IlTHWsdIrLyygLspLrKZ7KihxaEAjHqAOSnQyl5QG6kocAUHlTrr1dls/pCPf5zQ+KcBgl
- 33uJA7Zc1ewd5CMj5mjrN/GcXQrXQ1yEY07/Ru5IVwo6Zge2Ykjqgy1YyIKDrHUIczBu0g674bJ
- Bf1Q74wEDcEqDJtaq4RHZiJvj2k1lYRngb+jBlA2ST3gC+RR7BM9+HG/37d+cAEU5frgYiKqz90
- wnih0sc8PvxcuuriRiw==
-X-Authority-Analysis: v=2.4 cv=Gb2CDgXL c=1 sm=1 tr=0 ts=6ad74eba cx=c_pps
- a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
+X-Proofpoint-GUID: mCbEZcrbD2wL0Kc9wwHvcUr-DL2IE5A8
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIwMDA0NCBTYWx0ZWRfX46VkYud4qShj
+ 4stoh2VeKKQyUleqwqspYoMzEvEBOddqxtdK70XWS4+lWnND/g7Cuq0j9BJLYzg8qyOoaP63cA4
+ LU/nWS++b2hLkLCgWhlQMq2OZQTLcWI=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDA0NCBTYWx0ZWRfX0SPlxIkvyaqt
+ OsDQT5YLPB9QnxEcVHfwqbX1TwhC6oNtdVClxG0/iP87hFbGSSHaU06M1cCiP6aFDVbwP186VMR
+ cmdUTcoPsojOtxfbv1hiqTO4RXJi+3Vd4wchM0wzXn6gqWs1Y6Sw7M8UFwuraourdlgcw9C1Sla
+ rREMYcENq+vhXflEbDy6vR2e2YEltABIL+qRIImhfb4ufSdvZL+ePzUuabdKS/4jrIUy4+Zul90
+ e7/IL8YM0LoueIeqQ7ejFByhvwtd41y+2THxSfzBRBfAJkdT7S3LAQGH51+T7v+epUlqOENajRl
+ 8CZ5GTPeG1xF+tKcxag4hh4UingtYrf9eASYs0Uaau5fVILCAnDDxsa/p0/kUp5L21+p7MJrfBJ
+ NehYCgvSu94LR8hnX/9VWa6DX/D3HBndhrJ/1UIU3bJ42WI6WrFhktUXX1SSAwld/0phZc7EHlr
+ Ydrtr0Ig+pxmuIFA9TQ==
+X-Proofpoint-ORIG-GUID: mCbEZcrbD2wL0Kc9wwHvcUr-DL2IE5A8
+X-Authority-Analysis: v=2.4 cv=Ob4NnRTY c=1 sm=1 tr=0 ts=6ad74f18 cx=c_pps
+ a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=uAbxVGIbfxUO_5tXvNgY:22 a=VnNF1IyMAAAA:8
- a=KKAkSRfTAAAA:8 a=faOvR4p6BUOYKD1us8kA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=RnoormkPH1_aCDwRdu11:22 a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8
+ a=KKAkSRfTAAAA:8 a=w-cV7Y6Bw9ijqYkUNuwA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
  a=cvBusfyB2V15izCimMoJ:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-20_01,2026-10-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 adultscore=0 malwarescore=0 spamscore=0 phishscore=0
- clxscore=1015 bulkscore=0 impostorscore=0 lowpriorityscore=0
- priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
+ bulkscore=0 adultscore=0 phishscore=0 spamscore=0 suspectscore=0
+ lowpriorityscore=0 clxscore=1015 impostorscore=0 priorityscore=1501
+ malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
  definitions=main-2610200044
 Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
@@ -145,50 +146,26 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
 
 On 10/19/26 21:26, Alex Bennée wrote:
-> Passing a plain string to subprocess involves making sure the escaping
-> is correct so the underlying shell doesn't get confused. This can be
-> tricky to track across multiple  processes. To simplify this build the
-> command as an array and execute gdb directly without involving the
-> shell.
+> As with gdb_cmd passing a plain string to a subprocess involves making
+> sure the escaping is correct so the underlying shell doesn't get
+> confused. Do the same as gdb_cmd and make the whole thing an array.
 > 
-> We add a mini-helper to make the log output a bit more copy and paste
-> friendly.
+> There are a few minor wrinkles with when args.binary is expected so
+> add some comments for that.
 > 
 > Suggested-by: Ilya Leoshkevich <iii@linux.ibm.com>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/guest-debug/run-test.py | 26 +++++++++++++++-----------
->   1 file changed, 15 insertions(+), 11 deletions(-)
-> 
-> diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-> index 838c1c26971..e8b69f85cd1 100755
-> --- a/tests/guest-debug/run-test.py
-> +++ b/tests/guest-debug/run-test.py
-> @@ -51,6 +51,10 @@ def log(output, msg):
->           print(msg)
->   
->   
-> +def format_cmd(cmd):
-> +    return " ".join(f'"{arg}"' if ' ' in arg else arg for arg in cmd)
-
-I would use shlex.quote() here.
-It doesn't do anything to strings that don't require quoting:
-
- >>> print(shlex.quote('aaa'))
-aaa
- >>> print(shlex.quote('"aaa'))
-'"aaa'
-
-With that:
-
+>   tests/guest-debug/run-test.py | 31 ++++++++++++++++++-------------
+>   1 file changed, 18 insertions(+), 13 deletions(-)
 Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
 
-[...]
 

@@ -1,73 +1,73 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9ADA0606A31F
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:46:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D354C606A32C
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:47:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=FAi8dsPn
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=vPmALV4g
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7M0-00078s-Rb; Tue, 20 Oct 2026 06:46:01 -0400
+	id 1xJ7Jf-0004Cy-3r; Tue, 20 Oct 2026 06:43:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xJ7K3-0004ao-Lr
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:59 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1xJ7Jc-00049a-Ix
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:32 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xJ7Jh-0004SX-Gx
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:59 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-48e0d885929so2345453f8f.3
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 03:43:36 -0700 (PDT)
+ id 1xJ7JV-0004Jw-Ek
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:43:32 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-48afcfc4bf5so2594718f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 03:43:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792493016; x=1793097816; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792493004; x=1793097804; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=3nKJ8HDcn3r8uziE9nKrYpZyKDrGZlceKJ4Jq+Ujj9I=;
- b=FAi8dsPny1TdtJ58mji3uQb8+iZr/Xfv4hKXEr6R+o/J5n0bEscpa2cw6HqI5YUM9X
- A4ccdAS7ydpnh7a1haZ76kqnIL/8XuqddsgiCdHy3yhJLoZ67udjulYG/F6qI5yIVgyx
- iG0mthnLDwCIgwrpQZWGffoX9bbdpA7azIi+M9Pw73hy03nZoqu/t88Qk/yEoTAv0KiE
- MYNP2jgRCyhLDcNDf/stUJrGmZJREhlnDw1g3b8qYLGW/4ZSXANmWJU4ceiaHKjKnYH1
- R9MKnXzK2kOt8LwqBcvSjE7GA2be+nqvYEfgiYoYyKS/1UReMG9jmUZah+X/41KXW7UA
- PslA==
+ bh=EQ7gfcnpJP7Ud8+3W5PCJuKE2nJX2Z7vYXXp9omA0HY=;
+ b=vPmALV4gDGYamFoTuBJCIb9umi3/Lx5WPLZXtab3ko46NgZcyM9etroNXub7pf2Jtq
+ E8dWdEi/tXNkglzAnczcZNHiAr6ZfSiFnajuH2Y4SfhZNrjvF6Kbn0Sm12QapvCVk9PR
+ zHq2lPWDGgb4Vf/oultd/QGnwUre9kcr5FcPWHo/k7JSFs9R0z5EDdqPIJhhLKYOKWFz
+ vpbF4lata2/hl9H5SzdcLTgCy+StZGUudlGbMPTXQhZukoBCx/Xe1glPalQ7Z/d9kkBt
+ DXD3eQ1k9f3171H1OfZyQy6S4hES4obxDNGH/ypDydsHZOW4WhgBKVI187fJgZaV/QGO
+ rN+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792493016; x=1793097816;
+ d=1e100.net; s=20260707; t=1792493004; x=1793097804;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=3nKJ8HDcn3r8uziE9nKrYpZyKDrGZlceKJ4Jq+Ujj9I=;
- b=DJXRdWC9Ugs53OcMi0W2gCjXRRVg+W6cZ0BHmnW3chp/G0zZiupXhJq1eJhj3wYdMc
- i0MecPTkmL20Mr2Un8q19hVF15944WAtAvg/en9OPgJN8+ztjuuVSY0MktK+wZb2ce3P
- CQ2WKk8xXVfIRlEzWWLSwG7U9ucYLz8vZlEAIc0Zf6GFF7cN8cA1l/XhExnH8Kp+hH6K
- gU3e2GeMTXcS9KnYDP9l/ejKbxj5IeiYr42NEpbC3s6PG2rUZh0C1hq/jvNacsi64mqk
- iOw1O4OuzV5IyU6JLd/g/sSpLQRnJsSmonYcO8Y0h+Eb2JiuUtgOVyGbHoQfh023JQsC
- zBMQ==
+ bh=EQ7gfcnpJP7Ud8+3W5PCJuKE2nJX2Z7vYXXp9omA0HY=;
+ b=W96vIVt64f9SPsebLa1l8UpKFlGbG8kT9Worl+7UzHrGQLPZ4cibicRhUsd2fYPpiC
+ pplkTdoqYw7iBeoSjimRxMpXYTlj1HafbkOmFoipNzYxep8jQBqBzsh86Ti10QWDztJC
+ U0W8xXUQIThj3cZw0EY7Z0eVR+mtu2j/QYsNki93l/BKEaojrfLNJxLtSnZE9DW7QbPf
+ VwpS2Dhzm7jaGXHOHHOQ6WUkvdLPtopEvMGwUmjCBVU2V6Rmw+0reqHUI+j6X8YTW4V4
+ BgwqqBRPmKKTU06j8gcRUOi3Gq66+ciUpV2bCO36c2qECoE/YS3MSeRJ7Wu4lMsg7sdq
+ +zKw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwpzm6phlHAQ7jB/6n48salXUQ/dkYyMYSPQ2HMzeWkSuq2wlOKBhpH6MbBkiLCibbIrDla15/fSg==@nongnu.org
-X-Gm-Message-State: AFq9FYIl+8g7NMp2qzfhrU3pSNtRAsb0EkLf4M2+4WWOyVo2ngWINSbC
- hpU24Eghd0piV7RP3kwRj7QsrDgfA9Z2jPnLRHRrbYJxm6NXkQHASnKZI7lxHcN4qpw=
-X-Gm-Gg: AYBFou3pFKz2OTgwK8Oex2iW5o6/R2rNfAee58FI/rM92ZBl72/YpA/vyTgf3C25CnD
- Nb6OmUI9nYyAOBCFyJWZ8XOaiB7FbOYo5L7Ra5OVOUw48z1LrxuogDlI2EudHs++9BnQDxauccG
- qy6sNW5sbeddtBk6wWZKSTPUXhazdTrpLspEnvYJPlDIY7WAeIjEzP4JhuYGViZML5lXzHtOllP
- eF9B0XtGyRsFKI+DKC+hl9BrlLKdk6jc1ZyrC3fK/p1ZYLZldikxQSpUGme+ShGn42Hm6liaEX1
- JPVhHHgyX+W4BLoEHoq6uGPwP3FTchH98c+Avmr9ztrwS82MIP0YRvwvDMy0ZQY5YuQvpEe3yK5
- H+nYbw08/tY3fbKkDXPT6k2wMfjq6nhw3WnQu3qN0/YCtjmpZsNiL0ikaYG8JL6Vl7up3kfGZvn
- CzoXqqP/F3QJCsvgGsHYGQOqfhhDJExpYw+yS1HbWMYv8d+OTkXts1SfaFs7f4nIpV3g8RzA==
-X-Received: by 2002:a05:6000:5ca:b0:48d:ff06:c626 with SMTP id
- ffacd0b85a97d-48e07f9eacbmr20650207f8f.35.1792493015656; 
- Tue, 20 Oct 2026 03:43:35 -0700 (PDT)
+ AKwUvBy4dJvqaM3hVwmc+x1ZqSaveDFK/l5BiOee6Kpds5nzpFRgcI9GQGP+Oa42lH5qJe4YHiGJXWXg8w==@nongnu.org
+X-Gm-Message-State: AFq9FYIzDoNLALroBC3VOrEPEBao9gcjRISI3eMdKe8AJ6uFn+epgH0i
+ 1z1CfkkXvm3QYNwvuPbr0iPhUHGTPIdcTKgdGyrzKUonGBVJDr4TP5WDYYtxirPgBVM=
+X-Gm-Gg: AYBFou0NNHE2KwcEuAnXLK5wnSaO/+KGKqlsPEDkLnQAOPO0F2V+jtmlaN2LJbN1g1Q
+ 0ro7U5XeTJeUNS/SSedisgcruSZcxSZPdI+e6iqyqNl6lqTlo76YamarpOVZqVkqOmArkNghaxC
+ LKIkBtWEe3IvD/QGVRNPOgmdqnMT4XP3KsZScr+XGZ4pvjah/vLn+XCWvCAHBN1b8482mnqTenN
+ Uxs6piEaW4TkBLYdxQ0w71pPT+agYTDsY3ePGqjLstdDcnuOYf7hgPgqQSajDNd4dsIJU7XZzvs
+ XhYdnR8xDyMnJ+xTowt1O5khl5zsFx+OJDG7C7mxspTG30edP4NRXU6psfLG3HwHzTKBLdfHKSX
+ 9oV/Iw3g5STHQPFZlsdUuvJCgk1DxSOqTgV14S/nJOQaD2bmOoneAzhpdqlQGm7/+5Vd1PZyGiX
+ I43gQcRltmEnRMKV/Djdv+JytJev4P9vhRbiqm61RAfhN7IKfzScC1CYbb/1bGXH4qs9dnB90=
+X-Received: by 2002:a05:6000:607:b0:48d:f58f:c91 with SMTP id
+ ffacd0b85a97d-48e07bb5919mr21536746f8f.19.1792493003575; 
+ Tue, 20 Oct 2026 03:43:23 -0700 (PDT)
 Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e1d80fafdsm5465775f8f.9.2026.10.20.03.43.26
+ ffacd0b85a97d-48e1d820822sm5769631f8f.34.2026.10.20.03.43.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2026 03:43:27 -0700 (PDT)
+ Tue, 20 Oct 2026 03:43:21 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 015BD5F9E2;
- Tue, 20 Oct 2026 11:43:24 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 92FE85F9E2;
+ Tue, 20 Oct 2026 11:43:20 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Bibo Mao <maobibo@loongson.cn>,
@@ -99,9 +99,9 @@ Cc: Bibo Mao <maobibo@loongson.cn>,
  Weiwei Li <liwei1518@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-riscv@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 19/23] accel/kvm: remove TARGET_KVM_HAVE_GUEST_DEBUG
-Date: Tue, 20 Oct 2026 11:43:13 +0100
-Message-ID: <20261020104320.3686723-20-alex.bennee@linaro.org>
+Subject: [PATCH 03/23] target/ppc: wire up empty KVMAccelCPUClass
+Date: Tue, 20 Oct 2026 11:42:57 +0100
+Message-ID: <20261020104320.3686723-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261020104320.3686723-1-alex.bennee@linaro.org>
 References: <20261020104320.3686723-1-alex.bennee@linaro.org>
@@ -109,8 +109,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,253 +132,54 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-With guest debug and breakpoint handling now migrated to struct
-KVMCPUOps, accel/kvm dispatches dynamically via ops. If an
-architecture does not support guest debug or breakpoints, the
-callbacks are simply NULL and common code handles this gracefully.
-
-As a result we can drop TARGET_KVM_HAVE_GUEST_DEBUG. Remove it from
-target configs and eliminate the #ifdef guards.
+We will fill in the functions in future commits.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- configs/targets/aarch64-softmmu.mak     |  1 -
- configs/targets/i386-softmmu.mak        |  1 -
- configs/targets/loongarch64-softmmu.mak |  1 -
- configs/targets/ppc-softmmu.mak         |  1 -
- configs/targets/ppc64-softmmu.mak       |  1 -
- configs/targets/riscv64-softmmu.mak     |  1 -
- configs/targets/s390x-softmmu.mak       |  1 -
- configs/targets/x86_64-softmmu.mak      |  1 -
- include/system/kvm.h                    |  7 -------
- include/system/kvm_int.h                |  2 --
- accel/kvm/kvm-accel-ops.c               |  4 ----
- accel/kvm/kvm-all.c                     | 15 +++++----------
- 12 files changed, 5 insertions(+), 31 deletions(-)
+ target/ppc/kvm.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/configs/targets/aarch64-softmmu.mak b/configs/targets/aarch64-softmmu.mak
-index d34aead41c4..6f60ca6505c 100644
---- a/configs/targets/aarch64-softmmu.mak
-+++ b/configs/targets/aarch64-softmmu.mak
-@@ -1,6 +1,5 @@
- TARGET_ARCH=aarch64
- TARGET_BASE_ARCH=arm
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_XML_FILES= aarch64-core.xml aarch64-fpu.xml arm-core.xml arm-vfp.xml arm-vfp3.xml arm-vfp-sysregs.xml arm-neon.xml arm-m-profile.xml arm-m-profile-mve.xml aarch64-pauth.xml aarch64-sme2.xml
- # needed by boot.c
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/i386-softmmu.mak b/configs/targets/i386-softmmu.mak
-index 38a8f85201f..2eef68dc55e 100644
---- a/configs/targets/i386-softmmu.mak
-+++ b/configs/targets/i386-softmmu.mak
-@@ -1,5 +1,4 @@
- TARGET_ARCH=i386
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_KVM_HAVE_RESET_PARKED_VCPU=y
- TARGET_XML_FILES= i386-32bit.xml
- TARGET_LONG_BITS=32
-diff --git a/configs/targets/loongarch64-softmmu.mak b/configs/targets/loongarch64-softmmu.mak
-index a425b3dbaae..3b3a9021980 100644
---- a/configs/targets/loongarch64-softmmu.mak
-+++ b/configs/targets/loongarch64-softmmu.mak
-@@ -1,6 +1,5 @@
- TARGET_ARCH=loongarch64
- TARGET_BASE_ARCH=loongarch
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_XML_FILES= loongarch-base32.xml loongarch-base64.xml loongarch-fpu.xml loongarch-lsx.xml loongarch-lasx.xml
- # all boards require libfdt
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/ppc-softmmu.mak b/configs/targets/ppc-softmmu.mak
-index 867898bd47c..c47887f8992 100644
---- a/configs/targets/ppc-softmmu.mak
-+++ b/configs/targets/ppc-softmmu.mak
-@@ -1,5 +1,4 @@
- TARGET_ARCH=ppc
- TARGET_BIG_ENDIAN=y
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_XML_FILES= power-core.xml power-fpu.xml power-altivec.xml power-spe.xml
- TARGET_LONG_BITS=32
-diff --git a/configs/targets/ppc64-softmmu.mak b/configs/targets/ppc64-softmmu.mak
-index 10d7a2681e7..8c6dc84b821 100644
---- a/configs/targets/ppc64-softmmu.mak
-+++ b/configs/targets/ppc64-softmmu.mak
-@@ -1,7 +1,6 @@
- TARGET_ARCH=ppc64
- TARGET_BASE_ARCH=ppc
- TARGET_BIG_ENDIAN=y
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_XML_FILES= power64-core.xml power-fpu.xml power-altivec.xml power-spe.xml power-vsx.xml
- # all boards require libfdt
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/riscv64-softmmu.mak b/configs/targets/riscv64-softmmu.mak
-index a10dc03c04c..18b674230ab 100644
---- a/configs/targets/riscv64-softmmu.mak
-+++ b/configs/targets/riscv64-softmmu.mak
-@@ -1,6 +1,5 @@
- TARGET_ARCH=riscv64
- TARGET_BASE_ARCH=riscv
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_XML_FILES= riscv-64bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-64bit-virtual.xml riscv-32bit-cpu.xml riscv-32bit-virtual.xml
- # needed by boot.c
- TARGET_NEED_FDT=y
-diff --git a/configs/targets/s390x-softmmu.mak b/configs/targets/s390x-softmmu.mak
-index 478988e6d4a..6a629c6479e 100644
---- a/configs/targets/s390x-softmmu.mak
-+++ b/configs/targets/s390x-softmmu.mak
-@@ -1,6 +1,5 @@
- TARGET_ARCH=s390x
- TARGET_BIG_ENDIAN=y
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_XML_FILES= s390x-core64.xml s390-acr.xml s390-fpr.xml s390-vx.xml s390-cr.xml s390-virt.xml s390-virt-kvm.xml s390-gs.xml
- TARGET_LONG_BITS=64
- TARGET_NOT_USING_LEGACY_NATIVE_ENDIAN_API=y
-diff --git a/configs/targets/x86_64-softmmu.mak b/configs/targets/x86_64-softmmu.mak
-index c7f8746b4f5..491173df466 100644
---- a/configs/targets/x86_64-softmmu.mak
-+++ b/configs/targets/x86_64-softmmu.mak
-@@ -1,6 +1,5 @@
- TARGET_ARCH=x86_64
- TARGET_BASE_ARCH=i386
--TARGET_KVM_HAVE_GUEST_DEBUG=y
- TARGET_KVM_HAVE_RESET_PARKED_VCPU=y
- TARGET_XML_FILES= i386-64bit.xml i386-64bit-apx.xml
- TARGET_LONG_BITS=64
-diff --git a/include/system/kvm.h b/include/system/kvm.h
-index cfc0144d9a5..1a52e7e5261 100644
---- a/include/system/kvm.h
-+++ b/include/system/kvm.h
-@@ -232,14 +232,7 @@ void kvm_irqchip_change_notify(void);
-  * calling down to the KVMCPUOps::update_guest_debug callback after the generic
-  * fields have been set.
-  */
--#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
- int kvm_update_guest_debug(CPUState *cpu, unsigned long reinject_trap);
--#else
--static inline int kvm_update_guest_debug(CPUState *cpu, unsigned long reinject_trap)
--{
--    return -EINVAL;
--}
--#endif
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 8e89a6c665c..8e9328beeb9 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -50,6 +50,7 @@
+ #include "system/kvm_int.h"
+ #include "system/kvm.h"
+ #include "accel/accel-cpu-target.h"
++#include "accel/kvm/cpu-ops.h"
  
- /* internal API */
+ #include CONFIG_DEVICES
  
-diff --git a/include/system/kvm_int.h b/include/system/kvm_int.h
-index 0876aac938d..9d1d3fd3deb 100644
---- a/include/system/kvm_int.h
-+++ b/include/system/kvm_int.h
-@@ -113,9 +113,7 @@ struct KVMState
-     struct kvm_coalesced_mmio_ring *coalesced_mmio_ring;
-     bool coalesced_flush_in_progress;
-     int vcpu_events;
--#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
-     QTAILQ_HEAD(, kvm_sw_breakpoint) kvm_sw_breakpoints;
--#endif
-     int max_nested_state_len;
-     int kvm_shadow_mem;
-     bool kernel_irqchip_allowed;
-diff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c
-index 445d7d7f545..ab10de6ac30 100644
---- a/accel/kvm/kvm-accel-ops.c
-+++ b/accel/kvm/kvm-accel-ops.c
-@@ -86,12 +86,10 @@ static bool kvm_cpus_are_resettable(void)
-     return !kvm_enabled() || !kvm_state->guest_state_protected;
- }
- 
--#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
- static void kvm_update_guest_debug_ops(CPUState *cpu)
+@@ -3080,17 +3081,22 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
  {
-     kvm_update_guest_debug(cpu, 0);
- }
--#endif
- 
- static void kvm_accel_ops_class_init(ObjectClass *oc, const void *data)
- {
-@@ -106,12 +104,10 @@ static void kvm_accel_ops_class_init(ObjectClass *oc, const void *data)
-     ops->synchronize_pre_loadvm = kvm_cpu_synchronize_pre_loadvm;
-     ops->handle_interrupt = generic_handle_interrupt;
- 
--#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
-     ops->update_guest_debug = kvm_update_guest_debug_ops;
-     ops->insert_gdbstub_breakpoint = kvm_insert_gdbstub_breakpoint;
-     ops->remove_gdbstub_breakpoint = kvm_remove_gdbstub_breakpoint;
-     ops->remove_all_gdbstub_breakpoints = kvm_remove_all_gdbstub_breakpoints;
--#endif
  }
  
- static const TypeInfo kvm_accel_ops_type = {
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 3bd61264a7e..5b96fac513e 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2964,9 +2964,7 @@ static int kvm_init(AccelState *as, MachineState *ms)
-     s->sigmask_len = 8;
-     accel_blocker_init();
- 
--#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
-     QTAILQ_INIT(&s->kvm_sw_breakpoints);
--#endif
-     QLIST_INIT(&s->kvm_parked_vcpus);
-     s->fd = qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
-     if (s->fd == -1) {
-@@ -3077,7 +3075,6 @@ static int kvm_init(AccelState *as, MachineState *ms)
-     kvm_vm_attributes_allowed =
-         (kvm_check_extension(s, KVM_CAP_VM_ATTRIBUTES) > 0);
- 
--#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
-     if (kvm_check_extension(s, KVM_CAP_SET_GUEST_DEBUG) > 0) {
-         as->gdbstub.sstep_flags = SSTEP_ENABLE;
- 
-@@ -3088,7 +3085,6 @@ static int kvm_init(AccelState *as, MachineState *ms)
-             as->gdbstub.sstep_flags |= SSTEP_NOIRQ;
-         }
-     }
--#endif
- 
-     kvm_state = s;
- 
-@@ -3832,7 +3828,6 @@ bool kvm_arm_supports_user_irq(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_ARM_USER_IRQ);
- }
- 
--#ifdef TARGET_KVM_HAVE_GUEST_DEBUG
- struct kvm_sw_breakpoint *kvm_find_sw_breakpoint(CPUState *cpu, vaddr pc)
- {
-     struct kvm_sw_breakpoint *bp;
-@@ -3869,6 +3864,10 @@ int kvm_update_guest_debug(CPUState *cpu, unsigned long reinject_trap)
-     const KVMCPUOps *ops = kvm_get_cpu_ops(cpu);
-     struct kvm_set_guest_debug_data data;
- 
-+    if (!ops || !ops->update_guest_debug) {
-+        return -EINVAL;
-+    }
++static const KVMCPUOps ppc_kvm_cpu_ops = {
++};
 +
-     data.dbg.control = reinject_trap;
+ static void kvm_cpu_accel_class_init(ObjectClass *oc, const void *data)
+ {
+     AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
++    KVMAccelCPUClass *kacc = KVM_ACCEL_CPU_CLASS(oc);
  
-     if (cpu_single_stepping(cpu)) {
-@@ -3878,9 +3877,7 @@ int kvm_update_guest_debug(CPUState *cpu, unsigned long reinject_trap)
-             data.dbg.control |= KVM_GUESTDBG_BLOCKIRQ;
-         }
-     }
--    if (ops && ops->update_guest_debug) {
--        ops->update_guest_debug(cpu, &data.dbg);
--    }
-+    ops->update_guest_debug(cpu, &data.dbg);
- 
-     run_on_cpu(cpu, kvm_invoke_set_guest_debug,
-                RUN_ON_CPU_HOST_PTR(&data));
-@@ -4022,8 +4019,6 @@ void kvm_remove_all_gdbstub_breakpoints(CPUState *cpu)
-     }
+     acc->cpu_target_realize = kvmppc_cpu_realize;
++    kacc->cpu_ops = &ppc_kvm_cpu_ops;
  }
  
--#endif /* !TARGET_KVM_HAVE_GUEST_DEBUG */
--
- static int kvm_set_signal_mask(CPUState *cpu, const sigset_t *sigset)
- {
-     KVMState *s = kvm_state;
+ static const TypeInfo kvm_cpu_accel_type_info = {
+     .name = ACCEL_CPU_NAME("kvm"),
+ 
+-    .parent = TYPE_ACCEL_CPU,
++    .parent = TYPE_KVM_ACCEL_CPU,
+     .class_init = kvm_cpu_accel_class_init,
+     .abstract = true,
+ };
 -- 
 2.47.3
 

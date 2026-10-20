@@ -1,58 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 854A9606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:55:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8BB6606A319
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:55:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=WhsqAkxH
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=M+ZBmkfY
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7UM-0005nj-GD; Tue, 20 Oct 2026 06:54:40 -0400
+	id 1xJ7QT-0007gb-NU; Tue, 20 Oct 2026 06:50:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Rw-0001Hs-NJ
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:09 -0400
+ id 1xJ7PM-0004C4-G9
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:30 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Rr-0006hk-L6
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:08 -0400
+ id 1xJ7PK-0005ll-Jj
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493521;
+ s=mimecast20190719; t=1792493366;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ccOsUIeVtpZ4LAvRKvLPIKBLjfW8xoZv/G7l+9bsArM=;
- b=WhsqAkxH0SNuRK4xGo4qzxY0VZiHxLB3d15AKr0ers9RqTQDtzZE1r7RFWRA0s4YWS2amp
- QbHHU0bZYjYKarsjihX0DDeUaQBRV+VfaskQJUHxrE70LSoEI1S1O6jvJRANGKusym9Cxc
- jYoSaVFOpNqLsW6Xz3meiMc5E4cVhtY=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=G0tJqQA4vjH1OewDrlPPbV755lqj6OJV4iLGYLxe1dQ=;
+ b=M+ZBmkfYHDagIKA6a0QK4yLoimrm2zgmjFSPRWk0GK1/K/o4rcn8/QDeza+mlmLq7Oyl0F
+ rtF88j7+w9ll9ohQWO0171oemcXpW2gE4m3dJrQlgVgWJEF4UtHgyC3+0tPt6L+x27h0tv
+ mQRPKrSDYwcXbUlTX2BNYVRx6Z5Z1MA=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-328-LUDw3GgDOriOUgUPMvJZCA-1; Tue,
- 20 Oct 2026 10:51:57 +0000
-X-MC-Unique: LUDw3GgDOriOUgUPMvJZCA-1
-X-Mimecast-MFC-AGG-ID: LUDw3GgDOriOUgUPMvJZCA_1792493513
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-532-AU63UEb8PQ-MadFO--Yndg-1; Tue,
+ 20 Oct 2026 10:49:20 +0000
+X-MC-Unique: AU63UEb8PQ-MadFO--Yndg-1
+X-Mimecast-MFC-AGG-ID: AU63UEb8PQ-MadFO--Yndg_1792493356
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 55CF01955BD4; Tue, 20 Oct 2026 10:51:53 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8EE4D1955DE9; Tue, 20 Oct 2026 10:49:16 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7054130000E7; Tue, 20 Oct 2026 10:51:50 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 1701A418; Tue, 20 Oct 2026 10:49:14 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:20 +0400
-Subject: [PATCH v7 63/65] qom: remove old enum property registration API
+Date: Tue, 20 Oct 2026 14:45:51 +0400
+Subject: [PATCH v7 34/65] ppc/spapr-caps: convert to QAPI-aware property
+ registration
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-63-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-34-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -127,25 +128,25 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7342;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6963;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=4DUVOH2Il1uXarwapsGNw4Sqxi5JL+XRDYj5v/DxTXw=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZdSCtnqLwFsuDwikbI6gRflGPZtD05w5lEa
- CvQaDVyJvKJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXQAKCRDa6OEJdZac
- 5VbJEACAn2E9Fh4lFMReVrd4NHuC3naIFHBUIw5ZLoxN7mbcaqivG69WFWxx7ZOrTDRmg/G7yWj
- fDJpczz3Mb0e0IfqafD0Zo52HRprrS3vQqsPJaRNSQkXu2fm6LC1O8aSPWSYAU1eanghk9OhXWy
- YrwTj+hC9ewJZHcH2F93rQKIhbccNRiQPCGgJPy4Lrq/uTwsScJ1VwIlavz58EMOc8D5pLsrqcC
- yq0g6DK4SrNPSK30qRc1DYPDZzDv6UP/6SYl4MOl80b/lEg9HtMa3nOcPYat73Xrz4lJ34zsyq2
- DaiEjhshxRzeWlxSRKFBlCtFXeclBqDgqyY/wXjt1O7g+q+UUKYGqmFXdH3HZHF2a0DzqVUoNpl
- 4FKV2A5wr9Y9wmy+YIR0Lnw3Te8+UkuWx8TJu4UGPD64J7Am8Zdr+5lc4k63v3MIxbJ3V6i3/gx
- xcPgIxzQ2tjUAC413GKGiKMZihOU5ca3wMMcT+SurJ4f6AckLphRseXIw6lV64r07VMlIt2v/on
- t/KCYg7F6sIRLgxf7Q8rsFrDB/0o+lW42EJjrEKIKBVNwdsoxM+4Tc7BWJ7ciCx3ovDWcgc+b9G
- Z8i3KE57kVIhAV2xKZSycVzEGQWVUjJagDqkIlSLS/+8A/FeLV/wYW0PQJQEo9s4t45BXPSFjoI
- Q65g0nQz/0Olqvw==
+ bh=h0OiLsI4rZp+v/Mhu46aHZ2MeGUSC4RGBbFRwR/fgso=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZafzwZrCef0nnjKmQFgGHI7d1DU4j3tcKg8
+ rfJ8YYSxbiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWgAKCRDa6OEJdZac
+ 5ZNiD/9uJkrnfIq0f1AAFb55zRGcmM6E9/bY9PjcQwic7qZwiIF30FoVEyW+LS1V4LBV8lFxJNS
+ PQU7j6R+CB6v9HoMI64E1PyApDwdLlnaHAJlXcyEPUzd2BVafhj1hHbaYhLxkEy1FKLnJgXjLkJ
+ gdIwysLCQIt8EXWXa5PEr9we5qawBjwypQ0Lag+ls7M/dEH/0Kh1uzOi9w8a2krYIDQZcarZN7i
+ E4LtOP390qyqqA6YnMhP59VMT+qvfxHzc/ZQswUOQyZJDTsWt5bsBXzpOFFpbBXuTXpDT9AtofO
+ ID8iow8Lpz1Tszo5kP/m/Lm4S8UWRsm6FmK1PFXmwtWWlyXJh+CUFxiKOxoxpS5FTXbRJGSv05O
+ ZMYDLHTHu8+gadlaJjYgyFbJVyKlNsrAGTmFvM/RU3rpVkTt06dMhmHo8K8rWEYHAwUYB4Ks35l
+ E6S+GJ02O0X284mnQwikHn+fLhcivRrqM+9mynA/bGmrsWZIK4DhT6Cp8zFSPLW47Oshjun/E64
+ G1PIDvecXY/KRp7V24XZJYFMStRWq10r6lNpi654+g4kT2EsUxLVHwoqsQTcV+XoNk/+hsNx570
+ AStfbHcS7MyUnY6GxM7Pl2zFwIbukx86j8jruO3yrSjE+v6CcaPGGLJ2oigWATENvOZrnqpgn3Y
+ yk4mypdVxiZikCA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: _VPqzpfzY71c14zqrB2rqpb3Aois5IDa_hjdSuK1K9k_1792493513
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: x_MKhGSyK0MNy72hxWJOvweI831YDFskY-xkyGGX45s_1792493356
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -174,199 +175,190 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Now that all callers use object_class_property_add_qapi_enum(), remove
-the legacy object_property_add_enum() and object_class_property_add_enum()
-functions along with their EnumProperty struct and property_get_enum /
-property_set_enum helpers.
+Replace the type string in SpaprCapabilityInfo with a QAPITypeInfo
+pointer and switch spapr_caps_add_properties() from
+object_class_property_add() to object_class_property_add_qapi().
 
-Simplify object_property_get_enum() to assert on qapi_type rather than
-falling back to the old EnumProperty opaque data.
-
+Reviewed-by: Amit Machhiwal <amachhiw@linux.ibm.com>
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/qom/object.h | 45 ++--------------------------
- qom/object.c         | 82 ++--------------------------------------------------
- 2 files changed, 4 insertions(+), 123 deletions(-)
+ hw/ppc/spapr_caps.c | 39 ++++++++++++++++++++-------------------
+ 1 file changed, 20 insertions(+), 19 deletions(-)
 
-diff --git a/include/qom/object.h b/include/qom/object.h
-index 29cbd84b8d03..a9bbc44cfcc9 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -1697,12 +1697,12 @@ char *object_get_canonical_path(const Object *obj);
-  *   because it was ambiguous, or %NULL. Set to %false on success.
-  *
-  * There are two types of supported paths--absolute paths and partial paths.
-- * 
-+ *
-  * Absolute paths are derived from the root object and can follow child<> or
-  * link<> properties.  Since they can follow link<> properties, they can be
-  * arbitrarily long.  Absolute paths look like absolute filenames and are
-  * prefixed with a leading slash.
-- * 
-+ *
-  * Partial paths look like relative filenames.  They do not begin with a
-  * prefix.  The matching rules for partial paths are subtle but designed to make
-  * specifying objects easy.  At each level of the composition tree, the partial
-@@ -1986,47 +1986,6 @@ ObjectProperty *object_class_property_add_bool(ObjectClass *klass,
-                                     bool (*get)(Object *, Error **),
-                                     void (*set)(Object *, bool, Error **));
+diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
+index 103b17364feb..e622c79eb52a 100644
+--- a/hw/ppc/spapr_caps.c
++++ b/hw/ppc/spapr_caps.c
+@@ -24,6 +24,7 @@
  
--/**
-- * object_property_add_enum:
-- * @obj: the object to add a property to
-- * @name: the name of the property
-- * @typename: the name of the enum data type
-- * @lookup: enum value namelookup table
-- * @get: the getter or %NULL if the property is write-only.
-- * @set: the setter or %NULL if the property is read-only
-- *
-- * Add an enum property using getters/setters.  This function will add a
-- * property of type '@typename'.
-- *
-- * Returns: The newly added property on success, or %NULL on failure.
-- */
--ObjectProperty *object_property_add_enum(Object *obj, const char *name,
--                              const char *typename,
--                              const QEnumLookup *lookup,
--                              int (*get)(Object *, Error **),
--                              void (*set)(Object *, int, Error **));
--
--/**
-- * object_class_property_add_enum:
-- * @klass: the object class to add a property to
-- * @name: the name of the property
-- * @typename: the name of the enum data type
-- * @lookup: enum value namelookup table
-- * @get: the getter or %NULL if the property is write-only.
-- * @set: the setter or %NULL if the property is read-only
-- *
-- * Add an enum property using getters/setters.  This function will add a
-- * property of type '@typename'.
-- *
-- * Returns: The newly added property on success, or %NULL on failure.
-- */
--ObjectProperty *object_class_property_add_enum(ObjectClass *klass,
--                                    const char *name,
--                                    const char *typename,
--                                    const QEnumLookup *lookup,
--                                    int (*get)(Object *, Error **),
--                                    void (*set)(Object *, int, Error **));
--
- /**
-  * struct QapiEnumProp: Descriptor for a property backed by a QAPI enum type
-  *
-diff --git a/qom/object.c b/qom/object.c
-index cf18880c6c0c..791d981dc689 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -1774,12 +1774,6 @@ uint64_t object_property_get_uint(Object *obj, const char *name,
-     return retval;
- }
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ #include "system/hw_accel.h"
+@@ -59,7 +60,7 @@ typedef struct SpaprCapabilityInfo {
+     /* Getter and Setter Function Pointers */
+     ObjectPropertyAccessor *get;
+     ObjectPropertyAccessor *set;
+-    const char *type;
++    const QAPITypeInfo *type;
+     /* Possible values if this is a custom string type */
+     SpaprCapPossible *possible;
+     /* Make sure the virtual hardware can support this capability */
+@@ -725,7 +726,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_HTM,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_htm_apply,
+     },
+     [SPAPR_CAP_VSX] = {
+@@ -734,7 +735,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_VSX,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_vsx_apply,
+     },
+     [SPAPR_CAP_DFP] = {
+@@ -743,7 +744,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_DFP,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_dfp_apply,
+     },
+     [SPAPR_CAP_CFPC] = {
+@@ -752,7 +753,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_CFPC,
+         .get = spapr_cap_get_string,
+         .set = spapr_cap_set_string,
+-        .type = "string",
++        .type = &str_type_info,
+         .possible = &cap_cfpc_possible,
+         .apply = cap_safe_cache_apply,
+     },
+@@ -762,7 +763,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_SBBC,
+         .get = spapr_cap_get_string,
+         .set = spapr_cap_set_string,
+-        .type = "string",
++        .type = &str_type_info,
+         .possible = &cap_sbbc_possible,
+         .apply = cap_safe_bounds_check_apply,
+     },
+@@ -774,7 +775,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_IBS,
+         .get = spapr_cap_get_string,
+         .set = spapr_cap_set_string,
+-        .type = "string",
++        .type = &str_type_info,
+         .possible = &cap_ibs_possible,
+         .apply = cap_safe_indirect_branch_apply,
+     },
+@@ -784,7 +785,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_HPT_MAXPAGESIZE,
+         .get = spapr_cap_get_pagesize,
+         .set = spapr_cap_set_pagesize,
+-        .type = "size",
++        .type = &size_type_info,
+         .apply = cap_hpt_maxpagesize_apply,
+         .cpu_apply = cap_hpt_maxpagesize_cpu_apply,
+     },
+@@ -794,7 +795,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_NESTED_KVM_HV,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_nested_kvm_hv_apply,
+     },
+     [SPAPR_CAP_NESTED_PAPR] = {
+@@ -803,7 +804,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_NESTED_PAPR,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_nested_papr_apply,
+     },
+     [SPAPR_CAP_LARGE_DECREMENTER] = {
+@@ -812,7 +813,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_LARGE_DECREMENTER,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_large_decr_apply,
+         .cpu_apply = cap_large_decr_cpu_apply,
+     },
+@@ -822,7 +823,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_CCF_ASSIST,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_ccf_assist_apply,
+     },
+     [SPAPR_CAP_FWNMI] = {
+@@ -831,7 +832,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_FWNMI,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_fwnmi_apply,
+     },
+     [SPAPR_CAP_RPT_INVALIDATE] = {
+@@ -840,7 +841,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_RPT_INVALIDATE,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_rpt_invalidate_apply,
+     },
+     [SPAPR_CAP_AIL_MODE_3] = {
+@@ -849,7 +850,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_AIL_MODE_3,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_ail_mode_3_apply,
+     },
+     [SPAPR_CAP_DAWR1] = {
+@@ -858,7 +859,7 @@ SpaprCapabilityInfo capability_table[SPAPR_CAP_NUM] = {
+         .index = SPAPR_CAP_DAWR1,
+         .get = spapr_cap_get_bool,
+         .set = spapr_cap_set_bool,
+-        .type = "bool",
++        .type = &bool_type_info,
+         .apply = cap_dawr1_apply,
+     },
+ };
+@@ -1069,9 +1070,9 @@ void spapr_caps_add_properties(SpaprMachineClass *smc)
+         g_autofree char *name = g_strdup_printf("cap-%s", cap->name);
+         g_autofree char *desc = g_strdup(cap->description);
  
--typedef struct EnumProperty {
--    const QEnumLookup *lookup;
--    int (*get)(Object *, Error **);
--    void (*set)(Object *, int, Error **);
--} EnumProperty;
--
- int object_property_get_enum(Object *obj, const char *name,
-                              const char *typename, Error **errp)
- {
-@@ -1803,12 +1797,8 @@ int object_property_get_enum(Object *obj, const char *name,
-         return -1;
+-        object_class_property_add(klass, name, cap->type,
+-                                  cap->get, cap->set,
+-                                  NULL, cap);
++        object_class_property_add_qapi(klass, name, cap->type,
++                                       cap->get, cap->set,
++                                       NULL, cap);
+ 
+         object_class_property_set_description(klass, name, desc);
      }
- 
--    if (prop->qapi_type) {
--        ret = qapi_enum_parse(prop->qapi_type->lookup, str, -1, errp);
--    } else {
--        EnumProperty *enumprop = prop->opaque;
--        ret = qapi_enum_parse(enumprop->lookup, str, -1, errp);
--    }
-+    assert(prop->qapi_type);
-+    ret = qapi_enum_parse(prop->qapi_type->lookup, str, -1, errp);
-     g_free(str);
- 
-     return ret;
-@@ -2543,74 +2533,6 @@ object_class_property_add_bool(ObjectClass *klass, const char *name,
-                                      prop);
- }
- 
--static void property_get_enum(Object *obj, Visitor *v, const char *name,
--                              void *opaque, Error **errp)
--{
--    EnumProperty *prop = opaque;
--    int value;
--    Error *err = NULL;
--
--    value = prop->get(obj, &err);
--    if (err) {
--        error_propagate(errp, err);
--        return;
--    }
--
--    visit_type_enum(v, name, &value, prop->lookup, errp);
--}
--
--static void property_set_enum(Object *obj, Visitor *v, const char *name,
--                              void *opaque, Error **errp)
--{
--    EnumProperty *prop = opaque;
--    int value;
--
--    if (!visit_type_enum(v, name, &value, prop->lookup, errp)) {
--        return;
--    }
--    prop->set(obj, value, errp);
--}
--
--ObjectProperty *
--object_property_add_enum(Object *obj, const char *name,
--                         const char *typename,
--                         const QEnumLookup *lookup,
--                         int (*get)(Object *, Error **),
--                         void (*set)(Object *, int, Error **))
--{
--    EnumProperty *prop = g_malloc(sizeof(*prop));
--
--    prop->lookup = lookup;
--    prop->get = get;
--    prop->set = set;
--
--    return object_property_add(obj, name, typename,
--                               get ? property_get_enum : NULL,
--                               set ? property_set_enum : NULL,
--                               property_release_data,
--                               prop);
--}
--
--ObjectProperty *
--object_class_property_add_enum(ObjectClass *klass, const char *name,
--                                    const char *typename,
--                                    const QEnumLookup *lookup,
--                                    int (*get)(Object *, Error **),
--                                    void (*set)(Object *, int, Error **))
--{
--    EnumProperty *prop = g_malloc(sizeof(*prop));
--
--    prop->lookup = lookup;
--    prop->get = get;
--    prop->set = set;
--
--    return object_class_property_add(klass, name, typename,
--                                     get ? property_get_enum : NULL,
--                                     set ? property_set_enum : NULL,
--                                     NULL,
--                                     prop);
--}
--
- static void get_qapi_enum(Object *obj, Visitor *v, const char *name,
-                           void *opaque, Error **errp)
- {
 
 -- 
 2.56.0.116.g6de20f6092dc

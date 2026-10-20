@@ -1,150 +1,174 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1A37606A319
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 19:06:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E218606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 20:29:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=GqYByBA9;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=AlurBNtT
+	dkim=pass (2048-bit key, unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=gryBQiZp
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJFAY-0000xk-6e; Tue, 20 Oct 2026 15:06:42 -0400
+	id 1xJGST-0006HN-IT; Tue, 20 Oct 2026 16:29:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xJFAW-0000x8-Ua
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 15:06:40 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1xJGSP-0006Fg-L5; Tue, 20 Oct 2026 16:29:13 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xJFAV-00064t-E5
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 15:06:40 -0400
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69KGtWDA1375701
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 19:06:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 5dYI7JzqGqSpbnLtC5dZVXwoYlDYX7rcCsOAZBdFXps=; b=GqYByBA9DBdUnMy9
- P8en+2xHCDlzA7OlTQBeqjfJOsv97bWJa0cSzrv2yJC7JG3b26cVxuD2rNuka6O+
- LNG3mDfvk9Qf9fx71EP17sVrnMp5TvcQdyEweZ7Vm+gl6QWGRCO2ZU8bQ+LjBXgU
- jEy3Wf6FEdHI2rsTyMHXO+dHPp8I2GkiDPHHSaYutLhs62SezuNbXnjRBNQ5jxt1
- Mp67k2cn0lXYjlzfRrLgWO8tw5VpjPlSzZWjmhBWtoE0K6fouoUM0twN6epQEt95
- YgCQG3XEz2Dz3B9crY6FH8dBAL2OnD2zZbm8yccadKQ0pHyerItiqgkCWBMpVSc2
- 5fT7Bg==
-Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
- [74.125.82.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hebyd0jy9-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 19:06:36 +0000 (GMT)
-Received: by mail-dy1-f198.google.com with SMTP id
- 5a478bee46e88-3425098ae4bso1598695eec.0
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 12:06:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792523196; x=1793127996; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=5dYI7JzqGqSpbnLtC5dZVXwoYlDYX7rcCsOAZBdFXps=;
- b=AlurBNtTn48z5Z9259vP4HUHBrFzReEQtsV2blAVdm7tK5rtepqZvGEQOvd4kCWrRL
- PqbWCfzyXMu0QTe5whjDy4UpU5JuXjoXEzcX1Y4+d9DhhIVNSMDOoY8NBz06ojQU9qwq
- it3EfJomhQGPAj2D0AtZJZCJ6yxLlCgUCPLViaO3GWBoVDqbl+cCltbSvUPUkuovcjnJ
- bDrqRswzTLmSU20qeojcAm8EEn9z5sZ1LwEZStxiHwP9ciHmnbqMxQaArt3cO49RTgrX
- 4DzD2dXpT+AYt2uAI9QkP1DAQg8FsQs255k7SVi+1qUrBYzKABNK+L+uPEdRFIduQq/v
- skKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792523196; x=1793127996;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=5dYI7JzqGqSpbnLtC5dZVXwoYlDYX7rcCsOAZBdFXps=;
- b=gh+2KCKU6f184nuXEW9NoAGPoni2xgBZfbSkvUSfk/bNjkgN0OduU7nqNAHD6hROHK
- 5zQIbpQfsWfpyrbP5DebYexEIrEYlqjsBdh2n6FhgFvfPp903nysOQar3YhBnk9OIQIH
- ga4aQTWC9KTbJF88MaDkpvsEz9ZFvIsuff3kgPBIwaLzRlUGZRaQZcdCt/D3ettmMcdg
- RbL5AwbLfscgduc1KKMIcRjqzZa2jVHVBAMKVQfL32CMmnoesMTH458PyShEZtrVfdr1
- x1mwLFb11It/NsDLolUkFOkukhHKSdg7Mys+Ez1M9FmwY+RwxPCHb7Ql5/+6//jQIRVH
- nAnw==
-X-Forwarded-Encrypted: i=1;
- AKwUvByJJ7oCTydXsPeph+R+GA/MZFD9ldR/ehxDA+9jH/AtAGq6i3/r0Oq/Adbmkrgx1d/izWxcR9F8Rg==@nongnu.org
-X-Gm-Message-State: AFq9FYLxHzEF0y0bNAxiM8G95Js0S64FGTxiJCAdwSJgs6hfbejs0bec
- 7utGRuIUVmfkx78Ojtxn7w1lwUlL2f4FONAr2jswD2IoSbR5U+cbxQkPoINBmWjF3seX+vj5T1a
- cNrn0KOgWy0xA6AtgAx/T5F691G8MdQqB8xqrj3W8njLMtgwBH58BDLA=
-X-Gm-Gg: AYBFou2vg+B855B/pfZKLf/9jYJ9+eTPMnQrN5ySxQV+Kf+d+XleAhMjomX95xMKsvY
- Cwj/j4TdO5uCH4So0yHv9+PgPyAciQwitGmYRnotGfgsJp92unJC+yUyhoKp4MOvtfaNhZjC5hw
- jZq70+btAk15xYIR5N/jEKJw54ioBy5USADD8UDuFW1Vhd1a8VGnLPoXg/n3klyjfpAvG7qzoqY
- kyvgHIBcU6rMhvlHxbV7vaDXW2w+5ruoJ6gdGjvW3DWD5EUCjAzanG1kn1sA4vs2g24l5wP640m
- JtulukJSBPLkN7i6x0vrKMVjLh8ymAXhAmL8jWv7oLlJu0wRrP/vGQL7Tp2SaQcUkbGDiM+jo19
- ShLcR7ZTce2n+gyOIf2SHn2N8ojsAVjlKUgjaUxnDILypAnBbU6hf7U2zbq2Oaq4zm2gIXg==
-X-Received: by 2002:a05:701b:428f:10b0:187:5a5f:3b27 with SMTP id
- a92af1059eb24-18dbfbbfa4cmr3461692c88.17.1792523195759; 
- Tue, 20 Oct 2026 12:06:35 -0700 (PDT)
-X-Received: by 2002:a05:701b:428f:10b0:187:5a5f:3b27 with SMTP id
- a92af1059eb24-18dbfbbfa4cmr3461670c88.17.1792523195216; 
- Tue, 20 Oct 2026 12:06:35 -0700 (PDT)
-Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
- [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1903aff3481sm593002c88.10.2026.10.20.12.06.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Oct 2026 12:06:34 -0700 (PDT)
-Message-ID: <c1cfda13-9c37-485d-b148-f5c2c382d34a@oss.qualcomm.com>
-Date: Tue, 20 Oct 2026 12:06:33 -0700
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/27] target/arm: Register CPUClass::exception_name()
- handler
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1xJGSM-0004oj-KT; Tue, 20 Oct 2026 16:29:13 -0400
+Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69KHEaMW3065410; Tue, 20 Oct 2026 20:28:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:to; s=pp1;
+ bh=Pbg2OFXa34DEIIHpJyaCulmgUfbxOrfxEkZAKRhMex4=; b=gryBQiZpYaYe
+ +rscbtJOMUMGzJILaO9bxcqwAzLIOX+j60zcXWH7tKvp08o40WoTpUGVyLoqWjGF
+ ZkUPXLwP8RwgFXaLLDWNzTKj3ap3mJdD1BO/1HXfs1dYuHwb9rWeRqt8GowmS644
+ 50UL+brNoroymAw4we0HPjTOmE1wcH9sGecmJN6hvUF49OvQ80slVcDAhqxSmPlQ
+ hSAB89mjuxAM4Xy/czGuXpXvp+9ip0/G8lAJ8i3S+uKSjmnkBnAPhxEv9O4Zujz+
+ n5IQ9SrRLVR2AI3cmiOziLyzdt3R0G+SY7SZNguBEHE3h6jlPLu0ojoSEWc6Cwsc
+ weZZ1xQpeA==
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4hdw5a58tk-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Tue, 20 Oct 2026 20:28:58 +0000 (GMT)
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69KKOc4J1753723; Tue, 20 Oct 2026 20:28:57 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4he7bs2390-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 20 Oct 2026 20:28:57 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 69KKSu7F26542802
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Oct 2026 20:28:56 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5AF0B58059;
+ Tue, 20 Oct 2026 20:28:56 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 39C1758053;
+ Tue, 20 Oct 2026 20:28:49 +0000 (GMT)
+Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 20 Oct 2026 20:28:49 +0000 (GMT)
+Message-ID: <9623e038a99fbaa32f3b674335b717aaac28a9b7.camel@linux.ibm.com>
+Subject: Re: [PATCH v7 48/65] hw/gpio/pca955x: use QAPI enums for led and
+ pin properties
+From: Miles Glenn <milesg@linux.ibm.com>
+To: =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20261007094516.75732-1-philmd@oss.qualcomm.com>
- <20261007094516.75732-5-philmd@oss.qualcomm.com>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20261007094516.75732-5-philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8
+Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, John Snow <jsnow@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Mauro Carvalho Chehab
+ <mchehab+huawei@kernel.org>, Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Daniel P." =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>, Kostiantyn
+ Kostiuk <kkostiuk@redhat.com>, Eric Blake <eblake@redhat.com>, David
+ Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>, "Edgar
+ E. Iglesias" <edgar.iglesias@gmail.com>, Jason Wang <jasowangio@gmail.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org, Alberto Garcia
+ <berto@igalia.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz
+ <hreitz@redhat.com>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@oss.qualcomm.com>, Zhao Liu <zhao1.liu@intel.com>, Jonathan Cameron
+ <jic23@kernel.org>, Junjie Cao <junjie.cao@intel.com>, Anisa Su
+ <anisa.su@samsung.com>, Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Jagannathan Raman <jag.raman@oracle.com>, John Levon
+ <john.levon@nutanix.com>, Thanos Makatos <thanos.makatos@nutanix.com>,
+ =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>, Cornelia Huck
+ <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>, Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-block@nongnu.org,
+ linux-cxl@vger.kernel.org, qemu-s390x@nongnu.org, "Michael S. Tsirkin"
+ <mst@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis
+ <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>, Daniel
+ Henrique Barboza <daniel.barboza@oss.qualcomm.com>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu@processmission.com>, qemu-riscv@nongnu.org,
+ Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>,
+ Xianglai Li <lixianglai@loongson.cn>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Pedro Barbuda <pbarbuda@microsoft.com>, Mohamed
+ Mediouni <mohamed@unpredictable.fr>, Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Amit Machhiwal
+ <amachhiw@linux.ibm.com>, qemu-ppc@nongnu.org, Zhang Chen
+ <zhangckid@gmail.com>, Li Zhijian <lizhijian@fujitsu.com>, Alistair Francis
+ <alistair@alistair23.me>, Alexander Graf <graf@amazon.com>, "Gonglei
+ (Arei)" <arei.gonglei@huawei.com>, zhenwei pi <zhenwei.pi@linux.dev>, Ani
+ Sinha <anisinha@redhat.com>, Luc Michel <luc@lmichel.fr>,
+ =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, Samuel
+ Tardieu <sam@rfc1149.net>, "Denis V. Lunev" <den@openvz.org>, FangSheng
+ Huang <FangSheng.Huang@amd.com>, Tyrone Ting <kfting@nuvoton.com>, Hao Wu
+ <wuhaotsh@google.com>, Keith Busch <kbusch@kernel.org>, Klaus Jensen
+ <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, Aditya Gupta
+ <adityag@linux.ibm.com>, Conor Dooley <conor@kernel.org>, Sebastian Huber
+ <sebastian.huber@embedded-brains.de>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, Jason Herne
+ <jjherne@linux.ibm.com>, Titus Rwantare <titusr@google.com>, Stefano
+ Stabellini <sstabellini@kernel.org>, Anthony PERARD
+ <anthony@xenproject.org>, Peter Xu <peterx@redhat.com>, Chinmay Rath
+ <rathc@linux.ibm.com>, Hendrik Brueckner <brueckner@linux.ibm.com>,
+ xen-devel@lists.xenproject.org, Roman Bolshakov <rbolshakov@ddn.com>, Phil
+ Dennis-Jordan <phil@philjordan.eu>, Fam Zheng <fam@euphon.net>, Farhan Ali
+ <alifm@linux.ibm.com>, Alex Williamson <alex@shazbot.org>, Tao Tang
+ <tangtao1634@phytium.com.cn>, Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Fabiano Rosas <farosas@suse.de>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Jiri Pirko <jiri@resnulli.us>, Eric Auger <eric.auger@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>
+Date: Tue, 20 Oct 2026 15:28:48 -0500
+In-Reply-To: <20261020-qom-qapi-v7-48-431a86b02b58@redhat.com>
+References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
+ <20261020-qom-qapi-v7-48-431a86b02b58@redhat.com>
+Organization: IBM
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
+X-Archived-By: <archiver.kernel.org>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDA3NiBTYWx0ZWRfX3Y9KD4/9VD7r
- EAWBTxefZ2JvcpRFpvSIiWkVH6+1denC5yt3QoVfdp7gH7K5is2lf7I2h6hz46m1bhJZjiKDmHI
- Rna2HMRFikQPMVbzmKqHJsGQyjUvoitUdwNxJuhQrK/gXcgwnV1t878gZuInAx4VwcXatJQs7Bj
- EF48Ab40S3UOLsRw9nO2W8tmfEuSRWzuK2m/Va/liGYtnwWPcXTKtqxNGddjflnxqBum3/WGi5Z
- WpeUWCpzkyXPnvTU2NlueIHCPPzzoiV3IdK8dMqkSDWmShoygAe5Aashf6+6pglbfMFdvSxKbRX
- DO8lUkLLjPZ8xHRFe1ThS3nrxFA/t/i/b1vJ8mN1nCCaD+JZ7mpOW/J3zf8qoCQAegsM3ZJIHNp
- //IZUiNNXnhpD4viz6AEsOolXSV8eEZhMGrtIW5nRY/7qrrJQqIkxN6GRX9aidGuyezlkIfVvVA
- O58jPWXZ3T3q+uPqUeA==
-X-Authority-Analysis: v=2.4 cv=TdsDJhQh c=1 sm=1 tr=0 ts=6ad7bbbc cx=c_pps
- a=wEP8DlPgTf/vqF+yE6f9lg==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=EUspDBNiAAAA:8 a=aOxAfOeuNJpbYMRahvwA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=bBxd6f-gb0O0v-kibOvt:22
-X-Proofpoint-ORIG-GUID: aYipvuuwH-6wzf1nz9h4pV6c4t-6-Crp
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIwMDA3NiBTYWx0ZWRfXx/RljdFP+OkN
- YuROMZHnQOfRkHeF+IUN7L0U0Axth5z9unz5YBM22HO4g035Lo3qgjJYtJ03tuWurOs8rZRFz4L
- kqGIsqeekbSSCa9XbGp5zRmX/rHw0fc=
-X-Proofpoint-GUID: aYipvuuwH-6wzf1nz9h4pV6c4t-6-Crp
+X-TM-AS-GCONF: 00
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIwMDA4MCBTYWx0ZWRfX+9t/y7lhb2NG
+ WRjTvBs8OQevzx4sdzmL6Tx48u4P32LMaUsHknmvsUzsQaucLioBR2sjCY6GT3OJ4yssLuDC0EO
+ xJOE2Sdth5z5s9nQwh6PUys3fZGefWM=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDA4MCBTYWx0ZWRfX3Qu0Fruw9FfE
+ Ym4jZr96pufaiiUd4/rQ1VRiwxdBVMEJLalf3ME9JEtAQaN6Yhv0QwgryMUZTbXSXwg/DfZZCl7
+ /xP3aEF4DBW1yJT16UvGIlCC8savRUWw67ZIp3OUezPcqsRlbBNFuScIw7bh74KPfDDfp3UWH0H
+ tkc7dPCd5QXXhKqVxbaO61OTVKvMRVzCRXgvlL5Qw6pAHPkVV4ALHoA7o+NX+SE29WGhwk1ozVa
+ hTadZPgXjdOlRadT+Pzkf9PEbGlkJf2S995AwjStoV4mJwbnBdy1JmwZiXYnkVD6m8dGRXVBSUJ
+ hTMlIbAgYthVor/1Dab5nXl+SPjghbjOfG1OzOZ1req4HJPion9UERcDGtLjrnNyDZ3j0kysEDi
+ cUR7EwYhI81VbRMm2Ocx47cZ1J++/t1P8i3Q1GulTumaAI6YDA09Bd7ZCbpejcrAF8paLII0Pm6
+ KD8z5UTW5GBvooZYOJw==
+X-Proofpoint-GUID: B9E0T9KfFgRckvDuzc9Ax4ROrE9sxB9M
+X-Authority-Analysis: v=2.4 cv=JIKuIMKb c=1 sm=1 tr=0 ts=6ad7cf0b cx=c_pps
+ a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=U7nrCbtTmkRpXpFmAIza:22 a=VnNF1IyMAAAA:8
+ a=20KFwNOVAAAA:8 a=HV9-su-gHPMe9Pw3G_AA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: B9E0T9KfFgRckvDuzc9Ax4ROrE9sxB9M
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-20_03,2026-10-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 adultscore=0 phishscore=0 impostorscore=0 spamscore=0
- clxscore=1015 malwarescore=0 priorityscore=1501 lowpriorityscore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
- definitions=main-2610200076
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ suspectscore=0 malwarescore=0 lowpriorityscore=0 adultscore=0
+ priorityscore=1501 spamscore=0 phishscore=0 bulkscore=0 clxscore=1011
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
+ definitions=main-2610200080
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=milesg@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -156,28 +180,436 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: milesg@linux.ibm.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/7/2026 2:44 AM, Philippe Mathieu-Daudé wrote:
-> Factor arm_exception_name() out of arm_log_exception() and
-> register it as the CPUClass::exception_name() handler, so
-> the common exception logging can resolve ARM exception codes
-> to names.
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+
+Thanks,
+
+Glenn
+
+On Tue, 2026-10-20 at 14:46 +0400, Marc-André Lureau wrote:
+> Replace hand-rolled string lookup tables with QAPI enums
+> Pca9552LedState and Pca955{2,4}PinState for the led%d and pin%d QOM
+> properties. This fixes the incorrect property type ("bool" for LEDs,
+> "str" for pins) and lets QAPI handle string-to-enum conversion in the
+> visitor, removing the manual string matching in the setters.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> Add QEMU_BUILD_BUG_ON guards to ensure the QAPI-generated enum values
+> stay in sync with the hardware register encoding.
+> 
+> I kept Pca9552PinState & @Pca9554PinState separate types, because I
+> don't know if they could diverge. We could eventually merge those.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->  target/arm/cpu.h    |  2 ++
->  target/arm/cpu.c    |  1 +
->  target/arm/helper.c | 79 +++++++++++++++++++++++----------------------
->  3 files changed, 43 insertions(+), 39 deletions(-)
+>  hw/gpio/pca9552.c | 82 +++++++++++++++++++++----------------------------------
+>  hw/gpio/pca9554.c | 39 ++++++++++----------------
+>  qapi/machine.json | 46 +++++++++++++++++++++++++++++++
+>  3 files changed, 92 insertions(+), 75 deletions(-)
+> 
+> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+> index 719149b7174b..16741c22dea3 100644
+> --- a/hw/gpio/pca9552.c
+> +++ b/hw/gpio/pca9552.c
+> @@ -23,7 +23,8 @@
+>  #include "hw/core/irq.h"
+>  #include "migration/vmstate.h"
+>  #include "qapi/error.h"
+> -#include "qapi/visitor.h"
+> +#include "qapi/qapi-types-machine.h"
+> +#include "qapi/qapi-visit-machine.h"
+>  #include "trace.h"
+>  #include "qom/object.h"
+>  
+> @@ -59,16 +60,15 @@ struct PCA955xClass {
+>  /*
+>   * Note:  The LED_ON and LED_OFF configuration values for the PCA955X
+>   *        chips are the reverse of the PCA953X family of chips.
+> + *
+> + * The QAPI enums must match the hardware register values.
+>   */
+> -#define PCA9552_LED_ON   0x0
+> -#define PCA9552_LED_OFF  0x1
+> -#define PCA9552_LED_PWM0 0x2
+> -#define PCA9552_LED_PWM1 0x3
+> -#define PCA9552_PIN_LOW  0x0
+> -#define PCA9552_PIN_HIZ  0x1
+> -
+> -static const char *led_state[] = {"on", "off", "pwm0", "pwm1"};
+> -static const char *pin_state[] = {"low", "high"};
+> +QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_ON != 0x0);
+> +QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_OFF != 0x1);
+> +QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_PWM0 != 0x2);
+> +QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_PWM1 != 0x3);
+> +QEMU_BUILD_BUG_ON(PCA9552_PIN_STATE_LOW != 0x0);
+> +QEMU_BUILD_BUG_ON(PCA9552_PIN_STATE_HIGH != 0x1);
+>  
+>  static uint8_t pca955x_pin_get_config(PCA955xState *s, int pin)
+>  {
+> @@ -142,24 +142,24 @@ static void pca955x_update_pin_input(PCA955xState *s)
+>              uint8_t config = pca955x_pin_get_config(s, i);
+>  
+>              switch (config) {
+> -            case PCA9552_LED_ON:
+> +            case PCA9552_LED_STATE_ON:
+>                  /* Pin is set to 0V to turn on LED */
+>                  s->regs[input_reg] &= ~bit_mask;
+>                  break;
+> -            case PCA9552_LED_OFF:
+> +            case PCA9552_LED_STATE_OFF:
+>                  /*
+>                   * Pin is set to Hi-Z to turn off LED and
+>                   * pullup sets it to a logical 1 unless
+>                   * external device drives it low.
+>                   */
+> -                if (s->ext_state[i] == PCA9552_PIN_LOW) {
+> +                if (s->ext_state[i] == PCA9552_PIN_STATE_LOW) {
+>                      s->regs[input_reg] &= ~bit_mask;
+>                  } else {
+>                      s->regs[input_reg] |=  bit_mask;
+>                  }
+>                  break;
+> -            case PCA9552_LED_PWM0:
+> -            case PCA9552_LED_PWM1:
+> +            case PCA9552_LED_STATE_PWM0:
+> +            case PCA9552_LED_STATE_PWM1:
+>                  /* TODO */
+>              default:
+>                  break;
+> @@ -176,7 +176,7 @@ static void pca955x_update_pin_input(PCA955xState *s)
+>               */
+>              if (s->regs[config_reg] & bit_mask) {
+>                  /* Input mode - reflect external state */
+> -                if (s->ext_state[i] == PCA9552_PIN_LOW) {
+> +                if (s->ext_state[i] == PCA9552_PIN_STATE_LOW) {
+>                      s->regs[input_reg] &= ~bit_mask;
+>                  } else {
+>                      s->regs[input_reg] |= bit_mask;
+> @@ -360,7 +360,7 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
+>      PCA955xClass *k = PCA955X_GET_CLASS(obj);
+>      PCA955xState *s = PCA955X(obj);
+>      int led, rc, reg;
+> -    uint8_t state;
+> +    Pca9552LedState state;
+>  
+>      rc = sscanf(name, "led%2d", &led);
+>      if (rc != 1) {
+> @@ -378,7 +378,7 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
+>       */
+>      reg = PCA9552_LS0 + led / 4;
+>      state = (pca955x_read(s, reg) >> ((led % 4) * 2)) & 0x3;
+> -    visit_type_str(v, name, (char **)&led_state[state], errp);
+> +    visit_type_Pca9552LedState(v, name, &state, errp);
+>  }
+>  
+>  /*
+> @@ -397,10 +397,9 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
+>      PCA955xClass *k = PCA955X_GET_CLASS(obj);
+>      PCA955xState *s = PCA955X(obj);
+>      int led, rc, reg, val;
+> -    uint8_t state;
+> -    g_autofree char *state_str = NULL;
+> +    Pca9552LedState state;
+>  
+> -    if (!visit_type_str(v, name, &state_str, errp)) {
+> +    if (!visit_type_Pca9552LedState(v, name, &state, errp)) {
+>          return;
+>      }
+>      rc = sscanf(name, "led%2d", &led);
+> @@ -413,16 +412,6 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
+>          return;
+>      }
+>  
+> -    for (state = 0; state < ARRAY_SIZE(led_state); state++) {
+> -        if (!strcmp(state_str, led_state[state])) {
+> -            break;
+> -        }
+> -    }
+> -    if (state >= ARRAY_SIZE(led_state)) {
+> -        error_setg(errp, "%s invalid led state %s", __func__, state_str);
+> -        return;
+> -    }
+> -
+>      reg = PCA9552_LS0 + led / 4;
+>      val = pca955x_read(s, reg);
+>      val = pca955x_ledsel(val, led % 4, state);
+> @@ -437,7 +426,8 @@ static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
+>      PCA955xClass *k = PCA955X_GET_CLASS(obj);
+>      PCA955xState *s = PCA955X(obj);
+>      int pin, rc;
+> -    uint8_t input_reg, state;
+> +    uint8_t input_reg;
+> +    Pca9552PinState state;
+>  
+>      rc = sscanf(name, "pin%2d", &pin);
+>      if (rc != 1) {
+> @@ -455,7 +445,7 @@ static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
+>       */
+>      input_reg = PCA9535_INPUT0 + (pin / 8);
+>      state = (s->regs[input_reg] >> (pin % 8)) & 0x1;
+> -    visit_type_str(v, name, (char **)&pin_state[state], errp);
+> +    visit_type_Pca9552PinState(v, name, &state, errp);
+>  }
+>  
+>  static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
+> @@ -464,10 +454,10 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
+>      PCA955xClass *k = PCA955X_GET_CLASS(obj);
+>      PCA955xState *s = PCA955X(obj);
+>      int pin, rc;
+> -    uint8_t state, config_reg;
+> -    g_autofree char *state_str = NULL;
+> +    Pca9552PinState state;
+> +    uint8_t config_reg;
+>  
+> -    if (!visit_type_str(v, name, &state_str, errp)) {
+> +    if (!visit_type_Pca9552PinState(v, name, &state, errp)) {
+>          return;
+>      }
+>      rc = sscanf(name, "pin%2d", &pin);
+> @@ -480,16 +470,6 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
+>          return;
+>      }
+>  
+> -    for (state = 0; state < ARRAY_SIZE(pin_state); state++) {
+> -        if (!strcmp(state_str, pin_state[state])) {
+> -            break;
+> -        }
+> -    }
+> -    if (state >= ARRAY_SIZE(pin_state)) {
+> -        error_setg(errp, "%s invalid pin state %s", __func__, state_str);
+> -        return;
+> -    }
+> -
+>      /* Only input-configured pins can be driven by an external device. */
+>      config_reg = PCA9535_CONFIG0 + (pin / 8);
+>      if (!((s->regs[config_reg] >> (pin % 8)) & 0x1)) {
+> @@ -499,7 +479,7 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
+>          return;
+>      }
+>  
+> -    pca955x_set_ext_state(s, pin, state != PCA9552_PIN_LOW);
+> +    pca955x_set_ext_state(s, pin, state != PCA9552_PIN_STATE_LOW);
+>  }
+>  
+>  static const VMStateDescription pca9552_vmstate = {
+> @@ -529,7 +509,7 @@ static void pca9552_reset_hold(Object *obj, ResetType type)
+>      s->regs[PCA9552_LS2] = 0x55;
+>      s->regs[PCA9552_LS3] = 0x55;
+>  
+> -    memset(s->ext_state, PCA9552_PIN_HIZ, PCA955X_PIN_COUNT_MAX);
+> +    memset(s->ext_state, PCA9552_PIN_STATE_HIGH, PCA955X_PIN_COUNT_MAX);
+>      pca955x_update_pin_input(s);
+>  
+>      s->pointer = 0xFF;
+> @@ -549,7 +529,7 @@ static void pca9535_reset_hold(Object *obj, ResetType type)
+>      s->regs[PCA9535_CONFIG0] = 0xFF;  /* All pins as inputs */
+>      s->regs[PCA9535_CONFIG1] = 0xFF;  /* All pins as inputs */
+>  
+> -    memset(s->ext_state, PCA9552_PIN_HIZ, PCA955X_PIN_COUNT_MAX);
+> +    memset(s->ext_state, PCA9552_PIN_STATE_HIGH, PCA955X_PIN_COUNT_MAX);
+>      pca955x_update_pin_input(s);
+>  
+>      s->pointer = 0xFF;
+> @@ -567,12 +547,12 @@ static void pca955x_initfn(Object *obj)
+>          if (k->has_led_support) {
+>              /* LED variant: expose the LED selector state as led%d. */
+>              name = g_strdup_printf("led%d", ix);
+> -            object_property_add(obj, name, "bool",
+> +            object_property_add(obj, name, "Pca9552LedState",
+>                                  pca955x_get_led, pca955x_set_led, NULL, NULL);
+>          } else {
+>              /* GPIO variant: expose the pin logic level as pin%d. */
+>              name = g_strdup_printf("pin%d", ix);
+> -            object_property_add(obj, name, "str",
+> +            object_property_add(obj, name, "Pca9552PinState",
+>                                  pca955x_get_pin, pca955x_set_pin, NULL, NULL);
+>          }
+>          g_free(name);
+> diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
+> index 904698cdce85..e4eddc829ef7 100644
+> --- a/hw/gpio/pca9554.c
+> +++ b/hw/gpio/pca9554.c
+> @@ -16,6 +16,8 @@
+>  #include "hw/core/irq.h"
+>  #include "migration/vmstate.h"
+>  #include "qapi/error.h"
+> +#include "qapi/qapi-types-machine.h"
+> +#include "qapi/qapi-visit-machine.h"
+>  #include "qapi/visitor.h"
+>  #include "trace.h"
+>  #include "qom/object.h"
+> @@ -32,10 +34,8 @@ typedef struct PCA9554Class PCA9554Class;
+>  DECLARE_CLASS_CHECKERS(PCA9554Class, PCA9554,
+>                         TYPE_PCA9554)
+>  
+> -#define PCA9554_PIN_LOW  0x0
+> -#define PCA9554_PIN_HIZ  0x1
+> -
+> -static const char *pin_state[] = {"low", "high"};
+> +QEMU_BUILD_BUG_ON(PCA9554_PIN_STATE_LOW != 0x0);
+> +QEMU_BUILD_BUG_ON(PCA9554_PIN_STATE_HIGH != 0x1);
+>  
+>  static void pca9554_update_pin_input(PCA9554State *s)
+>  {
+> @@ -54,7 +54,7 @@ static void pca9554_update_pin_input(PCA9554State *s)
+>               * Input: the pin is Hi-Z with a pull-up, so it reads high
+>               * unless an external device drives it low.
+>               */
+> -            if (s->ext_state[i] == PCA9554_PIN_LOW) {
+> +            if (s->ext_state[i] == PCA9554_PIN_STATE_LOW) {
+>                  s->regs[PCA9554_INPUT] &= ~bit_mask;
+>              } else {
+>                  s->regs[PCA9554_INPUT] |= bit_mask;
+> @@ -156,7 +156,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
+>  {
+>      PCA9554State *s = PCA9554(obj);
+>      int pin, rc;
+> -    uint8_t state;
+> +    Pca9554PinState state;
+>  
+>      rc = sscanf(name, "pin%2d", &pin);
+>      if (rc != 1) {
+> @@ -175,7 +175,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
+>       * holds the wire level regardless of the configured direction.
+>       */
+>      state = (s->regs[PCA9554_INPUT] >> pin) & 0x1;
+> -    visit_type_str(v, name, (char **)&pin_state[state], errp);
+> +    visit_type_Pca9554PinState(v, name, &state, errp);
+>  }
+>  
+>  static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+> @@ -183,10 +183,10 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+>  {
+>      PCA9554State *s = PCA9554(obj);
+>      int pin, rc, val;
+> -    uint8_t state, mask;
+> -    g_autofree char *state_str = NULL;
+> +    uint8_t mask;
+> +    Pca9554PinState state;
+>  
+> -    if (!visit_type_str(v, name, &state_str, errp)) {
+> +    if (!visit_type_Pca9554PinState(v, name, &state, errp)) {
+>          return;
+>      }
+>      rc = sscanf(name, "pin%2d", &pin);
+> @@ -199,16 +199,6 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+>          return;
+>      }
+>  
+> -    for (state = 0; state < ARRAY_SIZE(pin_state); state++) {
+> -        if (!strcmp(state_str, pin_state[state])) {
+> -            break;
+> -        }
+> -    }
+> -    if (state >= ARRAY_SIZE(pin_state)) {
+> -        error_setg(errp, "%s invalid pin state %s", __func__, state_str);
+> -        return;
+> -    }
+> -
+>      if (s->hw_dir) {
+>          /* Warn and ignore if the guest has configured this pin as output */
+>          if (!((s->regs[PCA9554_CONFIG] >> pin) & 0x1)) {
+> @@ -219,13 +209,13 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+>              return;
+>          }
+>          /* Drive the external input level */
+> -        pca9554_set_ext_state(s, pin, state != PCA9554_PIN_LOW);
+> +        pca9554_set_ext_state(s, pin, state != PCA9554_PIN_STATE_LOW);
+>      } else {
+>          /* Legacy behavior: force output mode and drive */
+>          /* First, modify the output register bit */
+>          val = pca9554_read(s, PCA9554_OUTPUT);
+>          mask = 0x1 << pin;
+> -        if (state == PCA9554_PIN_LOW) {
+> +        if (state == PCA9554_PIN_STATE_LOW) {
+>              val &= ~(mask);
+>          } else {
+>              val |= mask;
+> @@ -264,7 +254,7 @@ static void pca9554_reset(DeviceState *dev)
+>      s->regs[PCA9554_POLARITY] = 0x0; /* No pins are inverted */
+>      s->regs[PCA9554_CONFIG] = pin_mask; /* All pins are inputs */
+>  
+> -    memset(s->ext_state, PCA9554_PIN_HIZ, pc->pin_count);
+> +    memset(s->ext_state, PCA9554_PIN_STATE_HIGH, pc->pin_count);
+>      pca9554_update_pin_input(s);
+>  
+>      s->pointer = 0x0;
+> @@ -280,7 +270,8 @@ static void pca9554_initfn(Object *obj)
+>          char *name;
+>  
+>          name = g_strdup_printf("pin%d", pin);
+> -        object_property_add(obj, name, "str", pca9554_get_pin, pca9554_set_pin,
+> +        object_property_add(obj, name, "Pca9554PinState",
+> +                            pca9554_get_pin, pca9554_set_pin,
+>                              NULL, NULL);
+>          g_free(name);
+>      }
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index 34be3156270c..46b6935ab0b8 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -416,6 +416,52 @@
+>  { 'enum': 'LostTickPolicy',
+>    'data': ['discard', 'delay', 'slew' ] }
+>  
+> +##
+> +# @Pca9552LedState:
+> +#
+> +# LED state for PCA9552.
+> +#
+> +# @on: LED on
+> +#
+> +# @off: LED off
+> +#
+> +# @pwm0: LED controlled by PWM0
+> +#
+> +# @pwm1: LED controlled by PWM1
+> +#
+> +# Since: 11.2
+> +##
+> +{ 'enum': 'Pca9552LedState',
+> +  'data': ['on', 'off', 'pwm0', 'pwm1'] }
+> +
+> +##
+> +# @Pca9552PinState:
+> +#
+> +# Pin state for PCA9552.
+> +#
+> +# @low: Pin low
+> +#
+> +# @high: Pin high
+> +#
+> +# Since: 11.2
+> +##
+> +{ 'enum': 'Pca9552PinState',
+> +  'data': ['low', 'high'] }
+> +
+> +##
+> +# @Pca9554PinState:
+> +#
+> +# Pin state for PCA9554.
+> +#
+> +# @low: Pin low
+> +#
+> +# @high: Pin high
+> +#
+> +# Since: 11.2
+> +##
+> +{ 'enum': 'Pca9554PinState',
+> +  'data': ['low', 'high'] }
+> +
+>  ##
+>  # @inject-nmi:
+>  #     Injects a Non-Maskable Interrupt (machine specific: for example
 > 
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 

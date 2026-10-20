@@ -1,58 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51CB6606A328
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:49:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87235606A31D
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:50:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=WuGjyVoe
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=SLlkQpRv
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7P8-0003ve-Qf; Tue, 20 Oct 2026 06:49:16 -0400
+	id 1xJ7Nm-0001vx-SL; Tue, 20 Oct 2026 06:47:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7NY-0001HH-Ag
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:38 -0400
+ id 1xJ7Mi-0000iR-0C
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:47 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7NW-0005Jh-Ms
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:36 -0400
+ id 1xJ7Mf-00059u-V7
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493253;
+ s=mimecast20190719; t=1792493201;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ECa+EP2+GWrANsxj0WvwUZJkCIlcvdWbNsc8NiwNlVo=;
- b=WuGjyVoeBjzy/Ld608VbNSu9eUjxlMnLEk9OvgGoJDgy4iim4bq6l8JCiYm3TW2FfR7VeA
- Hg6Hg1/iqltV0LF0uV5XkFV+FNWgDZDz8zu9C/AK85EtLon886ou8yATUo4K6UNACWiQPw
- LpbP6ieaCTuDgUC/mu+hB2vicfyrnj8=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=W4iwz5jM7eZNLXaBc15ajfHMaIvbcteyV5+hzYG/iP8=;
+ b=SLlkQpRvaUYUG3WJCK0MK/novWAKX5fb8GoR3DH+FLV5vovW2jNUuS2tNB9w44mGJZ0wCM
+ THyWMJ3mr25+tTwey2GLVsrtPKuC7zq8n4GQj+34/s6ICAEVtXZuDYEUw1QzSzPhRNGRfA
+ dVa5V+iAbfF11YR6OezIKKmvrnFb8vY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-330---ICFwzSMLyjVd2-rA4_dw-1; Tue,
- 20 Oct 2026 10:47:26 +0000
-X-MC-Unique: --ICFwzSMLyjVd2-rA4_dw-1
-X-Mimecast-MFC-AGG-ID: --ICFwzSMLyjVd2-rA4_dw_1792493241
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-300-zY61osTGPTaA1pnSKnNHFQ-1; Tue,
+ 20 Oct 2026 10:46:38 +0000
+X-MC-Unique: zY61osTGPTaA1pnSKnNHFQ-1
+X-Mimecast-MFC-AGG-ID: zY61osTGPTaA1pnSKnNHFQ_1792493194
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B08BA1955EA9; Tue, 20 Oct 2026 10:47:21 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5CC261955D69; Tue, 20 Oct 2026 10:46:33 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7AA0630000E7; Tue, 20 Oct 2026 10:47:18 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:45:29 +0400
-Subject: [PATCH v7 12/65] qapi/qom: add qapi-type field to ObjectPropertyInfo
+ id 14CBF30000E7; Tue, 20 Oct 2026 10:46:29 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+Date: Tue, 20 Oct 2026 14:45:21 +0400
+Subject: [PATCH v7 04/65] qapi/introspect: Don't elide types
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-12-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-4-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -127,25 +127,25 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1921;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5331;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=iKT89ERqmB5xJit6r3j8WUD6ClpE36oEYsgjEEvZ40o=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZYxccp5RLblnwypa/9MUPo5yHCT1xWIDSPC
- kA8/nPQHZWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWAAKCRDa6OEJdZac
- 5e/BD/9TtX0u6H+0rpG8WE+dl2QuQTNqc7I7UQsZIGnhPN3Al/XNQZiAz7mmC9G+NYbkf+JSdfB
- k5kprVrQhJ3Qwo46Eo+f3qr8ThczDGZA6O4hzHv5kxdvgp6qn1DaCqqyaCoKsR/z+iuGL2HmZsU
- mDSJqIH3dy3Hb40RluHg7V7GmVv4Rf6FguZ82m5gB7pbbTD2eXnx3z+CnMSeaAmfG4F8BZ0feAi
- ZZdOtwWw3zJcvLJE4/+UfOCPiGxw4cQtY+ATWlNBSjHmmNXNtzG8MlEvUPCJ2Sjn27mHRxuM7nO
- WQ6+yJh/lQ0Ghbdq95AVNza5NuB1EVwplpUXCjM1cH+Yy2DOAZFw8NZuDgRazKKFH/AOAYKwO7P
- fSFGOlRSGjjJuFA4w4sYrs+YXl2zcGOmUVTKNTX3yF2OhQx8UgAnNPV9I4poe0gXiUAgmElaUBX
- bAH8SeScvuf8ZDHbsiN/1WmUdBrI/V4+IxLJlZYGHkeyF8ysSL5DJ7MeUTFBeBmG5LI9nRNWyhj
- xgXX8aohw8Oq+7nyejaTJP4C9/B8IRO6jiFJRRUvMsMjnKfTeEn2904ZPwG2JU6Qdo5st5sHmK6
- GVmZP2Uzs/39Pu485CCHNkrP67konhv+JXIwq2EN4q6gZq+7K1gfG51xtJ2MyHYyCc0BAAGTRD5
- xkTzLUa6kbRI52Q==
+ bh=mh48JZUSGfIpAp1DsQ/GZxfBrxYDTkjYALDPFWkE2w0=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZXTj6BLvZgq0XBaDnDR415+cGHcMUxi/2dk
+ ZicZ3/0CO+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGVwAKCRDa6OEJdZac
+ 5cNFEACs0g3nYzOw9mcOrDPnlJXKJuNeci0n6VbAEXZsFCZ1u4JNtS1ifs+0pHvISJaoZta0my6
+ lvkGupWdwq079dv7nvmOoT5lGQxsx41FDbzeMAh2AqGRiaoTGIR34hQFf3sOLgmZraxp30Lt33v
+ I9FftBFuBgNH1cHh44kywesPPVrmlfX1fGV1hURBsBolTEkpUT+VNW3Si1XrztZk2PXf1zupIB1
+ 6v4kYskKQkdj6v95qbfwBDHaMsgyUWRuc4dE9BsDkCCULJcdcOw0jQy+xkShVjgbTzRG/spQtdm
+ OJgHTTwkqlLpLSzKkiZiWk130rNvNbU9ZPZZ7pWrSjD87w4sUoVTVlLNx7btfbj6VpkVI/lsNHX
+ eXEv52qGqAcZCZptkK8oP/CIE6nCQvMdxcZ31fqe3HxosbVA5tVjhnoeC/tQyiJZuiyExxkFiJ7
+ 0ZbpjT/AIjGFffTJ3IYXzUgPfgdB1arCF3YD86a2cQEZgHpGQtJ675JNQAPfC7Gbgpu/znK2Txl
+ QskafbOYE8+L5oukgyV+eYRWnqzZsRIXJeUrRhCXcOW2+NOIDZyh5yfQvEaIefITC4ILWuwtEEF
+ F1kFYI7xr5ozlv5mmkOq6tEUPt+N9cLcy/vZVW0O4PEQCCt0FJuN5TvgfUPN9YjLObVm6vjQw9L
+ JjRCn7EZx7/9Trw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 0xPqCuDiE79KOrbI_3umHcPAGrrR4N6_1egsuxwdQQM_1792493241
+X-Mimecast-MFC-PROC-ID: eI7IK1M9j9QA0VcoP3bkmipxNNrAKk5NRiv4U4JsWwc_1792493194
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -178,61 +178,135 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add an optional 'qapi-type' field to ObjectPropertyInfo and
-ObjectPropertyValue. When present, it contains the masked type name that
-can be looked up in query-qmp-schema output. Absent for properties
-without a QAPI type association. Always absent for now, populated
-in the following changes.
+From: Markus Armbruster <armbru@redhat.com>
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+query-qmp-schema elides types not reachable from commands and events.
+It currently emits 1251 out of 1385 definitions, and elides 134 types.
+Whether that's worthwhile is debatable.
+
+Marc-André Lureau would like to make QOM introspection (qom-list &
+friends) refer to QAPI types.  We additionally need types reachable
+from QOM properties.
+
+Unfortunately, the QAPI generator knows nothing about QOM properties.
+
+We could manually mark the QAPI types to elide, or the QAPI types not
+to elide even though they are not reachable from commands and events.
+Feels very much not worthwhile to me.
+
+We could conservatively approximate "reachable from QOM properties" by
+"available for use with QOM properties".  These are the built-in and
+user-defined types, and their arrays.  With that, we'd elide just 38
+out of 1385 definitions.  Too few to be worthwhile.
+
+Simply emit everything.
+
+Output of query-qmp-schema grows from 247KiB to 274KiB for me.
+
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- qapi/qom.json | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ docs/devel/qapi-code-gen.rst |  2 --
+ scripts/qapi/introspect.py   | 31 ++++---------------------------
+ 2 files changed, 4 insertions(+), 29 deletions(-)
 
-diff --git a/qapi/qom.json b/qapi/qom.json
-index 49f222796ab4..34be7768135c 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -35,6 +35,10 @@
- #        qdev device type name.  Link properties form the device model
- #        graph.
- #
-+# @qapi-type: the name of the property's type as it appears in the
-+#     output of ``query-qmp-schema``.  Absent if the type does not
-+#     occur there.  (since 11.2)
-+#
- # @description: if specified, the description of the property.
- #
- # @default-value: the default value, if any (since 5.0)
-@@ -44,6 +48,7 @@
- { 'struct': 'ObjectPropertyInfo',
-   'data': { 'name': 'str',
-             'type': 'str',
-+            '*qapi-type': 'str',
-             '*description': 'str',
-             '*default-value': 'any' } }
+diff --git a/docs/devel/qapi-code-gen.rst b/docs/devel/qapi-code-gen.rst
+index b1cc5b5f0db1..77f08bb68cac 100644
+--- a/docs/devel/qapi-code-gen.rst
++++ b/docs/devel/qapi-code-gen.rst
+@@ -1250,8 +1250,6 @@ JSON array of strings.
+ To examine a type, start with a command or event using it, then follow
+ references by name.
  
-@@ -55,6 +60,10 @@
- # @type: the type of the property, as described in
- #     `ObjectPropertyInfo`.
- #
-+# @qapi-type: the name of the property's type as it appears in the
-+#     output of ``query-qmp-schema``.  Absent if the type does not
-+#     occur there.  (since 11.2)
-+#
- # @value: the value of the property.  Absent when the property cannot
- #     be read.
- #
-@@ -63,6 +72,7 @@
- { 'struct': 'ObjectPropertyValue',
-   'data': { 'name': 'str',
-             'type': 'str',
-+            '*qapi-type': 'str',
-             '*value': 'any' } }
+-QAPI schema definitions not reachable that way are omitted.
+-
+ The SchemaInfo for a command has meta-type "command", and variant
+ members "arg-type", "ret-type" and "allow-oob".  On the wire, the
+ "arguments" member of a client's "execute" command must conform to the
+diff --git a/scripts/qapi/introspect.py b/scripts/qapi/introspect.py
+index 49d1ed2897e8..15302ecf155a 100644
+--- a/scripts/qapi/introspect.py
++++ b/scripts/qapi/introspect.py
+@@ -28,9 +28,7 @@
+ from .schema import (
+     QAPISchema,
+     QAPISchemaAlternatives,
+-    QAPISchemaArrayType,
+     QAPISchemaBranches,
+-    QAPISchemaEntity,
+     QAPISchemaEnumMember,
+     QAPISchemaFeature,
+     QAPISchemaIfCond,
+@@ -175,7 +173,6 @@ def __init__(self, prefix: str, unmask: bool):
+         self._unmask = unmask
+         self._schema: Optional[QAPISchema] = None
+         self._trees: List[Annotated[SchemaInfo]] = []
+-        self._used_types: List[QAPISchemaType] = []
+         self._genc.add(mcgen('''
+ #include "qemu/osdep.h"
+ #include "%(prefix)sqapi-introspect.h"
+@@ -187,10 +184,6 @@ def visit_begin(self, schema: QAPISchema) -> None:
+         self._schema = schema
  
- ##
+     def visit_end(self) -> None:
+-        # visit the types that are actually used
+-        for typ in self._used_types:
+-            typ.visit(self)
+-        # generate C
+         name = c_name(self._prefix, protect=False) + 'qmp_schema_qlit'
+         self._genh.add(mcgen('''
+ #include "qobject/qlit.h"
+@@ -205,32 +198,12 @@ def visit_end(self) -> None:
+                              c_string=_tree_to_qlit(self._trees)))
+         self._schema = None
+         self._trees = []
+-        self._used_types = []
+-
+-    def visit_needed(self, entity: QAPISchemaEntity) -> bool:
+-        # Ignore types on first pass; visit_end() will pick up used types
+-        return not isinstance(entity, QAPISchemaType)
+ 
+     def _name(self, name: str) -> str:
+         assert self._schema
+         return self._schema.definition_introspection_name(name, self._unmask)
+ 
+     def _use_type(self, typ: QAPISchemaType) -> str:
+-        assert self._schema is not None
+-
+-        # Map the various integer types to plain int
+-        if typ.json_type() == 'int':
+-            type_int = self._schema.lookup_type('int')
+-            assert type_int
+-            typ = type_int
+-        elif (isinstance(typ, QAPISchemaArrayType) and
+-              typ.element_type.json_type() == 'int'):
+-            type_intlist = self._schema.lookup_type('intList')
+-            assert type_intlist
+-            typ = type_intlist
+-        # Add type to work queue if new
+-        if typ not in self._used_types:
+-            self._used_types.append(typ)
+         return self._name(typ.name)
+ 
+     @staticmethod
+@@ -295,6 +268,8 @@ def _gen_variant(self, variant: QAPISchemaVariant
+ 
+     def visit_builtin_type(self, name: str, info: Optional[QAPISourceInfo],
+                            json_type: str) -> None:
++        if json_type == 'int' and name != 'int':
++            return
+         self._gen_tree(name, 'builtin', {'json-type': json_type})
+ 
+     def visit_enum_type(self, name: str, info: Optional[QAPISourceInfo],
+@@ -312,6 +287,8 @@ def visit_enum_type(self, name: str, info: Optional[QAPISourceInfo],
+     def visit_array_type(self, name: str, info: Optional[QAPISourceInfo],
+                          ifcond: QAPISchemaIfCond,
+                          element_type: QAPISchemaType) -> None:
++        if element_type.json_type() == 'int' and name != 'intList':
++            return
+         element = self._use_type(element_type)
+         self._gen_tree(name, 'array', {'element-type': element}, ifcond)
+ 
 
 -- 
 2.56.0.116.g6de20f6092dc

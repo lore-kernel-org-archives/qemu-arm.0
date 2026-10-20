@@ -1,59 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB2BA606A319
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:14:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9A85C606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:14:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=XRwdSqkD
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=XheSlepi
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Tv-000440-1i; Tue, 20 Oct 2026 06:54:12 -0400
+	id 1xJ7Qv-00006a-Pd; Tue, 20 Oct 2026 06:51:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Qw-00009U-1y
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xJ7PZ-0004j3-Nz
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Qr-0006R8-Gz
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:05 -0400
+ id 1xJ7PW-0005oH-JU
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493460;
+ s=mimecast20190719; t=1792493377;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UI1oOgUjr2C09/42flcMtOL/qp5uyR5nZp4lNbzLhMM=;
- b=XRwdSqkDP4IBQvXLu7wDhGpL7pKN/t4YIqEhaWRyFpzGkoEWm9d85gb+KX0OlN1kuz7iR2
- qUUC6x7eOU4dHwyndeTEoLIMRwFEKtSLY4tbcq8MZ1fC19DazSh34PhfYUcYxHaYE3ZDya
- CMM/vu+J/f1hQ5H3ICqYdn5Iz7lcdac=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=0IAJt0UD2BHY2aeJtNI3vxcEoKPgyvku96KOQdFfo40=;
+ b=XheSlepiYjPkn54MxEPdmfieiKmPuuCRZGsrjvsxWUqOS4+k3u9VGuwRYDQfzdM4qiHhEB
+ xg4hWPTGtW5dbfwKWzYE/59WQptKpITrD5Ft+bDE5A94PLVJP5vPkTokpaVYKw3VeVmtFr
+ HxJk+7zLqkF2un4FYycSKl/ZqoNPeDo=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-47-CrQK4deUNTad1FIQ0b2Mjg-1; Tue,
- 20 Oct 2026 06:50:50 -0400
-X-MC-Unique: CrQK4deUNTad1FIQ0b2Mjg-1
-X-Mimecast-MFC-AGG-ID: CrQK4deUNTad1FIQ0b2Mjg_1792493447
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-692-f6pkGtb9O-GKxmFhJLnr0g-1; Tue,
+ 20 Oct 2026 10:49:33 +0000
+X-MC-Unique: f6pkGtb9O-GKxmFhJLnr0g-1
+X-Mimecast-MFC-AGG-ID: f6pkGtb9O-GKxmFhJLnr0g_1792493369
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F3CE01954194; Tue, 20 Oct 2026 10:50:46 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 96BF018011E7; Tue, 20 Oct 2026 10:49:29 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B3F891956088; Tue, 20 Oct 2026 10:50:43 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 07CCA418; Tue, 20 Oct 2026 10:49:24 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:07 +0400
-Subject: [PATCH v7 50/65] hw/gpio/pca955x: convert pin/led property to
- QAPI-aware enum
+Date: Tue, 20 Oct 2026 14:45:53 +0400
+Subject: [PATCH v7 36/65] net/colo-compare: fix max_queue_size setter
+ visitor type
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-50-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-36-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -128,38 +128,38 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=18182;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1019;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=/T2C1S926CriVURvy1V0b555zaz9n8rbWnuo7vsoD8E=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10Zc/MyZjsGCSo1em3rwgIrcI3my50hA6ArKg
- XY6eoCG8OOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
- 5WerD/9ns1InvVwABVk1Ky8TEmeyVcSbJeoQ9nMEgwkTHwjl6qy+A2E4Cjjp5FAOPp7vSLb1FVz
- ZXMI8PMPr4JEzANxAvBYlnRoEGPZWbJJLf767vjKnD8shLpXlXhnvL9alhzbcNGyXIkOUELKEGB
- P4mM2H4U9fK8o3tgDeq4H0SEsbQVrgGpKJ27O9m7ISTwXbHhZ2ZBBLm4DQguo/iU1/kJ5Rgp9DD
- vlZFzPj+Ou/pP1RN7vLgr+2VKDcu6BSThcuqpOnYT/g7z14okU02LhRu/+3E4siXVFTnLUMc9kP
- W36YY8NastaSyEKVu3Y8pSvJiiTk0LClt+biOdN06lDl5EeoLSyczPFdPrfibyX5qyqz35XJfvf
- SLw9HQCVxO9o+9cACPrRm31c8Q0pHEpDEs6p12Jk0YhG7LSCGOL3smAcPDNSwqA8VE6ea5paj7z
- 74Tr28SsZAahFvb95zAmoYTZmaobkL/CnrvnQJDmnJgaA2EBKeYSj2COvwCHP1zz6zzbY2ySv6g
- vCVkOGb3B2VMQVrjOQg68OiiNgB9U+5qCBJkyzHVLXTebevqwzcbalEFgE2RHHzL3tbBq/ecpRG
- HWNo20RnvrQvpG9pxYxhGmGni7lpSdZzHnm/WuJYaHbEgwLAwAAvYXD1+eTxTM6Lx7smAXkFK2l
- xSsQ6OzWsYMuwNw==
+ bh=2Ht6gW7AXC+9m2hyIj3XjReAS0cmbqbO/nhhR3s10ik=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZaBju/eY1bBbqeZbyaaIna3yDT1YO5S2ZfK
+ Dk+TjopPr+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWgAKCRDa6OEJdZac
+ 5dQZD/9+OPsZ+9wdTvZlJAHJ8LdZ+1IrTm8SRc4WfgMoVaUgmxvUmArgHB8hI32zhhT+Ba88j5h
+ KVa4ATUp8pq0eFWpUQQliSGEcG8IcvbDzwCdXHlbCyx1nenDacuX0x1Xzy6lOPsZkDaLW4sd1av
+ aslU4lzEjPo+woZOS+f31o8bS96Uj4DK9zSO/2jZS60JmsZVWU2RuRFsQ4ynCztQC5WVe561WiF
+ Neo8iP9N1N6jRWQ/W9lDjOjhSLPfoogGEELTAUdypajGDPuGgyGOUNHGrXgAoT6RZ9LSPkaXi9M
+ YVb+sG/RbGXWjlrdd/CFkcXWKmRvs4HZYOoCxI3XLPjngyKh4mXKogIvBPZkZyD1Mc01f37OWJJ
+ Z601T1TKyOwOevdMSa3zjfTSInCHXtBGcfygNJ1EHaIfbfspA5GBA6TYOD34MkYVQ7Xo0EMeDYd
+ ZIRp02UPolMQALQO0ANg3mVOP62D3BNsyhxHxlfjumfHsGoGYZ6mHjkjkO/PzHDEye+BfFcPcE1
+ op8EVu1uAVHHecAerzTbPZ2xi8hfaVgovOLMJe0DIozxp7l06V9c+bbZegHgr1qr0kr+5Z1dy+b
+ cGCIdsvGHbP8dorXb8/DNE5clHvwjDTMX8mVMgxx/XbT5GQClDJRTRj2mTFy/Cr8znwahtft6UL
+ 2RCiOOUs4aDYIGg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: F6h_kl7HLu8GVYiIAG8JD3MF5QPXxjKZx7LRjYTT6vY_1792493447
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: 7NqYbcIyHCdX_yHsGiRbYqa0ydfXg4Ei_3ur274pDMI_1792493369
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,430 +178,33 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replaces the runtime-parsed visitor-based QOM property accessors with
-compile-time per-pin/per-LED accessor functions using QEMU_REPEAT.
+The setter was using visit_type_uint64, accepting values wider than
+the uint32_t field. Use visit_type_uint32 to match the getter, field,
+and typename.
 
+Fixes: 0c4266ef2690 ("net/colo-compare.c: Fix compare_timeout format issue")
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/gpio/pca9552.c | 205 +++++++++++++++++++++---------------------------------
- hw/gpio/pca9554.c | 136 ++++++++++++++----------------------
- 2 files changed, 131 insertions(+), 210 deletions(-)
+ net/colo-compare.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-index 16741c22dea3..0a007bbbe4ac 100644
---- a/hw/gpio/pca9552.c
-+++ b/hw/gpio/pca9552.c
-@@ -25,6 +25,7 @@
- #include "qapi/error.h"
- #include "qapi/qapi-types-machine.h"
- #include "qapi/qapi-visit-machine.h"
-+#include "qapi/qapi-type-infos-machine.h"
- #include "trace.h"
- #include "qom/object.h"
- 
-@@ -354,33 +355,6 @@ static int pca955x_event(I2CSlave *i2c, enum i2c_event event)
-     return 0;
- }
- 
--static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
--                            void *opaque, Error **errp)
--{
--    PCA955xClass *k = PCA955X_GET_CLASS(obj);
--    PCA955xState *s = PCA955X(obj);
--    int led, rc, reg;
--    Pca9552LedState state;
--
--    rc = sscanf(name, "led%2d", &led);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (led < 0 || led >= k->pin_count) {
--        error_setg(errp, "%s: invalid led %s", __func__, name);
--        return;
--    }
--    /*
--     * Get the LSx register as the qom interface should expose the device
--     * state, not the modeled 'input line' behaviour which would come from
--     * reading the INPUTx reg
--     */
--    reg = PCA9552_LS0 + led / 4;
--    state = (pca955x_read(s, reg) >> ((led % 4) * 2)) & 0x3;
--    visit_type_Pca9552LedState(v, name, &state, errp);
--}
--
- /*
-  * Return an LED selector register value based on an existing one, with
-  * the appropriate 2-bit state value set for the given LED number (0-3).
-@@ -391,97 +365,8 @@ static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, int state)
-                 ((state & 0x3) << (led_num << 1));
- }
- 
--static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
--                            void *opaque, Error **errp)
--{
--    PCA955xClass *k = PCA955X_GET_CLASS(obj);
--    PCA955xState *s = PCA955X(obj);
--    int led, rc, reg, val;
--    Pca9552LedState state;
--
--    if (!visit_type_Pca9552LedState(v, name, &state, errp)) {
--        return;
--    }
--    rc = sscanf(name, "led%2d", &led);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (led < 0 || led >= k->pin_count) {
--        error_setg(errp, "%s: invalid led %s", __func__, name);
--        return;
--    }
--
--    reg = PCA9552_LS0 + led / 4;
--    val = pca955x_read(s, reg);
--    val = pca955x_ledsel(val, led % 4, state);
--    pca955x_write(s, reg, val);
--}
--
- static void pca955x_set_ext_state(PCA955xState *s, int pin, int level);
- 
--static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
--                            void *opaque, Error **errp)
--{
--    PCA955xClass *k = PCA955X_GET_CLASS(obj);
--    PCA955xState *s = PCA955X(obj);
--    int pin, rc;
--    uint8_t input_reg;
--    Pca9552PinState state;
--
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= k->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
--
--    /*
--     * Report the raw pin logic level; polarity inversion is a read-time
--     * transform applied to the INPUT register, not to the pin state itself.
--     */
--    input_reg = PCA9535_INPUT0 + (pin / 8);
--    state = (s->regs[input_reg] >> (pin % 8)) & 0x1;
--    visit_type_Pca9552PinState(v, name, &state, errp);
--}
--
--static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
--                            void *opaque, Error **errp)
--{
--    PCA955xClass *k = PCA955X_GET_CLASS(obj);
--    PCA955xState *s = PCA955X(obj);
--    int pin, rc;
--    Pca9552PinState state;
--    uint8_t config_reg;
--
--    if (!visit_type_Pca9552PinState(v, name, &state, errp)) {
--        return;
--    }
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= k->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
--
--    /* Only input-configured pins can be driven by an external device. */
--    config_reg = PCA9535_CONFIG0 + (pin / 8);
--    if (!((s->regs[config_reg] >> (pin % 8)) & 0x1)) {
--        qemu_log_mask(LOG_UNIMP,
--                      "%s: pin %d is configured as output, ignoring set\n",
--                      s->description, pin);
--        return;
--    }
--
--    pca955x_set_ext_state(s, pin, state != PCA9552_PIN_STATE_LOW);
--}
--
- static const VMStateDescription pca9552_vmstate = {
-     .name = "PCA9552",
-     .version_id = 0,
-@@ -536,26 +421,92 @@ static void pca9535_reset_hold(Object *obj, ResetType type)
-     s->len = 0;
- }
- 
-+/*
-+ * Get the LSx register as the qom interface should expose the device
-+ * state, not the modeled 'input line' behaviour which would come from
-+ * reading the INPUTx reg
-+ */
-+#define DEFINE_LED_ACCESSORS(n)                                              \
-+static int prop_get_led##n(Object *obj, Error **errp)                        \
-+{                                                                            \
-+    PCA955xState *s = PCA955X(obj);                                          \
-+    uint8_t reg = PCA9552_LS0 + (n) / 4;                                     \
-+    return (pca955x_read(s, reg) >> (((n) % 4) * 2)) & 0x3;                  \
-+}                                                                            \
-+static void prop_set_led##n(Object *obj, int val, Error **errp)              \
-+{                                                                            \
-+    PCA955xState *s = PCA955X(obj);                                          \
-+    uint8_t reg = PCA9552_LS0 + (n) / 4;                                     \
-+    uint8_t old = pca955x_read(s, reg);                                      \
-+    pca955x_write(s, reg, pca955x_ledsel(old, (n) % 4, val));                \
-+}
-+
-+QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, DEFINE_LED_ACCESSORS)
-+
-+#define LED_ENUM_PROP(n) {                                              \
-+    .name = "led" #n,                                                   \
-+    .default_value = -1,                                                \
-+    .qapi_type = &Pca9552LedState_type_info,                            \
-+    .get = prop_get_led##n,                                             \
-+    .set = prop_set_led##n,                                             \
-+},
-+
-+static const QapiEnumProp led_enum_props[] = {
-+    QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, LED_ENUM_PROP)
-+};
-+
-+/*
-+ * Report the raw pin logic level; polarity inversion is a read-time
-+ * transform applied to the INPUT register, not to the pin state
-+ * itself.
-+ */
-+#define DEFINE_PIN_ACCESSORS(n)                                              \
-+static int prop_get_pin##n(Object *obj, Error **errp)                        \
-+{                                                                            \
-+    PCA955xState *s = PCA955X(obj);                                          \
-+    uint8_t input_reg = PCA9535_INPUT0 + (n) / 8;                            \
-+    return (s->regs[input_reg] >> ((n) % 8)) & 0x1;                          \
-+}                                                                            \
-+static void prop_set_pin##n(Object *obj, int val, Error **errp)              \
-+{                                                                            \
-+    PCA955xState *s = PCA955X(obj);                                          \
-+    uint8_t config_reg = PCA9535_CONFIG0 + (n) / 8;                          \
-+    /* Only input-configured pins can be driven by an external device */     \
-+    if (!((s->regs[config_reg] >> ((n) % 8)) & 0x1)) {                       \
-+        qemu_log_mask(LOG_UNIMP,                                             \
-+                      "%s: pin %d configured as output, ignoring set\n",     \
-+                      s->description, (n));                                  \
-+        return;                                                              \
-+    }                                                                        \
-+    pca955x_set_ext_state(s, (n), val != PCA9552_PIN_STATE_LOW);             \
-+}
-+
-+QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, DEFINE_PIN_ACCESSORS)
-+
-+#define PIN_ENUM_PROP(n) {                                              \
-+    .name = "pin" #n,                                                   \
-+    .default_value = -1,                                                \
-+    .qapi_type = &Pca9552PinState_type_info,                            \
-+    .get = prop_get_pin##n,                                             \
-+    .set = prop_set_pin##n,                                             \
-+},
-+
-+static const QapiEnumProp pin_enum_props[] = {
-+    QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, PIN_ENUM_PROP)
-+};
-+
- static void pca955x_initfn(Object *obj)
+diff --git a/net/colo-compare.c b/net/colo-compare.c
+index 948a2f7f9e4b..a6910de869ff 100644
+--- a/net/colo-compare.c
++++ b/net/colo-compare.c
+@@ -1129,9 +1129,9 @@ static void set_max_queue_size(Object *obj, Visitor *v,
+                                const char *name, void *opaque,
+                                Error **errp)
  {
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
+-    uint64_t value;
++    uint32_t value;
  
-     assert(k->pin_count <= PCA955X_PIN_COUNT_MAX);
-+    /* TODO: use array/list instead of individual QAPI enum properties */
-     for (int ix = 0; ix < k->pin_count; ix++) {
--        char *name;
--
-         if (k->has_led_support) {
--            /* LED variant: expose the LED selector state as led%d. */
--            name = g_strdup_printf("led%d", ix);
--            object_property_add(obj, name, "Pca9552LedState",
--                                pca955x_get_led, pca955x_set_led, NULL, NULL);
-+            object_property_add_qapi_enum(obj, &led_enum_props[ix]);
-         } else {
--            /* GPIO variant: expose the pin logic level as pin%d. */
--            name = g_strdup_printf("pin%d", ix);
--            object_property_add(obj, name, "Pca9552PinState",
--                                pca955x_get_pin, pca955x_set_pin, NULL, NULL);
-+            object_property_add_qapi_enum(obj, &pin_enum_props[ix]);
-         }
--        g_free(name);
+-    if (!visit_type_uint64(v, name, &value, errp)) {
++    if (!visit_type_uint32(v, name, &value, errp)) {
+         return;
      }
- }
- 
-diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
-index e4eddc829ef7..f2a5b94a36d8 100644
---- a/hw/gpio/pca9554.c
-+++ b/hw/gpio/pca9554.c
-@@ -18,7 +18,7 @@
- #include "qapi/error.h"
- #include "qapi/qapi-types-machine.h"
- #include "qapi/qapi-visit-machine.h"
--#include "qapi/visitor.h"
-+#include "qapi/qapi-type-infos-machine.h"
- #include "trace.h"
- #include "qom/object.h"
- 
-@@ -151,83 +151,60 @@ static void pca9554_set_ext_state(PCA9554State *s, int pin, int level)
-     }
- }
- 
--static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
--                            void *opaque, Error **errp)
--{
--    PCA9554State *s = PCA9554(obj);
--    int pin, rc;
--    Pca9554PinState state;
--
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
--
--    /*
--     * Report the physical pin level. The input register is kept in sync by
--     * pca9554_update_pin_input(): output pins mirror the OUTPUT register and
--     * input pins reflect the externally driven (or pulled-up) level, so it
--     * holds the wire level regardless of the configured direction.
--     */
--    state = (s->regs[PCA9554_INPUT] >> pin) & 0x1;
--    visit_type_Pca9554PinState(v, name, &state, errp);
-+/*
-+ * Report the physical pin level. The input register is kept in sync
-+ * by pca9554_update_pin_input(): output pins mirror the OUTPUT
-+ * register and input pins reflect the externally driven (or
-+ * pulled-up) level, so it holds the wire level regardless of the
-+ * configured direction.
-+ */
-+#define DEFINE_PIN_ACCESSORS(n)                                              \
-+static int prop_get_pin##n(Object *obj, Error **errp)                        \
-+{                                                                            \
-+    PCA9554State *s = PCA9554(obj);                                          \
-+    return (s->regs[PCA9554_INPUT] >> (n)) & 0x1;                            \
-+}                                                                            \
-+static void prop_set_pin##n(Object *obj, int val, Error **errp)              \
-+{                                                                            \
-+    PCA9554State *s = PCA9554(obj);                                          \
-+    if (s->hw_dir) {                                                         \
-+        if (!((s->regs[PCA9554_CONFIG] >> (n)) & 0x1)) {                     \
-+            qemu_log_mask(LOG_UNIMP,                                         \
-+                          "%s: pin %d configured as output,"                 \
-+                          " ignoring set\n",                                 \
-+                          s->description, (n));                              \
-+            return;                                                          \
-+        }                                                                    \
-+        pca9554_set_ext_state(s, (n), val != PCA9554_PIN_STATE_LOW);         \
-+    } else {                                                                 \
-+        /* Legacy behavior: force output mode and drive */                   \
-+        uint8_t mask = 0x1 << (n);                                           \
-+        int v = pca9554_read(s, PCA9554_OUTPUT);                             \
-+        if (val == PCA9554_PIN_STATE_LOW) {                                  \
-+            v &= ~mask;                                                      \
-+        } else {                                                             \
-+            v |= mask;                                                       \
-+        }                                                                    \
-+        pca9554_write(s, PCA9554_OUTPUT, v);                                 \
-+        v = pca9554_read(s, PCA9554_CONFIG);                                 \
-+        v &= ~mask;                                                          \
-+        pca9554_write(s, PCA9554_CONFIG, v);                                 \
-+    }                                                                        \
- }
- 
--static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
--                            void *opaque, Error **errp)
--{
--    PCA9554State *s = PCA9554(obj);
--    int pin, rc, val;
--    uint8_t mask;
--    Pca9554PinState state;
-+QEMU_REPEAT(PCA9554_PIN_COUNT, DEFINE_PIN_ACCESSORS)
- 
--    if (!visit_type_Pca9554PinState(v, name, &state, errp)) {
--        return;
--    }
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
-+#define PIN_ENUM_PROP(n) {                                              \
-+    .name = "pin" #n,                                                   \
-+    .default_value = -1,                                                \
-+    .qapi_type = &Pca9554PinState_type_info,                            \
-+    .get = prop_get_pin##n,                                             \
-+    .set = prop_set_pin##n,                                             \
-+},
- 
--    if (s->hw_dir) {
--        /* Warn and ignore if the guest has configured this pin as output */
--        if (!((s->regs[PCA9554_CONFIG] >> pin) & 0x1)) {
--            qemu_log_mask(LOG_UNIMP,
--                          "%s: pin %d is configured as output, "
--                          "ignoring external set\n",
--                          s->description, pin);
--            return;
--        }
--        /* Drive the external input level */
--        pca9554_set_ext_state(s, pin, state != PCA9554_PIN_STATE_LOW);
--    } else {
--        /* Legacy behavior: force output mode and drive */
--        /* First, modify the output register bit */
--        val = pca9554_read(s, PCA9554_OUTPUT);
--        mask = 0x1 << pin;
--        if (state == PCA9554_PIN_STATE_LOW) {
--            val &= ~(mask);
--        } else {
--            val |= mask;
--        }
--        pca9554_write(s, PCA9554_OUTPUT, val);
--
--        /* Then, clear the config register bit for output mode */
--        val = pca9554_read(s, PCA9554_CONFIG);
--        val &= ~mask;
--        pca9554_write(s, PCA9554_CONFIG, val);
--    }
--}
-+static const QapiEnumProp pin_enum_props[] = {
-+    QEMU_REPEAT(PCA9554_PIN_COUNT, PIN_ENUM_PROP)
-+};
- 
- static const VMStateDescription pca9554_vmstate = {
-     .name = "PCA9554",
-@@ -264,16 +241,9 @@ static void pca9554_reset(DeviceState *dev)
- static void pca9554_initfn(Object *obj)
- {
-     PCA9554Class *pc = PCA9554_GET_CLASS(obj);
--    int pin;
- 
--    for (pin = 0; pin < pc->pin_count; pin++) {
--        char *name;
--
--        name = g_strdup_printf("pin%d", pin);
--        object_property_add(obj, name, "Pca9554PinState",
--                            pca9554_get_pin, pca9554_set_pin,
--                            NULL, NULL);
--        g_free(name);
-+    for (int pin = 0; pin < pc->pin_count; pin++) {
-+        object_property_add_qapi_enum(obj, &pin_enum_props[pin]);
-     }
- }
- 
+     if (!value) {
 
 -- 
 2.56.0.116.g6de20f6092dc

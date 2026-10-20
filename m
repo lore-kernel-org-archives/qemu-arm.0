@@ -1,59 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B565606A319
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:55:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CB16E606A322
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:56:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=G1YJCPIn
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=P2KwWbnS
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7TY-0003RT-JU; Tue, 20 Oct 2026 06:53:48 -0400
+	id 1xJ7NK-0001Db-UN; Tue, 20 Oct 2026 06:47:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7RJ-0000Us-FG
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:30 -0400
+ id 1xJ7MU-0000WM-G9
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:31 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7RD-0006Xr-Ho
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:28 -0400
+ id 1xJ7MR-00057H-Oo
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493482;
+ s=mimecast20190719; t=1792493187;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kVlgXy2vPG5I3mKp16fhq+bJb3obYLJd/3IFPjDdE9g=;
- b=G1YJCPInrfnloW0LIhWLZ6xXGY9OwwrL0S0nQ1rIu1V7TbRgghiG36ZAt8NxDfN7Ie2Rgo
- dmaXBLcPjSKsquCq8VQinMcP/zkF3gakID1A2Z/JWolyf5JUMlG6vN+U8OJU9PFbKHuAAU
- V28lev5rzoAl4XFSgs7ZOBticZD84vg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Wrkputc8/RPpD4nnWHNw9T7RRAU4Kg2aM4nuyIGGs8E=;
+ b=P2KwWbnS9ygGzQ/ZLqIaSEASARp1ANhH7OH8vh9SkqbCeKGzLAOjyDqcjuuzp56faazgvM
+ eVmAUmPzTC4TVEhpvQOPAJ9X0YS6JelQZjBH9HP2Uas5A0/IsLtPfgKkGvQOsX/wNJ5DZv
+ 4s4hwEOGelFhvZpAi4BkPo99bXszpBM=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-571-wpfby2pGOJyKwLe7dRoy5g-1; Tue,
- 20 Oct 2026 10:51:16 +0000
-X-MC-Unique: wpfby2pGOJyKwLe7dRoy5g-1
-X-Mimecast-MFC-AGG-ID: wpfby2pGOJyKwLe7dRoy5g_1792493472
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-349-AZuVlQ_mNCWlMBKmGs5kWg-1; Tue,
+ 20 Oct 2026 10:46:23 +0000
+X-MC-Unique: AZuVlQ_mNCWlMBKmGs5kWg-1
+X-Mimecast-MFC-AGG-ID: AZuVlQ_mNCWlMBKmGs5kWg_1792493179
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 59F701956058; Tue, 20 Oct 2026 10:51:12 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 73F281800D85; Tue, 20 Oct 2026 10:46:18 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6E20D1956088; Tue, 20 Oct 2026 10:51:09 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:12 +0400
-Subject: [PATCH v7 55/65] qdev: convert system PropertyInfo definitions to
- use qapi_type
+ id 9D8411956088; Tue, 20 Oct 2026 10:46:13 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+Date: Tue, 20 Oct 2026 14:45:19 +0400
+Subject: [PATCH v7 02/65] qapi: Ease access to introspection names
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-55-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-2-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -128,38 +127,38 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=16488;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7889;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=bKJiGjLc93NMNQe/axyuBXbCYEzkRfYsjB6tY47k/ME=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZcE6NcoIi2kkZhgPlwo4cwnMvIG9Khmkeki
- 3B164oT25KJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
- 5X4UD/oDIy4uzsDDKJ07Mwj4Le45Vv+5f8w9BOVeka0VijEf6x5pFmvuYTSqEfaovLHlXgeSaEI
- zRulvXe5KuGodBABZfg89LkkU5r2EBsPvVQVTz36tFtr/RA9tZ5OtkaUG4KoKgg1D84YjYZBKYC
- Dk7TuM+jRsDKwGYy9VsZ8RbLtkeZYVkKQ47Ekt/kYAgAbfRS6HL0GjcKqnMhKmZy4bFDxIEZtzd
- 0Zxv6JkIMu/i85FepDnytt2YCwhT6mvnL2ScEExHqyED7UcBzuU9VNMIEQSEAubvjd+MjJTK3RI
- 5q04XcpN4cpum2fvygKb8Trpj87BED6uoFvqmN48XHYwvPraPB3A8R9QYjPirdeq2e7K8SiblBq
- vliHBphsgAVgdcD1TuoFYOjqePJRz6v/Y/2M5pEg4m/MUBMWxvgP+O1qKuanj4WpOpXOG6xMlj9
- pPUbKIIOtP6V1WUU7l5JRxfNPSGI4nhqjUO6LuQAwQWZE1zl+QKxMNgfWZledVaSyNLWWxAwHnO
- PHlyxs6OELk7p+QbfVeRnCQExc9dguQA8maKFafKmWIv91WwQ5KyX7D0OKHowXAosPoJ38fqbha
- 5UVZ5QSnmbDWHl/Qu80RjzcHcFsVx39BDAbueT4Ue3krKr40/8NsJQcY3lboVJN0DEmse+TPH0o
- 9Mdq/H0L6fXU0Cg==
+ bh=a2pApAt20adFheRFMFL0JhfgD1DBySkAUQki6ne7iLY=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZX47T8N7MhCWr0sH+GZry8k5SuXuUXyZs9e
+ X4b68TesAyJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGVwAKCRDa6OEJdZac
+ 5auAD/4/Ie/cSClFbfq3pLk5G4chwRGPx/IkNYssN2QhE7SuensGeO9N3hAkiwjTWMQUa4RmIV3
+ Ih/ody0cyQZ7ebEGwThhPd/0tDx7xTVJYKJlWKSTE5TWfQGUlgdud9VFnpmx8tSWLwXoFzA3/Hi
+ z84mm5HxX4k1UOcwbKkeDY6EkPEVuH8/N0fn/A7MiLmcS+vrSdBq2tiEnHZ2QEopsTjy7Fg+8Dm
+ trZ5cGqVMRvocoVM8CgiT6O62rCese/7CxN6AiIHPC523itkKI9FAhKp4RCjU92vE34Y4qb3OK7
+ 4nLiR3tXfQKU/YeaXR1MILIVGMiK5nF1dai6meQh2g2gFR5CZaT6gar5YZXLqO6P5vbb/h9A5B1
+ XfERQ+8YYELHMZBHW9/k9O9lzRT4AaVsNM0NRp0v7q2tBK8LXDi/gCQ8p7fmH14kbbMpCNI05fK
+ raCcLlKl6gYu52cO8zN9VqgDnMq9FRZW0+OUXJFULxZ30mbl8FV2VQh7yqS7Pjv7b0zNHWAunEZ
+ wonP/p1G5r2Po5hwZOcexcv5WAK6BbCPlEQLoNz9USS4GnPaglfv0pEsF4RVBhsqmN/mm7S8mbt
+ wlt5AqKpk3Y/XRH4EIFYc+5GuwKmie/wmHA0vfOmbqn2V9JRLHgrJL5pHEdbb6UDEt2kucPZXXU
+ qlf+go84nzQ475Q==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 0uFdrH_lxZ5W1tQLX_jbNrkfdIE1BsqTdfReKFKL0Rk_1792493472
+X-Mimecast-MFC-PROC-ID: Ej2nhBxmjdIOE162sxrX7tnmG32JD0oJAoXMtA7dLVY_1792493179
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -174,412 +173,199 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace .type string and .enum_table pointer with .qapi_type in all
-PropertyInfo definitions in qdev-properties-system.c
+From: Markus Armbruster <armbru@redhat.com>
 
-Update file-private enum accessor functions to use .qapi_type->lookup
-instead of .enum_table.
+query-qmp-schema masks type names, because they are not part of the
+external interface.  Marc-André Lureau would like to also use them
+with qom-list & friends.  Trouble is the masked names are buried deep
+in QAPISchemaGenIntrospectVisitor.  Lift them into schema.py: new
+QAPISchemaDefinition method introspection_name() returns a
+definition's name for use in introspection.
 
-Note, this should be a faithful conversion, but it would be worth to
-consider better types than just "str" for references (block node names,
-chardev/netdev IDs, MAC addrs, etc)
+This changes the masked names, which is fine.
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/core/qdev-prop-internal.h     |  2 +
- hw/core/qdev-properties-system.c | 93 +++++++++++++++++-----------------------
- hw/core/qdev-properties.c        |  2 +-
- 3 files changed, 43 insertions(+), 54 deletions(-)
+ scripts/qapi/introspect.py | 23 ++++-------------------
+ scripts/qapi/schema.py     | 43 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 47 insertions(+), 19 deletions(-)
 
-diff --git a/hw/core/qdev-prop-internal.h b/hw/core/qdev-prop-internal.h
-index d7b77844fe0b..c190b7b88cf4 100644
---- a/hw/core/qdev-prop-internal.h
-+++ b/hw/core/qdev-prop-internal.h
-@@ -8,6 +8,8 @@
- #ifndef HW_CORE_QDEV_PROP_INTERNAL_H
- #define HW_CORE_QDEV_PROP_INTERNAL_H
+diff --git a/scripts/qapi/introspect.py b/scripts/qapi/introspect.py
+index 7e28de2279ad..644461560c64 100644
+--- a/scripts/qapi/introspect.py
++++ b/scripts/qapi/introspect.py
+@@ -30,7 +30,6 @@
+     QAPISchemaAlternatives,
+     QAPISchemaArrayType,
+     QAPISchemaBranches,
+-    QAPISchemaBuiltinType,
+     QAPISchemaEntity,
+     QAPISchemaEnumMember,
+     QAPISchemaFeature,
+@@ -177,7 +176,6 @@ def __init__(self, prefix: str, unmask: bool):
+         self._schema: Optional[QAPISchema] = None
+         self._trees: List[Annotated[SchemaInfo]] = []
+         self._used_types: List[QAPISchemaType] = []
+-        self._name_map: Dict[str, str] = {}
+         self._genc.add(mcgen('''
+ #include "qemu/osdep.h"
+ #include "%(prefix)sqapi-introspect.h"
+@@ -208,18 +206,14 @@ def visit_end(self) -> None:
+         self._schema = None
+         self._trees = []
+         self._used_types = []
+-        self._name_map = {}
  
-+const QEnumLookup *qdev_propinfo_enum_lookup(const PropertyInfo *info);
+     def visit_needed(self, entity: QAPISchemaEntity) -> bool:
+         # Ignore types on first pass; visit_end() will pick up used types
+         return not isinstance(entity, QAPISchemaType)
+ 
+     def _name(self, name: str) -> str:
+-        if self._unmask:
+-            return name
+-        if name not in self._name_map:
+-            self._name_map[name] = '%d' % len(self._name_map)
+-        return self._name_map[name]
++        assert self._schema
++        return self._schema.definition_introspection_name(name, self._unmask)
+ 
+     def _use_type(self, typ: QAPISchemaType) -> str:
+         assert self._schema is not None
+@@ -237,13 +231,6 @@ def _use_type(self, typ: QAPISchemaType) -> str:
+         # Add type to work queue if new
+         if typ not in self._used_types:
+             self._used_types.append(typ)
+-        # Clients should examine commands and events, not types.  Hide
+-        # type names as integers to reduce the temptation.  Also, it
+-        # saves a few characters on the wire.
+-        if isinstance(typ, QAPISchemaBuiltinType):
+-            return typ.name
+-        if isinstance(typ, QAPISchemaArrayType):
+-            return '[' + self._use_type(typ.element_type) + ']'
+         return self._name(typ.name)
+ 
+     @staticmethod
+@@ -271,8 +258,7 @@ def _gen_tree(self, name: str, mtype: str, obj: Dict[str, object],
+                 # Output a comment to make it easy to map masked names
+                 # back to the source when reading the generated output.
+                 comment = f'"{self._name(name)}" = {name}'
+-            name = self._name(name)
+-        obj['name'] = name
++        obj['name'] = self._name(name)
+         obj['meta-type'] = mtype
+         if features:
+             obj['features'] = self._gen_features(features)
+@@ -327,8 +313,7 @@ def visit_array_type(self, name: str, info: Optional[QAPISourceInfo],
+                          ifcond: QAPISchemaIfCond,
+                          element_type: QAPISchemaType) -> None:
+         element = self._use_type(element_type)
+-        self._gen_tree('[' + element + ']', 'array', {'element-type': element},
+-                       ifcond)
++        self._gen_tree(name, 'array', {'element-type': element}, ifcond)
+ 
+     def visit_object_type_flat(self, name: str, info: Optional[QAPISourceInfo],
+                                ifcond: QAPISchemaIfCond,
+diff --git a/scripts/qapi/schema.py b/scripts/qapi/schema.py
+index 9c9e257a8fd5..11f3accec873 100644
+--- a/scripts/qapi/schema.py
++++ b/scripts/qapi/schema.py
+@@ -136,6 +136,13 @@ def __repr__(self) -> str:
+     def c_name(self) -> str:
+         return c_name(self.name)
+ 
++    def set_ordinal(self, ordinal: int) -> None:
++        pass
 +
- void qdev_propinfo_get_enum(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp);
- void qdev_propinfo_set_enum(Object *obj, Visitor *v, const char *name,
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 3381de1144d6..8819a9a0b748 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -27,6 +27,7 @@
- #include "qemu/uuid.h"
- #include "qemu/error-report.h"
- #include "qdev-prop-internal.h"
-+#include "qapi/qapi-type-infos.h"
++    # pylint: disable=unused-argument
++    def introspection_name(self, unmask: bool) -> str:
++        return self.name
++
+     def check(self, schema: QAPISchema) -> None:
+         assert not self._checked
+         super().check(schema)
+@@ -323,6 +330,17 @@ def visit(self, visitor: QAPISchemaVisitor) -> None:
  
- #include "qemu/audio.h"
- #include "chardev/char-fe.h"
-@@ -238,7 +239,7 @@ static void release_drive(Object *obj, const char *name, void *opaque)
- }
  
- const PropertyInfo qdev_prop_drive = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Node name or ID of a block device to use as a backend",
-     .realized_set_allowed = true,
-     .get   = get_drive,
-@@ -247,7 +248,7 @@ const PropertyInfo qdev_prop_drive = {
- };
+ class QAPISchemaType(QAPISchemaDefinition, ABC):
++    def __init__(
++        self,
++        name: str,
++        info: Optional[QAPISourceInfo],
++        doc: Optional[QAPIDoc],
++        ifcond: Optional[QAPISchemaIfCond] = None,
++        features: Optional[List[QAPISchemaFeature]] = None,
++    ):
++        super().__init__(name, info, doc, ifcond, features)
++        self._masked_name: Optional[str] = None
++
+     # Return the C type for common use.
+     # For the types we commonly box, this is a pointer type.
+     @abstractmethod
+@@ -363,6 +381,17 @@ def need_has_if_optional(self) -> bool:
+         # Except for arrays; see QAPISchemaArrayType.need_has_if_optional().
+         return not self.c_type().endswith(POINTER_SUFFIX)
  
- const PropertyInfo qdev_prop_drive_iothread = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Node name or ID of a block device to use as a backend",
-     .realized_set_allowed = true,
-     .get   = get_drive,
-@@ -315,7 +316,7 @@ static void release_chr(Object *obj, const char *name, void *opaque)
- }
++    def set_ordinal(self, ordinal: int) -> None:
++        assert not self._masked_name
++        self._masked_name = str(ordinal)
++
++    def introspection_name(self, unmask: bool) -> str:
++        # Type names are not part of the external interface.  Hide
++        # them in introspection.  Also saves a few characters on the
++        # wire.
++        assert self._masked_name
++        return self.name if unmask else self._masked_name
++
+     def check(self, schema: QAPISchema) -> None:
+         super().check(schema)
+         for feat in self.features:
+@@ -402,6 +431,11 @@ def json_type(self) -> str:
+     def doc_type(self) -> str:
+         return self.json_type()
  
- const PropertyInfo qdev_prop_chr = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "ID of a chardev to use as a backend",
-     .get   = get_chr,
-     .set   = set_chr,
-@@ -389,7 +390,7 @@ inval:
- }
++    def introspection_name(self, unmask: bool):
++        if self.json_type() == 'int':
++            return 'int'
++        return self.name
++
+     def visit(self, visitor: QAPISchemaVisitor) -> None:
+         super().visit(visitor)
+         visitor.visit_builtin_type(self.name, self.info, self.json_type())
+@@ -503,6 +537,9 @@ def doc_type(self) -> Optional[str]:
+             return None
+         return 'array of ' + elt_doc_type
  
- const PropertyInfo qdev_prop_macaddr = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Ethernet 6-byte MAC Address, example: 52:54:00:12:34:56",
-     .get   = get_mac,
-     .set   = set_mac,
-@@ -477,7 +478,7 @@ out:
- }
++    def introspection_name(self, unmask: bool):
++        return '[' + self.element_type.introspection_name(unmask) + ']'
++
+     def visit(self, visitor: QAPISchemaVisitor) -> None:
+         super().visit(visitor)
+         visitor.visit_array_type(self.name, self.info, self.ifcond,
+@@ -1182,6 +1219,7 @@ def _def_definition(self, defn: QAPISchemaDefinition) -> None:
+                     "'%s' is already defined\n%s" % (defn.name, where))
+             raise QAPISemError(
+                 defn.info, "%s is already defined" % other_defn.describe())
++        defn.set_ordinal(len(self._entity_dict))
+         self._entity_dict[defn.name] = defn
  
- const PropertyInfo qdev_prop_netdev = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "ID of a netdev to use as a backend",
-     .get   = get_netdev,
-     .set   = set_netdev,
-@@ -514,7 +515,7 @@ static void set_audiodev(Object *obj, Visitor *v, const char* name,
- }
+     def lookup_defn(self, name: str) -> Optional[QAPISchemaDefinition]:
+@@ -1208,6 +1246,11 @@ def resolve_type(
+                 info, "%s uses unknown type '%s'" % (what, name))
+         return typ
  
- const PropertyInfo qdev_prop_audiodev = {
--    .type = "str",
-+    .qapi_type = &str_type_info,
-     .description = "ID of an audiodev to use as a backend",
-     /* release done on shutdown */
-     .get = get_audiodev,
-@@ -584,7 +585,8 @@ static void qdev_propinfo_set_losttickpolicy(Object *obj, Visitor *v,
-     int *ptr = object_field_prop_ptr(obj, prop);
-     int value;
- 
--    if (!visit_type_enum(v, name, &value, prop->info->enum_table, errp)) {
-+    if (!visit_type_enum(v, name, &value,
-+                         qdev_propinfo_enum_lookup(prop->info), errp)) {
-         return;
-     }
- 
-@@ -604,9 +606,8 @@ static void qdev_propinfo_set_losttickpolicy(Object *obj, Visitor *v,
- QEMU_BUILD_BUG_ON(sizeof(LostTickPolicy) != sizeof(int));
- 
- const PropertyInfo qdev_prop_losttickpolicy = {
--    .type  = "LostTickPolicy",
-+    .qapi_type = &LostTickPolicy_type_info,
-     .description = "Policy for handling lost ticks (discard/delay/slew)",
--    .enum_table  = &LostTickPolicy_lookup,
-     .get   = qdev_propinfo_get_enum,
-     .set   = qdev_propinfo_set_losttickpolicy,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -631,7 +632,7 @@ static void set_blocksize(Object *obj, Visitor *v, const char *name,
- }
- 
- const PropertyInfo qdev_prop_blocksize = {
--    .type  = "size",
-+    .qapi_type = &size_type_info,
-     .description = "A power of two between " MIN_BLOCK_SIZE_STR
-                    " and " MAX_BLOCK_SIZE_STR,
-     .get   = qdev_propinfo_get_size32,
-@@ -644,9 +645,8 @@ const PropertyInfo qdev_prop_blocksize = {
- QEMU_BUILD_BUG_ON(sizeof(BlockdevOnError) != sizeof(int));
- 
- const PropertyInfo qdev_prop_blockdev_on_error = {
--    .type = "BlockdevOnError",
-+    .qapi_type = &BlockdevOnError_type_info,
-     .description = "Error handling policy (report/ignore/enospc/stop/auto)",
--    .enum_table = &BlockdevOnError_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -657,10 +657,9 @@ const PropertyInfo qdev_prop_blockdev_on_error = {
- QEMU_BUILD_BUG_ON(sizeof(BiosAtaTranslation) != sizeof(int));
- 
- const PropertyInfo qdev_prop_bios_chs_trans = {
--    .type = "BiosAtaTranslation",
-+    .qapi_type = &BiosAtaTranslation_type_info,
-     .description = "Logical CHS translation algorithm "
-                    " (auto/none/lba/large/rechs)",
--    .enum_table = &BiosAtaTranslation_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -669,9 +668,8 @@ const PropertyInfo qdev_prop_bios_chs_trans = {
- /* --- FDC default drive types */
- 
- const PropertyInfo qdev_prop_fdc_drive_type = {
--    .type = "FloppyDriveType",
-+    .qapi_type = &FloppyDriveType_type_info,
-     .description = "Floppy drive type (144/288/120/none/auto)",
--    .enum_table = &FloppyDriveType_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -680,10 +678,9 @@ const PropertyInfo qdev_prop_fdc_drive_type = {
- /* --- MultiFDCompression --- */
- 
- const PropertyInfo qdev_prop_multifd_compression = {
--    .type = "MultiFDCompression",
-+    .qapi_type = &MultiFDCompression_type_info,
-     .description = "multifd compression method"
-                    " (none/zlib/zstd/qpl/uadk/qatzip)",
--    .enum_table = &MultiFDCompression_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -694,9 +691,8 @@ const PropertyInfo qdev_prop_multifd_compression = {
- QEMU_BUILD_BUG_ON(sizeof(MigMode) != sizeof(int));
- 
- const PropertyInfo qdev_prop_mig_mode = {
--    .type = "MigMode",
-+    .qapi_type = &MigMode_type_info,
-     .description = "Migration mode (normal/cpr-reboot)",
--    .enum_table = &MigMode_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -707,18 +703,16 @@ const PropertyInfo qdev_prop_mig_mode = {
- QEMU_BUILD_BUG_ON(sizeof(GranuleMode) != sizeof(int));
- 
- const PropertyInfo qdev_prop_granule_mode = {
--    .type = "GranuleMode",
-+    .qapi_type = &GranuleMode_type_info,
-     .description = "Granule page size (4k/8k/16k/64k/host)",
--    .enum_table = &GranuleMode_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
- };
- 
- const PropertyInfo qdev_prop_zero_page_detection = {
--    .type = "ZeroPageDetection",
-+    .qapi_type = &ZeroPageDetection_type_info,
-     .description = "Zero page detection (none/legacy/multifd)",
--    .enum_table = &ZeroPageDetection_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -729,9 +723,8 @@ const PropertyInfo qdev_prop_zero_page_detection = {
- QEMU_BUILD_BUG_ON(sizeof(SsidSizeMode) != sizeof(int));
- 
- const PropertyInfo qdev_prop_ssidsize_mode = {
--    .type = "SsidSizeMode",
-+    .qapi_type = &SsidSizeMode_type_info,
-     .description = "ssidsize mode: auto, 0-20",
--    .enum_table = &SsidSizeMode_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -742,9 +735,8 @@ const PropertyInfo qdev_prop_ssidsize_mode = {
- QEMU_BUILD_BUG_ON(sizeof(OasMode) != sizeof(int));
- 
- const PropertyInfo qdev_prop_oas_mode = {
--    .type = "OasMode",
-+    .qapi_type = &OasMode_type_info,
-     .description = "oas mode: auto, 32, 36, 40, 42, 44, 48, 52, 56",
--    .enum_table = &OasMode_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -824,7 +816,7 @@ out:
- }
- 
- const PropertyInfo qdev_prop_reserved_region = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Reserved Region, example: 0xFEE00000:0xFEEFFFFF:0",
-     .get   = get_reserved_region,
-     .set   = set_reserved_region,
-@@ -904,8 +896,7 @@ static char *print_pci_devfn(Object *obj, const Property *prop)
- }
- 
- const PropertyInfo qdev_prop_pci_devfn = {
--    /* The formatted string accepted by the setter is a CLI convenience. */
--    .type  = "int32",
-+    .qapi_type = &int32_type_info,
-     .description = "Slot and optional function number, example: 06.0 or 06",
-     .print = print_pci_devfn,
-     .get   = qdev_propinfo_get_int32,
-@@ -1011,7 +1002,7 @@ inval:
- }
- 
- const PropertyInfo qdev_prop_pci_host_devaddr = {
--    .type = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Address (bus:device.function) of "
-                    "the host device, example: 04:10.0",
-     .get = get_pci_host_devaddr,
-@@ -1021,9 +1012,8 @@ const PropertyInfo qdev_prop_pci_host_devaddr = {
- /* --- OffAutoPCIBAR off/auto/bar0/bar1/bar2/bar3/bar4/bar5 --- */
- 
- const PropertyInfo qdev_prop_off_auto_pcibar = {
--    .type = "OffAutoPCIBAR",
-+    .qapi_type = &OffAutoPCIBAR_type_info,
-     .description = "off/auto/bar0/bar1/bar2/bar3/bar4/bar5",
--    .enum_table = &OffAutoPCIBAR_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -1062,7 +1052,8 @@ static void get_prop_pcielinkspeed(Object *obj, Visitor *v, const char *name,
-         abort();
-     }
- 
--    visit_type_enum(v, name, &speed, prop->info->enum_table, errp);
-+    visit_type_enum(v, name, &speed,
-+                    qdev_propinfo_enum_lookup(prop->info), errp);
- }
- 
- static void set_prop_pcielinkspeed(Object *obj, Visitor *v, const char *name,
-@@ -1072,8 +1063,8 @@ static void set_prop_pcielinkspeed(Object *obj, Visitor *v, const char *name,
-     PCIExpLinkSpeed *p = object_field_prop_ptr(obj, prop);
-     int speed;
- 
--    if (!visit_type_enum(v, name, &speed, prop->info->enum_table,
--                         errp)) {
-+    if (!visit_type_enum(v, name, &speed,
-+        qdev_propinfo_enum_lookup(prop->info), errp)) {
-         return;
-     }
- 
-@@ -1103,9 +1094,8 @@ static void set_prop_pcielinkspeed(Object *obj, Visitor *v, const char *name,
- }
- 
- const PropertyInfo qdev_prop_pcie_link_speed = {
--    .type = "PCIELinkSpeed",
-+    .qapi_type = &PCIELinkSpeed_type_info,
-     .description = "2_5/5/8/16/32/64",
--    .enum_table = &PCIELinkSpeed_lookup,
-     .get = get_prop_pcielinkspeed,
-     .set = set_prop_pcielinkspeed,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -1147,7 +1137,8 @@ static void get_prop_pcielinkwidth(Object *obj, Visitor *v, const char *name,
-         abort();
-     }
- 
--    visit_type_enum(v, name, &width, prop->info->enum_table, errp);
-+    visit_type_enum(v, name, &width,
-+                    qdev_propinfo_enum_lookup(prop->info), errp);
- }
- 
- static void set_prop_pcielinkwidth(Object *obj, Visitor *v, const char *name,
-@@ -1157,8 +1148,8 @@ static void set_prop_pcielinkwidth(Object *obj, Visitor *v, const char *name,
-     PCIExpLinkWidth *p = object_field_prop_ptr(obj, prop);
-     int width;
- 
--    if (!visit_type_enum(v, name, &width, prop->info->enum_table,
--                         errp)) {
-+    if (!visit_type_enum(v, name, &width,
-+                         qdev_propinfo_enum_lookup(prop->info), errp)) {
-         return;
-     }
- 
-@@ -1191,9 +1182,8 @@ static void set_prop_pcielinkwidth(Object *obj, Visitor *v, const char *name,
- }
- 
- const PropertyInfo qdev_prop_pcie_link_width = {
--    .type = "PCIELinkWidth",
-+    .qapi_type = &PCIELinkWidth_type_info,
-     .description = "1/2/4/8/12/16/32",
--    .enum_table = &PCIELinkWidth_lookup,
-     .get = get_prop_pcielinkwidth,
-     .set = set_prop_pcielinkwidth,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -1241,7 +1231,7 @@ static void set_default_uuid_auto(ObjectProperty *op, const Property *prop)
- }
- 
- const PropertyInfo qdev_prop_uuid = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "UUID (aka GUID) or \"" UUID_VALUE_AUTO
-         "\" for random value (default)",
-     .get   = get_uuid,
-@@ -1254,9 +1244,8 @@ const PropertyInfo qdev_prop_uuid = {
- QEMU_BUILD_BUG_ON(sizeof(S390CpuEntitlement) != sizeof(int));
- 
- const PropertyInfo qdev_prop_cpus390entitlement = {
--    .type  = "S390CpuEntitlement",
-+    .qapi_type = &S390CpuEntitlement_type_info,
-     .description = "auto/low/medium/high (default medium)",
--    .enum_table  = &S390CpuEntitlement_lookup,
-     .get   = qdev_propinfo_get_enum,
-     .set   = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -1299,7 +1288,7 @@ static void release_iothread_vq_mapping_list(Object *obj,
- }
- 
- const PropertyInfo qdev_prop_iothread_vq_mapping_list = {
--    .type = "IOThreadVirtQueueMappingList",
-+    .qapi_type = &IOThreadVirtQueueMappingList_type_info,
-     .description = "IOThread virtqueue mapping list [{\"iothread\":\"<id>\", "
-                    "\"vqs\":[1,2,3,...]},...]",
-     .get = get_iothread_vq_mapping_list,
-@@ -1310,18 +1299,16 @@ const PropertyInfo qdev_prop_iothread_vq_mapping_list = {
- /* --- Endian modes */
- 
- const PropertyInfo qdev_prop_endian_mode = {
--    .type = "EndianMode",
-+    .qapi_type = &EndianMode_type_info,
-     .description = "Endian mode, big/little/unspecified",
--    .enum_table = &EndianMode_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
- };
- 
- const PropertyInfo qdev_prop_vmapple_virtio_blk_variant = {
--    .type  = "VMAppleVirtioBlkVariant",
-+    .qapi_type = &VMAppleVirtioBlkVariant_type_info,
-     .description = "unspecified/root/aux",
--    .enum_table  = &VMAppleVirtioBlkVariant_lookup,
-     .get   = qdev_propinfo_get_enum,
-     .set   = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-@@ -1364,7 +1351,7 @@ static void release_virtio_gpu_output_list(Object *obj,
- }
- 
- const PropertyInfo qdev_prop_virtio_gpu_output_list = {
--    .type = "VirtIOGPUOutputList",
-+    .qapi_type = &VirtIOGPUOutputList_type_info,
-     .description = "VirtIO GPU output list [{\"name\":\"<name>\"},...]",
-     .get = get_virtio_gpu_output_list,
-     .set = set_virtio_gpu_output_list,
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index abdb380cb9ec..a9abc646d5d7 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -101,7 +101,7 @@ static ObjectPropertyAccessor *field_prop_setter(const PropertyInfo *info)
-     return info->set ? field_prop_set : NULL;
- }
- 
--static const QEnumLookup *qdev_propinfo_enum_lookup(const PropertyInfo *info)
-+const QEnumLookup *qdev_propinfo_enum_lookup(const PropertyInfo *info)
- {
-     if (info->qapi_type) {
-         assert(info->qapi_type->lookup);
++    def definition_introspection_name(self, name: str, unmask: bool) -> str:
++        defn = self.lookup_defn(name)
++        assert defn
++        return defn.introspection_name(unmask)
++
+     def _module_name(self, fname: str) -> str:
+         if QAPISchemaModule.is_system_module(fname):
+             return fname
 
 -- 
 2.56.0.116.g6de20f6092dc

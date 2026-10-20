@@ -1,165 +1,122 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26DAF606A31C
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 55655606A31D
 	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:04:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=JFJRBBMx
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=MhdW5VBk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7UZ-0006OC-1O; Tue, 20 Oct 2026 06:54:51 -0400
+	id 1xJ7Uf-000719-Di; Tue, 20 Oct 2026 06:54:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7RV-0000vN-9F
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7RT-0006c1-6w
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493498;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VTmJNa8VT5lexLUKxdzeLthZimg97eONPVFzq6wZuao=;
- b=JFJRBBMxrgIwyH3/8nZ3rKXUe9OKUByBAOT6CUTwH1MAKUAVluJxgAqcml/JLl6gX7QexW
- J1KFC+8UyRhD0fyxdm8Q4xU5s/a5ivMBkCbvg73IUy+bHAEYNQ+A119k98NcPpKGIBxefc
- C2ryI3h/4CPYwvOyISDFDWrsHs25+UU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-15-JRWtrvsmMnafOZ4pe9-J1A-1; Tue,
- 20 Oct 2026 06:51:33 -0400
-X-MC-Unique: JRWtrvsmMnafOZ4pe9-J1A-1
-X-Mimecast-MFC-AGG-ID: JRWtrvsmMnafOZ4pe9-J1A_1792493487
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B4C2E1800BDD; Tue, 20 Oct 2026 10:51:27 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CA95D1800677; Tue, 20 Oct 2026 10:51:24 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:15 +0400
-Subject: [PATCH v7 58/65] qdev: convert PropertyInfo definitions to use
- qapi_type
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJ7Rt-0001A9-Id
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:05 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJ7Rp-0006fe-IN
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:05 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-48b042c0759so2014283f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 03:51:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792493515; x=1793098315; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=Ko6yZh9M1s2VW5tIdG2OCTSHQVjujibVM95DZEJ7phw=;
+ b=MhdW5VBk8JK1lv2xTomhmWZhsPiHismVa7v5GiTIPMguVKMSPwssovYYGWygTESLDV
+ fnfZwkMaxL33cF9wdoiGWAcNLT2R1VPIK2V4nyGwWnM/iDOnrSNZ1Fi1JLxUZTswRxq+
+ guqYugaYSZ2YNdZZ+efhdI/rBgUfSZEYbdNDyxxKD0A1k08+7o+9OMHonvYfilUL0A/5
+ 1DjFbsdHscFiwy+io2/gw6Bzz7UC+QRUpEJO40OhqX3gVF4KKrCKijHo4U4zGI/WxDnC
+ ao3wAQTH5Il4NvXQIhefK4hah7F2BcIxCSExU4wF+D0lRgSJsOLanoGEA52KVCkiONBx
+ tahQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792493515; x=1793098315;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=Ko6yZh9M1s2VW5tIdG2OCTSHQVjujibVM95DZEJ7phw=;
+ b=c+BXFaidcq/2LO+16y7aZbYIoKZCRSi8ecxKm4ckfikufGd/Mhy9gdp2oVuL5fYz3X
+ /lAT3iV/i/itQZiXsAmyx+tTKV3PqvwZJYI/DrW6nY+OYOPwz0QtNJ0bFZuFjbsOtQRs
+ pxvZfzl7f0KoYkNp9pxEUCtQPbM0FHM5BrNRJ03ytJEQ+rXLwLl1q13lQXDh7zNv60o3
+ VpYh+Yr2Ls75iLEKE4tw85r23/nJs2iQpmPcmY0U8odnhC0CcOOalwKBxOLtQ2QhhaCc
+ d9eo6hcduyvxF5WZsj9mx8JxwAYjs8rCZA456FmM8nWWcKi++UTgaM3D5VQVVrIdskj9
+ FvSQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBygSgALw9EvfGLAgk5UJNyFKHm2iihKnYLM7qy5ojPJ2AXCmWf0ze8e6W3Wltudr9awPxbqW/0I+Q==@nongnu.org
+X-Gm-Message-State: AFq9FYJuXyF31fHDi8Z+XaQtHEAISTt+OK8QSGqqVes8khZe6iyy9JNT
+ Mhn0qC4J0XQWOqakov4cJfNZO+rLpzbynjDoPkqYIgiBtCmZY9o8aM8og86iyrycKQE=
+X-Gm-Gg: AYBFou0jQSGe7w8qJLypTDzWnlwz4PDeXL6pkVwI+ptX7wxSMJro56vdS9MUoV9xdpD
+ WGzqcbG7pen7A5gZsOr2RzNe7vB4dMgL6Ql0i9EkjpBqEDYE5hv0ysTGSiEskNkt/5ilkEUvQnz
+ CFfd76OfLeBfR1PaLobqnLrrm2SqNYVbI/tUNVSONHPGD89/Q2a9ZnQQpgVdcRDqkIdWiwGZOSj
+ sCSeGIx2Y5UIlyuLVebme8umMN+13bTRAVnShdqE8vJ2cT+4fhbubZJveVULt56WBByYNYXkvLI
+ feFYCgWeN7tszo95gBpKC04beOUZ7J5dSM4cZuGwchCL9dKZR9THCi9uBCkkrUx4yTXPWaB6mZo
+ j06kJJlqwW3+fkBKBcebSNFT2u5l9HK7vhST9HwCZRv7xrJ34mSnVWacJe4gxoX0Ii+Xurp64S7
+ uND7hjVIEsJ4ApUagnaoSHk/mOnXCjJQR+CY9zfrWGOH1QoJ49k6OoyteYNUYN2j3xgqN6MA==
+X-Received: by 2002:a05:6000:29d2:b0:48b:f93:3b87 with SMTP id
+ ffacd0b85a97d-48e07fc7a04mr13714326f8f.30.1792493514603; 
+ Tue, 20 Oct 2026 03:51:54 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e1d80f9cdsm5176970f8f.11.2026.10.20.03.51.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Oct 2026 03:51:53 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 95B4C5FA43;
+ Tue, 20 Oct 2026 11:43:24 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Bibo Mao <maobibo@loongson.cn>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+ Song Gao <17746591750@163.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ David Hildenbrand <david@kernel.org>, Bernhard Beschow <shentey@gmail.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Paul Durrant <paul@xen.org>,
+ =?UTF-8?q?Bj=C3=B6rn=20Walk?= <bwalk@linux.ibm.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-s390x@nongnu.org,
+ David Woodhouse <dwmw2@infradead.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-ppc@nongnu.org,
+ Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org,
+ qemu-arm@nongnu.org, linux-edac@vger.kernel.org,
+ Glenn Miles <milesg@linux.ibm.com>, Chao Liu <chao.liu@processmission.com>,
+ Cornelia Huck <cohuck@redhat.com>, Gautam Menghani <gautam@linux.ibm.com>,
+ Xianglai Li <lixianglai@loongson.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Chinmay Rath <rathc@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Amit Machhiwal <amachhiw@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Weiwei Li <liwei1518@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 22/23] accel/kvm: cache KVMCPUOps
+Date: Tue, 20 Oct 2026 11:43:16 +0100
+Message-ID: <20261020104320.3686723-23-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20261020104320.3686723-1-alex.bennee@linaro.org>
+References: <20261020104320.3686723-1-alex.bennee@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-58-431a86b02b58@redhat.com>
-References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
-In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, 
- Michael Roth <michael.roth@amd.com>, John Snow <jsnow@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, Eric Blake <eblake@redhat.com>, 
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Jason Wang <jasowangio@gmail.com>, Marcelo Tosatti <mtosatti@redhat.com>, 
- kvm@vger.kernel.org, Alberto Garcia <berto@igalia.com>, 
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Zhao Liu <zhao1.liu@intel.com>, Jonathan Cameron <jic23@kernel.org>, 
- Junjie Cao <junjie.cao@intel.com>, Anisa Su <anisa.su@samsung.com>, 
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, 
- Jagannathan Raman <jag.raman@oracle.com>, 
- John Levon <john.levon@nutanix.com>, 
- Thanos Makatos <thanos.makatos@nutanix.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-block@nongnu.org, 
- linux-cxl@vger.kernel.org, qemu-s390x@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>, Sergio Lopez <slp@redhat.com>, 
- qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Chao Liu <chao.liu@processmission.com>, qemu-riscv@nongnu.org, 
- Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>, 
- Xianglai Li <lixianglai@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Pedro Barbuda <pbarbuda@microsoft.com>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Amit Machhiwal <amachhiw@linux.ibm.com>, qemu-ppc@nongnu.org, 
- Zhang Chen <zhangckid@gmail.com>, Li Zhijian <lizhijian@fujitsu.com>, 
- Alistair Francis <alistair@alistair23.me>, Alexander Graf <graf@amazon.com>, 
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
- zhenwei pi <zhenwei.pi@linux.dev>, Ani Sinha <anisinha@redhat.com>, 
- Luc Michel <luc@lmichel.fr>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Samuel Tardieu <sam@rfc1149.net>, "Denis V. Lunev" <den@openvz.org>, 
- FangSheng Huang <FangSheng.Huang@amd.com>, Tyrone Ting <kfting@nuvoton.com>, 
- Hao Wu <wuhaotsh@google.com>, Keith Busch <kbusch@kernel.org>, 
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
- Aditya Gupta <adityag@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>, 
- Conor Dooley <conor@kernel.org>, 
- Sebastian Huber <sebastian.huber@embedded-brains.de>, 
- Halil Pasic <pasic@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Jason Herne <jjherne@linux.ibm.com>, Titus Rwantare <titusr@google.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony PERARD <anthony@xenproject.org>, Peter Xu <peterx@redhat.com>, 
- Chinmay Rath <rathc@linux.ibm.com>, 
- Hendrik Brueckner <brueckner@linux.ibm.com>, xen-devel@lists.xenproject.org, 
- Roman Bolshakov <rbolshakov@ddn.com>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, Fam Zheng <fam@euphon.net>, 
- Farhan Ali <alifm@linux.ibm.com>, Alex Williamson <alex@shazbot.org>, 
- Tao Tang <tangtao1634@phytium.com.cn>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, 
- Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
- Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3664;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=LIT19w6YWiCW19RYxdZdXGqpA2yVHBE+/WdhPO2w+KQ=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZcuI+2h8ZVKhhoVFi3OkRbLhN7DQhHpw2e8
- ZI+IW/5ZPeJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
- 5d+rD/94HsUuS+bA630XGAf6+mNBdx3g5ggb5XrVvKXw9Au65Kows5jbGNX5ExMKeDtXzXsYPQZ
- 7bawMDy/OvYIm6c0sRa+DQhSHoKTRGyrflTzi3akNDBX1iTFKTE4ApPz982Yb2V1+zjv7S6JoKL
- s9x+m0L+aJhxXlji2Ne4h/2GqI65xptxwVMDeF5hdFhM1b/GVOLPZQYUgjk16EE7HtDzi9XcRpU
- qLzkGt0xA8pztXbBxv9kfTMNJvnlKFhUM2FhczGoJMlwLYyrRx/K4ZHzoaT6XiuPZUK7YMxmpkr
- 6kU46qGrWbK2PfH+q/Y8JKYadL6yh8v3kSS3na9fd5DaDkQX0p+Bnx8iLycn9BNcAfY/w7UNwsU
- 1syWcvdD3Zjx91KEjMZBf6XQOUp3zeontuSGuATb4jhC/tPGcmnOMzCZilju6MMinaNxT3lY42y
- HXItgz39UYWffKdBjfxJX3O1XuqYxbblcTGZmheVuso724KYPKlpfJKMUI+l8dYZwzkB21LBjpD
- CypHEsnuhmR2vRevpDVirDYKTs59vv51cttaKCBf0mOGodSLdbRKt66uM3ORmazmTeb/HPU+/oD
- vW8fnePj8pQJmxXFS18zBsuuz75rzcslLcOf/SWSu8i8o5lSfTxYhOhED+/Lizl23J6M6lVvKko
- +KUM9I7WMK1AoZw==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 9YwP9NVTk0vGbGnruIL3w_KYMGM8Vzn8UhygS6e2k98_1792493487
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -172,118 +129,97 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Convert the remaining PropertyInfo definitions outside hw/
+Doing a QOM cast each time we need KVMCPUOps is overkill, especially
+considering it is a single static assignment when we configure the
+accelerator. Cache the value on kvm_init_vcpu and use it.
 
-After this patch, all PropertyInfo definitions have .qapi_type set,
-except qdev_prop_link (uses .create) and qdev_prop_array (refactored
-in the next patches).
+We also assert that anytime the system asks for KVMCPUOps it should be
+at a point we can honour the request.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- backends/spdm-socket.c  | 4 ++--
- backends/tpm/tpm_util.c | 3 ++-
- migration/options.c     | 4 +++-
- target/sparc/cpu.c      | 3 ++-
- 4 files changed, 9 insertions(+), 5 deletions(-)
+ include/accel/kvm/cpu-ops.h | 13 +++++++++----
+ include/hw/core/cpu.h       |  3 +++
+ accel/kvm/kvm-all.c         |  4 ++++
+ 3 files changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/backends/spdm-socket.c b/backends/spdm-socket.c
-index 826efc276dcd..4a4307975965 100644
---- a/backends/spdm-socket.c
-+++ b/backends/spdm-socket.c
-@@ -17,6 +17,7 @@
- #include "hw/core/qdev-properties.h"
- #include "hw/core/qdev-properties-system.h"
- #include "hw/core/qdev-prop-internal.h"
-+#include "qapi/qapi-type-infos-sockets.h"
- 
- static bool read_bytes(const int socket, uint8_t *buffer,
-                        size_t number_of_bytes)
-@@ -253,9 +254,8 @@ void spdm_socket_close(const int socket, SpdmTransportType transport_type)
- }
- 
- const PropertyInfo qdev_prop_spdm_trans = {
--    .type = "SpdmTransportType",
-+    .qapi_type = &SpdmTransportType_type_info,
-     .description = "Spdm Transport, doe/nvme/mctp/scsi/unspecified",
--    .enum_table = &SpdmTransportType_lookup,
-     .get = qdev_propinfo_get_enum,
-     .set = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-diff --git a/backends/tpm/tpm_util.c b/backends/tpm/tpm_util.c
-index 7019f7fd3eb9..dc6d4b211567 100644
---- a/backends/tpm/tpm_util.c
-+++ b/backends/tpm/tpm_util.c
-@@ -30,6 +30,7 @@
- #include "system/tpm_backend.h"
- #include "system/tpm_util.h"
- #include "trace.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- /* tpm backend property */
- 
-@@ -77,7 +78,7 @@ static void release_tpm(Object *obj, const char *name, void *opaque)
- }
- 
- const PropertyInfo qdev_prop_tpm = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "ID of a tpm to use as a backend",
-     .get   = get_tpm,
-     .set   = set_tpm,
-diff --git a/migration/options.c b/migration/options.c
-index 46d040fc3f25..029282a1605c 100644
---- a/migration/options.c
-+++ b/migration/options.c
-@@ -37,6 +37,8 @@
- #include "ram.h"
- #include "options.h"
- #include "system/kvm.h"
-+#include "qapi/qapi-builtin-type-infos.h"
-+#include "qapi/qapi-type-infos-common.h"
- 
- /* Maximum migrate downtime set to 2000 seconds */
- #define MAX_MIGRATE_DOWNTIME_SECONDS 2000
-@@ -294,7 +296,7 @@ static void set_default_value_tls_opt(ObjectProperty *op, const Property *prop)
-  * TYPE_MIGRATION's TLS options.
+diff --git a/include/accel/kvm/cpu-ops.h b/include/accel/kvm/cpu-ops.h
+index d43bc845ad5..075bac1d494 100644
+--- a/include/accel/kvm/cpu-ops.h
++++ b/include/accel/kvm/cpu-ops.h
+@@ -156,11 +156,16 @@ DECLARE_CLASS_CHECKERS(KVMAccelCPUClass, KVM_ACCEL_CPU, TYPE_KVM_ACCEL_CPU)
   */
- const PropertyInfo qdev_prop_StrOrNull = {
--    .type  = "StrOrNull",
-+    .qapi_type = &StrOrNull_type_info,
-     .get = get_StrOrNull,
-     .set = set_StrOrNull,
-     .release = release_StrOrNull,
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index ae9bdca9df82..d0354a4d02af 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -30,6 +30,7 @@
- #include "tcg/tcg.h"
- #include "fpu/softfloat.h"
- #include "target/sparc/translate.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- //#define DEBUG_FEATURES
- 
-@@ -948,7 +949,7 @@ static void sparc_set_nwindows(Object *obj, Visitor *v, const char *name,
+ static inline const KVMCPUOps *kvm_get_cpu_ops(const CPUState *cpu)
+ {
+-    if (cpu->cc->accel_cpu) {
+-        KVMAccelCPUClass *kacc = KVM_ACCEL_CPU_CLASS(cpu->cc->accel_cpu);
+-        return kacc->cpu_ops;
++    if (cpu) {
++        if (cpu->kvm_cpu_ops) {
++            return cpu->kvm_cpu_ops;
++        }
++        if (cpu->cc->accel_cpu) {
++            KVMAccelCPUClass *kacc = KVM_ACCEL_CPU_CLASS(cpu->cc->accel_cpu);
++            return kacc->cpu_ops;
++        }
+     }
+-    return NULL;
++    g_assert_not_reached();
  }
  
- static const PropertyInfo qdev_prop_nwindows = {
--    .type  = "int",
-+    .qapi_type = &int_type_info,
-     .description = "Number of register windows",
-     .get   = sparc_get_nwindows,
-     .set   = sparc_set_nwindows,
-
+ #endif /* ACCEL_KVM_CPU_OPS_H */
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 456154df6f6..1e164036286 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -473,6 +473,8 @@ struct qemu_work_item;
+  *    ring is enabled.
+  * @kvm_fetch_index: Keeps the index that we last fetched from the per-vCPU
+  *    dirty ring structure.
++ * @kvm_cpu_ops: Cached pointer to the KVMCPUOps table to avoid QOM lookups
++ *    in the run loop.
+  *
+  * @neg_align: The CPUState is the common part of a concrete ArchCPU
+  * which is allocated when an individual CPU instance is created. As
+@@ -554,6 +556,7 @@ struct CPUState {
+     uint32_t kvm_fetch_index;
+     uint64_t dirty_pages;
+     int kvm_vcpu_stats_fd;
++    const struct KVMCPUOps *kvm_cpu_ops;
+ 
+     /* Use by accel-block: CPU is executing an ioctl() */
+     QemuLockCnt in_ioctl_lock;
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 5189cdc6a01..041113ed9b5 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -746,6 +746,9 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+     KVMState *s = kvm_state;
+     int ret;
+ 
++    assert(ops);
++    cpu->kvm_cpu_ops = ops;
++
+     trace_kvm_init_vcpu(cpu->cpu_index, kvm_vcpu_id(cpu));
+ 
+     if (ops->pre_create_vcpu) {
+@@ -4111,6 +4114,7 @@ int kvm_on_sigbus(int code, void *addr)
+      * we can only get action optional here.
+      */
+     assert(code != BUS_MCEERR_AR);
++    assert(first_cpu);
+     ops = kvm_get_cpu_ops(first_cpu);
+     if (ops && ops->on_sigbus_vcpu) {
+         ops->on_sigbus_vcpu(first_cpu, code, addr);
 -- 
-2.56.0.116.g6de20f6092dc
+2.47.3
 
 

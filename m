@@ -1,59 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B09BA606A320
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:08:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E102606A327
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:08:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=LG/UuTfs
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=GmNb41pq
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Te-0003fm-5w; Tue, 20 Oct 2026 06:53:54 -0400
+	id 1xJ7Ty-00049A-NB; Tue, 20 Oct 2026 06:54:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Qd-00086I-77
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:50:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xJ7Rp-00016f-Os
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Qa-0006NY-Jc
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:50:46 -0400
+ id 1xJ7Rm-0006fk-JX
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493443;
+ s=mimecast20190719; t=1792493515;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qwky9rRTw8oAHcuQCucWGoFZKa5DrHxcGAirH7r71y0=;
- b=LG/UuTfs37a3TrLzT1bkClSZbFPhrwoqD5tgTBWy1P2gKcB7SvYD7EBp9WQb9UMwd3ZxJr
- TQ/GI/mqS7CwsmyfkQCUmN4S7FE9GBJGrHUAkZthZdn5wqYHLMUpfsB47DX9hoFF7042s8
- XV4MG2686TCLpyIT5OFdiIXNjGYf0TI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=th1JKpfzAzi8+0DyZvMgIumhc4CFEiTeW47qkGiYHs4=;
+ b=GmNb41pqDArRA/EH04kpFVfJN39Rx8cAvajruYDLDd4PkWoHqaBsSz74TfqOK8Xmtw1E27
+ 6swqT8jaLmjv/XPK0chaOlvmxcmLubeBJx84Jm7OulFBFPrOJnUpn31pt7R7dJvcGotyN6
+ vZPJ3lJju5b6WbaLl121FGZLIOtfryY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-Nf-L8n-POp-Ce5Q3K4PxmQ-1; Tue,
- 20 Oct 2026 10:50:39 +0000
-X-MC-Unique: Nf-L8n-POp-Ce5Q3K4PxmQ-1
-X-Mimecast-MFC-AGG-ID: Nf-L8n-POp-Ce5Q3K4PxmQ_1792493435
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-228-MDo8sez-NcyGAOl5_G0YjQ-1; Tue,
+ 20 Oct 2026 10:51:52 +0000
+X-MC-Unique: MDo8sez-NcyGAOl5_G0YjQ-1
+X-Mimecast-MFC-AGG-ID: MDo8sez-NcyGAOl5_G0YjQ_1792493508
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BCEDD1800846; Tue, 20 Oct 2026 10:50:35 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E077E1955DD1; Tue, 20 Oct 2026 10:51:47 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7AC121800643; Tue, 20 Oct 2026 10:50:32 +0000 (UTC)
+ id 9E9F31800677; Tue, 20 Oct 2026 10:51:44 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:05 +0400
-Subject: [PATCH v7 48/65] hw/gpio/pca955x: use QAPI enums for led and pin
- properties
+Date: Tue, 20 Oct 2026 14:46:19 +0400
+Subject: [PATCH v7 62/65] hw/i386: convert PCSouthBridgeOption to QAPI enum
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-48-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-62-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -128,38 +127,39 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=15047;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6526;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=N091Shg2JHcPog3qa/YLAcE9hWHktbmtx29N6CIdf6Y=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZbJcXMYrMMXfr6szUmvgOQEfgL142iqUKd5
- YT6P0Nj+9+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWwAKCRDa6OEJdZac
- 5Y1YEAC7Jjf0CNAuzPG1AoI6lNR1KKO2PD4cPsq5GQornKbm+OrFX6OdHOWVRiNy9yshRki5VHt
- y1UIfWtv5lVJuPfzIgFkDFdGGFqhZ5SX0+7I6l66rkSAPfQ9MYYZRi289uk6B2/arJH7Z5EFSKu
- iGlcGVQc9S4x3c/Kg1PtMxGhPvrXr76hSgtXid7nFld1/V2cAMfUm0M6Vr6yAb7Lul5Rp3r/caN
- cCC0tt6RzA9y+QM8LZnrQwFHhW7YHTh58dM4yXW5D3r/njyP8n3g0XYR1Jim0YTWx3z3PJWUMuE
- GxUCHw92BCWEbbwDilX7tms1L3KPst0YiZ7RL79JHKJb9xCAa6jVwQsv584lT0mhe1F1Ogonqkn
- NDkBOXyzBbvt79Pyn0stvJKsMla/XLny8sSa8o3wQZRTjd10guCFqF+CAbeX5XwrWLig/kslQgi
- jmNCSeNgdwl+kFZJQ3Glx9hD55WBtmbMVgakjAAfk2GP44aEKIPJ0c9xGjUtf4jdsQHElwlk3dc
- 2IUG2VKR7vs+3NqwHkSYoCEk4c5P7Y42OJuYcXbXlU5s45IJDDbzPXqMdfHHkLd94cf/XE2iFHx
- E+2DhjzzNnw3c3Sr3XpRdw/jiWTPqEjBMSGCfy/ObEFvsn6BTov7EsqvWS6VL9qe04p2/+GTroa
- X35jn64JCYgndcQ==
+ bh=jr+R1XEAXGqEfl6dzBqQchDTHMoMaEnbkkCJTWPjK7M=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZdHAMFgnhAvWl4qCaozSGC8ZoljjEYi6VBP
+ 70IoZTx452JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXQAKCRDa6OEJdZac
+ 5bQgEACXrVy4PI0RHLf3EYbpFdgeh/G/qw9Szqqn90QJFXbDyFtQmp3c6wFtAFWSP3ffrhRIGOr
+ RcUHeYkCVoyizAcDDgjI8OyPrmHVEnG3PwXeWRtGK0kH1my0bbmCJx/osVW8rApSvdzvYpi9s0Y
+ 6bnxKKjw0JzliwdtFqTmFt0nn1S7YQOKfUDqhPgAWAHg8bwDPi1N1201GaF9lvKcJLYtaT4uNPx
+ duB+KEvf23TePBMMCkwNlGjW5qm6S0gf5Ryxjb7UDLk0DAMDD6sOLYbUwrlEcS2bJu7T+7pz3Pk
+ KIUx9WJmwNr8hA510xbEUM7U+qI4jtLtBszuvBioYQI3kVmqBqcaNtqPICXlIwOy+0b4xnL1Gkk
+ eA26OvbARkhRxfm9CnY4bEgdMJQoeQnDOu1qzkbjiH5164V7Vey/w6iyXw5kqW/vm1Sq08RW2k9
+ ICd329fnCbR+neChTSaunOu2wlSsKfBfb8AHGJDPC9l+G08VUaWeDhOHfuAgrke7NLVPatk+RPO
+ Idq2+9q621/0Y/k95lzrzNRBGYp6P2uo1GlxLYcHglKAYZo/Cej2Jt8gBe7Gw+Qz351rWqwXcvm
+ 8YX+kB6Z2Q3knEFy4SolR3NudeuK7WGfrFsryom7DUjqSDf2dGK5/LD4kxH5aflGMGZmB0moZnG
+ LnhWzV1mrbEwmtw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: tOnvb9zF96YMZZT5jNmF5odm7KaMR-EjXwF655Tt-N4_1792493435
+X-Mimecast-MFC-PROC-ID: RHtT4Zz0cOkgiLqTo_iZPDwuZ0sK4iZk3Phj-HC6hCI_1792493508
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,416 +178,188 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace hand-rolled string lookup tables with QAPI enums
-Pca9552LedState and Pca955{2,4}PinState for the led%d and pin%d QOM
-properties. This fixes the incorrect property type ("bool" for LEDs,
-"str" for pins) and lets QAPI handle string-to-enum conversion in the
-visitor, removing the manual string matching in the setters.
+Move PCSouthBridgeOption from a hand-rolled C enum to a proper QAPI
+enum in qapi/machine.json.
 
-Add QEMU_BUILD_BUG_ON guards to ensure the QAPI-generated enum values
-stay in sync with the hardware register encoding.
+This gives the x-south-bridge property a generated type_info with a
+valid masked_name, so it appears in query-qmp-schema introspection and
+the qapi-type field of qom-list-properties output.
 
-I kept Pca9552PinState & @Pca9554PinState separate types, because I
-don't know if they could diverge. We could eventually merge those.
+The south_bridge/default_south_bridge fields change from const char *
+to PCSouthBridgeOption, with an explicit mapping table from enum value
+to QOM device type name.
+
+Enum values are changed: "PIIX3"->"ppix3", "piix4-isa"->"piix4", this
+is under a x-property, so shouldn't be a breaking change.
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/gpio/pca9552.c | 82 +++++++++++++++++++++----------------------------------
- hw/gpio/pca9554.c | 39 ++++++++++----------------
- qapi/machine.json | 46 +++++++++++++++++++++++++++++++
- 3 files changed, 92 insertions(+), 75 deletions(-)
+ hw/i386/pc_piix.c    | 61 ++++++++++++++++------------------------------------
+ include/hw/i386/pc.h |  4 ++--
+ qapi/machine.json    | 14 ++++++++++++
+ 3 files changed, 34 insertions(+), 45 deletions(-)
 
-diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-index 719149b7174b..16741c22dea3 100644
---- a/hw/gpio/pca9552.c
-+++ b/hw/gpio/pca9552.c
-@@ -23,7 +23,8 @@
- #include "hw/core/irq.h"
- #include "migration/vmstate.h"
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 63c4667ea372..5a94a34166d8 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -47,6 +47,7 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/vfio/types.h"
  #include "qapi/error.h"
--#include "qapi/visitor.h"
-+#include "qapi/qapi-types-machine.h"
-+#include "qapi/qapi-visit-machine.h"
- #include "trace.h"
- #include "qom/object.h"
++#include "qapi/qapi-type-infos-machine.h"
+ #include "qemu/error-report.h"
+ #include "system/xen.h"
+ #ifdef CONFIG_XEN
+@@ -75,6 +76,11 @@ static GlobalProperty pc_piix_compat_defaults[] = {
+ static const size_t pc_piix_compat_defaults_len =
+     G_N_ELEMENTS(pc_piix_compat_defaults);
  
-@@ -59,16 +60,15 @@ struct PCA955xClass {
++static const char *pc_south_bridge_type[] = {
++    [PC_SOUTH_BRIDGE_OPTION_PIIX3] = TYPE_PIIX3_DEVICE,
++    [PC_SOUTH_BRIDGE_OPTION_PIIX4] = TYPE_PIIX4_PCI_DEVICE,
++};
++
  /*
-  * Note:  The LED_ON and LED_OFF configuration values for the PCA955X
-  *        chips are the reverse of the PCA953X family of chips.
-+ *
-+ * The QAPI enums must match the hardware register values.
-  */
--#define PCA9552_LED_ON   0x0
--#define PCA9552_LED_OFF  0x1
--#define PCA9552_LED_PWM0 0x2
--#define PCA9552_LED_PWM1 0x3
--#define PCA9552_PIN_LOW  0x0
--#define PCA9552_PIN_HIZ  0x1
--
--static const char *led_state[] = {"on", "off", "pwm0", "pwm1"};
--static const char *pin_state[] = {"low", "high"};
-+QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_ON != 0x0);
-+QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_OFF != 0x1);
-+QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_PWM0 != 0x2);
-+QEMU_BUILD_BUG_ON(PCA9552_LED_STATE_PWM1 != 0x3);
-+QEMU_BUILD_BUG_ON(PCA9552_PIN_STATE_LOW != 0x0);
-+QEMU_BUILD_BUG_ON(PCA9552_PIN_STATE_HIGH != 0x1);
+  * Return the global irq number corresponding to a given device irq
+  * pin. We could also use the bus number to have a more precise mapping.
+@@ -236,7 +242,8 @@ static void pc_init1(MachineState *machine, const char *pci_type)
  
- static uint8_t pca955x_pin_get_config(PCA955xState *s, int pin)
- {
-@@ -142,24 +142,24 @@ static void pca955x_update_pin_input(PCA955xState *s)
-             uint8_t config = pca955x_pin_get_config(s, i);
+     gsi_state = pc_gsi_create(&x86ms->gsi, true);
  
-             switch (config) {
--            case PCA9552_LED_ON:
-+            case PCA9552_LED_STATE_ON:
-                 /* Pin is set to 0V to turn on LED */
-                 s->regs[input_reg] &= ~bit_mask;
-                 break;
--            case PCA9552_LED_OFF:
-+            case PCA9552_LED_STATE_OFF:
-                 /*
-                  * Pin is set to Hi-Z to turn off LED and
-                  * pullup sets it to a logical 1 unless
-                  * external device drives it low.
-                  */
--                if (s->ext_state[i] == PCA9552_PIN_LOW) {
-+                if (s->ext_state[i] == PCA9552_PIN_STATE_LOW) {
-                     s->regs[input_reg] &= ~bit_mask;
-                 } else {
-                     s->regs[input_reg] |=  bit_mask;
-                 }
-                 break;
--            case PCA9552_LED_PWM0:
--            case PCA9552_LED_PWM1:
-+            case PCA9552_LED_STATE_PWM0:
-+            case PCA9552_LED_STATE_PWM1:
-                 /* TODO */
-             default:
-                 break;
-@@ -176,7 +176,7 @@ static void pca955x_update_pin_input(PCA955xState *s)
-              */
-             if (s->regs[config_reg] & bit_mask) {
-                 /* Input mode - reflect external state */
--                if (s->ext_state[i] == PCA9552_PIN_LOW) {
-+                if (s->ext_state[i] == PCA9552_PIN_STATE_LOW) {
-                     s->regs[input_reg] &= ~bit_mask;
-                 } else {
-                     s->regs[input_reg] |= bit_mask;
-@@ -360,7 +360,7 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
-     int led, rc, reg;
--    uint8_t state;
-+    Pca9552LedState state;
- 
-     rc = sscanf(name, "led%2d", &led);
-     if (rc != 1) {
-@@ -378,7 +378,7 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
-      */
-     reg = PCA9552_LS0 + led / 4;
-     state = (pca955x_read(s, reg) >> ((led % 4) * 2)) & 0x3;
--    visit_type_str(v, name, (char **)&led_state[state], errp);
-+    visit_type_Pca9552LedState(v, name, &state, errp);
+-    pci_dev = pci_new_multifunction(-1, pcms->south_bridge);
++    pci_dev = pci_new_multifunction(-1,
++                                    pc_south_bridge_type[pcms->south_bridge]);
+     object_property_set_bool(OBJECT(pci_dev), "has-usb",
+                              machine_usb(machine), &error_abort);
+     object_property_set_bool(OBJECT(pci_dev), "has-acpi",
+@@ -317,51 +324,18 @@ static void pc_init1(MachineState *machine, const char *pci_type)
+     }
  }
  
- /*
-@@ -397,10 +397,9 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
-     int led, rc, reg, val;
--    uint8_t state;
--    g_autofree char *state_str = NULL;
-+    Pca9552LedState state;
+-typedef enum PCSouthBridgeOption {
+-    PC_SOUTH_BRIDGE_OPTION_PIIX3,
+-    PC_SOUTH_BRIDGE_OPTION_PIIX4,
+-    PC_SOUTH_BRIDGE_OPTION_MAX,
+-} PCSouthBridgeOption;
+-
+-static const QEnumLookup PCSouthBridgeOption_lookup = {
+-    .array = (const char *const[]) {
+-        [PC_SOUTH_BRIDGE_OPTION_PIIX3] = TYPE_PIIX3_DEVICE,
+-        [PC_SOUTH_BRIDGE_OPTION_PIIX4] = TYPE_PIIX4_PCI_DEVICE,
+-    },
+-    .size = PC_SOUTH_BRIDGE_OPTION_MAX
+-};
+-
+ static int pc_get_south_bridge(Object *obj, Error **errp)
+ {
+     PCMachineState *pcms = PC_MACHINE(obj);
+-    int i;
  
--    if (!visit_type_str(v, name, &state_str, errp)) {
-+    if (!visit_type_Pca9552LedState(v, name, &state, errp)) {
-         return;
-     }
-     rc = sscanf(name, "led%2d", &led);
-@@ -413,16 +412,6 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
-         return;
-     }
- 
--    for (state = 0; state < ARRAY_SIZE(led_state); state++) {
--        if (!strcmp(state_str, led_state[state])) {
--            break;
+-    for (i = 0; i < PCSouthBridgeOption_lookup.size; i++) {
+-        if (g_strcmp0(PCSouthBridgeOption_lookup.array[i],
+-                      pcms->south_bridge) == 0) {
+-            return i;
 -        }
 -    }
--    if (state >= ARRAY_SIZE(led_state)) {
--        error_setg(errp, "%s invalid led state %s", __func__, state_str);
+-
+-    error_setg(errp, "Invalid south bridge value set");
+-    return 0;
++    return pcms->south_bridge;
+ }
+ 
+ static void pc_set_south_bridge(Object *obj, int value, Error **errp)
+ {
+     PCMachineState *pcms = PC_MACHINE(obj);
+ 
+-    if (value < 0) {
+-        error_setg(errp, "Value can't be negative");
 -        return;
 -    }
 -
-     reg = PCA9552_LS0 + led / 4;
-     val = pca955x_read(s, reg);
-     val = pca955x_ledsel(val, led % 4, state);
-@@ -437,7 +426,8 @@ static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
-     int pin, rc;
--    uint8_t input_reg, state;
-+    uint8_t input_reg;
-+    Pca9552PinState state;
- 
-     rc = sscanf(name, "pin%2d", &pin);
-     if (rc != 1) {
-@@ -455,7 +445,7 @@ static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
-      */
-     input_reg = PCA9535_INPUT0 + (pin / 8);
-     state = (s->regs[input_reg] >> (pin % 8)) & 0x1;
--    visit_type_str(v, name, (char **)&pin_state[state], errp);
-+    visit_type_Pca9552PinState(v, name, &state, errp);
- }
- 
- static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
-@@ -464,10 +454,10 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
-     int pin, rc;
--    uint8_t state, config_reg;
--    g_autofree char *state_str = NULL;
-+    Pca9552PinState state;
-+    uint8_t config_reg;
- 
--    if (!visit_type_str(v, name, &state_str, errp)) {
-+    if (!visit_type_Pca9552PinState(v, name, &state, errp)) {
-         return;
-     }
-     rc = sscanf(name, "pin%2d", &pin);
-@@ -480,16 +470,6 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
-         return;
-     }
- 
--    for (state = 0; state < ARRAY_SIZE(pin_state); state++) {
--        if (!strcmp(state_str, pin_state[state])) {
--            break;
--        }
--    }
--    if (state >= ARRAY_SIZE(pin_state)) {
--        error_setg(errp, "%s invalid pin state %s", __func__, state_str);
+-    if (value >= PCSouthBridgeOption_lookup.size) {
+-        error_setg(errp, "Value too big");
 -        return;
 -    }
 -
-     /* Only input-configured pins can be driven by an external device. */
-     config_reg = PCA9535_CONFIG0 + (pin / 8);
-     if (!((s->regs[config_reg] >> (pin % 8)) & 0x1)) {
-@@ -499,7 +479,7 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
-         return;
-     }
- 
--    pca955x_set_ext_state(s, pin, state != PCA9552_PIN_LOW);
-+    pca955x_set_ext_state(s, pin, state != PCA9552_PIN_STATE_LOW);
+-    pcms->south_bridge = PCSouthBridgeOption_lookup.array[value];
++    pcms->south_bridge = value;
  }
  
- static const VMStateDescription pca9552_vmstate = {
-@@ -529,7 +509,7 @@ static void pca9552_reset_hold(Object *obj, ResetType type)
-     s->regs[PCA9552_LS2] = 0x55;
-     s->regs[PCA9552_LS3] = 0x55;
- 
--    memset(s->ext_state, PCA9552_PIN_HIZ, PCA955X_PIN_COUNT_MAX);
-+    memset(s->ext_state, PCA9552_PIN_STATE_HIGH, PCA955X_PIN_COUNT_MAX);
-     pca955x_update_pin_input(s);
- 
-     s->pointer = 0xFF;
-@@ -549,7 +529,7 @@ static void pca9535_reset_hold(Object *obj, ResetType type)
-     s->regs[PCA9535_CONFIG0] = 0xFF;  /* All pins as inputs */
-     s->regs[PCA9535_CONFIG1] = 0xFF;  /* All pins as inputs */
- 
--    memset(s->ext_state, PCA9552_PIN_HIZ, PCA955X_PIN_COUNT_MAX);
-+    memset(s->ext_state, PCA9552_PIN_STATE_HIGH, PCA955X_PIN_COUNT_MAX);
-     pca955x_update_pin_input(s);
- 
-     s->pointer = 0xFF;
-@@ -567,12 +547,12 @@ static void pca955x_initfn(Object *obj)
-         if (k->has_led_support) {
-             /* LED variant: expose the LED selector state as led%d. */
-             name = g_strdup_printf("led%d", ix);
--            object_property_add(obj, name, "bool",
-+            object_property_add(obj, name, "Pca9552LedState",
-                                 pca955x_get_led, pca955x_set_led, NULL, NULL);
-         } else {
-             /* GPIO variant: expose the pin logic level as pin%d. */
-             name = g_strdup_printf("pin%d", ix);
--            object_property_add(obj, name, "str",
-+            object_property_add(obj, name, "Pca9552PinState",
-                                 pca955x_get_pin, pca955x_set_pin, NULL, NULL);
-         }
-         g_free(name);
-diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
-index 904698cdce85..e4eddc829ef7 100644
---- a/hw/gpio/pca9554.c
-+++ b/hw/gpio/pca9554.c
-@@ -16,6 +16,8 @@
- #include "hw/core/irq.h"
- #include "migration/vmstate.h"
- #include "qapi/error.h"
-+#include "qapi/qapi-types-machine.h"
-+#include "qapi/qapi-visit-machine.h"
- #include "qapi/visitor.h"
- #include "trace.h"
- #include "qom/object.h"
-@@ -32,10 +34,8 @@ typedef struct PCA9554Class PCA9554Class;
- DECLARE_CLASS_CHECKERS(PCA9554Class, PCA9554,
-                        TYPE_PCA9554)
- 
--#define PCA9554_PIN_LOW  0x0
--#define PCA9554_PIN_HIZ  0x1
--
--static const char *pin_state[] = {"low", "high"};
-+QEMU_BUILD_BUG_ON(PCA9554_PIN_STATE_LOW != 0x0);
-+QEMU_BUILD_BUG_ON(PCA9554_PIN_STATE_HIGH != 0x1);
- 
- static void pca9554_update_pin_input(PCA9554State *s)
+ #ifdef CONFIG_XEN
+@@ -398,7 +372,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
  {
-@@ -54,7 +54,7 @@ static void pca9554_update_pin_input(PCA9554State *s)
-              * Input: the pin is Hi-Z with a pull-up, so it reads high
-              * unless an external device drives it low.
-              */
--            if (s->ext_state[i] == PCA9554_PIN_LOW) {
-+            if (s->ext_state[i] == PCA9554_PIN_STATE_LOW) {
-                 s->regs[PCA9554_INPUT] &= ~bit_mask;
-             } else {
-                 s->regs[PCA9554_INPUT] |= bit_mask;
-@@ -156,7 +156,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
- {
-     PCA9554State *s = PCA9554(obj);
-     int pin, rc;
--    uint8_t state;
-+    Pca9554PinState state;
+     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+     ObjectClass *oc = OBJECT_CLASS(m);
+-    pcmc->default_south_bridge = TYPE_PIIX3_DEVICE;
++    pcmc->default_south_bridge = PC_SOUTH_BRIDGE_OPTION_PIIX3;
+     pcmc->pci_root_uid = 0;
+     pcmc->default_cpu_version = 1;
  
-     rc = sscanf(name, "pin%2d", &pin);
-     if (rc != 1) {
-@@ -175,7 +175,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
-      * holds the wire level regardless of the configured direction.
-      */
-     state = (s->regs[PCA9554_INPUT] >> pin) & 0x1;
--    visit_type_str(v, name, (char **)&pin_state[state], errp);
-+    visit_type_Pca9554PinState(v, name, &state, errp);
+@@ -413,12 +387,13 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_UEFI_VARS_X64);
+ 
+-    object_class_property_add_enum(oc, "x-south-bridge", "PCSouthBridgeOption",
+-                                   &PCSouthBridgeOption_lookup,
+-                                   pc_get_south_bridge,
+-                                   pc_set_south_bridge);
+-    object_class_property_set_description(oc, "x-south-bridge",
+-                                     "Use a different south bridge than PIIX3");
++    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
++        .name = "x-south-bridge",
++        .description = "Use a different south bridge than PIIX3",
++        .qapi_type = &PCSouthBridgeOption_type_info,
++        .get = pc_get_south_bridge,
++        .set = pc_set_south_bridge,
++    ));
+     compat_props_add(m->compat_props,
+                      pc_piix_compat_defaults, pc_piix_compat_defaults_len);
  }
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 8edec62a1af2..3afd376116b1 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -47,7 +47,7 @@ typedef struct PCMachineState {
+     uint64_t max_ram_below_4g;
+     OnOffAuto vmport;
+     SmbiosEntryPointType smbios_entry_point_type;
+-    const char *south_bridge;
++    PCSouthBridgeOption south_bridge;
  
- static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
-@@ -183,10 +183,10 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
- {
-     PCA9554State *s = PCA9554(obj);
-     int pin, rc, val;
--    uint8_t state, mask;
--    g_autofree char *state_str = NULL;
-+    uint8_t mask;
-+    Pca9554PinState state;
+     bool acpi_build_enabled;
+     bool wdat_enabled;
+@@ -94,7 +94,7 @@ struct PCMachineClass {
  
--    if (!visit_type_str(v, name, &state_str, errp)) {
-+    if (!visit_type_Pca9554PinState(v, name, &state, errp)) {
-         return;
-     }
-     rc = sscanf(name, "pin%2d", &pin);
-@@ -199,16 +199,6 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
-         return;
-     }
+     /* Device configuration: */
+     bool pci_enabled;
+-    const char *default_south_bridge;
++    PCSouthBridgeOption default_south_bridge;
  
--    for (state = 0; state < ARRAY_SIZE(pin_state); state++) {
--        if (!strcmp(state_str, pin_state[state])) {
--            break;
--        }
--    }
--    if (state >= ARRAY_SIZE(pin_state)) {
--        error_setg(errp, "%s invalid pin state %s", __func__, state_str);
--        return;
--    }
--
-     if (s->hw_dir) {
-         /* Warn and ignore if the guest has configured this pin as output */
-         if (!((s->regs[PCA9554_CONFIG] >> pin) & 0x1)) {
-@@ -219,13 +209,13 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
-             return;
-         }
-         /* Drive the external input level */
--        pca9554_set_ext_state(s, pin, state != PCA9554_PIN_LOW);
-+        pca9554_set_ext_state(s, pin, state != PCA9554_PIN_STATE_LOW);
-     } else {
-         /* Legacy behavior: force output mode and drive */
-         /* First, modify the output register bit */
-         val = pca9554_read(s, PCA9554_OUTPUT);
-         mask = 0x1 << pin;
--        if (state == PCA9554_PIN_LOW) {
-+        if (state == PCA9554_PIN_STATE_LOW) {
-             val &= ~(mask);
-         } else {
-             val |= mask;
-@@ -264,7 +254,7 @@ static void pca9554_reset(DeviceState *dev)
-     s->regs[PCA9554_POLARITY] = 0x0; /* No pins are inverted */
-     s->regs[PCA9554_CONFIG] = pin_mask; /* All pins are inputs */
+     /* Compat options: */
  
--    memset(s->ext_state, PCA9554_PIN_HIZ, pc->pin_count);
-+    memset(s->ext_state, PCA9554_PIN_STATE_HIGH, pc->pin_count);
-     pca9554_update_pin_input(s);
- 
-     s->pointer = 0x0;
-@@ -280,7 +270,8 @@ static void pca9554_initfn(Object *obj)
-         char *name;
- 
-         name = g_strdup_printf("pin%d", pin);
--        object_property_add(obj, name, "str", pca9554_get_pin, pca9554_set_pin,
-+        object_property_add(obj, name, "Pca9554PinState",
-+                            pca9554_get_pin, pca9554_set_pin,
-                             NULL, NULL);
-         g_free(name);
-     }
 diff --git a/qapi/machine.json b/qapi/machine.json
-index 34be3156270c..46b6935ab0b8 100644
+index 46b6935ab0b8..cc028e890ae5 100644
 --- a/qapi/machine.json
 +++ b/qapi/machine.json
-@@ -416,6 +416,52 @@
- { 'enum': 'LostTickPolicy',
-   'data': ['discard', 'delay', 'slew' ] }
+@@ -462,6 +462,20 @@
+ { 'enum': 'Pca9554PinState',
+   'data': ['low', 'high'] }
  
 +##
-+# @Pca9552LedState:
++# @PCSouthBridgeOption:
 +#
-+# LED state for PCA9552.
++# South bridge chipset option for PC i440FX machines.
 +#
-+# @on: LED on
++# @piix3: Intel PIIX3 (default)
 +#
-+# @off: LED off
-+#
-+# @pwm0: LED controlled by PWM0
-+#
-+# @pwm1: LED controlled by PWM1
++# @piix4: Intel PIIX4
 +#
 +# Since: 11.2
 +##
-+{ 'enum': 'Pca9552LedState',
-+  'data': ['on', 'off', 'pwm0', 'pwm1'] }
-+
-+##
-+# @Pca9552PinState:
-+#
-+# Pin state for PCA9552.
-+#
-+# @low: Pin low
-+#
-+# @high: Pin high
-+#
-+# Since: 11.2
-+##
-+{ 'enum': 'Pca9552PinState',
-+  'data': ['low', 'high'] }
-+
-+##
-+# @Pca9554PinState:
-+#
-+# Pin state for PCA9554.
-+#
-+# @low: Pin low
-+#
-+# @high: Pin high
-+#
-+# Since: 11.2
-+##
-+{ 'enum': 'Pca9554PinState',
-+  'data': ['low', 'high'] }
++{ 'enum': 'PCSouthBridgeOption',
++  'data': ['piix3', 'piix4'] }
 +
  ##
  # @inject-nmi:

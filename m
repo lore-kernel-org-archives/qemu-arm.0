@@ -1,59 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9A85C606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:14:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B6DBD606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:14:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=XheSlepi
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=JaiHpW5p
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Qv-00006a-Pd; Tue, 20 Oct 2026 06:51:05 -0400
+	id 1xJ7Uj-0007Hr-3w; Tue, 20 Oct 2026 06:55:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7PZ-0004j3-Nz
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:41 -0400
+ id 1xJ7S2-0001RD-Ez
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7PW-0005oH-JU
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:40 -0400
+ id 1xJ7S0-0006m2-MQ
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493377;
+ s=mimecast20190719; t=1792493532;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0IAJt0UD2BHY2aeJtNI3vxcEoKPgyvku96KOQdFfo40=;
- b=XheSlepiYjPkn54MxEPdmfieiKmPuuCRZGsrjvsxWUqOS4+k3u9VGuwRYDQfzdM4qiHhEB
- xg4hWPTGtW5dbfwKWzYE/59WQptKpITrD5Ft+bDE5A94PLVJP5vPkTokpaVYKw3VeVmtFr
- HxJk+7zLqkF2un4FYycSKl/ZqoNPeDo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Cht00yUtxWZgYYGvkiDrdQx2K2tPqKneM6BMi8EBSe8=;
+ b=JaiHpW5pNptVTLB7kq5Loz5RYWsz0iErLrcBMQyuIH2NKRp/XtwXC0Fo8kcAcKMTa/GByy
+ PXiWvaEOgXNT6N/xpromKLPXwbMAYgPHHoMCaJ9WvKZifDD4qmpMYHnULwOqwM7crvzIpE
+ FkkBzsY6OxL878kJyet2CGiWhQwacI0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-692-f6pkGtb9O-GKxmFhJLnr0g-1; Tue,
- 20 Oct 2026 10:49:33 +0000
-X-MC-Unique: f6pkGtb9O-GKxmFhJLnr0g-1
-X-Mimecast-MFC-AGG-ID: f6pkGtb9O-GKxmFhJLnr0g_1792493369
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-460-7pgMjRlDPJm6ek2MrAPphA-1; Tue,
+ 20 Oct 2026 10:52:08 +0000
+X-MC-Unique: 7pgMjRlDPJm6ek2MrAPphA-1
+X-Mimecast-MFC-AGG-ID: 7pgMjRlDPJm6ek2MrAPphA_1792493524
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 96BF018011E7; Tue, 20 Oct 2026 10:49:29 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0A12B1954ACE; Tue, 20 Oct 2026 10:52:04 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 07CCA418; Tue, 20 Oct 2026 10:49:24 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 81B4630000E7; Tue, 20 Oct 2026 10:52:01 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:45:53 +0400
-Subject: [PATCH v7 36/65] net/colo-compare: fix max_queue_size setter
- visitor type
+Date: Tue, 20 Oct 2026 14:46:22 +0400
+Subject: [PATCH v7 65/65] tests/qmp-cmd-test: assert qapi-type resolves in
+ query-qmp-schema
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-36-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-65-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -128,38 +128,39 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1019;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3522;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=2Ht6gW7AXC+9m2hyIj3XjReAS0cmbqbO/nhhR3s10ik=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZaBju/eY1bBbqeZbyaaIna3yDT1YO5S2ZfK
- Dk+TjopPr+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWgAKCRDa6OEJdZac
- 5dQZD/9+OPsZ+9wdTvZlJAHJ8LdZ+1IrTm8SRc4WfgMoVaUgmxvUmArgHB8hI32zhhT+Ba88j5h
- KVa4ATUp8pq0eFWpUQQliSGEcG8IcvbDzwCdXHlbCyx1nenDacuX0x1Xzy6lOPsZkDaLW4sd1av
- aslU4lzEjPo+woZOS+f31o8bS96Uj4DK9zSO/2jZS60JmsZVWU2RuRFsQ4ynCztQC5WVe561WiF
- Neo8iP9N1N6jRWQ/W9lDjOjhSLPfoogGEELTAUdypajGDPuGgyGOUNHGrXgAoT6RZ9LSPkaXi9M
- YVb+sG/RbGXWjlrdd/CFkcXWKmRvs4HZYOoCxI3XLPjngyKh4mXKogIvBPZkZyD1Mc01f37OWJJ
- Z601T1TKyOwOevdMSa3zjfTSInCHXtBGcfygNJ1EHaIfbfspA5GBA6TYOD34MkYVQ7Xo0EMeDYd
- ZIRp02UPolMQALQO0ANg3mVOP62D3BNsyhxHxlfjumfHsGoGYZ6mHjkjkO/PzHDEye+BfFcPcE1
- op8EVu1uAVHHecAerzTbPZ2xi8hfaVgovOLMJe0DIozxp7l06V9c+bbZegHgr1qr0kr+5Z1dy+b
- cGCIdsvGHbP8dorXb8/DNE5clHvwjDTMX8mVMgxx/XbT5GQClDJRTRj2mTFy/Cr8znwahtft6UL
- 2RCiOOUs4aDYIGg==
+ bh=d0AC/pqR2xkFHzouOcdpk0rfewmoRKNngAyjCDgTMl8=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZdBKSnHJPBpmcmbmASu7qOtoUGXTowk7yNX
+ g+tgxS9nNCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXQAKCRDa6OEJdZac
+ 5YaTD/9vG9jkAEkIZLFzUN64FilSwr9riDSC6dE2d/cUhX4cjMjxDVeEJE3fOoiBKvDHuHP6Fam
+ eLESfFQfsqJcKbQZcC7fZwpUyYgAah0Te7HBf1dTcZEFTRvKN74njWw41ZqG0c7tTwK2RvnjIsK
+ 8fHHImBlQjy3IQpEa+tkvQUC4iH8rw0sZLyrCG2YcdoTu7W+WXDLexUk2cOs0ruBPuwoKzJNY0h
+ kfSjtPXCqWAYW/CLE/XAxTIg0npoHuOEJsdHN2vFua1QGpata7fM9WvmMdkxxN/mTWXE368BfaR
+ SefydRBG8ysGItK2Wa42Jka1iFQCJauQfgYfzHLKFuwYgNDhmVGREedy/FHX4FKrmlFt+/DTCBT
+ WQqkUunveY9WHZTah8Oyc6HQu217yOg1Pu1mzdUOKA7L5efOGeeF2VXLU4xx8F0cI3x9n1w2m9S
+ ZjD8AIg2GEOQSHZTOHmvLShHGgZeqbIHmzkuVPwP9Uu0Xvd4oFkSUdsv018jZzRlsuC1WZ19WVs
+ HwVfX09lvPTKCeCW/MnPJHOy4Jz9YIZOrueZvIMglgwQcZOoG8zo20m3HJUDkc4M1fhIN0xN5GX
+ +pxjl6niKchvnstVDhaDerpY/9nebfmNnSTV8sMRAPUBnvklXn1847TNA0iuqTN+Qp24h+XOk0a
+ iSGRIgq7QkVJWcA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 7NqYbcIyHCdX_yHsGiRbYqa0ydfXg4Ei_3ur274pDMI_1792493369
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: zihvEqWoRt0bUmAWan9d1Q4ngAXpr4gBXinmA6_nsoc_1792493524
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,33 +179,108 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The setter was using visit_type_uint64, accepting values wider than
-the uint32_t field. Use visit_type_uint32 to match the getter, field,
-and typename.
+For every QOM type returned by qom-list-types, call qom-list-properties
+and verify that each property's qapi-type value (when present) maps to
+a valid entry in the query-qmp-schema introspection output.
 
-Fixes: 0c4266ef2690 ("net/colo-compare.c: Fix compare_timeout format issue")
+The test is gated behind g_test_slow() since it iterates all registered
+QOM types.
+
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- net/colo-compare.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/qtest/qmp-cmd-test.c | 55 +++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 54 insertions(+), 1 deletion(-)
 
-diff --git a/net/colo-compare.c b/net/colo-compare.c
-index 948a2f7f9e4b..a6910de869ff 100644
---- a/net/colo-compare.c
-+++ b/net/colo-compare.c
-@@ -1129,9 +1129,9 @@ static void set_max_queue_size(Object *obj, Visitor *v,
-                                const char *name, void *opaque,
-                                Error **errp)
- {
--    uint64_t value;
-+    uint32_t value;
+diff --git a/tests/qtest/qmp-cmd-test.c b/tests/qtest/qmp-cmd-test.c
+index 279a8f5614e9..acb7b0dd6a9f 100644
+--- a/tests/qtest/qmp-cmd-test.c
++++ b/tests/qtest/qmp-cmd-test.c
+@@ -15,6 +15,7 @@
+ #include "qapi/error.h"
+ #include "qapi/qapi-visit-introspect.h"
+ #include "qobject/qdict.h"
++#include "qobject/qlist.h"
+ #include "qapi/qobject-input-visitor.h"
  
--    if (!visit_type_uint64(v, name, &value, errp)) {
-+    if (!visit_type_uint32(v, name, &value, errp)) {
-         return;
-     }
-     if (!value) {
+ const char common_args[] = "-nodefaults -machine none";
+@@ -131,6 +132,8 @@ typedef struct {
+     GHashTable *hash;
+ } QmpSchema;
+ 
++static QmpSchema schema;
++
+ static void qmp_schema_init(QmpSchema *schema)
+ {
+     QDict *resp;
+@@ -343,9 +346,56 @@ static void test_object_add_failure_modes(void)
+     qtest_quit(qts);
+ }
+ 
++static void test_qapi_type(void)
++{
++    QTestState *qts;
++    g_autoptr(QDict) resp = NULL;
++    QList *types;
++    QListEntry *type_entry, *prop_entry;
++
++    qts = qtest_init(common_args);
++
++    resp = qtest_qmp(qts,
++                     "{ 'execute': 'qom-list-types',"
++                     "  'arguments': { 'abstract': true } }");
++    g_assert(qdict_haskey(resp, "return"));
++    types = qdict_get_qlist(resp, "return");
++
++    QLIST_FOREACH_ENTRY(types, type_entry) {
++        QDict *type = qobject_to(QDict, qlist_entry_obj(type_entry));
++        const char *name = qdict_get_str(type, "name");
++        g_autoptr(QDict) props_resp = NULL;
++        QList *props;
++
++        props_resp = qtest_qmp(qts,
++                               "{ 'execute': 'qom-list-properties',"
++                               "  'arguments': { 'typename': %s } }",
++                               name);
++        if (!qdict_haskey(props_resp, "return")) {
++            continue;
++        }
++        props = qdict_get_qlist(props_resp, "return");
++
++        QLIST_FOREACH_ENTRY(props, prop_entry) {
++            QDict *prop = qobject_to(QDict, qlist_entry_obj(prop_entry));
++            const char *qapi_type = qdict_get_try_str(prop, "qapi-type");
++            const char *propname = qdict_get_str(prop, "name");
++            const char *ty = qdict_get_str(prop, "type");
++
++            if (qapi_type) {
++                g_assert_nonnull(qmp_schema_lookup(&schema, qapi_type));
++            } else if (!g_str_has_prefix(ty, "child<") &&
++                       !g_str_has_prefix(ty, "link<")) {
++                g_test_message("%s.%s %s has no associated qapi-type",
++                               name, propname, ty);
++            }
++        }
++    }
++    qtest_quit(qts);
++}
++
+ int main(int argc, char *argv[])
+ {
+-    QmpSchema schema;
+     int ret;
+ 
+     g_test_init(&argc, &argv, NULL);
+@@ -355,6 +405,9 @@ int main(int argc, char *argv[])
+ 
+     qtest_add_func("qmp/object-add-failure-modes",
+                    test_object_add_failure_modes);
++    if (g_test_slow()) {
++        qtest_add_func("qmp/qapi-type", test_qapi_type);
++    }
+ 
+     ret = g_test_run();
+ 
 
 -- 
 2.56.0.116.g6de20f6092dc

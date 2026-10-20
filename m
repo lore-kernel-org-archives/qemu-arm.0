@@ -1,58 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9702C606A319
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:01:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D38EB606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:01:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=E2K2radM
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=AYdl3l8R
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Nu-0002G4-Os; Tue, 20 Oct 2026 06:47:58 -0400
+	id 1xJ7OU-0002yN-Nq; Tue, 20 Oct 2026 06:48:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7NB-00019U-Uh
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:19 -0400
+ id 1xJ7NO-0001Du-1f
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:30 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7N8-0005Ee-4l
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:12 -0400
+ id 1xJ7NK-0005GQ-K8
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:47:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493229;
+ s=mimecast20190719; t=1792493238;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=T4Uxxm/AUYAlgWDMQDpSo2oDR3RYBjxEx/nUKW/pClc=;
- b=E2K2radMdsPv/z5GuiUEacMLRQoFsy5QmnWbthuXZ0n750dz3TFMAedfzKGMnNSRjpPgAW
- AnKvUmnIUzisbHGnH3jWfxQVBxyuiWFhyeUJsgV2At+pcHWUXzQQWBywC/LAibKbd99pRv
- ZTTW1RtdOKuzzARm6TKQYLirxhpIuh8=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=a0eKD3sUSsLDHL5Rbyj5qW1a5Bhls7mo+yQHcVi0dNs=;
+ b=AYdl3l8RLD37G7jx/BwUj6+pKwO7zu/m1RXEAP+U2u4HHOJz/fXTaBEkfjsq66gRIT4Rj3
+ OYGocoXcEMgdhUQSm0aQ8Rj1ONRQLmA3FwPSiYQYDpa0BdXMuIh3iMLQLphPrJGnPjLCsc
+ P8yaF8rsl1kWdpl1aXt7aJj8kBmeQ3A=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-379-Q9FEb42bMfer0z7ZaConTg-1; Tue,
- 20 Oct 2026 10:46:57 +0000
-X-MC-Unique: Q9FEb42bMfer0z7ZaConTg-1
-X-Mimecast-MFC-AGG-ID: Q9FEb42bMfer0z7ZaConTg_1792493213
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-91-PGvBjJmAP4aH1aJU5oYqmw-1; Tue,
+ 20 Oct 2026 06:47:14 -0400
+X-MC-Unique: PGvBjJmAP4aH1aJU5oYqmw-1
+X-Mimecast-MFC-AGG-ID: PGvBjJmAP4aH1aJU5oYqmw_1792493230
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9809D1954B20; Tue, 20 Oct 2026 10:46:52 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5803E1800476; Tue, 20 Oct 2026 10:47:10 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2267C1800444; Tue, 20 Oct 2026 10:46:49 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B80D41956095; Tue, 20 Oct 2026 10:47:06 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:45:24 +0400
-Subject: [PATCH v7 07/65] qapi: add QAPITypeInfo struct definition
+Date: Tue, 20 Oct 2026 14:45:27 +0400
+Subject: [PATCH v7 10/65] meson: add qapi-type-infos-*.c/h to build
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-7-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-10-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -127,38 +127,38 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1828;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4026;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=ncAoduk+W++XsQQC6jhXGd6nHnXr1eyWDznZbZI1kq8=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZYgCKdk47hapDm+FojdwVHdZciBcCELJvB+
- Yw7agAaZi2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWAAKCRDa6OEJdZac
- 5T9oD/9GpeJFOttXk8RI55B118B4xUvL1oaf8Lo8kCm7RluwGbnLkgkEWk3zfL95zz4jtUJwnKQ
- LkI/5HSvCywgfyFPEHSeLsTL1fdJsoyRVHSZu5kn7dXrnfwQt03BqXsZoGPyzgJ4O6dtOX+WHQ/
- p6v8cw5FjgYcyrcGkoZL25m8291Qj+cifHCodAv8D8Pwc/O0TMY9tcXyBGixECq8bhC05GlyiFL
- 1HahUKZPfY5wzXAb1ZpI5IG4ebak9SIACrEGavNNow/2pr7YKP9Dv4SiziC+P1lhVrmELQbxRok
- HGAL/k9Se+GdzyvbmuU0S5/R4GZNAkxqR3Zt8oy+8jyDYnlw8M9s/RPqgkS98TF1jpcFKlp/7EA
- YNW4QBcSGFwWOBrSYO2580wx+fB01GWAv5Oxz3vyKBSQyKgmF04H7rB9l2vKNMWnxKRzNqjbmXt
- 8EvxF5m5VzSm7Pv1Y7jp9cZ/hGY7hDy84syz2Amn5jd7IFzuDgcyRV5G0EZQisXAao1ed7uWeCA
- rdKBAJUAVv0WyiAVn5qgDoZcqgLGp/vBung/13PF3FFVyJdvO3llipzkXBwaLeKpimriCvSA0ag
- eO9DfBCSkrhnJUIyeTawq6BHzOMEOc9xWB+Mubdj/bUzMsWXWGu7MXSGR9kP+1Nkw0P1SbqEYCO
- SE+11f2XzLE52rQ==
+ bh=eVJytPz3KQHyW0Eei+IlbvI0CrYX88Ak+jznKk8pYYM=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZYJt0ke19J4ltackOupI0pq7CK76MV5JKhu
+ L19h61q7CSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWAAKCRDa6OEJdZac
+ 5bh7D/9o800Zx8Ea1Xfpr7ACGgnyzV8jkcBlp8Hzb7ozpogEKFcTat3oDoryJJsQxlgzgJHhAf4
+ xQT98v3zkCaoHRIbB6dR0HYZBqyvICSDEA2z6dydBWQCfbIPdcVhiGF29ilFln4WSCVMEnObaFP
+ jSBeBazjRdH0T5xfyjCgJrBQSq2TnF577fRbor2DDFXhnjiRkuCteCnjdCRACcbp4bKOu/8aTqC
+ zvMFT7nTq00cMgLWk7O7y/3V/o+NEYmNBrudDZxN2ovKLglKgbEKGZt1CpNg1Us3yGbmp7C/ued
+ 6j8TVzxJBorlnnqcRONbN8vEXcK6fO6P9qZR7nTYal7lYdU6r9TCQoY4kvvQW+uDqXgQEAWmhOi
+ jZqDTnpIgJdgITBb5cP1iuDx4m8zCGYgw4FDJSEPYQuWHaFdqeNvNBw0pdC2xUr2TTibV+OLWUp
+ XXsHgCRssrvOLRavHKOKXE7Escb305j2bbdur64seJPONvFdSWLWSuLMcyK8cwxzTEA9j2xa2Hg
+ HoJL3z3i0vH4SqDy9prxpuF+J3j1IYnps0k+MK+mTLYI4e8iqke/uSs4PUmCOpQMq5J4Otq6DcH
+ MJqQiQREJhxMnpMKZBd9vBvDhmvts3IVzg3hJvzD52nk7JW3EAtQdIwCfqF4JndhviB2CIPR+OA
+ lCJIJFcJtrFbXpg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: JuXPml8AzEFNCjWuNMZ0UM5PMp-n0CSHS5lX7qFZoak_1792493213
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: KfOTH6jfio3xm3uQFDFdIAYBpMTIeNL5A4x808bR09w_1792493230
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -177,56 +177,111 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Introduce a minimal struct that pairs a QAPI type's internal name with
-its "masked" introspection name. Generated constants of this type will
-let QOM property registration carry a reliable reference to the QAPI
-schema and possibly other associated data.
+Add the per-module type-infos output files so they are compiled into
+the build.
 
-The fields are populated in following commits.
-
+Reviewed-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/qapi/qapi-type-info.h | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ qapi/meson.build              | 4 ++++
+ qga/meson.build               | 2 ++
+ tests/include/meson.build     | 2 ++
+ tests/meson.build             | 6 ++++++
+ tests/qapi-schema/meson.build | 1 +
+ 5 files changed, 15 insertions(+)
 
-diff --git a/include/qapi/qapi-type-info.h b/include/qapi/qapi-type-info.h
-new file mode 100644
-index 000000000000..6a6355568325
---- /dev/null
-+++ b/include/qapi/qapi-type-info.h
-@@ -0,0 +1,31 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef QAPI_TYPE_INFO_H
-+#define QAPI_TYPE_INFO_H
-+
-+#include "qapi/util.h"
-+
-+/**
-+ * QAPITypeInfo - QAPI type metadata
-+ *
-+ * @name: QAPI type name (e.g. "str", "OnOffAuto", "int32List").
-+ *        QOM uses this as the property type string.
-+ * @masked_name: Name of the type in the QAPI introspection schema, assigned by
-+ *        scripts/qapi code generator (e.g. "368").
-+ * @lookup: QEnumLookup for this type, or NULL for non-enum types.
-+ *        visit_type_enum(), qapi_enum_parse(), and qapi_enum_lookup()
-+ *        all rely on it.
-+ * @list: The list-type counterpart, or NULL if none exists.
-+ *        str_type_info.list points to strList_type_info.  qdev array
-+ *        properties follow this to find the list type for their element.
-+ */
-+typedef struct QAPITypeInfo {
-+    const char *name;
-+    const char *masked_name;
-+    const QEnumLookup *lookup;
-+    const struct QAPITypeInfo *list;
-+} QAPITypeInfo;
-+
-+#endif /* QAPI_TYPE_INFO_H */
+diff --git a/qapi/meson.build b/qapi/meson.build
+index a46269b5a0c9..7477953492ad 100644
+--- a/qapi/meson.build
++++ b/qapi/meson.build
+@@ -79,6 +79,7 @@ endif
+ 
+ qapi_nonmodule_outputs = [
+   'qapi-introspect.c', 'qapi-introspect.h',
++  'qapi-type-infos.c', 'qapi-type-infos.h',
+   'qapi-types.c', 'qapi-types.h',
+   'qapi-visit.h', 'qapi-visit.c',
+   'qapi-commands.h', 'qapi-commands.c',
+@@ -88,6 +89,7 @@ qapi_nonmodule_outputs = [
+ ]
+ 
+ qapi_outputs = qapi_nonmodule_outputs + [
++  'qapi-builtin-type-infos.c', 'qapi-builtin-type-infos.h',
+   'qapi-builtin-types.c', 'qapi-builtin-visit.c',
+   'qapi-builtin-types.h', 'qapi-builtin-visit.h',
+ ]
+@@ -96,6 +98,8 @@ qapi_inputs = []
+ foreach module : qapi_all_modules
+   qapi_inputs += [ files(module + '.json') ]
+   qapi_module_outputs = [
++    'qapi-type-infos-@0@.c'.format(module),
++    'qapi-type-infos-@0@.h'.format(module),
+     'qapi-types-@0@.c'.format(module),
+     'qapi-types-@0@.h'.format(module),
+     'qapi-visit-@0@.c'.format(module),
+diff --git a/qga/meson.build b/qga/meson.build
+index cfa2157efb23..79163b7d8e93 100644
+--- a/qga/meson.build
++++ b/qga/meson.build
+@@ -39,6 +39,8 @@ qga_qapi_outputs = [
+   'qga-qapi-init-commands.h',
+   'qga-qapi-introspect.c',
+   'qga-qapi-introspect.h',
++  'qga-qapi-type-infos.c',
++  'qga-qapi-type-infos.h',
+   'qga-qapi-types.c',
+   'qga-qapi-types.h',
+   'qga-qapi-visit.c',
+diff --git a/tests/include/meson.build b/tests/include/meson.build
+index 8e8d1ec4e692..026480d96851 100644
+--- a/tests/include/meson.build
++++ b/tests/include/meson.build
+@@ -4,6 +4,8 @@ test_qapi_outputs_extra = [
+   'test-qapi-commands-sub-module.h',
+   'test-qapi-events-sub-module.c',
+   'test-qapi-events-sub-module.h',
++  'test-qapi-type-infos-sub-module.c',
++  'test-qapi-type-infos-sub-module.h',
+   'test-qapi-types-sub-module.c',
+   'test-qapi-types-sub-module.h',
+   'test-qapi-visit-sub-module.c',
+diff --git a/tests/meson.build b/tests/meson.build
+index 5877d2f60b12..6769a1e7812f 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -2,6 +2,8 @@ subdir('bench')
+ subdir('qemu-iotests')
+ 
+ test_qapi_outputs = [
++  'qapi-builtin-type-infos.c',
++  'qapi-builtin-type-infos.h',
+   'qapi-builtin-types.c',
+   'qapi-builtin-types.h',
+   'qapi-builtin-visit.c',
+@@ -22,6 +24,10 @@ test_qapi_outputs = [
+   'test-qapi-init-commands.h',
+   'test-qapi-introspect.c',
+   'test-qapi-introspect.h',
++  'test-qapi-type-infos-sub-sub-module.c',
++  'test-qapi-type-infos-sub-sub-module.h',
++  'test-qapi-type-infos.c',
++  'test-qapi-type-infos.h',
+   'test-qapi-types-sub-sub-module.c',
+   'test-qapi-types-sub-sub-module.h',
+   'test-qapi-types.c',
+diff --git a/tests/qapi-schema/meson.build b/tests/qapi-schema/meson.build
+index debff633ac17..392b59d8dccd 100644
+--- a/tests/qapi-schema/meson.build
++++ b/tests/qapi-schema/meson.build
+@@ -231,6 +231,7 @@ custom_target('QAPI doc',
+                        'doc-good-qapi-events.c', 'doc-good-qapi-events.h',
+                        'doc-good-qapi-init-commands.c', 'doc-good-qapi-init-commands.h',
+                        'doc-good-qapi-introspect.c', 'doc-good-qapi-introspect.h',
++                       'doc-good-qapi-type-infos.c', 'doc-good-qapi-type-infos.h',
+                        'doc-good-qapi-types.c', 'doc-good-qapi-types.h',
+                        'doc-good-qapi-visit.c', 'doc-good-qapi-visit.h' ],
+               input: files('doc-good.json'),
 
 -- 
 2.56.0.116.g6de20f6092dc

@@ -1,58 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 152FD606A319
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:56:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2E92606A319
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 10:56:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=XsgYjdJA
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=iQ55ROrD
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7TM-0002xd-5g; Tue, 20 Oct 2026 06:53:36 -0400
+	id 1xJ7QY-0007ut-BV; Tue, 20 Oct 2026 06:50:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7R8-0000Lr-4Z
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:21 -0400
+ id 1xJ7PA-0003x0-Jt
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7R2-0006US-NQ
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:16 -0400
+ id 1xJ7P9-0005jJ-2O
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493472;
+ s=mimecast20190719; t=1792493354;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xYy3oSp+ff1fXLKzAr/ltjneF4aulTjsLHGvoluUofo=;
- b=XsgYjdJAHkLzwN+Yh944/CN3a6RnT8bL7e1lbNQNP2Q/7Ea6djLl4yt+QQs6RkHF0tAxEO
- O+psL+YagLOVmgD/e8sjWs6/t4j2sFivv7Yc+FswENvLoOTWue/7gqlFVitJl7ZEGCdWzQ
- Znse25YpEb/9WfXmBWNLfwptYAiAqJI=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=+msWSN975JraU+AQ2pjkwTOzy6rb7VP7Sy0YWpQFyaI=;
+ b=iQ55ROrD5A6M3ItoV9Msrx3M3cfo9TSAzqLAd8+VtcZXijeume6NK6nEGDI2t+FhZYt23D
+ ajvZsDgznl3R9S1QgrDWYsB6JAVZ5x3yWMeoGw50LKeTP2dY7OEOotKIiVCEQnWM45SgEP
+ vFJ7IIwfmKiVXHVzOsdIbiGLOr6ZSLA=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-317-_02t9xyMOm20feBYezgTrw-1; Tue,
- 20 Oct 2026 10:50:55 +0000
-X-MC-Unique: _02t9xyMOm20feBYezgTrw-1
-X-Mimecast-MFC-AGG-ID: _02t9xyMOm20feBYezgTrw_1792493452
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-189-NYqEQbiqO-eptIVh-iXBxg-1; Tue,
+ 20 Oct 2026 10:49:09 +0000
+X-MC-Unique: NYqEQbiqO-eptIVh-iXBxg-1
+X-Mimecast-MFC-AGG-ID: NYqEQbiqO-eptIVh-iXBxg_1792493346
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E195F1954AF3; Tue, 20 Oct 2026 10:50:51 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CC9791955DC2; Tue, 20 Oct 2026 10:49:05 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 668161956089; Tue, 20 Oct 2026 10:50:49 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id AB839418; Tue, 20 Oct 2026 10:49:02 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:08 +0400
-Subject: [PATCH v7 51/65] hw/pci: change the busnr type to uint8
+Date: Tue, 20 Oct 2026 14:45:49 +0400
+Subject: [PATCH v7 32/65] whpx: convert OnOffSplit property to QAPI-aware
+ registration
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-51-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-32-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -127,25 +128,25 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=676;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2405;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=XgvIxLl/BnhUDwV4Ml62CrnmhSOe02ljvgEL6HF9kIM=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZcsdAOAS0hjUnxh3WDcMl5LulHDaGVEH+/r
- GrDaZ1+NveJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
- 5WzUD/4gS8E5fmzaBRANZzmTHi4LMZi0Pnr4ISijVYni9psdGZecJgyELgBiKlkS5moIjcmgfO9
- LtzEDam7EKKaMjQcN5+qoT9kJDLjDpBykqFrZivQF2+tVHrtUmmPMpE3gd+qdxjg6bjuHJE9nm1
- y58JRaSIUeY5pv9QUPqHyIIC2MN6AtkJNS6T4D6zslZnqceh+5SUOmjDOh3IoP69Ya4dCoo4eLh
- /c5wEk48USsos1BczsynxRLqlv372oV7D6FHO+gwf7Umv7Wuuk3wMq7v55VvBk9ClGMFFFHl1Bl
- K3IymWi5lcpeebgGoY2rJ461Nf1K2sX+de1UruF0XycFGG7zJB0fY0/QCktkFe//ULP8eWVVPxr
- x4po1soNOkYf6gQEeqjLamK0g8ZJygWnnbTzMGQEwO1n2GefBmYe/bslKuhzlSlv0HKmfN1M7tb
- byc79SREJ+GyMzX/SS2qzWi9Gn2rDYqKAs9h/RWWJ+yB/ND5yn9/LQ7juXguQ9BRcahIQMeTOiD
- VEEzjLcJHQbx5RCwpKZQ95j9UiN4WpHPiULZe4dPYsvpFHaoocZ8FKiKm53uryDXr8nXEA4SAUg
- dfhpm5tVTAMYZqUADL7oer+1PwE0J6AANyAUXX8h59mqI45I6O/T5kqAez+QPc00dcUYloWmkkC
- 4rA7sxiB57P9E5A==
+ bh=qwLr64BOI3m44mmy9A+SITIRRpm72tGui++1suPv5QI=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZaQPXZ9WY6MhNw1DyiQHvUVteDQyhQLNYx9
+ 5hVrQKQA32JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWgAKCRDa6OEJdZac
+ 5WR8D/9WFCaokBX+igEl9S/wj1xhyGPSG66SFfV27Dltbb57zmq4uC5jvUX5w6dWXvYhtPNHQFe
+ 9K66GKAgusLvRKSD+H3zGLUW8U3ETC61HN7gxl/1me7MCOgx4nP4TuXC1IGc7N04Uy5p/K7CCsv
+ 3m46hhOQ/zOVysQ/z+FfY9DGA3PsDFV5vpg2sI4loFLN5558gsYEPjpded2r/AVynOfpuqed2bX
+ NsNJM/utLP5uFN4rESVP7aXet5+W6chof8bssQP5vH834/eDq3PJrbZ4Ot9Q1iHx9WPiPv9Rw56
+ JYEYeGXqbn3zlh5nLP8rzUGp2ug5AdD4t/I9Z26eJu6bDuLCkBYk74iepLUVgX9W4DO6oiGh3et
+ GKakHxnLhUun1C5Ol9NCVBaytv0BslRU/Fvw+cX2rIIZ0km5KyWtqiP7Fp65uNlItR2MeaUEDQ3
+ yloZx1kGhihimd582aexp35/fKD5T1d3yhKR0VFCwxbT9halzluTupdhjEGH+0ZFsekn9ipXO7N
+ AuESTeKZ/orDCQk3U9Z1+5iRkWyT+M7qnMaKqFtveqCTTqKQhVQaCO+cbv92R+RjOruwYCbOgB8
+ /9W9WeMcY/EDXsuwsJ5c9Hn3lYMIZuQYd2A0dPWG2l+UDTv6P77b/e0AvpSGAfOx92YoEM7oybG
+ +IQmmuEwivE+VvA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: y1ftN-FXr-LZOSr2AZw9a4Bu7KY5nB3zm2g7NM1A87U_1792493452
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: URD51QV4cZiq7NaZKBjOlDBAutX-DcgnrY5jUHw7srk_1792493346
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -173,32 +174,76 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-It is effectively a u8. The next changes are going to use the
-uint8_type_info for it.
+Convert the OnOffSplit property from manual visitor-based
+callbacks to property_add_qapi_enum().
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/pci/pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ accel/whpx/whpx-common.c | 29 ++++++++++-------------------
+ 1 file changed, 10 insertions(+), 19 deletions(-)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 0efb4eb4bb03..6edc702776ab 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -80,7 +80,7 @@ static void prop_pci_busnr_get(Object *obj, Visitor *v, const char *name,
+diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+index 187938c02b51..5d4b405e56d3 100644
+--- a/accel/whpx/whpx-common.c
++++ b/accel/whpx/whpx-common.c
+@@ -434,18 +434,12 @@ error:
+     return false;
  }
  
- static const PropertyInfo prop_pci_busnr = {
--    .type = "busnr",
-+    .type = "uint8",
-     .get = prop_pci_busnr_get,
- };
+-static void whpx_set_kernel_irqchip(Object *obj, Visitor *v,
+-                                   const char *name, void *opaque,
+-                                   Error **errp)
++static void whpx_set_kernel_irqchip(Object *obj, int value,
++                                    Error **errp)
+ {
+     struct whpx_state *whpx = &whpx_global;
+-    OnOffSplit mode;
  
+-    if (!visit_type_OnOffSplit(v, name, &mode, errp)) {
+-        return;
+-    }
+-
+-    switch (mode) {
++    switch (value) {
+     case ON_OFF_SPLIT_ON:
+         whpx->kernel_irqchip_allowed = true;
+         whpx->kernel_irqchip_required = true;
+@@ -463,11 +457,7 @@ static void whpx_set_kernel_irqchip(Object *obj, Visitor *v,
+         break;
+ 
+     default:
+-        /*
+-         * The value was checked in visit_type_OnOffSplit() above. If
+-         * we get here, then something is wrong in QEMU.
+-         */
+-        abort();
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -518,11 +508,12 @@ static void whpx_accel_class_init(ObjectClass *oc, const void *data)
+     ac->pre_resume_vm = whpx_pre_resume_vm;
+     ac->allowed = &whpx_allowed;
+ 
+-    object_class_property_add(oc, "kernel-irqchip", "on|off|split",
+-        NULL, whpx_set_kernel_irqchip,
+-        NULL, NULL);
+-    object_class_property_set_description(oc, "kernel-irqchip",
+-        "Configure WHPX in-kernel irqchip");
++    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
++        .name = "kernel-irqchip",
++        .qapi_type = &OnOffSplit_type_info,
++        .set = whpx_set_kernel_irqchip,
++        .description = "Configure WHPX in-kernel irqchip",
++    ));
+     object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
+         .name = "hyperv",
+         .description = "Configure Hyper-V enlightenments",
 
 -- 
 2.56.0.116.g6de20f6092dc

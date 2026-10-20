@@ -1,61 +1,61 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ACCB2606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:11:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24F9B606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:11:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=JCJit/yy
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=evXG8kar
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7QO-0007OW-83; Tue, 20 Oct 2026 06:50:32 -0400
+	id 1xJ7MO-0000BY-Qb; Tue, 20 Oct 2026 06:46:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Os-0003M1-Dl
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:00 -0400
+ id 1xJ7MJ-000821-6B
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Oo-0005dK-Bk
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:48:57 -0400
+ id 1xJ7MD-00054E-0H
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:46:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493332;
+ s=mimecast20190719; t=1792493172;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ITZAmzqb42SOieKlyK1KvmCdBEM4ZFKVGJMc/HmGp5k=;
- b=JCJit/yyp+w4uCtBxlQ7FlBWBWcri0e09WOjyciMVunktBf1haZiXW+tk5/w9dHzd6xpKl
- TWdowu2f70FRV+VNgDP7JMl/Z2j4DNhNqRNQh1drKDLxHvCM6/RqL1nePonbuTiaJr12Xc
- i5F+Af30OT0T9wlb8XK/b39QLf6R3Ms=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=MptOf1hVsZ1OcnRpLWGVoNoF31BJAipRXCSmM3yzXJc=;
+ b=evXG8karoU4jRnzSENT1qSvlVMMTbBIleKyqm4d7cJ25MCJZmT5puXE8iQHT3JrCtbrRLc
+ HviFZNhcO9/iC8ZPsH5gwWIiUCCEIsIKmLxDIQHPIVaz25ZjeeGM/v3FdZuvDjLAGW4hVb
+ pFUnpO0lYqrwOT86occK6OWDpq6j+WU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-491-PGS6jTcAOfWke_074JgvdA-1; Tue,
- 20 Oct 2026 10:48:48 +0000
-X-MC-Unique: PGS6jTcAOfWke_074JgvdA-1
-X-Mimecast-MFC-AGG-ID: PGS6jTcAOfWke_074JgvdA_1792493324
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-661-DKkuKb5XMHGYZ_bW7teTCg-1; Tue,
+ 20 Oct 2026 10:46:08 +0000
+X-MC-Unique: DKkuKb5XMHGYZ_bW7teTCg-1
+X-Mimecast-MFC-AGG-ID: DKkuKb5XMHGYZ_bW7teTCg_1792493164
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 607CC1955DCB; Tue, 20 Oct 2026 10:48:44 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 48DA71800BD0; Tue, 20 Oct 2026 10:46:01 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3C7E018002B1; Tue, 20 Oct 2026 10:48:41 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:45:45 +0400
-Subject: [PATCH v7 28/65] sev: convert OnOffAuto legacy-vm-type property to
- QAPI-aware registration
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B0D3A1956089; Tue, 20 Oct 2026 10:45:51 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+Subject: [PATCH v7 00/65] Hi
+Date: Tue, 20 Oct 2026 14:45:17 +0400
+Message-Id: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-28-431a86b02b58@redhat.com>
-References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
-In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqAIBCF4avErBPMqKCrRAu1qSYoTSsC8e5ZL
+ T/43wvg0RF6aLMADi/yZLaEJs9Az3KbkNGQDIKLuuCCs92sbJeWmEbUSgkpy2qElFuHI93fVdf
+ /9qdaUB/vHmJ8AJZKl35sAAAA
+X-Change-ID: 20261020-qom-qapi-ceecbb2aa35f
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, 
  Michael Roth <michael.roth@amd.com>, John Snow <jsnow@redhat.com>, 
@@ -127,39 +127,40 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, 
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2932;
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=18033;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=e2zxmMhmJGF0dwc0SRzZuUR5qMnfM/36nnJtEEhS5HU=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZaPCLOl/jTkrNhGvjvoErUEYn1j7um/aMo0
- ZI7dyqyzT6JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWgAKCRDa6OEJdZac
- 5bBPD/9YSzBj8rYL1VR6mIizfqkgB0/PpThetAFKK6VOJ5UwsrSCvay3ut/gvIfOk0yHdhdHVWq
- Uz2ZKUkj9DO9sRX39BQCuKmjIsfoY3siZbaDChTtbShjPxhuFraX/nC2nvPuqd3vJJCy6AOeiCN
- 0ihLqhJPkeYoPKVqVd8jLDAt24/RSLOtUiuCXK3ZjSyXPiQCI7Q+c4ObrWUqfFSKoZuD/WjUmpI
- Ydb1AYXzIDBSx6VHn33zxDswViVybQV5ahY7osUUBE7KAI28mVSFrxFOCGWT58Hpz/xomG0JKq8
- 9VXoJNH+E5shv0v0VhMSnm+pvNmz0id2LZty8354Pi1CZ+KdmxSwz7Kxqdc0NCFER77a7+xn7J6
- x0S9Zu85aLRNnCRSOJ5auSHQgryCGQvKSOlqFFL+SCOVftpsiiUH4bd8CAKJCIPeqw7j7beCCGY
- KNB6BsQL6TDT7zaAQmMPNVZur/l87U4iJmPZjBF6c3RiM/10WKCnxRb3MWcocawkttpcuS9FLxg
- B9ud9eSGegnwhA1PxzXyburB+4c8MbRt5hdLKQvae+gUTUK0Z3BG3jbmybChBhoNKRREWEUepvd
- LkDhvCIHcfCmtyY2QCNu5qT/nkPIDzUZOqpHc0Oq8GA49cI/MvabenocOgTLTS9BEKBuQDZRWKY
- jeq3wdMr+xiPpNg==
+ bh=YQH1wFu02Ce7UI3SJRB7LFwFPSLUsv52xFDWmiRbu9A=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZXhnO81OQ6oQCifSYiCo/KRE9qOY0nNm6UM
+ YRzm0e0Z+eJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGVwAKCRDa6OEJdZac
+ 5eu3EACgBRt96Jmd4w9dAGsxJWUgTeuIC9Q+Gu7gsqjyAwWPz6xsT83ATwr2NrI7URczXKUUzUH
+ SbstTSknWKlqAwFuJjI4N6i+JRmDoxihzJQkOQZvOldkC7brA7szgus5eQ/zmOAg/rePS0H3ifD
+ 4LAgZnm78mR03sDIgOV7HEPf00+9SlWVHwEQ8jkPET0AMorE0iYTfreMTCyOHojmshPxuvEhmzg
+ mfmGIDTA5/DyeM9byxrom2suwhLB+x18H79b+CIfx9Wgvy/9lmjzGiMed8oLBSjlR6JV506TMh5
+ G09N/Qrf99ZBtIk7bSASRkT37x/Ey6efRDBuB9X9E9sr0T2CX+aJnKqpUT2eh2Cg70OnA4yV750
+ c7invSavJvaFnyk3srbbQltdVmoHGmNb8N1EY33+nCMnEQObkb7nNdtPNS7bZzVTQ79lTodfqm/
+ q+OnquwCSNX5O2YSDC0MaV10KSjVUkknfXcHdwlSmjl06/hB1pIDEo4rk8M/wriwL2oiI61pPxN
+ wRijVyD+nW2B5H6F0qjcKswRZRke444dd1hSd/VRjCHO8KoZEUPqaxHoQZUnmcywR2RMQWAxgop
+ 73X1MQY2XKu5YQomKMTluUEPoxA+JML0FtZUdnmOEaU2dSt1RK85qAk2HBA9VJpGrYX4adQ6sdT
+ 275ub/bPzYg5t4Q==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: RYhhJ4TQpG_khw1gXz25r8as5PtJcOI-od8IB4LxSUY_1792493324
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: Ywl02fy8CBpKXFwYoCnS9FvmFMv3KgdLfqQbdI7ipEo_1792493164
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,77 +179,352 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Convert the legacy-vm-type OnOffAuto property from manual
-visitor-based callbacks to property_add_qapi_enum().
+This series connects QOM and qdev properties to the QAPI type system, so
+that management tools can discover the QAPI schema type of each object
+property.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Today, QOM properties carry a free-form "type" string ("bool", "uint32",
+"OnOffAuto", ..) that has no formal link to the QAPI schema exposed by
+query-qmp-schema. Management tools must maintain ad-hoc mappings or rely
+on naming conventions to figure out how to interpret property values.
+
+This series adds:
+  - A new QAPITypeInfo struct that pairs a property with its QAPI schema
+    type name, enum lookup table, and list-element type.
+
+  - A QAPI code generator (qapi-type-infos) that emits a QAPITypeInfo
+    instance for every schema-defined type, including the mapping
+    between internal C names and the schema name visible to clients.
+
+  - A "qapi-type" field in the ObjectPropertyInfo and
+    ObjectPropertyValue QMP structs, populated from the QAPITypeInfo
+    when present giving clients a cross-reference into query-qmp-schema
+    output.
+
+  - Conversion of all PropertyInfo definitions from the old
+    .type/.enum_table strings to the new .qapi_type pointer.
+
+  - Replacement of the generic qdev_prop_array with typed per-element
+    array PropertyInfos, removing the arrayinfo/arrayfieldsize
+    indirection from struct Property.
+
+  - Removal of the deprecated PropertyInfo.type and .enum_table fields,
+    and of the old object_property_add_enum/add_tm APIs.
+
+Along the way, a few pre-existing type mismatches in property
+definitions are fixed, the "struct tm" RTC property is replaced with a
+proper QAPI StructTm type etc. Introducing more specific types or a
+"typedef" to QAPI could help provide better associated type informations
+than plain "str" in many cases, for example.
+
+Changes in v7:
+- fixed a few more mis-typed list properties
+- use designated initializers for StructTm fields
+- assert enum get() returns >= or an error
+- a few commit message and code comment tweaks
+- rebased, add r-b trailers
+
+Changes in v6:
+- Rebase, resolve a few conflicts
+- Replace old PATCH 03-04 by new PATCH 01-06, adjust PATCH 09 [old
+  PATCH 05]
+- Fix temporary build breakage: convert PCSouthBridgeOption only when
+  it gets QAPIfied [PATCH 62], delay removal of old interface until
+  after that [PATCH 63].
+- Clean up checkpatch long line warnings, except leave the ones in
+  PATCH 38 for later
+
+Changes in v5:
+- make "masked_name" mandatory, skip QType QAPITypeInfo generation
+- added/split "hw/ppc/spapr_caps: fix property type name" patch
+- added "qapi: select introspectable types directly", simplifying type discovery
+- fixed an include path
+- doc adjustments
+- rebased, collect r-b trailers
+- Link to v4: https://lore.kernel.org/qemu-devel/20260904-qom-qapi-v4-0-a985f168e938@redhat.com
+
+Changes in v4:
+- new patch "qom/qmp: populate description & default-value"
+- added gtk-doc comments for class_property_add_qapi*()
+- correct some property types to reflect the visitor
+- collected rb, rebased
+- Link to v3: https://lore.kernel.org/qemu-devel/20260818-qom-qapi-v3-0-24b8bbbe3d86@redhat.com
+
+Changes in v3:
+- QAPI analysis redesign (replacing the old "expose name map" from
+introspect)
+- all non-implicit QAPI types are now introspectable, including QOM-only
+types
+- QAPITypeInfo.schema_name -> masked_name
+- exposes integer signedness and width through query-qmp-schema
+- various extra property fixes
+- rebase, some patch split or merge
+
+- Link to v2: https://lore.kernel.org/qemu-devel/20260616-qom-qapi-v2-0-cc9396b9c18c@redhat.com
+
+Changes in v2:
+
+- Added kernel-doc documentation for the QAPITypeInfo struct fields.
+- Dropped "qom: drop free-form property typename registration", it's
+  still needed for array of links to provide useful type names.
+- Added qdev_prop_link_list for array-of-links properties, with a
+  create function that generates "link<TYPE>List" type names matching the
+  existing "link<TYPE>" convention.
+- qdev_prop_link now uses &str_type_info instead of "link" (the full
+  "link<TYPE>" type name is set at property-add time)
+- Simplified DEFINE_PROP_LINK_ARRAY to use qdev_prop_link_list, dropping
+  the now-unnecessary _arraytype parameter.
+- rebased
+- Link to v1: https://lore.kernel.org/qemu-devel/20260510-qom-qapi-v1-0-48ba6a1a1fa5@redhat.com
+
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- target/i386/sev.c | 29 +++++++++++++----------------
- 1 file changed, 13 insertions(+), 16 deletions(-)
+Marc-André Lureau (59):
+      qapi: add QAPITypeInfo struct definition
+      qapi/gen: fix _module_basename for multi-dash 'what' parameters
+      qapi: add type-infos generator
+      meson: add qapi-type-infos-*.c/h to build
+      qom: add qapi_type field to ObjectProperty
+      qapi/qom: add qapi-type field to ObjectPropertyInfo
+      qom/qmp: populate qapi-type in QMP handlers
+      qom/qmp: populate description & default-value in qom_property_info()
+      qom: add object_property_set_default_enum()
+      qom: add object_{class_}property_add_qapi
+      qom: add object_{class_}property_add_qapi_enum
+      tests: update check-qom-proplist for QAPI-aware property registration
+      qom: convert QAPI enum properties to QAPI-aware registration
+      qom: convert struct properties to QAPI-aware registration
+      x86: convert OnOffAuto properties to QAPI-aware registration
+      microvm: convert OnOffAuto properties to QAPI-aware registration
+      pc: convert OnOffAuto vmport property to QAPI-aware registration
+      arm/virt: convert OnOffAuto acpi property to QAPI-aware registration
+      riscv/virt: convert OnOffAuto properties to QAPI-aware registration
+      loongarch/virt: convert OnOffAuto properties to QAPI-aware registration
+      hostmem-file: convert OnOffAuto rom property to QAPI-aware registration
+      sev: convert OnOffAuto legacy-vm-type property to QAPI-aware registration
+      whpx: convert OnOffAuto hyperv property to QAPI-aware registration
+      whpx: convert OnOffAuto arch properties to QAPI-aware registration
+      accel/kvm: convert OnOffSplit property to QAPI-aware registration
+      whpx: convert OnOffSplit property to QAPI-aware registration
+      hw/ppc/spapr_caps: fix property type name
+      ppc/spapr-caps: convert to QAPI-aware property registration
+      net/colo-compare: fix compare_timeout setter visitor type
+      net/colo-compare: fix max_queue_size setter visitor type
+      hw/misc/xlnx-versal-trng: add missing getter for fips-fault-events
+      qom: convert scalar properties to QAPI-aware registration
+      i386/cpu: convert strList property to QAPI-aware registration
+      accel/hvf: convert OnOffSplit property to QAPI-aware registration
+      i386/x86: convert SgxEPCList property to QAPI-aware registration
+      virtio-balloon: convert guest-stats property to QAPI type
+      qom: replace object_property_add_tm with StructTm QAPI type
+      hw/nvdimm: convert UUID property to QAPI-aware registration
+      hw/s390-virtio-ccw: convert loadparm property to QAPI-aware registration
+      hw/ppc/spapr_drc: convert fdt property to QAPI-aware registration
+      hw/s390x: convert BootCertificatesList to QAPI-aware registration
+      hw/gpio/pca955x: use QAPI enums for led and pin properties
+      include: add QEMU_REPEAT helper macro
+      hw/gpio/pca955x: convert pin/led property to QAPI-aware enum
+      hw/pci: change the busnr type to uint8
+      qdev: add qapi_type field to PropertyInfo with fallback registration
+      qdev: convert core PropertyInfo definitions to use qapi_type
+      qdev: adjust PciDevfn declared type
+      qdev: convert system PropertyInfo definitions to use qapi_type
+      hw: convert device-local PropertyInfo definitions to use qapi_type
+      target/riscv: convert PropertyInfo definitions to use qapi_type
+      qdev: convert PropertyInfo definitions to use qapi_type
+      qdev: introduce typed array PropertyInfos
+      qdev: simplify DEFINE_PROP_ARRAY and remove generic array PropertyInfo
+      qdev: remove deprecated PropertyInfo.type and .enum_table fields
+      hw/i386: convert PCSouthBridgeOption to QAPI enum
+      qom: remove old enum property registration API
+      qom: use QAPITypeInfo in object_property_get_enum
+      tests/qmp-cmd-test: assert qapi-type resolves in query-qmp-schema
 
-diff --git a/target/i386/sev.c b/target/i386/sev.c
-index cc16c6b07123..b2c7260c80a4 100644
---- a/target/i386/sev.c
-+++ b/target/i386/sev.c
-@@ -20,6 +20,7 @@
- #include <sys/ioctl.h>
- 
- #include "qapi/error.h"
-+#include "qapi/qapi-type-infos-common.h"
- #include "qom/object_interfaces.h"
- #include "qemu/base64.h"
- #include "qemu/module.h"
-@@ -2939,23 +2940,16 @@ sev_guest_set_session_file(Object *obj, const char *value, Error **errp)
-     SEV_GUEST(obj)->session_file = g_strdup(value);
- }
- 
--static void sev_guest_get_legacy_vm_type(Object *obj, Visitor *v,
--                                         const char *name, void *opaque,
--                                         Error **errp)
-+static int sev_guest_get_legacy_vm_type(Object *obj, Error **errp)
- {
-     SevGuestState *sev_guest = SEV_GUEST(obj);
--    OnOffAuto legacy_vm_type = sev_guest->legacy_vm_type;
--
--    visit_type_OnOffAuto(v, name, &legacy_vm_type, errp);
-+    return sev_guest->legacy_vm_type;
- }
- 
--static void sev_guest_set_legacy_vm_type(Object *obj, Visitor *v,
--                                         const char *name, void *opaque,
--                                         Error **errp)
-+static void sev_guest_set_legacy_vm_type(Object *obj, int value, Error **errp)
- {
-     SevGuestState *sev_guest = SEV_GUEST(obj);
--
--    visit_type_OnOffAuto(v, name, &sev_guest->legacy_vm_type, errp);
-+    sev_guest->legacy_vm_type = value;
- }
- 
- static void
-@@ -2981,11 +2975,14 @@ sev_guest_class_init(ObjectClass *oc, const void *data)
-                                   sev_guest_set_session_file);
-     object_class_property_set_description(oc, "session-file",
-             "guest owners session parameters (encoded with base64)");
--    object_class_property_add(oc, "legacy-vm-type", "OnOffAuto",
--                              sev_guest_get_legacy_vm_type,
--                              sev_guest_set_legacy_vm_type, NULL, NULL);
--    object_class_property_set_description(oc, "legacy-vm-type",
--            "use legacy VM type to maintain measurement compatibility with older QEMU or kernel versions.");
-+    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
-+        .name = "legacy-vm-type",
-+        .description = "use legacy VM type to maintain measurement "
-+                       "compatibility with older QEMU or kernel versions.",
-+        .qapi_type = &OnOffAuto_type_info,
-+        .get = sev_guest_get_legacy_vm_type,
-+        .set = sev_guest_set_legacy_vm_type,
-+    ));
- }
- 
- static void
+Markus Armbruster (6):
+      qapi/schema: Rename .lookup_entity() and tighten return type
+      qapi: Ease access to introspection names
+      qapi/introspect: Simplify masked name comment emission slighly
+      qapi/introspect: Don't elide types
+      qapi: QAPISchemaVisitor.visit_needed() is now unused, drop
+      qapi/introspect: Tweak integer type masking
 
--- 
-2.56.0.116.g6de20f6092dc
+ accel/hvf/hvf-all.c                      |  29 ++--
+ accel/kvm/kvm-all.c                      |  31 ++--
+ accel/nitro/nitro-accel.c                |   3 +-
+ accel/tcg/tcg-all.c                      |   3 +-
+ accel/whpx/whpx-common.c                 |  58 +++----
+ authz/list.c                             |  14 +-
+ backends/cryptodev.c                     |   7 +-
+ backends/hostmem-file.c                  |  33 ++--
+ backends/hostmem-memfd.c                 |   3 +-
+ backends/hostmem.c                       |  20 +--
+ backends/spdm-socket.c                   |   4 +-
+ backends/tpm/tpm_util.c                  |   3 +-
+ block/throttle-groups.c                  |  10 +-
+ chardev/char-socket.c                    |   3 +-
+ crypto/secret_common.c                   |  12 +-
+ crypto/secret_keyring.c                  |   9 +-
+ crypto/tlscreds.c                        |  12 +-
+ docs/devel/qapi-code-gen.rst             |  92 ++++++++++-
+ docs/interop/virtio-balloon-stats.rst    |  22 +--
+ docs/sphinx/qapidoc.py                   |   2 +-
+ event-loop-base.c                        |   7 +-
+ hw/acpi/ich9.c                           |   1 +
+ hw/acpi/pci.c                            |   7 +-
+ hw/arm/virt.c                            |  31 ++--
+ hw/block/xen-block.c                     |   3 +-
+ hw/core/clock.c                          |   3 +-
+ hw/core/machine-qmp-cmds.c               |   4 +-
+ hw/core/machine.c                        |  13 +-
+ hw/core/qdev-prop-internal.h             |  23 +++
+ hw/core/qdev-properties-system.c         |  97 ++++++------
+ hw/core/qdev-properties.c                | 182 ++++++++++++++-------
+ hw/cpu/core.c                            |  10 +-
+ hw/cxl/cxl-host.c                        |   6 +-
+ hw/display/apple-gfx-mmio.m              |   2 +-
+ hw/display/apple-gfx-pci.m               |   2 +-
+ hw/display/apple-gfx.h                   |   1 +
+ hw/display/apple-gfx.m                   |   7 +-
+ hw/gpio/aspeed_gpio.c                    |   5 +-
+ hw/gpio/aspeed_sgpio.c                   |   3 +-
+ hw/gpio/pca9552.c                        | 261 ++++++++++++-------------------
+ hw/gpio/pca9554.c                        | 157 +++++++------------
+ hw/gpio/stm32l4x5_gpio.c                 |   5 +-
+ hw/i386/microvm.c                        |  80 ++++------
+ hw/i386/pc.c                             |  32 ++--
+ hw/i386/pc_piix.c                        |  61 +++-----
+ hw/i386/sgx-epc.c                        |  10 +-
+ hw/i386/x86.c                            | 113 ++++++-------
+ hw/ide/ide-dev.c                         |   3 +-
+ hw/input/stellaris_gamepad.c             |   2 +-
+ hw/intc/apic_common.c                    |   3 +-
+ hw/intc/arm_gicv3_common.c               |   2 +-
+ hw/intc/arm_gicv5_common.c               |   4 +-
+ hw/intc/rx_icu.c                         |   4 +-
+ hw/loongarch/virt.c                      |  87 +++++------
+ hw/mem/nvdimm.c                          |  11 +-
+ hw/mem/pc-dimm.c                         |   3 +-
+ hw/microblaze/petalogix_s3adsp1800_mmu.c |  19 ++-
+ hw/misc/arm_sysctl.c                     |   4 +-
+ hw/misc/aspeed_lpc.c                     |  73 ++++++---
+ hw/misc/aspeed_sdmc.c                    |   3 +-
+ hw/misc/mps2-scc.c                       |   2 +-
+ hw/misc/npcm7xx_mft.c                    |   3 +-
+ hw/misc/tz-ppc.c                         |  19 +--
+ hw/misc/xlnx-versal-trng.c               |  15 +-
+ hw/net/ne2000-isa.c                      |   3 +-
+ hw/net/rocker/rocker.c                   |   2 +-
+ hw/net/virtio-net.c                      |   2 +-
+ hw/nvme/ctrl.c                           |   3 +-
+ hw/nvme/nguid.c                          |   3 +-
+ hw/nvram/xlnx-bbram.c                    |   3 +-
+ hw/nvram/xlnx-efuse.c                    |   5 +-
+ hw/nvram/xlnx-versal-efuse-ctrl.c        |   2 +-
+ hw/pci-bridge/pci_expander_bridge.c      |   3 +-
+ hw/pci-host/i440fx.c                     |  29 ++--
+ hw/pci-host/pnv_phb3.c                   |   5 +-
+ hw/pci-host/pnv_phb4.c                   |   5 +-
+ hw/pci-host/q35.c                        |   9 +-
+ hw/pci/pci.c                             |   3 +-
+ hw/ppc/spapr_caps.c                      |  39 ++---
+ hw/ppc/spapr_drc.c                       |   5 +-
+ hw/ppc/spapr_rtc.c                       |  24 ++-
+ hw/remote/vfio-user-obj.c                |  22 +--
+ hw/riscv/microchip_pfsoc.c               |   3 +-
+ hw/riscv/riscv_hart.c                    |   6 +-
+ hw/riscv/virt.c                          |  52 +++---
+ hw/rtc/mc146818rtc.c                     |  22 ++-
+ hw/s390x/ccw-device.c                    |   3 +-
+ hw/s390x/css.c                           |   5 +-
+ hw/s390x/s390-pci-bus.c                  |   3 +-
+ hw/s390x/s390-virtio-ccw.c               |  11 +-
+ hw/s390x/sclpcpi.c                       |   8 +-
+ hw/s390x/virtio-ccw-mem.c                |   3 +-
+ hw/sensor/adc128d818.c                   |  16 +-
+ hw/sensor/adm1266.c                      |   3 +-
+ hw/sensor/adm1272.c                      |   9 +-
+ hw/sensor/emc141x.c                      |   9 +-
+ hw/sensor/isl_pmbus_vr.c                 |  19 +--
+ hw/sensor/lsm303dlhc_mag.c               |   9 +-
+ hw/sensor/max34451.c                     |   5 +-
+ hw/sensor/tmp105.c                       |   3 +-
+ hw/sensor/tmp421.c                       |   9 +-
+ hw/usb/dev-storage-classic.c             |   3 +-
+ hw/vfio-user/pci.c                       |   5 +-
+ hw/vfio/pci-quirks.c                     |   3 +-
+ hw/virtio/virtio-balloon.c               |  87 ++++-------
+ hw/virtio/virtio-iommu-pci.c             |   2 +-
+ hw/virtio/virtio-mem-pci.c               |   3 +-
+ hw/virtio/virtio-mem.c                   |  18 ++-
+ hw/xen/xen-pvh-common.c                  |   9 +-
+ include/chardev/char.h                   |   8 -
+ include/hw/block/block.h                 |   2 +-
+ include/hw/core/qdev-properties-system.h |   2 +
+ include/hw/core/qdev-properties.h        |  40 +++--
+ include/hw/cxl/cxl_component.h           |   5 +-
+ include/hw/i386/pc.h                     |   4 +-
+ include/qapi/qapi-type-info.h            |  31 ++++
+ include/qemu/osdep.h                     |  33 ++++
+ include/qemu/uuid.h                      |   4 +
+ include/qom/object.h                     | 186 +++++++++++++++-------
+ iothread.c                               |   9 +-
+ meson.build                              |   1 +
+ migration/options.c                      |   4 +-
+ monitor/qmp.c                            |  12 +-
+ net/colo-compare.c                       |  15 +-
+ net/dump.c                               |   6 +-
+ net/filter-buffer.c                      |   3 +-
+ net/filter.c                             |  10 +-
+ qapi/common.json                         |  28 ++++
+ qapi/machine.json                        | 152 ++++++++++++++++++
+ qapi/meson.build                         |   4 +
+ qapi/pragma.json                         |   1 +
+ qapi/qom.json                            |  10 ++
+ qga/meson.build                          |   2 +
+ qom/object.c                             | 237 +++++++++++++---------------
+ qom/qom-qmp-cmds.c                       |  47 +++---
+ scripts/qapi/backend.py                  |   2 +
+ scripts/qapi/gen.py                      |   2 +-
+ scripts/qapi/introspect.py               |  74 +++------
+ scripts/qapi/schema.py                   |  57 +++++--
+ scripts/qapi/type_infos.py               | 163 +++++++++++++++++++
+ system/bootdevice.c                      |   3 +-
+ system/memory.c                          |   5 +-
+ target/arm/cpu64.c                       |  11 +-
+ target/arm/kvm.c                         |   3 +-
+ target/arm/tcg/cpu64.c                   |  11 +-
+ target/i386/cpu.c                        |  26 +--
+ target/i386/kvm/kvm.c                    |  38 +++--
+ target/i386/kvm/tdx.c                    |   4 +-
+ target/i386/sev.c                        |  31 ++--
+ target/i386/whpx/whpx-all.c              | 101 ++++--------
+ target/ppc/compat.c                      |   3 +-
+ target/riscv/cpu.c                       |  47 +++---
+ target/riscv/kvm/kvm-cpu.c               |   7 +-
+ target/riscv/tcg/tcg-cpu.c               |  13 +-
+ target/s390x/cpu-system.c                |   4 +-
+ target/s390x/cpu_models.c                |   5 +-
+ target/sparc/cpu.c                       |   3 +-
+ tests/include/meson.build                |   2 +
+ tests/meson.build                        |   6 +
+ tests/qapi-schema/meson.build            |   1 +
+ tests/qtest/qmp-cmd-test.c               |  55 ++++++-
+ tests/unit/check-qom-proplist.c          |  99 +++++++++---
+ tests/unit/test-qdev-global-props.c      |  11 +-
+ tests/unit/test-qdev.c                   |   2 +-
+ ui/console-vc.c                          |   8 +-
+ ui/console.c                             |   3 +-
+ ui/dbus.c                                |  18 ++-
+ ui/input-linux.c                         |  11 +-
+ util/thread-context.c                    |   7 +-
+ util/uuid.c                              |   5 +
+ 170 files changed, 2317 insertions(+), 1628 deletions(-)
+---
+base-commit: 8967b2fe1b2aaae3c29e207d85fab901d580a2dc
+change-id: 20261020-qom-qapi-ceecbb2aa35f
+
+Best regards,
+--  
+Marc-André Lureau <marcandre.lureau@redhat.com>
 
 

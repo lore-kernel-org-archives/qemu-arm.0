@@ -1,59 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0885B606A31B
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:04:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26DAF606A31C
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:04:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=BLQHVwSP
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=JFJRBBMx
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Qc-00083U-0e; Tue, 20 Oct 2026 06:50:46 -0400
+	id 1xJ7UZ-0006OC-1O; Tue, 20 Oct 2026 06:54:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Pc-0004oS-0N
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:45 -0400
+ id 1xJ7RV-0000vN-9F
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:43 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7PZ-0005pW-H3
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:49:43 -0400
+ id 1xJ7RT-0006c1-6w
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:51:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493380;
+ s=mimecast20190719; t=1792493498;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pJsKiDwP7cQjHHYkeJJ5It1m2SB+6i/Xk0ZLXrFcWgM=;
- b=BLQHVwSP4y4yzoziJP2D0gjyTzL+idpS0aU1x4+ElIIkjLX63goWhyZ4XHfWKbps/inmX4
- rno6TW/C4lKJzW3t0FnT0TpTZjiAcMbwB3KE7gEXa56L6D0GVFnmd/JNUBWG30uGc+y9KI
- 5ddxpKlNqRk2K2yzw4ZiRaE8lBBBZ9A=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=VTmJNa8VT5lexLUKxdzeLthZimg97eONPVFzq6wZuao=;
+ b=JFJRBBMxrgIwyH3/8nZ3rKXUe9OKUByBAOT6CUTwH1MAKUAVluJxgAqcml/JLl6gX7QexW
+ J1KFC+8UyRhD0fyxdm8Q4xU5s/a5ivMBkCbvg73IUy+bHAEYNQ+A119k98NcPpKGIBxefc
+ C2ryI3h/4CPYwvOyISDFDWrsHs25+UU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-533-OoWhFoGcPlaWpGKQnrYdqg-1; Tue,
- 20 Oct 2026 10:49:38 +0000
-X-MC-Unique: OoWhFoGcPlaWpGKQnrYdqg-1
-X-Mimecast-MFC-AGG-ID: OoWhFoGcPlaWpGKQnrYdqg_1792493375
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-15-JRWtrvsmMnafOZ4pe9-J1A-1; Tue,
+ 20 Oct 2026 06:51:33 -0400
+X-MC-Unique: JRWtrvsmMnafOZ4pe9-J1A-1
+X-Mimecast-MFC-AGG-ID: JRWtrvsmMnafOZ4pe9-J1A_1792493487
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DEDA7180056E; Tue, 20 Oct 2026 10:49:34 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B4C2E1800BDD; Tue, 20 Oct 2026 10:51:27 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F20721956095; Tue, 20 Oct 2026 10:49:31 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id CA95D1800677; Tue, 20 Oct 2026 10:51:24 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:45:54 +0400
-Subject: [PATCH v7 37/65] hw/misc/xlnx-versal-trng: add missing getter for
- fips-fault-events
+Date: Tue, 20 Oct 2026 14:46:15 +0400
+Subject: [PATCH v7 58/65] qdev: convert PropertyInfo definitions to use
+ qapi_type
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-37-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-58-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -127,26 +127,27 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, 
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1222;
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3664;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=2e+J+3h+NUPhMCTdhI0KGfNu+o02kfLWSTEk2RShPvY=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZaaRUiZcgxP4oeKcbE8gs+UJl28BKoajpQ9
- 8TC/3Dz3TSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWgAKCRDa6OEJdZac
- 5XzVD/4vu1/c4/2gcCv9WZzxVogHqWbTFYkuxZ02zog+1m/pXb+X9tvwReTfeI9FydQAbiZpvId
- gteOK6+wAlg83zfJniCoLV7jtP+dM5FXb46UnupVcgv/SpBK4D2RejZAEufi29iApBO2oMfn9MA
- 3gfevxd7THNtXegKa7wKxruBeVPEYPFhEync0+DH6wgg9EKaD4+GFKqqZ1aFNfaCLt7UzUsP7Io
- b9+cbToEVKKLoDEBVL7pnuO/RzwrBYxdHtsto9XcDx8y4g00K8cmochz1vpOtUh1O6/aPjsDzwK
- lKyeCMpsv+EwbyDSx+RRGeRZoQL3XRTFUrpQmhchGFQcMAfKsHMqjtEKGrCcBGzulk4EhNmKESi
- edlb7NLs0r0skfsaaxWorKW1rpeiTEEy7alnw7IdbIUqKy3rnu3rveuxXewnTcB5bnsDrNxwMVM
- RJ1A+85E1foSNRMRMPCuJRAvBFVzYYCaInFNaD07ePzVfR7vR1R636oNhc5efIWcOKbTVs3dJXz
- FKOIZkVWdXxVmQbuvftuGvvca4rYARfHdC0A54iqWotUPHpfdcW7NJx6aWHAQ7T4HiH7zy6MznP
- 41E815xj58W8vZEWWlZSmcwXiUWFv7br2GVoiGXDN/GV9hh7gLgW1P2qn3CFsh0+V4JLm81THXE
- KiNpEqL9FN+vZmA==
+ bh=LIT19w6YWiCW19RYxdZdXGqpA2yVHBE+/WdhPO2w+KQ=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZcuI+2h8ZVKhhoVFi3OkRbLhN7DQhHpw2e8
+ ZI+IW/5ZPeJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
+ 5d+rD/94HsUuS+bA630XGAf6+mNBdx3g5ggb5XrVvKXw9Au65Kows5jbGNX5ExMKeDtXzXsYPQZ
+ 7bawMDy/OvYIm6c0sRa+DQhSHoKTRGyrflTzi3akNDBX1iTFKTE4ApPz982Yb2V1+zjv7S6JoKL
+ s9x+m0L+aJhxXlji2Ne4h/2GqI65xptxwVMDeF5hdFhM1b/GVOLPZQYUgjk16EE7HtDzi9XcRpU
+ qLzkGt0xA8pztXbBxv9kfTMNJvnlKFhUM2FhczGoJMlwLYyrRx/K4ZHzoaT6XiuPZUK7YMxmpkr
+ 6kU46qGrWbK2PfH+q/Y8JKYadL6yh8v3kSS3na9fd5DaDkQX0p+Bnx8iLycn9BNcAfY/w7UNwsU
+ 1syWcvdD3Zjx91KEjMZBf6XQOUp3zeontuSGuATb4jhC/tPGcmnOMzCZilju6MMinaNxT3lY42y
+ HXItgz39UYWffKdBjfxJX3O1XuqYxbblcTGZmheVuso724KYPKlpfJKMUI+l8dYZwzkB21LBjpD
+ CypHEsnuhmR2vRevpDVirDYKTs59vv51cttaKCBf0mOGodSLdbRKt66uM3ORmazmTeb/HPU+/oD
+ vW8fnePj8pQJmxXFS18zBsuuz75rzcslLcOf/SWSu8i8o5lSfTxYhOhED+/Lizl23J6M6lVvKko
+ +KUM9I7WMK1AoZw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: 4TL1CtZ62pZDez7H7cn58Xf40GtadykAfnq-R-bOfxk_1792493375
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: 9YwP9NVTk0vGbGnruIL3w_KYMGM8Vzn8UhygS6e2k98_1792493487
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -178,39 +179,109 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Convert the remaining PropertyInfo definitions outside hw/
+
+After this patch, all PropertyInfo definitions have .qapi_type set,
+except qdev_prop_link (uses .create) and qdev_prop_array (refactored
+in the next patches).
+
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/misc/xlnx-versal-trng.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ backends/spdm-socket.c  | 4 ++--
+ backends/tpm/tpm_util.c | 3 ++-
+ migration/options.c     | 4 +++-
+ target/sparc/cpu.c      | 3 ++-
+ 4 files changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-index aa1d65de7b70..0584ee089e3c 100644
---- a/hw/misc/xlnx-versal-trng.c
-+++ b/hw/misc/xlnx-versal-trng.c
-@@ -650,10 +650,22 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
-     trng_fault_event_set(XLNX_VERSAL_TRNG(obj), *events);
+diff --git a/backends/spdm-socket.c b/backends/spdm-socket.c
+index 826efc276dcd..4a4307975965 100644
+--- a/backends/spdm-socket.c
++++ b/backends/spdm-socket.c
+@@ -17,6 +17,7 @@
+ #include "hw/core/qdev-properties.h"
+ #include "hw/core/qdev-properties-system.h"
+ #include "hw/core/qdev-prop-internal.h"
++#include "qapi/qapi-type-infos-sockets.h"
+ 
+ static bool read_bytes(const int socket, uint8_t *buffer,
+                        size_t number_of_bytes)
+@@ -253,9 +254,8 @@ void spdm_socket_close(const int socket, SpdmTransportType transport_type)
  }
  
-+static void trng_prop_fault_event_get(Object *obj, Visitor *v,
-+                                      const char *name,
-+                                      void *opaque,
-+                                      Error **errp)
-+{
-+    const Property *prop = opaque;
-+    uint32_t *events = object_field_prop_ptr(obj, prop);
-+
-+    visit_type_uint32(v, name, events, errp);
-+}
-+
- static const PropertyInfo trng_prop_fault_events = {
-     .type = "uint32",
-     .description = "Set to trigger TRNG fault events",
-     .set = trng_prop_fault_event_set,
-+    .get = trng_prop_fault_event_get,
-     .realized_set_allowed = true,
- };
+ const PropertyInfo qdev_prop_spdm_trans = {
+-    .type = "SpdmTransportType",
++    .qapi_type = &SpdmTransportType_type_info,
+     .description = "Spdm Transport, doe/nvme/mctp/scsi/unspecified",
+-    .enum_table = &SpdmTransportType_lookup,
+     .get = qdev_propinfo_get_enum,
+     .set = qdev_propinfo_set_enum,
+     .set_default_value = qdev_propinfo_set_default_value_enum,
+diff --git a/backends/tpm/tpm_util.c b/backends/tpm/tpm_util.c
+index 7019f7fd3eb9..dc6d4b211567 100644
+--- a/backends/tpm/tpm_util.c
++++ b/backends/tpm/tpm_util.c
+@@ -30,6 +30,7 @@
+ #include "system/tpm_backend.h"
+ #include "system/tpm_util.h"
+ #include "trace.h"
++#include "qapi/qapi-builtin-type-infos.h"
  
+ /* tpm backend property */
+ 
+@@ -77,7 +78,7 @@ static void release_tpm(Object *obj, const char *name, void *opaque)
+ }
+ 
+ const PropertyInfo qdev_prop_tpm = {
+-    .type  = "str",
++    .qapi_type = &str_type_info,
+     .description = "ID of a tpm to use as a backend",
+     .get   = get_tpm,
+     .set   = set_tpm,
+diff --git a/migration/options.c b/migration/options.c
+index 46d040fc3f25..029282a1605c 100644
+--- a/migration/options.c
++++ b/migration/options.c
+@@ -37,6 +37,8 @@
+ #include "ram.h"
+ #include "options.h"
+ #include "system/kvm.h"
++#include "qapi/qapi-builtin-type-infos.h"
++#include "qapi/qapi-type-infos-common.h"
+ 
+ /* Maximum migrate downtime set to 2000 seconds */
+ #define MAX_MIGRATE_DOWNTIME_SECONDS 2000
+@@ -294,7 +296,7 @@ static void set_default_value_tls_opt(ObjectProperty *op, const Property *prop)
+  * TYPE_MIGRATION's TLS options.
+  */
+ const PropertyInfo qdev_prop_StrOrNull = {
+-    .type  = "StrOrNull",
++    .qapi_type = &StrOrNull_type_info,
+     .get = get_StrOrNull,
+     .set = set_StrOrNull,
+     .release = release_StrOrNull,
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index ae9bdca9df82..d0354a4d02af 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -30,6 +30,7 @@
+ #include "tcg/tcg.h"
+ #include "fpu/softfloat.h"
+ #include "target/sparc/translate.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ //#define DEBUG_FEATURES
+ 
+@@ -948,7 +949,7 @@ static void sparc_set_nwindows(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo qdev_prop_nwindows = {
+-    .type  = "int",
++    .qapi_type = &int_type_info,
+     .description = "Number of register windows",
+     .get   = sparc_get_nwindows,
+     .set   = sparc_set_nwindows,
 
 -- 
 2.56.0.116.g6de20f6092dc

@@ -1,164 +1,120 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A827606A32F
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:16:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4726606A319
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:22:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Z8lS75wz
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=jQO/yW43
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Td-0003f8-Jx; Tue, 20 Oct 2026 06:53:53 -0400
+	id 1xJ7uj-0007Et-Bv; Tue, 20 Oct 2026 07:21:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Ql-0008GM-HS
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:50:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Qh-0006P3-6E
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:50:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493449;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=S8kTexksySb92RkWPQob17KtLeYJq8y0yNIndqLcc+s=;
- b=Z8lS75wzcChZmK+IAj6UeCAhW/MWPErgMN2qYB8ST7M3+q3Uy2VKFA4briUSK6R+o9vV8H
- UGFNaMCg3XyO8loeItTDoprLyfbynuecsGl7YGs2boQeHeokzqX/hgrfnIZB+mfFAzluJt
- ogZDpTugsOtDeDdUysCqaHO5WijGr8I=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-7M2NqJufMDOobZCWpwZs9w-1; Tue,
- 20 Oct 2026 10:50:45 +0000
-X-MC-Unique: 7M2NqJufMDOobZCWpwZs9w-1
-X-Mimecast-MFC-AGG-ID: 7M2NqJufMDOobZCWpwZs9w_1792493441
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5E3CE1954AF3; Tue, 20 Oct 2026 10:50:41 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4CA251956095; Tue, 20 Oct 2026 10:50:38 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:06 +0400
-Subject: [PATCH v7 49/65] include: add QEMU_REPEAT helper macro
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJ7ug-0007DO-GQ
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 07:21:51 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJ7uZ-0003BD-Vi
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 07:21:48 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4a1e477fe16so15519305e9.1
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 04:21:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792495302; x=1793100102; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=2/y6WVmeqG1OPwYNPz9215YT6b6rVbd6ecgXKvSOZTs=;
+ b=jQO/yW43EcYElqG/45L5JwELhTQYdPE+2z/OpDkIGIf4SJx1a+IaGLg/D6uCLNgFUl
+ Wdq9DzFsqwstM6sAOQozRCB+2P+SdtK+ySvefYC7uzo+mGH+5uHmpWOXrCdbg3rvXxoe
+ eaOu1pbOaG7Ysv06M25UP7kQ7e8JnpOG49tpQZC6rQEHBG9e1C1YGvsG6RhaL9hXVZ8u
+ FsRgFvBnnQBHwjzN8EnVvOj2U16VYdOu6DB4XlKDppYFXn2hKYJ0RsT2E25s9Gxx61Eu
+ yrZOf/F+iNvMdixMe73wcQIqzqiAwXRROlATYkwEZHv16zuTAboV2huBsVWJO9XdW/eE
+ bFnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792495302; x=1793100102;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=2/y6WVmeqG1OPwYNPz9215YT6b6rVbd6ecgXKvSOZTs=;
+ b=mb18i7jHP9sAUfCyZVQE9oQddxdTvYsa/1GXuQGL1ysQuTMdN+pUucNIJmh9ip102N
+ d1YbFSvNvfQdxTVNZCXO4nqOz9LgYm1uy9q9S/OUHRHHgz2/uGPpsbHSjm7MHdq7SNas
+ u8a8kuMn1a1tgCXns3aGyrxIqW90slgpI5hMW3pxZPKZZRTJlMra79QjyQOsSOG+V9zV
+ ff/2DSosPIu3pdqHVgmsZJ9yrUtm9Qfy2OuH1S4KeDb6kuefAOgrwMCtwszzB7yJ6vh7
+ p4eEMfEwy6z4r4+eB14I6e1Gfs2y2ApV3kQjO0Lvk/qqOPGOb1ArH91rSwd8mjeepY+S
+ dajw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzfJggB/DXz3u38srh1wFQwy5MkuSydBX0l12cqBvRMGwnPJ9Sb9CndOnIhtJD8/xR95Aey14XdHg==@nongnu.org
+X-Gm-Message-State: AFq9FYJwPmfwyXrrm0KZ7JMND1K5+WgTfbOs5X96qO9/YCFN3Ddn38p2
+ /dO6LwcCwzHIkXvBVnIXwzK96cO4BIib0VQnXfW98im7u6sLbVoCN8lAc+W1hZftrq4=
+X-Gm-Gg: AYBFou2OOzGSTuyybH0vWVOuFnKg1A6B2s6ZWfq4CVwu0w+0Ir3Txk4fsn8nuJ7dGco
+ M9gleDRVjKpxHx5FeTE6oOj62bYEy3KU5adhQfW36Q31FOmeUmx2BPXG5NWv03WEcyUYWVQ73ha
+ EpZjbkTQkhzkawjAptkw33qGza0LywwpHCHcIzCKI7EsddpbNsqNad5XFcUesafOEY0u6POIbip
+ SoC8uV5ZS3vcuwKrGq1PIpxF5P+6ww+LBDwhwLnwLCkhGhAe7rQ0H7Z66TnYQJvXbnfjgaSkSCD
+ ha1dUt6+bw6O2I7boF29Ns5J6Ik0wuOe2aPGiNtrpdC88KCkIymzeQYIRunJ7F8mgFvQdLZkO/y
+ PE3lrpDWNwD9I6wXJTwSVbpqbCfFbKeQ3IOV0/fj3hVh6tuvan2B1SENkNEEsG1XsBw0xaNzXJb
+ fePo4s+VUfqvk8mzKed4NvCGKQCEEaCqjGTzjkNU13RQGJ4UeYKEU3tdGkq9+She6ADb7yHA==
+X-Received: by 2002:a05:600c:c166:b0:4a1:f736:79f3 with SMTP id
+ 5b1f17b1804b1-4a1f7367b83mr24851065e9.5.1792495302093; 
+ Tue, 20 Oct 2026 04:21:42 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a1f8016c93sm29458585e9.5.2026.10.20.04.21.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Oct 2026 04:21:41 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 7919C5F8DC;
+ Tue, 20 Oct 2026 12:21:40 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Bibo Mao <maobibo@loongson.cn>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Daniel Henrique Barboza
+ <daniel.barboza@oss.qualcomm.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Farman <farman@linux.ibm.com>,  Song Gao <17746591750@163.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,  David Hildenbrand
+ <david@kernel.org>,  Bernhard Beschow <shentey@gmail.com>,  Halil Pasic
+ <pasic@linux.ibm.com>,  Nicholas Piggin <npiggin@gmail.com>,  Paul Durrant
+ <paul@xen.org>,  =?utf-8?Q?Bj=C3=B6rn?= Walk <bwalk@linux.ibm.com>,  Jiaxun
+ Yang <jiaxun.yang@flygoat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,  Palmer Dabbelt <palmer@dabbelt.com>,
+ qemu-s390x@nongnu.org,  David Woodhouse <dwmw2@infradead.org>,  Liu
+ Zhiwei <zhiwei_liu@linux.alibaba.com>,  qemu-ppc@nongnu.org,  Marcelo
+ Tosatti <mtosatti@redhat.com>,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
+ linux-edac@vger.kernel.org,  Glenn Miles <milesg@linux.ibm.com>,  Chao
+ Liu <chao.liu@processmission.com>,  Cornelia Huck <cohuck@redhat.com>,
+ Gautam Menghani <gautam@linux.ibm.com>,  Xianglai Li
+ <lixianglai@loongson.cn>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Chinmay Rath <rathc@linux.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Matthew Rosato
+ <mjrosato@linux.ibm.com>,  Amit Machhiwal <amachhiw@linux.ibm.com>,  Zhao
+ Liu <zhao1.liu@intel.com>,  Weiwei Li <liwei1518@gmail.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Mauro Carvalho Chehab
+ <mchehab+huawei@kernel.org>,  qemu-riscv@nongnu.org
+Subject: Re: [PATCH 00/23] kvm: introduce KVMCPUOps
+In-Reply-To: <20261020104320.3686723-1-alex.bennee@linaro.org> ("Alex
+ =?utf-8?Q?Benn=C3=A9e=22's?= message of "Tue, 20 Oct 2026 11:42:54 +0100")
+References: <20261020104320.3686723-1-alex.bennee@linaro.org>
+User-Agent: mu4e 1.14.4; emacs 30.1
+Date: Tue, 20 Oct 2026 12:21:40 +0100
+Message-ID: <87se2039dn.fsf@draig.linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-49-431a86b02b58@redhat.com>
-References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
-In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, 
- Michael Roth <michael.roth@amd.com>, John Snow <jsnow@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, Eric Blake <eblake@redhat.com>, 
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Jason Wang <jasowangio@gmail.com>, Marcelo Tosatti <mtosatti@redhat.com>, 
- kvm@vger.kernel.org, Alberto Garcia <berto@igalia.com>, 
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Zhao Liu <zhao1.liu@intel.com>, Jonathan Cameron <jic23@kernel.org>, 
- Junjie Cao <junjie.cao@intel.com>, Anisa Su <anisa.su@samsung.com>, 
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, 
- Jagannathan Raman <jag.raman@oracle.com>, 
- John Levon <john.levon@nutanix.com>, 
- Thanos Makatos <thanos.makatos@nutanix.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-block@nongnu.org, 
- linux-cxl@vger.kernel.org, qemu-s390x@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>, Sergio Lopez <slp@redhat.com>, 
- qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Chao Liu <chao.liu@processmission.com>, qemu-riscv@nongnu.org, 
- Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>, 
- Xianglai Li <lixianglai@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Pedro Barbuda <pbarbuda@microsoft.com>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Amit Machhiwal <amachhiw@linux.ibm.com>, qemu-ppc@nongnu.org, 
- Zhang Chen <zhangckid@gmail.com>, Li Zhijian <lizhijian@fujitsu.com>, 
- Alistair Francis <alistair@alistair23.me>, Alexander Graf <graf@amazon.com>, 
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
- zhenwei pi <zhenwei.pi@linux.dev>, Ani Sinha <anisinha@redhat.com>, 
- Luc Michel <luc@lmichel.fr>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Samuel Tardieu <sam@rfc1149.net>, "Denis V. Lunev" <den@openvz.org>, 
- FangSheng Huang <FangSheng.Huang@amd.com>, Tyrone Ting <kfting@nuvoton.com>, 
- Hao Wu <wuhaotsh@google.com>, Keith Busch <kbusch@kernel.org>, 
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
- Aditya Gupta <adityag@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>, 
- Conor Dooley <conor@kernel.org>, 
- Sebastian Huber <sebastian.huber@embedded-brains.de>, 
- Halil Pasic <pasic@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Jason Herne <jjherne@linux.ibm.com>, Titus Rwantare <titusr@google.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony PERARD <anthony@xenproject.org>, Peter Xu <peterx@redhat.com>, 
- Chinmay Rath <rathc@linux.ibm.com>, 
- Hendrik Brueckner <brueckner@linux.ibm.com>, xen-devel@lists.xenproject.org, 
- Roman Bolshakov <rbolshakov@ddn.com>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, Fam Zheng <fam@euphon.net>, 
- Farhan Ali <alifm@linux.ibm.com>, Alex Williamson <alex@shazbot.org>, 
- Tao Tang <tangtao1634@phytium.com.cn>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, 
- Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
- Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5069;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=QfToyuYJOLlF7sVISH3TkcbrVSBGm2Ii2KsCu8httjE=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZctD1NQTngqU/jBCkEfMek9xa0vMpb6NJE8
- n3GhucWk+2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXAAKCRDa6OEJdZac
- 5Ql3D/wOI62xjJd8gtsu1K015Mj1esGNk3N1OdLVzhvzC8XbQvPEjY9tEjanTvUT/tSDkebzQqp
- wfSbuNHZo2LWhz4d7Wb0804H4k/QbpWXXItKX82506hR5MwcSm8hUjY/X6b3sz99rcdsWT0OYuB
- N2PLFvmXrXrT34rd2lk3l9IEv008VGElWvHn+lGOsyEFdIi/zoDQuQTkGXQNX9r8iwDerholxzT
- +YZ5vO9NOWYzlEcvAPuA1dqTZKv0M9sHG++CE+6rKm7la2iiLolf0dIPC9Lek616L5XTeNy7Con
- EF8tZhpLovhA6XrZr2f/PiaJxHf5yCU0Sq0nNl8Fbybo63RLmGHKN3Eu3hwqRCLDy9l1/5v++ol
- S9hoHIJukwRZWnX0ts9nDy7TeFwjlL2jTa5zYCWg9W7/sdnOtFpaRYdj/lgqkMlTa+D86mUvx9a
- 9InKktX0yyqWi5G5hNKi9NOS0lo8H7z0cS/vAMcv16S106YylJ7/t+pIcH0uo8VsZZRuXZ7h/LE
- P4apvjyFIb53bu2HO5H2KfwPzrSgW8jM6CGO9+0RBtkG7nQ+6OYilLtspSRo2mGJD8ejzD5m8U6
- /mj9N3MBuGZckwN2lJSTywe0n7qy4Ybb5v/f4A7HZtbB78gEulqlZppqsvIUcivzHg3tITYzqlL
- tsVVC+qXxIFzhWg==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: fC6Mj-5F9FMGgdxOWzaaXwYmGfRP6NU8y7EyBlmhFaE_1792493441
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -170,150 +126,25 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Introduce a macro used in following commit, and convert a few existing
-candidates. Inspired by a similar macro in Linux kernel/trace/bpf_trace.c
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- hw/misc/tz-ppc.c               | 19 ++-----------------
- hw/remote/vfio-user-obj.c      | 17 +++--------------
- include/hw/cxl/cxl_component.h |  5 +----
- include/qemu/osdep.h           | 33 +++++++++++++++++++++++++++++++++
- 4 files changed, 39 insertions(+), 35 deletions(-)
+> There is a world coming where we can have a KVM interface which
+> supports multiple architectures. The old style approach of using
+> linking to resolve per arch kvm_arch_foo handlers won't scale and is
+> also slightly antithetical to the flexible not-quite object orientated
+> way we do things in QEMU.
 
-diff --git a/hw/misc/tz-ppc.c b/hw/misc/tz-ppc.c
-index 6f820430eed8..5f09ce164c19 100644
---- a/hw/misc/tz-ppc.c
-+++ b/hw/misc/tz-ppc.c
-@@ -303,26 +303,11 @@ static const VMStateDescription tz_ppc_vmstate = {
- 
- #define DEFINE_PORT(N)                                          \
-     DEFINE_PROP_LINK("port[" #N "]", TZPPC, port[N].downstream, \
--                     TYPE_MEMORY_REGION, MemoryRegion *)
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
- 
- static const Property tz_ppc_properties[] = {
-     DEFINE_PROP_UINT32("NONSEC_MASK", TZPPC, nonsec_mask, 0),
--    DEFINE_PORT(0),
--    DEFINE_PORT(1),
--    DEFINE_PORT(2),
--    DEFINE_PORT(3),
--    DEFINE_PORT(4),
--    DEFINE_PORT(5),
--    DEFINE_PORT(6),
--    DEFINE_PORT(7),
--    DEFINE_PORT(8),
--    DEFINE_PORT(9),
--    DEFINE_PORT(10),
--    DEFINE_PORT(11),
--    DEFINE_PORT(12),
--    DEFINE_PORT(13),
--    DEFINE_PORT(14),
--    DEFINE_PORT(15),
-+    QEMU_REPEAT(TZ_NUM_PORTS, DEFINE_PORT)
- };
- 
- static void tz_ppc_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
-index 7e6819f670b5..84c3ff05cfb8 100644
---- a/hw/remote/vfio-user-obj.c
-+++ b/hw/remote/vfio-user-obj.c
-@@ -496,22 +496,11 @@ static size_t vfu_object_bar_rw(PCIDevice *pci_dev, int pci_bar,
-                                  buf, count, is_write);                        \
-     }                                                                          \
- 
--VFU_OBJECT_BAR_HANDLER(0)
--VFU_OBJECT_BAR_HANDLER(1)
--VFU_OBJECT_BAR_HANDLER(2)
--VFU_OBJECT_BAR_HANDLER(3)
--VFU_OBJECT_BAR_HANDLER(4)
--VFU_OBJECT_BAR_HANDLER(5)
--VFU_OBJECT_BAR_HANDLER(6)
-+QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER)
- 
-+#define VFU_OBJECT_BAR_HANDLER_PTR(BAR_NO) vfu_object_bar##BAR_NO##_handler,
- static vfu_region_access_cb_t *vfu_object_bar_handlers[PCI_NUM_REGIONS] = {
--    &vfu_object_bar0_handler,
--    &vfu_object_bar1_handler,
--    &vfu_object_bar2_handler,
--    &vfu_object_bar3_handler,
--    &vfu_object_bar4_handler,
--    &vfu_object_bar5_handler,
--    &vfu_object_bar6_handler,
-+    QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER_PTR)
- };
- 
- /**
-diff --git a/include/hw/cxl/cxl_component.h b/include/hw/cxl/cxl_component.h
-index ffc82202206c..fca8b7055ccd 100644
---- a/include/hw/cxl/cxl_component.h
-+++ b/include/hw/cxl/cxl_component.h
-@@ -186,10 +186,7 @@ REG32(CXL_HDM_DECODER_GLOBAL_CONTROL, CXL_HDM_REGISTERS_OFFSET + 4)
- /* Support 4 decoders at all levels of topology */
- #define CXL_HDM_DECODER_COUNT 4
- 
--HDM_DECODER_INIT(0);
--HDM_DECODER_INIT(1);
--HDM_DECODER_INIT(2);
--HDM_DECODER_INIT(3);
-+QEMU_REPEAT(CXL_HDM_DECODER_COUNT, HDM_DECODER_INIT)
- 
- /*
-  * CXL r3.1 Section 8.2.4.21: CXL Extended Security Capability Structure
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 1ec5b42230be..a5e7ff99cb89 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -191,6 +191,39 @@ extern "C" {
- 
- #include "qemu/typedefs.h"
- 
-+/*
-+ * QEMU_REPEAT(n, m) - invoke m(0) m(1) ... m(n-1)
-+ *
-+ * Expands to n invocations of m, each with a literal integer argument.
-+ * n must be a compile-time constant in 0..16.
-+ *
-+ * Example - generate 4 per-index function definitions:
-+ *
-+ *   #define DEFINE_GETTER(i) \
-+ *   static int get_##i(void) { return values[i]; }
-+ *
-+ *   QEMU_REPEAT(4, DEFINE_GETTER)
-+ */
-+#define QEMU_REPEAT_0(m)
-+#define QEMU_REPEAT_1(m)   QEMU_REPEAT_0(m)   m(0)
-+#define QEMU_REPEAT_2(m)   QEMU_REPEAT_1(m)   m(1)
-+#define QEMU_REPEAT_3(m)   QEMU_REPEAT_2(m)   m(2)
-+#define QEMU_REPEAT_4(m)   QEMU_REPEAT_3(m)   m(3)
-+#define QEMU_REPEAT_5(m)   QEMU_REPEAT_4(m)   m(4)
-+#define QEMU_REPEAT_6(m)   QEMU_REPEAT_5(m)   m(5)
-+#define QEMU_REPEAT_7(m)   QEMU_REPEAT_6(m)   m(6)
-+#define QEMU_REPEAT_8(m)   QEMU_REPEAT_7(m)   m(7)
-+#define QEMU_REPEAT_9(m)   QEMU_REPEAT_8(m)   m(8)
-+#define QEMU_REPEAT_10(m)  QEMU_REPEAT_9(m)   m(9)
-+#define QEMU_REPEAT_11(m)  QEMU_REPEAT_10(m)  m(10)
-+#define QEMU_REPEAT_12(m)  QEMU_REPEAT_11(m)  m(11)
-+#define QEMU_REPEAT_13(m)  QEMU_REPEAT_12(m)  m(12)
-+#define QEMU_REPEAT_14(m)  QEMU_REPEAT_13(m)  m(13)
-+#define QEMU_REPEAT_15(m)  QEMU_REPEAT_14(m)  m(14)
-+#define QEMU_REPEAT_16(m)  QEMU_REPEAT_15(m)  m(15)
-+#define QEMU_REPEAT_(n, m) QEMU_REPEAT_##n(m)
-+#define QEMU_REPEAT(n, m)  QEMU_REPEAT_(n, m)
-+
- /**
-  * Mark a function that executes in coroutine context
-  *
+In case it's not obvious I intended the prefix to be RFC as it needs
+discussion ;-)
 
--- 
-2.56.0.116.g6de20f6092dc
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

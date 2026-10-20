@@ -1,59 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C1A2606A31A
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C559606A31D
 	for <qemu-arm@archiver.kernel.org>; Tue, 20 Oct 2026 11:02:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=bu4casYT
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=T8Hmmr0w
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJ7Uf-00074o-R8; Tue, 20 Oct 2026 06:54:58 -0400
+	id 1xJ7Pm-0005Op-Jd; Tue, 20 Oct 2026 06:49:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Rq-00017E-RE
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:03 -0400
+ id 1xJ7OG-0002p4-U6
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:48:21 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJ7Rm-0006gY-KD
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:52:02 -0400
+ id 1xJ7OE-0005UV-Es
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 06:48:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792493516;
+ s=mimecast20190719; t=1792493297;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LYACgjhTWZ9q+fLhnzsamP9g+AzKgXq2yAfu5fEslcg=;
- b=bu4casYToARdLgFBCkFiBQfC3w0GQGvFhpfS2TE53hWqj/AlYV/kcDS8vD6H5soXgElek+
- RAzzIUd4s1bcUjtHVOUVKB+4ZGBUwnkXSv3ENpT5OP+Uwe81Br3XLvzb/o1LAso8sTJh4G
- Z4I5ydCoySnRiz0hcR3SkrZui+Wl7oc=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=6lRxJze+aC9KBEtw6tohukWxBkXDlU7+bxwjduyrfYI=;
+ b=T8Hmmr0wPxOps+cEpvT1pNBup1Ubytf8nwPcV0pEjraEq3C7mgP/SQ6t+pLNHXuTpWtM88
+ cOEm92TvcIZP3wVgNs9fBrFgm+A07px1Z8DmTqsD2BNwTXLCxrUcXRs5xh+AxmWN/8fHrC
+ EGXstwYWb+hRYK1excOilHJBIcmB2bo=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-674-wz3IHZmqNpWyL00b1VAr7Q-1; Tue,
- 20 Oct 2026 10:51:46 +0000
-X-MC-Unique: wz3IHZmqNpWyL00b1VAr7Q-1
-X-Mimecast-MFC-AGG-ID: wz3IHZmqNpWyL00b1VAr7Q_1792493502
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-90-lr-fJuH1N7yjYLe80xUfpw-1; Tue,
+ 20 Oct 2026 10:48:12 +0000
+X-MC-Unique: lr-fJuH1N7yjYLe80xUfpw-1
+X-Mimecast-MFC-AGG-ID: lr-fJuH1N7yjYLe80xUfpw_1792493288
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 390C7180132B; Tue, 20 Oct 2026 10:51:42 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4EE0619560AD; Tue, 20 Oct 2026 10:48:08 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AEC3230000E7; Tue, 20 Oct 2026 10:51:39 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 57984418; Tue, 20 Oct 2026 10:48:05 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Oct 2026 14:46:18 +0400
-Subject: [PATCH v7 61/65] qdev: remove deprecated PropertyInfo.type and
- .enum_table fields
+Date: Tue, 20 Oct 2026 14:45:38 +0400
+Subject: [PATCH v7 21/65] x86: convert OnOffAuto properties to QAPI-aware
+ registration
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-qom-qapi-v7-61-431a86b02b58@redhat.com>
+Message-Id: <20261020-qom-qapi-v7-21-431a86b02b58@redhat.com>
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 In-Reply-To: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
 To: qemu-devel@nongnu.org
@@ -128,38 +128,39 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
  Eric Auger <eric.auger@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5656;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6572;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=GW0iWX+ovnUEAGVG0BxcFS64OjWdn47qGiXFBFBt6kE=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZduD65Qr6F408CFXCHRwiWcGKpWuyckav27
- m0L7FlHyHOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGXQAKCRDa6OEJdZac
- 5SIyD/9K494S/RKkzAsSOv9T/MgMAP/WgYu11N3TAUAFlouXn2Swjs8mxH+DvN0TL1zOI7DEln4
- fWF3jd4K9yGpeOdK3FVhlUuUGIu+vCahmXGsC2IRNnSgUJb4k2RHjeIiyWV/jhtNA/9wx465q/C
- 0OSjxbW+EtYZ3lz0RkjF6YDM+tm9WVYqnQnMDbFuzngcpgqksdveXP06Xu2THNHykMaEy9m8nir
- mzxnTI67NabjcysMX+MF1Qgy6e2kI6X8PSi5Ii4CpJXlg6NszHB8aISyuxGh3En/Fv2Y/2f/fzC
- sIKxBFBcSVSMYhRpwzAZZCX8YSUbh2Y42NRkfwZMI08gHA+sl8pYFdenolCBtd8mEDlWjtCWGLB
- c97FNo8YgEqQpDTNZOal6LhBdRktum+TSi1XlcqMndZ/TCO/g5x8g/hnsFrp/+6WHt+4VAegrzT
- mkGeBr/Y+ok5ueSlc+kTZYEoLpKHAsHeYM3r+GcPnXOgCk9GvkOrAfaAoHc155+qqmkOyAUeWJu
- V4X338aVVee/lykp8yDDcAkwPVhw1DH0lCRXuHCA2/aR8xhiZg8zMindNp8TtG/QbTUCwDa/WMw
- hJcKbcWKMOqkjIZn3eNTlzVwzpE6SFeoKKAnXaQFooDRlL0a/mAzPqJ1ahGBT4iLEdc/AVpxjkM
- ETt5bqcvNS2VmlQ==
+ bh=b7fcdLGC+2GPa3Wjcm0RtVCaYcyqYMRaEmGki/G6FxE=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq10ZZL3Tdedh9aQxPbswLDhqZdFL2lbqwZPM3S
+ vvP3WGv3QuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatdGWQAKCRDa6OEJdZac
+ 5ZKBEACTX7yzzr/j4WtC3RVqTKIFFKTc4t5cKUo1/m5rQXWpVE294kwdKLk1lDmvrKiKRvWP4EQ
+ IXceFiuouMslZldIx6rvaH8qSwjZojuOdcYtS9kFgfcaJK8VG1oplTpXBTZyB+FZ5/Gs3aBsMEB
+ t5tdVvlWE3vGgNVKnRHihfelAI1rsOCfCvhEN3PVuOpYZHZKn030ec8DuqYmBLIN4JK4NxVlOEq
+ I4l+7RRUjTn+UQESYBdkTzD/7kKYnGyn1sh0NdEggBXI+qh4XVF67TCIe6Ki74Wu524pvWiTdln
+ a3Zk5ywcYwrxnmqPHXrSS1L0qdbKMXK4AQgM0zIudWEbOABj6LN4FDyS8jBaTa6vmZ+6wldFjwP
+ ORPV5b4B47gEo08l0vCoYvWt7VU6AifaMjSwi+P+U/W7XfjYPyU6XXZsoqfCb+ZS2MhN4qE70/R
+ geuTBaQWhAXFMMHFgunyJFt2hCIcqJ0Wwerw6vSBrR6qY7x8Q+Oq5HHVjKdjCf4wdFX8VTMobJX
+ f2lLxWx1ceEwmSbW9y3AQIIpTNSfdZx9uwaDx+qUSVHWy4bCIARc+2wjb1w2wN7BzvcSjKSi51x
+ /DLhpKPP5A6gaSOHyxMUXd4RmFQntMM0WO6mwAlY2oD0erBahJsrhVsPBr0wSYuH41Bmo80lsiA
+ bEw6ebgS3xjIi8A==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 2V6L4Bcs7CQfUJsyeKfQF-hiLTcS_-hPPqApUxzz7rw_1792493502
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: Ck9x76J5v-hpUfvOCIctsb7iSkd5vW1luxM0lwcHtF8_1792493288
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.329,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,140 +179,182 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Now that all PropertyInfo definitions use .qapi_type, remove the
-legacy .type (string) and .enum_table fields from PropertyInfo, and
-the .arrayinfo/.arrayfieldsize fields from Property.
-
-Remove fallback branches in qdev_property_add_static() and
-qdev_class_add_property() that used object_property_add() with
-prop->info->type: these always use the QAPI-aware registration
-path now. Simplify qdev_propinfo_enum_lookup(), prop_array_info()
-and prop_array_elem_size() to use the new fields directly.
+Convert the smm, acpi, pit, and pic OnOffAuto properties from
+manual visitor-based callbacks to property_add_qapi_enum().
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/core/qdev-properties.c         | 58 ++++++++++++---------------------------
- include/hw/core/qdev-properties.h |  4 ---
- 2 files changed, 17 insertions(+), 45 deletions(-)
+ hw/i386/x86.c | 104 +++++++++++++++++++++++++---------------------------------
+ 1 file changed, 45 insertions(+), 59 deletions(-)
 
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index 5c403cc2e57e..a121878467e1 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -103,11 +103,8 @@ static ObjectPropertyAccessor *field_prop_setter(const PropertyInfo *info)
- 
- const QEnumLookup *qdev_propinfo_enum_lookup(const PropertyInfo *info)
- {
--    if (info->qapi_type) {
--        assert(info->qapi_type->lookup);
--        return info->qapi_type->lookup;
--    }
--    return info->enum_table;
-+    assert(info->qapi_type->lookup);
-+    return info->qapi_type->lookup;
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index f8ba3244e221..63f297a10532 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -24,7 +24,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+-#include "qapi/qapi-visit-common.h"
++#include "qapi/qapi-type-infos-common.h"
+ #include "qapi/qapi-visit-machine.h"
+ #include "qapi/visitor.h"
+ #include "system/qtest.h"
+@@ -188,21 +188,16 @@ bool x86_machine_is_smm_enabled(const X86MachineState *x86ms)
+     return false;
  }
  
- void qdev_propinfo_get_enum(Object *obj, Visitor *v, const char *name,
-@@ -668,18 +665,12 @@ struct ArrayElementList {
- 
- static const PropertyInfo *prop_array_info(const Property *prop)
+-static void x86_machine_get_smm(Object *obj, Visitor *v, const char *name,
+-                               void *opaque, Error **errp)
++static int x86_machine_get_smm(Object *obj, Error **errp)
  {
--    if (prop->info->element_info) {
--        return prop->info->element_info;
--    }
--    return prop->arrayinfo;
-+    return prop->info->element_info;
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-    OnOffAuto smm = x86ms->smm;
+-
+-    visit_type_OnOffAuto(v, name, &smm, errp);
++    return x86ms->smm;
  }
  
- static int prop_array_elem_size(const Property *prop)
+-static void x86_machine_set_smm(Object *obj, Visitor *v, const char *name,
+-                               void *opaque, Error **errp)
++static void x86_machine_set_smm(Object *obj, int value, Error **errp)
  {
--    if (prop->info->element_size) {
--        return prop->info->element_size;
--    }
--    return prop->arrayfieldsize;
-+    return prop->info->element_size;
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-
+-    visit_type_OnOffAuto(v, name, &x86ms->smm, errp);
++    x86ms->smm = value;
  }
  
- /*
-@@ -1224,20 +1215,13 @@ void qdev_property_add_static(DeviceState *dev, const Property *prop)
-     const QAPITypeInfo *qapi_type = qdev_prop_qapi_type(prop);
+ bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms)
+@@ -213,55 +208,40 @@ bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms)
+     return true;
+ }
  
-     assert(!prop->info->create);
-+    assert(qapi_type);
+-static void x86_machine_get_acpi(Object *obj, Visitor *v, const char *name,
+-                                 void *opaque, Error **errp)
++static int x86_machine_get_acpi(Object *obj, Error **errp)
+ {
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-    OnOffAuto acpi = x86ms->acpi;
+-
+-    visit_type_OnOffAuto(v, name, &acpi, errp);
++    return x86ms->acpi;
+ }
  
--    if (qapi_type) {
--        op = object_property_add_qapi(obj, prop->name, qapi_type,
--                                      field_prop_getter(prop->info),
--                                      field_prop_setter(prop->info),
--                                      prop->info->release,
--                                      (Property *)prop);
--    } else {
--        op = object_property_add(obj, prop->name, prop->info->type,
--                                 field_prop_getter(prop->info),
--                                 field_prop_setter(prop->info),
--                                 prop->info->release,
--                                 (Property *)prop);
--    }
-+    op = object_property_add_qapi(obj, prop->name, qapi_type,
-+                                  field_prop_getter(prop->info),
-+                                  field_prop_setter(prop->info),
-+                                  prop->info->release,
-+                                  (Property *)prop);
+-static void x86_machine_set_acpi(Object *obj, Visitor *v, const char *name,
+-                                 void *opaque, Error **errp)
++static void x86_machine_set_acpi(Object *obj, int value, Error **errp)
+ {
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-
+-    visit_type_OnOffAuto(v, name, &x86ms->acpi, errp);
++    x86ms->acpi = value;
+ }
  
-     object_property_set_description(obj, prop->name,
-                                     prop->info->description);
-@@ -1261,21 +1245,13 @@ static void qdev_class_add_property(DeviceClass *klass, const char *name,
-     } else {
-         const QAPITypeInfo *qapi_type = qdev_prop_qapi_type(prop);
+-static void x86_machine_get_pit(Object *obj, Visitor *v, const char *name,
+-                                    void *opaque, Error **errp)
++static int x86_machine_get_pit(Object *obj, Error **errp)
+ {
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-    OnOffAuto pit = x86ms->pit;
+-
+-    visit_type_OnOffAuto(v, name, &pit, errp);
++    return x86ms->pit;
+ }
  
--        if (qapi_type) {
--            op = object_class_property_add_qapi(oc,
--                                               name, qapi_type,
--                                               field_prop_getter(prop->info),
--                                               field_prop_setter(prop->info),
--                                               prop->info->release,
--                                               (Property *)prop);
--        } else {
--            op = object_class_property_add(oc,
--                                           name, prop->info->type,
--                                           field_prop_getter(prop->info),
--                                           field_prop_setter(prop->info),
--                                           prop->info->release,
--                                           (Property *)prop);
--        }
-+        assert(qapi_type);
-+        op = object_class_property_add_qapi(oc,
-+                                            name, qapi_type,
-+                                            field_prop_getter(prop->info),
-+                                            field_prop_setter(prop->info),
-+                                            prop->info->release,
-+                                            (Property *)prop);
-     }
-     if (prop->set_default) {
-         prop->info->set_default_value(op, prop);
-diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
-index 39f95ce7a3c6..2267e734d1fd 100644
---- a/include/hw/core/qdev-properties.h
-+++ b/include/hw/core/qdev-properties.h
-@@ -23,17 +23,13 @@ struct Property {
-         int64_t i;
-         uint64_t u;
-     } defval;
--    const PropertyInfo *arrayinfo;
-     int          arrayoffset;
--    int          arrayfieldsize;
-     uint8_t      bitnr;
-     bool         set_default;
- };
+-static void x86_machine_set_pit(Object *obj, Visitor *v, const char *name,
+-                                    void *opaque, Error **errp)
++static void x86_machine_set_pit(Object *obj, int value, Error **errp)
+ {
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-
+-    visit_type_OnOffAuto(v, name, &x86ms->pit, errp);
++    x86ms->pit = value;
+ }
  
- struct PropertyInfo {
--    const char *type;
-     const char *description;
--    const QEnumLookup *enum_table;
-     const QAPITypeInfo *qapi_type;
-     const struct PropertyInfo *element_info;
-     int element_size;
+-static void x86_machine_get_pic(Object *obj, Visitor *v, const char *name,
+-                                void *opaque, Error **errp)
++static int x86_machine_get_pic(Object *obj, Error **errp)
+ {
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-    OnOffAuto pic = x86ms->pic;
+-
+-    visit_type_OnOffAuto(v, name, &pic, errp);
++    return x86ms->pic;
+ }
+ 
+-static void x86_machine_set_pic(Object *obj, Visitor *v, const char *name,
+-                                void *opaque, Error **errp)
++static void x86_machine_set_pic(Object *obj, int value, Error **errp)
+ {
+     X86MachineState *x86ms = X86_MACHINE(obj);
+-
+-    visit_type_OnOffAuto(v, name, &x86ms->pic, errp);
++    x86ms->pic = value;
+ }
+ 
+ static char *x86_machine_get_oem_id(Object *obj, Error **errp)
+@@ -391,31 +371,37 @@ static void x86_machine_class_init(ObjectClass *oc, const void *data)
+     mc->kvm_type = x86_kvm_type;
+     nc->raise_nmi = x86_nmi;
+ 
+-    object_class_property_add(oc, X86_MACHINE_SMM, "OnOffAuto",
+-        x86_machine_get_smm, x86_machine_set_smm,
+-        NULL, NULL);
+-    object_class_property_set_description(oc, X86_MACHINE_SMM,
+-        "Enable SMM");
++    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
++        .name = X86_MACHINE_SMM,
++        .description = "Enable SMM",
++        .qapi_type = &OnOffAuto_type_info,
++        .get = x86_machine_get_smm,
++        .set = x86_machine_set_smm,
++    ));
+ 
+-    object_class_property_add(oc, X86_MACHINE_ACPI, "OnOffAuto",
+-        x86_machine_get_acpi, x86_machine_set_acpi,
+-        NULL, NULL);
+-    object_class_property_set_description(oc, X86_MACHINE_ACPI,
+-        "Enable ACPI");
++    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
++        .name = X86_MACHINE_ACPI,
++        .description = "Enable ACPI",
++        .qapi_type = &OnOffAuto_type_info,
++        .get = x86_machine_get_acpi,
++        .set = x86_machine_set_acpi,
++    ));
+ 
+-    object_class_property_add(oc, X86_MACHINE_PIT, "OnOffAuto",
+-                              x86_machine_get_pit,
+-                              x86_machine_set_pit,
+-                              NULL, NULL);
+-    object_class_property_set_description(oc, X86_MACHINE_PIT,
+-        "Enable i8254 PIT");
++    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
++        .name = X86_MACHINE_PIT,
++        .description = "Enable i8254 PIT",
++        .qapi_type = &OnOffAuto_type_info,
++        .get = x86_machine_get_pit,
++        .set = x86_machine_set_pit,
++    ));
+ 
+-    object_class_property_add(oc, X86_MACHINE_PIC, "OnOffAuto",
+-                              x86_machine_get_pic,
+-                              x86_machine_set_pic,
+-                              NULL, NULL);
+-    object_class_property_set_description(oc, X86_MACHINE_PIC,
+-        "Enable i8259 PIC");
++    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
++        .name = X86_MACHINE_PIC,
++        .description = "Enable i8259 PIC",
++        .qapi_type = &OnOffAuto_type_info,
++        .get = x86_machine_get_pic,
++        .set = x86_machine_set_pic,
++    ));
+ 
+     object_class_property_add_str(oc, X86_MACHINE_OEM_ID,
+                                   x86_machine_get_oem_id,
 
 -- 
 2.56.0.116.g6de20f6092dc

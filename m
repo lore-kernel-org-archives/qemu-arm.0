@@ -1,101 +1,90 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD441606A319
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 14:47:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 964B6606A32A
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 14:47:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=IRumJaxs
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=hJVuYNYS
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJXaX-00046N-0r; Wed, 21 Oct 2026 10:46:45 -0400
+	id 1xJXaT-00042j-Ps; Wed, 21 Oct 2026 10:46:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xJXaA-0003wg-AK
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 10:46:28 -0400
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xJXZR-0003qR-55
+ for qemu-arm@nongnu.org; Wed, 21 Oct 2026 10:45:40 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xJXa8-0004Qd-4k
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 10:46:21 -0400
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-8b0db268bd8so5160257b3.1
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 07:46:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792593977; cv=none;
- d=google.com; s=arc-20260327;
- b=oqrAoq/2zx4Y50YxcriWq2dyFT1m5VrwJiYz1J0Z7oq00bg+6lJL0oTz9LcOXxvlwg
- g9bcdTKLz2xac0vKjca2MBxTqiVeLIa0y2whPXp2Bx+cAzfYEF+SrYVOtfza2RZvbGG8
- 5274dlqtbFmlEiPA9SuTG76mpe5Go/xnEgJXmQlZBxDoY86/GiXI1ZRvA5oLc2KW7J5l
- w6O+2EcOHMv5xLuxT6gQxApS+GVrfouDvIz5VWiG6SguplH5rMJtV1pxo2GOIdSkgxBj
- AELtekOLozzSc9b6oK/SaW6DdgH4d9YO/aySZv2Peu+Ps5p8PdXR8/Vb0Ye6rZIH3z/l
- Ftew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=sSLtenY6QRNVBOJIpklEsN2/mmmmH+YqHZH3OdYMJCI=;
- fh=PKodlsZ4sLOulf3vcyB9a9UvxkkwctzJ7UL5PZ8dNXQ=;
- b=mAUmouL1WanRi0tXQWNTY7YDhOEBFf/BL3QtIhufRS8OoNWcsEWm5CwauNpuE1YR0/
- Gk/8f4xEKwo4ATHxSCFUMZHnnys6XMSFDqkp18tojV64ZKi2RwNM883eQOXputh2gG0e
- 7gICSezuwlnBMqdwQ9wYKsDC67xLWeWgrqBZx3wCMl0DQmVvNnlAiy3r3Fk6i3tEJNkh
- 43lxDC9Aonz3+US8I8Qd+WnvSjPWpWc0bD8k6JX2PykVM9b0CS2KI3fbbKQbXNHwKZc1
- /ebvsV0QivXGJMsR7gU1ffh1gBAeQCBH2Q8Zag21EGBtO8duuULXSEhHQ1LS6mPJ43pv
- VHkQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xJXZL-0004Og-ER
+ for qemu-arm@nongnu.org; Wed, 21 Oct 2026 10:45:35 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-48bbb06e746so486308f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 07:45:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792593977; x=1793198777; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=sSLtenY6QRNVBOJIpklEsN2/mmmmH+YqHZH3OdYMJCI=;
- b=IRumJaxs9FEHXZQezPHSZdhKRHhZnpXs8EVgrUz3U13mE6ntl5Hp7uudLkb2VNHrrt
- RF5aJUwIiHRDxrHAEgtcSz84Aypr92I8zWSZRJ+qZVGr4UUXHZT+cF9nVEhfIB/Iz7+c
- sRM8nuz2Ns4AJypmqU7wCeKHwZHE/b2vu5r2r/iABJ2U3eZ8BDiMIulHYsMkSXfO10T4
- OrKtUdbc/xwvlqcC8AAnZE03pYqq4Zxvfk82KX4EnEzB/qj/D/VIRG96sTBIxp0aUti/
- sq7GHfc5iVfSrDgrl2G8jFGTlmI/o9cAK2NAop+KBFpB3foN2zT/anHpR0NPdOsucoyr
- g0bA==
+ d=linaro.org; s=google; t=1792593929; x=1793198729; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=3CekQSbFBvqQG9PVcoZJUGLkF4ACoEGRFwVzo4LEq2c=;
+ b=hJVuYNYSdMBa7sDsZqhNG220bLl0Io7G/HDNvsWCnuC1GS+nFuJJqsmR403dsy3B5n
+ j+01BGrAq+42YfKVf7NLVKY3DtwavGmvZKgtf/167e8S8iiWyxP5QVnjyVOfu7xZ3ysf
+ z+NcEIYsJmUORm8K6GJII2P7v/aSvVgBQ1l8a50MYPTjLBNdTfKz6MUR2vhGJK3oo7Gs
+ vCQN3gWnLl0MOOQZKFo3qJX4RxpT0O+DOkhuPM1ly3JEIzOnd7xMWbbJRXer9k8npPe7
+ oZXn2JFRQRGP29VBgUgdSRtMRa0tGj0ruS743F5uY7NlR/aAbKws3/NqZBFXhH8+Zh+U
+ DyFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792593977; x=1793198777;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=sSLtenY6QRNVBOJIpklEsN2/mmmmH+YqHZH3OdYMJCI=;
- b=cVe95OlKGFFWQq1mXCFjIYRHD6xWapTW1uEDLKH+jxhSMvU00QqUjZvl8dMTtUMNcq
- BvLttVToiRG5SGyDKM6OhVapvDMfKwBcZSFYseq8Z4uQJOJKe4onenl8UdyujqSVVHDp
- OMyy/EInhNgck+RQctpWDeclE5w+nV7MXsqDS3Y9k9VqU+rV7KxP4E3DYN8fnU+HW4KQ
- r10aanA/pxo9vWososZKp71DVjKHhE50p4iBcwnH0uCbdaSg6gx6SJWbTmOI9ZdLRh1b
- 2zD0UHEpwKcgG227MRko3jNe0oPLFe7uQiIXF+ZJWaStv4lhoEFfOBlk367H6bOBpmle
- o4YQ==
-X-Gm-Message-State: AFq9FYJbc2bASo4jdh8TP/BwCsw464WYWejY6Jhledg10toJx8j4TO4d
- TpM55c9/XJ1HcfKzMfJfpE8T7wTG3VVNC3PjCsLdYSw52g4VgU9WYiBY17+A6GIJYg/62SGCW+s
- 372BOJdYHaOBwl/WJN0tHfjub07toplyLrDCWGVLVyw==
-X-Gm-Gg: AYBFou1z1Ap/0R6DrRrtlUE0K7fyan8Nb/zSqczbyQa3nDCU1IzD8zt7Smtp16hKVmp
- Md4pPI5a7YKWM4SqHYhQzpfDyhuMmCepqCZfoSExuvo8Zb8FcsERv43XKEINml05qTW7o7LfNFt
- hdlB6rSOEhXTytTex2jGQUiusYGKw0Z+ysNE2YdQeM9mjcDCL9FPsDoLAOcLgF69FS/okWAFll8
- 48rH8ly9NQs/MkdfSPbsaUuTPZMUm6GD7FVQxC5VIvm5Uh56Hi2rxUtDlTaHBBxyB/iBU/+q8c/
- jZLOELO7Wclcys5OAOjEsMdJ1gBlKDfYxfjRlP2H+XNV/SKxkxHV8kAEixbgGCCAerES5cE45vI
- V8QJWIaek50LCVL3e83/zWpIJYFKd/eYtJLGY17c1YJjv/MJSozkeVGZ8xagyqE00coDuUXMYuK
- eX1VSbWPSihgJDzwEYF+EAq9x83R3Whhyqm6kSu2BuyQ==
-X-Received: by 2002:a05:690c:397:b0:8b1:42a1:ad0e with SMTP id
- 00721157ae682-8b142a1b144mr1587767b3.50.1792593976471; Wed, 21 Oct 2026
- 07:46:16 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1792593929; x=1793198729;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=3CekQSbFBvqQG9PVcoZJUGLkF4ACoEGRFwVzo4LEq2c=;
+ b=iAZG8YMeLINT6fqW+AGYBm7xv6SiSbReZLhi5doIBik1HyaQEEnkyb29fapp7P4iQY
+ VRtYpgG8ARRLqR6OS1Py8wMOqyzBqrSkFXasxCpSsGYJU6dGGKFSFYf7MDffkZYmyiSB
+ lX9l/VY8LJAC3DT3ln+uB+YXTPA09lLCKntw2iL6WN8zEoiwOLv9OfWAgwFCwsal5q98
+ Lm/CHsAKhGjLNRaOgFrhhuH4KC2/jQAbj7iMrJtVhX6o9ioSawSEDmjehk4z8Z48s0wJ
+ zSo0tGhVbHf4rNSnQYIxaHAdPG1FABUzF3FqgHZOlD/Oj2Ci3qQ6ViglRFKsm4B4SZ0f
+ j/7w==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBySdHXceYbK7K8N44LztomRK4aTV7QYfVJI7C8LHL+qj5l/x3jOHEtPcn2dQu5FyhQjemPHC0PDTw==@nongnu.org
+X-Gm-Message-State: AFq9FYJRWdcLUgTUP+8kMyhJ5B+9BH1GclB7FPfl9Pe7zpRrUcdM1aNL
+ r1Lwq8nLkOD+LufVWGIMy5qxs8DP4nKpOD9nu241H6qN1TOmR/wZ3UMCi1bzh6wrJaY=
+X-Gm-Gg: AYBFou0qPGXHHcuJSCDH/nwDxKAByHGRSLIAujY54CbFDlX6xjMR0HcFNWHExHsi50w
+ IXPYotzSvYW7PTyWl3SwQKp54qrWkKNCZh+43RUNrlKr6hXijCal4czbpnocBfIA4apgBaHz3ny
+ BWK6870DenRMmndT/W+cG5gKaLzDaEmrOP3cRFhB00E4879tY6Wwb1MHzrIYA2TeG7yCqQVNUAF
+ mAtLfeCXi9MFWfZ/aKf+pgvj0tRn0Q/xA6Jx1O2vsKwk+w46P7911cvu7auny+Xv3M65aDQzGQH
+ ilVBd6IE2aFkWJjbxkkoTnd9WHZzClxzMhqYh7dQUj+8pr3uFgYQ6L8CtX3zlhluQPA/XhCvoWM
+ 55LT1tE5WRJBG4AzYHRKHmFltFce9JRUXvXeCC/lqAU74/pEklGYcbIi9Cre9zbwv9JrSmiBj4K
+ iZZLHzsIX7BF5l7GPwxPuoTiq6a5v9vRrwbVdyeC6UDLfRimqpA6sNEhJnVsiGFYARtJ99T+7LI
+ XXvd7ivbhJmHASPSlic13iUi2clWpeF1mr3f0z8oHGtqL/hGfN9yhV2iBt1RinlxmNX/y8HjAg0
+ BetAZBSd2vYJYCO3K5Yce25Svnc=
+X-Received: by 2002:a05:6000:4025:b0:48d:ff81:5201 with SMTP id
+ ffacd0b85a97d-48e265015acmr4696041f8f.41.1792593928894; 
+ Wed, 21 Oct 2026 07:45:28 -0700 (PDT)
+Received: from [192.168.2.121] (pd95f64ec.dip0.t-ipconnect.de.
+ [217.95.100.236]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e2584c3b0sm6600845f8f.57.2026.10.21.07.45.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 Oct 2026 07:45:28 -0700 (PDT)
+Message-ID: <370c9e06-1b04-4bee-8b10-7dab6fadd47d@linaro.org>
+Date: Wed, 21 Oct 2026 16:45:26 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/4] hw/intc/exynos4210_combiner: fix misc range check
+ issues
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20261019162217.3272337-1-peter.maydell@linaro.org>
- <20261019162217.3272337-5-peter.maydell@linaro.org>
- <aa95e88d-10f1-4882-a705-b75bbfd9ae8a@linaro.org>
-In-Reply-To: <aa95e88d-10f1-4882-a705-b75bbfd9ae8a@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 21 Oct 2026 15:46:04 +0100
-X-Gm-Features: AclHuK8E5plf-W5FGuN-LzyFUkYL_WvgIxHp6YZWzAk40r0qgSVhA8PIbxH9zIk
-Message-ID: <CAFEAcA9R2M=4GjduBxNDsfncLjLCchLneO=EfCoB1iqDjYnV+w@mail.gmail.com>
-Subject: Re: [PATCH 4/4] hw/intc/exynos4210_combiner: write default case is
- unreachable, not guest error
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20261019162217.3272337-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,47 +103,24 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, 21 Oct 2026 at 15:45, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 10/19/26 18:22, Peter Maydell wrote:
-> > In exynos4210_combiner_write(), we rule out "reg_n > 1" before we
-> > start doing anything as being an invalid guest access.  The default
-> > case in the later "switch (reg_n)" is therefore unreachable, because
-> > it has explicit cases for 0 and 1.  Use g_assert_not_reached()
-> > instead of a LOG_GUEST_ERROR.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   hw/intc/exynos4210_combiner.c | 4 +---
-> >   1 file changed, 1 insertion(+), 3 deletions(-)
-> >
-> > diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
-> > index 2bdb9a0152c..80295ae6402 100644
-> > --- a/hw/intc/exynos4210_combiner.c
-> > +++ b/hw/intc/exynos4210_combiner.c
-> > @@ -242,9 +242,7 @@ static void exynos4210_combiner_write(void *opaque, hwaddr offset,
-> >           exynos4210_combiner_update(s, grp_quad_base_n + 3);
-> >           break;
-> >       default:
-> > -        qemu_log_mask(LOG_GUEST_ERROR,
-> > -                      "exynos4210.combiner: unallowed write access at offset 0x"
-> > -                      HWADDR_FMT_plx "\n", offset);
-> > +        g_assert_not_reached();
-> >           break;
-> >       }
-> >   }
->
-> You could remove the break as well as unreachable.
+On 10/19/26 18:22, Peter Maydell wrote:
+> Peter Maydell (4):
+>    hw/intc/exynos4210_combiner: Fix group register range check
+>    hw/intc/exynos4210_combiner: Clean up reg_set[] bounds checks
+>    hw/intc/exynos4210_combiner: Make reg_set[] only as large as it needs
+>      to be
+>    hw/intc/exynos4210_combiner: write default case is unreachable, not
+>      guest error
 
-Yes, good idea.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
--- PMM
+r~
 

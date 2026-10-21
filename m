@@ -1,101 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 21954606A327
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23EB6606A333
 	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 03:22:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=PTPay10F;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=F/+z2EiO
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=Z0gKjcbn;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=gvcL2UPj
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJMqX-0008V1-SL; Tue, 20 Oct 2026 23:18:33 -0400
+	id 1xJMrm-0001bp-OO; Tue, 20 Oct 2026 23:19:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMpC-0004rk-2f
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:17:17 -0400
+ id 1xJMqc-0000JW-TH
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:18:39 -0400
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMp8-0002z3-Sz
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:17:09 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ id 1xJMqa-0003E9-5z
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:18:38 -0400
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69L2F3uR3256728
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:16:56 GMT
+ 69L2FCIm3116206
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:18:25 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- hPwTMfh9tl/gdAjpUv4siVapEpR/STNR2Jm7XAvIl40=; b=PTPay10FMosYp+/G
- nycyFgPoRC5yRXY78whzE5eabhdyXGiiWJLMt9KxuxPHO1WDnFuMwB0F/praUa0y
- lC+++2AJI5fiETXJ7BVDZ7+lEjWkTKstPozVORpTZJ+iMG62CAjCHF5sZPCWr1cX
- XGawYUEu1ZF9eVUr92p5499yX9wX/moyhL/YJ7N/XiHE4ux9L8SmTVj8tK4P1QMu
- Aoa3Ei77fCg8mw66oon46ijsFuMkAGZNRJv/6DPHO8RT0lff/mcuyyDe/zuQhS7J
- 4OgJrlMlsUqCmziz9szbblsGkz4yk3BhwhNfro2TbKQFfvxLrmhQMVurdXz5ynco
- 64L57w==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hed9v1ru0-1
+ tN/Psdg+xYNFE1sR78SY/F3GxG93c1pM+0fPtjv5xR8=; b=Z0gKjcbnqvpnB9AQ
+ ml0TeflIA1bDFi7Bz6qxPJOjoCMRKFUT51wW64YiohxmJGyX+5/LqYvhAm38exWc
+ QQIPiu7FdBlNZi8v21fcrG0rP6zlIWYq+290EAKVxFb+HbsB/UMiYvWmgnxQjphd
+ zspiFvn/5AaITqLFC/hyVtixWYuzachQWkAQG2c7w79zX+GFyI36Kf35t2Sd1RM6
+ R7KA9e8c1nxD3se8Tc1mbpMgpIFUkC/HELDWcVkFjCm0WqdBWK6L9IeP38D8hkZc
+ GFI9f0su+3LL8WQMBMdubH6RJpiJvUjf8DAf1qkhzv7AgZrIb+DEgkPmxdSBt+Zs
+ GO3+JA==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hed9hsr9c-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:16:55 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-93f32050e72so100906985a.1
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:16:55 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:18:25 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-91b4bf686ceso11052236d6.3
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:18:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792552615; x=1793157415; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1792552704; x=1793157504; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=hPwTMfh9tl/gdAjpUv4siVapEpR/STNR2Jm7XAvIl40=;
- b=F/+z2EiO04TDTJHO4J0G9BQqvn2z7rhLZf86Omek0Ll7sBrk5bZazfdWHvSn/7Llfd
- sqoGi8kumSWvEMyQj132UYDntBx8FqoWwWmIo0C5UpDctfQcwnVRW6Nc3RuQVxgR2BLc
- 91jNR3GQxUF6/vZolrM6cOBeztGS4q4crLJssusRetFG78FHE9luLdulGt5pVrnR4bdV
- 6w9690Rrfb/D2BGUkb7S15EAQ8YFNVCUgLamGE5ciQkWn4UHkUz8Ctkm8+5fyGhGibxC
- x8ST9URPfzBopipWXwlmnZhCSD/RIj35qnt7Y+hGHq0JhMrSBAX18cBcFUW0Ht+nDSqu
- 6atw==
+ bh=tN/Psdg+xYNFE1sR78SY/F3GxG93c1pM+0fPtjv5xR8=;
+ b=gvcL2UPj78qMjfLIpr1MOCyr1qeBEy357HlbZfuf++0BcUSHWRIBVFK17DAEFR/LZj
+ /UwiltVPoniRlB07fpzGecob4z0kNB2JLZfmvJ7B300J2526CGgzxaYCJeR4DvY5lUC8
+ XQ1miTtkon/W1pw1YH2ZsXfLFLKHlPOT9ys0Tq4Dp56APbgRxADNwDisDMrdNBV+tYqF
+ LZMf9k4YOAQUPXuG0IRNU94JjWdeh55cu6yJLxFTIGQeHkvfrHbt5Qf0ORC+GBCEjut3
+ ueNk7TxzqHl8XLXPpnOMBpV51aZFDwdOF890mIw9tZUnKPv+SNnq+2cy0wrCDgOsmdcz
+ Is8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792552615; x=1793157415;
+ d=1e100.net; s=20260707; t=1792552704; x=1793157504;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=hPwTMfh9tl/gdAjpUv4siVapEpR/STNR2Jm7XAvIl40=;
- b=c0BNKhGH6U7CtB5FPgE+8+0ScYMt8NTOap3UBPVUXqBEGDTAyz75niwMNc3f7MoIsl
- hTRe+t09g4pwERpoACoNffzt5jeKwJ1sE88YakCahpckkgpS+LoVJxtGU5qw+MpIhmuK
- a/cpiOo6qPBwkhk7N4QO93wzBh3pFsZlzTwIm/ZwLqOJM8McyO7YCj0e749qTvah7VIu
- J5ulQaiZ/D28WkRKjleAkYc8g3CuMBduObjY0ZiXOuFJQyJfHKIy5+rjWyC7vGe9JrLf
- Eia6jl/hMRRck4gwT7hzHSjdtlsq8rjhtaJKhrZHNhF0QdHfXJbMl8nutpIA9doQ1VuX
- zmEw==
+ bh=tN/Psdg+xYNFE1sR78SY/F3GxG93c1pM+0fPtjv5xR8=;
+ b=2E6TBu2Eac1tg5u9LPj2ScRmGEw5D2Mo+6OUdPok1bLQa6Alf8Y2fPEDUr3Zen/fQG
+ DMewEYG4oh5WdYBy1kp7Pxdm+gJg+YF4u0e2tDyCH41+UW/xDEmpO6/+M8uiCCW0Gt7h
+ PaoOTjS5Xfy1VnP1hdd1m7TUVsXHiwxcwRkrgxRvFaJcrnwyiYS1EiXRh+vauy6vGuyX
+ JQxQE239yJNog+npZgto4G5tONWYidvvNQQzMCBLJahy7QI6MfLtgwG3kbbEAuHf+EOY
+ ChIav2szH/iBccbav2XODBr5PSMl/HMs11RVKN+xWL864FsnjMzsgkCd67OeWV0UHce7
+ Zpmw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx1QmbhDaKisXgxx+mDb/E7T6ttcWuYrUmV7P+9BrBscvT24UQAwX2k0VeUmc2a+alcL+Cms2DjGw==@nongnu.org
-X-Gm-Message-State: AFq9FYK2Bj+nMurmE8GnxKKLcJ3ztbZxOIg5ryBemOfw4Ij8H1LHXVl6
- iNdeucFyl724DtR3nrtEaOzcEKZwng3umIksttnfqsaLcdO1oMZ1BXX2LZgNmnK1jzyH0pFwq3k
- r5qzKwBELkcQ8pfEI/V8udncN5iuZ1pvdWUk6KZsTvRHmtE2caMd87DM=
-X-Gm-Gg: AYBFou2AwXXZ+ZxPwyLmNozCm0X0QtPr5xk1eInwl8pwxlxrOFeNJTa+7NqVI41HkmI
- 34Z3FOn+BnPk6ONMgONcttk9ys+X8bgLuEdRKlDQnM6pNFgtqjkrhrXDIuROBdDFUJnYM6ZtvWx
- RNr+1dw3Lv8/GciaElWxCIJPNMPx5LxKTduRKLjdaqTOxMaZyYZIwjvXgUiaVSZ7tYvU00PqVFF
- l4nwrlActKiWhAWXfWEjqR6GuWg/DwLo80MdopUNbBOaOenOVMPn3tOO5htPgQChgEib/wEGU1J
- 4GHj9oLH3Kzw8l7VQkJtcnbHGd8y7m8bJGk1ZVrv0plJgZhFzmaiOHDsHhi5gPhHOpctmGsl2N2
- sgEcLA6ot3zXgWiHKfU0r+Ux7/47UNEHKzEq1P2Ds
-X-Received: by 2002:a05:620a:2788:b0:93f:3576:d43c with SMTP id
- af79cd13be357-93f57f1efc9mr223720185a.19.1792552615242; 
- Tue, 20 Oct 2026 20:16:55 -0700 (PDT)
-X-Received: by 2002:a05:620a:2788:b0:93f:3576:d43c with SMTP id
- af79cd13be357-93f57f1efc9mr223717985a.19.1792552614771; 
- Tue, 20 Oct 2026 20:16:54 -0700 (PDT)
+ AKwUvBzr6HkTrPedxAxOE3dOd6kVUXkHDOKtzTcEsottwBDAisJZderUF1/2CaL899aHAy/KQFMhoWoH2g==@nongnu.org
+X-Gm-Message-State: AFq9FYJfKOClKciN3oo1DeP+RVyk97Sc0rrqRmOcmYr/lX1bBNqSq+c6
+ LtuMUUsGxJ6jI8wSmhbo7wAgBOYRD4lCi+Boq4IlsNGrd5mnQQWAHnyTBQlgh6UunsPLycJidIK
+ rzKxW57dwdQDNtZ+QPUjA3De6F07gfn6UuUevx11OY9c/qdUs0htRgoM=
+X-Gm-Gg: AYBFou1uUlJ/bXIwJTO4IGRDfRV7bpF50z8M+vQ0BVmYzo754HZXdlM14Tg1eRDuknK
+ kvv+Q4XyoCf3I9hNPxWKlFxEyeCG1iZc67FPeaBpX222clR+sOAuZiWYHsYZ3fUonZZVlNWt8Sb
+ Mblcma6m32YTPweCit24jJ3WSuqbwt819pOCi8Dedp098udwU83HgoOVE5SIwGlFOdsWfUMJC9U
+ c6a+5mu7/nyml5jdzmibZRNCfF2IpQ8zwnK43vjdcnx8uVA3n0oC84H0vlvdcwsuKHneJU4totK
+ NI9qTF054LMwyMbgnoOWCgGh+j9i2/kOdFi6SsdMnUN/GupSjU9f1KeC7K92VKRIRO9Rha6f7t9
+ xLikCEfz1DWdHMG6gtkWsWYi3L+W48+niw/XPWLCM
+X-Received: by 2002:a05:620a:1d09:b0:93f:dea:3b7e with SMTP id
+ af79cd13be357-93f57f055damr221204785a.24.1792552704510; 
+ Tue, 20 Oct 2026 20:18:24 -0700 (PDT)
+X-Received: by 2002:a05:620a:1d09:b0:93f:dea:3b7e with SMTP id
+ af79cd13be357-93f57f055damr221201785a.24.1792552704052; 
+ Tue, 20 Oct 2026 20:18:24 -0700 (PDT)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e25835d3bsm2390224f8f.39.2026.10.20.20.16.52
+ ffacd0b85a97d-48e2583523asm2456199f8f.37.2026.10.20.20.18.21
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 20 Oct 2026 20:16:54 -0700 (PDT)
+ Tue, 20 Oct 2026 20:18:22 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 21/33] target/ppc: Use a static table in powerpc_excp_name()
-Date: Wed, 21 Oct 2026 05:13:54 +0200
-Message-ID: <20261021031407.24862-22-philmd@oss.qualcomm.com>
+Subject: [PATCH v2 32/33] target/tricore: Implement and register
+ CPUClass::exception_name()
+Date: Wed, 21 Oct 2026 05:14:05 +0200
+Message-ID: <20261021031407.24862-33-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261021031407.24862-1-philmd@oss.qualcomm.com>
 References: <20261021031407.24862-1-philmd@oss.qualcomm.com>
@@ -103,31 +104,31 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX7ZBPzxjLus4+
- YZk0lzWind9wF0glpR7Vf1ozewr96YSAVpFAsSuaJKppeMPJesICla7wKkxC703GM3csQDCTRgn
- EOrFMvHVHH8HNeosZo0P+0eCaE7YFTA=
-X-Proofpoint-ORIG-GUID: vGEOA-ps3OZxEi1HvMuw-N8AsyBcwukW
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX31LUoBWMm3dM
- jNL0hPuqb3DzO346FnaW9AMAaCV3MQ+k7+YzohAd370Bpn5M8twgnqgDUs2s8aib8ip60IpeLVg
- 78DimZsZp9Zu26sknUQMFuiVqE22kTrrSQ2qgFMeiDcrAfNzyev0GOLeHDOqkdGNqi/o99HwwGx
- OYa64IYtqsZtERp7qpzHeDV4TLp7ubLn3CGj4qAr09nQ76f3wkbdpLrmyK2znUXw4nSAjNV7QAJ
- PRS1KNSSFwe24FNxu9Wwt7X/KAup7UOaCliV5JCTR62ZlrXpsu6htloGpcROKIbEg0e7FJSrwpY
- PxG6in3A59GeWB0jJG7RA7wNtiCQRBJNVFyITal+mdo3xGn/Loy4yTEYBYoM8fycBGcCPsc2IV/
- Y+HtkzfXvaT/72q0y7HgRbTgvzMgRCVaJSPN+4WTt4FrPSeWK5QOUKFoWkRbMCTQetCnvCJKXAz
- I8q7fQtudAge5k/NuSw==
-X-Authority-Analysis: v=2.4 cv=I6zw19gg c=1 sm=1 tr=0 ts=6ad82ea7 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Authority-Analysis: v=2.4 cv=YuKa1IYX c=1 sm=1 tr=0 ts=6ad82f01 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=EUspDBNiAAAA:8 a=XJmH2WDaBb6-5EqxUU0A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-GUID: vGEOA-ps3OZxEi1HvMuw-N8AsyBcwukW
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=EUspDBNiAAAA:8 a=M3mzNYHUzacmDIfs9B8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=1HOtulTD9v-eNWfpl4qZ:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfXx+M2C1Q2XlqR
+ mhXQ0AEaF9C2sDvlIKyhuFrm39WVRO+a7XaNkZmUwD7hJXReK5leaH5OZcMEYzdUrY+Kb98H3Mv
+ Wzl0iHdXmOOfM7jw2rhPsD4jLn1Bpkg=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX+5K300Lhqg4Z
+ GFSq4OdHyBnqAIz0zaJyEbavb4vAAi6RPfbw9a4SinwBtgrJmr7AYVKffhNFNbGx7vpXyjPqJKc
+ qN53ulEoysQtUBZFQ9o6NQpOu9f+adJbsHEc+8E/7QsKnbo5ba2rj94X8a9tphCBg0s65bfPx/n
+ r07IW2NDy+X6GUR0LgvWuAOXYWCgkX8fz3S+X7W0DNf+bdIOKUj3TQwXJOuQmUq+WDppx+4NrFz
+ UeZqiUHQ9yUUaGQQJccNKb/JU3exd3he6CDgDMCJWABQNfkAaNvnorql7lf1w4MxwkAkp8Fbt2e
+ 0ulhz0JfzgA0rUlYNvwLgwoQhko7/6MciZouDmHfiTTDv/Khdm/AmPhN9OX6Y0M2ssjwaS/TyWF
+ NjA1xyn0GMbaBo3Ij9ww4OkON7MTeX/gvZDBq1WyOeEzyoQsl7ZuFQtiIV6GfwCptFYobziQ/53
+ pMnt4uvoeEbW1y5gXtA==
+X-Proofpoint-GUID: 9iLoB_58Y3BtQjERLPikCwRIFnm66ROy
+X-Proofpoint-ORIG-GUID: 9iLoB_58Y3BtQjERLPikCwRIFnm66ROy
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-21_01,2026-10-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 suspectscore=0 clxscore=1015 bulkscore=0 lowpriorityscore=0
- impostorscore=0 spamscore=0 priorityscore=1501 malwarescore=0 phishscore=0
+ priorityscore=1501 impostorscore=0 suspectscore=0 spamscore=0 clxscore=1015
+ phishscore=0 adultscore=0 bulkscore=0 malwarescore=0 lowpriorityscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610210012
 Received-SPF: pass client-ip=205.220.180.131;
@@ -138,7 +139,7 @@ X-Spam_bar: /
 X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51, UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,169 +151,74 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,UPPERCASE_50_75,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace the switch statement with a static lookup table.
+Implement tricore_trap_name() and register it as the
+CPUClass::exception_name() handler, so the common exception
+logging can resolve TriCore trop numbers to names.
 
-Suggested-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/ppc/excp_helper.c | 136 +++++++++++++++++++--------------------
- 1 file changed, 68 insertions(+), 68 deletions(-)
+ target/tricore/cpu.h |  2 ++
+ target/tricore/cpu.c | 18 ++++++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-index 66675f1fdb4..1566f0c4741 100644
---- a/target/ppc/excp_helper.c
-+++ b/target/ppc/excp_helper.c
-@@ -36,74 +36,74 @@
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index 12e497d2a7a..fb8d2fd1011 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -178,6 +178,8 @@ enum {
+     TRAPC_IRQ      = 8
+ };
  
- const char *powerpc_excp_name(int excp)
- {
--    switch (excp) {
--    case POWERPC_EXCP_CRITICAL: return "CRITICAL";
--    case POWERPC_EXCP_MCHECK:   return "MCHECK";
--    case POWERPC_EXCP_DSI:      return "DSI";
--    case POWERPC_EXCP_ISI:      return "ISI";
--    case POWERPC_EXCP_EXTERNAL: return "EXTERNAL";
--    case POWERPC_EXCP_ALIGN:    return "ALIGN";
--    case POWERPC_EXCP_PROGRAM:  return "PROGRAM";
--    case POWERPC_EXCP_FPU:      return "FPU";
--    case POWERPC_EXCP_SYSCALL:  return "SYSCALL";
--    case POWERPC_EXCP_APU:      return "APU";
--    case POWERPC_EXCP_DECR:     return "DECR";
--    case POWERPC_EXCP_FIT:      return "FIT";
--    case POWERPC_EXCP_WDT:      return "WDT";
--    case POWERPC_EXCP_DTLB:     return "DTLB";
--    case POWERPC_EXCP_ITLB:     return "ITLB";
--    case POWERPC_EXCP_DEBUG:    return "DEBUG";
--    case POWERPC_EXCP_SPEU:     return "SPEU";
--    case POWERPC_EXCP_EFPDI:    return "EFPDI";
--    case POWERPC_EXCP_EFPRI:    return "EFPRI";
--    case POWERPC_EXCP_EPERFM:   return "EPERFM";
--    case POWERPC_EXCP_DOORI:    return "DOORI";
--    case POWERPC_EXCP_DOORCI:   return "DOORCI";
--    case POWERPC_EXCP_GDOORI:   return "GDOORI";
--    case POWERPC_EXCP_GDOORCI:  return "GDOORCI";
--    case POWERPC_EXCP_HYPPRIV:  return "HYPPRIV";
--    case POWERPC_EXCP_RESET:    return "RESET";
--    case POWERPC_EXCP_DSEG:     return "DSEG";
--    case POWERPC_EXCP_ISEG:     return "ISEG";
--    case POWERPC_EXCP_HDECR:    return "HDECR";
--    case POWERPC_EXCP_TRACE:    return "TRACE";
--    case POWERPC_EXCP_HDSI:     return "HDSI";
--    case POWERPC_EXCP_HISI:     return "HISI";
--    case POWERPC_EXCP_HDSEG:    return "HDSEG";
--    case POWERPC_EXCP_HISEG:    return "HISEG";
--    case POWERPC_EXCP_VPU:      return "VPU";
--    case POWERPC_EXCP_PIT:      return "PIT";
--    case POWERPC_EXCP_EMUL:     return "EMUL";
--    case POWERPC_EXCP_IFTLB:    return "IFTLB";
--    case POWERPC_EXCP_DLTLB:    return "DLTLB";
--    case POWERPC_EXCP_DSTLB:    return "DSTLB";
--    case POWERPC_EXCP_FPA:      return "FPA";
--    case POWERPC_EXCP_DABR:     return "DABR";
--    case POWERPC_EXCP_IABR:     return "IABR";
--    case POWERPC_EXCP_SMI:      return "SMI";
--    case POWERPC_EXCP_PERFM:    return "PERFM";
--    case POWERPC_EXCP_THERM:    return "THERM";
--    case POWERPC_EXCP_VPUA:     return "VPUA";
--    case POWERPC_EXCP_SOFTP:    return "SOFTP";
--    case POWERPC_EXCP_MAINT:    return "MAINT";
--    case POWERPC_EXCP_MEXTBR:   return "MEXTBR";
--    case POWERPC_EXCP_NMEXTBR:  return "NMEXTBR";
--    case POWERPC_EXCP_ITLBE:    return "ITLBE";
--    case POWERPC_EXCP_DTLBE:    return "DTLBE";
--    case POWERPC_EXCP_VSXU:     return "VSXU";
--    case POWERPC_EXCP_FU:       return "FU";
--    case POWERPC_EXCP_HV_EMU:   return "HV_EMU";
--    case POWERPC_EXCP_HV_MAINT: return "HV_MAINT";
--    case POWERPC_EXCP_HV_FU:    return "HV_FU";
--    case POWERPC_EXCP_SDOOR:    return "SDOOR";
--    case POWERPC_EXCP_SDOOR_HV: return "SDOOR_HV";
--    case POWERPC_EXCP_HVIRT:    return "HVIRT";
--    case POWERPC_EXCP_SYSCALL_VECTORED: return "SYSCALL_VECTORED";
--    case POWERPC_EXCP_PERFM_EBB: return "PERFM_EBB";
--    case POWERPC_EXCP_EXTERNAL_EBB: return "EXTERNAL_EBB";
--    default:
--        g_assert_not_reached();
--    }
-+    static const char * const excp_names[POWERPC_EXCP_NB] = {
-+        [POWERPC_EXCP_CRITICAL] = "CRITICAL",
-+        [POWERPC_EXCP_MCHECK]   = "MCHECK",
-+        [POWERPC_EXCP_DSI]      = "DSI",
-+        [POWERPC_EXCP_ISI]      = "ISI",
-+        [POWERPC_EXCP_EXTERNAL] = "EXTERNAL",
-+        [POWERPC_EXCP_ALIGN]    = "ALIGN",
-+        [POWERPC_EXCP_PROGRAM]  = "PROGRAM",
-+        [POWERPC_EXCP_FPU]      = "FPU",
-+        [POWERPC_EXCP_SYSCALL]  = "SYSCALL",
-+        [POWERPC_EXCP_APU]      = "APU",
-+        [POWERPC_EXCP_DECR]     = "DECR",
-+        [POWERPC_EXCP_FIT]      = "FIT",
-+        [POWERPC_EXCP_WDT]      = "WDT",
-+        [POWERPC_EXCP_DTLB]     = "DTLB",
-+        [POWERPC_EXCP_ITLB]     = "ITLB",
-+        [POWERPC_EXCP_DEBUG]    = "DEBUG",
-+        [POWERPC_EXCP_SPEU]     = "SPEU",
-+        [POWERPC_EXCP_EFPDI]    = "EFPDI",
-+        [POWERPC_EXCP_EFPRI]    = "EFPRI",
-+        [POWERPC_EXCP_EPERFM]   = "EPERFM",
-+        [POWERPC_EXCP_DOORI]    = "DOORI",
-+        [POWERPC_EXCP_DOORCI]   = "DOORCI",
-+        [POWERPC_EXCP_GDOORI]   = "GDOORI",
-+        [POWERPC_EXCP_GDOORCI]  = "GDOORCI",
-+        [POWERPC_EXCP_HYPPRIV]  = "HYPPRIV",
-+        [POWERPC_EXCP_RESET]    = "RESET",
-+        [POWERPC_EXCP_DSEG]     = "DSEG",
-+        [POWERPC_EXCP_ISEG]     = "ISEG",
-+        [POWERPC_EXCP_HDECR]    = "HDECR",
-+        [POWERPC_EXCP_TRACE]    = "TRACE",
-+        [POWERPC_EXCP_HDSI]     = "HDSI",
-+        [POWERPC_EXCP_HISI]     = "HISI",
-+        [POWERPC_EXCP_HDSEG]    = "HDSEG",
-+        [POWERPC_EXCP_HISEG]    = "HISEG",
-+        [POWERPC_EXCP_VPU]      = "VPU",
-+        [POWERPC_EXCP_PIT]      = "PIT",
-+        [POWERPC_EXCP_EMUL]     = "EMUL",
-+        [POWERPC_EXCP_IFTLB]    = "IFTLB",
-+        [POWERPC_EXCP_DLTLB]    = "DLTLB",
-+        [POWERPC_EXCP_DSTLB]    = "DSTLB",
-+        [POWERPC_EXCP_FPA]      = "FPA",
-+        [POWERPC_EXCP_DABR]     = "DABR",
-+        [POWERPC_EXCP_IABR]     = "IABR",
-+        [POWERPC_EXCP_SMI]      = "SMI",
-+        [POWERPC_EXCP_PERFM]    = "PERFM",
-+        [POWERPC_EXCP_THERM]    = "THERM",
-+        [POWERPC_EXCP_VPUA]     = "VPUA",
-+        [POWERPC_EXCP_SOFTP]    = "SOFTP",
-+        [POWERPC_EXCP_MAINT]    = "MAINT",
-+        [POWERPC_EXCP_MEXTBR]   = "MEXTBR",
-+        [POWERPC_EXCP_NMEXTBR]  = "NMEXTBR",
-+        [POWERPC_EXCP_ITLBE]    = "ITLBE",
-+        [POWERPC_EXCP_DTLBE]    = "DTLBE",
-+        [POWERPC_EXCP_VSXU]     = "VSXU",
-+        [POWERPC_EXCP_FU]       = "FU",
-+        [POWERPC_EXCP_HV_EMU]   = "HV_EMU",
-+        [POWERPC_EXCP_HV_MAINT] = "HV_MAINT",
-+        [POWERPC_EXCP_HV_FU]    = "HV_FU",
-+        [POWERPC_EXCP_SDOOR]    = "SDOOR",
-+        [POWERPC_EXCP_SDOOR_HV] = "SDOOR_HV",
-+        [POWERPC_EXCP_HVIRT]    = "HVIRT",
-+        [POWERPC_EXCP_SYSCALL_VECTORED] = "SYSCALL_VECTORED",
-+        [POWERPC_EXCP_PERFM_EBB]        = "PERFM_EBB",
-+        [POWERPC_EXCP_EXTERNAL_EBB]     = "EXTERNAL_EBB",
-+    };
++const char *tricore_trap_name(int trap);
 +
-+    return ARRAY_ELEM_OR_NULL(excp_names, excp) ?: "unknown";
+ /* Class 0 TIN */
+ enum {
+     TIN0_VAF = 0,
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 84a05e3d363..632568a6544 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -36,6 +36,23 @@ static const gchar *tricore_gdb_arch_name(CPUState *cs)
+     return "tricore";
  }
  
- #ifndef CONFIG_USER_ONLY
++const char *tricore_trap_name(int trap)
++{
++    static const char * const trap_names[] = {
++        [TRAPC_MMU]         = "mmu",
++        [TRAPC_PROT]        = "prot",
++        [TRAPC_INSN_ERR]    = "insn err",
++        [TRAPC_CTX_MNG]     = "ctx mng",
++        [TRAPC_SYSBUS]      = "sysbus",
++        [TRAPC_ASSERT]      = "assert",
++        [TRAPC_SYSCALL]     = "syscall",
++        [TRAPC_NMI]         = "NMI",
++        [TRAPC_IRQ]         = "IRQ",
++    };
++
++    return ARRAY_ELEM_OR_NULL(trap_names, trap) ?: "unknown";
++}
++
+ static void tricore_disas_set_info(const CPUState *cpu, disassemble_info *info)
+ {
+     CPUTriCoreState *env = cpu_env((CPUState *)cpu);
+@@ -240,6 +257,7 @@ static void tricore_cpu_class_init(ObjectClass *c, const void *data)
+     resettable_class_set_parent_phases(rc, NULL, tricore_cpu_reset_hold, NULL,
+                                        &mcc->parent_phases);
+     cc->class_by_name = tricore_cpu_class_by_name;
++    cc->exception_name = tricore_trap_name;
+ 
+     cc->gdb_read_register = tricore_cpu_gdb_read_register;
+     cc->gdb_write_register = tricore_cpu_gdb_write_register;
 -- 
 2.55.0
 

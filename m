@@ -1,148 +1,111 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 82A47606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 13:17:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 38EE8606A331
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 13:42:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=nEUMwo05;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=BucA+NEH
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=HiUkqcwk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJWBq-0006xm-Gk; Wed, 21 Oct 2026 09:17:12 -0400
+	id 1xJWaT-0003ov-Uv; Wed, 21 Oct 2026 09:42:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJWBi-0006xM-RL
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 09:17:03 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xJWaL-0003nw-8J
+ for qemu-arm@nongnu.org; Wed, 21 Oct 2026 09:42:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJWBg-0004WG-0T
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 09:17:02 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69LCouhi639721
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 13:16:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- MFMLOU4cmP0CyfZA2OslwYY+g6yA1v2k0IIgGpUYFas=; b=nEUMwo05QwyWURpz
- 4ojB7TY0L26Lmqzg12PnQ0A01wfGBWV2PCpbGpOCWNsI0oL+dBvBdOdGpdOkHD+O
- s0YEel01WkXwZaj2cY66Vd8eiqEEiKySAFfUJLSa4W3Tbni9iM/eJT9hyQXWJVKP
- 2/v/I5xHuElug7D6pD1WqUd7TRxO0ojKiTXz9gKkNxxfGV2iAT3nr2/leAmq1Ect
- tHtwlQhT4ClLORZxxD0Ysxjsb+6ndjnY8mQFZ54xp3wJwauAFy/Kr5GxIAMey352
- yH9KON83fhwfHvN/XeNrE1afr3JQLK8T3QU4Rmf8p4GnpL6xyT8l6J/NXfguMyCW
- lJPBmQ==
-Received: from mail-ua1-f71.google.com (mail-ua1-f71.google.com
- [209.85.222.71])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4heh5r34kn-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 13:16:57 +0000 (GMT)
-Received: by mail-ua1-f71.google.com with SMTP id
- a1e0cc1a2514c-988d5a1080eso561751241.0
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 06:16:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792588617; x=1793193417; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=MFMLOU4cmP0CyfZA2OslwYY+g6yA1v2k0IIgGpUYFas=;
- b=BucA+NEHTW4BTBpZdaCgHXc4qPoa80iUka1gh0DO4HwWVbCOXzxjZmtmtrzW6V+oxf
- 5qJVwWHSZH/h97AgAuU1G8gNUD6uvv86/PhSqlQuvT8wEJLk5E4mAsaZuWypAwnCCq5z
- TdAkBFanguq4ZXDbCWl48hQpXeFqn/TyUKe9CaaCTkQKeSUZr2U2Et1CpAPcTKp6nCQm
- DAXv/Xpaj2z9j51MDPTrnk02t/8CO+14HhE6EY6ZvuUpeH/XaiHqW6gQL+to4Hm+Zg/M
- A0RrC+4CW9jbGqLhpsqEomFlCcqYHXEY13w9vCXuBzK8HwT4/haSm++Bdox0rQPctoEV
- euTg==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xJWaI-0006iJ-0a
+ for qemu-arm@nongnu.org; Wed, 21 Oct 2026 09:42:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1792590144;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YoQqnlAh3Ls7KPLyTc5XKOWCZoXoU1An/kpD3CljJvw=;
+ b=HiUkqcwkvfSqYyLMmvrYh+oQGo7p/D80i9/0Uv7/XKWTdys/W9cw1d1y1mKdVVPUn0a9FR
+ lK0hxJCFdFfxbA4bT10M/ONRtkw2jJZbqG8NAICocr0oZBVMbUiDt9cc1O++tgCo9hZdoQ
+ 2AuI4tGGh0QpDHBbqYO7o/CxjTVAAhw=
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-307-TU09RrR3O16qmcrYt7WI7g-1; Wed, 21 Oct 2026 09:42:23 -0400
+X-MC-Unique: TU09RrR3O16qmcrYt7WI7g-1
+X-Mimecast-MFC-AGG-ID: TU09RrR3O16qmcrYt7WI7g_1792590142
+Received: by mail-pf1-f198.google.com with SMTP id
+ d2e1a72fcca58-8a0592d4539so891749b3a.3
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 06:42:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792588617; x=1793193417;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20260707; t=1792590142; x=1793194942;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=MFMLOU4cmP0CyfZA2OslwYY+g6yA1v2k0IIgGpUYFas=;
- b=EtSaU7nkDB9+RCmvSCL0pwlmqOi4o3HnK+gaa4nP3zlTSGdXO7OSbm2hcBbaOz4RW0
- I406UWxCHASg3tpJO1loegvQ+QjjPHo8w/F6FSAIeyjyypmggKSOnqqlip2C3MUWtV13
- voPuaunaafZaLSSnGodWxU1WCj4UBdIG8DAEgj3RLXL2EgHuF2sToZJiAYuqlz+2jg/H
- ALD/wppdznOJNAtpZCaoO96qVHctxOYmukc2JjHOGLR1/GWm+z5/K5Azlcs0GIxYe3B+
- UI4Sv/rNktMJD3cqjns/JA5xYb5+mUvnMqkLsWweGu07VQWv9VFhoyKauH1d2Q2mRQKs
- I3xQ==
+ bh=YoQqnlAh3Ls7KPLyTc5XKOWCZoXoU1An/kpD3CljJvw=;
+ b=YM/uoHDmQ7QdHdml2Thn9aJQdgRZs56i/8p2zqXwIMJG0pyv4PXzmJDbGrWQKo0XeC
+ 3kYGyhTyWSWGk08ZO8b3qdmCMitIDIbQSFaqrICuhFymUAOk/bfuvCaSbhcV3IRwZQHa
+ HwqwdfVHE+pi2VknsmAbO9C0kbQE5TYZA48PTgy88Qj8o63tIQjTauCa8DgPfmRVXW4s
+ nLf77OlOX5M1zUyZ7G4Sl0UitV+9Ei+g9vbnQWr+rlebH//1lOn/D7lzIUZWJH5cY+9Y
+ hdNB1QWFZ3AwEa99kmAJ3ltFrHgT9huIRQ15dlrz71iIuxJtdOHGqU/qEcC29+IAFT2f
+ QtnA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx7ViapUNfdna2oK9EaLgJx+gottymhCOlRdUeRjjW+S/ztpY5hMrYVzQPlon0ORfexfXCft8Hyhg==@nongnu.org
-X-Gm-Message-State: AFq9FYKQfKAMeJEDOqJy34MLc2KK+WmdtCTB/EAzAJ2SRPVZhf+wiwi7
- C5CVvTXLiS1eak5nLrUIn7GTdAv6iWpe8XuqGiZdKvz/usQkDriZmK17VKL4+IotRZ7yk5wq/40
- K5nACXs64VEh10p6LGN2M4FoC/DRljE6nA9lNW5HXCaK6oOh3q43EhNU=
-X-Gm-Gg: AYBFou1FZGAfBCLiSaV7AJ5ckWsUwdAJqJNcMRfsCJpjbUf0HtOkjszmdsTVJSM85wZ
- 1S15MCzIR7feRdYwW6RG8iipppMmZstKYUcGjacz35vRrMlNf5j8dZnB+nKBdNNKeJzpj1IbRY8
- tjA/g0PEdUe/COhcJhWR68Fn4n1GkbmbltJuHrF7OR/p7gDPlehmPqJBghw5VRKqtCuJu9BeA7s
- wvJ5cNRM9DE3U8jJDjNHa9qy9xol0Ajbb8eHgkh3WTgOjBTxuDcq8FXuE0inPj+sbTX+/clEFN5
- bRCDF9NEKMrU7vpeRPET6OHjq7r+US7f/YL18Qxkq3d64D3INXtDnUDKSNbQPw2m78+jJTIZYdW
- +Vv1e6TdPtNpYDJG5r04xNwNxzpFMK9m7JA==
-X-Received: by 2002:a05:6102:4191:b0:7cc:1dbf:a4e with SMTP id
- ada2fe7eead31-7cc92764e8fmr771878137.34.1792588617235; 
- Wed, 21 Oct 2026 06:16:57 -0700 (PDT)
-X-Received: by 2002:a05:6102:4191:b0:7cc:1dbf:a4e with SMTP id
- ada2fe7eead31-7cc92764e8fmr771854137.34.1792588616704; 
- Wed, 21 Oct 2026 06:16:56 -0700 (PDT)
-Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e2583523asm5489145f8f.37.2026.10.21.06.16.55
+ AKwUvBy3jWiJ02CWOu99U0Szq+gNLwjDtnzKg+8zJ9aIm/BvhmkLhxbC5bVMQMu9vLHkCQTuzHKn6WA1ng==@nongnu.org
+X-Gm-Message-State: AFq9FYIke1ChDqv1sUHXumJ0QW8yby/pHdGjpIR6VxlInQ+lEO9f+W1I
+ l97tmGa69CX01pouNPLh1gr0g14AxNf7zwhve6wt2iE/U1QV6nWoRDm5zzu1pPEnJQxR8r2qbUT
+ iEE4HFqW2ICgyW/ulBtEM/LLuwSasH6uKi8FGE1fXjqWOCljD85y1IA==
+X-Gm-Gg: AYBFou0sfF/TyRt9qwGb2JD7bbLiLsN+wMIQpA+/TRA3OBVgns7nJH6plTuWG7h19Fv
+ JF2eahKYpN7y8dlMe+s+IOKYHKGxL4NbfdShDN+kepm7E/quOJR0rCVjF1SdyvJZuGZ6Pj9wFK/
+ gsPTP0ydP22ctaasS5AKu09CpmMb8CR7OtSOC73/PHSRQ6C5Ihdai7x5nBz4KhmLLcykeCfB643
+ qeMnXDgmnlnKOtMyt0Jj6fM8nSLyceajv8SXPVuO5VFT+ki4+uK5qCqPyTFnmFkt2b5gt0eLFh8
+ s5YmGFS4lBTVof466fY1m0aHJnD1jrcgXaLlm+ssIxoZwozqKh009o/HPabxSLxEZUaHXpe0JIK
+ WAWAr4dc8Mwu57KKJ4w0jLRatUVZpR7Ifdp6bWijS7g==
+X-Received: by 2002:a05:6a00:a0c:b0:89e:779b:d0f with SMTP id
+ d2e1a72fcca58-8a089dfdbb8mr1587943b3a.37.1792590141868; 
+ Wed, 21 Oct 2026 06:42:21 -0700 (PDT)
+X-Received: by 2002:a05:6a00:a0c:b0:89e:779b:d0f with SMTP id
+ d2e1a72fcca58-8a089dfdbb8mr1587908b3a.37.1792590141359; 
+ Wed, 21 Oct 2026 06:42:21 -0700 (PDT)
+Received: from [192.168.68.52] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-8a0895cce93sm934064b3a.30.2026.10.21.06.42.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Oct 2026 06:16:55 -0700 (PDT)
-Message-ID: <963636f3-2eba-46e0-a19e-0a85598ee0c4@oss.qualcomm.com>
-Date: Wed, 21 Oct 2026 15:16:54 +0200
+ Wed, 21 Oct 2026 06:42:20 -0700 (PDT)
+Message-ID: <784dfea3-24cb-4e70-ab46-b96b4b9a1831@redhat.com>
+Date: Wed, 21 Oct 2026 23:42:14 +1000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: qemu-system-arm dies on introspection of ast2700-a1 and ast2700-a2
+Subject: Re: [RFC v4 03/24] target/arm: Add confidential guest support
+To: Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Kohei Enju <enju.kohei@fujitsu.com>, michael.roth@amd.com
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, berrange@redhat.com,
+ kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
+ peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
+ pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com,
+ lorenzo.pieralisi@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <20260903193611.1058589-4-mathieu.poirier@linaro.org>
+ <dhrvydsmaw22xqx5d5i5s7fdyjxupz27yxp6trv2tesysp4npj@quvzrxjvfipz>
+ <arI197vJkW75p50c@lpieralisi> <arSTQQ5uB6oR-vFe@FCCLS0092175.localdomain>
+ <ataBkrIvULJXj4v6@p14s>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <ataBkrIvULJXj4v6@p14s>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: jH2B_ASfT6PBEffs7huX2nDpkBUzGFzUf8sH96-6VpU_1792590142
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Kane Chen <kane_chen@aspeedtech.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Anton Johansson <anjo@rev.ng>, Yonggang Luo <luoyonggang@gmail.com>
-References: <87qzhjmft8.fsf@pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <87qzhjmft8.fsf@pond.sub.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Authority-Analysis: v=2.4 cv=aI5lOr9m c=1 sm=1 tr=0 ts=6ad8bb49 cx=c_pps
- a=KB4UBwrhAZV1kjiGHFQexw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=x5dM4pBRUn_V6qr4VpEA:9 a=QEXdDO2ut3YA:10 a=o1xkdb1NAhiiM49bd1HK:22
-X-Proofpoint-ORIG-GUID: IPEopzKdKwYj4OL0EossVzA0XnztHakn
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDA1MiBTYWx0ZWRfXx8S13pzw0RQN
- 0TdBs6UyjEHQova3M0Xhu4F/VP80HFgm1mFLzTEN3MGOP4oSeULY3rs0Z+Vbye2InGIJSdFXwEN
- j+sCVgkldtbpRl86F37Dv2kzagIcQJ4depw2yff+BEq4YWV1jVPfcxh8L2yHoGC0iE9QtkOR+iZ
- 35v9Ug+cjwGa+XBKD6P8iL9mLWafjCNWb5fvEiXMv52hxoewawwqFXcWrhJmM8lJxKVlr11RA90
- PFz3m3SyakI7jrkO7Q6TiD5Ftu8831Rwu8EqfULt6oxJXvysg44Uf4jvztGYPEoikANmyTcIjcJ
- C6reKkPtCECZH4lazov0BRc3/hCtxLFN6KMjsyqBj3nTrDWxagnD3CHZa8zfWejMJ3Vsbk7S82t
- spCEOxMv6iCe2OtxJjTKJUgg5+X1AaDDX3kZnpos18jNda9m5joSWSfV9BUo6OuiCdc+b3Y72qH
- CjFE8pG5CnSdU2KFncA==
-X-Proofpoint-GUID: IPEopzKdKwYj4OL0EossVzA0XnztHakn
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDA1MiBTYWx0ZWRfX/PVQTnTOe54d
- 4Fd3wYnzlTURnIWl/6rrm00UHhcU84MyhnD3BfMZB/Bk+pFyhOMFycAiT0EIVuXWZFM44tUe9PB
- LZ9mnp00N9zUiIQo33pQsJV7KnE136U=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-10-21_03,2026-10-21_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 clxscore=1015 impostorscore=0 spamscore=0 bulkscore=0
- malwarescore=0 suspectscore=0 adultscore=0 phishscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610210052
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -155,68 +118,223 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 21/10/26 13:52, Markus Armbruster wrote:
-> Watch this:
+On 10/20/26 6:46 AM, Mathieu Poirier wrote:
+> On Thu, Sep 24, 2026 at 12:12:35PM +0900, Kohei Enju wrote:
+>> On 09/22 10:01, Lorenzo Pieralisi wrote:
+>>> On Tue, Sep 15, 2026 at 04:27:21PM -0500, Michael Roth wrote:
+>>>> On Thu, Sep 03, 2026 at 01:35:50PM -0600, Mathieu Poirier wrote:
+>>>>> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>>>>>
+>>>>> Add a new RmeGuest object, inheriting from ConfidentialGuestSupport, to
+>>>>> support the Arm Realm Management Extension (RME). It is instantiated by
+>>>>> passing on the command-line:
+>>>>>
+>>>>>    -M virt,confidential-guest-support=<id>
+>>>>>    -object rme-guest,id=<id>
+>>>>>
+>>>>> This is only the skeleton. Support will be added in following patches.
+>>>>>
+>>>>> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>>>>> Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+>>>>> ---
+>>>>>   docs/system/confidential-guest-support.rst |  1 +
+>>>>>   qapi/qom.json                              | 13 +++++++
+>>>>>   target/arm/kvm-rme.c                       | 42 ++++++++++++++++++++++
+>>>>>   target/arm/meson.build                     |  5 ++-
+>>>>>   4 files changed, 60 insertions(+), 1 deletion(-)
+>>>>>   create mode 100644 target/arm/kvm-rme.c
+>>>>>
+>>>>> diff --git a/docs/system/confidential-guest-support.rst b/docs/system/confidential-guest-support.rst
+>>>>> index 562a7c3c2852..abb56923ad13 100644
+>>>>> --- a/docs/system/confidential-guest-support.rst
+>>>>> +++ b/docs/system/confidential-guest-support.rst
+>>>>> @@ -42,5 +42,6 @@ Currently supported confidential guest mechanisms are:
+>>>>>   * POWER Protected Execution Facility (PEF) (see :ref:`power-papr-protected-execution-facility-pef`)
+>>>>>   * s390x Protected Virtualization (PV) (see :doc:`s390x/protvirt`)
+>>>>>   * AWS Nitro Enclaves (see :doc:`nitro`)
+>>>>> +* Arm Realm Management Extension (RME)
+>>>>>   
+>>>>>   Other mechanisms may be supported in future.
+>>>>> diff --git a/qapi/qom.json b/qapi/qom.json
+>>>>> index 776b13027fd8..52997c29a32d 100644
+>>>>> --- a/qapi/qom.json
+>>>>> +++ b/qapi/qom.json
+>>>>> @@ -1288,6 +1288,17 @@
+>>>>>     'data': { '*pretty': 'bool',
+>>>>>               '*close-action': 'MonitorQMPCloseAction' } }
+>>>>>   
+>>>>> +##
+>>>>> +# @RmeGuestProperties:
+>>>>> +#
+>>>>> +# Properties for rme-guest objects.
+>>>>> +#
+>>>>> +# Since: 11.1
+>>>>> +##
+>>>>> +{ 'struct': 'RmeGuestProperties',
+>>>>> +  'base': 'ConfidentialGuestSupportProperties',
+>>>>
+>>>> Just FYI, based on input from Markus I'm planning to drop this
+>>>> ConfidentialGuestSupportProperties base type from my series
+>>>> since it's probably only SNP/TDX that need to be able to switch
+>>>> it on/off, whereas this series appears to use/require it from
+>>>> the start.
+>>>>
+>>>> I'm not exactly sure what it will look like for v3 yet, but if you
+>>>> were based on v2 you'd instead probably just do the following in the
+>>>> instance_init function for your rme-guest instance:
+>>>>
+>>>>    cgs->allow_convert_in_place = true;
+>>>>    cgs->convert_in_place = true;
+>>>>
+>>>> rather than exposing it as a cmdline option.
+>>>
+>>> Yep, it won't be an option for CCA Realms anyway since that will be
+>>> the baseline.
+>>
+>> IIUC, in-place conversion requires RAM backed by a shared/mappable
+>> guest_memfd. If in-place conversion is always enabled for CCA Realms,
+>> could QEMU also select the equivalent of
+>>
+>>    -object memory-backend-guest-memfd,id=ram0,size=...,share=on
+>>
+>> automatically for the default RAM, so that specifying the RAM size with
+>> `-m` is sufficient?
 > 
->      $ qemu-system-arm -S -nodefaults -display none -M none -qmp stdio
->      {"QMP": {"version": {"qemu": {"micro": 50, "minor": 1, "major": 11}, "package": "v11.1.0-2545-g2d150b99ce"}, "capabilities": ["oob"]}}
->      {"execute": "qmp_capabilities", "arguments": {"enable": ["oob"]}}
->      {"return": {}}
->      {"execute": "qom-list-properties", "arguments": {"typename": "ast2700-a1"}}
->      qemu-system-arm: unknown type 'cortex-a35-arm-cpu'
->      [Exit 1 ]
+> Are you suggesting that on Arm, we completely get rid of
 > 
-> Same for ast2700-a2.
+>      -object memory-backend-guest-memfd,id=ram0,size=$(RAMSIZE),share=on
 > 
-> I found the folllowing in their .instance_init() method
-> aspeed_soc_ast2700_init():
+> or simply to get rid of "size=$(RAMSIZE)" in the above because it is redundant
+> with "-m $(RAMSIZE)"?
 > 
->      for (i = 0; i < sc->num_cpus; i++) {
->          if (qtest_enabled() && !target_aarch64()) {
->              /*
->               * Introspection qtest just want to create this object
->               * without realizing it. ARM_CPU_TYPE_NAME("cortex-a35")
->               * is not available on 32-bit binary: skip it since we
->               * won't even realize it.
->               */
->              continue;
->          }
->          object_initialize_child(obj, "cpu[*]", &a->cpu[i],
->                                  aspeed_soc_cpu_type(sc->valid_cpu_types));
->      }
+> Gavin and Michael, what is your take on that suggestion?
 > 
-> This seems to paper over the bug so make the tests pass.  That's wrong.
-> 
-> .instance_init() must not fail and must not exit(), regardless of
-> context.
-> 
-> object_initialize_child() exit()s when the type doesn't exist, because
-> &error_fatal gets passed to in type_get_or_load_by_name() in
-> object_initialize_child().
-> 
-> The narrow fix is to make type "cortex-a35-arm-cpu" exist, or to make
-> the two bad types "ast2700-a1" and "ast2700-a2" not exist.
 
-The ast2700 machines are hidden on 32-bit builds with
+I don't think that's what Kohei meant. He actually suggested the memory backend
+shall be pinned to memory-backend-guest-memfd and its in-place conversion shall
+be enabled when the memory backend isn't explicitly specified by users through
+"-object memory-backend-xxxx". For this inexplicit case, where the memory backend
+is determined by '-mem-path', the memory backend is either TYPE_MEMORY_BACKEND_FILE
+or TYPE_MEMORY_BACKEND_RAM. Please refer to create_default_memdev().
 
-   .is_available = target_aarch64,
-
-but the SoC types they use are not (see commit 89b5f1ed43f
-"hw/arm: filter minimal set of machines" following earlier
-attempt a2239a87339 "hw/arm/aspeed: Do not realize 64-bit
-CPU types under QTest").
-
-Pierrick, I thought this pattern was solved, can you have a
-look please?
+I think Kohei's suggestion makes sense. Besides, I think '-mem-path' should be
+disallowed for CCA Realms as TYPE_MEMORY_BACKEND_FILE isn't what we want.
 
 Thanks,
+Gavin
 
-Phil.
+> Thanks,
+> Mathieu
+> 
+>>
+>> Thanks,
+>> Kohei
+>>
+>>>
+>>> Thanks,
+>>> Lorenzo
+>>>
+>>>> Thanks,
+>>>>
+>>>> Mike
+>>>>
+>>>>> +  'data': {} }
+>>>>> +
+>>>>>   ##
+>>>>>   # @ObjectType:
+>>>>>   #
+>>>>> @@ -1346,6 +1357,7 @@
+>>>>>       { 'name': 'pr-manager-helper',
+>>>>>         'if': 'CONFIG_LINUX' },
+>>>>>       'qtest',
+>>>>> +    'rme-guest',
+>>>>>       'rng-builtin',
+>>>>>       'rng-egd',
+>>>>>       { 'name': 'rng-random',
+>>>>> @@ -1427,6 +1439,7 @@
+>>>>>         'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
+>>>>>                                         'if': 'CONFIG_LINUX' },
+>>>>>         'qtest':                      'QtestProperties',
+>>>>> +      'rme-guest':                  'RmeGuestProperties',
+>>>>>         'rng-builtin':                'RngProperties',
+>>>>>         'rng-egd':                    'RngEgdProperties',
+>>>>>         'rng-random':                 { 'type': 'RngRandomProperties',
+>>>>> diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+>>>>> new file mode 100644
+>>>>> index 000000000000..42e1d1e7b859
+>>>>> --- /dev/null
+>>>>> +++ b/target/arm/kvm-rme.c
+>>>>> @@ -0,0 +1,42 @@
+>>>>> +/*
+>>>>> + * QEMU Arm RME support
+>>>>> + *
+>>>>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>>>>> + *
+>>>>> + * Copyright Linaro 2026
+>>>>> + */
+>>>>> +
+>>>>> +#include "qemu/osdep.h"
+>>>>> +
+>>>>> +#include "hw/core/boards.h"
+>>>>> +#include "hw/core/cpu.h"
+>>>>> +#include "kvm_arm.h"
+>>>>> +#include "migration/blocker.h"
+>>>>> +#include "qapi/error.h"
+>>>>> +#include "qom/object_interfaces.h"
+>>>>> +#include "system/confidential-guest-support.h"
+>>>>> +#include "system/kvm.h"
+>>>>> +#include "system/runstate.h"
+>>>>> +
+>>>>> +#define TYPE_RME_GUEST "rme-guest"
+>>>>> +OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+>>>>> +
+>>>>> +struct RmeGuest {
+>>>>> +    ConfidentialGuestSupport parent_obj;
+>>>>> +};
+>>>>> +
+>>>>> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
+>>>>> +                                          CONFIDENTIAL_GUEST_SUPPORT,
+>>>>> +                                          { TYPE_USER_CREATABLE }, { })
+>>>>> +
+>>>>> +static void rme_guest_class_init(ObjectClass *oc, const void *data)
+>>>>> +{
+>>>>> +}
+>>>>> +
+>>>>> +static void rme_guest_init(Object *obj)
+>>>>> +{
+>>>>> +}
+>>>>> +
+>>>>> +static void rme_guest_finalize(Object *obj)
+>>>>> +{
+>>>>> +}
+>>>>> diff --git a/target/arm/meson.build b/target/arm/meson.build
+>>>>> index 0369f96b4cc6..9d322a7aad28 100644
+>>>>> --- a/target/arm/meson.build
+>>>>> +++ b/target/arm/meson.build
+>>>>> @@ -31,7 +31,10 @@ arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>>>>>   arm_common_system_ss.add(files(
+>>>>>     'arm-qmp-cmds.c',
+>>>>>   ))
+>>>>> -arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
+>>>>> +arm_system_ss.add(when: 'CONFIG_KVM', if_true: files(
+>>>>> +  'hyp_gdbstub.c',
+>>>>> +  'kvm.c',
+>>>>> +  'kvm-rme.c'))
+>>>>>   arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
+>>>>>   
+>>>>>   arm_user_ss.add(files('cpu.c'))
+>>>>> -- 
+>>>>> 2.43.0
+>>>>>
+>>>>>
+> 
+
 

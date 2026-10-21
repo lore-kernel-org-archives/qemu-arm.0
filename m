@@ -1,101 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4B4C460A5BE3
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 03:17:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16C7B607B113
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 03:17:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=UMvH1mVI;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=JnopNSdV
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=jAuTI6Eb;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=PNsL0u3K
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJMmd-0002c6-GX; Tue, 20 Oct 2026 23:14:31 -0400
+	id 1xJMnw-0003T7-AX; Tue, 20 Oct 2026 23:15:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMmU-0002Yq-Qz
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:14:23 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1xJMne-00030s-46
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:15:34 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMmS-0002Ns-Fi
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:14:22 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1xJMnF-0002TG-Qw
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:15:22 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69L2Uwwf3457250
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:19 GMT
+ 69L2F193336625
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:58 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- fTP5GdPijMVLrRP0iA6yBEFGepVL/U+WJ+mrzKQRXGY=; b=UMvH1mVInE7egOyp
- LnidU6vMzxuSCrLx1xTZBuHUvFBw/MK6VGbnvnWTRJb+Coz1wbH2w6NzssU1AVwV
- nNld6lr+s9mjLHdg66ovZURCaMFUNnv02CrvhF8ITUyJivz/uLJcOy/KwZEJD7Vd
- L5r2+w/imY+JM7fuBUnBNl9YZINZU6VKubMqpS/T+KYo54UK7naux3bf9iNhrcpV
- OfgfRaIG34rvCFcBAxINtCYZASd4PU+gfjZnavkDNLct28z+X+tc2YXFkfF9Vq+Z
- t/ymlnRP5mR4ojr3PCwMvZR2G26YgAvSzTWS0IHQT9JcjrpVPXunWINr9HC3QqJe
- npq6OA==
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4heh5r0u47-1
+ TyexEBPMQhHa25gvne1aS7MprTFHqB40T82Zul38+kE=; b=jAuTI6Ebjm0Zb8er
+ AmZ3yRTVMs4bF2WDqqpzdVETA5YMVvYSkuKj+rmJylPr4qGezKONfH7vFh2YeMS0
+ uIH5fD4XHAy3YNjRSI1xgHZwvOR01WymUgVD1jE4EXm6o3GkSXPegLwgPYNpExki
+ 8WsGPw7M94wkie8IjPQpZbQ9ICJ8t1/d4vmMBe7Ik8TleA6swkVgbYlbDQKYamKb
+ pf7o8QOLZw5xURWfYFWhr857oTzrNc8NB/kp4KBAl75wKJ8yuJLl0dXdTyiuACqG
+ wGVKz3/Qe+yLfRgoEPm1XZAOXHuSQfmdnY7nNWWgWPP+fZBwh5+SCpzfmt/LQPQR
+ CSrH1w==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hedabhrcg-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:19 +0000 (GMT)
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-91b4bf686ceso10983826d6.3
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:14:19 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:58 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-934956beec8so65279485a.0
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:14:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792552458; x=1793157258; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1792552497; x=1793157297; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=fTP5GdPijMVLrRP0iA6yBEFGepVL/U+WJ+mrzKQRXGY=;
- b=JnopNSdVoD6Jye76AggEfuGYN3ooxl8YQzDTsrY+exi82aCjCf5TSOcwxwN0EY2gj4
- Eq6Cw+QgaScday9QVv1EFn4+uQvysJlrrTEonaR8Cy4joZhA8Wotf4plX8JC/N2IvL4g
- gJCg93hCGHd8gpVyhNl8XnOl48l4QmXA4SV8MSWnNubxifzOSrGAO3u1Niu/bxJsMhC6
- H5Y0tfnxeC331AVAFE/ZCOEXKj5vMTIDUMLVIycYGoPSCub4tCi18wAySIbwASvkZUue
- wwGFBhQRri1hrACUmCLA+/00MKx6L47OMZSWlKsSkgjyI65Rq+YWsi5/AeKoF/BgPl6L
- D2Qw==
+ bh=TyexEBPMQhHa25gvne1aS7MprTFHqB40T82Zul38+kE=;
+ b=PNsL0u3KKjc2sOUyyZryq5mFZTb2hz4DBvYfd0YX8lkBY05txd4GyUZ/qLZrFQOWcd
+ iMx9fn86Mtkp6k1SfOwPBC475aKr44XXyhvgR+f7+c5gMNhBwgHt1x+rWc2NFaDHIarR
+ bs69IU/M0RqeACMV10IjLeW+Xk2KNC+39vi5Lsrb3DzhbTKObyr8xPE+eCAf3KkaA0Qn
+ +FikK5SaOBSBFxoCfBb/3tKntDjDq2lwjSVd6vigJZdR39UzY6oPOJaZhmgI6lUuld7b
+ oeOl8HuNhQVFFIvuCa/RTZQvlf2NxYmWicxifaTfg+VJ0cwl6M0gTMdVBmf+7Ze4Yiqk
+ q4Eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792552458; x=1793157258;
+ d=1e100.net; s=20260707; t=1792552497; x=1793157297;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=fTP5GdPijMVLrRP0iA6yBEFGepVL/U+WJ+mrzKQRXGY=;
- b=v63YtAnnWgBk9tlqROLhtMsbq/xqqdQKo1Jc7BK+0KjUZ07T3iSVdzuTP36yELZikL
- TVOGK7uxd3rui4eZwGSkCIMlBtgMurI7Wk0zyZ3kHAOu2RoTLRzgB2coPS95G8x67ldC
- wDXdkK/7FvvPv1UjrCs7oaVhX9ac+GBaXhlVI4SOZDZWPYEMX55BShyzV7hgZS9vCyyG
- KT8CLfVtvXyPu14EDtMvArfcujPElIeUwgZ/MEjGwR2TVjprG7395F4hYWL8mtM7wTRK
- AbbrMj7p3YguCNBwQCd5sC5dYauSnCD7PPuh/9Sf2M/yvQV/OhmUNOWwQrhFq4y/OTp+
- Mx6g==
+ bh=TyexEBPMQhHa25gvne1aS7MprTFHqB40T82Zul38+kE=;
+ b=BxN6Bg8BjF3nLZBLntw+3TgncfnppMjO5t7KE230djIaJYol5ib/9pW5LFzXhd8eUC
+ tmziSe8wBT5rmTOgawvq7ES5oHJoCaJcakiWs60vIX4iPn83+j24ILq92hvOqarAFiCY
+ xYeyM/73F5nnxLQctuI0nswATvbFhccDempXfbXuqBHl99bOLEDuD+ybpyPyTauSu68q
+ OZF1WYDEAL5h6P6gdDKY6yhiNpX96Qy9Dg8hKWMq1r/YAohtlz+CgpLyTCGscK4izdt8
+ BYSFBf66bTkPU6jmlgTrPh8DjXjTVhImyWDRoi1ziRz6e+l8xG1NnmNjs6amM+uOCo8A
+ DaPA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByQLkhWCA7UoR4Sulb3jcWK/y8ODmmazgL24ozhJVU52pHyLjYtYq7wuQVcLHkMs3JprfOmhoinsg==@nongnu.org
-X-Gm-Message-State: AFq9FYLHw2QnBk/85VhrIm3Bd2pmhHYQBWdKLVnrVlRgJcuiOES0MWLo
- iMYJU3W5ibsjr4iaSzE8Dy5gD/3XrtqUUjoYAsTFHcCqZgfkVIPJFJu4vwykuVoC9zCqSNY+2gA
- +bZbOidfrKOwIqY3sB/f9HNfkEOlljHz7ugvl7HDvbWrljwRL+3o43G0=
-X-Gm-Gg: AYBFou1BvsW6Y9eZkCJWSUl3HzMLnzrycD0Wl6G5hF06NBS0USpqiVrvWm8qtAkYlQe
- ZhvFBF7AAHf9bwGA5oJcD4UMrcQb6jeN4prbFktuJ61oti2Me1h7RPT1/nVLsL15gMV6UMdKz2l
- gmhWsKLnvedE3OGuNOWVXnefUnrhwfBEVUXgf/+xyYeRlVyfo9hre4ZMwB94JTpCXB/GTQlQweu
- H/14ya/MSNRAxSiNFrii8+MyPUqjV0aiRJiLxKBypwWrAH3HSjruuiFM6O0IIBMZ4FNUcuoccm2
- TmQNuk00El4sFZaUCMvPr8SqMip751yJfahwqaCT1kYhwksYBy/JIwifA0M/SvFX74h9A7lZ7Y9
- Ztoj5CFZdW7K7MMBC3HliaqnnGjkmqbqhn9LEWVeg
-X-Received: by 2002:a05:620a:4503:b0:93e:dcb4:c73e with SMTP id
- af79cd13be357-93f57e3ff66mr224713085a.5.1792552458381; 
- Tue, 20 Oct 2026 20:14:18 -0700 (PDT)
-X-Received: by 2002:a05:620a:4503:b0:93e:dcb4:c73e with SMTP id
- af79cd13be357-93f57e3ff66mr224710685a.5.1792552457898; 
- Tue, 20 Oct 2026 20:14:17 -0700 (PDT)
+ AKwUvBz6aNR2Aptn3RsNZpMN8rc188hcDj07jVQu2bupougEn/XurFbhrmhocn5R3lgrMv87rNStZO6Z7A==@nongnu.org
+X-Gm-Message-State: AFq9FYIWyU6nWhPeRcWLHkC68ieeFQ2knxDho3D0uiWXcNfNoirW0hwL
+ X0XqKgE0ARF9vvn3o8sIxWOmbkzVVMx7UAn0YBil/arh5vL1J+op3UZq7pCFVgR8UAYgr6voZ5+
+ CkiEomueJY26VKQSD9np2//4Y3xFYgHvmFjPENlwatDfGuRwRZKwqgG8=
+X-Gm-Gg: AYBFou3PA8AIZ5EEDXx7u3u9QnM79dWmJqPMl+320x9LtSmFgzvXLR+AQRyhp6sDPg8
+ rBXqr0JH/0Zq9eXGgjTJuAWkaL3nRRkCniJKZyxo1qewg4/WsGPgIBCqlpqlVfafhUiSr4ur7B8
+ DY5zDpJ+BOzd26Jm0RUEDV+lHEXTOEJWElqnKvK9fBTTFEqjxU+NOst5GxalDunyWU73RclsrBz
+ u24tGWAw/NRUqApL+IFM8ps/wQPCwsYt7Eq1GUpw3bg307IVrgb/8u86fcsziaUvaDkYv6K/ZHn
+ AH5fgYwrMoRFsKlbLSrttjBRB7Yx1142DIj1ebuccjegSZd0/w3I3R4Wc27CBlAIgcN/3ryQuPD
+ L28DsiN/smzjZHuh9wo07MmR7AYcTJzunoykk+y/p
+X-Received: by 2002:a05:620a:4541:b0:93f:54e4:6d43 with SMTP id
+ af79cd13be357-93f57e5e1b5mr213136985a.6.1792552497448; 
+ Tue, 20 Oct 2026 20:14:57 -0700 (PDT)
+X-Received: by 2002:a05:620a:4541:b0:93f:54e4:6d43 with SMTP id
+ af79cd13be357-93f57e5e1b5mr213134685a.6.1792552497000; 
+ Tue, 20 Oct 2026 20:14:57 -0700 (PDT)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a1fb864dacsm40861235e9.12.2026.10.20.20.14.16
+ 5b1f17b1804b1-4a1fb864dacsm40890855e9.12.2026.10.20.20.14.55
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 20 Oct 2026 20:14:17 -0700 (PDT)
+ Tue, 20 Oct 2026 20:14:56 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 01/33] qemu/osdep: Add ARRAY_ELEM_OR_NULL() macro
-Date: Wed, 21 Oct 2026 05:13:34 +0200
-Message-ID: <20261021031407.24862-2-philmd@oss.qualcomm.com>
+Subject: [PATCH v2 06/33] target/arm: Register CPUClass::exception_name()
+ handler
+Date: Wed, 21 Oct 2026 05:13:39 +0200
+Message-ID: <20261021031407.24862-7-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261021031407.24862-1-philmd@oss.qualcomm.com>
 References: <20261021031407.24862-1-philmd@oss.qualcomm.com>
@@ -103,35 +104,36 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=aI5lOr9m c=1 sm=1 tr=0 ts=6ad82e0b cx=c_pps
- a=wEM5vcRIz55oU/E2lInRtA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX1n5CKuwoPw3X
+ wIZjZDRCXANVhRYvPkvUufGB9nojQQenXx6WT1HTetJ9Fgb7Rq/g3GGuvXUexPV756eWtTmGUyA
+ KAaI4uQWbhCbNN+3PUz349dZxvvxFhI=
+X-Proofpoint-ORIG-GUID: HCD2dpjcuZs-27p0iAPojIT1rxR6gC3i
+X-Proofpoint-GUID: HCD2dpjcuZs-27p0iAPojIT1rxR6gC3i
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX9MBd8K71VnHH
+ IxgAU5vQeXhG9pu23ynhQ0R4kw6p+BILeojJrpkB0vzzW/W8CLCSzS8zUPoGsfMxOu+uSHOV4VZ
+ D6r7JFTccxQCZOppVWU1T7NUxFotU1Ri0GJownXyH/Xx4JzU0OjxgQ30tzOB0IDSF4PAuUZlTT0
+ 4NrPP+dGv0hq4Pt+m5/uRbt6IQdpJG61pLBk1b5OLBC7SG8l3Np11xOs0T1VQNIi/XFsFTj2EeD
+ j4CZPmrYCC51xQc6+J9edoiBxfO3cQYst6yVCc3aGgI2NPdnE97Z+D0qCs9ncC/agB5Dr4kOk2j
+ L//Mx6ROp/2EluL3aRYaPFYmKQSCefQCzOMwovNH0SdvuGTkJQ8xZRYSl/ryaSzlLSpfqGpDGYZ
+ OX+zlxSn1zxc6LolpqER1JTkhTS5ahMx5SwX76z0yNJHCmfTiGKuwE/km/ul4Dqf0geYzqyfd5W
+ CYSQGTBVrDouWvaeQPg==
+X-Authority-Analysis: v=2.4 cv=NLpAaE6g c=1 sm=1 tr=0 ts=6ad82e32 cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=EUspDBNiAAAA:8 a=_sJYpoIm5FXuGNwjPgMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=OIgjcC2v60KrkQgK7BGD:22
-X-Proofpoint-ORIG-GUID: zhkv_81MJNadMHbA13qi3lsNjPVeSoOI
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX2kpkCzzfr5WF
- TIH33NJ0MsTALlhZtMEdDO5GTpISq00l3GmLPnyz7TUqj5uvWsRHeeaY9/lcHHqYWmgB0i1nxOg
- E/+UNbyPGAAwJXNQfFezFFEVJfPLsKAKjil4afKIyGODNIS7yp7yFCiwiZLyD2bKWdHN8nAOlqb
- TW/g11CMVgrFE2IcG/Tqw7fSQAzqjPZEL/H7xboMMfuuLWZNIQzgoKyeZz+ReNcdI/YU/xZ8FlC
- w8LDxb/2KbV2McSQGpexOO/3NcKhK8aB50xH/V+luOEvCVNSwRfl5d8sWJhsyACwKrKJyv3mQ57
- /0USxfGYntai9UQ6d5M++xkV4J7PF0BhRVCSBrcgaQ8+/TdsHH4Q0Khz02r0S+JtD8A27N9jo/l
- hTkDW80N3CRWTWFZ3yVgIVXI6yWGuRpZC4Fwp5oBnP+BH4BXdBtsf4dFuj/zmcq1l8Fnz6coRW1
- f0gJX7PypxT+RNyzEjQ==
-X-Proofpoint-GUID: zhkv_81MJNadMHbA13qi3lsNjPVeSoOI
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX9rSAf355OYV/
- LR4gsLTNyVDbUxCuYMu38WY0cizukNLiHD8KAi0mNbkrre8qJnbp3kRFN4SxlVgBXJTeH69z2Qb
- Qx2PitBkOVqgFwYHlGSDJPXquOMQZfs=
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=EUspDBNiAAAA:8 a=QvePOBYGvqDf6_zMoJUA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=PEH46H7Ffwr30OY-TuGO:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-21_01,2026-10-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 clxscore=1015 impostorscore=0 spamscore=0 bulkscore=0
- malwarescore=0 suspectscore=0 adultscore=0 phishscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610210012
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ suspectscore=0 priorityscore=1501 malwarescore=0 clxscore=1015
+ impostorscore=0 phishscore=0 spamscore=0 adultscore=0 lowpriorityscore=0
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
+ definitions=main-2610210012
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -2
 X-Spam_score: -0.3
 X-Spam_bar: /
@@ -158,39 +160,139 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add a macro returning array[index] or NULL when the index is out
-of bounds, useful to convert switch statements over enums into
-static string lookup tables.
+Factor arm_exception_name() out of arm_log_exception() and
+register it as the CPUClass::exception_name() handler, so
+the common exception logging can resolve ARM exception codes
+to names.
 
-Suggested-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- include/qemu/osdep.h | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ target/arm/cpu.h    |  2 ++
+ target/arm/cpu.c    |  1 +
+ target/arm/helper.c | 76 ++++++++++++++++++++++-----------------------
+ 3 files changed, 40 insertions(+), 39 deletions(-)
 
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 1ec5b42230b..993c8ffde0c 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -533,6 +533,18 @@ void QEMU_ERROR("code path is reachable")
-                        QEMU_BUILD_BUG_ON_ZERO(!QEMU_IS_ARRAY(x)))
- #endif
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a0355ba9e1a..d76554dfc1f 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -67,6 +67,8 @@
+ #define EXCP_MON_TRAP       29   /* AArch32 trap to Monitor mode */
+ /* NB: add new EXCP_ defines to the array in arm_log_exception() too */
  
-+/**
-+ * ARRAY_ELEM_OR_NULL() - Return an array element, or NULL if out of bounds
-+ * @array: array to index
-+ * @index: index of the element to return
-+ *
-+ * Return @array[@index] if @index is a valid index (negative indices
-+ * also yield NULL), otherwise return NULL. Useful to look up entries
-+ * in enum-indexed tables without a prior bounds check.
-+ */
-+#define ARRAY_ELEM_OR_NULL(array, index) \
-+    ((index) < 0 || (index) >= ARRAY_SIZE(array) ? NULL : (array)[index])
++const char *arm_exception_name(int excp);
 +
- int qemu_daemon(int nochdir, int noclose);
- void *qemu_anon_ram_alloc(size_t size, uint64_t *align, bool shared,
-                           bool noreserve);
+ #define ARMV7M_EXCP_RESET   1
+ #define ARMV7M_EXCP_NMI     2
+ #define ARMV7M_EXCP_HARD    3
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 81ec1ce21c6..8efbf673a92 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2647,6 +2647,7 @@ static void arm_cpu_class_init(ObjectClass *oc, const void *data)
+                                        &acc->parent_phases);
+ 
+     cc->class_by_name = arm_cpu_class_by_name;
++    cc->exception_name = arm_exception_name;
+     cc->dump_state = arm_cpu_dump_state;
+     cc->set_pc = arm_cpu_set_pc;
+     cc->get_pc = arm_cpu_get_pc;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7ac21108d1c..824f0a75d04 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -8841,46 +8841,8 @@ void arm_log_exception(CPUState *cs)
+     int idx = cs->exception_index;
+ 
+     if (qemu_loglevel_mask(CPU_LOG_INT)) {
+-        const char *exc = NULL;
+-        static const char * const excnames[] = {
+-            [EXCP_UDEF] = "Undefined Instruction",
+-            [EXCP_SWI] = "SVC",
+-            [EXCP_PREFETCH_ABORT] = "Prefetch Abort",
+-            [EXCP_DATA_ABORT] = "Data Abort",
+-            [EXCP_IRQ] = "IRQ",
+-            [EXCP_FIQ] = "FIQ",
+-            [EXCP_BKPT] = "Breakpoint",
+-            [EXCP_EXCEPTION_EXIT] = "QEMU v7M exception exit",
+-            [EXCP_KERNEL_TRAP] = "QEMU intercept of kernel commpage",
+-            [EXCP_HVC] = "Hypervisor Call",
+-            [EXCP_HYP_TRAP] = "Hypervisor Trap",
+-            [EXCP_SMC] = "Secure Monitor Call",
+-            [EXCP_VIRQ] = "Virtual IRQ",
+-            [EXCP_VFIQ] = "Virtual FIQ",
+-            [EXCP_SEMIHOST] = "Semihosting call",
+-            [EXCP_NOCP] = "v7M NOCP UsageFault",
+-            [EXCP_INVSTATE] = "v7M INVSTATE UsageFault",
+-            [EXCP_STKOF] = "v8M STKOF UsageFault",
+-            [EXCP_LAZYFP] = "v7M exception during lazy FP stacking",
+-            [EXCP_LSERR] = "v8M LSERR UsageFault",
+-            [EXCP_UNALIGNED] = "v7M UNALIGNED UsageFault",
+-            [EXCP_DIVBYZERO] = "v7M DIVBYZERO UsageFault",
+-            [EXCP_VSERR] = "Virtual SERR",
+-            [EXCP_GPC] = "Granule Protection Check",
+-            [EXCP_NMI] = "NMI",
+-            [EXCP_VINMI] = "Virtual IRQ NMI",
+-            [EXCP_VFNMI] = "Virtual FIQ NMI",
+-            [EXCP_MON_TRAP] = "Monitor Trap",
+-        };
+-
+-        if (idx >= 0 && idx < ARRAY_SIZE(excnames)) {
+-            exc = excnames[idx];
+-        }
+-        if (!exc) {
+-            exc = "unknown";
+-        }
+         qemu_log_mask(CPU_LOG_INT, "Taking exception %d [%s] on CPU %d\n",
+-                      idx, exc, cs->cpu_index);
++                      idx, arm_exception_name(idx), cs->cpu_index);
+     }
+ }
+ 
+@@ -9967,6 +9929,42 @@ void arm_cpu_do_interrupt(CPUState *cs)
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
++const char *arm_exception_name(int excp)
++{
++    static const char * const excnames[] = {
++        [EXCP_UDEF] = "Undefined Instruction",
++        [EXCP_SWI] = "SVC",
++        [EXCP_PREFETCH_ABORT] = "Prefetch Abort",
++        [EXCP_DATA_ABORT] = "Data Abort",
++        [EXCP_IRQ] = "IRQ",
++        [EXCP_FIQ] = "FIQ",
++        [EXCP_BKPT] = "Breakpoint",
++        [EXCP_EXCEPTION_EXIT] = "QEMU v7M exception exit",
++        [EXCP_KERNEL_TRAP] = "QEMU intercept of kernel commpage",
++        [EXCP_HVC] = "Hypervisor Call",
++        [EXCP_HYP_TRAP] = "Hypervisor Trap",
++        [EXCP_SMC] = "Secure Monitor Call",
++        [EXCP_VIRQ] = "Virtual IRQ",
++        [EXCP_VFIQ] = "Virtual FIQ",
++        [EXCP_SEMIHOST] = "Semihosting call",
++        [EXCP_NOCP] = "v7M NOCP UsageFault",
++        [EXCP_INVSTATE] = "v7M INVSTATE UsageFault",
++        [EXCP_STKOF] = "v8M STKOF UsageFault",
++        [EXCP_LAZYFP] = "v7M exception during lazy FP stacking",
++        [EXCP_LSERR] = "v8M LSERR UsageFault",
++        [EXCP_UNALIGNED] = "v7M UNALIGNED UsageFault",
++        [EXCP_DIVBYZERO] = "v7M DIVBYZERO UsageFault",
++        [EXCP_VSERR] = "Virtual SERR",
++        [EXCP_GPC] = "Granule Protection Check",
++        [EXCP_NMI] = "NMI",
++        [EXCP_VINMI] = "Virtual IRQ NMI",
++        [EXCP_VFNMI] = "Virtual FIQ NMI",
++        [EXCP_MON_TRAP] = "Monitor Trap",
++    };
++
++    return ARRAY_ELEM_OR_NULL(excnames, excp) ?: "unknown";
++}
++
+ uint64_t arm_sctlr(CPUARMState *env, int el)
+ {
+     /* Only EL0 needs to be adjusted for EL1&0 or EL2&0 or EL3&0 */
 -- 
 2.55.0
 

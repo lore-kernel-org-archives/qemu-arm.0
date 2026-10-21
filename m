@@ -1,102 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B760D606A31C
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 03:15:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF39A60A3833
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 03:15:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=C3NvxhqN;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=b8kmINLq
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=XJ0SyRc7;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=Jmk23Fl/
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJMmx-0002jK-Et; Tue, 20 Oct 2026 23:14:51 -0400
+	id 1xJMmz-0002lE-Sy; Tue, 20 Oct 2026 23:14:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMmq-0002fP-V9
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:14:45 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1xJMmt-0002gU-MX
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:14:47 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMmp-0002Qr-Bx
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:14:44 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ id 1xJMms-0002Q2-3I
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:14:47 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69L2F4gC2391337
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:42 GMT
+ 69L2F3Zr336836
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:34 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- POX/WJTfRTtj1QzagZdqMLjkjh6Nnt7ofKB6ovVu0AM=; b=C3NvxhqNFEPpSP59
- mPIo7kpDhTVHp68q46OvB2S72eK1hYMNKDBanL7C6bxDpgr/zpKd/sqaOXPYu9jG
- 7HOa85LuK2LYVs/Qx5MMrT8QzoFajkdxz9cCPHVaT/w267GawgM9LvGyIykVpuGo
- RcoHZDwN8akAiQ3vZY7TZdm34sAkqMefhg2P0wno89Zbr/phEk0gYkaDxoF5xZrz
- 4FfICWvVqfNulQc8fALg6lEPdTrAhNOkWuoJ41uTLdo4+k30wmyCbltsLeyb+ol8
- JHImfURkK05+NDOaF8DVcWovNpXnrpm9BkrD7P9PEOlB8NeEIAW2RuU7o5bWXP/I
- hdjZJw==
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4heeb99gkp-1
+ HJHtdVy5wVxjfhiD2204eyvZWcyoZdZQUrEb1ToGTMw=; b=XJ0SyRc75PL9B26I
+ 9DRVFMCLNzNkigtjSeuveIqW0wrfhRZqXRy2EI0WU/QQpeNgAus/4Y0gT+S1Bk9d
+ 2NfoX35MJdBet1wnvkuvrJ1dLn4eMyf+vbqtlHCUY+XxS7++hZ2UpFQSo618uowN
+ FDjb4aT/q9JPJVqHOrXkMHbz85U5/sJOlMBw9SPUpmwUtmmqUrvgJJE+u5Y6Nwef
+ Iqd+vnr9L5K7M0dvq/9YcW1qkOvNedl67xjQ0Kt8VHWZkxjnqYneho0SaZR5RZkV
+ i1wJPtdCorKeIWS6/hkwcrrelvrDKUUhu4+FHDbFoCWXP9iS9vZpobuGzJOQi8Db
+ xoj76Q==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hedabhrbg-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:42 +0000 (GMT)
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-917a109c937so4465546d6.2
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:14:42 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:14:34 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-93f559420f3so33621585a.0
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:14:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792552482; x=1793157282; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1792552473; x=1793157273; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=POX/WJTfRTtj1QzagZdqMLjkjh6Nnt7ofKB6ovVu0AM=;
- b=b8kmINLq1mggIux/Rw0hyh21+2lUgIrkPziiDeDvuez7DZtMi0KFtx+dKWy+ymOcqY
- 1RDrpuW+UnO5vVs/eUI932CnqHS4Ak/1DS7Yncl7cvL1a4zZAYGWoviwL9mYkZXPiVgh
- r1/AUaOV0hk8Rvvi1/kaLUhS4vJR9X0ZDEKXetgqiMJhdZi5BKVw6wF+C+jBIOaKxpbL
- MZ+3PxecuTOjcrH+WAwoaf9zDIIIEoyDBVFV7FVxX0xdwxav5q2zF4By3PRIT8ARtyzs
- PWiBvusNHvSPiGipvN6N4cdSnxbsktOuOoze4lvWUtmYRThTMPNG3hwOcWs2cCgWXSTJ
- ju4g==
+ bh=HJHtdVy5wVxjfhiD2204eyvZWcyoZdZQUrEb1ToGTMw=;
+ b=Jmk23Fl/cpG14cVideIl7m5Xu0FGzcAvzYPCZBt785Qgyz8BPYwBEZ3rGXmF/MuEiT
+ VdujIQwqpDvHsVmsh6k8JS9qK7Fotv7lJqZParPQSna6e0baOjzSg/2a69hP31FODJRM
+ YSwJSf7pSXkC2NYEFzpnDEXFPyWZRVl9rvBHBWihFN3n+O+X2KS3ekRqYLJJRS3AxDyr
+ XjtXgRFfE2opHf0t7M4VT6pjDEWHdoBAcHDRWa08S1nul56r6R6nRFC6Hv8vIEKbfuSV
+ HeKUb9CtVXywPnHVD/XmIOGTtP9w/5/8x6eSQW3rVMWpuxzxly0fm9WT+wjwQz7F/j9S
+ tvXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792552482; x=1793157282;
+ d=1e100.net; s=20260707; t=1792552473; x=1793157273;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=POX/WJTfRTtj1QzagZdqMLjkjh6Nnt7ofKB6ovVu0AM=;
- b=KZpMMSlV7RoKqX+HJmDViUmfrTTjjAsqHP5L4uCh8GBBG3bpqf8ap4CsFuJpSBwRFV
- lIwMrAPkN6idictY0/IZ4QQfJi6tSnl1RI8DjX8kPNn5YswqFRIXh1EurlZHScUW1CmS
- +Y1iHiosD8ohbVu8VRgi8z6Fjoma7MYm4Jd/Xk8gUbmJlAK0h8M9hjm/tNPcefjYyh/H
- qOxx91oiBN2GTgSzdLvXSstpCqUbbZIUSza3Q4e8WqHUebDowFcdtHCrCWsNilqIgGMQ
- G74tbmbeIwMMYcxBdrrXbT7TY4JOAmLDSDy8GD2iLP5XLDAn52j40rL6Nw6BedsU6L78
- JDRA==
+ bh=HJHtdVy5wVxjfhiD2204eyvZWcyoZdZQUrEb1ToGTMw=;
+ b=rJjr5HX1wJ6vxJGNV+c/Rnb84aWwsPBwuiFHgcF/tucOoC7h0n3qKgcn4ghuoRnTyD
+ Sepd4wcoMRHrPUNmWSugMmQ24B7Ysq2bfdEHJFGT3i9oJrtg2PUkSdQ1borFKk+bVLvo
+ KkMVWGr3xrcEyIVHa3qljDjYX4u/xSXKbo3DkhFZt73no4wkEySaoHRp8Rf/LbId8rK+
+ VvgaNwlkuJT5tqrpv/DJvKyQDiOAa7FPXKKfSUSqM2e00JJrR0OIRZOUCVe8K85W3Y0M
+ DYlnv+JWYrnD48NJxv24TxOy3LXssLY+LZPl61IQebV25vuzP+PcluubG1sOc0LTfruI
+ 2fCg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByA7qtzbmfMqBUvRjuATOcLkoxWnJKhn2mTosQCPAt/bCuSZKbQLDgXpHULQSFGBK6CH7kEjIMfHg==@nongnu.org
-X-Gm-Message-State: AFq9FYIQUo3ZKQF8fI4EYrPZpOhUtRd8QC4vG6NfBCkOrzB0q0/wAnZ5
- j9Wt1udoCqeWDxE4LbnaJGwRCQ9I/p5w/vnhSyR3iUWSgHig7x1ZPPwox/pgSuYtw0r/GU8q4tn
- hrLM+5sziC9Y7jSzCpUVMUxvJEKLS7H9cQgOOdeC4gGEiKGKTV+JXadY=
-X-Gm-Gg: AYBFou34F5GiiKMZp5R/Y6gO0ykCVaR89nFa3HQefxS4lsg4EaWPnhZl1Ar6XpU+uH2
- qDAABJ0+Emc605MSVEADK5IaigVtaX/vX0cnPXl19HDTwwuyzknfT2FSi38d+Ab4dMuL7xeTb+5
- EeJBHmdI5jMzp0vsOguVo6Xmr5IBt7cd2BJPkwnzE4wQbGNiQEayGIaDjbTEC03HVegmiPUGTJw
- DNGs26BWaL7GErwbYzLSeHPNRa027H69jqhlygg1V+ZXiGIgViak9GIsp3oWNgnQ2WrZI94k6dL
- 2GDuRO+KccSjyy1McBLDW0hTfeiy/icL2HkXTG7iI6IaI8yevXEXiwzjjA5pAltaffg9UpB9wCP
- GDnDFLEx+XCDq2wuhObA6lDOuXESSPa9aKgiCG1Wp
-X-Received: by 2002:a05:620a:17ac:b0:93f:2cf4:e6dd with SMTP id
- af79cd13be357-93f57f935abmr222677585a.51.1792552481586; 
- Tue, 20 Oct 2026 20:14:41 -0700 (PDT)
-X-Received: by 2002:a05:620a:17ac:b0:93f:2cf4:e6dd with SMTP id
- af79cd13be357-93f57f935abmr222674885a.51.1792552481017; 
- Tue, 20 Oct 2026 20:14:41 -0700 (PDT)
+ AKwUvBycf56CgaqjiOqpgMHhJTRitlztdDDYfFMYpttbDvOqBL30Qrs/kGf//JDMxT9t3JrJi4oGB1Y46A==@nongnu.org
+X-Gm-Message-State: AFq9FYJAJgHVeoxGgWSGxxna6CzXPlShmj3KfAwGICtSJalZmJbI/b8s
+ leRdZrWRK5QomHDtlO7U70ir0PVJHEv1s4nJUsKwTuCllrdRwCEhRc93n5L8VKotkgJiKR8pqAU
+ Np+17b+cU+lwOKEF5ns85L27A0Z9R8ykwNq/VVcqxwLn7JS//b0zxiBE=
+X-Gm-Gg: AYBFou08gTmwZjUY2AGz4/9Ar0uXZ94UP3l1UdZjh90H9tNzXDGyE1dHUQ5MRz4IdWM
+ 4RymUUn1rdmMUojna3CI0dbCTuFOzidwBV5k/8MGu5emVSBoHNxBJqL/Ds5golD1UJS0c+5IEsd
+ pwDlxtv48BLPaybopYkeNAhCbOah37/LNZftm5LgnuRROQads8bzkD6R1andIGJT5yAcD8cu9m0
+ iv66A/9lRNf81yLvVCPwW67h9mamf384yto7O3ljbu55MQ1MFLQGtgwJKJrY3TyCqv6mHl9QOGv
+ AdLEDryBWeaf6Ydd580LX4YaGn3z+Rs4S96TuP3e5EwUJkROTouGOdRZjac1o5ecxxdxZdp784v
+ PudAYthET2QRQf2THdbpvHCrZ060c/TCTTox0jS75
+X-Received: by 2002:a05:620a:45a1:b0:93f:32c5:69b0 with SMTP id
+ af79cd13be357-93f57fa3df6mr187622585a.60.1792552473447; 
+ Tue, 20 Oct 2026 20:14:33 -0700 (PDT)
+X-Received: by 2002:a05:620a:45a1:b0:93f:32c5:69b0 with SMTP id
+ af79cd13be357-93f57fa3df6mr187620785a.60.1792552472925; 
+ Tue, 20 Oct 2026 20:14:32 -0700 (PDT)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e25834086sm2450046f8f.34.2026.10.20.20.14.39
+ ffacd0b85a97d-48e2581eedesm2246455f8f.14.2026.10.20.20.14.31
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 20 Oct 2026 20:14:39 -0700 (PDT)
+ Tue, 20 Oct 2026 20:14:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 04/33] target/alpha: Register CPUClass::exception_name()
- handler
-Date: Wed, 21 Oct 2026 05:13:37 +0200
-Message-ID: <20261021031407.24862-5-philmd@oss.qualcomm.com>
+Subject: [PATCH v2 03/33] cpus: Introduce CPUClass::exception_name() handler
+Date: Wed, 21 Oct 2026 05:13:36 +0200
+Message-ID: <20261021031407.24862-4-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261021031407.24862-1-philmd@oss.qualcomm.com>
 References: <20261021031407.24862-1-philmd@oss.qualcomm.com>
@@ -104,35 +103,36 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfXyCZD57Zh3nl4
- zpatNFRMNAcVy81/g2oZdwP6PSIoIriJQ5Xc91SEW6qD1F9QSSmmXrNxZzqaEjuis5b2gGWc9Yk
- qLld0v8xcGOMLn9ohv45UIziUQppk30=
-X-Proofpoint-GUID: vgJqhJrpvz9aQYzYJLHiLwVf2djOSKdl
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX8PDz1S7qc/Qt
- rFbGPc3uh2vWGSr85NRCBF1wWTsMZip/ME1h6dtKRHIXtxCeeuKvZadVolQxrIyDziBdFqN5/Tm
- Cqu2P37jW+GcO70b1uNAXXXYqaJ6oI0dw9M792C6JgfcJVykaPbeHSYO3UTVfFxTDOZ3p6iU8yf
- VKzdwCG8Q/1s2k3AkRmLVOgPnw+QJAC+6Qp1IClW7SLF8BeLV+SGgGUtcDsCNrnz3iEiHSJUQ8o
- nCRcBWSdssepH9PATm3pUe/it6G+wza+Tbfx+pqE6wFhOt9NM409U9v/cyvH0tkAEYnlQuwVCew
- vG8jTi+gbc3OkSRImVZqbbUvmBlMwcC0hmQLqCo2Z0yq1uy/pZKPQ4w4MSUM11rrxbQZobSjYBP
- q9l1m5CekUIyECnYsE5Sic+a9V93SzUeMyNZlBV13RI4UIbwx7/q5pBTw4lx8mX/AzSHv1avAh1
- 4dtyXhCCVjaS68TMldQ==
-X-Authority-Analysis: v=2.4 cv=R42WitRX c=1 sm=1 tr=0 ts=6ad82e22 cx=c_pps
- a=oc9J++0uMp73DTRD5QyR2A==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfXy9/BNEGbhuUf
+ 8OJ6l3ucg++rA0GCKBGf65iO2/i2lz3gtNTR6bYso00UYilumJ9vPNYCA7007zN7Wk/yVn30DkN
+ cfUubmEOvzBP4hz//Gzzsq2VbL09DZI=
+X-Proofpoint-ORIG-GUID: pOUUBzEHXI7vz9uCTx4YQ6SJCFmsKikk
+X-Proofpoint-GUID: pOUUBzEHXI7vz9uCTx4YQ6SJCFmsKikk
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX2d4TUYrAk7hr
+ dsmfdW527gN8vvI7rhJ31gCF5dlkadVumo6glx2uOvnvmj/3+Jf6JgWpZt0uQmBFKMIdvOV+IMs
+ OUH/HCRwOEDThi0l1y6QBty5rGt9fKwjpoyxAm2BcwAECnBQsq0XFdTsmZTGR2rKU/fuUaSK1YI
+ osgoxltgBSwrx8P7KhXQAzFImqRykbaHPnwEBpu3zBtE5nGQ5fQPREOtNS/kOVKqlXoeiOR8TN/
+ u/MBYQoIu7KGnOEh9PNZeLSbmEoYCdMlmH9x4vA7xiUi/GDxFod38O5LpqWpzTJcmyv8UeLpbib
+ QuHTQqv4HlwMOsTLKByQ1Wa9vezpnJAKDiEaQBjmWx4RRXnPa7IJNsLNTZkl9RRIC6YrEQxo+zv
+ Nj4AvPd1/mRwmN6Nc8b1ErTfk5DE7d4UktsG3N3CGTRGqaDCLnMAo/ZNPhKAOXUQz+53FY9q6dB
+ Q5Oanno2wJ/3Y3hA1ag==
+X-Authority-Analysis: v=2.4 cv=NLpAaE6g c=1 sm=1 tr=0 ts=6ad82e1a cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=EUspDBNiAAAA:8 a=kVf6GzFcR4OVXmdlW0QA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=iYH6xdkBrDN1Jqds4HTS:22
-X-Proofpoint-ORIG-GUID: vgJqhJrpvz9aQYzYJLHiLwVf2djOSKdl
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=EUspDBNiAAAA:8 a=nqYS7Cp7_YcMA-VLD7UA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=IoWCM6iH3mJn3m4BftBB:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-21_01,2026-10-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 lowpriorityscore=0 priorityscore=1501 suspectscore=0 spamscore=0
- malwarescore=0 adultscore=0 clxscore=1015 impostorscore=0 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610210012
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ suspectscore=0 priorityscore=1501 malwarescore=0 clxscore=1015
+ impostorscore=0 phishscore=0 spamscore=0 adultscore=0 lowpriorityscore=0
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
+ definitions=main-2610210012
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -2
 X-Spam_score: -0.3
 X-Spam_bar: /
@@ -158,144 +158,61 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Factor alpha_exception_name() out of alpha_cpu_do_interrupt()
-and register it as the CPUClass::exception_name() handler, so
-the common exception logging can resolve Alpha exception codes
-to names.
+Have targets register a helper to resolve their exceptions.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/alpha/cpu.h    |  1 +
- target/alpha/cpu.c    |  1 +
- target/alpha/helper.c | 82 ++++++++++++++++++++++++-------------------
- 3 files changed, 48 insertions(+), 36 deletions(-)
+ include/hw/core/cpu.h       | 2 ++
+ accel/tcg/cpu-exec-common.c | 8 +++++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index 378bd96d941..8f780502476 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -284,6 +284,7 @@ void alpha_cpu_do_interrupt(CPUState *cpu);
- bool alpha_cpu_exec_interrupt(CPUState *cpu, int int_req);
- hwaddr alpha_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
- #endif /* !CONFIG_USER_ONLY */
-+const char *alpha_exception_name(int exception);
- void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);
- int alpha_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int alpha_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-index 12e86021663..f9936315fa2 100644
---- a/target/alpha/cpu.c
-+++ b/target/alpha/cpu.c
-@@ -283,6 +283,7 @@ static void alpha_cpu_class_init(ObjectClass *oc, const void *data)
-                                     &acc->parent_realize);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 456154df6f6..9d71db16d2f 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -108,6 +108,7 @@ struct SemihostingCPUOps;
+  * @list_cpus: list available CPU models and flags.
+  * @parse_features: Callback to parse command line arguments.
+  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
++ * @exception_name: Callback for getting architecture exception name.
+  * @memory_rw_debug: Callback for GDB memory access.
+  * @dump_state: Callback for dumping state.
+  * @query_cpu_fast:
+@@ -178,6 +179,7 @@ struct CPUClass {
+     const char * (*gdb_arch_name)(CPUState *cpu);
+     const char * (*gdb_get_core_xml_file)(CPUState *cpu);
  
-     cc->class_by_name = alpha_cpu_class_by_name;
-+    cc->exception_name = alpha_exception_name;
-     cc->dump_state = alpha_cpu_dump_state;
-     cc->set_pc = alpha_cpu_set_pc;
-     cc->get_pc = alpha_cpu_get_pc;
-diff --git a/target/alpha/helper.c b/target/alpha/helper.c
-index c3614ecafda..cedb0006892 100644
---- a/target/alpha/helper.c
-+++ b/target/alpha/helper.c
-@@ -35,6 +35,51 @@
- #define CONVERT_BIT(X, SRC, DST) \
-     (SRC > DST ? (X) / (SRC / DST) & (DST) : ((X) & SRC) * (DST / SRC))
++    const char *(*exception_name)(int exception);
+     void (*disas_set_info)(const CPUState *cpu, disassemble_info *info);
  
-+const char *alpha_exception_name(int excp)
-+{
-+    const char *name;
+     const char *deprecation_note;
+diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
+index 2ac8380d0bb..a347dc244d8 100644
+--- a/accel/tcg/cpu-exec-common.c
++++ b/accel/tcg/cpu-exec-common.c
+@@ -106,7 +106,7 @@ static const char *qemu_excp_name(int excp)
+     if ((excp < ARRAY_SIZE(excp_name)) && excp_name[excp]) {
+         return excp_name[excp];
+     }
+-    return "undocumented";
++    return "unknown";
+ }
+ 
+ static void log_raise_exception(const CPUState *cpu, int excp)
+@@ -117,6 +117,12 @@ static void log_raise_exception(const CPUState *cpu, int excp)
+     if (excp >= EXCP_QEMU_INTERNAL) {
+         qemu_log_mask(CPU_LOG_INT, "raise exception: 0x%x (internal: %s)\n",
+                                    excp, qemu_excp_name(excp));
++    } else {
++        const CPUClass *cc = cpu->cc;
++        const char *name = cc->exception_name ? cc->exception_name(excp)
++                                              : "unknown";
 +
-+    switch (excp) {
-+    case EXCP_RESET:
-+        name = "reset";
-+        break;
-+    case EXCP_MCHK:
-+        name = "mchk";
-+        break;
-+    case EXCP_SMP_INTERRUPT:
-+        name = "smp_interrupt";
-+        break;
-+    case EXCP_CLK_INTERRUPT:
-+        name = "clk_interrupt";
-+        break;
-+    case EXCP_DEV_INTERRUPT:
-+        name = "dev_interrupt";
-+        break;
-+    case EXCP_MMFAULT:
-+        name = "mmfault";
-+        break;
-+    case EXCP_UNALIGN:
-+        name = "unalign";
-+        break;
-+    case EXCP_OPCDEC:
-+        name = "opcdec";
-+        break;
-+    case EXCP_ARITH:
-+        name = "arith";
-+        break;
-+    case EXCP_FEN:
-+        name = "fen";
-+        break;
-+    case EXCP_CALL_PAL:
-+        name = "call_pal";
-+        break;
-+    default:
-+        name = "<unknown>";
-+        break;
-+    }
-+    return name;
-+}
-+
- uint64_t cpu_alpha_load_fpcr(CPUAlphaState *env)
- {
-     return (uint64_t)env->fpcr << 32;
-@@ -343,43 +388,8 @@ void alpha_cpu_do_interrupt(CPUState *cs)
++        qemu_log_mask(CPU_LOG_INT, "raise exception: %d (%s)\n", excp, name);
+     }
+ }
  
-     if (qemu_loglevel_mask(CPU_LOG_INT)) {
-         static int count;
--        const char *name = "<unknown>";
-+        const char *name = alpha_exception_name(i);
- 
--        switch (i) {
--        case EXCP_RESET:
--            name = "reset";
--            break;
--        case EXCP_MCHK:
--            name = "mchk";
--            break;
--        case EXCP_SMP_INTERRUPT:
--            name = "smp_interrupt";
--            break;
--        case EXCP_CLK_INTERRUPT:
--            name = "clk_interrupt";
--            break;
--        case EXCP_DEV_INTERRUPT:
--            name = "dev_interrupt";
--            break;
--        case EXCP_MMFAULT:
--            name = "mmfault";
--            break;
--        case EXCP_UNALIGN:
--            name = "unalign";
--            break;
--        case EXCP_OPCDEC:
--            name = "opcdec";
--            break;
--        case EXCP_ARITH:
--            name = "arith";
--            break;
--        case EXCP_FEN:
--            name = "fen";
--            break;
--        case EXCP_CALL_PAL:
--            name = "call_pal";
--            break;
--        }
-         qemu_log("INT %6d: %s(%#x) cpu=%d pc=%016"
-                  PRIx64 " sp=%016" PRIx64 "\n",
-                  ++count, name, env->error_code, cs->cpu_index,
 -- 
 2.55.0
 

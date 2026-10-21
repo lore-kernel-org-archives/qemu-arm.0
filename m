@@ -1,92 +1,119 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E771606A31C
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 06:53:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BFD5D606A321
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 08:01:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=kIv+w3G+
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Gw60PqzJ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJQBt-0003E0-2S; Wed, 21 Oct 2026 02:52:49 -0400
+	id 1xJRGX-00037b-Tj; Wed, 21 Oct 2026 04:01:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <conti.manuele@gmail.com>)
- id 1xJQBq-0003D6-St
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 02:52:46 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJRGR-00036C-Qk
+ for qemu-arm@nongnu.org; Wed, 21 Oct 2026 04:01:37 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <conti.manuele@gmail.com>)
- id 1xJQBn-0006JQ-U6
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 02:52:46 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-48441a2ba1bso195870f8f.1
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 23:52:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xJRGQ-0005Ag-9h
+ for qemu-arm@nongnu.org; Wed, 21 Oct 2026 04:01:35 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4a01933b584so2865945e9.0
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 01:01:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792565562; x=1793170362; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=GwZQMrdWb0dxuu5Dhmk9+4HjGZXH4eH3BqXJTEFnghs=;
- b=kIv+w3G+X+mIThK3hqlo5kj/p95UwC5qtcujXpGQCU1OSM+sRZ90Kn0X9ZlIccQbrU
- j6fz8MUbFQ3iuOCRMfyEYmhD3ZwmwVTp1qXvAiVi3X0N73KEKUUKV3tXArFYN71QtUvd
- 1+WVIS62YWLH4T/Ry2tEmaueCHgfUxcVgBt+Uq4g5rstw9NmG6tEp9q5655CLjXl/PAj
- 9J/RHmMBChzuE0ojlH0ndv5fKBLwVv+17U6STBpZOM78G2fzA8cVP6MIH+v6/441x5OC
- rEdKoZu+20tAxoY2hCZaHzSOq4ujeslw1W13iL4coSTEF5adeXnY668bFyOocbniYgDY
- awiA==
+ d=linaro.org; s=google; t=1792569692; x=1793174492; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=KmS6POvOU8uWwtXPwpZvXcIWOBRMCt8xAUzTlXIy8PQ=;
+ b=Gw60PqzJjMM3YoqSlOjdPzlaD5I6j7iiDplRHdCEMcB+V44jB3qmYrlGurqbBYLGFL
+ X8w/PtAZfc6LoXMgFG48C2jaXQoE5lKVmzAN8obJftmN5ArtZO3AOuoRKdsqK4s0vkOJ
+ vmTZWBdaevpDh/yGSquK+xC/1Syt/25B1tV16jTpZauldzZSs6rCGUz6tM/lwLJ0VRvj
+ k/jstOBWKfdKnZJM94JjqkC8q8m1PapQ2E9MUm0LjUN6mif4EROaoRWXZjdrk9kGTLTt
+ zSZc09PORCFOwhhyDfX/RzsLBVyTQppuUzt6jnEN4EXrpptXpdTgtxB/s7Aw2qMZBJ1X
+ Kv4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792565562; x=1793170362;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=GwZQMrdWb0dxuu5Dhmk9+4HjGZXH4eH3BqXJTEFnghs=;
- b=SGvoldtJMUVwmubwZZ2mUxgVMw53gEqmp4BEKY7793gapRpHCBz1SCGjhfSkW75qIP
- ayzbAzDJkAXK51ipmaWi7ARSJYLzD+Vajqfn/OOGp4wCjhMbE+vINNFaU76YwSqN90QK
- 14MvnY1IF8h2YY4N1bFMP0k/9B+WIo/RP5OZIEkk94NWOd/vaEwBgerthaLvdWbxQqQa
- dcILuaBSC7rf/1ivqMQO1zMOtP6xgXszfI/pcOk2WLKV/JhkicuHnMmYy7r+ZTrWqQcm
- ZKPh3pvAPRaO7b+C9BsHrdXt+BzzUf7WsZQ/hkizfTDfmhHRspCiGmW+rdr1AqWZqxME
- uLPQ==
+ d=1e100.net; s=20260707; t=1792569692; x=1793174492;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=KmS6POvOU8uWwtXPwpZvXcIWOBRMCt8xAUzTlXIy8PQ=;
+ b=Yc62rtp30ayVWPJH8ssQKpLta9xyb8ieLYYeLesJXpIQUiu08rbDkoYisLT4GS+Tbt
+ mieGyHFBIwIW5wbBaKESDX4LzhBPKgb6GOAhjtYu+S8JIpV4mDYyGeWU9pEG6wrUpagd
+ IyK0BjErd1TzE5ld0VwImhRpI4n5mohk2tucDokrgM0fjeccmCR/4Vwp3OrP9pmUDWPn
+ Vx/1OQp/Cz/RtWIjtUsN4aTOsoVnfa6JO7kSaHubk6XOKbAV8FXN1y71qojx7zvGAcmj
+ s6xdFQhyqXYSc5wI1YlsB0YWwgnpKyftDJijiMLncJPe8eoReNrIPHYye2iunUJXsbDe
+ ICWQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz6+Zu1Ff6xO0UbVvR8NWIONPLvsZtiMG5ooamd2vLabrycrNUGS+7XijbTIFfseQpvNQAuKXRQbQ==@nongnu.org
-X-Gm-Message-State: AFq9FYKFHzWLY/aRvkAWJEfyLBTQPftnq8rWeKZKSFiTALlfQPMjDQcH
- PP4EatRPJPWtT8iI4J15BF3v6HiIV5n3B61ZiU9BR6+u/ivKvD6twHEc
-X-Gm-Gg: AYBFou3ifavxc0K2w/PV4C/YRZmPUeDtYNgOfjlQXSaR1JZlOF3fwfqubf8Jc9bJZ4v
- NZmz7gati5N7LwiAh++FXY8n0Jjv1iSlg1OR1FTtYhSorrIlc9x2iLdYgoy9HjSak9QLcprknMd
- G+JcAMdv8u5wxTlvzleWB2g0Rva7qC+uuBPDGD5bbNZZvUzYDDP2P7zsD4zOjjkNShR9kNqPIZa
- m7lZmMbq9/QNcWcZdGIiArewXfiaHFHyPbWRZV0BINqCgc813TSTxY9q5OMDn6rSJC3qn/9jdDx
- uzkU6RaBZXYRE5TodQXpOPFfTDANoHO4UoU55AcMnVIFR0n0alLF1P9MMlq4nelYc/Z9+3GWOOJ
- J0mSaEiFbaxMuuok26YxUEE5R1UqiMXQiQhMZG6Izdo1+Cm1Gc7aKhBIgRg+pWoYbtBQ+quIs6k
- l9g7H+upbxu+FyY6LGioK8bSR8DKJjHDsfMli9NmvePJsqfUSqAkazyPOlLx6F9K0KDv8Ve27X3
- UvbTeIQ8O4gt7GQHXIZOvxo3a6Q00v8isCgzbqOKqj5sQlJN1Gxr2LdccVhhnzgFXaC6BefTDjA
- ec4Q9y+p3UqXBnzsf94OlPplkLIFPprPs5U6JbvSpb8=
-X-Received: by 2002:adf:ecc3:0:b0:487:6f2:1a4c with SMTP id
- ffacd0b85a97d-48e264e0fafmr1454238f8f.25.1792565561840; 
- Tue, 20 Oct 2026 23:52:41 -0700 (PDT)
-Received: from localhost.localdomain ([2a01:7d0:d21a:4a00:39f5:8799:5de1:6dc6])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e25841fe4sm3724549f8f.53.2026.10.20.23.52.39
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 20 Oct 2026 23:52:40 -0700 (PDT)
-From: Manuele Conti <conti.manuele@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: alistair@alistair23.me, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com,
- Manuele Conti <conti.manuele@gmail.com>
-Subject: [PATCH] hw/ssi/stm32f2xx_spi: avoid transferring data on DR reads
-Date: Wed, 21 Oct 2026 08:52:38 +0200
-Message-ID: <20261021065238.15220-1-conti.manuele@gmail.com>
-X-Mailer: git-send-email 2.41.0
+ AKwUvBzXS58MVJzVbAR4D4t88n7QrNcnFXW2tOEb69cVmlaKpnHp9Q7FRnwxn9FcM3bleHwuO1lEYdqiVQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLXR1JFk6z6BkjFZfm12eg8r9L/JhxZBgquM4L85Z0/ZXwV/qLj
+ Y3ojGuJJ9KMU2PReq+G9Gbe6Lb/ciLSqSkz1JQvsAmMqalFDO6RTDIa0VB7pdo8oyCA=
+X-Gm-Gg: AYBFou0/gNTdg5FDD+8MVAAahJig4OXl3RpJGWLuoWt+jEOCa2Gxzrua0UalpMCYC1S
+ f66tnp+LmA5SNKCtibgiaX4ZIXKWRyyGd7TKf6iC3w8PZw529mdbaEvVo+2JL/2TGBPYyAQ0gRn
+ 9d70ZWNoc3AmDoVIldYSJvgHx0wWSYPqLET7tGZ4hdtozqTOpAyS/AsyRRkmWtBQ/r8IC3kuXEY
+ D5mIkyytJp74cfsZH9Iagfc8f/GOra1wKlUyxo9hkqpqqzpF7UoxwXMgwQeVjpIuabUYypF2+Xe
+ FDBi9PqV37Lriammoz0BtKmEVOY+FzXHEIfjM7lgz841Y35XpFjnNTktibaNIcQqf9CxvYNRzYP
+ 4lBG1OUsyL0dfCQePKCmVmH/Jd3DEfHe6nluYUM5ywtbRw+q1UENqmG2Fh62kiHMxdmAvBBY0ev
+ rNwf6LENlPTt2JpeWs5zfPKN73gk5zAV79OtCBkyKwW8jYqY5qSRFpZkBLFIDY+wXdmh8gh2zlV
+ FcJO+9SOiRKzCpcfoUCHCNz/v2EKGSIvhf5clGIymbBzWfpN58nh6V2
+X-Received: by 2002:a05:600c:4f0e:b0:4a1:71e5:9420 with SMTP id
+ 5b1f17b1804b1-4a1fdd1426cmr25142295e9.13.1792569691508; 
+ Wed, 21 Oct 2026 01:01:31 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a200c1cc03sm3605885e9.0.2026.10.21.01.01.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Oct 2026 01:01:29 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 902BD5F828;
+ Wed, 21 Oct 2026 09:01:28 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Ilya Leoshkevich <iii@linux.ibm.com>
+Cc: qemu-devel@nongnu.org,  Cornelia Huck <cohuck@redhat.com>,  Thomas Huth
+ <th.huth+qemu@posteo.eu>,  Paolo Bonzini <pbonzini@redhat.com>,  Christian
+ Borntraeger <borntraeger@linux.ibm.com>,  Peter Xu <peterx@redhat.com>,
+ Warner Losh <imp@bsdimp.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Kyle Evans <kevans@freebsd.org>,  Keith
+ Busch <kbusch@kernel.org>,  Matthew Rosato <mjrosato@linux.ibm.com>,  Eric
+ Farman <farman@linux.ibm.com>,  Zhao Liu <zhao1.liu@intel.com>,  Ani Sinha
+ <anisinha@redhat.com>,  Anders Roxell <anders.roxell@linaro.org>,
+ qemu-arm@nongnu.org,  Song Gao <gaosong@loongson.cn>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Laurent Vivier
+ <laurent@vivier.eu>,  qemu-s390x@nongnu.org,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Brad Smith <brad@comstyle.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,  Halil Pasic
+ <pasic@linux.ibm.com>,  Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Yoshinori Sato
+ <yoshinori.sato@nifty.com>,  Klaus Jensen <its@irrelevant.dk>,  John Snow
+ <jsnow@redhat.com>
+Subject: Re: [PATCH v3 19/19] tests/functional: add tuxrun kvm gdb test for
+ s390x
+In-Reply-To: <7a3867d3-5fff-462e-9aca-5dcbb437d883@linux.ibm.com> (Ilya
+ Leoshkevich's message of "Wed, 21 Oct 2026 00:46:45 +0200")
+References: <20261019192704.3220373-1-alex.bennee@linaro.org>
+ <20261019192704.3220373-20-alex.bennee@linaro.org>
+ <7a3867d3-5fff-462e-9aca-5dcbb437d883@linux.ibm.com>
+User-Agent: mu4e 1.14.4; emacs 30.1
+Date: Wed, 21 Oct 2026 09:01:28 +0100
+Message-ID: <87qzhj1nzb.fsf@draig.linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=conti.manuele@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,132 +125,54 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-14.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FORGED_GMAIL_RCVD,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Writing SPI_DR already performs the synchronous SSI transfer and stores
-its response in spi_dr. Reading SPI_DR performs another transfer, using
-the previous response as transmit data, and returns the new response.
-Consequently a normal write/read pair clocks two frames on the bus and
-can skip bytes in a peripheral's response.
+Ilya Leoshkevich <iii@linux.ibm.com> writes:
 
-Return the response saved by the write and clear RXNE without starting
-another transfer. Repeated reads then leave the peripheral state alone.
+> On 10/19/26 21:27, Alex Benn=C3=A9e wrote:
+>> As with x86_64 we now have the bits to add a KVM gdb test. A couple of
+>> minor wrinkles need to be handled.
+>> The first is applying an offset when loading the symbols to take
+>> into
+>> account the relocation that happens.
+>> The other minor wrinkle is the s390x only supports WP_WRITE watch
+>> points so we skip the other watch point tests lest we get confusing
+>> messages about failing to insert HW breakpoints.
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>> ---
+>> v3
+>>    - add symbol-offset handling
+>>    - limit the watchpoint tests
+>>    - add skipIfMissingEnv("QEMU_TEST_GDB") decorator
+>> ---
+>>   .../functional/gdb-scripts/kernel_gdb_test.py  | 10 ++++++----
+>>   tests/functional/qemu_test/tuxruntest.py       |  4 ++++
+>>   tests/functional/s390x/test_tuxrun.py          | 18 +++++++++++++++++-
+>>   tests/guest-debug/run-test.py                  |  7 ++++++-
+>>   tests/lcitool/libvirt-ci                       |  2 +-
+>
+> Did you intend to bump this submodule here?
 
-Add a qtest using the upstream netduino2 machine and an M25P80 flash.
-Check the JEDEC ID, RXNE clearing, and repeated DR reads. The test requires
-no board changes and reproduces the unwanted extra transfers before the
-fix.
+oops - no. I've never figured out the git foo needed to reset submodules
+automatically on checkout. If you jump branches a lot its invariably out
+of date.
 
-Fixes: 5ae74402d1f ("STM32F2xx: Add the SPI device")
-Signed-off-by: Manuele Conti <conti.manuele@gmail.com>
----
- MAINTAINERS                      |  1 +
- hw/ssi/stm32f2xx_spi.c           |  1 -
- tests/qtest/meson.build          |  2 ++
- tests/qtest/stm32f2xx-spi-test.c | 50 ++++++++++++++++++++++++++++++++
- 4 files changed, 53 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/stm32f2xx-spi-test.c
+Will fix.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 902db77..822c60a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1201,6 +1201,7 @@ F: hw/char/stm32f2xx_usart.c
- F: hw/timer/stm32f2xx_timer.c
- F: hw/adc/*
- F: hw/ssi/stm32f2xx_spi.c
-+F: tests/qtest/stm32f2xx-spi-test.c
- F: include/hw/*/stm32*.h
- 
- STM32F405
-diff --git a/hw/ssi/stm32f2xx_spi.c b/hw/ssi/stm32f2xx_spi.c
-index 871d573..da1dbb7 100644
---- a/hw/ssi/stm32f2xx_spi.c
-+++ b/hw/ssi/stm32f2xx_spi.c
-@@ -82,7 +82,6 @@ static uint64_t stm32f2xx_spi_read(void *opaque, hwaddr addr,
-     case STM_SPI_SR:
-         return s->spi_sr;
-     case STM_SPI_DR:
--        stm32f2xx_spi_transfer(s);
-         s->spi_sr &= ~STM_SPI_SR_RXNE;
-         return s->spi_dr;
-     case STM_SPI_CRCPR:
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 78b3010..5984e9c 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -238,6 +238,8 @@ qtests_stm32l4x5 = \
-    'stm32l4x5_usart-test']
- 
- qtests_arm = \
-+  (config_all_devices.has_key('CONFIG_NETDUINO2') and
-+   config_all_devices.has_key('CONFIG_SSI_M25P80') ? ['stm32f2xx-spi-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
-diff --git a/tests/qtest/stm32f2xx-spi-test.c b/tests/qtest/stm32f2xx-spi-test.c
-new file mode 100644
-index 0000000..619191c
---- /dev/null
-+++ b/tests/qtest/stm32f2xx-spi-test.c
-@@ -0,0 +1,50 @@
-+/*
-+ * STM32F2XX SPI controller tests
-+ *
-+ * Copyright (c) 2026 Manuele Conti <conti.manuele@gmail.com>
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+
-+/* The first SSI bus found by -device belongs to SPI3. */
-+#define SPI3_BASE 0x40003c00
-+#define SPI_CR1   (SPI3_BASE + 0x00)
-+#define SPI_SR    (SPI3_BASE + 0x08)
-+#define SPI_DR    (SPI3_BASE + 0x0c)
-+#define SPI_RXNE  (1U << 0)
-+
-+static void test_jedec_id(void)
-+{
-+    static const uint8_t jedec_id[] = { 0x20, 0x20, 0x14 };
-+    QTestState *qts = qtest_init("-machine netduino2 "
-+                               "-device m25p80,bus=ssi");
-+
-+    /* Enable SPI in master mode, with software slave management. */
-+    qtest_writel(qts, SPI_CR1, (1U << 9) | (1U << 8) |
-+                             (1U << 6) | (1U << 2));
-+
-+    qtest_writeb(qts, SPI_DR, 0x9f);
-+    qtest_readb(qts, SPI_DR);
-+
-+    for (unsigned i = 0; i < ARRAY_SIZE(jedec_id); i++) {
-+        qtest_writeb(qts, SPI_DR, 0);
-+        g_assert_cmphex(qtest_readl(qts, SPI_SR) & SPI_RXNE, ==, SPI_RXNE);
-+        g_assert_cmphex(qtest_readb(qts, SPI_DR), ==, jedec_id[i]);
-+        g_assert_cmphex(qtest_readl(qts, SPI_SR) & SPI_RXNE, ==, 0);
-+
-+        /* Reading DR again must not clock another byte out of the flash. */
-+        g_assert_cmphex(qtest_readb(qts, SPI_DR), ==, jedec_id[i]);
-+        g_assert_cmphex(qtest_readl(qts, SPI_SR) & SPI_RXNE, ==, 0);
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+    qtest_add_func("/stm32f2xx/spi/jedec-id", test_jedec_id);
-+    return g_test_run();
-+}
--- 
-2.54.0 (Apple Git-157)
 
+> Otherwise: this now works and LGTM.
+>
+> Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
+>
+> [...]
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

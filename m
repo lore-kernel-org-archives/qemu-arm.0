@@ -1,141 +1,135 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ADC58606A327
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 16:48:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84D11606A319
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 20:18:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=UG1CmUiP
+	dkim=pass (2048-bit key, unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=mBOzM1oG
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJZU3-0005Qm-Hr; Wed, 21 Oct 2026 12:48:11 -0400
+	id 1xJcky-0001fa-UZ; Wed, 21 Oct 2026 16:17:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1xJZU2-0005Pi-1O
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 12:48:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1xJckt-0001eq-4u; Wed, 21 Oct 2026 16:17:48 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1xJZTz-0008KF-AA
- for qemu-arm@nongnu.org; Wed, 21 Oct 2026 12:48:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792601285;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=94BO6HSov+X7kNkAL7zp2o7/dxTN1SRnggZ5IARPNg0=;
- b=UG1CmUiP8yubR/dRtOPPZPvVVqKE755hdKLTuzk5b2UWHtfy7ANUcuKz6+eNXEOKwhoYth
- y8lSlpNmJRwZUluxjltpCVOjW7qsLhrqlSjmHZ7pzitkBOoS7laqADEPYN6GHTYKTcT1ld
- yDgqdxBtxkG2DLwWZ8EavhJaObNe/Ac=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-556-24hsknJsOP2FWUvyI7HtOw-1; Wed,
- 21 Oct 2026 16:48:01 +0000
-X-MC-Unique: 24hsknJsOP2FWUvyI7HtOw-1
-X-Mimecast-MFC-AGG-ID: 24hsknJsOP2FWUvyI7HtOw_1792601277
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E35331800654; Wed, 21 Oct 2026 16:47:54 +0000 (UTC)
-Received: from [100.90.56.12] (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D064B30002CB; Wed, 21 Oct 2026 16:47:42 +0000 (UTC)
-Message-ID: <80b593cf-77e0-4623-8059-937c51dd5cfd@redhat.com>
-Date: Wed, 21 Oct 2026 18:47:40 +0200
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1xJcko-0004H0-3M; Wed, 21 Oct 2026 16:17:46 -0400
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69LIESNx1825971; Wed, 21 Oct 2026 20:17:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=B7V/Qk
+ Z6UbHTYWPWrJYww9Dc7ZSqgW+bRi0GuTxvZCc=; b=mBOzM1oGCEfB9Vsz18ugt7
+ gXEXayoKjy2lgHCWihhxKwCpBF6S1p0cFizsoam+w2rJSmkZuCeWSf0ArvzHKM4I
+ BhlGR1EXDZOA4OdnuKDysAGZCED277n0sXPPBenku89hGvQuNr4DPaWysBYDks9x
+ 1NKwZ8hSTQprWP2MBj1w8GEfC1goeHl/b7vuU1377fjdk6c9PD+jBE9urPBIIUHk
+ LxPsIuma1Czprwuf5g10lJRNgbGnq3wnHEta4m04I6R+pQUta2RWLGFnpAboK9li
+ Vz2TCbkipocPRc8hEXBZ/xFHcQ5/FmHs2Aj1BTgSPvfrComv9Auil8tw0havO1nQ
+ ==
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4hdw5au4b0-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Wed, 21 Oct 2026 20:17:12 +0000 (GMT)
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69LHoqiM3413147; Wed, 21 Oct 2026 20:17:11 GMT
+Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4he7bs713j-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 21 Oct 2026 20:17:11 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com
+ [10.20.54.100])
+ by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 69LKH4UP53281148
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 21 Oct 2026 20:17:07 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AB22220040;
+ Wed, 21 Oct 2026 20:17:04 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4C7DA2004D;
+ Wed, 21 Oct 2026 20:17:02 +0000 (GMT)
+Received: from [0.0.0.0] (unknown [9.87.149.137])
+ by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Wed, 21 Oct 2026 20:17:02 +0000 (GMT)
+Message-ID: <41147e0a-c8a2-4060-903e-695e3977c8cd@linux.ibm.com>
+Date: Wed, 21 Oct 2026 22:17:01 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/23] kvm: introduce KVMCPUOps
+Subject: Re: [PATCH v3 12/19] tests/functional: teach tuxrun about launching
+ gdb tests
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Bibo Mao <maobibo@loongson.cn>,
+Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <th.huth+qemu@posteo.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Eric Farman <farman@linux.ibm.com>, Song Gao <17746591750@163.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- David Hildenbrand <david@kernel.org>, Bernhard Beschow <shentey@gmail.com>,
- Halil Pasic <pasic@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
- Paul Durrant <paul@xen.org>, =?UTF-8?Q?Bj=C3=B6rn_Walk?=
- <bwalk@linux.ibm.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, qemu-s390x@nongnu.org,
- David Woodhouse <dwmw2@infradead.org>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-ppc@nongnu.org,
- Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org,
- qemu-arm@nongnu.org, linux-edac@vger.kernel.org,
- Glenn Miles <milesg@linux.ibm.com>, Chao Liu <chao.liu@processmission.com>,
- Cornelia Huck <cohuck@redhat.com>, Gautam Menghani <gautam@linux.ibm.com>,
- Xianglai Li <lixianglai@loongson.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Chinmay Rath <rathc@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Warner Losh <imp@bsdimp.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Kyle Evans <kevans@freebsd.org>, Keith Busch <kbusch@kernel.org>,
  Matthew Rosato <mjrosato@linux.ibm.com>,
- Amit Machhiwal <amachhiw@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
- Weiwei Li <liwei1518@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-riscv@nongnu.org
-References: <20261020104320.3686723-1-alex.bennee@linaro.org>
- <87se2039dn.fsf@draig.linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Autocrypt: addr=pbonzini@redhat.com; keydata=
- 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
-In-Reply-To: <87se2039dn.fsf@draig.linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: S8kIUfXgX0T1brnn34bE0s0oGG3MEcwibPkpylz7sMA_1792601277
-X-Mimecast-Originator: redhat.com
+ Eric Farman <farman@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Ani Sinha <anisinha@redhat.com>,
+ Anders Roxell <anders.roxell@linaro.org>, qemu-arm@nongnu.org,
+ Song Gao <gaosong@loongson.cn>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Brad Smith <brad@comstyle.com>, Brian Cain <brian.cain@oss.qualcomm.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Klaus Jensen <its@irrelevant.dk>, John Snow <jsnow@redhat.com>
+References: <20261019192704.3220373-1-alex.bennee@linaro.org>
+ <20261019192704.3220373-13-alex.bennee@linaro.org>
 Content-Language: en-US
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+In-Reply-To: <20261019192704.3220373-13-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-TM-AS-GCONF: 00
+X-Authority-Analysis: v=2.4 cv=X63Hu2Te c=1 sm=1 tr=0 ts=6ad91dc8 cx=c_pps
+ a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=Y2IxJ9c9Rs8Kov3niI8_:22 a=KKAkSRfTAAAA:8
+ a=WP5zsaevAAAA:8 a=Jv6o_MDdWyvUFkLk1GcA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22 a=t8Kx07QrZZTALmIZmm-o:22
+X-Proofpoint-ORIG-GUID: C93UHlMG1o-ym4IjN5xJ-Eoxlm3O0z1K
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDA4MCBTYWx0ZWRfX1k44+kmJtNti
+ Z1FswiNdHuUPiIdqYSYzm91B2nuvwL1kNhN9B85bw85p3m6IiE4C74km/mARXfOlOgUHfyLbpFf
+ I34rmY1IJsUX9cMxxGVpu/cJJYuSYPdlWKS3zgR/CdEusEApa1/URpZWn05bKBJI0KtSxuZd6Rq
+ n3wuHVFZvYdopGH9LYsEE5TMNpxN7GwHiPYruw+K6nQ3AKxMojNgRdNRoNOH/zQ5vk6KbZw2Mjq
+ P6PCv0cK9l86AxKVtGyYxaY9X92VyWWbUL2oJJyG/AaASBiP9MNTCyxsEwU1WKJlSxzrCIJQ6uG
+ GoB4W2zbRY1xlgxjcd+mKRoKuQmUW54Lw+x/vRWUEIqP3LepV/jSxi0Hhazja9YEoJncnGsfdMF
+ C+1pTiYM+u1jvGwEhfH45qwUXRQeXe3ICFi3EI95dCIqUI2Z+9pJVw5AXux0iiaSvDq97CdWrz8
+ xOK9lwOuRHXdDAE+ciA==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDA4MCBTYWx0ZWRfX1EUnJL/BeNz4
+ B43RvusRqYXgpKUjqZ8Vqg5CMv/xhQfOwI9bQhAc8vPwC8S+WrjzzVxvJ7L77MWQIYN0kzJonyz
+ Upq6VkKrYVSH2IprJMex1xN2PbkUaaQ=
+X-Proofpoint-GUID: C93UHlMG1o-ym4IjN5xJ-Eoxlm3O0z1K
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-10-21_05,2026-10-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 phishscore=0 bulkscore=0 adultscore=0 malwarescore=0
+ clxscore=1015 spamscore=0 impostorscore=0 lowpriorityscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610210080
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,31 +141,141 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/20/26 13:21, Alex Bennée wrote:
-> Alex Bennée <alex.bennee@linaro.org> writes:
-> 
->> There is a world coming where we can have a KVM interface which
->> supports multiple architectures. The old style approach of using
->> linking to resolve per arch kvm_arch_foo handlers won't scale and is
->> also slightly antithetical to the flexible not-quite object orientated
->> way we do things in QEMU.
-> 
-> In case it's not obvious I intended the prefix to be RFC as it needs
-> discussion ;-)
-This generally seems like a good idea, but would this be needed for the 
-arm-on-s390 support?  Would it use the "single binary" support or would 
-there be simply two system emulators with KVM support, 
-qemu-system-aarch64 and qemu-system-s390x?
 
-Thanks,
 
-Paolo
+On 10/19/26 21:26, Alex Bennée wrote:
+> This resurrects the hand run test script from d84842be6c5 (tests:
+> remove test-gdbstub.py) and modernises it to use the shared test
+> infrastructure for run-test.
+> 
+> We then tweak the common tuxrun code to over an alternative "launch
+> via gdbstub" helper which reuses the existing code but:
+> 
+>    - needs a vmlinux with symbols
+>    - drops kaslr because it doesn't play nice with symbols
+>    - extend qargs with stuff normally added by vm.launch
+>    - passes kargs directly
+>    - runs with the gdb run-test script
+>    - log the run-test output to the console log
+>    - makes --binary not mandatory
+> 
+> Message-ID: <20260930164649.433573-13-alex.bennee@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> ---
+> v3
+>    - mention the nokaslr in the commit message
+>    - add a comment about it to the shared kernel args
+>    - drop unused failcount
+>    - remove stale comment about hbreak
+>    - always delete the watch point pass or fail
+>    - fix unbalanced tuple in sh4's direct call of fetch_tuxrun_assets
+>    - simplify the symbol to watchpoint logic
+>    - drop the mandatory --binary
+>    - make the command copy and paste friendly
+> v2
+>    - add self.vm._machine to qargs
+>    - drop leading spaces in print () calls
+>    - add register read tests
+>    - use gdb.Breakpoint for hwbreak as for swbreak
+>    - drop flaky symbol evaluation, verify hit_count instead
+>    - explicit gdb.BP_BREAKPOINT for CatchBreakpoint
+> ---
+>   .../functional/gdb-scripts/kernel_gdb_test.py | 162 ++++++++++++++++++
+>   tests/functional/qemu_test/tuxruntest.py      |  97 ++++++++++-
+>   tests/functional/sh4/test_tuxrun.py           |   4 +-
+>   tests/guest-debug/run-test.py                 |  14 +-
+>   4 files changed, 261 insertions(+), 16 deletions(-)
+>   create mode 100644 tests/functional/gdb-scripts/kernel_gdb_test.py
+
+[...]
+
+> @@ -132,10 +144,77 @@ def common_tuxrun(self,
+>           special with the command line we can process most things using
+>           the tag metadata.
+>           """
+> -        (kernel, disk, dtb) = self.fetch_tuxrun_assets(kernel_asset, rootfs_asset,
+> -                                                       dtb_asset)
+> +        (kernel, disk, dtb, _) = self.fetch_tuxrun_assets(kernel_asset,
+> +                                                          rootfs_asset,
+> +                                                          dtb_asset)
+>   
+>           self.prepare_run(accel, kernel, disk, drive, dtb, console_index)
+>           self.vm.launch()
+>           self.run_tuxtest_tests(haltmsg)
+>           os.remove(disk)
+> +
+> +    def common_tuxrun_gdb(self,
+> +                          kernel_asset,
+> +                          vmlinux_asset,
+> +                          rootfs_asset,
+> +                          accel=None,
+> +                          dtb_asset=None,
+> +                          drive="virtio-blk-device",
+> +                          haltmsg="reboot: System halted",
+> +                          console_index=0):
+> +        """
+> +        Common path for LKFT tests under gdb. Unlike the common_tuxrun
+> +        function we need to launch with the gdb test script and deal
+> +        with munging the arguments for that especially.
+> +        """
+> +        (kernel, disk, dtb, vmlinux) = self.fetch_tuxrun_assets(kernel_asset,
+> +                                                                rootfs_asset,
+> +                                                                dtb_asset,
+> +                                                                vmlinux_asset)
+> +
+> +        gdb_path = os.getenv("QEMU_TEST_GDB")
+
+By the way, there is a minor usability issue: if I set QEMU_TEST_GDB to
+a non-existent binary, the test hangs instead of exiting with an error
+message.
+
+> +        run_script = self.data_file('..', 'guest-debug','run-test.py')
+> +        test_script = self.data_file('gdb-scripts', 'kernel_gdb_test.py')
+> +
+> +        # Instead of launching QEMU via the functional test machinery
+> +        # we need to launch it with the gdb run script. We utilise the
+> +        # existing prepare_run machinery to build the command line but
+> +        # we pass the kernel args separately to avoid horrible string
+> +        # escaping.
+> +
+> +        self.prepare_run(accel, kernel, disk, drive, dtb,
+> +                         console_index, append = False)
+> +
+> +        # the functional test machinery adds more stuff for handling
+> +        # console redirection which we need to do manually.
+> +
+> +        qargs = self.vm.args
+> +        qargs.extend(["-display", "none", "-serial", "stdio"])
+> +
+> +        # and the machine type
+> +        if self.vm._machine is not None:
+> +            qargs.extend(["-machine", self.vm._machine])
+> +
+> +        cmd = [
+> +            str(run_script),
+> +            "--qemu", self.qemu_bin,
+> +            "--qargs", " ".join(qargs),
+> +            "--kargs", self.kcmd_line,
+> +            "--symbols", str(vmlinux),
+> +            "--test", str(test_script),
+> +            "--gdb", gdb_path,
+> +        ]
+> +
+> +        log_cmd = " ".join(f'"{arg}"' if ' ' in arg else arg for arg in cmd)
+> +        self.log.info(f"run-test: {log_cmd}")
+> +
+> +        res = subprocess.run(cmd, text=True,
+> +                             stdout=subprocess.PIPE,
+> +                             stderr=subprocess.STDOUT)
+
+[...]
 
 

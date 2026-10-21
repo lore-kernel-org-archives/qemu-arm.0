@@ -1,101 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90679606A31E
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 03:22:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42FEE606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Oct 2026 03:22:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=giOSnMFM;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=afGUZB50
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=dLqzpZYF;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=OvImmWoz
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJMqh-0000eP-Il; Tue, 20 Oct 2026 23:18:43 -0400
+	id 1xJMpx-0006hG-9J; Tue, 20 Oct 2026 23:17:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMpx-0006gi-3Z
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:17:57 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1xJMog-0004Y6-Pp
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:16:46 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xJMpv-00036p-4t
- for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:17:56 -0400
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ id 1xJMoe-0002uA-K5
+ for qemu-arm@nongnu.org; Tue, 20 Oct 2026 23:16:38 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69L2FU9n1957068
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:17:43 GMT
+ 69L2F3kD3256697
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:16:24 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 1O4lnK+uCvAK73GwAxFUIHoy4sAS46e0qdnKIvZvS+k=; b=giOSnMFMRASduHKi
- 8yvAoYrsynd6JvAswbY6HWlNzr6LIqSHphjU4+qAiLtenkqSKiQ14/69mN9Y87Ze
- tdURaOr0npE6ITvnW4ojKjPSz7KNeVdkDxnQNUf5ilSFUTf/FWv2WWnPn+3KOWX9
- odqp3I9Ki4jWdIrsmPRNLyuEJmFxZpo/HnvfMoug20d3kOWYErhvUKgoB4a6MRYZ
- DoA8nQVd1+FFmqcjepCvIJrwA6lbmntPcNwEQXwTfttYsyY296YZDzm/Fje+P097
- iNDhq1FEBKQAlCkkbAh40FEveg7juuB+7vYDgy3lzRh4hg7xaEc33NiSGPKgqQDg
- Q0bOTw==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4he7hvb6v3-1
+ 3uc/a/K1r0yU+DutArZzUhtCa5KlYLTfF7Yb5mQUvjc=; b=dLqzpZYFkFx7/N4s
+ aOuds2Oh2Apnv9MAAQw+bZ/7uQuS/y/zxTkp06Mj+p5e5i7Fksx0De9+w7u0WP+i
+ 1ISR1LpmxntYB6iLpB6589WlF7pd4gfrFBoTtl1m3zmfPpqJtkMA4slesyBQNn2b
+ 838AyxXmY6Ej1w4QMUtXKE+8p8eUohByWxoMyTs7fhgsNwcwLZDa62NqwMfo1y2X
+ b1Mi62llJtfxuiKqZVoz/uhLsOJa9opcJe6sMP8E/xEOaOALxeVks3S2Mq1RxZn6
+ s717dIGjBZwhH1+hoFvjB/C+FWRmtNRq08At3WX+K+WymlArpkgghJVPFN9zJtrb
+ nIUvJQ==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hed9v1rs7-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:17:43 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-936aa34873bso60092985a.3
- for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:17:43 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 21 Oct 2026 03:16:24 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-93f26dd2165so96752085a.3
+ for <qemu-arm@nongnu.org>; Tue, 20 Oct 2026 20:16:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792552663; x=1793157463; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1792552584; x=1793157384; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=1O4lnK+uCvAK73GwAxFUIHoy4sAS46e0qdnKIvZvS+k=;
- b=afGUZB50qpzGbAhO1xxDNYNnvUTSunlnHSN24m4BE7/jjQcg7IMmdKhYZ6U70g41q/
- awcagf2sAT9XQ35kWKSF6fc8Hhwj1a/zrN4WOreLKgqyKFnSEjbhiezDXO4904bxRl5T
- uTNW2fmZU9BCJ4smyrHw69PJlf8AsVat03F33Bnj9Vgqnc8k7oc4tNYYTz4jNaAMZr9S
- 2af4PvRxITrXSkjTI1b56aNTmVnKoBvNQroDgZGqAcylabli33nLbjoDNN2NbzahcjMu
- 37ubHjLEUxwKqx0+vEhh4RYCaDfynKAQWMc90Is+5e8/LfXW7L08MVMk4L6+4SLQH/n9
- zb6Q==
+ bh=3uc/a/K1r0yU+DutArZzUhtCa5KlYLTfF7Yb5mQUvjc=;
+ b=OvImmWozky9WE0rKMm2e5YvqWC4gl4F5rdNhqTXDgQBtLKod1r/Z7PFutzWg6LcICt
+ 67gZo4MVIuKrxzGsEHYUOrU1vFb1QyQQncFRR6SKXk7mBfAi1kJpTy9B70DmoWiT4mKc
+ fsf+Xa24BoaPYMo9B4LfHSZxTlwuZbEmYSiY4KXTxgQyrsFbZ14JT9e7c0Q9doZeW4Bg
+ cyHrI++NheG7BbdqurGTkuhwebal+37HK/h0NkFKC+EOXesSfMyCFYt5ZQENBbFgoWFv
+ fa6mynJikTmShxeB/KFvwUA7r3elv7iErOKlavgnk8EzdBL7+nq31sPXlO2fQFe/Kkzz
+ 8kRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792552663; x=1793157463;
+ d=1e100.net; s=20260707; t=1792552584; x=1793157384;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=1O4lnK+uCvAK73GwAxFUIHoy4sAS46e0qdnKIvZvS+k=;
- b=d6sVYU+uhnkpCja04txei+mvIZHjums9n6xfEEEkNjr6HJtR1VdMJWYCLJCOlZnEAF
- 9esH9bzCJz00hEg2+VJT7xz0ivwGJnh5XdRRaiCNqeMT8DE+pEYBToymBVDqTAzd169v
- no17UNmYFZj6MigDxZ1R3sDmOJAb/nXK1CMMijhhJ53NFF0f2eLyvfICeXFUy4biqF9x
- AtiezVUneChMKkNVjQTv4PBi6kY/j6z5quxUgmH8jArkd/uC1iXBOB7jDWtCrXUbXKsT
- sEpS9F+d0cq7RLPufJq6fDXWJ2JXRiP+Z9wYtcbm3TqKEIwowSMMt2yHZWFSmUeLHyIH
- HLiA==
+ bh=3uc/a/K1r0yU+DutArZzUhtCa5KlYLTfF7Yb5mQUvjc=;
+ b=vAxJSTCcv93TZsdx1dCVUeMVY6JqAhMzhUVa9yFztiuZAXgyliLo8Jgc8Fzu/1wdY4
+ E2H+k2YB2rNSJY/+1Mo7gYg5SjnZzj9DkkhQVSq55vdX9RgM/I4vfb1YVvI/2I3ZcvpX
+ qQAqnl7Y1rwh+KUYqB42dC52i8qBIXBMSBM5kXaSDHvOpFVyk8xBIpL2f3FFCuvjJhoz
+ SKfuJ6MkLqUG3lOJWBm9bsS3hEyOLSY07ohety2z56t1+lCMe2ahYMQhf9Kpiit/1yc9
+ KyKR2j75BnoufsQgCNNze6tvA/a3+SY5Qkx57jn5Pz9db9nCH26ISHCt15lDsyOF9LNm
+ nzew==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxxDhG44p2DV6aIVEXRpP9kJg+W3PH6OeZ9eGBD/ZBhAW+hUzA728e5MJznW9LdeadsFgPwxYufBw==@nongnu.org
-X-Gm-Message-State: AFq9FYJ186U/fNgOcpkzXSQ7IS75dzGqJYOSbofs1PI8Ovom0AU1IiQx
- fRWoFvLONEgnc2cZmVP8GXNl7oHrVGMUOmK06OeSJys4Z6dLB2xJNlE6g3KHqBl6XO3AYmUk2Es
- 3ZgdJVEpwqWStRDky7qOTq9NTeVKNs480RXt/UTMz9XVgQkklWobG8ZY=
-X-Gm-Gg: AYBFou3l3Ki5reqBzRiXkXbJrAB+KeAx5PYHHMVzqM0+ZjNvhjOrs/u5Qb2B8EEmp4+
- 3MSjdQtdbPt40k1+1eJ42uw7YVdbh8pOvgETQxLGuWDQFBHSBOmftIyhRdcad9Vur3HnLDfSk5y
- IfaJJNycnTMZJGVrhM2cNVzUHoR9e3tz3MAAqSlXAOotrTM091hQr0RFlL9eOfO5y63PQ9DjW92
- 6IxuTY8eERkchIiKIn2bO1AQ7egrCwH0G2nbZwnfq310CeSoo/UUs7Em5aIEBqze9PQYGMFEeY7
- VDTXgvhCn9VzIQChRR/whM1yDSB3BKbg9vU5qn2QIzKqZZPsWbAr6tsPRsJwbLMBQ4aXM17X6ij
- 648g35nj0/mdpGMkl55NWwbuul7ARc8iADrbGEmaO
-X-Received: by 2002:a05:620a:1706:b0:93f:1dbf:6cec with SMTP id
- af79cd13be357-93f57f4f795mr207131685a.36.1792552662705; 
- Tue, 20 Oct 2026 20:17:42 -0700 (PDT)
-X-Received: by 2002:a05:620a:1706:b0:93f:1dbf:6cec with SMTP id
- af79cd13be357-93f57f4f795mr207129385a.36.1792552662188; 
- Tue, 20 Oct 2026 20:17:42 -0700 (PDT)
+ AKwUvBysDTjM81v5VjTtTYMko6bZCVQpIZm/1wAzJTrL/z/xRswTGJEhSAxipNa3fXbvUCJ3k/VSQfVwbw==@nongnu.org
+X-Gm-Message-State: AFq9FYJosRiZ1ofm+90hQSXwRiKShSsUgfuJACaRUxJTGT6U9QFslc0d
+ 6IvUUDGo1zOheSZvUqFS7cDXgNS2gb9k9J73cgEl8Y84g7afcETkAxYojGre6LXv34MpIfY4Fnq
+ kz5U71gHPMsK4DAVjJIMte+GmHlYD7w4+4J1JvTs8dJrthtLcmVVv7+I=
+X-Gm-Gg: AYBFou1qIlKwcKfwolfQi5YV+CELyhZULfgvbq22bELNhP7Aiqnt4xE9FVprjiRgZq4
+ zenzzLlVa7ogeAlE9E5AmVLe6wBBwUoQrwACNiC2m2IEp7y3FKrmdwkMIUSj+6Ej072QHqlYKtV
+ W6+gCIltIZFhPuohDkeXQ/GbNmYUUOSCrf1bQkOgxFjsTqfdVjQJJe2EnNc/k3lisRqzP58+nxW
+ Jf58xRK0nAw2PDMvLfYc4m4RBm6Q4353qW5umfCdWOEfe8BCXA5Bk4coxUJ3H3GH02urbCM46km
+ 1si9bIZVYqa6LZ+Qbz1fHm6w+ZY9rkVp2pSV4WCJWUTCoIORJwpXIh+4eb3VyXbhF7lV6YMYj2g
+ TqJtlcK+ORiOKX/lx74Etd++sKHWg5Kiddl98fBCw
+X-Received: by 2002:a05:620a:6087:b0:93f:1af1:7951 with SMTP id
+ af79cd13be357-93f57f8ad29mr216490085a.66.1792552583585; 
+ Tue, 20 Oct 2026 20:16:23 -0700 (PDT)
+X-Received: by 2002:a05:620a:6087:b0:93f:1af1:7951 with SMTP id
+ af79cd13be357-93f57f8ad29mr216487085a.66.1792552583114; 
+ Tue, 20 Oct 2026 20:16:23 -0700 (PDT)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e258426f4sm2593871f8f.54.2026.10.20.20.17.39
+ 5b1f17b1804b1-4a1f2c242dcsm111146565e9.0.2026.10.20.20.16.21
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 20 Oct 2026 20:17:40 -0700 (PDT)
+ Tue, 20 Oct 2026 20:16:22 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 27/33] target/sh4: Define exception vector constants
-Date: Wed, 21 Oct 2026 05:14:00 +0200
-Message-ID: <20261021031407.24862-28-philmd@oss.qualcomm.com>
+Subject: [PATCH v2 17/33] target/mips: Register CPUClass::exception_name()
+ handler
+Date: Wed, 21 Oct 2026 05:13:50 +0200
+Message-ID: <20261021031407.24862-18-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261021031407.24862-1-philmd@oss.qualcomm.com>
 References: <20261021031407.24862-1-philmd@oss.qualcomm.com>
@@ -103,35 +104,35 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX5l1XEt/X9c2B
- CKjnRaNGciwEvdIgMqzMhupF0ToL+oWUDruVZPJC4dHauf2aqd6wYMKyb5ZevWfb93gfyHtt/8q
- LfXs6u/OINkPAGZjuJWYDWWWdsRZdmH5/19FN+jkhRazZX+UaUdw0JytGG+H8QqvJr43m+GItQx
- I+/2ag4oUaYXdnBWYSsU8UQa90ycEzsAmxfyERAJSKi4WYQU3tFWJQVwSmLAnsav5ZBSYsOV3wz
- dJz/QGOFXXzQ4t47ZHALykwLrAEWDCaUNSepJrchvzwnEgT2qq+tBFqjf9FQWhhcwgQGOACVoTX
- 15G1idTlM/xpTr6ojAF+6AeXJubYZMfqbrhqbAlqi6mO8qOkhUR3pHqNj0MYL2pQr+J56u5Ftj7
- enkjog/rEegQEWtDFo8/UWv6WQj6q8EDSd1uJjKTH46tG0KP6EMhPV6A7YNIHBW+ZuYSojPwjTb
- N1VZCWwW+rkYKeR/8sg==
-X-Proofpoint-ORIG-GUID: qGNfdjMhuifnCTfgbKlGawn5r5WeQgPG
-X-Proofpoint-GUID: qGNfdjMhuifnCTfgbKlGawn5r5WeQgPG
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfXwU+xMLVXU3dk
- tZ/qmrtoL2Tftzkm6HkF0l7/Oa/KT529dKsqNbh2BlFo5UmEouQqwGrFEGdey7d5+d1Z+mZIr7z
- xzyVgKROQpEgz6XlEfEfxne3vrYmhX4=
-X-Authority-Analysis: v=2.4 cv=NppE4MdJ c=1 sm=1 tr=0 ts=6ad82ed7 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX44LV2XcOX7Wx
+ chpQTMhAymP7pPc+fyyib81joSBpIqBFk7KbFOD795598Xkl32IEXSI73rBeIzP0Vtl1bNle2cc
+ 57f8CWDhoMxfNqfnxV9gzIeDXW8uwM4=
+X-Proofpoint-ORIG-GUID: 3UCEL5bRmVfYVqIf2-Oa-GGtNOYuv20V
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIxMDAxMiBTYWx0ZWRfX4d9EO4LAivei
+ LCKAIVSS1aNW8alAGLNU7xb76zRd9ePC98PDwCLI4QQ/pH1O6mB81LXJgBT/HbwZcZaXEdxYJg3
+ 9OrQKShifYtYLtT6w5ZFetv+K+m72181BwrYhzGahFHdY8FJfV7w8IkEgNIg9Qz6doN8bvQ80IH
+ NyxLKehCinGRTxxoWsnRHpT+uMWHe06lM8u+RcbCKF03Ibn/Tzi2V30KC1glhj/5546WpMiYKTK
+ 2QtZbUn0hz9J8EGa/VHkVeTxHOGDLwNv/PgUKz0ozCpZ+6PaIlFKFEM1wGWNesegkk5+7vhV070
+ L42a1ZS9bmx3tT4DlDrsFwcTsGbIsVnh45vVYhqeRql0pMn7lpn6x9IPvM7pxV3eRizqagxi0o1
+ Cs0plbAyIfcbD6UrgNG1J6AwkLVI8VGlNTCucmzFMvY9SMM67U/mPcJWYnv+qEY8bsmto8Rt7PT
+ ZP+oY8u6y1uSAd14dgQ==
+X-Authority-Analysis: v=2.4 cv=I6zw19gg c=1 sm=1 tr=0 ts=6ad82e88 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=exSUSkewqcAxhAk9TGUA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=EUspDBNiAAAA:8 a=LEehXKFoqEHZ457G_xcA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-GUID: 3UCEL5bRmVfYVqIf2-Oa-GGtNOYuv20V
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-21_01,2026-10-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 malwarescore=0 spamscore=0 priorityscore=1501 clxscore=1015
- suspectscore=0 phishscore=0 lowpriorityscore=0 adultscore=0 bulkscore=0
+ adultscore=0 suspectscore=0 clxscore=1015 bulkscore=0 lowpriorityscore=0
+ impostorscore=0 spamscore=0 priorityscore=1501 malwarescore=0 phishscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610210012
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -2
 X-Spam_score: -0.3
 X-Spam_bar: /
@@ -158,262 +159,96 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Yonggang Luo <luoyonggang@gmail.com>
+Register mips_exception_name() as the CPUClass::exception_name()
+handler, so the common exception logging can resolve MIPS exception
+codes to names. Return "unknown" for missing array entries.
+Remove the qemu_log_mask() call in do_raise_exception_err()
+because it would duplicate the one in log_raise_exception().
 
-Name SH4 exception vectors and use the definitions throughout
-exception handling and exception raising.
-
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/sh4/cpu.h       | 21 +++++++++++++++
- target/sh4/helper.c    | 60 +++++++++++++++++++++---------------------
- target/sh4/op_helper.c | 16 +++++------
- 3 files changed, 59 insertions(+), 38 deletions(-)
+ target/mips/cpu.h              |  2 ++
+ target/mips/tcg/tcg-internal.h |  2 --
+ target/mips/cpu.c              |  1 +
+ target/mips/tcg/exception.c    | 11 ++---------
+ 4 files changed, 5 insertions(+), 11 deletions(-)
 
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index 6984bb462fb..a1e9049b7be 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -135,6 +135,27 @@ typedef struct memory_content {
-     struct memory_content *next;
- } memory_content;
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index 5d8b78a70b8..b080c5de4de 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -1349,6 +1349,8 @@ enum {
+     EXCP_SEMIHOST,
+ };
  
-+/* Guest trap numbers. */
-+enum {
-+    SH4_EXCP_RESET = 0x000,
-+    SH4_EXCP_MANUAL_RESET = 0x020,
-+    SH4_EXCP_TLB_MISS = 0x040,
-+    SH4_EXCP_DTLB_MISS_WRITE = 0x060,
-+    SH4_EXCP_INITIAL_PAGE_WRITE = 0x080,
-+    SH4_EXCP_TLB_VIOLATION = 0x0a0,
-+    SH4_EXCP_DTLB_VIOLATION_WRITE = 0x0c0,
-+    SH4_EXCP_ADDR_ERROR = 0x0e0,
-+    SH4_EXCP_DATA_WRITE = 0x100,
-+    SH4_EXCP_FPU = 0x120,
-+    SH4_EXCP_TLB_MULTIPLE = 0x140,
-+    SH4_EXCP_TRAPA = 0x160,
-+    SH4_EXCP_ILLEGAL_INSTRUCTION = 0x180,
-+    SH4_EXCP_SLOT_ILLEGAL_INSTRUCTION = 0x1a0,
-+    SH4_EXCP_USER_BREAK = 0x1e0,
-+    SH4_EXCP_FPU_DISABLE = 0x800,
-+    SH4_EXCP_SLOT_FPU_DISABLE = 0x820,
-+};
++const char *mips_exception_name(int excp);
 +
- typedef struct CPUArchState {
-     uint32_t flags;             /* general execution flags */
-     uint32_t gregs[24];         /* general registers */
-diff --git a/target/sh4/helper.c b/target/sh4/helper.c
-index b6b057f104b..0fbd613f333 100644
---- a/target/sh4/helper.c
-+++ b/target/sh4/helper.c
-@@ -70,7 +70,7 @@ void superh_cpu_do_interrupt(CPUState *cs)
-     do_irq = do_irq && (cs->exception_index == -1);
+ /*
+  * This is an internally generated WAKE request line.
+  * It is driven by the CPU itself. Raised when the MT
+diff --git a/target/mips/tcg/tcg-internal.h b/target/mips/tcg/tcg-internal.h
+index 950e6afc3f2..9f230e757d6 100644
+--- a/target/mips/tcg/tcg-internal.h
++++ b/target/mips/tcg/tcg-internal.h
+@@ -27,8 +27,6 @@ void mips_restore_state_to_opc(CPUState *cs,
+                                const TranslationBlock *tb,
+                                const uint64_t *data);
  
-     if (env->sr & (1u << SR_BL)) {
--        if (do_exp && cs->exception_index != 0x1e0) {
-+        if (do_exp && cs->exception_index != SH4_EXCP_USER_BREAK) {
-             /* In theory a masked exception generates a reset exception,
-                which in turn jumps to the reset vector. However this only
-                works when using a bootloader. When using a kernel and an
-@@ -97,43 +97,43 @@ void superh_cpu_do_interrupt(CPUState *cs)
-     if (qemu_loglevel_mask(CPU_LOG_INT)) {
-         const char *expname;
-         switch (cs->exception_index) {
--        case 0x0e0:
-+        case SH4_EXCP_ADDR_ERROR:
-             expname = "addr_error";
-             break;
--        case 0x040:
-+        case SH4_EXCP_TLB_MISS:
-             expname = "tlb_miss";
-             break;
--        case 0x0a0:
-+        case SH4_EXCP_TLB_VIOLATION:
-             expname = "tlb_violation";
-             break;
--        case 0x180:
-+        case SH4_EXCP_ILLEGAL_INSTRUCTION:
-             expname = "illegal_instruction";
-             break;
--        case 0x1a0:
-+        case SH4_EXCP_SLOT_ILLEGAL_INSTRUCTION:
-             expname = "slot_illegal_instruction";
-             break;
--        case 0x800:
-+        case SH4_EXCP_FPU_DISABLE:
-             expname = "fpu_disable";
-             break;
--        case 0x820:
-+        case SH4_EXCP_SLOT_FPU_DISABLE:
-             expname = "slot_fpu";
-             break;
--        case 0x100:
-+        case SH4_EXCP_DATA_WRITE:
-             expname = "data_write";
-             break;
--        case 0x060:
-+        case SH4_EXCP_DTLB_MISS_WRITE:
-             expname = "dtlb_miss_write";
-             break;
--        case 0x0c0:
-+        case SH4_EXCP_DTLB_VIOLATION_WRITE:
-             expname = "dtlb_violation_write";
-             break;
--        case 0x120:
-+        case SH4_EXCP_FPU:
-             expname = "fpu_exception";
-             break;
--        case 0x080:
-+        case SH4_EXCP_INITIAL_PAGE_WRITE:
-             expname = "initial_page_write";
-             break;
--        case 0x160:
-+        case SH4_EXCP_TRAPA:
-             expname = "trapa";
-             break;
-         default:
-@@ -161,18 +161,18 @@ void superh_cpu_do_interrupt(CPUState *cs)
-     if (do_exp) {
-         env->expevt = cs->exception_index;
-         switch (cs->exception_index) {
--        case 0x000:
--        case 0x020:
--        case 0x140:
-+        case SH4_EXCP_RESET:
-+        case SH4_EXCP_MANUAL_RESET:
-+        case SH4_EXCP_TLB_MULTIPLE:
-             env->sr &= ~(1u << SR_FD);
-             env->sr |= 0xf << 4; /* IMASK */
-             env->pc = 0xa0000000;
-             break;
--        case 0x040:
--        case 0x060:
-+        case SH4_EXCP_TLB_MISS:
-+        case SH4_EXCP_DTLB_MISS_WRITE:
-             env->pc = env->vbr + 0x400;
-             break;
--        case 0x160:
-+        case SH4_EXCP_TRAPA:
-             env->spc += 2; /* special case for TRAPA */
-             /* fall through */
-         default:
-@@ -632,7 +632,7 @@ void cpu_sh4_write_mmaped_utlb_addr(CPUSH4State *s, hwaddr addr,
-                     CPUState *cs = env_cpu(s);
+-const char *mips_exception_name(int32_t exception);
+-
+ G_NORETURN void do_raise_exception_err(CPUMIPSState *env, uint32_t exception,
+                                        int error_code, uintptr_t pc);
  
-                     /* Multiple TLB Exception */
--                    cs->exception_index = 0x140;
-+                    cs->exception_index = SH4_EXCP_TLB_MULTIPLE;
-                     s->tea = addr;
-                     break;
-                 }
-@@ -828,33 +828,33 @@ bool superh_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-     switch (ret) {
-     case MMU_ITLB_MISS:
-     case MMU_DTLB_MISS_READ:
--        cs->exception_index = 0x040;
-+        cs->exception_index = SH4_EXCP_TLB_MISS;
-         break;
-     case MMU_DTLB_MULTIPLE:
-     case MMU_ITLB_MULTIPLE:
--        cs->exception_index = 0x140;
-+        cs->exception_index = SH4_EXCP_TLB_MULTIPLE;
-         break;
-     case MMU_ITLB_VIOLATION:
--        cs->exception_index = 0x0a0;
-+        cs->exception_index = SH4_EXCP_TLB_VIOLATION;
-         break;
-     case MMU_DTLB_MISS_WRITE:
--        cs->exception_index = 0x060;
-+        cs->exception_index = SH4_EXCP_DTLB_MISS_WRITE;
-         break;
-     case MMU_DTLB_INITIAL_WRITE:
--        cs->exception_index = 0x080;
-+        cs->exception_index = SH4_EXCP_INITIAL_PAGE_WRITE;
-         break;
-     case MMU_DTLB_VIOLATION_READ:
--        cs->exception_index = 0x0a0;
-+        cs->exception_index = SH4_EXCP_TLB_VIOLATION;
-         break;
-     case MMU_DTLB_VIOLATION_WRITE:
--        cs->exception_index = 0x0c0;
-+        cs->exception_index = SH4_EXCP_DTLB_VIOLATION_WRITE;
-         break;
-     case MMU_IADDR_ERROR:
-     case MMU_DADDR_ERROR_READ:
--        cs->exception_index = 0x0e0;
-+        cs->exception_index = SH4_EXCP_ADDR_ERROR;
-         break;
-     case MMU_DADDR_ERROR_WRITE:
--        cs->exception_index = 0x100;
-+        cs->exception_index = SH4_EXCP_DATA_WRITE;
-         break;
-     default:
-         cpu_abort(cs, "Unhandled MMU fault");
-diff --git a/target/sh4/op_helper.c b/target/sh4/op_helper.c
-index 777380f8e40..8beac9ca034 100644
---- a/target/sh4/op_helper.c
-+++ b/target/sh4/op_helper.c
-@@ -33,10 +33,10 @@ void superh_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-     switch (access_type) {
-     case MMU_INST_FETCH:
-     case MMU_DATA_LOAD:
--        cs->exception_index = 0x0e0;
-+        cs->exception_index = SH4_EXCP_ADDR_ERROR;
-         break;
-     case MMU_DATA_STORE:
--        cs->exception_index = 0x100;
-+        cs->exception_index = SH4_EXCP_DATA_WRITE;
-         break;
-     default:
-         g_assert_not_reached();
-@@ -67,22 +67,22 @@ void raise_exception(CPUSH4State *env, int index,
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 0fead20d651..528d926d16c 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -742,6 +742,7 @@ static void mips_cpu_class_init(ObjectClass *c, const void *data)
+                                        &mcc->parent_phases);
  
- void helper_raise_illegal_instruction(CPUSH4State *env)
+     cc->class_by_name = mips_cpu_class_by_name;
++    cc->exception_name = mips_exception_name;
+     cc->dump_state = mips_cpu_dump_state;
+     cc->set_pc = mips_cpu_set_pc;
+     cc->get_pc = mips_cpu_get_pc;
+diff --git a/target/mips/tcg/exception.c b/target/mips/tcg/exception.c
+index 2f02f9be877..d2cd118518e 100644
+--- a/target/mips/tcg/exception.c
++++ b/target/mips/tcg/exception.c
+@@ -19,7 +19,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu/log.h"
+ #include "cpu.h"
+ #include "internal.h"
+ #include "exec/helper-proto.h"
+@@ -129,12 +128,9 @@ static const char * const excp_names[] = {
+     [EXCP_SEMIHOST] = "Semihosting",
+ };
+ 
+-const char *mips_exception_name(int32_t exception)
++const char *mips_exception_name(int excp)
  {
--    raise_exception(env, 0x180, 0);
-+    raise_exception(env, SH4_EXCP_ILLEGAL_INSTRUCTION, 0);
+-    if (exception < 0 || exception >= ARRAY_SIZE(excp_names)) {
+-        return "unknown";
+-    }
+-    return excp_names[exception];
++    return ARRAY_ELEM_OR_NULL(excp_names, excp) ?: "unknown";
  }
  
- void helper_raise_slot_illegal_instruction(CPUSH4State *env)
+ void do_raise_exception_err(CPUMIPSState *env, uint32_t exception,
+@@ -142,9 +138,6 @@ void do_raise_exception_err(CPUMIPSState *env, uint32_t exception,
  {
--    raise_exception(env, 0x1a0, 0);
-+    raise_exception(env, SH4_EXCP_SLOT_ILLEGAL_INSTRUCTION, 0);
- }
+     CPUState *cs = env_cpu(env);
  
- void helper_raise_fpu_disable(CPUSH4State *env)
- {
--    raise_exception(env, 0x800, 0);
-+    raise_exception(env, SH4_EXCP_FPU_DISABLE, 0);
- }
+-    qemu_log_mask(CPU_LOG_INT, "%s: %d (%s) %d\n",
+-                  __func__, exception, mips_exception_name(exception),
+-                  error_code);
+     cs->exception_index = exception;
+     env->error_code = error_code;
  
- void helper_raise_slot_fpu_disable(CPUSH4State *env)
- {
--    raise_exception(env, 0x820, 0);
-+    raise_exception(env, SH4_EXCP_SLOT_FPU_DISABLE, 0);
- }
- 
- void helper_sleep(CPUSH4State *env)
-@@ -97,7 +97,7 @@ void helper_sleep(CPUSH4State *env)
- void helper_trapa(CPUSH4State *env, uint32_t tra)
- {
-     env->tra = tra << 2;
--    raise_exception(env, 0x160, 0);
-+    raise_exception(env, SH4_EXCP_TRAPA, 0);
- }
- 
- void helper_exclusive(CPUSH4State *env)
-@@ -255,7 +255,7 @@ static void update_fpscr(CPUSH4State *env, uintptr_t retaddr)
-         cause = (env->fpscr & FPSCR_CAUSE_MASK) >> FPSCR_CAUSE_SHIFT;
-         enable = (env->fpscr & FPSCR_ENABLE_MASK) >> FPSCR_ENABLE_SHIFT;
-         if (cause & enable) {
--            raise_exception(env, 0x120, retaddr);
-+            raise_exception(env, SH4_EXCP_FPU, retaddr);
-         }
-     }
- }
 -- 
 2.55.0
 

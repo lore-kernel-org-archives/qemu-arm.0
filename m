@@ -1,107 +1,67 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B069606A335
-	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 10:03:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E7A3606A319
+	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 10:28:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=kGEQYU6i
+	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=fmEDWx5M
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJpdf-0003GC-AW; Thu, 22 Oct 2026 06:03:11 -0400
+	id 1xJq1k-0000wX-M9; Thu, 22 Oct 2026 06:28:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xJpdd-0003FV-TU
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:03:09 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xJpdb-0004GH-RU
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:03:09 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-8b09e07e149so15698047b3.1
- for <qemu-arm@nongnu.org>; Thu, 22 Oct 2026 03:03:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792663386; cv=none;
- d=google.com; s=arc-20260327;
- b=FUUFiQNmIhKr5h6Pi4eMVCR35WBDkha/oS0jW7DnRBc/0YEB8qS/yBzI+f6VpUFNty
- keVtUqGNC1e0LgkQAlEk0ZqaYp+WFq/5+KbnL38Zq5pvzTOE//5cXwqS047OBw9S+Yng
- 6tb55L3ZMQrIJBKGe2fjAvZqsvQZjllKoET6y+Jvd6792KBGiL4OfFzpFxxgg7d+FC1v
- TA2SbFQMv80tbH82Qr9ogSuAXuvecLxjEd9O6oYCz+oOQawTdqEu8Hyeu/cT3y0gY5nl
- 2ALVtlKCo4RnpmCysUwmAPwUAdGbePvrFcgnYK2AYC7YPqI2scpr1KAWTuN5kUkNS5A/
- eDjA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=VQyXgmdD1qRyobtEPRICTfSuPxsKzCbE3omY8esYT2I=;
- fh=DgOo3E6WU8GpM371jSc2lE0w3zCcLkGIxb1uxlYyPyU=;
- b=GzimfjUwEI/27M9KTPI6LidKm3uBTpXF1xkdIGk0Xvy+rz9DOA+gjB7LCyY0eHu/if
- dQBvJOC6gJuqRnDBSwHQP2En9UiFG70KN45OZdECiSbqi9fZxgzN2jS1Rdz3dn09SD27
- wmJF4/gZnOEbFAV4OsI4XKfWan+0olEo3hGL5qJslyT+s91I9SND22SUQCUOfwBPG5A8
- w8qLBjXTUFNvmlflVN9jPCm6b/Alxl35n377q3p3wEcEUaJ2w/iEDh5hz7hsgNeHSC91
- 8hkwSdISmQRnE6FAGPsiS4LbnJhJNCccNlxH9bOhtJRC7y/xXx1Gnn2I0zrF5/fG03TW
- 5WPw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792663386; x=1793268186; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=VQyXgmdD1qRyobtEPRICTfSuPxsKzCbE3omY8esYT2I=;
- b=kGEQYU6iNFl/v3o9uNx9vBbN8rdsADsYXgaqg6NYyf1GckJNmcUT0R/tvSWmBIWYt0
- uUodTq11dLNF0tGUsETggssPAr3adwrNuglAnqcNWktIxCCvGIFFfxyAX0cTX04f9NZh
- ePqR8eNvykmUYtAsE5JNpJcdfuASDcxSYbAsBhngkYayTE1WoXwZJutNZ6wEuCW9lR0/
- J/4sP73VZ+WIsBfgA/aXuR+B8Jg+t6YhazypNDRMyguv5TKOMSrRQ5mYgtRluyCIdvh8
- DorRuWpJLb+ReK6ICNnokZn9coRX/Q7qwTehSKUcIQyn7PMGwuBZQQ53DUvzIL/28mDJ
- 7WjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792663386; x=1793268186;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=VQyXgmdD1qRyobtEPRICTfSuPxsKzCbE3omY8esYT2I=;
- b=Ilw4X8bhSZPqDbAm40ycyZ/KQ3THdyQwp25JRj54rFAYelnKIqLvkCGt5ANd6GtgxB
- owmbeZPSIe6+rnS4sCbjeLmG/7y9wXForUWVMQA2z8NqWVSRdTaxNXPzlgSgOfvj0euX
- DXr6uSHmfn4UrAEI00WIpvd0fJTyR+uR66E556vsgz1eJAuLJzS6ZeOlTUlRSrodwucp
- 4Adx0xBH+GvdRoMEDPnDZ/QU+sZMPp9rV6pIMKobc5TKEHNOyzU8djlBQ3bT6pgOXOP4
- fZPUmsrm+ORCFDhqkvGJfY01nfFkJZEhSxYlNagRzqmgSlAKQIWPxSr3uHnMs6aZNz2r
- a+Pg==
-X-Gm-Message-State: AFq9FYLB4Xc/tmUHjvaQVLa8+KtsFWh+FyOYoyYnNZqwB6zY5zNYXvFi
- ueNjxZbu6Chassz4ZEbbKnCYwvhUQUuKMz5dnMnJhGBHcJ9XLqCyZDUZoa1UAfKrefwtDiaO5p/
- 24ntihb2j2jtoGGc2DizKKW+RIsNBaUw+m410vbcsu1B4L2LVmukbKPg=
-X-Gm-Gg: AYBFou0ZJWXW3+BrCAvPIG1utrSD+HdYLcMXxsreKRzxAhWWhOWqZB77kfmFssUyYmY
- NG5ROTSCFCwFEbk50pslOxEzzECunV+RtbMtmZr2nIqWqnc2vI9FWbq2z2UObmDmbg1/ne4CSci
- v0aosDUD3/Z9yIDnKOsNQ9R3kTCwL0+jMSGrywUBoeLRQQf6x5C3Rr49kcsU8TD/4hHxdImQMYD
- sGyN7K3m7jPnW0HbAKeXVjzxFHrXf9c7eFVw6pbV4pfs6InQ69tE5tZLiWpl4nOL72VuxzcF76M
- DanPRSXImmiy1uIQcw2qN84hwmLarpBA61IEoXYo7DLyfmW0nGs83eHAbCoozZNxhYsN+bRZw1b
- GkEOJBqOjxZzyir/IbTS6N2UZHE57lTrmsRPp6pEkrhgUyP1kkB5Cfj0Dje6JkB6Z0INBStc0a9
- lsdNed2BhRd9SUFerv/s97
-X-Received: by 2002:a05:690c:e653:b0:8b0:4f12:d36f with SMTP id
- 00721157ae682-8b133fbf773mr16097787b3.52.1792663386040; Thu, 22 Oct 2026
- 03:03:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xJq1i-0000vk-SY; Thu, 22 Oct 2026 06:28:02 -0400
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xJq1h-0006pu-6E; Thu, 22 Oct 2026 06:28:02 -0400
+Received: by linux.microsoft.com (Postfix, from userid 1236)
+ id D72FE20B7166; Thu, 22 Oct 2026 03:27:49 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D72FE20B7166
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1792664869;
+ bh=cJMA9EIwsd9H9FiYrhrKU/BF6qCRnB5jl+a4O3774Is=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fmEDWx5MAfwMnb58bUKbIQ8DGQuISZiHrvua5lV15nT3toaeJrnkmTAd3qOGK3Otv
+ 22IeR6uW4Y1+te7vz0tgE0Vbjr0PUaN2mnqc2M5MBJB8/H5qijBB2ZMkQ5m87n9C7j
+ BxXHL7+yLCWU00JTcynb3Olk6pJyxLqiX/5EEWFA=
+Date: Thu, 22 Oct 2026 03:27:49 -0700
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>,
+ Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: Re: [PATCH v6 10/14] target/arm: extract MMIO emulation logic for
+ HVF & WHPX
+Message-ID: <atnlJf74tfOGaN9x@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
+References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+ <20261001-mshv_accel_arm64_supp-v6-10-aefe5e76a0e3@linux.microsoft.com>
+ <CAFEAcA8g=U+sP8i38Vvv_AA1fXnnXSVjVkfHfHhu77xKhEGLmg@mail.gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261019161900.3271815-1-peter.maydell@linaro.org>
-In-Reply-To: <20261019161900.3271815-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Oct 2026 11:02:54 +0100
-X-Gm-Features: AclHuK82WUUhfW-HJw5yGT8S5vv5fwU7PGBdk7Hi5IG_nHI3q9KMZUMvt6liVyA
-Message-ID: <CAFEAcA9PxT3XGtoc6VG4Bhxx6Qb7+R+ns6+DycpZsn_YA7UkyA@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/bcm2835_cprman: Treat invalid clock mux source
- select as GND
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8g=U+sP8i38Vvv_AA1fXnnXSVjVkfHfHhu77xKhEGLmg@mail.gmail.com>
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,34 +73,119 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 19 Oct 2026 at 17:19, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The clock mux control registers in bcm2835_cprman have a 4 bit SRC
-> field that selects the input clock source to use.  There are only 10
-> valid SRC values.  Treat the invalid values as producing no clock
-> output, as if the GND clock source was used or the mux was disabled.
-> This avoids reading off the end of the mux->srcs[] array.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: fc9840850ba ("hw/misc/bcm2835_cprman: implement clock mux behaviour")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4695
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/misc/bcm2835_cprman.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
+On Tue, Oct 13, 2026 at 05:40:18PM +0100, Peter Maydell wrote:
+> On Thu, 1 Oct 2026 at 11:52, Aastha Rawat
+> <aastharawat@linux.microsoft.com> wrote:
+> >
+> > - Move common MMIO emulation code from HVF and WHPX backend to
+> >   arm_emulate_mmio() in helper.c.
+> > - Update HVF and WHPX to use the new helper and shared types.
+> >
+> > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+> > ---
+> 
+> 
+> > +/*
+> > + * Emulate a data abort syndrome for MMIO/guest memory access
+> > + */
+> > +int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa,
+> > +                     const struct arm_emul_ops *ops)
+> 
+> Please don't put more stuff into helper.c. It is big enough
+> as it is.
 
+I plan to introduce target/arm/hyp-mmio.c for this extraction in that case.
+  
+> > diff --git a/target/arm/helper.h b/target/arm/helper.h
+> > index b1c26c180ea..503404112d4 100644
+> > --- a/target/arm/helper.h
+> > +++ b/target/arm/helper.h
+> > @@ -3,8 +3,24 @@
+> >  #ifndef HELPER__H
+> >  #define HELPER__H
+> >
+> > +#include <stdint.h>
+> > +#include <stdbool.h>
+> 
+> osdep.h includes stdint and stdbool for you, you don't need
+> to include them manually anywhere.
 
+Got it. 
 
-Applied to target-arm.next, thanks.
+> >  #include "exec/helper-proto-common.h"
+> >  #include "exec/helper-gen-common.h"
+> > +#include "target/arm/syndrome.h"
+> > +
+> > +/*
+> > + * Callback ops for per-register access during MMIO emulation.
+> > + * Each hypervisor backend provides its own implementation to avoid
+> > + * syncing the full CPU state for a single-register MMIO access.
+> > + */
+> > +struct arm_emul_ops {
+> > +    uint64_t (*get_reg)(CPUState *cpu, int reg);
+> > +    void (*set_reg)(CPUState *cpu, int reg, uint64_t val);
+> > +};
+> > +
+> > +int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa,
+> > +                     const struct arm_emul_ops *ops);
+> 
+> helper.h is structly for the autogenerated prototypes for TCG
+> helper functions (hence its name). Put your prototype somewhere else.
+ 
+Will move to target/arm/hyp-mmio.h, paired with hyp-mmio.c.
+ 
+> > diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+> > index 2a6fa903f27..8b4cc7f7b21 100644
+> > --- a/target/arm/syndrome.h
+> > +++ b/target/arm/syndrome.h
+> > @@ -106,6 +106,53 @@ typedef enum {
+> >      GCS_IT_GCSPOPX = 9,
+> >  } GCSInstructionType;
+> >
+> > +typedef union {
+> > +    uint64_t raw;
+> > +    struct {
+> > +        uint32_t iss:25;
+> > +        uint32_t il:1;
+> > +        uint32_t ec:6;
+> > +        uint32_t iss2:5;
+> > +        uint32_t _rsvd:27;
+> > +    } QEMU_PACKED;
+> > +} EsrEl2;
+> 
+> Do not use bitfields. They are not portable (notably, they have
+> endianness issues). syndrome. already sets up FIELD() definitions
+> that you can use with FIELD_EX32 to extract subfields of the syndrome.
 
--- PMM
+Sure, will use the existing SYNDROME and DABORT_ISS definitions. 
+
+> > +typedef enum {
+> > +    data_abort_lower = 36,
+> > +    data_abort = 37,
+> > +} ExceptionClass;
+> 
+> Don't define new versions of what we already have either.
+> These are EC_DATAABORT and EC_DATAABORT_SAME_EL.
+> 
+> > +
+> > +#define ARM_EL_EC_LENGTH 6
+> > +#define ARM_EL_EC_SHIFT 26
+> > +#define ARM_EL_IL_SHIFT 25
+> > +#define ARM_EL_ISV_SHIFT 24
+> > +#define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
+> > +#define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
+> 
+> This also is reimplementing what the header already gives you.
+
+Ack.
+
+Thanks,
+Aastha
 

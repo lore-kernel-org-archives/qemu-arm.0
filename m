@@ -1,66 +1,113 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E7A3606A319
-	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 10:28:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8E03606A31B
+	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 10:29:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=fmEDWx5M
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=BPS1WeNt
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJq1k-0000wX-M9; Thu, 22 Oct 2026 06:28:04 -0400
+	id 1xJq2T-00013z-5o; Thu, 22 Oct 2026 06:28:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xJq1i-0000vk-SY; Thu, 22 Oct 2026 06:28:02 -0400
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xJq1h-0006pu-6E; Thu, 22 Oct 2026 06:28:02 -0400
-Received: by linux.microsoft.com (Postfix, from userid 1236)
- id D72FE20B7166; Thu, 22 Oct 2026 03:27:49 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D72FE20B7166
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1792664869;
- bh=cJMA9EIwsd9H9FiYrhrKU/BF6qCRnB5jl+a4O3774Is=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fmEDWx5MAfwMnb58bUKbIQ8DGQuISZiHrvua5lV15nT3toaeJrnkmTAd3qOGK3Otv
- 22IeR6uW4Y1+te7vz0tgE0Vbjr0PUaN2mnqc2M5MBJB8/H5qijBB2ZMkQ5m87n9C7j
- BxXHL7+yLCWU00JTcynb3Olk6pJyxLqiX/5EEWFA=
-Date: Thu, 22 Oct 2026 03:27:49 -0700
-From: Aastha Rawat <aastharawat@linux.microsoft.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>,
- Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: Re: [PATCH v6 10/14] target/arm: extract MMIO emulation logic for
- HVF & WHPX
-Message-ID: <atnlJf74tfOGaN9x@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
-References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-10-aefe5e76a0e3@linux.microsoft.com>
- <CAFEAcA8g=U+sP8i38Vvv_AA1fXnnXSVjVkfHfHhu77xKhEGLmg@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xJq2R-00012m-7d
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:28:47 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xJq2P-0006tT-P8
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:28:46 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-8acda240937so14449827b3.3
+ for <qemu-arm@nongnu.org>; Thu, 22 Oct 2026 03:28:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792664925; cv=none;
+ d=google.com; s=arc-20260327;
+ b=iEgHsRcw7WxM9Es7mg/a3mfN0j8pDoQaN5bHMm9Ypge2n7JheRe7U+ZDL469qqJk15
+ vwMt9JrW+3zn34Z0FNOolEnsjQy7C6UjUU9ogWaxiAq5Ig2r8lNAAWu9+gPllSaJstCg
+ XvvBRpN0YfQamEFxuNKZP04zFb/Y4TINTOYJQfqqYDK/vBJpo1hwLlxZb8BEr7D+AXU9
+ JKbcO1IsOPKiE3Y+58BNzfowGxVIZCgYhzeO06zMFT7zG4mdJS64RGIuDoZIu+MjD85h
+ un3OVf1mM5ouCHcmKaDzev41p1LO/EQoSNOPWhRriJJf9KI6hoO8Jsk4Nm68NlCf6hbI
+ 5qGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=R9+slaVplhS0h+TANs82YWQX1if6DaqQLvnNGQd68DU=;
+ fh=0wnIPkcP9rTg5KDWeLSv9HsBcYsj0uum9gItSJjllx4=;
+ b=E3PYvZFa9yN3jZxOw44oendbi+nqlFhaZ2nx/vWXCH9r3V9I7Og2y/qWlICyvFdL8r
+ gB1NYpOPGas9bYxLuJyP9wU6OIzjF4ZpZpmrEYJ77/1AP0HwggAZNow6FSlaWWeeKY05
+ DKCAWAQVAXjj8AgqykN3Cb7zk8ojiWes1olMVAKp7MrYv5zr3qAB/uKorQOAUrnI773x
+ vEC1bloj1tfZdfIXUam8X5VINQDwMkXBqg/JRPqvMBulb5fRwsM2WQazFk9CrCXBl1DE
+ 5QaQGpjEBA0T6He6gzhWYTONe4yReWGEYayJ3X6Gp+SPkffmypvEpDt5V9o0VythbzWe
+ FaTA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1792664925; x=1793269725; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=R9+slaVplhS0h+TANs82YWQX1if6DaqQLvnNGQd68DU=;
+ b=BPS1WeNtm9njWXVZfNkgrkoaYAEiWRdlGoX8oS9qUUXw252p+oe2HK6CBXyM7c540T
+ LJ7YBkQW3zVndzXikkiZoyMVADRNWf1NIa1PoALxBKf7ttu8qldAnryeMxsf97lU43/M
+ Zxml7Bx1lauu4Q7Ilcqu+KQsM0N+RhmLAWpYt1us/3FKc8sKA537QZHFlRBw2reqppbD
+ 8nWNRewUOSJoaydqdf5ulz4EKG5PdCB7RRVlY1/FlNF5EyuXj3SEOMD97kiUHw/sodXb
+ wefXVAjN3ZCUFx2tSX/CeLP9SqPbJerWHwnF+eAmzHK3rtjp5+w4/AvuH7fD+FR4Jc4U
+ 40Rw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792664925; x=1793269725;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=R9+slaVplhS0h+TANs82YWQX1if6DaqQLvnNGQd68DU=;
+ b=0SY7ocZn2EOQlEzccPC4iMpbPgzfqCJOf8kubA4QLUrXuI4W6RsW320ORD0JohJC9Z
+ qEIayCQlv5yxtJOiw3CwzpL0vEpaffJn2FcvZWfz1AOIh8WsEvfd8TYIWpchNa7EfvZU
+ HLdYKL2QUh1fJozo23/kOVTC+zx+L0jL3ldY+AnR2Idzp+j1jR8whijBMFIAl9bHC+6W
+ o0OdZO9dkATCKRkAfDkpHGwW2OiTMnSOBLTeKX8PlReFmiW0NoNlIfxEiPQgAzWg1k3l
+ 6L2pJnxea8b8J9lapbqrvk7+aD5TomfgBcTSHKCg4vS/NM1WvhU5awuoPj1RpPo39JRO
+ 48QQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBw8JrMeUda2hEf7QT5/RZhNk1LKwEeOUQN/2OvrXaU132WqsIYMTeGxJz/kiEP9ROQ2we65zEgHcQ==@nongnu.org
+X-Gm-Message-State: AFq9FYL39SMCnDve2750cSp01v3czfNQ/LK5oJBIsWb9KMUXrMF0oH0+
+ i7m6UhfnV28wgT3x4MnBc6tJEOrsHZdfcX7p1cTvLpRrrdCDtF9LAZ6YS+HJ/kT2/DWmRAIJSM9
+ EzdDGj32QwVxngCSHdLkJT/WT9HDYsyq+MBxGjer9bQ==
+X-Gm-Gg: AYBFou3XlnVwwkNy/iL4sAJjgXfIFljcV9WO3sjcTScvjuuut8OlB+RjJCYAGVPJ/Tj
+ 72TZW7oEm6MscGfFR0P8xoEkHUKW15WvJ7pG4q+Haw7lhODoQ039zglXYzTp4TK9dFEGF3b/65X
+ 9/9EIy6ddYg9OV60tFJ5Co7pYulH9lfQNv33nzMB7AqDUHi5AzMypLE31vXFi92VgJOupr7rHn1
+ SltLXNmgICttJGez92vTtRz3Q1DY7PMLE25iLNX/CwoSGX6QTBZ9K/8JjOr79cuIolPuojvCtBc
+ KfJWezgxB7S7DCEm/36fdiEg0NcSujNCDGUwci+0gqtoT1IsE8ILQjV8nodu5umUdNnaJUIa713
+ AZvxW7YWjeZgR1ZpSbaZk8m3TSRaspwwDvFCDm33g534ppo7dPw5HEfh28iV2ycaMpwHuWC4kfX
+ ifCsQiddd59gVgKJW+YWHu
+X-Received: by 2002:a05:690c:e6:b0:8ae:85db:8e48 with SMTP id
+ 00721157ae682-8b134109c2bmr25286017b3.68.1792664924530; Thu, 22 Oct 2026
+ 03:28:44 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8g=U+sP8i38Vvv_AA1fXnnXSVjVkfHfHhu77xKhEGLmg@mail.gmail.com>
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+References: <20261010133725.642498-1-eric.auger@redhat.com>
+ <20261010133725.642498-3-eric.auger@redhat.com>
+In-Reply-To: <20261010133725.642498-3-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Oct 2026 11:28:33 +0100
+X-Gm-Features: AclHuK93dWwl-q9PlNiq8ZHRWxeuR0zJWNXIhDag3YFIxNwVwRpCtcfZs_60VFo
+Message-ID: <CAFEAcA_cNP-Gb2_r2xFW0qUUBrkygNpN2kxhz2curXfXXeWtww@mail.gmail.com>
+Subject: Re: [PATCH v10 02/26] target/arm: Move MIDR into isar.idregs[] storage
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ kvmarm@lists.linux.dev, shaju.abraham@nutanix.com, khushit.shah@nutanix.com, 
+ yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org, 
+ sebott@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com, 
+ maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com, 
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com, 
+ jdenemar@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -73,119 +120,22 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 13, 2026 at 05:40:18PM +0100, Peter Maydell wrote:
-> On Thu, 1 Oct 2026 at 11:52, Aastha Rawat
-> <aastharawat@linux.microsoft.com> wrote:
-> >
-> > - Move common MMIO emulation code from HVF and WHPX backend to
-> >   arm_emulate_mmio() in helper.c.
-> > - Update HVF and WHPX to use the new helper and shared types.
-> >
-> > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
-> > ---
-> 
-> 
-> > +/*
-> > + * Emulate a data abort syndrome for MMIO/guest memory access
-> > + */
-> > +int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa,
-> > +                     const struct arm_emul_ops *ops)
-> 
-> Please don't put more stuff into helper.c. It is big enough
-> as it is.
+On Sat, 10 Oct 2026 at 14:37, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Move MIDR into the isar.idregs[] array as other ID registers.
+> This will allow to overwrite it as others.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-I plan to introduce target/arm/hyp-mmio.c for this extraction in that case.
-  
-> > diff --git a/target/arm/helper.h b/target/arm/helper.h
-> > index b1c26c180ea..503404112d4 100644
-> > --- a/target/arm/helper.h
-> > +++ b/target/arm/helper.h
-> > @@ -3,8 +3,24 @@
-> >  #ifndef HELPER__H
-> >  #define HELPER__H
-> >
-> > +#include <stdint.h>
-> > +#include <stdbool.h>
-> 
-> osdep.h includes stdint and stdbool for you, you don't need
-> to include them manually anywhere.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Got it. 
-
-> >  #include "exec/helper-proto-common.h"
-> >  #include "exec/helper-gen-common.h"
-> > +#include "target/arm/syndrome.h"
-> > +
-> > +/*
-> > + * Callback ops for per-register access during MMIO emulation.
-> > + * Each hypervisor backend provides its own implementation to avoid
-> > + * syncing the full CPU state for a single-register MMIO access.
-> > + */
-> > +struct arm_emul_ops {
-> > +    uint64_t (*get_reg)(CPUState *cpu, int reg);
-> > +    void (*set_reg)(CPUState *cpu, int reg, uint64_t val);
-> > +};
-> > +
-> > +int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa,
-> > +                     const struct arm_emul_ops *ops);
-> 
-> helper.h is structly for the autogenerated prototypes for TCG
-> helper functions (hence its name). Put your prototype somewhere else.
- 
-Will move to target/arm/hyp-mmio.h, paired with hyp-mmio.c.
- 
-> > diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-> > index 2a6fa903f27..8b4cc7f7b21 100644
-> > --- a/target/arm/syndrome.h
-> > +++ b/target/arm/syndrome.h
-> > @@ -106,6 +106,53 @@ typedef enum {
-> >      GCS_IT_GCSPOPX = 9,
-> >  } GCSInstructionType;
-> >
-> > +typedef union {
-> > +    uint64_t raw;
-> > +    struct {
-> > +        uint32_t iss:25;
-> > +        uint32_t il:1;
-> > +        uint32_t ec:6;
-> > +        uint32_t iss2:5;
-> > +        uint32_t _rsvd:27;
-> > +    } QEMU_PACKED;
-> > +} EsrEl2;
-> 
-> Do not use bitfields. They are not portable (notably, they have
-> endianness issues). syndrome. already sets up FIELD() definitions
-> that you can use with FIELD_EX32 to extract subfields of the syndrome.
-
-Sure, will use the existing SYNDROME and DABORT_ISS definitions. 
-
-> > +typedef enum {
-> > +    data_abort_lower = 36,
-> > +    data_abort = 37,
-> > +} ExceptionClass;
-> 
-> Don't define new versions of what we already have either.
-> These are EC_DATAABORT and EC_DATAABORT_SAME_EL.
-> 
-> > +
-> > +#define ARM_EL_EC_LENGTH 6
-> > +#define ARM_EL_EC_SHIFT 26
-> > +#define ARM_EL_IL_SHIFT 25
-> > +#define ARM_EL_ISV_SHIFT 24
-> > +#define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
-> > +#define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
-> 
-> This also is reimplementing what the header already gives you.
-
-Ack.
-
-Thanks,
-Aastha
+thanks
+-- PMM
 

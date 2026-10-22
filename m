@@ -1,68 +1,69 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2175606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 00:01:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 170FB606A319
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 00:01:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=hS/GgViV
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=NomFIuK9
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xK2gl-0002i9-Tw; Thu, 22 Oct 2026 19:59:16 -0400
+	id 1xK2gv-0002nP-QD; Thu, 22 Oct 2026 19:59:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xK2gj-0002gb-7p
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:13 -0400
-Received: from mr-2003b-snip6-11.eps.apple.com ([2a01:b747:3000:202::15]
+ id 1xK2gt-0002m9-GG
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:23 -0400
+Received: from mr-2003e-snip6-1.eps.apple.com ([2a01:b747:3000:202::2c]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xK2gh-000269-KX
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:12 -0400
+ id 1xK2gr-00028p-N8
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:23 -0400
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPS id
- B6191180054E; Thu, 22 Oct 2026 23:59:08 +0000 (UTC)
-X-ICL-RepId: 01a1660d-e392-7148-81ff-1540d7dc9199
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kAQgpNC1gORQpIDk0AQANGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
+ 67AE2180011A; Thu, 22 Oct 2026 23:59:18 +0000 (UTC)
+X-ICL-RepId: 01a1660e-094e-7338-9ff0-369166ecb072
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0OWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kAQgpNC1gORQpIDk0AQAZbHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1792713550; x=1824249550;
- bh=BMfLaruRwjS2EuVB1qFM1OkXquvXAo2QdP40DhTsI1I=;
+ s=sig1; t=1792713560; x=1824249560;
+ bh=Cv0uGdAdTyBVyxmHOQprx/PeKa6pk7/GKJjhXwUfb1k=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=hS/GgViVlsoKD7upPLfpQyMt+p3S7ayko5FieMTNSpxi+9z5YLCojdjA8BvCGlVQFMAiIys6zDYek+Yjuh2hAUUY6UytDbT2Pnm1utFoqAzetDAQl+VN7cxQ26HT6d70lU6jqK2pSqWtMXBT7i0TJF6wc1z2Kmwlk6RgyiPvIztLvO3siVbzbX2rLL3LKOv8zvYs867gFMrkvjEX+m+vFGYB97cZ5A2xzKCgZ18GhuD/5GFpSkfMzh0FmYam6L6XJy6uP6Jf6r07QzV4ptQicY32bLUefvmci4NmWX6HktocBINtkv9T+oeazbSVc/umR8zVxDeKfoBdQGJSNs7p9Q==
+ b=NomFIuK92nmxK+iGwdaoZ5YmE5dQpov2tlEo32sweqB5fb9lLGIktNDXJzcUkfkz/xDUn/xUy0jY19XhTsXvHTdgg4wwyQkVm6aYtksuD8nNm2P4GoSkXoOgXaQqayKS9Pbf6tFfqJVmq+iyxEbxf/hs6aVc8mtwVkAwmOkmO88YD9zgjK1DetoZbMN7M9fTsOBVBJdoEkornkg9yRh0iD0GVnS1HdfNrYdLcccJGE+tICh63a/U8fk7h8d3FADCGhPLuNKkfEK0w/RD53ljoirO7RocOkKT6HqFSijkA208+/TOzNCZ+tNPONgvy1aHhFcpfNolpeNEei8HPL9nVA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.156.200.36])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPSA id
- 1E6C6180011B; Thu, 22 Oct 2026 23:59:06 +0000 (UTC)
+ 7B557180024B; Thu, 22 Oct 2026 23:59:16 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
- Pedro Barbuda <pbarbuda@microsoft.com>
-Subject: [PATCH 03/11] whpx: i386: get APIC state before VM save
-Date: Fri, 23 Oct 2026 01:58:51 +0200
-Message-ID: <20261022235859.88753-4-mohamed@unpredictable.fr>
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ "Doug Cook (WINDOWS)" <dcook@microsoft.com>
+Subject: [PATCH 09/11] target/i386/whpx: handle processor reset
+Date: Fri, 23 Oct 2026 01:58:57 +0200
+Message-ID: <20261022235859.88753-10-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20261022235859.88753-1-mohamed@unpredictable.fr>
 References: <20261022235859.88753-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: 5EgcIoOm-oOJRPbDY17_Z8jOQOugws4q
-X-Proofpoint-GUID: 5EgcIoOm-oOJRPbDY17_Z8jOQOugws4q
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIyMDA5NSBTYWx0ZWRfX3EgeHjgQAvb7
- h//31JVQoMddttWu0DM873T+re0ySMNnRnPQkwr1tDgx4yqV8c423GlloQ8iAuv7kG4RwybBSkO
- DlHZDxrGfuiMYLm2gE2Dh56pgsLL5CEgcE/hrE0P3xOtAhffUh5lUdpdY+MJZVLxMWNUnT9xlxw
- dikX/2hkMQGBPLmyZn7MPRtTl5XZd3nWy4dadmwVtTyltUU6QbOepw33xa1NnNIjL0W4AcjJWtJ
- R+lPLIf6iX1pHOdy27h1T5XEbROsyeL0wR9MQfyrsazUz7x/KG5HoueyfkC2JpOHYeRh77qbFte
- AdTJ7rt/xBMaflY1jK4wUxATF+3OtoqA7uZrG/sCQkzt3+A1AF1sJbMxCtpwR0=
-X-Authority-Info-Out: v=2.4 cv=Ap7jHe9P c=1 sm=1 tr=0 ts=6adaa34d
+X-Proofpoint-GUID: AJhZ9O9ZxTy302jlGe7JEooJiIKspg3U
+X-Authority-Info-Out: v=2.4 cv=d/X4CBjE c=1 sm=1 tr=0 ts=6adaa356
  cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
  a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=O2XxGrO5I-fc2znLRzsA:9
-X-JNJ: AAAAAAABwdu9sEeOIaClRHBgVlTAegGjbh3rx/88lqcVjw8SzD7PCXrjGkK6vsKnKvvujnRIApltyu/FZvsRdhzbb9XUe5C4MTDWsptftwijAnxUBIjgBGfCm8RQn52uDONCvE/DjpAY9z9JfZnnpr0J+g4h6VNPYMT4BSoh8r89RQT+3b5QfqUz6NPRhhEvIovcuIL/9VCkoS9ZXe+HMpMuBor+GV7o6S5k30fnAVmgESrqgD7iQ5hHZ2oc0/sFxHnvuh8m9Lpyl5HKkNqhW/QRe7eSsbPNYhxg9mSdAfWNUXt/XTnVPQZ8XHrCymsaXO1FMWp+z6f7UbyanFADC4/PNhutwoskrA2d695Dv0RmgupX/Ayi0CYKbb6HqBp31cSixNIndcMj4fhXhxzZ2Ldojo7iVMdRza7jvJSr276kl4LPXPKzVKMh/Z7Q0dxI251JZZsv9Ib/oEYLf08DpKy0i40qLxblL53mEKDaiMFLyuDKk89EqSTc0OS7sL3MJaUPBURIu5KMyhr+JKIn15UXDjPM/HkqINWu9xVK0BhJbY4g6Nd6sYyvVyTNZy5XwaTP9sY4YgKFZRTaon+3v+irEJK+XAWN3AT65cKPvz8+NggEY8HXVN4uMEWM8+mfTN91VcsOORR3ONdccjDiaa1ZQobj+ErJbdo+HlAHz0e4E2/Mv8dlsdHkMdTceLdmxLRgfCAq2nWGiS9O49bj2mctznFL9Gj0LMavbNNzORfCyTLN1VbDsNYa60RNGQdQmDy69KOT4upREZlf2cBoxSsF6RUP445FOIXp1BiC
-Received-SPF: pass client-ip=2a01:b747:3000:202::15;
+ a=p0WdMEafAAAA:8 a=yMhMjlubAAAA:8 a=eqzMyDhjfWJDk1Qr7fMA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIyMDA5NSBTYWx0ZWRfX/gMKhvrC1OW8
+ X1KrC9gHfZEh2oy/ApEE9OgXyzldJTol0anckq+LBZq3SURZWjt/rU3YIQqiGeLHnWzzl6MhtFD
+ oVhYC5T1+aiPFe4zcpNvvfYBIHvuW5v1D3AhwK0NVsBCP2tNTxAVXipTMda6myNkmN3rk0PxqcV
+ hylRyvDIHY8UY8KWnIVv1HVbJ4kwfJn4h4McS3JXCHhs/zvvS3J7zJ7LybXRFL/AOQ65RBUQkm6
+ CZz28/NB4IPwVncwZ8xiQOWgmlDgMIDQczJdSvzoFaUq5/ZI92R2KD5AWz+gGUGNQ/lSyq78Tme
+ C1V2PgZUovjG+UZefhxfkzYvd0GfezLp9wk1SFPMmTG3cqTijhP2i22zeelHVk=
+X-Proofpoint-ORIG-GUID: AJhZ9O9ZxTy302jlGe7JEooJiIKspg3U
+X-JNJ: AAAAAAAB2IfVGWNPP1MUNU+xTZxEnCjpshTaxnqWYbYcz9q2wSX6SWF+xVcDqrvyKTRNvWByf689/b0dBbW5aBEC+008I9d7x2WPhFTBahETxwrgS87m5gCj+gSyLMzm/kHVrGksILGqFA9xCbYBrG2gzIVyvERYLhILw4IUpsC4q+ujbbLRKBwLmRJrreiggQt6QZ0yZStfvdEetQjl9agmU6s/Vx9dh9mATFvw0JpFwpwZs+2razp95ie/2X8aBGJ7HhrD3m98bcNIbJNI8uYwkaBXenq19mLVtliOUhTGhOxL0CvNiigNNhDqROBKeCsLT3MayMsc7lZ1aCBsjyk4BnJstg92a2ZFhaPzLI5ZkEwpHGJaTfxpPgcP4KKC9I9AuWjaoUi/XeUxfeWMUMWa6wPpi3oiBgb8Wowciu6antO+TGiKEAiC/dIvRUsn/VTsHSgg+D+6eAHchDfEFM9QVdeKEFXb2ClEZ/o7tMPz4dh5LJxmD7gUUKXQ4RWVmo22lki2kmhGiPsBoGoXB3j+z0ImAKOIIf/mMq4AOxr0sA13iPfH/uQa7PJi+R8oLFC3hjXwmZFc+Mb1LZvaVrf49FV+7Rsbnulb9TjnbFTdqvoGjdayAhR8MOjMc5T4lSGmf4CY3+EH2t0h+2yXRnOnMoGUe6RTBAj1IbBBvlSxD+m6urzbiNcrZJKDPdcy8bwAkGCnYaY/fDE0YmqWN+qLwuC+TR1u7FDaI0qBD/wcuYpoAe9V5rVvUdwqwhyIoWAsLGduSp5x4cPG+YNOofDYydusZ1nj9liH6/7bkt7ruJQc
+Received-SPF: pass client-ip=2a01:b747:3000:202::2c;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -81,44 +82,80 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Prerequisite for VM save/restore.
+From: "Doug Cook (WINDOWS)" <dcook@microsoft.com>
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+WHPX is not properly handling processor reset:
+
+- Does not reset partition, so several registers (e.g. Hypercall,
+  GuestOsId) carry values forward as "Locked" into the next session.
+- Does not clear hypervisor-managed TSC deadline (live-lock).
+- Does not re-arm the wait-for-SIPI trigger, so all CPUs start running
+  immediately after reset.
+
+Some firmware may tolerate this, but OVMF does not. Typical result is
+that boot hangs or ends in triple-fault, e.g.
+
+  qemu-system-x86_64: WHPX: Unexpected VP exit code 4
+
+After this patch, I am able to boot to Windows desktop, reset, and boot
+back to Windows desktop. Tried many times in sequence with no problems.
+Used several different reset mechanisms (OS shutdown menu, external
+"reset", watchdog reset) with no problems.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/2402
+Signed-off-by: Doug Cook <dcook@microsoft.com>
 ---
- target/i386/whpx/whpx-apic.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ target/i386/whpx/whpx-all.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
-index cc272f82a5..efdedbcd77 100644
---- a/target/i386/whpx/whpx-apic.c
-+++ b/target/i386/whpx/whpx-apic.c
-@@ -242,6 +242,11 @@ void whpx_apic_get(APICCommonState *s)
-     whpx_get_apic_state(s, &kapic);
- }
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 478a890c9e..de4d444368 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -541,6 +541,35 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
  
-+static void whpx_apic_pre_save(APICCommonState *s)
-+{
-+    whpx_apic_get(s);
-+}
+     assert(cpu_is_stopped(cpu) || qemu_cpu_is_self(cpu));
+ 
++    /* Assumes that cpu_synchronize_all_post_reset() runs cpu 0 first. */
++    if (level == WHPX_LEVEL_RESET_STATE && cpu->cpu_index == 0) {
++        hr = whp_dispatch.WHvResetPartition(whpx->partition);
++        if (FAILED(hr)) {
++            error_report("WHPX: Failed to reset partition, hr=%08lx", hr);
++        }
++    }
 +
- static void whpx_apic_post_load(APICCommonState *s)
- {
-     run_on_cpu(CPU(s->cpu), whpx_apic_put, RUN_ON_CPU_HOST_PTR(s));
-@@ -338,6 +343,7 @@ static void whpx_apic_class_init(ObjectClass *klass, const void *data)
-     k->set_base = apic_set_base;
-     k->set_tpr = whpx_apic_set_tpr;
-     k->get_tpr = whpx_apic_get_tpr;
-+    k->pre_save = whpx_apic_pre_save;
-     k->post_load = whpx_apic_post_load;
-     k->vapic_base_update = whpx_apic_vapic_base_update;
-     k->external_nmi = whpx_apic_external_nmi;
++    /* Reset hypervisor-owned TSC deadline. */
++    if (level == WHPX_LEVEL_RESET_STATE) {
++        WHV_REGISTER_VALUE tsc_deadline = {};
++
++        whpx_set_reg(cpu, WHvX64RegisterTscDeadline, tsc_deadline);
++    }
++
++    /*
++     * Re-arm partition's wait-for-SIPI state.
++     * whpx_vcpu_run() ignores cpu->halted, depends on SIPI for this.
++     * This must follow WHvResetPartition.
++     */
++    if (level == WHPX_LEVEL_RESET_STATE && whpx_irqchip_in_kernel()) {
++        WHV_REGISTER_VALUE activity = {};
++
++        whpx_get_reg(cpu, WHvRegisterInternalActivityState, &activity);
++        activity.InternalActivity.StartupSuspend = !cpu_is_bsp(x86_cpu);
++        activity.InternalActivity.HaltSuspend = 0;
++        whpx_set_reg(cpu, WHvRegisterInternalActivityState, activity);
++    }
++
+     /*
+      * Following MSRs have side effects on the guest or are too heavy for
+      * runtime. Limit them to full state update.
 -- 
 2.54.0 (Apple Git-157)
 

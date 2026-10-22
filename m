@@ -1,68 +1,68 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B35B7606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 00:00:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7AF22606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 00:00:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=z2WXs4tz
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=V0zIybxK
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xK2gi-0002gX-Pc; Thu, 22 Oct 2026 19:59:12 -0400
+	id 1xK2gt-0002ll-1R; Thu, 22 Oct 2026 19:59:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xK2gg-0002fN-BJ
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:10 -0400
-Received: from mr-2003f-snip6-11.eps.apple.com ([2a01:b747:3000:202::3d]
+ id 1xK2gq-0002k1-OY
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:20 -0400
+Received: from mr-2003b-snip6-11.eps.apple.com ([2a01:b747:3000:202::15]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xK2ge-00025g-Lw
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:10 -0400
+ id 1xK2go-00027Y-6M
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:20 -0400
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPS id
- 7BA2918000B3; Thu, 22 Oct 2026 23:59:04 +0000 (UTC)
-X-ICL-RepId: 01a1660d-d22a-7f3f-b193-57fffd1f8a2d
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kAQgpNC1gORQpIDk0AQAZGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
+ 03697180055F; Thu, 22 Oct 2026 23:59:14 +0000 (UTC)
+X-ICL-RepId: 01a1660d-fbf7-79fb-bd6c-a806c3f5d938
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kAQgpNC1gORQpIDk0AQA9GXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1792713546; x=1824249546;
- bh=JKY4Le/opxQdbpaSI6OxDIj3xE6TxrNxbatWgt+UvJM=;
- h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version:x-icloud-hme;
- b=z2WXs4tzJBo/QBBcIZrabHRIYTBsPrVlzFJZLRuXqVSbdJVRY/N39EPkDxXuW8LXVsdrPtu576cxube8jYTJ8E32fNcRAYJqbUpLul42catQ4jjTg0d8achm1FMGmi24Ssr4ofgi1102JnK7eLkJI6jJJhu5slqy4yRPAJo/BDLsQNzkCMtXPq8mhkrZPWw5h/AubePeMSMojmWD0MfykL/EYKKSvQ/O3DLHAC2Yt083OQ6pPHHZuZNtozpIDAkaRr3YSHQrn4JWqUOZPPqzTPB1kncFZBcO3fHQaCCDry5KcUzTZdmrHw46nh+TgandJL9ysQEhgZKU0b7WHgs7bA==
+ s=sig1; t=1792713557; x=1824249557;
+ bh=0DpZpC0HXjATZL6KON6fXf7dnugkN+4ZazEaow1D9EI=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=V0zIybxK3OHnALXJ5cLTT4WwrPpv7DMcMW5veHPXKbJtvar8kwYEPoLr2+16biS+BLvmYyduUwRhPb97uLU7/XEIK2TvvZBDxMxOK6ap2BV4YUqh1fdgfOKsYmf7EPg8Gv0S4oM/N9bjXlNJ2oejP90DcxNQCDLCGynRE95kaxor9tWteuBD8xXZWD8ERUvcJwGbEocQ1WvhE9ilw3tx1Qu8n4suBUOVXf7aEJIqZ5n1WYlyVDdf3Vj8ipbYmC5Qe+jb1ECs7oAjrUM1gclgXrNf5jB3ouK6dZiqplNEBbdLJaIpbG0lkiol7SdfGpAQm9Xb4ORYNWcuV1U92W1quw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.156.200.36])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPSA id
- 35C691800242; Thu, 22 Oct 2026 23:59:02 +0000 (UTC)
+ 396EA18001F2; Thu, 22 Oct 2026 23:59:13 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
  Pedro Barbuda <pbarbuda@microsoft.com>
-Subject: [PATCH 00/11] whpx: i386: updates for QEMU 11.2
-Date: Fri, 23 Oct 2026 01:58:48 +0200
-Message-ID: <20261022235859.88753-1-mohamed@unpredictable.fr>
+Subject: [PATCH 07/11] whpx: i386: allow migration for restricted scenarios
+Date: Fri, 23 Oct 2026 01:58:55 +0200
+Message-ID: <20261022235859.88753-8-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20261022235859.88753-1-mohamed@unpredictable.fr>
+References: <20261022235859.88753-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=RN++3oi+ c=1 sm=1 tr=0 ts=6adaa349
+X-Proofpoint-GUID: rZhjqsx05E9eFiPs1JpUGL7ub78PFsDv
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIyMDA5NSBTYWx0ZWRfX0RvtWpt7Gyjs
+ p+puvNU57h/TZ1bCg5xX1eUIaJsikN3Wz0ytUqQAEVJl89+X2XzveVCNmr5XyEkKjZ7zDr9JUf8
+ 564/ygtR9tkHSRR20vu/AY+qddindwWISqTPYqHYbu5yCXHcOS7s1yUDcLTzMS0hIXZA+5cqy2v
+ eXACrMwH6Ocea60ArOoaGAln1/UzgqkimClnxIsYUJgLrCTg5tIFaivrdOmEXt7HhfISmolanFX
+ hj2KheryC0z4DTqjg6zibSkHk+4yAcnSUuyjIFEk6tRAosBUg8JwUGUzyyhkA63Cjk4Pi9X+yXY
+ RyiMI+Ux/2NxhHei02u8ZdvsHEm1auI7sI9S/Zc9gRJqUUsQCgUGbrNurhSi4w=
+X-Proofpoint-ORIG-GUID: rZhjqsx05E9eFiPs1JpUGL7ub78PFsDv
+X-Authority-Info-Out: v=2.4 cv=OYeVzxTY c=1 sm=1 tr=0 ts=6adaa353
  cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
- a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=G-9ac8YlockB7o23_XcA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: sjYo76bsLvHhJX4lpGj8FoIleEfXcI8Z
-X-Proofpoint-GUID: sjYo76bsLvHhJX4lpGj8FoIleEfXcI8Z
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIyMDA5NSBTYWx0ZWRfX5OPyNAEKnbWs
- BX944Tx2PbhCDLOiG3swBWzUbmTD7NCuvPfb+fS2hIjQYcG8mb3Owjl6mlPS2VkTLQCq3SOglQW
- 6LxeUq2pi4siBfIoCG5GAkvMcmB+Hx4uEllZLVYlzYoNKs35Ed5oXbEw9/JOhqjUqDMrKE0dsFD
- cn26WKVOx6YMZIJ02ADnPfC88mNcPFZ9ug29TPAuLitErAuTsihD9bFlaFE7PK9u97tO6UZ8PgU
- 4YaFV/qGR8ebicK53qw1fMFaQ+M9t1kA0Og827jxj8WBoL1m543Fd+LTC1YVGQQei8nRy7XlrCX
- iPQVKJ/O/9C9FgOWTvC4wqV+NPeDY6+nakt7FYL9NpIV6G9PDVtqpL5rLLDQmg=
-X-JNJ: AAAAAAABG6WjlaWDlDcjcNkLBr+CZF+XdCBciwK2hUj2bPbCTzufguxrvt01h8PAYQaSvW/CnvXYbtYKF81UgASa8X2zWX1Ig8tI5y8HhVNoQhIN+7tEptL/8cWjy+uNSBZz23GJVg/gTzDFN6DxT78DLXtyembhpllXbUJkBcqejsIs1qhbpYJX4UMWxsUuV4B4VQPsMcBXgpYoIff8f+Dn2AotoaeiDeIwrXLf5eJGBh2EguVAnWopBJj4XbkgFsG3Qgx4+1lsK6dBfrP2qM4xheee4IreRG7ybx3zbGFzRyVOV1G42MtFjPAAW4SYquV/8v7HO9aErn4Wh6Mck6GdpsIcwW7eKJjvXOaEWAlbi6gMnNA6DPwoK07AetFK6KA+mprWo6oPa5brZFmzRfGgkDkHxsRmCXFYRjWHYXoJRSXJoFwixHsSBXb3sjyDjo51zxoGHwokiV0BaG83PcV7ieezvYU+3oE5MVxNgPQNsfjPa2dARCzE74YRsx13kU1qxZmVmkqNtM++iz0QWvkAqK6Jce3JjZQU6gkz1fOBE+FpVW3DOGf0Xl8cN28E2pDssQO/q18ip/dSGYPTqBQZz6XpKm6NCSzf1TDttmuC//JvdJmhR+dswlVyt2IWlOCsOH3bQcJoWFfRxw25sL9O51pqBAwfpUqBsYLg8AB9CzKbYEhYoKAkhV4TkL/UmLku1DQGzgVKCdChy5BTrSv52HS0AJDXM+1rqAHNekqgqhtzxMJJF3kbb7IgfVqZAIhDhtyhfeRBK6WYaf5vm8S7tSxRJ45yVl/bMOXU9CT5vWgM89++l/AhGt8J6Do7w0kyc22IDHivsCLUO+FHkGgtgEH9WsyEosrkzVzdhLxew/rh5VZvi9iwxqQil9MyqNJhjgQPbgd7exAQ2xletSMymAFNweIe1nd+wlNUWg7mzsxO79/oW/qYNVu4DeXvOl+xqdPBQJV+HFWY0fNE1i+Kw6+xc6e
- QGO6NY3hH3OoEcOWascTNSaHpEH8BNjZBIXRWOA1LbZ/NYiAak90DnaWDw7FpWVszJsJTk1GaSnsYWo77VuyMaAKj2s+LtcYeJE721WJlDVYVwK26iEOV2zXDJWvUx8MtL039PnoZfqgdLF7xMUlERaqphu1j/WL99RZMf1g0YS6ynlDRgnp2PJoTjOZWu9XOXgJUaMjYVeL4aiom+Cv+dKHsniftXsHqsgt8eoUkYe8pU77eBLKj6qaTQmiVDfi+u78qC3WLiAyfjbLOeCRlpaKD1HTZi58YvJ2d1T07VtGkqFKAVSV8sGW9mfSYVloxYUBJgDIpykrlvw0D2pA=
-Received-SPF: pass client-ip=2a01:b747:3000:202::3d;
+ a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=nwY42hrHMEqICv1IH2MA:9
+X-JNJ: AAAAAAAB0Jf/z1hMnVisCY2/TW/09JzZi+T1joQYPy5M5jhJg3Bjt+9FipEL5H721IWz8h6bFCtJYaMY4XlUVOu78pU1AYPyVvQt2I1CmEtMoZmnZJmbqGaMR6CMCfSVxne0wd+KODSf8mOik7GS8kCJECmV6oFCI0QhhJDPLsYq32DVmjRjlGUfnqzPahZ4rin5+5I19oFzsPD6KxQ86hCfa4RUQEBDNgy0SdAE1VvdFn2ShpG4pU8vgGf/WgsUek97CPZdKN4Z5xxJ0EhTXQsJWLqPFWVkycJqbZhpaHzZT9tMKoMfOlVyKAnC4VhJveGbZst4DTFV6Q2gsV5GfFensCxznnCDY2eK+L/nSR3+JdDiazcqgESU6ahkKMXDy4P1+yVXQyoD7spMo7jIs2McXzZZFO8BcoB6X7YqR/SS3qF7ksbpVipjl1fjlL/9CReUu6dFH24ybG2HWasGRg2RxeSnJWxWyHLuTrC9WqZkLnqVGXSqCYrcTJcsn6JH3w5eUVzPYiA9TKkUqi1x+Z33efhn7WTYRM8/z3eWl11Dgh7rV46VUlBWU27v7iZiProaJmwsd3selIXmLxKDP/cX74Dt6qG83yV/W5/2ndvjUiTejRuViND91pdeVqfIMQ4N3RJTMuaL33tgVbfkKKdQXBKwXnN9jZCOSPbkhfe8/XcN6UkVS4XkByw4pxeXBnvLh4sHONcpAwM75jNDEoYK204EqjFFrFTPwEwKg98o5Oo2Uo+X2S54OwGN+vi5UbS0vyOjNkDhgrrOl3RFa/+Bk0AmK/JFNycyHmE=
+Received-SPF: pass client-ip=2a01:b747:3000:202::15;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -81,42 +81,83 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Experimental support for save/restore, a lot more robustness on
-reboots are the highlights of this one.
+Currently, nested virtualisation state is not saved/restored and
+neither is Hyper-V enlightenment state.
 
-Boden Randin (1):
-  whpx: i386: avoid updating hflags for vmexits
+Debug register state and MTRRs are also not saved.
 
-Doug Cook (1):
-  target/i386/whpx: fix VMX capability MSR values
+Tested with Windows XP and Alpine Linux. Windows Me is known not to
+work.
 
-Doug Cook (WINDOWS) (2):
-  target/i386/whpx: whpx_get_xsave_state error handling
-  target/i386/whpx: handle processor reset
+Why put it now? Because the Android Emulator is (finally) updating
+to a newer QEMU tree and they did forward-port QEMU 2.12's WHPX
+implementation because of save-restore... And their implementation
+of save/restore was even more restricted than this one.
 
-Mohamed Mediouni (7):
-  whpx: i386: get APIC state before VM save
-  whpx: i386: fix TPR encodings for local APIC
-  whpx: i386: save/restore xss
-  whpx: i386: make nested virtualisation init failure non-fatal
-  whpx: i386: allow migration for restricted scenarios
-  target/arm/whpx: handle processor reset
-  docs: whpx: update documentation
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/i386/whpx/whpx-all.c | 33 ++++++++++++++++++++++++++++++---
+ 1 file changed, 30 insertions(+), 3 deletions(-)
 
- docs/system/whpx.rst           |   6 +
- include/system/whpx-internal.h |   5 +-
- target/arm/whpx/whpx-all.c     |  10 +-
- target/i386/whpx/whpx-all.c    | 198 ++++++++++++++++++++++++++++-----
- target/i386/whpx/whpx-apic.c   |  10 +-
- 5 files changed, 194 insertions(+), 35 deletions(-)
-
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index d13513985c..2f15d41747 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -2828,6 +2828,32 @@ static void whpx_cpu_update_state(void *opaque, bool running, RunState state)
+     }
+ }
+ 
++static bool whpx_is_migration_allowed(CPUState *cpu) {
++    struct whpx_state *whpx = &whpx_global;
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
++
++    if (whpx->hyperv_enlightenments_enabled == true) {
++        return false;
++    }
++
++    if (cpu_has_vmx(env) || cpu_has_svm(env)) {
++        return false;
++    }
++
++    /* We're relying on the LAPIC state save/restore for pending interrupts. */
++    if (!whpx_irqchip_in_kernel()) {
++        return false;
++    }
++
++    /* The state save-restore we have right now is not good enough for x2APIC */
++    if (cpu_has_x2apic_feature(env)) {
++        return false;
++    }
++
++    return true;
++}
++
+ int whpx_init_vcpu(CPUState *cpu)
+ {
+     HRESULT hr;
+@@ -2845,10 +2871,11 @@ int whpx_init_vcpu(CPUState *cpu)
+     /* Add migration blockers for all unsupported features of the
+      * Windows Hypervisor Platform
+      */
+-    if (whpx_migration_blocker == NULL) {
++    if (whpx_migration_blocker == NULL
++        && !whpx_is_migration_allowed(cpu)) {
+         error_setg(&whpx_migration_blocker,
+-               "State blocked due to missing dirty memory tracking support,"
+-               "And some system register/state save-restore ");
++               "State blocked due to missing Hyper-V enlightenments,"
++               "save-restore and/or nested virtualisation");
+ 
+         if (migrate_add_blocker(&whpx_migration_blocker, &local_error) < 0) {
+             error_report_err(local_error);
 -- 
 2.54.0 (Apple Git-157)
 

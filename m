@@ -1,76 +1,75 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A958606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 00:00:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD013606A31D
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 00:01:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=Aa9Zd3gA
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=JG1yzrG5
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xK2gq-0002k6-SX; Thu, 22 Oct 2026 19:59:20 -0400
+	id 1xK2h0-0002pb-0l; Thu, 22 Oct 2026 19:59:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xK2gp-0002jj-Hl
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:19 -0400
-Received: from mr-2003l-snip6-4.eps.apple.com ([2a01:b747:3000:202::73]
+ id 1xK2gx-0002oG-DV
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:27 -0400
+Received: from mr-2004g-snip6-2.eps.apple.com ([2a01:b747:3000:203::48]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xK2gn-00027P-TD
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:19 -0400
+ id 1xK2gv-00029v-JI
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:27 -0400
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPS id
- 7E3001800169; Thu, 22 Oct 2026 23:59:14 +0000 (UTC)
-X-ICL-RepId: 01a1660d-fa06-745d-bd09-c391c0d72d51
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kAQgpNC1gORQpIDk0AQABGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
+ DE0711800553; Thu, 22 Oct 2026 23:59:22 +0000 (UTC)
+X-ICL-RepId: 01a1660e-1ae0-7488-bdc0-db9e9665d54e
+X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kAQgpNC1gORQpIDk0AQAZaHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1792713556; x=1824249556;
- bh=dSrwibXLl61KPeY0mbb9Kw6Bj1BM0S+HBdlSgsEMB5s=;
+ s=sig1; t=1792713564; x=1824249564;
+ bh=93j8GFn2aIN5NvK8Y1HIzwXcuknIx3xv/zkmLcn737g=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Aa9Zd3gAevmxIxwmkE4UBieEDBnFrcVtAQF8s4ZfhgcTFNs3joZ8XW0j+WxthVtqPwkZABz2mHORSmlMhOsqdnyP+eKkiYnbcckafZC/1LpgDheW8BBDonaeQa30taFpGvZzuCLiiXIDamjBV8AAEH+292/1XUpWzgWL8h1CbqkljP/nZ5xIL1+ifso4/0JCbobBbFe8BKlu1pdtgN9XnZwZpw1sUxz89X3UKfdG/FwupB9hqdmUdYSgLYhVFmkjD02dMncwPI46Ea1A9iwiPjDtTe9hi+QVBTwCNkhObDVcJCrPTHPVpnyEqINypzmLlGeHSJ7uIrHCftjj//707g==
+ b=JG1yzrG5BSa1GSC5Qs2gRqZ62ZrjsGL1HeOcg1HtolJZs2ap6dxcW71nzTk+4zi7qAQR/0B6T2VtlFdSgmCFhFhYPHaBpnv8tRhWYIMfSvlEh229beoQhtICRCMuHqPCC9l/4m+KFVFx7t8i2jYYADqsTUQAK2V3S8fCjyLBIkT3CgmBPq3pLieRn5upkafzz6hF3XpXaXNsn9dMwbW4XtZKbFZwGWanL5I9h0K6zhK4l+vDNuIADhjKIDvOlQx+elyQ0JJJnC0xNoFOgMseK4NESJ2mTsrmexER7y7nCrMO1SkYCm8Y+R5n2NLej/qJu8s5hu/eQ53IepuM2uM3qw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.156.200.36])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPSA id
- AF5D818001F0; Thu, 22 Oct 2026 23:59:11 +0000 (UTC)
+ 2B0321800106; Thu, 22 Oct 2026 23:59:18 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
  Pedro Barbuda <pbarbuda@microsoft.com>
-Subject: [PATCH 06/11] whpx: i386: make nested virtualisation init failure
- non-fatal
-Date: Fri, 23 Oct 2026 01:58:54 +0200
-Message-ID: <20261022235859.88753-7-mohamed@unpredictable.fr>
+Subject: [PATCH 10/11] target/arm/whpx: handle processor reset
+Date: Fri, 23 Oct 2026 01:58:58 +0200
+Message-ID: <20261022235859.88753-11-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20261022235859.88753-1-mohamed@unpredictable.fr>
 References: <20261022235859.88753-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=O/A0fR9W c=1 sm=1 tr=0 ts=6adaa353
+X-Proofpoint-GUID: -yVKV0vH8Hrfoj1Z_mCsq3ZXoCTn1Sj5
+X-Proofpoint-ORIG-GUID: -yVKV0vH8Hrfoj1Z_mCsq3ZXoCTn1Sj5
+X-Authority-Info-Out: v=2.4 cv=SOVPlevH c=1 sm=1 tr=0 ts=6adaa35b
  cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
  a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=p5XUOwc6s_shZ6Vv324A:9
-X-Proofpoint-GUID: s_RQajk0cAED3jfCkRYERVFADkkeq7le
-X-Proofpoint-ORIG-GUID: s_RQajk0cAED3jfCkRYERVFADkkeq7le
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIyMDA5NSBTYWx0ZWRfX6pS3+URRdPs1
- SBGc9lJqrkggs+mVuDtEPPMQsn0cuC04sQJt+oeF0yLhC5xMVJrQQeITe4VhbSk8iLNrOV6D+VM
- +oEtuxExvk/SjvPG1W4JWrl1ozS7DTe57wiRv/mVhvPNNX7JgC20ZPZe4hTeCSTX29fD7nLt9dV
- xz4dbwU1gxhgWVAEqQCOOBGQH5XrB3tkfdRo7RzwJD4f+tQ+eWxKHEKUM8d7hwv+r3U+H//FHbM
- tLoqW+OQAqBJkMMnH54vKuhBmlzqus+gWU3qcVwMbL8rvyAy6NDxtsVgK9FHCqZLra9TIxSFBLo
- 9GSgW52CtUtMzUgeMrUM8yBgcy52brNGg0WWWAJDQo5wot6WlZOqtfDQKiXA2k=
-X-JNJ: AAAAAAAB2NmEXMuJCSPgz7XgTqD/7b/b7Xo+QSzwh4ePoKVxUIVyOIQgvYjNUmoiVCM1Jtluo6t1L2Pr++bqsnN4ekRmZ8D7UGfw5w15TokKeez0Sx+QfL/n49YZ3d1LFtiVe3a92M918nCVTdBbqMYty08PndRu3JNrhWQScW7MOi3+2Z8Zt9lXoMVC2JzzBzdyVZDxKlSK06qPPtFXyv1PA/2qM7FOLTEUE5vtWxK0JNfGwhLqoxI1Y11XZ6uorNP2VAMUCFcFtumzopZeoui0BHen1hs5GwDl7usyM9/jR85Fn4SWcNRNsIb/ImqHwx+smjv4xbt0FIAwLc+E01/0iSNvWznIq5D/w/TVXQTWQaEM2Huk7yRWj0r+HF7+2ZNarNFIheV3aZJwq8mR07w31qpB9HdA587HqDx6C3zb5Ia8fYX5VqNzITgy3Jn7ZEliR4RX/DfvEOE6EwexD825VEIGY7AMwpqD/j8x/KKZLjWfkzJ+JPZYIOPZfarT30tzHe/bVDEibVmNbS9tk3nbkqcBq21TzFVo2PUVyG20JlsNCxdbqYs80QQ+I++cxbuSkylIsztGFhAYWJYKk8EuTp0VINkYapdgO169SFRec6j933oUZyEvzPw7R7G1CFce0nD6OnfduJaVSmdIaa4mEYcu8E9/PpO76D99ktsehLaw0g8nGwKb+ggsr3qSz6rc/zfqQi+FPzRwOCpGOiFBjo4DqJe2AgneiLuXjrMZ0buTPSPSNdvLAaayMr8rQU2GZvUDHtzmZ32O0ZRBLfI/N5D6SH3Y0av7vjUjAbMLYweCBGifPQ==
-Received-SPF: pass client-ip=2a01:b747:3000:202::73;
+ a=loPyruWHUH_f1C729x8A:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIyMDA5NSBTYWx0ZWRfX5Pd+ZtlybILg
+ qfd+lI5uXHw4X7hpPuPCESoynhUYJrc3YA1PlG8Axd1+V7HBnRvxAJc+LstpvPW/+uaWHAGQzt9
+ 6KTRNIjvscMIFD3Z3cfoNL2VLkqh3u0WENADBOw+HSqD4NQvpfzxdXrFk/S32bX9hrXmigaz2jf
+ M4qqgWOGMHhhmt8EwycYV/JH6z6DuyFZHeNFxtZnW1rCgl6dUTgjleborzWB59bztSJxfpz6vLN
+ uJ/Ysgc/WNLJPPjPZYQhvPY+My0QyrObxuGsOBQ6TlmVTXiMDceUjxmRWrO4NAhsQQB7dcljm4y
+ WKrC5PF2zEkskC4ksP0EIyK854m44wbSEcBZcCdzdPwh5ebxrcW+1Js8cy/daE=
+X-JNJ: AAAAAAABMfl3BWxmsc4DLINcjl5L3y0acdf7F8/3IU+ETfPNQMdL2JSaAUO4lnsa4Jf7OswLQbPwrhqrA1jVxfUwTDaHS0IDr8A6la+uKn54XOUCShrU3Xrxo1a8b57BMLwWduy5dv4zPjVEV6+AvGRVP4zp/UdzPSc9qNi9WHvRGtZKF5Qz2+daPMfC/xO8rCOsY4fR8RG2GJ4cuSkZWyfLQ/Vbsbg+/cNiAUFWE1vn5gsx79rIwgD18Dq+af1minzjfwT0kFWKQdQtxkH+kZm9zgzWlB+UO+dE+S8naUd2d4ozAXhVGvKd0GwdHekYW+4M7AqxDgIRSXPIuTlKBu7KfJZEJkJCiT6pWJYbiPP2dOzdPhqtH7dfxJV0MVR2YfqPNEbBpNf7Sk8Q1ugi9CNRkzD0FcZSkAIxRsHuxIWzXWLb3TZOu8tq/WNrn0yxU2PHzptpxGkxCaWKtXIZIoa+9loCRcShx1vpEFxkkc00Bzc4CBmaCYnsFNU5GehOnNvThkF5/xk047SuW/E/rUrI2heNvk8PcYg947YmVgr8NtJcqXy4Y94By6+mAxnQwJcZUpC4BiEqKY5Im2HhJuoRvw39d7DZZ+11ccz0xubZTf+oIZqwPfhAi6c8EXM70k+djCmgcnUKf1zAtc8I5ic6oGa60pQ+TNn3jPIzvHt+GhZuDWYZCeTB9Xg5MxaRNljsy5lrk1CSxWsr7adIy2TEc1QDMkuCJHqxbbi2i/JoyA8xuw6MFHI+p/BkjQUEBAF1j0F4pqRCNSF2OpDcU84zQgsYvqv790Hs8sbYKI8=
+Received-SPF: pass client-ip=2a01:b747:3000:203::48;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,37 +84,46 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On some CPUs too old for Windows 11 (Skylake) support but running
-it anyway, WHP advertises nested virt despite it
-being unavailable.
-
-As such, make failures to initialise nested virt even when advertised
-non-fatal.
+Move WHvResetPartition to where it's effective on multi-core configurations.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ target/arm/whpx/whpx-all.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 408a1667e0..d13513985c 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -3302,9 +3302,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-             &prop,
-             sizeof(WHV_PARTITION_PROPERTY));
-             if (FAILED(hr)) {
--                error_report("WHPX: Failed to enable nested virtualization, hr=%08lx", hr);
--                ret = -EINVAL;
--                goto error;
-+                warn_report("WHPX: Failed to enable nested virtualization, hr=%08lx", hr);
-         }
-     }
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index 46f0b9524e..150a6326d7 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -471,8 +471,6 @@ int whpx_vcpu_run(CPUState *cpu)
+             if (arm_cpu->power_state != PSCI_OFF) {
+                 whpx_psci_cpu_off(arm_cpu);
+             }
+-            /* Partition-wide reset, to reset state for reboots to succeed. */
+-            whp_dispatch.WHvResetPartition(whpx->partition);
+             bql_unlock();
+             break;
+         case WHvRunVpExitReasonNone:
+@@ -573,6 +571,14 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
  
+     assert(cpu_is_stopped(cpu) || qemu_cpu_is_self(cpu));
+ 
++    /* Assumes that cpu_synchronize_all_post_reset() runs cpu 0 first. */
++    if (level == WHPX_LEVEL_RESET_STATE && cpu->cpu_index == 0) {
++        hr = whp_dispatch.WHvResetPartition(whpx->partition);
++        if (FAILED(hr)) {
++            error_report("WHPX: Failed to reset partition, hr=%08lx", hr);
++        }
++    }
++
+     for (i = 0; i < ARRAY_SIZE(whpx_reg_match); i++) {
+         val.Reg64 = *(uint64_t *)((char *)env + whpx_reg_match[i].offset);
+         whpx_set_reg(cpu, whpx_reg_match[i].reg, val);
 -- 
 2.54.0 (Apple Git-157)
 

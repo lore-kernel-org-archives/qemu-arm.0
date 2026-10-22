@@ -1,59 +1,59 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8DD2D606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 11:02:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8C49606A319
+	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 11:02:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=YG8jF+c0
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=GjiyjciJ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xJqUW-0003gS-DG; Thu, 22 Oct 2026 06:57:48 -0400
+	id 1xJqUD-0003O1-IN; Thu, 22 Oct 2026 06:57:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJqUU-0003er-Rd
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:57:46 -0400
+ id 1xJqUB-0003LN-H9
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:57:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xJqUR-0001c6-VQ
- for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:57:46 -0400
+ id 1xJqU9-0001X5-FC
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 06:57:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792666663;
+ s=mimecast20190719; t=1792666644;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3Gu8UrZonIkC3QcH/XvFPyD/Vf39gwyrS2GjjVD5/60=;
- b=YG8jF+c0EsrADcS8d0aCNzbbqDXRPgTbnhHW+KeEDK4/2JevQ6wCAAlO/rcMcaemEAOXoH
- aFrBCEBtUoS07e+gCncjqrPxymsVNurBrpRJ2dWC7TRoFRRY51sgJXkoaCFytRElTSBkab
- mTAq6iMoD+tPa8InrzY1CivqOm+LqBw=
+ bh=8uG857Yw/J+VrWeb5Of7T05X4Hrj8YcyeL79sHPpMTE=;
+ b=GjiyjciJ2Sv6OhDP4+IUby8fjMnqHMTs42085IdiK+6JErtPUepj69D2IUbGUimaf0P30B
+ RODR5VbqNsFMT5FMB3B2dCsu1BrHCk+2ZHzR49M87hie7/nW3YkyDrrACEloHC/No7loAm
+ v2eyUPxq2W/CiCI4ZNOdHNk6D/YT2so=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-103-7X9o_BvQNqG1U8BTVgatPg-1; Thu,
- 22 Oct 2026 06:57:39 -0400
-X-MC-Unique: 7X9o_BvQNqG1U8BTVgatPg-1
-X-Mimecast-MFC-AGG-ID: 7X9o_BvQNqG1U8BTVgatPg_1792666656
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-655-p5aL_ZWBOXatI-4064rRUA-1; Thu,
+ 22 Oct 2026 10:57:15 +0000
+X-MC-Unique: p5aL_ZWBOXatI-4064rRUA-1
+X-Mimecast-MFC-AGG-ID: p5aL_ZWBOXatI-4064rRUA_1792666632
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 47EED1800615; Thu, 22 Oct 2026 10:57:36 +0000 (UTC)
+ id DBBA11800624; Thu, 22 Oct 2026 10:57:11 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 711A25AA; Thu, 22 Oct 2026 10:57:35 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C5D741803A4D; Thu, 22 Oct 2026 10:57:10 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Thu, 22 Oct 2026 14:56:41 +0400
-Subject: [PATCH v3 14/18] target/sparc64: expose system registers to
- monitors via gdbstub
+Date: Thu, 22 Oct 2026 14:56:34 +0400
+Subject: [PATCH v3 07/18] target/i386: fix FPU tag word in GDB register
+ read
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261022-query-reg-v3-14-7ad902b9a7cf@redhat.com>
+Message-Id: <20261022-query-reg-v3-7-7ad902b9a7cf@redhat.com>
 References: <20261022-query-reg-v3-0-7ad902b9a7cf@redhat.com>
 In-Reply-To: <20261022-query-reg-v3-0-7ad902b9a7cf@redhat.com>
 To: qemu-devel@nongnu.org
@@ -76,26 +76,27 @@ Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5421;
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4405;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=OD/4k2nUxQUESsQp2QzTVblTXy1ojM4LkemcaUMfJYc=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq2evmuNM0lVLp3ir2BqQnzwpOjUe6L+dtZNn5q
- BprVn2rINmJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatnr5gAKCRDa6OEJdZac
- 5X4FEACOT6xYHdlgQsgptc7IpHNZfjqcuS+4s9DjOPDj03OzetY2VeyLX9EVv28Ao51lXYlOnKp
- 2xJrnlWNRFtOOqvNRM0F22yf8w6JXfAOfKGexTpONPN0iV0lYsk6Dj94odBewHOKh8SFI5dh9pS
- KEKTsu+23vUt/KfGeS4UgnwizIiB95c7RVZwWPIsXcmxRytDi2amrcqmRUMLbeiNjvYU6RhN1i8
- nV53huzvtQoal+O747uoC1Ev90/0y+pnx1b2he8G5aTxAtgfN59m/zZ5+e9VyWJaM9kEyfogXPi
- 7sRdQ7GmyFtY4cm9sNAfvZcsY+L2z90hURJaDFWwUatYKJpBzGQKSNF0bI/ZfEEWnDRRxfl7zxL
- RjSnw7Z1pgvLLpRRfq0s+MdzvGmOgupY+7ltRuQUyxMrGQQEQxxsLuPcPV5Wm07D8ubz1x4Bfea
- 4zMikPEUMxpva2srrFiOTzY+68tY8gbQpIVFcNn0xkNBLzY3O4YYhcDVqkXcth6EOuVCHTkTSB9
- vioAGdLZJG2zGGQs20e4ybW96ylOQ2BeZQxLwYH5sG1WtJCZxN+SwxD0HfcAYQ64qtR4F7avN8T
- 5vR8Rn6gk6Y8PfBeckECN1DIWtQm+r6Ab9sDCYp/55l+siwlaGSCKMJQW8edhM13SxMRU4nL2z/
- 9Z6cLPRzbTRXLAQ==
+ bh=IM3+x1/S1cR2SCx9Nb2e/xZ/oIp/3k/WeRpDw1xL/D4=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq2evmlRDbgQuQFK16hGbI5Cs9c7c27oI7aalcF
+ rQfokkslcaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatnr5gAKCRDa6OEJdZac
+ 5URbD/4hYlwK8ldW/oR3pvlyrijk3UR+OsnQAUt8DK8xofVF2MY15mQM432xftamXqx00l2Mx36
+ 9ro9blPGzkTT84IId5qWjoitYTxel9HqLEFpkoFmWChxsVORzP96fGP4sNOoRjBbAdm7YaYIyFl
+ hs8JJI4dJqi7GCAT+q258Gaf4LVu6sT+s0GwF3Z1+nvCQ0Tyc9u6gAxHQ9lea0HIb3sEmeOeydi
+ BWLrUulE6CFjoB0ytSUK7otxjSNAbCIvYhofTRUfsOBQ5E0LZFoX0dXxCtnjO2vMJWBUIK7jNPB
+ 21ruDYtbkAnM0POg9taRFJ7Db4Zsd1NWOd32yi3IL64+wl8dOX05pf+7CIdcFakjp+GrWF/Y+Zc
+ FyDVQ/UDiLZPvdAtRm35caX+uafgSrRjg1EAigH6Sa5BLup4AsnLe2VGFxh/NSnA3LuK68owyPm
+ A46/YMHGwpsCm7pruJPXt58hZYGO8a2Qo8sAxdliPd0W0ZnkDwQM7E0T3HPcU4DAPTXHnYZQrCU
+ drkKo8HWlg4aOtsF8KNnbi1tGp91RGNk/GXRVQpbLQeQevcz/FdbmNSqD7y2y1EQxxTDkBgGXnh
+ W87CBbmyrMHQKbf+gpd6LVQmNKmoKBKFa2hXC18I+eP5y7M8Gf/FuIZUW2jEcrj+LEO8KZuuwIu
+ IHfTKFdNtr1YRYA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: pdAAHxSkPbO1ziycxC71o7Xhv21oY3uNC5b1PHWvY0k_1792666656
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: ATPQDKGtZlBQ7rtYKxMXi11NiPWLILG1x6A0uS-U_hQ_1792666632
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -108,7 +109,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.339,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,151 +128,128 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace the HMP-specific MonitorDef with a GDB feature that exposes
-asi, pstate, cansave, canrestore, otherwin, wstate, and cleanwin as
-read-only system registers through the internal GDB coprocessor
-interface.
+The GDB stub was returning a hardcoded 0 for the x87 FPU tag word
+register (ftag). Factor out cpu_compute_fptag() helper. Simplify a
+little bit the code by dropping unnecessary CPU_LDoubleU
+reinterpretation, building the value 0..7, avoiding signed-shifting.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- configs/targets/sparc64-softmmu.mak |  2 +-
- gdbstub/gdb-xml/sparc64-system.xml  | 22 +++++++++++++++++++++
- target/sparc/cpu.c                  | 19 -------------------
- target/sparc/gdbstub.c              | 38 +++++++++++++++++++++++++++++++++++++
- 4 files changed, 61 insertions(+), 20 deletions(-)
+ target/i386/cpu.c            | 28 ++++++++++++++++++++++++++++
+ target/i386/cpu.h            |  9 +++++++++
+ target/i386/gdbstub.c        |  2 +-
+ target/i386/tcg/fpu_helper.c | 24 ++----------------------
+ 4 files changed, 40 insertions(+), 23 deletions(-)
 
-diff --git a/configs/targets/sparc64-softmmu.mak b/configs/targets/sparc64-softmmu.mak
-index 4e621fb8e39e..7f2789136653 100644
---- a/configs/targets/sparc64-softmmu.mak
-+++ b/configs/targets/sparc64-softmmu.mak
-@@ -1,7 +1,7 @@
- TARGET_ARCH=sparc64
- TARGET_BASE_ARCH=sparc
- TARGET_BIG_ENDIAN=y
--TARGET_XML_FILES=sparc64-cpu.xml sparc64-fpu.xml sparc64-cp0.xml
-+TARGET_XML_FILES=sparc64-cpu.xml sparc64-fpu.xml sparc64-cp0.xml sparc64-system.xml
- TARGET_LONG_BITS=64
- TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
- TARGET_NOT_USING_LEGACY_NATIVE_ENDIAN_API=y
-diff --git a/gdbstub/gdb-xml/sparc64-system.xml b/gdbstub/gdb-xml/sparc64-system.xml
-new file mode 100644
-index 000000000000..e00baedb467e
---- /dev/null
-+++ b/gdbstub/gdb-xml/sparc64-system.xml
-@@ -0,0 +1,22 @@
-+<?xml version="1.0"?>
-+<!--
-+  SPDX-License-Identifier: GPL-2.0-or-later
-+-->
-+<!DOCTYPE feature SYSTEM "gdb-target.dtd">
-+<!-- System-register values are read-only; writes are ignored. -->
-+<feature name="org.qemu.gdb.sparc.system">
-+  <reg name="asi" bitsize="32" type="uint32"
-+       group="qemu-debug" save-restore="no"/>
-+  <reg name="pstate" bitsize="32" type="uint32"
-+       group="qemu-debug" save-restore="no"/>
-+  <reg name="cansave" bitsize="32" type="uint32"
-+       group="qemu-debug" save-restore="no"/>
-+  <reg name="canrestore" bitsize="32" type="uint32"
-+       group="qemu-debug" save-restore="no"/>
-+  <reg name="otherwin" bitsize="32" type="uint32"
-+       group="qemu-debug" save-restore="no"/>
-+  <reg name="wstate" bitsize="32" type="uint32"
-+       group="qemu-debug" save-restore="no"/>
-+  <reg name="cleanwin" bitsize="32" type="uint32"
-+       group="qemu-debug" save-restore="no"/>
-+</feature>
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index ae9bdca9df82..89dfb091ca87 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -995,31 +995,12 @@ static const Property sparc_cpu_properties[] = {
- 
- #ifndef CONFIG_USER_ONLY
- 
--#ifdef TARGET_SPARC64
--#include "monitor/hmp.h"
--#ifdef CONFIG_HMP
--static const MonitorDef sparc64_monitor_defs[] = {
--    { "asi", offsetof(CPUSPARCState, asi) },
--    { "pstate", offsetof(CPUSPARCState, pstate) },
--    { "cansave", offsetof(CPUSPARCState, cansave) },
--    { "canrestore", offsetof(CPUSPARCState, canrestore) },
--    { "otherwin", offsetof(CPUSPARCState, otherwin) },
--    { "wstate", offsetof(CPUSPARCState, wstate) },
--    { "cleanwin", offsetof(CPUSPARCState, cleanwin) },
--    { NULL },
--};
--#endif
--#endif
--
- #include "hw/core/sysemu-cpu-ops.h"
- 
- static const struct SysemuCPUOps sparc_sysemu_ops = {
-     .has_work = sparc_cpu_has_work,
-     .get_phys_addr_debug = sparc_cpu_get_phys_addr_debug,
-     .legacy_vmsd = &vmstate_sparc_cpu,
--#if defined(TARGET_SPARC64) && defined(CONFIG_HMP)
--    .monitor_defs = sparc64_monitor_defs,
--#endif
- };
- #endif
- 
-diff --git a/target/sparc/gdbstub.c b/target/sparc/gdbstub.c
-index 2874ce1b3501..c8aa74a4a8b7 100644
---- a/target/sparc/gdbstub.c
-+++ b/target/sparc/gdbstub.c
-@@ -266,6 +266,39 @@ static int sparc_cp0_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- #endif
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 37732b65e408..2f5ea4e51715 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -9372,6 +9372,34 @@ static bool cpuid_has_xsave_feature(CPUX86State *env, const ExtSaveArea *esa)
+     return false;
  }
  
-+#if defined(TARGET_SPARC64) && !defined(CONFIG_USER_ONLY)
-+static int sparc64_gdb_read_system_register(CPUState *cs, GByteArray *buf,
-+                                            int n)
++uint16_t cpu_compute_fptag(CPUX86State *env)
 +{
-+    CPUSPARCState *env = cpu_env(cs);
++    uint16_t fptag = 0;
 +
-+    switch (n) {
-+    case 0:
-+        return gdb_get_reg32(buf, env->asi);
-+    case 1:
-+        return gdb_get_reg32(buf, env->pstate);
-+    case 2:
-+        return gdb_get_reg32(buf, env->cansave);
-+    case 3:
-+        return gdb_get_reg32(buf, env->canrestore);
-+    case 4:
-+        return gdb_get_reg32(buf, env->otherwin);
-+    case 5:
-+        return gdb_get_reg32(buf, env->wstate);
-+    case 6:
-+        return gdb_get_reg32(buf, env->cleanwin);
-+    default:
-+        return 0;
++    for (int i = 0; i < 8; i++) {
++        unsigned tag;
++
++        if (env->fptags[i]) {
++            tag = 3; /* empty */
++        } else {
++            floatx80 f = env->fpregs[i].d;
++            uint16_t exponent = f.high & 0x7fff;
++            uint64_t mantissa = f.low;
++
++            if (exponent == 0 && mantissa == 0) {
++                tag = 1; /* zero */
++            } else if (exponent == 0 || exponent == 0x7fff ||
++                       !(mantissa & (1ULL << 63))) {
++                tag = 2; /* NaNs, infinity, denormal */
++            } else {
++                tag = 0; /* valid */
++            }
++        }
++        fptag |= tag << (2 * i);
 +    }
++    return fptag;
 +}
 +
-+static int sparc64_gdb_write_system_register(CPUState *cs, uint8_t *buf, int n)
-+{
-+    /* These registers are exposed for inspection only. Ignore writes. */
-+    return 4;
-+}
-+#endif
-+
- void sparc_cpu_register_gdb_regs(CPUState *cs)
+ static void x86_cpu_reset_hold(Object *obj, ResetType type)
  {
- #if defined(TARGET_ABI32) || !defined(TARGET_SPARC64)
-@@ -282,5 +315,10 @@ void sparc_cpu_register_gdb_regs(CPUState *cs)
-     gdb_register_coprocessor(cs, sparc_cp0_gdb_read_register,
-                              sparc_cp0_gdb_write_register,
-                              gdb_find_static_feature("sparc64-cp0.xml"));
-+#ifndef CONFIG_USER_ONLY
-+    gdb_register_internal_coprocessor(cs, sparc64_gdb_read_system_register,
-+                                      sparc64_gdb_write_system_register,
-+                                      gdb_find_static_feature("sparc64-system.xml"));
-+#endif
- #endif
+     CPUState *cs = CPU(obj);
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index e7a88074c071..116e28a59701 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2989,6 +2989,15 @@ static inline void cpu_set_mxcsr(CPUX86State *env, uint32_t mxcsr)
+     }
  }
+ 
++/**
++ * cpu_compute_fptag - Compute the full 16-bit x87 FPU tag word.
++ *
++ * Reconstructs the 16-bit tag word from the fpregs and fptags arrays.
++ * Each of the 8 physical registers gets a 2-bit tag in bits [2*i+1 : 2*i]:
++ *   0 = valid, 1 = zero, 2 = special (NaN/Inf/denormal), 3 = empty.
++ */
++uint16_t cpu_compute_fptag(CPUX86State *env);
++
+ static inline void cpu_set_fpuc(CPUX86State *env, uint16_t fpuc)
+ {
+      env->fpuc = fpuc;
+diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
+index c0cde26d978c..420ce845eeae 100644
+--- a/target/i386/gdbstub.c
++++ b/target/i386/gdbstub.c
+@@ -186,7 +186,7 @@ int x86_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+             return gdb_get_reg32(mem_buf, (env->fpus & ~0x3800) |
+                                           (env->fpstt & 0x7) << 11);
+         case IDX_FP_REGS + 10:
+-            return gdb_get_reg32(mem_buf, 0); /* ftag */
++            return gdb_get_reg32(mem_buf, cpu_compute_fptag(env));
+         case IDX_FP_REGS + 11:
+             return gdb_get_reg32(mem_buf, 0); /* fiseg */
+         case IDX_FP_REGS + 12:
+diff --git a/target/i386/tcg/fpu_helper.c b/target/i386/tcg/fpu_helper.c
+index 4bbac996326e..81ae3d8f3d0f 100644
+--- a/target/i386/tcg/fpu_helper.c
++++ b/target/i386/tcg/fpu_helper.c
+@@ -2459,30 +2459,10 @@ void helper_fxam_ST0(CPUX86State *env)
+ static void do_fstenv(X86Access *ac, target_ulong ptr, int data32)
+ {
+     CPUX86State *env = ac->env;
+-    int fpus, fptag, exp, i;
+-    uint64_t mant;
+-    CPU_LDoubleU tmp;
++    int fpus, fptag;
+ 
+     fpus = (env->fpus & ~0x3800) | (env->fpstt & 0x7) << 11;
+-    fptag = 0;
+-    for (i = 7; i >= 0; i--) {
+-        fptag <<= 2;
+-        if (env->fptags[i]) {
+-            fptag |= 3;
+-        } else {
+-            tmp.d = env->fpregs[i].d;
+-            exp = EXPD(tmp);
+-            mant = MANTD(tmp);
+-            if (exp == 0 && mant == 0) {
+-                /* zero */
+-                fptag |= 1;
+-            } else if (exp == 0 || exp == MAXEXPD
+-                       || (mant & (1LL << 63)) == 0) {
+-                /* NaNs, infinity, denormal */
+-                fptag |= 2;
+-            }
+-        }
+-    }
++    fptag = cpu_compute_fptag(env);
+     if (data32) {
+         /* 32 bit */
+         access_stl(ac, ptr, env->fpuc);
 
 -- 
 2.56.0.116.g6de20f6092dc

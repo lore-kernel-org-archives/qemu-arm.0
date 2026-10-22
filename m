@@ -1,79 +1,74 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B85B606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 23:34:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6CB4A606A319
+	for <qemu-arm@archiver.kernel.org>; Thu, 22 Oct 2026 23:59:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=treblig.org header.i=@treblig.org header.a=rsa-sha256 header.s=bytemarkmx header.b=OKFBh8DM
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=ArLLZVK7
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xK2J0-0006IG-9O; Thu, 22 Oct 2026 19:34:42 -0400
+	id 1xK2gk-0002hV-Na; Thu, 22 Oct 2026 19:59:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1xK2Iw-0006HF-Ei; Thu, 22 Oct 2026 19:34:38 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xK2gh-0002fe-Kz
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:11 -0400
+Received: from mr-2003a-snip6-11.eps.apple.com ([2a01:b747:3000:202::b]
+ helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1xK2Iu-0006rg-Ia; Thu, 22 Oct 2026 19:34:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=J+CdFJ+T5/iPYV5+nMs5ZJs/SnS81MtldlylrX1bu+I=; b=OKFBh8DMHVKCF+vF
- khMdazGtsjUU+WyZWSGlDb0YDfMjKGniRXaviZrHeFXYcze/RwL0US+9ljIIBYIh5gjF/bEap2XlV
- cLCfNCgj4sSMlvYsijY3Ky8HLPuNNJF/QnLfmdlpHmfxE2zXefQwjLp6lJRQHReSITymQtdwVXIDz
- RkuiyQkJKDq7J9Co4B/JlyWJW2X7bmfsl33NAocmMK7bwEE7tfKy9Sf4ZtS2xESvR4Y3BeJgag38b
- MQBgO1pJM5E3Lvg/ksND8XbSOsGAoxgiG/DYn/+d4i1qYXhBqh3yWTsrkzFcbww7Ff41JR0eg3E7J
- bMp4LPBOoTNR783LFg==;
-Received: from dg by mx.treblig.org with local (Exim 4.98.2)
- (envelope-from <dg@treblig.org>) id 1xK2Ii-00000001zA1-484R;
- Thu, 22 Oct 2026 23:34:24 +0000
-Date: Thu, 22 Oct 2026 23:34:24 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v3 11/18] target/i386: drop HMP $pc
-Message-ID: <atqdgESEVhYYsz5e@gallifrey>
-References: <20261022-query-reg-v3-0-7ad902b9a7cf@redhat.com>
- <20261022-query-reg-v3-11-7ad902b9a7cf@redhat.com>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xK2ge-00025f-Lx
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2026 19:59:11 -0400
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPS id
+ A81351800267; Thu, 22 Oct 2026 23:59:05 +0000 (UTC)
+X-ICL-RepId: 01a1660d-d78a-7d95-8e78-1bb2f4af0715
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0OWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kAQgpNC1gORQpIDk0AQAVGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1792713546; x=1824249546;
+ bh=5lM3M/27cmxL429SQ6zeAkdGwYl8tz0wXYP78bVYgaU=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=ArLLZVK7FrV9RfxvWnltP+vwmuS/jOcZzd13wodWa5fIqUcrfhs+rLxVjZuMSlehzjkAlkmHzwNo/coL/Bu2e3aluAjEzDzvKq6KDCokrY3dp/dLuzWXfrSChiHD4R7Hxh8SgNt82xQwKMuDCiXDyxGBR/ChUYPeNLLB+9s/aZffdDijMxqSr09bCPFv7a5ZfE0P0aDzt5mt3FlqjMu1R6W3fB2nAmLcVrKfJbhB0eI4D3D5QMpevbEYpeiqOZKRCKQqiX0e7I4uqShdRGfxuXUTtUUN9ONjcrtUr6BuTGwDu+vMFbBI+8Q8fvUDH8Fo7sdh9/kz+/CaKb4/WY9I8A==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.156.200.36])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPSA id
+ BFA3418001F0; Thu, 22 Oct 2026 23:59:03 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Doug Cook <dcook@microsoft.com>
+Subject: [PATCH 01/11] target/i386/whpx: fix VMX capability MSR values
+Date: Fri, 23 Oct 2026 01:58:49 +0200
+Message-ID: <20261022235859.88753-2-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20261022235859.88753-1-mohamed@unpredictable.fr>
+References: <20261022235859.88753-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261022-query-reg-v3-11-7ad902b9a7cf@redhat.com>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.12.113+deb13-amd64 (x86_64)
-X-Uptime: 23:23:42 up 6 days, 8:44, 2 users, load average: 0.01, 0.02, 0.00
-User-Agent: Mutt/2.2.13 (2024-03-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIyMDA5NSBTYWx0ZWRfX3yVSrlAz14ua
+ //EWEm+wrxbR0xl8qc8DCLmRAN1kKe06ZDyPiHa3ecW60tng0/N7Vcf1ducGTpssw7r1Zp8DFX5
+ yoI83GK8xQYyBdrdvqNy0zpVuXpwg+vu33U+Lk75LlDf2xHyl+qxZnpUOhf1rGLq0x2gSsqJXuT
+ DY5ZtT9y4RCChGBbdLr4Z888PbAXOIBuOqHRzWJmV1BomMuMj//K3IwR3O0IRjtnb3gjGQ0X3kS
+ iaYD4VINjACyRDvKTiPxJFPL0OOv2A+D/8UWwQC2LWmvqs7/U1kN24SapWpSL8msjDWyydB+6fZ
+ 9dCRtV4drclVexR4q3Wbjx2IQFN0rdp+4tPnYxmMWYRftcMsZ6mArP/a5E68QM=
+X-Proofpoint-ORIG-GUID: hpVEasEX7C2roEwPkcf-w0jsf46Yj3xN
+X-Proofpoint-GUID: hpVEasEX7C2roEwPkcf-w0jsf46Yj3xN
+X-Authority-Info-Out: v=2.4 cv=DtFbOW/+ c=1 sm=1 tr=0 ts=6adaa34a
+ cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
+ a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=yMhMjlubAAAA:8 a=34rDk-nlojoYW5TMjDsA:9
+X-JNJ: AAAAAAABtHPeT6FE31YMsD94aQTX7RJClXvvCMdEjOYrr9LPD5reDDHa1K2YG24P57+Fp2tJzG8chlJ7RiAdsVh/egitqHoK864caElzQ1RnEUEBdJvx4H+FgyaVar785KXkMJOW60E5wKZtWfx1EH5MhPmuAU/3d+LBOPZJlzsCMRmFXvMImgmxIJzo2gx0h5LiVELct/GokHotgir1h9GlgKe/6BwWs2VLKrV1yGRvIfSpaOzxl2rCQp7JYCyjslksastH1IPCBmFW7gNuM4bJpINv3jUOpNwkKhFpQA+Zkr7PYLHhmPfoGH/IOGzD9zSXv1ADY373pyC23NlGv6BEeqy/MS4yfrSKE9pa36m6jRvuwVHE4/bck8Sfv4a8NRKnN1RpYyggfKLyRuFgMORvxooY66xUnZ1LOwZSXYKcidosm5vvLxuksaNRTndksgVhwU47fqgFhC00iQh0IJkvnxjiPtSv4VymwfOiPYbdZenaX5TNwZJfYVglWgKv4veBZfVlUfHJvP/UD8rs7oTI7auX2FfatTmNxtPFlwC2OV5Cmr86R6Bfb61oQqV7aed/A5zWBVr0drRidQz3ofG4Q0vfJTgIL4cYz0CYFJgWLzPmQ+pfXA2YY9GskzXQ8+VRGFZKtp5bSylwCiSCDyQHoISmSaha5rzU/LBGVtkYYBCaiceS7KY/NgNIktcsn3FGhDB11962rq3E4e1pyEiMMGng2R+dSW/rsUrG6eOaDn1d3KCCZ0Oe6qFKX7hIKo0MpUnA148960bgfqT8KPpo+h6o6LHfwUDUHcS4A7izfgM=
+Received-SPF: pass client-ip=2a01:b747:3000:202::b;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -86,61 +81,90 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-* Marc-André Lureau (marcandre.lureau@redhat.com) wrote:
-> The to be deprecated MonitorDef provided a synthetic $pc alias on
-> x86 (which begin as an $eip alias). Preserving it requires x86-specific
-> semantics (CPUClass::get_pc() omits the historical truncation).
-> Use $eip or $rip instead, adding $cs.base as required.
-> 
-> It was never a documented feature, HMP is not a stable API, x86-only,
-> and the replacement ($rip/$eip + $cs.base) is arguably more correct.
-> Nobody asked for a deprecation window on ML either.
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+From: Doug Cook <dcook@microsoft.com>
 
-<snip>
+whpx_get_supported_msr_feature() had two bugs in how it reports the
+VMX control MSRs:
 
-> diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
-> index a523dbb446ce..b3f8fd58612d 100644
-> --- a/tests/qtest/test-hmp.c
-> +++ b/tests/qtest/test-hmp.c
-> @@ -58,7 +58,6 @@ static const char *hmp_cmds[] = {
->      "object_del mem1",
->      "one-insn-per-tb on",
->      "pmemsave 0 4096 \"/dev/null\"",
-> -    "p $pc + 8",
+- MSR_IA32_VMX_TRUE_PINBASED_CTLS and MSR_IA32_VMX_TRUE_PROCBASED_CTLS
+  were queried using the non-TRUE capability codes
+  (WHvCapabilityCodeVmxPinbasedCtls and WHvCapabilityCodeVmxProcbasedCtls).
 
-That leaves us with no test of the 'p' command, and no test of reading
-a register.
-Given how much you're changing accessing the registers you
-should still have a basic test by the end.
+- For PROCBASED_CTLS2 and the four TRUE_* control MSRs, the raw
+  allowed-0/allowed-1 pair was returned. The feature-word code expects
+  only the bits that may be 1 but are not required to be 1. Apply the
+  same transformation as kvm_arch_get_supported_msr_feature();
+  make_vmx_msr_value() adds the must-be-one bits back afterwards.
 
-How does this test work on S390 where 'info registers' shows
-NIP but 'p $pc' works but 'p $nip' doesn't?
+As a result, with +vmx QEMU treated many VMX features the host does
+support (secondary controls, EPT, VPID, MSR bitmaps, ...) as missing,
+warned about each of them, and dropped them from the CPU model. The
+guest itself reads the VMX MSRs from the hypervisor, not from QEMU,
+so this did not change what the guest saw.
 
-I assume gdb also has some concept of a 'pc' at it's end?
+Signed-off-by: Doug Cook <dcook@microsoft.com>
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/i386/whpx/whpx-all.c | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
 
-Dave
-
-
->      "qom-list /",
->      "qom-set /machine initrd test",
->      "qom-get /machine initrd",
-> 
-> -- 
-> 2.56.0.116.g6de20f6092dc
-> 
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 113f79afb9..1386affa9c 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1452,10 +1452,10 @@ uint64_t whpx_get_supported_msr_feature(uint32_t index)
+         cap = WHvCapabilityCodeVmxEptVpidCap;
+         break;
+     case MSR_IA32_VMX_TRUE_PINBASED_CTLS:
+-        cap = WHvCapabilityCodeVmxPinbasedCtls;
++        cap = WHvCapabilityCodeVmxTruePinbasedCtls;
+         break;
+     case MSR_IA32_VMX_TRUE_PROCBASED_CTLS:
+-        cap = WHvCapabilityCodeVmxProcbasedCtls;
++        cap = WHvCapabilityCodeVmxTrueProcbasedCtls;
+         break;
+     case MSR_IA32_VMX_TRUE_ENTRY_CTLS:
+         cap = WHvCapabilityCodeVmxTrueEntryCtls;
+@@ -1474,6 +1474,31 @@ uint64_t whpx_get_supported_msr_feature(uint32_t index)
+         if (FAILED(hr)) {
+             return 0;
+         }
++
++        switch (index) {
++        case MSR_IA32_VMX_PROCBASED_CTLS2:
++        case MSR_IA32_VMX_TRUE_PINBASED_CTLS:
++        case MSR_IA32_VMX_TRUE_PROCBASED_CTLS:
++        case MSR_IA32_VMX_TRUE_ENTRY_CTLS:
++        case MSR_IA32_VMX_TRUE_EXIT_CTLS: {
++            /*
++             * These MSRs hold the allowed-0 settings in the low half and the
++             * allowed-1 settings in the high half.  QEMU's feature words want
++             * only the bits that can be one but do not have to be one, so
++             * apply the same transformation as
++             * kvm_arch_get_supported_msr_feature(); make_vmx_msr_value()
++             * restores the must-be-one bits later.
++             */
++            uint32_t must_be_one = (uint32_t)val;
++            uint32_t can_be_one = (uint32_t)(val >> 32);
++
++            val = can_be_one & ~must_be_one;
++            break;
++        }
++        default:
++            break;
++        }
++
+         return val;
+     }
+     return 0;
 -- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+2.54.0 (Apple Git-157)
+
 

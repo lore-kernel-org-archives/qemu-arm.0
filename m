@@ -1,101 +1,106 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34D1D606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 20:23:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E498606A328
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 20:26:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=MY+89Xef
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=KI+K+Wq3
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKLnT-0004h6-0K; Fri, 23 Oct 2026 16:23:28 -0400
+	id 1xKLps-0005M0-9n; Fri, 23 Oct 2026 16:25:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xKLnQ-0004gq-KU
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:23:24 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ id 1xKLpp-0005LL-99
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:25:53 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xKLnN-0007n4-Qt
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:23:24 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-868b3248b2cso893731b3a.1
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 13:23:20 -0700 (PDT)
+ id 1xKLpl-000849-4f
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:25:51 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-3adc4590de4so980307a91.2
+ for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 13:25:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792786999; x=1793391799; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792787147; x=1793391947; darn=nongnu.org;
  h=in-reply-to:content-disposition:content-type:mime-version
  :references:message-id:subject:cc:to:from:date:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=TLV4SAWaz5W7aT37JV0K/meGSqPzW/lTHi/yjF0zINw=;
- b=MY+89Xefo3L4vyR1YynTqHpYKXfCDyZfW0CaSX/+MELpo2tQ+C/qUGSh9jhy/pPBPd
- zFDszwxsH1tf8nUOeFJscW8v3/5MUKnOrhsfxpjdyLeeXtmGHIvxm4YYJiGaKP8qN1wR
- y06C1lYsjTZKJyJYQYw2AfQYRSSpM7Y01rcW+1QS4sQr9S6guQkZU1lKH/J9qIuE/ofn
- iDC8GHmlJIArWKZcDJUmL+RGDSzLTpWBlgwXQnQ+Hr8VaHwlXs5sg63xy+nf1TcJWLSl
- iBOpQGHoHIcMMO7aDc6fPt2RPv5w0dZeUqBZNDkQ0iSoWHOKQn9RQ07uxIxBO63H3CP1
- 2nDg==
+ bh=HWEUe7jMIqDdmEz/IUXEovYVrzXcaS1CDzk92S0N4y0=;
+ b=KI+K+Wq3rFz6HLRqD4Cu4FBl5wYivIQuiwcs2dB4nQQnBNBcJ1Z3XtY6Xu0iuYipbT
+ 0YFGtYfrcHvxOLhry5vZJb8ytI5eUT1PXqL7LZYQvh9huy0JchxosyVZnME8TnNIrH1r
+ 4mGeCeDdYiEXlhaJGUr2deddrGDfnmm7SA8TXst7/CCp9FUnNjmolSmk93v6YES9x3HT
+ g67d6FYk4/v1kmKhjyAdwDHLT8adwc72NeCjV00MvtexV9pFqsZDaUGJQMsDZwW45fQx
+ 3Y0i9folvVjuqGuDfpGJ2dRQsVF4yBFzDgeLkxM+T5OpXp2GjL9tzBuABtcXAh1Iu7Jk
+ KqJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792786999; x=1793391799;
+ d=1e100.net; s=20260707; t=1792787147; x=1793391947;
  h=in-reply-to:content-disposition:content-type:mime-version
  :references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=TLV4SAWaz5W7aT37JV0K/meGSqPzW/lTHi/yjF0zINw=;
- b=VCJNffjyjww8p/8eNPhjPLgj3M1G6MWUNxtkoyjZdtkz1W81tpUF9w8IjkyJNFf+Kt
- tC0H2AGynuO+6xKtM2QyAgvVfKO1tDA7hc7BOxGb0lZ+utvNRj5s3pxHfHYN1/dbmztH
- h2oHbneX3y7tR5NOs7cItH0zr/Vdglx4QpekgVspCLqEATDFXjEAnmhpebqs6FEhU3yk
- DHlHT9aOlBN4ThXEG2GJAsUTPUYFyFM1EgeYse1N2CFFqRfkz+DYSaiVSkPkCdVjT0xQ
- jlQ0JcnuDIbYrAgWdXliSvxFHKwh1qc3nxiEXGyurqUnpqJ76x5wBoT8BBbvMIRqyQmB
- pw0A==
+ bh=HWEUe7jMIqDdmEz/IUXEovYVrzXcaS1CDzk92S0N4y0=;
+ b=EyDDtZOmabp7ZP4gGYJULYDCG3ivEBRScZGHT+XQ/YYq+OljOHBPiWTTyaF5beHZ3x
+ hKvujEOUpY62x+VM1rJqE9TKysJGXwxKU98l0tHhg9/wYOEdbcdFE3YRcB4OFofMnzeg
+ CXJWBObaprz/vFC0XB44pF9KNAKh443e+NA5UidKbFmGEBtRTYZJyJ0glh4T9NsBkTmg
+ x453m67teeYYP4hxY8wD20QPRyCZItqx1K/skigbtefBT9Fdq0lfMiAB9tyJA5R2FepB
+ 7hZMGuTqgg5Be5m5z0Yuk/7k+iWmchhlFld6eDHCC3a1QIW288hMkFCK1LTA7O9t6gHr
+ xr1w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzE5TosZ7hZd7aLyRv2PSyNPCQPDzQmwQmDDftO8rev2wy5otLd8ebiw0kjbVX5gCZ/nJfUBLsx0Q==@nongnu.org
-X-Gm-Message-State: AFq9FYLpKa5J6l2JTuzKDhQI+Nd1jpD4CLpnuB+gTQtt9LZD0o4PO9DR
- cJLBHoInHkIfgseV59BmYB6fQtVH+lAgPIG7NkgqFdvonCLltK2J2yPIghT2XULEBPs=
-X-Gm-Gg: AYBFou17NC+NHJnrRgJszcF/mTZju3gXYXWrNk7w18ONT0AdwWgHWTOcgdHV7dFcFbR
- wns8wzIip6PfkkZXK8XFy571RfeOiPMWwnSkdf4tgm9gR342NyjWiUkUstWoBVn/gitI2+g6RED
- B9jvI8nn0QXAaZYaDGZJVWOi3iUdSJ2nd42MSFqnd5GGwiYi5RvAlz4wF6//YEY8LFro/m6Ruqg
- pXkRlZEbCdpKZbiewbOu0l1j5nqnEXzE4qFuej//IDzuBfTpZYow8J0hMqGZjeqWMrf0IxzhOqA
- Vy3EqmISL1IJkJcNW/Ac46zjh1wJby6wa63V0qPWqJCBIGXfbBIulMWeH4BisgJJTetjyZ73Xa9
- xjTsXjGEd7pMLv0APRzrLeyGnpIFZrxxC217gQimqAEQbVh5ewb3h1rzAAXba+PA9mclcpbDGpx
- ShT3VY0JNoecQNnzBF7jk22shd6GG1O7ibN6GuQY7Vv32fl85z1HxB3WkCCKcd/xZxi7PavpyZZ
- QTYcE6sFofkFt8KsoAub7xdnT5Ts1jMXxR1RspsyM0vdkTbZybWGvdvU8w=
-X-Received: by 2002:a05:6a00:428a:b0:89e:848a:fc97 with SMTP id
- d2e1a72fcca58-8a36734fb59mr259645b3a.35.1792786999298; 
- Fri, 23 Oct 2026 13:23:19 -0700 (PDT)
+ AKwUvBzxGuSn1NQo46pnRsd+kZNIDXbc/ONR7SCI+pvHJf2N9GQeNUbThlGKViwaKez+bWg/EhVbpezxPA==@nongnu.org
+X-Gm-Message-State: AFq9FYIdjF53OmYo4EtJzsYyPjEeww1pILh8JPb3+FuIT347kcg4rWRC
+ Uu58/s/5X856dT2z4EBblZooLqsz/rXQxje/N9Vy+vslalfBpaGHGxOL3OoWRDryEaI=
+X-Gm-Gg: AYBFou1CfxVglHTeE8/dEpugS/w5k7En9xuBlBPHxObw+Wrr9jwRyGzT2r0sXq383gT
+ 9+LGAI57MEsegMlUdiGJesnIj1cQaW2sNSYS5t38wDtWmbKOCSa6bdNJFZIWmpjw9qo2FqZPDhe
+ HkgxZ4Is7NtUvncQ9n4SNnJEBKfRDKueI4uEgA5QLgq4925DNGoWX+MOpeK5SOvnWSLK+t22gaA
+ Y0NEtbzc24nHJXXURocHvjru0XsY+e42V8wvGDBhdFbwUBUqVqxevY8Ntf4HEqAUSD0D1YDbfwJ
+ AOoqZcfw2TpVlnRBaDfigwV454rg7FJ0r7/2Vvov3WzNa6oxELfuih3HlvUtqtg7dpiwLhuiFGl
+ i5DiB/SDu+VmtZnrxLWlBZ0fvfTGwOFREwk63T9XLNYOudHuEc5AWTPPK+MucU4e1jGR5MR8AkJ
+ cpvxbEL9O3emgquiwGa6aAZ5kjXrXJez4eT3dlzYA4FAS+TqN12q5YeQYb6JmsYBZYTqiBq69ir
+ MjopBXTgVImOhtRII4SfP8++rloDH+2m8MUrDQSZvTg7VRSaDAtgaFXqoY=
+X-Received: by 2002:a17:90a:d2c7:b0:3ab:5832:727d with SMTP id
+ 98e67ed59e1d1-3adead5d229mr332494a91.35.1792787147293; 
+ Fri, 23 Oct 2026 13:25:47 -0700 (PDT)
 Received: from p14s ([2604:3d09:148c:c800:435b:3f0e:f3fe:d04e])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8a36ada2b41sm99344b3a.14.2026.10.23.13.23.17
+ 98e67ed59e1d1-3adebb0639bsm313704a91.12.2026.10.23.13.25.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2026 13:23:18 -0700 (PDT)
-Date: Fri, 23 Oct 2026 14:23:16 -0600
+ Fri, 23 Oct 2026 13:25:46 -0700 (PDT)
+Date: Fri, 23 Oct 2026 14:25:43 -0600
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Gavin Shan <gshan@redhat.com>
-Cc: berrange@redhat.com, kchamart@redhat.com,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>
+Cc: Gavin Shan <gshan@redhat.com>, berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
  mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
  eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
  enju.kohei@fujitsu.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  kvm@vger.kernel.org
-Subject: Re: [RFC v4 00/24] Add Realm support to QEMU-VMM
-Message-ID: <atvCNKxpCRRSFL58@p14s>
+Subject: Re: [RFC v4 11/24] target/arm/kvm-rme: Populate Realm with runtime
+ images
+Message-ID: <atvCx_Embi4sXAqG@p14s>
 References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <7dea93a6-b119-4882-9c56-557a372b646a@redhat.com>
- <atkokvqTHygpI8dt@p14s>
- <5dba456f-26b4-4f05-9271-fb784736d581@redhat.com>
+ <20260903193611.1058589-12-mathieu.poirier@linaro.org>
+ <3257a387-490f-44bb-bd44-dbe06036fd52@redhat.com>
+ <atiKJ8-PyIHSRTKy@red-moon>
+ <27fe3ba8-c8c8-4d5c-9d57-3cfb67142ac1@redhat.com>
+ <atoe77pJ119cDcSF@red-moon>
+ <ff029f82-07e2-469b-a758-6d27212a9227@redhat.com>
+ <atsFnklBAg73Smes@red-moon>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5dba456f-26b4-4f05-9271-fb784736d581@redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x42d.google.com
+In-Reply-To: <atsFnklBAg73Smes@red-moon>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,245 +112,207 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Oct 23, 2026 at 09:00:12PM +1000, Gavin Shan wrote:
-> Hi Mathieu,
+On Fri, Oct 23, 2026 at 08:58:38AM +0200, Lorenzo Pieralisi wrote:
+> On Fri, Oct 23, 2026 at 09:30:36AM +1000, Gavin Shan wrote:
+> > On 10/23/26 12:34 AM, Lorenzo Pieralisi wrote:
+> > > On Wed, Oct 21, 2026 at 10:24:56PM +1000, Gavin Shan wrote:
+> > > > On 10/21/26 7:47 PM, Lorenzo Pieralisi wrote:
+> > > > > On Fri, Oct 02, 2026 at 01:45:40PM +1000, Gavin Shan wrote:
+> > > > > > On 9/4/26 5:35 AM, Mathieu Poirier wrote:
+> > > > > > > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > > > > > > 
+> > > > > > > Once the Realm descriptor has been created, tell KVM to transfer runtime
+> > > > > > > images (kernel, DT, and rootfs) from guest memory to Realm memory.
+> > > > > > > 
+> > > > > > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > > > > > > Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
+> > > > > > > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+> > > > > > > ---
+> > > > > > >     target/arm/kvm-rme.c | 76 ++++++++++++++++++++++++++++++++++++++++++++
+> > > > > > >     1 file changed, 76 insertions(+)
+> > > > > > > 
+> > > > > > > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+> > > > > > > index 9985f5daba89..c082a5d8f3d1 100644
+> > > > > > > --- a/target/arm/kvm-rme.c
+> > > > > > > +++ b/target/arm/kvm-rme.c
+> > > > > > > @@ -15,6 +15,7 @@
+> > > > > > >     #include "migration/blocker.h"
+> > > > > > >     #include "qapi/error.h"
+> > > > > > >     #include "qemu/error-report.h"
+> > > > > > > +#include "qemu/memalign.h"
+> > > > > > >     #include "qom/object_interfaces.h"
+> > > > > > >     #include "system/confidential-guest-support.h"
+> > > > > > >     #include "system/kvm.h"
+> > > > > > > @@ -43,12 +44,87 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
+> > > > > > >     static RmeGuest *rme_guest;
+> > > > > > > +static int rme_populate_range(const RmeRamRegion *region, bool measure,
+> > > > > > > +                              Error **errp)
+> > > > > > > +{
+> > > > > > > +    int ret;
+> > > > > > > +    void *buffer;
+> > > > > > > +    hwaddr size = region->size;
+> > > > > > > +    hwaddr base = region->base;
+> > > > > > > +    hwaddr start = QEMU_ALIGN_DOWN(base, RME_PAGE_SIZE);
+> > > > > > > +    hwaddr end = QEMU_ALIGN_UP(base + size, RME_PAGE_SIZE);
+> > > > > > > +    struct kvm_arm_rmi_populate populate_args;
+> > > > > > > +    size_t aligned_size = ROUND_UP(region->size, qemu_real_host_page_size());
+> > > > > > 
+> > > > > > s/qemu_real_host_page_size()/RME_PAGE_SIZE
+> > > > > 
+> > > > > It will always have to be qemu_real_host_page_size(), KVM configures it
+> > > > > that way.
+> > > > > 
+> > > > > > > +
+> > > > > > > +    if (!region->data) {
+> > > > > > > +        return -ENODEV;
+> > > > > > > +    }
+> > > > > > > +
+> > > > > > > +    ret = kvm_set_memory_attributes_private(start, end - start);
+> > > > > > > +    if (ret) {
+> > > > > > > +        error_report("RME: failed to configure initial"
+> > > > > > > +                     "private guest memory");
+> > > > > > > +        return ret;
+> > > > > > > +    }
+> > > > > > > +
+> > > > > > > +    /* Allocate page-aligned memory */
+> > > > > > > +    buffer = qemu_memalign(qemu_real_host_page_size(), aligned_size);
+> > > > > > > +
+> > > > > > > +    if (!buffer) {
+> > > > > > > +        return -ENOMEM;
+> > > > > > > +    }
+> > > > > > > +
+> > > > > > > +    memset(buffer, 0, aligned_size);
+> > > > > > > +    memcpy(buffer, region->data, region->size);
+> > > > > > > +
+> > > > > > > +    populate_args = (struct kvm_arm_rmi_populate) {
+> > > > > > > +        .base = start,
+> > > > > > > +        .size = end - start,
+> > > > > > > +        .source_uaddr = (uintptr_t)buffer,
+> > > > > > > +        .flags = measure ? KVM_ARM_RMI_POPULATE_FLAGS_MEASURE : 0,
+> > > > > > > +    };
+> > > > > > > +
+> > > > > > > +    while (populate_args.size > 0) {
+> > > > > > > +        ret = kvm_vm_ioctl(kvm_state, KVM_ARM_RMI_POPULATE, &populate_args, 0);
+> > > > > > > +        if (ret) {
+> > > > > > > +            error_setg_errno(errp, -ret,
+> > > > > > > +                "failed to populate realm [0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
+> > > > > > > +                start, end);
+> > > > > > > +            break;
+> > > > > > > +        }
+> > > > > > > +    }
+> > > > > > > +
+> > > > > > > +    qemu_vfree(buffer);
+> > > > > > > +
+> > > > > > > +    return ret;
+> > > > > > > +}
+> > > > > > > +
+> > > > > > 
+> > > > > > I doubt that the unaligned regions (RmeRamRegion) are allowed. For example,
+> > > > > > the region [4KB 64KB+4KB] is turned to the aligned range [0 128KB] when RME_PAGE_SIZE
+> > > > > > is 64KB. The question is how do we know the added regions due to the alignment
+> > > > > > ([0 4KB] and [64KB+4KB 128KB]) are safe for kvm_vm_ioctl(KVM_ARM_RMI_POPULATE).
+> > > > > 
+> > > > > Getting back to this because it is important. Can you define "safe" here ?
+> > > > > 
+> > > > > I think it is VMM's role to load with the required alignment and make
+> > > > > sure it does not double populate (that is anyway prevented by KVM), what was
+> > > > > your concern here to make sure we are in agreement ?
+> > > > > 
+> > > > 
+> > > > For example, there are two regions are populated: [0 4KB] and [4KB 64KB] on a 64KB
+> > > > host. With the alignment considered, we're populating [0 64KB] for region [0 4KB],
+> > > > and [0 64KB] for [4KB 64KB]. [0 64KB] are populated for twice. Is this allowed by
+> > > > TF-RMM? If it's allowed by TF-RMM, the data populated in the first time is overwritten
+> > > > by the second population.
+> > > 
+> > > It is not allowed by the RMM and it is a VMM bug that we have to prevent.
+> > > 
+> > 
+> > Ok, thanks for your confirm. It's why I asked if we ever see an unaligned
+> > Rom region. If all Rom regions are aligned to host page size, then we needn't
+> > to handle the unaligned Rom regions in rme_populate_range(). Otherwise, we
+> > need come up with a solution to address the issue.
+> > 
+> > The solution would be to generate a temporary region list based on the existing
+> > Rom region list. For each region in the temporary list, its start/size are well
+> > aligned to host page size, and the temporary buffer is allocated, and the data
+> > is properly copied over from the original Rom region. The population is done
+> > based on the temporary list. For example, we need to have [0 64kb], [128kb 192kb]
+> > regions in the temporary list if we have Rom region [0 1kb], [4kb 5kb] [16kb 17kb],
+> > [132kb 133kb], [136kb 140kb]. The host page size is assumed to be 64kb in the example.
+> > 
+> >    [0 64kb] covers [0 1kb], [4kb 5kb] [16kb 17kb]
+> >    [128kb 192kb] covers [132kb 133kb], [136kb 140kb]
 > 
-> On 10/22/26 7:03 AM, Mathieu Poirier wrote:
-> > Hi Gavin,
-> > 
-> > On Mon, Sep 21, 2026 at 02:05:19PM +1000, Gavin Shan wrote:
-> > > Hi Mathieu,
-> > > 
-> > > On 9/4/26 5:35 AM, Mathieu Poirier wrote:
-> > > > This patchset provides minimal functionality to start a Realm VM
-> > > > from an Arm RME capable host using the following command line:
-> > > > 
-> > > > qemu-system-aarch64 \
-> > > >    -M confidential-guest-support=rme0,memory-backend=ram0 \
-> > > >    -object rme-guest,id=rme0,convert-in-place=on \
-> > > >    -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
-> > > >    -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
-> > > > 
-> > > > It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
-> > > > back.  It is compatible with Steven Price's v16 revision [1] of his work adding
-> > > > CCA support to KVM.
-> > > > 
-> > > > This revision is based on Michael Roth's work on guest memfd in-place memory
-> > > > conversion [2], rebased to QEMU master.  I left out the AMD specific changes
-> > > > from Michael's work because I can't test the result.  Other than the
-> > > > modications to the linux headers, this series is identical to V3.
-> > > > 
-> > > > It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
-> > > > here [3], along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
-> > > > with Steven's v16 patchset).  The Repository for the kernel [6] is also
-> > > > available.  Note that for the latter, defines for
-> > > > KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES and KVM_CAP_ARM_RMI have been modified to
-> > > > follow QEMU master.
-> > > > 
-> > > > Instructions to compile and run the entire stack can be found here [7].
-> > > > 
-> > > > Device Assignment is not included.
-> > > > 
-> > > > Thanks,
-> > > > Mathieu
-> > > > 
-> > > > [1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
-> > > > [2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
-> > > > [3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v4?ref_type=heads
-> > > > [4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
-> > > > [5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
-> > > > [6]. https://gitlab.com/Linaro/cca-public/linux/-/tree/upstream-v4?ref_type=heads
-> > > > [7]. https://gitlab.com/Linaro/cca-public/build-instructions
-> > > > 
-> > > 
-> > > Give this series and (v19) arm/cca host series [1] a try, and found the following
-> > > issues. I'm sharing the found issues that I need take chance to look at them
-> > > closely in future.
-> > > 
-> > > [1] https://git.gitlab.arm.com/linux-arm/linux-cca.git  (branch: cca/cca-host/kvm-v19/integration)
-> > > 
-> > > Note that the host is emulated using qemu (TCG mode) via 'virt' platform, using
-> > > the following command lines
-> > > 
-> > > laptop$ /home/gshan/sandbox/cca/host/qemu/build/qemu-system-aarch64                 \
-> > >          -M virt,virtualization=on,secure=on,gic-version=3,acpi=off                  \
-> > >          -cpu max,x-rme=on -m 4G -smp 8                                              \
-> > >          -serial mon:stdio -monitor none -nographic -nodefaults                      \
-> > >          -bios /home/gshan/sandbox/cca/host/tf-a/flash.bin                           \
-> > >          -kernel /home/gshan/sandbox/cca/host/linux/arch/arm64/boot/Image            \
-> > >          -initrd /home/gshan/sandbox/cca/host/buildroot/output/images/rootfs.cpio.xz \
-> > >          -append kvm-arm.mode=rmm                                                    \
-> > >          -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                       \
-> > >          -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                       \
-> > >          -device pcie-root-port,bus=pcie.0,chassis=3,id=pcie.3                       \
-> > >          -device pcie-root-port,bus=pcie.0,chassis=4,id=pcie.4                       \
-> > >          -device virtio-9p-device,fsdev=shr0,mount_tag=shr0                          \
-> > >          -fsdev local,security_model=none,path=/home/gshan/sandbox/cca/guest,id=shr0 \
-> > >          -netdev tap,id=tap1,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown       \
-> > >          -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:80
-> > > 
-> > > The realm VM is started using the following command lines.
-> > > 
-> > > host$ qemu-system-aarch64 -enable-kvm -object rme-guest,id=rme0,convert-in-place=on \
-> > >        -machine virt,gic-version=3,confidential-guest-support=rme0 -m 2G -cpu host   \
-> > >        -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2                  \
-> > >        -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                   \
-> > >        -numa node,nodeid=0,cpus=0-3,memdev=mem0                                      \
-> > >        -serial mon:stdio -monitor none -nographic -nodefaults                        \
-> > >        -kernel /mnt/linux/arch/arm64/boot/Image                                      \
-> > >        -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                           \
-> > >        -append earlycon=pl011,mmio,0x10009000000
-> > > 
-> > > Found issues
-> > > ============
-> > 
-> > I was able to do the same manipulations on my side, but using the SBSA machine
-> > for system emulation, with results as described below:
-> > 
-> 
-> Thanks for double check on your side. Just a head up: I will re-run the broken test
-> cases with (RFCv5) qemu series and share the result. I expect we will have more
-> discussions on those broken test cases under RFCv5 series if you agree. I don't
-> know when I get a chance to try RFCv5 series, but hopefully next week or early
-> of the week after that.
+> That's exactly what needs to be done.
 >
 
-I omitted to mention that I used RFCv5 for my manipulations on SBSA, so I expect
-you'll find the same problems as with RFCv4.  No need to rush to do the test
-since my next revision will _not_ address any of those issues.  For RFCv6 I want
-to concentrate on the other comments you and Kohei made and keep the bigger
-issues (the ones you raised here) for future revision.  That way we make progess
-on this patchset and keep synchronized with the KVM patches Suzuki and Steven
-release.
-
-We can discuss further at the KVM forum if you are there.
-
-> Cheers,
-> Gavin
+That is also what I understood.  My goal is to present this enhancement in
+RFCv6.
+ 
+> Thanks,
+> Lorenzo
 > 
-> > > 
-> > > (1) qemu is terminiated on qmp command 'dump-guest-memory'
-> > > 
-> > > (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
-> > > **
-> > > ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
-> > > Bail out! ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
-> > > 
-> > 
-> > On my side this command causes the Realm to abort, as I expected it to be.
-> > Realm memory should not be observable from the host.  There may be a debug mode
-> > to enable this kind of operation but I will have to look at the documentation
-> > for details.
-> > > (2) qemu emulation can't be stopped and resumed
-> > > 
-> > > (qemu) stop
-> > > (qemu) cont
-> > > Failed to set KVM_REG_ARM_TIMER_CNT
-> > > 
-> > 
-> > That too I was expecting.  Anything that can comprimise a Realm will cause the
-> > HW to abort.  I'll investigate the "Failed to set KVM_REG_ARM_TIMER_CNT" error
-> > message though.
-> > 
-> > > (3) qemu is terminiated on qmp command 'system_reset'
-> > > 
-> > > (qemu) system_reset
-> > > cpus are not resettable, terminating
-> > > 
-> > > (4) 'reboot' from the guest doesn't work
-> > > 
-> > > root@guest:~# reboot
-> > >     :
-> > > Requesting system reboot
-> > > [  123.264893] reboot: Restarting system
-> > > qemu-system-aarch64: cpus are not resettable, terminating
-> > > 
-> > 
-> > I suspect 'system_reset' from the monitor and a 'reboot' from the command line
-> > will, at some point, end up following the same sequence.  I need to think about
-> > the 'reboot' use case further.
-> > 
-> > 
-> > > (5) Incompatible to virtio-iommu-pci. The realm guest doesn't boot up if a virtio-iommu-pci
-> > >      device is specified in the command lines
-> > > 
-> > > host$ qemu-system-aarch64 -enable-kvm                                          \
-> > > -object rme-guest,id=rme0,convert-in-place=on                                  \
-> > > -machine virt,gic-version=3,confidential-guest-support=rme0                    \
-> > > -m 2G -cpu host -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2   \
-> > > -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                    \
-> > > -numa node,nodeid=0,cpus=0-3,memdev=mem0                                       \
-> > > -serial mon:stdio -monitor none -nographic -nodefaults                         \
-> > > -kernel /mnt/linux/arch/arm64/boot/Image                                       \
-> > > -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                            \
-> > > -append earlycon=pl011,mmio,0x10009000000                                      \
-> > > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                          \
-> > > -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                          \
-> > > -device virtio-iommu-pci,bus=pcie.0                                            \
-> > > -drive file=/mnt/disk.qcow2,if=none,id=drive0                                  \
-> > > -device virtio-blk-pci,id=virtblk0,bus=pcie.1,drive=drive0,num-queues=4        \
-> > > -netdev tap,id=tap1,vhost=on,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
-> > > -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:c0
-> > 
-> > 
-> > I added the following to my Realm's boot command parameters:
-> > 
-> > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1 \
-> > -device virtio-iommu-pci,bus=pcie.0 \
-> > 
-> > 
-> > >       :
-> > > [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x000f0510]
-> > > [    0.000000] Linux version 7.2.0-rc5-gavin-gf5098b6bae76 (gshan@nvidia-grace-hopper-01.khw.eng.bos2.dc.redhat.com) (gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4), GNU ld version 2.41-65.el10) #47 SMP PREEMPT Mon Jul 27 02:29:03 EDT 2026
-> > > [    0.000000] KASLR enabled
-> > > [    0.000000] Machine model: linux,dummy-virt
-> > > [    0.000000] earlycon: pl11 at MMIO 0x0000010009000000 (options '')
-> > > [    0.000000] printk: legacy bootconsole [pl11] enabled
-> > > [    0.000000] efi: UEFI not found.
-> > > [    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
-> > > [    0.000000] NODE_DATA(0) allocated [mem 0xbfbecb00-0xbfbf09bf]
-> > > [    0.000000] psci: probing for conduit method from DT.
-> > > [    0.000000] psci: PSCIv1.1 detected in firmware.
-> > > [    0.000000] psci: Using standard PSCI v0.2 function IDs
-> > > [    0.000000] psci: MIGRATE_INFO_TYPE not supported.
-> > > [    0.000000] psci: SMC Calling Convention v1.2
-> > > [    0.000000] RME: Using RSI version 1.0
-> > > [    0.000000] Zone ranges:
-> > > [    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
-> > > [    0.000000]   DMA32    empty
-> > > [    0.000000]   Normal   empty
-> > > [    0.000000] Movable zone start for each node
-> > >       :
-> > > [    6.664423] Serial: AMBA PL011 UART driver
-> > > [    7.151312] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
-> > > [    7.213181] printk: console [ttyAMA0] enabled
-> > > [    8.536454] HugeTLB: registered 1.00 Gi
-> > > <...The realm guest stops here, no output since then...>
-> > > 
-> > 
-> > On my side I get to user space but virtio-serial and virtio-net don't work.  I'm
-> > guessing virtio-iommu-pci does the same thing as this patch [1], but virtio
-> > devices are disrupted because it is not configured properly.  I need to
-> > investigate to find the best approach to follow, i.e implicitly use (and
-> > configure) a virtio-iommu-pci or make sure that [1] and a virtio-iommu-pci
-> > device can play nice together.
-> > 
 > > Thanks,
-> > Mathieu
-> > 
-> > [1]. [RFC v4 21/24] target/arm/kvm-rme: Add DMA remapping for the shared memory region
-> > 
+> > Gavin
 > > 
 > > > Thanks,
-> > > Gavin
+> > > Lorenzo
+> > > 
+> > > > Thanks,
+> > > > Gavin
+> > > > 
+> > > > > Thanks,
+> > > > > Lorenzo
+> > > > > 
+> > > > > > I guess we probably just reject unaligned regions if they're not expected.
+> > > > > > 
+> > > > > > Even if the unaligned regions are allowed, they seem not well handled.
+> > > > > > 
+> > > > > > - @aligned_size is still 64KB instead of the 128KB ?
+> > > > > > - In "memcpy(buffer, region->data, region->size);", the blob data would be copied to
+> > > > > >     [4KB, 4KB+64KB]. However, we're copying the data to [0 64KB] now.
+> > > > > > 
+> > > > > > > +static void rme_populate_ram_region(gpointer data, gpointer err)
+> > > > > > > +{
+> > > > > > > +    Error **errp = err;
+> > > > > > > +    const RmeRamRegion *region = data;
+> > > > > > > +
+> > > > > > > +    if (*errp) {
+> > > > > > > +        return;
+> > > > > > > +    }
+> > > > > > > +
+> > > > > > > +    rme_populate_range(region, /* measure */ true, errp);
+> > > > > > > +}
+> > > > > > > +
+> > > > > > >     static void rme_vm_state_change(void *opaque, bool running, RunState state)
+> > > > > > >     {
+> > > > > > > +    Error *errp = NULL;
+> > > > > > > +
+> > > > > > >         if (!running) {
+> > > > > > >             return;
+> > > > > > >         }
+> > > > > > > +    g_slist_foreach(rme_guest->ram_regions, rme_populate_ram_region, &errp);
+> > > > > > > +    g_slist_free_full(g_steal_pointer(&rme_guest->ram_regions), g_free);
+> > > > > > > +    if (errp) {
+> > > > > > > +        return;
+> > > > > > > +    }
+> > > > > > > +
+> > > > > > >         kvm_mark_guest_state_protected();
+> > > > > > >     }
+> > > > > > 
+> > > > > > Thanks,
+> > > > > > Gavin
+> > > > > > 
+> > > > > 
+> > > > 
 > > > 
 > > 
-> 
 

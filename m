@@ -1,84 +1,93 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E04360A2620
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 15:32:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4C1C1606A31B
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 18:07:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=gQgs8zpK
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Gb29s83S
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKHFN-000771-RD; Fri, 23 Oct 2026 11:31:57 -0400
+	id 1xKJeT-0006mS-TE; Fri, 23 Oct 2026 14:06:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xKHFL-00072H-Km
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 11:31:55 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xKJeM-0006fr-Lq
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 14:05:55 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xKHFJ-0005on-Sk
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 11:31:55 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4a1e3098ee2so11906515e9.3
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 08:31:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xKJeK-0004YY-H8
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 14:05:54 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-48af4d4e61fso743211f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 11:05:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792769512; x=1793374312; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=nq6mGa1U1Jb7hN/w0fwb8Ul5pywvrDXTmWYtbo9ODRY=;
- b=gQgs8zpKFxcAVG9U+HG4XBJF67Yj+ojV+f90IRjJ1Ru/oiJh68Sz4Xk8+Vg2ise6yI
- 3sPU9A278fNwkWKMApf2+aFLTxQS6NSD6etwtUIUW7eh0Vhcppn+zfMVgS3VdjnFdhWU
- 5cbBrCLaxD4gRDgpLbmgrUUJC+Cbe5rzxeEUyzYR8psU7jC4cM5EX2gUC6hypMa8+1bQ
- FSwMeNuPTizzHGapeMr7G8JHKYPJ+RxYPUyUT7NLHzj9e+f7+0l8WAek2JJIrJNVifKD
- dxABMyysVKd/JBPWAp4O6rbYedHuge6z9IWzabMmo2eFRkjzGgftMiJSXUBMd4yTj7iE
- KkfQ==
+ d=linaro.org; s=google; t=1792778751; x=1793383551; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=tIt1MoBw6d47x/eSKHc3IPqV22aXtKNe7+mP07eYspE=;
+ b=Gb29s83S9EQEwAWzmi+jYekUN/sJ9BRTKyGXNk0Fo/csx5ZV2kQtJXYdy3vVzG+cOs
+ tXOYA0jRUF1biJ4BfBe07M4049kQfyw723pw11eQqIpKa+DAzmSC8xucd0EOMnUSF+hU
+ 4IK54RVaKcbqMSNOXRCg16hXcXeQurf9H9gzMYpCk4DKAepjiC/64R7FyRAnFjag6CNU
+ PZdCz96l0nLhziZurxnuXFghr3pIgErEZpvMUl5V5g/lT7BTh+J6bhlqj7Rco7LwmTGU
+ GSXVl4FZpiFyhtaUp9MDULS27SI4hJEeZj8wJhViSDcm49GWi8sh/DOh59Sk72LjdkGZ
+ HFHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792769512; x=1793374312;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=nq6mGa1U1Jb7hN/w0fwb8Ul5pywvrDXTmWYtbo9ODRY=;
- b=Hy4OKeu4/o8S3n8JupppUNPcr1NWxuFkJjOaA78iMJW8QaeKhY9nXZcYD3tkSogQb6
- LwkqQBQ1A3eL0YvLS+o2dKHT5fxlefov+aZOmlHXPDHtKDyO0XtG1F8k0lUPA1K5giUu
- oxawK1g9EtOF5JIEUzatbMYWhsY/aBjBcXHDfW1273Rf5t717fcVAJDEfYsMiH3/jk9M
- ZhaDvHdwFDDTY93xLuf3RbsPnnLTeUK2JZpj3Ek5ptGpopuL6dLdN1YubeaLr3CiJE3+
- +OVJeEUmX0LStjpKH5eWa9LRj+sGXQekFamw1taoDq06rPOG+HhymUsp3jn1wbFgbXfK
- Nv8Q==
-X-Gm-Message-State: AFq9FYIJuHivaEjKuRgNzl3uyIlazxpFmnkzuUHp56FmtExbDwDA6+WM
- 59g24FnH/aSrr6HRIaeFoRdMVts4YmyOkaAnN2bxtFuyxeXB91bqo0CqxG3gJk+WNE7ckwT8xq8
- yFp6zccs=
-X-Gm-Gg: AYBFou3YVp2kq1mE1lYE+BpxpeLxZJUrRxH2ZTTu36dVxtkMOj8sbufSj4y9fZjW7+w
- Oivz8d50lurx/Vzcf161z7mCZHrw+aFmgIiV/PVZkYHcLtyy9vrAccYcuL1p0l3OsOl7Lb0sP88
- W6/wRl2XWtOexhz6RBRqXx2jI0egLI9iTOyxoAqDm2tb0ozW+puEKfQkpdQLZ30oiW3gqai72D2
- Hgurd+z2Q+8BHj4GZP+uMhu3/PEeF4h7hOgK7CKy6j7zwucGZIK5rRCINQE7SOPxBRSPNPPtnkJ
- +irCn6SECUGLcu2wy0JmzicSPxLcyOrOp+jX1G5BpDHtNMD/SExjSlqYNrt3Wl4Zbh+mbs+9kWO
- PcYz3copGauqpn11/UOzmgXB8m8LmL1pldKX5dEn+VcaJKjwJPYyMDQlWFqU1wEoQgqbkVdWPgZ
- dLC2Gb+j/QcEbFE0GPhdXXlqXuy7BNwb5JnSZN52E1BYBwBZmjPlmzxq66BF5h7l6M1QExxlJv6
- BsL0Ycg/+2/bHx/0/W4qzABBDXpSo+O+Aoxy2cBUO1B4DHgnQdBpKnpMqsLbtq0M17eh9O19gXt
- QRTLPHcRUC/O2pwSq8TtCRy7/glq1o/n+Sr/Y3LjQj93MrAdYUvs+jAQgn6p
-X-Received: by 2002:a05:600c:3b18:b0:4a1:ddca:8b66 with SMTP id
- 5b1f17b1804b1-4a211f2bf92mr41367035e9.31.1792769512294; 
- Fri, 23 Oct 2026 08:31:52 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a2b062a277sm12920335e9.7.2026.10.23.08.31.51
+ d=1e100.net; s=20260707; t=1792778751; x=1793383551;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=tIt1MoBw6d47x/eSKHc3IPqV22aXtKNe7+mP07eYspE=;
+ b=p32c8YTaljE0igyTH12RGRVhUlyCa6T1HxGCS3rlnphk4KHJd4SYHRRZm3LnV5/orQ
+ 7m2h2+8j0ciUiCt/pQGwLS2xNNe9AIGjqR0sFyGfzHwSGtI/LJ4l/DE0gkeFCl7gjAvo
+ BAYlocJQKyMUh33JfW89NhZOnOdtMLsjakajoefUnHVYO4JGZDVo62oZeEVkk1CNbtGs
+ OBbyLF+MNlc0LcPWBDGb49h3/nP5xKV4jCYKt3XdVIHWdbLAnd5iiP2IEcFl2XF3CTQq
+ ewj4A9MzSf/cBnIqYfjdE2CP1o6IDKPjH/leplP7ueHn3zdc2FLjV6Zhbz7FC0PP1iEX
+ wt2w==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxyKdnOv8s1Be0mePwPdlEaxNyFToBnugG5Ak99A0BkFSU5hLmDmPOChAqfoJPXFHvTXOm9Xhxflg==@nongnu.org
+X-Gm-Message-State: AFq9FYIC0Y6Gg6N7bb8AOHDzCujZyv0+//q0LjnDoEIc5e/TjX4SoiDb
+ mKSVX2CEa50NeJeCEmPtbkElKLA+hECXDRmBMrXdlkoiGLTbDrJNbhRmb67IKWwDD2Q=
+X-Gm-Gg: AYBFou0qd/jV5+GDt6eVnroAwpo3Dqu9RTBq6HUC/P60jariuUmvZtNv4lOxUoUQSpH
+ tIVBL5fsRTLqUDv42DimUdW/KLDFSsFPKsV7YMp8Zu9T1Yh4BjHbL0mS5CwlQIR1kqmwMKfAjVp
+ wJc6EmIo42Izd6100c119JLAFxSiwCqI48smy/14orsMbKkQUQq16tznREaqmMyVhAmAfTdugB9
+ puCn2Uzuto3D/mASJ/ZHiWxOyD0bWwDw/K/t0p26VbMmncjLSa1I3yso3UKzuT/hcHxBDMq7ync
+ RyNoB0bOPHv5ZegS36A555yUf28mamrAtnm7BVa2fWInnsva6A4KQJFToFvCZlEong8eQJsjTd1
+ NL7jTTZXyFPNA9wpYaBSSStkQDVcP1zmwZa2+tc/DejNNK6kOIQwSEMi8LqPOkffW5u5tZPi8MI
+ Imxw1Ic69PVCzT7zWL15vYaFGBt9oHjUqqX+Bbdt3Fuku6a8ZM3OKNZYJOMJFqxqvyWDM91TkKj
+ hBUL+Su5/ztrjaffvBYGc0Wj4ZhgzmkgE2WbCigdcKQvtYYSh4UVEY=
+X-Received: by 2002:adf:fe8c:0:b0:48e:3085:7cf0 with SMTP id
+ ffacd0b85a97d-48e385a7627mr3657444f8f.51.1792778751031; 
+ Fri, 23 Oct 2026 11:05:51 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e3d37ca2asm1374011f8f.8.2026.10.23.11.05.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2026 08:31:51 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Niek Linnenbank <nieklinnenbank@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH] hw/misc/allwinner-h3-dramc: Avoid shift by negative amount
-Date: Fri, 23 Oct 2026 16:31:50 +0100
-Message-ID: <20261023153150.1710372-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ Fri, 23 Oct 2026 11:05:47 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 2B1D5611FC;
+ Fri, 23 Oct 2026 19:05:41 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-arm@nongnu.org (open list:Virt)
+Subject: [PULL 16/19] tests/functional: add tuxrun kvm gdb test for arm64
+Date: Fri, 23 Oct 2026 19:05:34 +0100
+Message-ID: <20261023180539.1574134-17-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20261023180539.1574134-1-alex.bennee@linaro.org>
+References: <20261023180539.1574134-1-alex.bennee@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,42 +106,62 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-In allwinner_h3_dramc_map_rows(), we take a row_bits count from a
-register, and calculate (1 << (row_bits - 3)).  If the guest programs
-row_bits to less than 3 then this is undefined behaviour.
+As with x86_64 we now have the bits to add a KVM gdb test
 
-Treat overly small row_bits values as "doesn't match actual RAM
-size".
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20261019192704.3220373-17-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Fixes: b71d0385e97e ("hw/arm/allwinner-h3: add SDRAM controller device")
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4210
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/misc/allwinner-h3-dramc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/misc/allwinner-h3-dramc.c b/hw/misc/allwinner-h3-dramc.c
-index 10d929a3039..2a4b33aa182 100644
---- a/hw/misc/allwinner-h3-dramc.c
-+++ b/hw/misc/allwinner-h3-dramc.c
-@@ -78,7 +78,7 @@ static void allwinner_h3_dramc_map_rows(AwH3DramCtlState *s, uint8_t row_bits,
-         }
-     }
+diff --git a/tests/functional/aarch64/test_tuxrun.py b/tests/functional/aarch64/test_tuxrun.py
+index 6de02e1d8b2..2ff321582d3 100755
+--- a/tests/functional/aarch64/test_tuxrun.py
++++ b/tests/functional/aarch64/test_tuxrun.py
+@@ -11,7 +11,7 @@
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
  
--    if (s->ram_size == (1 << (row_bits - 3))) {
-+    if (row_bits >= 3 && s->ram_size == (1 << (row_bits - 3))) {
-         /* When row bits is the expected value, remove the mirror */
-         memory_region_set_enabled(&s->row_mirror_alias, false);
-         trace_allwinner_h3_dramc_rowmirror_disable();
+-from qemu_test import Asset
++from qemu_test import Asset, skipIfMissingEnv
+ from qemu_test.tuxruntest import TuxRunBaselineTest
+ 
+ class TuxRunAarch64Test(TuxRunBaselineTest):
+@@ -19,6 +19,9 @@ class TuxRunAarch64Test(TuxRunBaselineTest):
+     ASSET_ARM64_KERNEL = Asset(
+         'https://storage.tuxboot.com/kernels/6.18.54/arm64/Image.gz',
+         '39f4633bbcb444267d4d829bd28d8868a287c4c160cda64b0fd23fb090571c4e')
++    ASSET_ARM64_VMLINUX = Asset(
++        'https://storage.tuxboot.com/kernels/6.18.54/arm64/vmlinux.xz',
++        '6487eb113ef6e841aedab6cb6fa704006377d68f64dd544570aa42f462a52b85')
+     ASSET_ARM64_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20260924/arm64/rootfs.ext4.zst',
+         '4ab8cec9d1e17dbb1abdf2ae1939ad4f9d0dc2466230f6a119a7c1845cdef0b1')
+@@ -42,6 +45,18 @@ def test_arm64_kvm(self):
+                            rootfs_asset=self.ASSET_ARM64_ROOTFS,
+                            accel="kvm")
+ 
++    @skipIfMissingEnv("QEMU_TEST_GDB")
++    def test_arm64_kvm_gdb(self):
++        self.set_machine('virt')
++        self.require_accelerator('kvm')
++        self.cpu='host'
++        self.console='ttyAMA0'
++        self.wait_for_shutdown=False
++        self.common_tuxrun_gdb(kernel_asset=self.ASSET_ARM64_KERNEL,
++                               vmlinux_asset=self.ASSET_ARM64_VMLINUX,
++                               rootfs_asset=self.ASSET_ARM64_ROOTFS,
++                               accel="kvm")
++
+     ASSET_ARM64BE_KERNEL = Asset(
+         'https://storage.tuxboot.com/buildroot/20241119/arm64be/Image',
+         'fd6af4f16689d17a2c24fe0053cc212edcdf77abdcaf301800b8d38fa9f6e109')
 -- 
-2.43.0
+2.47.3
 
 

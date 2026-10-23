@@ -1,102 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8FCA606A31B
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 12:19:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E625C606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 12:20:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=XfBpWPsh
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=KxC/x3AB
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKEFO-000463-04; Fri, 23 Oct 2026 08:19:46 -0400
+	id 1xKEGE-000511-1b; Fri, 23 Oct 2026 08:20:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xKEEv-00040Y-6l
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:19:17 -0400
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ id 1xKEG6-0004tN-QS
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:20:31 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xKEEs-0002t0-R8
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:19:16 -0400
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-8ac525c1f05so7440517b3.1
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 05:19:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792757953; cv=none;
+ id 1xKEG5-0003Cz-2w
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:20:30 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-8a83d2706fdso7432047b3.0
+ for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 05:20:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792758027; cv=none;
  d=google.com; s=arc-20260327;
- b=XMayMICNefKuj1zxgNax9s1jmB+WBFyJcGjmzUg65EohKtU2T2lOtZF07xBzyHE4HL
- 0ZFpw4C8OhYEakdv60xTuf5ue+tGE4FohYMBZ68H23yCRVLWAxKf4FRFOiMdMX5ahNoz
- ywxvDE+2TD4P5yOePQkvyn0DcDrzdz3rhuTZe3j+LJSlb97pI4j9eVbd4RUc4vIAqNSP
- /Lh1eOuHsUnp/ETh9iwZPzZmumRlo4mAolnoLMP3QzDyhs9cAnwKcHlPidrMJHaJZ9A5
- cJEQnsxESni6hELMuGrHL2K169cfLqyPKQGPATeEv3vs8J5VhVH7934XjD9K0ZmYxyU+
- CvsA==
+ b=BDnSONRrW1CxwsDk3m9I6vQLY7LfCcy6kGVWK8udy70ESADwoi/bnhqq41OE7oxrZx
+ kKcu5wGLsWvg7WkWsRbZDtYjaKrRB7Wd7ftFTDWoCTid1kZKN87Ik1OoaRXkXjlsUiV+
+ lrTT/dXr44sAiK0xnSSDI8c77WbYo9wlXpKX+Be4fqAY2JeaJnJJ9wDF8F52lkbRl88N
+ lZvVex3z2hf2cJe4m+hUwJHvue1+wVL3lFsuV8wsrYIgAoo0MhP32i6qdFvN3vDCqxO2
+ IaK0qUhLv4aEJEx82IhwU/L0d9XDP6M10jyfugokSy6aBhhryk7iIF7tHebJn3HkMgfh
+ jdaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=BoKFBlo2C4S0Vf7Yirj3DM5jMCxYqVeRO33J8URGw8k=;
- fh=x7fCDow1HBn9AJ/igMOOOmrCMBYwsTBqhlba7MESSwk=;
- b=n++YJszli2PimEh5Oz4UOXvcQJK1LWXouHan/xKDeSGXSJ/EZ+8SAlMGhViBYZCFCo
- HgPXrDiRj4k6vMxS/jp6guBbZCqavLv4wtMju2/vvVzSFR4NzhCyKhdRUhOcMl0M4Z78
- 8Xg1jCC++RuzcJK7IsMJDtMFjR72/VAiJt89FT25gviara1cWh/Xq3lBE8uUYm5gX/m4
- IjqnBr+k8BlyJ5mZHrPhVdLDVvZ6QAG0Cb+3lEXF33JitBD4mrl0HCyrTBMukywNQ2OB
- ZJsv3RV3FVwmZwAOYZ9CdjGjsFcJFaRp/LgQ8MetCZ1p0Sj21Z0f4q2oO4mi6COZ5SVe
- vwfg==; darn=nongnu.org
+ bh=VisH/MgOPy1gOs4xUqtHlpe4s/DAlIc1J9+gozYPrFw=;
+ fh=ovdidVGNAmhD3Nj4iYU1N7jCgdRc7+mqaVrd3jHuCcg=;
+ b=NiXrH7gA/uAq8bFHrSkiF3/UnsJya98baTEux+TnSyX9J8cdmHEZL4JL60v5hbz706
+ UbR45IbnNMq9dnZefTI2OJvkG6krOaInvY97bXieix/YiHGiuuZ+adjaEmcgWmpXLfUi
+ ldurY0DDcGwK20GX4CaSeBI7yCmJMU7KnLnT4nOx4C1JWvdpvHjM0s3rrGaz8GGzsIM2
+ QWJeo8QESKONMKjPJr2OfFkfMwhDY0G13qry5GZ1tstcJ4+k24HWc8/ZPAv0EOrKPjhG
+ pj2ZAc4qYRFOiAzR5Jy72Xt5v8By7DA5RaZXhZucTolIdbtwNUgN9/JxShjIFxDy2DQH
+ SqVg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792757953; x=1793362753; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792758027; x=1793362827; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=BoKFBlo2C4S0Vf7Yirj3DM5jMCxYqVeRO33J8URGw8k=;
- b=XfBpWPshTxvVlZcX0WrPh/PMBh6jUItj3Tu/ciFEQ+9gqGVcc7hi5c4SZRsMRy7pyA
- 1TV+FYOjNOHHZxoUP+9XH2kR0bs0l8Z4cELavkqaiB89DiwpviS1LUVwuVHNrBM4nzWV
- yWnSOyG4mCJBkBnGzplNdYcdbk495kdDyFeuIRb4TqROf8ncw3d4xynjiwwrVWpkpC7l
- Nz53cWAErjx6QqNqczJQL8caiAgw8gpFJ2o1DLNBPwZjRH6UnQZGDLAR5Opt0d9oce3V
- fcWrn7DljlfbexYYxf8tExeod5FiCrpTiJCSRIINojMCqFlNaq+7RpmcUZgJLkzC3QYl
- iVNA==
+ :content-type; bh=VisH/MgOPy1gOs4xUqtHlpe4s/DAlIc1J9+gozYPrFw=;
+ b=KxC/x3ABU9DHLcpfsMvW5WFTsPB9a1JzeLCgubpqhF+pSTE2+WGdvrzeXEKTGlmcpb
+ Z7MzFosaQNVm408ldgAiTHV9wshnvRwWBh999NbHew8EjOhQKnj4UxG6y2AzjSESJwEA
+ 5XePYJ0sNiylqgCrtau57q1jIzrTp124uyVrfmNPtinrUZRypjuiL+ENyjlzFkNIInOZ
+ 3uu8qsKN3ruKSYKhsfZNxyfWZateK+UkmG+6F3jtcxOKOSbxtjeVSuL3v4bt3Ug+xzYz
+ oghAzXwsVYTwuooomC7lFpEMLbZ+LxKtnp2F1TnYnER6QMNOWJLwvyR2q3UrhlbMfvwx
+ 5SoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792757953; x=1793362753;
+ d=1e100.net; s=20260707; t=1792758027; x=1793362827;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=BoKFBlo2C4S0Vf7Yirj3DM5jMCxYqVeRO33J8URGw8k=;
- b=mseg3njXm9fab488l30OAOYQr571tUaD4Ip44sHnfQLSBw0ibmEGU6y8/IERfE1A8D
- 6lSiQXA4nevjWfqPWYycUNRSZvROSbDW+rHLtTRae9PO3X/ie4FRmhE9pNJAmtP1LZEp
- tf+dmc6AQ8kThV5lL1BRX8F2X0/w8uDVU4OffqvNFVdLVnbM3vv2wzt74n6ssqBYXmfd
- 5ZSUheUShLr6qrkac7gzGsFwdr0aSwtuVSb7RJkc7D7bFGQ1+byMLZIC9pfnPnfYZC4W
- rUnq+vpXGd57u2yEAt8Net6JDhquk2XtQaut2kDmcQSRen5B2v6bifVpb3FkzTcULBwU
- SZfw==
+ bh=VisH/MgOPy1gOs4xUqtHlpe4s/DAlIc1J9+gozYPrFw=;
+ b=20rawLqDaTRbIiEhi/i8WFyNAcciSuzThkbINVYmiyXtc7pKyXYdamrNxIkInhu29e
+ +RN/nSKrCWnTNNR+liAX52odNPhB7MNZqiGePDkEmElOgpyy63yEMuXRk+YcXvRxysjZ
+ F8tllU7p9E2BFe6AZZNHmgN3PpCnv8pVv23E2tlFOe/EOo+8C8LQzCAxGim7sNjbodvL
+ gj7xeNjWdFv8xJHWE5ezF8vFTo6KAzJjXYRsNSoIUjg11fsJ2dT8iOabNEZTsRorEZT6
+ P638ir6KamTww1bu98hCt/ADJ5SD3Zgot9y/RXAso1DFdSNqbYcOxlt6TCYJB4ImFqtN
+ xYtA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByGDpV/rSJW2peAac9R/XUSeFoBw0gAc74o1hPz1X3fp0VMlKHMe/Y2btLY1KKMFW90hHXFuObjpQ==@nongnu.org
-X-Gm-Message-State: AFq9FYLMeFgGBF14j4G8RhAYlEPwrxXw+ksSGsfJcpMIjRTrcEI6uXgw
- 18JfBcsUl6qh0bmrG5vNzFUS6ZJHMGR05a0frX4YlJfOpbs8rr6pWxtEJn86Pfxqui1ZbBJ794Z
- pUMv0qy3VJD1GScJQslvCHs0tlxoOJf64G6+zR+MN9A==
-X-Gm-Gg: AYBFou0QHVTGk/oxhSkxH5+ldLlj6l46VP0GBn834EzFkcvV2TOorV7xSQo4JmVHe1W
- sEMcxguvDFV7zo2m6E+ZWZKYL7iC6vdbYGBEwc8694f6tSqGplY4b8yYBqBUmp2LiqrGYlVJbjA
- Kcuq7mp+GsZLuIylbxgRWn3gYjYnX48MAz4ilH0YbyYXBjEtcHRJVl2SAfoCW8P4VCBFZfk1/Je
- iIS7TV/Wyxm7E26/UIACbNO1H8M5N+ek8rxOYkgTcwd2N4Q42mxwNl03Pu7J+e/T8II2qvWfeib
- unosBhVAgV9yoohGz0tHQPnlfiBX1F8BE32zRehzodKZ+vnS6OxQ/ouQUKmzbjTse1A5UymekB7
- Qlyy9HUOUwdW/k22dpV91UpxsjKFeXxgaF+0ZAmK/mjLbFLA9WWmdCa13FQGRXgbFA0nayCvt0y
- uz+uS5MOclrmfUsAFs+leQ
-X-Received: by 2002:a05:690c:c355:b0:8a8:8456:a970 with SMTP id
- 00721157ae682-8b157e1b5e9mr12603817b3.68.1792757953091; Fri, 23 Oct 2026
- 05:19:13 -0700 (PDT)
+ AKwUvBwh9dOSklD222SgEZsTvIP2iHQM/cHLzl569K77adAm9xRN8RDIue45z5gH8PhlaCw4iYnqrqaVDw==@nongnu.org
+X-Gm-Message-State: AFq9FYLmrB5S53O0sdibwoPA7n5hQrN3Qk8ooWGey67sceHL8wgJ46Rj
+ XJI5w6mdwOLVRTtSgIJm07XBs/2SR1T4haw/YBw/B+tNqZ2zsLyN8qZ1FN9T8EcNASltv1Ju0WC
+ LcTLG0xCUSx0xZxkYJU4jyyeJMi6BdWnEPdoH47zx6w==
+X-Gm-Gg: AYBFou35P6sxHxCYmnniMmmtbIned90lkBXex9Yencl7ZGr+nWxWueeAmkrJCy1HBZ1
+ TMdbi2bTRYYYk2qzQ34zZSp1icteoj/bgd6H5yBV1q3j2rF0Lw7mlRIKdYiM816uHgyFbgQdghE
+ qJFsO30xgIRn2maWUuzcTHaDDPzamHkgJTWbvK5nqzMjfilnLsRGSu1lPhfwlItR9BGwECzQo1v
+ 5qPThaXhR9BFSpgh3+0j4kOv9r1mvH0w+tYdgvnzz8WNwd+xe3iYXokh+MCJXW14kDhdo0b35nK
+ /lCEA8BNjiEdWuOMfzgX1p9QXJfIWuTLQLNP94viGv74wnyli1/szzFASyLGWmgZEook2w0HmVE
+ zfFLwHwUE1V2PRHijhVw0jInr6+LtjS6V75dqFk6sFeBcosek37ThqRVv7TaoljpuCaR1NLoRvz
+ iq1+n324jme9s1laVg2xP2
+X-Received: by 2002:a05:690c:c50f:b0:8b0:ce9f:2993 with SMTP id
+ 00721157ae682-8b157c709c0mr15122257b3.5.1792758026703; Fri, 23 Oct 2026
+ 05:20:26 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 References: <20261022213647.21665-1-mohamed@unpredictable.fr>
- <20261022213647.21665-3-mohamed@unpredictable.fr>
-In-Reply-To: <20261022213647.21665-3-mohamed@unpredictable.fr>
+ <20261022213647.21665-4-mohamed@unpredictable.fr>
+In-Reply-To: <20261022213647.21665-4-mohamed@unpredictable.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Oct 2026 13:19:01 +0100
-X-Gm-Features: AclHuK8_nx5Lx7TCgjDtTcbwWFcW7Z5f_rLbaTJwa4mNQ6Wdh9GP_xQfG_kj49g
-Message-ID: <CAFEAcA8GicYKBQDACcGzR+baM8Zi49uN+dfhu-GDH9Pgiq8J3g@mail.gmail.com>
-Subject: Re: [PATCH 2/6] target/arm: sync vCPU state after PSCI CPU_ON reset
+Date: Fri, 23 Oct 2026 13:20:14 +0100
+X-Gm-Features: AclHuK_gUlrIYavqGAGJF8KAe0KTrT_YjnkSiPP5zRjveaSLV6lPq3OKJ4pRRuQ
+Message-ID: <CAFEAcA91zAWyYXMFErTdB-Xw+BnJeC7dLp8+Qpq84GnwNcZtzg@mail.gmail.com>
+Subject: Re: [PATCH 3/6] hvf: arm: save/restore SME state only when SME on
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
 Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, Adrien Kohlbecker <adrien.kohlbecker@gmail.com>
+ qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,81 +118,46 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On Thu, 22 Oct 2026 at 22:36, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 >
-> From: Adrien Kohlbecker <adrien.kohlbecker@gmail.com>
+> When SME is disabled as part of the CPU configuration, do not restore SME state.
 >
-> arm_set_cpu_on_async_work() resets the target CPU and sets its entry
-> point and context ID in CPUARMState, but never tells the accelerator
-> that the register state changed. TCG reads CPUARMState directly, and
-> KVM re-pushes state on reset, but HVF only writes CPUARMState back to
-> the hardware vCPU when cpu->vcpu_dirty is set.
-
-My first reaction to "this works on KVM but HVF does something
-differently and it doesn't work" is "so why are we doing things
-differently?".
-
-> A vCPU that reached PSCI_OFF is left clean: its last hv_vcpu_run() exit
-> was a WFI or a cancel, and flush_cpu_state() cleared the flag. A later
-> CPU_ON then resets and re-points only the QEMU-side copy. The vCPU
-> resumes in its old context, with the old MMU state and vector table, and
-> never runs the requested entry point.
->
-> This shows up when a guest that already onlined and offlined its
-> secondary CPUs boots another kernel, for example kexec on Apple Silicon:
-> the new kernel logs "CPUn: failed to come online" for every secondary.
-> Fresh vCPUs are created dirty and single-CPU guests never issue CPU_ON,
-> so the ordinary boot path is unaffected.
->
-> Call cpu_synchronize_post_reset() after resetting the target, in both
-> arm_set_cpu_on_async_work() and arm_set_cpu_on_and_reset_async_work().
-> It is a no-op for TCG.
->
-> Signed-off-by: Adrien Kohlbecker <adrien.kohlbecker@gmail.com>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->  target/arm/arm-powerctl.c | 3 +++
->  1 file changed, 3 insertions(+)
+>  target/arm/hvf/hvf.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-> index ef14a1f8a9..e197a0ebda 100644
-> --- a/target/arm/arm-powerctl.c
-> +++ b/target/arm/arm-powerctl.c
-> @@ -16,6 +16,7 @@
->  #include "qemu/log.h"
->  #include "qemu/main-loop.h"
->  #include "system/tcg.h"
-> +#include "system/hw_accel.h"
->  #include "target/arm/multiprocessing.h"
->  #include "trace.h"
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index b00a7e1a84..df047b5dcc 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -1394,7 +1394,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+>      int i;
 >
-> @@ -80,6 +81,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+>      if (__builtin_available(macOS 15.2, *)) {
+> -        if (hvf_arm_sme2_supported()) {
+> +        if (hvf_arm_sme2_supported() && cpu_isar_feature(aa64_sme, arm_cpu)) {
+>              sregs_match_len += ARRAY_SIZE(hvf_sreg_list_sme2) + 1;
+>          }
 >
->      /* Start the new CPU at the requested address */
->      cpu_set_pc(target_cpu_state, info->entry);
-> +    cpu_synchronize_post_reset(target_cpu_state);
+> @@ -1444,7 +1444,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+>          }
+>      }
+>      if (__builtin_available(macOS 15.2, *)) {
+> -        if (hvf_arm_sme2_supported()) {
+> +        if (hvf_arm_sme2_supported() && cpu_isar_feature(aa64_sme, arm_cpu)) {
+>              for (i = 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
+>                  hv_sys_reg_t hvf_id = hvf_sreg_list_sme2[i].sreg;
+>                  uint64_t kvm_id = HVF_TO_KVMID(hvf_id);
 
-This isn't a CPU reset, so do we really need
-cpu_synchronize_post_reset ?
+Do we need to check both, or at the point where this code is
+called will we already have updated the ID registers to
+not report aa64_sme if the host hvf doesn't have sme2 support?
 
->      g_free(info);
->
-> @@ -189,6 +191,7 @@ static void arm_set_cpu_on_and_reset_async_work(CPUState *target_cpu_state,
->
->      /* Initialize the cpu we are turning on */
->      cpu_reset(target_cpu_state);
-> +    cpu_synchronize_post_reset(target_cpu_state);
-
-I'm not sure whether cpu_synchronize_post_reset() is supposed to be
-"after we just did a full system reset" (the way i386 uses it) or
-also "after we did a single cpu reset" (the way s390 uses it).
-
->      target_cpu_state->halted = 0;
->
->      /* Finally set the power status */
-
+thanks
 -- PMM
 

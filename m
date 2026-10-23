@@ -1,106 +1,130 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E498606A328
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 20:26:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C586F606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 20:46:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=KI+K+Wq3
+	dkim=pass (2048-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=google header.b=OEy6eupq
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKLps-0005M0-9n; Fri, 23 Oct 2026 16:25:57 -0400
+	id 1xKM9L-0007mm-Vv; Fri, 23 Oct 2026 16:46:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xKLpp-0005LL-99
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:25:53 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1xKM8v-0007iz-DS
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:45:38 -0400
+Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xKLpl-000849-4f
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:25:51 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-3adc4590de4so980307a91.2
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 13:25:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1xKM8q-0001VL-SM
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:45:36 -0400
+Received: by mail-dy1-x132f.google.com with SMTP id
+ 5a478bee46e88-35f1f76ea84so2108503eec.1
+ for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 13:45:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792788331; cv=none;
+ d=google.com; s=arc-20260327;
+ b=kZ2b7sB6U86Xz2XNdHtAG1Hc9MdHyciJBLWDdOTWruPiYclGq0q57lTEGGk79zfplm
+ by4mgsqQpKzrpodVV4dOjaRHAqlkICWxgJR86WCGxvvqSScQlzjLn+vHVhLIJ78QWiG6
+ fsmkWhnvHu6A6vAgMJGj4R/uAd35tzNNqPHzyWdkUy2cuw9o+oqBhHVHpP5biBBjC82R
+ MMjsJ2zRI9frTlTyNlqIbHAxmDJ7fyxcVkWyKuVj7Lc57Mwgc8WoeS9/IHPKJ4VH02YI
+ YE5CgXJymYwKR735ptsLqw39YNHLfKfOnLfuYllfdYVrHb3y1JpEWMLPGh+DKmFGgoka
+ 2Zfg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=3wgv4a/torst+KqBEV6aXmXBAE8cRB+9LNTkry3U9CM=;
+ fh=D1jqgBCtpcwtMZPHag5A7cvrXOFcAXDRLqvTBtXNNMg=;
+ b=KYr25RzQWUuXp3upRPcpgV5celdqNCQnrqJzFxFRcNGqyH3thw1z0AtukWiXF9Ual5
+ /zw1l/u/ZKMmkzlpplMrj7aBEedgV/7stTIDW8LxS1mVtKR0jXh5MYwgeml1ZHR5Obgo
+ Rww/ZNMHUCNpWhcCKmBYaTObcZ4yWckLcLizJ4pqR7TV33QFEuT4JiBFq+5wtsqjhpKB
+ PEYUzW2kvcPtPWJd3T/e9tRvuG0N0/8nyLTsH3mncnXh5NPsmq5tmhwR57ikF60eTjB7
+ xKChTUPGqMSOUWMu0bXGpy/AFJbwx6NQTkXUTaNWBzu/x7oL3Fqijg9L3bvuo3++devf
+ LqQw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792787147; x=1793391947; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ d=redhat.com; s=google; t=1792788331; x=1793393131; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=HWEUe7jMIqDdmEz/IUXEovYVrzXcaS1CDzk92S0N4y0=;
- b=KI+K+Wq3rFz6HLRqD4Cu4FBl5wYivIQuiwcs2dB4nQQnBNBcJ1Z3XtY6Xu0iuYipbT
- 0YFGtYfrcHvxOLhry5vZJb8ytI5eUT1PXqL7LZYQvh9huy0JchxosyVZnME8TnNIrH1r
- 4mGeCeDdYiEXlhaJGUr2deddrGDfnmm7SA8TXst7/CCp9FUnNjmolSmk93v6YES9x3HT
- g67d6FYk4/v1kmKhjyAdwDHLT8adwc72NeCjV00MvtexV9pFqsZDaUGJQMsDZwW45fQx
- 3Y0i9folvVjuqGuDfpGJ2dRQsVF4yBFzDgeLkxM+T5OpXp2GjL9tzBuABtcXAh1Iu7Jk
- KqJQ==
+ bh=3wgv4a/torst+KqBEV6aXmXBAE8cRB+9LNTkry3U9CM=;
+ b=OEy6eupqsMzfcQ30DAAJHAe893OauStK4S677S588TvLbLaQ54ZVaSpOEc7Mu2RICx
+ pKAsjyAk2SGULFbhX1GEtoWbw8WZsyWLgxF0mA0AbmzkWB4RJYRZb50rM6BdIrzjjnKS
+ fEEOJ6e1mPrRnwmgXWGCHD3x/qxE8k6mFVr75geNhSR80NvCi33KgbL5nm4gdQgqHjai
+ l1X6yZzEU80uy1CrauUdJtJxQ3IJEK31uAjn7mIAcR9UUf/nDVRX3ry7gfy/tpaKi+J1
+ Pw87RmxNnDXG8TA23hQf36UhG7f+F9bR/UtIOCHT90+P840qFy2asHSsCsNph6uPjbe8
+ dWYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792787147; x=1793391947;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1792788331; x=1793393131;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=HWEUe7jMIqDdmEz/IUXEovYVrzXcaS1CDzk92S0N4y0=;
- b=EyDDtZOmabp7ZP4gGYJULYDCG3ivEBRScZGHT+XQ/YYq+OljOHBPiWTTyaF5beHZ3x
- hKvujEOUpY62x+VM1rJqE9TKysJGXwxKU98l0tHhg9/wYOEdbcdFE3YRcB4OFofMnzeg
- CXJWBObaprz/vFC0XB44pF9KNAKh443e+NA5UidKbFmGEBtRTYZJyJ0glh4T9NsBkTmg
- x453m67teeYYP4hxY8wD20QPRyCZItqx1K/skigbtefBT9Fdq0lfMiAB9tyJA5R2FepB
- 7hZMGuTqgg5Be5m5z0Yuk/7k+iWmchhlFld6eDHCC3a1QIW288hMkFCK1LTA7O9t6gHr
- xr1w==
+ bh=3wgv4a/torst+KqBEV6aXmXBAE8cRB+9LNTkry3U9CM=;
+ b=iBRsYGSVnwRM2Kd4dra15hCfduS1RpEI3XADfrCDVQ7Hsir6aqwOwyYFawX/VdpDHk
+ IvJ31atrMqch7N0gxZTIfIoOTQ6QLTJhQo7BQCOkrF1ka2QC2A7sicMXsIEabhgUprZj
+ XGw2oy64xt1CbxvTsfiwqfcPcK6v9owxwA5QbcLnhvJs3dlYVU8n+jCs4dG0ek3IYiwX
+ tGEL5pZaCk4KgyqmOqcGhj9UjeuE+ec2FF3yHTzlhq4yQm5u7X/tD1P2/zT6Hj8S0Mtk
+ oq6U6fcbhZhqpQpReIPDijJZpg1XapTnp6sG14yI8/Or6OqbW4ASC5OWkTJnLCEpwSIa
+ 5ulQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzxGuSn1NQo46pnRsd+kZNIDXbc/ONR7SCI+pvHJf2N9GQeNUbThlGKViwaKez+bWg/EhVbpezxPA==@nongnu.org
-X-Gm-Message-State: AFq9FYIdjF53OmYo4EtJzsYyPjEeww1pILh8JPb3+FuIT347kcg4rWRC
- Uu58/s/5X856dT2z4EBblZooLqsz/rXQxje/N9Vy+vslalfBpaGHGxOL3OoWRDryEaI=
-X-Gm-Gg: AYBFou1CfxVglHTeE8/dEpugS/w5k7En9xuBlBPHxObw+Wrr9jwRyGzT2r0sXq383gT
- 9+LGAI57MEsegMlUdiGJesnIj1cQaW2sNSYS5t38wDtWmbKOCSa6bdNJFZIWmpjw9qo2FqZPDhe
- HkgxZ4Is7NtUvncQ9n4SNnJEBKfRDKueI4uEgA5QLgq4925DNGoWX+MOpeK5SOvnWSLK+t22gaA
- Y0NEtbzc24nHJXXURocHvjru0XsY+e42V8wvGDBhdFbwUBUqVqxevY8Ntf4HEqAUSD0D1YDbfwJ
- AOoqZcfw2TpVlnRBaDfigwV454rg7FJ0r7/2Vvov3WzNa6oxELfuih3HlvUtqtg7dpiwLhuiFGl
- i5DiB/SDu+VmtZnrxLWlBZ0fvfTGwOFREwk63T9XLNYOudHuEc5AWTPPK+MucU4e1jGR5MR8AkJ
- cpvxbEL9O3emgquiwGa6aAZ5kjXrXJez4eT3dlzYA4FAS+TqN12q5YeQYb6JmsYBZYTqiBq69ir
- MjopBXTgVImOhtRII4SfP8++rloDH+2m8MUrDQSZvTg7VRSaDAtgaFXqoY=
-X-Received: by 2002:a17:90a:d2c7:b0:3ab:5832:727d with SMTP id
- 98e67ed59e1d1-3adead5d229mr332494a91.35.1792787147293; 
- Fri, 23 Oct 2026 13:25:47 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:435b:3f0e:f3fe:d04e])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3adebb0639bsm313704a91.12.2026.10.23.13.25.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2026 13:25:46 -0700 (PDT)
-Date: Fri, 23 Oct 2026 14:25:43 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>
-Cc: Gavin Shan <gshan@redhat.com>, berrange@redhat.com, kchamart@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
- mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
- eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
- enju.kohei@fujitsu.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvm@vger.kernel.org
-Subject: Re: [RFC v4 11/24] target/arm/kvm-rme: Populate Realm with runtime
- images
-Message-ID: <atvCx_Embi4sXAqG@p14s>
-References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <20260903193611.1058589-12-mathieu.poirier@linaro.org>
- <3257a387-490f-44bb-bd44-dbe06036fd52@redhat.com>
- <atiKJ8-PyIHSRTKy@red-moon>
- <27fe3ba8-c8c8-4d5c-9d57-3cfb67142ac1@redhat.com>
- <atoe77pJ119cDcSF@red-moon>
- <ff029f82-07e2-469b-a758-6d27212a9227@redhat.com>
- <atsFnklBAg73Smes@red-moon>
+ AKwUvByDdjNXfoCMXnfKDMPQ7v16FhnVwqd31/38rIoHeTop4H/ia29US8ILm/Y/puLkeOpVbX6RZp59eQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLznbBnA+4HdYNTYFx4tHKDRNrqELcGPYTahM0nIpO76R+GULPY
+ fx62j5mFAktl4eQp7rFB1F2txhM7NyeXhM5pC1DK8fU+v8dRXwcXTVPBUXqtDIRisz0ihPSBxVj
+ cpC5pnNY2r+EH8uh2MMxC9f4vrWdUwHw=
+X-Gm-Gg: AYBFou0vpiEwAcQC5lkYvlFowr1slIFJ+gPDSJS/1czw/8y9ZxDfTBG67LMh6IdOOgy
+ BCXD7oBb5jPjtMYAoTW5BxcXuWIfuOOfkz/gF5H6DSDFuCB4E6yiHsfLrETM0bT95y5+r68ierR
+ zq0yOu0ULsUWAR8sqZD/kkEBlktCHSjk8RSqOr2DnyYMTIPxfNrGNXvLiPvtajDPOWel+lDv4e7
+ BLAQ1tfgJYvH25YOgoD/7qBa7nQCelxxwznli9vturFG50269KuKsfukhLHImcn8DcoIxjlln8n
+ Bk+fkB8V3jbfwp2LrpLp7oVbE4IrXYhZcJPjHJu+/F7BZTfVysp9p9XTKbMxLD1i9QhyO8XkYMC
+ fcKdk9nnCdA1wnWVAmm6eetfgN3oxG6ItuOEDq6cODB00Ecc9Uwc+adu7xMWb7BLwytyT
+X-Received: by 2002:a05:693c:2804:b0:368:40c6:3a01 with SMTP id
+ 5a478bee46e88-369e8362dcbmr586622eec.2.1792788330921; Fri, 23 Oct 2026
+ 13:45:30 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <atsFnklBAg73Smes@red-moon>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+References: <20261022-query-reg-v3-0-7ad902b9a7cf@redhat.com>
+ <20261022-query-reg-v3-11-7ad902b9a7cf@redhat.com>
+ <atqdgESEVhYYsz5e@gallifrey>
+In-Reply-To: <atqdgESEVhYYsz5e@gallifrey>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Sat, 24 Oct 2026 00:45:18 +0400
+X-Gm-Features: AclHuK_Ipiep31aDNKnrUUTrB3mz8eljqFakdlFzfUKaQf9-NiLk5TF7SMOnTC4
+Message-ID: <CAJ+F1CJvkXiBLWrRvWOeG7+qBLOovsZ8xOhoBtxd26CVor=DgQ@mail.gmail.com>
+Subject: Re: [PATCH v3 11/18] target/i386: drop HMP $pc
+To: "Dr. David Alan Gilbert" <dave@treblig.org>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>, 
+ Glenn Miles <milesg@linux.ibm.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Chao Liu <chao.liu@processmission.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132f;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-dy1-x132f.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,207 +136,77 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Oct 23, 2026 at 08:58:38AM +0200, Lorenzo Pieralisi wrote:
-> On Fri, Oct 23, 2026 at 09:30:36AM +1000, Gavin Shan wrote:
-> > On 10/23/26 12:34 AM, Lorenzo Pieralisi wrote:
-> > > On Wed, Oct 21, 2026 at 10:24:56PM +1000, Gavin Shan wrote:
-> > > > On 10/21/26 7:47 PM, Lorenzo Pieralisi wrote:
-> > > > > On Fri, Oct 02, 2026 at 01:45:40PM +1000, Gavin Shan wrote:
-> > > > > > On 9/4/26 5:35 AM, Mathieu Poirier wrote:
-> > > > > > > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > > > > > 
-> > > > > > > Once the Realm descriptor has been created, tell KVM to transfer runtime
-> > > > > > > images (kernel, DT, and rootfs) from guest memory to Realm memory.
-> > > > > > > 
-> > > > > > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > > > > > Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
-> > > > > > > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> > > > > > > ---
-> > > > > > >     target/arm/kvm-rme.c | 76 ++++++++++++++++++++++++++++++++++++++++++++
-> > > > > > >     1 file changed, 76 insertions(+)
-> > > > > > > 
-> > > > > > > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> > > > > > > index 9985f5daba89..c082a5d8f3d1 100644
-> > > > > > > --- a/target/arm/kvm-rme.c
-> > > > > > > +++ b/target/arm/kvm-rme.c
-> > > > > > > @@ -15,6 +15,7 @@
-> > > > > > >     #include "migration/blocker.h"
-> > > > > > >     #include "qapi/error.h"
-> > > > > > >     #include "qemu/error-report.h"
-> > > > > > > +#include "qemu/memalign.h"
-> > > > > > >     #include "qom/object_interfaces.h"
-> > > > > > >     #include "system/confidential-guest-support.h"
-> > > > > > >     #include "system/kvm.h"
-> > > > > > > @@ -43,12 +44,87 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-> > > > > > >     static RmeGuest *rme_guest;
-> > > > > > > +static int rme_populate_range(const RmeRamRegion *region, bool measure,
-> > > > > > > +                              Error **errp)
-> > > > > > > +{
-> > > > > > > +    int ret;
-> > > > > > > +    void *buffer;
-> > > > > > > +    hwaddr size = region->size;
-> > > > > > > +    hwaddr base = region->base;
-> > > > > > > +    hwaddr start = QEMU_ALIGN_DOWN(base, RME_PAGE_SIZE);
-> > > > > > > +    hwaddr end = QEMU_ALIGN_UP(base + size, RME_PAGE_SIZE);
-> > > > > > > +    struct kvm_arm_rmi_populate populate_args;
-> > > > > > > +    size_t aligned_size = ROUND_UP(region->size, qemu_real_host_page_size());
-> > > > > > 
-> > > > > > s/qemu_real_host_page_size()/RME_PAGE_SIZE
-> > > > > 
-> > > > > It will always have to be qemu_real_host_page_size(), KVM configures it
-> > > > > that way.
-> > > > > 
-> > > > > > > +
-> > > > > > > +    if (!region->data) {
-> > > > > > > +        return -ENODEV;
-> > > > > > > +    }
-> > > > > > > +
-> > > > > > > +    ret = kvm_set_memory_attributes_private(start, end - start);
-> > > > > > > +    if (ret) {
-> > > > > > > +        error_report("RME: failed to configure initial"
-> > > > > > > +                     "private guest memory");
-> > > > > > > +        return ret;
-> > > > > > > +    }
-> > > > > > > +
-> > > > > > > +    /* Allocate page-aligned memory */
-> > > > > > > +    buffer = qemu_memalign(qemu_real_host_page_size(), aligned_size);
-> > > > > > > +
-> > > > > > > +    if (!buffer) {
-> > > > > > > +        return -ENOMEM;
-> > > > > > > +    }
-> > > > > > > +
-> > > > > > > +    memset(buffer, 0, aligned_size);
-> > > > > > > +    memcpy(buffer, region->data, region->size);
-> > > > > > > +
-> > > > > > > +    populate_args = (struct kvm_arm_rmi_populate) {
-> > > > > > > +        .base = start,
-> > > > > > > +        .size = end - start,
-> > > > > > > +        .source_uaddr = (uintptr_t)buffer,
-> > > > > > > +        .flags = measure ? KVM_ARM_RMI_POPULATE_FLAGS_MEASURE : 0,
-> > > > > > > +    };
-> > > > > > > +
-> > > > > > > +    while (populate_args.size > 0) {
-> > > > > > > +        ret = kvm_vm_ioctl(kvm_state, KVM_ARM_RMI_POPULATE, &populate_args, 0);
-> > > > > > > +        if (ret) {
-> > > > > > > +            error_setg_errno(errp, -ret,
-> > > > > > > +                "failed to populate realm [0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
-> > > > > > > +                start, end);
-> > > > > > > +            break;
-> > > > > > > +        }
-> > > > > > > +    }
-> > > > > > > +
-> > > > > > > +    qemu_vfree(buffer);
-> > > > > > > +
-> > > > > > > +    return ret;
-> > > > > > > +}
-> > > > > > > +
-> > > > > > 
-> > > > > > I doubt that the unaligned regions (RmeRamRegion) are allowed. For example,
-> > > > > > the region [4KB 64KB+4KB] is turned to the aligned range [0 128KB] when RME_PAGE_SIZE
-> > > > > > is 64KB. The question is how do we know the added regions due to the alignment
-> > > > > > ([0 4KB] and [64KB+4KB 128KB]) are safe for kvm_vm_ioctl(KVM_ARM_RMI_POPULATE).
-> > > > > 
-> > > > > Getting back to this because it is important. Can you define "safe" here ?
-> > > > > 
-> > > > > I think it is VMM's role to load with the required alignment and make
-> > > > > sure it does not double populate (that is anyway prevented by KVM), what was
-> > > > > your concern here to make sure we are in agreement ?
-> > > > > 
-> > > > 
-> > > > For example, there are two regions are populated: [0 4KB] and [4KB 64KB] on a 64KB
-> > > > host. With the alignment considered, we're populating [0 64KB] for region [0 4KB],
-> > > > and [0 64KB] for [4KB 64KB]. [0 64KB] are populated for twice. Is this allowed by
-> > > > TF-RMM? If it's allowed by TF-RMM, the data populated in the first time is overwritten
-> > > > by the second population.
-> > > 
-> > > It is not allowed by the RMM and it is a VMM bug that we have to prevent.
-> > > 
-> > 
-> > Ok, thanks for your confirm. It's why I asked if we ever see an unaligned
-> > Rom region. If all Rom regions are aligned to host page size, then we needn't
-> > to handle the unaligned Rom regions in rme_populate_range(). Otherwise, we
-> > need come up with a solution to address the issue.
-> > 
-> > The solution would be to generate a temporary region list based on the existing
-> > Rom region list. For each region in the temporary list, its start/size are well
-> > aligned to host page size, and the temporary buffer is allocated, and the data
-> > is properly copied over from the original Rom region. The population is done
-> > based on the temporary list. For example, we need to have [0 64kb], [128kb 192kb]
-> > regions in the temporary list if we have Rom region [0 1kb], [4kb 5kb] [16kb 17kb],
-> > [132kb 133kb], [136kb 140kb]. The host page size is assumed to be 64kb in the example.
-> > 
-> >    [0 64kb] covers [0 1kb], [4kb 5kb] [16kb 17kb]
-> >    [128kb 192kb] covers [132kb 133kb], [136kb 140kb]
-> 
-> That's exactly what needs to be done.
->
+Hi
 
-That is also what I understood.  My goal is to present this enhancement in
-RFCv6.
- 
-> Thanks,
-> Lorenzo
-> 
-> > Thanks,
-> > Gavin
-> > 
-> > > Thanks,
-> > > Lorenzo
-> > > 
-> > > > Thanks,
-> > > > Gavin
-> > > > 
-> > > > > Thanks,
-> > > > > Lorenzo
-> > > > > 
-> > > > > > I guess we probably just reject unaligned regions if they're not expected.
-> > > > > > 
-> > > > > > Even if the unaligned regions are allowed, they seem not well handled.
-> > > > > > 
-> > > > > > - @aligned_size is still 64KB instead of the 128KB ?
-> > > > > > - In "memcpy(buffer, region->data, region->size);", the blob data would be copied to
-> > > > > >     [4KB, 4KB+64KB]. However, we're copying the data to [0 64KB] now.
-> > > > > > 
-> > > > > > > +static void rme_populate_ram_region(gpointer data, gpointer err)
-> > > > > > > +{
-> > > > > > > +    Error **errp = err;
-> > > > > > > +    const RmeRamRegion *region = data;
-> > > > > > > +
-> > > > > > > +    if (*errp) {
-> > > > > > > +        return;
-> > > > > > > +    }
-> > > > > > > +
-> > > > > > > +    rme_populate_range(region, /* measure */ true, errp);
-> > > > > > > +}
-> > > > > > > +
-> > > > > > >     static void rme_vm_state_change(void *opaque, bool running, RunState state)
-> > > > > > >     {
-> > > > > > > +    Error *errp = NULL;
-> > > > > > > +
-> > > > > > >         if (!running) {
-> > > > > > >             return;
-> > > > > > >         }
-> > > > > > > +    g_slist_foreach(rme_guest->ram_regions, rme_populate_ram_region, &errp);
-> > > > > > > +    g_slist_free_full(g_steal_pointer(&rme_guest->ram_regions), g_free);
-> > > > > > > +    if (errp) {
-> > > > > > > +        return;
-> > > > > > > +    }
-> > > > > > > +
-> > > > > > >         kvm_mark_guest_state_protected();
-> > > > > > >     }
-> > > > > > 
-> > > > > > Thanks,
-> > > > > > Gavin
-> > > > > > 
-> > > > > 
-> > > > 
-> > > 
-> > 
+On Fri, Oct 23, 2026 at 3:35=E2=80=AFAM Dr. David Alan Gilbert <dave@trebli=
+g.org> wrote:
+>
+> * Marc-Andr=C3=A9 Lureau (marcandre.lureau@redhat.com) wrote:
+> > The to be deprecated MonitorDef provided a synthetic $pc alias on
+> > x86 (which begin as an $eip alias). Preserving it requires x86-specific
+> > semantics (CPUClass::get_pc() omits the historical truncation).
+> > Use $eip or $rip instead, adding $cs.base as required.
+> >
+> > It was never a documented feature, HMP is not a stable API, x86-only,
+> > and the replacement ($rip/$eip + $cs.base) is arguably more correct.
+> > Nobody asked for a deprecation window on ML either.
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> <snip>
+>
+> > diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
+> > index a523dbb446ce..b3f8fd58612d 100644
+> > --- a/tests/qtest/test-hmp.c
+> > +++ b/tests/qtest/test-hmp.c
+> > @@ -58,7 +58,6 @@ static const char *hmp_cmds[] =3D {
+> >      "object_del mem1",
+> >      "one-insn-per-tb on",
+> >      "pmemsave 0 4096 \"/dev/null\"",
+> > -    "p $pc + 8",
+>
+> That leaves us with no test of the 'p' command, and no test of reading
+> a register.
+> Given how much you're changing accessing the registers you
+> should still have a basic test by the end.
+
+The existing test doesn't really do much though, it just checks we
+don't crash basically. I can try addressing this as a followup
+
+>
+> How does this test work on S390 where 'info registers' shows
+> NIP but 'p $pc' works but 'p $nip' doesn't?
+
+I assume you are talking about gdb, since $pc doesn't work with HMP-S390.
+
+>
+> I assume gdb also has some concept of a 'pc' at it's end?
+
+GDB has extra synthetic pseudo-registers. We have a bunch in QEMU (and
+this series add more). We can add extra as necessary. But $pc for x86
+is currently ill-defined, so we decided to drop it earlier.
+
+> Dave
+>
+>
+> >      "qom-list /",
+> >      "qom-set /machine initrd test",
+> >      "qom-get /machine initrd",
+> >
+> > --
+> > 2.56.0.116.g6de20f6092dc
+> >
+> --
+>  -----Open up your eyes, open up your mind, open up your code -------
+> / Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \
+> \        dave @ treblig.org |                               | In Hex /
+>  \ _________________________|_____ http://www.treblig.org   |_______/
+>
 

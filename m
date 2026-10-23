@@ -1,90 +1,93 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 002B5606A31B
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 13:59:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3A39A606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 13:59:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=W5XTTPl3
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=UBIbuNCk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKFnw-0000hP-TZ; Fri, 23 Oct 2026 09:59:34 -0400
+	id 1xKFo1-0000mV-1S; Fri, 23 Oct 2026 09:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xKFnu-0000gG-IA
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 09:59:30 -0400
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
+ id 1xKFnw-0000h7-Ek
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 09:59:32 -0400
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1xKFns-0004nO-8W
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 09:59:30 -0400
-Received: by mail-qt1-x835.google.com with SMTP id
- d75a77b69052e-536717a4d83so7566761cf.2
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 06:59:26 -0700 (PDT)
+ id 1xKFns-0004nd-8W
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 09:59:31 -0400
+Received: by mail-qk1-x731.google.com with SMTP id
+ af79cd13be357-93efc0452b5so60649685a.0
+ for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 06:59:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792763966; x=1793368766; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=hNSYRG3EQryGgDSjSSfogQ2REZqQlzejpzSjqnuA5HY=;
- b=W5XTTPl3POSsoM5BVS4GXn2Yuq2tVDH/hPMdWIsmxxVEN1CMTZbAlNoVtZuMd6g9R2
- huQG6Kq0Lf3PV9AuQGUUnOtFfny6BxRHy9bxJ2VFNvbUKu46+7eL9+abo+BBmMIAYpXl
- ZoMgwqXrh7h2p3CMZlJ4v0pqmpjfGdc06jCW/BcGpasNX+kjxRvWk1EbSG34aueEQ657
- PZKflXqLNqGLhtrWfPYrh3AQBOhvCyl/HNPFRJaPXK/9SfasgNXlCGWAT1oTH0mEIekp
- GUo1zNUUxvbC90CJK2wWuHylA+glTkU40OVCmDEmYXkchWSNT5CsjLJgb9rdXifaQ4Vz
- M8Mw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792763966; x=1793368766;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1792763967; x=1793368767; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
  bh=hNSYRG3EQryGgDSjSSfogQ2REZqQlzejpzSjqnuA5HY=;
- b=J8TjJIzh337GMzwcNOhxuwtXTnUppbNSGOg4M69DPBtyGgcyHM7OOTEk31QNXLq/i1
- ELUgEimwJVcxWPjdyQUtUzhjCopH6MYFook/pvz4mearMulQAB2iyX4Qbusb0Kp/bKR6
- u3uwVLAnNjmP5+jzkS2lCXI/kmukZ4n8tQG2Z4I3rQEVx2rXXNA8TJjm/yfrHFkgCFDo
- B5ejGrVmCj1q7tBezg3Q8D6tgrW0Z0nw02N+4HhwIOXc7K+Rei4Bjryjf9LzsyGSLCtI
- 9zExOPo+NUqJKar4AQWHt4mgaOcNqYcyUcITD4Vkr5hb7hYaQSTNN7VVzm2Edmf21mkE
- +MNg==
-X-Gm-Message-State: AFq9FYJ/xRTVgLgFRijvsQ30u4fDCpXzT8nBDQLL67nrSsfMH4pzjtCL
- zb0aoxOgAF1uW4ndCIoHCWST906BUhZmSM9QzRmrbX1KNgbJwB6fQens
-X-Gm-Gg: AYBFou3NQyYba1uyXELFb+2h7JaSzqUDUhSsvHI985PhzU+2UUCuZyDwsuh1cs1icx/
- oYihHjEthJ7SosZMdvnwOud3bOKhEtM0Dj+WLqcS1WkjM1rY2Iv8cM2axh3xT4Mi0XmNAZh/4DF
- J4zWFxAEcJFTEEItOhFsTnNWroRh1iZhl2PDGrmnK39KPAiCO3wQwekZxBy31NpGaF+QxkUoXNG
- 64TBWsMJegvSjNe9rknrLgjLEGxRKyDZa2twe+dUbmqlxn3DhlpbaZB3bimNOmpA+LC+aS3wI8z
- yvsIdpp8HlOgskxpHNOowbRVwqC1mgbtyS1vNkq2TMxzg0n6Q6LtBldiURF+RpHqJAShBcMXXDK
- vZoHSVht8M/kULNqPD5oWevRNNG/XFyH+cdDVjlRQnwc0Q9DNHbOcj36JfWUsYyWBDY1ErydeQA
- Qyx5yk0rg6YMsg8rv3QYRm1oSUgJ6sN0V3EhbGTQMOUJJhNWYBeNtCUh/nP23X0nYHGAiEvx6b6
- pCwG9tcUAZ4qDrkVpqdfeZh1AXKOR9Pfpq1iq3P93vvyfkV4lzEB04uJatBW07dW7cnF/8fuaxh
- sOqS+VZ7Kf9k3ofQrBKSIPXJ5+09fdbsjlq8C9gX/CZCSua4oUCC
-X-Received: by 2002:a05:620a:198f:b0:93b:d7a3:45d4 with SMTP id
- af79cd13be357-93f6f886656mr446019285a.61.1792763965883; 
- Fri, 23 Oct 2026 06:59:25 -0700 (PDT)
+ b=UBIbuNCksrfiIyxszaKJEmECdBbtzf7GFiOhzkvUGWtgdGlG8/9XapKbElVsCu3KJ3
+ obvGHvQ0vXB0wNjMhUgGMeCS38O7iQxL+YdHfrW1WXMpy/ue9HAGiBz05xRMZ1d9pnOw
+ Abnh762uPuUThAuAiuFClE+l5dv1xgGTvlaHYshIMvkw06/0z4ZE4IYKcyQF46dWh7NE
+ LKYmXwP5KDkdPkEPIFwawFR9z67yIL2+teqQqwehuJlPDh6lfYjP1BLaccPRAHTIk6R0
+ 6GjLz1GzROSpDpdoWzVQjX8mXfp7OS0UUFXXIOn3ITWy7pjnBFPo+FBaxJAXvEKO3i3R
+ d8Kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792763967; x=1793368767;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=hNSYRG3EQryGgDSjSSfogQ2REZqQlzejpzSjqnuA5HY=;
+ b=VNu1G3xrrYeVMcSomLGQwsSCvDt0ZGCJSsya9691PC+eUOPtUIkPGQectmttuZ4UL3
+ tnEtwZ09+e/f9N5IHGnowcE6vORkpB8HRE1btIIaSSi3vBpzU1KF873YvPNREeqwIXTV
+ XysAnih+X4LGrTgR5w9OPfqZsQEDsbtpwp8nuBkRZMEjzJQB+cKzhF9aRxe00NWdrdGi
+ uPjk1wI54xmmBJMfclNKPiwdCdPC15umNbyr1P+0Cxe2oI3xCBjVP/9VOF4gVATresUZ
+ hCrnZVKvysL9U+hQuaK2zbyPdqwMy1yFEc1bLQm8UP7D0Z5QPRrSKHVe0VsXwGNIcK2s
+ oGZw==
+X-Gm-Message-State: AFq9FYLl9h7EjimjdhJ7+LmiYbFkKqCDeILFeoXOV5uqyTp6LVPcSDdp
+ m1j7mFuBXxp7PVzKdc/P2JVx0XwffJsjuOxQ27Y+NffgmB3UOX/EOfW8
+X-Gm-Gg: AYBFou2Ge/DnADBl2KXvLn3C4JPLIzJP1xFI8tkHTQd6K0xI0Xad/EBdxCAgZojCxNO
+ 0YlVIr/o13VD3cSFPecUaRX16NoLYfxKHhb+Vb5ceiYoP9ghB8F+Tw/HmEfajCcB1Dn4v/JkK0j
+ qKER0WZVK9OSvLALq5hVUxco3pB0H0NQRpkpSfKg7Y8D/g6sJLae6niIMflk4/18pbml0i6/V4u
+ OsM2g4DkkX3ODJPzhKmtGMiptLXPrJrq6YShZI99u5xVoiu3UwSA0sexgE0O/Jyt0wQ2BeyQvPJ
+ 8C4wqCgSvvMBXCxfvruSj9VhGypOzgM8RrHE7BkvjN5HzpJ3bk330ugxQiO/lIEfhSdA7m0KMnt
+ ZvPgGvmwH3JVNhg5TXwxkFCuJL/yRiWOtWjME0XqPaW5quB+tdie8HSjfE4azO11aQ1R5RzWNQ0
+ XM4rJaoqtSfn59xMQj49TDMeMn8mr2IG/O2/dIzzsVeaKFK8awYbxzEbn/v1/C3u1MEzaJ2kZBM
+ ILVkriKS0ORYO3SxfzBQtHtA/BCblxfMoel1CNPNsKTMwrXSl7jhIOQTlJutHxGB3MbLf2YBkFe
+ qBT7KFErzAUysDuNkeL8FOCr7J3ZTP/Suqd5VivGdkTCpSum99e6
+X-Received: by 2002:a05:620a:4042:b0:93a:48a:167 with SMTP id
+ af79cd13be357-93f6f94e2afmr407899585a.39.1792763966800; 
+ Fri, 23 Oct 2026 06:59:26 -0700 (PDT)
 Received: from localhost.localdomain ([2606:6d00:159:2900:450e:e72b:156b:33d1])
  by smtp.gmail.com with ESMTPSA id
- af79cd13be357-94047811552sm23741285a.18.2026.10.23.06.59.25
+ af79cd13be357-94047811552sm23741285a.18.2026.10.23.06.59.26
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 23 Oct 2026 06:59:25 -0700 (PDT)
+ Fri, 23 Oct 2026 06:59:26 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, philmd@oss.qualcomm.com,
  Marcelo Manzo <marcelomanzo@gmail.com>
 Subject: [PATCH v5 00/16] hw/arm/raspi4b: working PCIe and GENET (real
  networking)
-Date: Fri, 23 Oct 2026 09:59:07 -0400
-Message-ID: <20261023135924.64990-1-marcelomanzo@gmail.com>
+Date: Fri, 23 Oct 2026 09:59:08 -0400
+Message-ID: <20261023135924.64990-2-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261023135924.64990-1-marcelomanzo@gmail.com>
+References: <20261023135924.64990-1-marcelomanzo@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::835;
- envelope-from=marcelomanzo@gmail.com; helo=mail-qt1-x835.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-qk1-x731.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29

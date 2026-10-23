@@ -1,109 +1,111 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F786606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 12:29:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B7CE606A31B
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 12:38:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=E2jxBgMp
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=kjrC5mcz
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKEP3-0000sC-0p; Fri, 23 Oct 2026 08:29:45 -0400
+	id 1xKEX0-0002xm-SP; Fri, 23 Oct 2026 08:38:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xKEOq-0000qi-JG
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:29:33 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ id 1xKEWt-0002vs-S9
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:37:52 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xKEOm-0004TB-0h
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:29:30 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-8b0a28a720aso8136577b3.2
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 05:29:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792758567; cv=none;
+ id 1xKEWo-0005Md-Li
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 08:37:51 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-8b0cf2c0785so7724417b3.3
+ for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 05:37:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792759065; cv=none;
  d=google.com; s=arc-20260327;
- b=KJB9xB24gxnOMa/qZzhJslx7e5z94UU74ybx+O7v/YXjMxTOcu0J9mqFDN99wCy6Su
- a67RhOViZ+6yeErhGQUA8y8r7k1YFxglDbP2eHiDSBQo1qFwviEHwJ3Lfe5hQQhxWrBV
- S3BlIrelfpIcH7f1Y/CSiw4MoyS3P90yhMawTqTe+JnFyi4+AAVyI0gakiZB+iBufMOd
- 3Xxuyv3HawK+H4NbO8ygvFFL17P4ehEPFMXFGjZSnYvlo1Qaun4W2wEWl/mMP91QBt7B
- 86chuThuHLF3/fB6dP9xaYkZBbSzxuVZS8VP8YDARE7/xl2R+c3LQWDy1TUrs/aPWbYk
- +P/w==
+ b=ODfhj8MeA/3jjSPrmghBy999QzOSGgLQ3SzIIEY3Vsx6RqDMNl63W3aR/ccDCa8ueg
+ 7mn3zPRH42aWS7/NfHaxoSUHT+rHhflALnzzgkBix7RPIvJ/qtbptTDvlfarkuu/GH3q
+ BXaXl8UapU6wpK5zQ1pcFDRzBClj6+lVZzqCvpc8yMZi5MqrktowXgEAwG84DiU78yq0
+ E3N7TLk+qSJrkwNVsBaGHgTXdH1PF1KJaHcSgqDtvdoGlw6ezcIJrwLMC961H9IU/QTP
+ 5CMhAz+iRXdREtSz5MfFAqXatQYPQ8LcP3Zm2/SJGCV/kbZIrQfLkY+CTXOqOhFLZN0c
+ oKKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=4YZAGZDx7IhYcqVvBvHlwEMnU40NIq3uzYxo/jNYcu4=;
- fh=4qLFARACTaiov6u+87KTt5VCNcms3YoVXWnS6JOkets=;
- b=oqlbdvARNthcYLRE9VGKPQuBK5KCsmZzI76NgucdUtAUWt3E8+zhmiNUTBPSKSGA9Y
- jECsiZSm9YPwASN1UjcCDFX44iWA+YiTlM+v0C0M3cNxQwwPt4mTIYF+k8oQcDO/uFXQ
- PzXPjV+1cbtCDzZhXjxjyJb5z2QD4s8mXjLqznDBCn8rosajySgGdkxPwp7hep43Q87w
- opTTsKuz3m49gkn/zVOYO4xllNCEiIriZfc4UchfyxBZcaxjcEINGz6/uLss0bjCruWV
- zF+1Jk77E8TU0RSMg7wL97JRFSn9qJzKNSpH560VozfEhi5/ezP/SnxWxzNDXd6G4jEg
- lniQ==; darn=nongnu.org
+ bh=SUkoX/3bwjFpT0dyc8UcMdZ4lcBpeSlTtzlkyvLE7Jo=;
+ fh=Zyyf0vaV+lMBGM69pSv2+cZ2MSE3p8EV8+BJ1iLvY68=;
+ b=pW7JvwFKZ/LxfkX3MSJKSW7coyhGKIggWf7DKtd9nJ2lCT2SLXWYY46tTqgp5+8pVn
+ 76h+hEcoUPWFltH72sdauxN+LIB5ADaAQIebT5ICL/pGycchHm1wp9BlmkobDt7ZYlZy
+ VqKRXajojFE3awNYwPt10zNZMa5weG+rP7l0+Vgdeb8zj0GEYeTZEKXCRcvU5NDyqx2L
+ 0P7tIg6ExsamoLDEJjKQEG+eAdNqr63vyMIUs7gQLaF+wbsl2S54+jLW45RXmx3WsDE3
+ SPtEsZ4/+t/pBSoEAUFMO12GgkL6BTZM3fFIq13fXLi91UXMbu8kRtcqn6+rPMJNm9mR
+ DiRg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1792758567; x=1793363367; darn=nongnu.org;
+ d=linaro.org; s=google; t=1792759065; x=1793363865; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=4YZAGZDx7IhYcqVvBvHlwEMnU40NIq3uzYxo/jNYcu4=;
- b=E2jxBgMpdrIP2Ys7tTSzPPHe5nCYzXi03DKee27PO5S3orJRXEjHBxm6WskNFwHgcn
- J9pWKBro3baggIoNXCoooP5Mm8Khn4pnNpixMbSTwm46WWN2IhUWRkJMvkAZNIF2l72W
- odIVIyo/zE9y7RkeQDk0txukll3u3jw6KlMpmnKz173DxvSVE3Dfcw4G4nMTr4IgSQ3d
- io8kx/aXyQwI76PZG+0CBZDIzcB7kaZhLv+MgHq4glX+83i+FUUAA5OBh831RQHefFM6
- i88yEhPu+Hc3kiA+nSFpjP/iGuMOXdJPJpA7pH8x3sBLOlrY8e9EsoZMtSdMM4a3UJLE
- f+lQ==
+ :content-type; bh=SUkoX/3bwjFpT0dyc8UcMdZ4lcBpeSlTtzlkyvLE7Jo=;
+ b=kjrC5mcznD4cgPeLNUleNu6WmGjYem+n1jP7zl14rp4cZY/ypEilfmTsLSoE2iMPx7
+ OgZM7KrjH6ywZB6XEXfVOb1RvRId2vw75QPwO47fcFtIUBnIyfY98XBmmQ/g3ZyheM/4
+ X6t0HSWlgkkc7cZ501G7k9MuNlW7eV5+VjpyL3PNSsF/ZIUF6gEw2pt8KQr+NO5cIUSz
+ ZhHwOWi+7oDSjPDNJehQOtspoVZICBd7I5qF/2LIReUv2S0yG4SwrrNYMqR/P63KL7P/
+ kGLik57Ta+Tw3IwbNs/QKYbCKIpoCAXFSRe8aI0VKJjptYhPd9dTKUHkqbM0zEki2UxV
+ CGog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792758567; x=1793363367;
+ d=1e100.net; s=20260707; t=1792759065; x=1793363865;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=4YZAGZDx7IhYcqVvBvHlwEMnU40NIq3uzYxo/jNYcu4=;
- b=cXGHwRQZlTEGqB+IxGlGFU+aLFSngurSOkNGOpPNFiBsCopOP7WBdsXoBZktBSfOKL
- DKUNNtIYBr7Dn/6RHEugrVM4O6w6h+WzNQLSjnyd0mQR4427ztuyufuT3WL9gL7cFUMV
- F0IsFTMQKhjkWNy65d5yXonO/kSJfQ8bL8pIoUBzaapcSAJ0VB6k16+cUYG9eAwmnERr
- Q2ooU578Q1lo3OPMu28gMo3eao7TL9d6Qi5DV8oE7z0cP6tAA2b988n+U9SahtJMPLsh
- YPWTZwXpq/E8rNH5z3S/dRmCt2S1r3ALkbksQ3TmdP6em1llOabVGMSrDfFSsuEduBHz
- DGDQ==
+ bh=SUkoX/3bwjFpT0dyc8UcMdZ4lcBpeSlTtzlkyvLE7Jo=;
+ b=CJthKepWeoHj/guNjVNZLIs2/Do9KRnNpWX3OnZ4Q3spCGj9d76Z1H2b4yVNA9R8BG
+ FqQEN0SLky9cemK0KAy0j4BCnoMFo43T0mCiL6b5f8MHusY3gLdylO0LtoitzC7qzD1j
+ EQnaAFNVPZw9EMX/qllspDMzVLfRcvrTnnI61mB6jYLlEwftaSCZCRomlrEF4iPFktJw
+ E3K382C3Qj1k7Cafcnz2X1oSh/GLeeK/qXPkAC6LMWM/TNRiggqc/s6UjvGSaWYDc3+t
+ q7DibUwKFidWUXh0zVkFbfzQUctjs0PKSjEUim6mELIT1Hly+7f9KZgCUA6ToytakniI
+ MYhg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxZF+b5PtaBH8xYxHk8bIDoKKKHFF0jk/NUPcTFV5fhf0IwV1tlQ2ZcMxh985kfs9QJ5hYGADcHTw==@nongnu.org
-X-Gm-Message-State: AFq9FYIRLoDqQp7p3jtE9WBD6RkiUdbDrZR7lT6DvGSIvS/nx6Gaepzo
- wWCPf3iYw4/kwVDfWzICQpJrCRYf0/+I5ax1eL/5nd2LH7GxHw2wHp8de5XP94kpzmYEQiTOikp
- OuS7/dDUJL+4BnLyuGf1JHHsDckjKY4v21ZzvDescBQ==
-X-Gm-Gg: AYBFou1R5xviS5ZPSFge8tg/K6hK+bY2yIhnTComZD09kXZf95f0FI6DGEP5J04sdB7
- 7hyCIBxuPXa64m+++9NEV7uE4Ck4XXrholkSibYtUoW0tfbRoFkfReAJWiQBwJNuhJvSxgUGBED
- pvZTvwnxF0Kwt+Dpv5FV9VRiI5+PuY+iIUYdiHQN7pojYymzI++cJY+SoLLwQ2R5jX7jc9bKhhH
- ui0DfKfsM5dEiZC2cJnryEpzCSiArOuml/mkWyNqWuQSabUcx1/HoXjsXZzBgmZjXNPuuUg+DiM
- qA+X6odFmzMugSMCo52kg5EavCKDeOnDy6HqP7Qc8QntHtxsURL+ETHZzu9I02S+Jf8HQIWKeRJ
- wm3bch4C2LxspnL7h3CAQRTt+UVL1HrsYdf5FMKh987v//hl/7bVqCRCsRxAb+DOVthfTr2lMz5
- bKl2adGuQlYe9J8hz8xtjUptYwTLVQYq9GtOGJIK12BA==
-X-Received: by 2002:a05:690c:f07:b0:890:c0ab:2303 with SMTP id
- 00721157ae682-8b157cf460amr16460077b3.21.1792758566544; Fri, 23 Oct 2026
- 05:29:26 -0700 (PDT)
+ AKwUvBzpRL5ncHapHLTd7icsg/mkUznS+7Mwlhk1wOos7o9qothI+cYMnXx4+j8B0thH8ZaHlbrJYfIMpA==@nongnu.org
+X-Gm-Message-State: AFq9FYLrN9OZg+J/ddvLcj4/XC6uskE8/riCxweadSXIIOtJdN5sJimT
+ eCVFW53E9m6HUJAD+Sc5zxbRfTK/tAna6QgMJsl/+2JFXDnBHKPX3fcVeGihuAtqLsD2Wy6aI7B
+ 34+AebHgkXtfSdkt4EB7mzC/dtS0GARppgzt981HZDQ==
+X-Gm-Gg: AYBFou0gy5R2m4q+DsUhqVdwPs35CDg/j7Hs6rkZlyY4PvFvgsY9BxDXNRSAcUFTcTV
+ v/qLVyqJSI6z0USVJ8RQvjNcL6x11v4C5QANx2L+8oCgL63pNwYJlC46HSrAluIC8rOLig+cOsb
+ K58qFHBSxF9WbEApZ0/vKPDxo2skGIiQ8xTr1PSQjNAcIuHblLl1r/YW5I2FAdvcqC4X38BP+O6
+ 3pbYMKw53MM/4aux0ff1lkt9QC/xh90T/RF15jU93Qgo7eLDstBRbhygHTbaErlZ6Qw/bdtjjD2
+ 1NGVEObo+4bCpc9hz+OaP72Hsf+j8Quzgr7Kg6/McIVBb3xBzrvJsYPisILy97jr0rvddJoGvDh
+ O+6YwoSxfpa0urxvvmNrrSyxDGaw3Vf2yaQruvc6uKY89bZ/V7JZ56F8GW6wPlk9vZ2/mnNdQRk
+ KzYzRFGaTpEhYtROzYf/Iwbg==
+X-Received: by 2002:a05:690c:550c:10b0:8b1:3606:65f6 with SMTP id
+ 00721157ae682-8b157d96b4cmr11350167b3.64.1792759064577; Fri, 23 Oct 2026
+ 05:37:44 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261022213647.21665-1-mohamed@unpredictable.fr>
- <20261022213647.21665-7-mohamed@unpredictable.fr>
-In-Reply-To: <20261022213647.21665-7-mohamed@unpredictable.fr>
+References: <cover.1792728982.git.deepagupta@nvidia.com>
+ <529fc7538b61d0d2ea9a984087ff1d616dd65624.1792728982.git.deepagupta@nvidia.com>
+In-Reply-To: <529fc7538b61d0d2ea9a984087ff1d616dd65624.1792728982.git.deepagupta@nvidia.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Oct 2026 13:29:14 +0100
-X-Gm-Features: AclHuK9wBflQsqTb9s62TrIDbGQoLFyMTLecgm1h43H2ahBknPaMeV-aAaHCu-0
-Message-ID: <CAFEAcA8B8iGW0hcfyOSzCZa-wByuguGS8c2NeLP4_u+dVVJLCA@mail.gmail.com>
-Subject: Re: [PATCH 6/6] hvf: arm: fetch more features
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org
+Date: Fri, 23 Oct 2026 13:37:32 +0100
+X-Gm-Features: AclHuK9ojQv69OAZTrmG7kBHeUcigZauSSNPGVhBPnbTfN_tKVHRQ_dcXo19pmw
+Message-ID: <CAFEAcA8tV-Qc_GHxyCwaU-c0h5n5hcTCU07k0bvGiT8ePFu4FA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] target/arm/kvm: handle KVM_EXIT_ARM_SEA and report
+ BUS_MCEERR_AO
+To: Deepak Gupta <deepagupta@nvidia.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org, 
+ kvmarm@lists.linux.dev, pbonzini@redhat.com, mchehab+huawei@kernel.org, 
+ jiaqiyan@google.com, oliver.upton@linux.dev
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,78 +117,27 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 22 Oct 2026 at 22:37, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+On Fri, 23 Oct 2026 at 06:22, Deepak Gupta <deepagupta@nvidia.com> wrote:
 >
-> macOS 27.0 has some more feature registers available. Fetch them (but not using the values yet).
->
-> Also fetch DCZID_EL0 at the same time.
->
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->  target/arm/hvf/hvf.c | 20 +++++++++++++++++---
->  1 file changed, 17 insertions(+), 3 deletions(-)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index e813f14ed4..3426fcdb86 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1142,16 +1142,14 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->      } regs[] = {
->          { HV_FEATURE_REG_ID_AA64PFR0_EL1, ID_AA64PFR0_EL1_IDX },
->          { HV_FEATURE_REG_ID_AA64PFR1_EL1, ID_AA64PFR1_EL1_IDX },
-> -        /* Add ID_AA64PFR2_EL1 here when HVF supports it */
->          { HV_FEATURE_REG_ID_AA64DFR0_EL1, ID_AA64DFR0_EL1_IDX },
->          { HV_FEATURE_REG_ID_AA64DFR1_EL1, ID_AA64DFR1_EL1_IDX },
->          { HV_FEATURE_REG_ID_AA64ISAR0_EL1, ID_AA64ISAR0_EL1_IDX },
->          { HV_FEATURE_REG_ID_AA64ISAR1_EL1, ID_AA64ISAR1_EL1_IDX },
-> -        /* Add ID_AA64ISAR2_EL1 here when HVF supports it */
->          { HV_FEATURE_REG_ID_AA64MMFR0_EL1, ID_AA64MMFR0_EL1_IDX },
->          { HV_FEATURE_REG_ID_AA64MMFR1_EL1, ID_AA64MMFR1_EL1_IDX },
->          { HV_FEATURE_REG_ID_AA64MMFR2_EL1, ID_AA64MMFR2_EL1_IDX },
-> -        /* Add ID_AA64MMFR3_EL1 here when HVF supports it */
-> +        { HV_FEATURE_REG_DCZID_EL0, DCZID_EL0_IDX},
->      };
->      hv_return_t r = HV_SUCCESS;
->      hv_vcpu_config_t config = hv_vcpu_config_create();
-> @@ -1191,6 +1189,22 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          }
->      }
->
-> +    if (__builtin_available(macOS 27.0, *)) {
-> +        static const struct isar_regs {
-> +            hv_feature_reg_t reg;
-> +            ARMIDRegisterIdx index;
-> +        } new_regs[] = {
-> +        {HV_FEATURE_REG_ID_AA64ISAR2_EL1, ID_AA64ISAR2_EL1_IDX},
-> +        {HV_FEATURE_REG_ID_AA64PFR2_EL1, ID_AA64PFR2_EL1_IDX},
-> +        {HV_FEATURE_REG_ID_AA64MMFR3_EL1, ID_AA64MMFR3_EL1_IDX},
-> +        {HV_FEATURE_REG_ID_AA64MMFR4_EL1, ID_AA64MMFR4_EL1_IDX},
+> Linux 6.19 added KVM_CAP_ARM_SEA_TO_USER: a guest synchronous external
+> abort (SEA) that the host cannot attribute to a firmware-first (APEI)
+> error record is returned to userspace as KVM_EXIT_ARM_SEA instead of
+> being injected as a virtual SError. Linux guests treat that SError as
+> fatal, so on a host whose HEST has no SEA-notified GHES source every
+> guest-consumed memory error currently panics the guest.
 
-Spaces after { and before } to match the existing code, please.
+So we already have a mechanism for the kernel to tell us about
+memory errors -- the BUS_MCEERR_AR SIGBUS code path. Why do
+we need to have a second mechanism that needs more code in QEMU
+to wire up to have the same effect? Can't the kernel tell us
+about memory errors in just one way?
 
-> +        };
-> +        for (i = 0; i < ARRAY_SIZE(new_regs); i++) {
-> +            r |= hv_vcpu_config_get_feature_reg(config, new_regs[i].reg,
-> +                                            &host_isar.idregs[new_regs[i].index]);
-> +        }
-> +    }
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-I note that we now have three places in this function which duplicate
-this "array which repeats the definition of struct isar_regs, and loop
-around calling hv_vcpu_config_get_feature_reg()" pattern. We could
-factor that out into a proper typedef for the struct and a helper
-function that does the "iterate through getting the values" part.
-
-thanks
 -- PMM
 

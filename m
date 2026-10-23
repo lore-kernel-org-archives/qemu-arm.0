@@ -1,165 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB9A4606A324
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 19:51:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34D1D606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 20:23:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=VHDBtFCJ;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=Le6BQth+
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=MY+89Xef
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKLI0-00052C-QD; Fri, 23 Oct 2026 15:50:56 -0400
+	id 1xKLnT-0004h6-0K; Fri, 23 Oct 2026 16:23:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <daniel.barboza@oss.qualcomm.com>)
- id 1xKLHx-00051f-0n
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 15:50:53 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <daniel.barboza@oss.qualcomm.com>)
- id 1xKLHo-0005Fk-6l
- for qemu-arm@nongnu.org; Fri, 23 Oct 2026 15:50:52 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69NIZq1s2540620
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 19:50:42 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 2Q+Zyk5phMnUihRRSPkdwCLau5jaArlWInsFAjadenY=; b=VHDBtFCJ/FejxeU+
- 5Cygk1QohgkB5n/TGUQMJxJfpSK+sbLJ+Jed/QdCn6gekUAvIJ48ANkkDdKOlHZL
- ED/IOB3LIsK8QvjCJQYLgk4bXMMdQkETO0gyf/Ev/bsDaUIUJtjvcVtfqFGWgBmZ
- s4D5kQfwRWnyoapqxhUMpV16x+uVs09PKEMmU78vKpPmzQejZCzqaLSu7GnybKid
- VsVzqdyfSUZ1uPe7soqBNLXTtwHyHgwjbQP3rewk5zrfxHnX5Fcw1GmHa0J1OpkV
- Smy+H+REhEta5+cc5fXBDMS7HViKks/syzVpgm5rgTxm2aFEyUwHNlEMRdO5i/zw
- I3dCtQ==
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hgatc8tfx-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 19:50:42 +0000 (GMT)
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-9179743a76eso27871596d6.1
- for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 12:50:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xKLnQ-0004gq-KU
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:23:24 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xKLnN-0007n4-Qt
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2026 16:23:24 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-868b3248b2cso893731b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 23 Oct 2026 13:23:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1792785042; x=1793389842; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=2Q+Zyk5phMnUihRRSPkdwCLau5jaArlWInsFAjadenY=;
- b=Le6BQth+cQDtYtAGW+kHLjoCZK54+/tFmH/1OVxFph/6Btt+lj/n6v10oXvbNS5php
- Uq499vWeOOejFB/TMbqv6pgOEiXx3ubGNL6xznd0aL5f3UMSE96R7WOnlvPH65FeDWkS
- pl5Vd3L/DuIoEjz3ENjfFoF8TrGWuanwMcTgUL65UjXOGSEN+Kux234iLleC9uqSa0nZ
- pd6/0R/yOhqDCt8o/15aXVTlLr6wMLznlWc83B+wTEcw566u/26o/9dtrbo03+qvkfbT
- EGje8qXaZaq1bvyRyufViJh9nQQZ735z0fQeu1Bgq/1n0YZuQODyvweYbHegLB+4WC1w
- AjnQ==
+ d=linaro.org; s=google; t=1792786999; x=1793391799; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=TLV4SAWaz5W7aT37JV0K/meGSqPzW/lTHi/yjF0zINw=;
+ b=MY+89Xefo3L4vyR1YynTqHpYKXfCDyZfW0CaSX/+MELpo2tQ+C/qUGSh9jhy/pPBPd
+ zFDszwxsH1tf8nUOeFJscW8v3/5MUKnOrhsfxpjdyLeeXtmGHIvxm4YYJiGaKP8qN1wR
+ y06C1lYsjTZKJyJYQYw2AfQYRSSpM7Y01rcW+1QS4sQr9S6guQkZU1lKH/J9qIuE/ofn
+ iDC8GHmlJIArWKZcDJUmL+RGDSzLTpWBlgwXQnQ+Hr8VaHwlXs5sg63xy+nf1TcJWLSl
+ iBOpQGHoHIcMMO7aDc6fPt2RPv5w0dZeUqBZNDkQ0iSoWHOKQn9RQ07uxIxBO63H3CP1
+ 2nDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792785042; x=1793389842;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=2Q+Zyk5phMnUihRRSPkdwCLau5jaArlWInsFAjadenY=;
- b=CY4CKDwLY/iSaFag0iQyRuy/DNQTvEO8rbc7wKO350EJ49rPWp/2bZjb8yLFk+mRUp
- +rfk8WVCZ6/h7nILduy/j9aX6J0Sk4yVkGGWCvPLhUoCQqMijc+oYooHccJEardaFKf/
- 7VC7zATiqCkpjBjjMKp5yNdyXRTd7ZkVMYn5e7yIRERFXMrvc3h5LwnG+8W7OQhrs9oD
- iVIkfJOgNPA4apALYKzP1W8QtQHyxOUCyLXWZ11IG2YV67wyEut/fwFpj25dhxfhBYjb
- McZUkPBl+dzGN6MsdHpEzUidaz7JOYRtZPdFI9q8QSw3l1H0c8nz9yota9KbBAFX8vmX
- 8HKg==
+ d=1e100.net; s=20260707; t=1792786999; x=1793391799;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=TLV4SAWaz5W7aT37JV0K/meGSqPzW/lTHi/yjF0zINw=;
+ b=VCJNffjyjww8p/8eNPhjPLgj3M1G6MWUNxtkoyjZdtkz1W81tpUF9w8IjkyJNFf+Kt
+ tC0H2AGynuO+6xKtM2QyAgvVfKO1tDA7hc7BOxGb0lZ+utvNRj5s3pxHfHYN1/dbmztH
+ h2oHbneX3y7tR5NOs7cItH0zr/Vdglx4QpekgVspCLqEATDFXjEAnmhpebqs6FEhU3yk
+ DHlHT9aOlBN4ThXEG2GJAsUTPUYFyFM1EgeYse1N2CFFqRfkz+DYSaiVSkPkCdVjT0xQ
+ jlQ0JcnuDIbYrAgWdXliSvxFHKwh1qc3nxiEXGyurqUnpqJ76x5wBoT8BBbvMIRqyQmB
+ pw0A==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx4be2IAereNJyRxfuPCeQKbnNFwt+0dn2pfXYZzz/G5ZIasRUnzlGlevQOJ7E9Y2sqgeoGtxsT4Q==@nongnu.org
-X-Gm-Message-State: AFq9FYKwpvcmCxO0f+Pnl2QVLuKj36QtoYXH5sizFzWJoBU91QBF9HgM
- KQbrAsARhAc1DMKM0D9mCfiihBmCbt30Ly04wSREoLiB7ZfSP9C3xF9RCm7vE5EryoJyp1pYT31
- 2q8JNf10C+HEhQRrANNleOlM5agyYmoRwjrzOgIjX8l5gpkFeZ+ZkDGg=
-X-Gm-Gg: AYBFou0KODFVr486F9NtRf7Ta+8N3HE9tWDqnhve2/N5pkyapltvd67R6jQEAaQ6SrJ
- iU4CAp/iIfUv/J3NkmtkWwIy9FxWa3pCBe3kxVlFBaSVznRsOCiJP47byc9DMRaGwOE/07fFxY9
- FmfVolTZc3SIcKl+dk2JRvmhAFrmVApE9SITtjVEG189WyilhH9rEues3meaAiSouCPAunwBmB1
- HUgCEQf0Q21zg45A7eXZ18gguTkrAbNYMIGE2tENlliEC8KmKmZWT0th4W7Xf/mzmrRAVjIjKS7
- IonCdsLJzmyC6kBVpMT7E+vug/JnkjrV88o1Vs7xPZ74veKS0sSXDH+m1DlPJ4qcQMuKrL8j32y
- Q6hmMPh2Q/0CNjjZUgGS2PN0KqqLHekgb7Iz9
-X-Received: by 2002:ad4:5aa5:0:b0:917:7e2b:d732 with SMTP id
- 6a1803df08f44-91c4906a1b7mr9656d6.21.1792785041367; 
- Fri, 23 Oct 2026 12:50:41 -0700 (PDT)
-X-Received: by 2002:ad4:5aa5:0:b0:917:7e2b:d732 with SMTP id
- 6a1803df08f44-91c4906a1b7mr9196d6.21.1792785040574; 
- Fri, 23 Oct 2026 12:50:40 -0700 (PDT)
-Received: from [192.168.68.104] ([152.234.125.162])
+ AKwUvBzE5TosZ7hZd7aLyRv2PSyNPCQPDzQmwQmDDftO8rev2wy5otLd8ebiw0kjbVX5gCZ/nJfUBLsx0Q==@nongnu.org
+X-Gm-Message-State: AFq9FYLpKa5J6l2JTuzKDhQI+Nd1jpD4CLpnuB+gTQtt9LZD0o4PO9DR
+ cJLBHoInHkIfgseV59BmYB6fQtVH+lAgPIG7NkgqFdvonCLltK2J2yPIghT2XULEBPs=
+X-Gm-Gg: AYBFou17NC+NHJnrRgJszcF/mTZju3gXYXWrNk7w18ONT0AdwWgHWTOcgdHV7dFcFbR
+ wns8wzIip6PfkkZXK8XFy571RfeOiPMWwnSkdf4tgm9gR342NyjWiUkUstWoBVn/gitI2+g6RED
+ B9jvI8nn0QXAaZYaDGZJVWOi3iUdSJ2nd42MSFqnd5GGwiYi5RvAlz4wF6//YEY8LFro/m6Ruqg
+ pXkRlZEbCdpKZbiewbOu0l1j5nqnEXzE4qFuej//IDzuBfTpZYow8J0hMqGZjeqWMrf0IxzhOqA
+ Vy3EqmISL1IJkJcNW/Ac46zjh1wJby6wa63V0qPWqJCBIGXfbBIulMWeH4BisgJJTetjyZ73Xa9
+ xjTsXjGEd7pMLv0APRzrLeyGnpIFZrxxC217gQimqAEQbVh5ewb3h1rzAAXba+PA9mclcpbDGpx
+ ShT3VY0JNoecQNnzBF7jk22shd6GG1O7ibN6GuQY7Vv32fl85z1HxB3WkCCKcd/xZxi7PavpyZZ
+ QTYcE6sFofkFt8KsoAub7xdnT5Ts1jMXxR1RspsyM0vdkTbZybWGvdvU8w=
+X-Received: by 2002:a05:6a00:428a:b0:89e:848a:fc97 with SMTP id
+ d2e1a72fcca58-8a36734fb59mr259645b3a.35.1792786999298; 
+ Fri, 23 Oct 2026 13:23:19 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:435b:3f0e:f3fe:d04e])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-91c48a92ebdsm1016096d6.11.2026.10.23.12.50.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Oct 2026 12:50:39 -0700 (PDT)
-Message-ID: <6a3258d7-99ed-4812-9c58-ad332d1012bb@oss.qualcomm.com>
-Date: Fri, 23 Oct 2026 16:50:34 -0300
+ d2e1a72fcca58-8a36ada2b41sm99344b3a.14.2026.10.23.13.23.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Oct 2026 13:23:18 -0700 (PDT)
+Date: Fri, 23 Oct 2026 14:23:16 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Gavin Shan <gshan@redhat.com>
+Cc: berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
+ enju.kohei@fujitsu.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
+Subject: Re: [RFC v4 00/24] Add Realm support to QEMU-VMM
+Message-ID: <atvCNKxpCRRSFL58@p14s>
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <7dea93a6-b119-4882-9c56-557a372b646a@redhat.com>
+ <atkokvqTHygpI8dt@p14s>
+ <5dba456f-26b4-4f05-9271-fb784736d581@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 17/18] target/riscv: expose register aliases to
- monitors via gdbstub
-To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>
-References: <20261022-query-reg-v3-0-7ad902b9a7cf@redhat.com>
- <20261022-query-reg-v3-17-7ad902b9a7cf@redhat.com>
-From: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20261022-query-reg-v3-17-7ad902b9a7cf@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIzMDA3OCBTYWx0ZWRfXy5V49Xt8krSc
- cikBcYPL+z6+mTK4iwvarBLVXeSxzGW/sl2AZanLBS2wVQmPlLmXDDLiUk+86iviQdrlZ1QFxDC
- WI60Ui+Gu4ooF6ymE1ZJXgEg+5L9RnUTXJAkB9LtwKvPTgOeTDJvPizr2g/h2Hp3Zz1LorSfc9I
- ygwHv0jQvQVvougc11PCL+3eQoT0yii1oDI3APGbRkGqB/PfljG/6PTjr9ZH8bR4ffsWcYR8f7T
- kdL6MC+qo48BweQ+jEApP70OPUl7WNYcZUy+ukblmMl6v2ZMsRRC5WUWFcrG472PrcLxFde5a6s
- qV5XvtiyjyPA/ocLe8DDiCINbEfXe9OWfyhawouy0beq9WsKigRMlDBrh6+FjNDk+LAymCVysdC
- jlMM1y6yW8H7mL3l85/BiPVQtM2MlhLPTxtfjACUyI+8ZVIeIvzcgmlHuE7vmnLQAazHgGsJIQg
- 0qqw0BZhuI7vAkopyjg==
-X-Proofpoint-GUID: EpRZ2mr0eklG45sbxTnaNbhKAQCRuj2N
-X-Authority-Analysis: v=2.4 cv=Scxi5fRu c=1 sm=1 tr=0 ts=6adbba92 cx=c_pps
- a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=AgQEunjic7gIBKSbIeB6Ag==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=6TZiiwDxetlbl_jET_0A:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=pJ04lnu7RYOZP9TFuWaZ:22
-X-Proofpoint-ORIG-GUID: EpRZ2mr0eklG45sbxTnaNbhKAQCRuj2N
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIzMDA3OCBTYWx0ZWRfX40n+hhxzEaVs
- Yj/TqguHYa5e9OxzPIJoEFL7AzGfQr98EKs+w38xPNPXKUJwwgOw7kjd2GgNpjeoM0d04QvGUA5
- sTAzAbXpxM72bzYor3gQBE674NB6BXE=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-10-23_05,2026-10-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 adultscore=0 phishscore=0 priorityscore=1501
- lowpriorityscore=0 impostorscore=0 malwarescore=0 bulkscore=0 spamscore=0
- clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
- definitions=main-2610230078
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=daniel.barboza@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5dba456f-26b4-4f05-9271-fb784736d581@redhat.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -171,692 +107,245 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On Fri, Oct 23, 2026 at 09:00:12PM +1000, Gavin Shan wrote:
+> Hi Mathieu,
+> 
+> On 10/22/26 7:03 AM, Mathieu Poirier wrote:
+> > Hi Gavin,
+> > 
+> > On Mon, Sep 21, 2026 at 02:05:19PM +1000, Gavin Shan wrote:
+> > > Hi Mathieu,
+> > > 
+> > > On 9/4/26 5:35 AM, Mathieu Poirier wrote:
+> > > > This patchset provides minimal functionality to start a Realm VM
+> > > > from an Arm RME capable host using the following command line:
+> > > > 
+> > > > qemu-system-aarch64 \
+> > > >    -M confidential-guest-support=rme0,memory-backend=ram0 \
+> > > >    -object rme-guest,id=rme0,convert-in-place=on \
+> > > >    -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
+> > > >    -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
+> > > > 
+> > > > It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
+> > > > back.  It is compatible with Steven Price's v16 revision [1] of his work adding
+> > > > CCA support to KVM.
+> > > > 
+> > > > This revision is based on Michael Roth's work on guest memfd in-place memory
+> > > > conversion [2], rebased to QEMU master.  I left out the AMD specific changes
+> > > > from Michael's work because I can't test the result.  Other than the
+> > > > modications to the linux headers, this series is identical to V3.
+> > > > 
+> > > > It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
+> > > > here [3], along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
+> > > > with Steven's v16 patchset).  The Repository for the kernel [6] is also
+> > > > available.  Note that for the latter, defines for
+> > > > KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES and KVM_CAP_ARM_RMI have been modified to
+> > > > follow QEMU master.
+> > > > 
+> > > > Instructions to compile and run the entire stack can be found here [7].
+> > > > 
+> > > > Device Assignment is not included.
+> > > > 
+> > > > Thanks,
+> > > > Mathieu
+> > > > 
+> > > > [1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
+> > > > [2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
+> > > > [3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v4?ref_type=heads
+> > > > [4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
+> > > > [5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
+> > > > [6]. https://gitlab.com/Linaro/cca-public/linux/-/tree/upstream-v4?ref_type=heads
+> > > > [7]. https://gitlab.com/Linaro/cca-public/build-instructions
+> > > > 
+> > > 
+> > > Give this series and (v19) arm/cca host series [1] a try, and found the following
+> > > issues. I'm sharing the found issues that I need take chance to look at them
+> > > closely in future.
+> > > 
+> > > [1] https://git.gitlab.arm.com/linux-arm/linux-cca.git  (branch: cca/cca-host/kvm-v19/integration)
+> > > 
+> > > Note that the host is emulated using qemu (TCG mode) via 'virt' platform, using
+> > > the following command lines
+> > > 
+> > > laptop$ /home/gshan/sandbox/cca/host/qemu/build/qemu-system-aarch64                 \
+> > >          -M virt,virtualization=on,secure=on,gic-version=3,acpi=off                  \
+> > >          -cpu max,x-rme=on -m 4G -smp 8                                              \
+> > >          -serial mon:stdio -monitor none -nographic -nodefaults                      \
+> > >          -bios /home/gshan/sandbox/cca/host/tf-a/flash.bin                           \
+> > >          -kernel /home/gshan/sandbox/cca/host/linux/arch/arm64/boot/Image            \
+> > >          -initrd /home/gshan/sandbox/cca/host/buildroot/output/images/rootfs.cpio.xz \
+> > >          -append kvm-arm.mode=rmm                                                    \
+> > >          -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                       \
+> > >          -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                       \
+> > >          -device pcie-root-port,bus=pcie.0,chassis=3,id=pcie.3                       \
+> > >          -device pcie-root-port,bus=pcie.0,chassis=4,id=pcie.4                       \
+> > >          -device virtio-9p-device,fsdev=shr0,mount_tag=shr0                          \
+> > >          -fsdev local,security_model=none,path=/home/gshan/sandbox/cca/guest,id=shr0 \
+> > >          -netdev tap,id=tap1,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown       \
+> > >          -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:80
+> > > 
+> > > The realm VM is started using the following command lines.
+> > > 
+> > > host$ qemu-system-aarch64 -enable-kvm -object rme-guest,id=rme0,convert-in-place=on \
+> > >        -machine virt,gic-version=3,confidential-guest-support=rme0 -m 2G -cpu host   \
+> > >        -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2                  \
+> > >        -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                   \
+> > >        -numa node,nodeid=0,cpus=0-3,memdev=mem0                                      \
+> > >        -serial mon:stdio -monitor none -nographic -nodefaults                        \
+> > >        -kernel /mnt/linux/arch/arm64/boot/Image                                      \
+> > >        -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                           \
+> > >        -append earlycon=pl011,mmio,0x10009000000
+> > > 
+> > > Found issues
+> > > ============
+> > 
+> > I was able to do the same manipulations on my side, but using the SBSA machine
+> > for system emulation, with results as described below:
+> > 
+> 
+> Thanks for double check on your side. Just a head up: I will re-run the broken test
+> cases with (RFCv5) qemu series and share the result. I expect we will have more
+> discussions on those broken test cases under RFCv5 series if you agree. I don't
+> know when I get a chance to try RFCv5 series, but hopefully next week or early
+> of the week after that.
+>
 
+I omitted to mention that I used RFCv5 for my manipulations on SBSA, so I expect
+you'll find the same problems as with RFCv4.  No need to rush to do the test
+since my next revision will _not_ address any of those issues.  For RFCv6 I want
+to concentrate on the other comments you and Kohei made and keep the bigger
+issues (the ones you raised here) for future revision.  That way we make progess
+on this patchset and keep synchronized with the KVM patches Suzuki and Steven
+release.
 
-On 10/22/2026 7:56 AM, Marc-André Lureau wrote:
-> The core GDB XML uses ABI names (zero, ra, sp, fp, ft0, fs0, etc.)
-> but users also refer to registers by their numeric names (x0-x31,
-> f0-f31) and the s0 alias for fp. The legacy MonitorDef mechanism
-> supported both via split "x0/zero" name matching.
-> 
-> Register a feature that maps:
->   - x0-x31 and s0 to the corresponding core integer registers
->   - x0h-x31h and their ABI aliases (zeroh, rah, ...) to env->gprh[]
->   - f0-f31 to the corresponding FPU registers (when FPU is present)
-> 
-> CSR-by-name lookups ($mstatus, $sstatus, ...) keep working, through
-> the existing GDB CSR feature rather than the removed csr_ops loop.
-> 
-> Lookup is now case-sensitive (consistent with all other targets),
-> including for the CSR names. Vector registers report "unknown
-> register" instead of the target-specific "Unable to print the value
-> of vector vreg" message.
-> 
-> RV32 numeric and high-half aliases now zero-extend into HMP’s 64-bit
-> expression value (for example, $x1 containing 0xffffffff evaluates to
-> 4294967295, whereas the legacy fallback returned -1). This makes aliases
-> consistent with the existing GDB-backed names.
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
+We can discuss further at the KVM forum if you are there.
 
-
-Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
-
->   configs/targets/riscv32-linux-user.mak    |   2 +-
->   configs/targets/riscv32-softmmu.mak       |   2 +-
->   configs/targets/riscv64-bsd-user.mak      |   2 +-
->   configs/targets/riscv64-linux-user.mak    |   2 +-
->   configs/targets/riscv64-softmmu.mak       |   2 +-
->   gdbstub/gdb-xml/riscv-32bit-alias.xml     | 105 ++++++++++++++++++++++
->   gdbstub/gdb-xml/riscv-32bit-fpu-alias.xml |  40 +++++++++
->   gdbstub/gdb-xml/riscv-64bit-alias.xml     | 105 ++++++++++++++++++++++
->   gdbstub/gdb-xml/riscv-64bit-fpu-alias.xml |  46 ++++++++++
->   target/riscv/cpu.c                        |   1 -
->   target/riscv/gdbstub.c                    |  48 ++++++++++
->   target/riscv/internals.h                  |   3 -
->   target/riscv/monitor.c                    | 140 ------------------------------
->   13 files changed, 349 insertions(+), 149 deletions(-)
+> Cheers,
+> Gavin
 > 
-> diff --git a/configs/targets/riscv32-linux-user.mak b/configs/targets/riscv32-linux-user.mak
-> index d88fdf5e1b2f..8ee14fa14383 100644
-> --- a/configs/targets/riscv32-linux-user.mak
-> +++ b/configs/targets/riscv32-linux-user.mak
-> @@ -1,7 +1,7 @@
->   TARGET_ARCH=riscv32
->   TARGET_BASE_ARCH=riscv
->   TARGET_ABI_DIR=riscv
-> -TARGET_XML_FILES= riscv-32bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-32bit-virtual.xml
-> +TARGET_XML_FILES= riscv-32bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-32bit-virtual.xml riscv-32bit-alias.xml riscv-32bit-fpu-alias.xml riscv-64bit-fpu-alias.xml
->   CONFIG_SEMIHOSTING=y
->   CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
->   TARGET_SYSTBL_ABI=32
-> diff --git a/configs/targets/riscv32-softmmu.mak b/configs/targets/riscv32-softmmu.mak
-> index 5d5016d00832..c717940344f0 100644
-> --- a/configs/targets/riscv32-softmmu.mak
-> +++ b/configs/targets/riscv32-softmmu.mak
-> @@ -1,6 +1,6 @@
->   TARGET_ARCH=riscv32
->   TARGET_BASE_ARCH=riscv
-> -TARGET_XML_FILES= riscv-32bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-32bit-virtual.xml
-> +TARGET_XML_FILES= riscv-32bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-32bit-virtual.xml riscv-32bit-alias.xml riscv-32bit-fpu-alias.xml riscv-64bit-fpu-alias.xml
->   # needed by boot.c
->   TARGET_NEED_FDT=y
->   TARGET_LONG_BITS=32
-> diff --git a/configs/targets/riscv64-bsd-user.mak b/configs/targets/riscv64-bsd-user.mak
-> index 5b4e138099fc..1d37e018c871 100644
-> --- a/configs/targets/riscv64-bsd-user.mak
-> +++ b/configs/targets/riscv64-bsd-user.mak
-> @@ -1,6 +1,6 @@
->   TARGET_ARCH=riscv64
->   TARGET_BASE_ARCH=riscv
->   TARGET_ABI_DIR=riscv
-> -TARGET_XML_FILES= riscv-64bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-64bit-virtual.xml
-> +TARGET_XML_FILES= riscv-64bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-64bit-virtual.xml riscv-64bit-alias.xml riscv-32bit-fpu-alias.xml riscv-64bit-fpu-alias.xml
->   TARGET_LONG_BITS=64
->   TARGET_NOT_USING_LEGACY_NATIVE_ENDIAN_API=y
-> diff --git a/configs/targets/riscv64-linux-user.mak b/configs/targets/riscv64-linux-user.mak
-> index 35621520c560..564d15aaca8c 100644
-> --- a/configs/targets/riscv64-linux-user.mak
-> +++ b/configs/targets/riscv64-linux-user.mak
-> @@ -1,7 +1,7 @@
->   TARGET_ARCH=riscv64
->   TARGET_BASE_ARCH=riscv
->   TARGET_ABI_DIR=riscv
-> -TARGET_XML_FILES= riscv-64bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-64bit-virtual.xml
-> +TARGET_XML_FILES= riscv-64bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-64bit-virtual.xml riscv-64bit-alias.xml riscv-32bit-fpu-alias.xml riscv-64bit-fpu-alias.xml
->   CONFIG_SEMIHOSTING=y
->   CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
->   TARGET_SYSTBL_ABI=64
-> diff --git a/configs/targets/riscv64-softmmu.mak b/configs/targets/riscv64-softmmu.mak
-> index a10dc03c04c8..28bfcdc575fb 100644
-> --- a/configs/targets/riscv64-softmmu.mak
-> +++ b/configs/targets/riscv64-softmmu.mak
-> @@ -1,7 +1,7 @@
->   TARGET_ARCH=riscv64
->   TARGET_BASE_ARCH=riscv
->   TARGET_KVM_HAVE_GUEST_DEBUG=y
-> -TARGET_XML_FILES= riscv-64bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-64bit-virtual.xml riscv-32bit-cpu.xml riscv-32bit-virtual.xml
-> +TARGET_XML_FILES= riscv-64bit-cpu.xml riscv-32bit-fpu.xml riscv-64bit-fpu.xml riscv-64bit-virtual.xml riscv-32bit-cpu.xml riscv-32bit-virtual.xml riscv-32bit-alias.xml riscv-64bit-alias.xml riscv-32bit-fpu-alias.xml riscv-64bit-fpu-alias.xml
->   # needed by boot.c
->   TARGET_NEED_FDT=y
->   TARGET_LONG_BITS=64
-> diff --git a/gdbstub/gdb-xml/riscv-32bit-alias.xml b/gdbstub/gdb-xml/riscv-32bit-alias.xml
-> new file mode 100644
-> index 000000000000..a00a86ebdf95
-> --- /dev/null
-> +++ b/gdbstub/gdb-xml/riscv-32bit-alias.xml
-> @@ -0,0 +1,105 @@
-> +<?xml version="1.0"?>
-> +<!--
-> +  SPDX-License-Identifier: GPL-2.0-or-later
-> +-->
-> +
-> +<!DOCTYPE feature SYSTEM "gdb-target.dtd">
-> +<feature name="org.qemu.gdb.riscv.alias">
-> +  <reg name="x0" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x1" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x2" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x3" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x4" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x5" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x6" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x7" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x8" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x9" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x10" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x11" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x12" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x13" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x14" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x15" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x16" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x17" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x18" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x19" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x20" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x21" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x22" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x23" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x24" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x25" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x26" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x27" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x28" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x29" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x30" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x31" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s0" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x0h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="zeroh" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x1h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="rah" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x2h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="sph" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x3h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="gph" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x4h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="tph" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x5h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="t0h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x6h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="t1h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x7h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="t2h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x8h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s0h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x9h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s1h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x10h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a0h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x11h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a1h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x12h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a2h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x13h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a3h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x14h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a4h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x15h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a5h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x16h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a6h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x17h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="a7h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x18h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s2h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x19h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s3h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x20h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s4h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x21h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s5h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x22h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s6h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x23h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s7h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x24h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s8h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x25h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s9h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x26h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s10h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x27h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="s11h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x28h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="t3h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x29h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="t4h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x30h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="t5h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="x31h" bitsize="32" type="int" group="qemu-debug"/>
-> +  <reg name="t6h" bitsize="32" type="int" group="qemu-debug"/>
-> +</feature>
-> diff --git a/gdbstub/gdb-xml/riscv-32bit-fpu-alias.xml b/gdbstub/gdb-xml/riscv-32bit-fpu-alias.xml
-> new file mode 100644
-> index 000000000000..3935f72ea289
-> --- /dev/null
-> +++ b/gdbstub/gdb-xml/riscv-32bit-fpu-alias.xml
-> @@ -0,0 +1,40 @@
-> +<?xml version="1.0"?>
-> +<!--
-> +  SPDX-License-Identifier: GPL-2.0-or-later
-> +-->
-> +
-> +<!DOCTYPE feature SYSTEM "gdb-target.dtd">
-> +<feature name="org.qemu.gdb.riscv.fpu-alias">
-> +  <reg name="f0" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f1" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f2" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f3" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f4" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f5" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f6" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f7" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f8" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f9" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f10" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f11" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f12" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f13" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f14" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f15" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f16" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f17" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f18" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f19" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f20" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f21" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f22" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f23" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f24" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f25" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f26" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f27" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f28" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f29" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f30" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +  <reg name="f31" bitsize="32" type="ieee_single" group="qemu-debug"/>
-> +</feature>
-> diff --git a/gdbstub/gdb-xml/riscv-64bit-alias.xml b/gdbstub/gdb-xml/riscv-64bit-alias.xml
-> new file mode 100644
-> index 000000000000..28781b230226
-> --- /dev/null
-> +++ b/gdbstub/gdb-xml/riscv-64bit-alias.xml
-> @@ -0,0 +1,105 @@
-> +<?xml version="1.0"?>
-> +<!--
-> +  SPDX-License-Identifier: GPL-2.0-or-later
-> +-->
-> +
-> +<!DOCTYPE feature SYSTEM "gdb-target.dtd">
-> +<feature name="org.qemu.gdb.riscv.alias">
-> +  <reg name="x0" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x1" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x2" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x3" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x4" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x5" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x6" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x7" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x8" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x9" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x10" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x11" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x12" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x13" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x14" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x15" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x16" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x17" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x18" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x19" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x20" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x21" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x22" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x23" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x24" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x25" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x26" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x27" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x28" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x29" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x30" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x31" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s0" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x0h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="zeroh" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x1h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="rah" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x2h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="sph" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x3h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="gph" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x4h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="tph" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x5h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="t0h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x6h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="t1h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x7h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="t2h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x8h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s0h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x9h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s1h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x10h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a0h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x11h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a1h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x12h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a2h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x13h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a3h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x14h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a4h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x15h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a5h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x16h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a6h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x17h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="a7h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x18h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s2h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x19h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s3h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x20h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s4h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x21h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s5h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x22h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s6h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x23h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s7h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x24h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s8h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x25h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s9h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x26h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s10h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x27h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="s11h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x28h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="t3h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x29h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="t4h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x30h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="t5h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="x31h" bitsize="64" type="int" group="qemu-debug"/>
-> +  <reg name="t6h" bitsize="64" type="int" group="qemu-debug"/>
-> +</feature>
-> diff --git a/gdbstub/gdb-xml/riscv-64bit-fpu-alias.xml b/gdbstub/gdb-xml/riscv-64bit-fpu-alias.xml
-> new file mode 100644
-> index 000000000000..13e6b341a0f8
-> --- /dev/null
-> +++ b/gdbstub/gdb-xml/riscv-64bit-fpu-alias.xml
-> @@ -0,0 +1,46 @@
-> +<?xml version="1.0"?>
-> +<!--
-> +  SPDX-License-Identifier: GPL-2.0-or-later
-> +-->
-> +
-> +<!DOCTYPE feature SYSTEM "gdb-target.dtd">
-> +<feature name="org.qemu.gdb.riscv.fpu-alias">
-> +
-> +  <union id="riscv_double">
-> +    <field name="float" type="ieee_single"/>
-> +    <field name="double" type="ieee_double"/>
-> +  </union>
-> +
-> +  <reg name="f0" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f1" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f2" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f3" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f4" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f5" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f6" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f7" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f8" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f9" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f10" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f11" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f12" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f13" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f14" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f15" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f16" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f17" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f18" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f19" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f20" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f21" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f22" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f23" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f24" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f25" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f26" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f27" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f28" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f29" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f30" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +  <reg name="f31" bitsize="64" type="riscv_double" group="qemu-debug"/>
-> +</feature>
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index 08a4d14ea1f6..7b052da6d8b4 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -3107,7 +3107,6 @@ static const struct SysemuCPUOps riscv_sysemu_ops = {
->       .legacy_vmsd = &vmstate_riscv_cpu,
->   #ifdef CONFIG_TCG
->       .translate_for_debug = riscv_cpu_translate_for_debug,
-> -    .monitor_get_register = riscv_monitor_get_register_legacy,
->   #endif
->   };
->   #endif
-> diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
-> index f279f4ab2461..0d89caf8ba36 100644
-> --- a/target/riscv/gdbstub.c
-> +++ b/target/riscv/gdbstub.c
-> @@ -336,10 +336,42 @@ static GDBFeature *ricsv_gen_dynamic_vector_feature(CPUState *cs, int base_reg)
->       return &cpu->dyn_vreg_feature;
->   }
->   
-> +/* x0-x31, s0, then pairs of numeric and ABI high-half aliases. */
-> +static int riscv_gdb_get_alias(CPUState *cs, GByteArray *buf, int n)
-> +{
-> +    RISCVCPU *cpu = RISCV_CPU(cs);
-> +    uint64_t val;
-> +
-> +    if (n < 33) {
-> +        return riscv_cpu_gdb_read_register(cs, buf, n == 32 ? 8 : n);
-> +    }
-> +
-> +    val = cpu->env.gprh[(n - 33) / 2];
-> +    if (riscv_cpu_is_32bit(cpu)) {
-> +        return gdb_get_reg32(buf, val);
-> +    }
-> +    return gdb_get_reg64(buf, val);
-> +}
-> +
-> +static int riscv_gdb_set_alias(CPUState *cs, uint8_t *buf, int n)
-> +{
-> +    RISCVCPU *cpu = RISCV_CPU(cs);
-> +    CPURISCVState *env = &cpu->env;
-> +    const unsigned regsz = riscv_cpu_is_32bit(cpu) ? 4 : 8;
-> +
-> +    if (n < 33) {
-> +        return riscv_cpu_gdb_write_register(cs, buf, n == 32 ? 8 : n);
-> +    }
-> +
-> +    env->gprh[(n - 33) / 2] = ldn(env, buf, regsz);
-> +    return regsz;
-> +}
-> +
->   void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
->   {
->       RISCVCPU *cpu = RISCV_CPU(cs);
->       CPURISCVState *env = &cpu->env;
-> +
->       if (env->misa_ext & RVD) {
->           gdb_register_coprocessor(cs, riscv_gdb_get_fpu, riscv_gdb_set_fpu,
->                                    gdb_find_static_feature("riscv-64bit-fpu.xml"));
-> @@ -380,4 +412,20 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
->                                    feature);
->       }
->   #endif
-> +
-> +    gdb_register_internal_coprocessor(
-> +        cs, riscv_gdb_get_alias, riscv_gdb_set_alias,
-> +        gdb_find_static_feature(riscv_cpu_is_32bit(cpu) ?
-> +                                "riscv-32bit-alias.xml" :
-> +                                "riscv-64bit-alias.xml"));
-> +
-> +    if (env->misa_ext & RVD) {
-> +        gdb_register_internal_coprocessor(
-> +            cs, riscv_gdb_get_fpu, riscv_gdb_set_fpu,
-> +            gdb_find_static_feature("riscv-64bit-fpu-alias.xml"));
-> +    } else if (env->misa_ext & RVF) {
-> +        gdb_register_internal_coprocessor(
-> +            cs, riscv_gdb_get_fpu, riscv_gdb_set_fpu,
-> +            gdb_find_static_feature("riscv-32bit-fpu-alias.xml"));
-> +    }
->   }
-> diff --git a/target/riscv/internals.h b/target/riscv/internals.h
-> index f17d011d22fb..f4af4636c6ca 100644
-> --- a/target/riscv/internals.h
-> +++ b/target/riscv/internals.h
-> @@ -265,7 +265,4 @@ static inline int insn_len(uint16_t first_word)
->       return (first_word & 3) == 3 ? 4 : 2;
->   }
->   
-> -int riscv_monitor_get_register_legacy(CPUState *cs, const char *name,
-> -                                      int64_t *pval);
-> -
->   #endif
-> diff --git a/target/riscv/monitor.c b/target/riscv/monitor.c
-> index 7e61ae2a4717..20f3ba57ae57 100644
-> --- a/target/riscv/monitor.c
-> +++ b/target/riscv/monitor.c
-> @@ -19,10 +19,7 @@
->    */
->   
->   #include "qemu/osdep.h"
-> -#include "qemu/ctype.h"
-> -#include "qemu/qemu-print.h"
->   #include "cpu.h"
-> -#include "target/riscv/tcg/csr.h"
->   #include "cpu_bits.h"
->   #include "monitor/monitor.h"
->   #include "monitor/hmp.h"
-> @@ -247,140 +244,3 @@ void hmp_info_mem(MonitorHMP *hmp, const QDict *qdict)
->       mem_info_svxx(hmp, env);
->   }
->   #endif /* CONFIG_HMP */
-> -
-> -#ifdef CONFIG_TCG
-> -static bool reg_is_ulong_integer(CPURISCVState *env, const char *name,
-> -                                 target_ulong *val, bool is_gprh)
-> -{
-> -    const char * const *reg_names;
-> -    uint64_t *vals;
-> -
-> -    if (is_gprh) {
-> -        reg_names = riscv_int_regnamesh;
-> -        vals = env->gprh;
-> -    } else {
-> -        reg_names = riscv_int_regnames;
-> -        vals = env->gpr;
-> -    }
-> -
-> -    for (int i = 0; i < 32; i++) {
-> -        g_auto(GStrv) reg_name = g_strsplit(reg_names[i], "/", 2);
-> -
-> -        g_assert(reg_name[0]);
-> -        g_assert(reg_name[1]);
-> -
-> -        if (g_ascii_strcasecmp(reg_name[0], name) == 0 ||
-> -            g_ascii_strcasecmp(reg_name[1], name) == 0) {
-> -            *val = vals[i];
-> -            return true;
-> -        }
-> -    }
-> -
-> -    return false;
-> -}
-> -
-> -static bool reg_is_u64_fpu(CPURISCVState *env, const char *name, uint64_t *val)
-> -{
-> -    if (qemu_tolower(name[0]) != 'f') {
-> -        return false;
-> -    }
-> -
-> -    for (int i = 0; i < 32; i++) {
-> -        g_auto(GStrv) reg_name = g_strsplit(riscv_fpr_regnames[i], "/", 2);
-> -
-> -        g_assert(reg_name[0]);
-> -        g_assert(reg_name[1]);
-> -
-> -        if (g_ascii_strcasecmp(reg_name[0], name) == 0 ||
-> -            g_ascii_strcasecmp(reg_name[1], name) == 0) {
-> -            *val = env->fpr[i];
-> -            return true;
-> -        }
-> -    }
-> -
-> -    return false;
-> -}
-> -
-> -static bool reg_is_vreg(const char *name)
-> -{
-> -    if (qemu_tolower(name[0]) != 'v' || strlen(name) > 3) {
-> -        return false;
-> -    }
-> -
-> -    for (int i = 0; i < 32; i++) {
-> -        if (g_ascii_strcasecmp(name, riscv_rvv_regnames[i]) == 0) {
-> -            return true;
-> -        }
-> -    }
-> -
-> -    return false;
-> -}
-> -
-> -int riscv_monitor_get_register_legacy(CPUState *cs, const char *name,
-> -                                      int64_t *pval)
-> -{
-> -    RISCVCPU *hart = RISCV_CPU(cs);
-> -    CPURISCVState *env = cpu_env(cs);
-> -    target_ulong val = 0;
-> -    uint64_t val64 = 0;
-> -    int i;
-> -
-> -    if (reg_is_ulong_integer(env, name, &val, false) ||
-> -        reg_is_ulong_integer(env, name, &val, true)) {
-> -        *pval = riscv_cpu_is_32bit(hart) ? (int32_t)val : val;
-> -        return 0;
-> -    }
-> -
-> -    if (reg_is_u64_fpu(env, name, &val64)) {
-> -        *pval = val64;
-> -        return 0;
-> -    }
-> -
-> -    if (reg_is_vreg(name)) {
-> -        if (!riscv_cpu_cfg(env)->ext_zve32x) {
-> -            return -EINVAL;
-> -        }
-> -
-> -        qemu_printf("Unable to print the value of vector "
-> -                    "vreg '%s' from this API\n", name);
-> -
-> -        /*
-> -         * We're returning 0 because returning -EINVAL triggers
-> -         * an 'unknown register' message in exp_unary() later,
-> -         * which feels ankward after our own error message.
-> -         */
-> -        *pval = 0;
-> -        return 0;
-> -    }
-> -
-> -    for (i = 0; i < ARRAY_SIZE(csr_ops); i++) {
-> -        RISCVException res;
-> -        int csrno = i;
-> -
-> -        /*
-> -         * Early skip when possible since we're going
-> -         * through a lot of NULL entries.
-> -         */
-> -        if (csr_ops[csrno].predicate == NULL) {
-> -            continue;
-> -        }
-> -
-> -        if (g_ascii_strcasecmp(csr_ops[csrno].name, name) != 0) {
-> -            continue;
-> -        }
-> -
-> -        res = riscv_csrrw_debug(env, csrno, &val, 0, 0);
-> -
-> -        /*
-> -         * Rely on the smode, hmode, etc, predicates within csr.c
-> -         * to do the filtering of the registers that are present.
-> -         */
-> -        if (res == RISCV_EXCP_NONE) {
-> -            *pval = riscv_cpu_is_32bit(hart) ? (int32_t)val : val;
-> -            return 0;
-> -        }
-> -    }
-> -
-> -    return -EINVAL;
-> -}
-> -#endif
+> > > 
+> > > (1) qemu is terminiated on qmp command 'dump-guest-memory'
+> > > 
+> > > (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
+> > > **
+> > > ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
+> > > Bail out! ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
+> > > 
+> > 
+> > On my side this command causes the Realm to abort, as I expected it to be.
+> > Realm memory should not be observable from the host.  There may be a debug mode
+> > to enable this kind of operation but I will have to look at the documentation
+> > for details.
+> > > (2) qemu emulation can't be stopped and resumed
+> > > 
+> > > (qemu) stop
+> > > (qemu) cont
+> > > Failed to set KVM_REG_ARM_TIMER_CNT
+> > > 
+> > 
+> > That too I was expecting.  Anything that can comprimise a Realm will cause the
+> > HW to abort.  I'll investigate the "Failed to set KVM_REG_ARM_TIMER_CNT" error
+> > message though.
+> > 
+> > > (3) qemu is terminiated on qmp command 'system_reset'
+> > > 
+> > > (qemu) system_reset
+> > > cpus are not resettable, terminating
+> > > 
+> > > (4) 'reboot' from the guest doesn't work
+> > > 
+> > > root@guest:~# reboot
+> > >     :
+> > > Requesting system reboot
+> > > [  123.264893] reboot: Restarting system
+> > > qemu-system-aarch64: cpus are not resettable, terminating
+> > > 
+> > 
+> > I suspect 'system_reset' from the monitor and a 'reboot' from the command line
+> > will, at some point, end up following the same sequence.  I need to think about
+> > the 'reboot' use case further.
+> > 
+> > 
+> > > (5) Incompatible to virtio-iommu-pci. The realm guest doesn't boot up if a virtio-iommu-pci
+> > >      device is specified in the command lines
+> > > 
+> > > host$ qemu-system-aarch64 -enable-kvm                                          \
+> > > -object rme-guest,id=rme0,convert-in-place=on                                  \
+> > > -machine virt,gic-version=3,confidential-guest-support=rme0                    \
+> > > -m 2G -cpu host -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2   \
+> > > -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                    \
+> > > -numa node,nodeid=0,cpus=0-3,memdev=mem0                                       \
+> > > -serial mon:stdio -monitor none -nographic -nodefaults                         \
+> > > -kernel /mnt/linux/arch/arm64/boot/Image                                       \
+> > > -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                            \
+> > > -append earlycon=pl011,mmio,0x10009000000                                      \
+> > > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                          \
+> > > -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                          \
+> > > -device virtio-iommu-pci,bus=pcie.0                                            \
+> > > -drive file=/mnt/disk.qcow2,if=none,id=drive0                                  \
+> > > -device virtio-blk-pci,id=virtblk0,bus=pcie.1,drive=drive0,num-queues=4        \
+> > > -netdev tap,id=tap1,vhost=on,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
+> > > -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:c0
+> > 
+> > 
+> > I added the following to my Realm's boot command parameters:
+> > 
+> > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1 \
+> > -device virtio-iommu-pci,bus=pcie.0 \
+> > 
+> > 
+> > >       :
+> > > [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x000f0510]
+> > > [    0.000000] Linux version 7.2.0-rc5-gavin-gf5098b6bae76 (gshan@nvidia-grace-hopper-01.khw.eng.bos2.dc.redhat.com) (gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4), GNU ld version 2.41-65.el10) #47 SMP PREEMPT Mon Jul 27 02:29:03 EDT 2026
+> > > [    0.000000] KASLR enabled
+> > > [    0.000000] Machine model: linux,dummy-virt
+> > > [    0.000000] earlycon: pl11 at MMIO 0x0000010009000000 (options '')
+> > > [    0.000000] printk: legacy bootconsole [pl11] enabled
+> > > [    0.000000] efi: UEFI not found.
+> > > [    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+> > > [    0.000000] NODE_DATA(0) allocated [mem 0xbfbecb00-0xbfbf09bf]
+> > > [    0.000000] psci: probing for conduit method from DT.
+> > > [    0.000000] psci: PSCIv1.1 detected in firmware.
+> > > [    0.000000] psci: Using standard PSCI v0.2 function IDs
+> > > [    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+> > > [    0.000000] psci: SMC Calling Convention v1.2
+> > > [    0.000000] RME: Using RSI version 1.0
+> > > [    0.000000] Zone ranges:
+> > > [    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+> > > [    0.000000]   DMA32    empty
+> > > [    0.000000]   Normal   empty
+> > > [    0.000000] Movable zone start for each node
+> > >       :
+> > > [    6.664423] Serial: AMBA PL011 UART driver
+> > > [    7.151312] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
+> > > [    7.213181] printk: console [ttyAMA0] enabled
+> > > [    8.536454] HugeTLB: registered 1.00 Gi
+> > > <...The realm guest stops here, no output since then...>
+> > > 
+> > 
+> > On my side I get to user space but virtio-serial and virtio-net don't work.  I'm
+> > guessing virtio-iommu-pci does the same thing as this patch [1], but virtio
+> > devices are disrupted because it is not configured properly.  I need to
+> > investigate to find the best approach to follow, i.e implicitly use (and
+> > configure) a virtio-iommu-pci or make sure that [1] and a virtio-iommu-pci
+> > device can play nice together.
+> > 
+> > Thanks,
+> > Mathieu
+> > 
+> > [1]. [RFC v4 21/24] target/arm/kvm-rme: Add DMA remapping for the shared memory region
+> > 
+> > 
+> > > Thanks,
+> > > Gavin
+> > > 
+> > 
 > 
-
 

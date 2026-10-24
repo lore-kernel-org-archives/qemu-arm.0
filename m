@@ -1,55 +1,55 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB46E606A320
-	for <qemu-arm@archiver.kernel.org>; Sat, 24 Oct 2026 13:21:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1233C606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 24 Oct 2026 13:21:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=HfZJFaZ6
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=QkvNHPSh
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKbfX-0006LA-Pg; Sat, 24 Oct 2026 09:20:19 -0400
+	id 1xKbfR-0006Hn-Gx; Sat, 24 Oct 2026 09:20:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xKbfR-0006Hl-HM
- for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:13 -0400
+ id 1xKbfL-00069V-SO
+ for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xKbfP-0000ij-Vn
- for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:13 -0400
+ id 1xKbfJ-0000hn-Vv
+ for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792848009;
+ s=mimecast20190719; t=1792848005;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=y0LOldFKpixMOYV2xWBbBMRaCAotlRj8zfuORlJm4pk=;
- b=HfZJFaZ6shq4EEVWUi2w7N2bvAdi76WVRXdqP03HdG16d0SG73QC8ObLqqmQv+FDIhBd6M
- 7Yoa2WjHq24NRJoYcaU7UeVJutmXHyu5GeMa9hnUcMr2AxVfCOF+BWRkm/KEz5p0LphOYp
- +SXPwOHwgFohlcgD5lK0Q0IewGfazQA=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=fLGSyb03A7RENSmax0Erog57lnN3MhjGCQ6CU2rXKgg=;
+ b=QkvNHPShFED7DWUwkY0KyrEZxo51PbThdX5dtz1FWay8CNTQRUijIu7vQ/fmDsvDD+CRTA
+ wLy40Yr4VGjGLoa/dU7v4JazLb+FvQ1cXMDHfwvX36U5slmm+HgkU+cPjioxraqz69x2r1
+ cyJ4Qx3RKRS2IvkIZ58bCnUjaAxCAhY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-481-BZoAmunqOQiboC7c5cZvaQ-1; Sat,
- 24 Oct 2026 09:20:05 -0400
-X-MC-Unique: BZoAmunqOQiboC7c5cZvaQ-1
-X-Mimecast-MFC-AGG-ID: BZoAmunqOQiboC7c5cZvaQ_1792848002
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-617-ZMnWrq_FOgO-6Rn6OI4_5w-1; Sat,
+ 24 Oct 2026 09:20:01 -0400
+X-MC-Unique: ZMnWrq_FOgO-6Rn6OI4_5w-1
+X-Mimecast-MFC-AGG-ID: ZMnWrq_FOgO-6Rn6OI4_5w_1792847998
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5DA471956058; Sat, 24 Oct 2026 13:20:02 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 250D8193FA91; Sat, 24 Oct 2026 13:19:57 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D2E16300019F; Sat, 24 Oct 2026 13:19:59 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 4A46A1956087; Sat, 24 Oct 2026 13:19:53 +0000 (UTC)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 09/19] tests/guest-debug: convert cmd to an qemu_cmd
+Subject: Re: [PATCH v3 08/19] tests/guest-debug: convert gdb_cmd to an
  array
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
@@ -74,30 +74,30 @@ Cc: qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, 
  Yoshinori Sato <yoshinori.sato@nifty.com>, Klaus Jensen <its@irrelevant.dk>, 
  John Snow <jsnow@redhat.com>
-In-Reply-To: <20261019192704.3220373-10-alex.bennee@linaro.org>
+In-Reply-To: <20261019192704.3220373-9-alex.bennee@linaro.org>
 References: <20261019192704.3220373-1-alex.bennee@linaro.org>
- <20261019192704.3220373-10-alex.bennee@linaro.org>
+ <20261019192704.3220373-9-alex.bennee@linaro.org>
 Date: Sat, 24 Oct 2026 17:19:42 +0400
-Message-Id: <179284798272.974117.15014061280977829462.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=536;
+Message-Id: <179284798269.974117.4596200400689699748.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=607;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=jxQgKFHdM05cQUVxS7+ESMAuz0yrVESoGSQSWegc5oM=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq3LBx9KupIRvCC/nhQwgG4a2FUO1hRU7jfx93c
- xaPRJqbeXiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatywcQAKCRDa6OEJdZac
- 5S+REACoH1mRw63bWC8S4qQMkYSd78fyWhLoX4N11/ZVMpuS4dWPgeEs1MdyBBmaMFyd3QhgQRI
- A2e22S/wlw6UQCY6M3IZX0LDrPB0g0js7DJrGSK3Dt1vaYQvxp5YctOpyWZT2/cUbHSj0dfhO8W
- ukkf39EcA7Ztywx69mA2uggshvUTXz/58Fu+UJ51m/6RarLkQ1y7t/BNSNkB0Lvk3h1/dV3Dz70
- xgWKwO00QkVPsRmbrZs447dVrY7yEtS6GlHXTnKv5ATY8hSOlJGgJNNrcU6/XRzmiUj0cJXpK/y
- n/e879xaQtAkUhXWf06PygyuVd/MS3xQObgM8Z7vwVpI20apUF4mVF43eOdHYbQ3mgmzDZXAul0
- tNKZ2fyPzlb+a40G8ZbqNafM2X9i+c6tuhO1FtJkoXEVOTvUi6uO5sQ8/np7GGfehDbJWzM5DMS
- q9Zsev6ymkE7y6YqRc/rnyQDp9x88AjhuJ0qz7aAa4gcnh028T9SIck5ubyiR+ITUdPrjSI9znq
- 55VfaSUyXt71et5xTMUg6Ct84YDtSziEYXPjmBAd7isnQXLIWm+VhcE6AakKsSaLrbfQeD8PTEw
- EeDwCb8FDv6CJRmI7auIcK2ebjd+hNwgsr70Zgth+pD51LPJM9SsSTZOfwQSB6GKmKBt804wmHO
- j6XfhmRHhLuIrMA==
+ bh=SfOmcJDqMBaXTpLyvhR1EpDwKgRVqOSU69uSbpZw5ow=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq3LBw+brxO0zy1Rz3sHy9UdnDpkAhUznedj2Yf
+ qmTVgR4H5+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatywcAAKCRDa6OEJdZac
+ 5X/ND/9T9iRN/IQbUNGnxHGwqaro5jMmMa1NAFdrQTF45fp8DH8tzBDcSTgfR3ULExSbc5WqCTR
+ DHgjVK1j8M4BgJJi/iLFPj72dbLlaQYsyNU7aG8EV1d6NWaBx9147tXD3n6M/unIzL9DdYbA4VN
+ G+o/unazM+hueWnCu4V2IT1530g5zXsqwcXO8s/8Ow8DV5qbiVA7UTW7LqLlTAKvER1YAtfPGzs
+ hmdYcLQiHHa2qbB9YzP2PWKPWDIm71B/edB97eK8zLAPc9M0JmuEPWJMCSxdNP/CetW8Vo05UON
+ q6mcoMfowR2JukO1JJ6Z+HNzLgkZw0jDutxfIMMprybjj4+oQWHZ3x+xyxj3Rcm55biMzOpr+ta
+ z2BGOiGru33vferYnZtLFmMfnGKcm0LjbAvXmu9Y267o/s3xQZSdXZ86Qvi1tUD6tfLB2tJs5dE
+ cQBsCOn5EnZf85sO+ps8cFzCE0QvorPJWo5qCXCk81eF5gHys381+9AobXlqhnfHLD1BktwsRKO
+ OsdvjJckhYfvvgw9XgR9xcQvckEoBp6GAaiFIKvUqQ4DxHuNU7/fTYuVB/gZsmQtP7F+o4/X02t
+ WSDZ3NTyyH9927eCRePayt7lDy5UMdEjlvw1OlKSRWqh3DLOHuf6s8OXLj8dJidtBOOHPi92O8y
+ l4oZGWucTFSEgOg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: MVdQ9NC7-kGOf04dKe2HSkLubl_uP52e92CCiMSgd1M_1792848002
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: EZJ2WZJWfqXGn6y1XWIr03iKz7y0nQPyW1bFsbhM6ek_1792847998
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -125,17 +125,19 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 19 Oct 2026 20:26:54 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
-> As with gdb_cmd passing a plain string to a subprocess involves making
-> sure the escaping is correct so the underlying shell doesn't get
-> confused. Do the same as gdb_cmd and make the whole thing an array.
+On Mon, 19 Oct 2026 20:26:53 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
+> Passing a plain string to subprocess involves making sure the escaping
+> is correct so the underlying shell doesn't get confused. This can be
+> tricky to track across multiple  processes. To simplify this build the
+> command as an array and execute gdb directly without involving the
+> shell.
 > 
-> There are a few minor wrinkles with when args.binary is expected so
-> add some comments for that.
+> We add a mini-helper to make the log output a bit more copy and paste
+> friendly.
 > 
 > [...]
 

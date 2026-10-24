@@ -1,55 +1,56 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 238F0606A31B
-	for <qemu-arm@archiver.kernel.org>; Sat, 24 Oct 2026 13:20:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB46E606A320
+	for <qemu-arm@archiver.kernel.org>; Sat, 24 Oct 2026 13:21:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=KFx40p2Z
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=HfZJFaZ6
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKbfS-0006JZ-KB; Sat, 24 Oct 2026 09:20:15 -0400
+	id 1xKbfX-0006LA-Pg; Sat, 24 Oct 2026 09:20:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xKbfI-000699-3x
- for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xKbfR-0006Hl-HM
+ for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xKbfF-0000VV-M5
- for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:02 -0400
+ id 1xKbfP-0000ij-Vn
+ for qemu-arm@nongnu.org; Sat, 24 Oct 2026 09:20:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1792848000;
+ s=mimecast20190719; t=1792848009;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UQAn78vPWEXTirZf0lDhu6gpbpKqpdAp+lS6Rf8H9Go=;
- b=KFx40p2Zc33FRZRmFuVR4gc+3I+fJXAZ9ns5PVNcWetTpIE1QmPbt+yULCKHecGYo2697j
- 1zw2SjNcf6TxmZ3uapEi71xSundduPKwgjm4z45vXZbiQMC0uf5GbCcQc7IOoAXdFZQa5U
- 4nvlytHFRfHuvZoLvWR6jmMRSLQLbjI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=y0LOldFKpixMOYV2xWBbBMRaCAotlRj8zfuORlJm4pk=;
+ b=HfZJFaZ6shq4EEVWUi2w7N2bvAdi76WVRXdqP03HdG16d0SG73QC8ObLqqmQv+FDIhBd6M
+ 7Yoa2WjHq24NRJoYcaU7UeVJutmXHyu5GeMa9hnUcMr2AxVfCOF+BWRkm/KEz5p0LphOYp
+ +SXPwOHwgFohlcgD5lK0Q0IewGfazQA=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-368-gGp9DRFHPOSzLZzhK-QuSw-1; Sat,
- 24 Oct 2026 09:19:55 -0400
-X-MC-Unique: gGp9DRFHPOSzLZzhK-QuSw-1
-X-Mimecast-MFC-AGG-ID: gGp9DRFHPOSzLZzhK-QuSw_1792847992
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-481-BZoAmunqOQiboC7c5cZvaQ-1; Sat,
+ 24 Oct 2026 09:20:05 -0400
+X-MC-Unique: BZoAmunqOQiboC7c5cZvaQ-1
+X-Mimecast-MFC-AGG-ID: BZoAmunqOQiboC7c5cZvaQ_1792848002
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 76B921800767; Sat, 24 Oct 2026 13:19:51 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5DA471956058; Sat, 24 Oct 2026 13:20:02 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C0EE2472; Sat, 24 Oct 2026 13:19:47 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D2E16300019F; Sat, 24 Oct 2026 13:19:59 +0000 (UTC)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 03/19] .dir-locals: include QEMU code in PYTHONPATH
+Subject: Re: [PATCH v3 09/19] tests/guest-debug: convert cmd to an qemu_cmd
+ array
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>, 
@@ -73,43 +74,43 @@ Cc: qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, 
  Yoshinori Sato <yoshinori.sato@nifty.com>, Klaus Jensen <its@irrelevant.dk>, 
  John Snow <jsnow@redhat.com>
-In-Reply-To: <20261019192704.3220373-4-alex.bennee@linaro.org>
+In-Reply-To: <20261019192704.3220373-10-alex.bennee@linaro.org>
 References: <20261019192704.3220373-1-alex.bennee@linaro.org>
- <20261019192704.3220373-4-alex.bennee@linaro.org>
+ <20261019192704.3220373-10-alex.bennee@linaro.org>
 Date: Sat, 24 Oct 2026 17:19:42 +0400
-Message-Id: <179284798267.974117.15393556178297449546.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=578;
+Message-Id: <179284798272.974117.15014061280977829462.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=536;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=+BCH9Z5mi72LJRQQiI+wiipLZ10r6xp2UXzIrS0MH7o=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq3LBwPQxpHHYOlsWSa1wnMYpNNwBR4SikLPv0B
- 72grWoCbJ2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatywcAAKCRDa6OEJdZac
- 5fXOEACXn9STtHcGucUYh/53ncUXUamteDNxZb6I76VMHjln7vp+PnhTVURFKkq/5UgvhRaUIbW
- uwv2lSPCAloX7tiM7l6dELDAYH0GnAE3zsZWO6P0LrsG5DuOJi5ncw2jkz8R8Py1NrckkFnKZFw
- vtq1q0SBr0hTfFyD2m1BeFCW2iQw2FoNzK+f+Prcd3uDmnI0bF1uLruFGiB65Ob6yWlObNpfU+V
- 0FMgKd/rPy+KrNUKt7Asr9fyrqi4S8LeHOexNvltPBiZh31ZuZ+bNL/EPiZ/7p3k3FzziWcpLiq
- 8QWjAgM6fT9Qyt9aDePQ8z67fuVc66QouRmHSlsSl2YMratptakedYRAl5td0RGBqTFDTrTTjk0
- oWJC1w54ISLOXMO/84D1qYGyNmQ0WJP1QRbM/Tr+dHU5nB3TY4knreojfCDawMHfPC5gloNVvWR
- LpKkPBAu6lDwQuq/L9Mh5rYTgdL7FIsWcgfvTRN6rbjGGQ0mK91HmD7gK6iaME99hY60hAQy1zX
- VXKEVute4DImc8W1044Msx6J6cozydVu5s/pb1CmVbVdo3SwoJkwiE4kUWplyLPx4joFrlNqiYj
- qdDftXJhgS0OdqqYVFHBNPrEnzl9Qwl3MBdM/m7YjVkgR3XDOZzxLgeMyiazbvIoYDS7ryMgWzl
- 9UUny4IlsnUDpRQ==
+ bh=jxQgKFHdM05cQUVxS7+ESMAuz0yrVESoGSQSWegc5oM=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq3LBx9KupIRvCC/nhQwgG4a2FUO1hRU7jfx93c
+ xaPRJqbeXiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCatywcQAKCRDa6OEJdZac
+ 5S+REACoH1mRw63bWC8S4qQMkYSd78fyWhLoX4N11/ZVMpuS4dWPgeEs1MdyBBmaMFyd3QhgQRI
+ A2e22S/wlw6UQCY6M3IZX0LDrPB0g0js7DJrGSK3Dt1vaYQvxp5YctOpyWZT2/cUbHSj0dfhO8W
+ ukkf39EcA7Ztywx69mA2uggshvUTXz/58Fu+UJ51m/6RarLkQ1y7t/BNSNkB0Lvk3h1/dV3Dz70
+ xgWKwO00QkVPsRmbrZs447dVrY7yEtS6GlHXTnKv5ATY8hSOlJGgJNNrcU6/XRzmiUj0cJXpK/y
+ n/e879xaQtAkUhXWf06PygyuVd/MS3xQObgM8Z7vwVpI20apUF4mVF43eOdHYbQ3mgmzDZXAul0
+ tNKZ2fyPzlb+a40G8ZbqNafM2X9i+c6tuhO1FtJkoXEVOTvUi6uO5sQ8/np7GGfehDbJWzM5DMS
+ q9Zsev6ymkE7y6YqRc/rnyQDp9x88AjhuJ0qz7aAa4gcnh028T9SIck5ubyiR+ITUdPrjSI9znq
+ 55VfaSUyXt71et5xTMUg6Ct84YDtSziEYXPjmBAd7isnQXLIWm+VhcE6AakKsSaLrbfQeD8PTEw
+ EeDwCb8FDv6CJRmI7auIcK2ebjd+hNwgsr70Zgth+pD51LPJM9SsSTZOfwQSB6GKmKBt804wmHO
+ j6XfhmRHhLuIrMA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: d47-rQh_vXZPQFXnaNag8El0p_yq-lb54CkC5K-8zoY_1792847992
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: MVdQ9NC7-kGOf04dKe2HSkLubl_uP52e92CCiMSgd1M_1792848002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.339,
+X-Spam_score_int: 2
+X-Spam_score: 0.2
+X-Spam_bar: /
+X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.339,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,14 +129,13 @@ X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 19 Oct 2026 20:26:48 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
-> When editing python code the linters tools have a hard time with our
-> imports as they can't be found. To ease this we can expand a
-> PYTHONPATH in .dir-locals so at least Emacs users can have less
-> warnings in their editor.
+On Mon, 19 Oct 2026 20:26:54 +0100, Alex Bennée <alex.bennee@linaro.org> wrote:
+> As with gdb_cmd passing a plain string to a subprocess involves making
+> sure the escaping is correct so the underlying shell doesn't get
+> confused. Do the same as gdb_cmd and make the whole thing an array.
 > 
-> I still get complaints from python-mypy about missing library stubs
-> that mean it can't do proper type analysis though.
+> There are a few minor wrinkles with when args.binary is expected so
+> add some comments for that.
 > 
 > [...]
 

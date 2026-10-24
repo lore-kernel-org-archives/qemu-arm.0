@@ -1,82 +1,149 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E21EC606A31B
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Oct 2026 22:51:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06075606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 24 Oct 2026 10:10:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=treblig.org header.i=@treblig.org header.a=rsa-sha256 header.s=bytemarkmx header.b=CwTaEcQ6
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=XOwHJDwU;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=EzsV5iPE
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKO6j-0001d1-H5; Fri, 23 Oct 2026 18:51:29 -0400
+	id 1xKYhN-0004yj-TI; Sat, 24 Oct 2026 06:10:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1xKO6S-0001Zv-DU; Fri, 23 Oct 2026 18:51:12 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xKYhM-0004y4-GQ
+ for qemu-arm@nongnu.org; Sat, 24 Oct 2026 06:10:00 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1xKO6Q-00048C-6u; Fri, 23 Oct 2026 18:51:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=r/0vZ9XeYv6W1ZS9Y1AMZ3WMWGbwcGx0bg2i9kCEhWE=; b=CwTaEcQ6yzQWiXFJ
- LIRmADGd7b1BqrbNxIIrFDZBH2zwNoryjDVwyzEsqbtKulx+6uILV1q2kIYmrepIoHiL5ZnaYv9HS
- Lj5KyC1yi+ZBtalOmCG5ONR+fF4yBBMLf3ECNUaQaklhxEYuoUJc/KWPKedEMmZmuLgA2CiJtvqWi
- olS46FFzSq/DpRvcuHLl8hi33uOUKzGllBbe95f62ZTrh8+un2QAtxJfO0T2dOarsfDKRGiCN0A8D
- fhrJMPZ6op5YPMqlCbfUGXk2Z/Z+dkGkvSGQw50M/dMv9SE8NVCBr2yvJZpsZ2BktNvacl6rWmWAE
- pBs9ua6zhuPvcuZchA==;
-Received: from dg by mx.treblig.org with local (Exim 4.98.2)
- (envelope-from <dg@treblig.org>) id 1xKO6G-00000002KpI-2Jhy;
- Fri, 23 Oct 2026 22:51:00 +0000
-Date: Fri, 23 Oct 2026 22:51:00 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v3 11/18] target/i386: drop HMP $pc
-Message-ID: <atvk1Moo4nA_w_pi@gallifrey>
-References: <20261022-query-reg-v3-0-7ad902b9a7cf@redhat.com>
- <20261022-query-reg-v3-11-7ad902b9a7cf@redhat.com>
- <atqdgESEVhYYsz5e@gallifrey>
- <CAJ+F1CJvkXiBLWrRvWOeG7+qBLOovsZ8xOhoBtxd26CVor=DgQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xKYhK-0005r8-RA
+ for qemu-arm@nongnu.org; Sat, 24 Oct 2026 06:10:00 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69O8o7K01166442
+ for <qemu-arm@nongnu.org>; Sat, 24 Oct 2026 10:09:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ KsWjU7F1NFhVMBPhUYsfzzR2U/03SHKYUuehpvIJtLw=; b=XOwHJDwUD20068s4
+ O6hjt8+518Ba43iWIz7yuU80I64Ik+41GfZMGKvjQQcDLcmTntlPG49OM8TbRqN4
+ jK1ih6ZPiYCERWNmzAEI6FxyrDmPG/P2IyexE80YeJTmz0xJo7w8dWrUdg9Ie++q
+ r19CKmqsXcwpQETB3jfAeuKQeGVG4vXYJybh1m2yzGgciYWW3hca015AvVc+KNzi
+ xqaQcMbz4HRzbuGxlSWyGkrtztPStmoK1h9rVq0S2zwvzDKNGVRb9H8MTP+7Y93r
+ JZ08blm8FFHelxjGHm8Cw+d/8sI/ORifLlrc4k+FgwcfZsXeWq94gnONpABn9ODN
+ I0EdjA==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hgmw3gp95-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Sat, 24 Oct 2026 10:09:57 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-936aa34873bso325832785a.3
+ for <qemu-arm@nongnu.org>; Sat, 24 Oct 2026 03:09:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1792836596; x=1793441396; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=KsWjU7F1NFhVMBPhUYsfzzR2U/03SHKYUuehpvIJtLw=;
+ b=EzsV5iPE8/q4HEpG8/IvbhUbDXQLubB5mDVXGCOZWEspsnQzH5UXYR1mRzAEUrJ3zd
+ sRSdftRtD81n0hInZ5s128Els217aBNJPvRY/25AJMbfDfjL7b8IsLdm+fGn92JNiRdy
+ 33wr6ZT6vmqFYCW2pr1gbLwTvfibEYC9KTWNg/0BSY1bequklJMBwC5irfJ3UjNdkZ0I
+ 5P7LAERXr3hiE+E2oRiPI9F1zZZGmF9Ujv2IpAUBptD6HlRhA4/sbnNiDCUmCoS7sBlK
+ EvgK192/VMw7ltLf+O9dOsNUP3YBrMQiR1KFxl+9vUiwl9dvYTaRPpKeLOdG4p2MQPju
+ OjzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792836596; x=1793441396;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=KsWjU7F1NFhVMBPhUYsfzzR2U/03SHKYUuehpvIJtLw=;
+ b=T0w7iEBruPJ9i1/muofKoQ9ELKjfkFHNmOWXqDQp5FZBkJRZSy2r78C6bBAdaYaZOr
+ u3Ncqajnr6FRTodlW6sWRef5CoDlt6VqGzuimW4jTVHVIH/RFLbS83xDLLLGgT83CfG1
+ 56O1aUA1VaLLNAz9TcB8HYHJpWcebnxrl8ahz2/Dgyx/ERxVfT83LKxKrqWEYf19y5t+
+ kd312cZ4NbXLeXfG+Ve6y5hdSw2MlSTca93MEkXWrDkarQw+T+w0Gh/VysWoP1jqSG18
+ Ei94vxveYQA4RQyEUKki3p0QvZ1wrl9IA/H7srrAa7DboXfmVw1ALWZ8JMWzWiJbnGVM
+ gIqg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzXt0jq8E2cf+XK+V1spcqJTS1/qEfjfPZ57p0lKC/zDakYZUtO5JHoWNoUeq/f/HRh3FzhNnP5zA==@nongnu.org
+X-Gm-Message-State: AFq9FYIZaqUaFigZpQ1U0+qadbnVFss32zHHtYCNFyq5o9jeEJh/13A7
+ IDdr9NeMXI57CkyLMiodwP24bPNsqSgFJpTbyAW3LVuZHWWxHJfMRXwBxsGvUH7JGYDkp1khj1v
+ xqnmx4XG4hnsfyqq0nnA/sQZcyRLUEVCFzD8J6ZaajudzWc4VNIknfTw=
+X-Gm-Gg: AYBFou3Cyfl1F9MjTSMzwB7fYXgvcBG++a2tPJ49uHaeNQhMsPQJhw4hGjqhYCKzXUP
+ nCC1qVAJd8FOmPokvkRqhtNem8msEwEBcLytSeax+AEHXAF+4SYqTVxYgVFkN+tvx+8EI7CI4m0
+ QZCahZDE3flcxoFJskRNTktb6N/6fjST0vcz1331zPgYDVAyuHZe46rko/0ZZdS8d8g6Q6XmoId
+ 82JB60c1/GnPVpnBho/XUBVEhVNQdjcpVG5STxmRBZ5g2DoppscB9gn56F5cRybHm715kAiLapx
+ A6yC8xOSRY2GK/XtqVtJjCc4zx250Wwlubhd76xyaiquKFTTKsTYORSMVPSKCxoghNq43VoYckO
+ SaR35lqu970FfLkZKs0JarwEhLq9oIthRaA==
+X-Received: by 2002:a05:620a:3715:b0:93e:ee21:70ec with SMTP id
+ af79cd13be357-940ef9e6f89mr209858985a.80.1792836596065; 
+ Sat, 24 Oct 2026 03:09:56 -0700 (PDT)
+X-Received: by 2002:a05:620a:3715:b0:93e:ee21:70ec with SMTP id
+ af79cd13be357-940ef9e6f89mr209856585a.80.1792836595551; 
+ Sat, 24 Oct 2026 03:09:55 -0700 (PDT)
+Received: from [192.168.69.209] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a359f3e00asm83302625e9.0.2026.10.24.03.09.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 24 Oct 2026 03:09:54 -0700 (PDT)
+Message-ID: <b5c44bcc-6642-4f64-8e76-bea11f05bdec@oss.qualcomm.com>
+Date: Sat, 24 Oct 2026 12:09:53 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/net/cadence_gem: Check guest-provided queue numbers in
+ screening registers
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Jason Wang <jasowangio@gmail.com>
+References: <20261023153106.1710228-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20261023153106.1710228-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAJ+F1CJvkXiBLWrRvWOeG7+qBLOovsZ8xOhoBtxd26CVor=DgQ@mail.gmail.com>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.12.113+deb13-amd64 (x86_64)
-X-Uptime: 22:46:46 up 7 days, 8:07, 3 users, load average: 0.01, 0.02, 0.00
-User-Agent: Mutt/2.2.13 (2024-03-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-GUID: D6NxLf_77Pf_3T75wAqm7xQ_c6M4L6fa
+X-Proofpoint-ORIG-GUID: D6NxLf_77Pf_3T75wAqm7xQ_c6M4L6fa
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI0MDA0MCBTYWx0ZWRfXwHBgob0Ww/Ud
+ korWsK+tq8ZlzEar0/FxP7T4iLPoP3ws5ZMuKAQBHSHegLYFB36qTBTMcSPNYf86G6Z5OfR6cKk
+ vpcqF1OTtrc0ajjpHukJSBzPTpTz6ow=
+X-Authority-Analysis: v=2.4 cv=HqHjiETS c=1 sm=1 tr=0 ts=6adc83f5 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=p0WdMEafAAAA:8 a=69wJf7TsAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8
+ a=QGRAimw5JShAxdOTMG4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=IoWCM6iH3mJn3m4BftBB:22 a=Fg1AiH1G6rFz08G2ETeA:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI0MDA0MCBTYWx0ZWRfX8Kn4jI6b+jGG
+ tkfwRZoyEwaeDqSiianDIhwv+uO74P8dGjuDsrMc2pXp1Hh6/2Qx2UiC6zI/JiToTMpE/Wy4UTn
+ Y0VbITynrN/EnVwMaUJBpmSQz1kEQy+CS3lX5Qh7jvuwAfKE7FM9hOu2Oe6KLiXIaCUO6WRrLqW
+ zYeitJQG+0ESSc4ynZ4PZn799YfwRvchPqmkla+rNNsGApFxhmKkbQxrx2DqihNHmnipAouF1gN
+ rqBiLtUtPlMuaV+/Zzvt4GegW2hYNU1hOifdvGPwclwp1zpKn1iXoA1YLWoWMcdmP9ivE6DAP09
+ fPvAIx9F5w2rc6ogPB8pR/rmnOwLrERkbDVXi8AjgBddRI+dtOO/7AjGr3e9Wz4ctIcilagqY4Z
+ rHBQpuIwYoFYmrljXbuF7Kx3M8qt/E3xxmf/ic0rKmCQsGwqfhOlZABNp0yWjQyXe42+s0O/MjV
+ a695n3JeNXDbxbQ4Gtg==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-10-24_01,2026-10-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 spamscore=0 bulkscore=0 malwarescore=0 lowpriorityscore=0
+ clxscore=1015 impostorscore=0 adultscore=0 phishscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610240040
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,95 +155,34 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-22.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-* Marc-André Lureau (marcandre.lureau@redhat.com) wrote:
-> Hi
+On 23/10/26 17:31, Peter Maydell wrote:
+> The Cadence GEM allows the guest to program "screening registers"
+> which control which queue received network data should be sent to.
+> The field for the queue number in these registers is 4 bits, but the
+> device might not actually have that many queues.  We weren't checking
+> this, which meant the guest could program a value that caused us to
+> index off the end of various arrays.
 > 
-> On Fri, Oct 23, 2026 at 3:35 AM Dr. David Alan Gilbert <dave@treblig.org> wrote:
-> >
-> > * Marc-André Lureau (marcandre.lureau@redhat.com) wrote:
-> > > The to be deprecated MonitorDef provided a synthetic $pc alias on
-> > > x86 (which begin as an $eip alias). Preserving it requires x86-specific
-> > > semantics (CPUClass::get_pc() omits the historical truncation).
-> > > Use $eip or $rip instead, adding $cs.base as required.
-> > >
-> > > It was never a documented feature, HMP is not a stable API, x86-only,
-> > > and the replacement ($rip/$eip + $cs.base) is arguably more correct.
-> > > Nobody asked for a deprecation window on ML either.
-> > >
-> > > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> >
-> > <snip>
-> >
-> > > diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
-> > > index a523dbb446ce..b3f8fd58612d 100644
-> > > --- a/tests/qtest/test-hmp.c
-> > > +++ b/tests/qtest/test-hmp.c
-> > > @@ -58,7 +58,6 @@ static const char *hmp_cmds[] = {
-> > >      "object_del mem1",
-> > >      "one-insn-per-tb on",
-> > >      "pmemsave 0 4096 \"/dev/null\"",
-> > > -    "p $pc + 8",
-> >
-> > That leaves us with no test of the 'p' command, and no test of reading
-> > a register.
-> > Given how much you're changing accessing the registers you
-> > should still have a basic test by the end.
+> Check against num_priority_queues, and treat out-of-range values
+> as if the screen didn't match (i.e. go to queue 0). (This is a
+> best guess at reasonable behaviour since I don't have access to
+> a datasheet for this device.)
 > 
-> The existing test doesn't really do much though, it just checks we
-> don't crash basically. I can try addressing this as a followup
-> 
-> >
-> > How does this test work on S390 where 'info registers' shows
-> > NIP but 'p $pc' works but 'p $nip' doesn't?
-> 
-> I assume you are talking about gdb, since $pc doesn't work with HMP-S390.
+> Cc: qemu-stable@nongnu.org
+> Fixes: e8e4994313b7 ("cadence_gem: Add support for screening")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4363
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/net/cadence_gem.c | 21 +++++++++++++++++----
+>   1 file changed, 17 insertions(+), 4 deletions(-)
 
-Oh! It was that test I was worried about, so that 'p $pc + 8' fails
-on s390 - with an 'unknown register';  so yes, removing the x86 one doesn't
-make any difference then.
-
-> > I assume gdb also has some concept of a 'pc' at it's end?
-> 
-> GDB has extra synthetic pseudo-registers. We have a bunch in QEMU (and
-> this series add more). We can add extra as necessary. But $pc for x86
-> is currently ill-defined, so we decided to drop it earlier.
-
-OK, it was just that loss of the test for reading $pc which worried me;
-hmm it would be great if we could find a way to add a test back in the future
-for register reading.
-Given that it already silently fails on s390, you could actually leave
-that test line in and when run on any non-(x86, s390) it would test the
-reading still.
-
-Dave
-
-> > Dave
-> >
-> >
-> > >      "qom-list /",
-> > >      "qom-set /machine initrd test",
-> > >      "qom-get /machine initrd",
-> > >
-> > > --
-> > > 2.56.0.116.g6de20f6092dc
-> > >
-> > --
-> >  -----Open up your eyes, open up your mind, open up your code -------
-> > / Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \
-> > \        dave @ treblig.org |                               | In Hex /
-> >  \ _________________________|_____ http://www.treblig.org   |_______/
-> >
--- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

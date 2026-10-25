@@ -1,129 +1,63 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BF650606A31A
-	for <qemu-arm@archiver.kernel.org>; Sat, 24 Oct 2026 16:10:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24CAF606A31A
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 05:44:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=kUHi1Fpa
+	dkim=pass (2048-bit key, unprotected) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=t+uaLvGL
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKeJR-0004dm-L4; Sat, 24 Oct 2026 12:09:41 -0400
+	id 1xKr1Q-0003Iv-5x; Sun, 25 Oct 2026 01:43:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <adrien.kohlbecker@gmail.com>)
- id 1xKdxj-00082L-C1
- for qemu-arm@nongnu.org; Sat, 24 Oct 2026 11:47:15 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <adrien.kohlbecker@gmail.com>)
- id 1xKdxh-0006ad-Fq
- for qemu-arm@nongnu.org; Sat, 24 Oct 2026 11:47:15 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-6b1f31c63ebso4844440a12.0
- for <qemu-arm@nongnu.org>; Sat, 24 Oct 2026 08:47:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1792856831; x=1793461631; darn=nongnu.org;
- h=content-transfer-encoding:content-type:subject:references
- :in-reply-to:message-id:cc:to:from:date:mime-version:feedback-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=+PC1BPGG8wRFBnlRszmhJMWM19lUGInf67vrhi7bNg0=;
- b=kUHi1FparqOc8DSSumpd2yvUC75wkSP/+FndJUiKgKaK2UfJlB3+GIZ/t0icbB5FBl
- lO+Hi3rf1pttjps18wLfMcdDQB294C7krZpkM3S3LJQrDP+28QDGWO4DAZCCsAdzcZNm
- 14F7eJrn6Rd+PW/ulk9c3NAFqVo1MPAqSvZWiOuazqtXbLtg8TD9V5Aopx3T8LVNMRr8
- LJ74DXwzLatf2N5sDnwL8shSe0EVdHfUKZ9ZP4mRFsuYi2kHU41h0NoOBjKjCCChvoHi
- cfCMYLSB1hOp69GGwWHfb9f2Z87cIrHeyTvhH3h1zn/sNVFxsro1AF2Qoe8sAfVTICEC
- jkWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1792856831; x=1793461631;
- h=content-transfer-encoding:content-type:subject:references
- :in-reply-to:message-id:cc:to:from:date:mime-version:feedback-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=+PC1BPGG8wRFBnlRszmhJMWM19lUGInf67vrhi7bNg0=;
- b=2Jh8GDm67421kXDIVO12q4iy8HBeAWfZuh+Y/7Z2NxYlxwPcTSXOwWxMaFSDiMk/Eh
- HAfpsL9H92Wtf/bx+/PyI3C76lbhz+V/eOijcCrTnzBqtaupC58b2Dk8iQS4eaElgVGs
- qAARpZB9c35dg4dT8rmNafGyxMGaWcwQmPCjGFi/v39FqcZKhixBrP2n+NjJmdEcWXOU
- c3UUykuqVnIS/6/AqYydxL8fYOiKAGS99OpUfL6nonfySGB8uBI7shzV5swP6LcNRdY6
- uo8Ob24bcKoBvLjmUE0cfmH7wflkXOy4CxcfdT6DhQxLAF6zpvc3OK4Gjk0QMQNMG9SR
- oegw==
-X-Forwarded-Encrypted: i=1;
- AKwUvByT2gUPnPfg2Gt9fmURzRqZO/ukzrRFse+LodvfefR6AH6oLrQp0icy+DisydUiJD78my9HgbsT/Q==@nongnu.org
-X-Gm-Message-State: AFq9FYI9vMh+SPRL+TfB0W6NjfHkuMv3GpK5aPK3jIbjiPleWhWau9IW
- I2atgyEKHKMt4yWd7+kY7nnWPwu5+2LJeow8ANGCrk2ZylEf2X3TW75j
-X-Gm-Gg: AYBFou3oCbrqUK8Sc9FJq8PgPtlulS4EIPvWwvx3xlqcQvwKdz7fdtMPGBh9NgrCMnF
- xdPjyF46WaBfcGjFaOD54Jei5O+Dtw2S8n7032BcdjsVcURgo2zGWPnC0ZB5ozJ1iQUMyO1gtkY
- cyyCycI/1zfFI1A85FZRDbuAgz7R8fZoRjyU0UOf1xxSZm+lgAPDrMCfngd9P8sUzmXDzfepc88
- Sh2cs/Gh9eEpq8ejpi8rJM/8ExbKAQ2aojxuleenurtm9LyIZrzB2WtzU+p2MpG5nKd8HuZw5N7
- 4ZPY+MX5Xv1FROxwaZgpxR3VbzW4yTMWwXC0cADzML2eP4N/gYe2Mst+4KnU+/ahDCzGRfD9veX
- O6M8eZTP2Pyd1g2TyvdGdsNp+z4NQxGlqcCoR9w09+iQUaoch+ILlOb2ZwiqxccOW64+Kj0Jb+R
- mb/vPzXKlUiTuYiWVUD5bBrpLEdgblRb01NuQbslPNa+wPRHRFmShe8lNF52Ui7uQVUvqSReX18
- 0lK6e0vJL2GLON47XEgQv36UiWZrCoBPUMnFdc1hsvVtMwIi87QIFn/lUKP008ysQEEZOgwtxtp
- MkZjmDEoc5qlr0YObzK44irazDhjs1twS3/POijpl3CfM7dyPIuxTTNSC2HbbLRw8dKitYVwtQ=
- =
-X-Received: by 2002:a17:907:868c:b0:c3f:8c92:3b54 with SMTP id
- a640c23a62f3a-c46bd956b63mr283516166b.0.1792856830427; 
- Sat, 24 Oct 2026 08:47:10 -0700 (PDT)
-Received: from fauth-c1-smtp.messagingengine.com
- (fauth-c1-smtp.messagingengine.com. [204.75.18.200])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c46bd795bf8sm101695666b.70.2026.10.24.08.47.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 24 Oct 2026 08:47:09 -0700 (PDT)
-Received: from ams-compute-01.internal (ams-compute-01.internal [10.64.2.61])
- by mailfauth.ams.internal (Postfix) with ESMTP id 4BB15198003A;
- Sat, 24 Oct 2026 11:47:08 -0400 (EDT)
-Received: from ams-imap-01 ([10.64.2.21])
- by ams-compute-01.internal (MEProxy); Sat, 24 Oct 2026 11:47:08 -0400
-X-ME-Sender: <xms:-9Lcaq3U7L3RaEbHSe7UCu05_ywSeZdCWAL9RYRJI6wEzGaLhzjWJA>
- <xme:-9Lcan7P9JWd1a9OvM0gH5gJCm_8RPEU-X-Y5Vcdn5HPT3xd4HrGEt76GabmC0tYM
- Fg0otUD5Vj9HeXbowYS0TWQ1FAUZIBHYwsTOK00FbEJxyV5B_b61Pp->
-X-ME-Proxy-Cause: dmFkZTEihKyTpVw3x928/Nt/0fe8JiaEakK7FRyRYDodG7XVtlBLdoLDJulfDZIUgO6LmX
- /hqiSYx5JWhUzyWJCT2gKkxadDiHWj8NKtX0EWUEzsOEoUPXLR/XXZXeZ3w+lwzlRfXcPu
- 8SHjDwNh43Xumlcx22SSDDGG6IJkAHUHMZafQrhrzeV9xWiwAog9HJPK6Vt7j+flG4stYX
- ov85472BLMOXKqpEcKcMfA4cFJR0Rtf97QUhLBvZ+Tg14ZHoE+bAWrnVDUu+yGQh4y8xO1
- D4Avqf+Rf8aVL5i7ufZHvum/vsyKxvyELFZdG8wP+dVMZ9qixJlSObd+1AELHxGIzJEcY8
- 37moUNv4yl75vs3qRVuNWRz/5rwPwF0c9XGIg1eS1sNoNXgydV/Es67+qunGkzes9skKG7
- HHxs0wFqX76gzI98SZoZA3zfE2hLP2ycGZD/an09mGEEuRn6tmHZ/7TKal6VKzzMAl+Kod
- BIVffZuWTU3pj4DBbPg4K9N7YJDoiGK97qFN0pg4WGdZTWMh8gomGAK5uRZP5btMS+1nMQ
- HWa0Dy7kceE5OtPtyur17HtoUEZVbUASc2dKvuSxr6NDMqT6dIMVNpfeAg9bmwZLwN3QXJ
- Ow2D8Bs5JvS/RA0vDfZs82zr6LhX3V0S5hAPy/vquwZwmQacDj8YHj+E/IJA
-X-ME-Proxy: <xmx:_NLcasjJZZp6xS0mRK6q1Jxn-LS7XqlWACNVG5-MoL5vnvenpc_F2g>
- <xmx:_NLcar6ALcCGLXc1kn_3nW4pPEWTfUP8fY867ulx2q0XODLrG-GGfw>
- <xmx:_NLcasYXRcsuQlSY7ttLHM9bkhH9LThubKNPPFOIuklU7GXX3BHtaQ>
- <xmx:_NLcao4t8MPBXPP55wDP6LrsNsrA1iyJoXl9O4kIZk5Ig6Kq6pRFVQ>
- <xmx:_NLcanC2Lo50asohfOSmBzaL9tfRHWMUpHULjVBRcmFUDZ55RQcE9yYm>
-Feedback-ID: i51ae481e:Fastmail
-Received: by mailuser.ams.internal (Postfix, from userid 501)
- id EA155FA008F; Sat, 24 Oct 2026 11:47:06 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1xKr1M-0003IV-Jq; Sun, 25 Oct 2026 01:43:52 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1xKr1J-0003VD-Ll; Sun, 25 Oct 2026 01:43:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1792907024; bh=wt11AU4UZ2s7uWGGXcNO+H/yVETe2lfqBmM4XWIRYqY=;
+ h=Date:Subject:To:References:Cc:From:In-Reply-To;
+ b=t+uaLvGLh9w3vxCSw3GGvJ9BYo9KbUPBtVYpJvQPb5oaDxmCFzxaXgyFLO8UPqdt+
+ 7+vZ/xj9uyOe8G44OhcVZgFcdXyUsNopr2LVxTqPGvjK9jNbTdcCkt+yWodiUJO0dS
+ dqUjAW3RNEcQa/N7uI5sro6TQTQmXvAJc1lP/b9s5zlvtBfJaOaQLQ0iz+LsZ9CTic
+ TRFx1RgSzEEf/6SrYIJdFLYDGiwkgSjyk2bYA0KQbBuMqIZl5y+VkZ/pAtFBa9Lu8S
+ 4yRukDqxXVA2R6YLphD8Rf1z1+dSivHKBlRwb2XAQNpg6uDboVb/cCJFUHWkLd45vB
+ z1Z3V1hbNHE5Q==
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 4A5A61E0CBB;
+ Sun, 25 Oct 2026 08:43:44 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 1261244ABE9;
+ Sun, 25 Oct 2026 08:43:44 +0300 (MSK)
+Message-ID: <25d0ce95-e964-496a-a3bf-2c5f9fa1b78a@tls.msk.ru>
+Date: Sun, 25 Oct 2026 08:43:44 +0300
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Date: Sat, 24 Oct 2026 17:46:46 +0200
-From: "Adrien Kohlbecker" <adrien.kohlbecker@gmail.com>
-To: "Peter Maydell" <peter.maydell@linaro.org>,
- "Mohamed Mediouni" <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, "Alexander Graf" <agraf@csgraf.de>,
- qemu-arm@nongnu.org
-Message-Id: <6dcdb40d-e74e-4034-ba6e-5cccd57b71ab@app.fastmail.com>
-In-Reply-To: <CAFEAcA8GicYKBQDACcGzR+baM8Zi49uN+dfhu-GDH9Pgiq8J3g@mail.gmail.com>
-References: <20261022213647.21665-1-mohamed@unpredictable.fr>
- <20261022213647.21665-3-mohamed@unpredictable.fr>
- <CAFEAcA8GicYKBQDACcGzR+baM8Zi49uN+dfhu-GDH9Pgiq8J3g@mail.gmail.com>
-Subject: Re: [PATCH 2/6] target/arm: sync vCPU state after PSCI CPU_ON reset
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] hw/intc/exynos4210_combiner: Fix group register range
+ check
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20261019162217.3272337-1-peter.maydell@linaro.org>
+ <20261019162217.3272337-2-peter.maydell@linaro.org>
+Content-Language: en-US, ru-RU
+Cc: QEMU Stable <qemu-stable@nongnu.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <20261019162217.3272337-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=adrien.kohlbecker@gmail.com; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 24 Oct 2026 12:09:40 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,119 +68,71 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-22.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Peter,
+On 10/19/26 19:22, Peter Maydell wrote:
+> The exynos4210 combiner has registers arranged in sets of 4:
+>   offset 0x0: IIESR0 (handles interrupt groups 0..3)
+>   offset 0x4: IIECR0
+>   offset 0x8: IISTR0
+>   offset 0xc: IIMSR0
+>   offset 0x10: IIESR1 (handles interrupt groups 4..7)
+>   offset 0x14: IIECR1
+> 
+> and so on for a total of 16 sets of registers, which puts the final
+> IIMSR15 at offset 0xfc.  After that come two registers which aren't
+> grouped, ICIPSR0 at 0x100 and ICIPSR1 at 0x104.  The entire register
+> memory region is thus 0x108 bytes.
+> 
+> The logic which separates out the "offset is in one of the sets of
+> registers" from "offset is one of the ICIPSRn registers" is
+> incorrect, and so a write to offset 0x10448100 (which should be
+> ICIPSR0) falls through into the code for handling accesses to a set
+> of registers, and indexes off the end of the s->group[] array.
+> 
+> For an input offset of, say, 0x3C, req_quad_base_n is 0x3, because
+> this is in the 3rd set of registers.  grp_quad_base_n is then 0xC,
+> because this set of registers handles interrupt groups 12..15, and we
+> will index s->group[] with grp_quad_base_n through to grp_quad_base_n
+> + 3.  IIC_NGRP is the size of the group[] array, and so we need to
+> check grp_quad_base_n against it, not req_quad_base_n.
+> 
+> Fix the bounds check, and add an assertion that the code path
+> where we are beyond the register-set range isn't going to
+> overrun its array, which we know to be true because of the
+> size used for the MemoryRegion.
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: 8e03cf1eeb1f9e0 ("ARM: exynos4210: IRQ subsystem support.")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4709
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/intc/exynos4210_combiner.c | 7 ++++---
+>   1 file changed, 4 insertions(+), 3 deletions(-)
 
-Thanks for the review. I should say I'm not very familiar with QEMU's
-internals: I hit this as a user, while trying to kexec in an HVF guest
-on a Mac, and the patch is the smallest change I found that made it
-work. So I can't really answer your questions about which sync call is
-the right one, and I'd defer to you and Mohamed on that.
+(This is now commit ab6579bf73b in the master branch).
 
-On KVM: the same kexec works for me on KVM (an AWS Graviton host), but
-I don't know why, so the KVM sentence in the commit message is a guess
-and I'm happy to drop it.
+Hi Peter!
 
-What I can offer is a simple way to reproduce it. Boot the Ubuntu
-24.04 arm64 cloud image on an Apple Silicon Mac with
-"-M virt -accel hvf -cpu host -smp 2", then as root:
+This change has been Cc'ed qemu-stable.  For 10.0.x series,
+I'm also picking up a previous commit,
 
-  echo 0 > /sys/devices/system/cpu/cpu1/online
-  echo 1 > /sys/devices/system/cpu/cpu1/online
+  b6d36a1af79 hw/intc/exynos4210_combiner: Avoid hw_error for guest error
 
-With QEMU 11.0.1 the guest panics on the second command ("kernel BUG
-at arch/arm64/kernel/smp.c:388", in cpu_die()). It did that every
-time I tried (5 runs). With my patch applied, CPU1 comes back and the
-guest keeps running.
+instead of adjusting this change.  Please let me know if I shouldn't :)
 
-I also tried calling cpu_synchronize_state() before cpu_reset()
-instead of cpu_synchronize_post_reset() after it, in case that is a
-better fit. That fixes the reproducer too (4 runs).
+Overall, it feels like this a niche device, and it's unlikely anyone
+actually cares for the stable series -- actual users of this device
+in qemu most likely have their own local builds of qemu anyway.  But
+sure thing I might be wrong.
 
-I'm happy to test whatever version you think is right.
+Thanks!
 
-Thanks,
-Adrien
-
-On Fri, Oct 23, 2026, at 14:19, Peter Maydell wrote:
-> On Thu, 22 Oct 2026 at 22:36, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
->>
->> From: Adrien Kohlbecker <adrien.kohlbecker@gmail.com>
->>
->> arm_set_cpu_on_async_work() resets the target CPU and sets its entry
->> point and context ID in CPUARMState, but never tells the accelerator
->> that the register state changed. TCG reads CPUARMState directly, and
->> KVM re-pushes state on reset, but HVF only writes CPUARMState back to
->> the hardware vCPU when cpu->vcpu_dirty is set.
->
-> My first reaction to "this works on KVM but HVF does something
-> differently and it doesn't work" is "so why are we doing things
-> differently?".
->
->> A vCPU that reached PSCI_OFF is left clean: its last hv_vcpu_run() exit
->> was a WFI or a cancel, and flush_cpu_state() cleared the flag. A later
->> CPU_ON then resets and re-points only the QEMU-side copy. The vCPU
->> resumes in its old context, with the old MMU state and vector table, and
->> never runs the requested entry point.
->>
->> This shows up when a guest that already onlined and offlined its
->> secondary CPUs boots another kernel, for example kexec on Apple Silicon:
->> the new kernel logs "CPUn: failed to come online" for every secondary.
->> Fresh vCPUs are created dirty and single-CPU guests never issue CPU_ON,
->> so the ordinary boot path is unaffected.
->>
->> Call cpu_synchronize_post_reset() after resetting the target, in both
->> arm_set_cpu_on_async_work() and arm_set_cpu_on_and_reset_async_work().
->> It is a no-op for TCG.
->>
->> Signed-off-by: Adrien Kohlbecker <adrien.kohlbecker@gmail.com>
->> ---
->>  target/arm/arm-powerctl.c | 3 +++
->>  1 file changed, 3 insertions(+)
->>
->> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
->> index ef14a1f8a9..e197a0ebda 100644
->> --- a/target/arm/arm-powerctl.c
->> +++ b/target/arm/arm-powerctl.c
->> @@ -16,6 +16,7 @@
->>  #include "qemu/log.h"
->>  #include "qemu/main-loop.h"
->>  #include "system/tcg.h"
->> +#include "system/hw_accel.h"
->>  #include "target/arm/multiprocessing.h"
->>  #include "trace.h"
->>
->> @@ -80,6 +81,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
->>
->>      /* Start the new CPU at the requested address */
->>      cpu_set_pc(target_cpu_state, info->entry);
->> +    cpu_synchronize_post_reset(target_cpu_state);
->
-> This isn't a CPU reset, so do we really need
-> cpu_synchronize_post_reset ?
->
->>      g_free(info);
->>
->> @@ -189,6 +191,7 @@ static void arm_set_cpu_on_and_reset_async_work(CPUState *target_cpu_state,
->>
->>      /* Initialize the cpu we are turning on */
->>      cpu_reset(target_cpu_state);
->> +    cpu_synchronize_post_reset(target_cpu_state);
->
-> I'm not sure whether cpu_synchronize_post_reset() is supposed to be
-> "after we just did a full system reset" (the way i386 uses it) or
-> also "after we did a single cpu reset" (the way s390 uses it).
->
->>      target_cpu_state->halted = 0;
->>
->>      /* Finally set the power status */
->
-> -- PMM
+/mjt
 

@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C081C606A31A
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:32:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84B56606A31A
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:33:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL24X-0001dL-RD; Sun, 25 Oct 2026 13:31:54 -0400
+	id 1xL23O-0000B9-Kl; Sun, 25 Oct 2026 13:30:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL23m-0000j2-KD; Sun, 25 Oct 2026 13:31:12 -0400
+ id 1xL23A-0008Ko-HG; Sun, 25 Oct 2026 13:30:30 -0400
 Received: from www675.your-server.de ([85.10.213.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL23k-0007IB-38; Sun, 25 Oct 2026 13:31:06 -0400
+ id 1xL237-0007Er-DE; Sun, 25 Oct 2026 13:30:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=j3TyNMZ+FhVgZXveP5/NoYhCpKoL34F2hog7VU2itRY=; b=sG8+vDw8X3E/8kwbKlNSf7O03U
- //l8hBKvd82vvkR6IZ+IWT2yzpHp/RBWlZ05T6xH1DTOV6VSzoCcWvjCbpLbThLk3EczhlFcvf/g7
- kSOT9uPgCMig0rI7SD3ZwJsED9cmjSfLPWu1Z9R1uEBhECBT2TwcbwnxrDlCGk0r8AMd4wna3DHxp
- w/5SF/NHbPbCNxwXGOQLE92vxf0qF0qtHDDpXbioVhUM3fQtnZrOyI0kA506lrmxfwrSP3Antkl0j
- qYRvHm/hthIDeuzceTvgb3Pe3WDgCBsASv5/PTI1cIDIJ+tUFaBEBzBSYQtjoNpz0VHed1+P1iNvF
- NRkQPJHg==;
+ bh=X2tcz8FOE36NCw2Pq6qIWC9fOn5tMIbBzHxAdvEFcFY=; b=RTha+zVxQnBptAw91TrSYSnhBk
+ VHyOAGAQfl1MEug8ODbCkzrnIE8mdhxmFyvm2UntWSkewsQmYnKPmAxP14xK2O4aG8ikS+T5VpHWt
+ lhq4mnCRcHPzB1CKiUn9qCKwqKXUsvg0y6pCmH0Ca/KFRQB8RG0zvEEpRbo66O4k2n22DRUVvN1xP
+ JD3qocDqsWfLufY1OoiaCEJQetg0QdQYhnJF5HvCqqQYjcr/82g5PnCTjhA/hnhNRCbsFqjguuA7G
+ v04qqz7DTw6mIG4ON6cUFF1XYFt9htInmZshPUEqF7izWCwr7LhmNYosTPJ/3XuWWPyah3GG2S5YD
+ exYvPYPA==;
 Received: from sslproxy01.your-server.de ([78.46.139.224])
  by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vv-0006kb-1A; Sun, 25 Oct 2026 17:56:07 +0100
+ id 1xL1gR-00098R-2T; Sun, 25 Oct 2026 18:06:59 +0100
 Received: from localhost ([127.0.0.1])
  by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vv-000OzG-1u; Sun, 25 Oct 2026 17:56:07 +0100
+ id 1xL1Vw-000OzG-1a; Sun, 25 Oct 2026 17:56:08 +0100
 From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:22 +0100
-Subject: [PATCH v2 06/31] target/rx: add DPFPU arithmetic instructions
+Date: Sun, 25 Oct 2026 17:55:35 +0100
+Subject: [PATCH v2 19/31] hw/timer: add Renesas RX MTU3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-umar-rx-series-v2-6-9e846577cad0@sayyadumar.com>
+Message-Id: <20261025-umar-rx-series-v2-19-9e846577cad0@sayyadumar.com>
 References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 To: qemu-devel@nongnu.org
@@ -51,11 +51,11 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=13328;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=20356;
  i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=vLMbC4PdMzmegJKQfm9hB0POYJK4eI93AwogTOJ8C/A=;
- b=0EfVuxwwmMd87eP2njcwbo1lg1xAcBq6hFEfNIAI0CziXEK/9DXBl9MrsUIIsomnhnaHZhgSe
- 0AoVsrGwm0vBMDxLgbNalsVFBK29KNpZ/NbNtLZhasb7iZlL4yyAlL9
+ bh=q4hYS297c01yFZAB5EE4lcinvjl4I/XiwtYAPrIn0vM=;
+ b=C0QQWg0klRXASwT6Qwf2oJbFAET/jrUnUgzWDno33eVrCG1O6VUM8ty1HlCzE+xcdxjIjzen5
+ ed6uWmMYn4UC6GrD9/JwCB2fp5yJ/9Vm8x/CsP0KhjY9xFF0YHFYW8M
 X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
  pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
 X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
@@ -81,390 +81,663 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
 	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add DADD, DSUB, DMUL, DDIV and DCMP. The DPFPU has its own status
-word, so double-precision arithmetic runs on a separate float_status:
-dp_begin() applies DPSW's rounding mode and update_dpsw() records the
-outcome in the DC*/DF* bits. DCMP records its result in DCMR.RES
-rather than touching the PSW.
+Add the Multi-Function Timer Pulse Unit 3, modelling MTU channels 3
+and 4 (the pair sharing base address 0x000C1200).
 
-The DPFPU exists on the RX64M/RX71M (RXv2) and RX72M (RXv3); the only
-RXv2 model currently in QEMU, the RX65N, has no FPU at all, so these
-instructions are gated on RX_ISA_V3 for now.
+Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
+           (Rev.1.00 R01UH0590EJ0100), Section 17
 
 Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
 ---
- target/rx/disas.c      |  34 +++++++++++
- target/rx/helper.h     |   6 ++
- target/rx/insns.decode |  15 +++++
- target/rx/op_helper.c  | 155 +++++++++++++++++++++++++++++++++++++++++++++++++
- target/rx/translate.c  |  78 +++++++++++++++++++++++++
- 5 files changed, 288 insertions(+)
+ MAINTAINERS                            |   2 +
+ configs/devices/rx-softmmu/default.mak |   1 +
+ hw/timer/Kconfig                       |   2 +
+ hw/timer/meson.build                   |   1 +
+ hw/timer/renesas_mtu3.c                | 509 +++++++++++++++++++++++++++++++++
+ include/hw/timer/renesas_mtu3.h        |  73 +++++
+ 6 files changed, 588 insertions(+)
 
-diff --git a/target/rx/disas.c b/target/rx/disas.c
-index 34cfe6f0ec..98882044be 100644
---- a/target/rx/disas.c
-+++ b/target/rx/disas.c
-@@ -133,6 +133,9 @@ static const char cond[][4] = {
-     "eq", "ne", "c", "nc", "gtu", "leu", "pz", "n",
-     "ge", "lt", "gt", "le", "o", "no", "ra", "f"
- };
-+static const char dcmp_cond[8][3] = {
-+    "", "un", "eq", "", "lt", "", "le", ""
-+};
- static const char psw[] = {
-     'c', 'z', 's', 'o', 0, 0, 0, 0,
-     'i', 'u', 0, 0, 0, 0, 0, 0,
-@@ -1209,6 +1212,37 @@ static bool trans_UTOF(DisasContext *ctx, arg_UTOF *a)
-     return true;
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4ca1751e30..260d70797b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3083,8 +3083,10 @@ R: Yoshinori Sato <yoshinori.sato@nifty.com>
+ S: Orphan
+ F: hw/intc/rx_icu.c
+ F: hw/rx/
++F: hw/timer/renesas_mtu3.c
+ F: include/hw/intc/rx_icu.h
+ F: include/hw/rx/
++F: include/hw/timer/renesas_mtu3.h
  
-+/* RXv2 DPFPU disassembly */
-+static bool trans_DADD(DisasContext *ctx, arg_DADD *a)
-+{
-+    prt("dadd\tdr%d, dr%d, dr%d", a->drs1, a->drs2, a->drd);
-+    return true;
-+}
-+
-+static bool trans_DSUB(DisasContext *ctx, arg_DSUB *a)
-+{
-+    prt("dsub\tdr%d, dr%d, dr%d", a->drs1, a->drs2, a->drd);
-+    return true;
-+}
-+
-+static bool trans_DMUL(DisasContext *ctx, arg_DMUL *a)
-+{
-+    prt("dmul\tdr%d, dr%d, dr%d", a->drs1, a->drs2, a->drd);
-+    return true;
-+}
-+
-+static bool trans_DDIV(DisasContext *ctx, arg_DDIV *a)
-+{
-+    prt("ddiv\tdr%d, dr%d, dr%d", a->drs1, a->drs2, a->drd);
-+    return true;
-+}
-+
-+static bool trans_DCMP(DisasContext *ctx, arg_DCMP *a)
-+{
-+    prt("dcmp%s\tdr%d, dr%d", dcmp_cond[a->cd & 7], a->drs1, a->drs2);
-+    return true;
-+}
-+
- #define BOP_IM(name, reg)                                       \
-     do {                                                        \
-         char dsp[8];                                            \
-diff --git a/target/rx/helper.h b/target/rx/helper.h
-index 63cfe48e6b..e39f4b65ae 100644
---- a/target/rx/helper.h
-+++ b/target/rx/helper.h
-@@ -13,6 +13,12 @@ DEF_HELPER_2(ftou, i32, env, f32)
- DEF_HELPER_2(round, i32, env, f32)
- DEF_HELPER_2(itof, f32, env, i32)
- DEF_HELPER_2(utof, f32, env, i32)
-+/* RXv3 double-precision FPU (DPFPU) helpers */
-+DEF_HELPER_3(dadd, f64, env, f64, f64)
-+DEF_HELPER_3(dsub, f64, env, f64, f64)
-+DEF_HELPER_3(dmul, f64, env, f64, f64)
-+DEF_HELPER_3(ddiv, f64, env, f64, f64)
-+DEF_HELPER_4(dcmp, void, env, i32, f64, f64)
- DEF_HELPER_2(set_fpsw, void, env, i32)
- DEF_HELPER_2(racw, void, env, i32)
- DEF_HELPER_2(set_psw_rte, void, env, i32)
-diff --git a/target/rx/insns.decode b/target/rx/insns.decode
-index e9ace9624c..e22536a9e0 100644
---- a/target/rx/insns.decode
-+++ b/target/rx/insns.decode
-@@ -29,6 +29,9 @@
- &mi		rs ld mi imm
- &mr		rs ld mi rs2
- &mcnd		ld sz rd cd
-+# RXv3 DPFPU argument types
-+&drrr		drd drs1 drs2
-+&dcmpd		drs1 drs2 cd
- ########
- %b1_bdsp	24:3 !function=bdsp_s
+ CAN bus subsystem and hardware
+ M: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+diff --git a/configs/devices/rx-softmmu/default.mak b/configs/devices/rx-softmmu/default.mak
+index e7caebe197..d99f506125 100644
+--- a/configs/devices/rx-softmmu/default.mak
++++ b/configs/devices/rx-softmmu/default.mak
+@@ -2,3 +2,4 @@
  
-@@ -628,3 +631,15 @@ XOR_ir		1111 1101 0111 ..00 1101 ....		@b3_rd_li
- XOR_mr		1111 1100 0011 01.. .... ....		@b3_rd_ld_ub
- # XOR dsp[rs], rd
- XOR_mr		0000 0110 ..10 00.. 0000 1101 .... ....	@b4_rd_ldmi
-+
-+########
-+# RXv2 DPFPU instructions
-+# All 4-byte register-to-register ops use prefix 0x76 0x90
-+#
-+# Binary ops: 0111 0110 1001 0000 drs2:4 op:4 drd:4 drs1:4
-+# Result: DRdrd = DRdrs1 op DRdrs2
-+DADD		0111 0110 1001 0000 drs2:4 0000 drd:4 drs1:4	&drrr
-+DSUB		0111 0110 1001 0000 drs2:4 0001 drd:4 drs1:4	&drrr
-+DMUL		0111 0110 1001 0000 drs2:4 0010 drd:4 drs1:4	&drrr
-+DDIV		0111 0110 1001 0000 drs2:4 0101 drd:4 drs1:4	&drrr
-+DCMP		0111 0110 1001 0000 drs2:4 1000 cd:4  drs1:4	&dcmpd
-diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
-index 114cc235f3..61277b7581 100644
---- a/target/rx/op_helper.c
-+++ b/target/rx/op_helper.c
-@@ -18,6 +18,7 @@
+ # Boards are selected by default, uncomment to keep out of the build.
+ # CONFIG_RX_GDBSIM=n
++CONFIG_RENESAS_MTU3=y
+diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+index e1b751a54a..4d8a53a30a 100644
+--- a/hw/timer/Kconfig
++++ b/hw/timer/Kconfig
+@@ -68,3 +68,5 @@ config AVR_TIMER16
  
- #include "qemu/osdep.h"
- #include "qemu/bitops.h"
-+#include "qemu/log.h"
- #include "cpu.h"
- #include "exec/helper-proto.h"
- #include "accel/tcg/cpu-ldst.h"
-@@ -152,6 +153,160 @@ FLOATOP(rx_fsub, float32_sub)
- FLOATOP(rx_fmul, float32_mul)
- FLOATOP(rx_fdiv, float32_div)
+ config HEX_QTIMER
+     bool
++config RENESAS_MTU3
++    bool
+diff --git a/hw/timer/meson.build b/hw/timer/meson.build
+index 8323efaf46..c70efba796 100644
+--- a/hw/timer/meson.build
++++ b/hw/timer/meson.build
+@@ -36,3 +36,4 @@ system_ss.add(when: 'CONFIG_SIFIVE_PWM', if_true: files('sifive_pwm.c'))
+ system_ss.add(when: 'CONFIG_AVR_TIMER16', if_true: files('avr_timer16.c'))
  
+ system_ss.add(when: 'CONFIG_HEX_QTIMER', if_true: files('qct-qtimer.c'))
++system_ss.add(when: 'CONFIG_RENESAS_MTU3', if_true: files('renesas_mtu3.c'))
+diff --git a/hw/timer/renesas_mtu3.c b/hw/timer/renesas_mtu3.c
+new file mode 100644
+index 0000000000..7dd20843ed
+--- /dev/null
++++ b/hw/timer/renesas_mtu3.c
+@@ -0,0 +1,509 @@
 +/*
-+ * RXv3 double-precision FPU helpers.
++ * Renesas RX65N Multi-Function Timer Pulse Unit 3 (MTU3)
 + *
-+ * The DPFPU has its own status word: "The single-precision floating-point
-+ * status word (FPSW) is neither referred to nor updated in double-precision
-+ * floating-point arithmetic operations." DPSW carries its own rounding mode
-+ * (DRM) and denormal handling (DDN), so double precision runs on a separate
-+ * softfloat state rather than sharing fp_status. The PSW is not touched
-+ * either; DCMP records its answer in DCMR and MVFDR moves it to PSW.Z.
++ * Models MTU channels 3 and 4 (the pair sharing base address 0x000C1200).
++ *
++ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
++ *            (Rev.1.00 R01UH0590EJ0100), Section 17
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
 + */
-+#define SET_DPSW(b)                                                     \
-+    do {                                                                \
-+        dpsw = FIELD_DP32(dpsw, DPSW, DC ## b, 1);                      \
-+        if (!FIELD_EX32(dpsw, DPSW, DE ## b)) {                         \
-+            dpsw = FIELD_DP32(dpsw, DPSW, DF ## b, 1);                  \
-+        }                                                               \
-+    } while (0)
 +
-+/* Apply DPSW's rounding mode and clear the sticky softfloat flags. */
-+static void dp_begin(CPURXState *env)
-+{
-+    static const int roundmode[] = {
-+        float_round_nearest_even,
-+        float_round_to_zero,
-+        float_round_up,
-+        float_round_down,
-+    };
-+    uint32_t dpsw = env->dcr[RX_DCR_DPSW];
-+
-+    set_float_rounding_mode(roundmode[FIELD_EX32(dpsw, DPSW, DRM)],
-+                            &env->dp_status);
-+    set_float_exception_flags(0, &env->dp_status);
-+}
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/core/irq.h"
++#include "hw/core/registerfields.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/timer/renesas_mtu3.h"
++#include "migration/vmstate.h"
 +
 +/*
-+ * Record the outcome of a DP arithmetic instruction in DPSW. Every such
-+ * instruction except DABS and DNEG recomputes the DC* cause bits, so they
-+ * are cleared first; the DF* flags accumulate and are only set while the
-+ * matching DE* enable is clear.
++ * Register offsets from device base (0x000C1200).
++ * MTU3 and MTU4 channel registers are interleaved at the base.
++ * ch[0] = MTU channel 3, ch[1] = MTU channel 4.
++ *
++ * Reference: RX65N Group Hardware Manual Table 17.1
 + */
-+static void update_dpsw(CPURXState *env)
-+{
-+    uint32_t decnt = env->dcr[RX_DCR_DECNT];
-+    uint32_t dpsw = env->dcr[RX_DCR_DPSW];
-+    int xcpt = get_float_exception_flags(&env->dp_status);
-+    int cause, enable;
++#define R_TCR_CH3    0x00   /* 8-bit */
++#define R_TCR_CH4    0x01   /* 8-bit */
++#define R_TMDR1_CH3  0x02   /* 8-bit */
++#define R_TMDR1_CH4  0x03   /* 8-bit */
++#define R_TIORH_CH3  0x04   /* 8-bit */
++#define R_TIORL_CH3  0x05   /* 8-bit */
++#define R_TIORH_CH4  0x06   /* 8-bit */
++#define R_TIORL_CH4  0x07   /* 8-bit */
++#define R_TIER_CH3   0x08   /* 8-bit */
++#define R_TIER_CH4   0x09   /* 8-bit */
++#define R_TCNT_CH3   0x10   /* 16-bit */
++#define R_TCNT_CH4   0x12   /* 16-bit */
++#define R_TGRA_CH3   0x18   /* 16-bit */
++#define R_TGRB_CH3   0x1A   /* 16-bit */
++#define R_TGRA_CH4   0x1C   /* 16-bit */
++#define R_TGRB_CH4   0x1E   /* 16-bit */
++#define R_TGRC_CH3   0x24   /* 16-bit */
++#define R_TGRD_CH3   0x26   /* 16-bit */
++#define R_TGRC_CH4   0x28   /* 16-bit */
++#define R_TGRD_CH4   0x2A   /* 16-bit */
++#define R_TSR_CH3    0x2C   /* 8-bit */
++#define R_TSR_CH4    0x2D   /* 8-bit */
++#define R_TSTRA      0x80   /* 8-bit: Timer Start Register A */
 +
-+    /* DPSW and DEPC stop updating while exception info is preserved. */
-+    if (FIELD_EX32(decnt, DECNT, EHM) && FIELD_EX32(decnt, DECNT, EHS)) {
++/* TCR register fields */
++#define TCR_TPCS_MASK   0x07   /* bits [2:0]: prescale select */
++#define TCR_CCLR_SHIFT  3
++#define TCR_CCLR_MASK   (0x07 << 3)
++#define TCR_CCLR_NONE   0
++#define TCR_CCLR_TGRA   1      /* clear TCNT on TGRA match */
++#define TCR_CCLR_TGRB   2      /* clear TCNT on TGRB match */
++
++/* TIER register bits */
++#define TIER_TGIEA  (1 << 0)   /* TGRA interrupt enable */
++#define TIER_TGIEB  (1 << 1)   /* TGRB interrupt enable */
++#define TIER_TGIEC  (1 << 2)   /* TGRC interrupt enable */
++#define TIER_TGIED  (1 << 3)   /* TGRD interrupt enable */
++#define TIER_TCIEV  (1 << 4)   /* overflow interrupt enable */
++
++/* TSR register bits */
++#define TSR_TGFA    (1 << 0)   /* TGRA compare match flag */
++#define TSR_TGFB    (1 << 1)   /* TGRB compare match flag */
++#define TSR_TGFC    (1 << 2)   /* TGRC compare match flag */
++#define TSR_TGFD    (1 << 3)   /* TGRD compare match flag */
++#define TSR_TCFV    (1 << 4)   /* overflow flag */
++
++/* TSTRA register bits */
++#define TSTR_STR3   (1 << 6)   /* MTU channel 3 start */
++#define TSTR_STR4   (1 << 7)   /* MTU channel 4 start */
++
++/* Clock prescaler: index = TCR.TPCS[2:0] */
++static const uint16_t prescaler_table[8] = {1, 4, 16, 64, 256, 1024, 1, 1};
++
++static bool chan_is_running(RXMTU3State *s, int ci)
++{
++    return !!(s->tstr & (ci == 0 ? TSTR_STR3 : TSTR_STR4));
++}
++
++static uint16_t chan_read_tcnt(RXMTU3State *s, int ci)
++{
++    struct RXMTU3ChanState *ch = &s->ch[ci];
++    int64_t now, delta;
++    uint16_t prescaler;
++    int64_t elapsed;
++
++    if (!chan_is_running(s, ci)) {
++        return ch->tcnt;
++    }
++
++    prescaler = prescaler_table[ch->tcr & TCR_TPCS_MASK];
++    if (prescaler == 0) {
++        return ch->tcnt;
++    }
++
++    now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    delta = now - ch->tick;
++    if (delta <= 0) {
++        return ch->tcnt;
++    }
++
++    ch->div_round += delta;
++    elapsed = ch->div_round / ((int64_t)prescaler * NANOSECONDS_PER_SECOND
++                               / s->input_freq);
++    ch->div_round %= ((int64_t)prescaler * NANOSECONDS_PER_SECOND
++                      / s->input_freq);
++    ch->tick = now;
++    ch->tcnt = (uint16_t)(ch->tcnt + elapsed);
++    return ch->tcnt;
++}
++
++static void chan_mod_timer(RXMTU3State *s, int ci)
++{
++    struct RXMTU3ChanState *ch = &s->ch[ci];
++    uint16_t prescaler;
++    uint32_t diff;
++    int64_t next_ns;
++
++    if (!chan_is_running(s, ci)) {
++        timer_del(&ch->timer);
 +        return;
 +    }
 +
-+    dpsw = FIELD_DP32(dpsw, DPSW, CAUSE, 0);
-+
-+    if (xcpt & float_flag_invalid) {
-+        SET_DPSW(V);
++    prescaler = prescaler_table[ch->tcr & TCR_TPCS_MASK];
++    if (prescaler == 0) {
++        timer_del(&ch->timer);
++        return;
 +    }
-+    if (xcpt & float_flag_divbyzero) {
-+        SET_DPSW(Z);
-+    }
-+    if (xcpt & float_flag_overflow) {
-+        SET_DPSW(O);
-+    }
-+    if (xcpt & float_flag_underflow) {
-+        SET_DPSW(U);
-+    }
-+    if (xcpt & float_flag_inexact) {
-+        SET_DPSW(X);
-+    }
-+    /*
-+     * A denormal the DPFPU cannot handle is an unimplemented processing
-+     * exception, which is reported only while DDN says denormals are to be
-+     * treated as denormals.
-+     */
-+    if ((xcpt & (float_flag_input_denormal_flushed
-+                 | float_flag_output_denormal_flushed))
-+        && !FIELD_EX32(dpsw, DPSW, DDN)) {
-+        dpsw = FIELD_DP32(dpsw, DPSW, DCE, 1);
-+    }
-+
-+    dpsw = FIELD_DP32(dpsw, DPSW, DFS,
-+                      FIELD_EX32(dpsw, DPSW, FLAGS) != 0);
-+    env->dcr[RX_DCR_DPSW] = dpsw;
 +
 +    /*
-+     * An enabled DP exception is delivered as an interrupt request to the
-+     * interrupt controller rather than as a CPU exception, and suppresses
-+     * the write to the destination register. Neither is modelled: the cause
-+     * and flag bits above are correct, but the interrupt is not raised and
-+     * the destination is written regardless.
++     * Schedule at the nearer of: TGRA compare match or 16-bit overflow.
++     * TGRB/C/D are not separately scheduled here; the event handler checks
++     * all flags once the timer fires.
 +     */
-+    cause = FIELD_EX32(dpsw, DPSW, CAUSE);
-+    enable = FIELD_EX32(dpsw, DPSW, ENABLE);
-+    if (cause & enable) {
++    uint16_t tcnt = chan_read_tcnt(s, ci);
++    uint32_t to_tgra = (ch->tgra >= tcnt) ? (uint32_t)(ch->tgra - tcnt)
++                                           : (uint32_t)(0x10000u - tcnt);
++    uint32_t to_ovf  = (uint32_t)(0x10000u - tcnt);
++    diff = MIN(to_tgra, to_ovf);
++    if (diff == 0) {
++        diff = 0x10000u;
++    }
++
++    next_ns = (int64_t)diff * prescaler
++            * (NANOSECONDS_PER_SECOND / s->input_freq);
++    timer_mod(&ch->timer,
++              qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + next_ns);
++}
++
++static void chan_timer_event(RXMTU3State *s, int ci)
++{
++    struct RXMTU3ChanState *ch = &s->ch[ci];
++    int base = ci * MTU3_CH_NR_IRQ;
++    uint16_t tcnt = chan_read_tcnt(s, ci);
++    uint8_t cclr = (ch->tcr & TCR_CCLR_MASK) >> TCR_CCLR_SHIFT;
++
++    /* TGRA compare match */
++    if (tcnt >= ch->tgra) {
++        ch->tsr |= TSR_TGFA;
++        if (ch->tier & TIER_TGIEA) {
++            qemu_irq_pulse(s->irq[base + MTU3_IRQ_TGIA]);
++        }
++        if (cclr == TCR_CCLR_TGRA) {
++            ch->tcnt = tcnt - ch->tgra;
++            ch->tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++            ch->div_round = 0;
++            chan_mod_timer(s, ci);
++            return;
++        }
++    }
++
++    /* TGRB compare match */
++    if (tcnt >= ch->tgrb && ch->tgrb != 0xffff) {
++        ch->tsr |= TSR_TGFB;
++        if (ch->tier & TIER_TGIEB) {
++            qemu_irq_pulse(s->irq[base + MTU3_IRQ_TGIB]);
++        }
++        if (cclr == TCR_CCLR_TGRB) {
++            ch->tcnt = tcnt - ch->tgrb;
++            ch->tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++            ch->div_round = 0;
++            chan_mod_timer(s, ci);
++            return;
++        }
++    }
++
++    /* Overflow (TCNT wraps from 0xFFFF) */
++    if (tcnt == 0 || (tcnt >= ch->tgra && ch->tgra == 0xffff)) {
++        ch->tsr |= TSR_TCFV;
++        if (ch->tier & TIER_TCIEV) {
++            qemu_irq_pulse(s->irq[base + MTU3_IRQ_TCIV]);
++        }
++    }
++
++    chan_mod_timer(s, ci);
++}
++
++static void chan0_timer_event(void *opaque)
++{
++    chan_timer_event(opaque, 0);
++}
++
++static void chan1_timer_event(void *opaque)
++{
++    chan_timer_event(opaque, 1);
++}
++
++static uint64_t mtu3_read(void *opaque, hwaddr addr, unsigned size)
++{
++    RXMTU3State *s = opaque;
++
++    switch (addr) {
++    case R_TCR_CH3:
++        return s->ch[0].tcr;
++    case R_TCR_CH4:
++        return s->ch[1].tcr;
++    case R_TMDR1_CH3:
++        return s->ch[0].tmdr1;
++    case R_TMDR1_CH4:
++        return s->ch[1].tmdr1;
++    case R_TIORH_CH3:
++        return s->ch[0].tiorh;
++    case R_TIORL_CH3:
++        return s->ch[0].tiorl;
++    case R_TIORH_CH4:
++        return s->ch[1].tiorh;
++    case R_TIORL_CH4:
++        return s->ch[1].tiorl;
++    case R_TIER_CH3:
++        return s->ch[0].tier;
++    case R_TIER_CH4:
++        return s->ch[1].tier;
++    case R_TCNT_CH3:
++        return chan_read_tcnt(s, 0);
++    case R_TCNT_CH4:
++        return chan_read_tcnt(s, 1);
++    case R_TGRA_CH3:
++        return s->ch[0].tgra;
++    case R_TGRB_CH3:
++        return s->ch[0].tgrb;
++    case R_TGRA_CH4:
++        return s->ch[1].tgra;
++    case R_TGRB_CH4:
++        return s->ch[1].tgrb;
++    case R_TGRC_CH3:
++        return s->ch[0].tgrc;
++    case R_TGRD_CH3:
++        return s->ch[0].tgrd;
++    case R_TGRC_CH4:
++        return s->ch[1].tgrc;
++    case R_TGRD_CH4:
++        return s->ch[1].tgrd;
++    case R_TSR_CH3:
++        return s->ch[0].tsr;
++    case R_TSR_CH4:
++        return s->ch[1].tsr;
++    case R_TSTRA:
++        return s->tstr;
++    default:
 +        qemu_log_mask(LOG_UNIMP,
-+                      "rx: enabled DPFPU exception (DPSW=0x%08x) does not "
-+                      "raise an interrupt\n", dpsw);
++                      "renesas_mtu3: read 0x%" HWADDR_PRIX " not implemented\n",
++                      addr);
++        return UINT64_MAX;
 +    }
 +}
 +
-+#define FLOATOP64(op, func)                                             \
-+    float64 helper_##op(CPURXState *env, float64 t0, float64 t1)        \
-+    {                                                                   \
-+        float64 ret;                                                    \
-+        dp_begin(env);                                                  \
-+        ret = func(t0, t1, &env->dp_status);                            \
-+        update_dpsw(env);                                               \
-+        return ret;                                                     \
++static void mtu3_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
++{
++    RXMTU3State *s = opaque;
++    int ci = -1;
++
++    switch (addr) {
++    case R_TCR_CH3:
++        s->ch[0].tcr = val;
++        chan_mod_timer(s, 0);
++        break;
++    case R_TCR_CH4:
++        s->ch[1].tcr = val;
++        chan_mod_timer(s, 1);
++        break;
++    case R_TMDR1_CH3:
++        s->ch[0].tmdr1 = val;
++        break;
++    case R_TMDR1_CH4:
++        s->ch[1].tmdr1 = val;
++        break;
++    case R_TIORH_CH3:
++        s->ch[0].tiorh = val;
++        break;
++    case R_TIORL_CH3:
++        s->ch[0].tiorl = val;
++        break;
++    case R_TIORH_CH4:
++        s->ch[1].tiorh = val;
++        break;
++    case R_TIORL_CH4:
++        s->ch[1].tiorl = val;
++        break;
++    case R_TIER_CH3:
++        s->ch[0].tier = val;
++        break;
++    case R_TIER_CH4:
++        s->ch[1].tier = val;
++        break;
++    case R_TCNT_CH3:
++        s->ch[0].tcnt = val;
++        s->ch[0].tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        s->ch[0].div_round = 0;
++        chan_mod_timer(s, 0);
++        break;
++    case R_TCNT_CH4:
++        s->ch[1].tcnt = val;
++        s->ch[1].tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        s->ch[1].div_round = 0;
++        chan_mod_timer(s, 1);
++        break;
++    case R_TGRA_CH3:
++        ci = 0;
++        s->ch[0].tgra = val;
++        break;
++    case R_TGRB_CH3:
++        ci = 0;
++        s->ch[0].tgrb = val;
++        break;
++    case R_TGRA_CH4:
++        ci = 1;
++        s->ch[1].tgra = val;
++        break;
++    case R_TGRB_CH4:
++        ci = 1;
++        s->ch[1].tgrb = val;
++        break;
++    case R_TGRC_CH3:
++        s->ch[0].tgrc = val;
++        break;
++    case R_TGRD_CH3:
++        s->ch[0].tgrd = val;
++        break;
++    case R_TGRC_CH4:
++        s->ch[1].tgrc = val;
++        break;
++    case R_TGRD_CH4:
++        s->ch[1].tgrd = val;
++        break;
++    case R_TSR_CH3:
++        /* W0C: clear flags that are written as 0 */
++        s->ch[0].tsr &= val;
++        break;
++    case R_TSR_CH4:
++        s->ch[1].tsr &= val;
++        break;
++    case R_TSTRA: {
++        uint8_t prev = s->tstr;
++        s->tstr = val & (TSTR_STR3 | TSTR_STR4);
++        for (int i = 0; i < MTU3_NR_CHAN; i++) {
++            uint8_t bit = (i == 0) ? TSTR_STR3 : TSTR_STR4;
++            if ((s->tstr & bit) && !(prev & bit)) {
++                /* Channel just started: latch tick */
++                s->ch[i].tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++                s->ch[i].div_round = 0;
++                chan_mod_timer(s, i);
++            } else if (!(s->tstr & bit) && (prev & bit)) {
++                /* Channel stopped: snapshot counter */
++                chan_read_tcnt(s, i);
++                timer_del(&s->ch[i].timer);
++            }
++        }
++        break;
++    }
++    default:
++        qemu_log_mask(LOG_UNIMP, "renesas_mtu3: write 0x%" HWADDR_PRIX
++                      " not implemented\n",
++                      addr);
++        break;
 +    }
 +
-+FLOATOP64(dadd, float64_add)
-+FLOATOP64(dsub, float64_sub)
-+FLOATOP64(dmul, float64_mul)
-+FLOATOP64(ddiv, float64_div)
++    /* Re-arm timer if a TGR register was updated while channel is running */
++    if (ci >= 0 && chan_is_running(s, ci)) {
++        chan_mod_timer(s, ci);
++    }
++}
++
++static const MemoryRegionOps mtu3_ops = {
++    .read  = mtu3_read,
++    .write = mtu3_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl = {
++        .min_access_size = 1,
++        .max_access_size = 2,
++    },
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 2,
++    },
++};
++
++static void mtu3_reset(DeviceState *dev)
++{
++    RXMTU3State *s = RXMTU3(dev);
++    int i;
++
++    s->tstr = 0x00;
++    for (i = 0; i < MTU3_NR_CHAN; i++) {
++        s->ch[i].tcr   = 0x00;
++        s->ch[i].tmdr1 = 0x00;
++        s->ch[i].tiorh = 0x00;
++        s->ch[i].tiorl = 0x00;
++        s->ch[i].tier  = 0x00;
++        s->ch[i].tsr   = 0xc0;  /* reset value per HW manual */
++        s->ch[i].tcnt  = 0x0000;
++        s->ch[i].tgra  = 0xffff;
++        s->ch[i].tgrb  = 0xffff;
++        s->ch[i].tgrc  = 0xffff;
++        s->ch[i].tgrd  = 0xffff;
++        s->ch[i].tick  = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        s->ch[i].div_round = 0;
++        timer_del(&s->ch[i].timer);
++    }
++}
++
++static void mtu3_init(Object *obj)
++{
++    SysBusDevice *d = SYS_BUS_DEVICE(obj);
++    RXMTU3State *s = RXMTU3(obj);
++    int i;
++
++    /* 256-byte MMIO covers the interleaved MTU3/MTU4 registers + TSTR */
++    memory_region_init_io(&s->memory, obj, &mtu3_ops, s,
++                          "renesas-mtu3", 0x100);
++    sysbus_init_mmio(d, &s->memory);
++
++    for (i = 0; i < MTU3_NR_IRQ; i++) {
++        sysbus_init_irq(d, &s->irq[i]);
++    }
++
++    timer_init_ns(&s->ch[0].timer, QEMU_CLOCK_VIRTUAL, chan0_timer_event, s);
++    timer_init_ns(&s->ch[1].timer, QEMU_CLOCK_VIRTUAL, chan1_timer_event, s);
++}
++
++static const VMStateDescription vmstate_mtu3_chan = {
++    .name = "renesas-mtu3-chan",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT8(tcr,   struct RXMTU3ChanState),
++        VMSTATE_UINT8(tmdr1, struct RXMTU3ChanState),
++        VMSTATE_UINT8(tiorh, struct RXMTU3ChanState),
++        VMSTATE_UINT8(tiorl, struct RXMTU3ChanState),
++        VMSTATE_UINT8(tier,  struct RXMTU3ChanState),
++        VMSTATE_UINT8(tsr,   struct RXMTU3ChanState),
++        VMSTATE_UINT16(tcnt, struct RXMTU3ChanState),
++        VMSTATE_UINT16(tgra, struct RXMTU3ChanState),
++        VMSTATE_UINT16(tgrb, struct RXMTU3ChanState),
++        VMSTATE_UINT16(tgrc, struct RXMTU3ChanState),
++        VMSTATE_UINT16(tgrd, struct RXMTU3ChanState),
++        VMSTATE_INT64(tick,  struct RXMTU3ChanState),
++        VMSTATE_INT64(div_round, struct RXMTU3ChanState),
++        VMSTATE_TIMER(timer, struct RXMTU3ChanState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const VMStateDescription vmstate_mtu3 = {
++    .name = "renesas-mtu3",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT8(tstr, RXMTU3State),
++        VMSTATE_STRUCT_ARRAY(ch, RXMTU3State, MTU3_NR_CHAN, 1,
++                             vmstate_mtu3_chan, struct RXMTU3ChanState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const Property mtu3_properties[] = {
++    DEFINE_PROP_UINT64("input-freq", RXMTU3State, input_freq, 0),
++};
++
++static void mtu3_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_mtu3;
++    device_class_set_legacy_reset(dc, mtu3_reset);
++    device_class_set_props(dc, mtu3_properties);
++}
++
++static const TypeInfo mtu3_info = {
++    .name          = TYPE_RENESAS_MTU3,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RXMTU3State),
++    .instance_init = mtu3_init,
++    .class_init    = mtu3_class_init,
++};
++
++static void mtu3_register_types(void)
++{
++    type_register_static(&mtu3_info);
++}
++
++type_init(mtu3_register_types)
+diff --git a/include/hw/timer/renesas_mtu3.h b/include/hw/timer/renesas_mtu3.h
+new file mode 100644
+index 0000000000..8d1b82aec5
+--- /dev/null
++++ b/include/hw/timer/renesas_mtu3.h
+@@ -0,0 +1,73 @@
++/*
++ * Renesas RX65N Multi-Function Timer Pulse Unit 3 (MTU3)
++ *
++ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
++ *            (Rev.1.00 R01UH0590EJ0100), Section 17
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_TIMER_RENESAS_MTU3_H
++#define HW_TIMER_RENESAS_MTU3_H
++
++#include "qemu/timer.h"
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_RENESAS_MTU3 "renesas-mtu3"
++typedef struct RXMTU3State RXMTU3State;
++DECLARE_INSTANCE_CHECKER(RXMTU3State, RXMTU3, TYPE_RENESAS_MTU3)
 +
 +/*
-+ * dcmp<cm> src, src2 -- compare src2 against src as directed by cm and
-+ * record the answer in DCMR.RES.
-+ *
-+ * Mind the operand order: the manual defines every relation as src2 REL
-+ * src, so LT is true when the *second* operand is the smaller one. src is
-+ * the first encoded register (drs1) and src2 the second (drs2).
-+ *
-+ * The PSW is left alone -- C, Z, S and O are all listed as unchanged --
-+ * which is why MVFDR exists to move DCMR.RES into PSW.Z.
-+ *
-+ * The condition field is a mask of the relations that make RES true, which
-+ * is why LE (6) is LT (4) | EQ (2); it agrees with the manual on all four
-+ * documented conditions. UN is defined as isNaN(src) || isNaN(src2), which
-+ * is exactly what an unordered comparison reports. The comparison is quiet
-+ * because testing for unordered is one of the conditions on offer.
++ * This device models MTU3 channels 3 and 4 of the RX65N MTU3 module,
++ * which share base address 0x000C1200 with an interleaved register layout.
++ * ch[0] = MTU channel 3, ch[1] = MTU channel 4.
 + */
-+void helper_dcmp(CPURXState *env, uint32_t cm, float64 src, float64 src2)
-+{
-+    int st;
-+    bool res = false;
++enum {
++    MTU3_NR_CHAN    = 2,
++    MTU3_CH_NR_IRQ = 5,   /* TGIA, TGIB, TGIC, TGID, TCIV per channel */
++    MTU3_NR_IRQ    = MTU3_CH_NR_IRQ * MTU3_NR_CHAN   /* = 10 */
++};
 +
-+    dp_begin(env);
-+    st = float64_compare_quiet(src2, src, &env->dp_status);
++/* IRQ index within the per-channel group */
++enum {
++    MTU3_IRQ_TGIA = 0,
++    MTU3_IRQ_TGIB = 1,
++    MTU3_IRQ_TGIC = 2,
++    MTU3_IRQ_TGID = 3,
++    MTU3_IRQ_TCIV = 4,
++};
 +
-+    if ((cm & RX_DCMP_UN) && st == float_relation_unordered) {
-+        res = true;
-+    }
-+    if ((cm & RX_DCMP_EQ) && st == float_relation_equal) {
-+        res = true;
-+    }
-+    if ((cm & RX_DCMP_LT) && st == float_relation_less) {
-+        res = true;
-+    }
-+    env->dcr[RX_DCR_DCMR] = deposit32(env->dcr[RX_DCR_DCMR],
-+                                      RX_DCMR_RES_BIT, 1, res);
-+    update_dpsw(env);
-+}
++struct RXMTU3ChanState {
++    uint8_t  tcr;
++    uint8_t  tmdr1;
++    uint8_t  tiorh;
++    uint8_t  tiorl;
++    uint8_t  tier;
++    uint8_t  tsr;
++    uint16_t tcnt;
++    uint16_t tgra;
++    uint16_t tgrb;
++    uint16_t tgrc;
++    uint16_t tgrd;
++    int64_t  tick;       /* virtual-clock time when tcnt was last latched */
++    int64_t  div_round;  /* fractional cycles accumulator */
++    QEMUTimer timer;
++};
 +
- void helper_rx_fcmp(CPURXState *env, float32 t0, float32 t1)
- {
-     int st;
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index 43fd88b15d..2eb0b7b39e 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -1949,6 +1949,84 @@ static bool trans_UTOF(DisasContext *ctx, arg_UTOF * a)
-     return true;
- }
- 
-+/*
-+ * RXv3 DPFPU register access. DR0-DR15 are dedicated 64-bit registers,
-+ * architecturally distinct from the general purpose registers; DRHn and
-+ * DRLn name the high and low 32-bit halves of DRn.
-+ */
-+static TCGv_i64 dr_read(int n)
-+{
-+    return cpu_dregs[n];
-+}
++struct RXMTU3State {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
 +
-+static void dr_write(int n, TCGv_i64 val)
-+{
-+    tcg_gen_mov_i64(cpu_dregs[n], val);
-+}
++    MemoryRegion memory;
++    uint64_t input_freq;
 +
-+/* dadd DRdrs1, DRdrd, DRdrs2  (DRdrd = DRdrs1 + DRdrs2) */
-+static bool trans_DADD(DisasContext *ctx, arg_DADD *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    TCGv_i64 s1 = dr_read(a->drs1);
-+    TCGv_i64 s2 = dr_read(a->drs2);
-+    TCGv_i64 d  = tcg_temp_new_i64();
-+    gen_helper_dadd(d, tcg_env, s1, s2);
-+    dr_write(a->drd, d);
-+    return true;
-+}
++    uint8_t tstr; /* Timer Start Register A (offset 0x80) */
++    struct RXMTU3ChanState ch[MTU3_NR_CHAN];
++    qemu_irq irq[MTU3_NR_IRQ];
++};
 +
-+static bool trans_DSUB(DisasContext *ctx, arg_DSUB *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    TCGv_i64 s1 = dr_read(a->drs1);
-+    TCGv_i64 s2 = dr_read(a->drs2);
-+    TCGv_i64 d  = tcg_temp_new_i64();
-+    gen_helper_dsub(d, tcg_env, s1, s2);
-+    dr_write(a->drd, d);
-+    return true;
-+}
-+
-+static bool trans_DMUL(DisasContext *ctx, arg_DMUL *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    TCGv_i64 s1 = dr_read(a->drs1);
-+    TCGv_i64 s2 = dr_read(a->drs2);
-+    TCGv_i64 d  = tcg_temp_new_i64();
-+    gen_helper_dmul(d, tcg_env, s1, s2);
-+    dr_write(a->drd, d);
-+    return true;
-+}
-+
-+static bool trans_DDIV(DisasContext *ctx, arg_DDIV *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    TCGv_i64 s1 = dr_read(a->drs1);
-+    TCGv_i64 s2 = dr_read(a->drs2);
-+    TCGv_i64 d  = tcg_temp_new_i64();
-+    gen_helper_ddiv(d, tcg_env, s1, s2);
-+    dr_write(a->drd, d);
-+    return true;
-+}
-+
-+static bool trans_DCMP(DisasContext *ctx, arg_DCMP *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    gen_helper_dcmp(tcg_env, tcg_constant_i32(a->cd),
-+                    cpu_dregs[a->drs1], cpu_dregs[a->drs2]);
-+    return true;
-+}
-+
- static void rx_bsetm(DisasContext *ctx, TCGv_i32 mem, TCGv_i32 mask)
- {
-     TCGv_i32 val;
++#endif /* HW_TIMER_RENESAS_MTU3_H */
 
 -- 
 2.53.0

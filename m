@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B928D606A31A
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:33:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD556606A31B
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:33:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL264-0003E1-5t; Sun, 25 Oct 2026 13:33:29 -0400
+	id 1xL260-0002zY-4s; Sun, 25 Oct 2026 13:33:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24O-00017N-KJ; Sun, 25 Oct 2026 13:31:45 -0400
+ id 1xL240-0000u7-Ir; Sun, 25 Oct 2026 13:31:25 -0400
 Received: from www675.your-server.de ([85.10.213.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24J-0007KZ-SC; Sun, 25 Oct 2026 13:31:44 -0400
+ id 1xL23y-0007JF-N2; Sun, 25 Oct 2026 13:31:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=HUW3uFpCbJaj4WGu9I3MkQ2NWwviBrzXTDxOWX1nT/k=; b=aTmvH2Mu9Yg4zU91uSRUVMmYhc
- kJ/gdWbSfJE/a9X678fH56sC0SxitmH2wKI4sMK1UNcovg3SwM+5SLclVATMw3fLeNpAZn77UfxAJ
- 3wzzQxYUEzF8cjad+VDdzzHUUMCH3ei/dzGZa9pmAbjN8n1VuUH4ogzWeBTTmz+jJdsnodNFcu3Yh
- 0NgUG+tUa8jUsE1Kz6wY0OAl+Kh9hduchDp1afrWbuP94QB/VLOxqJln/wU5zdtfKUym7ilwZ3C2D
- spIPT2FnkDz0gBgY5RL9f9Lu8T4IQrZfAPT4KXISt+kuhidbOUJuAexIcAapo4E3Mb7r2qp7rUjsz
- Uvbab2Sg==;
+ bh=ME0nR7Q5soKe/Nx62cq3DkAzzDYEueOhKvNOVI+alFw=; b=GBHHALTS7tWCPIrTNoa7yVI3eq
+ n8iBGgiS2spGp6A8bCW2e/9DC8uZyXLq08eY0lm/JWvVqiAUZc3HQjZQsdQkzgwwGdV/bVd/lmTxu
+ tCgn/V5cmEaV+wAX5LXT7Y+JQv6IHLewr/0WkXmOhjnvysKIkcZWBHnUzX5lWO1rQSYAvXQSPmOUd
+ LpJcF5j2v8QPuvsb/FUJuGFjp38w2U2SXbDSvbQrR0uNJpoqkLlBo+RBPsCEkkF4SPfiqUgonbKsm
+ 9THUtXpFjFDOVKOIni0PW8m3MwH0lAvYxME2McDksHBH5q3sQBgWa3AYF8A+xhdI0d9y5k73bjbUA
+ vHH+1TJg==;
 Received: from sslproxy01.your-server.de ([78.46.139.224])
  by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1gL-000972-1Z; Sun, 25 Oct 2026 18:06:53 +0100
+ id 1xL1Vv-0006ke-1Q; Sun, 25 Oct 2026 17:56:07 +0100
 Received: from localhost ([127.0.0.1])
  by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vx-000OzG-0a; Sun, 25 Oct 2026 17:56:08 +0100
+ id 1xL1Vv-000OzG-28; Sun, 25 Oct 2026 17:56:07 +0100
 From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:44 +0100
-Subject: [PATCH v2 28/31] hw/misc: add Renesas RX flash control unit
+Date: Sun, 25 Oct 2026 17:55:23 +0100
+Subject: [PATCH v2 07/31] target/rx: add DPFPU unary operations
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-umar-rx-series-v2-28-9e846577cad0@sayyadumar.com>
+Message-Id: <20261025-umar-rx-series-v2-7-9e846577cad0@sayyadumar.com>
 References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 To: qemu-devel@nongnu.org
@@ -51,11 +51,11 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=44758;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=6267;
  i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=afuljthQTupu6D7Ivfv8F3N5EzjcV7GmSsjM1lCvSS0=;
- b=DppvavHAund80jMT5+gkIWHL0l6SSZ0LiT+nfYD7uv3zyqwkXEnHj77D3ppM4Gu47bpQEBMTr
- 1gcu1Wd/YPZA8OH2hHG+yrWm8LVWxhI5dHKKXe6ePNu5GKvnUBujad3
+ bh=KJc1Hs4x/W192wbuy77jtbrPo96MgYnfdGE7xVtfDp0=;
+ b=MU8EdZvHoYkckYM8gMtFHl8hXwX0AbjFgSM+O2Vot5AOz7VWedSU86O5glK6+lSjcyy1oB5QU
+ ZY8c0KmoQGFD4gYdhUxzmsF6HNoJBUlxG1svrX/Rn5EunPS1c2osDdl
 X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
  pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
 X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
@@ -85,1256 +85,216 @@ X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the RX FCU with the FACI command interface, section 6 (Flash
-Memory) of the RX65N hardware manual.
+Add DMOV, DABS, DNEG, DSQRT and DROUND. DABS and DNEG only flip the
+sign bit, so they cannot raise an exception and leave the DC* cause
+bits alone; the other three run through dp_begin()/update_dpsw() like
+the arithmetic operations.
 
 Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
 ---
- MAINTAINERS                            |   2 +
- configs/devices/rx-softmmu/default.mak |   1 +
- hw/misc/Kconfig                        |   3 +
- hw/misc/meson.build                    |   1 +
- hw/misc/renesas_rx_fcu.c               | 985 +++++++++++++++++++++++++++++++++
- include/hw/misc/renesas_rx_fcu.h       | 191 +++++++
- 6 files changed, 1183 insertions(+)
+ target/rx/disas.c      | 30 ++++++++++++++++++++++++++
+ target/rx/helper.h     |  4 ++++
+ target/rx/insns.decode | 10 +++++++++
+ target/rx/op_helper.c  | 35 ++++++++++++++++++++++++++++++
+ target/rx/translate.c  | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 137 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index eb45c2446e..8ba36637f2 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3088,6 +3088,7 @@ F: hw/gpio/renesas_rx_gpio.c
- F: hw/intc/rx_icu.c
- F: hw/misc/renesas_rx_*.c
- F: hw/misc/renesas_rx_romcache.c
-+F: hw/misc/renesas_rx_fcu.c
- F: hw/rtc/renesas_rx_rtc.c
- F: hw/rx/
- F: hw/ssi/renesas_rspi.c
-@@ -3099,6 +3100,7 @@ F: include/hw/gpio/renesas_rx_gpio.h
- F: include/hw/intc/rx_icu.h
- F: include/hw/misc/renesas_rx_*.h
- F: include/hw/misc/renesas_rx_romcache.h
-+F: include/hw/misc/renesas_rx_fcu.h
- F: include/hw/rtc/renesas_rx_rtc.h
- F: include/hw/rx/
- F: include/hw/ssi/renesas_rspi.h
-diff --git a/configs/devices/rx-softmmu/default.mak b/configs/devices/rx-softmmu/default.mak
-index 377b875cce..bd7ba03f57 100644
---- a/configs/devices/rx-softmmu/default.mak
-+++ b/configs/devices/rx-softmmu/default.mak
-@@ -11,3 +11,4 @@ CONFIG_RENESAS_RSPI=y
- CONFIG_RENESAS_RX_RTC=y
- CONFIG_RENESAS_RX_CRC=y
- CONFIG_RENESAS_RX_ROMCACHE=y
-+CONFIG_RENESAS_RX_FCU=y
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index e2b9a5cd94..75282d49be 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -273,3 +273,6 @@ config RENESAS_RX_CRC
+diff --git a/target/rx/disas.c b/target/rx/disas.c
+index 98882044be..a3101ac534 100644
+--- a/target/rx/disas.c
++++ b/target/rx/disas.c
+@@ -1243,6 +1243,36 @@ static bool trans_DCMP(DisasContext *ctx, arg_DCMP *a)
+     return true;
+ }
  
- config RENESAS_RX_ROMCACHE
-     bool
-+
-+config RENESAS_RX_FCU
-+    bool
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 20af70d6a7..8604f4ad21 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -183,3 +183,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
- system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
- system_ss.add(when: 'CONFIG_RENESAS_RX_CRC', if_true: files('renesas_rx_crc.c'))
- system_ss.add(when: 'CONFIG_RENESAS_RX_ROMCACHE', if_true: files('renesas_rx_romcache.c'))
-+system_ss.add(when: 'CONFIG_RENESAS_RX_FCU', if_true: files('renesas_rx_fcu.c'))
-diff --git a/hw/misc/renesas_rx_fcu.c b/hw/misc/renesas_rx_fcu.c
-new file mode 100644
-index 0000000000..309abdb0f2
---- /dev/null
-+++ b/hw/misc/renesas_rx_fcu.c
-@@ -0,0 +1,985 @@
-+/*
-+ * Renesas RX Flash Control Unit (FCU) with FACI command interface
-+ *
-+ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
-+ *            (Rev.1.00 R01UH0590EJ0100), section 6 (Flash Memory)
-+ *
-+ * Copyright (c) 2026 Umar, Sayyad Mahammad
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ *
-+ * The RX65N programs and erases its on-chip code and data flash through the
-+ * Flash Application Command Interface (FACI). Firmware first enters P/E mode
-+ * for the target array via FENTRYR, then issues command sequences by writing
-+ * command bytes and data words to the destination address inside the flash
-+ * array itself, polling FSTATR.FRDY for completion.
-+ *
-+ * Both flash arrays are modelled as ROM-device memory regions: ordinary reads
-+ * and instruction fetches hit the backing RAM directly (fast, and firmware is
-+ * still loaded by the QEMU ROM loader, which bypasses these write callbacks),
-+ * while guest writes are routed here and interpreted as FACI commands. QEMU
-+ * models no real program/erase timing, so every command completes
-+ * synchronously and FRDY always reads ready.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/bswap.h"
-+#include "hw/misc/renesas_rx_fcu.h"
-+#include "hw/core/irq.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/core/qdev-properties-system.h"
-+#include "system/block-backend.h"
-+#include "hw/block/block.h"
-+#include "qemu/error-report.h"
-+#include "qemu/units.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+
-+/* FACI control register offsets from the register block base (0x007FE000). */
-+#define R_FASTAT    0x010   /* Flash Access Status            (8-bit)  */
-+#define R_FAEINT    0x014   /* Flash Access Err Int Enable    (8-bit)  */
-+#define R_FRDYIE    0x018   /* Flash Ready Int Enable         (8-bit)  */
-+#define R_FSADDR    0x030   /* Flash Processing Start Address (32-bit) */
-+#define R_FEADDR    0x034   /* Flash Processing End Address    (32-bit) */
-+#define R_FSTATR    0x080   /* Flash Status                   (32-bit) */
-+#define R_FENTRYR   0x084   /* Flash P/E Mode Entry           (16-bit) */
-+#define R_FPROTR    0x088   /* Flash Protection               (16-bit) */
-+#define R_FSUACR    0x08C   /* Startup Area Control           (16-bit) */
-+#define R_FCMDR     0x0A0   /* FACI Command                   (16-bit) */
-+#define R_FPESTAT   0x0C0   /* P/E Error Status               (16-bit) */
-+#define R_FBCCNT    0x0D0   /* Blank Check Control            (16-bit) */
-+#define R_FBCSTAT   0x0D4   /* Blank Check Status             (8-bit)  */
-+#define R_FPSADDR   0x0D8   /* Programmed/Erased Start Addr   (32-bit) */
-+#define R_FCPSR     0x0E0   /* Clear/Processing Switch        (16-bit) */
-+#define R_FPCKAR    0x0E4   /* Processing Clock Notification  (16-bit) */
-+
-+/* FSTATR bit definitions. */
-+#define FSTATR_FRDY     (1u << 6)   /* Flash ready                     */
-+#define FSTATR_PRGERR   (1u << 13)  /* Programming error               */
-+#define FSTATR_ERSERR   (1u << 14)  /* Erasure error                   */
-+#define FSTATR_ILGLERR  (1u << 15)  /* Illegal command error           */
-+#define FSTATR_OTERR    (1u << 16)  /* Other error                     */
-+#define FSTATR_ERRORS   (FSTATR_PRGERR | FSTATR_ERSERR | \
-+                         FSTATR_ILGLERR | FSTATR_OTERR)
-+
-+/* FASTAT bit definitions. */
-+#define FASTAT_CMDLK    (1u << 4)   /* Command lock                    */
-+
-+/* FENTRYR: key code in the upper byte, target bits in the lower byte. */
-+#define FENTRYR_KEY     0xAA00
-+#define FENTRYR_CODE    0x0001      /* code flash P/E mode             */
-+#define FENTRYR_DATA    0x0080      /* data flash P/E mode             */
-+
-+/* FBCSTAT: BCST = 0 means the checked range is blank (all 0xFF). */
-+#define FBCSTAT_BCST    (1u << 0)
-+
-+/* FACI command codes. */
-+#define FACI_CMD_PROGRAM     0xE8
-+#define FACI_CMD_BLOCK_ERASE 0x20
-+#define FACI_CMD_BLANK_CHECK 0x71
-+#define FACI_CMD_CONFIG_SET  0x40
-+#define FACI_CMD_CLEAR_STAT  0x50
-+#define FACI_CMD_FORCED_STOP 0xB3
-+#define FACI_CMD_CONFIRM     0xD0
-+
-+/* Erase block granularity (HW manual section 6). */
-+#define CFLASH_ERASE_BLOCK   0x8000     /* 32 KiB code flash block     */
-+#define CFLASH_SMALL_BLOCK   0x2000     /* 8 KiB block, blocks 0 to 7  */
-+#define CFLASH_SMALL_REGION  0x10000    /* the eight small blocks span 64 KiB */
-+#define CFLASH_MIN_DUAL_SIZE (1536 * KiB)
-+#define DFLASH_ERASE_BLOCK   0x40       /* 64-byte data flash block    */
-+
-+static bool target_in_pe_mode(RenesasRxFcuState *s, RxFcuTarget t)
++static bool trans_DMOV(DisasContext *ctx, arg_DMOV *a)
 +{
-+    return t == RX_FCU_CFLASH ? (s->fentryr & FENTRYR_CODE)
-+                              : (s->fentryr & FENTRYR_DATA);
-+}
-+
-+static uint8_t *target_storage(RenesasRxFcuState *s, RxFcuTarget t)
-+{
-+    return t == RX_FCU_CFLASH ? s->cflash_ptr : s->dflash_ptr;
-+}
-+
-+static uint32_t target_size(RenesasRxFcuState *s, RxFcuTarget t)
-+{
-+    return t == RX_FCU_CFLASH ? s->cflash_size : s->dflash_size;
-+}
-+
-+/* Translate an absolute CPU flash address to an array-relative offset. */
-+static bool addr_to_offset(RenesasRxFcuState *s, RxFcuTarget t,
-+                           uint32_t addr, uint32_t *off)
-+{
-+    uint32_t base = t == RX_FCU_CFLASH ? s->cflash_base : s->dflash_base;
-+
-+    if (t == RX_FCU_CFLASH && s->dual_mode) {
-+        uint32_t bank_size = s->cflash_size / 2;
-+        uint32_t lower_base = s->cflash_base - s->dual_bank_gap_size;
-+        uint32_t upper_base = s->cflash_base + bank_size;
-+        uint32_t bank;
-+
-+        if (addr >= lower_base && addr - lower_base < bank_size) {
-+            bank = 0;
-+            *off = addr - lower_base;
-+        } else if (addr >= upper_base && addr - upper_base < bank_size) {
-+            bank = 1;
-+            *off = addr - upper_base;
-+        } else {
-+            return false;
-+        }
-+        if (s->bank_swapped) {
-+            bank ^= 1;
-+        }
-+        *off += bank * bank_size;
-+        return true;
-+    }
-+
-+    if (addr < base || addr - base >= target_size(s, t)) {
-+        return false;
-+    }
-+    *off = addr - base;
++    prt("dmov\tdr%d, dr%d", a->drs, a->drd);
 +    return true;
 +}
 +
-+/*
-+ * Code flash erase blocks are not uniform: the top 64 KB of each bank (of the
-+ * whole array in linear mode) is eight 8 KB blocks, and everything below is
-+ * 32 KB blocks. Return the block containing a physical offset.
-+ */
-+static void cflash_erase_block(RenesasRxFcuState *s, uint32_t off,
-+                               uint32_t *start, uint32_t *len)
++static bool trans_DABS(DisasContext *ctx, arg_DABS *a)
 +{
-+    uint32_t unit = s->dual_mode ? s->cflash_size / 2 : s->cflash_size;
-+    uint32_t within = off % unit;
-+    uint32_t base = off - within;
-+
-+    if (within >= unit - CFLASH_SMALL_REGION) {
-+        *len = CFLASH_SMALL_BLOCK;
-+    } else {
-+        *len = CFLASH_ERASE_BLOCK;
-+    }
-+    *start = base + (within & ~(*len - 1));
-+}
-+
-+/*
-+ * FCMDR pairs the command just received (CMDR, low byte) with the one before
-+ * it (PCMDR, high byte). A two-byte sequence such as block erase therefore
-+ * ends up reading 0x20d0: 0x20 shifted up by the 0xd0 confirm. The confirm
-+ * that terminates a programming sequence is not recorded, which is why the
-+ * manual lists programming as leaving CMDR at 0xe8.
-+ */
-+static void faci_set_cmdr(RenesasRxFcuState *s, uint8_t cmd)
-+{
-+    s->fcmdr = ((s->fcmdr & 0xff) << 8) | cmd;
-+}
-+
-+/* Finish a command: report ready and pulse the ready interrupt if enabled. */
-+static void faci_complete(RenesasRxFcuState *s)
-+{
-+    s->cmd_state = RX_FCU_ST_READY;
-+    s->fstatr |= FSTATR_FRDY;
-+    if (s->frdyie & 1) {
-+        qemu_irq_pulse(s->frdyi);
-+    }
-+}
-+
-+/* Flag an illegal command: lock the sequencer and raise the error interrupt. */
-+static void faci_illegal(RenesasRxFcuState *s)
-+{
-+    s->cmd_state = RX_FCU_ST_READY;
-+    s->fstatr |= FSTATR_ILGLERR | FSTATR_FRDY;
-+    s->fastat |= FASTAT_CMDLK;
-+    if (s->faeint) {
-+        qemu_set_irq(s->fiferr, 1);
-+    }
-+}
-+
-+/* Write the option-setting memory back to its image, if one is attached. */
-+static void fcu_ofsm_sync(RenesasRxFcuState *s)
-+{
-+    if (!s->ofsm_blk || s->ofsm_ro) {
-+        return;
-+    }
-+    if (blk_pwrite(s->ofsm_blk, 0, RX_FCU_OFSM_SIZE, s->ofsm_ptr, 0) < 0) {
-+        error_report("renesas-rx-fcu: could not write the OFSM image");
-+    }
-+}
-+
-+/*
-+ * Write a modified range of an array back to its block backend, if one is
-+ * attached. Offsets are widened to sector boundaries the way pflash does.
-+ */
-+static void fcu_flash_sync(RenesasRxFcuState *s, RxFcuTarget t,
-+                           uint32_t off, uint32_t len)
-+{
-+    BlockBackend *blk = t == RX_FCU_CFLASH ? s->cflash_blk : s->dflash_blk;
-+    bool ro = t == RX_FCU_CFLASH ? s->cflash_ro : s->dflash_ro;
-+    uint32_t size = target_size(s, t);
-+    uint64_t start, end;
-+    int ret;
-+
-+    if (!blk || ro) {
-+        return;
-+    }
-+    start = QEMU_ALIGN_DOWN(off, BDRV_SECTOR_SIZE);
-+    end = QEMU_ALIGN_UP((uint64_t)off + len, BDRV_SECTOR_SIZE);
-+    if (end > size) {
-+        end = size;
-+    }
-+    if (start >= end) {
-+        return;
-+    }
-+    ret = blk_pwrite(blk, start, end - start,
-+                     target_storage(s, t) + start, 0);
-+    if (ret < 0) {
-+        error_report("renesas-rx-fcu: could not write flash image: %s",
-+                     strerror(-ret));
-+    }
-+}
-+
-+static void faci_block_erase(RenesasRxFcuState *s, RxFcuTarget t, uint32_t off)
-+{
-+    uint32_t size = target_size(s, t);
-+    uint32_t block, start;
-+
-+    if (t == RX_FCU_CFLASH) {
-+        cflash_erase_block(s, off, &start, &block);
-+    } else {
-+        block = DFLASH_ERASE_BLOCK;
-+        start = off & ~(block - 1);
-+    }
-+
-+    if (start >= size) {
-+        faci_illegal(s);
-+        return;
-+    }
-+    if (start + block > size) {
-+        block = size - start;
-+    }
-+    memset(target_storage(s, t) + start, 0xff, block);
-+    fcu_flash_sync(s, t, start, block);
-+    s->fpsaddr = (t == RX_FCU_CFLASH ? s->cflash_base : s->dflash_base) + start;
-+    faci_complete(s);
-+}
-+
-+static void faci_blank_check(RenesasRxFcuState *s, RxFcuTarget t)
-+{
-+    uint32_t start, end;
-+    const uint8_t *p;
-+
-+    if (!addr_to_offset(s, t, s->fsaddr, &start) ||
-+        !addr_to_offset(s, t, s->feaddr, &end) || end < start) {
-+        faci_illegal(s);
-+        return;
-+    }
-+
-+    p = target_storage(s, t);
-+    s->fbcstat = 0;     /* assume blank */
-+    for (uint32_t i = start; i <= end; i++) {
-+        if (p[i] != 0xff) {
-+            s->fbcstat = FBCSTAT_BCST;  /* not blank */
-+            break;
-+        }
-+    }
-+    faci_complete(s);
-+}
-+
-+/*
-+ * Interpret a guest write to a flash array address while that array is in P/E
-+ * mode. Implements the FACI program / block-erase / blank-check sequences.
-+ */
-+static void faci_command(RenesasRxFcuState *s, RxFcuTarget t,
-+                         uint32_t off, uint64_t value, unsigned size)
-+{
-+    uint8_t cmd = value & 0xff;
-+
-+    switch (s->cmd_state) {
-+    case RX_FCU_ST_READY:
-+        faci_set_cmdr(s, cmd);
-+        switch (cmd) {
-+        case FACI_CMD_PROGRAM:
-+            s->cmd_target = t;
-+            s->prog_off = off;
-+            s->cmd_state = RX_FCU_ST_PROGRAM_COUNT;
-+            break;
-+        case FACI_CMD_BLOCK_ERASE:
-+            s->cmd_target = t;
-+            s->prog_off = off;
-+            s->cmd_state = RX_FCU_ST_ERASE;
-+            break;
-+        case FACI_CMD_BLANK_CHECK:
-+            s->cmd_target = t;
-+            s->cmd_state = RX_FCU_ST_BLANKCHECK;
-+            break;
-+        case FACI_CMD_CONFIG_SET:
-+            /*
-+             * Configuration set writes one 16-byte row of the option-setting
-+             * memory. FSADDR selects the row: its low byte is the offset
-+             * within the OFSM, so 0x00ff5d20 reaches BANKSEL at +0x20.
-+             */
-+            s->cfg_off = s->fsaddr & (RX_FCU_OFSM_SIZE - 1) & ~0xfu;
-+            s->cmd_state = RX_FCU_ST_CONFIG_COUNT;
-+            break;
-+        case FACI_CMD_CLEAR_STAT:
-+            s->fstatr = (s->fstatr & ~FSTATR_ERRORS) | FSTATR_FRDY;
-+            s->fastat &= ~FASTAT_CMDLK;
-+            qemu_set_irq(s->fiferr, 0);
-+            break;
-+        case FACI_CMD_FORCED_STOP:
-+            s->fstatr = (s->fstatr & ~FSTATR_ERRORS) | FSTATR_FRDY;
-+            s->fastat &= ~FASTAT_CMDLK;
-+            s->cmd_state = RX_FCU_ST_READY;
-+            qemu_set_irq(s->fiferr, 0);
-+            break;
-+        default:
-+            faci_illegal(s);
-+            break;
-+        }
-+        break;
-+
-+    case RX_FCU_ST_CONFIG_COUNT:
-+        /* Always eight 16-bit words, i.e. the 16-byte row. */
-+        s->prog_words = value & 0xff;
-+        s->cmd_state = RX_FCU_ST_CONFIG_DATA;
-+        break;
-+
-+    case RX_FCU_ST_CONFIG_DATA:
-+        if (s->prog_words > 0) {
-+            if (s->cfg_off + 2 <= RX_FCU_OFSM_SIZE) {
-+                /* Like the arrays, programming can only clear bits. */
-+                uint16_t cur = lduw_le_p(s->ofsm_ptr + s->cfg_off);
-+                stw_le_p(s->ofsm_ptr + s->cfg_off, cur & (uint16_t)value);
-+            }
-+            s->cfg_off += 2;
-+            s->prog_words--;
-+        } else if (cmd == FACI_CMD_CONFIRM) {
-+            fcu_ofsm_sync(s);
-+            faci_complete(s);
-+        } else {
-+            faci_illegal(s);
-+        }
-+        break;
-+
-+    case RX_FCU_ST_PROGRAM_COUNT:
-+        /* Number of 16-bit data words that follow. */
-+        s->prog_words = value & 0xff;
-+        s->cmd_state = RX_FCU_ST_PROGRAM_DATA;
-+        break;
-+
-+    case RX_FCU_ST_PROGRAM_DATA:
-+        if (s->prog_words > 0) {
-+            uint8_t *p = target_storage(s, s->cmd_target);
-+            uint32_t sz = target_size(s, s->cmd_target);
-+            if (s->prog_off + 2 <= sz) {
-+                /* Flash programming only clears bits; emulate it with AND. */
-+                uint16_t cur = lduw_le_p(p + s->prog_off);
-+                stw_le_p(p + s->prog_off, cur & (uint16_t)value);
-+                fcu_flash_sync(s, s->cmd_target, s->prog_off, 2);
-+            }
-+            s->prog_off += 2;
-+            s->prog_words--;
-+        } else if (cmd == FACI_CMD_CONFIRM) {
-+            faci_complete(s);
-+        } else {
-+            faci_illegal(s);
-+        }
-+        break;
-+
-+    case RX_FCU_ST_ERASE:
-+        if (cmd == FACI_CMD_CONFIRM) {
-+            faci_set_cmdr(s, cmd);
-+            faci_block_erase(s, s->cmd_target, s->prog_off);
-+        } else {
-+            faci_illegal(s);
-+        }
-+        break;
-+
-+    case RX_FCU_ST_BLANKCHECK:
-+        if (cmd == FACI_CMD_CONFIRM) {
-+            faci_set_cmdr(s, cmd);
-+            faci_blank_check(s, s->cmd_target);
-+        } else {
-+            faci_illegal(s);
-+        }
-+        break;
-+    }
-+}
-+
-+static uint64_t faci_flash_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    RxFcuFlash *f = opaque;
-+    const uint8_t *p = target_storage(f->fcu, f->target);
-+
-+    /*
-+     * This callback is only reached while the array is in P/E mode (romd is
-+     * disabled); outside P/E mode reads hit the backing RAM directly. Return
-+     * the stored contents so reads remain coherent in either mode.
-+     */
-+    switch (size) {
-+    case 1:
-+        return p[offset];
-+    case 2:
-+        return lduw_le_p(p + offset);
-+    default:
-+        return ldl_le_p(p + offset);
-+    }
-+}
-+
-+static void faci_flash_write(void *opaque, hwaddr offset, uint64_t value,
-+                             unsigned size)
-+{
-+    RxFcuFlash *f = opaque;
-+
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "renesas-rx-fcu: write to the %s flash array @0x%"
-+                  HWADDR_PRIx "; FACI commands are issued to 0x%08x\n",
-+                  f->target == RX_FCU_CFLASH ? "code" : "data", offset,
-+                  RX_FCU_FACI_ISSUE_BASE);
-+}
-+
-+/*
-+ * The FACI command-issuing area. Every FACI command byte and every data word
-+ * is written here, four bytes at 0x007E0000, rather than to the flash array;
-+ * the destination inside the array comes from FSADDR. The array itself is
-+ * not writable, so a write there is a guest error rather than a command.
-+ */
-+static void faci_issue_write(void *opaque, hwaddr offset, uint64_t value,
-+                             unsigned size)
-+{
-+    RenesasRxFcuState *s = opaque;
-+    RxFcuTarget t;
-+    uint32_t off;
-+
-+    if (target_in_pe_mode(s, RX_FCU_CFLASH)) {
-+        t = RX_FCU_CFLASH;
-+    } else if (target_in_pe_mode(s, RX_FCU_DFLASH)) {
-+        t = RX_FCU_DFLASH;
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "renesas-rx-fcu: FACI command 0x%02x issued while "
-+                      "neither array is in P/E mode\n", (uint8_t)value);
-+        return;
-+    }
-+
-+    /*
-+     * Only the command that opens a sequence needs an address; the count,
-+     * data words and confirmation that follow continue where it left off.
-+     */
-+    if (s->cmd_state == RX_FCU_ST_READY) {
-+        if (!addr_to_offset(s, t, s->fsaddr, &off)) {
-+            faci_illegal(s);
-+            return;
-+        }
-+    } else {
-+        off = s->prog_off;
-+    }
-+    faci_command(s, t, off, value, size);
-+}
-+
-+static uint64_t faci_issue_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    /* The command-issuing area is write-only; reads are undefined. */
-+    return 0;
-+}
-+
-+static const MemoryRegionOps faci_issue_ops = {
-+    .read = faci_issue_read,
-+    .write = faci_issue_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static const MemoryRegionOps faci_flash_ops = {
-+    .read = faci_flash_read,
-+    .write = faci_flash_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+/* Update P/E mode entry and toggle the rom_device read path accordingly. */
-+static void fcu_set_fentryr(RenesasRxFcuState *s, uint16_t value)
-+{
-+    bool was_code = s->fentryr & FENTRYR_CODE;
-+    bool was_data = s->fentryr & FENTRYR_DATA;
-+    bool code, data;
-+
-+    if ((value & 0xff00) != FENTRYR_KEY) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "renesas-rx-fcu: FENTRYR write without key (0x%04x)\n",
-+                      value);
-+        return;
-+    }
-+
-+    code = value & FENTRYR_CODE;
-+    data = value & FENTRYR_DATA;
-+    s->fentryr = (code ? FENTRYR_CODE : 0) | (data ? FENTRYR_DATA : 0);
-+
-+    if (code != was_code) {
-+        memory_region_rom_device_set_romd(&s->cflash_mr, !code);
-+    }
-+    if (data != was_data) {
-+        memory_region_rom_device_set_romd(&s->dflash_mr, !data);
-+    }
-+    if (!code && !data) {
-+        /* Leaving P/E mode resets the command sequencer. */
-+        s->cmd_state = RX_FCU_ST_READY;
-+    }
-+}
-+
-+static uint64_t fcu_regs_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    RenesasRxFcuState *s = opaque;
-+    uint64_t val;
-+
-+    switch (offset) {
-+    case R_FASTAT:
-+        val = s->fastat;
-+        break;
-+    case R_FAEINT:
-+        val = s->faeint;
-+        break;
-+    case R_FRDYIE:
-+        val = s->frdyie;
-+        break;
-+    case R_FSADDR:
-+        val = s->fsaddr;
-+        break;
-+    case R_FEADDR:
-+        val = s->feaddr;
-+        break;
-+    case R_FSTATR:
-+        val = s->fstatr;
-+        break;
-+    case R_FENTRYR:
-+        val = s->fentryr;
-+        break;
-+    case R_FPROTR:
-+        val = s->fprotr;
-+        break;
-+    case R_FSUACR:
-+        val = s->fsuacr;
-+        break;
-+    case R_FCMDR:
-+        val = s->fcmdr;
-+        break;
-+    case R_FPESTAT:
-+        val = s->fpestat;
-+        break;
-+    case R_FBCCNT:
-+        val = s->fbccnt;
-+        break;
-+    case R_FBCSTAT:
-+        val = s->fbcstat;
-+        break;
-+    case R_FPSADDR:
-+        val = s->fpsaddr;
-+        break;
-+    case R_FCPSR:
-+        val = s->fcpsr;
-+        break;
-+    case R_FPCKAR:
-+        val = s->fpckar;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "renesas-rx-fcu: read from unimplemented reg 0x%"
-+                      HWADDR_PRIx "\n", offset);
-+        return 0;
-+    }
-+
-+    if (size < 4) {
-+        val &= (1ull << (8 * size)) - 1;
-+    }
-+    return val;
-+}
-+
-+static void fcu_regs_write(void *opaque, hwaddr offset, uint64_t value,
-+                           unsigned size)
-+{
-+    RenesasRxFcuState *s = opaque;
-+
-+    switch (offset) {
-+    case R_FASTAT:
-+        s->fastat = value;
-+        break;
-+    case R_FAEINT:
-+        s->faeint = value;
-+        break;
-+    case R_FRDYIE:
-+        s->frdyie = value;
-+        break;
-+    case R_FSADDR:
-+        s->fsaddr = value;
-+        break;
-+    case R_FEADDR:
-+        s->feaddr = value;
-+        break;
-+    case R_FENTRYR:
-+        fcu_set_fentryr(s, value);
-+        break;
-+    case R_FPROTR:
-+        s->fprotr = value;
-+        break;
-+    case R_FSUACR:
-+        s->fsuacr = value;
-+        break;
-+    case R_FBCCNT:
-+        s->fbccnt = value;
-+        break;
-+    case R_FCPSR:
-+        s->fcpsr = value;
-+        break;
-+    case R_FPCKAR:
-+        s->fpckar = value;
-+        break;
-+    case R_FSTATR:
-+    case R_FBCSTAT:
-+    case R_FCMDR:
-+    case R_FPESTAT:
-+    case R_FPSADDR:
-+        /* Read-only status registers; ignore writes. */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "renesas-rx-fcu: write to unimplemented reg 0x%"
-+                      HWADDR_PRIx " = 0x%" PRIx64 "\n", offset, value);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps fcu_regs_ops = {
-+    .read = fcu_regs_read,
-+    .write = fcu_regs_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+/*
-+ * Latch the code flash bank layout from the option-setting memory. The
-+ * hardware samples MDE.BANKMD and BANKSEL.BANKSWP at reset, so a mode or
-+ * bank switch only takes effect on the next reset, which is what makes the
-+ * "program the other bank then reboot into it" update flow work.
-+ *
-+ * BANKSWP = 111b maps bank 0, the one holding the vectors, into the upper
-+ * half, which is the layout a linearly programmed image already has, so it
-+ * needs no aliasing. 000b swaps the halves.
-+ */
-+void rx_fcu_update_bank_map(RenesasRxFcuState *s)
-+{
-+    uint32_t mde, banksel;
-+    bool dual, swapped;
-+
-+    mde = ldl_le_p(s->ofsm_ptr + RX_OFSM_MDE);
-+    banksel = ldl_le_p(s->ofsm_ptr + RX_OFSM_BANKSEL);
-+
-+    dual = (mde & RX_BANKMD_MASK) == RX_BANKMD_DUAL;
-+    swapped = (banksel & RX_BANKSWP_MASK) == RX_BANKSWP_SWAPPED;
-+
-+    /* Dual mode is only available on parts with at least 1.5 MiB of flash. */
-+    if (dual && s->cflash_size < CFLASH_MIN_DUAL_SIZE) {
-+        qemu_log_mask(LOG_UNIMP,
-+                      "renesas-rx-fcu: dual mode requested on a %u KiB code "
-+                      "flash is not modelled; staying linear\n",
-+                      s->cflash_size / 1024);
-+        dual = false;
-+    }
-+
-+    s->dual_mode = dual;
-+    s->bank_swapped = dual && swapped;
-+
-+    memory_region_transaction_begin();
-+    memory_region_set_enabled(&s->cflash_linear, !s->dual_mode);
-+    memory_region_set_enabled(&s->cflash_bank[0], s->dual_mode);
-+    memory_region_set_enabled(&s->cflash_bank[1], s->dual_mode);
-+    if (s->dual_mode) {
-+        uint32_t bank_size = s->cflash_size / 2;
-+
-+        memory_region_set_alias_offset(&s->cflash_bank[0],
-+                                       s->bank_swapped ? bank_size : 0);
-+        memory_region_set_alias_offset(&s->cflash_bank[1],
-+                                       s->bank_swapped ? 0 : bank_size);
-+    }
-+    memory_region_transaction_commit();
-+}
-+
-+static void rx_fcu_reset(DeviceState *dev)
-+{
-+    RenesasRxFcuState *s = RENESAS_RX_FCU(dev);
-+
-+    /* The bank layout is sampled from the OFSM at every reset. */
-+    rx_fcu_update_bank_map(s);
-+
-+    /* Exit P/E mode and restore direct (romd) flash reads. */
-+    memory_region_rom_device_set_romd(&s->cflash_mr, true);
-+    memory_region_rom_device_set_romd(&s->dflash_mr, true);
-+
-+    s->fentryr = 0;
-+    s->fstatr = FSTATR_FRDY;
-+    s->fastat = 0;
-+    s->frdyie = 0;
-+    s->faeint = 0;
-+    s->fsaddr = 0;
-+    s->feaddr = 0;
-+    s->fpsaddr = 0;
-+    s->fbcstat = 0;
-+    s->fbccnt = 0;
-+    s->fcpsr = 0;
-+    s->fpckar = 0;
-+    s->fprotr = 0;
-+    s->fsuacr = 0;
-+    s->fpestat = 0;
-+    s->fcmdr = 0;
-+    s->cmd_state = RX_FCU_ST_READY;
-+    s->prog_off = 0;
-+    s->prog_words = 0;
-+
-+    qemu_set_irq(s->frdyi, 0);
-+    qemu_set_irq(s->fiferr, 0);
-+}
-+
-+/*
-+ * Attach one array to its block backend: take the write permission if the
-+ * image allows it, then load the image over the erased contents. A backend
-+ * whose size does not match the array is rejected rather than silently
-+ * truncated.
-+ */
-+static bool fcu_attach_blk(RenesasRxFcuState *s, DeviceState *dev,
-+                           RxFcuTarget t, Error **errp)
-+{
-+    BlockBackend *blk = t == RX_FCU_CFLASH ? s->cflash_blk : s->dflash_blk;
-+    MemoryRegion *mr = t == RX_FCU_CFLASH ? &s->cflash_mr : &s->dflash_mr;
-+    uint32_t size = target_size(s, t);
-+    uint64_t perm;
-+    bool ro;
-+
-+    if (!blk) {
-+        return true;
-+    }
-+
-+    ro = !blk_supports_write_perm(blk);
-+    if (t == RX_FCU_CFLASH) {
-+        s->cflash_ro = ro;
-+    } else {
-+        s->dflash_ro = ro;
-+    }
-+
-+    perm = BLK_PERM_CONSISTENT_READ | (ro ? 0 : BLK_PERM_WRITE);
-+    if (blk_set_perm(blk, perm, BLK_PERM_ALL, errp) < 0) {
-+        return false;
-+    }
-+
-+    /* The block helper skips zero extents, so its destination must be zero. */
-+    memset(target_storage(s, t), 0, size);
-+    if (!blk_check_size_and_read_all(blk, dev, target_storage(s, t),
-+                                     size, errp)) {
-+        vmstate_unregister_ram(mr, dev);
-+        return false;
-+    }
++    prt("dabs\tdr%d, dr%d", a->drs, a->drd);
 +    return true;
 +}
 +
-+static void rx_fcu_realize(DeviceState *dev, Error **errp)
++static bool trans_DNEG(DisasContext *ctx, arg_DNEG *a)
 +{
-+    RenesasRxFcuState *s = RENESAS_RX_FCU(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    if (s->cflash_size == 0 || s->dflash_size == 0) {
-+        error_setg(errp, "code-flash-size and data-flash-size must be set");
-+        return;
-+    }
-+    if (s->dual_bank_gap_size > s->cflash_base) {
-+        error_setg(errp, "dual-bank-gap-size exceeds code-flash-base");
-+        return;
-+    }
-+
-+    s->cflash_ctx.fcu = s;
-+    s->cflash_ctx.target = RX_FCU_CFLASH;
-+    s->dflash_ctx.fcu = s;
-+    s->dflash_ctx.target = RX_FCU_DFLASH;
-+
-+    memory_region_init_io(&s->regs_mr, OBJECT(s), &fcu_regs_ops, s,
-+                          "renesas-rx-fcu.regs", RX_FCU_REGS_SIZE);
-+    memory_region_init_io(&s->faci_mr, OBJECT(s), &faci_issue_ops, s,
-+                          "renesas-rx-fcu.faci", RX_FCU_FACI_ISSUE_SIZE);
-+
-+    if (!memory_region_init_rom_device(&s->cflash_mr, OBJECT(s),
-+                                       &faci_flash_ops, &s->cflash_ctx,
-+                                       "renesas-rx-fcu.cflash",
-+                                       s->cflash_size, errp)) {
-+        return;
-+    }
-+    if (!memory_region_init_rom_device(&s->dflash_mr, OBJECT(s),
-+                                       &faci_flash_ops, &s->dflash_ctx,
-+                                       "renesas-rx-fcu.dflash",
-+                                       s->dflash_size, errp)) {
-+        return;
-+    }
-+    /*
-+     * The option-setting memory is read-only to ordinary accesses. It is
-+     * changed through the FACI configuration-set command, so a plain ROM is
-+     * the right shape for the CPU-visible mapping.
-+     */
-+    if (!memory_region_init_rom(&s->ofsm_mr, OBJECT(s),
-+                                "renesas-rx-fcu.ofsm",
-+                                RX_FCU_OFSM_SIZE, errp)) {
-+        return;
-+    }
-+
-+    /*
-+     * The code flash reaches the bus through a container holding either one
-+     * alias over the whole array (linear mode) or one per bank (dual mode).
-+     */
-+    memory_region_init(&s->cflash_container, OBJECT(s),
-+                       "renesas-rx-fcu.cflash-map",
-+                       s->cflash_size + s->dual_bank_gap_size);
-+    memory_region_init_alias(&s->cflash_linear, OBJECT(s),
-+                             "renesas-rx-fcu.cflash-linear",
-+                             &s->cflash_mr, 0, s->cflash_size);
-+    memory_region_add_subregion(&s->cflash_container,
-+                                s->dual_bank_gap_size, &s->cflash_linear);
-+
-+    for (int i = 0; i < 2; i++) {
-+        g_autofree char *name =
-+            g_strdup_printf("renesas-rx-fcu.cflash-bank%d", i);
-+        memory_region_init_alias(&s->cflash_bank[i], OBJECT(s), name,
-+                                 &s->cflash_mr, 0, s->cflash_size / 2);
-+        memory_region_add_subregion(&s->cflash_container,
-+                                    (hwaddr)i * (s->cflash_size / 2 +
-+                                                s->dual_bank_gap_size),
-+                                    &s->cflash_bank[i]);
-+        memory_region_set_enabled(&s->cflash_bank[i], false);
-+    }
-+
-+    s->cflash_ptr = memory_region_get_ram_ptr(&s->cflash_mr);
-+    s->dflash_ptr = memory_region_get_ram_ptr(&s->dflash_mr);
-+    s->ofsm_ptr = memory_region_get_ram_ptr(&s->ofsm_mr);
-+
-+    /*
-+     * Erased flash reads as all ones, but the backing memory starts zeroed.
-+     * Fill both arrays here rather than at reset: realize runs before the
-+     * ROM loader writes the firmware image into the code flash, and flash
-+     * is non-volatile, so anything the guest programmed must survive a
-+     * later system reset.
-+     */
-+    memset(s->cflash_ptr, 0xff, s->cflash_size);
-+    memset(s->dflash_ptr, 0xff, s->dflash_size);
-+    memset(s->ofsm_ptr, 0xff, RX_FCU_OFSM_SIZE);
-+
-+    if (!fcu_attach_blk(s, dev, RX_FCU_CFLASH, errp) ||
-+        !fcu_attach_blk(s, dev, RX_FCU_DFLASH, errp)) {
-+        return;
-+    }
-+    if (s->ofsm_blk) {
-+        uint64_t perm;
-+        int64_t len;
-+
-+        s->ofsm_ro = !blk_supports_write_perm(s->ofsm_blk);
-+        perm = BLK_PERM_CONSISTENT_READ | (s->ofsm_ro ? 0 : BLK_PERM_WRITE);
-+        if (blk_set_perm(s->ofsm_blk, perm, BLK_PERM_ALL, errp) < 0) {
-+            return;
-+        }
-+        /*
-+         * The OFSM is smaller than a block sector, so an exact size match is
-+         * not something an image file can offer. Require enough bytes and
-+         * read only the ones the region holds.
-+         */
-+        len = blk_getlength(s->ofsm_blk);
-+        if (len < RX_FCU_OFSM_SIZE) {
-+            error_setg(errp, "ofsm-drive is %" PRId64
-+                       " bytes, need at least %d",
-+                       len, RX_FCU_OFSM_SIZE);
-+            return;
-+        }
-+        if (blk_pread(s->ofsm_blk, 0, RX_FCU_OFSM_SIZE, s->ofsm_ptr, 0) < 0) {
-+            error_setg(errp, "could not read ofsm-drive");
-+            return;
-+        }
-+    }
-+
-+    sysbus_init_mmio(sbd, &s->regs_mr);
-+    sysbus_init_mmio(sbd, &s->cflash_container);
-+    sysbus_init_mmio(sbd, &s->dflash_mr);
-+    sysbus_init_mmio(sbd, &s->ofsm_mr);
-+    sysbus_init_mmio(sbd, &s->faci_mr);
-+    sysbus_init_irq(sbd, &s->frdyi);
-+    sysbus_init_irq(sbd, &s->fiferr);
++    prt("dneg\tdr%d, dr%d", a->drs, a->drd);
++    return true;
 +}
 +
-+static const Property rx_fcu_properties[] = {
-+    DEFINE_PROP_DRIVE("code-flash-drive", RenesasRxFcuState, cflash_blk),
-+    DEFINE_PROP_DRIVE("data-flash-drive", RenesasRxFcuState, dflash_blk),
-+    DEFINE_PROP_DRIVE("ofsm-drive", RenesasRxFcuState, ofsm_blk),
-+    DEFINE_PROP_UINT32("code-flash-size", RenesasRxFcuState, cflash_size, 0),
-+    DEFINE_PROP_UINT32("data-flash-size", RenesasRxFcuState, dflash_size, 0),
-+    DEFINE_PROP_UINT32("code-flash-base", RenesasRxFcuState, cflash_base, 0),
-+    DEFINE_PROP_UINT32("data-flash-base", RenesasRxFcuState, dflash_base, 0),
-+    DEFINE_PROP_UINT32("dual-bank-gap-size", RenesasRxFcuState,
-+                       dual_bank_gap_size, 0),
-+};
++static bool trans_DSQRT(DisasContext *ctx, arg_DSQRT *a)
++{
++    prt("dsqrt\tdr%d, dr%d", a->drs, a->drd);
++    return true;
++}
 +
-+static const VMStateDescription vmstate_rx_fcu = {
-+    .name = "renesas-rx-fcu",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT16(fentryr, RenesasRxFcuState),
-+        VMSTATE_UINT32(fstatr, RenesasRxFcuState),
-+        VMSTATE_UINT8(fastat, RenesasRxFcuState),
-+        VMSTATE_UINT8(frdyie, RenesasRxFcuState),
-+        VMSTATE_UINT8(faeint, RenesasRxFcuState),
-+        VMSTATE_UINT32(fsaddr, RenesasRxFcuState),
-+        VMSTATE_UINT32(fpsaddr, RenesasRxFcuState),
-+        VMSTATE_UINT32(feaddr, RenesasRxFcuState),
-+        VMSTATE_UINT8(fbcstat, RenesasRxFcuState),
-+        VMSTATE_UINT16(fbccnt, RenesasRxFcuState),
-+        VMSTATE_UINT16(fcpsr, RenesasRxFcuState),
-+        VMSTATE_UINT16(fpckar, RenesasRxFcuState),
-+        VMSTATE_UINT16(fprotr, RenesasRxFcuState),
-+        VMSTATE_UINT16(fsuacr, RenesasRxFcuState),
-+        VMSTATE_UINT16(fpestat, RenesasRxFcuState),
-+        VMSTATE_UINT16(fcmdr, RenesasRxFcuState),
-+        VMSTATE_INT32(cmd_state, RenesasRxFcuState),
-+        VMSTATE_INT32(cmd_target, RenesasRxFcuState),
-+        VMSTATE_UINT32(prog_off, RenesasRxFcuState),
-+        VMSTATE_UINT32(prog_words, RenesasRxFcuState),
-+        VMSTATE_END_OF_LIST()
++static bool trans_DROUND(DisasContext *ctx, arg_DROUND *a)
++{
++    prt("dround\tdr%d, dr%d", a->drs, a->drd);
++    return true;
++}
++
+ #define BOP_IM(name, reg)                                       \
+     do {                                                        \
+         char dsp[8];                                            \
+diff --git a/target/rx/helper.h b/target/rx/helper.h
+index e39f4b65ae..60e8d18288 100644
+--- a/target/rx/helper.h
++++ b/target/rx/helper.h
+@@ -19,6 +19,10 @@ DEF_HELPER_3(dsub, f64, env, f64, f64)
+ DEF_HELPER_3(dmul, f64, env, f64, f64)
+ DEF_HELPER_3(ddiv, f64, env, f64, f64)
+ DEF_HELPER_4(dcmp, void, env, i32, f64, f64)
++DEF_HELPER_2(dabs, f64, env, f64)
++DEF_HELPER_2(dneg, f64, env, f64)
++DEF_HELPER_2(dsqrt, f64, env, f64)
++DEF_HELPER_2(dround, f64, env, f64)
+ DEF_HELPER_2(set_fpsw, void, env, i32)
+ DEF_HELPER_2(racw, void, env, i32)
+ DEF_HELPER_2(set_psw_rte, void, env, i32)
+diff --git a/target/rx/insns.decode b/target/rx/insns.decode
+index e22536a9e0..a7d66fba67 100644
+--- a/target/rx/insns.decode
++++ b/target/rx/insns.decode
+@@ -30,6 +30,7 @@
+ &mr		rs ld mi rs2
+ &mcnd		ld sz rd cd
+ # RXv3 DPFPU argument types
++&drr		drd drs
+ &drrr		drd drs1 drs2
+ &dcmpd		drs1 drs2 cd
+ ########
+@@ -643,3 +644,12 @@ DSUB		0111 0110 1001 0000 drs2:4 0001 drd:4 drs1:4	&drrr
+ DMUL		0111 0110 1001 0000 drs2:4 0010 drd:4 drs1:4	&drrr
+ DDIV		0111 0110 1001 0000 drs2:4 0101 drd:4 drs1:4	&drrr
+ DCMP		0111 0110 1001 0000 drs2:4 1000 cd:4  drs1:4	&dcmpd
++
++# Unary ops group A (1100): DMOV, DABS, DNEG
++DMOV		0111 0110 1001 0000 drs:4 1100 drd:4 0000	&drr
++DABS		0111 0110 1001 0000 drs:4 1100 drd:4 0001	&drr
++DNEG		0111 0110 1001 0000 drs:4 1100 drd:4 0010	&drr
++
++# Unary ops group B (1101): DSQRT, DROUND
++DSQRT		0111 0110 1001 0000 drs:4 1101 drd:4 0000	&drr
++DROUND		0111 0110 1001 0000 drs:4 1101 drd:4 1101	&drr
+diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
+index 61277b7581..da2d71fa32 100644
+--- a/target/rx/op_helper.c
++++ b/target/rx/op_helper.c
+@@ -307,6 +307,41 @@ void helper_dcmp(CPURXState *env, uint32_t cm, float64 src, float64 src2)
+     update_dpsw(env);
+ }
+ 
++/*
++ * DABS and DNEG only change the sign bit. They cannot raise an exception,
++ * and are the two DP arithmetic instructions that leave the DC* cause bits
++ * as they were rather than recomputing them.
++ */
++float64 helper_dabs(CPURXState *env, float64 t0)
++{
++    return float64_abs(t0);
++}
++
++float64 helper_dneg(CPURXState *env, float64 t0)
++{
++    return float64_chs(t0);
++}
++
++float64 helper_dsqrt(CPURXState *env, float64 t0)
++{
++    float64 ret;
++
++    dp_begin(env);
++    ret = float64_sqrt(t0, &env->dp_status);
++    update_dpsw(env);
++    return ret;
++}
++
++float64 helper_dround(CPURXState *env, float64 t0)
++{
++    float64 ret;
++
++    dp_begin(env);
++    ret = float64_round_to_int(t0, &env->dp_status);
++    update_dpsw(env);
++    return ret;
++}
++
+ void helper_rx_fcmp(CPURXState *env, float32 t0, float32 t1)
+ {
+     int st;
+diff --git a/target/rx/translate.c b/target/rx/translate.c
+index 2eb0b7b39e..9bf70c96c6 100644
+--- a/target/rx/translate.c
++++ b/target/rx/translate.c
+@@ -2027,6 +2027,64 @@ static bool trans_DCMP(DisasContext *ctx, arg_DCMP *a)
+     return true;
+ }
+ 
++static bool trans_DMOV(DisasContext *ctx, arg_DMOV *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
 +    }
-+};
-+
-+static void rx_fcu_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = rx_fcu_realize;
-+    dc->vmsd = &vmstate_rx_fcu;
-+    device_class_set_props(dc, rx_fcu_properties);
-+    device_class_set_legacy_reset(dc, rx_fcu_reset);
++    TCGv_i64 s = dr_read(a->drs);
++    dr_write(a->drd, s);
++    return true;
 +}
 +
-+static const TypeInfo rx_fcu_info = {
-+    .name = TYPE_RENESAS_RX_FCU,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RenesasRxFcuState),
-+    .class_init = rx_fcu_class_init,
-+};
-+
-+static void rx_fcu_register_types(void)
++static bool trans_DABS(DisasContext *ctx, arg_DABS *a)
 +{
-+    type_register_static(&rx_fcu_info);
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    TCGv_i64 s = dr_read(a->drs);
++    TCGv_i64 d = tcg_temp_new_i64();
++    gen_helper_dabs(d, tcg_env, s);
++    dr_write(a->drd, d);
++    return true;
 +}
 +
-+type_init(rx_fcu_register_types)
-diff --git a/include/hw/misc/renesas_rx_fcu.h b/include/hw/misc/renesas_rx_fcu.h
-new file mode 100644
-index 0000000000..5bc580f51e
---- /dev/null
-+++ b/include/hw/misc/renesas_rx_fcu.h
-@@ -0,0 +1,191 @@
-+/*
-+ * Renesas RX Flash Control Unit (FCU) with FACI command interface
-+ *
-+ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
-+ *            (Rev.1.00 R01UH0590EJ0100), section 6 (Flash Memory)
-+ *
-+ * Copyright (c) 2026 Umar, Sayyad Mahammad
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ */
++static bool trans_DNEG(DisasContext *ctx, arg_DNEG *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    TCGv_i64 s = dr_read(a->drs);
++    TCGv_i64 d = tcg_temp_new_i64();
++    gen_helper_dneg(d, tcg_env, s);
++    dr_write(a->drd, d);
++    return true;
++}
 +
-+#ifndef HW_MISC_RENESAS_RX_FCU_H
-+#define HW_MISC_RENESAS_RX_FCU_H
++static bool trans_DSQRT(DisasContext *ctx, arg_DSQRT *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    TCGv_i64 s = dr_read(a->drs);
++    TCGv_i64 d = tcg_temp_new_i64();
++    gen_helper_dsqrt(d, tcg_env, s);
++    dr_write(a->drd, d);
++    return true;
++}
 +
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
++static bool trans_DROUND(DisasContext *ctx, arg_DROUND *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    TCGv_i64 s = dr_read(a->drs);
++    TCGv_i64 d = tcg_temp_new_i64();
++    gen_helper_dround(d, tcg_env, s);
++    dr_write(a->drd, d);
++    return true;
++}
 +
-+#define TYPE_RENESAS_RX_FCU "renesas-rx-fcu"
-+#include "system/block-backend.h"
-+
-+typedef struct RenesasRxFcuState RenesasRxFcuState;
-+DECLARE_INSTANCE_CHECKER(RenesasRxFcuState, RENESAS_RX_FCU, TYPE_RENESAS_RX_FCU)
-+
-+/* The FACI control register block (0x007FE000) covers the first 4 KiB. */
-+#define RX_FCU_REGS_SIZE    0x1000
-+
-+/*
-+ * FACI command-issuing area: every command byte and data word is written
-+ * here, and the destination inside the flash comes from FSADDR.
-+ */
-+#define RX_FCU_FACI_ISSUE_BASE  0x007E0000
-+#define RX_FCU_FACI_ISSUE_SIZE  4
-+
-+/*
-+ * Option-setting memory (OFSM). It sits apart from the code flash array and
-+ * holds, among other things, the two registers that select the code flash
-+ * bank layout.
-+ */
-+#define RX_FCU_OFSM_SIZE    0x80
-+#define RX_OFSM_MDE         0x00    /* Endian Select Register  (BANKMD) */
-+#define RX_OFSM_BANKSEL     0x20    /* Bank Select Register    (BANKSWP) */
-+
-+/*
-+ * MDE.BANKMD[2:0] picks the code flash layout: 111b is linear mode, 000b is
-+ * dual mode. A blank part reads 0xffffffff, hence linear.
-+ */
-+#define RX_BANKMD_MASK      0x7
-+#define RX_BANKMD_DUAL      0x0
-+#define RX_BANKMD_LINEAR    0x7
-+
-+/*
-+ * BANKSEL.BANKSWP[2:0] picks which bank is mapped where in dual mode. 111b
-+ * puts bank 0 in the upper half, which is where the vectors live, so it is
-+ * the layout a linearly programmed image already has; 000b swaps the two.
-+ */
-+#define RX_BANKSWP_MASK     0x7
-+#define RX_BANKSWP_NORMAL   0x7
-+#define RX_BANKSWP_SWAPPED  0x0
-+
-+/* sysbus MMIO regions exposed by the device. */
-+enum {
-+    RX_FCU_MMIO_REGS = 0,   /* FACI control/status registers      */
-+    RX_FCU_MMIO_CFLASH,     /* code flash array (rom_device)      */
-+    RX_FCU_MMIO_DFLASH,     /* data flash array (rom_device)      */
-+    RX_FCU_MMIO_OFSM,       /* option-setting memory              */
-+    RX_FCU_MMIO_FACI,       /* FACI command-issuing area          */
-+    RX_FCU_NR_MMIO,
-+};
-+
-+/* sysbus IRQ lines. */
-+enum {
-+    RX_FCU_IRQ_FRDYI = 0,   /* flash ready interrupt   */
-+    RX_FCU_IRQ_FIFERR,      /* flash access error      */
-+    RX_FCU_NR_IRQ,
-+};
-+
-+/* Identifies which flash array a FACI command targets. */
-+typedef enum {
-+    RX_FCU_CFLASH = 0,
-+    RX_FCU_DFLASH = 1,
-+} RxFcuTarget;
-+
-+/*
-+ * Per-array context handed to the flash MemoryRegion ops so a single set of
-+ * callbacks can serve both the code and data flash arrays.
-+ */
-+typedef struct RxFcuFlash {
-+    RenesasRxFcuState *fcu;
-+    RxFcuTarget target;
-+} RxFcuFlash;
-+
-+/* FACI command sequencer state. */
-+typedef enum {
-+    RX_FCU_ST_READY = 0,
-+    RX_FCU_ST_PROGRAM_COUNT,    /* awaiting the data-word count       */
-+    RX_FCU_ST_PROGRAM_DATA,     /* receiving data words, then 0xD0     */
-+    RX_FCU_ST_ERASE,            /* awaiting the 0xD0 confirmation      */
-+    RX_FCU_ST_BLANKCHECK,       /* awaiting the 0xD0 confirmation      */
-+    RX_FCU_ST_CONFIG_COUNT,     /* awaiting the config data-word count */
-+    RX_FCU_ST_CONFIG_DATA,      /* receiving config words, then 0xD0   */
-+} RxFcuCmdState;
-+
-+struct RenesasRxFcuState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    MemoryRegion regs_mr;
-+    MemoryRegion cflash_mr;     /* backing store, reached through the aliases */
-+    MemoryRegion dflash_mr;
-+    MemoryRegion ofsm_mr;
-+    MemoryRegion faci_mr;
-+
-+    /*
-+     * The code flash is exposed through a container so the two dual-mode
-+     * banks can be mapped in either order. In linear mode the container
-+     * holds one alias spanning the whole array; in dual mode it holds one
-+     * alias per half, placed according to BANKSWP. The 1.5 MiB parts have a
-+     * gap between the two bank windows.
-+     */
-+    MemoryRegion cflash_container;
-+    MemoryRegion cflash_linear;
-+    MemoryRegion cflash_bank[2];
-+
-+    RxFcuFlash cflash_ctx;
-+    RxFcuFlash dflash_ctx;
-+
-+    qemu_irq frdyi;
-+    qemu_irq fiferr;
-+
-+    /* Geometry (set via properties by the MCU). */
-+    uint32_t cflash_size;
-+    uint32_t dflash_size;
-+    uint32_t cflash_base;       /* absolute CPU address of code flash */
-+    uint32_t dflash_base;       /* absolute CPU address of data flash */
-+    uint32_t dual_bank_gap_size;
-+
-+    /* Backing storage pointers (into the rom_device RAM). */
-+    uint8_t *cflash_ptr;
-+    uint8_t *dflash_ptr;
-+    uint8_t *ofsm_ptr;
-+
-+    /* Code flash bank layout latched at reset from the OFSM. */
-+    uint32_t cfg_off;           /* OFSM offset for a configuration set  */
-+    bool dual_mode;
-+    bool bank_swapped;
-+
-+    /*
-+     * Optional block backends. When present the array is loaded from the
-+     * image at realize and every program or erase is written back, so flash
-+     * contents survive across runs the way real flash does.
-+     */
-+    BlockBackend *cflash_blk;
-+    BlockBackend *dflash_blk;
-+    BlockBackend *ofsm_blk;
-+    bool cflash_ro;
-+    bool dflash_ro;
-+    bool ofsm_ro;
-+
-+    /* FACI registers. */
-+    uint16_t fentryr;           /* P/E mode entry (read-back form)    */
-+    uint32_t fstatr;            /* flash status                       */
-+    uint8_t  fastat;            /* flash access status                */
-+    uint8_t  frdyie;            /* flash ready interrupt enable       */
-+    uint8_t  faeint;            /* flash access error interrupt enable */
-+    uint32_t fsaddr;            /* processing start address           */
-+    uint32_t fpsaddr;           /* programmed/erased start address    */
-+    uint32_t feaddr;            /* processing end address             */
-+    uint8_t  fbcstat;           /* blank check status                 */
-+    uint16_t fbccnt;            /* blank check control                */
-+    uint16_t fcpsr;             /* clear/processing switch            */
-+    uint16_t fpckar;            /* clock notification                 */
-+    uint16_t fprotr;            /* protection                         */
-+    uint16_t fsuacr;            /* startup area control               */
-+    uint16_t fpestat;           /* P/E error status                   */
-+    uint16_t fcmdr;             /* last FACI command (read-only)      */
-+
-+    /*
-+     * Command sequencer (RxFcuCmdState / RxFcuTarget, stored as int32 for
-+     * migration).
-+     */
-+    int32_t cmd_state;
-+    int32_t cmd_target;         /* array of the in-progress command   */
-+    uint32_t      prog_off;     /* next program offset within array   */
-+    uint32_t      prog_words;   /* remaining 16-bit words to program  */
-+};
-+
-+void rx_fcu_update_bank_map(RenesasRxFcuState *s);
-+
-+#endif /* HW_MISC_RENESAS_RX_FCU_H */
+ static void rx_bsetm(DisasContext *ctx, TCGv_i32 mem, TCGv_i32 mask)
+ {
+     TCGv_i32 val;
 
 -- 
 2.53.0

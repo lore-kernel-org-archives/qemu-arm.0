@@ -1,73 +1,99 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51871606A327
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:35:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8E45606A31A
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 20:48:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Kp0cE420
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL26X-00050O-QQ; Sun, 25 Oct 2026 13:33:57 -0400
+	id 1xL58F-0006LP-2D; Sun, 25 Oct 2026 16:47:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL25H-0002R5-Sm; Sun, 25 Oct 2026 13:32:43 -0400
-Received: from www675.your-server.de ([85.10.213.182])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL25F-0007OL-Uj; Sun, 25 Oct 2026 13:32:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
- Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=yqiVQm2uxF8h7YlBOlfy8QpJTGMKaJUh8ewNs/GVT9I=; b=n/0L0XAMfCMIojXN48SrIrHSjy
- 1zJ8gXCIOQpJmU8NEkBi15Bt2IwKNjvNybW1EHNW/n0Lvly4/4ceBaUsdRXMftVxcdxAV3cvLscnf
- nFknGhhuDeMHVPoskGURm1gKQRVMCJPayy6ZRClzUidUpes7natMSSruB0JzGmkM5cG9NPt0fbgHf
- YE5e850GexKNlSDgubk97tos65U69lvvJgThD3oYQqtyMq20uH+kiAeGOHQqQ4aH52D1iwAlsPcpL
- tc/6HVApJi09fwUGqgrxGmVUFC2KnouRvnqDiDFcZdak9cXKRE+0SAetMIRvyOQksueB/ILEyjMmQ
- cOSnTBnA==;
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1gO-00097I-17; Sun, 25 Oct 2026 18:06:56 +0100
-Received: from localhost ([127.0.0.1])
- by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vw-000OzG-2I; Sun, 25 Oct 2026 17:56:08 +0100
-From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:38 +0100
-Subject: [PATCH v2 22/31] hw/dma: add Renesas RX DTC
+ (Exim 4.90_1) (envelope-from <cyan2254650260@gmail.com>)
+ id 1xL3se-0004LC-9l
+ for qemu-arm@nongnu.org; Sun, 25 Oct 2026 15:27:44 -0400
+Received: from mail-dy2-x08.google.com ([2607:f8b0:4864:36::8])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cyan2254650260@gmail.com>)
+ id 1xL3sY-0007ko-G7
+ for qemu-arm@nongnu.org; Sun, 25 Oct 2026 15:27:42 -0400
+Received: by mail-dy2-x08.google.com with SMTP id
+ 5a478bee46e88-34cbc588a31so1663522eec.1
+ for <qemu-arm@nongnu.org>; Sun, 25 Oct 2026 12:27:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1792956456; x=1793561256; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=zBpE5I5MfFXFasiPZ2BKPNNyk+/gV/xOLWY4djr3t2I=;
+ b=Kp0cE420mZRoCNb1DjWSiQI7eIZOxR67DQovb7opqv3V+H/w5pVt7j2fgi4m9vYTs5
+ uwaRWg2eAeRKAjcpr6vp7cA+u8eszCovAhMZdeRHbErPqD48E2kNAitdFMD2gW9equhb
+ ynwRnbQiGEY64GojAqTNcN9rzTaz55tCq/zo2wFqWFobewNg6QHmZh/OFpJOYyzHhb7i
+ 9/CQ38I9GdI6FCesrh32u7KLMvx1KIsE2GLAfsaD4w4xMt59JPBOVynLYLvnPth87ZU7
+ 5Z7QcTB+ZJD0GDEdJxY7inhcYO2xc7d8U6LVeo7bSVO8blqBtsiaYwd9ghXOw+BksdNH
+ ar5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792956456; x=1793561256;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=zBpE5I5MfFXFasiPZ2BKPNNyk+/gV/xOLWY4djr3t2I=;
+ b=kP+f38cMa2D1lccDT+DIokM5/9B0VLHZYswh5RNpbddyiJnHy4qO6jC/gu3ep7Nskd
+ vkpRbtyvrf12MUvhLv08TrvZ1m14kgDwdrXCo0oX2BAR6VRdZYPzU7lHXvRJ0j5RF/z0
+ fuJUTA/FKAvJeiSVJPG2Ays9GC0rANps77NJ6W6n8SyOuzkJYNirTO2Uzs0sU26GgrvC
+ os+cXzXSOjl8SA11sdfq9qd7dSpdwFYE3ujE/hVoGmXgDvZPY2T2nhLq70kQvTr9jfc6
+ X0nJPIMQCTDwmHBxA+zYzwwVgmK6egu17fG8KimkbFGYokUM8UaKTYavMlsI5Rgpp0VD
+ VEHg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxPWd9ezX+Ik7w15R+CuXHHbvqzP+OJAdNqL9/9v+LJBW0zC4RwFammzDro8aveUNaIh0bdsDxuSg==@nongnu.org
+X-Gm-Message-State: AFq9FYI8ZdaDlCfki/cei6/VM6MYVBQ2Kz0J0pb4dVgPWvCGEwxseZEt
+ w1J4t+arPfZqixyARgkHcdrf3ouCZPxbSbnzeW9vYSxTAT5NqqfmzKlG
+X-Gm-Gg: AYBFou1foMTw5hsCR3oT6f52QZHqa47z1Ma6lR/H3Qk4Et/cQy0mU1i/dW6UvRp7Ffr
+ OJGqIeHwzjGYGyLSDpomdNdAX+eMWjoiTF8vUnaw0ZZNCUDOnUv8Z4h4YXlJT2pSd7f1x9p4oNR
+ 2N04P5gu4S5KlsDW0UbdLonTatMiDkcFJcID9ZHvCQ2VDt9k7kZPv/4TbSw/caYWfu0wUqPpJ7Z
+ ZXv0V8nWMgy40tpNVZyUQy6+VI5Oi3d9jClnr3VL5VccBItbuUow3peeiWx24R1IvQZqona/x+F
+ 5TxVATh0rOij2KMe5IowafkqbdF7MbFrB9vReph7BKsQ71k1DSM8W0uudKXydY0YHvedU5WTQme
+ eO1jBfEg0sy2KpZ903RebSZyP4bMq3lECWI8Ej3t5UneTNkIDZt9qf8PaJdQXolDlkRKFLSCt/A
+ V6au9rhcpFLrwUxpEfB4vnewmeZ0HKyREvjtvH85HpC47ouJ32EjSd8crpjkDY4IRgJCh3VXXPh
+ vz09LTN+KoI1nD/47PFmeeT8K7t58B6WrZFAbcZQymhycv9korw7L/mjh4vrK3YZwbH0P810P+k
+X-Received: by 2002:a05:693c:87d9:20b0:369:987f:d15e with SMTP id
+ 5a478bee46e88-369e8336389mr7631122eec.2.1792956456016; 
+ Sun, 25 Oct 2026 12:27:36 -0700 (PDT)
+Received: from AERO17.taila7786d.ts.net ([152.175.65.31])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-369e8daa3a8sm23226027eec.16.2026.10.25.12.27.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 25 Oct 2026 12:27:35 -0700 (PDT)
+From: Pufan Jin <cyan2254650260@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH 3/3] tests/qtest: Add Xilinx AXI GPIO test
+Date: Mon, 26 Oct 2026 03:27:16 +0800
+Message-ID: <20261025192716.239589-4-cyan2254650260@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261025192716.239589-1-cyan2254650260@gmail.com>
+References: <20261025192716.239589-1-cyan2254650260@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-umar-rx-series-v2-22-9e846577cad0@sayyadumar.com>
-References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
-In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
-To: qemu-devel@nongnu.org
-Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowangio@gmail.com>, 
- qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=8844;
- i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=0IDDL1GJ4GvlVMGRInc97lXLw7QBPz6EVLbNUCbsUts=;
- b=7rFCijpryNlnxTgwOqXZP4ul+d1/L0dwP0tqsfk0IX0DjcH7PkFe+xY7kKFDhafkP4nRczNKL
- 82rIYAlkJcNC3mPpJiwr1vShDkFZgXeGRZY0soNYRaFwvTGNlqRpZNE
-X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
- pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
-X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
-Received-SPF: pass client-ip=85.10.213.182;
- envelope-from=contact@sayyadumar.com; helo=www675.your-server.de
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:36::8;
+ envelope-from=cyan2254650260@gmail.com; helo=mail-dy2-x08.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 25 Oct 2026 16:47:53 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,298 +104,433 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the RX Data Transfer Controller, section 18 (DTC) of the RX65N
-hardware manual.
+Add a QTest test suite for the Xilinx AXI GPIO IP core covering:
+- Reset state verification
+- GPIO 3-state direction register configuration
+- GPIO data register output across both channels
+- Pin input and edge-triggered interrupt assertion and W1C clearing
 
-Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
+Signed-off-by: Pufan Jin <cyan2254650260@gmail.com>
 ---
- MAINTAINERS                            |   2 +
- configs/devices/rx-softmmu/default.mak |   1 +
- hw/dma/Kconfig                         |   3 +
- hw/dma/meson.build                     |   1 +
- hw/dma/renesas_rx_dtc.c                | 169 +++++++++++++++++++++++++++++++++
- include/hw/dma/renesas_rx_dtc.h        |  42 ++++++++
- 6 files changed, 218 insertions(+)
+ MAINTAINERS                      |   1 +
+ tests/qtest/meson.build          |   3 +-
+ tests/qtest/xlnx-axi-gpio-test.c | 372 +++++++++++++++++++++++++++++++
+ 3 files changed, 375 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/xlnx-axi-gpio-test.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index d36aa0afa1..e747530308 100644
+index 8d8b9047dd..7fe35ba8f3 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -3082,11 +3082,13 @@ Renesas RX peripherals
- R: Yoshinori Sato <yoshinori.sato@nifty.com>
- S: Orphan
- F: hw/dma/renesas_rx_*.c
-+F: hw/dma/renesas_rx_dtc.c
- F: hw/gpio/renesas_rx_gpio.c
- F: hw/intc/rx_icu.c
- F: hw/rx/
- F: hw/timer/renesas_mtu3.c
- F: include/hw/dma/renesas_rx_*.h
-+F: include/hw/dma/renesas_rx_dtc.h
- F: include/hw/gpio/renesas_rx_gpio.h
- F: include/hw/intc/rx_icu.h
- F: include/hw/rx/
-diff --git a/configs/devices/rx-softmmu/default.mak b/configs/devices/rx-softmmu/default.mak
-index f14a65dac7..9e0e1ef31d 100644
---- a/configs/devices/rx-softmmu/default.mak
-+++ b/configs/devices/rx-softmmu/default.mak
-@@ -5,3 +5,4 @@
- CONFIG_RENESAS_MTU3=y
- CONFIG_RENESAS_RX_GPIO=y
- CONFIG_RENESAS_RX_DMAC=y
-+CONFIG_RENESAS_RX_DTC=y
-diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
-index 2c95b8696d..8c70bc18c2 100644
---- a/hw/dma/Kconfig
-+++ b/hw/dma/Kconfig
-@@ -36,3 +36,6 @@ config K230_GSDMA
+@@ -1486,6 +1486,7 @@ F: include/hw/char/xilinx_uartlite.h
+ F: hw/gpio/xlnx-axi-gpio.c
+ F: include/hw/gpio/xlnx-axi-gpio.h
+ F: tests/functional/microblaze/test_s3adsp1800.py
++F: tests/qtest/xlnx-axi-gpio-test.c
  
- config RENESAS_RX_DMAC
-     bool
-+
-+config RENESAS_RX_DTC
-+    bool
-diff --git a/hw/dma/meson.build b/hw/dma/meson.build
-index 1fb06fb13d..671b9aba29 100644
---- a/hw/dma/meson.build
-+++ b/hw/dma/meson.build
-@@ -14,3 +14,4 @@ system_ss.add(when: 'CONFIG_SIFIVE_PDMA', if_true: files('sifive_pdma.c'))
- system_ss.add(when: 'CONFIG_XLNX_CSU_DMA', if_true: files('xlnx_csu_dma.c'))
- system_ss.add(when: 'CONFIG_K230_GSDMA', if_true: files('k230_gsdma.c'))
- system_ss.add(when: 'CONFIG_RENESAS_RX_DMAC', if_true: files('renesas_rx_dmac.c'))
-+system_ss.add(when: 'CONFIG_RENESAS_RX_DTC', if_true: files('renesas_rx_dtc.c'))
-diff --git a/hw/dma/renesas_rx_dtc.c b/hw/dma/renesas_rx_dtc.c
+ petalogix_ml605
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 46685d6d46..c92db2a5ca 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -172,7 +172,8 @@ qtests_m68k = ['boot-serial-test'] + \
+   qtests_filter
+ 
+ qtests_microblaze = ['boot-serial-test'] + \
+-  qtests_filter
++  qtests_filter + \
++  (config_all_devices.has_key('CONFIG_XLNX_AXI_GPIO') ? ['xlnx-axi-gpio-test'] : [])
+ 
+ qtests_mips = \
+   qtests_filter + \
+diff --git a/tests/qtest/xlnx-axi-gpio-test.c b/tests/qtest/xlnx-axi-gpio-test.c
 new file mode 100644
-index 0000000000..10ac87be9a
+index 0000000000..166c2a4646
 --- /dev/null
-+++ b/hw/dma/renesas_rx_dtc.c
-@@ -0,0 +1,169 @@
++++ b/tests/qtest/xlnx-axi-gpio-test.c
+@@ -0,0 +1,372 @@
 +/*
-+ * Renesas RX Data Transfer Controller (DTC)
++ * QTest testcase for Xilinx AXI GPIO IP core
 + *
-+ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
-+ *            (Rev.1.00 R01UH0590EJ0100), section 18 (DTC)
-+ *
-+ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ * Copyright (c) 2026 Pufan Jin <cyan2254650260@gmail.com>
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ *
-+ * Register-level model of the DTC. The DTC fetches RAM-resident transfer
-+ * descriptors when activated by a peripheral interrupt; that activation path is
-+ * not modelled, so the control/status registers behave as storage and the
-+ * module always reports idle. This lets FIT/RTOS drivers configure and enable
-+ * the DTC (and fall back to interrupt-driven transfers) without faulting.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/dma/renesas_rx_dtc.h"
-+#include "hw/core/qdev-properties.h"
-+#include "migration/vmstate.h"
++#include "qobject/qdict.h"
++#include "libqtest.h"
 +
-+#define R_DTCCR     0x00    /* 8-bit  */
-+#define R_DTCVBR    0x04    /* 32-bit */
-+#define R_DTCADMOD  0x08    /* 8-bit  */
-+#define R_DTCST     0x0C    /* 8-bit  */
-+#define R_DTCSTS    0x0E    /* 16-bit */
-+#define R_DTCIBR    0x10    /* 32-bit */
-+#define R_DTCOR     0x14    /* 8-bit  */
-+#define R_DTCEXBR   0x18    /* 16-bit */
++#define GPIO_BASE           0x81400000
 +
-+static uint64_t dtc_read(void *opaque, hwaddr offset, unsigned size)
++#define R_GPIO_DATA         0x0000
++#define R_GPIO_TRI          0x0004
++#define R_GPIO2_DATA        0x0008
++#define R_GPIO2_TRI         0x000C
++#define R_GIER              0x011C
++#define R_IPISR             0x0120
++#define R_IPIER             0x0128
++
++#define GIER_GIE            0x80000000
++#define IPISR_CH1           0x00000001
++#define IPISR_CH2           0x00000002
++
++#define GPIO_QOM_PATH       "/machine/unattached/device[6]"
++
++static void test_reset_values(void)
 +{
-+    RenesasRxDtcState *s = opaque;
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
 +
-+    switch (offset) {
-+    case R_DTCCR:
-+        return s->dtccr;
-+    case R_DTCVBR:
-+        return s->dtcvbr;
-+    case R_DTCADMOD:
-+        return s->dtcadmod;
-+    case R_DTCST:
-+        return s->dtcst;
-+    case R_DTCSTS:
-+        /*ACT=0: never busy */
-+        return s->dtcsts;
-+    case R_DTCIBR:
-+        return s->dtcibr;
-+    case R_DTCOR:
-+        return s->dtcor;
-+    case R_DTCEXBR:
-+        return s->dtcexbr;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "renesas-rx-dtc: read unimplemented 0x%"
-+                      HWADDR_PRIx "\n", offset);
-+        return 0;
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_TRI), ==, 0xFFFFFFFF);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_TRI), ==, 0xFFFFFFFF);
++
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_DATA), ==, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_DATA), ==, 0x0);
++
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GIER), ==, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPIER), ==, 0x0);
++
++    qtest_quit(qts);
++}
++
++static void test_gpio_data_output(void)
++{
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0x00000000);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_TRI), ==, 0x00000000);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_DATA, 0x12345678);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_DATA), ==, 0x12345678);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_DATA, 0xDEADBEEF);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_DATA), ==, 0xDEADBEEF);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_TRI, 0x00000000);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_TRI), ==, 0x00000000);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_DATA, 0xCAFEBABE);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_DATA), ==, 0xCAFEBABE);
++
++    qtest_quit(qts);
++}
++
++static void test_gpio_direction(void)
++{
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0xAAAA5555);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_TRI), ==, 0xAAAA5555);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_TRI, 0x5555AAAA);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_TRI), ==, 0x5555AAAA);
++
++    qtest_quit(qts);
++}
++
++static void test_gpio_input_and_irq(void)
++{
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++
++    qtest_irq_intercept_out_named(qts, GPIO_QOM_PATH, "sysbus-irq");
++
++    qtest_writel(qts, GPIO_BASE + R_GIER, GIER_GIE);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GIER), ==, GIER_GIE);
++
++    qtest_writel(qts, GPIO_BASE + R_IPIER, IPISR_CH1 | IPISR_CH2);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPIER), ==,
++                    IPISR_CH1 | IPISR_CH2);
++
++    g_assert_false(qtest_get_irq(qts, 0));
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_DATA), ==, 0x1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH1);
++    g_assert_true(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 32 + 3, 1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_DATA), ==, (1 << 3));
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH2);
++    g_assert_true(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH2);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_quit(qts);
++}
++
++static void test_gpio_boundary_registers(void)
++{
++    static const uint32_t unmapped_addrs[] = {
++        0x0010, 0x0014, 0x0018, 0x001C, 0x0020,
++        0x0100, 0x0118, 0x0124, 0x012C, 0x01FC,
++    };
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++    size_t i;
++
++    for (i = 0; i < ARRAY_SIZE(unmapped_addrs); i++) {
++        uint32_t addr = GPIO_BASE + unmapped_addrs[i];
++
++        g_assert_cmphex(qtest_readl(qts, addr), ==, 0x0);
++        qtest_writel(qts, addr, 0xDEADBEEF);
++        g_assert_cmphex(qtest_readl(qts, addr), ==, 0x0);
 +    }
++
++    qtest_writel(qts, GPIO_BASE + R_GIER, 0xFFFFFFFF);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GIER), ==, GIER_GIE);
++
++    qtest_writel(qts, GPIO_BASE + R_IPIER, 0xFFFFFFFF);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPIER), ==,
++                    IPISR_CH1 | IPISR_CH2);
++
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH1);
++    qtest_writel(qts, GPIO_BASE + R_IPISR, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH1);
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH2);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH1);
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++
++    qtest_quit(qts);
 +}
 +
-+static void dtc_write(void *opaque, hwaddr offset, uint64_t value,
-+                      unsigned size)
++static void test_gpio_interrupt_modes(void)
 +{
-+    RenesasRxDtcState *s = opaque;
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
 +
-+    switch (offset) {
-+    case R_DTCCR:
-+        s->dtccr = value;
-+        break;
-+    case R_DTCVBR:
-+        s->dtcvbr = value;
-+        break;
-+    case R_DTCADMOD:
-+        s->dtcadmod = value;
-+        break;
-+    case R_DTCST:
-+        s->dtcst = value;
-+        break;
-+    case R_DTCIBR:
-+        s->dtcibr = value;
-+        break;
-+    case R_DTCOR:
-+        s->dtcor = value;
-+        break;
-+    case R_DTCEXBR:
-+        s->dtcexbr = value;
-+        break;
-+    case R_DTCSTS:
-+        /*status, read-only */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "renesas-rx-dtc: write unimplemented 0x%"
-+                      HWADDR_PRIx "\n", offset);
-+        break;
++    qtest_irq_intercept_out_named(qts, GPIO_QOM_PATH, "sysbus-irq");
++
++    qtest_writel(qts, GPIO_BASE + R_GIER, GIER_GIE);
++    qtest_writel(qts, GPIO_BASE + R_IPIER, IPISR_CH1 | IPISR_CH2);
++
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 1);
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 32 + 5, 1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==,
++                    IPISR_CH1 | IPISR_CH2);
++    g_assert_true(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH2);
++    g_assert_true(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH2);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH1);
++    g_assert_true(qtest_get_irq(qts, 0));
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH1);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0xFFFFFFFE); /* pin 0 output */
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 1);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0xFFFFFFFF); /* pin 0 input */
++    qtest_writel(qts, GPIO_BASE + R_GIER, 0x0);
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH1);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_GIER, GIER_GIE);
++    g_assert_true(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_GIER, 0x0);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, GPIO_BASE + R_IPISR, IPISR_CH1);
++    qtest_quit(qts);
++}
++
++static void test_physical_outputs(void)
++{
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++    int i;
++
++    qtest_irq_intercept_out(qts, GPIO_QOM_PATH);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0x00000000);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_DATA, 0x12345678);
++    for (i = 0; i < 32; i++) {
++        bool expected = (0x12345678 >> i) & 1;
++        g_assert_cmpint(qtest_get_irq(qts, i), ==, expected);
 +    }
-+}
 +
-+static const MemoryRegionOps dtc_ops = {
-+    .read = dtc_read,
-+    .write = dtc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = { .min_access_size = 1, .max_access_size = 4 },
-+    .valid = { .min_access_size = 1, .max_access_size = 4 },
-+};
-+
-+static void rx_dtc_reset(DeviceState *dev)
-+{
-+    RenesasRxDtcState *s = RENESAS_RX_DTC(dev);
-+
-+    s->dtccr = 0x08;    /* RRS = 1 out of reset */
-+    s->dtcvbr = 0;
-+    s->dtcadmod = 0;
-+    s->dtcst = 0;
-+    s->dtcsts = 0;
-+    s->dtcibr = 0;
-+    s->dtcor = 0;
-+    s->dtcexbr = 0;
-+}
-+
-+static void rx_dtc_init(Object *obj)
-+{
-+    RenesasRxDtcState *s = RENESAS_RX_DTC(obj);
-+
-+    memory_region_init_io(&s->mr, obj, &dtc_ops, s,
-+                          "renesas-rx-dtc", RX_DTC_REGS_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mr);
-+}
-+
-+static const VMStateDescription vmstate_rx_dtc = {
-+    .name = "renesas-rx-dtc",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT8(dtccr, RenesasRxDtcState),
-+        VMSTATE_UINT32(dtcvbr, RenesasRxDtcState),
-+        VMSTATE_UINT8(dtcadmod, RenesasRxDtcState),
-+        VMSTATE_UINT8(dtcst, RenesasRxDtcState),
-+        VMSTATE_UINT16(dtcsts, RenesasRxDtcState),
-+        VMSTATE_UINT32(dtcibr, RenesasRxDtcState),
-+        VMSTATE_UINT8(dtcor, RenesasRxDtcState),
-+        VMSTATE_UINT16(dtcexbr, RenesasRxDtcState),
-+        VMSTATE_END_OF_LIST()
++    qtest_writel(qts, GPIO_BASE + R_GPIO_DATA, 0xEDCBA987);
++    for (i = 0; i < 32; i++) {
++        bool expected = (0xEDCBA987 >> i) & 1;
++        g_assert_cmpint(qtest_get_irq(qts, i), ==, expected);
 +    }
-+};
 +
-+static void rx_dtc_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0xFFFFFFFF);
++    qtest_writel(qts, GPIO_BASE + R_GPIO_DATA, 0xFFFFFFFF);
++    for (i = 0; i < 32; i++) {
++        bool expected = (0xEDCBA987 >> i) & 1;
++        g_assert_cmpint(qtest_get_irq(qts, i), ==, expected);
++    }
 +
-+    dc->vmsd = &vmstate_rx_dtc;
-+    device_class_set_legacy_reset(dc, rx_dtc_reset);
++    qtest_quit(qts);
 +}
 +
-+static const TypeInfo rx_dtc_info = {
-+    .name = TYPE_RENESAS_RX_DTC,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RenesasRxDtcState),
-+    .instance_init = rx_dtc_init,
-+    .class_init = rx_dtc_class_init,
-+};
-+
-+static void rx_dtc_register_types(void)
++static void test_physical_outputs_ch2(void)
 +{
-+    type_register_static(&rx_dtc_info);
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++    int i;
++
++    qtest_irq_intercept_out_named(qts, GPIO_QOM_PATH, "gpio2-out");
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_TRI, 0x00000000);
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_DATA, 0xA5A5A5A5);
++    for (i = 0; i < 32; i++) {
++        bool expected = (0xA5A5A5A5 >> i) & 1;
++        g_assert_cmpint(qtest_get_irq(qts, i), ==, expected);
++    }
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_TRI, 0xFFFFFFFF);
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_DATA, 0xFFFFFFFF);
++    for (i = 0; i < 32; i++) {
++        bool expected = (0xA5A5A5A5 >> i) & 1;
++        g_assert_cmpint(qtest_get_irq(qts, i), ==, expected);
++    }
++
++    qtest_quit(qts);
 +}
 +
-+type_init(rx_dtc_register_types)
-diff --git a/include/hw/dma/renesas_rx_dtc.h b/include/hw/dma/renesas_rx_dtc.h
-new file mode 100644
-index 0000000000..aa02bf5d66
---- /dev/null
-+++ b/include/hw/dma/renesas_rx_dtc.h
-@@ -0,0 +1,42 @@
-+/*
-+ * Renesas RX Data Transfer Controller (DTC)
-+ *
-+ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
-+ *            (Rev.1.00 R01UH0590EJ0100), section 18 (DTC)
-+ *
-+ * Copyright (c) 2026 Umar, Sayyad Mahammad
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ */
++static void test_mixed_direction_multiplexing(void)
++{
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++    int i;
 +
-+#ifndef HW_DMA_RENESAS_RX_DTC_H
-+#define HW_DMA_RENESAS_RX_DTC_H
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0xAAAAAAAA);
 +
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
++    qtest_writel(qts, GPIO_BASE + R_GPIO_DATA, 0x55555555);
 +
-+#define TYPE_RENESAS_RX_DTC "renesas-rx-dtc"
-+typedef struct RenesasRxDtcState RenesasRxDtcState;
-+DECLARE_INSTANCE_CHECKER(RenesasRxDtcState, RENESAS_RX_DTC, TYPE_RENESAS_RX_DTC)
++    for (i = 1; i < 32; i += 2) {
++        qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, i, 1);
++    }
 +
-+#define RX_DTC_REGS_SIZE    0x20
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_DATA), ==, 0xFFFFFFFF);
 +
-+struct RenesasRxDtcState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
++    for (i = 1; i < 32; i += 2) {
++        qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, i, 0);
++    }
 +
-+    MemoryRegion mr;
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_DATA), ==, 0x55555555);
 +
-+    uint8_t  dtccr;     /* control                    */
-+    uint32_t dtcvbr;    /* vector base address        */
-+    uint8_t  dtcadmod;  /* address mode               */
-+    uint8_t  dtcst;     /* module start               */
-+    uint16_t dtcsts;    /* status                     */
-+    uint32_t dtcibr;    /* index table base           */
-+    uint8_t  dtcor;     /* operation                  */
-+    uint16_t dtcexbr;   /* extended repeat-area base  */
-+};
++    qtest_quit(qts);
++}
 +
-+#endif /* HW_DMA_RENESAS_RX_DTC_H */
-
++static void test_system_reset_active(void)
++{
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++
++    qtest_irq_intercept_out_named(qts, GPIO_QOM_PATH, "sysbus-irq");
++
++    qtest_writel(qts, GPIO_BASE + R_GPIO_TRI, 0xFFFFFFFD);
++    qtest_writel(qts, GPIO_BASE + R_GPIO_DATA, 0xDEADBEEF);
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_TRI, 0x12345678);
++    qtest_writel(qts, GPIO_BASE + R_GPIO2_DATA, 0x87654321);
++    qtest_writel(qts, GPIO_BASE + R_GIER, GIER_GIE);
++    qtest_writel(qts, GPIO_BASE + R_IPIER, IPISR_CH1 | IPISR_CH2);
++
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 1);
++    g_assert_true(qtest_get_irq(qts, 0));
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, IPISR_CH1);
++    qtest_set_irq_in(qts, GPIO_QOM_PATH, NULL, 0, 0);
++    g_assert_true(qtest_get_irq(qts, 0));
++    qtest_system_reset(qts);
++
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_TRI), ==, 0xFFFFFFFF);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO_DATA), ==, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_TRI), ==, 0xFFFFFFFF);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GPIO2_DATA), ==, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_GIER), ==, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPIER), ==, 0x0);
++    g_assert_cmphex(qtest_readl(qts, GPIO_BASE + R_IPISR), ==, 0x0);
++
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_quit(qts);
++}
++
++static void test_qom_introspection(void)
++{
++    QTestState *qts = qtest_init("-machine petalogix-s3adsp1800");
++    QDict *r;
++
++    r = qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments': "
++                       "{ 'path': %s, 'property': 'width1' } }",
++                       GPIO_QOM_PATH);
++    g_assert_nonnull(r);
++    g_assert_cmpuint(qdict_get_uint(r, "return"), ==, 32);
++    qobject_unref(r);
++
++    r = qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments': "
++                       "{ 'path': %s, 'property': 'width2' } }",
++                       GPIO_QOM_PATH);
++    g_assert_nonnull(r);
++    g_assert_cmpuint(qdict_get_uint(r, "return"), ==, 32);
++    qobject_unref(r);
++
++    r = qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments': "
++                       "{ 'path': %s, 'property': 'is-dual' } }",
++                       GPIO_QOM_PATH);
++    g_assert_nonnull(r);
++    g_assert_true(qdict_get_bool(r, "return"));
++    qobject_unref(r);
++
++    r = qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments': "
++                       "{ 'path': %s, 'property': 'endianness' } }",
++                       GPIO_QOM_PATH);
++    g_assert_nonnull(r);
++    g_assert_cmpstr(qdict_get_str(r, "return"), ==, "big");
++    qobject_unref(r);
++
++    qtest_quit(qts);
++}
++
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/xlnx-axi-gpio/reset_values", test_reset_values);
++    qtest_add_func("/xlnx-axi-gpio/data_output", test_gpio_data_output);
++    qtest_add_func("/xlnx-axi-gpio/direction", test_gpio_direction);
++    qtest_add_func("/xlnx-axi-gpio/input_and_irq", test_gpio_input_and_irq);
++    qtest_add_func("/xlnx-axi-gpio/boundaries", test_gpio_boundary_registers);
++    qtest_add_func("/xlnx-axi-gpio/interrupt_modes", test_gpio_interrupt_modes);
++    qtest_add_func("/xlnx-axi-gpio/physical_outputs", test_physical_outputs);
++    qtest_add_func("/xlnx-axi-gpio/physical_outputs_ch2",
++                   test_physical_outputs_ch2);
++    qtest_add_func("/xlnx-axi-gpio/mixed_multiplexing",
++                   test_mixed_direction_multiplexing);
++    qtest_add_func("/xlnx-axi-gpio/system_reset", test_system_reset_active);
++    qtest_add_func("/xlnx-axi-gpio/qom_introspection", test_qom_introspection);
++    return g_test_run();
++}
 -- 
-2.53.0
+2.56.0
 
 

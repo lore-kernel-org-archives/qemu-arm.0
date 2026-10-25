@@ -1,136 +1,129 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5CC9606A31A
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 07:15:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34973606A31A
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 08:26:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256 header.s=selector1 header.b=UI8RDcj5
+	dkim=pass (2048-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=google header.b=hunKJo7r
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xKsRj-00056Q-Ct; Sun, 25 Oct 2026 03:15:11 -0400
+	id 1xKtYd-0006eT-Tx; Sun, 25 Oct 2026 04:26:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
- id 1xKsRg-00055k-2Z; Sun, 25 Oct 2026 03:15:08 -0400
-Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
- id 1xKsRd-0003Bi-Az; Sun, 25 Oct 2026 03:15:07 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vBUnsiM0TEni9hkQ2Zp6xT2kZ0VEP0H0snU6XFuy8fvS9b4le8YnCVeZMRpLPO8xeZGcyXX/txUghl6kdSxuSf9Lw1KrFHRk5+/LvdGKv2vIt1Vbc6fexYL59tLMyaPXx5iGjNqXJWBhXcBEmPfAYPurt0FPaIpOllwOjIeCWiPDSLtVYA0/RUu65d2/OfjYgrYEvSZepndBRuMwamVaCkhA7kdCS5QOyylF9jSlz9kBJiFejbE1ylAXuUVK6JBupyrQyXkx+6EJHULOE59XurhzPYBdO+zjJ/reRzRzEg+3ZC8wRopVlsVCpMfTjcMsEocsnO2F9CjHbqCBnxBftQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XWhHTMMxv9BIk+R1Fv2rCr5gvM7Pp6onSKTOLQXcH2w=;
- b=e/QKQKXvj60rlkEmrm5vgpnVnymM/BFs3wIaEG4GuoQXRT0xHJgAeWFqLDWMhdjfMn8peuRLKy0kmGXlbUze4O+0mLjMj5RjnsY9MeA8FhmHi5KLyKDgbDJGBeJa3896QALBQhaZxibOJK8/R35RkofzrQOyyLnjsCpvhkQyuFhBzQIk3qjnmFWepQM6t470479yGIKzr5WLsye1a3SzUhkZVvNPsxjZ+BjKIlfVzTcJWJ3+c5NRuv7aAml1Jc4ThO+pC/AMa4q18Lxc/irgAlvBgThVZq3GAUZXIKuuwna7m5JQIdocXQs/pDDKI+FRhdrGp6QzZGNSbwDWv0vlig==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XWhHTMMxv9BIk+R1Fv2rCr5gvM7Pp6onSKTOLQXcH2w=;
- b=UI8RDcj5w1cR1YJlvKLB2IBPOY8THC2dNGf8flde715q4YuzXBcbVYNOqCfOEmtzoJKqPujt0C43nXOv5jfCKLXaFZYlXcr913B1ozAGXM4pWnnZMEaRMV/Zfl54ppsr9xgV67rsiem+wIImoReTQZWxlQV5iTIIZO2czCNASK9ESLsO0pcHBkuOkJkps8f1w2v51heu5EXAwv0CvJIHwdquyVOM3Dch65gYd9MBhWIx1jnpn8zs700828ypHu1G8yZXV77t9RiQbYC6cofGGwgQ7PzjuioCCYiXNeBk/O7bM73yq17l2/0yzTvZkbwdpUUObZjBmExCOk4rDgbAkg==
-Received: from DB8PR04MB7177.eurprd04.prod.outlook.com (2603:10a6:10:127::23)
- by GV1PR04MB10968.eurprd04.prod.outlook.com (2603:10a6:150:20c::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.22; Sun, 25 Oct
- 2026 07:14:57 +0000
-Received: from DB8PR04MB7177.eurprd04.prod.outlook.com
- ([fe80::cf7b:6007:220b:97a2]) by DB8PR04MB7177.eurprd04.prod.outlook.com
- ([fe80::cf7b:6007:220b:97a2%4]) with mapi id 15.21.0546.021; Sun, 25 Oct 2026
- 07:14:56 +0000
-From: Gaurav Sharma <gaurav.sharma_7@nxp.com>
-To: QEMU <qemu-devel@nongnu.org>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>
-Subject: [RFC] target/arm: Correct MPIDR.MT handling for i.MX95 Cortex-A55
- Aff1 topology
-Thread-Topic: [RFC] target/arm: Correct MPIDR.MT handling for i.MX95
- Cortex-A55 Aff1 topology
-Thread-Index: Ad1kUFII4MKnDgaKRE22YiQ/acy/Sw==
-Date: Sun, 25 Oct 2026 07:14:56 +0000
-Message-ID: <DB8PR04MB7177C8ED1A20409414A573EF87622@DB8PR04MB7177.eurprd04.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f6375508-4f8d-4bf0-98ed-14865d40f2d8_Enabled=True;
- MSIP_Label_f6375508-4f8d-4bf0-98ed-14865d40f2d8_SiteId=686ea1d3-bc2b-4c6f-a92c-d99c5c301635;
- MSIP_Label_f6375508-4f8d-4bf0-98ed-14865d40f2d8_SetDate=2026-10-25T07:02:45.0000000Z;
- MSIP_Label_f6375508-4f8d-4bf0-98ed-14865d40f2d8_Name=NXP
- Public; MSIP_Label_f6375508-4f8d-4bf0-98ed-14865d40f2d8_ContentBits=3;
- MSIP_Label_f6375508-4f8d-4bf0-98ed-14865d40f2d8_Method=Privileged
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DB8PR04MB7177:EE_|GV1PR04MB10968:EE_
-x-ms-office365-filtering-correlation-id: 8663f9b2-e4fc-4b66-71e2-08df3267ac9c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|19092799006|23010399003|366016|1800799024|376014|261022115727099003|261022105027099003|261022075727099003|261021123027099003|261021121427099003|10067099003|56012099006|6133799003|18002099003|11063799006|5023799004|38070700021;
-x-microsoft-antispam-message-info: uwuf7I4zNPzjXf64kjne0MxIrE2CG/P/sAityPLPfMAysbOHpyz5Tpuau2QyogN36OWkFPsokiTxsI6sg/1ofAehbKdyGJa0DvSWewE4n4A4JMPU+TFjOVE76PGFIVhfJG3m2vxTwQ0SrkwRNo00Ka8ycwq77koFUJPRczhCtg34MEKGxqK70YmiQW/VL6Uomritix13Q94OsyBEEkoHtunbvIM6+1NQjpdQh/caFEyqHjvCYn85N1mL58u6xifbj8bKwt65WRB6u8gFJSFBmvXvJfFfLp4cxqeubbzhldpwS+ieuxOLAaxiw6g0BerqRjYsCGTNyW4Xk3cg8FQXiA/XvIMT9ZOUyl00ViDp3hvqXuoxiR1MZ4niM2q6e0hXSF6Ly6EY2H1bxSMm6fMTsHLXS+IfVT2q/PspH4BtoYKtkqupnR3v6xe7yK0bUUMhOzxIaO+66CWLPp4S0dHUNHD0S7UjG/T4TnDmUw9UrWt9VuIyurrgaHuURrADpTAZU7+FwJLOAm8p0i5rRlQokxmKK4rVmXAv4OwfDnoifaRsXKFaywKCGTDx/3MLMlwLGKFS9o8h4xmynb6+vVmPA88BCFpD3j8Fk6G+II6h/b8CHJjPmPZbWvv16Rk7XdOb48eks9Y7F4souzDeNbeNJv5Cu5zEVfUoXJzrGPYuIQPlvo4S1e00RAFMkBAwpYsVWEQcZtzZPufOCk5klNH/mBWTzq7EmC7JHVOq7xwRB20=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DB8PR04MB7177.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(19092799006)(23010399003)(366016)(1800799024)(376014)(261022115727099003)(261022105027099003)(261022075727099003)(261021123027099003)(261021121427099003)(10067099003)(56012099006)(6133799003)(18002099003)(11063799006)(5023799004)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?4Xluj+EsoxZftS/MhPIAjuc6uVMZAaJChZ2hg9awYZetlnaP98lH9r2LrdPC?=
- =?us-ascii?Q?x17N6rdjO54ZRAlpGUpEFicTp72xwNIuSwVcyQqnXjfr/FyMoOimE6XhW6+b?=
- =?us-ascii?Q?C57LSnzzRLL8eSCs9WizIOW1fOt4IJCrnZfu+V1pfSkPPVh1wa0NSBAIgirm?=
- =?us-ascii?Q?FcngXjjqesIEcnBwwH/h6+kfpn3QDGBc5KDLrIIQ331CuMysVCFtuRmAxBo/?=
- =?us-ascii?Q?Xk3tVNMo43NZt+mum2Cv7evGfAvMUnr7kFKRyX9ZWxEfQwYx7Obl6SajDXV3?=
- =?us-ascii?Q?ba9k9OOGBxnH8xDbbGwuReZqGpP7xQd4/yXfs4OF3bGym+mTEAVWErsQecxl?=
- =?us-ascii?Q?TQ0A+ULqsOv5Q5ac8pVBDALLYtzwmlHgpuBDHsBvpDaq6ReYYLO46lL40caP?=
- =?us-ascii?Q?fLSDufIipH5TdR7sy2Rj1XTBHLGjIhMIkzCSJF8D6ueBSo1+B3s1YvAl7DvQ?=
- =?us-ascii?Q?WKUBtZEq8U9G5Lh7zVw5GQMYG8YWJWOlvozsxFlyWR42hVguRgxzRZSNBRYb?=
- =?us-ascii?Q?pCUkeFVpUILMRRbBluKDDT2XJIdwsQj/EawBvfI8Vx1AMkRxuQ5u+pkJvCdm?=
- =?us-ascii?Q?dxfGo1wuaPoYgUszRJo0ZrgznUc/CUVDP6CiWA7XCy446COpcQviKvP5yY4o?=
- =?us-ascii?Q?DhDlBMaPHqAk6Igqh4nsgYl8rpBZf6Bqc5/9DNjwkdhgeSmzXauQcLL45zVu?=
- =?us-ascii?Q?0il7E8EsCpexVXsRrYp6pmIeYsei/6NP7WFG1iC1dsOPfGAitqbuCWlHaxoV?=
- =?us-ascii?Q?oxTieLtG08y/7NEDVmXQWVBDRnoatCKMBkJl3pwz3AKLnGAchMB0hq8vtj+/?=
- =?us-ascii?Q?ulAT3+WYVPoWAWCh1aLFUMGJNUhHcflXiNeuKfI5KQ/M44wXQAqEzQkdbBCf?=
- =?us-ascii?Q?QXBePFuYOz/SsJzR4QGyOLS2G45WZUInb4qVwt2JGq9NFNI7DykaSLbY9YlW?=
- =?us-ascii?Q?OFQ6EKjP+GPTpN/eEmWg8DvRraB+rhiGkpeqQlzX6v43KktxttrpG0PfYWhZ?=
- =?us-ascii?Q?tQ1XgTzUCRlcozEaucXmFIRKmOPLYpZfvpJx+v5v98vc1sKAZDhgqBPOvTwK?=
- =?us-ascii?Q?5l6e/XZTN7wMxlDqf8t156kZAlPNYqfUpUTh627e93lqvO3uRUrYdxltN147?=
- =?us-ascii?Q?ZB87WRu9M9RNW5IJ7cmcI07buuuPTWlyeR3r7NSRJUs5HZtEoCHvSAbBj/7S?=
- =?us-ascii?Q?a60TjD+WOalAwE/HOcAR2G52/dXLoptbLHNl/OUcCin9iMDmU+/DTcQkJ5kE?=
- =?us-ascii?Q?Nh3zaoy36kgXgvdJuuQQAqC3PilNinu1wSHZDSBzZezL/iY1meJiMWMj7cPs?=
- =?us-ascii?Q?dBx9lU1MowQAnOIzrGTQJK/y5F6gY9I9IfAA1WRxp95WvtvdODJlRa4s2QTs?=
- =?us-ascii?Q?17v00TaCan6hy3f6JbWZsu8ZxSKMa9SeRrqUOuIkFa20/F813agLIT8KQKV/?=
- =?us-ascii?Q?QKtVfmpJgbZ8sJM7Aid8+yi3tLzMr0DpicnX4Wo5u8rnSWxqlVOmtOS1bRkw?=
- =?us-ascii?Q?K4zn36TicD1MQA8njMWeTwBMlGIVWOiUiOPWm7qyf+31Uo7314GYXNMIoIe8?=
- =?us-ascii?Q?2P/fd9svr9iS/0Bk6xb10EVt/lpiJtnQOM7kb4jtSesWRB/2eywqxkmG98k0?=
- =?us-ascii?Q?67nWlt0Yhc3wjwkaBThrwIQHL3d/tMUeoaq3EX9QR2JCIwGAiIPVv3UThGh3?=
- =?us-ascii?Q?d2mCyGbHWEP6U6JbCnJ1a5uVGkwbh3+oXI7btQXVCBcLH6EX7/JTFxOStbks?=
- =?us-ascii?Q?J7cLS7X6LA=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1xKtYb-0006dn-5E
+ for qemu-arm@nongnu.org; Sun, 25 Oct 2026 04:26:21 -0400
+Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1xKtYY-0000r7-UU
+ for qemu-arm@nongnu.org; Sun, 25 Oct 2026 04:26:20 -0400
+Received: by mail-dy1-x132a.google.com with SMTP id
+ 5a478bee46e88-36661f953e4so3994670eec.1
+ for <qemu-arm@nongnu.org>; Sun, 25 Oct 2026 01:26:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792916775; cv=none;
+ d=google.com; s=arc-20260327;
+ b=KxjN1Q5zTomVmQIlNHDsLdeDQIkLpbngKU7SUlC+yx0VNCXDMkFWoa+pzqr1dbcyRF
+ 1MukmjAg6xboxtE6m6ZwjJDVeAry8ZCxL5fQBAQ8k1BFyYheUSfDqYGJ211MjmOLVhSB
+ Sus+S32GRrELvEKUEXVORi1eRZbIOzX+KqsuSee4laaKPOHiymMtkarqxYNKgS6FePif
+ R+5dtu04Uqw78LQJz7wzb5MhZGMvcB5Ozb6DdHbSw0qCLUkFjTVU6NVph0GGR6QCau9P
+ DBh0lRWaqLfJ/8YE/vx7dlvwDM9Gr1GhcEMSJefn5BDlEX2g8nsE+BJwkvo9NnUjs7GU
+ LcmQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=ZnGa7SOHhZOD2c2MNAhv8nHktB8mtvvnR4wT5dbXRNU=;
+ fh=GsgcfeNcOph6zVKOrPNsNe5eEkL+zsMcpr8Kv5r6Om4=;
+ b=UFpGgqtZHLvJtoOCF7hxw4o9o9VutiDgIH8J/79HRDSYVhoddbNSOSV8LPOIMb6MUu
+ CI5ksQRSSMisHp3GNTobieLYdOOPd1SognA/5c8Zp40TGxr8Q0VIFcgJQjb0nmwxUk6C
+ K6azF3r3GmzaCWVZJ47WavDwHFPEr+PX1WBmjO25D3f9rx1NVd0KK82ypNd+KrBkX/PQ
+ wUovjnxaWGOQO3fFN0xgRX/LDtetxjq1Rq/MLASd81zRrJ7u6JJ8Oz16OmLG5NKkHhum
+ as3ftPb4TIQ0hNPB9EFWlfJtu8W+VNPHs7mJG5XO2J2K1bf1wUyQ3kg21GjeTdDoOPBY
+ bt+g==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; s=google; t=1792916775; x=1793521575; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=ZnGa7SOHhZOD2c2MNAhv8nHktB8mtvvnR4wT5dbXRNU=;
+ b=hunKJo7rMqlh4IrUiVWQJtOkjWX6qSJDSc9+M2AcvR2zHfsWyxZoo7CeMRlnk0+Paw
+ pe2rD+5e6V0jsUKaDTHnqdKSDUi7aSuxdgLr6A4pgPFaamfR9G3w0PBonZ5qzSfUQ10p
+ 7zyaroJRitBoAn7N4J3bqub6J0q8g915pAeO8AV0Eh7oYSBfiVjmLmNwjrZ/o0AH0raA
+ SEnDeycu1KBX25ESiKmbrmhbynZyayDsinlYfSXhdfJEV6WP+EnB0rkhEI1imYM/JTpe
+ 1nrEk7xXBDyDsOsFW2g9Wn6NdIj87sefvpJjs1Z8fs4kzpaqde7UGtfiLijJ4jNrHPe0
+ LbGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1792916775; x=1793521575;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=ZnGa7SOHhZOD2c2MNAhv8nHktB8mtvvnR4wT5dbXRNU=;
+ b=RH8WyJQqE9wzoINDz74DARDrBkBY4XB+3oajgEu1Yg8SqaUp4JeCwNGnZ/jTETreqy
+ xIrWwrgmunK2MloKXlhjuyC6jqlIFyRK94quUse60TGiXDJNXjMd3Eu/6JqTS/iRSpg1
+ RIVs4HAETZ3kExt3S/Rk8yy+izBmCD73En+RnBfIbOlduKlg744thuzKqkwiNIoOZobT
+ cO0sPwD2dbznzqpxwBUT1h4O6Pn7s+JGzI7AP33DDPX/UlAt+Y6Y6Zf1zA77KfGRti+M
+ hnyahvL9tCeEpGxKx2LMs6+gvtCI2cyErYqezMOtWKsFr1kGSfOJi87jM3VJeKVori4e
+ +XJw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxcn3LXVBuKpgBJ20cuSxlDaeAQkeGGwGEUFOtO7B9rKrjnrvJRMeIWRXEMbUyHts3sVLnW6AA2gA==@nongnu.org
+X-Gm-Message-State: AFq9FYKcIvVdhEsT4tQgx5HO5TWnBWXfNxUv8JJr4f6QT/Pd/xknR10u
+ NX8quAprZE1nlTA2B6a7FudO7gpEqS3biFuwigLB0002FGQqNuJrupvAMha9KZTiAblG3/s35QZ
+ J6NS7Fips1zo5ZQZ6tWJ+JkW+aHPSDXE=
+X-Gm-Gg: AYBFou3W3jkhzIXDipdR6Djizh/qnIIG2cydPs6gRVcRSIzfckoacTrZbqWEJf5gBO7
+ SkeK1ycxN29duXW2aEE5LJ0Y7NXKPGTbnvMwNFOMvFef4+QiTkEMUBfNLyqtrHbrns9ugcay/vA
+ bKvaD43cjanQPPa0Z46GtT2AZ/aA26RD4u/4gqGME5b8jtvLYohfAPk0VtlhonMYkW/iepLWkWN
+ F/DZlqCeGfK5j2IKLTt8vn1cY8yRc+IJaSEW7iEaKee6tXG+nU9CDu6eDvlAJsY9/dzdUEsVmWN
+ CzjUyS/Kb6t7KEZbI9lakEUKwUTjIUpiJN6M94VEn4VOpqIFmghTSi1CSh5G6Ckyrvw6YhS7TCw
+ pptD3lCR4YpYSvnwAgGTc5AbglaYqzQKchS/UJ1hl235n9Ufdg/cHZCx3/SgANmJymHgX
+X-Received: by 2002:a05:7301:1694:b0:368:da6c:4fb6 with SMTP id
+ 5a478bee46e88-369e84ba936mr7875483eec.18.1792916775387; Sun, 25 Oct 2026
+ 01:26:15 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DB8PR04MB7177.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8663f9b2-e4fc-4b66-71e2-08df3267ac9c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Oct 2026 07:14:56.7924 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: yKtu1Xu9HchEAR/6X7YuPN3Gbz0kBoAgOZ6oVSj6RuypvaNFJ4r+uHV9kavtbB/uLOFOcoynyokEaavbd4HgIQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB10968
-Received-SPF: permerror client-ip=2a01:111:f403:c20a::7;
- envelope-from=gaurav.sharma_7@nxp.com;
- helo=PA4PR04CU001.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
+References: <20261022-query-reg-v3-0-7ad902b9a7cf@redhat.com>
+ <atzT-0QHYWByMhEg@gallifrey>
+In-Reply-To: <atzT-0QHYWByMhEg@gallifrey>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Sun, 25 Oct 2026 12:26:03 +0400
+X-Gm-Features: AclHuK8YlbKxm0tXouRrKwXKkmpePE2xkf6pIN5p4Y1ucRE-bI4KaKUftFUxkSw
+Message-ID: <CAJ+F1CJWJc=5okkvBYuKhFjU4=iZGWECYmTMMFDbeawA-GGN7A@mail.gmail.com>
+Subject: Re: [PATCH v3 00/18] monitor/hmp: replace MonitorDef with GDB
+ registers
+To: "Dr. David Alan Gilbert" <dave@treblig.org>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>, 
+ Glenn Miles <milesg@linux.ibm.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Chao Liu <chao.liu@processmission.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132a;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-dy1-x132a.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,65 +135,165 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Peter,
+Hi
 
-I am looking for guidance on the appropriate scope for correcting Cortex-A5=
-5 MPIDR topology in QEMU.
-I have enabled and tested i.MX95 machine model that boots the complete NXP =
-firmware/software stack from the emulated boot ROM:
+On Sat, Oct 24, 2026 at 7:52=E2=80=AFPM Dr. David Alan Gilbert <dave@trebli=
+g.org> wrote:
+>
+> * Marc-Andr=C3=A9 Lureau (marcandre.lureau@redhat.com) wrote:
+> > Hi,
+> >
+> > HMP monitor supports printing $register expression. The lookup
+> > was done via GDB stub registers, and supplementary MonitorDef
+> > HMP-specific tables.
+>
+> Why don't you get the first ~3 of these merged and then you can take the
+> others through the individual targets at their own pace.
 
-  Boot ROM
-    -> System Manager firmware (SCP) running on Cortex-M33
-    -> A55 SPL
-    -> TF-A / BL31
-    -> U-Boot
-    -> Linux
+Because I am not a GDB stub or HMP maintainer. Should I send a PR
+regardless for those? they can be reviewed & applied at a maintainer
+pace. If you think it's too slow, I can agree :)
 
-For testing, I am using the Yocto-generated WIC image from NXP's official i=
-.MX95 Yocto BSP as the emulated SD-card image.
-i.MX95 represents its Cortex-A55 CPUs using Aff1 as the core identifier, wi=
-th Aff0 fixed at zero.
-
-Current QEMU returns these Aff1-based affinity values through MPIDR_EL1 wit=
-h MT clear. It is not sufficient for the i.MX95
-firmware and Linux secondary-CPU startup path.
-
-With MPIDR_EL1.MT clear:
-
-  - The complete ROM-to-Linux boot chain reaches Linux.
-  - Linux begins bringing up its secondary CPUs.
-  - CPU1 reaches Linux secondary initialization.
-  - CPU2 through CPU4 time out and fail to come online.
-
-With MPIDR_EL1.MT set while retaining the same Aff1 affinity values, the sa=
-me complete boot chain succeeds and all secondary CPUs presented
-to Linux come online.
-
-I found QEMU issue #1608 and the previous qemu-devel discussion about Corte=
-x-A55 using MT=3D1 with the core index in Aff1. The discussion suggests
-that this should eventually be a generic CPU-model correction.
-
-If there is already a planned patch for resolving this, I would prefer to a=
-lign the i.MX95 work with it.
-
-Otherwise, would a generic 'mpidr_core_in_aff1' like property, initially us=
-ed by the i.MX95 machine and later extended to the other affected CPU
-models, be a reasonable direction?
-
-I plan to start posting the i.MX95 machine-model patch series soon, and wou=
-ld like to align the CPU-topology changes in that series with the
-preferred solution for this MPIDR behaviour.
-
-
-Thanks,
-Gaurav Sharma
-
-NXP Public
+>
+> Dave
+>
+> > Migrate HMP registers to use the GDB infrastructure and remove the
+> > legacy HMP MonitorDef. Internal registers aren't exposed to GDB.
+> > This also drops HMP $pc x86 fallback (use $eip/$rip instead).
+> >
+> > Known behavioural changes on RISC-V: CSR lookup is now case-sensitive
+> > and vector registers now report "unkown register" instead of a
+> > target-specific message ("Unable to print the value of vector vreg 'v0'
+> > from this API")
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> > Changes in v3:
+> > - added x86 GDB register patches
+> >   - fix the x87 FPU tag word returned by the GDB stub
+> >   - split SSE registers into a separate org.gnu.gdb.i386.sse feature
+> >   - expose AVX/AVX-512 registers (ymm/zmm upper halves and opmask)
+> >   - expose more system registers to HMP
+> > - renamed i386-segments.xml to i386-system.xml and registered it as an
+> >   internal feature, like the other targets
+> > - moved the HMP $pc removal to its own patch and documented it in
+> >   removed-features.rst
+> > - moved each target's MonitorDef removal into its target patch; the fin=
+al
+> >   patch now only removes the generic MonitorDef infrastructure
+> > - added MAINTAINERS entries
+> > - rebased onto current master
+> > - Link to v2: https://lore.kernel.org/qemu-devel/20261013-query-reg-v2-=
+0-6f95a2e139a9@redhat.com
+> >
+> > Changes in v2:
+> > - dropped v1 patch 5 (CPUClass::get_pc fallback for $pc)
+> > - new patch gdb_register_internal_coprocessor() to hide registers from =
+GDB
+> > - SPARC64, m68k, RISC-V aliases now use internal registration
+> > - pickup trailer tags
+> > - Link to v1: https://lore.kernel.org/qemu-devel/20260911-query-reg-v1-=
+0-0c04f0c02cf3@redhat.com
+> >
+> > ---
+> > Marc-Andr=C3=A9 Lureau (18):
+> >       hmp: don't crash on invalid register
+> >       gdbstub: fix next register base after register gaps
+> >       gdbstub: set feature->base_reg for dynamic features
+> >       gdbstub: add gdb_register_internal_coprocessor()
+> >       MAINTAINERS: cover x86 GDB XML files
+> >       target/i386: expose segment limits register to monitors via gdbst=
+ub
+> >       target/i386: fix FPU tag word in GDB register read
+> >       target/i386: split SSE registers into separate GDB feature
+> >       target/i386: expose system registers to monitors via gdbstub
+> >       target/i386: expose AVX/AVX-512 registers to GDB
+> >       target/i386: drop HMP $pc
+> >       MAINTAINERS: cover m68k GDB XML files
+> >       target/m68k: expose system registers to monitors via gdbstub
+> >       target/sparc64: expose system registers to monitors via gdbstub
+> >       target/riscv: bypass smstateen check in debugger mode
+> >       MAINTAINERS: cover riscv GDB XML files
+> >       target/riscv: expose register aliases to monitors via gdbstub
+> >       monitor/hmp: remove legacy MonitorDef infrastructure
+> >
+> >  MAINTAINERS                               |   4 +
+> >  configs/targets/i386-bsd-user.mak         |   2 +-
+> >  configs/targets/i386-linux-user.mak       |   2 +-
+> >  configs/targets/i386-softmmu.mak          |   2 +-
+> >  configs/targets/m68k-softmmu.mak          |   2 +-
+> >  configs/targets/riscv32-linux-user.mak    |   2 +-
+> >  configs/targets/riscv32-softmmu.mak       |   2 +-
+> >  configs/targets/riscv64-bsd-user.mak      |   2 +-
+> >  configs/targets/riscv64-linux-user.mak    |   2 +-
+> >  configs/targets/riscv64-softmmu.mak       |   2 +-
+> >  configs/targets/sparc64-softmmu.mak       |   2 +-
+> >  configs/targets/x86_64-bsd-user.mak       |   2 +-
+> >  configs/targets/x86_64-linux-user.mak     |   2 +-
+> >  configs/targets/x86_64-softmmu.mak        |   2 +-
+> >  docs/about/removed-features.rst           |   8 +
+> >  gdbstub/gdb-xml/i386-32bit-avx.xml        |  20 ++
+> >  gdbstub/gdb-xml/i386-32bit-avx512.xml     |  31 +++
+> >  gdbstub/gdb-xml/i386-32bit-sse.xml        |  54 +++++
+> >  gdbstub/gdb-xml/i386-32bit.xml            |  46 +---
+> >  gdbstub/gdb-xml/i386-64bit-avx.xml        |  28 +++
+> >  gdbstub/gdb-xml/i386-64bit-avx512.xml     | 108 +++++++++
+> >  gdbstub/gdb-xml/i386-64bit-sse.xml        |  62 +++++
+> >  gdbstub/gdb-xml/i386-64bit.xml            |  50 ----
+> >  gdbstub/gdb-xml/i386-system.xml           |  53 +++++
+> >  gdbstub/gdb-xml/m68k-system.xml           |  32 +++
+> >  gdbstub/gdb-xml/riscv-32bit-alias.xml     | 105 +++++++++
+> >  gdbstub/gdb-xml/riscv-32bit-fpu-alias.xml |  40 ++++
+> >  gdbstub/gdb-xml/riscv-64bit-alias.xml     | 105 +++++++++
+> >  gdbstub/gdb-xml/riscv-64bit-fpu-alias.xml |  46 ++++
+> >  gdbstub/gdb-xml/sparc64-system.xml        |  22 ++
+> >  gdbstub/gdbstub.c                         |  85 +++++--
+> >  include/exec/gdbstub.h                    |  21 ++
+> >  include/hw/core/cpu.h                     |   5 +-
+> >  include/hw/core/sysemu-cpu-ops.h          |  16 --
+> >  include/monitor/hmp.h                     |   6 -
+> >  include/qemu/typedefs.h                   |   1 -
+> >  monitor/hmp.c                             |  45 +---
+> >  target/arm/gdbstub.c                      |   8 +-
+> >  target/arm/gdbstub64.c                    |  10 +-
+> >  target/i386/cpu-dump.c                    |   5 +-
+> >  target/i386/cpu.c                         |  60 +++--
+> >  target/i386/cpu.h                         |  25 ++
+> >  target/i386/gdbstub.c                     | 373 ++++++++++++++++++++++=
++++++---
+> >  target/i386/tcg/fpu_helper.c              |  24 +-
+> >  target/m68k/cpu.c                         |  22 --
+> >  target/m68k/helper.c                      |  49 +++-
+> >  target/ppc/gdbstub.c                      |   2 +-
+> >  target/riscv/cpu.c                        |   1 -
+> >  target/riscv/gdbstub.c                    |  57 ++++-
+> >  target/riscv/internals.h                  |   3 -
+> >  target/riscv/monitor.c                    | 140 -----------
+> >  target/riscv/tcg/csr.c                    |   3 +-
+> >  target/sparc/cpu.c                        |  19 --
+> >  target/sparc/gdbstub.c                    |  38 +++
+> >  target/xtensa/cpu.c                       |   2 +-
+> >  tests/qtest/test-hmp.c                    |   1 -
+> >  56 files changed, 1383 insertions(+), 478 deletions(-)
+> > ---
+> > base-commit: 8967b2fe1b2aaae3c29e207d85fab901d580a2dc
+> > change-id: 20260910-query-reg-80cd59cf4707
+> >
+> > Best regards,
+> > --
+> > Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> >
+> --
+>  -----Open up your eyes, open up your mind, open up your code -------
+> / Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \
+> \        dave @ treblig.org |                               | In Hex /
+>  \ _________________________|_____ http://www.treblig.org   |_______/
+>
 

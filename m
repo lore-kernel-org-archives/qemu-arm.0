@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E00A606A31B
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:34:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39001606A31B
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:35:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL266-0003Q7-5e; Sun, 25 Oct 2026 13:33:30 -0400
+	id 1xL26Y-00054v-Ff; Sun, 25 Oct 2026 13:33:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24l-0001wG-1c; Sun, 25 Oct 2026 13:32:16 -0400
+ id 1xL25c-0002mU-3Y; Sun, 25 Oct 2026 13:33:07 -0400
 Received: from www675.your-server.de ([85.10.213.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24g-0007MI-GB; Sun, 25 Oct 2026 13:32:06 -0400
+ id 1xL25U-0007PH-S2; Sun, 25 Oct 2026 13:32:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=T3W3eyh7wv1wXXkyqKZLn7E3aZ05y3s9/HE+gfgltsc=; b=cWQAhgYy4RIYxZfl+chvIInPuf
- /yLfmwtezRZK2gqK2bTKuMAnKTzmxSzz2JqDeZQRCvR7rGeRqCCB+/bTcfk4RtQVG7KTfacgZ6zMq
- mzvDRacIIABeOMcvrVJYlbBYi5pNeTCZ15ipzhPzKBMjS0KvGt3ucA9k6p9WoKPwoA539wcyjzeoj
- Ld9C4Jf/Ln/XkHx2AxMEcg4Vt5gKRqM0PSa6KbgN9M0FlitJ4PuHfNTqFD9gI0SaFSmhKGp4mV69Z
- GKAvEXlipHqd416ZnDC/pI0Uj0wptWLMnC5tdK2vIeDkFNtLeQdKxfWnUkZs7t6G+zg6jfPNLUfgF
- KLHhOoqw==;
+ bh=sY4MR7u4WQyIj7u5DGvAixmNpQq9Lbb541rx1qnoJFQ=; b=BmgO8FCcOtzJmi1y0VWIWvZNGI
+ eOiwKBAS8taHEIVsGHn1baXcNsT3hvhyX/WcydtlE0Hh2uj+bJC1qS7OalQrI1H8cojccJLw78Q3u
+ +p3i6VJDPHrjk5Pasy1HmQSlvsyE30aS1m/KzDgU3S3MsdDnsAGsKTJnKDwdZ3tntkktgGXtwcWJD
+ B2AaKbEppDh7IQQtMUsbjc4QcSDPZ2uY4pOmoJpG52kkPji9KJHDlR3zvUXNaUnCvnP2RUu27EDYj
+ SyOzIoYAYzsgYtHbpbNUjCFloxAY6UMk0Mgz95Ngp8MDzA34E85Vexr3QithOlotuA0DaPrl/pflP
+ 31h/Q7hA==;
 Received: from sslproxy01.your-server.de ([78.46.139.224])
  by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1gP-00097a-10; Sun, 25 Oct 2026 18:06:57 +0100
+ id 1xL1gO-00097Q-2S; Sun, 25 Oct 2026 18:06:56 +0100
 Received: from localhost ([127.0.0.1])
  by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vw-000OzG-0v; Sun, 25 Oct 2026 17:56:07 +0100
+ id 1xL1Vw-000OzG-3B; Sun, 25 Oct 2026 17:56:08 +0100
 From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:32 +0100
-Subject: [PATCH v2 16/31] target/rx: add RXv3 register bank SAVE and RSTR
+Date: Sun, 25 Oct 2026 17:55:42 +0100
+Subject: [PATCH v2 26/31] hw/misc: add Renesas RX CRC calculator
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-umar-rx-series-v2-16-9e846577cad0@sayyadumar.com>
+Message-Id: <20261025-umar-rx-series-v2-26-9e846577cad0@sayyadumar.com>
 References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 To: qemu-devel@nongnu.org
@@ -51,11 +51,11 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=8538;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=10526;
  i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=3Z7ShaAclJ+W8SCa92HjjjVPVQRdj0UxkSaTrwM5z4c=;
- b=qp8Ck9MKdf7nD9vP/AE88YgZhSLVLCJ1mUoA27xdOqukD+I4s2dD57hsjH8HadLuYuPORtKi5
- 0PII+GNhPJRAYP1pnwj8T/LRNCnNjivVeOczHciuko1k+8P1pqUvtz7
+ bh=ney1/4QnelinSnzRtjLVg9AamFVDbqHOGMb9pIs8gNo=;
+ b=yYI3PPFDwEX38Vdkjr3E0ztHrZ3vxaLIG6UXgIngjaxnqaFnAKvOkGXt+W7h3SuN8ZMFzwRra
+ 03S5DD+U25XCm8v46U/7CpMYnixeUSrmbhQQNZyTULAEidt8YYkdWhy
 X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
  pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
 X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
@@ -81,273 +81,332 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
 	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SAVE copies R1-R15, the USP, the FPSW and the accumulator into a save
-register bank and RSTR copies them back; R0 is excluded because the
-stack pointer is not banked. The banks are internal CPU state that
-only these two instructions can reach, so no memory traffic is
-involved. How many banks exist is implementation defined and comes
-from RXCPUClass::num_save_banks (16 on the RX72M).
+Add the RX CRCA, section 42 of the RX65N hardware manual.
 
 Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
 ---
- target/rx/cpu.h        | 24 ++++++++++++++++++++
- target/rx/disas.c      | 24 ++++++++++++++++++++
- target/rx/helper.h     |  3 +++
- target/rx/insns.decode | 10 +++++++++
- target/rx/op_helper.c  | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++
- target/rx/translate.c  | 42 +++++++++++++++++++++++++++++++++++
- 6 files changed, 162 insertions(+)
+ MAINTAINERS                            |   2 +
+ configs/devices/rx-softmmu/default.mak |   1 +
+ hw/misc/Kconfig                        |   3 +
+ hw/misc/meson.build                    |   1 +
+ hw/misc/renesas_rx_crc.c               | 219 +++++++++++++++++++++++++++++++++
+ include/hw/misc/renesas_rx_crc.h       |  30 +++++
+ 6 files changed, 256 insertions(+)
 
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index 4c55b0bd7d..0d2ebe1bda 100644
---- a/target/rx/cpu.h
-+++ b/target/rx/cpu.h
-@@ -116,6 +116,15 @@ enum {
-     NUM_DREGS = 16,
-     /* RXv3 DPFPU control registers: DPSW, DCMR, DECNT, DEPC. */
-     NUM_DCREGS = 4,
-+    /*
-+     * RXv3 register bank save function. The banks are internal CPU state
-+     * reachable only through the SAVE and RSTR instructions, so no memory
-+     * layout is involved. How many banks exist is implementation defined,
-+     * so the per-model count lives in RXCPUClass::num_save_banks and this
-+     * is only the storage ceiling. RX72M/RX72N/RX72T provide 16, selected
-+     * by bank numbers 0-15.
-+     */
-+    RX_MAX_SAVE_BANKS = 16,
- };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index b8bbb0e749..efeb40ee01 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3086,6 +3086,7 @@ F: hw/dma/renesas_rx_*.c
+ F: hw/dma/renesas_rx_dtc.c
+ F: hw/gpio/renesas_rx_gpio.c
+ F: hw/intc/rx_icu.c
++F: hw/misc/renesas_rx_*.c
+ F: hw/rtc/renesas_rx_rtc.c
+ F: hw/rx/
+ F: hw/ssi/renesas_rspi.c
+@@ -3095,6 +3096,7 @@ F: include/hw/dma/renesas_rx_*.h
+ F: include/hw/dma/renesas_rx_dtc.h
+ F: include/hw/gpio/renesas_rx_gpio.h
+ F: include/hw/intc/rx_icu.h
++F: include/hw/misc/renesas_rx_*.h
+ F: include/hw/rtc/renesas_rx_rtc.h
+ F: include/hw/rx/
+ F: include/hw/ssi/renesas_rspi.h
+diff --git a/configs/devices/rx-softmmu/default.mak b/configs/devices/rx-softmmu/default.mak
+index cbc4641143..c8419d64cc 100644
+--- a/configs/devices/rx-softmmu/default.mak
++++ b/configs/devices/rx-softmmu/default.mak
+@@ -9,3 +9,4 @@ CONFIG_RENESAS_RX_DTC=y
+ CONFIG_RENESAS_S12AD=y
+ CONFIG_RENESAS_RSPI=y
+ CONFIG_RENESAS_RX_RTC=y
++CONFIG_RENESAS_RX_CRC=y
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 7abd22869a..b1c4fd7cba 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -267,3 +267,6 @@ config SOPHGO_CV1800B_CLK
+     bool
  
- #define RX_EXCP_TRAP_COUNT          0x100
-@@ -165,6 +174,18 @@ typedef enum RXISAVersion {
-     RX_ISA_V3 = 3,
- } RXISAVersion;
+ source macio/Kconfig
++
++config RENESAS_RX_CRC
++    bool
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 90f3f89de7..22f933a17e 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -181,3 +181,4 @@ system_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa_ec.c'))
+ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
  
+ system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
++system_ss.add(when: 'CONFIG_RENESAS_RX_CRC', if_true: files('renesas_rx_crc.c'))
+diff --git a/hw/misc/renesas_rx_crc.c b/hw/misc/renesas_rx_crc.c
+new file mode 100644
+index 0000000000..f06ac4a64e
+--- /dev/null
++++ b/hw/misc/renesas_rx_crc.c
+@@ -0,0 +1,219 @@
 +/*
-+ * One save register bank, written by SAVE and read back by RSTR. A bank
-+ * holds R1-R15 (R0/SP is excluded), the USP, the FPSW and the accumulators.
-+ * QEMU models a single accumulator, so only ACC0 is covered here.
-+ */
-+typedef struct RXSaveBank {
-+    uint32_t regs[NUM_REGS];    /* [0] unused: R0 is not banked */
-+    uint32_t usp;
-+    uint32_t fpsw;
-+    uint64_t acc;
-+} RXSaveBank;
-+
- typedef struct CPUArchState {
-     /* CPU registers */
-     uint32_t regs[NUM_REGS];    /* general registers */
-@@ -191,6 +212,9 @@ typedef struct CPUArchState {
-     uint64_t dr[NUM_DREGS];     /* DR0-DR15 */
-     uint32_t dcr[NUM_DCREGS];   /* DPSW, DCMR, DECNT, DEPC */
- 
-+    /* RXv3 register bank save function (SAVE/RSTR) */
-+    RXSaveBank bank[RX_MAX_SAVE_BANKS];
-+
-     /* Fields up to this point are cleared by a CPU reset */
-     struct {} end_reset_fields;
- 
-diff --git a/target/rx/disas.c b/target/rx/disas.c
-index 7d6cad753e..46148c4087 100644
---- a/target/rx/disas.c
-+++ b/target/rx/disas.c
-@@ -1495,6 +1495,30 @@ static bool trans_BFMOVZ(DisasContext *ctx, arg_BFMOVZ *a)
-     return true;
- }
- 
-+static bool trans_SAVE_r(DisasContext *ctx, arg_SAVE_r *a)
-+{
-+    prt("save\tr%d", a->rs);
-+    return true;
-+}
-+
-+static bool trans_SAVE_i(DisasContext *ctx, arg_SAVE_i *a)
-+{
-+    prt("save\t#%d", a->imm);
-+    return true;
-+}
-+
-+static bool trans_RSTR_r(DisasContext *ctx, arg_RSTR_r *a)
-+{
-+    prt("rstr\tr%d", a->rs);
-+    return true;
-+}
-+
-+static bool trans_RSTR_i(DisasContext *ctx, arg_RSTR_i *a)
-+{
-+    prt("rstr\t#%d", a->imm);
-+    return true;
-+}
-+
- #define BOP_IM(name, reg)                                       \
-     do {                                                        \
-         char dsp[8];                                            \
-diff --git a/target/rx/helper.h b/target/rx/helper.h
-index 0f05d38182..6c3b81b7ba 100644
---- a/target/rx/helper.h
-+++ b/target/rx/helper.h
-@@ -30,6 +30,9 @@ DEF_HELPER_2(itod, f64, env, i32)
- DEF_HELPER_2(utod, f64, env, i32)
- DEF_HELPER_2(ftod, f64, env, f32)
- DEF_HELPER_3(mvtdc, void, env, i32, i32)
-+/* RXv3 register bank save function */
-+DEF_HELPER_2(save, void, env, i32)
-+DEF_HELPER_2(rstr, void, env, i32)
- DEF_HELPER_2(set_fpsw, void, env, i32)
- DEF_HELPER_2(racw, void, env, i32)
- DEF_HELPER_2(set_psw_rte, void, env, i32)
-diff --git a/target/rx/insns.decode b/target/rx/insns.decode
-index 55c7e3994d..450949a4bc 100644
---- a/target/rx/insns.decode
-+++ b/target/rx/insns.decode
-@@ -46,6 +46,9 @@
- &dmovld		rs ld
- # RXv3 bit field move
- &bfm		rd rs
-+# RXv3 register bank save/restore
-+&svr		rs
-+&svi		imm
- ########
- %b1_bdsp	24:3 !function=bdsp_s
- 
-@@ -720,3 +723,10 @@ DMOV_mld	1111 1100 1100 10 ld:2 rs:4 1000		&dmovld
- # RXv3: bit field move. The 16-bit field descriptor follows the opcode.
- BFMOVZ		1111 1100 0101 1010 rs:4 rd:4			&bfm
- BFMOV		1111 1100 0101 1110 rs:4 rd:4			&bfm
-+
-+########
-+# RXv3: register bank save and restore
-+SAVE_r		1111 1101 0111 0110 1100 rs:4 0000 0000		&svr
-+RSTR_r		1111 1101 0111 0110 1101 rs:4 0000 0000		&svr
-+SAVE_i		1111 1101 0111 0110 1110 0000 imm:8		&svi
-+RSTR_i		1111 1101 0111 0110 1111 0000 imm:8		&svi
-diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
-index 91af7c6685..5694c97286 100644
---- a/target/rx/op_helper.c
-+++ b/target/rx/op_helper.c
-@@ -121,6 +121,65 @@ static void update_fpsw(CPURXState *env, float32 ret, uintptr_t retaddr)
-     }
- }
- 
-+/*
-+ * RXv3 register bank save function. SAVE copies R1-R15, the USP, the FPSW
-+ * and the accumulator into the selected save register bank; RSTR copies them
-+ * back. R0 is deliberately excluded: the stack pointer is not banked.
++ * Renesas RX CRC Calculator (CRCA)
 + *
-+ * The banks are internal CPU state that only these two instructions can
-+ * reach, so there is no memory layout to model. How many banks a part
-+ * provides is implementation defined and comes from the CPU model.
++ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
++ *            (Rev.2.40 R01UH0590EJ0240), section 42
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Writing to CRCDIR runs the selected polynomial over the data and leaves the
++ * result in CRCDOR, which doubles as the initial value: it is zero out of
++ * reset, DORCLR puts it back, and firmware wanting a different seed writes it
++ * directly. There is no final XOR, so the familiar CRC-32 of a message is
++ * obtained by seeding CRCDOR with all ones and inverting the result.
++ *
++ * CRCCR.LMS picks the bit order. MSB first is the plain shift-left form; LSB
++ * first is the reflected form, computed with the reversed polynomial. The two
++ * worked examples in section 42.3 pin this down: with the CCITT polynomial and
++ * a cleared CRCDOR, feeding 0xf0 gives 0xef1f MSB first and 0xf78f LSB first.
 + */
-+static RXSaveBank *rx_save_bank(CPURXState *env, uint32_t bank,
-+                                const char *insn)
-+{
-+    uint32_t n = RX_CPU_GET_CLASS(env_cpu(env))->num_save_banks;
 +
-+    if (bank >= n) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "rx: %s with out of range bank %u (this CPU has %u)\n",
-+                      insn, bank, n);
-+        return NULL;
-+    }
-+    return &env->bank[bank];
-+}
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/bitops.h"
++#include "hw/misc/renesas_rx_crc.h"
++#include "hw/core/registerfields.h"
++#include "hw/core/qdev-properties.h"
++#include "migration/vmstate.h"
 +
-+void helper_save(CPURXState *env, uint32_t bank)
-+{
-+    RXSaveBank *b = rx_save_bank(env, bank, "save");
-+    int i;
++REG8(CRCCR, 0)
++    FIELD(CRCCR, GPS, 0, 3)
++    FIELD(CRCCR, LMS, 6, 1)
++    FIELD(CRCCR, DORCLR, 7, 1)
 +
-+    if (!b) {
-+        return;
-+    }
-+    for (i = 1; i < NUM_REGS; i++) {
-+        b->regs[i] = env->regs[i];
-+    }
-+    b->usp = env->psw_u ? env->regs[0] : env->usp;
-+    b->fpsw = env->fpsw;
-+    b->acc = env->acc;
-+}
++#define R_CRCDIR    0x04
++#define R_CRCDOR    0x08
 +
-+void helper_rstr(CPURXState *env, uint32_t bank)
-+{
-+    RXSaveBank *b = rx_save_bank(env, bank, "rstr");
-+    int i;
++/* CRCCR is read/write apart from the write-only DORCLR bit. */
++#define CRCCR_RW_MASK   (R_CRCCR_GPS_MASK | R_CRCCR_LMS_MASK)
 +
-+    if (!b) {
-+        return;
-+    }
-+    for (i = 1; i < NUM_REGS; i++) {
-+        env->regs[i] = b->regs[i];
-+    }
-+    if (env->psw_u) {
-+        env->regs[0] = b->usp;
-+    } else {
-+        env->usp = b->usp;
-+    }
-+    env->fpsw = b->fpsw;
-+    env->acc = b->acc;
-+}
-+
- void helper_set_fpsw(CPURXState *env, uint32_t val)
- {
-     static const int roundmode[] = {
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index db037634d5..93174f5e1c 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -2501,6 +2501,48 @@ static bool trans_BFMOVZ(DisasContext *ctx, arg_BFMOVZ *a)
-     return bfmov_common(ctx, a->rd, a->rs, true);
- }
- 
 +/*
-+ * save / rstr -- the RXv3 register bank save function. A bank holds R1-R15,
-+ * the USP, the FPSW and the accumulator; the banks are internal CPU state
-+ * that nothing but these two instructions can reach, so no memory traffic
-+ * is involved.
++ * Generating polynomials selected by CRCCR.GPS, without the implicit top
++ * term. Entries 0, 6 and 7 select "no calculation".
 + */
-+static bool trans_SAVE_i(DisasContext *ctx, arg_SAVE_i *a)
++static const struct {
++    uint32_t poly;
++    uint8_t width;
++} crc_gps[8] = {
++    [1] = { 0x07,       8  },   /* X8 + X2 + X + 1                          */
++    [2] = { 0x8005,     16 },   /* X16 + X15 + X2 + 1                       */
++    [3] = { 0x1021,     16 },   /* X16 + X12 + X5 + 1                       */
++    [4] = { 0x04c11db7, 32 },   /* X32 + X26 + X23 + ... + X2 + X + 1       */
++    [5] = { 0x1edc6f41, 32 },   /* X32 + X28 + X27 + ... + X8 + X6 + 1      */
++};
++
++static uint32_t bitreverse(uint32_t value, unsigned width)
 +{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    gen_helper_save(tcg_env, tcg_constant_i32(a->imm));
-+    return true;
++    return revbit32(value) >> (32 - width);
 +}
 +
-+static bool trans_SAVE_r(DisasContext *ctx, arg_SAVE_r *a)
++/* Run nbits of data through the selected polynomial. */
++static void crc_feed(RenesasRxCrcState *s, uint32_t data, unsigned nbits)
 +{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++    unsigned gps = FIELD_EX8(s->crccr, CRCCR, GPS);
++    uint32_t poly = crc_gps[gps].poly;
++    unsigned width = crc_gps[gps].width;
++    uint32_t mask, crc;
++
++    if (width == 0) {
++        return;             /* GPS selects no calculation */
 +    }
-+    gen_helper_save(tcg_env, cpu_regs[a->rs]);
-+    return true;
++    if (nbits > width) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "renesas-rx-crc: %u-bit write to CRCDIR with a %u-bit "
++                      "polynomial selected\n", nbits, width);
++        nbits = width;
++    }
++
++    mask = width == 32 ? UINT32_MAX : (1u << width) - 1;
++    crc = s->crcdor & mask;
++
++    if (FIELD_EX8(s->crccr, CRCCR, LMS)) {
++        /* MSB first: shift up, align the data with the top of the register. */
++        crc ^= (data << (width - nbits)) & mask;
++        while (nbits--) {
++            crc = (crc & (mask ^ (mask >> 1))) ? ((crc << 1) ^ poly) & mask
++                                               : (crc << 1) & mask;
++        }
++    } else {
++        /* LSB first: the reflected form, so shift down with a reversed poly. */
++        uint32_t rpoly = bitreverse(poly, width);
++
++        crc ^= data & mask;
++        while (nbits--) {
++            crc = (crc & 1) ? (crc >> 1) ^ rpoly : crc >> 1;
++        }
++    }
++
++    s->crcdor = crc;
 +}
 +
-+static bool trans_RSTR_i(DisasContext *ctx, arg_RSTR_i *a)
++static uint64_t crc_read(void *opaque, hwaddr offset, unsigned size)
 +{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++    RenesasRxCrcState *s = opaque;
++
++    switch (offset) {
++    case A_CRCCR:
++        /* DORCLR always reads back as 0. */
++        return s->crccr & CRCCR_RW_MASK;
++    case R_CRCDIR:
++        /*
++         * CRCDIR is documented readable, but the hardware keeps no separate
++         * copy of the data written to it, so nothing meaningful comes back.
++         */
++        return 0;
++    case R_CRCDOR:
++        if (size >= 4) {
++            return s->crcdor;
++        }
++        return s->crcdor & ((1u << (size * 8)) - 1);
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "renesas-rx-crc: read from unmapped offset 0x%"
++                      HWADDR_PRIx "\n", offset);
++        return 0;
 +    }
-+    gen_helper_rstr(tcg_env, tcg_constant_i32(a->imm));
-+    return true;
 +}
 +
-+static bool trans_RSTR_r(DisasContext *ctx, arg_RSTR_r *a)
++static void crc_write(void *opaque, hwaddr offset, uint64_t value,
++                      unsigned size)
 +{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++    RenesasRxCrcState *s = opaque;
++
++    switch (offset) {
++    case A_CRCCR:
++        s->crccr = value & CRCCR_RW_MASK;
++        if (FIELD_EX8(value, CRCCR, DORCLR)) {
++            s->crcdor = 0;
++        }
++        break;
++    case R_CRCDIR:
++        crc_feed(s, value, size * 8);
++        break;
++    case R_CRCDOR:
++        /* Writable so firmware can seed the calculation. */
++        if (size >= 4) {
++            s->crcdor = value;
++        } else {
++            uint32_t m = (1u << (size * 8)) - 1;
++            s->crcdor = (s->crcdor & ~m) | (value & m);
++        }
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "renesas-rx-crc: write to unmapped offset 0x%"
++                      HWADDR_PRIx "\n", offset);
++        break;
 +    }
-+    gen_helper_rstr(tcg_env, cpu_regs[a->rs]);
-+    return true;
 +}
 +
- static void rx_bsetm(DisasContext *ctx, TCGv_i32 mem, TCGv_i32 mask)
- {
-     TCGv_i32 val;
++static const MemoryRegionOps crc_ops = {
++    .read = crc_read,
++    .write = crc_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl = { .min_access_size = 1, .max_access_size = 4 },
++    .valid = { .min_access_size = 1, .max_access_size = 4 },
++};
++
++static void rx_crc_reset(DeviceState *dev)
++{
++    RenesasRxCrcState *s = RENESAS_RX_CRC(dev);
++
++    s->crccr = 0;
++    s->crcdor = 0;
++}
++
++static void rx_crc_init(Object *obj)
++{
++    RenesasRxCrcState *s = RENESAS_RX_CRC(obj);
++
++    memory_region_init_io(&s->memory, obj, &crc_ops, s,
++                          "renesas-rx-crc", RX_CRC_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->memory);
++}
++
++static const VMStateDescription vmstate_rx_crc = {
++    .name = "renesas-rx-crc",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT8(crccr, RenesasRxCrcState),
++        VMSTATE_UINT32(crcdor, RenesasRxCrcState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void rx_crc_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_rx_crc;
++    device_class_set_legacy_reset(dc, rx_crc_reset);
++}
++
++static const TypeInfo rx_crc_info = {
++    .name          = TYPE_RENESAS_RX_CRC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RenesasRxCrcState),
++    .instance_init = rx_crc_init,
++    .class_init    = rx_crc_class_init,
++};
++
++static void rx_crc_register_types(void)
++{
++    type_register_static(&rx_crc_info);
++}
++
++type_init(rx_crc_register_types)
+diff --git a/include/hw/misc/renesas_rx_crc.h b/include/hw/misc/renesas_rx_crc.h
+new file mode 100644
+index 0000000000..1c41b6bd4b
+--- /dev/null
++++ b/include/hw/misc/renesas_rx_crc.h
+@@ -0,0 +1,30 @@
++/*
++ * Renesas RX CRC Calculator (CRCA)
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_MISC_RENESAS_RX_CRC_H
++#define HW_MISC_RENESAS_RX_CRC_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_RENESAS_RX_CRC "renesas-rx-crc"
++OBJECT_DECLARE_SIMPLE_TYPE(RenesasRxCrcState, RENESAS_RX_CRC)
++
++/* CRCCR, CRCDIR and CRCDOR occupy 0x8280, 0x8284 and 0x8288. */
++#define RX_CRC_SIZE     0x10
++
++struct RenesasRxCrcState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion memory;
++
++    uint8_t crccr;      /* control: GPS[2:0], LMS, DORCLR */
++    uint32_t crcdor;    /* running result, also the initial value */
++};
++
++#endif /* HW_MISC_RENESAS_RX_CRC_H */
 
 -- 
 2.53.0

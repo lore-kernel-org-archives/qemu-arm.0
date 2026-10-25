@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3AD7E606A31A
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:35:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F39E606A31B
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:35:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL26j-00062E-K7; Sun, 25 Oct 2026 13:34:10 -0400
+	id 1xL26W-0004sv-Hx; Sun, 25 Oct 2026 13:33:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL247-0000zW-QR; Sun, 25 Oct 2026 13:31:32 -0400
+ id 1xL25P-0002bH-M9; Sun, 25 Oct 2026 13:32:52 -0400
 Received: from www675.your-server.de ([85.10.213.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL244-0007Jt-Kn; Sun, 25 Oct 2026 13:31:26 -0400
+ id 1xL25L-0007Oj-Su; Sun, 25 Oct 2026 13:32:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=5lAUCxqfG8sM6pOnbDX8sosTn48tzyKLtxywQ8LbM24=; b=qpersZEHRvUV9jM1xJzaiUMuHi
- CiL/qfcCM5FKOv5Rfp1Xlw6n435igvmrIRVyQ8CRouqu8O2pTN2K9gtz+Jd0+4O+qe49WyDZgp96W
- 2z8IFOsI0xaUAN+Fh2/rm2DVb8YL757VmgNqjEdkMXkGf1SuPTPry1ZcqjzOz89oTbmZjJc/lIAzK
- 0OrukJ6ypqXXOPRZEQMfwbkhB4rd9C/FCu1G+xmCMh+JgT80VTpQRpXY0NjmqUuvZHchoxydwpMoq
- 2iDXPLUyco/QILEXVFETOAXtNnb/XGg1JTVYxYK8xaw1rpTl296Bl9oWeyb4eaHeHGWVsBxF9Msuw
- tqTHvAeA==;
+ bh=gF3fDDCXN8rsqRLVN04kF7pF7zJ2peXD0f+Px5hxD7g=; b=RpBTinx1IDy6t4MPLqLr8R+gAv
+ zGhnxAgHcGg0Ebk0nPZDtK/icZ3Skt5uvwB67dvQIOQ7AYWIBtD4vNZ95wLzTUiAkBF6yNIvc8ufr
+ Xs6QOYoVonHIVLwRLCZzjv8W2f3DtYkEpptNhoM0H99xuBkihcpqcO5tJDr6XRK+g9Of4X1ZbjsZG
+ AA0j7PzkDB/5k6fXrNx7j8c8IhNDFn3PpOEM1MQgNWlrlr5iao3WsgwC9KoYLoryf8GifxUUXTVU5
+ hn10jrFM0OI4iAf1n150sN/ZApTdKQcu2V/jv1l5zmwF8xtC+hpzm69HAoDmmq1OuhqQvbgnPiGeN
+ gJa8BBGg==;
 Received: from sslproxy01.your-server.de ([78.46.139.224])
  by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1fa-0008yR-1K; Sun, 25 Oct 2026 18:06:06 +0100
+ id 1xL1gO-00097D-0B; Sun, 25 Oct 2026 18:06:56 +0100
 Received: from localhost ([127.0.0.1])
  by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vv-000OzG-2p; Sun, 25 Oct 2026 17:56:07 +0100
+ id 1xL1Vw-000OzG-24; Sun, 25 Oct 2026 17:56:08 +0100
 From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:26 +0100
-Subject: [PATCH v2 10/31] target/rx: add DPUSHM and DPOPM
+Date: Sun, 25 Oct 2026 17:55:37 +0100
+Subject: [PATCH v2 21/31] hw/dma: add Renesas RX DMAC
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-umar-rx-series-v2-10-9e846577cad0@sayyadumar.com>
+Message-Id: <20261025-umar-rx-series-v2-21-9e846577cad0@sayyadumar.com>
 References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 To: qemu-devel@nongnu.org
@@ -51,11 +51,11 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=5451;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=14236;
  i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=Wr9yanjeQH4HzJhPTxohXUfqcGg2ndZ7wmxp4QcEUFk=;
- b=yNN1oCQLIg3maC97yJlXSkVkFfvA+LDJpaF+oxgfYDbJn1sgKIw7N6C3NzDDTiZd5+AvLehrx
- XL1zpd6Go7MD3U6vs0g2QXLtI19dOvzpoTQ868QKqGJSdObaDV6k/F5
+ bh=i22RZ8oGxUuQdHlIs6YrhuIMRrQ+g6rnLga2VsmCCmY=;
+ b=sirS5b6Is02W8PHg/ZKm/iKpjPqtqwk0YR2oSmw4Q2TihL7Tyd8pBs4tLQR2cIDzU/rDIzyYR
+ 7FHkM3+Rii0Au9dTC/O9owFXuDWqmbrxH3BHK8J3f9f8nHcdYIkgZwI
 X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
  pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
 X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
@@ -85,169 +85,454 @@ X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-DPUSHM/DPOPM push and pop a range of DR registers onto the stack;
-the .L forms do the same for the DPFPU control registers. The encoded
-rnum field holds (last - first), so the range covers rnum + 1
-registers; pushes run from the highest register down so the lowest
-ends up at the lowest address.
+Add the RX DMA Controller, section 17 (DMAC) of the RX65N hardware
+manual.
 
 Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
 ---
- target/rx/disas.c      | 29 +++++++++++++++++++
- target/rx/insns.decode |  9 ++++++
- target/rx/translate.c  | 75 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 113 insertions(+)
+ MAINTAINERS                            |   2 +
+ configs/devices/rx-softmmu/default.mak |   1 +
+ hw/dma/Kconfig                         |   5 +-
+ hw/dma/meson.build                     |   1 +
+ hw/dma/renesas_rx_dmac.c               | 317 +++++++++++++++++++++++++++++++++
+ include/hw/dma/renesas_rx_dmac.h       |  57 ++++++
+ 6 files changed, 382 insertions(+), 1 deletion(-)
 
-diff --git a/target/rx/disas.c b/target/rx/disas.c
-index 85de0a0f09..5a0d7180b5 100644
---- a/target/rx/disas.c
-+++ b/target/rx/disas.c
-@@ -1309,6 +1309,35 @@ static bool trans_FTOD(DisasContext *ctx, arg_FTOD *a)
-     return true;
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index dec31dbc0b..d36aa0afa1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3081,10 +3081,12 @@ F: include/hw/timer/renesas_*.h
+ Renesas RX peripherals
+ R: Yoshinori Sato <yoshinori.sato@nifty.com>
+ S: Orphan
++F: hw/dma/renesas_rx_*.c
+ F: hw/gpio/renesas_rx_gpio.c
+ F: hw/intc/rx_icu.c
+ F: hw/rx/
+ F: hw/timer/renesas_mtu3.c
++F: include/hw/dma/renesas_rx_*.h
+ F: include/hw/gpio/renesas_rx_gpio.h
+ F: include/hw/intc/rx_icu.h
+ F: include/hw/rx/
+diff --git a/configs/devices/rx-softmmu/default.mak b/configs/devices/rx-softmmu/default.mak
+index df789e00cd..f14a65dac7 100644
+--- a/configs/devices/rx-softmmu/default.mak
++++ b/configs/devices/rx-softmmu/default.mak
+@@ -4,3 +4,4 @@
+ # CONFIG_RX_GDBSIM=n
+ CONFIG_RENESAS_MTU3=y
+ CONFIG_RENESAS_RX_GPIO=y
++CONFIG_RENESAS_RX_DMAC=y
+diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
+index 0a23e7d7b8..2c95b8696d 100644
+--- a/hw/dma/Kconfig
++++ b/hw/dma/Kconfig
+@@ -32,4 +32,7 @@ config XLNX_CSU_DMA
+     select REGISTER
  
-+static bool trans_DPUSHM(DisasContext *ctx, arg_DPUSHM *a)
-+{
-+    prt("dpushm.d\tdr%d-dr%d", a->drd, a->drd + a->rnum);
-+    return true;
-+}
+ config K230_GSDMA
+-    bool
+\ No newline at end of file
++    bool
 +
-+static bool trans_DPOPM(DisasContext *ctx, arg_DPOPM *a)
-+{
-+    prt("dpopm.d\tdr%d-dr%d", a->drd, a->drd + a->rnum);
-+    return true;
-+}
-+
-+/* RXv3 disassembly: remaining DPFPU, bit field and register bank ops */
-+static const char dcrname[][6] = { "dpsw", "dcmr", "decnt", "depc" };
-+
-+static bool trans_DPUSHM_l(DisasContext *ctx, arg_DPUSHM_l *a)
-+{
-+    prt("dpushm.l\t%s-%s", dcrname[a->dcrd & 3],
-+        dcrname[(a->dcrd + a->rnum) & 3]);
-+    return true;
-+}
-+
-+static bool trans_DPOPM_l(DisasContext *ctx, arg_DPOPM_l *a)
-+{
-+    prt("dpopm.l\t%s-%s", dcrname[a->dcrd & 3],
-+        dcrname[(a->dcrd + a->rnum) & 3]);
-+    return true;
-+}
-+
- #define BOP_IM(name, reg)                                       \
-     do {                                                        \
-         char dsp[8];                                            \
-diff --git a/target/rx/insns.decode b/target/rx/insns.decode
-index 58f8aa6dfd..48325d7ebd 100644
---- a/target/rx/insns.decode
-+++ b/target/rx/insns.decode
-@@ -34,6 +34,8 @@
- &drrr		drd drs1 drs2
- &dcmpd		drs1 drs2 cd
- &idr		rs drd
-+&dppm		drd rnum
-+&dcppm		dcrd rnum
- ########
- %b1_bdsp	24:3 !function=bdsp_s
- 
-@@ -665,3 +667,10 @@ DTOF		0111 0110 1001 0000 drs:4 1101 drd:4 1100	&drr
- ITOD		1111 1101 0111 0111 1000 rs:4 drd:4 1001	&idr
- FTOD		1111 1101 0111 0111 1000 rs:4 drd:4 1010	&idr
- UTOD		1111 1101 0111 0111 1000 rs:4 drd:4 1101	&idr
-+
-+# DPUSHM.D/DPOPM.D: push/pop range of DR registers (3-byte: 0x75 prefix)
-+DPUSHM		0111 0101 1011 0000 drd:4 rnum:4		&dppm
-+DPOPM		0111 0101 1011 1000 drd:4 rnum:4		&dppm
-+# DPUSHM.L/DPOPM.L: same, for the DPFPU control registers
-+DPUSHM_l	0111 0101 1010 0000 dcrd:4 rnum:4		&dcppm
-+DPOPM_l		0111 0101 1010 1000 dcrd:4 rnum:4		&dcppm
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index 0bef8f36f8..33e41ccab3 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -2175,6 +2175,81 @@ static bool trans_FTOD(DisasContext *ctx, arg_FTOD *a)
-     return true;
- }
- 
++config RENESAS_RX_DMAC
++    bool
+diff --git a/hw/dma/meson.build b/hw/dma/meson.build
+index 45db5e7357..1fb06fb13d 100644
+--- a/hw/dma/meson.build
++++ b/hw/dma/meson.build
+@@ -13,3 +13,4 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_dma.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_PDMA', if_true: files('sifive_pdma.c'))
+ system_ss.add(when: 'CONFIG_XLNX_CSU_DMA', if_true: files('xlnx_csu_dma.c'))
+ system_ss.add(when: 'CONFIG_K230_GSDMA', if_true: files('k230_gsdma.c'))
++system_ss.add(when: 'CONFIG_RENESAS_RX_DMAC', if_true: files('renesas_rx_dmac.c'))
+diff --git a/hw/dma/renesas_rx_dmac.c b/hw/dma/renesas_rx_dmac.c
+new file mode 100644
+index 0000000000..11e44e104c
+--- /dev/null
++++ b/hw/dma/renesas_rx_dmac.c
+@@ -0,0 +1,317 @@
 +/*
-+ * dpushm.d DRn-DRm / dpopm.d DRn-DRm.
-+ * The encoded rnum field holds (last - first), so the range covers
-+ * rnum + 1 registers. Pushes run from the highest register down so that
-+ * the lowest-numbered register ends up at the lowest address.
++ * Renesas RX DMA Controller (DMAC)
++ *
++ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
++ *            (Rev.1.00 R01UH0590EJ0100), section 17 (DMAC)
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ *
++ * Models the eight DMAC channels. Hardware (peripheral-triggered) activation is
++ * not modelled; software-requested transfers (DMREQ.SWREQ) are performed
++ * synchronously, which covers memory-to-memory use and driver self-tests. The
++ * source/destination address increment modes and 8/16/32-bit transfer unit are
++ * honoured.
 + */
-+static bool trans_DPUSHM(DisasContext *ctx, arg_DPUSHM *a)
-+{
-+    int i;
 +
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/dma/renesas_rx_dmac.h"
++#include "hw/core/irq.h"
++#include "hw/core/qdev-properties.h"
++#include "migration/vmstate.h"
++#include "system/address-spaces.h"
++
++/* Per-channel register offsets. */
++#define R_DMSAR     0x00    /* 32-bit */
++#define R_DMDAR     0x04    /* 32-bit */
++#define R_DMCRA     0x08    /* 32-bit */
++#define R_DMCRB     0x0C    /* 16-bit */
++#define R_DMTMD     0x10    /* 16-bit */
++#define R_DMINT     0x13    /* 8-bit  */
++#define R_DMAMD     0x14    /* 16-bit */
++#define R_DMOFR     0x18    /* 32-bit */
++#define R_DMCNT     0x1C    /* 8-bit  */
++#define R_DMREQ     0x1D    /* 8-bit  */
++#define R_DMSTS     0x1E    /* 8-bit  */
++
++/* Common registers. */
++#define R_DMAST     0x200   /* 8-bit  */
++
++/* DMTMD: SZ field (bits 9:8) = transfer unit. */
++#define DMTMD_SZ(v)     (((v) >> 8) & 3)
++/* DMAMD: SM (bits 9:8) source mode, DM (bits 13:12) destination mode. */
++#define DMAMD_SM(v)     (((v) >> 8) & 3)
++#define DMAMD_DM(v)     (((v) >> 12) & 3)
++#define ADDR_MODE_FIXED 0
++#define ADDR_MODE_OFF   1   /* offset addition (not modelled, treated fixed) */
++#define ADDR_MODE_INC   2
++#define ADDR_MODE_DEC   3
++
++#define DMCNT_DTE       (1u << 0)   /* transfer enable */
++#define DMREQ_SWREQ     (1u << 0)   /* software request */
++#define DMREQ_CLRS      (1u << 4)
++#define DMSTS_ACT       (1u << 7)
++#define DMSTS_DTIF      (1u << 1)   /* transfer-end interrupt flag */
++
++static unsigned dmac_unit_bytes(uint16_t dmtmd)
++{
++    switch (DMTMD_SZ(dmtmd)) {
++    case 0:
++        return 1;
++    case 1:
++        return 2;
++    default: return 4;
 +    }
-+    for (i = a->drd + a->rnum; i >= a->drd; i--) {
-+        TCGv_i32 hi = tcg_temp_new_i32();
-+        TCGv_i32 lo = tcg_temp_new_i32();
-+        tcg_gen_extr_i64_i32(lo, hi, cpu_dregs[i & (NUM_DREGS - 1)]);
-+        tcg_gen_subi_i32(cpu_sp, cpu_sp, 4);
-+        rx_gen_st(ctx, MO_32, hi, cpu_sp);
-+        tcg_gen_subi_i32(cpu_sp, cpu_sp, 4);
-+        rx_gen_st(ctx, MO_32, lo, cpu_sp);
-+    }
-+    return true;
 +}
 +
-+static bool trans_DPOPM(DisasContext *ctx, arg_DPOPM *a)
++static void dmac_step_addr(uint32_t *addr, unsigned mode, unsigned bytes)
 +{
-+    int i;
-+
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++    if (mode == ADDR_MODE_INC) {
++        *addr += bytes;
++    } else if (mode == ADDR_MODE_DEC) {
++        *addr -= bytes;
 +    }
-+    for (i = a->drd; i <= a->drd + a->rnum; i++) {
-+        TCGv_i64 dr = tcg_temp_new_i64();
-+        TCGv_i32 hi = tcg_temp_new_i32();
-+        TCGv_i32 lo = tcg_temp_new_i32();
-+        rx_gen_ld(ctx, MO_32, lo, cpu_sp);
-+        tcg_gen_addi_i32(cpu_sp, cpu_sp, 4);
-+        rx_gen_ld(ctx, MO_32, hi, cpu_sp);
-+        tcg_gen_addi_i32(cpu_sp, cpu_sp, 4);
-+        tcg_gen_concat_i32_i64(dr, lo, hi);
-+        tcg_gen_mov_i64(cpu_dregs[i & (NUM_DREGS - 1)], dr);
-+    }
-+    return true;
 +}
 +
-+/* dpushm.l DCRn-DCRm / dpopm.l DCRn-DCRm (DPFPU control registers) */
-+static bool trans_DPUSHM_l(DisasContext *ctx, arg_DPUSHM_l *a)
++/* Perform a software-requested transfer on a channel. */
++static void dmac_do_transfer(RenesasRxDmacState *s, int n)
 +{
-+    int i;
++    RxDmacChannel *c = &s->ch[n];
++    unsigned bytes = dmac_unit_bytes(c->dmtmd);
++    unsigned smode = DMAMD_SM(c->dmamd);
++    unsigned dmode = DMAMD_DM(c->dmamd);
++    uint16_t count = c->dmcra & 0xffff;
++    uint8_t buf[4];
 +
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++    if (!(s->dmast & 1) || !(c->dmcnt & DMCNT_DTE)) {
++        return;
 +    }
-+    for (i = a->dcrd + a->rnum; i >= a->dcrd; i--) {
-+        tcg_gen_subi_i32(cpu_sp, cpu_sp, 4);
-+        rx_gen_st(ctx, MO_32, cpu_dcregs[i & (NUM_DCREGS - 1)], cpu_sp);
++
++    /* A zero count means 65536 transfers on hardware; clamp it for QEMU. */
++    if (count == 0) {
++        count = 1;
 +    }
-+    return true;
++
++    while (count--) {
++        address_space_read(s->as, c->dmsar, MEMTXATTRS_UNSPECIFIED, buf, bytes);
++        address_space_write(s->as, c->dmdar, MEMTXATTRS_UNSPECIFIED,
++                            buf, bytes);
++        dmac_step_addr(&c->dmsar, smode, bytes);
++        dmac_step_addr(&c->dmdar, dmode, bytes);
++    }
++
++    /* Transfer complete: clear enable, flag status, raise interrupt. */
++    c->dmcra &= 0xffff0000;
++    c->dmcnt &= ~DMCNT_DTE;
++    c->dmsts = (c->dmsts & ~DMSTS_ACT) | DMSTS_DTIF;
++    if (c->dmint & 1) {
++        qemu_irq_pulse(s->irq[n]);
++    }
 +}
 +
-+static bool trans_DPOPM_l(DisasContext *ctx, arg_DPOPM_l *a)
++static uint64_t dmac_read(void *opaque, hwaddr offset, unsigned size)
 +{
-+    int i;
++    RenesasRxDmacState *s = opaque;
++    RxDmacChannel *c;
++    unsigned reg;
 +
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++    if (offset == R_DMAST) {
++        return s->dmast;
 +    }
-+    for (i = a->dcrd; i <= a->dcrd + a->rnum; i++) {
-+        rx_gen_ld(ctx, MO_32, cpu_dcregs[i & (NUM_DCREGS - 1)], cpu_sp);
-+        tcg_gen_addi_i32(cpu_sp, cpu_sp, 4);
++    if (offset >= RX_DMAC_NR_CH * RX_DMAC_CH_SIZE) {
++        return 0;
 +    }
-+    return true;
++
++    c = &s->ch[offset / RX_DMAC_CH_SIZE];
++    reg = offset % RX_DMAC_CH_SIZE;
++    switch (reg) {
++    case R_DMSAR:
++        return c->dmsar;
++    case R_DMDAR:
++        return c->dmdar;
++    case R_DMCRA:
++        return c->dmcra;
++    case R_DMCRB:
++        return c->dmcrb;
++    case R_DMTMD:
++        return c->dmtmd;
++    case R_DMINT:
++        return c->dmint;
++    case R_DMAMD:
++        return c->dmamd;
++    case R_DMOFR:
++        return c->dmofr;
++    case R_DMCNT:
++        return c->dmcnt;
++    case R_DMREQ:
++        return c->dmreq;
++    case R_DMSTS:
++        return c->dmsts;
++    default:      return 0;
++    }
 +}
 +
- static void rx_bsetm(DisasContext *ctx, TCGv_i32 mem, TCGv_i32 mask)
- {
-     TCGv_i32 val;
++static void dmac_write(void *opaque, hwaddr offset, uint64_t value,
++                       unsigned size)
++{
++    RenesasRxDmacState *s = opaque;
++    RxDmacChannel *c;
++    unsigned reg, n;
++
++    if (offset == R_DMAST) {
++        s->dmast = value;
++        return;
++    }
++    if (offset >= RX_DMAC_NR_CH * RX_DMAC_CH_SIZE) {
++        qemu_log_mask(LOG_UNIMP, "renesas-rx-dmac: write unimplemented 0x%"
++                      HWADDR_PRIx "\n", offset);
++        return;
++    }
++
++    n = offset / RX_DMAC_CH_SIZE;
++    c = &s->ch[n];
++    reg = offset % RX_DMAC_CH_SIZE;
++    switch (reg) {
++    case R_DMSAR:
++        c->dmsar = value;
++        break;
++    case R_DMDAR:
++        c->dmdar = value;
++        break;
++    case R_DMCRA:
++        c->dmcra = value;
++        break;
++    case R_DMCRB:
++        c->dmcrb = value;
++        break;
++    case R_DMTMD:
++        c->dmtmd = value;
++        break;
++    case R_DMINT:
++        c->dmint = value;
++        break;
++    case R_DMAMD:
++        c->dmamd = value;
++        break;
++    case R_DMOFR:
++        c->dmofr = value;
++        break;
++    case R_DMCNT:
++        c->dmcnt = value;
++        break;
++    case R_DMREQ:
++        c->dmreq = value;
++        if (value & DMREQ_SWREQ) {
++            dmac_do_transfer(s, n);
++            c->dmreq &= ~DMREQ_SWREQ;
++        }
++        break;
++    case R_DMSTS:
++        /* DTIF/ACT are status flags cleared by writing the register. */
++        c->dmsts = value;
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "renesas-rx-dmac: write unimplemented 0x%"
++                      HWADDR_PRIx "\n", offset);
++        break;
++    }
++}
++
++static const MemoryRegionOps dmac_ops = {
++    .read = dmac_read,
++    .write = dmac_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl = { .min_access_size = 1, .max_access_size = 4 },
++    .valid = { .min_access_size = 1, .max_access_size = 4 },
++};
++
++static void rx_dmac_reset(DeviceState *dev)
++{
++    RenesasRxDmacState *s = RENESAS_RX_DMAC(dev);
++
++    memset(s->ch, 0, sizeof(s->ch));
++    s->dmast = 0;
++}
++
++static void rx_dmac_realize(DeviceState *dev, Error **errp)
++{
++    RenesasRxDmacState *s = RENESAS_RX_DMAC(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    if (s->dma_mr == NULL) {
++        s->dma_mr = get_system_memory();
++    }
++    s->as = g_new0(AddressSpace, 1);
++    address_space_init(s->as, s->dma_mr, "renesas-rx-dmac");
++
++    memory_region_init_io(&s->mr, OBJECT(s), &dmac_ops, s,
++                          "renesas-rx-dmac", RX_DMAC_REGS_SIZE);
++    sysbus_init_mmio(sbd, &s->mr);
++    for (int i = 0; i < RX_DMAC_NR_CH; i++) {
++        sysbus_init_irq(sbd, &s->irq[i]);
++    }
++}
++
++static const Property rx_dmac_properties[] = {
++    DEFINE_PROP_LINK("dma-memory", RenesasRxDmacState, dma_mr,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
++};
++
++static const VMStateDescription vmstate_rx_dmac_ch = {
++    .name = "renesas-rx-dmac-channel",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(dmsar, RxDmacChannel),
++        VMSTATE_UINT32(dmdar, RxDmacChannel),
++        VMSTATE_UINT32(dmcra, RxDmacChannel),
++        VMSTATE_UINT16(dmcrb, RxDmacChannel),
++        VMSTATE_UINT16(dmtmd, RxDmacChannel),
++        VMSTATE_UINT8(dmint, RxDmacChannel),
++        VMSTATE_UINT16(dmamd, RxDmacChannel),
++        VMSTATE_UINT32(dmofr, RxDmacChannel),
++        VMSTATE_UINT8(dmcnt, RxDmacChannel),
++        VMSTATE_UINT8(dmreq, RxDmacChannel),
++        VMSTATE_UINT8(dmsts, RxDmacChannel),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const VMStateDescription vmstate_rx_dmac = {
++    .name = "renesas-rx-dmac",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_STRUCT_ARRAY(ch, RenesasRxDmacState, RX_DMAC_NR_CH, 1,
++                             vmstate_rx_dmac_ch, RxDmacChannel),
++        VMSTATE_UINT8(dmast, RenesasRxDmacState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void rx_dmac_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = rx_dmac_realize;
++    dc->vmsd = &vmstate_rx_dmac;
++    device_class_set_props(dc, rx_dmac_properties);
++    device_class_set_legacy_reset(dc, rx_dmac_reset);
++}
++
++static const TypeInfo rx_dmac_info = {
++    .name = TYPE_RENESAS_RX_DMAC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RenesasRxDmacState),
++    .class_init = rx_dmac_class_init,
++};
++
++static void rx_dmac_register_types(void)
++{
++    type_register_static(&rx_dmac_info);
++}
++
++type_init(rx_dmac_register_types)
+diff --git a/include/hw/dma/renesas_rx_dmac.h b/include/hw/dma/renesas_rx_dmac.h
+new file mode 100644
+index 0000000000..47242a31b6
+--- /dev/null
++++ b/include/hw/dma/renesas_rx_dmac.h
+@@ -0,0 +1,57 @@
++/*
++ * Renesas RX DMA Controller (DMAC) and Data Transfer Controller (DTC)
++ *
++ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
++ *            (Rev.1.00 R01UH0590EJ0100), sections 17 (DMAC) and 18 (DTC)
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ */
++
++#ifndef HW_DMA_RENESAS_RX_DMAC_H
++#define HW_DMA_RENESAS_RX_DMAC_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_RENESAS_RX_DMAC "renesas-rx-dmac"
++typedef struct RenesasRxDmacState RenesasRxDmacState;
++DECLARE_INSTANCE_CHECKER(RenesasRxDmacState, RENESAS_RX_DMAC,
++                         TYPE_RENESAS_RX_DMAC)
++
++#define RX_DMAC_NR_CH       8
++#define RX_DMAC_CH_SIZE     0x40        /* per-channel register spacing  */
++#define RX_DMAC_REGS_SIZE   0x300       /* channels + common registers   */
++
++typedef struct RxDmacChannel {
++    uint32_t dmsar;     /* source address                       */
++    uint32_t dmdar;     /* destination address                  */
++    uint32_t dmcra;     /* transfer count (A: lower, B: upper)  */
++    uint16_t dmcrb;     /* block transfer count                 */
++    uint16_t dmtmd;     /* transfer mode                        */
++    uint8_t  dmint;     /* interrupt setting                    */
++    uint16_t dmamd;     /* address mode                         */
++    uint32_t dmofr;     /* offset                               */
++    uint8_t  dmcnt;     /* transfer enable                      */
++    uint8_t  dmreq;     /* software/refresh request             */
++    uint8_t  dmsts;     /* status                               */
++} RxDmacChannel;
++
++struct RenesasRxDmacState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++
++    MemoryRegion mr;
++    AddressSpace *as;
++    MemoryRegion *dma_mr;
++
++    RxDmacChannel ch[RX_DMAC_NR_CH];
++    uint8_t dmast;      /* module activation                    */
++
++    qemu_irq irq[RX_DMAC_NR_CH];
++};
++
++#endif /* HW_DMA_RENESAS_RX_DMAC_H */
 
 -- 
 2.53.0

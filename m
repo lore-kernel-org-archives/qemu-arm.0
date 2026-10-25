@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EEDF606A31A
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:34:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E00A606A31B
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:34:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL26f-0005a0-7h; Sun, 25 Oct 2026 13:34:05 -0400
+	id 1xL266-0003Q7-5e; Sun, 25 Oct 2026 13:33:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24s-00020U-26; Sun, 25 Oct 2026 13:32:24 -0400
+ id 1xL24l-0001wG-1c; Sun, 25 Oct 2026 13:32:16 -0400
 Received: from www675.your-server.de ([85.10.213.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24p-0007Ms-CT; Sun, 25 Oct 2026 13:32:13 -0400
+ id 1xL24g-0007MI-GB; Sun, 25 Oct 2026 13:32:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=GxJrCy/LdeDAONZG12nA19YVEW5dzWPG1qWZXEC0Bn0=; b=CAbFIGWLim+3n5Gs+WvhNEaxBK
- 8LztGE2K5MjlDTDwShWlASsJ0sKhSpWHIQYXqr4KHfH3k4bb94xtBunSCKxnkOgWQmEO+qu5tJ+t9
- mstGX5PvYyWODc44NRG7DbooX3jdcDlvBpVugPmUALK/1p8eZkntvnTLWKA7S6EWIa71+j7O0IIp5
- A7TjTxIZPzDMkStnzFpXVWhHLixczQqEhlh6+xaWVYQk25efvrFj945yVQed3MZtWw1kWd5ONOlWP
- aitrDN0rHsH1tWobf/yvCW0jCpXTgckv73mvj1tig/a8Cq5k3Y7t0pcBMnN1+vkNn+Bb+fREJuMej
- lkYtf2HA==;
+ bh=T3W3eyh7wv1wXXkyqKZLn7E3aZ05y3s9/HE+gfgltsc=; b=cWQAhgYy4RIYxZfl+chvIInPuf
+ /yLfmwtezRZK2gqK2bTKuMAnKTzmxSzz2JqDeZQRCvR7rGeRqCCB+/bTcfk4RtQVG7KTfacgZ6zMq
+ mzvDRacIIABeOMcvrVJYlbBYi5pNeTCZ15ipzhPzKBMjS0KvGt3ucA9k6p9WoKPwoA539wcyjzeoj
+ Ld9C4Jf/Ln/XkHx2AxMEcg4Vt5gKRqM0PSa6KbgN9M0FlitJ4PuHfNTqFD9gI0SaFSmhKGp4mV69Z
+ GKAvEXlipHqd416ZnDC/pI0Uj0wptWLMnC5tdK2vIeDkFNtLeQdKxfWnUkZs7t6G+zg6jfPNLUfgF
+ KLHhOoqw==;
 Received: from sslproxy01.your-server.de ([78.46.139.224])
  by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1gP-00097n-1w; Sun, 25 Oct 2026 18:06:57 +0100
+ id 1xL1gP-00097a-10; Sun, 25 Oct 2026 18:06:57 +0100
 Received: from localhost ([127.0.0.1])
  by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vw-000OzG-2W; Sun, 25 Oct 2026 17:56:08 +0100
+ id 1xL1Vw-000OzG-0v; Sun, 25 Oct 2026 17:56:07 +0100
 From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:39 +0100
-Subject: [PATCH v2 23/31] hw/adc: add Renesas RX S12AD
+Date: Sun, 25 Oct 2026 17:55:32 +0100
+Subject: [PATCH v2 16/31] target/rx: add RXv3 register bank SAVE and RSTR
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20261025-umar-rx-series-v2-23-9e846577cad0@sayyadumar.com>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261025-umar-rx-series-v2-16-9e846577cad0@sayyadumar.com>
 References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 To: qemu-devel@nongnu.org
@@ -51,11 +51,11 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=14830;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=8538;
  i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=mXNG5bfdB0ucEzpAoK3TRQluqD0DgUtKo7c7wbd5deY=;
- b=om/kPpwZRbotmeMwu/aWRtZhewl2l17bNgM9f9ddt9WxBiZQbzv2Zhy+a+HQFkVhY6bETpYzD
- Yh0EUoaUZVsCosecIB1Fa3sOoSsea5DsFGb4jt2dAGDCYIQUzpjTFk2
+ bh=3Z7ShaAclJ+W8SCa92HjjjVPVQRdj0UxkSaTrwM5z4c=;
+ b=qp8Ck9MKdf7nD9vP/AE88YgZhSLVLCJ1mUoA27xdOqukD+I4s2dD57hsjH8HadLuYuPORtKi5
+ 0PII+GNhPJRAYP1pnwj8T/LRNCnNjivVeOczHciuko1k+8P1pqUvtz7
 X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
  pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
 X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
@@ -81,467 +81,273 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
 	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the 12-bit successive approximation A/D converter, Section 40 of
-the RX65N hardware manual.
+SAVE copies R1-R15, the USP, the FPSW and the accumulator into a save
+register bank and RSTR copies them back; R0 is excluded because the
+stack pointer is not banked. The banks are internal CPU state that
+only these two instructions can reach, so no memory traffic is
+involved. How many banks exist is implementation defined and comes
+from RXCPUClass::num_save_banks (16 on the RX72M).
 
 Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
 ---
- MAINTAINERS                            |   2 +
- configs/devices/rx-softmmu/default.mak |   1 +
- hw/adc/Kconfig                         |   3 +
- hw/adc/meson.build                     |   1 +
- hw/adc/renesas_s12ad.c                 | 324 +++++++++++++++++++++++++++++++++
- include/hw/adc/renesas_s12ad.h         |  61 +++++++
- 6 files changed, 392 insertions(+)
+ target/rx/cpu.h        | 24 ++++++++++++++++++++
+ target/rx/disas.c      | 24 ++++++++++++++++++++
+ target/rx/helper.h     |  3 +++
+ target/rx/insns.decode | 10 +++++++++
+ target/rx/op_helper.c  | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ target/rx/translate.c  | 42 +++++++++++++++++++++++++++++++++++
+ 6 files changed, 162 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e747530308..8f552c69cc 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3081,12 +3081,14 @@ F: include/hw/timer/renesas_*.h
- Renesas RX peripherals
- R: Yoshinori Sato <yoshinori.sato@nifty.com>
- S: Orphan
-+F: hw/adc/renesas_s12ad.c
- F: hw/dma/renesas_rx_*.c
- F: hw/dma/renesas_rx_dtc.c
- F: hw/gpio/renesas_rx_gpio.c
- F: hw/intc/rx_icu.c
- F: hw/rx/
- F: hw/timer/renesas_mtu3.c
-+F: include/hw/adc/renesas_s12ad.h
- F: include/hw/dma/renesas_rx_*.h
- F: include/hw/dma/renesas_rx_dtc.h
- F: include/hw/gpio/renesas_rx_gpio.h
-diff --git a/configs/devices/rx-softmmu/default.mak b/configs/devices/rx-softmmu/default.mak
-index 9e0e1ef31d..59f124f0d3 100644
---- a/configs/devices/rx-softmmu/default.mak
-+++ b/configs/devices/rx-softmmu/default.mak
-@@ -6,3 +6,4 @@ CONFIG_RENESAS_MTU3=y
- CONFIG_RENESAS_RX_GPIO=y
- CONFIG_RENESAS_RX_DMAC=y
- CONFIG_RENESAS_RX_DTC=y
-+CONFIG_RENESAS_S12AD=y
-diff --git a/hw/adc/Kconfig b/hw/adc/Kconfig
-index 25d2229fb8..cfe2c48262 100644
---- a/hw/adc/Kconfig
-+++ b/hw/adc/Kconfig
-@@ -1,2 +1,5 @@
- config STM32F2XX_ADC
-     bool
-+
-+config RENESAS_S12AD
-+    bool
-diff --git a/hw/adc/meson.build b/hw/adc/meson.build
-index 7f7acc1619..446cd3a3f0 100644
---- a/hw/adc/meson.build
-+++ b/hw/adc/meson.build
-@@ -2,3 +2,4 @@ system_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
- system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_adc.c'))
- system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
- system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq-xadc.c'))
-+system_ss.add(when: 'CONFIG_RENESAS_S12AD', if_true: files('renesas_s12ad.c'))
-diff --git a/hw/adc/renesas_s12ad.c b/hw/adc/renesas_s12ad.c
-new file mode 100644
-index 0000000000..e01d9ececd
---- /dev/null
-+++ b/hw/adc/renesas_s12ad.c
-@@ -0,0 +1,324 @@
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 4c55b0bd7d..0d2ebe1bda 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -116,6 +116,15 @@ enum {
+     NUM_DREGS = 16,
+     /* RXv3 DPFPU control registers: DPSW, DCMR, DECNT, DEPC. */
+     NUM_DCREGS = 4,
++    /*
++     * RXv3 register bank save function. The banks are internal CPU state
++     * reachable only through the SAVE and RSTR instructions, so no memory
++     * layout is involved. How many banks exist is implementation defined,
++     * so the per-model count lives in RXCPUClass::num_save_banks and this
++     * is only the storage ceiling. RX72M/RX72N/RX72T provide 16, selected
++     * by bank numbers 0-15.
++     */
++    RX_MAX_SAVE_BANKS = 16,
+ };
+ 
+ #define RX_EXCP_TRAP_COUNT          0x100
+@@ -165,6 +174,18 @@ typedef enum RXISAVersion {
+     RX_ISA_V3 = 3,
+ } RXISAVersion;
+ 
 +/*
-+ * Renesas RX65N 12-bit Successive Approximation A/D Converter (S12AD)
-+ *
-+ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
-+ *            (Rev.1.00 R01UH0590EJ0100), Section 40
-+ *
-+ * Copyright (c) 2026 Umar, Sayyad Mahammad
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
++ * One save register bank, written by SAVE and read back by RSTR. A bank
++ * holds R1-R15 (R0/SP is excluded), the USP, the FPSW and the accumulators.
++ * QEMU models a single accumulator, so only ACC0 is covered here.
 + */
++typedef struct RXSaveBank {
++    uint32_t regs[NUM_REGS];    /* [0] unused: R0 is not banked */
++    uint32_t usp;
++    uint32_t fpsw;
++    uint64_t acc;
++} RXSaveBank;
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/core/irq.h"
-+#include "hw/core/registerfields.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/adc/renesas_s12ad.h"
-+#include "migration/vmstate.h"
+ typedef struct CPUArchState {
+     /* CPU registers */
+     uint32_t regs[NUM_REGS];    /* general registers */
+@@ -191,6 +212,9 @@ typedef struct CPUArchState {
+     uint64_t dr[NUM_DREGS];     /* DR0-DR15 */
+     uint32_t dcr[NUM_DCREGS];   /* DPSW, DCMR, DECNT, DEPC */
+ 
++    /* RXv3 register bank save function (SAVE/RSTR) */
++    RXSaveBank bank[RX_MAX_SAVE_BANKS];
 +
-+/*
-+ * Register offsets from device base (0x00089000).
-+ * Reference: RX65N Group Hardware Manual Table 40.1
-+ */
-+REG16(ADCSR,   0x00)
-+  FIELD(ADCSR, DBLANS,  0, 5)   /* double trigger channel */
-+  FIELD(ADCSR, GBADIE,  6, 1)   /* group B scan end interrupt enable */
-+  FIELD(ADCSR, DBLE,    7, 1)   /* double trigger enable */
-+  FIELD(ADCSR, EXTRG,   8, 1)   /* trigger select (0=sync, 1=async) */
-+  FIELD(ADCSR, TRGE,    9, 1)   /* trigger start enable */
-+  FIELD(ADCSR, ADHSC,  10, 1)   /* high-speed conversion */
-+  FIELD(ADCSR, ADIE,   12, 1)   /* group A end interrupt enable */
-+  FIELD(ADCSR, ADCS,   13, 2)   /* scan mode */
-+  FIELD(ADCSR, ADST,   15, 1)   /* start conversion (W1 to start, hw clears) */
-+
-+REG16(ADANSA0, 0x04)   /* channel select 0 (AN000-AN015) */
-+REG16(ADANSA1, 0x06)   /* channel select 1 (AN016-AN020) */
-+REG16(ADADS0,  0x08)   /* average enable 0 */
-+REG16(ADADS1,  0x0A)   /* average enable 1 */
-+REG8(ADADC,    0x0C)   /* average count */
-+REG16(ADCER,   0x0E)   /* control extended */
-+REG16(ADSTRGR, 0x10)   /* start trigger select */
-+REG16(ADEXICR, 0x12)   /* extended input */
-+REG16(ADANSB0, 0x14)   /* group B channel select 0 */
-+REG16(ADANSB1, 0x16)   /* group B channel select 1 */
-+REG16(ADDBLDR, 0x18)   /* double-buffer result */
-+REG16(ADRD,    0x1E)   /* temperature sensor / internal Vref result */
-+/* ADDR0–ADDR15 at offsets 0x20–0x3E (16-bit each) */
-+#define A_ADDR_BASE   0x20
-+#define A_ADDR_END    0x3E   /* inclusive */
-+#define A_ADSAMPR     0x63
-+#define A_ADSAM       0x6e
-+
-+/*
-+ * Simulated conversion time: ~1 µs (typical for 12-bit at 60 MHz PCLK).
-+ * Real hardware takes ~1–17 µs depending on mode and clock.
-+ */
-+#define CONV_TIME_NS   1000
-+
-+/* Fixed mid-scale return value for all channels: 0x0800 = 2048 (12-bit) */
-+#define DUMMY_RESULT   0x0800
-+
-+static void s12ad_conv_done(void *opaque)
+     /* Fields up to this point are cleared by a CPU reset */
+     struct {} end_reset_fields;
+ 
+diff --git a/target/rx/disas.c b/target/rx/disas.c
+index 7d6cad753e..46148c4087 100644
+--- a/target/rx/disas.c
++++ b/target/rx/disas.c
+@@ -1495,6 +1495,30 @@ static bool trans_BFMOVZ(DisasContext *ctx, arg_BFMOVZ *a)
+     return true;
+ }
+ 
++static bool trans_SAVE_r(DisasContext *ctx, arg_SAVE_r *a)
 +{
-+    RX65NS12ADState *s = opaque;
-+
-+    /* Clear ADST, set results */
-+    s->adcsr = FIELD_DP16(s->adcsr, ADCSR, ADST, 0);
-+
-+    /* Fill result registers with mid-scale dummy value */
-+    for (int i = 0; i < S12AD_NR_CHANNELS; i++) {
-+        if (s->adansa0 & (1u << i)) {
-+            s->addr[i] = DUMMY_RESULT << 4; /* left-justified by default */
-+        }
-+    }
-+    s->adrd = DUMMY_RESULT << 4;
-+
-+    /* Fire end-of-scan interrupt if enabled */
-+    if (FIELD_EX16(s->adcsr, ADCSR, ADIE)) {
-+        qemu_irq_pulse(s->irq[S12AD_IRQ_S12ADI]);
-+    }
-+    if (FIELD_EX16(s->adcsr, ADCSR, GBADIE)) {
-+        qemu_irq_pulse(s->irq[S12AD_IRQ_GBADI]);
-+    }
++    prt("save\tr%d", a->rs);
++    return true;
 +}
 +
-+static uint64_t s12ad_read(void *opaque, hwaddr addr, unsigned size)
++static bool trans_SAVE_i(DisasContext *ctx, arg_SAVE_i *a)
 +{
-+    RX65NS12ADState *s = opaque;
-+
-+    if (addr >= 0x70 && addr + size <= 0xf0) {
-+        uint8_t *p = &s->ext_regs[addr - 0x70];
-+
-+        return size == 1 ? *p : lduw_le_p(p);
-+    }
-+
-+    if (addr >= A_ADDR_BASE && addr <= A_ADDR_END) {
-+        int ch = (addr - A_ADDR_BASE) / 2;
-+        return (ch < S12AD_NR_CHANNELS) ? s->addr[ch] : UINT64_MAX;
-+    }
-+
-+    switch (addr) {
-+    case A_ADCSR:
-+        return s->adcsr;
-+    case A_ADANSA0:
-+        return s->adansa0;
-+    case A_ADANSA1:
-+        return s->adansa1;
-+    case A_ADADS0:
-+        return s->adads0;
-+    case A_ADADS1:
-+        return s->adads1;
-+    case A_ADADC:
-+        return s->adadc;
-+    case A_ADCER:
-+        return s->adcer;
-+    case A_ADSTRGR:
-+        return s->adstrgr;
-+    case A_ADEXICR:
-+        return s->adexicr;
-+    case A_ADANSB0:
-+        return s->adansb0;
-+    case A_ADANSB1:
-+        return s->adansb1;
-+    case A_ADDBLDR:
-+        return 0;
-+    case 0x1a:  /* ADTSDR */
-+    case 0x1c:  /* ADOCDR */
-+        return DUMMY_RESULT << 4;
-+    case A_ADRD:
-+        return s->adrd;
-+    case A_ADSAMPR:
-+        return s->adsampr == 3 ? 1 : 0;
-+    case A_ADSAM:
-+        return s->adsampr == 3 ? s->adsam : 0;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "renesas_s12ad: read 0x%" HWADDR_PRIX
-+                      " not implemented\n",
-+                      addr);
-+        return UINT64_MAX;
-+    }
++    prt("save\t#%d", a->imm);
++    return true;
 +}
 +
-+static void s12ad_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
++static bool trans_RSTR_r(DisasContext *ctx, arg_RSTR_r *a)
 +{
-+    RX65NS12ADState *s = opaque;
++    prt("rstr\tr%d", a->rs);
++    return true;
++}
 +
-+    if (addr >= 0x70 && addr + size <= 0xf0) {
-+        uint8_t *p = &s->ext_regs[addr - 0x70];
++static bool trans_RSTR_i(DisasContext *ctx, arg_RSTR_i *a)
++{
++    prt("rstr\t#%d", a->imm);
++    return true;
++}
 +
-+        if (size == 1) {
-+            *p = val;
-+        } else {
-+            stw_le_p(p, val);
-+        }
+ #define BOP_IM(name, reg)                                       \
+     do {                                                        \
+         char dsp[8];                                            \
+diff --git a/target/rx/helper.h b/target/rx/helper.h
+index 0f05d38182..6c3b81b7ba 100644
+--- a/target/rx/helper.h
++++ b/target/rx/helper.h
+@@ -30,6 +30,9 @@ DEF_HELPER_2(itod, f64, env, i32)
+ DEF_HELPER_2(utod, f64, env, i32)
+ DEF_HELPER_2(ftod, f64, env, f32)
+ DEF_HELPER_3(mvtdc, void, env, i32, i32)
++/* RXv3 register bank save function */
++DEF_HELPER_2(save, void, env, i32)
++DEF_HELPER_2(rstr, void, env, i32)
+ DEF_HELPER_2(set_fpsw, void, env, i32)
+ DEF_HELPER_2(racw, void, env, i32)
+ DEF_HELPER_2(set_psw_rte, void, env, i32)
+diff --git a/target/rx/insns.decode b/target/rx/insns.decode
+index 55c7e3994d..450949a4bc 100644
+--- a/target/rx/insns.decode
++++ b/target/rx/insns.decode
+@@ -46,6 +46,9 @@
+ &dmovld		rs ld
+ # RXv3 bit field move
+ &bfm		rd rs
++# RXv3 register bank save/restore
++&svr		rs
++&svi		imm
+ ########
+ %b1_bdsp	24:3 !function=bdsp_s
+ 
+@@ -720,3 +723,10 @@ DMOV_mld	1111 1100 1100 10 ld:2 rs:4 1000		&dmovld
+ # RXv3: bit field move. The 16-bit field descriptor follows the opcode.
+ BFMOVZ		1111 1100 0101 1010 rs:4 rd:4			&bfm
+ BFMOV		1111 1100 0101 1110 rs:4 rd:4			&bfm
++
++########
++# RXv3: register bank save and restore
++SAVE_r		1111 1101 0111 0110 1100 rs:4 0000 0000		&svr
++RSTR_r		1111 1101 0111 0110 1101 rs:4 0000 0000		&svr
++SAVE_i		1111 1101 0111 0110 1110 0000 imm:8		&svi
++RSTR_i		1111 1101 0111 0110 1111 0000 imm:8		&svi
+diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
+index 91af7c6685..5694c97286 100644
+--- a/target/rx/op_helper.c
++++ b/target/rx/op_helper.c
+@@ -121,6 +121,65 @@ static void update_fpsw(CPURXState *env, float32 ret, uintptr_t retaddr)
+     }
+ }
+ 
++/*
++ * RXv3 register bank save function. SAVE copies R1-R15, the USP, the FPSW
++ * and the accumulator into the selected save register bank; RSTR copies them
++ * back. R0 is deliberately excluded: the stack pointer is not banked.
++ *
++ * The banks are internal CPU state that only these two instructions can
++ * reach, so there is no memory layout to model. How many banks a part
++ * provides is implementation defined and comes from the CPU model.
++ */
++static RXSaveBank *rx_save_bank(CPURXState *env, uint32_t bank,
++                                const char *insn)
++{
++    uint32_t n = RX_CPU_GET_CLASS(env_cpu(env))->num_save_banks;
++
++    if (bank >= n) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "rx: %s with out of range bank %u (this CPU has %u)\n",
++                      insn, bank, n);
++        return NULL;
++    }
++    return &env->bank[bank];
++}
++
++void helper_save(CPURXState *env, uint32_t bank)
++{
++    RXSaveBank *b = rx_save_bank(env, bank, "save");
++    int i;
++
++    if (!b) {
 +        return;
 +    }
-+
-+    switch (addr) {
-+    case A_ADCSR:
-+        s->adcsr = val & ~FIELD_DP16(0, ADCSR, ADST, 1); /* keep ADST for now */
-+        s->adcsr |= (val & FIELD_DP16(0, ADCSR, ADST, 1));
-+        if (FIELD_EX16(val, ADCSR, ADST)) {
-+            /* Software-triggered start: schedule conversion completion */
-+            timer_mod(&s->conv_timer,
-+                      qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + CONV_TIME_NS);
-+        }
-+        break;
-+    case A_ADANSA0:
-+        s->adansa0  = val;
-+        break;
-+    case A_ADANSA1:
-+        s->adansa1  = val;
-+        break;
-+    case A_ADADS0:
-+        s->adads0   = val;
-+        break;
-+    case A_ADADS1:
-+        s->adads1   = val;
-+        break;
-+    case A_ADADC:
-+        s->adadc    = val;
-+        break;
-+    case A_ADCER:
-+        s->adcer    = val;
-+        break;
-+    case A_ADSTRGR:
-+        s->adstrgr  = val;
-+        break;
-+    case A_ADEXICR:
-+        s->adexicr  = val;
-+        break;
-+    case A_ADANSB0:
-+        s->adansb0  = val;
-+        break;
-+    case A_ADANSB1:
-+        s->adansb1  = val;
-+        break;
-+    case A_ADSAMPR:
-+        s->adsampr = val & 0x3;
-+        break;
-+    case A_ADSAM:
-+        if (s->adsampr == 3) {
-+            s->adsam = val & 0x20;
-+        }
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "renesas_s12ad: write 0x%" HWADDR_PRIX
-+                      " not implemented\n",
-+                      addr);
-+        break;
++    for (i = 1; i < NUM_REGS; i++) {
++        b->regs[i] = env->regs[i];
 +    }
++    b->usp = env->psw_u ? env->regs[0] : env->usp;
++    b->fpsw = env->fpsw;
++    b->acc = env->acc;
 +}
 +
-+static const MemoryRegionOps s12ad_ops = {
-+    .read  = s12ad_read,
-+    .write = s12ad_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 1,
-+        .max_access_size = 2,
-+    },
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 2,
-+    },
-+};
-+
-+static void s12ad_reset(DeviceState *dev)
++void helper_rstr(CPURXState *env, uint32_t bank)
 +{
-+    RX65NS12ADState *s = RENESAS_S12AD(dev);
++    RXSaveBank *b = rx_save_bank(env, bank, "rstr");
 +    int i;
 +
-+    s->adcsr   = 0x0000;
-+    s->adansa0 = 0x0000;
-+    s->adansa1 = 0x0000;
-+    s->adads0  = 0x0000;
-+    s->adads1  = 0x0000;
-+    s->adadc   = 0x00;
-+    s->adcer   = 0x0000;
-+    s->adstrgr = 0x0000;
-+    s->adexicr = 0x0000;
-+    s->adansb0 = 0x0000;
-+    s->adansb1 = 0x0000;
-+    s->adrd    = 0x0000;
-+    s->adsam   = 0x0000;
-+    s->adsampr = 0x00;
-+    memset(s->ext_regs, 0, sizeof(s->ext_regs));
-+    for (i = 0; i < S12AD_NR_CHANNELS; i++) {
-+        s->addr[i] = 0x0000;
++    if (!b) {
++        return;
 +    }
-+    timer_del(&s->conv_timer);
-+}
-+
-+static void s12ad_init(Object *obj)
-+{
-+    SysBusDevice *d = SYS_BUS_DEVICE(obj);
-+    RX65NS12ADState *s = RENESAS_S12AD(obj);
-+    int i;
-+
-+    /* Includes the conversion-time registers at offsets 0x63 and 0x6e. */
-+    memory_region_init_io(&s->memory, obj, &s12ad_ops, s,
-+                          "renesas-s12ad", 0xf0);
-+    sysbus_init_mmio(d, &s->memory);
-+
-+    for (i = 0; i < S12AD_NR_IRQ; i++) {
-+        sysbus_init_irq(d, &s->irq[i]);
++    for (i = 1; i < NUM_REGS; i++) {
++        env->regs[i] = b->regs[i];
 +    }
-+    timer_init_ns(&s->conv_timer, QEMU_CLOCK_VIRTUAL, s12ad_conv_done, s);
-+}
-+
-+static const VMStateDescription vmstate_s12ad = {
-+    .name = "renesas-s12ad",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT16(adcsr,   RX65NS12ADState),
-+        VMSTATE_UINT16(adansa0, RX65NS12ADState),
-+        VMSTATE_UINT16(adansa1, RX65NS12ADState),
-+        VMSTATE_UINT16(adads0,  RX65NS12ADState),
-+        VMSTATE_UINT16(adads1,  RX65NS12ADState),
-+        VMSTATE_UINT8(adadc,    RX65NS12ADState),
-+        VMSTATE_UINT16(adcer,   RX65NS12ADState),
-+        VMSTATE_UINT16(adstrgr, RX65NS12ADState),
-+        VMSTATE_UINT16(adexicr, RX65NS12ADState),
-+        VMSTATE_UINT16(adansb0, RX65NS12ADState),
-+        VMSTATE_UINT16(adansb1, RX65NS12ADState),
-+        VMSTATE_UINT16(adrd,    RX65NS12ADState),
-+        VMSTATE_UINT16(adsam,   RX65NS12ADState),
-+        VMSTATE_UINT8(adsampr,  RX65NS12ADState),
-+        VMSTATE_UINT8_ARRAY(ext_regs, RX65NS12ADState, 0x80),
-+        VMSTATE_UINT16_ARRAY(addr, RX65NS12ADState, S12AD_NR_CHANNELS),
-+        VMSTATE_TIMER(conv_timer, RX65NS12ADState),
-+        VMSTATE_END_OF_LIST()
++    if (env->psw_u) {
++        env->regs[0] = b->usp;
++    } else {
++        env->usp = b->usp;
 +    }
-+};
-+
-+static const Property s12ad_properties[] = {
-+    DEFINE_PROP_UINT64("input-freq", RX65NS12ADState, input_freq, 0),
-+};
-+
-+static void s12ad_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_s12ad;
-+    device_class_set_legacy_reset(dc, s12ad_reset);
-+    device_class_set_props(dc, s12ad_properties);
++    env->fpsw = b->fpsw;
++    env->acc = b->acc;
 +}
 +
-+static const TypeInfo s12ad_info = {
-+    .name          = TYPE_RENESAS_S12AD,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RX65NS12ADState),
-+    .instance_init = s12ad_init,
-+    .class_init    = s12ad_class_init,
-+};
-+
-+static void s12ad_register_types(void)
-+{
-+    type_register_static(&s12ad_info);
-+}
-+
-+type_init(s12ad_register_types)
-diff --git a/include/hw/adc/renesas_s12ad.h b/include/hw/adc/renesas_s12ad.h
-new file mode 100644
-index 0000000000..2f85e0660f
---- /dev/null
-+++ b/include/hw/adc/renesas_s12ad.h
-@@ -0,0 +1,61 @@
+ void helper_set_fpsw(CPURXState *env, uint32_t val)
+ {
+     static const int roundmode[] = {
+diff --git a/target/rx/translate.c b/target/rx/translate.c
+index db037634d5..93174f5e1c 100644
+--- a/target/rx/translate.c
++++ b/target/rx/translate.c
+@@ -2501,6 +2501,48 @@ static bool trans_BFMOVZ(DisasContext *ctx, arg_BFMOVZ *a)
+     return bfmov_common(ctx, a->rd, a->rs, true);
+ }
+ 
 +/*
-+ * Renesas RX65N 12-bit Successive Approximation A/D Converter (S12AD)
-+ *
-+ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
-+ *            (Rev.1.00 R01UH0590EJ0100), Section 40
-+ *
-+ * Copyright (c) 2026 Umar, Sayyad Mahammad
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * save / rstr -- the RXv3 register bank save function. A bank holds R1-R15,
++ * the USP, the FPSW and the accumulator; the banks are internal CPU state
++ * that nothing but these two instructions can reach, so no memory traffic
++ * is involved.
 + */
++static bool trans_SAVE_i(DisasContext *ctx, arg_SAVE_i *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    gen_helper_save(tcg_env, tcg_constant_i32(a->imm));
++    return true;
++}
 +
-+#ifndef HW_ADC_RENESAS_S12AD_H
-+#define HW_ADC_RENESAS_S12AD_H
++static bool trans_SAVE_r(DisasContext *ctx, arg_SAVE_r *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    gen_helper_save(tcg_env, cpu_regs[a->rs]);
++    return true;
++}
 +
-+#include "qemu/timer.h"
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
++static bool trans_RSTR_i(DisasContext *ctx, arg_RSTR_i *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    gen_helper_rstr(tcg_env, tcg_constant_i32(a->imm));
++    return true;
++}
 +
-+#define TYPE_RENESAS_S12AD "renesas-s12ad"
-+typedef struct RX65NS12ADState RX65NS12ADState;
-+DECLARE_INSTANCE_CHECKER(RX65NS12ADState, RENESAS_S12AD, TYPE_RENESAS_S12AD)
++static bool trans_RSTR_r(DisasContext *ctx, arg_RSTR_r *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    gen_helper_rstr(tcg_env, cpu_regs[a->rs]);
++    return true;
++}
 +
-+#define S12AD_NR_CHANNELS   16  /* AN000–AN015 */
-+
-+enum {
-+    S12AD_IRQ_S12ADI = 0,  /* end of scan (group A) */
-+    S12AD_IRQ_GBADI  = 1,  /* end of scan (group B) */
-+    S12AD_NR_IRQ     = 2,
-+};
-+
-+struct RX65NS12ADState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    MemoryRegion memory;
-+    uint64_t input_freq;
-+
-+    /* Registers */
-+    uint16_t adcsr;     /* A/D Control/Status */
-+    uint16_t adansa0;   /* Channel select 0 (AN000–AN015) */
-+    uint16_t adansa1;   /* Channel select 1 (AN016–AN020) */
-+    uint16_t adads0;    /* Average enable 0 */
-+    uint16_t adads1;    /* Average enable 1 */
-+    uint8_t  adadc;     /* Average count */
-+    uint16_t adcer;     /* Control extended */
-+    uint16_t adstrgr;   /* Start trigger select */
-+    uint16_t adexicr;   /* Extended input */
-+    uint16_t adansb0;   /* Group B channel select 0 */
-+    uint16_t adansb1;   /* Group B channel select 1 */
-+    uint16_t addr[S12AD_NR_CHANNELS]; /* Result registers AN000–AN015 */
-+    uint16_t adrd;      /* Temperature sensor / internal ref result */
-+    uint16_t adsam;     /* Conversion time setting */
-+    uint8_t adsampr;    /* ADSAM write protection */
-+    uint8_t ext_regs[0x80]; /* Extended configuration, offsets 0x70-0xef */
-+
-+    qemu_irq irq[S12AD_NR_IRQ];
-+    QEMUTimer conv_timer; /* models conversion delay */
-+};
-+
-+#endif /* HW_ADC_RENESAS_S12AD_H */
+ static void rx_bsetm(DisasContext *ctx, TCGv_i32 mem, TCGv_i32 mask)
+ {
+     TCGv_i32 val;
 
 -- 
 2.53.0

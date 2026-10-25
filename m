@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2F37606A31B
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:34:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D58E0606A31A
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:34:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL26S-0004Rm-Qt; Sun, 25 Oct 2026 13:33:53 -0400
+	id 1xL26S-0004Oj-Bv; Sun, 25 Oct 2026 13:33:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24F-00011t-NF; Sun, 25 Oct 2026 13:31:40 -0400
+ id 1xL260-00030q-Ce; Sun, 25 Oct 2026 13:33:26 -0400
 Received: from www675.your-server.de ([85.10.213.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL24B-0007KH-Tz; Sun, 25 Oct 2026 13:31:34 -0400
+ id 1xL25v-0007Qc-Pu; Sun, 25 Oct 2026 13:33:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=TJhWO4twA+q0Mnq7aJRbN28RUXMesXN++2z4xQUh/gs=; b=BEFncQeW+OlvBGK47gLABhfBet
- USgQGVvgEZNWLYUXAwFgFH17D+IOPlXTPC9McqAMfDSBFtayCthgRFOJ2DY5y8Fcgkri5kNYK63oq
- JUN5ftVkll5T9RAoRT+9hO5ZOGPGonuYm6Mdw2iFm0Nz2RIKWP92/YlHDIsQEIMbiq4Qj7+A63g27
- zS5Wglxmr6kPgGF5Oaq6MZpEq/3g87YIFKXOfmKGfHpODD2v9PFZOrjTUqzX9KDvXe4BH7sYH1qZ0
- KYfVBtb7wK9oDHnKbJuinB4Kvc208l2spjzBkBnIfV86SZdDCbBz3ZLO6omMnKy7lZakPXc6duA6G
- H74TB8YQ==;
+ bh=TYuHwRg+4jL+KNsbUCXdMpd73eoVlFn45myYNRKdzkM=; b=KUb45JHX5JJkb1jOE1VodoZqtT
+ 6Th70h3wDaiLfJJ2KGQQ0y7O9zqovBS5XSuLIdq5Zs6+4HeUeRxusIVMf0CCNErpZYdsv6fslAVLM
+ hdparY/3+CCtAe9MYF4pxywd2Q7OY30c5fxNHajfzqovKP6MEI/P6Z7i//bOP80fj+B8zBmBRatI2
+ RG/MzyBiPJYhhm+b0XfxqFsad4SqOkIHBsAZ1ETWfIJ5D5weg/fvkjL+4QGVdotl2Xc7ZQO9Ush2j
+ 6BJ2Yn8KXne/qhaiq3rFQWit4Duop6wSqnfySkMYHrn6r1NrzfM39bHdx2DjzIWGSj2D8ib4uWiBc
+ YTpa4SYA==;
 Received: from sslproxy01.your-server.de ([78.46.139.224])
  by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1fb-0008yw-30; Sun, 25 Oct 2026 18:06:07 +0100
+ id 1xL1gG-00095U-19; Sun, 25 Oct 2026 18:06:48 +0100
 Received: from localhost ([127.0.0.1])
  by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vv-000OzG-33; Sun, 25 Oct 2026 17:56:07 +0100
+ id 1xL1Vx-000OzG-0M; Sun, 25 Oct 2026 17:56:08 +0100
 From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:27 +0100
-Subject: [PATCH v2 11/31] target/rx: add RXv3 DMOV half transfers
+Date: Sun, 25 Oct 2026 17:55:43 +0100
+Subject: [PATCH v2 27/31] hw/misc: add Renesas RX ROM cache control registers
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-umar-rx-series-v2-11-9e846577cad0@sayyadumar.com>
+Message-Id: <20261025-umar-rx-series-v2-27-9e846577cad0@sayyadumar.com>
 References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 To: qemu-devel@nongnu.org
@@ -51,11 +51,11 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=5611;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=7873;
  i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=sAMrIHHRa+h0HS7FS3WgGhc0E07+OCrCoDvFa2X40Eg=;
- b=q9s363Ecd6PsSg/64M+z0zheCB38xMFw4RSG6X067CitybUIB5X/SDr9S7i7kC/SsAMv4w6jb
- SoUQUp0SU/uC8oGzoxtM/zT4O4hV5RwFOG/ATJ6dA2Vv+hcVDELbsL+
+ bh=s7HjZt2h0yqG6vvYB/EirWsPYdW33BijqFrqYOrl/O4=;
+ b=faJoG3L1TYNfcLdC6Ukd/p6u9qagiQuEmiyS00WF9BDSCOozrNhzMf+CW2Ck6gApnFcfQqQjq
+ vMxBR0JEzcWDDHAOr0X0+GpbelWC0R4+FKinzSIwyspDNZANmx1yWJg
 X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
  pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
 X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
@@ -81,184 +81,252 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
 	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the DMOV.L/DMOV.D forms that move data between GPRs and the high
-or low 32-bit halves of DR registers: DMOV.L rs/DRLs,rd, DMOV.D rs,DRHd
-(which clears the low half, materialising doubles with a zero low
-word) and DMOV.L DRLs/DRHs,rd.
+Add the RX ROM cache control registers device.
 
 Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
 ---
- target/rx/disas.c      | 30 +++++++++++++++++++++
- target/rx/insns.decode | 15 +++++++++++
- target/rx/translate.c  | 73 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 118 insertions(+)
+ MAINTAINERS                            |   2 +
+ configs/devices/rx-softmmu/default.mak |   1 +
+ hw/misc/Kconfig                        |   3 +
+ hw/misc/meson.build                    |   1 +
+ hw/misc/renesas_rx_romcache.c          | 139 +++++++++++++++++++++++++++++++++
+ include/hw/misc/renesas_rx_romcache.h  |  30 +++++++
+ 6 files changed, 176 insertions(+)
 
-diff --git a/target/rx/disas.c b/target/rx/disas.c
-index 5a0d7180b5..20ef165832 100644
---- a/target/rx/disas.c
-+++ b/target/rx/disas.c
-@@ -1338,6 +1338,36 @@ static bool trans_DPOPM_l(DisasContext *ctx, arg_DPOPM_l *a)
-     return true;
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index efeb40ee01..eb45c2446e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3087,6 +3087,7 @@ F: hw/dma/renesas_rx_dtc.c
+ F: hw/gpio/renesas_rx_gpio.c
+ F: hw/intc/rx_icu.c
+ F: hw/misc/renesas_rx_*.c
++F: hw/misc/renesas_rx_romcache.c
+ F: hw/rtc/renesas_rx_rtc.c
+ F: hw/rx/
+ F: hw/ssi/renesas_rspi.c
+@@ -3097,6 +3098,7 @@ F: include/hw/dma/renesas_rx_dtc.h
+ F: include/hw/gpio/renesas_rx_gpio.h
+ F: include/hw/intc/rx_icu.h
+ F: include/hw/misc/renesas_rx_*.h
++F: include/hw/misc/renesas_rx_romcache.h
+ F: include/hw/rtc/renesas_rx_rtc.h
+ F: include/hw/rx/
+ F: include/hw/ssi/renesas_rspi.h
+diff --git a/configs/devices/rx-softmmu/default.mak b/configs/devices/rx-softmmu/default.mak
+index c8419d64cc..377b875cce 100644
+--- a/configs/devices/rx-softmmu/default.mak
++++ b/configs/devices/rx-softmmu/default.mak
+@@ -10,3 +10,4 @@ CONFIG_RENESAS_S12AD=y
+ CONFIG_RENESAS_RSPI=y
+ CONFIG_RENESAS_RX_RTC=y
+ CONFIG_RENESAS_RX_CRC=y
++CONFIG_RENESAS_RX_ROMCACHE=y
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index b1c4fd7cba..e2b9a5cd94 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -270,3 +270,6 @@ source macio/Kconfig
  
-+static bool trans_DMOV_rdrl(DisasContext *ctx, arg_DMOV_rdrl *a)
-+{
-+    prt("dmov.l\tr%d, drl%d", a->rs, a->drd);
-+    return true;
-+}
+ config RENESAS_RX_CRC
+     bool
 +
-+static bool trans_DMOV_rdrh(DisasContext *ctx, arg_DMOV_rdrh *a)
-+{
-+    prt("dmov.l\tr%d, drh%d", a->rs, a->drd);
-+    return true;
-+}
-+
-+static bool trans_DMOVD_rdrh(DisasContext *ctx, arg_DMOVD_rdrh *a)
-+{
-+    prt("dmov.d\tr%d, drh%d", a->rs, a->drd);
-+    return true;
-+}
-+
-+static bool trans_DMOV_drlr(DisasContext *ctx, arg_DMOV_drlr *a)
-+{
-+    prt("dmov.l\tdrl%d, r%d", a->drs, a->rd);
-+    return true;
-+}
-+
-+static bool trans_DMOV_drhr(DisasContext *ctx, arg_DMOV_drhr *a)
-+{
-+    prt("dmov.l\tdrh%d, r%d", a->drs, a->rd);
-+    return true;
-+}
-+
- #define BOP_IM(name, reg)                                       \
-     do {                                                        \
-         char dsp[8];                                            \
-diff --git a/target/rx/insns.decode b/target/rx/insns.decode
-index 48325d7ebd..86f726849a 100644
---- a/target/rx/insns.decode
-+++ b/target/rx/insns.decode
-@@ -36,6 +36,9 @@
- &idr		rs drd
- &dppm		drd rnum
- &dcppm		dcrd rnum
-+# RXv3 DPFPU: GPR/control-register/memory/immediate transfers
-+&rdrh		rd drs
-+&drhr		drd rs
- ########
- %b1_bdsp	24:3 !function=bdsp_s
++config RENESAS_RX_ROMCACHE
++    bool
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 22f933a17e..20af70d6a7 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -182,3 +182,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
  
-@@ -674,3 +677,15 @@ DPOPM		0111 0101 1011 1000 drd:4 rnum:4		&dppm
- # DPUSHM.L/DPOPM.L: same, for the DPFPU control registers
- DPUSHM_l	0111 0101 1010 0000 dcrd:4 rnum:4		&dcppm
- DPOPM_l		0111 0101 1010 1000 dcrd:4 rnum:4		&dcppm
-+
-+########
-+# RXv3: remaining DPFPU transfers
-+#
-+# GPR -> DR half (0xFD 0x77 prefix): byte3 low nibble is the source GPR,
-+# byte4 high nibble the destination DR.
-+DMOV_rdrl	1111 1101 0111 0111 1000 rs:4 drd:4 0000	&drhr
-+DMOV_rdrh	1111 1101 0111 0111 1000 rs:4 drd:4 0010	&drhr
-+DMOVD_rdrh	1111 1101 0111 0111 1000 rs:4 drd:4 0011	&drhr
-+# DR half -> GPR (0xFD 0x75 prefix): byte3 low nibble is the destination GPR.
-+DMOV_drlr	1111 1101 0111 0101 1000 rd:4 drs:4 0000	&rdrh
-+DMOV_drhr	1111 1101 0111 0101 1000 rd:4 drs:4 0010	&rdrh
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index 33e41ccab3..2c1971b234 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -1964,6 +1964,21 @@ static void dr_write(int n, TCGv_i64 val)
-     tcg_gen_mov_i64(cpu_dregs[n], val);
- }
- 
-+/* Write val into the high or low 32-bit half of DRn, preserving the other. */
-+static void drh_write(int n, TCGv_i32 val)
-+{
-+    TCGv_i64 t = tcg_temp_new_i64();
-+    tcg_gen_extu_i32_i64(t, val);
-+    tcg_gen_deposit_i64(cpu_dregs[n], cpu_dregs[n], t, 32, 32);
-+}
-+
-+static void drl_write(int n, TCGv_i32 val)
-+{
-+    TCGv_i64 t = tcg_temp_new_i64();
-+    tcg_gen_extu_i32_i64(t, val);
-+    tcg_gen_deposit_i64(cpu_dregs[n], cpu_dregs[n], t, 0, 32);
-+}
-+
- /* dadd DRdrs1, DRdrd, DRdrs2  (DRdrd = DRdrs1 + DRdrs2) */
- static bool trans_DADD(DisasContext *ctx, arg_DADD *a)
- {
-@@ -2250,6 +2265,64 @@ static bool trans_DPOPM_l(DisasContext *ctx, arg_DPOPM_l *a)
-     return true;
- }
- 
-+/* dmov.l rs, DRLd  -- write the low half of DRd, preserving the high half */
-+static bool trans_DMOV_rdrl(DisasContext *ctx, arg_DMOV_rdrl *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    drl_write(a->drd, cpu_regs[a->rs]);
-+    return true;
-+}
-+
-+/* dmov.l rs, DRHd -- write the high half of DRd, preserving the low half */
-+static bool trans_DMOV_rdrh(DisasContext *ctx, arg_DMOV_rdrh *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    drh_write(a->drd, cpu_regs[a->rs]);
-+    return true;
-+}
-+
+ system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
+ system_ss.add(when: 'CONFIG_RENESAS_RX_CRC', if_true: files('renesas_rx_crc.c'))
++system_ss.add(when: 'CONFIG_RENESAS_RX_ROMCACHE', if_true: files('renesas_rx_romcache.c'))
+diff --git a/hw/misc/renesas_rx_romcache.c b/hw/misc/renesas_rx_romcache.c
+new file mode 100644
+index 0000000000..22797d569d
+--- /dev/null
++++ b/hw/misc/renesas_rx_romcache.c
+@@ -0,0 +1,139 @@
 +/*
-+ * dmov.d rs, DRHd -- write the high half of DRd and clear the low half.
-+ * This is the single-instruction way to materialise a double whose low
-+ * word is zero, which covers the common literals (1.0, 0.5, 2.0, ...).
++ * Renesas RX ROM cache control registers
++ *
++ * Datasheet: RX65N Group, RX651 Group User's Manual: Hardware
++ *            (Rev.2.40 R01UH0590EJ0240)
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * The ROM cache speeds up code flash reads and is architecturally invisible
++ * apart from these two registers. QEMU has no such cache, so there is nothing
++ * to model beyond them -- but they do have to exist, because start-up code
++ * routinely enables the cache and then spins until the enable reads back:
++ *
++ *     FLASH.ROMCE.WORD = 0x0001;
++ *     while (FLASH.ROMCE.WORD != 0x0001) {
++ *     }
++ *
++ * With no device here that loop never terminates, and the machine hangs
++ * before anything else in the firmware runs.
++ *
++ * ROMCE holds the enable bit and reads back what was written. ROMCIV starts
++ * an invalidation, which completes instantly here, so the bit reads back as
++ * zero the way it does on hardware once invalidation has finished.
 + */
-+static bool trans_DMOVD_rdrh(DisasContext *ctx, arg_DMOVD_rdrh *a)
-+{
-+    TCGv_i64 t;
 +
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/misc/renesas_rx_romcache.h"
++#include "migration/vmstate.h"
++
++#define R_ROMCE     0x00    /* 16-bit ROM cache enable     */
++#define R_ROMCIV    0x04    /* 16-bit ROM cache invalidate */
++#define R_ROMWT     0x1c    /* 8-bit ROM wait-cycle setting */
++
++#define ROMCE_ROMCEN    0x0001
++
++static uint64_t romcache_read(void *opaque, hwaddr offset, unsigned size)
++{
++    RenesasRxRomCacheState *s = opaque;
++
++    switch (offset) {
++    case R_ROMCE:
++        return s->romce;
++    case R_ROMCIV:
++        /* Invalidation is instantaneous, so it always reads as complete. */
++        return 0;
++    case R_ROMWT:
++        return s->romwt;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "renesas-rx-romcache: read from unmapped offset 0x%"
++                      HWADDR_PRIx "\n", offset);
++        return 0;
 +    }
-+    t = tcg_temp_new_i64();
-+    tcg_gen_extu_i32_i64(t, cpu_regs[a->rs]);
-+    tcg_gen_shli_i64(cpu_dregs[a->drd], t, 32);
-+    return true;
 +}
 +
-+/* dmov.l DRLs, rd */
-+static bool trans_DMOV_drlr(DisasContext *ctx, arg_DMOV_drlr *a)
++static void romcache_write(void *opaque, hwaddr offset, uint64_t value,
++                           unsigned size)
 +{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
++    RenesasRxRomCacheState *s = opaque;
++
++    switch (offset) {
++    case R_ROMCE:
++        s->romce = value & ROMCE_ROMCEN;
++        break;
++    case R_ROMCIV:
++        /* Nothing to invalidate; the write is accepted and completes. */
++        break;
++    case R_ROMWT:
++        s->romwt = value & 0x3;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "renesas-rx-romcache: write to unmapped offset 0x%"
++                      HWADDR_PRIx "\n", offset);
++        break;
 +    }
-+    tcg_gen_extrl_i64_i32(cpu_regs[a->rd], cpu_dregs[a->drs]);
-+    return true;
 +}
 +
-+/* dmov.l DRHs, rd */
-+static bool trans_DMOV_drhr(DisasContext *ctx, arg_DMOV_drhr *a)
++static const MemoryRegionOps romcache_ops = {
++    .read = romcache_read,
++    .write = romcache_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl = { .min_access_size = 1, .max_access_size = 4 },
++    .valid = { .min_access_size = 1, .max_access_size = 4 },
++};
++
++static void romcache_reset(DeviceState *dev)
 +{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    tcg_gen_extrh_i64_i32(cpu_regs[a->rd], cpu_dregs[a->drs]);
-+    return true;
++    RenesasRxRomCacheState *s = RENESAS_RX_ROMCACHE(dev);
++
++    s->romce = 0;
++    s->romwt = 0;
 +}
 +
- static void rx_bsetm(DisasContext *ctx, TCGv_i32 mem, TCGv_i32 mask)
- {
-     TCGv_i32 val;
++static void romcache_init(Object *obj)
++{
++    RenesasRxRomCacheState *s = RENESAS_RX_ROMCACHE(obj);
++
++    memory_region_init_io(&s->memory, obj, &romcache_ops, s,
++                          "renesas-rx-romcache", RX_ROMCACHE_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->memory);
++}
++
++static const VMStateDescription vmstate_romcache = {
++    .name = "renesas-rx-romcache",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT16(romce, RenesasRxRomCacheState),
++        VMSTATE_UINT8(romwt, RenesasRxRomCacheState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void romcache_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_romcache;
++    device_class_set_legacy_reset(dc, romcache_reset);
++}
++
++static const TypeInfo romcache_info = {
++    .name          = TYPE_RENESAS_RX_ROMCACHE,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RenesasRxRomCacheState),
++    .instance_init = romcache_init,
++    .class_init    = romcache_class_init,
++};
++
++static void romcache_register_types(void)
++{
++    type_register_static(&romcache_info);
++}
++
++type_init(romcache_register_types)
+diff --git a/include/hw/misc/renesas_rx_romcache.h b/include/hw/misc/renesas_rx_romcache.h
+new file mode 100644
+index 0000000000..2c3ddeb4bb
+--- /dev/null
++++ b/include/hw/misc/renesas_rx_romcache.h
+@@ -0,0 +1,30 @@
++/*
++ * Renesas RX ROM cache control registers
++ *
++ * Copyright (c) 2026 Umar, Sayyad Mahammad
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_MISC_RENESAS_RX_ROMCACHE_H
++#define HW_MISC_RENESAS_RX_ROMCACHE_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_RENESAS_RX_ROMCACHE "renesas-rx-romcache"
++OBJECT_DECLARE_SIMPLE_TYPE(RenesasRxRomCacheState, RENESAS_RX_ROMCACHE)
++
++/* Also covers the adjacent system ROMWT register at +0x01c. */
++#define RX_ROMCACHE_SIZE    0x20
++
++struct RenesasRxRomCacheState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion memory;
++
++    uint16_t romce;     /* ROM cache enable */
++    uint8_t romwt;      /* ROM wait cycles */
++};
++
++#endif /* HW_MISC_RENESAS_RX_ROMCACHE_H */
 
 -- 
 2.53.0

@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4FD2B606A31A
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:30:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2877606A31A
+	for <qemu-arm@archiver.kernel.org>; Sun, 25 Oct 2026 17:31:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xL22w-0008HE-Mn; Sun, 25 Oct 2026 13:30:14 -0400
+	id 1xL233-0008Jw-Tz; Sun, 25 Oct 2026 13:30:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL22d-0008BK-2L; Sun, 25 Oct 2026 13:29:58 -0400
+ id 1xL231-0008J2-Dq; Sun, 25 Oct 2026 13:30:19 -0400
 Received: from www675.your-server.de ([85.10.213.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xL22Z-0006zX-Gp; Sun, 25 Oct 2026 13:29:54 -0400
+ id 1xL22z-0007Ec-RU; Sun, 25 Oct 2026 13:30:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sayyadumar.com; s=default2511; h=Cc:To:In-Reply-To:References:Message-Id:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=9UGUkbKNVrH/rmS+Xc8Oz1VnzStcXAXi+tszUyI2HHs=; b=YGzndGf9q6VfWOGP1fdjcsbYqt
- TeB3yDdQpsqxHb4ar7iuYf3zaIHsV8N98YVPeUfZtO8iy7xm13JOC2WvR/fTerRmFYd1+rA0LC/og
- 98vee3N/H9wJwTkjIBEwDcrsHpNe+9uM6LCl1YbL/yIbr++eH8w6MDX+HE2mErLEYyVMmxLXaP8Nx
- eWsKm9YvKWyn5bUGgGUvxksDH/GAWZi5jsC+FMx+u0IH6lKYfMO3UluSYgSxCoPure1djgxQehOY9
- qDj5qvIsRGA7E1Kyh4iie2ZzBvSz1OQSNGKvm0NMudcpLzdZnusLgl2V2O6dROrxAg7lg9ZINqjA5
- 9Yq1p0Og==;
+ bh=M6ex60zK398cvgKdVKteAITHgRG0b/rtvXv/kgnNP1E=; b=FOz9yY5XfdTCM4yd/HfzmR4x8b
+ WiIFGBJIX1ND3wu4ky3lZRP7a+E+0PKC4a2wprGe5lEc8p3TqTpE2doXENpN5Yb5s4KiCM7z0/Iol
+ hMLWhjbrDeqJn7hPp0lFJ51J9X9zAdGuVLRHJxVHiNdr6DIVGZvKLJtyJfy6fXEjuChquvZMC0OuV
+ gvGCjI80fxv9hIvAeXbA0t91KiUxpGDkelhPstEMu6PCQTRWQVVlNqth6gOTfx7AM47oSjXEjGjlj
+ CCK4hsK3lCPhvTHCJZjCNf48GJKcupE2EhHpawErzzm9+z2zuBjgXiM+rjjWo7byy8SX2C+AwHR0I
+ o2VV2Yag==;
 Received: from sslproxy01.your-server.de ([78.46.139.224])
  by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xL1gQ-000989-2M; Sun, 25 Oct 2026 18:06:58 +0100
+ id 1xL1gS-000990-2a; Sun, 25 Oct 2026 18:07:00 +0100
 Received: from localhost ([127.0.0.1])
  by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xL1Vw-000OzG-02; Sun, 25 Oct 2026 17:56:07 +0100
+ id 1xL1Vw-000OzG-0h; Sun, 25 Oct 2026 17:56:07 +0100
 From: Sayyad Mahammad Umar <contact@sayyadumar.com>
-Date: Sun, 25 Oct 2026 17:55:28 +0100
-Subject: [PATCH v2 12/31] target/rx: add DPFPU control register transfers
+Date: Sun, 25 Oct 2026 17:55:31 +0100
+Subject: [PATCH v2 15/31] target/rx: add RXv3 BFMOV and BFMOVZ
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-umar-rx-series-v2-12-9e846577cad0@sayyadumar.com>
+Message-Id: <20261025-umar-rx-series-v2-15-9e846577cad0@sayyadumar.com>
 References: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 In-Reply-To: <20261025-umar-rx-series-v2-0-9e846577cad0@sayyadumar.com>
 To: qemu-devel@nongnu.org
@@ -51,11 +51,11 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, Sayyad Mahammad Umar <contact@sayyadumar.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=5813;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792947366; l=4491;
  i=contact@sayyadumar.com; s=qemu; h=from:subject:message-id;
- bh=1YKjCyKi5TbpEYvrRx9sd+cEDiizcEBEeID6ciAy27k=;
- b=YQI1ZuukjPIRnB+EslTfpKWNxLQPX2JtdcLc/N53Erep7ngU+3KWwgomlElQ43PcIxsigcGcd
- 8c1DLzWo2b4DbgwYMPOKUQ6vjJgjaoFin/bR2v3AXFpVvy2A8ViA8jb
+ bh=LylqfL0lARNXTOxrwsJtsEz46DDu4d7BvDok87Ke92s=;
+ b=3LGmVNgNco06cz7nHYdLifvKc0cE57kfyQmXpu9k2/8pZeprjJPRbHP68oB1vRSlMk0Ch9Gz1
+ S6OGoRbHbCjCIwXEF+3yssuP9XvzukZRcqK+3YQramUzIQ6rueQZSz0
 X-Developer-Key: i=contact@sayyadumar.com; a=ed25519;
  pk=CsAjTLRCB7+pnzmj8902JER4gL8CTzNQFxlMZTl4wDk=
 X-Virus-Scanned: Clear (ClamAV 1.4.6/28164/Sun Oct 25 07:24:12 2026)
@@ -81,175 +81,148 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
 	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add MVFDC and MVTDC to move DPFPU control registers (DPSW, DCMR,
-DECNT, DEPC) to and from GPRs, and MVFDR to move the DCMP result
-(DCMR.RES) into PSW.Z so it can be branched on. MVTDC is not a plain
-register write: the DC* cause bits in DPSW clear on a written 0 and
-keep their value on a written 1, DFS is a read-only summary, DCMR
-holds only RES, and DEPC is read-only.
+BFMOV/BFMOVZ move a bit field selected by a 16-bit field descriptor
+that follows the opcode. BFMOV leaves the bits outside the
+destination field untouched; BFMOVZ clears them. Empty or
+out-of-range fields are architecturally undefined and rejected as
+illegal instructions.
 
 Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
 ---
- target/rx/disas.c      | 18 ++++++++++++++++++
- target/rx/helper.h     |  1 +
- target/rx/insns.decode |  7 +++++++
- target/rx/op_helper.c  | 31 +++++++++++++++++++++++++++++++
- target/rx/translate.c  | 38 ++++++++++++++++++++++++++++++++++++++
- 5 files changed, 95 insertions(+)
+ target/rx/disas.c      | 26 ++++++++++++++++++++++
+ target/rx/insns.decode |  7 ++++++
+ target/rx/translate.c  | 60 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 93 insertions(+)
 
 diff --git a/target/rx/disas.c b/target/rx/disas.c
-index 20ef165832..062d8c2d6b 100644
+index e9e504fc9b..7d6cad753e 100644
 --- a/target/rx/disas.c
 +++ b/target/rx/disas.c
-@@ -1368,6 +1368,24 @@ static bool trans_DMOV_drhr(DisasContext *ctx, arg_DMOV_drhr *a)
+@@ -1469,6 +1469,32 @@ static bool trans_DMOV_mld(DisasContext *ctx, arg_DMOV_mld *a)
      return true;
  }
  
-+static bool trans_MVFDC(DisasContext *ctx, arg_MVFDC *a)
++static void prt_bfmov(DisasContext *ctx, const char *name, int rs, int rd)
 +{
-+    prt("mvfdc\t%s, r%d", dcrname[a->dcrs & 3], a->rd);
++    unsigned bf = disas_fetch(ctx, 2);
++    unsigned dlsb = (bf >> 5) & 0x1f;
++    unsigned msb = (bf >> 10) & 0x1f;
++    int delta = bf & 0x1f;
++
++    if (delta >= 0x10) {
++        delta -= 0x20;
++    }
++    prt("%s\t#%d, #%d, #%d, r%d, r%d", name,
++        (int)dlsb - delta, dlsb, (int)msb - (int)dlsb, rs, rd);
++}
++
++static bool trans_BFMOV(DisasContext *ctx, arg_BFMOV *a)
++{
++    prt_bfmov(ctx, "bfmov", a->rs, a->rd);
 +    return true;
 +}
 +
-+static bool trans_MVTDC(DisasContext *ctx, arg_MVTDC *a)
++static bool trans_BFMOVZ(DisasContext *ctx, arg_BFMOVZ *a)
 +{
-+    prt("mvtdc\tr%d, %s", a->rs, dcrname[a->dcrd & 3]);
-+    return true;
-+}
-+
-+static bool trans_MVFDR(DisasContext *ctx, arg_MVFDR *a)
-+{
-+    prt("mvfdr");
++    prt_bfmov(ctx, "bfmovz", a->rs, a->rd);
 +    return true;
 +}
 +
  #define BOP_IM(name, reg)                                       \
      do {                                                        \
          char dsp[8];                                            \
-diff --git a/target/rx/helper.h b/target/rx/helper.h
-index 5bf0ed0aa2..0f05d38182 100644
---- a/target/rx/helper.h
-+++ b/target/rx/helper.h
-@@ -29,6 +29,7 @@ DEF_HELPER_2(dtof, f32, env, f64)
- DEF_HELPER_2(itod, f64, env, i32)
- DEF_HELPER_2(utod, f64, env, i32)
- DEF_HELPER_2(ftod, f64, env, f32)
-+DEF_HELPER_3(mvtdc, void, env, i32, i32)
- DEF_HELPER_2(set_fpsw, void, env, i32)
- DEF_HELPER_2(racw, void, env, i32)
- DEF_HELPER_2(set_psw_rte, void, env, i32)
 diff --git a/target/rx/insns.decode b/target/rx/insns.decode
-index 86f726849a..b3406f1cbf 100644
+index e2a3c5601a..55c7e3994d 100644
 --- a/target/rx/insns.decode
 +++ b/target/rx/insns.decode
-@@ -39,6 +39,8 @@
- # RXv3 DPFPU: GPR/control-register/memory/immediate transfers
- &rdrh		rd drs
- &drhr		drd rs
-+&rdcr		rd dcrs
-+&dcrr		dcrd rs
+@@ -44,6 +44,8 @@
+ &dmovi		drd imm
+ &dmovst		rd ld
+ &dmovld		rs ld
++# RXv3 bit field move
++&bfm		rd rs
  ########
  %b1_bdsp	24:3 !function=bdsp_s
  
-@@ -689,3 +691,8 @@ DMOVD_rdrh	1111 1101 0111 0111 1000 rs:4 drd:4 0011	&drhr
- # DR half -> GPR (0xFD 0x75 prefix): byte3 low nibble is the destination GPR.
- DMOV_drlr	1111 1101 0111 0101 1000 rd:4 drs:4 0000	&rdrh
- DMOV_drhr	1111 1101 0111 0101 1000 rd:4 drs:4 0010	&rdrh
+@@ -713,3 +715,8 @@ MVFDR		0111 0101 1001 0000 0001 1011
+ # displacement, so it is read during translation rather than by decodetree.
+ DMOV_mst	1111 1100 0111 10 ld:2 rd:4 1000		&dmovst
+ DMOV_mld	1111 1100 1100 10 ld:2 rs:4 1000		&dmovld
 +
-+# DPFPU control register transfers
-+MVFDC		1111 1101 0111 0101 1000 rd:4 dcrs:4 0100	&rdcr
-+MVTDC		1111 1101 0111 0111 1000 rs:4 dcrd:4 0100	&dcrr
-+MVFDR		0111 0101 1001 0000 0001 1011
-diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
-index cd686d8546..91af7c6685 100644
---- a/target/rx/op_helper.c
-+++ b/target/rx/op_helper.c
-@@ -403,6 +403,37 @@ float64 helper_ftod(CPURXState *env, float32 t0)
-     return ret;
- }
- 
-+/*
-+ * mvtdc rs, DCRd. Not a plain register write: the DC* cause bits in DPSW
-+ * clear on a written 0 and keep their value on a written 1, DFS is a
-+ * read-only summary, DCMR holds only RES, and DEPC is read-only.
-+ */
-+void helper_mvtdc(CPURXState *env, uint32_t reg, uint32_t val)
-+{
-+    uint32_t old, dpsw;
-+
-+    switch (reg) {
-+    case RX_DCR_DPSW:
-+        old = env->dcr[RX_DCR_DPSW];
-+        dpsw = val & RX_DPSW_WRITE_MASK;
-+        dpsw = (dpsw & ~RX_DPSW_CAUSE_MASK)
-+             | (old & val & RX_DPSW_CAUSE_MASK);
-+        dpsw = FIELD_DP32(dpsw, DPSW, DFS,
-+                          FIELD_EX32(dpsw, DPSW, FLAGS) != 0);
-+        env->dcr[RX_DCR_DPSW] = dpsw;
-+        break;
-+    case RX_DCR_DCMR:
-+        env->dcr[RX_DCR_DCMR] = val & RX_DCMR_WRITE_MASK;
-+        break;
-+    case RX_DCR_DECNT:
-+        env->dcr[RX_DCR_DECNT] = val & (R_DECNT_EHM_MASK | R_DECNT_EHS_MASK);
-+        break;
-+    default:
-+        /* DEPC is read-only. */
-+        break;
-+    }
-+}
-+
- void helper_rx_fcmp(CPURXState *env, float32 t0, float32 t1)
- {
-     int st;
++########
++# RXv3: bit field move. The 16-bit field descriptor follows the opcode.
++BFMOVZ		1111 1100 0101 1010 rs:4 rd:4			&bfm
++BFMOV		1111 1100 0101 1110 rs:4 rd:4			&bfm
 diff --git a/target/rx/translate.c b/target/rx/translate.c
-index 2c1971b234..ad59fe2861 100644
+index f16fc8fb6c..db037634d5 100644
 --- a/target/rx/translate.c
 +++ b/target/rx/translate.c
-@@ -2323,6 +2323,44 @@ static bool trans_DMOV_drhr(DisasContext *ctx, arg_DMOV_drhr *a)
+@@ -2441,6 +2441,66 @@ static bool trans_DMOV_mld(DisasContext *ctx, arg_DMOV_mld *a)
      return true;
  }
  
-+/* mvfdc DCRs, rd */
-+static bool trans_MVFDC(DisasContext *ctx, arg_MVFDC *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    tcg_gen_mov_i32(cpu_regs[a->rd], cpu_dcregs[a->dcrs]);
-+    return true;
-+}
-+
-+/* mvtdc rs, DCRd -- see helper_mvtdc for the per-register write rules */
-+static bool trans_MVTDC(DisasContext *ctx, arg_MVTDC *a)
-+{
-+    if (!require_isa(ctx, RX_ISA_V3)) {
-+        return false;
-+    }
-+    gen_helper_mvtdc(tcg_env, tcg_constant_i32(a->dcrd), cpu_regs[a->rs]);
-+    return true;
-+}
-+
 +/*
-+ * mvfdr -- Z = DCMR.RES. Moves the result of the last DCMP into the PSW Z
-+ * flag so it can be branched on; no other flag and no DPSW bit changes.
-+ *
-+ * psw_z holds the inverse of the architectural Z flag (Z is set when psw_z
-+ * reads zero), so the RES bit is inverted on the way in.
++ * bfmov / bfmovz. The 16-bit field descriptor that follows the opcode packs
++ *   bits  4:0  (dlsb - slsb), as a signed 5-bit value
++ *   bits  9:5  dlsb
++ *   bits 14:10 dlsb + width
++ * BFMOV leaves the bits outside the destination field untouched; BFMOVZ
++ * clears them.
 + */
-+static bool trans_MVFDR(DisasContext *ctx, arg_MVFDR *a)
++static bool bfmov_common(DisasContext *ctx, int rd, int rs, bool zero)
++{
++    unsigned bf, dlsb, msb, width;
++    int delta, slsb;
++    TCGv_i32 tmp;
++
++    bf = translator_lduw_end(ctx->env, &ctx->base, ctx->base.pc_next, MO_LE);
++    ctx->base.pc_next += 2;
++
++    dlsb = (bf >> 5) & 0x1f;
++    msb = (bf >> 10) & 0x1f;
++    delta = bf & 0x1f;
++    if (delta >= 0x10) {
++        delta -= 0x20;
++    }
++    slsb = dlsb - delta;
++
++    if (msb <= dlsb || slsb < 0 || slsb > 31) {
++        /* Empty or out-of-range field: architecturally undefined. */
++        return false;
++    }
++    width = msb - dlsb;
++    if (slsb + width > 32) {
++        width = 32 - slsb;
++    }
++
++    tmp = tcg_temp_new_i32();
++    tcg_gen_extract_i32(tmp, cpu_regs[rs], slsb, width);
++    if (zero) {
++        tcg_gen_shli_i32(cpu_regs[rd], tmp, dlsb);
++    } else {
++        tcg_gen_deposit_i32(cpu_regs[rd], cpu_regs[rd], tmp, dlsb, width);
++    }
++    return true;
++}
++
++static bool trans_BFMOV(DisasContext *ctx, arg_BFMOV *a)
 +{
 +    if (!require_isa(ctx, RX_ISA_V3)) {
 +        return false;
 +    }
-+    tcg_gen_extract_i32(cpu_psw_z, cpu_dcregs[RX_DCR_DCMR],
-+                        RX_DCMR_RES_BIT, 1);
-+    tcg_gen_xori_i32(cpu_psw_z, cpu_psw_z, 1);
-+    return true;
++    return bfmov_common(ctx, a->rd, a->rs, false);
++}
++
++static bool trans_BFMOVZ(DisasContext *ctx, arg_BFMOVZ *a)
++{
++    if (!require_isa(ctx, RX_ISA_V3)) {
++        return false;
++    }
++    return bfmov_common(ctx, a->rd, a->rs, true);
 +}
 +
  static void rx_bsetm(DisasContext *ctx, TCGv_i32 mem, TCGv_i32 mask)

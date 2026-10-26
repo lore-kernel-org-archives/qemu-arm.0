@@ -1,62 +1,57 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7C413606A31D
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 17:07:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24F91606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 17:20:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=mafa2Ke2
+	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=loK4z8kM
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLOAM-0001oh-3n; Mon, 26 Oct 2026 13:07:25 -0400
+	id 1xLOMx-0005OW-Vb; Mon, 26 Oct 2026 13:20:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xLO9e-0001gV-AW; Mon, 26 Oct 2026 13:06:39 -0400
-Received: from smtpout3.mo540.mail-out.ovh.net ([51.210.91.52])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLOMs-0005Kn-FF
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 13:20:19 -0400
+Received: from smtpout6.mo540.mail-out.ovh.net ([51.210.91.55])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xLO9S-000562-OX; Mon, 26 Oct 2026 13:06:29 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [79.137.60.226])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jD0QP3ngbz44n4;
- Mon, 26 Oct 2026 17:06:21 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Mon, 26 Oct 2026 17:06:21 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.168.132])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jD0QP2csGz46ZC; Mon, 26 Oct 2026 17:06:21 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLOMp-0006hk-HC
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 13:20:18 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [79.137.60.223])
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jD0kN3h1Kz45Gv;
+ Mon, 26 Oct 2026 17:20:12 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon, 26 Oct 2026 17:20:12 +0000 (UTC)
+Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.119])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4jD0kN2qjpz1xqY;
+ Mon, 26 Oct 2026 17:20:12 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.7])
  (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 1D23D942077; 
- Mon, 26 Oct 2026 17:06:19 +0000 (UTC)
+ by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 9B7F919231D6; Mon, 26 Oct 2026 17:20:10 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-111S005051857c4-16d9-4e5a-8606-e2d317122e5c,
+ (GARM-109S003ded8853f-7924-4206-83df-cc8f81ad243c,
  0F1D26DCAC6332081EAAC0C4732524D537662835) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.66.77.115
-Message-ID: <22545073-204b-4975-8f2a-970d6ed88f80@kaod.org>
-Date: Mon, 26 Oct 2026 18:06:18 +0100
+Message-ID: <87e81593-a68c-4f41-9858-0ab37cf6c611@kaod.org>
+Date: Mon, 26 Oct 2026 18:20:09 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 06/14] hw/ssi/aspeed_smc: Add AST1040 FMC and SPI
- controllers
+Subject: Re: [PATCH v1 0/9] hw/arm/aspeed: Add AST1080 SoC and EVB support
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:Block layer core" <qemu-block@nongnu.org>
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20261015055642.106204-1-jamin_lin@aspeedtech.com>
- <20261015055642.106204-7-jamin_lin@aspeedtech.com>
+References: <20261015063625.186708-1-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -101,29 +96,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261015055642.106204-7-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261015063625.186708-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 9839520762934701101
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 10073426467292556403
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFpyHgy5bzjMr6TxronRwHZQBhxo5fNh+yO7vwvtBUd6/Y4/L731AW5j4uCKc8DGbQUZ+ayoimP60wIh4ywiF6626G7Yj8Y8K7QFEIE0peMpP1oKHgB60oYuLq8QL90GLtJdaPZe/UrpTDNDtRp6ZemhTIGRm3Y6sZ8bUvyusdnK+BiFLb5Hc4Zlargdl8vKbHtCDg6TtTgzmgX7hAeZwpVEZsmAOkM6aDjNV3d6NVZPSILQ2fhpWtpOYMnN2tOq/IaHGmwF+64KQ2G6ciH7TBJjaEWIUD6dPNlAWpoSyTedk+p1Zx1rD9b0tmGbsXx2lmmSkA+f04heNLYCnp7pXzPM/VFtlTiSB1Td3UJLE8pZk3+12vB3hY9k08vZjYYkeow5UmvGv89s0+EY5VAtp7lDdRyMkcdeFpGQrg1dIVfod0LdVbWg0lhXEEEWrbu1pyTPYiGxfJyLhYlipHqWqwtIr1iY4agZt2XFOgqDhjyxRcIhIFFPpXHDzmyUsjziPRJibvoq9VPybF8cD6me134XImsLWToq9AdyxZdj7coxi3PrPbg5s/rS0RT7c6ngxkLhLEZBygbG7lLiS7tsaX9qUF7RmQ1LSyWyHm4R+JR2vTjMn30DZigt+V9OhVbMEcZDGirE6SbLHfJ/htCyQ0O//5+oKCP858ntVd6uNF/Gg
-DKIM-Signature: a=rsa-sha256; bh=GgOWtfDRQVWe1zLeLyfJY5dBTThB+m5yVNqZ+fTgMpc=; 
+X-VR-SPAMCAUSE: dmFkZTEY9CCrG5m6rnr0jyQ/WX7SWx0LrIc7JRRSWCeg6DBa/VB+IAlu0cuKRmbERATwVec/COZbclo9yi2Y18mmqtJ1KYS4Hgcn9wWfS3phlcKofOGrsgizcEPZGJTFbD/WK4fqqQTpUKk3Kt3hjEVKVOVtHR0GOZVKQlyY1vJq/Xz0kfenqeQxM9gtWNZrr5t2LctTnUst7erj4r6HQ2TQ10vGYxXJiKSNxhjAJNaEXdiLPU9WeRFXi/YTxcN4vUb+4igB5SUK0BPORG5WuRG0EXtCicBFaJelfbYw+HtS7VNDE80UzzR5L9YtenxMan8Ve5awphgZR5sLJCdhVxEo0U4BRob8OtufXohllSqUYNyrM+6L54TSdkPyjM6joAor7aQh7nnsXIzimF9QdwWZzvw5e2lh0lQkqMarWWkJqMMKG40xHReVXl+7fw3OMH91w+1YERs6kkthWDv9Dg24s7veF4zZeZpfWf8ou9tHEYf67DnPUAubtoNqxqTJE3/dh0LXt8kqwjWLKBZQ4HZYLrD502p+IlPaLBmKEte7PXnj1iyKzvY3CzHMxvLdcGlsuFhVcMfDVK8yFUqWYcZhsY4oHdVnA6ef7WJT9wyLKE+mzYhf9TiftVAyeJdRRkmgvtb+Rc5YL9qtxAOfMhndBItNPuhonO5mSZM6Ns8Vo+WOzA
+DKIM-Signature: a=rsa-sha256; bh=bHJjdFninLu7jaULjZNghW+rqb7xx2aH977LqZG4LuE=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1793034383; v=1;
- b=mafa2Ke27gll8iQdISVQa0Jp7irXrNNqRX8wbcBq2vXfLqIGiqufWNbOaZz95vq+0vJv9OzP
- DbYsevSYj2ZlP7rnDyT4AzIyr1JESffMqVMmLQ1LIhlTbOonmjzhTOSzHm11FJNby6E2uN85G2l
- wIJpa9/5QVKGMfazOfFxLLMoASF4JKW+1OagQHlhWkUSo5z1Y3Li6m/jkKpIKsWB6NaH8zStdUG
- m5MJayroEHQhGcHlVY+StnOPSl8+Fv/GJ5GMKMd7jVBkQ/wibE95Y4a4iRSeHOQhAiWwUP2d1Lb
- RMLDUbLBQxuh3ajhLkX0knC/b0um6wSi9ysLVgwSg0MHg==
-Received-SPF: pass client-ip=51.210.91.52; envelope-from=clg@kaod.org;
- helo=smtpout3.mo540.mail-out.ovh.net
+ t=1793035212; v=1;
+ b=loK4z8kMYomYTegQo6gGnkspge9Qo8DFVSSb+sVKuQRJ8FjF6qV6aHjS6i68sR2xT4r5Amg4
+ AD9+VyF6it+s2uKooR7rXRmA3Fwe6h4ePtVpoFsGxPdymoT5EEEpQxA91BcvFqyHcQZJ9ZDPAmU
+ mY7ZD+vzEgEqCnjOrwA6Yxz4CuBb1Gdt8y+OnJtCpzhQdSzk3+lhBRj/zvdy8rKoAtyEm371Rly
+ oI1eNJwOfiFOk8mvJXnGrjL7k5hku936UB0ASZsJeIvTd4uXJ1++wZ+adOEIXX8h7+9xR73VGQJ
+ /Iw8ka+ku2Ec2pauYu3omlgKNV4uF1nioBpviVK2r89HA==
+Received-SPF: pass client-ip=51.210.91.55; envelope-from=clg@kaod.org;
+ helo=smtpout6.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,157 +131,69 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-22.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/15/26 07:56, Jamin Lin wrote:
-> The AST1040 FMC and SPI controllers are compatible with the AST2700
-> controllers, but use different flash window. Therefore, the AST2700
-> controller types cannot be reused directly for AST1040.
+On 10/15/26 08:36, Jamin Lin wrote:
+> This series adds support for the AST1080 Platform Root of Trust SoC
+> and its evaluation board.
 > 
-> Add dedicated AST1040 FMC, SPI0 and SPI1 controller types with the
-> appropriate parameter settings.
+> This series depends on:
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/ssi/aspeed_smc.c | 109 ++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 109 insertions(+)
+> [v1,00/14] hw/arm/aspeed: Add AST1040 FMC/SPI controllers and unimplemented devices
+> https://patchwork.kernel.org/project/qemu-devel/cover/20261015055642.106204-1-jamin_lin@aspeedtech.com/
 > 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index c0c3666dbc..89a7dc1105 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -2072,6 +2072,100 @@ static void aspeed_2700_spi2_class_init(ObjectClass *klass, const void *data)
->       asc->reg_ops           = &aspeed_2700_smc_flash_ops;
->   }
+> and is based on the aspeed-next branch:
+> https://github.com/legoater/qemu/commits/aspeed-next
+> 
+> The AST1080 shares most of its design with the AST1040, so the AST1040
+> init and realize code is first split into common functions. The
+> AST1080 SoC is then added with its own unimplemented devices (QSPI
+> filters and I2C filter).
+> 
+> v1
+>   1. Add common init function for AST1040/AST1080 SoCs
+>   2. Add common realize function for AST1040/AST1080 SoCs
+>   3. Add AST1080 SOC and EVB machine
+>   4. Add AST1080 functional test.
 >   
-> +static void aspeed_1040_fmc_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 1040 FMC Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_2700_spi0_segments;
-> +    asc->segment_addr_mask = 0xffffffff;
-> +    asc->flash_window_base = 0x80000000;
-> +    asc->flash_window_size = 512 * MiB;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-> +    asc->dma_flash_mask    = 0x1FFFFFFC;
-> +    asc->dma_dram_mask     = 0x00FFFFFC;
-> +    asc->dma_start_length  = 1;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
-> +}
-> +
-> +static const AspeedSegments aspeed_1040_spi0_segments[] = {
-> +    { 0x0, 128 * MiB },
-> +    { 128 * MiB, 128 * MiB },
-> +    { 256 * MiB, 128 * MiB },
-> +    { 384 * MiB, 128 * MiB },
-> +};
-> +
-> +static void aspeed_1040_spi0_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 1040 SPI0 Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 4;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 4;
-> +    asc->segments          = aspeed_1040_spi0_segments;
-> +    asc->segment_addr_mask = 0xffffffff;
-> +    asc->flash_window_base = 0xA0000000;
-> +    asc->flash_window_size = 512 * MiB;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-> +    asc->dma_flash_mask    = 0x1FFFFFFC;
-> +    asc->dma_dram_mask     = 0x00FFFFFC;
-> +    asc->dma_start_length  = 1;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
-> +}
-> +
-> +static void aspeed_1040_spi1_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 1040 SPI1 Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_2700_spi0_segments;
-> +    asc->segment_addr_mask = 0xffffffff;
-> +    asc->flash_window_base = 0xC0000000;
-> +    asc->flash_window_size = 512 * MiB;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-> +    asc->dma_flash_mask    = 0x1FFFFFFC;
-> +    asc->dma_dram_mask     = 0x00FFFFFC;
-> +    asc->dma_start_length  = 1;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
-> +}
-> +
->   static const TypeInfo aspeed_smc_types[] = {
->       {
->           .name           = TYPE_ASPEED_SMC_FLASH,
-> @@ -2103,6 +2197,21 @@ static const TypeInfo aspeed_smc_types[] = {
->           .parent     = TYPE_ASPEED_SMC,
->           .class_init = aspeed_1030_spi2_class_init,
->       },
-> +    {
-> +        .name       = "aspeed.fmc-ast1040",
-> +        .parent     = TYPE_ASPEED_SMC,
-> +        .class_init = aspeed_1040_fmc_class_init,
-> +    },
-> +    {
-> +        .name       = "aspeed.spi0-ast1040",
-> +        .parent     = TYPE_ASPEED_SMC,
-> +        .class_init = aspeed_1040_spi0_class_init,
-> +    },
-> +    {
-> +        .name       = "aspeed.spi1-ast1040",
-> +        .parent     = TYPE_ASPEED_SMC,
-> +        .class_init = aspeed_1040_spi1_class_init,
-> +    },
->       {
->           .name       = "aspeed.smc-ast2400",
->           .parent     = TYPE_ASPEED_SMC,
+> Jamin Lin (9):
+>    hw/arm/aspeed_ast1040: Add common init function for AST1040/AST1080
+>      SoCs
+>    hw/arm/aspeed_ast1040: Add common realize function for AST1040/AST1080
+>      SoCs
+>    hw/misc/aspeed_scu: Add AST1080 A0 silicon revision definition
+>    hw/arm/aspeed_ast1040: Add AST1080 SoC support
+>    hw/arm/aspeed_ast1040: Add AST1080 QSPI filters as unimplemented
+>      device
+>    hw/arm/aspeed_ast1040: Add AST1080 I2C filter as an unimplemented
+>      device
+>    hw/arm/aspeed_ast1040_evb: Add AST1080 EVB machine support
+>    tests/functional/arm/aspeed: Add AST1080 test with ASPEED MCU FW Hub
+>      v01.00
+>    docs/system/arm/aspeed: Add AST1080 Platform Root of Trust evaluation
+>      board
+> 
+>   docs/system/arm/aspeed.rst                  |   8 +-
+>   include/hw/misc/aspeed_scu.h                |   1 +
+>   hw/arm/aspeed_ast1040.c                     | 154 +++++++++++++++-----
+>   hw/arm/aspeed_ast1040_evb.c                 |  23 +++
+>   hw/misc/aspeed_scu.c                        |   1 +
+>   tests/functional/arm/meson.build            |   1 +
+>   tests/functional/arm/test_aspeed_ast1080.py |  37 +++++
+>   7 files changed, 186 insertions(+), 39 deletions(-)
+>   create mode 100644 tests/functional/arm/test_aspeed_ast1080.py
+> 
 
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-no need for ast1040 specific asc->resets ?
+Thanks,
 
 C.
+
 

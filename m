@@ -1,82 +1,114 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B116606A31D
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 13:06:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 995C9606A31B
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 13:55:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=aMMojKYo
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=chC8QJe7
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLKOp-0007dY-SS; Mon, 26 Oct 2026 09:06:03 -0400
+	id 1xLLAS-000507-Vt; Mon, 26 Oct 2026 09:55:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xLKOo-0007d9-9s
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 09:06:02 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xLLAO-0004yF-VA
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 09:55:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xLKOl-0003eJ-Qt
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 09:06:02 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xLLAN-00005k-Bb
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 09:55:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793019958;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1793022910;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=otbfljhxfYkYBtLne0TVo7GVkIqovKYL/MGWs9iy258=;
- b=aMMojKYoZQoyKYAg2okejZfezmuwJWyYcAKALWP8TXL6Zstpx2get/a9mung8vV4FfaJXI
- c7bpIgMs32v7b9Q4c3LuZ0Oxd8JYd4EPBAXWfnlHny4F7GtGbaX+xyddXRXbpPWIw3woE4
- 7AMzWnDOH1VbEqMl14tOVBfcrpbnOT4=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-296-NlqMtO8JMH29cHonN0shmg-1; Mon,
- 26 Oct 2026 09:05:54 -0400
-X-MC-Unique: NlqMtO8JMH29cHonN0shmg-1
-X-Mimecast-MFC-AGG-ID: NlqMtO8JMH29cHonN0shmg_1793019953
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F005E1955BF9; Mon, 26 Oct 2026 13:05:52 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E450F18004D2; Mon, 26 Oct 2026 13:05:51 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 9F58521E6A04; Mon, 26 Oct 2026 14:05:49 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Jinjie Ruan <2118537295@qq.com>
-Cc: anisinha@redhat.com,  eblake@redhat.com,  imammedo@redhat.com,
- michael.roth@amd.com,  mst@redhat.com,  pbonzini@redhat.com,
- peter.maydell@linaro.org,  qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
- ruanjinjie@huawei.com
-Subject: Re: [PATCH 36/37] qapi: Add MPAM cache introspection schema and stub
-In-Reply-To: <tencent_E9186FE529AD6EC21F51EF364CEA6426EF05@qq.com> (Jinjie
- Ruan's message of "Fri, 16 Oct 2026 18:10:56 +0800")
-References: <20261016101058.1900808-1-2118537295@qq.com>
- <tencent_E9186FE529AD6EC21F51EF364CEA6426EF05@qq.com>
-Date: Mon, 26 Oct 2026 14:05:49 +0100
-Message-ID: <87fqxs1uj6.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ bh=AYIyUjcnnUXti+/sgQo976EJjdmpRoD/s64kOynFb+I=;
+ b=chC8QJe7wtJlrW7GA5u1hAPphGmzgdWz800N96GIGoXpR88i6gD91cB9Xb9cZiNEs0Sd26
+ 17cirS7L7ZBuyxW7UEkkmiPZvlbXy3AgT6srPifnMVUhppQFkTSAKD6glr6/SlfDYxoXUX
+ xS1vSA3Up3mtNcgNr/wK6oOJCVhIyqY=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-88-tPf1wjzKNGeQt_G8dz6YMw-1; Mon, 26 Oct 2026 09:55:09 -0400
+X-MC-Unique: tPf1wjzKNGeQt_G8dz6YMw-1
+X-Mimecast-MFC-AGG-ID: tPf1wjzKNGeQt_G8dz6YMw_1793022908
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4a01ba12198so29844715e9.1
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 06:55:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793022908; x=1793627708;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=AYIyUjcnnUXti+/sgQo976EJjdmpRoD/s64kOynFb+I=;
+ b=Yp4/kVrBCqPW5gz+pHMUUZL2vHvRcTegLweb3m6BGNa7yhjgN/FCQ+ULgDm7X9yLEd
+ 6r+SYrUs4KKcDejOQ/2bdQmzr5DlDvDLdeP/gP0rUMj6VqeusZqHHrajf/D0K9ZXBDND
+ APIvqmlkqqLHzSybxgCExv6bdgcZ+Y4bLHQkEfa7Phf70ZSiZdWwzfmWTmrKwn/yo0Q2
+ XD94sJEo3usIu6hqjOR58McD4wk1fcq6/d/MDTKTe5RkAiil134SWP6sTtT+cf1zfssF
+ xPFAz2UaZoRgKLzyKC5bGEVraBlHypi86HXqJ6szfM1/mwBhA3kyz5uB6ZJHgHYtB0mU
+ 7VUw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwhZetfC02KW7wlPjOR80o6A74uBoYRhsE5SxB4C1MkWbN3E/p8Ufx0Xf2ldaslb2KbnptDKd8Bmg==@nongnu.org
+X-Gm-Message-State: AFq9FYK2r+ver1QQ+/36EX3QBlxQiXSfYL8EFN6DqfHCGW5twOUxVt2U
+ l5weTDLBnrTDkLd+ZzpXbLzq2wXKUEUCWxiUazIFiB4u2V6K5DqzxZe582ZgRlXHnMIlpMmQE9N
+ q76zapFAagGF2XvHK3h2uB2dyVhPtOpNCGT2FgJZwqLkyFlH3Y96i1A==
+X-Gm-Gg: AYBFou3I21qKhZHDstz4ReCzjAQnIQxxaWgZbOEhm2qPabXa/SDde/F6207H8WCZAfZ
+ dursx+yd7jBjy6aZoI161FoUYz3mK+0Ywm23rVhTE4670fel585VS5b+6OM/ZfkQIKdAzoRvFqP
+ DyUDXJUpTUvBQON1AI4cx9qrc18amsThEP6FN0z3A+2gL8zjQPx38Gko1N8q2v361+ccuvrzfF6
+ NbaMrW0nEHCzbeypKgSPh70Dfl+t0M701eMyG60szBagi7MllsSCps8jPbhUIiPU1awrgmTqX0a
+ Oy8SCWk5sOZi2FNdvsryJ33E2LDO5mzWcrticbpQFkT91nHlj7fdWrStnJPyJCJvCKMLHwx135a
+ IUCpuxkFPPLJbYlHmsmRn0cd7wN6rVTNx40BKbuLtz5mL+05U
+X-Received: by 2002:a05:600c:4f05:b0:49e:65f2:db64 with SMTP id
+ 5b1f17b1804b1-4a35ae71b30mr145150225e9.5.1793022907654; 
+ Mon, 26 Oct 2026 06:55:07 -0700 (PDT)
+X-Received: by 2002:a05:600c:4f05:b0:49e:65f2:db64 with SMTP id
+ 5b1f17b1804b1-4a35ae71b30mr145149665e9.5.1793022907163; 
+ Mon, 26 Oct 2026 06:55:07 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a35a56992dsm186668015e9.6.2026.10.26.06.55.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Oct 2026 06:55:06 -0700 (PDT)
+Message-ID: <71a7a633-b0d1-496b-a4a8-fc887aaad685@redhat.com>
+Date: Mon, 26 Oct 2026 14:55:04 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: gCbn3GTIxty3NHSIjKR_CBQRZIXcBoQ3hT3eIXuZ8fg_1793019953
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 00/26] kvm/arm: Introduce a customizable aarch64 KVM
+ host model
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, shaju.abraham@nutanix.com, khushit.shah@nutanix.com,
+ yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org,
+ sebott@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com,
+ maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com
+References: <20261010133725.642498-1-eric.auger@redhat.com>
+ <CAFEAcA9XE0TLxp+DNzFSbkxbj7f0M78N+tf1a01cJ5rNkM7NBA@mail.gmail.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CAFEAcA9XE0TLxp+DNzFSbkxbj7f0M78N+tf1a01cJ5rNkM7NBA@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -hsp3ekM2vJh_CtnPbZUsvFKv8KNmaqFYEEUm9pUceY_1793022908
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 2
-X-Spam_score: 0.2
-X-Spam_bar: /
-X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.339,
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.339,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,240 +119,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Jinjie Ruan <2118537295@qq.com> writes:
+Hi Peter,
 
-> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+On 10/23/26 1:44 PM, Peter Maydell wrote:
+> On Sat, 10 Oct 2026 at 14:37, Eric Auger <eric.auger@redhat.com> wrote:
+>> This series enhances the current host KVM model with capability to
+>> set writable ID reg fields.
+>>
+>> Since v6.7 kernel, KVM/arm allows the userspace to overwrite the values
+>> of a subset of ID regs. The list of writable fields continues to grow.
+>> The feature ID range is defined as the AArch64 System register space
+>> with op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}.
+>>
+>> The end goal is to get more flexibility when migrating guests
+>> between different host hardware. This series is a prerequisite for
+>> aarch64 named vcpu models.
+> To help me with review prioritization -- are you hoping this will
+> land for 11.2, or are you expecting it to be 12.0 material? (Given
+> the softfreeze date is rapidly approaching, it feels to me like
+> 12.0 is where it's going to be.)
+for the whole series I think this is too late for 11.2. What would be
+nice to get in 10.2 is some prerequisite patches like those you reviewed
+plus [PATCH v10 16/26] target/arm/kvm: Pass an Error handle to
+kvm_arch_init_vcpu which are rather independent. I will prepare a
+separate reduced series containing those + fixing the oversight of one
+midr conversion.
+
+Thanks
+
+Eric
 >
-> Add the query-mpam-cache QMP command schema: the MpamBm bitmap
-> type, the per-RIS MpamRegs state and the MpamCacheInfo summary of
-> a cache MSC, plus an optional cache level filter.  The command is
-> stubbed to return NULL so the generated marshal links; the real
-> implementation walks the device tree in the next patch.
+> thanks
+> -- PMM
 >
-> Based on an RFC series by Jonathan Cameron, adapted to the current
-> qapi documentation rules.
->
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-
-[...]
-
-> diff --git a/qapi/meson.build b/qapi/meson.build
-> index a46269b..c6663e5 100644
-> --- a/qapi/meson.build
-> +++ b/qapi/meson.build
-> @@ -42,6 +42,7 @@ qapi_all_modules =3D [
->    'machine-s390x',
->    'migration',
->    'misc',
-> +  'mpam',
->    'net',
->    'pragma',
->    'qom',
-> diff --git a/qapi/mpam.json b/qapi/mpam.json
-> new file mode 100644
-> index 0000000..ff476a1
-> --- /dev/null
-> +++ b/qapi/mpam.json
-> @@ -0,0 +1,120 @@
-> +# -*- Mode: Python -*-
-> +# vim: filetype=3Dpython
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +##
-> +# =3D ARM MPAM State Introspection
-> +##
-
-Special QAPI doc markup that hasn't been recognized in more than a year.
-Please build with --enable-docs, and examine
-docs/manual/interop/qemu-qmp-ref.html to guard against such mishaps.
-
-Use standard reST markup instead:
-
-   ##
-   # ****************************
-   # ARM MPAM State Introspection
-   # ****************************
-   ##
-
-Are you *sure* this ought to be between "Miscellanea" and "Audio" and at
-the same heading level?  Or should it be deeper and/or elsewhere?
-
-> +
-> +##
-> +# @MpamBm:
-> +#
-> +# A bitmap control value, as used by MPAM cache-portion (CPBM) and
-> +# memory-bandwidth-portion (MBW_PBM) controls.  The value is
-> +# carried as an array of 32-bit words, least significant first.
-> +#
-
-Anti-pattern: the introduction (above) discusses the value of a member
-(below).
-
-> +# @words: The bitmap, one element per 32-bits of the control
-> +#
-> +# Since: 10.1
-
-11.2 now.  Same elsewhere, not noting it again.
-
-> +##
-> +{ 'struct': 'MpamBm',
-> +  'data' : { 'words' : [ 'int' ]
-
-The description says it's 32 bit words.  Shouldn't you use 'uint32'
-then?
-
-> +           }
-> +}
-> +
-> +##
-> +# @MpamRegs:
-> +#
-> +# Per RIS register state of an emulated MPAM Memory System Component.
-
-Please use the current syntax for introductions:
-
-   ##
-   # @name: introduction, best to keep it brief, but you may continue it
-   #     like this if necessary.  If your text need to refer to
-   #     arguments, it's almost certainly not brief introduction
-   #     anymore.
-
-Same elsewhere, not noting it again.
-
-> +#
-> +# @idr: MPAMF_IDR, the MPAM features identification register
-> +#
-> +# @iidr: MPAMF_IIDR, the MPAM implementer identification register
-> +#
-> +# @aidr: MPAMF_AIDR, the MPAM architecture identification register
-> +#
-> +# @cpor-idr: MPAMF_CPOR_IDR, cache-portion feature register
-> +#
-> +# @ccap-idr: MPAMF_CCAP_IDR, cache-capacity feature register
-> +#
-> +# @mbw-idr: MPAMF_MBW_IDR, memory-bandwidth feature register
-> +#
-> +# @pri-idr: MPAMF_PRI_IDR, priority feature register
-> +#
-> +# @partid-nrw-idr: MPAMF_PARTID_NRW_IDR, PARTID narrowing register
-> +#
-> +# @msmon-idr: MPAMF_MSMON_IDR, monitor feature register
-> +#
-> +# @csumon-idr: MPAMF_CSUMON_IDR, cache-usage monitor register
-> +#
-> +# @mbwumon-idr: MPAMF_MBWUMON_IDR, memory-bandwidth monitor register
-> +#
-> +# @ecr: MPAMF_ECR, the error control register
-> +#
-> +# @esr: MPAMF_ESR, the error status register
-> +#
-> +# @cfg-part-sel: MPAMCFG_PART_SEL, the partition-selection register
-> +#
-> +# @cfg-cpbm: The configured cache-portion bitmaps, one per
-> +#     internal PARTID
-> +#
-> +# Since: 10.1
-> +##
-> +{ 'struct' : 'MpamRegs',
-> +  'data' : { 'idr' : 'int',
-> +             'iidr' : 'int',
-> +             'aidr' : 'int',
-> +             'cpor-idr': 'int',
-> +             'ccap-idr': 'int',
-> +             'mbw-idr': 'int',
-> +             'pri-idr': 'int',
-> +             'partid-nrw-idr': 'int',
-> +             'msmon-idr': 'int',
-> +             'csumon-idr': 'int',
-> +             'mbwumon-idr': 'int',
-> +             'ecr': 'int',
-> +             'esr': 'int',
-> +             'cfg-part-sel': 'int',
-> +             'cfg-cpbm': ['MpamBm']#lazy
-
-Is the comment an accident?
-
-How wide are these registers?  Is 'int' the appropriate type?
-
-> +          }
-> +}
-> +
-> +##
-> +# @MpamCacheInfo:
-> +#
-> +# Information about an MPAM cache Memory System Component.
-> +#
-> +# @cpu: First CPU of the set associated with the cache
-> +#
-> +# @level: Level of cache
-> +#
-> +# @type: Type of cache
-> +#
-> +# @regs: The per RIS register state
-> +#
-> +# Since: 10.1
-> +##
-> +{ 'struct': 'MpamCacheInfo',
-> +  'data' : { 'cpu' : 'int',
-> +             'level' : 'int',
-> +             'type' : 'int',
-> +             'regs' : ['MpamRegs']
-> +           }
-> +}
-> +
-> +##
-> +# @query-mpam-cache:
-> +#
-> +# Get a list of MpamCacheInfo for all Cache related MSC
-> +#
-> +# @level: Provide a cache level to filter against
-
-What exactly does this argument filter out?
-
-Is it really needed?  How large can unfiltered output become?
-
-> +#
-> +# Returns: a list of @MpamCacheInfo describing all
-> +#   the MPAM cache MSC instances
-
-This gets rendered like
-
-    Return: [MpamCacheInfo] =E2=80=93 a list of MpamCacheInfo describing al=
-l the
-            MPAM cache MSC instances
-
-As is, the description is mostly redundant.  Do you need a description?
-Try building without it, and see how it comes out.
-
-> +#
-> +# Since: 10.1
-> +##
-> +{ 'command': 'query-mpam-cache',
-> +  'data': { '*level': 'int' },
-> +  'returns' : ['MpamCacheInfo'],
-> +  'allow-preconfig': true }
-> diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
-> index b93dd68..cef175d 100644
-> --- a/qapi/qapi-schema.json
-> +++ b/qapi/qapi-schema.json
-> @@ -64,6 +64,7 @@
->  { 'include': 'replay.json' }
->  { 'include': 'yank.json' }
->  { 'include': 'misc.json' }
-> +{ 'include': 'mpam.json' }
->  { 'include': 'misc-arm.json' }
->  { 'include': 'misc-i386.json' }
->  { 'include': 'audio.json' }
 
 

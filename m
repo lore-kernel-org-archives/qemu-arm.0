@@ -1,84 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D2AF60A2611
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 12:15:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 55C6E606A31E
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 12:16:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fujitsu.com header.i=@fujitsu.com header.a=rsa-sha256 header.s=fj2 header.b=Nbt15hPe
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=UHxt5G6P
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLJbI-00026r-DT; Mon, 26 Oct 2026 08:14:52 -0400
+	id 1xLJcF-00044g-2h; Mon, 26 Oct 2026 08:15:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fj2110jc@fujitsu.com>)
- id 1xLHPA-0002lE-8G; Mon, 26 Oct 2026 05:54:12 -0400
-Received: from esa8.hc1455-7.c3s2.iphmx.com ([139.138.61.253])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fj2110jc@fujitsu.com>)
- id 1xLHP6-00080Z-V2; Mon, 26 Oct 2026 05:54:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj2;
- t=1793008448; x=1824544448;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=w6UU+vIiuqZc0J6GyS2zK2hsjo3ELADEVjFwNOBX6P8=;
- b=Nbt15hPe9Y/BM8YpgFuELsnpC5dQyXOvwwYLKhLyLi+x8P5A/csZpxHZ
- /WcnTWbNw+SyVmBOSk0cG6/M7aqWbJMn8XY7ncLLBBUM9xSDD9aoKGzBK
- kETaF/ceYf+VtpI6PFnFPWMj0M3oXObHmaQikC3wqY3bKx0IqWeZxaIE2
- VLlJhFVeQVvGyx4zIyMNb6Gyz4vTDeMeeT03C6VYLkOuPnxvwMmhCsd9A
- ZttECL+Zwi4xhuMe5zWwC4BuYHTHe5cU+IrALIMHlJEpjycXi1z+2j7IY
- qQSTMv0Of0O6TF8UbTbu+QOFbN9D+8oJW3MreRec389hhceB4l1f+rN+m Q==;
-X-CSE-ConnectionGUID: MPphLMynQQmMgDYyZT/wAg==
-X-CSE-MsgGUID: TWPwxJGrRDSX6wHgCGNP0g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11946"; a="247435593"
-X-IronPort-AV: E=Sophos;i="6.27,179,1786978800"; d="scan'208";a="247435593"
-Received: from gmgwuk01.global.fujitsu.com ([172.187.114.235])
- by esa8.hc1455-7.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2026 18:54:04 +0900
-Received: from az2uksmgm4.o.css.fujitsu.com (unknown [10.151.22.201])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by gmgwuk01.global.fujitsu.com (Postfix) with ESMTPS id 0DB001C1C711;
- Mon, 26 Oct 2026 09:54:04 +0000 (UTC)
-Received: from m3003.s.css.fujitsu.com (unknown [10.128.233.114])
- by az2uksmgm4.o.css.fujitsu.com (Postfix) with ESMTP id 74D3214003B5;
- Mon, 26 Oct 2026 09:54:03 +0000 (UTC)
-Received: from tanjiro.soft.fujitsu.com (unknown [10.118.236.61])
- by m3003.s.css.fujitsu.com (Postfix) with ESMTP id 0931B2069EA7;
- Mon, 26 Oct 2026 18:54:02 +0900 (JST)
-To: qemu-devel@nongnu.org
-Cc: Yukiya Takaki <fj2110jc@fujitsu.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Anisa Su <anisa.su@samsung.com>, Igor Mammedov <imammedo@redhat.com>,
- Jonathan Cameron <jic23@kernel.org>, Junjie Cao <junjie.cao@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xLJbv-0003iA-B4
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 08:15:33 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xLJbq-0006HV-5l
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 08:15:29 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-6b1d8944cb0so4544647a12.3
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 05:15:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1793016922; x=1793621722; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=4johF67sE5MfY9zt0bmfEG2YtJbZ7EYM7PYAvmM4dRg=;
+ b=UHxt5G6Pn9v7v+u5HHWBWzc01zkBIwWIVmb9UEfjdSvQJSoeX1fq/xT0CLNwtiTXxf
+ qGOJzj9emvSwjzafxQF/X43xRWaNfknwWUpADg+y/kaaAQKVTlLES61dW6NNFoD4nOjh
+ WvQjun+2whXboNKPWSLA/+VxIUmNK3QRMzB9hGQFvMR2Ss8jISPzgl8J0EBH/5vAZO3F
+ suypdY9Aeyll4KH8d0QDoLAmwsIE4fN+1HSQkuRxjsM1Ln05g4oCjYOtGK3Kj0SleFNh
+ qGDo3uCeQFW2Nk11ciBM7wrt0pSQnomMXwy9ZjuBz2f3adED++Hg7Xvu7CrymWgnZaIx
+ cj9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793016922; x=1793621722;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=4johF67sE5MfY9zt0bmfEG2YtJbZ7EYM7PYAvmM4dRg=;
+ b=ZHjKLvyCrqKxY/gbgAm2yx5rNXSVXxeHIc41JO96UDYv9mfDP61pPJuwfF1CslfJdL
+ 9VsrXv47w3X5B8bE2+BSVdVXBQlNkWzMoS0HTdx6HU784IaHbW/aHQxeBOr0rUA8k/pB
+ BHReCwhvCrmTOS7iZErbh/L2AO6aMPhZQpbbwW1moQEDBLuRCjeUW15nIwFMYUb5NHzE
+ vuYQd20fshjpx5/6KBHWoiQ28mSypsNCS9bp4aXsXyf4OVoAOR0z0jTsKJInal+CxM6/
+ Op+45CtXI2ivLRwwQu90+q4dHpcaWsh2Q/0v3htbkn6EqEoCtuG7482pZIpWo1pZDOXB
+ 4Hdg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBx2evNwv6C3SGD3ccnYSYNIaBTRKZPR1DEnGhym7larQQPFiie2xshwU9XPfymcDYWwNibokncsjQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJJpJMLGJI+YjnmOLLCgz/sJwMo9BZpCVAO4xtJr3BoL02B96Gz
+ rnHOf97PW7sKeg1Xf7gu5eXRxwr+TxOntrCJiuyfANFY8D53iKyrPcN2
+X-Gm-Gg: AYBFou3Om+8eGewTTOMGj5g9dVzXQUlEaagbuy+kiiat7Uh/wI/tuyWB+CwKfjLV4nr
+ vO0XuaNBhDIeBXNnq9EcUZ6GCuc/SAvvlXi3seEf2sXld9ASrW7y+XiOoJIWr3qSzpeQwwtLgAw
+ ePnx22Z0TTcYYk89+keuHhR5YApmKpj66xKeHUZPzz5bUWmjlap0pqtq9Kk4n7SO5RTyMpSJM7n
+ VTb0HDQxo5Gr1beUV/SaLd4LYGDZ0ktw5q0g2mRugaNYdgdnUNlXs5tHsxean0vTWcvKCbhLGIQ
+ ZgV/VQZ/kA5BDYAI1wYkVPWHz7NHn8/TFvRnVyiO4+CcrkHhpQEYpmHFELsUkKboWlw0yv4o27l
+ STTd+Qr3VNeJmsnrOpQedBpl+hlj6c067hwQiQ/FS7YigDkw01mm08wN9y/MPF2qZl3qGV1IjOX
+ qJVVH1K94VqxgcuhqCseFbCKuSaqBDLSLaKmsvUSIUZzKgxNpxCg08CX0NX8Y/CEA+4YUseVt1P
+ EbGXVO5S2+t9ljEVUjAW6y/0nmV1gZWvUADZiw5DFfIK7A2g0xx8VijHH1pQcrkQC1FSjFOY45w
+ Jj8g8OHptnnp3NHRJmVHhCChPXR0/ZJJFH7wRxXiig3vAQI=
+X-Received: by 2002:a17:907:72c7:b0:c46:7643:ae91 with SMTP id
+ a640c23a62f3a-c46bdbeff8emr741397366b.8.1793016922216; 
+ Mon, 26 Oct 2026 05:15:22 -0700 (PDT)
+Received: from ehlo.thunderbird.net
+ (business-090-187-110-129.90.187.pools.vodafone-ip.de. [90.187.110.129])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c46bd4ea608sm304747766b.21.2026.10.26.05.15.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Oct 2026 05:15:21 -0700 (PDT)
+Date: Mon, 26 Oct 2026 11:43:31 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org, Bin Meng <bin.meng@processmission.com>,
+ QEMU <qemu-devel@nongnu.org>
+CC: Jean-Christophe Dubois <jcd@tribudubois.net>,
  Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
- "Wolski, Tomasz" <tomasz.wolski@fujitsu.com>, lizhijian@fujitsu.com,
- y-goto@fujitsu.com, yukiya.takaki@gmail.com
-Subject: [PATCH RFC 0/7] QEMU/hw/cxl: Allow CXL Type 3 memory regions to be
- initialized at guest boot
-Date: Mon, 26 Oct 2026 19:03:21 +0900
-Message-ID: <cover.1793003983.git.fj2110jc@fujitsu.com>
-X-Mailer: git-send-email 2.52.0
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_09/10=5D_docs/system/arm=3A?=
+ =?US-ASCII?Q?_Document_MCIMX6UL-EVK_Buildroot_boot?=
+In-Reply-To: <8713C764-0DB7-4C17-ACB8-F2A4987963C1@gmail.com>
+References: <20261014045605.399684-1-bin.meng@processmission.com>
+ <20261014045605.399684-10-bin.meng@processmission.com>
+ <8713C764-0DB7-4C17-ACB8-F2A4987963C1@gmail.com>
+Message-ID: <ED24EF65-6D3E-43A2-BB80-C8CE87404390@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=139.138.61.253; envelope-from=fj2110jc@fujitsu.com;
- helo=esa8.hc1455-7.c3s2.iphmx.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 26 Oct 2026 08:14:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,185 +105,154 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Yukiya Takaki <fj2110jc@fujitsu.com>
-From:  Yukiya Takaki via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-17.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hello everyone,
-
-I’m a student intern, and this is my first time sending patches to an open source mailing list.
-
-This patch series configures QEMU’s CXL Type 3 devices so that guest operating systems can automatically discover
-and create CXL regions during boot, aligning QEMU’s behavior with real hardware.
-
-Background and motivation
-  Currently, during guest boot QEMU does not provide the information or register programming needed for the guest OS
-  to initialize CXL Type 3 memory, so using it still requires an explicit action in the guest (for example, running the cxl create-region command).
-  By contrast, on some physical systems the firmware automatically allocates CXL memory ranges and exposes them to the OS,
-   allowing the Linux CXL driver to discover and create regions during boot.
-  This patch series is a first, experimental attempt to reproduce that behavior in QEMU.
-
-  Some parts of this implementation are based on Li, Zhijian’s work in:
-  https://github.com/zhijianli88/qemu/tree/program-decoder-v2
-
-  I would like to ask for feedback on whether this approach makes sense and whether I should continue to enhance it.
-
-Approach
-  This patch first adds a program_hdm_decoder option to cxl-type3.
-  When program-hdm-decoder is enabled on cxl-type3, QEMU will:
-    1) program endpoint/host-bridge HDM decoder state,
-    2) expose Type 3 ranges as E820_SOFT_RESERVED on x86,
-    3) create memory-only NUMA nodes for those ranges,
-    4) emit SRAT memory-affinity entries mapping each Type 3 HPA range to its node ID
-
-  On real hardware, HDM decoder programming and memory layout are typically handled by firmware, so they would ideally be managed by SeaBIOS.
-  However, in the current QEMU/SeaBIOS model, E820 and SRAT are built on the QEMU side, and pushing HDM decoder programming
-  into SeaBIOS would introduce additional complexity and risk inconsistencies.
-
-Testing
-  We ran tests in the following environment and confirmed that CXL regions were created at boot, NUMA nodes were set up,
-  and E820_SOFT_RESERVED entries appeared in the E820 table:
-
-  - BIOS: SeaBIOS c2a33ad9ad1452e23b41c4ac44a3bc6be8ebc4cf
-  - CXL memory: 4 GB
-  - CFMWS: 4 GB
-  - Host bridge: 1
-
-  The following is the startup script.
-
-  sudo /path/to/qemu/build/qemu-system-x86_64 \
-    -name guest=cxl \
-    -nographic \
-    -machine q35,accel=tcg,nvdimm=on,cxl=on \
-    -cpu max -smp 4,sockets=4,cores=1,threads=1 \
-    -m size=4G,slots=10,maxmem=20G \
-    -drive file=/path/to/image.qcow2,format=qcow2,index=0,media=disk,id=hd \
-    -bios /path/to/seabios/out/bios.bin \
-    -nic bridge,br=virbr0,model=e1000e,mac=52:54:00:b5:4e:7c \
-    -object memory-backend-ram,size=2G,id=m0 \
-    -object memory-backend-ram,size=2G,id=m1 \
-    -numa node,nodeid=0,cpus=0-1,memdev=m0 \
-    -numa node,nodeid=1,cpus=2-3,memdev=m1 \
-    -device pcie-root-port,id=pci-root,slot=4,bus=pcie.0,chassis=0 \
-    -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1,hdm_for_passthrough=true \
-    -device cxl-rp,port=0,id=root_port13,bus=cxl.1,chassis=0,slot=2 \
-    -object memory-backend-ram,size=4G,share=on,id=vmem0 \
-    -device cxl-type3,bus=root_port13,volatile-memdev=vmem0,id=cxl-vmem0,program-hdm-decoder=true \
-    -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=4k
-  
-  Furthermore, we conducted the experiment in which we added two CXL Type3.
-
-  - CXL memory: 4 GB × 2
-  - CFMWS: 4 GB × 2
-
-  The following is the startup script.
-    
-  sudo /path/to/qemu/build/qemu-system-x86_64 \
-    -name guest=cxl \
-    -nographic \
-    -machine q35,accel=tcg,nvdimm=on,cxl=on,hmat=on \
-    -cpu max -smp 4,sockets=4,cores=1,threads=1 \
-    -m size=4G,slots=10,maxmem=20G \
-    -drive file=/path/to/image.qcow2,format=qcow2,index=0,media=disk,id=hd \
-    -bios /path/to/seabios/out/bios.bin \
-    -nic bridge,br=virbr0,model=e1000e,mac=52:54:00:b5:4e:7c \
-    -object memory-backend-ram,size=2G,id=m0 \
-    -object memory-backend-ram,size=2G,id=m1 \
-    -numa node,nodeid=0,cpus=0-1,memdev=m0 \
-    -numa node,nodeid=1,cpus=2-3,memdev=m1 \
-    -device pcie-root-port,id=pci-root,slot=4,bus=pcie.0,chassis=0 \
-    -device pcie-root-port,id=pci-root-net,chassis=5,slot=5,bus=pcie.0 \
-    -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1,hdm_for_passthrough=true \
-    -device cxl-rp,port=0,id=root_port13,bus=cxl.1,chassis=0,slot=2 \
-    -device cxl-rp,port=3,id=root_port14,bus=cxl.1,chassis=2,slot=4 \
-    -object memory-backend-ram,size=4G,share=on,id=vmem0 \
-    -object memory-backend-ram,size=4G,share=on,id=vmem1 \
-    -device cxl-type3,bus=root_port13,volatile-memdev=vmem0,id=cxl-vmem0,program-hdm-decoder=true \
-    -device cxl-type3,bus=root_port14,volatile-memdev=vmem1,id=cxl-vmem1,program-hdm-decoder=true \
-    -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=4k,cxl-fmw.1.targets.0=cxl.1,cxl-fmw.1.size=4G,cxl-fmw.1.interleave-granularity=4k
 
 
-How to use
-  Specify the following parameters when starting QEMU:
+Am 22=2E Oktober 2026 22:50:11 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>
+>
+>Am 14=2E Oktober 2026 04:55:59 UTC schrieb Bin Meng <bin=2Emeng@processmi=
+ssion=2Ecom>:
+>>Provide verified instructions for U-Boot and direct Linux boot using
+>>Buildroot images=2E
+>>
+>>Signed-off-by: Bin Meng <bin=2Emeng@processmission=2Ecom>
+>>
+>>---
+>>
+>>(no changes since v3)
+>>
+>>Changes in v3:
+>>- Document the RAM limits and firmware geometry rounding
+>>
+>> docs/system/arm/mcimx6ul-evk=2Erst | 72 +++++++++++++++++++++++++++++++=
++
+>> 1 file changed, 72 insertions(+)
+>>
+>>diff --git a/docs/system/arm/mcimx6ul-evk=2Erst b/docs/system/arm/mcimx6=
+ul-evk=2Erst
+>>index 8871138ab3=2E=2Ea84b447019 100644
+>>--- a/docs/system/arm/mcimx6ul-evk=2Erst
+>>+++ b/docs/system/arm/mcimx6ul-evk=2Erst
+>>@@ -3,3 +3,75 @@ NXP MCIMX6UL-EVK (``mcimx6ul-evk``)
+>>=20
+>> The ``mcimx6ul-evk`` machine models the NXP i=2EMX6UltraLite Evaluation=
+ Kit
+>> MCIMX6UL-EVK development board=2E It has a single Cortex-A7 CPU=2E
+>>+
+>>+The minimum RAM size is 16 MiB and the maximum is 2 GiB=2E
+>>+The MMDC geometry reports the largest power-of-two capacity
+>>+not exceeding the configured RAM size to firmware=2E Direct Linux
+>>+boot uses the full configured RAM size=2E
+>>+
+>>+Booting Buildroot images
+>>+------------------------
+>>+
+>>+Build the SD card image with the tested Buildroot version:
+>>+
+>>+=2E=2E code-block:: bash
+>>+
+>>+  $ git clone https://gitlab=2Ecom/buildroot=2Eorg/buildroot=2Egit
+>>+  $ cd buildroot
+>>+  $ git checkout 2026=2E05
+>>+  $ make imx6ulevk_defconfig
+>>+  $ make
+>>+
+>>+The following examples use images generated by Buildroot::
+>>+
+>>+  IMAGES=3D/path/to/buildroot/output/images
+>>+  QEMU_BUILD=3D/path/to/qemu/build
+>>+
+>>+The generated raw ``sdcard=2Eimg`` is about 84 MiB, which is not a capa=
+city
+>>+supported by QEMU's SD card model=2E Resize the image in place to 128 M=
+iB::
+>>+
+>>+  "$QEMU_BUILD/qemu-img" resize -f raw "$IMAGES/sdcard=2Eimg" 128M
+>>+
+>>+This modifies the Buildroot output image; rebuilding the image restores=
+ its
+>>+original size=2E
+>>+
+>>+The SD card must be attached to USDHC2 with ``index=3D1``=2E It is cons=
+equently
+>>+named ``mmc1`` by U-Boot and ``mmcblk1`` by Linux=2E The first partitio=
+n contains
+>>+the kernel and device tree, while the second partition contains the roo=
+t file
+>>+system=2E
+>>+
+>>+U-Boot boot
+>>+~~~~~~~~~~~
+>>+
+>>+The machine does not model the i=2EMX6UL Boot ROM or its SPL loading se=
+quence=2E
+>>+Load U-Boot proper at its linked address::
+>
+>Extra ':' which prevents the code block being rendered correctly=2E Remov=
+ing it fixes it=2E
+>
+>>+
+>>+=2E=2E code-block:: bash
+>>+
+>>+  "$QEMU_BUILD/qemu-system-arm" \
+>>+      -M mcimx6ul-evk -m 512M \
+>
+>The `-m 512M` will become redundant once my imx cleanup series lands=2E S=
+ame in the command below=2E
+>
+>>+      -device loader,file=3D"$IMAGES/u-boot=2Ebin",addr=3D0x87800000,cp=
+u-num=3D0 \
+>>+      -drive file=3D"$IMAGES/sdcard=2Eimg",if=3Dsd,index=3D1,format=3Dr=
+aw \
+>>+      -nographic
+>>+
+>>+The default Buildroot U-Boot environment selects ``mmc1``, loads ``zIma=
+ge``
+>>+and ``imx6ul-14x14-evk=2Edtb`` from the first partition, and starts Lin=
+ux with
+>>+``/dev/mmcblk1p2`` as the root file system=2E A ``bad CRC`` warning whi=
+le loading
+>>+an uninitialized persistent U-Boot environment is expected; U-Boot cont=
+inues
+>>+with its compiled-in defaults=2E
+>>+
+>>+Direct Linux boot
+>>+~~~~~~~~~~~~~~~~~
+>>+
+>>+QEMU can load the Buildroot kernel and device tree directly=2E The kern=
+el then
+>>+mounts the second SD card partition as its root file system::
+>
+>Extra ':' here, too=2E
 
-  - bios <SeaBIOS binary that includes commit c2a33ad9ad1452e23b41c4ac44a3bc6be8ebc4cf> to ensure that E820_SOFT_RESERVED entries are exposed
-  - Add hmat=on to the -machine option [1]
-  - Add program-hdm-decoder=true to each -device cxl-type3 option
-    [1] On Linux, the kernel first checks E820_SOFT_RESERVED ranges. When multiple CXL Type 3 devices share a contiguous HPA range,
-        these ranges tend to be merged into a single region, so the CXL driver cannot reliably initialize per‑device regions based on E820 alone.
-        SRAT entries for CXL memory are therefore needed, and the guest seems to discard SRAT when `hmat=on` is not specified,
-        so HMAT must be enabled.
+With the above fixes:
 
-QEMU base commit: bddb785e791e415db38884848d068457e226f5e3
+Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
 
-TODO
-  With the current implementation of this patch, the following configurations are either not supported or have not been sufficiently tested.
-  As a result, automatic creation of CXL regions in the guest OS may fail:
-
-  - A CXL persistent memory device is included
-  - Interleaved configurations
-  - Cases where the memory size specified by CFMWS does not match the size of the CXL Type 3 backend memory
-  - Configurations where CXL memory is attached via a switch
-  - Multi-target CFMWS environments
-  - ARM environments
-  - HMAT does not yet include information about CXL memory devices
-
-  The following behaviors are also provisional implementations and may need further refinement:
-   - A new NUMA node ID is assigned to each CXL memory device. This should be improved either to reflect more accurate NUMA distances for CXL memory,
-     or to allow the NUMA node IDs to be specified by the user.
-   - Assignment of CXL Type 3 devices to CFMWS address ranges. On physical systems, platform firmware typically generates CFMWS entries
-     based on the detected CXL topology and its address-space allocation. In QEMU, however, CFMWS entries are configured explicitly
-     through machine options. The current implementation therefore has to infer which CFMWS range should be used for each Type 3 device.
-     This selection logic may need further refinement. Possible approaches include improving the selection and validation logic,
-     adding an explicit option to associate each Type 3 device with a CFMWS entry,
-     or generating CFMWS entries automatically from the configured CXL topology and devices.
-   - HDM decoder reset sequencing and state reconstruction.
-     The current implementation prevents the host bridge HDM decoder configuration from being overwritten later in the same reset
-     by moving the common initialization of the host bridge component registers from the reset path to the realization path.
-     However, ideally, after the registers have been restored to their reset values, the host bridge HDM decoder configuration
-     automatically programmed by QEMU should be reconstructed as part of reset processing.
-
-Thanks,
-
-------
-
-Yukiya Takaki (7):
-  QEMU/hw/cxl: add program-hdm-decoder option for CXL Type 3 devices
-  QEMU/hw/cxl:add HPA offset tracking for CXL Type 3 devices
-  QEMU: hw/cxl: add helper to get HPA range for CXL Type 3
-  QEMU/hw/cxl: auto‑program HDM decoders for CXL Type 3
-  QEMU/hw/cxl: expose CXL Type 3 ranges as E820_SOFT_RESERVED on x86
-  QEMU/hw/cxl: Create NUMA nodes for CXL Type 3 memory
-  add CXL Type 3 memory ranges to SRAT
-
- hw/acpi/cxl_type3.c                 |  30 +++++
- hw/acpi/meson.build                 |   1 +
- hw/arm/cxl.c                        |  10 ++
- hw/arm/meson.build                  |   2 +
- hw/cxl/cxl-host.c                   |  63 ++++++++++
- hw/i386/acpi-build.c                |   7 ++
- hw/i386/cxl.c                       |  11 ++
- hw/i386/meson.build                 |   1 +
- hw/i386/pc.c                        |   2 +
- hw/mem/cxl_type3.c                  | 177 ++++++++++++++++++++++++++++
- hw/pci-bridge/pci_expander_bridge.c |  13 +-
- include/hw/cxl/cxl.h                |   2 +
- include/hw/cxl/cxl_device.h         |   6 +
- include/hw/cxl/cxl_host.h           |   3 +
- include/hw/mem/cxl_type3.h          |   8 ++
- 15 files changed, 334 insertions(+), 2 deletions(-)
- create mode 100644 hw/acpi/cxl_type3.c
- create mode 100644 hw/arm/cxl.c
- create mode 100644 hw/i386/cxl.c
- create mode 100644 include/hw/mem/cxl_type3.h
-
--- 
-2.52.0
-
+>
+>Best regards,
+>Bernhard
+>
+>>+
+>>+=2E=2E code-block:: bash
+>>+
+>>+  "$QEMU_BUILD/qemu-system-arm" \
+>>+      -M mcimx6ul-evk -m 512M \
+>>+      -kernel "$IMAGES/zImage" \
+>>+      -dtb "$IMAGES/imx6ul-14x14-evk=2Edtb" \
+>>+      -append "console=3Dttymxc0,115200 root=3D/dev/mmcblk1p2 rootwait =
+rw" \
+>>+      -drive file=3D"$IMAGES/sdcard=2Eimg",if=3Dsd,index=3D1,format=3Dr=
+aw \
+>>+      -nographic
 

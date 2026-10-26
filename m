@@ -1,91 +1,91 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 320A8606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 14:10:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74739606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 15:24:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=YROjYjbU
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=ly8iidoX
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLLPG-0002jg-Pu; Mon, 26 Oct 2026 10:10:36 -0400
+	id 1xLMYb-000171-KA; Mon, 26 Oct 2026 11:24:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xLLOW-0002UA-3S
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 10:09:50 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1xLMYZ-00016V-KN
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 11:24:15 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xLLOU-0002EI-7o
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 10:09:47 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-48e4831c028so1480873f8f.0
- for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 07:09:45 -0700 (PDT)
+ id 1xLMYW-0002u7-Hf
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 11:24:15 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4a140e7405dso31803345e9.3
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 08:24:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793023784; x=1793628584; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793028251; x=1793633051; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=aULPKl9qSVaw10b8fVCSR3N//3y36NIH+jzufg8zy/s=;
- b=YROjYjbUTD7MeXe6X9fUchyPUHQZnzM7YFMVIjnU8uLFCydSRh6rME2zG9MYlNPoZg
- EK1fPXf/bmcmf2PD8+8iANKzEsj9uW9juvQeS/RJRnYWNeP4i0ORKtX5OENhpWZf8N8+
- vh4j5+I1uEWtvXPjhKkhjJ7tKKn+KBSyrLVt9krkeIyOo+ju/+KcBSbPcKcJZ2c4rDdz
- g2vPvN5Pu82FttmUVGHd2XE8ugxTEukhlemwbx9KHbg3qHuLv1wHLDpo02SKlZuB/z1M
- +EoiQ3TvJ29wqS8ZQxmFOWSMABK9n3r7DjjfeSMXtb8ZNqyM0CyXuAmN0JuLqjoAmAf0
- UBaA==
+ bh=iHLjy8pJ8iyfK3sYq9Xi7wXXIOu6Z3yiwwBHVaC73dA=;
+ b=ly8iidoXA6GgO2sXQLJMVkzsqhv2ExjLUwChcPCVP7R172gT6lcjnNL4Z4jCLTHC+E
+ DdPKt9JF4XbcuSnBVh1ep6vMOwF93eTU6Tail3M/kfl+LogJrIF8A+FKO6whj6fYtGXu
+ oxSbqVMSwWc/A6WkfIIxo7PFty1ReqwE8gHUJ18aIBlDUejW3vQgQi060fMV1D8xhMKg
+ HDqp+Q++KxsM5cTTtd2FV5qkJqKrEn0xYgh/zsdq8Q0w3Ej4iPEVxEHUJGjoBzzPwvm3
+ 5uHrsGr9+XSFkHnkE+rxyOYIeNd05BEA/ClgItF4PETB5gMFMN4u11rK19GlD/7IuqZx
+ THEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793023784; x=1793628584;
+ d=1e100.net; s=20260707; t=1793028251; x=1793633051;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=aULPKl9qSVaw10b8fVCSR3N//3y36NIH+jzufg8zy/s=;
- b=ZPlR6m+sjZImsP1yvXwUSzTSllA1nje005nmNlzEuxgjo7IuEXpX/uS3x5UBF7WPKr
- 3nz0MkYZe1ZdVsBx5xVFemDkLi5C1sBMhfxr1RS1n7f2FBIL/9w+iuyz5Cz4FRq9UgC2
- XJdsa5pLNYk7Q523ue0p3l9MVn2itnJgdcPZOfbbfw7O8OXqbUCya7fgwHZOQ2cg6rKe
- OnbYaJqJmSynHAMw5cNtaLKjcewI0awA5v44mtu00Nh0Wjg+Hri5G1qTzwpZgZSX5rvu
- ADcJNukQjTephRaaJWFUJWJm5tC50StNQ+qPxLj94kDxQCpTAPIZbdBmkRGtwgRJzCKk
- y/Fg==
-X-Gm-Message-State: AFq9FYK1VGTaKib0/bIMbf1f4xwgrxgrMwLK88yr1o02nA6nUrK5kP1C
- xozLw42zHNBetvoy/W+ulEy84YCymL7OO+xHdha6tGQ7y1Ctc7dv3EJqaBRZU5YLb3fFyYreAlx
- mOd2yxGo=
-X-Gm-Gg: AYBFou1+0aJFHi8G9voPcFP6GRJ32Ehm9306XYtoYaKDyEUZKpfgNpXXn5xZFyu40XG
- 3Dt9tZ+1sY087TZtpT+si3SpVh2F/sZvMwy5OuUrd6RF62zkElAnM4gqcOEdobT/7Tjrj1fzLa3
- qc1Lyi2pRZVvEVrjw+4hsitc9MEo7UsPPWGX1HFSwmDtPFG3zRzU+jY+Mu2FuxYRuouGikeiG6l
- vpW6JpOBhUuQLFGXBRwnPFwZGUwms2a4jH7Xn6mS9Xjb1yBK3/wHqIsqarezfZYmNjfuV3tkMf1
- JQWCbNh59UFjKK7GYYvQHdb9GLTIjwV1EXx1ZwZ56Fz9cDRjINbQRqu5eWjfsogIv7nJuNiLOAP
- ntQug7N2tXjSmg2/BWFpbDvxrIkt3OAloLi+wSIO+uy0j1bJsqnNb1dYU/tUOelwzenrHWf9K+x
- lAi/AgKGagLI2/bp/8+f7E7/c6ogznhRoC9Z9DDHN/6FLLHQZOlb01XvsEUBprixFVuYBlVNVhr
- Kb1Sr3hcSCVc7OyJec8EY/Xa8aMarTm/2LRX/B9bfZpg4dosEOmyCsDzsIT9k+jAJDMNe3suEYY
- qFD319ZQU6XeSObqqx4DfrzAD4R7Bml/h5ur1kdlAwoXvJ4jMQ87T38VU83J
-X-Received: by 2002:a05:6000:491c:b0:48e:4395:2dc with SMTP id
- ffacd0b85a97d-48e439506a9mr12075950f8f.22.1793023784242; 
- Mon, 26 Oct 2026 07:09:44 -0700 (PDT)
+ bh=iHLjy8pJ8iyfK3sYq9Xi7wXXIOu6Z3yiwwBHVaC73dA=;
+ b=OiOyAWU6kWHeEkeb6kYffmY91ZX5uaZU23QO0QpGDDJsTVxGz6FoSlDQ00UeuJuA42
+ 99FTn1LWhAhQ/0aEj/C+bJcGYJ1AZ8r7yyKGpdDgYqBLiz3f54QDVIldcw81XVnqcr/2
+ eXe+4GXlv8Y9snNG65BJoiqCld16+nXAgVJ6JY2P+orqNSj7V8MWKycPCzt3mAzELDLO
+ ryS6fKHEFO10YuKVB2POvy+TSUIlWtexH8tWYYLfpq1C1LRoRpXzKRoZLrgc1Y2HYLID
+ j75F/Wqk2Se1XWZNss5h9mOxuHc/75gM5+mcuuj6wR7xeC7xedEH20HJ9jjioQC+yORp
+ gPvg==
+X-Gm-Message-State: AFq9FYIqHkjKaAlGdgYgVkQw/sQ76ya/yMgLWdxnzOiD9rKLD8ZjvpdH
+ aT96k34u8wTYRyakAfKawdYyqFrsk0K0siJPN/hifatKtELuUWyEweDuOxCzJfU8nJi6eCTU/9R
+ jzQiVJ/w=
+X-Gm-Gg: AYBFou2EaygmM0uH0Vig69llKaWwiyoJITLmnhap2cEgdvv6hG6wDtnceUnmstaYSpx
+ p0kw3/AO2VbtFcZH5mwJ8+bWrE0pQhHiX2XpDtlB88IW9L5vD581EQ84jUnmjYgagZPmauQF1dG
+ OGYXvuQfv5qsA9NlNuv8jTasXNhkwrzaJg2lMvhqFnne7NeTBoFDnSC8GB+9hYqr34BreaNG3cU
+ 0odABFUB/FH7W9Y12mVCF1AptkREos69iXy7aqTr2r4Gpwcx0ZvEZekqPwCrChc3t8Ywm7VibxK
+ j2qJFMaJCKgWK1Z1/EOnBgxVuDpYeSm/Ah103weY+yeFD2bKSU03sHT3RnxAxvOaXZqepIEwlSf
+ UTWWywygV+kkb6NoHZKiD3oAiW1T8yWErVS+ySGGnlxHhAqYGrHcnhLwNMV8M2evkHknpyBZm9b
+ FQXVHIv0XlVEqGmmWsa7q8AMg+QIhWA/MGE2vgVmrFQ1cXC/YU79jh8XH2606f7sMpuz+mvXMtz
+ LaHSEPZI6pxgWQY6B0BeNuEFk1ED7LyShWOT4ZTKoc2Jo4tizjRH95SX60a4q+MdskhoKedy9Lr
+ NTLLbpVrXykIRcSLh3Y9rvk70cBwM0W5yQu9CSBGxlC7+8xAC52qLSMjppWK
+X-Received: by 2002:a05:600c:4e8b:b0:4a0:23f:8b0d with SMTP id
+ 5b1f17b1804b1-4a35ac3cb16mr131069025e9.2.1793028250760; 
+ Mon, 26 Oct 2026 08:24:10 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e4115f496sm15814077f8f.5.2026.10.26.07.09.43
+ 5b1f17b1804b1-4a359f3e00asm352717525e9.0.2026.10.26.08.24.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Oct 2026 07:09:43 -0700 (PDT)
+ Mon, 26 Oct 2026 08:24:10 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH] target/arm: For linux-user,
- prioritize PC misalignment fault over insn abort
-Date: Mon, 26 Oct 2026 14:09:42 +0000
-Message-ID: <20261026140942.2768950-1-peter.maydell@linaro.org>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: [PATCH] hw/display/xlnx_dp: Make assertions clearer
+Date: Mon, 26 Oct 2026 15:24:09 +0000
+Message-ID: <20261026152409.2869104-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,66 +101,50 @@ X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The Arm architecture requires that for PC alignment fault exceptions
-take precedence over Instruction Abort exceptions.  We get this wrong
-for linux-user mode, because QEMU detects the lack of any backing
-memory via probe_access_internal(), and calls
-arm_cpu_record_sigsegv(), which always reports either a Translation
-or Permission fault:
+The xlnx_dp code has some assertions in its read and write functions
+guarding the fallback "read from core_registers[]" codepath.  The
+array can't be overrun because of the defined size of the memory
+region, but the read assert is confusingly written and the write
+assert seems to be completely garbled.
 
-#3  0x0000649548976b94 in arm_deliver_fault (cpu=0x649555ce5920, addr=1, access_type=MMU_INST_FETCH, mmu_idx=0, fi=0x7fff87e4c940)
-    at ../../target/arm/tcg/tlb_helper.c:274
-#4  0x0000649548976d69 in arm_cpu_record_sigsegv (cs=0x649555ce5920, addr=1, access_type=MMU_INST_FETCH, maperr=true, ra=0)
-    at ../../target/arm/tcg/tlb_helper.c:421
-#5  0x0000649548c97650 in cpu_loop_exit_sigsegv (cpu=0x649555ce5920, addr=1, access_type=MMU_INST_FETCH, maperr=true, ra=0)
-    at ../../linux-user/signal.c:761
-#6  0x00006495488f8235 in probe_access_internal (env=0x649555ce99a0, addr=1, fault_size=1, access_type=MMU_INST_FETCH, nonfault=false, ra=0)
-    at ../../accel/tcg/user-exec.c:790
-#7  0x00006495488f850d in get_page_addr_code_hostp (env=0x649555ce99a0, addr=1, hostp=0x7fff87e4ca70) at ../../accel/tcg/user-exec.c:828
-#8  0x00006495488e5433 in get_page_addr_code (env=0x649555ce99a0, addr=1) at ../../accel/tcg/internal-common.h:116
-#9  0x00006495488e56bd in tb_htable_lookup (cpu=0x649555ce5920, s=...) at ../../accel/tcg/cpu-exec.c:206
-#10 0x00006495488e58c8 in tb_lookup (cpu=0x649555ce5920, s=...) at ../../accel/tcg/cpu-exec.c:251
-#11 0x00006495488e5d2a in helper_lookup_tb_ptr (env=0x649555ce99a0) at ../../accel/tcg/cpu-exec.c:398
-#12 0x00007d973c000270 in code_gen_buffer ()
+Replace both with a simple check against the size the array, which
+makes it clear that we're asserting that we won't overflow it.
 
-Make arm_cpu_record_sigsegv() report a PC alignment fault for
-MMU_INST_FETCH accesses to non-4-aligned addresses for A64 and A32,
-matching the logic used in arm_cpu_tlb_fill_align() for system
-emulation.  (Unaligned PC faults can't happen for Thumb.) This is
-then passed to the guest binary as SIGBUS rather than SIGSEGV.
-
-(The Fixes tag is for the commit that introduced this function, but
-the bug was also present in the previous implementation.  It's an odd
-corner case so it's not worth the effort to try to backport the fix
-beyond that.)
-
-Cc: qemu-stable@nongnu.org
-Fixes: 9b12b6b44250c2 ("target/arm: Implement arm_cpu_record_sigsegv")
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4699
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4586
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/tlb_helper.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/display/xlnx_dp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index 4c3f16dc2aa..2e84b1cb369 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -418,6 +418,10 @@ void arm_cpu_record_sigsegv(CPUState *cs, vaddr addr,
-      * For now, it's easiest to deliver the fault normally.
-      */
-     cpu_restore_state(cs, ra);
-+    if (access_type == MMU_INST_FETCH && !cpu->env.thumb && (addr & 3)) {
-+        /* Misaligned PC faults take precedence over insn abort */
-+        fi.type = ARMFault_Alignment;
-+    }
-     arm_deliver_fault(cpu, addr, access_type, MMU_USER_IDX, &fi);
- }
- 
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index 06594980292..ad6c4952065 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -812,10 +812,10 @@ static uint64_t xlnx_dp_read(void *opaque, hwaddr offset, unsigned size)
+         ret = 0;
+         break;
+     default:
+-        assert(offset <= (0x3AC >> 2));
+         if (offset == (0x3A8 >> 2) || offset == (0x3AC >> 2)) {
+             ret = s->core_registers[DP_INT_MASK];
+         } else {
++            assert(offset < ARRAY_SIZE(s->core_registers));
+             ret = s->core_registers[offset];
+         }
+         break;
+@@ -986,7 +986,7 @@ static void xlnx_dp_write(void *opaque, hwaddr offset, uint64_t value,
+         xlnx_dp_update_irq(s);
+         break;
+     default:
+-        assert(offset <= (0x504C >> 2));
++        assert(offset < ARRAY_SIZE(s->core_registers));
+         s->core_registers[offset] = value;
+         break;
+     }
 -- 
 2.43.0
 

@@ -1,124 +1,141 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24F91606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 17:20:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 194B6606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 17:52:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=loK4z8kM
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=GKJFprp2;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=ES7+dcD4
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLOMx-0005OW-Vb; Mon, 26 Oct 2026 13:20:24 -0400
+	id 1xLOsJ-0002Nv-AP; Mon, 26 Oct 2026 13:52:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLOMs-0005Kn-FF
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 13:20:19 -0400
-Received: from smtpout6.mo540.mail-out.ovh.net ([51.210.91.55])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xLOs1-000263-EO
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 13:52:31 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLOMp-0006hk-HC
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 13:20:18 -0400
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net [79.137.60.223])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jD0kN3h1Kz45Gv;
- Mon, 26 Oct 2026 17:20:12 +0000 (UTC)
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net. [127.0.0.1])
- by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon, 26 Oct 2026 17:20:12 +0000 (UTC)
-Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.119])
- by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4jD0kN2qjpz1xqY;
- Mon, 26 Oct 2026 17:20:12 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.7])
- (Authenticated sender: clg@kaod.org)
- by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 9B7F919231D6; Mon, 26 Oct 2026 17:20:10 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-109S003ded8853f-7924-4206-83df-cc8f81ad243c,
- 0F1D26DCAC6332081EAAC0C4732524D537662835) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.66.77.115
-Message-ID: <87e81593-a68c-4f41-9858-0ab37cf6c611@kaod.org>
-Date: Mon, 26 Oct 2026 18:20:09 +0100
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xLOrz-0002vs-Ts
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 13:52:29 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 69QEvvo83567423
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 17:52:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=2Px0aPx8t7UM+uij9z7bW4
+ Tuh8rXa2BAdWWDddT8704=; b=GKJFprp2PZ5uaDX1s1jXyHgcNbLeqmg7Y3rnrZ
+ SBMJ/r3LDJeru51HdRexYjope1t0LFDus3eLGFjku8D4apKOGKZYMBsf6f5h12mp
+ b+hRWjjUp8/AIqSOYIDqNOaCQbSkcErjpGXLH8WJWmhmTonwwVAn1lHos03x761e
+ sUKxfZQU15SnovcKDR7ORjbvczxfrSh4n2Ei1QAPf9IEVtXyhjhYw7aWucjvTGzS
+ zop26Uf6ucFUq6cHWs5uTjUkHWEo2jT1B6J/f2vKaRLwI2tm8TAytNvr8cgpQseO
+ UZNlYZGb/e+DlMOfz1wHbOu2S/ktuYyrOTEER5WF8Ok7+YLQ==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hj56y1pgd-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 17:52:26 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-93909014c85so680679385a.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 10:52:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1793037144; x=1793641944; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=2Px0aPx8t7UM+uij9z7bW4Tuh8rXa2BAdWWDddT8704=;
+ b=ES7+dcD4Hzszd6FvyCnzVGDu7Ylh54IxlVjze/u/V8s7lk4v6V16YZVOlFkMyYx2d8
+ DN97SR48P00D7dhDj7rih2f+2tEt7hFGnBLj4dvNGRbz4ChTew69Wjp5gVLQPsLQdxUv
+ 5CQW8Qy/60dobnWk0bJuTMTwY5JPJql32xg/5+Loefrz+VcX/MPS5MxN/XM8lm7xdbO3
+ UY7yHWy3QFYhSKCWhRvRKhHPfyaAT611bknzZQJ0e4hDlpvJKEzJTAWk3CAzVJ4hrA0G
+ emM5qchz/SZMsyoLj5a+3M2gmYh9RnbCoEvfxiVUDjNgbBWb2swtpnIeq2AlYh9s8G6c
+ jZWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793037144; x=1793641944;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=2Px0aPx8t7UM+uij9z7bW4Tuh8rXa2BAdWWDddT8704=;
+ b=tRlFCzPrTR7W1Nml+MMVAoSrj1R6phOjgQYXtYmOcuSyth5Xyx0NyCxaD9fo3PkIra
+ OEw8cs7ZnIV3oQWUq59LCgmEd+AWSexD5RCS7IgoYh2+RqpczwgFEW8LAErjP6wkEnLZ
+ rwkNi0iEqDVhbbjJUoCYDPaW99UWuMsAnWpRAx4IQioEEGS4bVNOuot9rzPJOb778kze
+ 33sUY8xspjSBuDX4SVu2K6taJ9b2CaMo2UIqQORH4bUMMTkmbU2uSICY9mBo4HNCO9bg
+ YrMPeJGPea01U1+Kn0Mk4VinazjD3ZUCBjKPODY/+YC3CIIU5xxlHJu+z1axQvmEcHSi
+ RNkQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzbIX+WQ+GkJxCoGEq9qTa8wSw/pEnNzCaiPJybexgRGI9oUirs8eD0WXek++pykY++flAE22lTXA==@nongnu.org
+X-Gm-Message-State: AFq9FYLK5ZE/uhB8qyXzO/Tp5I/DKJbk2JFVnbcyVwcM08mo6e1eUMfC
+ xz70vfjLOU+Lo9+K+1MlvPF5DooBqb8CLd9oEh4/1og5tBCpd2k7CyJTzCwMFi/t1GvA8Lge5ff
+ ASXyC7ux+/eXNJxQOFuzDU9x5DQuZ4ni6nOwJ1eXt76LVKcnwU5eP34Q=
+X-Gm-Gg: AYBFou2NCF1bVEWuNqyqvodn+JSRcXodrmWsk0dtiuUC89dbU3aDbLeNnxDMuZmv1Vw
+ hmu860ba58f6t3OoOwnpeJBm0k40nZLH8AcIpBHpBXk8b5c9ZqeN8KgwnpqkraXl9/MB1weq4OF
+ kCcHYKc1HgK1Fed1XLZTijUDI9QX4YjdgdKKH++AZcrjOALy8+IsLqHY83UpDbA9LPM0K7cldTu
+ a9eRmbS2tVxIMtjEqYnY76a+vz2YsfiYgJNQ6uQ2ajCKYyW/ztZljWX+9EQm85YpTxGJcOI+e2c
+ YJbTHj0b9A94hJerj01Xb6Raj0/fCKxwUJtYWxbxPHWas6niOTfW04AO99i2Q3zsvrcXmaVvFuk
+ Np6TcgUXFLM1eQrYR4tnTILYDfjx+xYhdMaXZfuz2
+X-Received: by 2002:a05:620a:1b98:b0:93f:18ba:bf78 with SMTP id
+ af79cd13be357-940ef94aa26mr1123183885a.69.1793037143441; 
+ Mon, 26 Oct 2026 10:52:23 -0700 (PDT)
+X-Received: by 2002:a05:620a:1b98:b0:93f:18ba:bf78 with SMTP id
+ af79cd13be357-940ef94aa26mr1123178485a.69.1793037142866; 
+ Mon, 26 Oct 2026 10:52:22 -0700 (PDT)
+Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e3ecd354asm16866466f8f.43.2026.10.26.10.52.21
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 26 Oct 2026 10:52:22 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Samyuktha K <samyu@qti.qualcomm.com>,
+ Sritam Paltasingh <spaltasi@qti.qualcomm.com>
+Subject: [PATCH] target/arm: Initialize SMCR_EL1.EZT0 for linux-user
+Date: Mon, 26 Oct 2026 18:52:20 +0100
+Message-ID: <20261026175220.85545-1-philmd@oss.qualcomm.com>
+X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 0/9] hw/arm/aspeed: Add AST1080 SoC and EVB support
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20261015063625.186708-1-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261015063625.186708-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 10073426467292556403
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEY9CCrG5m6rnr0jyQ/WX7SWx0LrIc7JRRSWCeg6DBa/VB+IAlu0cuKRmbERATwVec/COZbclo9yi2Y18mmqtJ1KYS4Hgcn9wWfS3phlcKofOGrsgizcEPZGJTFbD/WK4fqqQTpUKk3Kt3hjEVKVOVtHR0GOZVKQlyY1vJq/Xz0kfenqeQxM9gtWNZrr5t2LctTnUst7erj4r6HQ2TQ10vGYxXJiKSNxhjAJNaEXdiLPU9WeRFXi/YTxcN4vUb+4igB5SUK0BPORG5WuRG0EXtCicBFaJelfbYw+HtS7VNDE80UzzR5L9YtenxMan8Ve5awphgZR5sLJCdhVxEo0U4BRob8OtufXohllSqUYNyrM+6L54TSdkPyjM6joAor7aQh7nnsXIzimF9QdwWZzvw5e2lh0lQkqMarWWkJqMMKG40xHReVXl+7fw3OMH91w+1YERs6kkthWDv9Dg24s7veF4zZeZpfWf8ou9tHEYf67DnPUAubtoNqxqTJE3/dh0LXt8kqwjWLKBZQ4HZYLrD502p+IlPaLBmKEte7PXnj1iyKzvY3CzHMxvLdcGlsuFhVcMfDVK8yFUqWYcZhsY4oHdVnA6ef7WJT9wyLKE+mzYhf9TiftVAyeJdRRkmgvtb+Rc5YL9qtxAOfMhndBItNPuhonO5mSZM6Ns8Vo+WOzA
-DKIM-Signature: a=rsa-sha256; bh=bHJjdFninLu7jaULjZNghW+rqb7xx2aH977LqZG4LuE=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1793035212; v=1;
- b=loK4z8kMYomYTegQo6gGnkspge9Qo8DFVSSb+sVKuQRJ8FjF6qV6aHjS6i68sR2xT4r5Amg4
- AD9+VyF6it+s2uKooR7rXRmA3Fwe6h4ePtVpoFsGxPdymoT5EEEpQxA91BcvFqyHcQZJ9ZDPAmU
- mY7ZD+vzEgEqCnjOrwA6Yxz4CuBb1Gdt8y+OnJtCpzhQdSzk3+lhBRj/zvdy8rKoAtyEm371Rly
- oI1eNJwOfiFOk8mvJXnGrjL7k5hku936UB0ASZsJeIvTd4uXJ1++wZ+adOEIXX8h7+9xR73VGQJ
- /Iw8ka+ku2Ec2pauYu3omlgKNV4uF1nioBpviVK2r89HA==
-Received-SPF: pass client-ip=51.210.91.55; envelope-from=clg@kaod.org;
- helo=smtpout6.mo540.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI2MDA3MSBTYWx0ZWRfX50zx4NoN0pJ9
+ mz3k+5YdrIxL1eyca1ZzvYL7tLpHYJWJA3XmbOOTGzZnk/F60OeA0Bf8DxoX6yq3YRITmznHb+I
+ rWO2COn/uXoA1+71f1NbOeTejdfLPic=
+X-Authority-Analysis: v=2.4 cv=eMeGH3p1 c=1 sm=1 tr=0 ts=6adf935a cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=EUspDBNiAAAA:8 a=XLJSLKbTjuxEe3lMcToA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=IoWCM6iH3mJn3m4BftBB:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI2MDA3MSBTYWx0ZWRfX3sC2GVaKyxCf
+ zl6eMXviaAh+GafQ06ZnSh6rWMZCAFdoD5LweDexe6c7lbefXDkJRmz9vwekkqpEfFYiR/NxXjv
+ xnvkFtcqFTnrDQrq4jq4iNprZMdHFhQvaAEiddrVKCuv6RlMtqWAWrbCtPg+rBKIxD/Y15ltZK9
+ kWrUGtlEOLPH8PZMdMb49eif1HCj4tRUOOgszJXPMtzKDZUuFSwr2ta+Nrtvj8MN13k0lDlYv5O
+ Bj0IsY6nuqb0dnAi6rtDEikB0d3ouQQkQDDTxrfZjPPPP74Kso7KuI/p7nTRG4yc3Q30FFZNCAN
+ jiya3rQzLP6dKCUXWmXCifDD+XLpVBZQyw835YHxzQAM+eXhDxmEVYskPYOZVZ2/TbP5m1RwZgp
+ iXdpvQwy1ZAZ683f4+grGQoZFT0cvnp9iPZnvMusBhdvH3951xykE+sAXnDy8zZ7bsSUAcKOgoJ
+ +rgmEV8IWsAB9IK0Jmg==
+X-Proofpoint-GUID: YsbMf84OGS0OYfGOfCz-FdQdC8hUQh6v
+X-Proofpoint-ORIG-GUID: YsbMf84OGS0OYfGOfCz-FdQdC8hUQh6v
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-10-26_03,2026-10-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 malwarescore=0 bulkscore=0 clxscore=1015 lowpriorityscore=0
+ spamscore=0 phishscore=0 priorityscore=1501 adultscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610260071
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,69 +148,47 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-22.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/15/26 08:36, Jamin Lin wrote:
-> This series adds support for the AST1080 Platform Root of Trust SoC
-> and its evaluation board.
-> 
-> This series depends on:
-> 
-> [v1,00/14] hw/arm/aspeed: Add AST1040 FMC/SPI controllers and unimplemented devices
-> https://patchwork.kernel.org/project/qemu-devel/cover/20261015055642.106204-1-jamin_lin@aspeedtech.com/
-> 
-> and is based on the aspeed-next branch:
-> https://github.com/legoater/qemu/commits/aspeed-next
-> 
-> The AST1080 shares most of its design with the AST1040, so the AST1040
-> init and realize code is first split into common functions. The
-> AST1080 SoC is then added with its own unimplemented devices (QSPI
-> filters and I2C filter).
-> 
-> v1
->   1. Add common init function for AST1040/AST1080 SoCs
->   2. Add common realize function for AST1040/AST1080 SoCs
->   3. Add AST1080 SOC and EVB machine
->   4. Add AST1080 functional test.
->   
-> Jamin Lin (9):
->    hw/arm/aspeed_ast1040: Add common init function for AST1040/AST1080
->      SoCs
->    hw/arm/aspeed_ast1040: Add common realize function for AST1040/AST1080
->      SoCs
->    hw/misc/aspeed_scu: Add AST1080 A0 silicon revision definition
->    hw/arm/aspeed_ast1040: Add AST1080 SoC support
->    hw/arm/aspeed_ast1040: Add AST1080 QSPI filters as unimplemented
->      device
->    hw/arm/aspeed_ast1040: Add AST1080 I2C filter as an unimplemented
->      device
->    hw/arm/aspeed_ast1040_evb: Add AST1080 EVB machine support
->    tests/functional/arm/aspeed: Add AST1080 test with ASPEED MCU FW Hub
->      v01.00
->    docs/system/arm/aspeed: Add AST1080 Platform Root of Trust evaluation
->      board
-> 
->   docs/system/arm/aspeed.rst                  |   8 +-
->   include/hw/misc/aspeed_scu.h                |   1 +
->   hw/arm/aspeed_ast1040.c                     | 154 +++++++++++++++-----
->   hw/arm/aspeed_ast1040_evb.c                 |  23 +++
->   hw/misc/aspeed_scu.c                        |   1 +
->   tests/functional/arm/meson.build            |   1 +
->   tests/functional/arm/test_aspeed_ast1080.py |  37 +++++
->   7 files changed, 186 insertions(+), 39 deletions(-)
->   create mode 100644 tests/functional/arm/test_aspeed_ast1080.py
-> 
+On SME2 systems, Linux sets SMCR_EL1.EZT0 in cpu_enable_sme2()
+to allow user space to access ZT0.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+linux-user already initializes SMCR_EL1.LEN and FA64 to match the
+kernel's setup, but leaves EZT0 clear (see commit 3aad4bc8beb9
+"target/arm: Add zt0_excp_el to DisasContext"). Set EZT0 when SME2
+is present to keep the emulated EL1 state consistent with Linux.
 
-Thanks,
+This has no functional effect because CONFIG_USER_ONLY omits the
+ZT0 trap checks.
 
-C.
+Reported-by: Samyuktha K <samyu@qti.qualcomm.com>
+Suggested-by: Sritam Paltasingh <spaltasi@qti.qualcomm.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+---
+ target/arm/cpu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 62262d742a27..851c9a81f3cb 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -387,6 +387,10 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+                 env->vfp.smcr_el[1] = FIELD_DP64(env->vfp.smcr_el[1],
+                                                  SMCR, FA64, 1);
+             }
++            if (cpu_isar_feature(aa64_sme2, cpu)) {
++                env->vfp.smcr_el[1] = FIELD_DP64(env->vfp.smcr_el[1],
++                                                 SMCR, EZT0, 1);
++            }
+         }
+         /*
+          * Enable 48-bit address space (TODO: take reserved_va into account).
+-- 
+2.55.0
 
 

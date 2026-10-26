@@ -1,102 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F33C8606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 15:57:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E7D9606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 15:58:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=IgXKrlnB
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Jh6ndRPO
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLN4W-00083B-6A; Mon, 26 Oct 2026 11:57:16 -0400
+	id 1xLN4k-0008Aj-GC; Mon, 26 Oct 2026 11:57:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xLN4S-00082d-Bo
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 11:57:13 -0400
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+ id 1xLN4i-00089I-SX
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 11:57:28 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xLN4Q-0006TG-Mk
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 11:57:12 -0400
-Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-67a6cc9acbeso112280d50.3
- for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 08:57:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793030229; cv=none;
+ id 1xLN4h-0006X3-B4
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 11:57:28 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-8ab3d3c5761so26952017b3.1
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 08:57:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793030246; cv=none;
  d=google.com; s=arc-20260327;
- b=VbxcPyAP8H4OtwBgL1MRlWd5D1NtAhmhtdA2MXdssNfy7/O9HT+dFFHCUu2HbwjkAF
- 7+nEXlfygyqp/3EWXj5bP3e/dusNmH1oRvwOph0ld34tX5K7VCICYxbZbjL/P6656lu6
- RATNr6zdODnCOGieQ2DQ0OfaeB20w2s9iUUhd5ZRUCmmTQ9CDewxeZcqN02rH1swWPWk
- NJ3tWfwa4JKDBvOsXx670CF7KupxJcKX/D9/CLSi8MoYbbwO3DkBMk/PbKmGaHJuG9nu
- Zgl+d/5PIzyq/qF3y4YaJx+NmvZJpZSv4WeYX1kYM6fd19JrPKhDE/q2KkIHz5Ukputs
- xAMA==
+ b=jqPBuaSce++vryHIvFxtysi/w5oB9xHGCQvUvaRVx7zGc6TpYtg4l/VkJOKTjb1h+m
+ Cn4P1zUTd8RCTuUpsFtJS4+yKfBfejyMC8snIV8KgrjOMRZUtHQGZAv+Diqnq1zS3pP3
+ GuSjyJixXe3enqN8a7L3DlQhuZe8EhxXZSqGIriPJyReLcy2FZnmR9XzDmyfVHNytWXq
+ e7Utg9tuP3G58k78OtiY+WErBWtz/HiJVC9JATtG8ksVEWuuFds/WzET/124zFx2rTdN
+ aubaK8ErnQElLEaWEDlfsGoHq5nyfcm6kKi4cbXr8F3cm0/fI/7VgvZUJ2vQATumLw87
+ lj/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=zx0KTyhOYR8ruT5VlXEVTdnIHHi3M2k8T+AyKfHyLrs=;
- fh=Bdlfl8xv85uV+f6UN3HPWp+uLOdm7Ga3gAe2geXfF8c=;
- b=SGa1R9tmDDGpNHz2MtJ+L1KfWNp77ltip3jubLvMWM51/xtc6lHGkFpYypcZqT66oY
- L6QXeUmotprafOJRGC8QWKbOO4UeIPfyN1Z8zj1FGAndog9HwYbjxqszcp6egMm75h06
- 4KDkPCPGcAxKXJdKB/zF5ARYsFfVPFKmS0WwhNZJtQNfrmhh/WbZC8BhQS7UVVucB4Qn
- aI8wXORc6Je3QX6FDspWIfUSGPursdk0qBEyexH3aUn3VG1mfgrHyrQJa4cj3einl5UU
- YzAN6SMA5v7MUCDUNRpAMob7u4ndibRJbpGNuXloo3FRHZXnzpT42NM5wgdiTu4SYyXk
- QDEg==; darn=nongnu.org
+ bh=im6QOESZ0sJsklj0p6HRXsyXaD/1e5fOfam1nGU1YHw=;
+ fh=JhdLcSbUn98QWn+/p8+hQ4rpDH/EGiWwyvo/eVvfYIM=;
+ b=Z0+0SSHR9qv27MqRjVWGHYwZMD0bOkdJ+YQt3Lsr5iqb7idx4R4SwVlBUPncwX5nnm
+ Ox6b9ugDTrv0pZbSSGGzyg/jvbx/oEDGzZcM7GaR3Z+jbT0tj5lxfL8CW4gyJXO07PHO
+ EnekXGoXIOZDNv9RVft+kvnovBiYue9a7OFS2b80MhC/y5s+mMqb9zD05Y2wS540EYdr
+ Qm6uW6BzCXrNOxbCPz8XwuIujmMYBodJBqsX3ewV7RXpIOX2pwqQJuh3Yif0nxf/zs5v
+ JYS2/tVaCt0/NUbH4WftSpmWrAajuTtHf2T11hE9Evh8yr7zgVbN0TvPkNktMgEU5l6v
+ dcIQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793030229; x=1793635029; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793030246; x=1793635046; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=zx0KTyhOYR8ruT5VlXEVTdnIHHi3M2k8T+AyKfHyLrs=;
- b=IgXKrlnBrWSoNi1VJWGpqbboXerqdgMiNDMu/tf58AM7tzrPrn/P/lGAtvQW8abI2W
- tCReDpfbLS2S4t6zAV8fhd/dOMkvnzvhWYMnAW4KwT+fO7Bnzv+Ih/iRtTlEz8FaTJUZ
- YSZSSpg//P41SsCMMnhMra6GzdR7rG78gkTYJvkkzdPBfAXNE7mUSMHPoBe47niL3hRG
- +uIImc8W3iyQQdRENkR6bxnx1v4x5iZwyvBlEd6IlDiCArzR7Jqypy79o++fGWtOI7j0
- dB4WsEMSCL3pqgBCe1jIAwKL/IVVyQRRsCF6hFt3F2rbAR1FXlI4/kdLwpNixjQi9WJM
- Xbig==
+ :content-type; bh=im6QOESZ0sJsklj0p6HRXsyXaD/1e5fOfam1nGU1YHw=;
+ b=Jh6ndRPO1uxtLdJw68NkfyqSWLtBNREaLIQBGpBo35C/FlmoYu1XvwrOfjqCS0X6Vt
+ vsUCAxUn//zWX9wq8SroYWmI4BJ7p80ZNL1QyQZS3Mt4oOubIYZ8SaqI6ibJ/uVBT7ZP
+ CHJ0ar9Gnj84SqfkjdzXxTbVih2YdCGVOTRY+XgWMbwtHZYUeNjmqY0CZkfqwEUwhFXp
+ XIYnc5jxFhG39GZ+DpG2vZpwplaIKO4LzOPQ0O896zpl1OZ8aHIEtqUX3rphCMvZnH09
+ JD+TfQ2ims2YoiQgkRdCkW07cZwgEF8nXZVnLAXUkLK/vIa3XYt2D/HooNXSymhaVfHk
+ 8a0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793030229; x=1793635029;
+ d=1e100.net; s=20260707; t=1793030246; x=1793635046;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=zx0KTyhOYR8ruT5VlXEVTdnIHHi3M2k8T+AyKfHyLrs=;
- b=DQMSQgprBckeuB6cGwaVXvK6tRUtxtBj57wOMGFf6M3nWsojVzFOBJKN6FKBOMbYyR
- eLb2e0AXgw14N5O4hudzihh2M6v9lsOLJK6deOmLqaPL0dfAM2tubh3GKdllUSLHmRRE
- wmg78zTqr9wopMViFjLIbHYHSnOdpLHe1Jp0vB6aaaikamzup5H0+0Pei/pCR04PqCWT
- mMGpm3sXO3/b9XMQmXDC3JS3ZPzvQFHTlaWIL2WBB3v1IDb5NSx0ivEilNkSEd4Xg4vi
- 6raCGV4l88V9YUxptj9KA/dMsgiot5ZsHmCMAsdVjwmIGxnOgMBJxxeRcUOcc4ye/7/j
- rZgg==
+ bh=im6QOESZ0sJsklj0p6HRXsyXaD/1e5fOfam1nGU1YHw=;
+ b=fNF+L8lY/V5htlLLq847+xcRpdn4yLYUW9AxTOszNgGyLU1HpPe7TBRGhFoSe0ZNi3
+ F1sbdCsPrHlMGOYGeZ7olrwM/NkWy3jNKe9ObG6CcpVxqqLNkEsqFNsh7S1f8+0ZT5gE
+ +9dRXmNm0U961bTQ5T7x97f4YN2gdKU+ZWZEwsetIm7jy+UKAxJYS4EKzAbedB3KnVXG
+ 2zJahZIbmKTLgDIpqHQEDHQLPGWk3dqcLZx1lN1McXZIp813MVgDn/5kTMIWqWjCTYWf
+ RxBV8GcFDcgiZIHJJWuNvS2/16vQAHU5fjs+/OMf1W4XFRNT/A3SbKUSeQoUFZtak2+D
+ j5yQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwVnq3vwUpyVu/Uabrdv4bKarBFI55mtqE56Tz53ffo0pVusUX/sPhFGfHBXK2aoeOiIWIcqdbfQA==@nongnu.org
-X-Gm-Message-State: AFq9FYJqB5bzOVWCwal0vKfEf3FP/sAc6s1brd0Bh9pO5/UFf+Fu3A4q
- ruvF5KlivFX+CorqS2cpMhAn69KagURKwiJT5yX86Epz95QFq4Gusu0C+rNHUf3h9HyttTkF4dh
- u3mQ+m/+fQNmTuMvbiJsFiewwPevT3Lc7nxEq3f3Z/g==
-X-Gm-Gg: AYBFou2RvWXMIQoV2DFinjx9+nT1iBHiiQLmdUdQX3vadMFe55+Pkfr5t9Ji8E6pYOz
- ZqxdSluP4cuOJIacuaWR2hxBePjtlnWxiXSCCZ6DM3PvrNYdZDQbcn8l8bAda8B9HfHn8g0Qwv0
- F2RODXBceavA23j/M8Vg9CEPHM4P73JiSusEZ+kntgDx5K3bsS9F5F/5xfPXlDUgAQwR6tnmZ8f
- WWf3CKhEYPVZkjfkikuNHohMYwqaOICiFyCXxSNVePYbrRl5ksdiPOS0oZzaZ3dUilLvFzXIIVs
- iXUK4i7dA9lmFvicW6HQBCZf4xwnod/jtbyDagrprJJ7OYSo6kRv0pd6NMgp8IGak3h4u7xkDzd
- GCgQQl3pqt/z4UZsmj8RlheP/3AqmzHQC18S4cM2KF0R+0h+9Lnm7tPZU8lS2X9HR5NYQHYrmAB
- JKRwv9RUaxL/1m/DKxYKoE
-X-Received: by 2002:a05:690e:2621:b0:679:992e:3acb with SMTP id
- 956f58d0204a3-67a454233e9mr3564621d50.58.1793030229113; Mon, 26 Oct 2026
- 08:57:09 -0700 (PDT)
+ AKwUvBzYPgFklaEyeETUdL3E2UdW3Nm+z1IzHSEW22/FomjaWtCSV0i+Z+QIU3iqVcgYMP6Cd/jW4jNMYg==@nongnu.org
+X-Gm-Message-State: AFq9FYLdhII0SsZgmrlefI46avd60VxXh1y3O2rHgOZskDSNrfagusqh
+ f6ARQgaID9ajfCLQgEQOtnjyKjhW2XymbbD/5tPGPaV0K/5HwccmFwtX4WsLX51YzvD0H1eVQSJ
+ baAUU8+YLS0+9Brbt2pI6HIQwnwuMtafsdcGhVAwd/Q==
+X-Gm-Gg: AYBFou2xcCgmp2RxWNlWqz2pv0SxKQzC9Gxl1vJ7aTQu7nRZb5jQk2ONFvbSfx8wv+F
+ 8BQB73ldj6cnAlKQOJjHDDhTbWoFlLbZjncyZikXW1b0q14Ig5i75TZw+F1ixSS4gEtjSwiQx1+
+ YfavwkKu+nhvm+U0UCQJQieAu43wfeBCpaKTBaeNwfJVsDm2R3GjmKnrf1Xj7iEy6a309D2l8mL
+ ISKA7rjVx3VY5Ef6/ByyCgg8vOUDeF/oIaKFGN/b2pBTumkTXiLAv7NfBx1DD70HjaQuIFnXxMi
+ 3Qs0USoj2H6sh06UPx/23R/xzIF4GR79uLTVK4/m3TiTrxxT4TWBqcLg+eBUobCMbAQn9HEwQtV
+ gL5Ngt5MBjVzDx0emixBkNMQhIAjtiV6sw+lLzRy2ELzIgIu9nSMEaUpsEqEBeSWNgMHRmfdqwx
+ BGa3T6oaOx5SAuZB58dq65
+X-Received: by 2002:a05:690c:3142:b0:8b0:9def:97ff with SMTP id
+ 00721157ae682-8b166ca50f0mr43279247b3.46.1793030245990; Mon, 26 Oct 2026
+ 08:57:25 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 References: <20261023135924.64990-1-marcelomanzo@gmail.com>
- <20261023135924.64990-3-marcelomanzo@gmail.com>
-In-Reply-To: <20261023135924.64990-3-marcelomanzo@gmail.com>
+ <20261023135924.64990-4-marcelomanzo@gmail.com>
+In-Reply-To: <20261023135924.64990-4-marcelomanzo@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Oct 2026 15:56:56 +0000
-X-Gm-Features: AclHuK97d_JZkXguIbsfiFJqJ2XfqzDI8SVzAIjq6k1hHrDb-ij9jQQMlvcIC6M
-Message-ID: <CAFEAcA_t=VXby_UkxG_s4X0tbsOq8JDR4yP2g1iQKwG0uYf84A@mail.gmail.com>
-Subject: Re: [PATCH v5 01/16] hw/arm/bcm2838_pcie: add BCM2838 PCIe Root
- Complex
+Date: Mon, 26 Oct 2026 15:57:14 +0000
+X-Gm-Features: AclHuK-mA1Ex0-QoEAcpGRqERiiTcgWw9R6pLos357ahtw5mvi1NvyVRpWgdgts
+Message-ID: <CAFEAcA-Mq+qdxC4sQS68mF0bLtYADizUzo6PdhrrSTr6awADqw@mail.gmail.com>
+Subject: Re: [PATCH v5 02/16] hw/arm/bcm2838_pcie: add BCM2838 PCIe host
 To: Marcelo Manzo <marcelomanzo@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, philmd@oss.qualcomm.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,20 +123,36 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 On Fri, 23 Oct 2026 at 14:59, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
 >
-> Add the PCI-facing "root" part (D0:F0) of the BCM2838 (Raspberry Pi
-> 4B / BCM2711) PCIe Root Complex: a PCIe root port with the vendor's
-> device/vendor IDs and capability offsets, not usable on its own
-> without the host-facing part added in the next patch.
+> Add the BCM2838 PCIe host bridge model: config space, MMIO window,
+> and register access for the root port.
 >
-> Adapted from patch 13/41 of Sergey Kambalin's "Raspberry Pi 4B
-> machine" series (patchwork series 829638, posted to qemu-devel in
-> 2024 but never merged) against current QEMU master; the surrounding
-> PCIe/GENET networking support for raspi4b was left unmerged upstream
-> (base scaffolding aside), so this and the following patches complete
-> and debug that series to get real networking working under
-> raspi4b.
+> Per Peter Maydell's review of a later follow-up series, fold in what
+> was originally a separate bugfix here, since this device isn't in
+> upstream git yet and the bug was in code this patch itself introduces.
+> Two defects fixed, both on the enumeration path (none of this was
+> exercised until a later patch actually attaches a PCI device):
+>
+> 1. bcm2838_pcie_host_read/write computed
+>    "offset - PCIE_CONFIG_SPACE_SIZE" on an unsigned hwaddr, which
+>    underflows for every offset below 4KB. The root port's own config
+>    space -- including vendor/device ID at offset 0 -- therefore always
+>    fell into the out-of-range branch and read back as all-ones, i.e.
+>    "no device present", so the guest stopped scanning immediately.
+>
+> 2. The root port overrode PCIDeviceClass::config_read/config_write with
+>    plain pci_default_*_config(). That bypasses rp_write_config() ->
+>    pci_bridge_write_config(), so programming the bridge's memory window
+>    never updated the bridge's address space and BARs behind the root
+>    port stayed unreachable. Drop the overrides and dispatch through
+>    pci_host_config_{read,write}_common() so the device's real handlers
+>    run.
+>
+> Accesses to the EXT_CFG_DATA window are passed on to
+> pci_host_config_{read,write}_common() for the function that EXT_CFG_INDEX
+> selects.
 >
 > Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
+> ---
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

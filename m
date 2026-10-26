@@ -1,114 +1,91 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 995C9606A31B
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 13:55:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 320A8606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Oct 2026 14:10:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=chC8QJe7
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=YROjYjbU
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLLAS-000507-Vt; Mon, 26 Oct 2026 09:55:17 -0400
+	id 1xLLPG-0002jg-Pu; Mon, 26 Oct 2026 10:10:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xLLAO-0004yF-VA
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 09:55:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xLLAN-00005k-Bb
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 09:55:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793022910;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AYIyUjcnnUXti+/sgQo976EJjdmpRoD/s64kOynFb+I=;
- b=chC8QJe7wtJlrW7GA5u1hAPphGmzgdWz800N96GIGoXpR88i6gD91cB9Xb9cZiNEs0Sd26
- 17cirS7L7ZBuyxW7UEkkmiPZvlbXy3AgT6srPifnMVUhppQFkTSAKD6glr6/SlfDYxoXUX
- xS1vSA3Up3mtNcgNr/wK6oOJCVhIyqY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-88-tPf1wjzKNGeQt_G8dz6YMw-1; Mon, 26 Oct 2026 09:55:09 -0400
-X-MC-Unique: tPf1wjzKNGeQt_G8dz6YMw-1
-X-Mimecast-MFC-AGG-ID: tPf1wjzKNGeQt_G8dz6YMw_1793022908
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4a01ba12198so29844715e9.1
- for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 06:55:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xLLOW-0002UA-3S
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 10:09:50 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xLLOU-0002EI-7o
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 10:09:47 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-48e4831c028so1480873f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 07:09:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1793023784; x=1793628584; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=aULPKl9qSVaw10b8fVCSR3N//3y36NIH+jzufg8zy/s=;
+ b=YROjYjbUTD7MeXe6X9fUchyPUHQZnzM7YFMVIjnU8uLFCydSRh6rME2zG9MYlNPoZg
+ EK1fPXf/bmcmf2PD8+8iANKzEsj9uW9juvQeS/RJRnYWNeP4i0ORKtX5OENhpWZf8N8+
+ vh4j5+I1uEWtvXPjhKkhjJ7tKKn+KBSyrLVt9krkeIyOo+ju/+KcBSbPcKcJZ2c4rDdz
+ g2vPvN5Pu82FttmUVGHd2XE8ugxTEukhlemwbx9KHbg3qHuLv1wHLDpo02SKlZuB/z1M
+ +EoiQ3TvJ29wqS8ZQxmFOWSMABK9n3r7DjjfeSMXtb8ZNqyM0CyXuAmN0JuLqjoAmAf0
+ UBaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793022908; x=1793627708;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20260707; t=1793023784; x=1793628584;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=AYIyUjcnnUXti+/sgQo976EJjdmpRoD/s64kOynFb+I=;
- b=Yp4/kVrBCqPW5gz+pHMUUZL2vHvRcTegLweb3m6BGNa7yhjgN/FCQ+ULgDm7X9yLEd
- 6r+SYrUs4KKcDejOQ/2bdQmzr5DlDvDLdeP/gP0rUMj6VqeusZqHHrajf/D0K9ZXBDND
- APIvqmlkqqLHzSybxgCExv6bdgcZ+Y4bLHQkEfa7Phf70ZSiZdWwzfmWTmrKwn/yo0Q2
- XD94sJEo3usIu6hqjOR58McD4wk1fcq6/d/MDTKTe5RkAiil134SWP6sTtT+cf1zfssF
- xPFAz2UaZoRgKLzyKC5bGEVraBlHypi86HXqJ6szfM1/mwBhA3kyz5uB6ZJHgHYtB0mU
- 7VUw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwhZetfC02KW7wlPjOR80o6A74uBoYRhsE5SxB4C1MkWbN3E/p8Ufx0Xf2ldaslb2KbnptDKd8Bmg==@nongnu.org
-X-Gm-Message-State: AFq9FYK2r+ver1QQ+/36EX3QBlxQiXSfYL8EFN6DqfHCGW5twOUxVt2U
- l5weTDLBnrTDkLd+ZzpXbLzq2wXKUEUCWxiUazIFiB4u2V6K5DqzxZe582ZgRlXHnMIlpMmQE9N
- q76zapFAagGF2XvHK3h2uB2dyVhPtOpNCGT2FgJZwqLkyFlH3Y96i1A==
-X-Gm-Gg: AYBFou3I21qKhZHDstz4ReCzjAQnIQxxaWgZbOEhm2qPabXa/SDde/F6207H8WCZAfZ
- dursx+yd7jBjy6aZoI161FoUYz3mK+0Ywm23rVhTE4670fel585VS5b+6OM/ZfkQIKdAzoRvFqP
- DyUDXJUpTUvBQON1AI4cx9qrc18amsThEP6FN0z3A+2gL8zjQPx38Gko1N8q2v361+ccuvrzfF6
- NbaMrW0nEHCzbeypKgSPh70Dfl+t0M701eMyG60szBagi7MllsSCps8jPbhUIiPU1awrgmTqX0a
- Oy8SCWk5sOZi2FNdvsryJ33E2LDO5mzWcrticbpQFkT91nHlj7fdWrStnJPyJCJvCKMLHwx135a
- IUCpuxkFPPLJbYlHmsmRn0cd7wN6rVTNx40BKbuLtz5mL+05U
-X-Received: by 2002:a05:600c:4f05:b0:49e:65f2:db64 with SMTP id
- 5b1f17b1804b1-4a35ae71b30mr145150225e9.5.1793022907654; 
- Mon, 26 Oct 2026 06:55:07 -0700 (PDT)
-X-Received: by 2002:a05:600c:4f05:b0:49e:65f2:db64 with SMTP id
- 5b1f17b1804b1-4a35ae71b30mr145149665e9.5.1793022907163; 
- Mon, 26 Oct 2026 06:55:07 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ bh=aULPKl9qSVaw10b8fVCSR3N//3y36NIH+jzufg8zy/s=;
+ b=ZPlR6m+sjZImsP1yvXwUSzTSllA1nje005nmNlzEuxgjo7IuEXpX/uS3x5UBF7WPKr
+ 3nz0MkYZe1ZdVsBx5xVFemDkLi5C1sBMhfxr1RS1n7f2FBIL/9w+iuyz5Cz4FRq9UgC2
+ XJdsa5pLNYk7Q523ue0p3l9MVn2itnJgdcPZOfbbfw7O8OXqbUCya7fgwHZOQ2cg6rKe
+ OnbYaJqJmSynHAMw5cNtaLKjcewI0awA5v44mtu00Nh0Wjg+Hri5G1qTzwpZgZSX5rvu
+ ADcJNukQjTephRaaJWFUJWJm5tC50StNQ+qPxLj94kDxQCpTAPIZbdBmkRGtwgRJzCKk
+ y/Fg==
+X-Gm-Message-State: AFq9FYK1VGTaKib0/bIMbf1f4xwgrxgrMwLK88yr1o02nA6nUrK5kP1C
+ xozLw42zHNBetvoy/W+ulEy84YCymL7OO+xHdha6tGQ7y1Ctc7dv3EJqaBRZU5YLb3fFyYreAlx
+ mOd2yxGo=
+X-Gm-Gg: AYBFou1+0aJFHi8G9voPcFP6GRJ32Ehm9306XYtoYaKDyEUZKpfgNpXXn5xZFyu40XG
+ 3Dt9tZ+1sY087TZtpT+si3SpVh2F/sZvMwy5OuUrd6RF62zkElAnM4gqcOEdobT/7Tjrj1fzLa3
+ qc1Lyi2pRZVvEVrjw+4hsitc9MEo7UsPPWGX1HFSwmDtPFG3zRzU+jY+Mu2FuxYRuouGikeiG6l
+ vpW6JpOBhUuQLFGXBRwnPFwZGUwms2a4jH7Xn6mS9Xjb1yBK3/wHqIsqarezfZYmNjfuV3tkMf1
+ JQWCbNh59UFjKK7GYYvQHdb9GLTIjwV1EXx1ZwZ56Fz9cDRjINbQRqu5eWjfsogIv7nJuNiLOAP
+ ntQug7N2tXjSmg2/BWFpbDvxrIkt3OAloLi+wSIO+uy0j1bJsqnNb1dYU/tUOelwzenrHWf9K+x
+ lAi/AgKGagLI2/bp/8+f7E7/c6ogznhRoC9Z9DDHN/6FLLHQZOlb01XvsEUBprixFVuYBlVNVhr
+ Kb1Sr3hcSCVc7OyJec8EY/Xa8aMarTm/2LRX/B9bfZpg4dosEOmyCsDzsIT9k+jAJDMNe3suEYY
+ qFD319ZQU6XeSObqqx4DfrzAD4R7Bml/h5ur1kdlAwoXvJ4jMQ87T38VU83J
+X-Received: by 2002:a05:6000:491c:b0:48e:4395:2dc with SMTP id
+ ffacd0b85a97d-48e439506a9mr12075950f8f.22.1793023784242; 
+ Mon, 26 Oct 2026 07:09:44 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a35a56992dsm186668015e9.6.2026.10.26.06.55.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Oct 2026 06:55:06 -0700 (PDT)
-Message-ID: <71a7a633-b0d1-496b-a4a8-fc887aaad685@redhat.com>
-Date: Mon, 26 Oct 2026 14:55:04 +0100
+ ffacd0b85a97d-48e4115f496sm15814077f8f.5.2026.10.26.07.09.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 Oct 2026 07:09:43 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] target/arm: For linux-user,
+ prioritize PC misalignment fault over insn abort
+Date: Mon, 26 Oct 2026 14:09:42 +0000
+Message-ID: <20261026140942.2768950-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 00/26] kvm/arm: Introduce a customizable aarch64 KVM
- host model
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, shaju.abraham@nutanix.com, khushit.shah@nutanix.com,
- yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org,
- sebott@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com,
- maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
- jdenemar@redhat.com
-References: <20261010133725.642498-1-eric.auger@redhat.com>
- <CAFEAcA9XE0TLxp+DNzFSbkxbj7f0M78N+tf1a01cJ5rNkM7NBA@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CAFEAcA9XE0TLxp+DNzFSbkxbj7f0M78N+tf1a01cJ5rNkM7NBA@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -hsp3ekM2vJh_CtnPbZUsvFKv8KNmaqFYEEUm9pUceY_1793022908
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.339,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,47 +96,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Peter,
+The Arm architecture requires that for PC alignment fault exceptions
+take precedence over Instruction Abort exceptions.  We get this wrong
+for linux-user mode, because QEMU detects the lack of any backing
+memory via probe_access_internal(), and calls
+arm_cpu_record_sigsegv(), which always reports either a Translation
+or Permission fault:
 
-On 10/23/26 1:44 PM, Peter Maydell wrote:
-> On Sat, 10 Oct 2026 at 14:37, Eric Auger <eric.auger@redhat.com> wrote:
->> This series enhances the current host KVM model with capability to
->> set writable ID reg fields.
->>
->> Since v6.7 kernel, KVM/arm allows the userspace to overwrite the values
->> of a subset of ID regs. The list of writable fields continues to grow.
->> The feature ID range is defined as the AArch64 System register space
->> with op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}.
->>
->> The end goal is to get more flexibility when migrating guests
->> between different host hardware. This series is a prerequisite for
->> aarch64 named vcpu models.
-> To help me with review prioritization -- are you hoping this will
-> land for 11.2, or are you expecting it to be 12.0 material? (Given
-> the softfreeze date is rapidly approaching, it feels to me like
-> 12.0 is where it's going to be.)
-for the whole series I think this is too late for 11.2. What would be
-nice to get in 10.2 is some prerequisite patches like those you reviewed
-plus [PATCH v10 16/26] target/arm/kvm: Pass an Error handle to
-kvm_arch_init_vcpu which are rather independent. I will prepare a
-separate reduced series containing those + fixing the oversight of one
-midr conversion.
+#3  0x0000649548976b94 in arm_deliver_fault (cpu=0x649555ce5920, addr=1, access_type=MMU_INST_FETCH, mmu_idx=0, fi=0x7fff87e4c940)
+    at ../../target/arm/tcg/tlb_helper.c:274
+#4  0x0000649548976d69 in arm_cpu_record_sigsegv (cs=0x649555ce5920, addr=1, access_type=MMU_INST_FETCH, maperr=true, ra=0)
+    at ../../target/arm/tcg/tlb_helper.c:421
+#5  0x0000649548c97650 in cpu_loop_exit_sigsegv (cpu=0x649555ce5920, addr=1, access_type=MMU_INST_FETCH, maperr=true, ra=0)
+    at ../../linux-user/signal.c:761
+#6  0x00006495488f8235 in probe_access_internal (env=0x649555ce99a0, addr=1, fault_size=1, access_type=MMU_INST_FETCH, nonfault=false, ra=0)
+    at ../../accel/tcg/user-exec.c:790
+#7  0x00006495488f850d in get_page_addr_code_hostp (env=0x649555ce99a0, addr=1, hostp=0x7fff87e4ca70) at ../../accel/tcg/user-exec.c:828
+#8  0x00006495488e5433 in get_page_addr_code (env=0x649555ce99a0, addr=1) at ../../accel/tcg/internal-common.h:116
+#9  0x00006495488e56bd in tb_htable_lookup (cpu=0x649555ce5920, s=...) at ../../accel/tcg/cpu-exec.c:206
+#10 0x00006495488e58c8 in tb_lookup (cpu=0x649555ce5920, s=...) at ../../accel/tcg/cpu-exec.c:251
+#11 0x00006495488e5d2a in helper_lookup_tb_ptr (env=0x649555ce99a0) at ../../accel/tcg/cpu-exec.c:398
+#12 0x00007d973c000270 in code_gen_buffer ()
 
-Thanks
+Make arm_cpu_record_sigsegv() report a PC alignment fault for
+MMU_INST_FETCH accesses to non-4-aligned addresses for A64 and A32,
+matching the logic used in arm_cpu_tlb_fill_align() for system
+emulation.  (Unaligned PC faults can't happen for Thumb.) This is
+then passed to the guest binary as SIGBUS rather than SIGSEGV.
 
-Eric
->
-> thanks
-> -- PMM
->
+(The Fixes tag is for the commit that introduced this function, but
+the bug was also present in the previous implementation.  It's an odd
+corner case so it's not worth the effort to try to backport the fix
+beyond that.)
+
+Cc: qemu-stable@nongnu.org
+Fixes: 9b12b6b44250c2 ("target/arm: Implement arm_cpu_record_sigsegv")
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4699
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/tcg/tlb_helper.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 4c3f16dc2aa..2e84b1cb369 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -418,6 +418,10 @@ void arm_cpu_record_sigsegv(CPUState *cs, vaddr addr,
+      * For now, it's easiest to deliver the fault normally.
+      */
+     cpu_restore_state(cs, ra);
++    if (access_type == MMU_INST_FETCH && !cpu->env.thumb && (addr & 3)) {
++        /* Misaligned PC faults take precedence over insn abort */
++        fi.type = ARMFault_Alignment;
++    }
+     arm_deliver_fault(cpu, addr, access_type, MMU_USER_IDX, &fi);
+ }
+ 
+-- 
+2.43.0
 
 

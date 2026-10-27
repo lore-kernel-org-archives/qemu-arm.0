@@ -1,136 +1,145 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C00A606A31B
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 14:43:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB4EB606A31D
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 14:54:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256 header.s=selector2 header.b=b5zFMZgp
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Qad7e6l5
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLiOs-0003pm-G8; Tue, 27 Oct 2026 10:43:42 -0400
+	id 1xLiZc-00074p-TD; Tue, 27 Oct 2026 10:54:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1xLiOp-0003Zg-1R; Tue, 27 Oct 2026 10:43:39 -0400
-Received: from mail-westusazlp170120002.outbound.protection.outlook.com
- ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xLiZP-00073K-KJ
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 10:54:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1xLiOm-0006mS-T1; Tue, 27 Oct 2026 10:43:38 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IIrvwJ3rzNuPcWZ5efCbzuRj84Wp/kWgjZz1x/mCaKD1Vp1uF2+JH+2smHNmwPvlXIoLUD8Wi1S9CJqg0aJifdFwRt7+Y5GJXiBu5Gpee1JM6CJqvXDdfqbIH+4uq1J8dIofhRQHIBDFkPl/swptl66mSd7ErdLyCqgJI7SX3azUwGXhw6fXYSGB44Y/Ca5KO0Tf1DhTKgR3dv4+kyY6eof/DK8c6RR/zD4Q/9Kp8TCgKO1ehT9TaXDuKX8gdZpug27ABy0nD/UcsLVonWyQuuo9bdaVzZeLaBgB0GCCSiwM45MV9KiYbzMs7Fgy+WX+ChOs4iXO75gQNLw/salPVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yX6lR7hdkPTzJccDzBEqSFj6Jh31ihRqDsYgtI8vbdw=;
- b=m5TD4KLN0lsEVHVHFCQlQ4b+zATKWoinB5/KgjEG03UNB49YvSWgtHMa7sRWiVNCpeNB8NuD4TmIUow3kld39sNRaxaWPBpjChUNlPeQztJ8ctIurMofys0ifLLJ7ivwiO50NqGfQclTgNl4sjbVUTk+nvkk87lp0xxAxCWD4oO6Ggm6z5Gu34Kszs58wAvlm9O8lvGu4QOtE4EU5Q+FFuX8mcSBC6keIOHycRr8IGTIzidGeTFKgah0aHgGdl+kq/WE3ELt/FadFnx1lzenKDxBojxfpb7NNEhUvxmCPPorSGSCUWokc9UjXo/OZEsb2og/sKGJh0JHz5WrozdkEw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yX6lR7hdkPTzJccDzBEqSFj6Jh31ihRqDsYgtI8vbdw=;
- b=b5zFMZgpizcN/U1bImLsqUKd700HOpOYs0AVVn4yEjbZBK6YDr4FRaSCxe5ZNT6gsALqKnHhFqYA8RBrlvA1fOxN9B3GJCYlYzV29n0SI8W8XhVPBOsiWysXdCXVgklLhMZkqegtqadM014wunBZZMJFLijND8O9/388MCSGV0ftuLu3X8mb0BAVwrrwPa0el73Knl+Cb3E+UDyiSC+qBu7pnhW1lAjurbdsTfpmmIlJ5rEx20I11Kh44tS1uUvgL1s2UreVs+KxXYsHfXzISMW4Yc3GYA8F9Tp9MmdmO1XhG+sHxjIUQFiBdncagt7GjBIQToEXqnHQyPQyN7cnqQ==
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
- by PH0PR12MB8800.namprd12.prod.outlook.com (2603:10b6:510:26f::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.19; Tue, 27 Oct
- 2026 14:43:29 +0000
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b%5]) with mapi id 15.21.0546.021; Tue, 27 Oct 2026
- 14:43:28 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Tushar Dave <tdave@nvidia.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
- "marcel@redhat.com" <marcel@redhat.com>, "devel@edk2.groups.io"
- <devel@edk2.groups.io>, Alex Williamson <alwilliamson@nvidia.com>, Jason
- Gunthorpe <jgg@nvidia.com>
-Subject: RE: [PATCH 1/5] hw/pci: introduce PCI fixed BAR properties
-Thread-Topic: [PATCH 1/5] hw/pci: introduce PCI fixed BAR properties
-Thread-Index: AQHdRg0IOReaIxB8eEKLKF0CFzAF/bcRtdEw
-Date: Tue, 27 Oct 2026 14:43:28 +0000
-Message-ID: <SJ0PR12MB861469AD6121282858D853C0AB602@SJ0PR12MB8614.namprd12.prod.outlook.com>
-References: <20260916185554.917526-1-tdave@nvidia.com>
- <20260916185554.917526-2-tdave@nvidia.com>
-In-Reply-To: <20260916185554.917526-2-tdave@nvidia.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|PH0PR12MB8800:EE_
-x-ms-office365-filtering-correlation-id: f9a2b62e-dfb3-4d78-3d78-08df3438aa1b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|1800799024|366016|376014|6133799003|18002099003|22082099003|10067099003|261026140227099003|4143699003|261026121527099003|56012099006|11063799006|261009223027099003|261022075727099003|261022105027099003|261021121427099003|261021123027099003|38070700021;
-x-microsoft-antispam-message-info: LwxVDn449dtfzUzRcBDoDhQrL2o+H71XTTi7RiQluHEsmbXau3v3M/qR1VAR7q0jOg8wmJCacQiWiX49BhVGqYhWjle/SKjkzN8E3QCfMksFBPshNM7RbZgiFOBoqI2EsALkXnq3ssW544ldLqd9RRROsyBZPiDLmFY+CobWMBxXqFlwMsDe64W+r7m+LsPxiWkwvEFuGxV7pcHjcBIL59S1NQ3TmaLISBmmmyTGtfGY4K+2LtdNh2kZZ8WEasOk86wUdG1v51nwOBxffzBdKlz1DT88SvUKpUeYgfCfCGKIHI/b15qmgejXk3C238Fa0jMvsfO5olwD/BIIKRb4VnSb5pwO3MU5ZN4mlTjY/8XM3LVJlptFLM29ypHyMCpTTmDp8s49qfSGG/8ocU6bftBUCCh0eYEigHagqNiQZ2LY7oTgp6PI8sU3QHRcNmkCf/hdwdgzAmbFu9y49lwVs3HwQZpoI4f90a4DZb6w0gey5PgUjwNf4aemKG3qnS7v2y1z+Te3ZeY8km85Myryyye6ARVvemAqWoIAnMmHmusdzWtc4d7BcsfqXyQlef/tan+HedZOSZbpi1c2zRRXbVJHFmUK9gClztxJKORbUxmWiKoGZp8KbXLACw3MyBT7Iu9VZJoTt52UOF2TZkcu7eStk5YZ7voWokG6Rl36Tj4mlLpitYBL+JeGmr+KTa3V82UN/b7C5nStHXbQLBxPIjG/Zx7jCnfs3MsGmwXHCCY=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(1800799024)(366016)(376014)(6133799003)(18002099003)(22082099003)(10067099003)(261026140227099003)(4143699003)(261026121527099003)(56012099006)(11063799006)(261009223027099003)(261022075727099003)(261022105027099003)(261021121427099003)(261021123027099003)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?YbK++qOC13jHT34k/YMWFWSYgfLvi89DDGmQ16b+8L/LTjw2zTEPznSkb+NR?=
- =?us-ascii?Q?cdEZupuqzXdu0UeTmAiNstVR22XBjk+lKKC0LML6/QvekJVhAfUugWGSEGo0?=
- =?us-ascii?Q?gCN4B9/+iZJPaWpQRIuI9jd3QedQdsxd/CdiRn1DS+Fcx6QOKHqrqDWk2LM4?=
- =?us-ascii?Q?yqYNOI0GG0/XGNjUz2l9mPLZs2qJdVJQvyRm66UucjGxINZILsiuOswZ8mk+?=
- =?us-ascii?Q?Iy1/Y3dCgG/3rb+VFTXoGmNhB2rwX5DAwUIRCgrbjqQKbWpmYLfGNWIk1S6b?=
- =?us-ascii?Q?3rMCS4ITMdlBTsDrBqGJ1gQaxJoSnEmRd5iEPxaIxDbDCn+Riu5Wrg1YUwZ9?=
- =?us-ascii?Q?vI150lB3vUMSFDxTrzphJ0wTyloEUSbI3xYCt47UckbMu/3GfyfYp91X/CoI?=
- =?us-ascii?Q?R0dIxmpPlswzNn/vxU7HmlZVqErchteQE7Ch5XiLPagv1XMFsDpEfMafcAek?=
- =?us-ascii?Q?vu2Avw76ET7FrjGTiDuKSwFW/9y2hJmMO10jM9MQv01jfq+gGbrS7zVyMCXj?=
- =?us-ascii?Q?iMADyNCtymYsJY1V4znVc9Jc6aiC2FoMqX7lEAm57h9fNC8oW78gvjxsyCWT?=
- =?us-ascii?Q?2kMlBTWkoy/Z0N7o0Ni1O9vh+DaCKIsjePIyg5nrFXIpMCLtWvQiszMq0ndS?=
- =?us-ascii?Q?oJWh6IiHQAsxlFc8LSwOI3g3CLjWioIPwb+0ScCMXjtYXc1SqlzyDa+t7MpV?=
- =?us-ascii?Q?Edz7nJMS2U1dKbVsnwaIoXXFyHyVYQvWPOYjDaGh4C0HDAFcO7EKPiGZjz4k?=
- =?us-ascii?Q?pDsC7XQXR2D2tID21Tnc2Tfah9+j+G7hs5j+36bXW5p0GiNlZ4dJEUJkxC4t?=
- =?us-ascii?Q?59pGET58VKpfAzaVEdSCvq/k9guHFCVkfyoGzZnEve0C475q9hsNwovjQGVB?=
- =?us-ascii?Q?xKozVcYHz1Of39aCptjkb7sH03jC6vu5HZLhJ/Zyn7zUmECGt6uLra/VusDd?=
- =?us-ascii?Q?Ujf6mNedV9FFlOi+tMYlkG81wCq4xgCS1k/V3rjaOPs/NlBy8J88hhGXPl2e?=
- =?us-ascii?Q?sQ4jCwia0I8N9ZPMeeSzoSvqkjj3l+rQc3sumPb3iTlFZdm0rsnNApXxDNCN?=
- =?us-ascii?Q?DWr7xg02orjemWt4OMBzvqiLe5S8hsjYF89BDlWt1lbbmtyUuN8XDk4/iTjf?=
- =?us-ascii?Q?otgPZ84TmcS/AicQ47C5HCfYv//MY4IT4pacygVWRvvyHqI930HshsomaTW+?=
- =?us-ascii?Q?UPobXD4bnjoJVjhBsD9yNh/B86M8cmRCBNF4XLuGIgt8acgBrslbekoTAMp2?=
- =?us-ascii?Q?sd4RDn8ggcmDSGgtrsmwXlUEVQcow6UmX6GKjQGOTqe1s+tFJP0s8kJmrLhQ?=
- =?us-ascii?Q?QcBk1XXRzSVKi+5Qjjgqs9Rx4UkLSYYSxOUCHUU4XDHaCFDH7ENyxh/GUFkY?=
- =?us-ascii?Q?aGKIsCr5Vexu7jjMwLyY/U1X4n858ERgPJeSdY06t2jv1J/jtl900gW5d2nN?=
- =?us-ascii?Q?XtssvtiE1XgBwo5Ex6yyB17bQUY+tNOFXlBiDB05cVF7x9MI8/GflVyWL8Ml?=
- =?us-ascii?Q?4lfY3YwKmVTA7+Km2wkrPBwjlUhLNzxrki0EsKvUPeuTD9UiHJhQgIDC6/Rq?=
- =?us-ascii?Q?oeVQuBO9BAn4IjwxSAtwpfD1lxCB4qUNyI65cfINDjix3JltbtmMNy+AzHJh?=
- =?us-ascii?Q?7eAdlG95PI0yNRZpYf0tt4dnjrqYysgQKngpJ+adLpsTXwfmFBeWwCcfrcC+?=
- =?us-ascii?Q?h4evDVbQ8PclhdgQ0PivgCvZd/btsym+FJ+pdlydZefLohFmhNu5Bq7EsBNA?=
- =?us-ascii?Q?STZtURK42Q=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xLiZI-0007i4-DG
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 10:54:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793112866;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bkID89a/6OklaXaMWn8rSBHoX2XDYtn2gJ9CrOvW2W4=;
+ b=Qad7e6l5K6yFAqY9KwewCpfZCID+eIFqAkdN71fCAiB0i/8cf/h3fvojyDp3Zakm2nJMzI
+ qmALLLR4cL7gRQTJ2h8CTYRowZ20omrKSvFGH5m+Kmvqv8swc9LO+vMZpcWIg9/kbApPrI
+ i9sceznoPtIcaKKhI6tL84F8NGBKX7M=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-192-nyqVetLPM2uBg4ZbpUvWIg-1; Tue,
+ 27 Oct 2026 10:54:19 -0400
+X-MC-Unique: nyqVetLPM2uBg4ZbpUvWIg-1
+X-Mimecast-MFC-AGG-ID: nyqVetLPM2uBg4ZbpUvWIg_1793112855
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 56DB7195411B; Tue, 27 Oct 2026 14:54:11 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4F9C31800495; Tue, 27 Oct 2026 14:54:06 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id CEB8121E6A04; Tue, 27 Oct 2026 15:54:03 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org,
+ Michael Roth <michael.roth@amd.com>,  John Snow <jsnow@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,  Mauro Carvalho Chehab
+ <mchehab+huawei@kernel.org>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>,  Eric Blake
+ <eblake@redhat.com>,  David Hildenbrand <david@kernel.org>,  Igor Mammedov
+ <imammedo@redhat.com>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jason Wang <jasowangio@gmail.com>,  Marcelo Tosatti
+ <mtosatti@redhat.com>,  kvm@vger.kernel.org,  Alberto Garcia
+ <berto@igalia.com>,  Kevin Wolf <kwolf@redhat.com>,  Hanna Reitz
+ <hreitz@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,
+ Zhao Liu <zhao1.liu@intel.com>,  Jonathan Cameron <jic23@kernel.org>,
+ Junjie Cao <junjie.cao@intel.com>,  Anisa Su <anisa.su@samsung.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,  Jagannathan Raman
+ <jag.raman@oracle.com>,  John Levon <john.levon@nutanix.com>,  Thanos
+ Makatos <thanos.makatos@nutanix.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,  Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-block@nongnu.org,  linux-cxl@vger.kernel.org,
+ qemu-s390x@nongnu.org,  "Michael S. Tsirkin" <mst@redhat.com>,  Sergio
+ Lopez <slp@redhat.com>,  qemu-arm@nongnu.org,  Palmer Dabbelt
+ <palmer@dabbelt.com>,  Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,  Daniel Henrique Barboza
+ <daniel.barboza@oss.qualcomm.com>,  Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,  Chao Liu <chao.liu@processmission.com>,
+ qemu-riscv@nongnu.org,  Song Gao <17746591750@163.com>,  Bibo Mao
+ <maobibo@loongson.cn>,  Xianglai Li <lixianglai@loongson.cn>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,  Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,  Nicholas Piggin
+ <npiggin@gmail.com>,  Harsh Prateek Bora <harshpb@linux.ibm.com>,  Amit
+ Machhiwal <amachhiw@linux.ibm.com>,  qemu-ppc@nongnu.org,  Zhang Chen
+ <zhangckid@gmail.com>,  Li Zhijian <lizhijian@fujitsu.com>,  Alistair
+ Francis <alistair@alistair23.me>,  Alexander Graf <graf@amazon.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,  zhenwei pi
+ <zhenwei.pi@linux.dev>,  Ani Sinha <anisinha@redhat.com>,  Luc Michel
+ <luc@lmichel.fr>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,  Jamin
+ Lin
+ <jamin_lin@aspeedtech.com>,  Kane Chen <kane_chen@aspeedtech.com>,  Samuel
+ Tardieu <sam@rfc1149.net>,  "Denis V. Lunev" <den@openvz.org>,  FangSheng
+ Huang <FangSheng.Huang@amd.com>,  Tyrone Ting <kfting@nuvoton.com>,  Hao
+ Wu <wuhaotsh@google.com>,  Keith Busch <kbusch@kernel.org>,  Klaus Jensen
+ <its@irrelevant.dk>,  Jesper Devantier <foss@defmacro.it>,  Aditya Gupta
+ <adityag@linux.ibm.com>,  Glenn Miles <milesg@linux.ibm.com>,  Conor
+ Dooley <conor@kernel.org>,  Sebastian Huber
+ <sebastian.huber@embedded-brains.de>,  Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,  Jason Herne
+ <jjherne@linux.ibm.com>,  Titus Rwantare <titusr@google.com>,  Stefano
+ Stabellini <sstabellini@kernel.org>,  Anthony PERARD
+ <anthony@xenproject.org>,  Peter Xu <peterx@redhat.com>,  Chinmay Rath
+ <rathc@linux.ibm.com>,  Hendrik Brueckner <brueckner@linux.ibm.com>,
+ xen-devel@lists.xenproject.org,  Roman Bolshakov <rbolshakov@ddn.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,  Fam Zheng <fam@euphon.net>,
+ Farhan Ali <alifm@linux.ibm.com>,  Alex Williamson <alex@shazbot.org>,
+ Tao Tang <tangtao1634@phytium.com.cn>,  Stefan Berger
+ <stefanb@linux.vnet.ibm.com>,  Fabiano Rosas <farosas@suse.de>,  Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Artyom Tarasenko
+ <atar4qemu@gmail.com>,  Yoshinori Sato <yoshinori.sato@nifty.com>,  Jiri
+ Pirko <jiri@resnulli.us>,  Eric Auger <eric.auger@redhat.com>,  Laurent
+ Vivier <lvivier@redhat.com>
+Subject: Re: [PATCH v7 54/65] qdev: adjust PciDevfn declared type
+In-Reply-To: <CAMxuvazd7G_NBOM_c6BxZn5PFSw=XQUHueHqBoQQfpzPPgi9qA@mail.gmail.com>
+ (=?utf-8?Q?=22Marc-Andr=C3=A9?= Lureau"'s message of "Fri, 23 Oct 2026
+ 15:39:22 +0400")
+References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
+ <20261020-qom-qapi-v7-54-431a86b02b58@redhat.com>
+ <atsxLV5YZo8dr-8G@redhat.com>
+ <CAMxuvazd7G_NBOM_c6BxZn5PFSw=XQUHueHqBoQQfpzPPgi9qA@mail.gmail.com>
+Date: Tue, 27 Oct 2026 15:54:03 +0100
+Message-ID: <87zevz5h4k.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f9a2b62e-dfb3-4d78-3d78-08df3438aa1b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Oct 2026 14:43:28.6539 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Djbr7xcQizNL56BIHzxxfbGDvFoUIjKvrsOk0MsRkGD6ZXLj8lUJ50Wb3wEmvFv6+QkT4krbf6MU4E450Q5XGw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB8800
-Received-SPF: pass client-ip=2a01:111:f403:c001::2;
- envelope-from=skolothumtho@nvidia.com;
- helo=SJ2PR03CU001.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: XvdM-vkz5ABQSkSoh0mOABRB4fugOSF0_v8KGOO_srA_1793112855
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ GB_FAKE_RF=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,148 +151,289 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
 
+> Hi
+>
+> On Fri, Oct 23, 2026 at 2:04=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange=
+@redhat.com> wrote:
+>>
+>> On Tue, Oct 20, 2026 at 02:46:11PM +0400, Marc-Andr=C3=A9 Lureau wrote:
+>> > PciDevfn is a bit special, since it accepts integer and string as
+>> > setter, but only output integer as getter.
 
-> -----Original Message-----
-> From: Tushar Dave <tdave@nvidia.com>
-> Sent: 16 September 2026 19:56
-> To: qemu-devel@nongnu.org
-> Cc: qemu-arm@nongnu.org; peter.maydell@linaro.org; mst@redhat.com;
-> marcel@redhat.com; devel@edk2.groups.io; Alex Williamson
-> <alwilliamson@nvidia.com>; Jason Gunthorpe <jgg@nvidia.com>; Shameer
-> Kolothum Thodi <skolothumtho@nvidia.com>
-> Subject: [PATCH 1/5] hw/pci: introduce PCI fixed BAR properties
->=20
-> Add fixed-bar-N properties to PCIDevice to allow the guest address
-> of an individual PCI BAR to be explicitly specified. The properties
-> are available for PCI BARs 0 through 5 and accept QEMU size
-> values, for example fixed-bar-0=3D0x40000000 or fixed-bar-0=3D64G.
->=20
-> e.g.
-> -device some-device,fixed-bar-0=3D<addr>[,fixed-bar-1=3D<addr>]...
->=20
-> During realize, validate that each specified BAR exists and is a
-> memory BAR, and reject fixed BAR configuration for hot-plugged
-> devices.
->=20
-> Signed-off-by: Tushar Dave <tdave@nvidia.com>
-> ---
->  hw/pci/pci.c                | 43 +++++++++++++++++++++++++++++++++++++
->  include/hw/pci/pci_device.h |  7 ++++++
->  2 files changed, 50 insertions(+)
->=20
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 0efb4eb4bb..775fef1beb 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -89,6 +89,12 @@ static const Property pci_props[] =3D {
->      DEFINE_PROP_STRING("romfile", PCIDevice, romfile),
->      DEFINE_PROP_UINT32("romsize", PCIDevice, romsize, UINT32_MAX),
->      DEFINE_PROP_INT32("rombar",  PCIDevice, rom_bar, -1),
-> +    DEFINE_PROP_SIZE("fixed-bar-0", PCIDevice, fixed_bar_addr[0],
-> PCI_BAR_UNMAPPED),
-> +    DEFINE_PROP_SIZE("fixed-bar-1", PCIDevice, fixed_bar_addr[1],
-> PCI_BAR_UNMAPPED),
-> +    DEFINE_PROP_SIZE("fixed-bar-2", PCIDevice, fixed_bar_addr[2],
-> PCI_BAR_UNMAPPED),
-> +    DEFINE_PROP_SIZE("fixed-bar-3", PCIDevice, fixed_bar_addr[3],
-> PCI_BAR_UNMAPPED),
-> +    DEFINE_PROP_SIZE("fixed-bar-4", PCIDevice, fixed_bar_addr[4],
-> PCI_BAR_UNMAPPED),
-> +    DEFINE_PROP_SIZE("fixed-bar-5", PCIDevice, fixed_bar_addr[5],
-> PCI_BAR_UNMAPPED),
+Yes.  See below.
 
-These properties are exposed on all PCI devices, but only virt wires up
-the validation and fw_cfg export in this series. On other machines, a
-valid request would be accepted without placing the BAR, right?
+>> > Unfortunately, we can't declare an alternate str|int QAPI type for it,
+>> > since: branch 'string' can't be distinguished from 'integer'
 
-I think it is better we add a mechanism(MachineClass flag ?) and check
-that.
+Yes, except with trickery; more on this below.
 
-Thanks,
-Shameer
+>> >
+>> > Rather than declaring it as "str", use the common type instead.
+>> >
+>> > Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>> > ---
+>> >  hw/core/qdev-properties-system.c | 3 ++-
+>> >  1 file changed, 2 insertions(+), 1 deletion(-)
+>> >
+>> > diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-propertie=
+s-system.c
+>> > index 5bfdfe1ab9d9..3381de1144d6 100644
+>> > --- a/hw/core/qdev-properties-system.c
+>> > +++ b/hw/core/qdev-properties-system.c
+>> > @@ -904,7 +904,8 @@ static char *print_pci_devfn(Object *obj, const Pr=
+operty *prop)
+>> >  }
+>> >
+>> >  const PropertyInfo qdev_prop_pci_devfn =3D {
+>> > -    .type  =3D "str",
+>> > +    /* The formatted string accepted by the setter is a CLI convenien=
+ce. */
+>>
+>> IIUC, this is not limited to the CLI, it will work anywhere the JSON
+>> syntax is permitted which is both CLI and QMP.
+>>
+>> libvirt uses this string syntax:
+>>
+>>   -device '{"driver":"pcie-root-port","port":9,"chassis":2,"id":"pci.2",=
+"bus":"pcie.0","multifunction":true,"addr":"0x1.0x1"}' \
+>>
+>> > +    .type  =3D "int32",
+>> >      .description =3D "Slot and optional function number, example: 06.=
+0 or 06",
+          .print =3D print_pci_devfn,
+          .get   =3D qdev_propinfo_get_int32,
+          .set   =3D set_pci_devfn,
+          .set_default_value =3D qdev_propinfo_set_default_value_int,
+      };
 
->      DEFINE_PROP_BIT("multifunction", PCIDevice, cap_present,
->                      QEMU_PCI_CAP_MULTIFUNCTION_BITNR, false),
->      DEFINE_PROP_BIT("x-pcie-lnksta-dllla", PCIDevice, cap_present,
-> @@ -228,6 +234,36 @@ static void pci_bus_unrealize(BusState *qbus)
->      vmstate_unregister(NULL, &vmstate_pcibus, bus);
->  }
->=20
-> +static void pci_check_fixed_bars(PCIDevice *pci_dev, Error **errp)
-> +{
-> +    PCIIORegion *r;
-> +    int i;
-> +
-> +    for (i =3D 0; i < PCI_NUM_REGIONS - 1; i++) {
-> +        if (pci_dev->fixed_bar_addr[i] =3D=3D PCI_BAR_UNMAPPED) {
-> +            continue;
-> +        }
-> +
-> +        if (DEVICE(pci_dev)->hotplugged) {
-> +            error_setg(errp, "fixed-bar-%d is not supported on "
-> +                       "hot-plugged devices", i);
-> +            return;
-> +        }
-> +
-> +        r =3D &pci_dev->io_regions[i];
-> +        if (!r->size) {
-> +            error_setg(errp, "fixed-bar-%d: bar%d does not exist on %s",
-> +                       i, i, pci_dev->name);
-> +            return;
-> +        }
-> +        if (r->type & PCI_BASE_ADDRESS_SPACE_IO) {
-> +            error_setg(errp, "fixed-bar-%d: bar%d on %s is an I/O BAR, "
-> +                       "not a memory BAR", i, i, pci_dev->name);
-> +            return;
-> +        }
-> +    }
-> +}
-> +
->  static int pcibus_num(PCIBus *bus)
->  {
->      if (pci_bus_is_root(bus)) {
-> @@ -2393,6 +2429,13 @@ static void pci_qdev_realize(DeviceState *qdev,
-> Error **errp)
->          is_default_rom =3D true;
->      }
->=20
-> +    pci_check_fixed_bars(pci_dev, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        pci_qdev_unrealize(DEVICE(pci_dev));
-> +        return;
-> +    }
-> +
->      pci_add_option_rom(pci_dev, is_default_rom, &local_err);
->      if (local_err) {
->          error_propagate(errp, local_err);
-> diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
-> index 5cac6e1688..fc5f50a1c4 100644
-> --- a/include/hw/pci/pci_device.h
-> +++ b/include/hw/pci/pci_device.h
-> @@ -187,6 +187,13 @@ struct PCIDevice {
->      uint32_t max_bounce_buffer_size;
->=20
->      char *sriov_pf;
-> +
-> +    /*
-> +     * fixed_bar_addr[N] holds the guest address configured via the
-> +     * fixed-bar-N property for memory BAR N. PCI_BAR_UNMAPPED means
-> +     * the BAR's address is not fixed.
-> +     */
-> +    uint64_t  fixed_bar_addr[PCI_NUM_REGIONS - 1];
->  };
->=20
->  static inline int pci_intx(PCIDevice *pci_dev)
-> --
-> 2.34.1
+The property is backed by an int32_t.  In
+include/hw/core/qdev-properties-system.h:
+
+    #define DEFINE_PROP_PCI_DEVFN(_n, _s, _f, _d)                   \
+        DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_pci_devfn, int32_t)
+
+It's only ever used for PCI device property "addr".
+
+Its .get() simply visits it.  This is why qom-get returns an integer:
+
+    --> {"execute":"qom-get","arguments":{"path":"/machine/unattached/devic=
+e[4]/pm", "property": "type"}}
+    <-- {"return": "PIIX4_PM"}
+    --> {"execute":"qom-get","arguments":{"path":"/machine/unattached/devic=
+e[4]/pm", "property": "addr"}}
+    <-- {"return": 11}
+
+Its .set() is a handwritten visit of an alternate of 'str' and 'int32',
+where 'str' gets parsed as DEV.FN into int32.  This is why QMP
+device_add accepts both JSON string and JSON number (HMP device_add and
+-device only do string).  QAPI doesn't let us define such an alternate
+type, as you wrote in your commit message, but handwritten visits fly
+below that radar.  This is of course too clever by half.  Goes back to
+commit 768a9ebe188 (qdev: accept both strings and integers for PCI
+addresses) in v1.1.
+
+Its .print() prints it like DEV.FN.  Its only user is "info qtree".
+
+>> Changing the type to 'int32', where 99% of usage is input only
+>> and string based, is pretty unpleasant. Even more so that the
+>> description doesn't even mention encoding dev+function as an
+>> integer.
+>
+> This is purely a metadata change, the setter still accepts both str &
+> int,
+
+Yes.
+
+.type is only used as @type argument for object_class_property_add() and
+object_property_add().  They store it in ObjectProperty member @type.
+Visible externally in QOM introspection (ObjectPropertyInfo and
+ObjectPropertyValue member type).  Also in help, but let's ignore that
+for a minute.
+
+Before the series, QOM instrospection shows type "str" for PCI device
+property "addr".
+
+For reading, that's a lie: qom-get and qom-list-get return an JSON
+integer, not a JSON string.
+
+For writing, it's merely incomplete: qom-set accepts a JSON string in
+addition to a JSON integer.
+
+Does it matter?  To make use of QOM introspection's type, you have to
+hardcode so much silly stuff, what's one more case?
+
+With this patch, it shows type "int32".  Less wrong.
+
+Again, does it matter?  The change could conceivably break a client.  I
+figure the risk is small.  Is "less wrong" worth even a small risk?
+
+>      so I don't think this change blocks this series.
+
+I figure it's no worse than the other type values the series changes.
+
+Let's discuss them under my
+
+    Subject: Property types changed in this series (was: [PATCH v7 00/65] H=
+i)
+    Date: Wed, 21 Oct 2026 18:29:40 +0200
+    Message-ID: <87tsmfkoej.fsf@pond.sub.org>
+
+>                                                       But I agree we
+> could do better.
+>
+> There are multiple options. We could keep declaring the property as
+> str instead. In this case, the getter should probably return a string
+> for consistency and correctness. This might surprise some existing
+> users though.
+
+I.e. ditch numeric suppport for numeric addresses, right?
+
+Incompatible change.  Do we care?
+
+If we don't, we should be honest about it and mark qom-get unstable.
+
+> We could introduce new properties like `devfn-str` and `devfn-int`
+> that alias the same value.
+
+Compatibility break.  If breaking compatibility is okay, I'd rather use
+the opportunity to get rid of cleverness, and go with your first option.
+
+> We could also introduce a new structured QAPI type.
+
+What kind of type do you have in mind?
+
+> Markus, what's your take?
+
+From a QAPI/QMP point of view, the clean way to support "either string
+or numeric address" is an alternate type.
+
+Trouble is the generator rejects such an alternate, as you pointed out
+in your commit message.  Why is that?
+
+docs/devel/qapi-code-gen.rst:
+
+    An alternate type is like a union type, except there is no
+    discriminator on the wire.  Instead, the branch to use is inferred
+    from the value.  An alternate can only express a choice between types
+    represented differently on the wire.
+
+So, we can't have two 'str' branches (both JSON string), or a 'str' and
+an 'enum' branch (same).
+
+But 'int32' and 'str' are different on the wire (JSON number and JSON
+string), so what's going on?  This:
+
+commit c0644771ebedbd8f47f3c24816445e30111d226b (tag: pull-qapi-2017-05-31)
+Author: Markus Armbruster <armbru@redhat.com>
+Date:   Mon May 22 18:42:15 2017 +0200
+
+    qapi: Reject alternates that can't work with keyval_parse()
+   =20
+    Alternates are sum types like unions, but use the JSON type on the
+    wire / QType in QObject instead of an explicit tag.  That's why we
+    require alternate members to have distinct QTypes.
+   =20
+    The recently introduced keyval_parse() (commit d454dbe) can only
+    produce string scalars.  The qobject_input_visitor_new_keyval() input
+    visitor mostly hides the difference, so code using a QObject input
+    visitor doesn't have to care whether its input was parsed from JSON or
+    KEY=3DVALUE,...  The difference leaks for alternates, as noted in commi=
+t
+    0ee9ae7: a non-string, non-enum scalar alternate value can't currently
+    be expressed.
+   =20
+    In part, this is just our insufficiently sophisticated implementation.
+    Consider alternate type 'GuestFileWhence'.  It has an integer member
+    and a 'QGASeek' member.  The latter is an enumeration with values
+    'set', 'cur', 'end'.  The meaning of b=3Dset, b=3Dcur, b=3Dend, b=3D0, =
+b=3D1 and
+    so forth is perfectly obvious.  However, our current implementation
+    falls apart at run time for b=3D0, b=3D1, and so forth.  Fixable, but n=
+ot
+    today; add a test case and a TODO comment.
+   =20
+    Now consider an alternate type with a string and an integer member.
+    What's the meaning of a=3D42?  Is it the string "42" or the integer 42?
+    Whichever meaning you pick makes the other inexpressible.  This isn't
+    just an implementation problem, it's fundamental.  Our current
+    implementation will pick string.
+   =20
+    So far, we haven't needed such alternates.  To make sure we stop and
+    think before we add one that cannot sanely work with keyval_parse(),
+    let's require alternate members to have sufficiently distinct
+    representation in KEY=3DVALUE,... syntax:
+   =20
+    * A string member clashes with any other scalar member
+   =20
+    * An enumeration member clashes with bool members when it has value
+      'on' or 'off'.
+   =20
+    * An enumeration member clashes with numeric members when it has a
+      value that starts with '-', '+', or a decimal digit.  This is a
+      rather lazy approximation of the actual number syntax accepted by
+      the visitor.
+   =20
+      Note that enumeration values starting with '-' and '+' are rejected
+      elsewhere already, but better safe than sorry.
+   =20
+    Signed-off-by: Markus Armbruster <armbru@redhat.com>
+    Message-Id: <1495471335-23707-5-git-send-email-armbru@redhat.com>
+    Reviewed-by: Eric Blake <eblake@redhat.com>
+    Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+However, keyval_parse() + its input visitor can't express everything
+QAPI even with such alternates outlawed.  From util/keyval.c:
+
+ * Design flaw: there is no way to denote an empty array or non-root
+ * object.  While interpreting "key absent" as empty seems natural
+ * (removing a key-val from the input string removes the member when
+ * there are more, so why not when it's the last), it doesn't work:
+ * "key absent" already means "optional object/array absent", which
+ * isn't the same as "empty object/array present".
+ *
+ * Design flaw: scalar values can only be strings; there is no way to
+ * denote numbers, true, false or null.  The special QObject input
+ * visitor returned by qobject_input_visitor_new_keyval() mostly hides
+ * this by automatically converting strings to the type the visitor
+ * expects.  Breaks down for type 'any', where the visitor's
+ * expectation isn't clear.  Code visiting 'any' needs to do the
+ * conversion itself, but only when using this keyval visitor.
+ * Awkward.  Note that we carefully restrict alternate types to avoid
+ * similar ambiguity.
+
+We commonly use keyval syntax together with JSON: if the input starts
+with '{', it's assumed to be JSON, else keyval.  See
+qobject_input_visitor_new_str().  This lets you fall back to JSON when
+keyval can't express what you want.
+
+Beware, there *are* uses of keyval without a JSON fallback.
+
+As the commit message I quoted says, we could permit alternates that are
+ambiguous with keyval.  The keyval visitor could then pick a branch (you
+can't express the others), or it could refuse to pick (you can't express
+any of them).
+
+In the particular case of PCI device property "addr", picking str would
+be fine: same behavior as the handwritten visit in in set_pci_devfn().
+
+But once we permit such alternates, nothing but conscientious testing
+with keyval syntax will stop us from adding interfaces that don't work
+or work the wrong way.  Hmm.
+
+I need to think about this some more if we want to explore this
+direction.
+
+[...]
 
 

@@ -1,82 +1,81 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DA6F8606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 19:53:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6DAE9606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 19:53:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Ya0Ynu0l
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Hj4nVR/6
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLnE2-0002xs-DI; Tue, 27 Oct 2026 15:52:50 -0400
+	id 1xLnDz-0002te-ID; Tue, 27 Oct 2026 15:52:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gessingate@gmail.com>)
- id 1xLnDk-0002n0-3c
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 15:52:32 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1xLnDp-0002p3-L0
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 15:52:39 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gessingate@gmail.com>)
- id 1xLnDi-0004qE-6S
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 15:52:31 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-48b001cd92bso132799f8f.2
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 12:52:29 -0700 (PDT)
+ id 1xLnDn-0004s0-1j
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 15:52:36 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-48b042c0728so88676f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 12:52:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793130749; x=1793735549; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793130754; x=1793735554; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=1C8skHGOVNN9sTDeszVwrYti+Dl4AQvQOGFxu/nUl5I=;
- b=Ya0Ynu0lfnL/Xgry5YGV/qkL3dqpC6ARr8Czh90dew+dP23CKLr7xg4AFiY9k6xpLL
- nCXUspiBCo7mnvdO3CdTYDRHzx9D/3hiyuaL+dOduZfa9oiomQTtMcJxGNuGgkJOGeqk
- MtipgFmqW0WGsuVEs2w4e0LwU9rT/6SYke5ji8oIJyZo3nkkfF1kvNJm5wCGrfXHFKi3
- ZMx6e2oVKI6pkcToCeMe9nwepqL3Lc3Hmm2SgNFiEhfpYcOQXCBL+8Ssg74/jNVdCn5Z
- q3jq1/fW7fZaVX8NmOS76Nu3ey4fpYRWwV3TsNlkGpcP/92TasxJ/+nMAdjZvhhULmOv
- Wz1w==
+ bh=9jRX61TYPGRlmpi8eH3adBessAOSuidJl6Eeu2cnOG4=;
+ b=Hj4nVR/66FrkoST+37pKB/vPBOx+7HmTTSB0kGuro2038PrgUXEJVHgBzcehmUvgPq
+ KRry96dLJo3suWhv6Ak+TumVNyf36oqBVJn2LFbkZUnJSZ1wcTVWoEJpSyLJyUHbSMgO
+ RMfZSbD++3VFxDSyQwhlSbEx8fJHYyymPrIlVQhdxC7aG83MUPHBd3mNzcuaghokcqeH
+ HdkoNKCm97On6JurTjCfbMRJNarjBEw7VwcTjETSpeSRe2j7UJ9hIZ8YawOfLMfJCp68
+ eJmSdMsB1yY6r0McQB8mstQL3ORFgtHhW8xe5AqePN0vGiDQJA1Su1gRYF8L7OCzwO6W
+ qZEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793130749; x=1793735549;
+ d=1e100.net; s=20260707; t=1793130754; x=1793735554;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=1C8skHGOVNN9sTDeszVwrYti+Dl4AQvQOGFxu/nUl5I=;
- b=FYAYKMMlQc3OETWPXum4v5WFTJu5JoAJxpOm6fAQeYbeja9Hy2A1yphmM4YyANNF5d
- qoloVxN9SAkOQT5CbMZs+h2tZpnWnAoygrqPl2Vvqc8QmX22qhrDnnd65yPJiiQzNAdG
- hp/kQngUGxoZMI/LaqWWHgJiPnDMHLJQVhYjanyQk86cyaztW4pP7cOj4LqV/I6/R7BD
- v7bZpAK7V5MtLzdBFijCvAIOCF+MBzmno7ZnvKbtL/JA7pkmOh1zSbAgcF7IR5GnCxLE
- GtHOtyL04X4mK0nWbgUGZZ70wxPr460QB/ivrB3lwPkrA0BA8GqHy/r1ua6wb81o9tKv
- M2vw==
+ bh=9jRX61TYPGRlmpi8eH3adBessAOSuidJl6Eeu2cnOG4=;
+ b=qtiwQ/eSDfdDWbEicOEgaQB9wpeLkPmu1QEOLzatCtCRrYCiG1l8b7hIemAdQkxkZB
+ BnJUgoZUUXd4muIkzuuKyrWR+bpsPNbdFJ8uAZJyGW225PtsGD10qn3EJeXPF9rLpHLH
+ htwfP7GJt1AYoD6vEHSwAKW0o8p9bqYF9aSH9pFWLxER5t994szy1zFzQEnhtyJ+Jj/G
+ KSFpQQVWsrlRQazKPX4vaf1bTYkyk0XJK1r+zFMRGgQP8Zte4FBJqJ48FVTLPArA1Oyp
+ 0i3yLBmU7IENomyk65xWi86bLm8qjWCAFnQt8sTO+2wTbYICYw/cUy2VXVHKlUmjz1oz
+ 8RWQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzXd2mgWtRyPNCQJU65YZ2CJMfi5tXlwNUJnANZGSXeXDVkZZ5NJizJThHUJ13OBn8ql8AhboM+ig==@nongnu.org
-X-Gm-Message-State: AFq9FYII9mJnVNriDtcR1ZsPx3xmB/xVSI9W875D2oUY/vuFJP0ewcMs
- FP6OZRu+MfR51dU4lhJrHOIEjN9q/zBDXx8R8RqflBKIoFrBbYqq6q+P
-X-Gm-Gg: AYBFou1LG75V7fnzHi9+6MmGuolyvTPTMZnMjeHtd3W44JT7IfsQSnc7w+LDVQCqS1C
- p77llSRHLovrk5Zsy0A6VeQwqKgWpCUJBYye7aY7gdm1sIbn9mZO/pTW3+YgyOyjigzb+mIg/Qc
- sZdDTHzcJ2RcDtZdqiUp60uiN6oftSsUzDWrvBnWiVyoYXlxzBevIbgqY9NW3xSDgCMAsl0F+r7
- ttobcHgqzJaB7zdNlVDeW9ZwRy+FNFhHbS0u9RHYyk/Aa5sPEMlDniiL62gRs/cfCix/uCA8cW+
- z/BwVoVNQ442R2/ayjjMtyV2ywcnn/S6icCbiiKc7bmmiAUiI1V1UOaATehjfvrqzpOQ4qFLsf5
- +HekqdWPK5/rBxk3eXbRIhaT3fEdhd38/rfd3riOfd4zjn4wUqTBQpkbO88P4rr+NpMLqPPp0dA
- NlR/fG1CiBUF/MQ2W6dOG0ykjTyw81O039+lMHUehdgp6BOuhE/H8JsQHhZda2+F0wto0EaBVnI
- wWj9r5CCrFRbJQ2uhU7+bjpnT31zOmLHf5F0Lb1YN4MX4db//KKF2rBFnGJqXW1OajsfurDZM0y
- QaQdTXavkGnGDXI=
-X-Received: by 2002:a05:6000:606:b0:48d:f249:82c3 with SMTP id
- ffacd0b85a97d-48e5d5996f9mr939321f8f.30.1793130748343; 
- Tue, 27 Oct 2026 12:52:28 -0700 (PDT)
+ AKwUvBxStFvfOyUL5yqFb7bf+5PZ0XR53hphfxDLIrLAwwBw7TnQeZgOmxA4p7gftBARg5dlQq5qK4mrZw==@nongnu.org
+X-Gm-Message-State: AFq9FYKN3q+aYsWyBpyENYfUO3K16b1jYWB9gPkfBS0dpf68WZambxKR
+ V81Bi8guFMgDQHuha4ZFP2v/TVKbdcMCNEjWCmWHk3Y0TkIDaRQXxUmY
+X-Gm-Gg: AYBFou2NNQ4sXXCCLEWmjyQ1YIvBrnhviUOoxpIxc6hKukYA03CPSbkmlg+u21HCd3z
+ Ms+YCMHuS2xy1Xn6+L6dZW8MyjJbx/fTgSnP9ll4F6bH9ciDtlplWCw7mOQn+DSHnp96mb7hqwj
+ m58fa54wqQRsfsrkKDUuxsb82foMGOx4IfAih6WUDNOUPxwKweDQSlZZqKHq319W7zrkmix+x0e
+ pbfDQH8uzaQs3429RJJdXEUqfun1sv8T6hDsoo58cc2Gj5BsDAeFPcOMl+7NOphFmNRCoD2F9B0
+ pgifOsNfrNeHSkW8q1n8A0NpLo/M363OsYnmi3XTJFhEvSwT7Pw0+C4FvFR6eeLMdDfcvHgBPK2
+ vyrAeKcW7ZVbDI1NdsWOLJrwPaQhPRChO2YQiNQdJIbo2ByH798j8Sb4/iZ80G6NULT8/DD69IL
+ Mnz48VeSDZJQT0gBJherx4Trn4tCACANI1ou0PmxdoQuWyxEksR3VcHqls/g+Bvupk0zuZlSPx5
+ DO/YGwkKVtSVcoTK+jfsf9zP2GmGuni05VsN1NhvWuVDczu6ON0OJk1WDrzmG4bqr67PdtN16xa
+ d1EI7iRZzenCj20=
+X-Received: by 2002:a05:6000:2610:b0:48e:b1a:fa6 with SMTP id
+ ffacd0b85a97d-48e5d5a40f9mr981352f8f.40.1793130753585; 
+ Tue, 27 Oct 2026 12:52:33 -0700 (PDT)
 Received: from [127.0.1.1] (95-24-99-141.broadband.corbina.ru. [95.24.99.141])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e3ebcb846sm24746368f8f.25.2026.10.27.12.52.27
+ ffacd0b85a97d-48e3ebcb846sm24746368f8f.25.2026.10.27.12.52.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Oct 2026 12:52:28 -0700 (PDT)
+ Tue, 27 Oct 2026 12:52:33 -0700 (PDT)
 From: Timur Maksimov <gessingate@gmail.com>
-Date: Tue, 27 Oct 2026 22:50:43 +0300
-Subject: [PATCH v2 2/6] hw/i2c/aspeed: fix BUSY status reading in new
- register mode
+Date: Tue, 27 Oct 2026 22:50:46 +0300
+Subject: [PATCH v2 5/6] hw/i2c/aspeed: fix DMA transfer in non-packet mode
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261027-aspeed-i2c-nonpkt-fix-v2-2-07deed1dff60@gmail.com>
+Message-Id: <20261027-aspeed-i2c-nonpkt-fix-v2-5-07deed1dff60@gmail.com>
 References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
 In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
 To: qemu-devel@nongnu.org
@@ -87,22 +86,22 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
  Laurent Vivier <lvivier@redhat.com>, Timur Maksimov <gessingate@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793130744; l=1242;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793130744; l=1480;
  i=gessingate@gmail.com; s=20261022; h=from:subject:message-id;
- bh=xRsjRiO1YrfXwNZLoC5rlFGhOgngxwDjpGeWazFhqOE=;
- b=Fuc8GYMMvs/xVHXJFroZPABUJPFJjpK9RNZqY8oiYgbgDXdw//+cxTCJGktlvdiOkbCg/GAES
- KdEacF7TKtzCvXdO+UmB4ZnT4oYlA1xv+pr3s50PBD8PYwv0tza8sO1
+ bh=55QMlLZQiV6C0P8h17/NZJrFzRnM7avkzJDMbK5RsZs=;
+ b=P6YJV46BP0JdTEanWEO2TKhfPipjpO/SbcQh8lgcHfgqevU+qZ9zWXv91GDLRpDEcvl1DkpOW
+ 03GWDYXEr40CnvPDf8vlK6YjdiRg/GnzfC0HvqrHBrtg1hgjHCNrjCi
 X-Developer-Key: i=gessingate@gmail.com; a=ed25519;
  pk=xF4NKIzSbKMdte17nQ66S/q9m/A2gu6GiEWc8ZnyJmo=
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=gessingate@gmail.com; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=gessingate@gmail.com; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,38 +121,44 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-In new register mode, BUS_BUSY_STS is bit 16 of I2CC_MS_TXRX_BYTE_BUF;
-bit 16 of I2CM_CMD is PKT_OP_EN. Report the bus busy state in the
-correct register.
+Avoid calling aspeed_i2c_set_tx_dma_dram_offset twice in non-packet mode
+where this function is called first in aspeed_i2c_get_addr.
+Also fix writing to I2CD_DMA_ADDR in old register mode.
 
 Signed-off-by: Timur Maksimov <gessingate@gmail.com>
 ---
- hw/i2c/aspeed_i2c.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/i2c/aspeed_i2c.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 0bc4bb6fbe..fb6d19c37b 100644
+index 510758fb7a..a2b4c8b576 100644
 --- a/hw/i2c/aspeed_i2c.c
 +++ b/hw/i2c/aspeed_i2c.c
-@@ -146,7 +146,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
-     case A_I2CC_POOL_CTRL:
-     case A_I2CM_INTR_CTRL:
-     case A_I2CM_INTR_STS:
--    case A_I2CC_MS_TXRX_BYTE_BUF:
-+    case A_I2CM_CMD:
-     case A_I2CM_DMA_LEN:
-     case A_I2CM_DMA_TX_ADDR:
-     case A_I2CM_DMA_RX_ADDR:
-@@ -166,7 +166,8 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
-     case A_I2CC_DMA_ADDR:
-         value = extract64(bus->dma_dram_offset, 0, 32);
+@@ -416,7 +416,9 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, bool send_addr)
+         if (aspeed_i2c_is_new_mode(bus->controller)) {
+             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN_STS, TX_LEN, 0);
+         }
+-        aspeed_i2c_set_tx_dma_dram_offset(bus);
++        if (!send_addr) {
++            aspeed_i2c_set_tx_dma_dram_offset(bus);
++        }
+         while (bus->regs[reg_dma_len]) {
+             uint8_t data;
+             ret = aspeed_i2c_dma_read(bus, &data);
+@@ -1070,11 +1072,13 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->pending_intr_sts |= old_intr & cmd_intr;
+         aspeed_i2c_bus_raise_interrupt(bus);
          break;
--    case A_I2CM_CMD:
-+    case A_I2CC_MS_TXRX_BYTE_BUF:
-+        value = bus->regs[offset / sizeof(*bus->regs)];
-         value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
++
+     case A_I2CD_DMA_ADDR:
+         if (!aic->has_dma) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
+             break;
+         }
++        bus->regs[R_I2CD_DMA_ADDR] = value;
          break;
-     case A_I2CM_DMA_TX_ADDR_HI:
+ 
+     case A_I2CD_DMA_LEN:
 
 -- 
 2.53.0

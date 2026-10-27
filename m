@@ -1,65 +1,131 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6F818606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 07:20:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1D59606A320
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 09:50:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=huawei.com header.i=@huawei.com header.a=rsa-sha256 header.s=dkim header.b=cZ75Blnz
+	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=wOc1xmAO
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLbTz-0002uU-Tb; Tue, 27 Oct 2026 03:20:33 -0400
+	id 1xLdoz-00051d-Ek; Tue, 27 Oct 2026 05:50:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1xLbTu-0002tT-T6; Tue, 27 Oct 2026 03:20:26 -0400
-Received: from canpmsgout03.his.huawei.com ([113.46.200.218])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1xLdoy-000519-Aq; Tue, 27 Oct 2026 05:50:20 -0400
+Received: from smtpout1.mo2.mail-out.ovh.net ([79.137.123.219])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1xLbTq-0004fl-8a; Tue, 27 Oct 2026 03:20:25 -0400
-dkim-signature: v=1; a=rsa-sha256; d=huawei.com; s=dkim;
- c=relaxed/relaxed; q=dns/txt; h=From;
- bh=5MiLxi/fhssl8di2WPQivdrblWjmsUA7fYbFmQkX20s=;
- b=cZ75BlnzIpiHJzTmGNUbfNPbLq0UJYmAs3TgYCsAT7BOpVtpi1LHmRTYw8agpO8UPMy7khHq0
- 0JFL+W/5wW40Xqm9FzkhOcj2YvDF+Dbrv3hmYSyucowH2A1LBmC5zbPDvxpqYZqlcvPXMHJegND
- cN29txbZ1oJOSSaO6x8vTuw=
-Received: from mail.maildlp.com (unknown [172.19.163.104])
- by canpmsgout03.his.huawei.com (SkyGuard) with ESMTPS id 4jDMMM1hmqzpSt7;
- Tue, 27 Oct 2026 15:19:59 +0800 (CST)
-Received: from kwepemk200008.china.huawei.com (unknown [7.202.194.74])
- by mail.maildlp.com (Postfix) with ESMTPS id D4FA54058E;
- Tue, 27 Oct 2026 15:20:09 +0800 (CST)
-Received: from [10.67.110.68] (10.67.110.68) by kwepemk200008.china.huawei.com
- (7.202.194.74) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Tue, 27 Oct
- 2026 15:20:09 +0800
-Message-ID: <a3331da7-2e8b-44e4-bbc1-9572ab4bfdcc@huawei.com>
-Date: Tue, 27 Oct 2026 15:20:08 +0800
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1xLdov-0002JL-Rg; Tue, 27 Oct 2026 05:50:20 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTPS id 4jDQhX0Xswz42xS;
+ Tue, 27 Oct 2026 09:50:04 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alistair@alistair23.me>; Tue, 27 Oct 2026 09:50:03 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.227])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4jDQhW6F9Yz1xr0; Tue, 27 Oct 2026 09:50:03 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.0])
+ (Authenticated sender: clg@kaod.org)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 688B124031F5; Tue, 27 Oct 2026 09:50:01 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-107S00104b5ff27-a6eb-49bb-b08a-57798213bcfa,
+ 6907BB2C17AE28529708C059842524B2B81EE5B9) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.66.77.115
+Message-ID: <ceb9d0f6-0df6-44dc-ab59-ac9c41c4c1b8@kaod.org>
+Date: Tue, 27 Oct 2026 10:50:00 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 36/37] qapi: Add MPAM cache introspection schema and stub
-To: Markus Armbruster <armbru@redhat.com>, Jinjie Ruan <2118537295@qq.com>
-CC: <anisinha@redhat.com>, <eblake@redhat.com>, <imammedo@redhat.com>,
- <michael.roth@amd.com>, <mst@redhat.com>, <pbonzini@redhat.com>,
- <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20261016101058.1900808-1-2118537295@qq.com>
- <tencent_E9186FE529AD6EC21F51EF364CEA6426EF05@qq.com>
- <87fqxs1uj6.fsf@pond.sub.org>
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-In-Reply-To: <87fqxs1uj6.fsf@pond.sub.org>
-Content-Type: text/plain; charset="UTF-8"
+Subject: Re: [PATCH v1 03/14] hw/block/m25p80: Rename w25q32dw to w25q33pw
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20261015055642.106204-1-jamin_lin@aspeedtech.com>
+ <20261015055642.106204-4-jamin_lin@aspeedtech.com>
+ <d4a1ce6f-96c9-422f-9380-b8c0bbdfa775@kaod.org>
+ <TYZPR06MB73734264E93D567EF7AF1E0CFC602@TYZPR06MB7373.apcprd06.prod.outlook.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <TYZPR06MB73734264E93D567EF7AF1E0CFC602@TYZPR06MB7373.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
- kwepemk200008.china.huawei.com (7.202.194.74)
-Received-SPF: pass client-ip=113.46.200.218;
- envelope-from=ruanjinjie@huawei.com; helo=canpmsgout03.his.huawei.com
+x-ovh-tracer-id: 8343762737986120749
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTG1KICf9vnL2AxDo0vdIdbwCvuonb5HKIEsoHxseoZLyJiWl/YmpqGDc97JRhYBejW2AIrfMJGb6z5eJcr+nKHwkHlB1On/loV18lGcythxJ5j+x5mjBw3dQc5kcDyB41rnEd9Toip4q06F3WWyCzlZFF0qCx2Jk5UYy6TT7mbWqEaw00UC2GVLOG1tEdbqRpcKQpb0FCB0IVFLnEr8uJKt2CCBM94jO925Ia3F74Onyqe4tRKJnR5q7AK18KPe8XWxRVmju+vFsFEQkNd7Ww7nM23O8pNh4jdB7j8LJLtP46eYcjvEJayOOUpIyLuwCnFsh8RvMzxi2mPo5gSMz/3mMEZ5mopttxyQ1ivHaqAgmPhQvhZbnXHfk9eK3uARIvc5CnCGBPzTWzFFKt/X4uMHbi+nHXMSlyrv32ouN9JzBiKiq5CFGrTf8X0akzvhHA+bWi2Go5+JS/h32yEDwZvWQHGaDd9vbhc95Wkw/cQmUTNNj5ZkLG7g+3bGna0XORetS1zS/Evg3CYpA+sZtXSLQQqE13y9a2NrdhoFmY2d+YPJ3lL0Elgyva5Q9q4tLu85GyChVJFAstxPzq5nVMzoFbZT9H0+vbYLm+Txmq6h/IW3IYL0ejXLiVeGqhJ9DWiAgejaGBVzS/pvjn+7h1iv0UEtRINZnT7z5Ddiuzar/g
+DKIM-Signature: a=rsa-sha256; bh=SiDf8pUyugPourU+mSORLt0cIPEPHwC0tp0Av/wuqdQ=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1793094606; v=1;
+ b=wOc1xmAOhANOCA3qt44Iaf8u+NwPINw2+jIt1zPebe6aTln9dsLAUuyPd4basmfzAIVkewxL
+ s/af/4pbYgJe6mMF9sEBK9teCipy9dT3p9hBgEah7gFtbRYCNV48gusjbo4/yC9Vuk4XTXb/cdy
+ 8dUfER1dz9eEPVVUJeR8JjL0fh/zvanCschv8aCzz02Wnz6yrdxDWhyVZzZiYfEIgMvNtKxIH0m
+ 3U2/Q2Bun0L3aRb2ia2cXz7BctKUFTPVX7KercXy2S6/bWV0KbiabcgckWYWjBsZZpTpaW/+YyZ
+ UtbCPTsUQhRa/OUnkMtA/R8uzPlLVuMhXB+7VuynybJqg==
+Received-SPF: pass client-ip=79.137.123.219; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo2.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,255 +145,93 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
-
-在 2026/10/26 21:05, Markus Armbruster 写道:
-> Jinjie Ruan <2118537295@qq.com> writes:
+On 10/27/26 02:32, Jamin Lin wrote:
+> Hi Cédric
 > 
->> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>> Subject: Re: [PATCH v1 03/14] hw/block/m25p80: Rename w25q32dw to
+>> w25q33pw
 >>
->> Add the query-mpam-cache QMP command schema: the MpamBm bitmap
->> type, the per-RIS MpamRegs state and the MpamCacheInfo summary of
->> a cache MSC, plus an optional cache level filter.  The command is
->> stubbed to return NULL so the generated marshal links; the real
->> implementation walks the device tree in the next patch.
+>> On 10/15/26 07:56, Jamin Lin wrote:
+>>> The W25Q32DW and W25Q33PW use the same JEDEC ID (0xef6016), but
+>> have
+>>> different part names. Since the JEDEC ID is used to uniquely identify
+>>> a flash model in QEMU, both parts cannot be added as separate entries
+>>> with the same ID.
+>>>
+>>> According to Winbond, the W25Q32DW has been end-of-life for many years
+>>> and the W25Q33PW is its next-generation replacement. The W25Q33PW is
+>>> compatible with the W25Q32DW and uses the same JEDEC ID.
+>>>
+>>> Rename the existing w25q32dw model to w25q33pw to reflect the
+>>> currently supported part.
+>>>
+>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>> ---
+>>>    hw/block/m25p80.c | 2 +-
+>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c index
+>>> 545e0b5728..e88efd913b 100644
+>>> --- a/hw/block/m25p80.c
+>>> +++ b/hw/block/m25p80.c
+>>> @@ -353,7 +353,7 @@ static const FlashPartInfo known_devices[] = {
+>>>        { INFO("w25x16",      0xef3015,      0,  64 << 10,  32,
+>> ER_4K) },
+>>>        { INFO("w25x32",      0xef3016,      0,  64 << 10,  64,
+>> ER_4K) },
+>>>        { INFO("w25q32",      0xef4016,      0,  64 << 10,  64,
+>> ER_4K) },
+>>> -    { INFO("w25q32dw",    0xef6016,      0,  64 << 10,  64, ER_4K) },
+>>> +    { INFO("w25q33pw",    0xef6016,      0,  64 << 10,  64,
+>> ER_4K) },
 >>
->> Based on an RFC series by Jonathan Cameron, adapted to the current
->> qapi documentation rules.
 >>
->> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+>> Instead please add a new "w25q33pw" device and keep "w25q32dw".
+>>
+> Thanks for the review and suggestion.
 > 
-> [...]
-> 
->> diff --git a/qapi/meson.build b/qapi/meson.build
->> index a46269b..c6663e5 100644
->> --- a/qapi/meson.build
->> +++ b/qapi/meson.build
->> @@ -42,6 +42,7 @@ qapi_all_modules = [
->>    'machine-s390x',
->>    'migration',
->>    'misc',
->> +  'mpam',
->>    'net',
->>    'pragma',
->>    'qom',
->> diff --git a/qapi/mpam.json b/qapi/mpam.json
->> new file mode 100644
->> index 0000000..ff476a1
->> --- /dev/null
->> +++ b/qapi/mpam.json
->> @@ -0,0 +1,120 @@
->> +# -*- Mode: Python -*-
->> +# vim: filetype=python
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +##
->> +# = ARM MPAM State Introspection
->> +##
-> 
-> Special QAPI doc markup that hasn't been recognized in more than a year.
-> Please build with --enable-docs, and examine
-> docs/manual/interop/qemu-qmp-ref.html to guard against such mishaps.
-> 
-> Use standard reST markup instead:
+> The reason for renaming the device is that both w25q32dw and w25q33pw use the same JEDEC ID (0xef6016).
 
-Hi Markus,
+yes. that's fine. See :
 
-Will fix it in v2 and build with --enable-docs.
+     { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512,
+             ER_4K | ER_32K), .sfdp_read = m25p80_sfdp_mx25l25635e },
+     { INFO6("mx25l25635f", 0xc22019,     0xc22019,  64 << 10, 512,
+             ER_4K | ER_32K), .sfdp_read = m25p80_sfdp_mx25l25635f },
+
+The only way to distinguish the mx25l25635e device from the mx25l25635f
+is to read the sfdp table. That's what the kernel does.
+
+> I can add w25q33pw as a new flash model and keep w25q32dw, so both models will use the same JEDEC ID. If you have no concerns about this, I will update the patch accordingly.
+> Alternatively, I can drop the rename patch and only add the SFDP table to w25q32dw, since w25q33pw is compatible with w25q32dw.
+
+as you wish. But don't drop the w25q32dw please. This would be a user
+visible change.
+
+> Please note that the SFDP table was dumped from a real w25q33pw flash. I don't have the SFDP table for w25q32dw because this device is old and has reached end of life.
+> Please let me know which approach you prefer.
+
+The simplest is to add a new "w25q33pw" device with its SFDP table.
+
+
+Thanks,
+
+C.
 
 > 
->    ##
->    # ****************************
->    # ARM MPAM State Introspection
->    # ****************************
->    ##
+> Thanks,
+> Jamin
 > 
-> Are you *sure* this ought to be between "Miscellanea" and "Audio" and at
-> the same heading level?  Or should it be deeper and/or elsewhere?
-
-Yes, it should be placed in arm64 related chapter.
-
+>> Thanks,
+>>
+>> C.
+>>
+>>>        { INFO("w25x64",      0xef3017,      0,  64 << 10, 128,
+>> ER_4K) },
+>>>        { INFO("w25q64",      0xef4017,      0,  64 << 10, 128,
+>> ER_4K) },
+>>>        { INFO("w25q80",      0xef5014,      0,  64 << 10,  16,
+>> ER_4K) },
 > 
->> +
->> +##
->> +# @MpamBm:
->> +#
->> +# A bitmap control value, as used by MPAM cache-portion (CPBM) and
->> +# memory-bandwidth-portion (MBW_PBM) controls.  The value is
->> +# carried as an array of 32-bit words, least significant first.
->> +#
-> 
-> Anti-pattern: the introduction (above) discusses the value of a member
-> (below).
-> 
->> +# @words: The bitmap, one element per 32-bits of the control
->> +#
->> +# Since: 10.1
-> 
-> 11.2 now.  Same elsewhere, not noting it again.
-
-Will update it.
-
-> 
->> +##
->> +{ 'struct': 'MpamBm',
->> +  'data' : { 'words' : [ 'int' ]
-> 
-> The description says it's 32 bit words.  Shouldn't you use 'uint32'
-> then?
-> 
->> +           }
->> +}
->> +
->> +##
->> +# @MpamRegs:
->> +#
->> +# Per RIS register state of an emulated MPAM Memory System Component.
-> 
-> Please use the current syntax for introductions:
-
-Ok, will update it.
-
-> 
->    ##
->    # @name: introduction, best to keep it brief, but you may continue it
->    #     like this if necessary.  If your text need to refer to
->    #     arguments, it's almost certainly not brief introduction
->    #     anymore.
-> 
-> Same elsewhere, not noting it again.
-
-Ok, will update all the same comment.
-
-> 
->> +#
->> +# @idr: MPAMF_IDR, the MPAM features identification register
->> +#
->> +# @iidr: MPAMF_IIDR, the MPAM implementer identification register
->> +#
->> +# @aidr: MPAMF_AIDR, the MPAM architecture identification register
->> +#
->> +# @cpor-idr: MPAMF_CPOR_IDR, cache-portion feature register
->> +#
->> +# @ccap-idr: MPAMF_CCAP_IDR, cache-capacity feature register
->> +#
->> +# @mbw-idr: MPAMF_MBW_IDR, memory-bandwidth feature register
->> +#
->> +# @pri-idr: MPAMF_PRI_IDR, priority feature register
->> +#
->> +# @partid-nrw-idr: MPAMF_PARTID_NRW_IDR, PARTID narrowing register
->> +#
->> +# @msmon-idr: MPAMF_MSMON_IDR, monitor feature register
->> +#
->> +# @csumon-idr: MPAMF_CSUMON_IDR, cache-usage monitor register
->> +#
->> +# @mbwumon-idr: MPAMF_MBWUMON_IDR, memory-bandwidth monitor register
->> +#
->> +# @ecr: MPAMF_ECR, the error control register
->> +#
->> +# @esr: MPAMF_ESR, the error status register
->> +#
->> +# @cfg-part-sel: MPAMCFG_PART_SEL, the partition-selection register
->> +#
->> +# @cfg-cpbm: The configured cache-portion bitmaps, one per
->> +#     internal PARTID
->> +#
->> +# Since: 10.1
->> +##
->> +{ 'struct' : 'MpamRegs',
->> +  'data' : { 'idr' : 'int',
->> +             'iidr' : 'int',
->> +             'aidr' : 'int',
->> +             'cpor-idr': 'int',
->> +             'ccap-idr': 'int',
->> +             'mbw-idr': 'int',
->> +             'pri-idr': 'int',
->> +             'partid-nrw-idr': 'int',
->> +             'msmon-idr': 'int',
->> +             'csumon-idr': 'int',
->> +             'mbwumon-idr': 'int',
->> +             'ecr': 'int',
->> +             'esr': 'int',
->> +             'cfg-part-sel': 'int',
->> +             'cfg-cpbm': ['MpamBm']#lazy
-> 
-> Is the comment an accident?
-> 
-> How wide are these registers?  Is 'int' the appropriate type?
-> 
->> +          }
->> +}
->> +
->> +##
->> +# @MpamCacheInfo:
->> +#
->> +# Information about an MPAM cache Memory System Component.
->> +#
->> +# @cpu: First CPU of the set associated with the cache
->> +#
->> +# @level: Level of cache
->> +#
->> +# @type: Type of cache
->> +#
->> +# @regs: The per RIS register state
->> +#
->> +# Since: 10.1
->> +##
->> +{ 'struct': 'MpamCacheInfo',
->> +  'data' : { 'cpu' : 'int',
->> +             'level' : 'int',
->> +             'type' : 'int',
->> +             'regs' : ['MpamRegs']
->> +           }
->> +}
->> +
->> +##
->> +# @query-mpam-cache:
->> +#
->> +# Get a list of MpamCacheInfo for all Cache related MSC
->> +#
->> +# @level: Provide a cache level to filter against
-> 
-> What exactly does this argument filter out?
-> 
-> Is it really needed?  How large can unfiltered output become?
-> 
->> +#
->> +# Returns: a list of @MpamCacheInfo describing all
->> +#   the MPAM cache MSC instances
-> 
-> This gets rendered like
-> 
->     Return: [MpamCacheInfo] – a list of MpamCacheInfo describing all the
->             MPAM cache MSC instances
-> 
-> As is, the description is mostly redundant.  Do you need a description?
-> Try building without it, and see how it comes out.
-> 
->> +#
->> +# Since: 10.1
->> +##
->> +{ 'command': 'query-mpam-cache',
->> +  'data': { '*level': 'int' },
->> +  'returns' : ['MpamCacheInfo'],
->> +  'allow-preconfig': true }
->> diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
->> index b93dd68..cef175d 100644
->> --- a/qapi/qapi-schema.json
->> +++ b/qapi/qapi-schema.json
->> @@ -64,6 +64,7 @@
->>  { 'include': 'replay.json' }
->>  { 'include': 'yank.json' }
->>  { 'include': 'misc.json' }
->> +{ 'include': 'mpam.json' }
->>  { 'include': 'misc-arm.json' }
->>  { 'include': 'misc-i386.json' }
->>  { 'include': 'audio.json' }
-> 
-
--- 
-Best regards,
-Jinjie
 
 

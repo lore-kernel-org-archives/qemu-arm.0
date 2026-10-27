@@ -1,108 +1,191 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76E0E606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 19:53:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 590C9606A322
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 22:32:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=j1UgHHI7
+	dkim=pass (2048-bit key, unprotected) header.d=amazon.de header.i=@amazon.de header.a=rsa-sha256 header.s=amazoncorp2 header.b=cbnQXKE6
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLnE0-0002vH-E3; Tue, 27 Oct 2026 15:52:48 -0400
+	id 1xLpiZ-0003uR-Kr; Tue, 27 Oct 2026 18:32:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gessingate@gmail.com>)
- id 1xLnDt-0002qH-Gj
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 15:52:42 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gessingate@gmail.com>)
- id 1xLnDp-0004sg-Dl
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 15:52:40 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4a1b07c3c5fso2000915e9.1
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 12:52:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <prvs=75389f537=graf@amazon.de>)
+ id 1xLpiU-0003qb-Ii; Tue, 27 Oct 2026 18:32:29 -0400
+Received: from fra-out-004.esa.eu-central-1.outbound.mail-perimeter.amazon.com
+ ([3.74.81.189])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=75389f537=graf@amazon.de>)
+ id 1xLpiS-0003gc-K3; Tue, 27 Oct 2026 18:32:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793130755; x=1793735555; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=IpL4p+yzCt4e8PzmmjicXty/+jxSaf2HbZ40OD7j+70=;
- b=j1UgHHI7CMk1f5X8CfqnATH+f/TcS1KOhByKJ8+Tfeust8YpaoQDoaRsHiwfY3XyPt
- pVrFcyMFMwvHxgVKajaNKUjI2b0zZmDfyTTFrRlT3TlxeQnOPvSd/WXmRtAky+HUrESd
- 4tfKj+tLVdMojS8Dqvrk9v8lZHXLa63ZyOK/SfA4vvZSW042xvfyR4LeBb+u3uOyJIGD
- 8DlfFz6dSupnlRpgZsBIEAILF1/w8jKQFgIg0E05ptDboajCb65CmBpGJz7uU7cDzIow
- +CaiIszYYa6/GkBBH9QmqQWnlfo+IF4Hl4ibiUmUHPr6Aue4f4MvsS2aX5EcaIoMb9be
- vpMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793130755; x=1793735555;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=IpL4p+yzCt4e8PzmmjicXty/+jxSaf2HbZ40OD7j+70=;
- b=IbIBLDKzaAqyCLlZYx1laMmgOIMLzpv7cuZYN72cipoSvFhM9L2dYKsM6d/AXcs8YH
- GmOCD9VJGp18uUF4inYyKVWuM4gXVy25z/Kvzpsx38CNTsjP7uqrzA3OxVuD1LGtkcHt
- eSBacKN7fMthR7xBvqVZdQcdz0ZN984qowUsEjxjqVZ9DXn/RBZsKkayZ3+H8071v7Hc
- a9D+J4BEoaE5TDW2fjWtb9tPd3fGwlrKr+xe84zN7CsqfX2Pv9Yf4SLe9ZltTwvHAM8o
- FZGnoI+1PVA/1oJu/O1B43t6/PPt38GX4pKkMKxm+ZucJIeqdSKRMa2lZ/OuzSyO1ZLN
- UQsg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxlAJYOv//Ue88dLAPDA3s1EfmMRQexKEmRZKfvDj6kpI0LbalB9RWTwA+UQvtqCD7jrv1TyC0hag==@nongnu.org
-X-Gm-Message-State: AFq9FYKLO9SKEAWCQFgZobDQaTrU2T3KuR+jQwzQw6+Q+jdmogCuz8H7
- uRkuXVpDAxnuLiqNVP5fXFXuuhnHD91KicnTr4lKo4kqAAZnswhvzUyzjBJbpMMBlYQ=
-X-Gm-Gg: AYBFou28YPB5/ijBhkodTAwSHJUWisO3oBeVr7gFOWo2TpEANmJDPaLFu/8UGO5RtvG
- MT/vvAeg7hvxEFhdos8tuz2WJVzwEiJDVKEfyoWb+g1xALF19R9RwgpKOuf9bVBiZ0vhEPT9VDi
- XoQZImJYtFqvOdyV90Ss6/3vzkyErI6/SHBFBAVeiRVkSP6JF+s3NAwVV6Gk/DanyDdNIDi7ZA8
- AIhX4O9o+fb80yf6BSZj82/A1oTUaF7iQDCLfRLxfO1q92NVnpnx7xLGhgid3xpsvwOPszpyYrj
- iNG+nJxa2P+EcsNQ3JLIsOQOXyTxd46UUIFm9Av/G9Xo5EunQoOuMtNd+tAQZHAyoN4Qh1EgSqQ
- oHQXBQmv1Pul224XgUJ72omXmvZXE0vFSVIrtZRyITbV/S/dJ5DZ4mHg9vbrCHmCEVkpuQh1rRk
- Td9/lQM+55vR1e3N9G7q/WIdCMlDp76mwMPKcnbzNf2wNIUnZE1oPLq14Kr9EKWKMzWqusJkvG0
- sXiF8tKuconVWQ6PUUAXYZJUrUKP+o8imhLVYIbhABfRF2te6+KphTkIfsuC/7vuwZbcSHNwggb
- wxWGjJy1P/2hnvc=
-X-Received: by 2002:a05:600c:3f12:b0:4a4:7a8d:c436 with SMTP id
- 5b1f17b1804b1-4a47a8dc6e6mr198080375e9.11.1793130755030; 
- Tue, 27 Oct 2026 12:52:35 -0700 (PDT)
-Received: from [127.0.1.1] (95-24-99-141.broadband.corbina.ru. [95.24.99.141])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e3ebcb846sm24746368f8f.25.2026.10.27.12.52.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Oct 2026 12:52:34 -0700 (PDT)
-From: Timur Maksimov <gessingate@gmail.com>
-Date: Tue, 27 Oct 2026 22:50:47 +0300
-Subject: [PATCH v2 6/6] tests/qtest: Add cases for 32-bit Aspeed I2C
- controllers
+ d=amazon.de; i=@amazon.de; q=dns/txt; s=amazoncorp2;
+ t=1793140344; x=1824676344;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=ncj4joIiKbPl16HQlEIKHQhWwv8Vu9xouoGMLLvA1/0=;
+ b=cbnQXKE68aBbY9pMuWeIEIuLyJXumUt6Kc5+uRCDZKEKsZCC0k1cBYMt
+ OCWsRnrf1cg+Vnk8GL3m1B+JOCXcUXFwsHY6Y54bnZqCcwzrLWqEdginL
+ S4h+Wg8XuoyYHn0zbph1FBz34mazSyNml6cbtVU3WpTGsEsMhW6AF2H3U
+ w9I3iEumNyk1To5GUJjryCKTxwh+nVIPMjxfQ4rJ3WUeUjIBeDMVI1+Me
+ ETAWtblvfeNiFBE53CMLpQqHLA9sCvNpywKZHRflxR02S61RhoNbSnD6/
+ 6PM8HTSgrF+3I+2/fMH5uVgIeCR0grDxBJfvA5vMUSbGe9XzfftG2ABgD w==;
+X-CSE-ConnectionGUID: AeYYbsXURJyT4H/h4cm74Q==
+X-CSE-MsgGUID: EIQnOeM8R/C2JfIx6rkh5w==
+X-IronPort-AV: E=Sophos;i="6.27,181,1787011200"; d="scan'208";a="21851393"
+Received: from ip-10-6-3-216.eu-central-1.compute.internal (HELO
+ smtpout.naws.eu-central-1.prod.farcaster.email.amazon.dev) ([10.6.3.216])
+ by internal-fra-out-004.esa.eu-central-1.outbound.mail-perimeter.amazon.com
+ with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2026 22:32:14 +0000
+Received: from EX19MTAEUB002.ant.amazon.com [54.240.197.224:16086]
+ by smtpin.naws.eu-central-1.prod.farcaster.email.amazon.dev [10.0.14.248:2525]
+ with esmtp (Farcaster)
+ id 34426368-de01-46a2-80a4-9e7ac2f0abda; Tue, 27 Oct 2026 22:32:14 +0000 (UTC)
+X-Farcaster-Flow-ID: 34426368-de01-46a2-80a4-9e7ac2f0abda
+Received: from EX19EXOEUA002.ant.amazon.com (10.252.50.139) by
+ EX19MTAEUB002.ant.amazon.com (10.252.51.59) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.56;
+ Tue, 27 Oct 2026 22:32:13 +0000
+Received: from BEUP281CU002.outbound.protection.outlook.com (10.252.51.94) by
+ EX19EXOEUA002.ant.amazon.com (10.252.50.139) with Microsoft SMTP
+ Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.56
+ via Frontend Transport; Tue, 27 Oct 2026 22:32:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=dtZQW0xIXsfjR6x5jax8X9Ag3k15rHtmt7dueOe7wCX7QyNemIKl3fNDj0oN1RiOYPsn79G59DIeUZShDIOSMtpaYfYH0/cIv7xGUTCL1OQy/7hYFFpFOrkkpr1OZqTgQTNR5+mX2FcL+NyQ9rNOKIGOLBUR7Z1cXqNzohPL/p9GyCHhejrAfyavzI0yO1iAofRCmvOfb2ysH3S7dEX+5Kkv0A3kCdWiMv6S2X/9iWQ5iQx3hvl2IaiEN985zEwLayVBjVltJfyUTAbKE9xQJi5y4rnjc3w6LyW6/Sd/wy0hqf4YGpdgAf0crSBkNHI7VBJe0vEoDI6m8dY4CrTmCQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ncj4joIiKbPl16HQlEIKHQhWwv8Vu9xouoGMLLvA1/0=;
+ b=ODuYXKFun2vom1228BH2sKny64I15JBPEjrU/QwwNZEOGFUtDQBE5bna/uQM9697IGYd9x8o3hHvr+qrHPcFOZFW5zobrIdN/BFWsS8Z7YS46/L7MNuSljgUpJCaSd5Sw015gsyLFN7S015NLsiD6TYuXJkr5/CoYtR4kxNqAEeFdI5lkN1wLgu4HYuyuxGLYh42KU6M7QJ/o6L04ymf8lO0GOOtrjtEmvGVSYlP4yVVlCWxXsnWwQk1mhOyCIHDMadZbCqfSUXtbxN427vo1tW/bovm/nOpEryg7/GV8JRK3MLy6R8c+EyTKu3bII86H9H6IveUjoO0SCO6pBj+tQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amazon.de; dmarc=pass action=none header.from=amazon.de;
+ dkim=pass header.d=amazon.de; arc=none
+Received: from FRVP281MB744463.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:20d::13) by BE3P281MB6226.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:b10:104::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.22; Tue, 27 Oct
+ 2026 22:32:08 +0000
+Received: from FRVP281MB744463.DEUP281.PROD.OUTLOOK.COM
+ ([fe80::7b1c:7a5d:c405:6c4d]) by FRVP281MB744463.DEUP281.PROD.OUTLOOK.COM
+ ([fe80::7b1c:7a5d:c405:6c4d%5]) with mapi id 15.21.0546.021; Tue, 27 Oct 2026
+ 22:32:08 +0000
+From: "Graf (AWS), Alexander" <graf@amazon.de>
+To: =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Stefano Stabellini <sstabellini@kernel.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, David Hildenbrand <david@kernel.org>, Anthony PERARD
+ <anthony@xenproject.org>, Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>, Richard Henderson <richard.henderson@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Chao Liu
+ <chao.liu@processmission.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, Daniel Henrique Barboza
+ <daniel.barboza@oss.qualcomm.com>, Amit Machhiwal <amachhiw@linux.ibm.com>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>, "Sergio
+ Lopez" <slp@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, Bibo Mao <maobibo@loongson.cn>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Xianglai Li <lixianglai@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>, "kvm@vger.kernel.org"
+ <kvm@vger.kernel.org>, Song Gao <17746591750@163.com>, Eric Farman
+ <farman@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>
+Subject: Re: [PATCH 11/11] accel/nitro: mark 'nitro' accelerator as secure
+Thread-Topic: [PATCH 11/11] accel/nitro: mark 'nitro' accelerator as secure
+Thread-Index: AQHdZmMAlMw9PSV1v0eV1IWyw8llqw==
+Date: Tue, 27 Oct 2026 22:32:08 +0000
+Message-ID: <a4f0b1f0-dbea-486e-b744-899b242e8ebe@amazon.com>
+References: <20261027181400.1752951-1-berrange@redhat.com>
+ <20261027181400.1752951-12-berrange@redhat.com>
+In-Reply-To: <20261027181400.1752951-12-berrange@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amazon.de;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: FRVP281MB744463:EE_|BE3P281MB6226:EE_
+x-ms-office365-filtering-correlation-id: 41515744-e6f2-4e5a-2257-08df347a229d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|366016|23010399003|1800799024|38070700021|11063799006|4143699003|56012099006|10067099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: V3naHdaXcDPRPFZcaE/ps35mVFaYglsS1RDsqeXggSjOlm51x/PJmLU4aZ3WW2V0PJenPrkwvW2GSYaV4ZAlQd8RG9rnBrLjiT6Qs2DJXiyh3peDkAZ1Ay1uo1NeKM1f/E256KpBzD2tKs4/mGXD4xC+cHG4zTOOsF2ixW6nYqz2AsnkUcKpGXAJz5W+iuGYno8iRpJTGV/W0oCv+GRKNpxnZ+NvGuoLjx9oQHQmmewZCTqT68SRx/SE83+UuJKM1xk0vrsyYctBKxgGH08kBizjnu9UI6KK7lrQmlM02AxLsCYWFLOI2E0H/wiuDXcGaQLv3INumgsLOOnnddrxDDZr3l12D3fbGM1qUj6U6zCjrNHLOuTs2jdQoX/2iW9Hmy7P12OfawR6ayn70YzbKmlrhyljhapFNyu0Xhub4fXLFd/8ild5CSCQG/PmY2Irz7i1EQW0J1W7xWY+ZM322o1Ghv7wWQdaEdFxo53PorjFLYmvk/9BBAY+KaRP7hJxnEoDgjkfMRLHc3I7OO+oSJZdqRabDAB7S5bxe8sTH8Gb0hocS65AThFn+kma7nApCoKEGEND+bkD9g1/KbefWVovbKVdf3PLyKUfeflrFdHvQ997Y4PHt2gEg9sConppGD4egsUCYSPRO4H7TrdoF2hKifckVlku8sPi0FDmb00GhmRm3yMxb2Y3qoTceE4y0PBX9+2SGeZ+ep8d07eDkqkqwVnkQVVNCPnBn8UH6KQ=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:FRVP281MB744463.DEUP281.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(366016)(23010399003)(1800799024)(38070700021)(11063799006)(4143699003)(56012099006)(10067099003)(18002099003)(22082099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QlhSZlFqaXd0aitmb3NhV244Z21QNkdvRHBjWko2Q0sxUlNrQUJkNndHQmhC?=
+ =?utf-8?B?aTFjSFZwSjc1L20zMExZVW9VY0xVMFo3YVgrdkZNSnl1Q3NlRzAyV1YwYzRG?=
+ =?utf-8?B?K3UrcWU5VUQ1SDhPS2k1amsvUmRwSHNwcVR3dXFRYUJwMjNyUG9waW1oL1Vm?=
+ =?utf-8?B?d0VMcEo5c3pNc1N5WHdQWU5DU25EdjhxY1BSUlJsdUk1U2xpVUhsTkpnOVRI?=
+ =?utf-8?B?ZzJNZHRpRFpjbktMM0dIWXUzMG5yQ3FhdEIzZi9rMnc1eGo3U3psZ3gvQ00w?=
+ =?utf-8?B?cUVGaE5lODdHRXdjVkYrTzRJN0ErbFprdkNNTXZQditMb0R1Y3RkdzJ2cFVY?=
+ =?utf-8?B?Y2Q5OUZ1NC85cjBnZGJhUlJNNWw0TVhvaVZSOElFT1NuL24wYmJzeXdGZEhH?=
+ =?utf-8?B?MjJCbVREWW1TSDBWUUlZUEZOMmluK1Ryd3NOM2tNOFdYWVpvZDZCcnFmWVNJ?=
+ =?utf-8?B?VDBRTzB2Q3hZRFRrbmVpdTh5R0YwK1dkcmVEYituc0lQcWtYVElUZFhhUkJ0?=
+ =?utf-8?B?b2svcUtkN3R3U3g5TDV4N25YUEc4TDhEd1dlbzFGYzJVRXBnM1VTMDI4d0JY?=
+ =?utf-8?B?TGhMdWpycFlBRmFrdFQ3ZjFEOE9uQTFGUllaUUtFR3hRZk93NGhYTzJmZDQz?=
+ =?utf-8?B?dmo5dU5OQ3pHeU01a1kvWTJrTW4vL01VWll2REhoNWtNcnVFN2M5ZFBKdjNt?=
+ =?utf-8?B?RWdmdUVmS3BRRjVkb1I0VGtUZDRpcHdFd0hqb2o2OHpqWFVTNElaejhGODN6?=
+ =?utf-8?B?WFJxRklvTzBKcU5GUm9FdC96S1loT3JBZmE2OGsvQ0FxeU4rNkxGOTYxdURE?=
+ =?utf-8?B?NEsvUGV2T0pzTXo1U0pJdkl2Q0hOUWh5ZXZ5YkV4dk92RmEwS0g3ZUZzbmVJ?=
+ =?utf-8?B?L2ZKV3VjOTJIR3JZby9qS0pobklFaUhVWFlmMkVSZXkrOEhIZy9XS1EzSWdN?=
+ =?utf-8?B?U1BBSWFYeVh1QmpJMUcxekVZaHIwby9pSW1LdHNxZlYxNlJpa3QwTytQOU1i?=
+ =?utf-8?B?NTVjNFhObndOVWpTdmgzTmtWTVA0WnFjcjV3eUZHNWQzenpXajZYTGRLS2Nu?=
+ =?utf-8?B?ZlhXTVM0SmRNRzh4RlFpc3hqYVV4Snp4cUd5MExqdVdlWEg0QXFRU3o1NjJX?=
+ =?utf-8?B?ODhERjJ5dGZxckIyM3RkcW1EaWo5eURjRGlMcUpCc2lTTjNmYnlzb2o1YnRl?=
+ =?utf-8?B?N1NrRThpb2dXeTNyUmZTYWh6cjZJYU9nS2FrWWczbklzb1VUTWY0RGRNWEpt?=
+ =?utf-8?B?MkZEd2pQeUc3S3pkYWJmRWZuaU01NXJMTXR3Yks3d0VtY1lTODVqMmw3Mk5v?=
+ =?utf-8?B?UGFCbGlJK21NL0MzSGM2UEtUcUIxeFdveFhpZ1JVWTI1bW5MNjBUa2NzaCtU?=
+ =?utf-8?B?RWg0L0swcUlUeEpOdjRqOHFMWGczc3lyV0t2bzdjbGRkamxnc0lhOGx4OCtX?=
+ =?utf-8?B?KytlZkUwSmdWckZtWnE1eG9xVm02bWpkaXZaTnpaMlJUaVZjeGFsYmtJUGtY?=
+ =?utf-8?B?ZFcvcU5RNmUxdmpWSVZUT2JpdjREWjY0ZEFxdXNLQVl3VUVGWXhsWExUT1Ur?=
+ =?utf-8?B?czY3bHZDc1lBbFA1ckU1bGV4ZEpacnV2aHhVVVFoNmY1cEpMQURzSEVTdmRv?=
+ =?utf-8?B?Vy9EV2pHaUkzMzFNQTljRm9yem5vZFpLYWVoNkR0aDU3OFRHSksyQ1haRzdo?=
+ =?utf-8?B?Uy92SERaRnNSK2djSU9XekNhc2wxaThtTitXNEU3TFNJdFJFMWhUc0RzZ2ZY?=
+ =?utf-8?B?MHdsazA0WXJIMHhuMTBac0pGczNPVzlLWVhqMDVkWlBUdmVGR2t4NUVwMDR2?=
+ =?utf-8?B?QmZ6YnJJVDVaS3BoUHh1RXBRYUR3K01iWURGQ1hoYWk5WVBzdWQyZThYQWpX?=
+ =?utf-8?B?MTVxY1kyY3hLdUczMUI0WE8xYkZ3VVhxMU9RWTRpY2ltdllHK0w2aHZjbDBi?=
+ =?utf-8?B?Q0JPMm9TQjRHa1ltLzZDTmhEWS84YlkrVXgzSTdVdTk3bmJRQ3BSQysrUWJx?=
+ =?utf-8?B?ejNnVVZZZnlpaEVheGdlVlBEQ1cyNG8zVzB2MDBTSi80eHorajhiaDR5WFpa?=
+ =?utf-8?B?dDlZQjVpNFVNcEY0ZHZraGFhMlc5Z2VkQ3Vzcy8vL0lJdlc3TFh1RG11Nmpt?=
+ =?utf-8?B?dnZJK3o1ZWdwQ0hZZGN1bEtVZkpFUGZyVHJIQ0cyQXY2R0ZnR1ZLMHcvU1FR?=
+ =?utf-8?B?cVRVSGZBeFRmak4waHJVTXFLcG1SelZZN3lFc21yZEpPbit4VE9tbzI3WWRG?=
+ =?utf-8?B?eDMrWDdPeHhSYzZOTUFzeDcvNnBvVkNOU01jcHJJSjUyd1dQWTduQkNCbWZI?=
+ =?utf-8?Q?sgbTg/dYUez4UECoGY?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <71E8D876F7E6D54AADF6F7659FF02972@DEUP281.PROD.OUTLOOK.COM>
+Content-Transfer-Encoding: base64
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261027-aspeed-i2c-nonpkt-fix-v2-6-07deed1dff60@gmail.com>
-References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
-In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Timur Maksimov <gessingate@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793130744; l=29583;
- i=gessingate@gmail.com; s=20261022; h=from:subject:message-id;
- bh=+hAkXTwOmWPfcYD0V1X5BUlnOQ+1Ekirs+vRjX7A2pg=;
- b=jhPBP6/hM2kfa3zSrvaFSE5P3Iykr4xdg8g0LLN97hOy3i3PojA5VL2aT7RFYmLP3kAII3om2
- gunoNAIOwHHC4aw/0lC4ujaaTSL11pr/SNMUvOXOWoinBjJdlt0gUrx
-X-Developer-Key: i=gessingate@gmail.com; a=ed25519;
- pk=xF4NKIzSbKMdte17nQ66S/q9m/A2gu6GiEWc8ZnyJmo=
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=gessingate@gmail.com; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Exchange-RoutingPolicyChecked: ehEdWFHIf7fR1UukeOg7VdK87LLx24FTy6+QD2n+hBRqZTreXslNguE1G3xzNAHPB4UqeqtFU9mbRxfajtXds60RmzjYeCbGnNOzm7ithNr3UTxOkQfzzzfgPdy1JEa02sziO2lb9VzmrkdCbAi8fETgR5T2UkeDmwJY2gadnoafMyCm+Xmwy+qLnlaTcs7nSjrafbKr/4fDNWJSyi+gddp4KZ5upuymfN/3H+q2bXEeeEh5grLHJSQFyFAOaDDvhee9KuRjjqVjzN7zCl9lpLlswPAtUKu2n7G+vbpZdWFSJrUd/kwAH1eDhytpr2nGLOSylFORFoA30KJU/kyNxA==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: FRVP281MB744463.DEUP281.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-Network-Message-Id: 41515744-e6f2-4e5a-2257-08df347a229d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Oct 2026 22:32:08.0955 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 5280104a-472d-4538-9ccf-1e1d0efe8b1b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Y+lk4TlVv8tIGeSR1RaAVShJTDin17A4/uJHD9WAZsUWhnRpaRpbyt71G3AZH9jD
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BE3P281MB6226
+X-OriginatorOrg: amazon.de
+Received-SPF: pass client-ip=3.74.81.189;
+ envelope-from=prvs=75389f537=graf@amazon.de;
+ helo=fra-out-004.esa.eu-central-1.outbound.mail-perimeter.amazon.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,885 +197,16 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	UNPARSEABLE_RELAY autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Test all supported register and transfer modes.
-
-Signed-off-by: Timur Maksimov <gessingate@gmail.com>
----
- tests/qtest/aspeed_i2c-test.c | 836 ++++++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build       |   2 +
- 2 files changed, 838 insertions(+)
-
-diff --git a/tests/qtest/aspeed_i2c-test.c b/tests/qtest/aspeed_i2c-test.c
-new file mode 100644
-index 0000000000..7fb1debb56
---- /dev/null
-+++ b/tests/qtest/aspeed_i2c-test.c
-@@ -0,0 +1,836 @@
-+/*
-+ * QTest testcase for Aspeed I2C controller
-+ *
-+ * Copyright (c) 2026 Timur Maksimov <gessingate@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+#include "hw/i2c/aspeed_i2c.h"
-+
-+typedef enum TestAspeedI2CMode {
-+    TEST_I2C_MODE_OLD,
-+    TEST_I2C_MODE_NEW,
-+    TEST_I2C_MODE_PKT,
-+} TestAspeedI2CMode;
-+
-+typedef enum TestAspeedMachine {
-+    TEST_MACHINE_AST2400,
-+    TEST_MACHINE_AST2500,
-+    TEST_MACHINE_AST2600,
-+} TestAspeedMachine;
-+
-+typedef struct TestData {
-+    const char *name;
-+    TestAspeedMachine machine;
-+    TestAspeedI2CMode mode;
-+} TestData;
-+
-+typedef struct TestFixture {
-+    hwaddr base_addr;
-+    hwaddr bus_offset;
-+    int irq_no;
-+    uint32_t pool_base;
-+} TestFixture;
-+
-+static const uint8_t tx_data[] = {0x10, 0x11, 0x12};
-+static const uint8_t rx_data[] = {0x30, 0x31, 0x32};
-+
-+#define DRAM_BASE      0x80000000
-+#define DRAM_TX_OFFSET 0x1000
-+#define DRAM_RX_OFFSET 0x2000
-+
-+static void aspeed_i2c_write(TestFixture *f, uint32_t offset, uint32_t val)
-+{
-+    qtest_writel(global_qtest, f->base_addr + f->bus_offset + offset, val);
-+}
-+
-+static void aspeed_i2c_write_pool(TestFixture *f, uint32_t offset, uint8_t val)
-+{
-+    qtest_writeb(global_qtest, f->base_addr + f->pool_base + offset, val);
-+}
-+
-+static void aspeed_i2c_write_dma(TestFixture *f, uint32_t offset, uint8_t val)
-+{
-+    qtest_writeb(global_qtest, DRAM_BASE + offset, val);
-+}
-+
-+static uint32_t aspeed_i2c_read(TestFixture *f, uint32_t offset)
-+{
-+    return qtest_readl(global_qtest, f->base_addr + f->bus_offset + offset);
-+}
-+
-+static uint8_t aspeed_i2c_read_pool(TestFixture *f, uint32_t offset)
-+{
-+    return qtest_readb(global_qtest, f->base_addr + f->pool_base + offset);
-+}
-+
-+static uint8_t aspeed_i2c_read_dma(TestFixture *f, uint32_t offset)
-+{
-+    return qtest_readb(global_qtest, DRAM_BASE + offset);
-+}
-+
-+static bool aspeed_i2c_irq(TestFixture *f)
-+{
-+    return qtest_get_irq(global_qtest, f->irq_no);
-+}
-+
-+static uint32_t aspeed_i2c_ctrl_offset(const TestData *td)
-+{
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        return A_I2CD_FUN_CTRL;
-+    } else {
-+        return A_I2CC_FUN_CTRL;
-+    }
-+}
-+
-+static uint32_t aspeed_i2c_cmd_offset(const TestData *td)
-+{
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        return A_I2CD_CMD;
-+    } else {
-+        return A_I2CM_CMD;
-+    }
-+}
-+
-+
-+static uint32_t aspeed_i2c_intr_ctrl_offset(const TestData *td)
-+{
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        return A_I2CD_INTR_CTRL;
-+    } else {
-+        return A_I2CM_INTR_CTRL;
-+    }
-+}
-+
-+static uint32_t aspeed_i2c_intr_sts_offset(const TestData *td)
-+{
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        return A_I2CD_INTR_STS;
-+    } else {
-+        return A_I2CM_INTR_STS;
-+    }
-+}
-+
-+static uint32_t aspeed_i2c_pool_ctrl_offset(const TestData *td)
-+{
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        return A_I2CD_POOL_CTRL;
-+    } else {
-+        return A_I2CC_POOL_CTRL;
-+    }
-+}
-+
-+static uint32_t aspeed_i2c_byte_buf_offset(const TestData *td)
-+{
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        return A_I2CD_BYTE_BUF;
-+    } else {
-+        return A_I2CC_MS_TXRX_BYTE_BUF;
-+    }
-+}
-+
-+static void aspeed_i2c_write_slave_addr(TestFixture *f, const TestData *td,
-+                                        uint8_t addr)
-+{
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        aspeed_i2c_write(f, A_I2CD_DEV_ADDR, addr);
-+    } else {
-+        aspeed_i2c_write(f, A_I2CS_DEV_ADDR, addr);
-+    }
-+}
-+
-+static void aspeed_i2c_write_dma_addr(TestFixture *f, const TestData *td,
-+                                     uint32_t val, bool rx)
-+{
-+    uint32_t offset;
-+
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        offset = A_I2CD_DMA_ADDR;
-+    } else {
-+        offset = rx ? A_I2CM_DMA_RX_ADDR : A_I2CM_DMA_TX_ADDR;
-+    }
-+    aspeed_i2c_write(f, offset, val);
-+}
-+
-+static void aspeed_i2c_write_dma_len(TestFixture *f, const TestData *td,
-+                                     uint16_t val, bool rx)
-+{
-+    uint32_t reg;
-+
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        aspeed_i2c_write(f, A_I2CD_DMA_LEN, val + 1);
-+        return;
-+    }
-+
-+    if (rx) {
-+        reg = FIELD_DP32(0, I2CM_DMA_LEN, RX_BUF_LEN_W1T, 1);
-+        reg = FIELD_DP32(reg, I2CM_DMA_LEN, RX_BUF_LEN, val);
-+    } else {
-+        reg = FIELD_DP32(0, I2CM_DMA_LEN, TX_BUF_LEN_W1T, 1);
-+        reg = FIELD_DP32(reg, I2CM_DMA_LEN, TX_BUF_LEN, val);
-+    }
-+    aspeed_i2c_write(f, A_I2CM_DMA_LEN, reg);
-+}
-+
-+static uint8_t aspeed_i2c_get_txstate(TestFixture *f, const TestData *td)
-+{
-+    uint32_t offset;
-+
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        offset = A_I2CD_CMD;
-+    } else {
-+        offset = A_I2CC_MS_TXRX_BYTE_BUF;
-+    }
-+    return SHARED_FIELD_EX32(aspeed_i2c_read(f, offset), TX_STATE);
-+}
-+
-+static bool aspeed_i2c_get_busy_sts(TestFixture *f, const TestData *td)
-+{
-+    uint32_t offset;
-+
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        offset = A_I2CD_CMD;
-+    } else {
-+        offset = A_I2CC_MS_TXRX_BYTE_BUF;
-+    }
-+    return SHARED_FIELD_EX32(aspeed_i2c_read(f, offset), BUS_BUSY_STS);
-+}
-+
-+/* Write a data byte in a byte mode transfer */
-+static
-+void aspeed_i2c_write_byte(TestFixture *f, const TestData *td, uint8_t val)
-+{
-+    aspeed_i2c_write(f, aspeed_i2c_byte_buf_offset(td),
-+                     SHARED_FIELD_DP32(0, TX_BUF, val));
-+}
-+
-+/* Read a data byte in a byte mode transfer */
-+static uint8_t aspeed_i2c_read_byte(TestFixture *f, const TestData *td)
-+{
-+    uint32_t reg;
-+
-+    reg = aspeed_i2c_read(f, aspeed_i2c_byte_buf_offset(td));
-+    return SHARED_FIELD_EX32(reg, RX_BUF);
-+}
-+
-+static void aspeed_i2c_send_start(TestFixture *f, const TestData *td,
-+                                  uint32_t cmd)
-+{
-+    cmd = SHARED_FIELD_DP32(cmd, M_START_CMD, 1);
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+}
-+
-+static uint8_t qom_i2c_dummy_get_uint8(const char *prop)
-+{
-+    QDict *r;
-+    uint8_t u;
-+
-+    r = qtest_qmp(global_qtest,
-+                  "{ 'execute': 'qom-get', 'arguments': "
-+                  "{ 'path': 'i2c-dummy', 'property': %s } }",
-+                  prop);
-+    u = qdict_get_uint(r, "return");
-+    qobject_unref(r);
-+    return u;
-+}
-+
-+static void qom_i2c_dummy_set_uint8(const char *prop, uint8_t data)
-+{
-+    QDict *r;
-+
-+    r = qtest_qmp(global_qtest,
-+                  "{ 'execute': 'qom-set', 'arguments': "
-+                  "{ 'path': 'i2c-dummy', 'property': %s, 'value': %d } }",
-+                  prop, data);
-+    qobject_unref(r);
-+}
-+
-+static void qom_i2c_dummy_set_rx(uint8_t idx, uint8_t data)
-+{
-+    g_autofree char *prop = g_strdup_printf("rx[%d]", idx);
-+
-+    qom_i2c_dummy_set_uint8(prop, data);
-+}
-+
-+static uint8_t qom_i2c_dummy_get_tx(int8_t idx)
-+{
-+    g_autofree char *prop = g_strdup_printf("tx[%d]", idx);
-+
-+    return qom_i2c_dummy_get_uint8(prop);
-+}
-+
-+#define I2C_ADDR_NACK  0x10
-+#define I2C_ADDR_DUMMY 0x20
-+#define I2C_ADDR_ECHO  0x30
-+#define I2C_ADDR_SLAVE 0x40
-+
-+#define CHECK_I2C_IDLE(f, td) do {                                          \
-+    g_assert_cmphex(aspeed_i2c_get_txstate(f, td), ==, I2CD_IDLE);          \
-+    g_assert_false(aspeed_i2c_get_busy_sts(f, td));                         \
-+    g_assert_cmphex(aspeed_i2c_read(f, aspeed_i2c_intr_sts_offset(td)), ==, \
-+                    0);                                                     \
-+    g_assert_false(aspeed_i2c_irq(f));                                      \
-+} while (0)
-+
-+#define CHECK_I2C_INTR(f, td, reg) do {                                     \
-+    g_assert_true(aspeed_i2c_irq(f));                                       \
-+    g_assert_cmphex(aspeed_i2c_read(f, aspeed_i2c_intr_sts_offset(td)), ==, \
-+                    reg);                                                   \
-+} while (0)
-+
-+#define CHECK_I2C_BUS_ACTIVE(f, td) do {                                    \
-+    g_assert_cmphex(aspeed_i2c_get_txstate(f, td), ==, I2CD_MACTIVE);       \
-+    g_assert_true(aspeed_i2c_get_busy_sts(f, td));                          \
-+} while (0)
-+
-+#define CHECK_I2C_ACK(f, td) do {                                           \
-+    g_assert_cmphex(aspeed_i2c_get_txstate(f, td), ==, I2CD_MACTIVE);       \
-+    g_assert_true(aspeed_i2c_get_busy_sts(f, td));                          \
-+    CLEAR_I2C_INTR(f, td, SHARED_FIELD_DP32(0, TX_ACK, 1));                 \
-+} while (0)
-+
-+#define CLEAR_I2C_INTR(f, td, reg) do {                                     \
-+    CHECK_I2C_INTR(f, td, reg);                                             \
-+    aspeed_i2c_write(f, aspeed_i2c_intr_sts_offset(td), reg);               \
-+    g_assert_cmphex(aspeed_i2c_read(f, aspeed_i2c_intr_sts_offset(td)), ==, \
-+                    0);                                                     \
-+} while (0)
-+
-+#define SEND_I2C_STOP(f, td) do {                                           \
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td),                          \
-+                     SHARED_FIELD_DP32(0, M_STOP_CMD, 1));                  \
-+    CLEAR_I2C_INTR(f, td, SHARED_FIELD_DP32(0, NORMAL_STOP, 1));            \
-+    CHECK_I2C_IDLE(f, td);                                                  \
-+} while (0)
-+
-+#define CHECK_I2C_DUMMY_DEVICE() do {                                       \
-+     for (uint8_t i = 0; i < ARRAY_SIZE(tx_data); i++) {                    \
-+        g_assert_cmphex(qom_i2c_dummy_get_tx(i), ==, tx_data[i]);           \
-+    }                                                                       \
-+    g_assert_cmphex(qom_i2c_dummy_get_uint8("tx-pos"), ==,                  \
-+                    ARRAY_SIZE(tx_data));                                   \
-+    g_assert_cmphex(qom_i2c_dummy_get_uint8("rx-pos"), ==,                  \
-+                    ARRAY_SIZE(rx_data));                                   \
-+} while (0)
-+
-+static void aspeed_i2c_init(TestFixture *f, const TestData *td)
-+{
-+    uint32_t reg;
-+
-+    qtest_qmp(global_qtest, "{ 'execute': 'system_reset' }");
-+
-+    aspeed_i2c_write_slave_addr(f, td, I2C_ADDR_SLAVE);
-+
-+    reg = FIELD_DP32(0, I2C_CTRL_GLOBAL, SRAM_EN, 1);
-+    if (td->mode != TEST_I2C_MODE_OLD) {
-+        reg = FIELD_DP32(reg, I2C_CTRL_GLOBAL, REG_MODE, 1);
-+    }
-+    qtest_writel(global_qtest, f->base_addr + A_I2C_CTRL_GLOBAL, reg);
-+
-+    reg = SHARED_FIELD_DP32(0, MASTER_EN, 1);
-+    reg = SHARED_FIELD_DP32(reg, SLAVE_EN, 1);
-+    aspeed_i2c_write(f, aspeed_i2c_ctrl_offset(td), reg);
-+
-+    /* Enable all interrupts */
-+    reg = SHARED_FIELD_DP32(0, TX_ACK, 1);
-+    reg = SHARED_FIELD_DP32(reg, TX_NAK, 1);
-+    reg = SHARED_FIELD_DP32(reg, RX_DONE, 1);
-+    reg = SHARED_FIELD_DP32(reg, ARBIT_LOSS, 1);
-+    reg = SHARED_FIELD_DP32(reg, NORMAL_STOP, 1);
-+    reg = SHARED_FIELD_DP32(reg, ABNORMAL, 1);
-+    if (td->mode != TEST_I2C_MODE_OLD) {
-+        reg = FIELD_DP32(reg, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+        reg = FIELD_DP32(reg, I2CM_INTR_STS, PKT_CMD_FAIL, 1);
-+    }
-+    aspeed_i2c_write(f, aspeed_i2c_intr_ctrl_offset(td), reg);
-+
-+    for (uint8_t i = 0; i < ARRAY_SIZE(rx_data); i++) {
-+        qom_i2c_dummy_set_rx(i, rx_data[i]);
-+    }
-+}
-+
-+static uint32_t aspeed_i2c_pkt_set_addr_cmd(const TestData *td, uint8_t addr)
-+{
-+    uint32_t cmd;
-+
-+    cmd = FIELD_DP32(0, I2CM_CMD, PKT_OP_EN, 1);
-+    cmd = FIELD_DP32(cmd, I2CM_CMD, PKT_DEV_ADDR, addr);
-+    return cmd;
-+}
-+
-+static
-+uint32_t aspeed_i2c_byte_set_addr_cmd(TestFixture *f, const TestData *td,
-+                                      uint8_t addr, bool is_recv)
-+{
-+    if (td->mode == TEST_I2C_MODE_PKT) {
-+        return aspeed_i2c_pkt_set_addr_cmd(td, addr);
-+    } else {
-+        aspeed_i2c_write_byte(f, td, addr << 1 | (is_recv ? 1 : 0));
-+        return SHARED_FIELD_DP32(0, M_TX_CMD, 1);
-+    }
-+}
-+
-+static
-+uint32_t aspeed_i2c_buf_set_addr_cmd(TestFixture *f, const TestData *td,
-+                                     uint8_t addr, bool is_recv)
-+{
-+    if (td->mode == TEST_I2C_MODE_PKT) {
-+        return aspeed_i2c_pkt_set_addr_cmd(td, addr);
-+    } else {
-+        aspeed_i2c_write_pool(f, 0, addr << 1 | (is_recv ? 1 : 0));
-+        return SHARED_FIELD_DP32(0, M_TX_CMD, 1);
-+    }
-+}
-+
-+static
-+uint32_t aspeed_i2c_dma_set_addr_cmd(TestFixture *f, const TestData *td,
-+                                     uint8_t addr, bool is_recv)
-+{
-+    if (td->mode == TEST_I2C_MODE_PKT) {
-+        return aspeed_i2c_pkt_set_addr_cmd(td, addr);
-+    } else {
-+        aspeed_i2c_write_dma(f, DRAM_TX_OFFSET, addr << 1 | (is_recv ? 1 : 0));
-+        return SHARED_FIELD_DP32(0, M_TX_CMD, 1);
-+    }
-+}
-+
-+
-+static uint32_t aspeed_i2c_send_addr_status(TestFixture *f, const TestData *td)
-+{
-+    uint32_t sts;
-+
-+    if (td->mode == TEST_I2C_MODE_PKT) {
-+        sts = FIELD_DP32(0, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+    } else {
-+        sts = SHARED_FIELD_DP32(0, TX_ACK, 1);
-+    }
-+    return sts;
-+}
-+
-+/*
-+ * Send an address byte to a non existing device.
-+ * The TX_NAK interrupt should be raised.
-+ */
-+static void test_nack(TestFixture *f, gconstpointer p_data)
-+{
-+    const TestData *td = (const TestData *)p_data;
-+    uint32_t sts, cmd;
-+
-+    cmd = aspeed_i2c_byte_set_addr_cmd(f, td, I2C_ADDR_NACK, false);
-+    aspeed_i2c_send_start(f, td, cmd);
-+
-+    g_assert_cmphex(aspeed_i2c_get_txstate(f, td), ==, I2CD_MSTART);
-+    g_assert_false(aspeed_i2c_get_busy_sts(f, td));
-+    sts = SHARED_FIELD_DP32(0, TX_NAK, 1);
-+    if (td->mode == TEST_I2C_MODE_PKT) {
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_FAIL, 1);
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+    }
-+    CLEAR_I2C_INTR(f, td, sts);
-+
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td),
-+                     SHARED_FIELD_DP32(0, M_STOP_CMD, 1));
-+    CLEAR_I2C_INTR(f, td, SHARED_FIELD_DP32(0, NORMAL_STOP, 1));
-+    CHECK_I2C_IDLE(f, td);
-+    qtest_hmp(global_qtest, "system_reset");
-+}
-+
-+
-+static void test_dummy_byte(TestFixture *f, gconstpointer p_data)
-+{
-+    const TestData *td = (const TestData *)p_data;
-+    uint32_t cmd, sts;
-+    bool pkt_mode = td->mode == TEST_I2C_MODE_PKT;
-+
-+    /* Write device address (Write) */
-+    cmd = aspeed_i2c_byte_set_addr_cmd(f, td, I2C_ADDR_DUMMY, false);
-+    aspeed_i2c_send_start(f, td, cmd);
-+    CHECK_I2C_BUS_ACTIVE(f, td);
-+    CLEAR_I2C_INTR(f, td, aspeed_i2c_send_addr_status(f, td));
-+
-+    /* Write data */
-+    sts = SHARED_FIELD_DP32(0, TX_ACK, 1);
-+    if (pkt_mode) {
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+        cmd = aspeed_i2c_pkt_set_addr_cmd(td, I2C_ADDR_DUMMY);
-+    } else {
-+        cmd = 0;
-+    }
-+    cmd = SHARED_FIELD_DP32(cmd, M_TX_CMD, 1);
-+    for (uint8_t i = 0; i < ARRAY_SIZE(tx_data); i++) {
-+        aspeed_i2c_write_byte(f, td, tx_data[i]);
-+        aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+        CHECK_I2C_BUS_ACTIVE(f, td);
-+        CLEAR_I2C_INTR(f, td, sts);
-+    }
-+
-+    /* Read data */
-+    cmd = aspeed_i2c_byte_set_addr_cmd(f, td, I2C_ADDR_DUMMY, true);
-+    cmd = SHARED_FIELD_DP32(cmd, M_RX_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, M_START_CMD, 1);
-+    sts = aspeed_i2c_send_addr_status(f, td);
-+
-+    for (uint8_t i = 0; i < ARRAY_SIZE(rx_data); i++) {
-+        cmd = SHARED_FIELD_DP32(cmd, M_RX_CMD, 1);
-+        if (i == ARRAY_SIZE(rx_data) - 1) {
-+            cmd = SHARED_FIELD_DP32(cmd, M_S_RX_CMD_LAST, 1);
-+        }
-+        aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+        CHECK_I2C_BUS_ACTIVE(f, td);
-+        sts = SHARED_FIELD_DP32(sts, RX_DONE, 1);
-+        if (pkt_mode) {
-+            sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+            cmd = aspeed_i2c_pkt_set_addr_cmd(td, I2C_ADDR_DUMMY);
-+        } else {
-+            cmd = 0;
-+        }
-+        CLEAR_I2C_INTR(f, td, sts);
-+        g_assert_cmphex(aspeed_i2c_read_byte(f, td), ==, rx_data[i]);
-+        sts = 0;
-+    }
-+
-+    SEND_I2C_STOP(f, td);
-+    CHECK_I2C_DUMMY_DEVICE();
-+    qtest_hmp(global_qtest, "system_reset");
-+}
-+
-+static void test_dummy_buf(TestFixture *f, gconstpointer p_data)
-+{
-+    const TestData *td = (const TestData *)p_data;
-+    uint32_t cmd, sts, pool_ctrl;
-+    bool pkt_mode = td->mode == TEST_I2C_MODE_PKT;
-+
-+    /* Write data with device address */
-+    for (uint8_t i = 0; i < ARRAY_SIZE(tx_data); i++) {
-+        aspeed_i2c_write_pool(f, i + (pkt_mode ? 0 : 1), tx_data[i]);
-+    }
-+    pool_ctrl = SHARED_FIELD_DP32(0, TX_COUNT,
-+                                  ARRAY_SIZE(tx_data) - (pkt_mode ? 1 : 0));
-+    aspeed_i2c_write(f, aspeed_i2c_pool_ctrl_offset(td), pool_ctrl);
-+    cmd = aspeed_i2c_buf_set_addr_cmd(f, td, I2C_ADDR_DUMMY, false);
-+    cmd = SHARED_FIELD_DP32(cmd, M_START_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, M_TX_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, TX_BUFF_EN, 1);
-+    sts = SHARED_FIELD_DP32(0, TX_ACK, 1);
-+    if (pkt_mode) {
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+    }
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+    CHECK_I2C_BUS_ACTIVE(f, td);
-+    CLEAR_I2C_INTR(f, td, sts);
-+
-+    /* Write device address (Read) in non packet mde */
-+    if (pkt_mode) {
-+        cmd = aspeed_i2c_pkt_set_addr_cmd(td, I2C_ADDR_DUMMY);
-+        cmd = SHARED_FIELD_DP32(cmd, M_START_CMD, 1);
-+    } else {
-+        aspeed_i2c_write_byte(f, td, (I2C_ADDR_DUMMY << 1) | 1);
-+        aspeed_i2c_send_start(f, td, SHARED_FIELD_DP32(0, M_TX_CMD, 1));
-+        CHECK_I2C_BUS_ACTIVE(f, td);
-+        CLEAR_I2C_INTR(f, td, aspeed_i2c_send_addr_status(f, td));
-+        cmd = 0;
-+    }
-+
-+    /* Read data */
-+    pool_ctrl = SHARED_FIELD_DP32(0, RX_SIZE,
-+                                  ARRAY_SIZE(rx_data) - 1);
-+    aspeed_i2c_write(f, aspeed_i2c_pool_ctrl_offset(td), pool_ctrl);
-+    cmd = SHARED_FIELD_DP32(cmd, M_RX_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, M_S_RX_CMD_LAST, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, RX_BUFF_EN, 1);
-+    sts = SHARED_FIELD_DP32(0, RX_DONE, 1);
-+    if (pkt_mode) {
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+    }
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+    CHECK_I2C_BUS_ACTIVE(f, td);
-+    CLEAR_I2C_INTR(f, td, sts);
-+    for (uint8_t i = 0; i < ARRAY_SIZE(rx_data); i++) {
-+        g_assert_cmphex(aspeed_i2c_read_pool(f, i), ==, rx_data[i]);
-+    }
-+
-+    SEND_I2C_STOP(f, td);
-+    CHECK_I2C_DUMMY_DEVICE();
-+    qtest_hmp(global_qtest, "system_reset");
-+}
-+
-+static void test_dummy_dma(TestFixture *f, gconstpointer p_data)
-+{
-+    const TestData *td = (const TestData *)p_data;
-+    uint32_t cmd, sts;
-+    bool pkt_mode = td->mode == TEST_I2C_MODE_PKT;
-+
-+    /* Write data with device address*/
-+    for (uint8_t i = 0; i < ARRAY_SIZE(tx_data); i++) {
-+        aspeed_i2c_write_dma(f, DRAM_TX_OFFSET + (pkt_mode ? 0 : 1) + i,
-+                             tx_data[i]);
-+    }
-+    aspeed_i2c_write_dma_addr(f, td, DRAM_TX_OFFSET, false);
-+    aspeed_i2c_write_dma_len(f, td,
-+                             ARRAY_SIZE(tx_data) - (pkt_mode ? 1 : 0), false);
-+    cmd = aspeed_i2c_dma_set_addr_cmd(f, td, I2C_ADDR_DUMMY, false);
-+
-+    cmd = SHARED_FIELD_DP32(cmd, M_START_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, M_TX_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, TX_DMA_EN, 1);
-+    sts = SHARED_FIELD_DP32(0, TX_ACK, 1);
-+    if (pkt_mode) {
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+    }
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+    CHECK_I2C_BUS_ACTIVE(f, td);
-+    CLEAR_I2C_INTR(f, td, sts);
-+
-+    /* Write device address (Read) in non packet mode */
-+    if (pkt_mode) {
-+        cmd = aspeed_i2c_pkt_set_addr_cmd(td, I2C_ADDR_DUMMY);
-+        cmd = SHARED_FIELD_DP32(cmd, M_START_CMD, 1);
-+    } else {
-+        aspeed_i2c_write_byte(f, td, (I2C_ADDR_DUMMY << 1) | 1);
-+        aspeed_i2c_send_start(f, td, SHARED_FIELD_DP32(0, M_TX_CMD, 1));
-+        CHECK_I2C_BUS_ACTIVE(f, td);
-+        CLEAR_I2C_INTR(f, td, aspeed_i2c_send_addr_status(f, td));
-+        cmd = 0;
-+    }
-+
-+    /* Read data */
-+    aspeed_i2c_write_dma_addr(f, td, DRAM_RX_OFFSET, true);
-+    aspeed_i2c_write_dma_len(f, td, ARRAY_SIZE(rx_data) - 1, true);
-+    cmd = SHARED_FIELD_DP32(cmd, M_RX_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, M_S_RX_CMD_LAST, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, RX_DMA_EN, 1);
-+    sts = SHARED_FIELD_DP32(0, RX_DONE, 1);
-+    if (pkt_mode) {
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+    }
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+    CHECK_I2C_BUS_ACTIVE(f, td);
-+    CLEAR_I2C_INTR(f, td, sts);
-+    for (uint8_t i = 0; i < ARRAY_SIZE(rx_data); i++) {
-+        g_assert_cmphex(aspeed_i2c_read_dma(f, DRAM_RX_OFFSET + i), ==,
-+                        rx_data[i]);
-+    }
-+
-+    SEND_I2C_STOP(f, td);
-+    CHECK_I2C_DUMMY_DEVICE();
-+    qtest_hmp(global_qtest, "system_reset");
-+}
-+
-+static void test_slave(TestFixture *f, gconstpointer p_data)
-+{
-+    const TestData *td = (const TestData *)p_data;
-+    uint32_t cmd, sts, tmp;
-+    bool pkt_mode = td->mode == TEST_I2C_MODE_PKT;
-+    uint8_t offset = pkt_mode ? 0 : 1;
-+
-+    aspeed_i2c_write_pool(f, offset + 0, I2C_ADDR_SLAVE);
-+    aspeed_i2c_write_pool(f, offset + 1, tx_data[0]);
-+    aspeed_i2c_write_pool(f, offset + 2, tx_data[1]);
-+
-+    tmp = SHARED_FIELD_DP32(0, TX_COUNT, pkt_mode ? 2 : 3);
-+    aspeed_i2c_write(f, aspeed_i2c_pool_ctrl_offset(td), tmp);
-+
-+    cmd = aspeed_i2c_buf_set_addr_cmd(f, td, I2C_ADDR_ECHO, false);
-+    cmd = SHARED_FIELD_DP32(cmd, M_START_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, M_TX_CMD, 1);
-+    cmd = SHARED_FIELD_DP32(cmd, TX_BUFF_EN, 1);
-+    sts = SHARED_FIELD_DP32(0, TX_ACK, 1);
-+    if (pkt_mode) {
-+        sts = FIELD_DP32(sts, I2CM_INTR_STS, PKT_CMD_DONE, 1);
-+    }
-+    aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td), cmd);
-+    CHECK_I2C_BUS_ACTIVE(f, td);
-+    CLEAR_I2C_INTR(f, td, sts);
-+
-+    /* Send stop and handle i2c-echo response as a slave */
-+    if (td->mode == TEST_I2C_MODE_OLD) {
-+        aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td),
-+                        SHARED_FIELD_DP32(0, M_STOP_CMD, 1));
-+        clock_step(1);
-+        g_assert_cmphex(aspeed_i2c_read_byte(f, td), ==, I2C_ADDR_SLAVE << 1);
-+        sts = SHARED_FIELD_DP32(0, NORMAL_STOP, 1);
-+        sts = SHARED_FIELD_DP32(sts, RX_DONE, 1);
-+        sts = FIELD_DP32(sts, I2CD_INTR_STS, SLAVE_ADDR_RX_MATCH, 1);
-+        CHECK_I2C_INTR(f, td, sts);
-+        aspeed_i2c_write(f, aspeed_i2c_intr_sts_offset(td), sts);
-+
-+        g_assert_cmphex(aspeed_i2c_read_byte(f, td), ==, tx_data[0]);
-+        sts = SHARED_FIELD_DP32(0, RX_DONE, 1);
-+        CHECK_I2C_INTR(f, td, sts);
-+        aspeed_i2c_write(f, aspeed_i2c_intr_sts_offset(td), sts);
-+
-+        g_assert_cmphex(aspeed_i2c_read_byte(f, td), ==, tx_data[1]);
-+        sts = SHARED_FIELD_DP32(0, RX_DONE, 1);
-+        CHECK_I2C_INTR(f, td, sts);
-+        aspeed_i2c_write(f, aspeed_i2c_intr_sts_offset(td), sts);
-+    } else {
-+        aspeed_i2c_write(f, A_I2CS_DMA_RX_ADDR, DRAM_RX_OFFSET);
-+        tmp = SHARED_FIELD_DP32(0, RX_DMA_EN, 1);
-+        aspeed_i2c_write(f, A_I2CS_CMD, tmp);
-+
-+        aspeed_i2c_write(f, aspeed_i2c_cmd_offset(td),
-+                        SHARED_FIELD_DP32(0, M_STOP_CMD, 1));
-+        clock_step(1);
-+
-+        tmp = FIELD_DP32(0, I2CS_DMA_LEN_STS, RX_LEN, 2);
-+        g_assert_cmphex(aspeed_i2c_read(f, A_I2CS_DMA_LEN_STS), ==, tmp);
-+        for (uint8_t i = 0; i < 2; i++) {
-+            g_assert_cmphex(aspeed_i2c_read_dma(f, DRAM_RX_OFFSET + i), ==,
-+                            tx_data[i]);
-+        }
-+    }
-+
-+    sts = SHARED_FIELD_DP32(0, NORMAL_STOP, 1);
-+    CLEAR_I2C_INTR(f, td, sts);
-+    CHECK_I2C_IDLE(f, td);
-+
-+    qtest_hmp(global_qtest, "system_reset");
-+}
-+
-+static void aspeed_i2c_init_fixture(TestFixture *fixture, const TestData *td)
-+{
-+    switch (td->machine) {
-+    case TEST_MACHINE_AST2400:
-+        fixture->base_addr = 0x1E78A000;
-+        fixture->bus_offset = 0x40;
-+        fixture->irq_no = 12;
-+        fixture->pool_base = 0x800;
-+        break;
-+    case TEST_MACHINE_AST2500:
-+        fixture->base_addr = 0x1E78A000;
-+        fixture->bus_offset = 0x40;
-+        fixture->irq_no = 12;
-+        fixture->pool_base = 0x200;
-+        break;
-+    case TEST_MACHINE_AST2600:
-+        fixture->base_addr = 0x1E78A000;
-+        fixture->bus_offset = 0x80;
-+        fixture->irq_no = 110;
-+        fixture->pool_base = 0xC00;
-+        break;
-+    default:
-+        return;
-+    }
-+}
-+
-+static void aspeed_i2c_init_test(TestFixture *fixture, const TestData *td)
-+{
-+    aspeed_i2c_init(fixture, td);
-+    CHECK_I2C_IDLE(fixture, td);
-+}
-+
-+static void aspeed_i2c_init_new_machine(TestFixture *fixture,
-+                                        gconstpointer p_data)
-+{
-+    const TestData *td = (const TestData *)p_data;
-+    const char *machine;
-+    const char *irq_dev;
-+
-+    aspeed_i2c_init_fixture(fixture, td);
-+
-+    if (global_qtest) {
-+        qtest_quit(global_qtest);
-+    }
-+
-+    switch (td->machine) {
-+    case TEST_MACHINE_AST2400:
-+        machine = "palmetto-bmc";
-+        irq_dev = "/machine/soc/vic";
-+        break;
-+    case TEST_MACHINE_AST2500:
-+        machine = "ast2500-evb";
-+        irq_dev = "/machine/soc/vic";
-+        break;
-+    case TEST_MACHINE_AST2600:
-+        machine = "ast2600-evb";
-+        irq_dev = "/machine/soc/a7mpcore/gic";
-+        break;
-+    default:
-+        g_test_fail();
-+        return;
-+    }
-+
-+    global_qtest = qtest_initf(
-+        "-machine %s -nographic "
-+        "-device i2c-echo,id=i2c-echo,bus=aspeed.i2c.bus.0,address=%d "
-+        "-device i2c-dummy-device,id=i2c-dummy,bus=aspeed.i2c.bus.0,address=%d",
-+        machine, I2C_ADDR_ECHO, I2C_ADDR_DUMMY);
-+    qtest_irq_intercept_in(global_qtest, irq_dev);
-+
-+    aspeed_i2c_init_test(fixture, td);
-+}
-+
-+static void aspeed_i2c_init_machine(TestFixture *fixture,
-+                                    gconstpointer p_data)
-+{
-+    const TestData *td = (const TestData *)p_data;
-+
-+    aspeed_i2c_init_fixture(fixture, td);
-+    aspeed_i2c_init_test(fixture, td);
-+}
-+
-+static void add_test(const TestData *td, const char *name,
-+                     void (*func)(TestFixture *, const void *),
-+                     bool setup)
-+{
-+    g_autofree char *test_name;
-+
-+    test_name = g_strdup_printf("%s/%s", td->name, name);
-+
-+    qtest_add(test_name, TestFixture, td,
-+              setup ? aspeed_i2c_init_new_machine : aspeed_i2c_init_machine,
-+              func, NULL);
-+}
-+
-+#define ADD_TEST(td, test, new) add_test(td, #test, test_##test, new)
-+
-+static const TestData test_data[] = {
-+    {
-+        .name = "ast2400",
-+        .machine = TEST_MACHINE_AST2400,
-+    },
-+    {
-+        .name = "ast2500",
-+        .machine = TEST_MACHINE_AST2500,
-+    },
-+    {
-+        .name = "ast2600",
-+        .machine = TEST_MACHINE_AST2600,
-+    },
-+    {
-+        .name = "ast2600-new",
-+        .machine = TEST_MACHINE_AST2600,
-+        .mode = TEST_I2C_MODE_NEW,
-+    },
-+    {
-+        .name = "ast2600-packet",
-+        .machine = TEST_MACHINE_AST2600,
-+        .mode = TEST_I2C_MODE_PKT,
-+    },
-+};
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+    bool setup;
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    for (int i = 0; i < ARRAY_SIZE(test_data); i++) {
-+        setup = i == 0 || test_data[i].machine != test_data[i - 1].machine;
-+        ADD_TEST(&test_data[i], nack, setup);
-+        ADD_TEST(&test_data[i], dummy_byte, false);
-+        ADD_TEST(&test_data[i], dummy_buf, false);
-+        if (test_data[i].machine != TEST_MACHINE_AST2400) {
-+            ADD_TEST(&test_data[i], dummy_dma, false);
-+        }
-+        ADD_TEST(&test_data[i], slave, false);
-+    }
-+
-+    ret = g_test_run();
-+    qtest_quit(global_qtest);
-+    return ret;
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 46d4fc1d2b..c496b7c3a7 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -233,12 +233,14 @@ qtests_aspeed = \
-   ['aspeed-acry-test',
-    'aspeed_gpio-test',
-    'aspeed_hace-test',
-+   'aspeed_i2c-test',
-    'aspeed-sbc-test',
-    'aspeed_scu-test',
-    'aspeed_smc-test']
- qtests_aspeed64 = \
-   ['ast2700-gpio-test',
-    'ast2700-hace-test',
-+   'aspeed_i2c-test',
-    'ast2700-sgpio-test',
-    'ast2700-smc-test']
- 
-
--- 
-2.53.0
-
+DQpPbiAyNy4xMC4yNiAxOToxNCwgRGFuaWVsIFAuIEJlcnJhbmfDqSB3cm90ZToNCj4gVGhlICdu
+aXRybycgYWNjZWxlcmF0b3IgaXMgdXNlZCB3aXRoIGEgcmVhbCBBV1MgZGVwbG95bWVudCBhbmQN
+Cj4gdGh1cyBpcyBjb25zaWRlcmVkIHRvIGJlIHNlY3VyZS4NCj4NCj4gU2lnbmVkLW9mZi1ieTog
+RGFuaWVsIFAuIEJlcnJhbmfDqSA8YmVycmFuZ2VAcmVkaGF0LmNvbT4NCg0KDQpSZXZpZXdlZC1i
+eTogQWxleGFuZGVyIEdyYWYgPGdyYWZAYW1hem9uLmNvbT4NCg0KDQpBbGV4DQo=
 

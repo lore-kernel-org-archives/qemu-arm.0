@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2BF6606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 18:17:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28ABF606A32D
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 18:17:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=cCaOyjmo
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=cbFCtvZL
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLljJ-00025Y-1Y; Tue, 27 Oct 2026 14:17:01 -0400
+	id 1xLljn-0003Cc-8t; Tue, 27 Oct 2026 14:17:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xLlht-0008LW-20
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:43 -0400
+ id 1xLli6-0008VY-Na
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:47 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xLlhp-0003bo-62
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:32 -0400
+ id 1xLli4-0003h1-15
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793124928;
+ s=mimecast20190719; t=1793124943;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4Pm6nA/KY6PE4TLQmdMM8j973NLZ7jXiNqYHwm4lj4k=;
- b=cCaOyjmoeXuq5/nPviT5BBp4Q4P/K+VWdBR2m52iOn1NPubdxzL+kH6vBRw799XeKP8TGh
- hCYVfHBXzrFApN39oTfVfqRa/GcrzSnHKY8oqviQENxywh3xgdVbPuxd2GF57umrBsK0QT
- PkZapb28EySI+MAJg7S6QyiCD8jrsZA=
+ bh=sKIoYOrDenZa1R+DPeUDUjirn8ohaLCMSKPzoV+nbNc=;
+ b=cbFCtvZLAs+OGZ1vuUxvL4ObaB1iDrYiyYqxyuwjA8oFSyKmBr2avgqKq7htXwSd+oh3Mv
+ Il4hTG9wX66wRSqiAJovKO/2RBWvQod9X9LFJD/fn2Jq93gu42QDYHSgrPd/wX4aiptcXC
+ w2FAGSksDy7x2nbzVWZ95GbTe6q/TT4=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-622-IAhZ7yWWMa6sTZNfrhwzSA-1; Tue,
- 27 Oct 2026 14:15:24 -0400
-X-MC-Unique: IAhZ7yWWMa6sTZNfrhwzSA-1
-X-Mimecast-MFC-AGG-ID: IAhZ7yWWMa6sTZNfrhwzSA_1793124921
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-518-JOn5XFgQOvy5Nv457LYFkw-1; Tue,
+ 27 Oct 2026 14:15:40 -0400
+X-MC-Unique: JOn5XFgQOvy5Nv457LYFkw-1
+X-Mimecast-MFC-AGG-ID: JOn5XFgQOvy5Nv457LYFkw_1793124936
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B70581954236; Tue, 27 Oct 2026 18:15:20 +0000 (UTC)
+ id 575E019541AE; Tue, 27 Oct 2026 18:15:36 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6FD8418002B1; Tue, 27 Oct 2026 18:15:13 +0000 (UTC)
+ id BABAD1800586; Tue, 27 Oct 2026 18:15:28 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Stefano Stabellini <sstabellini@kernel.org>,
@@ -74,17 +74,16 @@ Cc: Stefano Stabellini <sstabellini@kernel.org>,
  kvm@vger.kernel.org, Alexander Graf <graf@amazon.com>,
  Song Gao <17746591750@163.com>, Eric Farman <farman@linux.ibm.com>,
  Cornelia Huck <cohuck@redhat.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH 09/11] accel/kvm: mark kvm accelerator as secure
-Date: Tue, 27 Oct 2026 18:13:58 +0000
-Message-ID: <20261027181400.1752951-10-berrange@redhat.com>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 11/11] accel/nitro: mark 'nitro' accelerator as secure
+Date: Tue, 27 Oct 2026 18:14:00 +0000
+Message-ID: <20261027181400.1752951-12-berrange@redhat.com>
 In-Reply-To: <20261027181400.1752951-1-berrange@redhat.com>
 References: <20261027181400.1752951-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: xF_SbNZynTknHMsS3XlfvD2PAbfZDM0dxsKBuWPh_Fo_1793124921
+X-Mimecast-MFC-PROC-ID: rOrHOZi42jdNwTT4QtDjjWTWSfkcowr_yxH7f5RFMfk_1793124936
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -116,27 +115,26 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-KVM is servicing virtualization use cases which must provide security
-and actively maintained.
+The 'nitro' accelerator is used with a real AWS deployment and
+thus is considered to be secure.
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- accel/kvm/kvm-all.c | 1 +
+ accel/nitro/nitro-accel.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index db8fba53f33..66bc7f3a83a 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -4353,6 +4353,7 @@ static const TypeInfo kvm_accel_type = {
-     .instance_finalize = kvm_accel_finalize,
-     .class_init = kvm_accel_class_init,
-     .instance_size = sizeof(KVMState),
+diff --git a/accel/nitro/nitro-accel.c b/accel/nitro/nitro-accel.c
+index a1e97a9162e..a1489b8019a 100644
+--- a/accel/nitro/nitro-accel.c
++++ b/accel/nitro/nitro-accel.c
+@@ -251,6 +251,7 @@ static const TypeInfo nitro_accel_type = {
+     .parent = TYPE_ACCEL,
+     .instance_size = sizeof(NitroAccelState),
+     .class_init = nitro_accel_class_init,
 +    .secure = true,
  };
+ module_obj(TYPE_NITRO_ACCEL);
  
- static void kvm_type_init(void)
 -- 
 2.56.0
 

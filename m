@@ -1,72 +1,73 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BE4D2606A31B
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 11:13:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5D88B606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 11:14:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Lf68dkDy
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=PMfWEsr0
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLf72-0002zq-Dl; Tue, 27 Oct 2026 07:13:04 -0400
+	id 1xLf7L-0003EN-1I; Tue, 27 Oct 2026 07:13:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xLf6v-0002vM-1Q
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:12:57 -0400
-Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
+ id 1xLf7J-0003Ch-Ve
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:13:21 -0400
+Received: from mail-dl1-x122c.google.com ([2607:f8b0:4864:20::122c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xLf6t-0002rL-BR
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:12:56 -0400
-Received: by mail-dl1-x122d.google.com with SMTP id
- a92af1059eb24-156cbe59524so3305763c88.1
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 04:12:53 -0700 (PDT)
+ id 1xLf7H-0002vS-2N
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:13:21 -0400
+Received: by mail-dl1-x122c.google.com with SMTP id
+ a92af1059eb24-188406bb948so3235433c88.1
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 04:13:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1793099572; x=1793704372; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=rIC7MLyqSf1PTjvgf0DPfcgctAOg/kiuIWLyJR9bmrI=;
- b=Lf68dkDyyWPMUVemaox69kcyGB9kT+hQOxejOgS6bGRizcUBvX8MoJe0hWkTJF/HJj
- tNf4lAhrnRWAoizPA7fTtqFOd/JHnYYAjk4tuKuKSo3G2lLREUlPkVI8gL1cgA+dfUNN
- gKUDxbLSxzRWV2wLlCMzSLDedZugA8hF//cOzzf+v6fYNgVF/yHHSsM6rjK6cWrQjaSm
- qY8b467vfR8cXj5Qg+K2KOfASlFa+btmViddP3kLs81/s28g+LEDWMwxjZ8eubIzgNr6
- 2OcIoO8KSKDsUCY6VjyE9mT0Bbh9ZJXNB6WXSCfAbreQORB550/laZB9HwN3kJuVzq2I
- KA6g==
+ d=gmail.com; s=20251104; t=1793099597; x=1793704397; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=65RqURJMvc+L/nAMQdvkbZXrbEP0r76RON8s7SLwv20=;
+ b=PMfWEsr0ev6OO6V6c5m4gQIipXA5zMSMD6vat3JdrkNzbcVGWFscxk9XHXEfGw6SSJ
+ syNrqXBeXjCv6zIvnlyefsALpK3s7L8veoJzH5CTIkNpWi4lKTxbp98SDJRtor2jOG2A
+ tAE92OnL8oiIkqPTizUrT5s9OQwu02tTJRG6SiA6thIf6IJfsVoGcbF2azE5tLS3YoKW
+ G1l4vbFMau9aJ899B0VsD/1Ex2erjA7VMLoPXaa/SsHi/7IEhN2T7HPYhPfQxeJTaSKx
+ 9lGrMTFGamfPynwJzGqCJ97qk5i5dsvvMSlrt9bBvhEdbSrcKq4OgpzjXjcqpXqiaoyT
+ hHfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793099572; x=1793704372;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=rIC7MLyqSf1PTjvgf0DPfcgctAOg/kiuIWLyJR9bmrI=;
- b=mg6uZEyjrbSvhFZ6oXCKkoAojxC/6qGBEIj01ozpl0uiQX3hImlp+sRerZpoDX0dHA
- eLda8/MgXoxdpaW+7IEceGXFLPp5hZSZhWvUXoe2qaSutAtYx5s/wVLTa3+FUV+TvB0o
- 0R+UA45M9JtNiQWmrstT/VAGerYd2LtS1onj6LiZk9ZQM5X5E4095+DbE/8vLLvXG1jZ
- xBEpUtamThYTpL9zlcvuFQqYopzdKTR5lONdjDVg3L3/DHZTrB1LN/moWqP8Hn7aNgTA
- ZUuiEumjwnHPLhugmwyq0s+TUI8t0HavYZI/Eq70+qcErHVoYMnOWMIqpMZpGvHt3ZcZ
- STIw==
+ d=1e100.net; s=20260707; t=1793099597; x=1793704397;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=65RqURJMvc+L/nAMQdvkbZXrbEP0r76RON8s7SLwv20=;
+ b=o+XYqpvuphyiXpTeac2NRuGW5pIiI11XTwhvKthJ4oVtCTiki5PddNZyzh53W2AvOc
+ RZV2xzRoOYnBdNUDUx+lsQy+v3kNZ3YJOoz7AwAU3VoQuholWHVGgtpus0unUg1sxcNP
+ CVu1m9K85cYgVaY4Lzxqq08c/XDD1givdGqRjsa8/IEiHxgOYFUK7XE9ZlIfd54ywAek
+ Zu+kL/5pk1Dn7FPwn/WX7cIO27RXmd11Cy5Z9yuCpmd0WrRehiDiL5prBSdsNVIlEwtB
+ qGOjTx8IYSJ9y9MD7Vx9pNH3Y9PsoHMrPI6jf2/May8LDfNwDd+d5YqqVNADqYNW5w46
+ 6kAw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwEsX/hcd2pERCtp8bFmenYQVrCmUTlJore9viYEwZKpLczmmQoRHdaIZd+oXP8diuSYcxb3ShmBw==@nongnu.org
-X-Gm-Message-State: AFq9FYKX2uo/agMDYYbMZbnaixEIIArdF8GZtI+0YaC9s1LxaoRCz5Ne
- wef0gQjm0knwb6AC7LstOEC1nvbrR6Ne0nvzhhILiPHTEaOFtFfgsmN4
-X-Gm-Gg: AYBFou2+37gDnkPb9qJzhFfc728OFxqGH/bzyv1wNP43DmWFT7DBOEHBNL/dgeehVNg
- 5RmC4x0V5PoVb1ZGZntkQhVF9Qiji75yDR8P6Jt7R4y46KIffOPxOYbJLeDle6vP+VIua0SyoT3
- 4MHYplPXsLnhndFdkndx/Ox3irVxV8P/d2i8ATYXEh5yx7N8wMbdRoC1sT6V4q9JkYDzW0Yeggr
- oxqKCrrecX+eEHFmG5guF5sgjAiMbjlL7+8IQdjyaecelmblHzhRceoHdpC7QH0qiBzmXLbTkty
- VWaihuPlpc5ED1/ILm1lET5sm4T96c8wL6+YQpbqQ7TJNMjC9nFrTMm0idqBJckBkOCUtGCIehR
- kaZZss7AMNy1YLSYwzbxPGbJyxJpQXtKfsgQYQqEI5xX7EqQrKJeKeJ0B+BrkyJkEQceSAja+4S
- HTWv6cIagxxjfZHd3dQqv75Sx/EIjiv1DtYqmnIvHF3aMCW1BkYhj8KXebYrCCZsfw2RRC5zKDb
- QqZa3CP8pGDOR4PfyvAtE0yWpaV2NrPZxJAF36UC4Wel+O0/TCLm0I5ksPA25MxwLeMax+diVfL
- ibkOy495S8Ok
-X-Received: by 2002:a05:7022:e28:b0:14b:cf58:ce5e with SMTP id
- a92af1059eb24-1991b42085bmr18542078c88.0.1793099572020; 
- Tue, 27 Oct 2026 04:12:52 -0700 (PDT)
+ AKwUvBwpeysDkj/LY5JV+j+4W31pUK7Uai3hez17BMWc9p+lvkYDJxCO03lafaABQk4+gEI+QMsNCOyKdw==@nongnu.org
+X-Gm-Message-State: AFq9FYImYVZ8pXJHOCc2rrN6YwffGXhDJbXuvCUE7Lndl3gl8lPnaKiF
+ Y0N+Dosct2waTVEAhYPiJvbf5rPaK7VGRe/6GLcsIbjkVNw9rQoTBUEp
+X-Gm-Gg: AYBFou0RwKMiKaalz1jkhi8oT3mkjtjst9DRJGCg2txbIp6PwxDjvPPs0CO7RQsYXke
+ 9yH64h87DAOM6JqRgzBzNcREswZ8l/xKRgFbEHOF/XivTUMo7CkaCNyv594ViJ2XcqQQPVbYjPh
+ PviYvv7nMmYEPF+mdqjrXSyvjVQkHjrMVpuH7TgOyv4ok/Q+MtWO7k3CNiOan++Usr/jWN0CEOk
+ g9MbCGKdCG0AYz540VMReY0a93x2GVlI2HeRMspCagHUylNzvfiPRCJomjFV7E8XvfyTmymfeIf
+ chHLVkhXQDBdR3g5TH/EE1q1v8QvdKqbjUBgbCCVRwKauQ5FeIZCUV/CMU3UryQJaYCFOpPdeu8
+ RiupNmyl+u0WIK4OKHCk6zReMluqRLmuMqyVgcCmjdiqUE3uDUrbIYG7SARMbhNrxOfg2kyoVEk
+ Juec1MTFiCRyR4k41PJEdLWrncUO2S5FSEcJOlTFLPmQHXGwBHtV7IZk4ozzHweCTDpNVvBvQSo
+ D/QrWP1m7OdpU7rGP9VQnqR0iLH/wvr9Ynd5tv611J1go7bKhW0JVDp/bNeaXOtGtjTKpTWjJfW
+ LV/qDocevA8Jc+MnIitMA5ydFrBfm3fN7K9W3EqBrQqqkJ7zyVZBCOZY6OaCGA==
+X-Received: by 2002:a05:701b:42cd:10b0:190:af51:d56c with SMTP id
+ a92af1059eb24-19936d40791mr14230975c88.31.1793099597243; 
+ Tue, 27 Oct 2026 04:13:17 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-198a0f83cedsm40453042c88.13.2026.10.27.04.12.46
+ a92af1059eb24-198a0f83cedsm40453042c88.13.2026.10.27.04.13.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Oct 2026 04:12:51 -0700 (PDT)
+ Tue, 27 Oct 2026 04:13:16 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
@@ -86,18 +87,18 @@ Cc: Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
  Eric Blake <eblake@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Laurent Vivier <lvivier@redhat.com>,
  Brian Cain <brian.cain@oss.qualcomm.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v4 04/17] hw/hexagon/virt: move virt TypeInfo into its
- type_init
-Date: Tue, 27 Oct 2026 19:12:02 +0800
-Message-ID: <20261027111216.392-5-luoyonggang@gmail.com>
+Subject: [PATCH v4 08/17] machine: allow -M name to differ from QOM type
+Date: Tue, 27 Oct 2026 19:12:06 +0800
+Message-ID: <20261027111216.392-9-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20261027111216.392-1-luoyonggang@gmail.com>
 References: <20261027111216.392-1-luoyonggang@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122d;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122c;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,47 +125,95 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-virt_machine_types is a file-scope constant, so .name has
-to be a constant expression. Register a local TypeInfo from
-virt_machine_register_types() so a later commit can compute
-the name: "virt" for a single-target binary, and
-"<target_base_name>-virt" for a multi-target binary.
+- Add machine_class_set_name() so boards can keep a stable -M name
+  when the QOM type is uniquified. machine_class_base_init still
+  defaults the name to the QOM type without -machine.
+- Document that MachineClass::name is the -M name, not the QOM type.
+- Sort -M help by MachineClass::name so order matches the printed names
+  when QOM types are prefixed (arm-virt-11.1-machine vs virt-11.1).
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/hexagon/virt.c | 22 +++++++++++++---------
- 1 file changed, 13 insertions(+), 9 deletions(-)
+ hw/core/machine.c        |  6 ++++++
+ include/hw/core/boards.h | 12 +++++++++++-
+ system/vl.c              |  8 +++-----
+ 3 files changed, 20 insertions(+), 6 deletions(-)
 
-diff --git a/hw/hexagon/virt.c b/hw/hexagon/virt.c
-index b601cd77a92..4823b1d8ac4 100644
---- a/hw/hexagon/virt.c
-+++ b/hw/hexagon/virt.c
-@@ -375,12 +375,16 @@ static void virt_class_init(ObjectClass *oc, const void *data)
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index d9ac4b419a3..9c897cddbd6 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1219,6 +1219,12 @@ static void machine_class_init(ObjectClass *oc, const void *data)
+         "Memory size configuration");
  }
  
- 
--static const TypeInfo virt_machine_types[] = { {
--    .name = TYPE_HEXAGON_VIRT_MACHINE,
--    .parent = TYPE_HEXAGON_COMMON_MACHINE,
--    .instance_size = sizeof(HexagonVirtMachineState),
--    .class_init = virt_class_init,
--    .is_available = target_hexagon,
--} };
--
--DEFINE_TYPES(virt_machine_types)
-+static void virt_machine_register_types(void)
++void machine_class_set_name(MachineClass *mc, const char *name)
 +{
-+    const TypeInfo virt_machine_typeinfo = {
-+        .name = TYPE_HEXAGON_VIRT_MACHINE,
-+        .parent = TYPE_HEXAGON_COMMON_MACHINE,
-+        .instance_size = sizeof(HexagonVirtMachineState),
-+        .class_init = virt_class_init,
-+        .is_available = target_hexagon,
-+    };
-+    type_register_static(&virt_machine_typeinfo);
++    g_free(mc->name);
++    mc->name = g_strdup(name);
 +}
 +
-+type_init(virt_machine_register_types)
+ static void machine_class_base_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
+index d0e4ad98201..db2d0137fc1 100644
+--- a/include/hw/core/boards.h
++++ b/include/hw/core/boards.h
+@@ -36,6 +36,16 @@ const char *machine_default_cpu_type(const MachineState *ms);
+  * @mc: Machine class
+  */
+ const char *machine_class_default_cpu_type(MachineClass *mc);
++/**
++ * machine_class_set_name: Set the -M name when it differs from the QOM type
++ * @mc: Machine class
++ * @name: Name used by -M lookup, help, and migration
++ *
++ * machine_class_base_init sets MachineClass::name from the QOM type with
++ * the -machine suffix removed. Call this from board class_init when the
++ * CLI name must stay stable after the QOM type is uniquified.
++ */
++void machine_class_set_name(MachineClass *mc, const char *name);
+ 
+ void machine_add_audiodev_property(MachineClass *mc);
+ void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp);
+@@ -269,7 +279,7 @@ struct MachineClass {
+     /*< public >*/
+ 
+     const char *family; /* NULL iff @name identifies a standalone machtype */
+-    char *name;
++    char *name; /* -M name; default is QOM type without -machine */
+     const char *alias;
+     const char *desc;
+     const char *deprecation_reason;
+diff --git a/system/vl.c b/system/vl.c
+index 468a9fc247a..0d52c5d0a46 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1538,10 +1538,9 @@ static gint machine_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
+     if (mc1->family == NULL) {
+         if (mc2->family == NULL) {
+             /* Compare standalone machine types against each other; they sort
+-             * in increasing order.
++             * in increasing order by the name shown in -M help.
+              */
+-            return strcmp(object_class_get_name(OBJECT_CLASS(mc1)),
+-                          object_class_get_name(OBJECT_CLASS(mc2)));
++            return strcmp(mc1->name, mc2->name);
+         }
+ 
+         /* Standalone machine types sort after families. */
+@@ -1560,8 +1559,7 @@ static gint machine_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
+     }
+ 
+     /* Within the same family, machine types sort in decreasing order. */
+-    return strcmp(object_class_get_name(OBJECT_CLASS(mc2)),
+-                  object_class_get_name(OBJECT_CLASS(mc1)));
++    return strcmp(mc2->name, mc1->name);
+ }
+ 
+ static void machine_help_func(const QDict *qdict)
 -- 
 2.52.0.windows.1
 

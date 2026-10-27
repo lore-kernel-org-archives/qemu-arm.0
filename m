@@ -1,119 +1,114 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0039C606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 15:11:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CBA89606A32E
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 15:19:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=yUYhb+9p
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=EKd9KYO0
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLips-0003fc-FD; Tue, 27 Oct 2026 11:11:40 -0400
+	id 1xLixq-0005n6-Mw; Tue, 27 Oct 2026 11:19:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xLipV-0003dj-O9
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:11:15 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ id 1xLixn-0005jf-95
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:19:48 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xLipS-00011Z-Fk
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:11:11 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-c2e8c710847so519939366b.0
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 08:11:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793113867; cv=none;
+ id 1xLixl-0001iF-I6
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:19:46 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-c49b431f022so82635466b.1
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 08:19:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793114383; cv=none;
  d=google.com; s=arc-20260327;
- b=aMW0Au19KCJX7Y44nN3AtiJtjTuGswOn0M0zIa/ZzRpwpomGNe4P53Z0H4xnw9dVU5
- q0e/vQGu0D3TnLfz+jbkoLA0bb6487ef89j79E0+3WRa8oHSjk7ZWvvQxIt2M+ixiT68
- FEl6tVjQWUNK/rr0N66QGPquCfSApyVYbnk7wfjyMGQ/YGCJJCgNTRcm9fgw2L65/OA4
- o56Z/1A4+pbwS16JszIIp7LAFLBVRBHOZeCLJm7E4DfrtKP3ZiIqV5oidsEDc4xEwHwG
- /Oijef44ETHEWmIfXOpbBpevTcWU8wBBdvOB6b4RRHrWKLx/xGrnzPPWL09KrBSiOtyg
- FZ0A==
+ b=Bl+keIe4kwXvgFIjnrKWMkB8+8k7aXpbpFPShnM9WRPpjQ/FVnpQNGPDCacWcBq+aH
+ dkRIWJyjAitXCmy6EvalgpBXIqDXeQTrz45xvELJhoGGFbglBhnn44qqNk3Uvux+fGNm
+ jSTPwBTKGHzSVuVygVxyVhR7mbTVg8ol2frbZB1zNhnbixNDsbD7dOhrzksI/xfbzJdN
+ 5mwBWcOMIZN+DdAM72+Ys911XQ9E5QrgVOEkc4nCLwNxRWNqapMvIWEpOT6B1BYdx3XQ
+ WZ5gRny8VLeUk+chr/YUMRDpE/5RGdoOHXNcd0EwwBwG9BF5OkEKgvsU8O6sYLYSZxxX
+ d3aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=fds9GDMUn83ZlV72S6fMtPsNs76zFy5TRTrEwZS5ZfY=;
- fh=kE2hm6+CyeyxxZbdGFid4BxKMw+0h9WkBOGqcPkLI1o=;
- b=CDKCzc3sUhuCu67BpMggwM9EB98WwYwvL2Lu2Hq8NTrDeKma73qKxFrEvJ3iGoEbfQ
- vQI4wbD7VOsufNuqYNtoBvLJv51mq0/2GJbr4Ao383vIUdFj2gZXlteecmbOUEHCfL0N
- ioKti/WnVI6OBiWNIrBVZOhtO0G8xvTGpoyEil/hhNW2Ogcq9wOBDdjsR4ovy9ZKVd7y
- lJ183qwP2VgFND5we2FLvjdq6pgunSDbPiF+TzBfUX/ANMYjfaGx+zIxLuKRnhtMVUaY
- UXUQCrvrhsCKJc8kAsR5+WkuIf3C0jdFKqEOa/S3Z8doBFGqda4WDi14g9+MRJzyGxnG
- NUqA==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=QNLGFEB0BNZwN2ea1M6YUWGW+5mREQVg1wxL9/Q473w=;
+ fh=KiiNKavs5JLDMTWqS0HoNfpENDxYfbX1q8LgMtGVaCQ=;
+ b=kvvf/5dhZuam/v5246g1MGOaupqcAeTjyGNHcRuYXoNG7Hk/pOnzxILSP/2Qw8z0G2
+ 2lrgrMWkJfg//JNr5jAgEpMWSZY+JlBtSgi2HToWNBd1OPkYsLoCZ4y0T7mLhxhwme2m
+ 1Z7ZoTd3Xuii0oLR8+zBYXiPWjBzyb9u8b9p69thWNzTkXuaN4SzaYnXhb4Sk3TIy4am
+ GPSP4Zy91JaSrupOhVNemQ37zMRmYcaYwHqGFpxPAsLGExj1Exz18Fi+9qKAlJD6wx1W
+ g6d4op8wKZ46g2tV5h64lVWb3ppTrXO/BT1++0IPcmxNazKoqxzuv64j9cjCn/Vb68E5
+ s/xA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793113867; x=1793718667; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=fds9GDMUn83ZlV72S6fMtPsNs76zFy5TRTrEwZS5ZfY=;
- b=yUYhb+9piHrqNQIOq/U2EYKYM5XGTan9WfPsGbDeHva5uexRBcD6BhTuZiJay7OkE1
- Ap7sxGEPhfUa2Lgf7iZge9M5w7sKgDtzTwo6DkSjVv24fJFa8QFph1Zi4RXxhF0cKgcf
- C3DPCTcJ+DGJfnS5M0ltaErD2+4zWzTovnqdr7Cb9vdCUbKYZgwRy8/YdbyREZHVbCky
- gbjNiplI6apDHMJ+9S/r3zSpG7OunWANtpqbj6755awkSshJyKNFCoaQl29eFVZ2nhnZ
- m0dIFVwtJbYqhTF2YslzWGmQTho7nPjHJ6hm1+50qMNhlFEPm32Gygf+hmDgEsbaiEKf
- T2Mw==
+ d=linaro.org; s=google; t=1793114383; x=1793719183; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=QNLGFEB0BNZwN2ea1M6YUWGW+5mREQVg1wxL9/Q473w=;
+ b=EKd9KYO0Im5LP8FOtJCXRIr51/A3HX7/oiYGSuJJ7/f5WxarNdeX3AyEOkBJfU3fWe
+ Q6y8GGWQQ7ablhKqAOknTd7c8AnpDcoc1HHDE+za7UhT4VH57GieQOPUTcACeLh5LNKt
+ QWwkm0PVWWB2FTAFcYkMj/ti9z6iOkj9y6zyesaflveoBSRVPpUtF/1Z9+AWpaa5gYYv
+ qtOXuMWk4d+QKREgvzlqYrrQBMhaPP98zLZCyVE1PXJO93eH0IMY5s/NHSwmCA8o2xyH
+ HI5D2uRxj396uUorBTSUeXDu1S5zYP0XIB527EyJaA4dTRXpKvkTB8mvNrp8ttSfVvMA
+ 6GAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793113867; x=1793718667;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=fds9GDMUn83ZlV72S6fMtPsNs76zFy5TRTrEwZS5ZfY=;
- b=HOE7U7Alh1jo7OlIEqmcB0Bf8LmUXZ0fGRZah8S3Tio7pTeEXGV94+sYV3jaRWYNWV
- D1yfN/VHqNGgj1h6LwYYtWRzIJs2ymgAW0giAwzYoWd7g2kUY9KuFpxb8uFpdzTLwK5z
- mv18/TSFJLcSMNOREp3bxKBUYPB+i4xuyd9Q9GZGEJAQJMpNzEOKki5WDDaEpD7ArcSr
- tvdRVf2O0e15lxSOyllIv8EUtzjKZWBIBYQPwSoC/WebSSC1OOrQrwG78AVciGL9rGmf
- ACVxF5hS1+FmikF/sKjENGNPJkkWK1F6gXWrD7Qa82+IeaFuNGxiPGpkOFFX0A/Bhmax
- /nbg==
+ d=1e100.net; s=20260707; t=1793114383; x=1793719183;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=QNLGFEB0BNZwN2ea1M6YUWGW+5mREQVg1wxL9/Q473w=;
+ b=T4JdmVgDGWFu2HTkSRul2RW3189cxU6pohDvcCVCHkmdnoANXUVnGuvRqwBJJ2pG/x
+ 15HIF0khCOngfsL5AAokijKB3iZhhGmafvh8/0R7FiZTuVhTW12F4Ysclpav03FLBZg4
+ Y6quSyGKKQRrPtyQPKPsLD74YfBbA+pUhBPRfzwrBt2mt4WHaDnCRf+aCQOeoa1C+86f
+ z1FVhNTDy5/Zkr5gvJ5fm+OLPPZQvByTvga6nIOUg9BSM7t+qXF4Zb69uAipDK3ua62U
+ EaGlukXlgHNNFth/nFvVMOAPAD1KXhprWQRgrEuY6VMNGEvRykN2EZF727PejB6MjmC/
+ /O3A==
 X-Forwarded-Encrypted: i=1;
- AKwUvByf32B/ze7RgL6A4dWORKm7qklLYwv+I7rIfZ624uYzltFojdS2K/6cV5a96QQL2FN4m/wj/CLGJQ==@nongnu.org
-X-Gm-Message-State: AFq9FYLPrNsIy1n3cyUxZSLjRF8ToEMzBCT5ZDc92TD1qS69CLNWGNMN
- QIKkGmX5jqncMOuI4xXmm1GLCT9nWTK2h7k2eCUJQisMSX81ZjUGK1X9aXpJCOVDqnajqn9+0IZ
- eyav1v8F3byxrTe3u+FOSbp4sN+QSorL11AQLJkn5CQ==
-X-Gm-Gg: AYBFou3RzvGnOOz75qN9nwEGG7ewgppH4ht4DI1AGSsmZDaEen/dDeQPO9yidnBHDuE
- Kpq3aFCeDdqXqdwp/UcXPlKO8fVc68mb1zjtkDGWlclcqNNU1OjDGCd/lTbmxG5BRyfL7Grp3uv
- ensytkofnpVo4jDSLveKGB8HcfNk6/W7fRHJxwCaVReXVLIO9uS2zKahb4hqBtaVFbeIOMrvzBz
- uASEtG/Vdvgmw3KWVc6t556KdMEsvZdH0C/QQg2h6fUqC0AGhnRXCIqoQkm7TFcHBdyXL8O6bkw
- Dk6m1TXMK6xCfAm4NJrwrD8owvxf/I9S5CGdews+CWanwQiuxNs3VgMJ6enUfOoXXhtNOevL9uU
- /XjsPF/vHEUon3FMhpSQqBB8yz1feXZtWltAGnuXv184wSyMmiScWvZvwvHoPoZprdbZkD5n4rw
- dcXyBXwsUyTYIrCTiv2o3v
-X-Received: by 2002:a17:907:3fa5:b0:c29:5340:182e with SMTP id
- a640c23a62f3a-c46bdac64a2mr1116029866b.2.1793113867264; Tue, 27 Oct 2026
- 08:11:07 -0700 (PDT)
+ AKwUvBzkpvLqvFikHwjKnzS8XFIoDOcXLzioTprJ5+NiCe8+jik85/iEUJXT1JbVg6ltt34KZjBde0VQlA==@nongnu.org
+X-Gm-Message-State: AFq9FYIn6hDzYr2lAOk7PG8YgqeY1a6nuNAMwN6XBJhOaNigdkqqyoz4
+ yFi7547U6LJftvWZXNP8yGuKEozWZ0MTWptilqd6OmzR7jtYHF8M8wkf4akbUClH60M2f3l6swC
+ u5V1Sa2VVcIUf+dWpOehHuHjUD2+DyvbTuZcBrTvifQ==
+X-Gm-Gg: AYBFou1vzoP7uH2NRLmFIC/TomNgsg8ZQls1mVIcyx5X80yR5ourt+vPx43J54KI5io
+ PRR5yEuFFKnHGaF/y/BZMAh4QTdpKLa7smVHiyAWKc0CcBklmUmH2r7+8OYRvQVpBusiLhJmcpw
+ kOWGF1IWOKh2JRnQ9s7+gLQoUzSdDUL5i+QxJbHMc83bS8DSEpvcA3MYee1ATFN09+0C8s9a5aF
+ R79FbTQWZnoLkpJruP1grsnAu5diMX1PNUf31/K1Xf6HgeJUv/WSHHKDoz+VeJr+J/jJxkFEZ1S
+ 3c6Noq8r9eM4CjviBke6Kl9H3yIJyUmf9YI2ol82Sfbz103oZkLiABf/WyFHSjqFgqAHslxUTHs
+ jrptD43U2rtggLXt4nApm/pxd5fKvepDrXgMGllvNUOjHET2UJzwiT+SaHf/QZSYfZGTS+NOU6A
+ v5JrAWMZ0yd+gNc43B3Qtj
+X-Received: by 2002:a17:907:980b:b0:c40:b59:1b with SMTP id
+ a640c23a62f3a-c46bdfed1b9mr1060139166b.44.1793114383584; Tue, 27 Oct 2026
+ 08:19:43 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261006083445.30362-1-shentey@gmail.com>
- <2FD6FED6-EBED-47A4-9096-D4FDF2F17406@gmail.com>
- <735a348c-3eb4-4a9c-bc41-6d347d4330ec@oss.qualcomm.com>
-In-Reply-To: <735a348c-3eb4-4a9c-bc41-6d347d4330ec@oss.qualcomm.com>
+References: <DB8PR04MB7177C8ED1A20409414A573EF87622@DB8PR04MB7177.eurprd04.prod.outlook.com>
+ <CAFEAcA-dpfXTLk9KNJ0OsOEaCYppcZLLgcnOCqhUXmOVE2jfaw@mail.gmail.com>
+ <DB8PR04MB7177409A95BDC85AC5446A6687612@DB8PR04MB7177.eurprd04.prod.outlook.com>
+ <CAFEAcA_BNjFC4vEJ2h62NytzYQXKE0o4MvB2jpN74S05kHRLMg@mail.gmail.com>
+ <DB8PR04MB717745592F89F86226B7E73787612@DB8PR04MB7177.eurprd04.prod.outlook.com>
+ <CAFEAcA_z5n9obipm=jOieJD0VoSJOTN1MVpRdtHgEDDfq5SfUg@mail.gmail.com>
+ <DB8PR04MB717789469E7A52109B5AC9E787602@DB8PR04MB7177.eurprd04.prod.outlook.com>
+In-Reply-To: <DB8PR04MB717789469E7A52109B5AC9E787602@DB8PR04MB7177.eurprd04.prod.outlook.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Oct 2026 15:10:52 +0000
-X-Gm-Features: AclHuK8vjiayc19tHooowV3NSNSc6rrFF8pq0wvXg--_cBIczOb-_GJydei8Q7U
-Message-ID: <CAFEAcA-J8qFpD4yVwoH2tYaUUa1RyhY_Bdj=EppK908czPk1tA@mail.gmail.com>
-Subject: Re: [PATCH v4 00/31] i.MX fixes and cleanup
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Bin Meng <bin.meng@processmission.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, 
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-arm@nongnu.org, 
- Jason Wang <jasowangio@gmail.com>, Alistair Francis <alistair@alistair23.me>
+Date: Tue, 27 Oct 2026 15:19:29 +0000
+X-Gm-Features: AclHuK_qiIKXlZTt8V2Y4LUFJ78tMktuGCd5Avf6Qc9b6VIbTvOoc17JXFpmhLg
+Message-ID: <CAFEAcA_6xQi-RCubX_fWw+d7ON6CDy0JzP348RBa1rXdntg=Ew@mail.gmail.com>
+Subject: Re: [EXT] Re: [RFC] target/arm: Correct MPIDR.MT handling for i.MX95
+ Cortex-A55 Aff1 topology
+To: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+Cc: QEMU <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_SBL=1.623 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,39 +127,29 @@ X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 27 Oct 2026 at 14:21, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> On 27/10/26 12:22, Bernhard Beschow wrote:
-> >
-> >
-> > Am 6. Oktober 2026 08:34:12 UTC schrieb Bernhard Beschow <shentey@gmail=
-.com>:
-> >> This series fixes various issues in i.MX device emulation, cleans up i=
-.MX
-> >>
-> >> Kconfig handling, and improves some code. Functional console tests for=
- the
-> >>
-> >> remaining i.MX boards are added where images are publicly available, e=
-xcept for
-> >>
-> >> imx6ul which is taken care of in a different series [1]. Fixes which a=
-ppear safe
-> >>
-> >> for backporting are cc'd to qemu-stable.
->
->
-> > Ping
-> >
-> > All patches reviewed. One may need improved commit message. Am I suppos=
-ed to resubmit the series or will this be done inline?
->
-> I'll take care of it, thanks for the ping ;)
->
-> Peter: I'm queuing this series (simpler for both of us I think).
+On Tue, 27 Oct 2026 at 15:01, Gaurav Sharma <gaurav.sharma_7@nxp.com> wrote:
+> I do not yet have a proposal for resolving that generic topology issue.
+> Would it still be useful for me to post the i.MX95 machine-model series
+> identifying the Cortex-A55 MPIDR handling as an unresolved
+> dependency or any other way the patch series review can be unblocked?
 
-Thanks, that's great.
+Fixing the MPIDR only matters for booting firmware, right?
+We're generally OK with taking machines if they can usefully
+direct-boot Linux, and we can address the MPIDR part later.
 
+> Most of the series covers the SoC model and the complete boot flow from
+> ROM through the System Manager firmware to Linux, so I would like to
+> start getting feedback on those parts while the generic MPIDR question
+> is considered separately.
+
+The main thing blocking the i.MX95 series (we're talking about
+https://patchew.org/QEMU/20260820024834.3286721-1-kylefoxaustin.github@gmail.com/
+I assume) is "people who care about i.MX boards need to look at it".
+I do not unfortunately have time to do review of large Arm board
+and SoC model patchsets, so they get in the tree if at least
+two different people care enough about them to work on the code
+review.
+
+thanks
 -- PMM
 

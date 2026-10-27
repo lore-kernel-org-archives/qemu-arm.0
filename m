@@ -1,112 +1,135 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F0596606A31B
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 04:22:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5905606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 05:40:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=alistair23.me header.i=@alistair23.me header.a=rsa-sha256 header.s=fm2 header.b=AxCWX3BL;
-	dkim=pass (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm2 header.b=mnJB0EcQ
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=XsJPbZAf
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLYhl-0008Fz-IV; Tue, 27 Oct 2026 00:22:33 -0400
+	id 1xLZug-0002E8-7K; Tue, 27 Oct 2026 01:39:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
- id 1xLYhj-0008Ek-IQ
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 00:22:31 -0400
-Received: from fhigh-b1-smtp.messagingengine.com ([202.12.124.152])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xLZuf-0002Dv-Eu; Tue, 27 Oct 2026 01:39:57 -0400
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
- id 1xLYhh-0004oo-OM
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 00:22:31 -0400
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 0E44A7A00B0
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 00:22:27 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
- by phl-compute-01.internal (MEProxy); Tue, 27 Oct 2026 00:22:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
- h=cc:cc:content-transfer-encoding:content-type:content-type
- :date:date:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:subject:subject:to:to; s=fm2;
- t=1793074946; x=1793161346; bh=OofOTQ7qTFIxaUTnsJ+h/KG/gz9OmhEv
- 9PYhW8EGmYs=; b=AxCWX3BLkyaUBLsJJ9WHV/vCVEQsQJt4dAUSR+wRN9hnPdgv
- 9/omMIwhF6GsoUEVNFJmsQmWZxD+ejPKaA16/sP4LrMy61R8LMHVCGx8zN7AOvOJ
- /abaMR+8mPBCJFC2SYOfA+OLbxj+W2zGMID6ot2PxEiXNF6u+b5vvypjvGkkCVJt
- iikuht/hgyr/p+KVbjTyIvW+OVuL8IQ0eOltthZue2qsX35S0Kis7cZ/q0YTXbNu
- v8FNFWWoPH6iZHzoOs93QQh/1zFheJCnTs+lNd/6b3fTOXniS1VpDHPn95WIvWjp
- DQuzq7+kPRK/7wehWLOvPxQ9cqSIGo0vwFkS+Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1793074946; x=
- 1793161346; bh=OofOTQ7qTFIxaUTnsJ+h/KG/gz9OmhEv9PYhW8EGmYs=; b=m
- nJB0EcQpZIcGg+MPfQ5pOIoPCXz5kBP12N4uE9yRFhUwvtwwKfjGOBUSVK69zCjz
- sj7lTI3hXLvjxy57CysHIH+5M6C9oCUYURrTF32bujpYBwAjSqKr+LUGkrCiDKiY
- mh/NvhyZwJM9u6HrG+SyKIBVcuEN4/nxivKXBW3VUWm8ZM26IdY69CXGbp1LXTSJ
- kkocBehEFYDLKwiI+hdPFrJcMPakxzRZt6ZxMAxfA133z8JhZd8nB2ctUt6N2taQ
- +x/ADJZ2OXAJMlxnpX1+0cHqDth77LQGMUowaU/77zDPYDgYR9vlHHxyV4nVQsfl
- ReIMlPE8d4U1ZEad/bW6w==
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-07;
- repo=github.com/dkim2wg/interop; date=2026-10-18; sw=lmtpprox;
- action=sign d=alistair23.me a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1793074946; d=alistair23.me;
- mf=PGFsaXN0YWlyQGFsaXN0YWlyMjMubWU+;
- rt=PHFlbXUtYXJtQG5vbmdudS5vcmc+;
- s=fm2:rsa-sha256:nhGcQ8ZitOEKlOpR+j2ANq+EUpo7QXcNbxMEmaf9TwRGHlv
- H4Bx/gSmlKpCwh0jbqkB2vWGpuzhav3kFuelyof2kfqEZof/0qKrDxdXxmR8y8MN
- 7Qws5jbqMIFvOME+wzPhCxGVNM1MpnGaS6l9FqNG9Q9CFV2P9to5ZotvWDezQyXO
- AOQkaGOUfYQI7PqhmWeP52JifEr9af4XNfKvtQlN0BGf9BP2HgxF4mUnZ4kd6nMP
- pkZJ8KXM2eOz4KgHcQrqA2E1ivTIvPm+3Wvc07R8UNPmnQDOl4GRRWrjmILxzcmx
- +BTJCHbCQ6q9tIGRlEB4CUXso/ogH6CiO0P18Ow==;
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-07;
- repo=github.com/dkim2wg/interop; date=2026-10-18; sw=lmtpprox;
- action=mi-m=1; hc=13;
- hn=cc,content-transfer-encoding,content-type,date,feedback-id,
- from,in-reply-to,message-id,mime-version,references,subject,to,
- user-agent;
-Message-Instance: m=1;
- h=sha256:byzuXXWh/QTTkrUVbw+8qK/9mmnoTMZSf8yROaQ2vYU=:OofOTQ7qTFIxaUTnsJ+h/KG/gz9OmhEv9PYhW8EGmYs=;
-X-ME-Sender: <xms:AifgagJ9Vr-1T7j3V3wr7OmqxUxA-fAOqvby2Hqm6TI-EObp6DDToQ>
- <xme:AifgagSHjDAkE4DzlnnWTsQN7hZ8nIQ9uxhOWzgcXDF5W6oebcU8G7JJIjvhf0gsN
- 59dzX9KqgRumeIGXkXWh17vmPMbw4smI5CKJopFSBJcghfpbaG3fyM>
-X-ME-Received: <xmr:AifgaooepkriKE-Y5KhpYW6FEgNDLuOZxyN4HMSbSx-rU7kl73xdhXRZlelCucqs96Ceo_TAMozHd82162qxpFlIsHE>
-X-ME-Proxy-Cause: dmFkZTGVFAHz3eHVRIsPvdT+amZVDCSg/VwFgGsZE7FjK951QP9S1ZvUNVhOywRoJ/0k8k
- P1CzVP73jaDEDdx8Ml6MjRSLw2W+93tLbUo5XIH7bJVv9SMTxN0ZR/v7ICAAvOhdpGUTF+
- Ptv8+hd35FuYr3pQfXlg43Eo2y8j/UZ9RxsPkRb/VanCRLQCZk9Cj5CMm8X3g4bfMIu665
- jiy+0zc3+LTJLaLS5dqpL58kBMgMUB7wXYvHmNMIgLbzlwBmhKC9QiP+AxDM9cLebfYHgX
- cEikMjEvkVXTFcuCqCb9Rs3+T71AtdOvzIlZPqEBU4B1iMZ6qrp7RLETghB8sCw4Jlc/fb
- X56M71OTFei2XvXTqEBfIKxzqfY11nwk69aR1tg3dfXZ6XxaAbZukH1iHNS3KdCRU4bDwW
- gxm5fO5vZbKO5za5RJ0sV8eOafgV5p+8LE2WD/OYLj1vUf+nZVHrZ9eLPjgKq7y27Searu
- qhdztCsS2DN7hKpKGLVFOubHMZeTPU4/tA2qSH5iLjNp15u2lNzhmNFrhZXX43luWhXABN
- +K49U381o+RsBnJBIS9fSraOlGTp00hGUw9hbinxg9JR8C6AFo5gSFSsXbE+KWSwcoNcXn
- JYQCPjvNzXJHWCbd+TbEscDfpzo0qAGW5z5SxB2i+RemtnUna067P0NJvAsQ
-X-ME-Proxy: <xmx:Aifgalq9kT6RCdpt-FV8yZTvTa4YzrLkQnnhhDNdEzDdUHqzSC5sGg>
- <xmx:AifgaiOJDp2DxMWs4AckkVuQ0dEKc2tH_XNh3Z3Zme0n4kaZLzpbdA>
- <xmx:AifgauzjyY16rcaQrG_4ySHFAxKlV55k9TiO8GftpKJyI1Aifcoz9w>
- <xmx:AifgajtJjTT8j17g8e3Drnvp1S60QTS2GDOYJcjZziZh-4agto7rbg>
- <xmx:Aifgapbz1muyMWGYJGHTX8_CDaxRUx4g4gu7rx9Pyrlq-8qTGJIvSAVW>
-Feedback-ID: ifd214418:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 27 Oct 2026 00:22:24 -0400 (EDT)
-Message-ID: <aa17d5924ea39fb40ed6fc0ecaa1803daeb819da.camel@alistair23.me>
-Subject: Re: [PATCH] hw/display/xlnx_dp: Make assertions clearer
-From: Alistair <alistair@alistair23.me>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Tue, 27 Oct 2026 14:22:22 +1000
-In-Reply-To: <20261026152409.2869104-1-peter.maydell@linaro.org>
-References: <20261026152409.2869104-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xLZud-0004Ba-Ch; Tue, 27 Oct 2026 01:39:57 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=E+gRGEumwv+P2BIv7vsUha5zOxnVw/TRknq7lXnIyBx0E66EYtTWi6q2wA2NXzF8huV7z8FlwFUC8/GE99PTenHBAhNkzeqvYSkxGTQpudFlF34V2BpGeZyxODBhl4FAlo1KovJsrVWPtIMeAThKyjiemPZWDAWL8y7lUsXeDegGWhpeGFmrHLPSUt0mDJUw4b38AwM3tUfZhliZGByu4X+PVTMr5fExNKnQDJW2zuGO3KOZrLIXVUVAr1DRv/X5L5Uqr4Qn+sQ1gH6QKnyV8SUvcVYa3/kW2jeqh4hfjcfOgumQZC63VrcZsgV2iM6djJWZL1v8rX1boRNbpHiX7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OgnSx2Ux+NORmV/cwIqLfyVUahfjdvS0MvWJAJ5Nz2A=;
+ b=crk1zjmGMKsBUGogaUJmimS7E0hg9utVcu2l5TE2t1GXJsBPcFBVu4b4WrBuwVZfnUkdgBKAM3O7UdPZCf6HDUXoE674fj/eDLKADjkmBG5AIRyYtQJ1cHbSZmSK3qu9vpgfuSu+pv2lVh1WQfMwxrp5MdWZnfAMUcuc+62dEJlvV4uWCrLVhCfJ6y1fdSnhYHdNZvzvmF8exD5jvYI7i463TBpdrn7/iTXGIzaWpYCzdT+1lNb9OgrjMAlsw96/Uu09tGdVCOYrpPA19cm1lNP8/DHLYBpv3dcFlnDPGBiQQkZyNi9GHRux8uHUc/UDoGYGc3YxYEftxyfNcEV9xA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OgnSx2Ux+NORmV/cwIqLfyVUahfjdvS0MvWJAJ5Nz2A=;
+ b=XsJPbZAfLPZnPfAJVGhiH4eMyQERgabtU8eC9GWYI3XuZBf/ueTKxv7wYvK8GG8A6tFF+cVNvzoNcaYGqV5spl+Pl5U/qEvFDGUmawFb/JfrK+CfBSy8qNV+wzVx508wyDaJKyizfZFAOOYgvZbYswdxKLt+eUNShzmgeWFJk+hQMGt9ymKc5kteG0k+EEdx7tnr7TaJNF2tT/FZ6YFlmL3/CcVbY2+m+9GRo5sETBNI5TlVyAaR9oejmPVayPdYtAkDJ8NHkOIYu3MgQRR1qMjHP4Csfsz6xaJ1QcpYr5kmQJR720idN5h0iPCHSPnTZMPnETrOD8ybKvxJQ4npaw==
+Received: from TYZPR06MB7373.apcprd06.prod.outlook.com (2603:1096:405:a7::14)
+ by SI3PR06MB8732.apcprd06.prod.outlook.com (2603:1096:4:2a6::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.7; Tue, 27 Oct
+ 2026 05:39:47 +0000
+Received: from TYZPR06MB7373.apcprd06.prod.outlook.com
+ ([fe80::9b90:c4d9:22de:2ac4]) by TYZPR06MB7373.apcprd06.prod.outlook.com
+ ([fe80::9b90:c4d9:22de:2ac4%6]) with mapi id 15.21.0569.006; Tue, 27 Oct 2026
+ 05:39:46 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+CC: "junjie.cao@linux.dev" <junjie.cao@linux.dev>, "junjie.cao@intel.com"
+ <junjie.cao@intel.com>, "marcandre.lureau@redhat.com"
+ <marcandre.lureau@redhat.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Kane Chen
+ <kane_chen@aspeedtech.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, Troy Lee
+ <troy_lee@aspeedtech.com>
+Subject: RE: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hub
+ insertion
+Thread-Topic: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hub
+ insertion
+Thread-Index: AQHdX6uxp6OpQ9yqq0CEeDiwsS34zbcEqZMAgAxB77A=
+Date: Tue, 27 Oct 2026 05:39:46 +0000
+Message-ID: <TYZPR06MB7373C4DABEAE16D546241853FC602@TYZPR06MB7373.apcprd06.prod.outlook.com>
+References: <20261019092448.278079-1-jamin_lin@aspeedtech.com>
+ <20261019092448.278079-2-jamin_lin@aspeedtech.com>
+ <atXr2J5oxn3BBgb-@nucbdw.ghoffman.csb.home.kraxel.org>
+In-Reply-To: <atXr2J5oxn3BBgb-@nucbdw.ghoffman.csb.home.kraxel.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB7373:EE_|SI3PR06MB8732:EE_
+x-ms-office365-filtering-correlation-id: ae0caedc-044e-4149-f26d-08df33ecb5fb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|376014|1800799024|366016|22082099003|18002099003|10067099003|56012099006|4143699003|261026121527099003|261021121427099003|261026140227099003|261022105027099003|38070700021;
+x-microsoft-antispam-message-info: sJFDIJ1nliKys6oIWgRElMWgUzGoD4xFC2dftNap2cNpPAh+BeS58yWiWvkxfgJKd9lh0nsahuKIxi7jAnjYuax4Dp5DFalZ+kCSznAAnr0qdFI/P8d2f2bXBrVcrMe2Y5epsphwlKCJ5WoUbf4dBqPjS/D5lA9LLjVLq3GRlEf+5nfQVlPaltdtSu/U5O0rLUiGAyGsKJQf/92/K4qPlgkVTaZICUUvnYLRmejwMLYAnBNglQ+bN+4fb36grvCON0uz/b06jA7N0y98w1w5EuTewmcwDVC3HCHA+Z3YeJtiVf/2E3rktPNVRXPE4wMEohdm0zEPlmKn8hzJDG94arGql66QNLSL5t4tEXvR2FOnMY8+m8qHCj3MwCgDljigO2FajSlq96pR+7sk940qzBV+nzPBoQwt4gFLN/u7oP3H+s1C4qco4avRtdO5rEV19iF0nhCp3u1L7yVecqeogrwGRKbfSD36gyHTAHFHHtNQrCvlQDog45SkrEoHpnmKJl1feDAxzpOYEebpSITMsqxcWGTSqxjbhsdzIAq6TrXrLCModKWgtyUf5ezT5aVfsX07Sbzuug3pR7xjoMvvVqQQ/mmv0ML2fFMh0QK1N4c5PL4pmCX5hUnAhPMV79lV3drlnJTas+7u/xQXljT7SnmJ69nFN1xkZuA96occFugMIIm/uWBzkB/ZFZWwT0H7ljE21GvNp3PfzlkOBZ1M2RH61pe6yDR5VZ8dsIf5WOA=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:TYZPR06MB7373.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(22082099003)(18002099003)(10067099003)(56012099006)(4143699003)(261026121527099003)(261021121427099003)(261026140227099003)(261022105027099003)(38070700021);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?lIFnPhSb8+KdOEeNK+Ps2Y0KYwBoXajNpvIcgOwYvwYVbqy8j8ACEgUQz+?=
+ =?iso-8859-1?Q?zk3nAc+UjNw9YieAvFFwp3Znbe9C6hznhftgVUTD8ZvCWxHoPlZ7wn4dnz?=
+ =?iso-8859-1?Q?iD6pY72oetsjGwg4IXfFsseN+bKpcPhHliUlquYcdwOnOQF6KPcnIhpOxu?=
+ =?iso-8859-1?Q?5Q/CL1PLY8hodSBMXhyGSdkFfQr8MDA7FZX7pFD6vJVBXaMSlnl5Q+HjNf?=
+ =?iso-8859-1?Q?aHkzba9nnoXoOc/maiYqmzCyKTdZWqYoVcHP2dC6kLwL9QW6shMFmuB/UD?=
+ =?iso-8859-1?Q?8c2FHly3Yqj1TQIA1V1Ole9fg0VseDGCZlpKvdBLKcaQG8JKWGXKvzpS1E?=
+ =?iso-8859-1?Q?WTeEtOjIKGMDTFZhP4N0wUQjOJUTf9OnEK0orhV5rJrSujaQdKJxD+dBkH?=
+ =?iso-8859-1?Q?VJJGvfMws2ZbsgxHLcLDuGfT6Z1bgdIclEjuvky8ZKV7BtWYRrtCt26vRl?=
+ =?iso-8859-1?Q?MQxg/1Af8d65A98QfwLR/NuuF9wyhoLbAyt0rEjnjPuoD8d7s2usUdtWB4?=
+ =?iso-8859-1?Q?sbd4mQJ3j/Uw+jDMe3LdW2kqS07Ecj9hqY3Jcxq0VlM8q1wm1aiNsLUQlO?=
+ =?iso-8859-1?Q?al3jX1PU5hy4Rkp9tVMb00gtmKgN4dQPBIJ3iHkMttkBK/FRGVf03Z9iRY?=
+ =?iso-8859-1?Q?w88JKMMkZ0cXbcHIZE+5QKHBXYwF7ol/cFrQG9cQOwDXSBoMqGn9ghN1gP?=
+ =?iso-8859-1?Q?ORge7WL7sp9hSebcUzDaDogecmeUS2X/zQef+AoDcYl5R2OUG11DNEfVZu?=
+ =?iso-8859-1?Q?CMTf4GNDY3yMt/j+VwfvwBqlXLMWVvPzSV/cCBNchjvkHuKQD2rlDLPzob?=
+ =?iso-8859-1?Q?ruGszUGuDDgEMEWZMlwl6BVCrgfDy3jt2wTsfnaPPOlAXTCKElSStI9QHm?=
+ =?iso-8859-1?Q?Wr14BkvK2M9va4crsEOcv469JSe72KGtFxIGoYL1g4QX2jjAHfBqANlXz1?=
+ =?iso-8859-1?Q?eDbEgmtlPeZb+NyPzU53CvDfIDEbpP7MHOPQxz3OaUm+Tn/K3/5M71sw/z?=
+ =?iso-8859-1?Q?zigW8bYa33KggfTK8qq2TMa4gyF1Y+kaYl5N94t1U9LFLFJBSky3jL31u7?=
+ =?iso-8859-1?Q?+9Sz8sdpJ5OdJ6ULNLq0tqDhOEUUc2CKeQHXsa3LADV2zNv70mSDEiVaSo?=
+ =?iso-8859-1?Q?o4iIuP6aNE5vGRhGFwSUBx8KtEOfhMzES4e6Y10aVHsk39zApAbbf+8cyk?=
+ =?iso-8859-1?Q?aH9Ahj28Zg3eaV5AflAPMdNptOmw/VoeMFyzD26W91C+tUjWRxWVe/UUR0?=
+ =?iso-8859-1?Q?CDXOUM9tAqo3IQzllWP3mFWhyGl3kbFKA25f8zLEMCrCiL1bS1q3rei0Hg?=
+ =?iso-8859-1?Q?WuU46XjAUzCOg0TPz9losQevrvFhyILEIN9Coc27/9v0F+szctdWoR+kEu?=
+ =?iso-8859-1?Q?KQXPKQIlm122YJguwbwFnkeJFRJNY+YQL054HNlhXIY1N30jBsdJln16A0?=
+ =?iso-8859-1?Q?kxVNlC8x8sA5d8D/qM+o91s8Q5olyOwLN1jVniqZr+JGvvTLl0dk0J8cUV?=
+ =?iso-8859-1?Q?666sxSXiHpvc424Vwsg3O29DCQ9A5VecE9fq7bv5hmxqWrQgz/oNjog0UZ?=
+ =?iso-8859-1?Q?uTF8C9I1XSqYkmOim0HBLu/io+UCBspaRuoOHFU8IDj3M29yNqNuPhHyj6?=
+ =?iso-8859-1?Q?K7OB3Cqk+ydEbkqhyN6bheJMWrH7bSD2xM7ng79SM2wYrUOuz38vtjFK/t?=
+ =?iso-8859-1?Q?7FHWT0/0leI6Z2678BeIpEvTBfz9HJ7KRTkMeBv9TjbqmI54q+cqg8MIrE?=
+ =?iso-8859-1?Q?z0X7vtJe2BvHgtHyTmoBLA5+30Ss79CJNDC2MnOayvGs7wTCjqCURawLF+?=
+ =?iso-8859-1?Q?CPhsGpq8mw=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.62.0 (by Flathub.org) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=202.12.124.152;
- envelope-from=alistair@alistair23.me; helo=fhigh-b1-smtp.messagingengine.com
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB7373.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ae0caedc-044e-4149-f26d-08df33ecb5fb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Oct 2026 05:39:46.8143 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: RfycXoD4DBCX4eMIeLIYx5+OmqHWwIrR2XzJsnxMKBcVsFu0z2WaFwu+vtdluasSx4yUs1eEWc34yD+RJQ2xXDvkMSPwYwMg9Ktaq0s9zIw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI3PR06MB8732
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,68 +147,64 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 2026-10-26 at 15:24 +0000, Peter Maydell wrote:
-> The xlnx_dp code has some assertions in its read and write functions
-> guarding the fallback "read from core_registers[]" codepath.=C2=A0 The
-> array can't be overrun because of the defined size of the memory
-> region, but the read assert is confusingly written and the write
-> assert seems to be completely garbled.
->=20
-> Replace both with a simple check against the size the array, which
-> makes it clear that we're asserting that we won't overflow it.
->=20
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4586
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Hi Gerd
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> ---
-> =C2=A0hw/display/xlnx_dp.c | 4 ++--
-> =C2=A01 file changed, 2 insertions(+), 2 deletions(-)
+> Subject: Re: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hu=
+b
+> insertion
 >=20
-> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-> index 06594980292..ad6c4952065 100644
-> --- a/hw/display/xlnx_dp.c
-> +++ b/hw/display/xlnx_dp.c
-> @@ -812,10 +812,10 @@ static uint64_t xlnx_dp_read(void *opaque,
-> hwaddr offset, unsigned size)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D 0;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> =C2=A0=C2=A0=C2=A0=C2=A0 default:
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assert(offset <=3D (0x3AC >> =
-2));
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (offset =3D=3D (0x3A8=
- >> 2) || offset =3D=3D (0x3AC >> 2)) {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-ret =3D s->core_registers[DP_INT_MASK];
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 asser=
-t(offset < ARRAY_SIZE(s->core_registers));
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-ret =3D s->core_registers[offset];
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> @@ -986,7 +986,7 @@ static void xlnx_dp_write(void *opaque, hwaddr
-> offset, uint64_t value,
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 xlnx_dp_update_irq(s);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> =C2=A0=C2=A0=C2=A0=C2=A0 default:
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assert(offset <=3D (0x504C >>=
- 2));
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assert(offset < ARRAY_SIZE(s-=
->core_registers));
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->core_registers[offset=
-] =3D value;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> On Mon, Oct 19, 2026 at 09:24:50AM +0000, Jamin Lin wrote:
+> > usb_claim_port() inserts a usb-hub when a device is plugged in and
+> > only one port is still free, so that more devices can follow. That is
+> > what a host controller with root ports wants.
+>=20
+> Ah, well, not really.  It's there mostly for historical reasons.
+>=20
+> The emulated usb hub supports only usb 1.1, so for newer host controllers=
+ (ehci
+> / xhci) it does not make much sense and the better approach is to add mor=
+e
+> host controllers if needed.  Which should rarely actually be the case tho=
+ugh
+> given that xhci supports up to 15 root ports.
+>=20
+> So if this gets into the way I'm wondering whenever the better approach h=
+ere
+> is to remove this altogether.  You can still add an USB hub manually of n=
+eeded,
+> IIRC there is (or was?) some board with a single-port OHCI where you actu=
+ally
+> need a hub if you want plug in both usb keyboard and usb mouse.  It just
+> would not be automatic any more.
+>=20
+> Alternative idea would be to add the config option, but only enable the
+> automatic hub logic for actual usb 1.1 controllers (ohci / uhci), where i=
+t does
+> not matter much for devices whenever they are plugged into an root port o=
+r
+> hub port.
+>=20
+> take care,
+>   Gerd
+
+Sorry for the late reply.
+
+Yes, it gets in the way. usbredir carries one device per connection, so
+our bus has one port. Plugging that device in adds a hub, and the device
+ends up behind it. That is why I added the flag.
+
+If you would rather do one of these, tell me and I will send it:
+
+ 1. Remove the automatic hub.
+ 2. Keep it, but only for the USB 1.1 controllers, ohci and uhci.
+
+Thanks,
+Jamin
 

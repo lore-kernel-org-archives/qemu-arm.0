@@ -1,100 +1,100 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58AE9606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 18:26:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1ECF5606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 18:27:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=mD8CnZgQ;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=AgyqD6Lm
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=GaFTzCbc;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=CLTzL5O+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLlsK-0000KS-Ed; Tue, 27 Oct 2026 14:26:26 -0400
+	id 1xLlsu-0000q9-JC; Tue, 27 Oct 2026 14:26:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xLls9-0000EP-AR
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:26:11 -0400
+ id 1xLlsW-0000UM-E9
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:26:36 -0400
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xLls4-0004zW-P2
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:26:07 -0400
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ id 1xLlsU-00051I-O6
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:26:32 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69RIIADw3486335
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 18:26:01 GMT
+ 69RIHqVt2960468
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 18:26:19 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- sBoNYG2/VLOCXr5s8H72Fe6tRbiTjTU85h25ejei/N0=; b=mD8CnZgQxE1oa5j9
- qoKXWXheKVZzLxGFCQd69cVdXqPCuWdkXjtlYVB1vx1TpHS4ssqwqthhF4DWGHJ0
- pvrzS9FXFH9ZIjGLBLuPqbb6Qa23faQ7wjIwvQ0CHr4TVyUctIEUdCjtiGeh27fp
- UUCi0qykQM2tjuwixbr2fuk2AVp/UwYUVoZ8+gduFzvLxTBKdLpC6pR3tM/7q2C4
- XAS+3ilcyVcxwQQxbWc/6VcuUbkm567kosgeRC1AOdYsVsLteX89eCWUAAW1YYJG
- 2xB17lmoRe6Wm2/gtcgLnzc5MVnPDGHTJR3QXJpWzv/WiTRrUzm7DDu0VkE1g2zK
- HkMDrg==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hjjbtbuja-1
+ rqvwCdeTzalXFMsGrT6m3x8p0RbZtnSwh+wuiUwhRpU=; b=GaFTzCbcWdxFOmss
+ X1hmR8YF6qkazqrBr89HLjt0dkNHrMsLmj3744a08FVuScFjDSrh90yi+m6ZeHCY
+ 0UU8XuK/tqDgKN3RSD51unGb7rW3rJME5p/5c9VYMUezsjXivQeV6CVILayDkRcq
+ JLjRk9jyADcT2aDITWoEnGmWdrylCSBBaK0tddTBmypy5aWG+2SsEgLOKgWKl0Lb
+ k7urQDtU6nDl3DhBQFdEpiDoVSYkUYp63o5VwexRSFmejyX3p9EUSdEMxhmVurEb
+ BmDEPz4ceTwm795g/6NeGg2NqqIpv20jutiW1SkgQhCA4mSk+hSOSAthzCu+7L6b
+ Dn8PDg==
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hjy670mxd-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 18:26:01 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-93caf7856ffso13297785a.3
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 11:26:01 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 18:26:19 +0000 (GMT)
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-91c7a1a32a5so5136246d6.3
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 11:26:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793125561; x=1793730361; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1793125579; x=1793730379; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=sBoNYG2/VLOCXr5s8H72Fe6tRbiTjTU85h25ejei/N0=;
- b=AgyqD6LmeFG4/I8N6+He2XK81KUMisIupR6LpYII8/XUMfVfKzKNTM1ZI5Te7xzV5d
- U1J4y8ccEE/bPD+4BSej7CarkiLHjzHt7OrUeJyvYCpxPj9rSZnl+EN4NHrYnb99roqz
- GRh+OELCwQgkO/9Y5wODDoSRjoqfh2NtWLPNhviPQnnkt4yrgZJbtHV5YsKeKlKt68ER
- zhLdxP7OZsA710yCLkD/56s8pu9Wyd31tFSuVPOu0NobiBYXmPrkl7ACVvSgLbjf2q59
- 9HfxD+mF312Hr3/vZPv8uINRMmCSPtU+mhi2B5xVFhvf0TgwUCxHUXZHFavXB17aCkqU
- 6MPw==
+ bh=rqvwCdeTzalXFMsGrT6m3x8p0RbZtnSwh+wuiUwhRpU=;
+ b=CLTzL5O+aqjZ24BoUbfJhN9JxaiqM1HplfAya/gbuqQ2HH6b5dzfg+6YujSNLO6Bsq
+ qqtR5+YI0sqBgHETdhX7mTNDJ2wZLnefHlp85tJyKHSYqqJFY1cl7B7W7ITKx94MOn1C
+ RNh2DkhjJYNIb/5Gu8wObeQImyMgXNOF0OmIC6Vv8MLtgU44zL6/bzQmZ2izWuC52gJK
+ +/HqzGcQJZeDTcRlUGilGJED9o7z7eSXaeREpjAX1pAh83Hg1FdQlG3dRLFhs/ePXN4/
+ bOXOY1A+DFpVslv5wyGDu0Rf1xfKLh049vBCHrJacFaG0gpboXsL1BpWzmFNr3ZO6Rx5
+ OcJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793125561; x=1793730361;
+ d=1e100.net; s=20260707; t=1793125579; x=1793730379;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=sBoNYG2/VLOCXr5s8H72Fe6tRbiTjTU85h25ejei/N0=;
- b=07PshZ1tMWUQQd2MDOiRQiDFsMiHQKSaGD7Ryi2XJNuGjAVN4NdbHKp5i57a/6JKCw
- r5MBYTk3IjD2thn/BSENSXggD203tdzWTz3kACwOrQZRmhgY4uGTmFRd+l7P/PmvImm/
- K9QXVNTE1i8K7IK3Q8nFe0pq6Au1kbmijwpDlEYM7Ta8F6sV/1MzGcHV1Z7r1c3pif5Q
- FyLDNtmEIbbjJq71trCAA+2qa/aeubIQxf/2AkAWLiUcw12SgMCZAbi0TVdBe5QPy0SV
- 1U8CVbJ9kPSNIOl+dZjc1QZPZ616wjcMHWosL5DvAHSgCyVcDGgaXMm0wEigbpwX7MXN
- 15rg==
+ bh=rqvwCdeTzalXFMsGrT6m3x8p0RbZtnSwh+wuiUwhRpU=;
+ b=wgigdbOUWNqtM/byO9tUZNP8pStUxCqmPAYjg28PVaef1BEnx04+vWfxMUYM6ft3Kv
+ F9FRmxAjOIrFvCjhZDRMl0jjPT3DaDByrmR8C/pdITfEpuBNcxU58DtR12JWwuu2mFaQ
+ 9FImKmfosurqJQv8dqHs8nKRjdP00OEckwMQRrPyZwZSkunhk3yVlE2NhO3aONiZIVAS
+ dLBPMg8bBBUfAIOJNnXDNNijqB4kjSn4c1JO1loT/UFrF72zMXtWT+RoslPHcvNZHVfH
+ jlq6uKXE8tsTWXPPw8qHWkDbeJFAiP1Ir79aklS5uxS1hKbYlgU1SmChyKbMEOxo+xLG
+ Rbdw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzIXDXu8BbB5Xfkvax+BoolPUgMe/wfqqvsXFJzroRXxv6COW3yETdQI6+DdV10RearGQ0MauwdiA==@nongnu.org
-X-Gm-Message-State: AFq9FYKxxqN6yJbjrwxJDT2FKZHJ5v670P7zKVHv+oJZlf/4LnCZerUY
- GREVVLLZfI5rQOu8uRctjKzk1+B2akxPer73aCW+kaLC0Y+UHyuRgi5bCVitUUcTpNIBfjhhqS1
- zClAuvdg+eQ1+u/sW4EaVXfP4AX/xKVaNNBfTAqn769LgR1xbFhjfXMA=
-X-Gm-Gg: AYBFou0nCn3Rttq8d5Q9gzMT7aOcgzqQefmm9v33mwhAmjqSWRvooX4THocRr1YXmN3
- VcYmrYP5/Je/wMyt2Pa932SHOf1lD0d8OVVkdeLAYyS8Hw5tOna6fx5r5Y5bHMhIE5sLqWFgx18
- M5+qZxrBQKnpewhWK8VgpIDoAszeyDicJ4xw4wyjo+Ha4nIwVggv07b3IjYoBBUTa3lptkql0T0
- avPfYG+Ykdp0+ZrxhS9m34Sbu7P2niu3Df1kQIzY7j14pcx4Onn7lNK9hGcZnpAaCmuVpGK+RzJ
- 4yt/uX+wP4ULGSb8e1YO+pHwNXZqJ+Zx6THZ5WCPT+Z4Xermndo7YoqHlGlOp4LuzLMHtgzfVoG
- tG2LZ8u8joJLP+L4Qgcshantgv5S6/DhvxM6sO98klTalivHHFw==
-X-Received: by 2002:a05:620a:1b98:b0:93c:6f0e:8468 with SMTP id
- af79cd13be357-940ef8f0788mr1681988485a.43.1793125561035; 
- Tue, 27 Oct 2026 11:26:01 -0700 (PDT)
-X-Received: by 2002:a05:620a:1b98:b0:93c:6f0e:8468 with SMTP id
- af79cd13be357-940ef8f0788mr1681982485a.43.1793125560576; 
- Tue, 27 Oct 2026 11:26:00 -0700 (PDT)
+ AKwUvBx5CJTrgdeE8+G+a940sgs9vHRr4fZYLTAViuhtGncLhn8X7B2Lvcqb1eZzOJUfPL8pcNhte1w5Wg==@nongnu.org
+X-Gm-Message-State: AFq9FYJo8A6jyJICRN9AY42t0puwzRUsz6JeN2l3BMlfmWUC866S3wxX
+ HVRss2I3vdumgOCjifFaG6+nRFXHS8/g78xE7g4vQ6sAXG2ybsEMxlTZcuSp9YaSbcKEZ5ZU3aa
+ bZJAC7QMF/NDvJK1KnlsJuWg7D3voGDT/IZMI9E0ALa25GLhgXlzsCRE=
+X-Gm-Gg: AYBFou1OWY+18vqSIKm3VSSz4TETVv6Dgf1pVUhvWbwFQOfHj1T8ev5R/6w8xMq73sk
+ 5tYWNXOC8RiTYrrawjkLQRF8BusOS8LKL9R9GWbBNg2NvRIDjPOWWMcmB7FVMoH4P2UJxR5CDkI
+ pZqMJErFbZ0po+v0IfT8GvHILqLdFy8Al1PSwgTE9vbMfy83GCwAU476eUhdqX+Ysa4Jzov7jGl
+ t+npsVRsigDe1LqH06QYekZRNr+f7ipwzs/l6YZBJ9QDwufCkpEi7tNClV5g82b+AGPG78hkLNz
+ eysV1RozY2OLUYBWZM/VCeLmXJWP9xE+aoQeVi1MZgy24OibRpBlzrEfxiAPUgcHonVEdnLW49I
+ Uvudsw6s/AnZg4lTtIOuIlZ+ButWh4HD4sviOFMVkKoI4V8lhfg==
+X-Received: by 2002:a05:620a:4689:b0:93f:2e08:6420 with SMTP id
+ af79cd13be357-940ef930089mr1680121385a.38.1793125579119; 
+ Tue, 27 Oct 2026 11:26:19 -0700 (PDT)
+X-Received: by 2002:a05:620a:4689:b0:93f:2e08:6420 with SMTP id
+ af79cd13be357-940ef930089mr1680116985a.38.1793125578678; 
+ Tue, 27 Oct 2026 11:26:18 -0700 (PDT)
 Received: from [192.168.69.229] (82-67-153-177.subs.proxad.net.
  [82.67.153.177]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a94c6d9aeesm405515e9.7.2026.10.27.11.25.57
+ 5b1f17b1804b1-4a94c021080sm519415e9.2.2026.10.27.11.26.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Oct 2026 11:25:59 -0700 (PDT)
-Message-ID: <c5a02b34-d171-4329-b8a1-ce7562752ee0@oss.qualcomm.com>
-Date: Tue, 27 Oct 2026 19:25:57 +0100
+ Tue, 27 Oct 2026 11:26:17 -0700 (PDT)
+Message-ID: <a7e54c98-bad8-4d2c-9e78-75297e772670@oss.qualcomm.com>
+Date: Tue, 27 Oct 2026 19:26:16 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/11] hw/nitro: mark 'nitro' machine as secure
+Subject: Re: [PATCH 11/11] accel/nitro: mark 'nitro' accelerator as secure
 Content-Language: en-US
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
@@ -123,39 +123,38 @@ Cc: Stefano Stabellini <sstabellini@kernel.org>,
  Song Gao <17746591750@163.com>, Eric Farman <farman@linux.ibm.com>,
  Cornelia Huck <cohuck@redhat.com>, Matthew Rosato <mjrosato@linux.ibm.com>
 References: <20261027181400.1752951-1-berrange@redhat.com>
- <20261027181400.1752951-9-berrange@redhat.com>
+ <20261027181400.1752951-12-berrange@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20261027181400.1752951-9-berrange@redhat.com>
+In-Reply-To: <20261027181400.1752951-12-berrange@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI3MDA3MiBTYWx0ZWRfX4sadYeah4FNq
- 6DihVRKI2G42RCvNitMeTxLH8jqYHbGSaVFYX+ZQN+1XPK6TRFQ8pDIuzq/5I7uHGBHsmbjJcCh
- 1gY1iAnWko1AT+OwXVMoEIs1hk16u/g=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI3MDA3MiBTYWx0ZWRfXyTlWUC6026mM
- luYeIpa96MCMxcUE6FhK18UtnwbFjztnOC80o/hZoKQms5nZJQSxBcadLxcUWZhxWa16eaCdXvQ
- cD/XEMDD7U4PYqg2iH1IEdf3H0xL7cSePxFxTVUilfI6+tpCMEJcvhHUFW3AzupcH39HLm8Eyk/
- 5kaJzHhR3shV2k26vawtiOBBLT8+jbEaqQz0lzMT6Q0Ac2aF7LVMRF4Xql417QnO+o6UEvuHKMG
- hyyNmoDGdAos6m3JatWh6P7+OXMxCDepP9QoBI5eYN7e6PA6O3nIgKKaZkAAMEkOOOw8OXTJ1LA
- 7sRTN3d4wcvOStJt7kCEDd1e13cjFDVloMytWwQVycZ61fLr+myDzQu++hK/xrCCYikbRtUOkY5
- 7ITppZcElCISAziZbWsHxb0YmIWmpVAMRcgDzmkAHpT4lnvqoAImRXGHgsTd6Z//XEocqjyXxsU
- /aO9VRZHJfFH1U1pAPQ==
-X-Proofpoint-ORIG-GUID: JU3vi_r8xO3B8Opq-urWiHvr_IQbOV_Q
-X-Proofpoint-GUID: JU3vi_r8xO3B8Opq-urWiHvr_IQbOV_Q
-X-Authority-Analysis: v=2.4 cv=XaIcX455 c=1 sm=1 tr=0 ts=6ae0ecb9 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Proofpoint-ORIG-GUID: q76sgZk1cE5jrswfj1WkG_F2BpPiPR9D
+X-Authority-Analysis: v=2.4 cv=QvfLTlyd c=1 sm=1 tr=0 ts=6ae0eccb cx=c_pps
+ a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=ZVfvRXNSK-DTiSIkpbsA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=nhBbSb_fY9f1tbuIA-YA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=pJ04lnu7RYOZP9TFuWaZ:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI3MDA3MiBTYWx0ZWRfXx6/7LhLxpOY1
+ yETc+35+rWwh+eoPz8SkmHdWELObWMz90jR18oL4zxtU4eTj4F4DYV+of+LxHIqZ4RVVmD2hExa
+ DHhEZvwhXopP5wvOgodww/9CHBrTuJQ=
+X-Proofpoint-GUID: q76sgZk1cE5jrswfj1WkG_F2BpPiPR9D
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI3MDA3MiBTYWx0ZWRfX5uVCfL0gyRN2
+ sh//wVwkrRpDL/Ee5hG2qvt7LrOSoSHwH9lntWJfaC4hz92el0MfIoOwz+JNOKwisMbZtWAdo9Q
+ UjjiOd9640RZHVnz9x5rFVf/M0JvoxNaSeTLtWpW+wrz5J+AblW5YIbgK+tVWBfpaz5CjfHMxAW
+ b+N9RODrolfJOvbgqNfJBOhGkj7PGK0Raz4C34q/0NyNHYM9NNbkgrtp2vSs2Jn4Z1eWzebOCmv
+ Lplxs1UTEyvgoskPqFRqOdttsvjDaJFLsMvsish3GIQFN1uabUkeUKlnvD9zXm6VfrN7V+f4ww1
+ rrwvmeERq0mva5SmJ8M8nLxKm+D8Uh1smYuFpKXe5lcgjFKXzy553W/j96bxi5yCmpMUoKQskz9
+ X8rLzbJq461MMyhTTNj5qQVogCDXj5J+zaK92pk/LQKX2FIayHzt/WOC1uAXhIXMuJKAVACEwqR
+ whAowUPOcqrm7NWvOOA==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-10-27_05,2026-10-21_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 phishscore=0 spamscore=0 bulkscore=0 priorityscore=1501
- clxscore=1015 lowpriorityscore=0 suspectscore=0 impostorscore=0
- malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
- definitions=main-2610270072
+ priorityscore=1501 phishscore=0 lowpriorityscore=0 malwarescore=0 bulkscore=0
+ spamscore=0 impostorscore=0 clxscore=1015 adultscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610270072
 Received-SPF: pass client-ip=205.220.180.131;
  envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
@@ -184,14 +183,13 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 27/10/26 19:13, Daniel P. BerrangÃ© wrote:
-> Unlike the 'nitro-enclave' machine which provides emulation, the
-> 'nitro' machine is used with a real AWS deployment and thus is
-> considered to be secure.
+On 27/10/26 19:14, Daniel P. BerrangÃ© wrote:
+> The 'nitro' accelerator is used with a real AWS deployment and
+> thus is considered to be secure.
 > 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
->   hw/nitro/machine.c | 1 +
+>   accel/nitro/nitro-accel.c | 1 +
 >   1 file changed, 1 insertion(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>

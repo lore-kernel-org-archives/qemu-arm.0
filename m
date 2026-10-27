@@ -1,68 +1,69 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0DDF9606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 16:02:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3025606A321
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 16:03:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=E6IjADUp
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=FkBX6Q6+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLja3-0002Nn-1m; Tue, 27 Oct 2026 11:59:19 -0400
+	id 1xLja3-0002Ph-Km; Tue, 27 Oct 2026 11:59:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xLjZ0-00010L-Pj
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:58:15 -0400
-Received: from ci-2002j-snip6-11.eps.apple.com ([2a01:b747:3005:206::67]
+ id 1xLjYx-0000zt-Ld
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:58:13 -0400
+Received: from ci-2002c-snip6-1.eps.apple.com ([2a01:b747:3005:206::18]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xLjYx-0005p2-9y
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:58:14 -0400
+ id 1xLjYp-0005mg-2W
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 11:58:08 -0400
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-8 (Postfix) with ESMTPS id
- B428F1801A45; Tue, 27 Oct 2026 15:58:04 +0000 (UTC)
-X-ICL-RepId: 01a17e15-4173-7c1b-88ea-2b6207ce6efd
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeWhEdBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kFQQxNBF4ARQdJC08CQAZTHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
+ 98C7D1800F5F; Tue, 27 Oct 2026 15:57:57 +0000 (UTC)
+X-ICL-RepId: 01a17e15-25a0-7715-a13d-36bab5418d0e
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeWhEdBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kFQQxNBF4ARQdJC08CQAZZHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1793116686; x=1824652686;
- bh=45x198cocFqRZTEY88kZCTN60ge9TWP19GDSuyvAUEA=;
+ s=sig1; t=1793116679; x=1824652679;
+ bh=ir7cAigVpd7VDYHnidyAwSXGHXAFs9/Ccdek5eoTA2w=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=E6IjADUp14RG/5+8NpzZ+9DCtpi1y+Q2f/RYWrd7imZ2CdRX5buQfMVkn2YM9lV7eNoC4QesuAAqgBJG1Rrfmf8UcEmzq+nUwppq1CJo3deIbmeXYj0cbaKu1kQYb/tM/Cl2NXMe/V+5qbDA30++fc3NRqeHRVtmQpZGMWwzGL1OBsHNK/gPxwEk+4FqI6sPp+Aq5+3UroEki+0RfSyys3u96RicJmvryR4ocB2mqJsHeKMsfDU7jtg45GRH8YUjOps/NtMDiOgEJUJ5fGGmXQU4KFhPpz3Ue2pHQbJuO3hpr0NP75t4g/p92pknTzF8bok57acg4m35fxBMgNwmuA==
+ b=FkBX6Q6+RQW4hd+naxmC6j6FTiGyPUT+/y3GIGcST+HKpK4d2rdE5DrcuNewrqBYcFl998ZbfMrR4iubIXAfTxOasFHOYs+dRRrdQYv0nVeAIJZlWL/BDoH+5WcGssxzjNaF/H4mjvRIbJ8MN/LXXD5AlADFiW77IVwXBbRF3s8txXJUgfhAw6/uta2UPx6T2LhI5+Trk8thHEHdVQpTVjdvpOniBJKJ7lxPW1GLom0qXir9amlaUaV3sdNy0EgMYj4CJalQRyLuNRLO+tY9OhVh1qUeDVOegl12u9gef1U7BNIldSlQfniv3zoak6+hB+na/6ExQ5UVVBOK+hksvg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.156.36])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-8 (Postfix) with ESMTPSA id
- 2C77618004B8; Tue, 27 Oct 2026 15:58:03 +0000 (UTC)
+ E0B53180010D; Tue, 27 Oct 2026 15:57:55 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v2 17/18] whpx: i386: save/restore pending interruption/events
-Date: Tue, 27 Oct 2026 16:57:36 +0100
-Message-ID: <20261027155737.59271-18-mohamed@unpredictable.fr>
+Subject: [PATCH v2 11/18] whpx: apic: migrate APIC implementation to new
+ interface
+Date: Tue, 27 Oct 2026 16:57:30 +0100
+Message-ID: <20261027155737.59271-12-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20261027155737.59271-1-mohamed@unpredictable.fr>
 References: <20261027155737.59271-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI3MDA2MyBTYWx0ZWRfX/IvviXcuwIBx
- Ea2Vc1OPkLOOaMRv2/ZzqSgn00S+EAvkKCaTEqyUV3oiprDwoqIBl9c/yLEyECKdPmnFk/8lNvX
- X971/i7rThsX+Un5kcuEA8voI0kCaraOvQQgMP7RYpUWZAqI4V0slLvLYR013++iONMyqirxck+
- Do6uM9AmOPNHGmpYC8geemXckNFl58vt/Gc6kEDfP1heARoLUkUxFb9HYTMHzsMWdQ08n8V1zfQ
- +YbJ/ZiiN9vZ2q7Zzb8RQsivddCnZY2B6ZuEAqaQjvqjwLdnPs7wFC0/556OqKWnV/upA+S4peN
- EB3M7GDsW1mXB0Ww641gJrHqb2xT4MHNhWDhDp3W2er9A55/6cA7kkmTFJXxTU=
-X-Authority-Info-Out: v=2.4 cv=deyNHHXe c=1 sm=1 tr=0 ts=6ae0ca0d
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI3MDA2MyBTYWx0ZWRfX006HFoXqtdSu
+ w9G3rBBEm9tHPFhMSmPvJbK3qoVSk6ebqIbL2FwWlxuqlubsuQJI5Ox0JyYkSsvB5zSd+bdBAlE
+ wPRcewqyTPfe4Ngf/2fx1l9C5LUyok9arpE3+KNcgaVOuqAZxkz+et0Jaix5C7Skkf0dBfVsM2P
+ 6x1cDME/nTPd1KjkLT5e/lMZOkP5QFFBrCxjfCCH6pNXWwu1tGNHrs1ltU6yNVwsa4VjQvrKN8x
+ FOs3DjsxyZuNBJSCwEeS0OOaVUYewV1u8gpQEaeDcAOn/WbrenMbOPkRKSx8tNWrIEy2Jn80Xvy
+ 6DOkhWEOb5Y6NGRBXfnQs5m2/AEmusGvhN4kYWEPlUPBMIieJkxS/BIPpaLk0s=
+X-Proofpoint-ORIG-GUID: eVUU2eWdd3VN28NH8ZVGf0pzfmp3rhdy
+X-Authority-Info-Out: v=2.4 cv=YaGwJgRf c=1 sm=1 tr=0 ts=6ae0ca06
  cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
  a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=660iZSQnnn4A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=_XAUb-8rtZnliU9HzusA:9
-X-Proofpoint-GUID: XmYW8TSBa5f4ZXz5CC6t91gXc08I9qnH
-X-Proofpoint-ORIG-GUID: XmYW8TSBa5f4ZXz5CC6t91gXc08I9qnH
-X-JNJ: AAAAAAAB2g1bl4QhlwpqT01e63KU1xYObdSI1i9TJyZvARAMac1rY0oTTYDFpgAy7LBI1ver1o8rwUZGz31WQngeySZM0qFSfceU2brr07XLcTufDwXkDnMZ4Q0zqPIOYYymi8dNKCAcmb1O68KUfPkZnCpnupH/sE6niGZ+1g+BHjCfVJ7IxY5wajWZ8dXgWAZg7Mvip0zYySpn2IF+bB7OUSCFynD8h4WNcZIDDFmzqzmXIKG5ANjoO7TKH8KUNpVN0U9ta2xIoNbhpWCi0EfxrRgyCntbhXplr1oZkIX2b/geUeHfK9KqXKyARW4xb2yrPbqqM3bjBj5GTlWwHrVm8m/ticcIgAmlO1EYsPMmZeVqobJRrp+wz0PacjLvKiL7YE/+WtkiKf0Fy6Wk5jrXs+r2FQTgN4p46xOqd/rKNz8QZWq7A67eI/pYZpgGe/k6itcdyDju/Dor1GOy7MaABm0ZjB2RP/km03lelO2u4oHh/O6innG4hkYciT+ghYNi2dyzeJ8nqUa2mhcOzMsNz32rwoKWj0pPHji6gv+FRNnQEp+799TZoh4zb5tnglfegN2LJAAR2bYApXuO7cye5tpQukwZs/m6WBeX1t5wGPRJAFZfhk+hiPV2Y+v1JlbasNhj4EHpCIK0vQ7TDM3dWvpjNNhRsBV4jzZhnFKhCxTSmzCAiaY/3MwdQTJi/uALRj2BNxW5mIoeZqDUHV9erfYOO9NndkjV/qfYXhYmick7HnPH08p/ZauYkFhv0T+LXx2zl7XeLw==
-Received-SPF: pass client-ip=2a01:b747:3005:206::67;
+ a=M0LOW7VbZ4QrGt4_3X8A:9
+X-Proofpoint-GUID: eVUU2eWdd3VN28NH8ZVGf0pzfmp3rhdy
+X-JNJ: AAAAAAAB+YDgcdEduBUxsvpSsvGNEPetYOrJpozwjZF/P5an7d6tiS16FnjHA7ZI//yAZl6woZ+Wne6TaQoATTe/C5RT7HkJ1gvylsRNbHgwNtiH+QoxSDZduX1suZHtqrS36Ckej4DZykcVLEQzxRRi2Ei+GR//mdGcCHiLbtUrAr9QcVG73h4zo7nu01VprW8/j+PyY086L2EL4vhZ/7FvKBSgzpdABiC0T6hysAwAa+rBOOgCoXBt/nFLrAav9mXBaIqE9ysVGMOFkeTQycktBmLyk45EUu9yKp68I3SNVE/TWAo7sF0o7iuas5nwLDTnBz+1qaXJgWgSZbMLbBZ/TMz9dBSYZa2yUv0VExg4/svIqfH1SkkDC/BVeRX76fkMDGldWx/I/q2rkAuSiU22062gR8qTCH0o3xcOxqGCdF/abkvONRpXbpDz8/Km1uaoKpEbcZPwaPrs3GfBIY1xRm46wE5Jx/qzAyoZxI41hYGihPordrA6JTbuzPFyC10BMnHRNSNFaoPv2DALVIFhPgXzKJFcBRODrtmmVwCKbAc88/h9Xm6ofL1LWnvYaXJZ7/teJaE7nk4lMzvxN9bkTEBSEfhwhULqu/8pho9TvOjdUizjXp2miMfXS+WMc+W0Pm7Mipbj58LVUU50ZxgYLijwbbEEpUOhxAPXT3W4fAA2FwSO2iIAcKupXoZCb2o81WbWPgh4KnkReGAwbs8BSeu+ib+SJxIZZXpBmDFRbHpYXERVhVrAi59vgX7dzqpd9SBlzUi5j+xLzWGKvXQ6H6ljYiisVGKG0+LHEYl8zK1h
+Received-SPF: pass client-ip=2a01:b747:3005:206::18;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -89,143 +90,434 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Using the translation logic from the MSHV backend.
+
+The new API is only available on Windows 10 20H2 onwards.
+Retain the older interface for backwards compatibility.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 106 ++++++++++++++++++++++++++++++++++--
- 1 file changed, 102 insertions(+), 4 deletions(-)
+ include/system/whpx-internal.h |   1 +
+ target/i386/whpx/whpx-all.c    |   2 +
+ target/i386/whpx/whpx-apic.c   | 297 ++++++++++++++++++++++++++++++++-
+ 3 files changed, 292 insertions(+), 8 deletions(-)
 
+diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
+index b15f3d8faf..136ad88872 100644
+--- a/include/system/whpx-internal.h
++++ b/include/system/whpx-internal.h
+@@ -55,6 +55,7 @@ struct whpx_state {
+ 
+ extern struct whpx_state whpx_global;
+ void whpx_apic_get(APICCommonState *s);
++int whpx_apic_init_cpu(CPUState *cpu);
+ 
+ #define WHV_E_UNKNOWN_CAPABILITY 0x80370300L
+ 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index d2cd8e8001..1447c777d3 100644
+index 6b00724ceb..4d4ad0919f 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -121,10 +121,11 @@ static const WHV_REGISTER_NAME whpx_register_names[] = {
-     WHvX64RegisterDr2,
-     WHvX64RegisterDr3,
-     WHvX64RegisterDr6,
--    WHvX64RegisterDr7
-+    WHvX64RegisterDr7,
-+    WHvRegisterPendingInterruption,
-+    WHvRegisterPendingEvent,
-     /* Interrupt / Event Registers */
-     /*
--     * WHvRegisterPendingInterruption,
-      * WHvRegisterInterruptState,
-      * WHvRegisterPendingEvent0,
-      * WHvRegisterPendingEvent1
-@@ -694,7 +695,47 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
-         assert(whpx_register_names[idx] == WHvX64RegisterDr7);
-         vcxt.values[idx++].Reg64 = env->dr[7];
+@@ -2969,6 +2969,8 @@ int whpx_init_vcpu(CPUState *cpu)
+     header = (X86XSaveHeader *)(env->xsave_buf + sizeof(X86LegacyXSaveArea));
+     header->xcomp_bv = header->xstate_bv | (1ULL << 63);
  
--        /* Interrupt / Event Registers - Skipped */
-+        /* Interrupt / Event Registers */
++    whpx_apic_init_cpu(cpu);
 +
-+        assert(whpx_register_names[idx] == WHvRegisterPendingInterruption);
-+        if (!whpx_irqchip_in_kernel() &&
-+            env->exception_pending) {
-+            vcxt.values[idx].PendingInterruption.InterruptionPending = 1;
-+            vcxt.values[idx].PendingInterruption.InterruptionVector = env->exception_nr;
-+            vcxt.values[idx].PendingInterruption.DeliverErrorCode = env->has_error_code;
-+            vcxt.values[idx].PendingInterruption.ErrorCode = env->error_code;
-+            if (env->exception_is_int) {
-+                vcxt.values[idx].PendingInterruption.InterruptionType = WHvX64PendingInterrupt;
-+            } else if (env->nmi_pending) {
-+                vcxt.values[idx].PendingInterruption.InterruptionType = WHvX64PendingNmi;
-+            } else {
-+                vcxt.values[idx].PendingInterruption.InterruptionType = WHvX64PendingException;
-+            }
-+        }
-+        idx++;
-+
-+        assert(whpx_register_names[idx] == WHvRegisterPendingEvent);
-+        if (whpx_irqchip_in_kernel() &&
-+            env->exception_pending) {
-+            if (!env->exception_is_int) {
-+                vcxt.values[idx].ExceptionEvent.EventPending = 1;
-+                vcxt.values[idx].ExceptionEvent.EventType =
-+                    WHvX64PendingEventException;
-+                vcxt.values[idx].ExceptionEvent.Vector = env->exception_nr;
-+                vcxt.values[idx].ExceptionEvent.DeliverErrorCode
-+                    = env->has_error_code;
-+                vcxt.values[idx].ExceptionEvent.ErrorCode = env->error_code;
-+                vcxt.values[idx].ExceptionEvent.ExceptionParameter =
-+                    env->exception_payload;
-+            } else if (vcxt.values[idx].ExtIntEvent.EventType
-+                == WHvX64PendingEventExtInt) {
-+                vcxt.values[idx].ExtIntEvent.EventPending = 1;
-+                vcxt.values[idx].ExtIntEvent.Vector = env->exception_nr;
-+            }  else {
-+                abort();
-+            }
-+        }
-+        idx++;
+     return 0;
  
-         assert(idx == RTL_NUMBER_OF(whpx_register_names));
+ error:
+diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
+index 2d83291fae..34d5d57ad2 100644
+--- a/target/i386/whpx/whpx-apic.c
++++ b/target/i386/whpx/whpx-apic.c
+@@ -13,12 +13,32 @@
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
+ #include "cpu.h"
++#include "migration/vmstate.h"
+ #include "hw/i386/apic_internal.h"
+ #include "hw/i386/apic-msidef.h"
+ #include "hw/pci/msi.h"
+ #include "system/hw_accel.h"
+ #include "system/whpx.h"
+ #include "system/whpx-internal.h"
++#include "target/i386/whpx/whpx-i386.h"
++#include "hw/hyperv/hvgdk_mini.h"
++#include "qemu/memalign.h"
++
++typedef struct hv_local_interrupt_controller_state
++               hv_local_interrupt_controller_state;
++
++struct MshvAPICState {
++    APICCommonState parent_obj;
++
++    uint32_t apic_version;
++    uint32_t apic_lvt_cmci;
++    uint32_t apic_error_status;
++    uint32_t apic_counter_value;
++    uint32_t apic_remote_read;
++};
++
++#define TYPE_MSHV_APIC "whpx-apic"
++OBJECT_DECLARE_SIMPLE_TYPE(MshvAPICState, MSHV_APIC)
+ 
+ struct whpx_lapic_state {
+     struct {
+@@ -27,7 +47,106 @@ struct whpx_lapic_state {
+     } fields[256];
+ };
+ 
+-static void whpx_put_apic_state(APICCommonState *s,
++static void populate_hv_lapic_state(hv_local_interrupt_controller_state *hv,
++                                    const CPUState *cpu)
++{
++    uint32_t x2apic_id;
++    X86CPU *x86cpu = X86_CPU(cpu);
++    MshvAPICState *ms = MSHV_APIC(x86cpu->apic_state);
++    APICCommonState *s = &ms->parent_obj;
++    size_t i;
++
++    /*
++     * x2APIC:
++     * - APIC ID is the full 32-bit initial_apic_id
++     * - LDR is read-only, architecturally derived from the ID
++     * - DFR does not exist in x2APIC mode
++     */
++    if (is_x2apic_mode(s)) {
++        x2apic_id = s->initial_apic_id;
++
++        hv->apic_id  = x2apic_id;
++        hv->apic_ldr = ((x2apic_id >> 4) << 16) | (1 << (x2apic_id & 0xf));
++        hv->apic_dfr = 0;
++    } else {
++        hv->apic_id  = s->id << 24;
++        hv->apic_ldr = s->log_dest << 24;
++        hv->apic_dfr = s->dest_mode << 28 | 0x0fffffff;
++    }
++    hv->apic_version = ms->apic_version;
++    hv->apic_spurious = s->spurious_vec;
++    for (i = 0; i < 8; i++) {
++        hv->apic_isr[i] = s->isr[i];
++        hv->apic_tmr[i] = s->tmr[i];
++        hv->apic_irr[i] = s->irr[i];
++    }
++    hv->apic_esr      = s->esr;
++    hv->apic_icr_high = s->icr[1];
++    hv->apic_icr_low  = s->icr[0];
++
++    hv->apic_lvt_timer   = s->lvt[APIC_LVT_TIMER];
++    hv->apic_lvt_thermal = s->lvt[APIC_LVT_THERMAL];
++    hv->apic_lvt_perfmon = s->lvt[APIC_LVT_PERFORM];
++    hv->apic_lvt_lint0   = s->lvt[APIC_LVT_LINT0];
++    hv->apic_lvt_lint1   = s->lvt[APIC_LVT_LINT1];
++    hv->apic_lvt_error   = s->lvt[APIC_LVT_ERROR];
++    hv->apic_lvt_cmci    = ms->apic_lvt_cmci;
++
++    hv->apic_error_status         = ms->apic_error_status;
++    hv->apic_initial_count        = s->initial_count;
++    hv->apic_counter_value        = ms->apic_counter_value;
++    hv->apic_divide_configuration = s->divide_conf;
++    hv->apic_remote_read          = ms->apic_remote_read;
++}
++
++static void populate_apic_state(CPUState *cpu,
++                                const hv_local_interrupt_controller_state *hv)
++{
++    X86CPU *x86cpu = X86_CPU(cpu);
++    MshvAPICState *ms = MSHV_APIC(x86cpu->apic_state);
++    APICCommonState *s = &ms->parent_obj;
++    size_t i;
++
++    /*
++     * x2APIC:
++     * - APIC ID is the full 32-bit initial_apic_id
++     * - LDR is read-only, architecturally derived from the ID
++     * - DFR does not exist in x2APIC mode
++     */
++    if (is_x2apic_mode(s)) {
++        s->initial_apic_id = hv->apic_id;
++    } else {
++        s->id        = hv->apic_id  >> 24;
++        s->log_dest  = hv->apic_ldr >> 24;
++        s->dest_mode = hv->apic_dfr >> 28;
++    }
++    ms->apic_version = hv->apic_version;
++    s->spurious_vec = hv->apic_spurious;
++    for (i = 0; i < 8; i++) {
++        s->isr[i] = hv->apic_isr[i];
++        s->tmr[i] = hv->apic_tmr[i];
++        s->irr[i] = hv->apic_irr[i];
++    }
++    s->esr = hv->apic_esr;
++    s->icr[1] = hv->apic_icr_high;
++    s->icr[0] = hv->apic_icr_low;
++
++    s->lvt[APIC_LVT_TIMER]   = hv->apic_lvt_timer;
++    s->lvt[APIC_LVT_THERMAL] = hv->apic_lvt_thermal;
++    s->lvt[APIC_LVT_PERFORM] = hv->apic_lvt_perfmon;
++    s->lvt[APIC_LVT_LINT0]   = hv->apic_lvt_lint0;
++    s->lvt[APIC_LVT_LINT1]   = hv->apic_lvt_lint1;
++    s->lvt[APIC_LVT_ERROR]   = hv->apic_lvt_error;
++    ms->apic_lvt_cmci        = hv->apic_lvt_cmci;
++
++    ms->apic_error_status  = hv->apic_error_status;
++    s->initial_count       = hv->apic_initial_count;
++    ms->apic_counter_value = hv->apic_counter_value;
++    s->divide_conf         = hv->apic_divide_configuration;
++    ms->apic_remote_read   = hv->apic_remote_read;
++}
++
++static void whpx_put_apic_state_legacy(APICCommonState *s,
+                                 struct whpx_lapic_state *kapic)
+ {
+     int i;
+@@ -60,7 +179,7 @@ static void whpx_put_apic_state(APICCommonState *s,
+     kapic->fields[0x3e].data = s->divide_conf;
+ }
+ 
+-static void whpx_get_apic_state(APICCommonState *s,
++static void whpx_get_apic_state_legacy(APICCommonState *s,
+                                 struct whpx_lapic_state *kapic)
+ {
+     int i, v;
+@@ -197,14 +316,14 @@ static void whpx_apic_vapic_base_update(APICCommonState *s)
+     /* not implemented yet */
+ }
+ 
+-static void whpx_apic_put(CPUState *cs, run_on_cpu_data data)
++static void whpx_apic_put_legacy(CPUState *cs, run_on_cpu_data data)
+ {
+     APICCommonState *s = data.host_ptr;
+     struct whpx_lapic_state kapic;
+     HRESULT hr;
+ 
+     whpx_put_apic_base(CPU(s->cpu), s->apicbase);
+-    whpx_put_apic_state(s, &kapic);
++    whpx_put_apic_state_legacy(s, &kapic);
+ 
+     hr = whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2(
+         whpx_global.partition,
+@@ -220,7 +339,7 @@ static void whpx_apic_put(CPUState *cs, run_on_cpu_data data)
      }
-@@ -1091,7 +1132,64 @@ void whpx_get_registers(CPUState *cpu, WHPXStateLevel level)
-     assert(whpx_register_names[idx] == WHvX64RegisterDr7);
-     env->dr[7] = vcxt.values[idx++].Reg64;
+ }
  
--    /* Interrupt / Event Registers - Skipped */
-+    /* Interrupt / Event Registers */
-+
-+    assert(whpx_register_names[idx] == WHvRegisterPendingInterruption);
-+    if (!whpx_irqchip_in_kernel() &&
-+        vcxt.values[idx].PendingInterruption.InterruptionPending) {
-+        env->exception_pending = 1;
-+        env->exception_nr = 
-+            vcxt.values[idx].PendingInterruption.InterruptionVector;
-+        env->has_error_code =
-+            vcxt.values[idx].PendingInterruption.DeliverErrorCode;
-+        env->error_code =
-+            vcxt.values[idx].PendingInterruption.ErrorCode;
-+        if (vcxt.values[idx].PendingInterruption.InterruptionType
-+            == WHvX64PendingInterrupt) {
-+            env->exception_is_int = 1;
-+            env->nmi_pending = 0;
-+        } else if (vcxt.values[idx].PendingInterruption.InterruptionType
-+            == WHvX64PendingNmi) {
-+            env->exception_is_int = 0;
-+            env->nmi_pending = 1;
-+        } else if (vcxt.values[idx].PendingInterruption.InterruptionType
-+            == WHvX64PendingException) {
-+            env->exception_is_int = 0;
-+            env->nmi_pending = 0;
-+        } else {
-+            abort();
-+        }
-+    }
-+    idx++;
-+
-+    assert(whpx_register_names[idx] == WHvRegisterPendingEvent);
-+    if (whpx_irqchip_in_kernel() &&
-+        vcxt.values[idx].ExceptionEvent.EventPending) {
-+        if (vcxt.values[idx].ExceptionEvent.EventType
-+            == WHvX64PendingEventException) {
-+            env->exception_pending = 1;
-+            env->exception_nr =
-+                vcxt.values[idx].ExceptionEvent.Vector;
-+            env->has_error_code = 
-+                vcxt.values[idx].ExceptionEvent.DeliverErrorCode;
-+            env->error_code =
-+                vcxt.values[idx].ExceptionEvent.ErrorCode;
-+            env->exception_payload =
-+                vcxt.values[idx].ExceptionEvent.ExceptionParameter;
-+            env->exception_is_int = 0;
-+            env->nmi_pending = 0;
-+        } else if (vcxt.values[idx].ExtIntEvent.EventType
-+            == WHvX64PendingEventExtInt) {
-+            env->exception_pending = 1;
-+            env->exception_is_int = 1;
-+            env->nmi_pending = 0;
-+            env->exception_nr = 
-+                vcxt.values[idx].ExtIntEvent.Vector;
-+        } else {
-+            abort();
-+        }
-+    }
-+    idx++;
+-void whpx_apic_get(APICCommonState *s)
++static void whpx_apic_get_legacy(APICCommonState *s)
+ {
+     CPUState *cpu = CPU(s->cpu);
+     struct whpx_lapic_state kapic;
+@@ -239,7 +358,78 @@ void whpx_apic_get(APICCommonState *s)
+         abort();
+     }
  
-     assert(idx == RTL_NUMBER_OF(whpx_register_names));
+-    whpx_get_apic_state(s, &kapic);
++    whpx_get_apic_state_legacy(s, &kapic);
++}
++
++static void whpx_apic_put(CPUState *cs, run_on_cpu_data data)
++{
++    MshvAPICState *s = data.host_ptr;
++    struct hv_local_interrupt_controller_state kapic;
++    HRESULT hr;
++    /* buffer aligned to 4k, as *state requires that */
++    void *buffer;
++    size_t size = 4096;
++
++    if (!whp_dispatch.WHvSetVirtualProcessorState) {
++        return whpx_apic_put_legacy(cs, data);
++    }
++
++    buffer = qemu_memalign(size, size);
++    whpx_put_apic_base(CPU(s->parent_obj.cpu), s->parent_obj.apicbase);
++    populate_hv_lapic_state(&kapic, cs);
++    memcpy(buffer, &kapic, sizeof(kapic));
++
++    hr = whp_dispatch.WHvSetVirtualProcessorState(
++            whpx_global.partition,
++            cs->cpu_index,
++            WHvVirtualProcessorStateTypeInterruptControllerState2,
++            buffer,
++            size);
++
++    qemu_vfree(buffer);
++    if (FAILED(hr)) {
++        fprintf(stderr,
++            "WHvSetVirtualProcessorState failed: %08lx\n",
++             hr);
++
++        abort();
++    }
++}
++
++void whpx_apic_get(APICCommonState *s)
++{
++    CPUState *cpu = CPU(s->cpu);
++    struct hv_local_interrupt_controller_state kapic;
++    HRESULT hr;
++    /* buffer aligned to 4k, as *state requires that */
++    void *buffer;
++    size_t size = 4096;
++
++    if (!whp_dispatch.WHvSetVirtualProcessorState) {
++        return whpx_apic_get_legacy(s);
++    }
++
++    buffer = qemu_memalign(size, size);
++
++    hr = whp_dispatch.WHvGetVirtualProcessorState(
++        whpx_global.partition,
++        cpu->cpu_index,
++        WHvVirtualProcessorStateTypeInterruptControllerState2,
++        buffer,
++        size,
++        NULL);
++
++    if (FAILED(hr)) {
++        fprintf(stderr,
++            "WHvGetVirtualProcessorState failed: %08lx\n",
++            hr);
++
++        abort();
++    }
++
++    memcpy(&kapic, buffer, sizeof(kapic));
++    qemu_vfree(buffer);
++    populate_apic_state(cpu, &kapic);
+ }
+ 
+ static void whpx_apic_pre_save(APICCommonState *s)
+@@ -306,6 +496,59 @@ static void whpx_apic_mem_write(void *opaque, hwaddr addr,
+     whpx_send_msi(&msg);
+ }
+ 
++static uint32_t set_apic_delivery_mode(uint32_t reg, uint32_t mode)
++{
++    return ((reg) & ~0x700) | ((mode) << 8);
++}
++
++int whpx_apic_init_cpu(CPUState *cpu)
++{
++    uint32_t *lvt_lint0, *lvt_lint1;
++    HRESULT hr;
++    struct hv_local_interrupt_controller_state lapic_state = { 0 };
++    /* buffer aligned to 4k, as *state requires that */
++    void *buffer;
++    size_t size = 4096;
++
++    buffer = qemu_memalign(size, size);
++    hr = whp_dispatch.WHvGetVirtualProcessorState(
++        whpx_global.partition,
++        cpu->cpu_index,
++        WHvVirtualProcessorStateTypeInterruptControllerState2,
++        buffer,
++        size,
++        NULL);
++    if (FAILED(hr)) {
++        return hr;
++    }
++
++    memcpy(&lapic_state, buffer, sizeof(lapic_state));
++
++    lvt_lint0 = &lapic_state.apic_lvt_lint0;
++    *lvt_lint0 = set_apic_delivery_mode(*lvt_lint0, APIC_DM_EXTINT);
++
++    lvt_lint1 = &lapic_state.apic_lvt_lint1;
++    *lvt_lint1 = set_apic_delivery_mode(*lvt_lint1, APIC_DM_NMI);
++
++    /* TODO: should we skip setting lapic if the values are the same? */
++
++    memcpy(buffer, &lapic_state, sizeof(lapic_state));
++    hr = whp_dispatch.WHvSetVirtualProcessorState(
++            whpx_global.partition,
++            cpu->cpu_index,
++            WHvVirtualProcessorStateTypeInterruptControllerState2,
++            buffer,
++            size);
++    if (FAILED(hr)) {
++        return hr;
++    }
++
++    qemu_vfree(buffer);
++    populate_apic_state(cpu, &lapic_state);
++
++    return 0;
++}
++
+ static const MemoryRegionOps whpx_apic_io_ops = {
+     .read = whpx_apic_mem_read,
+     .write = whpx_apic_mem_write,
+@@ -324,14 +567,51 @@ static void whpx_apic_reset(APICCommonState *s)
+     run_on_cpu(CPU(s->cpu), whpx_apic_put, RUN_ON_CPU_HOST_PTR(s));
+ }
+ 
++static const VMStateDescription vmstate_mshv_apic = {
++    .name = "mshv-apic",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(apic_version, MshvAPICState),
++        VMSTATE_UINT32(apic_lvt_cmci, MshvAPICState),
++        VMSTATE_UINT32(apic_error_status, MshvAPICState),
++        VMSTATE_UINT32(apic_counter_value, MshvAPICState),
++        VMSTATE_UINT32(apic_remote_read, MshvAPICState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static void whpx_apic_realize(DeviceState *dev, Error **errp)
+ {
+     APICCommonState *s = APIC_COMMON(dev);
++    MshvAPICState *ms = MSHV_APIC(dev);
+ 
+     memory_region_init_io(&s->io_memory, OBJECT(s), &whpx_apic_io_ops, s,
+                           "whpx-apic-msi", APIC_SPACE_SIZE);
+ 
+     msi_nonbroken = true;
++
++    /*
++     * We register this state explicity, rather than going via dc->vmsd.
++     * The auto-wiring would register the state with
++     * instance_id == VMSTATE_INSTANCE_ID_ANY, which for the APIC doesn't
++     * work, b/c the ID carries semantic meaning for restoring the state
++     * on the destination (which vcpu it belongs to).
++     */
++    if (!!whp_dispatch.WHvSetVirtualProcessorState) {
++        vmstate_register_with_alias_id(NULL,
++                                   s->initial_apic_id, &vmstate_mshv_apic, ms,
++                                   -1, 0, NULL);
++    }
++}
++
++static void whpx_apic_unrealize(DeviceState *dev)
++{
++    MshvAPICState *ms = MSHV_APIC(dev);
++
++    if (!!whp_dispatch.WHvSetVirtualProcessorState) {
++        vmstate_unregister(NULL, &vmstate_mshv_apic, ms);
++    }
+ }
+ 
+ static void whpx_apic_class_init(ObjectClass *klass, const void *data)
+@@ -339,6 +619,7 @@ static void whpx_apic_class_init(ObjectClass *klass, const void *data)
+     APICCommonClass *k = APIC_COMMON_CLASS(klass);
+ 
+     k->realize = whpx_apic_realize;
++    k->unrealize = whpx_apic_unrealize;
+     k->reset = whpx_apic_reset;
+     k->set_base = apic_set_base;
+     k->set_tpr = whpx_apic_set_tpr;
+@@ -351,9 +632,9 @@ static void whpx_apic_class_init(ObjectClass *klass, const void *data)
+ }
+ 
+ static const TypeInfo whpx_apic_info = {
+-    .name = "whpx-apic",
++    .name = TYPE_MSHV_APIC,
+     .parent = TYPE_APIC_COMMON,
+-    .instance_size = sizeof(APICCommonState),
++    .instance_size = sizeof(MshvAPICState),
+     .class_init = whpx_apic_class_init,
+ };
  
 -- 
 2.54.0 (Apple Git-157)

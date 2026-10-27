@@ -1,152 +1,157 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A0381606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 03:19:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CC7D2606A31F
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 03:28:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=gCt8NnDn;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=hhGAh0we
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=NudZLS6B;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=B1UCI28f
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLXhw-0008AY-Hm; Mon, 26 Oct 2026 23:18:40 -0400
+	id 1xLXr7-0001Hc-Uu; Mon, 26 Oct 2026 23:28:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xLXhs-00089u-R8
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 23:18:38 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1xLXqz-0001E3-EC
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 23:28:02 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xLXhq-0007VT-SR
- for qemu-arm@nongnu.org; Mon, 26 Oct 2026 23:18:36 -0400
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ id 1xLXqx-0008Et-3d
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2026 23:28:01 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69R2F2VS512025
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 03:18:32 GMT
+ 69R2EuvW1919880
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 03:27:57 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Yx5bXM/cYo5UbS6BHzv1XuuXF1QAiMID1ROVIcNS/KU=; b=gCt8NnDnTMMaYXvT
- B24Lj7rECvSrveTp7MJNjXlTTMwi/HqW7iRHQtC5nJYY6YT09ubB9p3gQvOrW9eW
- Cyb2yS07RKs12hhNRE0DI6zJOYNuAZnS5/dG5+WwCHxgVaaZy1GfWhKrBbrnWWlg
- tT6wcbJ0oW0jz2t8Uh0+t0icQMRQtgxJDrFx1ZAG829Igd7C1B17+IG7vtN9gas6
- cvKHUG9VbPo8YRMUuL2OtW6i01zIgf9ZG68CBReaVShyvzp68OneXVc2hFiWKSBl
- nioIXwL4ttZrzAaRBSfdbbcNv71/HeVyWSWpojL+pudtvHUkkGwmOEOTVyxuCQxm
- Tqdnbg==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hj4cpbk4h-1
+ HfauI7IDRHbRZ4xDWKKzDooNPXhq6NTKM72+HCBV3e8=; b=NudZLS6BDe6eqoER
+ wWeTlzvWLNprCLt6RB+YzoTjvCtFHN+qf8g0VricpAy1aps04tZlIsLbuLI8ExJr
+ o41GKCBJgPciyQu5eeCphVKfRlVHfXC1938ZWsRknWLo738gfVCPEFyWF3Yd4j6b
+ P71j9W+t7DddpV187dAUf/IbHIF7ZONWH/1SGL6IzZP1Yg4gNZO5ov3x5HAzCakq
+ AGC++ZBEvAko6x3kr/VvZDTM/3foFPokaLgVwthUrhiu0Pq3dT8lzasuARVRg5/C
+ C/Xx7cFiVbMtqfDaf5D2/OQyECSkj66UgspWQ6fowcBF5ip6abruCVZc+THdmXw3
+ sa2PKQ==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hjh918h2j-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 03:18:32 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-93e49a1d3b1so557805285a.2
- for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 20:18:32 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 03:27:57 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-93cb71b1443so825869585a.2
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2026 20:27:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793071112; x=1793675912; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1793071676; x=1793676476; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=Yx5bXM/cYo5UbS6BHzv1XuuXF1QAiMID1ROVIcNS/KU=;
- b=hhGAh0weYtylWDyAd4V4M7/RPzdjBUIk3dwtfI1Rtg2aKf3Snw0d1F9knRqm1HM+vy
- zVxQN3mCo1qFANb1I51vq2ZYOdBQLzkOvHxVAlVpkYCgVx/Nyadc2udbUdMBKMP7WYfV
- EI3x9Dy1glu+Lch5ssLucWZBaaytrUTLe3bN62Eah20AaUh0RmH9dGQMNes6akmC1HPG
- ab67C0x0YRPuDYSSbi3S9BdbuBkWKxkKIUTzSSDsTdfOfY7DZOeE3CYZUplcNtzqCEsN
- L0lRwfv6OkiBTiRuNgWBzt9dk0Cl1AgDKjGBH17gdOvS2sYCpqtHWEc60Ts5oCfR4GTY
- SaeA==
+ bh=HfauI7IDRHbRZ4xDWKKzDooNPXhq6NTKM72+HCBV3e8=;
+ b=B1UCI28faY0GaVVUIaEUvmIKzUujOwUFYvyznAI1dmeHCcatmUIbU4/8/uBUmWXe9J
+ K65nHvH7+hjRAfqFb6nE0r7nlzy6a38DY/9EvThUo8Utgk2HNYv2TIkHEllWSL2z7YqV
+ 4xp6wTTOkd+WsuQQvHqi5nwHYFEuYVejjnJW5MsTVuI92DssIL+XdZNZQEOjl2pXWzxq
+ HPffQieuFoC7lqhqlOoKdIP4TGz3gvTIwg+8e/Q/GDQ53YpoQS8nINRJa1N1HcsWot9Z
+ ghDwMeDjFnDewBXnMJ6dtdR9jZHThvBUpFX+FltZy+uPuBfFVmArU953D11IOE4a0KGD
+ Ltzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793071112; x=1793675912;
+ d=1e100.net; s=20260707; t=1793071676; x=1793676476;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Yx5bXM/cYo5UbS6BHzv1XuuXF1QAiMID1ROVIcNS/KU=;
- b=G2bBetp1P/S/CTEDUFnoshnzO0gNPMkYawGWqd7hfTpT6vvZ7ZAK/28tGmx473KRDg
- BnAzBUgGKb81uoB3kuWSHz/v7M/yrxl8x3kFdKiYkUb5lCyK+hlW9aJLiVm0tzKJQ4xq
- l0Qnjv4sxvyJjdpFI6z1ECE4lCn1Ywib9bWfcBdhvxOTP3OLv1qds9H/c2glwhO4HIDp
- Xotozo5LZLnIRzw2645MnrvrlIzaUPCWnwHCs1Ct3COPwyUeaLj4pHnkOPfrub5RMLEW
- Yru8jFl6jUFQJzK8ubZHLBy7Q/qd77xyX2O7Kqbd4jCD2+c8S0iVDR4+aOnI7Wtnhbgk
- CuZA==
+ bh=HfauI7IDRHbRZ4xDWKKzDooNPXhq6NTKM72+HCBV3e8=;
+ b=ANvhENByjDJjHmOHDbfxww0z52ztns2bZ1QCF5x5wLwnEJkPNYydnmuzSdMd1tyqrr
+ PfF31AXTenTbHTGPzbIAt60kRGPG7AV8Jl0qczm8l97e0LzL0iFiEF82Ar+gNvpbrM7N
+ GyZu42pIExd3TvLYwn96ldc8sEqLo45tJXlP+P9w3SqC7/F5IQuMmT/xncUc9LzKOJkH
+ idlYQrCOqO+V/q8gXToZTIwZAwnBwBfcZuT20ICNg71KVKPhUjK4yRXpyvf9LF+8dSX7
+ MvPjtR3Sch4CEJBEi7mTIQDkyxn3Oifsowk/suH/LYUesbEOkuniN5axu7V0XHVMGJF0
+ 8v5Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwXTq+2s3pmkt4VPvGgGjcyA20vvbJsVs9WSM7VQrDnVjxsWp7m2Tk0E1Dg+BZ94HWFCaABYBRMmA==@nongnu.org
-X-Gm-Message-State: AFq9FYI0r6ixfoH9aTsEMXk9pw0VR4lu/nuCu9+LJjvJSo699rR5eI0C
- AF6TbJYe6Cy1/S2Fc5gHxMhGHBl8VO5zWGBWU5kyAgnVOrQIaEghudiTHiF/Hv5c/WvzzyI7B2V
- ATAKE14YFfAX/fZ6tK/iUKJM7ztvEno0SyJcnrrzr6ZQZdPjKY3rYX1g=
-X-Gm-Gg: AYBFou3iKxhCSzCww9tVZTZh2M/8NgYBC5EFKkwrT0TNjAWO4O9hMN/GGzSEbB7lZ3p
- 1DxePUjIkfyDiv1Cm7M+wQyHa8+aUHnc6XqqUKI17XzPqvbJiclM8d2HYibYAe5NFrnilUqKHgo
- B6PcmQomntambMB2MTXkvl87AhzV7g1JveNEWgd/PNtGSTGqNzvw5m1K+yDYX9PjlasMpQByNWZ
- Fs9eucjpyquQH2pGnfO/PevpREz9t+Lfp6zeeFaIHkq9tXHtim1VbyuH6hlLNKJFqhfWIvholoc
- cE7OOZFuI/A79YyKGsA/DdEdR6E6M7+2jWp6pMg2WiJOc4ZoY4nOZIfGI54FKiShFDUyPOW+v0S
- pmz0zJB7feiXx4y4ui6z57CeHiCJ040GYuW8Nea+x5OZnzJ/knO+wgGA6yjk2cNMxDC3j00XdJs
- U5SfRn/Lk=
-X-Received: by 2002:a05:620a:2629:b0:93f:dea:3b7e with SMTP id
- af79cd13be357-940ef8aed26mr1280285485a.24.1793071111802; 
- Mon, 26 Oct 2026 20:18:31 -0700 (PDT)
-X-Received: by 2002:a05:620a:2629:b0:93f:dea:3b7e with SMTP id
- af79cd13be357-940ef8aed26mr1280284185a.24.1793071111379; 
- Mon, 26 Oct 2026 20:18:31 -0700 (PDT)
+ AKwUvBy0c7OWkmfklO3lVzPktDravA5K79Csyc/ri8VtYU4fvIF0G7aXb2E4hkSzcDg+6seFm2mswshazw==@nongnu.org
+X-Gm-Message-State: AFq9FYKaloQJUPKFSvCiLG7en2dQVZhczzFILqlEnXNb6c8QUjYvpUHn
+ iiMRS14nR71RpFr55dR/CAkmLsY44vbOy20+dUl27UDObMf39k13hBFNUFugKzqnvgA6O937zQV
+ CRHRPt852EFkvsEB0hs/giTkpeVIbt1sM1DbxTaB16x2Lu05qO7rgHqs=
+X-Gm-Gg: AYBFou0JYeKy2h26LMTCNqxcVmzrXk1UyOJGzErfUm3qCIgEVBq9qaD+LznbLoBkq8K
+ rc2Xl464Zmo1CoWJuFmIJZ/JwbZkikUi/uibHwcr5YIXmnJmA0DwJWZuUdMCTYTYogJTk+g7ZuY
+ aZaFCOyQYYvyIKBGcZjczK7FPbLoX3G/f6FEuaRXjsUzMQZ1WSLWG+5c/WDJE3tK2cXIsaRtyJm
+ U2byAoRz2E7KsHay+vCN2LXQR87qP/e3DByfNrDMJCiZenswxm+NsZ5+wm3RlXn6eJgaRX7EgfC
+ IUBrHyz7d3B+vjDPM4Xs5N2AekD/oHyJ2r8crnsccVhmn+BHEZzQJivwQDgg0MRLyRg9s1RPFgL
+ uuY3/5wq97+Un8Y+mLsoU+6lgO2R6chT6Xw==
+X-Received: by 2002:a05:620a:6286:b0:93e:6f65:de63 with SMTP id
+ af79cd13be357-940ef8f8310mr1414932185a.47.1793071676305; 
+ Mon, 26 Oct 2026 20:27:56 -0700 (PDT)
+X-Received: by 2002:a05:620a:6286:b0:93e:6f65:de63 with SMTP id
+ af79cd13be357-940ef8f8310mr1414928985a.47.1793071675833; 
+ Mon, 26 Oct 2026 20:27:55 -0700 (PDT)
 Received: from [192.168.69.230] (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a35a30e11bsm279550675e9.1.2026.10.26.20.18.29
+ ffacd0b85a97d-48e3ebc3c5bsm20654109f8f.9.2026.10.26.20.27.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Oct 2026 20:18:29 -0700 (PDT)
-Message-ID: <931bee05-0c8e-4aca-b7cd-fe53fe5d1749@oss.qualcomm.com>
-Date: Tue, 27 Oct 2026 04:18:28 +0100
+ Mon, 26 Oct 2026 20:27:54 -0700 (PDT)
+Message-ID: <29193611-9483-4353-8c17-b295a896e34f@oss.qualcomm.com>
+Date: Tue, 27 Oct 2026 04:27:52 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/6] hw/i2c/aspeed: fix BUSY status reading in new
- register mode
+Subject: Re: [PATCH v1 02/14] hw/ssi/aspeed_smc: Fix AST2700 DMA flash address
+ mask
 Content-Language: en-US
-To: Timur Maksimov <gessingate@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Kane Chen <kane_chen@aspeedtech.com>, qemu-arm@nongnu.org,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
-References: <20261027-aspeed-i2c-nonpkt-fix-v1-0-076cdde514f8@gmail.com>
- <20261027-aspeed-i2c-nonpkt-fix-v1-5-076cdde514f8@gmail.com>
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20261015055642.106204-1-jamin_lin@aspeedtech.com>
+ <20261015055642.106204-3-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v1-5-076cdde514f8@gmail.com>
+In-Reply-To: <20261015055642.106204-3-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI3MDAxMiBTYWx0ZWRfXzLb4UpNungmm
- /XH5kKLAPkV19cDGpTkkUnf9tL7zqlRDOQZYjJW8KZ9zVBk4PQKlScn9EJe2cR1dzCqJuiplwZ4
- 5AYm6n7FcXZK5NTv6CevNEcW06T8Gi+Zn1QSn7s31KV0hNXXTNCQefJvnSva81MqBiHBkX/vIAL
- xvL7M+KcfMgQRkBN+UDzBMLAnXwy14K9YesjxW/uPEwXcg5EEb3cqRAYu/Y/NCjLJmHenbZ7Aud
- Lb9Aa6RDpQ5wIkkTqXVYcJK186jUhFUEWSdAhbIj5IfSuGNdub56UL/P6zI3gTt/m2JGED2fRjI
- EcG/CcZPbTF9GgrRM8rZDxQh/4ZDg5/9xzUtvl4LC5/JVrIQlyetedq2gN8sPQgF3X+JedM4OTj
- lVc6waXo8qBmoIaf05nWUugzCt+HcTbUPH9v7w0xj1Cg5HxhlUr39N+VS/da5XEjRom+Yj3Tmo1
- ZExu6gqoxaAZJl40HMA==
-X-Proofpoint-GUID: L5dssTZcTn8IRHMcaVBV5bw2sZ-qiY6Y
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI3MDAxMiBTYWx0ZWRfX0KESs9GE+V5Z
- h9HhSUUWit1gPKVjYZFuvL2e+57VNvW26yx45RerALULJc3VXCPpRTxic0uPRgrrzqR/sCXgAg/
- WEH5aLBCQoFHSuAqmDpxCzLBiS/2/SU=
-X-Proofpoint-ORIG-GUID: L5dssTZcTn8IRHMcaVBV5bw2sZ-qiY6Y
-X-Authority-Analysis: v=2.4 cv=TboDJhQh c=1 sm=1 tr=0 ts=6ae01808 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-ORIG-GUID: Riog0euJsAWvdyK2vtrvwdx48kZA3k1h
+X-Proofpoint-GUID: Riog0euJsAWvdyK2vtrvwdx48kZA3k1h
+X-Authority-Analysis: v=2.4 cv=TuxzFzXh c=1 sm=1 tr=0 ts=6ae01a3d cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=9v4L6AuQKO0o8pUoPmMA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=9vyheZCN1ONZMrlOZ-EA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22 a=3L6qF29SlnrayQqPM2jZ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI3MDAxMyBTYWx0ZWRfX/XoxfvFDNB+x
+ zo4XStYIl+M80icfW093bZv3zle/UBlXholT4r0hCzq29iH38FiXaKi8XOJVB9A2WBKBFEuJc5h
+ uooeqzMrfhaQJRe3FAyQ0xflX1OSKFnMUmenGtOUhhyEqvxbNhbfNKrvqcwkrnYvyg0JSR9s02X
+ oiQNaY49jsJ25tabrpROZquGYBLOgIU/J1wjUjeZpFB/N/53flddR7eiPx2lS6L2Eet2AI8p/KA
+ PMAuzEm8psSGCg/UEkIKxLYybV5Lg84T+cIz1FpEGdgxG5XGQfRh0IiMegLVqjVFDsXKHsyNP/6
+ L/DwYCXm/N/lwaA5pn84qBkUe6uk3JB3z2WHTRYgJxkdwpJL1VpAyLbttVyVGzgtCeqsy3kOhrp
+ jbH2tamEt1LkuUhw8PXyZtKpU3aJAuw/EH9/uEDQjrDSvyQp2u8HmchR2Bdx3tzNDLRHoaXEP3k
+ Qz3ISKR2DLkegMAAXaA==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI3MDAxMyBTYWx0ZWRfXx4TzrygsNqo9
+ CfnRvn/ovPw0KM7BtQKrFSt/xJzfAVDSY0gTcZ1u7mH8csWMNaz2LaXXrG2eh6doLlJxZTWc7k9
+ hE33mgVNWlzGBZYItPDgqRH0u6drEu4=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-10-27_01,2026-10-21_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 priorityscore=1501 impostorscore=0 lowpriorityscore=0
- spamscore=0 clxscore=1015 adultscore=0 malwarescore=0 suspectscore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
- definitions=main-2610270012
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ clxscore=1015 malwarescore=0 spamscore=0 priorityscore=1501 bulkscore=0
+ adultscore=0 suspectscore=0 lowpriorityscore=0 impostorscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610270013
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -166,61 +171,28 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Timur,
-
-On 26/10/26 22:28, Timur Maksimov wrote:
-> The BUSY status is moved to I2CC_MS_TXRX_BYTE_BUF register instead of I2CM_CMD in new register mode.
-
-Slighly clearer:
-
-   '''
-   In new register mode, BUS_BUSY_STS is bit 16 of I2CC_MS_TXRX_BYTE_BUF;
-   bit 16 of I2CM_CMD is PKT_OP_EN. Report the bus busy state in the
-   correct register.
-   '''
-
-Fixes: ba2cccd64e90 ("aspeed: i2c: Add new mode support")
-
-> Signed-off-by: Timur Maksimov gessingate@gmail.com
-
-Email goes withing angle brackets (same applies to other patches):
-
-Signed-off-by: Timur Maksimov <gessingate@gmail.com>
-
+On 15/10/26 07:56, Jamin Lin wrote:
+> The DMA flash address register (SPI084) holds the offset of the
+> flash access within the controller's flash window. The AST2700 FMC,
+> SPI0 and SPI1 controllers use a dma_flash_mask of 0x2FFFFFFC, which
+> clears bit 28, and SPI2 uses 0x0FFFFFFC, which limits DMA to the
+> first 256MB of the window.
+> 
+> With the default segment layout, FMC CS2 is mapped at offset
+> 0x10000000. A DMA read from that offset is masked to 0x0 and returns
+> data from CS0 instead of CS2.
+> 
+> The Linux driver programs SPI084 with the window offset masked by
+> 0x7fffffff, so bit 28 is a valid address bit.
+> 
+> Set dma_flash_mask to 0x3FFFFFFC for all AST2700 controllers to cover
+> the full 1GB flash window.
+> 
+> Fixes: bdb3748dba30 ("aspeed/smc: Add AST2700 support")
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/i2c/aspeed_i2c.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 376e113e58..a2b4c8b576 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -147,7 +147,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CC_POOL_CTRL:
->       case A_I2CM_INTR_CTRL:
->       case A_I2CM_INTR_STS:
-> -    case A_I2CC_MS_TXRX_BYTE_BUF:
-> +    case A_I2CM_CMD:
->       case A_I2CM_DMA_LEN:
->       case A_I2CM_DMA_TX_ADDR:
->       case A_I2CM_DMA_RX_ADDR:
-> @@ -167,7 +167,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CC_DMA_ADDR:
->           value = extract64(bus->dma_dram_offset, 0, 32);
->           break;
-> -    case A_I2CM_CMD:
-> +    case A_I2CC_MS_TXRX_BYTE_BUF:
->           value = bus->regs[offset / sizeof(*bus->regs)];
+>   hw/ssi/aspeed_smc.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
 
-This patch should be re-ordered before the #2 one IIUC,
-otherwise the fix is correct:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
->           value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
->           break;
-> 
-
-Thanks,
-
-Phil.
 

@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D7449606A31A
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 18:18:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7B20606A31A
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 18:20:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=VOtzyEFt
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=cZwTt5Z6
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLljS-0002nN-M2; Tue, 27 Oct 2026 14:17:10 -0400
+	id 1xLljD-0001XW-Ps; Tue, 27 Oct 2026 14:16:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xLli6-0008Vc-Or
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xLlhq-0008Ea-L6
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xLli3-0003gn-KN
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:46 -0400
+ id 1xLlho-0003bT-Jh
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 14:15:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793124942;
+ s=mimecast20190719; t=1793124927;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=buIH4vNJ8worC1Ayihr2YWFbS43gZwwGin2hAsqsREk=;
- b=VOtzyEFtzKrXYlzDeYF7GYoL+u9NHQCwsj2HgIxg2cXn1Wx5ySmHfi1PbEoPL7lb2ttn72
- uwhLQtxu16hVFLsJFLhT1YgOwEgDCquwccqYaZ4tCtH77Jq0vWTpJ6X3wyUiWn2xRwwuJP
- GkhxbKOLZuGqxZGzK/5TjL680ka+ly8=
+ bh=LUwBxGM3xjpChBFYaFDJkfG6EUPdlIElSL7fPYhzNRY=;
+ b=cZwTt5Z6K6hlAdPKKYqgTgkqgp3sUwRCAJmkpJxr+IcdiC8DnUoxyfTfkGGRifiWZkVA9O
+ Q1jem44Q3SJRwZeA2CnB0uIrzzP6g547vukYAeC7+YhA8QsO7z+zo7yOkjCHmMnNIAjZ6h
+ 8WcNXHiaL4lcG80q2WdKeqTBloqNn4A=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-cEwpYKv8NwSl2l1n83HM6Q-1; Tue,
- 27 Oct 2026 14:15:32 -0400
-X-MC-Unique: cEwpYKv8NwSl2l1n83HM6Q-1
-X-Mimecast-MFC-AGG-ID: cEwpYKv8NwSl2l1n83HM6Q_1793124928
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-161-zdO1gxORNhKJ7rxNn7TBjQ-1; Tue,
+ 27 Oct 2026 14:15:18 -0400
+X-MC-Unique: zdO1gxORNhKJ7rxNn7TBjQ-1
+X-Mimecast-MFC-AGG-ID: zdO1gxORNhKJ7rxNn7TBjQ_1793124913
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5AB521955F61; Tue, 27 Oct 2026 18:15:28 +0000 (UTC)
+ id 1E99B1955F00; Tue, 27 Oct 2026 18:15:13 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1369118002B1; Tue, 27 Oct 2026 18:15:20 +0000 (UTC)
+ id D0B1218002B1; Tue, 27 Oct 2026 18:15:05 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Stefano Stabellini <sstabellini@kernel.org>,
@@ -74,28 +74,27 @@ Cc: Stefano Stabellini <sstabellini@kernel.org>,
  kvm@vger.kernel.org, Alexander Graf <graf@amazon.com>,
  Song Gao <17746591750@163.com>, Eric Farman <farman@linux.ibm.com>,
  Cornelia Huck <cohuck@redhat.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH 10/11] accel/xen: mark xen accelerator as secure
-Date: Tue, 27 Oct 2026 18:13:59 +0000
-Message-ID: <20261027181400.1752951-11-berrange@redhat.com>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 08/11] hw/nitro: mark 'nitro' machine as secure
+Date: Tue, 27 Oct 2026 18:13:57 +0000
+Message-ID: <20261027181400.1752951-9-berrange@redhat.com>
 In-Reply-To: <20261027181400.1752951-1-berrange@redhat.com>
 References: <20261027181400.1752951-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: QjCRMKjUkOgaWuvQczm53FCOPiOVhGeK2AsWkioRclc_1793124928
+X-Mimecast-MFC-PROC-ID: sdPzIjfv2mxHOOoE11QC0sozQOf4GhYQ7lWbZye7rms_1793124913
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 5
 X-Spam_score: 0.5
 X-Spam_bar: /
 X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -116,27 +115,27 @@ X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Xen is servicing virtualization use cases which must provide security
-and actively maintained.
+Unlike the 'nitro-enclave' machine which provides emulation, the
+'nitro' machine is used with a real AWS deployment and thus is
+considered to be secure.
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- accel/xen/xen-all.c | 1 +
+ hw/nitro/machine.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/accel/xen/xen-all.c b/accel/xen/xen-all.c
-index bb2d02cb221..94f20e1d29a 100644
---- a/accel/xen/xen-all.c
-+++ b/accel/xen/xen-all.c
-@@ -147,6 +147,7 @@ static const TypeInfo xen_accel_type = {
-     .name = TYPE_XEN_ACCEL,
-     .parent = TYPE_ACCEL,
-     .class_init = xen_accel_class_init,
+diff --git a/hw/nitro/machine.c b/hw/nitro/machine.c
+index 88d01960a01..2e88e150c93 100644
+--- a/hw/nitro/machine.c
++++ b/hw/nitro/machine.c
+@@ -261,6 +261,7 @@ static const TypeInfo nitro_machine_info = {
+     .parent = TYPE_MACHINE,
+     .instance_size = sizeof(NitroMachineState),
+     .class_init = nitro_machine_class_init,
 +    .secure = true,
  };
  
- static void xen_accel_ops_class_init(ObjectClass *oc, const void *data)
+ static void nitro_machine_register(void)
 -- 
 2.56.0
 

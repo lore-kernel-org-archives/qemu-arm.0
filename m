@@ -1,111 +1,100 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4AE0C606A31B
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 11:17:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74103606A335
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 11:23:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=TA8+EEWU
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=rJo+nhqc
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLf7X-0003Wr-E8; Tue, 27 Oct 2026 07:13:35 -0400
+	id 1xLfGs-0004A3-EJ; Tue, 27 Oct 2026 07:23:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xLf7V-0003TS-9w
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:13:33 -0400
-Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xLfGp-00049c-Cc
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:23:11 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xLf7T-0002y5-Es
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:13:33 -0400
-Received: by mail-dy1-x132b.google.com with SMTP id
- 5a478bee46e88-36a17a332ecso414862eec.1
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 04:13:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xLfGn-0004AO-70
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:23:11 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-48dfdd0678dso2921210f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 04:23:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1793099610; x=1793704410; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ d=gmail.com; s=20251104; t=1793100187; x=1793704987; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=L55oApzfxuR3Cb3K6G8G98YWism0iXM6tBC3kMOjIJQ=;
- b=TA8+EEWUZK33Lgll4R69uhSpxejOeSrjwZrCqp3ZaSBZjPD+K59oz++36NZM7ABSSQ
- UAnv51tfitWWDMEaiC1x3mjBtma+Q4/5BM5mHPkHUTlX8RcgWdlzSum0uGNmgYK0nOWT
- 5jrCWcRAMXlt4SmSXC/uc9icoIQFlEOAGo2Q0RBHyMe1++a+9Qdz0RrL7qDObY13tEGx
- oR1juIb05NJXa+u5Y7vhi+Tejn5pfA77jhGiYuJxh09h91UQTfjJP2DqctpoNvlOPYXp
- tHaO73nMLfKnfEZuxgCqTiN6xmk9kb2JfVq8u2Rclgdr9YP66oEwfukRVthl3od93BvP
- m85A==
+ bh=UzdvnQE5DogPqm0HZi7myHTOzRWh4hSw+7JgGD38Zjs=;
+ b=rJo+nhqcreKZhG7Ou1JjaYwzveGAAl4yThXF4th15P6wICtJ5t7HZQ3SVmckSwHVFx
+ f4wJMO9jufqbW2Kig3ROjGlZZnbGc1HF2aBKKqlfGojBGvijvZ1oB5t9WWuAaexY77E0
+ yj3TcutkVhzZ1rWrRgXAExRal5liCil8n+kaes6W3boDKGfC8kQLARCw34XU2OLOm7NG
+ 6bHyJ+GCCfddqkqW1RJj5xu/DnRBNFDRo2ZTJ0ClHL5UgLzGwBFnEBoCaf70Zee6pvAE
+ ddGxENAwsnpIVkanX3R40GWrM8XwqJ9QgkwCr6xY2xCoSxLXKtbVr4/pvUOdp9GYuHDK
+ HEVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793099610; x=1793704410;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ d=1e100.net; s=20260707; t=1793100187; x=1793704987;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=L55oApzfxuR3Cb3K6G8G98YWism0iXM6tBC3kMOjIJQ=;
- b=CBDGpd6Xbom0A9a6TkT5li6vBjNlT8DPN4Wlu0/e1StNtKSr95FdNnPiOOIMhKSKrd
- QRSFvqzSxmE9GO5cGBJ3u38ikTJHKed/ss0mrr6uDW2UWAZdqwuNn8kTcQV+E0I1zE00
- CgyThM1OpUzBmXlDe0uqSKiCpKbDS6QPFw763DHjfYdPHb8iAIHMnGLtbt1IXpzEQSs8
- +aOSlwK9xekMW99/HDhZflf6KXYk/B1qc5wYSTkfCZyauvcSdBfMXjqBab0l6/qrj8vs
- I2PJizEaBYID0lwgQ/aqLst3yYaypIRk+i4tQ7XCgnV6EbYXtr1cpWUTV51KOJp4aeNV
- vqng==
+ bh=UzdvnQE5DogPqm0HZi7myHTOzRWh4hSw+7JgGD38Zjs=;
+ b=F1FTjg2Lvmh6hmHE1RGpEC4Id+qpPtNSIaVy7eiFEwYdxMspIW7FN3k3qOu3hRTGNI
+ fGauqdion8jqjZStfl8WLMQsZcEEjFzBGSYv+ACUvQiiGWB4tUz/PgJft07AS2q85yft
+ gZRSGAOTqSCNB09r5qBkeeV7eQTrJZzg5wCc2QjKedoRtMFopXaqDi320HD6rS1QIKq1
+ Hfl60F6vhnU7pS/COJjRUYacfJFwHv0jRjC4yQXRGHPwLyql1M2grAB+S0FwOtPoeg1m
+ TzNN8uF/mEOgGiE2tHDKgg1WpqN0HJBJ4mZAxcBTMNOHwAxGmRt4NFQQJepSRVjt+mhT
+ s3Sw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxMGU7/IKtAiQ5NFYpLJc2XJck9wGyeuksFKAcfutO65wJ5fNL4/ErgoCu2oI0nCIEQlgdQ7ZtMRQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIhe1NtD0krFSMHZGYY/9n5V1/cMTtbJp7NmpYxHP5kmMiO2CmK
- ePSSQNmkgg0ORBOeBaK/ti21doPSPQ5Bp3kCXU7Oxw1YcgE5hoOtA6c+
-X-Gm-Gg: AYBFou396vtd74s4PB3iUEIDMua8zsKE302SOlRh6X4CgDrNxxObX6BVs68E8YWU8by
- IhbrzN9A8FI5/DSGcAoAk34b4j01AMy41p0WHywakZJ8oOGqjwAMq69E09LaZ1FDL+nj1Rr74cS
- YMJbVC1c9sLN4ygMtJdEaP5ednwzWqv2YyuIO9DzdcVIDAQIFLDMGeqraDq2pxLVnC49IMPJe+R
- L3ZIimGRQiPVvUZLgvC03rn3AZTO36XX4bOh3qm186YmrV8Znmk/lVD70mHqF7ZV4afBI/pUpso
- cAp1HW1fFKqT0qQjDI7S7ii7r94M9hpIO66kDaUiUvPP8Fl+VGDTuBPYvyC6RTxTgVYDCqstYbW
- x1q1TUk0hhZjxNNlinBBDbgKpWm7IO27lzOWct9Rxf+GJbbscKZEZ+cKwWB4+nUZFDKwea204Sn
- hfOwWW6aikluz+jx9BY/thb7NNTMSvVQP0DXdeRNtQGv2WXxIHflKvEpjvKMBwVDXWAt8vjMlkp
- CfUDQuAXzdS0BUbMhNzD6kzYbEqmORdg8ZnTeVR22eB79AlmJc4wtqH8ItLftAI5BjgLkrSaJSj
- 9H+HP7b+bf8bnZOKihzVEnQtjlgCiklRw/EVYRAwySiTvezE0yIad440Go94uw==
-X-Received: by 2002:a05:7022:309:b0:168:e942:4e62 with SMTP id
- a92af1059eb24-19937caa524mr19983920c88.40.1793099609786; 
- Tue, 27 Oct 2026 04:13:29 -0700 (PDT)
-Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-198a0f83cedsm40453042c88.13.2026.10.27.04.13.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Oct 2026 04:13:29 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
+ AKwUvBx7vStQuJNW0+UXHd4snYnqEwzzOHv4FHXbfXocDo1TyFW7jM58S5P04b9wFJNsLev9B73kw84Vzg==@nongnu.org
+X-Gm-Message-State: AFq9FYL1tJDBuP2mlkhf2ugscMUudN5j9W4dwNEBxxB8aLASZD3x8k4x
+ dYf++nPITMDMEq3dN4A0OVEj7pQ9AcaWv+7GJRTSQ8Rqt1Xva0u55c3w
+X-Gm-Gg: AYBFou2ulIfLlIl3B1EY5K3fyRBvtb71O0tCJsiUpazUtwN/ZL59tIY09DmkAY2PiHQ
+ WrWAbbpr/rflzvHUv0XEm4JG/8DkhPXHdygdzU8j/JrDWHFyJlIS1LnEJ9q/MW5rcGdZVVr6Lss
+ 3YFn7rbV028hfHXm6g0QoGcH3usm3D/NEnoLAdKhYT1JFUKIu27hr7w3Uvz2PGeLqI/ELXWIWZw
+ 646OoHunH949qSsgqE8K9skNxrLzvKQtWywd12QwaJMKiQQg8wU+fChZs5Gkm1gdmTyrNCi/KgL
+ X2BGvPx5/6M963cIdeFlIfi8fckdd9GuSng76Q61+xjbu5jh7hKzlg+H+sxDgdF2Y1CoByUlbjK
+ kh33dqnbLzdgpWktilYwvXRzSHZVfIJ3Dc2omFogb4v7rFyHhc/nJvnXdy/kEZDdUnf/GABT6jJ
+ GfzybWiBXzU/4E7vN05rOU7D6pWu9m8EhrF34qpTKQ+zWURVt+Jxuh6onN+CNmTBLtxwLUIUEVQ
+ K17JqgMVnwgWoazMO+V1pa5cCeauOMGMnYBQLlMKK2NUQv/Rv+ENxCiEEKKFQ==
+X-Received: by 2002:a05:6000:27c9:10b0:48e:d88:55e5 with SMTP id
+ ffacd0b85a97d-48e3eb457f9mr13604159f8f.6.1793100187282; 
+ Tue, 27 Oct 2026 04:23:07 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([213.138.33.179])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e3ecd3555sm21703165f8f.42.2026.10.27.04.23.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 Oct 2026 04:23:06 -0700 (PDT)
+Date: Tue, 27 Oct 2026 11:22:35 +0000
+From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Song Gao <17746591750@163.com>, Fabiano Rosas <farosas@suse.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-riscv@nongnu.org, Philippe Mathieu-Daude <philmd@mailo.com>,
- Chao Liu <chao.liu@processmission.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Stafford Horne <shorne@gmail.com>,
+CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Eric Blake <eblake@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v4 10/17] hw/arm/virt: use unique QOM name
-Date: Tue, 27 Oct 2026 19:12:08 +0800
-Message-ID: <20261027111216.392-11-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.52.0.windows.1
-In-Reply-To: <20261027111216.392-1-luoyonggang@gmail.com>
-References: <20261027111216.392-1-luoyonggang@gmail.com>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bin Meng <bin.meng@processmission.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-arm@nongnu.org,
+ Jason Wang <jasowangio@gmail.com>, Alistair Francis <alistair@alistair23.me>
+Subject: Re: [PATCH v4 00/31] i.MX fixes and cleanup
+In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
+References: <20261006083445.30362-1-shentey@gmail.com>
+Message-ID: <2FD6FED6-EBED-47A4-9096-D4FDF2F17406@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x132b.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,86 +106,317 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_PASS,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Set TYPE_VIRT_MACHINE and the versioned types to arm-virt when
-target_heterogeneous() is true, and to virt otherwise. Keep the
--M / help / migration name as virt-* via machine_class_set_name().
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
----
- hw/arm/virt.c         | 12 ++++++++----
- include/hw/arm/virt.h |  5 ++++-
- 2 files changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ba55d7c90f3..3e52c23e81a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -121,23 +121,27 @@ static void arm_virt_compat_default_set(MachineClass *mc)
-         MachineClass *mc = MACHINE_CLASS(oc); \
-         arm_virt_compat_default_set(mc); \
-         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
--        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
-+        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) \
-+                   " ARM Virtual Machine"; \
-         MACHINE_VER_DEPRECATION(__VA_ARGS__); \
-+        machine_class_set_name(mc, "virt-" MACHINE_VER_STR(__VA_ARGS__)); \
-         if (latest) { \
-             mc->alias = "virt"; \
-         } \
-     } \
-     static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-     { \
--        const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = \
-+        const TypeInfo virt_machine_info = \
-         { \
--            .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-+            .name = target_heterogeneous() ? \
-+                    MACHINE_VER_TYPE_NAME("arm-virt", __VA_ARGS__) : \
-+                    MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-             .parent = TYPE_VIRT_MACHINE, \
-             .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
-             .is_available = target_base_arm, \
-         }; \
-         MACHINE_VER_DELETION(__VA_ARGS__); \
--        type_register_static(&MACHINE_VER_SYM(info, virt, __VA_ARGS__)); \
-+        type_register_static(&virt_machine_info); \
-     } \
-     type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 22e66d1a113..4152f8173e7 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -32,6 +32,7 @@
- 
- #include "exec/hwaddr.h"
- #include "qemu/notify.h"
-+#include "qemu/target-info.h"
- #include "hw/core/boards.h"
- #include "hw/acpi/ghes.h"
- #include "hw/arm/boot.h"
-@@ -215,7 +216,9 @@ struct VirtMachineState {
- 
- #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
- 
--#define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
-+#define TYPE_VIRT_MACHINE (target_heterogeneous() ? \
-+                           MACHINE_TYPE_NAME("arm-virt") : \
-+                           MACHINE_TYPE_NAME("virt"))
- OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
- 
- void virt_acpi_setup(VirtMachineState *vms);
--- 
-2.52.0.windows.1
+Am 6=2E Oktober 2026 08:34:12 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>This series fixes various issues in i=2EMX device emulation, cleans up i=
+=2EMX
+>
+>Kconfig handling, and improves some code=2E Functional console tests for =
+the
+>
+>remaining i=2EMX boards are added where images are publicly available, ex=
+cept for
+>
+>imx6ul which is taken care of in a different series [1]=2E Fixes which ap=
+pear safe
+>
+>for backporting are cc'd to qemu-stable=2E
+>
+>
+>
+>The series is structured as follows: Patches 1-5 fix some issues and are
+=
+>
+>mostly marked for backporting=2E Patch 4 is a follow-up on patches 1-3 an=
+d
+>
+>should not be backported since it breaks migration=2E
+>
+>
+>
+>Patches 6-11 add and improve functional tests for i=2EMX devices=2E While=
+ at it,
+>
+>saner defaults for the amount of RAM and number of CPUs are established=
+=2E
+>
+>
+>
+>Patches 12-16 turn the remaining i=2EMX SoC device models into SySBus dev=
+ices
+>
+>which fixes their reset behavior=2E
+>
+>
+>
+>Patches 17-30 are Kconfig cleanups where CONFIG_IMX gets split into dedic=
+ated
+>
+>config items=2E
+>
+>
+>
+>The last commit just fixes some typos in the code=2E
+>
+>
+>
+>Changes in v4:
+>
+>* Fix triggering of watchdog_perform_action() (Bin)
+>
+>* Pick up R-b tags
+>
+>
+>
+>Testing done:
+>
+>* `make check-functional-aarch64`
+>
+>* `make check-functional-arm`
+>
+>
+>
 
+Ping
+
+All patches reviewed=2E One may need improved commit message=2E Am I suppo=
+sed to resubmit the series or will this be done inline?
+
+Best regards
+Bernhard
+
+>Changes in v3:
+>
+>* Add dedicated patch fixing write one once WCR bits, cc'd to qemu-stable=
+ (Bin)
+>
+>Done as yet another patch to tell the issues apart=2E
+>
+>* Add and fix some commit messages (Bin)
+>
+>* Add functional tests to 'tests_arm_system_thorough' (Bin)
+>
+>* Fix typo in functional tests for mcimx7d-sabre machine (Bin)
+>
+>* Use sysbus_realize() rather than sysbus_realize_and_unref() in case of
+=
+>
+>embedded SoC struct (Bin)
+>
+>* Pick up R-b tags
+>
+>
+>
+>Changes in v2:
+>
+>* Remove patch adding `mc->ignore_memory_transaction_failures =3D true;` =
+(Peter)
+>
+>* Rework wdt_imx2 patches (Peter)
+>
+>* Remove all but "hw/misc/Kconfig: Remove redundant USB_EHCI_SYSBUS from =
+config
+>
+>IMX" already queued by Phil=2E The preserved patch is required to remove =
+all
+>
+>dependencies from CONFIG_IMX such that it can be removed=2E
+>
+>* Pick up R-b tags
+>
+>* Rebase onto latest master
+>
+>
+>
+>[1]
+>
+>https://lore=2Ekernel=2Eorg/qemu-devel/20261004090500=2E3082641-1-bin=2E
+=
+>
+>meng@processmission=2Ecom/
+>
+>
+>
+>base-commit: d7a65d1793d691d356a56833620f7d1e6f5d653b
+>
+>
+>
+>Bernhard Beschow (31):
+>
+>  hw/watchdog/wdt_imx2: Preserve own locked bits in WCR
+>
+>  hw/watchdog/wdt_imx2: Fix handling of write one once WCR bits
+>
+>  hw/watchdog/wdt_imx2: Clear WDT lock on reset
+>
+>  hw/watchdog/wdt_imx2: Remove redundant attributes
+>
+>  hw/arm/imx8mm-evk: Fix reference count of SoC object
+>
+>  docs, tests/functional: Drop redundant CLI arguments in imx8m*-evk
+>
+>    invocations
+>
+>  hw/arm/sabrelite: Have 4 CPUs and 1 GiB of RAM by default
+>
+>  tests/functional/arm: Add console test for `sabrelite` machine
+>
+>  hw/arm/mcimx6ul-evk: Have 512 MiB of RAM by default
+>
+>  hw/arm/mcimx7d-sabre: Have 2 CPUs and 2 GiB of RAM by default
+>
+>  tests/functional/arm: Add console test for `mcimx7d-sabre` machine
+>
+>  hw/arm/fsl-imx25: Derive from TYPE_SYS_BUS_DEVICE
+>
+>  hw/arm/fsl-imx31: Derive from TYPE_SYS_BUS_DEVICE
+>
+>  hw/arm/fsl-imx6: Derive from TYPE_SYS_BUS_DEVICE
+>
+>  hw/arm/fsl-imx6ul: Derive from TYPE_SYS_BUS_DEVICE
+>
+>  hw/arm/fsl-imx7: Derive from TYPE_SYS_BUS_DEVICE
+>
+>  hw/misc/Kconfig: Remove redundant USB_EHCI_SYSBUS from config IMX
+>
+>  Kconfig: Extract config IMX_AVIC from config IMX
+>
+>  Kconfig: Extract config IMX_GPCV2 from config IMX
+>
+>  Kconfig: Extract config IMX_RNG from config IMX
+>
+>  Kconfig: Extract config FSL_IMX7_GPR from config IMX
+>
+>  Kconfig: Extract config FSL_IMX{6, 7}_SRC from config IMX
+>
+>  Kconfig: Extract config FSL_IMX7_SNVS from config IMX
+>
+>  Kconfig: Extract dedicated config FSL_IMXx_CCM from config IMX
+>
+>  Kconfig: Extract config IMX_GPT from config IMX
+>
+>  Kconfig: Extract config IMX_EPIT from config IMX
+>
+>  Kconfig: Extract config GPIO_IMX from config IMX
+>
+>  Kconfig: Extract config IMX_SPI from config IMX
+>
+>  Kconfig: Extract config IMX_SERIAL from config IMX
+>
+>  Kconfig: Remove config IMX
+>
+>  hw/arm/fsl-imx8m: Fix typo
+>
+>
+>
+> MAINTAINERS                                 |  2 +
+>
+> docs/system/arm/imx8m=2Erst                   |  2 +-
+>
+> docs/system/arm/sabrelite=2Erst               |  4 +-
+>
+> include/hw/arm/fsl-imx25=2Eh                  |  5 +-
+>
+> include/hw/arm/fsl-imx31=2Eh                  |  5 +-
+>
+> include/hw/arm/fsl-imx6=2Eh                   |  5 +-
+>
+> include/hw/arm/fsl-imx6ul=2Eh                 |  5 +-
+>
+> include/hw/arm/fsl-imx7=2Eh                   |  5 +-
+>
+> include/hw/arm/fsl-imx8mm=2Eh                 |  4 +-
+>
+> include/hw/arm/fsl-imx8mp=2Eh                 |  4 +-
+>
+> include/hw/watchdog/wdt_imx2=2Eh              |  2 -
+>
+> hw/arm/fsl-imx25=2Ec                          |  7 +--
+>
+> hw/arm/fsl-imx31=2Ec                          |  7 +--
+>
+> hw/arm/fsl-imx6=2Ec                           |  4 +-
+>
+> hw/arm/fsl-imx6ul=2Ec                         |  4 +-
+>
+> hw/arm/fsl-imx7=2Ec                           |  5 +-
+>
+> hw/arm/fsl-imx8mm=2Ec                         |  2 +-
+>
+> hw/arm/fsl-imx8mp=2Ec                         |  2 +-
+>
+> hw/arm/imx25_pdk=2Ec                          |  2 +-
+>
+> hw/arm/imx8mm-evk=2Ec                         |  4 +-
+>
+> hw/arm/kzm=2Ec                                |  2 +-
+>
+> hw/arm/mcimx6ul-evk=2Ec                       |  3 +-
+>
+> hw/arm/mcimx7d-sabre=2Ec                      |  4 +-
+>
+> hw/arm/sabrelite=2Ec                          |  5 +-
+>
+> hw/watchdog/wdt_imx2=2Ec                      | 21 ++------
+>
+> hw/arm/Kconfig                              | 56 ++++++++++++++++++---
+>
+> hw/char/Kconfig                             |  3 ++
+>
+> hw/char/meson=2Ebuild                         |  2 +-
+>
+> hw/gpio/Kconfig                             |  3 ++
+>
+> hw/gpio/meson=2Ebuild                         |  2 +-
+>
+> hw/intc/Kconfig                             |  6 +++
+>
+> hw/intc/meson=2Ebuild                         |  3 +-
+>
+> hw/misc/Kconfig                             | 41 +++++++++++++--
+>
+> hw/misc/meson=2Ebuild                         | 24 ++++-----
+>
+> hw/net/Kconfig                              |  2 +-
+>
+> hw/ssi/Kconfig                              |  4 ++
+>
+> hw/ssi/meson=2Ebuild                          |  2 +-
+>
+> hw/timer/Kconfig                            | 10 ++++
+>
+> hw/timer/meson=2Ebuild                        |  4 +-
+>
+> tests/functional/aarch64/test_imx8mm_evk=2Epy |  4 +-
+>
+> tests/functional/aarch64/test_imx8mp_evk=2Epy |  4 +-
+>
+> tests/functional/arm/meson=2Ebuild            |  4 ++
+>
+> tests/functional/arm/test_mcimx7d_sabre=2Epy  | 46 +++++++++++++++++
+>
+> tests/functional/arm/test_sabrelite=2Epy      | 46 +++++++++++++++++
+>
+> 44 files changed, 273 insertions(+), 108 deletions(-)
+>
+> create mode 100755 tests/functional/arm/test_mcimx7d_sabre=2Epy
+>
+> create mode 100755 tests/functional/arm/test_sabrelite=2Epy
+>
+>
+>
+>-- >
+>2=2E56=2E0
+>
+>
+>
 

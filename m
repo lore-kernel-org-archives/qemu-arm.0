@@ -1,99 +1,70 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74103606A335
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 11:23:25 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=rJo+nhqc
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E37AD60A2614
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Oct 2026 12:03:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLfGs-0004A3-EJ; Tue, 27 Oct 2026 07:23:15 -0400
+	id 1xLftK-0003UC-Oi; Tue, 27 Oct 2026 08:03:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xLfGp-00049c-Cc
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:23:11 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xLfGn-0004AO-70
- for qemu-arm@nongnu.org; Tue, 27 Oct 2026 07:23:11 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-48dfdd0678dso2921210f8f.0
- for <qemu-arm@nongnu.org>; Tue, 27 Oct 2026 04:23:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1793100187; x=1793704987; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=UzdvnQE5DogPqm0HZi7myHTOzRWh4hSw+7JgGD38Zjs=;
- b=rJo+nhqcreKZhG7Ou1JjaYwzveGAAl4yThXF4th15P6wICtJ5t7HZQ3SVmckSwHVFx
- f4wJMO9jufqbW2Kig3ROjGlZZnbGc1HF2aBKKqlfGojBGvijvZ1oB5t9WWuAaexY77E0
- yj3TcutkVhzZ1rWrRgXAExRal5liCil8n+kaes6W3boDKGfC8kQLARCw34XU2OLOm7NG
- 6bHyJ+GCCfddqkqW1RJj5xu/DnRBNFDRo2ZTJ0ClHL5UgLzGwBFnEBoCaf70Zee6pvAE
- ddGxENAwsnpIVkanX3R40GWrM8XwqJ9QgkwCr6xY2xCoSxLXKtbVr4/pvUOdp9GYuHDK
- HEVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793100187; x=1793704987;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=UzdvnQE5DogPqm0HZi7myHTOzRWh4hSw+7JgGD38Zjs=;
- b=F1FTjg2Lvmh6hmHE1RGpEC4Id+qpPtNSIaVy7eiFEwYdxMspIW7FN3k3qOu3hRTGNI
- fGauqdion8jqjZStfl8WLMQsZcEEjFzBGSYv+ACUvQiiGWB4tUz/PgJft07AS2q85yft
- gZRSGAOTqSCNB09r5qBkeeV7eQTrJZzg5wCc2QjKedoRtMFopXaqDi320HD6rS1QIKq1
- Hfl60F6vhnU7pS/COJjRUYacfJFwHv0jRjC4yQXRGHPwLyql1M2grAB+S0FwOtPoeg1m
- TzNN8uF/mEOgGiE2tHDKgg1WpqN0HJBJ4mZAxcBTMNOHwAxGmRt4NFQQJepSRVjt+mhT
- s3Sw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx7vStQuJNW0+UXHd4snYnqEwzzOHv4FHXbfXocDo1TyFW7jM58S5P04b9wFJNsLev9B73kw84Vzg==@nongnu.org
-X-Gm-Message-State: AFq9FYL1tJDBuP2mlkhf2ugscMUudN5j9W4dwNEBxxB8aLASZD3x8k4x
- dYf++nPITMDMEq3dN4A0OVEj7pQ9AcaWv+7GJRTSQ8Rqt1Xva0u55c3w
-X-Gm-Gg: AYBFou2ulIfLlIl3B1EY5K3fyRBvtb71O0tCJsiUpazUtwN/ZL59tIY09DmkAY2PiHQ
- WrWAbbpr/rflzvHUv0XEm4JG/8DkhPXHdygdzU8j/JrDWHFyJlIS1LnEJ9q/MW5rcGdZVVr6Lss
- 3YFn7rbV028hfHXm6g0QoGcH3usm3D/NEnoLAdKhYT1JFUKIu27hr7w3Uvz2PGeLqI/ELXWIWZw
- 646OoHunH949qSsgqE8K9skNxrLzvKQtWywd12QwaJMKiQQg8wU+fChZs5Gkm1gdmTyrNCi/KgL
- X2BGvPx5/6M963cIdeFlIfi8fckdd9GuSng76Q61+xjbu5jh7hKzlg+H+sxDgdF2Y1CoByUlbjK
- kh33dqnbLzdgpWktilYwvXRzSHZVfIJ3Dc2omFogb4v7rFyHhc/nJvnXdy/kEZDdUnf/GABT6jJ
- GfzybWiBXzU/4E7vN05rOU7D6pWu9m8EhrF34qpTKQ+zWURVt+Jxuh6onN+CNmTBLtxwLUIUEVQ
- K17JqgMVnwgWoazMO+V1pa5cCeauOMGMnYBQLlMKK2NUQv/Rv+ENxCiEEKKFQ==
-X-Received: by 2002:a05:6000:27c9:10b0:48e:d88:55e5 with SMTP id
- ffacd0b85a97d-48e3eb457f9mr13604159f8f.6.1793100187282; 
- Tue, 27 Oct 2026 04:23:07 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([213.138.33.179])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e3ecd3555sm21703165f8f.42.2026.10.27.04.23.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Oct 2026 04:23:06 -0700 (PDT)
-Date: Tue, 27 Oct 2026 11:22:35 +0000
-From: Bernhard Beschow <shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xLfsE-0003G1-TB
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 08:01:59 -0400
+Received: from ci-2002a-snip6-2.eps.apple.com ([2a01:b747:3005:206::5]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xLfsB-0007xg-Eq
+ for qemu-arm@nongnu.org; Tue, 27 Oct 2026 08:01:50 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-8 (Postfix) with ESMTPS id
+ AECF41801A78; Tue, 27 Oct 2026 12:01:40 +0000 (UTC)
+X-ICL-RepId: 01a17d3c-d2c4-7829-8a1f-85a0f49462f7
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0MWFsIWwQPH0wMUQJCBVZeWhEdBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVcB1kFQQtIAl4CRQdDCUwLQAZGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1793102501; x=1824638501;
+ bh=egAN4NyQhfqBcFC+3Ez6KW/lBgRn6lzToVKTUc2J7bY=;
+ h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version:x-icloud-hme;
+ b=Px4ezq7sFenUtAuxLYFw8t65KutMHJqh6ELjJfl1PmROzYJVK6Egv2sl2nLRLNLED3bCO0HWyf5X7J+mfZJspbSCofNvJUjt7JBG+nHkV5hF7wPF/jDV+9trbk9gDeswwQ1IGJymJd1bfl5Nu91TGo8+0ZWfp76QWaAmwxvwUartDuiRGvQu00fXF2fh4z03qO6Lsgt+Cv/5FIRT7Cx2AUOXezp4Ty0imCGutFvgIeTFlWxVZghPkBD3ufXxb0HiIKrAT8iAID/IAjyw4hUVDjIqEKRbooW5xYxfVu3v0jRW8WzFijB+ma6JYvvIKp5DNEqaRwZbRdPkDK1JRzZbUA==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-8 (Postfix) with ESMTPSA id
+ B6CBF1808315; Tue, 27 Oct 2026 12:01:38 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
-CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bin Meng <bin.meng@processmission.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-arm@nongnu.org,
- Jason Wang <jasowangio@gmail.com>, Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH v4 00/31] i.MX fixes and cleanup
-In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
-References: <20261006083445.30362-1-shentey@gmail.com>
-Message-ID: <2FD6FED6-EBED-47A4-9096-D4FDF2F17406@gmail.com>
+Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [PATCH v2 0/6] hvf: arm: fixes for QEMU 11.2
+Date: Tue, 27 Oct 2026 13:01:29 +0100
+Message-ID: <20261027120135.53048-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.54.0
+Content-Type: text/plain; charset="utf-8"
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42b.google.com
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI3MDA0NyBTYWx0ZWRfXwJyWE6ILMYFz
+ oZJ7DIoOyV3cMEjQuMJ0Fame6zBMdCqNGkZCH/PXtsg8zmhnQd4MLoxqXgPW22FCg6WAEcn1spp
+ vh/20Dk3gTr1aqmrUANOY4LwvQNq4x6/CU7aDUOlJszvbI+hRLyH8JdphEqfDmsHY473OjBqAoN
+ XKNQSdqOjC1HVY1ZDlJsed6P82wV7M+izoTsp5fhC6Qk7n5lIQpDPyWIrycfZkpj4yUSquCNIR5
+ ZcUPpz3qUh8sOLG49tDIWlHHqKRxeQ8N+PDMHfEbKyYt3JZ646snAc2PHzT+kDKkXkP6x/rchlh
+ VQXr+J9w1Mu9P8vjaoqnVWQRFQKvdsLc2ZdHGPDN5jQ5I3SOzcwCvsPzIJYjxs=
+X-Authority-Info-Out: v=2.4 cv=dPGrWeZb c=1 sm=1 tr=0 ts=6ae092a5
+ cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=Yl4DsScOm9x93wG5-FgA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: lQvA4-ydhyJ2ecf1XPxdPC4cgBIJnwHT
+X-Proofpoint-ORIG-GUID: lQvA4-ydhyJ2ecf1XPxdPC4cgBIJnwHT
+X-JNJ: AAAAAAABamZh1IGkiwJyH3lSLwZQbvPgKS8E7KyFA9SlhZwrXSJYnPXuOuddkkCo7FM3XdNYPhRTMIiqoBBym3/f5IfKn15LPTSQ7gbsHnIZAbrkJayL28dV8PUwshI17COa9orbqXN4JTQOVMKtriaEvGTy7ks7m+oT/5VXmONc9312Fa/AHL1w9NkzVQHyXHtNtcfSFabqVnLJKixCLfyoCTgGHlIyTb+JjIKlGJMcMWewC+4vGm23JI7jZGV0985+KKJws9PMDdA3j1lEBNsLnmZL+U0IucbwxHv0ty/4VlvpgYNtVlhQ78iBup28HsTYzlkXfTIkC1ADDfjWFhLfJ51+HfaVAckXBEYnB0VLO8/5tRA3TIkNewdRa03a/uAxLHT0stsqFERBVIWGW45GnQ67NmbM+ujMgqo8EACqW1Fa18wjs2U8VBP3T2CajeKLf6i6k17ykZbDkPOYnDxvZGJQW8LSqw8OeKrMwWVtMdCRgmwlvVcn3KqxHPAMsx/KdwKD4ZhxLMoRaFj45lR/cxIFUr7WonE0UfzlRnK0rbicqPoVMPNCSTjq1oH7EUqgVsRmk7ZmSTU4wRYuiVNmkVRjC1kNSerCy1CncCSxkHpb+1+3/m/k7e4QDRiQhzcrB9HfbF3soPLF8152zSAUEGCXsZl4Yx1evIOyduvPTkxjTdKSUjU/HOyDXIm4mvOGHmjhHFhCVhF+nYGj+jAD1u5N5CClEEmO1dsaKqfNhFm3QlR0dqxZRM4NiGltQivDD9pjDNTlu1tebCdFvFAXnpaZU6Vcuz229hxOK2pxfYjhPQXUG4B/dANMF9X5lRBpaTccjG/7uEQ68vO92gG4Sl++aVPSoIpQDqpyMKdgqwCHSVGKvw193Ohj7ecweyM/P23e1ik0n0qyE1Si+2JbOiSo97VmhEvHfIpLvbDT2REAXqDGgF/grgfb+AXaJprt1cF8FfeQfbMWo9yWwGe71PqBXIi
+ I4nhNGWO7ZJCdP/g/Vb3l1aLhWr9QrF3eUXLPd77TLo1uztbkIh0RgogoVthnI1TTpmNKT2u++pF0JHzbn/72er57SGoEnwCC9viF0WAltM4bY44dmneZ04R4b8gHwTDFfwcvadOJJkE5a7GEXEjy/zIuaRJdZZSYYiXb0ZgROS4k8XNDEfOC0Jm4Fl7lM2OxjEqtcO73T2tkJOCrRnKnkl264O0KODDZNUfP5IcBUX6L1pPq2NE4eSiUfBJBU9QhBwalzFv/8KpuH4sVjQY=
+Received-SPF: pass client-ip=2a01:b747:3005:206::5;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,317 +77,37 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_PASS,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+v2:
+- remove GIC_ISPENDR workaround: currently under further investigation
+- simplify SME save/restore patch
+- rework the CPU reset strategy, with also taking care of the GIC CPU interface registers.
 
+v1:
 
-Am 6=2E Oktober 2026 08:34:12 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
->This series fixes various issues in i=2EMX device emulation, cleans up i=
-=2EMX
->
->Kconfig handling, and improves some code=2E Functional console tests for =
-the
->
->remaining i=2EMX boards are added where images are publicly available, ex=
-cept for
->
->imx6ul which is taken care of in a different series [1]=2E Fixes which ap=
-pear safe
->
->for backporting are cc'd to qemu-stable=2E
->
->
->
->The series is structured as follows: Patches 1-5 fix some issues and are
-=
->
->mostly marked for backporting=2E Patch 4 is a follow-up on patches 1-3 an=
-d
->
->should not be backported since it breaks migration=2E
->
->
->
->Patches 6-11 add and improve functional tests for i=2EMX devices=2E While=
- at it,
->
->saner defaults for the amount of RAM and number of CPUs are established=
-=2E
->
->
->
->Patches 12-16 turn the remaining i=2EMX SoC device models into SySBus dev=
-ices
->
->which fixes their reset behavior=2E
->
->
->
->Patches 17-30 are Kconfig cleanups where CONFIG_IMX gets split into dedic=
-ated
->
->config items=2E
->
->
->
->The last commit just fixes some typos in the code=2E
->
->
->
->Changes in v4:
->
->* Fix triggering of watchdog_perform_action() (Bin)
->
->* Pick up R-b tags
->
->
->
->Testing done:
->
->* `make check-functional-aarch64`
->
->* `make check-functional-arm`
->
->
->
+- workaround for presumed Hypervisor.framework issue
+- save/restore SME state only when SME is on for the CPU
+- add ID_AA64PFR0_EL1.GIC sync to advertise the system register interface
 
-Ping
+Mohamed Mediouni (6):
+  hvf: arm: save/restore SME state only when SME on
+  hvf: arm: remove broken ID_AA64PFR0_EL1.GIC sync
+  hvf: arm: advertise ID_AA64PFR0_EL1.GIC
+  hvf: arm: fetch more features
+  hvf: gic: sync the CPU interface during a vCPU reset
+  hvf: arm: sync vCPU state on PSCI reset
 
-All patches reviewed=2E One may need improved commit message=2E Am I suppo=
-sed to resubmit the series or will this be done inline?
+ hw/intc/arm_gicv3_hvf.c | 93 ++++++++++++++++++++++++-----------------
+ target/arm/hvf/hvf.c    | 45 +++++++++++++++++---
+ 2 files changed, 93 insertions(+), 45 deletions(-)
 
-Best regards
-Bernhard
+-- 
+2.54.0 (Apple Git-157)
 
->Changes in v3:
->
->* Add dedicated patch fixing write one once WCR bits, cc'd to qemu-stable=
- (Bin)
->
->Done as yet another patch to tell the issues apart=2E
->
->* Add and fix some commit messages (Bin)
->
->* Add functional tests to 'tests_arm_system_thorough' (Bin)
->
->* Fix typo in functional tests for mcimx7d-sabre machine (Bin)
->
->* Use sysbus_realize() rather than sysbus_realize_and_unref() in case of
-=
->
->embedded SoC struct (Bin)
->
->* Pick up R-b tags
->
->
->
->Changes in v2:
->
->* Remove patch adding `mc->ignore_memory_transaction_failures =3D true;` =
-(Peter)
->
->* Rework wdt_imx2 patches (Peter)
->
->* Remove all but "hw/misc/Kconfig: Remove redundant USB_EHCI_SYSBUS from =
-config
->
->IMX" already queued by Phil=2E The preserved patch is required to remove =
-all
->
->dependencies from CONFIG_IMX such that it can be removed=2E
->
->* Pick up R-b tags
->
->* Rebase onto latest master
->
->
->
->[1]
->
->https://lore=2Ekernel=2Eorg/qemu-devel/20261004090500=2E3082641-1-bin=2E
-=
->
->meng@processmission=2Ecom/
->
->
->
->base-commit: d7a65d1793d691d356a56833620f7d1e6f5d653b
->
->
->
->Bernhard Beschow (31):
->
->  hw/watchdog/wdt_imx2: Preserve own locked bits in WCR
->
->  hw/watchdog/wdt_imx2: Fix handling of write one once WCR bits
->
->  hw/watchdog/wdt_imx2: Clear WDT lock on reset
->
->  hw/watchdog/wdt_imx2: Remove redundant attributes
->
->  hw/arm/imx8mm-evk: Fix reference count of SoC object
->
->  docs, tests/functional: Drop redundant CLI arguments in imx8m*-evk
->
->    invocations
->
->  hw/arm/sabrelite: Have 4 CPUs and 1 GiB of RAM by default
->
->  tests/functional/arm: Add console test for `sabrelite` machine
->
->  hw/arm/mcimx6ul-evk: Have 512 MiB of RAM by default
->
->  hw/arm/mcimx7d-sabre: Have 2 CPUs and 2 GiB of RAM by default
->
->  tests/functional/arm: Add console test for `mcimx7d-sabre` machine
->
->  hw/arm/fsl-imx25: Derive from TYPE_SYS_BUS_DEVICE
->
->  hw/arm/fsl-imx31: Derive from TYPE_SYS_BUS_DEVICE
->
->  hw/arm/fsl-imx6: Derive from TYPE_SYS_BUS_DEVICE
->
->  hw/arm/fsl-imx6ul: Derive from TYPE_SYS_BUS_DEVICE
->
->  hw/arm/fsl-imx7: Derive from TYPE_SYS_BUS_DEVICE
->
->  hw/misc/Kconfig: Remove redundant USB_EHCI_SYSBUS from config IMX
->
->  Kconfig: Extract config IMX_AVIC from config IMX
->
->  Kconfig: Extract config IMX_GPCV2 from config IMX
->
->  Kconfig: Extract config IMX_RNG from config IMX
->
->  Kconfig: Extract config FSL_IMX7_GPR from config IMX
->
->  Kconfig: Extract config FSL_IMX{6, 7}_SRC from config IMX
->
->  Kconfig: Extract config FSL_IMX7_SNVS from config IMX
->
->  Kconfig: Extract dedicated config FSL_IMXx_CCM from config IMX
->
->  Kconfig: Extract config IMX_GPT from config IMX
->
->  Kconfig: Extract config IMX_EPIT from config IMX
->
->  Kconfig: Extract config GPIO_IMX from config IMX
->
->  Kconfig: Extract config IMX_SPI from config IMX
->
->  Kconfig: Extract config IMX_SERIAL from config IMX
->
->  Kconfig: Remove config IMX
->
->  hw/arm/fsl-imx8m: Fix typo
->
->
->
-> MAINTAINERS                                 |  2 +
->
-> docs/system/arm/imx8m=2Erst                   |  2 +-
->
-> docs/system/arm/sabrelite=2Erst               |  4 +-
->
-> include/hw/arm/fsl-imx25=2Eh                  |  5 +-
->
-> include/hw/arm/fsl-imx31=2Eh                  |  5 +-
->
-> include/hw/arm/fsl-imx6=2Eh                   |  5 +-
->
-> include/hw/arm/fsl-imx6ul=2Eh                 |  5 +-
->
-> include/hw/arm/fsl-imx7=2Eh                   |  5 +-
->
-> include/hw/arm/fsl-imx8mm=2Eh                 |  4 +-
->
-> include/hw/arm/fsl-imx8mp=2Eh                 |  4 +-
->
-> include/hw/watchdog/wdt_imx2=2Eh              |  2 -
->
-> hw/arm/fsl-imx25=2Ec                          |  7 +--
->
-> hw/arm/fsl-imx31=2Ec                          |  7 +--
->
-> hw/arm/fsl-imx6=2Ec                           |  4 +-
->
-> hw/arm/fsl-imx6ul=2Ec                         |  4 +-
->
-> hw/arm/fsl-imx7=2Ec                           |  5 +-
->
-> hw/arm/fsl-imx8mm=2Ec                         |  2 +-
->
-> hw/arm/fsl-imx8mp=2Ec                         |  2 +-
->
-> hw/arm/imx25_pdk=2Ec                          |  2 +-
->
-> hw/arm/imx8mm-evk=2Ec                         |  4 +-
->
-> hw/arm/kzm=2Ec                                |  2 +-
->
-> hw/arm/mcimx6ul-evk=2Ec                       |  3 +-
->
-> hw/arm/mcimx7d-sabre=2Ec                      |  4 +-
->
-> hw/arm/sabrelite=2Ec                          |  5 +-
->
-> hw/watchdog/wdt_imx2=2Ec                      | 21 ++------
->
-> hw/arm/Kconfig                              | 56 ++++++++++++++++++---
->
-> hw/char/Kconfig                             |  3 ++
->
-> hw/char/meson=2Ebuild                         |  2 +-
->
-> hw/gpio/Kconfig                             |  3 ++
->
-> hw/gpio/meson=2Ebuild                         |  2 +-
->
-> hw/intc/Kconfig                             |  6 +++
->
-> hw/intc/meson=2Ebuild                         |  3 +-
->
-> hw/misc/Kconfig                             | 41 +++++++++++++--
->
-> hw/misc/meson=2Ebuild                         | 24 ++++-----
->
-> hw/net/Kconfig                              |  2 +-
->
-> hw/ssi/Kconfig                              |  4 ++
->
-> hw/ssi/meson=2Ebuild                          |  2 +-
->
-> hw/timer/Kconfig                            | 10 ++++
->
-> hw/timer/meson=2Ebuild                        |  4 +-
->
-> tests/functional/aarch64/test_imx8mm_evk=2Epy |  4 +-
->
-> tests/functional/aarch64/test_imx8mp_evk=2Epy |  4 +-
->
-> tests/functional/arm/meson=2Ebuild            |  4 ++
->
-> tests/functional/arm/test_mcimx7d_sabre=2Epy  | 46 +++++++++++++++++
->
-> tests/functional/arm/test_sabrelite=2Epy      | 46 +++++++++++++++++
->
-> 44 files changed, 273 insertions(+), 108 deletions(-)
->
-> create mode 100755 tests/functional/arm/test_mcimx7d_sabre=2Epy
->
-> create mode 100755 tests/functional/arm/test_sabrelite=2Epy
->
->
->
->-- >
->2=2E56=2E0
->
->
->
 

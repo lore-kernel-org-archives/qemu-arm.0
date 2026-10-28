@@ -1,56 +1,56 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BCC4606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 08:17:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6A78606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 08:54:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=GDEGQaYd
+	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=LrVO5n4Y
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLyqi-00075q-Bq; Wed, 28 Oct 2026 04:17:32 -0400
+	id 1xLzQS-0005RJ-Kv; Wed, 28 Oct 2026 04:54:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLyqg-00072b-Fz
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 04:17:30 -0400
-Received: from smtpout1.mo540.mail-out.ovh.net ([51.210.91.50])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLzQN-0005Qu-G5
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 04:54:23 -0400
+Received: from smtpout5.mo537.mail-out.ovh.net ([51.210.91.24])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLyqd-0007CV-ES
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 04:17:30 -0400
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net [79.137.60.221])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jF0b80343z45hQ;
- Wed, 28 Oct 2026 08:17:23 +0000 (UTC)
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net. [127.0.0.1])
- by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Wed, 28 Oct 2026 08:17:23 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.232])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jF0b72JdSz6MYZ; Wed, 28 Oct 2026 08:17:23 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.2])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLzQJ-0001xb-Ni
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 04:54:23 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4jF1Pf5WHXz492K;
+ Wed, 28 Oct 2026 08:54:14 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Wed, 28 Oct 2026 08:54:14 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.169])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4jF1Pf4NVhz1yhs; Wed, 28 Oct 2026 08:54:14 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
  (Authenticated sender: clg@kaod.org)
  by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- E60A524031E8; Wed, 28 Oct 2026 08:17:21 +0000 (UTC)
+ 8234224031E8; Wed, 28 Oct 2026 08:54:13 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-113S00742ec8860-941e-43ec-84fe-84e02bb2fec7,
+ (GARM-98R002c154e182-14a3-4fb2-ac06-b2b643357d5d,
  E08929C5676352A1F51837021B168DD299C323AB) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.66.77.115
-Message-ID: <1967d660-af29-4d69-8dbd-76668a5f3284@kaod.org>
-Date: Wed, 28 Oct 2026 09:17:21 +0100
+Message-ID: <2629ee8a-e817-4764-a1e3-72e0ccbb978b@kaod.org>
+Date: Wed, 28 Oct 2026 09:54:13 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/6] hw/i2c/aspeed: fix BUSY status reading in new
- register mode
+Subject: Re: [PATCH v2 1/6] hw/i2c: add dummy device
 To: Timur Maksimov <gessingate@gmail.com>, qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
+ Laurent Vivier <lvivier@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ Markus Armbruster <armbru@redhat.com>
 References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
- <20261027-aspeed-i2c-nonpkt-fix-v2-2-07deed1dff60@gmail.com>
+ <20261027-aspeed-i2c-nonpkt-fix-v2-1-07deed1dff60@gmail.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -95,23 +95,23 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v2-2-07deed1dff60@gmail.com>
+In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v2-1-07deed1dff60@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 12651455778851957805
+x-ovh-tracer-id: 13273796954292726829
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEfoFaW//UIph24q9bWUvX3KAm5vNoAxKopjFhadExg3qf6Pi+01CC4rvNugdLEqxq3mw92mxOl832Ym0ScDw5oCrnNR6Pm0FnqL06k2DJ5mgiIcNUMGfhVbV076fm2ui1nknvuaW6Yd6gBwKQG6fxwr82hye4+Iy9PD5ZeaRHRjooenpN2pZTdcBssleoUAW8HUqzZs3pZbL1Pf9FrR5PTUexOkfBH1EMuyWJs9Z6ZnkgaqubClu5xCI1R9c+hXrlcV5Y1I1Pv3vdUl3arJeizcYJBHDhfCF57g6JyozEmximHA1w//gXhbyoEDQ+KD6TTfGeTv3dEdaPDmccDV6nMgv1UmqZryWwFB+7b4hLbjwBlY3mSNF+9AWGgudqFig1HC5uusEhQklOBJSQ/WPFDexltnjXZqbO2jk8MTjr6rnJvxgfnt9flAuYkyJ1d6nNZTROI9XJuUCHxtG8BDGGpcWprqxKq3Q4AakBVBuq+06T3VIdnBPWUHe0YEWOixmL/I04cFbGwj0LZbS6JqCkWdAoui1hVAsXyD8o2PoO+8ZKHx9TpUMH7q1N7JmS88DOA/CEMPEE7Zhbso5eB4jzJqXLCSwe6trkIHp/KZEVsEoRFj/PJR4URSEPmylXLMhycifJ9GKlpKg0CcktOAIqexoKy9cy69C2bg+pqVyF8GQ
-DKIM-Signature: a=rsa-sha256; bh=F/Fu+qLbEguTvUrc3VXEomM6Yhr8cy2cKiABNeXH0Jo=; 
+X-VR-SPAMCAUSE: dmFkZTEOswFbIdNngyiHpe4WVUanhEcTd4o7h6bIy79V4ndSmNdGnpUA2Ll3tHZ6HmG7+zhKYiLXOmz/VCYm9yeooxLNrIxp7k/D7FTU6I47IYLfVCJo7J2WF4pr7xsbe1CJGrruc/DPYuc1MoMAkqgExq540e/bguCnS1zX73/j22cDbgAaxtPHjAR/Lk4xM6xCgq3nhL5mBSWJQBZEUSCzoWS12JUdL9g9Oij7RrZYbkUewcVxPRzcNXEYISbStdJvFRgoYC3lI/gYusSE22rokSNKx6vZihQVY9fAcHVkasBC2pT9V5MJnnl3bSbnKfqJZssjxeocXULiJB8NqA30tgyzTDezBGbUmlwlEbC09pUzVi9jUQrgzddWxXEZJ+Ouwc85bbFz6IZrvIy4HUoqH6S0rRDEBtD4R84+8r+SZGBmgarbTYAUCmbUEVcGS2zcSWLRqg62dZS/FHBAqZ+nlMj9/PhYpLhb3W29iCqL4MHTGYNDq+b6uLLeYxw8Ttn0cgA2Kd5why7x17qvBbdGy6GY8jZQs8MpjfR8EYF6nioJ04rudeSiKTbhFgysrPDyWlSlWgdZCP36Aa95QWwTtRDCeSQOREIXxgsT8qfQwwqa79oOZ9D1r9CGxI5Nm6haAW0v18k8txH1x8lzUWq4GOsOj69fKyleg+iSgRg/VFE7SA
+DKIM-Signature: a=rsa-sha256; bh=Jb5CSbg/sOZguzvLpR49XqjUum7PfEhigMdiwIpZtm8=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1793175444; v=1;
- b=GDEGQaYdn+oc/5Kzp6hn35SkddX2a2eGyNiitRi19lBXibWl2yQiMrnZu94xExnAjTq/FNfD
- sXpOg0K0n2S/Aq5aMHItWbB3scb4RSM8OXZaWKotiw/6s+7MVDEEO9L+erk05bFCChe99bJ+YDS
- aNeLPokv5UFZfZNzTOlGAKtr43i645hgStr+elaGpiYiGaf2hEm4o0NC4z2Q6ty+f662SZV8/Q0
- SWbLoe1vuU2bEGTVSPf+Xfdyr7aDWuWbO4XNdprDflee8MAqD515Q0xUS0DL4Lm3vOhM+L36oJz
- pz49bRXW9DHAOYYHXSI8WSkJNF1+cHWk71b4VuC1Gk2Lw==
-Received-SPF: pass client-ip=51.210.91.50; envelope-from=clg@kaod.org;
- helo=smtpout1.mo540.mail-out.ovh.net
+ t=1793177655; v=1;
+ b=LrVO5n4YaIakw/E6bUAlc5Ji0udX6E0WbEqF7n+1uD25q7WJ9VC9dRXQSGJAIrYbxOkWE0yn
+ sW6UXww/DeSH/dgcH1f1U4sjQD5wTQGPfxEG/hOZ9DMiTae3/nNqJloWbqOpQrOEkeWBnToD6JK
+ b0qX2vQnT1LmdOBObJ+zebKd8bkv8c4o1Em0tA9WxE3bVYS3mP2Nex/4UA3B7tn1Gtn7m2yOiyq
+ 4OLxZ0uoG0PCYJdMaz+WsjyPEq1VIBezp+eEb+JmVGYnImM3QNSQHMT5AxNAebk6LmjXPnYnOtz
+ pCNcF/ZOmWJK95eECdqB0lhE10FZGPgA0pYj4AROXY/mw==
+Received-SPF: pass client-ip=51.210.91.24; envelope-from=clg@kaod.org;
+ helo=smtpout5.mo537.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -138,47 +138,265 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
++ Corey for I2C feed back.
+
++ Markus for QOM
+
+The brute-force solution to expose the contents of the device array
+with 128 properties has a slight AI smell. I find it ugly but I am
+human :) That said I don't know if there are better alternatives.
+
+My approach would have been to use a string property :
+
+       object_property_add_str(obj, "tx",
+                               i2c_dummy_device_get_tx, NULL);
+       object_property_add_str(obj, "rx",
+                               i2c_dummy_device_get_rx,
+                               i2c_dummy_device_set_rx);
+  
+
+Any better ideas ?
+
+
 On 10/27/26 20:50, Timur Maksimov wrote:
-> In new register mode, BUS_BUSY_STS is bit 16 of I2CC_MS_TXRX_BYTE_BUF;
-> bit 16 of I2CM_CMD is PKT_OP_EN. Report the bus busy state in the
-> correct register.
+> Simple I2C device with QOM properties to access
+> transmit and receive buffers.
+> Can be used for testing or prototyping.
 > 
 > Signed-off-by: Timur Maksimov <gessingate@gmail.com>
+> ---
+>   hw/i2c/Kconfig            |   5 ++
+>   hw/i2c/i2c-dummy-device.c | 168 ++++++++++++++++++++++++++++++++++++++++++++++
+
+MAINTAINERS need updating.
 
 
-Could you provide a Fixes tag please ?
+>   hw/i2c/meson.build        |   3 +-
+>   3 files changed, 175 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+> index 0766130b59..04912671db 100644
+> --- a/hw/i2c/Kconfig
+> +++ b/hw/i2c/Kconfig
+> @@ -6,6 +6,11 @@ config I2C_DEVICES
+>       # to any board's i2c bus
+>       bool
+>   
+> +config I2C_DUMMY_DEVICE
+> +    bool
+> +    default y if TEST_DEVICES
+> +    depends on I2C
+> +
+>   config SMBUS
+>       bool
+>       select I2C
+> diff --git a/hw/i2c/i2c-dummy-device.c b/hw/i2c/i2c-dummy-device.c
+> new file mode 100644
+> index 0000000000..645525a572
+> --- /dev/null
+> +++ b/hw/i2c/i2c-dummy-device.c
+> @@ -0,0 +1,168 @@
+> +/*
+> + * QEMU I2C Dummy Device
+> + *
+> + * Copyright (c) 2026 Timur Maksimov <gessingate@gmail.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/i2c/i2c.h"
+> +#include "hw/core/qdev-properties.h"
+> +#include "migration/vmstate.h"
+> +
+> +#define TYPE_I2C_DUMMY_DEVICE "i2c-dummy-device"
+> +OBJECT_DECLARE_SIMPLE_TYPE(I2CDummyDeviceState, I2C_DUMMY_DEVICE)
+> +
+> +#define I2C_DUMMY_ARRAY_SIZE 64
+> +
+> +struct I2CDummyDeviceState {
+> +    I2CSlave parent_obj;
+> +
+> +    uint8_t tx[I2C_DUMMY_ARRAY_SIZE];
+> +    uint8_t rx[I2C_DUMMY_ARRAY_SIZE];
+> +
+> +    uint8_t tx_pos;
+> +    uint8_t rx_pos;
+> +    uint8_t event;
+> +};
+> +
+> +static void i2c_dummy_device_reset(DeviceState *dev)
+> +{
+> +    I2CDummyDeviceState *s = I2C_DUMMY_DEVICE(dev);
+> +
+> +    s->tx_pos = 0;
+> +    s->rx_pos = 0;
+> +    s->event = I2C_FINISH;
+> +    memset(s->tx, 0, sizeof s->tx);
+> +    /* Don't reset rx as it is a readonly parameter for the model */
+> +}
+> +
+> +static int i2c_dummy_device_event(I2CSlave *i2c, enum i2c_event event)
+> +{
+> +    I2CDummyDeviceState *s = I2C_DUMMY_DEVICE(i2c);
+> +
+> +    switch (event) {
+> +    case I2C_START_SEND:
+> +        s->tx_pos = 0;
+> +        break;
+> +
+> +    case I2C_START_RECV:
+> +        s->rx_pos = 0;
+> +        break;
+> +
+> +    default:
+> +        break;
+> +    }
+> +
+> +    s->event = event;
+> +    return 0;
+> +}
+> +
+> +static int i2c_dummy_device_send(I2CSlave *i2c, uint8_t data)
+> +{
+> +    I2CDummyDeviceState *s = I2C_DUMMY_DEVICE(i2c);
+> +
+> +    if (s->tx_pos >= I2C_DUMMY_ARRAY_SIZE) {
+> +        /*
+> +         * The TX buffer is full. NACK the byte.
+> +         */
+> +        return 1;
+> +    }
+> +
+> +    if (s->event == I2C_START_SEND) {
+> +        s->tx[s->tx_pos++] = data;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static uint8_t i2c_dummy_device_recv(I2CSlave *i2c)
+> +{
+> +    I2CDummyDeviceState *s = I2C_DUMMY_DEVICE(i2c);
+> +
+> +    if (s->rx_pos >= I2C_DUMMY_ARRAY_SIZE || s->event != I2C_START_RECV) {
+> +        /*
+> +         * There is no more data available.
+> +         */
+> +        return 0xff;
+> +    }
+> +
+> +    return s->rx[s->rx_pos++];
+> +}
+> +
+> +static void i2c_dummy_device_init(Object *obj)
+> +{
+> +    I2CDummyDeviceState *s = I2C_DUMMY_DEVICE(obj);
+>
+> +    for (int i = 0; i < I2C_DUMMY_ARRAY_SIZE; i++) {
+> +        g_autofree char *name = g_strdup_printf("tx[%d]", i);
+> +
+> +        object_property_add_uint8_ptr(
+> +            obj, name, &s->tx[i],
+> +            OBJ_PROP_FLAG_READWRITE);
+> +    }
+> +
+> +    for (int i = 0; i < I2C_DUMMY_ARRAY_SIZE; i++) {
+> +        g_autofree char *name = g_strdup_printf("rx[%d]", i);
+> +
+> +        object_property_add_uint8_ptr(
+> +            obj, name, &s->rx[i],
+> +            OBJ_PROP_FLAG_READWRITE);
+> +    }
+> +
+> +    object_property_add_uint8_ptr(
+> +            obj, "tx-pos", &s->tx_pos,
+> +            OBJ_PROP_FLAG_READWRITE);
+> +    object_property_add_uint8_ptr(
+> +            obj, "rx-pos", &s->rx_pos,
+> +            OBJ_PROP_FLAG_READWRITE);
+
+alignment could be improved.
+
+> +}
+> +
+> +static const VMStateDescription vmstate_i2c_dummy_device = {
+> +    .name = TYPE_I2C_DUMMY_DEVICE,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +
+> +    .fields = (const VMStateField[]) {
+> +        VMSTATE_I2C_SLAVE(parent_obj, I2CDummyDeviceState),
+> +
+> +        VMSTATE_UINT8_ARRAY(tx, I2CDummyDeviceState,
+> +                            I2C_DUMMY_ARRAY_SIZE),
+> +
+> +        VMSTATE_UINT8_ARRAY(rx, I2CDummyDeviceState,
+> +                            I2C_DUMMY_ARRAY_SIZE),
+> +
+> +        VMSTATE_UINT8(tx_pos, I2CDummyDeviceState),
+> +        VMSTATE_UINT8(rx_pos, I2CDummyDeviceState),
+> +        VMSTATE_UINT8(event, I2CDummyDeviceState),
+> +
+> +        VMSTATE_END_OF_LIST()
+> +    },
+> +};
+> +
+> +static void i2c_dummy_device_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    I2CSlaveClass *isc = I2C_SLAVE_CLASS(klass);
+> +
+> +    device_class_set_legacy_reset(dc, i2c_dummy_device_reset);
+
+Please use Resettable phases for new devices.
+
+> +
+> +    dc->vmsd = &vmstate_i2c_dummy_device;
+> +
+> +    isc->event = i2c_dummy_device_event;
+> +    isc->send = i2c_dummy_device_send;
+> +    isc->recv = i2c_dummy_device_recv;
+> +}
+> +
+> +static const TypeInfo i2c_dummy_device_info[] = {
+> +    {
+> +        .name = TYPE_I2C_DUMMY_DEVICE,
+> +        .parent = TYPE_I2C_SLAVE,
+> +        .instance_size = sizeof(I2CDummyDeviceState),
+> +        .instance_init = i2c_dummy_device_init,
+> +        .class_init = i2c_dummy_device_class_init,
+> +    }
+> +};
+> +
+> +DEFINE_TYPES(i2c_dummy_device_info)
+> diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
+> index 88aea35662..4695cbcd28 100644
+> --- a/hw/i2c/meson.build
+> +++ b/hw/i2c/meson.build
+> @@ -1,5 +1,5 @@
+>   i2c_ss = ss.source_set()
+> -i2c_ss.add(when: 'CONFIG_I2C', if_true: files('core.c'))
+> +i2c_ss.add(when: 'CONFIG_I2C', if_true: files('core.c', 'i2c-dummy-device.c'))
+
+Please drop this change.
+
+Config I2C_DUMMY_DEVICE which defaults to y when TEST_DEVICES is set
+should be enough.
+
+>   i2c_ss.add(when: 'CONFIG_SMBUS', if_true: files('smbus_slave.c', 'smbus_master.c'))
+>   i2c_ss.add(when: 'CONFIG_ACPI_SMBUS', if_true: files('pm_smbus.c'))
+>   i2c_ss.add(when: 'CONFIG_ACPI_ICH9', if_true: files('smbus_ich9.c'))
+> @@ -19,4 +19,5 @@ i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
+>   i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
+>   i2c_ss.add(when: 'CONFIG_PMBUS', if_true: files('pmbus_device.c'))
+>   i2c_ss.add(when: 'CONFIG_BCM2835_I2C', if_true: files('bcm2835_i2c.c'))
+> +i2c_ss.add(when: 'CONFIG_I2C_DUMMY_DEVICE', if_true: files('i2c-dummy-device.c'))
+>   system_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
+> 
 
 
 Thanks,
 
 C.
-> ---
->   hw/i2c/aspeed_i2c.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 0bc4bb6fbe..fb6d19c37b 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -146,7 +146,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CC_POOL_CTRL:
->       case A_I2CM_INTR_CTRL:
->       case A_I2CM_INTR_STS:
-> -    case A_I2CC_MS_TXRX_BYTE_BUF:
-> +    case A_I2CM_CMD:
->       case A_I2CM_DMA_LEN:
->       case A_I2CM_DMA_TX_ADDR:
->       case A_I2CM_DMA_RX_ADDR:
-> @@ -166,7 +166,8 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CC_DMA_ADDR:
->           value = extract64(bus->dma_dram_offset, 0, 32);
->           break;
-> -    case A_I2CM_CMD:
-> +    case A_I2CC_MS_TXRX_BYTE_BUF:
-> +        value = bus->regs[offset / sizeof(*bus->regs)];
->           value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
->           break;
->       case A_I2CM_DMA_TX_ADDR_HI:
-> 
-
 

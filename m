@@ -1,107 +1,114 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 55D15606A331
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:18:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A84A606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:43:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=qJaBMQnp
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=AklGrNVy
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMA5O-0005cW-Ke; Wed, 28 Oct 2026 16:17:26 -0400
+	id 1xMAUl-0008TF-LR; Wed, 28 Oct 2026 16:43:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA5K-0005Wo-6q
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:25 -0400
-Received: from mail-dy1-x132d.google.com ([2607:f8b0:4864:20::132d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA5G-0002M9-Uj
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:21 -0400
-Received: by mail-dy1-x132d.google.com with SMTP id
- 5a478bee46e88-36661f953e4so2233776eec.1
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:17:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793218636; x=1793823436; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=A2nlZgLz6sOn2cs4PXVlolOczLlJRNmVj0kMGdu8wlM=;
- b=qJaBMQnpuVoilaeUh32c3c0R98wrFN5357aJXuLbfzgSHZMcr6pvjE+m9/CoVy0sHc
- nHSbGwPpZdf70CoqNAdNdx7d1qh+2RgV1iVk7c15ZmhjT7QpdB22M6nE3F2aQAqeGJ1S
- Qfug4x+56V6DuUbSeQs4c+LYXRu84DG1ZHtgbReH2lOOwV5pGSgpaBjbPnxNioZJC/Kj
- APTnMj4xfR4EMbARvxr+IX22A5Q+WlQALuEQ0Yqb0Hm1xfLgcdPo7KOd446GDW3j++hz
- A8TSQ9y7gws5Nmhl/BSshYtI6yZPvFXeBLy+m8EoyU84Bd76AAnWXvwPEMWwn7ZenXtZ
- J80A==
+ (Exim 4.90_1) (envelope-from <eballetb@redhat.com>)
+ id 1xM8Q3-0001SV-0C
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 14:30:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eballetb@redhat.com>)
+ id 1xM8Pz-0003pC-9U
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 14:30:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793212230;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=thLyieOpPvLCoW9ANXvYnVKzM2/+Buze1ELJljt++oI=;
+ b=AklGrNVyHjgIOHYD7xIf+VcK0w/seqQBfivcxAnxecvNnzbebeN/i/7xyd/fQXmyNiRBJ4
+ 4hI8e9h4xx2vLgOEnaTg9cjimg8p+igZNiSGm8NYqndkXe0R5bUL9e3X35vWD3dn42dmoO
+ AVq9TAP/idUp6yPFTqMpXLT1NmvT2D0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-588-5CjUw2QaM32m-PYGCA0LQw-1; Wed, 28 Oct 2026 14:29:22 -0400
+X-MC-Unique: 5CjUw2QaM32m-PYGCA0LQw-1
+X-Mimecast-MFC-AGG-ID: 5CjUw2QaM32m-PYGCA0LQw_1793212162
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4a47047a7daso1285395e9.1
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 11:29:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793218636; x=1793823436;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=A2nlZgLz6sOn2cs4PXVlolOczLlJRNmVj0kMGdu8wlM=;
- b=lfau6AiPmf7vL+46cWtT+xwYHspbel/EammvNlZ2p1U4RdoQUXqqGqyX/Roqd9gFh/
- GEw1vjvG5g5ofNJMbezS3oMw/ZzAmk/nKoGzheNAvr08VCpOZGQmB/U5p+9OfiH/r/sd
- I6wsyMbWtuK9+IMl/Ml3wY8lK3Q5DKEsMp7k7LMt9pDaJDqbkCX3bswNLgdMMGs6G6r0
- N7/2VVzFfk8yssZYSbe8bNN3XN3Xpn6u9FvQ+YxVibqty01phmXIFeLlo3ppJfav7sg1
- OE92CVp3gLKDERoBtABun/KjvzvGLrudKoHny4fNYjnTet61PvVkX2VKxNKanvHox2Cw
- sOVA==
+ d=1e100.net; s=20260707; t=1793212162; x=1793816962;
+ h=cc:to:message-id:content-transfer-encoding:content-type
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to:content-type;
+ bh=thLyieOpPvLCoW9ANXvYnVKzM2/+Buze1ELJljt++oI=;
+ b=AyhSDJydzdsbQjN9eJ1SEyYIt4V18/eWJqlq4MHWGXvjgxmvE9q9F1lio0UsLqmPTh
+ NR9Sf9ldlwMDAlfY/twHeFsEPiXmJY0kneOqqoObJ2YLLg+wZy4ITXEJ0qi5YNo09v7b
+ kCs0Ryw36+8tNOtIm/Y21I6w6ljcb37AuTKt3yb08ufZmG8vREMIy62JNP6vsqByyION
+ zJyTj2AGsMpvtw5N+WGxN2YVC1s6giilDNH/XIHvxBg3hrG1h/oBhrDei5+v7yhm0ZMx
+ vRGizg62v8tqLkXYnZmUIVQVmutFMhNe10B8NiEBiF2gtWBm2LEZZfGZxdae4FWs8nyI
+ KQxQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw9R7zxNuBffXTPBgEakzVNXNKq8SqvvX66zZlqo4yxdPrLnkLIxDwOhwgEWsc8jGz2qtp4Q1FxGw==@nongnu.org
-X-Gm-Message-State: AFq9FYLCdKWCWqLziKqMKfI+wQtiBz+LgQQwutNMpWso4rR94HlQvt/L
- 5D2mWLFDLbPVdeuBogUFwumUuRI2Yx5PygHGjZYAj86/qRlj6wNy6WVo
-X-Gm-Gg: AYBFou3SqvaeiWoO1VI/Ivs9+RNVQ/voFvSM4QwkIcktNCHA+nEEwNxDycIHW/wSto0
- ZuAVAFcRCo347ETmNkiD65vbGeayjA9ZVlUSp/pT+pMK4j82V4QcFVtmWZejBuFSHECiIfQaKDe
- 0ztzfRBP5l/70H1feqMeE6DH6sNdGjCV9RQ99gz6bNldJX9b6P3aEOIQBFGtkY5q4wZ4IX5gwPf
- /rn5Y5q3tZUIVPHPBtPAYGjpamxmcNvSmHjAUmoS32rlYvaptXBmobS3uh0GAU7W1s3jYdyNkZb
- UfvwMTmrYqKYolVpyRMbjtdva6HP2A0S2+6Hw/JoM3p5HME5xbY8HW9Is8Wwd8Mci8fnzxfpEDA
- fcaJi9hr3B16SsGqX8z0yTwPaeHxtjMr3a20OUtYcxFqS2osktLnASqRcFnrCISINx6vK5bgCQ+
- s/rWZ1gvxAs2cEGfdGhBQVSQ5sNGPCyKo2YqBrIUw6L4rkP/QDL4FkqS811NADvV6W2gbiDUY8v
- c9/bKQ8jP2Eh7oIxxJtmLkf/wCB3wRbnGo/vDW2vLqRRiniWf+jxfzImOSSqvD9+Fpk263QcGaK
- tve3wHTqaTuWdv7nY+YVSipcN/Gi7JDyijcje8TRasjdzi4N
-X-Received: by 2002:a05:7300:c7ca:b0:359:1b05:ed30 with SMTP id
- 5a478bee46e88-36a202d5537mr4429450eec.4.1793218635936; 
- Wed, 28 Oct 2026 13:17:15 -0700 (PDT)
-Received: from DESKTOP-Q716RM7 ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.17.10
+ AKwUvByo5zGMqii7DttwFyPdA8dKj589NygslElmxh7gsTwA1V4SCy1lABXZm8Iy8g3Nc4n5SlNHkCeYxw==@nongnu.org
+X-Gm-Message-State: AFq9FYK8zQNKcNQldjkeLIY0hJsTN1ejUCzQaqcq8/Rxdt1e+ijDAx45
+ s02g+S0Hblmb79BOl4XrB/gsCESen4QMaR19C//i2lpTMBxSjjwZX0DTtYF9+fM1jf8kF4yaEif
+ +5td9z5xWg8P5a5XlSN/4+QI0X8RRMZqd+39MblaE6uxrmlCkl5ov4g==
+X-Gm-Gg: AYBFou1Mg+YZ4wiuLlul30l+0imUd6p9dbopzcnh+Pimo+xpUlhMcvkQgBbLlp/NI1X
+ KuVA2hTNozZzDE5i5bnno0+tU98UVskENJhPjfNj/JXEdyvcZiVV+cvb3cixOFXUR30lw+l+Q/i
+ 3FUGjnbBtR97OBZ+RSfNvy587p0sp3jPCk1e7WULBgQO4J8Vq8veldCAlwU9uD/r+oFTxNT+u0d
+ LXj6RYYk+pobgjnB0Jx6aJL/pNDHiIK7LQQ2xB90dYZhdRJdAjPoIgbABjqwTyM75QEIn4TMDbO
+ 9EvXT6p+UZf9LjMgc4cUs3F4HR5ujX5xffX3ARxPXH5EI5B7DrwE6P5Jw0RooSn626b8sTnCZMo
+ GWwRk5rKPZy08U6DzJPTWoziK1t7mW9WixU9hRvudNc/Qxv6BD6vLmDrTenbdMEvNVnwRDMg9Kn
+ nx178kfJS0+Mdnmw==
+X-Received: by 2002:a5d:6dc1:0:b0:48c:6611:82 with SMTP id
+ ffacd0b85a97d-48e5d2e44a3mr6665161f8f.1.1793212161662; 
+ Wed, 28 Oct 2026 11:29:21 -0700 (PDT)
+X-Received: by 2002:a5d:6dc1:0:b0:48c:6611:82 with SMTP id
+ ffacd0b85a97d-48e5d2e44a3mr6665115f8f.1.1793212161179; 
+ Wed, 28 Oct 2026 11:29:21 -0700 (PDT)
+Received: from localhost (119.red-83-42-172.dynamicip.rima-tde.net.
+ [83.42.172.119]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e6419e05dsm1202034f8f.19.2026.10.28.11.29.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Oct 2026 13:17:15 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@kernel.org>, qemu-s390x@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Eric Farman <farman@linux.ibm.com>, Song Gao <17746591750@163.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
- Fam Zheng <fam@euphon.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Philippe Mathieu-Daude <philmd@mailo.com>, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 11/12] hw/virtio/virtio-mem: register legacy-guest variant
- with is_available
-Date: Thu, 29 Oct 2026 04:15:55 +0800
-Message-ID: <20261028201557.2688-12-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.55.0.windows.3
-In-Reply-To: <20261028201557.2688-1-luoyonggang@gmail.com>
-References: <20261028201557.2688-1-luoyonggang@gmail.com>
+ Wed, 28 Oct 2026 11:29:20 -0700 (PDT)
+From: Enric Balletbo i Serra <eballetb@redhat.com>
+Date: Wed, 28 Oct 2026 19:29:05 +0100
+Subject: [PATCH] hw/arm/virt: use alias and baudrate in stdout-path
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132d;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x132d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Message-Id: <20261028-stdout-path-baudrate-v1-1-34281c1f34ad@redhat.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqAIBBA0avErBtQI5OuEi1Mx5xNhVoE0d2Tl
+ m/x/wOZElOGsXkg0cWZ961Ctg24aLeVkH01KKG0FMpgLn4/Cx62RFzs6ZMthM71ndE6DMFIqOm
+ RKPD9b6f5fT/h6ShkZgAAAA==
+X-Change-ID: 20261028-stdout-path-baudrate-cc53866f7f81
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Enric Balletbo i Serra <eballetb@redhat.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793212158; l=1685;
+ i=eballetb@redhat.com; s=20261026; h=from:subject:message-id;
+ bh=OSD5BQa16kgwy6Y1nCOcGx3BOmhoSm+lOpuNAc1Wqho=;
+ b=laNukuk51bYDmeCnjME8LnC4Q9iwILT3OJck/bePOj2KrLwFKgSfkDDZybrDMpi70zIRMnKaE
+ Fy19DH0tk5iDsIKHXsy1AKp8FKyQYPO6NdgO5SjJBnCCfjGPFJBq9r+
+X-Developer-Key: i=eballetb@redhat.com; a=ed25519;
+ pk=5zh6xuAxTiQwglL2NXQFqWuyRPmCE8T5KPXLbNXhnKI=
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cZRpEY5_Vwm7_hTg-Me6LexK_odyqa6EiOA-57Gwspc_1793212162
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eballetb@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 28 Oct 2026 16:43:36 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,140 +119,54 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-virtio-mem decided in class_init and realize whether x86 guests can
-leave unplugged memory accessible. Register a second virtio-mem type
-that adds virtio_mem_legacy_guests_properties and sets
-VirtIOMEMClass.has_legacy_guests. Select the two with
-target_base_i386() and target_not_base_i386().
+Set stdout-path to "serial0:115200n8" instead of the raw device node
+path, so that Linux can automatically configure the console from the
+device tree without requiring an explicit console= kernel argument.
+Apply the same fix to the secure UART stdout-path using "serial1:115200n8".
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+Signed-off-by: Enric Balletbo i Serra <eballetb@redhat.com>
 ---
- hw/virtio/virtio-mem.c         | 47 +++++++++++++++++++---------------
- include/hw/virtio/virtio-mem.h |  2 ++
- 2 files changed, 29 insertions(+), 20 deletions(-)
+ hw/arm/virt.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
-index 7130ed852d9..bf241a3112b 100644
---- a/hw/virtio/virtio-mem.c
-+++ b/hw/virtio/virtio-mem.c
-@@ -15,6 +15,7 @@
- #include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qemu/units.h"
-+#include "qemu/target-info.h"
- #include "qemu/target-info-qapi.h"
- #include "system/memory.h"
- #include "system/numa.h"
-@@ -35,22 +36,6 @@
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0d56197dacee..d93850feafa4 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1529,8 +1529,9 @@ static void create_uart(const VirtMachineState *vms, int uart,
+                          clocknames, sizeof(clocknames));
  
- static const VMStateDescription vmstate_virtio_mem_device_early;
+     if (uart == VIRT_UART0) {
+-        qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
+         qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial0", nodename);
++        qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path",
++                                "serial0:115200n8");
+     } else {
+         qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial1", nodename);
+     }
+@@ -1540,7 +1541,7 @@ static void create_uart(const VirtMachineState *vms, int uart,
+         qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
  
--static bool virtio_mem_has_legacy_guests(void)
--{
--    /*
--     * We only had legacy x86 guests that did not support
--     * VIRTIO_MEM_F_UNPLUGGED_INACCESSIBLE. Other targets don't have
--     * legacy guests.
--     */
--    switch (target_arch()) {
--    case SYS_EMU_TARGET_I386:
--    case SYS_EMU_TARGET_X86_64:
--        return true;
--    default:
--        return false;
--    }
--}
--
- /*
-  * Let's not allow blocks smaller than 1 MiB, for example, to keep the tracking
-  * bitmap small.
-@@ -859,7 +844,7 @@ static void virtio_mem_device_realize(DeviceState *dev, Error **errp)
-     rb = vmem->memdev->mr.ram_block;
-     page_size = qemu_ram_pagesize(rb);
+         qemu_fdt_setprop_string(ms->fdt, "/secure-chosen", "stdout-path",
+-                                nodename);
++                                "serial1:115200n8");
+     }
  
--    if (virtio_mem_has_legacy_guests()) {
-+    if (VIRTIO_MEM_GET_CLASS(vmem)->has_legacy_guests) {
-         switch (vmem->unplugged_inaccessible) {
-         case ON_OFF_AUTO_AUTO:
-             if (virtio_mem_has_shared_zeropage(rb)) {
-@@ -1635,9 +1620,6 @@ static void virtio_mem_class_init(ObjectClass *klass, const void *data)
-     RamDiscardSourceClass *rdsc = RAM_DISCARD_SOURCE_CLASS(klass);
- 
-     device_class_set_props(dc, virtio_mem_properties);
--    if (virtio_mem_has_legacy_guests()) {
--        device_class_set_props(dc, virtio_mem_legacy_guests_properties);
--    }
-     dc->vmsd = &vmstate_virtio_mem;
- 
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-@@ -1660,6 +1642,14 @@ static void virtio_mem_class_init(ObjectClass *klass, const void *data)
-     rdsc->is_populated = virtio_mem_rds_is_populated;
- }
- 
-+static void virtio_mem_legacy_class_init(ObjectClass *klass, const void *data)
-+{
-+    virtio_mem_class_init(klass, data);
-+    device_class_set_props(DEVICE_CLASS(klass),
-+                           virtio_mem_legacy_guests_properties);
-+    VIRTIO_MEM_CLASS(klass)->has_legacy_guests = true;
-+}
-+
- static const TypeInfo virtio_mem_info = {
-     .name = TYPE_VIRTIO_MEM,
-     .parent = TYPE_VIRTIO_DEVICE,
-@@ -1668,6 +1658,22 @@ static const TypeInfo virtio_mem_info = {
-     .instance_finalize = virtio_mem_instance_finalize,
-     .class_init = virtio_mem_class_init,
-     .class_size = sizeof(VirtIOMEMClass),
-+    .is_available = target_not_base_i386,
-+    .interfaces = (const InterfaceInfo[]) {
-+        { TYPE_RAM_DISCARD_SOURCE },
-+        { }
-+    },
-+};
-+
-+static const TypeInfo virtio_mem_legacy_info = {
-+    .name = TYPE_VIRTIO_MEM,
-+    .parent = TYPE_VIRTIO_DEVICE,
-+    .instance_size = sizeof(VirtIOMEM),
-+    .instance_init = virtio_mem_instance_init,
-+    .instance_finalize = virtio_mem_instance_finalize,
-+    .class_init = virtio_mem_legacy_class_init,
-+    .class_size = sizeof(VirtIOMEMClass),
-+    .is_available = target_base_i386,
-     .interfaces = (const InterfaceInfo[]) {
-         { TYPE_RAM_DISCARD_SOURCE },
-         { }
-@@ -1677,6 +1683,7 @@ static const TypeInfo virtio_mem_info = {
- static void virtio_register_types(void)
- {
-     type_register_static(&virtio_mem_info);
-+    type_register_static(&virtio_mem_legacy_info);
- }
- 
- type_init(virtio_register_types)
-diff --git a/include/hw/virtio/virtio-mem.h b/include/hw/virtio/virtio-mem.h
-index 5d1d19c6bec..f367959ecb0 100644
---- a/include/hw/virtio/virtio-mem.h
-+++ b/include/hw/virtio/virtio-mem.h
-@@ -134,6 +134,8 @@ struct VirtIOMEMClass {
-     VirtioDeviceClass parent_class;
- 
-     /* public */
-+    bool has_legacy_guests;
-+
-     void (*fill_device_info)(const VirtIOMEM *vmen, VirtioMEMDeviceInfo *vi);
-     MemoryRegion *(*get_memory_region)(VirtIOMEM *vmem, Error **errp);
-     void (*decide_memslots)(VirtIOMEM *vmem, unsigned int limit);
+     g_free(nodename);
+
+---
+base-commit: 29b1dc631d6ac6bfc39464e0be8bf4cad556a591
+change-id: 20261028-stdout-path-baudrate-cc53866f7f81
+
+Best regards,
 -- 
-2.55.0.windows.3
+Enric Balletbo i Serra <eballetb@redhat.com>
 
 

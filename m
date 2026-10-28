@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02650606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:17:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9CC77606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:17:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=DQyrLS29
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=gSwhfObo
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMA4j-00057q-Vd; Wed, 28 Oct 2026 16:16:46 -0400
+	id 1xMA57-0005KS-35; Wed, 28 Oct 2026 16:17:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA4W-0004zm-5M
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:34 -0400
-Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
+ id 1xMA55-0005J4-Cw
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:07 -0400
+Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA4U-0002EJ-Mo
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:31 -0400
-Received: by mail-dy1-x132b.google.com with SMTP id
- 5a478bee46e88-3514b90bb89so2664340eec.1
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:16:28 -0700 (PDT)
+ id 1xMA53-0002Ke-FY
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:07 -0400
+Received: by mail-dy1-x1332.google.com with SMTP id
+ 5a478bee46e88-3282db206d3so1382681eec.0
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:17:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793218588; x=1793823388; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793218624; x=1793823424; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=1Kd/JJ+ki+GBlJjMkI5tJ6UFoV7UjonthLRTOxTkDpk=;
- b=DQyrLS293RsXpHhnQuyPIh6C/0j6sFzjVsCLCGVi/Hf3ggWDAxRZeX2ABKOY0ntizj
- +BddzRs1Z5/6/yU6+pZBRAUDoQPTiM+mxr7O7egW7+n3YRSFVikT03GI/hekz+RY2SiP
- 0Pchrzi00AK52Ko9e2KCtClkPAAddGHN+JoQ5usEjRZEmR7e2OUnWAGfEv9XD9mRa9B2
- M8GFESgvGGNtMGAWiK6tczCneRO+9vkQNr0GTZVqrh5JDSJmG3XhMhOJZmoyM9hoEk2z
- rRtZbv4GLTmGENObTraOJixjwpRGHwfQ3M0hkC+8MDtMq1t5d5EMRXxRad+/BQbRIY2I
- o3ig==
+ bh=B49HQpaDb0z0YnNrSTi7LO1bJgi1tGBwEu7rfsuG9hE=;
+ b=gSwhfObo0IN20twNipcv8+RwFtySm4gzHp7rZqf6IjLkVGXBIT5WuKoavjfJiGM/RT
+ 6nXP9KyWsw6tp4SSA6zr7sQ3UGnmVm/ygtbuBUq1FIBe+YoxPKjeSmbjR1E4ocD5xBQ4
+ iLhIYHok2O7jHpT7+QbXyNpeeWr6qw4E2uDk9Zqj90t9h4eQSxbFhvmrsvjYgD8AA5Jz
+ 5Xf5ShYuW7N+Ra/W++48hhnI8Kn6CnEAxx8ytqM1SKZQErb149wyc2kaiS8nLiRkfLl4
+ EFM/HlJBZn9w3V9CAGOQFcIUfqRCw0BXuMW24gyWINDinw0Hnkn7sRgtbAcI3i3HYyIc
+ PPIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793218588; x=1793823388;
+ d=1e100.net; s=20260707; t=1793218624; x=1793823424;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=1Kd/JJ+ki+GBlJjMkI5tJ6UFoV7UjonthLRTOxTkDpk=;
- b=toRXCR7vloyDPctAARsxtwShwJp+rhDRoX80NlqHimAI6KyT/g/JnfkUU4hgGq2V6k
- IL0w0tDEPN3ncB7QPWPNotDfQdHrFx9IMQ0DaGDRSSqj3HZfLFJC8EYLe1OVvbGrtcIH
- rUM9H2heGFamR1NUiyPOYLtIP7mEJwCG3mFxl1uF3+OV6Z4VDk0sgrbhOOhkTrrPRIa4
- pIJxjUWMlPCNwHxdaXlHwyKJX05TiipiShFq0HpF/2B02V8O9EVZX7D91DeYBLa69SYS
- EgqndEOtP2PV9gWtbM0xnuHYmKpgtnO5WqnQby5+aI8Qn3Xq5ACAKSYy9RMl5E4DuDY0
- jBBg==
+ bh=B49HQpaDb0z0YnNrSTi7LO1bJgi1tGBwEu7rfsuG9hE=;
+ b=BbOapY2CycEMHQHFhMUb5KJc72n9IW+xYrWNma2flS78RuatiYc4Kfpun8embMJX3a
+ lykhd0N/eXMuXIRxa6pGroOvyDcX2FtTlbooTbcc4bdIV0DxzMC8udV8FyzIrahhlOKz
+ 50pPqNULdZJffWiham+zMiAT6PVRzoGdAXdERvTLNqIA7ODwQfB64BjRoONnNoV8tpq1
+ 63hOFrO6gam6QbUP12KE49ko/fTNCd7wmxpPHiNPWI4L3G2BuqsilRyqZ6U3x0tTCM/+
+ hF5De4KdUfi/ubE2Jwo5xc+SycXQqbyRmADtnBWk0Oi6D+0BDwmXaR/jvz1vJpcDMftV
+ qNDA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByX/RhKkGmtEoJHUf68OYZBYx08VQoZh5uenufRphSY2ZABgqFhN5tb/+/NpbGEB7S4qHOumao2jQ==@nongnu.org
-X-Gm-Message-State: AFq9FYINc3eFHQJc6OuKLoO3n/MYduJTftYYJbyFq7v7ZIhaPTJD3Vfz
- QQJ3UKm1hZx96SIUOkmtmQOw48sJD7VzwF7HbW2Ta3eDrw7tZVR6xoxF
-X-Gm-Gg: AYBFou16cHtROB5U/KyHThZCqJVKdIDwqngLUFcxNzJIIesxBofj7iJQzv7gy9ZprNc
- KYBSjzKeXHWv1Qre1jWrKg3FqH4LQniyVr4q8t0ZHPHpOvhDYI9MV7wJkLHnWfDCCEUhJTWrX09
- y5SFj9YJVAy7MUYiHHRDSLu5F1vKTvaN4FHC1R03HCRz3H4NAhdkvfMsZmCY3YkNKxXwpMS9N/1
- mTNQ1y+d8lC52nfycQMC5jsU5NZ1XpZzg1UoJSupSmgJjkK4slsSPsbhqGPBkiRNYboCHI2+erN
- mrBNyUfauJ+sXPYP4CBuAa4PgRgWTMy5JCXkI/HAxam1BQS7rAG8TdbHB4DHlGdYgkXmrUDmXf2
- nZO2t5pTZQQoJXw4RcXXy7Uj4Kfdc7UDDO5XYA/zg5vM0PEAZmT5RhE/9tXl+EiunmWjPs0T9An
- SqLYxRNkjw/GNlkRH4Lj9qVpm5GiZ2D1B5IykouwfeQ1dKNRBNmf2sYAF0OuR/QO6JbPR5ah/sk
- koSuXPIks0VSZ3Hl7QsemC4bZ4EjOUfm884xuu9quPS8nzfx+MWrIkIM1yihXPfRImy7Yqa+g/A
- ifFo94XlmEJd12ha14Jw0aSclnzeKQ3VfeZuuAyy76eSsmHT
-X-Received: by 2002:a05:7300:c88:b0:36a:1044:e805 with SMTP id
- 5a478bee46e88-36a2008a23dmr6939278eec.23.1793218587575; 
- Wed, 28 Oct 2026 13:16:27 -0700 (PDT)
+ AKwUvBySxAGAHqJiL0ooM4UYdqsp5+j59h3+QNsJ+WJFxo35Zu/qv2goImj3WyTZNwkQjlv4zmophgiwuQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLQf5t04ZrSkuIU1SLXbVVo2jZSk6/4SPoDyPGWiemDY8qjknxz
+ 7KkUkLWEC/PZAd319k+7oHJDb1r1X9zPV0w74cmI00qhqZwsgHQuAzU/
+X-Gm-Gg: AYBFou0T1j9SmTME210tynUk4BynrBVd0OScT8VdO1Hl2NEeXxAlSiQuWTFwyGgmcsO
+ p0UpOGsH0pBj6LulYfHLTmA4M8alsvHqMKpQev/sDEljqK/s4DJQ0cz8j/d/z2WmikiDzxkav+a
+ CkSSGs91OVhSXTgA0Zq8pnu5Gykxgd6sHJXF76cV1SUf69tYXt6ZoIO3y4em9N3KSVjZK093Enq
+ v4AFlCCKOZLmElbp3NAbfXRIqJIw5R1fuldRGyW7ZDa9VR+k9hO1KUUS7Q4yJcZICcluFGvraAv
+ QYi/CvaCeAp7TrRXAPzzLGNNTWtOssYGyMxrB1Qc26ewfQdWAkEwrrImcT4sC/UlGvr/WCY4Tui
+ OICpbbucFrhTfT7zInN/1ZYUkg7eddTXaorQBIWWWEKLMF4Bqu0FOE3Qct3k8qWRWqDtG8a8Snc
+ bAZWUXoyug0+zU+ssobx9r/H3fcEZ7C9rDBmqC6hA99Prd8xxBOK0zCP/LiolGkky7eLp7DaGsH
+ rEDXD4jMLd1H8tKm3Yxt89ZOeN+4c1/QNgPE6pSFkjW+UCtlA8zNpUwnia4wgGa8/8ddxV5KLG5
+ rfIQqJxDZrruYqJR7yKVTVMcdnd2Bdtzf4YwNzkIUoIho2e8
+X-Received: by 2002:a05:7300:f894:b0:368:4c93:544e with SMTP id
+ 5a478bee46e88-36a202bc3f0mr5119208eec.1.1793218623951; 
+ Wed, 28 Oct 2026 13:17:03 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.16.22
+ 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.16.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Oct 2026 13:16:26 -0700 (PDT)
+ Wed, 28 Oct 2026 13:17:03 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -82,24 +82,25 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Philippe Mathieu-Daude <philmd@mailo.com>, qemu-arm@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 03/12] target-info: add target_xtensa()
-Date: Thu, 29 Oct 2026 04:15:47 +0800
-Message-ID: <20261028201557.2688-4-luoyonggang@gmail.com>
+Subject: [PATCH 09/12] hw/virtio: register s390x virtio-blk-pci and
+ virtio-net-pci variants
+Date: Thu, 29 Oct 2026 04:15:53 +0800
+Message-ID: <20261028201557.2688-10-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261028201557.2688-1-luoyonggang@gmail.com>
 References: <20261028201557.2688-1-luoyonggang@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x132b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1332;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,54 +120,162 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Report whether the selected target architecture is Xtensa.
+virtio-blk-pci and virtio-net-pci added the s390x loadparm property
+from class_init when target_s390x() was true. Register each
+VirtioPCIDeviceTypeInfo twice. The s390x variant calls
+pci_qdev_property_add_specifics(), which now always adds loadparm,
+and the other variant does not. target_s390x() and target_not_s390x() select
+the two.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/target-info.h |  7 +++++++
- target-info.c              | 11 +++++++++++
- 2 files changed, 18 insertions(+)
+ hw/pci/pci.c               | 13 +++++--------
+ hw/virtio/virtio-blk-pci.c | 22 +++++++++++++++++++++-
+ hw/virtio/virtio-net-pci.c | 22 +++++++++++++++++++++-
+ 3 files changed, 47 insertions(+), 10 deletions(-)
 
-diff --git a/include/qemu/target-info.h b/include/qemu/target-info.h
-index 6c4e2809ad3..1d6c6f4472c 100644
---- a/include/qemu/target-info.h
-+++ b/include/qemu/target-info.h
-@@ -99,6 +99,13 @@ bool target_or1k(void);
-  */
- bool target_loongarch(void);
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 0efb4eb4bb0..e1bd3bb0e29 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -2895,14 +2895,11 @@ void pci_qdev_property_add_specifics(DeviceClass *dc)
+ {
+     ObjectClass *oc = OBJECT_CLASS(dc);
  
-+/**
-+ * target_xtensa:
-+ *
-+ * Returns whether the target architecture is Xtensa.
-+ */
-+bool target_xtensa(void);
-+
- /**
-  * target_base_ppc:
-  *
-diff --git a/target-info.c b/target-info.c
-index b6d9cd8d97c..07dc88fd366 100644
---- a/target-info.c
-+++ b/target-info.c
-@@ -89,6 +89,17 @@ bool target_loongarch(void)
-     return target_arch() == SYS_EMU_TARGET_LOONGARCH64;
+-    /* The loadparm property is only supported on s390x */
+-    if (target_s390x()) {
+-        object_class_property_add_str(oc, "loadparm",
+-                                      pci_qdev_property_get_loadparm,
+-                                      pci_qdev_property_set_loadparm);
+-        object_class_property_set_description(oc, "loadparm",
+-                                              "load parameter (s390x only)");
+-    }
++    object_class_property_add_str(oc, "loadparm",
++                                  pci_qdev_property_get_loadparm,
++                                  pci_qdev_property_set_loadparm);
++    object_class_property_set_description(oc, "loadparm",
++                                          "load parameter (s390x only)");
  }
  
-+bool target_xtensa(void)
+ MemoryRegion *pci_address_space(PCIDevice *dev)
+diff --git a/hw/virtio/virtio-blk-pci.c b/hw/virtio/virtio-blk-pci.c
+index 3eecc23a657..f4f86f7b428 100644
+--- a/hw/virtio/virtio-blk-pci.c
++++ b/hw/virtio/virtio-blk-pci.c
+@@ -22,6 +22,7 @@
+ #include "hw/virtio/virtio-pci.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qemu/target-info.h"
+ #include "qom/object.h"
+ 
+ typedef struct VirtIOBlkPCI VirtIOBlkPCI;
+@@ -71,7 +72,6 @@ static void virtio_blk_pci_class_init(ObjectClass *klass, const void *data)
+ 
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+     device_class_set_props(dc, virtio_blk_pci_properties);
+-    pci_qdev_property_add_specifics(dc);
+     k->realize = virtio_blk_pci_realize;
+     pcidev_k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
+     pcidev_k->device_id = PCI_DEVICE_ID_VIRTIO_BLOCK;
+@@ -89,6 +89,13 @@ static void virtio_blk_pci_instance_init(Object *obj)
+                               "bootindex");
+ }
+ 
++static void virtio_blk_pci_s390x_class_init(ObjectClass *klass,
++                                            const void *data)
 +{
-+    switch (target_arch()) {
-+    case SYS_EMU_TARGET_XTENSA:
-+    case SYS_EMU_TARGET_XTENSAEB:
-+        return true;
-+    default:
-+        return false;
-+    }
++    virtio_blk_pci_class_init(klass, data);
++    pci_qdev_property_add_specifics(DEVICE_CLASS(klass));
 +}
 +
- bool target_base_ppc(void)
+ static const VirtioPCIDeviceTypeInfo virtio_blk_pci_info = {
+     .base_name              = TYPE_VIRTIO_BLK_PCI,
+     .generic_name           = "virtio-blk-pci",
+@@ -97,11 +104,24 @@ static const VirtioPCIDeviceTypeInfo virtio_blk_pci_info = {
+     .instance_size = sizeof(VirtIOBlkPCI),
+     .instance_init = virtio_blk_pci_instance_init,
+     .class_init    = virtio_blk_pci_class_init,
++    .is_available  = target_not_s390x,
++};
++
++static const VirtioPCIDeviceTypeInfo virtio_blk_pci_s390x_info = {
++    .base_name              = TYPE_VIRTIO_BLK_PCI,
++    .generic_name           = "virtio-blk-pci",
++    .transitional_name      = "virtio-blk-pci-transitional",
++    .non_transitional_name  = "virtio-blk-pci-non-transitional",
++    .instance_size = sizeof(VirtIOBlkPCI),
++    .instance_init = virtio_blk_pci_instance_init,
++    .class_init    = virtio_blk_pci_s390x_class_init,
++    .is_available  = target_s390x,
+ };
+ 
+ static void virtio_blk_pci_register(void)
  {
-     switch (target_arch()) {
+     virtio_pci_types_register(&virtio_blk_pci_info);
++    virtio_pci_types_register(&virtio_blk_pci_s390x_info);
+ }
+ 
+ type_init(virtio_blk_pci_register)
+diff --git a/hw/virtio/virtio-net-pci.c b/hw/virtio/virtio-net-pci.c
+index 893d1905a97..d7aaf255507 100644
+--- a/hw/virtio/virtio-net-pci.c
++++ b/hw/virtio/virtio-net-pci.c
+@@ -22,6 +22,7 @@
+ #include "hw/virtio/virtio-pci.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qemu/target-info.h"
+ #include "qom/object.h"
+ 
+ typedef struct VirtIONetPCI VirtIONetPCI;
+@@ -77,7 +78,6 @@ static void virtio_net_pci_class_init(ObjectClass *klass, const void *data)
+     k->sriov_vf_user_creatable = true;
+     set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
+     device_class_set_props(dc, virtio_net_properties);
+-    pci_qdev_property_add_specifics(dc);
+     vpciklass->realize = virtio_net_pci_realize;
+ }
+ 
+@@ -91,6 +91,13 @@ static void virtio_net_pci_instance_init(Object *obj)
+                               "bootindex");
+ }
+ 
++static void virtio_net_pci_s390x_class_init(ObjectClass *klass,
++                                            const void *data)
++{
++    virtio_net_pci_class_init(klass, data);
++    pci_qdev_property_add_specifics(DEVICE_CLASS(klass));
++}
++
+ static const VirtioPCIDeviceTypeInfo virtio_net_pci_info = {
+     .base_name             = TYPE_VIRTIO_NET_PCI,
+     .generic_name          = "virtio-net-pci",
+@@ -99,11 +106,24 @@ static const VirtioPCIDeviceTypeInfo virtio_net_pci_info = {
+     .instance_size = sizeof(VirtIONetPCI),
+     .instance_init = virtio_net_pci_instance_init,
+     .class_init    = virtio_net_pci_class_init,
++    .is_available  = target_not_s390x,
++};
++
++static const VirtioPCIDeviceTypeInfo virtio_net_pci_s390x_info = {
++    .base_name             = TYPE_VIRTIO_NET_PCI,
++    .generic_name          = "virtio-net-pci",
++    .transitional_name     = "virtio-net-pci-transitional",
++    .non_transitional_name = "virtio-net-pci-non-transitional",
++    .instance_size = sizeof(VirtIONetPCI),
++    .instance_init = virtio_net_pci_instance_init,
++    .class_init    = virtio_net_pci_s390x_class_init,
++    .is_available  = target_s390x,
+ };
+ 
+ static void virtio_net_pci_register(void)
+ {
+     virtio_pci_types_register(&virtio_net_pci_info);
++    virtio_pci_types_register(&virtio_net_pci_s390x_info);
+ }
+ 
+ type_init(virtio_net_pci_register)
 -- 
 2.55.0.windows.3
 

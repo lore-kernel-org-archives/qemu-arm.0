@@ -1,59 +1,56 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D548C606A31D
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 07:20:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BCC4606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 08:17:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=EC1y5p4i
+	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=GDEGQaYd
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLxx8-0004EB-HX; Wed, 28 Oct 2026 03:20:06 -0400
+	id 1xLyqi-00075q-Bq; Wed, 28 Oct 2026 04:17:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xLxx7-0004Dn-9Y; Wed, 28 Oct 2026 03:20:05 -0400
-Received: from smtpout3.mo537.mail-out.ovh.net ([51.210.91.22])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLyqg-00072b-Fz
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 04:17:30 -0400
+Received: from smtpout1.mo540.mail-out.ovh.net ([51.210.91.50])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xLxx4-0001me-CQ; Wed, 28 Oct 2026 03:20:05 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xLyqd-0007CV-ES
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 04:17:30 -0400
 Received: from director1.derp.mail-out.ovh.net
  (director1.derp.mail-out.ovh.net [79.137.60.221])
- by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4jDzJs1dXdz49kT;
- Wed, 28 Oct 2026 07:19:57 +0000 (UTC)
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jF0b80343z45hQ;
+ Wed, 28 Oct 2026 08:17:23 +0000 (UTC)
 Received: from director1.derp.mail-out.ovh.net
  (director1.derp.mail-out.ovh.net. [127.0.0.1])
  by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Wed, 28 Oct 2026 07:19:57 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.121])
+ for <jamin_lin@aspeedtech.com>; Wed, 28 Oct 2026 08:17:23 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.232])
  by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jDzJs0P21z6MbR; Wed, 28 Oct 2026 07:19:57 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.6])
+ 4jF0b72JdSz6MYZ; Wed, 28 Oct 2026 08:17:23 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 50A211B43259;
- Wed, 28 Oct 2026 07:19:55 +0000 (UTC)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ E60A524031E8; Wed, 28 Oct 2026 08:17:21 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-114S0082a39c006-71ed-4d84-abf0-fbee0c3ba053,
+ (GARM-113S00742ec8860-941e-43ec-84fe-84e02bb2fec7,
  E08929C5676352A1F51837021B168DD299C323AB) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.66.77.115
-Message-ID: <bb954a2d-4ab7-4007-b73b-324788230098@kaod.org>
-Date: Wed, 28 Oct 2026 08:19:54 +0100
+Message-ID: <1967d660-af29-4d69-8dbd-76668a5f3284@kaod.org>
+Date: Wed, 28 Oct 2026 09:17:21 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/13] hw/arm/aspeed: Add AST1040 FMC/SPI controllers
- and unimplemented devices
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
+Subject: Re: [PATCH v2 2/6] hw/i2c/aspeed: fix BUSY status reading in new
+ register mode
+To: Timur Maksimov <gessingate@gmail.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:Block layer core" <qemu-block@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20261028023154.48395-1-jamin_lin@aspeedtech.com>
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
+ <20261027-aspeed-i2c-nonpkt-fix-v2-2-07deed1dff60@gmail.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -98,23 +95,23 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261028023154.48395-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v2-2-07deed1dff60@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 11681493009582173229
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 12651455778851957805
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGhYhZIoHZM34CGe2uu7K5VJDQZJZHS1cyQwy6SyoInkXzagW0yp/+sRUDl/2fSNz7QwKpH+w5LPKzcrrr/SyE/IH2Y6fcATpOl+2/9uYIYHOXINPzogmYjk9VapH4elqgI9hcPiz0TTHDxuQTm4U6iB0lhWUknsaaZL/mJWznG82XoD3xzbgPzL5yQgCmnDHn/pxveP87I7dtsa7Y4Wil41OFkCmQXuRM2n/ku1Hafajq94azed8mV4BxRiBvUhZa+jw8BL8MJ8gP7Cg9nbUmVyKyRtNc/oDdghaAs7icFpzoDOecZc0NXqeOlkSkZFO6w8qLkOxd23YL/nX0g6qiMguX880+EuV8P3C5GXJgkKzJPePGGLUT0esu400pxQC3nxFAD8WOblrEjfsSVhvO5E4Mkcs308GZAxFCN3kHlfBNsf2gID8ytjzDhJCvuPchoqyLVJQmAnLKY911Weu/upO8Hbisr9WiHgbkugpaAZUcI7mgr7JS4sDYGjo0i10Zjo+jsCyFgBFkOfkugX+BeEiqSPwCLQB0ekGACrcOnICnuaxU81ecq10Iwt8HVn3mPJtOFHy5hbFcHa/HrVJJs18ODGCnhPpccu39vqvyyRojWKlpJujAa9PAeqYMsvPNQ0lskTdmSiatv5COUIsQj/cCkdp2nJCitW78iIqc6Ag
-DKIM-Signature: a=rsa-sha256; bh=3wjhpN+608LaVaqog1a6YqIAg8OjyWtJtcAsAiZOz4Q=; 
+X-VR-SPAMCAUSE: dmFkZTEfoFaW//UIph24q9bWUvX3KAm5vNoAxKopjFhadExg3qf6Pi+01CC4rvNugdLEqxq3mw92mxOl832Ym0ScDw5oCrnNR6Pm0FnqL06k2DJ5mgiIcNUMGfhVbV076fm2ui1nknvuaW6Yd6gBwKQG6fxwr82hye4+Iy9PD5ZeaRHRjooenpN2pZTdcBssleoUAW8HUqzZs3pZbL1Pf9FrR5PTUexOkfBH1EMuyWJs9Z6ZnkgaqubClu5xCI1R9c+hXrlcV5Y1I1Pv3vdUl3arJeizcYJBHDhfCF57g6JyozEmximHA1w//gXhbyoEDQ+KD6TTfGeTv3dEdaPDmccDV6nMgv1UmqZryWwFB+7b4hLbjwBlY3mSNF+9AWGgudqFig1HC5uusEhQklOBJSQ/WPFDexltnjXZqbO2jk8MTjr6rnJvxgfnt9flAuYkyJ1d6nNZTROI9XJuUCHxtG8BDGGpcWprqxKq3Q4AakBVBuq+06T3VIdnBPWUHe0YEWOixmL/I04cFbGwj0LZbS6JqCkWdAoui1hVAsXyD8o2PoO+8ZKHx9TpUMH7q1N7JmS88DOA/CEMPEE7Zhbso5eB4jzJqXLCSwe6trkIHp/KZEVsEoRFj/PJR4URSEPmylXLMhycifJ9GKlpKg0CcktOAIqexoKy9cy69C2bg+pqVyF8GQ
+DKIM-Signature: a=rsa-sha256; bh=F/Fu+qLbEguTvUrc3VXEomM6Yhr8cy2cKiABNeXH0Jo=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1793171998; v=1;
- b=EC1y5p4imAjwVKg8dv+gcP2fVmfcKaQG1s1kvHg+unL4ML2PsL9hWz/Rsf/9SjOLiWzIrysS
- TqjWkoMMDgi+drvLiAPBoeShVlO+KvoGdC5V8LvNQZiHlKeszIbsFo6lFCooPcwTSG0N3kTL5nW
- LhUZ7DkVpisbtarsvsizvBJTyMzhuzoAMShTHWTSXK1CyuMhJquEIBb2CJrWk6Ku09Autnwy8rd
- AB4zQUb/g9GShjn7tspvcnSEle+3bnmhNFWVk2iCu1rULqWo+tqtsX8cIR3gGYF7rFc0/IUssgv
- 0ojcRZJKYVt/BbRVEy2OXnWgJWvRTw4CZlCkWOjCE2fXQ==
-Received-SPF: pass client-ip=51.210.91.22; envelope-from=clg@kaod.org;
- helo=smtpout3.mo537.mail-out.ovh.net
+ t=1793175444; v=1;
+ b=GDEGQaYdn+oc/5Kzp6hn35SkddX2a2eGyNiitRi19lBXibWl2yQiMrnZu94xExnAjTq/FNfD
+ sXpOg0K0n2S/Aq5aMHItWbB3scb4RSM8OXZaWKotiw/6s+7MVDEEO9L+erk05bFCChe99bJ+YDS
+ aNeLPokv5UFZfZNzTOlGAKtr43i645hgStr+elaGpiYiGaf2hEm4o0NC4z2Q6ty+f662SZV8/Q0
+ SWbLoe1vuU2bEGTVSPf+Xfdyr7aDWuWbO4XNdprDflee8MAqD515Q0xUS0DL4Lm3vOhM+L36oJz
+ pz49bRXW9DHAOYYHXSI8WSkJNF1+cHWk71b4VuC1Gk2Lw==
+Received-SPF: pass client-ip=51.210.91.50; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,56 +138,47 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/28/26 03:31, Jamin Lin wrote:
-> v1:
->   1. Fix AST2700 segment end address decoding
->   2. Fix AST2700 DMA flash address mask
->   3. Rename w25q32dw to w25q33pw and add the SFDP table for the W25Q33PW,
->   4. Correct the AST1040 A0 silicon revision ID
->   5. Add FMC and SPI controllers
->   6. Add the FMC/SPI filters, OTP, ATC, I3C and Caliptra register
->      regions as unimplemented device
->   7. Update the AST1040 functional test to use the official pre-built
->      image from aspeed-mcu-fw-hub v01.00.
+On 10/27/26 20:50, Timur Maksimov wrote:
+> In new register mode, BUS_BUSY_STS is bit 16 of I2CC_MS_TXRX_BYTE_BUF;
+> bit 16 of I2CM_CMD is PKT_OP_EN. Report the bus busy state in the
+> correct register.
 > 
-> v2:
->    1. Add w25q33pw as a separate flash model instead of renaming w25q32dw.
->    2. Add the AST1040 SMC reset value table.
-> 
-> Jamin Lin (13):
->    hw/ssi/aspeed_smc: Fix AST2700 segment end address decoding
->    hw/ssi/aspeed_smc: Fix AST2700 DMA flash address mask
->    hw/block/m25p80: Add Winbond W25Q33PW flash
->    hw/misc/aspeed_scu: Correct AST1040 A0 revision ID
->    hw/ssi/aspeed_smc: Add AST1040 FMC and SPI controllers
->    hw/arm/aspeed_ast1040: Add FMC and SPI controllers
->    hw/arm/aspeed_ast1040: Add FMC and SPI filters as unimplemented
->      devices
->    hw/arm/aspeed_ast1040: Add OTP as an unimplemented device
->    hw/arm/aspeed_ast1040: Add Anti-Tamper Controller (ATC) as an
->      unimplemented device
->    hw/arm/aspeed_ast1040: Add I3C as an unimplemented device
->    hw/arm/aspeed_ast1040: Add Caliptra as an unimplemented device
->    tests/qtest/aspeed_smc: Add AST1040 SMC tests
->    tests/functional/arm/test_aspeed_ast1040: Update AST1040 image to
->      aspeed-mcu-fw-hub v01.00
-> 
->   hw/block/m25p80_sfdp.h                      |   1 +
->   include/hw/misc/aspeed_scu.h                |   2 +-
->   hw/arm/aspeed_ast1040.c                     |  45 +++++++
->   hw/block/m25p80.c                           |   2 +
->   hw/block/m25p80_sfdp.c                      |  36 ++++++
->   hw/ssi/aspeed_smc.c                         | 131 +++++++++++++++++++-
->   tests/qtest/aspeed_smc-test.c               |  61 +++++++++
->   tests/functional/arm/test_aspeed_ast1040.py |  12 +-
->   8 files changed, 278 insertions(+), 12 deletions(-)
-> 
+> Signed-off-by: Timur Maksimov <gessingate@gmail.com>
 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Could you provide a Fixes tag please ?
+
 
 Thanks,
 
 C.
+> ---
+>   hw/i2c/aspeed_i2c.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 0bc4bb6fbe..fb6d19c37b 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -146,7 +146,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+>       case A_I2CC_POOL_CTRL:
+>       case A_I2CM_INTR_CTRL:
+>       case A_I2CM_INTR_STS:
+> -    case A_I2CC_MS_TXRX_BYTE_BUF:
+> +    case A_I2CM_CMD:
+>       case A_I2CM_DMA_LEN:
+>       case A_I2CM_DMA_TX_ADDR:
+>       case A_I2CM_DMA_RX_ADDR:
+> @@ -166,7 +166,8 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+>       case A_I2CC_DMA_ADDR:
+>           value = extract64(bus->dma_dram_offset, 0, 32);
+>           break;
+> -    case A_I2CM_CMD:
+> +    case A_I2CC_MS_TXRX_BYTE_BUF:
+> +        value = bus->regs[offset / sizeof(*bus->regs)];
+>           value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
+>           break;
+>       case A_I2CM_DMA_TX_ADDR_HI:
+> 
 
 

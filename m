@@ -1,122 +1,124 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9C40606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 21:33:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A656606A31E
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 21:44:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=IUT4Zs96
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Okho/uEW
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMBGg-0005XQ-0C; Wed, 28 Oct 2026 17:33:10 -0400
+	id 1xMBQv-0007tK-4S; Wed, 28 Oct 2026 17:43:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xMBGc-0005Wx-Ca
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 17:33:08 -0400
-Received: from smtpout10.mo540.mail-out.ovh.net ([51.210.91.59])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xMBGZ-0000tN-Vm
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 17:33:06 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [79.137.60.226])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jFLF84SYLz45g2;
- Wed, 28 Oct 2026 21:33:00 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Wed, 28 Oct 2026 21:33:00 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.236])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jFLF83cpBz46VM; Wed, 28 Oct 2026 21:33:00 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
- (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 7FF1F12E320B;
- Wed, 28 Oct 2026 21:32:59 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-108S002a2655b0d-829a-48f1-a3a3-0c59cc2c8ba1,
- E08929C5676352A1F51837021B168DD299C323AB) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.66.77.115
-Message-ID: <d804bfa0-c44d-4f52-b647-f7e8b8c7201c@kaod.org>
-Date: Wed, 28 Oct 2026 22:32:58 +0100
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xMBQq-0007sV-5y
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 17:43:40 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xMBQl-0001f0-2A
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 17:43:37 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-6b488586facso1955195a12.2
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 14:43:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793223811; cv=none;
+ d=google.com; s=arc-20260327;
+ b=j9rm3UfL9qCyWryguPJsFrmGeECb/WnfWm5gDdCFXayxhh2d6So+X1FAA5g8ApQPpt
+ jovTk5PkalDfyv1v3mqx0GWoMHRxjaxUqFUkwIryYSnGWcYizL39PxkzZOyglWW55Iso
+ PZgXysvm8GdOd/4WtOjSMjW1N6kxINkhTMgD3DHp5wcUUhiz4XURl89JzaVQ3V4ObgBo
+ oTbEUduQLYqKu4BLOIE6j1j35maCDo6tz1DBWYd45AVny2qGooTFpdF1Vz8L7cCqUM67
+ tHPZX+FVgexMOY+IREERae00IEADLmvxEmy/swYc1R6ETEvIxU4o0e92O7PlKIAdYGbR
+ ayjw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:references:in-reply-to:reply-to
+ :mime-version:dkim-signature;
+ bh=2QkRb89H+Ut888aLaIpYViCWlMZuuCKvKRmvorfSwNo=;
+ fh=p2U5MjPlIyVf0mpaVfx1Mi/viQJbCfyLF7GU+nTmbG4=;
+ b=hytc4jpREHae4bvLOi38XHy3ObrMkzB2v44ktharDyhE9Y/x2PQEGzmsiYeSrOwBmj
+ +dj6tzP5+L+O/sahm584dAmsrzwQcBLaPTIBpZf4maMP5xs/QVRfzdvBoTksEYzZrrmV
+ KsxS7Cus+I9LDxP90cxfrMkLB6V4cUk9ZHskF7puifTX+OzBY4KO3rT8xdzAITQmVfjq
+ riUOixBY1cl1An+NYC8OdS5v/r7ULbnW+yzF4gukBWflyUAlp9Ht1OrPDNNE/NwsSd/b
+ hnLi5WzTdCte84NeIVAQJtN9GuIHACVEKSU3lV59yYv+rApOS6pBrfs1jaFPSvd4Bgnq
+ ePXA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1793223811; x=1793828611; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:references
+ :in-reply-to:reply-to:mime-version:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=2QkRb89H+Ut888aLaIpYViCWlMZuuCKvKRmvorfSwNo=;
+ b=Okho/uEWXxdppCUVDJ3jCURmEFz39TVEwRv0havlODuQSFs20ffjuA+uKySWzSYVhT
+ 4VXF0LiQJb94UYaidFPdgzwdhuSTOjq5ZFwR0xK+GID05b8kcibMP1X1CMUJ81RzA95R
+ xPN2VCkiePETtLSpNfpAq0+M1Wp16cBXmoqwVvefb7yPzbKYSx1ki6odnm0nEl2tP4KW
+ DTpExqQ8cUG5wEPHJLMxpAYOdY93K1hYn5B09ssPPtXKmldrl+ei3Q9ZLYeRNvlQc+jM
+ n6+D6rayGagar+ZyOasdJbcufB61siln1zd3lIj9m5J1bpY+on5ArWeGDtZlzSvbyGPe
+ YxyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793223811; x=1793828611;
+ h=content-type:cc:to:subject:message-id:date:from:references
+ :in-reply-to:reply-to:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=2QkRb89H+Ut888aLaIpYViCWlMZuuCKvKRmvorfSwNo=;
+ b=P7Ii5pjg4cJ/zrTGEmc1kU6+EH4FF4LYbqZo4xpN3jyNGN+KDYKpgU8AfJrzZawS/B
+ q7PHS1sBFvkUOe0+eQYspMpcmgBxBPTorvLQo3UfF5Mdm2wXNRsf4jx3/fp1xGsnkD4S
+ 5XbITTIur0Fl5tHms6qqg11mkp024kAaDv0D1chxIU9M05LKBz35JHN5QQHx1hu7vOAJ
+ sENarC8lA2SokaF5ocg9heWoD4OSpLi2w8ob9yVlkuPbtA/NetkMHziRh4D57gT0Visi
+ UJbF+vNRUlA+KNJs1H+JIarPUwTrmPeRBFO3JW+3dQ2oI4bHdPLBV9vZp4i3+FDe5j3+
+ 88QA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxLZ8sTjX0HRVtnezxJjQ8UzdJbDY+uyrsWmCbThBiq1OO8eIgAgQq+Tj1eUViEhL6nlQ8sl30qXA==@nongnu.org
+X-Gm-Message-State: AFq9FYITakCzIXUPSS8QFJjGfyfMIqzPJBsWcpetk44HQBpiMKU/cFFM
+ rhUmYWfemt0c5SzTSSQzF2P8164mOo/CGLBqxXCLipg6ahTuDuTukZRaniRTCAPUPR88ZjsyHfl
+ pU70Gj0yH/6H5IBKJyuLJCISEU4+wkcg=
+X-Gm-Gg: AYBFou2/iqM2538F6xUWkQFoPtPQeo+TOXnhPRb9dKX6bxxp3lg3qzENSjnqd6eWxp/
+ U/QzpXHyN817ldpIxQaQrppcnKexceBuaBXypd06Q9Rx1ejvnGqQ2JZB1UsrMj0uZVNEOkhmCHI
+ KPWUM/F0DwZCmNagLBoVDrDOhEAiHsbtP06fLBf4YFTlC4uW8PvkT0GsjlB7ghS9VEKTxe9yCtp
+ 6GSQGmwI8ab4eSkZUakSb906f7xoMJ/T42el6cmcvrKAY4igzFXiYHII9Swmdhyx/wmHW0OSm5j
+ A6P8hj6WCqCchMIewS+D3uyRmNo961Cwosg+j9YGeS0mOZa/mzE+voVCobYbyD6+OJO2QCyGtYA
+ fmr75LE8iYnwNRtte/ngk0ct6yy/7fGG1/lvY
+X-Received: by 2002:a05:6402:5194:b0:6b3:c089:5806 with SMTP id
+ 4fb4d7f45d1cf-6b49cb4f1e5mr2644930a12.4.1793223811356; Wed, 28 Oct 2026
+ 14:43:31 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/6] hw/i2c/aspeed: fix DMA transfer in non-packet mode
-To: Timur Maksimov <gessingate@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
- <20261027-aspeed-i2c-nonpkt-fix-v2-5-07deed1dff60@gmail.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v2-5-07deed1dff60@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 7641482671416519725
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTE3uL7WlwYiX8hvkwz2ilpBGqZov9HiKC5f4p+JoCuMSjLUnjjQU01Alj6KVFNUuvKgYvoMaoDvZNN255iQ9GD2/kZZnCHFWXYXxPZWFvmZJJthjFNa3BS1m16bmV9hn1kokeFoO4OIEvLK0tNv3U2KFx8fREl7N6bedBjc5bZbAvRHHqQSYAMBw2nFCg+euZXUBP3V4TOKuyrnVPKXkV+54hrKEpasY1fZEimb/oToTjK8z41YPBnM7Ssjy93k+PLl8LujFD0fdXUO4IoTaYb4bO6scGgJuo05usgDuYlStIQM9H75Ou7K9SMB1gDI6jr/cUYpjvXs9NIw/HN2uimqH0rhlCOCEGLBxtuDBRrjOpoZq4VR1giMgNtnO0LWKqDM2Yu1NysiMy5VRz3uPjf9MiN5tivsLf2DXN8REhIumj4bpoTwf6f4EJMIO2JwCsb8IWSNC83izB++SlbwiO8PUsImzYDduBMIj98ZZuA9otC10uS+E7IJDtOjLc5QkPWUot9GeMqdK73Nzrujhqk2tYJH7CxpBh3o+kDN7A1112Z7vkhaOi/ln/F9kohePciSalMc7hvtJh/nQ9MPsKFGYgabcVnc3PY1/RYScvRoMqma1yfpVqEmcZigxSRQnh+0KuAQ1Y+77YA0LdMFE3CRn4wDZ298BrGwDP7ZaHxfHg
-DKIM-Signature: a=rsa-sha256; bh=drcDv7zCP54WZZ73ZUaOym5TlatNdxXkRAeZbofnVao=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1793223181; v=1;
- b=IUT4Zs96EgqY4yn2y37B02IRgFXEo3JQM5cdCmy21m1sAaD7KPO9Mw20ICHCHq7blusEYag0
- XSADu4wT3qAhwC6SRvnlM00cDm/QrgSpFn/KNhkqyz64pS1MNaeVYpzXOE2oAF91uduVPY8x8JJ
- QkstCwnDwAFDG/r308mYsVF21U7ai3a/b7epKhSWKaLPptFBSPxRvsQfoI+V/TtfpommezG+TNm
- L1g8e2xhZA0ydZKZPCrVB1DJHnbPGghPGIrLaHdNW0sp3+ywzijcxkNZ0t1R5HF/MmZkQVlYAVo
- apOmSoSTf23CHMgUCDKYjcLFUAnPw2t7flSOA4Qsz2sKw==
-Received-SPF: pass client-ip=51.210.91.59; envelope-from=clg@kaod.org;
- helo=smtpout10.mo540.mail-out.ovh.net
+Received: by 2002:a05:7208:378b:b0:110:91ae:907c with HTTP; Wed, 28 Oct 2026
+ 14:43:29 -0700 (PDT)
+In-Reply-To: <b59162fe-5f8d-4923-b6ff-133b8fbf1a41@oss.qualcomm.com>
+References: <20261028201557.2688-1-luoyonggang@gmail.com>
+ <20261028201557.2688-10-luoyonggang@gmail.com>
+ <b59162fe-5f8d-4923-b6ff-133b8fbf1a41@oss.qualcomm.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Thu, 29 Oct 2026 05:43:29 +0800
+X-Gm-Features: AclHuK9BagxZRH6MjZ4MmD_wDGyUnLjabxwZ0z6Km__e0lGMGW5kUyVx9kfEvXg
+Message-ID: <CAE2XoE8vapLZzawuDMQEnOGZsymec+EVUkoWhxUKxbrqmAHoOg@mail.gmail.com>
+Subject: Re: [PATCH 09/12] hw/virtio: register s390x virtio-blk-pci and
+ virtio-net-pci variants
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ David Hildenbrand <david@kernel.org>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Eric Farman <farman@linux.ibm.com>, Song Gao <17746591750@163.com>, 
+ Max Filippov <jcmvbkbc@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Fam Zheng <fam@euphon.net>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>, 
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000475d3e065eed7450"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,67 +130,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,HTML_MESSAGE,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/27/26 20:50, Timur Maksimov wrote:
-> Avoid calling aspeed_i2c_set_tx_dma_dram_offset twice in non-packet mode
-> where this function is called first in aspeed_i2c_get_addr.
-> Also fix writing to I2CD_DMA_ADDR in old register mode.
+--000000000000475d3e065eed7450
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This should be 2 changes.
+On Thursday, October 29, 2026, Pierrick Bouvier <
+pierrick.bouvier@oss.qualcomm.com> wrote:
 
-> Signed-off-by: Timur Maksimov <gessingate@gmail.com>
-> ---
->   hw/i2c/aspeed_i2c.c | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 510758fb7a..a2b4c8b576 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -416,7 +416,9 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, bool send_addr)
->           if (aspeed_i2c_is_new_mode(bus->controller)) {
->               ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN_STS, TX_LEN, 0);
->           }
-> -        aspeed_i2c_set_tx_dma_dram_offset(bus);
-> +        if (!send_addr) {
-> +            aspeed_i2c_set_tx_dma_dram_offset(bus);
-> +        }
->           while (bus->regs[reg_dma_len]) {
->               uint8_t data;
->               ret = aspeed_i2c_dma_read(bus, &data);
+> On 10/28/2026 12:15 PM, Yonggang Luo wrote:
+> > virtio-blk-pci and virtio-net-pci added the s390x loadparm property
+> > from class_init when target_s390x() was true. Register each
+> > VirtioPCIDeviceTypeInfo twice. The s390x variant calls
+> > pci_qdev_property_add_specifics(), which now always adds loadparm,
+> > and the other variant does not. target_s390x() and target_not_s390x()
+> select
+> > the two.
+> >
+> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> > ---
+> >  hw/pci/pci.c               | 13 +++++--------
+> >  hw/virtio/virtio-blk-pci.c | 22 +++++++++++++++++++++-
+> >  hw/virtio/virtio-net-pci.c | 22 +++++++++++++++++++++-
+> >  3 files changed, 47 insertions(+), 10 deletions(-)
+> >
+>
+> target_not_s390x will be duplicated at many place, is that fine?
 
 
-Fixes: efea7ddb4689 ("hw/i2c/aspeed_i2c: Fix DMA moving data into incorrect address")
+Fine for me, let's see what virtio maintainers think about it.
+>
+> Regards,
+> Pierrick
+>
 
-> @@ -1070,11 +1072,13 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
->           bus->pending_intr_sts |= old_intr & cmd_intr;
->           aspeed_i2c_bus_raise_interrupt(bus);
->           break;
-> +
->       case A_I2CD_DMA_ADDR:
->           if (!aic->has_dma) {
->               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
->               break;
->           }
-> +        bus->regs[R_I2CD_DMA_ADDR] = value;
->           break;
->   
->       case A_I2CD_DMA_LEN:
-> 
 
-and
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 
-Fixes: 2260fc6ff3ff ("aspeed: i2c: Use reg array instead of individual vars")
+--000000000000475d3e065eed7450
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
+<br><br>On Thursday, October 29, 2026, Pierrick Bouvier &lt;<a href=3D"mail=
+to:pierrick.bouvier@oss.qualcomm.com">pierrick.bouvier@oss.qualcomm.com</a>=
+&gt; wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
+;border-left:1px #ccc solid;padding-left:1ex">On 10/28/2026 12:15 PM, Yongg=
+ang Luo wrote:<br>
+&gt; virtio-blk-pci and virtio-net-pci added the s390x loadparm property<br=
+>
+&gt; from class_init when target_s390x() was true. Register each<br>
+&gt; VirtioPCIDeviceTypeInfo twice. The s390x variant calls<br>
+&gt; pci_qdev_property_add_<wbr>specifics(), which now always adds loadparm=
+,<br>
+&gt; and the other variant does not. target_s390x() and target_not_s390x() =
+select<br>
+&gt; the two.<br>
+&gt; <br>
+&gt; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.co=
+m">luoyonggang@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 hw/pci/pci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0| 13 +++++--------<br>
+&gt;=C2=A0 hw/virtio/virtio-blk-pci.c | 22 +++++++++++++++++++++-<br>
+&gt;=C2=A0 hw/virtio/virtio-net-pci.c | 22 +++++++++++++++++++++-<br>
+&gt;=C2=A0 3 files changed, 47 insertions(+), 10 deletions(-)<br>
+&gt;<br>
+<br></blockquote><div><span style=3D"color:rgb(0,123,53);font-size:14px">ta=
+rget_not_s390x will be duplicated at many place, is that fine?</span></div>=
+<div>=C2=A0</div><div><br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+Fine for me, let&#39;s see what virtio maintainers think about it.<br>
+<br>
+Regards,<br>
+Pierrick<br>
+</blockquote><br><br>-- <br>=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =E6=AD=A4=E8=
+=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=
+=A0 sincerely,<br>Yonggang Luo<br><br>
 
-C.
+--000000000000475d3e065eed7450--
 

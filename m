@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9CC77606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:17:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF43E606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:17:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=gSwhfObo
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=oKFpK81n
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMA57-0005KS-35; Wed, 28 Oct 2026 16:17:09 -0400
+	id 1xMA4y-0005EQ-OH; Wed, 28 Oct 2026 16:17:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA55-0005J4-Cw
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:07 -0400
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+ id 1xMA4u-0005CE-0n
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:58 -0400
+Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA53-0002Ke-FY
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:07 -0400
-Received: by mail-dy1-x1332.google.com with SMTP id
- 5a478bee46e88-3282db206d3so1382681eec.0
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:17:05 -0700 (PDT)
+ id 1xMA4r-0002Iy-9D
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:55 -0400
+Received: by mail-dy1-x1329.google.com with SMTP id
+ 5a478bee46e88-36661f953e4so2233160eec.1
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:16:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793218624; x=1793823424; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793218612; x=1793823412; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=B49HQpaDb0z0YnNrSTi7LO1bJgi1tGBwEu7rfsuG9hE=;
- b=gSwhfObo0IN20twNipcv8+RwFtySm4gzHp7rZqf6IjLkVGXBIT5WuKoavjfJiGM/RT
- 6nXP9KyWsw6tp4SSA6zr7sQ3UGnmVm/ygtbuBUq1FIBe+YoxPKjeSmbjR1E4ocD5xBQ4
- iLhIYHok2O7jHpT7+QbXyNpeeWr6qw4E2uDk9Zqj90t9h4eQSxbFhvmrsvjYgD8AA5Jz
- 5Xf5ShYuW7N+Ra/W++48hhnI8Kn6CnEAxx8ytqM1SKZQErb149wyc2kaiS8nLiRkfLl4
- EFM/HlJBZn9w3V9CAGOQFcIUfqRCw0BXuMW24gyWINDinw0Hnkn7sRgtbAcI3i3HYyIc
- PPIw==
+ bh=BxuYkSVQHoTJF2qd9tWd22NBfHJ+CcSwy1napmBXH5Y=;
+ b=oKFpK81nzKLdEtVaxqymiMPAbBYX4607d8hzayqzjzRzn/FY8ZFPdtSUp6+V9dsBsx
+ bzhSX6vwl6qtyUyE73hwgypvJr9+EbWw+/fjQPi3M0TSPtRg1FUcopZ3rrPYFEBNWL5O
+ 1JC4lruXHNw73KzrbUUEiihU/ag+1jgKDVkNDu/UkUtKCEtQ7ysV73WcnKzwHU/0h7m8
+ 18wQN22nv47B5PFI+xfJn8+I7Uez+AL1l2gVxSKgOuKCHgNrRO1QhQzJ630b4WQ63sS9
+ 9mRSjq6SwimioOv34Hh0V2zdU5nPYmegjaG4pYRYc+LjMekGhIlUtnVShfycNMlItvQH
+ Y+fA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793218624; x=1793823424;
+ d=1e100.net; s=20260707; t=1793218612; x=1793823412;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=B49HQpaDb0z0YnNrSTi7LO1bJgi1tGBwEu7rfsuG9hE=;
- b=BbOapY2CycEMHQHFhMUb5KJc72n9IW+xYrWNma2flS78RuatiYc4Kfpun8embMJX3a
- lykhd0N/eXMuXIRxa6pGroOvyDcX2FtTlbooTbcc4bdIV0DxzMC8udV8FyzIrahhlOKz
- 50pPqNULdZJffWiham+zMiAT6PVRzoGdAXdERvTLNqIA7ODwQfB64BjRoONnNoV8tpq1
- 63hOFrO6gam6QbUP12KE49ko/fTNCd7wmxpPHiNPWI4L3G2BuqsilRyqZ6U3x0tTCM/+
- hF5De4KdUfi/ubE2Jwo5xc+SycXQqbyRmADtnBWk0Oi6D+0BDwmXaR/jvz1vJpcDMftV
- qNDA==
+ bh=BxuYkSVQHoTJF2qd9tWd22NBfHJ+CcSwy1napmBXH5Y=;
+ b=rzdr/1UTlP48xiRakIA2wnGT4cF4BmkpUYxNWUeBfU37LYyO97E7DxW7RjRWR1UfNz
+ jHNrfV8U7U4eaepGDVL9FQ3Cf93z9PFPYyZo2RwgNA1fwd3KMsvFOpOJZV1ErykURg/i
+ qU/zyU7gistNFQhsjaIagQddiiYFKZ0u+kYJYekUwVmE30NLmgSTBLNgfbUfvPt9bU8K
+ d5vqrUUrZxi7nYXhw7uKvey6vNxMtBFHUvK7HrLUGmpj+Kl+CwRUZkN0DpkR0H0LmH46
+ cjJgp8z6fZ5F/qIqyi+2ZZUa6mzpPwnZRBpTyfCFGI0Y+SYQVzF73foSQ3bWIAcEND4Z
+ wsTg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBySxAGAHqJiL0ooM4UYdqsp5+j59h3+QNsJ+WJFxo35Zu/qv2goImj3WyTZNwkQjlv4zmophgiwuQ==@nongnu.org
-X-Gm-Message-State: AFq9FYLQf5t04ZrSkuIU1SLXbVVo2jZSk6/4SPoDyPGWiemDY8qjknxz
- 7KkUkLWEC/PZAd319k+7oHJDb1r1X9zPV0w74cmI00qhqZwsgHQuAzU/
-X-Gm-Gg: AYBFou0T1j9SmTME210tynUk4BynrBVd0OScT8VdO1Hl2NEeXxAlSiQuWTFwyGgmcsO
- p0UpOGsH0pBj6LulYfHLTmA4M8alsvHqMKpQev/sDEljqK/s4DJQ0cz8j/d/z2WmikiDzxkav+a
- CkSSGs91OVhSXTgA0Zq8pnu5Gykxgd6sHJXF76cV1SUf69tYXt6ZoIO3y4em9N3KSVjZK093Enq
- v4AFlCCKOZLmElbp3NAbfXRIqJIw5R1fuldRGyW7ZDa9VR+k9hO1KUUS7Q4yJcZICcluFGvraAv
- QYi/CvaCeAp7TrRXAPzzLGNNTWtOssYGyMxrB1Qc26ewfQdWAkEwrrImcT4sC/UlGvr/WCY4Tui
- OICpbbucFrhTfT7zInN/1ZYUkg7eddTXaorQBIWWWEKLMF4Bqu0FOE3Qct3k8qWRWqDtG8a8Snc
- bAZWUXoyug0+zU+ssobx9r/H3fcEZ7C9rDBmqC6hA99Prd8xxBOK0zCP/LiolGkky7eLp7DaGsH
- rEDXD4jMLd1H8tKm3Yxt89ZOeN+4c1/QNgPE6pSFkjW+UCtlA8zNpUwnia4wgGa8/8ddxV5KLG5
- rfIQqJxDZrruYqJR7yKVTVMcdnd2Bdtzf4YwNzkIUoIho2e8
-X-Received: by 2002:a05:7300:f894:b0:368:4c93:544e with SMTP id
- 5a478bee46e88-36a202bc3f0mr5119208eec.1.1793218623951; 
- Wed, 28 Oct 2026 13:17:03 -0700 (PDT)
+ AKwUvByDR9ZfBiOUJL/+hy0h2PTzp9IIc688i2n8ldK4fKKDlSgnT+1Y7dF1gBT+iF4UPisrQNOAnk3l+g==@nongnu.org
+X-Gm-Message-State: AFq9FYL/v38uZGhjLCK52bXORpx88ScVoZbjEHIsQ9XvbAwiRQZox2BG
+ DVCWgqh4zinGkP49grZWeX2on7+d0z/jRTzgL+2iop0Cq/RMshHg1rxf
+X-Gm-Gg: AYBFou2YEfNdKeeF7Ythcg0VjU34UErhrUVNXur80TCTy+iRdD6qBOG4keLl4KW11Ta
+ k0j5vI2yErHgMLsZq/LS1HYFxKPFQtIVQBLHz7fjPCMkrYWcE0j9P/vnoTjL/7FK8fV3flpjdqD
+ WL/E5TQDOuYCDQXaswFUgYRN7F28IXTFfw+G+5fHPgsYYzUqyTBLTp6jDPCaDikEapy9fdVGBk4
+ g3QEeUTO7QslfoXTDBZUXfigCEUr5fHRK/fRwrQVEKVIQ9JJhscFJqqQut/qaZcjFOH2Qse67JW
+ /dLb2lVZLXBrafziwaC+D7TBUpe1eTdWKY8Js/GaVOUTPA/QT7MUD2oD2X0Njde0gVihl/Iu851
+ NHRosasZ9D9eLlTsHEGoOL/CJ6FJAgmIoBhT7P2wC8Iqiv8z4+QJFA6uZUbOY7dRxP/9mHIxLEz
+ yyN6aFAt7RfeOy/saDfH0PDE6QupmgHHq9W1xuQ6BB9wbid5SI2OcgU1WLHKqyjSEsXPDxPsuHn
+ T+4l0AjMVM9F2ctverN3uTpeBF3VFaQRR9xEr9V73bF0KA+K+ak9wRi/Sbd2fcxh0BJxu6R5EFN
+ GBt3MAp97dOTEeY5wHK3jlhVeFhDzHx9SvLDmmk5roW7lOHlCQ==
+X-Received: by 2002:a05:7300:7312:b0:358:ec5c:bef1 with SMTP id
+ 5a478bee46e88-36a204773c0mr6759571eec.39.1793218611743; 
+ Wed, 28 Oct 2026 13:16:51 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.16.58
+ 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.16.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Oct 2026 13:17:03 -0700 (PDT)
+ Wed, 28 Oct 2026 13:16:50 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -82,25 +82,25 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Philippe Mathieu-Daude <philmd@mailo.com>, qemu-arm@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 09/12] hw/virtio: register s390x virtio-blk-pci and
- virtio-net-pci variants
-Date: Thu, 29 Oct 2026 04:15:53 +0800
-Message-ID: <20261028201557.2688-10-luoyonggang@gmail.com>
+Subject: [PATCH 07/12] hw/scsi/scsi-disk: register s390x scsi-hd and scsi-cd
+ variants
+Date: Thu, 29 Oct 2026 04:15:51 +0800
+Message-ID: <20261028201557.2688-8-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261028201557.2688-1-luoyonggang@gmail.com>
 References: <20261028201557.2688-1-luoyonggang@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1332;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1332.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1329;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,162 +120,106 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-virtio-blk-pci and virtio-net-pci added the s390x loadparm property
-from class_init when target_s390x() was true. Register each
-VirtioPCIDeviceTypeInfo twice. The s390x variant calls
-pci_qdev_property_add_specifics(), which now always adds loadparm,
-and the other variant does not. target_s390x() and target_not_s390x() select
-the two.
+scsi-hd and scsi-cd added the s390x loadparm property from class_init
+when target_s390x() was true. Register a second type for each name
+that always adds loadparm, and select the two with target_s390x() and
+target_not_s390x().
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/pci/pci.c               | 13 +++++--------
- hw/virtio/virtio-blk-pci.c | 22 +++++++++++++++++++++-
- hw/virtio/virtio-net-pci.c | 22 +++++++++++++++++++++-
- 3 files changed, 47 insertions(+), 10 deletions(-)
+ hw/scsi/scsi-disk.c | 43 +++++++++++++++++++++++++++++++++----------
+ 1 file changed, 33 insertions(+), 10 deletions(-)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 0efb4eb4bb0..e1bd3bb0e29 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -2895,14 +2895,11 @@ void pci_qdev_property_add_specifics(DeviceClass *dc)
+diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+index 6341089ddf2..f981dc2c903 100644
+--- a/hw/scsi/scsi-disk.c
++++ b/hw/scsi/scsi-disk.c
+@@ -3221,14 +3221,11 @@ static void scsi_property_add_specifics(DeviceClass *dc)
  {
      ObjectClass *oc = OBJECT_CLASS(dc);
  
 -    /* The loadparm property is only supported on s390x */
 -    if (target_s390x()) {
 -        object_class_property_add_str(oc, "loadparm",
--                                      pci_qdev_property_get_loadparm,
--                                      pci_qdev_property_set_loadparm);
+-                                      scsi_property_get_loadparm,
+-                                      scsi_property_set_loadparm);
 -        object_class_property_set_description(oc, "loadparm",
 -                                              "load parameter (s390x only)");
 -    }
 +    object_class_property_add_str(oc, "loadparm",
-+                                  pci_qdev_property_get_loadparm,
-+                                  pci_qdev_property_set_loadparm);
++                                  scsi_property_get_loadparm,
++                                  scsi_property_set_loadparm);
 +    object_class_property_set_description(oc, "loadparm",
 +                                          "load parameter (s390x only)");
  }
  
- MemoryRegion *pci_address_space(PCIDevice *dev)
-diff --git a/hw/virtio/virtio-blk-pci.c b/hw/virtio/virtio-blk-pci.c
-index 3eecc23a657..f4f86f7b428 100644
---- a/hw/virtio/virtio-blk-pci.c
-+++ b/hw/virtio/virtio-blk-pci.c
-@@ -22,6 +22,7 @@
- #include "hw/virtio/virtio-pci.h"
- #include "qapi/error.h"
- #include "qemu/module.h"
-+#include "qemu/target-info.h"
- #include "qom/object.h"
+ static void scsi_disk_base_class_initfn(ObjectClass *klass, const void *data)
+@@ -3362,14 +3359,26 @@ static void scsi_hd_class_initfn(ObjectClass *klass, const void *data)
+     dc->desc = "virtual SCSI disk";
+     device_class_set_props(dc, scsi_hd_properties);
+     dc->vmsd  = &vmstate_scsi_disk_state;
++}
  
- typedef struct VirtIOBlkPCI VirtIOBlkPCI;
-@@ -71,7 +72,6 @@ static void virtio_blk_pci_class_init(ObjectClass *klass, const void *data)
- 
-     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
-     device_class_set_props(dc, virtio_blk_pci_properties);
--    pci_qdev_property_add_specifics(dc);
-     k->realize = virtio_blk_pci_realize;
-     pcidev_k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
-     pcidev_k->device_id = PCI_DEVICE_ID_VIRTIO_BLOCK;
-@@ -89,6 +89,13 @@ static void virtio_blk_pci_instance_init(Object *obj)
-                               "bootindex");
+-    scsi_property_add_specifics(dc);
++static void scsi_hd_s390x_class_initfn(ObjectClass *klass, const void *data)
++{
++    scsi_hd_class_initfn(klass, data);
++    scsi_property_add_specifics(DEVICE_CLASS(klass));
  }
  
-+static void virtio_blk_pci_s390x_class_init(ObjectClass *klass,
-+                                            const void *data)
-+{
-+    virtio_blk_pci_class_init(klass, data);
-+    pci_qdev_property_add_specifics(DEVICE_CLASS(klass));
-+}
-+
- static const VirtioPCIDeviceTypeInfo virtio_blk_pci_info = {
-     .base_name              = TYPE_VIRTIO_BLK_PCI,
-     .generic_name           = "virtio-blk-pci",
-@@ -97,11 +104,24 @@ static const VirtioPCIDeviceTypeInfo virtio_blk_pci_info = {
-     .instance_size = sizeof(VirtIOBlkPCI),
-     .instance_init = virtio_blk_pci_instance_init,
-     .class_init    = virtio_blk_pci_class_init,
+ static const TypeInfo scsi_hd_info = {
+     .name          = "scsi-hd",
+     .parent        = TYPE_SCSI_DISK_BASE,
+     .class_init    = scsi_hd_class_initfn,
 +    .is_available  = target_not_s390x,
 +};
 +
-+static const VirtioPCIDeviceTypeInfo virtio_blk_pci_s390x_info = {
-+    .base_name              = TYPE_VIRTIO_BLK_PCI,
-+    .generic_name           = "virtio-blk-pci",
-+    .transitional_name      = "virtio-blk-pci-transitional",
-+    .non_transitional_name  = "virtio-blk-pci-non-transitional",
-+    .instance_size = sizeof(VirtIOBlkPCI),
-+    .instance_init = virtio_blk_pci_instance_init,
-+    .class_init    = virtio_blk_pci_s390x_class_init,
++static const TypeInfo scsi_hd_s390x_info = {
++    .name          = "scsi-hd",
++    .parent        = TYPE_SCSI_DISK_BASE,
++    .class_init    = scsi_hd_s390x_class_initfn,
 +    .is_available  = target_s390x,
  };
  
- static void virtio_blk_pci_register(void)
- {
-     virtio_pci_types_register(&virtio_blk_pci_info);
-+    virtio_pci_types_register(&virtio_blk_pci_s390x_info);
- }
- 
- type_init(virtio_blk_pci_register)
-diff --git a/hw/virtio/virtio-net-pci.c b/hw/virtio/virtio-net-pci.c
-index 893d1905a97..d7aaf255507 100644
---- a/hw/virtio/virtio-net-pci.c
-+++ b/hw/virtio/virtio-net-pci.c
-@@ -22,6 +22,7 @@
- #include "hw/virtio/virtio-pci.h"
- #include "qapi/error.h"
- #include "qemu/module.h"
-+#include "qemu/target-info.h"
- #include "qom/object.h"
- 
- typedef struct VirtIONetPCI VirtIONetPCI;
-@@ -77,7 +78,6 @@ static void virtio_net_pci_class_init(ObjectClass *klass, const void *data)
-     k->sriov_vf_user_creatable = true;
-     set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
-     device_class_set_props(dc, virtio_net_properties);
--    pci_qdev_property_add_specifics(dc);
-     vpciklass->realize = virtio_net_pci_realize;
- }
- 
-@@ -91,6 +91,13 @@ static void virtio_net_pci_instance_init(Object *obj)
-                               "bootindex");
- }
- 
-+static void virtio_net_pci_s390x_class_init(ObjectClass *klass,
-+                                            const void *data)
-+{
-+    virtio_net_pci_class_init(klass, data);
-+    pci_qdev_property_add_specifics(DEVICE_CLASS(klass));
+ static const Property scsi_cd_properties[] = {
+@@ -3405,14 +3414,26 @@ static void scsi_cd_class_initfn(ObjectClass *klass, const void *data)
+     dc->desc = "virtual SCSI CD-ROM";
+     device_class_set_props(dc, scsi_cd_properties);
+     dc->vmsd  = &vmstate_scsi_disk_state;
 +}
-+
- static const VirtioPCIDeviceTypeInfo virtio_net_pci_info = {
-     .base_name             = TYPE_VIRTIO_NET_PCI,
-     .generic_name          = "virtio-net-pci",
-@@ -99,11 +106,24 @@ static const VirtioPCIDeviceTypeInfo virtio_net_pci_info = {
-     .instance_size = sizeof(VirtIONetPCI),
-     .instance_init = virtio_net_pci_instance_init,
-     .class_init    = virtio_net_pci_class_init,
+ 
+-    scsi_property_add_specifics(dc);
++static void scsi_cd_s390x_class_initfn(ObjectClass *klass, const void *data)
++{
++    scsi_cd_class_initfn(klass, data);
++    scsi_property_add_specifics(DEVICE_CLASS(klass));
+ }
+ 
+ static const TypeInfo scsi_cd_info = {
+     .name          = "scsi-cd",
+     .parent        = TYPE_SCSI_DISK_BASE,
+     .class_init    = scsi_cd_class_initfn,
 +    .is_available  = target_not_s390x,
 +};
 +
-+static const VirtioPCIDeviceTypeInfo virtio_net_pci_s390x_info = {
-+    .base_name             = TYPE_VIRTIO_NET_PCI,
-+    .generic_name          = "virtio-net-pci",
-+    .transitional_name     = "virtio-net-pci-transitional",
-+    .non_transitional_name = "virtio-net-pci-non-transitional",
-+    .instance_size = sizeof(VirtIONetPCI),
-+    .instance_init = virtio_net_pci_instance_init,
-+    .class_init    = virtio_net_pci_s390x_class_init,
++static const TypeInfo scsi_cd_s390x_info = {
++    .name          = "scsi-cd",
++    .parent        = TYPE_SCSI_DISK_BASE,
++    .class_init    = scsi_cd_s390x_class_initfn,
 +    .is_available  = target_s390x,
  };
  
- static void virtio_net_pci_register(void)
+ #ifdef __linux__
+@@ -3462,7 +3483,9 @@ static void scsi_disk_register_types(void)
  {
-     virtio_pci_types_register(&virtio_net_pci_info);
-+    virtio_pci_types_register(&virtio_net_pci_s390x_info);
- }
- 
- type_init(virtio_net_pci_register)
+     type_register_static(&scsi_disk_base_info);
+     type_register_static(&scsi_hd_info);
++    type_register_static(&scsi_hd_s390x_info);
+     type_register_static(&scsi_cd_info);
++    type_register_static(&scsi_cd_s390x_info);
+ #ifdef __linux__
+     type_register_static(&scsi_block_info);
+ #endif
 -- 
 2.55.0.windows.3
 

@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9D34E606A31D
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:17:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 243F4606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:18:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=nzfGdFj0
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ogAxHUST
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMA4K-0004xc-2Y; Wed, 28 Oct 2026 16:16:20 -0400
+	id 1xMA5F-0005Pp-50; Wed, 28 Oct 2026 16:17:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA4I-0004wZ-PM
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:18 -0400
-Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
+ id 1xMA5B-0005M9-1y
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:13 -0400
+Received: from mail-dy1-x1334.google.com ([2607:f8b0:4864:20::1334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA4H-0002Cb-9i
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:18 -0400
-Received: by mail-dy1-x1335.google.com with SMTP id
- 5a478bee46e88-3550c917fd3so2011373eec.0
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:16:16 -0700 (PDT)
+ id 1xMA59-0002LP-Hs
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:17:12 -0400
+Received: by mail-dy1-x1334.google.com with SMTP id
+ 5a478bee46e88-3535a54bed9so2029676eec.1
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:17:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793218576; x=1793823376; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793218630; x=1793823430; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=cWoyICeXIEDcF+ntNhHWZ5R9npUPu6GPUvFCsQk32MY=;
- b=nzfGdFj0vJIWSJvBIPhLSlTeBUhNFF7qz5xNDRrDzqAdvPSTRagPsONybug+PW5r0g
- tfeLIzUmqcRtqgbSzRwegr/EQCP69k3YmD3Fy+ABD4WXxTw9+ngFldiAw1IlmpSYNfyO
- yIMh6h5nslMQuo4VES2xMsw9w+aVoQ/j5Ax19k5euGwK2k0AnXWXAo+ciTnBB9dWqzNr
- YeNuEQEWGkZPiW7W1NCv3qlEezpo6zsNyxLZtzsa9b50t3wjDT7Aztkv9ZQAENlLBfhQ
- /mJWqGjlvU+c9tN3NOvIFqwEqVc+byljC8ok4L+ysEqIp7PqVUnEvqErKGAbeBk4QYL2
- D3FQ==
+ bh=Pd8ISBmCsatho7AhV+Cur/SqnrJPTwwxEIzKAKYv7CU=;
+ b=ogAxHUSTaoIUduopi+eKeRwwr60xzFWpUmxvzAKaZDjn+qCsyC3m8xXC4wLMtdpxUu
+ TNZUvve+RseQ2gLf5r12uRZ6WcDX+Zqv8obIbIp90Q4vO762S62M+fKnS+aDuPAKN42A
+ Opos/uQKK5new+lPNTto84+2a1No8QJij9UP36LpFaUDR3Qf/6+pA/sxefDr/+3XP+h5
+ 0ZjUqgrV0ToPdr7Faw3kcm0SSslhl7Xwc2WMvphHoaKNeDd474pNJQlRPQ6lpc7nUltx
+ vJzfHDRuupOxnbppTQQWkTTpxJkS/BnJ6b5uQR+y1JcrVyf2WNOnprX4Ee/aF3hvW1lW
+ lx5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793218576; x=1793823376;
+ d=1e100.net; s=20260707; t=1793218630; x=1793823430;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=cWoyICeXIEDcF+ntNhHWZ5R9npUPu6GPUvFCsQk32MY=;
- b=cWqj+3CKtmDyyp+w7CdJtLr5a0oMmOMtD8yQzz5gMwfR4CrCqsTIJolrCSh9P1Ab1P
- pZ0DhahRlYuAXKcqFNOO20RqnJQmLxjSgBcngaj5sP0ERie7kZjeqQUUpsYBfmoh297q
- SgfNFV3+ug61k9075sQQKFtOSOA/8f1W+UME3oWMxxUvWJ8BRGGBLdCPbOvhfEOqKNpR
- b5yy0TKobS1/LRjt0TG0WaPrYxdw3QOBetsohjJBtYZmb3BFRGnh3AIe0u/MWs3qMVP6
- 9shQD7CqaYist4xhLBur8NaUa1t4/RIqmNYM/+g5lStUQmeKDfxr8B0tOH7QN7NaMK/F
- 4XWQ==
+ bh=Pd8ISBmCsatho7AhV+Cur/SqnrJPTwwxEIzKAKYv7CU=;
+ b=KjENkGVlvs3gRWW6DIisd9cBriYo7UZBi7VKKNC9ZkVgb7FVGbNv55lKpZzcXavf3D
+ 5RBL2f6Q0YJ8L02eUdZ4MAXDpDDA551Kn+nrBpHcnopWYwRdCWj4NMaam8qNZE+QIviI
+ 0I52ziqOohU2Oq9hl6b4reIsHxy59Xx2YjDx4C7Sn9p2+Bb4ptFuQI2tdLrV+miHBkXF
+ lgu5zW24KE3ihS4JN8dWCbQOUxpXGyNaUO+PR9lwbjnRd8x8OpWhEbjL/Oh9PJrOx1Nt
+ i0d/mtLSvcEL8Hd2SzU7PQjlw46OmAXaNmL3YTkQ4/OSWI7Z8qzegqBFk1VKgMq3xNHf
+ /zrg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy5lE88JlsOrAtX2JOOKR1/xlpHg8J2vdDLmnG5lZi6+tB8xagh1K+mMA977478vcGMKp+Ud5tzkw==@nongnu.org
-X-Gm-Message-State: AFq9FYIe8lTTOUTsUusRz6WX0J7sPOj1LHQBk3r5lGgm1S7XMYIsylS5
- SjoNZec4FSWCCyRFV3L3q7oBRodufPfSRQY550u9rOEDCl8l2ijkdQkL
-X-Gm-Gg: AYBFou2Q6WLZwZB/ahfWgC07LpeaU+lNHUR2PBeCUAmofgu4H2IDsEwQ60E0xEBq1UQ
- 01ee1AEuAVshtl3a581RMctmsGn1flQWmvs0XX0DrOPvQ/tVt5SYR0CAv2jXptEEc01gLnE3duF
- VFmvt3+kSDyjz6LD8fEqW/BzNwaCdB7UM9UybdXMfJehCEBHQ6Vo+Q4Och2kTu9QnGdN7YYxrpL
- 5DnEcJmlOAh91qhDce34FfxQDE2BomWfjJTQzpFosQvn+LIvjK6ujmkfLWVpy7Tk++dQUUU7Cs1
- brm0eDgWm6Ns1X97/G59cR6MixgXRV8uS4A7EcH7KI9vSbeNzn2XUnHL94tUfDPJIPhXCoB5jgO
- eGNnW+irysLVy9c+LyDjQkdSWoGFdiQI66f4AzL+jviuMJ9UzQUfGj9Nq6GZ9aH6HmGANNl4FWP
- tIeoqcr8qirgMbEUvR/6XEHK0TRMjXuT+cHFikakMrectVtAR9gbqaZNE+hwgWDo7skh46RhkCw
- ZiqSiFiHyry646HtLjrLx0ZxlFhw1rC8VLxSt4H/wkyz6cqjnvxb/WPtyb8HkvlgKmHh0JB5O9I
- B1NWslpmVDktJ9HUhDVU19BxnL4hap2WWOSAngqNC0Hf0GZ6
-X-Received: by 2002:a05:693c:20c8:20b0:369:ef63:ea90 with SMTP id
- 5a478bee46e88-36a203fe357mr4711973eec.28.1793218575593; 
- Wed, 28 Oct 2026 13:16:15 -0700 (PDT)
+ AKwUvBxQSlOzUzgs6hyDGkBCgIas/8SuO7+klYXIkIauiLNc3vhBiTVW8twKMPriK+d4m5ADtLuHKEh/Ww==@nongnu.org
+X-Gm-Message-State: AFq9FYKUvI0ZpiOx16i4FLMnQVTgGALhvFgGOHJx+ZOZ1hBNk/CLA7cA
+ 2AUqPp1K4SDAvniStcgNciOMsv5zmMKNpqzN5P9mDc8lqRJxUTINM6+r
+X-Gm-Gg: AYBFou358p/ErxfHMUxjG63LoEJmFgkukgliImy/9Qz6FYw9yspKOP0YDLWxlm+hB7j
+ lePvqMiqJviVY85WwBh5V+7ixfsmepjiaigKtmlYbbpC51e63CaJQmposK5CY06r/fbQEycsBLZ
+ 4AK/5OaL3kyiRazzPb1GiyYfNCcT3GbMN5opImlPytO8rzsyygIzBXkos3Sg3SHQVbn72/X7jNM
+ zhFTOGsUuoVeS/5Kk5clyf7D9cqonzzwCIqzV31By/IQk+4QyIeBDJaKJ9UO8nQobbPhk8hM3D5
+ cCkFoyfJ5Wobw+kLEnjqAQZXvdKQ3OOrg0/bOhev5/W16XwnjyN0W9AldHdpy4kPHD0HZnLRU1A
+ nIL5qT08DITpcMX1rxS0wRUarYo+Xufe6/hP85LDY7PNvoAjf/xropzU7+WHBJNomxtD0Fz1qU3
+ EdrapFyhJ1BRRTAmZ/xnmM7OvpnhllyqYSa1VTrfJCCYZE3xxIQzblo+8Y9kKF6mgUlILPRWcdN
+ mKpo2Gswt6nqPa+GzbATaCPleisnvfY2zOTtxWbmEBBsARWUfHwy1/QEfOk1ze31uYyDfdBEMg2
+ yRLtVUWtFXgGo867nkDabDo0Mj0l+Md4t3VBsVzvrKd44nU1
+X-Received: by 2002:a05:7300:d589:b0:35e:a225:3ba6 with SMTP id
+ 5a478bee46e88-36a203909ffmr4540193eec.13.1793218629989; 
+ Wed, 28 Oct 2026 13:17:09 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.16.10
+ 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.17.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Oct 2026 13:16:14 -0700 (PDT)
+ Wed, 28 Oct 2026 13:17:09 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -82,17 +82,18 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Philippe Mathieu-Daude <philmd@mailo.com>, qemu-arm@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 01/12] target-info: add target_loongarch()
-Date: Thu, 29 Oct 2026 04:15:45 +0800
-Message-ID: <20261028201557.2688-2-luoyonggang@gmail.com>
+Subject: [PATCH 10/12] target-info: add target_base_i386() and
+ target_not_base_i386()
+Date: Thu, 29 Oct 2026 04:15:54 +0800
+Message-ID: <20261028201557.2688-11-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261028201557.2688-1-luoyonggang@gmail.com>
 References: <20261028201557.2688-1-luoyonggang@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1335;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1334;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,53 +115,73 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Report whether the selected target architecture is LoongArch.
+target_base_arm(), target_base_ppc() and target_base_riscv() report
+whether the selected target belongs to a CPU family. Add the same
+predicate for i386 and x86_64, and target_not_base_i386() as its negation.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/target-info.h | 7 +++++++
- target-info.c              | 5 +++++
- 2 files changed, 12 insertions(+)
+ include/qemu/target-info.h | 14 ++++++++++++++
+ target-info.c              | 16 ++++++++++++++++
+ 2 files changed, 30 insertions(+)
 
 diff --git a/include/qemu/target-info.h b/include/qemu/target-info.h
-index 2cd4cc5671b..6c4e2809ad3 100644
+index 4bc25789d8d..48206d01ba9 100644
 --- a/include/qemu/target-info.h
 +++ b/include/qemu/target-info.h
-@@ -92,6 +92,13 @@ bool target_hexagon(void);
+@@ -57,6 +57,20 @@ bool target_heterogeneous(void);
   */
- bool target_or1k(void);
+ bool target_base_arm(void);
  
 +/**
-+ * target_loongarch:
++ * target_base_i386:
 + *
-+ * Returns whether the target architecture is LoongArch.
++ * Returns whether the target architecture is i386 or x86_64.
 + */
-+bool target_loongarch(void);
++bool target_base_i386(void);
++
++/**
++ * target_not_base_i386:
++ *
++ * Returns whether the target architecture is not i386 or x86_64.
++ */
++bool target_not_base_i386(void);
 +
  /**
-  * target_base_ppc:
+  * target_arm:
   *
 diff --git a/target-info.c b/target-info.c
-index e67d7bed520..b6d9cd8d97c 100644
+index d9e15c939d6..32ba85691b7 100644
 --- a/target-info.c
 +++ b/target-info.c
-@@ -84,6 +84,11 @@ bool target_or1k(void)
-     return target_arch() == SYS_EMU_TARGET_OR1K;
+@@ -59,6 +59,22 @@ bool target_base_arm(void)
+     }
  }
  
-+bool target_loongarch(void)
++bool target_base_i386(void)
 +{
-+    return target_arch() == SYS_EMU_TARGET_LOONGARCH64;
++    switch (target_arch()) {
++    case SYS_EMU_TARGET_I386:
++    case SYS_EMU_TARGET_X86_64:
++        return true;
++    default:
++        return false;
++    }
 +}
 +
- bool target_base_ppc(void)
++bool target_not_base_i386(void)
++{
++    return !target_base_i386();
++}
++
+ bool target_arm(void)
  {
-     switch (target_arch()) {
+     return target_arch() == SYS_EMU_TARGET_ARM;
 -- 
 2.55.0.windows.3
 

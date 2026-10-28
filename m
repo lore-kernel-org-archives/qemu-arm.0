@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9CCAD606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:16:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A61C7606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 20:16:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=m93TdaKW
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=J24gzf9G
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMA4k-00058M-B3; Wed, 28 Oct 2026 16:16:46 -0400
+	id 1xMA4g-00055A-Sx; Wed, 28 Oct 2026 16:16:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA4h-00055e-Hb
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:43 -0400
+ id 1xMA4S-0004zR-SI
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:30 -0400
 Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMA4f-0002GY-AB
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:43 -0400
+ id 1xMA4N-0002Dg-7v
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 16:16:26 -0400
 Received: by mail-dy1-x132f.google.com with SMTP id
- 5a478bee46e88-36661f953e4so2232837eec.1
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:16:40 -0700 (PDT)
+ 5a478bee46e88-33fb4680717so1515763eec.1
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 13:16:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793218600; x=1793823400; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793218582; x=1793823382; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=obAwicYQArWnw8mdM95mb/RZp67/7GPYWgLKlbu+5L4=;
- b=m93TdaKWpxlq1SrL06/yZi3GhlLaT46g/ce3U12RM5aCmVTZ3LFuUEwbhCANuuO9GH
- 4fvcXB/rOavcCzaHhmbsAKZhE7Mz1f6gVeAmCgQRPwChGhZWL1uqPPl9uka356ZE8kb6
- a2mAFe5uLjV5Lhv2LxHR5dVQO1rHCfWAEXIQY3OzMnjBZUMppuVPCs8YI9QTF64KWMCs
- Th/pQKSP8vCaxDjEfHvV7d0h0dq992102eDbR43GS30F61P7cmT2ht3JIODjBZPHd1OG
- FnGTpFjY7ekY9M73Fgs+wPLQmKzpwFfIuFcV/V7cLm3TJ1EOyp4kEysacE59chgNPAlx
- KERg==
+ bh=jxKoLwAp1Bl4rnQorq+3BYZr6+qu/Ilca8ukToeEfCc=;
+ b=J24gzf9GCPCBsf3Up97UU6TVUtkCbOHXcIBQf/koc5cJtB1KEmbHtkrolGqmTt6Nwl
+ rMp1LwKrl/U08E/gpepKIERJxI6qB0AYsVOJsCGl2LAbVX+qUZIMThzmKIZ/Qj9qitZn
+ Yv7H4aLfxvla7BQtAmyY93lplAR2HPDSTqFJibM+lIbObrMxZFocP5zjXNswB8yTldXX
+ TIayzJhto7Vj3o+/h5FJfH2y28Qi9ANDZ3nQAj5GVJJy23xOtiLonhklzk/Bv0rc9b4T
+ HfX2z6IP+PArBcTc0Qmbp1FUygqHMTiSFTcrtfavRjiIfdavkKlZNbh1ZQMdxfnUR4Qs
+ HUmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793218600; x=1793823400;
+ d=1e100.net; s=20260707; t=1793218582; x=1793823382;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=obAwicYQArWnw8mdM95mb/RZp67/7GPYWgLKlbu+5L4=;
- b=btGZpfzTKoRMZwKDpNGnt2Oz/mLQxxcIMwwATc44Tf5B0mZyHxJVgB0CkQCgQ5HFi7
- FWIfUhZeOqK+JcVpDaaQMZHrstViOmfdqrcZNiAjMdWo1Uwyxpy4ea/ws89a/P3jCWvf
- waiAZqHG2+oiT2u5qm7f2IzIbXnn1YM7IAfd63Y8BmOTIIIEbS2oLJeX+8tFoy/SiuYB
- qai2SJhOUu7RPpPhCKrMDA6yawzqQTMIsZ0zNEdzVgoPq902flmlHH8wcu719Tofl26b
- xXBzvA5XU/q6KqNX9BbpdrUpgN839UQ1L7OfnFc6EgTD18+sxICvXQKi91WsKC6awTBq
- 1KZg==
+ bh=jxKoLwAp1Bl4rnQorq+3BYZr6+qu/Ilca8ukToeEfCc=;
+ b=BRd4QVuJE9wPfWMkSdKO2KY1ENQsBS7GRD+YBVt+bZWgKtel/zchmjWP3Ru0NVpfK+
+ 8wSiA6i/7AluAulCoUkAdY7t5NN3lv7gIte0g+bjzstkXZ331KIBpN7gYWKIQHep9uiR
+ 9be233lZuzu2vVkNf3jWp8gAGWp3yH3OGs5VuwRlcnhJthLuVxU3pxiBVIpA/ryL7EdS
+ MLw/iSSnXKO64KJakJTfWvbBu9IZKalr/DznKa/+epop5RfPc4H6oUUCKdKtq4ObH0El
+ JBu6sGEQlvPTnTEF4MB2b3dxjiahM+rfhE8BxeU5x2JDWMf/F7hmyjpjV8a4vie3u/Ko
+ zwUg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzp3YZlpEzazm0lYSWr81aaCj5zPO5cIls9XTpyEeFOLEbYp8BKgKXvuL0nfqbz47PBiTq8525RRQ==@nongnu.org
-X-Gm-Message-State: AFq9FYLAgN6+JvFyan6gDRRl2NcIpYMng8Nu0OPiix2mzc82r7d7/VW6
- EkxVdVEgiXU5ZbdY//2b2cHjqEyjFNEgqyp0ZBBdx6Ba8AshfLCJNAbJ
-X-Gm-Gg: AYBFou2gb3isSbo/T4sB/4jkAaDleh/P8zWhXhIGIHvIQta7RsB4+H6A/8KlQkmCgQH
- KRdEz9o2KS4LziZrXdXBJWxaVHQtyZMBkbF7hp6sKHe5UVSlcgkkJwL9+xb3og3/h5vop6LFoV6
- 846oxPanAV+Sw8bmS+LAc052J1S9qJ+na8xKPlFBLuq7PdzN04aqcJLPtn5BelPBs1BnTeS4eFe
- Ow9a7Wc8N2vfoEX3dcSAeTHg0dE+eXbySsmCKpj+9f3jJmvbMuXGXJACTfMbzIoUpXG8m1JVrjA
- +oF/7E55AYLpHZhVySVg2d/jLtt+ou24QjkMpZKYJsWDNGuG0/9pJDFtOpTCs7yhufB2elApgy0
- TtSYjkAGER3+VNLYgPCcAbqNYr9Nml7dqbMkzOUmTmF7clMCI4uBfgVz1k0toHl4i8KXXWBmrWZ
- //ePhYPg29oJbQXJrlcCP9e8ehMYXB8gShQjMt9F4pVOF8vn/D0+svsrHjv6IC3LaNepYhGRBbR
- B0x459uVkOA0OQiG9IbeddoICwKfePTWtegxhIlDEF8iduejUzly83iebWnMLI7njLJYBYFD201
- a7UyzDm6jGsRFBnock26S2BB5hdqATw8J/UdqQxAkZQ7j+yu
-X-Received: by 2002:a05:7300:7312:b0:358:ec5c:bef1 with SMTP id
- 5a478bee46e88-36a204773c0mr6758751eec.39.1793218599863; 
- Wed, 28 Oct 2026 13:16:39 -0700 (PDT)
+ AKwUvBxurHN76MyxKLNniJSPaAjs/S1y3f41VTNTHA0W3gylzOWX9Xht8fapzWWELBYEYzIgFPmUSDrjuA==@nongnu.org
+X-Gm-Message-State: AFq9FYKWz91wWmxJJ93d7f1O1SpdYiwkZjmIPO2xkX3IeCna2XezBgEy
+ /uMwm9dO+8zhE8O+pe8XhHxzWFPefMyJJhsQWgtAdTXiO58riU/V9Qmu
+X-Gm-Gg: AYBFou0f+4z2thpHJc1327see501uus5B7LAWHVps3Q7TUr52vMasYrhURjy8prbwvD
+ ujhtoyMLhy4ewktH8fuEczYn11cpMBpJ8oPNpDL6Cx7UTgUAcKW9iMP9Or3BhF857iLifIJvtbT
+ 9AxHm+FT+8w5s/dJvsLYjxoQb6CRaSB8cXyBHY9v214KlUfcobT+FkhVWQCkgijngdT1TxA2YqC
+ QXUeUV+My851O11Zn293L4gDlMTY53MeP9a/VmTfHw5RrMIJ5bCC14F2XGrwZaZtKhhht5kmEtB
+ QrZnQtmi7JWbUXjh90u21QCk4MwwKYMgoyFJkRGC1WBGc1IRi8KyY70oBhVtu0w2jQi72FVq9m9
+ AFUzTliqd4CcbbQUMU8uqNt5OPdp3rR2dSRXZuskWzteLhSlDf1KJvTKxPC3SH7ndGLZyV3jzJh
+ 1jKUNUn9qzMgWOwKJP2GZbMDJU6dOz/KS0ol7iN8js2IKBKpLgQ2VI8Oi48UwdfxrWWK2QVAWcN
+ vSLl1aKRkEsMXtAtHWZ5LgA73aT04khWZ9cfl3S2lmjQ4Xq5/zklOUzV2Lj47ybzV5mJpUVXw5s
+ +vCvzpC8o1YScEoYI3tcrcNeQdJ0NARfcQYB4nQuYMNFT7Ib+9P+8yc7owK+Wx4UHsQt4Q==
+X-Received: by 2002:a05:7301:78d:b0:36a:1d6f:917c with SMTP id
+ 5a478bee46e88-36a203ff237mr4351578eec.22.1793218581543; 
+ Wed, 28 Oct 2026 13:16:21 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.16.34
+ 5a478bee46e88-36a23951e00sm12016896eec.20.2026.10.28.13.16.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Oct 2026 13:16:38 -0700 (PDT)
+ Wed, 28 Oct 2026 13:16:20 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -82,10 +82,10 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Philippe Mathieu-Daude <philmd@mailo.com>, qemu-arm@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 05/12] target/arm: register separate max-v8 CPU types for arm
- and aarch64
-Date: Thu, 29 Oct 2026 04:15:49 +0800
-Message-ID: <20261028201557.2688-6-luoyonggang@gmail.com>
+Subject: [PATCH 02/12] hw/loongarch/virt: select virt machine types with
+ is_available
+Date: Thu, 29 Oct 2026 04:15:46 +0800
+Message-ID: <20261028201557.2688-3-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261028201557.2688-1-luoyonggang@gmail.com>
 References: <20261028201557.2688-1-luoyonggang@gmail.com>
@@ -120,68 +120,43 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-max-v8 was one TypeInfo whose instance initializer was chosen from the
-selected target at registration. Register both initializers, and let
-target_arm() and target_aarch64() select which type is available.
+LoongArch virt machines use the same QOM names as virt machines on
+other targets. Register them only when the selected target is
+LoongArch, via target_loongarch().
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/arm/cpu.c            |  1 +
- target/arm/cpu.h            |  1 +
- target/arm/tcg/cpu-max-v8.c | 16 ++++++++++++----
- 3 files changed, 14 insertions(+), 4 deletions(-)
+ hw/loongarch/virt.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 510fc9eeb3b..6eb55242980 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2695,6 +2695,7 @@ void arm_cpu_register(const ARMCPUInfo *info)
-         .instance_init = arm_cpu_instance_init,
-         .class_init = info->class_init ?: cpu_register_class_init,
-         .class_data = info,
-+        .is_available = info->is_available,
-     };
- 
-     type_info.name = g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index add993ef101..3240a8633ee 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1203,6 +1203,7 @@ typedef struct ARMCPUInfo {
-     const char *deprecation_note;
-     void (*initfn)(Object *obj);
-     void (*class_init)(ObjectClass *oc, const void *data);
-+    bool (*is_available)(void);
- } ARMCPUInfo;
- 
- /**
-diff --git a/target/arm/tcg/cpu-max-v8.c b/target/arm/tcg/cpu-max-v8.c
-index 65f851f2006..e819d07e6ce 100644
---- a/target/arm/tcg/cpu-max-v8.c
-+++ b/target/arm/tcg/cpu-max-v8.c
-@@ -121,10 +121,18 @@ void aarch32_max_v8_tcg_initfn(Object *obj)
- 
- static void cpu_max_v8_register_type(void)
- {
--    static const ARMCPUInfo max_v8[2] = {
--        { .name = "max-v8", .initfn = aarch32_max_v8_tcg_initfn },
--        { .name = "max-v8", .initfn = aarch64_max_v8_tcg_initfn },
-+    static const ARMCPUInfo max_v8_aarch32 = {
-+        .name = "max-v8",
-+        .initfn = aarch32_max_v8_tcg_initfn,
-+        .is_available = target_arm,
-     };
--    arm_cpu_register(&max_v8[target_aarch64()]);
-+    static const ARMCPUInfo max_v8_aarch64 = {
-+        .name = "max-v8",
-+        .initfn = aarch64_max_v8_tcg_initfn,
-+        .is_available = target_aarch64,
-+    };
-+
-+    arm_cpu_register(&max_v8_aarch32);
-+    arm_cpu_register(&max_v8_aarch64);
- }
- type_init(cpu_max_v8_register_type)
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 9c5371af9de..3f1b82f25ef 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -11,6 +11,7 @@
+ #include "qapi/error.h"
+ #include "exec/target_page.h"
+ #include "hw/core/boards.h"
++#include "qemu/target-info.h"
+ #include "hw/char/serial-mm.h"
+ #include "system/kvm.h"
+ #include "system/tcg.h"
+@@ -1553,6 +1554,7 @@ static void virt_class_init(ObjectClass *oc, const void *data)
+         .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
+         .parent = TYPE_LOONGARCH_VIRT_MACHINE, \
+         .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
++        .is_available = target_loongarch, \
+     }; \
+     static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
+     { \
+@@ -1587,6 +1589,7 @@ static const TypeInfo virt_machine_info = {
+     .class_init     = virt_class_init,
+     .instance_init  = virt_initfn,
+     .instance_finalize = virt_instance_finalize,
++    .is_available   = target_loongarch,
+     .interfaces = (InterfaceInfo[]) {
+         { TYPE_HOTPLUG_HANDLER },
+         { }
 -- 
 2.55.0.windows.3
 

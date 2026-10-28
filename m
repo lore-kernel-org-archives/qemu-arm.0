@@ -1,100 +1,104 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5D8D4606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 15:40:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58E03606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 16:21:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=wCGddhfe
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ZrXkucmp
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xM5kg-0003zJ-93; Wed, 28 Oct 2026 11:39:46 -0400
+	id 1xM6OZ-0004Pj-RG; Wed, 28 Oct 2026 12:21:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xM5kf-0003yz-0E
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 11:39:45 -0400
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+ (Exim 4.90_1) (envelope-from <gessingate@gmail.com>)
+ id 1xM6OY-0004PG-0P
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 12:20:58 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xM5kd-0002Pm-HN
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 11:39:44 -0400
-Received: by mail-ot1-x332.google.com with SMTP id
- 46e09a7af769-8446af403b5so705075a34.2
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 08:39:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gessingate@gmail.com>)
+ id 1xM6OV-0006P5-6J
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 12:20:57 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-48afcd7ba9bso887730f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 09:20:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793201982; x=1793806782; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=mHjnrJEuLd12KCYgxp0nF8GBsbP/mQ0Xsqdpe9jiF6c=;
- b=wCGddhfeqzBhFVU7QlaDmJs9xO2cOB/lh1EjEswEyqMITequnxYVvZmiVbzRtjoTg2
- l0LRJwPhfhpfkifhDg9tzEzhPrU9wB78AtENGHCUwpedoWoi9r4/mryLo4jmdIjaFYcA
- M1CigsoS62vRmpwL6ECZBw7vuBQvu66DUbAkQXpeLggFCxgVe1VcWi9WbFz2xzR7xuHf
- xw8uw5veVFSztawpWfYlGCmCCIvy9qK3V9ULl89L4W0mjNryasrnVTvum870iX47nhvH
- bZdZwaXtOgqsGNJo29PTDL6KCnjtSDdReBa8IMewj/O+XdAkcoVbxLwAVjYDmD9K9wbo
- j3xw==
+ d=gmail.com; s=20260707; t=1793204453; x=1793809253; darn=nongnu.org;
+ h=mime-version:user-agent:content-transfer-encoding:content-type
+ :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
+ :cc:subject:date:message-id:reply-to:content-type;
+ bh=fgksD8YpRJ0dS5SAgOgXARJt//ksQAV43218ic9vy40=;
+ b=ZrXkucmpSRN+92t/6bQrctK23Txr7oJZ5rQD2E4NbQqmdjUkC61YKVT219IG+6LTZM
+ OTiCNkrbv1dsUBKAliE1BJknfzOUE/c/m7oJmfE+nIlsoBqlrd1phv40CdclkvKafEvs
+ xfxs4d/DBj9JdM1gGNVjQ8A6PAvjRzwIYUBLHNchVP6+vQvZEFDqgOQodJN55bHGpdTK
+ oUEDCNNP4rAo1AntnCiT+6vujZ3XeHu5NX1AcCYT2K71z+bRJNOxlWG9fYEk6xsp88OV
+ BS8HEROvDlWdAW2NMvIWewULH3abQbScNTwPN5aK7lPcjD+D5lfxP/SBSBPDZSqFbpnO
+ jsUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793201982; x=1793806782;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=mHjnrJEuLd12KCYgxp0nF8GBsbP/mQ0Xsqdpe9jiF6c=;
- b=IwtxO1gEKsK9E/ZfzTJc3kkUFImxFXpowU6T2n0bpq/ACOQpvsI1w6fTBKO9Hb54jO
- /9tdm8CeWLRboNfLgwdrFlCN7u6jYUv92784FYCvNVqnnYjSfNqAc+mdtNOCffyb42Ms
- B1/e/0Ov6uwPXcMrVd8sCwi4sa6a8Er7iagmL0/OfbDGRgXoKYqNcJJTFZ/JqoCh0bc4
- ky0eSVIGGZywMO6AlpXM3TKRhkmsBvH8N/WSG2LBqwJRRJRhJFW856QvUEKzVKZ8OC6+
- ICh2VXV4l0Pfw9QvgtSKZneia6DytmTxjnhLrx+F60ylvRNz9tpPcPp/ktA254pVfIpu
- sxpw==
+ d=1e100.net; s=20260707; t=1793204453; x=1793809253;
+ h=mime-version:user-agent:content-transfer-encoding:content-type
+ :references:in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=fgksD8YpRJ0dS5SAgOgXARJt//ksQAV43218ic9vy40=;
+ b=or2RCjGOGIyNnxFrPuhp2hMK09KtIOz4BjcFEsW1T88xuctvPwSSdlTeNMcD5beMdS
+ cAJoxOV2Qr2050p5I3+66bqDk777p8YNyPcnxbJICGqqyTJZhTJu9Xs4m4BEXNHPT2G5
+ QtHorjh2pAlsSwAz6M3USikYoU/8Zgz+sdy6sxwZ4z29qoxoa4x/Su6P+WlOkZ4ueuR4
+ ueReIT4RcCb1z9npEx6FUZ+K39etOUA1N19f+ZJL6siligUS+CsiKAvtROkKe8k+oJJA
+ 9VB7F5FUhxWO5HLTCBAipi56htnmbgwWnPS6jHBm9efwsExk7znf3PB8VI0q4tIE1AQI
+ 50Eg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByd1ETxkd2YPu0nsT9fgk+iBqnwatzJBNF3M3uWPlDl21SAWTAYczzteivjbNiEc/tLzqq3G+ULuw==@nongnu.org
-X-Gm-Message-State: AFq9FYJ2hg+t5seaaMUrn6HRz0qJjmTIVfH5R1dNA1F3ic7oUPuOWySc
- UuKPaoCK5+mnV9GqEGd9F8V6sGnHNVG/7oGJj6fFjTZItAkDtWskhqcLMmZLw4juoa8=
-X-Gm-Gg: AYBFou1PmKDmhAZEbkkj4Ynz/vMxmoFwSTxwU8pI2xT4NO2HUFT3VGyJvH/RJrfJ/z+
- 5mhymLyJind60yW171NYS4anhhSKFfFbNQBDxst9VRZM7H3WLYDNzGttl79Xr0HtGiLI4G1Wtsf
- CY0UXi8uNP3wGc0xqWVoONv5OLyowFEBZhraIfVSjzf1MWbCns8b9xQWfATPb2m2wrGtFGe7RFW
- n1BlkzxFRtn6aqqWRz9fhd4VM+Te5mgJqA7UNvvbQKMd5hNGwpiA1M/9zJXV1aVZ9VKH+mslCO1
- SvoeqMc2AWwjpKadrlFkqXCqjWCOrB+Y0QFciDuJociPlnwhIrJ68hNJYkp2LAkT33yTNP31XKJ
- 8WblJd9boKg6cbGOpVdI0C5A+2yQM7lsxBP0hrUgKNrXVKPvwv/dDBFZl20W0u00frR1KUdZWl0
- LhifqYQoYJjafe2mUh1F71jdZEOQXLTfd2zXMV/bUD9Tl8GLkLlMpvO7ucqnrxHFdjkD+5jj5qx
- CP4HGCbWSf0UA0+KQyrImgR8txvc83UBwI6xHlm+JruPyvupRF0uL+N1Yj2lozNmwBwnSgVN/ID
- 1fuqW46Udne+/L+6dAO3LTsexNHQ4h4kJiFEbzL+ugMg2VDzjoI5XBODnVj0D1jWzSQquKIAkQm
- R+UKTaTsGDV4P
-X-Received: by 2002:a05:6820:a502:10b0:70d:1692:14ec with SMTP id
- 006d021491bc7-713ef91f654mr1043247eaf.52.1793201981732; 
- Wed, 28 Oct 2026 08:39:41 -0700 (PDT)
-Received: from ?IPV6:2607:fb91:2c2e:8a8c:60fa:827:925e:3bb6?
- ([2607:fb91:2c2e:8a8c:60fa:827:925e:3bb6])
- by smtp.gmail.com with ESMTPSA id
- 006d021491bc7-71429d864c9sm1684900eaf.2.2026.10.28.08.39.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Oct 2026 08:39:41 -0700 (PDT)
-Message-ID: <c22165ae-b25b-48f8-9e66-bc4cc22e4dfc@linaro.org>
-Date: Wed, 28 Oct 2026 10:39:37 -0500
+ AKwUvBxfQVRwvK88rsv1F8FnyxjDhSCmo5A5QD/2zTJHUO5Mt5kgZlo2NjHFD1s3jxlP+agtsCYS3ioHYQ==@nongnu.org
+X-Gm-Message-State: AFq9FYKvvZS3l9rY0Pq+lTPaCmxpQNBmly7dEcyJetZIEZ+nTltfylUa
+ uHLWLYTXSpLVfes3BdIQNFjobPZqU9UYum08IYDObuMd0w4jntcd7xbS
+X-Gm-Gg: AYBFou0bYSywF7rDsgsVzsNJb5wUTYiqdJ44A6Ovigb5WUykwroVtSENRRqeo7qeHi9
+ MqM9C1NdktvMqyUXSQjpA86w4xCB3NGnTiTXi0e7vFQAO2azauxY8S/UDfynzJRtAjGoTrFkYSc
+ r/IoLLYS1pdAQI1zTQ7UsOqXCmjAi+/TIVt5CYhsbm6bd5Glij0MDRdcJNWjLzVA7hU+Q6kl8OY
+ qXFx0kyf1JblEY12A86zRYD7716vImkjJ53mrq6MFevtPG1pcngLl8TYQNVPwZ80a6WDQsibVeA
+ mmYJoos+GyX7F9LntPIDu4KZlFi8dRD9+zNGWdqmxKAanabo27eI2jCei94xrEorVAJ5zeSJhHH
+ dKDLIOgGl3iFvGFV7GTB6ngTCEOn4LaO24FSHxwRve2WDi8zUbg8rrepnkYJ8kyx0lNf5zJ8iUO
+ u6Y0J8rG+hy3pI2AQ0rBqHEfEz9wONaZ3/rQCR3HF7Pm7AZ65OZJ8q/RRAHfHaB2VnDDUEVRgBi
+ KhneZh53dWlYnUgdPZEQp181JtOZByvbl126tXJIK1+vkEauYxsaioa40ivpYEt/td93EQBUVJf
+ 8kquH8c99+Ab/I+SgflX4F4Kk89+k0YjdrG/XyLvFcEfw8AGHz+saCVBR6CDT+r4KLXlLI6OGa4
+ A/GxSIlpL83JX
+X-Received: by 2002:a05:6000:4026:b0:487:106f:ee31 with SMTP id
+ ffacd0b85a97d-48e5d5c70b7mr6467891f8f.27.1793204453021; 
+ Wed, 28 Oct 2026 09:20:53 -0700 (PDT)
+Received: from [192.168.1.89] (95-24-99-141.broadband.corbina.ru.
+ [95.24.99.141]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e3ebc39b3sm30269023f8f.10.2026.10.28.09.20.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Oct 2026 09:20:51 -0700 (PDT)
+Message-ID: <5d219f231fb1f97c6d90cbef4068e82dff803a18.camel@gmail.com>
+Subject: Re: [PATCH v2 1/6] hw/i2c: add dummy device
+From: Timur Maksimov <gessingate@gmail.com>
+To: Markus Armbruster <armbru@redhat.com>, =?ISO-8859-1?Q?C=E9dric?= Le
+ Goater <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Peter
+ Maydell	 <peter.maydell@linaro.org>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Kane Chen	 <kane_chen@aspeedtech.com>, qemu-arm@nongnu.org, Fabiano Rosas
+ <farosas@suse.de>,  Laurent Vivier <lvivier@redhat.com>, Corey Minyard
+ <cminyard@mvista.com>
+Date: Wed, 28 Oct 2026 19:20:48 +0300
+In-Reply-To: <874ie6ku2u.fsf@pond.sub.org>
+References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
+ <20261027-aspeed-i2c-nonpkt-fix-v2-1-07deed1dff60@gmail.com>
+ <2629ee8a-e817-4764-a1e3-72e0ccbb978b@kaod.org>
+ <874ie6ku2u.fsf@pond.sub.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-9 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/86] hw/intc/arm_gicv5: Regularize spacing in
- config_readl() switch
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20261013083933.1024405-1-peter.maydell@linaro.org>
- <20261013083933.1024405-5-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20261013083933.1024405-5-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=gessingate@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,27 +110,118 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-2.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/13/26 03:38, Peter Maydell wrote:
-> In this file we don't put blank lines between cases in switches,
-> except that for the switch in config_readl() we've written it half
-> with blank lines and half without.  Delete the blank lines to make it
-> consistent with itself and the rest of the file.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daudé<philmd@oss.qualcomm.com>
-> ---
->   hw/intc/arm_gicv5.c | 15 ---------------
->   1 file changed, 15 deletions(-)
+Hi, thanks for the review.=C2=A0
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+It was my decision to use such API, I thought it would be okay for a
+test device. I don't think there is a way to expose integer array as a
+single QOM property.
 
-r~
+Actually, we can go without this model. I suppose I will rewrite tests
+so they don't use it.
+
+On Wed, 2026-10-28 at 11:17 +0100, Markus Armbruster wrote:
+> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>=20
+> > + Corey for I2C feed back.
+> >=20
+> > + Markus for QOM
+> >=20
+> > The brute-force solution to expose the contents of the device array
+> > with 128 properties has a slight AI smell. I find it ugly but I am
+> > human :)
+>=20
+> Timur, have you read docs/devel/code-provenance.rst section "Use of
+> AI-generated content"?
+>=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 That said I don't know=
+ if there are better alternatives.
+> > My approach would have been to use a string property :
+> >=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_add_str(obj, "tx",
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 i2c_dummy_device_get_tx, NULL);
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_add_str(obj, "rx",
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 i2c_dummy_device_get_rx,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 i2c_dummy_device_set_rx);
+> > =C2=A0Any better ideas ?
+>=20
+> I believe you're talking about this function:
+>=20
+> [...]
+>=20
+> > > +static void i2c_dummy_device_init(Object *obj)
+> > > +{
+> > > +=C2=A0=C2=A0=C2=A0 I2CDummyDeviceState *s =3D I2C_DUMMY_DEVICE(obj);
+> > >=20
+> > > +=C2=A0=C2=A0=C2=A0 for (int i =3D 0; i < I2C_DUMMY_ARRAY_SIZE; i++) =
+{
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_autofree char *name =3D=
+ g_strdup_printf("tx[%d]", i);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_add_uint8=
+_ptr(
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 o=
+bj, name, &s->tx[i],
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 O=
+BJ_PROP_FLAG_READWRITE);
+> > > +=C2=A0=C2=A0=C2=A0 }
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0 for (int i =3D 0; i < I2C_DUMMY_ARRAY_SIZE; i++) =
+{
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_autofree char *name =3D=
+ g_strdup_printf("rx[%d]", i);
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_add_uint8=
+_ptr(
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 o=
+bj, name, &s->rx[i],
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 O=
+BJ_PROP_FLAG_READWRITE);
+> > > +=C2=A0=C2=A0=C2=A0 }
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0 object_property_add_uint8_ptr(
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 o=
+bj, "tx-pos", &s->tx_pos,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 O=
+BJ_PROP_FLAG_READWRITE);
+> > > +=C2=A0=C2=A0=C2=A0 object_property_add_uint8_ptr(
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 o=
+bj, "rx-pos", &s->rx_pos,
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 O=
+BJ_PROP_FLAG_READWRITE);
+> >=20
+> > alignment could be improved.
+>=20
+> Yes, this style is unusual in QEMU, and should therefore be avoided.
+>=20
+> > > +}
+>=20
+> The function adds properties "tx-pos", "tx[0]", ... "tx[63]", and
+> same
+> for rx.
+>=20
+> The commit message tells us this is a "Simple I2C device with QOM
+> properties to access transmit and receive buffers [...] for testing
+> or
+> prototyping."=C2=A0 It doesn't tell us how it could be used, and I can't
+> see
+> any documentation, either.=C2=A0 So let's start right there: please show
+> us
+> how this device could be used.=C2=A0 This should help me understand what
+> the
+> properties are for.=C2=A0 Only then can I advise on proper QOM usage.
+>=20
+> [...]
 

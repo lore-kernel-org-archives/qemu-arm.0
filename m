@@ -1,121 +1,98 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E699606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 11:07:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AC6BE606A321
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 11:08:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=fccxrBHm
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=gOoiQKhv
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xM1VE-0007KI-8Y; Wed, 28 Oct 2026 07:07:32 -0400
+	id 1xM1Vw-0008Ag-68; Wed, 28 Oct 2026 07:08:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xM1VC-0007JU-EZ
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 07:07:30 -0400
-Received: from 2.mo528.mail-out.ovh.net ([46.105.44.19])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xM1VA-0001LV-Ml
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 07:07:30 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4jF4MK18dkz6WdR;
- Wed, 28 Oct 2026 11:07:24 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Wed, 28 Oct 2026 11:07:24 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.231.223])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jF4MJ3YHcz1xq7; Wed, 28 Oct 2026 11:07:24 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
- (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 75C1A203209; 
- Wed, 28 Oct 2026 11:07:23 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005ea6cb01b-f243-4ff1-8738-d43319637bdf,
- E08929C5676352A1F51837021B168DD299C323AB) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.66.77.115
-Message-ID: <19d8e389-295b-4045-8d91-51a89adc4fa0@kaod.org>
-Date: Wed, 28 Oct 2026 12:07:22 +0100
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xM1Vu-0008A9-Dh
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 07:08:14 -0400
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xM1Vs-0001NZ-VF
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2026 07:08:14 -0400
+Received: by mail-ot1-x32f.google.com with SMTP id
+ 46e09a7af769-84e513874f8so549852a34.2
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 04:08:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1793185690; x=1793790490; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=nr6rulvhGl4ps6/EhCTQXwqVyiVQeet7NB/sIVEyne4=;
+ b=gOoiQKhvvVhw3pGd7Niebh3KbhhNWDlztH/QwyZwDbkjoHqyru+bMoEvOAc3+C0qXE
+ A/2jdsipjURl6/hXGatmp/1FoalfGE3RWNdb/HG4xuJa9CvJ1iijyWONQUEHu13ABP1C
+ xErRmNmlkNjNCgLBYj53sdquET/Fc3Xv5Sf7nuKrNIQ2MM6VT0ZUrlyBB1pti0bVam3+
+ g1pBsQDI6aCtC/sffX3NHaG0SnmInNbNGfFubcpFkjGzsPigJGNOBuavpSBsfbQwRcL/
+ KPB4bXHAj1jW2K+DGZzrBcd1jUOvXLYWQ9sb9egaGpH+ZYQJTAKSAL+K/tugVgBDk3RX
+ t1Mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793185690; x=1793790490;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=nr6rulvhGl4ps6/EhCTQXwqVyiVQeet7NB/sIVEyne4=;
+ b=OkMjxac1R0Md5GuuuCHyqYFv3f5yRnUM3AeBAfKTpajZb5XIzxLNTZP1qZaaSoM5Ry
+ 4wpD9XOTVOe3/a7NrhEhKUQVh85NPq9cQosSLwcW1ODrL2YjthtiB+T5GA9u/voXnkCG
+ d1Iku1b+7oErdBv6dUcC0Vz3mB2iR4TDdnGRXNA0uB3NzgFHVAGmTGYGAUlYe5MXO/co
+ /QUnTRRuvrt/haPy++K54TbiFO9yrnt2Dl/bd8mdjLGXfes8eKmL4Rb5W73ORxhz33wi
+ pZaGHoPWFazmT0pU9aswwdyWiunhubTvb2tI4TaH0ZtGWdpjyAO3S1GmuuRSL0uHpGNJ
+ GfjA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxMyZZfn9DmHuv4WN8tRUj+e6zG7yKCvcwX7YyNwnKt2J7KiKZupJzopriv2a4aQKP6MK1hMXQA+g==@nongnu.org
+X-Gm-Message-State: AFq9FYIghyMgx0VuwswJugABSGdsUk0Py4h1G96r8WDgh9GWO++qFgW/
+ GsTdQWwUR9OKcB54uJh3mz7acv3lQBlRVYaxG/9p35pJk4rll7Py0A9GwRR/HTmEQBQ=
+X-Gm-Gg: AYBFou2pkPk9dLvXF4mv+Ya5JQQocRPIl+ldZV46xvCz45YRbhwV3x8bxolG6Y7REdK
+ 3AkO+hvQazD3ED3C47FoKXvDaKb7pmN0WEFweb22j0axwokSBDFB7ngie3+SWVWuhpB/j0mY75Z
+ Z9kLK/v4JDQnnr6ICbKsFmrWkGS90kJKn4ttK8DgRmFA2TOVfWCY69a19yqwWOYXt3tWnSwaEtl
+ +xwYalvo5GwjOfrpi+Ad6hdLlqdzhKykD67R6/zXQJz84dhEMYlUkW0sNhDrFMTPSeYbd6oIsia
+ 5Tns7oGdpBoD7qYvnRbhNQ4jNLPqzom/hDK1hEE612jb0f1PrxbZsh7Qg8jw5O/cjyiI+IQSe/l
+ F+Htr/54NTSij5tMDBWrZqtv7QXZE/43mcKwPqdJxKFUz1hBHoD0o/JLRxusmZQqwORWpgW56cr
+ 4vHgWNeftjvcmhcltUXNNpIXLdW/udhJdw9meaf26SbBe/XjArW5oOnCOj6hUIabUxe5VdyhuEB
+ 0en3QNFAVa1L5BgEGlbw+9pnW1DUNWu0NMz1SAMiPb8w7myaiJ1Yzr58zE7QYY8DH3yUYEdnU45
+ uBIOt4iayrvOwL7BreKujlWHfzu1rPxVvAuMvu+ABj/X
+X-Received: by 2002:a05:6808:1b27:b0:53c:7298:3598 with SMTP id
+ 5614622812f47-56382b885d6mr1221824b6e.31.1793185690473; 
+ Wed, 28 Oct 2026 04:08:10 -0700 (PDT)
+Received: from [192.168.129.53] ([50.233.235.3])
+ by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-563c5a4d8b7sm864007b6e.8.2026.10.28.04.08.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 28 Oct 2026 04:08:10 -0700 (PDT)
+Message-ID: <7f2fb4fe-887f-449b-9a08-c65375077551@linaro.org>
+Date: Wed, 28 Oct 2026 06:08:08 -0500
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/6] hw/i2c/aspeed: fix non-packet buffer and DMA
- transfer modes
-To: Timur Maksimov <gessingate@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
+Subject: Re: [PATCH] target/arm: Initialize SMCR_EL1.EZT0 for linux-user
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Samyuktha K <samyu@qti.qualcomm.com>,
+ Sritam Paltasingh <spaltasi@qti.qualcomm.com>
+References: <20261026175220.85545-1-philmd@oss.qualcomm.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20261026175220.85545-1-philmd@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 15522782018392927277
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFeEDdIsGv3P/8DCcjk3nyuKD3nQoRph8w1AsCVPIJW1iV26FbgX02jOU80z86J+5DVWiNc2M4gRi33E7z+a7Ec3MKiWJ8bOtVdIF24hTBg9/OzuFsLBKU69sKj5mFtJ9RNfTviXzdQzRADxgt8GxJX95HrfaTOwiRXQnpp8+0gPp2V7olvHgWMIdpOP50aksDiW+KrwV7lotwRDcPCxj2psfCUoXH2djUMNmXmhdR1983C3TbKxWFIfYc2c4Ll7SgrQiyOTBynwN6eJcvH1tdJp92I/G6WlLgFq3u3sSsTmM5HCfXq5p5wbvD/nKsl96T/AOQru/J/jdKSQxlmn+KLdVVhcq0gJPPbMgUQXINRno/C5Oz05o26W4F88kLNx4IfFVm5PnC0OJSiP6U33CkgJVm/QiJUnotGDtVSVBdyoyK/M/Gi99kwolFH1w+uChgQvCIGdVnvTZhzyABZYd/eCf8K6GxIFbRWBvo8zplC/Ck7y6cW+If0m+5atbgK5Gupb5Nle/q4HS+sDZ2AziqkMLJ6EzwvfQfXozQrWoTS1/nJLMY7nD8GhxMhXlx0iYDuF6lNTzen7/2Hp1/9+kCvp4Pu0Yx9SWINcNzil7WnGMaCy0DTJ8HBiEczs4bD9gdMwlrTVt8iP57MSr5p1LvrfZF7p32OICxhpKbvJDV1Nw
-DKIM-Signature: a=rsa-sha256; bh=uuvhANXmJAFkYxiEUb9SCrmLzmmyuRsFO6Ka814qwHg=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1793185645; v=1;
- b=fccxrBHm9wYmxxv3ZtKzNwpT7s4cLPbAkIVPdg7i5L/3wEG0tkqvGcHQpQDtEoZPBUa4nA3h
- SLfi/n4SJLZhR/1lkEqUywRAL/DJWG2wV3VBJx9EWeqp4qQrj/QnrZRgm888lbVxfv4WPzEL1+a
- wfWTFKFm5TVMzMW+8A9BFG4q9RC5bkaIQh2NOCgP2AjmVQFWk8OdqRfQFSDw739mOyXbAGz+eFX
- EX3oUSUpkqSB8LaC+S6bWag572m6goE9ZNeOtA6KNffp+fDJCZhryWoNfKJ7gRXQIX4r3n/tU1J
- sVY0NSL3F4DgTfVfu1HFs1TYxjbXGf6FIz+XzROBeUYLQ==
-Received-SPF: pass client-ip=46.105.44.19; envelope-from=clg@kaod.org;
- helo=2.mo528.mail-out.ovh.net
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,53 +108,31 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Jamin,
-
-Could you please check the Fix changes, patch 2-5 ? They appear to be valid
-additions but I would like a second opinion.
-
-Thanks,
-
-C.
-
-On 10/27/26 20:50, Timur Maksimov wrote:
-> In non-packet mode, buffer and DMA modes are broken
-> in the Aspeed I2C controller,
-> probably because no available driver currently uses them.
-> This patch fixes them, so byte, buffer, and DMA transfer modes
-> now work correctly for both register modes, old and new ones.
-> Tests are provided to prevent possible regressions.
+On 10/26/26 12:52, Philippe Mathieu-Daudé wrote:
+> On SME2 systems, Linux sets SMCR_EL1.EZT0 in cpu_enable_sme2()
+> to allow user space to access ZT0.
 > 
-> Signed-off-by: Timur Maksimov <gessingate@gmail.com>
+> linux-user already initializes SMCR_EL1.LEN and FA64 to match the
+> kernel's setup, but leaves EZT0 clear (see commit 3aad4bc8beb9
+> "target/arm: Add zt0_excp_el to DisasContext"). Set EZT0 when SME2
+> is present to keep the emulated EL1 state consistent with Linux.
+> 
+> This has no functional effect because CONFIG_USER_ONLY omits the
+> ZT0 trap checks.
+> 
+> Reported-by: Samyuktha K<samyu@qti.qualcomm.com>
+> Suggested-by: Sritam Paltasingh<spaltasi@qti.qualcomm.com>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@oss.qualcomm.com>
 > ---
-> Changes in v2:
-> - Fix commits description format. Some of them are reordered and clarified.
-> - Link to v1: https://lore.kernel.org/qemu-devel/20261027-aspeed-i2c-nonpkt-fix-v1-0-076cdde514f8@gmail.com
-> 
-> ---
-> Timur Maksimov (6):
->        hw/i2c: add dummy device
->        hw/i2c/aspeed: fix BUSY status reading in new register mode
->        hw/i2c/aspeed: fix I2CD_CMD register reading
->        hw/i2c/aspeed: fix buffer transfer in non-packet mode
->        hw/i2c/aspeed: fix DMA transfer in non-packet mode
->        tests/qtest: Add cases for 32-bit Aspeed I2C controllers
-> 
->   hw/i2c/Kconfig                |   5 +
->   hw/i2c/aspeed_i2c.c           |  23 +-
->   hw/i2c/i2c-dummy-device.c     | 168 +++++++++
->   hw/i2c/meson.build            |   3 +-
->   tests/qtest/aspeed_i2c-test.c | 836 ++++++++++++++++++++++++++++++++++++++++++
->   tests/qtest/meson.build       |   2 +
->   6 files changed, 1029 insertions(+), 8 deletions(-)
-> ---
-> base-commit: 9b77fa7a4fe86c80d1ff526769c61ada7d28666a
-> change-id: 20261025-aspeed-i2c-nonpkt-fix-89b852b5c84a
-> 
+>   target/arm/cpu.c | 4 ++++
+>   1 file changed, 4 insertions(+)
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 

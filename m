@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB002606A31A
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 02:32:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8A857606A31A
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 02:33:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=KTTK+c26
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=KjAwFSkR
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xLtSb-0004Mu-UV; Tue, 27 Oct 2026 22:32:18 -0400
+	id 1xLtSj-0004Rp-9x; Tue, 27 Oct 2026 22:32:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xLtSZ-0004Lc-QD; Tue, 27 Oct 2026 22:32:15 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1xLtSc-0004NT-Nz; Tue, 27 Oct 2026 22:32:18 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xLtSX-00082k-F2; Tue, 27 Oct 2026 22:32:15 -0400
+ id 1xLtSZ-00082z-P8; Tue, 27 Oct 2026 22:32:18 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=zNgM5qo6TceZxqEisYeZ/DCjzprWCrdGyfHzHh+I83n372kGJsEzsOy2jgFRfTFff6QPQ0kNS2RA41wxqpXJR0QjjnE8XTcFbpEnKp5PCXHEq640+URuzPdS/ycX/ihQgfuGMhWjz+8Kou0ZsHCdqaCwyTmU3VWE7uKnENwp3m8Rikvy0hLbUl2mHfynqwFLrAhM8EKZxP1Y8oidh4LknqHC7IYB+ZkvzzNnP0xCoVBQQ4Uqn3WYO1zXxgsleTHZbVbqGzaZbwdKD8JS9H/VMYRb7es3W7L6m20foi8jx6fi+3Z50TiMamptazT1eTANtkjqWCxwBuY1t4obVm2oLg==
+ b=YhDzGwJMDKHzs8B3s4zIdt87kqfyN6M/JAn4CU2dkcJuYEYmm/A4zSc/cCWazSa79o2/+xYm+bzQLVlIdc4DuE55jOx+c69AvK6xWwn4ZWoLcGOyk7hLsvUxvQtaV7qTXcXvU7FOGSMF7r+ue9vOgoZDMT2oVcp+5JaT/Ujhy9MTp9fxAkKtRDFn9bbmO1NvKVCB/v0q3z9SZqAQkLDv4P/k+5IhecXylZsK5FzWttKi66o7rSemyCmoqvLZBKzGd/pnwBFunxN5ehF7d9Zw9mWvQ1KBV/9PR+S+nQHMhNM5Y2IwQYr0x3SKKcBperH4y2+RXhR3Qp0Wf/6JCR83xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2yNhFyjBQZ5rdY2Y09LtlZ5zw4h/6Icd9ADO/YxoXuM=;
- b=hBAqMsLmaPkgWvjLx0YAYVRnc+/cLLok3VRHzYLmxHtgU8K+Usyo1Um8UqRJzrn2ibCmeSGsnWLAzeojIIHfZa3Sa83yZI0uNHZfbZk5xyHuOUDg1s8fAri3CjVFJGgs5r4jthL9sICWAisC/ey97NhhPhuBVGdFW0XekmxBV+msSrebfUf14IYYXqOWT8Kt23ARBhccEwWkCeUYxQpAt3v6QQtojZX25Vx4s0f+04N06FE6yxbXrjt6cMo7qNf2EzR50U364yDPvayfQmiM/V9pKIAv8zCUImj0pOAZ9zp+AEGoXvMqr3JlwNbgOuTW/GmwMH2kmbgrD7q9PKqEAQ==
+ bh=B41g/1wNlV20mY3fJA5vhMhKDARN+l1o1DLzApyB/2Y=;
+ b=oVeOPLvXGL4ztLsxSRwMNPregO9upH6GjCMOT7sLdMP04Ts3DhVgrF4OKjv/rI3FkP7OyJBuDm4XdWosgXmGde952aYqpIXLE2CGKIY84cxJPYgb5B7sC8g2pk6sxuXhqEpSASWeI+UxWgb2GsZWqT8Y2hz2iaFob08YmGZURKLFvL17SiCUK88XOx76phnzR8pBlA9Y6CZAZwOqW5TWfQkd4tJ0Z68rONFF+s4YTQaeex7/ZXII2IEdMGgRMwXiI4TR1s3U2uis2AL14pe9Q4j2W4Nma1sRzbo/CIPj8XnQhMBFyPdNeIIiblcnrENCfDy6ZcqpzCHhQvWmUj2KXQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2yNhFyjBQZ5rdY2Y09LtlZ5zw4h/6Icd9ADO/YxoXuM=;
- b=KTTK+c263k+lEyfquiiIf7JDURNxKmQQw283HCmKI/fOk6k2uUy+uY05Xgq3PWnVptK5ACJVe9moppXzzlje4kPqqxH3YAJP4Fy47nUfKLTu8q8gJrL0GiAS9+5ct78Rcf5chvAi9vQZHXWayeePoXLTH00vcxORVroRgTWRzJG9Q4dVfUa14ceHBkSdoTlEKQ4EtEN67nHfOkaIQQ6WM9G150pPiNxGL4We8tlc0d3bySeN52DvcYmjXJgBoIlaTbHe26r4zwXMgQ9XYMSitgEgQLSjKKwAb5l9Vh9GYo4s34Ga0Mra8fB1uAcU005mjZVIaI3IoKbeDUiFaE5kRw==
+ bh=B41g/1wNlV20mY3fJA5vhMhKDARN+l1o1DLzApyB/2Y=;
+ b=KjAwFSkRw2nLD1vKXp9JiIdr0b9HvT82Gwf4Dy+fe0du1wPyakwBV0MHD1gxOahuWJnbPYJk6PFPkeHj0PnF/RLgsVyRTNIgfaY0Plzq3wsE28WzLa4JpwPVjGQG0MKjRILa1BtT4DgmfexO0u2lcGySDwvHpeoQDu2F5iMeSImm2B2EFx0A9k6Ng+JEpYVAgiRRhXmGxBGHKfGa94S5sMpYXxKDixQlm53GjEG747iSYacYouGvv5tL74p8N8L+T67WjYcFx2ru8fwdJF0r1Rwxj6bJg38XuR+8DlGNEpd7gCGaX3rNWchjMxhlNA5+pZP2VJHMc0HJSxkGCWxi1A==
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by KUYPR06MB8531.apcprd06.prod.outlook.com (2603:1096:d10:91::21)
+ by TY8PR06MB9103.apcprd06.prod.outlook.com (2603:1096:405:3ac::8)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.8; Wed, 28 Oct
- 2026 02:31:58 +0000
+ 2026 02:32:04 +0000
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0569.006; Wed, 28 Oct 2026
- 02:31:57 +0000
+ 02:32:04 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Kane Chen <kane_chen@aspeedtech.com>, Alistair
@@ -50,14 +50,14 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v2 02/13] hw/ssi/aspeed_smc: Fix AST2700 DMA flash address mask
-Thread-Topic: [PATCH v2 02/13] hw/ssi/aspeed_smc: Fix AST2700 DMA flash
- address mask
-Thread-Index: AQHdZoSA2xt3qMXuM0emT3ls4Oz45Q==
-Date: Wed, 28 Oct 2026 02:31:57 +0000
-Message-ID: <20261028023154.48395-3-jamin_lin@aspeedtech.com>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v2 09/13] hw/arm/aspeed_ast1040: Add Anti-Tamper Controller
+ (ATC) as an unimplemented device
+Thread-Topic: [PATCH v2 09/13] hw/arm/aspeed_ast1040: Add Anti-Tamper
+ Controller (ATC) as an unimplemented device
+Thread-Index: AQHdZoSEHwXZEiBWOk67YElNiC8A8A==
+Date: Wed, 28 Oct 2026 02:32:04 +0000
+Message-ID: <20261028023154.48395-10-jamin_lin@aspeedtech.com>
 References: <20261028023154.48395-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20261028023154.48395-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -67,49 +67,49 @@ X-MS-TNEF-Correlator:
 authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|KUYPR06MB8531:EE_
-x-ms-office365-filtering-correlation-id: 60cbd52a-51a4-4cdf-9e6a-08df349ba31b
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TY8PR06MB9103:EE_
+x-ms-office365-filtering-correlation-id: 64de4575-f174-4860-8530-08df349ba757
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|23010399003|1800799024|376014|7416014|18002099003|22082099003|921020|56012099006|261026121527099003|261021121427099003|261021123027099003|10067099003|261009223027099003|38070700021;
-x-microsoft-antispam-message-info: U3op3sagudrHvxYk0vNQhCE3mzZwEaNg7ItZ6YI2XftiQD6FXX1HHZ6NmPefV+596fnaMhCY6wY6TbEoe/5FwiYcQNPB4rvgTvfXfhPE7qlE25chDA/iwA2LBk1LIQnhVrmXFO/G7302BQQw5I7UcZmDOjpMTplop1KIqqiKoRrDeKq0JEb72yoI8AWeZUEy2AIQLlF0iH2XKwTfmfgQk1gm00ks4v6Bfo8cCodr5zUak4RmtqE2VcePLGapYIv37Zbqh1RZE8H1SuYeX4JoeXwCk0Zg/ul7eC7dRbGGkI1P9AgHzL7EzI755d3F0JItaA2qA5x7nMmmTtOQ8pZmZNZtYYo4xrC4IQur/1kMFwhDJpPBKxGu3CSrYpGIXuBw5PCrML5U60b+DIPaKGE9zAqy+02AY2LM7I7fvZ7d01oFTVTuvq0HmZUS55+LnEs2jlyYGde4VPvvBpuEV+jOL0l6qpxqz5gvLVOX2m4DmbE3JgRLfiy2UPir9jI6gtipAoKihUzso+pe+RrRxlwm+wsHwXsOCGvcgYu+3ddjmLrDZsM4Gt9JHyyRW7YvnEmfZwyU30O3aqf0hTlSg/DrjUicGWYZ/xzeDsoOtE6nzmePDkMOqoxu6i5AZh7u7uU+scYxa15e0xc1GmqT94WzFOxWRbj1Od4rkUUyMAMGCEXSGu9ws5t1gEtpvyPYCdtsN/9U/vOEZgjlOvKBX9r13LbPMGEb9c2VLc2G5tp6Kh6stYR+G3hzXGuG7hVnASW3
+ ARA:13230040|23010399003|1800799024|376014|7416014|366016|921020|38070700021|56012099006|261009221227099003|261009223027099003|261021123027099003|261021121427099003|10067099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: ZHlgm8A7xj7Nl6bYNk5SWSZrURkkuYg42ZAPUf8yVTp9ctdrv9APNNjRDvJWIQPEBqTucLqznmlTpvJe4D2wNEfbSkcc4hz7bJDwt4BQFfCY6ARTZRbSpUWSlyaBLOonr9r6C1fbSCpHVV9u2aGBn8s4Rl1Mcf8oH5lebSdMSSWLMsi7sJ6j+W2oNnaYj1iTPmWdaxuDBuBVSUsn6uvJr9ug/1ohKJ5w5Su8zh9pmi3AFLFk/0FHjgHuiwLK4AhrNgqxRkXpRgScCn00qPx0OwQII8LBfodaq7OrDXUQHXOc7EKvhgUusya6yPQ1AmYle7oNOJUOY4tF+1tY0SBIPrJz04FaL5hBmOf+on8snt/SCnxu1FvS0NOu3NW2a4jYfkS11A8fcAmWdDmEOoM1xQe/5+XIEPK/YHZTV/bjeaX7Zo6MX5ADPqUvRYd9GZf1cf2y5B23UTzQgfzRSuyQ4lyaIoL3GNpgLVGzeZ0Y6O9Z2iNwtiGhm01pKI05tE0TJTLePYRJyFEB/5V8HUv3aATllqEyOnAXPjQJGu4jaToK2HhmyjxIHlCOazU6+cJLS3nhz5vpxOUMpLQrz2pupYyqLbPqKAEZvbgfiQlgzekAJP1JyCxQ7uBsb/uxo+QZBLGtdv0NL7we3YLpwUb06hrJbmxYZNeYlBDjl/fSBLF0ARsq7dSBqWHwQKRnO8yLOtGTEM/HDuyntRIjqzWO4utiAFnP3gbhtAbsX+xBfsw=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(7416014)(18002099003)(22082099003)(921020)(56012099006)(261026121527099003)(261021121427099003)(261021123027099003)(10067099003)(261009223027099003)(38070700021);
+ SFS:(13230040)(23010399003)(1800799024)(376014)(7416014)(366016)(921020)(38070700021)(56012099006)(261009221227099003)(261009223027099003)(261021123027099003)(261021121427099003)(10067099003)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?pV3ifnKu9A1JD21HxdsWuvhhPcdeuL2fbtn4mIdlAxfdMPQN9O8g+4zRv/?=
- =?iso-8859-1?Q?6jjV7u/V8SjSk0ajV/FL/oi6kuHF4f8vBoyCIQeG83iGhg4qVBHDdpu7rf?=
- =?iso-8859-1?Q?0R8VzYxdVAARQgcNgc+gLXm6AdteX25M6bSY4/IDSQ2EoChGbfe/LILgPK?=
- =?iso-8859-1?Q?+Y6XLiNwMqxGF7fblReDFR/HIZhXzX5qElxmu0wfQKF22zVWTtiir0C9VE?=
- =?iso-8859-1?Q?sViSmB9dNtTf53ho69UYnsD7gJeKxPDzlk6RRnGKzRbSub3lJJJ8o89+LR?=
- =?iso-8859-1?Q?/0nZhaCsCuIcWHHxzSurX3ucw0BcTmujVU2Lc9QeQhnBX8Ir51dz5x5XQy?=
- =?iso-8859-1?Q?0azbrutVUsHfJsbnTB7B/Gz/bmURAhiw6A6tH2dIHbuWqlukr99mHpehBa?=
- =?iso-8859-1?Q?+z5mcnlh3AkSQ4L3AfF5itRPcDfPKjpKU1FXM1t6ZI2ufGSTgtkX0p14EZ?=
- =?iso-8859-1?Q?XJ/jKIbIv5B7d0LMoc2zKxS/vP0iHhLDR0W9F18WBs1QiTljYzts4QycXT?=
- =?iso-8859-1?Q?KThbtHYScUoP0IgeqaHC5crvis6zom3M9Lzz8GEZnKUsPAAaRdFFRPSLCo?=
- =?iso-8859-1?Q?x3uM8YIDs6nxo+sBG9K/ZVpiWuHm3T9KplgbICo9z8aPNu54y21Z2hNGtv?=
- =?iso-8859-1?Q?rLHrPeq7kca54qi3oBNOJoDudB2SDbDLnXHYEAynmVRlR3zgnQ9ZOUX/4n?=
- =?iso-8859-1?Q?9MCLt2UkjVUS4ZGMdY0xLbwuFR956y3jGZuEnRpohB9SguQbLzemx3gi6m?=
- =?iso-8859-1?Q?/h6q4qP0mcdujRZhBYA/PzDlZvYczqVBbrgRnQ9PQWpaPAscfu6POChzg/?=
- =?iso-8859-1?Q?NiaooSZOfl3mYbCT9tVgT+Syx/lqWcit6RuKhBMe6kBnKAMCENJb7vjE5U?=
- =?iso-8859-1?Q?sxMd3K9O9YHW2f5bzlCzlyt5eGABkEhIQQXG0sPflLSAzU04kkPl1ww+z6?=
- =?iso-8859-1?Q?KAiZSGK5Gb6gXTZI3XCyWa02iUf9f6EhFftPeakI39V/LCr56Xn0yPI8/M?=
- =?iso-8859-1?Q?O4stgZDzX4nZHpTbibjAtZUNFG3163zmATMoWfm8zyns4l0uAqbbcUn5PK?=
- =?iso-8859-1?Q?nAJ+Ic+m0apJgsGoW+APdbrtjEdh7eFlBBS5ivsfdBa7nk1fXRsoBkCxXv?=
- =?iso-8859-1?Q?giKQZFkw4AWyI6sW9IQOMc/FyFpgVc3z/lrDblFA/WTC9GrzVIWKRPs2Tu?=
- =?iso-8859-1?Q?zuKqNVVMNAYaxs+3Q1xHVyFP1cMJkPUL4D02vuWoMvDJiCvfw3OwrRuASh?=
- =?iso-8859-1?Q?6/d5w30QqKKseeW2debZhXljICgvs1c37BrPUmV9oxUDPblyEzXFrPt5Zk?=
- =?iso-8859-1?Q?uyWQXNWLcKq26CRVjVmxklggvzNJTCN48Vh+r3L7rpZzTgOh9Kj0dw54jt?=
- =?iso-8859-1?Q?81iRyDuu/PzuTj7CKeWFikJlndAz+XnxHDRDWsPoKkUo93ZkYxoEBvR4KK?=
- =?iso-8859-1?Q?Kx0gIpbjcJ+i67QvNGm4JX3heTGO/alM2u/ZToEZVQyyOqVFsCBRDaZJoR?=
- =?iso-8859-1?Q?LX2BSvEwyC14b2WGI5qePjEY1Fi4x9CeXUza8BheaZPEVyRMS1nPKihbDu?=
- =?iso-8859-1?Q?5PjPe9cqRNmOoSH6Z/Sdrh9gPw5wUaMC7I4eY6Z1C7/79RC/ZUw1QrONZ5?=
- =?iso-8859-1?Q?jNK6H9L4wGSKH4bvAg4DVakt6xBYX8Ni+ONNp/qlX/oYHslHUzHNA7igZK?=
- =?iso-8859-1?Q?U4MLelv5njsEWLIeQu67EVCBVRxmOThK1lCjDixU3x3lJTxORi5nii98xd?=
- =?iso-8859-1?Q?LiikK9om6/HvyzHTaWYuWnvw9Ya/otPf1ANra75r5g7M3azdRuLAMyla4j?=
- =?iso-8859-1?Q?QeRUkV623g=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?D9uZpkwpGnMz/IotdfkLQdPDFykcxWrWfiY02Pb4kjqwz9FMszFiwkAkpD?=
+ =?iso-8859-1?Q?zvQQR7Xg4RjWavQJ3hJv2OkZLeRWJLKw8igysXkykTzSiqAUUOfmGuUg1k?=
+ =?iso-8859-1?Q?M0w+2PykLwH651S8cW5ap5x3OvPOG8WmChzCoqO2leavvwjMu5U5poZcOi?=
+ =?iso-8859-1?Q?SztlGwt+3Pm7uK7nPAvYAGIIE326GoWEd/WInqk2gIVbv1vxVkOmv+GAvN?=
+ =?iso-8859-1?Q?32XV2IZ5w8Xo2fyZxVZ5xhy+XVwev485AU4PUTkzT6ucrME60n8rmMoFVB?=
+ =?iso-8859-1?Q?dpdpJZDPL/3B9O7MnHkw8tDDfLV985L+jUiG0vx2fJKp5L1EHe0aZ8Wv+/?=
+ =?iso-8859-1?Q?omLu0YzK3n8jUrzMW2JNlwZHdJD95DHMp2ys2ryVzM2rELJrnJKuouuq40?=
+ =?iso-8859-1?Q?x+CGbsEA4vemQlG/HPwWGaubgFeEQ6cmBLsM+M40Cngz0QpG7+qmsDOAsQ?=
+ =?iso-8859-1?Q?JQqbpMmP8fGzIzgF8posiD/YzWx+7E4f95yA/JWkw13A1YWxd8d/VrTk6c?=
+ =?iso-8859-1?Q?TtYeHLTgJz+pQvGuk1gQTnPQNsczR0zE61Xj53Fxm9rvbPA4TSpbQioU6X?=
+ =?iso-8859-1?Q?X5syGDgDwdnraxTp5ZrqGvxCcOPnfS8NiFurnI4MirPVnXcSohmXEowkaX?=
+ =?iso-8859-1?Q?Ka/C+bbhWI47KID8d/d9zBXHdphk6tlziT5VgJr6HX1KOFp4Ps0jjdHgz9?=
+ =?iso-8859-1?Q?O3Arm8iiPwrDu/WnO8qdoCbvidQL2w6D1V0YAYYfI/npAikPQs7mNsJqkq?=
+ =?iso-8859-1?Q?+KEpkrzZAEVrTPIMEVMV0ccH2DDBjvvyir4shz9rBPAM4bx9un04m4YmsA?=
+ =?iso-8859-1?Q?MnP1Y1KN+G/u2LMk2sqdix2tk2WHHB+i+kR0EQe1y0mlQ/pVM4pDRIFQ48?=
+ =?iso-8859-1?Q?ZH4/VuWX+34ya6ZrbQEjsE8dktyzjuejh2O8wTdop2v25cQMh0h1ajsCNH?=
+ =?iso-8859-1?Q?+hP9YSImAI+0KllPF2GcZh8JFW46xyCt127BnsBJDLiV4zOtXfa2EX760H?=
+ =?iso-8859-1?Q?WJ3N2IwAVTYZ6c2dasOfYJP6Ey+spQx0Eg/8eqsmymHuB3nJJ1ZuB06t8Y?=
+ =?iso-8859-1?Q?syvLYqLcvDAeAj40bOwZmGhM3hultE+5uFAuNfqCFOC1M7lQvtdAeF6rUJ?=
+ =?iso-8859-1?Q?57I92zOObHj15zA9PNFgURwaMiRifKqHv85vEEdew6OhchmiFTi1iyc2mR?=
+ =?iso-8859-1?Q?JIpxxALiwZ9lSkOBAgPFVr8IFNov6E2uunrp4oeF/Ulnyh0xNi7ZpWtY0q?=
+ =?iso-8859-1?Q?9nLRkUwNkyisjo1ravK4mpRlYd/YPoQ+8oE5bvY7AD8HrSHJ7XXKWN4HQN?=
+ =?iso-8859-1?Q?Rc9FT7HVGXn0KQ2Bra7PrykmkYL91ZlWCvZn9REl0Kr2AL7lnZ6/HcyOmF?=
+ =?iso-8859-1?Q?dt8XCe5C8pPXLc5laiVdpiGk+RccyaCfjH74qrFXV4HfXf0dGKK8o+EKek?=
+ =?iso-8859-1?Q?/9V4vfnHaBwSZvrzrZrl1Y3MamTOQRIxbdkQ/D/KdLE+XzYOpZbt8hSEbj?=
+ =?iso-8859-1?Q?51gDO48rhwj3okOWhNggvPoh6uIo1oQhPIxdiElAyloe9QmbFbA7IbFbmZ?=
+ =?iso-8859-1?Q?SaY9RqM7YBxViEYxVb8EAxMmKzh7mhdTInb2Uja6o56DlriTlge27ORdCX?=
+ =?iso-8859-1?Q?WW4mpTkZ/2Sagj8nwTZdbkZ3mA2KCHMTmZ7jWLcheekhTVBxY/twWqfvNR?=
+ =?iso-8859-1?Q?G31tVfr0i7bDe0Ei+WMRa4D+6OD0XY84iRJyDiRPPKLHsi+TzSHDa5VGyR?=
+ =?iso-8859-1?Q?bWAHtH1Qk82S7E/UvEpt9DB4OXFauNhlELYnMNMEOeS0WCBZO+I+LEhjyv?=
+ =?iso-8859-1?Q?+ougFx5uEQ=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
@@ -117,21 +117,21 @@ MIME-Version: 1.0
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 60cbd52a-51a4-4cdf-9e6a-08df349ba31b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Oct 2026 02:31:57.0839 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 64de4575-f174-4860-8530-08df349ba757
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Oct 2026 02:32:04.1984 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Yg3PVM7ZyatOS7UtaQ8iX5mnODprNz5y9LY6dAsPDpGGX2kBYgOI4nW0RYF3DNYOQ1gGCFQRGc7THrH5yFtVhRbgtA7GZkVMEJEduDtbltU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUYPR06MB8531
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+X-MS-Exchange-CrossTenant-userprincipalname: zhBnmCKrw1U0PSci8lK42bm9h7Wox1BsvsVrBGNPnX/SxdP0DRa1+rR0HiZS3sdFHjYXgZ46nGpSCPf+5w7OpsxqvgMqHxX6aANoOSD2CP0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY8PR06MB9103
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+ helo=OS8PR02CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -151,73 +151,30 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The DMA flash address register (SPI084) holds the offset of the=0A=
-flash access within the controller's flash window. The AST2700 FMC,=0A=
-SPI0 and SPI1 controllers use a dma_flash_mask of 0x2FFFFFFC, which=0A=
-clears bit 28, and SPI2 uses 0x0FFFFFFC, which limits DMA to the=0A=
-first 256MB of the window.=0A=
+The AST1040 provides an Anti-Tamper Controller (ATC) at 0x74c35000,=0A=
+but the controller is not modeled yet.=0A=
 =0A=
-With the default segment layout, FMC CS2 is mapped at offset=0A=
-0x10000000. A DMA read from that offset is masked to 0x0 and returns=0A=
-data from CS0 instead of CS2.=0A=
+Add the ATC register region as an unimplemented device to reflect the=0A=
+AST1040 memory map.=0A=
 =0A=
-The Linux driver programs SPI084 with the window offset masked by=0A=
-0x7fffffff, so bit 28 is a valid address bit.=0A=
-=0A=
-Set dma_flash_mask to 0x3FFFFFFC for all AST2700 controllers to cover=0A=
-the full 1GB flash window.=0A=
-=0A=
-Fixes: bdb3748dba30 ("aspeed/smc: Add AST2700 support")=0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
 ---=0A=
- hw/ssi/aspeed_smc.c | 8 ++++----=0A=
- 1 file changed, 4 insertions(+), 4 deletions(-)=0A=
+ hw/arm/aspeed_ast1040.c | 1 +=0A=
+ 1 file changed, 1 insertion(+)=0A=
 =0A=
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c=0A=
-index 10ea9e5aa0..c0c3666dbc 100644=0A=
---- a/hw/ssi/aspeed_smc.c=0A=
-+++ b/hw/ssi/aspeed_smc.c=0A=
-@@ -1952,7 +1952,7 @@ static void aspeed_2700_fmc_class_init(ObjectClass *k=
-lass, const void *data)=0A=
-     asc->features          =3D ASPEED_SMC_FEATURE_DMA |=0A=
-                              ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |=0A=
-                              ASPEED_SMC_FEATURE_DATA_FIFO;=0A=
--    asc->dma_flash_mask    =3D 0x2FFFFFFC;=0A=
-+    asc->dma_flash_mask    =3D 0x3FFFFFFC;=0A=
-     asc->dma_dram_mask     =3D 0xFFFFFFFC;=0A=
-     asc->dma_start_length  =3D 1;=0A=
-     asc->nregs             =3D (0x200 + (asc->cs_num_max * 0x10)) >> 2;=0A=
-@@ -1989,7 +1989,7 @@ static void aspeed_2700_spi0_class_init(ObjectClass *=
-klass, const void *data)=0A=
-     asc->features          =3D ASPEED_SMC_FEATURE_DMA |=0A=
-                              ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |=0A=
-                              ASPEED_SMC_FEATURE_DATA_FIFO;=0A=
--    asc->dma_flash_mask    =3D 0x2FFFFFFC;=0A=
-+    asc->dma_flash_mask    =3D 0x3FFFFFFC;=0A=
-     asc->dma_dram_mask     =3D 0xFFFFFFFC;=0A=
-     asc->dma_start_length  =3D 1;=0A=
-     asc->nregs             =3D (0x200 + (asc->cs_num_max * 0x10)) >> 2;=0A=
-@@ -2025,7 +2025,7 @@ static void aspeed_2700_spi1_class_init(ObjectClass *=
-klass, const void *data)=0A=
-     asc->features          =3D ASPEED_SMC_FEATURE_DMA |=0A=
-                              ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |=0A=
-                              ASPEED_SMC_FEATURE_DATA_FIFO;=0A=
--    asc->dma_flash_mask    =3D 0x2FFFFFFC;=0A=
-+    asc->dma_flash_mask    =3D 0x3FFFFFFC;=0A=
-     asc->dma_dram_mask     =3D 0xFFFFFFFC;=0A=
-     asc->dma_start_length  =3D 1;=0A=
-     asc->nregs             =3D (0x200 + (asc->cs_num_max * 0x10)) >> 2;=0A=
-@@ -2061,7 +2061,7 @@ static void aspeed_2700_spi2_class_init(ObjectClass *=
-klass, const void *data)=0A=
-     asc->features          =3D ASPEED_SMC_FEATURE_DMA |=0A=
-                              ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |=0A=
-                              ASPEED_SMC_FEATURE_DATA_FIFO;=0A=
--    asc->dma_flash_mask    =3D 0x0FFFFFFC;=0A=
-+    asc->dma_flash_mask    =3D 0x3FFFFFFC;=0A=
-     asc->dma_dram_mask     =3D 0xFFFFFFFC;=0A=
-     asc->dma_start_length  =3D 1;=0A=
-     asc->nregs             =3D (0x200 + (asc->cs_num_max * 0x10)) >> 2;=0A=
+diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c=0A=
+index 48eda35ffe..88f7a2df2c 100644=0A=
+--- a/hw/arm/aspeed_ast1040.c=0A=
++++ b/hw/arm/aspeed_ast1040.c=0A=
+@@ -91,6 +91,7 @@ static const UnimplementedDeviceConfig aspeed_soc_ast1040=
+_unimp_devs[] =3D {=0A=
+     { "spi0-filter", "aspeed.spi0-filter", 0x74010400, 0x1000, -1000 },=0A=
+     { "spi1-filter", "aspeed.spi1-filter", 0x74020400, 0x1000, -1000 },=0A=
+     { "otp", "aspeed.otp", 0x74C07000, 0x800, -1000 },=0A=
++    { "atc", "aspeed.atc", 0x74C35000, 0x100, -1000 },=0A=
+     { }=0A=
+ };=0A=
+ =0A=
 -- =0A=
 2.53.0=0A=
 

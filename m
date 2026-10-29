@@ -1,122 +1,97 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E65E606A31F
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 16:39:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8CFF3606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 17:03:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=LIh0sakT
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=AsGH6zl1
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMT9W-0008Ai-0U; Thu, 29 Oct 2026 12:38:58 -0400
+	id 1xMTWq-0002Om-W7; Thu, 29 Oct 2026 13:03:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMT9M-00088q-Hf
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 12:38:48 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMT9J-00034H-4N
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 12:38:47 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-8b0ca1ebc8bso20670577b3.2
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 09:38:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793291923; cv=none;
- d=google.com; s=arc-20260327;
- b=eT7syomGQhadA/fr7P7IJTJQpxfhhdLQXIgq03EkrlleEvSLwS9Z49AQUjmj87TWF9
- FfnClxAiRbqWWsgSqM3T4/th0gdCMmIKbxxLC3aVFP+QMThUtQLGMzIrMFH1koAEsChB
- oZ5tLWn+0nF7ORTzeNToTOL7BvObqzcP+fKPZJXdDjkqny7K/iQACAVBw8N9C/48TmpO
- FuwrEIc3rxNney6yyaZdIfdIdiDpQoKW2P3KtKOGIPDJRLMHVUzlmWe172oiyskjQ/S8
- iwiXo4akrpOqZTrwEZIwfTB+igpAiBQcCGN6q18vRCMOgV4WOuuPRiOudZ/F/DMkxI9D
- DXZA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=DWmAgdQQCO6JUskQB0rVpaMUkzSXFhe8eRhGQeydCEM=;
- fh=YFjwJr4yV2iqZvSAlTaxlR0vKPGtovUuxJ71sf803cY=;
- b=Y/t7V8K6Seb8oWiFVmchTvtlnDprG5FxartF9li0kOq2JNZdG5YASkVEuGnIapNepr
- Y99NEcxHoFNn3jnUBFWt+LwpdGviHmAeMe/eqR8ngwjOxmQHJyxIuDG+9U9Ek11Lytx5
- Uv+kiklkZBbskbGULFHHgBizOhY9CjyIMTW9KfQRA1/TYUOEuwA5w/RFjYpNC3Qo1Nt/
- 5satnqyaIBwYdSAuoQcwlwQTKvoLrH7YFBk7NSZgPhtujq3bAX9V4oSYDsK5hzRDwejh
- pwoeMXiPP8bSRwY8zkmR3BJcgIK3HRes6AF2YVvNSzVq+zHe07XQYLN/oukDlH2Xbmpk
- NALA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793291923; x=1793896723; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=DWmAgdQQCO6JUskQB0rVpaMUkzSXFhe8eRhGQeydCEM=;
- b=LIh0sakTUgVqpPKlwUfPW1T1+SHulNDO4aaZjrozs+Cpe4aASEE+6VdJh06Yi9nk6x
- FJRZZ1pQ/X++aDw30GOCFajE4RuVLgcYD0GD91jdM0n9p6CSzXRp9OLRbt+bSlHyQhZ3
- ZKsIo8FeYhK+06DblqSZeoIPMfL8DZEBeBFI1bDrGU2Df188ONCpVHW2M3gKY7wjm0q8
- 7Zqtj6YSc+4gMvf6oNFGxa38tEMkjvyudJh1nJ2bLuufLxzHU24qZCLn6P8I2Rg455Hp
- Dz5+V96Y8USKzcQOHyDjRV93Hc21jnmrHF3rzrnkwSdy0nhzTqRbj0/ulWnLZr9aStax
- vm2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793291923; x=1793896723;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=DWmAgdQQCO6JUskQB0rVpaMUkzSXFhe8eRhGQeydCEM=;
- b=jkoinkxS2xN6ynPw4sYj+928sipkcIsSCBTRLHPRatBe6v1TTlozuscKQo9P7a28ie
- YkDd/PAlhuw1FSL9hTekZlZCYGq8Hi8LYBKaCtcS5CPeHwE88DeHJdvzuTaP1/8dgs1K
- Cpg+7ib/uQSE8TOr8LnL800HveE+CGt6RtNSlXMLM741tFjS8tIbHUph2yJUS7SqltFg
- pgSLTQv+O6weAWIsJV/z/1qz5ujDyXGONp9Cbh2jTszsOe8PIPJhU/sncPfq4aCagc61
- Tjt3/6Pberyr1f8LJS1nAh7lMJg/cyqzO4jN7kVYoNfY2adHLJ8NhTx3JaM+ouOFb35w
- QEiQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvByDWXRs5FoYLspQpQ/aHsRDTLvYYgSVJdxs9ajtldvWY8DcvnzvOq3QEaZtSLiq1uQU1zi+XKXwlQ==@nongnu.org
-X-Gm-Message-State: AFq9FYKBs8VIaYslKAMEOrwT2of0oxeDVL21obDIYvjTdiyJPZ+2yrzr
- hrglDW/GGGnKz3XxvJ7u1gtLJgFuTtvXsKgUfZeyoV2ceR9gMLD7B4qhE1l1i9LoaoJYppRf949
- pvnXZNfQHrjXfBvq5/6FXZMyjjtLNPMBwptePwAKvvA==
-X-Gm-Gg: AYBFou239dVeVEuenXAZfGgj+CcrhevC6xw8YdwzydbWvoRxGQYHqAzreH9nqkuxywK
- eDRXOBSXm9eqWB0dAjtZdlUrZ4sxdIGdgo1Nu4JZ+yu+qCYxks0p5r23nECw6+P8yz8Fet/HC5J
- 9CcHkBC/1UYAABSjq237hRux/smuQ4nqZVy8V/hQmVlsVMBYvE1iNjHtWRgVbWj2hq749nwaouG
- KHVWoxF6fuh4DH4meuWt/G3Dk0gfBmI3e3ZJGCqhoWB5QKXcyfWcvyk/Af+0y9B43B5EmUIw6AU
- WpGv6P2eG2eFBrJdAK9LXISKPIqJ+UW6Lk/npEUeyzb0QUFp5YgEMxl+UW0qTnDLPz2xBHWzkvi
- LQT+PdfcZJA4kKUDxgQckcsU3KPy3oQIVf2FT81yx8ICA44mFu3HMthLN69MxyJdO7hPtMWRg2Y
- PUagjDqh7AKl/BfLI2zBWb
-X-Received: by 2002:a05:690c:e28e:10b0:8b0:881d:aadb with SMTP id
- 00721157ae682-8b1b5c8ca2emr32313807b3.32.1793291923506; Thu, 29 Oct 2026
- 09:38:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xMTWo-0002O1-Oa
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:03:02 -0400
+Received: from mr-2005g-snip6-2.eps.apple.com ([2a01:b747:3000:206::48]
+ helo=outbound.mr.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xMTWm-0006wo-RW
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:03:02 -0400
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPS id
+ 2C2E818014D1; Thu, 29 Oct 2026 17:02:53 +0000 (UTC)
+X-ICL-RepId: 01a1889d-5218-75e4-b6ad-8723dba82650
+X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0NWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkEJSQUuAFt3XQE6Ai4aX3RDf1VyXA4uH0UAPAQsBy4ERnhLAC1CBUICXBxaDkMKUBxcVlUfCUtGCUkdDg5CGEYfVCdXAloKWx4=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1793293375; x=1824829375;
+ bh=Td8hiwhed6UN72QWwL0iSGXMtTdqAbmPDmAVAaqwzVs=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=AsGH6zl1A8yBgOiatNtPRBLokad18dM0fK3x4LlnKKisYC7fcXhWSohGupaPrOLrmYZynjO4C56FTowbR10gPiy6oso5CIiQcGorC7SuMpBYumSKmypygz5MZbfgDbIJIj9qX91o5CM5wbYeqB5DV0AB3a/4mSH9PiE0eY8tz+zW8/IvYS2nM4yocjitjvAF3IdxzV23R2NB4c4MM6n5o8LlHn57t8bVajdvrd/zidaz+a8IyvdbuzfQ9vcvh+RRg8Gy/Vc6OpA2+VmLJZ/25ll9KkD845IsZLco7zbh4pRozh9E3mMz2PQ6J2Z6pOivAHoEXaHoSaY9dBRjlhaRfQ==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.156.200.36])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-9 (Postfix) with ESMTPSA id
+ D0FC31800EE2; Thu, 29 Oct 2026 17:02:52 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-References: <20261029161310.2065290-1-alex.bennee@linaro.org>
- <20261029161310.2065290-8-alex.bennee@linaro.org>
-In-Reply-To: <20261029161310.2065290-8-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Oct 2026 16:38:32 +0000
-X-Gm-Features: AclHuK9r1rmfsQCEHjBIglsJwxFhv-pQMBDG2HZbbOBVp73yJX7W9GtYTa6w9B8
-Message-ID: <CAFEAcA_UJ=QMFwdGtWv_wWhRyzoig0_0VC+T21+kFvzv9qasoA@mail.gmail.com>
-Subject: Re: [PATCH 7/8] tests/functional: remove @skipSlowTest from
- quanta_gsj test
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, 
- Chao Liu <chao.liu@processmission.com>, Tyrone Ting <kfting@nuvoton.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Hao Wu <wuhaotsh@google.com>, Halil Pasic <pasic@linux.ibm.com>,
- qemu-arm@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
+Subject: Re: [PATCH v2 0/6] hvf: arm: fixes for QEMU 11.2
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <CAFEAcA-=bOxmonNOYC2_1MHDrdof6eciYrehJRDfWx_7kYsJmA@mail.gmail.com>
+Date: Thu, 29 Oct 2026 18:02:40 +0100
+Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+Message-Id: <1016C70E-8B1C-4F3F-A19E-59D7A0E66A33@unpredictable.fr>
+References: <20261027120135.53048-1-mohamed@unpredictable.fr>
+ <CAFEAcA-=bOxmonNOYC2_1MHDrdof6eciYrehJRDfWx_7kYsJmA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3901.200.71.1.16)
+X-Authority-Info-Out: v=2.4 cv=S6fUAYsP c=1 sm=1 tr=0 ts=6ae37c3e
+ cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
+ a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=m0ZDXWi2_AsMy-86mYIA:9
+ a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: gyCz0kwM__JjVtKiQ5uatGBki5H8UnJx
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI5MDA2NiBTYWx0ZWRfX7eqryMMh8eJt
+ FUuUP/Hpd+KtmewW4T87XxdlIUj6QVmQx79lGoj6eZHhFw2ZpiPTDQRhsnvC7yvAqgp5tGBvmoZ
+ p4EECAVNts1Y7qNBKo/T3um7WiQEHju5HfhqhXQXGgLOBGKSYlaFbASCKuUs7EXwMkKZRyVtDo3
+ pB+fccwYbCtpo/sY0ZHAhHNZMVI4rC/V60FU0kdQblvG07Sjl7Th0TaJJLVWyKDL2Y3H0oaNtIL
+ tOfLC60HvAwOI7POKDRpJZ/24OYHAyrq74tAy++2uGlT7cgA7RpjE6AvdraRUWPmM4Ovnf2GX5y
+ gv6Ln8hjH1pqo+I9inNWPVSx/y0r/lc1FHb1Z+/NOfAQu3s9mB0wzTkPY8O8ec=
+X-Proofpoint-GUID: gyCz0kwM__JjVtKiQ5uatGBki5H8UnJx
+X-JNJ: AAAAAAABT+tEZRhFDE3YxcXBZVSug2kqagxuFQiJYMcwORfS6czaZ244ApajtQepV/Y/+o
+ MAlMPcGaFaor7rdAxEMoSNUfIvSco5SGPfP/g5Du+M4o0VePzr+6GQTUzKYjs4FlSFDa2g
+ knJkC0km2K99b4brWDyjDrTHU161VhYu8rZWFOKFe7cw4k0Q0GJ00tkLflltzQisf5w/EI
+ rK3b9yaW1VayzsCf5ICKLkuZ4lL56T9EBju6SSODfKg8pjgBl5r2E1khctym+j83t7Lxuk
+ Vxo8Ti9z/R0rWBTTcbBk2+wCOr41dnZVs7jgMCuaa8KD3moZiRp8y6wN0gEXRLnB8kG9oD
+ OxvVO8mXUnac8Za/3D41XwPVNN8pUtDsEnosnUhcYfHJfoaaPKqzvgJWRlw1eKIJ6ym3F2
+ QCb6BS9MwL4evC39/xvBiHqMiMZV7H3VvgtpdZtygVkxbt2UwlfUc1Pbyul/OVz3td3AeR
+ 0l0ovIGzWqQI7hD3FHUWbj7OjBpf75sJk8Xdq36da83rPu1vlREO7vSW7WB1JmY5hnfqQ0
+ e1f/XDCr0n452tiq74rwUl4ZGthu2onWra0k03/cWa7go+jQenXHNuPogrmdmLmrwQL4oy
+ aFXV8v5zDUbYh3Nf47aL45yA5Jg69tPFazREWVHqTjcF4JNkp+SuvWwhaCuaKviLVDaYVw
+ 0B6vL6SAmfD/3EUe/E6RJ0toSueTtDiBnlPIHH/ezF7jYJMr2yMfeSnhye4rIiYQcRmrx0
+ y+MHRoAumiGNjh4NlIjWaK6saEOeLDqZ9Ejc6gfBs4ErCLOVoXW8IVRqbtuWJ4hmkCvSLk
+ XNm+5S0kZ3cT4PchgOSkJYPurd6GKXT1tn0cQTABKS9v1M2T+kZ464N6uQB+6aW769Sj6y
+ GrWctcyi5G8EAT0qfoRYu7cineb5m8Npr/z+k66VEY1Z4QsAnn6M781xPk61qdkAjGH1ks
+ /TVqf4zPwANaRDJrlUSf6SDgj50gZ80Mv2XH+k8zYF3Ypb4bY/odiBG+uCGt0UCFOxDn1U
+ QFBBqV3vkpHUeBZP74/xi95nCCESv6y6iYnYFAhjF5Ut0kLadqY/rsDc+imABCbTnv8+Za
+ aeY0IRGHRFxpb6oiSIu+qkKTSCMsLIxzrwCaKTIsfXUyU604/l9k0z0gb9b+bGBAeU3cCS
+ r2WG0/7plI3/5X4Lk4Wy/aXBOJWwXBnpgcLvdnOvHXvsGO6YDmuoc9d+iiL3TGHstnLyWM
+ MQp6ZBqnkCvP+qDon9ylyU89yjYX9EGFWtf/XEIS5zn2XVERbQXBYuIea+WurWnQ5jsvzm
+ f+wtkxe4ShHo3yU37VjzXyXoOyRH8td5QTcJTTzJqLsgJH8j6CnkudCzqV3fS7XOKQqR3Y
+ IYtC59xZ8maGX9OsjuO5L27HIRx6nJ16ND+t4bXm5FowG23BsUj1eAGG
+Received-SPF: pass client-ip=2a01:b747:3000:206::48;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,66 +103,50 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 29 Oct 2026 at 16:13, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> The full quanta_gsj test would have caught the regression caused by
-> the WFxT implementation and isn't that slow (<60s) it needs to be
-> gated.
->
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  tests/functional/arm/test_quanta_gsj.py | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/tests/functional/arm/test_quanta_gsj.py b/tests/functional/a=
-rm/test_quanta_gsj.py
-> index cb0545f7bfa..0c0f5d85874 100755
-> --- a/tests/functional/arm/test_quanta_gsj.py
-> +++ b/tests/functional/arm/test_quanta_gsj.py
-> @@ -30,7 +30,6 @@ class EmcraftSf2Machine(LinuxKernelTest):
->           '20200711-gsj-qemu-0/nuvoton-npcm730-gsj.dtb'),
->          '3249b2da787d4b9ad4e61f315b160abfceb87b5e1895a7ce898ce7f40c8d404=
-5')
->
-> -    @skipSlowTest()
->      def test_arm_quanta_gsj(self):
->          self.set_machine('quanta-gsj')
->          image_path =3D self.uncompress(self.ASSET_IMAGE, format=3D'gz')
-> --
-> 2.47.3
 
 
-It looks like this was originally marked skipSlowtest() as the
-evolution of what was originally commit b6eea069ab marking
-it as AVOCADO_TIMEOUT_EXPECTED because of observed timeouts.
-I guess we'll see if we fixed whatever that flakiness was.
+> On 29. Oct 2026, at 15:27, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Tue, 27 Oct 2026 at 12:03, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>=20
+>> v2:
+>> - remove GIC_ISPENDR workaround: currently under further =
+investigation
+>> - simplify SME save/restore patch
+>> - rework the CPU reset strategy, with also taking care of the GIC CPU =
+interface registers.
+>>=20
+>> v1:
+>>=20
+>> - workaround for presumed Hypervisor.framework issue
+>> - save/restore SME state only when SME is on for the CPU
+>> - add ID_AA64PFR0_EL1.GIC sync to advertise the system register =
+interface
+>=20
+> I've applied patches 1-4 to target-arm.next; 5 and 6 I left comments =
+on.
+>=20
+> What's the status with the apple-gfx compile failures on macos 27?
+> (issue #4486)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Hi,
 
-(We do want not only to avoid running tests that are slow in themselves
-but also to avoid accumulating a large number of tests that are
-individually only moderately slow but together add up to the complete
-run being slow. But I think we can afford this one.)
+I think we should just disable building apple-gfx by default for now.=20
 
-The other argument against using quanta-gsj as our test here
-is that as discussed as part of a recent docs update:
-https://lore.kernel.org/qemu-devel/20260627063208.33642-1-bin.meng@processm=
-ission.com/
-it's no longer supported by OpenBMC.
+It=E2=80=99s private API as of macOS 27, and as long as a decision on =
+whether
+to keep that reverse-engineered device model isn=E2=80=99t made yet...
+>=20
+> thanks
+> -- PMM
 
-I didn't get any response from the Nuvoton maintainers in
-that thread, but I kind of favour deprecating the machine
-type in QEMU.
-
-thanks
--- PMM
 

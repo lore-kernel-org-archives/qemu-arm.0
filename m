@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1EA3606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:19:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09CB8606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:19:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=hzy908dK
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=KCUSehkC
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMQ1N-0007Is-LM; Thu, 29 Oct 2026 09:18:21 -0400
+	id 1xMQ1a-0008GM-So; Thu, 29 Oct 2026 09:18:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPx9-00008N-Qe
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:59 -0400
+ id 1xMPx1-0008L4-I1
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPx8-0006Vk-7g
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:59 -0400
+ id 1xMPx0-0006Rd-0E
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793279637;
+ s=mimecast20190719; t=1793279629;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=B/NVHrJgAK9c+tBPInfwTXog6eIvdRsTBhVWldEb8GA=;
- b=hzy908dKw0HuWTYYt40h1Z+KBySyiyxXiTlONynA2hK/MF0kpIU16waMZJvImoeGgkrZYc
- E9PziQbzQya6mF4QdSiouvpBwZxIBWkVjgdfk3MJ1dixbcRUeFebCOH23L91VFOkz8V1Hq
- UqwfIEMOsjhOIwK8lPbZccWvaGhck7c=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=80nX2pLT37SuhPeScym3NZXd4q+9R/VFGjieh7dkCbI=;
+ b=KCUSehkCz7JPJ7Kyf7y558BGcq10gF4ruildYOIj5peA9FSf5X1k8ECiA8Mh5OMD8X0yYg
+ C84JJtK8oNaBj61vvXqKKpszTit1giG/kftcJfFvDH6UsD/6TBUQstg+xro6rKGKMShTgr
+ LkBBlaO97Lhw+gWmv0Xlrv1dVPiErnw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-453-WeFnLKIcPLOV_5FcKqzhQg-1; Thu,
- 29 Oct 2026 09:13:54 -0400
-X-MC-Unique: WeFnLKIcPLOV_5FcKqzhQg-1
-X-Mimecast-MFC-AGG-ID: WeFnLKIcPLOV_5FcKqzhQg_1793279632
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-391-aEg544ekNBGurRcA1t9REw-1; Thu,
+ 29 Oct 2026 09:13:46 -0400
+X-MC-Unique: aEg544ekNBGurRcA1t9REw-1
+X-Mimecast-MFC-AGG-ID: aEg544ekNBGurRcA1t9REw_1793279624
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BA52E180034E; Thu, 29 Oct 2026 13:13:52 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 92A741800675; Thu, 29 Oct 2026 13:13:44 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6B84C3000723; Thu, 29 Oct 2026 13:13:50 +0000 (UTC)
+ id 3C1603000723; Thu, 29 Oct 2026 13:13:42 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -56,15 +56,15 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 24/28] hw: device AMD, Intel and ARM IOMMUs as secure
-Date: Thu, 29 Oct 2026 13:12:37 +0000
-Message-ID: <20261029131241.2275706-25-berrange@redhat.com>
+Subject: [PATCH v2 21/28] hw/uefi: mark the EFI vars service as secure
+Date: Thu, 29 Oct 2026 13:12:34 +0000
+Message-ID: <20261029131241.2275706-22-berrange@redhat.com>
 In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
 References: <20261029131241.2275706-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: osVgY7rZS9ypesZ3SdemS1jdjopQhfrAiMh_6JZFLlQ_1793279632
+X-Mimecast-MFC-PROC-ID: lcgJWVr2ZThyhpxWNyYnEgNugwQoSybMZSibBh1fXKw_1793279624
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -91,74 +91,39 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-These are needed in virtualization use cases to support PCI device
-assignment use cases so must provide a security boundary.
+This is used to persist EFI variables when NVRAM is not available
+or undesirable.
 
 Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/arm/smmuv3.c       | 2 ++
- hw/i386/amd_iommu.c   | 4 +++-
- hw/i386/intel_iommu.c | 1 +
- 3 files changed, 6 insertions(+), 1 deletion(-)
+ hw/uefi/var-service-sysbus.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ed19536a4dc..2a9721b87e7 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -2272,12 +2272,14 @@ static const TypeInfo smmuv3_type_info = {
-     .instance_init = smmuv3_instance_init,
-     .class_size    = sizeof(SMMUv3Class),
-     .class_init    = smmuv3_class_init,
+diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
+index e5e0441e16f..656496317b5 100644
+--- a/hw/uefi/var-service-sysbus.c
++++ b/hw/uefi/var-service-sysbus.c
+@@ -86,6 +86,7 @@ static const TypeInfo uefi_vars_sysbus_info = {
+     .instance_size = sizeof(uefi_vars_sysbus_state),
+     .instance_init = uefi_vars_sysbus_init,
+     .class_init    = uefi_vars_sysbus_class_init,
 +    .secure        = true,
  };
+ module_obj(TYPE_UEFI_VARS_SYSBUS);
  
- static const TypeInfo smmuv3_iommu_memory_region_info = {
-     .parent = TYPE_IOMMU_MEMORY_REGION,
-     .name = TYPE_SMMUV3_IOMMU_MEMORY_REGION,
-     .class_init = smmuv3_iommu_memory_region_class_init,
-+    .secure = true,
- };
- 
- static void smmuv3_register_types(void)
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 56e78154126..9c1576d1cee 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -2783,7 +2783,8 @@ static const TypeInfo amdvi_sysbus = {
-     .name = TYPE_AMD_IOMMU_DEVICE,
-     .parent = TYPE_X86_IOMMU_DEVICE,
-     .instance_size = sizeof(AMDVIState),
--    .class_init = amdvi_sysbus_class_init
-+    .class_init = amdvi_sysbus_class_init,
-+    .secure = true,
- };
- 
- static void amdvi_pci_class_init(ObjectClass *klass, const void *data)
-@@ -2805,6 +2806,7 @@ static const TypeInfo amdvi_pci = {
-     .parent = TYPE_PCI_DEVICE,
-     .instance_size = sizeof(AMDVIPCIState),
-     .class_init = amdvi_pci_class_init,
-+    .secure = true,
-     .interfaces = (const InterfaceInfo[]) {
-         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { },
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 350d2b77533..2414d29f716 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -5711,6 +5711,7 @@ static const TypeInfo vtd_info = {
-     .parent        = TYPE_X86_IOMMU_DEVICE,
-     .instance_size = sizeof(IntelIOMMUState),
-     .class_init    = vtd_class_init,
+@@ -115,6 +116,7 @@ static const TypeInfo uefi_vars_x64_info = {
+     .name          = TYPE_UEFI_VARS_X64,
+     .parent        = TYPE_UEFI_VARS_SYSBUS,
+     .class_init    = uefi_vars_x64_class_init,
 +    .secure        = true,
  };
+ module_obj(TYPE_UEFI_VARS_X64);
  
- static int vtd_attrs_to_index(IOMMUMemoryRegion *iommu_mr, MemTxAttrs attrs)
 -- 
 2.56.0
 

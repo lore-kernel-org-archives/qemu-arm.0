@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19282606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:22:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45B4F606A31E
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:23:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=P/lev1p+
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=D8g93XNZ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMQ1w-0001Q3-Bm; Thu, 29 Oct 2026 09:18:56 -0400
+	id 1xMQ0r-0005eW-6x; Thu, 29 Oct 2026 09:17:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPxK-0000WW-Oq
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:11 -0400
+ id 1xMPxF-0000N6-Eq
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPxJ-0006Z2-0K
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:10 -0400
+ id 1xMPxD-0006X1-Qw
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793279648;
+ s=mimecast20190719; t=1793279643;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dR2eFwA6BcT8vW16lTId9tfFaddfYJbds4sEJfK9C1s=;
- b=P/lev1p+GKLwioEaxUvTkX8HmenhuEDZ3inIgPfwlAiBnBoYTZWkVyuwUJhyveYE8uJoCe
- tk2l356ygJIfLACtBIazVhKyjxlYeEME4ZdIUl183AJNiqlJwlRSCzZF9lzVEpnixa5NlX
- TpatYuQ7bSuAID3uK7Komy07WLgq+4Q=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=VvJoMCrjjh+JNQxFjC4E01KLefYCTWA2xdh1MqF6oTQ=;
+ b=D8g93XNZLHluls0oflna7qL7DZa075VOKl8yPNys54FrYKtpnCIHarAUYbzPzsYVxkU4qJ
+ gp/CTqRxCEcz/I8jPWhLGnH98Xv2jDGrbF6xisUKGfvyfkrGQanjz5715COsZ+zS7aWu0p
+ HAmC11v7cOpkRVcU82J4CYe69r5L9D4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-460-m81A4W8_OtKay1YwuGUEnw-1; Thu,
- 29 Oct 2026 09:14:04 -0400
-X-MC-Unique: m81A4W8_OtKay1YwuGUEnw-1
-X-Mimecast-MFC-AGG-ID: m81A4W8_OtKay1YwuGUEnw_1793279643
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-552-XEO0NqHOOZKGTGRqNHDOPw-1; Thu,
+ 29 Oct 2026 09:13:59 -0400
+X-MC-Unique: XEO0NqHOOZKGTGRqNHDOPw-1
+X-Mimecast-MFC-AGG-ID: XEO0NqHOOZKGTGRqNHDOPw_1793279638
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 69D441955DE8; Thu, 29 Oct 2026 13:14:03 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 226441955EB6; Thu, 29 Oct 2026 13:13:58 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1E0273000723; Thu, 29 Oct 2026 13:14:00 +0000 (UTC)
+ id BF5FA3000723; Thu, 29 Oct 2026 13:13:55 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -56,15 +56,15 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 28/28] hw/usb: mark UHCI, OCHI & ECHI USB hosts as secure
-Date: Thu, 29 Oct 2026 13:12:41 +0000
-Message-ID: <20261029131241.2275706-29-berrange@redhat.com>
+Subject: [PATCH v2 26/28] hw/i386: mark vmmouse / vmport as secure
+Date: Thu, 29 Oct 2026 13:12:39 +0000
+Message-ID: <20261029131241.2275706-27-berrange@redhat.com>
 In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
 References: <20261029131241.2275706-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: b2svkTQmIg4MRr3kXtrKO1adTUcSwHu1h7GVAai-pI8_1793279643
+X-Mimecast-MFC-PROC-ID: jIoYGtP1B8StKqDHzkq73HEu2TLYJKIQtMZKjI16s7E_1793279638
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -96,123 +96,40 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Modern virtualized guests are expected to be deployed with the
-XHCI controller which supports all of USB 1, 2 and 3. The UHCI
-OCHI and ECHI hosts, however, have all been widely used in
-virtualization scenarios historically, especially on x86. Indeed
-the -usb flag will enable UCHI by default.
+These paravirtualized devices are relevant to virtualization
+use cases and used by the i440fx/q35 machine boards.
 
-So while these are undesirable hosts in general, this marks them
-as secure for virtualization use cases.
-
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/usb/hcd-ehci-pci.c    | 1 +
- hw/usb/hcd-ehci-sysbus.c | 7 +++++++
- hw/usb/hcd-ohci-pci.c    | 1 +
- hw/usb/hcd-ohci-sysbus.c | 1 +
- hw/usb/hcd-uhci.c        | 1 +
- 5 files changed, 11 insertions(+)
+ hw/i386/vmmouse.c | 1 +
+ hw/i386/vmport.c  | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/hw/usb/hcd-ehci-pci.c b/hw/usb/hcd-ehci-pci.c
-index fd35d253407..2080ea2913a 100644
---- a/hw/usb/hcd-ehci-pci.c
-+++ b/hw/usb/hcd-ehci-pci.c
-@@ -219,6 +219,7 @@ static void ehci_pci_register_types(void)
-     TypeInfo ehci_type_info = {
-         .parent        = TYPE_PCI_EHCI,
-         .class_init    = ehci_data_class_init,
-+        .secure        = true,
-     };
-     int i;
- 
-diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
-index 7f7c7f8a2f1..0af658d2b68 100644
---- a/hw/usb/hcd-ehci-sysbus.c
-+++ b/hw/usb/hcd-ehci-sysbus.c
-@@ -247,32 +247,38 @@ static const TypeInfo ehci_sysbus_types[] = {
-         .name          = TYPE_PLATFORM_EHCI,
-         .parent        = TYPE_SYS_BUS_EHCI,
-         .class_init    = ehci_platform_class_init,
-+        .secure        = true,
-     },
-     {
-         .name          = TYPE_EXYNOS4210_EHCI,
-         .parent        = TYPE_SYS_BUS_EHCI,
-         .class_init    = ehci_exynos4210_class_init,
-+        .secure        = true,
-     },
-     {
-         .name          = TYPE_AW_H3_EHCI,
-         .parent        = TYPE_SYS_BUS_EHCI,
-         .class_init    = ehci_aw_h3_class_init,
-+        .secure        = true,
-     },
-     {
-         .name          = TYPE_NPCM7XX_EHCI,
-         .parent        = TYPE_SYS_BUS_EHCI,
-         .class_init    = ehci_npcm7xx_class_init,
-+        .secure        = true,
-     },
-     {
-         .name          = TYPE_TEGRA2_EHCI,
-         .parent        = TYPE_SYS_BUS_EHCI,
-         .class_init    = ehci_tegra2_class_init,
-+        .secure        = true,
-     },
-     {
-         .name          = TYPE_PPC4xx_EHCI,
-         .parent        = TYPE_SYS_BUS_EHCI,
-         .class_init    = ehci_ppc4xx_class_init,
-         .instance_init = ehci_ppc4xx_init,
-+        .secure        = true,
-     },
-     {
-         .name          = TYPE_FUSBH200_EHCI,
-@@ -280,6 +286,7 @@ static const TypeInfo ehci_sysbus_types[] = {
-         .instance_size = sizeof(FUSBH200EHCIState),
-         .instance_init = fusbh200_ehci_init,
-         .class_init    = fusbh200_ehci_class_init,
-+        .secure        = true,
-     },
- };
- 
-diff --git a/hw/usb/hcd-ohci-pci.c b/hw/usb/hcd-ohci-pci.c
-index 70c9e9ac4f5..cf0746aa00b 100644
---- a/hw/usb/hcd-ohci-pci.c
-+++ b/hw/usb/hcd-ohci-pci.c
-@@ -148,6 +148,7 @@ static const TypeInfo ohci_pci_info = {
-     .parent        = TYPE_PCI_DEVICE,
-     .instance_size = sizeof(OHCIPCIState),
-     .class_init    = ohci_pci_class_init,
+diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
+index e289bce8e2e..612e7f7d3b6 100644
+--- a/hw/i386/vmmouse.c
++++ b/hw/i386/vmmouse.c
+@@ -390,6 +390,7 @@ static const TypeInfo vmmouse_info = {
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(VMMouseState),
+     .class_init    = vmmouse_class_initfn,
 +    .secure        = true,
-     .interfaces = (const InterfaceInfo[]) {
-         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { },
-diff --git a/hw/usb/hcd-ohci-sysbus.c b/hw/usb/hcd-ohci-sysbus.c
-index 4f51eebccb2..fd04e918e8a 100644
---- a/hw/usb/hcd-ohci-sysbus.c
-+++ b/hw/usb/hcd-ohci-sysbus.c
-@@ -80,6 +80,7 @@ static const TypeInfo ohci_sysbus_types[] = {
-         .parent        = TYPE_SYS_BUS_DEVICE,
-         .instance_size = sizeof(OHCISysBusState),
-         .class_init    = ohci_sysbus_class_init,
-+        .secure        = true,
-     },
  };
  
-diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
-index a7b9fe13175..c6d163aa9f6 100644
---- a/hw/usb/hcd-uhci.c
-+++ b/hw/usb/hcd-uhci.c
-@@ -1380,6 +1380,7 @@ static void uhci_register_types(void)
-     TypeInfo uhci_type_info = {
-         .parent        = TYPE_UHCI,
-         .class_init    = uhci_data_class_init,
-+        .secure        = true,
-     };
-     int i;
+ static void vmmouse_register_types(void)
+diff --git a/hw/i386/vmport.c b/hw/i386/vmport.c
+index 865e0e70db6..24c4fb27a33 100644
+--- a/hw/i386/vmport.c
++++ b/hw/i386/vmport.c
+@@ -301,6 +301,7 @@ static const TypeInfo vmport_info = {
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(VMPortState),
+     .class_init    = vmport_class_initfn,
++    .secure        = true,
+ };
  
+ static void vmport_register_types(void)
 -- 
 2.56.0
 

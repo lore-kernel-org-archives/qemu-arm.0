@@ -1,109 +1,108 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9A8B2606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:24:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5AE25606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:28:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=ZtMPzyAG
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=vQ0iXrNi
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMR2k-0003eX-49; Thu, 29 Oct 2026 10:23:52 -0400
+	id 1xMR79-0004Z4-Oa; Thu, 29 Oct 2026 10:28:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMR2c-0003do-Az
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:23:45 -0400
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ id 1xMR6s-0004Xq-7j
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:28:06 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMR2a-0006B3-Mo
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:23:42 -0400
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-8ab3d3c5761so20847537b3.1
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 07:23:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793283819; cv=none;
+ id 1xMR6p-0006aH-4v
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:28:05 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-8b0ca1ebc8bso18928657b3.2
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 07:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793284082; cv=none;
  d=google.com; s=arc-20260327;
- b=CXG261B0yTbICtGsoZRF/6OfBXa//RGqQI3fGNENdrHWrbDgLY6RVnjIeCSVq9ihBW
- tgMMbGlRMukGCNIYVrgfGd+goPtH9OcPnGgkynTtEDE5Ao2VHOP4aDmWzp0xye1PmSXP
- HAFxvJv2Uez1RsxIiZK9jyHhN1jEIn3npJ7X1RzJxkLA2FtmOHgZpdDGndQ5cNTlzCYV
- Lm1NQ9e6js5cWA63gFr62GtWzMpuAw4b3U8OJBUrpInMRS3dghQjgT2yb55KFJC7rUiT
- m/VEquJsdq3O39memgAs/3n95F2TpTiowWqeFKN5xCZMacBHlkrX8AFijG5hHIGgmyUE
- DWzA==
+ b=QlV0stsalnDVPvwj9ijFnJciLTetPGAaRp1pTbZ764nWgStqY4q4eABn5CHDzSVYme
+ 9etxSCncwTY6W8GQh/+bFj2edPyuuDDOlddtYW13l3UP8Ki0ERg51o6N/mkWLXpwDvd8
+ A1/KMPPnX30Di9vfWNH/1jpLNcLlSxFqbM6RFxhzEWkoDi1+ZNM87ZRtceo/WA2GiPdG
+ lC2W426KUvQAC5fJpzrwOpPxrZ8v7OPLx7BVmRzH5r+DwsEAh2qjzbfeYjYttzkoWBmV
+ i0q2yyABetAfHLvPrWqIEciosvVuFO7GygbJzbgXN/Ka2bQi7fCWPxxp1spRrD7Z9CLo
+ xXDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=VzWICAQETZsiAd7iFgIdf+dQ/z896t4IzSy3uk2TUHk=;
- fh=Wv5fUzptgCd+Ld5NoH0jD+luf0nT9rts9uHrizbO5+I=;
- b=NirV+8o/5opX6/QshV0T04j5gEY6wXxEzUGbYmZPosPrNEgx/srNJ3pSFTONhrbBBH
- jftoBIv5vhMoEKKEZByrqKfA7pQF3FnlXi0OeJHWpDQPiyaFJls+815XtINAqVu9Qv4a
- rBLjyD7hVCaaqDroBcJEt693VcITX8JdDCl4F4cUSremMg3u7IjES1RSGgivsNt1tdTq
- 9C9WaAtxhfWqqFZfTyljBgo6IGR1Ji2eioSeyI0LuPEv6HpOjSf7hmwnzuRs2nxnpyo0
- g1WpHzwTWf0JT0T3Pn7nXdxcK6OlgllguBXLhcWrtzwZLQ4fJ6qmYHdRvH04OKZmUd8g
- cB8A==; darn=nongnu.org
+ bh=HD1coENdng4AAsY4IxTWez3IUQcp/V32YZu+Hlw2Sjg=;
+ fh=On5YwyTQPl5wJcE7+/594Euwsv4aOxVGK/NDY/9Cb4s=;
+ b=Q5AIWrhxcpmut+CGKEwc7ahKSWJkYcjmRoz1XVwywhlDkzGE2ojpusZs1s7hwZSyqF
+ s1LPnU7lz/+dxTDMJ6C8oyqsek6rLyMdfXyZvDwkixEEDPfUn0M5meBukD3Vz9ixVBer
+ LSA/L3lLSIIYZAg8YIzhOYQh7HJeZrGlppOhU5ab8SkmqlqhP2f02EctzWs6T2QxNaef
+ PrC55ka/Yy87PoTsRsnmGbDlRy6qVDM5vt6H9MjbWKU5DuyTEcQucWIJtS+XwuBlXHED
+ w+xnAeNs/Yldd4meNOUjAzmWseSCA+GC27sivw8vhcck+i6Xd22Yr6wdcO3vAhyrp4W0
+ JA6A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793283819; x=1793888619; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793284082; x=1793888882; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=VzWICAQETZsiAd7iFgIdf+dQ/z896t4IzSy3uk2TUHk=;
- b=ZtMPzyAGxUOviUe2fW/TSqkefN3KbkBCC8Gto+T2/w8TZ1sYO38Nstxl2aVeIsbGlX
- hQkPduFqKrZBEytlvi1CL4qtws0t6mAFrr1SmF421tMMy3D6vF3QrKMJlLbP6Bg0+VFr
- edSN3dC9Ut5KPAjrGrsMyICfcQlxNW8w/pBsX9NZ0W9ymA7qbVi2qfAI+HaCGSuI94v6
- 4H6b/OV5VJXWGN1C3sN9cuXCCWQyYE+FFBYTM1ehouepCoJgpiljvPAhrXmIEPvbjgAB
- 4xN8foousgQZ6EGum0W9+y1lB48CK7gTd+YNolzlMnTby6FrYpjEaK6EMepnEUGc4Q5n
- gYTA==
+ :content-type; bh=HD1coENdng4AAsY4IxTWez3IUQcp/V32YZu+Hlw2Sjg=;
+ b=vQ0iXrNiy3WjFscADRZb9oSqQRw0+g5mKQyurbi0JtR0B49NLUw2imwOOaXQWgaQer
+ mJRB48yRcIfY+A5366ZAI09tIdBFaMoz6yu442uQ8fFbYbtCsDY4TK9Y5ybprjC5+5/I
+ SK/0+/FcTA4qmtPiVS1vu3DVBudY26pujhAd/phjSbLc+Nz8AEJxGFUweBHmtWFoyVK+
+ 3cyy15JvpT8zS5nw+dG5BBfgZGdhehzXQ6FGgcqOv26FdCLuPoBzmE76pFAG5DqO3DZP
+ QU5gxBy5lR5NWScqUOAWN3ID2hARkKr3nJe/GpTFwhzafXfihOMik28ZDS/XfVH1x7hU
+ yDLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793283819; x=1793888619;
+ d=1e100.net; s=20260707; t=1793284082; x=1793888882;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=VzWICAQETZsiAd7iFgIdf+dQ/z896t4IzSy3uk2TUHk=;
- b=nWgBygpY5pWvk1qiB1+ocd7Z4cSODdgmS2NvFz3UbERb8+t8KXgUdRukS15vUII++o
- uwBX2qqFrGPszOSjbP3hNy+9911QDASnnkateNh5cfr6kNQrripv4rsRU90KfD0uL1SI
- 9T7cf08C/tAfrzc+UqiQFJGxSvBO3D/PXwX67lFkBhpphldTfODXQAX94jBGuB/ALQ0W
- 2HsXrgRDSP4MYxqt677j8C07+od9XsVrD1p27xnIdDceOrp2Zb2I4eKtf/MSvvLXZuLx
- SkAl+ZxvILLhj3pQymtRPRSmbFbGK01owEsm/A2nxSmhz0SCuEp71oFdKDwJOhyqBO0e
- +l8w==
+ bh=HD1coENdng4AAsY4IxTWez3IUQcp/V32YZu+Hlw2Sjg=;
+ b=kMEU3XFFa5HjlQOPzGh0pT8eyw/rwl7ewJR9cxIri8G6P1tg4rVpTQWTYsUjyGhzI/
+ 9dVwSqQ2cdDNqx0Qw6nNc3KOhT+fyNC67pnaHaDy4k024z8/73hy4pGWs5bqhBqQ4tYW
+ smutEv6x24o9VsOZTY+AurCH+70/vHJkDkhZD2cHXj+UApkWgIaMmS+4tb13MTOOX+sK
+ t51t+bysVo4wnSL4Y/o9+odxZGHKrSOd9W8C7l9PisW7cIVDvA3uvxQPvPsj7FhpS0ky
+ fwyQc9lrR8qA2Y23U6O5rmbDb0WonCwGNFkvB+ZG+46kIZbsqBH61ewovU29xYYYorRn
+ K3kQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvByvUuUyc+Fzooun3bAnYBYRX8sNcjeffVtrMm/KFX/HCvnu+bT49JcabfaS4uR/LNf0gRUMbr94TA==@nongnu.org
-X-Gm-Message-State: AFq9FYJV2+vr3QixqLNQ3XDF9BRsPcltAq3mRp0v8BhS5io2TDTT6QP+
- yF4HbHICxrBwmkhNcu2F+C2uFDytz3s9sQzJQNV9aCYNfkGV3av3G93WO6vUrILNU2bRWica0Q/
- 9sAm6y5Wi2m3TzOO82l/jBCMCntT52u5I6Ld0CxcdVQ==
-X-Gm-Gg: AYBFou3cJPjEFpjfa7jtN4HuqgOC4LtjGlB7OpDZDCoGjPCXrf8iL6KV9Az1avILbCn
- /AZHgFv+yHR5zHeoN3IiybDOBiT7Do9hOgjB/V6MQs6FkSZPwa+RzXd1tUIaL8jzzlwRUo87gIv
- cEG56ePDE+j040xzFQp4GfXkJ87oGohpx1yVh0gw6SE+HGnthxgS09o2Ryz5VcGtSeZT5wqsAJg
- wlK+64VNuHpq3Y57myur9y/DWfi61EDQQYXerpivpJNVdV/9w0cQJ+26mEBanASzg7VdBwY0/NG
- NRajemmUc5awAm9n/eJnJS7ReGYG/qw7d+ZLDVfVhPceh2cIgM0nBxcNkigX1FRokuRcR0MhDdp
- m1AGC1cADf6pxl5Y9H81H2omkJjMvFIdly7Z6AZYjno+aarhG4gcLT2luOxbIX2+xDIkAQoxq0n
- 52XWRd2Y5KR8TePBF+j5Iz
-X-Received: by 2002:a05:690c:c6ce:20b0:87d:b776:c659 with SMTP id
- 00721157ae682-8b1b5bbd2f4mr30463517b3.11.1793283818694; Thu, 29 Oct 2026
- 07:23:38 -0700 (PDT)
+ AKwUvBx9tcP1iuhT/snmQxVU1nKxt9bC9dZZk8z24xbcz8rdqNbNlYU/SjfjucevOrAufTyJj885xtaEOg==@nongnu.org
+X-Gm-Message-State: AFq9FYJQbG23cM2nLRfXAWyh92HiUYbeL06OBsDi0wiYsmxytVqTqeO7
+ HHPXTzrs7WZeSsiCi1z7/NaKG4Td4iDULKLjz9RRJ+4ljQyqL0qUsp0bRc2S/L/sdzWwMuSfWMH
+ KjMejOtYo2nhtkAN38NOyKXypX/IR768WmmYysMZLGA==
+X-Gm-Gg: AYBFou0gykx3kA1QFsGOggYo897Th+7Xo33FiSyMDCyvW6+iVEDvILa4BNalCVuemaB
+ PXuPGvdqHQoAomPwt7hEfFJfumYF2plZ4X/QkoteCvYfpygDpRUDxAUZi0Jy4VTNNhAQ4NKJjGU
+ KzmCVYVMNvSAX5RhPr0yizR9O4ScgrpVd23BiGF62JebewHtuLKr7eTEfXiSn18V6pRY01IB3fP
+ t9IFbYXpUSV8kwiblYjFIuGYTNw8ozIviiysFwVneHOTgOGEmCtaKncTMgv54vaoh7luMD7j+wy
+ QGnSnZvdcS3n4/n42JBlrZ4aG/phU1WBp2FhxsoPwEboGPLxT2NNh+ihDY7mdpLw1Klbp769swe
+ jSZcxrrTjXhXt46vj4kfvHItyCs9VVIPDHmpMNzy1Hlp8fIZvoK7BgUDgMitLNmtbxjBZCcIC2Z
+ Lawob5SfJP3WQ1pp0oa/8c
+X-Received: by 2002:a05:690c:e3ea:b0:8ae:b617:7138 with SMTP id
+ 00721157ae682-8b1b5d023fcmr40702377b3.49.1793284081414; Thu, 29 Oct 2026
+ 07:28:01 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 References: <20261027120135.53048-1-mohamed@unpredictable.fr>
- <20261027120135.53048-7-mohamed@unpredictable.fr>
-In-Reply-To: <20261027120135.53048-7-mohamed@unpredictable.fr>
+In-Reply-To: <20261027120135.53048-1-mohamed@unpredictable.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Oct 2026 14:23:27 +0000
-X-Gm-Features: AclHuK_PiV6LLrnV-5xbdVki1L0-fECRL0av0EEBiu9tqIvSrDR1gJXu7kgrfvA
-Message-ID: <CAFEAcA-BPx9nJ+hN=G=5GaEmCGrXy7dkGs5tghbEd73mSp7MRA@mail.gmail.com>
-Subject: Re: [PATCH v2 6/6] hvf: arm: sync vCPU state on PSCI reset
+Date: Thu, 29 Oct 2026 14:27:49 +0000
+X-Gm-Features: AclHuK9tCGDod4pQB435_uszNhfj3bFbQMeqe8xtHC9kP_n7bodYKh4MTcZTI8Q
+Message-ID: <CAFEAcA-=bOxmonNOYC2_1MHDrdof6eciYrehJRDfWx_7kYsJmA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/6] hvf: arm: fixes for QEMU 11.2
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
 Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,67 +114,30 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 27 Oct 2026 at 12:01, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+On Tue, 27 Oct 2026 at 12:03, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 >
-> In case of PSCI off followed by a PSCI on which
-> is a scenario that happens notably during kexec,
-> what happens today is that the state sync does
-> not happen and the vCPU becomes in an unexpected state.
+> v2:
+> - remove GIC_ISPENDR workaround: currently under further investigation
+> - simplify SME save/restore patch
+> - rework the CPU reset strategy, with also taking care of the GIC CPU interface registers.
 >
-> Address this via marking the vCPU as dirty during a PSCI power on.
+> v1:
 >
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->  target/arm/hvf/hvf.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index e1ddfe14c7..7ce2e38df1 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1651,6 +1651,14 @@ static bool hvf_handle_psci_call(CPUState *cpu, int *excp_ret)
->          context_id = param[3];
->          ret = arm_set_cpu_on(mpidr, entry, context_id,
->                               hvf_psci_get_target_el(), target_aarch64);
-> +
-> +        /*
-> +         * Mark state as dirty for HVF to sync context
-> +         * when the vCPU runs. arm_set_cpu_on() does not
-> +         * do it by itself.
-> +         */
-> +        arm_get_cpu_by_id(mpidr)->vcpu_dirty = true;
-> +
->          break;
->      case QEMU_PSCI_0_1_FN_CPU_OFF:
->      case QEMU_PSCI_0_2_FN_CPU_OFF:
-> --
-> 2.54.0 (Apple Git-157)
+> - workaround for presumed Hypervisor.framework issue
+> - save/restore SME state only when SME is on for the CPU
+> - add ID_AA64PFR0_EL1.GIC sync to advertise the system register interface
 
-I do feel like maybe this isn't the best way to do this, but
-unfortunately I don't have a good enough grasp on all the
-state sync stuff to be sure.
+I've applied patches 1-4 to target-arm.next; 5 and 6 I left comments on.
 
-I think that calling cpu_synchronize_post_init() or
-cpu_synchronize_post_reset() here would be basically equivalent,
-and maybe one of those is the right thing? Except looking at
-their implementation they use run_on_cpu() and at this point
-in this code we hold the BQL, so (as noted in my comment on patch 5)
-a bit dubious to call here.
-
-arm_set_cpu_on_async_work() could safely call one of those
-sync functions (because it always runs on the right CPU and
-run_on_cpu definitely doesn't drop the BQL if it's already
-on the right CPU). And we do do a cpu_reset() in that function,
-so that does kind of argue for a post_reset sync to happen.
-But obviously that's code shared with KVM so we'd need to
-check through the consequences.
+What's the status with the apple-gfx compile failures on macos 27?
+(issue #4486)
 
 thanks
 -- PMM

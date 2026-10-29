@@ -1,99 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5165C606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 17:34:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B6EA2606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 17:54:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=bXNlmp6c
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Xl2niURv
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMU0I-0001Az-Vc; Thu, 29 Oct 2026 13:33:31 -0400
+	id 1xMUCx-0001Pw-NF; Thu, 29 Oct 2026 13:46:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xMU0G-00017i-Cs
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:33:28 -0400
-Received: from mr-2001h-snip6-11.eps.apple.com ([2a01:b747:3000:200::51]
- helo=outbound.mr.icloud.com)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1xMUBI-00070l-OZ
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:44:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xMU09-0002JF-GA
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:33:25 -0400
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-5 (Postfix) with ESMTPS id
- EFC36180017E; Thu, 29 Oct 2026 17:33:07 +0000 (UTC)
-X-ICL-RepId: 01a188b8-ffbb-7df6-97fb-722898bef239
-X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0NWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkQAOwddcV10XXw9A1QaXwBDDlULXnVTH0F6PQJVBVIANHxLcC1CBUICXBxaDkMKUBxcVlUfCUtGCUkdDg5CGEYfVCdXAloKWx4=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1793295189; x=1824831189;
- bh=e3LWz86LDjxYCEhClxncJ/HYfKEkzZGYYGx7eHCW9bQ=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=bXNlmp6csD+bwepd15ZeXP9LcY+F6ze0flcIAUQRlOWcbyN27TSiBlkm1GdSYOpVPtywChFngefqMYgb3/V8LM6kr1UT5shBVAmF7TWwUOlHvq+DS5tamC4RTlr/5GOOA12/nVg1/kYElrdC8zkNHq7+EmLyChPvRYZH7sAdZmGLxv9Dtvv3JRvYWYFQqB2TrVu/L7BhiJcnxLuJNud8ZPSLeby8djDeJTRkvzjrFazqrkHikIoSQ3TlxX+YmFwdATsrvTCnoednb0F/Th8TQhPvlyrlAqRc/R0ydsV8oK8Nwv0bYvBK2KhoTFOeQU6xihNu447uwAZ0GTR0/kkK/g==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.156.200.36])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-5 (Postfix) with ESMTPSA id
- 7952C18010BB; Thu, 29 Oct 2026 17:33:06 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1xMUB8-0003eK-Vh
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:44:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793295877;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=25DYDXcMD/iWJVg3QIHdnliUTo8XcPDTsYISKZkdDV8=;
+ b=Xl2niURvzULoO96dXukpEjBvuYgcW4XqfmpcUHfMt9LALsT4qyy6Itu+VvZb+EiC2oMjKN
+ GJgFGqfkR7h8Rhuyc4Jqi+eQXHtIG6eTr/kdZkJej+tlwG6Nr1TzkF0+BIV9vUnEtABgwQ
+ 7Izg50PBShH7H2dvs9B54Qoi5ZaVaM0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-271-Ra-GIO-1Pnmynene9lgcoA-1; Thu,
+ 29 Oct 2026 13:44:34 -0400
+X-MC-Unique: Ra-GIO-1Pnmynene9lgcoA-1
+X-Mimecast-MFC-AGG-ID: Ra-GIO-1Pnmynene9lgcoA_1793295872
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4063A180ABE9; Thu, 29 Oct 2026 17:44:32 +0000 (UTC)
+Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 265D118000A3; Thu, 29 Oct 2026 17:44:30 +0000 (UTC)
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
-Subject: Re: [PATCH v2 0/6] hvf: arm: fixes for QEMU 11.2
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA8Ywq6MZxO5jt4AKay8wjWGLQYxnJ1rMkFjzoF1ppUJ3w@mail.gmail.com>
-Date: Thu, 29 Oct 2026 18:32:54 +0100
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <49C40F6F-EE09-4237-83B8-1CE18292DE3C@unpredictable.fr>
-References: <20261027120135.53048-1-mohamed@unpredictable.fr>
- <CAFEAcA-=bOxmonNOYC2_1MHDrdof6eciYrehJRDfWx_7kYsJmA@mail.gmail.com>
- <1016C70E-8B1C-4F3F-A19E-59D7A0E66A33@unpredictable.fr>
- <CAFEAcA8Ywq6MZxO5jt4AKay8wjWGLQYxnJ1rMkFjzoF1ppUJ3w@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3901.200.71.1.16)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI5MDA2OCBTYWx0ZWRfXyya5to/N1NPT
- Q7CLLYEiI/owYdID2MyCTkIf+GSXQO41N6oyRyeTp3xbblJqxUWYty8f8i1ZZRxalwGppmNtHmP
- XzEGLird+TNTbNxDh5N72yEUDU5WxlIqQKwNoutCFwJ6/veqq+7mFtBzvxydHRd0ysv2546Xlv3
- sTnMeKPhFYWPbM9HgbyeQn5NAvQtXTZZqM46uCX75GlVVhnkRm5eIh5a/PbSciCsV48tI4Q/9dm
- AFbQYCmF6mRNm9PI1zuKQQE8BZaaufNVxTNFWU/7XZvldxw9htmlABnuUXUDT3nWHWhKmviKIn3
- q6ezJGUChumwTAL1GghKSPlbWdwgzmRZ3+9ezpY9pl1IQCVHPoaMfjDFC/64TQ=
-X-Authority-Info-Out: v=2.4 cv=YJGSCBGx c=1 sm=1 tr=0 ts=6ae38354
- cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
- a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=jGu7mHzcN-bRX1q2kKUA:9
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: Mi3_Tmux8CyVg5k_rcm3EH_HNGJVWIYY
-X-Proofpoint-ORIG-GUID: Mi3_Tmux8CyVg5k_rcm3EH_HNGJVWIYY
-X-JNJ: AAAAAAABA9ZON/u779LCuYjTJdxBfw/MP0dtSdUWfR9Kar8SfY/TpvGr8NG5sT70DMmp8s
- r6Pqz42fvQ+sCrQ4bZLYbkFgSyHXUoh8oWiJsUP86x4SPUt7/jr0ZapmP7Usz2s0Hecs2L
- IQ2Cbq++wNRF7z9jINue9MHSMirO72v0Lq9oukng+cZt7LYlcOrAH87VrA75vxYciqXukr
- 65c9o1ZAYfzgLb7VrQDx/oCtaqOz++Ny/oWjstyEKG2SibLQrn2asyy+YjsINt2ifU8Ujl
- oJe6iEfqsIt2KA6/nfYUbh87jnVHCN8OY7fHCs/yXp2BNnX+tFI6NvvGgxAu5KhN+OPbeX
- q5tQcVoBjr+k22Mn5d4qFdx8JU1KlzkR4ogl4GOsUgpPalVAyREpGEn5t1K9VBeXgvZaDD
- slXFO1yHME0f+6HPaG7ghi6xS7kuUTfUGN3c71obcCNAOsprV1ZaTBjp/GGzkuOMJovWZD
- T0X+jgIcKmmnm+jYItf/2i6PothxzBBZIkz/vHh6EXhqh6XIQu2rqdHWJXv30SBDL+CtZT
- dGdzFU2jnHSV763OGAtrVwksilV7GtjmbEnLnxlGvfUkwQt7eWWXrelFbrECLqmA4J6+w9
- LydxZq0sSSpbq6x5A9dnngEMigEKnPV5bEFR7WpYYX74A7IhuWdUQdmGHqXjUPnfT8qWro
- 8gO6XjRopdXKqbuc42myAvWG6RF6ynjKnPJ7jhJzzbK96Lh4dGHD/ZinhVPN6iVl3Ab3E7
- yZOv8wzRcBQDP32bbMhqwjVjOAVP5UJ1GHE1NjPjUAMpOnIRkLHfn4qhmQ7lXPYUV+oPD3
- P13VVEHJlm868qkPp09vmNPV/Gsk1GCS3tE/Y42Yt6dTgISzpznv8rJzNMi8QSsTToRGa+
- a1vaiYR/nMcjHaKXHONKyE7Dq8xkvgJdvNOu6iR3eYgjruKvmsh3V3Uw6fPZaBXqHkT9Yj
- 4mbqxq3YsrxbgjfmziHH2rcz+jGDxjepD069ebLjHb4aPzjp1s50X+4dpN3nFSzo+JxpZo
- 0FDpODwq8X0SRIcv/jJnla122Z8omalSVIkvb9OUA1G/0g19yrmrEndi3m2XBhqH2rTFRh
- 10uIw2ozayomkWh4TlYlTmWmcz1pP3BWmOWLl9Wl2f5PWGtOy9AXDaHFLU3M3OImEgY0bh
- yguVw2MdhFJMsak5exqfLyTMM4+/9jOEj8wAUlUNZt5V0gXKSbJTe6kjYM38VHtx2abMaw
- I8JsK7+no88CIsy7YRNcWncqaCKg5BvTpatd7mxgoYRTVnZUJOznWBoVcVWzpTh2EAl1Ml
- 0Qe33STfj37s6xliBedIUyQVRlAZDtY7amFGDHYAmBL8i89Ag46/txrgBfNAE5upCpMSWJ
- abYNRQ8DwLaVW8AkkJJmaKGO9+5wcg57+Yr5QOTrV/Qej3xnl0iZrog=
-Received-SPF: pass client-ip=2a01:b747:3000:200::51;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+MIME-Version: 1.0
+Subject: Re: [PATCH v7 7/8] hw/usb/redirect-server: Stream interrupt IN
+ endpoints
+From: marcandre.lureau@redhat.com
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: kraxel@redhat.com, marcandre.lureau@redhat.com, junjie.cao@intel.com, 
+ junjie.cao@linux.dev, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Kane Chen <kane_chen@aspeedtech.com>, 
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, 
+ Troy Lee <troy_lee@aspeedtech.com>
+In-Reply-To: <20261028034140.367393-8-jamin_lin@aspeedtech.com>
+References: <20261028034140.367393-1-jamin_lin@aspeedtech.com>
+ <20261028034140.367393-8-jamin_lin@aspeedtech.com>
+Date: Thu, 29 Oct 2026 21:44:07 +0400
+Message-Id: <179329584773.3884549.4642213275302632142.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=10647;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=iZmY88w7AXfz2JZbvDFtYZN9IAl4F4VY80phWoYnvCg=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq44XrbgphcnDBxVmUe45s8SA7kV7kt1e5geJBS
+ W55ctqocWeJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCauOF6wAKCRDa6OEJdZac
+ 5TV2D/0Q0ak006tZJQXn0bVG08CR5KW+qAXgRrti3F7ODt6BEMtiFGKMlXMhMxVK9HRbRidD4A9
+ p4sHI54E5cdei+b2GGPTp24Cf2I9AeTAJqg+1w74hIvXOqH4TKeTkvR1XIVDsbu5kUm5H2vqZpQ
+ 8WF7ecEbprsKhbjiawL0PfUfbkn7mYPTMIo5B9NV2XqiCwOAIqGCYWRZwz5rogB/8eOc3VqWaf6
+ n2lBcONOW8KcD548HX5t/KEloAXrNwQ7lNJZPfOZFGOGIolhcSPeghTwae9GcCb7feu/I2oSGMB
+ p97qrSjfZA8VUVwT9O2jRp1P5TficpQrdTCAtlosAOFwyHPRCyT/i8XNvgXDwxuNwcMQV160oqZ
+ jrabsKiJVCsCVSYBn8aIqTjF5JDOeDdS1ac0Gj8sIBDCZ+0Y2fUMC5AfwAa4ZXesF3kr5Inz5D2
+ Bqbg7gu3UqXb1vwwz8+U/PWlzbNrcfRji+cOanRW6MZzZX3NKeMS6lNBe8WSVziXcPYawJzj9Dn
+ MJC75KMS+IIuP8u+zJb+0W8P/sJQ7mEqXXzRlXvbuaP/kMWY3Lu+zHUbYGO2AuS8qa+AvCQo9Xi
+ 9iLxOK4j0dt4Z2y76sRUVREryDuw6Twumow0TzXS1g3pwCIOgLpLFTbiVVClfBAh8PC83R5etbQ
+ 5NYgFP1TqD0H/6Q==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: mRa0lzJFQzMBscOLO-EHDM2RWrQav-SaZiMluzx-oS4_1793295872
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,79 +108,283 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+> Interrupt IN is not a request and an answer in usbredir. The host asks
+> once with start_interrupt_receiving. After that it expects a packet
+> every time the device has data.
+> 
+> Park one IN packet on the device for each streaming endpoint. A device
+> that answers USB_RET_ASYNC holds the packet and completes it when it
+> has data. A device that answers USB_RET_NAK gives the packet back at
+> once, so park a new one when the bus reports a wakeup on that endpoint.
+> A slow timer parks one too, for a device that does not report a wakeup.
+> A streamed request does not wait on the endpoint's list the way a host
+> request does, because this timer already asks again.
+> 
+> Wait for the endpoint's bInterval before parking the next one. Some
+> devices answer every time. Without the wait we would ask as fast as
+> the main loop runs, and the guest would get no time.
+> 
+> On an error other than a stall the stream stays up, but back off to the
+> slow timer. At a high speed bInterval of 125us an endpoint that keeps
+> failing would otherwise send thousands of status messages a second.
+> 
+> Give every endpoint its own timer and bottom half. We ask each endpoint
+> at its own rate. Drop the timer when the bottom half has already asked,
+> so it does not fire for nothing.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Message-ID: <20261028034140.367393-8-jamin_lin@aspeedtech.com>
+> ---
+>  hw/usb/redirect-server.c | 298 ++++++++++++++++++++++++++++++++++++++-
+>  hw/usb/trace-events      |   4 +
+>  2 files changed, 298 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/usb/redirect-server.c b/hw/usb/redirect-server.c
+> index 7eeb08ecd7f1..fecb7119ddd4 100644
+> --- a/hw/usb/redirect-server.c
+> +++ b/hw/usb/redirect-server.c
+> @@ -96,9 +96,13 @@ OBJECT_DECLARE_SIMPLE_TYPE(USBRedirServer, USB_REDIR_SERVER)
+>   */
+>  #define USBREDIR_SERVER_MAX_BULK (1 * MiB)
+>  
+> +/* Buffer size for an interrupt IN endpoint before its descriptor is seen. */
+> +#define USBREDIR_SERVER_INTR_STREAM_DEFAULT_LEN 64
+> +
+>  #define USBREDIR_SERVER_CTRL 0
+>  #define USBREDIR_SERVER_BULK 1
+>  #define USBREDIR_SERVER_INTERRUPT 2
+> +#define USBREDIR_SERVER_INTR_STREAM 3
+>  
+>  /* Which message answers the host when a control transfer ends. */
+>  typedef enum {
+> @@ -156,6 +160,15 @@ typedef struct USBRedirServerEp {
+>      /* Asks again for a device that does not wake the endpoint. */
+>      QEMUTimer *retry;
+>  
+> +    /*
+> +     * Interrupt IN streaming. The timer asks the device again at the
+> +     * endpoint's own rate, and more slowly after a NAK or an error.
+> +     * The bottom half asks at once when the device says it has data.
+> +     */
+> +    QEMUTimer *stream_timer;
+> +    QEMUBH *stream_bh;
+> +    bool streaming;
+> +
+>      uint16_t max_packet;
+>      uint8_t interval;
+>      uint8_t iface;
+> @@ -616,6 +629,97 @@ static void usbredir_server_interrupt_complete(USBRedirServer *s,
+>                                      rp->data, len);
+>  }
+>  
+> +/*
+> + * How long to wait before asking the device again. bInterval means
+> + * different things at different speeds: a number of frames at low and
+> + * full speed, an exponent at high speed.
+> + */
+> +static int64_t usbredir_server_intr_stream_period_ns(USBRedirServer *s,
+> +                                                     int ep_nr)
+> +{
+> +    int idx = usbredir_server_ep_index(ep_nr | USB_DIR_IN);
+> +    USBDevice *device = usbredir_server_device(s);
+> +    uint8_t interval = s->ep[idx].interval;
+> +
+> +    if (interval == 0) {
+> +        interval = 1;
+> +    }
+> +
+> +    if (device && device->speed == USB_SPEED_HIGH) {
+> +        interval = MIN(interval, 16);
+> +        return (1LL << (interval - 1)) * 125 * SCALE_US;
+> +    }
+> +
+> +    return (int64_t)interval * SCALE_MS;
+> +}
+> +
+> +/*
+> + * The device answered a streamed request. Send the answer to the host, then
+> + * ask again, because the host still wants more. Do not ask from here: the
+> + * device may answer at once, and this function would call itself over and
+> + * over. Arm the timer instead. It also waits for the endpoint's bInterval.
+> + */
+> +static void usbredir_server_intr_stream_complete(USBRedirServer *s,
+> +                                                 USBRedirServerPkt *rp)
+> +{
+> +    struct usb_redir_interrupt_packet_header resp = rp->intr_hdr;
+> +    struct usb_redir_interrupt_receiving_status_header st;
+> +    int idx = usbredir_server_ep_index(resp.endpoint);
+> +    int ep_nr = resp.endpoint & 0x0f;
+> +    USBRedirServerEp *ep = &s->ep[idx];
+> +    USBPacket *p = &rp->pkt;
+> +    int actual = p->actual_length;
+> +    bool retry = false;
+> +    int64_t delay_ns;
+> +
+> +    trace_usbredir_server_intr_stream_complete(ep_nr, p->status, actual);
+> +
+> +    switch (p->status) {
+> +    case USB_RET_SUCCESS:
+> +        resp.status = usb_redir_success;
+> +        resp.length = actual;
+> +        usbredirparser_send_interrupt_packet(s->parser, 0, &resp,
+> +                                             actual ? rp->data : NULL,
+> +                                             actual);
+> +        usbredirparser_do_write(s->parser);
+> +        break;
+> +    case USB_RET_NAK:
+> +        /* no data yet; wait, unless the device wakes us first */
+> +        retry = true;
+> +        break;
+> +    default:
+> +        /*
+> +         * The endpoint failed. There is no data, so send a status
+> +         * message instead. The host gives it to its guest.
+> +         *
+> +         * redirect.c ends the stream only on a stall, so do the same
+> +         * here. If we end it on any other error, the host still
+> +         * thinks the stream runs, and it never asks again.
+> +         */
+> +        st.endpoint = resp.endpoint;
+> +        st.status = usbredir_server_status(p->status);
+> +        usbredirparser_send_interrupt_receiving_status(s->parser, 0, &st);
+> +        usbredirparser_do_write(s->parser);
+> +        if (p->status == USB_RET_STALL) {
+> +            ep->streaming = false;
+> +        } else {
+> +            /* the stream stays up, but do not ask at the endpoint's rate */
+> +            retry = true;
+> +        }
+> +        break;
+> +    }
+> +
+> +    if (ep->streaming) {
+> +        if (retry) {
+> +            delay_ns = (int64_t)USBREDIR_SERVER_RETRY_MS * SCALE_MS;
+> +        } else {
+> +            delay_ns = usbredir_server_intr_stream_period_ns(s, ep_nr);
+> +        }
+> +        timer_mod(ep->stream_timer,
+> +                  qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + delay_ns);
+> +    }
+> +}
+> +
+>  /*
+>   * USB port ops
+>   */
+> @@ -688,6 +792,9 @@ static void usbredir_server_packet_complete(USBPort *port, USBPacket *p)
+>      case USBREDIR_SERVER_INTERRUPT:
+>          usbredir_server_interrupt_complete(s, rp);
+>          break;
+> +    case USBREDIR_SERVER_INTR_STREAM:
+> +        usbredir_server_intr_stream_complete(s, rp);
+> +        break;
+>      default:
+>          g_assert_not_reached();
+>      }
+> @@ -727,9 +834,11 @@ static USBRedirServerAsk usbredir_server_ask_device(USBRedirServer *s,
+>  
+>      /*
+>       * Keep the request and send it again when the device wakes the
+> -     * endpoint.
+> +     * endpoint. A streamed request asks again by itself, with its own
+> +     * timer.
+>       */
+> -    if (rp->pkt.status == USB_RET_NAK) {
+> +    if (rp->pkt.status == USB_RET_NAK &&
+> +        rp->type != USBREDIR_SERVER_INTR_STREAM) {
+>          trace_usbredir_server_nak_park(rp->redir_id, rp->ep_idx);
+>          QTAILQ_INSERT_HEAD(&ep->waiting, rp, waiting_link);
+>          timer_mod(ep->retry, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+> @@ -775,8 +884,18 @@ static void usbredir_server_wakeup_ep(USBBus *bus, USBEndpoint *ep,
+>  {
+>      USBRedirServer *s = container_of(bus, USBRedirServer, bus);
+>      uint8_t addr = ep->nr | (ep->pid == USB_TOKEN_IN ? USB_DIR_IN : 0);
+> +    int idx = usbredir_server_ep_index(addr);
+>  
+> -    usbredir_server_kick_ep(s, usbredir_server_ep_index(addr));
+> +    /*
+> +     * The device has data. A streaming interrupt IN endpoint may have
+> +     * answered NAK. Ask now instead of waiting for the retry timer.
+> +     */
+> +    if (s->ep[idx].streaming) {
+> +        qemu_bh_schedule(s->ep[idx].stream_bh);
+> +    }
+> +
+> +    /* The host may also have a request stopped on this endpoint. */
+> +    usbredir_server_kick_ep(s, idx);
+>  }
+>  
+>  static USBBusOps usbredir_server_bus_ops = {
+> @@ -830,6 +949,95 @@ static void usbredir_server_pkt_free(USBRedirServer *s, USBRedirServerPkt *rp)
+>      g_free(rp);
+>  }
+>  
+> +/*
+> + * Interrupt IN streaming
+> + */
+> +
+> +static bool usbredir_server_intr_stream_inflight(USBRedirServer *s, int ep_nr)
+> +{
+> +    USBRedirServerPkt *rp;
+> +
+> +    QTAILQ_FOREACH(rp, &s->inflight, inflight_link) {
+> +        if (rp->type == USBREDIR_SERVER_INTR_STREAM &&
+> +            (rp->intr_hdr.endpoint & 0x0f) == ep_nr) {
+> +            return true;
+> +        }
+> +    }
+> +    return false;
+> +}
+> +
+> +/*
+> + * Ask the device for data on @ep_nr and leave the request waiting. A device
+> + * sends data only when asked. Do nothing if a request on @ep_nr is still
+> + * unanswered.
+> + */
+> +static void usbredir_server_intr_stream_park(USBRedirServer *s, int ep_nr)
+> +{
+> +    USBDevice *device = usbredir_server_device(s);
+> +    int idx = usbredir_server_ep_index(ep_nr | USB_DIR_IN);
+> +    USBRedirServerPkt *rp;
+> +    USBEndpoint *ep;
+> +    int len;
+> +
+> +    /* No device to ask. */
+> +    if (!device || !device->attached) {
+> +        return;
+> +    }
+> +
+> +    /* The host did not ask for this endpoint, or a request is unanswered. */
+> +    if (!s->ep[idx].streaming ||
+> +        usbredir_server_intr_stream_inflight(s, ep_nr)) {
+> +        return;
+> +    }
+> +
+> +    len = s->ep[idx].max_packet;
+> +    if (len == 0) {
+> +        len = USBREDIR_SERVER_INTR_STREAM_DEFAULT_LEN;
+> +    }
+> +    ep = usb_ep_get(device, USB_TOKEN_IN, ep_nr);
+> +    rp = usbredir_server_pkt_alloc(len, idx);
+> +    rp->type = USBREDIR_SERVER_INTR_STREAM;
+> +    /* streamed data carries no host id */
+> +    rp->redir_id = 0;
 
+This puts a packet with id 0 on s->inflight, but
+usbredir_server_cancel_data_packet() matches any inflight request by id.
 
-> On 29. Oct 2026, at 18:13, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Thu, 29 Oct 2026 at 17:02, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>=20
->>=20
->>=20
->>> On 29. Oct 2026, at 15:27, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->>>=20
->>> On Tue, 27 Oct 2026 at 12:03, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>>>=20
->>>> v2:
->>>> - remove GIC_ISPENDR workaround: currently under further =
-investigation
->>>> - simplify SME save/restore patch
->>>> - rework the CPU reset strategy, with also taking care of the GIC =
-CPU interface registers.
->>>>=20
->>>> v1:
->>>>=20
->>>> - workaround for presumed Hypervisor.framework issue
->>>> - save/restore SME state only when SME is on for the CPU
->>>> - add ID_AA64PFR0_EL1.GIC sync to advertise the system register =
-interface
->>>=20
->>> I've applied patches 1-4 to target-arm.next; 5 and 6 I left comments =
-on.
->>>=20
->>> What's the status with the apple-gfx compile failures on macos 27?
->>> (issue #4486)
->>=20
->> Hi,
->>=20
->> I think we should just disable building apple-gfx by default for now.
->>=20
->> It=E2=80=99s private API as of macOS 27, and as long as a decision on =
-whether
->> to keep that reverse-engineered device model isn=E2=80=99t made =
-yet...
->=20
-> That makes sense to me; we've had the vmapple machine disabled by =
-default
-> for a long time, and that I'm guessing that was the biggest reason to =
-use
-> apple-gfx.
->=20
-> Do you think we should deprecate the "vmapple" machine type, or do
-> you hope to resurrect it still?
+A client cancel for a packet id == 0 can therefore hit this packet, send
+a bogus cancelled interrupt packet. Skip USBREDIR_SERVER_INTR_STREAM in
+the cancel lookup?
 
-Hi,
-
-I do hope to get it resurrected as an optional feature still, but
-the issue is that it=E2=80=99ll stay (by design) a reverse-engineered =
-model.
-
-I need to spin a new revision of the patches for that though.
-
-It will break from time to time and cannot come with an expectation
-of short-term (as in, anything past 6 months) stability/build-ability.
->=20
-> thanks
-> -- PMM
+-- 
+Marc-André Lureau <marcandre.lureau@redhat.com>
 
 

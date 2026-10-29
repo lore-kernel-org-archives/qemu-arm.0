@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09CB8606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:19:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2B286606A324
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:19:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=KCUSehkC
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=dtZeGt6G
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMQ1a-0008GM-So; Thu, 29 Oct 2026 09:18:34 -0400
+	id 1xMQ0v-000637-NQ; Thu, 29 Oct 2026 09:17:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPx1-0008L4-I1
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xMPwy-0008Hi-0u
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPx0-0006Rd-0E
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:51 -0400
+ id 1xMPwv-0006PK-Er
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793279629;
+ s=mimecast20190719; t=1793279624;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=80nX2pLT37SuhPeScym3NZXd4q+9R/VFGjieh7dkCbI=;
- b=KCUSehkCz7JPJ7Kyf7y558BGcq10gF4ruildYOIj5peA9FSf5X1k8ECiA8Mh5OMD8X0yYg
- C84JJtK8oNaBj61vvXqKKpszTit1giG/kftcJfFvDH6UsD/6TBUQstg+xro6rKGKMShTgr
- LkBBlaO97Lhw+gWmv0Xlrv1dVPiErnw=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=NZxw4M4gDY5tKHQioN+bGUmjv78GhfFNRK3LJmr5w4M=;
+ b=dtZeGt6GwVAXdc06N7vffyCaf2304uPV35t78c91vxpdbq8Rh8axnAJNdPQ9UTXYly67U1
+ 2vUqx87zPUNeu8sdLTQWwed8T362H1VUTFKXl8+JDwSmiSfZbKgetjplDpPoHT8MxAWeS3
+ HQwYM/DjQCRnhaMcmFm+P4sghhDslT4=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-391-aEg544ekNBGurRcA1t9REw-1; Thu,
- 29 Oct 2026 09:13:46 -0400
-X-MC-Unique: aEg544ekNBGurRcA1t9REw-1
-X-Mimecast-MFC-AGG-ID: aEg544ekNBGurRcA1t9REw_1793279624
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-678-JZDKrbBfOS6BoxhK62Whug-1; Thu,
+ 29 Oct 2026 09:13:35 -0400
+X-MC-Unique: JZDKrbBfOS6BoxhK62Whug-1
+X-Mimecast-MFC-AGG-ID: JZDKrbBfOS6BoxhK62Whug_1793279613
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 92A741800675; Thu, 29 Oct 2026 13:13:44 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C23DC180065C; Thu, 29 Oct 2026 13:13:33 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3C1603000723; Thu, 29 Oct 2026 13:13:42 +0000 (UTC)
+ id 464123000723; Thu, 29 Oct 2026 13:13:31 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -56,26 +56,26 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 21/28] hw/uefi: mark the EFI vars service as secure
-Date: Thu, 29 Oct 2026 13:12:34 +0000
-Message-ID: <20261029131241.2275706-22-berrange@redhat.com>
+Subject: [PATCH v2 17/28] hw/misc: mark pvpanic, vmcoreinfo as secure
+Date: Thu, 29 Oct 2026 13:12:30 +0000
+Message-ID: <20261029131241.2275706-18-berrange@redhat.com>
 In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
 References: <20261029131241.2275706-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: lcgJWVr2ZThyhpxWNyYnEgNugwQoSybMZSibBh1fXKw_1793279624
+X-Mimecast-MFC-PROC-ID: 6qWVMYDLgBnKC5USkwzGB423B1QhYwym32YfOpTEaw4_1793279613
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -91,38 +91,69 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This is used to persist EFI variables when NVRAM is not available
-or undesirable.
+These devices are common debug aids for virtualized
+guests so must be marked secure.
 
-Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/uefi/var-service-sysbus.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/misc/pvpanic-isa.c  | 1 +
+ hw/misc/pvpanic-mmio.c | 1 +
+ hw/misc/pvpanic-pci.c  | 1 +
+ hw/misc/vmcoreinfo.c   | 1 +
+ 4 files changed, 4 insertions(+)
 
-diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
-index e5e0441e16f..656496317b5 100644
---- a/hw/uefi/var-service-sysbus.c
-+++ b/hw/uefi/var-service-sysbus.c
-@@ -86,6 +86,7 @@ static const TypeInfo uefi_vars_sysbus_info = {
-     .instance_size = sizeof(uefi_vars_sysbus_state),
-     .instance_init = uefi_vars_sysbus_init,
-     .class_init    = uefi_vars_sysbus_class_init,
+diff --git a/hw/misc/pvpanic-isa.c b/hw/misc/pvpanic-isa.c
+index 85fb7da5e5c..bb0a7ff6f8e 100644
+--- a/hw/misc/pvpanic-isa.c
++++ b/hw/misc/pvpanic-isa.c
+@@ -121,6 +121,7 @@ static const TypeInfo pvpanic_isa_info = {
+     .instance_size = sizeof(PVPanicISAState),
+     .instance_init = pvpanic_isa_initfn,
+     .class_init    = pvpanic_isa_class_init,
++    .secure        = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_ACPI_DEV_AML_IF },
+         { },
+diff --git a/hw/misc/pvpanic-mmio.c b/hw/misc/pvpanic-mmio.c
+index a173a1a9a58..161e8fc59b4 100644
+--- a/hw/misc/pvpanic-mmio.c
++++ b/hw/misc/pvpanic-mmio.c
+@@ -50,6 +50,7 @@ static const TypeInfo pvpanic_mmio_info = {
+     .instance_size = sizeof(PVPanicMMIOState),
+     .instance_init = pvpanic_mmio_initfn,
+     .class_init    = pvpanic_mmio_class_init,
 +    .secure        = true,
  };
- module_obj(TYPE_UEFI_VARS_SYSBUS);
  
-@@ -115,6 +116,7 @@ static const TypeInfo uefi_vars_x64_info = {
-     .name          = TYPE_UEFI_VARS_X64,
-     .parent        = TYPE_UEFI_VARS_SYSBUS,
-     .class_init    = uefi_vars_x64_class_init,
+ static void pvpanic_register_types(void)
+diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c
+index 5509f70a3e5..7d1f99d564b 100644
+--- a/hw/misc/pvpanic-pci.c
++++ b/hw/misc/pvpanic-pci.c
+@@ -80,6 +80,7 @@ static const TypeInfo pvpanic_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PVPanicPCIState),
+     .class_init    = pvpanic_pci_class_init,
 +    .secure        = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { }
+diff --git a/hw/misc/vmcoreinfo.c b/hw/misc/vmcoreinfo.c
+index 9c2e9005ad3..90f361b05f1 100644
+--- a/hw/misc/vmcoreinfo.c
++++ b/hw/misc/vmcoreinfo.c
+@@ -101,6 +101,7 @@ static const TypeInfo vmcoreinfo_types[] = {
+         .parent         = TYPE_DEVICE,
+         .instance_size  = sizeof(VMCoreInfoState),
+         .class_init     = vmcoreinfo_device_class_init,
++        .secure         = true,
+     }
  };
- module_obj(TYPE_UEFI_VARS_X64);
  
 -- 
 2.56.0

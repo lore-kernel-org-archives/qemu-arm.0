@@ -1,80 +1,80 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 657A3606A32F
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 12:17:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CC9FE606A31D
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 12:17:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=y27tqmtf
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=JgLCMFxa
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMP4J-000871-Nf; Thu, 29 Oct 2026 08:17:20 -0400
+	id 1xMP4A-00084I-9t; Thu, 29 Oct 2026 08:17:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMP4D-00084d-B6
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 08:17:17 -0400
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+ id 1xMP46-000824-D9
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 08:17:07 -0400
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMP4B-0000Lh-LU
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 08:17:12 -0400
-Received: by mail-oi1-x234.google.com with SMTP id
- 5614622812f47-4d198f1a591so1200518b6e.2
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 05:17:11 -0700 (PDT)
+ id 1xMP43-0000L4-SC
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 08:17:05 -0400
+Received: by mail-ot1-x336.google.com with SMTP id
+ 46e09a7af769-82109f51565so973953a34.2
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 05:17:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793276230; x=1793881030; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793276223; x=1793881023; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=TgiqfMt4enZALtodJHzxMyM1+EJFhIjqABitftPbU9k=;
- b=y27tqmtf9gJT1CsJAoYW7C2mi4eXBST29ktwSR5wqG5SlLH3A/QdREB5JjLzW7YZAa
- a3K/KViXHgRzS1D9hPRLuEva3Mo9j20h+pUXNaCXcKQFUxH9VhqAkoinJ2P1T5klczsV
- NSh01iat5PbB334saewdhWTJOkOTwjLdhL/HehDi0xI1F1oFdiq+u5zjlHuDhSpvAWL9
- vzAoji+co/3AQFH7AFCdwJzh/VaDi3vHw4xK1iKHDGQK0u1KWRuVIMK3LUmrMk7KRirE
- FYRkX6Ot/GFq+F/YYd0jcDnjnk/e3mvBdhstTms/VWN64h9oweyA7S2Zq2GHXYoFys+r
- b5PQ==
+ bh=6+HcOXlYI99FtRrRVkPstOSHsJIVF902rBA7j+R2XE0=;
+ b=JgLCMFxa5BkUGXXF4UEoGq+i/6jTvRvtam+YiMyrtXWLTvaQwDZHOzMod4NCVxrYKv
+ K6HPbBIZKlaSRa969QmQH/amNvJ6biNQpmOIXaaNLIV+IS1OboSY6yGk+70mpNeHEs3E
+ uJLkervktwxat18jAlR2mPeZ5vIirSXwEPldcmRH8cb/qCuG4SSBUbhRSDffn06oH51L
+ 4tuw4olDp+8vT0EruKKV+4zemFOzY1+2AsaJVC5L44git+tFYvo5bekIT0JK54YYCgCi
+ bIC8/EvpKPiwDFIzBUjP9SKfcwoGJtYJ87V0llz6pkc9laJckZtJHzA8zNI4StmRgJUc
+ 1cjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793276230; x=1793881030;
+ d=1e100.net; s=20260707; t=1793276223; x=1793881023;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=TgiqfMt4enZALtodJHzxMyM1+EJFhIjqABitftPbU9k=;
- b=ZEjpQ0KqEu3tB4zlSQdR1NJl/4AKShDwj3XUcsUWrB75TPIft2WjdUncPGYKKPV51U
- FzL4yMweZ1JT/XaMJ7PlzwBCD1pY/ScMghgATuUd+qCq4zkRvvQR6GuGCcLUApkMWIV6
- N3jXh2y2x3EGzvLDtAl0HUyXHZKq4xbAEw9z6dawyeI9czb+gViSCe2awEQkzO0oW+Fh
- kQKatKVAGwvzeFGKTLM/UViBnu+mHG/pJ8WXO77q+ZrxUEjGwNCvOFRVpIDjOkxnkUco
- dJikFXs3HYynGwU6PMZTLt0MXnJaB15ani2ye7uIm1UpiwnqL514jw3YUBLdt3gDFBsF
- 4jgA==
+ bh=6+HcOXlYI99FtRrRVkPstOSHsJIVF902rBA7j+R2XE0=;
+ b=DlMmet18Yp0ioLz5O1ZkPIWrf7L7HJPLO14zUZzlMR422vBa+ym/HxRVJtURgSanSt
+ K8Zu6Ikd2Q8AsO3myBQ79O4GerkOPDMtgxzCbzEa86BevrCd5uVFyCOt8jKYn6hZ8jEq
+ snLdYu6hDI6Ow7LjonNtb/0yNiuWTzC3meVQYKdCMjM8RRlmsXztjLrptpCd7gkr0A//
+ ds9VEr1/2WAJyUupX1+TjT07M3JNFC+K6h0tt2Vq+t7nlZWCgZfP7rMfvGLVSFareCN6
+ ajIFcQITv9uBUBTPEvDp/DHfp/tnfaCNoYXEMx5sTt0FZa4cNPUQ7+lkWC+wPToSQjti
+ nWWA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxZq0lRx8QjEEWbLHW0/vTmZvKken9b5M0ddHkMMGHYw2P1q/+ZU63Y2H2d4ZcZNl+mOElqAYe/oQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIMxZ1LCycVdrwwIrwpT8wwA6CHByHLiV7xz7VoyK+9CELvvMTd
- 0i3GvtfTtloBCp/mTlxfTEjVCxNeuBKFwKbzp6NLaixz6HWEH5vQ7z7npeCwCEd0fec=
-X-Gm-Gg: AYBFou1soKlr9D9kjvRbjn14JsD3GZRn1f0lMbad10SgjnLrh7FmdpT57/roVu4HUeD
- CJTjQasDkXw71lzMA8n0rxE6RL/E/leyufP8pCob1wcDVswOgTecU4ZmxC7pWzoNFkWFOUVMa10
- MJBK9dZ0hjtw6jsWzB5UGYBXRC/K+970Qnv7Xs3KGA+lBAv02aPu4ZRlDMZPeKK/S1osMs7OKRN
- 0IEQ5pGqqjR1vPzdIOm+i6DIQlaGnr2Kv5WgJFdVA9lfTPTUqIovOOQz+bsrzHa9NjryVZRFdse
- BSA8ajDCWV1WQPw/S1Y7d+RWeBHInkx/bQT47zKlmOwXGsZW/Ahys694ZCC10aYFTLbayh9TZ0Y
- dJim97dXrpmnEiTF5lVrVKY19Cezk65wAPVqiWc+P1BHNjSDpiohFHP4AdizOzhzNzFNsMs1nkz
- X4qQKTlBLJa8rXSewgJzDP4oOmMM2KC9uA+wxT7Oa9QstQUp/yja/PqovBr0wC3Fh8FNd+0tkQe
- +wHJFYNrzRHrJCPanGWSqFC7v+4AQWcapt6/UyEGsIQHijh9hJyemUXtvYpxhA4lvqpiNbal9PV
- vLdgv5tDt8BUac+nOzUHRuPfUiL6WyNuoXoMGxnmDxMY
-X-Received: by 2002:a05:6808:1529:b0:4ea:b0ab:b753 with SMTP id
- 5614622812f47-56383e91b1bmr3359378b6e.50.1793276230154; 
- Thu, 29 Oct 2026 05:17:10 -0700 (PDT)
+ AKwUvBy2fQynK+IJn8pbVKU73kW3Wes5mlv7U5v4MdDWPn8SOueL8P71uU3tisXnQP4bIpQ1QjG9BN4EJA==@nongnu.org
+X-Gm-Message-State: AFq9FYI3Jnbr3JLvRWRaGXBvZXFQk6z9dfeNZB2055NDwfMPFpP6TOSn
+ mZI8ElylAw/O3sRvMC2TYF8SjWBK2PC3DiKk4QPkBJde0e23XFu59YLfOKQ5tRkUvGE=
+X-Gm-Gg: AYBFou0nrxh2ISJh+eH0NUmxBia0z3pDT+p7uGqVQTeWo8+ndBFFxKIkQl7nLb/J36w
+ NXjCe4n7Jw527xda2wa0JxhTEEUt4RiU7YVUJ6pJEsT4tc/LuyldmvIX4HxZVznLLkD7GeHOgyD
+ 3g8C/NVC4pW1wZnlORdumaFu+Vqw8j/q5TBEnDh94hlB8oYG/yVsmqaefJ42NwMGQ+HDdkJmvVh
+ xkyqOoBrKZFmQFsMNjjeTK9cY/vRVJYVx0QbuErhBLgqCGRwpnyO8+XnVc77PPl8WuE4mgBbiXh
+ C/9X79Faw33IoQjz9OGZjlWQaT3jg7XtTgz+b5utVXesODZz7aX/Pcv6pIlMDmiP1VKJk4dfUhK
+ IZ1JqNlIuykYucNGNU4bC+1jj4CnnnwaBNjvVDDZK8AVs8DFLUOQoKCSWR6NzRXfwcU7eW74VK+
+ vp/zKME1nsla8jNXtt3bF9hnX9lOZMe2bKE2o7wpy5etco13l/I1MXCjJRsW7NLHGD5DOpmZb69
+ KdxqvNU29WtB+wdvPPs6apGkW2+3W8jiHOhGOUxZfBJFIOgyNs3iPQZKRwn//GXMxSjkulFD5wZ
+ EfIeUgmFBp4m++Wa8UXk1RkxpIP3SxcMdWLPFKLfGEpu
+X-Received: by 2002:a05:6830:310d:b0:81f:92c9:1f80 with SMTP id
+ 46e09a7af769-85aba231383mr6806151a34.16.1793276222704; 
+ Thu, 29 Oct 2026 05:17:02 -0700 (PDT)
 Received: from [192.168.129.53] ([50.233.235.3])
  by smtp.gmail.com with ESMTPSA id
- 5614622812f47-563c654ad38sm3716945b6e.15.2026.10.29.05.17.09
+ 46e09a7af769-85b1f43671esm4450677a34.5.2026.10.29.05.17.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Oct 2026 05:17:09 -0700 (PDT)
-Message-ID: <cd19db27-b5c1-463c-9475-67808a4e88b4@linaro.org>
-Date: Thu, 29 Oct 2026 07:17:08 -0500
+ Thu, 29 Oct 2026 05:17:02 -0700 (PDT)
+Message-ID: <cf5661cb-da82-4000-b7db-77d27623233e@linaro.org>
+Date: Thu, 29 Oct 2026 07:16:59 -0500
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/6] tcg/riscv64: Extract elements for vector
- arithmetic immediates
+Subject: Re: [PATCH v3 2/6] tcg/riscv64: Use a uimm5 encoder for vector shift
+ immediates
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org,
@@ -84,21 +84,21 @@ Cc: qemu-riscv@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Palmer Dabbelt
  <palmer@dabbelt.com>, qemu-arm@nongnu.org
 References: <20261028143330.6518-1-philmd@oss.qualcomm.com>
- <20261028143330.6518-4-philmd@oss.qualcomm.com>
+ <20261028143330.6518-3-philmd@oss.qualcomm.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20261028143330.6518-4-philmd@oss.qualcomm.com>
+In-Reply-To: <20261028143330.6518-3-philmd@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::234;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x234.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,18 +119,18 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 10/28/26 09:33, Philippe Mathieu-Daudé wrote:
-> The .vi emitters for add, reverse sub and saturating ops pass the
-> whole replicated constant (e.g. 0x0505050505050505) to encode_vi()
-> instead of a single element. This aborts debug builds on common
-> vectorized guest code and is undefined behaviour in release builds.
+> RVV shift .vi forms take an unsigned 5-bit immediate, but
+> encode_vi() checks for simm5, so shift counts 16..31 trip
+> the debug assertion (and are undefined behaviour in release
+> builds).
 > 
-> Add vec_imm() to extract the VECE element, and use it.
+> Add encode_vi_u() and use it in tcg_out_vshifti().
 > 
 > Fixes: 006352d69f14 ("tcg/riscv64: Assert immediate in range ...")
 > Signed-off-by: Philippe Mathieu-Daudé<philmd@oss.qualcomm.com>
 > ---
->   tcg/riscv64/tcg-target.c.inc | 23 +++++++++++++++++------
->   1 file changed, 17 insertions(+), 6 deletions(-)
+>   tcg/riscv64/tcg-target.c.inc | 17 ++++++++++++++++-
+>   1 file changed, 16 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

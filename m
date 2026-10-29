@@ -1,159 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2B218606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 17:57:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4D26606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 17:57:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=QKM8JN2K;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=kU8ZFpQk
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Zd/vQ4U4
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMUBt-000082-D6; Thu, 29 Oct 2026 13:45:29 -0400
+	id 1xMUCt-0001DK-OT; Thu, 29 Oct 2026 13:46:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xMUBV-00077O-DU
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:45:11 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1xMUBB-0006qW-5n
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:44:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xMUBO-0003gI-LQ
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:45:05 -0400
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69TGDWxt3234237
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 17:44:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- cdvyUfZFJhb3iXEXrNSlHnKhNjT8QK5cNTBEa5rpod4=; b=QKM8JN2Km8jOVut2
- Fc9bNu0PZ4E5NTxie6JTXumTb1YBTfYkMznnJtsRSqjCOCWgTM7EcgAEiZX7qs/J
- 2XPOwkhFe4L/lvBn4THOb/i+eQ9cKO6CqJkZXdnBe+0XDT2BUdOQrh+6gv7mlRzc
- joCWWSYcEvhbiq5HL81qJQJ925UYDikS2PR+Q6EnzlzmP+4pwkWYYALUrZ36yfIR
- AxjRSUixS7tQx5kWLFMjHKOf5hQOwUyqTEXUw+XVXlingOPbxAY8HXcTYB0KYtat
- ntKw3mRr6vfRmeDtDnRmLYo6P21engdHCzvvt+RXDuCA8//Lh5lU1N7MN6NYLmsB
- H0lYjQ==
-Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
- [74.125.82.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hm31b28fa-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 17:44:43 +0000 (GMT)
-Received: by mail-dy1-f197.google.com with SMTP id
- 5a478bee46e88-35c5aef2a74so7725303eec.0
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 10:44:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793295882; x=1793900682; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=cdvyUfZFJhb3iXEXrNSlHnKhNjT8QK5cNTBEa5rpod4=;
- b=kU8ZFpQk+cIyaLC3Eps+ufz6vkCtUgFg4uMVMScLiQhqBs2W6Z0V8paA57de068347
- ThTkWXiC1+nPpLj/7vFekkYjhOoTbanTTXCdl8agFpfaPE5IykFU+89EJBIMK9tWzaWd
- DeVpbEC55AJ4PJLIaqa6WxBHuBhu20p5fhVJCZFXk/pz/J1ThwUd2vSfbbvuJbP0Lb6+
- zYJSxrjQOD66Y5jVKzAoXkwJXHFjz/EnO/rZ51Eq3+Z+c+7NWsgZTn89hxjnlW7WgOw0
- 9GbAd0xWDzIV20qGPOJ6McEOImQaRPgfef2MimE5sMREMXd0gfbGq5Jl2v9p9MOXDxkJ
- OkTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793295882; x=1793900682;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=cdvyUfZFJhb3iXEXrNSlHnKhNjT8QK5cNTBEa5rpod4=;
- b=I2VmOluX2m8hz7OSmafQ/00sUQUJNOKwBehJRm88uhNLa60xhQq9BqxCaS15tneNCE
- PBN+AZjed7g1/KcglOx/+TIWRhwoywpsOYTedKjXnlWmj8k0T/vAf7OI/4cFXLfSL1AA
- dGB6bcrHdNtOcU3G4KyMGwlxO9tY2pxeVAO5pbl1Ii29AKjZ3pGNCihzQB0vYPdt2+yS
- cRhQqZqcd5aVHAVlkfmsKSSWiiZgG8v5H+sjm6+ZkMibS2zfX70Koj9VN9VuDrz42Zwf
- +GDPs5eq19QO1fVEa6DEZ/Mmrssij8WgE2+Rc8k5k8lwYtvdVQaOu7m4eErw5QbXcfp2
- VRng==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzT1vwUeYRfLsHMaAKyQ5QyHTT1dtvz/OKQCkBdKR08GGxnGrWjUcEWT7tP94kKInBagC4SxENhYw==@nongnu.org
-X-Gm-Message-State: AFq9FYLtwII2YsXOheL6ZNkYAJgNIuZq9WfyEvJkCKjT+41udbO8ttwQ
- btaQznoBQuG2awF0g7wG5BZtxZGUfhYCTIYHvLOU0eg33qYXhuAYZO74u2esjH4wPy3kpjOcI3b
- ol1U2xZ3JEVJpt4R95B7pnlfHp+RNGVs5OUWpi7ELxLmXDmD3VaisPzQ=
-X-Gm-Gg: AYBFou350y/cx7VPQkpjHp1oscuTiglPuXDvV3FMu7og7mFbKMLotc1GuFT/66aEMDz
- zAuqqs33t8NsdwCBYpw2bZnqKNrbNAOaUBUDawJmYA8RtNuutMRH9SeVdNiv739hSfo/EQG3l9L
- ewHEx3hPD/P3IedBHMBGovo0lJq2XRcWhehiMnP2OQj7+U00ecji+QTdUMyiPj/hDRha+YPpHLz
- yL0q1G+jadRT8b3Qk0FlVtJJyIqWxJrJl29k5Rm2Imo+swIjDPcOGRT2w04vEYNDTbPSUjYhpZ2
- mDgh+mB70o9K0tGxdaVXxall4TKVOknnZVyLIbC7BBIoocNLi5lAer5++NSKd4cvlSHwgYjOiqP
- W6a1CwVTqTzgjVZ5AvmYmNAn0Iq7bun63qvJCazKyqoHIjHI4b1VAoav43fUi1Fz0Hxbq/SroUu
- PObUhSZ1FWfxJcSzhobr+aanxYyhpos0fAf+LGmEr4/8Y=
-X-Received: by 2002:a05:693c:6391:20b0:36a:21b8:b6c4 with SMTP id
- 5a478bee46e88-36a423408a1mr136986eec.8.1793295882068; 
- Thu, 29 Oct 2026 10:44:42 -0700 (PDT)
-X-Received: by 2002:a05:693c:6391:20b0:36a:21b8:b6c4 with SMTP id
- 5a478bee46e88-36a423408a1mr136943eec.8.1793295881443; 
- Thu, 29 Oct 2026 10:44:41 -0700 (PDT)
-Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
- [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-36a4294419dsm88567eec.18.2026.10.29.10.44.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Oct 2026 10:44:40 -0700 (PDT)
-Message-ID: <e19ba1b4-60c6-47b4-b0b7-71e1be096a92@oss.qualcomm.com>
-Date: Thu, 29 Oct 2026 09:44:39 -0800
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1xMUB8-0003co-GJ
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:44:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793295864;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TYeeLfIIZtZ1tx/zizs4Nx4GkQC9RWB/i7ECbnLDle0=;
+ b=Zd/vQ4U4dHe3nb21Xd/bIh0pPx+FbwlPZS23hxc+faxawyrOLCqK6tsnfN7+mPZG0BN2j2
+ 1RLoWJnqRaARppGfLWDQdS+KzVyWtlayV3G2X9FnorcpbcjaYy1d8g2Xpe459bqKaTI1yC
+ SOkPQwkbTbf2Hba5+CQNuYnYVfwnlXM=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-542-1EfTOtPePr2O3BKituryMw-1; Thu,
+ 29 Oct 2026 13:44:18 -0400
+X-MC-Unique: 1EfTOtPePr2O3BKituryMw-1
+X-Mimecast-MFC-AGG-ID: 1EfTOtPePr2O3BKituryMw_1793295857
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 784FC1800868; Thu, 29 Oct 2026 17:44:16 +0000 (UTC)
+Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B90A81955F1C; Thu, 29 Oct 2026 17:44:14 +0000 (UTC)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/8] scripts/checkpatch: validate fixes against
- origin/master
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Chao Liu <chao.liu@processmission.com>,
- Tyrone Ting <kfting@nuvoton.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Hao Wu <wuhaotsh@google.com>, Halil Pasic <pasic@linux.ibm.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20261029161310.2065290-1-alex.bennee@linaro.org>
- <20261029161310.2065290-2-alex.bennee@linaro.org>
- <c8bc6def-3c86-4fac-a84b-6664d40d5006@oss.qualcomm.com>
- <8733toa05f.fsf@draig.linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <8733toa05f.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v7 1/8] hw/usb/bus: Let the controller ask for the
+ automatic hub
+From: marcandre.lureau@redhat.com
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: kraxel@redhat.com, marcandre.lureau@redhat.com, junjie.cao@intel.com, 
+ junjie.cao@linux.dev, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Kane Chen <kane_chen@aspeedtech.com>, 
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, 
+ Troy Lee <troy_lee@aspeedtech.com>
+In-Reply-To: <20261028034140.367393-2-jamin_lin@aspeedtech.com>
+References: <20261028034140.367393-1-jamin_lin@aspeedtech.com>
+ <20261028034140.367393-2-jamin_lin@aspeedtech.com>
+Date: Thu, 29 Oct 2026 21:44:07 +0400
+Message-Id: <179329584772.3884549.13961862737373033745.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4208;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=IE17bdRpPS4u6ZcK2uRdvVKyh/wPfTz/sJMF7uBsRlI=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq44XqqX6pyNhystIwGCxbef1Kx/T3Mp+FIncAr
+ lOGXHUnExmJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCauOF6gAKCRDa6OEJdZac
+ 5VxAD/93qCDvJBM9OOQuQYhQwbU1+14VEHBkPsaCx+8gslJyvjyXDfYzu9HfUYGnUHqBZExD9X+
+ y3kRVsFanrJc0qbav4Q1H6lmSP8uD/JTc/0BTgrBtLJRNnkoJG9SgyzAKu1A2vDB8dAsJXFSFeq
+ PFTEn8bOz1MtrouT1FRgBESdq6xI5kRnQYuS0P5ctTwBHF7rar8tBSIW9aqGmfC0th6JEAQ2OVj
+ zd8WVtDexdarZ4UhJM6I1zbpkdSE1O9EqZV6A0HqAnb/1DS9X4kyXhpIdf7YUnQa4WJIn6OipyA
+ ixM5SxRAd5OyG0KpQUE2RbzXY6Wlt5Oqb9BxclC0Znge1T4A2eJ/UAk9wd/H7mVXDAwVYQBkX2Q
+ 8JKFQe+Sysj9mSOv14MZEm/fieuv9v4GByziTq3cwaii2Tzrhe1DR/SB2MVzz6vNkjigCTG0tq8
+ EcdQxT5zV9SBID79akt87wQwna3Xy3GnhOnbdrR3xCGWzCw3wftoUY2OU0dys2axF/SgmUzBOk9
+ RFuZnCIFYiW2SSneK2gT+FyE3j2boTyQ1sVFZXwEA1QxcB+SY9LxpZZA979vYhgZnUVRC0bf8WE
+ lf3a89njjZH63FUIq3o6wQZXSC4dFqnlpHIBK/Ti43JA0LPbqg7wFDKLacj5aVa0Oqd3EYTIqHy
+ XmEqV+/m6GF4/uQ==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: -C6hTAse4wkJ49lRc-p2RUFeGOfiVf8Im-HaO5LpTXg_1793295857
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI5MDA2OSBTYWx0ZWRfX3LJR1vC+M+ul
- qNoiUOgteQ+mWT4G88SN3OG+8giOUiE7U8RFs5N8kafwHLdEA9lISDZdvFOuzAeER/avGq6OHPW
- JVNdD7+V0mZJLPSLFGjChfj2+8B7IpM=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI5MDA2OSBTYWx0ZWRfXwy3AJLivTdSo
- mdV6jismO86ayn+AjCxAWZeGwZYD0xY++siHRMGKzPq3XeAgEmONhCLCfq3WAlXmU7kKHe/8k0l
- xL2nF77PSEmfW4WuK8C7NraVL88eC1iITqMW3u2Hiz1ykpXIrxkdW84Ays2LO7dR+9Mm2a8sEGB
- cr1qr8G7fRRNm+sVPQFU4kqOto9TsAO2LmFoF3lG1yfZjsQyt/1rcnNw29Lg5RGIodpH6KQfwZ9
- em9jyMfgVCsw5C6MfM4O7+Po3z6SellPisnOgEP2Ks5XeQP9UNGhcGYYq1M6yG10tLRGxu5fIPc
- fgNgco4KqsjsDCVpbwj7d2CRR3r9+DzjdRVdCKD6I3P8k9nX2Y26ArnQh0KaW+wyn1TW2UleAEz
- f2aJ8b+xPGv8O+1YNn01fNFVn8CtVza4nQKwPWhCGXE1le1qzQjxPv/PgnTt+70EeXbaBrd3y5o
- NYcUApCANOpsKacoA1Q==
-X-Authority-Analysis: v=2.4 cv=A8T5rKWG c=1 sm=1 tr=0 ts=6ae3860b cx=c_pps
- a=Uww141gWH0fZj/3QKPojxA==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=9zu3GSFlKV0UtYsFHY8A:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=PxkB5W3o20Ba91AHUih5:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: rzMlISua9CunZS1cNeq6xQUB3dQy1mCw
-X-Proofpoint-ORIG-GUID: rzMlISua9CunZS1cNeq6xQUB3dQy1mCw
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-10-29_05,2026-10-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 spamscore=0 bulkscore=0 priorityscore=1501 impostorscore=0
- malwarescore=0 clxscore=1015 suspectscore=0 lowpriorityscore=0 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610290069
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0a-0031df01.pphosted.com
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, KHOP_DYNAMIC=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,83 +108,110 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/29/2026 9:26 AM, Alex Bennée wrote:
-> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+> usb_claim_port() plugs in a usb-hub when only one port is free, so that
+> more devices fit. Every bus gets that today. A controller with a single
+> root port then puts its only device behind a hub, and a transport that
+> carries one device cannot use that.
 > 
->> On 10/29/2026 8:13 AM, Alex Bennée wrote:
->>> The current check for a referenced fix commit relies on the developer
->>> keeping their master branch up to date which is not always grunted. If
->>> you create your branches directly from origin/master this will keep
->>> failing.
->>>
->>> Given that origin/master should always be up to date (module the
->>> developer eschewing convention) lets use that in the test instead.
->>>
->>> checkpatch complains about the line lengths but this seems to be
->>> standard for the perl script so I didn't try and fix it.
->>>
->>
->> Or... you can use something else as origin, with origin/master not being
->> updated, and master as a tracking branch to upstream/master, and in this
->> case, this patch doesn't work.
->>
->> Using master instead of origin/master has the advantage to not hardcode
->> what your remotes should be.
+> The hub speaks USB 1.1, so this belongs to UHCI and OHCI. Add auto_hub
+> and leave it off by default. UHCI and OHCI set it, both when they own
+> the bus and when they join one as a companion. dwc2 sets it too, so the
+> boards that use it keep working.
 > 
-> origin is the default when you clone a repo. We could get really complex
-> and query the tracking remote for the current branch. But if your deeply
-> forked then that obviates the test.
+> xHCI has up to 15 root ports, so it no longer grows a hub on its own. A
+> user who wants more ports there adds "-device usb-hub".
+> 
+> Suggested-by: Gerd Hoffmann <kraxel@redhat.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Message-ID: <20261028034140.367393-2-jamin_lin@aspeedtech.com>
+> ---
+>  include/hw/usb/usb.h | 1 +
+>  hw/usb/bus.c         | 6 +++++-
+>  hw/usb/hcd-dwc2.c    | 1 +
+>  hw/usb/hcd-ohci.c    | 1 +
+>  hw/usb/hcd-uhci.c    | 1 +
+>  5 files changed, 9 insertions(+), 1 deletion(-)
 >
+> diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+> index 5cc5ffec33a1..d1ad22ac9432 100644
+> --- a/hw/usb/bus.c
+> +++ b/hw/usb/bus.c
+> @@ -363,6 +363,9 @@ void usb_register_companion(const char *masterbus, USBPort *ports[],
+>          return;
+>      }
+>  
+> +    /* Only UHCI and OHCI come in as a companion, and both want the hub. */
+> +    bus->auto_hub = true;
+> +
+>      for (i = 0; i < portcount; i++) {
+>          usb_fill_port(ports[i], opaque, i, ops, speedmask);
+>      }
+> @@ -413,7 +416,8 @@ void usb_claim_port(USBDevice *dev, Error **errp)
+>              return;
+>          }
+>      } else {
+> -        if (bus->nfree == 1 && strcmp(object_get_typename(OBJECT(dev)), "usb-hub") != 0) {
+> +        if (bus->nfree == 1 && bus->auto_hub &&
+> +            strcmp(object_get_typename(OBJECT(dev)), "usb-hub") != 0) {
+>              /* Create a new hub and chain it on */
+>              hub = USB_DEVICE(qdev_try_new("usb-hub"));
+>              if (hub) {
+> diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
+> index cd3b61158d17..104f49310502 100644
+> --- a/hw/usb/hcd-dwc2.c
+> +++ b/hw/usb/hcd-dwc2.c
+> @@ -1354,6 +1354,7 @@ static void dwc2_realize(DeviceState *dev, Error **errp)
+>      address_space_init(&s->dma_as, s->dma_mr, "dwc2");
+>  
+>      usb_bus_new(&s->bus, sizeof(s->bus), &dwc2_bus_ops, dev);
+> +    s->bus.auto_hub = true;
+>      usb_register_port(&s->bus, &s->uport, s, 0, &dwc2_port_ops,
+>                        USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL |
+>                        (s->usb_version == 2 ? USB_SPEED_MASK_HIGH : 0));
+> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+> index 5e5fe41f473d..d6b1fc5b62ae 100644
+> --- a/hw/usb/hcd-ohci.c
+> +++ b/hw/usb/hcd-ohci.c
+> @@ -1987,6 +1987,7 @@ void usb_ohci_init(OHCIState *ohci, DeviceState *dev, uint32_t num_ports,
+>          }
+>      } else {
+>          usb_bus_new(&ohci->bus, sizeof(ohci->bus), &ohci_bus_ops, dev);
+> +        ohci->bus.auto_hub = true;
+>          for (i = 0; i < num_ports; i++) {
+>              usb_register_port(&ohci->bus, &ohci->rhport[i].port,
+>                                ohci, i, &ohci_port_ops,
+> diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+> index a7b9fe131759..f11664bd553c 100644
+> --- a/hw/usb/hcd-uhci.c
+> +++ b/hw/usb/hcd-uhci.c
+> @@ -1213,6 +1213,7 @@ void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
+>          }
+>      } else {
+>          usb_bus_new(&s->bus, sizeof(s->bus), &uhci_bus_ops, DEVICE(dev));
+> +        s->bus.auto_hub = true;
+>          for (i = 0; i < UHCI_PORTS; i++) {
+>              usb_register_port(&s->bus, &s->ports[i].port, s, i, &uhci_port_ops,
+>                                USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL);
+> diff --git a/include/hw/usb/usb.h b/include/hw/usb/usb.h
+> index cbd4711933e8..cc1d6d74b124 100644
+> --- a/include/hw/usb/usb.h
+> +++ b/include/hw/usb/usb.h
+> @@ -484,6 +484,7 @@ struct USBBus {
+>      int busnr;
+>      int nfree;
+>      int nused;
+> +    bool auto_hub;
 
-I am aware that origin is the default remote.
-In my case, I always use "upstream" to reference the original project,
-and "origin" for my personal fork. As a result, origin/master does not
-always track upstream/master.
+Missing xen-usb, I assume it will be taken care of in v8.
 
-With git tracking branch, master can be setup to track whatever/master,
-and not origin/master.
-
-I would be surprised if I'm the only dev with such a setup, it's fairly
-common for any fork based workflow, and why git has tracking branches.
-
-This patch basically forces origin/master to be aligned with the
-upstream, and nowhere else we enforce that, even if commit message says
-the opposite.
-```
-Given that origin/master should always be up to date (module the
-developer eschewing convention) lets use that in the test instead.
-```
-
->>
->>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>> ---
->>>  scripts/checkpatch.pl | 4 ++--
->>>  1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
->>> index 82f62f60212..60e8b6bf7bc 100755
->>> --- a/scripts/checkpatch.pl
->>> +++ b/scripts/checkpatch.pl
->>> @@ -1913,9 +1913,9 @@ sub process {
->>>  				}
->>>  				if (which("git") ne "" && -e "$gitroot") {
->>>  					my $hash = defined($cid) ? $cid : $orig_commit;
->>> -					`git merge-base --is-ancestor $hash master 2>/dev/null`;
->>> +					`git merge-base --is-ancestor $hash origin/master 2>/dev/null`;
->>>  					if ($? != 0) {
->>> -						WARN("Fixes: commit $hash is not an ancestor of master\n" . $herecurr);
->>> +						WARN("Fixes: commit $hash is not an ancestor of origin/master\n" . $herecurr);
->>>  					}
->>>  				}
->>>  			}
-> 
+-- 
+Marc-André Lureau <marcandre.lureau@redhat.com>
 
 

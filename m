@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDBFF606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:17:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0493B606A320
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:18:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=eMBz24Y7
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=OoWT/1xq
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMQ0n-0005Z0-CK; Thu, 29 Oct 2026 09:17:47 -0400
+	id 1xMPzj-0003jQ-4G; Thu, 29 Oct 2026 09:16:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPww-0008G6-9h
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xMPwr-0008CO-2B
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPwu-0006OZ-0m
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:45 -0400
+ id 1xMPwp-0006Lx-EN
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793279623;
+ s=mimecast20190719; t=1793279618;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Q9/PReUZC5C2YCOV67favYLk9s0ugojGh4PmokjmDpQ=;
- b=eMBz24Y7QXGWefF92xptuNOpfIzEnwJt8mpLdS3TMyhR62im06sfua/S+YOSkDUk8Z7j1M
- s0tBIPgl2+/7no3XlnH6Zcbfrkoxlbb6dYQNUeegKJ10TlS+ABz37MRZrgSTK4Tv2l9bqq
- QZpZQA0NpHc3X4DK4rW2H7KX04Du8Xg=
+ bh=C7p1LEeyLZSZL9FUD4D7rxbaV3PabPqRc8xm3XGeIkg=;
+ b=OoWT/1xqSwmcoKeKZGoVC6Bm4DLN4qKqDKnoEhF1luc5cHcFxQcSV33F2ilhF1o9EVWrbX
+ dnDroOuaCWc+vr0RDPxh/tsMcPyILUGVq0Lzeif4/LUHFc3NUT2ploa77UoZtEcpkyg8AQ
+ m89Nnz3Zlr6j11ZVcxdaqN7AwhNshvs=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-150-x7ctSV7WOtCu0UVBxFz5JA-1; Thu,
- 29 Oct 2026 09:13:38 -0400
-X-MC-Unique: x7ctSV7WOtCu0UVBxFz5JA-1
-X-Mimecast-MFC-AGG-ID: x7ctSV7WOtCu0UVBxFz5JA_1793279616
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-541-RpRC8drjNnuDDKwtDTmY0w-1; Thu,
+ 29 Oct 2026 09:13:32 -0400
+X-MC-Unique: RpRC8drjNnuDDKwtDTmY0w-1
+X-Mimecast-MFC-AGG-ID: RpRC8drjNnuDDKwtDTmY0w_1793279611
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6ABBA180034C; Thu, 29 Oct 2026 13:13:36 +0000 (UTC)
+ id E8CF31800616; Thu, 29 Oct 2026 13:13:30 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1EDDB3000723; Thu, 29 Oct 2026 13:13:33 +0000 (UTC)
+ id 9A0D23000723; Thu, 29 Oct 2026 13:13:28 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -56,26 +56,26 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 18/28] hw/audio: mark Intel HDA devices & codecs as secure
-Date: Thu, 29 Oct 2026 13:12:31 +0000
-Message-ID: <20261029131241.2275706-19-berrange@redhat.com>
+Subject: [PATCH v2 16/28] hw/tpm: mark all TPM implementations as secure
+Date: Thu, 29 Oct 2026 13:12:29 +0000
+Message-ID: <20261029131241.2275706-17-berrange@redhat.com>
 In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
 References: <20261029131241.2275706-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 5PQYJnWLkL7yPv-SbY-CKLa1crYmnv04mUAfTwXQjl8_1793279616
+X-Mimecast-MFC-PROC-ID: NA46y3flB5Xijk2Lt6Gh4B7KR7IGM2QF90Oa2ENJYcw_1793279611
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -91,75 +91,96 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This is traditionally the primary audio backend for x86 as
-virtio-snd is a relatively new invention.
+All of the TPM implementations are in scope of virtualization
+usage, so mark them all as secure.
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/audio/hda-codec.c | 3 +++
- hw/audio/intel-hda.c | 3 +++
- 2 files changed, 6 insertions(+)
+ hw/ppc/spapr_tpm_proxy.c | 1 +
+ hw/tpm/tpm_crb.c         | 1 +
+ hw/tpm/tpm_spapr.c       | 1 +
+ hw/tpm/tpm_tis_i2c.c     | 1 +
+ hw/tpm/tpm_tis_isa.c     | 1 +
+ hw/tpm/tpm_tis_sysbus.c  | 1 +
+ 6 files changed, 6 insertions(+)
 
-diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
-index 173fe56bea3..ee0d18c4caa 100644
---- a/hw/audio/hda-codec.c
-+++ b/hw/audio/hda-codec.c
-@@ -873,6 +873,7 @@ static const TypeInfo hda_audio_output_info = {
-     .name          = "hda-output",
-     .parent        = TYPE_HDA_AUDIO,
-     .class_init    = hda_audio_output_class_init,
+diff --git a/hw/ppc/spapr_tpm_proxy.c b/hw/ppc/spapr_tpm_proxy.c
+index 19889e80bc1..bb6efec20c9 100644
+--- a/hw/ppc/spapr_tpm_proxy.c
++++ b/hw/ppc/spapr_tpm_proxy.c
+@@ -166,6 +166,7 @@ static const TypeInfo spapr_tpm_proxy_info = {
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(SpaprTpmProxy),
+     .class_init    = spapr_tpm_proxy_class_init,
 +    .secure        = true,
  };
  
- static void hda_audio_duplex_class_init(ObjectClass *klass, const void *data)
-@@ -888,6 +889,7 @@ static const TypeInfo hda_audio_duplex_info = {
-     .name          = "hda-duplex",
-     .parent        = TYPE_HDA_AUDIO,
-     .class_init    = hda_audio_duplex_class_init,
-+    .secure        = true,
- };
- 
- static void hda_audio_micro_class_init(ObjectClass *klass, const void *data)
-@@ -903,6 +905,7 @@ static const TypeInfo hda_audio_micro_info = {
-     .name          = "hda-micro",
-     .parent        = TYPE_HDA_AUDIO,
-     .class_init    = hda_audio_micro_class_init,
-+    .secure        = true,
- };
- 
- static void hda_audio_register_types(void)
-diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
-index 3d361a4976c..b4695981e47 100644
---- a/hw/audio/intel-hda.c
-+++ b/hw/audio/intel-hda.c
-@@ -45,6 +45,7 @@ static const TypeInfo hda_codec_bus_info = {
-     .name = TYPE_HDA_BUS,
-     .parent = TYPE_BUS,
-     .instance_size = sizeof(HDACodecBus),
+ static void spapr_tpm_proxy_register_types(void)
+diff --git a/hw/tpm/tpm_crb.c b/hw/tpm/tpm_crb.c
+index 78db2205207..ab6121ed9e6 100644
+--- a/hw/tpm/tpm_crb.c
++++ b/hw/tpm/tpm_crb.c
+@@ -558,6 +558,7 @@ static const TypeInfo tpm_crb_info = {
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(CRBState),
+     .class_init  = tpm_crb_class_init,
 +    .secure = true,
- };
- 
- void hda_codec_bus_init(DeviceState *dev, HDACodecBus *bus, size_t bus_size,
-@@ -1275,12 +1276,14 @@ static const TypeInfo intel_hda_info_ich6 = {
-     .name          = "intel-hda",
-     .parent        = TYPE_INTEL_HDA_GENERIC,
-     .class_init    = intel_hda_class_init_ich6,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_TPM_IF },
+         { }
+diff --git a/hw/tpm/tpm_spapr.c b/hw/tpm/tpm_spapr.c
+index 19075d1f012..3957c5268b7 100644
+--- a/hw/tpm/tpm_spapr.c
++++ b/hw/tpm/tpm_spapr.c
+@@ -414,6 +414,7 @@ static const TypeInfo tpm_spapr_info = {
+     .parent        = TYPE_VIO_SPAPR_DEVICE,
+     .instance_size = sizeof(SpaprTpmState),
+     .class_init    = tpm_spapr_class_init,
 +    .secure        = true,
- };
- 
- static const TypeInfo intel_hda_info_ich9 = {
-     .name          = "ich9-intel-hda",
-     .parent        = TYPE_INTEL_HDA_GENERIC,
-     .class_init    = intel_hda_class_init_ich9,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_TPM_IF },
+         { }
+diff --git a/hw/tpm/tpm_tis_i2c.c b/hw/tpm/tpm_tis_i2c.c
+index b4f258c7bcb..302296affb6 100644
+--- a/hw/tpm/tpm_tis_i2c.c
++++ b/hw/tpm/tpm_tis_i2c.c
+@@ -551,6 +551,7 @@ static const TypeInfo tpm_tis_i2c_info = {
+     .name          = TYPE_TPM_TIS_I2C,
+     .parent        = TYPE_I2C_SLAVE,
+     .instance_size = sizeof(TPMStateI2C),
 +    .secure        = true,
- };
- 
- static void hda_codec_device_class_init(ObjectClass *klass, const void *data)
+     .class_init    = tpm_tis_i2c_class_init,
+         .interfaces = (const InterfaceInfo[]) {
+         { TYPE_TPM_IF },
+diff --git a/hw/tpm/tpm_tis_isa.c b/hw/tpm/tpm_tis_isa.c
+index 2b1267133ac..da3a932b033 100644
+--- a/hw/tpm/tpm_tis_isa.c
++++ b/hw/tpm/tpm_tis_isa.c
+@@ -187,6 +187,7 @@ static const TypeInfo tpm_tis_isa_info = {
+     .instance_size = sizeof(TPMStateISA),
+     .instance_init = tpm_tis_isa_initfn,
+     .class_init  = tpm_tis_isa_class_init,
++    .secure = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_TPM_IF },
+         { TYPE_ACPI_DEV_AML_IF },
+diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
+index a7b0002d826..0afb52c3be3 100644
+--- a/hw/tpm/tpm_tis_sysbus.c
++++ b/hw/tpm/tpm_tis_sysbus.c
+@@ -167,6 +167,7 @@ static const TypeInfo tpm_tis_sysbus_info = {
+     .instance_init = tpm_tis_sysbus_initfn,
+     .instance_finalize = tpm_tis_sysbus_finalize,
+     .class_init  = tpm_tis_sysbus_class_init,
++    .secure = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_TPM_IF },
+         { }
 -- 
 2.56.0
 

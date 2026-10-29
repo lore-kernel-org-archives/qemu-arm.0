@@ -1,74 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 338FD606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 16:14:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9BC13606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 16:14:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=SGpiuFzp
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=NU86YyTz
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMSkt-0005hp-ET; Thu, 29 Oct 2026 12:13:31 -0400
+	id 1xMSkr-0005gY-8E; Thu, 29 Oct 2026 12:13:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xMSko-0005de-5f
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 12:13:26 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1xMSkk-0005cK-Rt
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 12:13:24 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xMSkh-0000XB-I4
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 12:13:25 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4a2069b9710so22376705e9.2
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 09:13:15 -0700 (PDT)
+ id 1xMSkg-0000Wq-Ds
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 12:13:22 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-48dfc0421d9so1946541f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 09:13:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793290394; x=1793895194; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=MJ7Wz+EKAXUGUT3km1oRTqHbztlVcuFrq58v6QALOTs=;
- b=SGpiuFzpBp4pljHytTRH3UXKFutbi8rMeTLLDxxjHyiIN71WwY1Axo6Yms8cPZ2NIL
- k8/jPqcqig7CVaOu+XaZOt98L/ZeCmqUfmu4GiAFGLIhA2Y96noxsY+LvBHJFHfrZqPD
- aOWThTyIlTcu4uRzNbBljZ6pba02itD2QJ/5079YWEGA07mja7d7BVZY44DM9ShGxE9m
- zymwjjFIaSoYhWP45RPKAoSXOUFLnkkI5GnIFe+0ZGAltrBHaIVZPxirh+QdGuwDT+Xo
- 5bUkl+4Enx3R2tP1LKaB1XXnzcIHes6Z0X3BY9U9dJpR0P7nmJuWfhQju7AuL2kP/xte
- 4psg==
+ d=linaro.org; s=google; t=1793290393; x=1793895193; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=s4l0KimBrWHvvMusyKOm2DKSCNNxRX8/fD5OazWpjLY=;
+ b=NU86YyTzxF8E12Co4Fuw0+cWfhQRJFwe/uHYGr/tDDyzUb9a+cQefuWIqqcJD45fAR
+ iI9C3Z8uSoL9VS4zxg0aYD+5MALvbNqsY3Kggrzh1q1uLhraDNCNZv6j7pImZN1vzxml
+ bgs6XKeMK6szhDpmrgqRshdqU9OHKkaMxr8Yxo6UGDol3OXmD/4W0IB8z1pymtASPTNP
+ TuJmhqrihYb1XxdH94pP+CbQvY0tT0HojVWVYDhkpU3XRfPAFqNKFnBA+yAqqvCQYkjZ
+ eqPBwIs8ka0Z6sCTO1voiIJbhJHmSjfJ4fVpVlAAUr2B8CCvz+bhqUjfeu55CT2aQ+pf
+ DjaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793290394; x=1793895194;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=MJ7Wz+EKAXUGUT3km1oRTqHbztlVcuFrq58v6QALOTs=;
- b=M1r3Bsz/JrKJ/u69DHTZv846VeYNuqbUCMj4EGUU2UbhEAzBAewX6IGJNJ7QB19PNL
- 1wu6gqI1l2iUuLxRPuawC77J21ZFY/8Ezq1C1FlP87TPqihye0lFcOuyuiL7osXiNyxb
- e187mwwAgmbNhItW2hx/wmLwIo/D/BCBfOss88iLXAeMkyvqYDzSKrmWFdGgYXa6k0NX
- 32TIoJyP/dUSlJahDZsS4hhepPAtrXam6tTgLsmYQwKbWE0sXgUj9ZKeIaMIws1sTAcO
- f9A5pANdTMeatItZJsn5SNyfcQOGMjmMM9H1e7aC50sDMAL1Q6AZeXmIHI6cqqLVT6hF
- +IXw==
+ d=1e100.net; s=20260707; t=1793290393; x=1793895193;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=s4l0KimBrWHvvMusyKOm2DKSCNNxRX8/fD5OazWpjLY=;
+ b=JHaFWESUapAqLLK7Qus/3CNhzqwlujFFtOdF5BiH3/z3vSB89/zdsOfJETOjYx7mLz
+ OBfG7KOlj1XoMODKSfBQsGA83lXH5TrPG6KSNgCEtjWAVZjLjL26IWiYhW+Pr7Wfml0o
+ OFw9+RzNA6LFB5+NMBUqO25Z7ZSxpYrZYrCpmqaAecTNhB6dJUnvfAMrjtMRtpVX+DJa
+ g2wx4qcvGnZKLYdOj9Jx1A5SjZKzBTXc9XmFEHuYDQUihtSQAh3S0rMpGasfpBo0NBCa
+ U8BO/oaEp4E7ChEWNmSYn4X9ne4VNR8BMYHM0lH5lsOjZk7Xz1QXxu2dhcev8ZRGfPMw
+ XTwg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBynaY9z1WE3+OMgHabd4aFCmomnIEY6aR8U27cvs8IjdTr8EdNkWrnq5YSTuABcKclnTWWYRDfYPA==@nongnu.org
-X-Gm-Message-State: AFq9FYIWP9M74Q3JHY+CsRmKQaoZmvB3E1sUAkGPyIIzNG5AICYYPv0L
- cCdty1Wx7j1FyRc5sagGH3wB7M0xoKPpv8Pxry5AK5DYFrIgkeqNA8E4+rmtBHx9EGw=
-X-Gm-Gg: AYBFou0ne9xG0fyAKTG91fOHMLDjqeymzB3+cKTbe8MEBpH6l8neUiK+VFKAW0nn5QA
- McboM2bgAiCvbBVy2fmbs0nJckS3oEi046T1BF4g/7MF4nxnc9qxdsJGX4ma/pqgY9V1FqJg9UP
- VlPO/GZvgcNX1HU00aeqm4zPZwA59yBaWQeHw6CcAT9X59JX673JTHOORM42DxwMxYVZvyijD52
- 6Kah7S0dOCWE/TPpjLXF1/52XhQy62iGa6gXs9kvOcEdftBR4z7DUS+NP06+dgOROboVtwsZmxx
- HZzVAWMn/TBLil12a7llhWMYEMzqiamDON3XgfI/5+xeV7liqGSBtRuiyO0rnpPiMcB/0iF3iTO
- zZokGBl+aiQG+hYklCw0YfZLTAI04kFvu1Tg1AD3PV1GltbZPNdwkzN5j2nMS3Bh5HsmmIDNcS5
- Q0XFggcQqQCvWeOkRufME3LTkt5xMM27njNWjbN5aAJD9wsAu8AQ2UPSIFu/UCn0LIKBJX9Qbvj
- HEAuJsAwDxkQrj4mSVuQEiAlfOoER392Of2xQQW6PxEF57fnfOg1+1bQExKsWOlq4DEsjK7rhSb
- XQpPAhQqpahacCClfIpK7sor6wYh
-X-Received: by 2002:a05:600c:4e01:b0:4a2:190f:cf6a with SMTP id
- 5b1f17b1804b1-4a967ca03demr142402165e9.35.1793290393785; 
- Thu, 29 Oct 2026 09:13:13 -0700 (PDT)
-Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4aa7c1302f6sm82624515e9.0.2026.10.29.09.13.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ AKwUvBzqZWBuLgSosYB/96BFD6MNX/zQGvOZVwQ281bWsDxz/Di+ZxGJP4sr6MgxVf1isVPgVGijruUzIQ==@nongnu.org
+X-Gm-Message-State: AFq9FYK2W94Dy9OqPeWQ0mp0gcQXBFXfYFM9S4XTbdKmA0YeY8dVZfU4
+ BYmBY8j2XYeVuFkU5nJwOQ6NTAGYiqgFFRhXGHNgn9B5SfPI9UK/hgYo02lfi8ELzmg=
+X-Gm-Gg: AYBFou1v2GoyStG4UMY8m7KV8ZIVYFrvIBI9qZ+EKiDk23qrLBojtYpNmSumsDAjFLg
+ /ipF43o0VH9QuiUQTFMbytQzOxLAVgIdlhZ/SptSmPY2Q6ICAm4hsQK+p6yXt+K+Ib5KkQzdUN5
+ ujDlDykCx6mqoE3aPxFXWwM6Ps9YA+Nmtae0P34wDEk+4mufOiO3rbl+xK0VGJcv4C7pIln7SNO
+ o1QaqKBHDZgbyhL7rIYHSXvCyTevAd+zzmm1ojJxlRKA5kA5zp+XALCfQhYl2FuxiRUE7J5JV/+
+ U+UIiU5OBY9cLjFU2Rhi/XoEPJPLTfyzbHewFgijWXjVvdUIYxIEkdCJCrpvGBX+DKN6SwE2PR+
+ P+2ji69rQJYns2M78ZhUVUxcaalRpmNM6puDu1QUuqlRDvsg4B2A877O+xgcG/pXT1BRczD1E/n
+ Cy3/yPCzJQcN+JkeW3OChUYrjgtswL/sn9M9dSRFyRN1R9X2xG/xalIfFv9VrfuIbK0AycZZvJR
+ Bc8aYyBusBRW/avoWS0y9oAGAwIj+Yax0PLK72IG/wQuC/ZKNHDk6eoJ9UZ9F05DzYfpuHgMMeF
+ qHFYi100QvyR1mtGm7mYYEGFgrV6
+X-Received: by 2002:a05:600c:3e86:b0:4a1:83f0:7c91 with SMTP id
+ 5b1f17b1804b1-4a96b0ab6b7mr133595925e9.18.1793290392920; 
  Thu, 29 Oct 2026 09:13:12 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4aa7f7f4cdbsm83293675e9.7.2026.10.29.09.13.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Oct 2026 09:13:11 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 66C3C5F91F;
+ by draig.lan (Postfix) with ESMTP id 122BD5F898;
  Thu, 29 Oct 2026 16:13:11 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -82,27 +80,25 @@ Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Hao Wu <wuhaotsh@google.com>, Halil Pasic <pasic@linux.ibm.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-stable@nongnu.org
-Subject: [PATCH 3/8] target/arm: hold bql when SEV sets the event_register
-Date: Thu, 29 Oct 2026 16:13:05 +0000
-Message-ID: <20261029161310.2065290-4-alex.bennee@linaro.org>
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH 0/8] fixes for 11.2 softfreeze (checkpatch, gdbstub, wfxt,
+ bcm fb)
+Date: Thu, 29 Oct 2026 16:13:02 +0000
+Message-ID: <20261029161310.2065290-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261029161310.2065290-1-alex.bennee@linaro.org>
-References: <20261029161310.2065290-1-alex.bennee@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,69 +110,58 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-There is a race in qemu_process_cpu_events and sleeping on halt_cond
-where we can miss the setting of the event_register which would cause
-arm_cpu_has_work to report we shouldn't sleep. As by definition the
-bql has to be held when we go to sleep against halt_cond guard the
-kicking of the cpus by the SEV helper with the BQL to ensure things
-are properly serialised.
+A small selection of fixes as we approach softfreeze.
 
-The other places that set event_register are fine as they are either
-in the same vCPU context or are already serialised by the BQL.
+The core changes are tweaks to the WxFT emulation which fixes a
+deadlock when the vCPU goes to sleep. There are some tidy ups in the
+following patches including an import of the test case from one of the
+bugs reported.
 
-Also use qemu_cond_wait_bql like the other halt_cond users.
+The is a quick fix for a gdbstub test regression I inadvertently added
+in my last PR.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4660
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4670
-Cc: qemu-stable@nongnu.org
-Fixes: d238858bff60 ("target/arm: Implement WFE, SEV and SEVONPEND for Cortex-M")
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+While checking the series I also ran into an issue with checkpatch
+which I have a proposed fix for.
 
----
-v2
-  - drop pointless cs assignment.
----
- system/cpus.c              | 2 +-
- target/arm/tcg/op_helper.c | 5 ++++-
- 2 files changed, 5 insertions(+), 2 deletions(-)
+Finally there is a random bug fix for the bcm2835 frame buffer.
 
-diff --git a/system/cpus.c b/system/cpus.c
-index e11a5aab6a6..985732217fb 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -412,7 +412,7 @@ void qemu_process_cpu_events(CPUState *cpu)
-             slept = true;
-             qemu_plugin_vcpu_idle_cb(cpu);
-         }
--        qemu_cond_wait(cpu->halt_cond, &bql);
-+        qemu_cond_wait_bql(cpu->halt_cond);
-     }
-     if (slept) {
-         qemu_plugin_vcpu_resume_cb(cpu);
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 6a673e5ae6e..5788a094123 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -470,7 +470,10 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
- 
- void HELPER(sev)(CPUARMState *env)
- {
--    CPUState *cs = env_cpu(env);
-+    CPUState *cs;
-+
-+    BQL_LOCK_GUARD();
-+
-     CPU_FOREACH(cs) {
-         ARMCPU *target_cpu = ARM_CPU(cs);
-         target_cpu->env.event_register = true;
+Alex.
+
+Alex Bennée (8):
+  scripts/checkpatch: validate fixes against origin/master
+  tests/functional: fix call to common_tuxrun_gdb
+  target/arm: hold bql when SEV sets the event_register
+  target/arm: don't pass env to the sev helper
+  target/arm: simplify wfxt_timer_cb to only trigger cpu_interrupt
+  tests/tcg: import arm wfe test cases for #4670
+  tests/functional: remove @skipSlowTest from quanta_gsj test
+  target/arm: fix bcm2835 migration issue
+
+ target/arm/tcg/helper-defs.h                  |   2 +-
+ hw/display/bcm2835_fb.c                       |  11 +
+ system/cpus.c                                 |   2 +-
+ target/arm/cpu.c                              |  20 +-
+ target/arm/tcg/op_helper.c                    |   7 +-
+ target/arm/tcg/translate-a64.c                |   2 +-
+ target/arm/tcg/translate.c                    |   2 +-
+ .../tcg/aarch64/system/wfe-sev-lock-aarch64.c | 259 ++++++++++++++++++
+ tests/tcg/arm/system/wfe-sev-lock-arm.c       | 240 ++++++++++++++++
+ scripts/checkpatch.pl                         |   4 +-
+ tests/functional/arm/test_quanta_gsj.py       |   1 -
+ tests/functional/s390x/test_tuxrun.py         |   1 -
+ tests/tcg/aarch64/system/meson.build          |   7 +
+ tests/tcg/arm/system/meson.build              |   7 +
+ 14 files changed, 538 insertions(+), 27 deletions(-)
+ create mode 100644 tests/tcg/aarch64/system/wfe-sev-lock-aarch64.c
+ create mode 100644 tests/tcg/arm/system/wfe-sev-lock-arm.c
+
 -- 
 2.47.3
 

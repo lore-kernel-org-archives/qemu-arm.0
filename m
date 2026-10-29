@@ -1,115 +1,116 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 232A6606A31D
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:50:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E097C606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:55:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=a8L3E5wT
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=ADxRTTPA
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMRRf-0004vF-81; Thu, 29 Oct 2026 10:49:35 -0400
+	id 1xMRXH-0006QQ-Uw; Thu, 29 Oct 2026 10:55:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMRRZ-0004tw-PA
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:49:29 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMRRY-0000DM-3E
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:49:29 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-8b0d91601bdso6716857b3.1
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 07:49:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793285367; cv=none;
- d=google.com; s=arc-20260327;
- b=gRrSclNgyJcbZ7eoXl+jqiWh8PdvQ0py+7Zd0PZzuhikMEFiQZJdRNYMduisBg81tZ
- +n6CNFfE5enVvKkuvzfGlqgPkMMuTffPkjkusep/ElIXBbxrjSwv7v9IzkTkAhJODhXG
- XIlDGc6YPz78f/bmh0n8Q7E+3Mn/7bsmLX2RLAkeh3IOj4En4e4Wow+lBe79fuL0nLud
- NlCwKpze/Gj8BkWNPYmaoMBFU/lSb0obvc3h4JjHM18TPlNoMHnma2lwsDXgwLbdre2a
- 0Ee26J5jowEuxvqIvPTcYzIJzykJx5GqdAzPNBSTVTJopjtTx07ZoObdk02zDlrBVRa3
- eebQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=MgN094k1BFcqlTCztzZgWYZeEgqavZD4L+tZVF7wL1k=;
- fh=19GSH8QxriR4w9Iyla1XHJf9qWycuL8FDeFs5ASIwag=;
- b=adBxWmcjADdC8oREqjsMVOFzWtjH10jGvCJCDMsJXll4NNcxmVtmolaxyZh0RjOpaD
- kUAMlzHqgKsZMv7UJkZlhjZGhrGP+6Z2ik6oIk8pP78SEnLZGtarHR0jObXJRwB4Be5a
- +N2VTjckzL5385SkE3SYBMKXM63fE92LW5xQP4flkgzI8dODqaYlsf//8e3vBke9O+1F
- drz3maDT0/8YKzTjaAJA3R1epv+xB93C5IXsxDwZ+XthVb/7VWpUWv0Fh5rx2ywvfn0s
- fthVz26+YJAvkPSsYiXMMzsZej4vZb4jlDAybEOkWMRKtea6vYUPJpqMKqntSKqDddrx
- +gcQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793285367; x=1793890167; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=MgN094k1BFcqlTCztzZgWYZeEgqavZD4L+tZVF7wL1k=;
- b=a8L3E5wTqdmxcfREkcSuLZmP9CV/ABcKmDVfZ2xuYPB5lUNZ1BDI9B3ita1Ld8FQ7U
- eEUqaMdPn4BQ0/Q5/pNbDpWzAPTw2fIsUgMAESZfgObFjJ6COWYDoTcaCQjQoW0rM431
- 9hxF+N7lrceT5JtGdtDAGhrdBafaX6HGUSab3qYCNenIY090CHCc+UCoOfdK+OUEc6Yf
- //ZSxW/jb92BLqZiR6S69Cx3SoKySmEg2jCLY99DtJwyROhDqrfzXq8f24shL64UlVd6
- BkBovMqQgPXTHSIWiu7VLsW80XzQgynUytW6wKCRlQPI1zPLLtMnyV2KdvbxaGyZcoy1
- HKJg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xMRX2-0006Mt-9m
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:55:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xMRX0-0000jI-45
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:55:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793285704;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=G1udsHb1Qa6RVVlGmmeUVSgZ2JeJYdPa+1ESuEtToCs=;
+ b=ADxRTTPAIfMAhdQzb+7/rnOaLsB8wTXW6k1QfKEBsLeczQp4MYzC3cvR1eDzs3ydHEGkT/
+ TlzmCMWj6k0S8VTnHK0hEroHDG39jrvLEq7QVHdj4WZcdn2nkfkjoj46PfF8aQCmH8xVIF
+ wAdGp4c+XVlRZBO5eYzT/Xm6Oi4tiY4=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-643-HRyf9KmQPDqgClRjJWuJ5Q-1; Thu, 29 Oct 2026 10:55:02 -0400
+X-MC-Unique: HRyf9KmQPDqgClRjJWuJ5Q-1
+X-Mimecast-MFC-AGG-ID: HRyf9KmQPDqgClRjJWuJ5Q_1793285701
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4a2063be13dso19478765e9.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 07:55:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793285367; x=1793890167;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20260707; t=1793285701; x=1793890501;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:reply-to:user-agent
+ :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=MgN094k1BFcqlTCztzZgWYZeEgqavZD4L+tZVF7wL1k=;
- b=ZVyPNBzYOz1bwpAW2b/2sgiIf17v4V2fgGsAcIH+7hamiPTmvX1X7mSKnpNiCewepb
- I6U0zL3IClt91njxEDs3VvsXXtig+E79eb6/E3mKKRdCGiF5hRmePwcbknkKAGylxwNI
- cpU1yEtpdCLN09/X+ByTBvWtD1jeZDBC3M9G0x9OOfLxASNghoWuDYYZgWz0Gy91/7YM
- YOhRSt8O69h4XS6yJ7n2I6KwMxGClZlLlh9mhMgtEaP81lndFt1aXCqiH1/w8zbVnllV
- h92HI6L04WLebytdrqHPHEtrAb7d8lg1SFXIxlZfPsNT1e/ttcmzkBK/m6rP02HKG230
- Iiaw==
+ bh=G1udsHb1Qa6RVVlGmmeUVSgZ2JeJYdPa+1ESuEtToCs=;
+ b=pm/eAUW4w6aTj7zrQWJjCVmER0Ob46Lq1NNIfpcO6oQeOc6Xy3qqlwBJQpCUnZN4Xk
+ Au1NXZ/EaIoMsPwUH3z/adTetZZ6VAGUSzEJrJ+blPnb0ERLmcTp3ZB7WGJmEbJmDydX
+ X8Ur142iq5u4ehK4ETEXa8fkcNdtJe1dOej2FVRu29KV6qZapAwm7JGG5aF7pymKd3Bn
+ zDpmN4bs4vgwDMAi6Igk95gSW4+Hd9qSqzm+ZrhuzLw5ozMS9Ri4Hk5x7kLzfn3/Oode
+ GHA/j3oWJjTA9afWZiNgj4qPgwX2e3uWsh4EGkjTyHGcV0XzrGEx5Z5MQd94gXflLAE5
+ 0mtQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzokt6vtFZQbcwLVRJUHMF/Zd6kHPt2hKktG1enK+ZDkJ4chQsBkA2MzO1KxuHmOy4VognwYw36rw==@nongnu.org
-X-Gm-Message-State: AFq9FYKgc4DQrDR+bg5dPAgBhUF1IsyYYRsAvCOvLMsE2YRIt4yg6vLg
- FN5CJWHh4W5EgDlrAKbBrcYcjtvxHyEMkSUoBCqhedAW+fgBePhbMS9rxFNCuKsmpidJTV9vjnB
- KThkYVy/pwiqLiKE4h8m6pBr/L1lQjeVEq/ipziRqIw==
-X-Gm-Gg: AYBFou2OtRdj7pzfNKafpNMgGKMkEXjg9Ka/LqPhH4Q0xaaJH+pmjzsAqlBRJGQ88aq
- keJqOv367yUUkl06XYgd6TERhjCkYww70aZ+xT5AqWY7s1JVY1We+ppeRFmuByQB1XjP2xkAjTs
- pBI8g4vwEyXpDDufTEnWIzu1XcP6kGbP0b/D2UCF2DHLUEWmX6Fxmib6+/ODkpzMN9G3GTHcxkC
- mkgsCP2cXVcNNR3M4E5d0VkzUc9OaTGSJKfGTfaZNrNDoltHXYqI4Jbue0EpYkJ4sT+sYhIYWff
- xhbJAo24mIRLAa4gQmoaqSHN2vdQHLKz5iDkbLdUypatVG4dI9q6iWSxQ7+0VrOUxnQArajjLyL
- 4gh5OoXJALK/lKbjSyiu8weJpPQCzWH3A4UPURMO95db9Yxp5yKEsGgP5+xfvIu690eIqAnslvx
- qqMc2A4vWEenlbikGZX4Kh
-X-Received: by 2002:a05:690c:6612:b0:8b1:6c4d:6b83 with SMTP id
- 00721157ae682-8b1c6762363mr20010397b3.24.1793285366380; Thu, 29 Oct 2026
- 07:49:26 -0700 (PDT)
+ AKwUvByTJQWSrjmgE/PaEfZ6hOfl+VmIXbIxitRfY1703Tto4Cuqb2sZZ7WASWNKO8iAncBQ+6yWoCX8xQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLj6wStOG9dNPUDVDHVumiXMhO6MJIGoQxKK8EJnZf4qGUf1cJF
+ yfepQ60jL1P7E4cm/jX0IG5HT/UegEDMjLyM6YOBJ0bGMcv+7M7tigmkg9TJnutBzRKkD/Bi/8L
+ cRm4slkM9FmK6P5GDYFkXAmrXO/+CEJIW1eeAi/JqcX/7SjU/gT/OKw==
+X-Gm-Gg: AYBFou2hugulE5wmY6CuCibadsvGSn9oeAYxwi6yvc8rFvwsPwBbfn7qJRBRQA6Cy8r
+ 8ejzVgpkip0aq/mslpS65x2QPod+sthzU8KgvgZ8nUeENc6VG+T8h+MUE8FOQgS2Mo1P5qUF47Q
+ UuBLrGi5/PP0OTv2CMReYZWFAYOmFE053YQoq9NRnosyjxmThnWWfXuJo//CwmV3qBXeFZkVmWe
+ lH2Ny6E9ARwqaQdhi+EA1IljKQ4F8gzwdzhwY/0BgQsyWZDWjIfqwx0Q352CuNQUw+LEdK+AAd2
+ CqxXdzQ8O1j7ckBskVdi5i7g0XqK91g0sci/GxODRYEOXOy2Kcam0eWfZcJOWQdg30vuJPesKih
+ VyHbUnNstpQshf0lE110rSIhvZqb12KTrtgT4F8LdW4F09BU7OtRggSeneu7eZLFw7JOwBFNy9d
+ lY9Cn5zp9LRvtRWlvu1h+Dzg==
+X-Received: by 2002:a05:600c:1d26:b0:4a2:1612:636e with SMTP id
+ 5b1f17b1804b1-4a965ec952bmr131599105e9.5.1793285700839; 
+ Thu, 29 Oct 2026 07:55:00 -0700 (PDT)
+X-Received: by 2002:a05:600c:1d26:b0:4a2:1612:636e with SMTP id
+ 5b1f17b1804b1-4a965ec952bmr131598495e9.5.1793285700462; 
+ Thu, 29 Oct 2026 07:55:00 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4aa7f4188f4sm67573025e9.4.2026.10.29.07.54.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 29 Oct 2026 07:54:59 -0700 (PDT)
+Message-ID: <48af9561-c3e3-4f8b-9301-f15bd7b317c6@redhat.com>
+Date: Thu, 29 Oct 2026 15:54:57 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261029092307.281287-1-eric.auger@redhat.com>
- <20261029092307.281287-7-eric.auger@redhat.com>
-In-Reply-To: <20261029092307.281287-7-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Oct 2026 14:49:14 +0000
-X-Gm-Features: AclHuK_QnTgYU6J5yARPKiW8vNTsLA2SYpuOAg5EmAHtKzsWF-GIopk7PrDDMDc
-Message-ID: <CAFEAcA9NZ6kUCB3eLYdwYaG0pedZej_Wv7te1s94hYo67CpV+A@mail.gmail.com>
-Subject: Re: [PATCH for-11.2 6/9] target/arm/kvm: Pass an error handle to
- kvm_arm_init_cpreg_list
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- shaju.abraham@nutanix.com, khushit.shah@nutanix.com, 
- richard.henderson@linaro.org, pbonzini@redhat.com, skolothumtho@nvidia.com, 
- philmd@oss.qualcomm.com, 7746591750@163.com, maobibo@loongson.cn, 
- harshpb@linux.ibm.com, amachhiw@linux.ibm.com, 
- daniel.barboza@oss.qualcomm.com, milesg@linux.ibm.com, farman@linux.ibm.com, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-11.2 5/9] target/arm/kvm: Pass an error handle to
+ kvm_arm_create_scratch_host_vcpu
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ shaju.abraham@nutanix.com, khushit.shah@nutanix.com,
+ richard.henderson@linaro.org, pbonzini@redhat.com, skolothumtho@nvidia.com,
+ philmd@oss.qualcomm.com, 7746591750@163.com, maobibo@loongson.cn,
+ harshpb@linux.ibm.com, amachhiw@linux.ibm.com,
+ daniel.barboza@oss.qualcomm.com, milesg@linux.ibm.com, farman@linux.ibm.com,
  cohuck@redhat.com, armbru@redhat.com, mbawa@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20261029092307.281287-1-eric.auger@redhat.com>
+ <20261029092307.281287-6-eric.auger@redhat.com>
+ <CAFEAcA-v2s39f5n0b+9ZD4QHd5irxUwqzUfsYUb8x0GTqU_z4Q@mail.gmail.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CAFEAcA-v2s39f5n0b+9ZD4QHd5irxUwqzUfsYUb8x0GTqU_z4Q@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: pkSSCt8m2InCy5DxixCEBr4iBsZEnKSsGhtyz3YcjOQ_1793285701
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,72 +121,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 29 Oct 2026 at 09:23, Eric Auger <eric.auger@redhat.com> wrote:
+Hi Peter,
+
+On 10/29/26 3:37 PM, Peter Maydell wrote:
+> On Thu, 29 Oct 2026 at 09:23, Eric Auger <eric.auger@redhat.com> wrote:
+>> This allows to report a precise error message if any error occurs.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >
-> Pass an error handle to kvm_arm_init_cpreg_list(). A Subsequent patch
-> will do the same with kvm_arch_init_vcpu().
 >
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> @@ -371,7 +377,8 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>          features |= 1ULL << ARM_FEATURE_PMU;
+>>      }
+>>
+>> -    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
+>> +    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init, &local_err)) {
+>> +        error_report_err(local_err);
+>>          return;
+>>      }
+> This isn't supposed to report an error here. The caller of
+> this function is kvm_arm_set_cpu_features_from_host(), which
+> sets cpu->host_cpu_probe_failed for any failures. That is
+But is there anything wrong output an error? Added errors are related to
+- Failed opening /dev/kvm
+- Failed creating the scratch VM
+- Failed creating the scratch VCPU
+- Failed getting the preferred target
+- Failed the init of the scratch vcpu
 
-I wondered if putting patches 6 and 7 the other way around
-would be better but it doesn't seem worth the effort of
-rearranging them now.
-
-> ---
->  target/arm/kvm.c | 19 +++++++++++++++----
->  1 file changed, 15 insertions(+), 4 deletions(-)
+all of those are practically tagged as errors, aren't they? So does it
+add any spurious msg for something that is supposed to be normal?
+> later checked by arm_cpu_realizefn(), which reports either
+> that you didn't use an accelerator type you should have or else
+> the rather vague "Failed to retrieve host CPU features".
 >
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 28f199c03f..d454346037 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -872,6 +872,7 @@ static bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx)
->  /**
->   * kvm_arm_init_cpreg_list:
->   * @cpu: ARMCPU
-> + * @errp: Error handle
->   *
->   * Initialize the ARMCPU cpreg list according to the kernel's
->   * definition of what CPU registers it knows about (and throw away
-> @@ -879,7 +880,7 @@ static bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx)
->   *
->   * Returns: 0 if success, else < 0 error code
->   */
-> -static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
-> +static int kvm_arm_init_cpreg_list(ARMCPU *cpu, Error **errp)
->  {
->      struct kvm_reg_list rl;
->      struct kvm_reg_list *rlp;
-> @@ -889,12 +890,17 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
->      rl.n = 0;
->      ret = kvm_vcpu_ioctl(cs, KVM_GET_REG_LIST, &rl);
->      if (ret != -E2BIG) {
-> +        if (ret < 0) {
-> +            error_setg_errno(errp, -ret,
-> +                             "failed to get KVM register list size");
-> +        }
+> If you want to make that more specific, I think you need to save
+> that more specific error information instead of the plain
+> boolean host_cpu_probe_failed, so you have it in arm_cpu_realizefn
+> where you can report it up.
+Maybe I can store the error handle instead?
+>
+>> @@ -2653,8 +2660,10 @@ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level)
+>>  void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
+>>  {
+>>      int fdarray[3];
+>> +    Error *local_err = NULL;
+>>
+>> -    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
+>> +    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL, &local_err)) {
+>> +        error_report_err(local_err);
+>>          return;
+>>      }
+> The only caller of arm_gic_cap_kvm_probe() is qmp_query_gic_capabilities(),
+> which has an Error parameter. So here we should be passing the error
+> up to it to report, not reporting it locally.
+makes sense.
 
-This made me wonder about what the "returns success" case here
-would mean. I think that's in practice a "can't-happen" case,
-because it would mean KVM had no registers in its register list
-(i.e. we handed it a 0-sized list and it said "sure, that's big
-enough"). But we should treat it as an error, because otherwise
-we'll return success here and then later code will assume that
-cpu->cpreg_indexes and so on have been set up for KVM when they
-haven't been.
+Sorry I sent the v2 nearly at the same time you sent this ;-)
 
-But this is a pre-existing bug.
+Thanks
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Eric
+>
+> thanks
+> -- PMM
+>
 
-thanks
--- PMM
 

@@ -1,162 +1,143 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D48CB606A32C
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Oct 2026 21:45:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98521606A31E
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 02:06:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=LqYY7DGB;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=glEaw5nc
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=S7sTXHwK
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMBRz-0008K1-GQ; Wed, 28 Oct 2026 17:44:51 -0400
+	id 1xMFWA-0007dZ-PT; Wed, 28 Oct 2026 22:05:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xMBRx-0008J9-67
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 17:44:49 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xMFW8-0007dG-GV; Wed, 28 Oct 2026 22:05:25 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xMBRv-0001iM-K5
- for qemu-arm@nongnu.org; Wed, 28 Oct 2026 17:44:48 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69SIkJXt2546877
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 21:44:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Zg0hmOj9aMW9T1A6MPbF+6VFWcnu0Fwji/PPaUeTYAo=; b=LqYY7DGBouhvvblO
- +4ELGWkxXIkGez4fKF0Rh5TJj4QcxsSGc/6ZmVJWOG4kWsap9dB8U3jsqpo4qrSm
- KCDsWw2wHP1BtdjKdCrUi24KfEFWTn9i2wAK/WjQdSIV7Qpq9hfOu9gBXGGMT6lb
- wS01vkl6qGRY4pWEplZ3fyyLAjLC5mJsfftI/re6DIPb2L1A/aEM7z3pCv1H7L96
- BdI8Oa7jDHzp7u3Z/joP5/bNa4PMysqTPqsdyfEYAfn1bNtHJBdE9N7AzcGSNinU
- wpNjFvPSY7kSpK9VoSPGUS+fxX4vVKWK4w/2jRERhl/lDLKb8KFH0oF4h3SjueAI
- Y78B9A==
-Received: from mail-dy1-f200.google.com (mail-dy1-f200.google.com
- [74.125.82.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hkpmc0ktf-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 21:44:45 +0000 (GMT)
-Received: by mail-dy1-f200.google.com with SMTP id
- 5a478bee46e88-3425098ae4bso201281eec.0
- for <qemu-arm@nongnu.org>; Wed, 28 Oct 2026 14:44:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793223885; x=1793828685; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=Zg0hmOj9aMW9T1A6MPbF+6VFWcnu0Fwji/PPaUeTYAo=;
- b=glEaw5ncXNoGhfuFv1lYuVNbHFhWyytL+0SZEobdsm9WeYT1vBG6O+Ye1jj6+EG9ob
- FMFNEloSsIao9iMXMDrRIqRdHiCl9KNbY7Dts62Ikvb1Qn+nxwK6TrTB9tY0Wrii8SM/
- KA7yLtNAqT6/Z4ezOT9JTifHqs79HOnw7QEbpAYy9lR8tVdkaU0VNbwmZd/gSQVL9JFe
- HKS/GJkBpC6fOlko/ZPymAxyS0xh8FKTS2UjqemA8zyXdw1geAswaTD9EzAdB0zF1WA9
- UWtNRf3kP1xpG9dsj3RU6v1tsk33m7nB3yU+omU4Q/MkIj+raP5LL1scasqvMwcJiHkj
- F9NA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793223885; x=1793828685;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=Zg0hmOj9aMW9T1A6MPbF+6VFWcnu0Fwji/PPaUeTYAo=;
- b=t9mzQkVxbI3NueAPfV+4apRCY0M1IKw0s6srFzZ3Qz3sEKAntIwEpsOkX74P1PkiDe
- kryeenL9VXdQH3saA80NU267azD7M2wul8CoeuQWnijvuYptmTxTInkS2gIV2g87/7j3
- 2vnaUHag6fQkEJx582KcEi+saiuvpfY/Q3EnG18SDbxHvJ7GQyZbLvE9BJanEcLrxbLY
- 07mAVyB9hmLD2pfOGjL5QOfTe4wfTO2RFbP0d1DlLQRR5qZsF3KG7Nhx6N21VBX/Z9VS
- zf6ctWCWCewELVT5tHABeNQCb7MC4COsC3wzuIYee8n5OngR/6nCRjrT5dz6B2luzK1L
- FScQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwRF3ULtpy1hB2+b+8JhocBcn857r66MVXujsysypmvstrmXMh7GlAWF/oA4Amzinb72+9rLPxBFA==@nongnu.org
-X-Gm-Message-State: AFq9FYL7vdfJobQlSAsQZ/fE0FWMR/4qJ0Bd/ow8WqJf+CCStGBXVILC
- Fnty6GjG2MQfgA7SC2BZ5rhC1DjqrK1/dTkIrXq67X/rLsq/NmZ81SC9pr/wFwjG1af9VumHv4P
- eiiE+XbQOl7tk/+choXXLX82r2wADBX4UVM49MifrXEA45KwN6yrYvY0=
-X-Gm-Gg: AYBFou1HGYUbDQO/IcoQ2Kc5ukJxH4cQeO+W4/yPihVmy1JJ3mouHpXCCO8ZubIdgOa
- 2d0v1MWf3H7/3v6YrkjC9RlFqbYEg8gwtDSpA72RXsUJzCzkLR48vMXxL+tNsyh8kPa6Z/yNA8g
- +upUUNK2a17l18Xe3N/KacB0cOqdICEVhNxdoh61356xouvc1oBYVedc7l4w+twpMnx7wcaBp6t
- UDGUfkRBfzggccWP3/85rNLG/IM2+8nkc7qiF94+WDy5knHKJfUwX4uAvaPO7FR+SCAGTNEpD+2
- lU5hEGHKAuJQwDlleINhDFxVoyPn7w1zVOg89SgxK73eQeKYukDxfp3FaRdePWrUhnBQtF7TWVC
- GG+VAIcdHwAkXbllx1W12VD0bJbmPz3vW518M+UydF+O8nMHzExItjIjq9fiQPBMI8/hz9nAeup
- wFQtDwodTK671PYHLthyCNU1Stdk5HObHJFmlZGdc0Y0U=
-X-Received: by 2002:a05:701b:2508:b0:199:4d4d:d3c9 with SMTP id
- a92af1059eb24-1a94b0a7b59mr793613c88.25.1793223884680; 
- Wed, 28 Oct 2026 14:44:44 -0700 (PDT)
-X-Received: by 2002:a05:701b:2508:b0:199:4d4d:d3c9 with SMTP id
- a92af1059eb24-1a94b0a7b59mr793592c88.25.1793223883976; 
- Wed, 28 Oct 2026 14:44:43 -0700 (PDT)
-Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
- [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1a75c814aa1sm15601173c88.7.2026.10.28.14.44.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Oct 2026 14:44:43 -0700 (PDT)
-Message-ID: <88bbbcd6-1826-4dd1-9bda-4d193966b67c@oss.qualcomm.com>
-Date: Wed, 28 Oct 2026 13:44:42 -0800
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xMFW6-0004bB-9m; Wed, 28 Oct 2026 22:05:24 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Bqt00ASuEd49QMKvWjU5p+SjLJq+/kTZmszjZ7YAjnYYJgak+iC/IDvQi6qkHHcdn0RJqkBZT8TUqyWJ/dxEKdyX4bTd8LwnK3ggZhGGqaH3bzDsytRBCH6LrC/rWMGz/BDXwAxCuNHh3fTQJbLnv+eQyS/XzLt6ubQ6GP1HhF08PNM5Y4XzAPMoNoBWgFTinZ72XNyEg60GJ4G1bsz5KFhwLTIY6Xbs2HLip+AATTA062HZwGwKKDgjiwo2Tgw+RtfutIjAq4kIKoPRbR4z8Uo/v1Sy9Z/oxyNFlW0q6hQuBaWSKotzDyY4X7u5wG/TJNp/Hgul4J/oXiDJEEzvag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=U6Wk1aDb/hiLKk8G7LurSieqN4zFXzqms7v0vt2ZqpI=;
+ b=oScd1mC7W3vcS1XSJOEAjIDdI/b72Fsk2U0HGvu6utWd4GmxL7HFTrevkQwHpBI+XFt0Jo3OTIe05Fq2Z1hxT/csUuIcDxuRNK5axfHE6+ySuHhSy9oyGl8ydRIXTg8iOEdX908u83Aiqrah1PSQHNXLKsxI1aRF140Vt/ga+spY/yMN+Tgglk/Bm9mocruOA9Ln898fP7DDlGmaEpnwjnvB8ZwtOLjx0zs+Ty+I1Y5IEL8+VQ2W2PndAobNfTttARlPX0Eu9hG3qzcinpw1RRcPEmDWhJSToGZ3q64CDEdwPy2CbtGB/Fl2pEdXKl9CaxstD2aozem5Y2HRDcNG2Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=U6Wk1aDb/hiLKk8G7LurSieqN4zFXzqms7v0vt2ZqpI=;
+ b=S7sTXHwK/ka2DOQrUaJlC3AdJAGZVCEKbLiO/PSHHdNAFRaMLcT19wxJn106RbRbDiAQlDsSynQ790ag8BVWslANymr/jbDDFmDLSH+iqrqxxECBzIOfDgvtEcpcm/8V1kAwo1gmMqRsGu24D1KQKlq7mUgTzJ106RMzvof0uSx3KOjhXUV3c2nUnU7OtTEmZHz2wgwIECk6cYMPRyqdeXnqXXNZHWIE6E3sTQNUegJSpFf4k3EhkyObWk9ryM8laJxBruo3L7E5lJIYwZO8xW28zfmpIFB1sonAZTLXLMlROsuMETA+g7MvfRlL4HG/rjeCPWFsmu+ZyqeiLv1ddw==
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
+ by SE2PPF5849BD80D.apcprd06.prod.outlook.com (2603:1096:108:1::7d2)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.5; Thu, 29 Oct
+ 2026 02:05:13 +0000
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0569.007; Thu, 29 Oct 2026
+ 02:05:13 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+CC: "junjie.cao@linux.dev" <junjie.cao@linux.dev>, "junjie.cao@intel.com"
+ <junjie.cao@intel.com>, "marcandre.lureau@redhat.com"
+ <marcandre.lureau@redhat.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Kane Chen
+ <kane_chen@aspeedtech.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, Troy Lee
+ <troy_lee@aspeedtech.com>
+Subject: RE: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hub
+ insertion
+Thread-Topic: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hub
+ insertion
+Thread-Index: AQHdX6uxp6OpQ9yqq0CEeDiwsS34zbcEqZMAgAxB77CAAfWigIAA8rLw
+Date: Thu, 29 Oct 2026 02:05:13 +0000
+Message-ID: <SEZPR06MB7362D19357678C57AEE48D2FFC6E2@SEZPR06MB7362.apcprd06.prod.outlook.com>
+References: <20261019092448.278079-1-jamin_lin@aspeedtech.com>
+ <20261019092448.278079-2-jamin_lin@aspeedtech.com>
+ <atXr2J5oxn3BBgb-@nucbdw.ghoffman.csb.home.kraxel.org>
+ <TYZPR06MB7373C4DABEAE16D546241853FC602@TYZPR06MB7373.apcprd06.prod.outlook.com>
+ <auHbnlQQ7KZecdYE@nucbdw.ghoffman.csb.home.kraxel.org>
+In-Reply-To: <auHbnlQQ7KZecdYE@nucbdw.ghoffman.csb.home.kraxel.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SE2PPF5849BD80D:EE_
+x-ms-office365-filtering-correlation-id: 70051e59-37bb-4803-ad0c-08df356111c1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|376014|1800799024|366016|22082099003|18002099003|10067099003|4143699003|56012099006|261021121427099003|261009223027099003|38070700021|261026121527099003;
+x-microsoft-antispam-message-info: ALZJdKSW3ySk6E21KD6IAHQcYMAfZ39Zj3GEpNqQ98OkAGTzOSzRFXpJ+2J4FTqYmc4lbISn9Q4LEsqbHKhTelJN6bKyH54gmrVwnFYoDPWcReaSgm/3mn1AwVmDiwyYjmOhEMHeYKFqyllADm1iV0lVODOxSVLqvwYQJJO4EJQK7F96GMrKave7+Y711N7c2J0UHI3qbbq/3TXdnjTiV4S6HSQzmfhbDDiqYhy6lw7DKYzndxuF+0rGZwX9avjvQ3tFAPpwHuRGuPWb/RN2z3/yzZKEdjgRoDI/ViMjQO6+KS5mEafZAvfLCHWXNCQ0RlZ32drY+k7nrORDzOaVKQkk7NdY8D3BSB99I3Lms5HZoHM4DIbbut8TwySKNh9cZV4/xJAHSYucqjejpTyFJeHALgWVWKCd+RU+y3UAaAKWNeGSzYzfKbvJuGJwdLah7W41Yq/DnzBUsg/sZZYLLwyir8gi4yKnFEN3+zBZBrcx8Y6HZGp8sNKrO7zDrqxSkuJ40opeRvBhn/vo/A9qZeVi/wQrwyjOH8y4dbE89blb2XRT1Q0EF0Yqanr8TByjeID2hbbCZsCupCYBvxfaoL8zfGgtvweeRou81Slc7QQIV8UOOVYu8d7CQBozZr1aS0rQQvPdLlYH6UPMStjX4P3yMtXCJjKRAzC2HCstsMo=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(22082099003)(18002099003)(10067099003)(4143699003)(56012099006)(261021121427099003)(261009223027099003)(38070700021)(261026121527099003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?am8DXslOvTcxFGAOGDLvMZZsFq8tjXHs8nYHUElV8QXvzCV173W8hHDavT?=
+ =?iso-8859-1?Q?OTwugaKc7fuGsraLu2hJIvtNRr5ney4nB6WCMZDGNtPcFjPEUz1A4iKXhB?=
+ =?iso-8859-1?Q?WEyd39N8sZQFrSh3YMC3s+Snt9s/IgSwy0GjV8BdOCTPETLg42VIGjNA0U?=
+ =?iso-8859-1?Q?8AFSkzWQgmSw2f2oLGphyd9N2/c91sBcU3gUEFICscJbXQwedXGfrYNc1Q?=
+ =?iso-8859-1?Q?JfjdtNgFVsTbVN277Tf7mMdKXHG+PMvbNxBAxE4AfVeetLAY1wHsk2PHlV?=
+ =?iso-8859-1?Q?WTQ3lElRxSpVi3e8oBYkb9j9InKPITpsdF7uDpeQdCS99z68NGtJJpQXjU?=
+ =?iso-8859-1?Q?Nm7sm9ZAnYA2vPmGUb4Kqm1TnpggqWpesgGc8H1jxfHRKxyRf4VexXAL+R?=
+ =?iso-8859-1?Q?P77rNweUTq5P/kWgg4mBLYN7gtoJOAs/m38sdPtZXZfqXDkid27flqp2+M?=
+ =?iso-8859-1?Q?a+uNdv+VBVk0IojUjQqU/AthAhHN/o/FxH89mTUGKbQp0NEc2neFCANLVZ?=
+ =?iso-8859-1?Q?09IMyl9Ich6lgDPFZSw00zKG6UGc63WI94MjymuEaf0CHskqO8UkG816K9?=
+ =?iso-8859-1?Q?x0S3ZPBqjzmvAVdozeYAAk2L0oW7LlGpen6R12Y8vvXH6wm8afz4umkqs5?=
+ =?iso-8859-1?Q?zzlgl1UuUSuibpoljbwDNWH7ap4gfshQ2Ax89bwLkI000AYKlf+q8dI4pn?=
+ =?iso-8859-1?Q?uY//NjzmyvuQ42uDw+FieWcKO6yPEo3RUgRjf5j1lfJYOPfqk0a4wK6knm?=
+ =?iso-8859-1?Q?kSCfWct1RifNjN1sbeJgOpPBiekt5+dRpk4SYiXHmtrS32J4lQVlT74Dkm?=
+ =?iso-8859-1?Q?laDg9spFMEhLdHAggn9h8cE6D3t77G8s5w1F2FqPT10uZNoRlMH871TvqL?=
+ =?iso-8859-1?Q?sIMU3PkMl4/TpHsmJiTAMAkI/ALx+zrSSJc9JSho+vmgFB/IMpSZXb9Noe?=
+ =?iso-8859-1?Q?L62dbUib530/9OSl8y1Q+ZQ5wKPKyiuyfxIMCyJxrDYwaR4GsmUZk05XvH?=
+ =?iso-8859-1?Q?FVTETFelJC4X4Qgd6QlopxeUWLRVlg2LvZpgqWecWKLAjg+2Uezjqqi2w+?=
+ =?iso-8859-1?Q?v2v0m9v1qX4efq00BnrO1lP4OBTgz7BTc/JWlP4qCVC35UfxiywWatKQD1?=
+ =?iso-8859-1?Q?6TNXwuwCzclKFY7e7wcle5N2oTJ0aHYhj6RoOmaf76mWRyXKU2nGM1vykg?=
+ =?iso-8859-1?Q?KjrF1zKtm5Va8qCeuiPV3L6sxiZvDCWKtOYYN9/o72116a6VYBVA5OGmgr?=
+ =?iso-8859-1?Q?HB7oUQyrUCj/thdGZTRbdLal4QkjxPV6slpF+w6nRETisMDZJwl/5R2/pR?=
+ =?iso-8859-1?Q?z2axFg/gZg7piwpt/FKZLuLzuHt4gy1s5ZbyLGzzbeugEsbEpZcqxyWzGi?=
+ =?iso-8859-1?Q?m4kRrExry4pZGec/VtqGX0uw3LIJVEM7evwwOTRIUAnAur6Uv+KzLmgTs+?=
+ =?iso-8859-1?Q?32R6/eI8vtWacWwziPyKRs8XSMvr2bhUcWnLwubQ34c9yJvpBx1p2pzAad?=
+ =?iso-8859-1?Q?Uz5cEBCZXndaLguIVVU5GkR+wkkg603fGZL+g7vgGk2Rxw+If8oiao3p3I?=
+ =?iso-8859-1?Q?H+fUJ6nMj5CHl0EYMdwV7fVw9Fml7NCXlrfZRrZuG14DHlh83Ym6+jhmLD?=
+ =?iso-8859-1?Q?/Gog6PG4gApSU8r2yNkLrOebEP8xW2pa/RazTOIfXdH34sE78XOZhh+1Ux?=
+ =?iso-8859-1?Q?Uu+1lY6WjUOBdj+N+PJD7Uzom24PKL1bU4H0z08kCQYsGqT9Kbxo9JfgFf?=
+ =?iso-8859-1?Q?N1bU5n1uf29hbArqDKSdBM+Ryfs2cwgiA4x6/nUPWR8c3bxWSTiVLsI97A?=
+ =?iso-8859-1?Q?Johyf4gAXw=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/12] hw/virtio: register s390x virtio-blk-pci and
- virtio-net-pci variants
-To: luoyonggang@gmail.com
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@kernel.org>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Eric Farman
- <farman@linux.ibm.com>, Song Gao <17746591750@163.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
- Fam Zheng <fam@euphon.net>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@oss.qualcomm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Philippe Mathieu-Daude <philmd@mailo.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20261028201557.2688-1-luoyonggang@gmail.com>
- <20261028201557.2688-10-luoyonggang@gmail.com>
- <b59162fe-5f8d-4923-b6ff-133b8fbf1a41@oss.qualcomm.com>
- <CAE2XoE8vapLZzawuDMQEnOGZsymec+EVUkoWhxUKxbrqmAHoOg@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <CAE2XoE8vapLZzawuDMQEnOGZsymec+EVUkoWhxUKxbrqmAHoOg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=X4nHu2Te c=1 sm=1 tr=0 ts=6ae26ccd cx=c_pps
- a=PfFC4Oe2JQzmKTvty2cRDw==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
- a=EUspDBNiAAAA:8 a=pGLkceISAAAA:8 a=7iWLHl1a1dHi_J-wnTwA:9 a=lqcHg5cX4UMA:10
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=6Ab_bkdmUrQuMsNx7PHu:22
-X-Proofpoint-GUID: z8igB9vxVr6L_sTVEFZJB2PoLFxDXGU4
-X-Proofpoint-ORIG-GUID: z8igB9vxVr6L_sTVEFZJB2PoLFxDXGU4
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI4MDA4NiBTYWx0ZWRfX2efU/DKjED7r
- enuVpCENGGJW7llQ4CHIIjURxyqrp/jhHhOaXKGkI/NqbjdM6wKB7LoF5bioZgvcFwEDxlc7OS0
- 6WCpVtzt6bKBJ/eP2vV+5yIEbfcETzXOk4ob/yQ5urM+pEyfGrYFMHHTDbIo9VxXZnpQ+i/i/LY
- mG/CjRBp1oW+YApzwFAn9wiyDzcGejCUsAmYi44oIgXeEAiXgpzmKXhAwuH+LW4I2syvBpsN+Ri
- 3ztDFz8Sav+3VNTOzfi+/2641kpK/RbRTG2AmM08ggcprj2a9hglMMBfK4+EKQep24wwFrkpF2h
- SUWkQqeHclRO4Bvhb8HK9mH0sENz5cgHCXh3YVo3+iRcnim0ol/iYMi39o8s6/HT2r4PCSYjl8C
- j7vzV85eSILAN5pm8YmjKS56YLGPlz21996gYRAxXjS+U0m9kAlTD8WTHjGb1J8JUC+tHImtUgF
- 7WuSM06k7Df0X/uFWEQ==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI4MDA4NiBTYWx0ZWRfXyE5wwzKAI++B
- ev05nBu3fu95awbicktFe37ChzU6wdRXsKuLAYM7UtHKE5VJOnRzmLrGRWp+mEe4CCtBtUvaQL+
- IxBIzb2+m/2byZqEU8wkC/O43R0J3NI=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-10-28_06,2026-10-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 bulkscore=0 spamscore=0 lowpriorityscore=0 clxscore=1015
- adultscore=0 suspectscore=0 phishscore=0 malwarescore=0 priorityscore=1501
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610280086
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 70051e59-37bb-4803-ad0c-08df356111c1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Oct 2026 02:05:13.5445 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VvKrUyAIfH60wllwY6BjwMg8CsTW40iWJsjU+ktD9whL/bCtfwAmVPnesq2IWoXAP5vqf7XpsV9bCf7Qq9uCVoZI4y6dActNovBkzxd+lHo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE2PPF5849BD80D
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, KHOP_DYNAMIC=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -169,59 +150,55 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/28/2026 1:43 PM, Yonggang Luo wrote:
-> 
-> 
-> On Thursday, October 29, 2026, Pierrick Bouvier
-> <pierrick.bouvier@oss.qualcomm.com
-> <mailto:pierrick.bouvier@oss.qualcomm.com>> wrote:
-> 
->     On 10/28/2026 12:15 PM, Yonggang Luo wrote:
->     > virtio-blk-pci and virtio-net-pci added the s390x loadparm property
->     > from class_init when target_s390x() was true. Register each
->     > VirtioPCIDeviceTypeInfo twice. The s390x variant calls
->     > pci_qdev_property_add_specifics(), which now always adds loadparm,
->     > and the other variant does not. target_s390x() and
->     target_not_s390x() select
->     > the two.
->     >
->     > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com
->     <mailto:luoyonggang@gmail.com>>
->     > ---
->     >  hw/pci/pci.c               | 13 +++++--------
->     >  hw/virtio/virtio-blk-pci.c | 22 +++++++++++++++++++++-
->     >  hw/virtio/virtio-net-pci.c | 22 +++++++++++++++++++++-
->     >  3 files changed, 47 insertions(+), 10 deletions(-)
->     >
-> 
-> target_not_s390x will be duplicated at many place, is that fine?
->
+Hi Gerd,
 
-Good for me.
-  
-> 
->     Fine for me, let's see what virtio maintainers think about it.
-> 
->     Regards,
->     Pierrick
-> 
-> 
-> 
-> -- 
->          此致
-> 礼
-> 罗勇刚
-> Yours
->     sincerely,
-> Yonggang Luo
-> 
+> Subject: Re: [PATCH v6 1/8] hw/usb/bus: Let a bus opt out of automatic hu=
+b
+> insertion
+>=20
+>   Hi,
+>=20
+> > > Alternative idea would be to add the config option, but only enable
+> > > the automatic hub logic for actual usb 1.1 controllers (ohci /
+> > > uhci), where it does not matter much for devices whenever they are
+> > > plugged into an root port or hub port.
+> >
+> > Sorry for the late reply.
+> >
+> > Yes, it gets in the way. usbredir carries one device per connection,
+> > so our bus has one port. Plugging that device in adds a hub, and the
+> > device ends up behind it. That is why I added the flag.
+> >
+> > If you would rather do one of these, tell me and I will send it:
+> >
+> >  1. Remove the automatic hub.
+> >  2. Keep it, but only for the USB 1.1 controllers, ohci and uhci.
+>=20
+> I think it is better to keep the logic for now and add an config option f=
+or it.
+> This way we can tweak things easily if needed.  Set the option to "no
+> automatic hub" for your controller and also ehci + xhci, best as separate=
+ patch
+> for each controller.
+>=20
+> take care,
+>   Gerd
+
+Thanks for the suggestion. I sent v7 yesterday, before I read this.
+https://patchwork.kernel.org/project/qemu-devel/cover/20261028034140.367393=
+-1-jamin_lin@aspeedtech.com/
+
+I will send v8 with your suggested after Marc-Andr=E9 Lureau and Junjie hav=
+e commented.
+
+Thanks,
+Jamin
 
 

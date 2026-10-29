@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A075606A322
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:21:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 019D7606A31D
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:21:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=FHB+Qb/0
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=fEAYaM4g
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMQ24-0002Af-PL; Thu, 29 Oct 2026 09:19:04 -0400
+	id 1xMQ1t-0001IF-EF; Thu, 29 Oct 2026 09:18:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPxQ-0000oA-RG
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:16 -0400
+ id 1xMPxJ-0000V7-Kf
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPxP-0006bA-7v
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:16 -0400
+ id 1xMPxH-0006YK-Mt
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793279653;
+ s=mimecast20190719; t=1793279647;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=i0RW8ZGnMsxRysic9Bp5WbxLn5jlo4lpLUqM8KIAbt4=;
- b=FHB+Qb/0/ZWbRmKAw80WpzVUrIB8N9g41/gVaUNIsKZksKqxrOjE5zzp14UYsVBI6W5IGM
- G2fXyw3i0Wldp4szYFnCZqMarEgoCd3il1NcvkROqjMEGLN8Ewfw5WEgdc2W5vC8rJEFcU
- z8TPEsQPF14bIBVO9HOOPr8qrY+N2sw=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Tz6ECrqGFEvH2qPdvBggN2cCB6nV8NdVl/en/0ygr8c=;
+ b=fEAYaM4gjp2WZCXA0Ax+PvIIWiQ9nyRE3p3eReg9mRVcFCgaB85KYVsVhoQpCFaIATGL0t
+ c710hYV02U5R4JbUyBY7anP/qtVnSo3a9BeTISUvZaXQH+w3eY257cdAQG/SmS3aWRf2jX
+ o2dwowrp/XRS6u6nTBWPp7Ci0ErYrgw=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-490-jNSk4-t5PKWWsZrHsUmxDg-1; Thu,
- 29 Oct 2026 09:13:57 -0400
-X-MC-Unique: jNSk4-t5PKWWsZrHsUmxDg-1
-X-Mimecast-MFC-AGG-ID: jNSk4-t5PKWWsZrHsUmxDg_1793279635
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-274-pOu3nCV0MLylF1T_gVYESA-1; Thu,
+ 29 Oct 2026 09:14:02 -0400
+X-MC-Unique: pOu3nCV0MLylF1T_gVYESA-1
+X-Mimecast-MFC-AGG-ID: pOu3nCV0MLylF1T_gVYESA_1793279640
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6D3391802147; Thu, 29 Oct 2026 13:13:55 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C1DE71955EB6; Thu, 29 Oct 2026 13:14:00 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 184103000723; Thu, 29 Oct 2026 13:13:52 +0000 (UTC)
+ id 740183000723; Thu, 29 Oct 2026 13:13:58 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -56,27 +56,28 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 25/28] hw/input: mark PS/2 and PC Keyboard devices as secure
-Date: Thu, 29 Oct 2026 13:12:38 +0000
-Message-ID: <20261029131241.2275706-26-berrange@redhat.com>
+Subject: [PATCH v2 27/28] hw/display: mark cirrus and QXL as secure
+Date: Thu, 29 Oct 2026 13:12:40 +0000
+Message-ID: <20261029131241.2275706-28-berrange@redhat.com>
 In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
 References: <20261029131241.2275706-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: JalFgBJJYywScaIG1vePinUecnlf3C3WQu_NBFY1LPM_1793279635
+X-Mimecast-MFC-PROC-ID: ZvwYY0L6l4osmieO-JaH3Ryk0Hgt3_byx2iXj_HAUSE_1793279640
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,58 +92,63 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-These are part of the baseline x86 featureset so required for
-virtualization use cases.
+Most of the display adapters are emulating old hardware which is not
+relevant to virtualization use cases. The previous commit added the
+generic, simple devices.
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+This proposes two further devices based on their historical widespread
+usage in virtualization use cases.
+
+Cirrus (PCI, not ISA) was the recommended default for x86 for an
+incredibly long time and while it is now discouraged, it is likely
+to still be in common use.
+
+QXL was the recommended default to be used with SPICE, which is designed
+to service virtualization use cases and is still commonly shipped by
+many distros and often used by default in mgmt apps still.
+
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/input/pckbd.c | 3 ++-
- hw/input/ps2.c   | 6 ++++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ hw/display/cirrus_vga.c | 1 +
+ hw/display/qxl.c        | 2 ++
+ 2 files changed, 3 insertions(+)
 
-diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-index b09c3bce933..0250252cd67 100644
---- a/hw/input/pckbd.c
-+++ b/hw/input/pckbd.c
-@@ -766,7 +766,8 @@ static const TypeInfo i8042_mmio_info = {
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_init = i8042_mmio_init,
-     .instance_size = sizeof(MMIOKBDState),
--    .class_init    = i8042_mmio_class_init
-+    .class_init    = i8042_mmio_class_init,
+diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+index 0a8c74e1374..8232c5c4687 100644
+--- a/hw/display/cirrus_vga.c
++++ b/hw/display/cirrus_vga.c
+@@ -3013,6 +3013,7 @@ static const TypeInfo cirrus_vga_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCICirrusVGAState),
+     .class_init    = cirrus_vga_class_init,
++    .secure        = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { },
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index d5f9771f5af..a8746d9f5dc 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -2651,6 +2651,7 @@ static const TypeInfo qxl_primary_info = {
+     .name          = "qxl-vga",
+     .parent        = TYPE_PCI_QXL,
+     .class_init    = qxl_primary_class_init,
 +    .secure        = true,
  };
- 
- void i8042_isa_mouse_fake_event(ISAKBDState *isa)
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index 01af4350b3b..9d96dddde66 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -1293,7 +1293,8 @@ static const TypeInfo ps2_kbd_info = {
-     .name          = TYPE_PS2_KBD_DEVICE,
-     .parent        = TYPE_PS2_DEVICE,
-     .instance_size = sizeof(PS2KbdState),
--    .class_init    = ps2_kbd_class_init
-+    .class_init    = ps2_kbd_class_init,
+ module_obj("qxl-vga");
+ module_kconfig(QXL);
+@@ -2669,6 +2670,7 @@ static const TypeInfo qxl_secondary_info = {
+     .name          = "qxl",
+     .parent        = TYPE_PCI_QXL,
+     .class_init    = qxl_secondary_class_init,
 +    .secure        = true,
  };
+ module_obj("qxl");
  
- static void ps2_mouse_class_init(ObjectClass *klass, const void *data)
-@@ -1313,7 +1314,8 @@ static const TypeInfo ps2_mouse_info = {
-     .name          = TYPE_PS2_MOUSE_DEVICE,
-     .parent        = TYPE_PS2_DEVICE,
-     .instance_size = sizeof(PS2MouseState),
--    .class_init    = ps2_mouse_class_init
-+    .class_init    = ps2_mouse_class_init,
-+    .secure        = true,
- };
- 
- static void ps2_init(Object *obj)
 -- 
 2.56.0
 

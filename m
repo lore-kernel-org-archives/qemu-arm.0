@@ -1,161 +1,107 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4AE41606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 19:33:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E8CD606A320
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 21:15:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=ljbfvPhE;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=XxQBepKt
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=tzzkGzIA
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMVs4-0004kZ-Lj; Thu, 29 Oct 2026 15:33:09 -0400
+	id 1xMXSO-0004wu-St; Thu, 29 Oct 2026 17:14:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xMVs0-0004jy-4u
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 15:33:05 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xMVrx-0007C4-1V
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 15:33:03 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 69TIQwVQ907915
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 19:32:59 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- oXuQMEHUjlg1HJCGGdWj3gFHC8WVsjJ3sNL0I+uGLOU=; b=ljbfvPhESUoEowCk
- ibXubv7kvyDax2FSO/2dmlb0MaDcySqX4vKYuXEwQHinXQRbcfmUMkATm+TCf531
- oXZwfLw+MD9pR2+IKQ9ubtdZZCCDvYVydL2U4VBaF8YKvEP5MnYThVtYB05hqOMf
- v7ZkSEZTTQSVRXWDPEvwcOFD5JSZ7vZB2LQKdB37J5wQHhxbvl9ZrQ9fuQxtggvS
- D4YsM0RsLgmFO13JAFbnVQ1nPwZOIhhIkLrWc+wGHdeeUiZxZtk3rdcT7aQMT2Lr
- HGRLE97LXIJ6d/yW4qkHOcs7XWv49HW/yE7ltqT5F1veuNH410wbf+aURs3V1nId
- 7i+txw==
-Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
- [74.125.82.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hmbearvrq-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 19:32:59 +0000 (GMT)
-Received: by mail-dy1-f197.google.com with SMTP id
- 5a478bee46e88-35c3c370b17so85133eec.0
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 12:32:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xMXSM-0004wK-33
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 17:14:42 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xMXSJ-0001vm-Dm
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 17:14:41 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-8a058f74a54so1302301b3a.1
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 14:14:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793302379; x=1793907179; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=oXuQMEHUjlg1HJCGGdWj3gFHC8WVsjJ3sNL0I+uGLOU=;
- b=XxQBepKtp8yx/2EQ9F4l77NyalkgpsFs46XLGhCx2CNTWNNAxQvSMQbfQnsB0tB2X3
- zrr4/zJQ+KFyLT1U1/N56j7nIS5rf53L63Ue/0nXXwd8eVIjgeR6mPBjn+qJ4M8rx0nb
- DbvOvkPsFRhX/yq5Tkq7bISFMl57a4YGTCC8W0Fw6pMeH144Fnl8iCQuDnEj681PAFeG
- JqgxWVtpVU7xBEuZoRz89dT+NIy2konw4rS0sy8AKKXghWUh0ealsZMg2fKvHHhX0NtB
- g7oabopygQGmFyUgbf48/8HwRjQxynBcJtq4KJMuA3EYS8wqvqtoeJ/lNXBE7blIknHk
- KTTg==
+ d=linaro.org; s=google; t=1793308477; x=1793913277; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=/C2hxVyYb+Xpn5/5k51lLA2L8eIYoVycs+0Rffv6qHI=;
+ b=tzzkGzIAsrGPky70xQsm2qwxmu03qU9Xihrku9gBfkMufH3/FHRVrMXaTeqA6W2OEk
+ gILbzp5wxjButEutYolx3+bnKNagSmwHsFquX4xxyK3CkvKccRu0K267bdtk2hIrSdIr
+ dVQm0Dch+qRnXhSYQtowdWrKkT6g4luWsZTNMnpJqYX5y+5cRK9A+U62v0pG1KyDFXM/
+ Ku3Enyar02ySUcRGafUgMhaWVUf/hN66nw1M5gYe9I88jxg37sSqzAiY9Th73vdpdgKQ
+ FBuxri7Hl8pRPhv7ojUll8Bom05XU5Khpf90bR0zUG6w22G6dJWk4zJf0o7ubxgDqyrm
+ kV6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793302379; x=1793907179;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=oXuQMEHUjlg1HJCGGdWj3gFHC8WVsjJ3sNL0I+uGLOU=;
- b=ANZ97zs8IPugNVfek1l+8itiniuNFziN1l2cvLLaAQ3HTQIEl33Oh755zUO9RJqf1N
- WZpkF3M147znq4/PCKITAkfcyEVMX+mQmZiiknoysV8X/JYgqa715GyuWKo6hMFdyU/b
- cyPCbMT9zad/a/qZinvY8PvBelSypGobR3YSVdvhnQz+K6sZs2RkGj7ZlEKZ+kOhEnA0
- Ub36zgvi2N+6r+0ceFtX3PltLYxOsqFwVw0hVigDVIdFo5m3UkAVGOolXDkwnHpFo9iz
- nmSYoI6datV7bh5TiryYvNK7AwveER86Lzj6VNRvIu2KPX2hWbxUNgcMjqfnLim0RZyh
- Ck7w==
+ d=1e100.net; s=20260707; t=1793308477; x=1793913277;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=/C2hxVyYb+Xpn5/5k51lLA2L8eIYoVycs+0Rffv6qHI=;
+ b=adkxPvNhosYsT+8Atw85F1G9S0bf1n27csFfjnM9AWASyk6p/BlTQG8v9MFz9jWhou
+ C59vunlLyjWgoNAWuNs9M7u4Df3EwZ/XxgoYe408TDlD9rKpmvJAZMAleQqMgs2cdXOs
+ OydLpBTT3ge+87Z0Tav/A4WANyqtzp5w6fZ4IK4NbV0PtpguxmrZoiTzdtM78tIyjtup
+ qx0Yr/MkknopmQdobwjxR2HYkLJLdRkZ53ha8M6kPhF3zesfBosV7nZD5euQ6fIVLGL+
+ J3GHHSuV8P3IaH4hDXji8hzQx8WfLr5dE+5NK9nUP5JzS/9f0eZ0sHhMUl+ebIp19Led
+ NgDA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByu2RcjhD8jhamCC4w6wAuxjOm5PI9HRuqr4vADWqAehAFZVlqEnIqyy34YJpVoyKooh0BavyfDkw==@nongnu.org
-X-Gm-Message-State: AFq9FYL353cTWDaAb7VAh5xnWWS2QuaX8TdDqVKv5SLcSjfbAC1gxll8
- lDHpAVNDYF03sw/2M7T6szMGutD3B0Ac1MXgupY2Mh8VhQ86Obuv/rXbSjYRsLCGgVDhobWRO/J
- cqYEehHFFdDQcL3P/qviQnJy+JiV1UAYsAUVfNc8XeFB0u9C9fjLwjA0=
-X-Gm-Gg: AYBFou0kAP6VdHEMC9Czj1qP+fo+c/7koffSvBBu7RkkdwioZ1nAt5XQb82aviIBkFg
- Nyl/Sz99T0XsPxKmEIwtqQ0jcj1dU1+W1XfzS4zklCIq4T82kQyhgloP8JNnGMJ2LTMJk/9EBI4
- eJQIgfPZ11khUqHEOGuVDGgVxvnD1BrX48V7VUOcH27Ypnus/lyng+z/jVKrcA9uyeEgNDDsXCO
- oYg6/A0CWIPgoUJyKVcQpQTwOuluGeOUDfPGd2dlCb8fP5ygt57A7I74XLQ/9i1jB7ftzofermw
- k2HLYiwuNd9zE1T1S152GC3xNNXVFdqRloAgZAYtxUHP1hH5woi37aR6gj1z7yE79G0t48Rhlna
- p35wq3y3WQ4cGyvOkLY57XbK8T4epAP2DbgtOtyFm7d5XO7EAQllOLaD3k4y12UwGv9nwkCLVhC
- hwU2qiP6bHPnhwz3PcjQTw/bTEcwQpDna4fTpRci9YYq8=
-X-Received: by 2002:a05:7300:7f95:b0:35d:eafd:5737 with SMTP id
- 5a478bee46e88-36a423bec77mr686439eec.22.1793302378491; 
- Thu, 29 Oct 2026 12:32:58 -0700 (PDT)
-X-Received: by 2002:a05:7300:7f95:b0:35d:eafd:5737 with SMTP id
- 5a478bee46e88-36a423bec77mr686356eec.22.1793302377805; 
- Thu, 29 Oct 2026 12:32:57 -0700 (PDT)
-Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
- [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-36a42902649sm747296eec.11.2026.10.29.12.32.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Oct 2026 12:32:57 -0700 (PDT)
-Message-ID: <a762c5e3-804b-42d7-8313-3a0dc777fcb6@oss.qualcomm.com>
-Date: Thu, 29 Oct 2026 11:32:56 -0800
+ AKwUvBwnAkcA4zw+zENLM0uiTIJLRlTK9b7Kw4J4DITZbkMO9FKqgKTg9xbGZAIF17ljZ8KPrDFK1aUqBQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJ08zr2Z/u/kTfw8hIsPEWwillel57O0ZQn2BA5/dLr3OQJPrTU
+ hBHS8kEpH/uIuDDCxCIU/yLR127X+WRjxkgXFVy8g9zc3iacfcojaJwRGJpjn6kyMcE=
+X-Gm-Gg: AYBFou2+/BPN0nNdnxXDZsXrFDNhW1x5o3SYU6T1KfppMOcNbWtxCogfz0v8Z4BEv65
+ iQaelAaVQ7PLe4pjynTx1sR4S0Uht9AJ/xhBuBvCll6U2o5D+hJVkIm6q+KhaAeGWHtfmNbUBbZ
+ FZBzz7eZefo0ESEacDsnsoxamgfmXu6+h69trE6OWiagn+ocbIKkQiCuQ1azuKtM3ArWpof5zfA
+ qeLpNOQgQ7OnRBaxzR+kxi4Iael8P2IxH9SJqT9hKUlWF1J/ft+gbqNquGUDYrCI/6g3ji+y/rx
+ S6Bkif21Vcoj3AcyN/4cfnSDZp2jdp0akIXD4yBGYuK5wOjTqscRXO29S6Ceb3uArH18cyXRDww
+ J7IZUNMSzQRpjORA7sD8Fe+j9iqcfSKQt13SWPGNeRn/Z5BFYqco4m0xiFN1WEg4jksHCkXMElO
+ nX8BSzF9rEh/Q//LuEgL1rs0PhTe1TpsamdNeQI+RwYBak2EgapAKAqf95rpj6VnNuYSY0D5ZLc
+ bwchDZf+5grJQsH0csWXKZ+At6D9CitlNG5Wg5fZxkF75NjpQ7biVFgoDOefZ+00zNqxbSpmTMN
+ KvwViAFGN+SpdOLBfBkFnVHGN3Zr8sFd
+X-Received: by 2002:a05:6a00:10d1:b0:874:32d1:d3d8 with SMTP id
+ d2e1a72fcca58-8a9bea671d0mr253355b3a.21.1793308476502; 
+ Thu, 29 Oct 2026 14:14:36 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:97b0:7603:db48:102e])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-8a98901aec6sm284640b3a.26.2026.10.29.14.14.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Oct 2026 14:14:35 -0700 (PDT)
+Date: Thu, 29 Oct 2026 15:14:32 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Kohei Enju <enju.kohei@fujitsu.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Gavin Shan <gshan@redhat.com>, michael.roth@amd.com,
+ berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [RFC v4 03/24] target/arm: Add confidential guest support
+Message-ID: <auO3OKQGWiqtTcWU@p14s>
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <20260903193611.1058589-4-mathieu.poirier@linaro.org>
+ <dhrvydsmaw22xqx5d5i5s7fdyjxupz27yxp6trv2tesysp4npj@quvzrxjvfipz>
+ <arI197vJkW75p50c@lpieralisi>
+ <arSTQQ5uB6oR-vFe@FCCLS0092175.localdomain> <ataBkrIvULJXj4v6@p14s>
+ <784dfea3-24cb-4e70-ab46-b96b4b9a1831@redhat.com>
+ <at-Wkw7a3Tn3Oh3M@red-moon>
+ <auF8rstVcvsDUO6C@FCCLS0092175.localdomain>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/8] scripts/checkpatch: validate fixes against
- origin/master
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Chao Liu <chao.liu@processmission.com>,
- Tyrone Ting <kfting@nuvoton.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Hao Wu <wuhaotsh@google.com>, Halil Pasic <pasic@linux.ibm.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20261029161310.2065290-1-alex.bennee@linaro.org>
- <20261029161310.2065290-2-alex.bennee@linaro.org>
- <c8bc6def-3c86-4fac-a84b-6664d40d5006@oss.qualcomm.com>
- <8733toa05f.fsf@draig.linaro.org>
- <e19ba1b4-60c6-47b4-b0b7-71e1be096a92@oss.qualcomm.com>
- <87wlr08g6s.fsf@draig.linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <87wlr08g6s.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=UejE26SN c=1 sm=1 tr=0 ts=6ae39f6b cx=c_pps
- a=Uww141gWH0fZj/3QKPojxA==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=EUspDBNiAAAA:8 a=s0hAlmzEkxELr0WrneUA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=PxkB5W3o20Ba91AHUih5:22
-X-Proofpoint-GUID: 5GU0xUC4Jz64dyMv9IKu1Qdq6ZA4qkGO
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI5MDA3NiBTYWx0ZWRfX9/+OX2KRDPCo
- PSncrHqwKBAczYErnVpju7RMWOt+iagP8ydmm7ab+XbiAjvEp1pf+tFXXbjhqCEy2ivoFhtEma8
- E9Bc8PPXzbXQzXvoNbxZpFUdtVGwmVrwRVLUs0eIsB38xwuNpSeIj77/fVJjK17+dCPHdf5VotD
- CvW4Zv30+/VhHQr5faT/wOQAHNlUMukl6bshVxmfzRseJg58vb0fgN/1lzLxWyCKZ/8MnRFzLnW
- T1+KV5O1flBa8H32DJTbkRz9wQzTDSsQhzdRmLJktyT9CNwrKMLWtWNs3bkq8LsUlDgu2qMYere
- WWKdZn4YQcxh7/SAuAzqjcurDnX1/8aeNpMqI9qJqyNE10YBn0A0tdC7US8UQxnD/wgaRIqFS+N
- tfwoDfehpEK2edkrF9pctnluShhwFcmG3eguiBjnWUmXwTijBAp8l5Yu+hY/zIcdgIPaDLLiHqm
- r6pfq+edFhIw34hN7pw==
-X-Proofpoint-ORIG-GUID: 5GU0xUC4Jz64dyMv9IKu1Qdq6ZA4qkGO
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI5MDA3NiBTYWx0ZWRfX5EJKikFszS9V
- DFO+KYbJrDkwPaaRltQUobk8oOYVD+cmmOr2gtzJu1LvFxWEa/ujAn2jU5wDuisu42wn6Yu0D84
- lfmSAvASAYJ4AIcv5JIhoSUjMaN/sMg=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-10-29_05,2026-10-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 suspectscore=0 lowpriorityscore=0 adultscore=0 clxscore=1015
- impostorscore=0 phishscore=0 spamscore=0 bulkscore=0 priorityscore=1501
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610290076
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <auF8rstVcvsDUO6C@FCCLS0092175.localdomain>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, KHOP_DYNAMIC=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -167,57 +113,268 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/29/2026 11:22 AM, Alex Bennée wrote:
-> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+On Wed, Oct 28, 2026 at 01:51:29PM +0900, Kohei Enju wrote:
+> On 10/26 19:06, Lorenzo Pieralisi wrote:
+> > On Wed, Oct 21, 2026 at 11:42:14PM +1000, Gavin Shan wrote:
+> > > On 10/20/26 6:46 AM, Mathieu Poirier wrote:
+> > > > On Thu, Sep 24, 2026 at 12:12:35PM +0900, Kohei Enju wrote:
+> > > > > On 09/22 10:01, Lorenzo Pieralisi wrote:
+> > > > > > On Tue, Sep 15, 2026 at 04:27:21PM -0500, Michael Roth wrote:
+> > > > > > > On Thu, Sep 03, 2026 at 01:35:50PM -0600, Mathieu Poirier wrote:
+> > > > > > > > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > > > > > > > 
+> > > > > > > > Add a new RmeGuest object, inheriting from ConfidentialGuestSupport, to
+> > > > > > > > support the Arm Realm Management Extension (RME). It is instantiated by
+> > > > > > > > passing on the command-line:
+> > > > > > > > 
+> > > > > > > >    -M virt,confidential-guest-support=<id>
+> > > > > > > >    -object rme-guest,id=<id>
+> > > > > > > > 
+> > > > > > > > This is only the skeleton. Support will be added in following patches.
+> > > > > > > > 
+> > > > > > > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > > > > > > > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+> > > > > > > > ---
+> > > > > > > >   docs/system/confidential-guest-support.rst |  1 +
+> > > > > > > >   qapi/qom.json                              | 13 +++++++
+> > > > > > > >   target/arm/kvm-rme.c                       | 42 ++++++++++++++++++++++
+> > > > > > > >   target/arm/meson.build                     |  5 ++-
+> > > > > > > >   4 files changed, 60 insertions(+), 1 deletion(-)
+> > > > > > > >   create mode 100644 target/arm/kvm-rme.c
+> > > > > > > > 
+> > > > > > > > diff --git a/docs/system/confidential-guest-support.rst b/docs/system/confidential-guest-support.rst
+> > > > > > > > index 562a7c3c2852..abb56923ad13 100644
+> > > > > > > > --- a/docs/system/confidential-guest-support.rst
+> > > > > > > > +++ b/docs/system/confidential-guest-support.rst
+> > > > > > > > @@ -42,5 +42,6 @@ Currently supported confidential guest mechanisms are:
+> > > > > > > >   * POWER Protected Execution Facility (PEF) (see :ref:`power-papr-protected-execution-facility-pef`)
+> > > > > > > >   * s390x Protected Virtualization (PV) (see :doc:`s390x/protvirt`)
+> > > > > > > >   * AWS Nitro Enclaves (see :doc:`nitro`)
+> > > > > > > > +* Arm Realm Management Extension (RME)
+> > > > > > > >   Other mechanisms may be supported in future.
+> > > > > > > > diff --git a/qapi/qom.json b/qapi/qom.json
+> > > > > > > > index 776b13027fd8..52997c29a32d 100644
+> > > > > > > > --- a/qapi/qom.json
+> > > > > > > > +++ b/qapi/qom.json
+> > > > > > > > @@ -1288,6 +1288,17 @@
+> > > > > > > >     'data': { '*pretty': 'bool',
+> > > > > > > >               '*close-action': 'MonitorQMPCloseAction' } }
+> > > > > > > > +##
+> > > > > > > > +# @RmeGuestProperties:
+> > > > > > > > +#
+> > > > > > > > +# Properties for rme-guest objects.
+> > > > > > > > +#
+> > > > > > > > +# Since: 11.1
+> > > > > > > > +##
+> > > > > > > > +{ 'struct': 'RmeGuestProperties',
+> > > > > > > > +  'base': 'ConfidentialGuestSupportProperties',
+> > > > > > > 
+> > > > > > > Just FYI, based on input from Markus I'm planning to drop this
+> > > > > > > ConfidentialGuestSupportProperties base type from my series
+> > > > > > > since it's probably only SNP/TDX that need to be able to switch
+> > > > > > > it on/off, whereas this series appears to use/require it from
+> > > > > > > the start.
+> > > > > > > 
+> > > > > > > I'm not exactly sure what it will look like for v3 yet, but if you
+> > > > > > > were based on v2 you'd instead probably just do the following in the
+> > > > > > > instance_init function for your rme-guest instance:
+> > > > > > > 
+> > > > > > >    cgs->allow_convert_in_place = true;
+> > > > > > >    cgs->convert_in_place = true;
+> > > > > > > 
+> > > > > > > rather than exposing it as a cmdline option.
+> > > > > > 
+> > > > > > Yep, it won't be an option for CCA Realms anyway since that will be
+> > > > > > the baseline.
+> > > > > 
+> > > > > IIUC, in-place conversion requires RAM backed by a shared/mappable
+> > > > > guest_memfd. If in-place conversion is always enabled for CCA Realms,
+> > > > > could QEMU also select the equivalent of
+> > > > > 
+> > > > >    -object memory-backend-guest-memfd,id=ram0,size=...,share=on
+> > > > > 
+> > > > > automatically for the default RAM, so that specifying the RAM size with
+> > > > > `-m` is sufficient?
+> > > > 
+> > > > Are you suggesting that on Arm, we completely get rid of
+> > > > 
+> > > >      -object memory-backend-guest-memfd,id=ram0,size=$(RAMSIZE),share=on
+> > > > 
+> > > > or simply to get rid of "size=$(RAMSIZE)" in the above because it is redundant
+> > > > with "-m $(RAMSIZE)"?
+> > > > 
+> > > > Gavin and Michael, what is your take on that suggestion?
+> > > > 
+> > > 
+> > > I don't think that's what Kohei meant. He actually suggested the memory backend
+> > > shall be pinned to memory-backend-guest-memfd and its in-place conversion shall
+> > > be enabled when the memory backend isn't explicitly specified by users through
+> > > "-object memory-backend-xxxx". For this inexplicit case, where the memory backend
+> > > is determined by '-mem-path', the memory backend is either TYPE_MEMORY_BACKEND_FILE
+> > > or TYPE_MEMORY_BACKEND_RAM. Please refer to create_default_memdev().
+> > > 
+> > > I think Kohei's suggestion makes sense. Besides, I think '-mem-path' should be
+> > > disallowed for CCA Realms as TYPE_MEMORY_BACKEND_FILE isn't what we want.
+> > 
+> > Kohei, what were you suggesting then please ? I think TYPE_MEMORY_BACKEND_FILE
+> > would not pass the checks required by Michael's v3 [0] on CCA - I will test this
+> > and report back but the only backend allowed, rightly, is memfd,share=on, so it
+> > _is_ disallowed.
 > 
->> On 10/29/2026 9:26 AM, Alex Bennée wrote:
->>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>>
->>>> On 10/29/2026 8:13 AM, Alex Bennée wrote:
->>>>> The current check for a referenced fix commit relies on the developer
->>>>> keeping their master branch up to date which is not always grunted. If
->>>>> you create your branches directly from origin/master this will keep
->>>>> failing.
->>>>>
->>>>> Given that origin/master should always be up to date (module the
->>>>> developer eschewing convention) lets use that in the test instead.
->>>>>
->>>>> checkpatch complains about the line lengths but this seems to be
->>>>> standard for the perl script so I didn't try and fix it.
->>>>>
->>>>
->>>> Or... you can use something else as origin, with origin/master not being
->>>> updated, and master as a tracking branch to upstream/master, and in this
->>>> case, this patch doesn't work.
->>>>
->>>> Using master instead of origin/master has the advantage to not hardcode
->>>> what your remotes should be.
->>>
->>> origin is the default when you clone a repo. We could get really complex
->>> and query the tracking remote for the current branch. But if your deeply
->>> forked then that obviates the test.
->>>
->>
->> I am aware that origin is the default remote.
->> In my case, I always use "upstream" to reference the original project,
->> and "origin" for my personal fork. As a result, origin/master does not
->> always track upstream/master.
+> Sorry for the late response.
 > 
-> So master in that case won't be correct either?
+> To clarify, I meant the latter: when rme-guest is selected and the user
+> has not explicitly provided a memory backend, QEMU could automatically
+> create the default RAM as a shared guest-memfd backend.
 > 
+> In other words, rather than only rejecting the default file/RAM backend,
+> the Realm configuration could select the equivalent of
+> 
+>   -object memory-backend-guest-memfd,id=<default-ram-id>,size=<RAMSIZE>,share=on
+> 
+> by default. Explicitly specified memory backends would still need to be
+> validated against the Realm requirements.
+> 
+> My intention was that, if in-place conversion is the baseline for CCA
+> Realms, `-m <size>` should be sufficient for the common Realm case,
+> while preserving an explicit memory-backend option for users who need to
+> control it.
 
-It's correct because it's setup as a tracking branch of upstream/master,
-and not origin/master. See help for `git branch --set-upstream-to=` if
-you're not familiar with it.
+Many thanks for the clarification, it is very helpful.  I will look into
+implementing something along those lines for V6 and we can reconsider how to
+move forward at that time.  
 
-Thus why I'm suggesting to either leave master as it is (and correctly
-update your personal local branch), or find which remote branch is
-tracked for master (see git branch -vv) to not break existing workflows.
+Thanks,
+Mathieu
+
+> 
+> That said, I do not have a strong preference for deciding the default
+> `-m` behavior at this stage. If it is premature to make that decision
+> before the memory-backend and conversion interfaces have settled, I am
+> happy to keep the explicit guest-memfd backend requirement for now and
+> revisit the default behavior later.
+> 
+> Thanks,
+> Kohei
+> 
+> > 
+> > Lorenzo
+> > 
+> > [0] https://lore.kernel.org/kvm/20261007134323.1606088-1-michael.roth@amd.com/
+> > 
+> > > Thanks,
+> > > Gavin
+> > > 
+> > > > Thanks,
+> > > > Mathieu
+> > > > 
+> > > > > 
+> > > > > Thanks,
+> > > > > Kohei
+> > > > > 
+> > > > > > 
+> > > > > > Thanks,
+> > > > > > Lorenzo
+> > > > > > 
+> > > > > > > Thanks,
+> > > > > > > 
+> > > > > > > Mike
+> > > > > > > 
+> > > > > > > > +  'data': {} }
+> > > > > > > > +
+> > > > > > > >   ##
+> > > > > > > >   # @ObjectType:
+> > > > > > > >   #
+> > > > > > > > @@ -1346,6 +1357,7 @@
+> > > > > > > >       { 'name': 'pr-manager-helper',
+> > > > > > > >         'if': 'CONFIG_LINUX' },
+> > > > > > > >       'qtest',
+> > > > > > > > +    'rme-guest',
+> > > > > > > >       'rng-builtin',
+> > > > > > > >       'rng-egd',
+> > > > > > > >       { 'name': 'rng-random',
+> > > > > > > > @@ -1427,6 +1439,7 @@
+> > > > > > > >         'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
+> > > > > > > >                                         'if': 'CONFIG_LINUX' },
+> > > > > > > >         'qtest':                      'QtestProperties',
+> > > > > > > > +      'rme-guest':                  'RmeGuestProperties',
+> > > > > > > >         'rng-builtin':                'RngProperties',
+> > > > > > > >         'rng-egd':                    'RngEgdProperties',
+> > > > > > > >         'rng-random':                 { 'type': 'RngRandomProperties',
+> > > > > > > > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+> > > > > > > > new file mode 100644
+> > > > > > > > index 000000000000..42e1d1e7b859
+> > > > > > > > --- /dev/null
+> > > > > > > > +++ b/target/arm/kvm-rme.c
+> > > > > > > > @@ -0,0 +1,42 @@
+> > > > > > > > +/*
+> > > > > > > > + * QEMU Arm RME support
+> > > > > > > > + *
+> > > > > > > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > > > > > > + *
+> > > > > > > > + * Copyright Linaro 2026
+> > > > > > > > + */
+> > > > > > > > +
+> > > > > > > > +#include "qemu/osdep.h"
+> > > > > > > > +
+> > > > > > > > +#include "hw/core/boards.h"
+> > > > > > > > +#include "hw/core/cpu.h"
+> > > > > > > > +#include "kvm_arm.h"
+> > > > > > > > +#include "migration/blocker.h"
+> > > > > > > > +#include "qapi/error.h"
+> > > > > > > > +#include "qom/object_interfaces.h"
+> > > > > > > > +#include "system/confidential-guest-support.h"
+> > > > > > > > +#include "system/kvm.h"
+> > > > > > > > +#include "system/runstate.h"
+> > > > > > > > +
+> > > > > > > > +#define TYPE_RME_GUEST "rme-guest"
+> > > > > > > > +OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+> > > > > > > > +
+> > > > > > > > +struct RmeGuest {
+> > > > > > > > +    ConfidentialGuestSupport parent_obj;
+> > > > > > > > +};
+> > > > > > > > +
+> > > > > > > > +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
+> > > > > > > > +                                          CONFIDENTIAL_GUEST_SUPPORT,
+> > > > > > > > +                                          { TYPE_USER_CREATABLE }, { })
+> > > > > > > > +
+> > > > > > > > +static void rme_guest_class_init(ObjectClass *oc, const void *data)
+> > > > > > > > +{
+> > > > > > > > +}
+> > > > > > > > +
+> > > > > > > > +static void rme_guest_init(Object *obj)
+> > > > > > > > +{
+> > > > > > > > +}
+> > > > > > > > +
+> > > > > > > > +static void rme_guest_finalize(Object *obj)
+> > > > > > > > +{
+> > > > > > > > +}
+> > > > > > > > diff --git a/target/arm/meson.build b/target/arm/meson.build
+> > > > > > > > index 0369f96b4cc6..9d322a7aad28 100644
+> > > > > > > > --- a/target/arm/meson.build
+> > > > > > > > +++ b/target/arm/meson.build
+> > > > > > > > @@ -31,7 +31,10 @@ arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
+> > > > > > > >   arm_common_system_ss.add(files(
+> > > > > > > >     'arm-qmp-cmds.c',
+> > > > > > > >   ))
+> > > > > > > > -arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
+> > > > > > > > +arm_system_ss.add(when: 'CONFIG_KVM', if_true: files(
+> > > > > > > > +  'hyp_gdbstub.c',
+> > > > > > > > +  'kvm.c',
+> > > > > > > > +  'kvm-rme.c'))
+> > > > > > > >   arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
+> > > > > > > >   arm_user_ss.add(files('cpu.c'))
+> > > > > > > > -- 
+> > > > > > > > 2.43.0
+> > > > > > > > 
+> > > > > > > > 
+> > > > 
+> > > 
 

@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 887C6606A31D
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:39:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2D2B0606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:39:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=BFU+kFcO
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=XZIalkKk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMRHD-0006Y9-PM; Thu, 29 Oct 2026 10:38:58 -0400
+	id 1xMRI2-00074N-NN; Thu, 29 Oct 2026 10:39:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xMRGi-0006Hd-1k
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:38:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xMRGw-0006Pw-UZ
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:38:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xMRGd-0007Oh-5R
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:38:13 -0400
+ id 1xMRGu-0007Qr-61
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:38:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793284690;
+ s=mimecast20190719; t=1793284706;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6Q09bIrHyMRfqhA+APYF83tIQQVVEpS67ZFlJfhAFQU=;
- b=BFU+kFcOgOAaRugyOW3nDlcNnBom/RPqqqDrM8Cx8OhxadSegQoOlGnITZ2lHRnpGAMv26
- 0ydNoKfRCHXtcRYhBmNdo5zNiinO71l43FGxKlUliyrD16tbBDboJ6J06Z8wqpZlMzvfdG
- 9NeOb+758HtjikLZwgcwX6xYag0H734=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=edL/4fUC+jmlyatV1lCTUKNXaG35icjGdQfOa8KsoZs=;
+ b=XZIalkKkhZoQt4AzQbeyfh5V3oBnU4a0OhVsf1ZgZbypZLsfN2CaieTozHpRAwVuPw2EE6
+ UtAwFos2Tt8JGaReTABMUPQ/aXXDeI8MHuQAAFV8E9eBu6HqeddstWMqEbuC6hBQwMCrti
+ jfeUtV9dZWePZfX21KxkzWHwU26nKfs=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-328-rOl3M7JuP5u8jT9RSuk51Q-1; Thu,
- 29 Oct 2026 10:37:59 -0400
-X-MC-Unique: rOl3M7JuP5u8jT9RSuk51Q-1
-X-Mimecast-MFC-AGG-ID: rOl3M7JuP5u8jT9RSuk51Q_1793284677
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-593-zAkH599PMJGIPP8rgP4x3A-1; Thu,
+ 29 Oct 2026 10:38:21 -0400
+X-MC-Unique: zAkH599PMJGIPP8rgP4x3A-1
+X-Mimecast-MFC-AGG-ID: zAkH599PMJGIPP8rgP4x3A_1793284698
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DAFD51955E9A; Thu, 29 Oct 2026 14:37:56 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E23CB1802670; Thu, 29 Oct 2026 14:38:17 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8DCE01955F01; Thu, 29 Oct 2026 14:37:51 +0000 (UTC)
+ id EFC7E195608B; Thu, 29 Oct 2026 14:38:12 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, shaju.abraham@nutanix.com,
@@ -58,29 +58,28 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  alireza.sanaee@huawei.com
 Cc: armbru@redhat.com,
 	mbawa@redhat.com
-Subject: [PATCH v2 for-11.2 1/9] target/arm/cpu-sysregs.h.inc: Sort by name
- alphabetical order
-Date: Thu, 29 Oct 2026 15:36:48 +0100
-Message-ID: <20261029143742.294275-2-eric.auger@redhat.com>
+Subject: [PATCH v2 for-11.2 5/9] target/arm/kvm: Pass an error handle to
+ kvm_arm_create_scratch_host_vcpu
+Date: Thu, 29 Oct 2026 15:36:52 +0100
+Message-ID: <20261029143742.294275-6-eric.auger@redhat.com>
 In-Reply-To: <20261029143742.294275-1-eric.auger@redhat.com>
 References: <20261029143742.294275-1-eric.auger@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 9NNg7ugDCUmhSwTOMxdEqoOoMNd7EIkcVXMHR9ySqY0_1793284677
+X-Mimecast-MFC-PROC-ID: c_h3JrkJ0D8hng7cy90m_R2ddfTyan4wVy0B8mqEdmY_1793284698
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,103 +94,122 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Sort by register name alphabetical order. This will allow to
-easily diff with the future content, automatically generated.
-
-No functional change intended.
+This allows to report a precise error message if any error occurs.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Reviewed-by: Khushit Shah <khushit.shah@nutanix.com>
-
+Reviewed-by: Gustavo Romero <gromero@redhat.com>
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
 ---
-v5 -> v6:
-- v5 version conflicted because ID_AA64FPFR0_EL1 has been
-  added
+ target/arm/kvm_arm.h |  3 ++-
+ target/arm/kvm.c     | 15 ++++++++++++---
+ 2 files changed, 14 insertions(+), 4 deletions(-)
 
-v4 -> v5:
-- remove spurious CCSIDR definition
----
- target/arm/cpu-sysregs.h.inc | 46 ++++++++++++++++++------------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
-
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index d9e058a57e..b5c7970971 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -1,13 +1,13 @@
- /* SPDX-License-Identifier: GPL-2.0-or-later */
--DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
--DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
--DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
--DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
--DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
--DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
--DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-+DEF_MUX(CCSIDR_EL1, 3, 1, 0, 0, 0, 16)
-+DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
-+DEF(CTR_EL0, 3, 3, 0, 0, 1)
-+DEF(DCZID_EL0, 3, 3, 0, 0, 7)
- DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
- DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
-+DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
-+DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-+DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
- DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
- DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
- DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
-@@ -17,30 +17,30 @@ DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
- DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
- DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
- DEF(ID_AA64MMFR4_EL1, 3, 0, 0, 7, 4)
--DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
--DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
--DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
-+DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
-+DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
-+DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
-+DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
- DEF(ID_AFR0_EL1, 3, 0, 0, 1, 3)
--DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
--DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
--DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
--DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
-+DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
- DEF(ID_ISAR0_EL1, 3, 0, 0, 2, 0)
- DEF(ID_ISAR1_EL1, 3, 0, 0, 2, 1)
- DEF(ID_ISAR2_EL1, 3, 0, 0, 2, 2)
- DEF(ID_ISAR3_EL1, 3, 0, 0, 2, 3)
- DEF(ID_ISAR4_EL1, 3, 0, 0, 2, 4)
- DEF(ID_ISAR5_EL1, 3, 0, 0, 2, 5)
--DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
- DEF(ID_ISAR6_EL1, 3, 0, 0, 2, 7)
-+DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
-+DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
-+DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
-+DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
-+DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
-+DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
-+DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
-+DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
-+DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
--DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
--DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
--DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
--DEF_MUX(CCSIDR_EL1, 3, 1, 0, 0, 0, 16)
--DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
--DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
--DEF(CTR_EL0, 3, 3, 0, 0, 1)
--DEF(DCZID_EL0, 3, 3, 0, 0, 7)
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index e7c40fb003..9c7e7f654a 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -105,6 +105,7 @@ struct kvm_vcpu_init;
+  * @init: filled in with the necessary values for creating a host
+  * vcpu. If NULL is provided, will not init the vCPU (though the cpufd
+  * will still be set up).
++ * @errp: Error handle
+  *
+  * Create a scratch vcpu in its own VM of the type preferred by the host
+  * kernel (as would be used for '-cpu host'), for purposes of probing it
+@@ -114,7 +115,7 @@ struct kvm_vcpu_init;
+  * false on failure (and fdarray and init are not valid).
+  */
+ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+-                                      struct kvm_vcpu_init *init);
++                                      struct kvm_vcpu_init *init, Error **errp);
+ 
+ /**
+  * kvm_arm_destroy_scratch_host_vcpu:
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 724bc08edf..28f199c03f 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -104,13 +104,14 @@ static int kvm_arm_vcpu_finalize(ARMCPU *cpu, int feature)
+ }
+ 
+ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+-                                      struct kvm_vcpu_init *init)
++                                      struct kvm_vcpu_init *init, Error **errp)
+ {
+     int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
+     int max_vm_pa_size;
+ 
+     kvmfd = qemu_open_old("/dev/kvm", O_RDWR);
+     if (kvmfd < 0) {
++        error_setg(errp, "Failed opening /dev/kvm");
+         goto err;
+     }
+     max_vm_pa_size = ioctl(kvmfd, KVM_CHECK_EXTENSION, KVM_CAP_ARM_VM_IPA_SIZE);
+@@ -121,6 +122,7 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+         vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
+     } while (vmfd == -1 && errno == EINTR);
+     if (vmfd < 0) {
++        error_setg(errp, "Failed creating the scratch VM");
+         goto err;
+     }
+ 
+@@ -140,6 +142,7 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+ 
+     cpufd = ioctl(vmfd, KVM_CREATE_VCPU, 0);
+     if (cpufd < 0) {
++        error_setg(errp, "Failed creating the scratch VCPU");
+         goto err;
+     }
+ 
+@@ -153,12 +156,14 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+ 
+         ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, &preferred);
+         if (ret < 0) {
++            error_setg(errp, "Failed getting the preferred target");
+             goto err;
+         }
+         init->target = preferred.target;
+     }
+     ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
+     if (ret < 0) {
++        error_setg(errp, "Failed the init of the scratch vcpu");
+         goto err;
+     }
+ 
+@@ -324,6 +329,7 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     bool el2_supported;
+     bool pmu_supported = false;
+     uint64_t features = 0;
++    Error *local_err = NULL;
+     int err;
+ 
+     ahcf->target = QEMU_KVM_ARM_TARGET_NONE;
+@@ -371,7 +377,8 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+         features |= 1ULL << ARM_FEATURE_PMU;
+     }
+ 
+-    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
++    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init, &local_err)) {
++        error_report_err(local_err);
+         return;
+     }
+ 
+@@ -2653,8 +2660,10 @@ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level)
+ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
+ {
+     int fdarray[3];
++    Error *local_err = NULL;
+ 
+-    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
++    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL, &local_err)) {
++        error_report_err(local_err);
+         return;
+     }
+ 
 -- 
 2.53.0
 

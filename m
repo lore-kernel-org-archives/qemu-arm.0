@@ -1,106 +1,83 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F508606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:22:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19282606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:22:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=AGhIU49j
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=P/lev1p+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMQ3o-0003uM-02; Thu, 29 Oct 2026 09:20:52 -0400
+	id 1xMQ1w-0001Q3-Bm; Thu, 29 Oct 2026 09:18:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMQ2o-00038v-V0
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:19:55 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMQ2n-0007OQ-Bw
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:19:50 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-8b0f59a5fdeso20324447b3.1
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 06:19:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793279988; cv=none;
- d=google.com; s=arc-20260327;
- b=DlZKfyBi7rWTB/IMKh8NB6M4gHAPhHipIxc0PrH1hapZ0UOp4lQVWLUsYMV3H8Zpof
- unZUHtidWyxFeKiblPVGVS2FllF+7cWQ/UrDnGOgcVGWLyWRNn0mSZEifiz61owpJnq6
- ze/PVwAAe2XFJKaYb9b+5qKrDk5aS2lORmAOEwvpR9QS/WQbvbKvGgsT9yeEz0x2EJMj
- Ng7/9JshHozApjw8x67+rSeC2lLvLsZT51+G2C49e/ZSmNnrHiZbbi3ZITsvOGnoxRrX
- AWr+a+OtW9RO+X+i3V/jy1/TciNjidsg9LLh1AzT+nFixkmsEgYqBHQsCMT7i56cJSVc
- 1zLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=A+Eq13IeGP0aNcY+C3RUDzkkzntQ9i36YlHtS3VUWNA=;
- fh=7cOosMH6ocGBhXYBTRPX8WVRUSwsA12N/0LPnSQaDMY=;
- b=hSN/BgcQpWJyeZLrIc+mUzp/lWlHe2vfzNcPZBd45BReCBsRNsrsFw/1mdiQie9pe0
- RHiXLG3hzX5MdvngbJY714XJyr/9Hw1CD6e16BQbE5NUE23pT0Fmz+zB2p7JcKbu8EB6
- R60nbrl7metBU6hgIaGVnAFU+QdYQE8m0Yx08XSoVpHphR+YzZYibdbeP3qZvUl2O1iJ
- 8iauzJzS2uG2MutyG2dGZ36Sk/YdJKz/pNTFUBIURYYYQZveFPRDarbLfiJs5LEe+WW/
- avxsDRqqhkz0AWEzcIMpsgqjUUpRxFqY5h29fH8VGDUrAsS8mLX+UEPlQpMhHLGzLxes
- Ld9w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793279988; x=1793884788; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=A+Eq13IeGP0aNcY+C3RUDzkkzntQ9i36YlHtS3VUWNA=;
- b=AGhIU49jvrwtGZRFJZMqcpp8AqVzWOJNmwSIDfRDQXL4rQu0/8GDE6WFy0y2J4NscF
- MsJ+Zq/LoUAT8XgJ3iOTfeMJNWJ90XfWfQZrqEsMOiMdEDyuFxd6SQOxB0smQRArGOWN
- YM4uJIrVCs/roR/a77q7GpnvB5ZOXMuXNjqvBfag1r2XTmdYufnd7eHw5cpH6xnYt2rd
- mUvkn2/OZ+PB2BfHY+kzc3aOEn2kp+WbzfpwyR58OEyPtUpUEgyQB9uO61gDvT8lsoJv
- vTbMAMzXvONPJebH0YcPPlAy4k+o8JTGx5L7pK0I+c5c/eYjdaehK55mFzlNYGSguPUd
- iGLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793279988; x=1793884788;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=A+Eq13IeGP0aNcY+C3RUDzkkzntQ9i36YlHtS3VUWNA=;
- b=fmSk8+f9ZNn3lbnc/StBfBoOqMHvqr9asm5MAipBtv61Aa3akrKI15cue44iDSrpLF
- GHoz+vxc+maY5yjwE5u2ETzAWpxs5yoMEvUx4R0CIwtWuxNdKfrZwiwLBebljnKFLBQI
- XGV13MgDLUcKu7YwuzxmxwvusqLusF597Dkeuixe6gqFqY/iBca+tZ0y/gD4smX3b4bi
- 7C1McCqo7+qOQaLELWQI3JU8toDE9YK3bNPLz/Q7i7DUDrF59Hu4NjQ/aeBTSKz0uSgL
- cW4WdJ6bMmPtbFUpEjagueaxahu5XRYc/u6bZvYTa60+oSkkXXMCKyz4K1yqGJKitFrJ
- H/nQ==
-X-Gm-Message-State: AFq9FYLgI5O/aPYD/ZmrRIad6HsIy3HLp1zJREhK4NBLCiGPVbKFn5To
- J+Q/XC1+U093nuxpMqLDFQ9D9SkEI59wZUcz7hXTfqAfZWtSG3OcGn8BoiauEIq4XZyM6WpwyGv
- PP/LFxWqTio92mMLnH+Sbg7h4VmczjVmGkVafP4S9ermkmRa1S3oJi9U=
-X-Gm-Gg: AYBFou1wfPD1bH9arwdrsEqGRls0uvjabdF75BOaXjPFmsf5IlcYIFOTrFvbUpK2waF
- l8o3iCliM4tOwozMhKcFKdXUZhe5sWw7dWRH+FPkLOx7NWsXkPKG5wW8bJqXt3Un4Xfv8zlAnQR
- tY9iX2KqqroQcCccyR6wBtwXVColoa4RfPf5PPJOqUu1jofbRsqY5wnYqvOVUoxWk5GZN4ku48W
- h2oZMpnpgJrP3cjhQKtLLbKkdF9iFSV9fCVOrpcw/c6mBjkIhBFnRszhTUzqm6At4o1QOrilJ0A
- 5Fig6uquCzaVTcX6CghyxCs3CaenlRzG9H6KttPD6/MDvz/R3v8gOtAqIWYmEOnNgzFTowLNHZ1
- GpmUy3SpjQtuMAk5ZG1yNDjpgEEFJfQ1z8PjbtNmh/9sPrG2qCNO7V0jZPejh21YhD6blEI76Jb
- cBqdwyP0dCq1yxhPMwWjRUL0x83zcfejL1uJZ42629jQ==
-X-Received: by 2002:a05:690c:ec9:b0:8a8:7fda:15ee with SMTP id
- 00721157ae682-8b1b5d04153mr38970777b3.50.1793279988027; Thu, 29 Oct 2026
- 06:19:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xMPxK-0000WW-Oq
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xMPxJ-0006Z2-0K
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793279648;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dR2eFwA6BcT8vW16lTId9tfFaddfYJbds4sEJfK9C1s=;
+ b=P/lev1p+GKLwioEaxUvTkX8HmenhuEDZ3inIgPfwlAiBnBoYTZWkVyuwUJhyveYE8uJoCe
+ tk2l356ygJIfLACtBIazVhKyjxlYeEME4ZdIUl183AJNiqlJwlRSCzZF9lzVEpnixa5NlX
+ TpatYuQ7bSuAID3uK7Komy07WLgq+4Q=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-460-m81A4W8_OtKay1YwuGUEnw-1; Thu,
+ 29 Oct 2026 09:14:04 -0400
+X-MC-Unique: m81A4W8_OtKay1YwuGUEnw-1
+X-Mimecast-MFC-AGG-ID: m81A4W8_OtKay1YwuGUEnw_1793279643
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 69D441955DE8; Thu, 29 Oct 2026 13:14:03 +0000 (UTC)
+Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 1E0273000723; Thu, 29 Oct 2026 13:14:00 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2 28/28] hw/usb: mark UHCI, OCHI & ECHI USB hosts as secure
+Date: Thu, 29 Oct 2026 13:12:41 +0000
+Message-ID: <20261029131241.2275706-29-berrange@redhat.com>
+In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
+References: <20261029131241.2275706-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261025110857.1973128-1-peter.maydell@linaro.org>
-In-Reply-To: <20261025110857.1973128-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Oct 2026 13:19:36 +0000
-X-Gm-Features: AclHuK-44kUA95_tql0SGvMdMFiGnbyomi6aZU5ansareu_HvyBkKtM-owyIMEM
-Message-ID: <CAFEAcA98yOpsZZbSOBad0f-W8gzx+_0x2cTTMhcQhbijqpHdyg@mail.gmail.com>
-Subject: Re: [PATCH] hw/dma/xlnx_dpdma: Don't allow DMA off end of host buffers
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: b2svkTQmIg4MRr3kXtrKO1adTUcSwHu1h7GVAai-pI8_1793279643
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,37 +89,131 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_PASS,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sun, 25 Oct 2026 at 11:08, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The xlnx_dpdma DMA engine allows the guest to do DMA to host buffers
-> for audio and graphics data.  These buffers are set up by the xlnx_dp
-> device, which calls xlnx_dpdma_set_host_data_location() to tell the
-> DMA engine where they are.  However, this API doesn't provide any way
-> to say how big the host buffers are, and the DMA engine does not
-> check whether the guest is trying to write off the end of the buffer.
->
-> Add a length argument to xlnx_dpdma_set_host_data_location(), and
-> bounds check the guest's DMA writes against it.  The DPDMA ISR has
-> bits for each channel for "descriptor payload is too large", so we
-> report such overflows there.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: d3c6369a96a8 ("introduce xlnx-dpdma")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4134
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
+Modern virtualized guests are expected to be deployed with the
+XHCI controller which supports all of USB 1, 2 and 3. The UHCI
+OCHI and ECHI hosts, however, have all been widely used in
+virtualization scenarios historically, especially on x86. Indeed
+the -usb flag will enable UCHI by default.
 
+So while these are undesirable hosts in general, this marks them
+as secure for virtualization use cases.
 
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ hw/usb/hcd-ehci-pci.c    | 1 +
+ hw/usb/hcd-ehci-sysbus.c | 7 +++++++
+ hw/usb/hcd-ohci-pci.c    | 1 +
+ hw/usb/hcd-ohci-sysbus.c | 1 +
+ hw/usb/hcd-uhci.c        | 1 +
+ 5 files changed, 11 insertions(+)
 
-Applied to target-arm.next, thanks.
+diff --git a/hw/usb/hcd-ehci-pci.c b/hw/usb/hcd-ehci-pci.c
+index fd35d253407..2080ea2913a 100644
+--- a/hw/usb/hcd-ehci-pci.c
++++ b/hw/usb/hcd-ehci-pci.c
+@@ -219,6 +219,7 @@ static void ehci_pci_register_types(void)
+     TypeInfo ehci_type_info = {
+         .parent        = TYPE_PCI_EHCI,
+         .class_init    = ehci_data_class_init,
++        .secure        = true,
+     };
+     int i;
+ 
+diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
+index 7f7c7f8a2f1..0af658d2b68 100644
+--- a/hw/usb/hcd-ehci-sysbus.c
++++ b/hw/usb/hcd-ehci-sysbus.c
+@@ -247,32 +247,38 @@ static const TypeInfo ehci_sysbus_types[] = {
+         .name          = TYPE_PLATFORM_EHCI,
+         .parent        = TYPE_SYS_BUS_EHCI,
+         .class_init    = ehci_platform_class_init,
++        .secure        = true,
+     },
+     {
+         .name          = TYPE_EXYNOS4210_EHCI,
+         .parent        = TYPE_SYS_BUS_EHCI,
+         .class_init    = ehci_exynos4210_class_init,
++        .secure        = true,
+     },
+     {
+         .name          = TYPE_AW_H3_EHCI,
+         .parent        = TYPE_SYS_BUS_EHCI,
+         .class_init    = ehci_aw_h3_class_init,
++        .secure        = true,
+     },
+     {
+         .name          = TYPE_NPCM7XX_EHCI,
+         .parent        = TYPE_SYS_BUS_EHCI,
+         .class_init    = ehci_npcm7xx_class_init,
++        .secure        = true,
+     },
+     {
+         .name          = TYPE_TEGRA2_EHCI,
+         .parent        = TYPE_SYS_BUS_EHCI,
+         .class_init    = ehci_tegra2_class_init,
++        .secure        = true,
+     },
+     {
+         .name          = TYPE_PPC4xx_EHCI,
+         .parent        = TYPE_SYS_BUS_EHCI,
+         .class_init    = ehci_ppc4xx_class_init,
+         .instance_init = ehci_ppc4xx_init,
++        .secure        = true,
+     },
+     {
+         .name          = TYPE_FUSBH200_EHCI,
+@@ -280,6 +286,7 @@ static const TypeInfo ehci_sysbus_types[] = {
+         .instance_size = sizeof(FUSBH200EHCIState),
+         .instance_init = fusbh200_ehci_init,
+         .class_init    = fusbh200_ehci_class_init,
++        .secure        = true,
+     },
+ };
+ 
+diff --git a/hw/usb/hcd-ohci-pci.c b/hw/usb/hcd-ohci-pci.c
+index 70c9e9ac4f5..cf0746aa00b 100644
+--- a/hw/usb/hcd-ohci-pci.c
++++ b/hw/usb/hcd-ohci-pci.c
+@@ -148,6 +148,7 @@ static const TypeInfo ohci_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(OHCIPCIState),
+     .class_init    = ohci_pci_class_init,
++    .secure        = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { },
+diff --git a/hw/usb/hcd-ohci-sysbus.c b/hw/usb/hcd-ohci-sysbus.c
+index 4f51eebccb2..fd04e918e8a 100644
+--- a/hw/usb/hcd-ohci-sysbus.c
++++ b/hw/usb/hcd-ohci-sysbus.c
+@@ -80,6 +80,7 @@ static const TypeInfo ohci_sysbus_types[] = {
+         .parent        = TYPE_SYS_BUS_DEVICE,
+         .instance_size = sizeof(OHCISysBusState),
+         .class_init    = ohci_sysbus_class_init,
++        .secure        = true,
+     },
+ };
+ 
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index a7b9fe13175..c6d163aa9f6 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -1380,6 +1380,7 @@ static void uhci_register_types(void)
+     TypeInfo uhci_type_info = {
+         .parent        = TYPE_UHCI,
+         .class_init    = uhci_data_class_init,
++        .secure        = true,
+     };
+     int i;
+ 
+-- 
+2.56.0
 
--- PMM
 

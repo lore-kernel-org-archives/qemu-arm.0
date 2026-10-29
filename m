@@ -1,103 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1601606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 17:54:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54669606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 17:54:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=IdP0yACb
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=bYSf5rpe
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMUD2-0001sc-22; Thu, 29 Oct 2026 13:46:40 -0400
+	id 1xMUBi-0007rp-6p; Thu, 29 Oct 2026 13:45:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xMUBO-000752-9D
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:45:05 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xMU9U-0004Yb-Qc
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:43:00 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xMUB9-0003dE-1B
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:44:47 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xMU9R-0003RR-8E
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 13:42:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793295867;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1793295776;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rINmdIdX+nqY1tB463gc7h4dJoixFBVUCyJSuMaIOhQ=;
- b=IdP0yACbWXYfTc8uve+65ROgx2XAwQ1w9zkiME+AxpapRHr188DRW8TGYo641jsA3gLJmR
- CMjtJOM40UdSwblMdc+YLeDTeOGbdIXOcqFKq0EHMVSZtpaqk7iZJP7ygC6IBUswRB4JJ4
- DBm3Ch6tPpFOZk4Q6IG9qly7ufhhM9U=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=CeqxaDJAfhVAeXfJnL4fWFeqEC+RtNwm3uyWqu/tgkc=;
+ b=bYSf5rpegTPr2kqzX0lvHj0+XFIXqhebc/P613p4IhlkCL0xkpoJWtgsQnAzZiDRN5ZLL9
+ HFsOLiKmwZccKnvmTicKpqOyTitl+nBBOG5lB+kmkReDw/Zyb6ReoIC2xES7AUIIF6Ja0K
+ OmfoqXe0oFIQ36ayQRo8hAbxmLGgAIM=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-655-o6ZfG1TBN-Kr1kabVkHXhA-1; Thu,
- 29 Oct 2026 13:44:23 -0400
-X-MC-Unique: o6ZfG1TBN-Kr1kabVkHXhA-1
-X-Mimecast-MFC-AGG-ID: o6ZfG1TBN-Kr1kabVkHXhA_1793295860
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-531-03pA8_F-OFmSR-SNpJKqdg-1; Thu,
+ 29 Oct 2026 13:42:51 -0400
+X-MC-Unique: 03pA8_F-OFmSR-SNpJKqdg-1
+X-Mimecast-MFC-AGG-ID: 03pA8_F-OFmSR-SNpJKqdg_1793295769
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4E96A1955F6E; Thu, 29 Oct 2026 17:44:20 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DB10918021CE; Thu, 29 Oct 2026 17:42:48 +0000 (UTC)
+Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E6BC2410; Thu, 29 Oct 2026 17:44:18 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9826A3000B4E; Thu, 29 Oct 2026 17:42:44 +0000 (UTC)
+Date: Thu, 29 Oct 2026 17:42:41 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, qemu-s390x@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Chao Liu <chao.liu@processmission.com>,
+ Tyrone Ting <kfting@nuvoton.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Hao Wu <wuhaotsh@google.com>, Halil Pasic <pasic@linux.ibm.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 7/8] tests/functional: remove @skipSlowTest from
+ quanta_gsj test
+Message-ID: <auOFkbm4VJblb4SY@redhat.com>
+References: <20261029161310.2065290-1-alex.bennee@linaro.org>
+ <20261029161310.2065290-8-alex.bennee@linaro.org>
+ <CAFEAcA_UJ=QMFwdGtWv_wWhRyzoig0_0VC+T21+kFvzv9qasoA@mail.gmail.com>
+ <1d76264a-040a-40f7-977f-948d4db6576a@redhat.com>
+ <ae1dada6-057c-4614-bf59-ec60b1f89604@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v7 4/8] hw/usb/redirect-server: Announce the exported
- device
-From: marcandre.lureau@redhat.com
-To: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: kraxel@redhat.com, marcandre.lureau@redhat.com, junjie.cao@intel.com, 
- junjie.cao@linux.dev, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Kane Chen <kane_chen@aspeedtech.com>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>, 
- Troy Lee <troy_lee@aspeedtech.com>
-In-Reply-To: <20261028034140.367393-5-jamin_lin@aspeedtech.com>
-References: <20261028034140.367393-1-jamin_lin@aspeedtech.com>
- <20261028034140.367393-5-jamin_lin@aspeedtech.com>
-Date: Thu, 29 Oct 2026 21:44:07 +0400
-Message-Id: <179329584772.3884549.14074212173976966982.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3079;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=l2O33EN1jKc35tAbULWnBdZ22SK/nhnMMLqFOt2Yuns=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBq44Xr0vHV38TnXbiDgBYJnEyseSXPbkX6GW1Y1
- pGWp/0GfdqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCauOF6wAKCRDa6OEJdZac
- 5TRnD/9/FCDkBuTEUS1I5ezrouJ5HN7eW9B6oKrFWx9Gu9/bp8OSeSa/jf61SrzUMq1QNv4Pn+8
- 0UZZg0qV0rryQCndyFZh41NAohmxDPhKQwct8Gb3NZBEzxZUGjuiq2Qz/CSeGhZzxzn/02trLgM
- V6AFKXJPr8Xtkjlg/3RlyJRIknpcfLr3nEamxVmOt/o9D6Yont7qVG2RPU956szXSAfIJNL3QSX
- 9+XXVehj4VK1dB7Ufspt5vM83Oy8sAEOyC1c+ZGWvn/fX0h7WuV5bpPwIfL4W/lWAjVts/pxBpY
- 3jknBJCjN/xzMnQzt6wlQvRYCjlh8YC8G9xLm8D704HX/3Hi6l3EGS/ezgvOovJ3yDi2+yPSCSC
- vTVneDDYKwAFzGUvrgii8TmeAqrTDTFnJgIlKcKhFxLWqLP5ZuW+XfzmWHstkWFLByS2TfqpBPc
- 5dD9pm/1MvXWGDiYTxEt5codKug3oeIVLRJnWJ2VjTmXIwStpjDiEtgGTjKq7arA/fNwnJZAbRk
- sWEDH5LdiPAzH86QCB1EOr8a1l3YWTthxE9LhEM3ZouTkgfKn103gsYdWK/cYYoHO7Pt2wqyzXv
- m8Wv1P4Hll+uJnuiN8jAnl4XdUtm9FJNSb4li38kgIFWTowS9aixEQHMG5O3tjnmVeraIhMKUzi
- YwGJV3dSacCK2yQ==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: PMSEjEuZ9DBUoWVBRNtzHGViEWu27tKNN13mNLjHq60_1793295860
+In-Reply-To: <ae1dada6-057c-4614-bf59-ec60b1f89604@oss.qualcomm.com>
+User-Agent: Mutt/2.4.2 (2026-08-30)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: WDBEkcVaZSPF9Rkbb5OqLewsvekThGEXxvnq4kLD90Q_1793295769
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ GB_FAKE_RF=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,103 +100,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> Send device_connect when a device is attached and the host has greeted
-> us, device_disconnect when it goes away, and handle the bus reset the
-> host sends before enumerating.
+On Thu, Oct 29, 2026 at 09:14:21AM -0800, Pierrick Bouvier wrote:
+> On 10/29/2026 9:05 AM, Thomas Huth wrote:
+> > On 29/10/2026 17.38, Peter Maydell wrote:
+> >> On Thu, 29 Oct 2026 at 16:13, Alex Bennée <alex.bennee@linaro.org> wrote:
+> >>>
+> >>> The full quanta_gsj test would have caught the regression caused by
+> >>> the WFxT implementation and isn't that slow (<60s) it needs to be
+> >>> gated.
+> >>>
+> >>> Suggested-by: Thomas Huth <thuth@redhat.com>
+> >>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> >>> ---
+> > ...
+> >> The other argument against using quanta-gsj as our test here
+> >> is that as discussed as part of a recent docs update:
+> >> https://lore.kernel.org/qemu-devel/20260627063208.33642-1-
+> >> bin.meng@processmission.com/
+> >> it's no longer supported by OpenBMC.
+> >>
+> >> I didn't get any response from the Nuvoton maintainers in
+> >> that thread, but I kind of favour deprecating the machine
+> >> type in QEMU.
+> > If nobody seems to care anymore, please go ahead and mark it as
+> > deprecated! We can still revert it in case someone speaks up later
+> > during the deprecation period.
+> > 
+> >  Thomas
+> > 
+> > 
 > 
-> device_connect carries no identity. The peer asks the device itself with
-> GET_DESCRIPTOR as soon as it enumerates, so anything we put there would
-> be made up. The speed is real: it comes from the device on our port.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Message-ID: <20261028034140.367393-5-jamin_lin@aspeedtech.com>
-> ---
->  hw/usb/redirect-server.c | 130 ++++++++++++++++++++++++++++++++++++++-
->  hw/usb/trace-events      |   7 +++
->  2 files changed, 136 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/usb/redirect-server.c b/hw/usb/redirect-server.c
-> index 4971d81af489..ad6e4c422bb9 100644
-> --- a/hw/usb/redirect-server.c
-> +++ b/hw/usb/redirect-server.c
-> @@ -56,6 +56,7 @@
->  #include "qemu/main-loop.h"
->  #include "qemu/module.h"
->  #include "migration/vmstate.h"
-> +#include "qemu/cutils.h"
->  #include "hw/core/sysbus.h"
->  #include "hw/usb/usb.h"
->  #include "chardev/char-fe.h"
-> @@ -90,12 +91,88 @@ struct USBRedirServer {
->      bool in_write;
->      guint watch;
->      bool host_connected;
-> +    bool device_announced;
->  };
->  
-> +/*
-> + * The device is whatever USBDevice the user plugged into our port with
-> + * "-device <device>,bus=<id>.0". NULL until then.
-> + */
-> +static USBDevice *usbredir_server_device(USBRedirServer *s)
-> +{
-> +    return s->port.dev;
-> +}
-> +
-> +/*
-> + * Device announcement
-> + */
-> +
-> +static uint8_t usbredir_server_speed(USBDevice *device)
-> +{
-> +    switch (device->speed) {
-> +    case USB_SPEED_LOW:
-> +        return usb_redir_speed_low;
-> +    case USB_SPEED_FULL:
-> +        return usb_redir_speed_full;
-> +    default:
-> +        return usb_redir_speed_high;
-> +    }
-> +}
-> +
-> +static void usbredir_server_announce_device(USBRedirServer *s)
-> +{
-> +    USBDevice *device = usbredir_server_device(s);
-> +    struct usb_redir_interface_info_header iface_info = {
-> +        .interface_count = 0,
-> +    };
-> +    struct usb_redir_device_connect_header conn = {};
-> +
-> +    if (!s->host_connected || s->device_announced ||
-> +        !device || !device->attached) {
-> +        return;
-> +    }
-> +    s->device_announced = true;
-> +    conn.speed = usbredir_server_speed(device);
-> +
-> +    /* Put the device in DEFAULT state. The host may not reset the bus. */
-> +    device->addr = 0;
-> +    device->state = USB_STATE_DEFAULT;
+> For what it's worth, I also noticed that this test tends to timeout
+> randomly, even when running tests with -j1. So we might observe this in
+> our CI also, by enabling it by default.
 
-usb_attach() overwrites this with USB_STATE_ATTACHED right after the
-port attach callback returns. A subsequent control request from the peer
-would trip the dev->state == USB_STATE_DEFAULT assertion in
-usb_handle_packet().
+If it is unreliable then it should be tagged with skipFlakyTest,
+and a gitlab issue filed with an example failure trace.
 
-You could announce with a BH instead (cancel it on detach) and use
-usb_device_reset() instead of manually poking the fields before
-announcing.
+If no one steps up to fix the flaky test in a reasonable time
+then it should later be deleted, as flaky tests should not be
+allowed to linger for years.
 
+With regards,
+Daniel
 -- 
-Marc-André Lureau <marcandre.lureau@redhat.com>
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
 

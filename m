@@ -1,115 +1,83 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76572606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:37:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E4FE606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 14:38:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=HbRe3J/7
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=SabQXfmB
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMRGJ-0006Cf-9T; Thu, 29 Oct 2026 10:37:51 -0400
+	id 1xMRGU-0006Fq-MZ; Thu, 29 Oct 2026 10:38:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMRGI-0006CK-Ia
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:37:50 -0400
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMRGG-0007Md-SZ
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:37:50 -0400
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-8b0d126f631so23159437b3.2
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 07:37:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793284667; cv=none;
- d=google.com; s=arc-20260327;
- b=Go5qLAsNy5UYcfDBwXzvfpzGa3BQ9V31dqm50pT3u6lrN8Byrcp94uXMciVxzRW5c5
- /L14CyUwGnVQ5PVRegEByzTV5NuXyOibpWcghd0eLg0Pbf93olGUevX/7G6vkK94fSSs
- 8UaBhuWudNYipLqkxJ9GTxvv7rkAvwPDPb4Uc85VOwCnu2aakodEH4PzKI/kfoYMZqQw
- EJSeiTmoxPz6TBiMVYAhR1AfEt3xl63vJKoZcdLL5U84JnHFw7nTD2byzyQ9XD4rkF3R
- ms7U2TcpJutHVYMXWlD83dT7+gf7vToL16dCKOUWyyb7KCWUMMvfaYDp0+e2bBmvazOF
- AGZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=EJu8JaOtMVyjxhYmH6az1U+IMB+/mqpM4Q2vtHCT9mc=;
- fh=mTMA5rsMYcHXM72uXD92PEYZoNGf1nAlue8kHgOOyDU=;
- b=A+0xg0Y1G+0xXVNboK8cgtTRtb+4T9fKTLP4Zw0L41UMmLj5BihC68EEAgW/r/XMIj
- N48/LF1B7XU8aGjoxJLN5H4zBFiAYzQaVsKGJI1TadEs472Nn24wqUTrMrgZ6owApIG8
- y6DdMbz2XQaEljM2oRwEmfxifXvbwd82YqVY+Ow8WkajpXKpfBUzPIYsi6Vjt81Cxom4
- 4t6Hjw9eRWE67clwvwrqOG+Pijbn5ZijEkYRFRWaJ2jrl1bqPWFZP8fPqZ43rC3lzEqM
- mI66QVoEudbrmIBpd/f2E3luOE8rhiTNZ1aptglllzxUHrxOsyc0IsmXjmzlahx+phFX
- IP5A==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793284667; x=1793889467; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=EJu8JaOtMVyjxhYmH6az1U+IMB+/mqpM4Q2vtHCT9mc=;
- b=HbRe3J/7Yrki0e2/C6KQm+WyKzFpB3vhHtuGYKmHpRZLiNh2mMZ1EIYgVU/o6I8nG/
- yJrKrSprIXHnoEllV4FAhbL+wwGA02K/gqnXKLCx8IKZDIih4y2tGQcdVS2AIuDrZ1ve
- zmS6vsfrACc907jq1BhqdseLQojPesmjL/ErJ2A7jtzN4/IdZJV1PxPKHAch3RF1zSpp
- 8v+TA2fu1GFGxrJr+rjfgchztK2gZNiawS390wmc23vMi4fTO913JRMA25LEI1GwrXwO
- Fd43QHYlNZcjCzqIVEr6q97245Czxb3SfI32Uy56PSQAIQQwPNZXd77tYe6Rpuz/pQo4
- cuGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793284667; x=1793889467;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=EJu8JaOtMVyjxhYmH6az1U+IMB+/mqpM4Q2vtHCT9mc=;
- b=0nn2oqMad8W9oUcTRH1lQ7kCrqLoJkbRRl4adJPhHaH74G7gaOjDG6EtxhvLHQXZZr
- N1SF5LWsOMJv5zLhwpZ73hzHF64KezWchi7f/0MTIgt9gaGTS+b7Uoh+pn7Rq/PnOdRv
- 6XI5dgM+pRQprNKsl6qWCwzbgjlSkePLt3PiMoUgQzEkQ9hHeAiRCTBeAziUxB42QMr1
- APg9E5EpUXCMg7t+5DED9Js0pQ+VNol0oVJwsW7nPBWD/Ri4BsU2N5iMvLqr10KNvE+j
- iQZWvUqYUfQ6QUPIvVtimkpju/8ohZIz2tshzew244XmSs4iZQN1lR093G9gqwXNfuF4
- JkmQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx1wxlWcgB+ur/y2CYIZy5RwYs2ljuZXuf7kLImiy/j3ZB0R6w2oI5OHI/RL5s5/5whGEwZglf8OA==@nongnu.org
-X-Gm-Message-State: AFq9FYIyjyTXPh8GoTCuRw+FjycHLwaI6M72mPb5vFMbeNVucKNHrpr+
- 6Aae7vKVWVPgP8pFp1i4zeCukLtj2xkcILKjPnDMQofjLvstF5cVjO8m0NN9hVcyUiNc0qdQnUx
- tJWWYKO8uMZKrKPnkukEnJ8HTShH6s2Ez93hR5V6dAQ==
-X-Gm-Gg: AYBFou0/AB5cNuAB4Rb6rhY+0v7rs5I3gMNVsTAH95wHKVQ2jHWEymGnF7dpt7KgbGE
- hLTuaop7LgMvQjhaSZNIEro7Kyl569BlXCqOjzUUFHy9OHkMad5Il/Kyp55EWgmONKkM0hlc1PE
- 18oTazJZpCl7OSauQRVJt+gq4fB+j9uysRnTLe+VOGzhPJfbN4b2Iqf8aTSvIx7OdVVoIDLb7rW
- JINryWtVOcw0XVKV5+ZHpLBfCDw6nNg1lFPVUn3BArWg4FFqm/oKQ/cRQ4mNfF2WRfm82KjbURU
- g+HRl7/NLCh/c5GTnZDFIAOlczDFevwpA5Gl//60su8QUv6RqaExsfFrjyCMzrhwsWzxYfQqIgD
- Qpv6nyn6olNUzZoTlGlSSCw7A3DJGX5P6yVqEYUsIHhgzaCfuWJVgZkzO4nGgDg56nfmeFr9BNJ
- d2gOr8YQueQkYSG6vfgiHVxlLDTgWcwp1xZQbY6iTxig==
-X-Received: by 2002:a05:690c:4dc5:20b0:88e:edf8:e375 with SMTP id
- 00721157ae682-8b1b599b9a9mr35676977b3.5.1793284667333; Thu, 29 Oct 2026
- 07:37:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xMRGT-0006FD-Hf
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:38:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xMRGR-0007NP-44
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 10:38:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793284677;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=adHTWEbUlaI3cWm6oXHLKv89qCIDod4Pm4UBvY4K9kU=;
+ b=SabQXfmBrV+Sx4Nv2MbKhNc4mHlr0rIxfgOL5EoJcW4eNNHtf0icxAevnMRKGNZMS1+BHe
+ PJocAegopsq2YKRkALh2I51cyupNdsEQYJvpB7JWf/V2f6cgtl9wc0u3u1iFtX6OSFlWdG
+ ub+7bDrmkVZyHurTxSNx3Hdg+HMNn4o=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-522-29I_X7nIONyAb4yxXkmNHA-1; Thu,
+ 29 Oct 2026 10:37:53 -0400
+X-MC-Unique: 29I_X7nIONyAb4yxXkmNHA-1
+X-Mimecast-MFC-AGG-ID: 29I_X7nIONyAb4yxXkmNHA_1793284671
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 34DA01956061; Thu, 29 Oct 2026 14:37:51 +0000 (UTC)
+Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C5D41195608B; Thu, 29 Oct 2026 14:37:45 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, shaju.abraham@nutanix.com,
+ khushit.shah@nutanix.com, richard.henderson@linaro.org,
+ pbonzini@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com,
+ 7746591750@163.com, maobibo@loongson.cn, harshpb@linux.ibm.com,
+ amachhiw@linux.ibm.com, daniel.barboza@oss.qualcomm.com,
+ milesg@linux.ibm.com, farman@linux.ibm.com, cohuck@redhat.com,
+ alireza.sanaee@huawei.com
+Cc: armbru@redhat.com,
+	mbawa@redhat.com
+Subject: [PATCH v2 for-11.2 0/9] kvm/arm: Some refactoring for custom KVM host
+ model
+Date: Thu, 29 Oct 2026 15:36:47 +0100
+Message-ID: <20261029143742.294275-1-eric.auger@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261029092307.281287-1-eric.auger@redhat.com>
- <20261029092307.281287-6-eric.auger@redhat.com>
-In-Reply-To: <20261029092307.281287-6-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Oct 2026 14:37:35 +0000
-X-Gm-Features: AclHuK8kyLtiydSZILjWZ_u10MgbnyFmTUzVOtrq1CQu5UG3yEW5DFvGmmRXkcM
-Message-ID: <CAFEAcA-v2s39f5n0b+9ZD4QHd5irxUwqzUfsYUb8x0GTqU_z4Q@mail.gmail.com>
-Subject: Re: [PATCH for-11.2 5/9] target/arm/kvm: Pass an error handle to
- kvm_arm_create_scratch_host_vcpu
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- shaju.abraham@nutanix.com, khushit.shah@nutanix.com, 
- richard.henderson@linaro.org, pbonzini@redhat.com, skolothumtho@nvidia.com, 
- philmd@oss.qualcomm.com, 7746591750@163.com, maobibo@loongson.cn, 
- harshpb@linux.ibm.com, amachhiw@linux.ibm.com, 
- daniel.barboza@oss.qualcomm.com, milesg@linux.ibm.com, farman@linux.ibm.com, 
- cohuck@redhat.com, armbru@redhat.com, mbawa@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: 4CQRocn61JJ9v9KbTE7V8EA2u61j7fIx0HaE93AmDN4_1793284671
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,59 +89,71 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 29 Oct 2026 at 09:23, Eric Auger <eric.auger@redhat.com> wrote:
->
-> This allows to report a precise error message if any error occurs.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+This series contains some patches initially introduced in
+"kvm/arm: Introduce a customizable aarch64 KVM host model" series
+
+all patches collected R-b's. They are arm specific except:
+
+patch 7/9 target/kvm: Pass an Error handle to kvm_arch_init_vcpu
+which adds an error handle to kvm_arch_init_vcpu() and thus impacts
+severals archs hence the extended distribution list.
+
+They are rather independent on the actual custom host model and can
+be considered as a separate dependency. Would be nice to get some of them
+in 11.2.
+
+v1 -> v2:
+- Fixed comma in target/ppc/kvm.c
+- Improved commit description and comment in last patch
+- collected R-b's (thanks!)
 
 
+Eric Auger (9):
+  target/arm/cpu-sysregs.h.inc: Sort by name alphabetical order
+  target/arm: Move REVIDR into isar.idregs[] storage
+  target/arm: Move MIDR into isar.idregs[] storage
+  target/arm: Enforce MPIDR into isar.idregs[] storage
+  target/arm/kvm: Pass an error handle to
+    kvm_arm_create_scratch_host_vcpu
+  target/arm/kvm: Pass an error handle to kvm_arm_init_cpreg_list
+  target/kvm: Pass an Error handle to kvm_arch_init_vcpu
+  target/arm/kvm: Introduce kvm_arm_vcpu_prepare_init_features helper
+  hw/arm/virt: Make sure virt_get_caches() keeps on reading CLIDR_EL1 as
+    0
 
-> @@ -371,7 +377,8 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          features |= 1ULL << ARM_FEATURE_PMU;
->      }
->
-> -    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
-> +    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init, &local_err)) {
-> +        error_report_err(local_err);
->          return;
->      }
+ include/system/kvm.h         |  2 +-
+ linux-user/arm/target_proc.h | 13 ++---
+ target/arm/cpu.h             | 10 ++--
+ target/arm/kvm_arm.h         |  3 +-
+ target/arm/cpu-sysregs.h.inc | 49 ++++++++++---------
+ accel/kvm/kvm-all.c          | 15 +++---
+ hw/arm/virt.c                | 15 ++++++
+ hw/intc/armv7m_nvic.c        |  4 +-
+ target/arm/cpu-max.c         |  4 +-
+ target/arm/cpu.c             | 19 +++++++-
+ target/arm/cpu64.c           |  4 +-
+ target/arm/helper.c          | 29 ++++-------
+ target/arm/hvf/hvf.c         |  6 +--
+ target/arm/kvm.c             | 95 +++++++++++++++++++++++-------------
+ target/arm/tcg/cpu-v7m.c     | 18 +++----
+ target/arm/tcg/cpu32.c       | 37 +++++++-------
+ target/arm/tcg/cpu64.c       | 42 ++++++++--------
+ target/arm/whpx/whpx-all.c   |  6 +--
+ target/i386/kvm/kvm.c        | 22 +++++----
+ target/loongarch/kvm/kvm.c   | 27 ++++------
+ target/ppc/kvm.c             | 10 ++--
+ target/riscv/kvm/kvm-cpu.c   |  6 ++-
+ target/s390x/kvm/kvm.c       |  2 +-
+ 23 files changed, 249 insertions(+), 189 deletions(-)
 
-This isn't supposed to report an error here. The caller of
-this function is kvm_arm_set_cpu_features_from_host(), which
-sets cpu->host_cpu_probe_failed for any failures. That is
-later checked by arm_cpu_realizefn(), which reports either
-that you didn't use an accelerator type you should have or else
-the rather vague "Failed to retrieve host CPU features".
+-- 
+2.53.0
 
-If you want to make that more specific, I think you need to save
-that more specific error information instead of the plain
-boolean host_cpu_probe_failed, so you have it in arm_cpu_realizefn
-where you can report it up.
-
-> @@ -2653,8 +2660,10 @@ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level)
->  void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
->  {
->      int fdarray[3];
-> +    Error *local_err = NULL;
->
-> -    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
-> +    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL, &local_err)) {
-> +        error_report_err(local_err);
->          return;
->      }
-
-The only caller of arm_gic_cap_kvm_probe() is qmp_query_gic_capabilities(),
-which has an Error parameter. So here we should be passing the error
-up to it to report, not reporting it locally.
-
-thanks
--- PMM
 

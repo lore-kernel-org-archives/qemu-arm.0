@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3F6F606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:19:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A075606A322
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:21:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=ZZPavP8x
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=FHB+Qb/0
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMPwd-0007y1-7j; Thu, 29 Oct 2026 09:13:29 -0400
+	id 1xMQ24-0002Af-PL; Thu, 29 Oct 2026 09:19:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPwA-0007kX-Kr
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:13:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xMPxQ-0000oA-RG
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPw9-00066K-2n
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:12:58 -0400
+ id 1xMPxP-0006bA-7v
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793279574;
+ s=mimecast20190719; t=1793279653;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lrcmyQ+ziZh6xY0lqp7ARwki4RX1f8zj2yvIXg76gaE=;
- b=ZZPavP8xN9PhO/Dgb3OCVmixt4DsKFaJFqZXz74nfRMKzzNkMpjhqH4gMtzjc+4QT9co3n
- DNfrbDDuQRhmYPLZqGN1bELPcs8OUOPEIL0RM/VsPzRqpc4nL+dlCRofDAl1wdp1Vp4/w7
- TMFJekcHABk2PGLw44R7uYNSqu/5qbU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=i0RW8ZGnMsxRysic9Bp5WbxLn5jlo4lpLUqM8KIAbt4=;
+ b=FHB+Qb/0/ZWbRmKAw80WpzVUrIB8N9g41/gVaUNIsKZksKqxrOjE5zzp14UYsVBI6W5IGM
+ G2fXyw3i0Wldp4szYFnCZqMarEgoCd3il1NcvkROqjMEGLN8Ewfw5WEgdc2W5vC8rJEFcU
+ z8TPEsQPF14bIBVO9HOOPr8qrY+N2sw=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-643-3zMZcdY-O66aSb6fbj53Yg-1; Thu,
- 29 Oct 2026 09:12:50 -0400
-X-MC-Unique: 3zMZcdY-O66aSb6fbj53Yg-1
-X-Mimecast-MFC-AGG-ID: 3zMZcdY-O66aSb6fbj53Yg_1793279569
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-490-jNSk4-t5PKWWsZrHsUmxDg-1; Thu,
+ 29 Oct 2026 09:13:57 -0400
+X-MC-Unique: jNSk4-t5PKWWsZrHsUmxDg-1
+X-Mimecast-MFC-AGG-ID: jNSk4-t5PKWWsZrHsUmxDg_1793279635
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E3FAD18005B2; Thu, 29 Oct 2026 13:12:48 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6D3391802147; Thu, 29 Oct 2026 13:13:55 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5435D3000738; Thu, 29 Oct 2026 13:12:46 +0000 (UTC)
+ id 184103000723; Thu, 29 Oct 2026 13:13:52 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -56,26 +56,26 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 01/28] hw: mark all virtio PCI devices as secure
-Date: Thu, 29 Oct 2026 13:12:14 +0000
-Message-ID: <20261029131241.2275706-2-berrange@redhat.com>
+Subject: [PATCH v2 25/28] hw/input: mark PS/2 and PC Keyboard devices as secure
+Date: Thu, 29 Oct 2026 13:12:38 +0000
+Message-ID: <20261029131241.2275706-26-berrange@redhat.com>
 In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
 References: <20261029131241.2275706-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 4NoR2yLtVuAe20WRJjBNDVBVHK2tlJXvyoqOSgb5x44_1793279569
+X-Mimecast-MFC-PROC-ID: JalFgBJJYywScaIG1vePinUecnlf3C3WQu_NBFY1LPM_1793279635
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -91,63 +91,58 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-These are all intended for use in a virtualization scenario and must
-provide a security boundary. This can be done for almost all virtio
-PCI devices by modifying the common type register helper.
+These are part of the baseline x86 featureset so required for
+virtualization use cases.
 
-The virtio-gpu-pci-rutabaga device is unusual in not using the common
-virtio_pci_types_register() method, so needs marking directly.
-
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/display/virtio-gpu-pci-rutabaga.c | 1 +
- hw/virtio/virtio-pci.c               | 3 +++
- 2 files changed, 4 insertions(+)
+ hw/input/pckbd.c | 3 ++-
+ hw/input/ps2.c   | 6 ++++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/hw/display/virtio-gpu-pci-rutabaga.c b/hw/display/virtio-gpu-pci-rutabaga.c
-index 4db77cb868d..a8e5e1d96cf 100644
---- a/hw/display/virtio-gpu-pci-rutabaga.c
-+++ b/hw/display/virtio-gpu-pci-rutabaga.c
-@@ -34,6 +34,7 @@ static const TypeInfo virtio_gpu_rutabaga_pci_info[] = {
-         .parent = TYPE_VIRTIO_GPU_PCI_BASE,
-         .instance_size = sizeof(VirtIOGPURutabagaPCI),
-         .instance_init = virtio_gpu_rutabaga_initfn,
-+        .secure = true,
-         .interfaces = (const InterfaceInfo[]) {
-             { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-             { },
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index c73f1f546cb..7e372bb8de0 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -2527,6 +2527,7 @@ void virtio_pci_types_register(const VirtioPCIDeviceTypeInfo *t)
-         .name = t->generic_name,
-         .parent = base_type_info.name,
-         .class_init = virtio_pci_generic_class_init,
-+        .secure = true,
-         .interfaces = (const InterfaceInfo[]) {
-             { INTERFACE_PCIE_DEVICE },
-             { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-@@ -2562,6 +2563,7 @@ void virtio_pci_types_register(const VirtioPCIDeviceTypeInfo *t)
-             .name          = t->non_transitional_name,
-             .parent        = base_type_info.name,
-             .instance_init = virtio_pci_non_transitional_instance_init,
-+            .secure = true,
-             .interfaces = (const InterfaceInfo[]) {
-                 { INTERFACE_PCIE_DEVICE },
-                 { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-@@ -2576,6 +2578,7 @@ void virtio_pci_types_register(const VirtioPCIDeviceTypeInfo *t)
-             .name          = t->transitional_name,
-             .parent        = base_type_info.name,
-             .instance_init = virtio_pci_transitional_instance_init,
-+            .secure = true,
-             .interfaces = (const InterfaceInfo[]) {
-                 /*
-                  * Transitional virtio devices work only as Conventional PCI
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index b09c3bce933..0250252cd67 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -766,7 +766,8 @@ static const TypeInfo i8042_mmio_info = {
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_init = i8042_mmio_init,
+     .instance_size = sizeof(MMIOKBDState),
+-    .class_init    = i8042_mmio_class_init
++    .class_init    = i8042_mmio_class_init,
++    .secure        = true,
+ };
+ 
+ void i8042_isa_mouse_fake_event(ISAKBDState *isa)
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index 01af4350b3b..9d96dddde66 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -1293,7 +1293,8 @@ static const TypeInfo ps2_kbd_info = {
+     .name          = TYPE_PS2_KBD_DEVICE,
+     .parent        = TYPE_PS2_DEVICE,
+     .instance_size = sizeof(PS2KbdState),
+-    .class_init    = ps2_kbd_class_init
++    .class_init    = ps2_kbd_class_init,
++    .secure        = true,
+ };
+ 
+ static void ps2_mouse_class_init(ObjectClass *klass, const void *data)
+@@ -1313,7 +1314,8 @@ static const TypeInfo ps2_mouse_info = {
+     .name          = TYPE_PS2_MOUSE_DEVICE,
+     .parent        = TYPE_PS2_DEVICE,
+     .instance_size = sizeof(PS2MouseState),
+-    .class_init    = ps2_mouse_class_init
++    .class_init    = ps2_mouse_class_init,
++    .secure        = true,
+ };
+ 
+ static void ps2_init(Object *obj)
 -- 
 2.56.0
 

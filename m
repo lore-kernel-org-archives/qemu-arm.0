@@ -1,83 +1,109 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45B4F606A31E
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:23:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97449606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 13:52:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=D8g93XNZ
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=hYUrqfnt
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMQ0r-0005eW-6x; Thu, 29 Oct 2026 09:17:49 -0400
+	id 1xMQXl-0001Pv-9u; Thu, 29 Oct 2026 09:51:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPxF-0000N6-Eq
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMPxD-0006X1-Qw
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:14:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793279643;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VvJoMCrjjh+JNQxFjC4E01KLefYCTWA2xdh1MqF6oTQ=;
- b=D8g93XNZLHluls0oflna7qL7DZa075VOKl8yPNys54FrYKtpnCIHarAUYbzPzsYVxkU4qJ
- gp/CTqRxCEcz/I8jPWhLGnH98Xv2jDGrbF6xisUKGfvyfkrGQanjz5715COsZ+zS7aWu0p
- HAmC11v7cOpkRVcU82J4CYe69r5L9D4=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-552-XEO0NqHOOZKGTGRqNHDOPw-1; Thu,
- 29 Oct 2026 09:13:59 -0400
-X-MC-Unique: XEO0NqHOOZKGTGRqNHDOPw-1
-X-Mimecast-MFC-AGG-ID: XEO0NqHOOZKGTGRqNHDOPw_1793279638
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 226441955EB6; Thu, 29 Oct 2026 13:13:58 +0000 (UTC)
-Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BF5FA3000723; Thu, 29 Oct 2026 13:13:55 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 26/28] hw/i386: mark vmmouse / vmport as secure
-Date: Thu, 29 Oct 2026 13:12:39 +0000
-Message-ID: <20261029131241.2275706-27-berrange@redhat.com>
-In-Reply-To: <20261029131241.2275706-1-berrange@redhat.com>
-References: <20261029131241.2275706-1-berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xMQXX-0001Ob-VM
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:51:37 -0400
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xMQXV-0002h1-DY
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 09:51:34 -0400
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-8b125371596so5770997b3.0
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 06:51:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793281892; cv=none;
+ d=google.com; s=arc-20260327;
+ b=rUKKCEKdtORXSRtdDROJ6xk6GGJ2lScGqkODW2TXh10LGDxhhyv0PEPP+u/B0qZPnz
+ VqepNQwW10sV1+GnYvSx6t85UdDWgPzihnTtCIAGkV5R1LGhPxKQsye6D3px8EZKynow
+ Jd8dqNds6E2lfhEDpp/4OW/Vrwb/mdBZcDUWUVSPTxwrc0LR3towk/kSLAml/EUnLI5y
+ jiy4klCCkC4cSykcoueb9Z+IMp5Fm+EN/qRp0NZH9KaaixKqN221SyJKNtFg+tFoN9+c
+ CYGlXUW9F8WChguVC9m9fEWmeCUwbt8+CFWrHzJQWT91d+BsQL2WHt+3p6g10DA7NqwC
+ gzNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=CIkXcxf8+PJyHV4D3teiTigQGSh14bpq+BCbZy3Omd8=;
+ fh=r666LIv9G/nO7ITEBX3kKErnuspSyKcBO9Vkq4q45gY=;
+ b=L6J14JNgrLFO+7Pd/uWpWHa5Ox1BDj59Q9ipwfLO8xlOpO/2Y9+BWV7HN8InIOU4Fd
+ pGWoR+Id5irQ0UJRDwh3IVrkQQhG7rhUOJJ1JaFomRqNli87doeaS/PzuPjnQT/4btev
+ ywoQMrPI7IX37OzLslDCxbxOKj4D/rkhB06i2O9bCCiMNYPWU/zim0QujKxw80l49EFL
+ 3d6hkPIhvecVgO1kzz6iFnBWPUa42E0AGd5wncwN1E6NODtHuCFcZBDaTj7aKr9h4Z79
+ TBsyra/mktJJCunyXaSqHYMlx9OVFxAliJjVgYDrfJldtpCjQP/x9Axq5V8nas6xgqnk
+ 1ofw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1793281892; x=1793886692; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=CIkXcxf8+PJyHV4D3teiTigQGSh14bpq+BCbZy3Omd8=;
+ b=hYUrqfntoIuB7b5dmMTl3pR3xIXJmHaY3j1j3MdfAv9XAQkAEG241JmbqWiahNl9fX
+ Li9yFnvLgefaVNVaQFwwrJI+KfpHHXTkhdltXfjzX6rsH7mpOLENLJTML7bER1PvRgtF
+ Yj0DuJ+p8ntj0vX+gsYtLNvkWJKEHapb/4kfnq5FLrRFx4+uXkssMTdJhK8/EYtU830U
+ 9eOGg1/NIgJD3EeB/DXPH3kn9iv6Vt9wi1bxDe0buHtbvwq0GTUHzyl/E4FnKhWdbc+b
+ 4GrF2YZXTuwsCGZo6WegZeiQ0e6VGroV8rIBrkpeo6vkQMbhprH86RGfjuwrk+RzhL9J
+ WMLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793281892; x=1793886692;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=CIkXcxf8+PJyHV4D3teiTigQGSh14bpq+BCbZy3Omd8=;
+ b=Xl0LU8KLS6GPDZJAGvWR2iMIDPiMma1jGldJZ4UqkqCj9DGitAm2FSKkUg3zHF5OKL
+ yRsrmjZ9KUbViatw4TO0cS02zX9zJggdcRxkn7/7ZkfClfmtvPKQ0q+jEyH1xljYlLA4
+ tCthEMBN5ftKpuuWWaM68r3N39XAcIUUjCFqFLlT+xVE/X86SWod8jO0Kh4a3UpKGrFJ
+ b++hVO2N327PBjSzolcxCxCvaRNxDEmsnxFvzIDQfACdBpUx2lpnCBObuH5NM3tZCkqp
+ bm2fUNYzE0oFTh7REb48W9e9KBsesdAS8BjZrHhb5H5LAfTaKgWEfddCpJheQf/kJBwr
+ jcVQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzgeaDkSJ8vPLnKlqjeCxS2zpYl7JwVBivhV9v32CKJhm/Rbvc8cPRv1lMrNDqG3YZaXUUz/8Pdrw==@nongnu.org
+X-Gm-Message-State: AFq9FYLr/HnnOWrC9Edq3fZcCOuehqY4PB0XO8btQ7xkfthfl9ojWfvQ
+ /hrWru/QOBYy64NYOnyu8ph0s/SsS6UMUb7WtFLD36aMJY+H95BcM0lZDox1aBrRCCwEA9f1la5
+ L3Nyi+s8jCj32dIG+FtwvJmZOnQm/TIG41NstkeX7iQ==
+X-Gm-Gg: AYBFou2jDYHoKstvJ4VKVjkhV4//pGUQLj7oP643slFO4Z5qXBmJkaKJDWQ4UfkMjxQ
+ YJvtZx4muLIQ2E1APE7zzUf3bhIUzAXtgxqITkBIc4Xkd5V/YOwDjzvrwGSVQkypmVXvLp4PizM
+ Y0wsVvjs4W+m6njiaO+ytyBkoGEtDldlGkk9ibZKLfqCFAFIa0sjaIseCqdXflxmF4SIMLyXPTW
+ runSZQ5wW9IW+E8IqSkCFERpgqKVsUZxLAU5qWD7A03y5kv3SacezcLP0xRRVTYpDFZIQkf2H6w
+ AERRrBpn5T+0w1oTjP1aU6dDZRw71Ls6rfaWjyLyNyOEscYa0pr8kIUQv7t+wcYEtM8ekjGu6sW
+ ZDIZkAhTkXT1Boya2phbEkEzdBowYP+4Q+BG/dEGB0lL+6T9CSBckPIOgC8VAficVoZICGsho1t
+ O5NRAPzEKSvVuJUYGGbDaY
+X-Received: by 2002:a05:690c:c3c6:b0:8b0:9e7c:7b11 with SMTP id
+ 00721157ae682-8b1c68a8d2amr14447187b3.32.1793281891721; Thu, 29 Oct 2026
+ 06:51:31 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: jIoYGtP1B8StKqDHzkq73HEu2TLYJKIQtMZKjI16s7E_1793279638
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20261027120135.53048-1-mohamed@unpredictable.fr>
+ <20261027120135.53048-2-mohamed@unpredictable.fr>
+In-Reply-To: <20261027120135.53048-2-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 Oct 2026 13:51:20 +0000
+X-Gm-Features: AclHuK8t0COkBkibOwBlpJpUCqipNaBjsqh4sKLnlVPeRXXlKZ_LkjWiX_6JckA
+Message-ID: <CAFEAcA8uU2VowVTKhawOYHMChFqKfwxdjY06D5Usgj5yP9aosw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/6] hvf: arm: save/restore SME state only when SME on
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,48 +115,25 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-These paravirtualized devices are relevant to virtualization
-use cases and used by the i440fx/q35 machine boards.
+On Tue, 27 Oct 2026 at 12:01, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>
+> When SME is disabled as part of the CPU configuration, do not restore SME state.
+>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>  target/arm/hvf/hvf.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- hw/i386/vmmouse.c | 1 +
- hw/i386/vmport.c  | 1 +
- 2 files changed, 2 insertions(+)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
-index e289bce8e2e..612e7f7d3b6 100644
---- a/hw/i386/vmmouse.c
-+++ b/hw/i386/vmmouse.c
-@@ -390,6 +390,7 @@ static const TypeInfo vmmouse_info = {
-     .parent        = TYPE_ISA_DEVICE,
-     .instance_size = sizeof(VMMouseState),
-     .class_init    = vmmouse_class_initfn,
-+    .secure        = true,
- };
- 
- static void vmmouse_register_types(void)
-diff --git a/hw/i386/vmport.c b/hw/i386/vmport.c
-index 865e0e70db6..24c4fb27a33 100644
---- a/hw/i386/vmport.c
-+++ b/hw/i386/vmport.c
-@@ -301,6 +301,7 @@ static const TypeInfo vmport_info = {
-     .parent        = TYPE_ISA_DEVICE,
-     .instance_size = sizeof(VMPortState),
-     .class_init    = vmport_class_initfn,
-+    .secure        = true,
- };
- 
- static void vmport_register_types(void)
--- 
-2.56.0
-
+thanks
+-- PMM
 

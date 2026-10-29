@@ -1,159 +1,107 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C36CB606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 15:12:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F6F8606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 15:57:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Xm56vkH9
+	dkim=pass (1024-bit key, unprotected) header.d=mvista.com header.i=@mvista.com header.a=rsa-sha256 header.s=google header.b=YXdQGJdj
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMRnu-0004BE-Lu; Thu, 29 Oct 2026 11:12:35 -0400
+	id 1xMSUZ-0002G4-Us; Thu, 29 Oct 2026 11:56:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMRnl-00048k-Lc
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 11:12:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xMRnh-0002rd-5i
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 11:12:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793286739;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sy6RcJq7kWnzNPatcCz5vMju7T26X8KtMwEXCbitl90=;
- b=Xm56vkH9ATMJMygfPZSg+6GK3F6dQs7YPsYUO98Xep2m+NG+NICizkX3sSRQ6aFxum1tFS
- 2r5qzweZVvntR9s1vJ+llUI80AT507RpAf8Wam+f6LXJQP6VwleF7JeNpCHZ3Pdfknrstd
- mi7fwEqZHv79SYuWjlc8dXp0RGQs8wo=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-647-lR4E_uxDPxGRis0Bj7u-cg-1; Thu,
- 29 Oct 2026 11:12:15 -0400
-X-MC-Unique: lR4E_uxDPxGRis0Bj7u-cg-1
-X-Mimecast-MFC-AGG-ID: lR4E_uxDPxGRis0Bj7u-cg_1793286731
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5CA951956043; Thu, 29 Oct 2026 15:12:09 +0000 (UTC)
-Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 11F131955F08; Thu, 29 Oct 2026 15:11:43 +0000 (UTC)
-Date: Thu, 29 Oct 2026 15:11:41 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>,
- John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1xMSUX-0002FA-5W
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 11:56:37 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1xMSUV-0007Qc-3h
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 11:56:36 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-8ad98c3fb15so21437407b3.2
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 08:56:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mvista.com; s=google; t=1793289393; x=1793894193; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:reply-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=Uc5RrGIjaBleOPi6NAaf7/8Ti1bOWcH1xOjMekYe0MA=;
+ b=YXdQGJdjVZlCH/PC0D8p9QFQ616px68Cz9Csudew9RJkIIVvFoLGfWo6GvJXT+PfC+
+ tWU/tAkMFjZWBchttuH6+P9ajYRAgMedxDTk8+8sL3hf8kHmG3BRKoipJqK/4KHSOlmD
+ lwoWKWVtDy3tV7EEvMPwfjZkK4NC7aHoYwMxc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793289393; x=1793894193;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:reply-to:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=Uc5RrGIjaBleOPi6NAaf7/8Ti1bOWcH1xOjMekYe0MA=;
+ b=nI/ULXkn1U7kvmbfjp4GfKQKPT2jtSPpkeFvd6JCfFq2eiyq+uxcvJBmO733vFWNoY
+ Y8K++FhYczTvIOaJkHb2yjy+6zQD/UnqYzT8hb7RbaxZuYZ0iXx3nuz69Nvi/NaYSmnd
+ /9RmSsZsheiOPSdvWJDn4lb/BkEyx8yF37VUUIy0ZEjaP/JfAiHHq0LZaM03K+rDW3Yl
+ 7ArSHhl56bP+8kfh6qJ2cNEBPOp0RbHBTk1aHVBHZJHHDdXjFb3mlRe/WP0V9ZGNlOy4
+ AhvFRdP09x1onxNM3PnGojgZMBIXwYGaCjIT5MFPDi3OzFNa258cddHMOMbwawLMWC0M
+ gevw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxjxjY/Y8GiboOv5UNXQe4OKuBfRMgjsoXTiuhf9zC7SnetRx86kt1gIkyaQY6f1Fpt+DHpBFkAAA==@nongnu.org
+X-Gm-Message-State: AFq9FYIIbzYC21GdPAGJWqpoVNZXxW0nF3udeLdFaorKgxamIbv6Acb5
+ 5wZDk0qMOFvzRpqPesNT6a8GOxUk+x3W/ltPfHPxRFxSrRdYNUNbQMev38M99eHJKeI=
+X-Gm-Gg: AYBFou0Wsg4dVPA+8sG3EpCfKpbZT7iZtlHqMz5Nzo/a/BaegsulOsUoqhoBppYoYtT
+ BiehRgQ3zfAkuMBljsapwhVa1YTsek9mLjdX2bPK30RnveRGS0cQctQ4taB8CDbuT2+eVacO2G1
+ vdgWkNBlBQ99O6Sgh/g4fB5zSp9+rvaGQDHFBrjc260DAbZFSVy/qY8fwgOg4PYM090zw1Z5D+x
+ p6pvm6S46W2y5qGKQ7xsup03lUCGWvV9TUqfoUvJHtsz/k5tj1u4G8ugSdbf9EdXDiOj8EH8NCW
+ 30QfTYE+h9S95jtdap4nudXKViLH4pKfgtCwRM8wMX5YCo6dwShawHiV649qunonf7/wzPmxIyb
+ qJlNnc2WhcoUlH7qEpYqm43Z4LFQu188/sf2kBOIiN7sAKR9qc/oT3vWHT2I0RO237Z+o8DJmZ3
+ 2kAcBSHz3Ki4jssg0dwIFiUE5pHFU9y7RxIBrYp5o/SWKyNwdULi+Z2ztpp557UoP/4rasjsSan
+ bagzJ3EGR7ZcIeU4FA9fH26IKObe58rpAV7gXaICnkJ6yJbhJE3du9S4dkmOBoDq0yW//suVLSr
+ fLvR6kKtj+Hp7PqTbCjtjbq6sMdP2PyZ3eE=
+X-Received: by 2002:a05:690c:288:b0:8b0:e479:6872 with SMTP id
+ 00721157ae682-8b1b5bcb743mr49623077b3.17.1793289393402; 
+ Thu, 29 Oct 2026 08:56:33 -0700 (PDT)
+Received: from mail.minyard.net ([2001:470:b8f6:1b:2f32:e466:d3ef:5b82])
+ by smtp.gmail.com with ESMTPSA id
+ 00721157ae682-8b19e43e1d2sm46265337b3.5.2026.10.29.08.56.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Oct 2026 08:56:32 -0700 (PDT)
+Date: Thu, 29 Oct 2026 10:56:28 -0500
+From: Corey Minyard <cminyard@mvista.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: Timur Maksimov <gessingate@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, Eric Blake <eblake@redhat.com>,
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jason Wang <jasowangio@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org,
- Alberto Garcia <berto@igalia.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Zhao Liu <zhao1.liu@intel.com>, Jonathan Cameron <jic23@kernel.org>,
- Junjie Cao <junjie.cao@intel.com>, Anisa Su <anisa.su@samsung.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- John Levon <john.levon@nutanix.com>,
- Thanos Makatos <thanos.makatos@nutanix.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-block@nongnu.org,
- linux-cxl@vger.kernel.org, qemu-s390x@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Sergio Lopez <slp@redhat.com>, qemu-arm@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>, qemu-riscv@nongnu.org,
- Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>,
- Xianglai Li <lixianglai@loongson.cn>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Amit Machhiwal <amachhiw@linux.ibm.com>, qemu-ppc@nongnu.org,
- Zhang Chen <zhangckid@gmail.com>, Li Zhijian <lizhijian@fujitsu.com>,
- Alistair Francis <alistair@alistair23.me>,
- Alexander Graf <graf@amazon.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- zhenwei pi <zhenwei.pi@linux.dev>, Ani Sinha <anisinha@redhat.com>,
- Luc Michel <luc@lmichel.fr>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Samuel Tardieu <sam@rfc1149.net>, "Denis V. Lunev" <den@openvz.org>,
- FangSheng Huang <FangSheng.Huang@amd.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Jesper Devantier <foss@defmacro.it>, Aditya Gupta <adityag@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>, Conor Dooley <conor@kernel.org>,
- Sebastian Huber <sebastian.huber@embedded-brains.de>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Jason Herne <jjherne@linux.ibm.com>, Titus Rwantare <titusr@google.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>,
- Peter Xu <peterx@redhat.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Hendrik Brueckner <brueckner@linux.ibm.com>,
- xen-devel@lists.xenproject.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Fam Zheng <fam@euphon.net>,
- Farhan Ali <alifm@linux.ibm.com>, Alex Williamson <alex@shazbot.org>,
- Tao Tang <tangtao1634@phytium.com.cn>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Fabiano Rosas <farosas@suse.de>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- Jiri Pirko <jiri@resnulli.us>, Eric Auger <eric.auger@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v7 54/65] qdev: adjust PciDevfn declared type
-Message-ID: <auNiLX-dsm8XsFG-@redhat.com>
-References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
- <20261020-qom-qapi-v7-54-431a86b02b58@redhat.com>
- <atsxLV5YZo8dr-8G@redhat.com>
- <CAMxuvazd7G_NBOM_c6BxZn5PFSw=XQUHueHqBoQQfpzPPgi9qA@mail.gmail.com>
- <87zevz5h4k.fsf@pond.sub.org> <auC-ilqUJq27neSR@redhat.com>
- <87o6ce47rr.fsf@pond.sub.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Kane Chen <kane_chen@aspeedtech.com>, qemu-arm@nongnu.org,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [PATCH v2 1/6] hw/i2c: add dummy device
+Message-ID: <auNsrMnkbOrtHvE3@mail.minyard.net>
+References: <20261027-aspeed-i2c-nonpkt-fix-v2-0-07deed1dff60@gmail.com>
+ <20261027-aspeed-i2c-nonpkt-fix-v2-1-07deed1dff60@gmail.com>
+ <2629ee8a-e817-4764-a1e3-72e0ccbb978b@kaod.org>
+ <874ie6ku2u.fsf@pond.sub.org>
+ <5d219f231fb1f97c6d90cbef4068e82dff803a18.camel@gmail.com>
+ <87pkwtezsz.fsf@pond.sub.org>
+ <c850cbe681b0328cf3c3f93140132f8363e253e2.camel@gmail.com>
+ <45822012-fd39-4263-a8de-d66a440d1061@kaod.org>
+ <auM__1eixNuS8NMv@mail.minyard.net>
+ <334ca0e7-6b24-4bc3-97ca-03e3762c7feb@kaod.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <87o6ce47rr.fsf@pond.sub.org>
-User-Agent: Mutt/2.4.2 (2026-08-30)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: cOnvmGa3JG0-UUXF_DMcM5Fi47z1QJyfBagPGcOt_fo_1793286731
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
+ micalg=sha-256; boundary="tRhBIqGB9GOQGaB8"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- GB_FAKE_RF=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <334ca0e7-6b24-4bc3-97ca-03e3762c7feb@kaod.org>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=cminyard@mvista.com; helo=mail-yw1-x1131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,137 +112,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Reply-To: cminyard@mvista.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Oct 28, 2026 at 08:13:44AM +0100, Markus Armbruster wrote:
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
-> > On Tue, Oct 27, 2026 at 03:54:03PM +0100, Markus Armbruster wrote:
-> >> Marc-André Lureau <marcandre.lureau@redhat.com> writes:
-> >> 
-> >> > Hi
-> >> >
-> >> > On Fri, Oct 23, 2026 at 2:04 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
-> >> >>
-> >> >> On Tue, Oct 20, 2026 at 02:46:11PM +0400, Marc-André Lureau wrote:
-> >> >> > PciDevfn is a bit special, since it accepts integer and string as
-> >> >> > setter, but only output integer as getter.
-> >
-> > snip
-> >
-> >> >                                                       But I agree we
-> >> > could do better.
-> >> >
-> >> > There are multiple options. We could keep declaring the property as
-> >> > str instead. In this case, the getter should probably return a string
-> >> > for consistency and correctness. This might surprise some existing
-> >> > users though.
-> >> 
-> >> I.e. ditch numeric suppport for numeric addresses, right?
-> >> 
-> >> Incompatible change.  Do we care?
-> >> 
-> >> If we don't, we should be honest about it and mark qom-get unstable.
-> >> 
-> >> > We could introduce new properties like `devfn-str` and `devfn-int`
-> >> > that alias the same value.
-> >> 
-> >> Compatibility break.  If breaking compatibility is okay, I'd rather use
-> >> the opportunity to get rid of cleverness, and go with your first option.
-> >> 
-> >> > We could also introduce a new structured QAPI type.
-> >> 
-> >> What kind of type do you have in mind?
-> >
-> > IMHO the root cause design flaw here was to overload 'addr' as a
-> > way to set both the slot number and function number, as using
-> > one property for two pieces of data is a well known anti-pattern
-> > we caution against.
-> >
-> > IOW, we should have had 'slot' and 'function' as separate properties
-> > from the start.
-> 
-> Fair.
-> 
-> Our modeling of PCI is old and weird.
-> 
-> What we call "pci-device" isn't a device, it's a function, where
-> function 0 sort of stands in for the device.
 
-Mmm, yes, interesting way of looking at it.
+--tRhBIqGB9GOQGaB8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Its "addr" isn't a PCI address, it's the address of the function on its
-> PCI bus, i.e. the tail of a PCI address.
-> 
-> > From a CLI POV, we could easily change 'addr' to mean only the slot
-> > number, since it is always parsed in string format without the
-> > magic (slot << 4) | function encoding. Then add a 'function' prop
-> 
-> In CLI, HMP and QMP string (not integer), value "5" is shorthand for
-> "5.0", and means device 5, function 0.
-> 
-> We could deprecate the .FN part in favor of a new property "function".
-> 
-> Once we drop support for .FN from "addr", its name becomes even more
-> misleading than it always was.
+On Thu, Oct 29, 2026 at 02:04:16PM +0100, C=C3=A9dric Le Goater wrote:
+>=20
+> > > > I also have a question about MAINTAINERS file. If we keep this devi=
+ce,
+> > > > where should I put this file?
+> > >=20
+> > > You can put it under Aspeed for now, since it will be only used by
+> > > Aspeed machines for tests. If it grows, I guess we should move it
+> > > under "I2C and SMBus" if Corey agrees.
+> >=20
+> > This seems pretty generic, so I think it makes more sense under the
+> > I2C directory.  But I'm fine either way.
+>=20
+> Under the I2C directory then. Fine with me. There is nothing specific
+> to aspeed about it.
 
-Yes.
+Sounds good.  The change seems ok.  I'll wait for the changes
+based on comments.
 
-> > The challenge is the impact on QMP with strict typing, as ideally
-> > int format would soley represent the slot number, but today the
-> > int format is encoded (slot << 4) | function.  So anyone relying
-> > on int format in QMP would silently have a semantic change if we
-> > altered what 'addr' means. 
-> 
-> That's a no-go.
-> 
-> > Deprecating 'addr' entirely and adding brand new 'slot' and
-> > 'function' properties would be a significant disruption to
-> > a syntax which has been documented for years (decades).
-> 
-> What about this:
-> 
-> * No change to PCIDevice member @devfn: encodes slot and function as an
->   integer.
-> 
-> * New "pci-device" properties "slot" and "function".  "slot" sets just
->   the slot bits of @devfn, and "function" sets just the function bits.
->   Both default to zero, so specifying just "slot" gives you
->   PCI_DEVFN(slot, 0), which makes sense.
-> 
-> * Deprecate "pci-device" property "addr" for QMP.  We can keep it around
->   for longer than the required grace period if that helps.
-> 
-> * Declare it legacy for CLI and HMP, with no intent to remove it.
+-corey
 
-We can't easily keep it in CLI/HMP, while removing from QMP can we ?
-As long as the property exists on the PCIDevice object, it will be
-accessible everywhere.
+>=20
+> Thanks,
+>=20
+> C.
+>=20
 
+--tRhBIqGB9GOQGaB8
+Content-Type: application/x-pkcs7-signature
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
 
-Perhaps keep it relatively simple and merely deprecate the string
-syntax of 'addr' in QMP. That's the place where it is really ugy.
-Force QMP over to only the integer syntax for 'addr', and leave
-CLI/HMP accepting the (optionally dotted) string syntax.
+MIINIQYJKoZIhvcNAQcCoIINEjCCDQ4CAQExDzANBglghkgBZQMEAgEFADALBgkqhkiG9w0B
+BwGgggpVMIIFXzCCBEegAwIBAgIQD/rh8xorQzw9muFtZDtYizANBgkqhkiG9w0BAQsFADBl
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGln
+aWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJvb3QgRzIwHhcNMTkw
+OTIzMTIyNTMyWhcNMzQwOTIzMTIyNTMyWjBqMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGln
+aUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMSkwJwYDVQQDEyBEaWdpQ2Vy
+dCBBc3N1cmVkIElEIENsaWVudCBDQSBHMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+ggEBAOqxRa06rLwKBvrDb/qQ8RtXfeKA9o0A42oZbLF4GYr4Xdt9JE8r3PJRIOUZD1U3mEln
+4S/aZoS54Q+5Ecs3q2GGT/Z82VeAPLeGvJoT0LS5t/zXeUcbMuDFWgyj33kiesnuusnOWvpI
+SoxN+oBH4oo0+oUiHI65mMjMAlb93x6sabh9kKvHQvHC4x2u7wYv5+NXjnbOhJS/1NjGq+ug
+LMXeldFMz0O5qFIDpn3aQGU0htyJQ2SZyxEqlUrgunsrYj9wgfW7XuhAi2j0y5d9oMT0SuVe
+KFFnQhTEk5B3fq+OBOW0AU2JdW1r929UtRbAr8RpLt05WI2G2RNVVlHYaU0CAwEAAaOCAgQw
+ggIAMB0GA1UdDgQWBBSlYiBQ3LtbV5etI4814lRsqX75TjAfBgNVHSMEGDAWgBTOw0q5mVXy
+uNtgv6l+vVa1lzan1jAOBgNVHQ8BAf8EBAMCAYYwTAYDVR0lBEUwQwYIKwYBBQUHAwIGCCsG
+AQUFBwMEBgorBgEEAYI3CgMEBgorBgEEAYI3FAICBgorBgEEAYI3CgMMBgkqhkiG9y8BAQUw
+EgYDVR0TAQH/BAgwBgEB/wIBADA0BggrBgEFBQcBAQQoMCYwJAYIKwYBBQUHMAGGGGh0dHA6
+Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBFBgNVHR8EPjA8MDqgOKA2hjRodHRwOi8vY3JsMy5kaWdp
+Y2VydC5jb20vRGlnaUNlcnRBc3N1cmVkSURSb290RzIuY3JsMIHOBgNVHSAEgcYwgcMwgcAG
+BFUdIAAwgbcwKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwgYoG
+CCsGAQUFBwICMH4MfEFueSB1c2Ugb2YgdGhpcyBDZXJ0aWZpY2F0ZSBjb25zdGl0dXRlcyBh
+Y2NlcHRhbmNlIG9mIHRoZSBSZWx5aW5nIFBhcnR5IEFncmVlbWVudCBsb2NhdGVkIGF0IGh0
+dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9ycGEtdWEwDQYJKoZIhvcNAQELBQADggEBAHZrbCQC
+o3MAIqR0kekGYrC70EAGRDRq11COufNEXhcpv3YH6BMhUoVinPPNgfo5HPrZAFrLK/KPXYdJ
+dgkASGsINabAfY2ljUaJwKlpIewwjS6KuGEn59MgidaAUPh6lbetIoRsLhCqCzAnX1aL99fj
+CMf4NMWLUC8TqotnnrKNuw4JSjx4fcQs+U5T1bbgnyDx+8ybONuIEDvinHdKDu2VjoECzez2
+y/1IVTPlh57zBfjHJQFqLWzHdou8M+ucdJtr2swXII6s3nkq4pfEn7KnbzMS9quFSuyOGILc
+g/3qVwaHNLM5R+8nB5gPI5+u5Uh56w1i+9Ds1pjYAiTHdeUwggTuMIID1qADAgECAhAImztE
+U4o9odkEsuVgiJc8MA0GCSqGSIb3DQEBCwUAMGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxE
+aWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lD
+ZXJ0IEFzc3VyZWQgSUQgQ2xpZW50IENBIEcyMB4XDTI0MDUwMzAwMDAwMFoXDTI2MDUwNjIz
+NTk1OVowQjEcMBoGA1UEAwwTY21pbnlhcmRAbXZpc3RhLmNvbTEiMCAGCSqGSIb3DQEJARYT
+Y21pbnlhcmRAbXZpc3RhLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJm1
+ZE9brEiQnF7EKiV+aYzHyqPFJ+z1wwdJ4wvNiwUCgXJejBxFj04Z7A62Yx6Sp59vfjbo05eA
+IOyaLOFp3vbMBQAe8Qe4XrFv7wPcKZxwS+sgCuBvNs4NVGKYGjiKZW8WPq9ZcEl5BM8BLMrl
+rchAUHJJcMdcEJUsed6rIB//EtnGOe74/vR1Tz3sN1WzC1Wa9COvcbLgVvWC/o4WysUfC9+f
+9/5JzAiib7U7S/iRigkmEahibZgYKB7y6F1v9hxUwHxfa7GtJ8cv6LtRcPLhAO86GgXMfpgq
+k3fxzQu8uwACpINbmQNLcRzg6mHFDYRK3mFp4puUnHO5EUJ8RgUCAwEAAaOCAbYwggGyMB8G
+A1UdIwQYMBaAFKViIFDcu1tXl60jjzXiVGypfvlOMB0GA1UdDgQWBBQiHrUOKuj1vJe3OXAz
+gOP5Qbl2FTAeBgNVHREEFzAVgRNjbWlueWFyZEBtdmlzdGEuY29tMBQGA1UdIAQNMAswCQYH
+Z4EMAQUBATAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwME
+MIGLBgNVHR8EgYMwgYAwPqA8oDqGOGh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2Vy
+dEFzc3VyZWRJRENsaWVudENBRzIuY3JsMD6gPKA6hjhodHRwOi8vY3JsNC5kaWdpY2VydC5j
+b20vRGlnaUNlcnRBc3N1cmVkSURDbGllbnRDQUcyLmNybDB9BggrBgEFBQcBAQRxMG8wJAYI
+KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBHBggrBgEFBQcwAoY7aHR0cDov
+L2NhY2VydHMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0QXNzdXJlZElEQ2xpZW50Q0FHMi5jcnQw
+DQYJKoZIhvcNAQELBQADggEBADkBdRyx41eUGmsYXBXt3WCsYeDr26rJL7lbx2PvqaZyRCJm
+J9CN2TljF0YHsXSPU+un1RfUlYz+PtcNFIqNuSf3N5fGU0bEpSzXozd/nZ32yWFLkd5CzYyN
+F1xrpbyP2a87jKM0uqEHXZFl7NPiAfEchjFCddciHTOXjN66L+kJ/ZsOoNJLG8yFN401EGew
+Nk8z/hJjWqR7DG0/YWn9h7jQ5SmqkqyhLwTO9s6KoByacWuKpKWSc/DaOuWmROlROrOA1hD8
+0sKqC6jGeLxNpiYzSwBy8qKF0weZdhcHUeO1HOm1csrvWl1UghnlR7SLir3bb5LiesTVvSuR
+Q3aDywAxggKQMIICjAIBATB+MGoxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJ
+bmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xKTAnBgNVBAMTIERpZ2lDZXJ0IEFzc3Vy
+ZWQgSUQgQ2xpZW50IENBIEcyAhAImztEU4o9odkEsuVgiJc8MA0GCWCGSAFlAwQCAQUAoIHk
+MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI2MTAyOTE1NTYy
+OFowLwYJKoZIhvcNAQkEMSIEIBDJpX9j46ZNMJkgNJDBinetyspPcBoN3TgfEHdpwIdhMHkG
+CSqGSIb3DQEJDzFsMGowCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBFjALBglghkgBZQMEAQIw
+CgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcGBSsOAwIHMA0G
+CCqGSIb3DQMCAgEoMA0GCSqGSIb3DQEBAQUABIIBADq0xo+VSh4+O8AmxV+uEJHSFeASSdWM
+VXX/wmGs3E4sFb5F+YHkWDPkKlsmmauAeVVJbqG76Gxgkfvmhcgfox2MCt/1zmM8QEla0NIQ
+EzFAdIycqEv/BzWY109MiP4YzvkXL3VZVKF9IWeGblV1iHhjZxdJ2DJ1zoA3HYJt2jKFubQX
+SeON9FLxFWldrD5ADUAmyqE2DCOI4ZVEocDUGPxZbz+etqqKWNAzZQmlnAVNfVk1PNiFWif/
+997gRgn2qfgCFNje8WsXt25apBcj6qhNLXasgfGLUH8nzgdXmtGatCk9NVQyr6d9PoLm8h9d
+Rr1qM7K5/ndiFaIaVdThSHI=
 
-Mgmt apps like libvirt will have to adapt. Tedious, but actually
-quite simple compared to most deprecations, as the integer syntax
-can already be used with all historical QEMU versions in QMP that
-mgmt apps ever need to deal with. They can unconditionally change
-their code to int syntax and not worry about old/new QEMUs at all.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
-
+--tRhBIqGB9GOQGaB8--
 

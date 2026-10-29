@@ -1,115 +1,110 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0087D606A31A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 19:13:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 227D7606A31A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 19:23:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=qkI4wql6
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=mAsNuP+e
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMVZK-0006cO-UD; Thu, 29 Oct 2026 15:13:46 -0400
+	id 1xMViF-0002MW-BL; Thu, 29 Oct 2026 15:22:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMVZH-0006bf-7i
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 15:13:43 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xMViD-0002Lb-DJ
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 15:22:57 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xMVZD-00052z-Dm
- for qemu-arm@nongnu.org; Thu, 29 Oct 2026 15:13:41 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-8ac9d666d4eso23599127b3.3
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 12:13:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793301218; cv=none;
- d=google.com; s=arc-20260327;
- b=JOWl3hQ1lnVGe19lznh/cSARUafWZq9xbiLC/QuuQsnxkDJbvRr+OyC1Ka3LjCfvRE
- mfmmFkDuI0sRYAXWdiNh0S7MQKHMFvMqY/4gtKMcnmRuGtw6DIdlLr7lfMdm8vq1H21R
- 8wlgpRBlB35UMQ94BNGuLRJnrfEXVhOkWpeYyX29aTeXSff8k3VYEFQ7O0Hj/x86F0TM
- Vp2hIAqCBapHoOE0pYvn1pB74OPwr04PLsA9kydMyv8WrfTK9nWvZFcGsIZQibP5V6mQ
- gnIacDJ6JuwIzzKpelRbAZ+ehzcWon1R6dC/oS4r+Ip4cqWjFWDbvc3rDBznR34LTg0j
- yqLA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=SZEu8mV7OojmVUJlqjYu6aT+DwSudMCQUB6YEP4qbfs=;
- fh=vkhjPQd0qhxXW9ttOW19PAMuiAHnX73/h9IqEPSMzy8=;
- b=PpTduVNSlHVKMjPLbfWpAlhkBgG9Loj8DIG8gxe4TXbHtiKtFpxLBLqqldHJkXjLMN
- twg5dUQ+ijqD0CCmOd0sEPpAGcGhVtsnHH94DKglqQvyl0Kcq0kh7JxXUiRczzB70BkL
- Hb03WCM2aa56iryJtfSwKXYITfq1BfSEH53NsTJ2NJn1AhrWBlAhlijcB7L2RllIwlx+
- JUhyEf6eqiFL+qtoEdpv1TFlsQSqDpsxreyPqyDuxkaiEaicOAz13VM0YPOTcCF+ZfNE
- 8BIlfpEa9TPliKAG3Iq1CZFi7pr74kurS9sAAqct5c2mRejZaUUqgtv2eZG8QIWlAOY2
- YEqw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xMViA-00068r-Kt
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2026 15:22:57 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-48df54150dfso1412225f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2026 12:22:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793301218; x=1793906018; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=SZEu8mV7OojmVUJlqjYu6aT+DwSudMCQUB6YEP4qbfs=;
- b=qkI4wql6xRsrqEwtMjbhS4k+OqD/PSH3SoipQ72F2ok20eyhhu5PbfJWDa+aDhursL
- beXT3zazwM1w15iPIZ0+oW5BN8s9K9orv1mvQdo1FvWLgwGi+zpZm0SlfyhE3lAM2i09
- 4OgbFv2gdE/pEdDCcrCEQ6+Ec5ISIh2Akyl9GFiT3w9oIGkUOz5GigLFfj+E5afM043H
- R+dSMxcW4pU+uoj3qEQhiZQxcqZ9BN2TcIr+YNUhTTD8RCJSmz5K6VPMcgaIrurisn2N
- 875N88bSjVmqw1BVvXAPG+7PO0HjD5tjRLm7I3ZaL50o/6ojizaYweexL5Qy3jylWafw
- mLrg==
+ d=linaro.org; s=google; t=1793301773; x=1793906573; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=DdeaH5sdbARqzOfCM/WjGZQXc7n5RFXvCTy6trPqQKA=;
+ b=mAsNuP+eFy+fMVWqUQIkKgC95MNXP8XjsjvtWXEN+2i3BZ1xyTpZI3Atjw+nAbNXxE
+ ITwz7RWnzYg03ghCJ+axzPY8RCMlvfkFq7797BpK9dsSCpIHW04fyujiMxXCapA6Mqqw
+ qPwkLaMla/N2uP6hGVrk+ikHstjKdHLrQp+oO88HggG97rh3ZHfYs2GtOCuGY0Qh1LE6
+ 5JtZJswN2I17EbKt3rcnfpr70D+R8aFaJd1XQ4HD8f3DYFQ6VGobVRwxjohhT12ndhFa
+ wa2RdXjIcxjOmLsxepvw5br951VJQcY6vh3Yyn5jfIXfsQPjorby+TA10sUw6OWB9dYA
+ zO8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793301218; x=1793906018;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
+ d=1e100.net; s=20260707; t=1793301773; x=1793906573;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=SZEu8mV7OojmVUJlqjYu6aT+DwSudMCQUB6YEP4qbfs=;
- b=ihYu0DZNju40xIpV5QeoZCToiZLsLD3yhLk/AI4eXmkoZGELvuYEzHwij3y1Fs/bA/
- iW/WcjJOJ08IARMG+rRngbKsv4syVVLQ8kk0R7ZflWnc+7wMxVcA9UpqdLU5qsoj7108
- rDABFtrnp0JW6jj1CYqGI8mu9G82U04r5OAmpn15ZLiiL2CYsexrjXH9JeIELweHIivR
- zE3+HV2xddi7CAbUUdJvsPyjtCTBjMU9QJNkWR68koscpSZ9/J1xGFBJBQ6Vkl6G8Qg1
- E5bfWv+52xp5l6oOCD9+48MIZw8pQjnNIslcmyIPDrrlvzwOT7n3e3KNEhggcUaTzneq
- y7vg==
+ bh=DdeaH5sdbARqzOfCM/WjGZQXc7n5RFXvCTy6trPqQKA=;
+ b=qpJcpPbVLqfn7glndHiAcaKjj4yYPH+QI3y9rptL9ByHJjuW6G+Arz95arh+m4DQqu
+ oDB0olJINSlSKmS9B/m9OhEvIbJ2djD6pH5CQEpsJEHjOL3mskkwwpTLDwyhS8+U54Bq
+ eatkVEyZjjxj3XCUdrLYk/T7NlXz6/viUXMS7fYCEIBfFiYf4kTzRugx8QeqhhiUO6HM
+ l0DVprhOYdDO3bvsELiKBDdQALxHnuoVmgcJLfjvtOzfr8wZBRl3asNCgv2mQEqHXMrn
+ sqDGLihVfX5mWbKhs3izWnYMffBNWJ6mWuV9qo4oGf+064tRPE+QLHadXDxTQYOgY59g
+ 52vQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxKKEKH1yWJJLcRLiL4cDtRtaR7zbthXpWiWNfZR2YUAsUk1ClcDw5qlz/U36v7zlMbwi4crMcAHQ==@nongnu.org
-X-Gm-Message-State: AFq9FYL/NKGTI1EYQbJ4d0/XemgIUMgV5bY0gBZH9ut0r1pr8SzBgLo3
- VBpusAUmfVXQ//oRKeheqk7NHkOK7H6MDVIYday5G6847yy114wISXr+7vqpFVjfDaLnj2uJBZA
- +xX43/PH5fBCIhix6Oni2s3qWK3xm1tw1EntiW1GpvA==
-X-Gm-Gg: AYBFou0XTt84/vqK7+MlVelxTDY2XuZbkEQihkGFyjjOKVRHvDlDnu68tS8Kolt/eFK
- nH8eqE+TXfKA+5Cos7dN3kg3XpkE9m+c1eKjzNtbBAyRrHrz1fgzoTTHHEQGO1Mq7pcqYeMgPxD
- KVnSUC5a0juDMWoN+aJw6Xmt9sYpcCOFxbhLbIt+CJpIIuqNwcdmqgQW19G6slQgjqiTbDMmRhg
- grlm+jNSoG7P5CKheOlC0WK6CGOALiFW9gS/Y2Jc4Ku4GZIHAdWcxrKwdNG4cqDYgm0CCHmWHLb
- aPWNWFq1reZ8fX7Dixucn3N+ofLH+SdnYLSRdKq4XQTLRhNRDvh8qiSqoUXiB1RbAF59Z/cDA/Y
- 2xHavO4I1lLubu1DS3JQpE8YLpxIUF+0JXfZTJibhAs9pEiYeKBxPL310CH1luuWCojls/aXAIR
- WmvcEvfIjW/eBoVJYZ79JQ
-X-Received: by 2002:a05:690c:660d:b0:8af:e4ee:a91c with SMTP id
- 00721157ae682-8b1b5bf6460mr35119367b3.41.1793301217835; Thu, 29 Oct 2026
- 12:13:37 -0700 (PDT)
+ AKwUvByvvPpGckvnJa5kR+SIRyqi+HEQLmlAKp81m/pS+gxkDC5SFBTVwZb3AaeeTHxHI4EpRdAKM8WOoQ==@nongnu.org
+X-Gm-Message-State: AFq9FYLHITcD/Bpt5V8zVjnszeEL9S5dyTyeZWh2DWpUu1M8fg0mfzdp
+ VZ6tfpFlWDWIlnU5oeJZxz8mfmnZzsPBJuPdm4p3Gh9xvbkzsOowhwTfoDDVbtY5oCc=
+X-Gm-Gg: AYBFou3F3F/Cwv0PX8ocPUWKdjyiV9YY2kZBzCpy6IDX2bQqvSQWjG5ckcgskJ1XLy6
+ Owuo/wDu5BdtKX1Se34WHVj11oyOLOXqmQFxCxuLvcMFpHgfKPQjlN3o4pR1mEqkqNRzjdNfWzI
+ Z1XdM3NTa2B0J2EES/Zn3RIJrBJCxh0zBvpM3f6l6wckbuLZt9ap7OWML4tVSEQ5bLcfRMcp6YS
+ OIwjyLgnI6hlY2IJiekH50KNbyLzIc80OODSAlwnPYDrlzG/htF0c3A8fwo+T1wNkgbykqHLIix
+ 2Hc9PpMAUnmBf+p7Kd2Rrum6C4cgW4WtIUDjpWufSZ7ch+xgYyq8gN34pqAOCHsKyuN+jOEIWoC
+ ttnVwPbxgButJe5hEaOBhaqbjBEcDgnXS4B5Xi1Wehbuk+mXAXxI4EQv6GFCoGQtuL6ckS5c0Jm
+ XTCWChu1xNCQuBOhywnSnYK4gwmEsSmXgBQucQZuZBZzvJC4P0jreJPSS/04kjT3mKRVifuO5zW
+ 3i3K5I+RIA2jS7ktn/wy/RFDLHvSwmdAGipKw5W4iSCnes7P8qiNuBYXfSJiQS12EpnPC4bEqUv
+ zhri5P82RR7YqNJSACF7J1Y/2DD1
+X-Received: by 2002:a05:6000:2885:b0:488:88ec:59c3 with SMTP id
+ ffacd0b85a97d-48e6e2f2c14mr778348f8f.14.1793301772857; 
+ Thu, 29 Oct 2026 12:22:52 -0700 (PDT)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48e6eb95384sm301834f8f.43.2026.10.29.12.22.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Oct 2026 12:22:52 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 3DE015F898;
+ Thu, 29 Oct 2026 19:22:51 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  qemu-s390x@nongnu.org,  Richard Henderson
+ <richard.henderson@linaro.org>,  Matthew Rosato <mjrosato@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  Eric Farman <farman@linux.ibm.com>,  Chao
+ Liu <chao.liu@processmission.com>,  Tyrone Ting <kfting@nuvoton.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,  Hao Wu
+ <wuhaotsh@google.com>,  Halil Pasic <pasic@linux.ibm.com>,
+ qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 1/8] scripts/checkpatch: validate fixes against
+ origin/master
+In-Reply-To: <e19ba1b4-60c6-47b4-b0b7-71e1be096a92@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Thu, 29 Oct 2026 09:44:39 -0800")
+References: <20261029161310.2065290-1-alex.bennee@linaro.org>
+ <20261029161310.2065290-2-alex.bennee@linaro.org>
+ <c8bc6def-3c86-4fac-a84b-6664d40d5006@oss.qualcomm.com>
+ <8733toa05f.fsf@draig.linaro.org>
+ <e19ba1b4-60c6-47b4-b0b7-71e1be096a92@oss.qualcomm.com>
+User-Agent: mu4e 1.14.4; emacs 30.1
+Date: Thu, 29 Oct 2026 19:22:51 +0000
+Message-ID: <87wlr08g6s.fsf@draig.linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261027120135.53048-1-mohamed@unpredictable.fr>
- <CAFEAcA-=bOxmonNOYC2_1MHDrdof6eciYrehJRDfWx_7kYsJmA@mail.gmail.com>
- <1016C70E-8B1C-4F3F-A19E-59D7A0E66A33@unpredictable.fr>
- <CAFEAcA8Ywq6MZxO5jt4AKay8wjWGLQYxnJ1rMkFjzoF1ppUJ3w@mail.gmail.com>
- <49C40F6F-EE09-4237-83B8-1CE18292DE3C@unpredictable.fr>
-In-Reply-To: <49C40F6F-EE09-4237-83B8-1CE18292DE3C@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Oct 2026 19:13:26 +0000
-X-Gm-Features: AclHuK_ukK5xHPQhT3re5FDOimXNL34x7bT0bR_4OnbyOJLBgKNV4MEce3dgtog
-Message-ID: <CAFEAcA9sXa2DvJqP8VViesX72viaVa2bBqMekG1ZwFswnJ9UvA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/6] hvf: arm: fixes for QEMU 11.2
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,30 +123,44 @@ X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 29 Oct 2026 at 17:33, Mohamed Mediouni <mohamed@unpredictable.fr> w=
-rote:
-> On 29. Oct 2026, at 18:13, Peter Maydell <peter.maydell@linaro.org> wrote=
-:
-> > Do you think we should deprecate the "vmapple" machine type, or do
-> > you hope to resurrect it still?
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
 
-> I do hope to get it resurrected as an optional feature still, but
-> the issue is that it=E2=80=99ll stay (by design) a reverse-engineered mod=
-el.
+> On 10/29/2026 9:26 AM, Alex Benn=C3=A9e wrote:
+>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>=20
+>>> On 10/29/2026 8:13 AM, Alex Benn=C3=A9e wrote:
+>>>> The current check for a referenced fix commit relies on the developer
+>>>> keeping their master branch up to date which is not always grunted. If
+>>>> you create your branches directly from origin/master this will keep
+>>>> failing.
+>>>>
+>>>> Given that origin/master should always be up to date (module the
+>>>> developer eschewing convention) lets use that in the test instead.
+>>>>
+>>>> checkpatch complains about the line lengths but this seems to be
+>>>> standard for the perl script so I didn't try and fix it.
+>>>>
+>>>
+>>> Or... you can use something else as origin, with origin/master not being
+>>> updated, and master as a tracking branch to upstream/master, and in this
+>>> case, this patch doesn't work.
+>>>
+>>> Using master instead of origin/master has the advantage to not hardcode
+>>> what your remotes should be.
+>>=20
+>> origin is the default when you clone a repo. We could get really complex
+>> and query the tracking remote for the current branch. But if your deeply
+>> forked then that obviates the test.
+>>
 >
-> I need to spin a new revision of the patches for that though.
->
-> It will break from time to time and cannot come with an expectation
-> of short-term (as in, anything past 6 months) stability/build-ability.
+> I am aware that origin is the default remote.
+> In my case, I always use "upstream" to reference the original project,
+> and "origin" for my personal fork. As a result, origin/master does not
+> always track upstream/master.
 
-Hmm. If it's going to break every six months or so then I'm not
-sure it's really a good fit for upstream QEMU. As we've seen,
-we haven't really in practice been able to get updates to it
-into the tree particularly quickly, and most downstreams will
-be operating on a slower cadence. If we had a larger group of
-people interested in cooperating on maintaining it upstream
-then that would help, but we don't really seem to have that.
+So master in that case won't be correct either?
 
-thanks
--- PMM
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

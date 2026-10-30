@@ -1,140 +1,170 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 52D53606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 08:12:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 848ED606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 09:02:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=Qvrc6Ldr
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Lt5C8PeK
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMhj2-0004oH-3Z; Fri, 30 Oct 2026 04:12:36 -0400
+	id 1xMiV9-0001tc-Mt; Fri, 30 Oct 2026 05:02:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xMhiy-0004iR-T5; Fri, 30 Oct 2026 04:12:32 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1xMiUV-0001fb-Gk
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 05:01:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xMhiw-0001AH-Mc; Fri, 30 Oct 2026 04:12:32 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=T93rePdigCYKcBNBeVdeJV8iweKFmUDz0Ta0+JrHIqQF7GlNV5oVIhEAlmYL0McHUs+vj1fdRRBPSyXCCndS6lbhXdUw5QIZ2M0DPKqOAscuVVim13pEQvPnqKzniyVIBd0Kg0lHMZNpTnB8nJazFXNsWBSjwJFKPcceNTi+FGpH+3d7whI7bCVCOsyHvlFRQLKayc87wCQ37ybRz4ybck5L7Wjb0o8VjHNZpP9w76oJxqTt98GNzq/oQ7aOPfHew18724pVlfVCSs9vYR7Me4zwWGc0tHXwNSl8dRb/UzThSz7Nouy74P8VzmSeND3rjMlPzCIVJBexUAPbcq5WNw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=t4+Q1iT0BdzT+svdfKGs1elzld7uMy39nme0ELJyhJ8=;
- b=O6S4h8AqX4e6qtFX/Iy2abTRPQGjKY9DWX/Zxhlr5/FK6/lfUdgxzomhoI9xPIKpxQ3PDIQE/WGjAbwc5geBSLBMWrlwj7IPDdsaUF2Xc43504nZz8bkWnr8VqCxscHqwdGr+d8nIq+jvecY4BTeJ2EoubLZdP+CpGCW/zWLOA9K5GNGeWJWVNU9tbiJOMsleaYgh4UjdLw4oYI28Ot3kQ/URFS6WwJZwfFcOgqCXaLb0Cwd8imT5DEZjmaDHfWFLtIS+YPM+Tr1nWS58gdzXSOqJhi2p++pgWnQC+eZ1fZFW8SWAxyOvIAquagct5vUZI00MGKteHZ3OGDs12+sSg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=t4+Q1iT0BdzT+svdfKGs1elzld7uMy39nme0ELJyhJ8=;
- b=Qvrc6LdrgJJ1Alb731nYkM/HUbWYMPx/hd4+qXZX7EsMRUgTu9SRCOtPQRiRVfUcT2Gb5FF1WpeUJNNQv+U+VDAER+eeOZp5Er2lJFhyuQY41Led7dPwswi0ZA/+iWkWXrFxrzWCr7u/iCrr9A7RT/IRF5Kr4D84XyryRqOMCmsn61W/t+q7Rf18PlQq9HWi2jqrAQ6fkLy1RCrmxe/LEE4/2j1LM9Kd7MSfK519XJCba4Ifdej2yZ0rMW/c1N1Y+3SMnW1lUtkuqgTpfZevJacwvrL/j9g+BzPZd1xgYiLVBiWvEcvw5ltrOKDS5EHu4IomnEgp675mtdGPjbIaSw==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by SEZPR06MB7137.apcprd06.prod.outlook.com (2603:1096:101:232::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.4; Fri, 30 Oct
- 2026 08:12:22 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0592.003; Fri, 30 Oct 2026
- 08:12:21 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: Junjie Cao <junjie.cao@linux.dev>, "kraxel@redhat.com"
- <kraxel@redhat.com>, "marcandre.lureau@redhat.com"
- <marcandre.lureau@redhat.com>
-CC: "clg@kaod.org" <clg@kaod.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, Kane Chen <kane_chen@aspeedtech.com>, Troy Lee
- <troy_lee@aspeedtech.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "junjie.cao@intel.com"
- <junjie.cao@intel.com>
-Subject: RE: [PATCH v7 4/8] hw/usb/redirect-server: Announce the exported
- device
-Thread-Topic: [PATCH v7 4/8] hw/usb/redirect-server: Announce the exported
- device
-Thread-Index: AQHdZo5BumtgaWGS+Eqi0U9La8Z+a7cUTh2AgAFw+dA=
-Date: Fri, 30 Oct 2026 08:12:21 +0000
-Message-ID: <SEZPR06MB7362B3F56016BDAA27D089C6FC6D2@SEZPR06MB7362.apcprd06.prod.outlook.com>
-References: <20261028034140.367393-1-jamin_lin@aspeedtech.com>
- <20261028034140.367393-5-jamin_lin@aspeedtech.com>
- <20261029100942.894066-2-junjie.cao@linux.dev>
-In-Reply-To: <20261029100942.894066-2-junjie.cao@linux.dev>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SEZPR06MB7137:EE_
-x-ms-office365-filtering-correlation-id: 1d6ba493-fc08-4699-915d-08df365d85f6
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|376014|1800799024|366016|38070700021|4143699003|56012099006|261009223027099003|261026121527099003|10067099003|22082099003|18002099003;
-x-microsoft-antispam-message-info: zivGO0FqM6ZMaqNAFWTghRpeDFt6i+8tj8Xaw/TDkd4fmMHY0JLAMGgmC3tLwOFuiFxilJeN3AVY2lBnnWVj0j826/nhY98T5dQajWe/T6g1TLm6nGnedGVEKMV3bqHzQfQyMgGBCbiZZp8JkS7gUm5Sj2IP9PCQcCSp4ilBtVwhy4f4+zPZT7UZg+9gyp0JLE8NxCusKr6gpMPQea8EwPkXIKj+0p0Zz/IwSuRqVx8sXBUPCOoklX2JzBpofQVy/G53cMqv8cTalslxDmdFLXFYEKasPvVRgwDAeInjq+VjFMETZmR2CjBn9hdtfptsBcrw8EVAADjXnOQwo6cneLct5WfESn/li8iuqkqao27JQhlUlN00/D8NYwrMVPE11KeVYFuV8sdNDJZH+BdfK+AwTdkj/7qsWF+SnGYgozvVTqOpXZCl0BmXhj2Zy3RNVfcCviZAKrD6AfthiHkGJTYoQ8WeTvnTSJTYfNk/hioFFROD8BKHwQKP5bYdD1YTqvr4uuWZtC3QhsWCVHlg7nOSV0P9zgkdU6WH67ORsf2zUoBriQuVclopZLBx071Bpm6IgAHfwSFH24TDYDYljTLg15TeE/s1kzjiCH75RVngbwT5NGQFo50OpyTlweLxog1iHCqLQt1hlTCngGIY5sx8uWPGYj8eE+BdV1kXmb/mfAP4R7IqdBcNg+m/WY04EnKYWrfH3IUsuAT0LBLS2l3BVJ55a1ePEy7bFVW8XVU=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(38070700021)(4143699003)(56012099006)(261009223027099003)(261026121527099003)(10067099003)(22082099003)(18002099003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?opphy+GVrpPM/A8ZhDQIiwZYO7CHBUjhWRwr8zj1UxvlBlWokjREHi/geyR+?=
- =?us-ascii?Q?RxJ0g1LTmQLck3gjbTD8lZSFvU+5U2iM8MU7HgRG3g23mKqof9kTjmguFUrP?=
- =?us-ascii?Q?aQcFz/97I2Lh8+AzPPliL9MTpbJ22t2mhdM9JiKv4IDxcaYI/KANhV1W33yp?=
- =?us-ascii?Q?bJjgoO7n8sQphun8ZkXoYYprzXEa3p5hzN8Ht5uE7ypIt3yhA23diGR1LnAA?=
- =?us-ascii?Q?WiE2Z2xc6QuXv0p69NkVK6F2QOb17yoBU3De5cbySTvXSCAaFY9qdnx2V2rN?=
- =?us-ascii?Q?MseYQthCeI+JUpFQyPEz4RX2hZlZ7/xx4kfRpZq4ZuMdbXra1+tWLwKcgIAD?=
- =?us-ascii?Q?zgvG6/jEgowUJHVjD+S3ffiaWSvahNWJef85mUsihjlitfEh4P3xAGW+kpk7?=
- =?us-ascii?Q?0tP5+WeW1X/iZsmkXXBT2C0m4iLB9xglLum9MTPGXLzPZtHPUVOXc3HNsQpK?=
- =?us-ascii?Q?bMx78GQ3Ab6RhD3EOBK0cS1IUkqXfwESqKJyCfvg+JjVQ6MCzJGjL+dicC1E?=
- =?us-ascii?Q?y+hom6MiIjdbsW+RbpkOAMXZnKJKNkvqfhwCiIBCFzEj0OvTlr4Q+jeVlo1k?=
- =?us-ascii?Q?wlOFtU6swi6GZgnT7UmbJoqonEM9f1sQu5TL680LK2tOYF1KxBXPYKLuR2+w?=
- =?us-ascii?Q?PczdUvfsYTysdx6TD1dhNBO/BDxsBd3o/ezkjujom8ThZNxpL1bo8iKvk9lr?=
- =?us-ascii?Q?j7BET6m9GuCd5JN8cjNXCdoNLLz4nCwFVMKj4bB48gU6bS0n606TWMU8rF8K?=
- =?us-ascii?Q?+TLbUM4dRSUvMeJZzuZ2iavxNSlo1UVecn01l9Gli2OpUsUnv1SLKhMN6g+d?=
- =?us-ascii?Q?ejX/YwvE1knF0QvMdOhZf1gKfmSGS6d9BYbkF5JgZwLQYuzG/335QuQayWRp?=
- =?us-ascii?Q?ST0oeQvUE+ohkTdyIS0tFeKgr4zjNOvGUec3HfYGurmIo/L71YrR8dUjL4Yq?=
- =?us-ascii?Q?fEA4XXOlMypztRsawJq6MvgfdJ0NbTpvxleO3cptsb0huFP0LChiY+/t6qVl?=
- =?us-ascii?Q?JFEanMkbx0+II1aYoq89LL9WJZFzMO898MLl4LYtRnCWdACjOB9uHkFAmktF?=
- =?us-ascii?Q?IA+KFyD5PdnW8UhQHXJI1kXl2WbacZ4mktJrG4uQIS9os6+1BqfEnS8AwrKu?=
- =?us-ascii?Q?iaXDEv9wyh5Wz9+1dibiPEabDB6qghy7HFLYPvVxSv8tpOmjyrgI9FtRy6mG?=
- =?us-ascii?Q?isIaxlqAXu3FV+/jOfC33ayzoLSqxzBBZ5dhpncD8/E9knIwnEjw8H0i/ERi?=
- =?us-ascii?Q?9/3ouYu9r8aiF7pdyMx8TBmG+K3QNUV9Z0U/yDwcCscQAXX/B85+mRdI/Ffk?=
- =?us-ascii?Q?J1V80imtg3Lrb53tbxNL+/+0dHnljYy5xVvqxJHOXCfYbiSVS2vOhbXCDBt+?=
- =?us-ascii?Q?+Sp8+VcJ7VUUDpYcuhV72ApOp8vlSTCkzaWF3MhzttHnUDNsr6naY19dSvXI?=
- =?us-ascii?Q?gER/RGVqddHVHt0KsnlM8T7puIMz7oXQm60agdjgOdmEM2VwMUN+s6E/+2+K?=
- =?us-ascii?Q?KT8dBLcJ+bbN+QE4JjlL+QHnrJptE9Q9kW5vKIvA9PfZ4pB+vu1rtsTR3UhK?=
- =?us-ascii?Q?DB7KG+q90fv9co3r+4WMd4GqdV2WfnBU6RYT9vHlBxNxHgP5ROzzRS+BSHyl?=
- =?us-ascii?Q?EI5RJZ0hNBcy6E6Pp2cIMylkCDF0SCQVhvbuey7qb2qm+zfxRtML0mWJ7QBE?=
- =?us-ascii?Q?NroGiFuAPO7HhUYE+ZfBrXGax+2XRntRlR+10xnQOCeyHNJ2MqpyTdgn99wN?=
- =?us-ascii?Q?uKKktl0hxQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1xMiUR-0005qA-PC
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 05:01:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793350894;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=z0kKp64FY09dUFk/LW6vDgxjLXPXjA/VzYL6OdfGV/k=;
+ b=Lt5C8PeKwqDOT3rTzylZRUsS4nnYyEUXUFsxYCC1yGtR11N7MBqn8bixqjdEvP6euYgKJL
+ x9oAsv7rfidtdKZTI+/CklMQCJ0+brtjG2iM3NZ2Thzn7iBEypN3u4FnmSP4gTozVSxzC/
+ FhDVVP329EhMArSEf+RrP5QhvSbcvQI=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-513-YV6RdYPEMeedUsJudWX9DQ-1; Fri, 30 Oct 2026 05:01:32 -0400
+X-MC-Unique: YV6RdYPEMeedUsJudWX9DQ-1
+X-Mimecast-MFC-AGG-ID: YV6RdYPEMeedUsJudWX9DQ_1793350892
+Received: by mail-pl1-f198.google.com with SMTP id
+ d9443c01a7336-2ea0fe07201so3799105ad.1
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 02:01:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793350892; x=1793955692;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=z0kKp64FY09dUFk/LW6vDgxjLXPXjA/VzYL6OdfGV/k=;
+ b=fxTGyXIqLZ33wmEAp8SqBc/X28PeQmDuG2yxBw0yD/k0fu+x9kRKPzizAAetUn+kZK
+ lSFvopuQFBxvuLF46i3fAqj6krK6rONiUFf1DMF38yIdLy/EnOj4wmWZDouAetzD6cwc
+ S/aKtJn99MyyHVu+hBGOMvV1ARjIR/kSukCMVP5ZZ90xrpocnd5MjJ+8LSP75CYreJo9
+ eXXSNHXacXLUUANI4fHMN90k138Qc5t3+Gem+cEwxzu8P0MLLMoeI2Q0u/owuSxCcJR/
+ XQSL+H7PkkOyCIOmRRpHQLHeErnGteqwJQMXoQeetgPQAJtx8UVk7Jz1vM7W3aNr0ZcQ
+ oMmQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwKlmFQfhxkA+bT8b1cZJfGLyah8/IGeKugQcvwlJKcatLaODPw3kwj5sXD133wgwewstOCfU9Orw==@nongnu.org
+X-Gm-Message-State: AFq9FYK1ZKyC26j3VMOzh4bTWAAdj8qbxKZmcRUSDaGmrcdlWTtQe8YL
+ vUDfKgsW19GmiWN/PYivi/wqGzuw4aXNMyaPV2G1QapSJukkiofQ2BgUemCcXy/+SbSHxShJhVk
+ 2N8cky/acwcRExaGxiqUBBFqFPCUX+0wm+TQfR4k6gXwr8DwPyJrbrZ9ol67qLdw/IXOT86zVMX
+ To2emIL9bUH5YRVMLzloqLvfMTO67N
+X-Gm-Gg: AYBFou0yORD09YohK9hal2wAmEWtWWM/ZA6m6u6y+OXh28r/LbIpk85soS0re41ZuOK
+ ErGWyqYRMWZ7TdIai0gj5oRVyNpLqTkW/BD9PoFfI25GAUQMGPns9cM9ErEiMQ5nCtG7OS1iEtk
+ qslxcUTU+zPQlgnfottUG+LpTOU1OK0ZPkPU6aXxidc5MFKmSSu4ShXiZ4vKn0YVGAo94uH18AA
+ g19RMGD6OK9aFoEWGIblM8t3ZN/W39b1oqAkFQnHt7BXZDlpJ6FAkNo/gdXL1P0oQ/ddBVrE6S6
+ 1g==
+X-Received: by 2002:a17:90b:4d05:b0:3ad:c482:ae93 with SMTP id
+ 98e67ed59e1d1-3ae897f55f1mr1344411a91.27.1793350891196; 
+ Fri, 30 Oct 2026 02:01:31 -0700 (PDT)
+X-Received: by 2002:a17:90b:4d05:b0:3ad:c482:ae93 with SMTP id
+ 98e67ed59e1d1-3ae897f55f1mr1344360a91.27.1793350890250; Fri, 30 Oct 2026
+ 02:01:30 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1d6ba493-fc08-4699-915d-08df365d85f6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Oct 2026 08:12:21.6867 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1BOxWqAf7kCh5nkU+wkR8hO6s24dhAEDWf9x9Ikxa+wTEo2moWbGnDTETo5Wl4/FwSatYvIU4ZmksCPb3bxVcmlSesHqfZFAzv/7h6cdIcI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB7137
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
+ <20261020-qom-qapi-v7-38-431a86b02b58@redhat.com>
+ <87y0bfa81j.fsf@pond.sub.org>
+In-Reply-To: <87y0bfa81j.fsf@pond.sub.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Fri, 30 Oct 2026 13:01:17 +0400
+X-Gm-Features: AclHuK98dJOvD1KtoAB9Z7J96maRIl_qDeI5itEWow68bU5XOo3fY2yUQSfcL4E
+Message-ID: <CAMxuvaya+Tihnwjf8JNjhmhBMwE7XpTF8zPL7tbfb8DFiAV62g@mail.gmail.com>
+Subject: Re: [PATCH v7 38/65] qom: convert scalar properties to QAPI-aware
+ registration
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>, 
+ John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>, Eric Blake <eblake@redhat.com>, 
+ David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jason Wang <jasowangio@gmail.com>, 
+ Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org, 
+ Alberto Garcia <berto@igalia.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, Jonathan Cameron <jic23@kernel.org>, 
+ Junjie Cao <junjie.cao@intel.com>, Anisa Su <anisa.su@samsung.com>, 
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Jagannathan Raman <jag.raman@oracle.com>, 
+ John Levon <john.levon@nutanix.com>,
+ Thanos Makatos <thanos.makatos@nutanix.com>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-block@nongnu.org,
+ linux-cxl@vger.kernel.org, 
+ qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Sergio Lopez <slp@redhat.com>, 
+ qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Chao Liu <chao.liu@processmission.com>, qemu-riscv@nongnu.org, 
+ Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>, 
+ Xianglai Li <lixianglai@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>, 
+ Nicholas Piggin <npiggin@gmail.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Amit Machhiwal <amachhiw@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ Zhang Chen <zhangckid@gmail.com>, Li Zhijian <lizhijian@fujitsu.com>, 
+ Alistair Francis <alistair@alistair23.me>, Alexander Graf <graf@amazon.com>, 
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>, zhenwei pi <zhenwei.pi@linux.dev>, 
+ Ani Sinha <anisinha@redhat.com>, Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Samuel Tardieu <sam@rfc1149.net>, "Denis V. Lunev" <den@openvz.org>, 
+ FangSheng Huang <FangSheng.Huang@amd.com>, Tyrone Ting <kfting@nuvoton.com>, 
+ Hao Wu <wuhaotsh@google.com>, Keith Busch <kbusch@kernel.org>, 
+ Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
+ Aditya Gupta <adityag@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>, 
+ Conor Dooley <conor@kernel.org>,
+ Sebastian Huber <sebastian.huber@embedded-brains.de>, 
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Jason Herne <jjherne@linux.ibm.com>, Titus Rwantare <titusr@google.com>, 
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony PERARD <anthony@xenproject.org>, 
+ Peter Xu <peterx@redhat.com>, Chinmay Rath <rathc@linux.ibm.com>, 
+ Hendrik Brueckner <brueckner@linux.ibm.com>, xen-devel@lists.xenproject.org, 
+ Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Fam Zheng <fam@euphon.net>, 
+ Farhan Ali <alifm@linux.ibm.com>, Alex Williamson <alex@shazbot.org>, 
+ Tao Tang <tangtao1634@phytium.com.cn>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Fabiano Rosas <farosas@suse.de>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>, 
+ Jiri Pirko <jiri@resnulli.us>, Eric Auger <eric.auger@redhat.com>, 
+ Laurent Vivier <lvivier@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: A5mrbyjm-d1Z8AAbhhkJb5c1K0vFxCkMZ21xGKJcoJM_1793350892
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,46 +176,415 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Junjie
+Hi
 
-> Subject: Re: [PATCH v7 4/8] hw/usb/redirect-server: Announce the exported
-> device
->=20
-> Hi Jamin,
->=20
-> On Wed, Oct 28, 2026 at 03:41:45AM +0000, Jamin Lin wrote:
-> > +    /* The parser calls these directly, so they must not be NULL. */
-> > +    s->parser->filter_reject_func =3D usbredir_server_filter_reject;
->=20
-> start_iso_stream_func, stop_iso_stream_func and iso_packet_func are still
-> NULL at the end of the series, and the parser accepts those messages with=
-out
-> any capability.
->=20
-> I exported usb-audio to a client QEMU (qemu-xhci, Debian guest) and ran
-> aplay there. Once the guest picks the streaming alt setting, ep_info list=
-s the
-> isochronous endpoint, redirect.c sends start_iso_stream, and the exportin=
-g
-> QEMU segfaults on a NULL call in usbredirparser_do_read().
->=20
-> Could the server install these and refuse the stream until it supports
-> isochronous transfers?
->=20
-> Thanks,
-> Junjie
+On Fri, Oct 30, 2026 at 12:48=E2=80=AFPM Markus Armbruster <armbru@redhat.c=
+om> wrote:
+>
+> Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
+>
+> > Reviewed-by: Amit Machhiwal <amachhiw@linux.ibm.com>
+> > Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> How did you create this patch?  It looks almost mechanical.
 
-Thanks for the review and suggestion.
-I will implement isochronous transfers and add a separate patch to support =
-it.
+Repeated grep / multi-cursor in zed iirc
 
-Jamin
+>
+> It misses a few conversions, almost certainly in code added since you
+> made this patch.  I can take care of them.
+
+Not surprising after several months.
+
+> [...]
+>
+> > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> > index 1d91667fb880..bc178482b309 100644
+> > --- a/accel/kvm/kvm-all.c
+> > +++ b/accel/kvm/kvm-all.c
+> > @@ -24,6 +24,7 @@
+> >  #include "qemu/config-file.h"
+> >  #include "qemu/error-report.h"
+> >  #include "qapi/error.h"
+> > +#include "qapi/qapi-builtin-type-infos.h"
+> >  #include "hw/pci/msi.h"
+> >  #include "hw/pci/msix.h"
+> >  #include "hw/s390x/adapter.h"
+>
+> Not needed; we already include "qapi/qapi-type-infos-common.h".
+>
+> [...]
+>
+> > diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+> > index 6d421b990cef..64228a620e69 100644
+> > --- a/hw/acpi/ich9.c
+> > +++ b/hw/acpi/ich9.c
+> > @@ -26,6 +26,7 @@
+> >
+> >  #include "qemu/osdep.h"
+> >  #include "qapi/error.h"
+> > +#include "qapi/qapi-builtin-type-infos.h"
+> >  #include "qapi/visitor.h"
+> >  #include "hw/pci/pci.h"
+> >  #include "migration/vmstate.h"
+>
+> Missing:
+>
+>                                        PM_REG_FIELD(acpi_pci_hotplug.root=
+),
+>                                        object_property_allow_set_link,
+>                                        OBJ_PROP_LINK_STRONG);
+>    -    object_class_property_add(oc, ACPI_PM_PROP_GPE0_BLK, "uint32",
+>    +    object_class_property_add_qapi(oc, ACPI_PM_PROP_GPE0_BLK, &uint32=
+_type_info,
+>                                   ich9_pm_get_gpe0_blk,
+>                                   NULL, NULL, NULL);
+>         object_class_property_add_uint8_ptr(oc, ACPI_PM_PROP_S3_DISABLED,
+>
+> [...]
+>
+> > diff --git a/hw/xen/xen-pvh-common.c b/hw/xen/xen-pvh-common.c
+> > index cca37202ffb2..7b4fd933a8fb 100644
+> > --- a/hw/xen/xen-pvh-common.c
+> > +++ b/hw/xen/xen-pvh-common.c
+> > @@ -9,6 +9,7 @@
+> >  #include "qemu/osdep.h"
+> >  #include "qemu/error-report.h"
+> >  #include "qemu/units.h"
+> > +#include "qapi/qapi-builtin-type-infos.h"
+> >  #include "qapi/visitor.h"
+> >  #include "hw/core/boards.h"
+> >  #include "hw/core/irq.h"
+> > @@ -413,7 +414,7 @@ void xen_pvh_class_setup_common_props(XenPVHMachine=
+Class *xpc)
+> >
+> >  #define OC_MEMMAP_PROP_BASE(c, prop_name, name)                       =
+    \
+> >  do {                                                                  =
+    \
+> > -    object_class_property_add(c, prop_name "-base", "uint64_t",       =
+    \
+> > +    object_class_property_add_qapi(c, prop_name "-base", &uint64_type_=
+info,\
+> >                                xen_pvh_get_ ## name ## _base,          =
+    \
+> >                                xen_pvh_set_ ## name ## _base, NULL, NUL=
+L); \
+> >      object_class_property_set_description(oc, prop_name "-base",      =
+    \
+> > @@ -422,7 +423,7 @@ do {                                               =
+                       \
+> >
+> >  #define OC_MEMMAP_PROP_SIZE(c, prop_name, name)                       =
+    \
+> >  do {                                                                  =
+    \
+> > -    object_class_property_add(c, prop_name "-size", "uint64_t",       =
+    \
+> > +    object_class_property_add_qapi(c, prop_name "-size", &size_type_in=
+fo, \
+> >                                xen_pvh_get_ ## name ## _size,          =
+    \
+> >                                xen_pvh_set_ ## name ## _size, NULL, NUL=
+L); \
+> >      object_class_property_set_description(oc, prop_name "-size",      =
+    \
+>
+> Use of &size_type_info is not mechanical.  Better to be as mechanical as
+> possible in such a huge patch.
+
+yes, I thought I splitted those appart - I missed some apparently
+
+>
+> [...]
+>
+> > diff --git a/qom/object.c b/qom/object.c
+> > index cc113c0810e7..9f9a2abfa08d 100644
+> > --- a/qom/object.c
+> > +++ b/qom/object.c
+> > @@ -22,10 +22,10 @@
+> >  #include "qapi/string-output-visitor.h"
+> >  #include "qapi/qobject-input-visitor.h"
+> >  #include "qapi/forward-visitor.h"
+> > +#include "qapi/qapi-builtin-type-infos.h"
+> >  #include "qapi/qapi-builtin-visit.h"
+> >  #include "qapi/compat-policy.h"
+> >  #include "qobject/qdict.h"
+> > -#include "qobject/qjson.h"
+>
+> The deletion doesn't belong.
+>
+> >  #include "qemu/id.h"
+> >  #include "qapi/qmp/qerror.h"
+> >  #include "trace.h"
+> > @@ -2449,7 +2449,7 @@ object_property_add_str(Object *obj, const char *=
+name,
+> >      prop->get =3D get;
+> >      prop->set =3D set;
+> >
+> > -    return object_property_add(obj, name, "string",
+> > +    return object_property_add_qapi(obj, name, &str_type_info,
+> >                                 get ? property_get_str : NULL,
+> >                                 set ? property_set_str : NULL,
+> >                                 property_release_data,
+> > @@ -2467,7 +2467,7 @@ object_class_property_add_str(ObjectClass *klass,=
+ const char *name,
+> >      prop->get =3D get;
+> >      prop->set =3D set;
+> >
+> > -    return object_class_property_add(klass, name, "string",
+> > +    return object_class_property_add_qapi(klass, name, &str_type_info,
+> >                                       get ? property_get_str : NULL,
+> >                                       set ? property_set_str : NULL,
+> >                                       NULL,
+> > @@ -2519,7 +2519,7 @@ object_property_add_bool(Object *obj, const char =
+*name,
+> >      prop->get =3D get;
+> >      prop->set =3D set;
+> >
+> > -    return object_property_add(obj, name, "bool",
+> > +    return object_property_add_qapi(obj, name, &bool_type_info,
+> >                                 get ? property_get_bool : NULL,
+> >                                 set ? property_set_bool : NULL,
+> >                                 property_release_data,
+> > @@ -2536,7 +2536,7 @@ object_class_property_add_bool(ObjectClass *klass=
+, const char *name,
+> >      prop->get =3D get;
+> >      prop->set =3D set;
+> >
+> > -    return object_class_property_add(klass, name, "bool",
+> > +    return object_class_property_add_qapi(klass, name, &bool_type_info=
+,
+> >                                       get ? property_get_bool : NULL,
+> >                                       set ? property_set_bool : NULL,
+> >                                       NULL,
+>
+> Missing:
+>
+>    @@ -2929,7 +2930,7 @@ object_class_property_add_bool_ptr(ObjectClass *=
+klass, const char *name,
+>             setter =3D property_class_set_bool_ptr;
+>         }
+>
+>    -    return object_class_property_add(klass, name, "bool",
+>    +    return object_class_property_add_qapi(klass, name, &bool_type_inf=
+o,
+>                                          getter, setter, NULL, (void *)of=
+fset);
+>     }
+
+Yes, new APIs I missed in updated version
+
+>
+> > @@ -2945,8 +2945,8 @@ object_property_add_uint8_ptr(Object *obj, const =
+char *name,
+> >          setter =3D property_set_uint8_ptr;
+> >      }
+> >
+> > -    return object_property_add(obj, name, "uint8",
+> > -                               getter, setter, NULL, (void *)v);
+> > +    return object_property_add_qapi(obj, name, &uint8_type_info,
+> > +                                    getter, setter, NULL, (void *)v);
+> >  }
+> >
+> >  ObjectProperty *
+>
+> Missing:
+>
+>    @@ -2969,7 +2970,7 @@ object_class_property_add_uint8_ptr(ObjectClass =
+*klass, const char *name,
+>             setter =3D property_class_set_uint8_ptr;
+>         }
+>
+>    -    return object_class_property_add(klass, name, "uint8",
+>    +    return object_class_property_add_qapi(klass, name, &uint8_type_in=
+fo,
+>                                          getter, setter, NULL, (void *)of=
+fset);
+>     }
+>
+> > @@ -2986,8 +2986,8 @@ object_class_static_property_add_uint8_ptr(Object=
+Class *klass,
+> >          setter =3D property_set_uint8_ptr;
+> >      }
+> >
+> > -    return object_class_property_add(klass, name, "uint8",
+> > -                                     getter, setter, NULL, (void *)v);
+> > +    return object_class_property_add_qapi(klass, name, &uint8_type_inf=
+o,
+> > +                                          getter, setter, NULL, (void =
+*)v);
+> >  }
+> >
+> >  ObjectProperty *
+> > @@ -3006,8 +3006,8 @@ object_property_add_uint16_ptr(Object *obj, const=
+ char *name,
+> >          setter =3D property_set_uint16_ptr;
+> >      }
+> >
+> > -    return object_property_add(obj, name, "uint16",
+> > -                               getter, setter, NULL, (void *)v);
+> > +    return object_property_add_qapi(obj, name, &uint16_type_info,
+> > +                                    getter, setter, NULL, (void *)v);
+> >  }
+> >
+> >  ObjectProperty *
+>
+> Missing:
+>
+>    @@ -3030,7 +3031,7 @@ object_class_property_add_uint16_ptr(ObjectClass=
+ *klass, const char *name,
+>             setter =3D property_class_set_uint16_ptr;
+>         }
+>
+>    -    return object_class_property_add(klass, name, "uint16",
+>    +    return object_class_property_add_qapi(klass, name, &uint16_type_i=
+nfo,
+>                                          getter, setter, NULL, (void *)of=
+fset);
+>     }
+>
+> > @@ -3047,8 +3047,8 @@ object_class_static_property_add_uint16_ptr(Objec=
+tClass *klass,
+> >          setter =3D property_set_uint16_ptr;
+> >      }
+> >
+> > -    return object_class_property_add(klass, name, "uint16",
+> > -                                     getter, setter, NULL, (void *)v);
+> > +    return object_class_property_add_qapi(klass, name, &uint16_type_in=
+fo,
+> > +                                          getter, setter, NULL, (void =
+*)v);
+> >  }
+> >
+> >  ObjectProperty *
+> > @@ -3067,8 +3067,8 @@ object_property_add_uint32_ptr(Object *obj, const=
+ char *name,
+> >          setter =3D property_set_uint32_ptr;
+> >      }
+> >
+> > -    return object_property_add(obj, name, "uint32",
+> > -                               getter, setter, NULL, (void *)v);
+> > +    return object_property_add_qapi(obj, name, &uint32_type_info,
+> > +                                    getter, setter, NULL, (void *)v);
+> >  }
+> >
+> >  ObjectProperty *
+>
+> Missing:
+>
+>    @@ -3091,7 +3092,7 @@ object_class_property_add_uint32_ptr(ObjectClass=
+ *klass, const char *name,
+>             setter =3D property_class_set_uint32_ptr;
+>         }
+>
+>    -    return object_class_property_add(klass, name, "uint32",
+>    +    return object_class_property_add_qapi(klass, name, &uint32_type_i=
+nfo,
+>                                          getter, setter, NULL, (void *)of=
+fset);
+>     }
+>
+> > @@ -3108,8 +3108,8 @@ object_class_static_property_add_uint32_ptr(Objec=
+tClass *klass,
+> >          setter =3D property_set_uint32_ptr;
+> >      }
+> >
+> > -    return object_class_property_add(klass, name, "uint32",
+> > -                                     getter, setter, NULL, (void *)v);
+> > +    return object_class_property_add_qapi(klass, name, &uint32_type_in=
+fo,
+> > +                                          getter, setter, NULL, (void =
+*)v);
+> >  }
+> >
+> >  ObjectProperty *
+> > @@ -3128,8 +3128,8 @@ object_property_add_uint64_ptr(Object *obj, const=
+ char *name,
+> >          setter =3D property_set_uint64_ptr;
+> >      }
+> >
+> > -    return object_property_add(obj, name, "uint64",
+> > -                               getter, setter, NULL, (void *)v);
+> > +    return object_property_add_qapi(obj, name, &uint64_type_info,
+> > +                                    getter, setter, NULL, (void *)v);
+> >  }
+> >
+> >  ObjectProperty *
+>
+> Missing:
+>
+>    @@ -3152,7 +3153,7 @@ object_class_property_add_uint64_ptr(ObjectClass=
+ *klass, const char *name,
+>             setter =3D property_class_set_uint64_ptr;
+>         }
+>
+>    -    return object_class_property_add(klass, name, "uint64",
+>    +    return object_class_property_add_qapi(klass, name, &uint64_type_i=
+nfo,
+>                                          getter, setter, NULL, (void *)of=
+fset);
+>     }
+>
+> > @@ -3169,8 +3169,8 @@ object_class_static_property_add_uint64_ptr(Objec=
+tClass *klass,
+> >          setter =3D property_set_uint64_ptr;
+> >      }
+> >
+> > -    return object_class_property_add(klass, name, "uint64",
+> > -                                     getter, setter, NULL, (void *)v);
+> > +    return object_class_property_add_qapi(klass, name, &uint64_type_in=
+fo,
+> > +                                          getter, setter, NULL, (void =
+*)v);
+> >  }
+> >
+> >  typedef struct {
+>
+> [...]
+>
+> > diff --git a/target/i386/sev.c b/target/i386/sev.c
+> > index b2c7260c80a4..3a36fa4d0b95 100644
+> > --- a/target/i386/sev.c
+> > +++ b/target/i386/sev.c
+> > @@ -3266,7 +3266,7 @@ sev_snp_guest_class_init(ObjectClass *oc, const v=
+oid *data)
+> >      x86_klass->adjust_cpuid_features =3D sev_snp_adjust_cpuid_features=
+;
+> >      x86_klass->kvm_type =3D sev_snp_kvm_type;
+> >
+> > -    object_class_property_add(oc, "policy", "uint64",
+> > +    object_class_property_add_qapi(oc, "policy", &uint64_type_info,
+> >                                sev_snp_guest_get_policy,
+> >                                sev_snp_guest_set_policy, NULL, NULL);
+> >      object_class_property_add_str(oc, "guest-visible-workarounds",
+>
+> Missing:
+>
+>    @@ -3290,7 +3290,7 @@ sev_snp_guest_class_init(ObjectClass *oc, const =
+void *data)
+>         object_class_property_add_bool(oc, "secure-tsc",
+>                                       sev_snp_guest_get_secure_tsc,
+>                                       sev_snp_guest_set_secure_tsc);
+>    -    object_class_property_add(oc, "tsc-frequency", "uint32",
+>    +    object_class_property_add_qapi(oc, "tsc-frequency", &uint32_type_=
+info,
+>                                   sev_snp_guest_get_tsc_frequency,
+>                                   sev_snp_guest_set_tsc_frequency, NULL, =
+NULL);
+>     }
+>
+> [...]
+>
+
+Are you working on v8 or should I start rebasing?
 
 

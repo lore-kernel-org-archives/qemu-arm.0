@@ -1,86 +1,85 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2898606A31C
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 09:50:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 030B7606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 09:58:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=l9ij8ay8
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=vecf6rY9
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMjFE-0000bl-HE; Fri, 30 Oct 2026 05:49:56 -0400
+	id 1xMjMj-0001QH-8Q; Fri, 30 Oct 2026 05:57:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xMjFC-0000bU-33
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 05:49:54 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xMjMg-0001Pc-7z
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 05:57:38 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xMjFA-00027m-9D
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 05:49:53 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-48e0d1da913so370471f8f.1
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 02:49:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xMjMe-0003D1-9o
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 05:57:37 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4a20bde60a0so3577665e9.3
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 02:57:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793353790; x=1793958590; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=LHbh+1Jnn6glRo1MQNGzjEqhZoDb7S3h6VZGlHJo/Ls=;
- b=l9ij8ay8Cx4Qe1l+LKs65yISiLwEsT8MOzA6Kri0GUOGxlnGr1rXn8Bb9YHlNiTfS3
- cCJwawdmNvUsN8GBEY/FPnYRKVrK+zvD5ySaSFMkgoWJYvNYXQL4DtkXyaYY1tVUaIsE
- PeI+B9VV3rYxLZu/2jHrdzTE/m7Y+qnmirUberGh9FXJGDZJ3CFqy+hSz/X91+QkIENz
- IYuqPiezjRImPXRPocYtJeJo5KLU05IZ/xuMCIbbpcAF6AWk8An3jif9qnVYZxgn8TTm
- 7fuP0BkcCNZbz77rrvuBGIkW+lhyxiwboab/BeUNDc6SEC1YW8+z9bsIc6Hwtyuvz71W
- 64bA==
+ d=linaro.org; s=google; t=1793354253; x=1793959053; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=VfaJ4F1gIGp2Zh2Ykw383pEaDYAt1luMqXttPDnnVxo=;
+ b=vecf6rY91ubjif6BP1mJYYzsHkKd4NdnL5LM+FKylCYXLeG6lxl35BlirJem4dWTMn
+ 0nZO5Spi0VwZSmR7vSHMrd1zalb0/1T+VjofgjaA4rw2ygzsDMzF1Dx2XXBKX2FNPj+a
+ BQkc//p7mdkw3db8udioLlUwUjTGCPG3dNLbXxLPB4/U4PN/tbWYUANuy/2Yr7Y4ZARb
+ A7FCk1aMVD6Pi2l2Fjo9XAUf3E7G0HtkiAuEinreurO6/DvanQ7N2s661GJMrM5vSHEu
+ jsgbr+aHJ8AHmPZ1xaTiaQI+uZOk2snAmY9ht5brUaIenNPKrUh9Hq6ky19bK/EgpMFl
+ U0AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793353790; x=1793958590;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=LHbh+1Jnn6glRo1MQNGzjEqhZoDb7S3h6VZGlHJo/Ls=;
- b=i4c2D95hYpIOB20GwUR1LZ7vjH4rrz7E5Qz2O6+Me+KeHYY1ifWmIQs621Ff2Z+Kdz
- jj7u/PnB7ztrZmy0mxKGDj1rmtIBMt6R2mGqZmdkuIQzN5Wc1Y19xhT+ARQiok9vy0yL
- 3cH+Q68sTPh4phD+DeFQr1OoholAg8ic3IAQ2HnbU87OfGrtYaKil3KCNdnuic0rgj8I
- sgXu2GXdQSkMAfMpNVjudOHOtYbHkxSNb1e6DdwGVS7K1yTZiywfmHtas7Z0jFF/Ql5v
- lal+7Hv9+bLJVH90iKtlmvicZfsK+VLr20+y/aUsC8Zqpi783sSQfMU7QQCQxvoORx1B
- ofCA==
-X-Gm-Message-State: AFq9FYJHlpvSXOElUXUB4mf4jNzx1DfBo9e9patOn1O6l/NhzdJd3KDu
- wXXAMYXC7FULOPEFNYoSfjpAVfXlooesKoS52iijB4V3di3lxsCEhpec8TihghiGVTU9Wg7KRhD
- r011sAzI=
-X-Gm-Gg: AYBFou2eqgXeLGLRJviKZwRsYzfPVzyIC211zFmjPN7RX/bWHp2zq6O5G6PBDWJxXEJ
- 2W/Szz80kYYoScRA0U8LEPEq6kcLuNdEA5MCHY1B/4NjKvir7jAF0hv8LcC2/Q1kB6aPgo7xSi2
- ofgbkJnwK2SXZ/FW8Hp6cZbMH25wLZW3vr+UBuxEivsM4t0lfF8fAJf/ri5oWjKhGEr+NXf1HG0
- L16jGzuA7n/qgMwvdlierV2W4a5jNKRuMshGUvZ5TYxU4VHx06tDyn8Do35UPfwGY71yyKajFZW
- DLEbPi5yLoyJq7gv75b2nUZIM5yALqhTtDnD4RuK3pC5VyHaIuPWe4LQW+GanttlcRBC2ceqaq8
- unespGKAKH4NF3Zq+QfGLtl6+X8uOWI7AxSau47Ak6ruvXOXgr8q9cX9rgTG9w4QbxI/0BZB4dF
- JDjvjhSyY8enx/by2r1pgkH/z941LPrpK/X/dUNsthuu5RQ2YRU62rkpqi3a8IzPe0Diy+eMn5N
- w++zj5auWYM0nzc9eQ/QfrHzfYqYcdVZqT8VPs+DDygj6U9+hoohPCxTMUdlB1eM8Wr02fzU/Vn
- srrWq1KA3/Qf23xdHxpca71yNBKOaUI=
-X-Received: by 2002:a05:6000:4010:b0:48e:55bd:9cdf with SMTP id
- ffacd0b85a97d-48e6e2dd3a4mr4948431f8f.21.1793353790429; 
- Fri, 30 Oct 2026 02:49:50 -0700 (PDT)
-Received: from linaro.org ([2a10:d582:31e:0:d64d:812f:6ff9:48c0])
+ d=1e100.net; s=20260707; t=1793354253; x=1793959053;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=VfaJ4F1gIGp2Zh2Ykw383pEaDYAt1luMqXttPDnnVxo=;
+ b=JqdJVUX5iDf1GlKZFFv2sQiYPcqVllJsamcy42gG8eICNJvcfEOxdoyfbLxlcvKRaD
+ ycdvnJ3wUoTps4otdA6MOa3VAMtlIdjILMxZN1OldQp8ZAq9hca6dW1Dq3Ss5l4DIHRA
+ KnqID2jDyfxcVbPyeSSSAB5NLFjLPH1hDR14W60nuSFci4bdPRxmPriP+SwpduoES24h
+ DW/gj0LsNQNu05gys/nFmu1+xIcL04QXvBVgJZdZAF6M1JD0GN9KpHqrFWNj7WHiVtdz
+ 7aKl2w9Pn+/JyKVPxT9xbOLuYunywWksbPzWZPjCQKMOiQofUgOexDA1QMrR+uL9NrD3
+ 9QuA==
+X-Gm-Message-State: AFq9FYJUoZHL2JZDJZUnmXRdg8o1+keAD7LT+HYr2fE4OHbnbI+1YUP9
+ GT+AdzUDOFZI2sBcjfO90By0tihRDFj5rBGEWYy6NRVIZz5ZvVAci4xrv+GsYGHA+U+W1yr92Xc
+ qTMLLhJk=
+X-Gm-Gg: AYBFou2qL2GGRIuvXrnY+ytIiHv7652ce9DU4WKtw7nSCu6WXpBqPnlmUeLZ+9U7zwC
+ 2a8sTiQ4pEhf9MlMduMFGU84lUSgZwp1jJkpi9iQlxUmTjSNZP8Gd05dWKaR5Z3hUpio0BJbhjm
+ mx0/VZE63xAai5Y0VzW3cubulXuCrK33rqUYjQWje6jRA03cf3P/O9Tdl/03oZe3WDwyfKMyThU
+ VnVEgEy4awHZx1rD+jaX1lNy1JOWg0oOMwBl2i4/on+Wsamq3J6Lbd2rZx8IqCTPWodxBzdCrRD
+ 1Cc6iZjLlxaxnQufRtyQWsEV+/IhPUtrbRi5qrSv3m674F0n2HO6mzJgk2Ykq66DTppqMVoxrBt
+ b8O02AxqCGX34oDRp8EQSe1wRriHnfPVW0DkZHxWOWeW8Xqd4wRkh+5xjuiW/9JaV10+vQti4ku
+ yBXswZdXR+4GScGEDIGPtWiVLhOeRY1fUFoekYolXUybVKZrXvnfBND2yEnNDUaft/0WASAcHd1
+ XUB+q6xnC7/QUtenMQbxKzCiSDOgYpBXZNN/v2ibnFjYCcSMgJvujzSqfQy2Cn0WBoVOSdTSX+T
+ Dv6DZxSjRZk84l1+oP9XE2LbHF+/8h1H5tDQH4BUZnrvFPZj+HMyp5unVHNNia0XUw6TPrYhxGN
+ pqTl3DCLBEwmbwjLcY+6Yn8KzVTl9T9ydl37z0W9Ct71NUEYR6r6gAtc=
+X-Received: by 2002:a05:600c:8183:b0:4a1:fc0a:8b75 with SMTP id
+ 5b1f17b1804b1-4ac183d1507mr28928855e9.24.1793354252936; 
+ Fri, 30 Oct 2026 02:57:32 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e71b8bd8esm2177654f8f.42.2026.10.30.02.49.49
+ 5b1f17b1804b1-4aa81a896ecsm132444005e9.9.2026.10.30.02.57.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2026 02:49:50 -0700 (PDT)
-Date: Fri, 30 Oct 2026 09:49:48 +0000
-From: Jim MacArthur <jim.macarthur@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org
-Subject: Re: [PATCH] target/arm: Get HVC UNDEF cases for Secure mode right
-Message-ID: <auRoPIM25ZVH4Smb@linaro.org>
-References: <20261030092815.573973-1-peter.maydell@linaro.org>
+ Fri, 30 Oct 2026 02:57:32 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+ Bin Meng <bin.meng@processmission.com>
+Subject: [PATCH] hw/arm: Deprecate Nuvoton quanta-gsj board model
+Date: Fri, 30 Oct 2026 09:57:31 +0000
+Message-ID: <20261030095731.581512-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261030092815.573973-1-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42a.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,100 +98,68 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Oct 30, 2026 at 09:28:15AM +0000, Peter Maydell wrote:
-> In the pre_hvc helper, we have a "bool secure = false" and a FIXME
-> comment that we should use the actual Secure state. This is a
-> signpost to the fact that we're not getting the UNDEF cases right.
-> Specifically, we get most of them correct but are missing the ones
-> related to Secure state:
-> 
->  * For A64: HVC must UNDEF at EL1 if EL2 is not enabled in the
->    current Security state
-> 
->  * For v8 A32/T32, HVC must UNDEF in Secure state, if EL2 is not
->    enabled in the current Security state
-> 
->  * For v7, HVC must UNDEF in Secure state
-> 
-> The v7 requirement is identical to the v8 A32/T32 one, since
-> there is no Secure EL2 in v7.
-> 
-> This fixes a bug where HVC should have UNDEFed but instead trapped
-> when in Secure state with Secure EL2 disabled.  The bug is unlikely
-> to affect real-world code, because only test code puts itself in a
-> situation where HVC should UNDEF and then executes HVC and requires
-> it to UNDEF.
-> 
-> This was noticed by Coverity, because the "if (secure && ...)"
-> check was dead code.
-> 
-> CID: 1689834
-> Cc: qemu-stable@nongnu.org
-> Fixes: 35979d71c401 ("target-arm: A64: Emulate the HVC insn")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/tcg/op_helper.c | 21 ++++++++++++++-------
->  1 file changed, 14 insertions(+), 7 deletions(-)
-> 
-> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-> index 6a673e5ae6e..3d3c850a198 100644
-> --- a/target/arm/tcg/op_helper.c
-> +++ b/target/arm/tcg/op_helper.c
-> @@ -1295,8 +1295,6 @@ void HELPER(pre_hvc)(CPUARMState *env)
->  {
->      ARMCPU *cpu = env_archcpu(env);
->      int cur_el = arm_current_el(env);
-> -    /* FIXME: Use actual secure state.  */
-> -    bool secure = false;
->      bool undef;
->  
->      if (arm_is_psci_call(cpu, EXCP_HVC)) {
-> @@ -1306,6 +1304,8 @@ void HELPER(pre_hvc)(CPUARMState *env)
->          return;
->      }
->  
-> +    /* Note that we have already UNDEFed HVC from EL0 at translation time */
-> +
->      if (!arm_feature(env, ARM_FEATURE_EL2)) {
->          /* If EL2 doesn't exist, HVC always UNDEFs */
->          undef = true;
-> @@ -1316,12 +1316,19 @@ void HELPER(pre_hvc)(CPUARMState *env)
->          undef = env->cp15.hcr_el2 & HCR_HCD;
->      }
->  
-> -    /* In ARMv7 and ARMv8/AArch32, HVC is undef in secure state.
-> -     * For ARMv8/AArch64, HVC is allowed in EL3.
-> -     * Note that we've already trapped HVC from EL0 at translation
-> -     * time.
-> +    /*
-> +     * In ARMv7 and ARMv8/AArch32, HVC is undef in Secure state if
-> +     * EL2 is not enabled in the current security state (which is
-> +     * always for Secure in v7, as Secure EL2 doesn't exist there).
-> +     *
-> +     * For ARMv8/AArch64, HVC is undef at EL1 if EL2 is not enabled in
-> +     * the current security state.
-> +     *
-> +     * Because we've already dealt with "EL2 not implemented" above,
-> +     * arm_is_el2_enabled() is effectively always true here in NonSecure,
-> +     * and we don't need to explicitly also check for secure/non-secure.
->       */
-> -    if (secure && (!is_a64(env) || cur_el == 1)) {
-> +    if (!arm_is_el2_enabled(env) && (!is_a64(env) || cur_el == 1)) {
->          undef = true;
->      }
->  
-> -- 
-> 2.43.0
+The latest OpenBMC release as of June 2026 no longer supports the
+quanta-gsj board model (as noted in docs/system/arm/nuvoton.rst);
+support was removed by OpenBMC back in 2023:
+https://github.com/openbmc/openbmc/commit/ab5062cf6f562ad0c844570ba1ea0089961848ca
 
-Looks good to me
+If OpenBMC don't care about this model any more, it's unlikely to
+have many users.  Deprecate it, with the intention of deletion after
+the usual two-release period.
 
-Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I don't insist on deprecating this if the Nuvoton maintainers
+think it's still useful. But this is a "hello, are you paying
+attention" call, since you didn't respond when I asked in
+code review on a different patchset :-)
+---
+ docs/about/deprecated.rst | 10 ++++++++++
+ hw/arm/npcm7xx_boards.c   |  1 +
+ 2 files changed, 11 insertions(+)
+
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index dab47b6ca38..c579342b312 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -287,6 +287,16 @@ The machine never got fully implemented and can only show the firmware prompt.
+ Given the incomplete state and slow progress on improvements, it might get
+ removed again without replacement.
+ 
++``quanta-gsj`` Arm machine (since 11.2)
++'''''''''''''''''''''''''''''''''''''''
++
++The ``quanta-gsj`` machine models a system with a Nuvoton SoC
++intended for use as a baseband management controller in a server.
++Support for this machine type was dropped from the OpenBMC project
++in 2023. If OpenBMC no longer care about this hardware, the QEMU
++model is unlikely to have many users, so we are deprecating it.
++Users should consider one of the other Nuvoton-based board models.
++
+ 
+ Backend options
+ ---------------
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 9c526a26839..ec4b530986b 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -496,6 +496,7 @@ static void gsj_machine_class_init(ObjectClass *oc, const void *data)
+     mc->init = quanta_gsj_init;
+     mc->auto_create_sdcard = true;
+     mc->default_ram_size = 512 * MiB;
++    mc->deprecation_reason = "No longer supported by OpenBMC";
+ };
+ 
+ static void gbs_bmc_machine_class_init(ObjectClass *oc, const void *data)
+-- 
+2.43.0
 
 

@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8DAC606A31A
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E3157606A31C
 	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 13:16:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=XxtcqMdQ
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=TwFes3kM
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMmRx-00018b-MR; Fri, 30 Oct 2026 09:15:17 -0400
+	id 1xMmRz-0001G0-Gr; Fri, 30 Oct 2026 09:15:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xMmRs-0000wF-UN
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xMmRx-00018Y-NP
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xMmRq-0005PK-QB
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:12 -0400
+ id 1xMmRv-0005Pn-J4
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793366110;
+ s=mimecast20190719; t=1793366114;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gnbgHXpVmzu9H9r8MAAWf/5moNjJNccjfQF3zoxtSPw=;
- b=XxtcqMdQuRez70qytwQlRpEjW+7/C54QHKnJ7IbUOG8rjDboOCIeDZAZfHaYRu+5MnJtk7
- VcaOSFrciSVYkHe0XYsqPdn2hKZVjf6ne5BWZanz+0hSJnz7mZyBz0pzChytI5abx8tu22
- c9F8AuZFyTjJp7fiL5h3+OWkLnkdmNA=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=8cxputGmZ3JXZXRm5sHq/Fjnsxhk83VtPil5rs77aNw=;
+ b=TwFes3kM7YSS/KfNftL3fdyPShpTJAosZiuOw4UtkzyOJZStTNeZzpRiSIX+v9tBp85Yad
+ YgcV+B/4WsZcWcdP01xflfEJI7JJGaPnFvaJK3es5A9AyiQCrApgg0NV8Kg2cL3ag2l6zi
+ oobF9DlNIoyl/6AtSdQd8Eigygp4/cs=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-lkQVPcfvPki9EGwF7_1d5g-1; Fri,
- 30 Oct 2026 09:15:06 -0400
-X-MC-Unique: lkQVPcfvPki9EGwF7_1d5g-1
-X-Mimecast-MFC-AGG-ID: lkQVPcfvPki9EGwF7_1d5g_1793366103
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-527-Bg953bgqOjaQ8RdG2tVCpQ-1; Fri,
+ 30 Oct 2026 09:15:10 -0400
+X-MC-Unique: Bg953bgqOjaQ8RdG2tVCpQ-1
+X-Mimecast-MFC-AGG-ID: Bg953bgqOjaQ8RdG2tVCpQ_1793366108
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 77FD21955F26; Fri, 30 Oct 2026 13:15:03 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 857BD1956058; Fri, 30 Oct 2026 13:15:08 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A0C121956088; Fri, 30 Oct 2026 13:14:58 +0000 (UTC)
+ id BD9871956088; Fri, 30 Oct 2026 13:15:03 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, shaju.abraham@nutanix.com,
@@ -58,27 +58,27 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  alireza.sanaee@huawei.com
 Cc: armbru@redhat.com,
 	mbawa@redhat.com
-Subject: [PATCH v4 for-11.2 09/10] target/arm: Directly store cpu probe
- failure error
-Date: Fri, 30 Oct 2026 14:13:17 +0100
-Message-ID: <20261030131406.461599-10-eric.auger@redhat.com>
+Subject: [PATCH v4 for-11.2 10/10] target/arm/kvm: Improve error handling on
+ scratch vcpu probe
+Date: Fri, 30 Oct 2026 14:13:18 +0100
+Message-ID: <20261030131406.461599-11-eric.auger@redhat.com>
 In-Reply-To: <20261030131406.461599-1-eric.auger@redhat.com>
 References: <20261030131406.461599-1-eric.auger@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: oqpuMS7ATwChbttndZ0cHhOhWY5TJIydHtVRGWimTmQ_1793366103
+X-Mimecast-MFC-PROC-ID: dRoYO59oKxWSut2RjMTCGg4hJFXxh-QUeUaFqxNwcEc_1793366108
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 5
 X-Spam_score: 0.5
 X-Spam_bar: /
 X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -99,115 +99,186 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-In case *_arm_host_cpu_features() fails, we currently
-record that state in cpu->host_cpu_probe_failed to later
-report the error on realize().
+Pass an error handle to both kvm_arm_create_scratch_host_vcpu()
+and kvm_arm_get_host_cpu_features(). This allows to improve the
+error reporting on kvm_arm_set_cpu_features_from_host().
 
-Replace the boolean by an error handle to allow
-more relevant error reports.
+If any, the error is stored in the new cpu->host_cpu_probe_err
+field and further propagated on realize().
+
+In arm_gic_cap_kvm_probe() call path we just pass a NULL error handle
+to kvm_arm_create_scratch_host_vcpu because we don't care about the
+failure nature and just want to revert to emulated versions if it
+fails.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h           |  5 +++--
- target/arm/cpu.c           | 10 ++++++++--
- target/arm/hvf/hvf.c       |  3 ++-
- target/arm/kvm.c           |  3 ++-
- target/arm/whpx/whpx-all.c |  3 ++-
- 5 files changed, 17 insertions(+), 7 deletions(-)
+ target/arm/kvm_arm.h |  3 ++-
+ target/arm/kvm.c     | 40 ++++++++++++++++++++++++++++------------
+ 2 files changed, 30 insertions(+), 13 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 5c5f551dac..dae79539b5 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1075,10 +1075,11 @@ struct ArchCPU {
-     /* Uniprocessor system with MP extensions */
-     bool mp_is_up;
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index e7c40fb003..9c7e7f654a 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -105,6 +105,7 @@ struct kvm_vcpu_init;
+  * @init: filled in with the necessary values for creating a host
+  * vcpu. If NULL is provided, will not init the vCPU (though the cpufd
+  * will still be set up).
++ * @errp: Error handle
+  *
+  * Create a scratch vcpu in its own VM of the type preferred by the host
+  * kernel (as would be used for '-cpu host'), for purposes of probing it
+@@ -114,7 +115,7 @@ struct kvm_vcpu_init;
+  * false on failure (and fdarray and init are not valid).
+  */
+ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+-                                      struct kvm_vcpu_init *init);
++                                      struct kvm_vcpu_init *init, Error **errp);
  
--    /* True if we tried kvm_arm_host_cpu_features() during CPU instance_init
-+    /*
-+     * Set if we tried *_set_cpu_features_from_host() during CPU instance_init
-      * and the probe failed (so we need to report the error in realize)
-      */
--    bool host_cpu_probe_failed;
-+    Error *host_cpu_probe_err;
+ /**
+  * kvm_arm_destroy_scratch_host_vcpu:
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index f9c7577460..b66eb4f6c2 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -62,6 +62,7 @@ typedef struct ARMHostCPUFeatures {
+     uint32_t target;
+     uint32_t sve_vq_supported;
+     const char *dtb_compatible;
++    Error *probe_err;
+ } ARMHostCPUFeatures;
  
-     /* QOM property to indicate we should use the back-compat CNTFRQ default */
-     bool backcompat_cntfrq;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index aba45b66f8..a9fe92affd 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1736,6 +1736,10 @@ static void arm_cpu_finalizefn(Object *obj)
+ static ARMHostCPUFeatures arm_host_cpu_features;
+@@ -104,13 +105,14 @@ static int kvm_arm_vcpu_finalize(ARMCPU *cpu, int feature)
+ }
  
-     g_hash_table_destroy(cpu->cp_regs);
+ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+-                                      struct kvm_vcpu_init *init)
++                                      struct kvm_vcpu_init *init, Error **errp)
+ {
+     int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
+     int max_vm_pa_size;
  
-+    if (cpu->host_cpu_probe_err) {
-+        error_free(cpu->host_cpu_probe_err);
-+    }
-+
-     QLIST_FOREACH_SAFE(hook, &cpu->pre_el_change_hooks, node, next) {
-         QLIST_REMOVE(hook, node);
-         g_free(hook);
-@@ -1838,12 +1842,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-      * then it's possible that might have failed in the initfn, but
-      * this is the first point where we can report it.
-      */
--    if (cpu->host_cpu_probe_failed) {
-+    if (cpu->host_cpu_probe_err) {
-         if (!kvm_enabled() && !hvf_enabled() && !whpx_enabled()) {
-             error_setg(errp, "The 'host' CPU type can only be used with KVM, HVF or WHPX");
-+            error_free(cpu->host_cpu_probe_err);
-         } else {
--            error_setg(errp, "Failed to retrieve host CPU features");
-+            error_propagate(errp, cpu->host_cpu_probe_err);
+     kvmfd = qemu_open_old("/dev/kvm", O_RDWR);
+     if (kvmfd < 0) {
++        error_setg_errno(errp, errno, "Failed to open /dev/kvm");
+         goto err;
+     }
+     max_vm_pa_size = ioctl(kvmfd, KVM_CHECK_EXTENSION, KVM_CAP_ARM_VM_IPA_SIZE);
+@@ -121,6 +123,7 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+         vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
+     } while (vmfd == -1 && errno == EINTR);
+     if (vmfd < 0) {
++        error_setg_errno(errp, errno, "Failed to create the scratch VM");
+         goto err;
+     }
+ 
+@@ -140,6 +143,7 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+ 
+     cpufd = ioctl(vmfd, KVM_CREATE_VCPU, 0);
+     if (cpufd < 0) {
++        error_setg_errno(errp, errno, "Failed to create the scratch VCPU");
+         goto err;
+     }
+ 
+@@ -153,12 +157,16 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+ 
+         ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, &preferred);
+         if (ret < 0) {
++            error_setg_errno(errp, errno,
++                             "Failed to get the preferred KVM target");
+             goto err;
          }
-+        cpu->host_cpu_probe_err = NULL;
+         init->target = preferred.target;
+     }
+     ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
+     if (ret < 0) {
++        error_setg_errno(errp, errno,
++                         "Failed to initialize the scratch VCPU");
+         goto err;
+     }
+ 
+@@ -312,13 +320,19 @@ static uint32_t kvm_arm_sve_get_vls(int fd)
+     return vls[0] & MAKE_64BIT_MASK(0, ARM_MAX_VQ);
+ }
+ 
+-static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
++/**
++ * kvm_arm_get_host_cpu_features:
++ * @ahcf: host CPU feature struct to populate
++ * @errp: error handle
++ *
++ * Identify the feature bits corresponding to the host CPU by creating a
++ * scratch VM/vCPU and querying its ID registers.
++ *
++ * On failure, @ahcf->target is QEMU_KVM_ARM_TARGET_NONE and *errp is set
++ * On success, @ahcf->target is set to a valid KVM target.
++ */
++static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf, Error **errp)
+ {
+-    /* Identify the feature bits corresponding to the host CPU, and
+-     * fill out the ARMHostCPUClass fields accordingly. To do this
+-     * we have to create a scratch VM, create a single CPU inside it,
+-     * and then query that CPU for the relevant ID registers.
+-     */
+     int fdarray[3];
+     bool sve_supported;
+     bool el2_supported;
+@@ -330,6 +344,7 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     ahcf->dtb_compatible = "arm,armv8";
+ 
+     if (!kvm_enabled()) {
++        error_setg(errp, "KVM is not enabled");
          return;
      }
  
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 4b947e9ba5..2f2a46644d 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1287,7 +1287,8 @@ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
-              * We can't report this error yet, so flag that we need to
-              * in arm_cpu_realizefn().
-              */
--            cpu->host_cpu_probe_failed = true;
-+            error_setg(&cpu->host_cpu_probe_err,
-+                       "failed to retrieve host CPU features");
-             return;
-         }
+@@ -371,7 +386,7 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+         features |= 1ULL << ARM_FEATURE_PMU;
      }
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b4b20c5dc2..f9c7577460 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -538,7 +538,8 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ 
+-    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
++    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init, errp)) {
+         return;
+     }
+ 
+@@ -502,6 +517,7 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     kvm_arm_destroy_scratch_host_vcpu(fdarray);
+ 
+     if (err < 0) {
++        error_setg(errp, "Failed to read some host CPU ID registers");
+         return;
+     }
+ 
+@@ -528,7 +544,8 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     CPUARMState *env = &cpu->env;
+ 
+     if (!arm_host_cpu_features.dtb_compatible) {
+-        kvm_arm_get_host_cpu_features(&arm_host_cpu_features);
++        kvm_arm_get_host_cpu_features(&arm_host_cpu_features,
++                                      &arm_host_cpu_features.probe_err);
+     }
+ 
+     cpu->kvm_target = arm_host_cpu_features.target;
+@@ -538,8 +555,7 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
           * We can't report this error yet, so flag that we need to
           * in arm_cpu_realizefn().
           */
--        cpu->host_cpu_probe_failed = true;
-+        error_setg(&cpu->host_cpu_probe_err,
-+                   "failed to retrieve host CPU features");
+-        error_setg(&cpu->host_cpu_probe_err,
+-                   "failed to retrieve host CPU features");
++        cpu->host_cpu_probe_err = error_copy(arm_host_cpu_features.probe_err);
          return;
      }
  
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 024d18df04..ded42c980b 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -767,7 +767,8 @@ void whpx_arm_set_cpu_features_from_host(ARMCPU *cpu)
-              * We can't report this error yet, so flag that we need to
-              * in arm_cpu_realizefn().
-              */
--            cpu->host_cpu_probe_failed = true;
-+            error_setg(&cpu->host_cpu_probe_err,
-+                      "failed to retrieve host CPU features");
-             return;
-         }
+@@ -2674,7 +2690,7 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
+ {
+     int fdarray[3];
+ 
+-    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
++    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL, NULL)) {
+         return;
      }
+ 
 -- 
 2.53.0
 

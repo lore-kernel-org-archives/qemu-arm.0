@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DA18606A31E
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 13:15:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EF916606A31D
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 13:15:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=YOwUfRd5
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=VPco/lDU
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMmRu-00011n-UH; Fri, 30 Oct 2026 09:15:15 -0400
+	id 1xMmRr-0000vr-NS; Fri, 30 Oct 2026 09:15:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xMmRp-0000rN-Et
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xMmRn-0000lR-8x
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xMmRn-0005Ot-PZ
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:09 -0400
+ id 1xMmRl-0005Ni-6R
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 09:15:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793366107;
+ s=mimecast20190719; t=1793366104;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SDRnyZJOF/BglrkgN/ZDKrqt82uGjI3c0tID3Y2DFrA=;
- b=YOwUfRd5x/vP+ZFggWrqrjbxXo0JN2hKzt2ThBljzGCQmY/8bfNpg7FV95X1tyJ/oRDX7P
- C6aRzs/thc55bz1lD7UaDZLmNeqP2fFPLTEHt3J3u0OqhqiqGUW0S4bFuMM5HXUThMg/cA
- 86XcIv8b8wFBcyuByhshxlnoFYtAELI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=xpX3xF8MXLyKesrJ7VBWfEtLSwO7znLpH2V6i5/1DNA=;
+ b=VPco/lDUyGURtaGQLY31ULmBsQLVTpATmlbFb43UR6lI11scHPjeIuo4uUQFvN8hXpWGHK
+ XAsWLXMZBGtA3QaaKhv80iTLXVZH680rw4YCt6WeaTljZjp9Rx5S/S4oCz1JK6Wj8wt5qB
+ s0teydVIclednVM9XkMyruI7gpov3Qw=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-158-GXb15PtPN0KOcpe3E-1MMg-1; Fri,
- 30 Oct 2026 09:14:55 -0400
-X-MC-Unique: GXb15PtPN0KOcpe3E-1MMg-1
-X-Mimecast-MFC-AGG-ID: GXb15PtPN0KOcpe3E-1MMg_1793366093
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-377-nz8itfLnMCKo7CZyDbiTbg-1; Fri,
+ 30 Oct 2026 09:15:00 -0400
+X-MC-Unique: nz8itfLnMCKo7CZyDbiTbg-1
+X-Mimecast-MFC-AGG-ID: nz8itfLnMCKo7CZyDbiTbg_1793366098
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 13E7318009C0; Fri, 30 Oct 2026 13:14:53 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 454F71955DDA; Fri, 30 Oct 2026 13:14:58 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3AAF51956088; Fri, 30 Oct 2026 13:14:48 +0000 (UTC)
+ id 710F41956088; Fri, 30 Oct 2026 13:14:53 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, shaju.abraham@nutanix.com,
@@ -58,28 +58,29 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  alireza.sanaee@huawei.com
 Cc: armbru@redhat.com,
 	mbawa@redhat.com
-Subject: [PATCH v4 for-11.2 07/10] target/arm/kvm: Introduce
- kvm_arm_vcpu_prepare_init_features helper
-Date: Fri, 30 Oct 2026 14:13:15 +0100
-Message-ID: <20261030131406.461599-8-eric.auger@redhat.com>
+Subject: [PATCH v4 for-11.2 08/10] hw/arm/virt: Make sure virt_get_caches()
+ keeps on reading CLIDR_EL1 as 0
+Date: Fri, 30 Oct 2026 14:13:16 +0100
+Message-ID: <20261030131406.461599-9-eric.auger@redhat.com>
 In-Reply-To: <20261030131406.461599-1-eric.auger@redhat.com>
 References: <20261030131406.461599-1-eric.auger@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: ieIwpbVNWOs-txrPI_q_y2cXVfiqA87w_cbSXCae3MA_1793366093
+X-Mimecast-MFC-PROC-ID: zRo0SLpooWflLrkvZRA2-vAWDR5ow5LTOsZHJ6eAjpE_1793366098
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,97 +99,59 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Factorize the code that initializes the kvm init features from the
-cpu settings in a helper. Use it in kvm_arch_init_vcpu(). Soon it will
-be used by another function.
+In KVM mode, virt_get_caches() currently gets a zero value for the
+CLIDR_EL1 register. This is due to the fact CLIDR is never read from
+host. This is a bug.
 
-The only change in the code relates to the check of kvm_state. The
-future caller won't have the VM created when calling the helper and
-for this caller it is OK ignoring PSCI version setting.
+Soon we will initialize all writable isar.idreg[] from host and this
+includes CLIDR_EL1. However, we cannot directly fix the initialization,
+first because it would change the way caches are exposed to guest in
+DT/ACPI descriptions and because some host values would be rejected
+by the current QEMU code, especially in the case host has a unified
+L1 cache which is currently not supported and triggers the following
+error: "Unified type is not implemented at level 1" error.
+
+So this issue will be fixed separately.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Khushit Shah <khushit.shah@nutanix.com>
 Reviewed-by: Gustavo Romero <gromero@redhat.com>
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
 Reviewed-by: Mohammadfaiz Bawa <mbawa@redhat.com>
----
- target/arm/kvm.c | 50 ++++++++++++++++++++++++++++--------------------
- 1 file changed, 29 insertions(+), 21 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 86a4d2a6b1..b4b20c5dc2 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2008,34 +2008,18 @@ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
-     return 0;
- }
+---
+
+v1 -> v2:
+- fix the commit msg and improved comment (Gustavo)
+---
+ hw/arm/virt.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0d56197dac..a80c60f3fa 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -338,6 +338,21 @@ unsigned int virt_get_caches(const VirtMachineState *vms, CPUCoreCaches *caches)
+     ARMISARegisters *isar = &armcpu->isar;
+     uint32_t clidr = GET_IDREG(isar, CLIDR);
  
--int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
-+/* Determine init features for this CPU */
-+static void kvm_arm_vcpu_prepare_init_features(ARMCPU *cpu)
- {
--    int ret;
--    uint64_t mpidr;
--    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUState *cs = CPU(cpu);
-     CPUARMState *env = &cpu->env;
--    uint64_t psciver;
- 
--    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
--        error_setg(errp, "KVM is not supported for this guest CPU type");
--        return -EINVAL;
--    }
--
--    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_CORTEX_A53 ||
--        cpu->kvm_target == QEMU_KVM_ARM_TARGET_CORTEX_A57) {
--        warn_report_once("Using the cortex-a53 and cortex-a57 CPU types "
--                         "with KVM is deprecated. Use the max or host CPU "
--                         "types instead.");
--    }
--
--    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
--
--    /* Determine init features for this CPU */
-     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
-+
-     if (cs->start_powered_off) {
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
-     }
--    if (cpu->psci_version != QEMU_PSCI_VERSION_0_1 &&
-+    if (cpu->psci_version != QEMU_PSCI_VERSION_0_1 && cs->kvm_state &&
-         kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
-         /*
-          * Versions >= v0.2 are backward compatible with v0.2
-@@ -2059,6 +2043,30 @@ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
-     if (cpu->has_el2 && kvm_arm_el2_supported()) {
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
-     }
-+}
-+
-+int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
-+{
-+    int ret;
-+    uint64_t mpidr;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    uint64_t psciver;
-+
-+    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
-+        error_setg(errp, "KVM is not supported for this guest CPU type");
-+        return -EINVAL;
++    /*
++     * Commit f669de70011 ("hw/arm/virt: add cache hierarchy to device tree")
++     * read the CLIDR value from the isar array. However, in KVM mode, we failed
++     * to initialize that register value from host and the resulting bug is that
++     * we have always read 0.
++     *
++     * Soon we will initialize all writable isar.idreg[] from host, including
++     * CLIDR_EL1 but we will need to handle compat properly and also extend the
++     * support to unified L1 cache. For now do not pretend we have something
++     * different from 0.
++     */
++    if (kvm_enabled()) {
++        clidr = 0;
 +    }
 +
-+    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_CORTEX_A53 ||
-+        cpu->kvm_target == QEMU_KVM_ARM_TARGET_CORTEX_A57) {
-+        warn_report_once("Using the cortex-a53 and cortex-a57 CPU types "
-+                         "with KVM is deprecated. Use the max or host CPU "
-+                         "types instead.");
-+    }
-+
-+    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
-+
-+    kvm_arm_vcpu_prepare_init_features(cpu);
- 
-     /* Do KVM_ARM_VCPU_INIT ioctl */
-     ret = kvm_arm_vcpu_init(cpu);
+     for (int cache_level = 1; cache_level <= CLIDR_CTYPE_MAX_CACHE_LEVEL;
+          cache_level++) {
+         uint8_t ctype =
 -- 
 2.53.0
 

@@ -1,85 +1,85 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D7C6606A31C
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8286B606A31C
 	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 19:45:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=H5CNRolB
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=pmE27pA7
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMsWE-0006Ku-DK; Fri, 30 Oct 2026 15:44:07 -0400
+	id 1xMsVp-00066G-7T; Fri, 30 Oct 2026 15:43:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMsVj-00063w-82
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:35 -0400
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+ id 1xMsVg-00063W-CV
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:34 -0400
+Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMsVh-0000Ah-Po
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:35 -0400
-Received: by mail-ot1-x32b.google.com with SMTP id
- 46e09a7af769-847ac7ccd85so814279a34.3
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 12:43:33 -0700 (PDT)
+ id 1xMsVe-00008w-4x
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:32 -0400
+Received: by mail-oo1-xc33.google.com with SMTP id
+ 006d021491bc7-6aa9606ddadso853093eaf.0
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 12:43:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793389412; x=1793994212; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793389407; x=1793994207; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=oyaQfeYT5wXmSWJB7DEMxmJHMERAlVWYZeH8XtA2gq0=;
- b=H5CNRolBz4jwg1teTrOm2VJOJ0AXhFF9gFmmEUkZ4rwLVGUJvXX/l5J6WER4qMOmG6
- ut57ChJpBvetJD3xSo/1WOujdMNHLUIc+0n+aLdZhG6D0Lj8AQj/h6vofaYUvrcJZcEp
- 06dtb+j6gc3sktFjI5Ax2wNMt6pkq0t7WxuzAmPrvq9H6ge+JIL8zdKi1lLTHQxplRye
- 9E1bA2Ba003p9qfYYNMPCTP20tP7kKBvnAsyzKRzVOCeOdRwh0qmTp3kQ66SFZYWgO3N
- o1plJEBAWbcj7d/B7qpG+ZX7dJ9YULxvU/MJQnNID3/E44wFqvs2FMDtuZjpqlq0hNVR
- 5Rog==
+ bh=4TPiWxPcL0oaR5SpRTfp9lcMqH99uPLgLl4P4JCSLM0=;
+ b=pmE27pA7k3tHO1njZqkKRh2H1J6v5l/KzoICJbq7yRQXAm/Qi9ZkoX+hHc3nXBBY1w
+ Y0/uK83gORvt09Bps9W7NYXBgFc/AFOnzJPLgEPsUK9V+8CbyTn/PK3/wRb24Xm/2f0s
+ noJVSxWIiyCfpv/1qdYKH+lrDZovTw9xS7WqZ+fhbHcTVBAxpB9YRd2Qz2mt8RxhhIK9
+ 0ynDRPO+kgiJvEV+TQISCujUm0QqfCebgl7kTBw6q+ynDVmGGTtXBozlZHci1sVUqaom
+ domLv29vMxbfAGCnr47kQKqndXvG+IZ2tbj7FkeIAb9ALI6moyUF2kKoLuSaJPLu3hmW
+ Nklw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793389412; x=1793994212;
+ d=1e100.net; s=20260707; t=1793389407; x=1793994207;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=oyaQfeYT5wXmSWJB7DEMxmJHMERAlVWYZeH8XtA2gq0=;
- b=LusXncYIE6oCNZ75qIKzyOPf/aldKhkxgyW81tvwLHtlR0qDg3T4djStC16FmIOpZT
- b/5vSlof9A9eprHt1aTpgfWK3FBkolh4kgS1wC5s+ljiOZwyIP8BljnTiqMKRT0WvMJR
- TcILZRJDhME1sINl0haErTzwGrKGQ9GmOHOUPp4qwnLULkizWegKhP6iV/0C3u5SURy3
- BwVRpeZtyeP8ew3bfCjhHwaxWtceT0FnU+vCcTPMy1US6Qh2OE3mJ8lEZ4uY1te+y5MO
- K6AR1COJ24gTJ/J/FbkZGT/vc9yTxuojesiyQA86lIQ4AiCIobaW2j73zVIFXhjrNqOp
- wcvw==
-X-Gm-Message-State: AFq9FYIl9YGRGOiZ+C580gN7cnhyN0ivab/ihTOCauae8xO1PjLF8ExM
- CteigoxMDlrsce0yuLKNYMpwCDCZ/GGwns5Xm/lScS12r5OdtpJTtNokAKlo42iJlj0MKwHv1Tm
- pqk5j
-X-Gm-Gg: AYBFou1K/aJfZpaMZVBYjt06jkheDqGDlQ60qRSbedLwnD1Wacr49QdFBuATk4jTJNT
- Krv0PhJzJ1SSNulWYoA66LVZSNTtQbjBoMmyCr7HQw1r7vF5V5erxOwfPXfKoVeXD+4sdRdpnkn
- Z5lwz3yZfEq23w2FnoqH70xhpYQJpk0hsec+5oaiaZal4/drDfyhGR3uoCyhhxFMJpUPOMr/A8M
- FVVS4A5n7TydJkXUBlx+aStcBdEZlNBuq7uI38PJS0Aa616pwHoocMSNTxT6+J65fJ/EA+FVb6i
- Xr4rOJ7BI2mOgGKv5ce260UH9jkN1w0NN/xInUoalr7B6vUq9ISUsR+OGJmHUr4dNZKFiPfhFAZ
- ZGWQzZrzhy1FssyH2F4ZpIxFayUAd8FEaGdg+aDTj8LjoTUIJHpxfozocSzDH7nKcAp275ROKYK
- VPwXw/2kU4e0BpuDLTi23Owz6geKUqkVEZ7CUA22NISx+qU2Y6upZi8jfl9a7y75Uab8Cb9gkzh
- sbxPDjOvuRtrS9sEVbJFyh9iD7wX7gT/2uGmr2vOFUbjVMSc2v3wvmk8y9eZoelULeGqWZKp6Mz
- kdsIji+8r+B9w2VyLZzG8W8ATkEWA9UQcv0=
-X-Received: by 2002:a05:6830:2317:b0:81c:a8c5:633e with SMTP id
- 46e09a7af769-85d363b8959mr2446586a34.11.1793389412514; 
- Fri, 30 Oct 2026 12:43:32 -0700 (PDT)
+ bh=4TPiWxPcL0oaR5SpRTfp9lcMqH99uPLgLl4P4JCSLM0=;
+ b=SXWUFhniZYrnl6B1RPubBYvJ8dqDgK+1q/foNb+a0YfM4X9Dh4xVWWJXcwIJhJ7B2e
+ Mj7Le84jYLnrRWJdqDweu68dAezX7K/pGgzVRSFjgPqlrUvzG2h1n88BuwUTEjccyxaX
+ uPrDpVnwjWmWHDkSuFEPq9KScW9dfOwvvv3dwmMmJ7Uc0txrjJgLFwsoECniMJD2Qfv/
+ t/dR/L4biOj7zezZhyttyePxVyz6icjxQscU5pnuLYAOKZVBYVZusBXEc329SY9YPAwn
+ yE4QOLQD6SUDYwlZlAOsZqc/6XA3u4MnUVg4OfCUZwPGUiNMYDm9SeYo5RJM2dCKfGEi
+ JKIA==
+X-Gm-Message-State: AFq9FYLyy/OtumSFVAtnnTV/oL17hfI6hGTW6nH3Ulsg3oM+ObfHKHzi
+ gyPjnCZEfqBwvwvMyzOZvCcHjv5hz9e7OZqEJkXHW6cafdYONmjQbfIEuTDGgmkSIN8Q0LSsGCO
+ ucWgy
+X-Gm-Gg: AYBFou3cZ5LIWR0FYekUN7VWaUM30KHetk90XdP5QXJ5P+tMtzAw0zJKvJWBLt2XDgh
+ LnH9IKa38etT+BhYwPOSZukdJ7kJ3ZrMh0c8feiIHALZFQW2Og57RZ0CzMJ69p7KQPbru7niEB6
+ bUZLSMN65mgAdaDklKq1dsqZR90FHUnkC0NAcY+DBYHUATgfTURdzVvMijq4r6WRBSMbY0HPq1P
+ 6wYcev7eQ0yhIga9/74P7O6PhSnflaPErgPl3c9GLKMROo4jdgMHIu3XEW5v4vDgdUxLD2trmwE
+ tTmb/PPp/owg+A6Z2H6wWtw/wZaEvJwh8WF2NbuDq6ii4L6AR8+gYyAD28LSza/vjuV3483dKCU
+ 1YqxEOYgQ6ILrM/LmDqxelGqchmeGWrBZJiucfJxrVaJWdmOsnKeP5zTmW1zn2W6wpUMHnelBjO
+ 4Fyk51978xK/wOuFeSkaWOH64bOvYxkZ1rECClCnExWVZPq5RDlBr/W9gykNkSpvjrY+jPg3umG
+ yxXWngdzSnlRKBE2dXcdleykdTbeod5u3XqN21rKOiqemcy0pOEbTFT7W8putAocg3b4CGeAxcO
+ b3bPnsvucHSFt7pUUc3ywUaPNF7cIjOGvMs=
+X-Received: by 2002:a05:6820:814:b0:6c1:f38e:7053 with SMTP id
+ 006d021491bc7-714f24f8d11mr2469476eaf.3.1793389407600; 
+ Fri, 30 Oct 2026 12:43:27 -0700 (PDT)
 Received: from stoup ([2607:fb90:5e62:412b:1381:b0c1:1339:9c82])
  by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-85d351e77c8sm2654768a34.2.2026.10.30.12.43.31
+ 46e09a7af769-85d351e77c8sm2654768a34.2.2026.10.30.12.43.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2026 12:43:32 -0700 (PDT)
+ Fri, 30 Oct 2026 12:43:27 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 9/9] target/arm: Use tcg_gen_goto_jc3_i64 for aa64 branches
-Date: Fri, 30 Oct 2026 14:43:18 -0500
-Message-ID: <20261030194318.319310-10-richard.henderson@linaro.org>
+Subject: [PATCH 5/9] target/arm: Split out gen_indirect_branch
+Date: Fri, 30 Oct 2026 14:43:14 -0500
+Message-ID: <20261030194318.319310-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261030194318.319310-1-richard.henderson@linaro.org>
 References: <20261030194318.319310-1-richard.henderson@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c33;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc33.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,32 +106,160 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Assuming FEAT_BTI hasn't needed a page-table lookup to
-determine the BTYPE for the destination, we can compute
-the tbflags for the target.  Pass all that to goto_jc3.
+Use this instead of DISAS_JUMP.  Existing indirect branches
+now end the TB with DISAS_NORETURN.  Share the code with
+gen_goto_tb when use_goto_tb is false.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ target/arm/tcg/translate-a64.c | 51 +++++++++++++++++-----------------
+ 1 file changed, 26 insertions(+), 25 deletions(-)
 
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index edbf67b03c..4a56fa70b7 100644
+index 4289b65fdd..c8d1251f13 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -566,8 +566,11 @@ static bool gen_indirect_branch(DisasContext *s)
- {
-     if (s->ss_active) {
-         gen_step_complete_exception(s);
--    } else {
-+    } else if (s->tbflags_invalid) {
-         tcg_gen_lookup_and_goto_ptr();
+@@ -562,6 +562,17 @@ static void gen_goto_tb_int(DisasContext *s, unsigned tb_slot_idx, int64_t diff)
+     tcg_gen_exit_tb(s->base.tb, tb_slot_idx);
+ }
+ 
++static bool gen_indirect_branch(DisasContext *s)
++{
++    if (s->ss_active) {
++        gen_step_complete_exception(s);
 +    } else {
-+        tcg_gen_goto_jc3_i64(cpu_pc, tcg_constant_i64(s->tbflags.flags2),
-+                             s->tbflags.flags);
++        tcg_gen_lookup_and_goto_ptr();
++    }
++    s->base.is_jmp = DISAS_NORETURN;
++    return true;
++}
++
+ static void gen_goto_tb(DisasContext *s, unsigned tb_slot_idx, int64_t diff)
+ {
+     if (use_goto_tb(s, s->pc_curr + diff)) {
+@@ -569,12 +580,7 @@ static void gen_goto_tb(DisasContext *s, unsigned tb_slot_idx, int64_t diff)
+         s->base.is_jmp = DISAS_NORETURN;
+     } else {
+         gen_a64_update_pc(s, diff);
+-        if (s->ss_active) {
+-            gen_step_complete_exception(s);
+-        } else {
+-            tcg_gen_lookup_and_goto_ptr();
+-            s->base.is_jmp = DISAS_NORETURN;
+-        }
++        gen_indirect_branch(s);
      }
-     s->base.is_jmp = DISAS_NORETURN;
-     return true;
+ }
+ 
+@@ -1921,8 +1927,7 @@ static bool trans_BR(DisasContext *s, arg_r *a)
+ {
+     set_btype_for_br(s, a->rn);
+     gen_a64_set_pc(s, cpu_reg(s, a->rn));
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static bool trans_BLR(DisasContext *s, arg_r *a)
+@@ -1937,8 +1942,7 @@ static bool trans_BLR(DisasContext *s, arg_r *a)
+     tcg_gen_mov_i64(cpu_reg(s, 30), link);
+ 
+     set_btype_for_blr(s);
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static bool trans_RET(DisasContext *s, arg_r *a)
+@@ -1950,8 +1954,7 @@ static bool trans_RET(DisasContext *s, arg_r *a)
+     } else {
+         gen_a64_set_pc(s, target);
+     }
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static TCGv_i64 auth_branch_target(DisasContext *s, TCGv_i64 dst,
+@@ -1987,8 +1990,7 @@ static bool trans_BRAZ(DisasContext *s, arg_braz *a)
+     dst = auth_branch_target(s, cpu_reg(s, a->rn), tcg_constant_i64(0), !a->m);
+     set_btype_for_br(s, a->rn);
+     gen_a64_set_pc(s, dst);
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static bool trans_BLRAZ(DisasContext *s, arg_braz *a)
+@@ -2009,8 +2011,7 @@ static bool trans_BLRAZ(DisasContext *s, arg_braz *a)
+     tcg_gen_mov_i64(cpu_reg(s, 30), link);
+ 
+     set_btype_for_blr(s);
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static bool trans_RETA(DisasContext *s, arg_reta *a)
+@@ -2028,8 +2029,7 @@ static bool trans_RETA(DisasContext *s, arg_reta *a)
+     } else {
+         gen_a64_set_pc(s, dst);
+     }
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static bool trans_BRA(DisasContext *s, arg_bra *a)
+@@ -2042,8 +2042,7 @@ static bool trans_BRA(DisasContext *s, arg_bra *a)
+     dst = auth_branch_target(s, cpu_reg(s,a->rn), cpu_reg_sp(s, a->rm), !a->m);
+     set_btype_for_br(s, a->rn);
+     gen_a64_set_pc(s, dst);
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static bool trans_BLRA(DisasContext *s, arg_bra *a)
+@@ -2064,8 +2063,7 @@ static bool trans_BLRA(DisasContext *s, arg_bra *a)
+     tcg_gen_mov_i64(cpu_reg(s, 30), link);
+ 
+     set_btype_for_blr(s);
+-    s->base.is_jmp = DISAS_JUMP;
+-    return true;
++    return gen_indirect_branch(s);
+ }
+ 
+ static bool trans_ERET(DisasContext *s, arg_ERET *a)
+@@ -11240,11 +11238,13 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             gen_a64_update_pc(dc, 4);
+             /* fall through */
+         case DISAS_EXIT:
+-        case DISAS_JUMP:
+             gen_step_complete_exception(dc);
+             break;
+         case DISAS_NORETURN:
+             break;
++        case DISAS_JUMP:
++            /* Use gen_indirect_branch instead. */
++            g_assert_not_reached();
+         }
+     } else {
+         switch (dc->base.is_jmp) {
+@@ -11261,10 +11261,11 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             break;
+         case DISAS_UPDATE_NOCHAIN:
+             gen_a64_update_pc(dc, 4);
+-            /* fall through */
+-        case DISAS_JUMP:
+             tcg_gen_lookup_and_goto_ptr();
+             break;
++        case DISAS_JUMP:
++            /* Use gen_indirect_branch instead. */
++            g_assert_not_reached();
+         case DISAS_NORETURN:
+         case DISAS_SWI:
+             break;
 -- 
 2.53.0
 

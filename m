@@ -1,72 +1,71 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 27340606A32A
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 15:18:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E0839606A32C
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 15:19:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=XYa9XwNH
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=jkL/59uE
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMoM1-0004ay-IC; Fri, 30 Oct 2026 11:17:17 -0400
+	id 1xMoLz-0004Wr-3z; Fri, 30 Oct 2026 11:17:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMoLM-0004NJ-1X
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:39 -0400
-Received: from mail-dl1-x122b.google.com ([2607:f8b0:4864:20::122b])
+ id 1xMoKn-0004IB-87
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:10 -0400
+Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMoLH-0008Re-Tz
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:34 -0400
-Received: by mail-dl1-x122b.google.com with SMTP id
- a92af1059eb24-19305bcb72cso693520c88.1
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 08:16:31 -0700 (PDT)
+ id 1xMoKk-0008Oo-FW
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:00 -0400
+Received: by mail-dy1-x1333.google.com with SMTP id
+ 5a478bee46e88-36a2551d7b5so2478621eec.1
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 08:15:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793373390; x=1793978190; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=CnMqBd/JBHGwVaxrghEFIqcYT1aAnIXyDuq/h1Z92iw=;
- b=XYa9XwNHiCWwU5AOcRS/9/X8JXg/ZfgtC4in4141COJc4Uh7TXAqKY0pzBDuWxSTYa
- jcyPRO+fKoiWbA4wp0r9bcwJZ5cE96j3S+t8DP0RfRVlbU/QTBVBO4ZEVRetaGD5O+2w
- wN7WNr8PXuKSmNswrpV/XLSn7ReuO4Lp2BiM111ykcKVjKXxVOZZRSRIukdQYWZThLW/
- 1e6hamrZTIGN+0HHe6qP5LEv29irhHZgzy8rsD3n7zvE+f26K1prBKp0am+87ExI83ck
- /UknRd9hl/b0GZE8fXm3JbOebAXcQEzhQMQp3oecXFbdhMS5GYqrXV8CX3ZLhppHjeHW
- ++rg==
+ d=gmail.com; s=20260707; t=1793373355; x=1793978155; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:content-type:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=1Rg4bi/F0EGsPeT/kaQ1mX1hyEceGiWztvW5JiOyGZA=;
+ b=jkL/59uEsuYVDYuahuUzSicrnquI0Ks8Is/wr+vSwasljI18H86/BSbwMxdHV1PVPV
+ aLWpgFLkdhEeQlcQ89xTP7im9XTxm97McJFwesm1nnikzo7z33nTRQWYJmgnzyNTVKCe
+ RP865ndUnV4Fj3IS4WkKXzwmXr/rd391A+4GWT6xgJLbrcKtfmt7po9A8esjoCaQY7KC
+ o1Wg6YPe1KQpY8JJVzQj6Yg7girVnu2GliDPZ7JP4Gh2Z4HRjzXCTdLrMdiLiHE4nQcd
+ ds7pRiP1Hm02XPlTQKCgF0dKM6jMstfEjcxakJPg08yAUbXZOey2EH72vIMnQxiy7/oh
+ zOiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793373390; x=1793978190;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=CnMqBd/JBHGwVaxrghEFIqcYT1aAnIXyDuq/h1Z92iw=;
- b=P7ajr4L8vZGAyFgT8Kz3Num494VoQba2k2n8VFAlyhJ9ccRoz/+Ek5njx3fawM+fQb
- gaUmFM+QKk49w8Aa4SzcByKj64sPdjxZQnBQtzL5/Nwv40IipWv0a4+XFJiV5umLZA7J
- HCXnFSDwoBh2voetmFLXFY0O2o9GSING2RJ8HtIIS+GvFsMHBjfQS05BGQhdTaUu+EZo
- Kr94lCJCsmKfxnRgXEnfVWb8Kz/zfDYM1eEAXmfhPTWto1ehWWSvTxihcqqR/cXZCSed
- UD1bfg67HXQtnLOlZ1HncTC9VGFOk6YvhNNa6S4eDFCBckvb6BfPJSZTexMGcO1RL/9t
- W2aQ==
+ d=1e100.net; s=20260707; t=1793373355; x=1793978155;
+ h=content-transfer-encoding:mime-version:content-type:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=1Rg4bi/F0EGsPeT/kaQ1mX1hyEceGiWztvW5JiOyGZA=;
+ b=QYFC28LVFjmh18PLA/csN8ygX8TXVLoAnQblfNJJ0V2xqBBD+Mw4wD93BjCxMng/QL
+ wRYfTwn0242ZAHFe0ODg7lpe9FbCnM3Kkui9N6Z8+bSsqUkm77AgWRIQXVscEkIbkLBe
+ wiqw3v1T5HulYh6bM6jKjJnzSaBIPaJ/ZQuj6uurfGc6S/ulMfIl2pL25OLpPInASt00
+ /3MYqsAcMInHhlVXTgcMRRAreuZ8TOqIIAcMq3n6aYGykE4n+kcIV1cLOUYOaiWURd7m
+ 0r3qwuhLOhHcIU1HTkizNGUqzK7bOWZz4OBpWw5TR32nniZSmxf20unK4+7GQduXNgRE
+ 5bZA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByRXnT2kkKLxy6f4GgEpjDdapqbTENSvljUuLFrNhXR7BUMHnOAr94xzhqU2Bo2xlKy6gRjiDv3aQ==@nongnu.org
-X-Gm-Message-State: AFq9FYLoMSNH5wJOUDz1sXPznVyuue4GOPJGSUxyThuj7P14JcxhlB8L
- En94mQdQHpxvkFoCTHINmQgFlJV09ow8HtOL4ovPoSH0HZAZfH5aZHez
-X-Gm-Gg: AYBFou0+wwXglnInG5JkGk8n7wbLGYYTugWDM/NjOPGyBC8Fbiye/03RpIUqL7HJFvI
- CT+8cPFCkB0H5CWMCZL90szeQyX3gvOWq+qzyEyLGU0SoFQ6XRV4YuRfhVf2qr4KXI3TZwMpR2q
- U1vSeSLCZa9/QZaci3bghrdxz2knlann+Jd1MXZ5GL5jXt4e94FIL4lOE6tErZzXd+0mrA8x0/J
- rzM9XoMl554M9OjZbPFsasCgYpt9nC2hOkFZ67lJxNXz6hv0zJ4gi2SP9argZXCSI3nVPIaPylh
- UuVIPDrc2Km1rjwCpwnLyFWlA+HYUYhgJ5ATU2A0fZvwKLovH/cBbF/OOXERQnWj+XpMw8zALkT
- 0dYsN7ZwoYvQ+CcVo4Zg8aiVrTy2ocZG6vi0UAtlh5JVSZQKQX8/wQF+StEAACPeLTldqu8Azz5
- 8ViRhzv8u1Zyrxlha901rAMKN5UuSWeMVHHRjQLFSbtFdlWhwakyRNXR4EbiZkJWNJJFxGic+F7
- mFEvunD0lAx7H2aOGKznLSPoBeHJhW9Rij6bTMLSc5D2trOtn+572yOXXI8rqYtdSsAJqhz/a8e
- iGnsv7w+FKBgPF6NhFzthGpAQPmTscevT0QAjwP48dGwbtRv
-X-Received: by 2002:a05:701b:4502:10b0:163:fd28:5658 with SMTP id
- a92af1059eb24-1ac5b02289fmr3445161c88.22.1793373390156; 
- Fri, 30 Oct 2026 08:16:30 -0700 (PDT)
+ AKwUvBwSMMlFOZ9Y9GaMeGsfLNYVEtpPjKRRpUanaftWU0sdS7gFR8ITyyQ7rPWudOvBFSRMfIlw8XGcRg==@nongnu.org
+X-Gm-Message-State: AFq9FYKQKWt5EwopAKn38e4BRlipSkkdHMmO82y4wDBOsAqICn/58H98
+ 1T/NGEPk9YRMe+zHt1Hl+2sf8kZCwhaIHLqRpTnj1Fke87UIUQBOVbBg
+X-Gm-Gg: AYBFou2zk/f2iwLUQiGtz/h01DYpxoT1Pyy9zp3g6aFrVjn4FsAe5NO5HaM1MC5OCDo
+ ThFXyRCtZaljD2JF8NncJfAUwb8p2jHX6EsHyJiHcsv3pi+CBfPHdZKfFK3DTUwrnlfN7EES1/o
+ duL9l9L3VARAYlgcbCouLbGcSpcL6eKnn/LR3xL3iJlYL0dm6gdz2gyD1iYR0+UsEcpiTL9rPRq
+ 29qWG+FfQoumNWSMSMk4wmS5B9uKUOMi+5aRxUOlEUpTnboCpF9ljn56DG/UXGkl/VTSgxwNDDk
+ 0vg0S22xY0FDZAb8qhCzGWJc63inydFp1bkXvZSj6Z/K/3O90Mili392g1jxK6LlYixji1zxKj0
+ cpiZFmv7MT+RZjfuI4kYaJgzydnztpTShX2GEWyNGHbPPeF3fnOVPO9u8UXOncmYed+uPyDpg7C
+ tfzQzLZ33kGqvGINs5eRnKkSL2XPZzuVIhiM0cuHWJs39rpfMcmQ9mDX1a8Gfp6VHfKcFghDZNc
+ oGl3zorI3Mh5QEYPvW5g9y/r8hBIg0NfwfVAWd4kriGOfrsGuDWB0vJin7ofKmZePfkMr0cKWoX
+ 887S0yReTwjfFGKRxQuImy/rhFlrlcg5uJU/uq5DlYTlqv4Y
+X-Received: by 2002:a05:7022:f90d:b0:151:7831:e403 with SMTP id
+ a92af1059eb24-1ac5b027fbfmr2873959c88.13.1793373355336; 
+ Fri, 30 Oct 2026 08:15:55 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1ac1854d925sm12770449c88.7.2026.10.30.08.16.20
+ a92af1059eb24-1ac1854d925sm12770449c88.7.2026.10.30.08.15.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2026 08:16:29 -0700 (PDT)
+ Fri, 30 Oct 2026 08:15:54 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>,
@@ -102,17 +101,17 @@ Cc: Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Alistair Francis <alistair.francis@wdc.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
-Subject: [PATCH 03/15] hw/microblaze: expand DEFINE_MACHINE for MicroBlaze
-Date: Fri, 30 Oct 2026 23:15:24 +0800
-Message-ID: <20261030151539.1872-4-luoyonggang@gmail.com>
+Subject: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
+ registration
+Date: Fri, 30 Oct 2026 23:15:21 +0800
+Message-ID: <20261030151539.1872-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
-In-Reply-To: <20261030151539.1872-1-luoyonggang@gmail.com>
-References: <20261030151539.1872-1-luoyonggang@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122b;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1333;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,88 +130,83 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Expand DEFINE_MACHINE() in hw/microblaze/petalogix_ml605_mmu.c and
-hw/microblaze/xlnx-zynqmp-pmu.c to explicit TypeInfo and type_init()
-functions calling type_register_static().
+DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo and the type_init
+function that calls type_register_static(). A later change needs to pass a
+target mask into that registration, and the macros have no parameter for it.
+This series expands every caller first, with no behavior change, so the
+follow-up only replaces the type_register_static() call.
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- hw/microblaze/petalogix_ml605_mmu.c | 19 +++++++++++++++++--
- hw/microblaze/xlnx-zynqmp-pmu.c     | 19 +++++++++++++++++--
- 2 files changed, 34 insertions(+), 4 deletions(-)
+Each machine file gains a class_init function, a TypeInfo, and a type_init
+function that calls type_register_static(). The last patch removes
+DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* from include/hw/core/boards.h.
 
-diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
-index 8f9f54ff1e2..393eeba76f5 100644
---- a/hw/microblaze/petalogix_ml605_mmu.c
-+++ b/hw/microblaze/petalogix_ml605_mmu.c
-@@ -214,10 +214,25 @@ petalogix_ml605_init(MachineState *machine)
- 
- }
- 
--static void petalogix_ml605_machine_init(MachineClass *mc)
-+static void petalogix_ml605_machine_class_init(ObjectClass *oc,
-+                                               const void *data)
- {
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-     mc->desc = "PetaLogix linux refdesign for xilinx ml605 (little endian)";
-     mc->init = petalogix_ml605_init;
- }
- 
--DEFINE_MACHINE("petalogix-ml605", petalogix_ml605_machine_init)
-+static const TypeInfo petalogix_ml605_machine_typeinfo = {
-+    .name       = MACHINE_TYPE_NAME("petalogix-ml605"),
-+    .parent     = TYPE_MACHINE,
-+    .class_init = petalogix_ml605_machine_class_init,
-+    .instance_size = sizeof(MachineState),
-+};
-+
-+static void petalogix_ml605_machine_register_types(void)
-+{
-+    type_register_static(&petalogix_ml605_machine_typeinfo);
-+}
-+
-+type_init(petalogix_ml605_machine_register_types)
-diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
-index 00154236bf8..d3ade9faeee 100644
---- a/hw/microblaze/xlnx-zynqmp-pmu.c
-+++ b/hw/microblaze/xlnx-zynqmp-pmu.c
-@@ -179,10 +179,25 @@ static void xlnx_zynqmp_pmu_init(MachineState *machine)
-                            NULL);
- }
- 
--static void xlnx_zynqmp_pmu_machine_init(MachineClass *mc)
-+static void xlnx_zynqmp_pmu_machine_class_init(ObjectClass *oc,
-+                                               const void *data)
- {
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-     mc->desc = "Xilinx ZynqMP PMU machine (little endian)";
-     mc->init = xlnx_zynqmp_pmu_init;
- }
- 
--DEFINE_MACHINE("xlnx-zynqmp-pmu", xlnx_zynqmp_pmu_machine_init)
-+static const TypeInfo xlnx_zynqmp_pmu_machine_typeinfo = {
-+    .name       = MACHINE_TYPE_NAME("xlnx-zynqmp-pmu"),
-+    .parent     = TYPE_MACHINE,
-+    .class_init = xlnx_zynqmp_pmu_machine_class_init,
-+    .instance_size = sizeof(MachineState),
-+};
-+
-+static void xlnx_zynqmp_pmu_machine_register_types(void)
-+{
-+    type_register_static(&xlnx_zynqmp_pmu_machine_typeinfo);
-+}
-+
-+type_init(xlnx_zynqmp_pmu_machine_register_types)
+Yonggang Luo (15):
+  hw/alpha: expand DEFINE_MACHINE in dp264.c
+  hw/m68k: expand DEFINE_MACHINE for M68K machines
+  hw/microblaze: expand DEFINE_MACHINE for MicroBlaze
+  hw/tricore: expand DEFINE_MACHINE in tricore_testboard.c
+  hw/arm: expand DEFINE_MACHINE for ARM machines
+  hw/riscv: expand DEFINE_MACHINE for RISC-V machines
+  hw/core/null-machine: expand DEFINE_MACHINE
+  hw/mips: expand DEFINE_MACHINE for MIPS machines
+  hw/ppc: expand DEFINE_MACHINE for PowerPC machines
+  hw/sh4: expand DEFINE_MACHINE in r2d.c
+  hw/sparc: expand DEFINE_MACHINE in leon3.c
+  hw/xenpv: expand DEFINE_MACHINE in xen_machine_pv.c
+  hw/xtensa: expand DEFINE_MACHINE in sim.c
+  hw/xtensa: expand DEFINE_MACHINE in virt.c
+  hw/core/boards: remove unused DEFINE_MACHINE* macros
+
+ hw/alpha/dp264.c                    | 18 +++++++++--
+ hw/arm/bananapi_m2u.c               | 18 +++++++++--
+ hw/arm/cubieboard.c                 | 19 +++++++++---
+ hw/arm/digic_boards.c               | 18 +++++++++--
+ hw/arm/imx25_pdk.c                  | 18 +++++++++--
+ hw/arm/imx8mm-evk.c                 | 20 +++++++++---
+ hw/arm/integratorcp.c               | 14 ++++++---
+ hw/arm/kzm.c                        | 18 +++++++++--
+ hw/arm/max78000fthr.c               | 17 ++++++++--
+ hw/arm/mcimx6ul-evk.c               | 18 +++++++++--
+ hw/arm/mcimx7d-sabre.c              | 20 +++++++++---
+ hw/arm/msf2-som.c                   | 17 ++++++++--
+ hw/arm/netduino2.c                  | 17 ++++++++--
+ hw/arm/netduinoplus2.c              | 17 ++++++++--
+ hw/arm/olimex-stm32-h405.c          | 18 +++++++++--
+ hw/arm/orangepi.c                   | 19 +++++++++---
+ hw/arm/stm32vldiscovery.c           | 18 +++++++++--
+ hw/core/null-machine.c              | 18 +++++++++--
+ hw/m68k/an5206.c                    | 18 +++++++++--
+ hw/m68k/mcf5208.c                   | 18 +++++++++--
+ hw/microblaze/petalogix_ml605_mmu.c | 19 ++++++++++--
+ hw/microblaze/xlnx-zynqmp-pmu.c     | 19 ++++++++++--
+ hw/mips/boston.c                    | 18 +++++++++--
+ hw/mips/fuloong2e.c                 | 18 +++++++++--
+ hw/mips/malta.c                     | 12 ++++++--
+ hw/ppc/amigaone.c                   | 18 +++++++++--
+ hw/ppc/pegasos.c                    | 21 ++++++++-----
+ hw/ppc/ppc440_bamboo.c              | 18 +++++++++--
+ hw/ppc/prep.c                       | 18 +++++++++--
+ hw/ppc/sam460ex.c                   | 18 +++++++++--
+ hw/ppc/virtex_ml507.c               | 18 +++++++++--
+ hw/riscv/boston-aia.c               | 18 +++++++++--
+ hw/riscv/microblaze-v-generic.c     | 18 +++++++++--
+ hw/sh4/r2d.c                        | 18 +++++++++--
+ hw/sparc/leon3.c                    | 18 +++++++++--
+ hw/tricore/tricore_testboard.c      | 18 +++++++++--
+ hw/xenpv/xen_machine_pv.c           | 18 +++++++++--
+ hw/xtensa/sim.c                     | 18 +++++++++--
+ hw/xtensa/virt.c                    | 18 +++++++++--
+ include/hw/core/boards.h            | 48 -----------------------------
+ 40 files changed, 605 insertions(+), 142 deletions(-)
+
 -- 
 2.55.0.windows.3
 

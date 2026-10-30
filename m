@@ -1,89 +1,92 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E071606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 19:43:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84C4A606A321
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 19:43:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=ir+w/pt0
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=mMYwvEvZ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMsVb-00061x-I3; Fri, 30 Oct 2026 15:43:28 -0400
+	id 1xMsVn-00065v-HJ; Fri, 30 Oct 2026 15:43:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMsVZ-00061N-2H
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:25 -0400
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+ id 1xMsVe-00062d-MA
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:30 -0400
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMsVW-000087-HG
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:23 -0400
-Received: by mail-ot1-x335.google.com with SMTP id
- 46e09a7af769-8470d7d430fso467962a34.3
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 12:43:22 -0700 (PDT)
+ id 1xMsVa-00008O-K4
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:30 -0400
+Received: by mail-ot1-x330.google.com with SMTP id
+ 46e09a7af769-8256106635eso543909a34.0
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 12:43:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793389401; x=1793994201; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=SDmC1B9f85S9cuFY2KAgb1tzj716RADTzBzBLvsqcRw=;
- b=ir+w/pt0xUqEU8bLB306/ESMh8YlJbDwF0vuFaGRPV4f6sZ7ibkHPMGsw1XPmN5EMr
- 7BiNDU0vDMa9IJqD7N0pniMJ4u7cC+FN6QLVSAaaOr2kTBs7b+0yP6z36AXrEdcYzUVr
- +Iu15JbhRf4UhvYM20Mg2CdhCjBJIfwPlza6M3o83naQ0ljU4uLITSdqVY3uS4enCQaK
- 32oiSz+/UsYa+BzVRaQowB0oCqYS8z3PFW6AnzKkbi0y8Jo2MjlETIZg4/7vbph6RFlE
- VOG1H6eYD53L7NbPVpIdlRd3jWiqjFPUIi8WxW32siEpZvTKfdbH8H71Wb2uLKhKIpOp
- V3gA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793389401; x=1793994201;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1793389404; x=1793994204; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=SDmC1B9f85S9cuFY2KAgb1tzj716RADTzBzBLvsqcRw=;
- b=Cu81MEVMttY4LGHo6bIkCA++pKBi839x8aWhmfZYdA/kNsYpQSkInpOOUasocUyhnJ
- QYSwNBeoC6b19vv2nwjBtKvOaOBpSAIC0UHX3nZ+dmqcWtgb4c5TFmcUg5WAQeMh88os
- QuUI2HbRyD5nP5RZgmLsGGj1gGKPuwFJXTKQLGEWef7xyZWIgGJxFQuoReHyYowd+f5o
- HBNnjjgXno9nbEK4aUg7pUsBgfin0HIrEf5h/pe0B04TbH+j1j7UP9/zbbbEjvlczB50
- SkyDBaiqB2DqkL3N6/4RvZOsUorL1A2mVfQlHTi66ICKa7H997LamKeDCauUvJFE1NUz
- fkMg==
-X-Gm-Message-State: AFq9FYJ0Q1C9dHSpIFAEmR+PFmHrIWvZ5fU1uRfxOzB4NDJyewAyPYFw
- NC4Ri4AeuhKahwEO2qvICEKEDt17GPxAcZOvOFVEc3LZv2Otm0/OMcAauBiCah/BZLX/D2Y1iKN
- I3qfs
-X-Gm-Gg: AYBFou1lOgeO6H3Oo0rYMbBUSF7CkHnlu1F/GRRWt8whOxm95PFH3j93ktcSD1k1b8s
- HyyIh7v82WrgTsDv0IYgENNjZjMhJeUbOMxe5XDN2l73ZYAPJ8hdjPQf9q+c0Oc6wv1lk8ULLgz
- 9etjt9Wg6AJI8aYIHoEx8fIUWA0xiLfuKWtg34T2bAFPlJB4smFbChNBapKaW95iD9GiJecVHID
- dUHaDC6i430ol43jCQqJ1K35ZPnSpP4EUy0ZQjIVBlNBJ9oJp3/K6N0DZ/pOCsgEGBXmMyAuSKL
- G5tiPAueRO1IOQk3zQ6EIgHA5dlQITHVzOOJ6gKPByCDmGEsC1N4rLsyj0d6SABhkMppGYcOxzp
- +vVwU//rY8oX6EDKKH+Kp9hrBhwRNcZL0Jevz4gCKjWt5OD/F95aUZ6EM+yVUwz8Dr7OgDGMiAF
- OxHWOo9ioM3R1S9I3/wHLYiAO3+9DJvx13iomCY8GJdpiGSUmAaa5eKYss6AolJRmA+n2Gp1gPX
- DMvq+LIxcSBWAtRMDez8f7ymMvR0hAOJVnru9OSysihIZC1iCj0+EFQ2nCPYGWSoCZKVFxM1i7b
- mFQd0Nxmlu38CdWx2hKe2wHeY1gyNm0gas1MwlybflOHfgKHDX8reJfo
-X-Received: by 2002:a05:6830:2b20:b0:828:ca8c:f880 with SMTP id
- 46e09a7af769-85d36610ecbmr2526472a34.27.1793389400901; 
- Fri, 30 Oct 2026 12:43:20 -0700 (PDT)
+ bh=P85+btTqtBKqfwD1jOrC4yX/wfGNphtlJ8FsVIfPq+c=;
+ b=mMYwvEvZXOnMR4fwspnqIGGroCNmolkLrlPMUZX9st8S/Khl3rkmPQSI1LGwsyCAaN
+ 8q8IGptuhhi5SBgSYsCIJhLVtG++oLsMULK/2GwA7N8UGof5I1lz1ATybV5mf1dHpWui
+ Mmfrso7Muze6I0VFFtBloJ18h6jUely2Zg2buWlVw0xwallLVb0f5NWyUmpqkd+JqJEv
+ LOZHPJqicp9TMVonxqqyoQJKeYwPD4hBGVuqyhk6Pcn/KTmFfMeXLdYQP8kdS5k/5wVj
+ OOvejBVoAjCoFc/YHB16zwGpwSxqb2iZ4ePzxedO4eV6D71Q1WzSHTaeuYqiKRHV28Ew
+ HJ7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793389404; x=1793994204;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=P85+btTqtBKqfwD1jOrC4yX/wfGNphtlJ8FsVIfPq+c=;
+ b=ETU/K5FBS0i/sYGwbburZnkd+ice9UOkivmMSYgrJqdpj5MeTyMTDiwURFrgFKvwv2
+ X4ZRDNUQYLsks0KXGQusfiXm5YvJpM8OE9j+J8JkgU2kgsU2hOZkmW9YLOXNxOaLlLxu
+ iUiaC870swpfTh/5QWlaZuJlZW5bEpCjXRW3BKOoptchyNmTZUw2YvxYjg0F4KHAkQCw
+ wz3JkhUgkk4YWY2yaN79kBBoiPtDZjTSlh3bbKS87IFuw9NV+VCmAknKpIsUaorU/Xh9
+ g8xjbA68BwzcvGbMJtmK4rw+/ANY/+8c+b/7x+eVpShfWDXTggGXuHIU4r1mOmvhEObV
+ TO7A==
+X-Gm-Message-State: AFq9FYIKPAW00ifMWMh4pAf8DHwGdwD9tJRAPlXmeUbdetKL8VN6p4mC
+ kap1Q5U+HwnG1+/LcGqRrsI5tF1AAcrB7l/VTLhVYfEulqN2NWYWH0vrRtPBfODo31v7MrzK1iz
+ lDqLi
+X-Gm-Gg: AYBFou30XP2NxvLT4kAFzL22CBd//NLRSWWaLs1aFK33TeK/rkF/Yrw+j1eBaH2ff+p
+ 541D4lZIpl+cbNRmamQ/xtp4ZrdU9bfI2yhmH1wcvZSRG3Fj/zszPIz7jz69hCzJQzgmG+nYCAx
+ jd2LyShFeJYjE733L2IlsSPieZynSY+fvcwUJNfdLzk7Vg7sNxlqwNj9ybziU5YZIeOPaYGd6D7
+ 7crP2dx1Q3toKhzNgjYIHhqAW1su6KpMhOmSaw7aA9L3f4mh1rrFvffCBxGThrKxQogSOjmPxBB
+ NWmzyIzELNS5sNfl70u3PbnInB+rhYN+g3ZQYKO1r8HobGQO/bdPyZbgwmJj3szpLPHwRD9hedH
+ zm+ULoGRLCzO7ZttimBnInTKZIHbZu0MeYt8niWqSYq2lQKh41GM9hGjpFqNLLN/ZesAfrFvqyU
+ Swhs/WnqbBI5qnwDao7F4r2peRjQRKPoYKbZ8yvZ8CuLSrsxVRLoV+3Mem7oDMl+/44pYoOtPzW
+ 4yN0y/6yFNclA7dZTVBTvEKfX/uyNERx8d0mUZhs+52GSZ1iU5sv3CwU1VVWj2DLA6j4wHuUli2
+ WeqsRAIkdGhdYpLVXVKXKIbEjWpyhwCLUN3GiuWQG8konYaOtm3z+86q
+X-Received: by 2002:a05:6830:438d:b0:829:9992:2106 with SMTP id
+ 46e09a7af769-85d36633ee3mr2321771a34.22.1793389403954; 
+ Fri, 30 Oct 2026 12:43:23 -0700 (PDT)
 Received: from stoup ([2607:fb90:5e62:412b:1381:b0c1:1339:9c82])
  by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-85d351e77c8sm2654768a34.2.2026.10.30.12.43.19
+ 46e09a7af769-85d351e77c8sm2654768a34.2.2026.10.30.12.43.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2026 12:43:20 -0700 (PDT)
+ Fri, 30 Oct 2026 12:43:23 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 0/9] target/arm: Use tcg_gen_goto_jc* for aarch64
-Date: Fri, 30 Oct 2026 14:43:09 -0500
-Message-ID: <20261030194318.319310-1-richard.henderson@linaro.org>
+Subject: [PATCH 2/9] target/arm: Retain btype in DisasContext.tbflags
+Date: Fri, 30 Oct 2026 14:43:11 -0500
+Message-ID: <20261030194318.319310-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261030194318.319310-1-richard.henderson@linaro.org>
+References: <20261030194318.319310-1-richard.henderson@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,39 +98,127 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Based-on: 20261030185551.193092-1-richard.henderson@linaro.org
-("[PATCH v7 00/14] accel/tcg: cut per-block dispatch overhead (parts 4-6)")
+Replace btype = -1 with btype_set = true.  This is both
+less confusing and keeps the state separate from the
+per-insn iteration.  Set tbflags_invalid when we need
+to read the btype from the page tables and therefore
+we cannot keep DisasContext.tbflags up to date.
 
-Because btype is in tbflags, using goto_jc in aarch64 is more
-complicated, and requires accurately tracking changes to tbflags.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/translate.h     |  7 ++-----
+ target/arm/tcg/translate-a64.c | 28 ++++++++++++----------------
+ 2 files changed, 14 insertions(+), 21 deletions(-)
 
-
-r~
-
-
-Richard Henderson (9):
-  target/arm: Add tbflags to DisasContext
-  target/arm: Retain btype in DisasContext.tbflags
-  target/arm: Add second value to DisasCompare64
-  target/arm: Split out gen_goto_tb_int
-  target/arm: Split out gen_indirect_branch
-  target/arm: Split out gen_cbranch_goto_tb
-  target/arm: Use DISAS_TOO_MANY for simple TB breaks
-  target/arm: Rework gen_goto_tb to gen_direct_branch
-  target/arm: Use tcg_gen_goto_jc3_i64 for aa64 branches
-
- target/arm/tcg/translate.h     |  16 +-
- target/arm/tcg/translate-a64.c | 400 +++++++++++++++++----------------
- target/arm/tcg/translate.c     |  60 ++---
- 3 files changed, 251 insertions(+), 225 deletions(-)
-
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index b9254d5524..029107f4c0 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -206,11 +206,8 @@ typedef struct DisasContext {
+     bool gcs_rvcen;
+     /* GCSSTR exception EL or 0 if enabled */
+     uint8_t gcsstr_el;
+-    /*
+-     * >= 0, a copy of PSTATE.BTYPE, which will be 0 without v8.5-BTI.
+-     *  < 0, set by the current instruction.
+-     */
+-    int8_t btype;
++    /* True if the current insn set PSTATE.BTYPE. */
++    bool btype_set;
+     /* A copy of DCZID_EL0.BS. */
+     uint8_t dcz_blocksize;
+     /* A copy of cpu->gm_blocksize. */
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index d8b6c1df41..64e28a089a 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -173,14 +173,15 @@ static void set_btype(DisasContext *s, int val)
+     /* BTYPE is a 2-bit field, and 0 should be done with reset_btype.  */
+     tcg_debug_assert(val >= 1 && val <= 3);
+     set_btype_raw(val);
+-    s->btype = -1;
++    DP_TBFLAG_A64(s->tbflags, BTYPE, val);
++    s->btype_set = true;
+ }
+ 
+ static void reset_btype(DisasContext *s)
+ {
+-    if (s->btype != 0) {
++    if (EX_TBFLAG_A64(s->tbflags, BTYPE) != 0) {
+         set_btype_raw(0);
+-        s->btype = 0;
++        DP_TBFLAG_A64(s->tbflags, BTYPE, 0);
+     }
+ }
+ 
+@@ -1894,7 +1895,8 @@ static void set_btype_for_br(DisasContext *s, int rn)
+             TCGv_i64 pc = tcg_temp_new_i64();
+             gen_pc_plus_diff(s, pc, 0);
+             gen_helper_guarded_page_br(tcg_env, pc);
+-            s->btype = -1;
++            s->btype_set = true;
++            s->tbflags_invalid = true;
+         }
+     }
+ }
+@@ -11044,7 +11046,6 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+     dc->max_any_vl = MAX(dc->max_svl, arm_cpu->sve_max_vq * 16);
+     dc->pauth_active = EX_TBFLAG_A64(dc->tbflags, PAUTH_ACTIVE);
+     dc->bt = EX_TBFLAG_A64(dc->tbflags, BT);
+-    dc->btype = EX_TBFLAG_A64(dc->tbflags, BTYPE);
+     dc->unpriv = EX_TBFLAG_A64(dc->tbflags, UNPRIV);
+     dc->ata[0] = EX_TBFLAG_A64(dc->tbflags, ATA);
+     dc->ata[1] = EX_TBFLAG_A64(dc->tbflags, ATA0);
+@@ -11182,10 +11183,9 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     }
+ 
+     if (dc_isar_feature(aa64_bti, s)) {
++        int btype = EX_TBFLAG_A64(s->tbflags, BTYPE);
++        tcg_debug_assert(!s->btype_set);
+         if (s->base.num_insns == 1) {
+-            /* First insn can have btype set to non-zero.  */
+-            tcg_debug_assert(s->btype >= 0);
+-
+             /*
+              * Note that the Branch Target Exception has fairly high
+              * priority -- below debugging exceptions but above most
+@@ -11195,13 +11195,12 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+              * We can check all but the guarded page check here;
+              * defer the latter to a helper.
+              */
+-            if (s->btype != 0
+-                && !btype_destination_ok(insn, s->bt, s->btype)) {
++            if (btype && !btype_destination_ok(insn, s->bt, btype)) {
+                 gen_helper_guarded_page_check(tcg_env);
+             }
+         } else {
+             /* Not the first insn: btype must be 0.  */
+-            tcg_debug_assert(s->btype == 0);
++            tcg_debug_assert(btype == 0);
+         }
+     }
+ 
+@@ -11216,11 +11215,8 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+         unallocated_encoding(s);
+     }
+ 
+-    /*
+-     * After execution of most insns, btype is reset to 0.
+-     * Note that we set btype == -1 when the insn sets btype.
+-     */
+-    if (s->btype > 0 && s->base.is_jmp != DISAS_NORETURN) {
++    /* After execution of most insns, btype is reset to 0. */
++    if (!s->btype_set && s->base.is_jmp != DISAS_NORETURN) {
+         reset_btype(s);
+     }
+ }
 -- 
 2.53.0
 

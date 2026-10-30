@@ -1,53 +1,53 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CEDAD606A320
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 21:15:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 94390606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 21:18:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256 header.s=selector2 header.b=F98+o2cb
+	dkim=pass (2048-bit key, unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256 header.s=selector2 header.b=VZjjtuKv
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMtvc-0007CI-Ov; Fri, 30 Oct 2026 17:14:24 -0400
+	id 1xMtzB-0003B7-OR; Fri, 30 Oct 2026 17:18:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1xMtva-0007Bk-I1; Fri, 30 Oct 2026 17:14:22 -0400
-Received: from mail-westus2azlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c005::5] helo=CO1PR03CU002.outbound.protection.outlook.com)
+ id 1xMtz9-0003Ab-Uh; Fri, 30 Oct 2026 17:18:04 -0400
+Received: from mail-eastus2azlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::3] helo=BN8PR05CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1xMtvX-0007o4-Um; Fri, 30 Oct 2026 17:14:22 -0400
+ id 1xMtz7-0008A1-I0; Fri, 30 Oct 2026 17:18:03 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=cwoVYq0nxwQCpNgjjOA/vaYMc10YtKMvSc6mkhE27CxuGsNXSopkLBj8K4YB1GTpz1BiKBdkthcP22Qn4ohUzjpexI2XleVllnJYEnCXHouoNAwpGoO9FRRpiSsZZ/U+dEr3bOJBwG+LOes3D6MeXAchMTPE93wWMe/ahSeW6/hKU6xEtiUzxotr+WWiu4KBPamK+nv0+G8C0tRGBGF8XctjvNHrmcR1rM0cUupNMlEUJZyLzkMAH3Xy4cogqSM4bnQaLnyq4i/v119VcQOBXBeptE7+9s2ETahLIOZgodESro2r36de5xMkch+5Y68kT1V/nPBu5vgeaxr73A0g6w==
+ b=PrAPItUHY5nN6KY4iNSZHnUTQF6f2tEdRDv2NG9sOEcvJz/M3AGogOUTydMxjZI9Cch+ugSMpahC5ig7Cw6WkHFioTmczxMNMSQ7zBzo2YzGd8y2y0diKnYumPeS4Js6TADLUyBN0+B83OH5Sxay4A/z6s+CaG19xdXcGn5/lIkf7SDcp3IiMQSIl3kyvOESvyB4zFZax3h0wL/TYxzZ3KS9UtRzLWp51+1+JNrw33xFL9H5ZKEtH5dXfRI8ZZbDByRZJxPVHkIIpf8hImNuewh7vBOQS89BSDUqyozrn5EwoajGBJvONzg0+ypEZRj7H+taLtn8lkubdr968/aVeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FvotAb8MQZ+rLcjcHlaON/WypckF5YtUuVgnNgQLfrk=;
- b=o6CTV8g2E15atdQK4P5JwfaEj75leZ6WE0/0+GgSwr8vhxBuuM8CojdNviXwvif7IfK+qWh55LodfzJferNBHb7rUgNA3f7zWqnniMn1teW139xwW6vI3FEY+sPC2/aS73nAsTCPu12wNakmYltGT8scUHttPbOIfEwa0h92LTejeidoc8e2vaPdz++raqFCAYV2/C3hTyEilxjGb+ikitP7j8a0Cnsnkl0FGCOUXVpntRhkbmTv34bDMvMuNtinHgGq0Rr8vs5jaY+PnoCQiJEI9+x8JV4vE4GZSMDVeZptSU+pAf4n8hDzJLEMH889K+uG75lUrC31OEir9BwqbA==
+ bh=hlOa6uYVJ3bqLw6UN+QdNsBfoZa1ncnnlKhg/T9cEbY=;
+ b=vMf4xtFjpPdzsVeq/dWtrMPQA270HIVKfiwSw9QITH2e9F4F52/8Zyvg4Tuppx/omIgyFCCe9sJWAw45W1Tm3zEKTL18Y8AS4akQtJvi1TStb9sLmdc6mzBlvRvPjvDSJ+Yw5v7KzKM9gEaB5OtISYv1kpXRhE8FZASf1LOE3G2lg8lEfd7sDFcOmTT1dvjzgBCiOGWbKFtk0EQcxFbPxZfywCIN+QiCZwyzpcMacWPJzz8BgKo7iiWwhNscpBavcHt0KAfJBx9MKg8OUSPIisA9JRjbutYFge0G8jy+HUuESHgPxhpOS/1d+D+OFyMviAtzllMrQtYr82qINcqWQw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FvotAb8MQZ+rLcjcHlaON/WypckF5YtUuVgnNgQLfrk=;
- b=F98+o2cb0yYAco0RwEhiQeIHjLV4yDxn48aYD0CjbOzvs+waJJA7qKfz+pqlWkc49QRsmMMM5e2L9JOSnUj0oXwsy6ra9O1hXhzE3CVXVmDTH6rtvN8/59XCJgG9xT/ECbUliREmz4wyJS6Yoq5rsPDrPBdcS/ncfksRWOBdSua3Oh/RjYdaMesJa9iCKT2q1qKcAyzIDa4+NFHkvAvatK6Qha1pXV14iu9lFb1HS/28uqiBnwmbdkpGmuuvkzWeIjQ0Nt6u59RBjx2cQW2E3tOLpdeSgG2wNsiw17Lr15JkW3R/GCsTxkowF+hub7azTZUFaWBTDHvIdGugDTlQrg==
+ bh=hlOa6uYVJ3bqLw6UN+QdNsBfoZa1ncnnlKhg/T9cEbY=;
+ b=VZjjtuKvgyoJHJXu/n+Iu5q2JJYKa27lOWt6YZJkDV9PhPkDMuumlOJDUIH3OglFdD3e8uhABVFDXIgehAIENzHGk1+aJ+rG5E8iyqqEZCejtuji2kVnRV7JDvolhsxwNQ5yNyKxZ466luqj+OVPbiCZaVHaEgTRFHqPViyrger2g7nUNNGOABF8NLNkXQVJ85HN589SzS0H9DpYFg0TEzuGKl+GT1WltyKuN3O59hFYNYJ9/aTuJCkfPEwjMVxclnOHI/EHZA1WSf3p+qEVmm+ZkrkklbOA6B5hQdJkXQ2H/grnc0tQRj3G4Jl7x4vjApAwxQ0WPSC+9s0l1OwWTw==
 Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from IA3PR12MB923065.namprd12.prod.outlook.com
  (2603:10b6:208:627::17) by DS7PR12MB8347.namprd12.prod.outlook.com
  (2603:10b6:8:e5::19) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.9; Fri, 30 Oct
- 2026 21:14:09 +0000
+ 2026 21:17:55 +0000
 Received: from IA3PR12MB923065.namprd12.prod.outlook.com
  ([fe80::1c83:bf47:4202:50b1]) by IA3PR12MB923065.namprd12.prod.outlook.com
  ([fe80::1c83:bf47:4202:50b1%5]) with mapi id 15.21.0569.009; Fri, 30 Oct 2026
- 21:14:09 +0000
-Message-ID: <311cbbb4-d314-4f4b-acf1-105b177f88db@nvidia.com>
-Date: Fri, 30 Oct 2026 16:14:07 -0500
+ 21:17:55 +0000
+Message-ID: <359d67a3-e319-439a-95d9-a3f7e2879bd7@nvidia.com>
+Date: Fri, 30 Oct 2026 16:17:52 -0500
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] pci: add validation for fixed BAR configuration
+Subject: Re: [PATCH 3/5] pci: add fixed BAR fw_cfg blob export
 To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
@@ -56,83 +56,83 @@ Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  "devel@edk2.groups.io" <devel@edk2.groups.io>,
  Alex Williamson <alwilliamson@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>
 References: <20260916185554.917526-1-tdave@nvidia.com>
- <20260916185554.917526-3-tdave@nvidia.com>
- <SJ0PR12MB86142EC759980E479AF528CDAB602@SJ0PR12MB8614.namprd12.prod.outlook.com>
+ <20260916185554.917526-4-tdave@nvidia.com>
+ <SJ0PR12MB8614AAEC9254E91FC71BC96DAB602@SJ0PR12MB8614.namprd12.prod.outlook.com>
 From: Tushar Dave <tdave@nvidia.com>
 Content-Language: en-US
-In-Reply-To: <SJ0PR12MB86142EC759980E479AF528CDAB602@SJ0PR12MB8614.namprd12.prod.outlook.com>
+In-Reply-To: <SJ0PR12MB8614AAEC9254E91FC71BC96DAB602@SJ0PR12MB8614.namprd12.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: PH8P220CA0045.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:510:2d9::8) To IA3PR12MB923065.namprd12.prod.outlook.com
+X-ClientProxiedBy: PH8P220CA0041.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:510:2d9::20) To IA3PR12MB923065.namprd12.prod.outlook.com
  (2603:10b6:208:627::17)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: IA3PR12MB923065:EE_|DS7PR12MB8347:EE_
-X-MS-Office365-Filtering-Correlation-Id: b012bf65-4bca-4e96-2bfd-08df36cabd2d
+X-MS-Office365-Filtering-Correlation-Id: 36518550-f433-4e60-11ca-08df36cb43ce
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|376014|1800799024|366016|261026140227099003|261026121527099003|260925022911599003|260925021911599003|260925021311599003|11063799006|5023799004|4143699003|56012099006|261022113327099003|261009223027099003|261022105027099003|10067099003|261028144727099003|261021123027099003|261021121427099003|261022075727099003|22082099003|18002099003|6133799003;
-X-Microsoft-Antispam-Message-Info: zD1sMiJVfeJU4Nkr+fbWjQfUAiX23IEvYJwPibWS6qOi6YCti6hAkKZJaHyKvk0Q/Bx0lKi7wA0XUIU4/VttoXkzOYN6X1px0liXvD95ZsCqrngA8Yg3CLfgplHHO/2CPtNZUHUuGL54SaUGfsH2rYJhDNRVNnawBhTz8jx8/wW5IaTc3bMEOr9Pt1IyPq/tKwjdphucElCOQSOdzeGyrp8uVQGsEDl5vC9ukX2eV3U7wFtENWVz3GuHvs5vzZrjkF3Jf6KVUbSHZnmqfON3MPoNfR3g/fl0RWa51W0KSU8qq7E7RKGZ1+ZJ9XkkxE8NxSL357OPzQotVrlMMXe1Nrlh67ezZZEBYLN+h5jSFd7KoWz4bjZLe4TEVOVgkHdbwT1uTcIDI5jcU+xH8ldxoFJAm2jybVy7nQJYLbICOlfxBiLnQc3YLEamf1JTJc2kkb7xwMhqczbHXQuhXO1bWPCk/auWkpLbGKnt9cUsXjmm4sI+1OdwFgz5dA1R8+wAPe4tsz4LsCcDmim5ttTuIp83NyAr45StTynbr3IZd59k283MOlHGn9Qccws3rbz0cN73JrxmCxEfDU2PCMJKYXMSAnKVB3DfF/8NFvY0tES2SMQmfvTIHnX6mQPFjrJj6I7QF3qBSsbyJhH6EmbmvHG3r3faCpE/E1imlxEfn3Q=
+ ARA:13230040|23010399003|376014|1800799024|366016|261026140227099003|261026121527099003|260925022911599003|260925021911599003|260925021311599003|11063799006|5023799004|4143699003|56012099006|261026130827099003|261026135527099003|261021135927099003|261022113327099003|261009223027099003|261022105027099003|10067099003|261021133027099003|261028144727099003|261021130227099003|261022115727099003|261021123027099003|261021121427099003|261022075727099003|22082099003|18002099003|6133799003|3023799007;
+X-Microsoft-Antispam-Message-Info: DpsKw/yJZjVVggQc3CwQxwEcZh9omy8z1DUCen1fLbUTXiZdF67A6yHuv7FdJfewU7qX6BWq0ONd4lC/MscXIf2NT/+RK6C+6cNW0C/Gd8dfseOkyHEXr1p1lheI3QzEbsEgoBXz4pbb6OozBnYw90dONSHBN31D0iOGJJ0Wjs9TDsOJpnIciqia3+FJUBBrQSRuFqTNCNFQfY7lklBSrot6tbe/vM7TYUDXQLV0F48M1BCbHxnukdTXBeECKHCva4wlsDxErzsw9SEbY88qHMZZiHKiX4kReoxC02iDcDEYpTFlL30I6zgAso6ypPx33bfoCQusEOk/9YGbVvViSU/TLIQwazBef0eGkUtD5tfciL1r7iCyoKs61MNrfmcej29SJhF4/H9a0mmmtNkwmXw3HlyfmIUyG/pj5ZBsW0Hpwa3w7aScZg4DGp6++ddWGgFznztKuSwjxhQ5X+2y9CrCX1evk1bWtL7iJxqyyFxm/YCLCxbb23r8/w+6gKwEuXZkB/QNxZdZkK6Wn5lvfHoorw3EusMZril5OY62Z4QkPGGpAHUcNTg9YY2sbAtbr8Q6vm6qV7nTyIZJmFUBGv+2yqBsLNQpBkYJE8IHTyVvFSeUcRhygq7PyyhHTRw1p+YCH332XCN8LQaYvVih+vGPihWDp+7G5EsQeNB7iEQ=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:IA3PR12MB923065.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(261026140227099003)(261026121527099003)(260925022911599003)(260925021911599003)(260925021311599003)(11063799006)(5023799004)(4143699003)(56012099006)(261022113327099003)(261009223027099003)(261022105027099003)(10067099003)(261028144727099003)(261021123027099003)(261021121427099003)(261022075727099003)(22082099003)(18002099003)(6133799003);
+ SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(261026140227099003)(261026121527099003)(260925022911599003)(260925021911599003)(260925021311599003)(11063799006)(5023799004)(4143699003)(56012099006)(261026130827099003)(261026135527099003)(261021135927099003)(261022113327099003)(261009223027099003)(261022105027099003)(10067099003)(261021133027099003)(261028144727099003)(261021130227099003)(261022115727099003)(261021123027099003)(261021121427099003)(261022075727099003)(22082099003)(18002099003)(6133799003)(3023799007);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YmJQTkM0bzdjcS9KVVE0cjNwYVRWSnpxSGUwVnlQNDM4UldDTWJ4S1NkTnpC?=
- =?utf-8?B?cDgvRTFnZTljcFRQblBqdEl3K1M4ZW40VEpaOUFXLytGRXpZV0JYUko4cXdO?=
- =?utf-8?B?NU1zNFUwRHQ0a3J5UytqZUhIU21oWk1CK1VvNU1wN1puU0orWEw4Q0pjRExE?=
- =?utf-8?B?dzlSbHFJUDh4OUx4MWNWbGM2eXdXWDdPcmE3L1FCV2owMTFyWDNwSklkd0tj?=
- =?utf-8?B?M2thNzRkajJ2MmhnSE1BQmRVdnlzQTg4QU1WUWwwcTlzb3hQN25KT2pEVkZq?=
- =?utf-8?B?d2ZOeXRPeU1tZEYxWHJ5VGJuR1hRZDBGM3lMS1B0S0phOThTZEhTQ0lKSk9Y?=
- =?utf-8?B?c0s3MmFHWjJpZkNZQnlrUEFkN3Y2aVI3bHJTVnRHd3FLWTJSNEU4UEdDNnU5?=
- =?utf-8?B?UlZxcjJjY0l1NE1VbDBneHYveUNod3JudUsrYjBjZmZYV2V1S0I0cVJrR2Nm?=
- =?utf-8?B?T1FlNFJ4SEI5elhIMExtdExrS2sySXppeUZjZklUbllDZkIvS3Z1aVVWcTNo?=
- =?utf-8?B?Y1paR0dhWDM1UTlZSmFSbHE1Yk5QNnFYZXA4MEtiaGNPaERWS2tFQUl5NEg3?=
- =?utf-8?B?TklNR1NndDd2ajNlckhDdmw0eDljTWxOWHkwaG9LWDBZRzI0cnFnR1BQSG1V?=
- =?utf-8?B?akpoRlR2eTFhR2NBZ3NEaThodVVqc0paRm81aFo3ZTROdHJJRlF0NldzOGI5?=
- =?utf-8?B?ckxjb29pL0ZWSUZLMWtQTEkydk9acHM4Qk1wVmVsYUZSS1lsZE9wb1BBZ1lZ?=
- =?utf-8?B?Mk80T0VMK1Jmb3RSZktKZlgxcHRTKzhweWZpdFp1K2sxSTJZWFd3ZnI5QVFt?=
- =?utf-8?B?N0hhNitWMmZQTGJpOGUwN3ZITjk5ODhLUGFXblZSODJLZWgwZ2xsZlJtTktT?=
- =?utf-8?B?RDR0WjAwaytVSVVKWnp2TjJScUNZcU50Q3o0ZERrN1YyVTVUb1Qwb2lEeHZn?=
- =?utf-8?B?aHZ1a05yTTFtaExHUzhFaFk4b1kyMXpnRTl5YXRkZUFHdjVxZWZWd0M4UFpp?=
- =?utf-8?B?YUE0NHBIQVl4d3RidVBBUkh5ZXpSeWVZdDV4OFlPRGlCR29LUHF4YXNRZFJ5?=
- =?utf-8?B?NGE4SW9mNU4xTm1CaFdQZW9XSHZmNFlWN01vcy82RzRPeG1nYVY5dXN6Mm1L?=
- =?utf-8?B?MkY4azhNbk1FRFpHbWVVaGVVTG9Kd2NLcjFuc0FpSXFxMU52RGttamR6MUtW?=
- =?utf-8?B?T2d6eVp3NG14Y29lbUN1MGIzdTNldnh2bVVTajZtMlV1bHA0TGgrRmhBbUo2?=
- =?utf-8?B?MTN2dFprQ21WV3B4d01Ga09jWm80QU9VVWpTYVdabmhBWVBBWXdYcUlCOUdx?=
- =?utf-8?B?N0J6REx2UHR6Yi94WHk3ZnNuc1NiTkxuek5JbllsRTVYOHI5eDJNeWY3S3dV?=
- =?utf-8?B?OFV4SnNkK0VhdFVuSWF4WEt6TlMvckxROEs3cTU2TFFHVTUyVXhYN1Z4bDAr?=
- =?utf-8?B?d1FwNExaZEtGaU5rY0xuaHlCYkloT1g2MVJDYnhQSlh0VXk2SWxpeWo1UHcw?=
- =?utf-8?B?SUlpNmNFTnJLcDMrZU5nRmYvZlc0UzB1b0tXT2ZqeTUvU1RnNnZha3I4ZUo4?=
- =?utf-8?B?OFV0U1A1K1h1d0pYdDgwT0hxWDFPakFBb1Q5dUxNbVcvL0ttZ3ZuRHVaZkJD?=
- =?utf-8?B?QnBIdGYzdThrQmlmcXRBVnJIamY0NzlVaFZYYnk5TXJ5U1JYcFp5RkRIc0Jt?=
- =?utf-8?B?cnhjbXlSSHVGcnAxZk4xV0c4UGhEQlZZbnlQTjJMV2Z0aW55dlRkWUpwYzRq?=
- =?utf-8?B?Zk5Nb3lzTmFFZGw1bUpPZkIrbTdvc0EvNUZBTnp2WjJDUUZ5R2wxOFl0SUxC?=
- =?utf-8?B?TTZHSkIzc2NRTjVvVFoxaVc5UUlobEdnNGZWaklvMmFIdHpoYitBYWtGNGpG?=
- =?utf-8?B?K2taZUZsTkcwakI1bldpV2pnNHNwZmdsVTZFbjBXRmg3VUx5OG83bHkyWUw5?=
- =?utf-8?B?dE9QNFh4T1VBSHM2YUNDa3NabHZuMG9qWlRuU0hvQ3FaNzRBWmhmVXUxU28w?=
- =?utf-8?B?Y1Q4ZklFOWRsc3RFeTZZN0VuZ2xrd1pWVVlxdVFGaCtqS21Dekd4c3d5V3Nw?=
- =?utf-8?B?N2FJQkliVEpUNlg4Sllqa3VLR1gwbXBRNVVKYjBrRnFoQVBtcE13TkJOazNi?=
- =?utf-8?B?dGNkMUFodjkxS3dqdTdJR2xBN2wzTkNIZzVYNllXdHhjVGM2bHI1eDlMcGdl?=
- =?utf-8?B?VHp3b1dOQ1hpdGFBVS8vSHFIcTNxanBvTVBIRWFHdkpKS21aWnBCek5oVjlB?=
- =?utf-8?B?YjNnc1o2eDAvQVRIN1g5NkdxQ3F4SGh6dG9RQlZ0bzlYUkRaeVlpL05qM2V0?=
- =?utf-8?B?N0Npckc4U2lOQmErbWFaOW40UzUrQnNZOEFiVnZlT3QxdTZRb3BOdz09?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L3Q0UnFwekFWbjlNUXk3RnAzQ09ra1BQQ0lqcFpMWDVjNWwyTHB4TW5uMTRM?=
+ =?utf-8?B?cW42RGt2R2tkeXNWemI0ZkhPcUM2WEphWDBlQkducnFmQkxjbUc2T01mQXdr?=
+ =?utf-8?B?RlRCZUk4WndtVk1RelQ0aGo3WE9EaDMyY3JMZFU0VjhRQy9xSVFFbHZ0ejkx?=
+ =?utf-8?B?Vkh5aENwTGo0clE3czFYeTFkaTZFZm4wOFp0NTc2V2c2MjM0RFlhYy8xNUZm?=
+ =?utf-8?B?c21KamF5KzBjbTMydzBPYkxaQ29rWU5rZ2xKMWxMM0ZHM0hkamhha1o5VldC?=
+ =?utf-8?B?azFTU0RkMm1LZjZDWHR1QzErRmZKZjc5YUJDOHE0YTZ1c0tLU0M2Ky9EWWtp?=
+ =?utf-8?B?cW5NZU5iVHR4dEtXcnRWU3c4cmg3cDgwTUx6d2ZVZ1VnNnVGRFhZNS9KMkxh?=
+ =?utf-8?B?cnlET1ZNTC9HUnVjOVVMakpGZ09nNGNxTVBEaXNTWjZ1U3VRRWlab1QzT2g1?=
+ =?utf-8?B?anRWR2xvMmg5a0VoanJQbThnUzd5cm1jdDdFSG90ajR5WUVuQ0lIWFFwbWNL?=
+ =?utf-8?B?VVpsbzN2bWN6Wm1MRWZTYXNDNmJFWnNhemgxZmxoaHBOS0x6MTBZY3I0cmh5?=
+ =?utf-8?B?Nk5DVzdwNGZlK3lES3N1VUE4UlFnRlJCUlJranY0SSsvWFZCUzQ4NGJJakND?=
+ =?utf-8?B?TkcyeUxydmwvZEY4T1praUZVUGNTV1lCZEh0aC9UNWNXeHJFZHI4Y2l5YVZB?=
+ =?utf-8?B?VnBwRk83bjhXM2k0V0lUUHpBQWtzQ3czTzFkc2ZsZkhCeklBSWtuTnl5RUtD?=
+ =?utf-8?B?Q3JIUVFhYVdOTWlaMDk2V0dJR1ZUam96d2pMT05WQ1M5MExyV0dxZFkrZ21j?=
+ =?utf-8?B?dzJLdWNPYVlnOTcrbzBudk5LVExHVXI5Z3d4dVBTNW1jakpUN2YvMHZQMFJa?=
+ =?utf-8?B?c2Jsak5yd2FMVDQxM3VmWGJvQjRxUVY1dnZMNnBzVy9Pak5Yc0hWUFNGVFlq?=
+ =?utf-8?B?cjJzYWNnWTNsemZCWFBsQ3IyaFp6UDJPd2t5djdvL21SK0dHTUxON2xZRmxy?=
+ =?utf-8?B?Z0sxcDZoZmoyNTMwRGNPQTdPcmVFVmFFbHVmeHVpcmlUMFhjWnM1eDJibWZy?=
+ =?utf-8?B?d1R4U0NIVkhLdEsrMUJVdzNPQWxyU241Mk16RFBtaWh1ZUJ1azFDREpzSENv?=
+ =?utf-8?B?Smw0MkJ4a3ZNTmRsaThVcHNXSzkyR1lzdG5uR0xtOWhobUhoVmV1VjdDdnRa?=
+ =?utf-8?B?ZVY3NGVPTi9mWVZMU2ppZ3g1bmEyVXIrSm4wNHcvY2RKQ0V6WEp0Qmx1TjUw?=
+ =?utf-8?B?T2FlaXYrSW1abXZmS2lXSDRuM2N1a2lqWVpTUWsxeVFLQUxZYjA1QnZ4Qkly?=
+ =?utf-8?B?OVYxV1I0dHd3dmZNS2pGNzZ5cEtlTFJOMkJ3SGJTL01XVjloN1g4WWs2VGxK?=
+ =?utf-8?B?UVNYbkxyL3hka1VBVkN2OCt2c2U2a3NxU3h4MW94MGRWQlpMbjBTVzRMSGsz?=
+ =?utf-8?B?WU8xRGs1T1Z1RW9KRlh0b0ZQY3ZxQ1U0VkJqNkNURlpROUpNV3NpL3hBTHhL?=
+ =?utf-8?B?UUliVTU0NVF0ZUJFbzQ1WklFRFNvUGpPNm9vR0o3aldGb3E4cFh3dVNTendF?=
+ =?utf-8?B?NlBJOHkyVjF4aElNdThadjJnMThCNVZZSytEM3k3NFpNKzdJb1hTYUhiYVB5?=
+ =?utf-8?B?OGIyamhKVEU4M2dFaVJxUjZDZGgrODNRM3hWcGc4S05SZzFPRmthV0pUckdq?=
+ =?utf-8?B?YUd4MEFpdWFMcUpLQlplNE5lMi9DdGpQclpxTVdFMmRvaTdGNjlLUWt2VVhE?=
+ =?utf-8?B?ZEc1RmRNeEZ0SkladHBpNFZnL29qNmN4WEI3YURrS2UzZlNhNFVtRGpobzhG?=
+ =?utf-8?B?QnMyempKaDJqY3Z5dHRmZHFqWGVKOHVyU29mTTI2aDYwTjJFbXVuRkRWRWhz?=
+ =?utf-8?B?ZGU5OW9qSkNzOS9nRGlPeFdKQ0FVTkkzbFBkNFdjMzl6S2xITFgyNW5pVER6?=
+ =?utf-8?B?RFJoVkVtQWRUSUo0NXV2QnFZd1ZvTWRBZFJ6K2x3aUZ3ZUVtVUpFS3ZrUW9m?=
+ =?utf-8?B?Q2Z0U3A2Rmp5NEpTcUc5N3dTdFB2S0VIUXFZQUVLU3d1a056M2dqM2dsYWFm?=
+ =?utf-8?B?Zllsb0ZFREFiOEdqbjllRmVxcjdmUDVHUlVjOGpkNmliN3ZxRGlRNXFpSzlJ?=
+ =?utf-8?B?RUFlRnRnOWpiZm1FblF3TjkzSzByWDFvdlh4b3VQaXRmRjBaNklUd29QcklU?=
+ =?utf-8?B?RjNNRnd4N1MwaXV4eVdBcnNYVjB4ZDBRUDM5eWdETFJRN2dqOFpqcWZOZE1r?=
+ =?utf-8?B?YVhCYW0wUStOUmk5TjdaVThpcXA0QWJsL3VwMXkwL1VFOWFwcm44OGh4RTNY?=
+ =?utf-8?B?Wnc4WWQzMlEyU2VONzBwZUV4ZEEzWWcwY3U1c04wZEhSVU44eU1Hdz09?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b012bf65-4bca-4e96-2bfd-08df36cabd2d
+X-MS-Exchange-CrossTenant-Network-Message-Id: 36518550-f433-4e60-11ca-08df36cb43ce
 X-MS-Exchange-CrossTenant-AuthSource: IA3PR12MB923065.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Oct 2026 21:14:09.6107 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Oct 2026 21:17:55.4554 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Gxax5yHCDJcXT8OOZmqAVB0PMZFKICoRsQTtCoXFuxKUobFi5rjchAwXtvFK5oXnWoKrVy6KxR4RjZTTQF4XQw==
+X-MS-Exchange-CrossTenant-UserPrincipalName: HO90sDzelliqDC8J0IFmdekizPcY6f+mZTl+uo3z9zVA5+P1IujrduzgbObBWqHoDJD2YDxrVYSOEcitQBDqaQ==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB8347
-Received-SPF: pass client-ip=2a01:111:f403:c005::5;
+Received-SPF: pass client-ip=2a01:111:f403:c110::3;
  envelope-from=tdave@nvidia.com;
- helo=CO1PR03CU002.outbound.protection.outlook.com
+ helo=BN8PR05CU002.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -161,7 +161,7 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 
 
-On 10/27/2026 10:41 AM, Shameer Kolothum Thodi wrote:
+On 10/27/2026 11:04 AM, Shameer Kolothum Thodi wrote:
 > 
 > 
 >> -----Original Message-----
@@ -172,69 +172,52 @@ On 10/27/2026 10:41 AM, Shameer Kolothum Thodi wrote:
 >> marcel@redhat.com; devel@edk2.groups.io; Alex Williamson
 >> <alwilliamson@nvidia.com>; Jason Gunthorpe <jgg@nvidia.com>; Shameer
 >> Kolothum Thodi <skolothumtho@nvidia.com>
->> Subject: [PATCH 2/5] pci: add validation for fixed BAR configuration
+>> Subject: [PATCH 3/5] pci: add fixed BAR fw_cfg blob export
 >>
->> Validate the fixed BAR configuration specified through the
->> fixed-bar-N properties on PCI endpoint devices.
+>> Introduce a fixed BAR fw_cfg blob exporter that serializes PCI
+>> device and BAR information into the "etc/fixed-bars" fw_cfg file.
 >>
->> Configuring any fixed-bar-N property on an endpoint device requires
->> every memory BAR on that device to have a fixed address. Validate
->> that each assigned address:
->>
->> - is aligned to its BAR size;
->> - is within the appropriate PCIe MMIO aperture; and
->> - does not overlap any other fixed BAR.
->>
->> Under a PCIe topology with a root port, fixed BAR placement is
->> all-or-nothing within that root port's subtree. If any one endpoint
->> device below the root port has a fixed BAR, every other endpoint
->> device below that same root port with a memory BAR must have all of
->> its memory BARs fixed too.
->>
->> Endpoint devices with no root port in their ancestry, such as those
->> attached directly to the host bridge, are not required to match
->> their sibling devices. One such device may use fixed-bar-N for all
->> of its memory BARs while another sibling device on the same host
->> bridge uses none at all. Per-device completeness still applies
->> regardless of ancestry. Once any fixed-bar-N property is set on a
->> device, every memory BAR on that device must be fixed.
->>
->> Abort QEMU if any validation fails.
+>> The blob contains an entry for every PCI function with memory BARs.
+>> Each entry carries the device's vendor and device ID, whether it
+>> has a fixed BAR configuration, and its firmware device path. Fixed
+>> BAR entries also include the configured BAR address, size, and type
+>> information for each BAR.
 >>
 >> Signed-off-by: Tushar Dave <tdave@nvidia.com>
 >> ---
->>  hw/pci/meson.build              |   1 +
->>  hw/pci/pci-fixed-bar-validate.c | 326
->> ++++++++++++++++++++++++++++++++
->>  hw/pci/pci-fixed-bar-validate.h |  21 ++
->>  3 files changed, 348 insertions(+)
->>  create mode 100644 hw/pci/pci-fixed-bar-validate.c
->>  create mode 100644 hw/pci/pci-fixed-bar-validate.h
+>>  hw/pci/meson.build          |   1 +
+>>  hw/pci/pci-fixed-bar-blob.c | 305
+>> ++++++++++++++++++++++++++++++++++++
+>>  hw/pci/pci-fixed-bar.h      |  63 ++++++++
+>>  3 files changed, 369 insertions(+)
+>>  create mode 100644 hw/pci/pci-fixed-bar-blob.c
+>>  create mode 100644 hw/pci/pci-fixed-bar.h
 >>
 >> diff --git a/hw/pci/meson.build b/hw/pci/meson.build
->> index 984c7327e5..150085c997 100644
+>> index 150085c997..b81cc056c0 100644
 >> --- a/hw/pci/meson.build
 >> +++ b/hw/pci/meson.build
->> @@ -19,6 +19,7 @@ endif
->>  pci_ss.add(files('pcie.c', 'pcie_aer.c'))
+>> @@ -20,6 +20,7 @@ pci_ss.add(files('pcie.c', 'pcie_aer.c'))
 >>  pci_ss.add(files('pcie_doe.c'))
 >>  system_ss.add(when: 'CONFIG_PCI_EXPRESS', if_true: files('pcie_port.c',
 >> 'pcie_host.c'))
->> +system_ss.add(when: 'CONFIG_PCI_EXPRESS', if_true: files('pci-fixed-bar-
+>>  system_ss.add(when: 'CONFIG_PCI_EXPRESS', if_true: files('pci-fixed-bar-
 >> validate.c'))
+>> +system_ss.add(when: 'CONFIG_PCI_EXPRESS', if_true: files('pci-fixed-bar-
+>> blob.c'))
 >>  system_ss.add_all(when: 'CONFIG_PCI', if_true: pci_ss)
 >>
 >>  stub_ss.add(files('pci-stub.c'))
->> diff --git a/hw/pci/pci-fixed-bar-validate.c b/hw/pci/pci-fixed-bar-validate.c
+>> diff --git a/hw/pci/pci-fixed-bar-blob.c b/hw/pci/pci-fixed-bar-blob.c
 >> new file mode 100644
->> index 0000000000..0b5baad8a0
+>> index 0000000000..b9fdc6b7d4
 >> --- /dev/null
->> +++ b/hw/pci/pci-fixed-bar-validate.c
->> @@ -0,0 +1,326 @@
+>> +++ b/hw/pci/pci-fixed-bar-blob.c
+>> @@ -0,0 +1,305 @@
 >> +/*
 >> + * Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights
 >> reserved
->> + * BAR address validation for fixed-BAR placement.
+>> + * Write validated fixed-BAR device info to the etc/fixed-bars fw_cfg blob.
 >> + *
 >> + * Written by Tushar Dave
 >> + *
@@ -242,224 +225,351 @@ On 10/27/2026 10:41 AM, Shameer Kolothum Thodi wrote:
 >> + */
 >> +
 >> +#include "qemu/osdep.h"
+>> +#include "hw/nvram/fw_cfg.h"
 >> +#include "hw/pci/pci.h"
 >> +#include "hw/pci/pci_bridge.h"
 >> +#include "hw/pci/pci_host.h"
 >> +#include "hw/pci/pcie_port.h"
+>> +#include "hw/core/qdev.h"
 >> +#include "qemu/error-report.h"
->> +#include "qemu/range.h"
->> +#include "qemu/units.h"
 >> +#include "pci-internal.h"
+>> +#include "pci-fixed-bar.h"
 >> +#include "pci-fixed-bar-validate.h"
 >> +
->> +/*
->> + * Claimed BAR ranges — detect inter-device and inter-hierarchy overlaps
->> + * across all fixed BARs system-wide.
->> + */
+>> +typedef struct {
+>> +    uint8_t  bar;
+>> +    uint32_t flags;
+>> +    uint64_t addr;
+>> +    uint64_t size;
+>> +} BarInfo;
+>> +
+>> +/* One PCI function entry to be written to the blob. */
+>> +typedef struct {
+>> +    uint8_t  rp_bus;     /* primary bus of the root port this device is under */
+>> +    uint16_t vendor_id;
+>> +    uint16_t device_id;
+>> +    bool     is_fixed;
+>> +    char     fw_path[QEMU_FIXED_BARS_MAX_PATH];
+>> +    GArray  *bars;  /* array of BarInfo */
+>> +} DeviceInfo;
 >> +
 >> +typedef struct {
->> +    uint64_t    start;
->> +    uint64_t    end;
->> +    const char *owner;  /* device name, for error messages */
->> +    int         bar;
->> +} FixedClaim;
+>> +    GArray *devices;
+>> +    PCIBus *root_bus;
+>> +} CollectCtx;
 >> +
->> +static GArray *fixed_claims;
-> 
-> Can this live in the FixedBarsInfo instead? IIUC, the info context is
-> already passed through the walk, and the claims only need to exist
-> for that validation pass?
-
-Sure.
-
-> 
+>> +static void collect_device(PCIBus *bus, PCIDevice *pdev, void *opaque);
 >> +
->> +static void fixed_claims_init(void)
+>> +/* Visit every device on this bus, in devfn order. */
+>> +static void collect_bus(PCIBus *bus, void *opaque)
 >> +{
->> +    if (fixed_claims) {
->> +        g_array_free(fixed_claims, true);
->> +    }
->> +    fixed_claims = g_array_new(false, true, sizeof(FixedClaim));
+>> +    pci_for_each_device_under_bus(bus, collect_device, opaque);
 >> +}
 >> +
->> +static void fixed_claims_free(void)
+>> +/*
+>> + * Primary bus number of the nearest TYPE_PCIE_ROOT_PORT ancestor of
+>> bus
+>> + * — i.e. the bus the root port device itself lives on, not its
+>> + * secondary bus. Falls back to the host bridge's own bus number if bus
+>> + * isn't under any root port (e.g. a device directly on the host
+>> + * bridge's primary bus).
+>> + */
+>> +static uint8_t find_root_port_bus(PCIBus *bus, PCIBus *host_bus)
 >> +{
->> +    g_array_free(fixed_claims, true);
->> +    fixed_claims = NULL;
->> +}
+>> +    PCIDevice *parent;
 >> +
->> +static bool fixed_claims_overlap(uint64_t start, uint64_t end,
->> +                                 const char **owner_out, int *bar_out,
->> +                                 uint64_t *start_out, uint64_t *end_out)
->> +{
->> +    FixedClaim *c;
->> +    guint i;
->> +
->> +    for (i = 0; i < fixed_claims->len; i++) {
->> +        c = &g_array_index(fixed_claims, FixedClaim, i);
->> +        if (ranges_overlap(start, end - start + 1,
->> +                           c->start, c->end - c->start + 1)) {
->> +            *owner_out = c->owner;
->> +            *bar_out   = c->bar;
->> +            *start_out = c->start;
->> +            *end_out   = c->end;
->> +            return true;
+>> +    while (bus) {
+>> +        parent = bus->parent_dev;
+>> +        if (!parent) {
+>> +            break;
 >> +        }
+>> +        if (object_dynamic_cast(OBJECT(parent), TYPE_PCIE_ROOT_PORT)) {
+>> +            return pci_bus_num(pci_get_bus(parent));
+>> +        }
+>> +        bus = pci_get_bus(parent);
 >> +    }
->> +    return false;
+>> +    return pci_bus_num(host_bus);
 >> +}
 >> +
->> +static void fixed_claims_add(uint64_t start, uint64_t end,
->> +                             const char *owner, int bar)
+>> +static void collect_device(PCIBus *bus, PCIDevice *pdev, void *opaque)
 >> +{
->> +    FixedClaim cl;
->> +
->> +    cl.start = start;
->> +    cl.end   = end;
->> +    cl.owner = owner;
->> +    cl.bar   = bar;
->> +    g_array_append_val(fixed_claims, cl);
->> +}
->> +
->> +static bool validate_bars(PCIDevice *pdev, FixedBarsInfo *info,
->> +                          bool is_fixed_subtree)
->> +{
->> +    const char  *devname = DEVICE(pdev)->id ? DEVICE(pdev)->id : pdev-
->>> name;
->> +    const char  *overlap_owner;
->> +    const char  *wname;
->> +    bool         has_fixed_bars = false;
->> +    bool         is_64bit;
->> +    uint64_t     addr, end, wbase, wlim, overlap_start, overlap_end;
+>> +    CollectCtx *ctx = opaque;
+>> +    bool has_mem_bar = false;
+>> +    bool is_64bit, is_pref;
+>> +    DeviceInfo dev;
 >> +    PCIIORegion *r;
->> +    int          overlap_bar;
->> +    int          i;
+>> +    PCIBus *sec;
+>> +    BarInfo bi;
+>> +    int i;
 >> +
 >> +    for (i = 0; i < PCI_NUM_REGIONS - 1; i++) {
->> +        if (pdev->fixed_bar_addr[i] != PCI_BAR_UNMAPPED) {
->> +            has_fixed_bars = true;
+>> +        r = &pdev->io_regions[i];
+>> +        if (r->size && !(r->type & PCI_BASE_ADDRESS_SPACE_IO)) {
+>> +            has_mem_bar = true;
 >> +            break;
 >> +        }
 >> +    }
 >> +
->> +    if (is_fixed_subtree && !has_fixed_bars) {
->> +        error_report("fixed-bar: %s [%02x:%02x.%x] under fixed-bar root "
->> +                     "port has memory BARs but no fixed-bar-N= specified",
->> +                     devname, pci_dev_bus_num(pdev),
->> +                     PCI_SLOT(pdev->devfn), PCI_FUNC(pdev->devfn));
+>> +    /*
+>> +     * Every device with a memory BAR gets an entry, fixed or not — not
+>> +     * just ones with fixed-bar-N= set. This preserves the exact device
+>> +     * sequence CheckDevice() needs for positional VID:DID matching (see
+>> +     * collect_all_host_bridges()); only fixed devices carry BAR records
+>> +     * (dev.bars stays empty, dev.is_fixed false, otherwise).
+>> +     */
+>> +    if (has_mem_bar) {
+>> +        g_autofree char *fw_path = qdev_get_fw_dev_path(DEVICE(pdev));
+>> +
+>> +        memset(&dev, 0, sizeof(dev));
+>> +        dev.rp_bus    = find_root_port_bus(bus, ctx->root_bus);
+>> +        dev.vendor_id = pci_get_word(pdev->config + PCI_VENDOR_ID);
+>> +        dev.device_id = pci_get_word(pdev->config + PCI_DEVICE_ID);
+>> +        dev.is_fixed  = false;
+>> +        for (i = 0; i < PCI_NUM_REGIONS - 1; i++) {
+>> +            if (pdev->fixed_bar_addr[i] != PCI_BAR_UNMAPPED) {
+>> +                dev.is_fixed = true;
+>> +                break;
+>> +            }
+>> +        }
+>> +        if (fw_path) {
+>> +            g_strlcpy(dev.fw_path, fw_path, sizeof(dev.fw_path));
+>> +        }
+>> +        dev.bars = g_array_new(false, true, sizeof(BarInfo));
+>> +
+>> +        if (dev.is_fixed) {
+>> +            for (i = 0; i < PCI_NUM_REGIONS - 1; i++) {
+>> +                r = &pdev->io_regions[i];
+>> +                if (!r->size || (r->type & PCI_BASE_ADDRESS_SPACE_IO)) {
+>> +                    continue;
+>> +                }
+>> +                is_64bit = !!(r->type & PCI_BASE_ADDRESS_MEM_TYPE_64);
+>> +                is_pref  = !!(r->type & PCI_BASE_ADDRESS_MEM_PREFETCH);
+>> +
+>> +                memset(&bi, 0, sizeof(bi));
+>> +                bi.bar   = i;
+>> +                bi.addr  = (uint64_t)pdev->fixed_bar_addr[i];
+>> +                bi.size  = r->size;
+>> +                bi.flags = (is_64bit ? QEMU_FIXED_BAR_F_MEM64 : 0) |
+>> +                           (is_pref  ? QEMU_FIXED_BAR_F_PREF  : 0);
+>> +                g_array_append_val(dev.bars, bi);
+>> +            }
+>> +        }
+>> +        g_array_append_val(ctx->devices, dev);
+>> +    }
+>> +
+>> +    if (!object_dynamic_cast(OBJECT(pdev), TYPE_PCI_BRIDGE)) {
+>> +        return;
+>> +    }
+>> +    sec = pci_bridge_get_sec_bus(PCI_BRIDGE(pdev));
+>> +    if (sec) {
+>> +        collect_bus(sec, opaque);
+>> +    }
+>> +}
+>> +
+>> +static gint cmp_host_bus_num(gconstpointer a, gconstpointer b)
+>> +{
+>> +    PCIHostState *ha = *(PCIHostState **)a;
+>> +    PCIHostState *hb = *(PCIHostState **)b;
+>> +    return (gint)pci_bus_num(ha->bus) - (gint)pci_bus_num(hb->bus);
+>> +}
+>> +
+>> +/*
+>> + * EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL's CheckDevice
+>> interface
+>> + * (UEFI PI Spec 1.2 Vol 5) only passes VendorId/DeviceId/RevisionId/
+>> + * SubsystemVendorId/SubsystemDeviceId, no BDF — so in EDK2 we can't
+>> + * match a blob entry to a specific device directly using BDF. To work
+>> + * around that, we prepare the blob entries in the same order PciBusDxe
+>> + * discovers devices, so matching by VID:DID inherently works.
+>> + */
+> 
+> The blob now also includes firmware device paths for future matching, right?
+> Should we mention that as well?
+
+Sure I'll add a note.
+
+>  
+>> +static void collect_all_host_bridges(CollectCtx *ctx)
+>> +{
+>> +    PCIHostState *hb;
+>> +    GPtrArray *sorted;
+>> +    guint i;
+>> +
+>> +    sorted = g_ptr_array_new();
+>> +    QLIST_FOREACH(hb, &pci_host_bridges, next) {
+>> +        if (hb->bus) {
+>> +            g_ptr_array_add(sorted, hb);
+>> +        }
+>> +    }
+>> +    g_ptr_array_sort(sorted, cmp_host_bus_num);
+>> +
+>> +    for (i = 0; i < sorted->len; i++) {
+>> +        hb = g_ptr_array_index(sorted, i);
+>> +        ctx->root_bus = hb->bus;
+>> +        collect_bus(hb->bus, ctx);
+>> +    }
+>> +
+>> +    g_ptr_array_free(sorted, true);
+>> +}
+>> +
+>> +static uint8_t *create_blob(CollectCtx *ctx, size_t *blob_size)
+>> +{
+>> +    QemuFixedBarsDevice *dout;
+>> +    QemuFixedBarsBar *bout;
+>> +    QemuFixedBarsHdr *hdr;
+>> +    DeviceInfo *dev;
+>> +    uint8_t *blob;
+>> +    uint8_t *ptr;
+>> +    BarInfo *bi;
+>> +    size_t sz;
+>> +    guint d, b;
+>> +
+>> +    sz = sizeof(QemuFixedBarsHdr);
+>> +    for (d = 0; d < ctx->devices->len; d++) {
+>> +        dev = &g_array_index(ctx->devices, DeviceInfo, d);
+>> +        sz += sizeof(QemuFixedBarsDevice);
+>> +        sz += dev->bars->len * sizeof(QemuFixedBarsBar);
+>> +    }
+>> +
+>> +    blob = g_malloc0(sz);
+>> +    hdr  = (QemuFixedBarsHdr *)blob;
+>> +    hdr->version     = cpu_to_le32(QEMU_FIXED_BARS_VERSION);
+>> +    hdr->num_devices = cpu_to_le32(ctx->devices->len);
+>> +
+>> +    ptr = blob + sizeof(*hdr);
+>> +    for (d = 0; d < ctx->devices->len; d++) {
+>> +        dev  = &g_array_index(ctx->devices, DeviceInfo, d);
+>> +        dout = (QemuFixedBarsDevice *)ptr;
+>> +
+>> +        dout->vendor_id = cpu_to_le16(dev->vendor_id);
+>> +        dout->device_id = cpu_to_le16(dev->device_id);
+>> +        dout->dev_flags = dev->is_fixed ? QEMU_FIXED_BARS_DEV_F_FIXED : 0;
+>> +        dout->rp_bus    = dev->rp_bus;
+>> +        dout->num_bars  = dev->bars->len;
+>> +        dout->reserved  = 0;
+>> +        memcpy(dout->fw_path, dev->fw_path, sizeof(dout->fw_path));
+>> +        ptr += sizeof(QemuFixedBarsDevice);
+>> +
+>> +        for (b = 0; b < dev->bars->len; b++) {
+>> +            bi   = &g_array_index(dev->bars, BarInfo, b);
+>> +            bout = (QemuFixedBarsBar *)ptr;
+>> +
+>> +            bout->bar     = bi->bar;
+>> +            bout->flags   = cpu_to_le32(bi->flags);
+>> +            bout->address = cpu_to_le64(bi->addr);
+>> +            bout->size    = cpu_to_le64(bi->size);
+>> +            ptr += sizeof(QemuFixedBarsBar);
+>> +        }
+>> +    }
+>> +
+>> +    *blob_size = sz;
+>> +    return blob;
+>> +}
+>> +
+>> +/*
+>> + * fixed_bars_write_blob - validate fixed BAR addresses and write fw_cfg
+>> blob.
+>> + *
+>> + * @fw_cfg:       fw_cfg state to write the etc/fixed-bars blob into.
+>> + * @mmio32_base:  base of the machine's 32-bit PCIe MMIO aperture.
+>> + * @mmio32_size:  size of the machine's 32-bit PCIe MMIO aperture.
+>> + * @mmio64_base:  base of the machine's 64-bit PCIe MMIO aperture.
+>> + * @mmio64_size:  size of the machine's 64-bit PCIe MMIO aperture.
+>> + *
+>> + * Returns true if any fixed BAR device was found and the blob was
+>> + * written, false if there was nothing to do. Aborts if any BAR
+>> + * address fails validation.
+>> + */
+>> +bool fixed_bars_write_blob(FWCfgState *fw_cfg,
+>> +                           uint64_t mmio32_base,
+>> +                           uint64_t mmio32_size,
+>> +                           uint64_t mmio64_base,
+>> +                           uint64_t mmio64_size)
+>> +{
+>> +    FixedBarsInfo info;
+>> +    CollectCtx ctx;
+>> +    uint8_t *blob;
+>> +    size_t blob_size;
+>> +    guint d;
+>> +
+>> +    if (!mmio32_size || !mmio64_size) {
+>> +        error_report("fixed-bar: zero-size PCIe MMIO aperture "
+>> +                     "(32-bit=0x%"PRIx64", 64-bit=0x%"PRIx64")",
+>> +                     mmio32_size, mmio64_size);
+>> +        exit(1);
+>> +    }
+>> +    if (mmio32_size - 1 > UINT64_MAX - mmio32_base ||
+>> +        mmio64_size - 1 > UINT64_MAX - mmio64_base) {
+>> +        error_report("fixed-bar: PCIe MMIO aperture base+size overflows "
+>> +                     "(32-bit base=0x%"PRIx64" size=0x%"PRIx64", "
+>> +                     "64-bit base=0x%"PRIx64" size=0x%"PRIx64")",
+>> +                     mmio32_base, mmio32_size, mmio64_base, mmio64_size);
 >> +        exit(1);
 >> +    }
 >> +
->> +    if (!has_fixed_bars) {
+>> +    info.mmio32_base = mmio32_base;
+>> +    info.mmio32_limit = mmio32_base + mmio32_size - 1;
+>> +    info.mmio64_base = mmio64_base;
+>> +    info.mmio64_limit = mmio64_base + mmio64_size - 1;
+>> +
+>> +    if (!fixed_bars_validate(&info)) {
 >> +        return false;
 >> +    }
 >> +
->> +    /* Completeness: every memory BAR must have an address. */
->> +    for (i = 0; i < PCI_NUM_REGIONS - 1; i++) {
->> +        r = &pdev->io_regions[i];
->> +        if (!r->size || (r->type & PCI_BASE_ADDRESS_SPACE_IO)) {
->> +            continue;
->> +        }
->> +        if (pdev->fixed_bar_addr[i] == PCI_BAR_UNMAPPED) {
->> +            error_report("fixed-bar: %s [%02x:%02x.%x] BAR%d "
->> +                         "missing a fixed-bar-N= value",
->> +                         devname, pci_dev_bus_num(pdev),
->> +                         PCI_SLOT(pdev->devfn), PCI_FUNC(pdev->devfn), i);
->> +            exit(1);
->> +        }
+>> +    ctx.devices  = g_array_new(false, true, sizeof(DeviceInfo));
+>> +    ctx.root_bus = NULL;
+>> +    collect_all_host_bridges(&ctx);
+>> +
+>> +    blob = create_blob(&ctx, &blob_size);
+>> +    fw_cfg_add_file(fw_cfg, FW_CFG_FIXED_BARS, blob, blob_size);
+>> +
+>> +    for (d = 0; d < ctx.devices->len; d++) {
+>> +        g_array_free(g_array_index(ctx.devices, DeviceInfo, d).bars, true);
 >> +    }
+>> +    g_array_free(ctx.devices, true);
 >> +
->> +    /* Per-BAR checks: alignment, MMIO window, overlap. */
->> +    for (i = 0; i < PCI_NUM_REGIONS - 1; i++) {
->> +        r = &pdev->io_regions[i];
->> +        if (!r->size || (r->type & PCI_BASE_ADDRESS_SPACE_IO)) {
->> +            continue;
->> +        }
+>> +    return true;
+>> +}
+>> diff --git a/hw/pci/pci-fixed-bar.h b/hw/pci/pci-fixed-bar.h
+>> new file mode 100644
+>> index 0000000000..0d4e31b301
+>> --- /dev/null
+>> +++ b/hw/pci/pci-fixed-bar.h
+>> @@ -0,0 +1,63 @@
+>> +/*
+>> + * Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights
+>> reserved
+>> + * Fixed-BAR — QEMU side declarations.
+>> + *
+>> + * Written by Tushar Dave
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#ifndef HW_PCI_FIXED_BAR_H
+>> +#define HW_PCI_FIXED_BAR_H
 >> +
->> +        is_64bit = !!(r->type & PCI_BASE_ADDRESS_MEM_TYPE_64);
->> +        addr     = (uint64_t)pdev->fixed_bar_addr[i];
+>> +#include "hw/nvram/fw_cfg.h"
+>> +#include "hw/pci/pci_bus.h"
 >> +
->> +        if (r->size - 1 > UINT64_MAX - addr) {
->> +            error_report("fixed-bar: %s [%02x:%02x.%x] BAR%d "
->> +                         "addr=0x%"PRIx64" + size=0x%"PRIx64" overflows",
->> +                         devname, pci_dev_bus_num(pdev),
->> +                         PCI_SLOT(pdev->devfn), PCI_FUNC(pdev->devfn),
->> +                         i, addr, r->size);
->> +            exit(1);
->> +        }
->> +        end = addr + r->size - 1;
+>> +#define FW_CFG_FIXED_BARS        "etc/fixed-bars"
+>> +#define QEMU_FIXED_BARS_VERSION  1
+>> +#define QEMU_FIXED_BARS_MAX_PATH 128
 >> +
->> +        if (is_64bit && !(r->type & PCI_BASE_ADDRESS_MEM_PREFETCH) &&
->> +            !pci_bus_is_root(pci_get_bus(pdev)) && addr >= 4 * GiB) {
->> +            error_report("fixed-bar: %s [%02x:%02x.%x] BAR%d is a "
->> +                         "non-prefetchable 64-bit BAR behind a PCI bridge "
->> +                         "and cannot be placed above 4GB",
->> +                         devname, pci_dev_bus_num(pdev),
->> +                         PCI_SLOT(pdev->devfn), PCI_FUNC(pdev->devfn), i);
->> +            exit(1);
->> +        }
->> +
->> +        /*
->> +         * wbase/wlim are both inclusive bounds (mmio*_limit = base+size-1,
->> +         * set by the caller alongside mmio*_base), matching end's own
->> +         * inclusive computation above.
->> +         */
->> +        if (is_64bit) {
->> +            wbase = info->mmio64_base;
->> +            wlim  = info->mmio64_limit;
->> +            wname = "64-bit MMIO";
->> +        } else {
->> +            wbase = info->mmio32_base;
->> +            wlim  = info->mmio32_limit;
->> +            wname = "32-bit MMIO";
->> +        }
->> +
->> +        if (addr & (r->size - 1)) {
->> +            error_report("fixed-bar: %s [%02x:%02x.%x] BAR%d "
->> +                         "addr=0x%"PRIx64" not aligned to size=0x%"PRIx64,
->> +                         devname, pci_dev_bus_num(pdev),
->> +                         PCI_SLOT(pdev->devfn), PCI_FUNC(pdev->devfn),
->> +                         i, addr, r->size);
->> +            exit(1);
->> +        }
->> +
->> +        if (addr < wbase || end > wlim) {
+>> +/*
+>> + * On-wire layout (little-endian, packed):
+>> + *
+>> + *   QemuFixedBarsHdr
+>> + *
+>> + *   For each device (num_devices total):
+>> + *     QemuFixedBarsDevice               -- device header
+>> + *     QemuFixedBarsBar[num_bars]        -- one record per BAR (FIXED only)
+>> + */
 > 
-> This will reject a 64-bit BAR whose requested address falls within
-> the low MMIO aperture. That is a valid placement, right?
-> 
-> Is restricting 64-bit BARs to the high aperture intentional?
+> Could we document this new etc/fixed-bars format under docs/specs/ ?
 
-We shouldn't have to. I will amend this in V2.
-> 
->> +            error_report("fixed-bar: %s [%02x:%02x.%x] BAR%d "
->> +                         "[0x%"PRIx64"..0x%"PRIx64"] outside %s window "
->> +                         "[0x%"PRIx64"..0x%"PRIx64"]",
->> +                         devname, pci_dev_bus_num(pdev),
->> +                         PCI_SLOT(pdev->devfn), PCI_FUNC(pdev->devfn),
->> +                         i, addr, end, wname, wbase, wlim);
->> +            exit(1);
->> +        }
->> +
->> +        if (fixed_claims_overlap(addr, end, &overlap_owner, &overlap_bar,
->> +                                 &overlap_start, &overlap_end)) {
->> +            error_report("fixed-bar: %s [%02x:%02x.%x] BAR%d "
->> +                         "[0x%"PRIx64"..0x%"PRIx64"] overlaps %s BAR%d "
->> +                         "[0x%"PRIx64"..0x%"PRIx64"]",
->> +                         devname, pci_dev_bus_num(pdev),
->> +                         PCI_SLOT(pdev->devfn), PCI_FUNC(pdev->devfn),
->> +                         i, addr, end, overlap_owner, overlap_bar,
->> +                         overlap_start, overlap_end);
->> +            exit(1);
-> 
-> May be better if we could pass an Error **errp through the helpers instead
-> of calling exit(1) here and let the machine code handle the error?
+Yes, I will add it into docs/specs/pci-fixed-bars.rst
 
-Yes.
-
-Thanks.
 -Tushar
-
 > 
 > Thanks,
 > Shameer

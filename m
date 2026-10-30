@@ -1,124 +1,140 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD56B606A31E
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Oct 2026 23:03:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CB9DD606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 02:02:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256 header.s=selector1 header.b=w6Oyymua
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=jTs4DqdP
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMZ8h-0001sI-ED; Thu, 29 Oct 2026 19:02:31 -0400
+	id 1xMbwQ-00066F-4b; Thu, 29 Oct 2026 22:02:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Michael.Roth@amd.com>)
- id 1xMZ8Z-0001r7-LV; Thu, 29 Oct 2026 19:02:23 -0400
-Received: from mail-westus3azlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xMbwO-00063j-27; Thu, 29 Oct 2026 22:02:00 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Michael.Roth@amd.com>)
- id 1xMZ8V-00047W-QG; Thu, 29 Oct 2026 19:02:23 -0400
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xMbwL-0002fD-6F; Thu, 29 Oct 2026 22:01:59 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ZqY7sMtpjhngGT7E2hAwaX60YawTaTR5yWk9o3Ay3UG7e0ZK2/rBaeQGlM41lfwWxGUS6UM6Up5rLqMIgXhBAczt4Ie2Slh/HAk5dUbCKIdFshB5Gnb9QJiPdahTSM989I/2Aj8w1nkpUYK4fUpCTjcFMKl5ly/SZhjn1BVqQItZS0+YYgAii1ZTgllQQ1GzwsPeHh4AaQw4r52IX538a63IGvGs++/+SkiOZWY4yUfTNpWpF1O+zr7WqswwVg1s96pQulV9DdjMi8T1Yh9KmfUEk5uKi2vOqy3HDGArqCwRrDmYAH8sVNynhgd49eZwKfGiLEb83DrJ2LDt0EQBLA==
+ b=MrDaxSbbGipkN8ZtT50wD5QEVIlK5PKD1eRIygBRaTSJSCJL3jPAQT7q8SUv78b19n6tK1JUQoJz7D3Tqw/qqVCxVocHYEBNPBNb433FfXMjTT7CJqk0O/6ri3LXPspPClPCXOBE9BpjLEGr+x5cylfcdx8kHaJsRMptyadElm33gpacjqLEPtCe3tNONqtFb+YmzowEjGSHnS7IK7p6nuSkEaireFmRkTC02sp9WhNBSJpfQVCPpKuV3J866sysh90IO2uMIjLZcwS1Jw5Wox6jTXBB0VwfiAmUsIlN6ZU1fP7Qwnx9yO12QJdfqZG4PILqfiGuVZPTRMSRcZQhfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GZrx6eul7qIXwBnSONA+s5/t8vkBMPjoBdp91I0wiAE=;
- b=OPTwbizVVpxceZjRorHJO2rfzoP4aKaM/yL9Gyspxujhbg6VGg/x/IhqJoJCidGKU5PaVUG8xzKzN4NZB7l6oh/zDb65Z/nHw/uaCGS1YDMfrEeK0nItS3Q+YtADklcVj9FLFe5yYlJrCxDsUxa/x1dSwTGHuF1UOszSgNZb1dF0xM3YcKOl0gJt/Ac77nTKjSxpAlnp8xdRmPNFnNTWEgZ5D0cKJiTKkx+wkBYPiR3nSchkQhy205/n6E9TImZJTOtFIS7+4hurBVeHPCNbcg8egeRhnuxp1Fxvr8QHxuVgx1rfjZOcoudJCnlv2SYSvYT5t19gzNjRtgXiE0Rd3w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=kernel.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ bh=WoBjLWxzpnbg4UhqPhSIW9qKhBPfnzBn2k5ioIjZPLs=;
+ b=VMg9N03DryWIa554qPBwqvLLyfJ4Ks9WBqFDDwX5xFIQv6Lhd6Q+8k/NzMysTagumFWqBuOTbv1mOiLw19DcBxvBbVmeTW/blRkp3k1vIPIJWkOjGb/YDpAKFPhIE/AC2xZRZHRaFQFXQYMSVG/8HHTBKyJpICYWuvvBcXHbnLjMugjzvx6h1qbfglMVPmxFd0/W+5w5ya1s31DthOcQSgVW7aviNY1qzyafARPj5vhfPbbTNbU4+cl+ZXr/Q6GD9krKo3rB6ivaLrabKPxyuSM9w2o5Q7xCgk5rRO4SznoAKEmuB6LlNftFCqFqoutJlTAqJv3S0AFCgoJtAwkyMQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GZrx6eul7qIXwBnSONA+s5/t8vkBMPjoBdp91I0wiAE=;
- b=w6Oyymua/NTtAKAFpMHIY1CjMHcEmogO2wit6/Ia3FgyFGgqLyI37FAmzQmx53LUIW7UwN2n5uZtyFrIlJ8CfYiSNl3+Cj336/anJIYSRaJHpBUIV9Vcd18k6gXUX/pRCPsFcJY/1hlivlCCOjOI8AFR8q1EY9Y0A4eI1dAPHn4=
-Received: from BY3PR05CA0054.namprd05.prod.outlook.com (2603:10b6:a03:39b::29)
- by SN7PR12MB7977.namprd12.prod.outlook.com (2603:10b6:806:340::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.22; Thu, 29 Oct
- 2026 23:02:10 +0000
-Received: from BY1PEPF0002696B.namprd05.prod.outlook.com
- (2603:10b6:a03:39b:cafe::4d) by BY3PR05CA0054.outlook.office365.com
- (2603:10b6:a03:39b::29) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.592.4 via Frontend Transport; Thu, 29
- Oct 2026 23:02:10 +0000
-X-MS-Exchange-Authentication-Results: mx.microsoft.com 1; spf=pass (sender IP
- is 165.204.84.17) smtp.mailfrom=amd.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=satlexmb07.amd.com; pr=C
-Received: from satlexmb07.amd.com (165.204.84.17) by
- BY1PEPF0002696B.mail.protection.outlook.com (10.167.244.155) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.569.4 via Frontend Transport; Thu, 29 Oct 2026 23:02:10 +0000
-Received: from localhost (10.180.168.240) by satlexmb07.amd.com
- (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.53; Thu, 29 Oct
- 2026 18:02:10 -0500
-Date: Thu, 29 Oct 2026 18:01:53 -0500
-From: Michael Roth <michael.roth@amd.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>
-CC: Mathieu Poirier <mathieu.poirier@linaro.org>, Kohei Enju
- <enju.kohei@fujitsu.com>, <gshan@redhat.com>, <berrange@redhat.com>,
- <kchamart@redhat.com>, <pierrick.bouvier@oss.qualcomm.com>,
- <peter.maydell@linaro.org>, <mst@redhat.com>, <cohuck@redhat.com>,
- <pbonzini@redhat.com>, <eblake@redhat.com>, <armbru@redhat.com>,
- <lorenzo.pieralisi@linaro.org>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <kvm@vger.kernel.org>
-Subject: Re: [RFC v4 03/24] target/arm: Add confidential guest support
-Message-ID: <x72wavbe4mfl4ccbusjpb424m4mribably2cko6rbhemea7xtc@t7xrxvyzv3zo>
-References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <20260903193611.1058589-4-mathieu.poirier@linaro.org>
- <dhrvydsmaw22xqx5d5i5s7fdyjxupz27yxp6trv2tesysp4npj@quvzrxjvfipz>
- <arI197vJkW75p50c@lpieralisi>
- <arSTQQ5uB6oR-vFe@FCCLS0092175.localdomain> <ataBkrIvULJXj4v6@p14s>
- <atdKSwvu_uldqwlz@red-moon> <atekhR1Wz03nUCHB@p14s>
- <fgmu2cuxx2n2cuxqeotas2iu43jk7aou3hldhw4757x4jyv6np@snsceczzajcy>
- <auC28TE3QWlU0Pcm@red-moon>
+ bh=WoBjLWxzpnbg4UhqPhSIW9qKhBPfnzBn2k5ioIjZPLs=;
+ b=jTs4DqdPjvzUT/xvNr1vpdQeYvBtyPSSgRHtXLYyZOxexDSM3UscvW9mBQZiG4ctIpZQsnjAIBpJvA3bU+ZJIZZ9xt3bVAwhW3CtfOBR8ooe+ej9ispqW5Aes8bUwwSD4iLaGG/DX6Wb1zcMsvu0M0mXjLCfhKLV4fzJGpcijFPHT78cU1QIXsofATR4HoTXrbUV+e1fS9qOG4KtcbcAQcIyowEmsMbnPI10vlOxoJJ5i9YbJ9wUmD6VSiQVuNUh8fjopvzaYItghdALByaHkzTvlTGXS6kChsAsy/erG3NIdF2saQ1bwOEDOcq7/EMIeIcRY4ri1ToKl12nhv42sw==
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
+ by SI4PR06MB8351.apcprd06.prod.outlook.com (2603:1096:4:29a::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.4; Fri, 30 Oct
+ 2026 02:01:46 +0000
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0592.003; Fri, 30 Oct 2026
+ 02:01:45 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Junjie Cao <junjie.cao@linux.dev>, "kraxel@redhat.com"
+ <kraxel@redhat.com>, "marcandre.lureau@redhat.com"
+ <marcandre.lureau@redhat.com>
+CC: "clg@kaod.org" <clg@kaod.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, Kane Chen <kane_chen@aspeedtech.com>, Troy Lee
+ <troy_lee@aspeedtech.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "junjie.cao@intel.com"
+ <junjie.cao@intel.com>
+Subject: RE: [PATCH v7 6/8] hw/usb/redirect-server: Implement bulk and
+ interrupt transfers
+Thread-Topic: [PATCH v7 6/8] hw/usb/redirect-server: Implement bulk and
+ interrupt transfers
+Thread-Index: AQHdZo5CCWAyOFUsKE2rVSZb021dPrcUTh4AgAEIL8A=
+Date: Fri, 30 Oct 2026 02:01:45 +0000
+Message-ID: <SEZPR06MB7362042E9D31CDC1D8EABBB4FC6D2@SEZPR06MB7362.apcprd06.prod.outlook.com>
+References: <20261028034140.367393-1-jamin_lin@aspeedtech.com>
+ <20261028034140.367393-7-jamin_lin@aspeedtech.com>
+ <20261029100942.894066-3-junjie.cao@linux.dev>
+In-Reply-To: <20261029100942.894066-3-junjie.cao@linux.dev>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SI4PR06MB8351:EE_
+x-ms-office365-filtering-correlation-id: 14343f61-64b7-4cdf-03f2-08df3629bff1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|376014|1800799024|366016|38070700021|4143699003|56012099006|261009223027099003|261026121527099003|261026140227099003|261028144727099003|261022105027099003|261022075727099003|10067099003|22082099003|18002099003|3023799007;
+x-microsoft-antispam-message-info: gCFhYnzxBkbRcFxx86flsJSRkWOqnsrVOrrIlwXszUzkW205GVx+wogmJ4wWIupedfDhEUgDMf9QW91QjqCxFgj9uqgIbf3vbUdM8ENPZua91GeoiqX8C1dyYkMK7coL6YU+mLT2nMyzVETuuxLXTcCSyzwrMIhCiQ9HcA34utZ42T4QxsMTghEojAk9dPB7HBkZ+SKu4TnMtVtpCzjjxKXSB8Zpfo/9D8mSj865DmzEZP384KdczWMGWo1pfoksGifnANndg1rnHhaHGuJGzpWkvxJPClZqtIzofWJhRn40Kfmfbh+GBIVDeyrsLJgEJDOPMdJKBaRVKsABntQcxC+grZZzatFnAP3VF9jWGKCyQSCsFvNUk8SKiuT2WmGptNLIScqyfevX+twojL87C0hrsVOxv1kRKVVy0CVLU6xu48XaDU5uLRKqbSGzL52aFvekRWZdtEk2EeGV9pAbL/fcX5yPx8tiSBkhXKHH4F5JE1N3mmfU3LK5M5s/EBg8hddUJeNJkKpWZ5vtFVXe+72xSMSSKcxanfJDTUWpBbUdXMJM8O163HXsJmfRCmR9VSaUz+RLrQlvLMZ0U7w3vvmZGLUyns8K7mWczCsgmGqfJUqBRsKagp7j4y7w4eJcoTLZhN1kWobrheaYqAUL+lMLC3e+vAI93fID4Cv/pSebbRHnVhbz7Fm4yD/JfN2jg0QtDlTr6zJ+jsDeFKYJlRvUSfuIsBE5lP5eSqg7Ph4=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(38070700021)(4143699003)(56012099006)(261009223027099003)(261026121527099003)(261026140227099003)(261028144727099003)(261022105027099003)(261022075727099003)(10067099003)(22082099003)(18002099003)(3023799007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?rpiXzxPMDXZIs6hjTHPRQoQLTUbSFLhRHfwPEKJytzYdWJ/C7zz2GcAdznN1?=
+ =?us-ascii?Q?EKoMpurwGFuxhGceOXXdrwF8IU2Cw8+5JPyFPX+3gD4mtw7LRho142PBLoGA?=
+ =?us-ascii?Q?4i0IRBTDIoaGj1J4brv/7YnczLAwk0zt1cp+wp8oAtDqSuzZdqkuNbWtCb6e?=
+ =?us-ascii?Q?58iKz1cp/YBCloXHeMkIo5ZMnNKX1037TXuZOuTJXSdileqVjiRGxaxllSJn?=
+ =?us-ascii?Q?i3LKqdOn/V/2HkeJ4+4OmplaynCuSGE/4ddAj7cIVLJBjGrxk9KgGy2ZZmsi?=
+ =?us-ascii?Q?Vs1sCtwUsFf4wwcfSzpOZ3eXtlBM035UqsNX+i7CWMCG4FHB0uJg+3J/flj9?=
+ =?us-ascii?Q?OEjbwkDTbBjI6RFmxzp5a9Il3rZT5zwt4HNGC7VU1qlQG7dQ3+/gprKfJEfI?=
+ =?us-ascii?Q?qm/ow9hm3LdDwjv9PiNPFYcH8XuBzXqa3kk0rfzCin9SmBu9EqkWN5Bxo/PU?=
+ =?us-ascii?Q?wrg8q5mn5ZuMMECHehJhHJTDF93wQFB5Js76JNt+FMm14wbXlCKnW05uei7I?=
+ =?us-ascii?Q?f1bCUeW4uvzcz+GE1UJtEkT9u2xRB4HT8B2ABaLJmr+Hr/b5HD6a0ytyRHMt?=
+ =?us-ascii?Q?A4qk6EpneKpa/pWwallmXgjZQxRKgy1AmSmiK4gglAWGjOdTULr87whbjqSB?=
+ =?us-ascii?Q?M+cqt53QL0Ohk7vbMIl1OHaOOcL46uKUtzATqYHJg3jUME43wNWX3lFG7edn?=
+ =?us-ascii?Q?23/nkUTdyHa7DXo4kbCZRxQAFPG/DzAUTdyZvquF/6d+9YFpPLYkiIFexWBt?=
+ =?us-ascii?Q?iFJk3a8lVezopV0mi4u/M7Oa6zinSZfn6UHD9PYJz0+Uo6KOhmNBaCRBEQvg?=
+ =?us-ascii?Q?CFPBoXF9iE0/ArsjbuSWYhXLoKdmCZXxICWuC7K7dMTUyR1w9+IuY6auAthx?=
+ =?us-ascii?Q?uG2viV+Mra5l6xi00rr07bfmWD9OopJnUyaqCXBU56QOE41fpRif16uVIckf?=
+ =?us-ascii?Q?EkmCdyV6Hlty1+OwaESTHI32GHLTAkndAc9SPt833R/9KSqEQhiWgwx0BlaI?=
+ =?us-ascii?Q?+aMGZnZbmwYX2o+8Uww9Qoh1NLKkLH2uttXTjbjD/BoSC6Tema932g9XaaMZ?=
+ =?us-ascii?Q?M2FQIyiqP7e0PNblr3CsYSmensO4y+v+aX0X4SjepBmeexbXIswsIqbQ3/p5?=
+ =?us-ascii?Q?riRu/rXrJ1E9srerTxe1Vzu/eZqox4TgsOW2bKV/6zbnAhmNV682iTOOw6xS?=
+ =?us-ascii?Q?PmuexocaLe12P36GhSvnce7RlqeXdJmrUN+w+orPLnaX6EbwOA8nSwhaxm0o?=
+ =?us-ascii?Q?67kft8P6scilT2Tw2QznxK5K2nPDT/Oa+M1jsYwfjdk6TtoHarNH3fMMUNK6?=
+ =?us-ascii?Q?jCBV3a/aDRltbhpkV0slWXrWbXoPN1f8Cf4zdaKbqGhKa7ldBgQBatoPrP6+?=
+ =?us-ascii?Q?zzjIMImgy1XPFq16D1spI5/iYlTctS0DZAhHdKJm7Xre1GkY3JH7AsspN+ku?=
+ =?us-ascii?Q?QHMMac4Q/o2a/glU+kkt5tcG/WiSGB+McWj7efaq54KsETWvbrwVxoKmN6Zz?=
+ =?us-ascii?Q?Wk9TDl2N+oc51GZ2p4A+/boPGcO26BxIwvXz/2Xk9MMTQUicD/MUNYbUzOiK?=
+ =?us-ascii?Q?LpK1UsVMiUAXhqBqYb6cqxhUVhdCXgoJcETftCKPyC61LY3v/smGvBfB4ERg?=
+ =?us-ascii?Q?262L2dc4Y49eINDRr/ZpmwlWQfZ8R/MnNQmfRqTpZlGtLnCpkvLwnK85ml1p?=
+ =?us-ascii?Q?ozBSgb3+3sLqzuWPrpZSJmuvQg56diVyF2Hvg/yRb7LFF/yqccRwZbW0kYta?=
+ =?us-ascii?Q?VHJRVHkUVQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <auC28TE3QWlU0Pcm@red-moon>
-X-ClientProxiedBy: satlexmb08.amd.com (10.181.42.217) To satlexmb07.amd.com
- (10.181.42.216)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY1PEPF0002696B:EE_|SN7PR12MB7977:EE_
-X-MS-Office365-Filtering-Correlation-Id: 99d50d64-2041-41f6-334a-08df3610a9e1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700016|1800799024|23010399003|7416014|376014|30052699003|82310400026|261026121527099003|11063799006|56012099006|4143699003|261009223027099003|261009221227099003|261022105027099003|10067099003|261022075727099003|261021121427099003|22082099003|18002099003|261021123027099003|6133799003|13003099007|261028144727099003|261026140227099003|3023799007;
-X-Microsoft-Antispam-Message-Info: JFyvZotOi8wRJDp6BHrt2F6Ml2anub+8Y63rBVyaZFQdMBlVT29afo/WB0/KOXKtTDfxw2u06ea3KntowQQylz1gUhXcwGEXE0w/dEmSu+heEP7CQgdAb6ihwoXso1u+w1a9bBLqfgkSrmSZ2N+fIgI8vqKXn4Gw77/Wk//YIpHEroR9Nqp3k8K+LxOwn8Z+47xWJfKBZnkWnI6uahY+XoBmmqInbWgeRQ90MFdO6HeRBRSaWnLpJsFWa65AiKXT0PIn8W2AOqZ4QW91RFBJBau5eApBNZP/0Kvh+EcxVxpj/P0pe/zmNwMKjol/DogUqmKqAxrptgaSZRYIK44FgWrWwk2VdMyuiR8KjNN5Hjg1/Z9+uJfGKxy9vMdszMMw9S9wDd8S2tgdgbbbib54vIXXrpH4G6MFqhGwu+Oiv36XSd/nqg8eLFislJY+AYNVxL5A/r37Jw4h9Pv0r48cVOrD8bdMPSfpz/7foTPFFiNWfS/37ear6ebmG2p6LCsO1FeXLlivG++gxQUejiI6mTi9CyZHLi74kgFLtK06VTvpY1iQvk0BNogJyFR/lwjlRIG5JgHod9B/rwOPZOMVbMNUED2csO6oirR0CYLhhoA+WB0u0ckEdOMLHh53p8Pq2ca4lCxP/nPSzGO6SPfVLvvsVsAu8oAhIJA5rjf8cOI=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(36860700016)(1800799024)(23010399003)(7416014)(376014)(30052699003)(82310400026)(261026121527099003)(11063799006)(56012099006)(4143699003)(261009223027099003)(261009221227099003)(261022105027099003)(10067099003)(261022075727099003)(261021121427099003)(22082099003)(18002099003)(261021123027099003)(6133799003)(13003099007)(261028144727099003)(261026140227099003)(3023799007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: X25j8xGrkAm/RvmaTgWHct3i+1BJBkKUni4ySPRbbWXLEbkuDs0CqoVkSWU45s7tPA4R1S4ZbIBLuuof1EbotM1zt0x7Erfna94Dea9Xqsz+ZpeEV4Ebv97DCXBPcHYaRBe8WwocB0Kygi2XF/5s87rzlR2d1ccw9PoHUiUXKdqVeU7GcNZIHubrwXi4Yyr6ryJxyi4Mv7LEY4wehpXZTk7ODAMN5XwA3P2vQDwgoPXavtm6uHmSecAI5xHgsJFw/OcJCKkeyAi1slnNLQbrQREB0cwTi2lsY5xCFwnCGoy1YuC6ewilSX7KLGXjgaoGD2NTbj+2AViDZVLgm0/wlIWdDkeLxqKUpGyOKXmmY+cyK5dpV6mgL64Cxkoglgm01usN/r/UKslX8xMh2MiZyvkZ9W/S+2XCHhP2jbmSt0cI6HdZ2p4Zkuy/+IpOWJbm
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Oct 2026 23:02:10.6354 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99d50d64-2041-41f6-334a-08df3610a9e1
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[satlexmb07.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BY1PEPF0002696B.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7977
-Received-SPF: pass client-ip=2a01:111:f403:c107::3;
- envelope-from=Michael.Roth@amd.com;
- helo=PH0PR06CU001.outbound.protection.outlook.com
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 14343f61-64b7-4cdf-03f2-08df3629bff1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Oct 2026 02:01:45.1525 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: H9cZq3YR78rhL/n4W/uqYbwEsnz68nkeZUylYAB8SST6yFPD1STEk7uXVZh9NwGhBucI10tlzkJpmMLiB+9NoRysECMH1WE2fa9uhCNr6sU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI4PR06MB8351
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,340 +146,55 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 27, 2026 at 03:36:33PM +0100, Lorenzo Pieralisi wrote:
-> On Tue, Oct 20, 2026 at 01:12:45PM -0500, Michael Roth wrote:
-> > On Tue, Oct 20, 2026 at 11:27:33AM -0600, Mathieu Poirier wrote:
-> > > On Tue, Oct 20, 2026 at 01:02:35PM +0200, Lorenzo Pieralisi wrote:
-> > > > On Mon, Oct 19, 2026 at 02:46:10PM -0600, Mathieu Poirier wrote:
-> > > > > On Thu, Sep 24, 2026 at 12:12:35PM +0900, Kohei Enju wrote:
-> > > > > > On 09/22 10:01, Lorenzo Pieralisi wrote:
-> > > > > > > On Tue, Sep 15, 2026 at 04:27:21PM -0500, Michael Roth wrote:
-> > > > > > > > On Thu, Sep 03, 2026 at 01:35:50PM -0600, Mathieu Poirier wrote:
-> > > > > > > > > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > > > > > > > 
-> > > > > > > > > Add a new RmeGuest object, inheriting from ConfidentialGuestSupport, to
-> > > > > > > > > support the Arm Realm Management Extension (RME). It is instantiated by
-> > > > > > > > > passing on the command-line:
-> > > > > > > > > 
-> > > > > > > > >   -M virt,confidential-guest-support=<id>
-> > > > > > > > >   -object rme-guest,id=<id>
-> > > > > > > > > 
-> > > > > > > > > This is only the skeleton. Support will be added in following patches.
-> > > > > > > > > 
-> > > > > > > > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > > > > > > > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-> > > > > > > > > ---
-> > > > > > > > >  docs/system/confidential-guest-support.rst |  1 +
-> > > > > > > > >  qapi/qom.json                              | 13 +++++++
-> > > > > > > > >  target/arm/kvm-rme.c                       | 42 ++++++++++++++++++++++
-> > > > > > > > >  target/arm/meson.build                     |  5 ++-
-> > > > > > > > >  4 files changed, 60 insertions(+), 1 deletion(-)
-> > > > > > > > >  create mode 100644 target/arm/kvm-rme.c
-> > > > > > > > > 
-> > > > > > > > > diff --git a/docs/system/confidential-guest-support.rst b/docs/system/confidential-guest-support.rst
-> > > > > > > > > index 562a7c3c2852..abb56923ad13 100644
-> > > > > > > > > --- a/docs/system/confidential-guest-support.rst
-> > > > > > > > > +++ b/docs/system/confidential-guest-support.rst
-> > > > > > > > > @@ -42,5 +42,6 @@ Currently supported confidential guest mechanisms are:
-> > > > > > > > >  * POWER Protected Execution Facility (PEF) (see :ref:`power-papr-protected-execution-facility-pef`)
-> > > > > > > > >  * s390x Protected Virtualization (PV) (see :doc:`s390x/protvirt`)
-> > > > > > > > >  * AWS Nitro Enclaves (see :doc:`nitro`)
-> > > > > > > > > +* Arm Realm Management Extension (RME)
-> > > > > > > > >  
-> > > > > > > > >  Other mechanisms may be supported in future.
-> > > > > > > > > diff --git a/qapi/qom.json b/qapi/qom.json
-> > > > > > > > > index 776b13027fd8..52997c29a32d 100644
-> > > > > > > > > --- a/qapi/qom.json
-> > > > > > > > > +++ b/qapi/qom.json
-> > > > > > > > > @@ -1288,6 +1288,17 @@
-> > > > > > > > >    'data': { '*pretty': 'bool',
-> > > > > > > > >              '*close-action': 'MonitorQMPCloseAction' } }
-> > > > > > > > >  
-> > > > > > > > > +##
-> > > > > > > > > +# @RmeGuestProperties:
-> > > > > > > > > +#
-> > > > > > > > > +# Properties for rme-guest objects.
-> > > > > > > > > +#
-> > > > > > > > > +# Since: 11.1
-> > > > > > > > > +##
-> > > > > > > > > +{ 'struct': 'RmeGuestProperties',
-> > > > > > > > > +  'base': 'ConfidentialGuestSupportProperties',
-> > > > > > > > 
-> > > > > > > > Just FYI, based on input from Markus I'm planning to drop this
-> > > > > > > > ConfidentialGuestSupportProperties base type from my series
-> > > > > > > > since it's probably only SNP/TDX that need to be able to switch
-> > > > > > > > it on/off, whereas this series appears to use/require it from
-> > > > > > > > the start.
-> > > > > > > > 
-> > > > > > > > I'm not exactly sure what it will look like for v3 yet, but if you
-> > > > > > > > were based on v2 you'd instead probably just do the following in the
-> > > > > > > > instance_init function for your rme-guest instance:
-> > > > > > > > 
-> > > > > > > >   cgs->allow_convert_in_place = true;
-> > > > > > > >   cgs->convert_in_place = true;
-> > > > > > > > 
-> > > > > > > > rather than exposing it as a cmdline option.
-> > > > > > > 
-> > > > > > > Yep, it won't be an option for CCA Realms anyway since that will be
-> > > > > > > the baseline.
-> > > > > > 
-> > > > > > IIUC, in-place conversion requires RAM backed by a shared/mappable
-> > > > > > guest_memfd. If in-place conversion is always enabled for CCA Realms,
-> > > > > > could QEMU also select the equivalent of
-> > > > > > 
-> > > > > >   -object memory-backend-guest-memfd,id=ram0,size=...,share=on
-> > > > > > 
-> > > > > > automatically for the default RAM, so that specifying the RAM size with
-> > > > > > `-m` is sufficient?
-> > > > > 
-> > > > > Are you suggesting that on Arm, we completely get rid of 
-> > > > 
-> > > > Nit: obviously on Arm rme-guest configs.
-> > > 
-> > > Indeed.
-> > > 
-> > > > 
-> > > > >     -object memory-backend-guest-memfd,id=ram0,size=$(RAMSIZE),share=on
-> > > > 
-> > > > If that's what we want to make a default, I guess we ought to override
-> > > > create_default_memdev for arm machines + rme-guest configs ?
-> > > > 
-> > > > Pros and cons ? I am not sure how well received is setting implicit defaults
-> > > > for specific machine configs and what that really buys us eventually.
-> > > 
-> > > I agree, this entails a fair amount of changes for cosmetic gains only.
-> > 
-> > I think it will also add some uneccessary confusion. For instance, based
-> > on Paolo's feedback[1], we will likely not expose any sort of option to
-> 
-> I think that [1] is:
-> 
-> https://lore.kernel.org/kvm/866179b6-8303-4c30-aa59-005fa4554362@redhat.com
-> 
-> for completeness.
+Hi Junjie
 
-Yes, sorry, I should know better by now that adding citations before
-adding the links is a bad idea.
+> Subject: Re: [PATCH v7 6/8] hw/usb/redirect-server: Implement bulk and
+> interrupt transfers
+>=20
+> Hi Jamin,
+>=20
+> On Wed, Oct 28, 2026 at 03:41:48AM +0000, Jamin Lin wrote:
+> > +    int actual =3D rp->pkt.actual_length;
+> > +    /* Only an IN transfer carries data back. */
+> > +    int len =3D is_in ? actual : 0;
+>=20
+> For OUT this also zeroes the length in the reply header, and redirect.c c=
+opies
+> that length into p->actual_length.
+>=20
+> With usb-storage exported and qemu-xhci on the client side, the device
+> enumerates, but the Debian guest keeps resetting it and no sda shows up. =
+A
+> usb-ehci client works, because EHCI ignores the OUT length.
+>=20
+> Keeping actual in the header and sending no payload for OUT, as usbredirh=
+ost
+> does, fixes it here: sda appears on xHCI and a 1 MiB write/read compares
+> equal. The control and interrupt OUT replies drop the length the same way=
+.
+>=20
+> The endpoint checks from v6 work now, including start_interrupt_receiving=
+ on
+> a bulk endpoint, thanks.
+>=20
+> Junjie
 
-> 
-> > switch between in-place/out-of-place conversion for SNP/TDX, but instead
-> > just use whatever mode the KVM module was actually configured to use.
-> > 
-> > For in-place conversion, it actually doesn't seem too bad to hook into
-> > create_default_memdev to have it default to memory-backend-memfd.
-> > However, currently, it used backend-file/backend-ram depending on other
-> 
-> "it used" - can I ask what "it" refers to please ?
+Thanks for the review and suggestion.
 
-"it used" -> "QEMU uses" is what I meant.
-
-> 
-> > options, and those options are applicable to out-of-place conversion as
-> > well where e.g. maybe the user wants to use file-backed hugetlb memory
-> > for their shared memory. So we wouldn't want to change the behavior for
-> > out-of-place.
-> 
-> So, here you are saying that basically a sensible default for out-of-place
-> might not work for convert-in-place and therefore it does not make much
-> sense to have a default that does/doesn't work depending on how KVM is
-> configured.
-> 
-> > But then, for in-place, if we default to a different backend then stuff
-> > like mem-path=... parameters for out-of-place invocations will then
-> > become silently ignored, or we will need to generate an error for those,
-> > which works against the idea of having a common cmdline that "just
-> > works" for in-place/out-of-place.
-> 
-> Yes that makes sense.
-> 
-> > If we (users, management/libvirt, etc.) consolidate around specifying the
-> > memfd backend for confidential VMs, then we can have a "default" that is
-> > more consistent between in-place vs. out-of-place, which i think is more
-> > beneficial than trying to consolidate around a syntacticly simpler
-> > cmdline that might not behave as expected when switching between
-> > older/newer kernels which may or may not have in-place support.
-> 
-> Can you elaborate on this Michael please ? In particular in relation to a more
-> consistent "default" for in-place/out-of-place, are you referring to defining
-> a -object memfd option that works for both in-place and out-of-place ? Isn't
-> that the case already with your latest v3 (and the VMM detecting the KVM
-> underlying config ie in-place vs out-of-place) ?
-
-To clarify, what I mean is that if we all CoCo platforms use a similar
-command-line like:
-
-  qemu-system-<arch> -object memory-backend-memfd,...
-
-then that would be consistent not only across all CoCo platforms (for
-currently implementations anyway...) that support only in-place
-conversion, but it would also be consistent across CoCo platforms that
-support both in-place/out-of-place (SNP/TDX). There seems to be a desire
-for the latter based on Paolo's comments (thanks for fixing the
-references).
-
-If however we introduce some syntactic sugar to have it handled
-automatically by -m / create_default_memdev(), then any users who
-previously ran SNP/TDX for out-of-place conversion with something like:
-
-  qemu-system-x86_64 -m <size> -machine ...,mem-path=/path/to/hugetlb
-  
-would break/misbehave if we enabled in-place conversion. And that's okay,
-but it makes clear that using -m comes with a number of restrictions in
-the case of in-place-conversion (e.g. mem-path not supported), that aren't
-restrictions for out-of-place-conversion, and that can cause some
-confusion if we don't document it appropriately.
-
-I don't have any strong objection to that, but it's just trickier to
-document/explain, whereas if we all just generally agree to use:
-
-  qemu-system-<arch> -object memory-backend-memfd,...
-
-a lot of this ambiguity goes away. So I prefer specifying the backend
-explicitly, especially since guest-memfd is a well-understood commonality
-for CoCo VMs and we can concentrate our documentation and how we expose
-that to management/libvirt through this same backend.
-
-That said, there's no reason we can't also have -m "Do the right thing"
-for in-place conversion, I just don't think we should lean on that too
-heavily in our documentation/management tooling, and keep it as more of
-a 'shortcut' for non-production use-cases if we decide it's worth
-adding.
+I only tested with EHCI on AST2700, so I did not notice this issue.
+After testing with xHCI on the Q35 machine, I was able to reproduce this is=
+sue.
+The usb-storage SCSI probe failed and no /dev/sdX device appear in the gues=
+t
+I will fix it.
 
 Thanks,
-
-Mike
-
-> 
-> > So, a longwinded "I agree" from me as well.
-> > 
-> > Thanks,
-> > 
-> > Mike
-> 
-> Thanks,
-> Lorenzo
-> 
-> > > 
-> > > > 
-> > > > > or simply to get rid of "size=$(RAMSIZE)" in the above because it is redundant
-> > > > > with "-m $(RAMSIZE)"?
-> > > > > 
-> > > > > Gavin and Michael, what is your take on that suggestion?
-> > > > 
-> > > > Yes please any feedback on this is welcome.
-> > > > 
-> > > > Thanks,
-> > > > Lorenzo
-> > > > 
-> > > > > Thanks,
-> > > > > Mathieu
-> > > > > 
-> > > > > > 
-> > > > > > Thanks,
-> > > > > > Kohei
-> > > > > > 
-> > > > > > > 
-> > > > > > > Thanks,
-> > > > > > > Lorenzo
-> > > > > > > 
-> > > > > > > > Thanks,
-> > > > > > > > 
-> > > > > > > > Mike
-> > > > > > > > 
-> > > > > > > > > +  'data': {} }
-> > > > > > > > > +
-> > > > > > > > >  ##
-> > > > > > > > >  # @ObjectType:
-> > > > > > > > >  #
-> > > > > > > > > @@ -1346,6 +1357,7 @@
-> > > > > > > > >      { 'name': 'pr-manager-helper',
-> > > > > > > > >        'if': 'CONFIG_LINUX' },
-> > > > > > > > >      'qtest',
-> > > > > > > > > +    'rme-guest',
-> > > > > > > > >      'rng-builtin',
-> > > > > > > > >      'rng-egd',
-> > > > > > > > >      { 'name': 'rng-random',
-> > > > > > > > > @@ -1427,6 +1439,7 @@
-> > > > > > > > >        'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
-> > > > > > > > >                                        'if': 'CONFIG_LINUX' },
-> > > > > > > > >        'qtest':                      'QtestProperties',
-> > > > > > > > > +      'rme-guest':                  'RmeGuestProperties',
-> > > > > > > > >        'rng-builtin':                'RngProperties',
-> > > > > > > > >        'rng-egd':                    'RngEgdProperties',
-> > > > > > > > >        'rng-random':                 { 'type': 'RngRandomProperties',
-> > > > > > > > > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> > > > > > > > > new file mode 100644
-> > > > > > > > > index 000000000000..42e1d1e7b859
-> > > > > > > > > --- /dev/null
-> > > > > > > > > +++ b/target/arm/kvm-rme.c
-> > > > > > > > > @@ -0,0 +1,42 @@
-> > > > > > > > > +/*
-> > > > > > > > > + * QEMU Arm RME support
-> > > > > > > > > + *
-> > > > > > > > > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > > > > > > > > + *
-> > > > > > > > > + * Copyright Linaro 2026
-> > > > > > > > > + */
-> > > > > > > > > +
-> > > > > > > > > +#include "qemu/osdep.h"
-> > > > > > > > > +
-> > > > > > > > > +#include "hw/core/boards.h"
-> > > > > > > > > +#include "hw/core/cpu.h"
-> > > > > > > > > +#include "kvm_arm.h"
-> > > > > > > > > +#include "migration/blocker.h"
-> > > > > > > > > +#include "qapi/error.h"
-> > > > > > > > > +#include "qom/object_interfaces.h"
-> > > > > > > > > +#include "system/confidential-guest-support.h"
-> > > > > > > > > +#include "system/kvm.h"
-> > > > > > > > > +#include "system/runstate.h"
-> > > > > > > > > +
-> > > > > > > > > +#define TYPE_RME_GUEST "rme-guest"
-> > > > > > > > > +OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
-> > > > > > > > > +
-> > > > > > > > > +struct RmeGuest {
-> > > > > > > > > +    ConfidentialGuestSupport parent_obj;
-> > > > > > > > > +};
-> > > > > > > > > +
-> > > > > > > > > +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-> > > > > > > > > +                                          CONFIDENTIAL_GUEST_SUPPORT,
-> > > > > > > > > +                                          { TYPE_USER_CREATABLE }, { })
-> > > > > > > > > +
-> > > > > > > > > +static void rme_guest_class_init(ObjectClass *oc, const void *data)
-> > > > > > > > > +{
-> > > > > > > > > +}
-> > > > > > > > > +
-> > > > > > > > > +static void rme_guest_init(Object *obj)
-> > > > > > > > > +{
-> > > > > > > > > +}
-> > > > > > > > > +
-> > > > > > > > > +static void rme_guest_finalize(Object *obj)
-> > > > > > > > > +{
-> > > > > > > > > +}
-> > > > > > > > > diff --git a/target/arm/meson.build b/target/arm/meson.build
-> > > > > > > > > index 0369f96b4cc6..9d322a7aad28 100644
-> > > > > > > > > --- a/target/arm/meson.build
-> > > > > > > > > +++ b/target/arm/meson.build
-> > > > > > > > > @@ -31,7 +31,10 @@ arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
-> > > > > > > > >  arm_common_system_ss.add(files(
-> > > > > > > > >    'arm-qmp-cmds.c',
-> > > > > > > > >  ))
-> > > > > > > > > -arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
-> > > > > > > > > +arm_system_ss.add(when: 'CONFIG_KVM', if_true: files(
-> > > > > > > > > +  'hyp_gdbstub.c',
-> > > > > > > > > +  'kvm.c',
-> > > > > > > > > +  'kvm-rme.c'))
-> > > > > > > > >  arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
-> > > > > > > > >  
-> > > > > > > > >  arm_user_ss.add(files('cpu.c'))
-> > > > > > > > > -- 
-> > > > > > > > > 2.43.0
-> > > > > > > > > 
-> > > > > > > > > 
+Jamin
 

@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5881B606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 15:21:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE4D7606A31F
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 15:21:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=U/h1wpDh
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=VGpjbsEi
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMoNq-0006We-9Q; Fri, 30 Oct 2026 11:19:10 -0400
+	id 1xMoOV-0007g9-Ob; Fri, 30 Oct 2026 11:19:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMoN8-0005oq-4J
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:18:26 -0400
-Received: from mail-dl1-x1230.google.com ([2607:f8b0:4864:20::1230])
+ id 1xMoNO-00061w-De
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:18:44 -0400
+Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMoN4-0000D8-N7
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:18:25 -0400
-Received: by mail-dl1-x1230.google.com with SMTP id
- a92af1059eb24-18cdcfc05ffso1080702c88.1
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 08:18:22 -0700 (PDT)
+ id 1xMoNK-0000Er-Hy
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:18:41 -0400
+Received: by mail-dl1-x122a.google.com with SMTP id
+ a92af1059eb24-15943c9c005so1428377c88.1
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 08:18:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793373501; x=1793978301; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793373513; x=1793978313; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=c4ZF6CX3HwMSnOXWr+3Or5e7RYyQ6c3g85+NgZehtQ8=;
- b=U/h1wpDhJ5WDQET81FzyAFPOBX+JmWkAFtAQ7da5FLH7VA4G0SSBF9dGQwimZMLbzp
- wYy2AywDuPuq+9GWQYmXU3w5WT15Jjzx76GSFwvJt8Zh1XAgj8YvE5ML0OtW5HxgEc6d
- CKUIqWPVPpbX2XSArDeTEp5imMucPiKj0S2vvwpVgyoilxNvB+Duvza+6fHTXENyLWkN
- FTcI24+Y7vl337pU+KnyntWOtdk7Hh8RJ7tbi7WtJJtysM1qkiHHlx9KhW/RptGnyu1u
- s18/egrjw5/QxhfCj0p3C43Ue/G/moaghNOQxn08dIUL/i1i5uWTI2fIXBRbFGzhUwye
- gNgw==
+ bh=NpRZPrdA7p4HsMufejy4KcfzX3kqDfNgpM3OElffcBU=;
+ b=VGpjbsEiZpc0+NaYLJ+UL8uzEaaiqm40dUD0RYNxYf/874QzQDOEH/qtfgmJjLW2mB
+ NKbFKV8Ga7C6ixOyyePxFs0GOLibUy1906FCoA5biZaxZz7Ca870lMgbcCTfyWAUPeTy
+ emah0qZd9/s80KFUmW/4XbpeXzqgQqDZCRe/wXgzjsPZvp/um5lhXngkBNBudIhX8H9m
+ PbaFtq45jMg4098rVWuH+wfiDhM4m+Cb3qUCnagBzUFYthGfRCsNU68oJ7NcWpE4/Cc+
+ W+tD69MAtSJJoE13W1s+t2HbjgKLcmjxKfY1D/VIRrlr1+Xxt+qrCMfBub9fcdCjC17a
+ rwnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793373501; x=1793978301;
+ d=1e100.net; s=20260707; t=1793373513; x=1793978313;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=c4ZF6CX3HwMSnOXWr+3Or5e7RYyQ6c3g85+NgZehtQ8=;
- b=VN/n1cbq9czK26Ew41YgdNJWuO+nzdrokHqavbhZea7Hy/QOSfEoBFlj7w7LLBY+th
- PdWRnloKr+YDQukceSRcmWI6zpWuQHUv+f8aDK0rgHXx/hZL7pp8tgjihues6+4kQyRu
- unpftTLSYiU8OVq47kQ8fvg+KWfRfLs/a5toaJROc5JkuBVBYb3OQL9QuICL2Z9KnKGL
- rkKQm9rdPE3fU5AhItwYtG4LBU7FJwmOjccHvUhya+UWQKp76Dyck+GFgMtPcOYuBLeL
- GoUSHrRMoniCprWIK+ImOqIZHSjRJaCr6IldZmWE12JXb0mGeCS4IeRi4pYuCIyw/4JQ
- ETqA==
+ bh=NpRZPrdA7p4HsMufejy4KcfzX3kqDfNgpM3OElffcBU=;
+ b=Lf6W6ghsvDVyA3huUW0v4z9l5vR3LLu/MJc7SG/qpyBRFuquuN0FbHwUhpoiYSDjI0
+ 9WQDzoQ6IO788PLq/BvGlNfU03xLDYGNtL+/rTNxdbjOM+yF1Blj0ZnhNzVOcq9SoO17
+ kc342i012cbjQQcZ5Wm4b5bov6kdrIKa5rHM6ecciFqeEAdn1/ZAWk+HX4FDSgShy3Pk
+ Qurj0QT49H28XApdU5HxOscCdnhx991CIx+bT3SJqUYP/XHWKkkcVAGSd9HVq01yJ1NZ
+ kb9t63ltdUcQ0pBvjtyqpnTabgjaxqjrhdDkPRNcW6JYVy2MyS2iUMOiCGrU/XvT0Rq7
+ qXiQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzgDQeQXgxcof1s5Hzqg9vXrZTorjoYfRZna/dOejnMONi5MfhhK0ppAsT0AsD3q0eHBCaXp4h3ZQ==@nongnu.org
-X-Gm-Message-State: AFq9FYIoajNcmY+Yxvr3I3/8j1HdXhV7e2kqaa9bdNAWUtUsiIslXJx5
- ytY4r+fE7OJn5KA2/K+OHFkLFjhfQchpjJtCQ++tzA7r7ywR2SJMUYQE
-X-Gm-Gg: AYBFou03mStgp7VWpe+w7E3g9cWTKY4FIIE2O92Kr7CEUunbEHjFeLsorbK1M7wxAsy
- VARFXaS4rx9zigVh5jCSN7n2FXCe2N/q+ve72gg40Pfw51yDbFbDSog7TRDBxfDTP9lFCHyjyme
- S8CtwvsJRF++7pc6IS8Xv1+wr+ArRmubB05J1391QRyWW+lkyDuFLpwZ+GkigOxl3O3G7HEES3H
- +/bEVbFFbuOXsFEOr/PHIX16cAe54i1Qv9WcXLna7VDlDAbhdoXXXFIooFADDlM0TlJT1y6QTrF
- 5QBgFBomVdrHzGj4D1xciYEoY9yjNl9eWl+mG2CwmmsfrDBg4l0E6tLMAfjAnu1YRwq4zmt303o
- tifU3cUGZFsGAXwlH3w8HiRdvLd72S0NzlZYEJTwDqE5yIg5GC0SpWOgy9NXktCMTI7XT5BWN4b
- xMrFYePjxK237QwCumNYrktFyu1n68pNW8tI5X06w04zfCmfP79HWtvrmN3R+3rdmOtuPTGJVt3
- IlvGk98j+zqfdYTZplyaoxc/mC7br9mr7gRd1HWSS/LWKpgW8TYLrpWorBucgWfOam7BGbQZTVs
- 5EN7P0dwWPAWTl6tmuRir76YvUhZs4Vp/uet87VdvFIpRv1wKw==
-X-Received: by 2002:a05:701b:4509:20b0:1a3:9936:d11e with SMTP id
- a92af1059eb24-1ac5e6007a2mr3303536c88.41.1793373501142; 
- Fri, 30 Oct 2026 08:18:21 -0700 (PDT)
+ AKwUvBx1KKBAjIQDmInmKx4Pr0HXrdO9OKD/brHNIrCsme9syijd/nME08fpjpgyxjOMCtPr2hNFPG9O7w==@nongnu.org
+X-Gm-Message-State: AFq9FYKZmQR5DmJpmGhbt1MABjPizzssjiVgmWqGSlI7HNUAyngvYTu4
+ 4grdap1uludEUJA/CcBQxLa3Pboqd+moMdAP86fgfMigDleiwPeZIzDK
+X-Gm-Gg: AYBFou3Usfzxp9Pkg3xQ5ZFsXbr+Bv4tymMwYc+Qmty4nnmlqvsXQfLABxCMMzWSTfq
+ nSePzBimprCxcuZ7dugs1tPai5YkT9loAqK7YexVrzeLduANE/jtB2+Jc4K+dtZC//fMIGA54ha
+ AOtBsm9XeQFB4/q69vk6NAEBi2pVWHEcmExmQLIv/KOGi2sdAtvPP970xEhQhnZAgVq6nWnKmGn
+ WFl2HHryH0crH34b5GwqbWhacQAIHXBmMXUVV3s/23J/GIb+jbUCC1T1XZtX18QxtZL1d5sasFC
+ n/vNvPAn4GnB1Z0qNs08/qwwDSweTdysm5qUO/n25+uc9gUMV1wIqzOGbGi4PJKbmFtLkhYD07L
+ KpnRXRLHM5E+89oPIcJfSeTjvHzcbYhqN2Xb0XPXDPvda2wsLRv3rX9g8qiBSno9dIQYES4A7+n
+ D0DxWQexm7obPT7acF/6yJjsArXQZo/4hEHtWQgd/pEUDHGORugkzjLbyYsccKGiLGYNVKOhmbx
+ QPUsAi1fs8qnB7pe5CkdJ1oG3382/2cxoRSwhlrI0XpvYbAVhEnSBCbBfX1eUBrX55Oa1ve8sz9
+ 23BxJvVs391DCGkvKMqZg/OIy1YmUOxSds9nFSNmufYMOoCSZrr+Im7vXqzckNM9tjZ59Q==
+X-Received: by 2002:a05:701b:2082:b0:143:271a:3df2 with SMTP id
+ a92af1059eb24-1ac5eea21f1mr3303233c88.44.1793373512457; 
+ Fri, 30 Oct 2026 08:18:32 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1ac1854d925sm12770449c88.7.2026.10.30.08.18.11
+ a92af1059eb24-1ac1854d925sm12770449c88.7.2026.10.30.08.18.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2026 08:18:20 -0700 (PDT)
+ Fri, 30 Oct 2026 08:18:31 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>,
@@ -102,24 +102,24 @@ Cc: Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Alistair Francis <alistair.francis@wdc.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
-Subject: [PATCH 13/15] hw/xtensa: expand DEFINE_MACHINE in sim.c
-Date: Fri, 30 Oct 2026 23:15:34 +0800
-Message-ID: <20261030151539.1872-14-luoyonggang@gmail.com>
+Subject: [PATCH 14/15] hw/xtensa: expand DEFINE_MACHINE in virt.c
+Date: Fri, 30 Oct 2026 23:15:35 +0800
+Message-ID: <20261030151539.1872-15-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261030151539.1872-1-luoyonggang@gmail.com>
 References: <20261030151539.1872-1-luoyonggang@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1230;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1230.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122a;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,48 +139,48 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Expand DEFINE_MACHINE() in hw/xtensa/sim.c to xtensa_sim_machine_typeinfo
-and xtensa_sim_machine_register_types() calling type_register_static().
+Expand DEFINE_MACHINE() in hw/xtensa/virt.c to xtensa_virt_machine_typeinfo
+and xtensa_virt_machine_register_types() calling type_register_static().
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/xtensa/sim.c | 18 ++++++++++++++++--
+ hw/xtensa/virt.c | 18 ++++++++++++++++--
  1 file changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 835cd04fe01..fd66009b950 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -121,8 +121,10 @@ static void xtensa_sim_init(MachineState *machine)
+diff --git a/hw/xtensa/virt.c b/hw/xtensa/virt.c
+index 271f06e0953..8c8fdad72f0 100644
+--- a/hw/xtensa/virt.c
++++ b/hw/xtensa/virt.c
+@@ -115,8 +115,10 @@ static void xtensa_virt_init(MachineState *machine)
      xtensa_sim_load_kernel(cpu, machine);
  }
  
--static void xtensa_sim_machine_init(MachineClass *mc)
-+static void xtensa_sim_machine_class_init(ObjectClass *oc, const void *data)
+-static void xtensa_virt_machine_init(MachineClass *mc)
++static void xtensa_virt_machine_class_init(ObjectClass *oc, const void *data)
  {
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +
-     mc->desc = "sim machine (" XTENSA_DEFAULT_CPU_MODEL ")";
-     mc->is_default = true;
-     mc->init = xtensa_sim_init;
-@@ -131,4 +133,16 @@ static void xtensa_sim_machine_init(MachineClass *mc)
-     mc->default_cpu_type = XTENSA_DEFAULT_CPU_TYPE;
+     mc->desc = "virt machine (" XTENSA_DEFAULT_CPU_MODEL ")";
+     mc->init = xtensa_virt_init;
+     mc->max_cpus = 32;
+@@ -124,4 +126,16 @@ static void xtensa_virt_machine_init(MachineClass *mc)
+     mc->default_nic = "virtio-net-pci";
  }
  
--DEFINE_MACHINE("sim", xtensa_sim_machine_init)
-+static const TypeInfo xtensa_sim_machine_typeinfo = {
-+    .name       = MACHINE_TYPE_NAME("sim"),
+-DEFINE_MACHINE("virt", xtensa_virt_machine_init)
++static const TypeInfo xtensa_virt_machine_typeinfo = {
++    .name       = MACHINE_TYPE_NAME("virt"),
 +    .parent     = TYPE_MACHINE,
-+    .class_init = xtensa_sim_machine_class_init,
++    .class_init = xtensa_virt_machine_class_init,
 +    .instance_size = sizeof(MachineState),
 +};
 +
-+static void xtensa_sim_machine_register_types(void)
++static void xtensa_virt_machine_register_types(void)
 +{
-+    type_register_static(&xtensa_sim_machine_typeinfo);
++    type_register_static(&xtensa_virt_machine_typeinfo);
 +}
 +
-+type_init(xtensa_sim_machine_register_types)
++type_init(xtensa_virt_machine_register_types)
 -- 
 2.55.0.windows.3
 

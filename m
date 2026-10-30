@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F875606A321
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 15:19:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98B5A606A325
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 15:19:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=K/a0C0tU
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=gl+HBH2s
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMoM8-0004hd-Ti; Fri, 30 Oct 2026 11:17:24 -0400
+	id 1xMoM0-0004Zz-NV; Fri, 30 Oct 2026 11:17:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMoLY-0004Pm-OU
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:55 -0400
-Received: from mail-dl1-x1232.google.com ([2607:f8b0:4864:20::1232])
+ id 1xMoLA-0004Le-3w
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:33 -0400
+Received: from mail-dl1-x122e.google.com ([2607:f8b0:4864:20::122e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xMoLU-0008Sr-Ls
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:47 -0400
-Received: by mail-dl1-x1232.google.com with SMTP id
- a92af1059eb24-15dd124bbe7so1420466c88.1
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 08:16:42 -0700 (PDT)
+ id 1xMoL7-0008QX-0W
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 11:16:23 -0400
+Received: by mail-dl1-x122e.google.com with SMTP id
+ a92af1059eb24-170135e43c7so1228091c88.0
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 08:16:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793373401; x=1793978201; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793373379; x=1793978179; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=zA4vatNcIKJhE+Eb39umMv/j/wzlc1JpQpFuLfiMq1c=;
- b=K/a0C0tUUuO6kNQZf4bTC+W1V6fsZtma4zFADfaRDP/o0WNzWpbkhaJqJL1EqkmMSa
- nxqes8o3pJxyj2CRDcfW3yD/T6fJSpAvEap8Sc9qQqnvDsholViI5jXLQ/M7mX3ak2J0
- vqViKaCYSgBrsMBlKN8QyYpUUOxNN8NReVh8avw8W89CeS9/6HdZHUakxXUNMVXd3DWP
- u1MKsW7FUSFO1Trw8ohc1na0+B97NbcWGVPLpeI0z5dP7nTIjmuE4WDDvNa5iV0qxNWq
- mj52WWPs+BrIOgUdYIw6xVHvuQe0Plin/66wXTtSK7jxVcYq3Fbuv+fGLY6I0+EC6AZ5
- t6kg==
+ bh=eLhsKCTjuKy4eSFshqKS/+IjBjdCXZJ8by/9qMkJXhQ=;
+ b=gl+HBH2siUVKdvYiToIcKAQmmENtMLFwZ5fXwHVnJpc0hnA8bdoRRWUgoXoqNXheUV
+ hDPjFmW5pveEwPJXC1GvdUKhU4ez79agEtf2DTeYj3hYvc57Vp+9OX/jgwRZ6UtOhmMn
+ uFpJzsCN56sOQkU7lsWmAS5U0UXUzfQ+LYtmS3tttHqmziovpXQOQTybvV1wUNmEgp1H
+ z6knlRskge2qpLwfGbtoO/nxoQ8Pa+h/g3c5PW2ZUZerp4scB0duYN1aU0kjaz0XfaVj
+ YXJU6rKeEnvrgNg+ZYOFe+Q6cVlwX0pdRUaYeuCJ4j/EnU8m+A7AqldVEaqfyWKuLojB
+ dIkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793373401; x=1793978201;
+ d=1e100.net; s=20260707; t=1793373379; x=1793978179;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=zA4vatNcIKJhE+Eb39umMv/j/wzlc1JpQpFuLfiMq1c=;
- b=QdCTHRadFiX5S5G2IJLqIzqj0a6L5dxB1jcgd4bLVGzvpBEQiEberfSCRnhNmujGtW
- nFSzHMB/c+f4+yQw5uGSTX3sYg3s4W5UKvfhmVyR9a5Dt6SsuegPk61KCCdpwK47AKs7
- 9RXhQ/eM/jZSrH9/z124pFPh7hcyZ8Q5dz0rx8zosJ9llBn1TsKlXuwWMXdTE1OYr/CL
- Wj8+pOs8wYc9LeOvrt4eHgZdaxzfXiV1MadkK6fbkIh2CQ4wKssZ2tMebCcQ3iyeaD7A
- cF5KqR/fIa+4q+lALmnnEVfqAwf8Tt/UUGxzVzekH6hhIfmutSoRdjJ64Kns7kD2SWk5
- mrVA==
+ bh=eLhsKCTjuKy4eSFshqKS/+IjBjdCXZJ8by/9qMkJXhQ=;
+ b=D5uPXYZNmE/Qy6vdJ/rup/yHcLfRnqlYu/DmOE/p/UAlZGwn8Qf9CTtawQRckPfAZW
+ MfsQ0Eg+6/9J3xGebIH1hS3+vqf1bybs8CdGSUxTmKSZqJxWI7nZ4kOCP8O9n/jmAqUu
+ z3/gI984JBBXxy7kk84l7pbvqyMKNOnuNMFwNGTLOq6rpXfVbT/2BGRR0wjqGF7qyhFo
+ NSyiLb7Nt6jRzLhO8Fg6O7gTU0VDrSSQ/J7DmhfitluaJTN65BexvB08fvHtMLzGwYVt
+ BJwEJfxnkL4cEeJ6PJf/W5ASEyAH+uF8/8KKArp84MgKDo5GlEsjdTEzsYvIDzcs4nuA
+ QdSg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByT4249gcma/POXXvyXNoHFOr89eS1dB0Y5lM/0T4KBJ4uNMgKAWvB2PfQx4DgN9vjqI0kbQ3LRug==@nongnu.org
-X-Gm-Message-State: AFq9FYLOdj2q1TaypPqROx8pmftEG6gAdvkltKnajn8t0dX33Auw27mt
- z4kfEw8w2TRgV7oHGWlNM2W02KnUvSC1Dh2x4IsO9DYV9LoqHUpXT+MI
-X-Gm-Gg: AYBFou32Bs2SE3z/dpG3kWArl8NmhKKpKEK/fb8AwtflddTXhc+DzyGVNKz0qO+GAtp
- 3ImlXBFF2kiOzzD19IYO55TBLewVTaMsuTr8ZC66+Yx7LZhz6n9NSvDNJJsVQRrj8HsH+ojSRC+
- KVToUjnqQvNOU0mykgSkuO8vqIHefnWJEIm6UckXGx4SObN0GUBo/kDsd4eu3bi2TPR0ms7MRML
- I/5r93TnQli16944JBtDbUeqlTjZzn++LUA/Aj/JBWEZw0UugLemXM3fYfzHyFNMcqZrlGsc/lT
- mYPU0JaXaPL2Qywmq6DMpqRpMxbZbRweQC0btwJNg2A4Qee2lJ47T9YbgYpt7BA6gTLDs85fFJA
- CXbQitwvw0nqwtaeyN+dcmWy0iOEce7aDyBsUG3lKgBiMocLeaQBbTcifQgHixN/sqZCfUx1dvb
- pcuxYDx4HoPJGW/i1D46wAlylH0d7UqrDoL2LBkvcZUMFk6vDjcoWGO9mhFGP7lX8krbN1LKSNo
- ZmuLKN4/BTEJ2vCcEavmQ7xEa5rgNgwLF/yBSbC4UU89UR5YDDwd5NLvN//AsHu0sv7+zbYGmMj
- iH5zq7gG7cn0nouuCyzNpVbrRlfwPJ6dn5yUHirouBfH++FGjQcUKpwlNQ5hFWqyK700IA==
-X-Received: by 2002:a05:7022:ea46:10b0:177:9a5b:a89 with SMTP id
- a92af1059eb24-1ac5b5f270emr4076428c88.29.1793373401184; 
- Fri, 30 Oct 2026 08:16:41 -0700 (PDT)
+ AKwUvByAP6FMRZ57oM8rqz0BON6dBwcHs1fvmzR5aYtVytcXCvHjBWrXihdlJzyiOhlu8sxlyQwq5q3+8Q==@nongnu.org
+X-Gm-Message-State: AFq9FYJdO85ZVxlIcDobtn6dMS5zi/5F6Q4653J3U3lHLsdcRxoaWgIZ
+ ILkfn7LiOL4gmiIXUooEg5Nh1ksFd7gulAN+7Fifz2lwoXLd7m7NogPd
+X-Gm-Gg: AYBFou3iLgkUqtL9txGHOzj8DqrLl68QrX7l1IljdXLeQyF8gNMhuS3Uid1wGfupCnY
+ ORVASzTGsxekA4tfeURss0ozYcNyDhJjYAAkVMbECavxlgtKr0tXtn8ywlvztVkcvIBWe/7aQRF
+ NWM62iaeg8rOsnaDc5tbojI7jXwNEpdmVrxHkDBW8gu0LLsnynfVuVME0kuJqkoAqe4TxbyueFG
+ 0CWEh9Y6L08NIqHfR4WgLEUMD62er5smglVN1ewuNQtIxuz9ZLAbrG3ypG8WtRFeahfNSSSth5z
+ r/V1TNJwfiNcXQHYfXdhWu5GwEr3+4hOSjuplz72hAq1NXYrrCkB1B0nAy/DH5kbZL1iBIMBzNY
+ KmUKOMQBDaWGJXbLEk79FAUeTcLVFaJbn6cKj+ItWVkrgToH2MpqPktc5kkXT4cm6hOlt0ZFBnV
+ bmcEn8LqyVDK8S9MUquzlhlECVW2MpoHAB9BU8aSZvRB0sZ/52V6HADA+mz/R3SC2oO0avgRbrX
+ llDdzugkOnaqDJn4uNIW2BoYiIDD+LJYSmA1SjQi1HqPDAPRq8l2eRxA0j5gjA5qDv/rosAftGm
+ 6qDRv365hDsE/qMc9Tbe0S3mASf/nlzemIDYOZbQP0MVoHAzw9HBq0wDmWd2YqydDLAOIQ==
+X-Received: by 2002:a05:7022:e27:b0:14d:cb67:afc4 with SMTP id
+ a92af1059eb24-1ac5e8e1e4bmr4866883c88.41.1793373379151; 
+ Fri, 30 Oct 2026 08:16:19 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1ac1854d925sm12770449c88.7.2026.10.30.08.16.31
+ a92af1059eb24-1ac1854d925sm12770449c88.7.2026.10.30.08.16.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2026 08:16:40 -0700 (PDT)
+ Fri, 30 Oct 2026 08:16:18 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>,
@@ -102,17 +102,17 @@ Cc: Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Alistair Francis <alistair.francis@wdc.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
-Subject: [PATCH 04/15] hw/tricore: expand DEFINE_MACHINE in tricore_testboard.c
-Date: Fri, 30 Oct 2026 23:15:25 +0800
-Message-ID: <20261030151539.1872-5-luoyonggang@gmail.com>
+Subject: [PATCH 02/15] hw/m68k: expand DEFINE_MACHINE for M68K machines
+Date: Fri, 30 Oct 2026 23:15:23 +0800
+Message-ID: <20261030151539.1872-3-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261030151539.1872-1-luoyonggang@gmail.com>
 References: <20261030151539.1872-1-luoyonggang@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1232;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1232.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x122e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,47 +139,83 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Expand DEFINE_MACHINE() in hw/tricore/tricore_testboard.c to
-ttb_machine_typeinfo and ttb_machine_register_types() calling
+Expand DEFINE_MACHINE() in hw/m68k/an5206.c and hw/m68k/mcf5208.c to
+explicit TypeInfo and type_init() functions calling
 type_register_static().
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/tricore/tricore_testboard.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
+ hw/m68k/an5206.c  | 18 ++++++++++++++++--
+ hw/m68k/mcf5208.c | 18 ++++++++++++++++--
+ 2 files changed, 32 insertions(+), 4 deletions(-)
 
-diff --git a/hw/tricore/tricore_testboard.c b/hw/tricore/tricore_testboard.c
-index d5d796c8eec..2a25f090520 100644
---- a/hw/tricore/tricore_testboard.c
-+++ b/hw/tricore/tricore_testboard.c
-@@ -106,11 +106,25 @@ static void tricoreboard_init(MachineState *machine)
-     tricore_testboard_init(machine, 0x183);
+diff --git a/hw/m68k/an5206.c b/hw/m68k/an5206.c
+index 1acd2fbdfb3..8838563cb3e 100644
+--- a/hw/m68k/an5206.c
++++ b/hw/m68k/an5206.c
+@@ -93,12 +93,26 @@ static void an5206_init(MachineState *machine)
+     env->pc = entry;
  }
  
--static void ttb_machine_init(MachineClass *mc)
-+static void ttb_machine_class_init(ObjectClass *oc, const void *data)
+-static void an5206_machine_init(MachineClass *mc)
++static void an5206_machine_class_init(ObjectClass *oc, const void *data)
  {
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +
-     mc->desc = "a minimal TriCore board";
-     mc->init = tricoreboard_init;
-     mc->default_cpu_type = TRICORE_CPU_TYPE_NAME("tc1796");
+     mc->desc = "Arnewsh 5206";
+     mc->init = an5206_init;
+     mc->default_cpu_type = M68K_CPU_TYPE_NAME("m5206");
+     mc->default_ram_id = "an5206.ram";
  }
  
--DEFINE_MACHINE("tricore_testboard", ttb_machine_init)
-+static const TypeInfo ttb_machine_typeinfo = {
-+    .name       = MACHINE_TYPE_NAME("tricore_testboard"),
+-DEFINE_MACHINE("an5206", an5206_machine_init)
++static const TypeInfo an5206_machine_typeinfo = {
++    .name       = MACHINE_TYPE_NAME("an5206"),
 +    .parent     = TYPE_MACHINE,
-+    .class_init = ttb_machine_class_init,
++    .class_init = an5206_machine_class_init,
 +    .instance_size = sizeof(MachineState),
 +};
 +
-+static void ttb_machine_register_types(void)
++static void an5206_machine_register_types(void)
 +{
-+    type_register_static(&ttb_machine_typeinfo);
++    type_register_static(&an5206_machine_typeinfo);
 +}
 +
-+type_init(ttb_machine_register_types)
++type_init(an5206_machine_register_types)
+diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+index a8068c91f24..5c3ab48ddde 100644
+--- a/hw/m68k/mcf5208.c
++++ b/hw/m68k/mcf5208.c
+@@ -389,8 +389,10 @@ static void mcf5208evb_init(MachineState *machine)
+     env->pc = entry;
+ }
+ 
+-static void mcf5208evb_machine_init(MachineClass *mc)
++static void mcf5208evb_machine_class_init(ObjectClass *oc, const void *data)
+ {
++    MachineClass *mc = MACHINE_CLASS(oc);
++
+     mc->desc = "MCF5208EVB";
+     mc->init = mcf5208evb_init;
+     mc->is_default = true;
+@@ -398,4 +400,16 @@ static void mcf5208evb_machine_init(MachineClass *mc)
+     mc->default_ram_id = "mcf5208.ram";
+ }
+ 
+-DEFINE_MACHINE("mcf5208evb", mcf5208evb_machine_init)
++static const TypeInfo mcf5208evb_machine_typeinfo = {
++    .name       = MACHINE_TYPE_NAME("mcf5208evb"),
++    .parent     = TYPE_MACHINE,
++    .class_init = mcf5208evb_machine_class_init,
++    .instance_size = sizeof(MachineState),
++};
++
++static void mcf5208evb_machine_register_types(void)
++{
++    type_register_static(&mcf5208evb_machine_typeinfo);
++}
++
++type_init(mcf5208evb_machine_register_types)
 -- 
 2.55.0.windows.3
 

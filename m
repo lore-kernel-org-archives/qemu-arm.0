@@ -1,85 +1,85 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84C4A606A321
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 19:43:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1C6F606A31A
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 19:44:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=mMYwvEvZ
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=nOx6QNnZ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMsVn-00065v-HJ; Fri, 30 Oct 2026 15:43:41 -0400
+	id 1xMsVq-00067B-UL; Fri, 30 Oct 2026 15:43:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMsVe-00062d-MA
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:30 -0400
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
+ id 1xMsVg-00063T-AZ
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:34 -0400
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xMsVa-00008O-K4
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:30 -0400
-Received: by mail-ot1-x330.google.com with SMTP id
- 46e09a7af769-8256106635eso543909a34.0
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 12:43:24 -0700 (PDT)
+ id 1xMsVe-00009B-5g
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 15:43:32 -0400
+Received: by mail-ot1-x32a.google.com with SMTP id
+ 46e09a7af769-84d5e56f876so767256a34.3
+ for <qemu-arm@nongnu.org>; Fri, 30 Oct 2026 12:43:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793389404; x=1793994204; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793389409; x=1793994209; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=P85+btTqtBKqfwD1jOrC4yX/wfGNphtlJ8FsVIfPq+c=;
- b=mMYwvEvZXOnMR4fwspnqIGGroCNmolkLrlPMUZX9st8S/Khl3rkmPQSI1LGwsyCAaN
- 8q8IGptuhhi5SBgSYsCIJhLVtG++oLsMULK/2GwA7N8UGof5I1lz1ATybV5mf1dHpWui
- Mmfrso7Muze6I0VFFtBloJ18h6jUely2Zg2buWlVw0xwallLVb0f5NWyUmpqkd+JqJEv
- LOZHPJqicp9TMVonxqqyoQJKeYwPD4hBGVuqyhk6Pcn/KTmFfMeXLdYQP8kdS5k/5wVj
- OOvejBVoAjCoFc/YHB16zwGpwSxqb2iZ4ePzxedO4eV6D71Q1WzSHTaeuYqiKRHV28Ew
- HJ7g==
+ bh=MeuLuPZYwOdXNfYKOD6A+UEuVbDk00qgFvrdKJmF5B8=;
+ b=nOx6QNnZUWW/8Bc1EhrXRCzOziJ2ektBq4oAKmo4QMNnGBA0oG+RD3Nj8H4yd4n5uW
+ gMVrqLI8xMqotyTecfY2mnIpC586EFj66OVefV0+ruo12pLbXp5e3Ybt4vvXSJRi4WYg
+ 5znb7skKJfENOVCYEwYEhvcvW5gt5mnRakiXFX37Ormkbd59eEc89MmC7bdzlxV8sS3c
+ Kq05AJLbPbw7w51vV0a/dX8X8Z5bP42TF5SEj/RoPcUTVWQC/+Ndz9zVW8bPXF7cwEQz
+ RAYqALX9682CWzwUFAXjk2eUHRkDfTaBh568ER6x/tp4DYJ+HJ1Fwhc3gPtEF8yJaulY
+ K9Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793389404; x=1793994204;
+ d=1e100.net; s=20260707; t=1793389409; x=1793994209;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=P85+btTqtBKqfwD1jOrC4yX/wfGNphtlJ8FsVIfPq+c=;
- b=ETU/K5FBS0i/sYGwbburZnkd+ice9UOkivmMSYgrJqdpj5MeTyMTDiwURFrgFKvwv2
- X4ZRDNUQYLsks0KXGQusfiXm5YvJpM8OE9j+J8JkgU2kgsU2hOZkmW9YLOXNxOaLlLxu
- iUiaC870swpfTh/5QWlaZuJlZW5bEpCjXRW3BKOoptchyNmTZUw2YvxYjg0F4KHAkQCw
- wz3JkhUgkk4YWY2yaN79kBBoiPtDZjTSlh3bbKS87IFuw9NV+VCmAknKpIsUaorU/Xh9
- g8xjbA68BwzcvGbMJtmK4rw+/ANY/+8c+b/7x+eVpShfWDXTggGXuHIU4r1mOmvhEObV
- TO7A==
-X-Gm-Message-State: AFq9FYIKPAW00ifMWMh4pAf8DHwGdwD9tJRAPlXmeUbdetKL8VN6p4mC
- kap1Q5U+HwnG1+/LcGqRrsI5tF1AAcrB7l/VTLhVYfEulqN2NWYWH0vrRtPBfODo31v7MrzK1iz
- lDqLi
-X-Gm-Gg: AYBFou30XP2NxvLT4kAFzL22CBd//NLRSWWaLs1aFK33TeK/rkF/Yrw+j1eBaH2ff+p
- 541D4lZIpl+cbNRmamQ/xtp4ZrdU9bfI2yhmH1wcvZSRG3Fj/zszPIz7jz69hCzJQzgmG+nYCAx
- jd2LyShFeJYjE733L2IlsSPieZynSY+fvcwUJNfdLzk7Vg7sNxlqwNj9ybziU5YZIeOPaYGd6D7
- 7crP2dx1Q3toKhzNgjYIHhqAW1su6KpMhOmSaw7aA9L3f4mh1rrFvffCBxGThrKxQogSOjmPxBB
- NWmzyIzELNS5sNfl70u3PbnInB+rhYN+g3ZQYKO1r8HobGQO/bdPyZbgwmJj3szpLPHwRD9hedH
- zm+ULoGRLCzO7ZttimBnInTKZIHbZu0MeYt8niWqSYq2lQKh41GM9hGjpFqNLLN/ZesAfrFvqyU
- Swhs/WnqbBI5qnwDao7F4r2peRjQRKPoYKbZ8yvZ8CuLSrsxVRLoV+3Mem7oDMl+/44pYoOtPzW
- 4yN0y/6yFNclA7dZTVBTvEKfX/uyNERx8d0mUZhs+52GSZ1iU5sv3CwU1VVWj2DLA6j4wHuUli2
- WeqsRAIkdGhdYpLVXVKXKIbEjWpyhwCLUN3GiuWQG8konYaOtm3z+86q
-X-Received: by 2002:a05:6830:438d:b0:829:9992:2106 with SMTP id
- 46e09a7af769-85d36633ee3mr2321771a34.22.1793389403954; 
- Fri, 30 Oct 2026 12:43:23 -0700 (PDT)
+ bh=MeuLuPZYwOdXNfYKOD6A+UEuVbDk00qgFvrdKJmF5B8=;
+ b=srhiY3MQfdQkPkkLGdPXGjwLCmVDQKoDCgBen0vN7s6MPPQaCfgm+3w02UfSuTf8hY
+ UnIS8ecd8jzwnLW/BeazrfVrdUWk4LxZSmNmZxXQMIQLSidHtbq+Cbd4rFjUMDvl46Pj
+ yQB7bePrGHtEiVqLJteY0S9Txz/t0Uzlu6udJDqgkVJsvI3r6d6adZtOV73DNBcJXTYe
+ 7JzYeJwzDerRKeyqN+d8eZAqEFFHdTfHk5xywb5Ar9oGMLc6WC9lXP2HFHu08aXl2j/Z
+ RaTvKcyihYFNtmuMr49NEq6gRp5GZqpiKgl9t2tinNlGISBvTkR8EJgGsHyL/fFfJ2fS
+ 4xVg==
+X-Gm-Message-State: AFq9FYLeqAT3XLVRJK8rTG6f/lYfSHqR7oBCWRLW0DmCgCy8WIphX0gB
+ hU4T72UiyihjSx4SPFXaM4BD6uy+0OlfIq5QaO/6f5PnHLCci6LdxTonlSKDBbwnSe2bxV/GWzw
+ YHaN9
+X-Gm-Gg: AYBFou17Ye7OD+t79GW9/zqN3ln2NW5JXj2DsdGMFYs9kY2kNAPysuAOAEC2dRnKy11
+ TCbptg7e1LdAkmzubIv4lsnmcHJdZRZnxwmaMiQWUkqRxlW0hQfxXlshO23hhrOo0XIfT6TXP6f
+ d7HRgqAar8JpwhCalGFWkbfASg5WWIlTt6TXDc8hAMF9GAFNv+PEM42NBMtjf4ga14ivJTcveEt
+ SUaMzyU5dRpsq4hjd2HXDPIN8NxKcqgASWIRyq8veiPTWwFgo2xAJasNrnkMOmpVdUtBj2fyEd6
+ DRfst+YJzohb+8vB8OrOX5hjSk4rNPT8FfHbExg7xVjnuBKM5VeaTcU1fqmDzsIeCg7lxLMsRKv
+ dTPr9fX4KlIwPBm4RDzKXCTjGMBsjILzH/yZzknoDUANUp3Q4qAYxOcCr6r9Ca8NkdQaWpagq1c
+ pI/FMfx3yI8AD2XwwoyY/dhCUoN3hossMZ/fYhLpLLjIU9fuM1qoZJ7pu7NFkSHQtj0jxDBrgjH
+ bg6063SzYMgIVPtmHSswobJDqd6wjzoXFWAKZeUd/gR4OI2I3QziikXznZmj609aoIClabase44
+ ISnxbLiQuO5+BrmKtVTQlqNsXOZpg+4aS1A=
+X-Received: by 2002:a05:6830:640e:b0:7fa:ac4f:79c with SMTP id
+ 46e09a7af769-85d364471d1mr2382376a34.24.1793389408926; 
+ Fri, 30 Oct 2026 12:43:28 -0700 (PDT)
 Received: from stoup ([2607:fb90:5e62:412b:1381:b0c1:1339:9c82])
  by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-85d351e77c8sm2654768a34.2.2026.10.30.12.43.22
+ 46e09a7af769-85d351e77c8sm2654768a34.2.2026.10.30.12.43.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2026 12:43:23 -0700 (PDT)
+ Fri, 30 Oct 2026 12:43:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 2/9] target/arm: Retain btype in DisasContext.tbflags
-Date: Fri, 30 Oct 2026 14:43:11 -0500
-Message-ID: <20261030194318.319310-3-richard.henderson@linaro.org>
+Subject: [PATCH 6/9] target/arm: Split out gen_cbranch_goto_tb
+Date: Fri, 30 Oct 2026 14:43:15 -0500
+Message-ID: <20261030194318.319310-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261030194318.319310-1-richard.henderson@linaro.org>
 References: <20261030194318.319310-1-richard.henderson@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x330.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,120 +105,225 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace btype = -1 with btype_set = true.  This is both
-less confusing and keeps the state separate from the
-per-insn iteration.  Set tbflags_invalid when we need
-to read the btype from the page tables and therefore
-we cannot keep DisasContext.tbflags up to date.
+A common helper for all conditional branches, using DisasCompare64.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate.h     |  7 ++-----
- target/arm/tcg/translate-a64.c | 28 ++++++++++++----------------
- 2 files changed, 14 insertions(+), 21 deletions(-)
+ target/arm/tcg/translate-a64.c | 142 ++++++++++++++++++---------------
+ 1 file changed, 79 insertions(+), 63 deletions(-)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index b9254d5524..029107f4c0 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -206,11 +206,8 @@ typedef struct DisasContext {
-     bool gcs_rvcen;
-     /* GCSSTR exception EL or 0 if enabled */
-     uint8_t gcsstr_el;
--    /*
--     * >= 0, a copy of PSTATE.BTYPE, which will be 0 without v8.5-BTI.
--     *  < 0, set by the current instruction.
--     */
--    int8_t btype;
-+    /* True if the current insn set PSTATE.BTYPE. */
-+    bool btype_set;
-     /* A copy of DCZID_EL0.BS. */
-     uint8_t dcz_blocksize;
-     /* A copy of cpu->gm_blocksize. */
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index d8b6c1df41..64e28a089a 100644
+index c8d1251f13..e66ccdff6f 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -173,14 +173,15 @@ static void set_btype(DisasContext *s, int val)
-     /* BTYPE is a 2-bit field, and 0 should be done with reset_btype.  */
-     tcg_debug_assert(val >= 1 && val <= 3);
-     set_btype_raw(val);
--    s->btype = -1;
-+    DP_TBFLAG_A64(s->tbflags, BTYPE, val);
-+    s->btype_set = true;
+@@ -584,6 +584,50 @@ static void gen_goto_tb(DisasContext *s, unsigned tb_slot_idx, int64_t diff)
+     }
  }
  
- static void reset_btype(DisasContext *s)
++static bool gen_cbranch(DisasContext *s, const DisasCompare64 *c,
++                        int64_t taken_diff)
++{
++    int64_t not_taken_diff = 4;
++    bool may_goto_t = use_goto_tb(s, s->pc_curr + taken_diff);
++    bool may_goto_f = use_goto_tb(s, s->pc_curr + not_taken_diff);
++
++    /*
++     * If there is a choice, place a real goto_tb path first.
++     * If neither path can use goto_tb, convert to an indirect branch.
++     */
++    if (may_goto_f) {
++        DisasLabel l = gen_disas_label(s);
++
++        tcg_gen_brcond_i64(c->cond, c->v1, c->v2, l.label);
++        gen_goto_tb_int(s, 0, not_taken_diff);
++
++        set_disas_label(s, l);
++        if (may_goto_t) {
++            gen_goto_tb_int(s, 1, taken_diff);
++            s->base.is_jmp = DISAS_NORETURN;
++            return true;
++        }
++        gen_a64_update_pc(s, taken_diff);
++    } else if (may_goto_t) {
++        DisasLabel l = gen_disas_label(s);
++
++        tcg_gen_brcond_i64(tcg_invert_cond(c->cond), c->v1, c->v2, l.label);
++        gen_goto_tb_int(s, 1, taken_diff);
++
++        set_disas_label(s, l);
++        gen_a64_update_pc(s, not_taken_diff);
++    } else {
++        TCGv_i64 pc_t = tcg_temp_new_i64();
++        TCGv_i64 pc_f = tcg_temp_new_i64();
++
++        gen_pc_plus_diff(s, pc_t, taken_diff);
++        gen_pc_plus_diff(s, pc_f, not_taken_diff);
++        tcg_gen_movcond_i64(c->cond, cpu_pc, c->v1, c->v2, pc_t, pc_f);
++        s->pc_save = -1;
++    }
++    return gen_indirect_branch(s);
++}
++
+ /*
+  * Register access functions
+  *
+@@ -1758,38 +1802,26 @@ static bool trans_BL(DisasContext *s, arg_i *a)
+ 
+ static bool trans_CBZ(DisasContext *s, arg_cbz *a)
  {
--    if (s->btype != 0) {
-+    if (EX_TBFLAG_A64(s->tbflags, BTYPE) != 0) {
-         set_btype_raw(0);
--        s->btype = 0;
-+        DP_TBFLAG_A64(s->tbflags, BTYPE, 0);
-     }
- }
+-    DisasLabel match;
+-    TCGv_i64 tcg_cmp;
++    DisasCompare64 c = {
++        .cond = a->nz ? TCG_COND_NE : TCG_COND_EQ,
++        .v1 = read_cpu_reg(s, a->rt, a->sf),
++        .v2 = tcg_constant_i64(0),
++    };
  
-@@ -1894,7 +1895,8 @@ static void set_btype_for_br(DisasContext *s, int rn)
-             TCGv_i64 pc = tcg_temp_new_i64();
-             gen_pc_plus_diff(s, pc, 0);
-             gen_helper_guarded_page_br(tcg_env, pc);
--            s->btype = -1;
-+            s->btype_set = true;
-+            s->tbflags_invalid = true;
-         }
-     }
- }
-@@ -11044,7 +11046,6 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->max_any_vl = MAX(dc->max_svl, arm_cpu->sve_max_vq * 16);
-     dc->pauth_active = EX_TBFLAG_A64(dc->tbflags, PAUTH_ACTIVE);
-     dc->bt = EX_TBFLAG_A64(dc->tbflags, BT);
--    dc->btype = EX_TBFLAG_A64(dc->tbflags, BTYPE);
-     dc->unpriv = EX_TBFLAG_A64(dc->tbflags, UNPRIV);
-     dc->ata[0] = EX_TBFLAG_A64(dc->tbflags, ATA);
-     dc->ata[1] = EX_TBFLAG_A64(dc->tbflags, ATA0);
-@@ -11182,10 +11183,9 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     }
- 
-     if (dc_isar_feature(aa64_bti, s)) {
-+        int btype = EX_TBFLAG_A64(s->tbflags, BTYPE);
-+        tcg_debug_assert(!s->btype_set);
-         if (s->base.num_insns == 1) {
--            /* First insn can have btype set to non-zero.  */
--            tcg_debug_assert(s->btype >= 0);
+-    tcg_cmp = read_cpu_reg(s, a->rt, a->sf);
+     reset_btype(s);
 -
-             /*
-              * Note that the Branch Target Exception has fairly high
-              * priority -- below debugging exceptions but above most
-@@ -11195,13 +11195,12 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-              * We can check all but the guarded page check here;
-              * defer the latter to a helper.
-              */
--            if (s->btype != 0
--                && !btype_destination_ok(insn, s->bt, s->btype)) {
-+            if (btype && !btype_destination_ok(insn, s->bt, btype)) {
-                 gen_helper_guarded_page_check(tcg_env);
-             }
-         } else {
-             /* Not the first insn: btype must be 0.  */
--            tcg_debug_assert(s->btype == 0);
-+            tcg_debug_assert(btype == 0);
-         }
-     }
- 
-@@ -11216,11 +11215,8 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         unallocated_encoding(s);
-     }
- 
--    /*
--     * After execution of most insns, btype is reset to 0.
--     * Note that we set btype == -1 when the insn sets btype.
--     */
--    if (s->btype > 0 && s->base.is_jmp != DISAS_NORETURN) {
-+    /* After execution of most insns, btype is reset to 0. */
-+    if (!s->btype_set && s->base.is_jmp != DISAS_NORETURN) {
-         reset_btype(s);
-     }
+-    match = gen_disas_label(s);
+-    tcg_gen_brcondi_i64(a->nz ? TCG_COND_NE : TCG_COND_EQ,
+-                        tcg_cmp, 0, match.label);
+-    gen_goto_tb(s, 0, 4);
+-    set_disas_label(s, match);
+-    gen_goto_tb(s, 1, a->imm);
+-    return true;
++    return gen_cbranch(s, &c, a->imm);
  }
+ 
+ static bool trans_TBZ(DisasContext *s, arg_tbz *a)
+ {
+-    DisasLabel match;
+-    TCGv_i64 tcg_cmp;
+-
+-    tcg_cmp = tcg_temp_new_i64();
+-    tcg_gen_andi_i64(tcg_cmp, cpu_reg(s, a->rt), 1ULL << a->bitpos);
++    DisasCompare64 c = {
++        .cond = a->nz ? TCG_COND_TSTNE : TCG_COND_TSTEQ,
++        .v1 = cpu_reg(s, a->rt),
++        .v2 = tcg_constant_i64(1ULL << a->bitpos),
++    };
+ 
+     reset_btype(s);
+-
+-    match = gen_disas_label(s);
+-    tcg_gen_brcondi_i64(a->nz ? TCG_COND_NE : TCG_COND_EQ,
+-                        tcg_cmp, 0, match.label);
+-    gen_goto_tb(s, 0, 4);
+-    set_disas_label(s, match);
+-    gen_goto_tb(s, 1, a->imm);
+-    return true;
++    return gen_cbranch(s, &c, a->imm);
+ }
+ 
+ static bool trans_B_cond(DisasContext *s, arg_B_cond *a)
+@@ -1801,11 +1833,10 @@ static bool trans_B_cond(DisasContext *s, arg_B_cond *a)
+     reset_btype(s);
+     if (a->cond < 0x0e) {
+         /* genuinely conditional branches */
+-        DisasLabel match = gen_disas_label(s);
+-        arm_gen_test_cc(a->cond, match.label);
+-        gen_goto_tb(s, 0, 4);
+-        set_disas_label(s, match);
+-        gen_goto_tb(s, 1, a->imm);
++        DisasCompare64 c;
++
++        a64_test_cc(&c, a->cond);
++        return gen_cbranch(s, &c, a->imm);
+     } else {
+         /* 0xe and 0xf are both "always" conditions */
+         gen_goto_tb(s, 0, a->imm);
+@@ -1825,35 +1856,27 @@ static bool trans_CB_cond(DisasContext *s, arg_CB_cond *a)
+         [6] = TCG_COND_EQ,
+         [7] = TCG_COND_NE,
+     };
+-    TCGCond cond = cb_cond[a->cc];
+-    TCGv_i64 t, m;
+-    DisasLabel match;
++    DisasCompare64 c = { .cond = cb_cond[a->cc] };
+ 
+-    if (!dc_isar_feature(aa64_cmpbr, s) || cond == TCG_COND_NEVER) {
++    if (!dc_isar_feature(aa64_cmpbr, s) || c.cond == TCG_COND_NEVER) {
+         return false;
+     }
+ 
+-    t = cpu_reg(s, a->rt);
+-    m = cpu_reg(s, a->rm);
++    c.v1 = cpu_reg(s, a->rt);
++    c.v1 = cpu_reg(s, a->rm);
+     if (a->esz != MO_64) {
+-        MemOp mop = a->esz | (is_signed_cond(cond) ? MO_SIGN : 0);
++        MemOp mop = a->esz | (is_signed_cond(c.cond) ? MO_SIGN : 0);
+         TCGv_i64 tt = tcg_temp_new_i64();
+         TCGv_i64 tm = tcg_temp_new_i64();
+ 
+-        tcg_gen_ext_i64(tt, t, mop);
+-        tcg_gen_ext_i64(tm, m, mop);
+-        t = tt;
+-        m = tm;
++        tcg_gen_ext_i64(tt, c.v1, mop);
++        tcg_gen_ext_i64(tm, c.v1, mop);
++        c.v1 = tt;
++        c.v1 = tm;
+     }
+ 
+     reset_btype(s);
+-    match = gen_disas_label(s);
+-
+-    tcg_gen_brcond_i64(cond, t, m, match.label);
+-    gen_goto_tb(s, 0, 4);
+-    set_disas_label(s, match);
+-    gen_goto_tb(s, 1, a->imm);
+-    return true;
++    return gen_cbranch(s, &c, a->imm);
+ }
+ 
+ static bool trans_CB_cond_imm(DisasContext *s, arg_CB_cond_imm *a)
+@@ -1869,34 +1892,27 @@ static bool trans_CB_cond_imm(DisasContext *s, arg_CB_cond_imm *a)
+         [6] = TCG_COND_EQ,
+         [7] = TCG_COND_NE,
+     };
+-    TCGCond cond = cb_cond[a->cc];
+-    TCGv_i64 t;
+-    DisasLabel match;
++    DisasCompare64 c = { .cond = cb_cond[a->cc] };
+ 
+-    if (!dc_isar_feature(aa64_cmpbr, s) || cond == TCG_COND_NEVER) {
++    if (!dc_isar_feature(aa64_cmpbr, s) || c.cond == TCG_COND_NEVER) {
+         return false;
+     }
+ 
+-    t = cpu_reg(s, a->rt);
++    c.v1 = cpu_reg(s, a->rt);
+     if (!a->sf) {
+         TCGv_i64 tt = tcg_temp_new_i64();
+ 
+-        if (is_signed_cond(cond)) {
+-            tcg_gen_ext32s_i64(tt, t);
++        if (is_signed_cond(c.cond)) {
++            tcg_gen_ext32s_i64(tt, c.v1);
+         } else {
+-            tcg_gen_ext32u_i64(tt, t);
++            tcg_gen_ext32u_i64(tt, c.v1);
+         }
+-        t = tt;
++        c.v1 = tt;
+     }
++    c.v2 = tcg_constant_i64(a->imm6);
+ 
+     reset_btype(s);
+-    match = gen_disas_label(s);
+-
+-    tcg_gen_brcondi_i64(cond, t, a->imm6, match.label);
+-    gen_goto_tb(s, 0, 4);
+-    set_disas_label(s, match);
+-    gen_goto_tb(s, 1, a->imm9);
+-    return true;
++    return gen_cbranch(s, &c, a->imm9);
+ }
+ 
+ static void set_btype_for_br(DisasContext *s, int rn)
 -- 
 2.53.0
 

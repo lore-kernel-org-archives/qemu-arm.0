@@ -1,85 +1,82 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28C9F606A31A
-	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 07:06:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DEEE8606A31E
+	for <qemu-arm@archiver.kernel.org>; Fri, 30 Oct 2026 07:30:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=bx12buyD
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=A2OgV8oY
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xMggr-0005WJ-8e; Fri, 30 Oct 2026 03:06:17 -0400
+	id 1xMh48-0001RV-5e; Fri, 30 Oct 2026 03:30:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ghoffman@redhat.com>)
- id 1xMggn-0005VQ-8e
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 03:06:13 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xMh44-0001OA-0I
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 03:30:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ghoffman@redhat.com>)
- id 1xMggj-0003Cu-8n
- for qemu-arm@nongnu.org; Fri, 30 Oct 2026 03:06:12 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xMh41-0005O5-2K
+ for qemu-arm@nongnu.org; Fri, 30 Oct 2026 03:30:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793343965;
+ s=mimecast20190719; t=1793345411;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=poF4qNnQFvay4L5JeJqPgMsg6fiaW54aOEw1S3EOqig=;
- b=bx12buyDLIuNvXBwQ5oz2JONMWEePaS+PsUrRqdzKPjtTnvkRbrUn+8XqK96eSLwzwUOVx
- BuyeZJ98qjQPWr3WeCSyEaZw8HqRbkNcs3Bef/w0bFNYi72yE4oNPis8bVhjbmHfwGzqCb
- rNzvVeKNL9BthupxAyl3hvxzsqOZVFA=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=fklb8BUQZU59GGMQDFLDBJtkVmXe2GUhs8XPa2s99yU=;
+ b=A2OgV8oY27AyDf/DgzUz0eDjvfDzPv6VGIbhUo662jDuTvLqTvpzQkXJJHd6wl9qUa+BS8
+ ZJV4kwJ//MSAa+jQSyoj0BpxHPGUfmPhNPQRSTuMTwsOyKo2kyZCmf3UxBBrXfAx/tZvNI
+ ynt0qjjyXDyBGxcG78eGNI7+BaU2j8U=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-611-zNJKS6EsOr2NKJ9TliTq7g-1; Fri,
- 30 Oct 2026 03:06:00 -0400
-X-MC-Unique: zNJKS6EsOr2NKJ9TliTq7g-1
-X-Mimecast-MFC-AGG-ID: zNJKS6EsOr2NKJ9TliTq7g_1793343959
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-499-YIcQVdoeNtuH-Vf-xwdaZg-1; Fri,
+ 30 Oct 2026 03:30:07 -0400
+X-MC-Unique: YIcQVdoeNtuH-Vf-xwdaZg-1
+X-Mimecast-MFC-AGG-ID: YIcQVdoeNtuH-Vf-xwdaZg_1793345405
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 053401955DE7; Fri, 30 Oct 2026 07:05:58 +0000 (UTC)
-Received: from nucbdw.ghoffman.csb.home.kraxel.org
- (headnet04.pony-001.prod.iad2.dc.redhat.com [10.2.32.116])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 98D271800495; Fri, 30 Oct 2026 07:05:56 +0000 (UTC)
-Received: by nucbdw.ghoffman.csb.home.kraxel.org (Postfix, from userid 11758)
- id 4BD9441B6176; Fri, 30 Oct 2026 08:05:54 +0100 (CET)
-Date: Fri, 30 Oct 2026 08:05:53 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Junjie Cao <junjie.cao@linux.dev>
-Cc: jamin_lin@aspeedtech.com, marcandre.lureau@redhat.com, clg@kaod.org, 
- peter.maydell@linaro.org, kane_chen@aspeedtech.com, troy_lee@aspeedtech.com, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, junjie.cao@intel.com
-Subject: Re: [PATCH v7 1/8] hw/usb/bus: Let the controller ask for the
- automatic hub
-Message-ID: <auRBKZMbz4DyzpZR@nucbdw.ghoffman.csb.home.kraxel.org>
-References: <20261028034140.367393-1-jamin_lin@aspeedtech.com>
- <20261028034140.367393-2-jamin_lin@aspeedtech.com>
- <20261029100942.894066-1-junjie.cao@linux.dev>
- <auMtC1vX9nRw1YIn@nucbdw.ghoffman.csb.home.kraxel.org>
- <20261029144914.916641-1-junjie.cao@linux.dev>
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1E96A18005AD; Fri, 30 Oct 2026 07:30:05 +0000 (UTC)
+Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 6CD5B30001A4; Fri, 30 Oct 2026 07:29:59 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, shaju.abraham@nutanix.com,
+ khushit.shah@nutanix.com, richard.henderson@linaro.org,
+ pbonzini@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com,
+ 7746591750@163.com, maobibo@loongson.cn, harshpb@linux.ibm.com,
+ amachhiw@linux.ibm.com, daniel.barboza@oss.qualcomm.com,
+ milesg@linux.ibm.com, farman@linux.ibm.com, cohuck@redhat.com,
+ alireza.sanaee@huawei.com
+Cc: armbru@redhat.com,
+	mbawa@redhat.com
+Subject: [PATCH v3 for-11.2 00/10] kvm/arm: Some refactoring for custom KVM
+ host model
+Date: Fri, 30 Oct 2026 08:28:41 +0100
+Message-ID: <20261030072956.402425-1-eric.auger@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261029144914.916641-1-junjie.cao@linux.dev>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: YMAwLkliAINrJTSI59Fn94HjJfwlTnTJZ-vb4Liiz2Q_1793343959
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: v7Ly__ceJjW_nPdfL0nH93cUN9Dbon_Ba2gsA-WpNUA_1793345405
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=ghoffman@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,33 +88,75 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-  Hi,
+This series contains some patches initially introduced in
+"kvm/arm: Introduce a customizable aarch64 KVM host model" series
 
-> > So, if we need a property anyway, I guess it is better to have all
-> > usb host adapters behave the same and flip auto-hub to default off
-> > for new machines types.  It's easy enough to turn it back on via
-> > qemu command line if needed.
-> 
-> Agreed. One case to account for is raspi: it has no versioned
-> machine types, and dwc2 has a single root port.
-> "-device usb-kbd -device usb-mouse" relies on the automatic hub
-> today; with auto-hub off, the second device would fail with
-> "no free ports".
-> 
-> I suggest enabling auto-hub in bcm2835_peripherals to preserve
-> the current board behaviour while leaving the controller default
-> off.
+They are rather independent on the actual custom host model and can
+be considered as a separate dependency. Would be nice to get some of them
+in 11.2.
 
-Yes, makes sense.
+Can be found at:
+https://github.com/eauger/qemu/tree/arm-cpu-model-v11-prereq-v3
 
-take care,
-  Gerd
+History:
+v2 -> v3:
+- added target/arm: Directly store cpu probe failure error (Peter)
+- target/arm/kvm: Pass an error handle to kvm_arm_create_scratch_host_vcpu
+- added Faiz's R-b
+
+v1 -> v2:
+- Fixed comma in target/ppc/kvm.c
+- Improved commit description and comment in last patch
+- collected R-b's (thanks!)
+
+
+Eric Auger (10):
+  target/arm/cpu-sysregs.h.inc: Sort by name alphabetical order
+  target/arm: Move REVIDR into isar.idregs[] storage
+  target/arm: Move MIDR into isar.idregs[] storage
+  target/arm: Enforce MPIDR into isar.idregs[] storage
+  target/arm/kvm: Pass an error handle to kvm_arm_init_cpreg_list
+  target/kvm: Pass an Error handle to kvm_arch_init_vcpu
+  target/arm/kvm: Introduce kvm_arm_vcpu_prepare_init_features helper
+  hw/arm/virt: Make sure virt_get_caches() keeps on reading CLIDR_EL1 as
+    0
+  target/arm: Directly store cpu probe failure error
+  target/arm/kvm: Pass an error handle to
+    kvm_arm_create_scratch_host_vcpu
+
+ include/system/kvm.h         |   2 +-
+ linux-user/arm/target_proc.h |  13 ++--
+ target/arm/cpu.h             |  15 +++--
+ target/arm/kvm_arm.h         |   3 +-
+ target/arm/cpu-sysregs.h.inc |  49 ++++++++-------
+ accel/kvm/kvm-all.c          |  15 +++--
+ hw/arm/virt.c                |  15 +++++
+ hw/intc/armv7m_nvic.c        |   4 +-
+ target/arm/cpu-max.c         |   4 +-
+ target/arm/cpu.c             |  28 +++++++--
+ target/arm/cpu64.c           |   4 +-
+ target/arm/helper.c          |  29 +++------
+ target/arm/hvf/hvf.c         |   9 +--
+ target/arm/kvm.c             | 119 +++++++++++++++++++++--------------
+ target/arm/tcg/cpu-v7m.c     |  18 +++---
+ target/arm/tcg/cpu32.c       |  37 +++++------
+ target/arm/tcg/cpu64.c       |  42 ++++++-------
+ target/arm/whpx/whpx-all.c   |   9 +--
+ target/i386/kvm/kvm.c        |  22 ++++---
+ target/loongarch/kvm/kvm.c   |  27 +++-----
+ target/ppc/kvm.c             |  10 ++-
+ target/riscv/kvm/kvm-cpu.c   |   6 +-
+ target/s390x/kvm/kvm.c       |   2 +-
+ 23 files changed, 272 insertions(+), 210 deletions(-)
+
+-- 
+2.53.0
 
 

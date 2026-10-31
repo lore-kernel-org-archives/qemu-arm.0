@@ -1,76 +1,85 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 243CD606A31A
-	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:06:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=KL4/Nops
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DEFDB606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 12:42:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xN34n-00040a-Iz; Sat, 31 Oct 2026 03:00:35 -0400
+	id 1xN8Pm-00074r-Ni; Sat, 31 Oct 2026 08:42:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33X-0002yq-N1
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1xN8Pk-00074Z-Ot; Sat, 31 Oct 2026 08:42:28 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33U-0002nI-Nx
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793429947;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=46L1wPgYmW84c7ArQKYgq1TDz54kTgiNQNQtTRa36xw=;
- b=KL4/NopsE1uRw9UqlYUzlAqeE338H2DRuNRbLupBHU0/r8WSXv3zzM2MHmrimunVhKfy6z
- VRznaB73QBdADpooPLrXuEB+wcXaLwx/uvWTIEtMzBFmg3/kflTBxJIKL8X71SbEmadVj+
- rxs6esLWjOV9YTgi9AGhEGeJ0mvFiLo=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-495-rr5PpkvDML-t_gEzitDlUA-1; Sat,
- 31 Oct 2026 02:58:50 -0400
-X-MC-Unique: rr5PpkvDML-t_gEzitDlUA-1
-X-Mimecast-MFC-AGG-ID: rr5PpkvDML-t_gEzitDlUA_1793429929
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CDFDB180057D; Sat, 31 Oct 2026 06:58:49 +0000 (UTC)
-Received: from circe.redhat.com (unknown [10.44.32.2])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6A1031800765; Sat, 31 Oct 2026 06:58:48 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 07/34] hw/arm/aspeed_ast1040: Add FMC and SPI filters as
- unimplemented devices
-Date: Sat, 31 Oct 2026 07:57:56 +0100
-Message-ID: <20261031065823.191966-8-clg@redhat.com>
-In-Reply-To: <20261031065823.191966-1-clg@redhat.com>
-References: <20261031065823.191966-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1xN8Ph-00057i-LV; Sat, 31 Oct 2026 08:42:28 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id DF4ED60C532;
+ Sat, 31 Oct 2026 13:42:19 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id 9dpfbu7glJHt; Sat, 31 Oct 2026 13:42:17 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id D10E160C50E; Sat, 31 Oct 2026 13:42:17 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id CDB1B13996F;
+ Sat, 31 Oct 2026 13:42:17 +0100 (CET)
+Date: Sat, 31 Oct 2026 13:42:17 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+cc: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org, 
+ Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>, 
+ Aleksandar Rikalo <arikalo@gmail.com>, 
+ Philippe Mathieu-Daude <philmd@mailo.com>, 
+ Antony Pavlov <antonynpavlov@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
+ =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
+ Max Filippov <jcmvbkbc@gmail.com>, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>, xen-devel@lists.xenproject.org, 
+ qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>, 
+ qemu-ppc@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>, 
+ Weiwei Li <liwei1518@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>, 
+ Thomas Huth <th.huth+qemu@posteo.eu>, 
+ =?ISO-8859-15?Q?Cl=E9ment_Chigot?= <chigot@adacore.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+ Yoshinori Sato <yoshinori.sato@nifty.com>, 
+ Frederic Konrad <konrad.frederic@yahoo.fr>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Chao Liu <chao.liu@processmission.com>, 
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>, 
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
+ registration
+In-Reply-To: <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
+Message-ID: <ba106173-fca3-6019-3028-122831887921@eik.bme.hu>
+References: <20261030151539.1872-1-luoyonggang@gmail.com>
+ <d1db54c6-b802-676a-7779-0c2c63f5f807@eik.bme.hu>
+ <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: wJooF7-t30mDWRk3b7a7PZnf2a0CU3eqUFouxzsiliw_1793429929
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,48 +91,60 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+On Fri, 30 Oct 2026, Pierrick Bouvier wrote:
+> On 10/30/2026 4:09 PM, BALATON Zoltan wrote:
+>> On Fri, 30 Oct 2026, Yonggang Luo wrote:
+>>> DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo and the
+>>> type_init
+>>> function that calls type_register_static(). A later change needs to
+>>> pass a
+>>
+>> That's the point of the macro to hide the boiler plate code.
+>>
+>>> target mask into that registration, and the macros have no parameter
+>>> for it.
+>>
+>> Couldn't you just change the macros to take that parameter instead of
+>> expanding it everywhere?
+>>
+>
+> Problem of macros is that they don't have default parameters, so you
+> need variants for everything:
+>
+> DEFINE_MACHINE
+> DEFINE_MACHINE_EXTENDED
+> DEFINE_MACHINE_WITH_INTERFACES
+> DEFINE_MACHINE_WITH_INTERFACE_ARRAY
+> and now would need a new variant, with variant for other existing ones.
+>
+> In the end, it's just simpler to remove this and add the boilerplate.
+> It's written once and never modified, so using a macro just save typing
+> those lines once.
+>
+>> Regards,
+>> BALATON Zoltan
+>>
+>>> This series expands every caller first, with no behavior change, so the
+>>> follow-up only replaces the type_register_static() call.
+>>>
+>>> Each machine file gains a class_init function, a TypeInfo, and a
+>>> type_init
+>>> function that calls type_register_static(). The last patch removes
+>>> DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* from include/hw/core/boards.h.
 
-The AST1040 provides filter register regions for the FMC, SPI0 and SPI1
-controllers at the following addresses:
+Macros help reading the code not saving typing. If the actual 
+functionality is buried in a lot of boiler plate it's harder to understand 
+and spot bugs so putting the unintresting boiler plate behind a macro is 
+better even if you need a separate version for different cases. Then the 
+code that uses the macro will be much more obvious and not just a lot of 
+boiler plate.
 
-FMC filter: 0x74000400
-SPI0 filter: 0x74010400
-SPI1 filter: 0x74020400
-
-These filters are not modeled yet. Add the register regions as
-unimplemented devices to reflect the AST1040 memory map.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20261028023154.48395-8-jamin_lin@aspeedtech.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- hw/arm/aspeed_ast1040.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-index 6e3b6900e0fb..5eb091e67567 100644
---- a/hw/arm/aspeed_ast1040.c
-+++ b/hw/arm/aspeed_ast1040.c
-@@ -87,6 +87,9 @@ static const UnimplementedDeviceConfig aspeed_soc_ast1040_unimp_devs[] = {
-     { "udc", "aspeed.udc", 0x74120000, 0x4000, -1000 },
-     { "jtag[0]", "aspeed.jtag0", 0x74C01000, 0x100, -1000 },
-     { "jtag[1]", "aspeed.jtag1", 0x74C09000, 0x100, -1000 },
-+    { "fmc-filter",  "aspeed.fmc-filter", 0x74000400, 0x1000, -1000 },
-+    { "spi0-filter", "aspeed.spi0-filter", 0x74010400, 0x1000, -1000 },
-+    { "spi1-filter", "aspeed.spi1-filter", 0x74020400, 0x1000, -1000 },
-     { }
- };
- 
--- 
-2.56.0
-
+Regards,
+BALATON Zoltan
 

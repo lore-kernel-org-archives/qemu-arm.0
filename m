@@ -1,64 +1,63 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E618D606A31A
-	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:03:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08919606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:04:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=f162cebF
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=AWCcZVoH
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xN35G-00052v-5x; Sat, 31 Oct 2026 03:00:58 -0400
+	id 1xN33G-0002ci-Gh; Sat, 31 Oct 2026 02:58:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33t-00039K-4W
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:38 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33E-0002cJ-Up
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:58:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33p-0002s5-Ho
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:32 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33C-0002jj-FW
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:58:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793429961;
+ s=mimecast20190719; t=1793429929;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=e716O5xxLeB24D4PTUnfKRKw4B18+ABRJmTBcI3Wh04=;
- b=f162cebFQZprLTZP2dwpDVkl+aIHuHvwqEEgqebrAPS7VG6wf8waMKmwrBdPVD2+TCQK25
- 55I0uWCcVsKI0EcfLc10FnXL/we3BU8BlOAxk0QZ+10i6MKaypSNRzQx+0hp0ZrTjzXGQO
- U5qSZInlbNakiLiO8W9JbrXmRb/5fnY=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=zMBA93sxNAD9cUUyKM5JcU12jFFj27Ymjpc4Mk7i7KA=;
+ b=AWCcZVoH88DU2ZzUIIjRiqD9pyYDhQEf/OgzMy7DJFlrUD0ALFwXXyM0DKz8pIrQ5G5psR
+ ChEQ0MFxueD4dKLDLvTaiS7eq2CWDHfeqg5QLgrmYJdFlz+q1RzTjKzZu4zDks9BLe3CHe
+ +nDm0xyBfnnkKenLDaiADNxzsOycuXo=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-500-AitZ28RQOPOOnbRgW2i2Fw-1; Sat,
- 31 Oct 2026 02:59:17 -0400
-X-MC-Unique: AitZ28RQOPOOnbRgW2i2Fw-1
-X-Mimecast-MFC-AGG-ID: AitZ28RQOPOOnbRgW2i2Fw_1793429956
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-464-KkzqeDvgOBWPIYGectaSJw-1; Sat,
+ 31 Oct 2026 02:58:47 -0400
+X-MC-Unique: KkzqeDvgOBWPIYGectaSJw-1
+X-Mimecast-MFC-AGG-ID: KkzqeDvgOBWPIYGectaSJw_1793429926
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C903B195608D; Sat, 31 Oct 2026 06:59:16 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1FBE61956072; Sat, 31 Oct 2026 06:58:46 +0000 (UTC)
 Received: from circe.redhat.com (unknown [10.44.32.2])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 634621803A40; Sat, 31 Oct 2026 06:59:15 +0000 (UTC)
+ id 7E4AC1800677; Sat, 31 Oct 2026 06:58:44 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 21/34] tests/functional/arm/aspeed: Add AST1080 test with
- ASPEED MCU FW Hub v01.00
-Date: Sat, 31 Oct 2026 07:58:10 +0100
-Message-ID: <20261031065823.191966-22-clg@redhat.com>
+Subject: [PULL 05/34] hw/ssi/aspeed_smc: Add AST1040 FMC and SPI controllers
+Date: Sat, 31 Oct 2026 07:57:54 +0100
+Message-ID: <20261031065823.191966-6-clg@redhat.com>
 In-Reply-To: <20261031065823.191966-1-clg@redhat.com>
 References: <20261031065823.191966-1-clg@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 9Q_kPE6oKaMF-UL4bBvi0Mfqo74X-V8SnHwU2iV_vtc_1793429956
+X-Mimecast-MFC-PROC-ID: uKc1XssByT0jLEKaTlBeR_xoUuzlaX0fcR--Y8lqdKw_1793429926
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -83,84 +82,167 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add a functional test for the ASPEED AST1080 EVB using the
-Zephyr firmware from ASPEED MCU FW Hub v01.00.
+The AST1040 FMC and SPI controllers are compatible with the AST2700
+controllers, but use different flash window. Therefore, the AST2700
+controller types cannot be reused directly for AST1040.
+
+Add dedicated AST1040 FMC, SPI0 and SPI1 controller types with the
+appropriate parameter settings.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20261015063625.186708-9-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20261028023154.48395-6-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/arm/meson.build            |  1 +
- tests/functional/arm/test_aspeed_ast1080.py | 37 +++++++++++++++++++++
- 2 files changed, 38 insertions(+)
- create mode 100644 tests/functional/arm/test_aspeed_ast1080.py
+ hw/ssi/aspeed_smc.c | 119 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 119 insertions(+)
 
-diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
-index e657ecd27824..72c7afc84a1f 100644
---- a/tests/functional/arm/meson.build
-+++ b/tests/functional/arm/meson.build
-@@ -38,6 +38,7 @@ tests_arm_system_thorough = [
-   'aspeed_ast1030',
-   'aspeed_ast1040',
-   'aspeed_ast1060',
-+  'aspeed_ast1080',
-   'aspeed_palmetto',
-   'aspeed_romulus',
-   'aspeed_witherspoon',
-diff --git a/tests/functional/arm/test_aspeed_ast1080.py b/tests/functional/arm/test_aspeed_ast1080.py
-new file mode 100644
-index 000000000000..76f3cc09835c
---- /dev/null
-+++ b/tests/functional/arm/test_aspeed_ast1080.py
-@@ -0,0 +1,37 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots the ASPEED SoCs with firmware
-+#
-+# Copyright (C) 2026 ASPEED Technology Inc
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index c0c3666dbca3..ec9ad0f747e1 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -2072,6 +2072,110 @@ static void aspeed_2700_spi2_class_init(ObjectClass *klass, const void *data)
+     asc->reg_ops           = &aspeed_2700_smc_flash_ops;
+ }
+ 
++static const uint32_t aspeed_1040_resets[ASPEED_SMC_R_MAX] = {
++    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
++                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1 |
++                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE2 |
++                CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE3),
++};
 +
-+from aspeed import AspeedTest
-+from qemu_test import Asset, exec_command_and_wait_for_pattern
++static void aspeed_1040_fmc_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
 +
++    dc->desc               = "Aspeed 1040 FMC Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_2700_spi0_segments;
++    asc->segment_addr_mask = 0xffffffff;
++    asc->resets            = aspeed_1040_resets;
++    asc->flash_window_base = 0x80000000;
++    asc->flash_window_size = 512 * MiB;
++    asc->features          = ASPEED_SMC_FEATURE_DMA |
++                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
++    asc->dma_flash_mask    = 0x1FFFFFFC;
++    asc->dma_dram_mask     = 0x00FFFFFC;
++    asc->dma_start_length  = 1;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
++}
 +
-+class AST1080Machine(AspeedTest):
++static const AspeedSegments aspeed_1040_spi0_segments[] = {
++    { 0x0, 128 * MiB },
++    { 128 * MiB, 128 * MiB },
++    { 256 * MiB, 128 * MiB },
++    { 384 * MiB, 128 * MiB },
++};
 +
-+    ASSET_ASPEED_AST1080_EVB_01_00 = Asset(
-+        ('https://github.com/AspeedTech-BMC'
-+         '/aspeed-mcu-fw-hub/releases/download/v01.00'
-+         '/ast1080a0-evb-v01.00.tar.gz'),
-+         '7c8a95bc51945d70591b20f1a22f8fffebc2b164e6fda47f73ff67f37bed8d87')
++static void aspeed_1040_spi0_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
 +
-+    def test_arm_ast1080_zephyros(self):
-+        self.set_machine('ast1080-evb')
++    dc->desc               = "Aspeed 1040 SPI0 Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 4;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 4;
++    asc->segments          = aspeed_1040_spi0_segments;
++    asc->segment_addr_mask = 0xffffffff;
++    asc->resets            = aspeed_1040_resets;
++    asc->flash_window_base = 0xA0000000;
++    asc->flash_window_size = 512 * MiB;
++    asc->features          = ASPEED_SMC_FEATURE_DMA |
++                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
++    asc->dma_flash_mask    = 0x1FFFFFFC;
++    asc->dma_dram_mask     = 0x00FFFFFC;
++    asc->dma_start_length  = 1;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
++}
 +
-+        kernel_name = ('ast1080a0-evb-v01.00/ast1080/ast1080a0/evb/'
-+                       'zephyr-shell-module.bin')
-+        kernel_file = self.archive_extract(
-+            self.ASSET_ASPEED_AST1080_EVB_01_00, member=kernel_name)
++static void aspeed_1040_spi1_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
 +
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', kernel_file, '-nographic')
-+        self.vm.launch()
-+        self.wait_for_console_pattern("uart:~$")
-+        exec_command_and_wait_for_pattern(self, "help",
-+                                          "Available commands")
++    dc->desc               = "Aspeed 1040 SPI1 Controller";
++    asc->r_conf            = R_CONF;
++    asc->r_ce_ctrl         = R_CE_CTRL;
++    asc->r_ctrl0           = R_CTRL0;
++    asc->r_timings         = R_TIMINGS;
++    asc->nregs_timings     = 2;
++    asc->conf_enable_w0    = CONF_ENABLE_W0;
++    asc->cs_num_max        = 2;
++    asc->segments          = aspeed_2700_spi0_segments;
++    asc->segment_addr_mask = 0xffffffff;
++    asc->resets            = aspeed_1040_resets;
++    asc->flash_window_base = 0xC0000000;
++    asc->flash_window_size = 512 * MiB;
++    asc->features          = ASPEED_SMC_FEATURE_DMA |
++                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
++    asc->dma_flash_mask    = 0x1FFFFFFC;
++    asc->dma_dram_mask     = 0x00FFFFFC;
++    asc->dma_start_length  = 1;
++    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
++    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
++    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
++}
 +
-+if __name__ == '__main__':
-+    AspeedTest.main()
+ static const TypeInfo aspeed_smc_types[] = {
+     {
+         .name           = TYPE_ASPEED_SMC_FLASH,
+@@ -2103,6 +2207,21 @@ static const TypeInfo aspeed_smc_types[] = {
+         .parent     = TYPE_ASPEED_SMC,
+         .class_init = aspeed_1030_spi2_class_init,
+     },
++    {
++        .name       = "aspeed.fmc-ast1040",
++        .parent     = TYPE_ASPEED_SMC,
++        .class_init = aspeed_1040_fmc_class_init,
++    },
++    {
++        .name       = "aspeed.spi0-ast1040",
++        .parent     = TYPE_ASPEED_SMC,
++        .class_init = aspeed_1040_spi0_class_init,
++    },
++    {
++        .name       = "aspeed.spi1-ast1040",
++        .parent     = TYPE_ASPEED_SMC,
++        .class_init = aspeed_1040_spi1_class_init,
++    },
+     {
+         .name       = "aspeed.smc-ast2400",
+         .parent     = TYPE_ASPEED_SMC,
 -- 
 2.56.0
 

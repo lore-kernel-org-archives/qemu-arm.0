@@ -1,76 +1,75 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E295B606A31A
-	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:01:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45FB3606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:01:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Kq8nUS6e
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=b/Pg7C86
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xN35Z-0006v0-U5; Sat, 31 Oct 2026 03:01:18 -0400
+	id 1xN33x-0003BB-1k; Sat, 31 Oct 2026 02:59:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN349-0003KH-MB
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:54 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33T-0002v0-Hl
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:08 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN344-0002vR-U4
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:48 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33R-0002mZ-OW
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793429975;
+ s=mimecast20190719; t=1793429945;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=W756UWDTc7chB3eVaV1Ffo569hx+0XIewVMK0n/2OAI=;
- b=Kq8nUS6e3GJh5I4wmFY+B+xR9tR2MCKJ74JpPHfJVWKp5L1ZHoZVFaK5ptjOElsofhNRet
- dWLbYLD9419p58qsmihOH49AZkCEP5nScx1OJYRTp5jY9hhVeRDUUo822NMjFVK+1dhdy8
- AXz/tszvuIBy0OHzbvp7DcBNcCKr0AY=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=ocOUOxWV/NefxOXeedYoDKce1VrE//8WUCYMHiB4vZU=;
+ b=b/Pg7C86l629pmOqB8Dk0mNOP4QG0LeXyHVaDvT2TUE/M7xBsU0MT0fDQ4/U8LLj0fTkb8
+ 5Ve3k0gczRsUGmUZSrH6BxEsi6TGwgU+7tWZZVuk7gsT0FXwXwX8aCdc3Tw/YVv3cZymaD
+ ht1C9++TsDxZ+fBqBlIEbsv5h3W+QM8=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-389-DhBcrAIIPzisekRKrGLzgw-1; Sat,
- 31 Oct 2026 02:59:27 -0400
-X-MC-Unique: DhBcrAIIPzisekRKrGLzgw-1
-X-Mimecast-MFC-AGG-ID: DhBcrAIIPzisekRKrGLzgw_1793429963
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-489-IdCoNTfLNQetnq5vYHeMyQ-1; Sat,
+ 31 Oct 2026 02:59:00 -0400
+X-MC-Unique: IdCoNTfLNQetnq5vYHeMyQ-1
+X-Mimecast-MFC-AGG-ID: IdCoNTfLNQetnq5vYHeMyQ_1793429940
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DC839195609D; Sat, 31 Oct 2026 06:59:22 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D76E11800871; Sat, 31 Oct 2026 06:58:59 +0000 (UTC)
 Received: from circe.redhat.com (unknown [10.44.32.2])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 361691800765; Sat, 31 Oct 2026 06:59:20 +0000 (UTC)
+ id 720B41800677; Sat, 31 Oct 2026 06:58:58 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Jamin Lin <jaminlin1207@gmail.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 24/34] docs/system/arm/aspeed: add the sanmiguel-bmc machine
-Date: Sat, 31 Oct 2026 07:58:13 +0100
-Message-ID: <20261031065823.191966-25-clg@redhat.com>
+Subject: [PULL 12/34] tests/qtest/aspeed_smc: Add AST1040 SMC tests
+Date: Sat, 31 Oct 2026 07:58:01 +0100
+Message-ID: <20261031065823.191966-13-clg@redhat.com>
 In-Reply-To: <20261031065823.191966-1-clg@redhat.com>
 References: <20261031065823.191966-1-clg@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: BvI2z4Vx3xNelf3SObkq5A-HEQ-IVqbXOoYcFbt3_lI_1793429963
+X-Mimecast-MFC-PROC-ID: zlvRlAiSqACzH277BK2xOX3YHpgBbs1vz0pzH0gt31M_1793429940
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,37 +84,122 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The Facebook SanMiguel BMC machine is supported by hw/arm but has never
-been listed in the Aspeed documentation. Add it to the AST2600 machine
-table.
+Add SMC qtests for the AST1040 EVB using a 4 MiB W25Q33PW flash
+connected to FMC CS0.
 
-Reviewed-by: Jamin Lin <jaminlin1207@gmail.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Link: https://lore.kernel.org/qemu-devel/20261015-bmc-minerva-v3-2-7d50c8a108e5@free.fr
+Link: https://lore.kernel.org/qemu-devel/20261028023154.48395-13-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- docs/system/arm/aspeed.rst | 1 +
- 1 file changed, 1 insertion(+)
+ tests/qtest/aspeed_smc-test.c | 61 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index d3749c07e848..2e23123cc63d 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -34,6 +34,7 @@ AST2600 SoC based machines :
- - ``bletchley-bmc``        Facebook Bletchley BMC
- - ``fby35-bmc``            Facebook fby35 BMC
- - ``catalina-bmc``         Facebook Catalina BMC
-+- ``sanmiguel-bmc``        Facebook SanMiguel BMC
- - ``anacapa-bmc``          Facebook Anacapa BMC
- - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+index 59c96bd68ae8..34010e283f25 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -240,12 +240,69 @@ static void test_ast1030_evb(AspeedSMCTestData *data)
+                         data, aspeed_smc_test_write_page_qor);
+ }
  
++static void test_ast1040_evb(AspeedSMCTestData *data)
++{
++    int ret;
++    int fd;
++
++    fd = g_file_open_tmp("qtest.m25p80.w25q33pw.XXXXXX",
++                         &data->tmp_path, NULL);
++    g_assert(fd >= 0);
++    ret = ftruncate(fd, 4 * 1024 * 1024);
++    g_assert(ret == 0);
++    close(fd);
++
++    data->s = qtest_initf("-machine ast1040-evb "
++                          "-device w25q33pw,bus=ssi.0,cs=0x0,drive=fmc0 "
++                          "-blockdev node-name=fmc0,driver=file,filename=%s",
++                          data->tmp_path);
++
++    /* fmc cs0 with w25q33pw flash */
++    data->flash_base = 0x80000000;
++    data->spi_base = 0x74000000;
++    data->jedec_id = 0xef6016;
++    data->cs = 0;
++    data->node = "/machine/soc/fmc/ssi.0/child[0]";
++    /* beyond 512KB */
++    data->page_addr = 0x800 * FLASH_PAGE_SIZE;
++
++    qtest_add_data_func("/ast1040/smc/read_jedec",
++                        data, aspeed_smc_test_read_jedec);
++    qtest_add_data_func("/ast1040/smc/erase_sector",
++                        data, aspeed_smc_test_erase_sector);
++    qtest_add_data_func("/ast1040/smc/erase_all",
++                        data, aspeed_smc_test_erase_all);
++    qtest_add_data_func("/ast1040/smc/write_page",
++                        data, aspeed_smc_test_write_page);
++    qtest_add_data_func("/ast1040/smc/read_page_mem",
++                        data, aspeed_smc_test_read_page_mem);
++    qtest_add_data_func("/ast1040/smc/write_page_mem",
++                        data, aspeed_smc_test_write_page_mem);
++    qtest_add_data_func("/ast1040/smc/read_status_reg",
++                        data, aspeed_smc_test_read_status_reg);
++    qtest_add_data_func("/ast1040/smc/write_page_qpi",
++                        data, aspeed_smc_test_write_page_qpi);
++    qtest_add_data_func("/ast1040/smc/read_page_mem_fast_read",
++                        data, aspeed_smc_test_read_page_mem_fast_read);
++    qtest_add_data_func("/ast1040/smc/write_page_fast_read",
++                        data, aspeed_smc_test_write_page_fast_read);
++    qtest_add_data_func("/ast1040/smc/read_page_mem_dor",
++                        data, aspeed_smc_test_read_page_mem_dor);
++    qtest_add_data_func("/ast1040/smc/write_page_dor",
++                        data, aspeed_smc_test_write_page_dor);
++    qtest_add_data_func("/ast1040/smc/read_page_mem_qor",
++                        data, aspeed_smc_test_read_page_mem_qor);
++    qtest_add_data_func("/ast1040/smc/write_page_qor",
++                        data, aspeed_smc_test_write_page_qor);
++}
++
+ int main(int argc, char **argv)
+ {
+     AspeedSMCTestData palmetto_data;
+     AspeedSMCTestData ast2500_evb_data;
+     AspeedSMCTestData ast2600_evb_data;
+     AspeedSMCTestData ast1030_evb_data;
++    AspeedSMCTestData ast1040_evb_data;
+     int ret;
+ 
+     g_test_init(&argc, &argv, NULL);
+@@ -254,20 +311,24 @@ int main(int argc, char **argv)
+     test_ast2500_evb(&ast2500_evb_data);
+     test_ast2600_evb(&ast2600_evb_data);
+     test_ast1030_evb(&ast1030_evb_data);
++    test_ast1040_evb(&ast1040_evb_data);
+     ret = g_test_run();
+ 
+     qtest_quit(palmetto_data.s);
+     qtest_quit(ast2500_evb_data.s);
+     qtest_quit(ast2600_evb_data.s);
+     qtest_quit(ast1030_evb_data.s);
++    qtest_quit(ast1040_evb_data.s);
+     unlink(palmetto_data.tmp_path);
+     unlink(ast2500_evb_data.tmp_path);
+     unlink(ast2600_evb_data.tmp_path);
+     unlink(ast1030_evb_data.tmp_path);
++    unlink(ast1040_evb_data.tmp_path);
+     g_free(palmetto_data.tmp_path);
+     g_free(ast2500_evb_data.tmp_path);
+     g_free(ast2600_evb_data.tmp_path);
+     g_free(ast1030_evb_data.tmp_path);
++    g_free(ast1040_evb_data.tmp_path);
+ 
+     return ret;
+ }
 -- 
 2.56.0
 

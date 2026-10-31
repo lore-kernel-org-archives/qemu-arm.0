@@ -1,72 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2C422606A31F
-	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 16:41:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 11241606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 16:42:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Zb315e5u
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=O4jIaxxt
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNC8C-00026k-RM; Sat, 31 Oct 2026 12:40:37 -0400
+	id 1xNC99-0002kX-LA; Sat, 31 Oct 2026 12:41:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xNC8B-00025c-I3
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 12:40:35 -0400
-Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
+ id 1xNC8y-0002bv-Sy
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 12:41:25 -0400
+Received: from mail-dl1-x1233.google.com ([2607:f8b0:4864:20::1233])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xNC89-0007hP-Vh
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 12:40:35 -0400
-Received: by mail-dy1-x132c.google.com with SMTP id
- 5a478bee46e88-33bf40b0c8bso2080057eec.0
- for <qemu-arm@nongnu.org>; Sat, 31 Oct 2026 09:40:33 -0700 (PDT)
+ id 1xNC8w-0007mT-LI
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 12:41:24 -0400
+Received: by mail-dl1-x1233.google.com with SMTP id
+ a92af1059eb24-14394530ec6so2227992c88.1
+ for <qemu-arm@nongnu.org>; Sat, 31 Oct 2026 09:41:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793464832; x=1794069632; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793464881; x=1794069681; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Z4uozW/RGYivh9xm1tzOVceXV/9Dw7Pp0AvBXKQfEMw=;
- b=Zb315e5urVuSVCc63q+CqsSke+wnd0U0W7Dmpw/7LlLz4zhNIDIB9+1NxU3S6bDLTP
- RH5JKzZIR5x8PpVbwL3H2pmCyNwObKWPSd7+blO4MCKn9A3Fpsw5kiWzwVvl30HbO5oG
- EvxIEcyb2vKM5BbzfBnJO5Zke/N+SK/ZQwK6bXReA0l5bn9sRDP/aVXbz0BLZWM1pIxc
- tIIrfo+Fyex7xobX+cNBLolVyF4G5SPd0jQVN8fc0VMwhV9q8S/LtqSq1XZheqPPPS5E
- WbaF7i5CU4neaMaOP1iTY1qiZsAm0Bqf3TBUWqVLdn1TCCTUQtcF0B5Znns5ZsZCkAA0
- Ri+w==
+ bh=F4BZlHQ4uuWh3AcM0lAUJwiu4sRioxBd7xwErjYLxjk=;
+ b=O4jIaxxtb6Ih1uoqJWOKOaTWBdm2KZQPfsu71kkUYDnrNmqUHFj99inGb9RVSOvjtc
+ NgOpWkIMUW0i+Djy2fmaq9IuvsAc1evDVKjUjaCylbJsFlawUfxQZ5LGWjZ2f815rALy
+ kU4I+oP0xMEBXIDRjiSC580oMh/u7yj507+V3r8kjrPyVrCdn+a0Zt2kS6fDAyA9f7b7
+ vE0WpHaFS7AgtHjebawKG1Cf2k5nIAMTUAHV9vItibL2tw6DwN84cEZk0LgREssbGG9G
+ eA6zmBzZ5bvtIrbykv6RBP+3EiHm+40Djdyc00QDmQ2OWobFgy8gctte00u0teOLKJxN
+ Pgug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793464832; x=1794069632;
+ d=1e100.net; s=20260707; t=1793464881; x=1794069681;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Z4uozW/RGYivh9xm1tzOVceXV/9Dw7Pp0AvBXKQfEMw=;
- b=KiRbU4HvFyDsEN7pn/VXZThy3tpJq5mLp89AAb/IRqFd5uZxBeLVomI/74+oVvHiX4
- a9dDVo9JXk6jXOfqjXkzFgkuL+PWt2JHpFGaEX2kFup191A7K9XbdzIp2QFprJFFL0vl
- mCIjy2Y8sLewnJLSvOayRMx0PypeWc/rAn3kezLPCyUZjMtNgb9ETvLbB6hwiXcb5YgT
- 6QjdiSEKJQoFCNR4x2xp5pS81QsPYMI8TEnpBzkkQjuUgUU7WFqO+v0WSYP2QnQ2XXoy
- 6E3pDaCrryxJIEEtASvpnGX6dC3/zPY2WUiNSIWSJeHEeLqcwH8+KWjViWs5REzamkQo
- /xXA==
+ bh=F4BZlHQ4uuWh3AcM0lAUJwiu4sRioxBd7xwErjYLxjk=;
+ b=Nt1TqePEg7rO+E4KgMNbSrdSdOMDfDra6BoL7yLZJOhXuPHajTrzvjsBmF7MB893ip
+ 29lMTPKTp1WdOnZbfVIHZYwvffGDBqiz2ewO8EWN4C5ATBnWY1CIvN6r7XK7HmzAG1yK
+ ZBHyQkG8kg0BTPs/dMcXQtDhcUHHpfIsrakh//q9Ox05HhFtvLZA6osysJ/p0637zuaB
+ cyMXVUEopR2t1W9Az6OtOKNXPFNA/SH52+aNagWt3ehzAqDmsucj6y5l0DqNE6b9ojMl
+ gT/vQc2XeK1bzpVYjd3A3AjCOti1QROqbeXWNBot9Pi+dV91Pdp+hy07us1Heo8I52kw
+ eoCA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzcC/SXuFHdA9cMS9LdSPpccCvNXEPl0vWXTWag14+bKV2LXgXsOFZ0cZDnStrZ9Ir+hSZoaVGeSg==@nongnu.org
-X-Gm-Message-State: AFq9FYIoUAIZAXeBufpnuimYkt490ww4sosT5Gr8Ml/vofF2xgO/r76M
- apJZfZXmAeENGBtwSJSucCNuluAWbsmsYi3b4UernLaE2ZxOBybjVf7L
-X-Gm-Gg: AYBFou1CSyiys8iqZO8WC1qnzacVViqk45GKYiAVf8qecILfMpkQxzmtQod9wr+6Tom
- aMV+k26J1v1NhENMALL5bFhK+sZVl+DgvKep5rcngDFSv8I29p2QJmEv1JscL2yYTbhMRXlS8+L
- gnqEyGaHkvDS9d2PssZo4WYfBT1V0+F63X3v7za6fhkUToEiVysDkw4IdUwzKZ/m3U399mcFFfo
- zs2xiqn1y91KSAPLCpgdxv+yCvGqYvLaaqpNCwGbNI9t7NNunHpL47LL0FcNuCXlbXYnWb5s1ov
- WCBOPJziPiyuctymXoX/sCSjz/qcEmAwMNMk0QANoaSudiWMSVimMqG2ubL0GUs6ZLVFJ3lfJpl
- 6sfrDsUXi5FQizHx/R0Tlr9KOKZ1/O3SkMgdq4FxOKG7aRaReji9r2E3jOs6EUhTe2ULL7E/79W
- 4cloMQQIiW+jVtssMkCctqpUIwDqEmxgTZcxOtQ43FD4t9hzzvOGVO34YmLAC2ETpISgsERpv6j
- VRh8MzSaq0xDHvEejc2730ZKvH4KWfPn3eUWef69+dLPfXXVNhT0gHPqeXeSv0zO8cqAecEJD0Q
- apvEkAFylcg0hS1FBl3+HOKSTYFheJh588+hTEgRXqmn7Fr2
-X-Received: by 2002:a05:701b:4502:10b0:18d:96e8:b913 with SMTP id
- a92af1059eb24-1ac5f64afcbmr7629294c88.47.1793464832354; 
- Sat, 31 Oct 2026 09:40:32 -0700 (PDT)
+ AKwUvBxF4XaWCdIQ72xRUKa5NCCuVnVWjPMoJGLYX0eAPgAxWcMST2gt6HYLEAVZ2gXWrYzwpIizVpx0qQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJ8N9F2xcqZ6Y+yPXcX7EgV0J7qF7h3K326mMTyfdszDEzVWeTP
+ kgt8rWL3Pn0PA3+VRIgxR6DpDWfdnzF1YdbK/8S5rs/XfOiSkDf+S+FV
+X-Gm-Gg: AYBFou0dy6yKHDdRD5ljr4e5/Qi/ZXlyFPDod/+kYG2Szg1ZG/+It7rmFlyJfWctwxA
+ 2hhSe+91PWYqE4GX+qYydZru3wZngW+knu8uy7P/a/SEYJgxVkldp2cUa+j6YGnFe454H4UHMRs
+ 7H/nJGlN5Zf15fCUycTI4DRNb4ynVFG9UozGjluG0xNs4rVCkvRgKUDqi8EFPEBEuB4IM/7wHqd
+ Wx3dxbdKD3oT9gosaJQpqHP5yN02f3NCkEGDsblUtXkmK9B3U2S5vNdXxtvJY46UU4LAjJaLh3d
+ 11CUOryYVUvbx3WOSLbI15e5RvvgaV5DWr3x4J8wAvz/eTV9FU0nJiKRsQ2ZR/STayUVUvF6pLs
+ lLHQR8M3G6qs3dNuNx9QSN1BGV4SXNkyK96Cv8rY3iu1QpMNNq0I1Tt/hjmRqfO6sN3ifmJyken
+ eUbCO9pWD4iQUXucYicchD1WfKMbuJpYTfhvMJR0PbEWyHAQm+p46bWK+LRxNvyBAeRYA6tMAfB
+ TaL5Fa9Xvc47yPxPWW0+HVbuTFbpFlQlhVnGDJe8BX0JmDulHWeNR41P75cMuf06rN78HZ3EjSx
+ IGlKQVgUpxEJFGdTcyz4eyztjWp1s2PY16GCdSus4c6gEVYa
+X-Received: by 2002:a05:7023:90c:b0:138:30b1:4c00 with SMTP id
+ a92af1059eb24-1ac56d95448mr8838301c88.3.1793464881306; 
+ Sat, 31 Oct 2026 09:41:21 -0700 (PDT)
 Received: from DESKTOP-Q716RM7 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1ac193b8179sm19574572c88.11.2026.10.31.09.40.27
+ a92af1059eb24-1ac193b8179sm19574572c88.11.2026.10.31.09.41.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 31 Oct 2026 09:40:31 -0700 (PDT)
+ Sat, 31 Oct 2026 09:41:20 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -82,18 +82,17 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Cornelia Huck <cohuck@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 02/12] hw/loongarch/virt: select virt machine types with
- is_available
-Date: Sun,  1 Nov 2026 00:39:57 +0800
-Message-ID: <20261031164009.2048-3-luoyonggang@gmail.com>
+Subject: [PATCH v2 10/12] target-info: add target_base_i386()
+Date: Sun,  1 Nov 2026 00:40:05 +0800
+Message-ID: <20261031164009.2048-11-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
 In-Reply-To: <20261031164009.2048-1-luoyonggang@gmail.com>
 References: <20261031164009.2048-1-luoyonggang@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132c;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x132c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1233;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1233.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,44 +119,56 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-LoongArch virt machines use the same QOM names as virt machines on
-other targets. Register them only when the selected target is
-LoongArch, via target_loongarch().
+target_base_arm(), target_base_ppc() and target_base_riscv() report
+whether the selected target belongs to a CPU family. Add the same
+predicate for i386 and x86_64.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/loongarch/virt.c | 3 +++
- 1 file changed, 3 insertions(+)
+ include/qemu/target-info.h |  7 +++++++
+ target-info.c              | 11 +++++++++++
+ 2 files changed, 18 insertions(+)
 
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 9c5371af9de..3f1b82f25ef 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -11,6 +11,7 @@
- #include "qapi/error.h"
- #include "exec/target_page.h"
- #include "hw/core/boards.h"
-+#include "qemu/target-info.h"
- #include "hw/char/serial-mm.h"
- #include "system/kvm.h"
- #include "system/tcg.h"
-@@ -1553,6 +1554,7 @@ static void virt_class_init(ObjectClass *oc, const void *data)
-         .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-         .parent = TYPE_LOONGARCH_VIRT_MACHINE, \
-         .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
-+        .is_available = target_loongarch, \
-     }; \
-     static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-     { \
-@@ -1587,6 +1589,7 @@ static const TypeInfo virt_machine_info = {
-     .class_init     = virt_class_init,
-     .instance_init  = virt_initfn,
-     .instance_finalize = virt_instance_finalize,
-+    .is_available   = target_loongarch,
-     .interfaces = (InterfaceInfo[]) {
-         { TYPE_HOTPLUG_HANDLER },
-         { }
+diff --git a/include/qemu/target-info.h b/include/qemu/target-info.h
+index 1d6c6f4472c..beb7980ca87 100644
+--- a/include/qemu/target-info.h
++++ b/include/qemu/target-info.h
+@@ -57,6 +57,13 @@ bool target_heterogeneous(void);
+  */
+ bool target_base_arm(void);
+ 
++/**
++ * target_base_i386:
++ *
++ * Returns whether the target architecture is i386 or x86_64.
++ */
++bool target_base_i386(void);
++
+ /**
+  * target_arm:
+  *
+diff --git a/target-info.c b/target-info.c
+index 07dc88fd366..d8cd2209018 100644
+--- a/target-info.c
++++ b/target-info.c
+@@ -59,6 +59,17 @@ bool target_base_arm(void)
+     }
+ }
+ 
++bool target_base_i386(void)
++{
++    switch (target_arch()) {
++    case SYS_EMU_TARGET_I386:
++    case SYS_EMU_TARGET_X86_64:
++        return true;
++    default:
++        return false;
++    }
++}
++
+ bool target_arm(void)
+ {
+     return target_arch() == SYS_EMU_TARGET_ARM;
 -- 
 2.55.0.windows.3
 

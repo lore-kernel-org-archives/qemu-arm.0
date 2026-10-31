@@ -1,144 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3D72606A31A
-	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 14:12:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 75B71606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 14:57:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=v5ejj5LG
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=JDfxgXce
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xN9p2-0003ym-Eo; Sat, 31 Oct 2026 10:12:40 -0400
+	id 1xNAWT-0000tW-J9; Sat, 31 Oct 2026 10:57:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xN9p1-0003y4-0W
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 10:12:39 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <dovankhai97@gmail.com>)
+ id 1xNAR9-0008OH-RH
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 10:52:05 -0400
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xN9oy-0003fb-24
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 10:12:38 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-6b408f2d936so2085946a12.1
- for <qemu-arm@nongnu.org>; Sat, 31 Oct 2026 07:12:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793455953; cv=none;
- d=google.com; s=arc-20260327;
- b=nt2sdqkesv4+wIROHC611CR9EEnBQrnUTw95pE57yBuv1YpryMCSrpFk+Vt1FEmAbD
- 0bpNqpLT3lpZN/Wo5IjKnjG+ixzP1LqTEpexxmx58YzOVdZ8S4BkISAwBVcwdFKR1ZAd
- cdsDQgndQi6AlZu1xQFAZNBdfeqKHH2LUdOQkCyXOMAJj384L+E/gF8mGWNxXDXV723N
- exm3A8Ba+Sm1DTxRXx7ZewFHo1BRrnMP652mqdFTFBQI6k/O2N+JNXrS3pr30IpopVZS
- 21sbzXh88Fv3T7ZhdC9lGbbx3IK46wVxinYiEqWWR1IfKN8Ny/AHlVh4EvSGKO5sx/fp
- aZaA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=pUOpZRf0p30wCsLBnhRcgac97jM7shsYjyb+5CboCrE=;
- fh=JfG5+CUCd/vgYP91txJIRjJUwxDy3mY7fd7Pi2aHsoY=;
- b=fMmVzLClmawee8dchYXcnpy7eph6uIwmRWavsWSJVyeflO3lSEgAbnvvOJR26GLMEZ
- yZ6+yJ62jBBzClxiZicWV4XhfSTYAtz8XqhtwZbZRe62xtiRgJwTnR9qerEuN774+pEa
- EvvjrWkFT7QVXLMRJlIGdHFAjPKZLC76pzTp/cr73tMjlFqJLBZBYggw0aaKuW4expg9
- Q8jzV8vGhgyBTKEpNzH+AbADyIK4X9jwvhg5IsjMHb3OfjGT/d9NBtCobHD+HkxDQPpD
- PHqPYv5km3a0OoHyKXgvQXV1OGETgjrorGymQ+TN8eV3vgPr1VYwz+oJVw/OnUSm1+Iw
- F3dg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <dovankhai97@gmail.com>)
+ id 1xNAR7-0006Ym-1x
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 10:52:03 -0400
+Received: by mail-dy1-x1330.google.com with SMTP id
+ 5a478bee46e88-35b2c599f43so1506678eec.0
+ for <qemu-arm@nongnu.org>; Sat, 31 Oct 2026 07:52:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793455953; x=1794060753; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=pUOpZRf0p30wCsLBnhRcgac97jM7shsYjyb+5CboCrE=;
- b=v5ejj5LGfgQErWbcdKUhpcSG2djQEzS5b+nJyho/1Xwo+XqNB3RDssjr4Ev+8FK1Cd
- oi/6oTKa83zpladKbddWExFD3K60KAQBpmACGsidouSEVUPqQmXXVRKTnAJNaFlENjsd
- 6tf/QYFU+bGCZ71gYFdS2PmCPmDiIbr7YgjaTKIAoAKASj875dIDsfBC+9+XRceY8Euw
- IrLTtSXwCA+HtmSpm2Cevt19mXfh/60tqC9kUp8r0+ISwrLW3gU0TA1aVTagspJ2m5l4
- CWf/gfxbhyzSdkStATasJFqxsvuug0EDp5hDg7+4t9IpNNw1ZBma9LLJePGJ42KmM0tH
- Hi4g==
+ d=gmail.com; s=20260707; t=1793458319; x=1794063119; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=y9OcbmBQT6++Wgt2GiPCy82GPlfqJY+SVl7s/7VpF78=;
+ b=JDfxgXceiJzKwS73RKGpG9GK67PRkGq7lr6SwbkpvQ/Dzdi7iVuziQBngS0TJ6Y/TR
+ xVxP4Z0GyU2YWXpWcIJB02C1QiDzRSsc8LOicqCMVI6NmKNyfNqiMgYeXaSE2xoIY8i1
+ LbcZ9rxYdcPzOJYbFukMQcZ5/H552GJ4RVK3KhV+MUlrUVS3Ng7loZP95ZPUQOE51lmb
+ 1Io3iBeRdQPcwwHfGIGG2C9nVgjhUzIoUEikBDcSwwzeH+WX2413NI7bfO5CXZee/ywq
+ 0rejewAu1I64TT+96DG/c53e+FH8BNwBXqtziBkPWiFVxBML6e+U8yFiIwnBg9x0vHR7
+ oTGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793455953; x=1794060753;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=pUOpZRf0p30wCsLBnhRcgac97jM7shsYjyb+5CboCrE=;
- b=T5LUCWEkdOxxgDGyHtYTuT2fJzQA1U1Ti9mhyvpE4teLQCNPNhCpHh5p2HmKytYqED
- kqOV696RncWPsxfFrP0qwtScp0R7mrjgHvLzfHrdLhGqNGGCf+eYrL7LsCOOkz1X0NYs
- H4txSCt1/7aLDuUZmFm7+PEbJe6W27G9eLdC9cuCABhVsvYpxCQdQSqrLeDMra59iHeg
- RTuq/oahszkyvt52G649Zvts/5lOsIl3Z+aNmxik5lHZ5XD5B7FDIr4DQcQCmmGwUFIi
- 5njzFLNYmWJKk7ACmiBWJ9XYwSpAgO3GrpX06Pe0xjSvJRGKIILrIr3H2N9d7fHd6U/E
- RGMQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvByHNXFeCqWYyWXsJ4WDlr5zgEgUXmeBwgKGGPmFM68nSpxJFW4ZVl4UT6rfZsQhiPBosF7JXbhjdg==@nongnu.org
-X-Gm-Message-State: AFq9FYKs2HgYtche8IS1LN+uDbVxPZ4XJ71OwzQp0frfxOdU0af/pR/N
- W1AxIu1ExTTlXv+VkF1qsvLYinVXZPBevmKpZvDa6bpNiayFUGEMkUBUSvlQVQUtkNHNcPyT0GK
- ISBCuDcmPbuqzmCCs1X09tLbubhAQuGA=
-X-Gm-Gg: AYBFou0bZHQSKgJFlGx/m7vBKMeNtimO8fVJ+XXWDU2PFE4TBoAA1RC6fv33Ipt0CmK
- yZkhoKZJQBNHgUcZKWp5iVDcSroQFUO/IG0T9oigvcYfJFKhGa3StJuRG4GQPatWTkWR7kL21xt
- eZV5yCUoVXqel9x/69p9PlKqiKhM2lZ39CfgTM7NDKz0IzV7yQA1chW0hxfhmQmVQuDRNLw2Ygq
- NtLR6KRURpAJxqQ8a2NWyR63gSrCbtOgfBnfEOGA3IESi7KmklPhYwzDm7VrRkSEY9gF7W6YRGl
- u+k6Oy9dv80uWHErV4sno69RisI7PZB5bVV9C79bDj5uQuQYq6jrccEsil0SofjPx6yrWLVNSqO
- 99eeEa8S0tOgkD+C+XFJ+tLVw2c0cGAb7RQVi
-X-Received: by 2002:a05:6402:44c8:b0:6af:a566:6f13 with SMTP id
- 4fb4d7f45d1cf-6b4d5edb54fmr3002982a12.44.1793455953008; Sat, 31 Oct 2026
- 07:12:33 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1793458319; x=1794063119;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=y9OcbmBQT6++Wgt2GiPCy82GPlfqJY+SVl7s/7VpF78=;
+ b=2CqTSN37A48panuL2t8TAI745ITq00SwfWvkPr/JbyAmBVp5iu5OKTwjUBjyn84kS3
+ vtFzuIhQ9ZD4Ae6h44Xykec3RPm8oLj/o4g4P7+5Lh9gwdU/Z50lIlCKQFOMzxujDQcy
+ D9Kzs05lVo0jD8vK2XWY1cHgpdyp5bRO9O7gVy0e9ifFYCpVyD1qZHyjWMkEnBmWi9HW
+ iPdZNrt91sPrC8L/o9Nvh/AZ3xvvYPisiTtcksn7fqsI2Ph7ionGv9qcG4fxOI1M46iZ
+ Wjbj8MJO4twnrJUZ6LnhXD0mW6eS/DyV4cmiF1mWqoNIUAs32hiWH0XdU2/63kK6HdPF
+ ML2A==
+X-Gm-Message-State: AFq9FYKXGeeOdUH6L3pz3Q/J52wBM+tmDZIfHDLAmiq8nq9jqnCAWTCa
+ R/e4Dju4WyOFXwd96NKYMLjV2ipDdtikIuN5TD2IDDlM3VTc9UtFkuSJ
+X-Gm-Gg: AYBFou1/PUJVQ7P+q55H5nYotZU/8AuGFpUjN/lmgMDrIHOHo6b35cEOGxB4p+6218z
+ v5WHGAKr97moZ4MnMdiF3W4oiFJ4Vvd8vZ7xUjXOzOSO/fn3yJQ9moHrQ7NwSw9kmxY5lmjZJ57
+ HxXUdwU641kI6Zq9Vuopyq7lhoGfso2iB2mnSfschFxFgfAYBjEP8ffAsj3BCc4jDo7ZqoO4o5Y
+ 12JyuKgTTJLxrWtkMoU2BjJrKzxldYz8kjKv3JIp7OzMCZ2NghqcY91ufc2nZ+5Rkp4RovSIcx2
+ gKPpJKyVSuCXlpvtXdeESll4drdEdc7qOhd5SymPdQoKdLHpKHZxzYKyrDExTu62LdtQHg406BT
+ 89Gebsr70SnKOfdBfN3L0hU8ZDtglbzKHZ7emOCIKM7dBSVCZmI6EpDsrHABWi0AYTlVAwYL/bB
+ gsiHYwccI8Y63PK8aAeb/aM+zK4zvlzYZ6FT4c6b8lvhNcoQfpObbSfxvjS7zCHFQXrwz1ET782
+ QoScY7EdCv5pVgE92i6rfWreitG7kGI/R3o+LNrE3JSHK+fuEuxgO/dnwrLuof4iMnimt7rFmKX
+ C/TTC8BtqucBethOM1juE0Uo0KMBkaYV
+X-Received: by 2002:a05:7300:6ca2:b0:366:fabf:6273 with SMTP id
+ 5a478bee46e88-36a423e35famr11757472eec.22.1793458319364; 
+ Sat, 31 Oct 2026 07:51:59 -0700 (PDT)
+Received: from ubuntu.lan ([2405:4802:913e:86f0:fc32:76b2:b6d6:a3f6])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-36a428c17bdsm17541006eec.6.2026.10.31.07.51.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 31 Oct 2026 07:51:59 -0700 (PDT)
+From: Khai Do <dovankhai97@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
+ strahinja.p.jankovic@gmail.com, Khai Do <dovankhai97@gmail.com>
+Subject: [PATCH 2/5] hw/arm/orangepi-zero2w: Add Orange Pi Zero 2W machine
+Date: Sat, 31 Oct 2026 21:51:44 +0700
+Message-ID: <20261031145147.32683-3-dovankhai97@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261031145147.32683-1-dovankhai97@gmail.com>
+References: <20261031145147.32683-1-dovankhai97@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261030151539.1872-1-luoyonggang@gmail.com>
- <d1db54c6-b802-676a-7779-0c2c63f5f807@eik.bme.hu>
- <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
- <ba106173-fca3-6019-3028-122831887921@eik.bme.hu>
-In-Reply-To: <ba106173-fca3-6019-3028-122831887921@eik.bme.hu>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Sat, 31 Oct 2026 22:12:20 +0800
-X-Gm-Features: AclHuK-zfjnfDk2iP11Oo2plNAe19bvSiGLggXOtrbkzp1_jiPrf_zVAr1PBvDc
-Message-ID: <CAE2XoE9cR_X0kkDfGTU4Mt_5Hc3WZ8K5rghw2AeL4Vh=eugGag@mail.gmail.com>
-Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
- registration
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org,
- Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>, 
- Aleksandar Rikalo <arikalo@gmail.com>,
- Philippe Mathieu-Daude <philmd@mailo.com>, 
- Antony Pavlov <antonynpavlov@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Stefano Stabellini <sstabellini@kernel.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
- Max Filippov <jcmvbkbc@gmail.com>, Niek Linnenbank <nieklinnenbank@gmail.com>, 
- xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org, 
- Alexandre Iooss <erdnaxe@crans.org>, Weiwei Li <liwei1518@gmail.com>,
- Zhao Liu <zhao1.liu@intel.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Thomas Huth <th.huth+qemu@posteo.eu>,
- =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yoshinori Sato <yoshinori.sato@nifty.com>, 
- Frederic Konrad <konrad.frederic@yahoo.fr>, Palmer Dabbelt <palmer@dabbelt.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Chao Liu <chao.liu@processmission.com>, 
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>, 
- Gaurav Sharma <gaurav.sharma_7@nxp.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1330;
+ envelope-from=dovankhai97@gmail.com; helo=mail-dy1-x1330.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 31 Oct 2026 10:57:32 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,88 +99,138 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-2.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, Oct 31, 2026 at 8:42=E2=80=AFPM BALATON Zoltan <balaton@eik.bme.hu>=
- wrote:
->
-> On Fri, 30 Oct 2026, Pierrick Bouvier wrote:
-> > On 10/30/2026 4:09 PM, BALATON Zoltan wrote:
-> >> On Fri, 30 Oct 2026, Yonggang Luo wrote:
-> >>> DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo and the
-> >>> type_init
-> >>> function that calls type_register_static(). A later change needs to
-> >>> pass a
-> >>
-> >> That's the point of the macro to hide the boiler plate code.
-> >>
-> >>> target mask into that registration, and the macros have no parameter
-> >>> for it.
-> >>
-> >> Couldn't you just change the macros to take that parameter instead of
-> >> expanding it everywhere?
-> >>
-> >
-> > Problem of macros is that they don't have default parameters, so you
-> > need variants for everything:
-> >
-> > DEFINE_MACHINE
-> > DEFINE_MACHINE_EXTENDED
-> > DEFINE_MACHINE_WITH_INTERFACES
-> > DEFINE_MACHINE_WITH_INTERFACE_ARRAY
-> > and now would need a new variant, with variant for other existing ones.
-> >
-> > In the end, it's just simpler to remove this and add the boilerplate.
-> > It's written once and never modified, so using a macro just save typing
-> > those lines once.
-> >
-> >> Regards,
-> >> BALATON Zoltan
-> >>
-> >>> This series expands every caller first, with no behavior change, so t=
-he
-> >>> follow-up only replaces the type_register_static() call.
-> >>>
-> >>> Each machine file gains a class_init function, a TypeInfo, and a
-> >>> type_init
-> >>> function that calls type_register_static(). The last patch removes
-> >>> DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* from include/hw/core/board=
-s.h.
->
-> Macros help reading the code not saving typing. If the actual
-> functionality is buried in a lot of boiler plate it's harder to understan=
-d
-> and spot bugs so putting the unintresting boiler plate behind a macro is
-> better even if you need a separate version for different cases. Then the
-> code that uses the macro will be much more obvious and not just a lot of
+The Orange Pi Zero 2W is a single-board computer powered by the
+Allwinner H618 SoC. This commit adds machine emulation with:
+- Allwinner H618 SoC instance
+- 1 GiB default system SDRAM at 0x40000000
+- Kernel and firmware loading via arm_load_kernel
 
-I think mainly because DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* are
-not defined properly
-that causes them to not be extended easily.
+Signed-off-by: Khai Do <dovankhai97@gmail.com>
+---
+ MAINTAINERS              |  1 +
+ hw/arm/meson.build       |  2 +-
+ hw/arm/orangepi-zero2w.c | 77 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 79 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/orangepi-zero2w.c
 
-DEFINE_TYPES is another example, use them can extend easily, how about
-always use DEFINE_TYPES?
-Or add a DEFINE_TYPE to replace DEFINE_MACHINE* and DEFINE_SECURE_MACHINE*?
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 68f1c31d60..d5f60db054 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -785,6 +785,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/allwinner-h618*
+ F: include/hw/*/allwinner-h618*
++F: hw/arm/orangepi-zero2w.c
+ 
+ ARM PrimeCell and CMSDK devices
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 42ed065b17..947ee2c7b4 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -24,7 +24,7 @@ arm_common_ss.add(when: 'CONFIG_OMAP', if_true: files('omap1.c'))
+ arm_common_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubieboard.c'))
+ arm_common_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
+ arm_common_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
+-arm_common_ss.add(when: 'CONFIG_ALLWINNER_H618', if_true: files('allwinner-h618.c'))
++arm_common_ss.add(when: 'CONFIG_ALLWINNER_H618', if_true: files('allwinner-h618.c', 'orangepi-zero2w.c'))
+ arm_common_ss.add(when: 'CONFIG_MAX78000_SOC', if_true: files('max78000_soc.c'))
+ arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2836.c',
+diff --git a/hw/arm/orangepi-zero2w.c b/hw/arm/orangepi-zero2w.c
+new file mode 100644
+index 0000000000..fe87a98efc
+--- /dev/null
++++ b/hw/arm/orangepi-zero2w.c
+@@ -0,0 +1,77 @@
++/*
++ * Orange Pi Zero 2W machine emulation
++ *
++ * Copyright (C) 2026 Khai Do <dovankhai97@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "system/address-spaces.h"
++#include "qapi/error.h"
++#include "qemu/error-report.h"
++#include "hw/core/boards.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/arm/allwinner-h618.h"
++#include "hw/arm/boot.h"
++
++#define TYPE_ORANGEPI_ZERO2W_MACHINE MACHINE_TYPE_NAME("orangepi-zero2w")
++OBJECT_DECLARE_SIMPLE_TYPE(OrangePiZero2WMachineState, ORANGEPI_ZERO2W_MACHINE)
++
++struct OrangePiZero2WMachineState {
++    MachineState parent;
++
++    struct arm_boot_info bootinfo;
++};
++
++static void orangepi_zero2w_init(MachineState *machine)
++{
++    OrangePiZero2WMachineState *opms = ORANGEPI_ZERO2W_MACHINE(machine);
++    AwH618State *h618;
++
++    /* BIOS is not supported by this board */
++    if (machine->firmware) {
++        error_report("BIOS not supported for this machine");
++        exit(1);
++    }
++
++    h618 = AW_H618(object_new(TYPE_AW_H618));
++    object_property_add_child(OBJECT(machine), "soc", OBJECT(h618));
++    object_unref(OBJECT(h618));
++
++    /* Mark H618 object realized */
++    qdev_realize(DEVICE(h618), NULL, &error_abort);
++
++    /* SDRAM */
++    memory_region_add_subregion(get_system_memory(),
++                                h618->memmap[AW_H618_DEV_SDRAM],
++                                machine->ram);
++
++    opms->bootinfo.loader_start = h618->memmap[AW_H618_DEV_SDRAM];
++    opms->bootinfo.ram_size = machine->ram_size;
++    opms->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
++    arm_load_kernel(&h618->cpus[0], machine, &opms->bootinfo);
++}
++
++static void orangepi_zero2w_machine_init(MachineClass *mc)
++{
++    static const char * const valid_cpu_types[] = {
++        ARM_CPU_TYPE_NAME("cortex-a53"),
++        NULL
++    };
++
++    mc->desc = "Orange Pi Zero 2W (Cortex-A53)";
++    mc->init = orangepi_zero2w_init;
++    mc->min_cpus = AW_H618_NUM_CPUS;
++    mc->max_cpus = AW_H618_NUM_CPUS;
++    mc->default_cpus = AW_H618_NUM_CPUS;
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
++    mc->valid_cpu_types = valid_cpu_types;
++    mc->default_ram_size = 1 * GiB;
++    mc->default_ram_id = "orangepi-zero2w.ram";
++}
++
++DEFINE_MACHINE_EXTENDED("orangepi-zero2w", MACHINE, OrangePiZero2WMachineState,
++                        orangepi_zero2w_machine_init, false, false,
++                        NULL)
+-- 
+2.43.0
 
-
-> boiler plate.
->
-> Regards,
-> BALATON Zoltan
-
-
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
 

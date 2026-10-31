@@ -1,75 +1,74 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EF4FF606A31A
-	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:01:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E295B606A31A
+	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:01:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=JLRBer3E
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Kq8nUS6e
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xN358-0004Qf-Q8; Sat, 31 Oct 2026 03:00:51 -0400
+	id 1xN35Z-0006v0-U5; Sat, 31 Oct 2026 03:01:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33k-00037a-UQ
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN349-0003KH-MB
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33e-0002qw-80
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:20 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN344-0002vR-U4
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793429956;
+ s=mimecast20190719; t=1793429975;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jmpoWK9KAA88hQ3t3i0aqjRQKI/G6rEf/GAZMQ1IYZw=;
- b=JLRBer3Eswd2SGcDRnwsOvdMTLXvohiJ2Mc/b0yC+AB4c70LBcVyGozzafNaVlGlwmkWIq
- X1Ja75dawHzSb3nY19ZWL2SxEzMY4DUJGDkogZgcz+Jn7tPop1o+qawl53z8/OL8BYr8r6
- u7A3Vfv+gfK9Rb6QAqNZzviiIEBDEys=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=W756UWDTc7chB3eVaV1Ffo569hx+0XIewVMK0n/2OAI=;
+ b=Kq8nUS6e3GJh5I4wmFY+B+xR9tR2MCKJ74JpPHfJVWKp5L1ZHoZVFaK5ptjOElsofhNRet
+ dWLbYLD9419p58qsmihOH49AZkCEP5nScx1OJYRTp5jY9hhVeRDUUo822NMjFVK+1dhdy8
+ AXz/tszvuIBy0OHzbvp7DcBNcCKr0AY=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-640-19RjUP6YOEWKRLt8uolIng-1; Sat,
- 31 Oct 2026 02:59:12 -0400
-X-MC-Unique: 19RjUP6YOEWKRLt8uolIng-1
-X-Mimecast-MFC-AGG-ID: 19RjUP6YOEWKRLt8uolIng_1793429951
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-389-DhBcrAIIPzisekRKrGLzgw-1; Sat,
+ 31 Oct 2026 02:59:27 -0400
+X-MC-Unique: DhBcrAIIPzisekRKrGLzgw-1
+X-Mimecast-MFC-AGG-ID: DhBcrAIIPzisekRKrGLzgw_1793429963
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4EEEF195608E; Sat, 31 Oct 2026 06:59:11 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DC839195609D; Sat, 31 Oct 2026 06:59:22 +0000 (UTC)
 Received: from circe.redhat.com (unknown [10.44.32.2])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C8F2E1800677; Sat, 31 Oct 2026 06:59:09 +0000 (UTC)
+ id 361691800765; Sat, 31 Oct 2026 06:59:20 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Jamin Lin <jaminlin1207@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 18/34] hw/arm/aspeed_ast1040: Add AST1080 QSPI filters as
- unimplemented device
-Date: Sat, 31 Oct 2026 07:58:07 +0100
-Message-ID: <20261031065823.191966-19-clg@redhat.com>
+Subject: [PULL 24/34] docs/system/arm/aspeed: add the sanmiguel-bmc machine
+Date: Sat, 31 Oct 2026 07:58:13 +0100
+Message-ID: <20261031065823.191966-25-clg@redhat.com>
 In-Reply-To: <20261031065823.191966-1-clg@redhat.com>
 References: <20261031065823.191966-1-clg@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: -fMSpnhDd2WcY3hMhc6cHiL1qQ9l9dA_VdqiEkJsiiY_1793429951
+X-Mimecast-MFC-PROC-ID: BvI2z4Vx3xNelf3SObkq5A-HEQ-IVqbXOoYcFbt3_lI_1793429963
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 5
 X-Spam_score: 0.5
 X-Spam_bar: /
 X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -86,59 +85,36 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-The AST1080 provides three QSPI Filter Controllers (SPI monitors) at
-the following addresses:
+The Facebook SanMiguel BMC machine is supported by hw/arm but has never
+been listed in the Aspeed documentation. Add it to the AST2600 machine
+table.
 
-  QSPI filter #0: 0x74c15000
-  QSPI filter #1: 0x74c16000
-  QSPI filter #2: 0x74c17000
-
-These controllers are only available on the AST1080. The AST1040 does
-not have them, so they are added to the AST1080 specific init and
-realize functions instead of the common AST10x0 G2 ones.
-
-The controllers are not modeled yet. Add the register regions as
-unimplemented devices to reflect the AST1080 memory map.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Jamin Lin <jaminlin1207@gmail.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20261015063625.186708-6-jamin_lin@aspeedtech.com
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Link: https://lore.kernel.org/qemu-devel/20261015-bmc-minerva-v3-2-7d50c8a108e5@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast1040.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ docs/system/arm/aspeed.rst | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/aspeed_ast1040.c b/hw/arm/aspeed_ast1040.c
-index c641f84fbe8c..e5c8d15dcbfa 100644
---- a/hw/arm/aspeed_ast1040.c
-+++ b/hw/arm/aspeed_ast1040.c
-@@ -101,6 +101,13 @@ static const UnimplementedDeviceConfig aspeed_soc_ast1040_unimp_devs[] = {
-     { }
- };
- 
-+static const UnimplementedDeviceConfig aspeed_soc_ast1080_unimp_devs[] = {
-+    { "spim0", "aspeed.spim0", 0x74C15000, 0x1000, -1000 },
-+    { "spim1", "aspeed.spim1", 0x74C16000, 0x1000, -1000 },
-+    { "spim2", "aspeed.spim2", 0x74C17000, 0x1000, -1000 },
-+    { }
-+};
-+
- static qemu_irq aspeed_soc_ast1040_get_irq(AspeedSoCState *s, int dev)
- {
-     Aspeed10x0SoCState *a = ASPEED10X0_SOC(s);
-@@ -408,6 +415,7 @@ static void aspeed_soc_ast1080_class_init(ObjectClass *klass, const void *data)
-     sc->uarts_base      = ASPEED_DEV_UART0;
-     sc->irqmap          = aspeed_soc_ast1040_irqmap;
-     sc->memmap          = aspeed_soc_ast1040_memmap;
-+    sc->unimp_devs      = aspeed_soc_ast1080_unimp_devs;
-     sc->num_cpus        = 1;
- }
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index d3749c07e848..2e23123cc63d 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -34,6 +34,7 @@ AST2600 SoC based machines :
+ - ``bletchley-bmc``        Facebook Bletchley BMC
+ - ``fby35-bmc``            Facebook fby35 BMC
+ - ``catalina-bmc``         Facebook Catalina BMC
++- ``sanmiguel-bmc``        Facebook SanMiguel BMC
+ - ``anacapa-bmc``          Facebook Anacapa BMC
+ - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
  
 -- 
 2.56.0

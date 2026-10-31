@@ -1,76 +1,75 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42EA4606A31A
-	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:04:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77F49606A31C
+	for <qemu-arm@archiver.kernel.org>; Sat, 31 Oct 2026 07:04:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=AUSkVtFL
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=XdfQ5PI9
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xN35Q-00069K-3t; Sat, 31 Oct 2026 03:01:08 -0400
+	id 1xN35d-0007Dq-Dd; Sat, 31 Oct 2026 03:01:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN349-0003KG-Lr
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33w-0003B4-89
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN344-0002xG-RW
- for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:47 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xN33q-0002uF-K4
+ for qemu-arm@nongnu.org; Sat, 31 Oct 2026 02:59:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793429984;
+ s=mimecast20190719; t=1793429969;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+VFY0KVkbYhzMpjjxz+ZB10++vO6McIBTLk+f50ahS0=;
- b=AUSkVtFLLoR/L6abtrOeg9ZxlyY4cnbgSd9V1WlOREAyyJUR+oNMVu5Hl6k3GTyMm46Axh
- jtDl3xEBEZPjQGlg/XEki2MaEVklU6S10S1BrsbrS0l3ntydwH9dKE7pSDNSaMHFRoOhbh
- rcJ61DP1a/0pnrkGvdasN/79c8iCb78=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=x7BvGodWtwX/h5TgUA8F8JY3VZoJ7nxFYFPPUzuQVfE=;
+ b=XdfQ5PI9fnH160Eu2g8+0C8pX8Z8cc/jPZZiJf8PzcnvHGFgT1HB3LxKhnElzPXwz1ugND
+ R1IPPl8ssNxnNW+QzmNCpXjKQZpUZiKcrdr8k0ggdtoNwnuB+K2wh7xkY9F8ljHxvRHaw1
+ mYnyy275RzgKGkFrjVHo9zGu27nqB+4=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-287-FQTq5jUgMdeyYBq7yxtczA-1; Sat,
- 31 Oct 2026 02:59:40 -0400
-X-MC-Unique: FQTq5jUgMdeyYBq7yxtczA-1
-X-Mimecast-MFC-AGG-ID: FQTq5jUgMdeyYBq7yxtczA_1793429979
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-696-FDcK67C4Nwe6k94XHrGDAg-1; Sat,
+ 31 Oct 2026 02:59:27 -0400
+X-MC-Unique: FDcK67C4Nwe6k94XHrGDAg-1
+X-Mimecast-MFC-AGG-ID: FDcK67C4Nwe6k94XHrGDAg_1793429966
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8914D195607B; Sat, 31 Oct 2026 06:59:39 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DD65D18002EB; Sat, 31 Oct 2026 06:59:25 +0000 (UTC)
 Received: from circe.redhat.com (unknown [10.44.32.2])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 06FB41800677; Sat, 31 Oct 2026 06:59:37 +0000 (UTC)
+ id 551F11800765; Sat, 31 Oct 2026 06:59:23 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Jamin Lin <jaminlin1207@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 32/34] hw/rtc: ds1338: implement Resettable reset
-Date: Sat, 31 Oct 2026 07:58:21 +0100
-Message-ID: <20261031065823.191966-33-clg@redhat.com>
+Subject: [PULL 25/34] hw/arm: sanmiguel: remove the second SPI flash controller
+Date: Sat, 31 Oct 2026 07:58:14 +0100
+Message-ID: <20261031065823.191966-26-clg@redhat.com>
 In-Reply-To: <20261031065823.191966-1-clg@redhat.com>
 References: <20261031065823.191966-1-clg@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: r7yxHPhj7ri6jOmWaK-Mozfj0jaFXe3otc0pzMR_Tm0_1793429979
+X-Mimecast-MFC-PROC-ID: _Xb4e6x0UIuXpdC_6u-Bc7anANAkJemVQdKGwOM-4D8_1793429966
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,48 +90,44 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-The device relied on device_class_set_legacy_reset(), a compatibility
-shim around the legacy DeviceState reset hook. Convert ds1338_reset()
-into a proper Resettable hold phase, dropping the legacy shim.
+The board only populates the flash device attached to the FMC
+controller; the SoC SPI controllers are left unused. Advertising a
+part there presents the guest with a flash device the hardware does
+not have.
 
+While here, add the missing year to the copyright line.
+
+Reviewed-by: Jamin Lin <jaminlin1207@gmail.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Link: https://lore.kernel.org/qemu-devel/20261015-bmc-minerva-v3-10-7d50c8a108e5@free.fr
+Link: https://lore.kernel.org/qemu-devel/20261015-bmc-minerva-v3-3-7d50c8a108e5@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/rtc/ds1338.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ hw/arm/aspeed_ast2600_sanmiguel.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/rtc/ds1338.c b/hw/rtc/ds1338.c
-index f8b3340bf0f5..74aee6c74633 100644
---- a/hw/rtc/ds1338.c
-+++ b/hw/rtc/ds1338.c
-@@ -208,9 +208,9 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
-     return 0;
- }
- 
--static void ds1338_reset(DeviceState *dev)
-+static void ds1338_reset_hold(Object *obj, ResetType type)
- {
--    DS1338State *s = DS1338(dev);
-+    DS1338State *s = DS1338(obj);
- 
-     /* The clock is running and synchronized with the host */
-     s->offset = 0;
-@@ -224,11 +224,12 @@ static void ds1338_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
- 
-     k->event = ds1338_event;
-     k->recv = ds1338_recv;
-     k->send = ds1338_send;
--    device_class_set_legacy_reset(dc, ds1338_reset);
-+    rc->phases.hold = ds1338_reset_hold;
-     dc->vmsd = &vmstate_ds1338;
- }
- 
+diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
+index 345a9c941671..ac2aef740ad0 100644
+--- a/hw/arm/aspeed_ast2600_sanmiguel.c
++++ b/hw/arm/aspeed_ast2600_sanmiguel.c
+@@ -1,7 +1,7 @@
+ /*
+  * Facebook SanMiguel BMC
+  *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
+  *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+@@ -384,7 +384,7 @@ static void aspeed_machine_sanmiguel_class_init(ObjectClass *oc,
+     amc->hw_strap1 = SANMIGUEL_BMC_HW_STRAP1;
+     amc->hw_strap2 = SANMIGUEL_BMC_HW_STRAP2;
+     amc->fmc_model = "mx66l1g45g";
+-    amc->spi_model = "mx66l1g45g";
++    amc->spi_model = NULL;
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC0_ON;
+     amc->i2c_init  = sanmiguel_bmc_i2c_init;
 -- 
 2.56.0
 

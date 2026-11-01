@@ -1,174 +1,92 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F21F606A324
-	for <qemu-arm@archiver.kernel.org>; Sun,  1 Nov 2026 20:15:05 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=YDV+paxF
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA90B606A324
+	for <qemu-arm@archiver.kernel.org>; Sun,  1 Nov 2026 20:58:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNbw4-0001pn-DG; Sun, 01 Nov 2026 15:13:48 -0500
+	id 1xNccs-0006Uk-5v; Sun, 01 Nov 2026 15:58:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xNbvt-0001Wi-CI
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 15:13:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1xNccp-0006U1-VZ; Sun, 01 Nov 2026 15:57:59 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xNbvo-0006jI-Dz
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 15:13:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793564011;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- resent-to:resent-from:resent-message-id:in-reply-to:in-reply-to:
- references:references; bh=XB5EnWMeZC+TuUTfvw5ippbkRaPu3bjzBuwOlljxabM=;
- b=YDV+paxFQAHbFxVb/DnFRaSyEMM99C9LNi3Ml5psXrqGSbPiR4cbuaSYEvKijArd5NICyH
- hRNN2robiNc5A3E3lP6BgsmyUWQfdroDle2ENrlM/qGYQrRc3TRPdyT2qj/XsDQTzwCQh4
- qd4BwQxuFfAzgfXMmhdRD1ZkiIzCO4A=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-640-EOQDkoJqOrSzuYyhPjyxGw-1; Sun,
- 01 Nov 2026 15:13:26 -0500
-X-MC-Unique: EOQDkoJqOrSzuYyhPjyxGw-1
-X-Mimecast-MFC-AGG-ID: EOQDkoJqOrSzuYyhPjyxGw_1793564002
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 305B619560B3; Sun,  1 Nov 2026 20:13:22 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E9645195608B; Sun,  1 Nov 2026 20:13:20 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7626A21E6A04; Sun, 01 Nov 2026 21:13:18 +0100 (CET)
-Resent-To: 17746591750@163.com, alistair@alistair23.me, graf@amazon.com,
- FangSheng.Huang@amd.com, michael.roth@amd.com, jamin_lin@aspeedtech.com,
- kane_chen@aspeedtech.com, palmer@dabbelt.com, rbolshakov@ddn.com,
- foss@defmacro.it, sebastian.huber@embedded-brains.de, fam@euphon.net,
- jiaxun.yang@flygoat.com, lizhijian@fujitsu.com, atar4qemu@gmail.com,
- edgar.iglesias@gmail.com, jasowangio@gmail.com, liwei1518@gmail.com,
- npiggin@gmail.com, zhangckid@gmail.com, titusr@google.com,
- wuhaotsh@google.com, arei.gonglei@huawei.com, berto@igalia.com,
- mark.cave-ayland@ilande.co.uk, junjie.cao@intel.com, zhao1.liu@intel.com,
- pasic@linux.ibm.com, its@irrelevant.dk, rathc@linux.ibm.com, clg@kaod.org,
- stefanb@linux.vnet.ibm.com, conor@kernel.org,
- xen-devel@lists.xenproject.org, david@kernel.org, luc@lmichel.fr,
- jic23@kernel.org, kbusch@kernel.org, mchehab+huawei@kernel.org,
- sstabellini@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, zhiwei_liu@linux.alibaba.com,
- zhenwei.pi@linux.dev, adityag@linux.ibm.com, alifm@linux.ibm.com,
- amachhiw@linux.ibm.com, borntraeger@linux.ibm.com,
- brueckner@linux.ibm.com, farman@linux.ibm.com, harshpb@linux.ibm.com,
- iii@linux.ibm.com, jjherne@linux.ibm.com, milesg@linux.ibm.com,
- mjrosato@linux.ibm.com, lixianglai@loongson.cn, maobibo@loongson.cn,
- pbarbuda@microsoft.com, yoshinori.sato@nifty.com, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, john.levon@nutanix.com,
- thanos.makatos@nutanix.com, kfting@nuvoton.com, den@openvz.org,
- elena.ufimtseva@oracle.com, jag.raman@oracle.com,
- daniel.barboza@oss.qualcomm.com, philmd@oss.qualcomm.com,
- pierrick.bouvier@oss.qualcomm.com, phil@philjordan.eu,
- tangtao1634@phytium.com.cn, chao.liu@processmission.com, jiri@resnulli.us,
- sam@rfc1149.net, anisa.su@samsung.com, alex@shazbot.org, farosas@suse.de,
- mohamed@unpredictable.fr, kvm@vger.kernel.org, linux-cxl@vger.kernel.org,
- alistair.francis@wdc.com, anthony@xenproject.org
-Resent-From: Markus Armbruster <armbru@redhat.com>
-Resent-Date: Sun, 01 Nov 2026 21:13:18 +0100
-Resent-Message-ID: <871p941fa9.fsf@pond.sub.org>
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  John Snow
- <jsnow@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Mauro
- Carvalho Chehab <mchehab+huawei@kernel.org>,  Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Kostiantyn
- Kostiuk
- <kkostiuk@redhat.com>,  Eric Blake <eblake@redhat.com>,  David Hildenbrand
- <david@kernel.org>,  Igor Mammedov <imammedo@redhat.com>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Jason Wang <jasowangio@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,  kvm@vger.kernel.org,  Alberto
- Garcia <berto@igalia.com>,  Kevin Wolf <kwolf@redhat.com>,  Hanna Reitz
- <hreitz@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@oss.qualcomm.com>,
- Zhao Liu <zhao1.liu@intel.com>,  Jonathan Cameron <jic23@kernel.org>,
- Junjie Cao <junjie.cao@intel.com>,  Anisa Su <anisa.su@samsung.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,  Jagannathan Raman
- <jag.raman@oracle.com>,  John Levon <john.levon@nutanix.com>,  Thanos
- Makatos <thanos.makatos@nutanix.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,  Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Ilya Leoshkevich <iii@linux.ibm.com>,
- qemu-block@nongnu.org,  linux-cxl@vger.kernel.org,
- qemu-s390x@nongnu.org,  "Michael S. Tsirkin" <mst@redhat.com>,  Sergio
- Lopez <slp@redhat.com>,  qemu-arm@nongnu.org,  Palmer Dabbelt
- <palmer@dabbelt.com>,  Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,  Daniel Henrique Barboza
- <daniel.barboza@oss.qualcomm.com>,  Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>,  Chao Liu <chao.liu@processmission.com>,
- qemu-riscv@nongnu.org,  Song Gao <17746591750@163.com>,  Bibo Mao
- <maobibo@loongson.cn>,  Xianglai Li <lixianglai@loongson.cn>,  Jiaxun Yang
- <jiaxun.yang@flygoat.com>,  Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,  Nicholas Piggin
- <npiggin@gmail.com>,  Harsh Prateek Bora <harshpb@linux.ibm.com>,  Amit
- Machhiwal <amachhiw@linux.ibm.com>,  qemu-ppc@nongnu.org,  Zhang Chen
- <zhangckid@gmail.com>,  Li Zhijian <lizhijian@fujitsu.com>,  Alistair
- Francis <alistair@alistair23.me>,  Alexander Graf <graf@amazon.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,  zhenwei pi
- <zhenwei.pi@linux.dev>,  Ani Sinha <anisinha@redhat.com>,  Luc Michel
- <luc@lmichel.fr>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,  Jamin
- Lin
- <jamin_lin@aspeedtech.com>,  Kane Chen <kane_chen@aspeedtech.com>,  Samuel
- Tardieu <sam@rfc1149.net>,  "Denis V. Lunev" <den@openvz.org>,  FangSheng
- Huang <FangSheng.Huang@amd.com>,  Tyrone Ting <kfting@nuvoton.com>,  Hao
- Wu <wuhaotsh@google.com>,  Keith Busch <kbusch@kernel.org>,  Klaus Jensen
- <its@irrelevant.dk>,  Jesper Devantier <foss@defmacro.it>,  Aditya Gupta
- <adityag@linux.ibm.com>,  Glenn Miles <milesg@linux.ibm.com>,  Conor
- Dooley <conor@kernel.org>,  Sebastian Huber
- <sebastian.huber@embedded-brains.de>,  Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,  Jason Herne
- <jjherne@linux.ibm.com>,  Titus Rwantare <titusr@google.com>,  Stefano
- Stabellini <sstabellini@kernel.org>,  Anthony PERARD
- <anthony@xenproject.org>,  Peter Xu <peterx@redhat.com>,  Chinmay Rath
- <rathc@linux.ibm.com>,  Hendrik Brueckner <brueckner@linux.ibm.com>,
- xen-devel@lists.xenproject.org,  Roman Bolshakov <rbolshakov@ddn.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,  Fam Zheng <fam@euphon.net>,
- Farhan Ali <alifm@linux.ibm.com>,  Alex Williamson <alex@shazbot.org>,
- Tao Tang <tangtao1634@phytium.com.cn>,  Stefan Berger
- <stefanb@linux.vnet.ibm.com>,  Fabiano Rosas <farosas@suse.de>,  Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Artyom Tarasenko
- <atar4qemu@gmail.com>,  Yoshinori Sato <yoshinori.sato@nifty.com>,  Jiri
- Pirko <jiri@resnulli.us>,  Eric Auger <eric.auger@redhat.com>,  Laurent
- Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v7 07/65] qapi: add QAPITypeInfo struct definition
-In-Reply-To: <87ik2g7cd6.fsf@pond.sub.org> (Markus Armbruster's message of
- "Sun, 01 Nov 2026 17:19:49 +0100")
-References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
- <20261020-qom-qapi-v7-7-431a86b02b58@redhat.com>
- <87ik2g7cd6.fsf@pond.sub.org>
-Date: Sun, 01 Nov 2026 17:27:17 +0100
-Message-ID: <87a4ns7c0q.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1xNccn-0002MP-1r; Sun, 01 Nov 2026 15:57:59 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 71E2760C4F3;
+ Sun, 01 Nov 2026 21:57:50 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id mCh3cla3ce1m; Sun,  1 Nov 2026 21:57:48 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 4A66260C4F1; Sun, 01 Nov 2026 21:57:48 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4296813991F;
+ Sun, 01 Nov 2026 21:57:48 +0100 (CET)
+Date: Sun, 1 Nov 2026 21:57:48 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Yonggang Luo <luoyonggang@gmail.com>
+cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ qemu-devel@nongnu.org, Anthony PERARD <anthony@xenproject.org>, 
+ Felipe Balbi <balbi@kernel.org>, Aleksandar Rikalo <arikalo@gmail.com>, 
+ Philippe Mathieu-Daude <philmd@mailo.com>, 
+ Antony Pavlov <antonynpavlov@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
+ =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
+ Max Filippov <jcmvbkbc@gmail.com>, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>, xen-devel@lists.xenproject.org, 
+ qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>, 
+ qemu-ppc@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>, 
+ Weiwei Li <liwei1518@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>, 
+ Thomas Huth <th.huth+qemu@posteo.eu>, 
+ =?ISO-8859-15?Q?Cl=E9ment_Chigot?= <chigot@adacore.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+ Yoshinori Sato <yoshinori.sato@nifty.com>, 
+ Frederic Konrad <konrad.frederic@yahoo.fr>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Chao Liu <chao.liu@processmission.com>, 
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>, 
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
+ registration
+In-Reply-To: <CAE2XoE-2w3A4=BeskGgp7NYUtkRVNkNufu4SZjW_OQ-KAQZvhg@mail.gmail.com>
+Message-ID: <6efa9f73-75dd-efd0-3fd9-6b2654b69737@eik.bme.hu>
+References: <20261030151539.1872-1-luoyonggang@gmail.com>
+ <d1db54c6-b802-676a-7779-0c2c63f5f807@eik.bme.hu>
+ <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
+ <ba106173-fca3-6019-3028-122831887921@eik.bme.hu>
+ <CAE2XoE9cR_X0kkDfGTU4Mt_5Hc3WZ8K5rghw2AeL4Vh=eugGag@mail.gmail.com>
+ <bf45a858-db07-de03-70ea-ca0061d7a5d1@eik.bme.hu>
+ <CAE2XoE9_b5UiE2+BXFRqB3RPv=M+8jr1HQy7rEFVEb6w1DdoGg@mail.gmail.com>
+ <a479df5b-721d-c357-5c69-c3760a73e521@eik.bme.hu>
+ <CAE2XoE-2w3A4=BeskGgp7NYUtkRVNkNufu4SZjW_OQ-KAQZvhg@mail.gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 10KWmNJ_fX5gJEZLOQ7_dJhm6DnFgloXUg2uz9cdEJs_1793564002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-1246954941-1793566668=:71002"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -180,19 +98,177 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Markus Armbruster <armbru@redhat.com> writes:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-> As far as I can tell, @name is used outside tests only for an error
-> message in object_property_get_enum(), and I'm not sure that error makes
-> sense.  Observation, not a demand.
+--3866299591-1246954941-1793566668=:71002
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-No, I managed to confuse myself.  Please ignore.
+On Sun, 1 Nov 2026, Yonggang Luo wrote:
+> On Sun, Nov 1, 2026 at 7:29 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>
+>> On Sun, 1 Nov 2026, Yonggang Luo wrote:
+>>> On Sun, Nov 1, 2026 at 1:06 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>>>
+>>>> On Sat, 31 Oct 2026, Yonggang Luo wrote:
+>>>>> On Sat, Oct 31, 2026 at 8:42 PM BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>>>>>
+>>>>>> On Fri, 30 Oct 2026, Pierrick Bouvier wrote:
+>>>>>>> On 10/30/2026 4:09 PM, BALATON Zoltan wrote:
+>>>>>>>> On Fri, 30 Oct 2026, Yonggang Luo wrote:
+>>>>>>>>> DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo and the
+>>>>>>>>> type_init
+>>>>>>>>> function that calls type_register_static(). A later change needs to
+>>>>>>>>> pass a
+>>>>>>>>
+>>>>>>>> That's the point of the macro to hide the boiler plate code.
+>>>>>>>>
+>>>>>>>>> target mask into that registration, and the macros have no parameter
+>>>>>>>>> for it.
+>>>>>>>>
+>>>>>>>> Couldn't you just change the macros to take that parameter instead of
+>>>>>>>> expanding it everywhere?
+>>>>>>>>
+>>>>>>>
+>>>>>>> Problem of macros is that they don't have default parameters, so you
+>>>>>>> need variants for everything:
+>>>>>>>
+>>>>>>> DEFINE_MACHINE
+>>>>>>> DEFINE_MACHINE_EXTENDED
+>>>>>>> DEFINE_MACHINE_WITH_INTERFACES
+>>>>>>> DEFINE_MACHINE_WITH_INTERFACE_ARRAY
+>>>>>>> and now would need a new variant, with variant for other existing ones.
+>>>>>>>
+>>>>>>> In the end, it's just simpler to remove this and add the boilerplate.
+>>>>>>> It's written once and never modified, so using a macro just save typing
+>>>>>>> those lines once.
+>>>>>>>
+>>>>>>>> Regards,
+>>>>>>>> BALATON Zoltan
+>>>>>>>>
+>>>>>>>>> This series expands every caller first, with no behavior change, so the
+>>>>>>>>> follow-up only replaces the type_register_static() call.
+>>>>>>>>>
+>>>>>>>>> Each machine file gains a class_init function, a TypeInfo, and a
+>>>>>>>>> type_init
+>>>>>>>>> function that calls type_register_static(). The last patch removes
+>>>>>>>>> DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* from include/hw/core/boards.h.
+>>>>>>
+>>>>>> Macros help reading the code not saving typing. If the actual
+>>>>>> functionality is buried in a lot of boiler plate it's harder to understand
+>>>>>> and spot bugs so putting the unintresting boiler plate behind a macro is
+>>>>>> better even if you need a separate version for different cases. Then the
+>>>>>> code that uses the macro will be much more obvious and not just a lot of
+>>>>>
+>>>>> I think mainly because DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* are
+>>>>> not defined properly
+>>>>> that causes them to not be extended easily.
+>>>>>
+>>>>> DEFINE_TYPES is another example, use them can extend easily, how about
+>>>>> always use DEFINE_TYPES?
+>>>>> Or add a DEFINE_TYPE to replace DEFINE_MACHINE* and DEFINE_SECURE_MACHINE*?
+>>>>
+>>>> Maybe I'm missing the problem but DEFINE_MACHINE macros are just
+>>>> convenience wrappers around DEFINE_MACHINE_EXTENDED. So why can't you add
+>>>> the needed parameter to DEFINE_MACHINE_EXTENDED and use that for machines
+>>>> that need it, or if it's needed by all machines then make the new
+>>>> parameter required and add it to all convenience wrappers too so you can
+>>>> keep using DEFINE_MACHINE* and just need to add one parameter to it in
+>>>> machines?
+>>>
+>>> That's the issue, add parameter to DEFINE_MACHINE_EXTENDED means all
+>>> calls to it also need
+>>> to be changed, that means touch many $target_arch files. currently
+>>> it's 13. But after these
+>>
+>> That's not different from expanding the macro which would touch the same
+>> files.
+>>
+>>> changes, there will be much more usage on it, and if we want to add
+>>> more parameters or attributes
+>>> to it, it will be a new tree-wide change.
+>>
+>> Do you expect to need more parameters? Can't you add them at once then?
+>>
+>>> And DEFINE_TYPES do not suffer from such issues. As the TypeInfo[] is
+>>> explicit defined for
+>>> DEFINE_TYPES
+>>
+>> My point is that keeping the boiler plate as little as possible makes the
+>> code more readable. DEFINE_TYPES hides some of the boiler plate,
+>> DEFINE_MACHINE hides even more so converting to DEFINE_TYPES would expose
+>> some even if it's better than no macro at all.
+>>
+>> What exactly are the parameters missing from DEFINE_MACHINE_EXTENDED that
+>> need to be added?
+>
+> Hi BALATON
+> the things we faced is we first is to add TypeInfo::is_available parameter to
+> DEFINE_MACHINE_EXTENDED, and have more usage of it.
+> Then we will add targets:uint64_t parameter to DEFINE_MACHINE_EXTENDED, this is
+> a prepare to remove TypeInfo::is_available parameter from
+> DEFINE_MACHINE_EXTENDED,
+>
+> And finally, once all usage of TypeInfo::is_available can be replaced with
+> targets:uint64_t, then we finally need to remove
+> TypeInfo::is_available parameter from DEFINE_MACHINE_EXTENDED,
 
+Is there a way to avoid the temporary is_available churn and introduce the 
+targets:uint64_t right away? (I'm not following this so I don't really 
+know what you're talking about just looks like there's some churn here 
+which might be good to awoid anyway independent of these macros.)
+
+> That's what I am facing now. And the explicit
+> static const TypeInfo xxx_machine_typeinfo = {
+>    .name       = MACHINE_TYPE_NAME("xxx"),
+>    .parent     = TYPE_MACHINE,
+>    .class_init = xxx_machine_class_init,
+> };
+>
+> Will help me avoid the issue. And I think this is a little boilerplate
+> and very explicit.
+
+That's not all DEFINE_MACHINE hides though. It's longer with .abstract, 
+.secure and .iterfaces plus the machine initfn that would also need to be 
+expanded if you used DEFINE_TYPES.
+
+Is this conversion needed for all machines using all DEFINE_MACHINE 
+variants or only some of them? If the latter why not convert those to 
+DEFINE_MACHINE_EXTENDED and then only that macro needs to be changed with 
+other wrappers passing a default value without needing a new parameter. 
+That does not work if all machines need to do this but even then, keeping 
+the macro and adding a new required parameter is better in my opinion as 
+it keeps boiler plate hidden.
+
+Regards,
+BALATON Zoltan
+
+>
+> And the
+>    .instance_size = sizeof(MachineState),
+> is indeed not needed, they sharing TYPE_MACHINE's sizeof(MachineState)
+> is enough.
+> Even though DEFINE_MACHINE expands to .instance_size =
+> sizeof(MachineState), and it's redundant.
+> So I think convert to DEFINE_TYPES would be a good alternative to this
+> issue, less boilerplate(not none)
+> And dealt with the issue we faced.
+>
+> What do you think about this idea, BALATON
+>
+>>
+>> Regards,
+>> BALATON Zoltan
+>
+>
+>
+>
+--3866299591-1246954941-1793566668=:71002--
 

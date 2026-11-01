@@ -1,71 +1,64 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1696606A324
-	for <qemu-arm@archiver.kernel.org>; Sun,  1 Nov 2026 20:14:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 04734606A325
+	for <qemu-arm@archiver.kernel.org>; Sun,  1 Nov 2026 20:14:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=RZK4HwSq
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=QWxnPL2F
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNbwc-0002Sw-MP; Sun, 01 Nov 2026 15:14:26 -0500
+	id 1xNbw4-0001qt-ME; Sun, 01 Nov 2026 15:13:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xNbwK-0002I0-7y
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 15:14:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xNbvP-0001L2-Jr
+ for qemu-arm@nongnu.org; Sun, 01 Nov 2026 15:13:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xNbwI-0006kx-5S
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 15:14:03 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xNbvM-0006gh-OW
+ for qemu-arm@nongnu.org; Sun, 01 Nov 2026 15:13:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793564041;
+ s=mimecast20190719; t=1793563982;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:resent-to:
  resent-from:resent-message-id:in-reply-to:in-reply-to:  references:references; 
- bh=dG6QdUgPpDE3LmNNjTQwdz8vTAxBziYTzulA/MP9vJ8=;
- b=RZK4HwSqUUjMfLibwZwjKSwo4LdhvDeF6+k7ox1Y6oWYOkXunEyXkdUzbZG92O/L6zqJfp
- IKgCDBOqFj9DeOk6o/jaPOkQycGdeaLiW+G39S2J6GglxPL2OGc7BF3OFWIllMBgTTr+JJ
- rmJQxipZkoA4/dewCnikfU6LGMvsANo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=GTF9/Bs8O74QIWLz9nNcAwYctE+VbuxRb66ECG/NONE=;
+ b=QWxnPL2FYED2KoCZHo8cnHMUa2BCmOdmjOrSOD3CslLvy6gCHphgaKFlzxLIP0ZMP+B6Ps
+ pCik7wJ+lWgYID8fCUE02SN8p9fX8wA7QwQiXhvWvxuPiJq4Unt8jKToGd5TLhD8L8Gi0x
+ tK9seC0YWJpKwf5q9cbRltjFAzRCYRY=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-90-zUz3wxw2MFW_-TF18iVIrQ-1; Sun,
- 01 Nov 2026 15:13:57 -0500
-X-MC-Unique: zUz3wxw2MFW_-TF18iVIrQ-1
-X-Mimecast-MFC-AGG-ID: zUz3wxw2MFW_-TF18iVIrQ_1793564033
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-447-NHSE1nS8MaKM2Lkt4h6T7g-1; Sun,
+ 01 Nov 2026 15:12:59 -0500
+X-MC-Unique: NHSE1nS8MaKM2Lkt4h6T7g-1
+X-Mimecast-MFC-AGG-ID: NHSE1nS8MaKM2Lkt4h6T7g_1793563975
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9C6A01800364; Sun,  1 Nov 2026 20:13:53 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3C6351954B0B; Sun,  1 Nov 2026 20:12:52 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D5BA37E0; Sun,  1 Nov 2026 20:13:52 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 369CF1800446; Sun,  1 Nov 2026 20:12:51 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 8867121E6A04; Sun, 01 Nov 2026 21:13:50 +0100 (CET)
-Resent-To: pasic@linux.ibm.com, 17746591750@163.com, rathc@linux.ibm.com,
- alistair@alistair23.me, stefanb@linux.vnet.ibm.com, graf@amazon.com,
- xen-devel@lists.xenproject.org, FangSheng.Huang@amd.com, luc@lmichel.fr,
- michael.roth@amd.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
- palmer@dabbelt.com, rbolshakov@ddn.com, foss@defmacro.it,
- sebastian.huber@embedded-brains.de, fam@euphon.net,
+ id D8DE121E6A04; Sun, 01 Nov 2026 21:12:48 +0100 (CET)
+Resent-To: 17746591750@163.com, alistair@alistair23.me, graf@amazon.com,
+ FangSheng.Huang@amd.com, michael.roth@amd.com, jamin_lin@aspeedtech.com,
+ kane_chen@aspeedtech.com, palmer@dabbelt.com, rbolshakov@ddn.com,
+ foss@defmacro.it, sebastian.huber@embedded-brains.de, fam@euphon.net,
  jiaxun.yang@flygoat.com, lizhijian@fujitsu.com, atar4qemu@gmail.com,
  edgar.iglesias@gmail.com, jasowangio@gmail.com, liwei1518@gmail.com,
  npiggin@gmail.com, zhangckid@gmail.com, titusr@google.com,
  wuhaotsh@google.com, arei.gonglei@huawei.com, berto@igalia.com,
  mark.cave-ayland@ilande.co.uk, junjie.cao@intel.com, zhao1.liu@intel.com,
- its@irrelevant.dk, clg@kaod.org, conor@kernel.org, david@kernel.org,
- jic23@kernel.org, kbusch@kernel.org, mchehab+huawei@kernel.org,
- sstabellini@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, zhiwei_liu@linux.alibaba.com,
- zhenwei.pi@linux.dev, adityag@linux.ibm.com, alifm@linux.ibm.com,
- amachhiw@linux.ibm.com, borntraeger@linux.ibm.com,
- brueckner@linux.ibm.com, farman@linux.ibm.com, harshpb@linux.ibm.com,
- iii@linux.ibm.com, jjherne@linux.ibm.com, milesg@linux.ibm.com,
- mjrosato@linux.ibm.com, lixianglai@loongson.cn, maobibo@loongson.cn,
+ pasic@linux.ibm.com, its@irrelevant.dk, rathc@linux.ibm.com, clg@kaod.org,
+ stefanb@linux.vnet.ibm.com, conor@kernel.org,
+ xen-devel@lists.xenproject.org, david@kernel.org, luc@lmichel.fr,
+ jic23@kernel.org, lixianglai@loongson.cn, maobibo@loongson.cn,
  pbarbuda@microsoft.com, yoshinori.sato@nifty.com, qemu-arm@nongnu.org,
  qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, john.levon@nutanix.com,
@@ -76,16 +69,22 @@ Resent-To: pasic@linux.ibm.com, 17746591750@163.com, rathc@linux.ibm.com,
  tangtao1634@phytium.com.cn, chao.liu@processmission.com, jiri@resnulli.us,
  sam@rfc1149.net, anisa.su@samsung.com, alex@shazbot.org, farosas@suse.de,
  mohamed@unpredictable.fr, kvm@vger.kernel.org, linux-cxl@vger.kernel.org,
- alistair.francis@wdc.com, anthony@xenproject.org
+ alistair.francis@wdc.com, anthony@xenproject.org, kbusch@kernel.org,
+ mchehab+huawei@kernel.org, sstabellini@kernel.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org,
+ zhiwei_liu@linux.alibaba.com, zhenwei.pi@linux.dev, adityag@linux.ibm.com,
+ alifm@linux.ibm.com, amachhiw@linux.ibm.com, borntraeger@linux.ibm.com,
+ brueckner@linux.ibm.com, farman@linux.ibm.com, harshpb@linux.ibm.com,
+ iii@linux.ibm.com, jjherne@linux.ibm.com, milesg@linux.ibm.com,
+ mjrosato@linux.ibm.com
 Resent-From: Markus Armbruster <armbru@redhat.com>
-Resent-Date: Sun, 01 Nov 2026 21:13:50 +0100
-Resent-Message-ID: <87wlqwz4w1.fsf@pond.sub.org>
+Resent-Date: Sun, 01 Nov 2026 21:12:48 +0100
+Resent-Message-ID: <875wyg1fb3.fsf@pond.sub.org>
 From: Markus Armbruster <armbru@redhat.com>
 To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org,  Markus Armbruster <armbru@redhat.com>,  Michael
- Roth <michael.roth@amd.com>,  John Snow <jsnow@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Mauro Carvalho Chehab
- <mchehab+huawei@kernel.org>,  Pierrick Bouvier
+Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  John Snow
+ <jsnow@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Mauro
+ Carvalho Chehab <mchehab+huawei@kernel.org>,  Pierrick Bouvier
  <pierrick.bouvier@oss.qualcomm.com>,  Paolo Bonzini <pbonzini@redhat.com>,
  Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Kostiantyn
  Kostiuk
@@ -146,32 +145,32 @@ Cc: qemu-devel@nongnu.org,  Markus Armbruster <armbru@redhat.com>,  Michael
  <atar4qemu@gmail.com>,  Yoshinori Sato <yoshinori.sato@nifty.com>,  Jiri
  Pirko <jiri@resnulli.us>,  Eric Auger <eric.auger@redhat.com>,  Laurent
  Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v7 44/65] hw/nvdimm: convert UUID property to QAPI-aware
- registration
-In-Reply-To: <20261020-qom-qapi-v7-44-431a86b02b58@redhat.com>
+Subject: Re: [PATCH v7 07/65] qapi: add QAPITypeInfo struct definition
+In-Reply-To: <20261020-qom-qapi-v7-7-431a86b02b58@redhat.com>
  (=?utf-8?Q?=22Marc-Andr=C3=A9?=
- Lureau"'s message of "Tue, 20 Oct 2026 14:46:01 +0400")
+ Lureau"'s message of "Tue, 20 Oct 2026 14:45:24 +0400")
 References: <20261020-qom-qapi-v7-0-431a86b02b58@redhat.com>
- <20261020-qom-qapi-v7-44-431a86b02b58@redhat.com>
-Date: Sun, 01 Nov 2026 18:39:55 +0100
-Message-ID: <871p9478no.fsf@pond.sub.org>
+ <20261020-qom-qapi-v7-7-431a86b02b58@redhat.com>
+Date: Sun, 01 Nov 2026 17:19:49 +0100
+Message-ID: <87ik2g7cd6.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: PYrbvEJhb4jfZy5ZGePu4btI26tT2SzKo_uFEUTkmGU_1793564033
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: J16NOIUW-ryfG-A4ohQnYxMU2WAWBgX9gJE01EsSKgQ_1793563975
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -186,101 +185,69 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
 
-> Add a QemuUUID_type_info and use object_property_add_qapi() instead of
-> object_property_add() for the nvdimm UUID property.
+> Introduce a minimal struct that pairs a QAPI type's internal name with
+> its "masked" introspection name. Generated constants of this type will
+> let QOM property registration carry a reliable reference to the QAPI
+> schema and possibly other associated data.
 >
-> The type info is defined manually in uuid.c rather than generated,
-> since QAPI does not yet support string typedefs. An alternative would
-> be to extend the QAPI schema language with a 'typedef' construct
-> (e.g. { 'typedef': 'UUID', 'data': 'str' }), which would let the
-> generator produce the type info, C typedef, and introspection entry
-> automatically.
->
-> Alternatively, the exposed type being a string, we could change the
-> property to be str_type_info.
+> The fields are populated in following commits.
 >
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  hw/mem/nvdimm.c     | 4 ++--
->  include/qemu/uuid.h | 4 ++++
->  util/uuid.c         | 5 +++++
->  3 files changed, 11 insertions(+), 2 deletions(-)
+>  include/qapi/qapi-type-info.h | 31 +++++++++++++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
 >
-> diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
-> index 123ddc938546..b7ccb5c93678 100644
-> --- a/hw/mem/nvdimm.c
-> +++ b/hw/mem/nvdimm.c
-> @@ -104,8 +104,8 @@ static void nvdimm_init(Object *obj)
->                               nvdimm_get_label_size, nvdimm_set_label_siz=
-e, NULL,
->                               NULL);
-> =20
-> -    object_property_add(obj, NVDIMM_UUID_PROP, "QemuUUID", nvdimm_get_uu=
-id,
-> -                        nvdimm_set_uuid, NULL, NULL);
-> +    object_property_add_qapi(obj, NVDIMM_UUID_PROP, &QemuUUID_type_info,
-> +                             nvdimm_get_uuid, nvdimm_set_uuid, NULL, NUL=
-L);
->  }
-> =20
-
-Let's pass &str_type_info, like the next patch does, because ...
-
->  static void nvdimm_finalize(Object *obj)
-> diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
-> index 869f84af09dd..ed0c62327d4d 100644
-> --- a/include/qemu/uuid.h
-> +++ b/include/qemu/uuid.h
-> @@ -16,6 +16,8 @@
->  #ifndef QEMU_UUID_H
->  #define QEMU_UUID_H
-> =20
-> +#include "qapi/qapi-type-info.h"
+> diff --git a/include/qapi/qapi-type-info.h b/include/qapi/qapi-type-info.=
+h
+> new file mode 100644
+> index 000000000000..6a6355568325
+> --- /dev/null
+> +++ b/include/qapi/qapi-type-info.h
+> @@ -0,0 +1,31 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
 > +
-> =20
->  /* Version 4 UUID (pseudo random numbers), RFC4122 4.4. */
-> =20
-> @@ -99,4 +101,6 @@ QemuUUID qemu_uuid_bswap(QemuUUID uuid);
-> =20
->  uint32_t qemu_uuid_hash(const void *uuid);
-> =20
-> +extern const QAPITypeInfo QemuUUID_type_info;
+> +#ifndef QAPI_TYPE_INFO_H
+> +#define QAPI_TYPE_INFO_H
 > +
->  #endif
-> diff --git a/util/uuid.c b/util/uuid.c
-> index 234619dd5e69..363a03051aba 100644
-> --- a/util/uuid.c
-> +++ b/util/uuid.c
-> @@ -17,6 +17,11 @@
->  #include "qemu/uuid.h"
->  #include "qemu/bswap.h"
-> =20
-> +const QAPITypeInfo QemuUUID_type_info =3D {
-> +    .name =3D "QemuUUID",
-> +    .masked_name =3D "str",
-> +};
+> +#include "qapi/util.h"
 > +
+> +/**
+> + * QAPITypeInfo - QAPI type metadata
+> + *
+> + * @name: QAPI type name (e.g. "str", "OnOffAuto", "int32List").
+> + *        QOM uses this as the property type string.
+> + * @masked_name: Name of the type in the QAPI introspection schema, assi=
+gned by
+> + *        scripts/qapi code generator (e.g. "368").
+> + * @lookup: QEnumLookup for this type, or NULL for non-enum types.
+> + *        visit_type_enum(), qapi_enum_parse(), and qapi_enum_lookup()
+> + *        all rely on it.
+> + * @list: The list-type counterpart, or NULL if none exists.
+> + *        str_type_info.list points to strList_type_info.  qdev array
+> + *        properties follow this to find the list type for their element=
+.
+> + */
+> +typedef struct QAPITypeInfo {
+> +    const char *name;
+> +    const char *masked_name;
+> +    const QEnumLookup *lookup;
+> +    const struct QAPITypeInfo *list;
+> +} QAPITypeInfo;
+> +
+> +#endif /* QAPI_TYPE_INFO_H */
 
-... the only difference to str_type_info is @name.
-
-In v7, @name is used as value of ObjectPropertyInfo /
-ObjectPropertyValue member @type.  Your manual QAPITypeInfo lets you
-preserve the value of @type.
-
-It isn't used that way v8 (which I'll post real soon now).  It preserves
-@type values differently.  The problem discussed in the commit message
-doesn't exist then, so I'll cut it some.
-
->  void qemu_uuid_generate(QemuUUID *uuid)
->  {
->      int i;
+As far as I can tell, @name is used outside tests only for an error
+message in object_property_get_enum(), and I'm not sure that error makes
+sense.  Observation, not a demand.
 
 

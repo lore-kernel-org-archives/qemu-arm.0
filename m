@@ -1,96 +1,104 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D999E606A324
-	for <qemu-arm@archiver.kernel.org>; Sun,  1 Nov 2026 13:19:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BCD4D606A324
+	for <qemu-arm@archiver.kernel.org>; Sun,  1 Nov 2026 17:56:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=n+RbxwUY
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=f2a4v76m
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNVSm-0005AO-Td; Sun, 01 Nov 2026 08:19:09 -0500
+	id 1xNZmM-0004FW-7A; Sun, 01 Nov 2026 12:55:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xNVSh-000591-Vy
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 08:19:04 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xNZmK-0004Du-4i
+ for qemu-arm@nongnu.org; Sun, 01 Nov 2026 12:55:36 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xNVSg-0001Em-8j
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 08:19:03 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4a4d7ae1ae9so19543345e9.1
- for <qemu-arm@nongnu.org>; Sun, 01 Nov 2026 05:19:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xNZmH-0003qr-Ca
+ for qemu-arm@nongnu.org; Sun, 01 Nov 2026 12:55:35 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4a140e7405dso23422255e9.3
+ for <qemu-arm@nongnu.org>; Sun, 01 Nov 2026 09:55:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793539140; x=1794143940; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=ksHhiQCiUnxbhloByktUJ8gXU9lR2HIKf8kgi+Hc+8M=;
- b=n+RbxwUYTh2tPLP6nbmK2655EFfJJD63fHgjYns3AukMgjczmG1COu1kgh8NHpX6Gs
- /2iRP/35+PngarZYH3m7qVdolI++QGL6X+mTiy+QRDQHVsLpCB+s2h0Hk4tYAUKlq2a/
- Ebk4yGF1i4zJNU8IEHlztS6CWIgxiSu6yERPUPC686hNUjTEVj3Al5LaDDptiq6dy1IG
- V1rnri7xGZR8luOfT5ToVNIbGDEPRBbcdQUGWO82p1YDSd1OqJJh+5kN7q53iwtFrLI6
- PpIMhDuBSqh+jpVudhiJpOpbPVNiCKcG3xZXICZL0bwd9aaqzy2IjI+qNj8qo7HQC9Yg
- U5Vw==
+ d=linaro.org; s=google; t=1793555731; x=1794160531; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=kbyVS+otGky4UZYa5VNF43sU1BE0orrmhILbibDS1L8=;
+ b=f2a4v76mvzysQ8iQws1M2kecWaxbXwMPuHofKyacjsTyf33UrKKSDSDJH+gZBwMqGu
+ zOet26VZikZWXxjdv6woYBjPfxE6W0p7pf3ST7saFT1oxVsUOqE+RRIh+To4DpfYaWGF
+ kVU7z4OPWwfO21g2xN2zM6qdNEj6SqstDWZJau052QoMNYjvAUIIvEJLVhfEophY+bmD
+ jcXAzyBqZ1mxGC+Rb7jFbta0Zquz1yDAADuxu8+J0rKsfflHKSgjbReyY010N4Vn4eOR
+ X2pkc3CTA+Nm2R82DbSkz6Wq5BOw4DW+BRDDojIdX07326lLi3i3jLuz9F6OWgQqWTgv
+ OSlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793539140; x=1794143940;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1793555731; x=1794160531;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=ksHhiQCiUnxbhloByktUJ8gXU9lR2HIKf8kgi+Hc+8M=;
- b=CmHrbixLtT005DNPqEpBT+XsuIvLGSoTKKYulKhoMz1SUxxgMeWvY+aE+oq23h7Vvy
- e9zUUfaPQK4kaywG2vzVmJAk+y20YNFl813C5gebKWkfzvE9c3d6+7nlqUZAlw8cPC/A
- 2QIFEoS7FK6dM6PlYXIGIisY1lF2v4GJbgjGPEyycwtYm5V4TBf7zOkQQc5cQ5aBOl8s
- Yr47rkhYm61jRIMN819we3TOEGyE3A/FhyHie59aAwG7NyJXOMOzd6cz7vzQ66kdPJ50
- mqA30jPhuMVKdeg+4IVxBNjypbftxc37Ua2FnKLarwupFKqitQgBJfJjMWMnKIsJzYAu
- o9NQ==
-X-Gm-Message-State: AFq9FYLuyuyi3JBdsuu+llS9TZF5QjQrqliPt8Szi++Y7lUxtJO3PJgs
- cT1DsGWlW5AUTyui2aO7Ha9/bMVcBivu6ng0y71BGXLIYKG/j5HKl9h8
-X-Gm-Gg: AYBFou1DkDcEcYvPPXCvutJY5KelD/jSLo0zsZl0K7cgF7NE0aSH3W5F+24AMujL7eI
- 4/tb81xiFFomofkWeTqpswCxi4C9/l0XvOoP1oA5XYkEwlePxVQtnGfCaxc/nfnhkWOxAyOS8++
- Or/+aFrE3rN5ysGH6nPBscNdu9iGoB+HL2rlFtAFTqjv8I28jXH8tswdHUAAXjc1ZVlsg3e+zM2
- LeAauU5YW1eSB88zL3GaGgjZ+aRCFlxQrOSfzXvn9PIhFQDi5o0P9dvGilyhbDAQFwStWgyIF7s
- xKm2nIc9+Ihte1ZAE1+xEJ1Caxu87J6IVssOYnZkj6vkN9AmxmPwNpvWfP3cS6hPnBvBbEMQAna
- bm6lF2qCZvFzBkN5Wloi89qvMac1ZvOBlmTSp+Wz/CMiV7UMma73oK9s3m4GJ7cgoKv4uoiRzRg
- bw6jCuvW8AOXmG6f9dm9LetHqSi7TD0zZA16p3LVwPvpWeeOcSF44nyQJ3oBzxlG9eNM8Wn0d2N
- kKwnNcwvUrBJbV+ZMxZeZ4SSu/czB+UToOrKfXgUg9uFMn3F0lZKaWES6KzUIiiWWax+HZ+OGKi
- auc1fT2WH5IgagL7xQlVuZjViuAy5MA4Rb/KbFwdTUnoOa0VStcSYeDYDIQ1GGAS1L7FJkrCeBG
- E8oJrWQqJsBito1M=
-X-Received: by 2002:a05:600c:1909:b0:4a5:26b8:4507 with SMTP id
- 5b1f17b1804b1-4ac18b7dff9mr164059855e9.21.1793539140029; 
- Sun, 01 Nov 2026 05:19:00 -0800 (PST)
-Received: from ehlo.thunderbird.net
- (dynamic-077-013-241-109.77.13.pool.telefonica.de. [77.13.241.109])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48e71bab1a8sm14207266f8f.57.2026.11.01.05.18.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 01 Nov 2026 05:18:58 -0800 (PST)
-Date: Sun, 01 Nov 2026 13:18:58 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-devel@nongnu.org
-CC: qemu-arm@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
- pierrick.bouvier@oss.qualcomm.com
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCHv4_03/11=5D_tests/functiona?=
- =?US-ASCII?Q?l=3A_Fix_i=2EMX8MP_EVK_SMP_configuration?=
-In-Reply-To: <20261007101105.3917771-4-gaurav.sharma_7@nxp.com>
-References: <20261007101105.3917771-1-gaurav.sharma_7@nxp.com>
- <20261007101105.3917771-4-gaurav.sharma_7@nxp.com>
-Message-ID: <AE3F9CD0-3F2F-4BF9-BD20-427E15706EA4@gmail.com>
+ bh=kbyVS+otGky4UZYa5VNF43sU1BE0orrmhILbibDS1L8=;
+ b=02aAHjbBNy/xiRcF3/4VwyIArW+S+cMYI1hJ3rkh+LUnddV5nR7nXlT/fuqA2vm0FP
+ wMqpeoQIxMrq9YvwAXxgqoLf5If5fZMzX3EeqMQ4Pilj/h0q05GZmERnyjgIXiP+rIWA
+ 5e48d3xWsH+tzJg4i4unqtlZebeWbA4OefDNWG6ckGGsofcDjdGI+7ZunOgW6e1lZafU
+ CcGAex8wIQs5eibVa/qwfd2efsvhUS4+oCEBrV+q297OgmoM74Q8g6Ok40cxUCvMYetc
+ tI0/98duMGSz2O5PPbYm5yuFwD4tMyQqMdmxjP88HX/riIP+uNFf3bn/hAcD0QUMCaGc
+ VTaA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBx1G64Osm/zCoCXzQAaQ85E20j5/NUeMooM0YjxDbz2tCEPm0Ww8cVAdVc/W/KMHFkBYRSUMka/Hw==@nongnu.org
+X-Gm-Message-State: AFq9FYKaIKZMqo6S+ogI+Ygd4Mtyun6MaMmWWY3HXdbK7IMlwnCe26kp
+ xpEcMij1o6YN28pM9LAnOhW+7q2PgXMwpE/I5D0/3EcDWVUyFiJ3yL9/NYd8Js1zZNY=
+X-Gm-Gg: AYBFou3I8REPvS9Gl7USyMn0HlhAViTtSA+RZmbczne/8VtOxPjJ3AX7fiYbsgrJtvf
+ xWet/99V0al23U5IMwmkJBIeQ60QvdKq/+GxCQqFHIInILumd+8cstBqt8lYObb4FLeolIfCmPg
+ ZkBDbEAlBQrHfDPz3X3vQnteIGG1T1fbB2ISFdBoYT3/TQFAkZ8Afe9ARO2LEPZog4a80Hbc0JX
+ 8W4/HvqW3uPjWDTr4SJlBQ+9oLCbT2ZSfIq95TWjOea478GmZoMe3xShGDpOWguxGCw7wxpxR5E
+ VR8jqqr7mM+vDvRdOyi9+w+/JpQ8OTF/xUWoN32kvNZSGwkwDUklpax7PqaSTv0D17NTnkz3GwA
+ ng6vATSvUN/G6MKKmhkNbIOkemcUFjybLJb+t2z/cFiXHXHRvVsB7d5zcG4IbKIMwR5iPRLggIq
+ p6hXY9zDE0LlYRZpT2vUSyY8SEwjk95fz+rQE8CgTWENNzjAHczbz+SoRN95N3dOrFYGUbsbE54
+ z/kuhtezh39bGd+nSnVcBE3++9pca+4DHV6n/q3qZRKnETBCI5B7ULZZE6j/Wd20by2JQazfkyT
+ dJl9+MaXRqgkf6aJyiOT5er3rsuM
+X-Received: by 2002:a05:600c:46ce:b0:4a6:7d6:821f with SMTP id
+ 5b1f17b1804b1-4ac189928e9mr190176175e9.29.1793555730743; 
+ Sun, 01 Nov 2026 09:55:30 -0800 (PST)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4aa820492cesm311964355e9.13.2026.11.01.09.55.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 01 Nov 2026 09:55:29 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 29D315F833;
+ Sun, 01 Nov 2026 17:55:29 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Lorand Marton <lorandmarton.dev@gmail.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  qemu-stable@nongnu.org
+Subject: Re: [PATCH 1/4] target/arm: hold bql when SEV sets the event_register
+In-Reply-To: <20261101172901.873975-1-lorandmarton.dev@gmail.com> (Lorand
+ Marton's message of "Sun, 1 Nov 2026 18:29:01 +0100")
+References: <20261030141046.2710206-1-alex.bennee@linaro.org>
+ <20261030141046.2710206-2-alex.bennee@linaro.org>
+ <20261101172901.873975-1-lorandmarton.dev@gmail.com>
+User-Agent: mu4e 1.14.4; emacs 30.1
+Date: Sun, 01 Nov 2026 17:55:29 +0000
+Message-ID: <87ik2g77xq.fsf@draig.linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,47 +110,54 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Lorand Marton <lorandmarton.dev@gmail.com> writes:
 
-
-Am 7=2E Oktober 2026 10:10:57 UTC schrieb Gaurav Sharma <gaurav=2Esharma_7=
-@nxp=2Ecom>:
->Remove the explicit '-smp 4' argument from the functional test=2E
->The SMP CPU count is now fixed internally via mc->default_cpus and
->no longer needs to be specified by the caller=2E
+> On Fri, 30 Oct 2026 at 14:10, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
+>> There is a race in qemu_process_cpu_events and sleeping on halt_cond
+>> where we can miss the setting of the event_register which would cause
+>> arm_cpu_has_work to report we shouldn't sleep. As by definition the
+>> bql has to be held when we go to sleep against halt_cond guard the
+>> kicking of the cpus by the SEV helper with the BQL to ensure things
+>> are properly serialised.
 >
->Signed-off-by: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>
->---
-> tests/functional/aarch64/test_imx8mp_evk=2Epy | 1 -
-> 1 file changed, 1 deletion(-)
+> I hit this race with a bare-metal test in which two CPUs pass a turn
+> back and forth 500000 times with WFE and SEV (virt, -smp 2,
+> semihosting).
 >
->diff --git a/tests/functional/aarch64/test_imx8mp_evk=2Epy b/tests/functi=
-onal/aarch64/test_imx8mp_evk=2Epy
->index 99ddcdef83=2E=2E6046c573d5 100755
->--- a/tests/functional/aarch64/test_imx8mp_evk=2Epy
->+++ b/tests/functional/aarch64/test_imx8mp_evk=2Epy
->@@ -53,7 +53,6 @@ def test_aarch64_imx8mp_evk_usdhc(self):
->         self=2Eset_machine('imx8mp-evk')
->         self=2Evm=2Eset_console(console_index=3D1)
->         self=2Evm=2Eadd_args('-m', '2G',
->-                         '-smp', '4',
+> On master (af1179b406) it hangs in 10 of 10 runs with -cpu max and in
+> 10 of 10 with cortex-a72 (no result after 20 s; a passing run takes
+> 2 s). A second test, in which a CPU waits in WFE for a broadcast TLBI
+> and an SEV, hangs in 23 of 100 runs with cortex-a53.
+>
+> With this series applied on the same master, the first test passes
+> 150 of 150 runs (50 each with max, cortex-a72 and cortex-a53) and the
+> second 600 of 600 (200 each).
+>
+> Tested-by: Lorand Marton <lorandmarton.dev@gmail.com>
+>
+> The series has no test case now; I can post these two as
+> tests/tcg/aarch64/system tests if that helps.
 
-The -m and -smp parameters are both removed in current master=2E However, =
-this patch is not obsolete: It should contain the smp hardcoding to 4 which=
- is still mixed into patch "[PATCHv4 11/11] hw/arm: Enable Cortex-M7 AMP bo=
-ot on i=2EMX8MP"=2E
+Are they hand written? I did include the test cases pulled from one of
+the bugs here:
 
-Best regards,
-Bernhard
+  20261029161310.2065290-1-alex.bennee@linaro.org
 
->                          '-kernel', self=2Ekernel_path,
->                          '-initrd', self=2Einitrd_path,
->                          '-dtb', self=2Edtb_path,
+but I suspect the violate the current AI policy.
+
+>
+> Thanks,
+> Lorand
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -1,101 +1,108 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A6A3606A337
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 10:03:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE853606A327
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 10:04:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=cNtyfD+O
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=SKtodSHp
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNotL-0004Lt-4q; Mon, 02 Nov 2026 05:03:51 -0500
+	id 1xNotD-0004L0-JX; Mon, 02 Nov 2026 05:03:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xNotG-0004LC-BK
- for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:03:49 -0500
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ id 1xNose-0004Do-0k
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:03:11 -0500
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xNotE-0004T9-DB
- for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:03:45 -0500
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-8ab43af5e97so29559977b3.1
- for <qemu-arm@nongnu.org>; Mon, 02 Nov 2026 02:03:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793613823; cv=none;
+ id 1xNosb-0004RS-5G
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:03:07 -0500
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-8ae8607e8afso19364917b3.3
+ for <qemu-arm@nongnu.org>; Mon, 02 Nov 2026 02:03:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793613783; cv=none;
  d=google.com; s=arc-20260327;
- b=Fj55y7brRSn7GtTRCn9XzaKXobAUHIrfqGKll+vaq4RewY14CmQDgmpYlPkB2qClEs
- EnpvmoHy6P782r9ezYYQmhOchf0j5JqZ+PcMPCfzQM1Z8C5r7/4EV0BlbXoPo58YOOPe
- bVesOAzgZEMO/ZlKiblQ4rnpHIhMwMtVLJ+8DxcG36K4YOc/Q9HKgCo6u4qd8QT1b7TP
- srWVxC0BBjqQ/GF9gkyQ3a+wbHPgvc7551/hb6uOaML2AtNBc6cY+ZDC3ha7Bl+HBscS
- tcIrqx/iAIxOmr6ydoxWBtOh2rEQqvRE8I1IwjGuRtK4a4zsABCB667rD8A/Ozv4EwOM
- 3Dbw==
+ b=sXBB+/4S+87Pi8+Dla+Pz1NdD9WBJ8+j+EqRldezaXIcdEV6OVjjntLUcdumGmzlXW
+ HW7w3mcmDN+MrCR1lNTTHRBgwl9+sX8KIF53+OC1QGZABX30w+ugBKLNa6SZjVDUNQlv
+ 4+x7NZgVZrFT6ZhpapRAYQnUh7Cg6zc/J4l1M2Sx6exliz7+91Y4lvA5L579bH/YfI+G
+ lGjSAtpS6DJzy2Hj8t1pv6/F6B6QVz6lL9d6jBuv7KoHf2SHC0ExWeTsa8OOsuGKWeeX
+ nDu6dwS5kQCl7Y/Va0lQRIpaGlWZgIQpaGBmB0FOv6+7PGx0Np0GdAH0VlECbuDqgAcR
+ fTyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=3PCeyUgACBxkxGIdjbwMbxKtQcw67ovdML6Bm60fRd4=;
- fh=OpCl3mjAXHz5o4hgQuIakC9UUSZTKZNl7YwRFKSk7l8=;
- b=h6+T1Fcc1eBzbRJuUswAwUCWMg64XEhgLaB+FNNovMm5BGKl/WmuTAoU/9BQ/ZelvU
- jjTtSHG1k5M/FXKoUz8/45pkbc6fGUU0eSoxempfAOKavLN2uo5U9Zqrjv+n3/5No2Ag
- rtSaCarhNzqeajafs88R90jYlhnKacaLIWn6CYqXddBnByL4inFMwmA8BccjBj7YkeD+
- ijL/TU2K/JTxWveMOYd7NL+8TCpKgLY0rMZfkQtAuyk6WzWcxpXSZXgRo8uOA1qAPL+a
- 7l5t6SMecp0j4SL8fEhJy19chQkryPwiFDiMw5dT0vL285N+bXKEZoQ78EnyS0CqYsuA
- 2XCA==; darn=nongnu.org
+ bh=0V1vKtG4hyuPDUwmCsjrtByO2owPckznkQwt8npQjWw=;
+ fh=MnkEZ5EAi/sTfNwWFgVf1MG1zb2mdy/lwU211WNsO+s=;
+ b=RFyfpICc5u4iW0DG4hgwuUSnK22k6ZhcTtIelsXN6IDfUxa56WaKEBnE//KCLdPmhF
+ BrQ2/BXXTbDoigZCvfLUKAWUN3RMyignamT2YfqgN0eNTEjslqBCoaw1QDfCy+stPJ9l
+ aArpexNG6uxYDEZSu+x5lwNXUeQ+vXVWdwV4pAzsuRhtdUgsXNrT/KLYZu+NMNub0Sb6
+ ruB7Y1z49HKdF0oMuugVbcNVyivZ4axAijlCLWnFqBvHmRxCH6csOFyXAgfm2oSG0tq9
+ raT4MTIRAcsG+AsDgQj56PHvpi/+2vkKqnxAi5jio+MbuZhbE1jw2ZTmgqhUlBMDGMSG
+ k04A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793613823; x=1794218623; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793613783; x=1794218583; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=3PCeyUgACBxkxGIdjbwMbxKtQcw67ovdML6Bm60fRd4=;
- b=cNtyfD+OrsCN9yw5zzo8BxZqeW/5Qo0kSCzqE2bhdKJxihuTFPYDAx7si6PapneD2n
- GfRY3kCbj38VSlu782Ozd9hPDFZjM/D5CczUgWGbnyDGcKs0Ku2ML1snFxb4Po6X4TKc
- nx6Z3mN5yIczW8r3ynQLTC7JFjZieSBj4UY9HjKCIrFxcIELMlJwdSQTlkuPdEdnO3iu
- uZYjL3siNCHXvSnQ9p5eOs7hwGVb3LXEECKQGuOTVw9PbTIVQcCJtyTJw8Cw7dawSLf1
- M5P1wlnlRXn0RYNRNOpJ7PTvZde7TeONg/ACfi2RdW7g1yPbcGdW1RA/CeKzVA2LaxPR
- 8rcQ==
+ :content-type; bh=0V1vKtG4hyuPDUwmCsjrtByO2owPckznkQwt8npQjWw=;
+ b=SKtodSHpDL8KsHP9T3c8G936AQltw6w0seFloc/Sy4qIscaL9HERPwcRBD5gn9Sg5O
+ LmbeAq21b89hzsED+dUG16UrzuDylopt1XYVdyxP/ahjUulSaxl5RemW1n1vgF7NLdhP
+ /q116bYChuu4Ygzy536vEFeLuJVDsQHZf8yvAedGnMnKk9VBgf1nFksb6Bpr8aglfXYT
+ cTMsylzxxbUOH+ZoxqTsSf9MmOX0QmAiDSYmUr4ynp5mhnLhAjSwvpg7OAfdqJNcjN14
+ kk8+v3lITShDTiP5Z9UsgDyBqYjCNVSPD03ebNZ9ibSQt1QGRl4F9nGuG9yv+x5e9WHr
+ ChQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793613823; x=1794218623;
+ d=1e100.net; s=20260707; t=1793613783; x=1794218583;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=3PCeyUgACBxkxGIdjbwMbxKtQcw67ovdML6Bm60fRd4=;
- b=V05BRt1/pywlqHlE9S3trcUk6NLILuafICNLW2LdGMV14SofTBYM/9V36Nsux+bfwj
- dkh3F86Ez2wmQmjmtsPC4F6jtUOvg166g3HbVQE0fO+BVqO9Gnsv0eip9IKYr2pGbzlK
- 75K8H4XoF2RchkwLfK/oGMKcJYbFe8OTZvW46ijf3F57bWMdNA/1YcJa3mpiuXgzXWDd
- XXppZBt6OH4vi7f5a1t6ho/w1HVxv6SPxkOUlHecDiQDegYe+GakYgrN/C7L9FLMiF4K
- tOWvNN7Gp266oozDp/L6zAAeWnW6YuqlKdaoymoW+vfXsD7YQvabLjsTqSy/oEcz1HRr
- mLqA==
+ bh=0V1vKtG4hyuPDUwmCsjrtByO2owPckznkQwt8npQjWw=;
+ b=Sbc8rnHF/XHKFF+2bLkorIM9gy/M5mX9s3ghKm1I7OYXloZxNJxqrV9uns6WB/aUia
+ 1qAmJ5C0t2DpYyls0hfJ5btMwViKaL7PwmRxZpRXMqxuOV57v+5lvPrphGflZivfLcCz
+ JMgLIzJpN0H0zEpXDQ8UnryPh1f5zI1kg3k+BKWgrLjiWG4VXJprJjwEgxmQpfeAIykt
+ xWx5lZf2RX387izclcFYlZBZ3Rz+9DhSPPH1Vg6pLIqng6aOnmmQr1IFPToovkYJyfkU
+ ++CfjfjCEjKwA0lBP43XZZJu6VROEifRVF3W8ZiJndGXCHeYBatE/Csk7RNfU+LS2LDN
+ QgAA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw5uHXu0KPDsbtkmX041OGhpnnq8OykwHFOmJzbmduZ9B2oONsORZ7kzrBqV1i+hdTwhDtO7lz3Dg==@nongnu.org
-X-Gm-Message-State: APuU4Z8zuT+f0YfMx/mE6eiQDqqalJfGPjYvdWwYMUZABhB6gP71gj3E
- FquyrZIcI4HM31mlLGPVSH+AQdxZiHaliEaIYC9fGBxe9217ph2YyTEvUgrmuVP/89juZZFnLKp
- pHvCtnsitSfkf54l+dlmUNDCg+Aoa9XZPc9ot4ReSax0+4ll5R22TtOY=
-X-Gm-Gg: AYBFou1R1Mgp29GKChJBOsoEvM/UA4f0PdLSk12impKH4RV4CxTXIaqse0XkzbcYDkw
- oyV1gWxs9WofeJU8qSKdY7n3cvAXEN4E+RMGn5CGoNVjiSiM3ivl4xeyNMqBHBLcVQ8JW0Drf1w
- SUCp9NoaAbbpEUjbCyELkZ3pqhN2MkFrOmZ7EULvdQoQbqceSw0Q6ubkIYiyZrXv0I5CQwuB9Z3
- zzVd/CGIhsZLwA5ukee1xNg/RYpUM0opQvdO9ksEakJtZBkcpL6WbbE5gc5hUHZ1CUQ/UvDd0US
- Yqcnykijx0T1EtJLRKvZM2My0Hv00ASWVwMa5uQTPOacwQHhgVIUIfNPvnVsD7WxCjh/R/t3WY2
- ueMVu0419RUnzROMbk8tn4KzzPTGwZKbMJIJaWkErGvV/pS2kzFvvHHDK4yVBCNz4dSmLPhxJR7
- woBs8vSjYiE5EwgSxMTmCS
-X-Received: by 2002:a05:690c:6e84:b0:887:b388:9911 with SMTP id
- 00721157ae682-8b2b66ce121mr70477897b3.8.1793613822903; Mon, 02 Nov 2026
- 02:03:42 -0800 (PST)
+ AKwUvByyj+EcnrSHfNZuu26Ia1cgbxLVYtUoRNRCJN+ISYT1vn5G3n7RnrQYkGvcRLmhZK4w1ZxYeJNM8A==@nongnu.org
+X-Gm-Message-State: APuU4Z/v6mRRhZcj8+t3ZjOwU5gqycVFJ6gGwpdMiioOCAVbjc8xWQy0
+ vnjWOioBr3ejy+lzG4XLslLnK0it887xgifoXdTazY4umo61qdtgtjqWzRHr0nl+cjE/S44HY8g
+ Wa+v24RSuxKAkFc2qFd3FuNmNP5Qr1o/V2wI4NS4OJQ==
+X-Gm-Gg: AYBFou2hgnwTcejZYCNP4M7ZnB9L1hFZt7WdF1CbZqx0HR7EhUupA1amJy5gce3jHKZ
+ Q7WCdzcfyMhU3tmBH9jWyk7aaSt+Ui+XsOTcKWMSCP59yVPrOlfAJ57Wo6QwJGyifR3D+dfEpNx
+ LefvgIjFRQMLjFaw9AeSsZjka7Z46lqwBmS3+AzV63SR7EvhxU4mkxUBJPWMQb0mltMmCkThr0H
+ DVU1j1gJuclw4t6BO6CGMT3unlok6m6/bmk8IeZezDgE6AUN19+ESsliwMeuGwBKHDMdUQCuRBl
+ 7ke1VhUZ7epCdAPURZag7YYJJ2ZZDU4NPFnhs42rb/s+ZvguNQW7NUlpB/ybuAo54Q+oZi+QRia
+ hZtumR/juNg62bjdwnF0jeRetng21t7GAeNYgnoialYhuj/onJ33XPyZWDJe2uWerbQ25wnTUj2
+ ibfVzW2WZrCkwWSOKGG1TK
+X-Received: by 2002:a05:690c:e3c3:b0:8b0:c8aa:d108 with SMTP id
+ 00721157ae682-8b2b675903dmr49450937b3.41.1793613782882; Mon, 02 Nov 2026
+ 02:03:02 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261030143435.57230-1-sebott@redhat.com>
-In-Reply-To: <20261030143435.57230-1-sebott@redhat.com>
+References: <20261030131406.461599-1-eric.auger@redhat.com>
+In-Reply-To: <20261030131406.461599-1-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Nov 2026 10:03:31 +0000
-X-Gm-Features: AclHuK-ntKtbrUXsA6sy08LZBiwA6VtDa1QqbGDeYu0mVRQrRnRISWbkHGj_j_0
-Message-ID: <CAFEAcA8aRV9TSQZ_Czj+5cZ7=frq7uQG4yuk9H414wBUKiyxtA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] target/arm/cpu64: migration tolerance for PMMIR_EL1
-To: Sebastian Ott <sebott@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Date: Mon, 2 Nov 2026 10:02:51 +0000
+X-Gm-Features: AclHuK-pzougyNW5YELHEwFwdIbt0EcKEyG0x8JeT_fXGTB3TsRnaKBbI-u18ak
+Message-ID: <CAFEAcA92=yV3GFD7r+g4e3+j6aW_JYi7EZfxeSAwTp=Bip0Muw@mail.gmail.com>
+Subject: Re: [PATCH v4 for-11.2 00/10] kvm/arm: Some refactoring for custom
+ KVM host model
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ shaju.abraham@nutanix.com, khushit.shah@nutanix.com, 
+ richard.henderson@linaro.org, pbonzini@redhat.com, skolothumtho@nvidia.com, 
+ philmd@oss.qualcomm.com, 7746591750@163.com, maobibo@loongson.cn, 
+ harshpb@linux.ibm.com, amachhiw@linux.ibm.com, 
+ daniel.barboza@oss.qualcomm.com, milesg@linux.ibm.com, farman@linux.ibm.com, 
+ cohuck@redhat.com, alireza.sanaee@huawei.com, armbru@redhat.com, 
+ mbawa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,27 +122,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, 30 Oct 2026 at 14:34, Sebastian Ott <sebott@redhat.com> wrote:
+On Fri, 30 Oct 2026 at 13:14, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> PMMIR_EL1 is exposed from Linux v7.3 onwards. Backward migration
-> to an older kernel would fail without cpreg migration tolerance
-> definition for this register. Fix a couple of typos while at it.
+> This series contains some patches initially introduced in
+> "kvm/arm: Introduce a customizable aarch64 KVM host model" series
 >
-> Sebastian Ott (2):
->   target/arm/cpu64: fix typos in kvm_arm_set_cpreg_mig_tolerances()
->   target/arm/cpu64: Define cpreg migration tolerance for PMMIR_EL1
+> They are rather independent on the actual custom host model and can
+> be considered as a separate dependency. Would be nice to get some of them
+> in 11.2.
 >
->  target/arm/cpu64.c | 14 +++++++++++---
->  1 file changed, 11 insertions(+), 3 deletions(-)
->
-
-
+> Can be found at:
+> https://github.com/eauger/qemu/tree/arm-cpu-model-v11-prereq-v4
 
 Applied to target-arm.next, thanks.
 

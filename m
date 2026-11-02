@@ -1,104 +1,104 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE504606A324
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 10:38:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8607F606A324
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 10:40:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=h/f7m3L2
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Hs+5AJ86
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNpQn-0006Du-8F; Mon, 02 Nov 2026 05:38:25 -0500
+	id 1xNpS4-0006bo-Sq; Mon, 02 Nov 2026 05:39:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xNpQl-0006Cu-F1
- for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:38:23 -0500
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ id 1xNpRl-0006a4-9W
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:39:25 -0500
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xNpQk-0007hF-0O
- for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:38:23 -0500
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-8ab432273c5so23636687b3.3
- for <qemu-arm@nongnu.org>; Mon, 02 Nov 2026 02:38:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793615901; cv=none;
+ id 1xNpRj-0007jX-RN
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2026 05:39:25 -0500
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-8b09e07e149so21512377b3.1
+ for <qemu-arm@nongnu.org>; Mon, 02 Nov 2026 02:39:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793615962; cv=none;
  d=google.com; s=arc-20260327;
- b=Aoo/tfZ3bzZzZEHZAc05AKKKwwwiSzBSPAZ+cV1Oaq4CPXLCLPeyfWjOl5yGUcTH3C
- zhYYqEOR5rXa23YnH/MfZ37tMyT7w8pk2Ox+ClRklQTrp6ZR4ydA1dqQFkg9lwUZ7q13
- rLqZYIeyE90Sp/YlQKC44MKUX68uK9mnjQdWOybDiRBYQwfVsoTvfltxZ09Y888s9p98
- Hu+ilr3BxcuUXeoe7nPbXeJZun43R5tiIFIY8OLjQBARJ9lM2lv0h/k1JlwwB0quHiBO
- /L9Gwd1yS3osa5/vjYh/B3N1RZ+PQD3dacCKoLmeq+v2vYTNW+M0wM+PP2VwAkqzrr//
- pB0Q==
+ b=etstMjuMQ4IRkGVEGv3Gf73yL8Na87EA2afTt4V9lN0GafJ2M2w72UiybkZzXd5iJB
+ CkM4s6pfdCP3tB4LW8Dw4PZZFecw4Y3Py0sD/Wwf/aOvx3YKsL+1Z5uxkX80oTZGTwrx
+ rh1IoPYGurdTWr0aU0RVbf1fxhcwCe9V8KUjKnl3J6atEU4sFqZRKEHhQQRrxZWxsbtN
+ 8SZ24hjNwo/2db67YsqMfNtpegGAKIb4ZtiK20/QzAtpOsdyrl9H+jQWzozBtbRW8d80
+ +QrH/6V+Gj7QCUmY7fzLuL27i6kZi/6jFNBY+9s5s1Np5HAkN/AcDn9h9YZzcs1jh3dl
+ QKvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=s4V4JgH1sRadu7eDYq9bAfUCFNtlrsLwFoYkQoWEgF0=;
- fh=h6H9zghzJ2T66frMhzyAWB/nO+Kkp2ldrAkhZegStkU=;
- b=SBp9qAFYSrxxP7I/TcofZVsc9Ye7Zo4MyaG/iB5KW2zn/3DDEovOk3Q+IAvGs90s9W
- Xud14IS3TYnb+PDHothpaZDFYd+RdnXjMKsI5otXcHAaU1DW4yKrXadfNmLrgbpbQgQe
- R5oX4hP4MIaPAlN7X4TtThlsiM5alu8Yx8LH4mZftEbRKEhGsZDfi1HEajGzrmPfW56+
- on8Nz976+qIol5rZ6ilCc0ChRp7TDbW45leGQqNVakLkdE4U228C+MP+GeMuX+EcfLR4
- NTLtYRnmG0rpV9NxrANn3tpRAMcN+iq3C1lZIN5Q+67QOGPqHnhu2lmN3gnCUHKPe8+K
- i7Uw==; darn=nongnu.org
+ bh=Lhsubxg6k7hazRlFI0CwA7rq6OJj8CB4c1RI2yEn2Vo=;
+ fh=p+fWdnKR90x3jVUF1qq6AxxIIflzkKnRmPMWa9WGEGo=;
+ b=OPRad+MYecxJsZrgib1VIyi+NTgdcXHFmcu9CZ1MfSRLWi2CFgnFcPOFMlKcg6pqK7
+ IV8RU7QK4DRHGMjey4XY2/sndyMS+E6UvGTl/WLWEtwLaJwAaePhlazUNG5kvrwkAH3z
+ 7TzDKI4RMJL7BXeapX9BzuGpr5FtVBiHV0vQLfaBJOutMTFG37LUH3oJH6FJmvuo3ZZX
+ wnJteo1Q53Q4P4Z/+qbECO/cY9qNiSqhl9dmgoqCQWwiZ5fZMy95f7hQaEaM51gIOAjy
+ 73kY0Fek1FTH2Uuf28v6mKXshCDPCOugA3HanqjdGMjiusgJMBPavJiFeZEV5a1nAPZ9
+ u+GQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793615901; x=1794220701; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793615962; x=1794220762; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=s4V4JgH1sRadu7eDYq9bAfUCFNtlrsLwFoYkQoWEgF0=;
- b=h/f7m3L2By/4S11w28tcNl0jVchbTXB/pN1M6vBYIKEyB8o00/2O4CQjjCb9A4MHjr
- VWPibKZxRGp4p7CWyR2TzhQIMCp8hkem99QUa87wpHeiXQZ+KrSFf05qPaeJCJEhBXSL
- xN9FT8itLtbe64LZYbvnCJHZobhEzrdDHLLdd6WEuP4ONYPI+jtnZORCafkrW7uXt1wt
- i7CY0rItCGzpfe940fBM6N0X+0ellwTujBh4G+6LHTYLlvI5JKqAio57r97gCIyh28co
- sAPACY7YTToidLz+hDAQO7I8s4Eo1U7YN/+Am4ymrHf+ZQ1wnJPWrwtKqSayZyhKQ8wf
- f9Gw==
+ :content-type; bh=Lhsubxg6k7hazRlFI0CwA7rq6OJj8CB4c1RI2yEn2Vo=;
+ b=Hs+5AJ86m/mwsAOh2oflbeq4Ezo0dNstcUkaYQezoLDWo/KTIsSiZNKpsPEsS++pcs
+ UmY3KueqRGDSZTXR1X8cGvQWmmE2VochySZSfL9A4DbJbFUkdsErxHpipk2sbczUcDgF
+ rDUXxmJfv4LaffMOAX2aJdPnyZ/f93OcwgIz93EYrLaE/ADfujbERGo5ClXKl/jdXmyf
+ Mh7A1Lr/TPSDOcc+kPd7DFKACmBg+CpWrHIFhnqbrvEduUTjxP3WJgqnnqID/CpkIhay
+ jv9J9UH0G6nPeYNinVC9lo1T/SkZzYoasQdfubdqjXlrCQroOP7J8zYTpOKMMaxQ+WyI
+ It8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793615901; x=1794220701;
+ d=1e100.net; s=20260707; t=1793615962; x=1794220762;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=s4V4JgH1sRadu7eDYq9bAfUCFNtlrsLwFoYkQoWEgF0=;
- b=lqUOg3etkCZ/t/wzyOPJQuKKuz/VCvJ+Fd/TNztGgFf98ZUYnJ2xnqVprllpoRHjQx
- PCjuciFp/0lvTJNyYgQPYxrura1ev5s+XsFO5zXw5nAifCbaWiADKLc6fo8/M+qEsftK
- fx05KAqk/2NFvslNss4GCkJ/A8nypGRWIZntOX9DikQQWrrBRT2AA4YrZxzgbbvXxgMf
- 1LnXsRsRGXxVbdnER834oQhDp0fDw7h0plawPEaT3GHO9c0vvBTDbRFaZ1p9+3JrUs9T
- IuZ73dV9EyaCPRzJBOzhC2Q8HIq2WfaoBTV0vwC+0FRhuyKHeoLEMiHhHYvtPSytRCDW
- ZSLQ==
+ bh=Lhsubxg6k7hazRlFI0CwA7rq6OJj8CB4c1RI2yEn2Vo=;
+ b=MAmrTYfOM3ToxDtlHdYzJKTg9cIFS4UOk3cHiXQJylWxzCPqmqJjw7EM34b0//vgPG
+ Yg4LJLBYzGV5nh5/pSkElSCzkA+p5mtDbzJFO+24XGYmvFF/+54vS6o784gqRLs6Hx+D
+ 1Lqt6CSMHiiF4aAo5DLWyzkGU9sSmOPQalFCNaWvkHeDvJuhbDjFUN+HPGYFm5Cugqbq
+ Om9MsEoj3LY/sY/Msu53pSSQP2SGetlMXWmzTQe5Z7CWndO8SKECbMXGvbhCgBwd+8c+
+ +2qQxXSvWd3PXApvyqw8essjyYH7vUmQrgIxbuINtjeRNomCTFZiUiwLkOqWkmPKsyzy
+ pl8A==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx4YtE1VCkObvJKLQ7XmKS9Wqw6VidxwSEn/hrsIr4dxlccy1tSOwSqnB5tQFOrM7lAgKL+90VZxg==@nongnu.org
-X-Gm-Message-State: APuU4Z8bEKkmwpfd3VNnBIp84yMh6T954NDzibCHt0tDbHUosm3vew6d
- uWGf22+HVph5JoXFvZnxjqoHF5qQn4FU0q1Ba2ahjEC3vqhVchSrMyHKfFoSVJNeHjEpwR47Pv6
- gODw529uumHA+vbb5SuZGC969Q41ZvUjAohkuYHxz8NUcDvkuXYYbyjw=
-X-Gm-Gg: AYBFou0iOd5OnIHoANVU1a32rfqQeHUtj+QcvKVbuqLGPp8ob00z+6JfTSX5w8ETP/w
- V5A4agM8D/MWe/DteW1qdy51Bw3ApjM1S/C+YjYwE5Hxk8AQ4nd4nPub8veiOzoMoCYjtfYnytm
- PThnDmysrzYLEgd/ZL47Ntoeqr6hBgxAhAHTQDAk8bOv8Lml3y8ltvIax8Rmaz1tMfvVD9e4gWQ
- DWlRjgdYzmubWcPnW4rp3V4zt2U2sUkWt02n1Fr1dKIY+C2BIQSfvoCIw2t+SXGCymSv4QNKJgH
- +oU3/TYhU4xElBEtefqTFxh1kW4cXH1JGGNB44Uvp8jBYnpMXL+rWcbT2ra2onMbW7Ovpg+tDdc
- 2ymQKoa6fj9OpGs6t+qjIdSIE0almMnmBTUbiCEKXrmW1Zty6k8yhuZ+r22nuEKnkeO0W4gp6oO
- De3KxzGQh1VcWkBgT9mfM+
-X-Received: by 2002:a05:690c:6e86:b0:8b0:d36c:14f6 with SMTP id
- 00721157ae682-8b2b67d9dcbmr72015307b3.51.1793615900276; Mon, 02 Nov 2026
- 02:38:20 -0800 (PST)
+ AKwUvBw6kc9GsHDpS0VhzokvpPJ+s6Y74gqWA1N5o1BfkdxwU9RbwMD4+aJx4XUe6DrUztz5h7v0ef0JVQ==@nongnu.org
+X-Gm-Message-State: APuU4Z/OBwpUXyWmOMfR0hqE1TlGCf6hl6P5WSeoNWhZIfjBL6sfb9hK
+ 48pyV76fIrQQOcSe+1weWem11IgIrxOq7AV3z4KCXxbc2efiWExLubOMXDF2bXnRp/bDlOYrNhQ
+ lNsar2XsvxxTSM+lTz5LHZjbZfbUGqFlDYxkiue7cQw==
+X-Gm-Gg: AYBFou39HFAEDz2xPJrjSV2cmCBgHEMPWxHwL9RaDRVD7Ldqw0lzHmSy9BCEmRGb7Bn
+ wXYxQTSsRRn30Wjisa7avhpbcXU6X6MhqIaK7WGHoM6zfGHlLKID8PTaQdcsQlbs73GCsfRYHYO
+ 9kDOFTaqFx4lKHh6bn6FpCKV/8e1Vh1Y9gtH4VvJqFBC5owR7O5AznIlYQvD89wlsFq04ER05de
+ 3NIMgA/pzkBjBGPalodUgBKkbsINHNENRxFpqFVtM44W6igKcAbaBLPOW+lCywRCEXwh5Warn84
+ VVp7pYwMtrmQw/KE0FxtnRk66Wd30kxZ7ZidhryLStw8IxOB3JLyX29WzbtNReeQEbyYhc1a4dF
+ m/nES5HgNv8qlr1qvWJKDSlClsFHkieCODqvheud8NEbuWKnnXzdGOqWJuDzWJ2Hm7pVuArM5Te
+ tVzF3DEu9b0zabNKPXS5J8
+X-Received: by 2002:a05:690c:74c5:b0:89a:63da:faa6 with SMTP id
+ 00721157ae682-8b2b67abe20mr59077857b3.97.1793615962259; Mon, 02 Nov 2026
+ 02:39:22 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 References: <cover.1793613972.bcm2835-fixes-v1.git.lorandmarton.dev@gmail.com>
- <c2ea822f9f49674173e5ae3089631838d034aef7.1793613972.git.lorandmarton.dev@gmail.com>
-In-Reply-To: <c2ea822f9f49674173e5ae3089631838d034aef7.1793613972.git.lorandmarton.dev@gmail.com>
+ <6262fa90e0dcbb87c33ed61c53ef55e83335a45f.1793613972.git.lorandmarton.dev@gmail.com>
+In-Reply-To: <6262fa90e0dcbb87c33ed61c53ef55e83335a45f.1793613972.git.lorandmarton.dev@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Nov 2026 10:38:08 +0000
-X-Gm-Features: AclHuK_XqZtOsc8szfO9VHxdDkaxhsl6sW2hdRx0nz0Y1IhXdcnqNcnTAMDL66U
-Message-ID: <CAFEAcA-p9oa=tAjDgWUHF7YfNq1SpvuWa4ta6uU0QAq1b6Np-w@mail.gmail.com>
-Subject: Re: [PATCH 4/5] hw/timer/bcm2835_systmr: cancel the compares and
- lower the IRQs on reset
+Date: Mon, 2 Nov 2026 10:39:08 +0000
+X-Gm-Features: AclHuK_tZq1EnjsojruP6sV6gJ3fWTFSzvgRDF1C_9UPK9gKStirdUWl2NLw8FI
+Message-ID: <CAFEAcA9NmpX2gRdP29xnxpOzj_67Pazsybi7BgM7K_206skSdw@mail.gmail.com>
+Subject: Re: [PATCH 5/5] hw/misc/bcm2835_cprman: a PLL channel divider of 0
+ divides by 256
 To: Lorand Marton <lorandmarton.dev@gmail.com>
 Cc: qemu-devel@nongnu.org, philmd@oss.qualcomm.com, qemu-arm@nongnu.org, 
  farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com, 
  alistair@alistair23.me
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,49 +120,48 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 2 Nov 2026 at 10:27, Lorand Marton <lorandmarton.dev@gmail.com> wrote:
+On Mon, 2 Nov 2026 at 10:33, Lorand Marton <lorandmarton.dev@gmail.com> wrote:
 >
-> bcm2835_systmr_reset() cleared the match bits and the compare
-> registers, but a channel whose match had raised its interrupt kept the
-> line raised, and a compare armed before the reset still fired after
-> it, setting its match bit and raising the interrupt in a guest that
-> had not armed it. Both happen when a guest reboots with a system timer
-> channel in use (the firmware or a bare-metal guest's tick).
+> The 8-bit DIV field of an A2W PLL channel divides by 256 when it is 0,
+> as Linux clk-bcm2835 describes it (CLK_DIVIDER_MAX_AT_ZERO on the PLL
+> dividers: 2^width at 0). pll_channel_update() took 0 as 255, so the
+> channel and every clock fed from it ran 0.4% fast, and QEMU and the
+> guest disagreed on its rate.
 >
-> Delete the timers and lower the interrupts in the reset, as the
-> register values now say.
+> Test the rate of PLLD_PER against PLLD with the divider at 0.
 >
-> Test that a reset drops a raised channel and that a compare set before
-> it does not fire.
->
-> Fixes: be95dffa326a ("hw/timer/bcm2835: Support the timer COMPARE registers")
+> Fixes: 957458111280 ("hw/misc/bcm2835_cprman: implement PLL channels behaviour")
 > Signed-off-by: Lorand Marton <lorandmarton.dev@gmail.com>
 > ---
->  hw/timer/bcm2835_systmr.c         |  4 +++
->  tests/qtest/bcm2835-systmr-test.c | 54 +++++++++++++++++++++++++++++++
->  tests/qtest/meson.build           |  2 +-
->  3 files changed, 59 insertions(+), 1 deletion(-)
->  create mode 100644 tests/qtest/bcm2835-systmr-test.c
+>  hw/misc/bcm2835_cprman.c          |  6 ++--
+>  tests/qtest/bcm2835-cprman-test.c | 49 +++++++++++++++++++++++++++++++
+>  tests/qtest/meson.build           |  3 +-
+>  3 files changed, 54 insertions(+), 4 deletions(-)
+>  create mode 100644 tests/qtest/bcm2835-cprman-test.c
 >
-> diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
-> index 06a919b1f8..3c03c98193 100644
-> --- a/hw/timer/bcm2835_systmr.c
-> +++ b/hw/timer/bcm2835_systmr.c
-> @@ -123,6 +123,10 @@ static void bcm2835_systmr_reset(DeviceState *dev)
->      BCM2835SystemTimerState *s = BCM2835_SYSTIMER(dev);
+> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> index 10cad07623..144e553432 100644
+> --- a/hw/misc/bcm2835_cprman.c
+> +++ b/hw/misc/bcm2835_cprman.c
+> @@ -184,10 +184,10 @@ static void pll_channel_update(CprmanPllChannelState *channel)
 >
->      memset(&s->reg, 0, sizeof(s->reg));
-> +    for (size_t i = 0; i < ARRAY_SIZE(s->tmr); i++) {
-> +        timer_del(&s->tmr[i].timer);
-> +        qemu_set_irq(s->tmr[i].irq, 0);
-> +    }
->  }
+>      if (!div) {
+>          /*
+> -         * It seems that when the divider value is 0, it is considered as
+> -         * being maximum by the hardware (see the Linux driver).
+> +         * A divider of 0 divides by 256, one more than the largest value
+> +         * the field holds (Linux clk-bcm2835 uses CLK_DIVIDER_MAX_AT_ZERO).
+>           */
+> -        div = R_A2W_PLLx_CHANNELy_DIV_MASK;
+> +        div = 1 << R_A2W_PLLx_CHANNELy_DIV_LENGTH;
 
-The timer_del() is correct, the qemu_set_irq() is not.
+This kind of change should reference the hardware documentation, not
+the Linux kernel behaviour. What does the actual hardware do?
 
+thanks
 -- PMM
 

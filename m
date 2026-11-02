@@ -1,87 +1,87 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19EF9606A32E
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 03:05:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B857F606A324
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 03:08:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=H9AyoPAq
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=hpJLepmN
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNiMH-0002iC-16; Sun, 01 Nov 2026 22:05:17 -0500
+	id 1xNiP8-0003im-41; Sun, 01 Nov 2026 22:08:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xNiMD-0002hA-1T
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 22:05:13 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1xNiO8-0003PV-4k
+ for qemu-arm@nongnu.org; Sun, 01 Nov 2026 22:07:15 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xNiM9-0006C4-7f
- for qemu-arm@nongnu.org; Sun, 01 Nov 2026 22:05:12 -0500
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-6b1afcd2d23so3373951a12.1
- for <qemu-arm@nongnu.org>; Sun, 01 Nov 2026 19:05:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793588706; cv=none;
+ id 1xNiO6-0006XX-GU
+ for qemu-arm@nongnu.org; Sun, 01 Nov 2026 22:07:11 -0500
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-6b1ec41d8e9so2645847a12.0
+ for <qemu-arm@nongnu.org>; Sun, 01 Nov 2026 19:07:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793588829; cv=none;
  d=google.com; s=arc-20260327;
- b=gswzk70Cw5lIeKp/jaGm2xhmLRQ26eFsCHN+8gj64B0LvkF1/KyDVvDxIHe4Colh9y
- LWfF9ohobp/AVgY6C/3PRuw2WtJp4gytPsPEa2E7GcC1IEOC7BfA4PS2VPuZU9i2K3OO
- ykzVkTTNhXtwDH9DF8zyRoWOrewFAuRY/Y896nZMbiRx+4nfaolrgBO1Swg+mue1qdzi
- ZsXXde9WyxZNBA3OAjf2El47r3qdq0shWrZQtTsLguWEvC3Fhe9u/JgMjS1RN2FOOu3Y
- 1YbCe6n08RIc4oOQtEpecyq6jh1VTt/5PSXR953sRbcBE24I1Ck6iuheFiWW4ylklzqk
- bVZA==
+ b=sAo/qc9CNM+R+kXWHChr+sUBT+BjKLSw3/Ra7d0KmZEHKpEaUrmRd5xXmbwgdqNmoF
+ 1OLjH1m8xiaAzOQAYw2L4ed7gLgeGGVT/oAAOEnSTx4aFfm9yoeOjnsNmpbVY/gJQ+hD
+ 759BarWs/MxHowwaFUBoFmslD0eNUfF55WnRrdk3aHq0Z5wXyaPd5RjcrrnPWnyjVv0P
+ Va9GJKfMK8KjPKpUYccB8qcIFLEmnTVMtTYCRyPfP+eIMLPVI57Am4JF7oSWLLqkGMV7
+ jzCx9nJk8qxLHrAzSw1peXxekusN/U+Ry5Bazbl3u08w5BdrY0bO0MatgZMW1Jpn/uUC
+ LMOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=imk8Y3dp71z9rketUe9RnJkNrtaKIPDOf8w3Ba5TnQo=;
- fh=Y1TNwQQ5cKAYe+SFd6mM4vUIUbPbzv1gKU566kyfv9w=;
- b=bvzmiIT+T7rFMCuYKdWh05hSglFDzLAndJxvdJEGb50+ux9/QBOzbiTer4SBwkyIyD
- 8ZyFaBFLpV8l9WhBKKp+oMHyuB3ZgeJh1z7RVGnl+6NFbk0iv2LmGcgKeM/SQyUy2VHk
- ve8FqALrqx6S+QKnGclTaasI6Y+cC7/lAFS0Km4S1xqRonvEIDalWTmtd5wzC7dcnA6w
- exQgAhNSTE+2xXAIQj2z7f5F+ORDj7uE0YeAh6Iv1zwqbC7l0F4r25u424hKeLbw6OYw
- sprzky/ThNdT6wFbXm9qdXuk+5wRH1qz2+f/YfcT38bNNj4Rl0FDg5y0dxMfr5moeoDd
- XjuQ==; darn=nongnu.org
+ bh=Ysznio8LIhbrNhMwmFi6gLvF+hQtGM6cCyNInXytu+8=;
+ fh=ro6Qs1M4UIxC4iB5h4o+eMoK05UtwnELann9vPKE3g4=;
+ b=is7FJ51g/lbb4Npfft9Y7ggG3c18Crm0ZJJJf5IDtbF0sHEOVFcJZEGzRsVnDzps7o
+ 8kwUmDqvYF5XgrHRGnpcfX7XsAiQ2jVLFqS4C1tWhai5TUkPNy+kjxfmxU24fjXGOsnM
+ cUIvvYAQngGH7bEbHs8dKI6sK0+/kL4EzyYJ9wKDV5XvYnOgUxJgwI9Zaui8ZYmUX9sp
+ 9+LuACXWUQXi088/fEaq2+rnFl5cGek/SFQvRAPiMw4TnWOYGgFE44890mb3smmtPYHp
+ fNR5aE8vRTVevC6dF8CneNTqt7piCSQ8eIVNORVml5p5Vlh2YD46zy0T4h7fD7bqPX91
+ 1Ryg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793588706; x=1794193506; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1793588829; x=1794193629; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=imk8Y3dp71z9rketUe9RnJkNrtaKIPDOf8w3Ba5TnQo=;
- b=H9AyoPAqCgZpy+ufA1sRf010sY8utiPWwUTEW2D6mAKtMAcaAGNQF3jaRwK0Ox3sIt
- /NpY9JV9Bdwjs4arwYgH50d1a76DA0eUNdYKSx4YFb5Ckw3eF0EpAy7v/Z5g6VoxWiHP
- tfva01tXEspjerF4/hLVtGpMQ7ND6jw1e4zw5iGjUbCg/f6gUjUegFXa5S/YLlE+K++a
- QXTk9lFEfGul9rEOY5QPEJxFwGa1wbw6pSaWjPxxy5XBnnGHM27Yf9nKtqvWVlleO0UO
- tSvnV0/UyJ4X9rDVyzu8eLDnTElIUJqbVyofvEW8mCIMTjHBhVZNpGYG7+fw8O0y/aMZ
- u+qg==
+ bh=Ysznio8LIhbrNhMwmFi6gLvF+hQtGM6cCyNInXytu+8=;
+ b=hpJLepmNZ53OfnTaTdaqCJFdvjqxmMdPpXZ85NXafyHEQuGdxaLvWWX5e2L9lDucyU
+ aO8qLQnHgVxNgleHLJextAo5xqdqXT8v0aTrovKU089OMiHzIeD1baO0R73QjNIE67gA
+ nn8mk7aCSof0DQ8J83zhN9zLbD4UE1nZt4c/hKFGXpuvuo/kRZam27n2tsR35suL8HkZ
+ PoM3bD3h1r8NRBctdXdQKyZlecilcbskeYRBa0NXR+agDjkrEg5slvXo4F0hKBbxDbOL
+ +o/hyAx08c68aQ5copx/hdT5UbESdmIRm71l3dzEz6fGfriXy2/99V/OlSFXW/g6/H8K
+ tdQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793588706; x=1794193506;
+ d=1e100.net; s=20260707; t=1793588829; x=1794193629;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=imk8Y3dp71z9rketUe9RnJkNrtaKIPDOf8w3Ba5TnQo=;
- b=moyxoHjEdGkREr4yDKc43ZTNQgC6SXNcQ+s949+o4l3JtgVkxI1JMdy9gHVDmx5ASl
- rnBDQR9Oqt30/uaNUK0SUAM1kj3c/E2KgnACQmHE2KfIrz1cPaifpuasT1kMngmsUhRX
- KvpuSYadJM9Ny/SsrYvOBWzUzsXXi26TzAenUsEanX/vx23mhw8W/M0J8VilzlYlBJNX
- 7m/1xEbl2y8toi75tc5CbD4wEse521ZsNiZTDmWmTZcYn9Ub8xxlgOo+XdTHZLVdn5x8
- k33YRMTFKfW+8UESH2/rBs8aqN9X1HelZUq6gZvXUhfTn57lTY8ceu233g9ZvZlm9tEy
- f14w==
+ bh=Ysznio8LIhbrNhMwmFi6gLvF+hQtGM6cCyNInXytu+8=;
+ b=jqARw5UQJYp1uuM1dUtWeNCmzkkV7yxLzfYY8EQiNbumeKNbPNbiTq+Bg5N+1zMscZ
+ qrhuVhLFvY/aAupACfdBpBdl2hh+fu9OMzbr32LEPTvRRBwaUcHs7t1WJanIItRm57xt
+ GQSFFkQ23FCMqrtKG3akOHcn8RvY+f1I2pe1SC5dmoqFSDxBCn0ofvTNHDUhY8F1kBfl
+ 6X6D5m8aHy+QvLp+ogygN1JcqlwqHIGzDVOOHz7We6LZyOOuUdZKZaCEK2S/JKqMaLpI
+ encmyKw06n+oXHNN43GXNHKJSB2Sbs5yYHZFVtdpk0bJ+jLjV2RDPotv7NKEKfksERrO
+ 7qZg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByv2AvVmP+zCVPjVbO05as6Chs26F5UkstFnrwJz+JlsEzl6Pg89e9Gr2I8H3t3shQAyYjEjK3s7A==@nongnu.org
-X-Gm-Message-State: APuU4Z9sRwMMKn49HoJZ752avmvMS0Yry3hYIgIgU/nX0aEMQNfgZC0Y
- 4OL/Pn5LlshWDrJJL+BTTxU3QysQZr4BapCNfeGWCzmzx06/8zt+5V9/J2J9CRy2kCX4zojKQws
- +grXs1iuMWGn+Jrl9IjHm/tDHCHxdCpw=
-X-Gm-Gg: AYBFou1MR/16PCAbSm1nXLofuvKJvDTtULk0hKOres6GgoPvvqBKGAFr4OFoutBD3Sg
- aIVPhY5+ndCFuFBTpEO8b58A5KAZ20HzZyeXQe7TgNB23mFGeXAOFvF/ESmDv1QsQOUcq8Psr/V
- XkeqdLOntgy27n+76GOpYfKwlmdHfd7eDxDTrsF1A1zfltiOi2CYmlilX4aPjtNNI2CdXuBqSkh
- 9CIxFnNv6bvvL2+NSwDtWhjgQHRv6lbfO2+5AI1TpruJoYQe3ogPr0D0WhA2fWnotmm2CeZOoRF
- wtd8+sw21fZ8Xa3uxW/yrN3GXhSIGOrgoHnBMlFidv3a6u2CjyJ/j2ThrmjXTT53XSIoj5n6NB9
- luW/gCe8/CG2VFLWu/rELg9LGKfItHbF6CR2n
-X-Received: by 2002:a05:6402:11d3:b0:6af:dc4c:5f28 with SMTP id
- 4fb4d7f45d1cf-6b4d4f71386mr6168227a12.37.1793588705869; Sun, 01 Nov 2026
- 19:05:05 -0800 (PST)
+ AKwUvByf6jmjBvqSGtKFtmY9O51wT9jlvObFmSkAuBEF4IXXRTRD9WDBVbk7Vc2MXqOdNA0yBeLQIUA51A==@nongnu.org
+X-Gm-Message-State: APuU4Z8BZASXxsPKK3nCrIWLlL4wGVa0Xbv+phrF0aCDfw8gtN8/aKL0
+ o3n6rclgoz4zlth3XM0cZcwhC37DEo24v6H0zudH5+ci71hqbZotYzFfv+GSMJyXZZZ4I7vKxBy
+ N9f7T5NIk+6OwN6MscVcgJ1EDOx4zOS8=
+X-Gm-Gg: AYBFou1C+k02ViI+8XC+KRW/hQmP6On1ctXa1pJu+shbvEOFMME0kARtz5AnuH8fBa3
+ tMHdsptCYCuOPBLdWGzQYGSHwcCC14XAGWiL3k8F2aXtkis9+S3kaShldFOEn+l1MEFbKAlvdcY
+ dhY/z/1T1PJlVvpO+2KI7CS+kfcegUR6/qTVq2r43x4YoTmIsWZ2ZE0kI942qPuE7CerRF4CueN
+ 3EjHDLA/J7/alzFm1VOsq0Gko+7HPBQ5YP3pPo3uCdQPpmbZJ3lKYnWMJWuyx4PDvYmPgwfPG8m
+ TdqtrEUB/pmzIDXvfQf4x1ciA818c+OBAkvimSmnwyR4TcNwQ+ab9AgQgyoZiYXsX2W+Otus4mx
+ pMbrhpWheGmyYF1R87j9vRJmVOL3c/N6i95ry
+X-Received: by 2002:a05:6402:1cc4:b0:6b1:c774:58c0 with SMTP id
+ 4fb4d7f45d1cf-6b4d4d812f1mr6163810a12.31.1793588828434; Sun, 01 Nov 2026
+ 19:07:08 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 References: <20261030151539.1872-1-luoyonggang@gmail.com>
@@ -96,9 +96,9 @@ References: <20261030151539.1872-1-luoyonggang@gmail.com>
  <6efa9f73-75dd-efd0-3fd9-6b2654b69737@eik.bme.hu>
 In-Reply-To: <6efa9f73-75dd-efd0-3fd9-6b2654b69737@eik.bme.hu>
 From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Mon, 2 Nov 2026 11:04:50 +0800
-X-Gm-Features: AclHuK-B5Bt-Oq5n8C1F46Ueo6UjVwoSHbd-GyMOrqSjrQb5HmRreMzyOD5B1cQ
-Message-ID: <CAE2XoE8pNaP3rAR5Y2BpUZ2vSu-UC-wG9V9U7gPXrEGY=kx0RA@mail.gmail.com>
+Date: Mon, 2 Nov 2026 11:06:55 +0800
+X-Gm-Features: AclHuK8P8SDKQOupp80GFDOIHp3NTFl6EuHgXjfpXxX0vFgO-CLq7hQlTWSRT8g
+Message-ID: <CAE2XoE_Nf0bpoyYuW9G_OWAx1J83iANRf_=2vr4G_BqgRZThPw@mail.gmail.com>
 Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
  registration
 To: BALATON Zoltan <balaton@eik.bme.hu>
@@ -135,8 +135,8 @@ Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org,
  Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -166,258 +166,13 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 On Mon, Nov 2, 2026 at 4:57=E2=80=AFAM BALATON Zoltan <balaton@eik.bme.hu> =
 wrote:
 >
-> On Sun, 1 Nov 2026, Yonggang Luo wrote:
-> > On Sun, Nov 1, 2026 at 7:29=E2=80=AFAM BALATON Zoltan <balaton@eik.bme.=
-hu> wrote:
-> >>
-> >> On Sun, 1 Nov 2026, Yonggang Luo wrote:
-> >>> On Sun, Nov 1, 2026 at 1:06=E2=80=AFAM BALATON Zoltan <balaton@eik.bm=
-e.hu> wrote:
-> >>>>
-> >>>> On Sat, 31 Oct 2026, Yonggang Luo wrote:
-> >>>>> On Sat, Oct 31, 2026 at 8:42=E2=80=AFPM BALATON Zoltan <balaton@eik=
-.bme.hu> wrote:
-> >>>>>>
-> >>>>>> On Fri, 30 Oct 2026, Pierrick Bouvier wrote:
-> >>>>>>> On 10/30/2026 4:09 PM, BALATON Zoltan wrote:
-> >>>>>>>> On Fri, 30 Oct 2026, Yonggang Luo wrote:
-> >>>>>>>>> DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo an=
-d the
-> >>>>>>>>> type_init
-> >>>>>>>>> function that calls type_register_static(). A later change need=
-s to
-> >>>>>>>>> pass a
-> >>>>>>>>
-> >>>>>>>> That's the point of the macro to hide the boiler plate code.
-> >>>>>>>>
-> >>>>>>>>> target mask into that registration, and the macros have no para=
-meter
-> >>>>>>>>> for it.
-> >>>>>>>>
-> >>>>>>>> Couldn't you just change the macros to take that parameter inste=
-ad of
-> >>>>>>>> expanding it everywhere?
-> >>>>>>>>
-> >>>>>>>
-> >>>>>>> Problem of macros is that they don't have default parameters, so =
-you
-> >>>>>>> need variants for everything:
-> >>>>>>>
-> >>>>>>> DEFINE_MACHINE
-> >>>>>>> DEFINE_MACHINE_EXTENDED
-> >>>>>>> DEFINE_MACHINE_WITH_INTERFACES
-> >>>>>>> DEFINE_MACHINE_WITH_INTERFACE_ARRAY
-> >>>>>>> and now would need a new variant, with variant for other existing=
- ones.
-> >>>>>>>
-> >>>>>>> In the end, it's just simpler to remove this and add the boilerpl=
-ate.
-> >>>>>>> It's written once and never modified, so using a macro just save =
-typing
-> >>>>>>> those lines once.
-> >>>>>>>
-> >>>>>>>> Regards,
-> >>>>>>>> BALATON Zoltan
-> >>>>>>>>
-> >>>>>>>>> This series expands every caller first, with no behavior change=
-, so the
-> >>>>>>>>> follow-up only replaces the type_register_static() call.
-> >>>>>>>>>
-> >>>>>>>>> Each machine file gains a class_init function, a TypeInfo, and =
-a
-> >>>>>>>>> type_init
-> >>>>>>>>> function that calls type_register_static(). The last patch remo=
-ves
-> >>>>>>>>> DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* from include/hw/core=
-/boards.h.
-> >>>>>>
-> >>>>>> Macros help reading the code not saving typing. If the actual
-> >>>>>> functionality is buried in a lot of boiler plate it's harder to un=
-derstand
-> >>>>>> and spot bugs so putting the unintresting boiler plate behind a ma=
-cro is
-> >>>>>> better even if you need a separate version for different cases. Th=
-en the
-> >>>>>> code that uses the macro will be much more obvious and not just a =
-lot of
-> >>>>>
-> >>>>> I think mainly because DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* a=
-re
-> >>>>> not defined properly
-> >>>>> that causes them to not be extended easily.
-> >>>>>
-> >>>>> DEFINE_TYPES is another example, use them can extend easily, how ab=
-out
-> >>>>> always use DEFINE_TYPES?
-> >>>>> Or add a DEFINE_TYPE to replace DEFINE_MACHINE* and DEFINE_SECURE_M=
-ACHINE*?
-> >>>>
-> >>>> Maybe I'm missing the problem but DEFINE_MACHINE macros are just
-> >>>> convenience wrappers around DEFINE_MACHINE_EXTENDED. So why can't yo=
-u add
-> >>>> the needed parameter to DEFINE_MACHINE_EXTENDED and use that for mac=
-hines
-> >>>> that need it, or if it's needed by all machines then make the new
-> >>>> parameter required and add it to all convenience wrappers too so you=
- can
-> >>>> keep using DEFINE_MACHINE* and just need to add one parameter to it =
-in
-> >>>> machines?
-> >>>
-> >>> That's the issue, add parameter to DEFINE_MACHINE_EXTENDED means all
-> >>> calls to it also need
-> >>> to be changed, that means touch many $target_arch files. currently
-> >>> it's 13. But after these
-> >>
-> >> That's not different from expanding the macro which would touch the sa=
-me
-> >> files.
-> >>
-> >>> changes, there will be much more usage on it, and if we want to add
-> >>> more parameters or attributes
-> >>> to it, it will be a new tree-wide change.
-> >>
-> >> Do you expect to need more parameters? Can't you add them at once then=
-?
-> >>
-> >>> And DEFINE_TYPES do not suffer from such issues. As the TypeInfo[] is
-> >>> explicit defined for
-> >>> DEFINE_TYPES
-> >>
-> >> My point is that keeping the boiler plate as little as possible makes =
-the
-> >> code more readable. DEFINE_TYPES hides some of the boiler plate,
-> >> DEFINE_MACHINE hides even more so converting to DEFINE_TYPES would exp=
-ose
-> >> some even if it's better than no macro at all.
-> >>
-> >> What exactly are the parameters missing from DEFINE_MACHINE_EXTENDED t=
-hat
-> >> need to be added?
-> >
-> > Hi BALATON
-> > the things we faced is we first is to add TypeInfo::is_available parame=
-ter to
-> > DEFINE_MACHINE_EXTENDED, and have more usage of it.
-> > Then we will add targets:uint64_t parameter to DEFINE_MACHINE_EXTENDED,=
- this is
-> > a prepare to remove TypeInfo::is_available parameter from
-> > DEFINE_MACHINE_EXTENDED,
-> >
-> > And finally, once all usage of TypeInfo::is_available can be replaced w=
-ith
-> > targets:uint64_t, then we finally need to remove
-> > TypeInfo::is_available parameter from DEFINE_MACHINE_EXTENDED,
->
-> Is there a way to avoid the temporary is_available churn and introduce th=
-e
-> targets:uint64_t right away? (I'm not following this so I don't really
-> know what you're talking about just looks like there's some churn here
-> which might be good to awoid anyway independent of these macros.)
->
-> > That's what I am facing now. And the explicit
-> > static const TypeInfo xxx_machine_typeinfo =3D {
-> >    .name       =3D MACHINE_TYPE_NAME("xxx"),
-> >    .parent     =3D TYPE_MACHINE,
-> >    .class_init =3D xxx_machine_class_init,
-> > };
-> >
-> > Will help me avoid the issue. And I think this is a little boilerplate
-> > and very explicit.
->
-> That's not all DEFINE_MACHINE hides though. It's longer with .abstract,
-> .secure and .iterfaces plus the machine initfn that would also need to be
-> expanded if you used DEFINE_TYPES.
 >
 > Is this conversion needed for all machines using all DEFINE_MACHINE
-
-At the end, only "none" machine do not have targets parameter or
-(QEMU_ARCH_ALL), as that's the sole
-machine that supports all targets.
-
 > variants or only some of them? If the latter why not convert those to
 
-
-
-
-> DEFINE_MACHINE_EXTENDED and then only that macro needs to be changed with
-> other wrappers passing a default value without needing a new parameter.
-> That does not work if all machines need to do this but even then, keeping
-> the macro and adding a new required parameter is better in my opinion as
-> it keeps boiler plate hidden.
-
-Another option is keep DEFINE_MACHINE and introduce DEFINE_MACHINE_TARGETS
-and remove DEFINE_MACHINE_EXTENDED, and we only use DEFINE_MACHINE for
-simple case,
-that is parent is TYPE_MACHINE and have no custom type and no more
-attributes assigned.
-DEFINE_MACHINE_EXTENDED is too verbose, when calling it, it less clear
-than calling to DEFINE_MACHINE.
-And if we want to set more attributes to TypeInfo, just expand it to
-use type_init or DEFINE_TYPES, how about this way.
-
-This will be something like:
-
-#define DEFINE_MACHINE_TARGETS(namestr, machine_initfn, targets) \
-    static void machine_initfn##_class_init(ObjectClass *oc, const void *da=
-ta) \
-    { \
-        MachineClass *mc =3D MACHINE_CLASS(oc); \
-        machine_initfn(mc); \
-    } \
-    static const TypeInfo machine_initfn##_typeinfo =3D { \
-        .name       =3D MACHINE_TYPE_NAME(namestr), \
-        .parent     =3D TYPE_MACHINE, \
-        .class_init =3D machine_initfn##_class_init, \
-    }; \
-    static void machine_initfn##_register_types(void) \
-    { \
-        type_register_targets(&machine_initfn##_typeinfo, targets); \
-    } \
-    type_init(machine_initfn##_register_types)
-
-/* Implicitly insecure */
-#define DEFINE_MACHINE(namestr, machine_initfn) \
-    DEFINE_MACHINE_TARGETS(namestr, machine_initfn, QEMU_ARCH_ALL) \
-
-As the many call is to DEFINE_MACHINE.
-
-And after all conversion, all existing usage of DEFINE_MACHINE will be
-converted to
-DEFINE_MACHINE_TARGETS.
-DEFINE_MACHINE will be called for ('none') machine or future heterogeneous
-machines
-
-
-Either way, these patches will be dropped. We will introduce
-DEFINE_MACHINE_TARGETS first.
-
->
-> Regards,
-> BALATON Zoltan
->
-> >
-> > And the
-> >    .instance_size =3D sizeof(MachineState),
-> > is indeed not needed, they sharing TYPE_MACHINE's sizeof(MachineState)
-> > is enough.
-> > Even though DEFINE_MACHINE expands to .instance_size =3D
-> > sizeof(MachineState), and it's redundant.
-> > So I think convert to DEFINE_TYPES would be a good alternative to this
-> > issue, less boilerplate(not none)
-> > And dealt with the issue we faced.
-> >
-> > What do you think about this idea, BALATON
-> >
-> >>
-> >> Regards,
-> >> BALATON Zoltan
-> >
-> >
-> >
-> >
-
-
+The is_avaiable add/remove no need all machines, only a small number of mac=
+hines
+need touch DEFINE_MACHINE, I'll do(expand) them when needed.
 
 --=20
          =E6=AD=A4=E8=87=B4

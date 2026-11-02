@@ -1,94 +1,140 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B518D606A5AD
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 14:57:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1E27606A909
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 17:05:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key, unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256 header.s=selector2 header.b=tDizX6LE
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNtST-0005P4-A4; Mon, 02 Nov 2026 09:56:25 -0500
+	id 1xNvTE-0001eI-9m; Mon, 02 Nov 2026 12:05:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1xNtSC-0005MT-Dq; Mon, 02 Nov 2026 09:56:09 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1xNvT9-0001b6-Fi; Mon, 02 Nov 2026 12:05:16 -0500
+Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1xNtS9-0001pE-U9; Mon, 02 Nov 2026 09:56:08 -0500
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 3C50A60C532;
- Mon, 02 Nov 2026 15:56:01 +0100 (CET)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id VTz4k38AQKv2; Mon,  2 Nov 2026 15:55:59 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id F184D60C4E7; Mon, 02 Nov 2026 15:55:58 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id ED86A13991F;
- Mon, 02 Nov 2026 15:55:58 +0100 (CET)
-Date: Mon, 2 Nov 2026 15:55:58 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Yonggang Luo <luoyonggang@gmail.com>
-cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- qemu-devel@nongnu.org, Anthony PERARD <anthony@xenproject.org>, 
- Felipe Balbi <balbi@kernel.org>, Aleksandar Rikalo <arikalo@gmail.com>, 
- Philippe Mathieu-Daude <philmd@mailo.com>, 
- Antony Pavlov <antonynpavlov@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
- =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
- Max Filippov <jcmvbkbc@gmail.com>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>, xen-devel@lists.xenproject.org, 
- qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>, 
- qemu-ppc@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>, 
- Weiwei Li <liwei1518@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>, 
- Thomas Huth <th.huth+qemu@posteo.eu>, 
- =?ISO-8859-15?Q?Cl=E9ment_Chigot?= <chigot@adacore.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Yoshinori Sato <yoshinori.sato@nifty.com>, 
- Frederic Konrad <konrad.frederic@yahoo.fr>, 
- Palmer Dabbelt <palmer@dabbelt.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Chao Liu <chao.liu@processmission.com>, 
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>, 
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
- registration
-In-Reply-To: <CAE2XoE8pNaP3rAR5Y2BpUZ2vSu-UC-wG9V9U7gPXrEGY=kx0RA@mail.gmail.com>
-Message-ID: <e5ce0ea8-7e97-aa76-6384-025fc43cb85a@eik.bme.hu>
-References: <20261030151539.1872-1-luoyonggang@gmail.com>
- <d1db54c6-b802-676a-7779-0c2c63f5f807@eik.bme.hu>
- <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
- <ba106173-fca3-6019-3028-122831887921@eik.bme.hu>
- <CAE2XoE9cR_X0kkDfGTU4Mt_5Hc3WZ8K5rghw2AeL4Vh=eugGag@mail.gmail.com>
- <bf45a858-db07-de03-70ea-ca0061d7a5d1@eik.bme.hu>
- <CAE2XoE9_b5UiE2+BXFRqB3RPv=M+8jr1HQy7rEFVEb6w1DdoGg@mail.gmail.com>
- <a479df5b-721d-c357-5c69-c3760a73e521@eik.bme.hu>
- <CAE2XoE-2w3A4=BeskGgp7NYUtkRVNkNufu4SZjW_OQ-KAQZvhg@mail.gmail.com>
- <6efa9f73-75dd-efd0-3fd9-6b2654b69737@eik.bme.hu>
- <CAE2XoE8pNaP3rAR5Y2BpUZ2vSu-UC-wG9V9U7gPXrEGY=kx0RA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1xNvSy-0005fr-FE; Mon, 02 Nov 2026 12:05:09 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=OeytSTnX/wzuc7i1bpMCkio7B7KEKRKa91uEw/0ejj5wZEoqUsGqOSgdZmFIqxXCcyh++KAbEKX0aX+poXX3dpFdNeD+LUNSFxTFb0LeiA1bo1FizEW8BCM2uWgWsbe0KbfVUh+LGeM1CLf7Cb9gIBayXO4EDITIoLiR5ODkv5rZKPpPziZYcvah0JKaSGXz1yVe2vzJ6EI0/4ZwkiqXPKMsBxCzf4K2q6wraxO61gKCS4lB4JXrCFYaZG0UM8EBqFkIOWNK7Oq+OxCWMyTP8y5OTOab69row5thQ9FZTP2Tsbj2881GyZPVNdcPJVJEanI94coK4ATTWfSeoqclwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IV6scutLgZzenWDtldS3u/Bu36LOCg7N+ok0cAsDiig=;
+ b=KCluUbEqvqdL/jS+h4R7g1XrumJ2KxUP93C51sejV6TxC1Nx8NWPZ/Eelr9s2CYVo7lHHovQZ7v7K53wAC4RLVWGP7/dU5VQrY2Sj0QAtN7LTh2G9+JTW5nvf5bb9LAE6uySymlRMAzg+OzDmNYtCVV5Q7Fyb/Vv97cxbxAs1MozMLw/nSdsQ4lYSUPaeuvggx0r0g4faqJaQosOYNM89g6MxlzQAsK/hLxHkJiMOIpDl80iAtCi55867/xAGClgeGhJ4jIIjsfUhTMXc4GDdRt0hMr1ihT7RJwAPFtT9uVOGnUeEX0vPdotY0Fgb+xJO7qphpTk0bWcLZuMtzs7+A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IV6scutLgZzenWDtldS3u/Bu36LOCg7N+ok0cAsDiig=;
+ b=tDizX6LEvSps8qbcXwmc0d3pI5OBcmrbqTho+VlFabYKCjGrebU9m4ZJV2cJZ6DnRNLtxI61uvhFBhjPM+lxAXPpr54aVsAPbA+U+cAfBcKrXCDg7qVSZ+NzEVQg8EsxWuU0mXqEyBEGjTTVwGz0SV3ks9Ih2nSoCCq6decV/wcXbyPKnf0cd8dhGDQ+Zu+MwRjoEvR7k5KkP5KMzO9Pv7y3UyWl1fNnT5IscI/Tsq0YkPhC7ocMS6RoUCp/JvQY7eMU9fjB1aSuZpIkJFMX7tfN0HOoD2sH8QY8ltcrCKTSkQO2KEJBHvlah795UxwhagswC0GFF/jelq05hZsqbw==
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
+ by IA6PR12MB438941.namprd12.prod.outlook.com (2603:10b6:208:601::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.12; Mon, 2 Nov
+ 2026 17:04:56 +0000
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b%5]) with mapi id 15.21.0569.011; Mon, 2 Nov 2026
+ 17:04:56 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Tian Zheng <zhengtian10@huawei.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, "jgg@ziepe.ca"
+ <jgg@ziepe.ca>, Ankit Agrawal <ankita@nvidia.com>, Aniket Agashe
+ <aniketa@nvidia.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, liuyonglong
+ <liuyonglong@huawei.com>, "tangchengchang@huawei.com"
+ <tangchengchang@huawei.com>
+Subject: RE: [RFC PATCH 0/7] hw/arm/smmuv3: Live migration for accel=on
+Thread-Topic: [RFC PATCH 0/7] hw/arm/smmuv3: Live migration for accel=on
+Thread-Index: AQHdPJgnxFHep9flGkG9ZpJw3a7LcbcYAQSAgANdsiA=
+Date: Mon, 2 Nov 2026 17:04:56 +0000
+Message-ID: <SJ0PR12MB861485BE2DAE769A16B32A87AB6A2@SJ0PR12MB8614.namprd12.prod.outlook.com>
+References: <20260904180513.248396-1-skolothumtho@nvidia.com>
+ <67d6e789-6620-4204-9ae7-37991b1ec432@huawei.com>
+In-Reply-To: <67d6e789-6620-4204-9ae7-37991b1ec432@huawei.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|IA6PR12MB438941:EE_
+x-ms-office365-filtering-correlation-id: 94c622da-9e99-47c3-e470-08df39036bdf
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|7416014|376014|23010399003|1800799024|6133799003|10067099003|22082099003|261102123227099003|18002099003|3023799007|4133799003|56012099006|11063799006|4143699003|261026140227099003|261021123027099003|261022105027099003|261021133027099003|261022115727099003|261022113327099003|261026135527099003|261026121527099003|261022075727099003|261026130827099003|261009221227099003|261021135927099003|261009223027099003|261028144727099003|261009223327099003|261009221727099003|261009220027099003|261021121427099003|261021130227099003|38070700021;
+x-microsoft-antispam-message-info: 9U1bGyzD3Ycf4EoK3hjkMKquvg/8PDsCdSpWja8IEye7FUViEBeeWm8sOxTMdh3cl7dKRXa2D7RZQ9GBMGfHmQBBdkMix1yMQIQgVkyU4h2OJhDhAr1N/wf6DkMCzXbsh+VUwpB2zZbwOuYHboGleFm5Dj5EGt+nR2xh7W0l8e+VCHikphQRbTJ48hePprh1UgM6mQHuFqGyzos3a2CwpU3iR3rYJey1RKwhrMl3l/91ZjBhDKfPk60j/JZqDP6NiY3ft9pdF+9eGb9cEOMILTSq9sgUjPhlsdovOtO+uQNtP3Y3RJguy9hn8ZgYeAbAxgix5UMWwHh5d2GDIzrCvOVKukT+j7O892RzV2/e5sBNRnD36g8XFuNczNeHNNrLk0AU4+0L+s7AodNYyhVYkv+I45IBiKFJZhRkfFN1LtTYFcCbg2D5IBu5sTx8Qj/mnUZpv/Nl9/gAgtT5WSDrmIDyUKkO8PWn//6OFtDj8IXlySBoYJiZzPCpyjOeKRuVz78TAuIIETn9sQMaJg4fVUxCPU3iTOhEHGr7TM782XbER+c5PLFTEtO6iOpQlokGAF12w0JNndc4QOKmKgYhziVEmOfZB4hXO+b1/nGjvOQpyBQUy9J3ZgIB3F2x2kCRwJMYh2lgfvoGA/Qv5TygDfEA6SmBlXNVPQgqvjUyDsnja88GbknhAwzUhd5d1AumcD+LjJNGO+nt4u8MgTW054dml0MC6sXff05daa+LVpY=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(7416014)(376014)(23010399003)(1800799024)(6133799003)(10067099003)(22082099003)(261102123227099003)(18002099003)(3023799007)(4133799003)(56012099006)(11063799006)(4143699003)(261026140227099003)(261021123027099003)(261022105027099003)(261021133027099003)(261022115727099003)(261022113327099003)(261026135527099003)(261026121527099003)(261022075727099003)(261026130827099003)(261009221227099003)(261021135927099003)(261009223027099003)(261028144727099003)(261009223327099003)(261009221727099003)(261009220027099003)(261021121427099003)(261021130227099003)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?87IL1gBBjNsmaW/YrSDFLxC3/ZyklJIZvjGCRbXdT950l1WMSMV8i3TaaGIX?=
+ =?us-ascii?Q?o+g8Ub7McWhboBJ/ndvBbOQ4ONQn2njVUPMe9CDLl/5PksdyylU9HYKuqVzU?=
+ =?us-ascii?Q?SD1K8NuXLrZXt833BIRsrhJmcOfx+VIJA1OLymq8C/mp8vpjyCcS/dubCnEq?=
+ =?us-ascii?Q?4puZy4ZS4ySVpg6nxNk+aMux/AHTjJxGQaQjq0WWxmzQwNHjAjuZl8IrKwog?=
+ =?us-ascii?Q?/o8e69kk25gGzcHyfnv5nLtwCNJsQJf1OsJcT/gHSgxF9nCZYFh7V74fwB4S?=
+ =?us-ascii?Q?Lgb0pNEkV7gEENWb7mDdP6nYOceCcptSQetDvBFfg6kmIspbYJ2k41Qxpln8?=
+ =?us-ascii?Q?pDDXVgOfjQyy21idtkYaONDGxihWf12VZZpatlQQSZbWddCXk2zY8HiFMrRq?=
+ =?us-ascii?Q?2ewLAi5QVwMFpZLKxKA0FmnPPFgUUHD9nW5SNCQ+S92snYj0Mw9PFbpLCBlw?=
+ =?us-ascii?Q?o7iJDqe+djnNxFQwBJeNhbI0XePxY0zkm1QGzCx6RXarYTyHPLYEsB5cI2Db?=
+ =?us-ascii?Q?ZYxFbP46CENvESfhL2phd/JIZuFPQy/DIfCUc4YgMWa7ypXowqvRMOzEwkcv?=
+ =?us-ascii?Q?4QdyttWxaOErGGnOJckJVsuOlbVglS+XdlmfkZ2c46GlJF4WzhdrXBBBENTi?=
+ =?us-ascii?Q?wFgNuSRnm9e7MmoDU45bZWk3u2bivvRTqG0F8iolTSeH+0wLaosmkPIA9mdJ?=
+ =?us-ascii?Q?wRkH0f9Un5r6cdyK6SjqZymG+VPBrHAorhqLg7Fe4zXYB9QB7G6wqZvCxqoB?=
+ =?us-ascii?Q?TkN7C3Fp8NvFvd+Q3Hi2HUSKXjkvSdKj8/VKRY3BUfeLGpxkNj2/V6tWWv4F?=
+ =?us-ascii?Q?ctifE5xPp9uWj5xehFYyWxGgoFJc9Jg8Te2KCdwOT/0o8myWPrr9yjEz7o2+?=
+ =?us-ascii?Q?NhUFFV58ulCARL4nPK7frvrR6mz/YCOI/j8gsEhLM0ikrZyAX4e62q/GozNN?=
+ =?us-ascii?Q?iJL9WWIq6cHsJp2LtDISP/pRjFLKr545ngXqxqvaYGE4ZX/XWjCFQluUTBDU?=
+ =?us-ascii?Q?BJOdeUQS7Mf1DosLuJHFrbMyJBGF96PY5AMqqXAWz0vuX+yvbnlln22VcxoF?=
+ =?us-ascii?Q?1IL3pZQM2DI/Oqy5jrq73LDy4xWBbN7OxxR/tl3FfiMg7H47U0bA9UUiIa4M?=
+ =?us-ascii?Q?ZC8bFUw4jHUPD6EHkidn+Oy723541Ghq61VabqnSlBJj0GOFsBdnKATjxOEj?=
+ =?us-ascii?Q?RMqjfiCPq0DX+hN4qVwFDHdr0Zh3NI3GCLc9p85FAkqeMFDMsukT38o/4Wdg?=
+ =?us-ascii?Q?Z9aiohyS9k3rwh0jcS9zRqf//2vrYJGgIOtlx/cCWkgm3dK7FkM8kx3UtwDf?=
+ =?us-ascii?Q?bYesoadwyAS3iQ0qQ61tWxmTFmSOVBfH8q0G6mW95WrDN2TB4bMHQcVoXXHh?=
+ =?us-ascii?Q?8L/7y5g/ayOOQyzGdpn69tiTU75+fu+PEHmHuTHZ78dTGVUKQ6uurMNAJofi?=
+ =?us-ascii?Q?J699XLOO69r/qFJXFcBiJ+CrqRs6ndBRUd5tnFlXwvhof8Khcld4mQVRQEFq?=
+ =?us-ascii?Q?LtKKf2petnjtWMYsIP98pF59ZQnhKAOCFtCrMK/C/Y15jHqMaeSMQitBjPlO?=
+ =?us-ascii?Q?0S93u/SXL9rJWYZk6ap0RWa4G2wI4nfs4xjlqcDQrYKlB+585/v9oFmEFDUo?=
+ =?us-ascii?Q?wxKC3xhomhDSp2alcWmiQZosf+f13qTKQj79u4q6w/MRsh4fn4QPHgYjZywT?=
+ =?us-ascii?Q?B785/uewiNhyAAXY5ugx+hDxaTF8saVz0QmAr1BcsKkwOdtB5DlwkI2jiL5K?=
+ =?us-ascii?Q?0JzalepawQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-608982516-1793631358=:93499"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 94c622da-9e99-47c3-e470-08df39036bdf
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Nov 2026 17:04:56.7077 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +heSpvRSOg+F8FodF+QKAcG7mQnMFWc9EAyOUVU7SV2Au8wKJR+EzFWtyF0DfFZEGi48zLieBwNz0YAfrzyrWA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA6PR12MB438941
+Received-SPF: pass client-ip=2a01:111:f403:c105::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CH1PR05CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,227 +146,183 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
 
---3866299591-608982516-1793631358=:93499
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
 
-On Mon, 2 Nov 2026, Yonggang Luo wrote:
-> On Mon, Nov 2, 2026 at 4:57 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>
->> On Sun, 1 Nov 2026, Yonggang Luo wrote:
->>> On Sun, Nov 1, 2026 at 7:29 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>>
->>>> On Sun, 1 Nov 2026, Yonggang Luo wrote:
->>>>> On Sun, Nov 1, 2026 at 1:06 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>>>>
->>>>>> On Sat, 31 Oct 2026, Yonggang Luo wrote:
->>>>>>> On Sat, Oct 31, 2026 at 8:42 PM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>>>>>>
->>>>>>>> On Fri, 30 Oct 2026, Pierrick Bouvier wrote:
->>>>>>>>> On 10/30/2026 4:09 PM, BALATON Zoltan wrote:
->>>>>>>>>> On Fri, 30 Oct 2026, Yonggang Luo wrote:
->>>>>>>>>>> DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo and the
->>>>>>>>>>> type_init
->>>>>>>>>>> function that calls type_register_static(). A later change needs to
->>>>>>>>>>> pass a
->>>>>>>>>>
->>>>>>>>>> That's the point of the macro to hide the boiler plate code.
->>>>>>>>>>
->>>>>>>>>>> target mask into that registration, and the macros have no parameter
->>>>>>>>>>> for it.
->>>>>>>>>>
->>>>>>>>>> Couldn't you just change the macros to take that parameter instead of
->>>>>>>>>> expanding it everywhere?
->>>>>>>>>>
->>>>>>>>>
->>>>>>>>> Problem of macros is that they don't have default parameters, so you
->>>>>>>>> need variants for everything:
->>>>>>>>>
->>>>>>>>> DEFINE_MACHINE
->>>>>>>>> DEFINE_MACHINE_EXTENDED
->>>>>>>>> DEFINE_MACHINE_WITH_INTERFACES
->>>>>>>>> DEFINE_MACHINE_WITH_INTERFACE_ARRAY
->>>>>>>>> and now would need a new variant, with variant for other existing ones.
->>>>>>>>>
->>>>>>>>> In the end, it's just simpler to remove this and add the boilerplate.
->>>>>>>>> It's written once and never modified, so using a macro just save typing
->>>>>>>>> those lines once.
->>>>>>>>>
->>>>>>>>>> Regards,
->>>>>>>>>> BALATON Zoltan
->>>>>>>>>>
->>>>>>>>>>> This series expands every caller first, with no behavior change, so the
->>>>>>>>>>> follow-up only replaces the type_register_static() call.
->>>>>>>>>>>
->>>>>>>>>>> Each machine file gains a class_init function, a TypeInfo, and a
->>>>>>>>>>> type_init
->>>>>>>>>>> function that calls type_register_static(). The last patch removes
->>>>>>>>>>> DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* from include/hw/core/boards.h.
->>>>>>>>
->>>>>>>> Macros help reading the code not saving typing. If the actual
->>>>>>>> functionality is buried in a lot of boiler plate it's harder to understand
->>>>>>>> and spot bugs so putting the unintresting boiler plate behind a macro is
->>>>>>>> better even if you need a separate version for different cases. Then the
->>>>>>>> code that uses the macro will be much more obvious and not just a lot of
->>>>>>>
->>>>>>> I think mainly because DEFINE_MACHINE* and DEFINE_SECURE_MACHINE* are
->>>>>>> not defined properly
->>>>>>> that causes them to not be extended easily.
->>>>>>>
->>>>>>> DEFINE_TYPES is another example, use them can extend easily, how about
->>>>>>> always use DEFINE_TYPES?
->>>>>>> Or add a DEFINE_TYPE to replace DEFINE_MACHINE* and DEFINE_SECURE_MACHINE*?
->>>>>>
->>>>>> Maybe I'm missing the problem but DEFINE_MACHINE macros are just
->>>>>> convenience wrappers around DEFINE_MACHINE_EXTENDED. So why can't you add
->>>>>> the needed parameter to DEFINE_MACHINE_EXTENDED and use that for machines
->>>>>> that need it, or if it's needed by all machines then make the new
->>>>>> parameter required and add it to all convenience wrappers too so you can
->>>>>> keep using DEFINE_MACHINE* and just need to add one parameter to it in
->>>>>> machines?
->>>>>
->>>>> That's the issue, add parameter to DEFINE_MACHINE_EXTENDED means all
->>>>> calls to it also need
->>>>> to be changed, that means touch many $target_arch files. currently
->>>>> it's 13. But after these
->>>>
->>>> That's not different from expanding the macro which would touch the same
->>>> files.
->>>>
->>>>> changes, there will be much more usage on it, and if we want to add
->>>>> more parameters or attributes
->>>>> to it, it will be a new tree-wide change.
->>>>
->>>> Do you expect to need more parameters? Can't you add them at once then?
->>>>
->>>>> And DEFINE_TYPES do not suffer from such issues. As the TypeInfo[] is
->>>>> explicit defined for
->>>>> DEFINE_TYPES
->>>>
->>>> My point is that keeping the boiler plate as little as possible makes the
->>>> code more readable. DEFINE_TYPES hides some of the boiler plate,
->>>> DEFINE_MACHINE hides even more so converting to DEFINE_TYPES would expose
->>>> some even if it's better than no macro at all.
->>>>
->>>> What exactly are the parameters missing from DEFINE_MACHINE_EXTENDED that
->>>> need to be added?
->>>
->>> Hi BALATON
->>> the things we faced is we first is to add TypeInfo::is_available parameter to
->>> DEFINE_MACHINE_EXTENDED, and have more usage of it.
->>> Then we will add targets:uint64_t parameter to DEFINE_MACHINE_EXTENDED, this is
->>> a prepare to remove TypeInfo::is_available parameter from
->>> DEFINE_MACHINE_EXTENDED,
->>>
->>> And finally, once all usage of TypeInfo::is_available can be replaced with
->>> targets:uint64_t, then we finally need to remove
->>> TypeInfo::is_available parameter from DEFINE_MACHINE_EXTENDED,
->>
->> Is there a way to avoid the temporary is_available churn and introduce the
->> targets:uint64_t right away? (I'm not following this so I don't really
->> know what you're talking about just looks like there's some churn here
->> which might be good to awoid anyway independent of these macros.)
->>
->>> That's what I am facing now. And the explicit
->>> static const TypeInfo xxx_machine_typeinfo = {
->>>    .name       = MACHINE_TYPE_NAME("xxx"),
->>>    .parent     = TYPE_MACHINE,
->>>    .class_init = xxx_machine_class_init,
->>> };
->>>
->>> Will help me avoid the issue. And I think this is a little boilerplate
->>> and very explicit.
->>
->> That's not all DEFINE_MACHINE hides though. It's longer with .abstract,
->> .secure and .iterfaces plus the machine initfn that would also need to be
->> expanded if you used DEFINE_TYPES.
->>
->> Is this conversion needed for all machines using all DEFINE_MACHINE
->
-> At the end, only "none" machine do not have targets parameter or
-> (QEMU_ARCH_ALL), as that's the sole
-> machine that supports all targets.
->
->> variants or only some of them? If the latter why not convert those to
->
->
->
->
->> DEFINE_MACHINE_EXTENDED and then only that macro needs to be changed with
->> other wrappers passing a default value without needing a new parameter.
->> That does not work if all machines need to do this but even then, keeping
->> the macro and adding a new required parameter is better in my opinion as
->> it keeps boiler plate hidden.
->
-> Another option is keep DEFINE_MACHINE and introduce DEFINE_MACHINE_TARGETS
-> and remove DEFINE_MACHINE_EXTENDED, and we only use DEFINE_MACHINE for
-> simple case,
-> that is parent is TYPE_MACHINE and have no custom type and no more
-> attributes assigned.
-> DEFINE_MACHINE_EXTENDED is too verbose, when calling it, it less clear
-> than calling to DEFINE_MACHINE.
-> And if we want to set more attributes to TypeInfo, just expand it to
-> use type_init or DEFINE_TYPES, how about this way.
->
-> This will be something like:
->
-> #define DEFINE_MACHINE_TARGETS(namestr, machine_initfn, targets) \
->    static void machine_initfn##_class_init(ObjectClass *oc, const void *data) \
->    { \
->        MachineClass *mc = MACHINE_CLASS(oc); \
->        machine_initfn(mc); \
->    } \
->    static const TypeInfo machine_initfn##_typeinfo = { \
->        .name       = MACHINE_TYPE_NAME(namestr), \
->        .parent     = TYPE_MACHINE, \
->        .class_init = machine_initfn##_class_init, \
->    }; \
->    static void machine_initfn##_register_types(void) \
->    { \
->        type_register_targets(&machine_initfn##_typeinfo, targets); \
->    } \
->    type_init(machine_initfn##_register_types)
->
-> /* Implicitly insecure */
-> #define DEFINE_MACHINE(namestr, machine_initfn) \
->    DEFINE_MACHINE_TARGETS(namestr, machine_initfn, QEMU_ARCH_ALL) \
->
-> As the many call is to DEFINE_MACHINE.
->
-> And after all conversion, all existing usage of DEFINE_MACHINE will be
-> converted to
-> DEFINE_MACHINE_TARGETS.
-> DEFINE_MACHINE will be called for ('none') machine or future heterogeneous
-> machines
->
->
-> Either way, these patches will be dropped. We will introduce
-> DEFINE_MACHINE_TARGETS first.
+> -----Original Message-----
+> From: Tian Zheng <zhengtian10@huawei.com>
+> Sent: 31 October 2026 13:38
+> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+> arm@nongnu.org; qemu-devel@nongnu.org
+> Cc: eric.auger@redhat.com; peter.maydell@linaro.org; Nicolin Chen
+> <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; jgg@ziepe.ca; Ankit
+> Agrawal <ankita@nvidia.com>; Aniket Agashe <aniketa@nvidia.com>;
+> wangzhou1@hisilicon.com; jiangkunkun@huawei.com; liuyonglong
+> <liuyonglong@huawei.com>; tangchengchang@huawei.com
+> Subject: Re: [RFC PATCH 0/7] hw/arm/smmuv3: Live migration for accel=3Don
+>=20
+> External email: Use caution opening links or attachments
+>=20
+>=20
+> On 9/5/2026 2:05 AM, Shameer Kolothum wrote:
+> > Hi,
+> >
+> > This series adds live migration support for an accelerated SMMUv3
+> > (-device arm-smmuv3,accel=3Don) with vfio-pci endpoints on the iommufd
+> > backend.
+> >
+> > The destination replays rather than receives. The stream table, the STE=
+s,
+> > the CDs and the Stage 1 page tables all live in guest RAM, so once that
+> > and the registers are restored, the destination walks the stream table
+> > again and rebuilds the vDEVICE and the nested HWPT for every device.
+> >
+> > What the series does:
+> >
+> >   - drains the kernel vEVENTQ into the guest event queue when the VM
+> stops,
+> >     so that pending fault events are not lost (1, 2)
+> >   - migrates the resolved SMMUv3 feature set in a new smmuv3/accel
+> >     subsection and fails the load if the two ends differ (3)
+> >   - replays the guest stream table on the destination and restores the
+> >     vEVENTQ and the GBPA HWPT (4, 5)
+> >   - asks VFIO for dirty tracking on the Stage 2 nesting parent (6)
+> >   - replaces the accel migration blocker with one scoped to CMDQV, whic=
+h
+> >     cannot be migrated for now (7)
+> >
+> > This depends on the host kernel supporting dirty tracking on the Stage =
+2
+> > nesting parent, for assigned devices that cannot track dirty pages
+> > themselves. A branch based on Jason's iommu page table work is here [0]=
+.
+> >
+> > Big caveat:
+> >
+> > This is not yet tested with a real device that supports migration as I
+> > do not have a test setup for that. Folks who do have such a setup have
+> > reached out and are copied here, so hopefully this RFC lets them give
+> > it a spin and provide some early feedback.
+> >
+> > QEMU branch is here:
+> >
+> >
+> https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fgithu=
+b
+> .com%2Fshamiali2008%2Fqemu-master%2Ftree%2Fsmmuv3-accel-live-
+> migrn-
+> rfcv1&data=3D05%7C02%7Cskolothumtho%40nvidia.com%7C1686c4874d5c4be
+> 3e7fe08df37543fa0%7C43083d15727340c1b7db39efd9ccc17a%7C0%7C0%7C
+> 639290507158409428%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOn
+> RydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ
+> %3D%3D%7C0%7C%7C%7C&sdata=3DM30uWfAzPcqdeQifvQlNcaOmZzHQbalNJ
+> uNtB9DhDPQ%3D&reserved=3D0
+> >
+> > Please let me know your feedback.
+> >
+> > Thanks,
+> > Shameer
+> > [0]:
+> https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fgithu=
+b
+> .com%2Fshamiali2008%2Flinux%2Fcommits%2Fiommu_pt_arm64_s2_dbm%
+> 2F&data=3D05%7C02%7Cskolothumtho%40nvidia.com%7C1686c4874d5c4be3e
+> 7fe08df37543fa0%7C43083d15727340c1b7db39efd9ccc17a%7C0%7C0%7C63
+> 9290507158463751%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRy
+> dWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3
+> D%3D%7C0%7C%7C%7C&sdata=3DHO9UHPTS%2FWKbQnGf8DKsDy6oGrFYvNB
+> uw%2BZ4uh3ZDJ8%3D&reserved=3D0
+> >
+> > Shameer Kolothum (7):
+> >    hw/arm/smmuv3-accel: Factor out the single vEVENT read
+> >    hw/arm/smmuv3-accel: Drain the vEVENTQ when the VM stops
+> >    hw/arm/smmuv3: Migrate the accelerator feature set
+> >    hw/arm/smmuv3-accel: Add a helper to replay all STEs
+> >    hw/arm/smmuv3-accel: Restore accelerator state on incoming migration
+> >    hw/arm/smmuv3-accel: Request dirty tracking on the nesting parent
+> >    hw/arm/smmuv3: Support migration with accel=3Don
+> >
+> >   hw/arm/smmuv3-accel.h       |   2 +
+> >   include/hw/arm/smmuv3.h     |   7 +-
+> >   hw/arm/smmuv3-accel-stubs.c |  17 ++++
+> >   hw/arm/smmuv3-accel.c       | 192
+> ++++++++++++++++++++++++++++++++++--
+> >   hw/arm/smmuv3.c             |   6 +-
+> >   5 files changed, 210 insertions(+), 14 deletions(-)
+> >
+>=20
+> Hi Shameer,
+>=20
+> Thanks for the series. I tested it on a KunPeng 920 with a HiSilicon ZIP
+> VF passed through via VFIO, using the non-SVA accel=3Don path.
+>=20
+> Environment:
+> - Intra-host migration only, cross-host migration not tested.
+> - QEMU: your smmuv3-accel-live-migrn-rfcv1 branch.
+> - Host kernel: your iommu_pt_arm64_s2_dbm branch, plus one local change
+>    in arm_smmu_get_httu() to fall back to the hardware IDR0 value when
+>    ACPI IORT reports HTTU as 0. No other kernel changes.
+> - Guest: openEuler 24.03
+>=20
+> QEMU config (source; destination differs only by BDF and -incoming):
+>    qemu-system-aarch64 -machine
+> virt,kernel_irqchip=3Don,gic-version=3D3,nvdimm=3Don \
+>      -accel kvm -net none \
+>      -device arm-smmuv3,primary-bus=3Dpcie.0,id=3Dsmmuv3.0,accel=3Don \
+>      -object iommufd,id=3Diommufd0 \
+>      -device pcie-root-port,id=3Drp0,bus=3Dpcie.0 \
+>      -device
+> vfio-pci,host=3D0000:31:00.1,iommufd=3Diommufd0,bus=3Drp0,enable-
+> migration=3Don
+>=20
+> Two non-SVA workloads ran in the background during migration:
+>    # (a) sustained load:
+>    uadk_tool benchmark --alg gzip --mode nosva --opt 0 --sync --pktlen
+> 4096 --seconds 60 --thread 2 --multi 1
+>    # (b) integrity: compress during migration, decompress after, sha256
+> compare:
+>    kp_utools k_acc -a comp -n "compress-deflate" -s 1 -i big.bin -o
+> out.gz -P -l 60
+>    kp_utools k_acc -a comp -n "decompress-deflate" -s 1 -i out.gz -o
+> restored
+>=20
+> Results:
+>=20
+> =3D=3D=3D 1) IDR matching (normal) scenarios =3D=3D=3D
+> - Patch 3: matching IDRs migrate successfully, including between two
+>    different SMMU instances.
+> - Patches 1/2/4/5/7: live migration under sustained non-SVA load
+>    completes; no SMMU event storm or event loss observed; STE replay and
+>    accel state restore work.
+> - Patch 6: S2 dirty-tracking integrity passed. The device kept doing
+>    DMA writes during migration, and the decompressed output matched the
+>    original input byte-for-byte (sha256 equal). This device has no self
+>    dirty tracking and relies on host-side S2 dirty tracking.
+> - Repeated/ping-pong migration on the same host also completed and the
+>    device worked afterwards.
+>=20
+> =3D=3D=3D 2) IDR mismatch (negative) scenario =3D=3D=3D
+> - Patch 3: with mismatched IDR3 (source ril=3Doff, destination default
+>    ril=3Don), the destination correctly rejects the load with
+>    "SMMUv3 IDR3 mismatch".
+>=20
+> No errors were observed in the guest or on the host.
+>=20
+> Tested-by: Tian Zheng <zhengtian10@huawei.com>
 
-I think I'm lost and cannot follow what you want. As far as I understood 
-you want to add a new field "target" to machine TypeInfo but instead of 
-adding that straight away you proposed to first add is_available then 
-later replace that with target. I asked why do you need is_available and 
-not add target right away?
+Hi Tian,
 
-Then if this target parameter will be needed for all machines why can't 
-you add that to all DEFINE_MACHINE macros as a required parameter and set 
-it for all machines passing it through to DEFINE_MACHINE_EXTENDED which 
-sets in the TypeInfo. That way no machines need changing other than adding 
-the target parameter to the existing DEFINE_MACHINE calls.
+Thanks for testing and the detailed results. Good to see this working
+with a real device. I will refresh the series, addressing Eric's
+feedback as well.
 
-What am I missing?
-
-Regards,
-BALATON Zoltan
---3866299591-608982516-1793631358=:93499--
+Thanks,
+Shameer
 

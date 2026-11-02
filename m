@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 140D0606A32D
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 09:22:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3CB52606A324
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 09:23:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=fO3gELXe
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=CbH03vDu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNoFI-0007L8-FI; Mon, 02 Nov 2026 04:22:33 -0500
+	id 1xNoFX-0007N0-HQ; Mon, 02 Nov 2026 04:22:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xNoFD-0007JH-Jl; Mon, 02 Nov 2026 04:22:24 -0500
+ id 1xNoFE-0007Jd-Py; Mon, 02 Nov 2026 04:22:24 -0500
 Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
  ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xNoFB-0000WI-2Y; Mon, 02 Nov 2026 04:22:23 -0500
+ id 1xNoFB-0000Wp-SV; Mon, 02 Nov 2026 04:22:24 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=L8Vi98TCqip7N31hxV8+V59HTn7yaT19B3tRHbnd93ctmY73Z3eLhI1eUprm6vwfK03SwfcJAblHOohavQp2fdOkW+o093BnF79LwOmAgmfyl+TJC+ZaLl/aaKyGPps/HiDWlFdaOecjYKFwPSbs1k0DojifNpbgVUb+wu+zncrOFTLVzbYKa+LulP+NDUgx9rJa2DqWwtJ6VVIHsVmHcYUN6qkZ33tTvyDkAiRpSl4PZYpDckPZGHVSNi+HjFrXBLzBAU0LZxCXnbCf81KbNnQJ6Ig0VCNhC5H1O3Jb/qQJ5TBYwgGqulqA8YOqVPSCjvzMt0nQYCTWYfWvhFhQzQ==
+ b=x423h1X35sAG0ni9T4S1K83dtrj9qT697ZNaAjQfwp+NUeM86JaX3YBvOwW5t7rpLZ+Bd6o5ALBkvMkKeMGMAzPlPeywc1IzDm7RkkhoaI+RHrXrX4nMk2yXxPsIsKsm9eUfKbDecyuDC+Tn20pQDPDF2EAk4FWoa/lBbRoZ9hzSX/OB+WK3UWRIgYs1ignAkCz0ivkbSE26Z3Gt5HZtVrVV5cyVGmn/Yuv1XsfwvZMu6g/ZhkW4bhTyM8/RIvXMNbPASoJaaRuE/NksfRhr+5LJ/RkPk5iTuj0VXDMFG+o8GdDc3hMPZo3gDf1k6+Fp8mJu/1oayUPx1OF1vmefTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Gq/0xTQzt4r4qACD3SKq9qG7f3wnpPsxLchH1uuagd8=;
- b=KJcWLPU4J+P/wRNsfFzbvjSniv3vKWILphZAICpA29BJ5Aphi0hcW86k4q1lIFVkI9PkRyRZc9gS5JXJkVXox6p/4xFANmkAS7Id/VHtc61EFDKqTfCsGHPjgVk3njcMvxOoO4h2d2gBgO0wf4S6M6c/Ipilxs+v7rZTYvqEyNiBzhywG37ho5248q70XvtmJ4epyVAf/1peGbSRqnqTFc8qXom8s9AOQeo9kDCaJ6VcBo8bd7YfES+mFGjMmEq51dt15Se6embpmphUuM4H0kahNNsrTQoXHwT5YuFCM6gDzO73QIkoKnJMT/PLDyfCSOdWhtjXDuN6gejHSotGXg==
+ bh=lU6uLov+bGgZqeJWfdXeshDaWcQkZkWV94xA0Zrhckc=;
+ b=k8nDCrA3pBz1m+QmczN65ZNMtEfow+4eZSDUgu8Glsu9jEpgq0vKtpHadWPuHlmbBEIRrvz8KFeL+BbxR1JzeNkCjVLNqBsn8bduGY0HUd9gYo804GSL9Be6Vaiw2mCI+1WsRYvcLcX19mVOFQDqg/fy7cPrIhmWcRtzPyl4kkAcFXDihh4+nrWrwaQl9GG58bZG89WOt8SPKlQbhGCBz6GmujEQW9mgZoG0cQX2H9aDC8U/xTsrLYhlfVCb/+ttqjlttN3KFXMTa9YvVuiRUTzsiYj5AK+epjcp0D8e20eWWo3lbt5n8dlHaceego96iLKGKNPrHPgzDAMkAh/+7w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Gq/0xTQzt4r4qACD3SKq9qG7f3wnpPsxLchH1uuagd8=;
- b=fO3gELXebgs/DmfeJDsb7Br7VwQZTfjha/e8YPGYiHZ7depdtCKig+QLDyn6ZU5H/Ijifw4NBdTM6bs83KMcTWBZENWVaBB3tfFwvXW2i7xGfWKx1rdnC0t6AdlRtE2jctPid06lTYQBohqFUqizgQuRVNCwY+1u5cPaKhwjp+oZWJB7BL38BKLzkqsTzkllg+z0SlJEB+KDUqyWVocCAc2wPM1c0iW4e4Slt/4yeWuwUrAjIoRHwAF7/OHRA3LuwEocPfJx5suvTszGt71t4jlBPdjwZsGa+JePBTLhGJ5aH4Hw5rWnnSahIfsBT4SWUlMUkTzDDIS6yXYDSmGTWg==
+ bh=lU6uLov+bGgZqeJWfdXeshDaWcQkZkWV94xA0Zrhckc=;
+ b=CbH03vDuxbtoRVN9Y6SPsgSDLadzD2L5xhk7DyFyMVrTQEAg4Hy2xPSTancuceoMc0zJJUslegP9kLWhxlqRUnHYpG1dDgDjRKMVbnXpziNelxLsWGu3HjPtAP7tLXBgwkXf9oE1mk4UDqYvyfWQlp4/JEUls21ZvTde2FnG21XYkF2Pd+Dy9DbFDKcoKPVdPRCZ6RqN07CrcFNnsprLDc+HbPjwzGMiyf6VA+YNHT1+G9t+jgHQS7hiMghHtvEYi/jlP7uBmoN0TreTD25zlEv/M6V0Fz/vxH6g80RJf467SY7JY6AK+PYQjaKlW/Ului3XRCPj59UaS7powpMa4Q==
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by SE2PPF4565C7005.apcprd06.prod.outlook.com (2603:1096:108:1::7cf)
+ by SEYPR06MB7042.apcprd06.prod.outlook.com (2603:1096:101:1dc::8)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.6; Mon, 2 Nov 2026
- 09:22:08 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.8; Mon, 2 Nov 2026
+ 09:22:14 +0000
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0592.007; Mon, 2 Nov 2026
- 09:22:07 +0000
+ 09:22:14 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: "kraxel@redhat.com" <kraxel@redhat.com>, "marcandre.lureau@redhat.com"
  <marcandre.lureau@redhat.com>, "junjie.cao@intel.com" <junjie.cao@intel.com>, 
@@ -57,13 +57,12 @@ To: "kraxel@redhat.com" <kraxel@redhat.com>, "marcandre.lureau@redhat.com"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
  list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v8 03/18] hw/usb/hcd-ehci: Add an auto-hub property and leave
- it off
-Thread-Topic: [PATCH v8 03/18] hw/usb/hcd-ehci: Add an auto-hub property and
- leave it off
-Thread-Index: AQHdaquhga6t5nVRcEGa+nf3TCiRHQ==
-Date: Mon, 2 Nov 2026 09:22:07 +0000
-Message-ID: <20261102092201.1729245-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v8 08/18] hw/usb/bus: Turn off the automatic hub by default
+Thread-Topic: [PATCH v8 08/18] hw/usb/bus: Turn off the automatic hub by
+ default
+Thread-Index: AQHdaqulsdqsJFeQ9EiqkOpgDuKOtg==
+Date: Mon, 2 Nov 2026 09:22:14 +0000
+Message-ID: <20261102092201.1729245-9-jamin_lin@aspeedtech.com>
 References: <20261102092201.1729245-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20261102092201.1729245-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -73,64 +72,64 @@ X-MS-TNEF-Correlator:
 authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SE2PPF4565C7005:EE_
-x-ms-office365-filtering-correlation-id: 8d3a3f8f-560d-4e3c-10ed-08df38c2c404
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SEYPR06MB7042:EE_
+x-ms-office365-filtering-correlation-id: 00c3e1b9-ac5b-4edd-faee-08df38c2c85d
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|7416014|23010399003|376014|366016|921020|38070700021|261021121427099003|261021123027099003|261009223027099003|56012099006|261022113327099003|10067099003|22082099003|18002099003;
-x-microsoft-antispam-message-info: XepseZPBYtKEWGKlREqSDeQB39eMv6vPozkcgHzK7teyKVFyjUazJvJKtECcGggWI0ciBL7pEGEdw1iRb0Fk1hR5Ow0u/LZYn6KPhz2e4CO6bJ7qiR70HpNbkd1nl/6NIbaBp8nSJFZ2SICYxlWNpp/3yP+fEOcVd6k797ULsgtUlKQbm4r3He6xdfWvJpxSxAJui0BRW7LpzH0NeRQ0oSvvusi6o7GGz4FJ0idhv2s2Xy7+HsFzdMyybkK85CyaIe+3SizoDBhN45JB9Vub1B8sgPcjPkJWlpw78Qo2uaZF8stmsb1JRxw9v6maKtdic901Drm2UAbYSWVpEfKD5fOuOYSHGmx2Or32FsuLkKIvoB3Jazrzf1BPaq5Ps/lSqURz9JqEKSe+gGkn9zL44dXa46+W5RxuqVjNX+hi3kwzPthR0BEQIkqtiqWO3HDdVGnVB3G8PTfKuFwaAy263MZ4eJZuUH9x6uQRu/RACeDJXi/o8ledTRLn5gTl3ps6hRMk84UAG7Y5JT62hIVoNt4LEkyyPCHnvPxKvn4P/zLMJjptYOIcMpFyu1Wd7jKNhxueKRc4rfhmod1ELsDROE+49jZu+rKDyzQInXSNxSeIiMSPe0InT6Ht8mCbFLbPyJxLdJHPo0QTsE89T6jWrt8IR2ykqfMclN3klUxPavoV9YOyQnlTg3GpPGd9BY6kmuTDDC4UTCSGOSiFhnbpbxDnOu8zprAiTe/vqXPNi+k0M/vMRBA9Ly09+F0EsXAr
+ ARA:13230040|7416014|376014|366016|1800799024|23010399003|10067099003|18002099003|22082099003|921020|38070700021|56012099006|261021121427099003|261022105027099003|261026140227099003|261009223027099003|261028144727099003|261021123027099003;
+x-microsoft-antispam-message-info: aGEzX6gmeGQGPUgNIAoETceUHf97JkNAQ7P2lWvvNtA96FFZIvIY9HBpVIuhPnx0v2DfAqLrPWn8rDt0aky68lKUr5ww4QdASEZoSYzjKCUo0k5aXZc7UDj9yJ/Y3WjF/TmbLbwd0G8AV4lliSGeCSyKshLkCoFJHzBXizEJgrDUFxB8vh3ozkFYoHLNPJq1ZkSbWfS7RYiaVqEvGmqtyYtu6/yv9Mzcg0nk/XLszZbxI+iodP+bzAS0gkBEmGcLTffWQJKg6k8WDyI8Xr4Ve9fzbakzDhLXABPG9EPfyySihlXFYrn1AtxGqxQKCTFOvkN8Nwjr5OuaW8jEqQ0YUujO7xjQDpsLjFDydB89t5G/wob7RqwBY3Wv8ItfF3jdhHwMpFsVLx0dkhj4bSeZHOWJflf9N3x+S6lQlft1EoMUvhDzmaK/2PjD4AVasot0OmhU0b/566itSCgGH31UH9Ls/oIcYsEWVAAYBJetm094P265zSdz5ZpRC3K7WO6MyJoupbe3zp7gSsbqQXrNWIgrCxm2SCwSn8t9ULPGfGGb77tLsd+jY4aqqpglYEwHvqtX1hAQwsK9rFZrw/cX4gKJnLbIuO7YcejhW+QvWi7oU9FHtyvXHnSbd1s1TybZrk3HQ+P831cPZhX0HRmTZjvZn2AF/3b2ef70cHHMop6si5lHQ06yRsPM8y4RIKzwK9IfUISZF0hHW3Ub/PN0d5tyDXmSn1mOMeLJFE7OAKpxJTd8biMQAHvu3epCSS3+
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(23010399003)(376014)(366016)(921020)(38070700021)(261021121427099003)(261021123027099003)(261009223027099003)(56012099006)(261022113327099003)(10067099003)(22082099003)(18002099003);
+ SFS:(13230040)(7416014)(376014)(366016)(1800799024)(23010399003)(10067099003)(18002099003)(22082099003)(921020)(38070700021)(56012099006)(261021121427099003)(261022105027099003)(261026140227099003)(261009223027099003)(261028144727099003)(261021123027099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Heo+qSmxRfLp6eUorv/e2YuYFMY+BjnujU0HbRfeu+331YM06HhmwsdqHy?=
- =?iso-8859-1?Q?6mw6VzcAXpQzU44dHrPMm3iiOZmtapdly0YUWNvoAVk/m/RxwV06/1Ns+k?=
- =?iso-8859-1?Q?SsSguDLHGbTkgDbLw1EfRO9p3ixV9Mv4iS2CD9vhqQt6ealjjNV3sZrXik?=
- =?iso-8859-1?Q?mrEWCKgcHjUkqOWCcMDBVuz9DBKc62gJXadUW7MJbVQxRWW+SwDs9shFZK?=
- =?iso-8859-1?Q?w1cOWwQ63E0ZzW5J59yPPvri6wQIwoSqh6O4ap9Huug/9S+EibKfvXVHTh?=
- =?iso-8859-1?Q?TJraQAakDZJtnrqqj7GjxZWnlYWR1LXR/4ib/sxWqEBX8Evya07v4MuWFb?=
- =?iso-8859-1?Q?fZ2jr+fEQlnHINIbaMujZTNoHZU5RVB/Iu4HtaX7q2E35OrHOAMgMe8u31?=
- =?iso-8859-1?Q?Tpd84Jj7N1Mke+F1LmjfwlCOt8zVgQp8SBJzKgqAJ3AvOpy2qlbRbADO9h?=
- =?iso-8859-1?Q?4oTmDs9G7z59lEZC8zRUwz7XuKEc2/T7oH5a3z3ckOMJXowp7mVYoqFP29?=
- =?iso-8859-1?Q?IpzvjQgVP1Q6uPw+C4S4KASVAcQPXdXN8F7WlfrtrcO8vUSpXku4Gpr44l?=
- =?iso-8859-1?Q?XS5k+j1TP2WuTDn54D+m3DrLr2RuyDjuxtyaLUxAf1Fpb/Gp8Ut+3rPwLj?=
- =?iso-8859-1?Q?lWsZ5wtLSOfvqKRmfgfhjnCP/Mix+IWcn31uDmgPjOUzXYvOcwIQpoQm/W?=
- =?iso-8859-1?Q?r+2vl/IjLxc33hVJMg8yFZq9SPijKrAJcV7OjKADVqG4tDbC2N0vBVgaVQ?=
- =?iso-8859-1?Q?fGaXM7Xh8a52natRlp/F1b/vgvx2Hz1qXl4gy9IHTzrmH2WhUZCI+xATry?=
- =?iso-8859-1?Q?rDyfdkbCqKmGS7STTIg3OOKDaindk01uk72/Bfz6HjPVRAAxpMG8b7HI2L?=
- =?iso-8859-1?Q?2pB9X7DRpHYpG5EQSdanmNkeTZck529XkXStRMtbgPjodk8XUx7sN2boW2?=
- =?iso-8859-1?Q?ehh9nSrJwvnVa52TDjRwiqnU8DTqjc2szcn0IHGB1dbJmrRPSMbXvhBfk6?=
- =?iso-8859-1?Q?rdQfR7PzPsMNnN785I0OOrWrqXYb6xTRlnghSCPNvcKoD4PWfr1tIIbnFZ?=
- =?iso-8859-1?Q?v87f+PAlc3ps+/KXI1qj8x9mNbxe6H6C9QaC8zZPqCtFa+qVbaJyE645Cq?=
- =?iso-8859-1?Q?LthUg6uL783cPJs0P0EdpdbXbuahWT7Ty8qcphtUVznmk8/BNmRpV1nkWf?=
- =?iso-8859-1?Q?CwEgDXt3zlHS+hjdzzYgtnhcmN0z9TEByGwj2CvgbO/QziSI6Hn3RkYZ0w?=
- =?iso-8859-1?Q?YytcSMm80wuHdPbIyDSC1exzxYHHJ0kTACs7yfklwRXWQjBj9TCdPbTAJQ?=
- =?iso-8859-1?Q?bYp5qWPuBqj12fso8Wt60KwxVuIgK32y6b3HKBJnjeciWqr0cpuZZiq4+V?=
- =?iso-8859-1?Q?JKBdwCXWpGW9mY4GiZ18FDvLx+JOYTiKelU0GTCnsFB5fSd2EXuu2IxxeY?=
- =?iso-8859-1?Q?6Z3kJ/ivNY1PObHVFXRX7LvuRHQwIOLnT6Q7isKv1QjvfVlampXYRalCn9?=
- =?iso-8859-1?Q?WNzXxFD+FHcbX3dLxnfaWdiZ0PRJKeZwWfXww+H809dAt1S9OV7CdQQwVv?=
- =?iso-8859-1?Q?+LPTfNU8PfxUSZzGI+LtS6P8Z50aFvY3dO9pimJj47WRR7usQjMuwYrFAy?=
- =?iso-8859-1?Q?ERckibLYMCcdIbz/E6WSImrRf66yBPxIRQFN/A0YqCwuWbuZLGm/asNU0r?=
- =?iso-8859-1?Q?MyMNtI+uSWdHrf/9bnKnyPA/HfHibCm9gmeBwGbVtX2jCbyJf+kh5WxAv6?=
- =?iso-8859-1?Q?ChAWn4xJgPaoCgbhvzaB8g4MkWkTFIMLoYVzk5x+JYb5yygc85EF4B3u/s?=
- =?iso-8859-1?Q?h1a5LdB04w=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?JyEpNQgYdAzO5WEtdYxS+fqbEagzOLiILMLJRL9YItUpd8KPSW0Co1fBuo?=
+ =?iso-8859-1?Q?P6ZZ9lmNHS6EnfI9cTLPO9/NEPTShc7CY2FRA1bQj2bfupew49SYrs+kBt?=
+ =?iso-8859-1?Q?EDcQ25lnekPEODJ+MNhNa0FKjNCqnHSnrowWb8H14U+ipVGfoVfbgJmYdZ?=
+ =?iso-8859-1?Q?v+QRiKQiXN95CaCZuB4iovgRAjUhToIECD8BHX2k3ArY5PATfaHsWENjUl?=
+ =?iso-8859-1?Q?WOG6TBx4GYKi9MMTPkC1YievyhG5jRYN3fMo6BU8drRzrTJgA2yK4ZXmoM?=
+ =?iso-8859-1?Q?NjkUq2JOabeBHhrSVaWgV8VnI5kbqYhgtCj32U1oNG6vIlQ82gNvgs6zvL?=
+ =?iso-8859-1?Q?ctWZBfsyQjsXAopzHb9sIk9RkP3HJnYkRmvgW7VKbsg0Mjpka0IiBEhnTF?=
+ =?iso-8859-1?Q?VW3kfyQHoLG4mabes7LsIngTVDjmL3r3cLTN0x9CiltyiPtjpdNLQfATV7?=
+ =?iso-8859-1?Q?BgDWgt477NtmDpjNJqxSUGAR8WBYBb7hRwH7e2PhJ4notUFsfl64FyrKcf?=
+ =?iso-8859-1?Q?gy7+5mGE9W8h/e69tKU6BFx88kjqVdO0XvKL9oJFuOnPIyD12kpFaN9O0Y?=
+ =?iso-8859-1?Q?PXXuEgwFBLiWUW2qF0Eu8M1F/b0+NfuxM9QdYKQ2xmbvKb7zutDSRABoRv?=
+ =?iso-8859-1?Q?5i1Z9inmYoTdEjdcaAgoXWzj8Qv13rEkQSQb8ygTgfOiHNQ6OO57Y1Z/SV?=
+ =?iso-8859-1?Q?kgXLgj6iowYlib7dd0V2kYiIVfNUvtBB8/2hN21iEKbOd1nOE50To0Fbzk?=
+ =?iso-8859-1?Q?1EnnkzEy8QXN3CUyKk+sGT4c/IBLbsMIynd7u/8k06EaspHwXuaKX+1KQg?=
+ =?iso-8859-1?Q?yMIjbrq8NbM7MJla8iIXuG62Q7YpdwZZkzlbz5uLY5mKumUpo7uw1aJjh0?=
+ =?iso-8859-1?Q?wwHf/GoIBZZD/daNNTZj6SoAnroSPhLPpqWTUTqOsnrM1ZqpPhKCQHs/Ei?=
+ =?iso-8859-1?Q?d/vDkOq6wV3k+skiLsZ0LkkWK6EgQp+k/O7nkwFWVqX3PARXO2luCmnvs9?=
+ =?iso-8859-1?Q?ANjNfjvJPpJjZzmMFI9DkS2ZlTSJhdSdec3OZbI/8FYNppnH+4gEXZ9WCG?=
+ =?iso-8859-1?Q?VtZ4ySzVCKHXs90qNuxCiWUI47DiSNGMfIEsTet08ELyP3gnzNdAwJ8nI/?=
+ =?iso-8859-1?Q?wbOeLhTGc6qFCKBpijaiGtRMqW06tCorkoUXaecJ2osS3C9nDwXIuvPHYo?=
+ =?iso-8859-1?Q?qtTI4qjzpHTsN86MOvn9a1HjC+vqsune671m8uvUbkcz1KB/ezhp1Gzep5?=
+ =?iso-8859-1?Q?D18SKkBg4fAIj7n93E9JwrHciLf6vbtMjKCadMVRzNU/zt0CDpJZsSXo4K?=
+ =?iso-8859-1?Q?PM+Rwl5Z5QytaxQqP2e3rEpTnYJUrhLn8CWciypYdbahuk9HRQtEmnsYCS?=
+ =?iso-8859-1?Q?SPRc8RMQquuERyz3OglvDNtqhcp5KyoHdK7r7MMtDB3bN5RLaQg9g0PB9Y?=
+ =?iso-8859-1?Q?450YhkvNNdIh6CAoqDFHm9rS8R+QZII1VlWlKWFiKhGLAHJN+hk82IZNOT?=
+ =?iso-8859-1?Q?68zD6VcpuFUeux4WZwRmM5DH5dWwyj4m4y9vHdk1Qqf3Cegq2+9TsunRkN?=
+ =?iso-8859-1?Q?To1lftBgnIJAnwUbLen6XUxyPdmE9tEVB+WJ1WAfdgPNSjwGWH57z/mJZd?=
+ =?iso-8859-1?Q?5Ix8see2hZVcMGjV0iTuCO/1yP7XCss+70FUei9DWkcFywXFcGnEeQZPM6?=
+ =?iso-8859-1?Q?GpQN4yJBS2gA17PiZjx50GEilp2loQ66tURb04hfQkRhetqOL6bdDOx8cy?=
+ =?iso-8859-1?Q?juyAnb6UZDPEO66ijkSFbhVqWrNkzWwejJZWXSX21rlYuo7gITUv4TaZ2X?=
+ =?iso-8859-1?Q?+r3uhImtmw=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: BbbSCS2G2+/sb23kY9GWEe7c1+ktDpEL/XePwQzu9yBgoFPk+lV0mBqEmhrVJSrx5ppnSzGc0HIsIXAZoiu6yPVQ0BiWR14JpKr1Qwpy+8T+4nugAOX5L/oOOzIQtWh0qm1PcIKOrKcngz4G93C7ry+9dJe33vCMqee50viH3lZcVn2ZLehU+OKCFKLgK2OHsMfRCDjsd2lrrwdCIFAGHo3/Bb/2U+n4RTWL7z9FMqd+x+YpEfazCqUl8EcTFUi6wWNTCqusgyKk8QeGP0/BHUJ8zFGQ/pdRo/t2YKj4FeAIIcpxquok1SmaMOBk5xz2339un7GklfyFKqHzct27Bg==
+X-Exchange-RoutingPolicyChecked: YD/iLRdzUT1tG0jCMUyguyzUK7RyiM0rGP9rCSRUIzM5Fay61bClox3csWSTgZX6r2KZRV83mKpPCJgClvYOGfngPoYnu8VbkIno0RmV0iL8F1AwnhYOVNFYHgoSng/K3oXHBIWmpBo6yZOsS+X7boLHybTNjUebbgSouKejrQNj+pmsRXQ2rfR/6Xod0ByK+Z3QxVlxhPGWtAbdqL2YWnKfkxXNk7OoiZA1gijFqyt5Anmf4Zl39HKOef8KcNQZgA/ObRGQtmBgY+9v1GhjI1uoYqEtbD/Qp86d6BSGmxOnQvRrzXC6r/CuKLop0X7FWgCjXKUOfXpggVpyZgM2Sg==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8d3a3f8f-560d-4e3c-10ed-08df38c2c404
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Nov 2026 09:22:07.3164 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 00c3e1b9-ac5b-4edd-faee-08df38c2c85d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Nov 2026 09:22:14.5632 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: bhIOV1tgRM4pKE6mxxQLAtLtdwNnuuExeqCIN8wgMRqwiInU7BBTVhKURwMw4Nx6O3Gyehb4JtrP3b8FVY3OeIr3FK/1KO1Gi7/OQDPgBQU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE2PPF4565C7005
+X-MS-Exchange-CrossTenant-userprincipalname: FEqjhM6JO3KGLmobHpLUb8Gj0/x5voIEwtzWsuk/6O4AIKTxDOseW7ZmvlqkFOzL0u4ejM0jamwhm5K1zrihcSZTdfcOpzidIV9CcHF0PUE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB7042
 Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=jamin_lin@aspeedtech.com;
  helo=TYDPR03CU002.outbound.protection.outlook.com
@@ -159,67 +158,30 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add auto-hub and leave it off. hw_compat_11_1 turns it on, so an older=0A=
-machine type keeps the hub it has today and a guest saved by an older=0A=
-QEMU still loads.=0A=
+Every bus creator now sets auto_hub from its own property, or clears=0A=
+it outright, so the value usb_bus_new() leaves there is never read.=0A=
+=0A=
+Drop the line. A new bus then has no hub unless its controller asks=0A=
+for one.=0A=
 =0A=
 Suggested-by: Gerd Hoffmann <kraxel@redhat.com>=0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 ---=0A=
- hw/usb/hcd-ehci.h | 4 +++-=0A=
- hw/core/machine.c | 2 ++=0A=
- hw/usb/hcd-ehci.c | 1 +=0A=
- 3 files changed, 6 insertions(+), 1 deletion(-)=0A=
+ hw/usb/bus.c | 1 -=0A=
+ 1 file changed, 1 deletion(-)=0A=
 =0A=
-diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h=0A=
-index b5ac9c8670..db9db537ff 100644=0A=
---- a/hw/usb/hcd-ehci.h=0A=
-+++ b/hw/usb/hcd-ehci.h=0A=
-@@ -269,6 +269,7 @@ struct EHCIState {=0A=
-     bool migrate_fetch_addr_64bit;=0A=
-     bool caps_64bit_addr;=0A=
-     uint32_t ctrldssegment_default;=0A=
-+    bool auto_hub;=0A=
- =0A=
-     /*=0A=
-      *  EHCI spec version 1.0 Section 2.3=0A=
-@@ -336,7 +337,8 @@ struct EHCIState {=0A=
-     DEFINE_PROP_BOOL("caps-64bit-addr", _state, \=0A=
-                      ehci.caps_64bit_addr, false), \=0A=
-     DEFINE_PROP_UINT32("ctrldssegment-default", _state, \=0A=
--                       ehci.ctrldssegment_default, 0)=0A=
-+                       ehci.ctrldssegment_default, 0), \=0A=
-+    DEFINE_PROP_BOOL("auto-hub", _state, ehci.auto_hub, false)=0A=
- =0A=
- extern const VMStateDescription vmstate_ehci;=0A=
- =0A=
-diff --git a/hw/core/machine.c b/hw/core/machine.c=0A=
-index f8f5b01117..0103038cad 100644=0A=
---- a/hw/core/machine.c=0A=
-+++ b/hw/core/machine.c=0A=
-@@ -43,6 +43,8 @@=0A=
- GlobalProperty hw_compat_11_1[] =3D {=0A=
-     { "sysbus-ehci-usb", "x-migrate-fetch-addr-64bit", "off" },=0A=
-     { "pci-ehci-usb", "x-migrate-fetch-addr-64bit", "off" },=0A=
-+    { "sysbus-ehci-usb", "auto-hub", "on" },=0A=
-+    { "pci-ehci-usb", "auto-hub", "on" },=0A=
-     { "base-xhci", "auto-hub", "on" },=0A=
- };=0A=
- const size_t hw_compat_11_1_len =3D G_N_ELEMENTS(hw_compat_11_1);=0A=
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c=0A=
-index f371e567f3..29b85869c3 100644=0A=
---- a/hw/usb/hcd-ehci.c=0A=
-+++ b/hw/usb/hcd-ehci.c=0A=
-@@ -2636,6 +2636,7 @@ void usb_ehci_realize(EHCIState *s, DeviceState *dev,=
- Error **errp)=0A=
- =0A=
-     usb_bus_new(&s->bus, sizeof(s->bus), s->companion_enable ?=0A=
-                 &ehci_bus_ops_companion : &ehci_bus_ops_standalone, dev);=
-=0A=
-+    s->bus.auto_hub =3D s->auto_hub;=0A=
-     for (i =3D 0; i < s->portnr; i++) {=0A=
-         usb_register_port(&s->bus, &s->ports[i], s, i, &ehci_port_ops,=0A=
-                           USB_SPEED_MASK_HIGH);=0A=
+diff --git a/hw/usb/bus.c b/hw/usb/bus.c=0A=
+index 92f67de4fe..cd587db892 100644=0A=
+--- a/hw/usb/bus.c=0A=
++++ b/hw/usb/bus.c=0A=
+@@ -92,7 +92,6 @@ void usb_bus_new(USBBus *bus, size_t bus_size,=0A=
+     qbus_set_bus_hotplug_handler(BUS(bus));=0A=
+     bus->ops =3D ops;=0A=
+     bus->busnr =3D next_usb_bus++;=0A=
+-    bus->auto_hub =3D true;=0A=
+     QTAILQ_INIT(&bus->free);=0A=
+     QTAILQ_INIT(&bus->used);=0A=
+     QTAILQ_INSERT_TAIL(&busses, bus, next);=0A=
 -- =0A=
 2.43.0=0A=
 

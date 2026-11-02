@@ -1,47 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E83DE60A2605
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 09:25:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D072606A332
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 09:26:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=E2/VTqhn
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=eRL6zqrI
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNoGK-0007e7-3U; Mon, 02 Nov 2026 04:23:32 -0500
+	id 1xNoGP-0007iQ-Kk; Mon, 02 Nov 2026 04:23:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xNoFF-0007KQ-LP; Mon, 02 Nov 2026 04:22:25 -0500
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1xNoFg-0007O5-DK; Mon, 02 Nov 2026 04:22:59 -0500
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xNoFB-0000W7-M0; Mon, 02 Nov 2026 04:22:25 -0500
+ id 1xNoFQ-0000Zc-PZ; Mon, 02 Nov 2026 04:22:39 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=b7DnHgbFVYC5tUzfKI+QmFXwJl7L0cL2VmKld0fp6hFUFMVrMc1Oj6ee4vHd3mrbdZYM74vsZiWXslKqgcssD8oM147xhrqB3lQFAKJSiYmxFn82RJotCF5R45BgV+ECrGtKjxXwA/oQ5piP9MAho8iNdbK5E016Q5MB3rJ/Iwgw90ixEc+bgRk4ih2elQ4qQ6qrOHtU4JWFMdxQl6kpYfIdega/u8HGcBHkIgZW73zuAAp3Nsv/925Fx5ySKwRTgaTpdsim1bvv7eGJIcmTtjIDx9+f2uvOnW4dcHwfEedCuhfUgphLgj+pOVry8pk0V6Q0FKilzNhJzYYiAXY38g==
+ b=hnW8BwR6yUMh2WDfGAk0IBQoPkYN0s1+1d9XAZpk31ln+w71kLjqzaULhxjAZZL13NVupmmsddsf8hko+HeEDC27tf4T0UlC6NkJUHxqpSBmENUjNhoeAJrMR9bwGARM1/vrwx0pVd1pTIw6B6RDYgIWYG4H9l9RCI9mc77eQHDFuGk5ru3SbmHC4k9iKSDSmZqRTbt9oKji08tQgzcAwv5atkXv1ggqM5z7IYERTSQFxWSQkddF6PTWdwx6aEtoKUBE5hcLcFrM1GUe4HvGma6wrf8r3lJ5B9+Y9Gp/5nQOD8G1VrYKgZdgxiK9gDreM7zn228viyiw11zJvQl4aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/weoH6ZmGNv3F1ySUYIYUkaiPCki7/dI1nyzOzA3iFs=;
- b=ZEF26RUqJ4NaFQ46LInW3i8Sv6nWLMu0I11ZzuhJGYOH9UwVLuA554YK0zMHREJi51+CCFcl/3DQeEogXj55kmXJiWyfuxonz0PHyON8y2xlq7IXQf7iAUTvJ9g0tOqg6QPzS1ofqEGhURISmIAwQ5IMNeHf+GhuhhSWepcy1HxnXgTsRLPrRVOXTGuSX7wYwUpb0iFZtyfBzt+ZKZNEbSjKlTnmmNeEXQGFvkfKLrZw+ih70ZFRPvAPa++5lQ7Z4vEJyONoXUXWDk1N/UT5YIRiRemMd1fMo8O2QLkvpFnJ7MBx4X9Jo4WMjIfs7j0AUjsarkQkkFuOqremO4o+rQ==
+ bh=f5m4vFgqwJ7d4DsSLSFySW7I7g6HmM6xGn7bEovmalM=;
+ b=pJiPsezEw1IRMS8V7Im2LNNu9BPLZyyzEjdAIecGw4URgxu/G02z1UbZEl+8ieFDpfPX7SJbfAlYJjxT7pfrR4ZUUDb/Io3z/dVRrVviQzlIAJh0v1YlJiUrdE2fDKcFA6pTrF9ynQkxtKejGu1mxEbu0LF62FpnbEfyOjbHDjSRyXkQRbfC1/5MlKSGe8Ag9cG7hyBhVkkoOe9D+KfrBs7tyr7Hq1/S9pQn4xb/GHdHtaEtLz3sNvcxUF1UU8HAY78Z5e5j3KlmpPQOYdiG1u8IxF9KK0AhkrCke789+mDewOZMYBWcxaFzKRJqIuUxUK5cmOgURkCj3ewGChHaCg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/weoH6ZmGNv3F1ySUYIYUkaiPCki7/dI1nyzOzA3iFs=;
- b=E2/VTqhn48JMTWQ3pjSIspfCjdTKfrIvysBl2M2Cu44nwQAX0DQ/z1QvRYraSdLllNsdmWeoyncQXs6hGk6H9p4HUlhaXpp87AngYUdrGHfcZpJGSCrdGlnmCC08bOs53lbS3U2+X9mFCHZC0d4E/S7KWU9MOCzBLptr2CrA+YhdaJSWx3pHH1qQjAcllWszbTVHx3gQwSqq21dhfnvnXJ7Lbjc/1+E7DlUdpN6UZ4kpv5UMBTxvdOv/SDgy/KIEmjuCUX6GjpgNwXnhD1OHhfZ2Hqgb4Z4n2VkvdG7GF4gLA3Rlu+F19mhhpKly8hj5RgAUbVhYWFnUKNuIIYDfNQ==
+ bh=f5m4vFgqwJ7d4DsSLSFySW7I7g6HmM6xGn7bEovmalM=;
+ b=eRL6zqrIMHSGEcHIT0oVaLtaWSFUdGI1mu2EbhZzxDSKbJ55D9zOPb2PPAz9P43bmwRnxOiFNM6EL+c7hU8I5yJFX2g1P98g45oSwW6iIMMCk6fN5DrnuVRTBiyfkOzimBcWR8J3K/LrvJPNLAHGKz7lZz2kI1fJ9mLaq+KDC1yRs8G9taQGoKRBHVCTiRLrApLwjmDWzwL9xSWMgn722rlNmJidWdtTPk4RAM7XL0Zm7h6NT80fCld6eJ3LY3lNY9me9IQe4qOuqJxs+SNjebaX0JPngQ7HpWzWmbMm3zgQ9ZYrhP2zlHyFTBunZUeyapYB81e9JHWTbmXRBZKMug==
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by SI2PR06MB5265.apcprd06.prod.outlook.com (2603:1096:4:1e4::11) with
- Microsoft SMTP Server (version=TLS1_2,
+ by TYNPR06MB9200.apcprd06.prod.outlook.com (2603:1096:405:3d5::12)
+ with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.8; Mon, 2 Nov 2026
- 09:22:03 +0000
+ 09:22:31 +0000
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0592.007; Mon, 2 Nov 2026
- 09:22:02 +0000
+ 09:22:31 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: "kraxel@redhat.com" <kraxel@redhat.com>, "marcandre.lureau@redhat.com"
  <marcandre.lureau@redhat.com>, "junjie.cao@intel.com" <junjie.cao@intel.com>, 
@@ -57,11 +57,14 @@ To: "kraxel@redhat.com" <kraxel@redhat.com>, "marcandre.lureau@redhat.com"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
  list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v8 00/18] hw/usb: Add a usbredir server transport
-Thread-Topic: [PATCH v8 00/18] hw/usb: Add a usbredir server transport
-Thread-Index: AQHdaqueTQ6Kc9PD/0iLa8igmngQXQ==
-Date: Mon, 2 Nov 2026 09:22:02 +0000
-Message-ID: <20261102092201.1729245-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v8 16/18] hw/usb/redirect-server: Stream interrupt IN endpoints
+Thread-Topic: [PATCH v8 16/18] hw/usb/redirect-server: Stream interrupt IN
+ endpoints
+Thread-Index: AQHdaqusEi/dXAV6WUG6mAb2gc7SGg==
+Date: Mon, 2 Nov 2026 09:22:26 +0000
+Message-ID: <20261102092201.1729245-17-jamin_lin@aspeedtech.com>
+References: <20261102092201.1729245-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261102092201.1729245-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -69,72 +72,73 @@ X-MS-TNEF-Correlator:
 authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SI2PR06MB5265:EE_
-x-ms-office365-filtering-correlation-id: a8a8b418-eb61-4f14-e621-08df38c2c14f
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TYNPR06MB9200:EE_
+x-ms-office365-filtering-correlation-id: bff08b16-1622-4acd-2d19-08df38c2d21a
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|7416014|1800799024|23010399003|366016|3023799007|6133799003|10067099003|18002099003|921020|38070700021|56012099006|261021123027099003|261021121427099003|261022105027099003|261026140227099003|261022113327099003|261026121527099003|261022115727099003|261022075727099003|261009223027099003|261028144727099003;
-x-microsoft-antispam-message-info: +6/1iqsp/kw29gWDX4qyBM0qHSlXrh2NibINL3kAdIUi1FH+b/ZCI4dYFlGn+hk5dacKpj5N0NEXf3qQinkngSaFvtWp2un1tLftD2NkYrqjDYNmD1frsrjhofDP0je7Z44ktt9UqREg24AA6vb206CKtkgP1PJp0vIRrDjIfI0VQlUTIKq6WyxIGbGJuCJ3lb1geddIm3b7zUhaG7M1o43NGdZQWKFvo7XsdjrhMBx5CO6F+YvVZlO7GBWkOQEp0LoOBncbDTsYZwlvADh/SN1QKNpvxXNJUWSiv5qL4Kiz//0Ev+tqtSPrmWl1xdB/pOfz0lcRBOrd286tTgwtN6CZLJDqpWFOBAuIEFCGoPixOXtRxZXJtzDj4eygQB84/HY09RZCttAAjIprXWI83TPcK9Gn3ts61+MsoNfl9Bviyr9mwINcI6ysm067xqCkCAv/Tz0aiUKAdDRvOJ221YZ0at2Lp1q/7C/0fOfeY9nvRMf+GR7raZj5wRXYTLRPgTzS+lzjgVcrAGiESECMHrcyAxa0ns7jCl8tWy/jzNsmotX3o+eb9yJVmYh/DLLtE7uWnhSsCJcceIT5bP6pVQavCmdWqAypdbO2QZCmZLtOhY5zhf97RmWhsZ4gepg11vCsfCddx9Bevx9tGBNEZ8FRczPquvtWPRbLWZmogOIl2glpOlYlBaGrlbWb1sQT
+ ARA:13230040|376014|23010399003|7416014|366016|1800799024|10067099003|18002099003|22082099003|921020|38070700021|56012099006|5023799004|261021121427099003|261022113327099003|261022075727099003|261026121527099003|261022105027099003|261026140227099003|261009223027099003|261028144727099003|261021123027099003;
+x-microsoft-antispam-message-info: ITZWEmKUF7oTxfRhKbnxpzA6oHc6WAAZhiqIPeR5dS+p1UmOEoGRh6px60eCreoVa0V0LpKlwXMa3FR/8POU/v1BhRkib49JB0H2eWU5kEKrVtGLUHjgIpBv9I7VqCtTanILuj5unL2CwZUoEjY8k53qXMVC2HEw1wGjbzg/AREDAIYb16aEef2+4qCTj0MsSDuTeKf/3rgCdS49TLKIMsZa9B4n1VziU7FJP1k0v5GPEOt+69tymkqLg2BlfTJA51lJTq0c+qdDfKUSUVRK7JaANDw93pRhnUmAsWF14DAICYZeBePG2GoPTouB9T1T7XdAsUxc9oCiqABNvKGQPe8+gMpZDdFACuaMrkzsdqWTWlMdW46sl9ro1+oNo2nv3a5iLHuz0N8wcEESWwfmbQagLyl7bMC/xMGDOKRxXKwQVeLvEZeSs2GgEGrIkFQvS96294Fiz0+qN7S3v/DdxZy/IOmbbyct1AyBjaPvC9Daug5fEaZW8vdHxkTx7axz1rpB/ljhaIVD44LVpcPrZCWSMp0zC/Q0S95o4B/mI4zgke8OfDx6AIhZLuWYbPI1zgJZKe0geicQz5cCKF4pJ7D9kkfSIGknPNfCz8/TCoFv2ETXcKYVxIHDntRaKt40QFTHjVgrzYsFx92p2C8LSmXOd2t46lD58Poh5gHB7wTZBhQZRHHCy3BDpLcf8Wj5j8Cc41hUsKEH7nKuqbfJgn1rnqV9yn1PlyOZsrVdJ04=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(1800799024)(23010399003)(366016)(3023799007)(6133799003)(10067099003)(18002099003)(921020)(38070700021)(56012099006)(261021123027099003)(261021121427099003)(261022105027099003)(261026140227099003)(261022113327099003)(261026121527099003)(261022115727099003)(261022075727099003)(261009223027099003)(261028144727099003);
+ SFS:(13230040)(376014)(23010399003)(7416014)(366016)(1800799024)(10067099003)(18002099003)(22082099003)(921020)(38070700021)(56012099006)(5023799004)(261021121427099003)(261022113327099003)(261022075727099003)(261026121527099003)(261022105027099003)(261026140227099003)(261009223027099003)(261028144727099003)(261021123027099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Vw+C4zZvdvYeXXvv/pEL4yZX2oYa5PD4uvtL6dNOSYkeCm37Oo9OUt4p0X?=
- =?iso-8859-1?Q?dzRJJ9/H9WXU6lne7OVg20U1mS/USVok+VS3DP3H95OedxHlxARrWvQmms?=
- =?iso-8859-1?Q?o7Q4Z8mql7+SDoSIovdg6SS1WEFfBZc3V7LDJMhr+aq+eTX5R/BSUDV1wY?=
- =?iso-8859-1?Q?l6INu/0giNloYzxaPZXZsGidWiqnSYG8DDH1qv5ctZLZZkHAHVw5ZNyvTh?=
- =?iso-8859-1?Q?vQd6/E3gpkYXn0fNyKkWw8hJ0y5FZMwMsI6vcxemmA1aAz2AykRs2LMEwh?=
- =?iso-8859-1?Q?cTzKTgzDHKHTfpVu7MTeo1+LwzYw5god9eMlEu8knbWTzeVjHYzt5Cijap?=
- =?iso-8859-1?Q?FAbGLoBgeeUMfLBodv6r0ZkJDYtxXFv4TIiW5yT52VACBcLUe7LD/bATRK?=
- =?iso-8859-1?Q?Dh4tv+NSzpNGzpmVa13SP+YQVFVWbwcaEqc6ZremnuIVZAlwVOACJyJ2nW?=
- =?iso-8859-1?Q?Uv1+ecgeCblPhqbb/g9vF0wsSkYOwRKDXoaOAryI844c53y+p7ciIDtk56?=
- =?iso-8859-1?Q?ky4BwVzobIzcTnH3mDZApfIfEzhLZix2bNWCuD3J26QTuB2deeDG4wyRKM?=
- =?iso-8859-1?Q?Gwo5WgYd6TIJ2BNU+sKKaaRn1cC57rcreDHmDJf1HnLK2xCL65NFbZUyvl?=
- =?iso-8859-1?Q?f2yPLCgnTneCD2FVdqBWDhZTDT1cutbT6arH/U5vrC1+1eXRaR5fsIMY66?=
- =?iso-8859-1?Q?bOdUV7yWweSWh5dB57EsSK40RQQM1UMvuaTapxfTJWvTCf5H9kNY36k1wc?=
- =?iso-8859-1?Q?MZpaKABjDA1GkNqHooe+IrdjPYTYgy2snfvyMbt4fNCXLPcWnX9MVxN/Cc?=
- =?iso-8859-1?Q?FUSMiop7GheysjDl0vctEcwyr9tXwVWdoPNVowxJouBGVpM1hGM49wKsxh?=
- =?iso-8859-1?Q?MfYZuh9MXCaI5FuFc04m+pNI22L55pVVtX7uISSNVhIwDTydjdnlnCUoGS?=
- =?iso-8859-1?Q?4oBG3mxa5WQZkp/tkmNu0h8/+huUrY7+mW3ZKwShPeQi7jV+RhbsITIWno?=
- =?iso-8859-1?Q?6ZfLU9VsdEFcUYrRa2BvAYVWzquiJ23qgHKTU5LbFfui1bX9dTXA65Ee5R?=
- =?iso-8859-1?Q?9ztk5mlzqzIVr67dM/EiWmCpqGoQBdlBF6M6MUoUF+m1NKo8CySLp6IjqV?=
- =?iso-8859-1?Q?vmVhUBgofb4U+aK6Y3Jw6aYtl3nhetCgf7hokQHw+XMz5Ss357qzCW6orC?=
- =?iso-8859-1?Q?qf4SQHwD+l96ceMldcF9u2akvoqQ11FzoCCSbvV/D7uDVZuhPeY1H9iL5k?=
- =?iso-8859-1?Q?5emzG3bHnQ3FsJZ7KSaPQkirgO5EL3GTQkcRYp2lCiZz5KqWI1fceVmK2s?=
- =?iso-8859-1?Q?t8WsZ9Zl7glkW738Kt1HKC3RPdNFRb6qZeoG22UTnjIJHuR4dB65vKrbDd?=
- =?iso-8859-1?Q?JO742HKdckrdH2Qj7PpLB4yiVHr6B2WgYpBRKvZqceFDrs3k34k//nODNT?=
- =?iso-8859-1?Q?FsdWXm259jPoVIAo02wOMmT2uuFI/NEhPYe8Lx/q9rgGij2/ZhLN+F50ie?=
- =?iso-8859-1?Q?jqr+F/BKYrY692ZIG0JGE1y4i5ClJ0fs4ub7xbupu66gR94sPKdeRX1BEA?=
- =?iso-8859-1?Q?yHQAb/XBA5sODPlVfelRttEnVQS3guOyg3wbmnT0kRWNGjVRL4tQPLQZ5z?=
- =?iso-8859-1?Q?e23BELi62JHu3WoBw/Wi6/yH5KnE8jI/lOXCDsTbvXg80SfhMhHzYVgqXk?=
- =?iso-8859-1?Q?4JcgWlAyHUsBSVNDuO9BqXkp+tfW6nwaq4rPJODwS4xgRJgufKH8F9rQEP?=
- =?iso-8859-1?Q?2qL8zIBoQS4UhRL3uRSNDgl3gs7YMr7DEU6EU91fkNp0D/YWg6zpr1PGou?=
- =?iso-8859-1?Q?kg6RDiJ9GQ=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?b6ebnCYGdPJ57FCe37CRPbq6fRTJWYywJ/0jVzMxmkPsEwBa8bvrvFhTY4?=
+ =?iso-8859-1?Q?HpiQ+/v5MK/w66WinaIT06nF4UTVtlPM5hTJMkWWwl7IRk7XDy92IvC58l?=
+ =?iso-8859-1?Q?mt8UUVDrxtz8ploXn6M9U9QFuKBxXGg1X19v7Qe2Rj7JmstJL35HBplhD2?=
+ =?iso-8859-1?Q?gjDeHxi1USeZMDP8hgEbDN/zkMIH0K9HDltFVzunl+A23W2zDZJ/37xKUn?=
+ =?iso-8859-1?Q?H1dal20kztS7u4WfKvBU/tp/FDaxdpC5vmjfi7jZ4M2ZCXVRXZOAFLv4RS?=
+ =?iso-8859-1?Q?QKKtGhzeUM/JrYTA/qZiL8e61eE+g7MKhIUDS85lNAlNlAGYp1ahgvtqEi?=
+ =?iso-8859-1?Q?BmVATri535YnwGyhfN8VX6E0R8FttStrRI1IKwXFid6gBFSLKmwtytvApb?=
+ =?iso-8859-1?Q?3DULTm0udnMXd3PV6eEksUL3SdPR3mq5dGE2uCItMICVdVKEJFE+cIiTvh?=
+ =?iso-8859-1?Q?pIXA0XiwE6rRGdm7/LtIvSfPTpdxN5sMS+XsU/hgt1a1vH9SQLpQ/y0G4f?=
+ =?iso-8859-1?Q?SPas8HQ9rC9TsISAkGtcFRV0Ib2XPPdt3DSeyN1a9KUMecGkk1CW/zjtsK?=
+ =?iso-8859-1?Q?H67lqBGDoGplbhb4ELO6CCGz04iY8B27hgImpEGoWDxQEeU6PRaP+5gZ8+?=
+ =?iso-8859-1?Q?PqkFPCPFUeZdU9PJVA4sKhgESBcxN/dzQp6PlJosfUH7HctNoP8sntq+g1?=
+ =?iso-8859-1?Q?IaY4ZGiAOUZNDbrD7QfEh63VDlMLkx08IdIB/3Piu3QFbUrZfMnSesjKK0?=
+ =?iso-8859-1?Q?rUrEKY3geOKULmz8UbDl0pjOGckRAkizrQrawkOzvAaX95qkfgsL1D5Mqp?=
+ =?iso-8859-1?Q?lhIAxxhZA11+epRm7+XQcNgI3VJViXX05y/kjwII3cYDN7ry80YWjfkv1+?=
+ =?iso-8859-1?Q?yfTriBqjLk3Go+147k/AjB8T0UuZRC1ZQdzQvowQ9oP0VZGAaszQwjCtuA?=
+ =?iso-8859-1?Q?kNJ2prffF+B/W8ZGVEzY/ZNhPIqUslJSY4bX8vqHoIj3p0p65xTE37C5Lk?=
+ =?iso-8859-1?Q?l56vs7e2Yw3uwSJFb65TURW4CkkIKYXl5biBVDrQ+rj6k8LrZDC2QErKu3?=
+ =?iso-8859-1?Q?oeEuterOGYo7wGbA3e6buFrrIRZ8Bu8SbTjbST30XjqzLHzDzwote2pint?=
+ =?iso-8859-1?Q?+nkB4qb27bBIsqNMntRKrfD92n+RyKhd5AmrXqn81Q8cs+Ei8qHnJ3nVn5?=
+ =?iso-8859-1?Q?jnvvlCZuvX/LiqBLAklp8E7ibpQAJcv0oST3R0OzT0gkC+XEHTigDtWIg3?=
+ =?iso-8859-1?Q?j52MXusnZzLzoJjMX9etYnOmt6QeWFVAXLxiM7x8flz82/4ga2YBm8OWqu?=
+ =?iso-8859-1?Q?VvXLBP40VkCHJGQrSviTeNN5RvlPjr8YG8IX9xzzFI7RPd1mE/zQETiOrW?=
+ =?iso-8859-1?Q?9m3MxS5B2x8NGZrTOMWviU35U6/jOCL/8EMhgTPBYp4B6kqzHwor2dKMfm?=
+ =?iso-8859-1?Q?SYHUO6Yr8gPS28qg/DjOl6ye87KICnX3bZ78J01a/At5lUsWJyIj/ufPzu?=
+ =?iso-8859-1?Q?2LS4qBPewMwn2n2BJLpb1xTHtQ3yseE1n53pl+hpY1cw2BYyjPQZDDZ0J8?=
+ =?iso-8859-1?Q?HuLWMUT2mdJl7VYnnOVWq37vJmFWga6Mu2k1/xH1TztPshJ9wPQdCHv0+G?=
+ =?iso-8859-1?Q?AywsI0zMzAYpQXhde77W4+JCLczW3PPn2hRZQugURbbKwrjhJtpxXr7F1H?=
+ =?iso-8859-1?Q?dm4CGJyEsvJKxinMb9BhHWuPhAEXwZ4gt8kkl6pYh/Gqp4a3w71XP0stPz?=
+ =?iso-8859-1?Q?YwXBFZC+ImXekQ1RldP7V4yWaiFSC+yE0JTRTKTTJHchYVeTxH+5kWEfXb?=
+ =?iso-8859-1?Q?sEtCxdZNDA=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: uBKjgVfodI79C/up70Mk140Z505l3R9RVLbZ3QxecXYobluGUbQAr2dbyQ4Gf+bpzuvLqpa4kMjiJGXU187Q690J1EwVJzZub6vLiIm3Ma/sDI3cMOPkjQ3PezQoDBtTvI5vFX5kV2ZAFYqJuMCzQiFZeRRkCubGPfuYniZeCfS+J/A4UB9rjQbraYvmbhJ3CEzSNDygkVNu5l6A5wmfg28m0iOCabGPL+ksM1djUZYO+Hxr7707U8lTYu4AvurNaL6dV2w+8AAaD2bRjUXu80Y6hUq16Mj/BivrfdCV63sgfu2LcjLuz5GQfiqrqfDtzOVXa6/pqRBOa4b6R6iQcQ==
+X-Exchange-RoutingPolicyChecked: noBYpc6iEeiLzf0oyCmz1BEfxgKJf8n3ujU7bxVPeFZJkdE6Sh09ilmZbrodn/pPlfpw45QlVEGjoyIbQIpjuOc8ON0Jibo/FZ5lz8SewlyayTdTf+7s70LY54zw38AzpbhtrK9p6DkiIp7+tSm6Je8wrWRxamlhNtcntrOBV0dNKKtWTHtFSGD53UQAyGC5jvMnKPyFL21bWA8HEbhAAtTZj2LbGf5pRUS/emg6K9bOvK6u+wHQOTh/BiIGFfrj4lW8/1hOjzawT8trjoNwln06ZLka27Tj70nQ64/9vJpoKMYsubqxFkgscQhCGvcZ+WL2TKD6BElAW7OYpP47oA==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a8a8b418-eb61-4f14-e621-08df38c2c14f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Nov 2026 09:22:02.7518 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bff08b16-1622-4acd-2d19-08df38c2d21a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Nov 2026 09:22:26.1413 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Wn1MkdSahLvIWZO1BF5+lKrwK/a7tu8UL8rwgayszts5rKpJnuF6BbUoJrXMHoGobaVmgExt0MlI4hmMcq0m0wzu3ptRhFg9jiz208DGiUs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR06MB5265
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+X-MS-Exchange-CrossTenant-userprincipalname: 48Fchs8MIibyukMV/pB0heWTnK2bW++l+OVN4BUn2KRoAaWvZzda9XKcfqcZ2tSUsetN6DZkYYoFOIq+KfGwCgkqMNdpfrNnhSxeuCXGnKQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYNPR06MB9200
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -147,265 +151,534 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This series adds a usbredir server transport to redirect a USB device=0A=
-emulated in one QEMU instance to a USB host controller emulated in=0A=
-another one over the usbredir protocol.=0A=
+Interrupt IN is not a request and an answer in usbredir. The host asks=0A=
+once with start_interrupt_receiving. After that it expects a packet=0A=
+every time the device has data.=0A=
 =0A=
-The v1 series included both the usbredir server transport and the ASPEED=0A=
-AST1030 USB Device Controller (UDC) support. Following review feedback,=0A=
-this series contains only the usbredir server transport. The ASPEED=0A=
-AST1030 UDC support will be sent separately.=0A=
+Park one IN packet on the device for each streaming endpoint. A device=0A=
+that answers USB_RET_ASYNC holds the packet and completes it when it=0A=
+has data. A device that answers USB_RET_NAK gives the packet back at=0A=
+once, so park a new one when the bus reports a wakeup on that endpoint.=0A=
+A slow timer parks one too, for a device that does not report a wakeup.=0A=
+A streamed request does not wait on the endpoint's list the way a host=0A=
+request does, because this timer already asks again.=0A=
 =0A=
-This work is part of a larger plan to model USB device-side support on=0A=
-ASPEED BMC/BIC SoCs, which has three goals:=0A=
+Wait for the endpoint's bInterval before parking the next one. Some=0A=
+devices answer every time. Without the wait we would ask as fast as=0A=
+the main loop runs, and the guest would get no time.=0A=
 =0A=
-1. Model the ASPEED UDC (AST2600 / AST1030). The AST2600 also has USB host=
+On an error other than a stall the stream stays up, but back off to the=0A=
+slow timer. At a high speed bInterval of 125us an endpoint that keeps=0A=
+failing would otherwise send thousands of status messages a second.=0A=
 =0A=
-   (EHCI) controllers, so that work targets the AST2600 UDC: its gadget can=
+Give every endpoint its own timer and bottom half. We ask each endpoint=0A=
+at its own rate. Drop the timer when the bottom half has already asked,=0A=
+so it does not fire for nothing.=0A=
 =0A=
-   be attached to the SoC's own EHCI bus, letting the guest enumerate its=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+---=0A=
+ hw/usb/redirect-server.c | 309 ++++++++++++++++++++++++++++++++++++++-=0A=
+ hw/usb/trace-events      |   4 +=0A=
+ 2 files changed, 308 insertions(+), 5 deletions(-)=0A=
 =0A=
-   own gadget and exercise the UDC end-to-end.  [Done]=0A=
-   https://lore.kernel.org/qemu-devel/20260902021542.3194812-1-jamin_lin@as=
-peedtech.com/=0A=
-=0A=
-2. AST1030 UDC. The AST1030 has no USB host controller, so testing its UDC=
-=0A=
-   needs a second QEMU instance. The UDC gadget is redirected out of the=0A=
-   guest with libusbredir and attached to another QEMU that runs a USB host=
-=0A=
-   (a VMM, or an AST2600 / AST2700 guest).  [this series]=0A=
-=0A=
-3. ASPEED vHub, as a longer-term goal towards BMC KVM / Virtual Media=0A=
-   support in QEMU.  [future]=0A=
-=0A=
-This series implements goal 2.=0A=
-=0A=
-The transport=0A=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=0A=
-=0A=
-x-usb-redir-server exports a locally emulated USB device to a remote USB=0A=
-host over the usbredir protocol, so a device emulated in one QEMU instance=
-=0A=
-can be enumerated by a host controller emulated in another one.=0A=
-=0A=
-The left column is a request going to the device. The right column is the=
-=0A=
-answer coming back. The middle hop carries usbredir messages over a=0A=
-socket. The top and bottom hops carry USBPackets inside QEMU.=0A=
-=0A=
-    remote QEMU: guest driver -> EHCI/XHCI=0A=
-             |                     ^=0A=
-   USBPacket |                     | USBPacket=0A=
-             v                     |=0A=
-    "usb-redir" (the client)=0A=
-             |                     ^=0A=
-    usbredir |   chardev socket    | usbredir=0A=
-             v                     |=0A=
-    x-usb-redir-server (the server, this series)=0A=
-             |                     ^=0A=
-   USBPacket |                     | USBPacket=0A=
-             v                     |=0A=
-    any USBDevice, "-device <dev>,bus=3D<id>.0"=0A=
-=0A=
-"usb-redir" (hw/usb/redirect.c) is the client:=0A=
-  - it takes a USBPacket from the remote guest and writes it to the socket=
-=0A=
-    as a usbredir message=0A=
-  - it reads the answer from the socket and completes the USBPacket=0A=
-=0A=
-x-usb-redir-server is the server. It does the same thing, but backwards:=0A=
-  - it reads a usbredir message from the socket and runs it as a USBPacket=
-=0A=
-    on the bus below=0A=
-  - it takes the result of that USBPacket and writes it back to the same=0A=
-    socket as a usbredir message, for the client to read=0A=
-=0A=
-A USB device has to sit on a USB bus, and in QEMU a USB bus is always made=
-=0A=
-by a host controller. So x-usb-redir-server makes one and acts as the host=
-=0A=
-controller on this side. It models no real chip: its cable is the chardev=
-=0A=
-socket. The real host is in the other QEMU.=0A=
-=0A=
-The type name has an "x-" prefix because the device is experimental. It=0A=
-has to sit on the sysbus so that "-device <dev>,bus=3D<id>.0" can find the=
-=0A=
-USB bus it provides, and that may change later.=0A=
-=0A=
-usbredir carries one device, not a bus. A hub cannot be exported: the=0A=
-protocol has no device address field. To export several devices, run one=0A=
-x-usb-redir-server per device, each with its own chardev.=0A=
-=0A=
-Testing=0A=
-=3D=3D=3D=3D=3D=3D=3D=0A=
-=0A=
-A plain usb-storage device was used to test the transport. The storage=0A=
-device is attached to x-usb-redir-server and exported over a Unix socket:=
-=0A=
-=0A=
-$ qemu-system-aarch64 ...=0A=
--chardev socket,id=3Dusbredir0,path=3D/tmp/usbredir0.sock,server=3Don,wait=
-=3Doff=0A=
--device x-usb-redir-server,id=3Dusbredir0,chardev=3Dusbredir0=0A=
--drive id=3Dusbdisk,if=3Dnone,file=3Dimage0.ext4,format=3Draw=0A=
--device usb-storage,bus=3Dusbredir0.0,id=3Dmystorage,drive=3Dusbdisk=0A=
-=0A=
-The exported device can then be attached to EHCI bus 3 of an AST2700=0A=
-guest using the existing usb-redir client:=0A=
-=0A=
-    -chardev socket,id=3Dstorage,path=3D/tmp/usbredir0.sock,reconnect-ms=3D=
-1000 \=0A=
-    -device usb-redir,chardev=3Dstorage,bus=3Dusb-bus.3=0A=
-=0A=
-The AST2700 Linux guest enumerates the redirected USB storage device:=0A=
-=0A=
-root@ast2700-default:~# lsusb=0A=
-unable to initialize usb spec=0A=
-Bus 001 Device 001: ID 1d6b:0001 Linux 6.18.36-v00.08.03-gaf2f426c5786 uhci=
-_hcd Generic UHCI Host Controller=0A=
-Bus 002 Device 001: ID 1d6b:0002 Linux 6.18.36-v00.08.03-gaf2f426c5786 ehci=
-_hcd EHCI Host Controller=0A=
-Bus 002 Device 002: ID 46f4:0001 QEMU QEMU USB HARDDRIVE=0A=
-=0A=
-This also demonstrates that x-usb-redir-server is not specific to the=0A=
-ASPEED UDC. Any USBDevice can be attached to its USB bus and exported=0A=
-to a host controller in another QEMU instance.=0A=
-=0A=
-v1:=0A=
-  1. Add a usbredir server device=0A=
-  2. Announce the exported device=0A=
-  3. Implement control transfers=0A=
-  4. Implement bulk and interrupt transfers=0A=
-  5. Stream interrupt IN endpoints=0A=
-=0A=
-v2:=0A=
-  1. Split the original series into USB and ASPEED parts as suggested=0A=
-     during review.=0A=
-  2. Keep this series focused on the usbredir server transport.=0A=
-  3. Move the ASPEED UDC changes, AST1030 UDC support and its functional=0A=
-     test to a separate series.=0A=
-=0A=
-v3:=0A=
-   1. Move include/hw/usb/redirect-server.h into redirect-server.c.=0A=
-   2. Drop the announce timer. The firmware does not toggle the pull-up,=0A=
-      and the delay would be machine specific anyway.=0A=
-   3. Rename the type to "x-usb-redir-server" to mark it experimental.=0A=
-=0A=
-v4:=0A=
-  1. ep_info now says what the host chose, both the configuration and the=
-=0A=
-     alternate setting. Keep every configuration descriptor, not just the l=
-ast one.=0A=
-  2. look at the request type too, not only the number=0A=
-  3. wait for the endpoint's bInterval before asking the device=0A=
-     again.=0A=
-=0A=
-Patch 7 lost its Reviewed-by because it changed. It used to ask the=0A=
-device again from a bottom half, which runs as soon as the main loop=0A=
-comes back. So there was no wait at all.=0A=
-=0A=
-A keyboard answers NAK while no key is down, and the retry timer paces=0A=
-that, so it looked fine. usb-net's status endpoint answers every time.=0A=
-The loop never stopped: ask, answer, ask again, about 17000 times a=0A=
-second. The same main loop runs the guest's timers, and it had no room=0A=
-left. The guest stopped feeding its watchdog, and the watchdog reset the=0A=
-machine.=0A=
-=0A=
-bInterval is the rate the endpoint asks to be polled at, and the rate a=0A=
-real host controller uses. The stream now waits for it.=0A=
-=0A=
-v5:=0A=
-  1. Use a separate timer and bottom half for each endpoint.=0A=
-=0A=
-v6:=0A=
- 1. Fix a build failure from a missing header.=0A=
- 2. Free the packet data in the control, bulk and interrupt callbacks.=0A=
- 3. Cancel the packet before cleanup on USB_RET_REMOVE_FROM_QUEUE.=0A=
- 4. Send no reply when the cancelled transfer is not found.=0A=
- 5. End the interrupt stream only on USB_RET_STALL.=0A=
- 6. Keep a USBRedirServer pointer instead of pointer arithmetic.=0A=
- 7. Cancel the BH and delete the timer in stop_interrupt_receiving().=0A=
- 8. Start the interrupt stream loops at 1, endpoint 0 never streams.=0A=
-=0A=
-v7:=0A=
- 1. Add a flag for the automatic hub and leave it off by default.=0A=
-    UHCI, OHCI and dwc2 turn it on.=0A=
- 2. Drive a control transfer with one packet and the setup fields in=0A=
-    pkt.parameter, instead of walking the token stages.=0A=
- 3. Keep a request the device answered NAK and send it again when the=0A=
-    endpoint wakes, with a timer for the devices that never do.=0A=
- 4. Give each endpoint one struct, holding its waiting list, its retry=0A=
-    timer and its descriptor fields.=0A=
- 5. Ask more slowly after a streamed request answered NAK or failed,=0A=
-    and keep the endpoint's own rate for the good case.=0A=
-=0A=
-v8:=0A=
- 1. Report how many bytes the device moved on a bulk or interrupt OUT trans=
-fer.=0A=
- 2. Implement isochronous transfers for an OUT endpoint.=0A=
- 3. Announce the device from a bottom half, and reset it first. The old=0A=
-   path hit an assertion, and the device has to be in DEFAULT state=0A=
-   before it can answer anything.=0A=
- 4. Avoid cancel a streamed interrupt or isochronous packet.=0A=
- 5. Turn the automatic hub off by default.=0A=
- 6. Give every USB host controller an auto-hub property, off by default.=0A=
+diff --git a/hw/usb/redirect-server.c b/hw/usb/redirect-server.c=0A=
+index 9a83cc22ef..cfd2bcc438 100644=0A=
+--- a/hw/usb/redirect-server.c=0A=
++++ b/hw/usb/redirect-server.c=0A=
+@@ -96,9 +96,13 @@ OBJECT_DECLARE_SIMPLE_TYPE(USBRedirServer, USB_REDIR_SER=
+VER)=0A=
+  */=0A=
+ #define USBREDIR_SERVER_MAX_BULK (1 * MiB)=0A=
  =0A=
-Jamin Lin (18):=0A=
-  hw/usb/bus: Add an auto-hub flag to the USB bus=0A=
-  hw/usb/hcd-xhci: Add an auto-hub property and leave it off=0A=
-  hw/usb/hcd-ehci: Add an auto-hub property and leave it off=0A=
-  hw/usb/hcd-uhci: Add an auto-hub property and leave it off=0A=
-  hw/usb/hcd-ohci: Add an auto-hub property and leave it off=0A=
-  hw/usb/hcd-dwc2: Add an auto-hub property and leave it off=0A=
-  hw/usb/xen-usb: Do not insert an automatic hub=0A=
-  hw/usb/bus: Turn off the automatic hub by default=0A=
-  hw/arm/npcm7xx: Keep the automatic hub=0A=
-  docs/system/devices/usb: Note the automatic hub change=0A=
-  hw/usb/redirect-server: Add a usbredir server device=0A=
-  hw/usb/redirect-server: Connect usbredirparser to a chardev=0A=
-  hw/usb/redirect-server: Announce the exported device=0A=
-  hw/usb/redirect-server: Implement control transfers=0A=
-  hw/usb/redirect-server: Implement bulk and interrupt transfers=0A=
-  hw/usb/redirect-server: Stream interrupt IN endpoints=0A=
-  hw/usb/redirect-server: Implement isochronous OUT transfers=0A=
-  hw/arm/aspeed: Enable the usbredir server transport=0A=
++/* Buffer size for an interrupt IN endpoint before its descriptor is seen.=
+ */=0A=
++#define USBREDIR_SERVER_INTR_STREAM_DEFAULT_LEN 64=0A=
++=0A=
+ #define USBREDIR_SERVER_CTRL 0=0A=
+ #define USBREDIR_SERVER_BULK 1=0A=
+ #define USBREDIR_SERVER_INTERRUPT 2=0A=
++#define USBREDIR_SERVER_INTR_STREAM 3=0A=
+ =0A=
+ /* Which message answers the host when a control transfer ends. */=0A=
+ typedef enum {=0A=
+@@ -156,6 +160,15 @@ typedef struct USBRedirServerEp {=0A=
+     /* Asks again for a device that does not wake the endpoint. */=0A=
+     QEMUTimer *retry;=0A=
+ =0A=
++    /*=0A=
++     * Interrupt IN streaming. The timer asks the device again at the=0A=
++     * endpoint's own rate, and more slowly after a NAK or an error.=0A=
++     * The bottom half asks at once when the device says it has data.=0A=
++     */=0A=
++    QEMUTimer *intr_stream_timer;=0A=
++    QEMUBH *intr_stream_bh;=0A=
++    bool intr_streaming;=0A=
++=0A=
+     uint16_t max_packet;=0A=
+     uint8_t interval;=0A=
+     uint8_t iface;=0A=
+@@ -184,7 +197,7 @@ struct USBRedirServer {=0A=
+     bool host_connected;=0A=
+     bool device_announced;=0A=
+ =0A=
+-    /* Every request the host is still waiting for an answer to. */=0A=
++    /* Every request waiting for the device to answer. */=0A=
+     QTAILQ_HEAD(, USBRedirServerPkt) inflight;=0A=
+     uint64_t next_id;=0A=
+ =0A=
+@@ -620,6 +633,97 @@ static void usbredir_server_interrupt_complete(USBRedi=
+rServer *s,=0A=
+                                     rp->data, actual);=0A=
+ }=0A=
+ =0A=
++/*=0A=
++ * How long to wait before asking the device again. bInterval means=0A=
++ * different things at different speeds: a number of frames at low and=0A=
++ * full speed, an exponent at high speed.=0A=
++ */=0A=
++static int64_t usbredir_server_intr_stream_period_ns(USBRedirServer *s,=0A=
++                                                     int ep_nr)=0A=
++{=0A=
++    int idx =3D usbredir_server_ep_index(ep_nr | USB_DIR_IN);=0A=
++    USBDevice *device =3D usbredir_server_device(s);=0A=
++    uint8_t interval =3D s->ep[idx].interval;=0A=
++=0A=
++    if (interval =3D=3D 0) {=0A=
++        interval =3D 1;=0A=
++    }=0A=
++=0A=
++    if (device && device->speed =3D=3D USB_SPEED_HIGH) {=0A=
++        interval =3D MIN(interval, 16);=0A=
++        return (1LL << (interval - 1)) * 125 * SCALE_US;=0A=
++    }=0A=
++=0A=
++    return (int64_t)interval * SCALE_MS;=0A=
++}=0A=
++=0A=
++/*=0A=
++ * The device answered a streamed request. Send the answer to the host, th=
+en=0A=
++ * ask again, because the host still wants more. Do not ask from here: the=
 =0A=
- docs/system/devices/usb.rst  |    7 +-=0A=
- hw/usb/hcd-dwc2.h            |    1 +=0A=
- hw/usb/hcd-ehci.h            |    4 +-=0A=
- hw/usb/hcd-ohci.h            |    1 +=0A=
- hw/usb/hcd-uhci.h            |    1 +=0A=
- hw/usb/hcd-xhci.h            |    1 +=0A=
- include/hw/usb/usb.h         |    1 +=0A=
- hw/arm/aspeed.c              |    7 +=0A=
- hw/arm/bcm2835_peripherals.c |    1 +=0A=
- hw/arm/npcm7xx.c             |    2 +=0A=
- hw/core/machine.c            |    6 +=0A=
- hw/usb/bus.c                 |    3 +-=0A=
- hw/usb/hcd-dwc2.c            |    2 +=0A=
- hw/usb/hcd-ehci.c            |    1 +=0A=
- hw/usb/hcd-ohci-pci.c        |    1 +=0A=
- hw/usb/hcd-ohci-sysbus.c     |    1 +=0A=
- hw/usb/hcd-ohci.c            |    1 +=0A=
- hw/usb/hcd-uhci.c            |    3 +=0A=
- hw/usb/hcd-xhci.c            |    2 +=0A=
- hw/usb/pc87560-ohci.c        |    1 +=0A=
- hw/usb/redirect-server.c     | 2075 ++++++++++++++++++++++++++++++++++=0A=
- hw/usb/xen-usb.c             |    1 +=0A=
- hw/usb/meson.build           |    3 +-=0A=
- hw/usb/trace-events          |   39 +=0A=
- 24 files changed, 2160 insertions(+), 5 deletions(-)=0A=
- create mode 100644 hw/usb/redirect-server.c=0A=
++ * device may answer at once, and this function would call itself over and=
 =0A=
++ * over. Arm the timer instead. It also waits for the endpoint's bInterval=
+.=0A=
++ */=0A=
++static void usbredir_server_intr_stream_complete(USBRedirServer *s,=0A=
++                                                 USBRedirServerPkt *rp)=0A=
++{=0A=
++    struct usb_redir_interrupt_packet_header resp =3D rp->intr_hdr;=0A=
++    struct usb_redir_interrupt_receiving_status_header st;=0A=
++    int idx =3D usbredir_server_ep_index(resp.endpoint);=0A=
++    int ep_nr =3D resp.endpoint & 0x0f;=0A=
++    USBRedirServerEp *ep =3D &s->ep[idx];=0A=
++    USBPacket *p =3D &rp->pkt;=0A=
++    int actual =3D p->actual_length;=0A=
++    bool retry =3D false;=0A=
++    int64_t delay_ns;=0A=
++=0A=
++    trace_usbredir_server_intr_stream_complete(ep_nr, p->status, actual);=
+=0A=
++=0A=
++    switch (p->status) {=0A=
++    case USB_RET_SUCCESS:=0A=
++        resp.status =3D usb_redir_success;=0A=
++        resp.length =3D actual;=0A=
++        usbredirparser_send_interrupt_packet(s->parser, 0, &resp,=0A=
++                                             actual ? rp->data : NULL,=0A=
++                                             actual);=0A=
++        usbredirparser_do_write(s->parser);=0A=
++        break;=0A=
++    case USB_RET_NAK:=0A=
++        /* no data yet; wait, unless the device wakes us first */=0A=
++        retry =3D true;=0A=
++        break;=0A=
++    default:=0A=
++        /*=0A=
++         * The endpoint failed. There is no data, so send a status=0A=
++         * message instead. The host gives it to its guest.=0A=
++         *=0A=
++         * redirect.c ends the stream only on a stall, so do the same=0A=
++         * here. If we end it on any other error, the host still=0A=
++         * thinks the stream runs, and it never asks again.=0A=
++         */=0A=
++        st.endpoint =3D resp.endpoint;=0A=
++        st.status =3D usbredir_server_status(p->status);=0A=
++        usbredirparser_send_interrupt_receiving_status(s->parser, 0, &st);=
+=0A=
++        usbredirparser_do_write(s->parser);=0A=
++        if (p->status =3D=3D USB_RET_STALL) {=0A=
++            ep->intr_streaming =3D false;=0A=
++        } else {=0A=
++            /* the stream stays up, but do not ask at the endpoint's rate =
+*/=0A=
++            retry =3D true;=0A=
++        }=0A=
++        break;=0A=
++    }=0A=
++=0A=
++    if (ep->intr_streaming) {=0A=
++        if (retry) {=0A=
++            delay_ns =3D (int64_t)USBREDIR_SERVER_RETRY_MS * SCALE_MS;=0A=
++        } else {=0A=
++            delay_ns =3D usbredir_server_intr_stream_period_ns(s, ep_nr);=
+=0A=
++        }=0A=
++        timer_mod(ep->intr_stream_timer,=0A=
++                  qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + delay_ns);=0A=
++    }=0A=
++}=0A=
++=0A=
+ /*=0A=
+  * USB port ops=0A=
+  */=0A=
+@@ -699,6 +803,9 @@ static void usbredir_server_packet_complete(USBPort *po=
+rt, USBPacket *p)=0A=
+     case USBREDIR_SERVER_INTERRUPT:=0A=
+         usbredir_server_interrupt_complete(s, rp);=0A=
+         break;=0A=
++    case USBREDIR_SERVER_INTR_STREAM:=0A=
++        usbredir_server_intr_stream_complete(s, rp);=0A=
++        break;=0A=
+     default:=0A=
+         g_assert_not_reached();=0A=
+     }=0A=
+@@ -738,9 +845,11 @@ static USBRedirServerAsk usbredir_server_ask_device(US=
+BRedirServer *s,=0A=
+ =0A=
+     /*=0A=
+      * Keep the request and send it again when the device wakes the=0A=
+-     * endpoint.=0A=
++     * endpoint. A streamed request asks again by itself, with its own=0A=
++     * timer.=0A=
+      */=0A=
+-    if (rp->pkt.status =3D=3D USB_RET_NAK) {=0A=
++    if (rp->pkt.status =3D=3D USB_RET_NAK &&=0A=
++        rp->type !=3D USBREDIR_SERVER_INTR_STREAM) {=0A=
+         trace_usbredir_server_nak_park(rp->redir_id, rp->ep_idx);=0A=
+         QTAILQ_INSERT_HEAD(&ep->waiting, rp, waiting_link);=0A=
+         timer_mod(ep->retry, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +=0A=
+@@ -786,8 +895,18 @@ static void usbredir_server_wakeup_ep(USBBus *bus, USB=
+Endpoint *ep,=0A=
+ {=0A=
+     USBRedirServer *s =3D container_of(bus, USBRedirServer, bus);=0A=
+     uint8_t addr =3D ep->nr | (ep->pid =3D=3D USB_TOKEN_IN ? USB_DIR_IN : =
+0);=0A=
++    int idx =3D usbredir_server_ep_index(addr);=0A=
+ =0A=
+-    usbredir_server_kick_ep(s, usbredir_server_ep_index(addr));=0A=
++    /*=0A=
++     * The device has data. A streaming interrupt IN endpoint may have=0A=
++     * answered NAK. Ask now instead of waiting for the retry timer.=0A=
++     */=0A=
++    if (s->ep[idx].intr_streaming) {=0A=
++        qemu_bh_schedule(s->ep[idx].intr_stream_bh);=0A=
++    }=0A=
++=0A=
++    /* The host may also have a request stopped on this endpoint. */=0A=
++    usbredir_server_kick_ep(s, idx);=0A=
+ }=0A=
+ =0A=
+ static USBBusOps usbredir_server_bus_ops =3D {=0A=
+@@ -841,6 +960,95 @@ static void usbredir_server_pkt_free(USBRedirServer *s=
+, USBRedirServerPkt *rp)=0A=
+     g_free(rp);=0A=
+ }=0A=
+ =0A=
++/*=0A=
++ * Interrupt IN streaming=0A=
++ */=0A=
++=0A=
++static bool usbredir_server_intr_stream_inflight(USBRedirServer *s, int ep=
+_nr)=0A=
++{=0A=
++    USBRedirServerPkt *rp;=0A=
++=0A=
++    QTAILQ_FOREACH(rp, &s->inflight, inflight_link) {=0A=
++        if (rp->type =3D=3D USBREDIR_SERVER_INTR_STREAM &&=0A=
++            (rp->intr_hdr.endpoint & 0x0f) =3D=3D ep_nr) {=0A=
++            return true;=0A=
++        }=0A=
++    }=0A=
++    return false;=0A=
++}=0A=
++=0A=
++/*=0A=
++ * Ask the device for data on @ep_nr and leave the request waiting. A devi=
+ce=0A=
++ * sends data only when asked. Do nothing if a request on @ep_nr is still=
+=0A=
++ * unanswered.=0A=
++ */=0A=
++static void usbredir_server_intr_stream_park(USBRedirServer *s, int ep_nr)=
+=0A=
++{=0A=
++    USBDevice *device =3D usbredir_server_device(s);=0A=
++    int idx =3D usbredir_server_ep_index(ep_nr | USB_DIR_IN);=0A=
++    USBRedirServerPkt *rp;=0A=
++    USBEndpoint *ep;=0A=
++    int len;=0A=
++=0A=
++    /* No device to ask. */=0A=
++    if (!device || !device->attached) {=0A=
++        return;=0A=
++    }=0A=
++=0A=
++    /* The host did not ask for this endpoint, or a request is unanswered.=
+ */=0A=
++    if (!s->ep[idx].intr_streaming ||=0A=
++        usbredir_server_intr_stream_inflight(s, ep_nr)) {=0A=
++        return;=0A=
++    }=0A=
++=0A=
++    len =3D s->ep[idx].max_packet;=0A=
++    if (len =3D=3D 0) {=0A=
++        len =3D USBREDIR_SERVER_INTR_STREAM_DEFAULT_LEN;=0A=
++    }=0A=
++    ep =3D usb_ep_get(device, USB_TOKEN_IN, ep_nr);=0A=
++    rp =3D usbredir_server_pkt_alloc(len, idx);=0A=
++    rp->type =3D USBREDIR_SERVER_INTR_STREAM;=0A=
++    /* A streamed request comes from us, not from the host. */=0A=
++    rp->redir_id =3D 0;=0A=
++    rp->intr_hdr.endpoint =3D ep_nr | USB_DIR_IN;=0A=
++=0A=
++    usb_packet_setup(&rp->pkt, USB_TOKEN_IN, ep, 0, s->next_id++,=0A=
++                     false, false);=0A=
++    usb_packet_addbuf(&rp->pkt, rp->data, len);=0A=
++=0A=
++    /*=0A=
++     * The timer is there for a device that does not wake the endpoint.=0A=
++     * We are asking now, so drop it. The answer sets it again.=0A=
++     */=0A=
++    timer_del(s->ep[idx].intr_stream_timer);=0A=
++=0A=
++    trace_usbredir_server_intr_stream_park(ep_nr, len);=0A=
++    usbredir_server_submit(s, rp);=0A=
++}=0A=
++=0A=
++/* BH and timer callback: ask again on one streaming endpoint. */=0A=
++static void usbredir_server_intr_stream_kick(void *opaque)=0A=
++{=0A=
++    USBRedirServerEp *ep =3D opaque;=0A=
++    int ep_nr =3D ep->idx - USBREDIR_SERVER_EP_IN_BASE;=0A=
++=0A=
++    usbredir_server_intr_stream_park(ep->s, ep_nr);=0A=
++}=0A=
++=0A=
++static void usbredir_server_intr_stream_cancel(USBRedirServer *s, int ep_n=
+r)=0A=
++{=0A=
++    USBRedirServerPkt *tmp;=0A=
++    USBRedirServerPkt *rp;=0A=
++=0A=
++    QTAILQ_FOREACH_SAFE(rp, &s->inflight, inflight_link, tmp) {=0A=
++        if (rp->type !=3D USBREDIR_SERVER_INTR_STREAM ||=0A=
++            (rp->intr_hdr.endpoint & 0x0f) !=3D ep_nr) {=0A=
++            continue;=0A=
++        }=0A=
++        usbredir_server_pkt_free(s, rp);=0A=
++    }=0A=
++}=0A=
++=0A=
+ /*=0A=
+  * usbredirparser I/O and logging callbacks=0A=
+  */=0A=
+@@ -1248,6 +1456,63 @@ static void usbredir_server_interface_info(void *pri=
+v,=0A=
+     /* The host should not send this to a device. Nothing to do. */=0A=
+ }=0A=
+ =0A=
++/*=0A=
++ * The host asks to stream an interrupt IN endpoint. Send the receiving=0A=
++ * status first. Without that status the host throws the interrupt=0A=
++ * packet away. Then ask the device once.=0A=
++ */=0A=
++static void usbredir_server_start_interrupt_receiving(void *priv,=0A=
++    uint64_t id, struct usb_redir_start_interrupt_receiving_header *hdr)=
+=0A=
++{=0A=
++    struct usb_redir_interrupt_receiving_status_header st =3D {=0A=
++        .endpoint =3D hdr->endpoint,=0A=
++        .status =3D usb_redir_success,=0A=
++    };=0A=
++    int idx =3D usbredir_server_ep_index(hdr->endpoint);=0A=
++    int ep_nr =3D hdr->endpoint & 0x0f;=0A=
++    USBRedirServer *s =3D priv;=0A=
++=0A=
++    st.status =3D usbredir_server_ep_status(s, hdr->endpoint,=0A=
++                                          USB_ENDPOINT_XFER_INT);=0A=
++=0A=
++    /* Only an interrupt IN endpoint can stream. */=0A=
++    if (!(hdr->endpoint & USB_DIR_IN)) {=0A=
++        st.status =3D usb_redir_inval;=0A=
++    }=0A=
++=0A=
++    if (st.status =3D=3D usb_redir_success) {=0A=
++        s->ep[idx].intr_streaming =3D true;=0A=
++    }=0A=
++=0A=
++    trace_usbredir_server_intr_stream_start(hdr->endpoint, st.status);=0A=
++    usbredirparser_send_interrupt_receiving_status(s->parser, id, &st);=0A=
++    usbredirparser_do_write(s->parser);=0A=
++=0A=
++    if (st.status =3D=3D usb_redir_success) {=0A=
++        usbredir_server_intr_stream_park(s, ep_nr);=0A=
++    }=0A=
++}=0A=
++=0A=
++static void usbredir_server_stop_interrupt_receiving(void *priv, uint64_t =
+id,=0A=
++    struct usb_redir_stop_interrupt_receiving_header *hdr)=0A=
++{=0A=
++    int idx =3D usbredir_server_ep_index(hdr->endpoint);=0A=
++    int ep_nr =3D hdr->endpoint & 0x0f;=0A=
++    USBRedirServer *s =3D priv;=0A=
++=0A=
++    trace_usbredir_server_intr_stream_stop(hdr->endpoint);=0A=
++=0A=
++    /* Endpoint 0 is control, and an OUT endpoint never streams. */=0A=
++    if (ep_nr =3D=3D 0 || !(hdr->endpoint & USB_DIR_IN)) {=0A=
++        return;=0A=
++    }=0A=
++=0A=
++    s->ep[idx].intr_streaming =3D false;=0A=
++    qemu_bh_cancel(s->ep[idx].intr_stream_bh);=0A=
++    timer_del(s->ep[idx].intr_stream_timer);=0A=
++    usbredir_server_intr_stream_cancel(s, ep_nr);=0A=
++}=0A=
++=0A=
+ static void usbredir_server_alloc_bulk_streams(void *priv, uint64_t id,=0A=
+     struct usb_redir_alloc_bulk_streams_header *hdr)=0A=
+ {=0A=
+@@ -1273,6 +1538,14 @@ static void usbredir_server_cancel_data_packet(void =
+*priv, uint64_t id)=0A=
+     int idx;=0A=
+ =0A=
+     QTAILQ_FOREACH(rp, &s->inflight, inflight_link) {=0A=
++        /*=0A=
++         * A streamed request comes from us, not from the host.=0A=
++         * The host has no id for it, so a cancel never matches it.=0A=
++         */=0A=
++        if (rp->type =3D=3D USBREDIR_SERVER_INTR_STREAM) {=0A=
++            continue;=0A=
++        }=0A=
++=0A=
+         if (rp->redir_id =3D=3D id) {=0A=
+             idx =3D rp->ep_idx;=0A=
+ =0A=
+@@ -1348,6 +1621,12 @@ static void usbredir_server_stop_transfers(USBRedirS=
+erver *s)=0A=
+         timer_del(s->ep[i].retry);=0A=
+     }=0A=
+ =0A=
++    for (i =3D USBREDIR_SERVER_EP_IN_BASE + 1; i < USBREDIR_SERVER_MAX_EP;=
+ i++) {=0A=
++        s->ep[i].intr_streaming =3D false;=0A=
++        qemu_bh_cancel(s->ep[i].intr_stream_bh);=0A=
++        timer_del(s->ep[i].intr_stream_timer);=0A=
++    }=0A=
++=0A=
+     /*=0A=
+      * No "cancelled" response here. This runs on a bus reset, a detach or=
+=0A=
+      * a closed chardev, and the host has dropped its own queues already.=
+=0A=
+@@ -1393,6 +1672,10 @@ static void usbredir_server_create_parser(USBRedirSe=
+rver *s)=0A=
+     s->parser->device_disconnect_ack_func =3D=0A=
+         usbredir_server_device_disconnect_ack;=0A=
+     s->parser->interface_info_func =3D usbredir_server_interface_info;=0A=
++    s->parser->start_interrupt_receiving_func =3D=0A=
++        usbredir_server_start_interrupt_receiving;=0A=
++    s->parser->stop_interrupt_receiving_func =3D=0A=
++        usbredir_server_stop_interrupt_receiving;=0A=
+     s->parser->alloc_bulk_streams_func =3D usbredir_server_alloc_bulk_stre=
+ams;=0A=
+     s->parser->cancel_data_packet_func =3D usbredir_server_cancel_data_pac=
+ket;=0A=
+     s->parser->start_bulk_receiving_func =3D=0A=
+@@ -1535,6 +1818,16 @@ static void usbredir_server_realize(DeviceState *dev=
+, Error **errp)=0A=
+         s->ep[i].retry =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,=0A=
+                                       usbredir_server_retry_ep, &s->ep[i])=
+;=0A=
+     }=0A=
++=0A=
++    /* Only an interrupt IN endpoint streams, so endpoint 0 and OUT are ou=
+t. */=0A=
++    for (i =3D USBREDIR_SERVER_EP_IN_BASE + 1; i < USBREDIR_SERVER_MAX_EP;=
+ i++) {=0A=
++        s->ep[i].intr_stream_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,=0A=
++                                             usbredir_server_intr_stream_k=
+ick,=0A=
++                                             &s->ep[i]);=0A=
++        s->ep[i].intr_stream_bh =3D=0A=
++            qemu_bh_new_guarded(usbredir_server_intr_stream_kick, &s->ep[i=
+],=0A=
++                                &dev->mem_reentrancy_guard);=0A=
++    }=0A=
+     s->config_descs =3D g_hash_table_new_full(g_direct_hash, g_direct_equa=
+l,=0A=
+                                             NULL, g_free);=0A=
+     usbredir_server_clear_ep_table(s);=0A=
+@@ -1545,7 +1838,6 @@ static void usbredir_server_realize(DeviceState *dev,=
+ Error **errp)=0A=
+     usb_register_port(&s->bus, &s->port, s, 0, &usbredir_server_port_ops,=
+=0A=
+                       USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL |=0A=
+                       USB_SPEED_MASK_HIGH);=0A=
+-=0A=
+     s->chardev_close_bh =3D qemu_bh_new_guarded(usbredir_server_chardev_cl=
+ose_bh,=0A=
+                                               s, &dev->mem_reentrancy_guar=
+d);=0A=
+     s->announce_bh =3D qemu_bh_new_guarded(usbredir_server_announce_device=
+, s,=0A=
+@@ -1582,6 +1874,13 @@ static void usbredir_server_unrealize(DeviceState *d=
+ev)=0A=
+         timer_free(s->ep[i].retry);=0A=
+         s->ep[i].retry =3D NULL;=0A=
+     }=0A=
++=0A=
++    for (i =3D USBREDIR_SERVER_EP_IN_BASE + 1; i < USBREDIR_SERVER_MAX_EP;=
+ i++) {=0A=
++        timer_free(s->ep[i].intr_stream_timer);=0A=
++        s->ep[i].intr_stream_timer =3D NULL;=0A=
++        qemu_bh_delete(s->ep[i].intr_stream_bh);=0A=
++        s->ep[i].intr_stream_bh =3D NULL;=0A=
++    }=0A=
+ }=0A=
+ =0A=
+ static const Property usbredir_server_props[] =3D {=0A=
+diff --git a/hw/usb/trace-events b/hw/usb/trace-events=0A=
+index 5ec5127efa..6eb47085d0 100644=0A=
+--- a/hw/usb/trace-events=0A=
++++ b/hw/usb/trace-events=0A=
+@@ -423,3 +423,7 @@ usbredir_server_bulk_too_big(uint64_t id, uint8_t ep, u=
+int32_t len) "id %" PRIu6=0A=
+ usbredir_server_refused(uint64_t id, uint8_t ep, int status, uint8_t want,=
+ uint8_t got) "id %" PRIu64 " ep 0x%02x status %d, wanted type %u, it is %u=
+"=0A=
+ usbredir_server_interrupt(uint64_t id, uint8_t ep, size_t len) "id %" PRIu=
+64 " ep 0x%02x len %zu"=0A=
+ usbredir_server_interrupt_complete(uint64_t id, uint8_t ep, int status, in=
+t actual) "id %" PRIu64 " ep 0x%02x status %d actual %d"=0A=
++usbredir_server_intr_stream_start(uint8_t ep, int status) "start_interrupt=
+_receiving ep 0x%02x -> status %d"=0A=
++usbredir_server_intr_stream_stop(uint8_t ep) "stop_interrupt_receiving ep =
+0x%02x"=0A=
++usbredir_server_intr_stream_park(unsigned ep_nr, int len) "parked IN packe=
+t ep %u len %d"=0A=
++usbredir_server_intr_stream_complete(unsigned ep_nr, int status, int actua=
+l) "ep %u status %d actual %d"=0A=
 -- =0A=
 2.43.0=0A=
 

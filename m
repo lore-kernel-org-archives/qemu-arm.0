@@ -1,98 +1,130 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CBF5B606ABA4
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 17:11:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40BB7606A324
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Nov 2026 18:13:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=U5ufy/c/
+	dkim=pass (2048-bit key, unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256 header.s=selector2 header.b=gdHB2HQI
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xNvYZ-0007rt-1A; Mon, 02 Nov 2026 12:10:52 -0500
+	id 1xNwXS-0004zA-6Z; Mon, 02 Nov 2026 13:13:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xNvYU-0007rB-Vq
- for qemu-arm@nongnu.org; Mon, 02 Nov 2026 12:10:47 -0500
-Received: from ms-2004l-snip6-11.eps.apple.com ([2a01:b747:3002:205::79]
- helo=outbound.ms.icloud.com)
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1xNwX6-0004u8-FD; Mon, 02 Nov 2026 13:13:25 -0500
+Received: from mail-southcentralusazlp170120001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10d::1] helo=SN4PR2101CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xNvYR-0006T8-LY
- for qemu-arm@nongnu.org; Mon, 02 Nov 2026 12:10:46 -0500
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-100-percent-7 (Postfix) with ESMTPS id
- 3841B18001DB; Mon, 02 Nov 2026 17:10:39 +0000 (UTC)
-X-ICL-RepId: 01a19d3d-de1e-7af4-ba2f-3264c0b4a1b0
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0NWFsIWwQPH0wMUQJCBVZeVAsdBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDjIOOQMpcykLXQ9OdSkaX3cxfVVyXwEpHzINTndddF8HSAhBdi1CBUICXBxaDkMKUBxcVlUfCUtGCUkdDg5CGEYfVCdXAloKWx4=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1793639441; x=1825175441;
- bh=o4Pt1QCgsqB5Kjn2ruHTCmf0+yuQZD2Ht6pw3UGJMMk=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=U5ufy/c/NCNekIKzOOAKnBDbyTRH+zkptLhxWT6YnswPBwHDHy2lVCf4fzOMAs7FTLwS0Cco96n7EPWBcETZ870UkZcjY/R1dV4avxhlePq/06eVs/qEU6csFmuj6WHyfDB9DoV7P8QQgNpAU+6p5b62bI83Yq6lqsQkUZFXVZohjTmCDfRhnEis5bZXmlZ2ldIp/7UnjNzH5BGrYdZM2wylKw8BkgfNTKWz/C6UHqT9zq3HJqJqG5DH9xL4eYofVjoq+Xb0V1SRbMrXSTHtkYuVTXwkVl1ApU0NmHuTHkjuOMKX/TWLfcTnEC/m09wSrt2lCycYeG6OOh8aVFSk3g==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.156.208.39])
- by p00-icloudmta-asmtp-us-west-3a-100-percent-7 (Postfix) with ESMTPSA id
- A883618001D2; Mon, 02 Nov 2026 17:10:38 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1xNwX4-0003Yr-3P; Mon, 02 Nov 2026 13:13:23 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=j8Aa5yzjs/7hZMmV5QAHZW0byDH+7dxPhJFtKyD2Q3ZTB9hBe1J5YlzYRrAjfd6ddP0yIa7P/OfwCWSk21YAeIBG8vG0G2j/m2QLUO0cztWCV0q/9RJpZpd7mHssXLgfrkaz5y4suP9jT26W6Ba+cX/BTZwDRkbPStZmHX2ZOzD9xxqajexhIu9bUqKfTW6dUK7XoWjHhErCkzDJmaE1OSAf8+Sj0BAXJ8d3yxBynIuJGuoejbiqXCQfzxRLoWSGLyRcZvB1TRobjd8W9YwlX2poa2xeK8U8UbfOIO7y75QfJJPVf3W66HaHenjSucjT8PaACsuZYqwTQeQLGYkdyA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HU7Thv1/lEOXmAbC7QqHSlICafqpjGDvpVz29Sva7f8=;
+ b=GjLvh4/oWxrXgj4wN8Eb3OJxPDjPHmkw44jNDLdeFccLUwfZuSlIOJZE//6qBkq9K2Vf/m1FeC2stl0TDsBHQpxdxzxIA0ni5IuuVKhFJjf2SEJq1CUM+39FeJGeBjno1gGM2XBEktKqayC+7RpMFr7AvtthPpEqT+5mEmAi1mlKYr1x8go6CCv4lPqVm4y4iNGunaL/qxB5TJoh2ZjF49INAxkAIcYzSJEjItOZ3pSrXv7hgKsrD+JLso+22rmOr7BLfKvH1KF7EEZ80DIVC5onFh1JxqPnYRi9FYnnS0CtYz/OtgpFVJ68rLOrH5e6MnygVzKw5LLdaMr2yqmZlQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HU7Thv1/lEOXmAbC7QqHSlICafqpjGDvpVz29Sva7f8=;
+ b=gdHB2HQIB4eHvcoexDCC1nFVnvnw/a7U1h14I6HB+AoO3brC8VcS7nO4LvyJA5ylMcWSoAT/GbyZS+IYe6+875rKf0Df29/jgFi6sY24iLoXlFw0k0v4u6l4K0lv3ZqPCw7hy63MvEJrTxvqP8o9z37o6a5OtA9hJSycOA+U7zpw+47J6wLrY98XDl15SXX5zqN4qVanhfzAIKGxxfNsCaNiKqpVNF+kTlWfOk3ngOh1mUVm7rl8nb2lHc+miKWKPQl3GvfpW/Owg2qNhQYYcj8GSKI9I7qH0bZnUSxwrk3mSCqHzIwQLyjDlvCW39XfqFHvBgIwB+RWIRNu7BhpnA==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from IA3PR12MB923065.namprd12.prod.outlook.com
+ (2603:10b6:208:627::17) by BL1PR12MB5993.namprd12.prod.outlook.com
+ (2603:10b6:208:399::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.12; Mon, 2 Nov
+ 2026 18:13:05 +0000
+Received: from IA3PR12MB923065.namprd12.prod.outlook.com
+ ([fe80::1c83:bf47:4202:50b1]) by IA3PR12MB923065.namprd12.prod.outlook.com
+ ([fe80::1c83:bf47:4202:50b1%5]) with mapi id 15.21.0569.011; Mon, 2 Nov 2026
+ 18:13:05 +0000
+From: Tushar Dave <tdave@nvidia.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+ marcel@redhat.com, devel@edk2.groups.io, alwilliamson@nvidia.com,
+ jgg@nvidia.com, skolothumtho@nvidia.com, ardb@kernel.org,
+ kraxel@redhat.com, tdave@nvidia.com
+Subject: [PATCH v2 5/5] hw/arm/virt: add highmem-mmio-base property
+Date: Mon,  2 Nov 2026 12:12:41 -0600
+Message-Id: <20261102181241.3077981-6-tdave@nvidia.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261102181241.3077981-1-tdave@nvidia.com>
+References: <20261102181241.3077981-1-tdave@nvidia.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: CH5PR04CA0006.namprd04.prod.outlook.com
+ (2603:10b6:610:1f4::11) To IA3PR12MB923065.namprd12.prod.outlook.com
+ (2603:10b6:208:627::17)
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
-Subject: Re: [PATCH v2 4/6] hvf: arm: fetch more features
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA8YN2+YuU94W=+6Z-YBaG54Db4E1hkYdzn4DrSW0J8dkw@mail.gmail.com>
-Date: Mon, 2 Nov 2026 18:10:26 +0100
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <B7A0DDB9-66FD-4EAD-A26B-B46D0C45819E@unpredictable.fr>
-References: <20261027120135.53048-1-mohamed@unpredictable.fr>
- <20261027120135.53048-5-mohamed@unpredictable.fr>
- <CAFEAcA8YN2+YuU94W=+6Z-YBaG54Db4E1hkYdzn4DrSW0J8dkw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3901.200.71.1.16)
-X-Proofpoint-ORIG-GUID: bo9bSOrlcV5vcUWKg1d2pO8O0g-7qS1P
-X-Proofpoint-GUID: bo9bSOrlcV5vcUWKg1d2pO8O0g-7qS1P
-X-Authority-Info-Out: v=2.4 cv=DMmCIiNb c=1 sm=1 tr=0 ts=6ae8c410
- cx=c_apl:c_pps:t_out a=kRaGL2Q7qLiahLf3O6OaIA==:117
- a=kRaGL2Q7qLiahLf3O6OaIA==:17 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=p0WdMEafAAAA:8 a=KKAkSRfTAAAA:8
- a=0mXhovE3T8ghJ8cGMUsA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTAyMDA2OCBTYWx0ZWRfX71HVW9GTPnxi
- NWvTYUI8hWuioVP0mrFJ2Ur9lPZfayLHH7eBV46nTYyOB5bhiwJrds8bT1TLeFTQyRXjUm+0jF/
- 8mhEzirUDrgiimMxj3TEh118BlxmYIxp7ofCibIHaOsPUWgXuwCea71NahuKeOHfHAPvet7fh9l
- PgqiAItSVaVNPCajDv5HQtIHZfqiAmh2HZddNBq07sWTRVLmaD5Gl3WNfjwqCpTAJ8XJNcMSHC1
- ud45ubYYfZIeRuaHEh6KY+VofIuaEzQnsId+s5huzLib9cYlV1qaZaKd54NTmkSt6bR/2eIa6bA
- A2sxfW73rDJcdg5vuwGrYg9ulHM7bTETdEr+e8mSs/pAzWmkHfeU0ym77/+Rn8=
-X-JNJ: AAAAAAABw3fyT60KwIyAW2x53+ytUUlBrZMlCSUDRrTdFArDCejIlxFBp3npvkIW691NpB
- 7pUdXjiP6c/YUIvAkBZEYfNwYdF7y6zDhQhQSZvteuDYySTHGPOD9+eEqsGasEcpZXX1+6
- MV5Kdo5lVsoPLMEz+S/v7DBRZi+YGi6QUzvLES3azxc1514Amgn//WKbjGXjZPLXtWO+vW
- a9PvwOpKto5Hkbb5B5qdM2BIy3RKSdSeBaflfoQnNgq+D0rlsGYVGTttf2+etqS/GOnji/
- y9rIUc1V5g0Yfd4FVod/NY5S9pYPZ9etz3hMn6vUGAQZKPza5Dw1HycW9XwogKi8qDaBj3
- +QXjkMCaiybQatzPCva9xE3TVUhoPisFAbBI44UKbPr1aiNakWB5t17DjxwAU6QWOLLgqH
- f9Ns1D7p0csJclhpbFLKkgBevNaJUY2kdCmfEcD2O7gvj6hUiKpG8IZemMwsOJuSJnUJSx
- pUevlylcU0V+4gr/YfdbazJOrHdoO93nJ1F7fx0lVLjle5AwCuf3qdPYV8SSM4AeTRh8hn
- 7w2YhM1KUcPm/rPhdLGrQbdIduCJgbIxBdJcpzuUHQA2st0aT+zDTCCQvEob7BSxkJvF5W
- 1sYPfEK2K8kBE89voPlvZmTikvxQbUOVRBv/QvxbBnaTcbSK7b5cBj7JjgZCB+deVDB2Ze
- HW48M+BY8sd0RVtS5SOf2K2eq1zytUgly+4JKIhYOO5I3hap9KrAH4DD6RtmuSQmgLf6qN
- Qzxau+FwMrEqF1CJS6jhugf/K/Jzbf4Fyu/uWmqbn5d46wMGRbtR8rIxnFPvq1M4PdWn4I
- A5dNMYLQkRHF+6YvO7FnPAiqO9USMrw413i+aCvRgyEvXnMt7h6Kb/WT2DbR9r0IwuIQ3J
- A6vbCgxHorV64ILFhQw5gTGOqwa2SaYbi+Pz9XFtqO7VQgJVeV/8GqP9fQ4yMBefno7qgX
- tjon2NHOk2EWOYB6dlpUiT/HTZeim26ilT4rnkY6WNL6+8J4tug72/N0pixR8NszDfM2SH
- Yr2mKEU3V3xQP7dy9X8q06xvMJJBE4BMIYIWVqKQcFPmA/Z4YaqyYdFQkjF5ywaA4106hI
- wuDViPRmiANodi+IvTxz1LLgcNlG9GX4VUJ4IpGWkN0dCiSmyy2R2a2Yx/311G5Sl2MiBS
- ZpM/3xj7Zkp49+sLh42rtYhV1lGLBJDsmGUgTRTHvf6os+ns+qFmZn7PWE3M3DcZ/mypxZ
- SHVwn6cL6TnZ5OYBvW0pP3jMyd2iqX9DZjbCBS5t4f47q381v1K7LT9kjHZp0xro+AThfW
- FnveRFWomNd/EbTzVPoY/A5cgT7od+WawG+QgS+rV/I7KvfWf+VGN/XdfOoexhZg5GTVXS
- +1NjKEbmnsIAxauDAT73dJY=
-Received-SPF: pass client-ip=2a01:b747:3002:205::79;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: IA3PR12MB923065:EE_|BL1PR12MB5993:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5dd80238-8f12-4a03-2ea4-08df390cf07b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|23010399003|376014|261021123027099003|11063799006|56012099006|261009223027099003|261021121427099003|261026121527099003|10067099003|22082099003|18002099003|261102123227099003|3023799007;
+X-Microsoft-Antispam-Message-Info: S3EyFKnzQwTK32otn4x2Cyrtrv50Kb+fVwhKpvlF9MtBMRm0Xk9fAO4DG5k6CXN1Il4b/y/wIq3CeCSrx4Utj73f5ct7T2o2OaZtYDZgQQZSFw8Dp0fnv/8xFlUl4KSpjRQlauvqb2K9OyCynv1IWU8qyKzyboEYG/mZjnRyDMvLDTL3d0iiSfP3y+TDi9fynqT0HkPvfVXuyHN5iushOO52jQOwzEE4vVYsNeq8lo8e+QgpQJlrYxA32ocTqKhDdiR9+SknH41exoordcvAU8Zf/6rn+LfBfhzTPgAtQD8e6wpT1CFdndypr7cVJJFeVS0pwsfSBm1+04rDBncv6Pe3cIiXnsj9EqgUrHCK0MGiOvQPs5takRNXPDFrUPOdFgIAzF83O7+hPWhX/yBG/MbfxuGVAJzqXsmKLIJJJyeaDI6C3F2mm/BUYM9rg/Rwl0ji033qiOw3ciaaCZN5EPyG3R/ymr2FiYvsLG9n4B3e9r0Nw/jxlQ3i2jTg2TtlIGjyEGQTiME4EDH4MV1m0xrjBqnkqR1FRNulWPPwwcUIUjP67jPOlc0j6aOTROefb6md0ZessmdT5+8RJN0sfc8MVJjGTjmIehFCV/tlUypcvRugPWMtnFhv/v+ygadKEHiD4I9laXoj92SO+KEAM2QKsdoGNj5TzDLA6HoEDz0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR12MB923065.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(261021123027099003)(11063799006)(56012099006)(261009223027099003)(261021121427099003)(261026121527099003)(10067099003)(22082099003)(18002099003)(261102123227099003)(3023799007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?v/OsAzjrCWBO5lwxhLN+fag9+32fYjM1YI7peq0DFW48h22q4gxYRCd3LLoI?=
+ =?us-ascii?Q?rrS6KLFAjs5BPfMy+XvEPrq4mrD3ywsXtA4FTuVnDuNEsxpCdeOSCqoBB3Zx?=
+ =?us-ascii?Q?/dwlNklcIf/pQnMTKOUzxcbUkVtc8t7ZK6Hnt6xOWphmWo+1OTulExBWeliW?=
+ =?us-ascii?Q?QEkLvJFQ12RCLbS1UBcZZi0YHchnvrkm4iOHbvDhha0RwmrQuLR5c5t/gcny?=
+ =?us-ascii?Q?NwgWUeJaKlYaAn/jQrsWqer/tr41a/yw08iGfJfFz2YJq5HtDiUy5hWQGcXz?=
+ =?us-ascii?Q?nQiOiWn17/UTjkldp+sKzNSvap56e7cTCtAmI0fg4SxijNbUN+4qJu+oBIy2?=
+ =?us-ascii?Q?vWsczOe7+sbJKDhq3TgWmsltyzKXUoDCbqWsJmnxgHLe1vMwIHmJeAo0ZPvh?=
+ =?us-ascii?Q?EqBs0X3K7fdCj1lfrwtxRgdgS7KjxaxWL+nIefvaakhZivp1lxDHDdVaHuSg?=
+ =?us-ascii?Q?7X6KdjwuSHJPzadcgvDAoIkn95JWIGB7hnwiMUpX2DasNULiGnaZnlNTcKRb?=
+ =?us-ascii?Q?+7lhGLD15/h6oSdfygFvQ5E46V7AVF/wmNu1+BlNOiULpj+vesYlb2jJc9gR?=
+ =?us-ascii?Q?gxvNEzEIfFdWyBNzNgU/24TV+tOBM4WPzWeF6ilQhKb2u6uPTnMXzPNsnqaW?=
+ =?us-ascii?Q?m4JkxxNrSWEN4l99BDvhiyvMxc1iLhKlvRX0vZEoPYUGy69dFV2Horuamws2?=
+ =?us-ascii?Q?XuQzs6WEfUiJsrtSAGW1tv4gdiPf5VMRA+CQxAqtH8sJpWyjoamsjUUy7GT5?=
+ =?us-ascii?Q?lBk5KC8ke2trHwmvdPQLf9DhMPkJuhj/aDSn/KJh5Q0u4y9tQ1wvM1UQU38G?=
+ =?us-ascii?Q?XZa9dAHoU5NkBAki25eoybQk9NDqKcMG2I5ATGMoj0TWwR2MpelieHQbgd0b?=
+ =?us-ascii?Q?0aOmfOcmPV0dzcE9wknpS9HoMBGVcV+/bvV/+SPHjNKuGZgRI58j5PmZ3QN6?=
+ =?us-ascii?Q?LlUtU6FxDI2yOW35fuxLb31hW2aIqwqNUwxCyBb1eYiDL5ZXpT8OQ4NHthFN?=
+ =?us-ascii?Q?58iNNTe+jx61Reujts0zqd/b3+XEuGCVFIxWsXmLYx9ADzDrgMKL5+qgO7lw?=
+ =?us-ascii?Q?B4rsMAauk31IekKNqc3FY6KmoSIPyNJlmRN2TY7giIZ4U5EUPcIuZ/QFJSFw?=
+ =?us-ascii?Q?0eX+JtebMv5L2b2HNnud11iIpf+tvbQ9clLph7Xr2oVyMP/STQBcP0F9jSFE?=
+ =?us-ascii?Q?E9oaKjllpJg4TDSLkHHcnTlLTuGiiy5QqPmmPuM/4IQhlMBO/BHtU+mgDDmA?=
+ =?us-ascii?Q?649MZo7qNjOen4Z2ArfHAhwT8XMM+iN44Let/hEJo//4hNSInQcaMPC4BaIp?=
+ =?us-ascii?Q?LUCZykZfrIF2FlnJzuLgWbxjljj+9p8v7ZJHXhRVc5wtNDZM+Pogpm4a9j/B?=
+ =?us-ascii?Q?r7bdOkDdnS7yAbAKLwKUO91na/2JfVh05/zZJyVMRTdrPohmA8ns4tMqWT0X?=
+ =?us-ascii?Q?ymid3/5xNY7rY4eProM/TfZRop6SIUQvNTg/SUZladMTATGs3t4nmdcmkzDa?=
+ =?us-ascii?Q?uu1rb+tKn72WhkouIr/QRk3pw9WaBhZ7PLOQEYXkJa7L2CSVcaq6qqA87scs?=
+ =?us-ascii?Q?zvu1W6vtDI9Mlwl59tktUjSu1RKNVBLxmZN/J2Lm25eupf80V5Kz7w9pgAR+?=
+ =?us-ascii?Q?T6aMYXCy/uiQXsxFJfoLYFf1/LxseMgoaHpHZzcx4tsJxscZHolmAHzo3gLs?=
+ =?us-ascii?Q?6sfL/TFz4ei1InFUx3FJQfwmhiTOUxvTPAAu0DP4qWgHjA3I?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5dd80238-8f12-4a03-2ea4-08df390cf07b
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR12MB923065.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Nov 2026 18:13:04.7503 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +wKOwHmFnbSS/g+sgfPEGebwvpr2lda93zylrzLwICbG9DFQNszKM3N8z4qkYwGHIRPD5FWQB70Rss4/Kw1cnw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5993
+Received-SPF: pass client-ip=2a01:111:f403:c10d::1;
+ envelope-from=tdave@nvidia.com;
+ helo=SN4PR2101CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,86 +136,144 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_PASS,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Add a highmem-mmio-base property to override the base of the virt
+machine's high PCIe MMIO window, alongside the existing
+highmem-mmio-size:
 
+  -machine virt,highmem-mmio-base=<addr>,highmem-mmio-size=<size>
 
-> On 2. Nov 2026, at 18:07, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Tue, 27 Oct 2026 at 12:01, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>=20
->> macOS 27.0 has some more feature registers available. Fetch them (but =
-not using the values yet).
->>=20
->> Also fetch DCZID_EL0 at the same time.
->>=20
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->=20
-> This patch failed on the macos CI jobs, so I've dropped it from =
-target-arm:
->=20
->=20
-> https://gitlab.com/qemu-project/qemu/-/jobs/17671032296#L4708
-> https://gitlab.com/qemu-project/qemu/-/jobs/17671063089#L4702
+Some PCI devices require MMIO resources to be placed within a
+specific address range that cannot be satisfied by the default
+placement. The configured base is validated to be non-zero, aligned
+to highmem-mmio-size, non-overlapping with the existing high memory
+layout, and within the configured physical address space.
 
-Hi,
+Document the property in docs/system/arm/virt.rst.
 
-Thank you, sounds like an SDK versioning issue again=E2=80=A6
+Signed-off-by: Tushar Dave <tdave@nvidia.com>
+---
+ docs/system/arm/virt.rst |  4 +++
+ hw/arm/virt.c            | 63 +++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 66 insertions(+), 1 deletion(-)
 
-Will look more at how to decouple the SDK situation (or we=E2=80=99ll =
-have to have
-#ifdef everywhere for everything new)...
-
-The latest SDK provided by the CLTs can back-deploy to older macOS =
-versions
-all the way back to macOS 11. But that still supposes having the newer =
-SDK
-available in the first place.
-
-=46rom the CI logs, looks like they are at macOS 15.0 SDK which is =
-pretty old by now...
-
->=20
->> ../target/arm/hvf/hvf.c:1197:11: error: use of undeclared identifier =
-'HV_FEATURE_REG_ID_AA64ISAR2_EL1'
->> 1197 |         { HV_FEATURE_REG_ID_AA64ISAR2_EL1, =
-ID_AA64ISAR2_EL1_IDX },
->>      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> ../target/arm/hvf/hvf.c:1198:11: error: use of undeclared identifier =
-'HV_FEATURE_REG_ID_AA64PFR2_EL1'
->> 1198 |         { HV_FEATURE_REG_ID_AA64PFR2_EL1, ID_AA64PFR2_EL1_IDX =
-},
->>      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> ../target/arm/hvf/hvf.c:1199:11: error: use of undeclared identifier =
-'HV_FEATURE_REG_ID_AA64MMFR3_EL1'
->> 1199 |         { HV_FEATURE_REG_ID_AA64MMFR3_EL1, =
-ID_AA64MMFR3_EL1_IDX },
->>      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> ../target/arm/hvf/hvf.c:1200:11: error: use of undeclared identifier =
-'HV_FEATURE_REG_ID_AA64MMFR4_EL1'
->> 1200 |         { HV_FEATURE_REG_ID_AA64MMFR4_EL1, =
-ID_AA64MMFR4_EL1_IDX },
->>      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> ../target/arm/hvf/hvf.c:1202:25: error: invalid application of =
-'sizeof' to an incomplete type 'const struct isar_regs[]'
->> 1202 |         for (i =3D 0; i < ARRAY_SIZE(new_regs); i++) {
->>      |                         ^~~~~~~~~~~~~~~~~~~~
->> /Users/gitlab/builds/qemu-project/qemu/include/qemu/osdep.h:541:31: =
-note: expanded from macro 'ARRAY_SIZE'
->>  541 | #define ARRAY_SIZE(x) ((sizeof(x) / sizeof((x)[0])) + \
->>      |                               ^~~
->> 5 errors generated.
->=20
-> thanks
-> -- PMM
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 5f6dd17978..7ae51bee13 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -152,6 +152,10 @@ highmem-mmio-size
+   Set the high memory region size for PCI MMIO. Must be a power of 2 and
+   greater than or equal to the default size (512G).
+ 
++highmem-mmio-base
++  Set the high memory region base for PCI MMIO. Must be non-zero and
++  aligned to ``highmem-mmio-size``.
++
+ gic-version
+   Specify the version of the Generic Interrupt Controller (GIC) to provide.
+   Valid values are:
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4bacb57770..c04aadb92f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2507,14 +2507,40 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+                                  hwaddr base, int pa_bits)
+ {
+     hwaddr region_base, region_size;
++    hwaddr pa_limit = BIT_ULL(pa_bits);
+     bool *region_enabled, fits;
+     int i;
+ 
+     for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
+         region_enabled = virt_get_high_memmap_enabled(vms, i);
+-        region_base = ROUND_UP(base, extended_memmap[i].size);
+         region_size = extended_memmap[i].size;
+ 
++        if (i == VIRT_HIGH_PCIE_MMIO && extended_memmap[i].base) {
++            region_base = extended_memmap[i].base;
++
++            if (region_base < base) {
++                error_report("highmem-mmio-base 0x%"PRIx64" overlaps prior "
++                             "high memory layout (must be >= 0x%"PRIx64")",
++                             region_base, base);
++                exit(1);
++            }
++            if (region_base % region_size != 0) {
++                error_report("highmem-mmio-base 0x%"PRIx64" must be "
++                             "aligned to highmem-mmio-size 0x%"PRIx64,
++                             region_base, region_size);
++                exit(1);
++            }
++            if (region_base >= pa_limit ||
++                region_size > pa_limit - region_base) {
++                error_report("highmem-mmio-base 0x%"PRIx64" + "
++                             "highmem-mmio-size 0x%"PRIx64" exceeds %d-bit "
++                             "PA space", region_base, region_size, pa_bits);
++                exit(1);
++            }
++        } else {
++            region_base = ROUND_UP(base, region_size);
++        }
++
+         vms->memmap[i].base = region_base;
+         vms->memmap[i].size = region_size;
+ 
+@@ -3415,6 +3441,33 @@ static void virt_set_highmem_mmio_size(Object *obj, Visitor *v,
+     extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
+ }
+ 
++static void virt_get_highmem_mmio_base(Object *obj, Visitor *v,
++                                       const char *name, void *opaque,
++                                       Error **errp)
++{
++    uint64_t base = extended_memmap[VIRT_HIGH_PCIE_MMIO].base;
++
++    visit_type_size(v, name, &base, errp);
++}
++
++static void virt_set_highmem_mmio_base(Object *obj, Visitor *v,
++                                       const char *name, void *opaque,
++                                       Error **errp)
++{
++    uint64_t base;
++
++    if (!visit_type_size(v, name, &base, errp)) {
++        return;
++    }
++
++    if (base == 0) {
++        error_setg(errp, "highmem-mmio-base cannot be 0");
++        return;
++    }
++
++    extended_memmap[VIRT_HIGH_PCIE_MMIO].base = base;
++}
++
+ static char *virt_get_msi(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -4286,6 +4339,14 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+                                           "Set the high memory region size "
+                                           "for PCI MMIO");
+ 
++    object_class_property_add(oc, "highmem-mmio-base", "size",
++                                   virt_get_highmem_mmio_base,
++                                   virt_set_highmem_mmio_base,
++                                   NULL, NULL);
++    object_class_property_set_description(oc, "highmem-mmio-base",
++                                          "Set the high memory region base "
++                                          "for PCI MMIO");
++
+     object_class_property_add(oc, "virtio-mmio-transports", "uint8",
+                                    virt_get_virtio_transports,
+                                    virt_set_virtio_transports,
+-- 
+2.34.1
 
 

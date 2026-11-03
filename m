@@ -1,106 +1,148 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2970E606A33B
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Nov 2026 17:50:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 27A02606A31B
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Nov 2026 18:09:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=R+pF4Y3j
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=rJsshXX3
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOIe2-000610-4X; Tue, 03 Nov 2026 12:50:02 -0500
+	id 1xOIwP-0008T0-Mp; Tue, 03 Nov 2026 13:09:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xOIdz-000605-GN
- for qemu-arm@nongnu.org; Tue, 03 Nov 2026 12:49:59 -0500
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xOIwN-0008Ry-GG
+ for qemu-arm@nongnu.org; Tue, 03 Nov 2026 13:08:59 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xOIdx-0008KK-T8
- for qemu-arm@nongnu.org; Tue, 03 Nov 2026 12:49:59 -0500
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-8aea7b7ca0cso39526637b3.2
- for <qemu-arm@nongnu.org>; Tue, 03 Nov 2026 09:49:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793728196; cv=none;
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xOIwL-0001gm-B4
+ for qemu-arm@nongnu.org; Tue, 03 Nov 2026 13:08:59 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-6b1afcd2d23so6537368a12.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Nov 2026 10:08:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793729335; cv=none;
  d=google.com; s=arc-20260327;
- b=UAMqp2RnvNuQunZMtsBz5r9hyy9r65aFcVYw5npeS5xRRSp8P5tKhRCbc4U1LjI/Ld
- e21kaYvdnzoIlIpS2xltRYgCVs83A6DG7zg4ytMZ8G93SIVz+J2lFdSqrAScqQrwoJjt
- lgHcNHaHvkKoXsglHzR7MaApegBSyRMkfFAd30sgAhSCfjjOmGX0WNu+V/qRQtFd7mSg
- D3WbW1VessRaCIuy/i2gVjO4Ka2iGF1bVP8KhOln+UKwAjk/SKtJISR8/v1rOcXnklTQ
- eevog9N/xFJDAeHzDz49AtfNIG5QUUrT37DQZDAcb6YmdModfKPBOHcPQV7TCMTMyQ6L
- S3Fw==
+ b=C3ZdBGLCrM4FqAvYavNruKsYEIWqyOfSVFX9Zn5ZAwG8WS9BTbmneOgt9XAw2BA3k9
+ +XcIKCkAuSreft4M4SInOyri9V5th221t3f3Dsm7/+TypBkr9R0K4mjFlCHEmrBrg/eN
+ jnRPaEPqcRhgY8bmaJ6UzyS0YVihW+BZ6h3rYy1kSXVb86jWtL9bnWN6rlIVyDb9C6oh
+ k3l/v58YtjQx1KEQNmSO+8rOEKGrsiW10d+19YGjGFz9sYGGom/omWWXcwLzEwR4eD52
+ ozA+dJ+Zo3vU/SW/lsXg+bgBSUFqMfsWrTFqsRXDHJr4/8onah1ZbRTQzTxZtWA+gYl5
+ e/ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :dkim-signature;
- bh=KHD63WxroFQlHpiGxelkPA8Wve5eDaujYnpu/A8vIO0=;
- fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
- b=m3S9YHTg/BSHJ10Ck/RWiTFeQwWviKhsHSJpwALM7+gGF2SZFlSbHAT5IF0qL0Fcf2
- Pp+olWaOfqzmjLU/w9+JzGTLjfHl2zjFxPwaVMImBaZj1td1vXfomn1uUJCGmV2L0Yy5
- vm2Y4YHOz7fY8HYDybP4nnX4m/zlWRBe2Y2OnWI0tFo97lcTsSftX/QH5v5nQVpA2Ecu
- lSzBY2voh4Hq1gyX5Bk/WY9UOWJsCiU7w/48lqcnOaE3FggNdOG/QR8ySnZic280cS4C
- h5BF12l5LtwwaSTCWs0QP1jpYshJ6Qa07wEgDkiEnLWJMAPw2SAgoJQTZ5pG50IT49L8
- NwYA==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :reply-to:in-reply-to:references:mime-version:dkim-signature;
+ bh=BJey1qLpGncca5aTW0VYBYvYOxSWgotKBUYp0cXl14Y=;
+ fh=kLYzC05OQcQniLo/l/polkCY8l96VOye/ny1dLbhl2M=;
+ b=IN29vtbcE6HT3hihMT5jeek2RX+Jn+OyquyMgNZmra5g0A1p04OnT4cHl1bfzhcGw7
+ 2GjgDV59UKwKePvRjj+I89Jr2Ar0EcBiT3JR6migBpfQZckq25upzwNnR4ZcL2eEqoSb
+ z7mr+H1o7mTduxQ3GNCILrpAzmpEXe1SbYZHN78MhFACZPrMQMDlChX9VcyvPoZh3r3e
+ gfuO5nxom+0Ppkpytcv/CyJXp88oeNfVpDVl7krqa7RWHfNnq9VqlKuCaUa3gln7MtK8
+ TuY+B8sXOBD/TTy0/lnfzdUANTJJOOxuQ7GYXQK6VDXCY6DtJDrHdAThY/KY/QZNcrip
+ 5FEA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793728196; x=1794332996; darn=nongnu.org;
- h=content-type:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=KHD63WxroFQlHpiGxelkPA8Wve5eDaujYnpu/A8vIO0=;
- b=R+pF4Y3jIAhiRBvXK3gKbb4f/6eXko7Y4NlMSfj1bHqo5p7H6M6EvyPDismjC95X89
- c198cI3zZl2eTylLA+4KA1XfZKs1nXSUA8E84nbDm9Wot5P3HmD8sbUorv+mCKiJKuxA
- BJ1OIqjAM6P34wkeR8P4sMvO2xjTYAzU+eg/Qkv2DII/5jgXO8RgPVvQjRgwCL9ipzGc
- N5enBYXofp1C3WdU44DmjHZvW3wZEw2riagZtcdGGRhvlcOeABGSnEmClkNaLTyTbrfc
- 2C0CIui49sNQsDjd1XHusGbO5gy1+BcTRaa+WrVmFGNhcJUVwGGjbIVesbyrUs64o3Ta
- kqhw==
+ d=gmail.com; s=20260707; t=1793729335; x=1794334135; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=BJey1qLpGncca5aTW0VYBYvYOxSWgotKBUYp0cXl14Y=;
+ b=rJsshXX34x3MmE48v1NSvwaM0bNZEm4m4Z4rrxcW7caqLmS/w52tvfcimiPFTgkrwt
+ LrTQ4+4vJIQHld7jc0Fohgc/z2Kx6JaE/l/Us9TvPOp1pdCYz8zEgLc3OyGKs4ra6PHt
+ mN2KpsYU/gv/2u590gDM12KXPNYb+vtofHFPyjZHS2Ty/UdJHxuCJrgJ80TTjREZUedh
+ 7n1e2E1OBvWJdefUDdf3wjiToLsmNqC/B9XgbHTsnmlC2DrH0uWh2VG7Vf8JvI51cFaK
+ 2LoWkRAnDlTltyX+VGeGfMXsKQwWPQKwvaegQrYibzLsqf0JczyF05CxE1NjcWROzdbW
+ 7EwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793728196; x=1794332996;
- h=content-type:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=KHD63WxroFQlHpiGxelkPA8Wve5eDaujYnpu/A8vIO0=;
- b=VOVrfTkkEa9zNrhP3K+80y0vkrbAjsvUBnuWuZ4LV2fMCq2ooVyUI/Tmk6QVFKmhLk
- 6J913VlQYlnuKFwzuWQVZjF0JomEYpZwy3b4Np/NRvu7eKZBnSQtZLEwVPyjix6LXiwd
- KgOIki83Lf6Z4dclbMiSp/3K2Bmn82YQ+AvhnFCOROAduL9h6lSUJyqlDWdOIZj/vkrl
- Pqn6SPCfI8aJ0O7/We5dsGf0WGiey7wQOJtzYgNoA3FfrdoNISSYZ0MkcDw/Pvt0V/AZ
- Pb075u9lcE2QSvDtWy3MB341Je5kqMDzgLhFXRlvH40z8qLK+qfTd6EzjPHGlFmVppSQ
- rcoA==
-X-Gm-Message-State: APuU4Z8vQh2bsSAKF0pMviCxkmp18LqNaMj878cRL1F47xWYl6KCAt3z
- J5pskoa++WwrsDCwLUejPKB/Z8odhrf07h/5bdo5x4DQbqrFybQzOSSe23Y07GrMlFdz3phOIYh
- TjCXVa193MnydP+ncJDP9lIzc5ZNEBdYJP1OH2NmYgrsvpsEsHeKbI5U=
-X-Gm-Gg: AYBFou1qQ49LpguUpcIblhYk+La4p9lHQSkDwamNruC886nkMuNzfX7/tzWVpfF6TPR
- rATEK6gDS11RhoXTX/k+DqUswZQFa6B11VbFgz4KGA3bJVIFLo3V2chtpzDZS0umcjfMa5Fuee2
- xU+40YmyCbT6fWgWQC8akD61LYEsaYB7rxbmmgO3yT1pjtMzUuFq9Wyad4oTvSCyvg0YAL8umON
- e5sKl85G8++mbrksYyIOwDfAfaG3ZdHQ4ZIoaVf8gO2MSpZlGwM/cRlR6YGYlmKlTTqrZb7x7Oh
- k/eNz0/f11bRM+mgsK+4skV9bcGdeacZMvUSz09a9J7ZUK3z5MePxa1nNdL29I1OTV9hviUTbkE
- jttIN48m4+Bf1kbANXxAL8fJAaWaiC8zNlZ0K4TGVhxMyaoMIyKlq4fY8zz9pXq3nygWW/7Dot1
- SbpBDOcTp3jOWwD8K9/TKu
-X-Received: by 2002:a05:690c:9510:b0:8ae:9448:14e6 with SMTP id
- 00721157ae682-8b2b67738eemr72264867b3.54.1793728196272; Tue, 03 Nov 2026
- 09:49:56 -0800 (PST)
+ d=1e100.net; s=20260707; t=1793729335; x=1794334135;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=BJey1qLpGncca5aTW0VYBYvYOxSWgotKBUYp0cXl14Y=;
+ b=tUqvckKfjlkXB1XMs1eenoZnM291+yzCwjfbBsMV2c2MH27MBZZl0WHbE5zCMP/RKs
+ iCsz/JKvcF/oFbKKT/mGhxzbe/4WERmCluwR41OfuPajWTVKC4Sln2KZvLmW3iOGKvFk
+ jKv0J+ctorrzsiEpIG/0Q3QQJ02QnCMzACFz39EoLvO4tC5mfvdMQYaASTxY+RTKgb0w
+ S+DsffonjtkSlGqYjbMHYvk5wEmYJHcgRwOLmBirS1yh0vRV5BwwFInWZTqXTT+EBzFA
+ 5/Jg1qan5ZOQ/MsM+jpCW3kWDZC5HmHlcoRYtPTrR5cKnCygZofWxPS6O6qrojvduqzK
+ sv/w==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzLiegzuuFzufeEEHpCbgpseHrGH+0VjwSKSY5I8GeNctUMSvUQrO3zRG190xW97SQAGgY5WWMAPw==@nongnu.org
+X-Gm-Message-State: APuU4Z+79G91xD6pCJuaYI7nsfhE2ujS5LyMwiRh2RX9o2mdMj5pzizX
+ XgogJ+Ry46WXcU+M9nIikMRxsz0C+qGe/jTJ+iufydhHji605rkAHiCJRWj/wKS7CgouWRpw+Tu
+ e2T/nkhRM4epXEUxC/bu+atThTWFFezQ=
+X-Gm-Gg: AYBFou2KGpNXAexP0UGSFzRqahqVDX1dLTCOefmtB5hPfzxQfRuHc/Va44i1J5rXJYt
+ enW6UduFaqSrQTqRFFB/pM6T9xBEN/OtLyM/qnRa6jMz+Tt69wO0lLDqPDumfDpjGikbi9+85yE
+ jwZt3r6M8CkFt/cBy2hHXFxrQQQSQhVk3vERA0lASLZ2IUPAOETFJv7Pp+2AB5wuL7qjYByJBLI
+ NHmZY9o2BfJm7DNpjqjoEXyPaSJ+ZVwlsKCylpomePRmp2PauiWWSCul55NnupGvaPV0DJylhgC
+ MdjqQQRg4qdS/sSLcmpeIc19EanKRTq4N5KgJxy0mJGEOLjbtOEAJp3FEqZ2yV0ccxigQNsyKmN
+ xs3LMkg6HdEtV1NlEcn07ApWFL5zLvON7UL33jg==
+X-Received: by 2002:a05:6402:5009:b0:6b4:d731:4bf3 with SMTP id
+ 4fb4d7f45d1cf-6b4d7315217mr10362792a12.41.1793729335335; Tue, 03 Nov 2026
+ 10:08:55 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261103172616.2400758-1-peter.maydell@linaro.org>
- <20261103172616.2400758-5-peter.maydell@linaro.org>
-In-Reply-To: <20261103172616.2400758-5-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Nov 2026 17:49:44 +0000
-X-Gm-Features: AclHuK9r9ZwgyO4vbg3YGCrPW4tA0H-36SOAC0OnSf9gUzh8V9hvKFyjwfOtaSU
-Message-ID: <CAFEAcA8X1ARhpncsz=kE2JxFjALGej4ycw3hus=m5kfcVSJXYw@mail.gmail.com>
-Subject: Re: [PATCH for-11.2 4/4] hw/intc/arm_gicv5: Use correct type for
- value in lpi_cache_get_hppi()
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20261030151539.1872-1-luoyonggang@gmail.com>
+ <d1db54c6-b802-676a-7779-0c2c63f5f807@eik.bme.hu>
+ <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
+ <aumYOBw-nKQAWdYK@redhat.com>
+ <CAE2XoE8Xwevk523OfB+GgwbRu0iVnyD4VNOx81rj7J7F5aq=OA@mail.gmail.com>
+ <54851326-3627-2b86-57d6-c338ed4e4b50@eik.bme.hu>
+ <CAE2XoE_P2mZAT8wZwzFsTqJTK8nxNSSqJRrOM2T-AJkQjwJHBw@mail.gmail.com>
+ <aunnuwhsx9ZOOXBX@redhat.com>
+In-Reply-To: <aunnuwhsx9ZOOXBX@redhat.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Wed, 4 Nov 2026 02:08:41 +0800
+X-Gm-Features: AclHuK8P6bHHgBWP0bpAQALyo5aHjtSP7ofvKj-lRIfhjZfCfQMKs0HHJgLdFgo
+Message-ID: <CAE2XoE9Kj+C3JLvWMzuGLbBsaFY4KQMhxnwLNwAAhzRmZAFj9w@mail.gmail.com>
+Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
+ registration
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org, 
+ Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>, 
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>, 
+ Antony Pavlov <antonynpavlov@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ Max Filippov <jcmvbkbc@gmail.com>, Niek Linnenbank <nieklinnenbank@gmail.com>, 
+ xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org, 
+ Alexandre Iooss <erdnaxe@crans.org>, Weiwei Li <liwei1518@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>, 
+ Frederic Konrad <konrad.frederic@yahoo.fr>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Chao Liu <chao.liu@processmission.com>, 
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>, 
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,51 +153,165 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-2.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 3 Nov 2026 at 17:26, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, Nov 3, 2026 at 9:55=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange@re=
+dhat.com> wrote:
 >
-> lpi_cache_get_hppi() is a function we pass to g_hash_table_foreach()
-> to iterate over the LPI cache hashtable.  This hash table has keys
-> which are GINT_TO_POINTER(intid) and values which hold the L2 ISTE
-> value, allocated as "hashvalue = g_new(uint32_t, 1)".
+> On Tue, Nov 03, 2026 at 09:48:44PM +0800, Yonggang Luo wrote:
+> > On Tue, Nov 3, 2026 at 9:23=E2=80=AFPM BALATON Zoltan <balaton@eik.bme.=
+hu> wrote:
+> > >
+> > > On Tue, 3 Nov 2026, Yonggang Luo wrote:
+> > > > On Tue, Nov 3, 2026 at 4:16=E2=80=AFPM Daniel P. Berrang=C3=A9 <ber=
+range@redhat.com> wrote:
+> > > >>
+> > > >> On Fri, Oct 30, 2026 at 05:51:44PM -0800, Pierrick Bouvier wrote:
+> > > >>> On 10/30/2026 4:09 PM, BALATON Zoltan wrote:
+> > > >>>> On Fri, 30 Oct 2026, Yonggang Luo wrote:
+> > > >>>>> DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo an=
+d the
+> > > >>>>> type_init
+> > > >>>>> function that calls type_register_static(). A later change need=
+s to
+> > > >>>>> pass a
+> > > >>>>
+> > > >>>> That's the point of the macro to hide the boiler plate code.
+> > > >>>>
+> > > >>>>> target mask into that registration, and the macros have no para=
+meter
+> > > >>>>> for it.
+> > > >>>>
+> > > >>>> Couldn't you just change the macros to take that parameter inste=
+ad of
+> > > >>>> expanding it everywhere?
+> > > >>>>
+> > > >>>
+> > > >>> Problem of macros is that they don't have default parameters, so =
+you
+> > > >>> need variants for everything:
+> > > >>>
+> > > >>> DEFINE_MACHINE
+> > > >>> DEFINE_MACHINE_EXTENDED
+> > > >>> DEFINE_MACHINE_WITH_INTERFACES
+> > > >>> DEFINE_MACHINE_WITH_INTERFACE_ARRAY
+> > > >>> and now would need a new variant, with variant for other existing=
+ ones.
+> > > >>>
+> > > >>> In the end, it's just simpler to remove this and add the boilerpl=
+ate.
+> > > >>> It's written once and never modified, so using a macro just save =
+typing
+> > > >>> those lines once.
+> > > >>
+> > > >> For each machine, it is only written once, but we add machines
+> > > >> over time, and every time a new machine is added the code style
+> > > >> is slightly different. We introduced all the variuos DEFINE_*
+> > > >> macros for QOM to better ensure consistent style and usage as
+> > > >> new code is added over time.
+> > > >
+> > > > I understand that the DEFINE_* macros are bloating because of this.
+> > > > Indeed currently the only two macros used are "DEFINE_MACHINE" and
+> > > > "DEFINE_MACHINE_EXTENDED"
+> > >
+> > > There are a few machines using some others but these are the most use=
+d.
+> > > That suggests maybe we should change the convenience wrappers to matc=
+h
+> > > what machines need but DEFINE_MACHINE_EXTENDED is meant to be the one=
+ that
+> > > allows all parameters which should be rarely needed.
+> > >
+> > > > ; each time people want to add a new attribute, the macros is twice=
+d.
+> > >
+> > > Not necessarily. The SECURE parameter did that to preserve previous
+> > > behaviour but if you add new parameter changing all callers (which is=
+ the
+> > > same as expanding the macro that would also change all callers) then =
+it's
+> > > just a new parameter added not changing the number of DEFINE_MACHINE*
+> > > wrappers. Rearranging the wrappers to make DEFINE_MACHINE_EXTENDED us=
+ed
+> > > less is an independent change.
+> > >
+> > > > And the usage of DEFINE_MACHINE_EXTENDED is rare and can be replace=
+d
+> > > > with DEFINE_TYPES or TypeInfo
+> > > > and be more explicit. When we used as macro parameter, we need thin=
+k
+> > >
+> > > But that defies the purpose of hiding the QOM boiler plate as much as
+> > > possible. New people are confused by QOM and it's easier for them to =
+look
+> > > up documentation on the DEFINE_MACHINE* macros to see what parameter =
+is
+> > > what and not care about how it's stored in QOM TypeInfo or what is th=
+at
+> > > at all.
+> > >
+> > > > what's that parameter means, and for
+> > > > TypeInfo, we can directly know what that member is about(because we
+> > > > are assigned with the member name).
+> > >
+> > > The parameter also has a name and documentation so it's not simpler t=
+o
+> > > look up TypeInfo than look at the macro definition or docs. In fact i=
+t's
+> > > harder to guess from TypeInfo as then you also need to get into QOM.
+> > >
+> > > > That's why I suggest keeping a single DEFINE_MACHINE, just like
+> > > > DEFINE_TYPES; as they are the most
+> > > > used macros(and simple enough), and won't suffer from changes much.
+> > >
+> > > That means exposing all the boiler plate for all machines other than =
+the
+> > > simplest case. I think it would be better to keep DEFINE_MACHINE_EXTE=
+NDED
+> > > but maybe rethink the existing wrappers and drop unused ones and mayb=
+e add
+> > > new ones that reduce the usage of DEFINE_MACHINE_EXTENDED but still k=
+eep
+> > > the boiler plate hidden.
+> >
+> > Thanks, I'll go this way, remove unused macros, and keep DEFINE_MACHINE=
+_EXTENDED
+> > and extend both DEFINE_MACHINE_EXTENDED DEFINE_MACHINE supports
+> > "targets" or "arch_mask" parameter.
 >
-> The function is passed the key and value as type 'gpointer' and has
-> to cast them to the real types itself, but it incorrectly casts the
-> value pointer to a uint64_t*.  This works on little-endian hosts
-> (since we only read specific fields of the L2 ISTE using bitmasking),
-> but won't work on big-endian, and trips the clang sanitizer.
->
-> Fix the pointer type.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: a0562ada75e ("hw/intc/arm_gicv5: Calculate HPPI in the IRS")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/arm_gicv5.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-> index fd6456cd8aa..a362349e5ed 100644
-> --- a/hw/intc/arm_gicv5.c
-> +++ b/hw/intc/arm_gicv5.c
-> @@ -390,7 +390,7 @@ typedef struct GetHPPIUserData {
->  static void lpi_cache_get_hppi(gpointer key, gpointer value, gpointer user_data)
->  {
->      uint64_t id = GPOINTER_TO_INT(key);
-> -    uint64_t l2_iste = *(uint64_t *)value;
-> +    uint64_t l2_iste = *(uint32_t *)value;
->      uint32_t prio, iaffid;
->      GetHPPIUserData *ud = user_data;
+> Given that we don't need to do general per-arch type filtering in
+> QOM, we could just move 'is_available' out of TypeInfo, and into the
 
-Looking at this again we could also make the local variable
-be uint32_t; but getting the type wrong on that doesn't matter.
+Hi Daniel,
+The "is_available" is used for dealing with the QOM name conflict,
+that is before the calling
+to MachineClass call or any other class_init.
 
--- PMM
+> MachineClass, so it is a regular class level property, which can be
+> set in the class_init methods, and thus avoid any changes to the
+> DEFINE_MACHINE macros.
+>
+> With regards,
+> Daniel
+> --
+> |: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+> |: https://libvirt.org          ~~          https://entangle-photo.org :|
+> |: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+>
+
+
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 

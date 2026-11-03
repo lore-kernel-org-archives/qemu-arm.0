@@ -1,87 +1,83 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19C51606A31B
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Nov 2026 17:27:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 22FF2606A324
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Nov 2026 17:27:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=kAmRUkyJ
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=T4yY1c5p
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOIHS-0000IP-O2; Tue, 03 Nov 2026 12:26:42 -0500
+	id 1xOIH9-00006Q-KY; Tue, 03 Nov 2026 12:26:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xOIHD-000088-7q
- for qemu-arm@nongnu.org; Tue, 03 Nov 2026 12:26:28 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1xOIH7-00005h-Vw
+ for qemu-arm@nongnu.org; Tue, 03 Nov 2026 12:26:22 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xOIHA-0006Qs-VL
- for qemu-arm@nongnu.org; Tue, 03 Nov 2026 12:26:26 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4a2084d62cdso39606475e9.1
- for <qemu-arm@nongnu.org>; Tue, 03 Nov 2026 09:26:24 -0800 (PST)
+ id 1xOIH6-0006Pq-2y
+ for qemu-arm@nongnu.org; Tue, 03 Nov 2026 12:26:21 -0500
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-48e46e449e8so2725532f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Nov 2026 09:26:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793726783; x=1794331583; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=hqqeZR9hh82Ok/85fIviXaUdYKynKCQ8FaCgEa2tPAY=;
- b=kAmRUkyJNzKKXQQJH2PU4t1TI1Bp82Yl9s58odVjx6+KQUTTkPLSuwXpyBTPEHErye
- /iR+sbBD9+gVDyFwQ7hBB62rO7Te78SCIZvXooaFrgEjsVnkGrrPTmXDGGqq6K/Ot3FU
- 9WjRfLUB8IyEirDda4rYmLry+yUnsC4cQGeGr0EBy0TWvDYQm+Tyo+zQ7UszrnrKr3D+
- guSrKpJO1qakKrhTB3kWFYFhJAX/ojMlF60PumFL66DMD/7gqeSIINR98jVwTp4YC+RL
- i4fyAy3ESBHUsQBJ2ezpQ+uojJJqfrVCtMroZzqf41YmC8fn/1h/RXkBNERR6OVp9sLG
- s2oQ==
+ d=linaro.org; s=google; t=1793726778; x=1794331578; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=0i0p7amou0Zd3z9VGv+EcRptK1TJ4cWVBtL7CtmRmrE=;
+ b=T4yY1c5prp3+ZB4Y6Shrs8x5zySkriA6tff2L+GPEaK2HrtCeX9/3MBSe1cH0SqhLd
+ Agy4m9oz61eIopDLR76786jnHo9ClMaaPo1N2gqvjSHfI3hvfSgxPbh6YJivvaPbxvOw
+ Hm8d7JCI6PPomn2Gns/ZOCwk9dQzN54Hz7t4yd44HrJ5t3uuvq4R6zLUVeF96tk00gYq
+ 0Eih5nZNnai44Ii8XDag2ReNCuT2W2XvYdI5qSpOMtWH6qho5nF677uOkNQaiHI26Fgn
+ J/8oaV6+zecmWfwapp8HrklcWXKRXRcw8LRFcX25OcswPq/Fb8vmSsKn45GxhOFr2Iii
+ zLtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793726783; x=1794331583;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=hqqeZR9hh82Ok/85fIviXaUdYKynKCQ8FaCgEa2tPAY=;
- b=ytVTAuQq0uU9BeiVbPcEWLrkVvRb4cJx3EEg4Go5jaR/KOF6q/TstJNqdwBALBd1gS
- u0vAvAlpxeIFTY/ZUuCn7S7gK+Otx2VrC4MeYvdYWPC9dVHTDmPUtSb2EChLqGrqpXop
- 173RhqOdQyNQlbrQ2kBQHFJUCfHDjBvWB0pjHx9rMQXeSv+Gl5ThujO9LH3oldBvsMhe
- HX3xdZjPTGyx4svak7AkIhGeLAGQ93v6IIxLM/tFxPbTgWg5nlFCGQeLS7ZqPO5T0tiX
- FzEC6zJPdWFNeITPFeDhpThj8Scgt1fiKyHww8tuUX6MjJ6F4L74M69j/uK6fLUqjX0X
- kP3g==
-X-Gm-Message-State: APuU4Z8rf10BQDGL11vAKJm18Wd//J8KE9mpAfMRp2oobtoqPQYyZOVr
- 9SoQsO7PYULbwaX0os9TlG6NpuHLg3uHhk/thRRtrudqMkLhIocM62YiPtJe5Io/Lnor7ctU48g
- 4XjVSPKw=
-X-Gm-Gg: AYBFou1wpbDzT4kCo6A7LwbMTId/TeJVBHtccDB2QhAZmV4hwvNcdvlDpWLUhBMoeW7
- G6h54Z+kkxup3Lhi+d/A+GNbL6h4wDOEmQW5duTMoUkfa2FcTKTHzxcqKNfT9tDx9OLz6tqMO91
- Fu+uD7oeqBDq528MndIDwbCpmDwKNwWRLgmFl8RA+Z0wnPwup+qyoS3cjrlVUQFIGM01B4fc0WG
- Y4n3o4e52zHuYnV6sTRlU3We32AQsyBgsV2EnoaUtmeQN8z2pW1yv6KM4XXUn0ZkIG+Nd4PAnUS
- Ga+fzRI5JnPPQmhXJVQ+ZvAu0Pk0rU7DRXbc4J0ghO0AZ1jxh/a/2uBez3x5gWrdxMNvHo+oOJC
- pvoUZSl4DfS+QvOGATh24AK+DM5ytsyCw4oE0gQIaZiL6x53gElVqxlm8G9Q0DfQS9jm863wh9U
- ktRtYqJCp+5FIy3MWA1thoWM6TzyKN3bjzb2FpvInqvT2ma+ChJQksajAgqCP8QuXcQwBdXw/SU
- juHdO0hkxL62sc7Xva9FeL2UHkDXNmonEHSWceGuhU28x609TLa5F1yqAROZFlfWUlEPRo2Nufu
- sIOJtls+EzO1spMASOYel2NgJvnD2wVI7iDvL5VacmxVVAth0SlpJWtlnP8X6XVn1G6fBmX7Bjz
- tU0aq4uhUct3TQkXLsx1Q09+SJYSON+2ioy1dPJsCuoyuXYw6yFSrUV8=
-X-Received: by 2002:a05:600c:c48e:b0:4a1:f7f4:7cf1 with SMTP id
- 5b1f17b1804b1-4ac16bc47f8mr316953545e9.11.1793726783525; 
- Tue, 03 Nov 2026 09:26:23 -0800 (PST)
+ d=1e100.net; s=20260707; t=1793726778; x=1794331578;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=0i0p7amou0Zd3z9VGv+EcRptK1TJ4cWVBtL7CtmRmrE=;
+ b=Sze/Ct5pE0FsJ+f32NhspXkA+8r9/vrGLGMZKcox6nXzev5PXTDJMwnpJDsPe+xv3g
+ H++5h559YuCHC00I1raEm2yY5cgNQ8jDMJbTL1JZkyGDML6AtWrnihz43aHFpDUwVI5a
+ rxykWiGGkxIa84ef+Ff5yXom/0XvH/2ufn3zzCBXSIObyb3YohrPZJsWhRaNybqjA5mK
+ xlgUKKukpzJW0ynot3/MZ8Nal1eEFWwvGgE/9OepfzjzH801+buAMO4IOou7gvN18Er8
+ RU+5qwLObwQTSBPaXb17S/Z9r+sLTE4DWvppoiQyfKZfUdoiVwDTo4CVsiNruz3GhZDo
+ zlWQ==
+X-Gm-Message-State: APuU4Z++QeyyJBOMSJqECO6dRcbA7YMODJVV06ARfCk0Hus+mLhJU6Pl
+ cZJpubhRmqD/lFc9YcCikYfvFRuEwHDq9I51Fow7zcHBRvo9mRyHYjHMGMoRXIqQKU9ht2AL8EE
+ 3dlbttoc=
+X-Gm-Gg: AYBFou0cvXRxU6nuqN0+RC0qiJB3a8XPOXyn+A/8XB/xWGR7ewqPZxnI+AC98jB3KJq
+ 9B96ODRZCwIbCJBX0qoexSYh/03PR3+cf4DqbOsC5E3h5K8bXRyL5qC7RcVZjr+9TBZcpALt6rO
+ xnOD4I2YlgY9n9Q5sZUeZ/jeT6zq7WW2O++ZAEo5oPjXeVab3sYJx8kEuQtnbKoxScXbVHKX5wL
+ 5LSZSxZ5K3umPci0I6Fpo5lV0gJcvoKM0Rzev9aurHbrW4/R/6QC3T3FRQT0hC1YMRF51HA1FJE
+ WRTdQMRuD/BlH5bQ3OZMnVavo0vntRzqRhyV324ZuK/3x0qJD6O6/i1gd4JIDD6TUO+h1K9bQKF
+ 7vHd7R9iqf34Fvhd3aLkSwq+vd5IrZ2JUQugT25fU3rn3Qqa7Ot1GvhUkzAY5D34OX7rJKJS7sD
+ xQ41KxNQSmgr/kQb+QaDjBXaOoxZyP+L+nHh2gadk8xPgIjtYT1UOTS5FGNBw/QbSQFAim1HS/4
+ IR5ck8ltzBJB4B9f3+Bqq16Tvk4J6f6TKkW47D6kGyRwlSzu3GXz/Yx9q1lei9Evm2erDxISOI/
+ 3apVR6hNwQy7IiXcMQwdjAjXpLOICWfeC88XM5uM+tSH6gwv+4XFgNs1kYP93M5WoazTuCyyelm
+ xNFcb41PzwAQomKzB+KYn3hZnrqTHPEJFaA==
+X-Received: by 2002:a05:600c:19c9:b0:4a1:7c7d:8881 with SMTP id
+ 5b1f17b1804b1-4ac182dcb6fmr311058765e9.13.1793726778183; 
+ Tue, 03 Nov 2026 09:26:18 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4ac0950d533sm211082605e9.3.2026.11.03.09.26.22
+ 5b1f17b1804b1-4ac0950d533sm211082605e9.3.2026.11.03.09.26.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Nov 2026 09:26:22 -0800 (PST)
+ Tue, 03 Nov 2026 09:26:17 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-11.2 4/4] hw/intc/arm_gicv5: Use correct type for value in
- lpi_cache_get_hppi()
-Date: Tue,  3 Nov 2026 17:26:16 +0000
-Message-ID: <20261103172616.2400758-5-peter.maydell@linaro.org>
+Subject: [PATCH for-11.2 0/4] hw/intc/arm_gicv5: Misc minor fixes
+Date: Tue,  3 Nov 2026 17:26:12 +0000
+Message-ID: <20261103172616.2400758-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261103172616.2400758-1-peter.maydell@linaro.org>
-References: <20261103172616.2400758-1-peter.maydell@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,46 +96,35 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-lpi_cache_get_hppi() is a function we pass to g_hash_table_foreach()
-to iterate over the LPI cache hashtable.  This hash table has keys
-which are GINT_TO_POINTER(intid) and values which hold the L2 ISTE
-value, allocated as "hashvalue = g_new(uint32_t, 1)".
+This is the handful of patches from the "fixes/tweaks to the existing
+code" section at the start of my gicv5 series which didn't get
+reviewed and which I think are fixes that we should put into
+11.2. (The first one isn't strictly a fix but it's also pretty
+simple.) Everything else in the gicv5 series is either already
+upstream or else to be deferred to 12.0.
 
-The function is passed the key and value as type 'gpointer' and has
-to cast them to the real types itself, but it incorrectly casts the
-value pointer to a uint64_t*.  This works on little-endian hosts
-(since we only read specific fields of the L2 ISTE using bitmasking),
-but won't work on big-endian, and trips the clang sanitizer.
+thanks
+-- PMM
 
-Fix the pointer type.
+Peter Maydell (4):
+  hw/intc/arm_gicv5: Use cached IRS_IST_BASER.VALID state
+  hw/intc/arm_gicv5: Free memory in finalize
+  target/arm: Only allow GICv5 on CPUs without AArch32 at EL1..3
+  hw/intc/arm_gicv5: Use correct type for value in lpi_cache_get_hppi()
 
-Cc: qemu-stable@nongnu.org
-Fixes: a0562ada75e ("hw/intc/arm_gicv5: Calculate HPPI in the IRS")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv5.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/cpu-features.h  |  8 ++++++++
+ hw/intc/arm_gicv5.c        | 20 +++++++++++++++-----
+ hw/intc/arm_gicv5_common.c |  3 +++
+ target/arm/cpu.c           | 37 +++++++------------------------------
+ 4 files changed, 33 insertions(+), 35 deletions(-)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index fd6456cd8aa..a362349e5ed 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -390,7 +390,7 @@ typedef struct GetHPPIUserData {
- static void lpi_cache_get_hppi(gpointer key, gpointer value, gpointer user_data)
- {
-     uint64_t id = GPOINTER_TO_INT(key);
--    uint64_t l2_iste = *(uint64_t *)value;
-+    uint64_t l2_iste = *(uint32_t *)value;
-     uint32_t prio, iaffid;
-     GetHPPIUserData *ud = user_data;
- 
 -- 
 2.43.0
 

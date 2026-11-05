@@ -1,100 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09A12606A31B
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 14:17:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 584FE606A32D
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 15:14:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=dHxbncz1
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ZrEH2hXP
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOyHC-0006Nz-TL; Thu, 05 Nov 2026 09:17:14 -0500
+	id 1xOzAa-0001Bo-L8; Thu, 05 Nov 2026 10:14:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xOyHA-0006Mz-Gn
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 09:17:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xOyH7-0000U7-Q4
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 09:17:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793888228;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GrqWzpPjyJ6PZ6gZamSRjn7ip6+7D8dRD3QkA915OIw=;
- b=dHxbncz1SD+AJFURbXOmnjj171B2j7wAD3AlAG/d9HcGdJ5sFpxex0wHeF9ZMN0O1QLDOn
- vrYTdI4pxPOjaQDkQtXjOrK8rQAjviRX6+rSG/qH0pIm14GxT5cGOHv9fYjNVCX9Z1qhcA
- X3BM3v/mbsv5JakNVE/cfwR4B81rDCE=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-629-8m1r0mEgMMSnK_pYdZUtxA-1; Thu,
- 05 Nov 2026 09:17:02 -0500
-X-MC-Unique: 8m1r0mEgMMSnK_pYdZUtxA-1
-X-Mimecast-MFC-AGG-ID: 8m1r0mEgMMSnK_pYdZUtxA_1793888220
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B6AF91955F6D; Thu,  5 Nov 2026 14:16:58 +0000 (UTC)
-Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 177EF39204; Thu,  5 Nov 2026 14:16:53 +0000 (UTC)
-Date: Thu, 5 Nov 2026 14:16:51 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Yonggang Luo <luoyonggang@gmail.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Song Gao <17746591750@163.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Philippe Mathieu-Daude <philmd@mailo.com>,
- David Hildenbrand <david@kernel.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Fam Zheng <fam@euphon.net>, Max Filippov <jcmvbkbc@gmail.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eric Farman <farman@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: Re: [PATCH v2 06/12] target/arm: register separate max-v8 CPU types
- for arm and aarch64
-Message-ID: <auyP09mbwuefulBL@redhat.com>
-References: <20261031164009.2048-1-luoyonggang@gmail.com>
- <20261031164009.2048-7-luoyonggang@gmail.com>
- <auxgsFyzv-5UiyNk@redhat.com>
- <CAE2XoE9J++-BHL5BDx4_jxuto+xwVmvFS3F-hE9gLbgfUmaFdA@mail.gmail.com>
- <aux5vwTnbV3cXcFX@redhat.com>
- <CAE2XoE-fTKqUB0TZh0-HW6RuMyWJhMGDijarhGSmwsYVTWAcPQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
+ id 1xOzAY-0001BX-9u
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 10:14:26 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
+ id 1xOzAV-0007kU-Pn
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 10:14:25 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4af52002471so4063065e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 07:14:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1793891662; x=1794496462; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=YED3UkXnGkeRIQg9+GqoACwf2Z55OMF8QOscjGBLPko=;
+ b=ZrEH2hXPv+lIxtbpdpYDNWwlho9xseLWRFJ4FRULQm8u3vGM1468kvLVStkKg0Pb3f
+ lJ+YotQIxyQQSpoiq6dnUi+pfwiUdQd7bCMQ4HKny1Fs+zP0jGIGXMlfQyfJoKDQkHYu
+ SFldLoehnqaPjlIk27AvbYs7tQWqcqUC4cuvxLgPwhLpOjTS2FEpJU+YRadzjR+mKiqC
+ bXgdw+oYjTaKp7z3IqULgQ8SItKf4/KTNeRdMwJkRp+7okb9tx3zRVqBIvQOgC6T+8D7
+ +Zh1WzIYAsGjlpE+B3SQuXeJRnejGSrndzwxIx5okJturr5JNU+UQEcKuTuPgnuoFtyZ
+ 4w8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793891662; x=1794496462;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=YED3UkXnGkeRIQg9+GqoACwf2Z55OMF8QOscjGBLPko=;
+ b=DrLcMAHgkDD7m2jdjxgQXse1qyiOPlCyRbNf77fIV9w0ym90D//s/AhIwSp2Bwmu7D
+ /6U9xXQQCR59DSMyC7BELH/QGZE16KXwXX+v0NiFajXkEGxa49uDdF6DV+Lhb7Y/yGyi
+ pwA4svFYl18Ua+u2NTbkxbe3zXDI4LbMEmtYsEq6Oo5IaxIqoqE2QarCLrltSY2Z6koc
+ BehKljVBUjwVsv41S7RFEJq3pYIfpXz92yx1GaMSOfoqe2ItAxBETp2xQJeLs/7Yj6f2
+ NvUuma/C/UlhAihT7z9Pp1voa9FvPtP9+J9uIwQtmHcBpZOdrjXb8USTv6JZ84FyGnRK
+ +AyQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxeNT4GEBf4ryKhpSI4DSUt8S4Y7G67BjuepNJrSZ0Ltd8a09XqNGgc+NXsbW9Q1lWTe1y7sLY0ow==@nongnu.org
+X-Gm-Message-State: APuU4Z/9x7N7TzoHjkRzNvA01tkU126sQki9i1oT+cz0nnD7d1hIyEPB
+ TYOD327vjgpxOJi6s3racXMnKoSjrbdV/HZn8KxLefljaGcqzFq3HA5x
+X-Gm-Gg: AYBFou2WMw//NrA5TURfrs7q6eES4lkdGvWwMxU1DTo+jU2uqB/hGR1AakxozZjFp8O
+ FFCHwR34nylx9+EO9AVwlyDjiT+Zu3ZRQHlwxckE7ARYNafM3oo9Unpzwsq/YABB0frh50ZPZfZ
+ vukw0TPpl1rd1cUJdsyDDRIKB37qnINxXqA31MDgH5vbmcuZW5eBAr1SQCPiNTZhu14QHk5S+nf
+ qOZ7Rz+UqGBYkqOD1IhqD1tHBJ6M/5NKHk9CiuaChfVk/CaE/0Mx4BS/SWakJMeLczYfKpI96k+
+ e4qEl0vnXQh3/KFVL+LMx6EmR9MvywU6l1cla9+KhEWJhSu1Ku4UdPl7tlvsMeID6q6+UqU8UoD
+ jtRyzNp21jc460vtdFvrFNT2Vo2FowKGPBGvckmBmt3lfh0K7nggBCuASJdn72ysIXqjsKjkQU4
+ JQ4pFvc5Hk3wPXp95vEtwmcsY+3NAiDWE+rOSViIiWCjgL4Is1nEumVL4Utnycw2yeVQKSXx3ls
+ WpYeeOTx3M24fO9q6sQHvrGZQBhvbxVhZ0Lc5rkw7BNOrsqaK+j1qrvxxtomWM6uNFEtxVAbCSr
+ qwIFBKt7+X59kCkq9NNhsFKb8cO8FkgwZ7iNJXCLqRDcgw==
+X-Received: by 2002:a05:6000:2201:b0:48f:bb47:3d68 with SMTP id
+ ffacd0b85a97d-48fbb473ee0mr16648646f8f.1.1793891661592; 
+ Thu, 05 Nov 2026 07:14:21 -0800 (PST)
+Received: from localhost.localdomain ([193.169.70.108])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48fed45d71dsm10452802f8f.36.2026.11.05.07.14.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Nov 2026 07:14:21 -0800 (PST)
+From: Itai Handler <itai.handler@gmail.com>
+To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com,
+ volodymyr_babchuk@epam.com, peter.maydell@linaro.org,
+ francisco.iglesias@amd.com, edgar.iglesias@gmail.com,
+ "Edgar E. Iglesias" <edgar.iglesias@amd.com>, berrange@redhat.com,
+ eugene@nuvacore.ai, Ruslan_Ruslichenko@epam.com,
+ takahiro.nakata.wr@renesas.com, philmd@oss.qualcomm.com
+Subject: [RFC PATCH] hw/core: Add a read FIFO to the Remote Port memory master
+Date: Thu,  5 Nov 2026 17:13:53 +0200
+Message-Id: <20261105151351.2644438-1-itai.handler@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <0b67848f-d69d-4402-b378-4012bcface17@gmail.com>
+References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+ <20260915160044.345788-12-ruslichenko.r@gmail.com>
+ <20261103135503.71748-1-itai.handler@gmail.com>
+ <0b67848f-d69d-4402-b378-4012bcface17@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <CAE2XoE-fTKqUB0TZh0-HW6RuMyWJhMGDijarhGSmwsYVTWAcPQ@mail.gmail.com>
-User-Agent: Mutt/2.4.3 (2026-10-09)
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: dgWd6gDnPmc8OJIrSgkjJbE9e4-pTEqbz90uoCGXqGc_1793888220
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=itai.handler@gmail.com; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,168 +106,353 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 09:25:39PM +0800, Yonggang Luo wrote:
-> On Thursday, November 5, 2026, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> >
-> > On Thu, Nov 05, 2026 at 07:14:35PM +0800, Yonggang Luo wrote:
-> > > On Thu, Nov 5, 2026 at 6:55 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
-> > > >
-> > > > On Sun, Nov 01, 2026 at 12:40:01AM +0800, Yonggang Luo wrote:
-> > > > > max-v8 was one TypeInfo whose instance initializer was chosen from the
-> > > > > selected target at registration. Register both initializers, and let
-> > > > > target_arm() and target_aarch64() select which type is available.
-> > > > >
-> > > > > Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-> > > > > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > > > > ---
-> > > > >  target/arm/cpu.c            |  1 +
-> > > > >  target/arm/cpu.h            |  1 +
-> > > > >  target/arm/tcg/cpu-max-v8.c | 16 ++++++++++++----
-> > > > >  3 files changed, 14 insertions(+), 4 deletions(-)
-> > > > >
-> > > > > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > > > > index 510fc9eeb3b..6eb55242980 100644
-> > > > > --- a/target/arm/cpu.c
-> > > > > +++ b/target/arm/cpu.c
-> > > > > @@ -2695,6 +2695,7 @@ void arm_cpu_register(const ARMCPUInfo *info)
-> > > > >          .instance_init = arm_cpu_instance_init,
-> > > > >          .class_init = info->class_init ?: cpu_register_class_init,
-> > > > >          .class_data = info,
-> > > > > +        .is_available = info->is_available,
-> > > > >      };
-> > > > >
-> > > > >      type_info.name = g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
-> > > > > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > > > > index add993ef101..3240a8633ee 100644
-> > > > > --- a/target/arm/cpu.h
-> > > > > +++ b/target/arm/cpu.h
-> > > > > @@ -1203,6 +1203,7 @@ typedef struct ARMCPUInfo {
-> > > > >      const char *deprecation_note;
-> > > > >      void (*initfn)(Object *obj);
-> > > > >      void (*class_init)(ObjectClass *oc, const void *data);
-> > > > > +    bool (*is_available)(void);
-> > > > >  } ARMCPUInfo;
-> > > > >
-> > > > >  /**
-> > > > > diff --git a/target/arm/tcg/cpu-max-v8.c b/target/arm/tcg/cpu-max-v8.c
-> > > > > index 65f851f2006..e819d07e6ce 100644
-> > > > > --- a/target/arm/tcg/cpu-max-v8.c
-> > > > > +++ b/target/arm/tcg/cpu-max-v8.c
-> > > > > @@ -121,10 +121,18 @@ void aarch32_max_v8_tcg_initfn(Object *obj)
-> > > > >
-> > > > >  static void cpu_max_v8_register_type(void)
-> > > > >  {
-> > > > > -    static const ARMCPUInfo max_v8[2] = {
-> > > > > -        { .name = "max-v8", .initfn = aarch32_max_v8_tcg_initfn },
-> > > > > -        { .name = "max-v8", .initfn = aarch64_max_v8_tcg_initfn },
-> > > > > +    static const ARMCPUInfo max_v8_aarch32 = {
-> > > > > +        .name = "max-v8",
-> > > > > +        .initfn = aarch32_max_v8_tcg_initfn,
-> > > > > +        .is_available = target_arm,
-> > > > >      };
-> > > > > -    arm_cpu_register(&max_v8[target_aarch64()]);
-> > > > > +    static const ARMCPUInfo max_v8_aarch64 = {
-> > > > > +        .name = "max-v8",
-> > > > > +        .initfn = aarch64_max_v8_tcg_initfn,
-> > > > > +        .is_available = target_aarch64,
-> > > > > +    };
-> > > > > +
-> > > > > +    arm_cpu_register(&max_v8_aarch32);
-> > > > > +    arm_cpu_register(&max_v8_aarch64);
-> > > > >  }
-> > > > >  type_init(cpu_max_v8_register_type)
-> > > >
-> > > > Conceptually these are two separate CPUs one 32-bit featureset
-> > > > and one 64-bit featureset, but both given the same name. The
-> > > > current code registers them only in the respective arm and aarch64
-> > > > target binaries, but this CPU is an oddity overall.
-> > >
-> > > This is the one I did before
-> > > https://lore.kernel.org/qemu-devel/20261013195606.152-1-luoyonggang@gmail.com/
-> > >
-> > > target/arm: defer max-v8 initializer selection until CPU creation
-> > > but rejected, and I think it's fine.
-> >
-> > So that essentially matches the historical semantics where one
-> > CPU class magically changes its behaviour based on what target
-> > is running.  So in that sense, it works, and is no worse than
-> > the semantics we've had for 'max' models forever.
-> >
-> > Splitting into 2 distinct types is worthwhile if we want to
-> > make it possible for the aarch64 emulator to support a runtime
-> > choice of both 32-bit and 64-bit "max" models.
-> >
-> > This patch doesn't allow that though, as it is creating two
-> > classes with the same name and filtering which is registered.
-> > If we don't intend to allow 64-bit target to ever use a 32-bit
-> > 'max' CPU, then your original patch is better IMHO.
-> 
-> 
-> Hi Daniel, this is a prepare to allow creating two classes with
-> the same name, the is_available will be removed later.
+A guest that drains a device's data FIFO, a QSPI controller's for
+example, reads it one word per access, and each access to a Remote
+Port memory master is a round trip to the peer, about 17 us on a fast
+host: such a guest reads a flash at about 230 kB/s.
 
-Sending patches to implement an approach which is already planned
-to be removed is rather making life hard on reviewers.
+Let the peer hand the master what the guest is about to read.  When
+QEMU's hello announces CAP_READ_FIFO, the peer may send writes on the
+master's channel: their data, up to RP_READ_FIFO_SIZE (4 KiB) bytes,
+replace what the master's read FIFO holds, and the next reads whose
+start address is in [addr, addr + stream_width) are answered from it
+in order, without a round trip.  A read the FIFO covers only in part
+reads the rest from the peer.  A write of no data, or a reset, empties
+the FIFO.
 
-> 
-> Maybe I should directly replace is_available with TypeBucket to get
-> things be clear to review,
-> but that is explicitly rejected by Pierrick
-> 
-> >
-> >
-> > > > More generally the aarch64 emulator includes all the 32-bit CPUs
-> > > > that the arm emulator includes, and just adds extra 64-bit CPUs.
-> > > > IOW, excluding the 32-bit max-v8 CPU is a special case - if it
-> > > > were not for the clashing name, it would be included like all the
-> > > > other 32-bit CPUs.
-> > > >
-> > > > Thus rather than using is_available to continue to exclude it,
-> > > > we must instead resolve the naming problem, such that both
-> > > > models can be included concurrently.
-> > >
-> > > I have already implemented the TypeBucket over targets/arch_mask that works
-> > > properly. That same QOM name will have multiple TypeImpl.
-> >
-> > I'm not sure what you mean by TypeBucket, but my general thought is that
-> > at the QOM class/type naming level everything must always be unique,
-> > such that we have a single object modelk across QEMU.
-> >
-> > Any ambiguitity & its resolution (if needed) should live outside core
-> > QOM typework, such as with aliases in machines/CPUs.
-> 
-> Yeap, it's a design choice, both renaming the QOM type with
-> MachineClass::targets;
-> or using TypeBucket in object.c(so all QOM types do not need rename
-> including "virt" machines)
-> is implemented by me, it's just finally what we want to do.
+The peer posts the fill before its response to the access that told
+it what comes next, and rp_process() runs after each response, so the
+fill is in place before that access completes.  The peer decides what
+the guest will read; the master only replays bytes in order and knows
+nothing of the device.
 
-I don't know what you mean with this TypeBucket concept, can you
-share more info ?
+The size is a protocol constant rather than a property, so that the
+two ends cannot disagree: the peer never sees the error response to a
+posted fill.  The buffer is allocated at the first fill.
 
-IMHO, renaming the non-unique QOM types is inescapable. From a POV of
-introspecting a binary, we need to get to a single uniform type
-hierarchy across QEMU where the classes are all statically defined
-and unique.  This complements the work to replace instance properties
-with class properties, to also give us unambiguously introspectable
-types.
+Measured with a model of a QSPI controller, the flash behind it a
+model of its own over a link of its own: the controller's first read
+of a batch hands QEMU the bytes that the guest's last read of the
+fill level promised, so a batch of 256 bytes costs two round trips
+instead of 65.  A guest booting from that flash through U-Boot, means
+of three interleaved runs, two for the kernel FIT:
 
+                                            before    after
+  U-Boot sf read, 1 MiB                     4.59 s    0.35 s
+  U-Boot sf read, the 15.9 MB kernel FIT    68.0 s    4.9 s
+  Linux dd from a flash partition, 256 KiB  1.21 s    0.16 s
+  QEMU's start to a Linux shell             90.1 s    24.9 s
 
-With regards,
-Daniel
+The capability's number needs agreeing with the other Remote Port
+implementations.
+
+Signed-off-by: Itai Handler <itai.handler@gmail.com>
+---
+Ruslan, thank you for the quick answer - here is the patch as an RFC,
+as you suggested.
+
+It applies on top of "hw/core: Introduce Remote Port Co-simulation
+Protocol" v2 on its own (the 20 patches, on QEMU 11.1.2): none of the
+FDT machine series is needed for it, and checkpatch is clean.
+
+The one thing I cannot settle on my own is the capability number:
+CAP_READ_FIFO takes 5, the next free one in v2, but the other Remote
+Port implementations would have to agree on it.
+
+Happy to rework or drop any of this, and to test v3.
+
+ hw/core/remote-port-memory-master.c         | 111 +++++++++++++++++++-
+ hw/core/remote-port-proto.c                 |   3 +
+ hw/core/remote-port.c                       |   1 +
+ hw/core/trace-events                        |   2 +
+ include/hw/core/remote-port-memory-master.h |  13 +++
+ include/hw/core/remote-port-proto.h         |  12 +++
+ 6 files changed, 139 insertions(+), 3 deletions(-)
+
+diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote-port-memory-master.c
+index 4ef03c959..3a519f562 100644
+--- a/hw/core/remote-port-memory-master.c
++++ b/hw/core/remote-port-memory-master.c
+@@ -17,6 +17,7 @@
+ #include "hw/core/sysbus.h"
+ #include "migration/vmstate.h"
+ #include "hw/core/qdev-properties.h"
++#include "qemu/error-report.h"
+ #include "trace.h"
+ 
+ #include "hw/core/remote-port-proto.h"
+@@ -184,31 +185,115 @@ MemTxResult rp_mm_access(RemotePort *rp, uint32_t rp_dev,
+                                       0);
+ }
+ 
++/*
++ * Pop up to @size bytes of the read FIFO into @data for a read at @addr,
++ * the address the peer sees, if it holds data for that address.
++ */
++static unsigned rp_mm_fifo_pop(RemotePortMemoryMaster *s, uint64_t addr,
++                               unsigned size, uint64_t *data)
++{
++    unsigned n, i;
++
++    if (!s->fifo.len || addr < s->fifo.addr ||
++        addr - s->fifo.addr >= s->fifo.range) {
++        return 0;
++    }
++    n = MIN(size, s->fifo.len);
++    for (i = 0; i < n; i++) {
++        *data |= (uint64_t)s->fifo.buf[s->fifo.head++] << (i * 8);
++    }
++    s->fifo.len -= n;
++    trace_remote_port_memory_master_fifo_pop(s->rp_dev, addr, n, s->fifo.len);
++    return n;
++}
++
+ static MemTxResult rp_mm_read(void *opaque, hwaddr addr, uint64_t *data,
+                                  unsigned size, MemTxAttrs attrs)
+ {
+     MemTxResult ret;
+     RemotePortMap *map = opaque;
+     RemotePortMemoryMaster *s = map->parent;
++    uint64_t fifo_data = 0;
++    unsigned n;
+ 
+     RPMemoryTransaction tr = {};
+ 
++    n = rp_mm_fifo_pop(s, addr + (s->relative ? 0 : map->offset), size,
++                       &fifo_data);
++    if (n == size) {
++        *data = fifo_data;
++        return MEMTX_OK;
++    }
++
++    /* What the FIFO did not hold is read from the peer.  */
+     tr.opaque = map;
+     tr.rw = false;
+-    tr.addr = addr;
+-    tr.size = size;
++    tr.addr = addr + n;
++    tr.size = size - n;
+     tr.attr = attrs;
+ 
+     ret = rp_mm_access(s->rp, s->rp_dev, s->peer, &tr, s->relative,
+                 map->offset);
+ 
+     if (ret == MEMTX_OK) {
+-        *data = tr.data.u64;
++        *data = fifo_data | tr.data.u64 << (n * 8);
+     }
+ 
+     return ret;
+ }
+ 
++/*
++ * A write from the peer on our channel fills the read FIFO
++ * (CAP_READ_FIFO): its data replace what the FIFO holds, for the reads
++ * of [addr, addr + stream_width).  A write of no data empties it.  The
++ * peer sends it before its response to an access, so that the response
++ * drains it (rp_mm_access_with_def_attr()) before the access completes.
++ */
++static void rp_mm_fifo_fill(RemotePortDevice *rpd, struct rp_pkt *pkt)
++{
++    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(rpd);
++    uint8_t *data = rp_busaccess_rx_dataptr(s->peer,
++                                            &pkt->busaccess_ext_base);
++    uint32_t len = pkt->busaccess.len;
++    uint32_t range = pkt->busaccess.stream_width;
++    uint32_t resp = RP_RESP_OK;
++
++    trace_remote_port_memory_master_fifo_fill(pkt->hdr.dev,
++                                              pkt->busaccess.addr, range, len);
++    if (len > RP_READ_FIFO_SIZE || (len && !range)) {
++        g_autofree char *path = object_get_canonical_path(OBJECT(s));
++
++        warn_report_once("%s: a read FIFO fill of %" PRIu32 " bytes for 0x%"
++                         PRIx32 " bytes at 0x%" PRIx64 " was rejected "
++                         "(at most %d bytes, for a range)",
++                         path, len, range, pkt->busaccess.addr,
++                         RP_READ_FIFO_SIZE);
++        resp = RP_RESP_ADDR_ERROR;
++        len = 0;
++    }
++    if (len) {
++        if (!s->fifo.buf) {
++            s->fifo.buf = g_malloc(RP_READ_FIFO_SIZE);
++        }
++        memcpy(s->fifo.buf, data, len);
++    }
++    s->fifo.head = 0;
++    s->fifo.len = len;
++    s->fifo.addr = pkt->busaccess.addr;
++    s->fifo.range = range;
++
++    if (!(pkt->hdr.flags & RP_PKT_FLAGS_posted)) {
++        struct rp_pkt_busaccess_ext_base rsp;
++        struct rp_encode_busaccess_in in;
++        size_t enclen;
++
++        rp_encode_busaccess_in_rsp_init(&in, pkt);
++        in.attr |= resp << RP_BUS_RESP_SHIFT;
++        enclen = rp_encode_busaccess(s->peer, &rsp, &in);
++        rp_write(s->rp, (void *) &rsp, enclen);
++    }
++}
++
+ static MemTxResult rp_mm_write(void *opaque, hwaddr addr, uint64_t data,
+                                   unsigned size, MemTxAttrs attrs)
+ {
+@@ -286,6 +371,13 @@ static void rp_memory_master_realize(DeviceState *dev, Error **errp)
+     }
+ }
+ 
++static void rp_memory_master_reset_hold(Object *obj, ResetType type)
++{
++    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(obj);
++
++    s->fifo.len = 0;
++}
++
+ static void rp_prop_allow_set_link(const Object *obj, const char *name,
+                                    Object *val, Error **errp)
+ {
+@@ -339,13 +431,25 @@ static Property rp_properties[] = {
+                        max_access_size, RP_MAX_ACCESS_SIZE),
+ };
+ 
++static void rp_memory_master_finalize(Object *obj)
++{
++    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(obj);
++
++    g_free(s->fifo.buf);
++}
++
+ static void rp_memory_master_class_init(ObjectClass *oc, const void *data)
+ {
+     FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(oc);
+     DeviceClass *dc = DEVICE_CLASS(oc);
++    RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
++    ResettableClass *rc = RESETTABLE_CLASS(oc);
++
+     device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
+     dc->realize = rp_memory_master_realize;
+     fmc->parse_reg = rp_parse_reg;
++    rpdc->ops[RP_CMD_write] = rp_mm_fifo_fill;
++    rc->phases.hold = rp_memory_master_reset_hold;
+ }
+ 
+ static const TypeInfo rp_info = {
+@@ -353,6 +457,7 @@ static const TypeInfo rp_info = {
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(RemotePortMemoryMaster),
+     .instance_init = rp_memory_master_init,
++    .instance_finalize = rp_memory_master_finalize,
+     .class_init    = rp_memory_master_class_init,
+     .interfaces    = (InterfaceInfo[]) {
+         { TYPE_FDT_GENERIC_MMAP },
+diff --git a/hw/core/remote-port-proto.c b/hw/core/remote-port-proto.c
+index 0c90ba897..df4157de6 100644
+--- a/hw/core/remote-port-proto.c
++++ b/hw/core/remote-port-proto.c
+@@ -420,6 +420,9 @@ void rp_process_caps(struct rp_peer_state *peer,
+         case CAP_ATS:
+             peer->caps.ats = true;
+             break;
++        case CAP_READ_FIFO:
++            peer->caps.read_fifo = true;
++            break;
+         }
+     }
+ }
+diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
+index 6a6effdd1..a8718161a 100644
+--- a/hw/core/remote-port.c
++++ b/hw/core/remote-port.c
+@@ -274,6 +274,7 @@ static void rp_say_hello(RemotePort *s)
+         CAP_BUSACCESS_EXT_BYTE_EN,
+         CAP_WIRE_POSTED_UPDATES,
+         CAP_ATS,
++        CAP_READ_FIFO,
+     };
+     size_t len;
+ 
+diff --git a/hw/core/trace-events b/hw/core/trace-events
+index b5f8fafc6..2722e4306 100644
+--- a/hw/core/trace-events
++++ b/hw/core/trace-events
+@@ -41,6 +41,8 @@ rp_wait_resp(const char *rp) "'%s'"
+ 
+ # remote-port-memory-master.c
+ remote_port_memory_master_tx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
++remote_port_memory_master_fifo_fill(uint32_t dev, uint64_t addr, uint32_t range, uint32_t len) "dev=0x%"PRIx32", addr=0x%"PRIx64", range=0x%"PRIx32", len=0x%"PRIx32
++remote_port_memory_master_fifo_pop(uint32_t dev, uint64_t addr, uint32_t len, uint32_t left) "dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", left=0x%"PRIx32
+ remote_port_memory_master_rx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
+ 
+ # remote-port-memory-slave.c
+diff --git a/include/hw/core/remote-port-memory-master.h b/include/hw/core/remote-port-memory-master.h
+index 011867f36..a7bcdb703 100644
+--- a/include/hw/core/remote-port-memory-master.h
++++ b/include/hw/core/remote-port-memory-master.h
+@@ -35,6 +35,19 @@ struct RemotePortMemoryMaster {
+     MemoryRegionOps *rp_ops;
+     RemotePortMap *mmaps;
+ 
++    /*
++     * The read FIFO the peer fills (CAP_READ_FIFO): the reads at
++     * addresses in [addr, addr + range) return its len bytes from head,
++     * in order.  buf, RP_READ_FIFO_SIZE bytes, comes with the first fill.
++     */
++    struct {
++        uint8_t *buf;
++        uint32_t head;
++        uint32_t len;
++        uint64_t addr;
++        uint64_t range;
++    } fifo;
++
+     /* public */
+     uint32_t map_num;
+     uint64_t map_offset;
+diff --git a/include/hw/core/remote-port-proto.h b/include/hw/core/remote-port-proto.h
+index c86f0657d..7d1016757 100644
+--- a/include/hw/core/remote-port-proto.h
++++ b/include/hw/core/remote-port-proto.h
+@@ -132,8 +132,19 @@ enum {
+     CAP_WIRE_POSTED_UPDATES = 3,
+ 
+     CAP_ATS = 4, /* Address translation services */
++
++    /*
++     * A memory master takes the writes its peer sends on its channel as
++     * fills of its read FIFO: the data, up to RP_READ_FIFO_SIZE bytes,
++     * replace what the FIFO holds, and the next reads at addresses in
++     * [addr, addr + stream_width) return them in order without a round
++     * trip.  A write of no data empties the FIFO.
++     */
++    CAP_READ_FIFO = 5,
+ };
+ 
++#define RP_READ_FIFO_SIZE 4096
++
+ struct rp_pkt_hello {
+     struct rp_pkt_hdr hdr;
+     struct rp_version version;
+@@ -309,6 +320,7 @@ struct rp_peer_state {
+         bool busaccess_ext_byte_en;
+         bool wire_posted_updates;
+         bool ats;
++        bool read_fifo;
+     } caps;
+ 
+     /* Used to normalize our clk.  */
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.34.1
 
 

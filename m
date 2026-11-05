@@ -1,146 +1,107 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 539D3606D82A
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Nov 2026 23:06:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 75603606A31B
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 03:29:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256 header.s=selector2 header.b=ZvW/XH3P
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=vSB5SM3A
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOk3O-000162-FD; Wed, 04 Nov 2026 18:06:02 -0500
+	id 1xOo9n-0007Xm-82; Wed, 04 Nov 2026 22:28:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1xOk3M-00015B-1k; Wed, 04 Nov 2026 18:06:00 -0500
-Received: from mail-centralusazlp170110009.outbound.protection.outlook.com
- ([2a01:111:f403:c111::9] helo=DM5PR21CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1xOk3K-0004cs-EF; Wed, 04 Nov 2026 18:05:59 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Kz7nLHUWHwFH5+Kt4lg5OnmVZhHDVepToDaqmnn7MlO/wAX/1HFO5yFH3/FSdb8QDGBXkMqEb//y/9FjpCYg+Bhlf8fymHH5B0Ma49WHHXB1gTOpofOh4pSXOZcQkmpOYKvx8tjhn4K1qOYIZMKSTbmI53TUQFffrFt0PpJV5eZMOtQRSnG94h7WIoYNwehD2k4oMGflDgdGEqsZj9ER1kOqw2ggOorCWvrmQU1CzT0bJCf5X7HN3JbM5mAmuY04VlRXO+1ciGFpgth2mYBj5Zmo1xdZTCSnPDDmUFyxNTTKmpMX8Fiq0Xi3sD+b5Dl7uYE5c0I9wJAu9sP7jojhhw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9D+uq06nk1mTuc8nq3aScwft0mcD5sUqvVK0nOBx3WM=;
- b=sUrddQ11IYyPTJ/vcYZVYYaaUZEK8jE61mcsXk9uqPz+4z7yxtZQ1mY//S635OIhmWPBEGHVKpak/XZN0l6mZKOGbIpbesQ5tziiBOGhKOBTPBoQPmg0Lwu23LZYTW1IFTiKxB8v6esOFHqA7CNRFNZGsBEqMoAGBsW7GNeqmL9bW249tQ4dgbjdUVjwh3pAF3sontC8AUTrtb2Ss/7sfHkC55Kc8zoAc6ztodNz63DsebT3xZrlAt9XHI5jZq7FhZbdw5DHw1SXh3w8bKIy8GY7sdEDzdtaxbx2bwaFox1YtnnR7wfRxKGkqLvGFPN78j9hr2cViuz+9SWC+kbeJw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9D+uq06nk1mTuc8nq3aScwft0mcD5sUqvVK0nOBx3WM=;
- b=ZvW/XH3Ps6zMQo5gIIO1rzPPS9kbBDIAf3cQV4Avmv6b+/yAJS94mb9JOKEukZkDjsJXqZ+rbmS7VJTmugZwKQ+FhIcfEewfMMfBau3ReO/iPj04Mm5Fa6Mpa3rTSAF7QmexrEDGgd8vIEuHq0jJbFrz6/hm43IP7vQxdlXrDBxuGXBD9gHNdN+J7J+0aD/5YI61oatVrOohV4p3yA1gXi3ZB7Gb+fNd5OBuoScTZXAcADGVh1YaRnR782LLenF//N+bgoCf9sope8AEO20WYHxmHT65H/JcS7L7u1yl+H5Le24qu91hJCB5PGWo5sL5KQeoGcB9YQXzhMH1CzY5dQ==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from IA3PR12MB923065.namprd12.prod.outlook.com
- (2603:10b6:208:627::17) by CY5PR12MB6574.namprd12.prod.outlook.com
- (2603:10b6:930:42::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.12; Wed, 4 Nov
- 2026 23:05:31 +0000
-Received: from IA3PR12MB923065.namprd12.prod.outlook.com
- ([fe80::1c83:bf47:4202:50b1]) by IA3PR12MB923065.namprd12.prod.outlook.com
- ([fe80::1c83:bf47:4202:50b1%5]) with mapi id 15.21.0592.007; Wed, 4 Nov 2026
- 23:05:31 +0000
-Message-ID: <15e92633-d826-4ad3-8fe8-fb82585b0d4c@nvidia.com>
-Date: Wed, 4 Nov 2026 17:05:27 -0600
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/5] hw/pci: add fixed BAR fw_cfg blob export
-To: Ard Biesheuvel <ardb@kernel.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org,
- "Michael S. Tsirkin" <mst@redhat.com>, marcel@redhat.com,
- "devel@edk2.groups.io" <devel@edk2.groups.io>, alwilliamson@nvidia.com,
- Jason Gunthorpe <jgg@nvidia.com>,
- Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20261102181241.3077981-1-tdave@nvidia.com>
- <20261102181241.3077981-4-tdave@nvidia.com>
- <f46e21c2-a0f3-460a-a7a3-eabf19b7d9cb@app.fastmail.com>
-From: Tushar Dave <tdave@nvidia.com>
-Content-Language: en-US
-In-Reply-To: <f46e21c2-a0f3-460a-a7a3-eabf19b7d9cb@app.fastmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SJ0PR13CA0229.namprd13.prod.outlook.com
- (2603:10b6:a03:2c1::24) To IA3PR12MB923065.namprd12.prod.outlook.com
- (2603:10b6:208:627::17)
+ (Exim 4.90_1) (envelope-from <anisa.su887@gmail.com>)
+ id 1xOnLA-0007BZ-Ck
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2026 21:36:36 -0500
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <anisa.su887@gmail.com>)
+ id 1xOnL7-00011h-RV
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2026 21:36:36 -0500
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2e8f2c3ad6bso7802415ad.1
+ for <qemu-arm@nongnu.org>; Wed, 04 Nov 2026 18:36:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1793846192; x=1794450992; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :content-type:mime-version:references:message-id:subject:cc:to:date
+ :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=nViQXEXb8FJgMvus18RjRAnfJrMbGBdJOVdrFbyGTMQ=;
+ b=vSB5SM3Ax7nU77tx8/N8KsIh6Ji6Y3bMthh15xHmi7OWkyMlBWkh9z5XHBAtbsmdIo
+ 0SVJUP476JHA9moPhzs9dH82J0uefTTIE2LXBieAxgVBE/5Ue22cxLciOe9YPxNqwyOV
+ MI5uf5rdTKfqhJrnB5Qu84ThtVC4kvqLz8iTTcuKpjurjYDIxEC9zclQYh3FNuWhqxv3
+ 0sxfM1sFHYYAEYMJLxIrZhSFmTsLIG7k/0kI0tT+DtGNee9fH4D6n5VRhVoqHEjoBfSG
+ fiex6lIu9k0a0xDFOboaRwLzPPmkdTYXDKtltZ8VY5laCmCVAT1mA7yMCrnelRNtpMKS
+ 7MIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793846192; x=1794450992;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :content-type:mime-version:references:message-id:subject:cc:to:date
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=nViQXEXb8FJgMvus18RjRAnfJrMbGBdJOVdrFbyGTMQ=;
+ b=w4VnJnaeqxs1vneuubjQM6svzPq4WFSZd89i92ETs05l3N2Y1cyb1etKPIH7EB5oPv
+ 1QuVcknS+th5IDpobtFgtvTe3iEKRSn711aocfGARL7DdJpenaQDFit0dZ2CvndtBf4a
+ bxMVTs3tJIPfFykH+LueVUAcVRGIWKqEWij85VJ3Gx+9HU/tveG+w13Ap8iylPO+CgUm
+ vYFu1beUVtyEP6PIXmppF/2L015wVBTIMhS0DSKI8oL8Jx5oValPUSaItY0GzKstC//+
+ Fv3TWy5dWfuoYB46yVFPG1QBzgJN9ya38k2s+gS4FJWPb5+ii4WyPI8sJ7KaaTi87rmj
+ 5VWA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwjNHIjhKAKDq1BSK17vSrX5dWrPl5QwVLuA3lkb4fP0C4qpez4Jq6j6VQrY/SA4Y586syn4g+7DQ==@nongnu.org
+X-Gm-Message-State: APuU4Z+Yd/a6dsI0iZPlVJfVQ0P/TExu3ZoH8KLP24xYZg1U/DiGyWeJ
+ /6Au5rz00nVy8Fe4lhnT5Fe9eVLYRJLHnDbd8jlUKotsHpLiJgIul3hg
+X-Gm-Gg: AYBFou3oQ3swsnamyJK/OFWAlI9jEbs6aZKcRBppx6JnOULQe95Q0pd2vsrzv8Mu1Tz
+ o0fAB1nU82pGVaQgQtqHqqSl6vsQ+Gaa7y8e1ZI030T0Nt14TMH5GWKT7rE9p+Gc3J9C8JRb9FG
+ GTnybsJne3LmKkE5Ifn+FeJuoKFj3ZycSf3jXsqruUi8D+qT5AcukwPDRTYdwm4QJeCkX1d9gdV
+ MIruAxE+TN0VD6MCikr6qRMnl6O+HPO9vho8LIGgm2LSpNl5lQSQTrwcxFHrCd7E+tHxc2VCr0A
+ boh54PgWQzRs/3PGOtkbyfdqMa7U3l5AcDK0VvlPDR4C0ubnzxnoyb1AEJi1nj62LF4LXAir2zv
+ bjYHiBcyAyuwYQKKEkGmj8WBiNh+G+zLeggJbM+vw1pjL8YJ3rFcM3KZ6KCyPwbDtl1ThuQ4rEH
+ FThSYmBpCGEthj7682pBTH0/h/JKEPR7nqH8hdxOeIKjNHu2R24cijy1JCU8riQ0Of5SQWjkXr7
+ Z06IoimmRd++L8Hufyu/tqgsxrYVmaQPafR3QxzUtypu6fUNgUmipCLSvRwSSjyNdgk3nBTWREk
+ mKFT7BAKovDewpDWKcJhGKeuxw==
+X-Received: by 2002:a17:903:1844:b0:2e9:8bd4:577d with SMTP id
+ d9443c01a7336-2eb364de4d8mr173672565ad.37.1793846191761; 
+ Wed, 04 Nov 2026 18:36:31 -0800 (PST)
+Received: from cxlqual ([220.120.90.131]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2ed0921c78fsm12134315ad.74.2026.11.04.18.36.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Nov 2026 18:36:30 -0800 (PST)
+From: Anisa Su <anisa.su887@gmail.com>
+X-Google-Original-From: Anisa Su <anisa.su@samsung.com>
+Date: Thu, 5 Nov 2026 11:38:48 +0900
+To: Yukiya Takaki <fj2110jc@fujitsu.com>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Jonathan Cameron <jic23@kernel.org>, Junjie Cao <junjie.cao@intel.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
+ "Wolski, Tomasz" <tomasz.wolski@fujitsu.com>, lizhijian@fujitsu.com,
+ y-goto@fujitsu.com, yukiya.takaki@gmail.com
+Subject: Re: [PATCH RFC 0/7] QEMU/hw/cxl: Allow CXL Type 3 memory regions to
+ be initialized at guest boot
+Message-ID: <auvsOE3OlS5I9ueG@cxlqual>
+References: <cover.1793003983.git.fj2110jc@fujitsu.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: IA3PR12MB923065:EE_|CY5PR12MB6574:EE_
-X-MS-Office365-Filtering-Correlation-Id: dff6debe-9713-4d52-e543-08df3ac81fcc
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|1800799024|23010399003|366016|3023799007|6133799003|10067099003|18002099003|261102123227099003|22082099003|261102130727099003|56012099006|11063799006|261021121427099003|4143699003|261022075727099003|261026121527099003|261026140227099003|261009223027099003|261028144727099003|261022105027099003|260925021911599003|260925022911599003|260925021311599003;
-X-Microsoft-Antispam-Message-Info: Em1zWGNS2YHNXgC9QE2fEUXejbVTjDGxk8Of4Xq//QGrwXxdVTXfzARDOOLGIRSsXeN0cna1mlVA+cPhKwFxiZALdG9L94pfUCdiNvMCWINlIdx36MTRi6NKsd/CXtQwIi7BZpUPh/SQ6m2C/2VzVf3BlyREObRnXih5lTWUqy9bQXQwbg9jhYE7rL6wfpbavYOmTr+G/PmRGz8I2cot1xQJqp/7rDYQj9iqDTOYqWzKSO7UC+UIna+/iRG3OJocRFcmn736ieWxvv/5wvjdV6Uf/mOjLajYEGX98SXw1045hUp4imtb1BvGapmYXqiut5p5baSKhpyBUdhQaIUXr6JSj2jeBoSXOhgOjvpI8WWjsyVNrySe6kNvyXh64ynWKMpTLRc/ZJXcgEK0FuvM0wDlXF4lZyHNLcMY+zO3fCXeNO3tRHzZMSvhegrT/HZir3285KkfygTWy3CnR0P97R1pV/UCOxehCvWYjfhU+A7dN3N7nIHeYyf8Di4UO9ujEuX6dY0ZLm3zSVwZDB9OWG1zk3l23uPk5JJdLx2WB5tJpTLD0Nmwt9wEqhUWENxou9JoPQPGNnv/El9JCbzMTAst635gGp2/AyowqunFIMGa2RaCXd9QVjflvXbkTmjoAk6MR/CKftFoKXQkFSl3G61jDAFsF20EPoxW3ARdQy8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR12MB923065.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(23010399003)(366016)(3023799007)(6133799003)(10067099003)(18002099003)(261102123227099003)(22082099003)(261102130727099003)(56012099006)(11063799006)(261021121427099003)(4143699003)(261022075727099003)(261026121527099003)(261026140227099003)(261009223027099003)(261028144727099003)(261022105027099003)(260925021911599003)(260925022911599003)(260925021311599003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?R3R4a2c5czFLUStLTmhZd2tIY2JPTlk2SnZKWWcyR1dNRE96TkozaXlFN2Ri?=
- =?utf-8?B?TVJ0V0U3Z3R2dktRdmZwbUNkeTNxRllQamtCOHY4MVhRMkZwSVpUbkl5KzU0?=
- =?utf-8?B?VU05Q0RaanV0bUF6WXJQNWd5VVoxVWVRakxUY2FJRWErTEJvK2MyVzdDdXdV?=
- =?utf-8?B?TWt2Z1BwL2t3NU80OU5ITi8yYVk2SWFUdXJjUFZHYklJeENzKy9xU1FVUDdK?=
- =?utf-8?B?MTg3QU9pVDc1elRrUFVFTnA3cCsxa3hySDRXb1ZiVnprcVMvOHpITlNibE1h?=
- =?utf-8?B?NmJ5bTYzaEFGU2U2K1ZMYmhObzFZQkVJTExKODhZNnBJNDY4Y05IeXFlWG9y?=
- =?utf-8?B?SVBGeXFLazF1RFJ0dU5WcUdzd1FVNy9BTElKM250QVZJSzVXeXdJRXgvYnIr?=
- =?utf-8?B?bElNc2VnVXVBcm5vVVA3K2RTa3FqWE1BZjNjRU5zQmpLMHJJUGFraW1vcWh2?=
- =?utf-8?B?ZVNnSUNISTRkZVZKR3NYbXNEcHFiSTRwZDVqN3J2WlZicklBUHRXVkczbWNt?=
- =?utf-8?B?eGY3WWNPT3RaQk16S0hxL0tjcktOM0dXeGxBVDRZZ1BkRGJkclVIQkQwRHln?=
- =?utf-8?B?c21uYzU1dGVLZzA1aHJYbHNNT09oSTByWC9wMmdHcHEvL2hma1BVY3FWdm44?=
- =?utf-8?B?NFBLVnBjaVFCbHIxdi9kbElsMUhVbWZMMTBZUDdqT1NPUm1XSXVxMWVTRFJF?=
- =?utf-8?B?ZEZQMnVodFNFWllPR1JsVTBpOXdxYTZnV3N5OWpTK01Ka25BQ1BuRUw0ZTRW?=
- =?utf-8?B?TGRiZHhlWXRqT2N5bXN5MlRCMUZBYUI0YVdKOWpha2YwYldIWU5pV3ltUlJU?=
- =?utf-8?B?ZS9IU3B0bS9EU0wvRDB1MTduZktFOWx5dkhodnUvVExxVGkyZ1lzcmpGMW8w?=
- =?utf-8?B?T2FxS1NEc2NQUEZPdVlXT0hvZENJcUlJZHF6dXhFNWxjTURIaUVzK2lVOGZV?=
- =?utf-8?B?bkZWYXBYOGdoc29vcFdJcUJDd2s5Q2RObGEyTC9MOENVaEE3SE1Ic0R5SFgr?=
- =?utf-8?B?cGFYU2ROeGpEVzVURWpsVUpudXVRV3NpNHJjRzhiNHBSU2xLc2l0ZitEKzdI?=
- =?utf-8?B?MzBGZ25NV0dsYVIzQno5amdvTlZ2N0c1bS9MREFYc2lhQ3Zjakp0eG9uc2Iy?=
- =?utf-8?B?aFZCelV2aXNrektKVXFXR0xkNjhNZ1h4K0xrWUxpUWJudTRjOG5mczM0b0V4?=
- =?utf-8?B?K0VxTHo2UTBNdXpZV1Q5MzFkS2o3c3pIWEZydS8zN1ZWZFdhNEw4Sk9saDBo?=
- =?utf-8?B?eGJDNytuK2hxVW5WdFY5TTVGQTBGSUh1N3AyR0tNMy9zcE9MT2x4dEh1OUVw?=
- =?utf-8?B?Qk1wWnpKWDhKQ3FZd1FhSVkyL05zSFA4UXRkSVNiSExYcER0U1JNeVBmTHZ0?=
- =?utf-8?B?bDFIdElXN2VTdllEWmJrOGE3RG1Bd0NuZ0Y4N3lHMnRWTVRRYWMvenlHbHor?=
- =?utf-8?B?VzRjV2lnTGJrRWlLejFiQmtnOWhIZ1lGNUlMRU04aWdMQmtBZlpOcmFPejcr?=
- =?utf-8?B?S2l0MjNiVFk4RzdXRDEveXZ3cjJiSU1Yc2ZXY3g5SkxYZEF2RHZUYkNSN2dx?=
- =?utf-8?B?MldUQmp6UFRPRlZCSjZCOGpkVWs1MExTaEVUTmNpaFFNV2tKNG84T2dob1Jy?=
- =?utf-8?B?azBEVnIrQ210ZnNrcklwK2swQllqOUFTaFF4YWRkRFFudkpkeURUY3hsRC9Q?=
- =?utf-8?B?SFJoazJBNWVPTFk3RGRKNEh1ZSswQ2tRNEI3SXhBRmRpMks1cERCbnhnZjhC?=
- =?utf-8?B?Q0ZsYlJYMGFPeFEzV0ZoMVVIS3BmODk1RXl0anNsUkJSS3NqM0xReWxaU1di?=
- =?utf-8?B?eGwyVXk3ajA0VlMvZnd2d05xSm5sMDFmMXF4ejVTWTZkT1dZSFpYSTRxdGZs?=
- =?utf-8?B?d2dyQzRkeXhKNGE2M3FwVU52VEFFWXpYSjFzeXNEc1ZMUnoxVCswYnRaWHlB?=
- =?utf-8?B?OUtRMUJLNHc5T1JkNkphSVk0TEFrZXpINThzZ1FJWUpTMkppUEYyU1FWRE1p?=
- =?utf-8?B?c3RpTmcxTkJTWHFDbVdhNVNMcVEvRUh3bDd5YUZWVys5c3FuS3A2VENwdFlq?=
- =?utf-8?B?ZVVRK0JDazNPNDFHYzRzdGh2eFdxaDh6YnpGam1jQU53b2tPMTJiY2Y3U0k4?=
- =?utf-8?B?Q0I4V2ZtM3FqUk5ZcjU5blFxSjNoeldSTk5pYnBIMERCZ1NIbzR3VkFVbENo?=
- =?utf-8?B?K2V2OHlRK2lBTHJkVllrZjFRa0xxLy8ycHg5NHErcSt3ZjU2VkljMFM3STdl?=
- =?utf-8?B?aDFESURJSkZ5MW9EWlBqMjRTTkJRNGJoaFNDRTJtV1NBaTBqeFAvenZWTUhi?=
- =?utf-8?Q?hB9tVvlAGBBLncv9qB?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: dff6debe-9713-4d52-e543-08df3ac81fcc
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR12MB923065.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Nov 2026 23:05:31.2479 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /ZGszRvxinP4+nCLIgmQrcEIpVDx5n0wIYRc8MCGpj8/oHUKvlltikHwhMpst6vzWiYFv3Mkc45MuVRI65HBQQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6574
-Received-SPF: pass client-ip=2a01:111:f403:c111::9;
- envelope-from=tdave@nvidia.com;
- helo=DM5PR21CU001.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <cover.1793003983.git.fj2110jc@fujitsu.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=anisa.su887@gmail.com; helo=mail-pl1-x636.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 04 Nov 2026 22:28:47 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -151,82 +112,301 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On Mon, Oct 26, 2026 at 07:03:21PM +0900, Yukiya Takaki wrote:
+> Hello everyone,
+> 
+> I’m a student intern, and this is my first time sending patches to an open source mailing list.
+> 
+> This patch series configures QEMU’s CXL Type 3 devices so that guest operating systems can automatically discover
+> and create CXL regions during boot, aligning QEMU’s behavior with real hardware.
+> 
+> Background and motivation
+>   Currently, during guest boot QEMU does not provide the information or register programming needed for the guest OS
+>   to initialize CXL Type 3 memory, so using it still requires an explicit action in the guest (for example, running the cxl create-region command).
+>   By contrast, on some physical systems the firmware automatically allocates CXL memory ranges and exposes them to the OS,
+>    allowing the Linux CXL driver to discover and create regions during boot.
+>   This patch series is a first, experimental attempt to reproduce that behavior in QEMU.
+> 
+>   Some parts of this implementation are based on Li, Zhijian’s work in:
+>   https://github.com/zhijianli88/qemu/tree/program-decoder-v2
+> 
+>   I would like to ask for feedback on whether this approach makes sense and whether I should continue to enhance it.
+> 
+> Approach
+>   This patch first adds a program_hdm_decoder option to cxl-type3.
+>   When program-hdm-decoder is enabled on cxl-type3, QEMU will:
+>     1) program endpoint/host-bridge HDM decoder state,
+>     2) expose Type 3 ranges as E820_SOFT_RESERVED on x86,
+>     3) create memory-only NUMA nodes for those ranges,
+>     4) emit SRAT memory-affinity entries mapping each Type 3 HPA range to its node ID
+> 
+>   On real hardware, HDM decoder programming and memory layout are typically handled by firmware, so they would ideally be managed by SeaBIOS.
+>   However, in the current QEMU/SeaBIOS model, E820 and SRAT are built on the QEMU side, and pushing HDM decoder programming
+>   into SeaBIOS would introduce additional complexity and risk inconsistencies.
+> 
+Hi again,
 
+Thank you for your contribution. I think this series can be valuable for
+helping test autodiscovery in the kernel driver. I spent more time looking over this
+patchset and in my view, the main blockers for making this ready for upstream are:
 
-On 11/4/2026 3:59 AM, Ard Biesheuvel wrote:
+1.The HPA state is kept in the wrong place.
+Patch 2 adds hpa_offset, idx and node to CXLType3Dev but and endpoint should
+not track host state.
+
+I also think it makes more sense to make program-dhm-decoder a machine
+option (-M program-hdm-decoder...) instead of having it on cxl-type3
+endpoint
+
+2. Host bridge register init moved from reset to realize.
+As you mentioned below, "The current implementation prevents the host
+bridge HDM decoder configuration from being overwritten later in the same reset
+by moving the common initialization of the host bridge component registers from
+the reset path to the realization path."
+
+To more accurately emulate what firmware does, maybe you can try
+something like the following?
+
+1. Add program-hdm option to machine (hw/cxl/cxl-host.c, include/hw/cxl/cxl.h)
+
+typedef struct CXLState {
+    bool is_enabled;
++   bool program_hdm_decoders;
+    ...
+} CXLState;
+
++static void machine_set_hdm_auto(Object *obj, Visitor *v, const char *name,
++                                 void *opaque, Error **errp)
++{
++    CXLState *cxl_state = opaque;
++    bool value;
++
++    if (!visit_type_bool(v, name, &value, errp)) {
++        return;
++    }
++    cxl_state->program_hdm_decoders = value;
++}
+
+ void cxl_machine_init(Object *obj, CXLState *state)
+ {
+     ...
++    object_property_add(obj, "cxl-hdm-auto", "bool", machine_get_hdm_auto,
++                        machine_set_hdm_auto, NULL, state);
++    object_property_set_description(obj, "cxl-hdm-auto",
++                                    "Set on/off to have HDM decoders "
++                                    "programmed at reset as firmware would");
+
+2. Add cxl_fmws_program_decoders() to pxb_cxl reset exit.
+Every device has 3 reset phase: enter, hold, and exit. Currently,
+pxb-cxl has:
+- enter = none
+- hold = pxb_cxL-dev_reset(), which zeroes registers
+- exit = none
+
+Register cxl_fmws_program_decoders() to pxb-cxl reset exit.
+
+cxl-host.c:
++void cxl_fmws_for_each_auto_range(PXBCXLDev *pxb)
+{
+
++ /* use existing helper cxl_fmws_get_all_sorted to iterate */
++ GSList *fws = cxl_fmws_get_all_sorted(), *it;
++
++for (it = fws; it; it = it->next) {
++    CXLFixedWindow *fw = CXL_FMW(it->data);
+	/* program decoders here */
+
++    }
+}
+ ...
+
++/* Call from the pxb-cxl reset exit phase, see pxb_cxl_dev_reset_exit() */
++void cxl_fmws_program_decoders(PXBCXLDev *pxb)
++{
++    cxl_fmws_for_each_auto_range(pxb);
++}
+
+--- a/hw/pci-bridge/pci_expander_bridge.c
++++ b/hw/pci-bridge/pci_expander_bridge.c
+ #include "hw/cxl/cxl.h"
++#include "hw/cxl/cxl_host.h"
+
++static void pxb_cxl_dev_reset_exit(Object *obj, ResetType type)
++{
++    PXBCXLDev *pxb = PXB_CXL_DEV(obj);
++    PXBCXLDevClass *pc = PXB_CXL_DEV_GET_CLASS(obj);
++
++    if (pc->parent_phases.exit) {
++        pc->parent_phases.exit(obj, type);
++    }
++    if (pxb->cxl_state && pxb->cxl_state->program_hdm_decoders) {
++        cxl_fmws_program_decoders(pxb);
++    }
++}
++
+static void pxb_cxl_dev_class_init(ObjectClass *klass, const void *data)
+ {
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
+     ...
+     device_class_set_legacy_reset(dc, pxb_cxl_dev_reset);
++    rc->phases.exit = pxb_cxl_dev_reset_exit;
+ }
+
+This way, we shouldn't need to store the extra state (hpa_offset,etc.)
+in the cxl-type3 endpoints.
+
+I'm also not that familiar with the machine initialization and reset
+stages, so maybe this approach doesn't work, but this is my best guess.
+
+Thanks,
+Anisa
+
+> Testing
+>   We ran tests in the following environment and confirmed that CXL regions were created at boot, NUMA nodes were set up,
+>   and E820_SOFT_RESERVED entries appeared in the E820 table:
+> 
+>   - BIOS: SeaBIOS c2a33ad9ad1452e23b41c4ac44a3bc6be8ebc4cf
+>   - CXL memory: 4 GB
+>   - CFMWS: 4 GB
+>   - Host bridge: 1
+> 
+>   The following is the startup script.
+> 
+>   sudo /path/to/qemu/build/qemu-system-x86_64 \
+>     -name guest=cxl \
+>     -nographic \
+>     -machine q35,accel=tcg,nvdimm=on,cxl=on \
+>     -cpu max -smp 4,sockets=4,cores=1,threads=1 \
+>     -m size=4G,slots=10,maxmem=20G \
+>     -drive file=/path/to/image.qcow2,format=qcow2,index=0,media=disk,id=hd \
+>     -bios /path/to/seabios/out/bios.bin \
+>     -nic bridge,br=virbr0,model=e1000e,mac=52:54:00:b5:4e:7c \
+>     -object memory-backend-ram,size=2G,id=m0 \
+>     -object memory-backend-ram,size=2G,id=m1 \
+>     -numa node,nodeid=0,cpus=0-1,memdev=m0 \
+>     -numa node,nodeid=1,cpus=2-3,memdev=m1 \
+>     -device pcie-root-port,id=pci-root,slot=4,bus=pcie.0,chassis=0 \
+>     -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1,hdm_for_passthrough=true \
+>     -device cxl-rp,port=0,id=root_port13,bus=cxl.1,chassis=0,slot=2 \
+>     -object memory-backend-ram,size=4G,share=on,id=vmem0 \
+>     -device cxl-type3,bus=root_port13,volatile-memdev=vmem0,id=cxl-vmem0,program-hdm-decoder=true \
+>     -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=4k
+>   
+>   Furthermore, we conducted the experiment in which we added two CXL Type3.
+> 
+>   - CXL memory: 4 GB × 2
+>   - CFMWS: 4 GB × 2
+> 
+>   The following is the startup script.
+>     
+>   sudo /path/to/qemu/build/qemu-system-x86_64 \
+>     -name guest=cxl \
+>     -nographic \
+>     -machine q35,accel=tcg,nvdimm=on,cxl=on,hmat=on \
+>     -cpu max -smp 4,sockets=4,cores=1,threads=1 \
+>     -m size=4G,slots=10,maxmem=20G \
+>     -drive file=/path/to/image.qcow2,format=qcow2,index=0,media=disk,id=hd \
+>     -bios /path/to/seabios/out/bios.bin \
+>     -nic bridge,br=virbr0,model=e1000e,mac=52:54:00:b5:4e:7c \
+>     -object memory-backend-ram,size=2G,id=m0 \
+>     -object memory-backend-ram,size=2G,id=m1 \
+>     -numa node,nodeid=0,cpus=0-1,memdev=m0 \
+>     -numa node,nodeid=1,cpus=2-3,memdev=m1 \
+>     -device pcie-root-port,id=pci-root,slot=4,bus=pcie.0,chassis=0 \
+>     -device pcie-root-port,id=pci-root-net,chassis=5,slot=5,bus=pcie.0 \
+>     -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1,hdm_for_passthrough=true \
+>     -device cxl-rp,port=0,id=root_port13,bus=cxl.1,chassis=0,slot=2 \
+>     -device cxl-rp,port=3,id=root_port14,bus=cxl.1,chassis=2,slot=4 \
+>     -object memory-backend-ram,size=4G,share=on,id=vmem0 \
+>     -object memory-backend-ram,size=4G,share=on,id=vmem1 \
+>     -device cxl-type3,bus=root_port13,volatile-memdev=vmem0,id=cxl-vmem0,program-hdm-decoder=true \
+>     -device cxl-type3,bus=root_port14,volatile-memdev=vmem1,id=cxl-vmem1,program-hdm-decoder=true \
+>     -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=4k,cxl-fmw.1.targets.0=cxl.1,cxl-fmw.1.size=4G,cxl-fmw.1.interleave-granularity=4k
 > 
 > 
-> On Mon, 2 Nov 2026, at 19:12, Tushar Dave wrote:
->> Introduce a fixed BAR fw_cfg blob exporter that serializes PCI
->> device and BAR information into the "etc/fixed-bars" fw_cfg file.
->>
->> The blob contains an entry for every PCI function with memory BARs.
->> Each entry carries the device's vendor and device ID, whether it
->> has a fixed BAR configuration, and its firmware device path. Fixed
->> BAR entries also include the configured BAR address, size, and type
->> information for each BAR.
->>
->> Document the format in docs/specs/pci-fixed-bars.rst.
->>
->> Signed-off-by: Tushar Dave <tdave@nvidia.com>
->> ---
->>  docs/specs/index.rst           |   1 +
->>  docs/specs/pci-fixed-bars.rst  |  75 ++++++++
->>  hw/pci/meson.build             |   1 +
->>  hw/pci/pci-fixed-bar-blob.c    | 308 +++++++++++++++++++++++++++++++++
->>  include/hw/pci/pci-fixed-bar.h |  63 +++++++
->>  5 files changed, 448 insertions(+)
->>  create mode 100644 docs/specs/pci-fixed-bars.rst
->>  create mode 100644 hw/pci/pci-fixed-bar-blob.c
->>  create mode 100644 include/hw/pci/pci-fixed-bar.h
->>
-> ...
->> diff --git a/hw/pci/pci-fixed-bar-blob.c b/hw/pci/pci-fixed-bar-blob.c
->> new file mode 100644
->> index 0000000000..dc94debfad
->> --- /dev/null
->> +++ b/hw/pci/pci-fixed-bar-blob.c
-> ...
->> +/*
->> + * EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL's CheckDevice interface
->> + * (UEFI PI Spec 1.2 Vol 5) only passes VendorId/DeviceId/RevisionId/
->> + * SubsystemVendorId/SubsystemDeviceId, no BDF — so in EDK2 we can't
->> + * match a blob entry to a specific device directly using BDF. To work
->> + * around that, we prepare the blob entries in the same order PciBusDxe
->> + * discovers devices, so matching by VID:DID inherently works.
+> How to use
+>   Specify the following parameters when starting QEMU:
 > 
-> This sounds rather fragile.
+>   - bios <SeaBIOS binary that includes commit c2a33ad9ad1452e23b41c4ac44a3bc6be8ebc4cf> to ensure that E820_SOFT_RESERVED entries are exposed
+>   - Add hmat=on to the -machine option [1]
+>   - Add program-hdm-decoder=true to each -device cxl-type3 option
+>     [1] On Linux, the kernel first checks E820_SOFT_RESERVED ranges. When multiple CXL Type 3 devices share a contiguous HPA range,
+>         these ranges tend to be merged into a single region, so the CXL driver cannot reliably initialize per‑device regions based on E820 alone.
+>         SRAT entries for CXL memory are therefore needed, and the guest seems to discard SRAT when `hmat=on` is not specified,
+>         so HMAT must be enabled.
 > 
-> Could you elaborate on what order this is, and why it is reasonable to
-> rely on that approach being stable?
-
-
-PciBusDxe discovers devices using the conventional PCI enumeration
-order: devices and functions in ascending order on each bus, visiting
-a bridge's secondary bus immediately after discovering the bridge
-(depth-first), and root bridges one after another. CheckDevice() is
-called for every function discovered, including bridges. QEMU exports
-the entries in the same order. For each VendorId/DeviceId pair,
-IncompatiblePciDeviceSupportDxe maintains a counter, and each
-CheckDevice() call for a matching device consumes the next
-corresponding entry from the blob. Accordingly, the blob contains an
-entry for every function with a memory BAR, whether fixed or not, to
-keep the matching simple and in sync.
-
-I think relying on this order is reasonable because it is determined
-by the PCI topology configured on the QEMU command line. Since devices
-with fixed BARs cannot be hot-plugged, they are always present at
-boot, and the resulting discovery order remains stable across boots
-of a given VM.
-
--Tushar
-
+> QEMU base commit: bddb785e791e415db38884848d068457e226f5e3
+> 
+> TODO
+>   With the current implementation of this patch, the following configurations are either not supported or have not been sufficiently tested.
+>   As a result, automatic creation of CXL regions in the guest OS may fail:
+> 
+>   - A CXL persistent memory device is included
+>   - Interleaved configurations
+>   - Cases where the memory size specified by CFMWS does not match the size of the CXL Type 3 backend memory
+>   - Configurations where CXL memory is attached via a switch
+>   - Multi-target CFMWS environments
+>   - ARM environments
+>   - HMAT does not yet include information about CXL memory devices
+> 
+>   The following behaviors are also provisional implementations and may need further refinement:
+>    - A new NUMA node ID is assigned to each CXL memory device. This should be improved either to reflect more accurate NUMA distances for CXL memory,
+>      or to allow the NUMA node IDs to be specified by the user.
+>    - Assignment of CXL Type 3 devices to CFMWS address ranges. On physical systems, platform firmware typically generates CFMWS entries
+>      based on the detected CXL topology and its address-space allocation. In QEMU, however, CFMWS entries are configured explicitly
+>      through machine options. The current implementation therefore has to infer which CFMWS range should be used for each Type 3 device.
+>      This selection logic may need further refinement. Possible approaches include improving the selection and validation logic,
+>      adding an explicit option to associate each Type 3 device with a CFMWS entry,
+>      or generating CFMWS entries automatically from the configured CXL topology and devices.
+>    - HDM decoder reset sequencing and state reconstruction.
+>      The current implementation prevents the host bridge HDM decoder configuration from being overwritten later in the same reset
+>      by moving the common initialization of the host bridge component registers from the reset path to the realization path.
+>      However, ideally, after the registers have been restored to their reset values, the host bridge HDM decoder configuration
+>      automatically programmed by QEMU should be reconstructed as part of reset processing.
+> 
+> Thanks,
+> 
+> ------
+> 
+> Yukiya Takaki (7):
+>   QEMU/hw/cxl: add program-hdm-decoder option for CXL Type 3 devices
+>   QEMU/hw/cxl:add HPA offset tracking for CXL Type 3 devices
+>   QEMU: hw/cxl: add helper to get HPA range for CXL Type 3
+>   QEMU/hw/cxl: auto‑program HDM decoders for CXL Type 3
+>   QEMU/hw/cxl: expose CXL Type 3 ranges as E820_SOFT_RESERVED on x86
+>   QEMU/hw/cxl: Create NUMA nodes for CXL Type 3 memory
+>   add CXL Type 3 memory ranges to SRAT
+> 
+>  hw/acpi/cxl_type3.c                 |  30 +++++
+>  hw/acpi/meson.build                 |   1 +
+>  hw/arm/cxl.c                        |  10 ++
+>  hw/arm/meson.build                  |   2 +
+>  hw/cxl/cxl-host.c                   |  63 ++++++++++
+>  hw/i386/acpi-build.c                |   7 ++
+>  hw/i386/cxl.c                       |  11 ++
+>  hw/i386/meson.build                 |   1 +
+>  hw/i386/pc.c                        |   2 +
+>  hw/mem/cxl_type3.c                  | 177 ++++++++++++++++++++++++++++
+>  hw/pci-bridge/pci_expander_bridge.c |  13 +-
+>  include/hw/cxl/cxl.h                |   2 +
+>  include/hw/cxl/cxl_device.h         |   6 +
+>  include/hw/cxl/cxl_host.h           |   3 +
+>  include/hw/mem/cxl_type3.h          |   8 ++
+>  15 files changed, 334 insertions(+), 2 deletions(-)
+>  create mode 100644 hw/acpi/cxl_type3.c
+>  create mode 100644 hw/arm/cxl.c
+>  create mode 100644 hw/i386/cxl.c
+>  create mode 100644 include/hw/mem/cxl_type3.h
+> 
+> -- 
+> 2.52.0
+> 
 

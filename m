@@ -1,68 +1,67 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E837606A330
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:14:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A285606A31B
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:14:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOtXt-00057d-Qv; Thu, 05 Nov 2026 04:14:13 -0500
+	id 1xOtY7-0005FG-7R; Thu, 05 Nov 2026 04:14:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtXe-000556-NP
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:57 -0500
-Received: from mail-pg1-f171.google.com ([209.85.215.171])
+ id 1xOtXa-00054q-Dx
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:54 -0500
+Received: from mail-pj1-f49.google.com ([209.85.216.49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtXc-0005Q9-2n
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:54 -0500
-Received: by mail-pg1-f171.google.com with SMTP id
- 41be03b00d2f7-cd60c5da24cso1036939a12.0
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:13:51 -0800 (PST)
+ id 1xOtXU-0005PF-SQ
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:49 -0500
+Received: by mail-pj1-f49.google.com with SMTP id
+ 98e67ed59e1d1-3ab41538192so1366661a91.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:13:44 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793870030; x=1794474830;
+ d=1e100.net; s=20260707; t=1793870023; x=1794474823;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=9a8tVmiMXzx1D2s3RdJddbAUFJlNjdVF7U3oIP6iTDE=;
- b=AvSPlwE6XlO/KsR7e5eGmX3hDhI7xnYqJOJG83NH21Jz819lz1Ou91fL2LtMQpbA0u
- EKQ7DGSDw8TEjUB5+fBGaS67CppgozNcZ0DA528CY0QzdGCHM77L3vw3Tu5M0tbMeKhZ
- CwDBUwPUGJw4gXlytlqfyZ6irxGrzfQMCrMlhkuan1y9A6pE7ORZtL0u5fPQm2/Mt0Nv
- nsHn1KFSlOBDteUk0u2RsC1wVwSIiTosI1jh9pIUs3jR9gCJ5DXhfKMqdNxEAny1eoqX
- OnycWuZM9PpM7edIEUOKpCEojk7qqy3GHJeY/YD24fRrHrCNRdpoybekjHCpqecvEuDc
- SuYQ==
+ bh=EP67QgvJbt/o3LubOHcWEgqt0rWN98GOcbIURTl2h2E=;
+ b=L5vYXMVwrRTrmV8W5C3LcW9qsa//GmrdTtC28GdyBz7gsTM9g671A4yt7qR4aciIKm
+ ByCcb4WPUSJT0OhTNB4q5p5ZD+njxyGfud84Wz6MwkhEZKnMaVAwQHtK9L+YMMZ5eEZM
+ cr1l/Z7t5autgwkhO693FOEoXoVh++aTd/dsba+QrkLCebCaZyjDd70+HNR04Ra00aez
+ d1HRs12eIVGgI0Q7L9dwxK77MQEiwywh5oMqCaxEUfFDMg/v0aOZhRVNxx6diFNTSiEc
+ NHcwvvUgWTrVBnmN2ExaaJ/isPylTqdbQft5O36cv480gPDuVK4T4yPgf6Ns6FNjP+MG
+ JOQg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxqZtM3f3ArwPFcHwIsQlWOgdxsKeC0A+mFxQ5IxIAPlBEZTqAGVpKe+AtbdZ8NdRXIxbaRt9uXzg==@nongnu.org
-X-Gm-Message-State: APuU4Z8sYNHHz6KAvnfhKn7d+TNIJ3ShxLYEU+ycv7xhfUE/n1ZqbZAa
- sqZY4msV5dKLd/3y6B2aYcFZCfJiZZaLA1C2GMwVngloQ+awVN/gV5I8bxbNXiNW1BA=
-X-Gm-Gg: AYBFou1UW8Tr0tdrIlkkdNZqAMWclMdbQsX2l5Op/m9DfR0Nmar5uErFJOJOlgHSojE
- KWzN8+J8iJ9AuGM0oJpoHmRV2bFbokPb9Aygr1ZKr7fAz9EAQg8Pc9WvHsOS9SKExWeRLXZ8xPO
- 4pOpGlKDxyjFW35QUx7FxEYWmCwWaa5nYzW16SiVo/qsYy8gjaXPc5kk3wP/+ScJosWZaBly2k8
- VMT7VDFqyYQDARcZxLc5O+FSybwGAzeCOcD1KWPewKzzv3aWYZsCUxJgAYc6zYBP6eDWOAs/RVa
- 7g9rrC+C3eqRI6WLjEC9LR8T7eH5YN7EzEwMQjBU25C/Nv9A+lGRrSlNheYfmzMYG1N8SE2pTyg
- lZ3Msf8x5juY2/VTUnB2vulg7oTMvCbMjad1SSo3FZ9Nbl3gMD3uVe3W6CKUbuZG26mfnj/ZeHf
- GpijE/sLtF6WCqLrgSHZAzqJoDro5UaBpltbafvvzaoxwLVAmVV0yWOCEGvnI4ptZIOQvGY04LH
- ms0UzWYVtel42OJuBE847DjcwNoEb1U1x5N4iNJgDkg/q3NgEUYTgb+0OuR1tjHrDDeyPT77doc
- i3X5PWsqTSJ7pjrNNhTSQJH7cT49QtJzrBnjqRGqKbx0daPuCYOIFEPb+grJGQ8xGE7xlsqG8V4
- GZk6Igw==
-X-Received: by 2002:a17:90b:4b92:b0:3ac:86a0:5766 with SMTP id
- 98e67ed59e1d1-3ae897fb684mr15264726a91.63.1793870030247; 
- Thu, 05 Nov 2026 01:13:50 -0800 (PST)
+ AKwUvBw7yPYTbi4aSGFOLmTAX1JAKRSIYaFvCaFoRHGarUNDkhc607uHqfhvDeNKBuPVYbmV4XgcmkyiwA==@nongnu.org
+X-Gm-Message-State: APuU4Z/kMtXm+pA+lIrft0ns8P9GHDG47GtbvHiL13Tr7yUI1r4giW3l
+ 3r98lKvMOuumVG0EzwhnNUKjO5zBcu11bHF2SQLTd5sg4w36sPnSrnoe
+X-Gm-Gg: AYBFou3tP2m3NoJBg/4WsuL3FI+31hshPa7ZXXJYQMi+BoFwxfoNmzR3fGbvUysrrpQ
+ GCRVawcHCTLnd6gQWW+q0CeEAj9c9w/UpH2FeZ34ziTanbVmleE6cv+p2WUX1QHTwHRDnMfPAk/
+ wbUF+IyQIwZ5f9EWu7bJnnsK4/4aKYDuAacPSAn5iSDCsol1zQu1CgoFSPl7MqxUywUKcISMuYR
+ KTSIJu/kZtMBt3dE/nqUDr0vqZFTkhyUuXL8xpc07M4Xci2C3VytWX4Zpv+is7a7PfSsn8IPHlF
+ XhoD8L0FWrrlOmPMuY5n4PsG3e4N8mnMp4YpBxD+J3rdrMyrJb7P5Csd48BX+pNbe3j5gYZmyKG
+ oUjhZR23fy8FGxtUFnUFNVA6TswcC3SOICtccPGopTno1OBTdSfb6oiHA0ZrFazUEkaeMHEwi3T
+ me2bsu/FxYIHB4L2w7itHi7RapUCbd2K2NlykL3HxkFNaD36272QspomePFYBtML3kF67hPCTmj
+ cXDb2dD0DDe8cH9Mt1G9q1+T3Luzqe+YftoJeZQGry7c2k5rlfB2RDnaD/n2N0PXecXVPOd1+B/
+ YY7o9T1+ffWfqvB+A7YzyElAsFazlCMh11JJv9FyPHC/iYKbjLZv4GTV+UP3nb9gmSw3Q2MfhgO
+ QNc01sw==
+X-Received: by 2002:a17:90b:4c85:b0:3a4:b418:94ce with SMTP id
+ 98e67ed59e1d1-3ae89574db4mr14647580a91.1.1793870022752; 
+ Thu, 05 Nov 2026 01:13:42 -0800 (PST)
 Received: from localhost (118-163-122-149.hinet-ip.hinet.net.
  [118.163.122.149]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cdb46443d6esm1974481a12.2.2026.11.05.01.13.49
+ 98e67ed59e1d1-3b0b32812a6sm2846627a91.11.2026.11.05.01.13.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 01:13:49 -0800 (PST)
-Date: Thu, 05 Nov 2026 17:12:54 +0800
-Subject: [PATCH 02/16] tests/qtest: ina230: add current/voltage/power
- monitor test
+ Thu, 05 Nov 2026 01:13:42 -0800 (PST)
+Date: Thu, 05 Nov 2026 17:12:53 +0800
+Subject: [PATCH 01/16] hw/sensor: ina230: add current/voltage/power monitor
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261105-sensor-ina23x-v1-2-5433ed104990@free.fr>
+Message-Id: <20261105-sensor-ina23x-v1-1-5433ed104990@free.fr>
 References: <20261105-sensor-ina23x-v1-0-5433ed104990@free.fr>
 In-Reply-To: <20261105-sensor-ina23x-v1-0-5433ed104990@free.fr>
 To: qemu-devel@nongnu.org
@@ -74,22 +73,22 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, eblot@meta.com,
  Laurent Vivier <lvivier@redhat.com>, Emmanuel Blot <emmanuel.blot@free.fr>, 
  Glenn Miles <milesg@linux.ibm.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793869975; l=5246;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793869975; l=23298;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=s1nFTgdA+hlQv/WxtG23fzT50LLyFvY6GqK1Nb3vghE=;
- b=xDzh4GbA/5pPwhR2rS4DsL4+FFCA28MW9O13VeNBGr5rQejM0UrxfOBKCJiHsWzRcGAWORd6r
- sREMVFbgRoCBIdT/CIUckKYTdkVkukxFBIOVRZ2yJ+XCpTNLn3jYXkS
+ bh=rrDqzS1o86qFO4FxuK0O2brpp3NlCUfb4+nnIeRJfLw=;
+ b=Jnp+mYD0w/FGjz23Pqg03ZjhdGMMwmPmrZ+JGLIUvHlWF0VyHni19RUd6uor/NdHNC9fNHYXx
+ 6mg3j7PGBePCFdQ+s99UNrDCKHilcclG55T6ZPQ30ESJTk/s4+0RoSS
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.215.171; envelope-from=eblot.ml@gmail.com;
- helo=mail-pg1-f171.google.com
+Received-SPF: pass client-ip=209.85.216.49; envelope-from=eblot.ml@gmail.com;
+ helo=mail-pj1-f49.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
 X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
  FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -110,151 +109,710 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,INCLUDES_CR_TRAILER,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Introduce the INA230 qtest: the qgraph node and the register map. Cover
-the power-on-reset defaults and Die ID, the software reset, and the
-Configuration register write mask. The QMP voltage-injection helpers
-arrive with the following commit that exercises them.
+Add a model for the Texas Instruments INA230, a 36V, 16-bit I2C
+current-shunt and power monitor.
+
+The device measures a differential shunt voltage and a bus voltage; the
+current and power registers are not measured directly but derived by the
+device from the shunt voltage and the guest-programmed Calibration
+register. The alert is modelled.
+
+Shunt and bus voltages can be injected through the "shunt-voltage" and
+"bus-voltage" QOM properties (in nV and uV respectively).
+
+Note: Conversion is instantaneous: the averaging and conversion-time
+fields are stored but have no timing effect.
 
 Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ina230-test.c | 115 ++++++++++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build   |   1 +
- 2 files changed, 116 insertions(+)
+ hw/arm/Kconfig             |   1 +
+ hw/sensor/Kconfig          |   4 +
+ hw/sensor/ina230.c         | 598 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/sensor/meson.build      |   1 +
+ hw/sensor/trace-events     |   7 +
+ include/hw/sensor/ina230.h |  14 ++
+ 6 files changed, 625 insertions(+)
 
-diff --git a/tests/qtest/ina230-test.c b/tests/qtest/ina230-test.c
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index e9f796f718..876acc0e43 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -557,6 +557,7 @@ config ASPEED_SOC
+     select TMP105
+     select TMP421
+     select EMC141X
++    select INA230
+     select OR_IRQ
+     select UNIMP
+     select LED
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index b459ac2240..da519159ac 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -2,6 +2,10 @@ config ADC128D818
+     bool
+     depends on I2C
+ 
++config INA230
++    bool
++    depends on I2C
++
+ config TMP105
+     bool
+     depends on I2C
+diff --git a/hw/sensor/ina230.c b/hw/sensor/ina230.c
 new file mode 100644
-index 0000000000..f7aefd2d97
+index 0000000000..eb6991b0b9
 --- /dev/null
-+++ b/tests/qtest/ina230-test.c
-@@ -0,0 +1,115 @@
++++ b/hw/sensor/ina230.c
+@@ -0,0 +1,598 @@
 +/*
-+ * QTest testcase for the INA230 current/voltage/power monitor
++ * Texas Instruments INA230 36V, 16-bit current/voltage/power monitor
++ * with an I2C interface.
++ *
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * The INA230 measures a differential shunt voltage and a bus voltage.
++ * Current and power are not measured directly: they are derived by the
++ * device from the measured shunt voltage.
++ *
++ * Limitations:
++ * - Conversion timing is instantaneous. A conversion runs synchronously when an
++ *   input, the calibration or the configuration changes; the per-channel
++ *   conversion times (VSH_CT/VBUS_CT), the averaging count (AVG) and continuous
++ *   re-conversion on a timer are not modelled. A read always returns the value
++ *   derived from the current inputs and CVRF is set once a conversion has run.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "qapi/qapi-builtin-type-infos.h"
++#include "qapi/visitor.h"
++#include "qom/object.h"
++#include "hw/sensor/ina230.h"
++#include "hw/core/irq.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/core/registerfields.h"
++#include "hw/i2c/i2c.h"
++#include "migration/vmstate.h"
++#include "trace.h"
++
++#define INA230_REG_CONFIG       0x00
++#define INA230_REG_SHUNT        0x01
++#define INA230_REG_BUS          0x02
++#define INA230_REG_POWER        0x03
++#define INA230_REG_CURRENT      0x04
++#define INA230_REG_CALIBRATION  0x05
++#define INA230_REG_MASK_ENABLE  0x06
++#define INA230_REG_ALERT_LIMIT  0x07
++#define INA230_REG_DIE_ID       0xFF
++
++FIELD(INA230_CONFIG, MODE,     0, 3)
++FIELD(INA230_CONFIG, VSH_CT,   3, 3)
++FIELD(INA230_CONFIG, VBUS_CT,  6, 3)
++FIELD(INA230_CONFIG, AVG,      9, 3)
++FIELD(INA230_CONFIG, RST,     15, 1)
++
++#define INA230_CONFIG_POR       0x4127
++
++FIELD(INA230_MASK_ENABLE, LEN,   0, 1)  /* alert latch enable */
++FIELD(INA230_MASK_ENABLE, APOL,  1, 1)  /* alert polarity */
++FIELD(INA230_MASK_ENABLE, OVF,   2, 1)  /* math overflow flag (status) */
++FIELD(INA230_MASK_ENABLE, CVRF,  3, 1)  /* conversion ready flag (status) */
++FIELD(INA230_MASK_ENABLE, AFF,   4, 1)  /* alert function flag (status) */
++FIELD(INA230_MASK_ENABLE, CNVR, 10, 1)  /* conversion ready alert */
++FIELD(INA230_MASK_ENABLE, POL,  11, 1)  /* power over-limit */
++FIELD(INA230_MASK_ENABLE, BUL,  12, 1)  /* bus under-limit */
++FIELD(INA230_MASK_ENABLE, BOL,  13, 1)  /* bus over-limit */
++FIELD(INA230_MASK_ENABLE, SUL,  14, 1)  /* shunt under-limit */
++FIELD(INA230_MASK_ENABLE, SOL,  15, 1)  /* shunt over-limit */
++
++/* Writable Mask/Enable bits: alert-function selects + APOL + LEN */
++#define INA230_ME_WMASK         (R_INA230_MASK_ENABLE_SOL_MASK | \
++                                 R_INA230_MASK_ENABLE_SUL_MASK | \
++                                 R_INA230_MASK_ENABLE_BOL_MASK | \
++                                 R_INA230_MASK_ENABLE_BUL_MASK | \
++                                 R_INA230_MASK_ENABLE_POL_MASK | \
++                                 R_INA230_MASK_ENABLE_CNVR_MASK | \
++                                 R_INA230_MASK_ENABLE_APOL_MASK | \
++                                 R_INA230_MASK_ENABLE_LEN_MASK)
++/* Read-only status bits: AFF, CVRF, OVF */
++#define INA230_ME_STATUS_MASK   (R_INA230_MASK_ENABLE_AFF_MASK | \
++                                 R_INA230_MASK_ENABLE_CVRF_MASK | \
++                                 R_INA230_MASK_ENABLE_OVF_MASK)
++
++FIELD(INA230_CALIBRATION, FS, 0, 15)
++#define INA230_CAL_MASK         R_INA230_CALIBRATION_FS_MASK
++
++#define INA230_SHUNT_LSB_NV     2500     /* 2.5 uV per LSB */
++#define INA230_BUS_LSB_UV       1250     /* 1.25 mV per LSB */
++#define INA230_SHUNT_MIN_NV     (-81920000)  /* -32768 * 2.5 uV */
++#define INA230_SHUNT_MAX_NV     81917500     /*  32767 * 2.5 uV */
++/*
++ * A real rail should not drive the pin past 36 V, so bus codes above 0x7080
++ * are intentionally unreachable in the model.
++ */
++#define INA230_BUS_MAX_UV       36000000     /* bus pin rated 0..36 V */
++
++#define INA230_CURRENT_DIV      2048
++#define INA230_POWER_DIV        20000
++
++#define INA230_DIE_ID_VAL       0x2310
++
++OBJECT_DECLARE_SIMPLE_TYPE(INA230State, INA230)
++
++struct INA230State {
++    I2CSlave parent_obj;
++
++    qemu_irq alert; /* ALERT open-drain output */
++
++    /* I2C transfer state */
++    uint8_t ptr;      /* register pointer */
++    uint8_t len;      /* bytes received in current transfer */
++    uint8_t wr_hi;    /* pending write MSB */
++    uint8_t rx_byte;  /* 0: return MSB next, 1: return LSB next */
++    uint16_t rx_word; /* value latched at the start of a read */
++
++    /* Register file */
++    uint16_t config;
++    uint16_t calibration;
++    uint16_t mask_enable;
++    uint16_t alert_limit;
++
++    /* Derived measurement registers */
++    uint16_t shunt_reg;
++    uint16_t bus_reg;
++    uint16_t current_reg;
++    uint16_t power_reg;
++
++    /* Injected physical inputs */
++    int32_t shunt_nv;  /* shunt voltage, nanovolts (signed: bidirectional) */
++    uint32_t bus_uv;   /* bus voltage, microvolts (never negative) */
++
++    /*
++     * In latch mode AFF and the ALERT pin stay asserted until the
++     * Configuration register is written or the Mask/Enable register is read
++     * (datasheet 7.3.3).
++     */
++    bool alert_latched;
++
++    char *description;
++};
++
++/*
++ * Evaluate the selected alert function. @shunt_fresh and @bus_fresh tell which
++ * of the measurement registers hold a fresh value; a function fed by a channel
++ * that did not convert cannot assert.
++ */
++static bool ina230_limit_alert(const INA230State *s, bool shunt_fresh,
++                               bool bus_fresh)
++{
++    uint16_t me = s->mask_enable;
++    int16_t shunt = (int16_t)s->shunt_reg;
++    int16_t limit_s = (int16_t)s->alert_limit;
++    uint16_t limit_u = s->alert_limit;
++
++    if (FIELD_EX16(me, INA230_MASK_ENABLE, SOL)) {
++        return shunt_fresh && shunt > limit_s;
++    }
++    if (FIELD_EX16(me, INA230_MASK_ENABLE, SUL)) {
++        return shunt_fresh && shunt < limit_s;
++    }
++    if (FIELD_EX16(me, INA230_MASK_ENABLE, BOL)) {
++        return bus_fresh && s->bus_reg > limit_u;
++    }
++    if (FIELD_EX16(me, INA230_MASK_ENABLE, BUL)) {
++        return bus_fresh && s->bus_reg < limit_u;
++    }
++    if (FIELD_EX16(me, INA230_MASK_ENABLE, POL)) {
++        return bus_fresh && s->power_reg > limit_u;
++    }
++    return false;
++}
++
++static void ina230_refresh_alert(INA230State *s)
++{
++    bool latch = FIELD_EX16(s->mask_enable, INA230_MASK_ENABLE, LEN);
++    bool aff = latch ? s->alert_latched : ina230_limit_alert(s, true, true);
++    bool cnvr;
++    bool active;
++    int level;
++
++    s->mask_enable = FIELD_DP16(s->mask_enable, INA230_MASK_ENABLE, AFF, aff);
++
++    cnvr = FIELD_EX16(s->mask_enable, INA230_MASK_ENABLE, CNVR) &&
++           FIELD_EX16(s->mask_enable, INA230_MASK_ENABLE, CVRF);
++
++    active = aff || cnvr;
++
++    level = FIELD_EX16(s->mask_enable, INA230_MASK_ENABLE, APOL) ?
++            active : !active;
++
++    trace_ina230_alert(s->description, level);
++    qemu_set_irq(s->alert, level);
++}
++
++static void ina230_sample_alert(INA230State *s, bool shunt_fresh,
++                                bool bus_fresh)
++{
++    if (FIELD_EX16(s->mask_enable, INA230_MASK_ENABLE, LEN) &&
++        ina230_limit_alert(s, shunt_fresh, bus_fresh)) {
++        s->alert_latched = true;
++    }
++    ina230_refresh_alert(s);
++}
++
++static void ina230_convert(INA230State *s)
++{
++    uint8_t mode = FIELD_EX16(s->config, INA230_CONFIG, MODE);
++    bool shunt_en = mode & 0x1;
++    bool bus_en = mode & 0x2;
++    int64_t sr, br, cur, pwr;
++    bool ovf = false;
++
++    if (!shunt_en && !bus_en) {
++        return;
++    }
++
++    if (shunt_en) {
++        sr = s->shunt_nv / INA230_SHUNT_LSB_NV;
++        sr = MAX(INT16_MIN, MIN(INT16_MAX, sr));
++        s->shunt_reg = (uint16_t)(int16_t)sr;
++
++        cur = (int64_t)(int16_t)s->shunt_reg * s->calibration /
++              INA230_CURRENT_DIV;
++        if (cur > INT16_MAX || cur < INT16_MIN) {
++            ovf = true;
++            cur = MAX(INT16_MIN, MIN(INT16_MAX, cur));
++        }
++        s->current_reg = (uint16_t)(int16_t)cur;
++    }
++
++    if (bus_en) {
++        br = s->bus_uv / INA230_BUS_LSB_UV;
++        br = MAX(0, MIN(INT16_MAX, br));
++        s->bus_reg = (uint16_t)br;
++    }
++
++    /*
++     * In bus-only mode the current register is retained from the last shunt
++     * conversion rather than measured anew, but the power register is still
++     * refreshed.
++     */
++    if (bus_en) {
++        pwr = (int64_t)(int16_t)s->current_reg * s->bus_reg / INA230_POWER_DIV;
++        /* POWER is an unsigned, positive-only register (datasheet). */
++        if (pwr < 0) {
++            pwr = 0;
++        } else if (pwr > UINT16_MAX) {
++            ovf = true;
++            pwr = UINT16_MAX;
++        }
++        s->power_reg = (uint16_t)pwr;
++    }
++
++    /* Without a calibration the device reports neither current nor power. */
++    if (s->calibration == 0) {
++        s->current_reg = 0;
++        s->power_reg = 0;
++    }
++
++    s->mask_enable = FIELD_DP16(s->mask_enable, INA230_MASK_ENABLE, OVF, ovf);
++    s->mask_enable = FIELD_DP16(s->mask_enable, INA230_MASK_ENABLE, CVRF, 1);
++
++    trace_ina230_convert(s->description, s->shunt_reg, s->bus_reg,
++                         s->current_reg, s->power_reg);
++
++    ina230_sample_alert(s, shunt_en, bus_en);
++}
++
++/*
++ * A physical input or the calibration changed.
++ * - in continuous mode the device keeps converting and immediately tracks
++ *   the new value
++ * - in a triggered mode it performs exactly one conversion per trigger
++ */
++static void ina230_input_update(INA230State *s)
++{
++    if (FIELD_EX16(s->config, INA230_CONFIG, MODE) & 0x4) {
++        ina230_convert(s);
++    }
++}
++
++static void ina230_reset_regs(INA230State *s)
++{
++    s->config = INA230_CONFIG_POR;
++    s->calibration = 0;
++    s->mask_enable = 0;
++    s->alert_limit = 0;
++    s->alert_latched = false;
++
++    s->ptr = 0;
++    s->len = 0;
++    s->wr_hi = 0;
++    s->rx_byte = 0;
++    s->rx_word = 0;
++
++    s->shunt_reg = 0;
++    s->bus_reg = 0;
++    s->current_reg = 0;
++    s->power_reg = 0;
++
++    ina230_refresh_alert(s);
++}
++
++static uint16_t ina230_read_reg(INA230State *s, uint8_t reg)
++{
++    uint16_t val;
++
++    switch (reg) {
++    case INA230_REG_CONFIG:
++        val = s->config;
++        break;
++    case INA230_REG_SHUNT:
++        val = s->shunt_reg;
++        break;
++    case INA230_REG_BUS:
++        val = s->bus_reg;
++        break;
++    case INA230_REG_POWER:
++        val = s->power_reg;
++        break;
++    case INA230_REG_CURRENT:
++        val = s->current_reg;
++        break;
++    case INA230_REG_CALIBRATION:
++        val = s->calibration;
++        break;
++    case INA230_REG_MASK_ENABLE:
++        val = s->mask_enable;
++        s->mask_enable = FIELD_DP16(s->mask_enable, INA230_MASK_ENABLE,
++                                    CVRF, 0);
++        s->alert_latched = false;
++        ina230_refresh_alert(s);
++        break;
++    case INA230_REG_ALERT_LIMIT:
++        val = s->alert_limit;
++        break;
++    case INA230_REG_DIE_ID:
++        val = INA230_DIE_ID_VAL;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: %s: read from undefined register 0x%02x\n",
++                      __func__, s->description, reg);
++        val = 0;
++        break;
++    }
++
++    trace_ina230_read(s->description, reg, val);
++    return val;
++}
++
++static void ina230_write_reg(INA230State *s, uint8_t reg, uint16_t val)
++{
++    trace_ina230_write(s->description, reg, val);
++
++    switch (reg) {
++    case INA230_REG_CONFIG:
++        if (val & R_INA230_CONFIG_RST_MASK) {
++            trace_ina230_reset(s->description, "reg");
++            ina230_reset_regs(s);
++            break;
++        }
++        s->config = val & ~R_INA230_CONFIG_RST_MASK;
++        /*
++         * The write itself releases a latched alert, so the release reaches
++         * the ALERT pin before the conversion it triggers can relatch it.
++         */
++        s->alert_latched = false;
++        ina230_refresh_alert(s);
++        ina230_convert(s);
++        break;
++    case INA230_REG_CALIBRATION:
++        s->calibration = val & INA230_CAL_MASK;
++        ina230_input_update(s);
++        break;
++    case INA230_REG_MASK_ENABLE:
++        s->mask_enable = (val & INA230_ME_WMASK) |
++                         (s->mask_enable & INA230_ME_STATUS_MASK);
++        ina230_refresh_alert(s);
++        break;
++    case INA230_REG_ALERT_LIMIT:
++        s->alert_limit = val;
++        ina230_refresh_alert(s);
++        break;
++    case INA230_REG_SHUNT:
++    case INA230_REG_BUS:
++    case INA230_REG_POWER:
++    case INA230_REG_CURRENT:
++    case INA230_REG_DIE_ID:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: %s: write to read-only register 0x%02x\n",
++                      __func__, s->description, reg);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: %s: write to undefined register 0x%02x\n",
++                      __func__, s->description, reg);
++        break;
++    }
++}
++
++static uint8_t ina230_recv(I2CSlave *i2c)
++{
++    INA230State *s = INA230(i2c);
++    uint8_t byte;
++
++    if (s->rx_byte == 0) {
++        s->rx_word = ina230_read_reg(s, s->ptr);
++        byte = s->rx_word >> 8;
++        s->rx_byte = 1;
++    } else {
++        byte = s->rx_word & 0xff;
++        s->rx_byte = 0;
++    }
++
++    return byte;
++}
++
++static int ina230_send(I2CSlave *i2c, uint8_t data)
++{
++    INA230State *s = INA230(i2c);
++
++    if (s->len == 0) {
++        s->ptr = data;
++    } else if ((s->len & 1) == 1) {
++        s->wr_hi = data;
++    } else {
++        ina230_write_reg(s, s->ptr, ((uint16_t)s->wr_hi << 8) | data);
++    }
++    s->len++;
++
++    return 0;
++}
++
++static int ina230_event(I2CSlave *i2c, enum i2c_event event)
++{
++    INA230State *s = INA230(i2c);
++
++    s->len = 0;
++    s->rx_byte = 0;
++
++    return 0;
++}
++
++static void ina230_get_shunt(Object *obj, Visitor *v, const char *name,
++                             void *opaque, Error **errp)
++{
++    INA230State *s = INA230(obj);
++    int64_t value = s->shunt_nv;
++
++    visit_type_int(v, name, &value, errp);
++}
++
++static void ina230_set_shunt(Object *obj, Visitor *v, const char *name,
++                             void *opaque, Error **errp)
++{
++    INA230State *s = INA230(obj);
++    int64_t value;
++
++    if (!visit_type_int(v, name, &value, errp)) {
++        return;
++    }
++
++    if (value < INA230_SHUNT_MIN_NV || value > INA230_SHUNT_MAX_NV) {
++        error_setg(errp,
++                   "%s: shunt-voltage %" PRId64 " out of range (%d..%d nV)",
++                   s->description, value,
++                   INA230_SHUNT_MIN_NV, INA230_SHUNT_MAX_NV);
++        return;
++    }
++
++    s->shunt_nv = (int32_t)value;
++    ina230_input_update(s);
++}
++
++static void ina230_get_bus(Object *obj, Visitor *v, const char *name,
++                           void *opaque, Error **errp)
++{
++    INA230State *s = INA230(obj);
++    int64_t value = s->bus_uv;
++
++    visit_type_int(v, name, &value, errp);
++}
++
++static void ina230_set_bus(Object *obj, Visitor *v, const char *name,
++                           void *opaque, Error **errp)
++{
++    INA230State *s = INA230(obj);
++    int64_t value;
++
++    if (!visit_type_int(v, name, &value, errp)) {
++        return;
++    }
++
++    if (value < 0 || value > INA230_BUS_MAX_UV) {
++        error_setg(errp,
++                   "%s: bus-voltage %" PRId64 " out of range (0..%d uV)",
++                   s->description, value, INA230_BUS_MAX_UV);
++        return;
++    }
++
++    s->bus_uv = (uint32_t)value;
++    ina230_input_update(s);
++}
++
++static void ina230_reset_hold(Object *obj, ResetType type)
++{
++    INA230State *s = INA230(obj);
++
++    trace_ina230_reset(s->description, "hw");
++    ina230_reset_regs(s);
++}
++
++static int ina230_post_load(void *opaque, int version_id)
++{
++    INA230State *s = opaque;
++
++    ina230_refresh_alert(s);
++
++    return 0;
++}
++
++static const VMStateDescription ina230_vmstate = {
++    .name = "INA230",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .post_load = ina230_post_load,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT8(ptr, INA230State),
++        VMSTATE_UINT8(len, INA230State),
++        VMSTATE_UINT8(wr_hi, INA230State),
++        VMSTATE_UINT8(rx_byte, INA230State),
++        VMSTATE_UINT16(rx_word, INA230State),
++        VMSTATE_UINT16(config, INA230State),
++        VMSTATE_UINT16(calibration, INA230State),
++        VMSTATE_UINT16(mask_enable, INA230State),
++        VMSTATE_UINT16(alert_limit, INA230State),
++        VMSTATE_UINT16(shunt_reg, INA230State),
++        VMSTATE_UINT16(bus_reg, INA230State),
++        VMSTATE_UINT16(current_reg, INA230State),
++        VMSTATE_UINT16(power_reg, INA230State),
++        VMSTATE_INT32(shunt_nv, INA230State),
++        VMSTATE_UINT32(bus_uv, INA230State),
++        VMSTATE_BOOL(alert_latched, INA230State),
++        VMSTATE_I2C_SLAVE(parent_obj, INA230State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void ina230_initfn(Object *obj)
++{
++    object_property_add(obj, "shunt-voltage", "int", &int_type_info,
++                        ina230_get_shunt, ina230_set_shunt, NULL, NULL);
++    object_property_set_description(obj, "shunt-voltage",
++                                    "Injected shunt (differential) voltage, "
++                                    "in nanovolts");
++    object_property_add(obj, "bus-voltage", "int", &int_type_info,
++                        ina230_get_bus, ina230_set_bus, NULL, NULL);
++    object_property_set_description(obj, "bus-voltage",
++                                    "Injected bus voltage, in microvolts");
++}
++
++static void ina230_realize(DeviceState *dev, Error **errp)
++{
++    INA230State *s = INA230(dev);
++
++    if (!s->description) {
++        s->description = g_strdup(object_get_typename(OBJECT(dev)));
++    }
++
++    qdev_init_gpio_out(dev, &s->alert, 1);
++}
++
++static const Property ina230_properties[] = {
++    DEFINE_PROP_STRING("description", INA230State, description),
++};
++
++static void ina230_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    I2CSlaveClass *ic = I2C_SLAVE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    ic->event = ina230_event;
++    ic->recv = ina230_recv;
++    ic->send = ina230_send;
++    dc->realize = ina230_realize;
++    rc->phases.hold = ina230_reset_hold;
++    dc->vmsd = &ina230_vmstate;
++    device_class_set_props(dc, ina230_properties);
++}
++
++static const TypeInfo ina230_types[] = {
++    {
++        .name          = TYPE_INA230,
++        .parent        = TYPE_I2C_SLAVE,
++        .instance_init = ina230_initfn,
++        .instance_size = sizeof(INA230State),
++        .class_init    = ina230_class_init,
++    },
++};
++
++DEFINE_TYPES(ina230_types)
+diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+index fe36c9ef91..b81f001fdf 100644
+--- a/hw/sensor/meson.build
++++ b/hw/sensor/meson.build
+@@ -1,4 +1,5 @@
+ system_ss.add(when: 'CONFIG_ADC128D818', if_true: files('adc128d818.c'))
++system_ss.add(when: 'CONFIG_INA230', if_true: files('ina230.c'))
+ system_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+ system_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
+ system_ss.add(when: 'CONFIG_DPS310', if_true: files('dps310.c'))
+diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
+index 5a3630f7bb..f809b6b506 100644
+--- a/hw/sensor/trace-events
++++ b/hw/sensor/trace-events
+@@ -8,6 +8,13 @@ adc128d818_convert(const char *id, uint8_t channel, uint16_t value) "%s ch %u va
+ adc128d818_irq(const char *id, bool level) "%s level %u"
+ adc128d818_reset(const char *id, const char *source) "%s %s"
+ 
++# ina230.c
++ina230_read(const char *id, uint8_t reg, uint16_t value) "%s reg 0x%02x val 0x%04x"
++ina230_write(const char *id, uint8_t reg, uint16_t value) "%s reg 0x%02x val 0x%04x"
++ina230_convert(const char *id, uint16_t shunt, uint16_t bus, uint16_t current, uint16_t power) "%s shunt 0x%04x bus 0x%04x current 0x%04x power 0x%04x"
++ina230_alert(const char *id, bool level) "%s level %u"
++ina230_reset(const char *id, const char *source) "%s %s"
++
+ # tmp105.c
+ tmp105_read(uint8_t dev, uint8_t addr) "device: 0x%02x, addr: 0x%02x"
+ tmp105_write(uint8_t dev, uint8_t addr) "device: 0x%02x, addr 0x%02x"
+diff --git a/include/hw/sensor/ina230.h b/include/hw/sensor/ina230.h
+new file mode 100644
+index 0000000000..4394727d47
+--- /dev/null
++++ b/include/hw/sensor/ina230.h
+@@ -0,0 +1,14 @@
++/*
++ * Texas Instruments INA230 current/voltage/power monitor with I2C interface
 + *
 + * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+#include "qemu/osdep.h"
-+#include "libqos/i2c.h"
-+#include "libqos/qgraph.h"
-+#include "libqtest-single.h"
-+#include "qobject/qdict.h"
++#ifndef HW_SENSOR_INA230_H
++#define HW_SENSOR_INA230_H
 +
-+#define INA230_TEST_ID      "ina230-test"
-+#define INA230_TEST_ADDR    0x40
++#define TYPE_INA230 "ina230"
 +
-+/* Register pointer addresses */
-+#define REG_CONFIG          0x00
-+#define REG_SHUNT           0x01
-+#define REG_BUS             0x02
-+#define REG_POWER           0x03
-+#define REG_CURRENT         0x04
-+#define REG_CALIBRATION     0x05
-+#define REG_MASK_ENABLE     0x06
-+#define REG_ALERT_LIMIT     0x07
-+#define REG_DIE_ID          0xFF
-+
-+/* Configuration register bits */
-+#define CONFIG_POR          0x4127
-+#define CONFIG_RST          0x8000
-+
-+/* Mask/Enable register bits */
-+#define ME_LEN              0x0001
-+#define ME_APOL             0x0002
-+#define ME_OVF              0x0004
-+#define ME_CVRF             0x0008
-+#define ME_AFF              0x0010
-+#define ME_CNVR             0x0400
-+#define ME_POL              0x0800
-+#define ME_BUL              0x1000
-+#define ME_BOL              0x2000
-+#define ME_SUL              0x4000
-+#define ME_SOL              0x8000
-+
-+/* Injected-input scaling (datasheet fixed LSBs) */
-+#define SHUNT_LSB_NV        2500
-+#define BUS_LSB_UV          1250
-+
-+#define DIE_ID_VAL          0x2310
-+
-+/* Power-on-reset default values and the Die ID */
-+static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, CONFIG_POR);
-+    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_POWER), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_DIE_ID), ==, DIE_ID_VAL);
-+}
-+
-+/* Software reset via the Configuration RST bit */
-+static void test_soft_reset(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set16(dev, REG_CALIBRATION, 0x1234);
-+    i2c_set16(dev, REG_MASK_ENABLE, ME_SOL);
-+    i2c_set16(dev, REG_ALERT_LIMIT, 0x0500);
-+
-+    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x1234);
-+    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0500);
-+
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
-+
-+    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, CONFIG_POR);
-+    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE), ==, 0x0000);
-+    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0000);
-+}
-+
-+/* Every bit except the self-clearing RST is writable and reads back */
-+static void test_config_wmask(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    /* Reserved bits are not forced: the guest value is retained */
-+    i2c_set16(dev, REG_CONFIG, 0x0007);
-+    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, 0x0007);
-+
-+    i2c_set16(dev, REG_CONFIG, 0x7FFF);
-+    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, 0x7FFF);
-+}
-+
-+static void ina230_register_nodes(void)
-+{
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "id=" INA230_TEST_ID ",address=0x40"
-+    };
-+    add_qi2c_address(&opts, &(QI2CAddress) { INA230_TEST_ADDR });
-+
-+    qos_node_create_driver("ina230", i2c_device_create);
-+    qos_node_consumes("ina230", "i2c-bus", &opts);
-+
-+    qos_add_test("defaults", "ina230", test_defaults, NULL);
-+    qos_add_test("soft-reset", "ina230", test_soft_reset, NULL);
-+    qos_add_test("config-wmask", "ina230", test_config_wmask, NULL);
-+}
-+libqos_init(ina230_register_nodes);
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index ff4bf9528a..bfebe136ef 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -338,6 +338,7 @@ qos_test_ss.add(
-   'e1000-test.c',
-   'eepro100-test.c',
-   'es1370-test.c',
-+  'ina230-test.c',
-   'lsm303dlhc-mag-test.c',
-   'isl_pmbus_vr-test.c',
-   'max34451-test.c',
++#endif
 
 -- 
 2.53.0-Meta

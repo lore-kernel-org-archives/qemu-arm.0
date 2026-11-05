@@ -1,70 +1,70 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D33C7606A32E
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:13:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E837606A330
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:14:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOtXQ-00053U-FO; Thu, 05 Nov 2026 04:13:40 -0500
+	id 1xOtXt-00057d-Qv; Thu, 05 Nov 2026 04:14:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtXO-000531-Qk
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:38 -0500
-Received: from mail-pl1-f180.google.com ([209.85.214.180])
+ id 1xOtXe-000556-NP
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:57 -0500
+Received: from mail-pg1-f171.google.com ([209.85.215.171])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtXM-0005Od-MM
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:38 -0500
-Received: by mail-pl1-f180.google.com with SMTP id
- d9443c01a7336-2e8f2c3ad6bso9202715ad.1
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:13:36 -0800 (PST)
+ id 1xOtXc-0005Q9-2n
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:13:54 -0500
+Received: by mail-pg1-f171.google.com with SMTP id
+ 41be03b00d2f7-cd60c5da24cso1036939a12.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:13:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793870015; x=1794474815;
- h=cc:to:content-transfer-encoding:content-type:mime-version
- :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=hiayx6BWGpzODx59jEqteBwXl6UPmbPV8uXYm3q5qzM=;
- b=isCN2+WfH27O8F3Xr8Bi3Qx9tRvUSmXWxDQ3NM+TwnmvOdjg5Sz9gRKwPp3PPWTItP
- cguDKwH7Ye8nymInUGzJmFYQvCtVhjGzTL3/2mUM4xJd9Vq0k2Avv158/X/pGH56Xjmg
- geYm+LtSj2cxS3gmPiN4+GXID5OaQ8UwBfMcu7F4/HIUoAFi9SuO8zYV42sGeUcq2rBi
- zJJkjc08QDA/MS5TVFTQfg1EFGVjvE3h1psi2EKJcqJbUMpSSUSKrHAVWoyBEYjgxIru
- F5yEkKrtDade5n2HGpgOSk1319GabspCHx/AHSqzxQK6L1jIqzec3pvoxb6AlZ6zS8Za
- iByw==
+ d=1e100.net; s=20260707; t=1793870030; x=1794474830;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=9a8tVmiMXzx1D2s3RdJddbAUFJlNjdVF7U3oIP6iTDE=;
+ b=AvSPlwE6XlO/KsR7e5eGmX3hDhI7xnYqJOJG83NH21Jz819lz1Ou91fL2LtMQpbA0u
+ EKQ7DGSDw8TEjUB5+fBGaS67CppgozNcZ0DA528CY0QzdGCHM77L3vw3Tu5M0tbMeKhZ
+ CwDBUwPUGJw4gXlytlqfyZ6irxGrzfQMCrMlhkuan1y9A6pE7ORZtL0u5fPQm2/Mt0Nv
+ nsHn1KFSlOBDteUk0u2RsC1wVwSIiTosI1jh9pIUs3jR9gCJ5DXhfKMqdNxEAny1eoqX
+ OnycWuZM9PpM7edIEUOKpCEojk7qqy3GHJeY/YD24fRrHrCNRdpoybekjHCpqecvEuDc
+ SuYQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvByXZGiduIhUw6makJGZ6I6S3rDMD9LOMzYyBTKb6wdRnZKuX401TBIeqpnXQSjUWBRD5FAFUe+5NA==@nongnu.org
-X-Gm-Message-State: APuU4Z/tBeNmSOnkfbX3c2z1C58EThmpbu7CldrRaWnzVAgSHGdhZuQG
- S9UCK4GDxV5V1sz3OPbW2YoYSuS7eUF9naULm1GMjGsUcNKAt4OIisz5
-X-Gm-Gg: AYBFou21BvRdpoe/UYuJWoVQ69cBcvdbX3QLNyfrGUNJ+F9H6jnlHFTDG376+UHENkq
- ugm3qM2TR6u9taO/QN9B4p8dc8EOHDjWEb576oYWK/h9r6nbIAWGTH6WuXAtogzGZJG1052VTWZ
- 4BfsL3asKMaga69yGkCZVdixkOpPaytS9mNyDUJmeNhFcBRyCih6Msqud8ABmzShNQaGBsC08yj
- aO+gVz/ACo4W2yjwBBb1ZGJINSIbeLv/pYOrPNh5r+oQqu0wxrcb9RF1zOAo86WzJOtvRjD1z0m
- y8fC2t7oafCd2WZpQJ/n9/kCChnhI0Ddf2nEFdcp2FRAM0Qvsytst57iVTFY5FoYB7HK3hscRDq
- 7ywfFfOv6Ao7yf5ZFSUwmEfayBM0g5LrAWOKfJM6cppHNLtB4UnUPNqhS4bEMWqKrL9wUI0e87N
- /h8awa32jXgnwSUSDO3Qmo8A5/ekUo8xknroAHKZpez14T/6CE5I+ZnNgXMJQd4LEwVLx13Jr4R
- +ivoXGqMw0+voLSMgqK8dYS074w2eyIVmie4LDLs2cHeUWSExqoi679TekE6PlfsQAXuQ5f2yMc
- jccK6I3gXU3C/pyDLa+l8ihW4KpJWzAmaA5GQPOXUJU9AuoYTh0Y1y9tKUdWHD2t+5NfOnzstHZ
- Y0Ouy2w==
-X-Received: by 2002:a17:903:4b27:b0:2ed:1e0f:c0a9 with SMTP id
- d9443c01a7336-2ed1e0fc2ecmr28312315ad.57.1793870015015; 
- Thu, 05 Nov 2026 01:13:35 -0800 (PST)
+ AKwUvBxqZtM3f3ArwPFcHwIsQlWOgdxsKeC0A+mFxQ5IxIAPlBEZTqAGVpKe+AtbdZ8NdRXIxbaRt9uXzg==@nongnu.org
+X-Gm-Message-State: APuU4Z8sYNHHz6KAvnfhKn7d+TNIJ3ShxLYEU+ycv7xhfUE/n1ZqbZAa
+ sqZY4msV5dKLd/3y6B2aYcFZCfJiZZaLA1C2GMwVngloQ+awVN/gV5I8bxbNXiNW1BA=
+X-Gm-Gg: AYBFou1UW8Tr0tdrIlkkdNZqAMWclMdbQsX2l5Op/m9DfR0Nmar5uErFJOJOlgHSojE
+ KWzN8+J8iJ9AuGM0oJpoHmRV2bFbokPb9Aygr1ZKr7fAz9EAQg8Pc9WvHsOS9SKExWeRLXZ8xPO
+ 4pOpGlKDxyjFW35QUx7FxEYWmCwWaa5nYzW16SiVo/qsYy8gjaXPc5kk3wP/+ScJosWZaBly2k8
+ VMT7VDFqyYQDARcZxLc5O+FSybwGAzeCOcD1KWPewKzzv3aWYZsCUxJgAYc6zYBP6eDWOAs/RVa
+ 7g9rrC+C3eqRI6WLjEC9LR8T7eH5YN7EzEwMQjBU25C/Nv9A+lGRrSlNheYfmzMYG1N8SE2pTyg
+ lZ3Msf8x5juY2/VTUnB2vulg7oTMvCbMjad1SSo3FZ9Nbl3gMD3uVe3W6CKUbuZG26mfnj/ZeHf
+ GpijE/sLtF6WCqLrgSHZAzqJoDro5UaBpltbafvvzaoxwLVAmVV0yWOCEGvnI4ptZIOQvGY04LH
+ ms0UzWYVtel42OJuBE847DjcwNoEb1U1x5N4iNJgDkg/q3NgEUYTgb+0OuR1tjHrDDeyPT77doc
+ i3X5PWsqTSJ7pjrNNhTSQJH7cT49QtJzrBnjqRGqKbx0daPuCYOIFEPb+grJGQ8xGE7xlsqG8V4
+ GZk6Igw==
+X-Received: by 2002:a17:90b:4b92:b0:3ac:86a0:5766 with SMTP id
+ 98e67ed59e1d1-3ae897fb684mr15264726a91.63.1793870030247; 
+ Thu, 05 Nov 2026 01:13:50 -0800 (PST)
 Received: from localhost (118-163-122-149.hinet-ip.hinet.net.
  [118.163.122.149]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ed09082a5esm15727845ad.37.2026.11.05.01.13.34
+ 41be03b00d2f7-cdb46443d6esm1974481a12.2.2026.11.05.01.13.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 01:13:34 -0800 (PST)
-Subject: [PATCH 00/16] hw/sensor: add the INA230 and INA238 power monitors
-Date: Thu, 05 Nov 2026 17:12:52 +0800
-Message-Id: <20261105-sensor-ina23x-v1-0-5433ed104990@free.fr>
+ Thu, 05 Nov 2026 01:13:49 -0800 (PST)
+Date: Thu, 05 Nov 2026 17:12:54 +0800
+Subject: [PATCH 02/16] tests/qtest: ina230: add current/voltage/power
+ monitor test
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQ5AMBBA4avIrDUx9RNcRSyqBmNR0kEk4u6K5
- bd47wIhzyRQRxd4Olh4cQEYR2An40ZS3AeDTnSBmORKyMniFTuj01OVpqv6zFZoDUJoVk8Dn9+
- vaX/L3s1kt3cC9/0AXhkOz3EAAAA=
-X-Change-ID: 20261105-sensor-ina23x-8ab9d4c91ca1
+Message-Id: <20261105-sensor-ina23x-v1-2-5433ed104990@free.fr>
+References: <20261105-sensor-ina23x-v1-0-5433ed104990@free.fr>
+In-Reply-To: <20261105-sensor-ina23x-v1-0-5433ed104990@free.fr>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, eblot@meta.com, 
  Paolo Bonzini <pbonzini@redhat.com>, 
@@ -74,22 +74,22 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, eblot@meta.com,
  Laurent Vivier <lvivier@redhat.com>, Emmanuel Blot <emmanuel.blot@free.fr>, 
  Glenn Miles <milesg@linux.ibm.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793869975; l=2357;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793869975; l=5246;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=qMgn805R1R1GjlsOl0qJxUiJfh+5i+8NwnjZA/oS4eg=;
- b=5lXo46M8V5MHW0cE/2K4hLWkLSAnlsgr2UjLf44aa+EHb+W0mOfw1oSs3lu9cFLW5CZALCBoP
- RDVvX3xSHjgBYztduCXftYQxbo8VM9Oo5Q5qUj6CGelmsJKuVrY48RP
+ bh=s1nFTgdA+hlQv/WxtG23fzT50LLyFvY6GqK1Nb3vghE=;
+ b=xDzh4GbA/5pPwhR2rS4DsL4+FFCA28MW9O13VeNBGr5rQejM0UrxfOBKCJiHsWzRcGAWORd6r
+ sREMVFbgRoCBIdT/CIUckKYTdkVkukxFBIOVRZ2yJ+XCpTNLn3jYXkS
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.214.180; envelope-from=eblot.ml@gmail.com;
- helo=mail-pl1-f180.google.com
+Received-SPF: pass client-ip=209.85.215.171; envelope-from=eblot.ml@gmail.com;
+ helo=mail-pg1-f171.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
 X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
  FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -110,59 +110,153 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,INCLUDES_CR_TRAILER,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Based on master, at:
-  f29ccc287a
+Introduce the INA230 qtest: the qgraph node and the register map. Cover
+the power-on-reset defaults and Die ID, the software reset, and the
+Configuration register write mask. The QMP voltage-injection helpers
+arrive with the following commit that exercises them.
 
-New models:
-
-  INA230   TI 36V current-shunt and power monitor
-  INA238   TI 85V current-shunt, power and temperature monitor
-
-The INA devices derive current and power from the shunt voltage and
-their calibration registers. ALERT output is supported. Measurements
-come in through QOM properties; however, conversion delay is not
-modelled.
-
-New qtests for the INA230 and INA238.
-
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
-Emmanuel Blot (16):
-      hw/sensor: ina230: add current/voltage/power monitor
-      tests/qtest: ina230: add current/voltage/power monitor test
-      tests/qtest: ina230: cover voltage injection and power derivation
-      tests/qtest: ina230: cover the ALERT limit functions and CVRF
-      tests/qtest: ina230: cover the injection-property limits
-      tests/qtest: ina230: cover operating modes and triggered conversions
-      tests/qtest: ina230: cover ALERT latch persistence
-      tests/qtest: ina230: cover a cleared calibration per channel
-      hw/sensor: ina238: add current/voltage/power monitor
-      tests/qtest: ina238: add current/voltage/power monitor test
-      tests/qtest: ina238: cover voltage/temperature injection and derivation
-      tests/qtest: ina238: cover the ALERT path and conversion-ready flag
-      tests/qtest: ina238: cover the injection-property limits
-      tests/qtest: ina238: cover the operating modes
-      tests/qtest: ina238: cover conversion-ready and alert-latch semantics
-      tests/qtest: ina238: cover a cleared calibration per channel
+ tests/qtest/ina230-test.c | 115 ++++++++++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build   |   1 +
+ 2 files changed, 116 insertions(+)
 
- hw/arm/Kconfig             |   2 +
- hw/sensor/Kconfig          |   8 +
- hw/sensor/ina230.c         | 598 +++++++++++++++++++++++++++++++++
- hw/sensor/ina238.c         | 803 ++++++++++++++++++++++++++++++++++++++++++++
- hw/sensor/meson.build      |   2 +
- hw/sensor/trace-events     |  14 +
- include/hw/sensor/ina230.h |  14 +
- include/hw/sensor/ina238.h |  14 +
- tests/qtest/ina230-test.c  | 602 +++++++++++++++++++++++++++++++++
- tests/qtest/ina238-test.c  | 806 +++++++++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build    |   2 +
- 11 files changed, 2865 insertions(+)
----
-base-commit: f29ccc287a6cfdd51d3a4fd17fbe9af3310a0ac5
-change-id: 20261105-sensor-ina23x-8ab9d4c91ca1
+diff --git a/tests/qtest/ina230-test.c b/tests/qtest/ina230-test.c
+new file mode 100644
+index 0000000000..f7aefd2d97
+--- /dev/null
++++ b/tests/qtest/ina230-test.c
+@@ -0,0 +1,115 @@
++/*
++ * QTest testcase for the INA230 current/voltage/power monitor
++ *
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqos/i2c.h"
++#include "libqos/qgraph.h"
++#include "libqtest-single.h"
++#include "qobject/qdict.h"
++
++#define INA230_TEST_ID      "ina230-test"
++#define INA230_TEST_ADDR    0x40
++
++/* Register pointer addresses */
++#define REG_CONFIG          0x00
++#define REG_SHUNT           0x01
++#define REG_BUS             0x02
++#define REG_POWER           0x03
++#define REG_CURRENT         0x04
++#define REG_CALIBRATION     0x05
++#define REG_MASK_ENABLE     0x06
++#define REG_ALERT_LIMIT     0x07
++#define REG_DIE_ID          0xFF
++
++/* Configuration register bits */
++#define CONFIG_POR          0x4127
++#define CONFIG_RST          0x8000
++
++/* Mask/Enable register bits */
++#define ME_LEN              0x0001
++#define ME_APOL             0x0002
++#define ME_OVF              0x0004
++#define ME_CVRF             0x0008
++#define ME_AFF              0x0010
++#define ME_CNVR             0x0400
++#define ME_POL              0x0800
++#define ME_BUL              0x1000
++#define ME_BOL              0x2000
++#define ME_SUL              0x4000
++#define ME_SOL              0x8000
++
++/* Injected-input scaling (datasheet fixed LSBs) */
++#define SHUNT_LSB_NV        2500
++#define BUS_LSB_UV          1250
++
++#define DIE_ID_VAL          0x2310
++
++/* Power-on-reset default values and the Die ID */
++static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, CONFIG_POR);
++    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_POWER), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_DIE_ID), ==, DIE_ID_VAL);
++}
++
++/* Software reset via the Configuration RST bit */
++static void test_soft_reset(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set16(dev, REG_CALIBRATION, 0x1234);
++    i2c_set16(dev, REG_MASK_ENABLE, ME_SOL);
++    i2c_set16(dev, REG_ALERT_LIMIT, 0x0500);
++
++    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x1234);
++    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0500);
++
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, CONFIG_POR);
++    g_assert_cmphex(i2c_get16(dev, REG_CALIBRATION), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_ALERT_LIMIT), ==, 0x0000);
++}
++
++/* Every bit except the self-clearing RST is writable and reads back */
++static void test_config_wmask(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    /* Reserved bits are not forced: the guest value is retained */
++    i2c_set16(dev, REG_CONFIG, 0x0007);
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, 0x0007);
++
++    i2c_set16(dev, REG_CONFIG, 0x7FFF);
++    g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, 0x7FFF);
++}
++
++static void ina230_register_nodes(void)
++{
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" INA230_TEST_ID ",address=0x40"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { INA230_TEST_ADDR });
++
++    qos_node_create_driver("ina230", i2c_device_create);
++    qos_node_consumes("ina230", "i2c-bus", &opts);
++
++    qos_add_test("defaults", "ina230", test_defaults, NULL);
++    qos_add_test("soft-reset", "ina230", test_soft_reset, NULL);
++    qos_add_test("config-wmask", "ina230", test_config_wmask, NULL);
++}
++libqos_init(ina230_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index ff4bf9528a..bfebe136ef 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -338,6 +338,7 @@ qos_test_ss.add(
+   'e1000-test.c',
+   'eepro100-test.c',
+   'es1370-test.c',
++  'ina230-test.c',
+   'lsm303dlhc-mag-test.c',
+   'isl_pmbus_vr-test.c',
+   'max34451-test.c',
 
-Best regards,
---  
-Emmanuel Blot <emmanuel.blot@free.fr>
+-- 
+2.53.0-Meta
 
 

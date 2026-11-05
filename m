@@ -1,70 +1,70 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E664606A329
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:28:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A54C7606A32C
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:28:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOtlN-0006cu-Ef; Thu, 05 Nov 2026 04:28:13 -0500
+	id 1xOtlh-0006hN-U2; Thu, 05 Nov 2026 04:28:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtlI-0006c5-U0
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:28:01 -0500
-Received: from mail-pf1-f171.google.com ([209.85.210.171])
+ id 1xOtlF-0006bT-Cu
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:27:58 -0500
+Received: from mail-pf1-f182.google.com ([209.85.210.182])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtlG-0006uM-S9
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:28:00 -0500
-Received: by mail-pf1-f171.google.com with SMTP id
- d2e1a72fcca58-8b29049d80dso93186b3a.3
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:27:58 -0800 (PST)
+ id 1xOtlB-0006tt-Tp
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:27:56 -0500
+Received: by mail-pf1-f182.google.com with SMTP id
+ d2e1a72fcca58-8a07078200fso730175b3a.2
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:27:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793870877; x=1794475677;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=YPLH85BN1FQ6/VjPz8nyN4WwRSjc/tOK4cGRVQRwlAA=;
- b=c5r+NgsGl35KxpCpqjE+yJ7g8BYYab2qcajdNt6Y9069YGeNFi9+G3/meNNTkRhWF/
- UzfVR1wT6lhi8XCmnVwEVo+/0BypKwMa/HS49fGRtgkjRvOQ3cQYS1in9UtjVovgtq2k
- rG0YRHYrndBKYpHK/tV8mABY4uXJOkTXy8/WzeU/aaotQjNKQkhmGCJG2OVd1JH46iq4
- ejw+XI6PVOf7MzHtzAurFy61OQuz6hXuv0JfCKri823UHiP349ZbE7zFc0qTWNFcutcO
- /HXiEoiMXSf3SOdlOLr0M5dp3knZEUw7otM33Kv/ZJOkyz8ksnaXrWGR9FbCfLdi5CN/
- hJsg==
+ d=1e100.net; s=20260707; t=1793870869; x=1794475669;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=0UOK4RfGRXkyPumPucgP3sRwcECSt4JXJcHkIBrJ0EM=;
+ b=TlmwTpx/+UFBRnUC4N2uJT/Ni/RKutZtCLQpGzw0i5QK++lSnP5XeuziUS0j2jl0zH
+ RGrFs3OdHSGiBE0FOuBdlmcjXVrAPQD44vnys7Y4CE4hloUKiJYosb5XeE2hBja5ZSn0
+ xaG0XD95Nog8tEJfv63xyZqyLR5QG5IsulKBc7BqD59dDCbMDcIbSaFq6CcWIPJmPVXm
+ K8R/jPm1KST2wglY1d2oYAM3roFyZ7S5PSPiz3kesi9lwVLcqkCNWf3jawrF0gTA+9ON
+ 6rIx760GbR47Ks+p8Sy5gy4lFWIafpf1HpcV+dRzR7HGe3bIyZKYdGCFw3qAbzkU6poK
+ V/ZQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxeCUtLTZMFjp5Z8PRIo0u2qDE4tW4vCNsTHj4Cd4gtSmBaZNgqsU5nNC1Aq5F6lJKKlhYsk4pDWQ==@nongnu.org
-X-Gm-Message-State: APuU4Z+eBkDtBcCBNklltlqEhIheWIeMoGtOAi/6EjNgy94/ehY36cGF
- ZsoB4DjeG2bfNwdyH0mypzpcCoOOqNp1ZHCozK4Z2pj1c6Vh3nf9607W
-X-Gm-Gg: AYBFou3y0PPn619MkdsXVwvguqOMqufz+ZNS837YzVSAL4xSzjQ1KeJedPbSdVtSVXo
- kJskwVj8VSsa28JAlT960WmNFejz+Umico3560hd3XX0AzeFRk9wKWD/MqoZ0Sa9FdJtayAxnMU
- tWmIH1HupdTkOI80YOcGLAcvUrpGbpFsJQ6HmuHokcz0rVsvAFUh3vIw0M7nNPLR7shzxfUmhFv
- OJe7SF05vQgqzne/i3Ab8vNcix3sJ7cYs7FQ0rurxE/lKYx5iw8AA4WBAv/Bl8N2GapYoOJetk8
- 0RbMj5ifMMDxvYBhAQXuXVVtQlYPZoH5EsSOpKuA87I2vFmgxd6RjZbfwY2FAL+m4ux8JeoQPfD
- o9piX4TPK9N9MtN7GzMDNbmrI4yWy3IusvgLHx0whayiRep8NuKLx5eVYlNAxdh4ZWOPH+XBbDa
- xkQostGREI1KqfyTOIA+XM53VpzrJ3yLFd9sd6pUaKb15utDDeveupUsshbyqTaUf1+FkZb7HeA
- rzqKrs+ZAV59kvEwtArPp7HpdEN70E+zDy3r+dJ/QakJReIdmsQslqfTeDFqk5Rf/yWV6chPudw
- Bg3VJDrQYvISGprO//qHH9vVXTaJ4hkHA/5Zsk69kuT4WsiOkQf/opr/91fh0d+MvSpadYYp8oz
- 9
-X-Received: by 2002:a05:6a00:6301:b0:8ac:3a71:38a6 with SMTP id
- d2e1a72fcca58-8ac3a71603dmr8841515b3a.52.1793870877117; 
- Thu, 05 Nov 2026 01:27:57 -0800 (PST)
+ AKwUvBzhk/xogaI9UnmFwDhxl7XWdyPAtrT+ZEwHeXdJDonI1q+w8gB2xHecxpDiHEU6uRBC/hiVrelbqA==@nongnu.org
+X-Gm-Message-State: APuU4Z+kXdaVSlkfFFzA2ZCoiEcLr0rF2JlqzvK9LDE0mWKkJTe7X4dW
+ etVld0WXoKVAp2FYF3rQIcp7UYLnr0Hz0pCjXHWOXGX9Igt+h8vREz53
+X-Gm-Gg: AYBFou0DSXcJ3ViCQhfxNI5Jb9dA1mpuimuvv2FenmG4A5cJDqD63LlUVfKQrivK5u5
+ 7Orwwf+PkykRuNkaG2VWx4GtgbMN/h63OVBkTOGCPFzT3zND3jEpUZZqZJnztdAGoIx1LTseQDt
+ wRXhb5rXUpTVfdnycHCoPApCN/jGuMDOodKlxbloaVY18uDSv23XLM8zRClb1N6Gkr3hUA4rccp
+ IXAUaePxEqs9UbrayEOkXHwpBkUqDqdYhVAQqjSqBEcxGD9q5aLgWo8fqXWLnsCJYmctN8cdJEX
+ sQLD0fpH+gHOixvrLnDuSU6vcxREA5SvGaHLfEUh3DrrNVRWVBClnTB8iteCSOwpCiqSeaSDvAB
+ ZvPjyGsuzYoL/j2t6vgoj1vX5SaNww1anJJ3vG5gtxZncjKEpnP/y3MVIHos0q6h8SJJ0IYIhd6
+ DMB2sfnPLfTJzcg+vYEG85XCKMIL6l85NMcC9ZwfJEt3QW3mgBs1j37K/p+VKgOkqdhD7DDWUJC
+ S0kTmG8dy5FA3yU7AQ9JZFyN5ilkceE0MXAvLRF8yp4iJE5Z+ZeihQBKjL5RexaeCoYVq/1l+cq
+ rWNtaWL7utChG4c+cUaJYPKnQTPB0V8+H7FFG3/LrnkV11MVCm8J1uvs08DD7PcZ91/ubrW9Roy
+ 7
+X-Received: by 2002:a05:6a00:9a5:b0:899:55e9:880b with SMTP id
+ d2e1a72fcca58-8a9be48bcd8mr17044659b3a.14.1793870869044; 
+ Thu, 05 Nov 2026 01:27:49 -0800 (PST)
 Received: from localhost (118-163-122-149.hinet-ip.hinet.net.
  [118.163.122.149]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8b09c024a45sm1790162b3a.56.2026.11.05.01.27.56
+ d2e1a72fcca58-8b09ae9d26csm1835802b3a.27.2026.11.05.01.27.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 01:27:56 -0800 (PST)
-Date: Thu, 05 Nov 2026 17:25:40 +0800
-Subject: [PATCH 01/16] hw/sensor: tmp421: do not report a stale errno on a
- parse failure
+ Thu, 05 Nov 2026 01:27:48 -0800 (PST)
+Subject: [PATCH 00/16] hw/sensor: TMP421 improvements
+Date: Thu, 05 Nov 2026 17:25:39 +0800
+Message-Id: <20261105-sensor-tmp421-v1-0-c46853f5e1f0@free.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261105-sensor-tmp421-v1-1-c46853f5e1f0@free.fr>
-References: <20261105-sensor-tmp421-v1-0-c46853f5e1f0@free.fr>
-In-Reply-To: <20261105-sensor-tmp421-v1-0-c46853f5e1f0@free.fr>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQ5AMBBA0avIrDVpG21SVxELajASJR1EIu6uW
+ L7F/xcwRkKGMrsg4kFMS0hQeQZ+bMKAgrpk0FJbpaQRjIGXKLZ5LbQSrrPOoymMtxZSs0bs6fx
+ +Vf2b93ZCv70TuO8HPraJfXEAAAA=
+X-Change-ID: 20261105-sensor-tmp421-9d69ce545c66
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, eblot@meta.com, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
@@ -72,24 +72,24 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, eblot@meta.com,
  Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
  qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Emmanuel Blot <emmanuel.blot@free.fr>
+ Emmanuel Blot <emmanuel.blot@free.fr>, Jamin Lin <jaminlin1207@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793870742; l=1336;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793870742; l=2706;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=GFEfhIFJh8BOQmlbaRUAQhaRBhXcQfPvzbeClZRBxBk=;
- b=SnUnMVbEDiOUUppxJSOZyrhMoIdPtXywSWLyUL3FSZ5SGalDeO3g4fEqZ7VOcLdlRarxUjrrS
- bqxyYgtDqFPDBVOzS8OQSE+LpVw23ryDYEF2OZjxhok5xds19WX3DIp
+ bh=jd0vR9vEGWTA2UvjlfzO6sac3fr1/sWC4XS8Ho9tt2Q=;
+ b=wEOiRx8QR2fmhBnuCvbg5ZrsM6FoVdFn5neviJadSHugeefMYFfvZ1YyiGJgU+/YW9vLaxGdp
+ mqF8xa29Qy0D5eduIQ6BdzIbn+R0b+QIwc6s4qY3Z1nUqEEiGIHy4D8
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.210.171; envelope-from=eblot.ml@gmail.com;
- helo=mail-pf1-f171.google.com
+Received-SPF: pass client-ip=209.85.210.182; envelope-from=eblot.ml@gmail.com;
+ helo=mail-pf1-f182.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
 X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
  FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -110,42 +110,61 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,INCLUDES_CR_TRAILER,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The temperature property accessors decode the channel index out of the
-property name and report a failure with error_setg_errno(). sscanf()
-does not set errno when it matches fewer items than expected, so the
-message is suffixed with whatever unrelated error was left behind by an
-earlier call. The bounds check right below already uses plain
-error_setg() for the same condition.
+Based on master, at:
+  f29ccc287a
+
+The TMP421 variants are now described by a class descriptor instead
+of a lookup table. Channel enablement, register write masks, the
+one-shot trigger and the per-channel N-factor registers are modelled,
+reset follows Resettable API, and the variant type names move to a
+header so boards stop open-coding the strings.
+
+The new TMP421 state is stored in optional subsections.
+
+New qtest for the TMP421 family, checking a migration round trip.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/sensor/tmp421.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Emmanuel Blot (16):
+      hw/sensor: tmp421: do not report a stale errno on a parse failure
+      hw/sensor: tmp421: name the parent object field parent_obj
+      hw/sensor: tmp421: implement Resettable reset
+      hw/sensor: tmp421: model device variants with a class descriptor
+      hw/sensor: tmp421: honor per-variant channels and channel enablement
+      hw/sensor: tmp421: implement register write masks, one-shot and N-factor
+      hw/sensor: tmp421: describe the temperature properties
+      hw/sensor: tmp421: keep the measurement across a range change
+      hw/sensor: tmp421: migrate the exact measurement
+      hw/sensor: tmp421: publish the variant type names
+      hw/arm/aspeed: use the TMP421 type-name macros
+      tests/qtest: tmp421: cover device IDs and reset defaults
+      tests/qtest: tmp421: cover temperature encoding and range
+      tests/qtest: tmp421: cover per-variant channels and enablement
+      tests/qtest: tmp421: cover software reset and N-factor registers
+      tests/qtest: tmp421: cover the register form of the migration stream
 
-diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-index 0e4d0d0ec2..84c6ebec41 100644
---- a/hw/sensor/tmp421.c
-+++ b/hw/sensor/tmp421.c
-@@ -118,7 +118,7 @@ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
-     int tempid;
- 
-     if (sscanf(name, "temperature%d", &tempid) != 1) {
--        error_setg_errno(errp, errno, "error reading %s", name);
-+        error_setg(errp, "error reading %s", name);
-         return;
-     }
- 
-@@ -155,7 +155,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
-     }
- 
-     if (sscanf(name, "temperature%d", &tempid) != 1) {
--        error_setg_errno(errp, errno, "error reading %s", name);
-+        error_setg(errp, "error reading %s", name);
-         return;
-     }
- 
+ hw/arm/aspeed_ast2400_palmetto.c          |   3 +-
+ hw/arm/aspeed_ast2400_supermicrox11.c     |   3 +-
+ hw/arm/aspeed_ast2500_supermicro-x11spi.c |   3 +-
+ hw/arm/aspeed_ast2500_tiogapass.c         |  10 +-
+ hw/arm/aspeed_ast2500_witherspoon.c       |   7 +-
+ hw/arm/aspeed_ast2500_yosemitev2.c        |  10 +-
+ hw/arm/aspeed_ast2600_bletchley.c         |   3 +-
+ hw/arm/aspeed_ast2600_catalina.c          |   3 +-
+ hw/arm/aspeed_ast2600_fby35.c             |   2 +-
+ hw/arm/aspeed_ast2600_fuji.c              |   3 +-
+ hw/arm/aspeed_ast2600_rainier.c           |  13 +-
+ hw/sensor/tmp421.c                        | 429 +++++++++++++++++++++---------
+ include/hw/sensor/tmp421.h                |  19 ++
+ tests/qtest/meson.build                   |   1 +
+ tests/qtest/tmp421-test.c                 | 326 +++++++++++++++++++++++
+ 15 files changed, 692 insertions(+), 143 deletions(-)
+---
+base-commit: f29ccc287a6cfdd51d3a4fd17fbe9af3310a0ac5
+change-id: 20261105-sensor-tmp421-9d69ce545c66
 
--- 
-2.53.0-Meta
+Best regards,
+--  
+Emmanuel Blot <emmanuel.blot@free.fr>
 
 

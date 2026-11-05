@@ -1,115 +1,122 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6EFEE606A32D
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:45:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 93DE0606A328
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 10:29:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Slm5PH+F
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=HU9Ky5gg
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOu1c-0001UO-AA; Thu, 05 Nov 2026 04:44:53 -0500
+	id 1xOui8-00065j-Vz; Thu, 05 Nov 2026 05:28:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1xOu1U-0001T6-CZ
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:44:44 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1xOu1R-0008Pq-67
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:44:44 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4a2072b9832so2239955e9.1
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:44:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793871877; x=1794476677; darn=nongnu.org;
- h=cc:to:message-id:content-transfer-encoding:content-type
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=hMD+5cZf1lc0fXUnrJe8/OruuWHi0aOyw6bbqJ8NCbo=;
- b=Slm5PH+F3dnca07k/EUzSGJSSwpaI0d4PrGbK1iR7UXWoqL92sW+A/Rq5pz7IFvaER
- DGmrkAUatxInWWhjm731wqjCGulfcXFiQW6astu8cHxA9RiKQxb/ot2YzxaW3g0+nJbr
- RZAmLZmsMIZVSPcLrV8RZjO7a3/OlW1H4tOXTcxYTinLVjLUgvnAawIOudqQfbQWMeGU
- 49Y198k1+6yB+jNewUszMk2TfU5QQMagD4fJTXtIoKmyeJlQl6V/ybyUyy22yuChut/j
- VRUuldCjCJP+mjc8WLOEccD04pC0adWl7++z+rVHMI4RqRnDYNx0sC539xNC9uWXSjpv
- F9Ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793871877; x=1794476677;
- h=cc:to:message-id:content-transfer-encoding:content-type
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=hMD+5cZf1lc0fXUnrJe8/OruuWHi0aOyw6bbqJ8NCbo=;
- b=zAO2cSOe2Fmi7wnk+EVkvaSPRzm7xh4FBYahaJNv2PCTEu6+mddzIX4aJmi6yO4Zd3
- jkgLIapEnvm1Tg8Zrrwjt0Vf7ketNOsEGHos1Dzt8qF/udTs1//yGXHbME0ngmhBDEOY
- oW1HvCjykKGeZBYnacigVdKqSujm4A6VnZ7dFa8klTfErDOSbr851RWv0bHTXW4V0QE8
- maAiZdrCjgVeJK7tZ3wtkz+DQLaOJggv80beCMHEMm4ifpZH6VED07bEsoMsv1pZ7eY7
- nKE06bzWerEbRldTiOZhID/AmppmIWIhILRIhvHpvBw091HE5XmPNCOLjCHHxHTUNRfE
- rZfg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwZHkSJ3y35QeALn/2bE9BmvCjkROgrUUbo2HmjHxnBvMDjwFdE+T/007fFh2otSTKrfekfxyYl4w==@nongnu.org
-X-Gm-Message-State: APuU4Z/Yk6GoIr/7lbdnBjy+WOu0BDLPARhkkZ906JCVPTRyzpohbSaL
- ywbdjpWdvgOohTSABMoojLQiGSEMG76GlHHwEeSJJl4O84v4rA8mz8yMIn6NKab27Ss=
-X-Gm-Gg: AYBFou0eO4KXZSedDP2X0XcgTIlE9d3Haa5wlIgN55Rfh+sHGSqimn3IlQwJz0cCjCd
- e1e8c/HyQqIfUjANSymuAMIwemTv2lURzNeS62K5jvATLMx9IeBd2XSa7mUN2vJXgO2FNmcKiXz
- Qcnh1qHJTo8/mEEoRA2unYs5ytD7S/hdo43sIGEz/0aB+zq76DknVby8fFHypXKWTJ/C8ZbUVAK
- 3OfLHGUlNZlUPvITUA+B6wTKW7HsWvdYvPry6HSflSA/+kApX4uV/Fy03wFAOSJe9erJcTShGDy
- 3HagmWhufckEqQTGWAsFMo1tUUceEvLpXLpT+KzPlgfW5IWEcRbwNKZ9p0cW2gJKiNwTv6UeT+T
- +KqrQX1kS9BKoXmSVmyl1r/h+ILYuZRTJqoN2IS7fn9xH0WlRQj7UzunvG08VPTyYYu5haO7Ema
- 9XTW7LeX5rlX8mudp2bwfbgpROoNz1DUeojAn9VmDFr2ZhJjHjvebFqM5KwnyNHA0QN785+O1kP
- WXdC2+p4EgxoFakpBmCw2T2J/qApxrtgwXY3uKNf4l9MCXWrck3aS79ds/lUpY5fDPGTAEh4S31
- d0lBOS8l6Dtw/NxmS9SGDPi26vw9yUYcZ4vA+8PNYC9JiKHC3fj/Mtec9J3hgWRlAySpmP6SlFe
- fcKPvMHeDM8izOVym5UDnCM8TD59w1QdeTgTvedd9Il551EL0nEBfAjs/or9bpAelKCmPNuXpXG
- 3RyOJSLbRIhl26zAeMDMGYDL/cSOav/vSFzvVHyzhFrUDctp2O
-X-Received: by 2002:a05:600c:c170:b0:4a2:10f9:37db with SMTP id
- 5b1f17b1804b1-4b55cf2fcfcmr33528285e9.7.1793871877441; 
- Thu, 05 Nov 2026 01:44:37 -0800 (PST)
-Received: from satan.lan ([94.66.192.55]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4b56f5e65c8sm51500815e9.12.2026.11.05.01.44.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 01:44:37 -0800 (PST)
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Thu, 05 Nov 2026 11:44:32 +0200
-Subject: [PATCH] target/arm/ptw: check XN for ARMv6 in get_S1prot()
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xOui3-00062E-JU
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 05:28:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xOui1-0004M2-Sn
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 05:28:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793874521;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=beoCTXwXgtPga18h8hkf+gkXIHVW2MJu8A4Vg/XMQo4=;
+ b=HU9Ky5ggLARTz+4j/k2KEOLPKVkIlW11F00ioNz+wXHJpNtXbcoB2XlwNdQ5I0IoMqbOVf
+ uGrgJMi1u2zKnBygnAcsVT1IzbEKR5NDB+8I+3307Z0dXK/+DRBHBx0YcT/zRPT6CNknh0
+ GMid6m+zfmfbgzwyu4k1VOy2JRS9ElA=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-623-F6ZWGNpJMw-Pg2F3xWgSYQ-1; Thu,
+ 05 Nov 2026 05:28:35 -0500
+X-MC-Unique: F6ZWGNpJMw-Pg2F3xWgSYQ-1
+X-Mimecast-MFC-AGG-ID: F6ZWGNpJMw-Pg2F3xWgSYQ_1793874510
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CCE78180120C; Thu,  5 Nov 2026 10:28:28 +0000 (UTC)
+Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B120019AC074; Thu,  5 Nov 2026 10:28:18 +0000 (UTC)
+Date: Thu, 5 Nov 2026 10:28:15 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: Yonggang Luo <luoyonggang@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+ Anthony PERARD <anthony@xenproject.org>, Felipe Balbi <balbi@kernel.org>,
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Weiwei Li <liwei1518@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ =?utf-8?Q?Cl=C3=A9ment?= Chigot <chigot@adacore.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Chao Liu <chao.liu@processmission.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
+ registration
+Message-ID: <auxaPyRRm3MTBz1f@redhat.com>
+References: <20261030151539.1872-1-luoyonggang@gmail.com>
+ <d1db54c6-b802-676a-7779-0c2c63f5f807@eik.bme.hu>
+ <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
+ <aumYOBw-nKQAWdYK@redhat.com>
+ <CAE2XoE8Xwevk523OfB+GgwbRu0iVnyD4VNOx81rj7J7F5aq=OA@mail.gmail.com>
+ <54851326-3627-2b86-57d6-c338ed4e4b50@eik.bme.hu>
+ <CAE2XoE_P2mZAT8wZwzFsTqJTK8nxNSSqJRrOM2T-AJkQjwJHBw@mail.gmail.com>
+ <aunnuwhsx9ZOOXBX@redhat.com>
+ <45433754-3cea-41fc-9f45-65a328d0efca@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261105-armv6-xn-check-v1-1-fbeff926e692@linaro.org>
-X-B4-Tracking: v=1; b=H4sIAP9P7GoC/x3MQQqAIBBA0avErBtQQYOuEi10nGqILBQiCO+et
- HyL/18onIULjN0LmW8pcqYG3XdAm08ro8RmMMo4rZVFn4/b4ZOQNqYdOcRo1UDe+gAtujIv8vz
- Daa71A9fshdVgAAAA
-X-Change-ID: 20261105-armv6-xn-check-ebdd507ca5ab
-To: qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-arm@nongnu.org, Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1280;
- i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
- bh=CMQ/ElNoMou01q47s1nmPtmNWEwtljcd2wE57FrhP2U=;
- b=owEBbQKS/ZANAwAKAXcpx3B/fgnQAcsmYgBq7FAEXemRIWd7+U92DRkYMy0MshrFaVl7YkgXG
- KiNMcq4uu+JAjMEAAEKAB0WIQTMXBtORKBW84dwHRB3Kcdwf34J0AUCauxQBAAKCRB3Kcdwf34J
- 0HVMD/9s0kAZV/EQSu6Tq0n8A625xWQzwb+THOLOTWzignB08mCeFeIGj6TELkFkEmU9bTFTvdP
- 1Ni8r+XFAYVpq3HKce74PofWRHDwYXBv3pToBds8D3JOxptU4Qkd56471HaesdcgGdLssKiAxiv
- DWda8mTlgr12w9nyLgVsX8ukRDqqefW/ZWRvQ4C8G+MgN7g1f6nZ7OFqDVgs6gY/nnyEhZnUKLI
- JSl+s840IrzNA3bsLWyfiJhpodc7+3cPRUbIo1xhS9NdGXiHrR5MpDr3Ub4QnQm01xMgFNrfyNo
- XPL34n/vv7/AI2ombVFekjr3C6VA6AvR8gQEbrzkxKj49r4VcYc6UuiM5aw8VO8hg5/z4lw9e9D
- Pc57XBXUWo9fwMNYDX2bLNY28lwnvAEYSFD0BXGyc7K+NkTICuXnLzcqwJl2ZAyK+D5B0C2kSob
- tMltfNscb1+0A80QJddneUEbfAJuCp2Sm3x1LanPo+pymsAFJSiReP1Mh9b+QnHfbGskYrh3ZI8
- XhjoSRyzLPxrVtjWRNBYE/6RpsBxO9xHk97lEMXxNeeHVuLA9QONlz4a0nIz9GSA6XdLxt+hKvE
- ff2ipF5WANuI49w+ormSf6GbtXryYprHjLsOtOXfNc3WfjzSzsuuYBJpwtAkrICIvGOfFvJ+YyL
- N51F70IGowAJvnQ==
-X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
- fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <45433754-3cea-41fc-9f45-65a328d0efca@oss.qualcomm.com>
+User-Agent: Mutt/2.4.3 (2026-10-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: aSvcdhbsEqsHm2qW54bsrKxquXZRg2xEPr_TDoaqpU4_1793874510
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,47 +127,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-For the ARM_FEATURE_V6 case, it seems like we retrieve AP and XN bits in
-get_phys_addr_v6() but we don't check the XN bit in get_S1prot().
+On Thu, Nov 05, 2026 at 12:27:18AM -0800, Pierrick Bouvier wrote:
+> On 11/3/2026 5:55 AM, Daniel P. Berrangé wrote:
+> > On Tue, Nov 03, 2026 at 09:48:44PM +0800, Yonggang Luo wrote:
+> >> On Tue, Nov 3, 2026 at 9:23 PM BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> >>>
+> >>> On Tue, 3 Nov 2026, Yonggang Luo wrote:
+> >>> That means exposing all the boiler plate for all machines other than the
+> >>> simplest case. I think it would be better to keep DEFINE_MACHINE_EXTENDED
+> >>> but maybe rethink the existing wrappers and drop unused ones and maybe add
+> >>> new ones that reduce the usage of DEFINE_MACHINE_EXTENDED but still keep
+> >>> the boiler plate hidden.
+> >>
+> >> Thanks, I'll go this way, remove unused macros, and keep DEFINE_MACHINE_EXTENDED
+> >> and extend both DEFINE_MACHINE_EXTENDED DEFINE_MACHINE supports
+> >> "targets" or "arch_mask" parameter.
+> > 
+> > Given that we don't need to do general per-arch type filtering in
+> > QOM, we could just move 'is_available' out of TypeInfo, and into the
+> > MachineClass, so it is a regular class level property, which can be
+> > set in the class_init methods, and thus avoid any changes to the
+> > DEFINE_MACHINE macros.
+> >
+> 
+> Some cpus need it also, and it's used for filtering purpose at this time
+> (to avoid duplication at registration). We already depend on this behavior.
 
-Change the `if (arm_feature(env, ARM_FEATURE_V7))` check in get_S1prot()
-to `if (arm_feature(env, ARM_FEATURE_V6))` since v7 implies v6.
+Can you give me more info on the problem with the CPUs ? What cases
+have duplicate class names with CPUs ?
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4367
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- target/arm/ptw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 2e67d02493bd463cfd2d31ecf1316272ac3f1d99..b8b22b014e0574340a85abe73f3d9611d2360219 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -1595,7 +1595,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-         if (regime_has_2_ranges(mmu_idx) && !is_user) {
-             xn = pxn || (user_rw & PAGE_WRITE);
-         }
--    } else if (arm_feature(env, ARM_FEATURE_V7)) {
-+    } else if (arm_feature(env, ARM_FEATURE_V6)) {
-         switch (regime_el(mmu_idx)) {
-         case 1:
-         case 3:
-
----
-base-commit: f29ccc287a6cfdd51d3a4fd17fbe9af3310a0ac5
-change-id: 20261105-armv6-xn-check-ebdd507ca5ab
-
-Best regards,
+With regards,
+Daniel
 -- 
-Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
 

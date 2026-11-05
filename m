@@ -1,96 +1,115 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19C94606A326
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:30:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6EFEE606A32D
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:45:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Slm5PH+F
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOtnA-0001X0-JP; Thu, 05 Nov 2026 04:29:56 -0500
+	id 1xOu1c-0001UO-AA; Thu, 05 Nov 2026 04:44:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtn8-0001Qp-UG
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:29:55 -0500
-Received: from mail-pf1-f177.google.com ([209.85.210.177])
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1xOu1U-0001T6-CZ
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:44:44 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtn5-00074N-Nc
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:29:54 -0500
-Received: by mail-pf1-f177.google.com with SMTP id
- d2e1a72fcca58-8a05da1cc1fso712112b3a.2
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:29:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1xOu1R-0008Pq-67
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:44:44 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4a2072b9832so2239955e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:44:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1793871877; x=1794476677; darn=nongnu.org;
+ h=cc:to:message-id:content-transfer-encoding:content-type
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=hMD+5cZf1lc0fXUnrJe8/OruuWHi0aOyw6bbqJ8NCbo=;
+ b=Slm5PH+F3dnca07k/EUzSGJSSwpaI0d4PrGbK1iR7UXWoqL92sW+A/Rq5pz7IFvaER
+ DGmrkAUatxInWWhjm731wqjCGulfcXFiQW6astu8cHxA9RiKQxb/ot2YzxaW3g0+nJbr
+ RZAmLZmsMIZVSPcLrV8RZjO7a3/OlW1H4tOXTcxYTinLVjLUgvnAawIOudqQfbQWMeGU
+ 49Y198k1+6yB+jNewUszMk2TfU5QQMagD4fJTXtIoKmyeJlQl6V/ybyUyy22yuChut/j
+ VRUuldCjCJP+mjc8WLOEccD04pC0adWl7++z+rVHMI4RqRnDYNx0sC539xNC9uWXSjpv
+ F9Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793870990; x=1794475790;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=hRQau7jFOLMcW9cDld4PZy7QHA0r3DkmWSHU69Dv0ic=;
- b=PYeB33e608FlB47wPJzhWq4Lhex2rfshOlnfMUwxjJNYWcOu31YtnuEkgFnFaqjiyo
- PTKmDyRDHID11lp29dXLMbdJNsPkNL2C3GNdunVDDadCIMA9TMIvJOKJsEYiU2PKH+J3
- IKxXuYLTMEbIaiJ6hwrXtrC5D61Z2Qu8tpPhvW3h9S1+DoH+wQnMR6AXGqhww0PftjRU
- gc0ySumQa6QcLmMUA2r3qR8OmTz7pxj9npxgPV3Wg6RzMi1P30JMQK3vS7d/ZxhC3Kvx
- LqyFOpBG/DFKScIHCRPVrslp5NVwg9p2PhGyjNi+E1Dddy5KgsnnR87QXvyXbxc4v3sc
- HnIw==
+ d=1e100.net; s=20260707; t=1793871877; x=1794476677;
+ h=cc:to:message-id:content-transfer-encoding:content-type
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to:content-type;
+ bh=hMD+5cZf1lc0fXUnrJe8/OruuWHi0aOyw6bbqJ8NCbo=;
+ b=zAO2cSOe2Fmi7wnk+EVkvaSPRzm7xh4FBYahaJNv2PCTEu6+mddzIX4aJmi6yO4Zd3
+ jkgLIapEnvm1Tg8Zrrwjt0Vf7ketNOsEGHos1Dzt8qF/udTs1//yGXHbME0ngmhBDEOY
+ oW1HvCjykKGeZBYnacigVdKqSujm4A6VnZ7dFa8klTfErDOSbr851RWv0bHTXW4V0QE8
+ maAiZdrCjgVeJK7tZ3wtkz+DQLaOJggv80beCMHEMm4ifpZH6VED07bEsoMsv1pZ7eY7
+ nKE06bzWerEbRldTiOZhID/AmppmIWIhILRIhvHpvBw091HE5XmPNCOLjCHHxHTUNRfE
+ rZfg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwAXXhCAT12EV96jnjzndTDUF4euBDHq6YaNRwP3+3jeCrDULe5QcA2UcGuYEcf9X8n59rqaFeESQ==@nongnu.org
-X-Gm-Message-State: APuU4Z8sA2eIs1+HVwS+FnWqwrUrJzLsRiRA+KTMHdUQei3W9ujLQnHx
- qowmQeJFY6Qb3njv7ZiTt6VXDVaBdjzCoh+3EBk5tyrhgXlUTscItyR3
-X-Gm-Gg: AYBFou0En1I8sZxr627YNydA/ke+0xpLIAI48v6B9Gtk1rt5jCDx0MhQDqe8XbQ/IGA
- czP5t81OB0KuHzwYniIV3lKHYe+ZdMZh2v8weRYd+jIpAAD5HxVZO/N8K6pDINBZYMUTT+iqtFX
- wgs5eI8WcAx7tem33xPg8R1aJw/pzShGytcenzFTuz32s1yFjmNAC3Z1MlLoB1W1fgbvX5nGlUq
- Mk1ymt02NTVekreBiNJtNRE1OWl011jf1BnEhFl9UqMJCvMBapooEW2M+woZgPebR/f3W9LNhEq
- hEBp/+JSIKeSTRs+Tch4e1mUzepKA4xllygmqXTbP77oEML4TfhWQ3XYizX20bmnWnsh7FkLvtR
- iqvcyuFL7qtbamzSvNMdE6XB5Fxzlo+2nBI0NeAp+qi33lnc0qTgLNcqB9YpwHojXsVqo4R07Jv
- PruUwmNJ/51vut1XvPGlNe3AEXON65ocX4VG+gv4uoLKqc0A0ZNtxX4ow9SYBFvzu/XC2S2iM65
- /3jsjOU7Tf+iKMrxaqzjzFVBonko9uUmx3+nbqMtt0oq0TUQOi+erA4IVQL0rd0Ixy/V25Rx5W9
- /kTbGfc45Au3YdrtxMCaiTacBj52qPt+BTM7bzdyydrcPrVHbRHKqAYyqZ22ToHoAti+PUyWCFY
- xnGIia9Fh3QmHnElx+uH1UA==
-X-Received: by 2002:a05:6a00:10d4:b0:89f:28c3:aab0 with SMTP id
- d2e1a72fcca58-8a9bf61f237mr15188701b3a.40.1793870989976; 
- Thu, 05 Nov 2026 01:29:49 -0800 (PST)
-Received: from localhost (118-163-122-149.hinet-ip.hinet.net.
- [118.163.122.149]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8b09af91d24sm1759590b3a.29.2026.11.05.01.29.49
+ AKwUvBwZHkSJ3y35QeALn/2bE9BmvCjkROgrUUbo2HmjHxnBvMDjwFdE+T/007fFh2otSTKrfekfxyYl4w==@nongnu.org
+X-Gm-Message-State: APuU4Z/Yk6GoIr/7lbdnBjy+WOu0BDLPARhkkZ906JCVPTRyzpohbSaL
+ ywbdjpWdvgOohTSABMoojLQiGSEMG76GlHHwEeSJJl4O84v4rA8mz8yMIn6NKab27Ss=
+X-Gm-Gg: AYBFou0eO4KXZSedDP2X0XcgTIlE9d3Haa5wlIgN55Rfh+sHGSqimn3IlQwJz0cCjCd
+ e1e8c/HyQqIfUjANSymuAMIwemTv2lURzNeS62K5jvATLMx9IeBd2XSa7mUN2vJXgO2FNmcKiXz
+ Qcnh1qHJTo8/mEEoRA2unYs5ytD7S/hdo43sIGEz/0aB+zq76DknVby8fFHypXKWTJ/C8ZbUVAK
+ 3OfLHGUlNZlUPvITUA+B6wTKW7HsWvdYvPry6HSflSA/+kApX4uV/Fy03wFAOSJe9erJcTShGDy
+ 3HagmWhufckEqQTGWAsFMo1tUUceEvLpXLpT+KzPlgfW5IWEcRbwNKZ9p0cW2gJKiNwTv6UeT+T
+ +KqrQX1kS9BKoXmSVmyl1r/h+ILYuZRTJqoN2IS7fn9xH0WlRQj7UzunvG08VPTyYYu5haO7Ema
+ 9XTW7LeX5rlX8mudp2bwfbgpROoNz1DUeojAn9VmDFr2ZhJjHjvebFqM5KwnyNHA0QN785+O1kP
+ WXdC2+p4EgxoFakpBmCw2T2J/qApxrtgwXY3uKNf4l9MCXWrck3aS79ds/lUpY5fDPGTAEh4S31
+ d0lBOS8l6Dtw/NxmS9SGDPi26vw9yUYcZ4vA+8PNYC9JiKHC3fj/Mtec9J3hgWRlAySpmP6SlFe
+ fcKPvMHeDM8izOVym5UDnCM8TD59w1QdeTgTvedd9Il551EL0nEBfAjs/or9bpAelKCmPNuXpXG
+ 3RyOJSLbRIhl26zAeMDMGYDL/cSOav/vSFzvVHyzhFrUDctp2O
+X-Received: by 2002:a05:600c:c170:b0:4a2:10f9:37db with SMTP id
+ 5b1f17b1804b1-4b55cf2fcfcmr33528285e9.7.1793871877441; 
+ Thu, 05 Nov 2026 01:44:37 -0800 (PST)
+Received: from satan.lan ([94.66.192.55]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4b56f5e65c8sm51500815e9.12.2026.11.05.01.44.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 01:29:49 -0800 (PST)
-Date: Thu, 05 Nov 2026 17:25:55 +0800
-Subject: [PATCH 16/16] tests/qtest: tmp421: cover the register form of the
- migration stream
+ Thu, 05 Nov 2026 01:44:37 -0800 (PST)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Thu, 05 Nov 2026 11:44:32 +0200
+Subject: [PATCH] target/arm/ptw: check XN for ARMv6 in get_S1prot()
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261105-sensor-tmp421-v1-16-c46853f5e1f0@free.fr>
-References: <20261105-sensor-tmp421-v1-0-c46853f5e1f0@free.fr>
-In-Reply-To: <20261105-sensor-tmp421-v1-0-c46853f5e1f0@free.fr>
+Message-Id: <20261105-armv6-xn-check-v1-1-fbeff926e692@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAP9P7GoC/x3MQQqAIBBA0avErBtQQYOuEi10nGqILBQiCO+et
+ HyL/18onIULjN0LmW8pcqYG3XdAm08ro8RmMMo4rZVFn4/b4ZOQNqYdOcRo1UDe+gAtujIv8vz
+ Daa71A9fshdVgAAAA
+X-Change-ID: 20261105-armv6-xn-check-ebdd507ca5ab
 To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, eblot@meta.com, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Emmanuel Blot <emmanuel.blot@free.fr>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793870743; l=3815;
- i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=KCKssRn/w/mRE8Rh274RLtAfGbpNnr2ePuT78VSY79A=;
- b=wGcVW44wmQZo44v/sifNQgtTmtsxOF5xTpY9gQkXfi3zHF9TFfOoUE+KOHd/qb9jHe5uWuUih
- M6AgtLtVbpWBMgv44AYk4XnLhBsqyd/KnwUTi92MdQdcrEC7Wa7fB+c
-X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
- pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.210.177; envelope-from=eblot.ml@gmail.com;
- helo=mail-pf1-f177.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Cc: qemu-stable@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-arm@nongnu.org, Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1280;
+ i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
+ bh=CMQ/ElNoMou01q47s1nmPtmNWEwtljcd2wE57FrhP2U=;
+ b=owEBbQKS/ZANAwAKAXcpx3B/fgnQAcsmYgBq7FAEXemRIWd7+U92DRkYMy0MshrFaVl7YkgXG
+ KiNMcq4uu+JAjMEAAEKAB0WIQTMXBtORKBW84dwHRB3Kcdwf34J0AUCauxQBAAKCRB3Kcdwf34J
+ 0HVMD/9s0kAZV/EQSu6Tq0n8A625xWQzwb+THOLOTWzignB08mCeFeIGj6TELkFkEmU9bTFTvdP
+ 1Ni8r+XFAYVpq3HKce74PofWRHDwYXBv3pToBds8D3JOxptU4Qkd56471HaesdcgGdLssKiAxiv
+ DWda8mTlgr12w9nyLgVsX8ukRDqqefW/ZWRvQ4C8G+MgN7g1f6nZ7OFqDVgs6gY/nnyEhZnUKLI
+ JSl+s840IrzNA3bsLWyfiJhpodc7+3cPRUbIo1xhS9NdGXiHrR5MpDr3Ub4QnQm01xMgFNrfyNo
+ XPL34n/vv7/AI2ombVFekjr3C6VA6AvR8gQEbrzkxKj49r4VcYc6UuiM5aw8VO8hg5/z4lw9e9D
+ Pc57XBXUWo9fwMNYDX2bLNY28lwnvAEYSFD0BXGyc7K+NkTICuXnLzcqwJl2ZAyK+D5B0C2kSob
+ tMltfNscb1+0A80QJddneUEbfAJuCp2Sm3x1LanPo+pymsAFJSiReP1Mh9b+QnHfbGskYrh3ZI8
+ XhjoSRyzLPxrVtjWRNBYE/6RpsBxO9xHk97lEMXxNeeHVuLA9QONlz4a0nIz9GSA6XdLxt+hKvE
+ ff2ipF5WANuI49w+ormSf6GbtXryYprHjLsOtOXfNc3WfjzSzsuuYBJpwtAkrICIvGOfFvJ+YyL
+ N51F70IGowAJvnQ==
+X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
+ fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,119 +120,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
-From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-A stream with no measurement subsection has the shape of every stream
-written before that subsection existed; loading one exercises the
-conversion back from the register form. The temperature is picked so
-that form reproduces it exactly, and picked in the extended range,
-where the top register bit is part of the value rather than a sign.
+For the ARM_FEATURE_V6 case, it seems like we retrieve AP and XN bits in
+get_phys_addr_v6() but we don't check the XN bit in get_S1prot().
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Change the `if (arm_feature(env, ARM_FEATURE_V7))` check in get_S1prot()
+to `if (arm_feature(env, ARM_FEATURE_V6))` since v7 implies v6.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4367
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- tests/qtest/tmp421-test.c | 66 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 66 insertions(+)
+ target/arm/ptw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qtest/tmp421-test.c b/tests/qtest/tmp421-test.c
-index 6c5332211b..5be2abc822 100644
---- a/tests/qtest/tmp421-test.c
-+++ b/tests/qtest/tmp421-test.c
-@@ -8,6 +8,8 @@
- 
- #include "qemu/osdep.h"
- 
-+#include <glib/gstdio.h>
-+#include "libqtest.h"
- #include "libqtest-single.h"
- #include "libqos/qgraph.h"
- #include "libqos/i2c.h"
-@@ -224,6 +226,69 @@ static void test_n_correct(void *obj, void *data, QGuestAllocator *alloc)
-     }
- }
- 
-+static int qtest_get_temperature(QTestState *qts, const char *id,
-+                                 unsigned channel)
-+{
-+    g_autofree char *prop = g_strdup_printf("temperature%u", channel);
-+    QDict *response;
-+    int ret;
-+
-+    response = qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments': "
-+                         "{ 'path': %s, 'property': %s } }", id, prop);
-+    g_assert(qdict_haskey(response, "return"));
-+    ret = qdict_get_int(response, "return");
-+    qobject_unref(response);
-+    return ret;
-+}
-+
-+/*
-+ * A stream written before the measurement was held in millidegrees carries
-+ * only the register form. The subsection holding the measurement is left out
-+ * whenever that form can reproduce it, so an exactly representable extended
-+ * range temperature -- whose register value has its top bit set, and is not
-+ * a negative number -- travels the same path such a stream takes.
-+ */
-+static void test_migration(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = obj;
-+    g_autofree char *tmpfs = NULL;
-+    g_autofree char *mig_path = NULL;
-+    g_autofree char *uri = NULL;
-+    GString *dest_cmdline;
-+    GError *err = NULL;
-+    QTestState *to;
-+    QDict *rsp;
-+
-+    tmpfs = g_dir_make_tmp("tmp421-test-XXXXXX", &err);
-+    g_assert_no_error(err);
-+    g_assert(tmpfs);
-+
-+    mig_path = g_strdup_printf("%s/socket.mig", tmpfs);
-+    uri = g_strdup_printf("unix:%s", mig_path);
-+
-+    i2c_set8(i2cdev, TMP421_CONFIG_REG_1, TMP421_CONFIG_RANGE);
-+    set_temperature(TMP421_TEST_ID, 0, 100000);
-+    g_assert_cmphex(i2c_get16(i2cdev, TMP421_TEMP_MSB0), ==, 0xA400);
-+
-+    dest_cmdline = g_string_new(qos_get_current_command_line());
-+    g_string_append_printf(dest_cmdline, " -incoming %s", uri);
-+    to = qtest_init(dest_cmdline->str);
-+
-+    rsp = qmp("{ 'execute': 'migrate', 'arguments': { 'uri': %s } }", uri);
-+    g_assert(qdict_haskey(rsp, "return"));
-+    qobject_unref(rsp);
-+
-+    qmp_eventwait("STOP");
-+    qtest_qmp_eventwait(to, "RESUME");
-+
-+    g_assert_cmpint(qtest_get_temperature(to, TMP421_TEST_ID, 0), ==, 100000);
-+
-+    qtest_quit(to);
-+    g_unlink(mig_path);
-+    g_rmdir(tmpfs);
-+    g_string_free(dest_cmdline, true);
-+}
-+
- static void tmp421_register_node(const TMP421Variant *var, const char *type,
-                                  uint8_t addr)
- {
-@@ -255,6 +320,7 @@ static void tmp421_register_nodes(void)
-     /* Temperature encoding is variant-independent; exercise it once. */
-     qos_add_test("temperature", "tmp421", test_temperature, NULL);
-     qos_add_test("range-saturation", "tmp421", test_range_saturation, NULL);
-+    qos_add_test("migration", "tmp421", test_migration, NULL);
- }
- 
- libqos_init(tmp421_register_nodes);
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 2e67d02493bd463cfd2d31ecf1316272ac3f1d99..b8b22b014e0574340a85abe73f3d9611d2360219 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -1595,7 +1595,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+         if (regime_has_2_ranges(mmu_idx) && !is_user) {
+             xn = pxn || (user_rw & PAGE_WRITE);
+         }
+-    } else if (arm_feature(env, ARM_FEATURE_V7)) {
++    } else if (arm_feature(env, ARM_FEATURE_V6)) {
+         switch (regime_el(mmu_idx)) {
+         case 1:
+         case 3:
 
+---
+base-commit: f29ccc287a6cfdd51d3a4fd17fbe9af3310a0ac5
+change-id: 20261105-armv6-xn-check-ebdd507ca5ab
+
+Best regards,
 -- 
-2.53.0-Meta
+Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
 

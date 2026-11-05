@@ -1,100 +1,100 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A3FE1606A329
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 18:54:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DAB72606D80C
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 19:29:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=RAXFu5AF
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=y4q7Oo/I
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xP2bA-00030g-5I; Thu, 05 Nov 2026 13:54:09 -0500
+	id 1xP39D-00023A-4n; Thu, 05 Nov 2026 14:29:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xP2av-0002zl-4h
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 13:53:54 -0500
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ id 1xP39B-00022G-2O
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 14:29:17 -0500
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xP2at-0002nN-DO
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 13:53:52 -0500
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-8b0a921ee46so22439527b3.2
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 10:53:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793904829; cv=none;
+ id 1xP398-0006gY-98
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 14:29:15 -0500
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-8b118bea471so18372937b3.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 11:29:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793906953; cv=none;
  d=google.com; s=arc-20260327;
- b=NFgiZkyM7CJvgZj+WqMp2FI9SfzjK51/vhN9XysWuPcGKXCOdXEsBTLhCLD9p0/VHa
- gVoPnXTgtFYcAypppBnQma5rY1fBj7qx3pXxTMmgK0z9bhvy9HepImWQZPx8ZYY+W01j
- iU6xC/4pOWfr9Vpm7AVHH7lRcIBgZi8VlZltPmT705QG12yVmQDrWXUdosO21J5mHoS2
- xxCZi5xgoXNTaFXDenflxh3LkBUt6rIPx8H8rS7Ce+zzF89JqJg55vWueeIRazqpp1Vh
- IVP05958g58zIYhzrhIAsVuHgyM03sFStL5zhLFoY8CB91VSNNq1p0QBPIf63u9ZC517
- h8hg==
+ b=E4eWgvhSOYRQgnWVOP7RW3LSlzM8f8XWK1X4spG2KFv0sX8gffkJ66hjq84DuaX6Wv
+ MCmEDeYEU0kXVWIvdBqa4tVa0HURdzaodwDEjms82ybFpxNWvdSjD+Q7I/AQZD2oYJfm
+ oU3ZL8NCowkDM7tgXYCL10LyQSZHMxRdm4AYtEk8z13UG60xAGKdmQjQM8hY6AqD4MgG
+ 1ZT3KiVY456fIfLanXdPjQVCSsG0HKdjbAr/x26XTCl7sG8cgghfgvLEjiM3ec7S8URx
+ R5GksFOzrGLEMJ99+piZGXc2rpcvS1QRsL2Rjdf17TZ51S30uTt36McWk/k3eMPxWOOc
+ E+Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=YW6xkjCNkShheMexpg6Mgbg4Mj+93DQrHPO+NjitZoU=;
- fh=kByZkEDlzD48sZoWXvAR5yxCB2nIt4kpr1Kv69TN7CU=;
- b=G9yCHOY73Wvg25G5XjkNxW/rf5DE2CDhCL73wOrwWAHKkmkacflu2EKwDmyg48/5J5
- et0IK5ux61Lnf3raUqlYiZQ2bLO8QDJYWmliFRvFoWScnvIGxrXm7+ANUJpAnpHrMPiP
- nwcbbMrQ1QFXWmLYiVCbzECbDFTAV/nd3m5uf0AUc6atIKfb/sKDU7QNjbi33UsiPNng
- M+AqfSP/ZOcjOeTG8i7V/fpmkSuck59gwThPwiA03jd5S29FdGzx+beLogXTuvcamHTx
- Eq3fTN1XdygclLdI1Nk4jF8bv8AX6U7xMQkEMtLgUPgCAo6VzhQfq32ZyVkVVwQ507AT
- JD6Q==; darn=nongnu.org
+ bh=3x2DkoeDm1fHztN8n9o/K1tBlQJ03Ml6fEfXaUe2dwQ=;
+ fh=0F4t7OQcB96H9OFu87UUDgOKw7a4IVb588NDb4hsreA=;
+ b=mLsJ7VzayK0+4Pa68UL6iyXb6x9oY0GFKAQy/6kZtiKfL7gVwi4mMWeLu2RWQMJFZE
+ INmCyvbmQH1Fs665K23d/StoW/zQn/scDxqnU6/gLda4bv4jRBqd103jhrkWJtpKfMOj
+ hVPbfBMw59WqGRpfGprh+SJAsMObnNbNWJqptOiWvFElEwtGVS9E2D2uzD2K9KO+OEft
+ cu/p1giiAj+F7ggps2NhCedp3HPOPxY7ExcjTnCkDIr02e8te6gCTnOIQ1EyeJMJuISZ
+ K8gFhOvygQe+w1RN5wjDmoUppdwQou0fcx+ig2Kz/N34Dy8BE6C7SSjz6qT+UktiICN0
+ ZNRQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793904829; x=1794509629; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793906953; x=1794511753; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=YW6xkjCNkShheMexpg6Mgbg4Mj+93DQrHPO+NjitZoU=;
- b=RAXFu5AFjgDQHNHeY+kycT7wSV2dP0Cl1gcwzZKKa0QuvZiARuVsabITVgkVcEG2dY
- C87QgdbrrjI79Pi/8HLWb1yEv4pVt+Gd8r4JNaCa3aqjokwJkR2/S0hMj0FW4HdxcPey
- nZ6obmkZnF/fPY30W43QCHDZfb/CDQUv9fhfkGojd8ayac35st/5lmC9Doc065F8UCmg
- hsljMcGzce74QUV2S3Do6257IlEjlft8FdJdvgvY4d9vRf9FrxbTabXRX+PkJpxGPe0y
- wAiwzFRiia8dAO0NTurPPR9/zDoEYxiFYza/yiytlEEARn5B4mni1Yi7gqmylCzCH44m
- DQsg==
+ :content-type; bh=3x2DkoeDm1fHztN8n9o/K1tBlQJ03Ml6fEfXaUe2dwQ=;
+ b=y4q7Oo/IltEf1oJpwCBtyafAepOLDjSeMq8pVHPBF0Sc7XSni014xAkTaYOVcxO6qR
+ AlNhGcyVaEaXy+7luUkFNqhOP/7HbhyouPdQItPUZHgXfbqXbKQXabg9ZRlgTS567wYd
+ FiKYpvrzoWJcFAVT/dzLOJ/0z8S6H2U3BJye+f3drtuCkMng/np26sB0sJ/ANOrsIl5J
+ dfzUaQs3hZzMWn4WwUOADj1EaWHxbZaCVxgB2gLnZlbw2QYHymDMsY2szJeqL/fWJbA/
+ /HBRkksAQnuRsGy4NaJ/H6Qz4kQyMuaVA8dKrogGPrSRwggpPsU769x8n1WvLa6rJdZ/
+ cKog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793904829; x=1794509629;
+ d=1e100.net; s=20260707; t=1793906953; x=1794511753;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=YW6xkjCNkShheMexpg6Mgbg4Mj+93DQrHPO+NjitZoU=;
- b=ij+4fB646IwZ2PaXc7ayWlt5s3ovpR1XhGy1jKlPNajvyoflsoR9q4BfIaWw3O3769
- i7RkWsMzZSWYIZ36OcTbtI+5DfkLKaCFizMfVKPEVcn6tioPsVhIt2IiaGnCJ4mAewUo
- /qnyfx8PQoWsiMK9+o01p/FhimlySb+B0utloc8xy5ewHwWSTVyf4xYqx7jFDJlwQqYk
- wtbjbRL05sovDYUKAMgjW0MTz3P6caSP41VvXrlTJH1XJeLXdIz+LHKSyMqAC1GFwOJ7
- 8lcHQZqUoxNzmUkPvgRoRjaWLH4qIC9iv0ABsIBCLsW7KjoN3se9V332WxmHMmb83nZV
- Zq0A==
+ bh=3x2DkoeDm1fHztN8n9o/K1tBlQJ03Ml6fEfXaUe2dwQ=;
+ b=urAiXIjGPtVcpFfEkh3S1v7IrRllc7Phdmb09huYQ+3hbNsA5KqZOxVP5zXoeR5MB0
+ rSrv5DUuyRvT9fbYLnaby23KfnTQ49zo6bdWSHSPfzDkQYAjBmYhyt/yjdKSHbzNYDKl
+ xWZCMWrtDX32IAN24bsWYtOS3HD543OquxKuxspOFltRjD7pzdG1dF4+tMNnUuFeMj+4
+ IK47MoFRFzxc3ECGJ0HBIgCLBzB+Dykn9ruACfyDqD1RWlWAsebHMEiOGw7byGODueI/
+ dXTmuTaHfMJslfhNLz0a7MEpp3Ixa8tMJ/bp3OUfqUAS912XF8JKOF7QdV5glNxtnyK4
+ 7csg==
 X-Forwarded-Encrypted: i=1;
- AL+hErF7JQt0IZaN+Z6RdxVdDN2s1inZRig9symtbwxpDmhnV5Y0cAgizVsk9RKDUDHdFUo2hFy9cRXhNg==@nongnu.org
-X-Gm-Message-State: APuU4Z+FlXPRirnWCt+TTRey1n0UIJmN0pe7PUiDmN3TOiE3uIVQSdxs
- 3g+WMo947EHjz3ieFva8zgfQ9Espw0N5eoXU61VhxLUTk5MvUhP46HoZMSdKW3iHWJy36vofBNp
- Vsp80/qQPVTVWoS2ZdUc9AUROAWooeRalP9u/bSWWAQ==
-X-Gm-Gg: AYBFou0FI31tjZb1Izm4nPcm6d3Akb5xeYU13X7pJ5XwXzn91KNwzYvcZ2Ov8u18w4f
- qGNK8XNc5FIGTc8zITyQwyTO18Zy7Nmgh6btCq9HxEFIDF1roitZ6In0GjCEXLmVEOYrFwyx38b
- 35pCtysBOUi1lE5P3DXSeV9f77vnU0Eo8d2/sN5iulLkQ/SmGomgBysjh7BQsxsCmPxGgwN4gua
- pXSsNpgt9XU/Z1eIAJTvHYgW5iqHItR48qZdjw190y7YVYqcdgAynmWQY6h5Q2v2RSSnKQAHQTu
- ibe3P7ej5q3/+M3OKsxYdFl6rIKu9sth8v0ui8g4JqDn6lYQzh4T/GiBkYAbKXMHn6e8gIhgxhQ
- 5AwMzgY1G+AN640tc2QnajdiuK4v/QEFFD0XvZ0igW6iRhRuj1lKn9B33p9Lk4o0oZNl69pTDOT
- NOjtfiRUs7gbsQd5AXQCGs0Yo1CObkL9e23MWP+9eR6A==
-X-Received: by 2002:a05:690c:6d81:b0:8b1:c7fc:2b96 with SMTP id
- 00721157ae682-8b2b67c5898mr117617877b3.105.1793904828868; Thu, 05 Nov 2026
- 10:53:48 -0800 (PST)
+ AL+hErGPaPuHYYhaOVkuSvblR6q5u33MfIr+AyqHDvUknpuMLuJJJ74FK3XPBkPqux6M39TvkvtNVCgJNw==@nongnu.org
+X-Gm-Message-State: APuU4Z+s3RNGnGkwIRRHs/pKNVVSy3OzyB24q3mf39y8HgJBD4U2F2ra
+ k2J+jXZi+lWykYJ615xJsTbn2CJhkBwEqUdj4nVpa7xEeXHQULSDjKZuSda3DO/ZVRtyUg5Qx9z
+ i7B2ygoCJcgCyLJFNrEVD40w/g3tQjgelS7LvW64RVw==
+X-Gm-Gg: AYBFou1+i7guogL1VGiTf7S2jTBXkmbThgyQgMTISE3V0uWWT8Eh52X9E8rLLiDj/7Q
+ Gv5dIjAaDPXv4azEWBIpJfszyz8kv97kJRuBfduxRFxffM7fZ1+KbWwRDzto27GDBnE9Bj9J4ax
+ peQXzAp2ak2I4WbiC/a/YQGRbDCc3AM2LlegbOyZ+WsMh9g/IQC/LyCYsF0vlkLZcZqDKNeYmZZ
+ uWfo+4PlofFTjixywIZrLLWpBrUBoL6cKqGCaoLiueajJSJdR+jIVxRNwX/fi68tnP3DDeBU/3p
+ vH9ay8wbSKeYW+xEHslYt74Yu+6UkAL2OSE28EIzKjKRTae47d9MRZ+5zXchUJj6SQvlufOemuk
+ m9fxZrvTi0EgNpAokuIRQOjetGfIoyUuJdKss4/HKx+TyaONLyXn5OZv/uZOAPKBasxpcBofrqR
+ tuRIn2uMLMpxI9fwC/YkCMPwfUYV89v1yC9r3NB/fIEQ==
+X-Received: by 2002:a05:690c:f05:b0:897:73ed:dd25 with SMTP id
+ 00721157ae682-8b2b67095afmr144960127b3.27.1793906952818; Thu, 05 Nov 2026
+ 11:29:12 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261105-armv6-xn-check-v1-1-fbeff926e692@linaro.org>
-In-Reply-To: <20261105-armv6-xn-check-v1-1-fbeff926e692@linaro.org>
+References: <20261105-gic_read_bpr_from_property-v1-1-7e7392bfd321@linaro.org>
+In-Reply-To: <20261105-gic_read_bpr_from_property-v1-1-7e7392bfd321@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Nov 2026 18:53:36 +0000
-X-Gm-Features: AclHuK_KxyVpqOLh0Yi0USJVhvzRf33-34KWKel0EqdjeRvx112nQRWKikiTpeg
-Message-ID: <CAFEAcA_qmyR0E3+n8GByA6=kDwDQomCpk399DEc8pOPr=sqEaQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/ptw: check XN for ARMv6 in get_S1prot()
+Date: Thu, 5 Nov 2026 19:29:00 +0000
+X-Gm-Features: AclHuK_PK7G7KMa7lDpqI9PBh5PQ4PMC9pauKWX-xUVpBr6SO0ZVGFWHAnio14s
+Message-ID: <CAFEAcA-eFmvQZ8hoeGJb0hZagBejYWR0_-9-C6iA75m7k1VvXQ@mail.gmail.com>
+Subject: Re: [PATCH] gicv2: do not hardcode minimum binary point
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-stable@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,59 +121,87 @@ X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 5 Nov 2026 at 09:44, Manos Pitsidianakis
+On Thu, 5 Nov 2026 at 12:26, Manos Pitsidianakis
 <manos.pitsidianakis@linaro.org> wrote:
 >
-> For the ARM_FEATURE_V6 case, it seems like we retrieve AP and XN bits in
-> get_phys_addr_v6() but we don't check the XN bit in get_S1prot().
+> The number of priority bits is implementation defined, and indeed
+> machines such as a9mpcore and arm11mpcore define it in the
+> num-priority-bits property. However we still hardcoded GIC_MIN_BPR.
 >
-> Change the `if (arm_feature(env, ARM_FEATURE_V7))` check in get_S1prot()
-> to `if (arm_feature(env, ARM_FEATURE_V6))` since v7 implies v6.
+> This commit replaces the GIC_MIN_BPR and GIC_MIN_ABPR defs with macros
+> that read the property.
 >
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4367
+> The calculation is based on "Table 4-47 Active Priorities register
+> implementation" in the GICv2 spec (page 4-150 of ARM IHI 0048B.b
+> ID072613):
+>
+> +---------------+---------------+---------------+
+> |               |               |    Maximum    |
+> | Minimum value | Minimum value |    number of  |
+> |   of Secure   | of Non-secure |     group     |
+> |   GICC_BPR    |   GICC_BPR    | priority bits |
+> +===============+===============+===============+
+> |             3 |             4 |             4 |
+> |             2 |             3 |             5 |
+> |             1 |             2 |             6 |
+> |             0 |             1 |             7 |
+> +---------------+---------------+---------------+
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4375
 > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-
-I think this is worth backporting, so:
-
-Cc: qemu-stable@nongnu.org
-Fixes: d8e052b3876356 ("target-arm: get_phys_addr_lpae: more xn control")
-
 > ---
->  target/arm/ptw.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+
+> diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
+> index be923f7ed8861620d17fbf3d8569c42ae7c95487..e090bd0b283297d0863e13ef07e5738a549ea59d 100644
+> --- a/include/hw/intc/arm_gic.h
+> +++ b/include/hw/intc/arm_gic.h
+> @@ -70,11 +70,6 @@
+>  #include "arm_gic_common.h"
+>  #include "qom/object.h"
 >
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 2e67d02493bd463cfd2d31ecf1316272ac3f1d99..b8b22b014e0574340a85abe73f3d9611d2360219 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -1595,7 +1595,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
->          if (regime_has_2_ranges(mmu_idx) && !is_user) {
->              xn = pxn || (user_rw & PAGE_WRITE);
->          }
-> -    } else if (arm_feature(env, ARM_FEATURE_V7)) {
-> +    } else if (arm_feature(env, ARM_FEATURE_V6)) {
->          switch (regime_el(mmu_idx)) {
->          case 1:
->          case 3:
+> -/* Number of SGI target-list bits */
+> -#define GIC_TARGETLIST_BITS 8
+> -#define GIC_MAX_PRIORITY_BITS 8
+> -#define GIC_MIN_PRIORITY_BITS 4
 
-Digging into the various versions of the Arm ARM and looking
-at QEMU's code, I think that "allow this for v6" is correct,
-but  I think that ARM_FEATURE_V6 will always be true here
-so we don't need to explicitly check it. The two callers of
-get_S1prot() are get_phys_addr_v6() and get_phys_addr_lpae().
-If the CPU isn't v6 then it doesn't get those page table formats.
-(get_phys_addr_v5() is simpler and just figures out its prot
-bits directly rather than calling this.)
+You don't need to move GIC_TARGETLIST_BITS (or its comment), as it's
+unrelated to the priority bit config.
 
-So I think we can make this a plain "else", and delete the
-existing "else" clause that sets xn and wxn to 0.
+> +static inline uint32_t gic_min_bpr(GICState *s)
+> +{
+> +    uint32_t num_preemption_bits = s->n_prio_bits == 8 ? 7 : s->n_prio_bits;
+> +    assert(!(s->n_prio_bits > GIC_MAX_PRIORITY_BITS
+> +             || s->n_prio_bits < GIC_MIN_PRIORITY_BITS));
 
-(Strictly speaking it is possible to get here without V6, because
-we don't enforce that a guest on a v5 CPU can't write to the
-SCTLR.XP bit which should be RAZ there, and we don't ignore it in
-get_phys_addr_nogpc(). But if the guest does do that then they're
-in UNPREDICTABLE territory and whether we give them v6 VMSA with
-XP or v6 VMSA without XP doesn't matter.)
+It's possible to hit this assertion, because I put the "check that
+num-priority-bits is set sensibly" code in the wrong place. We
+check that in arm_gic_realize(), but the property is defined on
+the "common" superclass, so it is present also for TYPE_KVM_ARM_GIC.
+Most of the uses of gic_min_bpr() are in the emulated-GIC code,
+but the calls from arm_gic_common_reset_irq_state() will be
+used also if you have a KVM GICv2. So if the user sets a silly
+num-priority-bits value with KVM GICv2 they'll run into the assert.
+
+We should move the checks on n_prio_bits from arm_gic_realize()
+to arm_gic_common_realize().
+
+For GICv3 I pre-calculate the number of preemption bits into
+cs->prebits, but that's partly because there are other places
+in the code where things are written in terms of looking at
+the number of preemption bits; for GICv2 it looks like we
+mostly look at the min BPR instead so not precalculating is fine.
+
+I do notice one other place where we need to adjust for the
+number of priority bits not being 8, which is that the number
+of GICC_APRn registers depends on the number of implemented
+preemption levels (table 4-47 in the gicv2 spec). However we
+check against GIC_NR_APRS in the read/write code for these.
+I think that the only consequence here is "we let the guest
+read and write some values that if it isn't buggy it will never
+do", so we can fix that as a separate bug. (If it does write
+to the nonexistent registers, we are still looking at them in
+e.g. gic_get_prio_from_apr_bits() so we will generate a bogus
+running priority value and odd things might happen.)
 
 thanks
 -- PMM

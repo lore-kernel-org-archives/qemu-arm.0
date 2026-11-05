@@ -1,66 +1,106 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3DBD606A326
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 21:54:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 137BB606A333
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 22:39:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ok+z+nHh
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=K1XlBmGM
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xP5Pp-00081s-Cl; Thu, 05 Nov 2026 16:54:37 -0500
+	id 1xP67F-0007cB-Ur; Thu, 05 Nov 2026 17:39:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1xP5Pk-00081Y-RT; Thu, 05 Nov 2026 16:54:34 -0500
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1xP5Pi-000728-BD; Thu, 05 Nov 2026 16:54:32 -0500
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by tor.source.kernel.org (Postfix) with ESMTP id D479660147;
- Thu,  5 Nov 2026 21:54:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 866191F0089F;
- Thu,  5 Nov 2026 21:54:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1793915661;
- bh=f0BXtlO5isR7BWmVVog+NbaRGTqva+7c+4SZBVTPkl8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References;
- b=ok+z+nHhRF5vWIv9pcrdntNwrEBoYsNUIa2XugRuNNbRkLX+QrgaK8nMzUZs8i3Bf
- Hqcq/1rof+ToQNuzmPNBeCzYU8+N2Ixts0RxE3V0AYVodg0gVwgYAzMDOF5kKRJIOh
- VeiXlBU1ZzFMXz6VXmSxR/CEV8RZlZNft/HjaDUKdj/wncbwSoY/ZvXFkMeFnROH3x
- YpfNaPQEDtLl1tuFkKK8SGrpOskkwGPMORiuJUALFOAtdNzQiT9kOxK0EYWbhcmn0t
- YmHxPJOKCrYqxZopcul/7qOvtwS5Xs/qg5l7cRdKWtzSKRg8o8GWWcvsnbullXpjOb
- v7rOrn1qKauRg==
-Date: Thu, 5 Nov 2026 21:54:11 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Yukiya Takaki <fj2110jc@fujitsu.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Anisa Su <anisa.su@samsung.com>, Igor Mammedov
- <imammedo@redhat.com>, Junjie Cao <junjie.cao@intel.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, linux-cxl@vger.kernel.org,
- qemu-arm@nongnu.org, "Wolski, Tomasz" <tomasz.wolski@fujitsu.com>,
- lizhijian@fujitsu.com, y-goto@fujitsu.com, yukiya.takaki@gmail.com
+ (Exim 4.90_1) (envelope-from <anisa.su887@gmail.com>)
+ id 1xP67E-0007bw-O7
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 17:39:28 -0500
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <anisa.su887@gmail.com>)
+ id 1xP67B-0002sm-Ck
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 17:39:27 -0500
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2e96502e447so119635ad.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 14:39:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1793918363; x=1794523163; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :content-type:mime-version:references:message-id:subject:cc:to:date
+ :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=AKGvZg4V+w18M4Zq0FCnto7JGIRgmxaKrCtgH1IjroI=;
+ b=K1XlBmGMq6LKSg829ctQSZZlfZ5+x3Rp0ZXJtcZpBOZEbmWtLL0Cb4qqQHzngFpN4+
+ zkjRAUCKDfSvB3MHN9v/Xc8FVmqFtF5vpJtdwQgYDsUj7oQDurYJ74KU6tN+ftHKRxkz
+ qlNQLHxg/r4Oq4PMKAX/ucCkxIxa782HsNjzHykdPE1ubMdyi2FNmFZ9IzmNd+uysMnj
+ FcRKZdFAOE+xHliqIL4dXU2efz/Va2/x3Z33MdvW8Pz3qjTbVRjrdVTBuqMLd1u9nQzb
+ 4CTKvn5g0u3002rYjWKL9WI9sPDSmuouHOr8YCv7fcAXHF+liOXMiDFrlg0ms2Ivpmqb
+ AorQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793918363; x=1794523163;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :content-type:mime-version:references:message-id:subject:cc:to:date
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=AKGvZg4V+w18M4Zq0FCnto7JGIRgmxaKrCtgH1IjroI=;
+ b=lfwteVMUtdv0ZrvYDR4aT+4i+VAOOSvn+GDiNN1hYRV6TwLZ6U5Ut9N8bi6u4XT5X6
+ u2S4cyLjj+dGJ6LYFTbGVJH2BLchvtt1uDQa6tcnX5ermxZ6rWlsiYhDBsaLk1SeGLwd
+ v+JKLiR6+IGf6rVj06z+JRs37//insvXNoORh51NUdeCtkaP0otI2nstxAmhv0k47GxV
+ LWmf13uZDCO9IYI14EgvdqtGL0VoHg4rBhcvrdx8GNz6G3/Os7Q7bXmPzwY0ExSefGC/
+ 103gBs+Z141Y9kiuwo2qZFQhAY/+Z1pk30XogP667t2FvTjSdqkjYt22VNmy59kmGAtm
+ DIgQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzi483VW5Xt/N6NAuRjxzYKE4Cgs0bOerfYaoXBrR5HyrObbWwRgAdP4j86VHtFZumfYG3lZVYwvw==@nongnu.org
+X-Gm-Message-State: APuU4Z/BRZYgXdFuDILssSpXofbEbCcujDH9SMowFdjPujzbH3UfPInf
+ Zd0ovemjQpi8/sKUrYM9INPpVoJuNX6aORssflGILS8KHDUEMz8SwtCm
+X-Gm-Gg: AYBFou2Wto1kbve9g4uLiwtHk+7dWNRAH/bruuwzBBaVr3OP3tlYqiWtrSJKIqSMpfd
+ STi8cWPKkCmqQrDI7t+KZZzUM8AmtjzhVfe3pbzb3LyHNXZ+561J1I8Zy6MxjVoWLv9BjzaNYwt
+ e6LZwwBNNfwH3tU1127Dbgasdm9ricAFvgBxxXtjsRi8pnhzzn/ZpYmGc71LZpsZnzZtDBqkvBE
+ 6D9qGmljxWNlxByp8/cheRXNAMwNNlSpXPs7aB4QkYvtgVbWWAAAqfSPOgtqh4hnZ6jlPjMybIT
+ ZuEx60SkeZ/M0/2CknYTO/wNDUvsHYFc9tVvvalsbK5OKe3P/qI+9l8LMcR0dqgb04HT8//FkxC
+ kkzmXSbALjXmkIwcR1Ze8H99xsMIo+MDP3cQLrqR4Ar1snSmUYHn04PIX+cqIAGaJbrpmUSC/iL
+ J37TufbYwHXQVMqYyY6niRa+rdwjLhGXbmPz4NODx53Yt1AYGNf3TaBuivlEKi/2UA/IBBtGlt+
+ PVY85G3YK7Yd00gllhsp1ZeFzgfwPXHrg5wxBouih8jfZm43JiZCTbyZuhlmPIYo5HSEh6a1O1P
+ kUFA8OgHNowfhnd14DtS8ZxoAA==
+X-Received: by 2002:a17:903:285:b0:2e9:4048:3031 with SMTP id
+ d9443c01a7336-2ed4198b8eemr10304335ad.39.1793918363084; 
+ Thu, 05 Nov 2026 14:39:23 -0800 (PST)
+Received: from cxlqual ([220.120.90.131]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2ed47d89976sm18335ad.66.2026.11.05.14.39.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Nov 2026 14:39:22 -0800 (PST)
+From: Anisa Su <anisa.su887@gmail.com>
+X-Google-Original-From: Anisa Su <anisa.su@samsung.com>
+Date: Fri, 6 Nov 2026 07:41:38 +0900
+To: Anisa Su <anisa.su887@gmail.com>
+Cc: Yukiya Takaki <fj2110jc@fujitsu.com>, qemu-devel@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Jonathan Cameron <jic23@kernel.org>,
+ Junjie Cao <junjie.cao@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
+ "Wolski, Tomasz" <tomasz.wolski@fujitsu.com>, lizhijian@fujitsu.com,
+ y-goto@fujitsu.com, yukiya.takaki@gmail.com
 Subject: Re: [PATCH RFC 0/7] QEMU/hw/cxl: Allow CXL Type 3 memory regions to
  be initialized at guest boot
-Message-ID: <20261105215411.33262db7@jic23-hlaptop>
-In-Reply-To: <cover.1793003983.git.fj2110jc@fujitsu.com>
+Message-ID: <au0GIiKIggftlWe2@cxlqual>
 References: <cover.1793003983.git.fj2110jc@fujitsu.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+ <auvsOE3OlS5I9ueG@cxlqual>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
- envelope-from=jic23@kernel.org; helo=tor.source.kernel.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <auvsOE3OlS5I9ueG@cxlqual>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=anisa.su887@gmail.com; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -72,298 +112,307 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 26 Oct 2026 19:03:21 +0900
-Yukiya Takaki <fj2110jc@fujitsu.com> wrote:
+On Thu, Nov 05, 2026 at 11:38:48AM +0900, Anisa Su wrote:
+> On Mon, Oct 26, 2026 at 07:03:21PM +0900, Yukiya Takaki wrote:
+> > Hello everyone,
+> > 
+> > I’m a student intern, and this is my first time sending patches to an open source mailing list.
+> > 
+> > This patch series configures QEMU’s CXL Type 3 devices so that guest operating systems can automatically discover
+> > and create CXL regions during boot, aligning QEMU’s behavior with real hardware.
+> > 
+> > Background and motivation
+> >   Currently, during guest boot QEMU does not provide the information or register programming needed for the guest OS
+> >   to initialize CXL Type 3 memory, so using it still requires an explicit action in the guest (for example, running the cxl create-region command).
+> >   By contrast, on some physical systems the firmware automatically allocates CXL memory ranges and exposes them to the OS,
+> >    allowing the Linux CXL driver to discover and create regions during boot.
+> >   This patch series is a first, experimental attempt to reproduce that behavior in QEMU.
+> > 
+> >   Some parts of this implementation are based on Li, Zhijian’s work in:
+> >   https://github.com/zhijianli88/qemu/tree/program-decoder-v2
+> > 
+> >   I would like to ask for feedback on whether this approach makes sense and whether I should continue to enhance it.
+> > 
+> > Approach
+> >   This patch first adds a program_hdm_decoder option to cxl-type3.
+> >   When program-hdm-decoder is enabled on cxl-type3, QEMU will:
+> >     1) program endpoint/host-bridge HDM decoder state,
+> >     2) expose Type 3 ranges as E820_SOFT_RESERVED on x86,
+> >     3) create memory-only NUMA nodes for those ranges,
+> >     4) emit SRAT memory-affinity entries mapping each Type 3 HPA range to its node ID
+> > 
+> >   On real hardware, HDM decoder programming and memory layout are typically handled by firmware, so they would ideally be managed by SeaBIOS.
+> >   However, in the current QEMU/SeaBIOS model, E820 and SRAT are built on the QEMU side, and pushing HDM decoder programming
+> >   into SeaBIOS would introduce additional complexity and risk inconsistencies.
+> > 
+Ignore my previous suggestion and listen to Jonathan :)
 
-> Hello everyone,
->=20
-> I=E2=80=99m a student intern, and this is my first time sending patches t=
-o an open source mailing list.
->=20
-> This patch series configures QEMU=E2=80=99s CXL Type 3 devices so that gu=
-est operating systems can automatically discover
-> and create CXL regions during boot, aligning QEMU=E2=80=99s behavior with=
- real hardware.
+Thanks,
+Anisa
 
-Hi Yukiya,
-
-Interesting project.
-
->=20
-> Background and motivation
->   Currently, during guest boot QEMU does not provide the information or r=
-egister programming needed for the guest OS
->   to initialize CXL Type 3 memory, so using it still requires an explicit=
- action in the guest (for example, running the cxl create-region command).
->   By contrast, on some physical systems the firmware automatically alloca=
-tes CXL memory ranges and exposes them to the OS,
->    allowing the Linux CXL driver to discover and create regions during bo=
-ot.
->   This patch series is a first, experimental attempt to reproduce that be=
-havior in QEMU.
->=20
->   Some parts of this implementation are based on Li, Zhijian=E2=80=99s wo=
-rk in:
->   https://github.com/zhijianli88/qemu/tree/program-decoder-v2
->=20
->   I would like to ask for feedback on whether this approach makes sense a=
-nd whether I should continue to enhance it.
->=20
-> Approach
->   This patch first adds a program_hdm_decoder option to cxl-type3.
->   When program-hdm-decoder is enabled on cxl-type3, QEMU will:
->     1) program endpoint/host-bridge HDM decoder state,
->     2) expose Type 3 ranges as E820_SOFT_RESERVED on x86,
->     3) create memory-only NUMA nodes for those ranges,
->     4) emit SRAT memory-affinity entries mapping each Type 3 HPA range to=
- its node ID
->=20
->   On real hardware, HDM decoder programming and memory layout are typical=
-ly handled by firmware, so they would ideally be managed by SeaBIOS.
->   However, in the current QEMU/SeaBIOS model, E820 and SRAT are built on =
-the QEMU side, and pushing HDM decoder programming
->   into SeaBIOS would introduce additional complexity and risk inconsisten=
-cies.
-
-So, did you explore doing this in a similar fashion to PCI enumeration?
-
-That's done the bios and is very similar in that there is a mix of
-policy and rules in how it is configured that we really don't want
-in qemu.  With that ACPI tables are then built in QEMU that contain
-values read back from what was setup. The main thing I'm thinking of
-here is the PXB handling that relies on the bios having done the
-PCI enumeration first rather than doing it in qemu.
-The arm code is here
-https://elixir.bootlin.com/qemu/v11.1.3/source/hw/pci-host/gpex-acpi.c#L103
-x86 probably this:
-https://elixir.bootlin.com/qemu/v11.1.3/source/hw/i386/acpi-build.c#L1038
-
-My immediate instinct is that would look more like a conventional bios
-flow.  It would also have the significant benefit of putting the enumerating
-and configuration code into an open source bios, something I hoped would co=
-me out
-early ARM work on this (see linux plumbers - I think this is right session)
-https://lpc.events/event/16/contributions/1254/attachments/1113/2136/CXL%20=
-Type-3%20device%20discovery,%20configuration%20in%20firmware%20and%20prepar=
-e%20ACPI%20tables%20for%20kernel%20usage.pdf
-
-Then we'd regenerate the SRAT, HMAT etc before handling to the OS.
-(I'm not sure this works for e820 having never touched that flow).
-
-There is a lot of policy involved in CXL configuration and I'd not
-want to replicate that part in QEMU. At best we'd want to pass
-some hints to the bios.
-
-Flow wise that would mean adding to acpi_build_update() some code
-to do the necessary srat and other table updates.  That would
-definitely work for the actual ACPI tables, but I gather e820 is
-rather different...  However, e820 real table is I think
-actually constructed by seabios so can that just make the
-necessary updates after programming the CXL decoders etc?
-
-Now if you did this on SBSA-ref and arm you'd have to do it
-all in the bios (as that generates everything) and the whole
-problem would be much more standard.
-
-Given we have that option on arm/sbsa-ref I don't currently
-see a reason to explore the bios flows on arm/virt.
-
-I also gather (from asking an LLM so might be wrong) that there
-are options that boot qemu on x86 with tables generated
-by the bios, not qemu.  Legacy path in seabios, coreboot and
-and ovmf path used with xen.  Maybe working with them avoids
-the extra complexity of bounce backwards and forwards between
-qemu and the firmware (though I think I'd probably avoid these).
-
-Anyhow, interested to see where you go with this.
-Definitely useful for those of us working with platforms that
-never do the bios programmed flow but have to test it when
-making changes!
-
-Jonathan
-
->=20
-> Testing
->   We ran tests in the following environment and confirmed that CXL region=
-s were created at boot, NUMA nodes were set up,
->   and E820_SOFT_RESERVED entries appeared in the E820 table:
->=20
->   - BIOS: SeaBIOS c2a33ad9ad1452e23b41c4ac44a3bc6be8ebc4cf
->   - CXL memory: 4 GB
->   - CFMWS: 4 GB
->   - Host bridge: 1
->=20
->   The following is the startup script.
->=20
->   sudo /path/to/qemu/build/qemu-system-x86_64 \
->     -name guest=3Dcxl \
->     -nographic \
->     -machine q35,accel=3Dtcg,nvdimm=3Don,cxl=3Don \
->     -cpu max -smp 4,sockets=3D4,cores=3D1,threads=3D1 \
->     -m size=3D4G,slots=3D10,maxmem=3D20G \
->     -drive file=3D/path/to/image.qcow2,format=3Dqcow2,index=3D0,media=3Dd=
-isk,id=3Dhd \
->     -bios /path/to/seabios/out/bios.bin \
->     -nic bridge,br=3Dvirbr0,model=3De1000e,mac=3D52:54:00:b5:4e:7c \
->     -object memory-backend-ram,size=3D2G,id=3Dm0 \
->     -object memory-backend-ram,size=3D2G,id=3Dm1 \
->     -numa node,nodeid=3D0,cpus=3D0-1,memdev=3Dm0 \
->     -numa node,nodeid=3D1,cpus=3D2-3,memdev=3Dm1 \
->     -device pcie-root-port,id=3Dpci-root,slot=3D4,bus=3Dpcie.0,chassis=3D=
-0 \
->     -device pxb-cxl,bus_nr=3D12,bus=3Dpcie.0,id=3Dcxl.1,hdm_for_passthrou=
-gh=3Dtrue \
->     -device cxl-rp,port=3D0,id=3Droot_port13,bus=3Dcxl.1,chassis=3D0,slot=
-=3D2 \
->     -object memory-backend-ram,size=3D4G,share=3Don,id=3Dvmem0 \
->     -device cxl-type3,bus=3Droot_port13,volatile-memdev=3Dvmem0,id=3Dcxl-=
-vmem0,program-hdm-decoder=3Dtrue \
->     -M cxl-fmw.0.targets.0=3Dcxl.1,cxl-fmw.0.size=3D4G,cxl-fmw.0.interlea=
-ve-granularity=3D4k
->  =20
->   Furthermore, we conducted the experiment in which we added two CXL Type=
-3.
->=20
->   - CXL memory: 4 GB =C3=97 2
->   - CFMWS: 4 GB =C3=97 2
->=20
->   The following is the startup script.
->    =20
->   sudo /path/to/qemu/build/qemu-system-x86_64 \
->     -name guest=3Dcxl \
->     -nographic \
->     -machine q35,accel=3Dtcg,nvdimm=3Don,cxl=3Don,hmat=3Don \
->     -cpu max -smp 4,sockets=3D4,cores=3D1,threads=3D1 \
->     -m size=3D4G,slots=3D10,maxmem=3D20G \
->     -drive file=3D/path/to/image.qcow2,format=3Dqcow2,index=3D0,media=3Dd=
-isk,id=3Dhd \
->     -bios /path/to/seabios/out/bios.bin \
->     -nic bridge,br=3Dvirbr0,model=3De1000e,mac=3D52:54:00:b5:4e:7c \
->     -object memory-backend-ram,size=3D2G,id=3Dm0 \
->     -object memory-backend-ram,size=3D2G,id=3Dm1 \
->     -numa node,nodeid=3D0,cpus=3D0-1,memdev=3Dm0 \
->     -numa node,nodeid=3D1,cpus=3D2-3,memdev=3Dm1 \
->     -device pcie-root-port,id=3Dpci-root,slot=3D4,bus=3Dpcie.0,chassis=3D=
-0 \
->     -device pcie-root-port,id=3Dpci-root-net,chassis=3D5,slot=3D5,bus=3Dp=
-cie.0 \
->     -device pxb-cxl,bus_nr=3D12,bus=3Dpcie.0,id=3Dcxl.1,hdm_for_passthrou=
-gh=3Dtrue \
->     -device cxl-rp,port=3D0,id=3Droot_port13,bus=3Dcxl.1,chassis=3D0,slot=
-=3D2 \
->     -device cxl-rp,port=3D3,id=3Droot_port14,bus=3Dcxl.1,chassis=3D2,slot=
-=3D4 \
->     -object memory-backend-ram,size=3D4G,share=3Don,id=3Dvmem0 \
->     -object memory-backend-ram,size=3D4G,share=3Don,id=3Dvmem1 \
->     -device cxl-type3,bus=3Droot_port13,volatile-memdev=3Dvmem0,id=3Dcxl-=
-vmem0,program-hdm-decoder=3Dtrue \
->     -device cxl-type3,bus=3Droot_port14,volatile-memdev=3Dvmem1,id=3Dcxl-=
-vmem1,program-hdm-decoder=3Dtrue \
->     -M cxl-fmw.0.targets.0=3Dcxl.1,cxl-fmw.0.size=3D4G,cxl-fmw.0.interlea=
-ve-granularity=3D4k,cxl-fmw.1.targets.0=3Dcxl.1,cxl-fmw.1.size=3D4G,cxl-fmw=
-.1.interleave-granularity=3D4k
->=20
->=20
-> How to use
->   Specify the following parameters when starting QEMU:
->=20
->   - bios <SeaBIOS binary that includes commit c2a33ad9ad1452e23b41c4ac44a=
-3bc6be8ebc4cf> to ensure that E820_SOFT_RESERVED entries are exposed
->   - Add hmat=3Don to the -machine option [1]
->   - Add program-hdm-decoder=3Dtrue to each -device cxl-type3 option
->     [1] On Linux, the kernel first checks E820_SOFT_RESERVED ranges. When=
- multiple CXL Type 3 devices share a contiguous HPA range,
->         these ranges tend to be merged into a single region, so the CXL d=
-river cannot reliably initialize per=E2=80=91device regions based on E820 a=
-lone.
->         SRAT entries for CXL memory are therefore needed, and the guest s=
-eems to discard SRAT when `hmat=3Don` is not specified,
->         so HMAT must be enabled.
->=20
-> QEMU base commit: bddb785e791e415db38884848d068457e226f5e3
->=20
-> TODO
->   With the current implementation of this patch, the following configurat=
-ions are either not supported or have not been sufficiently tested.
->   As a result, automatic creation of CXL regions in the guest OS may fail:
->=20
->   - A CXL persistent memory device is included
->   - Interleaved configurations
->   - Cases where the memory size specified by CFMWS does not match the siz=
-e of the CXL Type 3 backend memory
->   - Configurations where CXL memory is attached via a switch
->   - Multi-target CFMWS environments
->   - ARM environments
->   - HMAT does not yet include information about CXL memory devices
->=20
->   The following behaviors are also provisional implementations and may ne=
-ed further refinement:
->    - A new NUMA node ID is assigned to each CXL memory device. This shoul=
-d be improved either to reflect more accurate NUMA distances for CXL memory,
->      or to allow the NUMA node IDs to be specified by the user.
->    - Assignment of CXL Type 3 devices to CFMWS address ranges. On physica=
-l systems, platform firmware typically generates CFMWS entries
->      based on the detected CXL topology and its address-space allocation.=
- In QEMU, however, CFMWS entries are configured explicitly
->      through machine options. The current implementation therefore has to=
- infer which CFMWS range should be used for each Type 3 device.
->      This selection logic may need further refinement. Possible approache=
-s include improving the selection and validation logic,
->      adding an explicit option to associate each Type 3 device with a CFM=
-WS entry,
->      or generating CFMWS entries automatically from the configured CXL to=
-pology and devices.
->    - HDM decoder reset sequencing and state reconstruction.
->      The current implementation prevents the host bridge HDM decoder conf=
-iguration from being overwritten later in the same reset
->      by moving the common initialization of the host bridge component reg=
-isters from the reset path to the realization path.
->      However, ideally, after the registers have been restored to their re=
-set values, the host bridge HDM decoder configuration
->      automatically programmed by QEMU should be reconstructed as part of =
-reset processing.
->=20
+> Hi again,
+> 
+> Thank you for your contribution. I think this series can be valuable for
+> helping test autodiscovery in the kernel driver. I spent more time looking over this
+> patchset and in my view, the main blockers for making this ready for upstream are:
+> 
+> 1.The HPA state is kept in the wrong place.
+> Patch 2 adds hpa_offset, idx and node to CXLType3Dev but and endpoint should
+> not track host state.
+> 
+> I also think it makes more sense to make program-dhm-decoder a machine
+> option (-M program-hdm-decoder...) instead of having it on cxl-type3
+> endpoint
+> 
+> 2. Host bridge register init moved from reset to realize.
+> As you mentioned below, "The current implementation prevents the host
+> bridge HDM decoder configuration from being overwritten later in the same reset
+> by moving the common initialization of the host bridge component registers from
+> the reset path to the realization path."
+> 
+> To more accurately emulate what firmware does, maybe you can try
+> something like the following?
+> 
+> 1. Add program-hdm option to machine (hw/cxl/cxl-host.c, include/hw/cxl/cxl.h)
+> 
+> typedef struct CXLState {
+>     bool is_enabled;
+> +   bool program_hdm_decoders;
+>     ...
+> } CXLState;
+> 
+> +static void machine_set_hdm_auto(Object *obj, Visitor *v, const char *name,
+> +                                 void *opaque, Error **errp)
+> +{
+> +    CXLState *cxl_state = opaque;
+> +    bool value;
+> +
+> +    if (!visit_type_bool(v, name, &value, errp)) {
+> +        return;
+> +    }
+> +    cxl_state->program_hdm_decoders = value;
+> +}
+> 
+>  void cxl_machine_init(Object *obj, CXLState *state)
+>  {
+>      ...
+> +    object_property_add(obj, "cxl-hdm-auto", "bool", machine_get_hdm_auto,
+> +                        machine_set_hdm_auto, NULL, state);
+> +    object_property_set_description(obj, "cxl-hdm-auto",
+> +                                    "Set on/off to have HDM decoders "
+> +                                    "programmed at reset as firmware would");
+> 
+> 2. Add cxl_fmws_program_decoders() to pxb_cxl reset exit.
+> Every device has 3 reset phase: enter, hold, and exit. Currently,
+> pxb-cxl has:
+> - enter = none
+> - hold = pxb_cxL-dev_reset(), which zeroes registers
+> - exit = none
+> 
+> Register cxl_fmws_program_decoders() to pxb-cxl reset exit.
+> 
+> cxl-host.c:
+> +void cxl_fmws_for_each_auto_range(PXBCXLDev *pxb)
+> {
+> 
+> + /* use existing helper cxl_fmws_get_all_sorted to iterate */
+> + GSList *fws = cxl_fmws_get_all_sorted(), *it;
+> +
+> +for (it = fws; it; it = it->next) {
+> +    CXLFixedWindow *fw = CXL_FMW(it->data);
+> 	/* program decoders here */
+> 
+> +    }
+> }
+>  ...
+> 
+> +/* Call from the pxb-cxl reset exit phase, see pxb_cxl_dev_reset_exit() */
+> +void cxl_fmws_program_decoders(PXBCXLDev *pxb)
+> +{
+> +    cxl_fmws_for_each_auto_range(pxb);
+> +}
+> 
+> --- a/hw/pci-bridge/pci_expander_bridge.c
+> +++ b/hw/pci-bridge/pci_expander_bridge.c
+>  #include "hw/cxl/cxl.h"
+> +#include "hw/cxl/cxl_host.h"
+> 
+> +static void pxb_cxl_dev_reset_exit(Object *obj, ResetType type)
+> +{
+> +    PXBCXLDev *pxb = PXB_CXL_DEV(obj);
+> +    PXBCXLDevClass *pc = PXB_CXL_DEV_GET_CLASS(obj);
+> +
+> +    if (pc->parent_phases.exit) {
+> +        pc->parent_phases.exit(obj, type);
+> +    }
+> +    if (pxb->cxl_state && pxb->cxl_state->program_hdm_decoders) {
+> +        cxl_fmws_program_decoders(pxb);
+> +    }
+> +}
+> +
+> static void pxb_cxl_dev_class_init(ObjectClass *klass, const void *data)
+>  {
+> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+>      ...
+>      device_class_set_legacy_reset(dc, pxb_cxl_dev_reset);
+> +    rc->phases.exit = pxb_cxl_dev_reset_exit;
+>  }
+> 
+> This way, we shouldn't need to store the extra state (hpa_offset,etc.)
+> in the cxl-type3 endpoints.
+> 
+> I'm also not that familiar with the machine initialization and reset
+> stages, so maybe this approach doesn't work, but this is my best guess.
+> 
 > Thanks,
->=20
-> ------
->=20
-> Yukiya Takaki (7):
->   QEMU/hw/cxl: add program-hdm-decoder option for CXL Type 3 devices
->   QEMU/hw/cxl:add HPA offset tracking for CXL Type 3 devices
->   QEMU: hw/cxl: add helper to get HPA range for CXL Type 3
->   QEMU/hw/cxl: auto=E2=80=91program HDM decoders for CXL Type 3
->   QEMU/hw/cxl: expose CXL Type 3 ranges as E820_SOFT_RESERVED on x86
->   QEMU/hw/cxl: Create NUMA nodes for CXL Type 3 memory
->   add CXL Type 3 memory ranges to SRAT
->=20
->  hw/acpi/cxl_type3.c                 |  30 +++++
->  hw/acpi/meson.build                 |   1 +
->  hw/arm/cxl.c                        |  10 ++
->  hw/arm/meson.build                  |   2 +
->  hw/cxl/cxl-host.c                   |  63 ++++++++++
->  hw/i386/acpi-build.c                |   7 ++
->  hw/i386/cxl.c                       |  11 ++
->  hw/i386/meson.build                 |   1 +
->  hw/i386/pc.c                        |   2 +
->  hw/mem/cxl_type3.c                  | 177 ++++++++++++++++++++++++++++
->  hw/pci-bridge/pci_expander_bridge.c |  13 +-
->  include/hw/cxl/cxl.h                |   2 +
->  include/hw/cxl/cxl_device.h         |   6 +
->  include/hw/cxl/cxl_host.h           |   3 +
->  include/hw/mem/cxl_type3.h          |   8 ++
->  15 files changed, 334 insertions(+), 2 deletions(-)
->  create mode 100644 hw/acpi/cxl_type3.c
->  create mode 100644 hw/arm/cxl.c
->  create mode 100644 hw/i386/cxl.c
->  create mode 100644 include/hw/mem/cxl_type3.h
->=20
-
+> Anisa
+> 
+> > Testing
+> >   We ran tests in the following environment and confirmed that CXL regions were created at boot, NUMA nodes were set up,
+> >   and E820_SOFT_RESERVED entries appeared in the E820 table:
+> > 
+> >   - BIOS: SeaBIOS c2a33ad9ad1452e23b41c4ac44a3bc6be8ebc4cf
+> >   - CXL memory: 4 GB
+> >   - CFMWS: 4 GB
+> >   - Host bridge: 1
+> > 
+> >   The following is the startup script.
+> > 
+> >   sudo /path/to/qemu/build/qemu-system-x86_64 \
+> >     -name guest=cxl \
+> >     -nographic \
+> >     -machine q35,accel=tcg,nvdimm=on,cxl=on \
+> >     -cpu max -smp 4,sockets=4,cores=1,threads=1 \
+> >     -m size=4G,slots=10,maxmem=20G \
+> >     -drive file=/path/to/image.qcow2,format=qcow2,index=0,media=disk,id=hd \
+> >     -bios /path/to/seabios/out/bios.bin \
+> >     -nic bridge,br=virbr0,model=e1000e,mac=52:54:00:b5:4e:7c \
+> >     -object memory-backend-ram,size=2G,id=m0 \
+> >     -object memory-backend-ram,size=2G,id=m1 \
+> >     -numa node,nodeid=0,cpus=0-1,memdev=m0 \
+> >     -numa node,nodeid=1,cpus=2-3,memdev=m1 \
+> >     -device pcie-root-port,id=pci-root,slot=4,bus=pcie.0,chassis=0 \
+> >     -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1,hdm_for_passthrough=true \
+> >     -device cxl-rp,port=0,id=root_port13,bus=cxl.1,chassis=0,slot=2 \
+> >     -object memory-backend-ram,size=4G,share=on,id=vmem0 \
+> >     -device cxl-type3,bus=root_port13,volatile-memdev=vmem0,id=cxl-vmem0,program-hdm-decoder=true \
+> >     -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=4k
+> >   
+> >   Furthermore, we conducted the experiment in which we added two CXL Type3.
+> > 
+> >   - CXL memory: 4 GB × 2
+> >   - CFMWS: 4 GB × 2
+> > 
+> >   The following is the startup script.
+> >     
+> >   sudo /path/to/qemu/build/qemu-system-x86_64 \
+> >     -name guest=cxl \
+> >     -nographic \
+> >     -machine q35,accel=tcg,nvdimm=on,cxl=on,hmat=on \
+> >     -cpu max -smp 4,sockets=4,cores=1,threads=1 \
+> >     -m size=4G,slots=10,maxmem=20G \
+> >     -drive file=/path/to/image.qcow2,format=qcow2,index=0,media=disk,id=hd \
+> >     -bios /path/to/seabios/out/bios.bin \
+> >     -nic bridge,br=virbr0,model=e1000e,mac=52:54:00:b5:4e:7c \
+> >     -object memory-backend-ram,size=2G,id=m0 \
+> >     -object memory-backend-ram,size=2G,id=m1 \
+> >     -numa node,nodeid=0,cpus=0-1,memdev=m0 \
+> >     -numa node,nodeid=1,cpus=2-3,memdev=m1 \
+> >     -device pcie-root-port,id=pci-root,slot=4,bus=pcie.0,chassis=0 \
+> >     -device pcie-root-port,id=pci-root-net,chassis=5,slot=5,bus=pcie.0 \
+> >     -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1,hdm_for_passthrough=true \
+> >     -device cxl-rp,port=0,id=root_port13,bus=cxl.1,chassis=0,slot=2 \
+> >     -device cxl-rp,port=3,id=root_port14,bus=cxl.1,chassis=2,slot=4 \
+> >     -object memory-backend-ram,size=4G,share=on,id=vmem0 \
+> >     -object memory-backend-ram,size=4G,share=on,id=vmem1 \
+> >     -device cxl-type3,bus=root_port13,volatile-memdev=vmem0,id=cxl-vmem0,program-hdm-decoder=true \
+> >     -device cxl-type3,bus=root_port14,volatile-memdev=vmem1,id=cxl-vmem1,program-hdm-decoder=true \
+> >     -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=4k,cxl-fmw.1.targets.0=cxl.1,cxl-fmw.1.size=4G,cxl-fmw.1.interleave-granularity=4k
+> > 
+> > 
+> > How to use
+> >   Specify the following parameters when starting QEMU:
+> > 
+> >   - bios <SeaBIOS binary that includes commit c2a33ad9ad1452e23b41c4ac44a3bc6be8ebc4cf> to ensure that E820_SOFT_RESERVED entries are exposed
+> >   - Add hmat=on to the -machine option [1]
+> >   - Add program-hdm-decoder=true to each -device cxl-type3 option
+> >     [1] On Linux, the kernel first checks E820_SOFT_RESERVED ranges. When multiple CXL Type 3 devices share a contiguous HPA range,
+> >         these ranges tend to be merged into a single region, so the CXL driver cannot reliably initialize per‑device regions based on E820 alone.
+> >         SRAT entries for CXL memory are therefore needed, and the guest seems to discard SRAT when `hmat=on` is not specified,
+> >         so HMAT must be enabled.
+> > 
+> > QEMU base commit: bddb785e791e415db38884848d068457e226f5e3
+> > 
+> > TODO
+> >   With the current implementation of this patch, the following configurations are either not supported or have not been sufficiently tested.
+> >   As a result, automatic creation of CXL regions in the guest OS may fail:
+> > 
+> >   - A CXL persistent memory device is included
+> >   - Interleaved configurations
+> >   - Cases where the memory size specified by CFMWS does not match the size of the CXL Type 3 backend memory
+> >   - Configurations where CXL memory is attached via a switch
+> >   - Multi-target CFMWS environments
+> >   - ARM environments
+> >   - HMAT does not yet include information about CXL memory devices
+> > 
+> >   The following behaviors are also provisional implementations and may need further refinement:
+> >    - A new NUMA node ID is assigned to each CXL memory device. This should be improved either to reflect more accurate NUMA distances for CXL memory,
+> >      or to allow the NUMA node IDs to be specified by the user.
+> >    - Assignment of CXL Type 3 devices to CFMWS address ranges. On physical systems, platform firmware typically generates CFMWS entries
+> >      based on the detected CXL topology and its address-space allocation. In QEMU, however, CFMWS entries are configured explicitly
+> >      through machine options. The current implementation therefore has to infer which CFMWS range should be used for each Type 3 device.
+> >      This selection logic may need further refinement. Possible approaches include improving the selection and validation logic,
+> >      adding an explicit option to associate each Type 3 device with a CFMWS entry,
+> >      or generating CFMWS entries automatically from the configured CXL topology and devices.
+> >    - HDM decoder reset sequencing and state reconstruction.
+> >      The current implementation prevents the host bridge HDM decoder configuration from being overwritten later in the same reset
+> >      by moving the common initialization of the host bridge component registers from the reset path to the realization path.
+> >      However, ideally, after the registers have been restored to their reset values, the host bridge HDM decoder configuration
+> >      automatically programmed by QEMU should be reconstructed as part of reset processing.
+> > 
+> > Thanks,
+> > 
+> > ------
+> > 
+> > Yukiya Takaki (7):
+> >   QEMU/hw/cxl: add program-hdm-decoder option for CXL Type 3 devices
+> >   QEMU/hw/cxl:add HPA offset tracking for CXL Type 3 devices
+> >   QEMU: hw/cxl: add helper to get HPA range for CXL Type 3
+> >   QEMU/hw/cxl: auto‑program HDM decoders for CXL Type 3
+> >   QEMU/hw/cxl: expose CXL Type 3 ranges as E820_SOFT_RESERVED on x86
+> >   QEMU/hw/cxl: Create NUMA nodes for CXL Type 3 memory
+> >   add CXL Type 3 memory ranges to SRAT
+> > 
+> >  hw/acpi/cxl_type3.c                 |  30 +++++
+> >  hw/acpi/meson.build                 |   1 +
+> >  hw/arm/cxl.c                        |  10 ++
+> >  hw/arm/meson.build                  |   2 +
+> >  hw/cxl/cxl-host.c                   |  63 ++++++++++
+> >  hw/i386/acpi-build.c                |   7 ++
+> >  hw/i386/cxl.c                       |  11 ++
+> >  hw/i386/meson.build                 |   1 +
+> >  hw/i386/pc.c                        |   2 +
+> >  hw/mem/cxl_type3.c                  | 177 ++++++++++++++++++++++++++++
+> >  hw/pci-bridge/pci_expander_bridge.c |  13 +-
+> >  include/hw/cxl/cxl.h                |   2 +
+> >  include/hw/cxl/cxl_device.h         |   6 +
+> >  include/hw/cxl/cxl_host.h           |   3 +
+> >  include/hw/mem/cxl_type3.h          |   8 ++
+> >  15 files changed, 334 insertions(+), 2 deletions(-)
+> >  create mode 100644 hw/acpi/cxl_type3.c
+> >  create mode 100644 hw/arm/cxl.c
+> >  create mode 100644 hw/i386/cxl.c
+> >  create mode 100644 include/hw/mem/cxl_type3.h
+> > 
+> > -- 
+> > 2.52.0
+> > 
 

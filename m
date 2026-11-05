@@ -1,126 +1,185 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A98B4606A328
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 07:25:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16A10606A334
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 08:27:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=KxqkiNyZ
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=fiiXmDmo;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=KcXSKfoN
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOrql-0002of-CS; Thu, 05 Nov 2026 02:25:31 -0500
+	id 1xOsoo-0006Wr-WA; Thu, 05 Nov 2026 03:27:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xOrqj-0002oQ-1h
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 02:25:29 -0500
-Received: from 2.mo528.mail-out.ovh.net ([46.105.44.19])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xOsok-0006Vk-CL
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 03:27:30 -0500
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xOrqg-00047K-Fh
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 02:25:28 -0500
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4jKv3N3Jmzz5vtd;
- Thu,  5 Nov 2026 07:25:19 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu,  5 Nov 2026 07:25:19 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.164.182])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jKv3M52Kqz1xnN; Thu,  5 Nov 2026 07:25:19 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 29DAD1B43BFE;
- Thu,  5 Nov 2026 07:25:15 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-105G0066b4579b2-366f-4208-9452-5b2cd7bbaa26,
- 55F4AE82A352CC4A4912F42944C0BD1B07566F15) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f8228c8b-a642-4364-b465-85650b4b8c92@kaod.org>
-Date: Thu, 5 Nov 2026 08:25:14 +0100
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xOsog-0000aA-Kz
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 03:27:30 -0500
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6A56UE4G565298
+ for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 08:27:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ AGN8kwgakg5OiXRUbfKCSwJgdB2YehlHkW5tpwLRG6c=; b=fiiXmDmoIyy24Bni
+ sMCaR5DgQufd1AUeMVRlvmqfRCx8usfGB/QhBBG5YCSJI+amrKGxMYhG6O0Lfbrm
+ Fji8kOAzlF+ZdqUe/A/kQ2VdNM+ZO22eEgzSvneoa38hqfAuj6+4ckBwOB3NdJQm
+ tFAe4IDNJO13LKqvQTEJ8rQOfDD0I/KRu26xcG/k4tQDrM9mFlXQCo2zM6kLWD+K
+ xzMK54S8Lm3BUwfg2aL5lk48KFDcUlmD8/TnJhUVBuRDJnca0LzP+89ndGyA8IZm
+ vvkjGPKEifcaYAJFz+yndkyYVxyH/6NsDQEY1ltb0UsVv4Kar4dwiojBS+ST9qqh
+ iR7seg==
+Received: from mail-dl1-f72.google.com (mail-dl1-f72.google.com [74.125.82.72])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrkaq8saw-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 08:27:24 +0000 (GMT)
+Received: by mail-dl1-f72.google.com with SMTP id
+ a92af1059eb24-1383723dfddso2861917c88.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 00:27:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1793867244; x=1794472044; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=AGN8kwgakg5OiXRUbfKCSwJgdB2YehlHkW5tpwLRG6c=;
+ b=KcXSKfoNAIxUQk01dWvsQEjF7Mm8L9KFjqVckjPyKBXKmI2HTDdbIl7XlWsGcgX6Vs
+ HZ6vc0q4N1lR/zyepFW3oFJTw/4hOAD0kTfjfsPNYozweOfRCq5ne0syJvlC/ctR4Jy8
+ oPVO1xfQD8/lp4iKUdJGgE5qtEVI3/Xdq8gvHpJVCojzS6t0k25zPlF7AfM6X3UjZ9hP
+ zCc9NvgfRUhQlz2oa7YxtCUpXuTewE04kpuK7OrLYQS/HFYkDzfpIPiQiRsHBq3Q1VSf
+ V35V0+NN/OH32F9ADb9Wba/I+9LqUq+XWf4FlETeV/macVLitdvMhp8tCqZCeL3a2FUE
+ af/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793867244; x=1794472044;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=AGN8kwgakg5OiXRUbfKCSwJgdB2YehlHkW5tpwLRG6c=;
+ b=SoerQlKnSBf4oCh/70ikO8gt8nnHKxyyd8+t9ah6Y+WASb3O/u6NXXGJbsyj+TY64s
+ 5kHVtoWZJidAecs++OlLkuWuev2LDmjBtIF8ohrdU08TM8Aq7BC0X3TKI5vbSQxYC+zL
+ 0Av/uQxMUQXnLSpVBN5ULv/S5u1D1SSZfyPS1ODUCUljdUJEazOTGmpL+iomh4bjPqz9
+ klsBP+Mmz+sWHOPNnOuA+rY75I1gamoIgRPKJxShqkmOz5/Tj43fHOsmKvsoI5gxMka/
+ Gygm+MZRReJgIhJYua48Nvu/zCK1Ac13Or6+v2x6RvMabRGSbSZdoMwPrj9js4RaEHKC
+ OavA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvByXWnBEd61STzfBKH56LWca4MDDPPgnS4Tly/jmVOl60xVCS1NbYmNZ3MkcTOozx5PoVlpf2YzyqQ==@nongnu.org
+X-Gm-Message-State: APuU4Z907cjjsrrdQoqDnrM+cQR+x4A3RWkAPLam43lJChqWlMD3ubxt
+ ExrIqLHmfMpCY18gsRyLI3J6Nt2GmqLVCKdZVVof+ydhLYzaV/Vh+Cwosp1/24fXb1Ep6rzkqOg
+ /Z3Y2BTCG1vvnJSxN4VjVLKgBHGe0/Uhs48UBwv3AEMjh8vjNhHE7Fo8=
+X-Gm-Gg: AYBFou3p4rFr/h8id9/uZVw2KCAal9kPpew97ZKQB1UBjpFZ1RtT67HuRr2ekgMhtZq
+ gsAoZodk3P+alkAlpPY+y9twlY2kcxXgQBiMx1mVQzZvpfzQEmqzeLQfNGgUMal1HM34jsYbIOb
+ sUF4iITLABHW8/Pjdyxzr5TWbA5RoQieFpJOps8HyMdWw/fOtFaQ8I/Sj2ku64D38AZ9bbXMd3Z
+ j8GXx5mwxOfRwOpbDoGvxAv0mBhIkjxeQwN1w7DEKJ1SvLN21xL2v0Fk42N6+O2A2UhWlycneg8
+ iXrcJfHruNJpAtTb1NHa+ez9KP5gqJ2wAlL6Nl0tGFLakBlAFdbjUQYZJrlE7jLgkhdqfLG5EeK
+ sWLEKDo+a8rL0KN1Bk2zva+or8S5ffFQR0U/oYSO0YbyywT1xO9mNkXQiBFtlgQ2ACniJeGSbPB
+ oseUrEDNiM+5Bkbn1HvpjADEWlQwfrJPoBiiO4K6vDYQ==
+X-Received: by 2002:a05:7022:92b:b0:144:fb42:52 with SMTP id
+ a92af1059eb24-1ac5de4e892mr32993999c88.28.1793867243547; 
+ Thu, 05 Nov 2026 00:27:23 -0800 (PST)
+X-Received: by 2002:a05:7022:92b:b0:144:fb42:52 with SMTP id
+ a92af1059eb24-1ac5de4e892mr32993931c88.28.1793867242680; 
+ Thu, 05 Nov 2026 00:27:22 -0800 (PST)
+Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
+ [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-1b245c1c127sm14154206c88.6.2026.11.05.00.27.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Nov 2026 00:27:21 -0800 (PST)
+Message-ID: <45433754-3cea-41fc-9f45-65a328d0efca@oss.qualcomm.com>
+Date: Thu, 5 Nov 2026 00:27:18 -0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/22] Aspeed: TMP421 and TMP1075 sensors, and the
- Clemente BMC machine
-To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-References: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20261015-bmc-clemente-v1-0-bf591886b5b6@free.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 3413447046789966893
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFfOSpRP9Yj3PBtl7iqLR8XVjQhlK4Uaf5vSb9TFjXgntGtQe8ckPj+186Of0wB2PTIRrP7i5xDbUIhSmbXU8eQCIMkVAjhlY4qDuf4HX+mHb+O0SF249tHstPNXs3IgowC+/ohEd4P3crB54+2nRnBGH7XzDR2IAtz3CnqP/uWNv/hgsRgrA5G3wueIHQt2pMeMT0iwrtk2INJ5Ee5X8ynOx9LM3bhk8Z02dwlslcKfc97TQBOLUhGWcO4yQoajas71fQHlbbWHaFdB+uRi8tAvloiNOUtjKlbGWhI3F1uc0Ke8XDHKMVY3/GN09OOMb9uTV3Cf0LBR0SvG9VASfQ9TMSEVdxjnz9FtREf1Qz2k/yd1ZPL4O4+urAEdqOvE/3Bohk5COKDrPHuy5zjBwkp4VuZKiE7mcztqivWLPtOiTXuM9cZ/h8kMMdEry0TPo9vw+l8FzgSL+zjFuzjXqUbmUQtjcQhBth+Cz181x/GDb78oGNoYNqF9z+it2+lXFYCcmuPp1Ocwqm8ZuaxjQY8991x32n38VSzqlPrqJ0Cp/W3HUaLVTWDbB3rkvaH95iBAPU570r0uG5cJHGkUlb193Gh7hEV3Fd9n/rgbOGhlevHTBsvS6PsWpbDTiPsPxWcFfQRZX0ozQp7ucUz/YJ51UMqltG/DcMtw4driCGtBw
-DKIM-Signature: a=rsa-sha256; bh=3RJoKgvYpwy06A+So+qhJRVsTMT0N4u1ilUddUafVSg=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1793863522; v=1;
- b=KxqkiNyZjTEaiSEP97CDuFQYQ4rnSEYc6sPnMaFM7PZFHKcwf5yl+UHZBjER6ig587SM1j2S
- Li4W4KhGiM+odVgUbhRtJshLpw0fQGMcu79VkBcrQCIBWi1c2kDlL7qplVnjOa1SFCi1T1hXgHd
- 6pjQbajVg0UjcVpWRgi25AgD3yxVaQwfsUHgZ7n+bqc2PsDakbHnBrcLDRPf92S+10CocJXKaOl
- mZ5nMoeytqV/vYl0q81LR0FALCBRdam/dp0DK6ZAcwV/WBHnQQy0N8PXPQkVMmpYs6fF+h7QBJ6
- nUTPL9Nr7OW/DpcO/x/Wn2137mZdMd1Qa9tAiAL6O4iAQ==
-Received-SPF: pass client-ip=46.105.44.19; envelope-from=clg@kaod.org;
- helo=2.mo528.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Subject: Re: [PATCH 00/15] hw: expand DEFINE_MACHINE to explicit TypeInfo
+ registration
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Yonggang Luo <luoyonggang@gmail.com>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+ Anthony PERARD <anthony@xenproject.org>,
+ Felipe Balbi <balbi@kernel.org>, Aleksandar Rikalo <arikalo@gmail.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, Niek Linnenbank
+ <nieklinnenbank@gmail.com>,
+ xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
+ Alexandre Iooss <erdnaxe@crans.org>, Weiwei Li <liwei1518@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>, =?UTF-8?Q?Cl=C3=A9ment_Chigot?=
+ <chigot@adacore.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Chao Liu <chao.liu@processmission.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Huacai Chen <chenhuacai@kernel.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org
+References: <20261030151539.1872-1-luoyonggang@gmail.com>
+ <d1db54c6-b802-676a-7779-0c2c63f5f807@eik.bme.hu>
+ <aa70e94c-d9a8-41c9-850f-7ded87f7f327@oss.qualcomm.com>
+ <aumYOBw-nKQAWdYK@redhat.com>
+ <CAE2XoE8Xwevk523OfB+GgwbRu0iVnyD4VNOx81rj7J7F5aq=OA@mail.gmail.com>
+ <54851326-3627-2b86-57d6-c338ed4e4b50@eik.bme.hu>
+ <CAE2XoE_P2mZAT8wZwzFsTqJTK8nxNSSqJRrOM2T-AJkQjwJHBw@mail.gmail.com>
+ <aunnuwhsx9ZOOXBX@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <aunnuwhsx9ZOOXBX@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: g1QCh0n4Hd1g9e82y4CEQQtKv76eAt7R
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDAzMyBTYWx0ZWRfXw4xE7t5cvrj7
+ 675RwSbLjZ6GZlY8JrvanORRlgcVm4tIyEePtb/B1q2UIcc/j6WPMfGngGnSRW7lGp0pr/mhBmT
+ UpYTe1DopAfIg6t+iLhpwTvYFRFKxQY=
+X-Proofpoint-ORIG-GUID: g1QCh0n4Hd1g9e82y4CEQQtKv76eAt7R
+X-Authority-Analysis: v=2.4 cv=OZoNnRTY c=1 sm=1 tr=0 ts=6aec3dec cx=c_pps
+ a=bS7HVuBVfinNPG3f6cIo3Q==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
+ a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=20KFwNOVAAAA:8 a=sYqyBgSLRBUY3L6MHRUA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=vBUdepa8ALXHeOFLBtFW:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDAzMyBTYWx0ZWRfX6BlPo88YiZDM
+ BxcbSFlTlZ8E+0EaEXITuQy+o2qG3eF2r0ifCaBao9tgJWkc0jzGGWiu9I/7JTzwuOoexXNTxPF
+ WRLYH8SOLsShdp3CtTuxA9z1LdfOSj92Pds3+UFTnUYwBppjRa1I5tsmyWhXugOnGIS3zzZ7p1J
+ T5w9vOrEqTsT65MQxSfMrwam1oqMoKFTokGMNcNYN5/KNYxrktPSWMvLr3Vu+Y9ZZJVezpIPAxH
+ /b4A0LzhxUPqsiubLuD1hQDxFd94sxnDjALx5z3hHzsBxer3kGDXDlyCoP2rk6++ZGjmmnNoeod
+ CyyD0YrtBrcxtZGkE/1M+xV+KKyW0Ut5+6TLYtVJoD05VF9qT/7AhpRmuS36yLfiTfk5A/6V76u
+ 73uH19WXOW/SVTxwliDTlM4msavPR9DNO94F2O51uVFPwv2mFKNDzLtEuUfJlypaD3ciAl33SGc
+ aIpUg3ukS+7GXM+THiw==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-05_02,2026-11-04_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 phishscore=0 bulkscore=0 clxscore=1015 malwarescore=0
+ suspectscore=0 lowpriorityscore=0 impostorscore=0 priorityscore=1501
+ adultscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610300000
+ definitions=main-2611050033
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,153 +191,119 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/15/26 13:57, Emmanuel Blot wrote:
-> Add the clemente-bmc machine and the temperature sensors it needs.
+On 11/3/2026 5:55 AM, Daniel P. Berrangé wrote:
+> On Tue, Nov 03, 2026 at 09:48:44PM +0800, Yonggang Luo wrote:
+>> On Tue, Nov 3, 2026 at 9:23 PM BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>>
+>>> On Tue, 3 Nov 2026, Yonggang Luo wrote:
+>>>> On Tue, Nov 3, 2026 at 4:16 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
+>>>>>
+>>>>> On Fri, Oct 30, 2026 at 05:51:44PM -0800, Pierrick Bouvier wrote:
+>>>>>> On 10/30/2026 4:09 PM, BALATON Zoltan wrote:
+>>>>>>> On Fri, 30 Oct 2026, Yonggang Luo wrote:
+>>>>>>>> DEFINE_MACHINE and DEFINE_MACHINE_EXTENDED hide the TypeInfo and the
+>>>>>>>> type_init
+>>>>>>>> function that calls type_register_static(). A later change needs to
+>>>>>>>> pass a
+>>>>>>>
+>>>>>>> That's the point of the macro to hide the boiler plate code.
+>>>>>>>
+>>>>>>>> target mask into that registration, and the macros have no parameter
+>>>>>>>> for it.
+>>>>>>>
+>>>>>>> Couldn't you just change the macros to take that parameter instead of
+>>>>>>> expanding it everywhere?
+>>>>>>>
+>>>>>>
+>>>>>> Problem of macros is that they don't have default parameters, so you
+>>>>>> need variants for everything:
+>>>>>>
+>>>>>> DEFINE_MACHINE
+>>>>>> DEFINE_MACHINE_EXTENDED
+>>>>>> DEFINE_MACHINE_WITH_INTERFACES
+>>>>>> DEFINE_MACHINE_WITH_INTERFACE_ARRAY
+>>>>>> and now would need a new variant, with variant for other existing ones.
+>>>>>>
+>>>>>> In the end, it's just simpler to remove this and add the boilerplate.
+>>>>>> It's written once and never modified, so using a macro just save typing
+>>>>>> those lines once.
+>>>>>
+>>>>> For each machine, it is only written once, but we add machines
+>>>>> over time, and every time a new machine is added the code style
+>>>>> is slightly different. We introduced all the variuos DEFINE_*
+>>>>> macros for QOM to better ensure consistent style and usage as
+>>>>> new code is added over time.
+>>>>
+>>>> I understand that the DEFINE_* macros are bloating because of this.
+>>>> Indeed currently the only two macros used are "DEFINE_MACHINE" and
+>>>> "DEFINE_MACHINE_EXTENDED"
+>>>
+>>> There are a few machines using some others but these are the most used.
+>>> That suggests maybe we should change the convenience wrappers to match
+>>> what machines need but DEFINE_MACHINE_EXTENDED is meant to be the one that
+>>> allows all parameters which should be rarely needed.
+>>>
+>>>> ; each time people want to add a new attribute, the macros is twiced.
+>>>
+>>> Not necessarily. The SECURE parameter did that to preserve previous
+>>> behaviour but if you add new parameter changing all callers (which is the
+>>> same as expanding the macro that would also change all callers) then it's
+>>> just a new parameter added not changing the number of DEFINE_MACHINE*
+>>> wrappers. Rearranging the wrappers to make DEFINE_MACHINE_EXTENDED used
+>>> less is an independent change.
+>>>
+>>>> And the usage of DEFINE_MACHINE_EXTENDED is rare and can be replaced
+>>>> with DEFINE_TYPES or TypeInfo
+>>>> and be more explicit. When we used as macro parameter, we need think
+>>>
+>>> But that defies the purpose of hiding the QOM boiler plate as much as
+>>> possible. New people are confused by QOM and it's easier for them to look
+>>> up documentation on the DEFINE_MACHINE* macros to see what parameter is
+>>> what and not care about how it's stored in QOM TypeInfo or what is that
+>>> at all.
+>>>
+>>>> what's that parameter means, and for
+>>>> TypeInfo, we can directly know what that member is about(because we
+>>>> are assigned with the member name).
+>>>
+>>> The parameter also has a name and documentation so it's not simpler to
+>>> look up TypeInfo than look at the macro definition or docs. In fact it's
+>>> harder to guess from TypeInfo as then you also need to get into QOM.
+>>>
+>>>> That's why I suggest keeping a single DEFINE_MACHINE, just like
+>>>> DEFINE_TYPES; as they are the most
+>>>> used macros(and simple enough), and won't suffer from changes much.
+>>>
+>>> That means exposing all the boiler plate for all machines other than the
+>>> simplest case. I think it would be better to keep DEFINE_MACHINE_EXTENDED
+>>> but maybe rethink the existing wrappers and drop unused ones and maybe add
+>>> new ones that reduce the usage of DEFINE_MACHINE_EXTENDED but still keep
+>>> the boiler plate hidden.
+>>
+>> Thanks, I'll go this way, remove unused macros, and keep DEFINE_MACHINE_EXTENDED
+>> and extend both DEFINE_MACHINE_EXTENDED DEFINE_MACHINE supports
+>> "targets" or "arch_mask" parameter.
 > 
-> The TMP421 variants are now described by a class descriptor instead
-> of a lookup table. Channel enablement, register write masks, the
-> one-shot trigger and the per-channel N-factor registers are modelled,
-> reset follows Resettable API, and the variant type names move to a
-> header so boards stop open-coding the strings.
-> 
-> The TMP1075 is a TMP105 with a 16-bit Config register and a read-only
-> device ID.
-> 
-> The new TMP421 state is stored in optional subsections.
+> Given that we don't need to do general per-arch type filtering in
+> QOM, we could just move 'is_available' out of TypeInfo, and into the
+> MachineClass, so it is a regular class level property, which can be
+> set in the class_init methods, and thus avoid any changes to the
+> DEFINE_MACHINE macros.
+>
 
+Some cpus need it also, and it's used for filtering purpose at this time
+(to avoid duplication at registration). We already depend on this behavior.
 
+> With regards,
+> Daniel
 
-The series has been broken by recent changes. Need a resend. You
-can keep the Reviewed-by.
-
-Thanks,
-
-C.
-
-> 
-> The clemente-bmc machine is derived from the platform device tree and
-> instantiates every device that is supported in QEMU. FRU EEPROMs are
-> sanitised images taken from real hardware.
-> 
-> New qtest for the TMP421 family, plus TMP105 cases for the TMP1075.
-> Both check a migration round trip.
-> 
-> Based-on: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
-> 
-> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-> ---
-> Emmanuel Blot (22):
->        hw/sensor: tmp421: do not report a stale errno on a parse failure
->        hw/sensor: tmp421: name the parent object field parent_obj
->        hw/sensor: tmp421: implement Resettable reset
->        hw/sensor: tmp421: model device variants with a class descriptor
->        hw/sensor: tmp421: honor per-variant channels and channel enablement
->        hw/sensor: tmp421: implement register write masks, one-shot and N-factor
->        hw/sensor: tmp421: describe the temperature properties
->        hw/sensor: tmp421: keep the measurement across a range change
->        hw/sensor: tmp421: migrate the exact measurement
->        hw/sensor: tmp421: publish the variant type names
->        hw/arm/aspeed: use the TMP421 type-name macros
->        tests/qtest: tmp421: cover device IDs and reset defaults
->        tests/qtest: tmp421: cover temperature encoding and range
->        tests/qtest: tmp421: cover per-variant channels and enablement
->        tests/qtest: tmp421: cover software reset and N-factor registers
->        tests/qtest: tmp421: cover the register form of the migration stream
->        hw/sensor: tmp105: add the TMP1075 variant
->        tests/qtest: tmp105: cover the TMP1075 device ID and reset defaults
->        tests/qtest: tmp105: cover the TMP1075 config register width
->        tests/qtest: tmp105: cover the Config low byte across a migration
->        hw/arm: clemente: add Facebook Clemente BMC machine
->        hw/arm: clemente: populate the FRU EEPROMs
-> 
->   docs/system/arm/aspeed.rst                |    1 +
->   hw/arm/aspeed_ast2400_palmetto.c          |    3 +-
->   hw/arm/aspeed_ast2400_supermicrox11.c     |    3 +-
->   hw/arm/aspeed_ast2500_supermicro-x11spi.c |    3 +-
->   hw/arm/aspeed_ast2500_tiogapass.c         |   10 +-
->   hw/arm/aspeed_ast2500_witherspoon.c       |    7 +-
->   hw/arm/aspeed_ast2500_yosemitev2.c        |   10 +-
->   hw/arm/aspeed_ast2600_bletchley.c         |    3 +-
->   hw/arm/aspeed_ast2600_catalina.c          |    3 +-
->   hw/arm/aspeed_ast2600_clemente.c          | 1154 +++++++++++++++++++++++++++++
->   hw/arm/aspeed_ast2600_fby35.c             |    2 +-
->   hw/arm/aspeed_ast2600_fuji.c              |    3 +-
->   hw/arm/aspeed_ast2600_rainier.c           |   13 +-
->   hw/arm/meson.build                        |    1 +
->   hw/sensor/tmp105.c                        |   85 ++-
->   hw/sensor/tmp421.c                        |  429 ++++++++---
->   include/hw/sensor/tmp105.h                |    2 +
->   include/hw/sensor/tmp105_regs.h           |    5 +
->   include/hw/sensor/tmp421.h                |   19 +
->   tests/qtest/meson.build                   |    1 +
->   tests/qtest/tmp105-test.c                 |  111 +++
->   tests/qtest/tmp421-test.c                 |  326 ++++++++
->   22 files changed, 2050 insertions(+), 144 deletions(-)
-> ---
-> base-commit: 615ece3c406b262996e569f29ea6eed0d81c4d8d
-> change-id: 20260907-bmc-clemente-0056d6676717
-> prerequisite-message-id: <20261015-bmc-minerva-v3-0-7d50c8a108e5@free.fr>
-> prerequisite-patch-id: 5aae2c14351eb51fea0cb307bedf21021730debd
-> prerequisite-patch-id: 4d9a408b21353dda070052227302e799e4c01726
-> prerequisite-patch-id: 01470b3e3d522778ea23f39f03a3b82a2a0f2d3e
-> prerequisite-patch-id: 11d0a41b1b3009d95ddf51d9bde960658c924ac1
-> prerequisite-patch-id: f1072c7d99e462e1c85ecace78eef33bc6e8778a
-> prerequisite-patch-id: 8897466a7505261a1060243ca01572c3a8874068
-> prerequisite-patch-id: f35c864317c68dd2b9ca969bec243fafd80497e6
-> prerequisite-patch-id: 8b05ecb9c1191509e7e4cc76944c88f4f7891ca2
-> prerequisite-patch-id: 78155b4352683ffc03826038c3d8160b788c29ff
-> prerequisite-patch-id: e0af745b421c39fd47311ca21576c510bc961526
-> prerequisite-patch-id: c14af0a372dcb314ef92a04a47e5bedc846281c8
-> prerequisite-patch-id: 684f5ec9f4ac0640438d1eead20832c529d67508
-> prerequisite-patch-id: e09c684b2002e30ae14a11bfe409869478d104bd
-> prerequisite-patch-id: 09afec3682584cbda09b00c0ac87dc60835454d7
-> prerequisite-patch-id: a89dfec61a795b84c3cf02927fd7c40bc6f694ae
-> prerequisite-patch-id: 6a23cb3b1362aaf70fe73f554d9d5fcf2e72c3ec
-> prerequisite-patch-id: 7c11c16803a5b96be5653a05acf8b46a3020e8d9
-> prerequisite-patch-id: b9251deb99859cc30a9c67b5dba3066124f32033
-> prerequisite-patch-id: 87291d7798b6bddde6242c651f0e03deb96ab559
-> prerequisite-patch-id: caac35561ca8b2bdd86101f943e93aa7bcd3a90c
-> prerequisite-patch-id: 27b0b37242fba900f982f9bcaca36f48c6a115bb
-> prerequisite-patch-id: 1259c5fbfeb5d2bf1760e7b12df59f182528cee6
-> prerequisite-patch-id: 2654532e955554fbae6ffcdf6ff3b38bb03fbbd5
-> prerequisite-patch-id: ff0505a46b3604ba502834d3f5bf17ab85b3c5fa
-> prerequisite-patch-id: 250958c152f11026aa98d334892132f9ab7467db
-> prerequisite-patch-id: f3d938264fb2f0c2c292dbb4fb218e5b8d22c3d9
-> prerequisite-patch-id: 06602fc849e499131998af486ae455497a4245c1
-> prerequisite-patch-id: d857ee22db2d62a98f4f2054d1966cce7ed39452
-> prerequisite-patch-id: 7909e49ac93573ebd56424a556d4e4872e9778eb
-> prerequisite-patch-id: 53cd0411fed556e85f6557cab6fc32056c24bddc
-> prerequisite-patch-id: 71752a32c10eacd296f62bcc94c09db5d54007c3
-> prerequisite-patch-id: 7a21b5fabeddff9c08d6b532b2a398737f375a06
-> prerequisite-patch-id: c6154dd1e7a48decd770f062fb57f32cfb2e1826
-> prerequisite-patch-id: b94e4e3d83aa013ffd05267e20d48d6813ca2d7c
-> prerequisite-patch-id: 23716ee3fbb2395d0fc33922433fb6d708081fae
-> prerequisite-patch-id: 2e57dc2effacfdfb8adb93f5e33bfefdb7c28dc0
-> prerequisite-patch-id: 2400063e36ca403574b812436fef8c38608e6005
-> prerequisite-patch-id: 557a2e98bce9c59d1d4513207e021e217d9dcc59
-> prerequisite-patch-id: db5ca53f9dccded71da127446b4870678640c86f
-> prerequisite-patch-id: ddf5d85c6eb13a9121342263b6f0ee9902b40d06
-> prerequisite-patch-id: d9e3e31b88133c8d2ffac7c931d9ab153cf20af7
-> prerequisite-patch-id: 7ed25d5dc6b899645ef98cdb591344042b77c41f
-> prerequisite-patch-id: 6c70cb570c5c6bfe0d61cb4c5260e6d8f195f383
-> prerequisite-patch-id: 3caea8b32b51fa447ee21565594b6465d2e51670
-> prerequisite-patch-id: 758236b35dcee46e176a7167e703048e11f6e634
-> prerequisite-patch-id: 0521a46d473cad9f3924b4e0f86473fe237c1982
-> prerequisite-patch-id: 819077eedcc252ade342c8288af2d57e0c8ece6f
-> prerequisite-patch-id: 913f8260d8274a1c1706d09915cf75c0dd11061c
-> prerequisite-patch-id: b0913e3e23d3bd41ffb248a3afecdbfe93b4915d
-> prerequisite-patch-id: ef2e1478aad5f5722a2d021b424803d7cb2cdc4c
-> 
-> Best regards,
-> --
-> Emmanuel Blot <emmanuel.blot@free.fr>
-
+Regards,
+Pierrick
 

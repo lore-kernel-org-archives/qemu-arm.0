@@ -1,98 +1,96 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4C11A606A328
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 16:05:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E1575606A334
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 16:09:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=RD4mFNvm
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=lPoLNZRZ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOzxx-0006et-LH; Thu, 05 Nov 2026 11:05:31 -0500
+	id 1xP01R-0007Kx-Pu; Thu, 05 Nov 2026 11:09:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xOzxp-0006Vf-IJ
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 11:05:21 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1xP01E-0007JM-Jj
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 11:08:56 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xOzxn-00055P-7m
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 11:05:21 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-491971ac844so630829f8f.2
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 08:05:17 -0800 (PST)
+ id 1xP01B-0005oc-Ic
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 11:08:52 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4a5177d78c7so19769025e9.2
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 08:08:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793894716; x=1794499516; darn=nongnu.org;
+ d=linaro.org; s=google; t=1793894928; x=1794499728; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=MTD+YMdenV8nPVPhjGdFh71FJfRNuOqVrF2HphRsq1A=;
- b=RD4mFNvmXDn/0vC3IMlVWZ4VJsDK3SnGbmCoQbYMNrBlfBHCj2ZYmP/UU+We2Jw6TO
- Mm2rIk5j4qhEvtNQqrAOOc3hXW3Pf52LSWLkPBdfFsMipNLBL8K881a4EYYnXpYUtzMN
- e/5XztZBA7LzttlFGdmbS5FxVQrT1BVAfIPXbZDr163lzR1lMpfZ8tyCDOkO+QfvFLeu
- 43YjXpcPtVj1DNzbhxEX7li6dzlfkojhRvo0u65wt+Wkkzad2rplLQ8tbUGufr+3xvPX
- TuCJO6roOdoILgNoDKfeP+new9B1PEDL8QCd7JZgyKuRw7jbyTvZ1VcS0/kb5sM3Ahbp
- TZ9g==
+ bh=x0FCzfv9OYMEwCNlqdVnHJj1JgfOczdas0r9ze3o/f0=;
+ b=lPoLNZRZkof3h0at6015NZh31bMwsij4yABe/qFM25TUmN6S7q6QBXYG7ww5aTWQHy
+ 8SkQf8MVE47rJk7k4WlP2M/mkLjdRtG5CXMX7wJCGQ+kfiRV50xENrf32whC1oRl1FsM
+ IOIxVpPGFhScwUFnRek/7PQQwZ47iRbvKHVod2iQdbRFqNlVHzjjkOquOvdEvOCM8DTA
+ U94EIVayyvH9s1Xso/kmFALOw3zdaifWRn+6QCNsexhnm6RThVFV0gmyp6E2knb/54pt
+ XzS5zW0w00OIdz+Dwwtfs3qm4uakP+nsiULPwEhSg+8uqqT2UuDvCBOQD0fuhfmKT/y4
+ wJOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793894716; x=1794499516;
+ d=1e100.net; s=20260707; t=1793894928; x=1794499728;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=MTD+YMdenV8nPVPhjGdFh71FJfRNuOqVrF2HphRsq1A=;
- b=0Mda/BsndIhA1gahefOD+Mo5Sz5wUgfHamoP1GLW/S9f/BQMBNBVHADtOUSoKFFqHz
- vhsN89dxAEgqgWSyjwANcFkWtHaDY5V9VpeyRLdcWXgERvxG+stXMUP09ICzgjg5yhEe
- 4BqdBd2bRy5NI3wgUwgLktW63fO7EX2bzNxwV2FY6pHhzmFJkwA6D5TYlQmifFnVkDuh
- K6OgHxK4wA4OmUdrYCx10IA38GN0+Jto2l0gp23mGLTxvXcjLvz9EBQZJk0AsOk/YWT4
- 4ccNQq24Jq6m1XKFj8Egnj7c6KM3xlWMIbbmLhJOy+a5i0CFG+EqySPeqYFpMbklYYPi
- V58g==
+ bh=x0FCzfv9OYMEwCNlqdVnHJj1JgfOczdas0r9ze3o/f0=;
+ b=d5erW0eCcStCVl30fiCNtNkCwFut82U757pBEQ9Gvw0lP8u24E3I6uCYnHngZeFKW8
+ D2FyedLa+jj1heEBuHiCXQgFM90sB7b3g9Yw0bZ1g1q20hZ1uOUhDUQhP7WsBO9IgEyI
+ 4d4R1C6pRZrRDKJV0FLI0wgwSkUn4ag6LJhOBWqUytnWFIkQA8bV7hA9CHQN23laLMO2
+ cQDMcdN0CKero6E0mzHd5FuBM7pJq/oOx3N79fCo0VDOupXS+jHEhJZsUzTXwDyjg5bX
+ RUApIe9ydbY5ZAr9XXM4fXLYubkhGHiClq7Mbw2gg5e2PfkQW3B1ZGChl2UG26j0Ba0F
+ 0geQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvByfBjSzEmRUh8SckGVo7qJXoU8tK1x8AehvBUWQeQLI97mNR72M3qpntfH2Ka8UhgfWGW1HAKIYZA==@nongnu.org
-X-Gm-Message-State: APuU4Z+PMYBxPR5ODqr6lbrL6bdNVwb/CiweNmg6S/L7j9kwTIwH/xB2
- TMmaz3gZxYaTwzu8ZEVF/B4ksGZWcLq9WTYN0/ZSRxKsvUe++awdXz4fBtLROOh3Nb4=
-X-Gm-Gg: AYBFou1CQE/FlYmphT6AmtJDFCh4c9dZcqbl7qXXpQ2M7DYD5Uw8wfAcCaSt8aCIoRb
- IwB87Obu6qUauY351SCNFfxN+/fipOl7MeZxO6bVlABJpqdwaiaa1/NOyoZYRQyUj5MV0sk/I5v
- jzMRSUqrhevzFWq8HSn/RlCxSoN3DyiBI69oXRxZMYnYrcgCCjFqrWuNXiXht6ZmXre0PU5qTmA
- uwDJOTWfqbAK/GpVm1C5dIzo37dBlCCeeLwg1+huspOLdfaWA3IvVZOHC33RQ8Npa2s9VJwPWht
- JoHDG/5Jic6HA2bL3ijVqu8Ga9xZ8inS8LGPL1JW9gupLDJiTQnyy7lxVIBMa3+lyP91PjL/TvC
- m16lvTJPdSM9kCXvP5iB0VAnRhummH+obbev49lesSECmQjNA93VMQZcWxZ/gDwrXcMY5nJ19Zm
- N7Lqyj6DhsAeRRbbqwlMGyeCXsfFOXUziaaBrUMx0t5m5RRDxmS1vlU2Np+u57KOVq+yxvuSDrH
- voOa+SQSfypmEYfMvpa6dqGStcm/+HYfWSsy5j9RJ/YTU7B483TRgoNQuZBjX3X6c1ig3eRSEjI
- 4Qir2XmQMegBF5Lm/oXiG39zn6AB
-X-Received: by 2002:a05:6000:2901:b0:48b:59f:db9c with SMTP id
- ffacd0b85a97d-492775f03ddmr79582f8f.53.1793894716357; 
- Thu, 05 Nov 2026 08:05:16 -0800 (PST)
+ AKwUvBxyD+3xiaobhfVdu3IiL3WjIlSkRvStwoee6TapFV6UHXV7eM4ErDF47ORAcOubxCCl8tdDSXit8Q==@nongnu.org
+X-Gm-Message-State: APuU4Z8HjPLHlw59uGC67HKCAQEJfLPXdaNlmSvI4/XeT5JP8iBzo5Z+
+ KAoiojS4xC1SFUJicbnx1HZtR3relKyHEGk1qBb/cjeq92SUrIaQ3KdLIXI9vEa2E5w=
+X-Gm-Gg: AYBFou1OOmphQbdBmDEoni7aMiP99YhLDhJjNmWiJtDYaUp9l+Vxs9GG3HUyBzK6+XY
+ os9DRys7W0A9YvduB5HmdLD31Wp0IhLq4Yh7f2Cme8BEbRDB4b5ovdxpvU+nID2gFsJY4pByBTC
+ Q7sz7X3QdU06V2tN/e6hrUS3CTZ8b1dID4nZCfQrLu/BFkRsFpHZ0C8e7PT1Bghl+RUaxfJQn4v
+ K9BFJ5l+XXvoLOBjJANusIrxlwuIwyvbcnMSABI+ZDfdmMJwZihN1pH9BDwCpE324UXY5zCU+N0
+ 2AtiV3XZ1MktJn5+pmvhYIsnMOVObKHrT85ZSxA8bbJ1BEm7QZsRusZJ6ctNwQO/hs11KprlU7b
+ uHLVmfyTB+ZS8s8g0wtiLA4QudnmCy38gULc8YXanB5JfxxdG+HI80mC1n7aH7OOeJoHg1AO8+p
+ Y6Zw84f0CY4TRQkMEJNDImYZTQuRZ/ClWIHMOWufIpPtvL0PC1fgvqXP6iYbAJ0Lq6Klx/4zg4u
+ mI3OE3rChwgfPsE2v/37o/6WneZMd4GB3mXEH0bnEkNfMQuQnxUUht/FrYkG1W3gNDwFdQ8V4xU
+ bot9IXTaOLhKxzMx/FZiDY7mxifp
+X-Received: by 2002:a05:600c:474a:b0:4b5:d95c:2378 with SMTP id
+ 5b1f17b1804b1-4b5d95c241cmr41902635e9.34.1793894927605; 
+ Thu, 05 Nov 2026 08:08:47 -0800 (PST)
 Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48fec8d8734sm11354531f8f.20.2026.11.05.08.05.15
+ 5b1f17b1804b1-4b57317cae5sm115414155e9.12.2026.11.05.08.08.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 08:05:15 -0800 (PST)
+ Thu, 05 Nov 2026 08:08:46 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B41E25F8AF;
- Thu, 05 Nov 2026 16:05:14 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id E0C235F8AF;
+ Thu, 05 Nov 2026 16:08:45 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org,  qemu-riscv@nongnu.org,  qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org,  Palmer Dabbelt <palmer@dabbelt.com>,  Alistair
- Francis <alistair.francis@wdc.com>,  Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,  Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>,  Chao Liu <chao.liu@processmission.com>
-Subject: Re: [PATCH v2 07/17] hw/riscv/platform-ref: Replace deprecated
- sprintf with g_strdup_printf
-In-Reply-To: <20261105125203.40320-8-philmd@oss.qualcomm.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Nov 2026 13:51:52
+ qemu-ppc@nongnu.org,  Nicholas Piggin <npiggin@gmail.com>,  Harsh Prateek
+ Bora <harshpb@linux.ibm.com>,  Amit Machhiwal <amachhiw@linux.ibm.com>
+Subject: Re: [PATCH v2 09/17] hw/ppc/spapr: Replace deprecated sprintf()
+ with g_strdup_printf()
+In-Reply-To: <20261105125203.40320-10-philmd@oss.qualcomm.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Nov 2026 13:51:54
  +0100")
 References: <20261105125203.40320-1-philmd@oss.qualcomm.com>
- <20261105125203.40320-8-philmd@oss.qualcomm.com>
+ <20261105125203.40320-10-philmd@oss.qualcomm.com>
 User-Agent: mu4e 1.14.5-pre1; emacs 30.1
-Date: Thu, 05 Nov 2026 16:05:14 +0000
-Message-ID: <878q376z7p.fsf@draig.linaro.org>
+Date: Thu, 05 Nov 2026 16:08:45 +0000
+Message-ID: <8733tf6z1u.fsf@draig.linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,23 +109,53 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com> writes:
 
-> Replace sprintf() by safer g_strdup_printf() to format the AIA
-> guest count / description, silencing -Wdeprecated-declarations
-> produced by Apple clang 17.0.0.
+> Replace sprintf() by safer g_strdup_printf() to format the
+> node name, silencing -Wdeprecated-declarations produced
+> by Apple clang 17.0.0.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
+> ---
+>  hw/ppc/spapr.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 54e3cc3cbe42..6f1a046a425d 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -352,14 +352,13 @@ static void add_str(GString *s, const gchar *s1)
+>  static int spapr_dt_memory_node(SpaprMachineState *spapr, void *fdt, int=
+ nodeid,
+>                                  hwaddr start, hwaddr size)
+>  {
+> -    char mem_name[32];
+> +    g_autofree char *mem_name =3D g_strdup_printf("memory@%" HWADDR_PRIx=
+, start);
+>      uint64_t mem_reg_property[2];
+>      int off;
+>=20=20
+>      mem_reg_property[0] =3D cpu_to_be64(start);
+>      mem_reg_property[1] =3D cpu_to_be64(size);
+>=20=20
+> -    sprintf(mem_name, "memory@%" HWADDR_PRIx, start);
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-<snip>
+
+>      off =3D fdt_add_subnode(fdt, 0, mem_name);
+
+fun fact, ppc seems to be one of the arches that mixes fdt_add_subnode
+with qemu_fdt_add_subnode.
+
+>      _FDT(off);
+>      _FDT((fdt_setprop_string(fdt, off, "device_type", "memory")));
 
 --=20
 Alex Benn=C3=A9e

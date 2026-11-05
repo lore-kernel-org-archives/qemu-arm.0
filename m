@@ -1,138 +1,129 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE627606D808
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:52:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF2FE606D812
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:53:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=pIpaCi1t;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=kAFgTDBt
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=YMg7iCK2;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=Gj7ks2E0
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOwxK-0002oc-Vx; Thu, 05 Nov 2026 07:52:39 -0500
+	id 1xOwx3-0002kr-QN; Thu, 05 Nov 2026 07:52:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xOwxH-0002nl-O0
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:35 -0500
+ id 1xOwwx-0002kD-QG
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:17 -0500
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xOwxF-0005hd-SP
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:35 -0500
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ id 1xOwwu-0005fI-EH
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:14 -0500
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A5A1l6T1417489
- for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 12:52:32 GMT
+ 6A5AhuCh1582933
+ for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 12:52:10 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- r8cbebLCAezKzqo21AD8WKBJcS2oxVy06oRDOWLIWgc=; b=pIpaCi1tNbSWPuiB
- +CEoDQRJW9+uRkaGLdqnNXFYkEoBXaYZsRH6Vp9SbbuIilus0oPqE//ZpIQDcwSA
- GiGmXWpubOFYYSvqtSc3a/NPVzIQDs3VFQ8PePgFv/dB7TIwcdVY8q/K7tod63Mj
- 33VDh3XvF0cracHMl7QIV2dyH+3j/SFf8U99yHk4AeQW6e7R6d2r84d8pyArc2Gk
- VFUip1C6uY5ztstDBAj4ovm6sima3s/xl2OS3GPfSL2c509vlsaDd0A6IRNR4TxY
- eFBdT54zuhLCIdbyzIHxbDyy9QaRGj5sm9ABakykvYsR0uqIi7qaa9yr05DLxyuS
- TASKpg==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrqpd0pa1-1
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=C4wyhq0QCfy+i3u8v5T5DX
+ pWAtc9llSmeEyL5gk7RJs=; b=YMg7iCK2dQuIT4T18+Am8zHmo/7wVPG7DVPGUe
+ x7/Ik9xQWwwY47tVZAjvh3PRqvztI6dBi8d55i+TMcSm6qwbNlCe7gkU6RYfimT7
+ 9k93ueSwgcBsX7bbxRC/UcF2cwfJFX6o79ToTwEig3YIJK4MQ8GhThdDt92KLQMq
+ +9lOMdcWp62JMZiU1yzCw9op1RqdMNVnWaU0bf2kg5WYcUFvA05vidnkKE8uuuhY
+ n/EqynFP/jIvmJSEVulpfWpLPZKTOT9mHackjO3YgRpmcrEeAq+KR3CaSPNNB1Ha
+ wsPCretCErsbKkJGlqU/yO7/SXZ4dPJW1v32wH1WPkowZ1aQ==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrraargn4-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 12:52:32 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-93f5844e383so360443185a.1
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 04:52:32 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 12:52:09 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-93f33438950so387253385a.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 04:52:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793883151; x=1794487951; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=r8cbebLCAezKzqo21AD8WKBJcS2oxVy06oRDOWLIWgc=;
- b=kAFgTDBtebFwi+D1hAQAfnWFd6bQMv9C92f6EP0+kqDjw8UWG7JfYMaKyB6mjmqB1c
- 6GBG2OS4uOTQBkDaa0OrAyslSuQ9Yu3zd9B1XwCRy+Xexstw2uWJ9Xb5VVc5PSLSxGvk
- 9YZwG54Z/1F7r7TA9herAckIWjp83qVEuJ3NW1JVLKieSiXqJPg+ShNd7ytJonOT/RdQ
- oHvv8qRw3y/D/J7HcfE+UdNc3Uikr346SywMVrethR+taKGJzZXDviPrrg4z5R7r+Shy
- xTyCD0TGDxCzZU/yyjYClaehBjohQuQXRWhfTvp0e9BT/Yr3VYI4VuVPPkTBFFTtCzfV
- DAMQ==
+ d=oss.qualcomm.com; s=google; t=1793883129; x=1794487929; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=C4wyhq0QCfy+i3u8v5T5DXpWAtc9llSmeEyL5gk7RJs=;
+ b=Gj7ks2E0Xu0ISXIzkk7X54evZD2glXfSWM0Dva7qf7+E3Yn1jW6NDTiFu9ItCYhWDj
+ 65H0wZhEAV5HrVxFLhxuk1Dy7uSvcYx+yg7/Oe/NHq3+WEF/xM/qooo6JfRvzgUB3juw
+ 3dx2kYKV//E4cpqXUMUVRVXLmB1VcNgdW4hw/iY4wGzCwI+OmzrTIUvX/HsfrDPNJWXD
+ AOq+Tk0GVLZsN8pxyYpUAat+Ti36QCtXt0HP48lw4xVRAs7FbLAEZawjJw3nJwbtXYzr
+ oBJvm+DMWeFG1DGa/GsNlBWW2XoMMqxLR4LybR7LdIdBw34jFvclHU+mg25XlrWYgcUJ
+ RrLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793883151; x=1794487951;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=r8cbebLCAezKzqo21AD8WKBJcS2oxVy06oRDOWLIWgc=;
- b=B9r4F1UmL140lw5LFqEdlx9z6B/mWClnTswXFompO2oTQnMS66Mv6siSk93OcRX53o
- eosxGG3jf7rcpuEwIrhytbQX42BCCu1oN8SJU6J2wGHo2Tjxa1u+ScxSN0W8Ssji/R8v
- YFKUQ98PvPEwITMnAEQZ2KYMxi28kEPNTe0ohAMA4abyil119V/sE1kYseNJSczPJ5Ti
- pfhxPdP7D7GH971QFMy14UhdS8zkAGMZoxQW6TVwE5GC8ARMdyk4ZEDI9VWb2iMulxUL
- eYnb+h+uZln6cqxnVQpuq8Hhxul9OEwZA2fFhy/J//FEeTzQeRqqgX2HCtL2QaaJYqBW
- aK+Q==
+ d=1e100.net; s=20260707; t=1793883129; x=1794487929;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=C4wyhq0QCfy+i3u8v5T5DXpWAtc9llSmeEyL5gk7RJs=;
+ b=qZoo5rSbma66CLDXM2fpukQZbFy1e6R4I6jbHXGFNa8u0gyAu2fiJSp3Gnh4dCkOWU
+ 3chDg2ElUipUc8yB6Q8DdvPdNMvj1lvhTLBs2i6uQWqj+cEBQNuSxYKbIXwf5aG+IWqH
+ wo0jiB+/5fEsSYQRPv1ZWhjjIuOxTlzUmj1+95Wc7QlSouiEdJ4IuJoQRKENqRxfwUpE
+ LxQUKX5gxwke466C4I6iVeh30NfBq7e56MYBWm/AAOtvCzLhy7Xe0GPbSC3hqA9LMb7Z
+ 2Yiih8vQy7wx0hg1eC8V395tKTOAdA8SXHZiZ4DYSnlsMULg3RWhNGWknqqCUtTMVR4M
+ sGbQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwe95Ax5VZo0u7BBrb6/kKcY9Tj/alxqW/6SRNlLPtuiuVljHcE4HRclUAmtICoasTThqpzNPOpkQ==@nongnu.org
-X-Gm-Message-State: APuU4Z8lJwEaAuiex5v5p0cZtENIuR4xUH/rTq4RBZGRTbwLC8PmL1jc
- A/UW654RbMfeP88N7VDgYuz9eFPfMWqFoLlKWAV0n5yOJWWRRv58/Cnex3XB3tiI+LKzPHLVUgA
- H9q1JjizY3nE51xpcuK61LPX5bp1Cc9Q6xIvYwdZEKRdjMKLweZNMhaQ=
-X-Gm-Gg: AYBFou1k2i/+grCP/tl8oMrLTruVwBzGkwTRmYmVuKx9Z1cnjTzkQPLO7c6dyKI3pAw
- ni6MT96uiDDTmmsxIURF/gwu5guhSR1uZdTtMrYWsbThVghsoz87L33hQV1K9CEnpan2ei6UA6q
- 1HbjORdjgjw+Mq/U2moXMlZGvkBxYnvl+UAQ7fO1aL2zqyafU7VKgDaQhUCQp3hYCT7ArfH2myX
- tYmjKiuK47d10eTpx6gBXilxEHRnE70tqWUk/uL6ZcFCPiLdAuLq9uyx/h3dC58kzn88KTXo5Zq
- d4GChHbdoSiRO82Qf6Xfjw2BPmjILmT+MZ7V7xU32/zk2PPRb1hrrjbYnx+AAyKL2sOPy1BNj8z
- C9NajYgR66hqJ2TU67pIZRPu9eWIiZAnNkjYzJoac39VijUv9IT3F1/Sz8yPvPqpEG+gSH5bIyi
- Wg1LyyGkUswxS1Fexpf8+ZRGCfHTPVyg==
-X-Received: by 2002:a05:620a:3188:b0:93f:2ab9:728c with SMTP id
- af79cd13be357-94421758732mr3271152885a.71.1793883151350; 
- Thu, 05 Nov 2026 04:52:31 -0800 (PST)
-X-Received: by 2002:a05:620a:3188:b0:93f:2ab9:728c with SMTP id
- af79cd13be357-94421758732mr3271150585a.71.1793883150915; 
- Thu, 05 Nov 2026 04:52:30 -0800 (PST)
+ AKwUvBwn+x+RyiRCyGbljztHJ0B4+RJ3rzjECv9Yywxn+YWFiDwKDojihY85q3gyC7lpDshqGA/eKSIeEA==@nongnu.org
+X-Gm-Message-State: APuU4Z+rJ2zDB1nCJkx+FAfexiN0cYRiG4HCv+AG2wmgI6PuxmJv9VLA
+ kBoLoyjTyAGl7ZEO001NzpNFA2gl1Y8ZkVGFLKTtB2xZNSasuoTIcTrf8i4rMEpCM0UNB9WDBq5
+ 0uhXgSoFk8yVPC5cC24ry8EcxQwuUz6xPQ7qH//Ui5o/xQ+F5z7SjRPc=
+X-Gm-Gg: AYBFou1TFtyKygu1qMB7FpMekHAOjU0/JlRFihtCzko1O1G61c2x3i/q320kMg5xkbz
+ i1mxfBnjva+6A4MOPbcFNPi9LsEC5jqo6V/d2wY+QQSXHR8tZS1DmJzhpR7duHrlHYk76Qah8gR
+ TkF06rhbFaok0X+tqrUB85PyFL47W02IPf4oLPvwby6OgkEflSgoioN5j4ah0X2vI7PXMqLjkBs
+ nwlOqTnl6MS07/ZqOR1vl48UAsXlSclbNI3oltGDh/WV6sP/ic+oqcQ92ZKM4cfG8orkqg67Vgo
+ HbQh0sOIor/NaF4P6M6qeLeUzXsh3zxNXcqnqYGFkrpxWp4i4oC4Y5l8PwnNLSGqBhKGEm16YJ4
+ MASn50ATzT3nHrlVFEvkOaIno7P2Wd3YhvfHBD1ZcaCBcLolda7IrJkwPdOAQYsp4b17i/BLbqH
+ rbay1gYuRzjw1sGhSnRPZqhzmZuPeQcQ==
+X-Received: by 2002:a05:620a:2614:b0:93e:920c:bfcd with SMTP id
+ af79cd13be357-944217b0ae7mr3278777085a.57.1793883128954; 
+ Thu, 05 Nov 2026 04:52:08 -0800 (PST)
+X-Received: by 2002:a05:620a:2614:b0:93e:920c:bfcd with SMTP id
+ af79cd13be357-944217b0ae7mr3278772785a.57.1793883128276; 
+ Thu, 05 Nov 2026 04:52:08 -0800 (PST)
 Received: from localhost.localdomain (104.171.88.92.rev.sfr.net.
  [92.88.171.104]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6b55ac925c2sm1679124a12.34.2026.11.05.04.52.29
+ 4fb4d7f45d1cf-6b55ac57b9csm1738357a12.15.2026.11.05.04.52.05
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 05 Nov 2026 04:52:30 -0800 (PST)
+ Thu, 05 Nov 2026 04:52:07 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 02/17] tests/qtest/npcm7xx: Replace deprecated sprintf()
- with g_strdup_printf()
-Date: Thu,  5 Nov 2026 13:51:47 +0100
-Message-ID: <20261105125203.40320-3-philmd@oss.qualcomm.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH v2 00/17] buildsys: Replace some deprecated sprintf()
+Date: Thu,  5 Nov 2026 13:51:45 +0100
+Message-ID: <20261105125203.40320-1-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261105125203.40320-1-philmd@oss.qualcomm.com>
-References: <20261105125203.40320-1-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX3HA9FP29sCfI
- AonxT7Ga34pELne8vQQr2CNQ+/e5OewC3ylPgdZFfISiDm7NzO8Fd3fnj+ml823J3wTC+RKSWsV
- Ec6Cu/23m2xjBNs/yStwaizYWIYStrY=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfXzUZO26Gm6QN4
- bajHrp+QdkHPGncHcdYjgBTnd0onb2v7t87qiezJBK/mknkZX6zkogwvfHIU+ULwGCPIAbvIz3O
- W4kNfgArPBPuq0JTrm9JJVIir8SYPa68NIqbeAJXrO4zRqmIteOgTI6SyTnUPdO/sGsJlOaaK3P
- RxIbjWpbO00DVcgYsEMVO5Lny/gwEw3GtS5thokTYVmyZqZZXOsiaXL1uoXolllciprTpZ2/6Au
- +n2Yo2/1nU0LYxv0ik8Dzpm8LYbFBcQwuM74fuSvakHbXirS1MvlonktygDgX8jXv+VQgv65IGx
- Mdwj0pw1D97jBRiaUOpP94WFFlUsiKdus3A3agq9A0PD8WstE2YiChFDd66Ul3571HAezzSxCS8
- ONmppy2PO5uZiZxiSBIj0rRekCit0LXOvgLmReBed35bJVj3EEGJBqNiSYSwSraIylSblbZ/SF/
- e2aRoE0UT98OxDY4Yrg==
-X-Proofpoint-ORIG-GUID: 6coSt7LhS7WcmvDFixDLX6Ul1dw5EQK5
-X-Proofpoint-GUID: 6coSt7LhS7WcmvDFixDLX6Ul1dw5EQK5
-X-Authority-Analysis: v=2.4 cv=Y5JtIReN c=1 sm=1 tr=0 ts=6aec7c10 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=pBdeej1U2jlWEHTh2vTwjw==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX8gF5ddk5bXFj
+ CulPg2QjSQBx/QlBqdPBmBkrCcpv9m71450VwTDutZJyaxOysQTE+Z1WBztz3+Qpn5UuVHRhGop
+ Aw5snfk6SvCs/qDSKL44ReUTHIame0Y=
+X-Proofpoint-ORIG-GUID: BFL6rcV6jSvproxrk5XfAqLsBUstBX2r
+X-Authority-Analysis: v=2.4 cv=U54Hnuru c=1 sm=1 tr=0 ts=6aec7bfa cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=pBdeej1U2jlWEHTh2vTwjw==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=EUspDBNiAAAA:8 a=oaMw_JJsXAdkk1pLVOMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=IoWCM6iH3mJn3m4BftBB:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=Ym21472aoLdQ4Bz9H1MA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX4pTs3ifMULQx
+ OUE90cVAVO0JT1Hj6V3+Eh1tDb/2Sl9DsO0gS8TXpP2NyGHywJH4i1jRBCBoMlyMVh+JgSQiRMy
+ FH4fChOcEvka2NTVrwLbrKfjDiURrrdZ62VeyMTPcLuzPiVkEotFLkbTAXJH6pYu0Gch2/XtVyL
+ o/xjTKEkg5cCcRLA0YlEaUfaijzni7B48XUjcEaUrTl2Mg769n5+cNgtIbwURahXrwVWYCeniYv
+ y8rhj5JXuh95loOYmlWJi80zC6lqmH2Tt+Hz22e39NVD/PQvs5m59p9BqaV83UnLMeGuL9YjS28
+ 8Z9iyziBg/VrTwJ8eA/XMpIq6iDimYMr4+q+amRE0GkRDm08DS+o/9dDcQiAMxNXZTj/+wtNq1D
+ 6qTruBk67yDjcf4flLzL3kr4rdbOEvDHHPTyUxhxh+kbywgaaxlEGKvAaZ3If3hkBxUR/zxw4r7
+ 8OuyfISZa4v+Vb7mqmA==
+X-Proofpoint-GUID: BFL6rcV6jSvproxrk5XfAqLsBUstBX2r
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-05_03,2026-11-04_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 adultscore=0 impostorscore=0 priorityscore=1501 bulkscore=0
- suspectscore=0 clxscore=1015 lowpriorityscore=0 phishscore=0 spamscore=0
+ malwarescore=0 phishscore=0 bulkscore=0 priorityscore=1501 lowpriorityscore=0
+ adultscore=0 spamscore=0 clxscore=1015 suspectscore=0 impostorscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2610300000 definitions=main-2611050051
 Received-SPF: pass client-ip=205.220.168.131;
@@ -155,89 +146,69 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace sprintf() by safer g_strdup_printf() to fill the QOM path
-and property names. This silences when using Apple clang 17.0.0:
+v2:
+- Use g_strdup_printf (pm215)
+- More replacements
 
-  ../tests/qtest/npcm7xx_adc-test.c:140:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
-  ../tests/qtest/npcm7xx_adc-test.c:322:9: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
-  ../tests/qtest/npcm7xx_pwm-test.c:244:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
-  ../tests/qtest/npcm7xx_pwm-test.c:245:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
-  ../tests/qtest/npcm7xx_pwm-test.c:255:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
-  ../tests/qtest/npcm7xx_pwm-test.c:256:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
+Since some time now we get the build output cluttered with
+many deprecation warnings, it is becoming hard to notice the
+real ones. This series fixes few recurrent use by the
+--disable-tcg --enable-hvf build.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- tests/qtest/npcm7xx_adc-test.c |  8 ++++----
- tests/qtest/npcm7xx_pwm-test.c | 14 ++++----------
- 2 files changed, 8 insertions(+), 14 deletions(-)
+(Yes, VOF is not used on HVF x86/ARM64, I haven't
+ investigated why it is selected and built).
 
-diff --git a/tests/qtest/npcm7xx_adc-test.c b/tests/qtest/npcm7xx_adc-test.c
-index 8bc89b8a8b9a..85915d6f1243 100644
---- a/tests/qtest/npcm7xx_adc-test.c
-+++ b/tests/qtest/npcm7xx_adc-test.c
-@@ -135,9 +135,8 @@ static void adc_qom_set(QTestState *qts, const ADC *adc,
- static void adc_write_input(QTestState *qts, const ADC *adc,
-         uint32_t index, uint32_t value)
- {
--    char name[100];
-+    g_autofree char *name = g_strdup_printf("adci[%u]", index);
- 
--    sprintf(name, "adci[%u]", index);
-     adc_qom_set(qts, adc, name, value);
- }
- 
-@@ -316,10 +315,11 @@ static void test_calibrate(gconstpointer adc_p)
-             adc_calculate_output(R0_INPUT, iref),
-             adc_calculate_output(R1_INPUT, iref),
-         };
--        char buf[100];
-+        g_autofree char *buf = g_strdup_printf("-machine quanta-gsj"
-+                                               " -global npcm7xx-adc.iref=%u",
-+                                               iref);
-         QTestState *qts;
- 
--        sprintf(buf, "-machine quanta-gsj -global npcm7xx-adc.iref=%u", iref);
-         qts = qtest_init(buf);
- 
-         /* Check the converted value is correct using the calibration value. */
-diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
-index 052ea876621a..400d44f424e1 100644
---- a/tests/qtest/npcm7xx_pwm-test.c
-+++ b/tests/qtest/npcm7xx_pwm-test.c
-@@ -238,22 +238,16 @@ static uint64_t pwm_qom_get(QTestState *qts, const char *path, const char *name)
- 
- static uint64_t pwm_get_freq(QTestState *qts, int module_index, int pwm_index)
- {
--    char path[100];
--    char name[100];
--
--    sprintf(path, "/machine/soc/pwm[%d]", module_index);
--    sprintf(name, "freq[%d]", pwm_index);
-+    g_autofree char *path = g_strdup_printf("/machine/soc/pwm[%d]", module_index);
-+    g_autofree char *name = g_strdup_printf("freq[%d]", pwm_index);
- 
-     return pwm_qom_get(qts, path, name);
- }
- 
- static uint64_t pwm_get_duty(QTestState *qts, int module_index, int pwm_index)
- {
--    char path[100];
--    char name[100];
--
--    sprintf(path, "/machine/soc/pwm[%d]", module_index);
--    sprintf(name, "duty[%d]", pwm_index);
-+    g_autofree char *path = g_strdup_printf("/machine/soc/pwm[%d]", module_index);
-+    g_autofree char *name = g_strdup_printf("duty[%d]", pwm_index);
- 
-     return pwm_qom_get(qts, path, name);
- }
+Philippe Mathieu-Daudé (17):
+  tests/qtest: Use qemu_hexdump_to_buffer() in qtest_memwrite()
+  tests/qtest/npcm7xx: Replace deprecated sprintf() with
+    g_strdup_printf()
+  tests/unit/qobject: Replace deprecated sprintf() with
+    g_strdup_printf()
+  tests/unit/visitor: Replace deprecated sprintf() with snprintf()
+  hw/ppc/vof: Replace deprecated sprintf() with snprintf()
+  hw/usb/hcd-ohci: Replace deprecated sprintf() with snprintf()
+  hw/riscv/platform-ref: Replace deprecated sprintf with g_strdup_printf
+  hw/vfio/pci: Replace deprecated sprintf() with g_strdup_printf()
+  hw/ppc/spapr: Replace deprecated sprintf() with g_strdup_printf()
+  hw/net/eepro100: Replace deprecated sprintf() with snprintf()
+  hw/net/rocker: Replace deprecated sprintf() with snprintf()
+  hw/scsi: Replace deprecated sprintf() with snprintf()
+  target/xtensa: Replace deprecated sprintf() with snprintf()
+  target/m68k: Replace deprecated sprintf() with snprintf()
+  target/rx: Replace deprecated sprintf() with snprintf()
+  libdecnumber: Replace deprecated sprintf() with snprintf()
+  qga/vss-win32: Replace deprecated sprintf() by StrCatBuffA()
+
+ hw/net/eepro100.c                        |  2 +-
+ hw/net/rocker/rocker.c                   | 24 ++++++------
+ hw/ppc/spapr.c                           |  3 +-
+ hw/ppc/vof.c                             |  2 +-
+ hw/riscv/server_platform_ref.c           | 11 +++---
+ hw/scsi/scsi-generic.c                   |  2 +-
+ hw/usb/hcd-ohci.c                        |  2 +-
+ hw/vfio/pci.c                            |  7 ++--
+ libdecnumber/dpd/decimal128.c            |  4 +-
+ libdecnumber/dpd/decimal32.c             |  4 +-
+ libdecnumber/dpd/decimal64.c             |  4 +-
+ target/m68k/translate.c                  |  6 +--
+ target/rx/disas.c                        |  2 +-
+ target/xtensa/xtensa-isa.c               | 50 +++++++++++++++---------
+ tests/qtest/libqtest.c                   |  6 +--
+ tests/qtest/npcm7xx_adc-test.c           |  8 ++--
+ tests/qtest/npcm7xx_pwm-test.c           | 14 ++-----
+ tests/unit/test-qobject-input-visitor.c  |  4 +-
+ tests/unit/test-qobject-output-visitor.c |  3 +-
+ tests/unit/test-visitor-serialization.c  | 21 ++++++----
+ qga/vss-win32/install.cpp                | 17 +++++---
+ 21 files changed, 102 insertions(+), 94 deletions(-)
+
 -- 
 2.55.0
 

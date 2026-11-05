@@ -1,96 +1,149 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3102D606A331
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:43:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE627606D808
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:52:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=fnQrttlI
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=pIpaCi1t;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=kAFgTDBt
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOwo1-0000JE-PV; Thu, 05 Nov 2026 07:43:01 -0500
+	id 1xOwxK-0002oc-Vx; Thu, 05 Nov 2026 07:52:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xOwo0-0000IG-2S
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:43:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xOwxH-0002nl-O0
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:35 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xOwnw-0004Zl-Q6
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:42:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793882576;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MHwGtuZGSoSmZ44KiRLicjxswY71YMk8SxPY/4EOfwE=;
- b=fnQrttlI8/gxiYuqxpLNrWrtT223CzxcpM2G6Hs0b9x/J1dWE76SVZDeX9MBzq4o3GRF29
- ygrt5bsatQCnl7DwD2nhmthdTxYp0+/qItCx2EE/mH3aDixkFpSdyR5W6vWt+gbVRqzS0O
- QFPTGBIaIMNybDwXmeeras9RgJ2lerI=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-587-V12lDsDtPFG-llF3X8AsuA-1; Thu,
- 05 Nov 2026 07:42:51 -0500
-X-MC-Unique: V12lDsDtPFG-llF3X8AsuA-1
-X-Mimecast-MFC-AGG-ID: V12lDsDtPFG-llF3X8AsuA_1793882568
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BDC61195607C; Thu,  5 Nov 2026 12:42:47 +0000 (UTC)
-Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BA2EF1848D40; Thu,  5 Nov 2026 12:42:42 +0000 (UTC)
-Date: Thu, 5 Nov 2026 12:42:39 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Yonggang Luo <luoyonggang@gmail.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Song Gao <17746591750@163.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Philippe Mathieu-Daude <philmd@mailo.com>,
- David Hildenbrand <david@kernel.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Fam Zheng <fam@euphon.net>, Max Filippov <jcmvbkbc@gmail.com>,
- qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eric Farman <farman@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: Re: [PATCH v2 06/12] target/arm: register separate max-v8 CPU types
- for arm and aarch64
-Message-ID: <aux5vwTnbV3cXcFX@redhat.com>
-References: <20261031164009.2048-1-luoyonggang@gmail.com>
- <20261031164009.2048-7-luoyonggang@gmail.com>
- <auxgsFyzv-5UiyNk@redhat.com>
- <CAE2XoE9J++-BHL5BDx4_jxuto+xwVmvFS3F-hE9gLbgfUmaFdA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xOwxF-0005hd-SP
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:35 -0500
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6A5A1l6T1417489
+ for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 12:52:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ r8cbebLCAezKzqo21AD8WKBJcS2oxVy06oRDOWLIWgc=; b=pIpaCi1tNbSWPuiB
+ +CEoDQRJW9+uRkaGLdqnNXFYkEoBXaYZsRH6Vp9SbbuIilus0oPqE//ZpIQDcwSA
+ GiGmXWpubOFYYSvqtSc3a/NPVzIQDs3VFQ8PePgFv/dB7TIwcdVY8q/K7tod63Mj
+ 33VDh3XvF0cracHMl7QIV2dyH+3j/SFf8U99yHk4AeQW6e7R6d2r84d8pyArc2Gk
+ VFUip1C6uY5ztstDBAj4ovm6sima3s/xl2OS3GPfSL2c509vlsaDd0A6IRNR4TxY
+ eFBdT54zuhLCIdbyzIHxbDyy9QaRGj5sm9ABakykvYsR0uqIi7qaa9yr05DLxyuS
+ TASKpg==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrqpd0pa1-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 12:52:32 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-93f5844e383so360443185a.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 04:52:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1793883151; x=1794487951; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=r8cbebLCAezKzqo21AD8WKBJcS2oxVy06oRDOWLIWgc=;
+ b=kAFgTDBtebFwi+D1hAQAfnWFd6bQMv9C92f6EP0+kqDjw8UWG7JfYMaKyB6mjmqB1c
+ 6GBG2OS4uOTQBkDaa0OrAyslSuQ9Yu3zd9B1XwCRy+Xexstw2uWJ9Xb5VVc5PSLSxGvk
+ 9YZwG54Z/1F7r7TA9herAckIWjp83qVEuJ3NW1JVLKieSiXqJPg+ShNd7ytJonOT/RdQ
+ oHvv8qRw3y/D/J7HcfE+UdNc3Uikr346SywMVrethR+taKGJzZXDviPrrg4z5R7r+Shy
+ xTyCD0TGDxCzZU/yyjYClaehBjohQuQXRWhfTvp0e9BT/Yr3VYI4VuVPPkTBFFTtCzfV
+ DAMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793883151; x=1794487951;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=r8cbebLCAezKzqo21AD8WKBJcS2oxVy06oRDOWLIWgc=;
+ b=B9r4F1UmL140lw5LFqEdlx9z6B/mWClnTswXFompO2oTQnMS66Mv6siSk93OcRX53o
+ eosxGG3jf7rcpuEwIrhytbQX42BCCu1oN8SJU6J2wGHo2Tjxa1u+ScxSN0W8Ssji/R8v
+ YFKUQ98PvPEwITMnAEQZ2KYMxi28kEPNTe0ohAMA4abyil119V/sE1kYseNJSczPJ5Ti
+ pfhxPdP7D7GH971QFMy14UhdS8zkAGMZoxQW6TVwE5GC8ARMdyk4ZEDI9VWb2iMulxUL
+ eYnb+h+uZln6cqxnVQpuq8Hhxul9OEwZA2fFhy/J//FEeTzQeRqqgX2HCtL2QaaJYqBW
+ aK+Q==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwe95Ax5VZo0u7BBrb6/kKcY9Tj/alxqW/6SRNlLPtuiuVljHcE4HRclUAmtICoasTThqpzNPOpkQ==@nongnu.org
+X-Gm-Message-State: APuU4Z8lJwEaAuiex5v5p0cZtENIuR4xUH/rTq4RBZGRTbwLC8PmL1jc
+ A/UW654RbMfeP88N7VDgYuz9eFPfMWqFoLlKWAV0n5yOJWWRRv58/Cnex3XB3tiI+LKzPHLVUgA
+ H9q1JjizY3nE51xpcuK61LPX5bp1Cc9Q6xIvYwdZEKRdjMKLweZNMhaQ=
+X-Gm-Gg: AYBFou1k2i/+grCP/tl8oMrLTruVwBzGkwTRmYmVuKx9Z1cnjTzkQPLO7c6dyKI3pAw
+ ni6MT96uiDDTmmsxIURF/gwu5guhSR1uZdTtMrYWsbThVghsoz87L33hQV1K9CEnpan2ei6UA6q
+ 1HbjORdjgjw+Mq/U2moXMlZGvkBxYnvl+UAQ7fO1aL2zqyafU7VKgDaQhUCQp3hYCT7ArfH2myX
+ tYmjKiuK47d10eTpx6gBXilxEHRnE70tqWUk/uL6ZcFCPiLdAuLq9uyx/h3dC58kzn88KTXo5Zq
+ d4GChHbdoSiRO82Qf6Xfjw2BPmjILmT+MZ7V7xU32/zk2PPRb1hrrjbYnx+AAyKL2sOPy1BNj8z
+ C9NajYgR66hqJ2TU67pIZRPu9eWIiZAnNkjYzJoac39VijUv9IT3F1/Sz8yPvPqpEG+gSH5bIyi
+ Wg1LyyGkUswxS1Fexpf8+ZRGCfHTPVyg==
+X-Received: by 2002:a05:620a:3188:b0:93f:2ab9:728c with SMTP id
+ af79cd13be357-94421758732mr3271152885a.71.1793883151350; 
+ Thu, 05 Nov 2026 04:52:31 -0800 (PST)
+X-Received: by 2002:a05:620a:3188:b0:93f:2ab9:728c with SMTP id
+ af79cd13be357-94421758732mr3271150585a.71.1793883150915; 
+ Thu, 05 Nov 2026 04:52:30 -0800 (PST)
+Received: from localhost.localdomain (104.171.88.92.rev.sfr.net.
+ [92.88.171.104]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6b55ac925c2sm1679124a12.34.2026.11.05.04.52.29
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 05 Nov 2026 04:52:30 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 02/17] tests/qtest/npcm7xx: Replace deprecated sprintf()
+ with g_strdup_printf()
+Date: Thu,  5 Nov 2026 13:51:47 +0100
+Message-ID: <20261105125203.40320-3-philmd@oss.qualcomm.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261105125203.40320-1-philmd@oss.qualcomm.com>
+References: <20261105125203.40320-1-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <CAE2XoE9J++-BHL5BDx4_jxuto+xwVmvFS3F-hE9gLbgfUmaFdA@mail.gmail.com>
-User-Agent: Mutt/2.4.3 (2026-10-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: Gn2LMjpSMqMVPmlrY2EBYdbEgdVXGNKw4Y6IiU3v3yE_1793882568
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX3HA9FP29sCfI
+ AonxT7Ga34pELne8vQQr2CNQ+/e5OewC3ylPgdZFfISiDm7NzO8Fd3fnj+ml823J3wTC+RKSWsV
+ Ec6Cu/23m2xjBNs/yStwaizYWIYStrY=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfXzUZO26Gm6QN4
+ bajHrp+QdkHPGncHcdYjgBTnd0onb2v7t87qiezJBK/mknkZX6zkogwvfHIU+ULwGCPIAbvIz3O
+ W4kNfgArPBPuq0JTrm9JJVIir8SYPa68NIqbeAJXrO4zRqmIteOgTI6SyTnUPdO/sGsJlOaaK3P
+ RxIbjWpbO00DVcgYsEMVO5Lny/gwEw3GtS5thokTYVmyZqZZXOsiaXL1uoXolllciprTpZ2/6Au
+ +n2Yo2/1nU0LYxv0ik8Dzpm8LYbFBcQwuM74fuSvakHbXirS1MvlonktygDgX8jXv+VQgv65IGx
+ Mdwj0pw1D97jBRiaUOpP94WFFlUsiKdus3A3agq9A0PD8WstE2YiChFDd66Ul3571HAezzSxCS8
+ ONmppy2PO5uZiZxiSBIj0rRekCit0LXOvgLmReBed35bJVj3EEGJBqNiSYSwSraIylSblbZ/SF/
+ e2aRoE0UT98OxDY4Yrg==
+X-Proofpoint-ORIG-GUID: 6coSt7LhS7WcmvDFixDLX6Ul1dw5EQK5
+X-Proofpoint-GUID: 6coSt7LhS7WcmvDFixDLX6Ul1dw5EQK5
+X-Authority-Analysis: v=2.4 cv=Y5JtIReN c=1 sm=1 tr=0 ts=6aec7c10 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=pBdeej1U2jlWEHTh2vTwjw==:17
+ a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=EUspDBNiAAAA:8 a=oaMw_JJsXAdkk1pLVOMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=IoWCM6iH3mJn3m4BftBB:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-05_03,2026-11-04_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 adultscore=0 impostorscore=0 priorityscore=1501 bulkscore=0
+ suspectscore=0 clxscore=1015 lowpriorityscore=0 phishscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610300000 definitions=main-2611050051
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,138 +154,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 07:14:35PM +0800, Yonggang Luo wrote:
-> On Thu, Nov 5, 2026 at 6:55 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
-> >
-> > On Sun, Nov 01, 2026 at 12:40:01AM +0800, Yonggang Luo wrote:
-> > > max-v8 was one TypeInfo whose instance initializer was chosen from the
-> > > selected target at registration. Register both initializers, and let
-> > > target_arm() and target_aarch64() select which type is available.
-> > >
-> > > Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-> > > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > > ---
-> > >  target/arm/cpu.c            |  1 +
-> > >  target/arm/cpu.h            |  1 +
-> > >  target/arm/tcg/cpu-max-v8.c | 16 ++++++++++++----
-> > >  3 files changed, 14 insertions(+), 4 deletions(-)
-> > >
-> > > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > > index 510fc9eeb3b..6eb55242980 100644
-> > > --- a/target/arm/cpu.c
-> > > +++ b/target/arm/cpu.c
-> > > @@ -2695,6 +2695,7 @@ void arm_cpu_register(const ARMCPUInfo *info)
-> > >          .instance_init = arm_cpu_instance_init,
-> > >          .class_init = info->class_init ?: cpu_register_class_init,
-> > >          .class_data = info,
-> > > +        .is_available = info->is_available,
-> > >      };
-> > >
-> > >      type_info.name = g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
-> > > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > > index add993ef101..3240a8633ee 100644
-> > > --- a/target/arm/cpu.h
-> > > +++ b/target/arm/cpu.h
-> > > @@ -1203,6 +1203,7 @@ typedef struct ARMCPUInfo {
-> > >      const char *deprecation_note;
-> > >      void (*initfn)(Object *obj);
-> > >      void (*class_init)(ObjectClass *oc, const void *data);
-> > > +    bool (*is_available)(void);
-> > >  } ARMCPUInfo;
-> > >
-> > >  /**
-> > > diff --git a/target/arm/tcg/cpu-max-v8.c b/target/arm/tcg/cpu-max-v8.c
-> > > index 65f851f2006..e819d07e6ce 100644
-> > > --- a/target/arm/tcg/cpu-max-v8.c
-> > > +++ b/target/arm/tcg/cpu-max-v8.c
-> > > @@ -121,10 +121,18 @@ void aarch32_max_v8_tcg_initfn(Object *obj)
-> > >
-> > >  static void cpu_max_v8_register_type(void)
-> > >  {
-> > > -    static const ARMCPUInfo max_v8[2] = {
-> > > -        { .name = "max-v8", .initfn = aarch32_max_v8_tcg_initfn },
-> > > -        { .name = "max-v8", .initfn = aarch64_max_v8_tcg_initfn },
-> > > +    static const ARMCPUInfo max_v8_aarch32 = {
-> > > +        .name = "max-v8",
-> > > +        .initfn = aarch32_max_v8_tcg_initfn,
-> > > +        .is_available = target_arm,
-> > >      };
-> > > -    arm_cpu_register(&max_v8[target_aarch64()]);
-> > > +    static const ARMCPUInfo max_v8_aarch64 = {
-> > > +        .name = "max-v8",
-> > > +        .initfn = aarch64_max_v8_tcg_initfn,
-> > > +        .is_available = target_aarch64,
-> > > +    };
-> > > +
-> > > +    arm_cpu_register(&max_v8_aarch32);
-> > > +    arm_cpu_register(&max_v8_aarch64);
-> > >  }
-> > >  type_init(cpu_max_v8_register_type)
-> >
-> > Conceptually these are two separate CPUs one 32-bit featureset
-> > and one 64-bit featureset, but both given the same name. The
-> > current code registers them only in the respective arm and aarch64
-> > target binaries, but this CPU is an oddity overall.
-> 
-> This is the one I did before
-> https://lore.kernel.org/qemu-devel/20261013195606.152-1-luoyonggang@gmail.com/
->
-> target/arm: defer max-v8 initializer selection until CPU creation
-> but rejected, and I think it's fine.
+Replace sprintf() by safer g_strdup_printf() to fill the QOM path
+and property names. This silences when using Apple clang 17.0.0:
 
-So that essentially matches the historical semantics where one
-CPU class magically changes its behaviour based on what target
-is running.  So in that sense, it works, and is no worse than
-the semantics we've had for 'max' models forever.
+  ../tests/qtest/npcm7xx_adc-test.c:140:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
+  ../tests/qtest/npcm7xx_adc-test.c:322:9: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
+  ../tests/qtest/npcm7xx_pwm-test.c:244:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
+  ../tests/qtest/npcm7xx_pwm-test.c:245:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
+  ../tests/qtest/npcm7xx_pwm-test.c:255:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
+  ../tests/qtest/npcm7xx_pwm-test.c:256:5: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
 
-Splitting into 2 distinct types is worthwhile if we want to
-make it possible for the aarch64 emulator to support a runtime
-choice of both 32-bit and 64-bit "max" models.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+---
+ tests/qtest/npcm7xx_adc-test.c |  8 ++++----
+ tests/qtest/npcm7xx_pwm-test.c | 14 ++++----------
+ 2 files changed, 8 insertions(+), 14 deletions(-)
 
-This patch doesn't allow that though, as it is creating two
-classes with the same name and filtering which is registered.
-If we don't intend to allow 64-bit target to ever use a 32-bit
-'max' CPU, then your original patch is better IMHO.
-
-> > More generally the aarch64 emulator includes all the 32-bit CPUs
-> > that the arm emulator includes, and just adds extra 64-bit CPUs.
-> > IOW, excluding the 32-bit max-v8 CPU is a special case - if it
-> > were not for the clashing name, it would be included like all the
-> > other 32-bit CPUs.
-> >
-> > Thus rather than using is_available to continue to exclude it,
-> > we must instead resolve the naming problem, such that both
-> > models can be included concurrently.
-> 
-> I have already implemented the TypeBucket over targets/arch_mask that works
-> properly. That same QOM name will have multiple TypeImpl.
-
-I'm not sure what you mean by TypeBucket, but my general thought is that
-at the QOM class/type naming level everything must always be unique,
-such that we have a single object modelk across QEMU.
-
-Any ambiguitity & its resolution (if needed) should live outside core
-QOM typework, such as with aliases in machines/CPUs.
-
-If we have a common pattern for aliases, perhaps we could create a
-standard QOM Interface for resolving aliases.
-
-
-With regards,
-Daniel
+diff --git a/tests/qtest/npcm7xx_adc-test.c b/tests/qtest/npcm7xx_adc-test.c
+index 8bc89b8a8b9a..85915d6f1243 100644
+--- a/tests/qtest/npcm7xx_adc-test.c
++++ b/tests/qtest/npcm7xx_adc-test.c
+@@ -135,9 +135,8 @@ static void adc_qom_set(QTestState *qts, const ADC *adc,
+ static void adc_write_input(QTestState *qts, const ADC *adc,
+         uint32_t index, uint32_t value)
+ {
+-    char name[100];
++    g_autofree char *name = g_strdup_printf("adci[%u]", index);
+ 
+-    sprintf(name, "adci[%u]", index);
+     adc_qom_set(qts, adc, name, value);
+ }
+ 
+@@ -316,10 +315,11 @@ static void test_calibrate(gconstpointer adc_p)
+             adc_calculate_output(R0_INPUT, iref),
+             adc_calculate_output(R1_INPUT, iref),
+         };
+-        char buf[100];
++        g_autofree char *buf = g_strdup_printf("-machine quanta-gsj"
++                                               " -global npcm7xx-adc.iref=%u",
++                                               iref);
+         QTestState *qts;
+ 
+-        sprintf(buf, "-machine quanta-gsj -global npcm7xx-adc.iref=%u", iref);
+         qts = qtest_init(buf);
+ 
+         /* Check the converted value is correct using the calibration value. */
+diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
+index 052ea876621a..400d44f424e1 100644
+--- a/tests/qtest/npcm7xx_pwm-test.c
++++ b/tests/qtest/npcm7xx_pwm-test.c
+@@ -238,22 +238,16 @@ static uint64_t pwm_qom_get(QTestState *qts, const char *path, const char *name)
+ 
+ static uint64_t pwm_get_freq(QTestState *qts, int module_index, int pwm_index)
+ {
+-    char path[100];
+-    char name[100];
+-
+-    sprintf(path, "/machine/soc/pwm[%d]", module_index);
+-    sprintf(name, "freq[%d]", pwm_index);
++    g_autofree char *path = g_strdup_printf("/machine/soc/pwm[%d]", module_index);
++    g_autofree char *name = g_strdup_printf("freq[%d]", pwm_index);
+ 
+     return pwm_qom_get(qts, path, name);
+ }
+ 
+ static uint64_t pwm_get_duty(QTestState *qts, int module_index, int pwm_index)
+ {
+-    char path[100];
+-    char name[100];
+-
+-    sprintf(path, "/machine/soc/pwm[%d]", module_index);
+-    sprintf(name, "duty[%d]", pwm_index);
++    g_autofree char *path = g_strdup_printf("/machine/soc/pwm[%d]", module_index);
++    g_autofree char *name = g_strdup_printf("duty[%d]", pwm_index);
+ 
+     return pwm_qom_get(qts, path, name);
+ }
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.55.0
 
 

@@ -1,104 +1,109 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C34A3606A33C
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:54:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8899606A335
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:54:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=ov+gPuPr;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=kuJJ32a1
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=NB+TRIES;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=HcvMEp1E
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOwxT-0002qk-4W; Thu, 05 Nov 2026 07:52:47 -0500
+	id 1xOwyK-0003VT-Fp; Thu, 05 Nov 2026 07:53:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xOwxR-0002pj-F7
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:45 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1xOwyG-0003OH-42
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:53:36 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xOwxP-0005iT-VP
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:45 -0500
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ id 1xOwyE-0005mm-EM
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:53:35 -0500
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A59tJFH082990
- for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 12:52:42 GMT
+ 6A5B3Lh23193515
+ for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 12:53:23 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 5UXcNGmS5KbYbQV9waV7/SQYrXFpJcsPAVVikvbV08U=; b=ov+gPuPrY/0aU1/c
- kRv+mD8LbYScbG5uGUOUkS8Zqb2fSJuldOAMMgskFu7HHfnBBpMQWG3yP7E6u92m
- 2hVeOvhKmtwd607y+V86CnjmhpMzNHN1zMKI6L0/ynxb/gv13GdRr44kQqpufZqv
- avIu3VAh/U1Ev/SnBw6LWZGPtXQpIbErZhQ6FBrJYt+c0DtO/LssUzWcVRN4ua1P
- R7i7UcpEiijUTKg97no6uwURnoX1tb9hfxNg6XmKunW3ydSM2feHazYZQJ8N1Q16
- 2Sin89bwmsBw1+AMIAPow9uJdC/1XOafy4JNyViKmV9fjhUXe6qrag1KbdFRRB85
- zFfUcQ==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrq1p0ut8-1
+ 7oSR+J5qW1aMzh2dYDYU1Jy0t1xB9T5XHm0AYD77RFU=; b=NB+TRIESuEE3GoEg
+ F2YUNZRB/dF7bb5HIQRuRdKwOn+AfUi7Qi4QP1+F1xYh1UxF+qaCA6LFup42+8m+
+ TUbAzVIOQekb1To5WQGiiI9chGZTJpxtOwxETp0BNhPfNbLNxU8hYjKhT5KrRaMz
+ fBhdnUZ+9w5qF0eJ4gsCEZHDlHxCHNoF6czc/A0asZ/WFeIdg8Vp5WOZF3TtRNjo
+ CirFXT26OxhMD9vTCADRhOZ1hTMgj4nhf/fbNAimQFKYCU3Jh09splE8ONMz6efj
+ FGAzT9y3V9l/zMcxfEaPIxrXRS+86D6rnSQRhUbPNbIyzYz/O26/mCf37nL3JANh
+ pEA2oQ==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrrkdres2-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 12:52:42 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-9440b27c1feso387265685a.2
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 04:52:42 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 12:53:23 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-93cb93c874bso127131385a.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 04:53:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793883162; x=1794487962; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1793883202; x=1794488002; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=5UXcNGmS5KbYbQV9waV7/SQYrXFpJcsPAVVikvbV08U=;
- b=kuJJ32a1SluOhP28z/b3aomxlmUXf1XA/uXE2J8pL06Ah9n0eD8cjDKgWXaDu6NWPg
- dwYKRoOZRHRkVfYWvQayJm9ZoLy9mrDglvn+Jxd6yzJ7nbNbZRtdXJ0GY3h5R+KJziVJ
- ltN7NOlr4hFhguhhCzifOcHVR7kjOVV8t61Ts3mTtVUE7t8xVO0Ot1ciN8wzFYUidsy2
- JUqifrXD9jyuyOgcr5yOvshlFg7mhjhpJb6e8ImR11qZHZF/HMPk/pF9vt2csyKwHJig
- 4vdM09Z6IH2pamWFj85vIZs+yL1KxU4ydtvvjhJ7/GHj3SjNepO/9a1HmPccEmIykQEM
- n6OA==
+ bh=7oSR+J5qW1aMzh2dYDYU1Jy0t1xB9T5XHm0AYD77RFU=;
+ b=HcvMEp1E39W1+d9KseCl5goNrRRzBtN6XUiy17WSWZtiD54fD8YKfIh8mqKYUCtp0z
+ rT64QrdTdTzICajcqYLaqJ8iOWwAT0X4nT8c8qlOkPTxFbQRse6jYgFTWs/ZbzYzgHWt
+ E+wweQiClKKkx877KHh4Ybz6VtZzKjCbI5Wu2pm1/br0B+yMxUzcvcSTDKph59+plRAc
+ GtanKzfgMLBLp/HW62MHcihRAFgtszrKii28MGoaQhCxKb2uM2dX+RGT/oqSEUXG5mie
+ ppO2QBmnzilP4AiGSqGEhk2XOr2ON935/3Plwkhc9v7KVXfVE2aJVUoTnHl1kqwQFYmu
+ 7wIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793883162; x=1794487962;
+ d=1e100.net; s=20260707; t=1793883202; x=1794488002;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=5UXcNGmS5KbYbQV9waV7/SQYrXFpJcsPAVVikvbV08U=;
- b=EKREhB5RBP7vdmJEzr2qxzJcCr1PKvXVJ5GI4qPceOKFvleWTRHQI45HakMkvnLZ1c
- 486qU2VIU0d9GDBTVJG0o2HWJhafQbkaxofINazaiA1//vGoORDde0HhmwChOF8qTvWT
- vLS6frax9Ve2YRmZSAdI89X1RdEkgK8IbBYhprPTYbDbxO5o1kLm9hrFB0ouHuzr7UK6
- JzgPZApYQUX7EvNg9elCT70JbY+B7iUw/Mq2BKJaJjJPk/Zn0lyF34dSisyoVJkZlPPK
- GDk6uIUJE3wUr1HX30uMBzk08iETXcjDn4H7bXQW8fRpBVCNdCVwtykq8pzNj3zQZsGL
- afDQ==
+ bh=7oSR+J5qW1aMzh2dYDYU1Jy0t1xB9T5XHm0AYD77RFU=;
+ b=oMsUVV/x8C61gm6wH9wf1VDHu4vRp9nVqL/tzsHvUhKwMOBvyMMNoL8Eak5WSRNqVV
+ Fna0iG3qKXz64BpNT+r/5XQFR/i66svdpXezA/WZUkVCFjds/U442jzfDI8+1+9RjMWN
+ VQpKHQVJa4oW1xFrse3aiOeEakLxuW5yfArro2OKvglgi+oovLcVrnCPCv8hhP0P/Ec6
+ 2jBe/N9j5cb6edYzMtHT/nNd2tvZ/eCAt6B51XXzFLUrS4/qIZbJ54vOoIqbSdERRivC
+ pFo/NdT+xxtzCzVh0EFTII3wODTlV2ZHlWVMugsfqlICYB0JOv0dW1Jce7s1WfsKpOdX
+ ffeg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzcNLLSPzxksJyLI9yHRkdXyJtMGqa83SxfObCrsmL9rAVHIVZ1vleHheDwx/qq09RYY2DDZ8avrA==@nongnu.org
-X-Gm-Message-State: APuU4Z8uMxuZ8IckR0BefB63pFJDx9bgn01fPLp7i2gLEDnbchPqVjTr
- nFEHgMPFKTAs47Ih8cR8yNIvaa41JvZTFmH/60s2pxIeNezpfnjTTDAbhuR7jNqxs5nym1g8SIE
- dy4eVnNgmIC15T0kbNXDUQb36M5MBh/9lt0oZXncL4u16oaiMdJKbYR4=
-X-Gm-Gg: AYBFou1ZQ9fbgGEYY5wAdm+3bYzV9UYJ+n90UDOnr0E2QlU/ec5pwH9CYkI0+jWb+4+
- jxFHNSGeVldWhHfEOq5Q4z4FcTIJmenUxS+DuDBBs2my0yT84zO+q7/ykQX7OlZ1vLpgrBFYNWs
- PBJdZA5reOYWaJD1UCmoHBzi3BetiHHBZxI+NhfGshm/w8JP2wvzL5JQ7kbkIudLze/eR0RLTFA
- OG7f4l1P0mVvRDy30WwM/LuBcchNSfH45AtW45gmzF3mnqxjlvFOwc02y8HzKSXwccyhgOhqIKt
- q9HK4ZeTPIpcYjDqZIaFJEx5CS4/6VxtTqnBRkzD0n7pbVi+w6sBkOvtRF1eHgbsFrUl03Aij2N
- gDVoBz4J7PvUzW04h6jufSF5+lq39LohdKD9sOSm+4ySxSIzBtxkQzLifUZ1IoK8A6pZ2+8ubql
- JaMM9+A1Z/uPB6jgB/RIr2j+X1KH6sDQ==
-X-Received: by 2002:a05:620a:618e:b0:93c:6e1d:96b4 with SMTP id
- af79cd13be357-944217b4de9mr2907608185a.62.1793883161875; 
- Thu, 05 Nov 2026 04:52:41 -0800 (PST)
-X-Received: by 2002:a05:620a:618e:b0:93c:6e1d:96b4 with SMTP id
- af79cd13be357-944217b4de9mr2907605285a.62.1793883161374; 
- Thu, 05 Nov 2026 04:52:41 -0800 (PST)
+ AKwUvBwGWhhyy2OnYL+fegsQTDDkmOB0sfMNezq8v5U7zZ9gKL3JT8ztaLNTWRfb545whdJvT4X7WkkHFA==@nongnu.org
+X-Gm-Message-State: APuU4Z+NtISY1ZVJSR0NNvYn8L6aSrOSoh0Vc5UPdSzuKm4tPPeWUNVv
+ I59OkANf5gmXjIFONBPdtaFhhaXH5tQA5AYpMYvRg7KSk1YRyL6hZahYZc1Qznl9+P8gFqZ3Hic
+ lG264InS8uBZcYirYB4451AIiOleE5VNlliXW/nUr5qxJd0ZbsG/EKKE=
+X-Gm-Gg: AYBFou17DAAVmFYBk+ig8a/USTKzSmiMqp4ZQHDCZCB50x5uYqa+IUfnQWWSaPUO0nt
+ DxBTPDz/w34i5Yytvj/+rDq9iFsCHp6KQrd4W75mC7ggZFF4sd4ez/M2Twd60DMu348bKntnG8u
+ LY5Ip89Zee7Cdt3MWoGCB/4PquzyjENWWPdmUwwiNWrYSqwVK2YI8AiVAI6P1aoJjfCLVTxXDII
+ BDGwGn71thY4gk2EpNFEsfuz6BMCNQIOKOUb7Pbbw2RfcVDmJTHrr5NITUg7GNcjjYWldGJ41Od
+ AUoB/ZzwAm96AsKIK5+aJNNKLvImO5dj58N96A16Uq7H0s600WZ3rbT8TNrFDwNDHZVkY2vTWZn
+ 5m2uRPRm6uHe4SZIk6mFZUyiwxzwqk2rwPaoGl0K9GoDQ8hGnVReWku69T2aM5ctp6MzghIJEAb
+ 4g9N9XE2pGP+aYRdR1bfv6Y/zq/9OkXA==
+X-Received: by 2002:a05:620a:1d06:b0:93c:5952:5765 with SMTP id
+ af79cd13be357-945e1593c89mr394156485a.6.1793883201975; 
+ Thu, 05 Nov 2026 04:53:21 -0800 (PST)
+X-Received: by 2002:a05:620a:1d06:b0:93c:5952:5765 with SMTP id
+ af79cd13be357-945e1593c89mr394153985a.6.1793883201437; 
+ Thu, 05 Nov 2026 04:53:21 -0800 (PST)
 Received: from localhost.localdomain (104.171.88.92.rev.sfr.net.
  [92.88.171.104]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c4d0e466175sm170613566b.47.2026.11.05.04.52.38
+ a640c23a62f3a-c4d0e4a7677sm166255966b.86.2026.11.05.04.53.19
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 05 Nov 2026 04:52:40 -0800 (PST)
+ Thu, 05 Nov 2026 04:53:20 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>
-Subject: [PATCH v2 03/17] tests/unit/qobject: Replace deprecated sprintf()
- with g_strdup_printf()
-Date: Thu,  5 Nov 2026 13:51:48 +0100
-Message-ID: <20261105125203.40320-4-philmd@oss.qualcomm.com>
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu@processmission.com>
+Subject: [PATCH v2 07/17] hw/riscv/platform-ref: Replace deprecated sprintf
+ with g_strdup_printf
+Date: Thu,  5 Nov 2026 13:51:52 +0100
+Message-ID: <20261105125203.40320-8-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261105125203.40320-1-philmd@oss.qualcomm.com>
 References: <20261105125203.40320-1-philmd@oss.qualcomm.com>
@@ -106,36 +111,35 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=AaYkjHXG c=1 sm=1 tr=0 ts=6aec7c1a cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=pBdeej1U2jlWEHTh2vTwjw==:17
+X-Authority-Analysis: v=2.4 cv=Xd4cX455 c=1 sm=1 tr=0 ts=6aec7c43 cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=pBdeej1U2jlWEHTh2vTwjw==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=EUspDBNiAAAA:8 a=zVUThsOvjO3iHk_fBEUA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX05yGTvCJSpns
- 9XPP4JjC+SvAWEbftr84nJot1Luvp46dyHQxrr89koZNtOBamZZACP8AqTjjiHWNp6zjKqSRadr
- FfhwLPVx0W6dSB4O8BwCud6/j+OVWdjJudwKtbzSBY9Rqe1nMYto5iI7hhDf2xXJTv2FSAGctZd
- SHWkFQhgnGJFW8tkDP/2Q2NIUqtqZl1PzCtfW9TXw9sDhtSGKxXYXQePPkaTGwl23XT6NAY9kZz
- GZ8TGsg4yo+FakBILBplOqJ85HgBdvVSk93sPRwWxps16ZgSh/R6meZz94+ZfcXNO7QHiEDjtNp
- ZCYsoYTk3GhYjHAHPE6MhxuCbPUWoQBHht8J/58QDosV7atIGadnFtXkU7u0ZDhX/zv4emKgZcf
- 4Avr2u5kvoim5zCdO5AFJXu4ZmqjBqWnsxfTJ0XJ7obyU2nEJWL9cEArOJx2yTlyQY18lup69cP
- zJlh4gaoJN1wDm2ZIGg==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfXyQh5J9LY49UA
- nMzLhgaTNy1s5mtduPXuBDhuOFkNPViZ+KEkh9hNEfrisTbrUeaDDGxGIiH62BHS+2w1mUnsz6T
- NioKAp7rrdCcUpOqVWTxIoBgsVcL0TI=
-X-Proofpoint-ORIG-GUID: lR0KxfFFLzrESZuaWyUm1L9adrHzaC5Z
-X-Proofpoint-GUID: lR0KxfFFLzrESZuaWyUm1L9adrHzaC5Z
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=EUspDBNiAAAA:8 a=R3ryGEeKXBx8QBJlfjkA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-ORIG-GUID: 7TYuPpLRxUwVoVlok-xOouGQN9vDYVQy
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfXxvMzZsUrHC42
+ dTkG4viYvSnv5B7IIFA8oyDkgE31STIH/0zbsjw99NKAtZswhgBu3BVAXLcyGhF8Avvh7CltLsD
+ LOinHW/r/F59SVa9fsAnvxRkcIJaG1E=
+X-Proofpoint-GUID: 7TYuPpLRxUwVoVlok-xOouGQN9vDYVQy
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX5VtdlNjPma2r
+ 4PjUSn136ZjTjDBi4WP76q0OcbSvPKBycoIWjtnv0zxC03SA9ewWe+SZTtFLZGgxcJfxPKmsQLd
+ u8Sx60EQo95LDr8aEYSiblveOqQNIZeFMgqd2yEFQP+sDJYGenror7vc81ZJe8L0plLMuVfpsw9
+ 2Biu/xk+dvi6gPfU9o1ks5JjBrp5p8korA8VL8Rap6u1OTxWT+5nIjSeYe+zfoe+WRSoytqdZPw
+ OznBI4VSdSt6hg3Y4E2eVuD1n2IFHXZPXlscwqL/NyzvAsbDleY2CPEIeoyjlJUpTVxEE+fazt+
+ lzRRn/rAI79KpNb9J4te8I1FTc+j0uwjXLHYrNKWujSkt1l6nlfVVSq/5iZrZrJwAs6IWTf5aaU
+ zmaFHpMG2v7rR9/ac+ZcHyLG81SiCKWMrdG8RbabYtz9kHIwvFGywEKwBjeKyyJQnWWkPmGxzmZ
+ aXvwKiKIYZu9NqslB9Q==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-05_03,2026-11-04_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 bulkscore=0 clxscore=1015 suspectscore=0 spamscore=0
- priorityscore=1501 malwarescore=0 lowpriorityscore=0 impostorscore=0
- adultscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610300000
- definitions=main-2611050051
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ priorityscore=1501 impostorscore=0 malwarescore=0 phishscore=0 spamscore=0
+ clxscore=1015 adultscore=0 lowpriorityscore=0 bulkscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610300000 definitions=main-2611050051
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -157,54 +161,56 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace sprintf() by safer g_strdup_printf() to avoid
-when using Apple clang 17.0.0 on macOS ARM64:
-
-  ../tests/unit/test-qobject-output-visitor.c:598:9: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
-  ../tests/unit/test-qobject-input-visitor.c:600:9: warning: 'sprintf' is deprecated [-Wdeprecated-declarations]
+Replace sprintf() by safer g_strdup_printf() to format the AIA
+guest count / description, silencing -Wdeprecated-declarations
+produced by Apple clang 17.0.0.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- tests/unit/test-qobject-input-visitor.c  | 4 +---
- tests/unit/test-qobject-output-visitor.c | 3 +--
- 2 files changed, 2 insertions(+), 5 deletions(-)
+ hw/riscv/server_platform_ref.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/tests/unit/test-qobject-input-visitor.c b/tests/unit/test-qobject-input-visitor.c
-index beee11db4e47..d4d2f7f1ee0a 100644
---- a/tests/unit/test-qobject-input-visitor.c
-+++ b/tests/unit/test-qobject-input-visitor.c
-@@ -595,9 +595,7 @@ static void test_visitor_in_list_struct(TestInputVisitorData *data,
+diff --git a/hw/riscv/server_platform_ref.c b/hw/riscv/server_platform_ref.c
+index 5f485b1c79cb..d75bd1465a43 100644
+--- a/hw/riscv/server_platform_ref.c
++++ b/hw/riscv/server_platform_ref.c
+@@ -668,10 +668,8 @@ static void rvserver_ref_machine_instance_finalize(Object *obj)
+ static char *rvserver_ref_get_aia_guests(Object *obj, Error **errp)
+ {
+     RISCVServerRefMachineState *s = RISCV_SERVER_REF_MACHINE(obj);
+-    char val[32];
  
-     i = 0;
-     for (str_list = arrs->string; str_list; str_list = str_list->next) {
--        char expected[32];
--
--        sprintf(expected, "%d", i);
-+        g_autofree char *expected = g_strdup_printf("%d", i);
-         g_assert_cmpstr(str_list->value, ==, expected);
-         i++;
-     }
-diff --git a/tests/unit/test-qobject-output-visitor.c b/tests/unit/test-qobject-output-visitor.c
-index 3c47b28f6638..b240cb326c4e 100644
---- a/tests/unit/test-qobject-output-visitor.c
-+++ b/tests/unit/test-qobject-output-visitor.c
-@@ -592,10 +592,9 @@ static void test_visitor_out_list_struct(TestOutputVisitorData *data,
-     i = 0;
-     QLIST_FOREACH_ENTRY(qlist, e) {
-         QString *qvalue = qobject_to(QString, qlist_entry_obj(e));
--        char expected[32];
-+        g_autofree char *expected = g_strdup_printf("%d", i);
+-    sprintf(val, "%d", s->aia_guests);
+-    return g_strdup(val);
++    return g_strdup_printf("%d", s->aia_guests);
+ }
  
-         g_assert(qvalue);
--        sprintf(expected, "%d", i);
-         g_assert_cmpstr(qstring_get_str(qvalue), ==, expected);
-         i++;
-     }
+ static void rvserver_ref_set_aia_guests(Object *obj, const char *val,
+@@ -716,7 +714,10 @@ static void rvserver_machine_device_plug_cb(const HotplugHandler *hotplug_dev,
+ 
+ static void rvserver_ref_machine_class_init(ObjectClass *oc, const void *data)
+ {
+-    char str[128];
++    g_autofree char *str = g_strdup_printf("Set number of guest MMIO pages"
++                                           " for AIA IMSIC. Valid value should"
++                                           " be between 0 and %d.",
++                                           RVSERVER_IRQCHIP_MAX_GUESTS);
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+     static const char * const valid_cpu_types[] = {
+@@ -743,8 +744,6 @@ static void rvserver_ref_machine_class_init(ObjectClass *oc, const void *data)
+     object_class_property_add_str(oc, "aia-guests",
+                                   rvserver_ref_get_aia_guests,
+                                   rvserver_ref_set_aia_guests);
+-    sprintf(str, "Set number of guest MMIO pages for AIA IMSIC. Valid value "
+-                 "should be between 0 and %d.", RVSERVER_IRQCHIP_MAX_GUESTS);
+     object_class_property_set_description(oc, "aia-guests", str);
+ 
+     assert(!mc->get_hotplug_handler);
 -- 
 2.55.0
 

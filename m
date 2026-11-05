@@ -1,129 +1,137 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF2FE606D812
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:53:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 285C1606D813
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 12:53:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=YMg7iCK2;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=Gj7ks2E0
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=jUPSJO8O;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=OoSWPQLS
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOwx3-0002kr-QN; Thu, 05 Nov 2026 07:52:23 -0500
+	id 1xOwxC-0002mz-NY; Thu, 05 Nov 2026 07:52:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xOwwx-0002kD-QG
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:17 -0500
+ id 1xOwx9-0002lD-IH
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:28 -0500
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xOwwu-0005fI-EH
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:14 -0500
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ id 1xOwx6-0005ga-PV
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 07:52:27 -0500
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A5AhuCh1582933
- for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 12:52:10 GMT
+ 6A5A1QUl1416462
+ for <qemu-arm@nongnu.org>; Thu, 5 Nov 2026 12:52:23 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=qcppdkim1; bh=C4wyhq0QCfy+i3u8v5T5DX
- pWAtc9llSmeEyL5gk7RJs=; b=YMg7iCK2dQuIT4T18+Am8zHmo/7wVPG7DVPGUe
- x7/Ik9xQWwwY47tVZAjvh3PRqvztI6dBi8d55i+TMcSm6qwbNlCe7gkU6RYfimT7
- 9k93ueSwgcBsX7bbxRC/UcF2cwfJFX6o79ToTwEig3YIJK4MQ8GhThdDt92KLQMq
- +9lOMdcWp62JMZiU1yzCw9op1RqdMNVnWaU0bf2kg5WYcUFvA05vidnkKE8uuuhY
- n/EqynFP/jIvmJSEVulpfWpLPZKTOT9mHackjO3YgRpmcrEeAq+KR3CaSPNNB1Ha
- wsPCretCErsbKkJGlqU/yO7/SXZ4dPJW1v32wH1WPkowZ1aQ==
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ dAnyPv0Lgq8cf7gE/G7eR+Fs0DmNpStWwyx7er6AIoY=; b=jUPSJO8O1y0C8NHF
+ EtCQNNbeWuqp8zXBnVjoH8e0htP6EKxRyy5Bk5sWH/F6xdgBUMXAUam0/O0t8TQF
+ F8Hipbz9XVSFOhT4s4J/1/60tyxL434sGq+/CnEiLJmu+IN5Bv1bd7VCYjR39s71
+ pZSjOLRHBGWY0GRTOZAWiAbBuj4s0ZabQr1RX4QUc7I7QOl9DlMA12B/BZv+fzCQ
+ Lre1/oAybApC2rtlwWwSz48bWKZWff0snjQ2MassDrm7yNorp9XQc5P5lkvP7HFH
+ PJyXVdjVT1S6yLhTpVYYrCrg4FEntWLjiHfbzHrTIQ3TbPH1/p87oGKozPqNsR7H
+ fThk4g==
 Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
  [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrraargn4-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hrqpd0p9g-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 12:52:09 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 12:52:23 +0000 (GMT)
 Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-93f33438950so387253385a.1
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 04:52:09 -0800 (PST)
+ af79cd13be357-93caf6c528aso321554285a.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 04:52:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1793883129; x=1794487929; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=C4wyhq0QCfy+i3u8v5T5DXpWAtc9llSmeEyL5gk7RJs=;
- b=Gj7ks2E0Xu0ISXIzkk7X54evZD2glXfSWM0Dva7qf7+E3Yn1jW6NDTiFu9ItCYhWDj
- 65H0wZhEAV5HrVxFLhxuk1Dy7uSvcYx+yg7/Oe/NHq3+WEF/xM/qooo6JfRvzgUB3juw
- 3dx2kYKV//E4cpqXUMUVRVXLmB1VcNgdW4hw/iY4wGzCwI+OmzrTIUvX/HsfrDPNJWXD
- AOq+Tk0GVLZsN8pxyYpUAat+Ti36QCtXt0HP48lw4xVRAs7FbLAEZawjJw3nJwbtXYzr
- oBJvm+DMWeFG1DGa/GsNlBWW2XoMMqxLR4LybR7LdIdBw34jFvclHU+mg25XlrWYgcUJ
- RrLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793883129; x=1794487929;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ d=oss.qualcomm.com; s=google; t=1793883142; x=1794487942; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=C4wyhq0QCfy+i3u8v5T5DXpWAtc9llSmeEyL5gk7RJs=;
- b=qZoo5rSbma66CLDXM2fpukQZbFy1e6R4I6jbHXGFNa8u0gyAu2fiJSp3Gnh4dCkOWU
- 3chDg2ElUipUc8yB6Q8DdvPdNMvj1lvhTLBs2i6uQWqj+cEBQNuSxYKbIXwf5aG+IWqH
- wo0jiB+/5fEsSYQRPv1ZWhjjIuOxTlzUmj1+95Wc7QlSouiEdJ4IuJoQRKENqRxfwUpE
- LxQUKX5gxwke466C4I6iVeh30NfBq7e56MYBWm/AAOtvCzLhy7Xe0GPbSC3hqA9LMb7Z
- 2Yiih8vQy7wx0hg1eC8V395tKTOAdA8SXHZiZ4DYSnlsMULg3RWhNGWknqqCUtTMVR4M
- sGbQ==
+ bh=dAnyPv0Lgq8cf7gE/G7eR+Fs0DmNpStWwyx7er6AIoY=;
+ b=OoSWPQLSvULiMO8C5Y0y42yTqlrVEiqw/eJFod7aL35I7pcrg05toydullfZqtlyVg
+ lnrS0XifiWcc+M6UD+7bqiI278Lqk2+nHGlSeIpbef4GVbAVH10AgOwzQnb0xF+a3j2g
+ 9uRvU9AAPwJ43KcfOpPTOxov7ffU2nOktckSoKOi+1uJEtkKA7PvbZo4EaNubyx3uc4k
+ Wv8/kShPaswuuNALfxaCrJ892rUZAA7xabOUjTsbz8IohfTHV0cymU8AHFcpb7wFQixe
+ kWZ0cp2wtoZ2I74dtJVlTWr3koutEOd3LZ/HxiJ+B6qAAarQv78uD9THVK1INQSeard6
+ dkgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1793883142; x=1794487942;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=dAnyPv0Lgq8cf7gE/G7eR+Fs0DmNpStWwyx7er6AIoY=;
+ b=2ymK8I63i+e/co+lF3/zOajXJlFsCufoKcfYn6Qy3souUzMaSZzigJqsyWTYbPL1+w
+ 8s94h44GPpZ/GKyl1pnUqMwjSKyXCVIrGie/zDXqsl1rLo0S0zXH4sGQvfJdatvRDY80
+ 2w7QqFDojLodWfU2jB8eR4HGUwRPuF6xSXlJtLGgzw+v26/3RYXB0MJtg7/7yZFF7Rx1
+ aealQc7FZns/o4IvFdoQ1Q4PnffWQqwlWlm/5XIZMnrnTNxT3d46mvhcLKPhfG+s/Jjp
+ 45ncVub8HTiU9cNTIxTmajOQYPn5BqiO+ZI8u2vFSN5uuvw2SNTmzJi4FM5f/y7vbBNa
+ NQjw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwn+x+RyiRCyGbljztHJ0B4+RJ3rzjECv9Yywxn+YWFiDwKDojihY85q3gyC7lpDshqGA/eKSIeEA==@nongnu.org
-X-Gm-Message-State: APuU4Z+rJ2zDB1nCJkx+FAfexiN0cYRiG4HCv+AG2wmgI6PuxmJv9VLA
- kBoLoyjTyAGl7ZEO001NzpNFA2gl1Y8ZkVGFLKTtB2xZNSasuoTIcTrf8i4rMEpCM0UNB9WDBq5
- 0uhXgSoFk8yVPC5cC24ry8EcxQwuUz6xPQ7qH//Ui5o/xQ+F5z7SjRPc=
-X-Gm-Gg: AYBFou1TFtyKygu1qMB7FpMekHAOjU0/JlRFihtCzko1O1G61c2x3i/q320kMg5xkbz
- i1mxfBnjva+6A4MOPbcFNPi9LsEC5jqo6V/d2wY+QQSXHR8tZS1DmJzhpR7duHrlHYk76Qah8gR
- TkF06rhbFaok0X+tqrUB85PyFL47W02IPf4oLPvwby6OgkEflSgoioN5j4ah0X2vI7PXMqLjkBs
- nwlOqTnl6MS07/ZqOR1vl48UAsXlSclbNI3oltGDh/WV6sP/ic+oqcQ92ZKM4cfG8orkqg67Vgo
- HbQh0sOIor/NaF4P6M6qeLeUzXsh3zxNXcqnqYGFkrpxWp4i4oC4Y5l8PwnNLSGqBhKGEm16YJ4
- MASn50ATzT3nHrlVFEvkOaIno7P2Wd3YhvfHBD1ZcaCBcLolda7IrJkwPdOAQYsp4b17i/BLbqH
- rbay1gYuRzjw1sGhSnRPZqhzmZuPeQcQ==
-X-Received: by 2002:a05:620a:2614:b0:93e:920c:bfcd with SMTP id
- af79cd13be357-944217b0ae7mr3278777085a.57.1793883128954; 
- Thu, 05 Nov 2026 04:52:08 -0800 (PST)
-X-Received: by 2002:a05:620a:2614:b0:93e:920c:bfcd with SMTP id
- af79cd13be357-944217b0ae7mr3278772785a.57.1793883128276; 
- Thu, 05 Nov 2026 04:52:08 -0800 (PST)
+ AKwUvBxhwnBTXEGwzthih7HSw/YvtsWxHHTaBSE0yn2BvswedHWdjoeUxYCj+LygWsLHYoZCFJTobWd3vg==@nongnu.org
+X-Gm-Message-State: APuU4Z8KQ2hamjllKA4Wo4eOkDy6dg9GkBXGZU/dZdK948XChIsHq+4H
+ P+f86yGfEhk+e7n4k2xNb8xoGw3Eun63YPfsw8RAq95gZMS++jilVeIB4TKjmUlJkUSgYyVxm3u
+ YL89mqZpWoVLQ5LFm8lQrTywgB5IWHCXB1W2N3wQqq322MMaUbCltXWU=
+X-Gm-Gg: AYBFou0l3PtQ9K+cBUnNJvxuvIsSQ2dSwA+38ZvgissVTE8aeQ4FLCNcZq8GbkSPSr0
+ xGLiZRBL8OaWQahHQGWu4K1MaEt3EFwH8ILp11Now/a9nQpDvSMA8XWFnnCWKWeSWMc1MdCR6Dc
+ nzdeBqs4MLxLg0ucvjmudIXuEKfAxFyU2Zw8kAA+vqSjjARrqeNurpxSwwK2KU746nxIw7kFjDY
+ pthIWpAU75umQUASj5UJszVCOiJJKngH9C2iO5rA0T6KzVtF0gEqU21xh3SyzDaXg2Cssd4m7oT
+ qscYxBaxUBkhiu5mVdhnXMNcqYgaaImyRtGgTCnPXeeiJAmQJupRQmYDIu34l3BBPLEOacncbS0
+ CRmGHlWxxUO+w7dQLGxNXCb2Y2KBvZVztzXWxEVrO2yiEUPJXNtlh7wjRRGMilDWIH4bAigL+G6
+ RAk05tbvHDppYPHfwQLck6BriTtKSAJA==
+X-Received: by 2002:a05:620a:414f:b0:93f:1e3c:4a3d with SMTP id
+ af79cd13be357-944216ea174mr3173723585a.46.1793883142209; 
+ Thu, 05 Nov 2026 04:52:22 -0800 (PST)
+X-Received: by 2002:a05:620a:414f:b0:93f:1e3c:4a3d with SMTP id
+ af79cd13be357-944216ea174mr3173721285a.46.1793883141780; 
+ Thu, 05 Nov 2026 04:52:21 -0800 (PST)
 Received: from localhost.localdomain (104.171.88.92.rev.sfr.net.
  [92.88.171.104]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6b55ac57b9csm1738357a12.15.2026.11.05.04.52.05
+ a640c23a62f3a-c4d0e42479dsm172396066b.17.2026.11.05.04.52.18
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 05 Nov 2026 04:52:07 -0800 (PST)
+ Thu, 05 Nov 2026 04:52:20 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v2 00/17] buildsys: Replace some deprecated sprintf()
-Date: Thu,  5 Nov 2026 13:51:45 +0100
-Message-ID: <20261105125203.40320-1-philmd@oss.qualcomm.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 01/17] tests/qtest: Use qemu_hexdump_to_buffer() in
+ qtest_memwrite()
+Date: Thu,  5 Nov 2026 13:51:46 +0100
+Message-ID: <20261105125203.40320-2-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261105125203.40320-1-philmd@oss.qualcomm.com>
+References: <20261105125203.40320-1-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX8gF5ddk5bXFj
- CulPg2QjSQBx/QlBqdPBmBkrCcpv9m71450VwTDutZJyaxOysQTE+Z1WBztz3+Qpn5UuVHRhGop
- Aw5snfk6SvCs/qDSKL44ReUTHIame0Y=
-X-Proofpoint-ORIG-GUID: BFL6rcV6jSvproxrk5XfAqLsBUstBX2r
-X-Authority-Analysis: v=2.4 cv=U54Hnuru c=1 sm=1 tr=0 ts=6aec7bfa cx=c_pps
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX2Twzv+yFrSUp
+ 041mWNuXbDj3kZEukMLrti6iqMvWUKGFCluKs50VQnV97taSScDpbosR61nUOLZ5X9nwaFHTv5/
+ xPOIPV9aVOU3qK3P9PRgNAc8Hm7qFlY=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX0VwMKACeGj9f
+ qlqKU3PoeBw3Ag4UiQL8UuHzZaMOvojVmJA3Mh/xXzzxKma0wrJVA+CxSEdIWuseyeWFiUy+RdU
+ +5K3cbfwM0KIzIjZ6L9bpNYsIbS4fC7YId/fzsS4BL0mPXCXGsbs6fYqu06u5kmDnjM/lpfhDAn
+ f1PEv21PBKN5hURzMhE5mQHgzDKryIOpAbcY2nfjq8VRhBYs+fNe/Y0snmCzodyi9iV9Th7BJxv
+ 55suszLjpCA70NmRInDT2KtmLRx1On2NVA9tle75MOtn7fm0H+6BR6JqKpMPHdybL/drU0/J1YH
+ 7PoP2tZ3XO2Bd9Uxp4MNS65vOvL9c4wf/27v9ePfSQTm9ofj90njwjfe1v4QND5B+xPGxSiPbXB
+ tXR/AHpoNqmKuqPCJqNloHAJvJMYtDM0jsKxvBVI4sSytQlM7rxoYmAy7DhFt099BFfkKZ32iQl
+ Du0yu2jTcOUCNxMHn/A==
+X-Proofpoint-ORIG-GUID: SeW2YGqMVNNNQNGEFPo1omhT_-J8A88P
+X-Proofpoint-GUID: SeW2YGqMVNNNQNGEFPo1omhT_-J8A88P
+X-Authority-Analysis: v=2.4 cv=Y5JtIReN c=1 sm=1 tr=0 ts=6aec7c07 cx=c_pps
  a=HLyN3IcIa5EE8TELMZ618Q==:117 a=pBdeej1U2jlWEHTh2vTwjw==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=Ym21472aoLdQ4Bz9H1MA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=EUspDBNiAAAA:8 a=k_a3swXMNwr4Ts-8P3MA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
  a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA1MDA1MSBTYWx0ZWRfX4pTs3ifMULQx
- OUE90cVAVO0JT1Hj6V3+Eh1tDb/2Sl9DsO0gS8TXpP2NyGHywJH4i1jRBCBoMlyMVh+JgSQiRMy
- FH4fChOcEvka2NTVrwLbrKfjDiURrrdZ62VeyMTPcLuzPiVkEotFLkbTAXJH6pYu0Gch2/XtVyL
- o/xjTKEkg5cCcRLA0YlEaUfaijzni7B48XUjcEaUrTl2Mg769n5+cNgtIbwURahXrwVWYCeniYv
- y8rhj5JXuh95loOYmlWJi80zC6lqmH2Tt+Hz22e39NVD/PQvs5m59p9BqaV83UnLMeGuL9YjS28
- 8Z9iyziBg/VrTwJ8eA/XMpIq6iDimYMr4+q+amRE0GkRDm08DS+o/9dDcQiAMxNXZTj/+wtNq1D
- 6qTruBk67yDjcf4flLzL3kr4rdbOEvDHHPTyUxhxh+kbywgaaxlEGKvAaZ3If3hkBxUR/zxw4r7
- 8OuyfISZa4v+Vb7mqmA==
-X-Proofpoint-GUID: BFL6rcV6jSvproxrk5XfAqLsBUstBX2r
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-05_03,2026-11-04_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 phishscore=0 bulkscore=0 priorityscore=1501 lowpriorityscore=0
- adultscore=0 spamscore=0 clxscore=1015 suspectscore=0 impostorscore=0
+ malwarescore=0 adultscore=0 impostorscore=0 priorityscore=1501 bulkscore=0
+ suspectscore=0 clxscore=1015 lowpriorityscore=0 phishscore=0 spamscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2610300000 definitions=main-2611050051
 Received-SPF: pass client-ip=205.220.168.131;
@@ -134,7 +142,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,69 +154,52 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-v2:
-- Use g_strdup_printf (pm215)
-- More replacements
+Replace sprintf("%02x) by equivalent qemu_hexdump_to_buffer()
+helper and silent when using Apple clang 17.0.0:
 
-Since some time now we get the build output cluttered with
-many deprecation warnings, it is becoming hard to notice the
-real ones. This series fixes few recurrent use by the
---disable-tcg --enable-hvf build.
+  ../tests/qtest/libqtest.c:1522:9: warning: 'sprintf' is deprecated:
+    This function is provided for compatibility reasons only.
+    Due to security concerns inherent in the design of sprintf(3),
+    it is highly recommended that you use snprintf(3) instead.
+    [-Wdeprecated-declarations]
 
-(Yes, VOF is not used on HVF x86/ARM64, I haven't
- investigated why it is selected and built).
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+---
+ tests/qtest/libqtest.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-Philippe Mathieu-Daudé (17):
-  tests/qtest: Use qemu_hexdump_to_buffer() in qtest_memwrite()
-  tests/qtest/npcm7xx: Replace deprecated sprintf() with
-    g_strdup_printf()
-  tests/unit/qobject: Replace deprecated sprintf() with
-    g_strdup_printf()
-  tests/unit/visitor: Replace deprecated sprintf() with snprintf()
-  hw/ppc/vof: Replace deprecated sprintf() with snprintf()
-  hw/usb/hcd-ohci: Replace deprecated sprintf() with snprintf()
-  hw/riscv/platform-ref: Replace deprecated sprintf with g_strdup_printf
-  hw/vfio/pci: Replace deprecated sprintf() with g_strdup_printf()
-  hw/ppc/spapr: Replace deprecated sprintf() with g_strdup_printf()
-  hw/net/eepro100: Replace deprecated sprintf() with snprintf()
-  hw/net/rocker: Replace deprecated sprintf() with snprintf()
-  hw/scsi: Replace deprecated sprintf() with snprintf()
-  target/xtensa: Replace deprecated sprintf() with snprintf()
-  target/m68k: Replace deprecated sprintf() with snprintf()
-  target/rx: Replace deprecated sprintf() with snprintf()
-  libdecnumber: Replace deprecated sprintf() with snprintf()
-  qga/vss-win32: Replace deprecated sprintf() by StrCatBuffA()
-
- hw/net/eepro100.c                        |  2 +-
- hw/net/rocker/rocker.c                   | 24 ++++++------
- hw/ppc/spapr.c                           |  3 +-
- hw/ppc/vof.c                             |  2 +-
- hw/riscv/server_platform_ref.c           | 11 +++---
- hw/scsi/scsi-generic.c                   |  2 +-
- hw/usb/hcd-ohci.c                        |  2 +-
- hw/vfio/pci.c                            |  7 ++--
- libdecnumber/dpd/decimal128.c            |  4 +-
- libdecnumber/dpd/decimal32.c             |  4 +-
- libdecnumber/dpd/decimal64.c             |  4 +-
- target/m68k/translate.c                  |  6 +--
- target/rx/disas.c                        |  2 +-
- target/xtensa/xtensa-isa.c               | 50 +++++++++++++++---------
- tests/qtest/libqtest.c                   |  6 +--
- tests/qtest/npcm7xx_adc-test.c           |  8 ++--
- tests/qtest/npcm7xx_pwm-test.c           | 14 ++-----
- tests/unit/test-qobject-input-visitor.c  |  4 +-
- tests/unit/test-qobject-output-visitor.c |  3 +-
- tests/unit/test-visitor-serialization.c  | 21 ++++++----
- qga/vss-win32/install.cpp                | 17 +++++---
- 21 files changed, 102 insertions(+), 94 deletions(-)
-
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index 7f66c1bbb3b6..b6b9f8fe161d 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -1509,7 +1509,6 @@ void qtest_bufread(QTestState *s, uint64_t addr, void *data, size_t size)
+ void qtest_memwrite(QTestState *s, uint64_t addr, const void *data, size_t size)
+ {
+     const uint8_t *ptr = data;
+-    size_t i;
+     char *enc;
+ 
+     if (!size) {
+@@ -1517,10 +1516,7 @@ void qtest_memwrite(QTestState *s, uint64_t addr, const void *data, size_t size)
+     }
+ 
+     enc = g_malloc(2 * size + 1);
+-
+-    for (i = 0; i < size; i++) {
+-        sprintf(&enc[i * 2], "%02x", ptr[i]);
+-    }
++    qemu_hexdump_to_buffer(enc, 2 * size + 1, ptr, size);
+ 
+     qtest_sendf(s, "write 0x%" PRIx64 " 0x%zx 0x%s\n", addr, size, enc);
+     qtest_rsp(s);
 -- 
 2.55.0
 

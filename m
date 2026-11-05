@@ -1,67 +1,68 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9B3BA606A31B
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:15:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 619C3606A329
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 09:15:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOtYR-0005pk-Td; Thu, 05 Nov 2026 04:14:45 -0500
+	id 1xOtYP-0005iY-MU; Thu, 05 Nov 2026 04:14:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtY1-00059n-Bp
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:14:19 -0500
-Received: from mail-pj1-f43.google.com ([209.85.216.43])
+ id 1xOtXl-00056p-P4
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:14:06 -0500
+Received: from mail-pl1-f174.google.com ([209.85.214.174])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xOtXz-0005Rk-6R
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:14:17 -0500
-Received: by mail-pj1-f43.google.com with SMTP id
- 98e67ed59e1d1-3ac77270fbfso994955a91.2
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:14:14 -0800 (PST)
+ id 1xOtXj-0005Qf-Mf
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 04:14:01 -0500
+Received: by mail-pl1-f174.google.com with SMTP id
+ d9443c01a7336-2eb0f1b592bso5834805ad.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 01:13:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793870053; x=1794474853;
+ d=1e100.net; s=20260707; t=1793870038; x=1794474838;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=AHne2JcHx+O7G4KfyAccP7ggw7u1GmKaKZ5l2ViY6Cs=;
- b=B4ZfEIZ2+vXFHIgJbPsuO0iC+2r5al+bThSn7WA9NwRkCzLLwbPpuanz4qkBMiCtOE
- ZwlPrbvnJbwyMA5X9384J4F5BjUTBcYu8oTBmhrzTwVmcTyCZ7I0o6r7GEYz77G5RjCg
- fx5H1Kd/k6XSs+22PGrjT0Jd/sMpuTyz887anxgcARff1V1rxjfX2FWOffWzArzu/I+F
- zqfzB0ax+fNLFDVAuZAPfvNEs6BXJOeYgTydwlFcfjhEZE95OLU2qAqVdM+LEjdB0k+T
- biXaiAL9xsZitqhh0vRlfydzJvl22jvsDtXXSFhf70/ZpZibwqpgUFkOfHNNwJ3n85Cm
- pZiQ==
+ bh=YHMfEpRBCghPOlLiattQp/tdJSULFxB9dFeHDoCkMiY=;
+ b=fIse7APKj2V4e0FgB5zbRpaiHYL8nu5oEomoZmo0RaCbAKkcbLJwVpIuOZuXF3M0ZY
+ vqtDEYHMYb06O5YPTKM7SIvESOke3HmVMo1PZUTyNywLSu2lpe8CxlZWtbroK3D0XHhP
+ Ic/f9Kj8baMOzy4zL/FKQdsPVDZHtGVh9s/czY3DrGU1+JvarKWetsIg7rJSNkp+4Z6i
+ ZwbGnWryBNt/b9lD0UfSeb2ziFatp0iqGYCV/ZWjX9J1YZHTKhI/14IY+HTTkL844lVI
+ 7kBW7Ech4L5Ao+PJXZfiishBYC3oBAdsqLF9dxP6NQgskysvbK59cWVvEHO/R8/29Vih
+ 6LDA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByFe9nyuYz/0QctzaEGIqQir+euNL2rBf05qHUCWIJBZwyaoPK6oxLPuLPJURJ/OCZFrEf8TmI1pQ==@nongnu.org
-X-Gm-Message-State: APuU4Z+rh2QNZukkOEXiggnGQOQ0hGGfD/8gn2LUHS2hGV+Yv5Q/6Jth
- nEBT3O86nY0oJsQ3oHn7Yc9WDHYHbaaLEiMssWMEpu6s/S9EHPdvyp3I
-X-Gm-Gg: AYBFou25mGTsv7v96UHvff1zRMH8i6B0/ipJARNOSIG2lOYcqak9jEPDg1yWNhe+VXV
- fvS+BOwOa5pZa1o5VT0YsE8iLcScyQUNAyKiaa5L9sGT6AasK0Irlr2wMIytwAtQA/U3iycY8Gg
- LdZq2kiEz6jCuOg94w8qfvO/6J3p5byvR5SRfG/EhdOPjG9Qg/UOA1vaUghTP+oUSclmKQQBtYf
- I5pAOgz5H1yDARivZl+qcInFcO61mG9RkcvQzgb+M+/wAkezKXmoWfGeFVF8E9tL2kGba/+DSPn
- tWVcuM5sQPqSDy1vshF8cfB52kJ+2M8/A/7Up+hYzVd2VL7GFdcKOJ45hyvwylbCTpfzlBql1Qe
- vTHv7cMKjXa71x/FeWqlIatQYnwbaRlFvWhPzjM/a5ND1uBrk5JWMRsp+qMGzd0TpihyoD1xC4Q
- GfSODZZXwVJn7VHj5doKSuvpJXRe07DcmVEkZyW+c1huRt5bSlpNVRkzqU197V17ucVhww3du5E
- fL/mjZ9QpCkgGK9o65xy+JYhN9C8jG/rXB9m8BGwiBrwdZIQUp6Enw/V+Vk6pIQZ45Jxs/d1j6f
- N1k6y8X18t17OlLqTVD6bnELwsUSqAdbYBb/MFoaPOppq6vnfcwo6CKSNzWxazIXvqOl1uo0Puw
- kbzNn/w==
-X-Received: by 2002:a17:90b:2fd0:b0:3ac:af8b:6f3 with SMTP id
- 98e67ed59e1d1-3ae898149e2mr13957413a91.52.1793870053310; 
- Thu, 05 Nov 2026 01:14:13 -0800 (PST)
+ AKwUvBzf6M/93G+sYcdtW70UsCTV0+c9ucOTyPVgboUmSs+x92sbq081XSs1UOxMGYTN2ol2Z523xIExuQ==@nongnu.org
+X-Gm-Message-State: APuU4Z8X7JKMod3FMWhVQUtRCPyNyRPPZW2YeNvwpt8lCALy1RjDVuBy
+ VExsOkC7mzfnL0ahpFNZTCmx1+0PAGagd/UlMYbY3tJHDnw41oDEDP6v
+X-Gm-Gg: AYBFou3sdPrDi3G7o0Ocab8bsauv2M4enaQpVsnNG+wm+cnZmlXcfc22YSRtKX450KT
+ VZqpcnx9+6JwzqMhW33QEZ1R4HovD+daOARmkOUSPykdweN/MPvEfaC2E5sj3xRVgnAJJi8ieIy
+ of3jZ/zmFSJXDXwUrKWq4lnXnSbFtr2fm7AnJAQUxFd88N5/PZ+5ACiG8MK0FWrhujjn45eLvJv
+ pwmXBLKHT8M0DLRzjEt+vqnB5lupHNICtap6yhauYXUmoH3X6pF7EILZ3pWx1uSET8DlSUcDCAg
+ JNq56yG58mAt4FvDZnSThl+BA/oeU8wnt0bip5c4izU/kMQ68/Dq/YKnoXjWB04S5PnBr/lwJ6m
+ i+NoCsxjuwPzD34J8AuRY9rQhcYY3+8f0tpL/hj2YFKMNPl0u7D/xo1/k03b4952z1nsbecy5oc
+ NeECUqrUQozZlPcF6mNqcYG3CyHIY4lJr1vGrFhvzsc1wBREuwrZ1Ero0xKDgEoiRP8axVBaAOy
+ FzmLMrArERryQAJ/ujJct4dJ2wLKi0gV1QOuHWUSKO61Q+Tuq0FJU3FXbhZq5O5iyYCGoTWRS+f
+ m7rBUiDZfFGtgz11Bkfv4aK6qNS85du6z7LSoYDOkhMl90I4eaitcCx5AqKCQokDUBgx85D7/Vy
+ KjPalmQ==
+X-Received: by 2002:a17:903:1c7:b0:2ed:1e4e:cf3e with SMTP id
+ d9443c01a7336-2ed1e4ecf92mr26026975ad.29.1793870038170; 
+ Thu, 05 Nov 2026 01:13:58 -0800 (PST)
 Received: from localhost (118-163-122-149.hinet-ip.hinet.net.
  [118.163.122.149]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3b0991c13dcsm3789814a91.3.2026.11.05.01.14.12
+ d9443c01a7336-2ed091b5267sm15675255ad.62.2026.11.05.01.13.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 01:14:12 -0800 (PST)
-Date: Thu, 05 Nov 2026 17:12:57 +0800
-Subject: [PATCH 05/16] tests/qtest: ina230: cover the injection-property limits
+ Thu, 05 Nov 2026 01:13:57 -0800 (PST)
+Date: Thu, 05 Nov 2026 17:12:55 +0800
+Subject: [PATCH 03/16] tests/qtest: ina230: cover voltage injection and
+ power derivation
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261105-sensor-ina23x-v1-5-5433ed104990@free.fr>
+Message-Id: <20261105-sensor-ina23x-v1-3-5433ed104990@free.fr>
 References: <20261105-sensor-ina23x-v1-0-5433ed104990@free.fr>
 In-Reply-To: <20261105-sensor-ina23x-v1-0-5433ed104990@free.fr>
 To: qemu-devel@nongnu.org
@@ -73,15 +74,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, eblot@meta.com,
  Laurent Vivier <lvivier@redhat.com>, Emmanuel Blot <emmanuel.blot@free.fr>, 
  Glenn Miles <milesg@linux.ibm.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793869975; l=4069;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793869975; l=5805;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=3UD9l/AEvavR8S7pGFg9evzwIlCmssJcXuU0S21eH1k=;
- b=vR+gD93r/yoe2J8+z6SuJuPnXXYk+GoOx9si90ZxklZZz/X3rkosbw4/iVcmbUUjNFcKjoEBL
- ZXyniqx/zsiDLX5yxTorBhHkZEhp6ReIvo6DW4gdEd3Gh9yHv2YXPiu
+ bh=NCCZ3C0XT97Dof+ZcjxjWcN4sAhVvyKJXvbHGJ+/418=;
+ b=ah1xyy0TKPIP1tY6f2ghQ1O4CkmAD/cIokJ2o5Lttmb5M/7CTt2H3JMCwpsIakM6A1vVl1E3v
+ O4gjYBszuT5BQeE+KJ+D3MUiLecZi7Lmopr/vOwztx+U9BeuI3CxL+K
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.216.43; envelope-from=eblot.ml@gmail.com;
- helo=mail-pj1-f43.google.com
+Received-SPF: pass client-ip=209.85.214.174; envelope-from=eblot.ml@gmail.com;
+ helo=mail-pl1-f174.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -105,111 +106,169 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Verify that the extremes of the shunt- and bus-voltage injection ranges
-round-trip through the QOM property without truncation or wraparound,
-and that values just outside are rejected rather than silently wrapped.
+Cover the shunt- and bus-voltage injection properties and the current
+and power values the device derives from them through the Calibration
+register, including the zero-calibration case and the clamp/overflow
+edges.
 
 Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/ina230-test.c | 59 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 59 insertions(+)
+ tests/qtest/ina230-test.c | 124 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 124 insertions(+)
 
 diff --git a/tests/qtest/ina230-test.c b/tests/qtest/ina230-test.c
-index 1c55028fcb..36c899efee 100644
+index f7aefd2d97..b01f9445d1 100644
 --- a/tests/qtest/ina230-test.c
 +++ b/tests/qtest/ina230-test.c
-@@ -47,6 +47,11 @@
- #define SHUNT_LSB_NV        2500
- #define BUS_LSB_UV          1250
+@@ -49,6 +49,33 @@
  
-+/* Injection-property limits (see ina230.c) */
-+#define SHUNT_MIN_NV        (-81920000)
-+#define SHUNT_MAX_NV        81917500
-+#define BUS_MAX_UV          36000000
-+
  #define DIE_ID_VAL          0x2310
  
- /* QMP helpers for injecting the physical inputs */
-@@ -76,6 +81,18 @@ static int qmp_ina230_get(const char *property)
-     return ret;
- }
- 
-+/* A qom-set expected to be rejected (value outside the supported range) */
-+static void qmp_ina230_set_fail(const char *property, int64_t value)
++/* QMP helpers for injecting the physical inputs */
++
++static void qmp_ina230_set(const char *property, int value)
 +{
 +    QDict *resp;
 +
 +    resp = qmp("{ 'execute': 'qom-set', 'arguments':"
-+               " { 'path': %s, 'property': %s, 'value': %lld } }",
-+               INA230_TEST_ID, property, (long long)value);
-+    g_assert(qdict_haskey(resp, "error"));
++               " { 'path': %s, 'property': %s, 'value': %d } }",
++               INA230_TEST_ID, property, value);
++    g_assert(qdict_haskey(resp, "return"));
 +    qobject_unref(resp);
++}
++
++static int qmp_ina230_get(const char *property)
++{
++    QDict *resp;
++    int ret;
++
++    resp = qmp("{ 'execute': 'qom-get', 'arguments':"
++               " { 'path': %s, 'property': %s } }",
++               INA230_TEST_ID, property);
++    g_assert(qdict_haskey(resp, "return"));
++    ret = qdict_get_int(resp, "return");
++    qobject_unref(resp);
++    return ret;
 +}
 +
  /* Power-on-reset default values and the Die ID */
  static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
  {
-@@ -307,6 +324,46 @@ static void test_cvrf(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE) & ME_CVRF, ==, 0);
+@@ -98,6 +125,96 @@ static void test_config_wmask(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(i2c_get16(dev, REG_CONFIG), ==, 0x7FFF);
  }
  
-+/* Shunt-voltage injection limits */
-+static void test_shunt_limits(void *obj, void *data, QGuestAllocator *alloc)
++/* Shunt voltage register, including two's-complement negatives */
++static void test_shunt_injection(void *obj, void *data, QGuestAllocator *alloc)
 +{
 +    QI2CDevice *dev = (QI2CDevice *)obj;
 +
-+    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++    qmp_ina230_set("shunt-voltage", 20000000);
++    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x1F40);
 +
-+    qmp_ina230_set("shunt-voltage", SHUNT_MAX_NV);
-+    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x7FFF);
-+    g_assert_cmpint(qmp_ina230_get("shunt-voltage"), ==, SHUNT_MAX_NV);
++    qmp_ina230_set("shunt-voltage", -80000000);
++    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x8300);
 +
-+    qmp_ina230_set("shunt-voltage", SHUNT_MIN_NV);
-+    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x8000);
-+    g_assert_cmpint(qmp_ina230_get("shunt-voltage"), ==, SHUNT_MIN_NV);
-+
-+    qmp_ina230_set_fail("shunt-voltage", (int64_t)SHUNT_MAX_NV + 1);
-+    qmp_ina230_set_fail("shunt-voltage", (int64_t)SHUNT_MIN_NV - 1);
-+    g_assert_cmpint(qmp_ina230_get("shunt-voltage"), ==, SHUNT_MIN_NV);
-+    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x8000);
++    g_assert_cmpint(qmp_ina230_get("shunt-voltage"), ==, -80000000);
 +}
 +
-+/* Bus-voltage injection limits. */
-+static void test_bus_limits(void *obj, void *data, QGuestAllocator *alloc)
++/* Bus voltage register */
++static void test_bus_injection(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    qmp_ina230_set("bus-voltage", 12000000);
++    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x2580);
++
++    qmp_ina230_set("bus-voltage", 11980000);
++    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x2570);
++}
++
++/* Calibration-derived current, using the datasheet worked example */
++static void test_calibration_current(void *obj, void *data,
++                                     QGuestAllocator *alloc)
 +{
 +    QI2CDevice *dev = (QI2CDevice *)obj;
 +
 +    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
 +
-+    qmp_ina230_set("bus-voltage", 0);
-+    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x0000);
++    qmp_ina230_set("shunt-voltage", 20000000);
++    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x0000);
 +
-+    qmp_ina230_set("bus-voltage", BUS_MAX_UV);
++    i2c_set16(dev, REG_CALIBRATION, 0x0A00);
++    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x2710);
++}
++
++/* Calibration-derived power, using the datasheet worked example */
++static void test_power(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++
++    qmp_ina230_set("shunt-voltage", 20000000);
++    qmp_ina230_set("bus-voltage", 11980000);
++    i2c_set16(dev, REG_CALIBRATION, 0x0A00);
++
++    g_assert_cmphex(i2c_get16(dev, REG_POWER), ==, 0x12B8);
++}
++
++/* With Calibration == 0 the Current and Power registers stay at zero */
++static void test_zero_cal(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++
++    qmp_ina230_set("shunt-voltage", 20000000);
++    qmp_ina230_set("bus-voltage", 11980000);
++
++    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x0000);
++    g_assert_cmphex(i2c_get16(dev, REG_POWER), ==, 0x0000);
++}
++
++/* Clamping at full scale and the OVF (math overflow) flag */
++static void test_edges_overflow(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set16(dev, REG_CONFIG, CONFIG_RST);
++
++    qmp_ina230_set("shunt-voltage", 81917500);
++    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x7FFF);
++    qmp_ina230_set("shunt-voltage", -81920000);
++    g_assert_cmphex(i2c_get16(dev, REG_SHUNT), ==, 0x8000);
++
++    qmp_ina230_set("bus-voltage", 36000000);
 +    g_assert_cmphex(i2c_get16(dev, REG_BUS), ==, 0x7080);
-+    g_assert_cmpint(qmp_ina230_get("bus-voltage"), ==, BUS_MAX_UV);
 +
-+    qmp_ina230_set_fail("bus-voltage", (int64_t)BUS_MAX_UV + 1);
-+    qmp_ina230_set_fail("bus-voltage", -1);
-+    g_assert_cmpint(qmp_ina230_get("bus-voltage"), ==, BUS_MAX_UV);
++    qmp_ina230_set("shunt-voltage", 20000000);
++    i2c_set16(dev, REG_CALIBRATION, 0x7FFF);
++    g_assert_cmphex(i2c_get16(dev, REG_CURRENT), ==, 0x7FFF);
++    g_assert_cmphex(i2c_get16(dev, REG_MASK_ENABLE) & ME_OVF, ==, ME_OVF);
 +}
 +
  static void ina230_register_nodes(void)
  {
      QOSGraphEdgeOptions opts = {
-@@ -322,6 +379,8 @@ static void ina230_register_nodes(void)
+@@ -111,5 +228,12 @@ static void ina230_register_nodes(void)
+     qos_add_test("defaults", "ina230", test_defaults, NULL);
+     qos_add_test("soft-reset", "ina230", test_soft_reset, NULL);
      qos_add_test("config-wmask", "ina230", test_config_wmask, NULL);
-     qos_add_test("shunt-injection", "ina230", test_shunt_injection, NULL);
-     qos_add_test("bus-injection", "ina230", test_bus_injection, NULL);
-+    qos_add_test("shunt-limits", "ina230", test_shunt_limits, NULL);
-+    qos_add_test("bus-limits", "ina230", test_bus_limits, NULL);
-     qos_add_test("calibration-current", "ina230", test_calibration_current,
-                  NULL);
-     qos_add_test("power", "ina230", test_power, NULL);
++    qos_add_test("shunt-injection", "ina230", test_shunt_injection, NULL);
++    qos_add_test("bus-injection", "ina230", test_bus_injection, NULL);
++    qos_add_test("calibration-current", "ina230", test_calibration_current,
++                 NULL);
++    qos_add_test("power", "ina230", test_power, NULL);
++    qos_add_test("zero-cal", "ina230", test_zero_cal, NULL);
++    qos_add_test("edges-overflow", "ina230", test_edges_overflow, NULL);
+ }
+ libqos_init(ina230_register_nodes);
 
 -- 
 2.53.0-Meta

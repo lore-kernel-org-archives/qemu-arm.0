@@ -1,101 +1,98 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 584FE606A32D
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 15:14:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89B51606D807
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Nov 2026 15:30:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ZrEH2hXP
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=HUmy6b9R
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xOzAa-0001Bo-L8; Thu, 05 Nov 2026 10:14:28 -0500
+	id 1xOzPQ-0005Ea-Tz; Thu, 05 Nov 2026 10:29:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
- id 1xOzAY-0001BX-9u
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 10:14:26 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
- id 1xOzAV-0007kU-Pn
- for qemu-arm@nongnu.org; Thu, 05 Nov 2026 10:14:25 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4af52002471so4063065e9.1
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 07:14:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793891662; x=1794496462; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=YED3UkXnGkeRIQg9+GqoACwf2Z55OMF8QOscjGBLPko=;
- b=ZrEH2hXPv+lIxtbpdpYDNWwlho9xseLWRFJ4FRULQm8u3vGM1468kvLVStkKg0Pb3f
- lJ+YotQIxyQQSpoiq6dnUi+pfwiUdQd7bCMQ4HKny1Fs+zP0jGIGXMlfQyfJoKDQkHYu
- SFldLoehnqaPjlIk27AvbYs7tQWqcqUC4cuvxLgPwhLpOjTS2FEpJU+YRadzjR+mKiqC
- bXgdw+oYjTaKp7z3IqULgQ8SItKf4/KTNeRdMwJkRp+7okb9tx3zRVqBIvQOgC6T+8D7
- +Zh1WzIYAsGjlpE+B3SQuXeJRnejGSrndzwxIx5okJturr5JNU+UQEcKuTuPgnuoFtyZ
- 4w8g==
+ (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
+ id 1xOzPP-0005DO-1T
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 10:29:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
+ id 1xOzPM-00012o-Gv
+ for qemu-arm@nongnu.org; Thu, 05 Nov 2026 10:29:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1793892582;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WnyEFMD5bKu5clECubxywcLnBEDqdA+HPkHOPDgjFAM=;
+ b=HUmy6b9R3RCFVPzoGi7k+C9A+/thvP+b7JtaVHNWetySugEx1B/KCDAs8ZQ2YkKeaq0LxC
+ 0wblYhL7AVQPc8nPiiJvMQT05m2fCwspXdvsIfz0CoLZyTSDAZraL6cZA50SeCY3YUzCi3
+ 4qUMMMZJhuC2x28F5IpKTIW96QofRhw=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-43-2FQp03c8MIuWc47fAGGlvg-1; Thu, 05 Nov 2026 10:29:41 -0500
+X-MC-Unique: 2FQp03c8MIuWc47fAGGlvg-1
+X-Mimecast-MFC-AGG-ID: 2FQp03c8MIuWc47fAGGlvg_1793892580
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-91e8badc80fso23835046d6.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 07:29:40 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793891662; x=1794496462;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=YED3UkXnGkeRIQg9+GqoACwf2Z55OMF8QOscjGBLPko=;
- b=DrLcMAHgkDD7m2jdjxgQXse1qyiOPlCyRbNf77fIV9w0ym90D//s/AhIwSp2Bwmu7D
- /6U9xXQQCR59DSMyC7BELH/QGZE16KXwXX+v0NiFajXkEGxa49uDdF6DV+Lhb7Y/yGyi
- pwA4svFYl18Ua+u2NTbkxbe3zXDI4LbMEmtYsEq6Oo5IaxIqoqE2QarCLrltSY2Z6koc
- BehKljVBUjwVsv41S7RFEJq3pYIfpXz92yx1GaMSOfoqe2ItAxBETp2xQJeLs/7Yj6f2
- NvUuma/C/UlhAihT7z9Pp1voa9FvPtP9+J9uIwQtmHcBpZOdrjXb8USTv6JZ84FyGnRK
- +AyQ==
+ d=1e100.net; s=20260707; t=1793892580; x=1794497380;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=WnyEFMD5bKu5clECubxywcLnBEDqdA+HPkHOPDgjFAM=;
+ b=gb1fhBW0oOiIx1mSUkC8lm5xxS2tilUlBXSchfssnXOJBPLuyXvRuyT8WuWQkc64c/
+ 49JJzZNtMmEg1JOaIQxLt2COQDbb0ty3TrW20MB1d60e184VBwdlhkxO16vB0apkap42
+ 5hVj8CVj80Q/Pwi74ts7+u0QIP0sPKCY20F1BlwXQSpq9X7/fx+4IhxSs2lylEcYYZL7
+ ZcnenY9MlVQyhU/K1xJ5zHroll5LT0Vho1nl1AmNktVri3L8jNdmmQeBFMn0AWhg+bAZ
+ cmJaLkgvIxOKJqCeZVx8QNPJsNOHNbRu+uP8/itHrgeFqo5wKEUuV92DYjjAi9zDGPfL
+ 31QQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxeNT4GEBf4ryKhpSI4DSUt8S4Y7G67BjuepNJrSZ0Ltd8a09XqNGgc+NXsbW9Q1lWTe1y7sLY0ow==@nongnu.org
-X-Gm-Message-State: APuU4Z/9x7N7TzoHjkRzNvA01tkU126sQki9i1oT+cz0nnD7d1hIyEPB
- TYOD327vjgpxOJi6s3racXMnKoSjrbdV/HZn8KxLefljaGcqzFq3HA5x
-X-Gm-Gg: AYBFou2WMw//NrA5TURfrs7q6eES4lkdGvWwMxU1DTo+jU2uqB/hGR1AakxozZjFp8O
- FFCHwR34nylx9+EO9AVwlyDjiT+Zu3ZRQHlwxckE7ARYNafM3oo9Unpzwsq/YABB0frh50ZPZfZ
- vukw0TPpl1rd1cUJdsyDDRIKB37qnINxXqA31MDgH5vbmcuZW5eBAr1SQCPiNTZhu14QHk5S+nf
- qOZ7Rz+UqGBYkqOD1IhqD1tHBJ6M/5NKHk9CiuaChfVk/CaE/0Mx4BS/SWakJMeLczYfKpI96k+
- e4qEl0vnXQh3/KFVL+LMx6EmR9MvywU6l1cla9+KhEWJhSu1Ku4UdPl7tlvsMeID6q6+UqU8UoD
- jtRyzNp21jc460vtdFvrFNT2Vo2FowKGPBGvckmBmt3lfh0K7nggBCuASJdn72ysIXqjsKjkQU4
- JQ4pFvc5Hk3wPXp95vEtwmcsY+3NAiDWE+rOSViIiWCjgL4Is1nEumVL4Utnycw2yeVQKSXx3ls
- WpYeeOTx3M24fO9q6sQHvrGZQBhvbxVhZ0Lc5rkw7BNOrsqaK+j1qrvxxtomWM6uNFEtxVAbCSr
- qwIFBKt7+X59kCkq9NNhsFKb8cO8FkgwZ7iNJXCLqRDcgw==
-X-Received: by 2002:a05:6000:2201:b0:48f:bb47:3d68 with SMTP id
- ffacd0b85a97d-48fbb473ee0mr16648646f8f.1.1793891661592; 
- Thu, 05 Nov 2026 07:14:21 -0800 (PST)
-Received: from localhost.localdomain ([193.169.70.108])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48fed45d71dsm10452802f8f.36.2026.11.05.07.14.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Nov 2026 07:14:21 -0800 (PST)
-From: Itai Handler <itai.handler@gmail.com>
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com,
- volodymyr_babchuk@epam.com, peter.maydell@linaro.org,
- francisco.iglesias@amd.com, edgar.iglesias@gmail.com,
- "Edgar E. Iglesias" <edgar.iglesias@amd.com>, berrange@redhat.com,
- eugene@nuvacore.ai, Ruslan_Ruslichenko@epam.com,
- takahiro.nakata.wr@renesas.com, philmd@oss.qualcomm.com
-Subject: [RFC PATCH] hw/core: Add a read FIFO to the Remote Port memory master
-Date: Thu,  5 Nov 2026 17:13:53 +0200
-Message-Id: <20261105151351.2644438-1-itai.handler@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <0b67848f-d69d-4402-b378-4012bcface17@gmail.com>
-References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
- <20260915160044.345788-12-ruslichenko.r@gmail.com>
- <20261103135503.71748-1-itai.handler@gmail.com>
- <0b67848f-d69d-4402-b378-4012bcface17@gmail.com>
+ AKwUvByl/D4oPpegjKUDlVHP/Aq/mGFC6e0W/kBp24uwSmwVTnEx/E0jsbgam/viumGraCEZZ/2mcL6+TA==@nongnu.org
+X-Gm-Message-State: APuU4Z8SiIeS4rahQF5Qr3hIQ0AZtGrzQh6/DzmvfWQJQZiqQvXC4dnG
+ 2cJAazulAJpVty8+KR2J7MlKHlqdXglwnLWhTBsi8p+WlNvg10t1dWsxGI0CI5jIbfPEgcg/DxI
+ ryYST4oOq7IcU0RmKMdOlFA5qnWr1Cv1ggcxnhzRhwgOgwLXArvgAnRI709lcy3nBWU8Tt4uevv
+ 4FTkzywRx/ZdoL3JARBgQMLkWz5hur
+X-Gm-Gg: AYBFou3lDTwW1AkVMwr0pyDdg04HS3vu7FqSHF0rJ4yiXSFikBpTqVg9UuvXRx18koR
+ 78T+P8F5iHge4eOkucBHJSDdpYcG5fR7x2WJsI2gMZIO2ZHTlxHudPncsO1Ub/hEHyHJPzK5ghU
+ 3GIPNM/Jf1uBkptPpWuO20bblnLmyofxI0o6hWn9MXWAEC5t4JQ3dPR68KbQ9cu13fdHNsDnxGq
+ 2vYjSxvH+l/kXD1+77eZM92bqWuMVjJhDcuXgHHkdCuei3lswm1wNdy1bmoY8koCmGtWbaPoA==
+X-Received: by 2002:ad4:4eaa:0:b0:91c:6d30:7c2c with SMTP id
+ 6a1803df08f44-91ca4ba3932mr328995836d6.52.1793892579671; 
+ Thu, 05 Nov 2026 07:29:39 -0800 (PST)
+X-Received: by 2002:ad4:4eaa:0:b0:91c:6d30:7c2c with SMTP id
+ 6a1803df08f44-91ca4ba3932mr328995466d6.52.1793892579079; Thu, 05 Nov 2026
+ 07:29:39 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=itai.handler@gmail.com; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20261105125203.40320-1-philmd@oss.qualcomm.com>
+ <20261105125203.40320-18-philmd@oss.qualcomm.com>
+In-Reply-To: <20261105125203.40320-18-philmd@oss.qualcomm.com>
+From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
+Date: Thu, 5 Nov 2026 17:29:28 +0200
+X-Gm-Features: AclHuK9F8ds1NUnep_sO2MDvEwiSehpgOjMaN3-jEOZwX-8jeVoCgePKPh3_RVQ
+Message-ID: <CAPMcbCrrqrBf_7ofh1S=c=2DFTpZf1SjaqEYnVM=miKbSCk-FA@mail.gmail.com>
+Subject: Re: [PATCH v2 17/17] qga/vss-win32: Replace deprecated sprintf() by
+ StrCatBuffA()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, 
+ qemu-ppc@nongnu.org, Michael Roth <michael.roth@amd.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 4ISIr8dTdS7b5Bo8bhQm8HJuLe1LCg3EHfmxU27-Q8s_1793892580
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="000000000000f11ab3065f892969"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kkostiuk@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,352 +104,184 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	HTML_MESSAGE,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_PASS,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-A guest that drains a device's data FIFO, a QSPI controller's for
-example, reads it one word per access, and each access to a Remote
-Port memory master is a round trip to the peer, about 17 us on a fast
-host: such a guest reads a flash at about 230 kB/s.
+--000000000000f11ab3065f892969
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Let the peer hand the master what the guest is about to read.  When
-QEMU's hello announces CAP_READ_FIFO, the peer may send writes on the
-master's channel: their data, up to RP_READ_FIFO_SIZE (4 KiB) bytes,
-replace what the master's read FIFO holds, and the next reads whose
-start address is in [addr, addr + stream_width) are answered from it
-in order, without a round trip.  A read the FIFO covers only in part
-reads the rest from the peer.  A write of no data, or a reset, empties
-the FIFO.
+On Thu, Nov 5, 2026 at 2:54=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <
+philmd@oss.qualcomm.com> wrote:
 
-The peer posts the fill before its response to the access that told
-it what comes next, and rp_process() runs after each response, so the
-fill is in place before that access completes.  The peer decides what
-the guest will read; the master only replays bytes in order and knows
-nothing of the device.
+> Formatting is not necessary, replace the deprecated
+> sprintf() by StrCpyNA() and StrCatBuffA() calls.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
+> ---
+>  qga/vss-win32/install.cpp | 17 ++++++++++++-----
+>  1 file changed, 12 insertions(+), 5 deletions(-)
+>
+> diff --git a/qga/vss-win32/install.cpp b/qga/vss-win32/install.cpp
+> index df00588c923a..1a3d5cbf75d5 100644
+> --- a/qga/vss-win32/install.cpp
+> +++ b/qga/vss-win32/install.cpp
+> @@ -562,7 +562,8 @@ STDAPI DllRegisterServer(void)
+>
+>      /* Add this module to registry */
+>
+> -    sprintf(key, "CLSID\\%s", g_szClsid);
+> +    StrCpyNA(key, "CLSID\\", sizeof(key));
+> +    StrCatBuffA(key, g_szClsid, sizeof(key));
+>
 
-The size is a protocol constant rather than a property, so that the
-two ends cannot disagree: the peer never sees the error response to a
-posted fill.  The buffer is allocated at the first fill.
+MSFT does not recommend to use StrCatBuffA due to security warning.
+What about using StringCchCatA instead of snprintf, even in this case?
 
-Measured with a model of a QSPI controller, the flash behind it a
-model of its own over a link of its own: the controller's first read
-of a batch hands QEMU the bytes that the guest's last read of the
-fill level promised, so a batch of 256 bytes costs two round trips
-instead of 65.  A guest booting from that flash through U-Boot, means
-of three interleaved runs, two for the kernel FIT:
 
-                                            before    after
-  U-Boot sf read, 1 MiB                     4.59 s    0.35 s
-  U-Boot sf read, the 15.9 MB kernel FIT    68.0 s    4.9 s
-  Linux dd from a flash partition, 256 KiB  1.21 s    0.16 s
-  QEMU's start to a Linux shell             90.1 s    24.9 s
+>      if (!CreateRegistryKey(key, NULL, g_szClsid)) {
+>          goto out;
+>      }
+> @@ -572,7 +573,9 @@ STDAPI DllRegisterServer(void)
+>          goto out;
+>      }
+>
+> -    sprintf(key, "CLSID\\%s\\InprocServer32", g_szClsid);
+> +    StrCpyNA(key, "CLSID\\", sizeof(key));
+> +    StrCatBuffA(key, g_szClsid, sizeof(key));
+> +    StrCatBuffA(key, "\\InprocServer32", sizeof(key));
+>      if (!CreateRegistryKey(key, NULL, dllPath)) {
+>          goto out;
+>      }
+> @@ -581,7 +584,9 @@ STDAPI DllRegisterServer(void)
+>          goto out;
+>      }
+>
+> -    sprintf(key, "CLSID\\%s\\ProgID", g_szClsid);
+> +    StrCpyNA(key, "CLSID\\", sizeof(key));
+> +    StrCatBuffA(key, g_szClsid, sizeof(key));
+> +    StrCatBuffA(key, "\\ProgID", sizeof(key));
+>      if (!CreateRegistryKey(key, NULL, g_szProgid)) {
+>          goto out;
+>      }
+> @@ -590,7 +595,8 @@ STDAPI DllRegisterServer(void)
+>          goto out;
+>      }
+>
+> -    sprintf(key, "%s\\CLSID", g_szProgid);
+> +    StrCpyNA(key, g_szProgid, sizeof(key));
+> +    StrCatBuffA(key, "\\CLSID", sizeof(key));
+>      if (!CreateRegistryKey(key, NULL, g_szClsid)) {
+>          goto out;
+>      }
+> @@ -651,7 +657,8 @@ STDAPI DllUnregisterServer(void)
+>          errmsg(hr, "CoCreateInstance(VSSCoordinator) failed");
+>      }
+>
+> -    sprintf(key, "CLSID\\%s", g_szClsid);
+> +    StrCpyNA(key, "CLSID\\", sizeof(key));
+> +    StrCatBuffA(key, g_szClsid, sizeof(key));
+>      SHDeleteKey(HKEY_CLASSES_ROOT, key);
+>      SHDeleteKey(HKEY_CLASSES_ROOT, g_szProgid);
+>
+> --
+> 2.55.0
+>
+>
 
-The capability's number needs agreeing with the other Remote Port
-implementations.
+--000000000000f11ab3065f892969
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Itai Handler <itai.handler@gmail.com>
----
-Ruslan, thank you for the quick answer - here is the patch as an RFC,
-as you suggested.
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 5, =
+2026 at 2:54=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:p=
+hilmd@oss.qualcomm.com">philmd@oss.qualcomm.com</a>&gt; wrote:<br></div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
+t:1px solid rgb(204,204,204);padding-left:1ex">Formatting is not necessary,=
+ replace the deprecated<br>
+sprintf() by StrCpyNA() and StrCatBuffA() calls.<br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@oss=
+.qualcomm.com" target=3D"_blank">philmd@oss.qualcomm.com</a>&gt;<br>
+---<br>
+=C2=A0qga/vss-win32/install.cpp | 17 ++++++++++++-----<br>
+=C2=A01 file changed, 12 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/qga/vss-win32/install.cpp b/qga/vss-win32/install.cpp<br>
+index df00588c923a..1a3d5cbf75d5 100644<br>
+--- a/qga/vss-win32/install.cpp<br>
++++ b/qga/vss-win32/install.cpp<br>
+@@ -562,7 +562,8 @@ STDAPI DllRegisterServer(void)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* Add this module to registry */<br>
+<br>
+-=C2=A0 =C2=A0 sprintf(key, &quot;CLSID\\%s&quot;, g_szClsid);<br>
++=C2=A0 =C2=A0 StrCpyNA(key, &quot;CLSID\\&quot;, sizeof(key));<br>
++=C2=A0 =C2=A0 StrCatBuffA(key, g_szClsid, sizeof(key));<br></blockquote><d=
+iv><br></div><div>MSFT does not recommend=C2=A0to use=C2=A0StrCatBuffA due =
+to security warning.</div><div>What about using=C2=A0StringCchCatA instead =
+of snprintf, even in this case?</div><div>=C2=A0</div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
+4,204,204);padding-left:1ex">
+=C2=A0 =C2=A0 =C2=A0if (!CreateRegistryKey(key, NULL, g_szClsid)) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto out;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -572,7 +573,9 @@ STDAPI DllRegisterServer(void)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto out;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+-=C2=A0 =C2=A0 sprintf(key, &quot;CLSID\\%s\\InprocServer32&quot;, g_szClsi=
+d);<br>
++=C2=A0 =C2=A0 StrCpyNA(key, &quot;CLSID\\&quot;, sizeof(key));<br>
++=C2=A0 =C2=A0 StrCatBuffA(key, g_szClsid, sizeof(key));<br>
++=C2=A0 =C2=A0 StrCatBuffA(key, &quot;\\InprocServer32&quot;, sizeof(key));=
+<br>
+=C2=A0 =C2=A0 =C2=A0if (!CreateRegistryKey(key, NULL, dllPath)) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto out;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -581,7 +584,9 @@ STDAPI DllRegisterServer(void)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto out;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+-=C2=A0 =C2=A0 sprintf(key, &quot;CLSID\\%s\\ProgID&quot;, g_szClsid);<br>
++=C2=A0 =C2=A0 StrCpyNA(key, &quot;CLSID\\&quot;, sizeof(key));<br>
++=C2=A0 =C2=A0 StrCatBuffA(key, g_szClsid, sizeof(key));<br>
++=C2=A0 =C2=A0 StrCatBuffA(key, &quot;\\ProgID&quot;, sizeof(key));<br>
+=C2=A0 =C2=A0 =C2=A0if (!CreateRegistryKey(key, NULL, g_szProgid)) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto out;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -590,7 +595,8 @@ STDAPI DllRegisterServer(void)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto out;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+-=C2=A0 =C2=A0 sprintf(key, &quot;%s\\CLSID&quot;, g_szProgid);<br>
++=C2=A0 =C2=A0 StrCpyNA(key, g_szProgid, sizeof(key));<br>
++=C2=A0 =C2=A0 StrCatBuffA(key, &quot;\\CLSID&quot;, sizeof(key));<br>
+=C2=A0 =C2=A0 =C2=A0if (!CreateRegistryKey(key, NULL, g_szClsid)) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto out;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -651,7 +657,8 @@ STDAPI DllUnregisterServer(void)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0errmsg(hr, &quot;CoCreateInstance(VSSCoor=
+dinator) failed&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+-=C2=A0 =C2=A0 sprintf(key, &quot;CLSID\\%s&quot;, g_szClsid);<br>
++=C2=A0 =C2=A0 StrCpyNA(key, &quot;CLSID\\&quot;, sizeof(key));<br>
++=C2=A0 =C2=A0 StrCatBuffA(key, g_szClsid, sizeof(key));<br>
+=C2=A0 =C2=A0 =C2=A0SHDeleteKey(HKEY_CLASSES_ROOT, key);<br>
+=C2=A0 =C2=A0 =C2=A0SHDeleteKey(HKEY_CLASSES_ROOT, g_szProgid);<br>
+<br>
+-- <br>
+2.55.0<br>
+<br>
+</blockquote></div></div>
 
-It applies on top of "hw/core: Introduce Remote Port Co-simulation
-Protocol" v2 on its own (the 20 patches, on QEMU 11.1.2): none of the
-FDT machine series is needed for it, and checkpatch is clean.
-
-The one thing I cannot settle on my own is the capability number:
-CAP_READ_FIFO takes 5, the next free one in v2, but the other Remote
-Port implementations would have to agree on it.
-
-Happy to rework or drop any of this, and to test v3.
-
- hw/core/remote-port-memory-master.c         | 111 +++++++++++++++++++-
- hw/core/remote-port-proto.c                 |   3 +
- hw/core/remote-port.c                       |   1 +
- hw/core/trace-events                        |   2 +
- include/hw/core/remote-port-memory-master.h |  13 +++
- include/hw/core/remote-port-proto.h         |  12 +++
- 6 files changed, 139 insertions(+), 3 deletions(-)
-
-diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote-port-memory-master.c
-index 4ef03c959..3a519f562 100644
---- a/hw/core/remote-port-memory-master.c
-+++ b/hw/core/remote-port-memory-master.c
-@@ -17,6 +17,7 @@
- #include "hw/core/sysbus.h"
- #include "migration/vmstate.h"
- #include "hw/core/qdev-properties.h"
-+#include "qemu/error-report.h"
- #include "trace.h"
- 
- #include "hw/core/remote-port-proto.h"
-@@ -184,31 +185,115 @@ MemTxResult rp_mm_access(RemotePort *rp, uint32_t rp_dev,
-                                       0);
- }
- 
-+/*
-+ * Pop up to @size bytes of the read FIFO into @data for a read at @addr,
-+ * the address the peer sees, if it holds data for that address.
-+ */
-+static unsigned rp_mm_fifo_pop(RemotePortMemoryMaster *s, uint64_t addr,
-+                               unsigned size, uint64_t *data)
-+{
-+    unsigned n, i;
-+
-+    if (!s->fifo.len || addr < s->fifo.addr ||
-+        addr - s->fifo.addr >= s->fifo.range) {
-+        return 0;
-+    }
-+    n = MIN(size, s->fifo.len);
-+    for (i = 0; i < n; i++) {
-+        *data |= (uint64_t)s->fifo.buf[s->fifo.head++] << (i * 8);
-+    }
-+    s->fifo.len -= n;
-+    trace_remote_port_memory_master_fifo_pop(s->rp_dev, addr, n, s->fifo.len);
-+    return n;
-+}
-+
- static MemTxResult rp_mm_read(void *opaque, hwaddr addr, uint64_t *data,
-                                  unsigned size, MemTxAttrs attrs)
- {
-     MemTxResult ret;
-     RemotePortMap *map = opaque;
-     RemotePortMemoryMaster *s = map->parent;
-+    uint64_t fifo_data = 0;
-+    unsigned n;
- 
-     RPMemoryTransaction tr = {};
- 
-+    n = rp_mm_fifo_pop(s, addr + (s->relative ? 0 : map->offset), size,
-+                       &fifo_data);
-+    if (n == size) {
-+        *data = fifo_data;
-+        return MEMTX_OK;
-+    }
-+
-+    /* What the FIFO did not hold is read from the peer.  */
-     tr.opaque = map;
-     tr.rw = false;
--    tr.addr = addr;
--    tr.size = size;
-+    tr.addr = addr + n;
-+    tr.size = size - n;
-     tr.attr = attrs;
- 
-     ret = rp_mm_access(s->rp, s->rp_dev, s->peer, &tr, s->relative,
-                 map->offset);
- 
-     if (ret == MEMTX_OK) {
--        *data = tr.data.u64;
-+        *data = fifo_data | tr.data.u64 << (n * 8);
-     }
- 
-     return ret;
- }
- 
-+/*
-+ * A write from the peer on our channel fills the read FIFO
-+ * (CAP_READ_FIFO): its data replace what the FIFO holds, for the reads
-+ * of [addr, addr + stream_width).  A write of no data empties it.  The
-+ * peer sends it before its response to an access, so that the response
-+ * drains it (rp_mm_access_with_def_attr()) before the access completes.
-+ */
-+static void rp_mm_fifo_fill(RemotePortDevice *rpd, struct rp_pkt *pkt)
-+{
-+    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(rpd);
-+    uint8_t *data = rp_busaccess_rx_dataptr(s->peer,
-+                                            &pkt->busaccess_ext_base);
-+    uint32_t len = pkt->busaccess.len;
-+    uint32_t range = pkt->busaccess.stream_width;
-+    uint32_t resp = RP_RESP_OK;
-+
-+    trace_remote_port_memory_master_fifo_fill(pkt->hdr.dev,
-+                                              pkt->busaccess.addr, range, len);
-+    if (len > RP_READ_FIFO_SIZE || (len && !range)) {
-+        g_autofree char *path = object_get_canonical_path(OBJECT(s));
-+
-+        warn_report_once("%s: a read FIFO fill of %" PRIu32 " bytes for 0x%"
-+                         PRIx32 " bytes at 0x%" PRIx64 " was rejected "
-+                         "(at most %d bytes, for a range)",
-+                         path, len, range, pkt->busaccess.addr,
-+                         RP_READ_FIFO_SIZE);
-+        resp = RP_RESP_ADDR_ERROR;
-+        len = 0;
-+    }
-+    if (len) {
-+        if (!s->fifo.buf) {
-+            s->fifo.buf = g_malloc(RP_READ_FIFO_SIZE);
-+        }
-+        memcpy(s->fifo.buf, data, len);
-+    }
-+    s->fifo.head = 0;
-+    s->fifo.len = len;
-+    s->fifo.addr = pkt->busaccess.addr;
-+    s->fifo.range = range;
-+
-+    if (!(pkt->hdr.flags & RP_PKT_FLAGS_posted)) {
-+        struct rp_pkt_busaccess_ext_base rsp;
-+        struct rp_encode_busaccess_in in;
-+        size_t enclen;
-+
-+        rp_encode_busaccess_in_rsp_init(&in, pkt);
-+        in.attr |= resp << RP_BUS_RESP_SHIFT;
-+        enclen = rp_encode_busaccess(s->peer, &rsp, &in);
-+        rp_write(s->rp, (void *) &rsp, enclen);
-+    }
-+}
-+
- static MemTxResult rp_mm_write(void *opaque, hwaddr addr, uint64_t data,
-                                   unsigned size, MemTxAttrs attrs)
- {
-@@ -286,6 +371,13 @@ static void rp_memory_master_realize(DeviceState *dev, Error **errp)
-     }
- }
- 
-+static void rp_memory_master_reset_hold(Object *obj, ResetType type)
-+{
-+    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(obj);
-+
-+    s->fifo.len = 0;
-+}
-+
- static void rp_prop_allow_set_link(const Object *obj, const char *name,
-                                    Object *val, Error **errp)
- {
-@@ -339,13 +431,25 @@ static Property rp_properties[] = {
-                        max_access_size, RP_MAX_ACCESS_SIZE),
- };
- 
-+static void rp_memory_master_finalize(Object *obj)
-+{
-+    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(obj);
-+
-+    g_free(s->fifo.buf);
-+}
-+
- static void rp_memory_master_class_init(ObjectClass *oc, const void *data)
- {
-     FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
-+    RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
-+    ResettableClass *rc = RESETTABLE_CLASS(oc);
-+
-     device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
-     dc->realize = rp_memory_master_realize;
-     fmc->parse_reg = rp_parse_reg;
-+    rpdc->ops[RP_CMD_write] = rp_mm_fifo_fill;
-+    rc->phases.hold = rp_memory_master_reset_hold;
- }
- 
- static const TypeInfo rp_info = {
-@@ -353,6 +457,7 @@ static const TypeInfo rp_info = {
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(RemotePortMemoryMaster),
-     .instance_init = rp_memory_master_init,
-+    .instance_finalize = rp_memory_master_finalize,
-     .class_init    = rp_memory_master_class_init,
-     .interfaces    = (InterfaceInfo[]) {
-         { TYPE_FDT_GENERIC_MMAP },
-diff --git a/hw/core/remote-port-proto.c b/hw/core/remote-port-proto.c
-index 0c90ba897..df4157de6 100644
---- a/hw/core/remote-port-proto.c
-+++ b/hw/core/remote-port-proto.c
-@@ -420,6 +420,9 @@ void rp_process_caps(struct rp_peer_state *peer,
-         case CAP_ATS:
-             peer->caps.ats = true;
-             break;
-+        case CAP_READ_FIFO:
-+            peer->caps.read_fifo = true;
-+            break;
-         }
-     }
- }
-diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
-index 6a6effdd1..a8718161a 100644
---- a/hw/core/remote-port.c
-+++ b/hw/core/remote-port.c
-@@ -274,6 +274,7 @@ static void rp_say_hello(RemotePort *s)
-         CAP_BUSACCESS_EXT_BYTE_EN,
-         CAP_WIRE_POSTED_UPDATES,
-         CAP_ATS,
-+        CAP_READ_FIFO,
-     };
-     size_t len;
- 
-diff --git a/hw/core/trace-events b/hw/core/trace-events
-index b5f8fafc6..2722e4306 100644
---- a/hw/core/trace-events
-+++ b/hw/core/trace-events
-@@ -41,6 +41,8 @@ rp_wait_resp(const char *rp) "'%s'"
- 
- # remote-port-memory-master.c
- remote_port_memory_master_tx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
-+remote_port_memory_master_fifo_fill(uint32_t dev, uint64_t addr, uint32_t range, uint32_t len) "dev=0x%"PRIx32", addr=0x%"PRIx64", range=0x%"PRIx32", len=0x%"PRIx32
-+remote_port_memory_master_fifo_pop(uint32_t dev, uint64_t addr, uint32_t len, uint32_t left) "dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", left=0x%"PRIx32
- remote_port_memory_master_rx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
- 
- # remote-port-memory-slave.c
-diff --git a/include/hw/core/remote-port-memory-master.h b/include/hw/core/remote-port-memory-master.h
-index 011867f36..a7bcdb703 100644
---- a/include/hw/core/remote-port-memory-master.h
-+++ b/include/hw/core/remote-port-memory-master.h
-@@ -35,6 +35,19 @@ struct RemotePortMemoryMaster {
-     MemoryRegionOps *rp_ops;
-     RemotePortMap *mmaps;
- 
-+    /*
-+     * The read FIFO the peer fills (CAP_READ_FIFO): the reads at
-+     * addresses in [addr, addr + range) return its len bytes from head,
-+     * in order.  buf, RP_READ_FIFO_SIZE bytes, comes with the first fill.
-+     */
-+    struct {
-+        uint8_t *buf;
-+        uint32_t head;
-+        uint32_t len;
-+        uint64_t addr;
-+        uint64_t range;
-+    } fifo;
-+
-     /* public */
-     uint32_t map_num;
-     uint64_t map_offset;
-diff --git a/include/hw/core/remote-port-proto.h b/include/hw/core/remote-port-proto.h
-index c86f0657d..7d1016757 100644
---- a/include/hw/core/remote-port-proto.h
-+++ b/include/hw/core/remote-port-proto.h
-@@ -132,8 +132,19 @@ enum {
-     CAP_WIRE_POSTED_UPDATES = 3,
- 
-     CAP_ATS = 4, /* Address translation services */
-+
-+    /*
-+     * A memory master takes the writes its peer sends on its channel as
-+     * fills of its read FIFO: the data, up to RP_READ_FIFO_SIZE bytes,
-+     * replace what the FIFO holds, and the next reads at addresses in
-+     * [addr, addr + stream_width) return them in order without a round
-+     * trip.  A write of no data empties the FIFO.
-+     */
-+    CAP_READ_FIFO = 5,
- };
- 
-+#define RP_READ_FIFO_SIZE 4096
-+
- struct rp_pkt_hello {
-     struct rp_pkt_hdr hdr;
-     struct rp_version version;
-@@ -309,6 +320,7 @@ struct rp_peer_state {
-         bool busaccess_ext_byte_en;
-         bool wire_posted_updates;
-         bool ats;
-+        bool read_fifo;
-     } caps;
- 
-     /* Used to normalize our clk.  */
--- 
-2.34.1
+--000000000000f11ab3065f892969--
 
 

@@ -1,77 +1,77 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51349606A332
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4464F606A329
 	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 11:05:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=KTtmKY2R
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=a3hzt7Ic
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPHkb-0004xF-RC; Fri, 06 Nov 2026 06:04:53 -0500
+	id 1xPHkb-0004xC-Or; Fri, 06 Nov 2026 06:04:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xPHkZ-0004vH-TL
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xPHkZ-0004v3-Jt
  for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:04:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xPHkW-0007iO-Sf
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xPHkW-0007iH-I6
  for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:04:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793963088;
+ s=mimecast20190719; t=1793963087;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fZzEPuDnBmaAmd0oqE88lPKikLxGxptxKINwlTFkB0U=;
- b=KTtmKY2RjqxEBsNCpbHxGEf5wFEbmg2DxktMrtWva64/Tp5oNv8vzRurPKm7s074SgAICo
- vDTs1x8h0QQbYJnnuR8kcn0T5SYxwi7q2SUexH6EhBjuzb0SSVX297hHK++6Gi8/qLHaak
- aFxNpekhel6w6XeeeG7sHfpfDu616wU=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=klM6SFBCR1bGGvY+WraPUbRgVPj3OhNmBUSAfjM7gTE=;
+ b=a3hzt7IcBiCFUoOwEFPFzyTay4IUY8jj5Db+ZTnkiyqfhqYbgDSfuiDr5XI2xK+d2RAVX7
+ K4LkHnunPgU5RhmMabZ+KzbaZg3LHOEls7tjNONvYMpnqVcBkVD+Gdhn3iGwYf78tX7nHa
+ LBPRc7a1tcfLxKxtgl4yc7k9AfGuOII=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-438-iYJUXcWFN8uPZUyX6dA3VA-1; Fri,
- 06 Nov 2026 06:04:45 -0500
-X-MC-Unique: iYJUXcWFN8uPZUyX6dA3VA-1
-X-Mimecast-MFC-AGG-ID: iYJUXcWFN8uPZUyX6dA3VA_1793963083
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-651-njaFQKjaPgeUmkStPNC_pA-1; Fri,
+ 06 Nov 2026 06:04:44 -0500
+X-MC-Unique: njaFQKjaPgeUmkStPNC_pA-1
+X-Mimecast-MFC-AGG-ID: njaFQKjaPgeUmkStPNC_pA_1793963083
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 99C6D1800288; Fri,  6 Nov 2026 11:04:43 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B9D471956052; Fri,  6 Nov 2026 11:04:43 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1F8EA1800480; Fri,  6 Nov 2026 11:04:43 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2BEE0195608A; Fri,  6 Nov 2026 11:04:43 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B314F21E692D; Fri, 06 Nov 2026 12:04:40 +0100 (CET)
+ id B768A21E6880; Fri, 06 Nov 2026 12:04:40 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: marcandre.lureau@redhat.com, milesg@linux.ibm.com, qemu-ppc@nongnu.org,
  qemu-arm@nongnu.org, mark.caveayland@nutanix.com
-Subject: [PATCH 1/8] hw/gpio/pca9552: Convert pin and led properties to class
- properties
-Date: Fri,  6 Nov 2026 12:04:33 +0100
-Message-ID: <20261106110440.3552588-2-armbru@redhat.com>
+Subject: [PATCH 2/8] hw/gpio/pca9554: Move most code from .h to .c
+Date: Fri,  6 Nov 2026 12:04:34 +0100
+Message-ID: <20261106110440.3552588-3-armbru@redhat.com>
 In-Reply-To: <20261106110440.3552588-1-armbru@redhat.com>
 References: <20261106110440.3552588-1-armbru@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 29mJ-NClOkXnVbjBF2yQA27QIDlgt3K3RPSkI6mtJE8_1793963083
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: 3d9K6a6nZb9jN3vHogYGw0ndP1qGz3XISi9PwfAB-4c_1793963083
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,70 +92,89 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- hw/gpio/pca9552.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ include/hw/gpio/pca9554.h | 25 -------------------------
+ hw/gpio/pca9554.c         | 24 ++++++++++++++++++++++++
+ 2 files changed, 24 insertions(+), 25 deletions(-)
 
-diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-index 90ccf5170e..65a718ef31 100644
---- a/hw/gpio/pca9552.c
-+++ b/hw/gpio/pca9552.c
-@@ -557,10 +557,8 @@ static void pca9535_reset_hold(Object *obj, ResetType type)
-     s->len = 0;
- }
+diff --git a/include/hw/gpio/pca9554.h b/include/hw/gpio/pca9554.h
+index ac835371aa..1b33a8a752 100644
+--- a/include/hw/gpio/pca9554.h
++++ b/include/hw/gpio/pca9554.h
+@@ -8,32 +8,7 @@
+ #ifndef PCA9554_H
+ #define PCA9554_H
  
--static void pca955x_initfn(Object *obj)
-+static void pca955x_pin_init(PCA955xClass *k)
- {
--    PCA955xClass *k = PCA955X_GET_CLASS(obj);
+-#include "hw/i2c/i2c.h"
+-#include "qom/object.h"
 -
-     assert(k->pin_count <= PCA955X_PIN_COUNT_MAX);
-     for (int ix = 0; ix < k->pin_count; ix++) {
-         char *name;
-@@ -568,13 +566,17 @@ static void pca955x_initfn(Object *obj)
-         if (k->has_led_support) {
-             /* LED variant: expose the LED selector state as led%d. */
-             name = g_strdup_printf("led%d", ix);
--            object_property_add(obj, name, "str", &str_type_info,
--                                pca955x_get_led, pca955x_set_led, NULL, NULL);
-+            object_class_property_add(OBJECT_CLASS(k), name,
-+                                      "str", &str_type_info,
-+                                      pca955x_get_led, pca955x_set_led,
-+                                      NULL, NULL);
-         } else {
-             /* GPIO variant: expose the pin logic level as pin%d. */
-             name = g_strdup_printf("pin%d", ix);
--            object_property_add(obj, name, "str", &str_type_info,
--                                pca955x_get_pin, pca955x_set_pin, NULL, NULL);
-+            object_class_property_add(OBJECT_CLASS(k), name,
-+                                      "str", &str_type_info,
-+                                      pca955x_get_pin, pca955x_set_pin,
-+                                      NULL, NULL);
-         }
-         g_free(name);
-     }
-@@ -640,6 +642,7 @@ static void pca9552_class_init(ObjectClass *oc, const void *data)
-     pc->max_reg = PCA9552_LS3;
-     pc->pin_count = 16;
-     pc->has_led_support = true;
-+    pca955x_pin_init(pc);
- }
+ #define TYPE_PCA9554 "pca9554"
+ #define TYPE_PCA9536 "pca9536"
+-typedef struct PCA9554State PCA9554State;
+-DECLARE_INSTANCE_CHECKER(PCA9554State, PCA9554,
+-                         TYPE_PCA9554)
+-
+-#define PCA9554_NR_REGS 4
+-#define PCA9554_PIN_COUNT 8
+-#define PCA9536_PIN_COUNT 4
+-
+-struct PCA9554State {
+-    /*< private >*/
+-    I2CSlave i2c;
+-    /*< public >*/
+-
+-    uint8_t len;
+-    uint8_t pointer;
+-
+-    uint8_t regs[PCA9554_NR_REGS];
+-    qemu_irq gpio_out[PCA9554_PIN_COUNT];
+-    uint8_t ext_state[PCA9554_PIN_COUNT];
+-    char *description; /* For debugging purpose only */
+-    bool hw_dir; /* Honor pin direction */
+-};
  
- static void pca95x5_class_init(ObjectClass *oc, const void *data)
-@@ -653,13 +656,13 @@ static void pca95x5_class_init(ObjectClass *oc, const void *data)
-     pc->max_reg = PCA9535_CONFIG1;
-     pc->pin_count = 16;
-     pc->has_led_support = false;
-+    pca955x_pin_init(pc);
- }
+ #endif
+diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
+index 07bb00babf..e5a1932c89 100644
+--- a/hw/gpio/pca9554.c
++++ b/hw/gpio/pca9554.c
+@@ -13,6 +13,7 @@
+ #include "hw/core/qdev-properties.h"
+ #include "hw/gpio/pca9554.h"
+ #include "hw/gpio/pca9554_regs.h"
++#include "hw/i2c/i2c.h"
+ #include "hw/core/irq.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+@@ -21,6 +22,29 @@
+ #include "trace.h"
+ #include "qom/object.h"
  
- static const TypeInfo pca955x_types[] = {
-     {
-         .name          = TYPE_PCA955X,
-         .parent        = TYPE_I2C_SLAVE,
--        .instance_init = pca955x_initfn,
-         .instance_size = sizeof(PCA955xState),
-         .class_init    = pca955x_class_init,
-         .class_size    = sizeof(PCA955xClass),
++typedef struct PCA9554State PCA9554State;
++DECLARE_INSTANCE_CHECKER(PCA9554State, PCA9554,
++                         TYPE_PCA9554)
++
++#define PCA9554_NR_REGS 4
++#define PCA9554_PIN_COUNT 8
++#define PCA9536_PIN_COUNT 4
++
++struct PCA9554State {
++    /*< private >*/
++    I2CSlave i2c;
++    /*< public >*/
++
++    uint8_t len;
++    uint8_t pointer;
++
++    uint8_t regs[PCA9554_NR_REGS];
++    qemu_irq gpio_out[PCA9554_PIN_COUNT];
++    uint8_t ext_state[PCA9554_PIN_COUNT];
++    char *description; /* For debugging purpose only */
++    bool hw_dir; /* Honor pin direction */
++};
++
+ struct PCA9554Class {
+     /*< private >*/
+     I2CSlaveClass parent_class;
 -- 
 2.55.0
 

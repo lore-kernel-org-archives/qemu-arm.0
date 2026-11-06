@@ -1,91 +1,107 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 27028606A334
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 07:07:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3D9C606D814
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 07:12:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Xj9IZ15z
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=zH+ZmpZT
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPE29-0001L3-K2; Fri, 06 Nov 2026 02:06:45 -0500
+	id 1xPE7e-0002pv-B4; Fri, 06 Nov 2026 02:12:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1xPE27-0001KD-SB
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 02:06:44 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1xPE7Q-0002k9-NI
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 02:12:17 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1xPE24-0004c9-NM
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 02:06:43 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-48b001cd92bso136555f8f.2
- for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 23:06:39 -0800 (PST)
+ id 1xPE7O-0005zt-Lk
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 02:12:12 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4a35db1f202so1943835e9.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Nov 2026 23:12:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793948798; x=1794553598; darn=nongnu.org;
- h=content-type:content-transfer-encoding:mime-version:message-id
- :in-reply-to:references:user-agent:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=JFO3oSEU1vOMULwohE7UZZcdkuXjFvGj+btGyl5NkdE=;
- b=Xj9IZ15zJRfE6peu57Gy6ekucJm6iIPir4NtwqgUviR+5PZJ9UkQZgwaDnb24C5pRh
- f5KTj8fRhaoy/VjZOTFWgmdZgI5oOJF/5SY0JkhjWgXmwYMNKKqnCuJ2cKBmClBPTGMd
- ooETiHxFaddXdvcdc16F8vVpQzlpojPQQZ0sg35nejPAOR+wffacD0fTzi0voq6jpMal
- B+9bFx/KtNaquqDESomuiRxo3HQPXN0OAFHYu8ezpkFqsW1MH6dxOnOjmgSWcOEK9Wa7
- 9MXUBLUcLxZD/eX35H/Tk6OIwzEnMFQ31Yperwc9785eAiGNzKXIN1xzzjbxjToWJy+W
- EvvA==
+ d=linaro.org; s=google; t=1793949128; x=1794553928; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=zmLserNUHH8hDL8xoVhFFdXrJOTDSU6Plbtjgws43Ls=;
+ b=zH+ZmpZT77Rl4G/EVjfoR35QSKdJcpPWj6vpl0PPRwG5sw0hPSDMvKCcGgr4Qp5wa4
+ llP7sLrv/CGxLFpn4/nRY2RZmWxEgCkojL7lej6Fk/N9QvmV1aUbFNvUdHgHK08ENCiu
+ ZA41WQ+X6O7NCLSoUGpgxlxyHFrf4UYXqpZ2CvlHMcBAXGZGxX8NrZT5ZG1ub+NU6LMi
+ kWT5S/L2gqBbYG7FhobwZUe+6p+7mpkfWf2J+Njd1FpIsLxThO/9mI90Ln7rVq1oEfu2
+ B6kyT0TXrkIau/+CFsMPWcgGMacD2WdrAHU2wV6gftGk8R7FZoGaCK4931zL3q2lrvoQ
+ GLuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793948798; x=1794553598;
- h=content-type:content-transfer-encoding:mime-version:message-id
- :in-reply-to:references:user-agent:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1793949128; x=1794553928;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=JFO3oSEU1vOMULwohE7UZZcdkuXjFvGj+btGyl5NkdE=;
- b=qq14JNq/aDu2CFKd7TBGV+UVIm1tN7FuyuFmirXaherZhXETcLoaa74ku/AotXwXsO
- eWBdsV2/AtH2Pgy6PVz6r5M/CyCeW7e5aUMVlJoh44sftVLdN9+kPo9ln3ChNxN8CiP3
- 1cPJh6eCqIpnuZJV5h6WLK9iU6V8lEjzTWe9cAb5a6suv56I+exvrd2OEwsckovdOCEw
- wZz6uHeTu37eK88+tZoCRPTdA5rvL/nhfHh9qgfqyYiRtSRwe3lD1ep187SWa1ttgQOs
- +smQ8KoAEbZPeyD4sR7HfWKyr/iNfCXriTFQmY8ttwPVFnuf93qZIHoUzcSok9PvpXt4
- V5IA==
+ bh=zmLserNUHH8hDL8xoVhFFdXrJOTDSU6Plbtjgws43Ls=;
+ b=oTOlSbb5gzJhxxdNFj31ZCwzMxEvf2fW/vsdDMOWGDBThQRQL/ADJUq41aWuC98dV1
+ p7mF2VUXVfvk0LuiTGHK2E9nJ4MwUcFlZBh6NQP9YlqVvccCEWYoOcEeHlD3cFfQ6+ZT
+ TTUilzv7kyG1nL/DX1e1uebgbJ4QHBQP8lnXLjtWRxiYERFeC0gsN+2Nm1UksdiiDuZh
+ g7JiVNdnBBbWEUOsmMG9+lxpTRj0S61nT5R1W5ljN6pZTJw0cOZBcdc2DikcOmbgdKL3
+ 1Tun52PKH3XXU4Nh7WpIckOqX+5O82iPEOFvnm+pVKaenHb1iZOT84umOi1Rq4eWrVEV
+ m72g==
 X-Forwarded-Encrypted: i=1;
- AL+hErHifM5+AagDXD2CH3oiJ39ET3Z5oe7l/YvRGIYjRtetE9+lF7eCfZ+dqOOb0/NWjLTQrcbkXWx69g==@nongnu.org
-X-Gm-Message-State: APuU4Z+r9Il+hK+qCbBsr7P16j/6b07wXtfveWkOlmrRvzDMlAarOK2s
- Fi+ruo39DMbZIVmIkKN6q2fLBDWlsnMlSHwqJjPw8mo86G6wfNYbkgH0Va1HtpwcjeE=
-X-Gm-Gg: AYBFou14OSroIYrdB0+NQvO+oZC3ewHcE9kFdc8eTjvsUutiOUGHma3lisCOFyAxN1L
- Y1QEhOaPX1FO2tjEvSN32UeOQlmkQjdstmm81dnKE59NKpIvbQyR7JjQh8/UQuhRVDQnXNCkX3a
- hhzTxyOOrcMONVV/h+GTxN1w/Fn7vN5l6swI6G8qUPahjundAEM6mtStt4jpcVcuzKk/0EUpeAu
- P6bqb+wp5aV5FuAdFMpr7QNZ6eYMtJcCciHFfaDCa2gqQgFpKk6wX8f1+vMtJ/e8ffz0EH/vm1d
- diRtBYkOImZp7Bmu555gbEWg6kmzrg/D+w8GkwSla87BwfPEkIfv4DaXZxkP7bQAWeY8jRqTT7E
- Ab92DiUNbUyrsCsf3ibzoIw3mOn0vTZtyulzYOnlcrSArzHXsqKQ73y2X7VenJZjjG7b2k5ulLi
- b4Njg29n8Zxu7z9ABhItcDZHokwyAkxHplhq5G5IQ5XcWWKkfIBIoolsgeXng5YVIkZoOVDTr7h
- HHm6DDWcD2IklPei/L2S2tzGEJzpe7AY+T0rmrm9LaWlSxT63yepq1QJRseJhBWWTDTqvVKYRKI
- XNyXRxYkTrxScNDgxK2Cj3PZuSw6xGvsSjSaiiqAJcwBQpyiVE5BuMI2lVg8NTeIBn7CE4xbywU
- SQ7ICNNGlGhD2Sr1d6tlt7pPc0xdwM/j00GHi3XtA6XNWCotFBfAvXzxPWhT/e2zZLHlOWS9ixF
- kZUh6Vv4+ar4yAGwwBhN8tMKXBxYCqjZHMiw==
-X-Received: by 2002:a05:6000:2488:b0:48e:2448:ea23 with SMTP id
- ffacd0b85a97d-4927807f0a8mr3433230f8f.55.1793948798488; 
- Thu, 05 Nov 2026 23:06:38 -0800 (PST)
-Received: from meli-email.org ([94.66.192.55])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-492d7cc5f11sm1823352f8f.49.2026.11.05.23.06.37
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 05 Nov 2026 23:06:37 -0800 (PST)
-Date: Fri, 06 Nov 2026 09:05:39 +0200
+ AKwUvBxgxFm1mYqZntLX5f1r5m7JwS12lb4//Lc6CRQEHPADT6yCx1q60hXYQyqoWr2bTtBilp2urs+DgQ==@nongnu.org
+X-Gm-Message-State: APuU4Z9cI04MAWvOg+zvTehMkD+QS9X2f9lVhwK6yN8GtCTze/dWRISc
+ nWlx7RityRNIxZuU3zc9rC9zYIK3W08mD99A+iKU1j6es3ysFuvfWC6NsV1dX+IgQos=
+X-Gm-Gg: AYBFou0wHgfYJTX4ys2cKd7Mp4w20jguFk39IaWCF2xBVxerDih+rMBNCxOsYZRccX1
+ aTQMNNsN0rRHN0sGxKnaID4V/U4NK+XoRPmbaQMtxqzTAveBT0aXmUzDuX5ziEC9cAJTAYaXNAj
+ h7LR8VL2SwSlOtHnxJ2W4BgfxSp9GJVqpfv89eB/YtMA/ehHpJmsPAPkEyNz4voN6qeclOb7M4G
+ y+aCfHPxfKpVnf2ZuJS7BpITLii084V/DQUwgypq0ZRk+pkTj5HJLZGky/tCXce64DXGuvyV+nw
+ sEvZYP4n3ANJjSjlo+QDZMANV5AXgC6uCKvPsHuzum8KndfHauZO5MKQ70L4mLhRadigndB0cTR
+ RygrW7Uxi/fX89JcUwuoQDuPF9vXyNNr2b4sDSslhYKZsODMexiyGQo+Tqd7cr1LpeD9AYl3PSw
+ 3aVCV2Jwf1FvboLR+UVT26iju7Om1JykDIpS5F/VH8ENObmVcUo/sB8IFCH62Pd1LR4iOhF81Xv
+ IlQ9QfRgh1dHmW8tkif9WIfhlZ3r05pkiGO7YQrR+51cK7TdRXycQedZmmvbMtyfCRr5mqPwSTG
+ Shr2S3rcBRGFvpbBKjM3GpCkjwD1/YIBCjNRL3UkDqNWbQAZl8j1iLf4SdFrp/EECi1zxhhFLSP
+ +Jg46JezneUgSmYOzgafFPFM8O7cpTFV5izJdaT5z4YKhfVgLmIqYlBPQUHR9F95X6/VBJnIP2+
+ LeGk/uSMznFaGDh3tiYCBa7zFmW6c61uFc8u458D0Lm4WP8suy
+X-Received: by 2002:a05:600c:34d0:b0:4a2:d:5ccc with SMTP id
+ 5b1f17b1804b1-4b6ddee3291mr21049255e9.10.1793949127607; 
+ Thu, 05 Nov 2026 23:12:07 -0800 (PST)
+Received: from satan.lan ([94.66.192.55]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4b571f46489sm113916495e9.3.2026.11.05.23.12.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Nov 2026 23:12:07 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-stable@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH] target/arm/ptw: check XN for ARMv6 in get_S1prot()
-User-Agent: meli/0.9.0
-References: <20261105-armv6-xn-check-v1-1-fbeff926e692@linaro.org>
- <CAFEAcA_qmyR0E3+n8GByA6=kDwDQomCpk399DEc8pOPr=sqEaQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_qmyR0E3+n8GByA6=kDwDQomCpk399DEc8pOPr=sqEaQ@mail.gmail.com>
-Message-ID: <to2jr0.1wqw0hsi7q7wn@linaro.org>
+Date: Fri, 06 Nov 2026 09:12:01 +0200
+Subject: [PATCH v2 2/2] hw/intc/arm_gic.c: move num-priority-bits check
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x434.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261106-gic_read_bpr_from_property-v2-2-9f096cce4814@linaro.org>
+References: <20261106-gic_read_bpr_from_property-v2-0-9f096cce4814@linaro.org>
+In-Reply-To: <20261106-gic_read_bpr_from_property-v2-0-9f096cce4814@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-arm@nongnu.org, Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2792;
+ i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
+ bh=wA6EzcqhtucP+kK9AIB/qb/3iXw/0VKbem4hOtmL95M=;
+ b=owEBbQKS/ZANAwAKAXcpx3B/fgnQAcsmYgBq7X3Ed7BM92QLuH/XHISj8DcMYAy0yZXSRGPg5
+ gCde7U31r2JAjMEAAEKAB0WIQTMXBtORKBW84dwHRB3Kcdwf34J0AUCau19xAAKCRB3Kcdwf34J
+ 0IfwD/4roLdXLDgL50iTzRls0PWADCX3zfJGHFgbZDTQ6IVRtSt2VdohmB3XQkXFxYBtl6sxrjS
+ hxydy78HefAbV9v7r4ywlhffLZZ7jxPJEIMWPb/MJoCFWFq+zIgyEwSCMgnFoW20jjTkt1o7feY
+ CmToc1to38NhHjo3BiD4ScWf50sXiXuainkwjmk6J+ZLcSwLur4L2awvM3UfVv62LZ1UtpOJTDT
+ NHEOfzq4Rh1/lDnZqoDRtHDw7CDxc4tXNZ777kHgTLeG5BzG2G9fV1xoKXoKdbIVJfM8Q4H1hmH
+ bruK3ScnG38s8lObD94w/EGhf8+APmesnYRPhiTkE+sIdlGa1JU+IQZP3lD+GBLRmHT8FIkt929
+ gSktaLXjrxn10Epq/g3pp8dRsTTE4aWbLDwHfuomY3vMHj2bjyV+yFf0rFHO9DuCapnR0GtqaDO
+ 2e9FMHm2Gcqhxobt/Sr6WE/eRvjQOCfxIItMl730vhLoDAgiAd/njpkFqE7b8QGzdbs4N8cfGWs
+ Q1fxUwF6j4KyhBAGgFIJpP+irEHaLp6QIEjqazgPZl2SATxRT/gsb9Z90qeMi4RATseUD2ntlC+
+ p+bGKo91eACnuNkZ2dyLix8ltspS4zVT9goeVMI8Vf6WkXAjMxMC5ib8AdRUJhMLip12vawRyVr
+ BimBlJXCoWYy1zw==
+X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
+ fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,75 +120,77 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 05 Nov 2026 20:53, Peter Maydell <peter.maydell@linaro.org> wrote:
->On Thu, 5 Nov 2026 at 09:44, Manos Pitsidianakis
-><manos.pitsidianakis@linaro.org> wrote:
->>
->> For the ARM_FEATURE_V6 case, it seems like we retrieve AP and XN bits in
->> get_phys_addr_v6() but we don't check the XN bit in get_S1prot().
->>
->> Change the `if (arm_feature(env, ARM_FEATURE_V7))` check in get_S1prot()
->> to `if (arm_feature(env, ARM_FEATURE_V6))` since v7 implies v6.
->>
->> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4367
->> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
->
->I think this is worth backporting, so:
->
->Cc: qemu-stable@nongnu.org
->Fixes: d8e052b3876356 ("target-arm: get_phys_addr_lpae: more xn control")
->
->> ---
->>  target/arm/ptw.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
->> index 2e67d02493bd463cfd2d31ecf1316272ac3f1d99..b8b22b014e0574340a85abe73f3d9611d2360219 100644
->> --- a/target/arm/ptw.c
->> +++ b/target/arm/ptw.c
->> @@ -1595,7 +1595,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
->>          if (regime_has_2_ranges(mmu_idx) && !is_user) {
->>              xn = pxn || (user_rw & PAGE_WRITE);
->>          }
->> -    } else if (arm_feature(env, ARM_FEATURE_V7)) {
->> +    } else if (arm_feature(env, ARM_FEATURE_V6)) {
->>          switch (regime_el(mmu_idx)) {
->>          case 1:
->>          case 3:
->
->Digging into the various versions of the Arm ARM and looking
->at QEMU's code, I think that "allow this for v6" is correct,
->but  I think that ARM_FEATURE_V6 will always be true here
->so we don't need to explicitly check it. The two callers of
->get_S1prot() are get_phys_addr_v6() and get_phys_addr_lpae().
->If the CPU isn't v6 then it doesn't get those page table formats.
->(get_phys_addr_v5() is simpler and just figures out its prot
->bits directly rather than calling this.)
->
->So I think we can make this a plain "else", and delete the
->existing "else" clause that sets xn and wxn to 0.
->
->(Strictly speaking it is possible to get here without V6, because
->we don't enforce that a guest on a v5 CPU can't write to the
->SCTLR.XP bit which should be RAZ there, and we don't ignore it in
->get_phys_addr_nogpc(). But if the guest does do that then they're
->in UNPREDICTABLE territory and whether we give them v6 VMSA with
->XP or v6 VMSA without XP doesn't matter.)
+Move num-priority-bits property value check to arm_gic_common_realize.
 
-It sounds like this is equivalent to this patch. Do you want me to send 
-a v2?
+Peter Maydell says:
 
-Thanks for looking into this!
+  We check that in arm_gic_realize(), but the property is defined on
+  the "common" superclass, so it is present also for TYPE_KVM_ARM_GIC.
+  Most of the uses of gic_min_bpr() are in the emulated-GIC code,
+  but the calls from arm_gic_common_reset_irq_state() will be
+  used also if you have a KVM GICv2. So if the user sets a silly
+  num-priority-bits value with KVM GICv2 they'll run into the assert.
 
->
->thanks
->-- PMM
+  https://lore.kernel.org/qemu-arm/CAFEAcA-eFmvQZ8hoeGJb0hZagBejYWR0_-9-C6iA75m7k1VvXQ@mail.gmail.com/
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
+ hw/intc/arm_gic.c        | 10 ----------
+ hw/intc/arm_gic_common.c | 10 ++++++++++
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index 79a68a8648467c1f18dab69cf691f8e44ec2f011..0236f45c3d106a314dc8b3435ac87ce67b6f3f9a 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -2117,16 +2117,6 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    if (s->n_prio_bits > GIC_MAX_PRIORITY_BITS ||
+-       (s->virt_extn ? s->n_prio_bits < GIC_VIRT_MAX_GROUP_PRIO_BITS :
+-        s->n_prio_bits < GIC_MIN_PRIORITY_BITS)) {
+-        error_setg(errp, "num-priority-bits cannot be greater than %d"
+-                   " or less than %d", GIC_MAX_PRIORITY_BITS,
+-                   s->virt_extn ? GIC_VIRT_MAX_GROUP_PRIO_BITS :
+-                   GIC_MIN_PRIORITY_BITS);
+-        return;
+-    }
+-
+     /* This creates distributor, main CPU interface (s->cpuiomem[0]) and if
+      * enabled, virtualization extensions related interfaces (main virtual
+      * interface (s->vifaceiomem[0]) and virtual CPU interface).
+diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+index 7ffd94561202f49d767315893085df57a4f984d8..fec5662d695ab2f66feb4dcc6cb02f4692287a47 100644
+--- a/hw/intc/arm_gic_common.c
++++ b/hw/intc/arm_gic_common.c
+@@ -233,6 +233,16 @@ static void arm_gic_common_realize(DeviceState *dev, Error **errp)
+          */
+         s->num_lrs = 4;
+     }
++
++    if (s->n_prio_bits > GIC_MAX_PRIORITY_BITS ||
++       (s->virt_extn ? s->n_prio_bits < GIC_VIRT_MAX_GROUP_PRIO_BITS :
++        s->n_prio_bits < GIC_MIN_PRIORITY_BITS)) {
++        error_setg(errp, "num-priority-bits cannot be greater than %d"
++                   " or less than %d", GIC_MAX_PRIORITY_BITS,
++                   s->virt_extn ? GIC_VIRT_MAX_GROUP_PRIO_BITS :
++                   GIC_MIN_PRIORITY_BITS);
++        return;
++    }
+ }
+ 
+ static inline void arm_gic_common_reset_irq_state(GICState *s, int cidx,
+
+-- 
+2.43.0
+
 

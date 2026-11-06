@@ -1,83 +1,83 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BCFE606A326
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 12:39:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B009606A326
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 12:42:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=e5QFp0tm
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=D7YJvcDN
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPJDo-00028V-9r; Fri, 06 Nov 2026 07:39:12 -0500
+	id 1xPJFh-0003Kf-3e; Fri, 06 Nov 2026 07:41:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPJD2-00022A-8e
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:38:21 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPJFd-0003HY-6o
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:41:01 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPJD0-00013t-CI
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:38:19 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPJFa-0001Pp-LU
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:41:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793968697;
+ s=mimecast20190719; t=1793968857;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=p5zW4QfFAHTTA1kbcScUb2i0ypopriqFfz1j8LzLnZs=;
- b=e5QFp0tmU0TN7BIkY59klepJ7UOgMRTjzi/janOnz1qCXiGxgajeZHz4S/JsDoQpzKbmNk
- kotCgZAmZd2y2DbkoJo0Q4zgFrXEXzcIDlO2LyTjgt10Yc+1HSigS0vsv+SW/vHtDRLGs+
- uUCQm5W7ILk/yqSx91y/VqrtJxdw7fo=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=DhS/s7uC1pGNGesALLVYG9keRGJslnH4ZOt3DYjeF0E=;
+ b=D7YJvcDN35vEJ3AnHOkzuYJQ9aKs1n0rqI0p/pYf1aXdxIyBD4x5In7K5VTVLU44R3Vlcr
+ ztFlA6KUWk/dqu2qgdZvDqsdC9pW4xUryQYOEHuG37xdoQUFhDrpwEjT8wKMJkUJcrZAA9
+ WIcNTRfxFfOKf6HKe3l5OslEIlQB/9M=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-617-oZRN8B3cNuqMCuBGfeCHRA-1; Fri, 06 Nov 2026 07:38:15 -0500
-X-MC-Unique: oZRN8B3cNuqMCuBGfeCHRA-1
-X-Mimecast-MFC-AGG-ID: oZRN8B3cNuqMCuBGfeCHRA_1793968695
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-49205554e17so496028f8f.1
- for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 04:38:15 -0800 (PST)
+ us-mta-513-gg5VtikINryF8qmvc-0n4A-1; Fri, 06 Nov 2026 07:40:56 -0500
+X-MC-Unique: gg5VtikINryF8qmvc-0n4A-1
+X-Mimecast-MFC-AGG-ID: gg5VtikINryF8qmvc-0n4A_1793968855
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4ad3d35e899so6122755e9.1
+ for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 04:40:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793968695; x=1794573495;
- h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=p5zW4QfFAHTTA1kbcScUb2i0ypopriqFfz1j8LzLnZs=;
- b=JlK4csnlI4D0BVJA8+2Wr6ofdsk35mgmGWge4KHLNHGn/X2dbN7KmNoRAtOnAan8Wm
- oo8OSxGdyyWi+jx+DF94BNqlcqII9S5OHqRUPg2FvRNK4DF8x/+45HoyDD4OLXRaRnYO
- f+2C7FVBTEO+vtBBVCh7px9jUtkw9iHROeIkrbNuwoDaMpfMT9E23/joHDMrn4HRUe3X
- Ycy5pTBBPYPs1ialNR97BwSKWZ5tgVH+Vr4mJpzL0Ok5+MqGoPL7ZqiB9bY6kIBV4BQq
- bqq9KIomw4hZVJWtaPa7sqZ14LI8nlgW8WZuB2QPq1zQXHSfZzr4INxD2mtGxrQmfNjO
- 58Aw==
-X-Gm-Message-State: APuU4Z/3rnbTygkS4E6xVmyGcD21WMJJbiJ5wpG+TnelaGwDylObgeQ5
- VHc+FhoqqrcVypMWdxp2OgBvC2ABIUexwxo/F7+lDZ+yuAHpeVOEoZwedtev5fjKNuWSSdoFhRg
- QunRshcRRSEgmA2x/FK0ALEENqvBFa4O4AG4Nze8zpTe3u3OKsw+Bng==
-X-Gm-Gg: AYBFou0iCUoOcjOmU8hZywTllyvX+0eMV9kuq/o8U1K2Wp+LAj3uaoyO3VLnsF+WiBl
- XRq3OqlcI038LMZm8+kyqTg1w6KtcJJRWegnf/eoTTJn8G67AaqZJCJpP1Bgv393k7KjF6Wd41Z
- 9mnUiwzassy1HAufUnAnzKoH+N+5AydP7m3ZH9AxPvGpIAbPfbdiyhzyaOOa+SLDKxtLCvWMIU3
- XDK7qeLpcZBbOACvsTkleiGpTjrOS9J/kNSIy3YaFRX4BUd6tc05xgd53Brh13LY+dy1+/heX9q
- Qr4qC0cDOGSRvB9dIgFQaAV6P3ythOpphgnJstSm+htNFClRgrffa8+CPINKlVWbXUiVV7hyed4
- pTyri23fpskCzXzCvMF2anExov8et6hkQmRMQDNscdda03pN3uo3u10e5NKrGTPrzPECOJJFaT1
- lZGu7IY8aA+A==
-X-Received: by 2002:adf:e84c:0:b0:48d:e5c9:39a4 with SMTP id
- ffacd0b85a97d-492775eef16mr3852339f8f.33.1793968694705; 
- Fri, 06 Nov 2026 04:38:14 -0800 (PST)
-X-Received: by 2002:adf:e84c:0:b0:48d:e5c9:39a4 with SMTP id
- ffacd0b85a97d-492775eef16mr3852286f8f.33.1793968694262; 
- Fri, 06 Nov 2026 04:38:14 -0800 (PST)
+ d=1e100.net; s=20260707; t=1793968855; x=1794573655;
+ h=content-transfer-encoding:content-type:in-reply-to:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=DhS/s7uC1pGNGesALLVYG9keRGJslnH4ZOt3DYjeF0E=;
+ b=TkKQ4vzyE+EHUalttQyflQw1lIXYvyeLKkH0rxVCPjJs0pW4zqVsZvhCt/0UZHFGgH
+ McIsTjGllj6wJlDIKRWNnI3WZffJ/tCTWpLR2+Dk4fzsOFwNfrbHDNlIj7N56gNXzd7v
+ htWPCQXW4496v1kZWlI3JU9uAMtC2yS6f6gLKH5kjkDoUugoVNP674N7heX/mu6A+Tlg
+ z+zw/WrcFcr59yoJKJZ8IC2Uul95NX263nnG3dCIVvyTj3KJBeJTPe55x6qL+d8GEj26
+ LRqJd3jnZmQdjnbunefWXaAUL4Z3OKlAxy16yqyQPa31c3JJdezJ2cPMMuSkBqh+h21q
+ l3cQ==
+X-Gm-Message-State: APuU4Z9DIHScmyADS7VbDAxqzilVkTWwXWxoxfL/StXlqkPlfLO7L6fX
+ JLxbfoEkw6j8kwO0Td5a2lKEwbGfeDGbRpC6rCUbqdNt+F9olD+mi0g3BMe0GaX8gJcMrSjicf3
+ xzSJKRAN8t7DfR6pKAzMum53OSPAuZh0nRAaUtK1Ud5XN+MpWeywnQQ==
+X-Gm-Gg: AYBFou2YiVguaY2EfdIUZqeOWIy6O4z6aHoegPT0zsJ6P48iRFZmMshy4bST3sLo47N
+ m2IPF8gNegiIATiNWJYMxgbgvFf97o+01oibkyJ5IeSPyP82in1zRV+SY9LWc6qlt/7OaEqW92V
+ m2ZW7GD3Tn3GlMYcl3ded+KiNQDw5GZZOOyroOhxQaEWByGu/gRTA35ZCmYpwj19grV0KA8x/Oq
+ +BoD2g4k0TxUBeSp09xAvGfIi8HoN3asFxr3jpx1epjkKCFUIJEK0CTwdl7ezMEtVLRNtbWd8OT
+ DYlTX1AVT2HCW3gYQUkbqUIElUXn2r1lSPUKdhzsi+rVNmSOEg1WsVptg7IzE66y57BrO0+nIso
+ 5KNKEKE4za/VB7zY6Lix8dTqsPRykKgfP7xozEk32BeZ19gl56HRkod3E2p5hz3BdggzUcptknm
+ pui/RZriYZ1A==
+X-Received: by 2002:a05:600c:3ba0:b0:4a7:a5db:a93e with SMTP id
+ 5b1f17b1804b1-4b6db1c5f48mr44604825e9.4.1793968855406; 
+ Fri, 06 Nov 2026 04:40:55 -0800 (PST)
+X-Received: by 2002:a05:600c:3ba0:b0:4a7:a5db:a93e with SMTP id
+ 5b1f17b1804b1-4b6db1c5f48mr44604525e9.4.1793968855107; 
+ Fri, 06 Nov 2026 04:40:55 -0800 (PST)
 Received: from ?IPV6:2a01:599:b03:7322:436f:1f3:b26e:91b8?
  ([2a01:599:b03:7322:436f:1f3:b26e:91b8])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-492d84726basm3751753f8f.57.2026.11.06.04.38.12
+ ffacd0b85a97d-492d837e3f5sm3588201f8f.56.2026.11.06.04.40.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Nov 2026 04:38:13 -0800 (PST)
-Message-ID: <6d195593-7cf4-40b2-8143-098771967876@redhat.com>
-Date: Fri, 6 Nov 2026 13:38:12 +0100
+ Fri, 06 Nov 2026 04:40:54 -0800 (PST)
+Message-ID: <94d2368c-efaa-4e9f-875f-f390d9183eac@redhat.com>
+Date: Fri, 6 Nov 2026 13:40:53 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 14/28] hw/pci-host: mark common x86, ppc, arm and s390
- PCI hosts as secure
+Subject: Re: [PATCH v2 20/28] hw/mem: mark nvdimm, pc-dimm & spapr-nvdimm
+ devices as secure
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -85,9 +85,9 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, Cornelia Huck <cohuck@redhat.com>
+ qemu-s390x@nongnu.org
 References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-15-berrange@redhat.com>
+ <20261029131241.2275706-21-berrange@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -131,9 +131,9 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20261029131241.2275706-15-berrange@redhat.com>
+In-Reply-To: <20261029131241.2275706-21-berrange@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4JuGlHtj3iuFCRtanBMpsbfXtKXgc4FSc65dDeoq_sM_1793968695
+X-Mimecast-MFC-PROC-ID: iid0Hk2J_B-qKY-ipX3lhsmHyOC6KkKnWgbrf5UvY0Y_1793968855
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -146,7 +146,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -167,155 +167,16 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 29/10/2026 14.12, Daniel P. Berrangé wrote:
-> Mark the PCI hosts secure if they are used from machine types
-> that are considered for the virtualization use case.
-> 
-> There is also a special case for the 'remote' type and the
-> Xen passthrough type.
+> These devices are used in virutalization scenarios to support memory
+> hotplug and other uses cases.
 > 
 > Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Acked-by: Cornelia Huck <cohuck@redhat.com> #s390
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
-...
-> diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
-> index 0b556d1bf5c..bc8313d2cd0 100644
-> --- a/hw/pci-host/pnv_phb.c
-> +++ b/hw/pci-host/pnv_phb.c
-> @@ -333,6 +333,7 @@ static const TypeInfo pnv_phb_type_info = {
->       .parent        = TYPE_PCIE_HOST_BRIDGE,
->       .instance_size = sizeof(PnvPHB),
->       .class_init    = pnv_phb_class_init,
-> +    .secure        = true,
->   };
->   
->   static const TypeInfo pnv_phb_root_port_info = {
-> @@ -340,6 +341,7 @@ static const TypeInfo pnv_phb_root_port_info = {
->       .parent        = TYPE_PCIE_ROOT_PORT,
->       .instance_size = sizeof(PnvPHBRootPort),
->       .class_init    = pnv_phb_root_port_class_init,
-> +    .secure        = true,
->   };
->   
->   static void pnv_phb_register_types(void)
-> diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
-> index db061c134e9..abf43e3226d 100644
-> --- a/hw/pci-host/pnv_phb3.c
-> +++ b/hw/pci-host/pnv_phb3.c
-> @@ -910,6 +910,7 @@ static const TypeInfo pnv_phb3_iommu_memory_region_info = {
->       .parent = TYPE_IOMMU_MEMORY_REGION,
->       .name = TYPE_PNV_PHB3_IOMMU_MEMORY_REGION,
->       .class_init = pnv_phb3_iommu_memory_region_class_init,
-> +    .secure = true,
->   };
->   
->   /*
-> @@ -1123,6 +1124,7 @@ static const TypeInfo pnv_phb3_type_info = {
->       .instance_size = sizeof(PnvPHB3),
->       .class_init    = pnv_phb3_class_init,
->       .instance_init = pnv_phb3_instance_init,
-> +    .secure        = true,
->   };
->   
->   static void pnv_phb3_root_bus_get_prop(Object *obj, Visitor *v,
-> @@ -1186,6 +1188,7 @@ static const TypeInfo pnv_phb3_root_bus_info = {
->       .parent = TYPE_PCIE_BUS,
->       .instance_size = sizeof(PnvPHB3RootBus),
->       .class_init = pnv_phb3_root_bus_class_init,
-> +    .secure = true,
->   };
->   
->   static void pnv_phb3_register_types(void)
-> diff --git a/hw/pci-host/pnv_phb3_msi.c b/hw/pci-host/pnv_phb3_msi.c
-> index 66ba7b79134..5edc0d43eb0 100644
-> --- a/hw/pci-host/pnv_phb3_msi.c
-> +++ b/hw/pci-host/pnv_phb3_msi.c
-> @@ -306,6 +306,7 @@ static const TypeInfo phb3_msi_info = {
->       .class_init = phb3_msi_class_init,
->       .class_size = sizeof(ICSStateClass),
->       .instance_init = phb3_msi_instance_init,
-> +    .secure = true,
->   };
->   
->   static void pnv_phb3_msi_register_types(void)
-> diff --git a/hw/pci-host/pnv_phb3_pbcq.c b/hw/pci-host/pnv_phb3_pbcq.c
-> index 1f7a149580d..687c8325158 100644
-> --- a/hw/pci-host/pnv_phb3_pbcq.c
-> +++ b/hw/pci-host/pnv_phb3_pbcq.c
-> @@ -354,6 +354,7 @@ static const TypeInfo pnv_pbcq_type_info = {
->       .instance_size = sizeof(PnvPBCQState),
->       .instance_init = phb3_pbcq_instance_init,
->       .class_init    = pnv_pbcq_class_init,
-> +    .secure        = true,
->       .interfaces    = (const InterfaceInfo[]) {
->           { TYPE_PNV_XSCOM_INTERFACE },
->           { }
-> diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
-> index ac09a0b034d..1a652110f5d 100644
-> --- a/hw/pci-host/pnv_phb4.c
-> +++ b/hw/pci-host/pnv_phb4.c
-> @@ -1388,6 +1388,7 @@ static const TypeInfo pnv_phb4_iommu_memory_region_info = {
->       .parent = TYPE_IOMMU_MEMORY_REGION,
->       .name = TYPE_PNV_PHB4_IOMMU_MEMORY_REGION,
->       .class_init = pnv_phb4_iommu_memory_region_class_init,
-> +    .secure = true,
->   };
->   
->   /*
-> @@ -1729,13 +1730,13 @@ static const TypeInfo pnv_phb4_type_info = {
->       .instance_init = pnv_phb4_instance_init,
->       .instance_size = sizeof(PnvPHB4),
->       .class_init    = pnv_phb4_class_init,
-> +    .secure        = true,
->       .interfaces = (const InterfaceInfo[]) {
->               { TYPE_XIVE_NOTIFIER },
->               { },
->       }
->   };
->   
-> -
->   static void pnv_phb4_root_bus_get_prop(Object *obj, Visitor *v,
->                                          const char *name,
->                                          void *opaque, Error **errp)
-> @@ -1797,6 +1798,7 @@ static const TypeInfo pnv_phb4_root_bus_info = {
->       .parent = TYPE_PCIE_BUS,
->       .instance_size = sizeof(PnvPHB4RootBus),
->       .class_init = pnv_phb4_root_bus_class_init,
-> +    .secure = true,
->   };
->   
->   static void pnv_phb4_register_types(void)
-> diff --git a/hw/pci-host/pnv_phb4_pec.c b/hw/pci-host/pnv_phb4_pec.c
-> index ee5cdc3e450..280a15e8df1 100644
-> --- a/hw/pci-host/pnv_phb4_pec.c
-> +++ b/hw/pci-host/pnv_phb4_pec.c
-> @@ -388,6 +388,7 @@ static const TypeInfo pnv_pec_type_info = {
->       .instance_size = sizeof(PnvPhb4PecState),
->       .class_init    = pnv_pec_class_init,
->       .class_size    = sizeof(PnvPhb4PecClass),
-> +    .secure        = true,
->       .interfaces    = (const InterfaceInfo[]) {
->           { TYPE_PNV_XSCOM_INTERFACE },
->           { }
-
-The changes to the pnv* files are related to the powernv machine - which is 
-not covered by the virtualization use case. Please remove these from your patch.
-
-
-> diff --git a/hw/pci-host/remote.c b/hw/pci-host/remote.c
-> index 9ea95fac6e6..a58fc39bded 100644
-> --- a/hw/pci-host/remote.c
-> +++ b/hw/pci-host/remote.c
-> @@ -63,6 +63,7 @@ static const TypeInfo remote_pcihost_info = {
->       .parent = TYPE_PCIE_HOST_BRIDGE,
->       .instance_size = sizeof(RemotePCIHost),
->       .class_init = remote_pcihost_class_init,
-> +    .secure = true,
->   };
-This is part of the "remote" machine, isn't it? I don't think we cover this 
-in the virtualization use case, do we? Please remove this, too.
-
-  Thomas
-
+>   hw/mem/nvdimm.c       | 1 +
+>   hw/mem/pc-dimm.c      | 1 +
+>   hw/ppc/spapr_nvdimm.c | 1 +
+>   3 files changed, 3 insertions(+)
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

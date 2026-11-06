@@ -1,107 +1,89 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED2FD606A331
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 16:02:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6ED2E606A339
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 16:38:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=E+z0Wq5h
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=wzw3NsKf
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPMOp-0003w1-ED; Fri, 06 Nov 2026 11:02:43 -0500
+	id 1xPMwg-0005tj-Pd; Fri, 06 Nov 2026 11:37:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xPMOe-0003v4-E7
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 11:02:35 -0500
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ id 1xPMw4-0005pM-Bo
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 11:37:09 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xPMOb-00023d-67
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 11:02:31 -0500
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-8b306bbff8eso5850537b3.3
- for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 08:02:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793980944; cv=none;
- d=google.com; s=arc-20260327;
- b=CW5T2pUOEKUsGUrkYc3B4gWCcFnva7Hia2DptCirCrs3T0D6t8SVB3RHFo3yizubrE
- xqHJazI1N8VKPPMV2kyArbTqdJKUq8z0XT0VX5N+WL1q6uJR+748ZzFQ1+0+D+IpltNP
- l1zeLm7GJPMs2iHVWSKcLUkWTUMaizrz8gDGUQD6r+LLLAGozf/DLqBDQndWsOW42gi4
- bvPm2TuWpQ1erQudBsLN3YKMkpfGcT9QnVFXpw3sGwTS3I3JLv/K9HCFYWKZRdp72jco
- MbwBpU7r/cKjuxvLbEVCGWHKERPYgltX74mLb2sVOLov44cfc2+Rvnaoot/ed7nYo7aG
- WgSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=kZCBSloje9XqtTEpv7EcNMvQtBKDJh6EPwCU600igOY=;
- fh=Pn5k4soGPi+vl7do2U6vtr594uMX0/F5SgbQ/h3Mits=;
- b=awoVgNRnVXKlCv7xcTgpk9akeJzSQkTiS92q0pl0KIzo83u1v04zeqPpxIdnJfHcz1
- q0d9BIEmfRm/fuPI5RXtt+9YGo84lPGOsmI42Cr51Ii0Z6o0ln3FuZCAhZhUKHZ0jifk
- rVg+CmwkVx3jRRDrRQLAq/c85y/pYx/Z33Q8Bi8oYUrM6KzvcICsvMJKGaXLwU1qlnL0
- H9bO1dpQZm4Q7SVWzS7h0MiY7TZob/OKwWu7QZansYZffDVqI5I5wXQz20pLgovyULeU
- jqGpeGoswO59+9MksC+tbuF7DomBwJ6JYokFIl/HhPbRH5PpJy/onJIvpPIdL8VPNGbH
- I+rw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1xPMw0-0006Ov-LJ
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 11:37:03 -0500
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-4918c2d727fso488980f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 08:36:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1793980944; x=1794585744; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=kZCBSloje9XqtTEpv7EcNMvQtBKDJh6EPwCU600igOY=;
- b=E+z0Wq5hYM2dwqThCFuhhet7H0P2HbDdUsa8R1vkISm/vBdaWtoG8NZGn9T8/etvni
- aCBzlsDLSh1sCDATb3DwpSAFKoLu5bDaA0RjE6O5mTZFt96a2EfT1gkmXy62UXAhn295
- j7duoypqi0Ij4Oe70adLpXL0EpMggSshElEAb2uDWZQnSDKEqtynMhGNLlpg/kW1Uxkp
- iSMVmlhNOQ9f3Vtc1rnbD2rZf59UYql0IKpP+mDRI5d1FiRlYFEPbnv0Li6ulsTBMGoc
- XpBLL3v3dx1fU1iocbLXe4W+Lq015e5dSraRty6vGY/gADfTLikaM//bDawMYIRQJXBH
- lEkA==
+ d=linaro.org; s=google; t=1793983019; x=1794587819; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=M1m1Iu2vqaoZc/EaTd9O9TTTPYMif4rFTGp2681SKeY=;
+ b=wzw3NsKfddBoQzPtnl7g47vm6YlnB8qA0JHWJ1KYnYdJkHEOlR3R/D3+OZX70xNz0Y
+ YhpwMZ3nvdNwpzsDPLqmKVrWAhcy/k95i3p4A3c+MnIXIW/Xobj2nyHL5zbdhwBaRLRj
+ WSNenzqbeEnVkixgwl3ZkJ3D9QpRwXRIMRfvpUUw2K4EChw6UeUUq2/qnHT8CLX/nYN6
+ IYJhO0PGIpvQVoGANEzP3zIW0e37v4jFUkhfHyZKwLwX2BylQKYnfrIdDnPrRFcFBSqm
+ c4DMs7ZTD5bJyanACTxfUzsvC0HiDBSGvBYAkk4B2L7q2U7JwZd1qrb5LRStc/VspFdK
+ w8kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793980944; x=1794585744;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=kZCBSloje9XqtTEpv7EcNMvQtBKDJh6EPwCU600igOY=;
- b=xuMqce7ZK3GzWpRvgOHHDCdptPRR/vMVb7NqVVdMEb5SSw5SEUAoLOcah2CkB21p0S
- t3VkYxvD6me8VwUjFiNvWK+iEnRrl4UOz+C8z8K/nst9KW2zWtnMYmkEu1ngp8FVvJ+5
- iujAY5bafH9Ny4hSM3IFUV86XDUPLlFCXa7hvKzbOueXdfKO/GM/hRbbRcGcdz2xvYHG
- 3vVt3CyWUzCHLaSmKSDosVF5mZNv4AgDAzkIla0o6cymHWlL2Wu8Hxb8r0q2rZJOk5qk
- 1EwduP2rOkZV6WboRF2PxHEVW7wVL9BMOPKVOZnCfxJipnpXuVLOT2u7AOooEuIr7KNH
- sxcw==
-X-Forwarded-Encrypted: i=1;
- AL+hErGEAUBccblaUmpY2ixzLDbM6u+46NX4ZJMdpPmeNUXDyWU8qQHQcIIOgiwpVxp7rwItQjahnsb/wQ==@nongnu.org
-X-Gm-Message-State: APuU4Z9HvxXblh6w5a60DlFs95jwoEbZswmit8L3LHMwBZjb38prrIGM
- KIy6A+CzBRLgPwQQ5gINtyov9Zm7KhfhoUG1zNfdDSXgiTQl6ZPtyVhdxT9uCV7bPVeW2kmS2zz
- HHfyLhXv3CIOikvdqx5XblXl3cExt2uU+THU5jLi6vw==
-X-Gm-Gg: AYBFou1wgy3Aio3A2bhuunfBNm+tslVFdKsOhUG/IDZy+RmJ47OJwBiKLITsKEbvJ2V
- gnSKbCEOMfb3TFzBoX33EdjPkbVZ7lXVmccZQ6Lejgyxlyc4wWvDIKElIYnmgCXyCgS1HR9vTt0
- 8dbeUyPPAXJdVAKg5yz8qHHnb3MFLVu5cwm2WcBkr7xER4bJrkgHNIb712Id0LC1J9CNQtxcG87
- JOtP5VaPixU724O4Jr74z3ybtOD8kJJ2XlfzOXergfNH5cPBbdZJgvQ2USk9nmGe/zLbLMecm0e
- jYCIpVyy74XWNb3/vYOLshEoBAvDwzk4LdOyqc14a3AV/Mu48gv8EHk674Dwt0aIhHqv510q9Oj
- nrEp4PTYgvMgBvc4G8lVMjCnafNew0A8BVmFLfZbwDucET/iTrnYIiVd1fX3SafpIsEeYoXFEKh
- 614p9PlX26WW+zvrNinXtc
-X-Received: by 2002:a05:690c:6605:b0:8b1:a3f3:7085 with SMTP id
- 00721157ae682-8b3419c287dmr11732157b3.60.1793980944149; Fri, 06 Nov 2026
- 08:02:24 -0800 (PST)
+ d=1e100.net; s=20260707; t=1793983019; x=1794587819;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=M1m1Iu2vqaoZc/EaTd9O9TTTPYMif4rFTGp2681SKeY=;
+ b=aFHbBgHI0t0dbrWsViceAOHvZ1uASB8g1kjF90nJyhIngJRKjkS6FzlZ7wzkO9KM4j
+ ZgdyCzDYgJDoXHzTdqD5yLk7aGf7b6xMDBwPzCkWpKIpFEhKkmDwFptcvBhLF/CO93di
+ qV0cmVkkVP+6Z9XYjgOXqrDd9rR78ZbfyC6W+XCRuRB1B+PLU9AQYn1SBhv+sf+rQLVj
+ IXKN1lgV/bQ66D3PU7q717S6rozCruqyUahyDti5IUwZeqSDcomm3hDjIVfN35izvngz
+ TazAeLIUbVa353cOfPe5q47xGrng3AzHi2tvyVvuqwpvCmjqBvYBwooSYhjw7RDkekIn
+ dMkA==
+X-Gm-Message-State: APuU4Z8tqMdpxPG0bLw5e8BilxMPZ4HaTFscL1/X0u7UzPb8Mf1KJEsV
+ uQVmmkQHhCBYNV9ddnzAIpiKBtadWwMrqTcirAS6UqSqkBqW5oSeJF+nKi2uwLdt34IULBp8fpp
+ WzvwqiCk=
+X-Gm-Gg: AYBFou3ZhrdCElDsIynK1FdgkNbLaOa3DlmE1iZC8vnzAYJBTqEu4RvKuUjjlC1Lli9
+ VgfYfH22jtw+D+fL3ivsIpt2E+VRYkNPbKGGH9sXiVrfW9VxE98HrRZLHUu8mkkKckX3DUUqbsz
+ fi0jbfgIDC+pi/yw1n9ifPdK6JTNFLbvSSbsMsKHr6s11IoL61K4bLkWEdl1AEvUY4b1oDz/BAR
+ gviErlN7+cctEC00tM2LMS8weQwylGk/Wj8MlXWyaKQB/0qz8prksYdX2l4pfV3lXcmKarQLT/5
+ 1P6s/EHGd+SGeJ3DYIdodim1se+gpFYiJwrtmHViXoEoL4je6PrNlBQW3PYW6NKv07qQH+MKd0Z
+ G4FF4/9OsLzUuCPeiQhn89KSLsittU7ksySa7Evko5+SrlEDO4AziCT/JbYpm0uu7HeZwFovrZz
+ vKDIiYDYMX4fV/IB8v3BJpR1DKWOvff72D5ms+HzaDJSQQQxI885Re81Jx2NNzdQTMYSBrtDYg5
+ 21krXFU4UfMbp81zYy6eGrF3A99Xw5u3eW7JuyiKxcF0e48bQtebgLZCnzSQVtRHR+4/DW1lhk2
+ tpYfwnICTANf8nPS8pC0UnwTAFUyYyjZxiTboRHY0V9b5vCVmpK2UxyislIunhQSKKcwAD1dWHj
+ 1bL6jG3N88IYE//MTnpSBtdbTvA5TUDTWOQ==
+X-Received: by 2002:a05:6000:3112:b0:488:823d:5086 with SMTP id
+ ffacd0b85a97d-4926fe2c06fmr5701818f8f.0.1793983018690; 
+ Fri, 06 Nov 2026 08:36:58 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-492d3d60e78sm4517912f8f.1.2026.11.06.08.36.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Nov 2026 08:36:58 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Chao Liu <chao.liu@processmission.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Bernhard Beschow <shentey@gmail.com>, Peter Xu <peterx@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH v2 for-11.2 0/2] Fix 'version' arg of VMSTATE_PTIMER
+Date: Fri,  6 Nov 2026 16:36:55 +0000
+Message-ID: <20261106163657.3825938-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261105125203.40320-1-philmd@oss.qualcomm.com>
- <20261105125203.40320-2-philmd@oss.qualcomm.com>
-In-Reply-To: <20261105125203.40320-2-philmd@oss.qualcomm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Nov 2026 16:02:12 +0000
-X-Gm-Features: AclHuK8uvR8xxkXdSiK1iaQiEfbrGMfyI7ASL-Ch-aBtNpd1c9eXgL8t4kEBjpQ
-Message-ID: <CAFEAcA_kzBBUcyPEG3Cn8TnGqvqfOaq4_skEG+r1FXO0Q-n51g@mail.gmail.com>
-Subject: Re: [PATCH v2 01/17] tests/qtest: Use qemu_hexdump_to_buffer() in
- qtest_memwrite()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, 
- qemu-ppc@nongnu.org, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,29 +102,56 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 5 Nov 2026 at 12:53, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> Replace sprintf("%02x) by equivalent qemu_hexdump_to_buffer()
-> helper and silent when using Apple clang 17.0.0:
->
->   ../tests/qtest/libqtest.c:1522:9: warning: 'sprintf' is deprecated:
->     This function is provided for compatibility reasons only.
->     Due to security concerns inherent in the design of sprintf(3),
->     it is highly recommended that you use snprintf(3) instead.
->     [-Wdeprecated-declarations]
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
+The VMSTATE_PTIMER macro is defined to pass a 'version' argument of 1
+to VMSTATE_STRUCT_POINTER_TEST_V.  This means that the field will
+only be used in migration when the vmstate struct that uses
+VMSTATE_PTIMER has a version_id of at least 1.  This doesn't match
+how we define other VMSTATE_FOO which don't take an explicit
+version_id, which is to use a version argument of 0 (e.g. all the
+common macros like VMSTATE_UINT32 are written to pass 0 to their
+VMSTATE_UINT32_V counterparts, and so on). It also doesn't match
+how we define VMSTATE_PTIMER_ARRAY.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+The practical effect of this is that users of VMSTATE_PTIMER in
+vmstate structs which explicitly or implicitly have a version_id of 0
+were actually not getting their ptimers migrated.
+
+This series:
+ (1) fixes a mistake in wdt_imx2 where we bumped version_id
+ but forgot to bump minimum_version_id
+ (2) fixes the macro, and bumps version_id and minimum_version_id
+ for the 2 vmstate structs that used VMSTATE_PTIMER and had an
+ implicit or explicit version_id of 0 (vmstate_xlnx_csu_dma
+ and vmstate_k230_wdt) so they cleanly fail migration from
+ old to new QEMU
+
+Changes v1->v2:
+ * wdt_imx2 is no longer affected as it had a version bump for
+   other reasons, but patch 1 is needed to correct an error
+   in how we did it
+ * patch 2 now bumps version on the affected vmstate structs
 
 thanks
 -- PMM
+
+Peter Maydell (2):
+  hw/watchdog/wdt_imx2: Set vmstate minimum_version_id to 1
+  include/hw/core/ptimer.h: Fix 'version' argument of VMSTATE_PTIMER
+
+ include/hw/core/ptimer.h | 2 +-
+ hw/dma/xlnx_csu_dma.c    | 4 ++--
+ hw/watchdog/k230_wdt.c   | 2 ++
+ hw/watchdog/wdt_imx2.c   | 1 +
+ 4 files changed, 6 insertions(+), 3 deletions(-)
+
+-- 
+2.43.0
+
 

@@ -1,107 +1,107 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C016A606A326
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 14:52:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2D246606A326
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 15:10:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Z5A9k2i1
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=T51vlwg1
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPLJ8-0003N6-Af; Fri, 06 Nov 2026 09:52:46 -0500
+	id 1xPLa4-0000CI-DH; Fri, 06 Nov 2026 10:10:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1xPLJ6-0003MV-HZ
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 09:52:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1xPLJ4-0002FY-Sn
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 09:52:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793976762;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+hAG1lMR6EpyUF8Mo/bczfeHpe//nmcoFZfecTgTJ8Q=;
- b=Z5A9k2i1Y6iowoqiPOoIgP+yq0dsL9AL2LyI2phGU5l8yqmJGqBP5CyYOHE/IeVLXv8hmm
- YwWiCXtPH47v1POunSEbyKn0E0DB/2dOj1Cn8q7I/vRMrQIwAOwhaz/e/g3oyD7UWB+C2d
- VaGSYbHvxYBEqwEqrPCnJ6+C0HKQxKU=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-676-GhSRjtujMiKj9n-0RT4LlQ-1; Fri, 06 Nov 2026 09:52:41 -0500
-X-MC-Unique: GhSRjtujMiKj9n-0RT4LlQ-1
-X-Mimecast-MFC-AGG-ID: GhSRjtujMiKj9n-0RT4LlQ_1793976760
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-2ed283cb5b9so10789765ad.1
- for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 06:52:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xPLZv-0008UU-9O
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 10:10:07 -0500
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xPLZr-0004CC-IU
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 10:10:06 -0500
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-6774639a8a4so637011d50.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 07:10:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793977801; cv=none;
+ d=google.com; s=arc-20260327;
+ b=TpGO+rtyHLdSUX8b5j0TQNwt8jxvCz4OwtZeQ0DqSo7odQbwzCkbdy7g4aafmG4EhK
+ 2HR0/kXIy9yhkc3dGEwIPBRukJLaJMqdwSjaLPTI4wlrtaqnLFmQvWIxTiulU4u6Pr76
+ EgYUMMwUmyg626g8hZQ+m5w4Qkj0yaWVu01+sxlevTkzMd3zkudeI482y8oYo7e2ZzUZ
+ 3cVSc2ZSFea79sKbskXU6Qcp/iSwK7DXSbWoo08gg3J1nmezTm+SaP2l9COPQX7XZTgF
+ QZ+ct5XZXjfLG718kqHEWTjOBUulCOLO6PMwnJJZ9bafd1wd4jXEYumxP4Vnz7tDe1Gx
+ 8b3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=5yc9T1zRNK7Z1rGOPdCtKkir82ZD7AjqoHTexBGKdl8=;
+ fh=w6ke4KUq4IYtPuQtE6SUUACXzJ4CXS4HejKXK2GJ8i0=;
+ b=ghy7OINF2LFB859TC8ZsJ5mYuYCQXDag6lkWSZuUtINjcM+E05K8N84ChpHhsy1X5y
+ KnyxcyQbAe2KkaC86qJvKuA4MyyjQOLNJWxZG7u9VIoVWVZ6fCiQ3msfdAqwbj+8hBgm
+ V1agre//tsPzyfGPqjw1wSZOex+CCUgJeJV+VXHHHa3nNQhRpcBUDPUHl7r7SH60c5sc
+ O8dvTYFjQrv6MOiWB4eeYwaOq/TgBdVXbLEzuyps7aRcjPtapUV1LU1V9ztxLtdYY2x0
+ cUD47vtdaKniduMttYY5lfH3PuvB95qHwCkUUEDjkGS+rWimOUBnQKTtZ4Tyus47Ctdr
+ +hCg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1793977801; x=1794582601; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=5yc9T1zRNK7Z1rGOPdCtKkir82ZD7AjqoHTexBGKdl8=;
+ b=T51vlwg1NM1Qx0x/lWrsKDKDmbr3Ynyyo5VakKUvD2MbU8w6iRR4dl/VRwiGEvq9XR
+ pQTEAc6GDMZQRuU6Zohra/CXLvhLJLCfqj9yS2FEgd1QdI5Njj83lfI04w/dk5Std7Jl
+ IL7mZEMeYvg2tvdbNGJ4CJ+wcLleYSZcgOAa5jNNNMl+RI0xc1pVxp9qALA40UJK4USJ
+ Um8guRDGAgYMkymMmtCh9EZ1OgOLPK6r1kVcTDomuYMkFTgmg/zW3w1iA/RWgyNag5LF
+ NU/LGnalsllLNm+dG/ytlRqyWB413XD5Zr3RD51wu/QSGbD0HR0a4EE2dObJ8Mq+pSth
+ qeeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793976760; x=1794581560;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=+hAG1lMR6EpyUF8Mo/bczfeHpe//nmcoFZfecTgTJ8Q=;
- b=U6BdXzKYTBaVRsnzgBMyhPFHS+MM6GSc15mdk6nxaoQjOzCKesvvYQdFcHqh71DCB0
- jFZ9OiNc1/56MnG7i8Pj1FeXkbAdEwBvTIaPWyJNhp1uaoli5qyhl8X+PqBVjdAnSa0j
- hYdqzRap89bUDtLQq0B6QNGWo7dgD6FIlrAk3yq8CnSIVtASHJ2cNHn5g7WCRI/3RDnV
- YixvsC6teBpyHG/XSI2lnzxtJfD46l5Qb2ONpATLtroLl0N0i1jlT0IGSroIDoR59rWl
- RZE6hb4ZO5huraaXdmXpUkcWm1p+DtNiBjejfjPerrfodNjS3a/evqkjfIbk17j+jsHG
- nyUA==
+ d=1e100.net; s=20260707; t=1793977801; x=1794582601;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=5yc9T1zRNK7Z1rGOPdCtKkir82ZD7AjqoHTexBGKdl8=;
+ b=qebTkncZbrQ+hloIQilFMviHc4LKpsBv5j17FTIpNTC5dtllAEIioPCXkXCAFnA2Es
+ zA6DgP0J6PS73eLaWOB717TD+AdMQwtZHfHrAxE9BeD5n1Oh0cUCaTaGwoUodHh/ss2p
+ ZU+EKf/B2cOx07xw76NkfNSkhztMDxtnbfLR8QB2e/Pv3R3b3tJ5til0ZYCPXR6ddCRN
+ LOftwAGzepBJUVB8pRSKzmovMqfVc6O5KmD8SjszSxUshoc45JLaj8GGwA1xdmduAbzs
+ 5KnE7fs4lrQWymGDcperoPN1r5Ub8htJ6LsfscBYUmBzvOnZMjcaYG3x3/7R1g3loLNJ
+ XdPw==
 X-Forwarded-Encrypted: i=1;
- AL+hErHOnZe6PEl1xcIiFaQ0a3dPJZzUrqJVxsE/OZbF7z7F00+C2BQXuyy+BfjmI8tBURmUuzoVVpcZvw==@nongnu.org
-X-Gm-Message-State: APuU4Z+LnbFEOpie63vyul87sN/hf/kGXbCZUJZrU1gqRt+yISGQVd+U
- fm7tBsPak+8uutRFlFfK1q9vhLsfJecd1HBMh5JGaA1R2dJZSuPRdEw/IBQ1O84YqadmDPL6EIB
- Xclb3T75P1fXP/QnbGJyLi5zwL2XvoWBWnTdWjLH6xQjiW68jckCpLgadoUexteFbUsFIRduEt4
- t8R6siNWzFoJl01ppCiknqja+MhU8/
-X-Gm-Gg: AYBFou2UWIM4VA0ozu7RYMBSyPb6gi/yjob1bd0Y9G8WpN4Lnd68BFNjRp7Qv4GV1u7
- htsj8ZCk3LsLU8cyD1hq0NiEvzuATtloU405HY03vLeHMYg0ovrDIJsdxMSqQij4UpGnIfF8hRc
- Yn6P+FjF+ycK0Oz0GTxss0fzcYGTCl+6NXcpL9pXJFBXaom6Sbq5HzgWtTg1bwYIhJgef5a3+Vk
- Lv38WZkqtHxTHcOb3+feJNtokKoMtnKoCGQQsRyY7fZl5SWdHhOQPJrCIpFeqcCOTj4xIale+2p
- xg==
-X-Received: by 2002:a17:90b:35c5:b0:3ad:677f:567f with SMTP id
- 98e67ed59e1d1-3b0db70daffmr1759562a91.40.1793976759696; 
- Fri, 06 Nov 2026 06:52:39 -0800 (PST)
-X-Received: by 2002:a17:90b:35c5:b0:3ad:677f:567f with SMTP id
- 98e67ed59e1d1-3b0db70daffmr1759539a91.40.1793976759161; Fri, 06 Nov 2026
- 06:52:39 -0800 (PST)
+ AL+hErGuCVFKN0hNpdvGvvnEtzo8VICps5CSXnULs8rHjQ0HwJkuAJH6jlijwnwgGJWlKifQC/ISlKzMoQ==@nongnu.org
+X-Gm-Message-State: APuU4Z+e1cakpSi/dWaw/cezb4bKdv0Zw1mytYmhlhW+xSjStROX3HxT
+ HOaPu8yb1BBzIFMEK4wwTAvRdw0CFvu22NcDmeUROEbqG0YExM0kI3GZIk2j55uPzDeB/uSkrJg
+ YKXXpOCpVmhy4H8navxTQB0rBPs9yUDgCUMtC83qT5w==
+X-Gm-Gg: AYBFou0+mSGNkvRNo3ptMDA0/0XhjmmvMc+EjeG6PhceSFm9iAt5TIJKTIoOV7czP2N
+ yaQ3s0cnkcCoy5Jra2s0ok+W0n6zQkhkOT5r0FM74xhJOYq3gpJ5VJxmWT5HCMH+LX2MJUF0nc1
+ PQnfkhbL7KmBx2sl96zk+kWEKgeFX6mwlwvbIkuB7T9UK4vUQ+OHyIW0unomUysTeqxVHwrEtuY
+ AbIddw48bZ7iEmhpxSrHGEyfDWgyvlWk73BO2C3KkVcT764t/ITASjFq/mBC27AK6E06vbjV+cn
+ SXbKose52TLw0BQzfUhdyCQD5Se4uiTTs9esM7mPnHrMckqKpwYiCBJRaa47FbcprrpDBewMX/h
+ qewnRFZA1pKQJipy0ntjHlVFKl/5GGvMOVkGzlQHvLxx/aTMjdJC+tDuCSH4Jihbk+knANYD5kw
+ 4LzXnGneMr/P4XeZ80dUPf
+X-Received: by 2002:a05:690c:e050:b0:8b0:c7d2:7060 with SMTP id
+ 00721157ae682-8b341b4b0aemr10750207b3.107.1793977801067; Fri, 06 Nov 2026
+ 07:10:01 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-5-berrange@redhat.com>
- <fe7f7d29-8ca3-4ced-afcc-c768b84c4888@redhat.com>
- <CAMxuvazfhfGSZCiSi+viwJ7f7XDWAZfjmW39n3a7a-qQyw-YSA@mail.gmail.com>
- <au3mwO32b0-PSXKu@redhat.com>
-In-Reply-To: <au3mwO32b0-PSXKu@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Fri, 6 Nov 2026 18:52:27 +0400
-X-Gm-Features: AclHuK8PkA73Zsh95_t7Twce7oOByDLrT6UMHFSQfVJqhUHCjhh81u-PlI46tLQ
-Message-ID: <CAMxuvayhYcOvH2QPptrKUQGFHoRxQcM1USF5OwuZYR_g2c4zgw@mail.gmail.com>
-Subject: Re: [PATCH v2 04/28] hw: mark all remaining virtio object types as
- secure
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Xwt4J0mmrzOofD1ipr1yJk8kKAdlWmHOtRWCi14v1AA_1793976760
-X-Mimecast-Originator: redhat.com
+References: <20261106-armv6-xn-check-v2-1-1291bb77a6c2@linaro.org>
+In-Reply-To: <20261106-armv6-xn-check-v2-1-1291bb77a6c2@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Nov 2026 15:09:48 +0000
+X-Gm-Features: AclHuK8nI5vcBdu2zcAdKCQTnR9rPi701N95Hb-bE1kvwpaRCak5Ab-nC8JIqNA
+Message-ID: <CAFEAcA_=-miKcdxRkJsP+XdGV2AMSYR=EPMuGzMZ4M8xFyetKA@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm/ptw: check XN for ARMv6 in get_S1prot()
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-stable@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,57 +113,32 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_PASS,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi
+On Fri, 6 Nov 2026 at 10:28, Manos Pitsidianakis
+<manos.pitsidianakis@linaro.org> wrote:
+>
+> For the ARM_FEATURE_V6 case, it seems like we retrieve AP and XN bits in
+> get_phys_addr_v6() but we don't check the XN bit in get_S1prot().
+>
+> Change the `else if (arm_feature(env, ARM_FEATURE_V7))` check in
+> get_S1prot() to plain `else`.
+>
+> Fixes: d8e052b3876356 ("target-arm: get_phys_addr_lpae: more xn control")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4367
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+> Changes in v2:
+> - Change else if to plain else (thanks Peter)
+> - Link to v1: https://lore.kernel.org/qemu-devel/20261105-armv6-xn-check-v1-1-fbeff926e692@linaro.org
 
-On Fri, Nov 6, 2026 at 6:40=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange@re=
-dhat.com> wrote:
->
-> On Fri, Nov 06, 2026 at 06:35:29PM +0400, Marc-Andr=C3=A9 Lureau wrote:
-> > Hi
-> >
-> > On Fri, Nov 6, 2026 at 3:53=E2=80=AFPM Thomas Huth <thuth@redhat.com> w=
-rote:
-> > >
-> > > On 29/10/2026 14.12, Daniel P. Berrang=C3=A9 wrote:
-> > > > These are all intended for use in a virtualization scenario and mus=
-t
-> > > > provide a security boundary.
-> > > >
-> > > > Acked-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > > > Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> > > > ---
-> > > Reviewed-by: Thomas Huth <thuth@redhat.com>
-> > >
-> >
-> > I have a second thought about this, I'd like to exclude all
-> > gpu-accelerated paths for now. virgl/mesa/rutabaga expose a very large
-> > attack surface, so I'd like to drop them from the secure boundary
->
-> Rather than repost, please see my response for patch 2:
->
->   https://lists.gnu.org/archive/html/qemu-devel/2026-11/msg01530.html
->
-> TL;DR: we have already promised anything virtio related is in scope
-> for security handling for a long time, as they are all unambiguously
-> "virtualization use case".
->
+Applied to target-arm.next, thanks (with a slightly expanded
+commit message and a cc to stable).
 
-the value of a secure policy enforcement is low if we know those
-devices are unsecure and don't have the resources to make them secure.
-
-> With regards,
-> Daniel
-> --
-> |: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-> |: https://libvirt.org          ~~          https://entangle-photo.org :|
-> |: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
->
-
+-- PMM
 

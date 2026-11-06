@@ -1,87 +1,75 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08B78606A332
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 14:40:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 944DD606A326
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 14:52:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=V3XZpoRs
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=aKJsno1s
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPL7H-0000eV-67; Fri, 06 Nov 2026 09:40:33 -0500
+	id 1xPLIN-0002wa-GA; Fri, 06 Nov 2026 09:51:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xPL74-0000Vr-De
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 09:40:22 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xPLIL-0002vz-BK
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 09:51:57 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xPL72-0000wy-JW
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 09:40:18 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1xPLIJ-0002Dj-Rw
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 09:51:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793976015;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=e6q9H0dXikw0971/jYe5CJRTJzhkje9QEBXZ9FEn4/c=;
- b=V3XZpoRsw8vYlsK4rQjGYFrw3vjbfeXVuHGQZjseHvuJUbU1KGpvO5k9buQCbbL4T9y7BR
- cbgbtJa1DuH//07rhugDxAdyTP7odx3Vi7axQKCVBCf6LkjNtbQJHvTjbV79G9SIjtPxrR
- 9+jqWr7FI8vZ4yTwJTZauamJ+jN+k+w=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ s=mimecast20190719; t=1793976714;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vznTLmH13jSN6b9wnsxqDutjisldxefqee0nkmHh/pg=;
+ b=aKJsno1snXEEyey/ZBMKLJuB0U6CjtLMy2mXFq/oL8RetrY7YEXemiSeeUsPsui/uA4uS+
+ CrWBseDd7c5rnwxaLpxXa3999TelHr7QPpkNhfz/F8oFU9LP7Wh0v2E46qN9m/cLJHP3LN
+ RIFcQrOfiVGEUGO/z5lMeMUw4dAeH5A=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-222-YUxgZLwzPVy0inJW6nxf4Q-1; Fri,
- 06 Nov 2026 09:40:09 -0500
-X-MC-Unique: YUxgZLwzPVy0inJW6nxf4Q-1
-X-Mimecast-MFC-AGG-ID: YUxgZLwzPVy0inJW6nxf4Q_1793976007
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-226-VscfiL02Mk6sRKqVoZywoQ-1; Fri,
+ 06 Nov 2026 09:51:51 -0500
+X-MC-Unique: VscfiL02Mk6sRKqVoZywoQ-1
+X-Mimecast-MFC-AGG-ID: VscfiL02Mk6sRKqVoZywoQ_1793976710
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C2CFC1800622; Fri,  6 Nov 2026 14:40:06 +0000 (UTC)
-Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D3AD4187C368; Fri,  6 Nov 2026 14:40:03 +0000 (UTC)
-Date: Fri, 6 Nov 2026 14:40:00 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH v2 04/28] hw: mark all remaining virtio object types as
- secure
-Message-ID: <au3mwO32b0-PSXKu@redhat.com>
-References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-5-berrange@redhat.com>
- <fe7f7d29-8ca3-4ced-afcc-c768b84c4888@redhat.com>
- <CAMxuvazfhfGSZCiSi+viwJ7f7XDWAZfjmW39n3a7a-qQyw-YSA@mail.gmail.com>
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 86C321955F08; Fri,  6 Nov 2026 14:51:49 +0000 (UTC)
+Received: from circe.redhat.com (unknown [10.44.32.31])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id F3D321956087; Fri,  6 Nov 2026 14:51:46 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Alex Williamson <alex@shazbot.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH] vfio/region: Skip IOMMU mapping for BARs when dma-buf is
+ unavailable
+Date: Fri,  6 Nov 2026 15:51:44 +0100
+Message-ID: <20261106145144.1352917-1-clg@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <CAMxuvazfhfGSZCiSi+viwJ7f7XDWAZfjmW39n3a7a-qQyw-YSA@mail.gmail.com>
-User-Agent: Mutt/2.4.3 (2026-10-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 7WQrbv4A_7jNQzCA1s7xyA5_9vX-QJAf0Jv4gQr9E1M_1793976007
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: nr-q2ZjjxiIT7fUtynzMskzoXyrfpShhK_-CyYgo04U_1793976710
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,47 +80,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Nov 06, 2026 at 06:35:29PM +0400, Marc-André Lureau wrote:
-> Hi
-> 
-> On Fri, Nov 6, 2026 at 3:53 PM Thomas Huth <thuth@redhat.com> wrote:
-> >
-> > On 29/10/2026 14.12, Daniel P. Berrangé wrote:
-> > > These are all intended for use in a virtualization scenario and must
-> > > provide a security boundary.
-> > >
-> > > Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > > ---
-> > Reviewed-by: Thomas Huth <thuth@redhat.com>
-> >
-> 
-> I have a second thought about this, I'd like to exclude all
-> gpu-accelerated paths for now. virgl/mesa/rutabaga expose a very large
-> attack surface, so I'd like to drop them from the secure boundary
+When the kernel does not support the VFIO_DEVICE_FEATURE_DMA_BUF
+feature (e.g. old kernel or out-of-tree vGPU driver),
+vfio_region_create_dma_buf() returns with a warning and no fd is
+assigned to the BAR RAMBlocks. Later, when the VFIO listener tries
+to DMA-map these BAR regions, the iommufd backend falls back to
+IOMMU_IOAS_MAP with a vaddr pointing at device MMIO. The kernel cannot
+pin device memory and fails with EFAULT on aarch64, producing these
+warnings:
 
-Rather than repost, please see my response for patch 2:
+  qemu-kvm: warning: VFIO dma-buf not supported in kernel, using mmap fallback, P2P DMA will not work
+  qemu-kvm: warning: IOMMU_IOAS_MAP failed: Bad address, PCI BAR?
+  qemu-kvm: warning: vfio_container_dma_map(0xaaabb9621a90, 0x88400000000, 0x10000, 0xfffe50100000) = -14 (Bad address)
+  hostdev0: PCI peer-to-peer transactions on BARs are not supported.
 
-  https://lists.gnu.org/archive/html/qemu-devel/2026-11/msg01530.html
+memory_region_set_skip_iommu_map() was recently introduced by commit
+11b9798c7b52 ("memory: Allow RAM device regions to skip IOMMU
+mapping") for the Tegra CMDQV case. Use it to mark BAR mmap regions
+when dma-buf is unavailable so the VFIO listener skips them. This
+drops the last three messages and covers both the iommufd and legacy
+Type1 IOMMU backends.
 
-TL;DR: we have already promised anything virtio related is in scope
-for security handling for a long time, as they are all unambiguously
-"virtualization use case".
+Cc: Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Eric Auger <eric.auger@redhat.com>
+Fixes: 8cfaf22668c7 ("hw/vfio/region: Create dmabuf for PCI BAR per region")
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/vfio/region.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-With regards,
-Daniel
+diff --git a/hw/vfio/region.c b/hw/vfio/region.c
+index 996bc523edfe10bd256f5b09dec45cb5c9f543f0..4148d0ea8e35496e4c5a2bf97d1ef6974df7ccbb 100644
+--- a/hw/vfio/region.c
++++ b/hw/vfio/region.c
+@@ -362,6 +362,9 @@ static bool vfio_region_create_dma_buf(VFIORegion *region, Error **errp)
+         if (ret == -ENOTTY) {
+             warn_report_once("VFIO dma-buf not supported in kernel, "
+                              "using mmap fallback, P2P DMA will not work");
++            for (i = 0; i < region->nr_mmaps; i++) {
++                memory_region_set_skip_iommu_map(&region->mmaps[i].mem, true);
++            }
+             return true;
+         }
+         error_setg_errno(errp, -ret, "%s: dma-buf unavailable, "
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.56.0
 
 

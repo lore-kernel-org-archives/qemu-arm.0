@@ -1,115 +1,104 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2B492606A329
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 20:22:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72D5F606A326
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 22:21:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=kA/rvBXk
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=cYgXDdci
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPQRe-0002Bk-C2; Fri, 06 Nov 2026 15:21:54 -0500
+	id 1xPSJ2-0003qH-Vb; Fri, 06 Nov 2026 17:21:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1xPQRd-0002BU-3F; Fri, 06 Nov 2026 15:21:53 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
+ id 1xPSJ1-0003pu-FK
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 17:21:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1xPQRb-0006j0-AA; Fri, 06 Nov 2026 15:21:52 -0500
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A6Jf7oM3108649; Fri, 6 Nov 2026 20:21:49 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=LG1kySKTFxMhFk6IMykvGfTEp+xNXOqoDlESPumxO9U=; b=kA/rvBXknyx6
- o/BiiLhqHoyav4lXW7TrP/urtIL2oZrX3iUFWfDxJoLbIvNiIQQmHoYxrju7B7A1
- wa+NClxo6MzZKn7eab4qZ+wGSr3DHnc1hjq1k2F282c+qQo0mh65MR/aFtMePWkN
- j1wqq14hsaI6prgcqgXHFHN6Xcfz6l63SaPUYT3y51pVN0gsupUJWTXmtuHT7vJ4
- UDOtwzjNAOG823wokgUr0uYYAWVVPcUidco+BGkxj1CRP0kQI6bo4VN+Wqbpnvv7
- w2fCQVMwkOlvdxUYOm4ziSsxxkJB7yGZkHSXNc2OxalOMk/dEM5t4Hw/sDBn/6+n
- PG3fCa1HTQ==
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4hs3rc7v01-1
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Fri, 06 Nov 2026 20:21:49 +0000 (GMT)
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A6JphFH3846117; Fri, 6 Nov 2026 20:21:48 GMT
-Received: from smtprelay03.wdc07v.mail.ibm.com ([172.16.1.70])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 4hrka74cd5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 06 Nov 2026 20:21:48 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
- [10.39.53.231])
- by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 6A6KKwf625690624
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 6 Nov 2026 20:20:59 GMT
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0D5B658050;
- Fri,  6 Nov 2026 20:21:48 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 748E758052;
- Fri,  6 Nov 2026 20:21:47 +0000 (GMT)
-Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Fri,  6 Nov 2026 20:21:47 +0000 (GMT)
-Message-ID: <83e1e0ffe5e9fc53d1105a55b9da47d54e271295.camel@linux.ibm.com>
-Subject: Re: [PATCH 8/8] hw/gpio/pca955x: Simplify pin and led getters and
- setters
-From: Miles Glenn <milesg@linux.ibm.com>
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: marcandre.lureau@redhat.com, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- mark.caveayland@nutanix.com
-Date: Fri, 06 Nov 2026 14:21:47 -0600
-In-Reply-To: <20261106110440.3552588-9-armbru@redhat.com>
-References: <20261106110440.3552588-1-armbru@redhat.com>
- <20261106110440.3552588-9-armbru@redhat.com>
-Organization: IBM
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
+ (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
+ id 1xPSIy-0001cZ-T6
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 17:21:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1794003663;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ry8PEl9lZL+PPPx7HP+9q0xJOuQw4Ja7AlMO/Pzmago=;
+ b=cYgXDdcieWj4cRNopmuettCzQfCYXvLBDagrCvsRY+aGdFDM5/Y1+yaMvSE/Or0yC69bXY
+ yr3PadlNvyGEIdyl5XBYQG4ZRf2napJCu3SIIy8Pw6ozQILnvu3Vn4Eg990ZH+EbYWqRNE
+ XN/r9h4hNHUJtHEGI15cgvxEs0SxWYQ=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-335-d0c3kgaLNrS4OXVdkekWfQ-1; Fri, 06 Nov 2026 17:21:01 -0500
+X-MC-Unique: d0c3kgaLNrS4OXVdkekWfQ-1
+X-Mimecast-MFC-AGG-ID: d0c3kgaLNrS4OXVdkekWfQ_1794003660
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-4925ef75fc4so1051938f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 14:21:01 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1794003660; x=1794608460;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=Ry8PEl9lZL+PPPx7HP+9q0xJOuQw4Ja7AlMO/Pzmago=;
+ b=l2YVBSvp/OyuD4QM6VhzWJQK4hLdE6eY/+bUWmQiIArLqIBpcz7SpySKm4FN3qtrVV
+ dvNYbfhPMhtv31ubTZFEiBPCnmzRr2hDyeKYwdyMSk4/1zBNiYWCxXslfw8xojHKPWot
+ 8/JkcRQOWuxgxKG+lVMS2mqYff+DR1emhZHcDVhH+sYWpa5y/3OZN1mVNEwrblDUWGOR
+ 2j8XPGC2DrDS9YVxJ3STpK+D3L+ihiTABp8MnhzJrI7C2P3hVPZ84QpJ8TVg/pSMkwJ6
+ 1lXiKWU1s0ttVPln3vZ7aFybRw5iraVcN/fWB3zaoJ1C+DBSog/I+U+rRkB6T2hRJjko
+ t8Iw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBw868AvMyXUa73/1ZycFpFDlCGhnzm1M2dapLUXRH/XXs23ed7Dj0zbISIYjHcF+rn84DDcNAtkyg==@nongnu.org
+X-Gm-Message-State: APuU4Z+IUxzuVSDFqXnyd8AUy/ogXrdFn5MiiQ0tnHRL2GkbXIuWur92
+ hmkymzUDEbNevOZb7rzG/GTcQWdysYwZUWLliLC5Qe61GJGuMD8g4Rc2o9p/pphNcM0Jl/c/Alo
+ sEA76ibHsVdDEhaX8aFlKHjRXR6mqkk2dKU4WIK2l1BT0Dm2nRgyRrQ==
+X-Gm-Gg: AYBFou1X+0OMUzfwmpX6e7RPyWBUapBSUEsvsRJr0AIOSGmc18+UKJwbNjMXsXp3qxu
+ caM2IE6LNKLRAl3Z7+oyyxj42VAKt3f7tf/NY1HUs8eKFoqT0vtiOMyTOem4m/59jglpV8O0RKq
+ +rsILlFGao3riyfPig+NhGlQ02gTHHr6dEkokK3TLjwV+CL3+ZVOThz6G2Wbb0j5BBplxIzL1TK
+ I8N3bw8dIkJ5SVIqaegF3O08rGibEEGynTEXoFlsoIKP8HLz2yyu041vvQ27ZTNORHDZvO4EzSo
+ dNyZYM9T03brNMFG7/qUaEuGBYDFJ1QzKI7/oqN0N2nmiPClAdTWDe8jsM8FHxuZcVGBMJgq+5o
+ q46ml4xOttIzPmpNnY8AG0nIbNSWawX/4
+X-Received: by 2002:a05:600c:19d4:b0:4a1:dda8:eb73 with SMTP id
+ 5b1f17b1804b1-4b6df8c91d2mr62643805e9.27.1794003660351; 
+ Fri, 06 Nov 2026 14:21:00 -0800 (PST)
+X-Received: by 2002:a05:600c:19d4:b0:4a1:dda8:eb73 with SMTP id
+ 5b1f17b1804b1-4b6df8c91d2mr62643485e9.27.1794003659871; 
+ Fri, 06 Nov 2026 14:20:59 -0800 (PST)
+Received: from x1 ([151.41.153.165]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4b7d2ad9b95sm14972525e9.0.2026.11.06.14.20.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Nov 2026 14:20:59 -0800 (PST)
+Date: Fri, 6 Nov 2026 23:20:56 +0100
+From: Gustavo Romero <gromero@redhat.com>
+To: Jim MacArthur <jim.macarthur@linaro.org>
+Cc: qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: Re: [PATCH 1/2] hw/arm/smmuv3: define Root registers
+Message-ID: <isr4ew27ud6xmfrk444mdme2rqdtd5wgpbgjblgaavmzhpyppt@hhmxurpxh766>
+References: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
+ <20261016-jmac-smmu-root-registers-v1-1-e78e8879d347@linaro.org>
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA2MDA4MCBTYWx0ZWRfX8tF6SSOhTPve
- UsNTzNU2y4kWl8X2Tt5HgFHrbRfNiuuq4KoJfsXdfnlpkEf1KlsofrjrHFM2VZf8nPyybkERSxo
- 1BL66IzGJZbmfo/t0fQdjH4g2fB3jy0=
-X-Proofpoint-GUID: hwsY96jTW3TUeYxE-jKLhp6Eli8w9uSi
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA2MDA4MCBTYWx0ZWRfX74NL593rv8/P
- tSuZdULzP1hRCWLbNkuigJ0S/3Xc/HAAC4bI4oU0msq51GE1Cq7CbfS0EelbOOcbywvW/bOEkVi
- tT6+OFF4u7JaWuB0nw3GmxGxhAgZbojb2x8+2WmQeqSPtAB4t7q+ZYbGFekbOINzgy3qLmRAfsi
- sAkvU44aXUhqkSptn2SlpJc2gItVxWvNrkAL7+uTG+k4tZBB3tjdIKsun24ZrK/Nv70HQJ8uXMr
- uqWWuSr4gLGBw6zmq7kg0WfBTFQFiFEimRLv1LMZwfC+F/G+aCBSEB8x8Rya6dg6Wf/p+LBINqJ
- 60SE4/Z5TzusF/6YbKkjJqlznd7B97lwSmblHpVzKPwBZc5UVEcfokXls8HXCiyudVjCEx58BQ8
- YRxhQuaD+zO2rHcPs+XMLzCidVelQepphqq8/zVEH0fchaPai6DE0sD1q5kLiuoQ+cPEFw8bAQI
- 4+Pv7YZJ1KWlvGaaeyQ==
-X-Proofpoint-ORIG-GUID: hwsY96jTW3TUeYxE-jKLhp6Eli8w9uSi
-X-Authority-Analysis: v=2.4 cv=CY+dd7rl c=1 sm=1 tr=0 ts=6aee36dd cx=c_pps
- a=aDMHemPKRhS1OARIsFnwRA==:117 a=aDMHemPKRhS1OARIsFnwRA==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=Y2IxJ9c9Rs8Kov3niI8_:22 a=VnNF1IyMAAAA:8
- a=20KFwNOVAAAA:8 a=qoX-1xD-VHzSJV1cSEAA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-06_06,2026-11-06_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 suspectscore=0 bulkscore=0 phishscore=0 impostorscore=0
- malwarescore=0 lowpriorityscore=0 spamscore=0 clxscore=1015 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611060080
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+MIME-Version: 1.0
+In-Reply-To: <20261016-jmac-smmu-root-registers-v1-1-e78e8879d347@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: O0XrGYWl0pt5ixsL16OjfljEWGFUq_jazoHVvFchQVI_1794003660
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gromero@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,225 +109,456 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: milesg@linux.ibm.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+Hi Jim,
 
-Thanks,
+Thanks for sending it.
 
-Glenn
-
-On Fri, 2026-11-06 at 12:04 +0100, Markus Armbruster wrote:
-> Pass the index via object_class_property_add() parameter @opaque
-> instead extracting it from the property name.
+On Fri, Oct 16, 2026 at 10:40:51AM +0100, Jim MacArthur wrote:
+> From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Adds all the non-optional SMMUv3.3 Root registers. These registers
+> do nothing at the moment, but RW registers can be written and all
+> registers can be read.
+> 
+> Based on original work by Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> 
+> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 > ---
->  hw/gpio/pca9552.c | 60 ++++++++++++++---------------------------------
->  hw/gpio/pca9554.c | 30 +++++++-----------------
->  2 files changed, 25 insertions(+), 65 deletions(-)
+>  hw/arm/smmuv3.c                | 229 +++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/smmuv3-common.h |  22 ++++
+>  include/hw/arm/smmuv3.h        |  13 +++
+>  3 files changed, 264 insertions(+)
 > 
-> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-> index f97ad6d083..c8d0e9a16d 100644
-> --- a/hw/gpio/pca9552.c
-> +++ b/hw/gpio/pca9552.c
-> @@ -360,18 +360,12 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
->  {
->      PCA955xClass *k = PCA955X_GET_CLASS(obj);
->      PCA955xState *s = PCA955X(obj);
-> -    int led, rc, reg;
-> +    uintptr_t led = (uintptr_t)opaque;
-> +    int reg;
->      Pca9552LedState state;
->  
-> -    rc = sscanf(name, "led%2d", &led);
-> -    if (rc != 1) {
-> -        error_setg(errp, "%s: error reading %s", __func__, name);
-> -        return;
-> -    }
-> -    if (led < 0 || led >= k->pin_count) {
-> -        error_setg(errp, "%s: invalid led %s", __func__, name);
-> -        return;
-> -    }
-> +    assert(led < k->pin_count);
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index ed19536a4d..9d9bc2601b 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -316,6 +316,11 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
+>      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
+>      s->aidr = 0x1;
+>      smmuv3_accel_idr_override(s);
 > +
->      /*
->       * Get the LSx register as the qom interface should expose the device
->       * state, not the modeled 'input line' behaviour which would come from
-> @@ -397,21 +391,15 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
->  {
->      PCA955xClass *k = PCA955X_GET_CLASS(obj);
->      PCA955xState *s = PCA955X(obj);
-> -    int led, rc, reg, val;
-> +    uintptr_t led = (uintptr_t)opaque;
-> +    int reg, val;
->      Pca9552LedState state;
+> +    /* Initialize Root bank */
+> +    s->root.idr0 = FIELD_DP32(s->root.idr0, ROOT_IDR0, ROOT_IMPL, 1);
+> +    /* Set this to 1 when SMMU Realms are implemented */
+> +    s->root.idr0 = FIELD_DP32(s->root.idr0, ROOT_IDR0, REALM_IMPL, 0);
+>  }
 >  
-> +    assert(led < k->pin_count);
+>  bool smmuv3_ats_enabled(SMMUv3State *s)
+> @@ -1769,6 +1774,111 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>      return MEMTX_OK;
+>  }
+>  
+> +/*
+> + * Check we are from the Root PA space to read from or write to the
+> + * SMMU Root register area.
+> + */
+> +static bool smmu_check_root_access(SMMUv3State *s, MemTxAttrs attrs,
+> +                                     hwaddr offset, bool is_read)
+
+Indentation is off ---------------------^
+
+I think it makes sense also to call this function smmu_root_access(), but no
+strong preference here.
+
+
+> +{
+> +    /* Check if the access is from Root PA */
+> +    if (!(attrs.space == ARMSS_Root)) {
+
+Could we use the comparison operator (!=) instead of the logical one here? I
+think it's clearer than a negation.
+
+
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "%s: Non-root %s attempt at offset 0x%" PRIx64 " (%s)\n",
+> +            __func__, is_read ? "read" : "write", offset,
+> +            is_read ? "RAZ" : "WI");
+> +        return false;
+> +    }
+> +    return true;
+> +}
 > +
->      if (!visit_type_Pca9552LedState(v, name, &state, errp)) {
->          return;
->      }
-> -    rc = sscanf(name, "led%2d", &led);
-> -    if (rc != 1) {
-> -        error_setg(errp, "%s: error reading %s", __func__, name);
-> -        return;
-> -    }
-> -    if (led < 0 || led >= k->pin_count) {
-> -        error_setg(errp, "%s: invalid led %s", __func__, name);
-> -        return;
-> -    }
->  
->      reg = PCA9552_LS0 + led / 4;
->      val = pca955x_read(s, reg);
-> @@ -426,19 +414,11 @@ static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
->  {
->      PCA955xClass *k = PCA955X_GET_CLASS(obj);
->      PCA955xState *s = PCA955X(obj);
-> -    int pin, rc;
-> +    uintptr_t pin = (uintptr_t)opaque;
->      uint8_t input_reg;
->      GpioPinState state;
->  
-> -    rc = sscanf(name, "pin%2d", &pin);
-> -    if (rc != 1) {
-> -        error_setg(errp, "%s: error reading %s", __func__, name);
-> -        return;
-> -    }
-> -    if (pin < 0 || pin >= k->pin_count) {
-> -        error_setg(errp, "%s invalid pin %s", __func__, name);
-> -        return;
-> -    }
-> +    assert(pin < k->pin_count);
->  
->      /*
->       * Report the raw pin logic level; polarity inversion is a read-time
-> @@ -454,28 +434,22 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
->  {
->      PCA955xClass *k = PCA955X_GET_CLASS(obj);
->      PCA955xState *s = PCA955X(obj);
-> -    int pin, rc;
-> +    uintptr_t pin = (uintptr_t)opaque;
->      GpioPinState state;
->      uint8_t config_reg;
->  
-> +    assert(pin < k->pin_count);
+> +static MemTxResult smmu_root_writel(SMMUv3State *s, hwaddr offset,
+> +                                    uint64_t data, MemTxAttrs attrs)
+> +{
+> +    switch (offset) {
+> +    case A_ROOT_IDR0:
+> +    case A_ROOT_IIDR:
+> +    case A_ROOT_CR0ACK:
+> +        /* RO registers, write ignored */
+> +        return MEMTX_OK;
+> +    case A_ROOT_TLBI_CTRL:
+> +        /* Optional, not implemented. Present if IDR0.RGPTM == 1 */
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_BASE_UPDATE:
+> +        /* Unimplemented at present; has side effects */
+> +        return MEMTX_OK;
+> +    case A_ROOT_CR0:
+> +        s->root.cr0 = data;
+> +        s->root.cr0ack = s->root.cr0;
+> +        return MEMTX_OK;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s unhandled 32-bit access at 0x%"PRIx64" (WI)\n",
+> +                      __func__, offset);
+> +        /*
+> +         * Locations not associated with a register (including registers that we
+> +         * have not implemented yet) are RES0, and will follow RAZ/WI behaviour.
+> +         */
+> +        return MEMTX_OK;
+> +    }
+> +}
 > +
->      if (!visit_type_GpioPinState(v, name, &state, errp)) {
->          return;
->      }
-> -    rc = sscanf(name, "pin%2d", &pin);
-> -    if (rc != 1) {
-> -        error_setg(errp, "%s: error reading %s", __func__, name);
-> -        return;
-> -    }
-> -    if (pin < 0 || pin >= k->pin_count) {
-> -        error_setg(errp, "%s invalid pin %s", __func__, name);
-> -        return;
-> -    }
->  
->      /* Only input-configured pins can be driven by an external device. */
->      config_reg = PCA9535_CONFIG0 + (pin / 8);
->      if (!((s->regs[config_reg] >> (pin % 8)) & 0x1)) {
->          qemu_log_mask(LOG_UNIMP,
-> -                      "%s: pin %d is configured as output, ignoring set\n",
-> +                      "%s: pin %" PRIdPTR " is configured as output, "
-> +                      "ignoring set\n",
->                        s->description, pin);
->          return;
->      }
-> @@ -549,14 +523,14 @@ static void pca955x_pin_init(PCA955xClass *k)
->              object_class_property_add(OBJECT_CLASS(k), name,
->                                        "str", &Pca9552LedState_type_info,
->                                        pca955x_get_led, pca955x_set_led,
-> -                                      NULL, NULL);
-> +                                      NULL, (void *)(uintptr_t)ix);
->          } else {
->              /* GPIO variant: expose the pin logic level as pin%d. */
->              name = g_strdup_printf("pin%d", ix);
->              object_class_property_add(OBJECT_CLASS(k), name,
->                                        "str", &GpioPinState_type_info,
->                                        pca955x_get_pin, pca955x_set_pin,
-> -                                      NULL, NULL);
-> +                                      NULL, (void *)(uintptr_t)ix);
->          }
->          g_free(name);
->      }
-> diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
-> index e2d481866f..d987b16cd0 100644
-> --- a/hw/gpio/pca9554.c
-> +++ b/hw/gpio/pca9554.c
-> @@ -173,18 +173,10 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
->                              void *opaque, Error **errp)
->  {
->      PCA9554State *s = PCA9554_BASE(obj);
-> -    int pin, rc;
-> +    uintptr_t pin = (uintptr_t)opaque;
->      GpioPinState state;
->  
-> -    rc = sscanf(name, "pin%2d", &pin);
-> -    if (rc != 1) {
-> -        error_setg(errp, "%s: error reading %s", __func__, name);
-> -        return;
-> -    }
-> -    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
-> -        error_setg(errp, "%s invalid pin %s", __func__, name);
-> -        return;
-> -    }
-> +    assert(pin < PCA9554_BASE_GET_CLASS(s)->pin_count);
->  
->      /*
->       * Report the physical pin level. The input register is kept in sync by
-> @@ -200,28 +192,22 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
->                              void *opaque, Error **errp)
->  {
->      PCA9554State *s = PCA9554_BASE(obj);
-> -    int pin, rc, val;
-> +    uintptr_t pin = (uintptr_t)opaque;
-> +    int val;
->      uint8_t mask;
->      GpioPinState state;
->  
-> +    assert(pin < PCA9554_BASE_GET_CLASS(s)->pin_count);
+> +static MemTxResult smmu_root_writell(SMMUv3State *s, hwaddr offset,
+> +                                     uint64_t data, MemTxAttrs attrs)
+> +{
+> +    switch (offset) {
+> +    case A_ROOT_GPT_BASE:
+> +        s->root.gpt_base = data;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_BASE_CFG:
+> +        s->root.gpt_base_cfg = data;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPF_FAR:
+> +        s->root.gpf_far = data;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_CFG_FAR:
+> +        s->root.gpt_cfg_far = data;
+> +        return MEMTX_OK;
+> +    case A_ROOT_TLBI:
+> +        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_BASE2:
+> +        s->root.gpt_base2 = data;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPCBW:
+> +        /* Optional, not implemented. Present if ROOT_IDR0.GPTS == 1 */
+> +        return MEMTX_OK;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s unhandled 64-bit access at 0x%"PRIx64" (WI)\n",
+> +                      __func__, offset);
+> +        /* RES0; See smmu_root_writel */
+> +        return MEMTX_OK;
+> +    }
+> +}
+
+We might have some issues down the lane since TF-A seems to rely on the spec
+that says that 64b registers can be written in 32b halves, since I see in the
+TF-A code, drivers/arm/smmu/smmu_v3.c, in smmuv3_init():
+
+[...]
+                          /*
+                           * TODO: SMMU_ROOT_GPT_BASE_CFG is 64b in the spec,
+                           * but SMMU model only accepts 32b access.
+                           */
+                          mmio_write_32(smmu_base + SMMU_ROOT_GPT_BASE_CFG,
+                                        gpccr_el3);
+
+But for now it's ok. We can revisit it later.
+
+
 > +
->      if (!visit_type_GpioPinState(v, name, &state, errp)) {
->          return;
->      }
-> -    rc = sscanf(name, "pin%2d", &pin);
-> -    if (rc != 1) {
-> -        error_setg(errp, "%s: error reading %s", __func__, name);
-> -        return;
-> -    }
-> -    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
-> -        error_setg(errp, "%s invalid pin %s", __func__, name);
-> -        return;
-> -    }
+> +static MemTxResult smmu_write_mmio_root(SMMUv3State *s, hwaddr offset,
+> +                                        uint64_t data, unsigned size,
+> +                                        MemTxAttrs attrs)
+> +{
+> +    MemTxResult r;
+> +
+> +    switch (size) {
+> +    case 8:
+> +        r = smmu_root_writell(s, offset, data, attrs);
+> +        break;
+> +    case 4:
+> +        r = smmu_root_writel(s, offset, data, attrs);
+> +        break;
+> +    default:
+> +        r = MEMTX_ERROR;
+> +        break;
+> +    }
+> +
+> +    trace_smmuv3_write_mmio(offset, data, size, r);
+> +    return r;
+> +}
+> +
+>  static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+>                                     unsigned size, MemTxAttrs attrs)
+>  {
+> @@ -1776,6 +1886,18 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+>      SMMUv3State *s = ARM_SMMUV3(sys);
+>      MemTxResult r;
 >  
->      if (s->hw_dir) {
->          /* Warn and ignore if the guest has configured this pin as output */
->          if (!((s->regs[PCA9554_CONFIG] >> pin) & 0x1)) {
->              qemu_log_mask(LOG_UNIMP,
-> -                          "%s: pin %d is configured as output, "
-> +                          "%s: pin %" PRIdPTR " is configured as output, "
->                            "ignoring external set\n",
->                            s->description, pin);
->              return;
-> @@ -290,7 +276,7 @@ static void pca9554_pin_init(PCA9554Class *pc)
->          object_class_property_add(OBJECT_CLASS(pc), name,
->                                    "str", &GpioPinState_type_info,
->                                    pca9554_get_pin, pca9554_set_pin,
-> -                                  NULL, NULL);
-> +                                  NULL, (void *)(uintptr_t)pin);
->          g_free(name);
+> +    if (offset >= SMMU_ROOT_REG_START) {
+> +        if (!smmu_check_root_access(s, attrs, offset, false)) {
+> +            /*
+> +             * As per 6.2.8, accesses in any PA space other
+> +             * than Root are completed as RAZ/WI.
+> +             */
+> +            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
+> +            return MEMTX_OK;
+> +        }
+> +        return smmu_write_mmio_root(s, offset, data, size, attrs);
+> +    }
+> +
+>      /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
+>      offset &= ~0x10000;
+>  
+> @@ -1918,6 +2040,100 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
 >      }
 >  }
+>  
+> +static MemTxResult smmu_root_readl(SMMUv3State *s, hwaddr offset,
+> +                                   uint64_t *data, MemTxAttrs attrs)
+> +{
+> +    switch (offset) {
+> +    case A_ROOT_IDR0:
+> +        *data = s->root.idr0;
+> +        return MEMTX_OK;
+> +    case A_ROOT_IIDR:
+> +        *data = s->root.iidr;
+> +        return MEMTX_OK;
+> +    case A_ROOT_TLBI_CTRL:
+> +        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
+> +        *data = 0;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_BASE_UPDATE:
+> +        /* Not a regular register; reads as 0 once update is complete */
+> +        *data = 0;
+> +        return MEMTX_OK;
+> +    case A_ROOT_CR0:
+> +        *data = s->root.cr0;
+> +        return MEMTX_OK;
+> +    case A_ROOT_CR0ACK:
+> +        *data = s->root.cr0ack;
+> +        return MEMTX_OK;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s unhandled 32-bit access at 0x%"PRIx64" (RAZ)\n",
+> +                      __func__, offset);
+> +        *data = 0;
+> +        /* RES0; See smmu_root_writel */
+> +        return MEMTX_OK;
+> +    }
+> +}
+> +
+> +static MemTxResult smmu_root_readll(SMMUv3State *s, hwaddr offset,
+> +                                    uint64_t *data, MemTxAttrs attrs)
+> +{
+> +    switch (offset) {
+> +    case A_ROOT_GPT_BASE:
+> +        *data = s->root.gpt_base;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_BASE_CFG:
+> +        *data = s->root.gpt_base_cfg;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPF_FAR:
+> +        *data = s->root.gpf_far;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_CFG_FAR:
+> +        *data = s->root.gpt_cfg_far;
+> +        return MEMTX_OK;
+> +    case A_ROOT_TLBI:
+> +        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
+> +        *data = 0;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPT_BASE2:
+> +        *data = s->root.gpt_base2;
+> +        return MEMTX_OK;
+> +    case A_ROOT_GPCBW:
+> +        /* Optional, not implemented. Present if ROOT_IDR0.GPTS == 0 */
+
+                                         GPTS == 1 here? -----^
+
+
+> +        *data = 0;
+> +        return MEMTX_OK;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s unhandled 64-bit access at 0x%"PRIx64" (RAZ)\n",
+> +                      __func__, offset);
+> +        *data = 0;
+> +        /* RES0; See smmu_root_writel */
+> +        return MEMTX_OK;
+> +    }
+> +}
+> +
+> +static MemTxResult smmu_read_mmio_root(SMMUv3State *s, hwaddr offset,
+> +                                       uint64_t *data, unsigned size,
+> +                                       MemTxAttrs attrs)
+> +{
+> +    MemTxResult r;
+> +
+> +    switch (size) {
+> +    case 8:
+> +        r = smmu_root_readll(s, offset, data, attrs);
+> +        break;
+> +    case 4:
+> +        r = smmu_root_readl(s, offset, data, attrs);
+> +        break;
+> +    default:
+> +        r = MEMTX_ERROR;
+> +        break;
+> +    }
+> +
+> +    trace_smmuv3_read_mmio(offset, *data, size, r);
+> +    return r;
+> +}
+> +
+> +
+>  static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+>                                    unsigned size, MemTxAttrs attrs)
+>  {
+> @@ -1925,6 +2141,19 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+>      SMMUv3State *s = ARM_SMMUV3(sys);
+>      MemTxResult r;
+>  
+> +    if (offset >= SMMU_ROOT_REG_START) {
+> +        if (!smmu_check_root_access(s, attrs, offset, true)) {
+> +            /*
+> +             * As per 6.2.8, accesses in any PA space other
+> +             * than Root are completed as RAZ/WI.
+> +             */
+> +            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
+> +            return MEMTX_OK;
+> +        }
+> +
+> +        return smmu_read_mmio_root(s, offset, data, size, attrs);
+> +    }
+> +
+>      /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
+>      offset &= ~0x10000;
+>  
+> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
+> index 4609975edf..a538334066 100644
+> --- a/include/hw/arm/smmuv3-common.h
+> +++ b/include/hw/arm/smmuv3-common.h
+> @@ -411,6 +411,28 @@ REG32(EVENTQ_IRQ_CFG2,     0xbc)
+>  
+>  #define A_IDREGS           0xfd0
+>  
+> +#define SMMU_ROOT_REG_START 0x20000
+
+The base address for the Root Control Page is implementation defined, hence
+0x20000 is not always true and depends on the machine/platform. We could add
+property to set it externaly but it would also complicate unnecessarily the
+offset math. So I think it's ok to follow what FVP is doing. Please just add a
+note saying it's impl. defined so it might require a tweak in the
+future.
+
+I think we can follow TF-A code here and rename this macro. So how about
+renaming it to:
+
+SMMUV3_ROOT_REG_OFFSET ?
+
+
+> +
+> +REG32(ROOT_IDR0,            0x0)
+> +    FIELD(ROOT_IDR0, ROOT_IMPL,   0,  1)
+> +    FIELD(ROOT_IDR0, BGTPM,       1,  1)
+         
+Typo: BGPTM ------------^
+
+
+> +    FIELD(ROOT_IDR0, RGPTM,       2,  1)
+> +    FIELD(ROOT_IDR0, REALM_IMPL,  3,  1)
+> +    FIELD(ROOT_IDR0, BA_REALM,   22, 10)
+> +
+> +REG32(ROOT_IIDR,             0x8)
+> +REG32(ROOT_CR0,             0x20)
+> +REG32(ROOT_CR0ACK,          0x24)
+> +REG64(ROOT_GPT_BASE,        0x28)
+> +REG64(ROOT_GPT_BASE_CFG,    0x30)
+> +REG64(ROOT_GPF_FAR,         0x38)
+> +REG64(ROOT_GPT_CFG_FAR,     0x40)
+> +REG64(ROOT_TLBI,            0x50)
+> +REG32(ROOT_TLBI_CTRL,       0x58)
+> +REG64(ROOT_GPT_BASE2,       0x60)
+> +REG32(ROOT_GPT_BASE_UPDATE, 0x68)
+> +REG32(ROOT_GPCBW,           0x70)
+> +
+>  /* Commands */
+>  
+>  typedef enum SMMUCommandType {
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index d39fe8850b..e2708e13fe 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -34,6 +34,18 @@ typedef struct SMMUQueue {
+>       uint8_t log2size;
+>  } SMMUQueue;
+>  
+> +typedef struct SMMUv3RootRegBank {
+
+How about naming this struct simply SMMUv3Root?
+
+
+> +    uint32_t idr0;
+> +    uint32_t iidr;
+> +    uint32_t cr0;
+> +    uint32_t cr0ack;
+> +    uint64_t gpt_base;
+> +    uint64_t gpt_base_cfg;
+> +    uint64_t gpf_far;
+> +    uint64_t gpt_cfg_far;
+> +    uint64_t gpt_base2;
+
+Looking at ARM IHI 0070 H.a Non-confidential spec I don't see
+
+0x0068 SMMU_ROOT_GPT_BASE_UPDATE 32-bit, R/W and
+0x0070 SMMU_ROOT_GPCBW 64-bit, R/W
+
+as Optional like I see SMMU_ROOT_TLBI and SMMU_ROOT_TLBI_CTRL.
+
+Should they be declared as well?
+
+
+> +} SMMUv3RootRegBank;
+> +
+>  struct SMMUv3State {
+>      SMMUState     smmu_state;
+>  
+> @@ -80,6 +92,7 @@ struct SMMUv3State {
+>      OnOffAuto cmdqv;
+>  
+>      Notifier machine_done;
+> +    SMMUv3RootRegBank root;
+>  };
+>  
+>  typedef enum {
+> 
+> -- 
+> 2.43.0
+> 
+> 
+
+General comments:
+
+smmu_read_mmio_root
+smmu_write_mmio_root 
+
+I think we can drop the "mmio_" for both functions. It's ok to have "mmio_" in
+the "trace_smmuv3_write_mmio" trace function because afaics it has a generic use,
+so its use is not tied to any bank.
+
+
+I think we're missing to reset some registers in smmuv3_reset()? Like:
+
+s->root.cr0 = 0;
+s->root.cr0ack = 0;
+s->root.gpf_far = 0;
+s->root.gpt_cfg_far = 0;
+
+
+Cheers,
+Gustavo
 
 

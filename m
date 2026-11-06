@@ -1,122 +1,114 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40E76606A326
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 19:12:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C663F606A326
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 20:17:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=h3ovdv77
+	dkim=pass (2048-bit key, unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=B25csijb
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPPMo-00040T-Uy; Fri, 06 Nov 2026 14:12:52 -0500
+	id 1xPQNh-0006eT-Ha; Fri, 06 Nov 2026 15:17:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xPPMk-0003wh-Ke
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 14:12:46 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xPPMj-0008K8-3U
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 14:12:46 -0500
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-6b570ff3dfdso947339a12.3
- for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 11:12:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793992363; cv=none;
- d=google.com; s=arc-20260327;
- b=Ac5F1nAxaOGVIdCnobnEHJJbQ1/0CgoySdTHFfDySkC2yt1XOcuI04ZTp+dgoqtlHj
- fO70cx/PL4mnbl8JHvZZJvwxBWJ/9ayguGz9z70hL20sWe7XmPgMPm92C3aFbSkb1U+N
- RChPoA2KR1DiJ+/ln7vs6YxA347J4Hg43jG7b+OdyIAVAVxwDEKNqcbAWbEAo/Xl+4MB
- iUjO1bJgLnib1tCOqWiO7QK04WN+sDU9kJxLdcZphpFKfAgfzzkd/m6ZAxmTtyxAXJje
- fAOETVxqJemOVxzWYLtHY+p5ksvWitYFs4uTzLOPvjQ+GGrz/2XxlOoLGrN8BrjWbJoy
- mZ+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=m321WU9WR4Fb0rnxQ5BSk67u7RgHUDMKKV6e02IQ/pM=;
- fh=x24BWEQJDuxf9JEObBm+/bPbI6xtmc2cwOO+GYYj9nk=;
- b=URl231vnoB5hqLIpfa06hZ2oNOciWLnaIN2N6U++oaaZeh3MpJZK/hMMSc8IiQLUEF
- 80EjIqeYa5WGmhktCIqDZ+6SDahBjf2IxcCJO8qUSPJKQlzdro3/VusS5h/fNjY7CYlk
- doep2zWuridMk3yHahOiOYlwy9hSRIBcJ9UJmBa2w3UNRCWfPfVkiwi4+ANqCzIThfgE
- a3bq2sBVTm3ck3JG/LRdxjyV5CbQ3IHt3NSMpPA+Ahgzy2RtjPiqfm48UlLsOKm/YZ5i
- K70E7yyZdclQ3SeA7WOJlbvrjQRd4WZ/klnlXcIseq8Ioqn8mCi4JYGL3m1PM5ToEIX3
- DD3A==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1793992363; x=1794597163; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=m321WU9WR4Fb0rnxQ5BSk67u7RgHUDMKKV6e02IQ/pM=;
- b=h3ovdv77yNtVmO0t9Lvcb/6xQwZzER4vbVU8Phc0WTRowIhbQqgUbWzIFCM0O1mp9R
- IQGjd76liEegLe35BPusdad3FiK31IP6Fp+GOpNsWRy/1Cj0P7C7Rg+hTuczVQ7Q2Xf/
- mraoEjTC3OeQwRAeP3fYLKBqKZabesJlLHWCMHJqgE8G87hbPtW69fBHGGS3S5T4fCQs
- t9o+clNsOVBcWehUcysuZ7nbUQOQy/gxv6bjowf9vgBHYEjjdrelRdL2oRa7EasrDfOU
- 6devp6BZ9bi/4W9N4hcRQhIESOgsT3QhAjilRGD5wIJNN2ODML5CHDqB6w3CApJPKjwv
- MDQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793992363; x=1794597163;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=m321WU9WR4Fb0rnxQ5BSk67u7RgHUDMKKV6e02IQ/pM=;
- b=mRvSvk4pMlgOTP26/KlkxaVWPUHF6n2dfmcZ7PlxpcLtJVgvZObyr9+QkOEveLoQYk
- J1/EQOlCoeTgiCedkeEr7iOazgZlEYGsRKL7OF9ClvxaSiN64/8Uf6Mi2YUAR6973G9+
- Izr+alx+ApQXI9WW8OVgPfiWiLj+7s33LQrOqyBz1MMc7HnQPxFvFLgT/OHBrDaanPZ2
- +4KyCsCDWYi9Zj+mdGgaFuNLIpHOf5BWawhe5/OJIjH2OadqESv+7Hj9fHX6SeOmioxF
- Er93zVEYafY6CKakwQ886wPLrN/NHDP1Yj0RTILJbLD8Tly1nLWR/bGY9m/RTkX3Wlw9
- W7OQ==
-X-Forwarded-Encrypted: i=1;
- AL+hErHfl1YGfc4ILsMqJEJDKwk/I9bd98ECdk9EDbbCcrInG1fuxKWaEZesq9ZcbJirteEXAsj8bsgPnA==@nongnu.org
-X-Gm-Message-State: APuU4Z8xuVYVYnQytCd9MHXF4GNmAxy66iB+BifZhke5k+7dmkQAAlb2
- ffr2ea7krxmlvCeuDoSX/ZFALjKsqC39hxaWUSH3V4sJynZpXjhP+RpZMCUHySo/fAxDknflJDi
- upR5ZoIb3ndoZZW+FvUV+18djhb8SEEo=
-X-Gm-Gg: AYBFou0V5Us24KPnCcjJ9VmBBMIPoxXVL6cEMemZz8ZKZbEPRoRgn2oEAtv3IkfwYPM
- Y6q5+JYCwYAYx5OM8xthdiPM3yGLJeRaaiVgiPX+ei99udfg+GFUKH7vWf3jf5TPGJf7ZfQ9/Fh
- 9nw0AkWPL6CA8fWeZ/SAEuEbsOWXou62uwFo9LySrovR/8+HPokc1xqs6oGbiewTx8VrIfBqyQt
- wCikA3ypdGbRHmtmbvZXhqjqn7q5ge8Df+SpUy4tdacF0j0gwCxIyyMrP/jqA/h7OsTFCJerqVc
- LpOfakuWJTMIH/b94YyHzoA8kwrA7HtKnt+qkRhUI4cl1QHwqdt3U89SPVPFUZHKWeBjJfmYBjz
- jcPgwQ36tWwxSUZsEJ97Rkrp2lHME8d6BahAK
-X-Received: by 2002:a05:6402:1493:b0:6b5:7140:e2f9 with SMTP id
- 4fb4d7f45d1cf-6b59781b3demr1886061a12.33.1793992363374; Fri, 06 Nov 2026
- 11:12:43 -0800 (PST)
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-References: <20261106023936.772-1-luoyonggang@gmail.com>
- <20261106023936.772-2-luoyonggang@gmail.com>
- <a97b0f72-fb7c-4f5a-bde6-b542056d6e5d@oss.qualcomm.com>
-In-Reply-To: <a97b0f72-fb7c-4f5a-bde6-b542056d6e5d@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Sat, 7 Nov 2026 03:12:30 +0800
-X-Gm-Features: AclHuK9JM5gWspep-JUsvI5KqyyfhEj_r6dk2NPt2HXBj4Q8sVBSRKgEREL75uE
-Message-ID: <CAE2XoE-RxH8AOhJJXNG9d8XvGbjtUQQ9byfZschZ=fD+3rrv2Q@mail.gmail.com>
-Subject: Re: [PATCH v5 1/3] accel: register CPU parent only for AccelCPU
- subclasses
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, Nicholas Piggin <npiggin@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Chao Liu <chao.liu@processmission.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>, 
- Weiwei Li <liwei1518@gmail.com>, Philippe Mathieu-Daude <philmd@mailo.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1xPQNg-0006c6-0e; Fri, 06 Nov 2026 15:17:48 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1xPQNe-0006GV-Bx; Fri, 06 Nov 2026 15:17:47 -0500
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6A6IEMaI3180583; Fri, 6 Nov 2026 20:17:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:to; s=pp1;
+ bh=m6Uojz4JZDbKVb6e4F5Ke6wecXtWkQnGjGvC/VJM33M=; b=B25csijbFU+8
+ 6/YmYpDj5YJ3YWOKO3AAnk6ULSm2+YQEPAHxzqf2YPT+t7W1A1Q/mfopq7P7mXr/
+ /ulGdNFS/YJrVKjGJS1qPPZtS5EsY7DqfZQ+YAEucAyB4YJ/ZksvjsYx/5JaTDud
+ Cu3P7Rvy61mQDqCmL+wTHkAbH/qiELHJF49DeGfgm1uar7QMArMbo/oyDi4rp8id
+ JLIHYJqJt8tkaPxrjIcm4D7j9e+gbEVJpxlT1hlcgvz1CFYx3Lvs71+J2++FuGHW
+ nEDQv6sKsFkaghHs2w+J6OpshWhmdt3B8+gkLHvxXBpnXvgcwpxfxoWDxSzXAIQz
+ SxfXD5j3Ng==
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4hs3r9fvf6-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Fri, 06 Nov 2026 20:17:43 +0000 (GMT)
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6A6K5dar3838964; Fri, 6 Nov 2026 20:17:42 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4hsk809g5p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 06 Nov 2026 20:17:42 +0000 (GMT)
+Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
+ [10.39.53.233])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 6A6KHgrb18481886
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 6 Nov 2026 20:17:42 GMT
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 657025803F;
+ Fri,  6 Nov 2026 20:17:42 +0000 (GMT)
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D4C8058056;
+ Fri,  6 Nov 2026 20:17:41 +0000 (GMT)
+Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
+ by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Fri,  6 Nov 2026 20:17:41 +0000 (GMT)
+Message-ID: <c6fcfb91f1afe9b2f3dde478567e25fa74ebc99e.camel@linux.ibm.com>
+Subject: Re: [PATCH 1/8] hw/gpio/pca9552: Convert pin and led properties to
+ class properties
+From: Miles Glenn <milesg@linux.ibm.com>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: marcandre.lureau@redhat.com, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ mark.caveayland@nutanix.com
+Date: Fri, 06 Nov 2026 14:17:41 -0600
+In-Reply-To: <20261106110440.3552588-2-armbru@redhat.com>
+References: <20261106110440.3552588-1-armbru@redhat.com>
+ <20261106110440.3552588-2-armbru@redhat.com>
+Organization: IBM
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
+X-Archived-By: <archiver.kernel.org>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Authority-Analysis: v=2.4 cv=LKHz05W9 c=1 sm=1 tr=0 ts=6aee35e7 cx=c_pps
+ a=5BHTudwdYE3Te8bg5FgnPg==:117 a=5BHTudwdYE3Te8bg5FgnPg==:17
+ a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8
+ a=20KFwNOVAAAA:8 a=sWN3zfszUj_efFXM9Y4A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: tiAzQ_vYTBIENNpvVbpacFzoT9_yaLzy
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA2MDA4MCBTYWx0ZWRfX1p+RENPZ4xko
+ Gt/sGFTKGmEEGtKLpLtAiDpMtpDdRlanNF1Tl9/Uxqv88DhZZWcpOhb8wh3rH0kyOe4DN6Po7I5
+ /J/W02sOsFAHHYeUDlSZjilftNOeRqc=
+X-Proofpoint-ORIG-GUID: tiAzQ_vYTBIENNpvVbpacFzoT9_yaLzy
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA2MDA4MCBTYWx0ZWRfX3y30zpfWzB76
+ qVMc7fnk4cxVfzbCK8aabfY7FHF1Lr29hK9MZUC9IQyO30eXLGi0U3KQpx7TVEvtETO3wXGG0zg
+ SbEA0qORI7BOQIX22LKhiQMLHUuXAQVntfXrXIKkquTl4qDqSpc9RU6etr5YbBkxwbJO0x1o58i
+ M04ccPUYgeCVavY1MW1u0l9yp74Io9GsheSDB0nNwpUx3PTKRniOW6/dbispbz4AMOBFW+8UxZF
+ ICWSeyd6g7hbuWw2SAcihRfqDZrKADoYxWvMnojzv8seHzsxLDTBmcJhAsjumNXP7AQ247IlPa7
+ zXkp5Of+F/f3W5x4CpRtFIeojyoGAAokzz4oB8N1IW18uct/RIGhkpT3ADL8G19bud3BQyxJ1xh
+ jZxwSM5ZnpA8mMNm2OMVgyI44aB4jJrZneEep5JG/fBWnVzy2Drco8AdP7up6b1cNfoZeR2/u3l
+ fdyiFcoek0wQAXab6QA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-06_06,2026-11-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 spamscore=0 suspectscore=0 lowpriorityscore=0 impostorscore=0
+ priorityscore=1501 bulkscore=0 clxscore=1011 malwarescore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611060080
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,69 +120,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
+Reply-To: milesg@linux.ibm.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, Nov 7, 2026 at 1:59=E2=80=AFAM Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
->
-> On 11/5/2026 6:39 PM, Yonggang Luo wrote:
-> > accel_cpu_register_type() creates the abstract parent
-> > accel-<cpu type>. A subclass names that parent, and
-> > type_initialize() aborts when the parent is missing. The old
-> > type_init registered only target_cpu_type(), which is one name
-> > in a multi-target process. Call the helper from the CPU type
-> > init of each target that has an AccelCPU subclass.
-> >
-> > ARM calls it because whpx-common.c parents accel-arm-cpu on
-> > aarch64-softmmu. i386 calls it for TCG, KVM, HVF, NVMM, and
-> > MSHV. i386-softmmu and x86_64-softmmu each pass their own
-> > CPU_RESOLVING_TYPE, so WHPX on x86_64-softmmu finds
-> > accel-x86_64-cpu. RISC-V calls it for TCG and KVM. PowerPC
-> > calls it for KVM.
-> >
-> > Other targets have no AccelCPU subclass. Machine init looks up
-> > tcg-accel-<cpu type> or kvm-accel-<cpu type> and skips a missing
-> > class, so those targets do not need the parent.
-> >
-> > No extra tests is needed, as these QOM types already be
-> > tested by the existing logic instantiating all QOM types.
-> >
-> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > ---
-> >  accel/accel-common.c      | 6 ++----
-> >  include/accel/accel-cpu.h | 2 ++
-> >  target/arm/cpu.c          | 2 ++
-> >  target/i386/cpu.c         | 2 ++
-> >  target/ppc/cpu_init.c     | 2 ++
-> >  target/riscv/cpu.c        | 8 ++++++++
-> >  6 files changed, 18 insertions(+), 4 deletions(-)
-> >
->
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-> Tested-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 
+Thanks,
 
-Thanks for your good review, otherwise it won't be in such good shape.
+Glenn
 
->
-> Regards,
-> Pierrick
+On Fri, 2026-11-06 at 12:04 +0100, Markus Armbruster wrote:
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  hw/gpio/pca9552.c | 19 +++++++++++--------
+>  1 file changed, 11 insertions(+), 8 deletions(-)
+> 
+> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+> index 90ccf5170e..65a718ef31 100644
+> --- a/hw/gpio/pca9552.c
+> +++ b/hw/gpio/pca9552.c
+> @@ -557,10 +557,8 @@ static void pca9535_reset_hold(Object *obj, ResetType type)
+>      s->len = 0;
+>  }
+>  
+> -static void pca955x_initfn(Object *obj)
+> +static void pca955x_pin_init(PCA955xClass *k)
+>  {
+> -    PCA955xClass *k = PCA955X_GET_CLASS(obj);
+> -
+>      assert(k->pin_count <= PCA955X_PIN_COUNT_MAX);
+>      for (int ix = 0; ix < k->pin_count; ix++) {
+>          char *name;
+> @@ -568,13 +566,17 @@ static void pca955x_initfn(Object *obj)
+>          if (k->has_led_support) {
+>              /* LED variant: expose the LED selector state as led%d. */
+>              name = g_strdup_printf("led%d", ix);
+> -            object_property_add(obj, name, "str", &str_type_info,
+> -                                pca955x_get_led, pca955x_set_led, NULL, NULL);
+> +            object_class_property_add(OBJECT_CLASS(k), name,
+> +                                      "str", &str_type_info,
+> +                                      pca955x_get_led, pca955x_set_led,
+> +                                      NULL, NULL);
+>          } else {
+>              /* GPIO variant: expose the pin logic level as pin%d. */
+>              name = g_strdup_printf("pin%d", ix);
+> -            object_property_add(obj, name, "str", &str_type_info,
+> -                                pca955x_get_pin, pca955x_set_pin, NULL, NULL);
+> +            object_class_property_add(OBJECT_CLASS(k), name,
+> +                                      "str", &str_type_info,
+> +                                      pca955x_get_pin, pca955x_set_pin,
+> +                                      NULL, NULL);
+>          }
+>          g_free(name);
+>      }
+> @@ -640,6 +642,7 @@ static void pca9552_class_init(ObjectClass *oc, const void *data)
+>      pc->max_reg = PCA9552_LS3;
+>      pc->pin_count = 16;
+>      pc->has_led_support = true;
+> +    pca955x_pin_init(pc);
+>  }
+>  
+>  static void pca95x5_class_init(ObjectClass *oc, const void *data)
+> @@ -653,13 +656,13 @@ static void pca95x5_class_init(ObjectClass *oc, const void *data)
+>      pc->max_reg = PCA9535_CONFIG1;
+>      pc->pin_count = 16;
+>      pc->has_led_support = false;
+> +    pca955x_pin_init(pc);
+>  }
+>  
+>  static const TypeInfo pca955x_types[] = {
+>      {
+>          .name          = TYPE_PCA955X,
+>          .parent        = TYPE_I2C_SLAVE,
+> -        .instance_init = pca955x_initfn,
+>          .instance_size = sizeof(PCA955xState),
+>          .class_init    = pca955x_class_init,
+>          .class_size    = sizeof(PCA955xClass),
 
-
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
 

@@ -1,82 +1,83 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE093606A329
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 12:25:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3E90606A326
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 12:29:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=dI6VT4IX
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=RTt4iYr/
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPJ0a-0006GH-Iy; Fri, 06 Nov 2026 07:25:35 -0500
+	id 1xPJ3h-0007gX-Nq; Fri, 06 Nov 2026 07:28:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPIyr-0005SO-Ml
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:23:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPJ3R-0007Zx-Gh
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:28:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPIyp-00087a-Ue
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:23:41 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPJ3Q-0008VF-1c
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 07:28:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793967817;
+ s=mimecast20190719; t=1793968103;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=uu+cDuCorZz51VgUzDaApyZ78MqY5eiqcqx1CYytCsc=;
- b=dI6VT4IX6rteZYsChR0/8E/GXjkRKiItoYxP4Ll+akkL0FvQlvZYbZnkcEGf9hwD8gUtjZ
- asj+HZlZDEfJDCXCXd/P0l9Ivsi+XdxxTDuYEwGKRUHxKPcSOe08SKojB9tlWTXT5wFC6s
- ADuRXbshLmI2ZI7HHxPIfu7ywhF2bA0=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Kg8bWmuACORdOBFIw5XQei+BopKzAEafZzJ54qj/qQY=;
+ b=RTt4iYr/SOmp9uZV1ynJdAOIvFiPjxBsH//Pcze3YJJwPXIvYFkAbQZGg6Lk1/fEQMvcRl
+ TUt0wcN49rWtvufH1nZqxAPIuK9vIAcbElkeMSCLlXh8wIRQd6KEewSdKbnZcbODB05pYN
+ f6dupQFIoGEydar4QG6pOBZuPN3nNf8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-528-gdBseJYdNjaDQ1SoqtLp5w-1; Fri, 06 Nov 2026 07:23:36 -0500
-X-MC-Unique: gdBseJYdNjaDQ1SoqtLp5w-1
-X-Mimecast-MFC-AGG-ID: gdBseJYdNjaDQ1SoqtLp5w_1793967815
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-48fcb657f32so438183f8f.2
- for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 04:23:36 -0800 (PST)
+ us-mta-651-BLmv2cMUN2-XABFF2vdzaQ-1; Fri, 06 Nov 2026 07:28:22 -0500
+X-MC-Unique: BLmv2cMUN2-XABFF2vdzaQ-1
+X-Mimecast-MFC-AGG-ID: BLmv2cMUN2-XABFF2vdzaQ_1793968101
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4b764ffc014so4531525e9.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 04:28:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793967815; x=1794572615;
- h=content-transfer-encoding:content-type:in-reply-to:autocrypt
- :content-language:from:references:cc:to:subject:user-agent
- :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=uu+cDuCorZz51VgUzDaApyZ78MqY5eiqcqx1CYytCsc=;
- b=nj4/YditnJFAi4kpSzQvnOYPkAkJ+WtfIbkdBbD9IgOBJ2sN3OrWMokbUVhY4tVUFs
- 0W2myUxXsdZMMIcVKMWFieciWTPROjH9m1Jc2FomWGa/Ayl9hRUKjDKWNEU1YhKO6gqK
- RneJquG+ywV3jaeKoz5u6/niIPzb5XkuwVPSdCllsgIIq5LuHNOrXPdH55dblyRjsU1M
- QpV576jUEn/xUbfhgoQvIZJipPKQhAARJSZJq+Db/Y8ocRSvLXS6xqH1+eIeFwAsCqAE
- AE8ZipoUB0b4Nvrhi8DoVjm+Hm683pAgrH+GIym+nxgSDSaFbJTuIDdAalOM6jUHQA2c
- 7iUw==
-X-Gm-Message-State: APuU4Z+XYxL3NkcPJytpbO8d0V6/r9hEyazZ+U0yjZ/TC8ulkGBiJkJR
- bE4SHVJLAzbQgNt4Z6Go4QamDv4J5BqOAFDYn35PsGkjfLyTFkYGqofJYDO683NLRxZK7Dwi2Tl
- Fk/90fhMMx3b/Jf1/JGj8vvbUpaWNeqSV+pBNp8pEr1wYPVDTeC+MPQ==
-X-Gm-Gg: AYBFou2UUDgoZYozX0pGe/LcG4kLRBF2xZ+Xjx4Jy2tBGMH68Bsr/GebkmYzl0vKWeL
- dHVwOS9dFwZFGb7pdW1XTS0MjMnYQxTlpBRU9QANvIRmqp0bqrXYTQn+pF1zT4gIxFjkYgagxnR
- K7TKN00FW1WP5ZLeVMjpbNIhZGbEQlpVqw6HUPMV43Llna4f2KepCJ4Mhz582svVP3YfTgud33s
- CyjHWbM95q274zC6y7nRRjL0gTC99QXenp9DSc2MQoC0Nlet8Tb2cNxIbIK5qwXWIJisQ70rcBc
- CbvJkVJeJd16/ni547qMMGNSO2aLudi0TSuXRc7rxFRf4NmJqzepI5G6l0KmLBrEEanU05bwJJN
- MYJc2FMxqPe1J+/q1f6SNzpe1bMHCpuI/+8c/ZnKav5w3s65FqXCw4/4zewrQXz75gZLTY/9Zsa
- uKAv0x2VEl0A==
-X-Received: by 2002:a05:6000:310a:b0:48e:5444:a1d3 with SMTP id
- ffacd0b85a97d-4927e553b25mr3926404f8f.11.1793967815260; 
- Fri, 06 Nov 2026 04:23:35 -0800 (PST)
-X-Received: by 2002:a05:6000:310a:b0:48e:5444:a1d3 with SMTP id
- ffacd0b85a97d-4927e553b25mr3926359f8f.11.1793967814842; 
- Fri, 06 Nov 2026 04:23:34 -0800 (PST)
+ d=1e100.net; s=20260707; t=1793968101; x=1794572901;
+ h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Kg8bWmuACORdOBFIw5XQei+BopKzAEafZzJ54qj/qQY=;
+ b=fz0Sc20BKajtINmxq3yuNpiALSk+76UXYMfqlgnBEi7k8diejrnGRL1pA2yzD+SA/a
+ 2goBmzhADXyJMpNIynV/WqgAsgZG38A8CmpPSEkAkEPZMkzmB2iGo7Glj93tEFyUjtR4
+ ZSODqVkxeichIFxTQevKMWnepKYYkJxcY6aDZ9HTbEO+tvHmQDTI+3t7HJEVuXbCdALm
+ 4GQzC6/A2HBMUOuyyH3PHcUKc+uskKaAZP4UweaSbCJP1CMvYO3DstX4dbOPal7KyU1u
+ YM81j3P2Ol9pKwD7d8flMpbydy+i7C7g1FnUY3HMu07HzKiXpOefZZGKyDNfBOPBDw31
+ oPcw==
+X-Gm-Message-State: APuU4Z8n3rLM/9cKEdAFQPGvIxPTesfYW9UuHKc/z/2romZ0Qd24xKXD
+ /1XqjkCLDIw3yO0s45GRScV56FUXcj6S20rSBLrZ8yb7ze2vgaBc7PXVkiW2arp2SyyfDhfnj5V
+ cGFvkyEKPsKZbofPhDRJA2Ax5bM0PeTPG7UiSaRDnOddiqnXAI4k0uA==
+X-Gm-Gg: AYBFou1FKHNiCKUuoFXycTkvbOHqeHv+Ni7jrtQ1eve2kmQL7yPUeXhAmeIGSLZvqoE
+ 7gvHLI8gNIuHfmG37bpRw0Ss9LF/R+rg3aUuB4+SymtYqr/iYgNkA6VkNxID9fanv4C7ts9rWzT
+ H2XTNminbrr0vaaoLz3BjZwCfchn02SowGeSr7gfg2ktQsRehXaOXIxzHDCAv82HdWskETubLLf
+ Ykj0+abMsWMR8y+k7yX7U5mSAxD6hrSuBqVuEgComVWzC/fFigFYfXzResVv+hc1Bvs76CChebE
+ CczFR/0hHjskd9k/SkGzmqGl3zmJ98GN6uIJkpvXLdUdbksq72KEkD+7BhcZ5u4SMA98rzI7Z8S
+ H0dcNAb11uYqS+37wn5vz6y1Z5fLljEpjteD0JN+tEeL8S7tjxyuwAsVozoqCTvEWcrFv6wYsnq
+ z7kyJgp/2gbw==
+X-Received: by 2002:a05:600c:4e8e:b0:4a1:6992:f861 with SMTP id
+ 5b1f17b1804b1-4b6db4a5dc5mr40422895e9.1.1793968100848; 
+ Fri, 06 Nov 2026 04:28:20 -0800 (PST)
+X-Received: by 2002:a05:600c:4e8e:b0:4a1:6992:f861 with SMTP id
+ 5b1f17b1804b1-4b6db4a5dc5mr40422535e9.1.1793968100544; 
+ Fri, 06 Nov 2026 04:28:20 -0800 (PST)
 Received: from ?IPV6:2a01:599:b03:7322:436f:1f3:b26e:91b8?
  ([2a01:599:b03:7322:436f:1f3:b26e:91b8])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-492d7233297sm3590478f8f.27.2026.11.06.04.23.33
+ 5b1f17b1804b1-4b6e2028d9bsm109894985e9.9.2026.11.06.04.28.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Nov 2026 04:23:34 -0800 (PST)
-Message-ID: <31bf0fb1-06fa-4bae-8b22-853f80548f9e@redhat.com>
-Date: Fri, 6 Nov 2026 13:23:33 +0100
+ Fri, 06 Nov 2026 04:28:19 -0800 (PST)
+Message-ID: <1711cf10-2719-4d6a-93f2-b7a3a7554ecb@redhat.com>
+Date: Fri, 6 Nov 2026 13:28:18 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 27/28] hw/display: mark cirrus and QXL as secure
+Subject: Re: [PATCH v2 28/28] hw/usb: mark UHCI, OCHI & ECHI USB hosts as
+ secure
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -84,9 +85,9 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
+ qemu-s390x@nongnu.org, Junjie Cao <junjie.cao@intel.com>
 References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-28-berrange@redhat.com>
+ <20261029131241.2275706-29-berrange@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -130,21 +131,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20261029131241.2275706-28-berrange@redhat.com>
+In-Reply-To: <20261029131241.2275706-29-berrange@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 2qY5M1Ysjcwp8Io5exQnsSladCfmNEEaD72YLDDWLAY_1793967815
+X-Mimecast-MFC-PROC-ID: x51z4HS6HzmacHLCl91t2g-ewuZXhJuInz0MJ5lKSz4_1793968101
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -166,45 +167,27 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 29/10/2026 14.12, Daniel P. Berrangé wrote:
-> Most of the display adapters are emulating old hardware which is not
-> relevant to virtualization use cases. The previous commit added the
-> generic, simple devices.
+> Modern virtualized guests are expected to be deployed with the
+> XHCI controller which supports all of USB 1, 2 and 3. The UHCI
+> OCHI and ECHI hosts, however, have all been widely used in
+> virtualization scenarios historically, especially on x86. Indeed
+> the -usb flag will enable UCHI by default.
 > 
-> This proposes two further devices based on their historical widespread
-> usage in virtualization use cases.
-> 
-> Cirrus (PCI, not ISA) was the recommended default for x86 for an
-> incredibly long time and while it is now discouraged, it is likely
-> to still be in common use.
-> 
-> QXL was the recommended default to be used with SPICE, which is designed
-> to service virtualization use cases and is still commonly shipped by
-> many distros and often used by default in mgmt apps still.
+> So while these are undesirable hosts in general, this marks them
+> as secure for virtualization use cases.
 > 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
->   hw/display/cirrus_vga.c | 1 +
->   hw/display/qxl.c        | 2 ++
->   2 files changed, 3 insertions(+)
-> 
-> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-> index 0a8c74e1374..8232c5c4687 100644
-> --- a/hw/display/cirrus_vga.c
-> +++ b/hw/display/cirrus_vga.c
-> @@ -3013,6 +3013,7 @@ static const TypeInfo cirrus_vga_info = {
->       .parent        = TYPE_PCI_DEVICE,
->       .instance_size = sizeof(PCICirrusVGAState),
->       .class_init    = cirrus_vga_class_init,
-> +    .secure        = true,
->       .interfaces = (const InterfaceInfo[]) {
->           { INTERFACE_CONVENTIONAL_PCI_DEVICE },
->           { },
-Considering that the cirrus card also had a bunch of security-related bugs 
-already and nobody is really in the mood of maintaining this anymore, I'd 
-rather not mark this as secure. I'd recommend to rather drop this patch.
-
-With regards to qxl, maybe better also omit this for now 'til we've got a 
-proper maintainer for this again.
+>   hw/usb/hcd-ehci-pci.c    | 1 +
+>   hw/usb/hcd-ehci-sysbus.c | 7 +++++++
+>   hw/usb/hcd-ohci-pci.c    | 1 +
+>   hw/usb/hcd-ohci-sysbus.c | 1 +
+>   hw/usb/hcd-uhci.c        | 1 +
+>   5 files changed, 11 insertions(+)
+I'd also rather drop this patch until we've got a proper USB maintainer 
+again. Otherwise we promise that these devices are secure, but nobody really 
+takes care of security related issues in the end. (It's already exhausting 
+enough to get XHCI into a proper shape again)
 
   Thomas
 

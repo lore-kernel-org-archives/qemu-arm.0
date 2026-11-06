@@ -1,76 +1,72 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85FC8606A326
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 11:07:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A3993606A32C
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 11:31:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=H4YykFvh
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256 header.s=key1 header.b=D/Yy7Ivz
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPHkh-00053e-5h; Fri, 06 Nov 2026 06:04:59 -0500
+	id 1xPI9V-0003XD-Jy; Fri, 06 Nov 2026 06:30:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xPHkd-0004yE-3F
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:04:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xPHkY-0007j1-4m
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:04:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793963089;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rGafzS2BHueKCMO/ulA3n123TD+59lND+6DUEqJCaZA=;
- b=H4YykFvhrr4kJphIIbq3uEco1enUd2HxvrHFxqMgvdXOnhh/muchr6cHncC8Aagnqn2jZR
- KyXKxNlZPWrf+PsvtUZHCogbgzEW0424eiLDhLAKm7O0HBUW7B44Hv0NgllNNgAvgWkwda
- D6r15NUj11CeSsp6TB8VeK917GEB8lg=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-630-6lpL72acMjKQORggFZGT7A-1; Fri,
- 06 Nov 2026 06:04:47 -0500
-X-MC-Unique: 6lpL72acMjKQORggFZGT7A-1
-X-Mimecast-MFC-AGG-ID: 6lpL72acMjKQORggFZGT7A_1793963086
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A9B33180054E; Fri,  6 Nov 2026 11:04:46 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2DF36195608A; Fri,  6 Nov 2026 11:04:46 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D1E2021E6887; Fri, 06 Nov 2026 12:04:40 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: marcandre.lureau@redhat.com, milesg@linux.ibm.com, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, mark.caveayland@nutanix.com
-Subject: [PATCH 8/8] hw/gpio/pca955x: Simplify pin and led getters and setters
-Date: Fri,  6 Nov 2026 12:04:40 +0100
-Message-ID: <20261106110440.3552588-9-armbru@redhat.com>
-In-Reply-To: <20261106110440.3552588-1-armbru@redhat.com>
-References: <20261106110440.3552588-1-armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <junjie.cao@linux.dev>)
+ id 1xPI9S-0003QV-Fe
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:30:34 -0500
+Received: from out-177.mta1.migadu.com ([2001:41d0:203:375::b1]
+ helo=mta1.migadu.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <junjie.cao@linux.dev>)
+ id 1xPI9Q-0001tf-7W
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:30:34 -0500
+X-Envelope-To: qemu-arm@nongnu.org
+DKIM-Signature: a=rsa-sha256; bh=XsI4CJ2an+tJXTOsJyS0x8/XxNKm4P+8FVw9XUcVmiY=; 
+ c=simple/simple; d=linux.dev;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1793964627; v=1; x=1794569427;
+ b=D/Yy7Ivzk5Esf10z8IA3huM8f4it3Y4DMptPt4+FzfwW+H57K39WkEkc5IUxunspu0wALl8+
+ tFcVmKrBdGPYaSdJUMtyQOyJtoJrQ9sZtnxWgIfbkuJIj98VGvWOsl5FPxSXdGt9Wt8jVCN1guQ
+ K7dhkC2ppLNv+Ml4G52qUt/k=
+X-Envelope-To: qemu-arm@nongnu.org
+Received: by smtp.migadu.com with ESMTPS id 1377caa7985a86b7;
+ Fri, 06 Nov 2026 11:30:26 +0000
+X-Mizu-Trace-ID: 1377caa7985a86b7
+X-Migadu-Flow: FLOW_OUT
+From: Junjie Cao <junjie.cao@linux.dev>
+To: berrange@redhat.com,
+	jamin_lin@aspeedtech.com
+Cc: kraxel@redhat.com, marcandre.lureau@redhat.com, clg@kaod.org,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ kane_chen@aspeedtech.com, philmd@oss.qualcomm.com, kfting@nuvoton.com,
+ wuhaotsh@google.com, zhao1.liu@intel.com, richard.henderson@linaro.org,
+ deller@gmx.de, sstabellini@kernel.org, anthony@xenproject.org,
+ edgar.iglesias@gmail.com, troy_lee@aspeedtech.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, xen-devel@lists.xenproject.org, junjie.cao@linux.dev
+Subject: Re: [PATCH v8 02/18] hw/usb/hcd-xhci: Add an auto-hub property and
+ leave it off
+Date: Fri,  6 Nov 2026 05:30:21 -0600
+Message-ID: <20261106113021.2841297-1-junjie.cao@linux.dev>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <au2ZDOY7MGdY74L9@redhat.com>
+References: <20261102092201.1729245-1-jamin_lin@aspeedtech.com>
+ <20261102092201.1729245-3-jamin_lin@aspeedtech.com>
+ <20261103142327.1348025-1-junjie.cao@linux.dev>
+ <SEZPR06MB73626D50E685F83DFB006D8DFC762@SEZPR06MB7362.apcprd06.prod.outlook.com>
+ <SEZPR06MB7362D089282550D7585C16DEFC762@SEZPR06MB7362.apcprd06.prod.outlook.com>
+ <au2ZDOY7MGdY74L9@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: lmnFTIzjXu6K9CPrnu8ObRsgplWQ2-5yDFwm3dqrGoQ_1793963086
-X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2001:41d0:203:375::b1;
+ envelope-from=junjie.cao@linux.dev; helo=mta1.migadu.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,217 +78,22 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-6.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Pass the index via object_class_property_add() parameter @opaque
-instead extracting it from the property name.
+Thanks, Daniel. I'd be happy to continue reviewing v9.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- hw/gpio/pca9552.c | 60 ++++++++++++++---------------------------------
- hw/gpio/pca9554.c | 30 +++++++-----------------
- 2 files changed, 25 insertions(+), 65 deletions(-)
+Hi Jamin, if you decide to split the series, patch 01 could stay with the
+server: it keeps existing controllers unchanged while letting the server
+disable auto-hub. Patches 02–10 could follow separately, with the compat
+TODO Daniel suggested.
 
-diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-index f97ad6d083..c8d0e9a16d 100644
---- a/hw/gpio/pca9552.c
-+++ b/hw/gpio/pca9552.c
-@@ -360,18 +360,12 @@ static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
- {
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
--    int led, rc, reg;
-+    uintptr_t led = (uintptr_t)opaque;
-+    int reg;
-     Pca9552LedState state;
- 
--    rc = sscanf(name, "led%2d", &led);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (led < 0 || led >= k->pin_count) {
--        error_setg(errp, "%s: invalid led %s", __func__, name);
--        return;
--    }
-+    assert(led < k->pin_count);
-+
-     /*
-      * Get the LSx register as the qom interface should expose the device
-      * state, not the modeled 'input line' behaviour which would come from
-@@ -397,21 +391,15 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
- {
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
--    int led, rc, reg, val;
-+    uintptr_t led = (uintptr_t)opaque;
-+    int reg, val;
-     Pca9552LedState state;
- 
-+    assert(led < k->pin_count);
-+
-     if (!visit_type_Pca9552LedState(v, name, &state, errp)) {
-         return;
-     }
--    rc = sscanf(name, "led%2d", &led);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (led < 0 || led >= k->pin_count) {
--        error_setg(errp, "%s: invalid led %s", __func__, name);
--        return;
--    }
- 
-     reg = PCA9552_LS0 + led / 4;
-     val = pca955x_read(s, reg);
-@@ -426,19 +414,11 @@ static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
- {
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
--    int pin, rc;
-+    uintptr_t pin = (uintptr_t)opaque;
-     uint8_t input_reg;
-     GpioPinState state;
- 
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= k->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
-+    assert(pin < k->pin_count);
- 
-     /*
-      * Report the raw pin logic level; polarity inversion is a read-time
-@@ -454,28 +434,22 @@ static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
- {
-     PCA955xClass *k = PCA955X_GET_CLASS(obj);
-     PCA955xState *s = PCA955X(obj);
--    int pin, rc;
-+    uintptr_t pin = (uintptr_t)opaque;
-     GpioPinState state;
-     uint8_t config_reg;
- 
-+    assert(pin < k->pin_count);
-+
-     if (!visit_type_GpioPinState(v, name, &state, errp)) {
-         return;
-     }
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= k->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
- 
-     /* Only input-configured pins can be driven by an external device. */
-     config_reg = PCA9535_CONFIG0 + (pin / 8);
-     if (!((s->regs[config_reg] >> (pin % 8)) & 0x1)) {
-         qemu_log_mask(LOG_UNIMP,
--                      "%s: pin %d is configured as output, ignoring set\n",
-+                      "%s: pin %" PRIdPTR " is configured as output, "
-+                      "ignoring set\n",
-                       s->description, pin);
-         return;
-     }
-@@ -549,14 +523,14 @@ static void pca955x_pin_init(PCA955xClass *k)
-             object_class_property_add(OBJECT_CLASS(k), name,
-                                       "str", &Pca9552LedState_type_info,
-                                       pca955x_get_led, pca955x_set_led,
--                                      NULL, NULL);
-+                                      NULL, (void *)(uintptr_t)ix);
-         } else {
-             /* GPIO variant: expose the pin logic level as pin%d. */
-             name = g_strdup_printf("pin%d", ix);
-             object_class_property_add(OBJECT_CLASS(k), name,
-                                       "str", &GpioPinState_type_info,
-                                       pca955x_get_pin, pca955x_set_pin,
--                                      NULL, NULL);
-+                                      NULL, (void *)(uintptr_t)ix);
-         }
-         g_free(name);
-     }
-diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
-index e2d481866f..d987b16cd0 100644
---- a/hw/gpio/pca9554.c
-+++ b/hw/gpio/pca9554.c
-@@ -173,18 +173,10 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp)
- {
-     PCA9554State *s = PCA9554_BASE(obj);
--    int pin, rc;
-+    uintptr_t pin = (uintptr_t)opaque;
-     GpioPinState state;
- 
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
-+    assert(pin < PCA9554_BASE_GET_CLASS(s)->pin_count);
- 
-     /*
-      * Report the physical pin level. The input register is kept in sync by
-@@ -200,28 +192,22 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp)
- {
-     PCA9554State *s = PCA9554_BASE(obj);
--    int pin, rc, val;
-+    uintptr_t pin = (uintptr_t)opaque;
-+    int val;
-     uint8_t mask;
-     GpioPinState state;
- 
-+    assert(pin < PCA9554_BASE_GET_CLASS(s)->pin_count);
-+
-     if (!visit_type_GpioPinState(v, name, &state, errp)) {
-         return;
-     }
--    rc = sscanf(name, "pin%2d", &pin);
--    if (rc != 1) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
--    }
--    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
--        error_setg(errp, "%s invalid pin %s", __func__, name);
--        return;
--    }
- 
-     if (s->hw_dir) {
-         /* Warn and ignore if the guest has configured this pin as output */
-         if (!((s->regs[PCA9554_CONFIG] >> pin) & 0x1)) {
-             qemu_log_mask(LOG_UNIMP,
--                          "%s: pin %d is configured as output, "
-+                          "%s: pin %" PRIdPTR " is configured as output, "
-                           "ignoring external set\n",
-                           s->description, pin);
-             return;
-@@ -290,7 +276,7 @@ static void pca9554_pin_init(PCA9554Class *pc)
-         object_class_property_add(OBJECT_CLASS(pc), name,
-                                   "str", &GpioPinState_type_info,
-                                   pca9554_get_pin, pca9554_set_pin,
--                                  NULL, NULL);
-+                                  NULL, (void *)(uintptr_t)pin);
-         g_free(name);
-     }
- }
--- 
-2.55.0
+I checked that 01 plus 11–18 apply cleanly to current master.
 
+Thanks,
+Junjie
 

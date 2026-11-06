@@ -1,82 +1,83 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7ACA4606A326
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 11:54:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 62C25606A326
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Nov 2026 11:57:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=QqcRxrD0
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=N4othtlg
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPIWr-0000Tz-QV; Fri, 06 Nov 2026 06:54:45 -0500
+	id 1xPIZc-0001Ml-AT; Fri, 06 Nov 2026 06:57:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPIWp-0000RO-T4
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:54:43 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPIZZ-0001Ki-6P
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:57:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPIWo-0003xl-HF
- for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:54:43 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xPIZW-0004Rp-Jn
+ for qemu-arm@nongnu.org; Fri, 06 Nov 2026 06:57:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1793966081;
+ s=mimecast20190719; t=1793966249;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=pCWrOsll9rhMUXNdZZ4HrLLREVQKIVTpUlNruUg8tLc=;
- b=QqcRxrD0YCADaFCqlDE8vjFgR9p6BjAwQx6+bhCh2VNF1ziYo4hNmfnScDSyh5tqGZl7s+
- KFIwYMyukoBh0SvMf/WtnmYyZUibKMKO6naKxmbOiWQEVKEn7FBDh1qRqmEZmrn+Yy5iop
- wuxN3rc2R8u4SVvNSACOdZM9kaJbKwg=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=8GETxAz+9jkOtbiI5TXDf7d5fA/hl3i2zL5KXSCLGaw=;
+ b=N4othtlglGmEDWDrBUL/uu5NkxJ0E59fToNe9fiKigAbmeU0/yJqbjWpOM3nOyfa9AFWq3
+ ziCbFrsm2x7PQXzedkkuSXJ41yDdM+5Yngqr0Q530RkWb1SmSMM6d8wB4zZi4lS/xcsAyc
+ CVZ7Dzgt6Ldlx1e9TJLoQc1xo3FgCPg=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-325-t0lsH66YPFyqxHAmMc3d2Q-1; Fri, 06 Nov 2026 06:54:40 -0500
-X-MC-Unique: t0lsH66YPFyqxHAmMc3d2Q-1
-X-Mimecast-MFC-AGG-ID: t0lsH66YPFyqxHAmMc3d2Q_1793966080
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4a77c1cbd15so5760315e9.0
- for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 03:54:40 -0800 (PST)
+ us-mta-326-ZOyVBu7QPAaS8Mly1b9yrg-1; Fri, 06 Nov 2026 06:57:28 -0500
+X-MC-Unique: ZOyVBu7QPAaS8Mly1b9yrg-1
+X-Mimecast-MFC-AGG-ID: ZOyVBu7QPAaS8Mly1b9yrg_1793966247
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4994d67d0e3so3340955e9.2
+ for <qemu-arm@nongnu.org>; Fri, 06 Nov 2026 03:57:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1793966079; x=1794570879;
+ d=1e100.net; s=20260707; t=1793966247; x=1794571047;
  h=content-transfer-encoding:content-type:in-reply-to:autocrypt
  :content-language:from:references:cc:to:subject:user-agent
  :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=pCWrOsll9rhMUXNdZZ4HrLLREVQKIVTpUlNruUg8tLc=;
- b=S5shAjXsZgzfEhTwKbHLTbHFOO5YRQcJyyLgVLi8LP27jC1eH6qKBrg4EzY60wcZFT
- PpHtDIC0/5pjQFIXBWIGRI80hiBb12tvz6ED+NfaqGrsChFW8/pQSOR906dkjaEY3Chj
- uHeqF5o2B1YI6FY+PJO6TaLq4I2gj/YCmbIxfjfX8A+rOTYu2HweV2briVKdJagvjWZ/
- YU1KXRczM2AEm3hACB96vFcBDXONThUQE+krLcwOqmwAZR5+BKVF6JlCKt4NFfh4HuMd
- /pan2tmdDeS1j1VxVFaRwHgRb3L5dl+JVPKxb+KPyz0vtrbsG3E73E9k3Ol1Zk/e0AUY
- /ABw==
-X-Gm-Message-State: APuU4Z+W9wEY/zLPMSFbhl2192DdtpPXQSwW36f6gm3A8GCnJ2OlfZCS
- KJYVxxMh7iaBo2nvnhL7k7ufwO829JT5ZPZVyhz74WigyfLB9gY66iLjv9rk/fjjdAoT3idNqig
- lQV5wom7EkvSBsjzEnKCq/I+jQv13ZGfsv9b6rbsr89MduUatHy0XYw==
-X-Gm-Gg: AYBFou2KD7WN5dzcQ1/SvowD1IkIYt4zjh5VZoGuU4gg3CbBbNM3dqIM/t7csCmG5sE
- 5sbtMvFNDyw2P9vGLI83EAyqeGZiyy9HXvQDqyRXlirBQ7AgIHKTRv/vMb47TilfTifF54nE43M
- k06u++jH7d7f+jp6sgC0iLsEBbJVbbjTjzgXdaQ+ue/8y7ATHs6Kp4AQsHmtyEQK5HiPpgePahR
- lAi3rqxHKDUcljCNIoHszniL9UfREq0/te/ESTf7QpzIvqA5/eZwbCZESdlxZJ90CzThN5/x/aV
- LDTSBJXj8VsuPO9Gg+YNrr3M8BFsaNspuv3IxOOKJ70xXTyGGhHvRsUK/ZZ3sz4nQw0sHDV7b9n
- c81pDKkOZbjf8x7zlw6zJ1kokYGAq2Dr3YTOZeMy7Fy0U8ffBnG8X6U0Xh0BmVAPVVCwXK8XXPi
- Sgt9eOZApZEw==
-X-Received: by 2002:a05:600c:3e0b:b0:4a2:d7e:5ccb with SMTP id
- 5b1f17b1804b1-4b6df21220amr32885455e9.15.1793966079697; 
- Fri, 06 Nov 2026 03:54:39 -0800 (PST)
-X-Received: by 2002:a05:600c:3e0b:b0:4a2:d7e:5ccb with SMTP id
- 5b1f17b1804b1-4b6df21220amr32885175e9.15.1793966079367; 
- Fri, 06 Nov 2026 03:54:39 -0800 (PST)
+ bh=8GETxAz+9jkOtbiI5TXDf7d5fA/hl3i2zL5KXSCLGaw=;
+ b=yf9LCTv50vYT+v9XYkgSsOtNdVgYtoljahiFK3GHuHGz3KS235Gfdim96AZ0nfgRC1
+ 6OJeMCQSCbj2PECQtHS033e0f2p+fewJO8Np8b15WvEAGY0h0Fa4JETooCKRWpne7dg9
+ g7UypH+1WXo/18OqALWWlt9S0rlla7VIXAsQ7Fv/0B1u3PyR76jIwGc/+y/7saRJd8GK
+ 7l0KvQG8QQje0cMz1EfMOs6eO5ZrARzUzsghdeKGDZtXr7S0NV6HX2KwlN6vTjwECt/8
+ pLinVOnMuy+iyLMqOxoVzmnEPHDXrBPAlAp/rry8R+TP0OLuhvOTghgY2NaRYCVFZnT1
+ E/OQ==
+X-Gm-Message-State: APuU4Z8JiAN9kxaviBiXmQrfeWmoir8rTmH1igrLkNjR1lhJXsmzpWF3
+ PtXbU/wTEhMDFWt3KdM1v+6RTqmpIeAQXt/sHw0A2aHLHOBmzYeXOR4lTv94n6qH8xbhkyjUvzE
+ vbZq0fnhxOFvYdBsFrYGAkLeJBU8lwWqKkkWUhjIH9hR1G4/AK9LAiQ==
+X-Gm-Gg: AYBFou21qweCbqGIr7T/XZSpSncXyWAg/argAY/SdJXcktsEUPMwQ/J/N04jRdUPggN
+ oWnDohPk0B89Oh0O0NavqFrsCA7BHR8jZPGQYx8kY81m+53Rgz/gQS/BtClPbF8QVjPP4wlsxho
+ wUJDVMH5ev3miRCRv3SNRB9KFLao0xx92KHeHw47t9MY8G9w9yeFhLTMJ/5Awe6Tjw/ytGhK5FC
+ GGho7oGNVSIxOPkc4O5LFGtvSssv/udQ7YVqyCQ4qskvbExRoqgDWxXMB2kDW/BA+uKn94Rp6jA
+ A+zEJNR36KdR/wKNh/y569D5hnmlToYvc++/N6C/AWNxqHajOtovm4272+wSBI9laMxRafqyszM
+ oxPghm0CT3twhen+JVHYH2XuOxGDsxO0Wxx4alhj2/yEqM5xryQFM4qm5YY+pnuaNqqfkrau+7b
+ xQrxXll6bhUA==
+X-Received: by 2002:a05:600c:524c:b0:4a5:75d2:c104 with SMTP id
+ 5b1f17b1804b1-4b6dfba8635mr36152345e9.22.1793966247075; 
+ Fri, 06 Nov 2026 03:57:27 -0800 (PST)
+X-Received: by 2002:a05:600c:524c:b0:4a5:75d2:c104 with SMTP id
+ 5b1f17b1804b1-4b6dfba8635mr36151905e9.22.1793966246607; 
+ Fri, 06 Nov 2026 03:57:26 -0800 (PST)
 Received: from ?IPV6:2a01:599:b03:7322:436f:1f3:b26e:91b8?
  ([2a01:599:b03:7322:436f:1f3:b26e:91b8])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4b73b97d62bsm29569575e9.0.2026.11.06.03.54.38
+ 5b1f17b1804b1-4b6e168f35bsm56669295e9.4.2026.11.06.03.57.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Nov 2026 03:54:38 -0800 (PST)
-Message-ID: <488e416f-0b37-4357-8e13-2fdd1cd643b0@redhat.com>
-Date: Fri, 6 Nov 2026 12:54:37 +0100
+ Fri, 06 Nov 2026 03:57:25 -0800 (PST)
+Message-ID: <e51176ac-eb55-435c-8ce8-3588e8fc8c20@redhat.com>
+Date: Fri, 6 Nov 2026 12:57:23 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/28] hw/vfio: mark all VFIO object classes as secure
+Subject: Re: [PATCH v2 07/28] hw/net: mark e1000, e1000e, IGB, rtl8139 & sPAPR
+ VLAN as secure
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -84,9 +85,9 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, Cornelia Huck <cohuck@redhat.com>
+ qemu-s390x@nongnu.org
 References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-6-berrange@redhat.com>
+ <20261029131241.2275706-8-berrange@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -130,22 +131,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20261029131241.2275706-6-berrange@redhat.com>
+In-Reply-To: <20261029131241.2275706-8-berrange@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: a0o0WvFzV633CEjQgqiW9LM0x1zXgpGzsaVVNHi7qPA_1793966080
+X-Mimecast-MFC-PROC-ID: BmffRu1Z4bkJc9cOelzjS7PWFvVQpEo1mPuF4a46CXc_1793966247
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,22 +158,42 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 29/10/2026 14.12, Daniel P. Berrangé wrote:
-> The VFIO subsystem is about securely passing host PCI devices
-> to a guest, so all the classes should be presumed to be offering
+> Historically most NICs are only interesting for non-virtualization
+> use cases and have not been written with malicious guests in mind.
+> 
+> As a general rule either virtio-net or xen-net should be used in
+> all virtualized guests requiring a security boundary.
+> 
+> There are a handful of exceptions resulting from historical usage
+> in the x86 world, to support virtualized guests lacking virtio
+> support.
+> 
+> Thus the rtl8139, e1000, e1000e & IGB NICs are declared to provide
 > a security boundary.
 > 
-> Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Acked-by: Cornelia Huck <cohuck@redhat.com> #s390 types
+> The PPC sPAPR Virtual LAN device is also marked secure.
+> 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
+>   hw/net/e1000.c      | 1 +
+>   hw/net/e1000e.c     | 1 +
+>   hw/net/igb.c        | 1 +
+>   hw/net/rtl8139.c    | 1 +
+>   hw/net/spapr_llan.c | 1 +
+>   5 files changed, 5 insertions(+)
+I'd maybe drop rtl8139 from the list, AFAIK most old operating systems 
+should support e1000 just fine?
+
+Anyway,
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

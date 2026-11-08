@@ -1,53 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7EF4606A320
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5534606A31C
 	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 08:46:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Rd2Y+mqv
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bkEwYqRn
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPyWr-0007cH-Ni; Sun, 08 Nov 2026 03:45:33 -0500
+	id 1xPyWp-0007aT-Eo; Sun, 08 Nov 2026 03:45:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1xPyWp-0007aj-Kl; Sun, 08 Nov 2026 03:45:31 -0500
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+ id 1xPyWm-0007Yb-Pv; Sun, 08 Nov 2026 03:45:29 -0500
+Received: from sea.source.kernel.org ([172.234.252.31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1xPyWn-0000J4-D9; Sun, 08 Nov 2026 03:45:31 -0500
+ id 1xPyWj-0000Ha-Dv; Sun, 08 Nov 2026 03:45:28 -0500
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id C0BEB4496E;
+ by sea.source.kernel.org (Postfix) with ESMTP id A960D4467C;
  Sun,  8 Nov 2026 08:45:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B8F11F0089F;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87F681F008A5;
  Sun,  8 Nov 2026 08:45:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
  s=k20260515; t=1794127516;
- bh=epOF4OJpnItDTMQe4XsS/qKrRz2EeKyDCsW0kSFF+kQ=;
+ bh=I2XLjCfdJI80b8H8+Sz+cjBAZ3Uf9N57rJCQ1mkeRFY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=Rd2Y+mqvDWdkdpkqh6OHvP0xcANDSm6J6tF/ydw60GPR8llCabl+b7hHx5QHij24Z
- N7FNtn7eluePu1wNMkyUgnnVa9hyOdLzvLSckLKUxH5F8ziAUtU4ugpsbIKHQFJ3CD
- T4e5dacpcT+L8LIcy3Ika7A/gJ08fx2V0q3q51yPMh+uNox324T5GrOk87SEnv900p
- 8fswvWLefrLRSbBTFjiWL1UXmMxV6tzmBBPXVXD7cQiuqPTrAD5jRepin3RGBAIRww
- e23W/fMlThEeHB3kd84uiqmhypLbiTmSpG5Pa6yGI8j6xl3yISvdzxYL/n3x14vKtq
- gDdtak08VWqSQ==
+ b=bkEwYqRneVmNYXtB3rLc60BWxDoJpumJvbX1cIq5XWXl5bpwvdgfCTg5oByUl6Me7
+ bzOrgq84BkGZd1lHb/FfD+Hww7epXpMXni6XIJWiEQNO8HGvxtMwcQvSBWodUMNHei
+ HRhDFX0LG4JLigYBvlevzKJEYHaZ6X/0vq5rcKwVgvKhNMOjaGSxfGAUmO3UUoYcF0
+ DmA2x6ZzewLF1Ju358uKSaItUrRIKGistOSk0Rggw0BLFYc1NpMsiqTDAMsb7NnUNT
+ SciaW+TF2gm4r+yHPPyM6kD6Mvdm+M4lVfEToSmkxtnYIKfa05kuX4awxe7GhJ8pV/
+ CWuahAN8qwbaA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.100.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1xPyWY-00000005TMT-2Uni; Sun, 08 Nov 2026 09:45:14 +0100
+ id 1xPyWY-00000005TML-2HQ4; Sun, 08 Nov 2026 09:45:14 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Michael S Tsirkin <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
+To: Michael S Tsirkin <mst@redhat.com>
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Shiju Jose <shiju.jose@huawei.com>, qemu-devel@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  linux-edac@vger.kernel.org, qemu-arm@nongnu.org,
- Ani Sinha <anisinha@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 3/8] hw/i186: add support for HEST table with SCI
-Date: Sun,  8 Nov 2026 09:45:04 +0100
-Message-ID: <cb0bec3ea9187472c6e252b9be8685ec7e99835b.1794124132.git.mchehab+huawei@kernel.org>
+ Ani Sinha <anisinha@redhat.com>
+Subject: [PATCH v2 1/8] acpi_dev_interface: add ghes support state at
+ AcpiDeviceIfClass
+Date: Sun,  8 Nov 2026 09:45:02 +0100
+Message-ID: <aff323aeeb5b315266cede9213112b053325c66d.1794124132.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <cover.1794124132.git.mchehab+huawei@kernel.org>
 References: <cover.1794124132.git.mchehab+huawei@kernel.org>
@@ -55,7 +54,7 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
+Received-SPF: pass client-ip=172.234.252.31;
  envelope-from=mchehab+huawei@kernel.org; helo=sea.source.kernel.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
@@ -82,291 +81,153 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The _OSC device configuration object evaluates some platform
-software specific support. Among them, there are bits there
-to indicate if APEI support is enabled. Those are sitting
-at the UUID 0811B06E-4A27-44F9-8D60-3CBBC22E7B48.
+Currently, ghes.c assumes that GHES support can be checked by
+looking at GED. This is valid only for aarch64. As we're now
+adding support for other architectures, this needs to be done
+on a different way.
 
-Bit 4 is APEI support. it has to be enabled to let x86 use
-APEI/HEST/GHES.
+For instance, on x86, it needs to detect if GHES is supported
+inside ICH9 and PIIX4 PM.
+
+Add an ancillary method at acpi_dev_interface to share
+information if ghes is supported on an arch-independent way.
+
+It should be noticed that, with this change, there's no need to
+include anymore hw/acpi/generic_event_device.h, as this were the
+aarch64-specific GED interface sits and the code is now generic.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- hw/i386/Kconfig      |   1 +
- hw/i386/acpi-build.c | 102 +++++++++++++++++++++++++++++++++++++++++++
- hw/i386/pc.c         |  41 +++++++++++++++++
- include/hw/i386/pc.h |   5 +++
- 4 files changed, 149 insertions(+)
+ hw/acpi/acpi_interface.c             |  7 +++++++
+ hw/acpi/generic_event_device.c       |  6 ++++++
+ hw/acpi/ghes.c                       | 30 +++++++++++++++++-----------
+ include/hw/acpi/acpi_dev_interface.h |  6 ++++++
+ 4 files changed, 37 insertions(+), 12 deletions(-)
 
-diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-index e27d8816e5bb..b1fbfaf33f9b 100644
---- a/hw/i386/Kconfig
-+++ b/hw/i386/Kconfig
-@@ -47,6 +47,7 @@ config PC
-     select MC146818RTC
-     # For ACPI builder:
-     select SERIAL_ISA
-+    select ACPI_APEI
-     select ACPI_PCI
-     select ACPI_VMGENID
-     select ACPI_VMCLOCK
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 985515434974..6f960c66e2a4 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -71,6 +71,7 @@
- #include "hw/acpi/utils.h"
- #include "hw/acpi/pci.h"
- #include "hw/acpi/cxl.h"
-+#include "hw/acpi/ghes.h"
+diff --git a/hw/acpi/acpi_interface.c b/hw/acpi/acpi_interface.c
+index a44679017ead..bf11acfbb54b 100644
+--- a/hw/acpi/acpi_interface.c
++++ b/hw/acpi/acpi_interface.c
+@@ -3,6 +3,13 @@
+ #include "hw/acpi/acpi_aml_interface.h"
+ #include "qemu/module.h"
  
- #include "qom/qom-qobject.h"
- #include "hw/i386/amd_iommu.h"
-@@ -852,6 +853,56 @@ static void build_acpi0017(Aml *table)
-     aml_append(table, scope);
- }
- 
-+/* ACPI 5.0, 6.2.10.2: Platform-Wide OSPM Capabilities. */
-+#define ACPI_PLAT_OSPM_CAP "0811B06E-4A27-44F9-8D60-3CBBC22E7B48"
-+
-+/* ACPI 5.0: Table 6-151: Platform-Wide _OSC caps DWORD 2 */
-+#define ACPI_OSC_CAP_APEI  (1U << 4)
-+
-+static Aml *build_apei_osc(uint32_t mask, uint32_t bits)
++AcpiGhesState *acpi_device_get_ghes_state(AcpiDeviceIf *adev)
 +{
-+    Aml *method = aml_method("_OSC", 4, AML_SERIALIZED);
-+    uint8_t failure[8] = { 2 }; /* _OSC failure */
-+    uint32_t disabled = mask & ~bits;
-+    Aml *support = aml_name("CDW2");
-+    Aml *status = aml_name("CDW1");
-+    Aml *if_ctx;
++    AcpiDeviceIfClass *klass = ACPI_DEVICE_IF_GET_CLASS(adev);
 +
-+    if_ctx = aml_if(aml_lless(aml_sizeof(aml_arg(3)), aml_int(8)));
-+    aml_append(if_ctx, aml_return(aml_buffer(sizeof(failure), failure)));
-+    aml_append(method, if_ctx);
-+    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-+    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-+
-+    /* Arg0: UUID */
-+    if_ctx = aml_if(aml_lnot(aml_equal(aml_arg(0),
-+                    aml_touuid(ACPI_PLAT_OSPM_CAP))));
-+    aml_append(if_ctx, aml_or(status, aml_int(4), status));
-+    aml_append(if_ctx, aml_return(aml_arg(3)));
-+    aml_append(method, if_ctx);
-+
-+    /* Arg1: Revision ID: 1 */
-+    if_ctx = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-+    aml_append(if_ctx, aml_or(status, aml_int(8), status));
-+    aml_append(if_ctx, aml_return(aml_arg(3)));
-+    aml_append(method, if_ctx);
-+
-+    /* Arg2: count of entries in Arg3: 2 dwords */
-+    if_ctx = aml_if(aml_lnot(aml_equal(aml_arg(2), aml_int(2))));
-+    aml_append(if_ctx, aml_or(status, aml_int(2), status));
-+    aml_append(if_ctx, aml_return(aml_arg(3)));
-+    aml_append(method, if_ctx);
-+
-+    /* Arg3: Second DWORD: caps - update according with mask */
-+    aml_append(method, aml_and(support, aml_int(~disabled), aml_local(0)));
-+    if_ctx = aml_if(aml_lnot(aml_equal(support, aml_local(0))));
-+    aml_append(if_ctx, aml_or(status, aml_int(mask), status));
-+    aml_append(method, if_ctx);
-+    aml_append(method, aml_store(aml_local(0), support));
-+    aml_append(method, aml_return(aml_arg(3)));
-+    return method;
++    return klass->get_ghes_state ? klass->get_ghes_state(adev) : NULL;
 +}
 +
- static void
- build_dsdt(GArray *table_data, BIOSLinker *linker,
-            AcpiPmInfo *pm, AcpiMiscInfo *misc,
-@@ -1284,6 +1335,21 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-         aml_append(dsdt, scope);
-     }
- 
-+    if (pcms->ras) {
-+        sb_scope = aml_scope("_SB");
-+        aml_append(sb_scope, build_apei_osc(ACPI_OSC_CAP_APEI,
-+                                            ACPI_OSC_CAP_APEI));
-+        aml_append(sb_scope, aml_error_device());
-+        aml_append(dsdt, sb_scope);
-+
-+        scope = aml_scope("_GPE");
-+        method = aml_method("_E07", 0, AML_NOTSERIALIZED);
-+        aml_append(method, aml_notify(aml_name("\\_SB." ACPI_APEI_ERROR_DEVICE),
-+                                      aml_int(0x80)));
-+        aml_append(scope, method);
-+        aml_append(dsdt, scope);
-+    }
-+
-     /* copy AML table into ACPI tables blob and patch header there */
-     g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
-     acpi_table_end(linker, &table);
-@@ -2043,6 +2109,10 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
-     return true;
+ static void register_types(void)
+ {
+     static const TypeInfo acpi_dev_if_info = {
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 65a5d1612fa4..c0913d458ff5 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -324,6 +324,11 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+     acpi_cpu_ospm_status(&s->cpuhp_state, list);
  }
  
-+static const AcpiNotificationSourceId hest_ghes_notify[] = {
-+    {ACPI_HEST_SRC_ID_QMP, ACPI_GHES_NOTIFY_SCI},
-+};
++static AcpiGhesState *acpi_ged_get_ghes_state(AcpiDeviceIf *adev)
++{
++    return &ACPI_GED(adev)->ghes_state;
++}
 +
- static
- void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
  {
-@@ -2199,6 +2269,16 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-         cxl_build_cedt(table_offsets, tables_blob, tables->linker,
-                        x86ms->oem_id, x86ms->oem_table_id, &pcms->cxl_devices_state);
-     }
-+    if (pcms->ras) {
-+        AcpiGhesState *ags =
-+            acpi_device_get_ghes_state(ACPI_DEVICE_IF(x86ms->acpi_dev));
-+
-+        acpi_add_table(table_offsets, tables_blob);
-+        acpi_build_hest(ags, tables_blob, tables->hardware_errors,
-+                        tables->linker, hest_ghes_notify,
-+                        ARRAY_SIZE(hest_ghes_notify),
-+                        x86ms->oem_id, x86ms->oem_table_id);
-+    }
+     AcpiGedState *s = ACPI_GED(adev);
+@@ -610,6 +615,7 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
  
-     acpi_add_table(table_offsets, tables_blob);
-     build_waet(tables_blob, tables->linker, x86ms->oem_id, x86ms->oem_table_id);
-@@ -2315,6 +2395,21 @@ void acpi_setup(void)
-     static FwCfgTPMConfig tpm_config;
- #endif
+     adevc->ospm_status = acpi_ged_ospm_status;
+     adevc->send_event = acpi_ged_send_event;
++    adevc->get_ghes_state = acpi_ged_get_ghes_state;
  
-+    if (pcms->ras) {
-+        AcpiGhesState *ags = NULL;
-+
-+        if (x86ms->acpi_dev) {
-+            ags = acpi_device_get_ghes_state(ACPI_DEVICE_IF(x86ms->acpi_dev));
-+        }
-+        if (!x86ms->fw_cfg || !pcms->acpi_build_enabled ||
-+            !x86_machine_is_acpi_enabled(x86ms) || !ags) {
-+            error_report("ras=on requires ACPI table generation and a PC "
-+                         "ACPI controller");
-+            exit(EXIT_FAILURE);
-+        }
-+        ags->use_hest_addr = true;
-+    }
-+
-     if (!x86ms->fw_cfg) {
-         ACPI_BUILD_DPRINTF("No fw cfg. Bailing out.\n");
-         return;
-@@ -2361,6 +2456,13 @@ void acpi_setup(void)
-     }
- #endif
- 
-+    if (pcms->ras) {
-+        AcpiGhesState *ags =
-+            acpi_device_get_ghes_state(ACPI_DEVICE_IF(x86ms->acpi_dev));
-+
-+        acpi_ghes_add_fw_cfg(ags, x86ms->fw_cfg, tables.hardware_errors);
-+    }
-+
-     vmgenid_dev = find_vmgenid_dev();
-     if (vmgenid_dev) {
-         vmgenid_add_fw_cfg(VMGENID(vmgenid_dev), x86ms->fw_cfg,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 4737eb471c14..28af7f507dab 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -51,6 +51,7 @@
+     object_class_property_add_uint16_ptr(class, ACPI_PCIHP_IO_BASE_PROP,
+                                          offsetof(AcpiGedState,
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index b2d5e3499320..3989fd4d7e91 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -24,7 +24,7 @@
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/aml-build.h"
  #include "qemu/error-report.h"
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/pc-hotplug.h"
-+#include "hw/acpi/ghes.h"
- #include "acpi-build.h"
- #include "hw/mem/nvdimm.h"
- #include "hw/cxl/cxl_host.h"
-@@ -1608,6 +1609,34 @@ static void pc_machine_set_max_fw_size(Object *obj, Visitor *v,
-     pcms->max_fw_size = value;
+-#include "hw/acpi/generic_event_device.h"
++#include "hw/acpi/acpi_dev_interface.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "qemu/uuid.h"
+ #include "exec/cpu-common.h"
+@@ -587,21 +587,27 @@ bool acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+                                    source_id, errp);
  }
  
-+static bool pc_machine_get_ras(Object *obj, Error **errp)
-+{
-+    PCMachineState *pcms = PC_MACHINE(obj);
-+
-+    return pcms->ras;
-+}
-+
-+static void pc_machine_set_ras(Object *obj, bool value, Error **errp)
-+{
-+    PCMachineState *pcms = PC_MACHINE(obj);
-+
-+    pcms->ras = value;
-+}
-+
-+static void pc_sci_error(Notifier *n, void *opaque)
-+{
-+    PCMachineState *pcms = container_of(n, PCMachineState, ghes_sci_notifier);
-+    X86MachineState *x86ms = X86_MACHINE(pcms);
-+    uint16_t *source_id = opaque;
-+
-+    /* Currently, only QMP injection is supported */
-+    if (!pcms->ras || !x86ms->acpi_dev ||
-+        *source_id != ACPI_HEST_SRC_ID_QMP) {
-+        return;
-+    }
-+
-+    acpi_send_event(DEVICE(x86ms->acpi_dev), ACPI_GENERIC_ERROR);
-+}
- 
- static void pc_machine_initfn(Object *obj)
+-AcpiGhesState *acpi_ghes_get_state(void)
++static int acpi_ghes_find_state(Object *obj, void *opaque)
  {
-@@ -1642,12 +1671,18 @@ static void pc_machine_initfn(Object *obj)
-     if (pcmc->pci_enabled) {
-         cxl_machine_init(obj, &pcms->cxl_devices_state);
+-    AcpiGedState *acpi_ged_state;
++    Object *adev = object_dynamic_cast(obj, TYPE_ACPI_DEVICE_IF);
+     AcpiGhesState *ags;
+ 
+-    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+-                                                       NULL));
+-
+-    if (!acpi_ged_state) {
+-        return NULL;
++    if (!adev) {
++        return 0;
      }
+-    ags = &acpi_ged_state->ghes_state;
+-
+-    if (!ags->hw_error_le && !ags->hest_addr_le) {
+-        return NULL;
++    ags = acpi_device_get_ghes_state(ACPI_DEVICE_IF(adev));
++    if (!ags || (!ags->hw_error_le && !ags->hest_addr_le)) {
++        return 0;
+     }
++    *(AcpiGhesState **)opaque = ags;
++    return 1;
++}
 +
-+    pcms->ghes_sci_notifier.notify = pc_sci_error;
-+    notifier_list_add(&acpi_generic_error_notifiers,
-+                        &pcms->ghes_sci_notifier);
++AcpiGhesState *acpi_ghes_get_state(void)
++{
++    AcpiGhesState *ags = NULL;
++
++    object_child_foreach_recursive(object_get_root(), acpi_ghes_find_state,
++                                   &ags);
+     return ags;
  }
+diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_dev_interface.h
+index 65debb90a8d4..644e0006ff6a 100644
+--- a/include/hw/acpi/acpi_dev_interface.h
++++ b/include/hw/acpi/acpi_dev_interface.h
+@@ -26,6 +26,7 @@ DECLARE_CLASS_CHECKERS(AcpiDeviceIfClass, ACPI_DEVICE_IF,
+                      TYPE_ACPI_DEVICE_IF)
  
- static void pc_machine_finalize(Object *obj)
- {
-     PCMachineState *pcms = PC_MACHINE(obj);
+ typedef struct AcpiDeviceIf AcpiDeviceIf;
++typedef struct AcpiGhesState AcpiGhesState;
  
-+    notifier_remove(&pcms->ghes_sci_notifier);
+ /**
+  * AcpiDeviceIfClass:
+@@ -33,6 +34,7 @@ typedef struct AcpiDeviceIf AcpiDeviceIf;
+  * ospm_status: returns status of ACPI device objects, reported
+  *              via _OST method if device supports it.
+  * send_event: inject a specified event into guest
++ * get_ghes_state: returns the controller's GHES state, if supported
+  * madt_cpu: fills @entry with Interrupt Controller Structure
+  *           for CPU indexed by @uid in @apic_ids array,
+  *           returned structure types are:
+@@ -50,5 +52,9 @@ struct AcpiDeviceIfClass {
+     /* <public> */
+     void (*ospm_status)(AcpiDeviceIf *adev, ACPIOSTInfoList ***list);
+     void (*send_event)(AcpiDeviceIf *adev, AcpiEventStatusBits ev);
 +
-     if (pcms->pcspk && !qdev_is_realized(DEVICE(pcms->pcspk))) {
-         object_unref(OBJECT(pcms->pcspk));
-     }
-@@ -1773,6 +1808,12 @@ static void pc_machine_class_init(ObjectClass *oc, const void *data)
-     object_class_property_set_description(oc, PC_MACHINE_SMBIOS_EP,
-         "SMBIOS Entry Point type [32, 64]");
- 
-+    object_class_property_add_bool(oc, "ras", pc_machine_get_ras,
-+                                   pc_machine_set_ras);
-+    object_class_property_set_description(oc, "ras",
-+                                          "Set on/off to enable/disable reporting host memory errors "
-+                                          "to a KVM guest using ACPI and guest external abort exceptions");
++    AcpiGhesState *(*get_ghes_state)(AcpiDeviceIf *adev);
+ };
 +
-     object_class_property_add_bool(oc, "fd-bootchk",
-         pc_machine_get_fd_bootchk,
-         pc_machine_set_fd_bootchk);
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 844ae835784f..533612194f32 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -30,6 +30,9 @@ typedef struct PCMachineState {
-     /* State for other subsystems/APIs: */
-     Notifier machine_done;
- 
-+    /* Triggered when a new SCI GHES error raises */
-+    Notifier ghes_sci_notifier;
-+
-     /* Pointers to devices and objects: */
-     PCIBus *pcibus;
-     I2CBus *smbus;
-@@ -57,6 +60,8 @@ typedef struct PCMachineState {
-     bool i8042_enabled;
-     bool default_bus_bypass_iommu;
-     bool fd_bootchk;
-+    bool ras;
-+
-     uint64_t max_fw_size;
- 
-     /* ACPI Memory hotplug IO base address */
++AcpiGhesState *acpi_device_get_ghes_state(AcpiDeviceIf *adev);
+ #endif
 -- 
 2.56.0
 

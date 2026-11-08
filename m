@@ -1,67 +1,87 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 96AED606A322
-	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 08:47:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6BC73606A31C
+	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 09:54:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BkArkYCM
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=XkxTWbQU
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPyWn-0007Zb-9R; Sun, 08 Nov 2026 03:45:29 -0500
+	id 1xPzbT-0005Tt-3M; Sun, 08 Nov 2026 04:54:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1xPyWl-0007Y4-0X; Sun, 08 Nov 2026 03:45:27 -0500
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xPzbN-0005Qz-5H
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:17 -0500
+Received: from st-2004e-snip6-2.eps.apple.com ([2a01:b747:3001:201::34]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1xPyWj-0000HU-Cc; Sun, 08 Nov 2026 03:45:26 -0500
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by tor.source.kernel.org (Postfix) with ESMTP id CDAEB612F8;
- Sun,  8 Nov 2026 08:45:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85C651F008A4;
- Sun,  8 Nov 2026 08:45:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1794127516;
- bh=pKRyi/P8OXU4hT2prHBcACIMzgezdIbO+h5QJsXXbDw=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=BkArkYCMZfwSckb55IDsFd454rLz/obmEjUAondI9pwNIZZXokQA8uDksjIE3nT/z
- AxXZ+M1hquu9yfDv0NR1WpDbOubDBkixIbvuX0yjxKdnCsoK9UNKbeSNmYQcbpZNx2
- SGrrf/GeYFySreSnOu2+n/E7SP00GA1u06IUdyR75IYJu23S5pswBGVTzKi/5qFrKB
- sFXzeukaap7cLxA5t0DMTITjOHHm2zxP0Ey9UhH4Ulg7kjjw7YOZI87Tv/ksB7Yox+
- Nv2jHSDnOB/STezmm/Hd7RphdRlDS/EATnYsnJISYZGpNJiqyB6Fra4hdSsPTZfVLh
- g4U7NHUyS/l0g==
-Received: from mchehab by mail.kernel.org with local (Exim 4.100.1)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1xPyWY-00000005TMf-2ovO; Sun, 08 Nov 2026 09:45:14 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Michael S Tsirkin <mst@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, qemu-devel@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-edac@vger.kernel.org, qemu-arm@nongnu.org
-Subject: [PATCH v2 6/8] docs: acpi_hest_ghes: document notification mechanisms
-Date: Sun,  8 Nov 2026 09:45:07 +0100
-Message-ID: <5474e7a37809445a46c862c61f96005204cd0ccb.1794124132.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <cover.1794124132.git.mchehab+huawei@kernel.org>
-References: <cover.1794124132.git.mchehab+huawei@kernel.org>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xPzbJ-0005xk-EM
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:16 -0500
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
+ 92A9B18001BD; Sun, 08 Nov 2026 09:54:08 +0000 (UTC)
+X-ICL-RepId: 01a1ba94-5ff6-746d-bdbc-703e91b3cea2
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtIBUMGWgReC0wHQwJZEhVdRV4CXwpfFV04RgNHGVcUUBtHDFUHV15fChMLU1ZHHkkKVgleCEYRWxRWQ1EZEgJaRQRNXw5eHwQXRhlVBEceXVZAGRkCURxWDVdDVARfUEkMQVBsWgBHF0gdXRlZb1BdHA4YWRtAFV0RUBlWCV4VFx5BTVoCVk0FSgNfAVoDQAFIClgDWwFeDkgLXARGAF1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIHWEcURw4PE0wLRwJaNFYfVBlaAw==
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1794131650; x=1825667650;
+ bh=5lM3M/27cmxL429SQ6zeAkdGwYl8tz0wXYP78bVYgaU=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=XkxTWbQUNQ2lWNgQUBnK2hpwVIVNdRk49Sb9b8UrfEj2QXuZi5WnMlQQSzIkUqy2BSDHg+uRuYbl77ZonwddK4NPZVsM4dxNXdpVh+3bkV7JHk0g3xJUDLbmqjVD/IfeWkwvVTzue++QTDgBWr1+aSrUacVw4PRHIFKBlLa4DfSOHRxCO5V6LxJnt7+wXi129EwRHNubfg7znBW5pN6n4Vl8ARI7AWjD7zSYxeBdBWAKjGbfeY0/obsFeph9CKfAyIZ4EB/N8Cz8wA0AeDcGN6fI16Imx507S0pYBGb9OLjgseRoWxJl45LOal3f0SGiLjMiDFetn8kpHo3fBtDI+w==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.156.216.30])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
+ 3A5B318001BB; Sun, 08 Nov 2026 09:54:07 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Doug Cook <dcook@microsoft.com>
+Subject: [PULL 01/13] target/i386/whpx: fix VMX capability MSR values
+Date: Sun,  8 Nov 2026 02:53:51 -0700
+Message-ID: <20261108095403.70813-2-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20261108095403.70813-1-mohamed@unpredictable.fr>
+References: <20261108095403.70813-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
- envelope-from=mchehab+huawei@kernel.org; helo=tor.source.kernel.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Proofpoint-ORIG-GUID: PJ8a84S6LyPd3qynDWISoHfSonQ27acU
+X-Authority-Info-Out: v=2.4 cv=IaKKmGqa c=1 sm=1 tr=0 ts=6af046c1
+ cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
+ a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=yMhMjlubAAAA:8 a=34rDk-nlojoYW5TMjDsA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA4MDAzOSBTYWx0ZWRfX9kDNodiYJPyy
+ fQ7nnPX5g5e75pT8Uo2G39dfLJOQDb1VIaeIBdCwt+0ThyHKR8Z36WyxVPnp6/6JnDCdAl64HvM
+ uSJp1TtrMlaZyiz/bgqJQ7XkFUr2skr5g795/isRmA5G7Rx0T4GecAYcT8LuOdPjVtMpTaMNqiZ
+ 9OR8RwTAxP+49NWIcvWYIueBM/IbmmTv8EJn8bz9R9lK6OYnGjpSeZSjE0VbHKGCU4qnxAmQSDn
+ M3ttzRp/Ee8X1Gst3413ilnGuC1uwrapPmR8Cjz0W1yrq5GXx4FMjnJxGTk1uGJR2iAMlglkeCs
+ ziqQRracE7FGIhAHAFMoM5nAchdAdJPCG9JZUx+G4SEf/KwP8YiBwJcu1IW0SY=
+X-Proofpoint-GUID: PJ8a84S6LyPd3qynDWISoHfSonQ27acU
+X-JNJ: AAAAAAABwe+TGvjZQaA4O3stG1JxA/ZojbFvU9DgbcpQeEiwQYkc4qF7TBVxWOw1hbRYfE
+ H5Tvc3ICQdTyyfDFp1DPvJnealZr5A9nKKGsOLeVG0wdz42kty79Ku3GRdI4XYjO3YF/XQ
+ 3IK/qNmTzki6H9dDjPp6iLsozjPgoUEC1qLhsU8gBNcMggUvigWhxvpZmi2hCM82hv0oiY
+ iHSPi2tyWsTTYaMt8sCRm3oZBG4Y+Qu6foWtR+WUuKor9HJJQKW8vtea1JCxEClp5Kvr9Q
+ AKKbrflXYeSLFJThpNP9vW14GrzI66qQ8VemguVlP8LmumdkXuSMsBMPHZ7ktVyVlvWNnK
+ KxW9h6Q485kRKxfSRAVXcYGyY65XjfpeZ5ZVI3b588yNVojntPs4oT4/o29ci0gbbXvCwV
+ J/aiwSRXMbQqyE1nb/UfZeokc+4EQbnTah2ywx5IeptgAmNQNau+d2zBfB+z7wVys3p/M/
+ HLoRrPCveLATMajVBkbiptj4i7uE0nJYYu9N/8r1QA7wzZ8HAz5OX15dOAR7sojGCHG9iZ
+ vSEXgqPBO7yZTfF6hWSnv23lgFlfHbOUPvQ+QOfOwBEaXtmlEX9kD9GTVcY1bfE13++dMR
+ /h3Y/v/CJbNr6HkjmD1nj9qIE8/GHa4ulwMF8f1L8IkX00l9JvAsMCRp5hmufDuTspMET+
+ 5egpiOO04yiogvK2iA66jPVHoKruoCLcdfEzrRorllOYJL6w+eXZyQ4ZxZF8v7aV2+jf44
+ WUZU3yDm1sk95BGr41wEsF9ruWzYDga6lbTUHoyiLOXMSX2Ksqs0s=
+Received-SPF: pass client-ip=2a01:b747:3001:201::34;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,87 +93,90 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Currently, the HEST spec mixes generic support with arch dependent
-notification mechanisms.
+From: Doug Cook <dcook@microsoft.com>
 
-Move the arm-specific notifications to a separate chapter and add
-a new one describing x86 mechanisms.
+whpx_get_supported_msr_feature() had two bugs in how it reports the
+VMX control MSRs:
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+- MSR_IA32_VMX_TRUE_PINBASED_CTLS and MSR_IA32_VMX_TRUE_PROCBASED_CTLS
+  were queried using the non-TRUE capability codes
+  (WHvCapabilityCodeVmxPinbasedCtls and WHvCapabilityCodeVmxProcbasedCtls).
+
+- For PROCBASED_CTLS2 and the four TRUE_* control MSRs, the raw
+  allowed-0/allowed-1 pair was returned. The feature-word code expects
+  only the bits that may be 1 but are not required to be 1. Apply the
+  same transformation as kvm_arch_get_supported_msr_feature();
+  make_vmx_msr_value() adds the must-be-one bits back afterwards.
+
+As a result, with +vmx QEMU treated many VMX features the host does
+support (secondary controls, EPT, VPID, MSR bitmaps, ...) as missing,
+warned about each of them, and dropped them from the CPU model. The
+guest itself reads the VMX MSRs from the hypervisor, not from QEMU,
+so this did not change what the guest saw.
+
+Signed-off-by: Doug Cook <dcook@microsoft.com>
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- docs/specs/acpi_hest_ghes.rst | 44 ++++++++++++++++++++++++++++-------
- 1 file changed, 35 insertions(+), 9 deletions(-)
+ target/i386/whpx/whpx-all.c | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
 
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index aaf7b1ad11a5..1a32550ef3a1 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -7,6 +7,7 @@ APEI tables generating and CPER record
-    This work is licensed under the terms of the GNU GPL, version 2 or later.
-    See the COPYING file in the top-level directory.
- 
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 113f79afb9..1386affa9c 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1452,10 +1452,10 @@ uint64_t whpx_get_supported_msr_feature(uint32_t index)
+         cap = WHvCapabilityCodeVmxEptVpidCap;
+         break;
+     case MSR_IA32_VMX_TRUE_PINBASED_CTLS:
+-        cap = WHvCapabilityCodeVmxPinbasedCtls;
++        cap = WHvCapabilityCodeVmxTruePinbasedCtls;
+         break;
+     case MSR_IA32_VMX_TRUE_PROCBASED_CTLS:
+-        cap = WHvCapabilityCodeVmxProcbasedCtls;
++        cap = WHvCapabilityCodeVmxTrueProcbasedCtls;
+         break;
+     case MSR_IA32_VMX_TRUE_ENTRY_CTLS:
+         cap = WHvCapabilityCodeVmxTrueEntryCtls;
+@@ -1474,6 +1474,31 @@ uint64_t whpx_get_supported_msr_feature(uint32_t index)
+         if (FAILED(hr)) {
+             return 0;
+         }
 +
- Design Details
- --------------
- 
-@@ -105,14 +106,39 @@ Design Details
-     firmware will write back the start address of either "etc/hardware_errors"
-     or HEST table at the corresponding fw_cfg file.
- 
--(9) When QEMU gets a SIGBUS from the kernel, QEMU writes CPER into corresponding
--    "Error Status Data Block", guest memory, and then injects platform specific
--    interrupt (in case of arm/virt machine it's Synchronous External Abort) as a
--    notification which is necessary for notifying the guest.
-+.. note::
- 
--(10) This notification (in virtual hardware) will be handled by the guest
--     kernel, on receiving notification, guest APEI driver could read the CPER error
--     and take appropriate action.
-+    GHES support requires ACPI and ``-machine ras=on``.
- 
--(11) kvm_arch_on_sigbus_vcpu() reports RAS errors via a SEA notifications,
--     when a SIGBUS event is triggered.
-+Notifications on ARM64
-+----------------------
++        switch (index) {
++        case MSR_IA32_VMX_PROCBASED_CTLS2:
++        case MSR_IA32_VMX_TRUE_PINBASED_CTLS:
++        case MSR_IA32_VMX_TRUE_PROCBASED_CTLS:
++        case MSR_IA32_VMX_TRUE_ENTRY_CTLS:
++        case MSR_IA32_VMX_TRUE_EXIT_CTLS: {
++            /*
++             * These MSRs hold the allowed-0 settings in the low half and the
++             * allowed-1 settings in the high half.  QEMU's feature words want
++             * only the bits that can be one but do not have to be one, so
++             * apply the same transformation as
++             * kvm_arch_get_supported_msr_feature(); make_vmx_msr_value()
++             * restores the must-be-one bits later.
++             */
++            uint32_t must_be_one = (uint32_t)val;
++            uint32_t can_be_one = (uint32_t)(val >> 32);
 +
-+The ARM64 ``virt`` machine supports two GHESv2 notification sources:
++            val = can_be_one & ~must_be_one;
++            break;
++        }
++        default:
++            break;
++        }
 +
-+* source 0: Synchronous External Abort (SEA);
-+* source 1: GPIO notification delivered through a Generic Event Device (GED).
-+
-+Source 0 reports hardware-memory RAS events on the ``virt`` machine:
-+
-+* When QEMU receives a ``SIGBUS`` from the kernel, it writes the CPER into the
-+  corresponding ``Error Status Data Block`` in guest memory and reports the
-+  event through a Synchronous External Abort (SEA). The guest kernel handle
-+  the SEA,
-+
-+* The guest APEI driver can read and process the CPER record.
-+
-+* ``kvm_arch_on_sigbus_vcpu()`` reports these RAS events through SEA.
-+
-+When source 1 is available, QEMU supports GHES error injection through the QMP
-+interface.
-+
-+
-+Notifications on x86
-+--------------------
-+
-+The ``pc`` and ``q35`` machines support one GHESv2 source:
-+
-+* source 1: System Control Interrupt (SCI).
-+
-+When source 1 is available, QEMU supports GHES error injection through
-+the QMP interface.
+         return val;
+     }
+     return 0;
 -- 
-2.56.0
+2.54.0 (Apple Git-157)
 
 

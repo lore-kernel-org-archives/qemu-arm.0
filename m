@@ -1,79 +1,86 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F492606A31C
-	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 09:54:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 506EC606A31C
+	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 09:54:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=C42BktnB
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=0SOTwkvY
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPzbM-0005Qt-HU; Sun, 08 Nov 2026 04:54:17 -0500
+	id 1xPzbL-0005QK-QH; Sun, 08 Nov 2026 04:54:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xPzbK-0005Q3-FD
+ id 1xPzbK-0005QA-NF
  for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:14 -0500
-Received: from st-2004d-snip6-11.eps.apple.com ([2a01:b747:3001:201::29]
+Received: from st-2004f-snip6-11.eps.apple.com ([2a01:b747:3001:201::3d]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xPzbJ-0005y4-1l
+ id 1xPzbI-0005xe-Mg
  for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:14 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 05B2518001B0; Sun, 08 Nov 2026 09:54:10 +0000 (UTC)
-X-ICL-RepId: 01a1ba94-6968-7a61-8ffe-543f078cc272
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtIBUMGWgReC0wHQwJZEhVdRV4CXwpfFV04RgNHGVcUUBtHDFUHV15fChMLU1ZHHkkKVgleCEYRWxRWQ1EZEgJaRQVNXw5eHwQXRhlVBEceXVZAGRkCURxWDVdDVARfUEkMQVBsWgBHF0gdXRlZb1BdHA4YWRtAFV0RUBlWCV4VFx5BTVoCVk0FSgNfAVoDQAFIClgDWwFeDkgLXARGB11UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIHWEcURw4PE0wLRwJaNFYfVBlaAw==
+ EB88F18001AC; Sun, 08 Nov 2026 09:54:07 +0000 (UTC)
+X-ICL-RepId: 01a1ba94-5ca3-7b77-bccb-37dca97d5be2
+X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQtIBUMGWgReC0wHQwJZEhVdRV4CXwpfFV04RgNHGVcUUBtHDFUHV15fChMLU1ZHHkkKVgleCEYRWxRWQ1EZEgJaRQVNXw5eHwQXRhlVBEceXVZAGRkCURxWDVdDVARfUEkMQVBsWgBHF0gdXRlZb1BdHA4YWRtAFV0RUBlWCV4VFx5BTVoCVk0FSgNfAVoDQAFIClgDWwFeDkgLXARGA11UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIHWEcURw4PE0wLRwJaNFYfVBlaAw==
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1794131652; x=1825667652;
- bh=4MtoiGWVHD1ql7ktrdOMb3tf+OVOyyTmcQKxYtuN+0U=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=C42BktnBF1H4yOGKcBlLQ1rjqNDg3cFVriUPF5W2fXoYkZBEGN2liSFZLrHM1USsXqDAco8/1Z5bcQ//8oEePhKOVc32QBrjLpi69YRTLwrST4yuMLe97P5drvDFoNDXORc3mB7RYQ3gtV3Wny80KCYhrovhkM54WiBD91oOW2+bw7g0cvsSUczfdIfvt/Lg/M5jszNqdJW56O7ABVXzHBaH+GASa5iXglz6r1Kjjyqdg+a+1fma6CqXGtUniJeaY9BmCIuqgBMBRDh3mBKicSUH3IDYaabhVp0o6FJn/n8Nda0blzBcNxG12daLOf9Yj6Abb7MsnOxLldWDmbF7Cw==
+ s=sig1; t=1794131649; x=1825667649;
+ bh=sUt0fEx6J1fWs/w8UUJBklUDwgy8uZtIMoJkf1ciHBg=;
+ h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version:x-icloud-hme;
+ b=0SOTwkvYd0OMoTxhyvdfvfEQhsFhjjoCcpD2ZhumQuhvl3SoBwYeA+A8lve1BGnWzUD1tSHb/TZyZfoBXAGlyE6OFevzLWvRKdcIiRQi51HoBBeuzKYPWBqLwwuD1z0Jk26zG8jZBxSAQ9kYb8EKQFE78StJALFfsUnu1cvhXUbV0DNkQrUIRBJYYzYLZvTOScenflnw1ElT7gYMKXW0wvrDMJvEX9nW0o/++XHyqAqDbnOq+N/awZxuZlc4AyoYd5xhlll4LvLe4MtasOTDhyTSIf7bXo8zeWLofUC7jQzt5sFa7oYSWaG4WkIe7ErK4JHnbImMWZc0eOMUvgo32g==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.156.216.30])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- AF98718001AB; Sun, 08 Nov 2026 09:54:09 +0000 (UTC)
+ 6A81918001B5; Sun, 08 Nov 2026 09:54:06 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PULL 04/13] whpx: i386: fix TPR encodings for local APIC
-Date: Sun,  8 Nov 2026 02:53:54 -0700
-Message-ID: <20261108095403.70813-5-mohamed@unpredictable.fr>
+Subject: [PULL 00/13] Whpx fix 0 patches
+Date: Sun,  8 Nov 2026 02:53:50 -0700
+Message-ID: <20261108095403.70813-1-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20261108095403.70813-1-mohamed@unpredictable.fr>
-References: <20261108095403.70813-1-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset="utf-8"
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: x0eHnRvj53dfMqTLR-U6etD5SUVSEiuM
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA4MDAzOSBTYWx0ZWRfXykFQs0SKfIYN
- 0BaYwAuDM2KXxilGTFjfsLooJ5Tp7y5L+L93q2uQzCVZEBlB5wCtGMvA6aIS+W9RxflqS37JkqD
- lASVlfbtJMBVf6QMPkvSD28BOCNDSJJN0hK93DpxTHY18hKDJX4hxf82lH7Rl/ZudT8wN9HblMN
- JDVx2F/XtGQFcfoROHiVKu2oOdlzkjM7sRaFdfHJglnlPc88lXaryfCpL5DeSvej/GW6/ttm26m
- 3sj+mta0TVBZbctTdhhBNjRU5te0+CYOHI5qUoZZZ+OBIWczzXm1U/ce7H6NMiWOqtsblno82+r
- j/eYOnYjOf4S5sQgMBskOXMDeUDkkXqOk0l1Ry2Tj75Seyye3ZTBKtpqIL7d2Q=
-X-Authority-Info-Out: v=2.4 cv=Kd3fcAYD c=1 sm=1 tr=0 ts=6af046c3
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA4MDAzOSBTYWx0ZWRfX1C7HI2yEiHY+
+ aUideBkkdqsCGq9gBL2N+e2fQrB8nYUKVNBqAAbhIqcDXHKMN+Cao9CXt/xPl+hL0IUV80YojnS
+ zLsrGOaB5wCGD7NtlVnH8U9U0TI1kQLMDfsNY1yzXdgF27Ucx9/1MZ2ecP4gRahHtprZYzSem9+
+ pfOD+8mR0UZxF8aIV1ZCrNjk1U63e9AzKcE8fUXrMBko3FMWGa/EOadnq/dxfLv6JmMvuREvCI5
+ jsDQN/QGVDGec2yQTt8fTJrwY8pYfZvAI73N0UTxPJ69zTL4d3dinN4OJKHz9Mv01t30AXDmIC5
+ AvFlWP89qs4tSTX/LBM3GWNLZMiEITXxRa0R47m5UpRWpOb/XqbWny4MxQ4loE=
+X-Proofpoint-GUID: cVdsFA0RmvF-v6GaDr2pOEo1Z7LgRfOd
+X-Authority-Info-Out: v=2.4 cv=BNu+bVQG c=1 sm=1 tr=0 ts=6af046c0
  cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
- a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=YYz-tg3MKeN3tcD12NcA:9
-X-Proofpoint-ORIG-GUID: x0eHnRvj53dfMqTLR-U6etD5SUVSEiuM
-X-JNJ: AAAAAAAB+KctSMk3TkWdEY382X/1hfoBBLn5F8X05tuNB9UeSRYjsTpdMISiwyjrdDaWyO
- 3NO+RuaCUKQfYZlfdo2JJXeeUDDQ5+VTGhIE413Xwr+D9+OpOM0HRe/iP67VeWtYHu3LEk
- fIpnErpnmrU8mOOYsvGvkUzgL0ibOxT3jh9/VBxZuHOVfcCau5g5kh5AuyTbYhzZ58IG8H
- p7v4V22CnQUcgdpgMcbITULntI9e+/1YRroqILKY2x5h7o8xEA20lZxMxkGEM02mH0xftO
- 4yda1GlgNc3rZiCjCwpCA6F9ytVEewRNdpqku2yXj5YuVX/z3yfAoOb6TXyADTkF2tgX3K
- YGtd7rMNcGzU0ZzKeovQW0cdvVssefGCnEvBowyIew4sFZKyYf96ExTOo+pbJYKKjiDY2J
- 1w20oJpgpJmU9ZwXWyy3nzOygj2NVpQpVJ9FjftLYoQXddqkqp1KolgHfbFtU2HRd4zQZe
- x+YeFSxGuYl4BmkUOXaguaEF9W8dX1aWlEcANOSDz5+VJTi24HFe2LGxRC5lKKTQEiYbXQ
- FjRiBYjsHTs0QfcWAwBfozUTFVGb9PoltBZsiVtSkgLodXEWbECapwBNct9uB9gqe25n9r
- IzRSZA5jD+5hT0vIWKjrMjqgJED9e65uE5SfTfISlv84HYzXMibee0LH3Mf2EUc11U3gOM
- BynIxfV4s6liDA0wYelDeM/DXZHhbLYvAZnLHa47RPARMhPXgx6e6RuHCVPDMVCn+TDie3
- Aqe41C9za9+K2McxSBblyYsp6tH1JL9YXbLpDJqNp6usbzs2ueSWgJnkDIpeF7v4s=
-Received-SPF: pass client-ip=2a01:b747:3001:201::29;
+ a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=xNf9USuDAAAA:8 a=NEAV23lmAAAA:8
+ a=NYuFA6trRCS36QocvEQA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: cVdsFA0RmvF-v6GaDr2pOEo1Z7LgRfOd
+X-JNJ: AAAAAAABWlLq9vtXb/tIrHx3B3vNrha6HMsIV11IzRmEwIIqjDSRvTDjqj3FGYrfMj+MBk
+ llp9vsI5zGZUOB24C4vTysj5FGit2UZMXzevyLD3tcZ/4v3/JtiKcLVS762R6HKGHceCzw
+ dTgrabjEUMb6qZBYu43FZ9tgVSIsO6iFNQSOVdUYg7TWHDl75JxVzsi3lADoLATldoxYgv
+ 8GFINYawfnCGy1dht9bvJnLG5xRGs2idI2NKL+oLsUcigGkQW/uexyIsXHxBaxQPJ4JZCs
+ 7XgzICWeXO6Hpcv7JgRXI1wDuDmzVsazHhrsYjiQofSXYB6VD+obJkue+1FGbHt4m5gRGP
+ LqlHYIcL46Dp6H06wMKmN3yWwwnhM+waspVx1Plcrmw1DpiH8ZWz6jTljIGzsvI1UmDy/6
+ 1897ubBwP0yYgugNzBa9EKPxHKvbPZDUOiMnapXovmFtXGfti3KnBevwMAzg/Tmht9JWA4
+ /R6WcX0uUrGDVsRDQ1ckzjAqKwe/33WiH7vG3xR3QDlvsl0DOvXr6M1x7oR+PyEmI3CVOf
+ GLLtcFseFRtbkJcnp+ZZ8LZ4bRiEk02Q+6zQP4oONjjNiN/JNphqm26wtlgK4spzHocxQz
+ cJiUMzowifcTP6yRUKMMvvpjTxNw8xfdpMQJCW8g8b1V1SWd6enq9jIsyfEfpCvRfoKWkS
+ rYVLraQk4T64Vm7IMcKWovB71C5TDfBn4ePqqgZqIpam/BgzlBGn6zEuRXTQqSpfmR3ryY
+ 9vpAuxMhI64b9Z+NNxHpjun5TNh+zuIAOW44Qsi0PwO7+p1rRV1KZll6BZOrI1ALxGoF25
+ zF1R8y6NZPokicYPJZ/raf4t7c2jxdOHzqVbv2WEqjg7ZB90T1KYRKK0cahZfWd2+JSCuL
+ 6fvoNe3BC4GKJ19XIELQ6anbf9GvSD/XdLcIEj+fWPk4fcEfZ0ro7n45SCKR3+yQlphmyj
+ Bwk6/daTB0NCdrSIVVIr8xTWTS1qQ2jRQV51ttTMErpHLfrdI1KjdP82dAjKldXbv9mgcT
+ CAzp02SfoaZyDdbrRyKmv5pGUvSoMNMaSY4kE0iqRJ0gPmFSxoEseNJQVY3YvYXuJ2/p5K
+ aJO9v79w/VA1tujqzklpEDGuTJOBi2gJTjwRjqz9riCwiQerNpIazBTshsHFKcHfz1PoWJ
+ ++HMa0GBUtV9hfhLLBwEv05CJVKklcVI8XgUOdoQce8SN/HmEcRWPBhkUuMGWE0egvlQdQ
+ HhZ36LBhzoslDadNlMq9QDpjOb2DZCxXlvSDPzyugHufC/HG
+Received-SPF: pass client-ip=2a01:b747:3001:201::3d;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -92,39 +99,73 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Convert between the TPR and the APIC priority encodings.
+The following changes since commit d73149283205645625bfa9fe029cfb68e4c4a9ae:
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/i386/whpx/whpx-apic.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+  Merge tag 'samuel-thibault' of https://people.debian.org/~sthibault/qemu into staging (2026-10-24 16:09:37 +0200)
 
-diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
-index efdedbcd77..2d83291fae 100644
---- a/target/i386/whpx/whpx-apic.c
-+++ b/target/i386/whpx/whpx-apic.c
-@@ -184,12 +184,12 @@ static void whpx_put_apic_base(CPUState *cpu, uint64_t val)
- 
- static void whpx_apic_set_tpr(APICCommonState *s, uint8_t val)
- {
--    s->tpr = val;
-+    s->tpr = (val & APIC_PR_SUB_CLASS) << APIC_PR_CLASS_SHIFT;
- }
- 
- static uint8_t whpx_apic_get_tpr(APICCommonState *s)
- {
--    return s->tpr;
-+    return s->tpr >> APIC_PR_CLASS_SHIFT;
- }
- 
- static void whpx_apic_vapic_base_update(APICCommonState *s)
+are available in the Git repository at:
+
+  https://github.com/mediouni-m/qemu tags/whpx-fix-0-pull-request
+
+for you to fetch changes up to 2bf35950b54c1db9a6de6eb47b42cf843c6bd282:
+
+  whpx: i386: also save debug registers (2026-11-08 02:48:18 -0700)
+
+----------------------------------------------------------------
+whpx: QEMU 11.2 pull request
+
+This is a cut-down version of the "whpx: i386: updates for QEMU 11.2" patchset
+with fixes for QEMU 11.2.
+
+These include:
+
+- fixing reset
+- CPUID fixes (leaf 0xd)
+- handle systems where nested virt is advertised but not working
+- xsave fixes
+
+----------------------------------------------------------------
+
+Akshey Taneja (2):
+  whpx: i386: do not require ProcessorFeaturesBanks on legacy Windows
+  whpx: i386: fall back to xAPIC when the MSR exit bitmap is unavailable
+
+Boden Randin (1):
+  whpx: i386: avoid updating hflags for vmexits
+
+Doug Cook (1):
+  target/i386/whpx: fix VMX capability MSR values
+
+Doug Cook (WINDOWS) (2):
+  target/i386/whpx: whpx_get_xsave_state error handling
+  target/i386/whpx: handle processor reset
+
+Kostas Chatzikokolakis (1):
+  whpx: i386: forward the dynamic EBX of CPUID[0xD] sub-leaves 0 and 1,
+    not 1 and 2
+
+Mohamed Mediouni (6):
+  whpx: i386: get APIC state before VM save
+  whpx: i386: fix TPR encodings for local APIC
+  whpx: i386: save/restore xss
+  whpx: i386: make nested virtualisation init failure non-fatal
+  target/arm/whpx: handle processor reset
+  whpx: i386: also save debug registers
+
+ include/system/whpx-internal.h |   5 +-
+ target/arm/whpx/whpx-all.c     |  10 +-
+ target/i386/whpx/whpx-all.c    | 307 ++++++++++++++++++++++++++-------
+ target/i386/whpx/whpx-apic.c   |  10 +-
+ 4 files changed, 266 insertions(+), 66 deletions(-)
+
 -- 
 2.54.0 (Apple Git-157)
 

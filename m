@@ -1,87 +1,86 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DDFD606A31C
-	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 09:55:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1977606A31C
+	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 09:55:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=Agmg+wX7
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=bcSFPWf2
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xPzbb-0005VN-27; Sun, 08 Nov 2026 04:54:33 -0500
+	id 1xPzbW-0005Uj-0X; Sun, 08 Nov 2026 04:54:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xPzbO-0005Rw-Dz
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:18 -0500
-Received: from st-2004k-snip6-11.eps.apple.com ([2a01:b747:3001:201::6f]
+ id 1xPzbN-0005R1-8p
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:17 -0500
+Received: from st-2004i-snip6-2.eps.apple.com ([2a01:b747:3001:201::5c]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xPzbL-0005yq-W9
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:18 -0500
+ id 1xPzbK-0005yJ-31
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 04:54:16 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 64FD21800198; Sun, 08 Nov 2026 09:54:13 +0000 (UTC)
-X-ICL-RepId: 01a1ba94-72cb-7d9a-931f-e7d3a75a86d8
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtIBUMGWgReC0wHQwJZEhVdRV4CXwpfFV04RgNHGVcUUBtHDFUHV15fChMLU1ZHHkkKVgleCEYRWxRWQ1EZEgJaRQRNXw5eHwQXRhlVBEceXVZAGRkCURxWDVdDVARfUEkMQVBsWgBHF0gdXRlZb1BdHA4YWRtAFV0RUBlWCV4VFx5BTVoCVk0FSgNfAVoDQAFIClgDWwFeDkgLXARGCl1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIHWEcURw4PE0wLRwJaNFYfVBlaAw==
+ 92A5818001AE; Sun, 08 Nov 2026 09:54:10 +0000 (UTC)
+X-ICL-RepId: 01a1ba94-67ae-73b2-8ad6-cec86d5cdb9a
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtIBUMGWgReC0wHQwJZEhVdRV4CXwpfFV04RgNHGVcUUBtHDFUHV15fChMLU1ZHHkkKVgleCEYRWxRWQ1EZEgJaRQVNXw5eHwQXRhlVBEceXVZAGRkCURxWDVdDVARfUEkMQVBsWgBHF0gdXRlZb1BdHA4YWRtAFV0RUBlWCV4VFx5BTVoCVk0FSgNfAVoDQAFIClgDWwFeDkgLXARGBl1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIHWEcURw4PE0wLRwJaNFYfVBlaAw==
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1794131655; x=1825667655;
- bh=M0CJ8m1tE45aGnGPaASxvBBsdpDz2YYKmBv/2eZp7xY=;
+ s=sig1; t=1794131653; x=1825667653;
+ bh=BMfLaruRwjS2EuVB1qFM1OkXquvXAo2QdP40DhTsI1I=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Agmg+wX7/CgImoYoVdj0J9YMieauUcZe256rIAX4bmc+SE/yOZHKAIx2fzAemeGQFwsIzcl0KxFmdl7ROlCwxrNhkKnyR541E7XYz9aEtqAjnCM0B+vTclumiVZLQ02XNY1E+oTQqw+0g6REyxDDFdYJvPTDWEZJHAeVHjA/EzX49pZv68Ikelpmelto0QlbUnHaK/BNl55nPr8uiIphOlvPWppW/900Ml08wR7EF3G3PpHI3aOqr0RWVziEG+NYGouP0eF4tNtpwb4adLRK5JPJsuCNIYMX2S+DHXZcLAdEcnHoz0glQUO+plBMOhWa+ZHCqly2ioqY+M7f9NbQNA==
+ b=bcSFPWf29pkcpS0HSNNMXUDeYgjsJBJ5j1ytI/z0JbLQSszD6Ua2ft6+aWC1SdeyHaTXMGu5niSqDvxOd0iMU5atD1o8flb3rSp0XOyAUslA8DEvixLNWndBgWxMZAbqBSIXVyOKh4gh9jVNaXtcl+mYrf5EQtsXHlXOQW5duBm7tAf5ryCIRA8sHvALKe9Mf9hIBd5TF0paoALliE6yqXEb6FBG66pavDpcNUyxvabJJ8Q8UCKxKjqV+JpV6iroxMfqqvsPJTnTWApqOrU1AJsLEDoYX0VTtjO7WUHhe0Mkq+QPzPC5UYU+ZY0ISUwKObbn6ItuiT4sENgd80KtFw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.156.216.30])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 0C50018000BD; Sun, 08 Nov 2026 09:54:11 +0000 (UTC)
+ E8A491800199; Sun, 08 Nov 2026 09:54:08 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Boden Randin <bodenrandin1@gmail.com>
-Subject: [PULL 07/13] whpx: i386: avoid updating hflags for vmexits
-Date: Sun,  8 Nov 2026 02:53:57 -0700
-Message-ID: <20261108095403.70813-8-mohamed@unpredictable.fr>
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: [PULL 03/13] whpx: i386: get APIC state before VM save
+Date: Sun,  8 Nov 2026 02:53:53 -0700
+Message-ID: <20261108095403.70813-4-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20261108095403.70813-1-mohamed@unpredictable.fr>
 References: <20261108095403.70813-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: P_SIJRJy5OPnvr-If6nY9XbEDn4SzfiH
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA4MDAzOSBTYWx0ZWRfX7l67fJCoKHT2
- 0AOMJRzBDS96paKMnMK5td8o9eH8kX93Ma5gJFTfzHm9XPG8LdTR2pNNRY+2b8J4WU/uU6RQL6h
- W8JFPVEHBYwZU9Fkg4+ASNPcv50GEc+ZF3Oq2RfsT/AP9WBKfr5oApfPIz24sIW64B1JQuCYAuj
- tNHdyrtz3KuUgodZJO8/M9bLimS/wOuyvTj2Kv65lGxC+kgvZLlQMmisvjOxmJf4X94QoAPc9UH
- GPf0NMxZHm8M7lGu4XSI+4sR3cFZxiqbt8d4MAM0Jnp8ZJLGRLYL7tefN+fILklPpFzQY68GfBr
- uGLxASwZPCK9ykWJ8dbtHH5CRq/Mj7MxiypP9vC7NHlc1D3869Q6i1JTdjhpKg=
-X-Authority-Info-Out: v=2.4 cv=Kd3fcAYD c=1 sm=1 tr=0 ts=6af046c6
+X-Authority-Info-Out: v=2.4 cv=D8FK6/Rj c=1 sm=1 tr=0 ts=6af046c3
  cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
  a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=pGLkceISAAAA:8 a=JvUqhf-O7Ua7-JxK32kA:9
-X-Proofpoint-ORIG-GUID: P_SIJRJy5OPnvr-If6nY9XbEDn4SzfiH
-X-JNJ: AAAAAAABDMbhn5pFxH86WZmHoZllfB0umoJJHocNDZPsZyEri8M4GDhWbRuQb/B2Ptw/Ar
- 9fecgpgSgSN5787uqvy8KaOd2kQms2Fx/QcF65eYimbzAxYELXy/rWlGxOlQNeX1Lxy8Eo
- R1dC/JJeIZmpxBZqv6WhIuqid6Bgc5U+x1eNu8knIroIp9LJjl25TlvkuhtCdI+wjEyUqH
- X/vUSxhJ+EJrYWKQDRGxpXv2ZJu9xdCVbG+gJt1kaUWVX3WjB22Tq+XFSpvnlI/JvDEBdt
- 5SfnrxF23s3LFKzm354HCCNxfSIFpykv04mIQuRU+xamh2gY4mJ45wHs+tV9ARd8ZrZ+Eb
- O8X3Zu3D4D9DYeZHnT5i0Nh4uwphGqgoNVP9ZOu/ChT/lh/2tBtnE9+GFCpBPuyrw/diII
- ELxi6jiIhAhcov5QKxnUvSyIe1osU+Bp8flAeIGIGftqYbuJzRUb7Nfk5gQFdrGnU0qb06
- 2v5umHtMic3ViW7pggC3wsaE7hq0Ik0yOqVvzrL+4l26oCd+VPHm1axMHi8Vmsw8Ih+reQ
- M8cr0tCLSulqDehNSH2Y/djqQGLAWetXPwmrj12vHLlzrgIJdZ1kJDL5RU5TdrU4DJXeil
- G92EQ5aQVIAy5OsngbXPnF8cHLTiP4JQ/1mlZXCdIwSXrkJ2USFI05RYeALc5nthPqWS5V
- rrpfjXjQCin1/LzaQk6sw/ncJbi6HGgt2E7PjWTH4o1cP9K41eQHhlPhVT5C7uEL1IdH9Q
- OBTAKga8i0FqkSBpf6XCk5++2ZOVG5Ce6cNWqouDJ7EihjaSLCcq8Q58ejTPtXB2Lkqg==
-Received-SPF: pass client-ip=2a01:b747:3001:201::6f;
+ a=O2XxGrO5I-fc2znLRzsA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA4MDAzOSBTYWx0ZWRfX5IUkjYqJKxGc
+ TpWRNDh+yuGYmpmaE/7AAmA/qP/Hrj/O7ukkFqUr9ZyPzSaArsnADu+5LXzh2aw7ZG1CK5bEN7y
+ Zt8CAjGhs0Vbcz0otNrehByfyuu1AyS7Pw+er23Wi0IIQxrtdIudHUko5Mb2cTgXGvbtHEZotBU
+ fvy/YKHUSoW+yuDqfgv7/BPw1+tcWkSxSNH2MtzGYUAwFD6soCC0kOqhs64cmgQghx4ptMckpuv
+ OUJaoZdXkJ1EIiFJaFn2aIUwHmMw+lEvydEMh1z/LNnf9f45NQK4mjDS34BJ9d1TcMWc1XeG5Dl
+ a9n0ltPs+24XVrbKE8l/FTRQ58YmyKOyUFF1nPEgvS+En05EpPPTg5A5ojpP2g=
+X-Proofpoint-GUID: jtxZcbJkldvQ3eRYiEIwD1OYjMPURS0t
+X-Proofpoint-ORIG-GUID: jtxZcbJkldvQ3eRYiEIwD1OYjMPURS0t
+X-JNJ: AAAAAAAB6vjwAEXKspjj3P89M+YxYAtzjHCgN7m+92LoPHF3QhGEMOZy1KXR5+B/fEB3pe
+ /mKhsPmW1epVCMLJXYUDCEIeWjutkzu0b7fYT6Dum8bV4kodfovrPBkcPG9jqu9Ojn3XuY
+ sLuvYbS1HWoURwfes5HK31V6i8XXuUCt7Zy+YMBNtT4hZXRL94eHj3Iw91g0Qn6yh+bic1
+ Mqea22UUHVTQ3LOoNkjSrxUlW5KYPxa2BrqPA84F+CuCFb+bcdRkfoPK3aufbDGdNLdiXD
+ JQIBN/eiD47RZ5UNhPXGT2cCUEhageVYve/WZ+O9pRYfoVpZHRJ6ZnXUQKqkxauKa3RKzW
+ nqiMLVT9sfmb4kxSJ6lWbEjiF5vUyDJyHS1GRznBHuG0hl0m3R9snPG//c+v526OBNx6ye
+ DCNlncSe03FkCaO2Nfz0jsf8gzYD7c/orSLln2Z/Nq/j1QNik69+LH3kjFaV5+l19cuwP3
+ d7ByvBTBgN0gBjd5P0Cz1AwlEjbgY1x7h8wjd9CNJV/MqV7bEqg2oYPqWN2/9p2Y++8Ke6
+ jfEOaujCNSIGWIocC9ZGCzm7ZeBSFIKIl48r/nR4lEnO9BQcQa+IKYURRhTNTTfiK0lVoQ
+ 55WBSfffMz0saoZjIyDSX3aUfaR8ARh9hW1rWSb9N42ZU8DMWwpaF/lIICUOKSipMkUZsx
+ xBSuI9RRH6Bt1y0c9MtX7eMfQ2yxchD4/w0wC1XuPIvxUbkwlNA648TaRGVnJJ8ZxU2sbj
+ EdlV3SDo9mRtRh+xz483OAAIM7A4KzmNKqLzo6K1iX4FJ/3liqv2w=
+Received-SPF: pass client-ip=2a01:b747:3001:201::5c;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,36 +95,42 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Boden Randin <bodenrandin1@gmail.com>
+Prerequisite for VM save/restore.
 
-whpx_get_registers_for_vmexit only refreshes GPRs, RIP and RFLAGS.
-
-x86_update_hflags() depends on state not refreshed here, while the code
-using the fast runtime state does not depend on the hflags it recomputes.
-
-Signed-off-by: Boden Randin <bodenrandin1@gmail.com>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 2 --
- 1 file changed, 2 deletions(-)
+ target/i386/whpx/whpx-apic.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index d13513985c..65e56d32fa 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -772,8 +772,6 @@ static void whpx_get_registers_for_vmexit(CPUState *cpu, WHPXStateLevel level)
-     rflags_to_lflags(env);
- 
-     assert(idx == RTL_NUMBER_OF(whpx_register_names_for_vmexit));
--
--    x86_update_hflags(env);
+diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
+index cc272f82a5..efdedbcd77 100644
+--- a/target/i386/whpx/whpx-apic.c
++++ b/target/i386/whpx/whpx-apic.c
+@@ -242,6 +242,11 @@ void whpx_apic_get(APICCommonState *s)
+     whpx_get_apic_state(s, &kapic);
  }
  
- static void whpx_get_legacy_fp_registers(CPUState *cpu, WHPXStateLevel level)
++static void whpx_apic_pre_save(APICCommonState *s)
++{
++    whpx_apic_get(s);
++}
++
+ static void whpx_apic_post_load(APICCommonState *s)
+ {
+     run_on_cpu(CPU(s->cpu), whpx_apic_put, RUN_ON_CPU_HOST_PTR(s));
+@@ -338,6 +343,7 @@ static void whpx_apic_class_init(ObjectClass *klass, const void *data)
+     k->set_base = apic_set_base;
+     k->set_tpr = whpx_apic_set_tpr;
+     k->get_tpr = whpx_apic_get_tpr;
++    k->pre_save = whpx_apic_pre_save;
+     k->post_load = whpx_apic_post_load;
+     k->vapic_base_update = whpx_apic_vapic_base_update;
+     k->external_nmi = whpx_apic_external_nmi;
 -- 
 2.54.0 (Apple Git-157)
 

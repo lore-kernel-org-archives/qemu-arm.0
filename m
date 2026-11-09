@@ -1,98 +1,56 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F4A3606A321
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 13:07:11 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ZlLUgLw+
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 43012606A32A
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 13:53:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQP4R-0006Er-J7; Mon, 09 Nov 2026 08:05:59 -0500
+	id 1xQPo7-0003Rq-B2; Mon, 09 Nov 2026 08:53:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agarwaljayesh03@gmail.com>)
- id 1xQNsu-0001mu-NX
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 06:50:00 -0500
-Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <agarwaljayesh03@gmail.com>)
- id 1xQNst-0001XN-60
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 06:50:00 -0500
-Received: by mail-dy1-x1329.google.com with SMTP id
- 5a478bee46e88-36fc0a3fe93so1569868eec.0
- for <qemu-arm@nongnu.org>; Mon, 09 Nov 2026 03:49:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1794224997; x=1794829797; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=AlQmBPEd0JcShGBzMn5GnTY6hinG9Q58GkeEbJMACAM=;
- b=ZlLUgLw+nk3MMtWlOMXSqp/7aVRnSC5OkGan1fbcbuAWXaed7sd5KBt0J8pJkMA5wb
- SBD+GlGWSNAJrKXLjuHmRWLhg3NPz+LUUGkCzV7qVXXoZcy692ucPjtg8LtDjasP2yQd
- MQxw1Lk2RU5QpCBLI462HnxJC2U7Tz7TQHrZCI+RB/vL3HzM7XHrBk+4up0mQ+Y05kGc
- TK14db8YiMCsyzRK6NrYickNd1VRVs72jhO1xFIGnWyKlor9Ap3vYcIFsaVG5o3wgR0g
- FrghG/PJcOoTSClWBFUEuEY0mvUJWAgwfOCSix06jdi6NJ2hzuB7XXGZkO50TH2Vv1Zx
- 1ORw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794224997; x=1794829797;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=AlQmBPEd0JcShGBzMn5GnTY6hinG9Q58GkeEbJMACAM=;
- b=kiHgmaAzd983I0F89bJ1frdh2OVPBxVjohEGe3/lqKPxMskOi5IjuSL6+Zm6TfKDox
- bDkFTDfH3BoFmPAb2QhPsYq7/Oc1fZNr4IQjMXeddqF3RIp3SX0BEpYbi9ZR/c2Afx0x
- AzWYY7YxQT6TI2+U4vBLZ/id5ak6BABxpkt3gYYinQKer6KSc+UCd8lTRFbbXsuYs4Ny
- 9MKrxGR4enx0EhrCCQHyRsgX52xmBzpgQtIvRgRcJjtu2kdVatoGka4F0nbs5Q35T91v
- KRs0J9QL4okkVx4Krx1AbrSKhyPr6kXjp6OfWpjkSHFVRDo7qCJFUklNPL2IFqIv7yzK
- oroQ==
-X-Forwarded-Encrypted: i=1;
- AL+hErFFKotIuZonBCbF8xTGAN2hwizJj2H/BouGo2fsGN7uIz7R7LwFAOXxIlM539tLqABK4qjGteabAw==@nongnu.org
-X-Gm-Message-State: APuU4Z+fo5UtbDFnqzBnz0ujFuFbhCm0qeYpB/a/jtXHI8dvpjXp2z6N
- 0t5U8Uy+y3yNHpegBPIuqMuUU/y+nNrWr4i1upnEmigReRhu5pPDBgzD
-X-Gm-Gg: AYBFou1qYLU2frr369PbwLn1udCaiX+uCHtSoMTzy6hvpEFGtdMwhfmgKOZubKIvAZz
- OsUBl6Tcr8Cpx7x/kuEhckeab2NFqWl9fH58VX20p022iYsteIBXD5E7nTHXczGG4ujNU0SKDlP
- GGjETxezl7EqCPL+QvdE4QJiOkI76/TYyGyDDrvR7xn95ALDI2YthXXjUHWqBipo6mp/no/APf/
- G2Fs3C0R3Td5+Y78imgunDZR9dyNBdDb9WWkZ0KahJZnIDEMkfKmsRDRENSSBiwVCkoljQ0AXzA
- 18HNgZep1RdHGeY8w/zfeTBNauo2RKqfVapPELaGsDSleSHAdugOUjbzaDjO8iZDgwUzOgSdOW1
- XgZDVf+bm/B1FFxzGX42H1QzImz1dqES4oUiqtcHUgJC2El4P7v2lPhqm5YrjX1xBfachkkR9ag
- XgbB1po6DTOXq1GLH5yIF5rOmYlEEN+EJbz2fWNHOKYVatjpdo+7f9BX7AJ1yUXTt49/dXabpQs
- 2ZcbAIJif6EW5xxH26q/98/F0x/+wMSioPppMpGQ+Dh9Udq60ABSXIMqhdFVZZLy1YimMhrsfJ7
- Aj60cZJJ2cWm8lQbrmmL2c28+H+igOzG6ZbQbklIunvDyrWHsvRAm13oAUZfyGsIlK+rd0A5qOe
- xKIoPKL/X
-X-Received: by 2002:a05:7022:3c0b:b0:160:a80f:3ed2 with SMTP id
- a92af1059eb24-1b39fe886e0mr5244869c88.10.1794224995418; 
- Mon, 09 Nov 2026 03:49:55 -0800 (PST)
-Received: from LinuxMachine.bits-hyderabad.ac.in ([182.75.45.16])
- by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1b375603ee8sm12302639c88.9.2026.11.09.03.49.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2026 03:49:54 -0800 (PST)
-From: Jayesh Agarwal <agarwaljayesh03@gmail.com>
-To: s23adhik@csclub.uwaterloo.ca
-Cc: peter.maydell@linaro.org, philmd@oss.qualcomm.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] bcm2838: Add GIC-400 timer interupt connections
-Date: Mon,  9 Nov 2026 17:19:44 +0530
-Message-ID: <20261109114944.21801-1-agarwaljayesh03@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
-References: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1xQPo5-0003RU-Mr; Mon, 09 Nov 2026 08:53:10 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1xQPo3-0006kN-7f; Mon, 09 Nov 2026 08:53:09 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 1B68560C38C;
+ Mon, 09 Nov 2026 14:53:02 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id 4x6pkaAiNcZE; Mon,  9 Nov 2026 14:53:00 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 0693660C2B6; Mon, 09 Nov 2026 14:53:00 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 04C9913991F;
+ Mon, 09 Nov 2026 14:53:00 +0100 (CET)
+Date: Mon, 9 Nov 2026 14:52:59 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Markus Armbruster <armbru@redhat.com>
+cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-devel@nongnu.org, 
+ marcandre.lureau@redhat.com, milesg@linux.ibm.com, qemu-ppc@nongnu.org, 
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH 4/8] hw/gpio/pca9554: New abstract base "pca9554-base"
+In-Reply-To: <87ld725mkm.fsf@pond.sub.org>
+Message-ID: <280ce4a2-5902-5268-71cd-40e44a0e2e73@eik.bme.hu>
+References: <20261106110440.3552588-1-armbru@redhat.com>
+ <20261106110440.3552588-5-armbru@redhat.com>
+ <463635be-2321-49e6-852d-080aa00ce40d@nutanix.com>
+ <87ld725mkm.fsf@pond.sub.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1329;
- envelope-from=agarwaljayesh03@gmail.com; helo=mail-dy1-x1329.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 09 Nov 2026 08:05:57 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,20 +61,245 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Sourojeet, Peter,
+On Mon, 9 Nov 2026, Markus Armbruster wrote:
+> Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
+>
+>> On 06/11/2026 11:04, Markus Armbruster wrote:
+>>
+>>> Commit 5eceb48bbe86 (hw/gpio: pca9554: add PCA9536 support) made type
+>>> "pca9535" a child of concrete type "pca9555".  This is inconvenient
+>>> for the next commit.  Make them both children of new abstract type
+>>> "pca9554-base".
+>>>
+>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>>> ---
+>>>  include/hw/gpio/pca9554.h |  1 +
+>>>  hw/gpio/pca9554.c         | 55 +++++++++++++++++++++++----------------
+>>>  2 files changed, 33 insertions(+), 23 deletions(-)
+>>>
+>>> diff --git a/include/hw/gpio/pca9554.h b/include/hw/gpio/pca9554.h
+>>> index 1b33a8a752..0d841ff017 100644
+>>> --- a/include/hw/gpio/pca9554.h
+>>> +++ b/include/hw/gpio/pca9554.h
+>>> @@ -8,6 +8,7 @@
+>>>  #ifndef PCA9554_H
+>>>  #define PCA9554_H
+>>>
+>>> +#define TYPE_PCA9554_BASE "pca9554-base"
+>>>  #define TYPE_PCA9554 "pca9554"
+>>>  #define TYPE_PCA9536 "pca9536"
+>>>
+>>> diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
+>>> index caa73f63c9..1362b605c2 100644
+>>> --- a/hw/gpio/pca9554.c
+>>> +++ b/hw/gpio/pca9554.c
+>>> @@ -26,7 +26,7 @@
+>>>  #define PCA9554_PIN_COUNT 8
+>>>  #define PCA9536_PIN_COUNT 4
+>>>
+>>> -OBJECT_DECLARE_TYPE(PCA9554State, PCA9554Class, PCA9554)
+>>> +OBJECT_DECLARE_TYPE(PCA9554State, PCA9554Class, PCA9554_BASE)
+>>>
+>>>  struct PCA9554State {
+>>>      /*< private >*/
+>>> @@ -58,7 +58,7 @@ static const char *pin_state[] = {"low", "high"};
+>>>
+>>>  static void pca9554_update_pin_input(PCA9554State *s)
+>>>  {
+>>> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
+>>> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
+>>>      int i;
+>>>      uint8_t config = s->regs[PCA9554_CONFIG];
+>>>      uint8_t output = s->regs[PCA9554_OUTPUT];
+>>> @@ -110,7 +110,7 @@ static uint8_t pca9554_read(PCA9554State *s, uint8_t reg)
+>>>
+>>>  static void pca9554_write(PCA9554State *s, uint8_t reg, uint8_t data)
+>>>  {
+>>> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
+>>> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
+>>>      uint8_t pin_mask = (1 << pc->pin_count) - 1;
+>>>
+>>>      /* Variants narrower than 8 bits ignore the unimplemented upper pins. */
+>>> @@ -134,14 +134,14 @@ static void pca9554_write(PCA9554State *s, uint8_t reg, uint8_t data)
+>>>
+>>>  static uint8_t pca9554_recv(I2CSlave *i2c)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(i2c);
+>>> +    PCA9554State *s = PCA9554_BASE(i2c);
+>>>
+>>>      return pca9554_read(s, s->pointer & 0x3);
+>>>  }
+>>>
+>>>  static int pca9554_send(I2CSlave *i2c, uint8_t data)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(i2c);
+>>> +    PCA9554State *s = PCA9554_BASE(i2c);
+>>>
+>>>      /* First byte sent by is the register address */
+>>>      if (s->len == 0) {
+>>> @@ -156,7 +156,7 @@ static int pca9554_send(I2CSlave *i2c, uint8_t data)
+>>>
+>>>  static int pca9554_event(I2CSlave *i2c, enum i2c_event event)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(i2c);
+>>> +    PCA9554State *s = PCA9554_BASE(i2c);
+>>>
+>>>      s->len = 0;
+>>>      return 0;
+>>> @@ -173,7 +173,7 @@ static void pca9554_set_ext_state(PCA9554State *s, int pin, int level)
+>>>  static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
+>>>                              void *opaque, Error **errp)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(obj);
+>>> +    PCA9554State *s = PCA9554_BASE(obj);
+>>>      int pin, rc;
+>>>      uint8_t state;
+>>>
+>>> @@ -182,7 +182,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
+>>>          error_setg(errp, "%s: error reading %s", __func__, name);
+>>>          return;
+>>>      }
+>>> -    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
+>>> +    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
+>>>          error_setg(errp, "%s invalid pin %s", __func__, name);
+>>>          return;
+>>>      }
+>>> @@ -200,7 +200,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
+>>>  static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+>>>                              void *opaque, Error **errp)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(obj);
+>>> +    PCA9554State *s = PCA9554_BASE(obj);
+>>>      int pin, rc, val;
+>>>      uint8_t state, mask;
+>>>      g_autofree char *state_str = NULL;
+>>> @@ -213,7 +213,7 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+>>>          error_setg(errp, "%s: error reading %s", __func__, name);
+>>>          return;
+>>>      }
+>>> -    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
+>>> +    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
+>>>          error_setg(errp, "%s invalid pin %s", __func__, name);
+>>>          return;
+>>>      }
+>>> @@ -274,8 +274,8 @@ static const VMStateDescription pca9554_vmstate = {
+>>>
+>>>  static void pca9554_reset(DeviceState *dev)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(dev);
+>>> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
+>>> +    PCA9554State *s = PCA9554_BASE(dev);
+>>> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
+>>>      uint8_t pin_mask = (1 << pc->pin_count) - 1;
+>>>
+>>>      s->regs[PCA9554_INPUT] = pin_mask;
+>>> @@ -292,7 +292,7 @@ static void pca9554_reset(DeviceState *dev)
+>>>
+>>>  static void pca9554_initfn(Object *obj)
+>>>  {
+>>> -    PCA9554Class *pc = PCA9554_GET_CLASS(obj);
+>>> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(obj);
+>>>      int pin;
+>>>
+>>>      for (pin = 0; pin < pc->pin_count; pin++) {
+>>> @@ -308,8 +308,8 @@ static void pca9554_initfn(Object *obj)
+>>>
+>>>  static void pca9554_gpio_in_handler(void *opaque, int pin, int level)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(opaque);
+>>> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
+>>> +    PCA9554State *s = PCA9554_BASE(opaque);
+>>> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
+>>>
+>>>      assert((pin >= 0) && (pin < pc->pin_count));
+>>>      pca9554_set_ext_state(s, pin, level);
+>>> @@ -317,8 +317,8 @@ static void pca9554_gpio_in_handler(void *opaque, int pin, int level)
+>>>
+>>>  static void pca9554_realize(DeviceState *dev, Error **errp)
+>>>  {
+>>> -    PCA9554State *s = PCA9554(dev);
+>>> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
+>>> +    PCA9554State *s = PCA9554_BASE(dev);
+>>> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
+>>>
+>>>      if (!s->description) {
+>>>          s->description = g_strdup(object_get_typename(OBJECT(dev)));
+>>> @@ -333,11 +333,10 @@ static const Property pca9554_properties[] = {
+>>>      DEFINE_PROP_BOOL("hw-dir", PCA9554State, hw_dir, false),
+>>>  };
+>>>
+>>> -static void pca9554_class_init(ObjectClass *klass, const void *data)
+>>> +static void pca9554_base_class_init(ObjectClass *klass, const void *data)
+>>>  {
+>>>      DeviceClass *dc = DEVICE_CLASS(klass);
+>>>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>>> -    PCA9554Class *pc = PCA9554_CLASS(klass);
+>>>
+>>>      k->event = pca9554_event;
+>>>      k->recv = pca9554_recv;
+>>> @@ -346,26 +345,36 @@ static void pca9554_class_init(ObjectClass *klass, const void *data)
+>>>      device_class_set_legacy_reset(dc, pca9554_reset);
+>>>      dc->vmsd = &pca9554_vmstate;
+>>>      device_class_set_props(dc, pca9554_properties);
+>>> +}
+>>> +
+>>> +static void pca9554_class_init(ObjectClass *klass, const void *data)
+>>> +{
+>>> +    PCA9554Class *pc = PCA9554_BASE_CLASS(klass);
+>>>
+>>>      pc->pin_count = PCA9554_PIN_COUNT;
+>>>  }
+>>>
+>>>  static void pca9536_class_init(ObjectClass *klass, const void *data)
+>>>  {
+>>> -    PCA9554Class *pc = PCA9554_CLASS(klass);
+>>> +    PCA9554Class *pc = PCA9554_BASE_CLASS(klass);
+>>>
+>>>      pc->pin_count = PCA9536_PIN_COUNT;
+>>>  }
+>>>
+>>>  static const TypeInfo pca9554_types[] = {
+>>>      {
+>>> -        .name          = TYPE_PCA9554,
+>>> +        .name          = TYPE_PCA9554_BASE,
+>>>          .parent        = TYPE_I2C_SLAVE,
+>>>          .instance_init = pca9554_initfn,
+>>>          .instance_size = sizeof(PCA9554State),
+>>> -        .class_init    = pca9554_class_init,
+>>> +        .class_init    = pca9554_base_class_init,
+>>>          .class_size    = sizeof(PCA9554Class),
+>>> -        .abstract      = false,
+>>> +        .abstract      = true,
+>>> +    },
+>>> +    {
+>>> +        .name          = TYPE_PCA9554,
+>>> +        .parent        = TYPE_PCA9554_BASE,
+>>> +        .class_init    = pca9554_class_init,
+>>>      },
+>>>      {
+>>>          .name          = TYPE_PCA9536,
+>>
+>> The basic change looks good to me, however I found it tricky to follow
+>> given that PCA9554Class is now related to PCA9554_BASE_CLASS() and
+>> PCA9554State is now related to PCA9554_BASE().
+>>
+>> Would it make sense to rename PCA9554Class to PCA9554BaseClass and
+>> PCA9554State to PCA9554BaseState here? I think it would help make the
+>> hierarchy easier to follow.
+>
+> I considered it when I wrote this patch, then decided not to, to
+> minimize churn and keep the identifiers short.  I'm fine either way.
 
-There has not been any follow up since March 2025. I would like to pick 
-it up using the TYPE_SPLIT_IRQ approach that Peter described, as done 
-for I2C in commit fb3e0557. Your work will be credited. However, if you 
-are still working on it, I will step back.
+How about calling the base class PCA95xx or similar to keep it both short 
+and show it belongs to both child classes?
 
-Thanks,
-Jayesh Agarwal
+Regards,
+BALATON Zoltan
 

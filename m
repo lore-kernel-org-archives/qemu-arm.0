@@ -1,78 +1,111 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2DB9E606A326
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 10:25:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28298606A31C
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 10:28:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=IF4NBCNc
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=KWBSwk8o
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQMYo-0002n9-4a; Mon, 09 Nov 2026 05:25:10 -0500
+	id 1xQMcF-0003oW-PQ; Mon, 09 Nov 2026 05:28:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xQMYm-0002mQ-HM
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 05:25:08 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xQMYk-00023M-6F
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 05:25:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1794219905;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=BZ/FKY7orf9E3UkMV9wuLZh0UZYjBNrO1SeCCD5rRKs=;
- b=IF4NBCNcgEttF7s/ydzCRSXnyeL56rOrh0e+1K8fDYpmcbAaY7Qkm9Ol+50zn7OwFRLttQ
- oK+8evH+CFYnitODeEbR75oDlDwYKVXUWEldWOC5kji8cRMtVzWvm7RGUaMhil8CMk4NE4
- 19/OHYmLCkiZ4yELx9OUJjHftmdZnqM=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-533-eFX_bU0hP3--12oTPPjR7g-1; Mon,
- 09 Nov 2026 05:25:02 -0500
-X-MC-Unique: eFX_bU0hP3--12oTPPjR7g-1
-X-Mimecast-MFC-AGG-ID: eFX_bU0hP3--12oTPPjR7g_1794219901
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B42CC1800350; Mon,  9 Nov 2026 10:25:00 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.7])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0DDA4195608B; Mon,  9 Nov 2026 10:25:00 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BF12721E6A04; Mon, 09 Nov 2026 11:24:57 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Cc: qemu-devel@nongnu.org,  marcandre.lureau@redhat.com,
- milesg@linux.ibm.com,  qemu-ppc@nongnu.org,  qemu-arm@nongnu.org
-Subject: Re: [PATCH 4/8] hw/gpio/pca9554: New abstract base "pca9554-base"
-In-Reply-To: <463635be-2321-49e6-852d-080aa00ce40d@nutanix.com> (Mark
- Cave-Ayland's message of "Mon, 9 Nov 2026 09:02:38 +0000")
-References: <20261106110440.3552588-1-armbru@redhat.com>
- <20261106110440.3552588-5-armbru@redhat.com>
- <463635be-2321-49e6-852d-080aa00ce40d@nutanix.com>
-Date: Mon, 09 Nov 2026 11:24:57 +0100
-Message-ID: <87ld725mkm.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xQMbz-0003mz-66
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 05:28:28 -0500
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xQMbx-0002Ce-MD
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 05:28:26 -0500
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-67bfdab8f20so309095d50.2
+ for <qemu-arm@nongnu.org>; Mon, 09 Nov 2026 02:28:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794220104; cv=none;
+ d=google.com; s=arc-20260327;
+ b=HaiTpJOLuFh8nNIQpt4lkpusa0ITbYV6KxIyhHOWwGQt1hi8ZlU1ZGrSMctV8QJRS3
+ wgTWhjbLHN6qSJ8SmglJDfTFGVX5hHg40fF7G7B21orMQEcT29iad+beoJElo8BHvna0
+ vvVc0khoBwExjTBJ7tFngElwJcHaINIYrkeNADvZA7u5FYZEOrWUkAHpmpZCsQWqa/QV
+ ad4tpcFllrMYjtWa6nB4zUqVX/JErJnvzYNIj9DkUaErjqzMD2kca+UHctR4o6a+0s75
+ l31qrPJPCqPKUwSb3NU4M6+0alDj5lOd0mFVbN1FUucqth3IOSNts5/rr6EYeZXZusYa
+ pAuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=EkbMbvfKxbPpEJofGKP0L5Rx5eYXZ7QObRfE6GwoIAY=;
+ fh=Lk1vrqCzdR/2Vw/x+macVnp2oeZ7qD/tZ9eZofFcJBQ=;
+ b=FU1CDpsD/iup4WRyCGfkAIWJks3zPDVTzu7stGafM4cKsHOMWNwZ2UihBD/tegzugR
+ paJ82cOtOw5+ZMCmXbnH1lIFFckCB6gbL9mhMmlNorP8ZM87CiBUNqwM9QwcrhyhWDMR
+ ApKkd4BPFro6kdSiVwOQL4ospD7Hf6o89J/jjKTYzjGS2KNgji8e5kvAMFL+YkEaMdes
+ CLXvg3oY0QvVb6Tjk4k+g0cBrn0sQoMHk/5nuVYLchTqEnpWCni87H2XWBZfmsIng7AT
+ /MbAqWdcHmeeEJh0iHfU37ZdVIFXBrlkewMXdN8D2UEIrMgUI1bXSzD40+QgaP/OtOLH
+ 7pSw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1794220104; x=1794824904; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=EkbMbvfKxbPpEJofGKP0L5Rx5eYXZ7QObRfE6GwoIAY=;
+ b=KWBSwk8oyXT9AOb1whlyPmoPIE1Q1ohEFB1N+owF2o4BAmBKrFrC2sSD8bnZfbzWEc
+ p7nD9ldUSw9k8RwFgydCK1iQHJZo5NhZyl0IPgBoC4ebabpxCPc7Py5EWh8Rwz9VFP7e
+ u7QmJcwfjQXCiDwfv1LpUVL0x21ePxeb8Sq+ILWdk+eOnejyMFd8ctEM0JSzCuvZNJ1D
+ e/1U5n42+qqmpmqn7kK8VMy7Z1DrQ8WteibmeV/9e304G/vrQGXLwFbD9DeK1aR5H6zQ
+ +UAZcYjjsBZ8gJvP9QMLrJ4XuePcu7hwsie9EcqxLri4cWgaIyKOZq/SrsheTbxw1tmQ
+ XEAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1794220104; x=1794824904;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=EkbMbvfKxbPpEJofGKP0L5Rx5eYXZ7QObRfE6GwoIAY=;
+ b=yu7oV+T7DCh8XlNZTzZa/Mqah/a/Nh+pjz3AEPCF2YEHUtZp3wvw1vQqswZwaeecAh
+ 92xeIWXBzdXSqCIDe/2JMHmstGrSUM9ojxeNSxzJ1piqvgCtaXxREqj2jiTNp7Dj8aM7
+ s8uQl01NV0XdmBDs5/8ARVjNXsWIY4E6XHpoYJvl4obdPISB1h+gtTY8R7+s4sBeceL4
+ CWgUA+mZCMy8fcRZot2bDDupkI9yHFD6yUK1o95DzYAzO6RM5j6Th9oCez9vGj7bVlMU
+ Az6rz1WNP4mAHbepu5qeTpV0AsFmPRGLpxbPC/xW8D4uFyPKBSmTtTyldp+uL+AOfa2H
+ vXSw==
+X-Forwarded-Encrypted: i=1;
+ AL+hErHfPXKOntt3JBAlgX7lCtEIBNY86lwnHjq8K4MkY2ry/mRoU0VTaXgUwY+moDcxZXBrr0u9n9UWoQ==@nongnu.org
+X-Gm-Message-State: APuU4Z+iVtLNZby6bFGauzAu1xR6l6tuDOEoJJB0UOxG/P6xgKDh4vGG
+ CdR0JQYl+7WBRz/6Ntsham5/s0dadTxHlI924cDpj3Y+O//y/QHs1ThqHhwoUyBrzL3plLfXyXB
+ 3sJ7odf8WU3ivnLnLR+z3jOj4OhRSCKV+2nXoZJKqSH/khMdi0KuB0XA=
+X-Gm-Gg: AYBFou2ZWePmFgLgiKatnk5+FQkgnxvyLQ0TYnvzg5DYjVWhKe6zx5V37s6B5FWDBwf
+ zY5KYd2HCfSY97PvPLfrRzhfQS8cg+k5jjy5zZSojBaEtJyr6zkTUs3UzK5GWXRuMUhqVXp3k5B
+ ljo1YE4VpICALMqwuXmBJJi7qWMvLYYvssR16mkRd8IsZHzOoDl0kN4SbqThSGth2dOXKDE9/Hz
+ JMvZFicG4MGEvUSElrZV43G4ZKHBtIx8OPyYk+q2G8Kiu4Zc4kVgR82ZMHzf9yMY7IbG6PpZfnX
+ XVXkOCYexPfaLaeZ/HogvNtpLwtyMGQHkIyDYuKeuIo01fT94+I5jIxci4twXEdzPEtWE3ap2c1
+ KQxwfirMQ4uTa+6Q+3I4pU3Aqd4XTHElCc9BP30GC0JQmbhWK8rVqG+J4CFEia2dS0+gMVaV5HS
+ /n1PPqvcwbfpjddIRo1Ip4
+X-Received: by 2002:a05:690e:4807:b0:67c:2804:faba with SMTP id
+ 956f58d0204a3-67c3d96dcbbmr1175686d50.23.1794220104205; Mon, 09 Nov 2026
+ 02:28:24 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: msJMuZWSDMFd0YweJ00rYA8xAHwp23Z7CiBd4cEVV8c_1794219901
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20261108-armv8-exception-return-clrex-v1-1-ec11079bf695@chrisnc.net>
+In-Reply-To: <20261108-armv8-exception-return-clrex-v1-1-ec11079bf695@chrisnc.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Nov 2026 10:28:12 +0000
+X-Gm-Features: AclHuK8ML64z4UUye3-l6-HYcStOD_pRmRhA3dzrpJJ7bNW9JY7ynTW4VaLsK-0
+Message-ID: <CAFEAcA_Xnyf8f0szzgZYYqqagEmTffg-E3_v7P20XveSvXWvBw@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Clear the local monitor on AArch32 (v8)
+ exception returns
+To: Chris Copeland <chris@chrisnc.net>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,240 +117,32 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
-
-> On 06/11/2026 11:04, Markus Armbruster wrote:
+On Mon, 9 Nov 2026 at 00:01, Chris Copeland <chris@chrisnc.net> wrote:
 >
->> Commit 5eceb48bbe86 (hw/gpio: pca9554: add PCA9536 support) made type
->> "pca9535" a child of concrete type "pca9555".  This is inconvenient
->> for the next commit.  Make them both children of new abstract type
->> "pca9554-base".
->> 
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->>  include/hw/gpio/pca9554.h |  1 +
->>  hw/gpio/pca9554.c         | 55 +++++++++++++++++++++++----------------
->>  2 files changed, 33 insertions(+), 23 deletions(-)
->> 
->> diff --git a/include/hw/gpio/pca9554.h b/include/hw/gpio/pca9554.h
->> index 1b33a8a752..0d841ff017 100644
->> --- a/include/hw/gpio/pca9554.h
->> +++ b/include/hw/gpio/pca9554.h
->> @@ -8,6 +8,7 @@
->>  #ifndef PCA9554_H
->>  #define PCA9554_H
->>  
->> +#define TYPE_PCA9554_BASE "pca9554-base"
->>  #define TYPE_PCA9554 "pca9554"
->>  #define TYPE_PCA9536 "pca9536"
->>  
->> diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
->> index caa73f63c9..1362b605c2 100644
->> --- a/hw/gpio/pca9554.c
->> +++ b/hw/gpio/pca9554.c
->> @@ -26,7 +26,7 @@
->>  #define PCA9554_PIN_COUNT 8
->>  #define PCA9536_PIN_COUNT 4
->>  
->> -OBJECT_DECLARE_TYPE(PCA9554State, PCA9554Class, PCA9554)
->> +OBJECT_DECLARE_TYPE(PCA9554State, PCA9554Class, PCA9554_BASE)
->>  
->>  struct PCA9554State {
->>      /*< private >*/
->> @@ -58,7 +58,7 @@ static const char *pin_state[] = {"low", "high"};
->>  
->>  static void pca9554_update_pin_input(PCA9554State *s)
->>  {
->> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
->> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
->>      int i;
->>      uint8_t config = s->regs[PCA9554_CONFIG];
->>      uint8_t output = s->regs[PCA9554_OUTPUT];
->> @@ -110,7 +110,7 @@ static uint8_t pca9554_read(PCA9554State *s, uint8_t reg)
->>  
->>  static void pca9554_write(PCA9554State *s, uint8_t reg, uint8_t data)
->>  {
->> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
->> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
->>      uint8_t pin_mask = (1 << pc->pin_count) - 1;
->>  
->>      /* Variants narrower than 8 bits ignore the unimplemented upper pins. */
->> @@ -134,14 +134,14 @@ static void pca9554_write(PCA9554State *s, uint8_t reg, uint8_t data)
->>  
->>  static uint8_t pca9554_recv(I2CSlave *i2c)
->>  {
->> -    PCA9554State *s = PCA9554(i2c);
->> +    PCA9554State *s = PCA9554_BASE(i2c);
->>  
->>      return pca9554_read(s, s->pointer & 0x3);
->>  }
->>  
->>  static int pca9554_send(I2CSlave *i2c, uint8_t data)
->>  {
->> -    PCA9554State *s = PCA9554(i2c);
->> +    PCA9554State *s = PCA9554_BASE(i2c);
->>  
->>      /* First byte sent by is the register address */
->>      if (s->len == 0) {
->> @@ -156,7 +156,7 @@ static int pca9554_send(I2CSlave *i2c, uint8_t data)
->>  
->>  static int pca9554_event(I2CSlave *i2c, enum i2c_event event)
->>  {
->> -    PCA9554State *s = PCA9554(i2c);
->> +    PCA9554State *s = PCA9554_BASE(i2c);
->>  
->>      s->len = 0;
->>      return 0;
->> @@ -173,7 +173,7 @@ static void pca9554_set_ext_state(PCA9554State *s, int pin, int level)
->>  static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
->>                              void *opaque, Error **errp)
->>  {
->> -    PCA9554State *s = PCA9554(obj);
->> +    PCA9554State *s = PCA9554_BASE(obj);
->>      int pin, rc;
->>      uint8_t state;
->>  
->> @@ -182,7 +182,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
->>          error_setg(errp, "%s: error reading %s", __func__, name);
->>          return;
->>      }
->> -    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
->> +    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
->>          error_setg(errp, "%s invalid pin %s", __func__, name);
->>          return;
->>      }
->> @@ -200,7 +200,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
->>  static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
->>                              void *opaque, Error **errp)
->>  {
->> -    PCA9554State *s = PCA9554(obj);
->> +    PCA9554State *s = PCA9554_BASE(obj);
->>      int pin, rc, val;
->>      uint8_t state, mask;
->>      g_autofree char *state_str = NULL;
->> @@ -213,7 +213,7 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
->>          error_setg(errp, "%s: error reading %s", __func__, name);
->>          return;
->>      }
->> -    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
->> +    if (pin < 0 || pin >= PCA9554_BASE_GET_CLASS(s)->pin_count) {
->>          error_setg(errp, "%s invalid pin %s", __func__, name);
->>          return;
->>      }
->> @@ -274,8 +274,8 @@ static const VMStateDescription pca9554_vmstate = {
->>  
->>  static void pca9554_reset(DeviceState *dev)
->>  {
->> -    PCA9554State *s = PCA9554(dev);
->> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
->> +    PCA9554State *s = PCA9554_BASE(dev);
->> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
->>      uint8_t pin_mask = (1 << pc->pin_count) - 1;
->>  
->>      s->regs[PCA9554_INPUT] = pin_mask;
->> @@ -292,7 +292,7 @@ static void pca9554_reset(DeviceState *dev)
->>  
->>  static void pca9554_initfn(Object *obj)
->>  {
->> -    PCA9554Class *pc = PCA9554_GET_CLASS(obj);
->> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(obj);
->>      int pin;
->>  
->>      for (pin = 0; pin < pc->pin_count; pin++) {
->> @@ -308,8 +308,8 @@ static void pca9554_initfn(Object *obj)
->>  
->>  static void pca9554_gpio_in_handler(void *opaque, int pin, int level)
->>  {
->> -    PCA9554State *s = PCA9554(opaque);
->> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
->> +    PCA9554State *s = PCA9554_BASE(opaque);
->> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
->>  
->>      assert((pin >= 0) && (pin < pc->pin_count));
->>      pca9554_set_ext_state(s, pin, level);
->> @@ -317,8 +317,8 @@ static void pca9554_gpio_in_handler(void *opaque, int pin, int level)
->>  
->>  static void pca9554_realize(DeviceState *dev, Error **errp)
->>  {
->> -    PCA9554State *s = PCA9554(dev);
->> -    PCA9554Class *pc = PCA9554_GET_CLASS(s);
->> +    PCA9554State *s = PCA9554_BASE(dev);
->> +    PCA9554Class *pc = PCA9554_BASE_GET_CLASS(s);
->>  
->>      if (!s->description) {
->>          s->description = g_strdup(object_get_typename(OBJECT(dev)));
->> @@ -333,11 +333,10 @@ static const Property pca9554_properties[] = {
->>      DEFINE_PROP_BOOL("hw-dir", PCA9554State, hw_dir, false),
->>  };
->>  
->> -static void pca9554_class_init(ObjectClass *klass, const void *data)
->> +static void pca9554_base_class_init(ObjectClass *klass, const void *data)
->>  {
->>      DeviceClass *dc = DEVICE_CLASS(klass);
->>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->> -    PCA9554Class *pc = PCA9554_CLASS(klass);
->>  
->>      k->event = pca9554_event;
->>      k->recv = pca9554_recv;
->> @@ -346,26 +345,36 @@ static void pca9554_class_init(ObjectClass *klass, const void *data)
->>      device_class_set_legacy_reset(dc, pca9554_reset);
->>      dc->vmsd = &pca9554_vmstate;
->>      device_class_set_props(dc, pca9554_properties);
->> +}
->> +
->> +static void pca9554_class_init(ObjectClass *klass, const void *data)
->> +{
->> +    PCA9554Class *pc = PCA9554_BASE_CLASS(klass);
->>  
->>      pc->pin_count = PCA9554_PIN_COUNT;
->>  }
->>  
->>  static void pca9536_class_init(ObjectClass *klass, const void *data)
->>  {
->> -    PCA9554Class *pc = PCA9554_CLASS(klass);
->> +    PCA9554Class *pc = PCA9554_BASE_CLASS(klass);
->>  
->>      pc->pin_count = PCA9536_PIN_COUNT;
->>  }
->>  
->>  static const TypeInfo pca9554_types[] = {
->>      {
->> -        .name          = TYPE_PCA9554,
->> +        .name          = TYPE_PCA9554_BASE,
->>          .parent        = TYPE_I2C_SLAVE,
->>          .instance_init = pca9554_initfn,
->>          .instance_size = sizeof(PCA9554State),
->> -        .class_init    = pca9554_class_init,
->> +        .class_init    = pca9554_base_class_init,
->>          .class_size    = sizeof(PCA9554Class),
->> -        .abstract      = false,
->> +        .abstract      = true,
->> +    },
->> +    {
->> +        .name          = TYPE_PCA9554,
->> +        .parent        = TYPE_PCA9554_BASE,
->> +        .class_init    = pca9554_class_init,
->>      },
->>      {
->>          .name          = TYPE_PCA9536,
+> A/R-profile exception returns prior to Armv8 do not clear the local
+> exclusive monitor, but in Armv8-A/R it is cleared.
 >
-> The basic change looks good to me, however I found it tricky to follow 
-> given that PCA9554Class is now related to PCA9554_BASE_CLASS() and 
-> PCA9554State is now related to PCA9554_BASE().
+> From the Arm Architecture Reference Manual for A-profile architecture
+> (DDI0487 M.d) =C2=A7E2.10.4 "Context switch support":
 >
-> Would it make sense to rename PCA9554Class to PCA9554BaseClass and 
-> PCA9554State to PCA9554BaseState here? I think it would help make the 
-> hierarchy easier to follow.
+>     "An exception return clears the local monitor."
+>
+> The same language appears in the R-profile manual (DDI111353 A.a)
+> =C2=A7B2.11.4 "Context switch support".
+>
+> Signed-off-by: Chris Copeland <chris@chrisnc.net>
 
-I considered it when I wrote this patch, then decided not to, to
-minimize churn and keep the identifiers short.  I'm fine either way.
+Oops, yes; we do this correctly for A64 exception return
+but missed that A32 returns need this updated.
 
+Applied to target-arm.next, thanks.
+
+-- PMM
 

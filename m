@@ -1,73 +1,73 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E67CE606A325
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 22:34:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 41381606A326
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 22:34:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=EnKBr0QC
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=cJ92RHnc
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQXuL-0005b3-6x; Mon, 09 Nov 2026 17:32:09 -0500
+	id 1xQXuN-0005cS-Jw; Mon, 09 Nov 2026 17:32:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xQXtb-0005Bb-Cz
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 17:31:27 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ id 1xQXu8-0005NB-5i
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 17:31:56 -0500
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xQXtW-0003lb-9q
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 17:31:22 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-8a4c72951b8so837151b3a.3
- for <qemu-arm@nongnu.org>; Mon, 09 Nov 2026 14:31:15 -0800 (PST)
+ id 1xQXu6-0003yy-Bc
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 17:31:55 -0500
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-8b904d10882so606513b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 09 Nov 2026 14:31:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794263475; x=1794868275; darn=nongnu.org;
+ d=linaro.org; s=google; t=1794263513; x=1794868313; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=+xgS/5jGpPMPPTrDvm4re8WWZpblsiEqi8yKxKF/m60=;
- b=EnKBr0QCG9mvSusgo/Ry0e1POvcpYFnoRQcnMCWDMgayhxd2IUdvSatvQae5RcaG1T
- hrRRWYZlW+dYJM2yYFVCA1D+D9wlIjzvGqFVjs4oadhgiXGaVcz4bCgpPFTWgwT7Q4w0
- vFyloSsRHUfh0h/4NTnW9eksQohkY1ZdK44AKla2wMVhUgDdpmYYT73Mx0LlKC1FdmEd
- 8RkFxnd34JksRG1gqgZu1wjfLvYRLQiGuRRthV1dwgCeg1mqgDSPafGEQ3cEkmWskOYb
- UvmlY1CaTF/4edVLzEuWznSl2ioG5X2MmMLeVGifL3b2V2Pm9GriN3K+wE5i+I8yGwjl
- ST7Q==
+ bh=y+u6Yq2Kmh1DA6S9pJr7fqXJM24Inl6fgSOuDXL+1Qo=;
+ b=cJ92RHncxdjAajMsxLiGX2SaMV7uNKgjTODrW2X4dXHE5JA+EthpyKxKzuSsOxKTad
+ jkRqa+xVSaVO4CyzoWueX3wqYzAXiohZM43tmGtKI1pIHQZE9B04Vpy+RYFydvBXK8Du
+ 3gLkoZI1rDuWneiG3MiDN+ctBU03RniicQXGDxYq4AQyKJy23h5c/QeVSHptYrnJnKgD
+ Z35onTSQJP7SBBWZ/2LPYoPNDfVyNU33PpuhjHWqL4usFNKvs617T5wCf8E1b0B3GUtj
+ mtUSH8gSrgoASy/JTQRtv04bJn2ywcxu9/3SN6MqZhVt8Lh4MN150SwDMiqsssWl0FwY
+ lnWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794263475; x=1794868275;
+ d=1e100.net; s=20260707; t=1794263513; x=1794868313;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=+xgS/5jGpPMPPTrDvm4re8WWZpblsiEqi8yKxKF/m60=;
- b=SOnIGa03+vjMohqeQFUQ7UKiRl3umzJByzGUStn01InYWpa/UPNt7Ulg9uuofvI3Of
- bXEqQaA1DQiL9ZYregBDO7pnYf9Tjks9J0am7P5/oyEyPE8Wd5+pJRyN+5m+EMih6Su+
- 3I7ePdsbC27gRa1lwu0iKJ9bbG+//v1rqpHbvIkL/TmK0zccirga6wltUmNF/7iL9KYe
- hR8F6qjrAvRaVZkwJFXa4cY1Nm6FqP5vo1UdltcFDYxsQGxsbEWZNrc/kn/+OQ0hCtsr
- 2iZkgpTsjvHc9kGuZq1l7hbypA51buwf95zPmVARaVfAoRcZiNypLBpIyD0XALV8hokv
- EEmQ==
+ bh=y+u6Yq2Kmh1DA6S9pJr7fqXJM24Inl6fgSOuDXL+1Qo=;
+ b=CBD1w3SEEwHXxU6i97sNjerbxq9BZh40bsPpW7LhJurb6btoFLau+1RN7TtMrXJ9Ce
+ KrJA8rrPVopQMEvjilJg2hjlbV2weUYY4yw0HyqYrzUOos55FIfSF+52dVDbfgdnk9bb
+ nmd0rJj0QwKxhTv5teANEY2SJUqKsAhUuKCFH9uFOilZwsZgVNchRpDPZ129dEl3K9rZ
+ vcVExQghoc4yr2NWf8KbEJW1l4WIqUI+/zEytA4L8mucj4xTxVv3u6t0yksmBNIenikI
+ +UoZL5BvvEfuqgruK99BB8hz/zucJTltT/lBtmuyVcm4a0YYtLmNwwIsnRspZifaRlaQ
+ l+8g==
 X-Forwarded-Encrypted: i=1;
- AL+hErGVdt79q5KWCPVZttE/NQQWbjrhyzelzb2xyrXZGHs1HTJ/e/Qb8eaaIxQJnmM6aTKtsxZ2bB9rig==@nongnu.org
-X-Gm-Message-State: APuU4Z8GZBN5XmQhk2HvK3nEUYTrggc+xRV9Rq8ukFm2OIpuubCPUgb2
- L+/yMljQ8+I23cKRZZkuywbCCjhiY7ZA7pTYBDJy82WLdLaaFJIQzu6kIHuM3f9goDc=
-X-Gm-Gg: AYBFou2VsdgaNLs2I68cox7FazID6FHaQ0shO+9YGTCqR1zfl1LfctB5SIiQDq5Mke8
- elaVpzBlMhgUJL30fUqDsf4GE4Z2goXGQc4qZChYHrR6Unr5spV1zLHr6OdQ1AO/F63OkSW7hfe
- /JCUas2pK/0p8nCyaBVtVmzfR3/bYMLf/SkzXzfG0XfvVjQ7AjQ04HRmFlOUMZycnTkk13yonME
- I/9j0Vm5CBCiGbBz2JcPFy+1w0634rBjgCZ0oZkSgOOFnGog0KKCXS7F7TSLElpOltt3J6oS92x
- 7+lo0mVz8M18dYsKMj0J7FJCVjg3aSeNkh7ggsTi1LKPsnHy4kv73RbQ/Uvw0wBy4rcdxVSqOee
- cMrCcJjnOyAsKtI5y9/Xu+73mHGL0UbDTdpHi83yNYOpP2vXzPM+1iaEUYEbPuiAijdFi2iqxh8
- JTu+toCzCH4O0n4Zxv4GG//5Hg3CBccXKDmx5Mz/G0MPx8oU51NqmJbL1EYkpiUBz2meORCtRvH
- FF77iLjNCjxFM+TD6VOEgKm8U9WaLpCyAWaIfJzfzFfLZk7TUotazeB8/ryIgBuevo5wOEqNUdo
- G5yy/l9dAJC0iEy/dN+E3+ukgniro+eVbbZ2ftKgUPFTcmY60GOWlRWx+Dxl7mUQs5y6lfq0v7I
+ AL+hErFFY5UcRB5qA3cPN2KQ0l28rsLVEnOO29/8LviQfz/Kes9WySwG0cC+3m27SaFTa+SX0NtKvDdDtw==@nongnu.org
+X-Gm-Message-State: APuU4Z/c9/8O+9eWOmHlKlTJYqNeLTbTiN5E0sJ9CXyOYdWEUkZbF+co
+ 8o0fuqxMfaCSkBV8YY387GGsvPHfisP9MICpAu7OwiZrsjsuSm5ooPdgnAnzvmuxGE4=
+X-Gm-Gg: AYBFou2uH23LIWxu6T5dt3+zYECzJldisEpYyx+QOsUvJvtgH8eStlDHfJDz/2ZLv9Z
+ K1zR6veQ1KSQkoA3Ghrf+BTnnR9uIWLa4JOizV3baQ5PX7iHeHuQG9rRRu0m5QW/6pyws8jkBmp
+ cFrs5dH/oNzp2rrm3lBDWCDsSGt/UGCrfnOAAb8g+8rgGXJJElNv0Ke8uB2V6stmSa2vs/q45lM
+ 4hxN4eGBQEI0YBG4QD4Gxk0GvQpLY3B8/jBo8t2J2qzdfJkHqIMwLTyqskKmUNacatQP8JMjCeb
+ 10BpPMlCt1VMjYuZZeELJliMfZtY5gj3KnvkVPRwjpq0bZEXpQEcFtODeWrfUidu4gKN9zsnT7G
+ Lx8UPFZVDda6rKAhvTJZ+8py3sVRjoOKCw7ji9eV8fzkzTgKg4ypaaP5pWNc9BaWnIrwRjMvaPn
+ 4dmcjCfoJdzrKvuZk9VaQGuD3/q2c5fietpKiqrbLXxStJpWH0S6TMHUalS89ZHysr1N9UKD7rx
+ NEp7hCVaDstpgx2D6mSTQPqpN+1LQh6nZ3uNVUGvDhA9A04InhZjIP3Xp2C+mMYJ46C0Q0YvQ4B
+ sNtlb0w2uCg5Pu/Kj7dWStcKwulL1FzCGzoWUv+STzDonSsrbHRM2qGGbTdJPMRF4wlhAnoSJws
  =
-X-Received: by 2002:a05:6a00:3c86:b0:893:8a6:3801 with SMTP id
- d2e1a72fcca58-8ba867aaca6mr892139b3a.24.1794263474712; 
- Mon, 09 Nov 2026 14:31:14 -0800 (PST)
+X-Received: by 2002:a05:6a20:549d:b0:3eb:afe0:20a6 with SMTP id
+ adf61e73a8af0-3f18e4cd7c9mr635019637.21.1794263512913; 
+ Mon, 09 Nov 2026 14:31:52 -0800 (PST)
 Received: from p14s.cg.shawcable.net ([2604:3d09:148c:c800:54d7:1b5:4356:16fb])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8baa506bca4sm165830b3a.0.2026.11.09.14.31.12
+ d2e1a72fcca58-8baa506bca4sm165830b3a.0.2026.11.09.14.31.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2026 14:31:13 -0800 (PST)
+ Mon, 09 Nov 2026 14:31:52 -0800 (PST)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -77,25 +77,24 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [PATCH v6 01/23] [NOT-FOR-MERGE] linux-headers: Add RME related
- definitions
-Date: Mon,  9 Nov 2026 16:30:48 -0600
-Message-ID: <20261109223110.1619504-2-mathieu.poirier@linaro.org>
+Subject: [PATCH v6 23/23] hw/arm/boot: Skip bootloader for confidential guests
+Date: Mon,  9 Nov 2026 16:31:10 -0600
+Message-ID: <20261109223110.1619504-24-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261109223110.1619504-1-mathieu.poirier@linaro.org>
 References: <20261109223110.1619504-1-mathieu.poirier@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,69 +109,90 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-This is a temporary patch intended for testing purposes only. It provides
-definitions related to supporting Realms by the QEMU-VMM.
+An independent verifier needs to reconstruct the content of guest memory
+in order to attest that it is running trusted code. To avoid having to
+reconstruct the bootloader generated by QEMU, skip this step and jump
+directly to the kernel, with the DTB address in x0 as specified by the
+Linux boot protocol [1].
+
+[1] https://docs.kernel.org/arch/arm64/booting.html
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- linux-headers/linux/kvm.h | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
+ hw/arm/boot.c | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
 
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index 7850bd464222..686c199e2558 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -689,14 +689,19 @@ struct kvm_enable_cap {
-  * address size for the VM. Bits[7-0] are reserved for the guest
-  * PA size shift (i.e, log2(PA_Size)). For backward compatibility,
-  * value 0 implies the default IPA size, 40bits.
-+ *
-+ * Bits[30-31] are reserved for the VM type
-  */
- #define KVM_VM_TYPE_ARM_IPA_SIZE_MASK	0xffULL
- #define KVM_VM_TYPE_ARM_IPA_SIZE(x)		\
- 	((x) & KVM_VM_TYPE_ARM_IPA_SIZE_MASK)
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 9b3d3558bcbc..da4f399a3026 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -731,7 +731,13 @@ static void do_cpu_reset(void *opaque)
+             if (cpu == info->primary_cpu) {
+                 AddressSpace *as = arm_boot_address_space(cpu, info);
  
-+#define KVM_VM_TYPE_ARM_NORMAL		0
-+#define KVM_VM_TYPE_ARM_REALM		(1UL << 30)
- #define KVM_VM_TYPE_ARM_PROTECTED	(1UL << 31)
- #define KVM_VM_TYPE_ARM_MASK		(KVM_VM_TYPE_ARM_IPA_SIZE_MASK | \
--					 KVM_VM_TYPE_ARM_PROTECTED)
-+					 KVM_VM_TYPE_ARM_PROTECTED | \
-+					 KVM_VM_TYPE_ARM_REALM)
+-                cpu_set_pc(cs, info->loader_start);
++                if (info->confidential)  {
++                    assert(is_a64(env));
++                    env->xregs[0] = info->dtb_start;
++                    cpu_set_pc(cs, info->entry);
++                } else {
++                    cpu_set_pc(cs, info->loader_start);
++                }
  
- /*
-  * ioctls for /dev/kvm fds:
-@@ -988,6 +993,7 @@ struct kvm_enable_cap {
- #define KVM_CAP_S390_HPAGE_2G 249
- #define KVM_CAP_PPC_COMPAT_CAPS 250
- #define KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES 252
-+#define KVM_CAP_ARM_RMI 253
+                 if (!have_dtb(info)) {
+                     set_kernel_args(info, as);
+@@ -821,7 +827,8 @@ static ssize_t arm_load_elf(struct arm_boot_info *info, uint64_t *pentry,
+ }
  
- struct kvm_irq_routing_irqchip {
- 	__u32 irqchip;
-@@ -1674,4 +1680,14 @@ struct kvm_pre_fault_memory {
- 	__u64 padding[5];
- };
+ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
+-                                   hwaddr *entry, AddressSpace *as)
++                                   hwaddr *entry, AddressSpace *as,
++                                   bool confidential)
+ {
+     const size_t max_bytes = LOAD_IMAGE_MAX_DECOMPRESSED_BYTES;
+     hwaddr kernel_load_offset = KERNEL64_LOAD_ADDR;
+@@ -873,7 +880,8 @@ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
+              * bootloader, we can just load it starting at 2MB+offset rather
+              * than 0MB + offset.
+              */
+-            if (kernel_load_offset < BOOTLOADER_MAX_SIZE) {
++            if (kernel_load_offset < BOOTLOADER_MAX_SIZE &&
++                !confidential) {
+                 kernel_load_offset += 2 * MiB;
+             }
+         }
+@@ -957,7 +965,8 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+     }
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) && kernel_size < 0) {
+         kernel_size = load_aarch64_image(info->kernel_filename,
+-                                         info->loader_start, &entry, as);
++                                         info->loader_start, &entry, as,
++                                         info->confidential);
+         is_linux = 1;
+         if (kernel_size >= 0) {
+             image_low_addr = entry;
+@@ -1098,8 +1107,11 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+         fixupcontext[FIXUP_ENTRYPOINT_LO] = entry;
+         fixupcontext[FIXUP_ENTRYPOINT_HI] = entry >> 32;
  
-+#define KVM_ARM_RMI_POPULATE	  _IOWR(KVMIO, 0xd7, struct kvm_arm_rmi_populate)
-+#define KVM_ARM_RMI_POPULATE_FLAGS_MEASURE     (1 << 0)
-+struct kvm_arm_rmi_populate {
-+	__u64 base;
-+	__u64 size;
-+	__u64 source_uaddr;
-+	__u32 flags;
-+	__u32 reserved;
-+};
-+
- #endif /* __LINUX_KVM_H */
+-        arm_write_bootloader("bootloader", as, info->loader_start,
+-                             primary_loader, fixupcontext);
++        /* Immediately jump to the kernel when guest is a Realm */
++        if (!info->confidential) {
++            arm_write_bootloader("bootloader", as, info->loader_start,
++                                 primary_loader, fixupcontext);
++        }
+ 
+         if (info->write_board_setup) {
+             info->write_board_setup(cpu, info);
 -- 
 2.53.0
 

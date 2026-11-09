@@ -1,94 +1,82 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71245606A31C
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 00:42:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3466E606A31C
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 00:42:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=Tn3asfRp
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=vgBpKqHX
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQDST-0005zs-PC; Sun, 08 Nov 2026 19:42:02 -0500
+	id 1xQDSJ-0005tX-F5; Sun, 08 Nov 2026 19:41:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xQDSR-0005zA-Fa
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:59 -0500
-Received: from ci-2004h-snip6-11.eps.apple.com ([2a01:b747:3005:204::53]
+ id 1xQDRy-0005l4-2T
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:30 -0500
+Received: from ci-2003f-snip6-11.eps.apple.com ([2a01:b747:3005:200::3f]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xQDSL-0006QN-BV
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:56 -0500
+ id 1xQDRt-0006ND-7S
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:28 -0500
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-4 (Postfix) with ESMTPS id
- B9E191800135; Mon, 09 Nov 2026 00:41:49 +0000 (UTC)
-X-ICL-RepId: 01a1bdc1-134d-7420-ba6a-72d5d266e3ef
-X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQtMHVUDRQtBF0AGTVIPDx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQFBfHA4YWRtAFV0RUBlWCV4VFx5BTUUID0YZEFYBWFZdBU0aXBhZDxwTUFZaDlsERxQXG1wAFxtGAgQjAl8ARQJeCVYBMBcPVk1MFkMfUg9bE00ZUQFSRVQCGRVaCQpXC0EJPQFadSkfRAtAd0ADL3RGFEB3XwZGczZ/PHdVdS8CNQk6cxhZG0AVXRFQGVYJXhUXHkFTFx9LAFxFUBhEH10dZhxcAFYCXA==
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-2 (Postfix) with ESMTPS id
+ 2266D18007F3; Mon, 09 Nov 2026 00:41:19 +0000 (UTC)
+X-ICL-RepId: 01a1bdc0-9be5-767e-98e9-b9dbb9da6aa6
+X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQtMHVUDRQtBF0AGTVIPDx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQFBfHA4YWRtAFV0RUBlWCV4VFx5BTUUID0cZEFYBWFZdBU0aXBhZDxwTUFZaDlsERxQXG1wAFxtGAgQjAl8ARQJeCVYBMBcPVk1MFkMfUg9bE00ZUQFSRVQCGRVaCQpXAEALTgJcB1ICQA1JA1UZUwdICUAeXAZGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1794184911; x=1825720911;
- bh=JtJX+H/4r4ZGa8WmmEX2cQSecTfEprw7NL+js8/GXkY=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=Tn3asfRp9a3Zayo4Z5yO1zWXuzwiVenjEoteEgjSQ8imbAAKE9UgwCC3BOV1lhOw4smnusxbCoPmbMhFKUYHJYj3SrrnC0b+L2+IlfPKd/eKULoL2wRypG0KGYD9RG7HwqD2tXCGx0/NUPt7Mby8NdGdqHR5oRuB15CL+6wMugvCa+OufzrDqu4ZF7El8WpeSllSG4+OoY3+LcUEX9/EtQcnfO7vrGdtSce3v0o84PAMLFGYLNbq0XEA16xsdvQmUi0Aq8CJ11FSXCDiucTVjNoGgyZ9r28TevQ25X57USmw+WjzXOReClV3K9LVsGoNR86HWwvpK+igA82NsV0P0g==
+ s=sig1; t=1794184880; x=1825720880;
+ bh=d9reyV1jCF00VTlpnA3Dp8FbMUhLRSFOmv7Sc4XHdpc=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=vgBpKqHXjJPx0B3b7RTPHT2C9V83D5WZ3+/s511ed3g5lD2Qus+igqIpizfwHYS8yMJK80MpmRJ/41AXp8K3iQiPYEByBca+u98RpQojtGGA1VP1pxVacz+eNvlUSsJD4YNcYt14XKuOv5L7ZjwIG6tjobc/dl2JR3PQCCKPFmiNENm0/FjxZDSqfYJCawT2oUZt0ga9xVhSy6mdwJpKwGihAwt6SU1lCRgfn3IAPs7ljMOU0lFeHY03FoY+rCOH/o7qVlKlg15yI4MOBMDHJjXVTjoK92ciuc7kXMj/VelG4YsTFHVcOOHPbqLfUh3MUSJcrKjaJswwE98Fv7B48Q==
 mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-4 (Postfix) with ESMTPSA id
- CCB1A18001EE; Mon, 09 Nov 2026 00:41:48 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
-Subject: Re: [PULL 00/13] Whpx fix 0 patches
+Received: from localhost.localdomain (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-2 (Postfix) with ESMTPSA id
+ 301DE18007F4; Mon, 09 Nov 2026 00:41:18 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <87ik27i1vx.fsf@draig.linaro.org>
-Date: Sun, 8 Nov 2026 17:41:37 -0700
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Pedro Barbuda <pbarbuda@microsoft.com>,
+To: qemu-devel@nongnu.org
+Cc: Pedro Barbuda <pbarbuda@microsoft.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <910E27BB-428D-4DF6-8D21-AFFDD8BD0E0B@unpredictable.fr>
-References: <20261108095403.70813-1-mohamed@unpredictable.fr>
- <87ik27i1vx.fsf@draig.linaro.org>
-To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-X-Mailer: Apple Mail (2.3901.200.71.1.16)
-X-Proofpoint-GUID: quiGGI8YiaqY_vVmqjROorMIvGF4ZDb5
-X-Proofpoint-ORIG-GUID: quiGGI8YiaqY_vVmqjROorMIvGF4ZDb5
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDAwMSBTYWx0ZWRfX/6z0sdmiYUZU
- 8WJUky0VD+Ac46hGpVdjfOPTWEbJITYE7HLtpMLqMSerd9avAbFQqNULRDGLGjMcuUojsUtaaDR
- yMRMIf8//tJFB2bBsgMLfTvVbXVDVOOWVxeaPpa6wjg6AHEmxt0ut0NuDlch6+CC8gzax7NO4zw
- oOJgpzTgdGeCdDJHET4kQDpvDc9aTXZNG76xlqE8QoiMbAFmGFfDGCKYYI6zyrrwdTmkTPG0c3z
- NVOm1ZrzNx2Lc2D6ogQpRm0hxppZo4JwrBigEm0hw4VZgLx1Npd3sVGSmaZ4APBoFLAm3lEKTQK
- nYlKHQSHC0Vr5FVEsW+LqZQXt+ULzKnRW8tHM3RrGisI9s9mxkQ4AbSMJwYRUg=
-X-Authority-Info-Out: v=2.4 cv=TLdIilla c=1 sm=1 tr=0 ts=6af116ce
+ Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
+ Kostas Chatzikokolakis <kostas@chatzi.org>
+Subject: [PULL 10/13] whpx: i386: forward the dynamic EBX of CPUID[0xD]
+ sub-leaves 0 and 1, not 1 and 2
+Date: Sun,  8 Nov 2026 17:41:05 -0700
+Message-ID: <20261109004108.85808-11-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20261109004108.85808-1-mohamed@unpredictable.fr>
+References: <20261109004108.85808-1-mohamed@unpredictable.fr>
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Authority-Info-Out: v=2.4 cv=D8FK6/Rj c=1 sm=1 tr=0 ts=6af116af
  cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
- a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=xNf9USuDAAAA:8 a=NEAV23lmAAAA:8 a=ID6ng7r3AAAA:8
- a=KKAkSRfTAAAA:8 a=pm2JN4saWKRQQ0Hh5qUA:9 a=QEXdDO2ut3YA:10
- a=AkheI1RvQwOzcTXhi5f4:22 a=cvBusfyB2V15izCimMoJ:22
-X-JNJ: AAAAAAABixvhjEF2gXhmnzRi1OdkCHjql3mAtG8tib+1KFhoRfGMTDrRMD3aPp7FV8fhtI
- KnYnke8a4zuolwJ4hyEVEVILshlCwB8P6pzCyorFvU5XxRbdrCkoyBuDMaXD/8jGreDB29
- VpG5syFTBZHP6D5R87Z70XSyUlYq2MMt20rUTYkI1ddD+xb6w/nhTqy6auCYMGa9i7quum
- IiistOVYRVntb4TSMM3DBLh+M/SbKBWCjm64vOrh5u74JpKGYX0LAfL82FcAahP1W1wibc
- GY35w2ady2B76RG6ERoBePIeTY3NnX+3kPzL6fqWMm//yU3oM24dmu/ibyZualge78zwvB
- heP5tq78ELx/IFMcunhXpQurbUqIywKx1CZJRiV2Xxe7JPgDmmWaTGWz9CX5KORoa0kuHb
- I7sQ9QXcKgOBMhdRe4TRpB/0DTL10bo9vRSLGqF6OgaKdrh9r/fRdWYohNl8aNxIxDn/b+
- hqNS/GAPhz3xXbPFmF5pjagl0YJ5k5PjCb1V9XJb7k5VA//2g2qr9iMHw4ehQ3gxkfcjIu
- LKSWx/rE4F/J+g4dZGgyl+B3Ary3CHfNXqlIBfndx3FHKWZJX8qR59Dv9NICR0W2qBfVAu
- iOIzZLuNmyGLGBWDFlvCZd/HFFOOXmSNc3AWWWeed/gtlxTcucbpzJh2sHwY5YOzu5b9qp
- sX4YlUGBdCSvMAZdJOdcPj0+Rfn76faLd6TqgetTDMJUd6Fj0inIAVo5rz/F2D3a1Payzv
- J56MFQ9n1R1pKwwkghT5EaxkEdbc1t5G8Yi8k9OkiLb2hUpGwXv0B0xOEqYZODFoQ9E0S8
- 1Gwn5EGuzt8BDQ5TA06MRgUBAPZZQF0ec5xwLmM908h3JWLIa8jUQ1ilY1x/7nrhqHDkhY
- uwR4904h1FSqsCo38jczQTNVqaxmSVMI5SNf5ILXw9NW6T7CCyKttMcuzilimlhqIbAYm2
- j5hYIHDp1TwLInQ3Xc1LC2BDNpXLew85C0G9bgfQOqKs8cRSNm7gglIREz2PKKIXohdt96
- XCU9grwwe2fB3YoTBjS+/BpJRQ+Yc44wTFs3V9S/EgulYTmeCp4ZXPbxjK87cJ5HkKvbel
- jmqNjRv5rm2fM910wmBQ0uV/XZARisGbf3oNGrcjq6ZsOsYOo0reu4bwCAxst/WoaVC/s1
- 4+D6ZqoSF5DxIzsO0G7tnEtatQMBThRmyRnuFZkLB+tdi/STxq+HbWYjdgolwOYILRGDE/
- uiCPbUhRRYTi5rmesx47kafvigWfhv6MPtJc0dEIjS0A+zdvZoiPVtLR9CJziFLfhvzu+B
- gYV1RVq8Q67+bC5BMcGsMtShYhEcMBFsR5jOLDcGhRuLiErthAw1f6M9EXVrNcM6VZAQT9
- 2097/Jycea3ome/9WVBfjWB1UJ1v6lRFEkq4wjUB+HQ4BtMEZF+DSGXFy7XquIYnYQikmO
- n3
-Received-SPF: pass client-ip=2a01:b747:3005:204::53;
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=DGLFwGUCAAAA:8 a=RSavJFEQRcchf7d-p6oA:9 a=4cWXuvdlNTBkoNYRywza:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDAwMSBTYWx0ZWRfX8Ijaer3cba/I
+ RQ/7zjoRe4isxYUif0wYufhN3hHAtD7GXqv0AR0ZkcgifDHzUcBSr3hhweghXzCOT6Kz9WjrPZn
+ gzQZglFqr06PH3BdeDey34aop+Yvxy4oSf3bF/6k+4BqaZcoC2+DyNiOOHei/6B6cS9Emts5JcZ
+ XygSmwKM/A+kVhi/tRffOvqtDuEnv/NQohZXu5Db7QAJEPiIBrYoV0BmDni7Diqh2YGMvM6jtLS
+ XSSE8bNGv4Ih0n4JLTyY1oJVgK8KfyGSyu0fWFPH1GYFJAAB8udKxB2VziIQksYCzQubAfTG7/j
+ pqCgFrFc2XF+nTcDH+XS3M3LBH5c9cYOB+jSctCqJTKuCqF4T6tYgUMFQFaGHQ=
+X-Proofpoint-GUID: e2f9fth2d2SmVF0QSeAxxu8LDJg3gb4G
+X-Proofpoint-ORIG-GUID: e2f9fth2d2SmVF0QSeAxxu8LDJg3gb4G
+X-JNJ: AAAAAAABm2i0fKYI5uKusLHMnjOsn8y/oVdmY8Z9x+X2tnIY9CjERrAOKwHdWcOC1eTmBq
+ oQPNjCr2ztdwTfd4b5pal4a7TtLz0FyNMqJg9Nom/zeKLM2bmjC8SuzfLxKF+Un5x7+eIC
+ TxAqbDiJpXaFtsUzHUe93Ms1k9My2rYMy1SPJWT0O8swzPVcRHfjKDKO+pH9Y0mqqLP1ZS
+ VdfGV0dNSEh0ThVhGjLFE/oJg10brntUIethKlPmAFtcPAi8XcQ9aeYtDTA/qShw1Tp0S2
+ xZ1Xl84C6oRcn5NFV/jTtA+VyNsIoBiZh+k23c19R2CK2h5qOf8IOPBV6ZBJ61gX9EuTUc
+ ddKNMd4inXE+Vwp0htVezZYrNa8OeEK2rimBlNRyWnIEpGK/W9Xk1cp1IrX1qyykqH4+Hs
+ TjnwvqPDOqlWEn4KameuvLfwDG8+AdcSthXzLZhAhx6ynYALHoJZm0ejXTyZSfu0kS/3+Q
+ yKiEIhFE+SBKrYKFOvjykYB9BUktpks0XN5oHDI0L0jdHW/JhXGxLig2tgI0cwj79KDzUY
+ lVa2IUNAn0QCbVQKO3BGlgRTaUw1uPLzT0nYTsNh1tCavGv18KIBw0hcqho3zYS1JEjrxu
+ wXcLdmUheMsCvzYBFrpay8l73tpzyn05CNLjE9zBEGopP0b3xUkUVk8Hc25EAr3r1nHV8b
+ +ZAniTmB4qo/IeZa5RjII5lRuQtJ1+AccksQvk8RcQD+UudJwRuOj0kqmJajpg3h9j9s0e
+ 1JShDAIs9BHXteomogMy20VQUGRu35BE1Va4CoidSG+YT86uJjYiNSazwLN3oYBPBAdjbl
+ 8KLpBCnkP87MbSvkra+ubBmX8KG2CJVYIUIftidk3GxbEUiE6VlO
+Received-SPF: pass client-ip=2a01:b747:3005:200::3f;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -107,105 +95,82 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_PASS,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+From: Kostas Chatzikokolakis <kostas@chatzi.org>
 
+CPUID[0xD,0].EBX is the size of the XSAVE area for the guest's current
+XCR0, and CPUID[0xD,1].EBX the size for XCR0 | IA32_XSS: those are the
+two values that depend on guest state. For sub-leaf 2 and up, EBX is the
+component's offset in the standard format, a constant.
 
-> On 8. Nov 2026, at 12:01, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
->=20
-> Mohamed Mediouni <mohamed@unpredictable.fr> writes:
->=20
->> The following changes since commit =
-d73149283205645625bfa9fe029cfb68e4c4a9ae:
->>=20
->>  Merge tag 'samuel-thibault' of =
-https://people.debian.org/~sthibault/qemu into staging (2026-10-24 =
-16:09:37 +0200)
->>=20
->> are available in the Git repository at:
->>=20
->>  https://github.com/mediouni-m/qemu tags/whpx-fix-0-pull-request
->>=20
->> for you to fetch changes up to =
-2bf35950b54c1db9a6de6eb47b42cf843c6bd282:
->>=20
->>  whpx: i386: also save debug registers (2026-11-08 02:48:18 -0700)
->>=20
->> ----------------------------------------------------------------
->> whpx: QEMU 11.2 pull request
->>=20
->> This is a cut-down version of the "whpx: i386: updates for QEMU 11.2" =
-patchset
->> with fixes for QEMU 11.2.
->>=20
->> These include:
->>=20
->> - fixing reset
->> - CPUID fixes (leaf 0xd)
->> - handle systems where nested virt is advertised but not working
->> - xsave fixes
->=20
-> You need to apply your s-o-b to patches you submitting in a PR:
->=20
->  =
-https://www.qemu.org/docs/master/devel/code-provenance.html#subsystem-main=
-tainer-requirements
+whpx_vcpu_run() forwards Hyper-V's DefaultResultRbx for sub-leaves 1 and
+2 instead. Sub-leaf 2 is harmless: QEMU's own offset was read from
+Hyper-V at vCPU init. Sub-leaf 0 is not: QEMU computes it from
+env->xcr0, which WHPX refreshes only in whpx_get_registers(), never on
+a CPUID exit, so after the guest's XSETBV the leaf still reports the
+size for the reset XCR0, 576 bytes.
 
-Hi,
+A Linux guest on a host without XSAVES takes that as its kernel XSAVE
+size, fails the consistency check against the size it computed from the
+component offsets, disables XSAVE and panics on the fallback path:
 
-Sent a new version with that being addressed.
+  XSAVE consistency problem: size 832 != kernel_size 576
+  WARNING: CPU: 0 PID: 0 at arch/x86/kernel/fpu/xstate.c:638 fpu__init_system_xstate
+  x86/fpu: XSAVE disabled
+  BUG: kernel NULL pointer dereference, address: 0000000000000010
+  RIP: 0010:fpstate_reset+0x1a/0x90
+  Kernel panic - not syncing: Attempted to kill the idle task!
 
-Thank you,
--Mohamed
->=20
->=20
->>=20
->> ----------------------------------------------------------------
->>=20
->> Akshey Taneja (2):
->>  whpx: i386: do not require ProcessorFeaturesBanks on legacy Windows
->>  whpx: i386: fall back to xAPIC when the MSR exit bitmap is =
-unavailable
->>=20
->> Boden Randin (1):
->>  whpx: i386: avoid updating hflags for vmexits
->>=20
->> Doug Cook (1):
->>  target/i386/whpx: fix VMX capability MSR values
->>=20
->> Doug Cook (WINDOWS) (2):
->>  target/i386/whpx: whpx_get_xsave_state error handling
->>  target/i386/whpx: handle processor reset
->>=20
->> Kostas Chatzikokolakis (1):
->>  whpx: i386: forward the dynamic EBX of CPUID[0xD] sub-leaves 0 and =
-1,
->>    not 1 and 2
->>=20
->> Mohamed Mediouni (6):
->>  whpx: i386: get APIC state before VM save
->>  whpx: i386: fix TPR encodings for local APIC
->>  whpx: i386: save/restore xss
->>  whpx: i386: make nested virtualisation init failure non-fatal
->>  target/arm/whpx: handle processor reset
->>  whpx: i386: also save debug registers
->>=20
->> include/system/whpx-internal.h |   5 +-
->> target/arm/whpx/whpx-all.c     |  10 +-
->> target/i386/whpx/whpx-all.c    | 307 =
-++++++++++++++++++++++++++-------
->> target/i386/whpx/whpx-apic.c   |  10 +-
->> 4 files changed, 266 insertions(+), 66 deletions(-)
->=20
-> --=20
-> Alex Benn=C3=A9e
-> Virtualisation Tech Lead @ Linaro
+Every CPU model with XSAVE is affected there (-cpu max, Haswell,
+SandyBridge); models without it (Westmere, Nehalem, qemu64) boot. A host
+with XSAVES boots because Linux takes the compacted size from sub-leaf 1,
+which is forwarded; sub-leaf 0 is stale there too.
 
+Reproduced on an Intel Core i5-4440 (Haswell) under Windows 11 Home
+build 26300 with QEMU 11.1.2 (the code is unchanged on master), guest
+Linux 6.18. With this patch the guest enables xstate 0x7 at 832 bytes
+and boots with -cpu max. An AMD Ryzen 9 7900X under build 26100, not
+affected before, still boots with the patch, enabling 0xe7 (compacted,
+2432 bytes).
+
+Fixes: 79b3cb1f0145 ("whpx: i386: introduce proper cpuid support")
+Signed-off-by: Kostas Chatzikokolakis <kostas@chatzi.org>
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/i386/whpx/whpx-all.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 2a91eabc10..8cfbc5f676 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -2734,10 +2734,14 @@ int whpx_vcpu_run(CPUState *cpu)
+                 }
+             }
+ 
+-            /* CPUID[0xD,{1,2}].EBX are dynamic depending on guest features. */
++            /*
++             * CPUID[0xD,{0,1}].EBX are dynamic: the XSAVE area size for the
++             * guest's current XCR0, resp. XCR0 | IA32_XSS. For sub-leaf >= 2,
++             * EBX is the component's fixed offset, which QEMU already reports.
++             */
+             if (vcpu->exit_ctx.CpuidAccess.Rax == 0xd) {
+-                if (vcpu->exit_ctx.CpuidAccess.Rcx == 1
+-                    || vcpu->exit_ctx.CpuidAccess.Rcx == 2) {
++                if (vcpu->exit_ctx.CpuidAccess.Rcx == 0
++                    || vcpu->exit_ctx.CpuidAccess.Rcx == 1) {
+                     reg_values[4].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRbx;
+                 }
+             }
+-- 
+2.54.0 (Apple Git-157)
 
 

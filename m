@@ -1,100 +1,87 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 447DC606A31C
-	for <qemu-arm@archiver.kernel.org>; Sun,  8 Nov 2026 19:01:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 63D5B606A31C
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 00:41:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=OvDtOZtH
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=jZZ/HErx
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQ88w-0000Up-SZ; Sun, 08 Nov 2026 14:01:34 -0500
+	id 1xQDRw-0005kM-Vm; Sun, 08 Nov 2026 19:41:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xQ88p-0000UJ-UH
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 14:01:24 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xQ88o-0001VW-1x
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 14:01:23 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4a60f9474c4so2589545e9.0
- for <qemu-arm@nongnu.org>; Sun, 08 Nov 2026 11:01:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794164476; x=1794769276; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=zrxaZraQLRUz0ggX6nKwdiuIeJTrW+yHSc6JYz+mXq8=;
- b=OvDtOZtHlfZiV0Z3P9Bb0k+BPI631e/IfqYv85kqHPbnGibBD8cTogdEby2yxRrj2e
- R+zzjiMLRnv0dNB1lXP5Kr5OpE2mD9cVkAfSm7Ic+0uoXkexsobszNWmArEcFEcZlHVD
- zWmrOvCUDNdlFToOY/0R7H4lv2HcOcaRq3rEbDwpQ2uIM8pyN7nNOaWTS+dNaDH0/YBf
- /GubsxXjKKTH3zgo7R+C4iu7x4DtXhojxyzRtIw7sW/VQP92MArnGOtBHS4HCfeY72Fj
- TiCHt4sUqCI6gqQ/PNvDLnl3ek0BOuRZ7H2SGOZ9yNzjiQ48gWhPxcpRU2SHszYNnEdh
- d3bQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794164476; x=1794769276;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=zrxaZraQLRUz0ggX6nKwdiuIeJTrW+yHSc6JYz+mXq8=;
- b=y4oJe/pxa7itb8J/jXtMRUM6mo3q0NbxVDKtXioJMBAjjQBA/8aLXJs9VlkoI+QEcQ
- HVHEXQXfaSqQadj91iYvF0lxuYIO/0CvaHooTAlc5FwbTpBgohhk2Q9HqqJJn91snGpp
- EHjHtmR/2jekANM/lPkXMBB10fPYI/6KglePfRNkrjGXXDbP7ThQC60U6ML5HVSDi0TC
- PttpcGOu7eQVtwXKMLJTkxga0YIQ6LE56y4qwIu8IoHQJzNNe7hVu96dq1H3KIqYppMS
- oOVsEZrh9JR6Pp3E9vsPr4Pcofp3+YRTkclj7gXUq37tmaWloW0x8676pe2ei5vGRfuB
- WP0Q==
-X-Forwarded-Encrypted: i=1;
- AL+hErGjrR7xSKH5jGnqWXNtR0FtDFpRFzkm0+DZBtC7lt3f/rVciE+dnAZUQMg99vluLt3g1lN3leJiOQ==@nongnu.org
-X-Gm-Message-State: APuU4Z+T8uLdP3kCcaThsOFvslyeieeL7Br2ce5IgPYDk0SKSl4EP7sU
- qSuTxmF1amHE7kb48v33ktWPTCsu6Wai9Ws/mSnn6zXINzFCTqChfzdx52kBmLD6lQ8=
-X-Gm-Gg: AYBFou2dvHsIaB24UEfVBvmCw5/tYEvc38geb+1ltIfSSW8P3oZ1Q8+/+FMsMNbhmkJ
- QiYK6JuERDY0yRuPm0PBdwbdGedpEkDwPvkcwt5Ivww5fwbKa/0GlBag0FkUGm1Ut/gNKDNufDT
- QFNviByUn14pyPKHQTc9SmZKitML05Gmu6u/9RlLNOHXkHIXGJmEznd+NvFqYIaMkzLv4HS2hwb
- wWIir8/ViV2OlTuljhADTPD18G+yHS18Nc2Vcl9YYWJKmufUEqFmcB43I1Ys3xr5C2t2BhWEe7E
- tTEoQAzzhOx798XbCRDZVH0nmIN85XFb+8NT3E7r9UE/3KTeSlTD4vCOs7K/+ul+xiIAZc7UmhJ
- gy711XPKRthEjcakDFzxJqcuwFTLa4MZbwZ6MxMjuN6PoHYs4FmRVMimECAi2eNPACQ/Rwiv0Ar
- mhToXo0PqPPoaCqjdK/+ndzvAaoIvUT0+lFM7WDaVlpyPOS17GmqBuHpNta/P25GNp7ZzgAaRxW
- A2YnYPC8sqMbvWedDJA4uLX7N0plP93AGub4ECQFRzQv0GzK2cZ/8dVVFdm+/D/Aq6//UwxiTDP
- XCR4ERosIysXDCd4Ma/7pIzOboyWmP90azSd3NEqeDY3CVE/Nw==
-X-Received: by 2002:a05:600c:8714:b0:4b4:262b:88a2 with SMTP id
- 5b1f17b1804b1-4b94d762f82mr40480255e9.1.1794164476533; 
- Sun, 08 Nov 2026 11:01:16 -0800 (PST)
-Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4b7c4716170sm72201375e9.1.2026.11.08.11.01.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 08 Nov 2026 11:01:08 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 00C175F819;
- Sun, 08 Nov 2026 19:01:06 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Pedro Barbuda
- <pbarbuda@microsoft.com>,  Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: Re: [PULL 00/13] Whpx fix 0 patches
-In-Reply-To: <20261108095403.70813-1-mohamed@unpredictable.fr> (Mohamed
- Mediouni's message of "Sun, 8 Nov 2026 02:53:50 -0700")
-References: <20261108095403.70813-1-mohamed@unpredictable.fr>
-User-Agent: mu4e 1.14.5-pre1; emacs 30.1
-Date: Sun, 08 Nov 2026 19:01:06 +0000
-Message-ID: <87ik27i1vx.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xQDRs-0005hh-T4
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:25 -0500
+Received: from ci-2005c-snip6-5.eps.apple.com ([2a01:b747:3005:202::1c]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xQDRo-0006L0-4i
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:24 -0500
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-2 (Postfix) with ESMTPS id
+ 0B21F18007E6; Mon, 09 Nov 2026 00:41:13 +0000 (UTC)
+X-ICL-RepId: 01a1bdc0-87e9-7cac-ab36-dade25a13657
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtMHVUDRQtBF0AGTVIPDx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQFBfHA4YWRtAFV0RUBlWCV4VFx5BTUUID0cZEFYBWFZdBU0aXBhZDxwTUFZaDlsERxQXG1wAFxtGAgQjAl8ARQJeCVYBMBcPVk1MFkMfUg9bE00ZUQFSRVQCGRVaCQpXAEALTgJcB1ICQA1JA1UZUwdICUAeXxoGXRhYFVYJdx5cAEsdVwRUH1MSVR0dC0VVEgRACFZQVB5BBFYVbAlYBlMZVw==
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1794184875; x=1825720875;
+ bh=esa002n+umgb+uuAEw0alWBlRbDUr7KFNDpQLc54GuA=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=jZZ/HErx1MYgvAr676Ay7RaqmOCwYXBiUf3WwgCTcfA+o9gjbtoIbZgRNdAsfr9sL7T7BZSlUS7EJcdPy1vicUqdLqUNYLYcqqLIeHfru+90LCHpTbANnpUlVlPWizjqKnKJoRimqaX6ytN9vDOHKhwzIFM85c30HKBXQj1rwxwpbxBj5LBYA4e9FIViDia4mhooqUR38Y97Kk5+LqCUR8c10nMVik1DI9X9AuYuwgsa9QU1dwjuFRI6MYhxsetVDC180F51U0YmVlq7EVEYGuGpRACrgGsx095Xgq41UJUsGsiAXdjvY7Nui2s1KMpFkscCyRJe7OV8nQsAnIPH9Q==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-2 (Postfix) with ESMTPSA id
+ DE94418001C2; Mon, 09 Nov 2026 00:41:12 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Pedro Barbuda <pbarbuda@microsoft.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
+ Doug Cook <dcook@microsoft.com>
+Subject: [PULL 01/13] target/i386/whpx: fix VMX capability MSR values
+Date: Sun,  8 Nov 2026 17:40:56 -0700
+Message-ID: <20261109004108.85808-2-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20261109004108.85808-1-mohamed@unpredictable.fr>
+References: <20261109004108.85808-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDAwMSBTYWx0ZWRfX1UfzGPdpjBWX
+ scuEy6DXlZLcL9qUEaP5//YUzJsd1PdeuBFub4bO3fetJubCGtByfUO+6TqgdIxA1Nj2eAjo8GP
+ Y201FiGTbdkspEvk2QFfpx6sm2E/p0uAQtJd4wlRme4lMMm9M7tDk5jd+MWygEk3efSAdgSR4lO
+ Y/imRFJyAMfTGmGwc3EyIHyp9eChDL5aCztHbcbMoi3BMtLORax6j38o+TOvYuhFF/XRpk0Zieg
+ gcb/Oyu6ALZ7UnsaZFwkCmgj0HtSNcRf0obsx5CC+p+Ig0kxJals8/JN69aHgh3KJC4yR8ltz3g
+ U2ak/PpXlSAcBLg8aME3KIAC+87TJtgJ6B9uS5OdfsU+ppocUUWCsUS7qI3gB0=
+X-Proofpoint-GUID: hMErI7nlpnR6_WUvw7fF6gSBB0IHhhpH
+X-Authority-Info-Out: v=2.4 cv=BNu+bVQG c=1 sm=1 tr=0 ts=6af116aa
+ cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=yMhMjlubAAAA:8 a=34rDk-nlojoYW5TMjDsA:9
+X-Proofpoint-ORIG-GUID: hMErI7nlpnR6_WUvw7fF6gSBB0IHhhpH
+X-JNJ: AAAAAAABt0vtPz8qpWIHUdSCHhU68ZLhCEqDciYsdPBkZDu/L+aAPeNMZ6UnnRwBEjStjA
+ 4fI4nq8vSg4a9qdVKn6ad4drPTjaQOAVDoNXGCI+RH68m+phk+yhcAWxa03TmSdi25ukqt
+ Q41fga26grMumaQoiH5DsIE9bDBmJ5duUv66tdWEuZCYauh+YSjVPj5zfjMcQjoD7mJlOk
+ Zgx7o+B4tSCfp540QV6e0Qe1//VtOXawg2nHEShw8a8LOs7ydcSTINXJNHrPz2r8e3ykiB
+ iIbKdfj9xBOetvZdb4qmOgklBfajunxSwd7GtGUUBE7d5hY3tVcoUwb4/DsnGs1MMZ7qLu
+ 03FRr9iTa4fEVeOyL0vqyehBVXYAhbg0v5E785B/A1gn7sPLALhwogQPKbloasQWS6m0uB
+ a/NbonRp5v969lP2eGBQsW0xBSTzq5zfj5v2IO5TZetQ2ODJ5UPWmBFjLb2gAAoIiEYXpR
+ hKqXL3PyTXYMRHgOA3vNPDAowNCbAp1Vy3qDZdem3hO/LMsItePsz02qx81wXpn1o+reuC
+ S4O+4vUlszXtFVF6UmiQCN6qK87HsMyVxVcrtbCT+DBEJplGLYpYMfeI2JQos+FsZo8FX3
+ oTvTrVxlE0uWMni410OTjgFFGIhGpCN9ySJxWScyD9SGoNezjHPMn5HGesnS0qAmCSwOM0
+ uDXkflgTJmjSEDO0rr0OcDJP5xPIE4kZVp7tLeTpKVEqT83HTPzCKqotRxKNQCtr/PFg+o
+ XKQdh76t4kLy/V6eIy+900HmcVRrX4cL4u7C5yFChTl0xu9ysa4ZOpFEe3
+Received-SPF: pass client-ip=2a01:b747:3005:202::1c;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,85 +93,92 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_PASS,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Mohamed Mediouni <mohamed@unpredictable.fr> writes:
+From: Doug Cook <dcook@microsoft.com>
 
-> The following changes since commit d73149283205645625bfa9fe029cfb68e4c4a9=
-ae:
->
->   Merge tag 'samuel-thibault' of https://people.debian.org/~sthibault/qem=
-u into staging (2026-10-24 16:09:37 +0200)
->
-> are available in the Git repository at:
->
->   https://github.com/mediouni-m/qemu tags/whpx-fix-0-pull-request
->
-> for you to fetch changes up to 2bf35950b54c1db9a6de6eb47b42cf843c6bd282:
->
->   whpx: i386: also save debug registers (2026-11-08 02:48:18 -0700)
->
-> ----------------------------------------------------------------
-> whpx: QEMU 11.2 pull request
->
-> This is a cut-down version of the "whpx: i386: updates for QEMU 11.2" pat=
-chset
-> with fixes for QEMU 11.2.
->
-> These include:
->
-> - fixing reset
-> - CPUID fixes (leaf 0xd)
-> - handle systems where nested virt is advertised but not working
-> - xsave fixes
+whpx_get_supported_msr_feature() had two bugs in how it reports the
+VMX control MSRs:
 
-You need to apply your s-o-b to patches you submitting in a PR:
+- MSR_IA32_VMX_TRUE_PINBASED_CTLS and MSR_IA32_VMX_TRUE_PROCBASED_CTLS
+  were queried using the non-TRUE capability codes
+  (WHvCapabilityCodeVmxPinbasedCtls and WHvCapabilityCodeVmxProcbasedCtls).
 
-  https://www.qemu.org/docs/master/devel/code-provenance.html#subsystem-mai=
-ntainer-requirements
+- For PROCBASED_CTLS2 and the four TRUE_* control MSRs, the raw
+  allowed-0/allowed-1 pair was returned. The feature-word code expects
+  only the bits that may be 1 but are not required to be 1. Apply the
+  same transformation as kvm_arch_get_supported_msr_feature();
+  make_vmx_msr_value() adds the must-be-one bits back afterwards.
 
+As a result, with +vmx QEMU treated many VMX features the host does
+support (secondary controls, EPT, VPID, MSR bitmaps, ...) as missing,
+warned about each of them, and dropped them from the CPU model. The
+guest itself reads the VMX MSRs from the hypervisor, not from QEMU,
+so this did not change what the guest saw.
 
->
-> ----------------------------------------------------------------
->
-> Akshey Taneja (2):
->   whpx: i386: do not require ProcessorFeaturesBanks on legacy Windows
->   whpx: i386: fall back to xAPIC when the MSR exit bitmap is unavailable
->
-> Boden Randin (1):
->   whpx: i386: avoid updating hflags for vmexits
->
-> Doug Cook (1):
->   target/i386/whpx: fix VMX capability MSR values
->
-> Doug Cook (WINDOWS) (2):
->   target/i386/whpx: whpx_get_xsave_state error handling
->   target/i386/whpx: handle processor reset
->
-> Kostas Chatzikokolakis (1):
->   whpx: i386: forward the dynamic EBX of CPUID[0xD] sub-leaves 0 and 1,
->     not 1 and 2
->
-> Mohamed Mediouni (6):
->   whpx: i386: get APIC state before VM save
->   whpx: i386: fix TPR encodings for local APIC
->   whpx: i386: save/restore xss
->   whpx: i386: make nested virtualisation init failure non-fatal
->   target/arm/whpx: handle processor reset
->   whpx: i386: also save debug registers
->
->  include/system/whpx-internal.h |   5 +-
->  target/arm/whpx/whpx-all.c     |  10 +-
->  target/i386/whpx/whpx-all.c    | 307 ++++++++++++++++++++++++++-------
->  target/i386/whpx/whpx-apic.c   |  10 +-
->  4 files changed, 266 insertions(+), 66 deletions(-)
+Signed-off-by: Doug Cook <dcook@microsoft.com>
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/i386/whpx/whpx-all.c | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index e3e672dcd1..3312dd8593 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1452,10 +1452,10 @@ uint64_t whpx_get_supported_msr_feature(uint32_t index)
+         cap = WHvCapabilityCodeVmxEptVpidCap;
+         break;
+     case MSR_IA32_VMX_TRUE_PINBASED_CTLS:
+-        cap = WHvCapabilityCodeVmxPinbasedCtls;
++        cap = WHvCapabilityCodeVmxTruePinbasedCtls;
+         break;
+     case MSR_IA32_VMX_TRUE_PROCBASED_CTLS:
+-        cap = WHvCapabilityCodeVmxProcbasedCtls;
++        cap = WHvCapabilityCodeVmxTrueProcbasedCtls;
+         break;
+     case MSR_IA32_VMX_TRUE_ENTRY_CTLS:
+         cap = WHvCapabilityCodeVmxTrueEntryCtls;
+@@ -1474,6 +1474,31 @@ uint64_t whpx_get_supported_msr_feature(uint32_t index)
+         if (FAILED(hr)) {
+             return 0;
+         }
++
++        switch (index) {
++        case MSR_IA32_VMX_PROCBASED_CTLS2:
++        case MSR_IA32_VMX_TRUE_PINBASED_CTLS:
++        case MSR_IA32_VMX_TRUE_PROCBASED_CTLS:
++        case MSR_IA32_VMX_TRUE_ENTRY_CTLS:
++        case MSR_IA32_VMX_TRUE_EXIT_CTLS: {
++            /*
++             * These MSRs hold the allowed-0 settings in the low half and the
++             * allowed-1 settings in the high half.  QEMU's feature words want
++             * only the bits that can be one but do not have to be one, so
++             * apply the same transformation as
++             * kvm_arch_get_supported_msr_feature(); make_vmx_msr_value()
++             * restores the must-be-one bits later.
++             */
++            uint32_t must_be_one = (uint32_t)val;
++            uint32_t can_be_one = (uint32_t)(val >> 32);
++
++            val = can_be_one & ~must_be_one;
++            break;
++        }
++        default:
++            break;
++        }
++
+         return val;
+     }
+     return 0;
+-- 
+2.54.0 (Apple Git-157)
+
 

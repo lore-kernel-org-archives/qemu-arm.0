@@ -1,88 +1,185 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AFA56606A322
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 07:43:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C580606D801
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 08:54:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=zre4xtLt
+	dkim=pass (2048-bit key, unprotected) header.d=nutanix.com header.i=@nutanix.com header.a=rsa-sha256 header.s=proofpoint20171006 header.b=p/CaH/sH;
+	dkim=pass (2048-bit key, unprotected) header.d=nutanix.com header.i=@nutanix.com header.a=rsa-sha256 header.s=selector1 header.b=EzsedDm5
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQK1x-0005Q6-C0; Mon, 09 Nov 2026 02:43:06 -0500
+	id 1xQL8b-0006lk-9G; Mon, 09 Nov 2026 03:54:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xQK1n-0005Oz-Vw; Mon, 09 Nov 2026 02:42:57 -0500
-Received: from out162-62-57-49.mail.qq.com ([162.62.57.49])
+ (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
+ id 1xQL8Z-0006kv-QI; Mon, 09 Nov 2026 03:53:59 -0500
+Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2118537295@qq.com>)
- id 1xQK1j-0001ib-VX; Mon, 09 Nov 2026 02:42:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1794210160; bh=CepK5kvyxbVxZGUf+126+FP7SZPfActg6YYj3/12Q9M=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=zre4xtLtVpjYtV8xWCganFHn4IJvmF51G697BY4Ap3VWf85JMSS3KT5jaM59aVgNn
- x5OslFUQjcAfe2yDpL47LMFz9MySJqSa5ps+7tFhy5KAB1cHToLOvLjuUQpnVhZOMC
- ifrOQP6/bwoc2ohB7zA/y3Wf8G2R2azJdGT+Ubwc=
-Received: from [100.125.153.207] ([139.159.170.67])
- by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
- id AA5A505C; Mon, 09 Nov 2026 15:42:37 +0800
-X-QQ-mid: xmsmtpt1794210157tbu1sb5kc
-Message-ID: <tencent_8809C7F82B4C692913748888B7A752273308@qq.com>
-X-QQ-XMAILINFO: NGZp1yYNf7Y+vQBn5/jO+yhjZVfR/X6XRNh07M2pDU3DV/4gbnQCNobUsBQc3l
- 89x4yEyQ9zOzDCon03SYmuTFQMiYpn7KhW23sdqOBQb69f2Hx18el0agFLYAR6dUYrZbkDf7un2T
- Ubufto9QEHsaP4oAvHZ4N14Y/ZyE1vhTSpeosHQIgCc7ODooIgcVOlXGVAZxYFkO2pX5d32MHf2C
- qA+46OSHjQ9qObk4vGt+od9b6BhLwRQudp2aModqzzWyb3E86P8Kkb0rzVuMBUXdJ2+oZgBibf6h
- EQEYVay7bjE6bgIzuZGliLz236Y6k1ASYg9wBjob/IjAgdGfdDlhvLIEe77naPR5Y4Sc/9Gic8a+
- vnZXP+5xfGzmHu9Uoy3k0LF9ta4X4jVA5uSl04z5Cpp2O9S2yLDK27/wiDi7UfLWqhkDATRg2b9S
- UOEf4Y+iAhG1FkTLa4r198FaQU+Pt88HZMsZAqEIYq9klloaXxlnpl5/egYkQnRSyzVT2YTqm6SE
- wp6xrLrKAu7pCsRiwAa6fy7P8Ez8N0wVwOddEC7U1fhtdPOoIKuUax62Nlj0jS+qhAWOjW289qmu
- wnkr3GSS+2qHhL2u3uHAR1gp6ACVWyfTm/HOjRAiT18vlY3TOc/CbKdn/1TMUmtsA8e/rkrBNLHC
- x9kRC9O/Y22FGhYKjsEkOdmwGpzF4/WneTW7BVl3uBsTmAlpWwPjG0IbfgKNIoRKWBdt7E/mUQiw
- ti+GrcwwSRSi6Rc0DsYvNF91N83dmful7EqauCF7LG9tawol1jtAHUilL2ZS8x+9tmDtdWwMfca2
- 1zojpStOuwITtxLJvcDmBT4CDisqexjq6G2dABx8euvhGRBxioNnq4ZV8t4elLJvs3+4GKnn7bhP
- ce2dVNvzltjvnocG/hbKjvjGiSJNGBfYIV8lsdOKqqY5PK6wohwgufBdEhzT2TOIGobKFBNLAQiF
- a9UylHFP2gRUC4IzDUTH4zQ8vmEqH3+bkwJ4wkjUeZ+Gq6KS0gaV/HIOy+atd8hSU2QRMoyHkrHZ
- fLDepAIQsNDII7OaU+K6gGaHD9YxOyaIln6Pu+KgOMyhqcaPI94WZqMQSB9xtmIZa3NL+SRA==
-X-QQ-XMRINFO: NI4Ajvh11aEjwDmElj6Fnga+xfKmi0/jgA==
-X-OQ-MSGID: <b3aace42-b331-4dbe-9b53-115256a47c04@qq.com>
-Date: Mon, 9 Nov 2026 15:42:37 +0800
+ (Exim 4.90_1) (envelope-from <mark.caveayland@nutanix.com>)
+ id 1xQL8X-0001Hr-QZ; Mon, 09 Nov 2026 03:53:59 -0500
+Received: from pps.filterd (m0127841.ppops.net [127.0.0.1])
+ by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6A96BAcn555340; Mon, 9 Nov 2026 00:53:51 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=
+ proofpoint20171006; bh=8PYBFHkJQ9dP4HSOxuTsHA7Dr6ofahTEg9lT1E5MU
+ 7k=; b=p/CaH/sHzObu++OCt+wpNKqKFsTP4GvYoJjRtWRLlqGtmHHCel4WfDdAX
+ KYw1WLI18Q0JZPpi2d5eatj87HoO+hfWOgmQdpYLOC9WLqIqI0Z1xh6yWjm365Kn
+ aoixckVDmPUP8bmkMckIWmNLtAEPoWSHHZ30d3Jl8Wq5nGckBM7qJf+oFmNo0Xdz
+ ZJCONnTs3rXF/O4j4CO50ziN1VCpRDQ3oRQxcll+My5UhPj1DISLIL+j7cFlKRHR
+ Fc/beHhjF7gij4vxlMeSASo4vr0I/RGTd+r4o5mq8EqLyzzwT15xqbhiNrTxukZ/
+ NYfEqeAQH6mq6odPyQh+0Ojxzj/FQ==
+Received: from ch4pr04cu002.outbound.protection.outlook.com
+ (mail-northcentralusazon11023136.outbound.protection.outlook.com
+ [40.107.201.136])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4ht2d9jesb-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Mon, 09 Nov 2026 00:53:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=MVh2QUwx42zq8heYqvQ8VMK8Sv56vJNfoeTav9EjPtSRhE+2gBuL8wHc1A2zBJgU+EYhHZthc30pVwZBniC9DtO0XZVdNuIftzc3PdAIP2Mj90fKUsLzm6SwLrgY0gnusT1pibvvFSXRnzcCVnnOTVD+qa3Usb84biD0AIjxubrpOgt87K0ZcmEym8a6/8mkg44V1UOqCNFJ0YnvNO2jAFP2NG4qPCNs64hg0hbIVvrQRbE2Xp49PiQxYJ6X/K2vYjruZR5EGH72uTcDdD6D8kEpliovAXjw4UgFeRNZaGaGzGEiA0ElLBoQAK1RFw67IpdIqGD2weWHv49OxG70wA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8PYBFHkJQ9dP4HSOxuTsHA7Dr6ofahTEg9lT1E5MU7k=;
+ b=OAfBWbaEcQvJN44mbyozM7722HlSEZzHCsGVn/Ah7xjZipVXmDgw4A0J/vv8TrnZMEpbOEpCYhHZhXS8i3zjB9PhfOgZvTZykTG9YiaKFNsmFCDnKnTfGlN1ZvfRah2/dLz4sPJ7UIGhoOu28wvFFMLDS7MDPj27goLjwQfr62gHN+FIwRZ0jMRMo63lFleukiNC+SgKHkmqxTh6sPkc4/46s0Rt9ZIVpID2XIS2Zm2ZgCUj6RRyRc9Ll4NdklRSLd6KtK6RZRofpvtjqIi7cIerm385dXTa8ripwmJenrHWeZvmTkNXIvlbQ7fkNNs3JDYfaszciKvZhDKZhCTITg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8PYBFHkJQ9dP4HSOxuTsHA7Dr6ofahTEg9lT1E5MU7k=;
+ b=EzsedDm5QcuonaupSUlJ4Gwt8h9C663rVgnyOpmnx7I6j5oFJV3T05fBrxV2pfy6pAdfyXPG3hhWtktG2ab3+TVPP4wW80GOzpokeHxoIJhnSojwsrdAAGAp4phhluNniD2tjPBOp/sHcB2/6v6Q8EkQdnXVC22eegKUkmySnPDVW9b4XCft6V0C32CCXMHWNpSYskQWUPnf+dTyF0fgFRZv5Sepw+DpT8udLCcpGrkhHl908tBru2Gw4eCEKn+SaIrvUiUJnBMPkQVrZScAEM3RRCoT23v2I1dG0HkkazzprZgHLD6RPB4xtfyfdD921wAHdDevDI2cd9JRJdxfpA==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nutanix.com;
+Received: from PH0PR02MB7159.namprd02.prod.outlook.com (2603:10b6:510:16::8)
+ by IA4PR02MB438772.namprd02.prod.outlook.com (2603:10b6:207:13e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.13; Mon, 9 Nov
+ 2026 08:51:44 +0000
+Received: from PH0PR02MB7159.namprd02.prod.outlook.com
+ ([fe80::8e97:bc32:822c:b250]) by PH0PR02MB7159.namprd02.prod.outlook.com
+ ([fe80::8e97:bc32:822c:b250%5]) with mapi id 15.21.0592.010; Mon, 9 Nov 2026
+ 08:51:43 +0000
+Message-ID: <73afe23b-4f22-4165-bd74-ae33b8f8a865@nutanix.com>
+Date: Mon, 9 Nov 2026 08:51:39 +0000
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/8] hw/gpio/pca9552: Convert pin and led properties to
+ class properties
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: marcandre.lureau@redhat.com, milesg@linux.ibm.com, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20261106110440.3552588-1-armbru@redhat.com>
+ <20261106110440.3552588-2-armbru@redhat.com>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+In-Reply-To: <20261106110440.3552588-2-armbru@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BY5PR03CA0006.namprd03.prod.outlook.com
+ (2603:10b6:a03:1e0::16) To PH0PR02MB7159.namprd02.prod.outlook.com
+ (2603:10b6:510:16::8)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/37] Add Arm MPAM emulation
-To: Jonathan Cameron <jonathan.cameron@oss.qualcomm.com>,
- Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: Jonathan Cameron <jic23@kernel.org>,
- Peter Maydell <peter.maydell@linaro.org>, anisinha@redhat.com,
- armbru@redhat.com, eblake@redhat.com, imammedo@redhat.com,
- michael.roth@amd.com, mst@redhat.com, pbonzini@redhat.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <tencent_22E95650AA60C6E59860452C0D61A21F1105@qq.com>
- <CAFEAcA8MyrqWC7=A5Bw0G5G-2J64iTLmfY33dNDLm0jvmRb+Eg@mail.gmail.com>
- <27040691-e4b6-44f3-b588-cbbbee13cde2@huawei.com>
- <CAFEAcA_4xb3CBL9TTAdKMOG_ijWpt9wsveCp0R602VoFaWUH1Q@mail.gmail.com>
- <tencent_82895B2529E419B263EC95C8349389114407@qq.com>
- <CAFEAcA-amrQOM8+qnaxgWLyGNM=vp-vKV=OqqU7Qp17PRiH_KA@mail.gmail.com>
- <501bf5cc-cee1-4593-943d-505003541d41@huawei.com>
- <CAFEAcA8ffgrbh_gUK7wcZW5E8p=ZC+CC=3U23ah+nWHxOGpjrg@mail.gmail.com>
- <20261020013906.0ee141e5@jic23-hlaptop>
- <d9e9f9dc-3ac4-4455-b27a-f9a450d319bf@huawei.com>
- <20261106151424.00000fa2@oss.qualcomm.com>
-Content-Language: en-US
-From: Jinjie Ruan <2118537295@qq.com>
-In-Reply-To: <20261106151424.00000fa2@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.49; envelope-from=2118537295@qq.com;
- helo=out162-62-57-49.mail.qq.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_MUA_MOZILLA=2.309,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR02MB7159:EE_|IA4PR02MB438772:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9d92a31a-c6b8-444a-92d4-08df3e3eadf6
+x-proofpoint-crosstenant: true
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|23010399003|376014|366016|1800799024|4143699003|56012099006|261021123027099003|261021121427099003|261022075727099003|261009223027099003|261102123227099003|10067099003|18002099003|22082099003|6133799003;
+X-Microsoft-Antispam-Message-Info: uoFwc1tUC7PrlaD87dOGdGVRjWsu4H9No1uJYI8L02e2pVG423fO6Qux6fbbPjBTIb4nzX1/MnLC51mWUpON0bAZYQ9jvQdKmh6K4NwD44aR6r41YJo0qamlBTfpUsDMLmBn1Pq2Bc6OdUpevCe3xuT9KhyIEiY1cxrat4G2EuzqD48B5PfE2c2HcdA6UAZvt8ZGM4aTPRYa3OsKl1u/H1iHiO4P7wQcik3bAYTsfqvJZvUepOEOk80cU16k6UQVJq9uh7e1ClboOyYB10jml+TF3Edt8hVMcHou+HZleAzXENpQhk5CrRffMpjVFLhkz1N/ceCcT6LSXPGsuTSifWx1uxrodxCcHXt+vCSDyRiKaKiSTb9dKk2DAWGFAUETS7fQdLSqLEPSnRRlUQFr5Bo0q4ONs2G9sT9a0ER3nbabeYajzo1OL81ug/ttl4WyAv3Q0hLwyjvMvAlrgbVHpOGkJjI4fTewHkqhmHMQ6RWZoU2TW15wHcjl5ugjKnc+jnp63KEyfVVOWAgbC/UgqbZtshxsb+Api6Omnt8vlT7JhUflkXq+/FEnqa+AhjDdym+2GKGHWNCMZ8wpgWR2eYaI1dsbgr5X140JhG4q8cccEboLne+OcQCc124uT3V9n3cvkOhzVB1DeYXOgckAfPGNFbxRxV4EvsRdgr8uBPg=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR02MB7159.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(366016)(1800799024)(4143699003)(56012099006)(261021123027099003)(261021121427099003)(261022075727099003)(261009223027099003)(261102123227099003)(10067099003)(18002099003)(22082099003)(6133799003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RXIrZHJJSFc1L3RlM1R2MVBtUDhHQWljU3NPTWlESnBoNmV0c3kxeVdna2dJ?=
+ =?utf-8?B?aVYrM3lSSHQvcEJ4QUl5VTUwayt1NDlhbGNDOG95dEVJSnYvOXh6d1k5d1ZB?=
+ =?utf-8?B?WFg2bGRrSHU4MW9HTXJvZnZnK3V0TkFpb1RHUVA2KzEzYllOY1pJYmFpUU9v?=
+ =?utf-8?B?TWhNNWR2eThUS1cvVnRaamRJL2tMVkVZOU95SDZnQW4xajFFV1htcWU3a25F?=
+ =?utf-8?B?djdCdTAvTk4wdDZIM1BWc0JjUVcwNzMyclFra1llUnVwVXk5cCtsSm1RWkZ3?=
+ =?utf-8?B?cWJXRlkwOUlhM1RmUmloMHdkT1RQRHUxOUZQbEF4UFg3anUvMmNUaGtTdzlR?=
+ =?utf-8?B?Z3MxME83WTRyV2tObDA0WlhOVGZhQmxXV25wdXB3VDJWa3lYKzkzbzhZU2dW?=
+ =?utf-8?B?YXdDbUZQeHJobytXdkl0TGZUT0VNT3oyR0VzSmdXL3FrczJ5UzZOZGg2aDh5?=
+ =?utf-8?B?T3lFQUNEdmdmMFFaUzZiVE1nby96T2hYZnZvTEJ2SUR4bFJvR0NXOEc1b2VF?=
+ =?utf-8?B?ZDYwMW8vU2Q3Rm5sVGV1dy9XV1lybmlHRDRxWU9lVFkwRThaNVJTTlNvd2VE?=
+ =?utf-8?B?WWpabXViYjBIM0JjelduRmNXRzc1ZnpLNk90b0xpZ25ZZW95azJJMWJyaC9r?=
+ =?utf-8?B?d0ZEN3JnUzJKVm1vSXB1VVNWTXh2RUw4cjhzQnVBQS83dFFRdDREK2pvN2NB?=
+ =?utf-8?B?VnVWcHRPdklKK1k4aEQ1b1RCcTFXaTNUSkNwM1RqeEwzRVAranMxMTJXYzJp?=
+ =?utf-8?B?WDc5SHFpS3VCbnFlUTVrM1hlZDMwRmlCcHdqZ2gwRkx4M0dDdGIzUUM1cWpj?=
+ =?utf-8?B?ZGU4S2FDL3ByU2xKNjJSMHQxWTNESEJsMHAwM1Byc1AwbnI3SEhiNFNQVGRt?=
+ =?utf-8?B?dHRTdXczSmFlaFJyVDg4R1A3V0ZGd3VLMHVWamxyN2k1N1ZmVEx1NWVIYWRR?=
+ =?utf-8?B?VzBHOXAwNVZqLzBOd3lNbG11d3hudFUzdUhVRS9FR2QrM1VwbFFRQWhHY2xn?=
+ =?utf-8?B?cEtRT1ZuOFE0N2NiY2FCYVVMemxDdzc1aFprOEhBQ0NRWGdUMEFlODlvb0E1?=
+ =?utf-8?B?NnlKbUowU3ZEZGx6ajB3NVlEOE82OG9NNEdCVnB0MGhURVRPUW52VjNzOGE4?=
+ =?utf-8?B?WUtmN0dTakxsTUlBM1VlM1NUbTUvZVErNFJQNTF2STRPYTVISXljSGorSXJR?=
+ =?utf-8?B?UjBvTjIzakF4QjkrS01rUXBMbnBMcW1VaGdQSTJPTE84RU8wVHR2bVlvRnlq?=
+ =?utf-8?B?cm9YL1NDaTNmOXZCTks5cGQrYnAvZFNsV1FST3dBTmlaSVd0YW50aDQ5U1Iw?=
+ =?utf-8?B?aytlS3J6OG9QNG1jWWh3a2RHMGtkMlZKZmk0KzFDc0ZOUDF3SHZyQ2JPV09X?=
+ =?utf-8?B?TVcxbTcveE4xY0VDYXI5QWJyd01OWWpMelZZVFFOVEVyeXNYb2xiYXBvblpY?=
+ =?utf-8?B?QXd3SVRVTXJlME5GWUxsSG9xNDBvQXA3RVpVQ05YaXpERmUvV2NmcjZ5RHl3?=
+ =?utf-8?B?cGJRWXl0RHhSdVZaR3RlMCtJOFJQaWhEaDdmUFlhdjRyaENzbGRiNks0ZzU5?=
+ =?utf-8?B?cWppYzY4K3VKL0s3RUF0ZVNONXpMYlFXT004NWtleDJ4SStrb09RY09RWFBW?=
+ =?utf-8?B?Ty84bUkzRDJlNDRqSjNkQjR0Y2tTRWdKa01zTVY5SkNBd2l5SkhrNXBST3d3?=
+ =?utf-8?B?R1RkVGhHSDV6ZGpMWmdyWGtSUHJERzRDbnU1UDFiWnpwMUFlVzBvVzBGTGQ4?=
+ =?utf-8?B?RnE0SnVXY3BjTWpHalJWVDRVSlBRT2t0TEdBV0k5WGEyZnN4d20rNDdSbGRG?=
+ =?utf-8?B?Qm5TeTdtT014SUtMWnZ3VUQvdzA0WFRjQ1VXaG5HV1ZZUWNRMXFOby9lMDJF?=
+ =?utf-8?B?eXdaU1hteG14VDB5RUpDcnhiaE9TdkpNWGYzKzRVV25lVzQyUkxOVXFpZlpl?=
+ =?utf-8?B?alp3d1hwb0dwVElZcExBMG9GOGVMNlNHZHN0Y3NRT1VVS1Vjb1NFS2tsV256?=
+ =?utf-8?B?eXVISDIzTFhndEtBL3N2bXpHWHQ4YUUxamtSbTRuUVRKNTduY1lleU55L3lC?=
+ =?utf-8?B?eTFMZ3dTVGh5bDNOdlczMW9iNmVvcUkzRXlWNHFOUm1XQ0VBRzZSdmlvUktL?=
+ =?utf-8?B?c01WNXNwalBpdE8xTi9uOGIyYTA0YlhEMVZHY3VCcEZoSStxYVFERytCM1pN?=
+ =?utf-8?B?M3M0c2xPWkRzYUQrZGQ1WmtXMStOa1BhQkRuV2p0U2FvN1Zrd2luYW5uVlVm?=
+ =?utf-8?B?Y092bGovcTZNSVY0MUpsOE45cm01ZVhFSExmaDU1ei9wNVhwZ0RtRGJqMTho?=
+ =?utf-8?B?ZkJaQkdPTkpaWXhiWnpCZmxIMnVib1JwTGJtRXNOVzFVTitmSGF0b0c5NVVs?=
+ =?utf-8?Q?pNK8nlrITiPblFvQ=3D?=
+X-Exchange-RoutingPolicyChecked: vGmnp6mq8ncBGySpTly2T9QRuPv+b7MhflEUXtNEyA1qda+4j+WFdKZZxpxNNoNyBMWLv6fVMEce2R1iNkcJa1XZSzOCMzRfQ6gbMLhyJiNxhYaUafWBa8tJh1BzSCem4HYkNs33Fue6V/criB6GSuFFageof9nD2IIM3aNJ0wAKYG5GZWJMbbjshC4P3dOGmoq8o2JwefILwEiymuUmnRghgyWn9iPo+PPU1BrFj4FcW1ts6OAKE3ueKn66YmhyPk01ePNdAsdMTrShW2Dn9uDjTNJVyUuRff01B0mpDwmy0qgLno6nv/dNHZb+ud/dcZ5DCdfuq+lSeUU6KTkUlA==
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9d92a31a-c6b8-444a-92d4-08df3e3eadf6
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR02MB7159.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Nov 2026 08:51:43.9029 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Y7ndIPO/IgJmzJpa5tjBPNOEC8ADzt8Dyci1xNwL+Xj+icxBwGvbfJICpFm43vFHcwMTagg8H9Jw+JIjnKa01JE/BPABbSXGXxQZtjRGf+M=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA4PR02MB438772
+X-Authority-Analysis: v=2.4 cv=U5IHnuru c=1 sm=1 tr=0 ts=6af18a1f cx=c_pps
+ a=Ec8ZIgkrxK8GE6F7YKoxaA==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=0kUYKlekyDsA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=jxMXjlTPpCISP5mWtjnE:22
+ a=20KFwNOVAAAA:8 a=64Cc0HZtAAAA:8 a=5hhQwk3i11Gfv3amEC8A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA5MDAzNSBTYWx0ZWRfX/cp7dh5qEWE3
+ 5WnmiRDoHlGzrsMTAZUqkbPntlzgR69gbbMg7pTUbjCZkGYYpNU5NollV1fYB2EewwKMw4d+qFB
+ TxisiQMre1eTQhRcWwz3QRhooKPWiCk=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDAzNSBTYWx0ZWRfX2fVMXldwXtgb
+ x/58MGhsKoKVBJL6jsXVepBuzH7gw0xQjoMqz1eozwrx1o41PUD/Eh8yDmYbtXllDrYOeZuqWff
+ 4D36WdM2NMeDuyEPOg5fVIJBb34F4OT+CpYPI3Nt5k2tELBVbEZ0GgOoxAJkm6/9Y3o+IOAZeVh
+ V1BYsdli/jh/mr1CApmUvEsFwFy0W9hgqWq3ZjzyrndtzwaLVf8w+yTPVZc3hHX0xIQXGxWNY1y
+ 7b8l5Uv3oONCxh3dL25qhozHdSi4zLOO7vHtSb0msuadLfnT3gvDVnlNepVVAJR8e/DkBPBiQS3
+ /afcrur3YkP7VRiBjfv/XPlBDurKQqs6xBbE30ISy7ilKyGqagKSEGJ022hveoraKR5rVk4soIc
+ 1JEObt9ZNtihfn6KSRWvBMjLlV1hcdsKR8C6xA62wPSlnNvdzbKy+U4578plGfHsq7nE2IqvKz6
+ ShNLoeTXZi2qwks3ujA==
+X-Proofpoint-ORIG-GUID: s90ysKpQ5intnUVapoi5WuCMhcq-1KrE
+X-Proofpoint-GUID: s90ysKpQ5intnUVapoi5WuCMhcq-1KrE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-09_03,2026-11-06_01,2025-10-01_01
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.155.12;
+ envelope-from=mark.caveayland@nutanix.com; helo=mx0b-002c1b01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,597 +191,88 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FORGED_MUA_MOZILLA,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On 06/11/2026 11:04, Markus Armbruster wrote:
 
-
-在 2026/11/7 07:14, Jonathan Cameron 写道:
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>   hw/gpio/pca9552.c | 19 +++++++++++--------
+>   1 file changed, 11 insertions(+), 8 deletions(-)
 > 
->>
->> Hi Jonathan,
->>
->>>
->>> FWIW the much more minimal emulation that I posted years ago and
->>> which I few crumbs of in here came up at plumbers this year with
->>
->> With your foundational patch, it is very convenient to extend
->> other functionality.
->>
->>> an engineer from yet another company asking if I could look at
->>> rebasing and upstreaming because they also found it very useful.
->>
->> Glad to hear that someone else is also interested in QEMU emulation of MPAM.
->>
->>> I was trying to work out if I could fit that into my todo list
->>> or whether to ask a colleague to do it.
->>>
->>> As such I'm very pleased to see this surface a few days later!
->>> Even what I had was very useful for testing so I'm with this
->>
->> Feel the same way when developing new features or adapting test cases.
->>
->>> much extended feature set I'm not surprised to hear even more
->>> issues have shaken out.
->>>
->>> It might take me a little while to get time to look at this series
->>> but I definitely plan on doing so!
->>
->> Look forward to your review and suggestions.
-> 
-> I perhaps got a little carried away and decided to see how good an LLM
-> was at generating test cases for this... Was a little painful but
-> in the end I think helpful.
-> 
-> I also span a bunch of runtime options up to exercise all the optional
-> properties, field widths etc.  That adds about 600 lines of code and
-> 25 machine properties (assuming just memory controller, l2 and l3 caches
-> + all homogeneous.)  I might clean that up and post at some point but
-> it feels like an optional stage 2 on what you have here!
-
-Hi Jonathan,
-
-Thanks for doing this.
-
-> 
-> First up, bunch of fixes related to this.  The field access width ones
-> are probably most important and then the various width and HAS_ checks.
-> I haven't checked these all closely but some are obviously fine.
-
-Will add these fix in v2, thank you!
-
-> 
-> Because it might be helpful, the test follows.  I'm not suggesting this be
-> included for now anyway but might help you with v2!
-> 
-> Maybe long term we include a self test, but one that has had more review
-> than I've given this before sharing.
-
-Thank you! have a selftest is good to find these problems.
-
-Best regards,
-Jinjie
-
-> 
-> Easy to run with:
-> 
->   QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/arm-mpam-test --verbose
-> 
-> diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
-> index f4f40cacf0..15280c44a0 100644
-> --- a/hw/arm/mpam.c
-> +++ b/hw/arm/mpam.c
-> @@ -711,6 +711,37 @@ void mpam_cache_fill_info(Object *obj, MpamCacheInfo *info)
->   
+> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+> index 90ccf5170e..65a718ef31 100644
+> --- a/hw/gpio/pca9552.c
+> +++ b/hw/gpio/pca9552.c
+> @@ -557,10 +557,8 @@ static void pca9535_reset_hold(Object *obj, ResetType type)
+>       s->len = 0;
 >   }
 >   
-> +/*
-> + * IHI0099 9.4: a width-reported fraction field occupies the most
-> + * significant 'wd' bits of its 16-bit field; the remaining low bits are
-> + * RAZ/WI. Returns a mask of the bits software is allowed to set.
-> + */
-> +static uint32_t mpam_fracwd_mask(uint32_t wd)
-> +{
-> +    if (wd >= 16) {
-> +        return 0xffffu;
-> +    }
-> +    return ~((1u << (16 - wd)) - 1) & 0xffffu;
-> +}
-> +
-> +/*
-> + * IHI0099 9.4 (MPAMCFG_CPBM<n>/MPAMCFG_MBW_PBM<n>): bit x of register n is
-> + * writable iff (n*32)+x <= wd. Returns the writable-bit mask for word
-> + * 'array_offset' of such a bitmap, given the overall bitmap width 'wd'.
-> + */
-> +static uint32_t mpam_bitmap_mask(uint32_t wd, uint32_t array_offset)
-> +{
-> +    int64_t remaining = (int64_t)wd + 1 - 32 * (int64_t)array_offset;
-> +
-> +    if (remaining <= 0) {
-> +        return 0;
-> +    }
-> +    if (remaining >= 32) {
-> +        return 0xffffffffu;
-> +    }
-> +    return (1u << remaining) - 1;
-> +}
-> +
->   static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
->                                     unsigned size)
+> -static void pca955x_initfn(Object *obj)
+> +static void pca955x_pin_init(PCA955xClass *k)
 >   {
-> @@ -781,14 +812,38 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
->       case A_MPAMF_MSMON_IDR:
->           return mpamf->msmon_idr;
->       case A_MPAMF_CSUMON_IDR:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_CSU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of CSUMON_IDR with no CSU monitor support\n");
-> +            return 0;
-> +        }
->           return mpamf->csumon_idr;
->       case A_MPAMF_MBWUMON_IDR:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_MBWU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of MBWUMON_IDR with no MBWU monitor support\n");
-> +            return 0;
-> +        }
->           return mpamf->mbwumon_idr;
->       case A_MSMON_CFG_MON_SEL:
->           return s->mon_sel;
->       case A_MSMON_CFG_CSU_FLT:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_CSU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of CSU_FLT with no CSU monitor support\n");
-> +            return 0;
-> +        }
->           return mpam_csu_mon(s, mpam_mon_ris(s))->flt;
->       case A_MSMON_CFG_CSU_CTL:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_CSU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of CSU_CTL with no CSU monitor support\n");
-> +            return 0;
-> +        }
->           return mpam_csu_mon(s, mpam_mon_ris(s))->ctl;
->       case A_MSMON_CSU ... (A_MSMON_CSU + 3):
->       case A_MSMON_CSU_CAPTURE ... (A_MSMON_CSU_CAPTURE + 3):
-> @@ -802,12 +857,26 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
->           return extract32(v, off * 8, 32 - off * 8);
+> -    PCA955xClass *k = PCA955X_GET_CLASS(obj);
+> -
+>       assert(k->pin_count <= PCA955X_PIN_COUNT_MAX);
+>       for (int ix = 0; ix < k->pin_count; ix++) {
+>           char *name;
+> @@ -568,13 +566,17 @@ static void pca955x_initfn(Object *obj)
+>           if (k->has_led_support) {
+>               /* LED variant: expose the LED selector state as led%d. */
+>               name = g_strdup_printf("led%d", ix);
+> -            object_property_add(obj, name, "str", &str_type_info,
+> -                                pca955x_get_led, pca955x_set_led, NULL, NULL);
+> +            object_class_property_add(OBJECT_CLASS(k), name,
+> +                                      "str", &str_type_info,
+> +                                      pca955x_get_led, pca955x_set_led,
+> +                                      NULL, NULL);
+>           } else {
+>               /* GPIO variant: expose the pin logic level as pin%d. */
+>               name = g_strdup_printf("pin%d", ix);
+> -            object_property_add(obj, name, "str", &str_type_info,
+> -                                pca955x_get_pin, pca955x_set_pin, NULL, NULL);
+> +            object_class_property_add(OBJECT_CLASS(k), name,
+> +                                      "str", &str_type_info,
+> +                                      pca955x_get_pin, pca955x_set_pin,
+> +                                      NULL, NULL);
+>           }
+>           g_free(name);
 >       }
->       case A_MSMON_CFG_MBWU_FLT:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_MBWU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of MBWU_FLT with no MBWU monitor support\n");
-> +            return 0;
-> +        }
->           return mpam_mbwu_mon(s, mpam_mon_ris(s))->flt;
->       case A_MSMON_CFG_MBWU_CTL:
+> @@ -640,6 +642,7 @@ static void pca9552_class_init(ObjectClass *oc, const void *data)
+>       pc->max_reg = PCA9552_LS3;
+>       pc->pin_count = 16;
+>       pc->has_led_support = true;
+> +    pca955x_pin_init(pc);
+>   }
+>   
+>   static void pca95x5_class_init(ObjectClass *oc, const void *data)
+> @@ -653,13 +656,13 @@ static void pca95x5_class_init(ObjectClass *oc, const void *data)
+>       pc->max_reg = PCA9535_CONFIG1;
+>       pc->pin_count = 16;
+>       pc->has_led_support = false;
+> +    pca955x_pin_init(pc);
+>   }
+>   
+>   static const TypeInfo pca955x_types[] = {
 >       {
-> -        MpamMbwuMon *m = mpam_mbwu_mon(s, mpam_mon_ris(s));
-> -        uint32_t ctl = m->ctl;
-> +        MpamMbwuMon *m;
-> +        uint32_t ctl;
->   
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_MBWU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of MBWU_CTL with no MBWU monitor support\n");
-> +            return 0;
-> +        }
-> +        m = mpam_mbwu_mon(s, mpam_mon_ris(s));
-> +        ctl = m->ctl;
->           if (m->oflow) {
->               ctl |= R_MSMON_CFG_MBWU_CTL_OFLOW_STATUS_MASK;
->           }
-> @@ -852,11 +921,24 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
->       case A_MPAMF_ERR_MSI_ATTR:
->           return mpamf->err_msi_attr;
->       case A_MPAMF_ECR:
-> +        if (FIELD_EX64(mpamf->idr, MPAMF_IDR, EXT) &&
-> +            !FIELD_EX64(mpamf->idr, MPAMF_IDR, HAS_ESR)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected read of ECR with no ESR support\n");
-> +            return 0;
-> +        }
->           return s->ecr;
->       case A_MPAMF_ESR:
-> +        if (FIELD_EX64(mpamf->idr, MPAMF_IDR, EXT) &&
-> +            !FIELD_EX64(mpamf->idr, MPAMF_IDR, HAS_ESR)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected read of ESR with no ESR support\n");
-> +            return 0;
-> +        }
->           return s->esr;
->       case A_MPAMF_ESR + 0x4:
-> -        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, EXT)) {
-> +        if (!FIELD_EX64(mpamf->idr, MPAMF_IDR, EXT) ||
-> +            !FIELD_EX64(mpamf->idr, MPAMF_IDR, HAS_EXTD_ESR)) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected read of extended ESR\n");
->               return 0;
-> @@ -876,33 +958,59 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
->           return mpamf->cfg_intpartid[s->part_sel];
->       }
->       case A_MPAMF_MPAMCFG_CMAX:
-> -        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART)) {
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART) ||
-> +            FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR, NO_CMAX)) {
->               qemu_log_mask(LOG_UNIMP,
-> -                "MPAM: Unexpected read of CMAX with no CCAP support\n");
-> +                "MPAM: Unexpected read of CMAX with no CMAX support\n");
->               return 0;
->           }
->           return mpamf->per_nrw_id[nrw_part_sel].cfg_cmax;
->       case A_MPAMF_MPAMCFG_CMIN:
-> -        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART)) {
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART) ||
-> +            !FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR, HAS_CMIN)) {
->               qemu_log_mask(LOG_UNIMP,
-> -                "MPAM: Unexpected read of CMIN with no CCAP support\n");
-> +                "MPAM: Unexpected read of CMIN with no CMIN support\n");
->               return 0;
->           }
->           return mpamf->per_nrw_id[nrw_part_sel].cfg_cmin;
->       case A_MPAMF_MPAMCFG_CASSOC:
-> -        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART)) {
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART) ||
-> +            !FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR, HAS_CASSOC)) {
->               qemu_log_mask(LOG_UNIMP,
-> -                "MPAM: Unexpected read of CASSOC with no CCAP support\n");
-> +                "MPAM: Unexpected read of CASSOC with no CASSOC support\n");
->               return 0;
->           }
->           return mpamf->per_nrw_id[nrw_part_sel].cfg_cassoc;
->       case A_MPAMF_MPAMCFG_MBW_MIN:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MIN)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of MBW_MIN with no MBW_MIN support\n");
-> +            return 0;
-> +        }
->           return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min;
->       case A_MPAMF_MPAMCFG_MBW_MAX:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MAX)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of MBW_MAX with no MBW_MAX support\n");
-> +            return 0;
-> +        }
->           return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max;
->       case A_MPAMF_MPAMCFG_PRI:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_PRI_PART)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of CFG_PRI with no PRI PART support\n");
-> +            return 0;
-> +        }
->           return mpamf->per_nrw_id[nrw_part_sel].cfg_pri;
->       case A_MPAMF_MPAMCFG_MBW_PROP:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PROP)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                "MPAM: Unexpected read of MBW_PROP with no MBW_PROP support\n");
-> +            return 0;
-> +        }
->           return mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop;
->       case A_MPAMF_MPAMCFG_CPBM0...
->           (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
-> @@ -922,9 +1030,10 @@ static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
->       {
->           uint32_t array_offset;
->   
-> -        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART)) {
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PBM)) {
->               qemu_log_mask(LOG_UNIMP,
-> -                "MPAM: Unexpected read of MBW_PBM with no MBW_PART support\n");
-> +                "MPAM: Unexpected read of MBW_PBM with no MBW_PBM support\n");
->               return 0;
->           }
->           array_offset = (offset - A_MPAMF_MPAMCFG_MBW_PBM0) / sizeof(uint32_t);
-> @@ -1020,70 +1129,147 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->               FIELD_EX32(value, MPAMF_MPAMCFG_INTPARTID, INTPARTID);
->           return;
->       case A_MPAMF_MPAMCFG_CMAX:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART) ||
-> +            FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR, NO_CMAX)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to CMAX when not supported\n");
-> +            return;
-> +        }
->           if (value & ~MPAMF_MPAMCFG_CMAX_WRITE_MASK) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to CMAX Mask=%x Value=%lx\n",
->                             MPAMF_MPAMCFG_CMAX_WRITE_MASK, value);
->           }
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_cmax = value;
-> +        {
-> +            uint32_t wd = FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
-> +                                      CMAX_WD);
-> +            uint32_t valid = mpam_fracwd_mask(wd);
-> +
-> +            if (FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
-> +                            HAS_CMAX_SOFTLIM)) {
-> +                valid |= R_MPAMF_MPAMCFG_CMAX_SOFTLIM_MASK;
-> +            }
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_cmax = value & valid;
-> +        }
->           return;
->       case A_MPAMF_MPAMCFG_CMIN:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART) ||
-> +            !FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR, HAS_CMIN)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to CMIN when not supported\n");
-> +            return;
-> +        }
->           if (value & ~MPAMF_MPAMCFG_CMIN_WRITE_MASK) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to CMIN Mask=%x Value=%lx\n",
->                             MPAMF_MPAMCFG_CMIN_WRITE_MASK, value);
->           }
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_cmin = value;
-> +        {
-> +            uint32_t wd = FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
-> +                                      CMAX_WD);
-> +
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_cmin =
-> +                value & mpam_fracwd_mask(wd);
-> +        }
->           return;
->       case A_MPAMF_MPAMCFG_CASSOC:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_CCAP_PART) ||
-> +            !FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR, HAS_CASSOC)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to CASSOC when not supported\n");
-> +            return;
-> +        }
->           if (value & ~MPAMF_MPAMCFG_CASSOC_WRITE_MASK) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to CASSOC Mask=%x Value=%lx\n",
->                             MPAMF_MPAMCFG_CASSOC_WRITE_MASK, value);
->           }
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_cassoc = value;
-> +        {
-> +            uint32_t wd = FIELD_EX32(mpamf->ccap_idr, MPAMF_CCAP_IDR,
-> +                                      CASSOC_WD);
-> +
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_cassoc =
-> +                value & mpam_fracwd_mask(wd);
-> +        }
->           return;
->       case A_MPAMF_MPAMCFG_MBW_MIN:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MIN)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to MBW_MIN when not supported\n");
-> +            return;
-> +        }
->           if (value & ~MPAMF_MPAMCFG_MBW_MIN_WRITE_MASK) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to MBW_MIN Mask=%x Value=%lx\n",
->                             MPAMF_MPAMCFG_MBW_MIN_WRITE_MASK, value);
->           }
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min = value;
-> +        {
-> +            uint32_t wd = FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, BWA_WD);
-> +
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_min =
-> +                value & mpam_fracwd_mask(wd);
-> +        }
->           return;
->       case A_MPAMF_MPAMCFG_MBW_MAX:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_MAX)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to MBW_MAX when not supported\n");
-> +            return;
-> +        }
->           if (value & ~MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to MBW_MAX Mask=%x Value=%lx\n",
->                             MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK, value);
->           }
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max = value;
-> +        {
-> +            uint32_t wd = FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, BWA_WD);
-> +            uint32_t valid = mpam_fracwd_mask(wd) |
-> +                              R_MPAMF_MPAMCFG_MBW_MAX_HARDLIM_MASK;
-> +
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_max = value & valid;
-> +        }
->           return;
->       case A_MPAMF_MPAMCFG_PRI:
->           if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_PRI_PART)) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to CFG_PRI when !HAS_PRI_PART\n");
-> -        } else {
-> -            if (!FIELD_EX32(mpamf->pri_idr, MPAMF_PRI_IDR, HAS_DSPRI) &&
-> -                FIELD_EX32(value, MPAMF_MPAMCFG_PRI, DSPRI)) {
-> -                qemu_log_mask(LOG_UNIMP,
-> -                              "MPAM: Unexpected write to CFGP_PRI DSPRI when !HAS_DSPRI\n");
-> -            }
-> -            if (!FIELD_EX32(mpamf->pri_idr, MPAMF_PRI_IDR, HAS_INTPRI) &&
-> -                FIELD_EX32(value, MPAMF_MPAMCFG_PRI, INTPRI)) {
-> -                qemu_log_mask(LOG_UNIMP,
-> -                              "MPAM: Unexpected write to CFGP_PRI INTPRI when !HAS_INTPRI\n");
-> -            }
-> +            return;
-> +        }
-> +        {
-> +            uint32_t intpri_wd = FIELD_EX32(mpamf->pri_idr, MPAMF_PRI_IDR,
-> +                                             INTPRI_WD);
-> +            bool has_dspri = FIELD_EX32(mpamf->pri_idr, MPAMF_PRI_IDR,
-> +                                        HAS_DSPRI);
-> +            uint32_t dspri_wd = FIELD_EX32(mpamf->pri_idr, MPAMF_PRI_IDR,
-> +                                            DSPRI_WD);
-> +            uint32_t valid = mpam_fracwd_mask(intpri_wd) |
-> +                              (has_dspri ?
-> +                               (mpam_fracwd_mask(dspri_wd) << 16) : 0);
-> +
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_pri = value & valid;
->           }
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_pri = value;
->           return;
->       case A_MPAMF_MPAMCFG_MBW_PROP:
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PROP)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to MBW_PROP when not supported\n");
-> +            return;
-> +        }
->           if (value & ~MPAMF_MPAMCFG_MBW_PROP_WRITE_MASK) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to MBW_PROP Mask=%x Value=%lx\n",
->                             MPAMF_MPAMCFG_MBW_MAX_WRITE_MASK, value);
->           }
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop = value;
-> +        {
-> +            uint32_t wd = FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, BWA_WD);
-> +            uint32_t valid = mpam_fracwd_mask(wd) |
-> +                              R_MPAMF_MPAMCFG_MBW_PROP_EN_MASK;
-> +
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_prop = value & valid;
-> +        }
->           return;
->       case A_MPAMF_MPAMCFG_CPBM0...
->           (A_MPAMF_MPAMCFG_CPBM0 + ((MPAM_CACHE_PART + 31) / 32 - 1) * 4):
-> @@ -1105,15 +1291,21 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->       {
->           uint32_t array_offset;
->   
-> -        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART)) {
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MBW_PART) ||
-> +            !FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR, HAS_PBM)) {
->               qemu_log_mask(LOG_UNIMP,
-> -                          "MPAM: Unexpected write to MBW_PBM when !HAS_MBW_PART\n");
-> +                          "MPAM: Unexpected write to MBW_PBM when not supported\n");
->               return;
->           }
-> -        /* TODO: Figure out write mask to check this stays in write bits */
->           array_offset = (offset - A_MPAMF_MPAMCFG_MBW_PBM0) / sizeof(uint32_t);
->   
-> -        mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_pbm[array_offset] = value;
-> +        {
-> +            uint32_t wd = FIELD_EX32(mpamf->mbw_idr, MPAMF_MBW_IDR,
-> +                                      BWPBM_WD);
-> +
-> +            mpamf->per_nrw_id[nrw_part_sel].cfg_mbw_pbm[array_offset] =
-> +                value & mpam_bitmap_mask(wd, array_offset);
-> +        }
->           return;
->       }
->       case A_MSMON_CFG_MON_SEL:
-> @@ -1151,6 +1343,12 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->       {
->           uint32_t partid = FIELD_EX32(value, MSMON_CFG_MBWU_FLT, PARTID);
->   
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_MBWU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to MBWU_FLT with no MBWU monitor support\n");
-> +            return;
-> +        }
->           if (partid >= s->num_partid) {
->               qemu_log_mask(LOG_GUEST_ERROR,
->                             "MPAM: MBWU_FLT PARTID %d out of range\n", partid);
-> @@ -1166,9 +1364,16 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->       }
->       case A_MSMON_CFG_MBWU_CTL:
->       {
-> -        MpamMbwuMon *m = mpam_mbwu_mon(s, mpam_mon_ris(s));
-> +        MpamMbwuMon *m;
->   
-> -        m->ctl = value;
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_MBWU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to MBWU_CTL with no MBWU monitor support\n");
-> +            return;
-> +        }
-> +        m = mpam_mbwu_mon(s, mpam_mon_ris(s));
-> +        m->ctl = value & ~0x00040f00u;
->           if (value & R_MSMON_CFG_MBWU_CTL_OFLOW_STATUS_MASK) {
->               m->oflow = false;               /* write-one-to-clear */
->           }
-> @@ -1190,6 +1395,12 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->       {
->           uint32_t partid = FIELD_EX32(value, MSMON_CFG_CSU_FLT, PARTID);
->   
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_CSU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to CSU_FLT with no CSU monitor support\n");
-> +            return;
-> +        }
->           if (partid >= s->num_partid) {
->               qemu_log_mask(LOG_GUEST_ERROR,
->                             "MPAM: CSU_FLT PARTID %d out of range\n", partid);
-> @@ -1204,7 +1415,13 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->           return;
->       }
->       case A_MSMON_CFG_CSU_CTL:
-> -        mpam_csu_mon(s, mpam_mon_ris(s))->ctl = value;
-> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_MSMON) ||
-> +            !FIELD_EX32(mpamf->msmon_idr, MPAMF_MSMON_IDR, MSMON_CSU)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to CSU_CTL with no CSU monitor support\n");
-> +            return;
-> +        }
-> +        mpam_csu_mon(s, mpam_mon_ris(s))->ctl = value & ~0x7ffc0000u;
->           return;
->       case A_MSMON_CSU:
->       case A_MSMON_CSU_CAPTURE:
-> @@ -1220,6 +1437,12 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->                         offset);
->           return;
->       case A_MPAMF_ECR:
-> +        if (FIELD_EX64(mpamf->idr, MPAMF_IDR, EXT) &&
-> +            !FIELD_EX64(mpamf->idr, MPAMF_IDR, HAS_ESR)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to ECR with no ESR support\n");
-> +            return;
-> +        }
->           if (value & ~MPAMF_ECR_WRITE_MASK) {
->               qemu_log_mask(LOG_UNIMP,
->                             "MPAM: Unexpected write to ECR Mask=%x Value=%lx\n",
-> @@ -1230,16 +1453,28 @@ static void mpam_msc_write_reg(void *opaque, hwaddr offset, uint64_t value,
->           mpam_msc_update_err_irq(s);
->           return;
->       case A_MPAMF_ESR:
-> +        if (FIELD_EX64(mpamf->idr, MPAMF_IDR, EXT) &&
-> +            !FIELD_EX64(mpamf->idr, MPAMF_IDR, HAS_ESR)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to ESR with no ESR support\n");
-> +            return;
-> +        }
->           /*
->            * Software clears an error by writing ERRCODE as zero; writing a
->            * non-zero ERRCODE activates the level error interrupt (8.2).
->            */
-> -        s->esr = deposit64(s->esr, 0, 32, value);
-> +        s->esr = deposit64(s->esr, 0, 32, value & ~0x70000000u);
->           mpam_msc_sync_esr_ecr(s);
->           mpam_msc_update_err_irq(s);
->           return;
->       case A_MPAMF_ESR + 0x4:
-> -        s->esr = deposit64(s->esr, 32, 32, value);
-> +        if (!FIELD_EX64(mpamf->idr, MPAMF_IDR, EXT) ||
-> +            !FIELD_EX64(mpamf->idr, MPAMF_IDR, HAS_EXTD_ESR)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "MPAM: Unexpected write to extended ESR\n");
-> +            return;
-> +        }
-> +        s->esr = deposit64(s->esr, 32, 32, value & ~0xfffffff0u);
->           mpam_msc_sync_esr_ecr(s);
->           mpam_msc_update_err_irq(s);
->           return;
+>           .name          = TYPE_PCA955X,
+>           .parent        = TYPE_I2C_SLAVE,
+> -        .instance_init = pca955x_initfn,
+>           .instance_size = sizeof(PCA955xState),
+>           .class_init    = pca955x_class_init,
+>           .class_size    = sizeof(PCA955xClass),
+
+Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+
+
+ATB,
+
+Mark.
 
 

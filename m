@@ -1,81 +1,79 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B90C606A31C
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 00:41:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2B6E9606A31C
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 00:41:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=bO52jyDg
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=CkfHUSiL
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQDS8-0005p8-Dh; Sun, 08 Nov 2026 19:41:41 -0500
+	id 1xQDRr-0005hJ-A4; Sun, 08 Nov 2026 19:41:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xQDRv-0005ji-QL
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:28 -0500
-Received: from ci-2003k-snip6-4.eps.apple.com ([2a01:b747:3005:200::6b]
+ id 1xQDRq-0005ga-35
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:22 -0500
+Received: from ci-2005g-snip6-5.eps.apple.com ([2a01:b747:3005:202::44]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xQDRr-0006MX-Jb
- for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:26 -0500
+ id 1xQDRo-0006LK-4d
+ for qemu-arm@nongnu.org; Sun, 08 Nov 2026 19:41:21 -0500
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-2 (Postfix) with ESMTPS id
- 56386180010F; Mon, 09 Nov 2026 00:41:17 +0000 (UTC)
-X-ICL-RepId: 01a1bdc0-94f0-7d9b-9534-7ad2a988e152
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtMHVUDRQtBF0AGTVIPDx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQFBfHA4YWRtAFV0RUBlWCV4VFx5BTUUID0cZEFYBWFZdBU0aXBhZDxwTUFZaDlsERxQXG1wAFxtGAgQjAl8ARQJeCVYBMBcPVk1MFkMfUg9bE00ZUQFSRVQCGRVaCQpXAEALTgJcB1ICQA1JA1UZUwdICUAeVRoGXRhYFVYJdx5cAEsdVwRUH1MSVR0dC0VVEgRACFZQVB5BBFYVbAlYBlMZVw==
+ 700F218007D8; Mon, 09 Nov 2026 00:41:15 +0000 (UTC)
+X-ICL-RepId: 01a1bdc0-8d9c-785d-ad8b-147b07a3ac45
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtMHVUDRQtBF0AGTVIPDx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQFBfHA4YWRtAFV0RUBlWCV4VFx5BTUUID0YZEFYBWFZdBU0aXBhZDxwTUFZaDlsERxQXG1wAFxtGAgQjAl8ARQJeCVYBMBcPVk1MFkMfUg9bE00ZUQFSRVQCGRVaCQpXAEALTgJcB1ICQA1JA1UZUwdICUAeWBoGXRhYFVYJdx5cAEsdVwRUH1MSVR0dC0VVEgRACFZQVB5BBFYVbAlYBlMZVw==
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1794184878; x=1825720878;
- bh=msvtbRnkNcds4kjimnMrSS+ln0rONrR/84Sl5Z/Nyh8=;
+ s=sig1; t=1794184876; x=1825720876;
+ bh=4MtoiGWVHD1ql7ktrdOMb3tf+OVOyyTmcQKxYtuN+0U=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=bO52jyDg8Qs4x1JPpbdTuWLZPmkSxOUGgZjNMI7RjTLx1zzC7sB0B2Xz7Kf866Tswzjdu4KffbgbhQU7p0eopPzYFYV/iCX0xrk7UF8aY5g8WTxWBtu4pDPc1K1QIKgiLVKctXcCpJ0dTN9wslMpFTU3tJTqecuM0F6iLp+CiyegzkYdIzohsiEWIcqG3nyfBrBDU/9rf9TYXS3ZMzjfHToTWLT+yJUYaUv7XWcDNGt9ZYMNe5c7wjCZFCVULdo1T8Qrfc6l/277YrkRc9oZ3St0pPmd2L1IPzXJ0fMZqySvNSA1GIEPX/rR6rAZEPWrt/HQvrlukXi1hfMKgj8oCQ==
+ b=CkfHUSiL01XYvp6QGMipIp8NzM0Qm8gGdNybty55Goj8G0NqVrdeirYCvcgvco/PYCHTxOhYh4ngFuERcbsnzWgUKefL4DzsHeBLzIUh6vyj3BDo0NSmgvtyigiRRHt0+Nj/GGYkgOi75fp7aPJdRxOFUpX+4iHFONo9rYUp0fPEGQx2N81AH1T0KS4BH9Qx/8SCaEzPqh4BTmQGw5XALa4MQqK+3VuR9s86JPmZ2J0AVc1H+d/K0B21NztNMPoTI06wA6CcxgbpFmf96aV+isKRpVmokV5G/otaQda11KQ54zda4zsHVxG0N11C7iN3jr64aFSZFxrE/drZlvTZSg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.156.36])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-2 (Postfix) with ESMTPSA id
- 655E318007C0; Mon, 09 Nov 2026 00:41:16 +0000 (UTC)
+ B123F18007F4; Mon, 09 Nov 2026 00:41:14 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
- Boden Randin <bodenrandin1@gmail.com>
-Subject: [PULL 07/13] whpx: i386: avoid updating hflags for vmexits
-Date: Sun,  8 Nov 2026 17:41:02 -0700
-Message-ID: <20261109004108.85808-8-mohamed@unpredictable.fr>
+ Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org
+Subject: [PULL 04/13] whpx: i386: fix TPR encodings for local APIC
+Date: Sun,  8 Nov 2026 17:40:59 -0700
+Message-ID: <20261109004108.85808-5-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20261109004108.85808-1-mohamed@unpredictable.fr>
 References: <20261109004108.85808-1-mohamed@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 4ltYpodwaV1Y7shP9F1xAIpgHuDKA8n-
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDAwMSBTYWx0ZWRfX29ku8tMcGuZd
- 9+L3ONFgPEeX7g3LyC+S9TYelJ3Fq2nhcKLLiigbsPxQbiw8c9V0toq9EyXZ9WXb8ilSHTPA7tS
- Z5QL2sCx0SG2FCCqQgXsvseAvQjW5VlxU0jezg7NB7Zkex+G1c2DO7+6u8RpWhRPFEJDjUsp5mO
- MT8sM/M9WsLikEPSyHgk6gelwipRVXU870XPIe3i7brESt2v3s6jAPYMIRv6Q+uULG2k8iVwBqJ
- C5DAe6WucumWQJCXpWho9igy0tzK8E0wUl0F4TYOwxD4I3koocIB3jM4MQRjZno4UjR46TEpDSl
- qVM+upNencx6lE0WkxGFJtVIY95Smj5dIbeY11gn9perc8vjNIBZizTbGOs0nY=
-X-Authority-Info-Out: v=2.4 cv=X5Zf6WTe c=1 sm=1 tr=0 ts=6af116ad
+X-Authority-Info-Out: v=2.4 cv=UJLQ3Sfy c=1 sm=1 tr=0 ts=6af116ab
  cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
  a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=pGLkceISAAAA:8 a=XFq3rTXSGl1-eYzejacA:9
-X-Proofpoint-ORIG-GUID: 4ltYpodwaV1Y7shP9F1xAIpgHuDKA8n-
-X-JNJ: AAAAAAABPH02SL0Xahkvci3GYjjO9SyzWHNvoFk/qY3ZOSpcLQIqBY2+6CQ1ykQwYizJO9
- K80D/msVp6KDk5vEHxbMVbjGFYNhiCjDMnqPaLIXtRG//60RZ5WAuim4sCy6h62GtgpFbG
- X/FUdmb1AGtHQwDg7uneit55eObco7wnSSLAJEfQNSNOnq7OL1ev95k40D+hCUxRbFEq/5
- I07jV029NKCSNLjDEU9KCePMYtMDNEAaqtXw1ih7JbAw1mO1BC2SfzbLFZWKoyt4nr6nyc
- kEb3P3GvfUjuEewnGdwpKNWujXueg9THqED1LmApFyYuzSjFTX5ZXXSNllFKQr/Cc/jkNU
- zZea+zQMoNx7ATz7V/mUV8qO3hBT2zS7xzpuxRbtkiajN4Ydcq9xosSLe+UKhJmE9fQK1n
- tfMpI/qHrMufOfaFp+DqMetthRr5s725WQPSMMTJ4wRnoy+G+wy2JGCowqvu/p7QEG6PsA
- JPwoepBuI3S1z0B55Mt+0hG3TRKbBHhFaSNl2hyR30lciEnn3c0+5cfdeGqXExstw97N6m
- atY/l9g9gPt5vbR/VnoJF+XLIHt7D2rI4BkezHEiArMF3VW0DH77Wa2xgXSwqPddPTpI1L
- kTwn5F/mgzSE8ZvLa9+hapXqhIbydnpy3KTJ+oWVkcCRBwLa39a+xjf3HgKltdn0//mBh/
- rf/S0WqSwQ13VhKRjYME5ojv0iN+nqc/4Bbs7HdpVkuAjSB/PIOUIhwGno6jsE2T6HK23E
- tOk4gjSWFbKF7L4yvhOg6px9H6NbW66BBMPSMDFYPvEvh/6rk62wL501YZGeJcp/Qb8AMx
- 79dLqVc4Y39zN7HBwvtU8gwYOxe3AFwpEg==
-Received-SPF: pass client-ip=2a01:b747:3005:200::6b;
+ a=YYz-tg3MKeN3tcD12NcA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDAwMSBTYWx0ZWRfX7aQ9h72C+yrV
+ dxn2dEAskLGhikcch6pIzT7BxG9WOt6L8TsY7h122DmwwVf5jbbo41shv8eZA9xNHqk/rjPiqV5
+ Ozg5Tge6r2sVwSYqNJusF0MJcAqE8IWWtkfzqyZK9pCzhwTKmbXxtqiGtMmId4gUn0HTNV1Hhy/
+ FraoKf/eYUl80+Y+YAkOwnsp5r6NP9FjGVoWdxZCBjQm6FPgOv/0p19H4XbHTacLRzy2d3hDGhU
+ iJp7OanHalvHtl2FTh8rleDm0a6XZfSjTfk0TkT+dyTemxL/J0QuZV96EuLkBVT36tIjEf5IO5h
+ 1UVy3XYbXCnaLz+ZuQBcs6fy8NLNJligWA0GnRUF9Iz/sBvh2jIH0YG8xM0spY=
+X-Proofpoint-GUID: 3ZM-sBouDKnZjCNzVTgIcSCWnkRfcSBy
+X-Proofpoint-ORIG-GUID: 3ZM-sBouDKnZjCNzVTgIcSCWnkRfcSBy
+X-JNJ: AAAAAAAB6b2S1i9t86uGGP/ZZ6ewACoGyxYohZqO5I/jltjV3vmNU54n4XLca+eGq4MyqJ
+ hm4O9sHRJYeteDbCH67gWwAwjjNiaXeGAWdJo75naMBgmuosJrpMRRp1BWmSKnCNX7+ZTc
+ 5MP2q1WPUCvkm8LLlhvJtlwklKUWX41jf2O1Pyn65S6tTartQCtdCvud/mB579Q9dbTMpc
+ 8JJgLt9qlml5OjgVvZtSIqT/CTufOXdaYtLacANU0AJIA4GMK/hlo4pTvCfjM26NaRTMG+
+ hexQj68x/t/LraOifNUgQKgnmZxxL5/+Tjdb4TaYO1pGV+EY0+Jr5MwESK8MiuK9fraPco
+ s1kvY3gdmI3YT3X1u7Fg3RMP4vbI5jV7VssuqukCwF6U+UC6AdLHut+sHkTwzZ3baykJmu
+ p4yG0TAXQCCRQ+nnB2Jdjq2KzfJme7lXL7YP8e8a2s1hLCbmsM1/5xUlL9JTaZIuMX0VSG
+ 7K0+9L2O1g2pKlSD7yJUrlGJXOn6B+I8COiVRt7dK0bGMCSsK7dGqss4J/zzrY8GBZgqeL
+ jjcf+abB9pKEopfiVdSjVk9Ut5sSHmlmC6uFZjG2F/o8VFFt3QeR0a0i+n8U18NPf+hEmo
+ 13SHozabh7QNCV+18LvrXxT3iwvCdOzVkWTrjCONqFYSlWIVWDl7FR+lrVwD0huaxZzVrS
+ HWJxfVa2nZIb4vT4cVu6n4UNki6d6TbQRAajbbu/ejXGIT073O3aRERqUrkO9EcAKVMHOF
+ fDUYAs2eGHuQ2aQUJ2zAiFptq/RdR+c8Ki7vu42u+22RO1F4cDC7/5ehloyA==
+Received-SPF: pass client-ip=2a01:b747:3005:202::44;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -101,34 +99,32 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Boden Randin <bodenrandin1@gmail.com>
-
-whpx_get_registers_for_vmexit only refreshes GPRs, RIP and RFLAGS.
-
-x86_update_hflags() depends on state not refreshed here, while the code
-using the fast runtime state does not depend on the hflags it recomputes.
-
-Signed-off-by: Boden Randin <bodenrandin1@gmail.com>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Convert between the TPR and the APIC priority encodings.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 2 --
- 1 file changed, 2 deletions(-)
+ target/i386/whpx/whpx-apic.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 7e418f1c91..8807a7b95f 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -772,8 +772,6 @@ static void whpx_get_registers_for_vmexit(CPUState *cpu, WHPXStateLevel level)
-     rflags_to_lflags(env);
+diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
+index efdedbcd77..2d83291fae 100644
+--- a/target/i386/whpx/whpx-apic.c
++++ b/target/i386/whpx/whpx-apic.c
+@@ -184,12 +184,12 @@ static void whpx_put_apic_base(CPUState *cpu, uint64_t val)
  
-     assert(idx == RTL_NUMBER_OF(whpx_register_names_for_vmexit));
--
--    x86_update_hflags(env);
+ static void whpx_apic_set_tpr(APICCommonState *s, uint8_t val)
+ {
+-    s->tpr = val;
++    s->tpr = (val & APIC_PR_SUB_CLASS) << APIC_PR_CLASS_SHIFT;
  }
  
- static void whpx_get_legacy_fp_registers(CPUState *cpu, WHPXStateLevel level)
+ static uint8_t whpx_apic_get_tpr(APICCommonState *s)
+ {
+-    return s->tpr;
++    return s->tpr >> APIC_PR_CLASS_SHIFT;
+ }
+ 
+ static void whpx_apic_vapic_base_update(APICCommonState *s)
 -- 
 2.54.0 (Apple Git-157)
 

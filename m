@@ -1,145 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 21C41606A31C
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 20:31:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 61C2D606A321
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 22:32:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=OyaQQw4Q
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=VyDu+neb
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQW0f-0003P6-Aw; Mon, 09 Nov 2026 15:30:35 -0500
+	id 1xQXtu-0005Fp-0G; Mon, 09 Nov 2026 17:31:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bwalk@linux.ibm.com>)
- id 1xQSuN-0005Rj-FF; Mon, 09 Nov 2026 12:11:51 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bwalk@linux.ibm.com>)
- id 1xQSuK-0004EA-Q0; Mon, 09 Nov 2026 12:11:50 -0500
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A9DEju51857823; Mon, 9 Nov 2026 17:11:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:date:from:in-reply-to:message-id
- :mime-version:references:subject:to; s=pp1; bh=2oy46UchJMfFJizGJ
- 2uCvfca/GcB6fo1sNhMCuF7ekg=; b=OyaQQw4QUjjrpzs6DU2qn8Ei9V8v0K24W
- 63Qb5n/z+21Cxv5FAU2AbU9rFPnloEROO7LfuQpBMyC81Bkc+0OHNJ6+VXI5I0+V
- stzt+nU5jG4JVDLOXY+7j4XBTHPaGwqEYo4L9cUkaovjg2rqvl4xYRUCVCgsHahG
- cguNRP4I0EayZglQJRxLVxpBm/dVfY2Djfotn+DQgKAqMb0b1wcmXHiAIb4UYSFh
- a2tuGx3EAkEI5v6YTskuCFwR41oEIGjbteRVlThK9lFBzfHg/uiatwsZn1Yl0Vxh
- zCoNYKvJ5edisZlzIQALcWgsw3SV+ztkL6HgQB+cu46Z/AsqDY7wA==
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4hsunsykct-1
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Mon, 09 Nov 2026 17:11:27 +0000 (GMT)
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A9Gl3If131307; Mon, 9 Nov 2026 17:11:26 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 4hth0y1guc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Nov 2026 17:11:26 +0000 (GMT)
-Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com
- [10.20.54.102])
- by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 6A9HBMlE44695856
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 9 Nov 2026 17:11:23 GMT
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D1CCB20040;
- Mon,  9 Nov 2026 17:11:22 +0000 (GMT)
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 579ED20043;
- Mon,  9 Nov 2026 17:11:22 +0000 (GMT)
-Received: from a46lp03.lnxne.boe (unknown [9.87.84.240])
- by smtpav03.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  9 Nov 2026 17:11:22 +0000 (GMT)
-From: Bjoern Walk <bwalk@linux.ibm.com>
-To: qemu-devel@nongnu.org
-Cc: Steffen Eiden <seiden@linux.ibm.com>,
- Andreas Grapentin <gra@linux.ibm.com>,
- Bjoern Walk <bwalk@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Woodhouse <dwmw2@infradead.org>, Paul Durrant <paul@xen.org>,
- Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>,
- Xianglai Li <lixianglai@loongson.cn>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Farhan Ali <alifm@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Alex Williamson <alex@shazbot.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcelo Tosatti <mtosatti@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Amit Machhiwal <amachhiw@linux.ibm.com>,
- Chinmay Rath <rathc@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>, Peter Xu <peterx@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- kvm@vger.kernel.org (open list:Overall KVM CPUs),
- qemu-s390x@nongnu.org (open list:S390 PCI),
- qemu-arm@nongnu.org (open list:ARM TCG CPUs),
- qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
- qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [RFC Patch 3/8] kvm: Prefer including "system/kvm.h" over
- <linux/kvm.h>
-Date: Mon,  9 Nov 2026 18:10:29 +0100
-Message-ID: <20261109171036.3806884-4-bwalk@linux.ibm.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <20261109171036.3806884-1-bwalk@linux.ibm.com>
-References: <20261109171036.3806884-1-bwalk@linux.ibm.com>
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xQXtf-0005By-05
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 17:31:29 -0500
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xQXtb-0003pS-2h
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 17:31:25 -0500
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-8b32bc605d9so579416b3a.2
+ for <qemu-arm@nongnu.org>; Mon, 09 Nov 2026 14:31:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1794263481; x=1794868281; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=R6shKTPJO2OMKOtP1Scv42yaR7N4lg4logstoB5OC0Q=;
+ b=VyDu+nebvUkeEvJ32eUloUeWTIEOTPGQbH2EyMfNQmSbniB64qjZL0wNwlU3g4u2S/
+ 0Mm5zG/hmSNhfJh4A9PNzAqtzLIuwzAlOIXqhmSdUT38Ps8Kf3BJgfYcyBslXCmDxT5H
+ fa7ceZ9VNj+cVEW+aLn23elNRgMY6iDN4Al7As8qroBHRpGND7+OLxcIWY0EnwHtmEw2
+ KMGnPO873bsfsHr5/dXcycReATxU9InIyRNMcbO6BMgM04EJ6ZxD+kyY4xDN75GJSjJ5
+ 5LwfFUbDkfdqXgvJ8SyYGTgVBZ73td+kLk1KCum7t7DD4KYZUjrAdcisgQMrJrFxs0nr
+ Hunw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1794263481; x=1794868281;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=R6shKTPJO2OMKOtP1Scv42yaR7N4lg4logstoB5OC0Q=;
+ b=l70+XOWPuqyGxdKps6WtbI/uvKSfdQxuI0YkX/ZoncBIPY56DA0RT7ezARtR0Ylj5z
+ 0ZO7kdCt5KbJb7mTLDx1FXAa22ENyOMfKDFfp0O3F06FyWo8kcTONdCHq9sqS9K/Kf50
+ kRYtZJBBZLtpKvmKb9wTnL2l4qyHtwLCYlpMIzHzKEkDeUGeecIgO2QcsG2aorAXZlyy
+ e05iP2UPxZ350P7Oyx8U0+vnlY4ofbMSKDNwNqI2yuZYTD479YTAtoyiPAr2y3mBeuaq
+ j9PTR9n3DjCACQPwB8BX7MkJf+lfuI3gHHX+2uP9hSy2YnZHaXoRUzKbH8kUEsE8Q2VU
+ mVMw==
+X-Forwarded-Encrypted: i=1;
+ AL+hErHNJn2u7TmAenuBXW7NGbzreTqnVDjxEiXtc/pKXR5qYE/YsKOkjlf+MGlOD3R2n+jB6ctBEWS9sA==@nongnu.org
+X-Gm-Message-State: APuU4Z//Y6+/RQuKjZ18JdYNZfSXce120vg8q8/Qpgcb0QVGnQ7Yv1Qx
+ ++c0l8kZ2ClwgLZttnf+YE3df287oX6cOGBLHVf1M26egiqPwd5KuZHFhBqxtbv3suSi5xNeiOd
+ oIkx9
+X-Gm-Gg: AYBFou2++RndW7G/J+JnnL3LZ+9y4IYjw83BTv1mHK25JL52E3gwvfRDiPXY3B4UfXR
+ UKd9wP5YJMfuqnnmIyXbREMiRwtnyBd/unk/h2t66wcLx+++IrH/ApadN3e+WB1Hd9lMm0m9zjG
+ RU2laH9oGGfu6UIcjUv1phSwlvHDLuKxaOnXGnmLdtJPgdSX1lhRlYYKtEGgVd5tf7Reea85g6P
+ oB41dI61IXP8ccREGnKoTtVjDJgfBTX6KyqOp5VEdTsQVbXueg6vXo+xgOK82J9WUSGP6r9Asyg
+ uNK8jaFH81ONuxSopy+5/T7d1nkPvCRq3QNONleJ6l0Omg4wgOp1uYIjjBZPEgZLbqHpRO0YvHi
+ 00V5FKOSkrkj/KvGgYebm/bpBHn6Mn82S60ycoYGoanpk3zjZi9e2tglLrLniU4n+VLv/4aYL/1
+ p+GelCZa+fiGXdrIzPr9AVEHk/Z79ZE4crzG3Hj7i2AKV4zbtUK2XP8JPyE1cWxwoslv4k6HYLq
+ PNIljKdY8UrGPbLP0UkTr4/qiPxyjAYJgQBPUJO47X0CBGAylXVRCZsZZ7UY3ZHFeBDujINFET5
+ yCXbZP1ahM1A4EKZGgQNbd1nSpxSuuB8DrZ6uXww8OpInzYoalC/ug==
+X-Received: by 2002:a05:6a21:62c4:b0:3e2:86b6:9bf4 with SMTP id
+ adf61e73a8af0-3f18ebb3200mr480367637.14.1794263481319; 
+ Mon, 09 Nov 2026 14:31:21 -0800 (PST)
+Received: from p14s.cg.shawcable.net ([2604:3d09:148c:c800:54d7:1b5:4356:16fb])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-8baa506bca4sm165830b3a.0.2026.11.09.14.31.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Nov 2026 14:31:20 -0800 (PST)
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com, eblake@redhat.com,
+ armbru@redhat.com, enju.kohei@fujitsu.com, lorenzo.pieralisi@linaro.org,
+ gshan@redhat.com, michael.roth@amd.com
+Cc: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvm@vger.kernel.org
+Subject: [PATCH v6 04/23] target/arm/kvm: Split kvm_arch_get/put_registers
+Date: Mon,  9 Nov 2026 16:30:51 -0600
+Message-ID: <20261109223110.1619504-5-mathieu.poirier@linaro.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261109223110.1619504-1-mathieu.poirier@linaro.org>
+References: <20261109223110.1619504-1-mathieu.poirier@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDA2NiBTYWx0ZWRfX7eOTmVR4NBFt
- vjth9PGTZQ2/uTz9QeOFq2UEKpgR5hZgFXK6shEK9ZMdLR+nLgsSNeaUFJJsCmt6OcIHM8Dl9IS
- wlSArnj1XOp6zqx5PyzlYyzuBpD5OD91ivFanClEQlK3liJVGMitlMoPT5ZLiQch+Ps4Y7AORu6
- pKMH0Rny4yhMlMD7OL1J2QCrQRkK35CWzTYDzgYwi95ZLVJTA22jEOivZEYnpUgTGpws7VgFDSq
- V4Jc6hLPL7vk821D18MjfnGla0JQMyqdc2UV+Aa5/oPcYNtjUPrDEsP06GBzWip0ryc4TC71dqo
- HLpx+4bVPrqeU2UCC6XoNcCvlP/mZrvxrcCfcqs+5HvzABOPAwT8t2kk7dqGVsHURQ7Y45b+4nh
- pehAGORddxwWwxnFCB9ZL9q/vF7z6oeL+JfAZUHRpMDrapiXfcIJZfV2IdAR+6vQIbOrehAyMhU
- tUOcGt/C7VmR/cPWgmg==
-X-Proofpoint-ORIG-GUID: Ipap74PMJo4MHc9JHSGlzMkkjc9sOE2N
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA5MDA2NiBTYWx0ZWRfX1UQXTnUNN/Pl
- 8NPyv2ZdExEDsNyRjoeAsxpKkwlGdlAdbnOSh/hwWLrPF0AHAFtJmnV6vay+qbtVzl5YA1cCXYF
- ZwSnUvakutWlqUXIDrbpsSELsnRETaA=
-X-Authority-Analysis: v=2.4 cv=euZKXYpX c=1 sm=1 tr=0 ts=6af1fec0 cx=c_pps
- a=aDMHemPKRhS1OARIsFnwRA==:117 a=aDMHemPKRhS1OARIsFnwRA==:17
- a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
- a=uAbxVGIbfxUO_5tXvNgY:22 a=VnNF1IyMAAAA:8 a=ln_9VpdSANE7LO6HYOUA:9
-X-Proofpoint-GUID: DehO9Ok2gL7DvHr44IvayByzvmd7lsFz
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-09_05,2026-11-06_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 clxscore=1011 suspectscore=0 spamscore=0 priorityscore=1501
- lowpriorityscore=0 bulkscore=0 impostorscore=0 adultscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611090066
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=bwalk@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 09 Nov 2026 15:30:13 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -150,390 +106,89 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-"system/kvm.h" provides scaffolding around usage of KVM definitions from
-<linux/kvm.h> and can act as the central include for KVM-related definitions.
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Signed-off-by: Bjoern Walk <bwalk@linux.ibm.com>
+For a Realm, KVM is much more restrictive on the registers a VMM can
+initialize.  To prepare for Realm VM initialization, split the get/put
+register functions for a non-secure VM in their own function.
+
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- accel/kvm/kvm-accel-ops.c              | 1 -
- accel/kvm/kvm-all.c                    | 2 +-
- backends/hostmem-memfd.c               | 1 -
- hw/hyperv/hyperv.c                     | 1 -
- hw/i386/kvm/clock.c                    | 1 -
- hw/i386/kvm/i8254.c                    | 1 -
- hw/i386/kvm/xen_evtchn.c               | 1 -
- hw/i386/kvm/xen_overlay.c              | 1 -
- hw/intc/loongarch_dintc_kvm.c          | 1 -
- hw/intc/loongarch_extioi_kvm.c         | 1 -
- hw/s390x/s390-pci-kvm.c                | 2 +-
- hw/vfio/kvm-helpers.c                  | 1 -
- hw/vfio/kvm-spapr.c                    | 2 +-
- include/system/kvm.h                   | 1 +
- target/arm/kvm-consts.h                | 3 ++-
- target/arm/kvm.c                       | 2 --
- target/i386/kvm/kvm.c                  | 2 +-
- target/i386/kvm/kvm_i386.h             | 2 --
- target/i386/sev.c                      | 1 -
- target/loongarch/cpu.c                 | 3 ---
- target/loongarch/kvm/kvm.c             | 1 -
- target/ppc/kvm.c                       | 2 --
- target/riscv/kvm/kvm-cpu.c             | 2 --
- target/s390x/kvm/kvm.c                 | 2 +-
- target/s390x/kvm/pv.c                  | 2 --
- tests/qtest/migration/framework.c      | 2 +-
- tests/qtest/migration/migration-util.c | 2 +-
- 27 files changed, 10 insertions(+), 33 deletions(-)
+ target/arm/kvm.c | 30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
 
-diff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c
-index 47244d33..df29c130 100644
---- a/accel/kvm/kvm-accel-ops.c
-+++ b/accel/kvm/kvm-accel-ops.c
-@@ -25,7 +25,6 @@
- #include "qemu/guest-random.h"
- #include "qapi/error.h"
- 
--#include <linux/kvm.h>
- #include "kvm-cpus.h"
- 
- static void *kvm_vcpu_thread_fn(void *arg)
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 411f28dd..178788d2 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -17,7 +17,7 @@
- #include <sys/ioctl.h>
- #include <poll.h>
- 
--#include <linux/kvm.h>
-+#include "system/kvm.h"
- 
- #include "qemu/atomic.h"
- #include "qemu/option.h"
-diff --git a/backends/hostmem-memfd.c b/backends/hostmem-memfd.c
-index 46489212..9341169e 100644
---- a/backends/hostmem-memfd.c
-+++ b/backends/hostmem-memfd.c
-@@ -20,7 +20,6 @@
- #include "qom/object.h"
- #include "migration/cpr.h"
- #include "system/kvm.h"
--#include <linux/kvm.h>
- #include "qapi/qapi-type-infos-common.h"
- 
- OBJECT_DECLARE_SIMPLE_TYPE(HostMemoryBackendMemfd, MEMORY_BACKEND_MEMFD)
-diff --git a/hw/hyperv/hyperv.c b/hw/hyperv/hyperv.c
-index 900ff802..0db87a5b 100644
---- a/hw/hyperv/hyperv.c
-+++ b/hw/hyperv/hyperv.c
-@@ -15,7 +15,6 @@
- #include "system/memory.h"
- #include "exec/target_page.h"
- #include "exec/cpu-common.h"
--#include "linux/kvm.h"
- #include "system/kvm.h"
- #include "system/physmem.h"
- #include "qemu/bitops.h"
-diff --git a/hw/i386/kvm/clock.c b/hw/i386/kvm/clock.c
-index e3dad136..3c2601a7 100644
---- a/hw/i386/kvm/clock.c
-+++ b/hw/i386/kvm/clock.c
-@@ -27,7 +27,6 @@
- #include "exec/cpu-common.h"
- #include "qapi/error.h"
- 
--#include <linux/kvm.h>
- #include "qom/object.h"
- 
- #define TYPE_KVM_CLOCK "kvmclock"
-diff --git a/hw/i386/kvm/i8254.c b/hw/i386/kvm/i8254.c
-index 70e8fd83..d99ee462 100644
---- a/hw/i386/kvm/i8254.c
-+++ b/hw/i386/kvm/i8254.c
-@@ -24,7 +24,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include <linux/kvm.h>
- #include "qapi/qapi-types-machine.h"
- #include "qapi/error.h"
- #include "qemu/module.h"
-diff --git a/hw/i386/kvm/xen_evtchn.c b/hw/i386/kvm/xen_evtchn.c
-index 9379383e..b8982548 100644
---- a/hw/i386/kvm/xen_evtchn.c
-+++ b/hw/i386/kvm/xen_evtchn.c
-@@ -43,7 +43,6 @@
- 
- #include "system/kvm.h"
- #include "system/kvm_xen.h"
--#include <linux/kvm.h>
- #include <sys/eventfd.h>
- 
- #include "hw/xen/interface/memory.h"
-diff --git a/hw/i386/kvm/xen_overlay.c b/hw/i386/kvm/xen_overlay.c
-index 74cadffb..4cb16e31 100644
---- a/hw/i386/kvm/xen_overlay.c
-+++ b/hw/i386/kvm/xen_overlay.c
-@@ -25,7 +25,6 @@
- 
- #include "system/kvm.h"
- #include "system/kvm_xen.h"
--#include <linux/kvm.h>
- 
- #include "hw/xen/interface/memory.h"
- 
-diff --git a/hw/intc/loongarch_dintc_kvm.c b/hw/intc/loongarch_dintc_kvm.c
-index 1137bcd9..9bacf5e7 100644
---- a/hw/intc/loongarch_dintc_kvm.c
-+++ b/hw/intc/loongarch_dintc_kvm.c
-@@ -7,7 +7,6 @@
- 
- #include "qemu/osdep.h"
- #include "hw/intc/loongarch_dintc.h"
--#include "linux/kvm.h"
- #include "qapi/error.h"
- #include "system/kvm.h"
- 
-diff --git a/hw/intc/loongarch_extioi_kvm.c b/hw/intc/loongarch_extioi_kvm.c
-index aa2e8c75..d17d0511 100644
---- a/hw/intc/loongarch_extioi_kvm.c
-+++ b/hw/intc/loongarch_extioi_kvm.c
-@@ -7,7 +7,6 @@
- 
- #include "qemu/osdep.h"
- #include "hw/intc/loongarch_extioi.h"
--#include "linux/kvm.h"
- #include "qapi/error.h"
- #include "system/kvm.h"
- 
-diff --git a/hw/s390x/s390-pci-kvm.c b/hw/s390x/s390-pci-kvm.c
-index 9eef4fc3..12b6e8ba 100644
---- a/hw/s390x/s390-pci-kvm.c
-+++ b/hw/s390x/s390-pci-kvm.c
-@@ -11,7 +11,7 @@
- 
- #include "qemu/osdep.h"
- 
--#include <linux/kvm.h>
-+#include "system/kvm.h"
- 
- #include "kvm/kvm_s390x.h"
- #include "target/s390x/kvm/pv.h"
-diff --git a/hw/vfio/kvm-helpers.c b/hw/vfio/kvm-helpers.c
-index 5e73dddc..429e266e 100644
---- a/hw/vfio/kvm-helpers.c
-+++ b/hw/vfio/kvm-helpers.c
-@@ -21,7 +21,6 @@
- #include "qemu/osdep.h"
- #include <sys/ioctl.h>
- 
--#include <linux/kvm.h>
- #include "system/kvm.h"
- #include "exec/cpu-common.h"
- #include "hw/vfio/vfio-device.h"
-diff --git a/hw/vfio/kvm-spapr.c b/hw/vfio/kvm-spapr.c
-index ad71c5a8..beb53651 100644
---- a/hw/vfio/kvm-spapr.c
-+++ b/hw/vfio/kvm-spapr.c
-@@ -7,7 +7,7 @@
- #include "qemu/osdep.h"
- #include <sys/ioctl.h>
- #include <linux/vfio.h>
--#include <linux/kvm.h>
-+#include "system/kvm.h"
- 
- #include "hw/vfio/vfio-container-legacy.h"
- #include "hw/vfio/kvm-spapr.h"
-diff --git a/include/system/kvm.h b/include/system/kvm.h
-index 5d7c0f98..84c2efe9 100644
---- a/include/system/kvm.h
-+++ b/include/system/kvm.h
-@@ -29,6 +29,7 @@
- # endif
- #else
- # define CONFIG_KVM_IS_POSSIBLE
-+# include <linux/kvm.h>
- #endif
- 
- #ifdef CONFIG_KVM_IS_POSSIBLE
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index 9fba3e88..1e4eb9e7 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -14,9 +14,10 @@
- #ifndef ARM_KVM_CONSTS_H
- #define ARM_KVM_CONSTS_H
- 
-+#include "system/kvm.h"
-+
- #ifdef COMPILING_PER_TARGET
- #ifdef CONFIG_KVM
--#include <linux/kvm.h>
- #include <linux/psci.h>
- #define MISMATCH_CHECK(X, Y) QEMU_BUILD_BUG_ON(X != Y)
- #endif
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index df86ad38..99d8f503 100644
+index 04dd85ee2776..5f40b665cb7d 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -13,8 +13,6 @@
- #include "qemu/osdep.h"
- #include <sys/ioctl.h>
+@@ -2257,7 +2257,7 @@ static int kvm_arch_put_sve(CPUState *cs, uint32_t vq, bool have_ffr)
+     return 0;
+ }
  
--#include <linux/kvm.h>
--
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index e29ecaba..47ee0590 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -24,7 +24,7 @@
- #include <sys/syscall.h>
- #include <sys/resource.h>
+-int kvm_arch_put_registers(CPUState *cs, KvmPutState level, Error **errp)
++static int kvm_arm_put_core_regs(CPUState *cs, Error **errp)
+ {
+     uint64_t val;
+     uint32_t fpr;
+@@ -2360,6 +2360,19 @@ int kvm_arch_put_registers(CPUState *cs, KvmPutState level, Error **errp)
+         return ret;
+     }
  
--#include <linux/kvm.h>
-+#include "system/kvm.h"
- #include <linux/kvm_para.h>
- #include "standard-headers/asm-x86/kvm_para.h"
- #include "hw/xen/interface/arch-x86/cpuid.h"
-diff --git a/target/i386/kvm/kvm_i386.h b/target/i386/kvm/kvm_i386.h
-index 2b653442..7166353b 100644
---- a/target/i386/kvm/kvm_i386.h
-+++ b/target/i386/kvm/kvm_i386.h
-@@ -44,8 +44,6 @@ void kvm_request_xsave_components(X86CPU *cpu, uint64_t mask);
++    return 0;
++}
++
++int kvm_arch_put_registers(CPUState *cs, KvmPutState level, Error **errp)
++{
++    int ret;
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    ret = kvm_arm_put_core_regs(cs, errp);
++    if (ret) {
++        return ret;
++    }
++
+     write_cpustate_to_list(cpu, true);
  
- #ifdef CONFIG_KVM
+     if (!write_list_to_kvmstate(cpu, level)) {
+@@ -2442,7 +2455,7 @@ static int kvm_arch_get_sve(CPUState *cs, uint32_t vq, bool have_ffr)
+     return 0;
+ }
  
--#include <linux/kvm.h>
--
- typedef struct KvmCpuidInfo {
-     struct kvm_cpuid2 cpuid;
-     struct kvm_cpuid_entry2 entries[KVM_MAX_CPUID_ENTRIES];
-diff --git a/target/i386/sev.c b/target/i386/sev.c
-index 604c2255..3e19f6ec 100644
---- a/target/i386/sev.c
-+++ b/target/i386/sev.c
-@@ -13,7 +13,6 @@
+-int kvm_arch_get_registers(CPUState *cs, Error **errp)
++static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
+ {
+     uint64_t val;
+     unsigned int el;
+@@ -2545,6 +2558,19 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
+     }
+     vfp_set_fpcr(env, fpr);
  
- #include "qemu/osdep.h"
- 
--#include <linux/kvm.h>
- #include <linux/kvm_para.h>
- #include <linux/psp-sev.h>
- 
-diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
-index 1f302226..5f242e19 100644
---- a/target/loongarch/cpu.c
-+++ b/target/loongarch/cpu.c
-@@ -25,9 +25,6 @@
- #include "system/reset.h"
- #endif
- #include "vec.h"
--#ifdef CONFIG_KVM
--#include <linux/kvm.h>
--#endif
- #include "tcg/tcg_loongarch.h"
- #include "disas/capstone.h"
- 
-diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
-index 957e73eb..5100024e 100644
---- a/target/loongarch/kvm/kvm.c
-+++ b/target/loongarch/kvm/kvm.c
-@@ -8,7 +8,6 @@
- #include "qemu/osdep.h"
- #include "exec/target_long.h"
- #include <sys/ioctl.h>
--#include <linux/kvm.h>
- #include "asm-loongarch/kvm_para.h"
- #include "qapi/error.h"
- #include "qemu/timer.h"
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index cd19f7a6..ac49a3dd 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -19,8 +19,6 @@
- #include <sys/ioctl.h>
- #include <sys/vfs.h>
- 
--#include <linux/kvm.h>
--
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "cpu.h"
-diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
-index 5beb6023..eba1b96a 100644
---- a/target/riscv/kvm/kvm-cpu.c
-+++ b/target/riscv/kvm/kvm-cpu.c
-@@ -20,8 +20,6 @@
- #include <sys/ioctl.h>
- #include <sys/prctl.h>
- 
--#include <linux/kvm.h>
--
- #include "qemu/timer.h"
- #include "qapi/error.h"
- #include "qapi/qapi-builtin-type-infos.h"
-diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-index 76dd1e67..bd824fad 100644
---- a/target/s390x/kvm/kvm.c
-+++ b/target/s390x/kvm/kvm.c
-@@ -21,7 +21,7 @@
- #include "qemu/osdep.h"
- #include <sys/ioctl.h>
- 
--#include <linux/kvm.h>
-+#include "system/kvm.h"
- #include <asm/ptrace.h>
- 
- #include "cpu.h"
-diff --git a/target/s390x/kvm/pv.c b/target/s390x/kvm/pv.c
-index 3d508165..afea9e3f 100644
---- a/target/s390x/kvm/pv.c
-+++ b/target/s390x/kvm/pv.c
-@@ -11,8 +11,6 @@
-  */
- #include "qemu/osdep.h"
- 
--#include <linux/kvm.h>
--
- #include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
-diff --git a/tests/qtest/migration/framework.c b/tests/qtest/migration/framework.c
-index b7aef6b2..60f85b72 100644
---- a/tests/qtest/migration/framework.c
-+++ b/tests/qtest/migration/framework.c
-@@ -27,7 +27,7 @@
- #include "qemu/sockets.h"
- 
- #ifdef CONFIG_LINUX
--#include <linux/kvm.h>
-+#include "system/kvm.h"
- #include <sys/ioctl.h>
- #endif
- 
-diff --git a/tests/qtest/migration/migration-util.c b/tests/qtest/migration/migration-util.c
-index db66d8b2..e145c3f8 100644
---- a/tests/qtest/migration/migration-util.c
-+++ b/tests/qtest/migration/migration-util.c
-@@ -35,7 +35,7 @@
- 
- /* For dirty ring test; so far only x86_64 is supported */
- #if defined(__linux__) && defined(HOST_X86_64)
--#include "linux/kvm.h"
-+#include "system/kvm.h"
- #endif
- 
- GQueue *tests;
++    return 0;
++}
++
++int kvm_arch_get_registers(CPUState *cs, Error **errp)
++{
++    int ret;
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    ret = kvm_arm_get_core_regs(cs, errp);
++    if (ret) {
++        return ret;
++    }
++
+     ret = kvm_get_vcpu_events(cpu);
+     if (ret) {
+         return ret;
 -- 
-2.56.0
+2.53.0
 
 

@@ -1,141 +1,139 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59ACA606A321
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 14:23:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9CD5F606A31C
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 14:35:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=K3GJcdk9;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=dGfoaivj
+	dkim=pass (2048-bit key, unprotected) header.d=processmission.com header.i=@processmission.com header.a=rsa-sha256 header.s=selector1 header.b=kgDfz5+Y
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQQHY-0003uJ-7y; Mon, 09 Nov 2026 09:23:37 -0500
+	id 1xQQSZ-0006w7-JJ; Mon, 09 Nov 2026 09:34:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xQQHS-0003ta-0H
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 09:23:30 -0500
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1xQQSG-0006qU-8C; Mon, 09 Nov 2026 09:34:40 -0500
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xQQHQ-00031v-By
- for qemu-arm@nongnu.org; Mon, 09 Nov 2026 09:23:29 -0500
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6A9DFIW23588579
- for <qemu-arm@nongnu.org>; Mon, 9 Nov 2026 14:23:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=qcppdkim1; bh=0uZkNlY3+CvCbrkF8qlIO1
- aHfzcLxisDG6OtVJT2ZnQ=; b=K3GJcdk9Z0secSCH40XgDRoJgbvzKVbLLOwBMQ
- WaMGB4ia8KY0yHsI3NWMCkbGCNe56DecTTK1BpzgJQSnX7feh85kdRtWQmwMlp0u
- 0TgZv/VhE6P+coWmByfmGaoEDK5CxFHgz8KU+Co++Elw++o7fEE0VsihHmIMS1OL
- Wfphi2jX4O/zjAhDsThlOpQazIPK3eW4ri0NuoffBT6Ac5RU0EtgGAPkt+rprPoT
- JQANw785yTuDm7/MUib6VWrUZ+1BNfIkDztfG+Cz9dhWRaCHwGfaQu2TFLDcPaMM
- BxJbKWQOR4YhmLkF5qhUxSpWaozB1N93Lkh5sbILz91mPj1A==
-Received: from mail-vs1-f69.google.com (mail-vs1-f69.google.com
- [209.85.217.69])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hudcj8jj6-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 09 Nov 2026 14:23:24 +0000 (GMT)
-Received: by mail-vs1-f69.google.com with SMTP id
- ada2fe7eead31-7d2df72e621so157405137.1
- for <qemu-arm@nongnu.org>; Mon, 09 Nov 2026 06:23:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794234203; x=1794839003; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=0uZkNlY3+CvCbrkF8qlIO1aHfzcLxisDG6OtVJT2ZnQ=;
- b=dGfoaivjk2XVK+gKFqMRZVAn1qo1xLiO38COR/JXWJZjRiqUl+viPxkx8frVpxgVYz
- dhx1my4IhtMFdqZF+s5+RtUfUR3Qb5UaxlwbJlPvNboedMcqt19X1U9nDUTGr5VNtHmd
- 4k3w+p6H1vMwZ/yK86pOZhf70rMyUjV/Tz8porQjF6MoZYvxIn8nmoa6pHLRAARu8zxc
- jpLnt5yJyVJJXWOmu1hdLKi9/F8RRPUfArpjfTjjus+DuWaYDveSS+yX+8TE2B7E4T8Y
- mrunH/Ewp+Rk27rkNfSGMrmvXmC0rF+HSn1g3XoiQPTrTLeZw+Od+HjDwyv3l6ESRg3x
- k7KQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794234203; x=1794839003;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=0uZkNlY3+CvCbrkF8qlIO1aHfzcLxisDG6OtVJT2ZnQ=;
- b=doWJ9S8YP61Ya1ywmohXjgheRLZVrVMAupkPkXsBozJimwg3XufBiKlsaihRizB8Cb
- N25lHr3DZZ/CNziXKKM+OkWAUDEDf8wenlEws4tOfWpBEhbWcy5ct29Z9aC+jyxCnaNB
- D4TUDQ4D5Ou2G/IGajEwAUGa8Z5ntRYMtMDmShXZqmppvEFr88G8BV0MfFYh3nHsaN3J
- F4ABayH9qorZxxqufHIAeUGjvBK2IyDx8syKhxBAW60YGwCXLYfRr43eOn5HRQLD/7lv
- YtA8tioQ2mKeUH40LWhNc84nXQwQp0e5hjdqeWSzugqG8tNW28TbZc+6Pk2l2TC9lBh3
- +gmg==
-X-Forwarded-Encrypted: i=1;
- AL+hErELuwb/hkUEwMzOgfLyvQD5NqAlV/H6EMkob8I1o3QiOLDdqX1jKW/ZR0+3bLClq6WNvQ7z1kPHbg==@nongnu.org
-X-Gm-Message-State: APuU4Z9kqUICqI9x3voCOQvcNOfsORLd0n6s4FfT1a+pYz6+CIL5JbPj
- bfPOuvuBKHR5QV6pjVuaiKKzMJpIKk5NlmmjXqyZYMcRH9RhH8FPpcJZLptmMNalFUptuASIZms
- INY5j8PmPu+v6++xvzRctPAA1R4cRUqR3GGfQMjzbgS6KxeYA40ZXL9o=
-X-Gm-Gg: AYBFou342OBcqvnxiu2n5i6p5PGaE2qnSYpnFikmguzZdllsDHOYIvNJgVHB3G7zbrn
- qhywAWOiDKSQDaX9/Wy9qhW5PWgYhjWSGbg6E5C1yLWad3dBFTjAFdx9w9HrLroBjPpjX9w312y
- ZhVIBNQMTwKNhwEcURXmNg+mJE6XhQGKCpM70Z6Z0wxKj+WKkFN5wA8AwFhb0Q6gHz8Sp6d+kQ9
- kyZLFYvrwWT/XHKT7pBNGTmOL4l0RWRDsVWFHafCLD48X4ALFfEFe5m0WUhpcpinu/f6iW2flHZ
- zfkMqCziYGs9W0C1G3Cx8RWpnla6yhp/wz8T4tPAQvJKXDNjIYbmLJhQpY/YLtxMt/n8ykuU1z0
- OSvho7S5j9iq2jRUJBSra05gaBfJvgfFH5foAF1c0poY19uGKcE+eetLFv96MG8VbRX0AmirrSU
- SOl0PsFwdmQV9Whg==
-X-Received: by 2002:a05:6102:c0e:b0:7d2:8cb8:dbea with SMTP id
- ada2fe7eead31-7d2db1b9ab6mr851137137.36.1794234203323; 
- Mon, 09 Nov 2026 06:23:23 -0800 (PST)
-X-Received: by 2002:a05:6102:c0e:b0:7d2:8cb8:dbea with SMTP id
- ada2fe7eead31-7d2db1b9ab6mr851127137.36.1794234202755; 
- Mon, 09 Nov 2026 06:23:22 -0800 (PST)
-Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-49597090444sm10883383f8f.31.2026.11.09.06.23.21
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Nov 2026 06:23:21 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: qemu-devel@nongnu.org
-Cc: Ashish Anand <ashish.a6@samsung.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH] target/arm: Kick the other vCPUs on SEV under TCG round-robin
-Date: Mon,  9 Nov 2026 15:23:19 +0100
-Message-ID: <20261109142319.73878-1-philmd@oss.qualcomm.com>
-X-Mailer: git-send-email 2.55.0
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1xQQSD-0004c0-TX; Mon, 09 Nov 2026 09:34:39 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mMOfQzsETK7T+rX0Ncb+qDKvxfpRIG8G9cKOYm3jj5XNM/pqB+9FiWwzjiEMvwpxHK/Rx/I5GXF7Pp+S4kZKgFR3VdY5M/IbQmG4LB0iK/gQ+1ISfqMNzBqWl+AMV2rsZzLLoFcL0T5dvmXuDty6wpav+8dLXl/yY12Dusx+zHJEkRXgfRhAaq666RzCsnbAHiiZ1rYLaNyMSQakK+XGbh5geLqdmYRvk26BFIqVnOdfrtFsiy2XYLm3md/jv7kdZEs8Ct2D25tz4B2v3PslfPmD18CkW5DclWoOL1GEdgvlzWRJuxtrESw7nrN5nouq7ZsutbxG/kb6XfICNtnZJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bRLvUPNef6V6MsCFcrN76zh1nvc9A0W7IsABuJYn2s0=;
+ b=vXIX4tl9BcrzBjlRbMlHGiLG+FIF5hYtqNYZrun3htMmbJJkOEZL+f9nja2hM/zlrWVewY+3mc4nna94O3jq+5BE0aeJI/dKzaR4vhp3kH7lnd1p0jP0CNeoBiRL/aq9Rmr1jkQ3N7w9BXaEmtGsX8rHiEqAOkFkQ+JW+2k1vHLIuhTf03JC13CF802i6p4s82nq+EReDxAKKgYHrnTPIvvzkEf5of0NSjvLhlOoLcUI1OvdEo1jGSXamerI50UU1AkhMbMzRdQiRhdXK6OrxLnWQ5FADBHzKnr6Sj5ZbOISudBptz860PWuiJQMhDJ4JkimU6If83/f+zQQkfjYVQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bRLvUPNef6V6MsCFcrN76zh1nvc9A0W7IsABuJYn2s0=;
+ b=kgDfz5+YiYaL26v/KuesdnLN/kG/j9bXHaJdagZY6AO7aQ+kT13o9Xaa1DELOM37qYkPOztS/mTqJiVR6d0TlCkFAehBLK5RPj2iOUgsAKLKzjN1gQqVUigB7LoX+ibNjufIFFVpkAOAZGYYWkbtVJD/MiRae+5biV7/ROugHg1eUxZb368BiKxTkzjS/V/Z9asKVESCzu5uovmElvbppGK3V5elZWxv3FWjLXTWozsU1Eqihp1M727tJUUSZFLqlwKwaX0eDP9QyCrOHfoW2VY3P2xhI53o6hboaFf3R4sLqBvhRcCUhD+nu+FmbESyzxMl50033+mzzm04jwZuYA==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from TYZPR02MB7121.apcprd02.prod.outlook.com (2603:1096:405:2c::12)
+ by SI2PR02MB5515.apcprd02.prod.outlook.com (2603:1096:4:1a3::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.12; Mon, 9 Nov
+ 2026 14:34:26 +0000
+Received: from TYZPR02MB7121.apcprd02.prod.outlook.com
+ ([fe80::5d81:393:2e5b:6e10]) by TYZPR02MB7121.apcprd02.prod.outlook.com
+ ([fe80::5d81:393:2e5b:6e10%5]) with mapi id 15.21.0592.010; Mon, 9 Nov 2026
+ 14:34:25 +0000
+From: Bin Meng <bin.meng@processmission.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jason Wang <jasowangio@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v3] hw/net: cadence: Honor subword lanes in the GEM registers
+Date: Mon,  9 Nov 2026 22:34:09 +0800
+Message-ID: <20261109143410.3279305-1-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.53.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 6oBrOSCN4K2YU_R1LO_PXNFtqm5LJ-r7
-X-Proofpoint-ORIG-GUID: 6oBrOSCN4K2YU_R1LO_PXNFtqm5LJ-r7
-X-Authority-Analysis: v=2.4 cv=au0nmiZV c=1 sm=1 tr=0 ts=6af1d75c cx=c_pps
- a=5HAIKLe1ejAbszaTRHs9Ug==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=EUspDBNiAAAA:8 a=J0BsVto9XRD7R-49C68A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=gYDTvv6II1OnSo0itH1n:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA5MDA1NyBTYWx0ZWRfX7g99Tfej30WP
- t1+5hyQ3jCKFMIQNkA+OYgj/syTrOtgUUb7V2MHUonI7HPOOPCNNYFOVDbqhzHbe4xTWMEwJyjU
- fFJciyDkMxTfWYDpvwne6ad4QtL7MoE=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA5MDA1NyBTYWx0ZWRfX/8/SaGgJ+52m
- c6ovxhkW6MVnxS/ibT+XA28EQPDgYF5yeKx270Uwfvf4Rk/6CXk/4ZzH9pkhAMocgJ1tr5ZQa6o
- rwE4q9+4BP39BzA14XZSlgTvNEb3JeZBg1o54zXTpNOPst6nSzVzNYrWV6cJAm9CWU2UeFjrITQ
- 0MRHt/T0CxCBHHck3TmCkLP81jlVMsIRyuPjznGts+z2dMAaEkhCIM6jf9K298OIsnybZvxnFrL
- oWGiHqDn3NIPWvMSAmdx1IF6m0lJFxewpstZ0ItS2cYJo8p0wTha4FMJOlH0jz7yBh5FMk/n2Rz
- cybQBgf/W1wxHCi//4wRRINLAfU7P3c37tF1DRIFu/rNZPGv+GMXIjawV8JqUJd96kUJB3kuFaZ
- 7KcNThmh2LZobPUgIunBGiQaNSde3Lc3ACb9irUrHG1x10lTDMZFmykRMOL4MGZsH1HwNGgN0E4
- 7RD9aqj40E46PMLf2Gw==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-09_05,2026-11-06_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 adultscore=0 suspectscore=0 bulkscore=0 impostorscore=0
- phishscore=0 clxscore=1015 malwarescore=0 priorityscore=1501
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
- definitions=main-2611090057
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-ClientProxiedBy: TYCP301CA0090.JPNP301.PROD.OUTLOOK.COM
+ (2603:1096:405:7b::17) To TYZPR02MB7121.apcprd02.prod.outlook.com
+ (2603:1096:405:2c::12)
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYZPR02MB7121:EE_|SI2PR02MB5515:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6512d204-be08-4a9a-5225-08df3e6e8d87
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|23010399003|376014|366016|1800799024|261026121527099003|261021121427099003|56012099006|261021123027099003|261022105027099003|261009223027099003|261026140227099003|261028144727099003|261102123227099003|10067099003|18002099003|6133799003;
+X-Microsoft-Antispam-Message-Info: WuvYY55EWx/IZBtg4COX3HT7jjLHA5gxCuKxod0wcdvWuEg4i/c/c08KYwBk22eaje3McPTipVjNoHmUYk1zSl0V+KhvB8gef+AmOe0uZZ9tcHIMCT/TjRrcOSyjL6IpdpoR2jqyXkiTjCQscHZ70nhnGlmR1hd3bpVFJrMY/lRianVXEp4VOdVA4u7tQtcQBrGYuBvc6OTVV+ySZEkLQLHlv5FZcB/ph69NmvpuntfoN0l39Abw1jz23rsD0sfEfTGy/eAZgelyK+5Dp3JYvLoyNQGbkOZGFF1ru+bBdWHYnF8WmJ192ZzQ+wjVl1ZLCzJyuEMFAmi6+yFx+DioPa4mMSfMxEm+IZn5FdN7vMrSOq9WyMxSchpdhUaAyRTpHcHb/kdAYreWb3AiBhagEMsxGy/8JacUlf+dLv3PwHG839Q1xZOQW5+3HT0qwfn9qn35BfIfqCemd4UbQoWCoc3KD3pXcmCIrao5D7sUBn6+4XvU4uk2toClSCQbgOJrXMcK3bpGV3nFVTuXCEUPn+YaU3Kc1oho67vK8eldHM8j9vT+dSiAzhsbHPBDPbgYCzt9tRtQfvaRq9RlSylssWcKhW0J5LYlQ+4ZG1nKUVvjwgeZOjkn6dLi+u3Qi8JsNjCdaBu7aYEbAMjnLD0yu1KGo4UuNFqAFjIb0YKz/JE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR02MB7121.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(366016)(1800799024)(261026121527099003)(261021121427099003)(56012099006)(261021123027099003)(261022105027099003)(261009223027099003)(261026140227099003)(261028144727099003)(261102123227099003)(10067099003)(18002099003)(6133799003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NmwwTENHNldjRThnZ0YvTUFHdU5ZTkpjSllUNEtjVTlPYTdNOVZWajYzYTJx?=
+ =?utf-8?B?dUtYaVRQNk1jYnJveEhLeUJGRXp3dWNYUG9nakZkdTl4NW9ySHFqQ2kza0NB?=
+ =?utf-8?B?aTRuUlBpdFdxMG9zS0d3bTRUM0VxeE96T0VTcjVOcC8vZVZKWUg4OWZRbjVX?=
+ =?utf-8?B?dG1rVEJuRUV6aFdudWVyMnJkVVMyOHNJcVNOR0tqTm81L1hOdmlhUzNTdjhv?=
+ =?utf-8?B?eEV3eUZvd0FVOHhwRldWR0drVEcwUEpNdUlBZkpWa25ka1FuaW9ZWS9kTTdB?=
+ =?utf-8?B?MW1yYzRBMDR1WmQ1cDNId0JmS3VKaHhpN21qcXc5cjJQaG1zdk94R3Y2ejNW?=
+ =?utf-8?B?R0p6VkpHbXc5YkszblBCblJoZFVvaTUrNEgvb0thQTM0UUhwM3VqajJnNlJD?=
+ =?utf-8?B?OG9FTGs0RlBjTm5EbENLa0NCeUhPSjZ1Q1Uvc0puY1BWVXNpclRRMFZxQW5I?=
+ =?utf-8?B?TUtyR2UzS21ucVNMaXRaai9abmcvWlQrZ0hEVjcwdFE1ditpUGxIK3JLNis0?=
+ =?utf-8?B?NHNpdmprUVA5eU1TeXlvOFpZczAwalZoZ3lhZmNvNE4vZC9jdjlGTC9zTm9K?=
+ =?utf-8?B?ODdCOTA4RG5WQlNNZENOTy9QYmgreVZDVGN5dEVWTitpbzNiSEJmTDVCUXNE?=
+ =?utf-8?B?VUE4bUJnSnFDenJZby9NNURDOWtBVjNmUUdKZzJyaVpDaCt5ZmlpOTkyeCtE?=
+ =?utf-8?B?SVpaRUhDSW05bGhrV3Vqdmxla3lRelY0anorb1pUWWhEK2N6dWJ0L0I5Sm00?=
+ =?utf-8?B?NEFYRkVJRHNVYngwSXZ0bHUzUWpRYyttMlpxVmhFcElCcTZTck81d3llTTVR?=
+ =?utf-8?B?L3BEVHNMRk9SZWlzSEVtRmxqZXZWYW9OWEJzN3Y5L3RqS3JKbVhlZ3hJVkE5?=
+ =?utf-8?B?TmRMZ0FtUUY5MUVVenI5M0tmUWJBUElxbXBoSFpVTkFVSHhqRW90YXc2MDRR?=
+ =?utf-8?B?SElGTGNwc3JzWnc3cWlOZkI2RWtXN0NPYm9yOEFNbnEwS2dxRHEyVWFJRG5t?=
+ =?utf-8?B?dWs2YlNCS1lYSHViazlqb1FiNmI0Nzl4UHM4a1Q3TVlWRFA3bmFEc3djWkIy?=
+ =?utf-8?B?Vzd4NG8rbzVsQTVKUUJvYzhlM216MG82YW5iYjJveUJUNkVnK3RTOWpwYUdX?=
+ =?utf-8?B?L3FUTGREWGR2MEhpTWlOY0wxWFgybnBSMlhwT1ZtZCt6QmxNYXlBdnBvOXl0?=
+ =?utf-8?B?Y1dMbFRhcitsS25oVHBjUjNTRWtDcDB6OGJ4TE1ZM0I0TjE2Rjg5VXcrRits?=
+ =?utf-8?B?cDB4UCtDZGRnY1BmdCtXdEx0RWQ4RnNEVytKTVF6dUVocUMyWHRrNDY0Yy8v?=
+ =?utf-8?B?elozVDRHYlI2VkkvQVRDaERzNUFRdE4wZWwrUTh6YzhYQ1BpbVJzR0ROWlJ5?=
+ =?utf-8?B?b0NabENwMVFrcDFxbTlEdFpZbEVuTkVSRUpVUGl0eTZNNFVEQTNBMWFaeXYx?=
+ =?utf-8?B?TnR4V2NndFp2M0xlanIwRXNBZFEwb3crZVEwcElKTVBiY0N4MC9hcEJSWFJo?=
+ =?utf-8?B?UHhDRVhZbzhPQlMyZlZnRUZuZFkrYnN3SjVqQ2JjanZacjM3T2dmcERNOXRm?=
+ =?utf-8?B?Y096eFRCRmwwRGJVN3AveCswcHNvQlYreDg2a08xcFR5NERLbUE0bzZUV1pW?=
+ =?utf-8?B?SnNNVDBIWDBqTGJ6MDZ0dHJFV0FTUWgwenhpWEVwSEdtTXpnWDljOVMzUXgv?=
+ =?utf-8?B?QjF6WnVSai83VzFYbWR4ZDZpTDJnT3Q5MEZTVTUvdHNLdFVEL1R5T29leVhH?=
+ =?utf-8?B?UW5pWmIxWUtjK2w3bmJCSUtoUWVPTllhWDFZV3hpNWpxVTIxK1dpNUxWMlRP?=
+ =?utf-8?B?ZHFsdmtoalBLU3ZucFVzMWFVMnA2amhoTW5ZZGk3M3l4MWN3VVZzT3U3Z3BD?=
+ =?utf-8?B?YXl2d1FEZmt4ODNwL2FSUE9ZU29vdXZEYStiRzlmdDVjeEtqWmJNV1UzZU4z?=
+ =?utf-8?B?WFB3Wkg1MEtFUWIrS0F5eFNmU2FJU3RvWkFvZ1JMRmhkS1dQZXRQMUtBSmpv?=
+ =?utf-8?B?Q3pwRk8vNUFuSmJmVk9RM0l0Q1lHcnZaNklvTjhSM29nemhkcmNkalZOellr?=
+ =?utf-8?B?clIvcnpBcTVNYmtjaERGanFRckVMOFVJQnNJcGZEd3NTTlpvcmxlZU0yN2NT?=
+ =?utf-8?B?eUNNTzRpNHk0Q0dpbWM5ZCtwSUZ5K1FZQW8yRnRwUENMbGdVditpZUNTUEpO?=
+ =?utf-8?B?cjhiWmJEZmxUOXhrZVdRdXQ5VzNQeHNVOUVQa0xEcjNHZk9YR0JENlduc1hi?=
+ =?utf-8?B?ZW9FRXdPcktZZHNDd2NsUHNuTEhOMHF2dkhxNU1kUFpUVnI0YUZCUmQzMjZR?=
+ =?utf-8?B?Q2h1TzFIK1BrRFhUOG15d25UZ21Ba1RZbFBxbmpzbEFJMXZZZUtycGxlVGY1?=
+ =?utf-8?Q?hLL9kNvxMyajEnD4=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6512d204-be08-4a9a-5225-08df3e6e8d87
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR02MB7121.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Nov 2026 14:34:25.3775 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VFNj6LHyAZ7wmwt30oxIWB0o8neNT0nCBJq2O4CUOfiLvGlCmAeITEBO9VjZtGa+7ab5XPsEG3jPqYIvNMuMOeeVqi6Mj4FpLTXDRFhKkxs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR02MB5515
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+ envelope-from=bin.meng@processmission.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -155,40 +153,177 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-In round-robin (single-thread) TCG, all vCPUs share one
-host thread, so qemu_cpu_is_self() is true for every vCPU.
+The GEM MMIO callbacks ignored the low address bits and access size.
+Byte reads therefore always returned lane zero, causing guest driver
+that reads the station address byte by byte to turn four unique MAC
+addresses into the same value. Partial writes had the corresponding
+lane-selection problem.
 
-The SEV helper used it to skip the kick of the issuing vCPU,
-and so skipped it for every other vCPU too: a vCPU sleeping
-in WFE is only woken when the RR kick timer fires.
+Extract the requested little-endian read lane and merge partial writes
+with the current register value. Preserve the existing read-clear and
+write-clear behavior and dynamic queue pointer readback.
 
-Compare against the issuing vCPU instead.
+With this change, reset the TX queue pointers only when a write covers
+TX-enable and leaves it clear, and only start a PHY operation when a
+write covers the OP/ST fields in the PHY maintenance register.
 
-Fixes: d238858bff60 ("target/arm: Implement WFE, SEV and SEVONPEND")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Fixes: e9f186e514a7 ("cadence_gem: initial version of device model")
+Signed-off-by: Bin Meng <bin.meng@processmission.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+
 ---
- target/arm/tcg/op_helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 6a673e5ae6e8..173dd0e5151a 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -470,11 +470,11 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
- 
- void HELPER(sev)(CPUARMState *env)
+Changes in v3:
+- Describe the TX-enable check and PHY operation trigger
+
+Changes in v2:
+- drop the gem_get_register() helper
+
+ hw/net/cadence_gem.c | 55 +++++++++++++++++++++++++++-----------------
+ 1 file changed, 34 insertions(+), 21 deletions(-)
+
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 9a94b3b8ca..7456f0e18e 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1603,8 +1603,11 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
  {
--    CPUState *cs = env_cpu(env);
-+    CPUState *self = env_cpu(env), *cs;
-     CPU_FOREACH(cs) {
-         ARMCPU *target_cpu = ARM_CPU(cs);
-         target_cpu->env.event_register = true;
--        if (!qemu_cpu_is_self(cs)) {
-+        if (cs != self) {
-             qemu_cpu_kick(cs);
+     CadenceGEMState *s;
+     uint32_t retval;
++    unsigned shift;
++
+     s = opaque;
+ 
++    shift = (offset & 3) * 8;
+     offset >>= 2;
+     retval = s->regs[offset];
+ 
+@@ -1638,7 +1641,7 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
+ 
+     DB_PRINT("0x%08x\n", retval);
+     gem_update_int_status(s);
+-    return retval;
++    return extract32(retval, shift, size * 8);
+ }
+ 
+ /*
+@@ -1649,35 +1652,43 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
+         unsigned size)
+ {
+     CadenceGEMState *s = (CadenceGEMState *)opaque;
+-    uint32_t readonly;
++    uint32_t access_mask;
++    uint32_t writable_mask;
++    uint32_t write_val;
++    unsigned shift;
+     int i;
+ 
+     DB_PRINT("offset: 0x%04x write: 0x%08x ", (unsigned)offset, (unsigned)val);
++    shift = (offset & 3) * 8;
++    access_mask = MAKE_64BIT_MASK(shift, size * 8);
++    write_val = (uint32_t)val << shift;
+     offset >>= 2;
+ 
+     /* Squash bits which are read only in write value */
+-    val &= ~(s->regs_ro[offset]);
+-    /* Preserve (only) bits which are read only and wtc in register */
+-    readonly = s->regs[offset] & (s->regs_ro[offset] | s->regs_w1c[offset]);
++    write_val &= ~(s->regs_ro[offset]);
+ 
+-    /* Copy register write to backing store */
+-    s->regs[offset] = (val & ~s->regs_w1c[offset]) | readonly;
++    /* Copy writable bits in the accessed lanes to the backing store */
++    writable_mask = access_mask &
++                    ~(s->regs_ro[offset] | s->regs_w1c[offset]);
++    s->regs[offset] = (s->regs[offset] & ~writable_mask) |
++                      (write_val & writable_mask);
+ 
+     /* do w1c */
+-    s->regs[offset] &= ~(s->regs_w1c[offset] & val);
++    s->regs[offset] &= ~(s->regs_w1c[offset] & write_val);
+ 
+     /* Handle register write side effects */
+     switch (offset) {
+     case R_NWCTRL:
+-        if (FIELD_EX32(val, NWCTRL, ENABLE_RECEIVE)) {
++        if (FIELD_EX32(write_val, NWCTRL, ENABLE_RECEIVE)) {
+             for (i = 0; i < s->num_priority_queues; ++i) {
+                 gem_get_rx_desc(s, i);
+             }
          }
+-        if (FIELD_EX32(val, NWCTRL, TRANSMIT_START)) {
++        if (FIELD_EX32(write_val, NWCTRL, TRANSMIT_START)) {
+             gem_transmit(s);
+         }
+-        if (!(FIELD_EX32(val, NWCTRL, ENABLE_TRANSMIT))) {
++        if ((access_mask & R_NWCTRL_ENABLE_TRANSMIT_MASK) &&
++            !(FIELD_EX32(s->regs[offset], NWCTRL, ENABLE_TRANSMIT))) {
+             /* Reset to start of Q when transmit disabled. */
+             for (i = 0; i < s->num_priority_queues; i++) {
+                 s->tx_desc_addr[i] = gem_get_tx_queue_base_addr(s, i);
+@@ -1692,37 +1703,37 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
+         gem_update_int_status(s);
+         break;
+     case R_RXQBASE:
+-        s->rx_desc_addr[0] = val;
++        s->rx_desc_addr[0] = s->regs[offset];
+         break;
+     case R_RECEIVE_Q1_PTR ... R_RECEIVE_Q7_PTR:
+-        s->rx_desc_addr[offset - R_RECEIVE_Q1_PTR + 1] = val;
++        s->rx_desc_addr[offset - R_RECEIVE_Q1_PTR + 1] = s->regs[offset];
+         break;
+     case R_TXQBASE:
+-        s->tx_desc_addr[0] = val;
++        s->tx_desc_addr[0] = s->regs[offset];
+         break;
+     case R_TRANSMIT_Q1_PTR ... R_TRANSMIT_Q7_PTR:
+-        s->tx_desc_addr[offset - R_TRANSMIT_Q1_PTR + 1] = val;
++        s->tx_desc_addr[offset - R_TRANSMIT_Q1_PTR + 1] = s->regs[offset];
+         break;
+     case R_RXSTATUS:
+         gem_update_int_status(s);
+         break;
+     case R_IER:
+-        s->regs[R_IMR] &= ~val;
++        s->regs[R_IMR] &= ~write_val;
+         gem_update_int_status(s);
+         break;
+     case R_JUMBO_MAX_LEN:
+-        s->regs[R_JUMBO_MAX_LEN] = val & MAX_JUMBO_FRAME_SIZE_MASK;
++        s->regs[R_JUMBO_MAX_LEN] &= MAX_JUMBO_FRAME_SIZE_MASK;
+         break;
+     case R_INT_Q1_ENABLE ... R_INT_Q7_ENABLE:
+-        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_ENABLE] &= ~val;
++        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_ENABLE] &= ~write_val;
+         gem_update_int_status(s);
+         break;
+     case R_IDR:
+-        s->regs[R_IMR] |= val;
++        s->regs[R_IMR] |= write_val;
+         gem_update_int_status(s);
+         break;
+     case R_INT_Q1_DISABLE ... R_INT_Q7_DISABLE:
+-        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_DISABLE] |= val;
++        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_DISABLE] |= write_val;
+         gem_update_int_status(s);
+         break;
+     case R_SPADDR1LO:
+@@ -1738,7 +1749,9 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
+         s->sar_active[(offset - R_SPADDR1HI) / 2] = true;
+         break;
+     case R_PHYMNTNC:
+-        gem_handle_phy_access(s);
++        if (access_mask & (R_PHYMNTNC_OP_MASK | R_PHYMNTNC_ST_MASK)) {
++            gem_handle_phy_access(s);
++        }
+         break;
      }
+ 
+---
+base-commit: 71f25c75417d31c214ba2cd26b273c114fc99987
+branch: cadence
+
 -- 
-2.55.0
+2.53.0
 
 

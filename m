@@ -1,86 +1,118 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 62E86606A334
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 22:39:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51384606A326
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Nov 2026 23:58:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=csclub.uwaterloo.ca header.i=@csclub.uwaterloo.ca header.a=rsa-sha256 header.s=202502r header.b=Apu0Egyd;
-	dkim=pass header.d=csclub.uwaterloo.ca header.i=@csclub.uwaterloo.ca header.a=ed25519-sha256 header.s=202502e header.b=5Fpv4STR
+	dkim=pass (2048-bit key, unprotected) header.d=alistair23.me header.i=@alistair23.me header.a=rsa-sha256 header.s=fm3 header.b=LXzGxHhp;
+	dkim=pass (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=kkSO0NHx
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQY0j-0008Q5-Tt; Mon, 09 Nov 2026 17:38:46 -0500
+	id 1xQZFD-0007NY-HJ; Mon, 09 Nov 2026 18:57:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=7661c7e87=s23adhik@csclub.uwaterloo.ca>)
- id 1xQY0h-0008O4-8Z; Mon, 09 Nov 2026 17:38:43 -0500
-Received: from esa.hc503-62.ca.iphmx.com ([216.71.135.51])
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1xQZF6-0007Mc-Bq
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 18:57:41 -0500
+Received: from fout-a8-smtp.messagingengine.com ([103.168.172.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=7661c7e87=s23adhik@csclub.uwaterloo.ca>)
- id 1xQY0e-0004WU-Q7; Mon, 09 Nov 2026 17:38:43 -0500
-X-CSE-ConnectionGUID: jnHZffddTmOU5X+sjCExYQ==
-X-CSE-MsgGUID: p0C/pRDITLKNxswA+6MPjQ==
-X-Talos-CUID: =?us-ascii?q?9a23=3AC0g91mrqipZjfB4cETcj7kTmUcIjUk/TwnvcH0q?=
- =?us-ascii?q?fNDtZC6aXYnKAyZoxxg=3D=3D?=
-X-Talos-MUID: 9a23:Qr2IMAoACu91x6HH0J0ezyk6H4Bw2YiPNGQut4UdpODHawlIOQ7I2Q==
-Received: from smtp.uwaterloo.ca ([129.97.208.46])
- by ob1.hc503-62.ca.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2026 17:38:44 -0500
-Received: from connsmtp1.connect.uwaterloo.ca (172.16.137.90) by
- connsmtp2.connect.uwaterloo.ca (172.16.137.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.53; Mon, 9 Nov 2026 17:38:21 -0500
-Received: from mail.csclub.uwaterloo.ca (129.97.134.52) by smtp.uwaterloo.ca
- (172.16.137.90) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.53 via Frontend
- Transport; Mon, 9 Nov 2026 17:38:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
- s=202502r; t=1794263900;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HRNB/qbSpVQ4fVl7VxylbrKtPen22FO3wQnYnVKZH3A=;
- b=Apu0EgydtwvpZwebAnd2yTsuAns8ljN0jlHbCQIb/FgFVx7ZCKXS6FlEcxYzYQHuI53fkM
- IFKxkI4AUwGcdiarJk7qRQbHygzJ/7ISkWih1Mi3QIqs9Hqx+/MKpPuCOS8c1Xt+zeBrEZ
- lvmpr10C464rEeizUOJHE7NIPlLi1v73icw2XJjc9PQ6LFE8bhgZeT+0mbfuLyqQST0AN7
- G+iJHLmHIuda1UA9aY7pMic4tG2wgPyZjz2R2RFbTsQ5g1Ok5rqnOkQWFq8TAF0m2dC/b9
- QjH69dK8HnTTbDxo5FVJo0SkKNGjr4yZ7lVODLJZGhTZ09d7rW524oZyK8k4IQ==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=csclub.uwaterloo.ca;
- s=202502e; t=1794263900;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HRNB/qbSpVQ4fVl7VxylbrKtPen22FO3wQnYnVKZH3A=;
- b=5Fpv4STRZpHBABAmyek7webghPF+jiROLgJQTNBlTD5cWQNR8buLSfbUHUx3y+HoZUco+6
- vn9Dfrf7aCdBHmDg==
-Message-ID: <7aa2bd16-d450-4169-a458-0d2e821dea78@csclub.uwaterloo.ca>
-Date: Mon, 9 Nov 2026 17:38:19 -0500
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1xQZF4-0003et-DL
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2026 18:57:40 -0500
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+ by mailfout.phl.internal (Postfix) with ESMTP id 6CC3EEC0581
+ for <qemu-arm@nongnu.org>; Mon,  9 Nov 2026 18:57:35 -0500 (EST)
+Received: from phl-frontend-04 ([10.202.2.163])
+ by phl-compute-03.internal (MEProxy); Mon, 09 Nov 2026 18:57:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:subject:subject:to:to; s=fm3;
+ t=1794268655; x=1794355055; bh=bxDSk1l0hwoR1GLBMbOZD31cfDjL72Mx
+ cfCoBrQWbqM=; b=LXzGxHhpz1G85JX+WHbiNfBXBIpa2egl6eHVr5ie2WYUDaKX
+ mHL2BvZRRV+ld+hvReSDJK06cAxsq1dA64v7Yef+SF0HmcIcjZ1nhvTyf0gi+UBx
+ 0QNIiwW8YW1Z5CfxFlJf7jVythZ2Kq6GrQGfwnz/XleWtf7/W+b0tFEnsmDRHxz8
+ KQ7JfwzS0fx97U96XeKn5RLNoAn8g/i7V95Hru+gEA16y2i4if2dFCi2VRH1oYzu
+ zwm88bYo5gzolVu5X/pLAqyDjBYCVEOEOo7uOlZq/JTodG8LHPPwhE2GJO0SlE48
+ 6jfzuf9KLk0GEaieK2mmHY01ksxaqX3nPF7Dkw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1794268655; x=
+ 1794355055; bh=bxDSk1l0hwoR1GLBMbOZD31cfDjL72MxcfCoBrQWbqM=; b=k
+ kSO0NHx5A3Kew05uk2TVmK+skcm+BEpBF5zCqnTLH6fEKKkYxJS6kTJBMF91YIlP
+ 4Ned/TZuJeS8oLmN4D8CgKBSR24FncR0fNw6gsZwS9SGWT3PF5fA8zKeR+SFOtLw
+ QJpRLjZ52PkTVFb26WJzpb76G/Nt7K8AcB8HZNNwLACszNKjS1B1H6qNYxTiywYP
+ JpJvb36o7aITl1pYOdfmh8oqSlvET14BysbQ/eXZRlOFmdBRZJIcVlhzTLJOL735
+ /bXoHm2KiNWKuBRpZkfxs6eOdzutpbOeQNNxLfKknuIaixxw/3Yx7sUIIS6BRkfp
+ Wy9H8XibpmFloUNhXFiQA==
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+ repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+ action=sign d=alistair23.me a=rsa-sha256;
+DKIM2-Signature: i=1; m=1; t=1794268655; d=alistair23.me;
+ mf=PGFsaXN0YWlyQGFsaXN0YWlyMjMubWU+;
+ rt=PHFlbXUtYXJtQG5vbmdudS5vcmc+;
+ s=fm3:rsa-sha256:iDmMClqykemO8VBwktSgrhPxpB8vaS5TWN7FYomwjAUGpYf
+ 3wAQwJgBks8I5wg+em6nYf08mDatnVFxiyL3o/pCZd5Pj9+HobJnRC5jRQDll/2G
+ qlD/C6r6luZo4udpPUY7Ye5UpnjGGb1urTd4hjZGi3R1Q4jfXVD+59pWZjH7hvUB
+ NI1S+cThte5+4l3d9aH6arDeJ8FpwkZrQA967rHvHXgKCuARVd/sOSCTTKgX+GN/
+ /xmeukhWU/EpLrn81dQYPMp+p8nVWXZaFK4wO/eUVUlBY6WFcrLtNBbnjznQzw+q
+ /2nnqCbraQQwClp0hmNheJMqfLTWNjFeXKqzNOQ==;
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+ repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+ action=mi-m=1; hc=13;
+ hn=cc,content-transfer-encoding,content-type,date,feedback-id,
+ from,in-reply-to,message-id,mime-version,references,subject,to,
+ user-agent;
+Message-Instance: m=1;
+ h=sha256:+oSr0iX8XmRR8k4uRlJbjxyvtjE32Zny+ix6BOVnYzQ=:bxDSk1l0hwoR1GLBMbOZD31cfDjL72MxcfCoBrQWbqM=;
+X-ME-Sender: <xms:713yaoLbzXUUQE1TQLrDYzMV4a5HB6Xh7gNXYf1Zu5NQBQzoEwoFRw>
+ <xme:713yajFh5cJyX1rTHmHheGnQKSWnOzL4VezfsPlDVNG8kThGfoj-Ph6zH97uyhSu0
+ PPwiYmobFGgDBxD7mvu05ct74FReJ_wIF0c_gxLb5-QstJBH05Rj6az>
+X-ME-Received: <xmr:713yanveMDaqhJQ4nvRiAgU7Xp7jq28GRUGw-i_kOKUVT4XqTmkXyC9L2rO5vssGY52cTF80SbEQ81Ifhw8PjEzP9z4>
+X-ME-Proxy-Cause: dmFkZTGQlAlJRjqeWg+Kzj7gZLRpufoaf323Xcoyu6Pzz5DsN2d//YpblkmaTccVD7w5+x
+ QzImP+FaYzH3LvYUMbG4UhaM4Fzjs3xUBx/UVHj1tYcHjpUIwDZablK36XSmInLcMdpAz/
+ k/PaV7bOdNLSGDkfd+025xTUMfwWZWlyYyNp+o27EAkmAzopZVJ5cjSAjXWr+5JQJlIdk5
+ +jJPJh9zzWFovQqjJ/pCnx3LS6GhzQFa6RxIqwWJP+W8/Gciu6bhBDXkpV2XL/SgYVCp+5
+ PihlMkcHE3XYGJeiC4evxFlw+AOoR+wFMJH09nb4naMzIb9pZNufOamCiwOw2wdgqpQpRR
+ k1SnmLBBhZmSL+XNhTJHRcH5l4UNMSQOI6glLUHZDJRv2jU49V79QDbK39FmIqC0FbknuG
+ 2a5r9SQST3z0u1awfJn85/FM3dpvHE6mSTBBRNhWNBPR2aa0VBZnEE4ybcjo0kQqABw/yB
+ iiNE+9DU3w+fhD0DV9KWEe4pEZIH5kf4/1St7TXf/1mnRXx2P9UZvWDZhXyqOYVhEitA5B
+ 1sn0z0l/sLOYZE9PQznztgIvMIa5ULBiLe60exiO5PXx1YihkRw0rvN5yLhUgZvqSYHrAH
+ jVFyqn0GSdv3lsTOrQkToN6h6B/HpHBmXJZ9vlwXYW95MDqbtS7fJtrxeRIQ
+X-ME-Proxy: <xmx:713yaqtA47zpw9YzUN7EGbj7TtPOn3SYHgJ9ilkdewrlqM85LzBcMg>
+ <xmx:713yatAGxGtMqoF9XAIe8ySdgPW19sf-pdZM6FBHCFiw64vedJu-Ew>
+ <xmx:713yasM0BTf71IQdoXOQm-wHksT1-40LuOw-9dnnmC5TdpkAXWsFsA>
+ <xmx:713yamx9FyAbd6LSqSMkwasvE0ke6lkKhoLSDLfqZkv__X0_uV3giQ>
+ <xmx:713yalvw4SJA_b48aeG6m2iIfUooVD6sKBpHK9kVFb3AzPRaSMqGQbbM>
+Feedback-ID: ifd214418:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 9 Nov 2026 18:57:32 -0500 (EST)
+Message-ID: <9106f25e8f91be6d5129accf1a20a4dbf7442958.camel@alistair23.me>
+Subject: Re: [PATCH] hw/ssi/stm32f2xx_spi: avoid transferring data on DR reads
+From: Alistair <alistair@alistair23.me>
+To: Manuele Conti <conti.manuele@gmail.com>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, farosas@suse.de, 
+ lvivier@redhat.com, pbonzini@redhat.com
+Date: Tue, 10 Nov 2026 09:57:29 +1000
+In-Reply-To: <20261021065238.15220-1-conti.manuele@gmail.com>
+References: <20261021065238.15220-1-conti.manuele@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.62.1 (by Flathub.org) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH] bcm2838: Add GIC-400 timer interupt connections
-To: Jayesh Agarwal <agarwaljayesh03@gmail.com>
-Cc: peter.maydell@linaro.org, philmd@oss.qualcomm.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca>
- <20261109114944.21801-1-agarwaljayesh03@gmail.com>
-From: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
-Content-Language: en-US
-In-Reply-To: <20261109114944.21801-1-agarwaljayesh03@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.71.135.51;
- envelope-from=prvs=7661c7e87=s23adhik@csclub.uwaterloo.ca;
- helo=esa.hc503-62.ca.iphmx.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+Received-SPF: pass client-ip=103.168.172.151;
+ envelope-from=alistair@alistair23.me; helo=fout-a8-smtp.messagingengine.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,32 +125,183 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Jayesh,
+On Wed, 2026-10-21 at 08:52 +0200, Manuele Conti wrote:
+> Writing SPI_DR already performs the synchronous SSI transfer and
+> stores
+> its response in spi_dr. Reading SPI_DR performs another transfer,
+> using
+> the previous response as transmit data, and returns the new response.
+> Consequently a normal write/read pair clocks two frames on the bus
+> and
+> can skip bytes in a peripheral's response.
 
-I think I've been a bit swamped with work. So I probably won't be able to work
-on this for a while...
+Yeah, this seems broken as it is today.
 
-Feel free to take a crack at it!
+It does seem like reading SPI_DR should pop the data from the RX
+Buffer, but we don't actually have an RX Buffer to pop from.
 
-Let us know if you need any help!
+This change seems like an improvement on currently dropping the read
+data, but ideally we would have a buffer to copy to/from.
 
--- Sourojeet
+>=20
+> Return the response saved by the write and clear RXNE without
+> starting
+> another transfer. Repeated reads then leave the peripheral state
+> alone.
+>=20
+> Add a qtest using the upstream netduino2 machine and an M25P80 flash.
+> Check the JEDEC ID, RXNE clearing, and repeated DR reads. The test
+> requires
+> no board changes and reproduces the unwanted extra transfers before
+> the
+> fix.
+>=20
+> Fixes: 5ae74402d1f ("STM32F2xx: Add the SPI device")
+> Signed-off-by: Manuele Conti <conti.manuele@gmail.com>
 
-On 2026-11-09 06:49, Jayesh Agarwal wrote:
-> Hi Sourojeet, Peter,
->
-> There has not been any follow up since March 2025. I would like to pick
-> it up using the TYPE_SPLIT_IRQ approach that Peter described, as done
-> for I2C in commit fb3e0557. Your work will be credited. However, if you
-> are still working on it, I will step back.
->
-> Thanks,
-> Jayesh Agarwal
+Thanks for the fix!
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+> ---
+> =C2=A0MAINTAINERS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=
+=C2=A0 1 +
+> =C2=A0hw/ssi/stm32f2xx_spi.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 1 -
+> =C2=A0tests/qtest/meson.build=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0 2 ++
+> =C2=A0tests/qtest/stm32f2xx-spi-test.c | 50
+> ++++++++++++++++++++++++++++++++
+> =C2=A04 files changed, 53 insertions(+), 1 deletion(-)
+> =C2=A0create mode 100644 tests/qtest/stm32f2xx-spi-test.c
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 902db77..822c60a 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1201,6 +1201,7 @@ F: hw/char/stm32f2xx_usart.c
+> =C2=A0F: hw/timer/stm32f2xx_timer.c
+> =C2=A0F: hw/adc/*
+> =C2=A0F: hw/ssi/stm32f2xx_spi.c
+> +F: tests/qtest/stm32f2xx-spi-test.c
+> =C2=A0F: include/hw/*/stm32*.h
+> =C2=A0
+> =C2=A0STM32F405
+> diff --git a/hw/ssi/stm32f2xx_spi.c b/hw/ssi/stm32f2xx_spi.c
+> index 871d573..da1dbb7 100644
+> --- a/hw/ssi/stm32f2xx_spi.c
+> +++ b/hw/ssi/stm32f2xx_spi.c
+> @@ -82,7 +82,6 @@ static uint64_t stm32f2xx_spi_read(void *opaque,
+> hwaddr addr,
+> =C2=A0=C2=A0=C2=A0=C2=A0 case STM_SPI_SR:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return s->spi_sr;
+> =C2=A0=C2=A0=C2=A0=C2=A0 case STM_SPI_DR:
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 stm32f2xx_spi_transfer(s);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->spi_sr &=3D ~STM_SPI_=
+SR_RXNE;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return s->spi_dr;
+> =C2=A0=C2=A0=C2=A0=C2=A0 case STM_SPI_CRCPR:
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 78b3010..5984e9c 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -238,6 +238,8 @@ qtests_stm32l4x5 =3D \
+> =C2=A0=C2=A0=C2=A0 'stm32l4x5_usart-test']
+> =C2=A0
+> =C2=A0qtests_arm =3D \
+> +=C2=A0 (config_all_devices.has_key('CONFIG_NETDUINO2') and
+> +=C2=A0=C2=A0 config_all_devices.has_key('CONFIG_SSI_M25P80') ? ['stm32f2=
+xx-
+> spi-test'] : []) + \
+> =C2=A0=C2=A0 (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-tes=
+t'] :
+> []) + \
+> =C2=A0=C2=A0 (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ?
+> ['cmsdk-apb-dualtimer-test'] : []) + \
+> =C2=A0=C2=A0 (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cm=
+sdk-
+> apb-timer-test'] : []) + \
+> diff --git a/tests/qtest/stm32f2xx-spi-test.c
+> b/tests/qtest/stm32f2xx-spi-test.c
+> new file mode 100644
+> index 0000000..619191c
+> --- /dev/null
+> +++ b/tests/qtest/stm32f2xx-spi-test.c
+> @@ -0,0 +1,50 @@
+> +/*
+> + * STM32F2XX SPI controller tests
+> + *
+> + * Copyright (c) 2026 Manuele Conti <conti.manuele@gmail.com>
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "libqtest.h"
+> +
+> +/* The first SSI bus found by -device belongs to SPI3. */
+> +#define SPI3_BASE 0x40003c00
+> +#define SPI_CR1=C2=A0=C2=A0 (SPI3_BASE + 0x00)
+> +#define SPI_SR=C2=A0=C2=A0=C2=A0 (SPI3_BASE + 0x08)
+> +#define SPI_DR=C2=A0=C2=A0=C2=A0 (SPI3_BASE + 0x0c)
+> +#define SPI_RXNE=C2=A0 (1U << 0)
+> +
+> +static void test_jedec_id(void)
+> +{
+> +=C2=A0=C2=A0=C2=A0 static const uint8_t jedec_id[] =3D { 0x20, 0x20, 0x1=
+4 };
+> +=C2=A0=C2=A0=C2=A0 QTestState *qts =3D qtest_init("-machine netduino2 "
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "-device m25p80,bus=3Dssi");
+> +
+> +=C2=A0=C2=A0=C2=A0 /* Enable SPI in master mode, with software slave man=
+agement. */
+> +=C2=A0=C2=A0=C2=A0 qtest_writel(qts, SPI_CR1, (1U << 9) | (1U << 8) |
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 (1U << 6) | (1U << 2));
+> +
+> +=C2=A0=C2=A0=C2=A0 qtest_writeb(qts, SPI_DR, 0x9f);
+> +=C2=A0=C2=A0=C2=A0 qtest_readb(qts, SPI_DR);
+> +
+> +=C2=A0=C2=A0=C2=A0 for (unsigned i =3D 0; i < ARRAY_SIZE(jedec_id); i++)=
+ {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qtest_writeb(qts, SPI_DR, 0);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_cmphex(qtest_readl(q=
+ts, SPI_SR) & SPI_RXNE, =3D=3D,
+> SPI_RXNE);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_cmphex(qtest_readb(q=
+ts, SPI_DR), =3D=3D, jedec_id[i]);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_cmphex(qtest_readl(q=
+ts, SPI_SR) & SPI_RXNE, =3D=3D, 0);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Reading DR again must not =
+clock another byte out of the
+> flash. */
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_cmphex(qtest_readb(q=
+ts, SPI_DR), =3D=3D, jedec_id[i]);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_cmphex(qtest_readl(q=
+ts, SPI_SR) & SPI_RXNE, =3D=3D, 0);
+> +=C2=A0=C2=A0=C2=A0 }
+> +
+> +=C2=A0=C2=A0=C2=A0 qtest_quit(qts);
+> +}
+> +
+> +int main(int argc, char **argv)
+> +{
+> +=C2=A0=C2=A0=C2=A0 g_test_init(&argc, &argv, NULL);
+> +=C2=A0=C2=A0=C2=A0 qtest_add_func("/stm32f2xx/spi/jedec-id", test_jedec_=
+id);
+> +=C2=A0=C2=A0=C2=A0 return g_test_run();
+> +}
 

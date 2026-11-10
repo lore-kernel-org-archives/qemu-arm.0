@@ -1,125 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BA1D606A31C
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Nov 2026 15:17:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50F5360A2604
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Nov 2026 15:57:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=uucewEtg
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=zud0Xhzc
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQnbJ-0002ir-HH; Tue, 10 Nov 2026 10:17:38 -0500
+	id 1xQoE4-0000U4-Fj; Tue, 10 Nov 2026 10:57:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xQnZM-0001cI-Dh
- for qemu-arm@nongnu.org; Tue, 10 Nov 2026 10:15:39 -0500
-Received: from smtpout2.mo536.mail-out.ovh.net ([51.210.91.11])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xQnZH-0001n3-Te
- for qemu-arm@nongnu.org; Tue, 10 Nov 2026 10:15:30 -0500
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [79.137.60.226])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4jP9FG2rpHz8C4C;
- Tue, 10 Nov 2026 15:15:14 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alex.bennee@linaro.org>; Tue, 10 Nov 2026 15:15:14 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.54.88])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4jP9FG1f72z47l0;
- Tue, 10 Nov 2026 15:15:14 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.1])
- (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 5A95212E3BDF;
- Tue, 10 Nov 2026 15:15:12 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004707169b1-522a-4526-b824-fe0310067788,
- 85C0C06F94A1483D58022EF506A248ADF299C60B) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <07a49049-2170-44ae-a025-35a8c58d5f03@kaod.org>
-Date: Tue, 10 Nov 2026 16:15:11 +0100
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xQoE3-0000TA-2X
+ for qemu-arm@nongnu.org; Tue, 10 Nov 2026 10:57:35 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xQoE1-0008Kb-8v
+ for qemu-arm@nongnu.org; Tue, 10 Nov 2026 10:57:34 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4a20a37703bso15947585e9.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Nov 2026 07:57:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1794326251; x=1794931051; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=0fhMbGmt3RTQ78ZmraD3xoHdpK036LIpYJpNT0qF2S0=;
+ b=zud0XhzcgMNH94PVUz4hgPNyk7WoBJ9haR8ysm+pmfOrBIcFCunwtEtILoQTc89vfB
+ ZOhxHhlrg5vjk2jO8GwWzCdsRx1CG3k+TWVC3JBcSMTtAg7XTgA83EJ7lqLN4QmXAus2
+ UupmdhhOE0S6yrFYv2I7EPMh2vosGPK0zOdTmXQVb7cHXFSjvFOfles7wZRKveR8x21P
+ jddPs3S440CgJRh7KOEo+iQLhtxLH8XffEZnfJmRApRZwRf0rUKwmZLcIG/V+sarjS5G
+ RPsL194E9B5wEMN6LQ1tO4tmwCA2EHLTBn3qzLjDPVsrJzVZK2s0mHAHWZOUwrMnzEgg
+ B+GQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1794326251; x=1794931051;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=0fhMbGmt3RTQ78ZmraD3xoHdpK036LIpYJpNT0qF2S0=;
+ b=ESLzaA1ODOHmlXuuz5kuZohtHVWhQstMwF12AJrgSqV4KvRmTw0yU0poKQX+HJtR9p
+ YrLZ1jOWl7xTUetQKI6EChBTUg8z9CDEP2amQBMM/eOBM4pMId/2H4KvN9mJOH9HcFyO
+ FKippUmzDdviOqQUCVwr6eJ0ewySmksmo2kbiv60FxWstKv4teW7C8W6k4pwnDT1vGrF
+ lP6+vdURn20e2imDMmOTUmI86WrXQpC+UlXx8KuxjThka4WBHS9UTs3jWT2VelC9x1Sf
+ OMiFGavJtNfIUUMDG3JGsN+gi0EqP6/2HHfx5g+fN6NMlF7HFgSquefoL5bE21c0qpn9
+ lARQ==
+X-Forwarded-Encrypted: i=1;
+ AL+hErGLW60mCAQ+67GD4qeSv/1GS856hmjO8GVUvkPW6bmLKkQI0Y9jBYE/+o0O/ewijz2pJTTbtDbfwQ==@nongnu.org
+X-Gm-Message-State: APuU4Z8Sk/m//NO8WoTwssZd5idxHdVoPN80+iBdxp2JONEdoAkf5c7M
+ F/O4YmBwirjytQJyejLYb8yiK0KAlIUlQn9QY+s7eTmHvRyGvWM5BISL
+X-Gm-Gg: AYBFou0K+rfQ2g0gYabDW44qfPk5KjjUR0Ol2nR56X91be7l3xaaw6V5EkMbnBxehGk
+ +/tgarWYiNTzzB/mYHc8UP07LRmtL7VM4bwqnGtjuTeONaZkNy01uXXFfG6LsSNaM9proODE/ug
+ N39P/IHYUkHPreGv8bxKg/o503QfzWHPfIPEXGCGI821OgvsN5yQ6r2a87gQvhUHMjCmvxnVuxU
+ F0QVtHGUTNya52vUvEb2kqJRe6wRKi3vQZAWDNQ0ZN0GG/pGwmM4vqztpf2AR/ewG8K2EaD/nM7
+ jybHpTxXDtyNFeVXdyglNc45DeEXbp9TilhtFVAix7Sljm7clkVb+9iu3mh2q9QqyRRx+F1eQof
+ QIIU61IcGYYc370TvMRRzovXOt4WzPhzQTFRTNxiQ6lqCu4fHTcJKeOVilgFEPQ9C9fUftgqcmu
+ xH868w2wtfna8hyeRBcZ/IQpHRTVrn+0CdSw45mRoqzI2C6/ZQcNSnjiqE4ZGS/E04SGBGfFhwW
+ /Sy1TwKsEKGKJhhXj4KjyRDjv96Pnh5c3BtqEMmgvHHxG/2+6k465by70kmn+YZgPEelThOmQuy
+ /T4ZhwV6X73IwStave/9xhuLsyS8/TaNAJXKi7/+C9HASpLQVhwp7YJe252lLZ6sugr+PsohMbl
+ 8VIY/iujOAemcz/wuZQOp
+X-Received: by 2002:a05:600c:3b83:b0:4a1:88de:9e8b with SMTP id
+ 5b1f17b1804b1-4ba0233f907mr62613945e9.5.1794326250825; 
+ Tue, 10 Nov 2026 07:57:30 -0800 (PST)
+Received: from ehlo.thunderbird.net
+ (business-090-187-110-129.90.187.pools.vodafone-ip.de. [90.187.110.129])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-498369a3f4esm6214928f8f.53.2026.11.10.07.57.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Nov 2026 07:57:30 -0800 (PST)
+Date: Tue, 10 Nov 2026 11:49:33 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+CC: qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Chao Liu <chao.liu@processmission.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Peter Xu <peterx@redhat.com>, 
+ Fabiano Rosas <farosas@suse.de>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_for-11=2E2_2/2=5D_include/hw/core/pti?=
+ =?US-ASCII?Q?mer=2Eh=3A_Fix_=27version=27_argument_of_VMSTATE=5FPTIMER?=
+In-Reply-To: <20261106163657.3825938-3-peter.maydell@linaro.org>
+References: <20261106163657.3825938-1-peter.maydell@linaro.org>
+ <20261106163657.3825938-3-peter.maydell@linaro.org>
+Message-ID: <CDAC81E8-0731-4747-86DE-70F2368CC989@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/28] hw/vfio: mark all VFIO object classes as secure
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, Cornelia Huck <cohuck@redhat.com>
-References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-6-berrange@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20261029131241.2275706-6-berrange@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 3819615434873875695
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGiTvkN8UV6qOnQYp2052LqzFR9eafclJ8c1yrc6lbHbvszRInbq9lb21m93bZySRSu0cbvAuhfeb72hwinEI42Y++n1jMhWnopFsqDY73+YE6mYtvvrQIhFMY+7+hr/LiHsFBAlKcIAzDNSRCOVFxlKthHfL8Y/+pR9hZYufW8hfxkSjwRLLbrDqL3wZzLzwZZOphQ2aAIAJgZgGBQsvHMJUzHSluQWyr8P2/TAc6WvJbuo/OQpEnKF4nyqiTXNS1otc5YCIbY2CrGzgPXmYty0tGwpfKT5kT32PyGOrTrbk/i+GI7b/cyv3aQrCzaX6/jEvqlVCx49AZRs10VgU66L3I9CHpC9sax1u5a1xh3a3oo9C5y4n5mZ58jZdkYe3/F5WRjMAYhbj9hNkdO/eq4xVuSY3JIoq14Z2ZQE7hGa6rcRCmFo2Em8eio2FDYncSj5+NNZMQbEvMMMOlcqidX8OVqJmc/3oorMIYx/bdipnkhYR4mrgQAJfRomRcUh5iJpDJsIdlKFqbXezHrQQKc4w9WJpmqnteX7LDwGS8/gQU9hcRmOAJre286FRLE1lJTYkG4JHS+PqKexRvKaIYyCD2NLcISBUAtS6mXOBJ7hLeEQbmB2SGpp1pe62zvfkpi28risdMW/6Ixn5tRf6MQEM2xpoCgXC6yzwW802YqsQ
-DKIM-Signature: a=rsa-sha256; bh=h+6pD3peeMFxu47KbdziNuIe6rgb845bLJ+8pVDeguk=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1794323714; v=1;
- b=uucewEtglpLhMwzApl1+qwEq+3s6IiAbkAHHtnDMaEip/LZgYNRgbvHbVcDALPHgUs9+1nMr
- UDP5f2aYUaFttYtkzbzbZm++Na+ctq15WEph96oyZUhdqSkjFZvlNY4Dy8mOMw70pa8IPLsqBPG
- /KkjDzi6YIMOuwImf1HVQfmZAr4ChqkBkbGv/Gu+9hhzP7tZPmTO3iBU1fGa6IU/tNsGmYlZBON
- wOdr2QFKIzKa7iV1sJKW9+xFDAERTvqEGQJ9uskC7/MhK3fstVv9WBtJGj7BcMnh2n52BT5L0Fv
- zxIswA3sIlL4pXrMwWyw7x4cc5Fq3gUGMdR59S0m0Okpw==
-Received-SPF: pass client-ip=51.210.91.11; envelope-from=clg@kaod.org;
- helo=smtpout2.mo536.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,134 +108,114 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/29/26 14:12, Daniel P. Berrangé wrote:
-> The VFIO subsystem is about securely passing host PCI devices
-> to a guest, so all the classes should be presumed to be offering
-> a security boundary.
-> 
-> Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Acked-by: Cornelia Huck <cohuck@redhat.com> #s390 types
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->   hw/vfio-user/pci.c | 1 +
->   hw/vfio/ap.c       | 1 +
->   hw/vfio/ccw.c      | 1 +
->   hw/vfio/igd.c      | 1 +
->   hw/vfio/iommufd.c  | 2 ++
->   hw/vfio/pci.c      | 2 ++
->   hw/vfio/spapr.c    | 1 +
->   7 files changed, 9 insertions(+)
-> 
-> diff --git a/hw/vfio-user/pci.c b/hw/vfio-user/pci.c
-> index 983e1d4ad47..d8965fd02ee 100644
-> --- a/hw/vfio-user/pci.c
-> +++ b/hw/vfio-user/pci.c
-> @@ -487,6 +487,7 @@ static const TypeInfo vfio_user_pci_info = {
->       .class_init = vfio_user_pci_class_init,
->       .instance_init = vfio_user_pci_init,
->       .instance_finalize = vfio_user_pci_finalize,
-> +    .secure = true,
->   };
->   
->   static void register_vfio_user_dev_type(void)
-> diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
-> index 2926e04ad49..45d67b8ba70 100644
-> --- a/hw/vfio/ap.c
-> +++ b/hw/vfio/ap.c
-> @@ -356,6 +356,7 @@ static const TypeInfo vfio_ap_info = {
->       .instance_size = sizeof(VFIOAPDevice),
->       .instance_init = vfio_ap_instance_init,
->       .class_init = vfio_ap_class_init,
-> +    .secure = true,
->   };
->   
->   static void vfio_ap_type_init(void)
-> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
-> index 8e29a3ae613..6d71e196ee0 100644
-> --- a/hw/vfio/ccw.c
-> +++ b/hw/vfio/ccw.c
-> @@ -723,6 +723,7 @@ static const TypeInfo vfio_ccw_info = {
->       .instance_size = sizeof(VFIOCCWDevice),
->       .instance_init = vfio_ccw_instance_init,
->       .class_init = vfio_ccw_class_init,
-> +    .secure = true,
->   };
->   
->   static void register_vfio_ccw_type(void)
-> diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
-> index 4c7d6545924..df70cdd9403 100644
-> --- a/hw/vfio/igd.c
-> +++ b/hw/vfio/igd.c
-> @@ -313,6 +313,7 @@ static const TypeInfo vfio_pci_igd_lpc_bridge_info = {
->       .name = "vfio-pci-igd-lpc-bridge",
->       .parent = TYPE_PCI_DEVICE,
->       .class_init = vfio_pci_igd_lpc_bridge_class_init,
-> +    .secure = true,
->       .interfaces = (const InterfaceInfo[]) {
->           { INTERFACE_CONVENTIONAL_PCI_DEVICE },
->           { },
-> diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-> index de482128bf1..ab466b513ec 100644
-> --- a/hw/vfio/iommufd.c
-> +++ b/hw/vfio/iommufd.c
-> @@ -1061,10 +1061,12 @@ static const TypeInfo types[] = {
->           .parent = TYPE_VFIO_IOMMU,
->           .instance_size = sizeof(VFIOIOMMUFDContainer),
->           .class_init = vfio_iommu_iommufd_class_init,
-> +        .secure = true,
->       }, {
->           .name = TYPE_HOST_IOMMU_DEVICE_IOMMUFD_VFIO,
->           .parent = TYPE_HOST_IOMMU_DEVICE_IOMMUFD,
->           .class_init = hiod_iommufd_vfio_class_init,
-> +        .secure = true,
->       }
->   };
->   
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 428ab2f0698..03ab5bd0f48 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -4110,6 +4110,7 @@ static const TypeInfo vfio_pci_info = {
->       .class_init = vfio_pci_class_init,
->       .instance_init = vfio_pci_init,
->       .instance_finalize = vfio_pci_finalize,
-> +    .secure = true,
->   };
->   
->   static const Property vfio_pci_nohotplug_properties[] = {
-> @@ -4146,6 +4147,7 @@ static const TypeInfo vfio_pci_nohotplug_info = {
->       .parent = TYPE_VFIO_PCI,
->       .instance_size = sizeof(VFIOPCIDevice),
->       .class_init = vfio_pci_nohotplug_class_init,
-> +    .secure = true,
->   };
->   
->   static void register_vfio_pci_dev_type(void)
-> diff --git a/hw/vfio/spapr.c b/hw/vfio/spapr.c
-> index 42690e4323d..1027c434c07 100644
-> --- a/hw/vfio/spapr.c
-> +++ b/hw/vfio/spapr.c
-> @@ -544,6 +544,7 @@ static const TypeInfo types[] = {
->           .parent = TYPE_VFIO_IOMMU_LEGACY,
->           .instance_size = sizeof(VFIOSpaprContainer),
->           .class_init = vfio_iommu_spapr_class_init,
-> +        .secure = true,
->       },
->   };
->   
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-Thanks,
+Am 6=2E November 2026 16:36:57 UTC schrieb Peter Maydell <peter=2Emaydell@=
+linaro=2Eorg>:
+>The VMSTATE_PTIMER macro is defined to pass a 'version' argument of 1
+>to VMSTATE_STRUCT_POINTER_TEST_V=2E  This means that the field will
+>only be used in migration when the vmstate struct that uses
+>VMSTATE_PTIMER has a version_id of at least 1=2E  This doesn't match
+>how we define other VMSTATE_FOO which don't take an explicit
+>version_id, which is to use a version argument of 0 (e=2Eg=2E all the
+>common macros like VMSTATE_UINT32 are written to pass 0 to their
+>VMSTATE_UINT32_V counterparts, and so on)=2E It also doesn't match
+>how we define VMSTATE_PTIMER_ARRAY=2E
+>
+>The practical effect of this is that users of VMSTATE_PTIMER in
+>vmstate structs which explicitly or implicitly have a version_id of 0
+>were actually not getting their ptimers migrated=2E
+>
+>This affects:
+> vmstate_xlnx_csu_dma in wh/dma/xlnx_csu_dma=2Ec
+> vmstate_k230_wdt in hw/watchdog/k230_wdt=2Ec
+>
+>which are used in:
+> * Arm Xilinx versal and zynq machines
+> * RISC-V K230 machine
+>
+>Most ptimer users are unaffected because they took the usual approach
+>of explicitly setting their starting version_id to 1=2E
+>
+>Fix the version_id in this field=2E  This is a migration compatibility
+>break for all the above listed devices/machines=2E  Since the timers
+>involved are in devices where the timer is usually stopped (e=2Eg=2E  the
+>watchdogs only have the timer active when the watchdog is enabled and
+>counting down), the consequences of the bug are likely not visible to
+>most users=2E
+>
+>We could perhaps attempt to preserve migration compatibility here,
+>but none of the affected machine types are versioned and so we do not
+>promise cross-version compatibility, so do the simple thing=2E  Bump
+>the version_id and version_id on the two affected vmstate structs so
+>that attempted migration between old and new QEMU fails cleanly=2E
+>
+>Fixes: 852f771ec9e5c ("vmstate: port pmtimer")
+>Resolves: https://gitlab=2Ecom/qemu-project/qemu/-/work_items/4705
+>Signed-off-by: Peter Maydell <peter=2Emaydell@linaro=2Eorg>
+>---
+>Not cc: stable because it's a migration format change and we
+>don't generally backport those
+>---
+> include/hw/core/ptimer=2Eh | 2 +-
+> hw/dma/xlnx_csu_dma=2Ec    | 4 ++--
+> hw/watchdog/k230_wdt=2Ec   | 2 ++
+> 3 files changed, 5 insertions(+), 3 deletions(-)
+>
+>diff --git a/include/hw/core/ptimer=2Eh b/include/hw/core/ptimer=2Eh
+>index 4dc02b0de47=2E=2E8513f8917e3 100644
+>--- a/include/hw/core/ptimer=2Eh
+>+++ b/include/hw/core/ptimer=2Eh
+>@@ -300,7 +300,7 @@ void ptimer_stop(ptimer_state *s);
+> extern const VMStateDescription vmstate_ptimer;
+>=20
+> #define VMSTATE_PTIMER(_field, _state) \
+>-    VMSTATE_STRUCT_POINTER_V(_field, _state, 1, vmstate_ptimer, ptimer_s=
+tate)
+>+    VMSTATE_STRUCT_POINTER_V(_field, _state, 0, vmstate_ptimer, ptimer_s=
+tate)
+>=20
+> #define VMSTATE_PTIMER_ARRAY(_f, _s, _n)                                =
+\
+>     VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(_f, _s, _n, 0,                   =
+\
+>diff --git a/hw/dma/xlnx_csu_dma=2Ec b/hw/dma/xlnx_csu_dma=2Ec
+>index 436f9915e02=2E=2Eea703dc00ce 100644
+>--- a/hw/dma/xlnx_csu_dma=2Ec
+>+++ b/hw/dma/xlnx_csu_dma=2Ec
+>@@ -679,8 +679,8 @@ static void xlnx_csu_dma_realize(DeviceState *dev, Er=
+ror **errp)
+>=20
+> static const VMStateDescription vmstate_xlnx_csu_dma =3D {
+>     =2Ename =3D TYPE_XLNX_CSU_DMA,
+>-    =2Eversion_id =3D 0,
+>-    =2Eminimum_version_id =3D 0,
+>+    =2Eversion_id =3D 1,
+>+    =2Eminimum_version_id =3D 1,
+>     =2Efields =3D (const VMStateField[]) {
+>         VMSTATE_PTIMER(src_timer, XlnxCSUDMA),
+>         VMSTATE_UINT16(width, XlnxCSUDMA),
+>diff --git a/hw/watchdog/k230_wdt=2Ec b/hw/watchdog/k230_wdt=2Ec
+>index 1f83b499e82=2E=2Efba2013b8f3 100644
+>--- a/hw/watchdog/k230_wdt=2Ec
+>+++ b/hw/watchdog/k230_wdt=2Ec
+>@@ -234,6 +234,8 @@ static const MemoryRegionOps k230_wdt_ops =3D {
+>=20
+> static const VMStateDescription vmstate_k230_wdt =3D {
+>     =2Ename =3D "k230=2Ewdt",
+>+    =2Eversion_id =3D 1,
+>+    =2Eminimum_version_id =3D 1,
+>     =2Efields =3D (const VMStateField[]) {
+>         VMSTATE_PTIMER(timer, K230WdtState),
+>         VMSTATE_UINT32(cr, K230WdtState),
 
-C.
-
+Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
 

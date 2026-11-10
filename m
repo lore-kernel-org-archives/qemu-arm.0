@@ -1,106 +1,144 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6AE2606A31C
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Nov 2026 18:23:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 503DC606A325
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Nov 2026 19:14:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=wgvFiGMi
+	dkim=pass (2048-bit key, unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256 header.s=selector2 header.b=bpIfYwti
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xQqV0-0001Lz-ND; Tue, 10 Nov 2026 13:23:14 -0500
+	id 1xQrIh-00074q-8M; Tue, 10 Nov 2026 14:14:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xQqUx-0001LU-6z
- for qemu-arm@nongnu.org; Tue, 10 Nov 2026 13:23:11 -0500
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xQqUv-0002RB-B2
- for qemu-arm@nongnu.org; Tue, 10 Nov 2026 13:23:10 -0500
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-67990a45e02so2338229d50.3
- for <qemu-arm@nongnu.org>; Tue, 10 Nov 2026 10:23:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794334988; cv=none;
- d=google.com; s=arc-20260327;
- b=QS8HRSFvv2uHEEIlXbVzNHkoUvv70z4n8ASVwWZeEfR+9lS1OlxIyGY/yq8nPelZYM
- y7g7+044vjCPh8EkNnCybwWLhXalbPiEDYPBaFjWCLXOqvZ7bmstWrc7R3i6LMAwaKEc
- yEL8hqwbdIuQVDs4CeML9G/l3WVwGUIpFvNpGnVSEcbotJOr/BmbbJy3ilWhnyG/pBNh
- qm6RLOa3WvRTdjKiJGmrrZQyd1YTixJ8ao67d6VkbjRiQkVbqQzDM7H6E6krFrrObl1L
- PGySOoEXbZVyLtAr+DO8xq46l+UUZho8NRVtjr9HXwzMu7nPvYpV1Ly76JuSCa3cfjHc
- ChaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=27ySAo2+dUimhu26CFpZ16PLYKjsmAwT7G8TLDAERKw=;
- fh=aEbx6BWq6S8U7eUACVKHmXEjZaLjI6Ppy73L6qPi+VY=;
- b=GQm6lEOrlsGFPiEbrGyJgOVtMCqHpiVT+6BKDxRYXwoJgKTDHWr3uu3ya2iUPrglAk
- bBKHPsT1eLfzsZE9ayAGe3ZueesAoAeMxz80b31/vAEm04uOF24IIf841H+/eAxvfnGb
- 7MGotDDlgXLsbSnSYKPHO45Au/anlXcZIg33PKFuOmtpdPk8EEJQEpCEMBfvhBmsslxn
- 3gnUhcqp2bUb3bFeEVc+DPlM79G463ZtX1hWomP9kdq0HVgo5/Rx2AIDYxgO0n1jzuWG
- xTkfczcOESsCxXKNsV2ArojthCoKOMtit86+4+SGJNWlej5Z8myPYMi6k4er8nlFsFww
- pVWA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794334988; x=1794939788; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=27ySAo2+dUimhu26CFpZ16PLYKjsmAwT7G8TLDAERKw=;
- b=wgvFiGMik5+6h+sJ79De4gd0/HvMWKHEevM0NeaRgDB7KXwRH1fKBiE6GGc51KSoU3
- X+JG1kORQ5Zr1idHIVPmcb07Yr5zzGWQWn/3nSq0+KoURiolMP4Dl2nW7wDibOKpRWyG
- bu3/GOo7QzQVzDzQ1BubTy5Q9qYAO/qUNLxRG7zYXN2gG9ODVpEayFRE6BFlrblu3LQ2
- GmFBmx+ahomhkfUVw94T82NXbuP2+ap7zt1zJS9DnYkyHHu3FyWIK2ahz71j5D6vz6QZ
- zGd3J5aNwdpBG0m/OePIF7z+oM8d/H11bZ1AGB52yzF1IYnjMFlGXEJL0bqcyH5eRJ/S
- aWfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794334988; x=1794939788;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=27ySAo2+dUimhu26CFpZ16PLYKjsmAwT7G8TLDAERKw=;
- b=o6lWYHF8xu3dZiRYd0QOxMXswrOA93MvA4j+SqGuKv3UzOJDgIRzTNg3RfQ/j9FMGh
- rUMIJv/eBbsn5r86EgrWX2wPUBNaVyHlatX1wkGGD9MOYIXOZtLWakcKJoPeC01MNc+i
- vR9DaTCSPQpxbucdBX9qCJeaDLN/wkoOJNJr6iAmJuJjHQsifI1H2F1sZ3K1tBcZskmh
- AcrtooW+WVGhaTWWkUTcrOOj6AFE5KbsyUCl9xS2mYQhu6Jrmqi8QS+EaxO5aDpjZ8Ym
- pljPS4HhjasI8T0o9kvZ93tLDCsmFWxh4fEwdSw0OXaxhtPr8FEP/hecRcpok1kQPK+u
- mXzQ==
-X-Gm-Message-State: APuU4Z+onA1NtInHPHhnLcHE11g+oNvHPh2kqaoSCS/kK2GjgVspIObk
- hDm+42AZ9o1+NXSJ3S0eC0HoGJACcqpOHtQyboSIGUdcUR26koZrktt0cwcz9DLtv7mXHZOFRFd
- oTumFgECqftqr34T89p+mhkqdVKLYylU836fJJlUeoMoRGLK9sYbucaI=
-X-Gm-Gg: AYBFou14JqfLPNE66L2RY0wkbwDOn5ekC7wcA22M8NGULY9TtiPUukz3Jh9x2ULCKfc
- gifIuYPJNv9WGQDWrzw7hxh/XPKjIuBvo3Iy8jK1BJJbq8En2ok0eUmHWzW2/zO02pL8oW0JTh5
- jdRYi0t1z9/D4QjxYxLCOuxlBJYyjoJ+2Lt9dQHje87v3l+9mjKtQh0yYHO20JCAiapzd7iwdpH
- TopxjeC7uvf4Bv1EFzj5m3aVxUYN3HsWgVmEzT+3dOTOc7OBYraEtRd4LBdxWHC7XwVulqRJRC+
- MPMOn2WRy+q5o0ypVWyy5m6R5gjSRzx0jfHZ/2D8/WMTnUDRcMOo9lNYOMgsW7bysdXZItD4YQ3
- CXAKVhOmiBmwbsE32ELNtYUO4ts8aZQrumusSFIsAaFsD+gEzPrvqBT0+MLb4kYa/j8rjnYiUXl
- msBKtdVcLMC/SANM4SSNuWIHiUNNYJmBfHSMNJ/bFkig==
-X-Received: by 2002:a05:690e:12cb:b0:67c:a2c:8214 with SMTP id
- 956f58d0204a3-67c67fa8174mr88932d50.66.1794334987532; Tue, 10 Nov 2026
- 10:23:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1xQrIc-000743-Nq; Tue, 10 Nov 2026 14:14:31 -0500
+Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1xQrIa-0007qE-Aj; Tue, 10 Nov 2026 14:14:30 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Pu6yteo4jFH2sdOkbOkqmKT6OBH76Vc0B1jmyjGKueG3EF/yNxySP5YxQmT2wOoe+6TxZ+NIFORX4J7KdPqq9XCZ3aHK8PqCmxGKW4WTS1KXuXOdWe4Z6jW0vbTNsjxKVbkz4vcl2g6PhlGGDTTIliqcW9MpYYFE38X4ZEfk90JavtcdJLkKK92xxj85qtRCOT+ovuReVbw4RN2wFSu69BtoMiyuwkB5CJETYTTZ//25YEHwpYQ9nYFkOj2o4m4U7F8cCGIGHJRkisDu4J4awCUgEvtthIUVTmLrHY0s//Rh0DhcpXlxwNiM7Qy+/kWvO5o5q4jzViL+AN+6yloXpw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MK9icqgmeRzCd8eAzmiUFMw40wuQSjrya36nAkdasco=;
+ b=l/wW1A+OmN67EYYq8z92Yvx8DxPxpgn87bwbasA/AjIYKylhqcZANpdorua/V6AuZsyJl09BwDQPlCZbf1Yf36Bdh7UUOWxk6LMy3QwO+/DeShDv3dITP7IyN7HwMoWS4haUMFAzpy4goZNkjlBW2F8D8p4gWUkOcRcQLZn3+NMMtwtym/9dQNFkTErrtBxVKz5rGg89fUVbWmKHp9ItXcaMrTXjcIf4VFPls+1CK4dm5ZhPoGv5OJ5EDe3iRMGBjQylWEHTCWk2CHnpMK5yrg6NnHtMEOCIoQZioeWSjdC89NBdTeTyzkWhY7cDpLGpWIj8DEbwUIOfsdwxBYGnyg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MK9icqgmeRzCd8eAzmiUFMw40wuQSjrya36nAkdasco=;
+ b=bpIfYwti4GlzTKYxHvmvmlHm97FLG7PK/yMaoBtuqXP2dS0HlOUCZH9PaBB304HTsISai+dZYS3zwZKJ3IRnN946EoKM0HKAWn9POKeceIaFagiILr3pUkLmRxKAnmmThG77+8I9sKzz8/3ajJZI+9WQL9tMf2wtlSt1eXqWSXfNLLA3rPVqQzAn1jQMZ6lgRGlSuEiQ2KZ/pDhKCIUvODaNhSUDAkk0rUxMZPDzXb7tsGlQhkJRHy9nPu0uGAUaiblRHL+rYsz8jGTDHekFtGWnlHcYJGoBJtEYpRX7i81S1o3to5df9rKiqGrwb1RtQICrZbxckqDId+vidxnp4w==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DS6PR12MB186998.namprd12.prod.outlook.com (2603:10b6:8:52a::8)
+ by MN0PR12MB6001.namprd12.prod.outlook.com (2603:10b6:208:37d::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.615.8; Tue, 10 Nov
+ 2026 19:14:15 +0000
+Received: from DS6PR12MB186998.namprd12.prod.outlook.com
+ ([fe80::995c:d8bb:2171:d829]) by DS6PR12MB186998.namprd12.prod.outlook.com
+ ([fe80::995c:d8bb:2171:d829%5]) with mapi id 15.21.0615.007; Tue, 10 Nov 2026
+ 19:14:14 +0000
+Message-ID: <c92a3d27-599c-486d-9470-2cf3af6cf6d7@nvidia.com>
+Date: Tue, 10 Nov 2026 13:14:11 -0600
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/5] hw/pci: add fixed BAR fw_cfg blob export
+To: "Michael S. Tsirkin" <mst@redhat.com>, Ard Biesheuvel <ardb@kernel.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ marcel@redhat.com, "devel@edk2.groups.io" <devel@edk2.groups.io>,
+ alwilliamson@nvidia.com, Jason Gunthorpe <jgg@nvidia.com>,
+ Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20261102181241.3077981-1-tdave@nvidia.com>
+ <20261102181241.3077981-4-tdave@nvidia.com>
+ <f46e21c2-a0f3-460a-a7a3-eabf19b7d9cb@app.fastmail.com>
+ <20261104071037-mutt-send-email-mst@kernel.org>
+From: Tushar Dave <tdave@nvidia.com>
+Content-Language: en-US
+In-Reply-To: <20261104071037-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SJ0PR03CA0282.namprd03.prod.outlook.com
+ (2603:10b6:a03:39e::17) To DS6PR12MB186998.namprd12.prod.outlook.com
+ (2603:10b6:8:52a::8)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261030095731.581512-1-peter.maydell@linaro.org>
-In-Reply-To: <20261030095731.581512-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Nov 2026 18:22:55 +0000
-X-Gm-Features: AclHuK8CB_vL-ujtoK9NibS5waOnqLhzVdYEdW9-BFBnMdXiEK--dFAILjW8yT4
-Message-ID: <CAFEAcA_18rPM_zKO8daehxrPdXD4DWLhQ1gvuAy=9WEZejqPMw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: Deprecate Nuvoton quanta-gsj board model
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
- Bin Meng <bin.meng@processmission.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS6PR12MB186998:EE_|MN0PR12MB6001:EE_
+X-MS-Office365-Filtering-Correlation-Id: 01ed1f74-ecdc-48dc-eca3-08df3f5ecf4a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|23010399003|376014|366016|18002099003|22082099003|6133799003|3023799007|56012099006|4143699003|11063799006|261022105027099003|261026140227099003|261028144727099003|261026121527099003|261022075727099003|261102123227099003|261021135927099003|261021121427099003|261009223027099003|261102130727099003|260925021911599003|260925022911599003|10067099003|260925021311599003;
+X-Microsoft-Antispam-Message-Info: 9ELJKRKhCIZ7SCf0ItabYoVy0pJENDHJObAC87gwpFXHrNmFVArQ3r5ObY2G9VLfeWHiTtm9Bm5zyoNLDIu8TiWTi3sEMoyxfKzvvzKODIXYzjpsu44JiDYJPo0Tiw9av56I+Q0KO5YXEqgefHLMqpqNeL7jEYdKiCa28qwOOLS280ORm7hRxU2kE7CKYOJ0D0smk6fiiILZ7TXlHTDYDPjnMW6OS4QWxZzxXDs4JYM7pBFE8igKA/qB96C0pRXotx/PIpGdFJHutnWBc8Eb7xtpJUdHRZysf9V6pmDA2CqkPFiiXAUmeRl7PUpF5He8cc7PmtctbcsUyOcGxnuj8ci4iYSpfR3CIkFuoJpKeiJe+99iitTNQqunk4WXlyp1nKSXUnk3NNpOwv/kcXb/AU+jwnSvpr5sXVdP7jamiQCl9kKU7vpOWnB23Ti/w8USj/ofosZtK/Aj1v/Y1MGUzV6k0OBAB1ZCSSkuCldRQ04BZ5GgnaWrGOKPO+hfSL9Ek+RJL9OJ0tN/NHYvsc2hdWH/dlFdLY5GoLZFX3Angrk=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS6PR12MB186998.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(23010399003)(376014)(366016)(18002099003)(22082099003)(6133799003)(3023799007)(56012099006)(4143699003)(11063799006)(261022105027099003)(261026140227099003)(261028144727099003)(261026121527099003)(261022075727099003)(261102123227099003)(261021135927099003)(261021121427099003)(261009223027099003)(261102130727099003)(260925021911599003)(260925022911599003)(10067099003)(260925021311599003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Y3E5VzlaNkFUVzBuWGFTN3ZSMU1CSnRoVTh6QWwxVTU5Y1ExMC9WQVIwVmw5?=
+ =?utf-8?B?OVAvZ2NzcWpQakY3Zm1RSk92TmNXQ2kyVndOZkJ1L3VIaTJHZElnYmgwbWtu?=
+ =?utf-8?B?eUM0RmZwSFR6N2dmSlBONlJjMFZKOWFBSHpJeXlpSzlLdmg0MDJLbDVBU3Y2?=
+ =?utf-8?B?TWhaOVZLNER5MHptSmZGaTNTSHZBbko5bU1wTkZhblhkUVNrQm1QYzE5RWVv?=
+ =?utf-8?B?TWNZZ0wwdnREN1M2TU1SMUNyM2JBWFo1Ylk1ZjhLK2JqSDUwR1orNWhobURU?=
+ =?utf-8?B?ajhJYkQ5N1pWWWtUVElvU2ZqU2Y3S01LZ3J6SGl3VExYM0FwNlJoYUR1MEcx?=
+ =?utf-8?B?cVdTR0UzdlBQQlhzWnpIWXV2Uk11SjVMeVBQbVFVZitxT0k3VGRpL2crVTA3?=
+ =?utf-8?B?OFVjVFM0ZmVOMW9yN2x5ZWhVY0dJY3VVMUZkeGJQRlBHSTk1WHhKR2UwSk95?=
+ =?utf-8?B?dHZkUUdXSVBuRHJHK2hMYmRZMHR5U1ZyZW0xZFRwcW9jQk1sdDl1UUZJSTA0?=
+ =?utf-8?B?QzZ5UUx3Nld3c3d3NVZYRjVGMFExeTB1Z1BkWTd6UHF6MUlndEJLZ1F4M2Zr?=
+ =?utf-8?B?ZjRjbllUUGFoKzNvYUZ6OUcvUDY0eldFb2xqVU1SWE42TWM0R3VBVk0rUkRP?=
+ =?utf-8?B?MlpreTVHZWs0bk4vemh0M2pjY1NNZTJJNVZRZ2d4eFk2eWNHeG1BczBUcnZk?=
+ =?utf-8?B?L2NNL2N0c04zbEQvR3hGN2g0ckpHWEJQOHRJWDNrZ2NZREF3OUdnNFhSK0gv?=
+ =?utf-8?B?ZEF3aEMwaERpNUtPclRyeWppL21CejluUVVWQzhmU3J0MXQreUpBcFNSY0Nz?=
+ =?utf-8?B?VE83eHdMaGozc1NVMlZmamd5c2dJWlpLQWloQUtqajVXUHBhZjM1SDdremR0?=
+ =?utf-8?B?SCtmSVlhaFVFSzdxcDFGbjRVWHNBWENQS3lXUVpMdkU1Sis4Zm0vYTNBLzg3?=
+ =?utf-8?B?QmhqNUNxRENxaVhwYnRwOElsd3JaZENIczJXOVJWUkxObzEzWDM3YWlGdWpw?=
+ =?utf-8?B?MEp5MWVjY2k4ODFPZ0FZbXVaZ1hDc3M1Vng0Tm5iTEdBMktXM3QxNlZ4QVdS?=
+ =?utf-8?B?cjU4bnJkei9YV2pzVWRWdkJTR3N5TVZwWjhsbXJHMHZXWVpPUE41bi9jTCth?=
+ =?utf-8?B?RzZFcVZZUlB0Nm9qSnpLODlCaGpSSTBpQ2JEMXF6ZkRVSmpTTlExN0wxNWsz?=
+ =?utf-8?B?d2grY1JXNUF3dmx4UTU3LzVxNzhCQmJBTWY4MHdwOVVabkNLbWhXVmk3QzBa?=
+ =?utf-8?B?aWJ6RXltY0pzVXZjdUxoKzRVaGwvS1RJeVdJYVUzOVpoSFZGcER2eTVFMDlv?=
+ =?utf-8?B?a2RmM2RvZm5sZm1DSi9QcWJraFU1K0drR3lRNk5nU01pUDZKK1F0NU5zbnlO?=
+ =?utf-8?B?SXJOMlFyUzhaVzNlRUJWUXR0UytzbEtQWVhqRjBRdDlZaUtHZ29iN2swTHJI?=
+ =?utf-8?B?MXVqV2ExVWFGeC93U1hCb3Y4YmkrNU5TRjQvamk2SndpZy9IR3BSTVhUbGtQ?=
+ =?utf-8?B?WWdjNk9xRXREdTQ3TnJiM3g4a09kRzcvY25BdS9FMms3Y0l6ak9zZVFEL2p6?=
+ =?utf-8?B?YkJyVlhUMmR1OUl2OGZ4c1pvb3J5UWcyUnVLSHU3Z3ZhbC9DTzNaaE05Nkx1?=
+ =?utf-8?B?bWVidW5hczdQV2FCbHpidWFDbHdvbmNBbmV5eXFYQ24zWjJKMUl0L085Slpj?=
+ =?utf-8?B?UlBSTTNON1ppZm41aEhPSFVRUHNmSXExclZHay9pOTZBUm1Xa1pGMkdmS2dl?=
+ =?utf-8?B?VkZ4N2hjTTFtdXVFZk5vOGpRVjdpUUQva3gvenBxNHUzWEVYdExsQmNqNDRq?=
+ =?utf-8?B?QWlqbXgrZnpLK09aMUdLYnJzRGdVVEMwd0hxbXMxNThKczBKSFBET0xSR1Yr?=
+ =?utf-8?B?cWV3d21jZHkydHpudW1aQm5qbFR1SXpXZnVnN3RFZHBXSWtLUkpkejJkdlR0?=
+ =?utf-8?B?L3YzOUNRNXFSUHJoMGxHZ0h6YjZEVlhUTTcxRm9UdTI1Ym5rY0xnbStuSEZ2?=
+ =?utf-8?B?K29HeHp2V1F1cUNhK3FBRjJ3VVJ3dURnNDZZL1ZYUk9QeHBXcUpwR0xFRkdm?=
+ =?utf-8?B?citnb0R1azVHUUlkRkFWM2hFUHFWM1p1Tmp6ZUI2dXN5ajJTNjd2N1lxbEpV?=
+ =?utf-8?B?ZnFmUmlObzBqZ3p4VjJRR0I0Um5KcGdBWXNqSTNMR1lJZGJVRGI0MlNWY1Zs?=
+ =?utf-8?B?THEzZkliamNTRER3U3AxNjhTMUN4SFQwMEFpc2lmT2VHUWpOMzhKYUxDWjJK?=
+ =?utf-8?B?ZmxONURVYUZUOTRpMHFzL205MDE0a0FoVHlGZTlyU3BVNEtBSm1FUW1CTi9v?=
+ =?utf-8?B?NUhHN3J0djRJejM4bUEwd2RDYkh6TnRJVmJFTy81TStxZHNRSDFvdz09?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01ed1f74-ecdc-48dc-eca3-08df3f5ecf4a
+X-MS-Exchange-CrossTenant-AuthSource: DS6PR12MB186998.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Nov 2026 19:14:14.8375 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: wWzwh87d2OnciidCSExIWYpcX8VMPgmKkm4WYrUhzy5q7bD/j/e0q/qbRofbcSK/eN8wEsvPWq5+n6cNZMNsjw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB6001
+Received-SPF: pass client-ip=2a01:111:f403:c107::1;
+ envelope-from=tdave@nvidia.com;
+ helo=PH8PR06CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,73 +150,83 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Last chance for anybody on the Nuvoton maintainers list to respond;
-otherwise I'll throw this into target-arm to deprecate quanta-gsj
-this week.
 
--- PMM
 
-On Fri, 30 Oct 2026 at 09:57, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The latest OpenBMC release as of June 2026 no longer supports the
-> quanta-gsj board model (as noted in docs/system/arm/nuvoton.rst);
-> support was removed by OpenBMC back in 2023:
-> https://github.com/openbmc/openbmc/commit/ab5062cf6f562ad0c844570ba1ea0089961848ca
->
-> If OpenBMC don't care about this model any more, it's unlikely to
-> have many users.  Deprecate it, with the intention of deletion after
-> the usual two-release period.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I don't insist on deprecating this if the Nuvoton maintainers
-> think it's still useful. But this is a "hello, are you paying
-> attention" call, since you didn't respond when I asked in
-> code review on a different patchset :-)
-> ---
->  docs/about/deprecated.rst | 10 ++++++++++
->  hw/arm/npcm7xx_boards.c   |  1 +
->  2 files changed, 11 insertions(+)
->
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index dab47b6ca38..c579342b312 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -287,6 +287,16 @@ The machine never got fully implemented and can only show the firmware prompt.
->  Given the incomplete state and slow progress on improvements, it might get
->  removed again without replacement.
->
-> +``quanta-gsj`` Arm machine (since 11.2)
-> +'''''''''''''''''''''''''''''''''''''''
-> +
-> +The ``quanta-gsj`` machine models a system with a Nuvoton SoC
-> +intended for use as a baseband management controller in a server.
-> +Support for this machine type was dropped from the OpenBMC project
-> +in 2023. If OpenBMC no longer care about this hardware, the QEMU
-> +model is unlikely to have many users, so we are deprecating it.
-> +Users should consider one of the other Nuvoton-based board models.
-> +
->
->  Backend options
->  ---------------
-> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> index 9c526a26839..ec4b530986b 100644
-> --- a/hw/arm/npcm7xx_boards.c
-> +++ b/hw/arm/npcm7xx_boards.c
-> @@ -496,6 +496,7 @@ static void gsj_machine_class_init(ObjectClass *oc, const void *data)
->      mc->init = quanta_gsj_init;
->      mc->auto_create_sdcard = true;
->      mc->default_ram_size = 512 * MiB;
-> +    mc->deprecation_reason = "No longer supported by OpenBMC";
->  };
->
->  static void gbs_bmc_machine_class_init(ObjectClass *oc, const void *data)
+On 11/4/2026 6:11 AM, Michael S. Tsirkin wrote:
+> On Wed, Nov 04, 2026 at 10:59:47AM +0100, Ard Biesheuvel wrote:
+>>
+>>
+>> On Mon, 2 Nov 2026, at 19:12, Tushar Dave wrote:
+>>> Introduce a fixed BAR fw_cfg blob exporter that serializes PCI
+>>> device and BAR information into the "etc/fixed-bars" fw_cfg file.
+>>>
+>>> The blob contains an entry for every PCI function with memory BARs.
+>>> Each entry carries the device's vendor and device ID, whether it
+>>> has a fixed BAR configuration, and its firmware device path. Fixed
+>>> BAR entries also include the configured BAR address, size, and type
+>>> information for each BAR.
+>>>
+>>> Document the format in docs/specs/pci-fixed-bars.rst.
+>>>
+>>> Signed-off-by: Tushar Dave <tdave@nvidia.com>
+>>> ---
+>>>  docs/specs/index.rst           |   1 +
+>>>  docs/specs/pci-fixed-bars.rst  |  75 ++++++++
+>>>  hw/pci/meson.build             |   1 +
+>>>  hw/pci/pci-fixed-bar-blob.c    | 308 +++++++++++++++++++++++++++++++++
+>>>  include/hw/pci/pci-fixed-bar.h |  63 +++++++
+>>>  5 files changed, 448 insertions(+)
+>>>  create mode 100644 docs/specs/pci-fixed-bars.rst
+>>>  create mode 100644 hw/pci/pci-fixed-bar-blob.c
+>>>  create mode 100644 include/hw/pci/pci-fixed-bar.h
+>>>
+>> ...
+>>> diff --git a/hw/pci/pci-fixed-bar-blob.c b/hw/pci/pci-fixed-bar-blob.c
+>>> new file mode 100644
+>>> index 0000000000..dc94debfad
+>>> --- /dev/null
+>>> +++ b/hw/pci/pci-fixed-bar-blob.c
+>> ...
+>>> +/*
+>>> + * EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL's CheckDevice interface
+>>> + * (UEFI PI Spec 1.2 Vol 5) only passes VendorId/DeviceId/RevisionId/
+>>> + * SubsystemVendorId/SubsystemDeviceId, no BDF — so in EDK2 we can't
+>>> + * match a blob entry to a specific device directly using BDF. To work
+>>> + * around that, we prepare the blob entries in the same order PciBusDxe
+>>> + * discovers devices, so matching by VID:DID inherently works.
+>>
+>> This sounds rather fragile.
+>>
+>> Could you elaborate on what order this is, and why it is reasonable to
+>> rely on that approach being stable?
+>>
+>>
+> 
+> Also, bus numbers can be changed by guest, and I don't get why
+> would you want to report devices without a fixed bar.
+
+
+The bus number is not needed in the blob. It is included only for
+debugging and is not used for any functionality. The firmware matches
+blob entries by vendor/device ID and discovery order, as described in
+my earlier reply to Ard. I can drop 'rp_bus' from the blob.
+
+Devices without fixed BARs are kept in the blob to preserve discovery
+order for matching. For example, if two identical NICs are present and
+only the second has a fixed BAR, including only the second NIC's entry
+would cause its fixed BAR address to be assigned to the first NIC,
+which is discovered first. Including both entries ensures the first
+NIC is skipped (each blob entry carries a flag indicating whether the
+device has fixed BARs) and the second NIC gets its own fixed BAR address.
+
+-Tushar
+
 

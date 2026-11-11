@@ -1,67 +1,93 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D554606A336
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Nov 2026 08:57:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E862B606A31C
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Nov 2026 11:38:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EJ5gna+V
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=lpUKKtBz
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xR48a-0000Mo-Bl; Wed, 11 Nov 2026 03:57:00 -0500
+	id 1xR6eB-0005s0-PD; Wed, 11 Nov 2026 06:37:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lpieralisi@kernel.org>)
- id 1xR48V-0000LM-0E; Wed, 11 Nov 2026 03:56:57 -0500
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lpieralisi@kernel.org>)
- id 1xR48S-0008Ak-O8; Wed, 11 Nov 2026 03:56:54 -0500
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id D42D24068F;
- Wed, 11 Nov 2026 08:56:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BE8E1F00A05;
- Wed, 11 Nov 2026 08:56:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1794387400;
- bh=zUh7BgdIOFpLEpkJ6X2Y9nJLJ8KSFfxW3Xf7xe5ENoY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To;
- b=EJ5gna+VKb86Kmp0EGZj5IHZMcmi4MejLRiKsBvAQbzepsFmsLSNpmrwMMM6AdEaC
- QlHVCPW7pDYHvlIe8LU7SJtw9LUdeB7+TPTw0BNycMdHKdiupqiPyUVnaPunJ8CuXn
- zn2aB7b6d+A2dVFa63tbudtxJb2UZcYLAmcivh7wUltnAQcnyILsnVgc+GHvagXBp6
- Fwq8Toah26nMkY1kZIDu7jkcRrMxGVwNWiPn0/u7OGzFscYxrDm7ZwZZXKHOHpYK7k
- CvxbExJ0KSQV9/qob3xAPuGqOtClh6C50Sm1gDaAVS6Ut9yPJhOHiAoKvE+8E2Ky8K
- 4X1kyQ6UY6L8A==
-Date: Wed, 11 Nov 2026 09:56:34 +0100
-From: Lorenzo Pieralisi <lpieralisi@kernel.org>
-To: Kohei Enju <enju.kohei@fujitsu.com>
-Cc: Mathieu Poirier <mathieu.poirier@linaro.org>,
- Gavin Shan <gshan@redhat.com>, berrange@redhat.com,
- kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
- peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
- pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com,
- lorenzo.pieralisi@linaro.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [RFC v4 00/24] Add Realm support to QEMU-VMM
-Message-ID: <avQtwvArH3we5GBp@lpieralisi>
-References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <7dea93a6-b119-4882-9c56-557a372b646a@redhat.com>
- <atkokvqTHygpI8dt@p14s>
- <5dba456f-26b4-4f05-9271-fb784736d581@redhat.com>
- <atvCNKxpCRRSFL58@p14s> <avLM3UdwUcgUHLgP@FCCLS0092175.localdomain>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xR6eA-0005rY-D5
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2026 06:37:46 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xR6e8-0006mo-EP
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2026 06:37:45 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4afe2d546f9so38880665e9.3
+ for <qemu-arm@nongnu.org>; Wed, 11 Nov 2026 03:37:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1794397063; x=1795001863; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=zKBdxMB6UtNxGZNhksSRBrQUO2gWC0ZYZYYSOib8wXo=;
+ b=lpUKKtBzsRiFdYWPbSYPUm9GDfFjqb2X5FfVW6ihM0dOvMl3IV0oMr0IR2jAL8jwpK
+ IxCFC+uLTpCz1TAip+AAfm6CiWaDfY+M4tV+gECatRhK99drakbiEQpUu2cJ8DQmh0S9
+ u9bkUX/nWYSgv6Qps3hT6stPR3OK+ctwP8iRlvTGPrFy7KwFSrQXFctyqCL/ZEZq6tK5
+ 5kSyPnkNxKrzQaXlxLiofi0o44q9hZeXbVxHPsGfsdXyAvhcoDfWiezt8Y96QN8Nsvt1
+ cmyDD9J5pFiZl2zFooKc/yVCPNcal/+CDp8BgFE9PQgYqq60u8uyKfSwzGUfozJCp6VB
+ 2k9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1794397063; x=1795001863;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=zKBdxMB6UtNxGZNhksSRBrQUO2gWC0ZYZYYSOib8wXo=;
+ b=ft2cssKZ9fGvMsVu/lmfkrUJvLocmWVuAc7kVQl5LVzU50iz0FaTcZYqag0kv/iu72
+ hP4Wki198FfRkFtd2G/uhM4x2WLFKqXZKd8WTQbzXBO6Kv124ESHZEVZcfC1ftJrocr0
+ IViC1Ki7Z9U8fI6hPqsRj85/+edRc4dsX5LRgtZhrynCECYCApgShktdtWzTKcRUzgLw
+ XNxMj4uKVs3ZfCvVVl4xRjg16LbBTbadAdj3d5KQ1aKJM8KU6XC2pXI2I1d/DDpmjjje
+ qFJYAEw9TOaY+vgV4uVCD2z4V/IBKusHto4ubq7LMxV4fYf9IuKm4SmQZzR9gH+WMl7S
+ OKXQ==
+X-Gm-Message-State: APuU4Z8UoR+DvaBp3e9LrvD9GqCbiQVNQkkmBet/WHNSKGmkcOasvveC
+ OpTpkXepuevfNlYMa6oEK0ZmAxzGQPlDclx3YSrfRMP9AJDKrskiEOxc
+X-Gm-Gg: AYBFou2dLq6e2Wa/bb+mDvRRAKwPzQDawXuAwK8RBUuMJznGPmVAdPBG92yS9OfIhIA
+ uea+7Ly+4mry85Iy/b41KhVkqf7LH/NOPvTR4cok+mOOGHbssQZ5jPov9tx+84hx7yf4W/oVEac
+ 2B7KyXAZWU7cuheLmkToQTvbQVtg8yDyYIPU+d1qnInuYcLwJ3frPN3JfDCUHVKVDOAPI4EdH9w
+ 5tcEBLxBnYUxh+4Ja/DCGRLZ1vx3/C5z7IWbyFfVZnm0Ydz1youc2FstJGcnyKu0cnxjAsSlXx4
+ Ao82DYClkgV67Tey6cbHswm+CuTE3tdbez3QLGBMm3nUnOJiq2mG8J6O7qp4BLlFUnit83lv7/V
+ lm8f85viOhKs4gP0YApXrJAC3cb5FrqCcS2fxj70GniVdXhqEXv6e9PGfw1ADjHel4XeVxPbKk8
+ 9DxZIC8A8kqeNG+FDP+QUnGEY+BMnjSGVHTy7976rZwdp9PUKnI2h8OsvAP5UqlI61FEYVfDrXp
+ nfzKlifheqYkMA8i3oqt771sap09Hir8ow5yTl8wn4vohtgHPxqMwdD+QJOKJQSuUkAY+5UNII9
+ MKq7dM6zyJhKVQRxUtKFQlbaN5PDwbZoeQ==
+X-Received: by 2002:a05:600c:c167:b0:4a1:a6e0:4ce4 with SMTP id
+ 5b1f17b1804b1-4ba093acf6dmr34298495e9.33.1794397062620; 
+ Wed, 11 Nov 2026 03:37:42 -0800 (PST)
+Received: from ehlo.thunderbird.net ([62.214.191.67])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4ba01fe2c5asm205775175e9.5.2026.11.11.03.37.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Nov 2026 03:37:42 -0800 (PST)
+Date: Wed, 11 Nov 2026 11:37:42 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-devel@nongnu.org
+CC: qemu-arm@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ pierrick.bouvier@oss.qualcomm.com
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCHv4_09/11=5D_hw/arm=3A_Add_ITC?=
+ =?US-ASCII?Q?M_and_DTCM_memory_regions_to_i=2EMX8MP?=
+In-Reply-To: <20261007101105.3917771-10-gaurav.sharma_7@nxp.com>
+References: <20261007101105.3917771-1-gaurav.sharma_7@nxp.com>
+ <20261007101105.3917771-10-gaurav.sharma_7@nxp.com>
+Message-ID: <0352957C-EE7D-47ED-B773-69F4F332EB1D@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <avLM3UdwUcgUHLgP@FCCLS0092175.localdomain>
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
- envelope-from=lpieralisi@kernel.org; helo=sea.source.kernel.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,60 +100,122 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Nov 10, 2026 at 05:01:14PM +0900, Kohei Enju wrote:
 
-[...]
 
-> > > > > (1) qemu is terminiated on qmp command 'dump-guest-memory'
-> > > > > 
-> > > > > (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
-> > > > > **
-> > > > > ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
-> > > > > Bail out! ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
-> > > > > 
-> > > > 
-> > > > On my side this command causes the Realm to abort, as I expected it to be.
-> 
-> Hi Mathieu, Gavin.
-> 
-> I've tested RFC v5, and I reproduced issue (1) on my side as well:
-> 
->     (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
->     Failed to set KVM_REG_ARM_TIMER_CNT
->     ./qemu-ram-realm.sh: line 21: 77580 Aborted                 (core dumped) $QEMU -no-reboot -M confidential-guest-support=rme0,memory-backend=ram0 ...
-> 
-> This was resolved by adding kvm-no-adjvtime=on.
-> 
-> > > > Realm memory should not be observable from the host.  There may be a debug mode
-> > > > to enable this kind of operation but I will have to look at the documentation
-> > > > for details.
-> > > > > (2) qemu emulation can't be stopped and resumed
-> > > > > 
-> > > > > (qemu) stop
-> > > > > (qemu) cont
-> > > > > Failed to set KVM_REG_ARM_TIMER_CNT
-> > > > > 
-> > > > 
-> > > > That too I was expecting.  Anything that can comprimise a Realm will cause the
-> > > > HW to abort.  I'll investigate the "Failed to set KVM_REG_ARM_TIMER_CNT" error
-> > > > message though.
-> 
-> kvm-no-adjvtime=on also resolved issue (2) above.
-> 
-> Setting KVM_REG_ARM_TIMER_CNT for Realm VMs is not allowed, so we should
-> either add this option or consider making it the default for Realm VMs
-> in the future. What do you think?
+Am 7=2E Oktober 2026 10:11:03 UTC schrieb Gaurav Sharma <gaurav=2Esharma_7=
+@nxp=2Ecom>:
+>Add the 128 KiB ITCM and DTCM used by the i=2EMX8MP Cortex-M7
+>subsystem=2E
+>
+>Expose ITCM and DTCM using the system-bus windows available to the
+>Cortex-A53, and add the Cortex-M7-visible aliases at 0x00000000
+>and 0x20000000 respectively=2E
 
-I think that we should do something like we do for *put_registers(),
-where we detect whether we are running a Realm VM or not, regardless
-of the command line parameter or default that param to on for Realms.
+We need a dedicated AddressSpace for the M7 where the aliases would be map=
+ped=2E From the top of my head I think there is a link property in the cort=
+ex-A7 CPU model's SysBusDevice named "memory" where the address map should =
+be linked=2E See e=2Eg=2E "[PATCH v2 06/10] hw/riscv/atlantis: Add the RCPU=
+ to the Atlantis SoC" for inspiration=2E
 
-Lorenzo
+However, the address map should be added in the patch adding the M7 CPU=2E=
+ This patch should only deal with the A53 memory map, and it could therefor=
+e be moved somewhere in front of patch "[PATCH 04/11] hw/misc: Add i=2EMX8M=
+P GPC (General Power Controller) IP"=2E
+
+Best regards,
+Bernhard
+
+>
+>Signed-off-by: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>
+>---
+> hw/arm/fsl-imx8mp=2Ec         | 33 +++++++++++++++++++++++++++++++++
+> include/hw/arm/fsl-imx8mp=2Eh |  4 ++++
+> 2 files changed, 37 insertions(+)
+>
+>diff --git a/hw/arm/fsl-imx8mp=2Ec b/hw/arm/fsl-imx8mp=2Ec
+>index c168c97d1a=2E=2E18d2b17ca8 100644
+>--- a/hw/arm/fsl-imx8mp=2Ec
+>+++ b/hw/arm/fsl-imx8mp=2Ec
+>@@ -779,6 +779,37 @@ static void fsl_imx8mp_realize(DeviceState *dev, Err=
+or **errp)
+>                                 fsl_imx8mp_memmap[FSL_IMX8MP_OCRAM]=2Ead=
+dr,
+>                                 &s->ocram);
+>=20
+>+    if (!memory_region_init_ram(&s->itcm, OBJECT(dev), "imx8mp=2Eitcm",
+>+                                fsl_imx8mp_memmap[FSL_IMX8MP_TCM_ITCM]=
+=2Esize,
+>+                                errp)) {
+>+        return;
+>+    }
+>+    memory_region_add_subregion(get_system_memory(),
+>+                                fsl_imx8mp_memmap[FSL_IMX8MP_TCM_ITCM]=
+=2Eaddr,
+>+                                &s->itcm);
+>+
+>+    if (!memory_region_init_ram(&s->dtcm, OBJECT(dev), "imx8mp=2Edtcm",
+>+                                fsl_imx8mp_memmap[FSL_IMX8MP_TCM_DTCM]=
+=2Esize,
+>+                                errp)) {
+>+        return;
+>+    }
+>+    memory_region_add_subregion(get_system_memory(),
+>+                                fsl_imx8mp_memmap[FSL_IMX8MP_TCM_DTCM]=
+=2Eaddr,
+>+                                &s->dtcm);
+>+
+>+    /* M7-view aliases: ITCM@0x0, DTCM@0x20000000 */
+>+    memory_region_init_alias(&s->itcm_alias, OBJECT(dev), "imx8mp=2Eitcm=
+-alias",
+>+                             &s->itcm, 0,
+>+                             fsl_imx8mp_memmap[FSL_IMX8MP_TCM_ITCM]=2Esi=
+ze);
+>+    memory_region_add_subregion_overlap(get_system_memory(),
+>+                                        0x00000000, &s->itcm_alias, 1);
+>+
+>+    memory_region_init_alias(&s->dtcm_alias, OBJECT(dev), "imx8mp=2Edtcm=
+-alias",
+>+                             &s->dtcm, 0,
+>+                             fsl_imx8mp_memmap[FSL_IMX8MP_TCM_DTCM]=2Esi=
+ze);
+>+    memory_region_add_subregion_overlap(get_system_memory(),
+>+                                        0x20000000, &s->dtcm_alias, 1);
+>+
+>     /* Unimplemented devices */
+>     for (i =3D 0; i < ARRAY_SIZE(fsl_imx8mp_memmap); i++) {
+>         switch (i) {
+>@@ -796,6 +827,8 @@ static void fsl_imx8mp_realize(DeviceState *dev, Erro=
+r **errp)
+>         case FSL_IMX8MP_IOMUXC_GPR:
+>         case FSL_IMX8MP_MU_1_A =2E=2E=2E FSL_IMX8MP_MU_3_B:
+>         case FSL_IMX8MP_OCRAM:
+>+        case FSL_IMX8MP_TCM_ITCM:
+>+        case FSL_IMX8MP_TCM_DTCM:
+>         case FSL_IMX8MP_PCIE1:
+>         case FSL_IMX8MP_PCIE_PHY1:
+>         case FSL_IMX8MP_RAM:
+>diff --git a/include/hw/arm/fsl-imx8mp=2Eh b/include/hw/arm/fsl-imx8mp=2E=
+h
+>index f3e134cdc0=2E=2Ef547cbae42 100644
+>--- a/include/hw/arm/fsl-imx8mp=2Eh
+>+++ b/include/hw/arm/fsl-imx8mp=2Eh
+>@@ -90,6 +90,10 @@ struct FslImx8mpState {
+>     FlexcanState       flexcan[FSL_IMX8MP_NUM_CANS];
+>     OrIRQState         gpt5_gpt6_irq;
+>     MemoryRegion       ocram;
+>+    MemoryRegion       itcm;
+>+    MemoryRegion       dtcm;
+>+    MemoryRegion       itcm_alias;
+>+    MemoryRegion       dtcm_alias;
+>=20
+>     uint32_t           phy_num;
+>     bool               phy_connected;
 

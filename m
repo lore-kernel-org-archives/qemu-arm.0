@@ -1,95 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 839E3606AE81
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 14:07:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8A37606A8AF
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 14:07:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=pYTeX+X7;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=IlNjJdAj
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=o99/An1G;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=ejSdcu0v
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRVS2-0008Rg-2i; Thu, 12 Nov 2026 09:06:56 -0500
+	id 1xRVS0-0008L2-5s; Thu, 12 Nov 2026 09:06:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRVQ8-0006wC-R5
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 09:05:04 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1xRVPy-0006mW-GX
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 09:04:46 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRVQ2-0007Xu-6N
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 09:04:54 -0500
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1xRVPv-0007Wh-6U
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 09:04:45 -0500
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AC8wPAN4149502
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 14:04:49 GMT
+ 6AC90vAA2514210
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 14:04:41 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Nfa58+xfGAH+vpjjA2SMc5ddQUpesl6suSt9COV6tek=; b=pYTeX+X7ffFAJrya
- jmTlGzsZZcF3ug7w0YSgs2R9VI2MwpahXXgHNCvXiop9tGJ8CRs4QtHO76qluN42
- v5yGt8R9fNshOS+Yp1y4yQ7dOo0bH/StfUOrV5RPeJhdrDWtJO5uBjGX++QBelE7
- RvCcGaHHNDElgCU5l3pnkOseZpBmmPd7diXBW8PEkldM9RJR+MKr0Y3d0S2a7Yz7
- kddjdmfUkJtOXri1SHOKyWAbqADfRLoMd4c2ieXIu5ln2dZbVDuQOinGh9wVMsms
- wNLyZu8hoQevrb2dny2lNp2UJtlJehoeFFHObnn4Ke1AhucSWal/vxyL+vRypuRp
- 7MHDUA==
-Received: from mail-vk1-f197.google.com (mail-vk1-f197.google.com
- [209.85.221.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hvxc63q7y-1
+ Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=; b=o99/An1GsIl8P5xS
+ 7nJtTcSno6AdLHGZgJxS4Clw6g5QnQMrS7xVXre9VBq8krA6OV6Is1sRxeNclI1K
+ NNVfGORJ394c0pai3kZsewFUEYfj6eWcXcNhoJ8TuFnzWviEEUgN/k2Pgemsx75F
+ twrNRZBBoo3PoAGn/t8lvd526aPvM+Dr7pcBvDHPvnLP1warGWEGZ3Ncm5ZX12Gk
+ YPuMfU5cpK0gHphvDcuV6pfADKHkD4t+vgwHjne8K0kbS0TorOneYZ9PKLU3FM7o
+ dv0hPjQVyfaa3A8MeZ9adiBcSZM0IUREFdP0WOLuyiSW/b1H4NLTuWPnh8bgEGFa
+ vrVX1A==
+Received: from mail-vk1-f198.google.com (mail-vk1-f198.google.com
+ [209.85.221.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hvwm1uvbc-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 14:04:48 +0000 (GMT)
-Received: by mail-vk1-f197.google.com with SMTP id
- 71dfb90a1353d-5c82cf2652dso1479218e0c.1
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 06:04:48 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 14:04:41 +0000 (GMT)
+Received: by mail-vk1-f198.google.com with SMTP id
+ 71dfb90a1353d-5ecc172164aso3194712e0c.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 06:04:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794492288; x=1795097088; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1794492280; x=1795097080; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Nfa58+xfGAH+vpjjA2SMc5ddQUpesl6suSt9COV6tek=;
- b=IlNjJdAjM0Vb9mHhrCm1hFCu1Ei2g7x2IRFsTD6yGobAR2q9bdemTvDJnjyMmlhz6B
- R3LZOYrIOMYtlWzY3Vmtk7Yojmj2MDqr7KIjjQZNaLLKOoDxVcpHkrJdfXreTXFBunik
- cBRDRmrYwUIR64iIWgqb3l6YBGOCXMLTr7MiMh0m6ZUxtD7v7UT7B2c1bYlARcBWh42Z
- cnq1MvfeMM9sPOaxAALfubZGB7sCefbAZK+DPyQ+Rk6kguTRI9abec4FtPmhgAYQml4h
- eex5hieTqZMIhZl8jBmAFZJqZVTDBbUM1XdJ8kJGje6X+QPtFQRlmfpiEW3FGl5kx3Wi
- z1kQ==
+ bh=Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=;
+ b=ejSdcu0vdtBPwBMNITF1ByOxdasLfHZFH9upjAidjPLqNWSqiiDrIeKKClDu68uL6q
+ PBcg812UCaym6+PrG/Sz9qENWmPg55xWSnVqpoq19bEULs1RQeXtCfzo1BsbhszsUz0Y
+ B8euvOrxc5Sy4xrLo6q2TPTHcuEJgVYzY/SZVFlgzKOIqaX1ny9Q1J/kFw6eGQWpO5SJ
+ yy54EVCu1hT/nUVo56Y0t3vNEfijoyVygHPI2vHhRFT1hO8NG14OXea3APZKC0M3folg
+ Sa9rzzEh8E954z1VHGYd6cCkXZwwuhzQUlPgkq0eiLcbgHM9Okw3CUYw7NXtntjRPMDD
+ Yg7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794492288; x=1795097088;
+ d=1e100.net; s=20260707; t=1794492280; x=1795097080;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Nfa58+xfGAH+vpjjA2SMc5ddQUpesl6suSt9COV6tek=;
- b=n4ITlJhxLp/gTY5LWdqdPlmICFNzRlIZ2yIwwd1eU5HBKxBjXmAB7/cgoHUueTVNXo
- cgiAgIv9jK8chlP5QMqacKOAx0uDjQhNjtYw0rkZiBlyUh1XTV7EAQBKfxiJ2CRyC8f5
- Z7V2lozYZc1SbUBFT37SbWUZs8LiovGHSD5s95LyIXzHzffCyLpRGWqKvZ0d82pI1MC4
- wAnBdgCFMk49RHMamHeLQ7xJjmglmP1o0m3/8gtlh3bCyeHzDBPiQ908A89ORhsnaBDI
- 4XrbCeuewrB966/MotHKjbuDxicBtejlLFb6M/gwB+UvXg5a1zacIeMSWZILtBVc8Y5J
- OQhA==
+ bh=Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=;
+ b=qcoQzUQXR1oCFmw6VuEgaZAujE+usnqxlCHILfVfs8zO2lJa6XAGQSG9VB1dYHhCfG
+ QqIPkpdQnhMnKdp/7VNAVARN55agyBCjWKxURJG/yDWvrPV53QgVcC6pSP+zX4FUYceh
+ seciDwwj39T0IadRXoOsVr881kCXnDjIo8BJuavmrB1INf1CrOhZ6iA79bJ2QpfKB9m6
+ aJPwN/fOsZl5/uiTBh74R8bEGul8d3in8PzuMySSGvFvVkOJVxCWtO7tdfgnzLyBNyWE
+ HqRBzvqdQ+8SKJh3zMBI5XD86T7oTaw20cXrRjjYIvgeFLC1W0n3udB4utYWzq/bV/fJ
+ RTtw==
 X-Forwarded-Encrypted: i=1;
- AL+hErH4z9+/hpdGm7sdgX69v0+7iIHe47GbLzU19yi6Tr/BYAAXI1a9FuQ9tbbQJhBUA8wH+br0eYjcFQ==@nongnu.org
-X-Gm-Message-State: APuU4Z/ICTkU63L+saTmyMPAxT5ZvRSO3T/DD/FWs7G8X7Uf93gRGdWs
- Ya+O4qZcOJGMuQupDETKho8EA6fyVi2DMrx1Bslv9MEYFnRBBLI2oh6Ntfy2vUyilVuLA+mOYB2
- /N+HDhmE/WGt2jC5a+xi1pRvnoYBv4TiE68dxYMSiTT1dOJnm4cPDId1qJQrL8iqxbQ==
-X-Gm-Gg: AYBFou3ujJYxDfYDlQtnrCpveQsrHDUjRWTLTrs0n8O9iBvu4G47iP6CBE2OU5cAZF6
- TbjoUdF2R/QAID+gcbZUsD1sBSKDv3BRsjV2R/+NulFHGoppGt2RgPZwhRDRgo3RW5oIf1T8D+4
- rCw7hZqxx/XvghcrZtEFK0WeSKMD4Bzj/L9qmuqSPMa+3dcj5bAcqIAkb6IhPKtKduXuGGjiDkt
- p4CoYmheu+wwaI8hHWaTLnkpomK/gqn+2TvAUXpoEfC0KFiBcVn8n6KJwmSUBcWplCneSH4ZI5I
- eCF8vvmcafUZmbOP/RUkgswFSanzZEMRIx/cggg4DmgISvyzpOl0bGSsZveM3sutGU2B2VbvqGb
- V7RnrWuNPNnCvGa8HDNl0AjfM921Wc6t9BKmnt2rwskQSuRAWcwy9WS6BQ36YS5WWsd7ZAMbRyf
- 8isIsBYF7N10koxQ==
-X-Received: by 2002:a05:6122:3116:b0:5e9:7c82:99ee with SMTP id
- 71dfb90a1353d-5ee1c3f641cmr2113583e0c.9.1794492287999; 
- Thu, 12 Nov 2026 06:04:47 -0800 (PST)
-X-Received: by 2002:a05:6122:3116:b0:5e9:7c82:99ee with SMTP id
- 71dfb90a1353d-5ee1c3f641cmr2113516e0c.9.1794492287251; 
- Thu, 12 Nov 2026 06:04:47 -0800 (PST)
+ AL+hErEXV0BS50XKn3hq3WLjePApYJpNhJpaLTf0DMtQqz3/GClUjOcjSJLVKDgNQvWk3Cqo5l66oZQIYQ==@nongnu.org
+X-Gm-Message-State: APuU4Z9sBtUpdjuKGxCwMhK6H4OmGcrfeKdmAHVwxOxSKX0w1E7fqxhs
+ JBLIqyOwloz8FdKLN5iDDeRx+AYg9S1OQ2dy/nenLr4Buja7GZRVHF0wOjwNMLT7iAyn3kiHGyU
+ 7KedTJ2C08uhYXdjEuNVR93TWJ8vdmkjVsBowMa81WHiCTbRgCdaGCfk=
+X-Gm-Gg: AYBFou2cwGBeTdG0ZRVJrtA2i9vAoDvl+hFFIleKOLAQQYWkMxua102mTy+psJDHwVt
+ xnJxE9qlNOkjoJ9yiirEytFOUl5tuOJV2/YZD9mgxp/9tFPFuPVjQ1WWdtxE0uSkwwYaIJZBoqa
+ +Bom840MCVbddiqxmoUFnRHKwM2KQIN4xivqbplwbr0LiPSRHm4VaMpwJ3G8GcC4f2aobTE1Yws
+ I3iYDvS1wQ1+yW4GojIYNpjco3LpFtt5G2UVGsBmPIT7FICtvKreu9pdK2V//8JimO0K21uwYEc
+ 6Bq+pNqWzk5zp1tSgoy93FQXfsBiHawRAZMgpNihudI8FBUw1OAhde+9HAHNW+zTSUhBhXXdNPE
+ pdPW0E8WADzQFgiphf0TxS6hL34c48pR7kn4T4pwS0GXBUcqL0qCSimXwU5hXuqhJYA0gekEBpz
+ q/p/tp9Z0FAC22kA==
+X-Received: by 2002:a05:6122:d24:b0:5ce:b65d:22c4 with SMTP id
+ 71dfb90a1353d-5ee1c41ab4bmr2728210e0c.16.1794492280424; 
+ Thu, 12 Nov 2026 06:04:40 -0800 (PST)
+X-Received: by 2002:a05:6122:d24:b0:5ce:b65d:22c4 with SMTP id
+ 71dfb90a1353d-5ee1c41ab4bmr2728154e0c.16.1794492279919; 
+ Thu, 12 Nov 2026 06:04:39 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4983585923bsm17477738f8f.11.2026.11.12.06.04.45
+ 5b1f17b1804b1-4bb4e33ae5bsm66292385e9.3.2026.11.12.06.04.38
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 12 Nov 2026 06:04:46 -0800 (PST)
+ Thu, 12 Nov 2026 06:04:39 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -99,11 +99,12 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH-for-12.0 8/8] linux-user/aarch64: Unify both byte orders under
- qemu-aarch64
-Date: Thu, 12 Nov 2026 15:03:43 +0100
-Message-ID: <20261112140343.61634-9-philmd@oss.qualcomm.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH-for-12.0 7/8] meson: Support Linux-user executable aliases
+Date: Thu, 12 Nov 2026 15:03:42 +0100
+Message-ID: <20261112140343.61634-8-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261112140343.61634-1-philmd@oss.qualcomm.com>
 References: <20261112140343.61634-1-philmd@oss.qualcomm.com>
@@ -111,36 +112,36 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: WgBXimJ4mjXMh9Fdb9jPcIShEF6to_c3
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA1NiBTYWx0ZWRfXxu1KsRaI6hg6
- jPWUdPVXYkbRLq+P9/FYdFggQ/zigZ9CLxDhgadcsGXbzOuYGwgwTzv7RJOibY71LH4FN+pm4i/
- /2p79e7ZHDkfpNs/irQDD20cNU/T+DdURbiV7rJZKXX7x4kPERPRHIPcBpYawDdEFtSEP80jxie
- hPp78XruK8y8CZK0FY8o+9v+teq33+4Z4BF63Z5DIL8XsHMVOGhmDteRkg0sJeYlZ3KUK2ck8RF
- WvfCACAXJ0ULW5eYFVPUsmWESzshQJFetaHcWdS1Q2bbgo05K5tzkRiRFuXqMsTOEhFI9pIxJoj
- yqRJJp8kRAoKhVpsKqRa9eI8bZkNdhaoqQNVw0IuHR5PGpcK0aBB9VJfC2xxfvgdCX/bhVv7LWz
- ZW+WRJg/OTdTQm/VT9Zs+gTDsB6JjEz3VmmzkVumyv9LEGMia7iakWoDLMrXQN7gLkshVn9S8bw
- KpE1/w/Q5QkhsP8EtiQ==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA1NiBTYWx0ZWRfX2sw+DYVze8V9
- 7Y0aLr5DpYNHW2qSgwp/2zairBKo73LAGt3o2FPrfNUyCgueIY+g0BiqTnH0yay0mTIeaoS6jlw
- 204yjUcwQV/FnDVGndwRxYgKavHzJzc=
-X-Proofpoint-GUID: WgBXimJ4mjXMh9Fdb9jPcIShEF6to_c3
-X-Authority-Analysis: v=2.4 cv=O/ysLx9W c=1 sm=1 tr=0 ts=6af5c781 cx=c_pps
- a=JIY1xp/sjQ9K5JH4t62bdg==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Authority-Analysis: v=2.4 cv=KsnYSmWN c=1 sm=1 tr=0 ts=6af5c779 cx=c_pps
+ a=1Os3MKEOqt8YzSjcPV0cFA==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=EUspDBNiAAAA:8 a=Nw0S1nEOTGD2y6cCEogA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=tNoRWFLymzeba-QzToBc:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=EUspDBNiAAAA:8 a=zs-5URzUCjn_2RNnlE4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=hhpmQAJR8DioWGSBphRh:22
+X-Proofpoint-GUID: OO8yUhmF6C8NW8_tCeFGXsIM-z573KMo
+X-Proofpoint-ORIG-GUID: OO8yUhmF6C8NW8_tCeFGXsIM-z573KMo
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA1NiBTYWx0ZWRfX02QFojDA3jS1
+ SvYJEMYRJp2nPtRAi35usqbMh+tQFOL95PDoN+Lh9ftnizfGZKT7pxH5azT0CTz33eB0SqycBDj
+ iFEQR4PqRxPjs6qGiZ1PmswD+3KxdxgW27vppp+vtMKlCfsdy8H29ytNmLZQxBVOchy4T7afmF2
+ 3FVQTMcTpVgm7Jb6/zLuCz/Nsry6QZAsToobwEM8rDCZqQO/k1qv+vjquu9IJ1jC6tRI0xywWb5
+ r9UScHdBGdfc6SaV9AL6+Uhk2zX5U5Bf+SZqv8jvugT/EkE3UdEpeGFo2XbRFLM3ZzrV1/+eIjC
+ dPjhqkt5/KVY4+yFWcUpL9VciIEjf5tSO7AzyXJ15VOtIIEkTrZbihj2FWymNRFRwNpNUGdLtoX
+ YFwqH8N5T2FTQR3GxJ48LzCO1R0Ma76GTNGkhSho7OfvkPdoa/nGQ7M5onnQrMsvTOBcfK/doWM
+ oC9vhSaEEwRTkUf6T7A==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA1NiBTYWx0ZWRfX3EsqJ4UnNW4l
+ sWfjY8LgP+OF9psE7D/GYjThs7ktJeZj3a5D9Vf+aRWWOZaPmAdL/M4QSOD8n75Fsq/ds8rlr1O
+ 2iHMfnuVVRbSq5qhoQngFpCZ2z+29TI=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-12_01,2026-11-11_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 suspectscore=0 lowpriorityscore=0 priorityscore=1501
- bulkscore=0 adultscore=0 malwarescore=0 impostorscore=0 phishscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
+ clxscore=1015 suspectscore=0 bulkscore=0 adultscore=0 malwarescore=0
+ spamscore=0 phishscore=0 impostorscore=0 lowpriorityscore=0
+ priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
  definitions=main-2611120056
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -162,155 +163,50 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Enable runtime byte-order selection for aarch64-linux-user
-and retain qemu-aarch64_be as a compatibility symlink.
-Deprecate the symlink since 12.0 and recommend qemu-aarch64
-for both ELF byte orders.
-Remove the separate aarch64_be-linux-user build target and
-obsolete CI exclusions.
-
-Run the existing big-endian hello test through qemu-aarch64
-while retaining its big-endian fixture toolchain. Document
-that executable name compatibility does not preserve the
-removed target-list spelling.
+Accept TARGET_USER_ALIASES in target configurations and create relative
+symlinks in both the build and install trees. Depend on the canonical
+emulator instead of linking a second binary.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- docs/about/deprecated.rst                 | 13 +++++++++++++
- docs/user/main.rst                        |  7 +++++++
- configs/targets/aarch64-linux-user.mak    |  2 ++
- configs/targets/aarch64_be-linux-user.mak | 10 ----------
- .gitlab-ci.d/buildtest.yml                |  2 +-
- .gitlab-ci.d/crossbuild-template.yml      |  4 ++--
- tests/tcg/aarch64_be/meson.build          |  4 ++--
- 7 files changed, 27 insertions(+), 15 deletions(-)
- delete mode 100644 configs/targets/aarch64_be-linux-user.mak
+ meson.build | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 0891bbc44ded..20eb4268f640 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -438,6 +438,19 @@ It was implemented as a no-op instruction in TCG up to QEMU 9.0, but
- only with ``-cpu max`` (which does not guarantee migration compatibility
- across versions).
+diff --git a/meson.build b/meson.build
+index 04cf5d77f188..86b942640abf 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3297,7 +3297,7 @@ host_kconfig = \
+   (hv_balloon ? ['CONFIG_HV_BALLOON_POSSIBLE=y'] : []) + \
+   (have_rust ? ['CONFIG_HAVE_RUST=y'] : [])
  
-+linux-user mode executables
-+---------------------------
+-ignored = [ 'TARGET_XML_FILES', 'TARGET_ABI_DIR' ]
++ignored = [ 'TARGET_XML_FILES', 'TARGET_ABI_DIR', 'TARGET_USER_ALIASES' ]
+ 
+ default_targets = 'CONFIG_DEFAULT_TARGETS' in config_host
+ actual_target_dirs = []
+@@ -4580,6 +4580,17 @@ foreach target : target_dirs
+       emulators += {exe['name']: emulator}
+     endif
+ 
++    foreach alias : config_target.get('TARGET_USER_ALIASES', '').split()
++      alias_name = 'qemu-' + alias
++      custom_target(alias_name,
++                    output: alias_name,
++                    depends: emulator,
++                    build_by_default: true,
++                    command: [find_program('ln'), '-sf', exe['name'], '@OUTPUT@'])
++      install_symlink(alias_name, pointing_to: exe['name'],
++                      install_dir: get_option('bindir'))
++    endforeach
 +
-+.. _deprecated-qemu-aarch64-be:
-+
-+``qemu-aarch64_be`` executable name (since 12.0)
-+''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+The ``qemu-aarch64_be`` compatibility symlink is deprecated.
-+Use ``qemu-aarch64`` instead for both little- and big-endian
-+Linux ELF executables. The emulator selects the byte order from
-+the ELF header, regardless of the executable name used to invoke it.
-+
- linux-user mode CPUs
- --------------------
- 
-diff --git a/docs/user/main.rst b/docs/user/main.rst
-index a8ddf9142495..9dcea8dac4d0 100644
---- a/docs/user/main.rst
-+++ b/docs/user/main.rst
-@@ -65,6 +65,13 @@ emulator.
- Linux User space emulator
- -------------------------
- 
-+For AArch64, ``qemu-aarch64`` runs both little- and big-endian Linux ELF
-+executables, selecting the byte order from the ELF header. ``qemu-aarch64_be``
-+is a :ref:`deprecated compatibility symlink <deprecated-qemu-aarch64-be>`
-+to the same emulator; its name does not override the ELF byte order.
-+Build both names with ``--target-list=aarch64-linux-user``; the separate
-+``aarch64_be-linux-user`` build target is no longer supported.
-+
- Command line options
- ~~~~~~~~~~~~~~~~~~~~
- 
-diff --git a/configs/targets/aarch64-linux-user.mak b/configs/targets/aarch64-linux-user.mak
-index ddfacc092ddf..efe372021ce8 100644
---- a/configs/targets/aarch64-linux-user.mak
-+++ b/configs/targets/aarch64-linux-user.mak
-@@ -1,5 +1,7 @@
- TARGET_ARCH=aarch64
- TARGET_BASE_ARCH=arm
-+TARGET_RUNTIME_ENDIAN=y
-+TARGET_USER_ALIASES=aarch64_be
- TARGET_XML_FILES= aarch64-core.xml aarch64-fpu.xml aarch64-pauth.xml aarch64-mte.xml aarch64-sme2.xml
- TARGET_HAS_BFLT=y
- CONFIG_SEMIHOSTING=y
-diff --git a/configs/targets/aarch64_be-linux-user.mak b/configs/targets/aarch64_be-linux-user.mak
-deleted file mode 100644
-index 83209fa2ae54..000000000000
---- a/configs/targets/aarch64_be-linux-user.mak
-+++ /dev/null
-@@ -1,10 +0,0 @@
--TARGET_ARCH=aarch64
--TARGET_BASE_ARCH=arm
--TARGET_BIG_ENDIAN=y
--TARGET_XML_FILES= aarch64-core.xml aarch64-fpu.xml aarch64-pauth.xml aarch64-mte.xml aarch64-sme2.xml
--TARGET_HAS_BFLT=y
--CONFIG_SEMIHOSTING=y
--CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
--TARGET_SYSTBL_ABI=common,64,renameat,rlimit,memfd_secret
--TARGET_SYSTBL=syscall_64.tbl
--TARGET_LONG_BITS=64
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index b1e95395d0c3..a603c93cb799 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -451,7 +451,7 @@ clang-user:
-   variables:
-     IMAGE: debian-all-test-cross
-     CONFIGURE_ARGS: --cc=clang --cxx=clang++ --disable-system --enable-ubsan
--      --target-list-exclude=alpha-linux-user,microblazeel-linux-user,aarch64_be-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
-+      --target-list-exclude=alpha-linux-user,microblazeel-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
-       --extra-cflags=-fno-sanitize-recover=undefined
-     MAKE_CHECK_ARGS: check-unit check-tcg
- 
-diff --git a/.gitlab-ci.d/crossbuild-template.yml b/.gitlab-ci.d/crossbuild-template.yml
-index 94423814a751..32c11f4895b5 100644
---- a/.gitlab-ci.d/crossbuild-template.yml
-+++ b/.gitlab-ci.d/crossbuild-template.yml
-@@ -70,8 +70,8 @@
-     - cd build
-     - section_start configure "Running configure"
-     - ../configure --enable-werror --disable-docs $QEMU_CONFIGURE_OPTS
--        --disable-system --target-list-exclude="aarch64_be-linux-user
--          alpha-linux-user m68k-linux-user microblazeel-linux-user
-+        --disable-system --target-list-exclude="alpha-linux-user
-+          m68k-linux-user microblazeel-linux-user
-           or1k-linux-user ppc-linux-user sparc-linux-user
-           xtensa-linux-user $CROSS_SKIP_TARGETS"
-     - section_end configure
-diff --git a/tests/tcg/aarch64_be/meson.build b/tests/tcg/aarch64_be/meson.build
-index c1873cd5606c..08d29a94e702 100644
---- a/tests/tcg/aarch64_be/meson.build
-+++ b/tests/tcg/aarch64_be/meson.build
-@@ -6,7 +6,7 @@ tests += {
-   'hello.c': {'cflags': ['-mbig-endian', '-ffreestanding', '-nostdlib']},
- }
- 
--if 'qemu-aarch64_be' in emulators
-+if 'qemu-aarch64' in emulators
-   tcg_tests += {
-     'aarch64_be-linux-user': {
-       'cc': 'aarch64-linux-gnu-gcc',
-@@ -14,7 +14,7 @@ if 'qemu-aarch64_be' in emulators
-       'cc_dockerfile': 'debian-all-test-cross',
-       'folder': 'aarch64_be',
-       'gdb_arch': 'aarch64_be',
--      'qemu': emulators['qemu-aarch64_be'],
-+      'qemu': emulators['qemu-aarch64'],
-       'tests': tests,
-     }
-   }
+     traceable += [{
+       'exe': exe['name'],
+       'probe-prefix': 'qemu.' + target_type + '.' + target_name,
 -- 
 2.55.0
 

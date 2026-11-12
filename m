@@ -1,124 +1,151 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90A21606A323
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 15:10:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9874B60A3827
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 15:23:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=eTtEQUXQ
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=FZcrevoG;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=HZub9p7+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRWRe-0002Vd-Vw; Thu, 12 Nov 2026 10:10:36 -0500
+	id 1xRWdk-0000oV-89; Thu, 12 Nov 2026 10:23:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xRWRT-0002B7-Gs
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 10:10:25 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xRWRK-0000qZ-Qp
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 10:10:17 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-6b56c428212so5785638a12.2
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 07:10:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794496213; cv=none;
- d=google.com; s=arc-20260327;
- b=HGn9t1UDUE55SZEhMzAWK55GDahKSriVU0CFe+/26ndhctZjH95e5IRGfG9V//8wHH
- twQBhfITrjBRYHz7ua1uNWg4dcCCQdQvgPVBov1B4zHAhCF9m/nfqLhAceT3wi11Vg8J
- OTiI9UMaWWVcpdlWb6Jsy78dFalQx4izF/btdBRpl89ahDdzwhp9o4KmhmzhCJsoQ/nc
- kIyJeKWYXTqADTyY374ijL8wHZ5qqpN3XMIZLnEtzT8ApTZuEaYgDjsnLiCpy6xfihwo
- d48QQhl28UCfj+r3iCGrhqzF+hcz+UogWolwG4icbOABII7oLUQ2FPNzsstcp0DoKpvX
- PTMg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=k2+sEYHQGql+U6aTE3FKi6NKQHyu7BG1f3pvuEkm4F8=;
- fh=jZ02VC7D9AMO/aNM8xuWXnRnd3wj2e5udW+SYitZSb4=;
- b=mNDSRquRzTIjDlGDxTZhZ+BNHZZsT+yaSxvKg59srvjJ1mHPYLE0OjwCiHynARSebw
- 7xwIQzYBbqp5vbr9yq4HXRTzJbe/7zIomZR2KMRbCHnj2srwAyPd27zcrxDjHqof4Zlo
- L12+TFO+w+TC87IYSv3Z0B9QdJs5LmtHGaeObOb36avZ4t8enuM0kpJgZ1qilG6UA9jz
- 8EV7U8KbwvdKbq55N9G/Tenq/IKZh2zjFL9y8p3WCOV1ZEibvO58IaolDM5RwfFgNxeP
- t3x4RmF9L+21fP03Dqc0PanIkvcmXSO+Tr4+AeSeVJlhneVnyvqJbtTBXLnYMZiZWWPP
- 8IeA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xRWdf-0000lo-Iz
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 10:22:59 -0500
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xRWdd-0006Ov-MR
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 10:22:59 -0500
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6AC9DwLo480068
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 15:22:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ r1qLo52+nAB2LUL/gFmcFz3qgX1m6/KOX87W0RRx4PE=; b=FZcrevoG41MAnquK
+ sN8avjbZxgm2VSgrbmrYv1JX20wteHeQsaOibA27Tp4sBmMCTSFyMA2ELhCBmciL
+ rSe0d0QE6W3fPnMyLuCbsncLcAm+mK9YJ+81RxGUCRqQORBHCILhXBaj6r+dlb/b
+ YFw2hjyQkndAyC5ly6C94Ludd0Y0oHYgQj/lx9T3JrsqWkAglFEWxoGXvaDj96hc
+ c2gxllS3kXg7RlHy5i+vTrDuD6TwC5hW5kzD2u80tP/t6bkr3dt1qR32OtCdu+Ew
+ /d7TL21QjanjkPc64LCvuZXJqSzed++sCYS/ag69otzGkui6l1U3oP0CHBklP8Y3
+ wDaHew==
+Received: from mail-ua1-f70.google.com (mail-ua1-f70.google.com
+ [209.85.222.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwan4s9pb-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 15:22:55 +0000 (GMT)
+Received: by mail-ua1-f70.google.com with SMTP id
+ a1e0cc1a2514c-9905fc56b60so815272241.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 07:22:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1794496213; x=1795101013; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=k2+sEYHQGql+U6aTE3FKi6NKQHyu7BG1f3pvuEkm4F8=;
- b=eTtEQUXQzzSjOhMqnRW8PHdsg8glgoAlQTLBCO6yn5YZuTgmfgiXooJ32IKw2BZ+qx
- osJiYJKmV8HJvuIsbLlVo3Q/G+zoFYZ0woS6QIHnduf1P/qfokCyzDTMg6gTveyK4fvU
- cNGU49G5hZdcCF0mW6k63nFLUkBZ0MbCJEPKFcpFOFoXUzD8asJT8Q5jpDQXp8SfVNvk
- YyZqJz3tqhSPaXhQrz72KHj7XGKJTkWyHfCx9SRdq6M0y4vK6yTPhVf4pXG6TulThlli
- ixYVdlJw+lJGNQPYlDXms9HL2iD6AlcNNQoBk+LTkBFw4Pr0/pdUA6+zLwKQq/p8FdHu
- U0gw==
+ d=oss.qualcomm.com; s=google; t=1794496974; x=1795101774; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=r1qLo52+nAB2LUL/gFmcFz3qgX1m6/KOX87W0RRx4PE=;
+ b=HZub9p7+sLyuO2NBu8t773RsSKhOfhnUizFa+TaT7DF25ld9mi0XvKiigo/d+SctBv
+ PprKYYQU5A3an0FXqFw+Seco7i2fB658NSw8zvfxwNUEb+ssPDnhGlJ00bbP3plEktv/
+ iX7xV41jl2N90odaP1iDmM60lH95WAD0vyry0PJUxEBRCZyWk1g4o0QXS0h4vtSAGV+u
+ w65TojMx2fa7m9UgNB+sU3ysAH7yKvkFvbgIB2sMFI7TPsZCW8pdo2fJUAfC5AVgmysM
+ k8yB/ulMW7V1oyi3zyaoiwv2WWLrbHT/pasrB3YH0npxYPiCIiT2Q+5CuyNzzyHs7SSD
+ xmkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794496213; x=1795101013;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=k2+sEYHQGql+U6aTE3FKi6NKQHyu7BG1f3pvuEkm4F8=;
- b=BHx2rWsLR6cPVvSFCzKQlAPHGkgFt0UcZh8X4bmNJz3VXBMmU8O4QGuUeWtkj34IjA
- UkapclX72EhrU12JFgRx59OZWex+wg8XUuG+qzmEnKqU8JtEXBpTx0lUfEMC1bVM0m2c
- ttJHJTFYT6VIFNBSFLwllXEKtliLGI5OV4ltRf2EPnsPsYqTMUd4miFT99VWlGe+RRwf
- bgpSOkWs5OC1p7pCBAb/oAo2eNrJeZbKe46glO5hLuFbyb0CQYTS96RDzyIswGQLkQ8y
- wbUjhrHI7fENsPRR6tzRwu0NvigIl1vBbTir7/0zE4wDgIwYVf8sKoa1NnmeNPztFU9L
- 0/Gw==
+ d=1e100.net; s=20260707; t=1794496974; x=1795101774;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=r1qLo52+nAB2LUL/gFmcFz3qgX1m6/KOX87W0RRx4PE=;
+ b=HEuVkLrn9ZYrD/dIyQ5BpJbrMrArZ74syxpGEpGgBmk/fXL6208hihUL5PeO1tnVyc
+ SKTudEjBRKJZ3Sysu3dcPCLr4s1DhxqQrMvfKlbvTvIiV575Ry4nzYaUmnEuLE/bEiWh
+ zZ/amq44fQ3QSGcDRzaY1DL0BMW078dOz/NFE9cVLM7aXCE+gIPRdSAzSdTxcSMJrdmm
+ LhpuM8kBsuyugCtsF5S1q5dr/qhyn+/F12rYsFrPHUxieXzvKpeFmcQxs1NLH4BjY8Lv
+ W8wWQhDAnN4rAnjq2HH3kcjEhikizURvBX0RcLVOstDT9IL4tuillYzIPYcMp0Ss8r+Y
+ HEOw==
 X-Forwarded-Encrypted: i=1;
- AL+hErH/IOMpJSxekdUzdj3bPzeTlu9QQQdGjSBWpfFL/LkHlpjBufKtZYSFJXwmvxHaubOXGIBzpm4Tog==@nongnu.org
-X-Gm-Message-State: APuU4Z+o9Bn4EwHCg5x9dp1x4sRFyPB9rD/ao8d7d+v43ujeJcRtDBHr
- Ruq7Mk5Ngu3ID2/DKrDUX9flQG22TFaP2bB3HSJ5L9RUBPFwgIPak9A6dKvYeMKqFQFLqkmIA0P
- 3YUFtBsg+NfE3DaYYeK1pEsAC1pAaI8w=
-X-Gm-Gg: AYBFou1vyTwgZVwT3P/8XdEbxNlW6Jev21HVooGG/VSjKfFSeuYPSva6ScmOaltmwr6
- gNUrMi+onJ/qVOSsmoPxtFT6O5weBmF3YpXSfiyf1znT3ELg3EHZUVbVk/+6f3Tcq3drC3Sb39l
- acBHkNvMsfe8zDpGTbbmz/yD7ikQTEL28uIT4N0VOL3q6RTQwG3Lvhqnr2fRtKwqRj8BnZmeyse
- SUrie6QPjefHLpKmCvIS8iRx3xRxIB6zrXF7C6323GQTpFHYVHSlkbWoRLRvX/tL/7plxv2/wrU
- kCP2e2qHwhAczt5+iAPd4jsIKQnjg8H8lsEYHZZMokqV2gcrdYVcJZWZFn4OiQNA44ezjm71+y0
- TzEDD507fGgdsKrvICe6T8e0Zb7+uoOh83OMF
-X-Received: by 2002:a05:6402:c714:10b0:6b6:ee00:aed9 with SMTP id
- 4fb4d7f45d1cf-6b777852cd5mr3130288a12.44.1794496212613; Thu, 12 Nov 2026
- 07:10:12 -0800 (PST)
+ AL+hErG+1JsvtMYMdgvTCCODuCdP49AJFem64fzWzInS2Y/paMEL5m0Is/e3DzQpTE4ckLbiOyLpIIwI8g==@nongnu.org
+X-Gm-Message-State: APuU4Z/7LrjvjYNsdmlA52Mr0z3QHTRg8W/c8mBXPfGsyM9qN3wsmctW
+ GRmgXL3AFE8/KsamW3lSGuGMg8+gj3WAUuxuHGnh2lLCr6ctS20N3RIwUtIqMUSnRlJ+gAsslxR
+ geII99YX4GkffEjJDUkb7CsHDjf0VI5Ya9zSKZUHeqept+z9jMKjVVrY=
+X-Gm-Gg: AYBFou28kx7CFeewGrijSsjypJJPqhTRsv0GIczIAuKFIqviLpRSvBX8S/eFm4ZV7kn
+ 2nIbzNVpYAaIWqk5eZ9irOIESirKm38PvC63iqubvQznJNPIfoAh2r1CPlhgy5obZ2c3k0giXoI
+ 8vLV9MM7sUyXSFTXqtXpapDLIJLldvGcra9moh8NiXdTv/YHvxSYNDUdkn2iFw3gnWD11GLf8b2
+ EZHvoFhtYK9HYMFFbmXpD7ELgsVutEKEAbrq0/fRe79ouEurRfGSJEwq1DonTl25bCDdtnIabr+
+ pq30K6cq709E0Yljxe1zuSzHMAQZJeQApA6UxF+utROm96YtAHyGFPPlJpCP7ZYJgtTc0AzRmBG
+ l0yBc/y44oNu39uyR95VQ32DLAMpXCPxSPtTqIRkR+mnyCtHy7veUFl/TEhIPlu+V0B2Ba8k=
+X-Received: by 2002:a05:6102:50a8:b0:7af:efe6:2bbe with SMTP id
+ ada2fe7eead31-7d631783cc6mr827274137.16.1794496974382; 
+ Thu, 12 Nov 2026 07:22:54 -0800 (PST)
+X-Received: by 2002:a05:6102:50a8:b0:7af:efe6:2bbe with SMTP id
+ ada2fe7eead31-7d631783cc6mr827247137.16.1794496973650; 
+ Thu, 12 Nov 2026 07:22:53 -0800 (PST)
+Received: from [10.111.135.37] ([212.136.9.21])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4ba095200c4sm61661245e9.2.2026.11.12.07.22.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Nov 2026 07:22:51 -0800 (PST)
+Message-ID: <4303752a-64ba-49a6-826b-ddaa89f6579b@oss.qualcomm.com>
+Date: Thu, 12 Nov 2026 16:22:38 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261106023936.772-1-luoyonggang@gmail.com>
- <20261106023936.772-2-luoyonggang@gmail.com>
- <avXCZ6IxBXWEuugm@redhat.com>
-In-Reply-To: <avXCZ6IxBXWEuugm@redhat.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 12 Nov 2026 23:09:59 +0800
-X-Gm-Features: AclHuK8zx48gvNZacwMEyoMqy6tiJnU5RrHg_R4wHWLBJQ7Fo_HS6qalBRB4L8w
-Message-ID: <CAE2XoE-snYamK4sAxDvheS8zq1U-fPTZNN5b7Ls+arPUcPgZbw@mail.gmail.com>
-Subject: Re: [PATCH v5 1/3] accel: register CPU parent only for AccelCPU
- subclasses
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Nicholas Piggin <npiggin@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Chao Liu <chao.liu@processmission.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>, 
- Weiwei Li <liwei1518@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Philippe Mathieu-Daude <philmd@mailo.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-12.0 8/8] linux-user/aarch64: Unify both byte orders
+ under qemu-aarch64
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Anton Johansson <anjo@rev.ng>, devel@lists.libvirt.org,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Helge Deller <deller@gmx.de>
+References: <20261112140343.61634-1-philmd@oss.qualcomm.com>
+ <20261112140343.61634-9-philmd@oss.qualcomm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20261112140343.61634-9-philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: UeZT17W8_hY-WcTypdp94Y-BmDiqpZW8
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA2MSBTYWx0ZWRfX48+LkbafjCff
+ KYUPPtMC3pRIf0Q1sxsjLfrwy/GjtSfOPCk3kSEqdA5ppsx4J9krFqN4v6LQH0SO7M5HbVtRCEv
+ pwOVN969suFiMyTClL1ZkdSSMENML0U=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA2MSBTYWx0ZWRfX8KgTuaixNtuJ
+ XBLD86iPiejcZtYPo+hVHjjqtPr0e0kp5UFLDS/ehTXhyqw6E30WAXiXXNqSLKUgaWvnvaAPee5
+ 2o5TvdFnae+DRZVyg6rllX8rvfor4iYVS/1flAzko3ZXKOACLfW7H7lLPpfKpSxQA89rR0jvG8j
+ b08lXnNM4efffEuUVnltitCqGTEROSIP1/wTLmNpnaH9+ZO+0hT0cTRAd/dLjq5jfoXHLjwuzJT
+ IE9zS2rVb45/dRjG422bVQZJewBxsxyt+kHjqqTnGSQ+bAEHvhNipIG2yGfOBsyjKKQLuh/+EBb
+ 5shWyxuhzBYv4JvdBdrbdhF7Di0ZOxIkqFQtg4HoRh5pqVhVGf7PbUde71t3LFKe9PjPfqzaD4h
+ RNNeMzuhzYYZzbgAToKahDt6BPInq8uky5C5fYULDpC6PqwHqf2UVD/MsLcHmigPHBBBsLuewdN
+ h8nxriEps5vQB8duGPA==
+X-Proofpoint-ORIG-GUID: UeZT17W8_hY-WcTypdp94Y-BmDiqpZW8
+X-Authority-Analysis: v=2.4 cv=Gd+CDgXL c=1 sm=1 tr=0 ts=6af5d9cf cx=c_pps
+ a=R6oCqFB+Yf/t2GF8e0/dFg==:117 a=/bviTfK1dmy+WGcHzWQ0gg==:17
+ a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=EUspDBNiAAAA:8 a=xOLU9PFIos2kz-kKafUA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=TD8TdBvy0hsOASGTdmB-:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-12_01,2026-11-11_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 lowpriorityscore=0 priorityscore=1501 spamscore=0 clxscore=1015
+ malwarescore=0 phishscore=0 suspectscore=0 impostorscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611120061
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,207 +157,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 12, 2026 at 9:43=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange@r=
-edhat.com> wrote:
->
-> On Fri, Nov 06, 2026 at 10:39:33AM +0800, Yonggang Luo wrote:
-> > accel_cpu_register_type() creates the abstract parent
-> > accel-<cpu type>. A subclass names that parent, and
-> > type_initialize() aborts when the parent is missing. The old
-> > type_init registered only target_cpu_type(), which is one name
-> > in a multi-target process. Call the helper from the CPU type
-> > init of each target that has an AccelCPU subclass.
-> >
-> > ARM calls it because whpx-common.c parents accel-arm-cpu on
-> > aarch64-softmmu. i386 calls it for TCG, KVM, HVF, NVMM, and
-> > MSHV. i386-softmmu and x86_64-softmmu each pass their own
-> > CPU_RESOLVING_TYPE, so WHPX on x86_64-softmmu finds
-> > accel-x86_64-cpu. RISC-V calls it for TCG and KVM. PowerPC
-> > calls it for KVM.
-> >
-> > Other targets have no AccelCPU subclass. Machine init looks up
-> > tcg-accel-<cpu type> or kvm-accel-<cpu type> and skips a missing
-> > class, so those targets do not need the parent.
-> >
-> > No extra tests is needed, as these QOM types already be
-> > tested by the existing logic instantiating all QOM types.
-> >
-> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > ---
-> >  accel/accel-common.c      | 6 ++----
-> >  include/accel/accel-cpu.h | 2 ++
-> >  target/arm/cpu.c          | 2 ++
-> >  target/i386/cpu.c         | 2 ++
-> >  target/ppc/cpu_init.c     | 2 ++
-> >  target/riscv/cpu.c        | 8 ++++++++
-> >  6 files changed, 18 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/accel/accel-common.c b/accel/accel-common.c
-> > index 00a400243f..441d1b77fa 100644
-> > --- a/accel/accel-common.c
-> > +++ b/accel/accel-common.c
-> > @@ -130,9 +130,9 @@ static const TypeInfo accel_types[] =3D {
-> >
-> >  DEFINE_TYPES(accel_types)
-> >
-> > -static void register_accel_target_type(void)
-> > +void accel_cpu_register_type(const char *cpu_type)
-> >  {
-> > -    g_autofree char *name =3D g_strconcat("accel-", target_cpu_type(),=
- NULL);
-> > +    g_autofree char *name =3D g_strconcat("accel-", cpu_type, NULL);
-> >      const TypeInfo accel_cpu_type =3D {
-> >          .name =3D name,
-> >          .parent =3D TYPE_OBJECT,
-> > @@ -142,5 +142,3 @@ static void register_accel_target_type(void)
-> >
-> >      type_register_static(&accel_cpu_type);
-> >  }
->
-> Is there a reason why we need to register this base class
-> repeatedly for each target ? This class is defined in target
-> independent code and the target specific behaviour is provided
-> by subclasses AFAICT, so I'm not seeing why we need to
-> duplicate the class per target.
->
-> I just proposed changing its name to "accel-cpu" so that
-> it is always available:
+On 2026-11-12 15:03, Philippe Mathieu-Daudé wrote:
+> Enable runtime byte-order selection for aarch64-linux-user
+> and retain qemu-aarch64_be as a compatibility symlink.
+> Deprecate the symlink since 12.0 and recommend qemu-aarch64
+> for both ELF byte orders.
+> Remove the separate aarch64_be-linux-user build target and
+> obsolete CI exclusions.
+> 
+> Run the existing big-endian hello test through qemu-aarch64
+> while retaining its big-endian fixture toolchain. Document
+> that executable name compatibility does not preserve the
+> removed target-list spelling.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> ---
+>   docs/about/deprecated.rst                 | 13 +++++++++++++
+>   docs/user/main.rst                        |  7 +++++++
+>   configs/targets/aarch64-linux-user.mak    |  2 ++
+>   configs/targets/aarch64_be-linux-user.mak | 10 ----------
+>   .gitlab-ci.d/buildtest.yml                |  2 +-
+>   .gitlab-ci.d/crossbuild-template.yml      |  4 ++--
+>   tests/tcg/aarch64_be/meson.build          |  4 ++--
+>   7 files changed, 27 insertions(+), 15 deletions(-)
+>   delete mode 100644 configs/targets/aarch64_be-linux-user.mak
+> 
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 0891bbc44ded..20eb4268f640 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -438,6 +438,19 @@ It was implemented as a no-op instruction in TCG up to QEMU 9.0, but
+>   only with ``-cpu max`` (which does not guarantee migration compatibility
+>   across versions).
+>   
+> +linux-user mode executables
+> +---------------------------
+> +
+> +.. _deprecated-qemu-aarch64-be:
+> +
+> +``qemu-aarch64_be`` executable name (since 12.0)
+> +''''''''''''''''''''''''''''''''''''''''''''''''
+> +
+> +The ``qemu-aarch64_be`` compatibility symlink is deprecated.
+> +Use ``qemu-aarch64`` instead for both little- and big-endian
+> +Linux ELF executables. The emulator selects the byte order from
+> +the ELF header, regardless of the executable name used to invoke it.
+> +
+>   linux-user mode CPUs
+>   --------------------
+>   
+> diff --git a/docs/user/main.rst b/docs/user/main.rst
+> index a8ddf9142495..9dcea8dac4d0 100644
+> --- a/docs/user/main.rst
+> +++ b/docs/user/main.rst
+> @@ -65,6 +65,13 @@ emulator.
+>   Linux User space emulator
+>   -------------------------
+>   
+> +For AArch64, ``qemu-aarch64`` runs both little- and big-endian Linux ELF
+> +executables, selecting the byte order from the ELF header. ``qemu-aarch64_be``
+> +is a :ref:`deprecated compatibility symlink <deprecated-qemu-aarch64-be>`
+> +to the same emulator; its name does not override the ELF byte order.
+> +Build both names with ``--target-list=aarch64-linux-user``; the separate
+> +``aarch64_be-linux-user`` build target is no longer supported.
+> +
 
+Squashing:
 
-Yeap, this is my first choice:
-
-https://lore.kernel.org/qemu-devel/20260823150731.896-2-luoyonggang@gmail.c=
-om/#r
-
-If there is no strong objection, I like this.
-
->
->   https://lists.gnu.org/archive/html/qemu-devel/2026-11/msg02741.html
->
-> > diff --git a/include/accel/accel-cpu.h b/include/accel/accel-cpu.h
-> > index 9e7eede7c3..2fdb64d2ae 100644
-> > --- a/include/accel/accel-cpu.h
-> > +++ b/include/accel/accel-cpu.h
-> > @@ -20,4 +20,6 @@ typedef struct AccelCPUClass {
-> >      bool (*cpu_target_realize)(CPUState *cpu, Error **errp);
-> >  } AccelCPUClass;
-> >
-> > +void accel_cpu_register_type(const char *cpu_type);
-> > +
-> >  #endif /* ACCEL_CPU_H */
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index 71681447b2..725f1f3a5f 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -28,6 +28,7 @@
-> >  #include "qemu/module.h"
-> >  #include "qapi/error.h"
-> >  #include "cpu.h"
-> > +#include "accel/accel-cpu.h"
-> >  #ifdef CONFIG_TCG
-> >  #include "exec/translation-block.h"
-> >  #include "accel/tcg/cpu-ops.h"
-> > @@ -2753,6 +2754,7 @@ static const TypeInfo arm_cpu_type_info =3D {
-> >
-> >  static void arm_cpu_register_types(void)
-> >  {
-> > +    accel_cpu_register_type(CPU_RESOLVING_TYPE);
-> >      type_register_static(&arm_cpu_type_info);
-> >  }
-> >
-> > diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> > index eab0d5a4d4..31b09e6f8e 100644
-> > --- a/target/i386/cpu.c
-> > +++ b/target/i386/cpu.c
-> > @@ -23,6 +23,7 @@
-> >  #include "qemu/qemu-print.h"
-> >  #include "qemu/hw-version.h"
-> >  #include "cpu.h"
-> > +#include "accel/accel-cpu.h"
-> >  #include "tcg/helper-tcg.h"
-> >  #include "exec/translation-block.h"
-> >  #include "system/hvf.h"
-> > @@ -11093,6 +11094,7 @@ static void x86_cpu_register_types(void)
-> >  {
-> >      int i;
-> >
-> > +    accel_cpu_register_type(CPU_RESOLVING_TYPE);
-> >      type_register_static(&x86_cpu_type_info);
-> >      for (i =3D 0; i < ARRAY_SIZE(builtin_x86_defs); i++) {
-> >          x86_register_cpudef_types(&builtin_x86_defs[i]);
-> > diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-> > index 7f3036d903..fe3f2549b7 100644
-> > --- a/target/ppc/cpu_init.c
-> > +++ b/target/ppc/cpu_init.c
-> > @@ -43,6 +43,7 @@
-> >  #include "exec/page-protection.h"
-> >  #include "exec/watchpoint.h"
-> >  #include "helper_regs.h"
-> > +#include "accel/accel-cpu.h"
-> >  #include "internal.h"
-> >  #include "spr_common.h"
-> >  #include "power8-pmu.h"
-> > @@ -7589,6 +7590,7 @@ static const TypeInfo ppc_vhyp_type_info =3D {
-> >
-> >  static void ppc_cpu_register_types(void)
-> >  {
-> > +    accel_cpu_register_type(CPU_RESOLVING_TYPE);
-> >      type_register_static(&ppc_cpu_type_info);
-> >  #ifndef CONFIG_USER_ONLY
-> >      type_register_static(&ppc_vhyp_type_info);
-> > diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> > index 362e561809..10e24f20e8 100644
-> > --- a/target/riscv/cpu.c
-> > +++ b/target/riscv/cpu.c
-> > @@ -25,6 +25,7 @@
-> >  #include "qemu/guest-random.h"
-> >  #include "qemu/atomic.h"
-> >  #include "cpu.h"
-> > +#include "accel/accel-cpu.h"
-> >  #include "cpu_vendorid.h"
-> >  #include "target/riscv/tcg/csr.h"
-> >  #include "internals.h"
-> > @@ -3931,3 +3932,10 @@ static const TypeInfo riscv_cpu_type_infos[] =3D=
- {
-> >  };
-> >
-> >  DEFINE_TYPES(riscv_cpu_type_infos)
-> > +
-> > +static void riscv_accel_cpu_register_type(void)
-> > +{
-> > +    accel_cpu_register_type(CPU_RESOLVING_TYPE);
-> > +}
-> > +
-> > +type_init(riscv_accel_cpu_register_type)
-> > --
-> > 2.55.0.windows.3
-> >
-> >
->
-> With regards,
-> Daniel
-> --
-> |: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-> |: https://libvirt.org          ~~          https://entangle-photo.org :|
-> |: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
->
-
-
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+-- >8 --
+diff --git a/configure b/configure
+index af14a9c23e..821a887a31 100755
+--- a/configure
++++ b/configure
+@@ -1107,7 +1107,14 @@ else
+              *" $target "*)
+                  ;;
+              *)
+-                error_exit "Unknown target name '$target'"
++                case "$target" in
++                    aarch64_be-linux-user)
++                        error_exit "Target '$target' is no longer 
+supported; use 'aarch64-linux-user' instead"
++                        ;;
++                    *)
++                        error_exit "Unknown target name '$target'"
++                        ;;
++                esac
+                  ;;
+          esac
+      done
+---
 

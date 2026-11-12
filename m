@@ -1,92 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B62BA606A339
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:09:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 53634606A321
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:09:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=EYbZTpQF;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=NRqyJwra
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=GPNT5+vN;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=TSLaR56V
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRZES-0000ZJ-Er; Thu, 12 Nov 2026 13:09:08 -0500
+	id 1xRZEg-0000bv-Tb; Thu, 12 Nov 2026 13:09:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZES-0000Yl-1p
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:08 -0500
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1xRZEf-0000bV-H6
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:21 -0500
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZEQ-0002zq-5r
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:07 -0500
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ id 1xRZEd-0003bj-PH
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:21 -0500
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6ACFa7Go012267
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:03 GMT
+ 6ACFa6tN1309248
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:18 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=qcppdkim1; bh=pVWiYHdM6YKo6pteq5QLHc
- WbolKGnQxEQXcOHu3pPXg=; b=EYbZTpQF2OMoLBrRYXaYea+aZcWrI4G3pXZ6uY
- 99A+NByG8bn/xCdHumWuBmbteBY0Q9HY8QVuDkq6PlfM1sckgtTdjz0ZTEb/mwcQ
- L/yvPZKSCjegP4I8paPLop3PoSP5PKRABp7SJ/+egtkXiEtX735FdbxFxqQhKHpX
- VLRkGgc1GDj4v5upGN+Pb7r2ucIuB67+qPz1NqVzkbqtWl3a0aKGAdtxw0yCoh8A
- piIKM3HqCwECHKN7/OvdBIUA+rvpdlTgHXeWxg8uieWfYf68Va4acDRCLF1bbAkK
- JSVxUn2i6Tz62EbchMsXTnxaTX0Zg1OXBhGUXgqAbWmN1CZA==
-Received: from mail-ua1-f69.google.com (mail-ua1-f69.google.com
- [209.85.222.69])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwg1b8q2m-1
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 7BCKV5IVDk7vsjlvCYKKr9cyCqjoU/iBPzkhqVikM4I=; b=GPNT5+vNhlJvZ3wn
+ oBgQpJIVRHozNppK2w0kD9KL4ytPU0hEEysu1FALFwqQqbP00t2CUqBJYGQY62ZJ
+ GkncJ0LuslZQ8uxTc+tThhfikYzukv0lctPk7wVaSkU8/2angbq4ifhhi5EqJ1j7
+ bzIGrvzOQAMV2qYzTt2TLs0azVLXAUvv+tGPRORfD1bAt3d+SnteNcQ/R/q2w8TS
+ 8fUMBOrWqOoUfXSjykh7keTt6wPUm9K1DdNGiqnRmN7/HgM1urpdaHeT3w3G7TCs
+ MPJwRyHAmpUhTGi2PnrlMBKfT59Dz/Cq/EI4dEJ5IEwoHJMTmeO2gSPYtjFcs9+i
+ Fd7a7w==
+Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
+ [209.85.222.72])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwan4syjb-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:03 +0000 (GMT)
-Received: by mail-ua1-f69.google.com with SMTP id
- a1e0cc1a2514c-99064f8c7efso68804241.2
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:09:03 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:18 +0000 (GMT)
+Received: by mail-ua1-f72.google.com with SMTP id
+ a1e0cc1a2514c-99077a0be0bso59024241.2
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:09:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794506943; x=1795111743; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=pVWiYHdM6YKo6pteq5QLHcWbolKGnQxEQXcOHu3pPXg=;
- b=NRqyJwraXMK+GZ2Jx+AXMiWPfziKF9hGyEZF3Aa4DhkTkjRLEsGRwDntdLIZYRxB66
- 3Qpb+11kcdsdHuNp+IQksPhyTAQeuazPfXjFzkf2WRI6QSdsAY0GgQIPgGsu/nICV95j
- 6s8pBoVOBwM3mbT6mAb3ZReAS9yXY6efXPfVWZ7NXMpx5T3t1PKp7MrtfNueqCMNP9hk
- aqFYX0gXnMk5PJsGu4eyYeK8Ct/6FJ3YA1J8psBf3eIY1bxr700/XUSrSWrC33X6zyD5
- z441z5W7ZCZQfAciofZZUBd+pJiWNDglHw/gFS/SzjFLBOWZMN4mmo8PJYnHP0GqrQDD
- c0IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794506943; x=1795111743;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ d=oss.qualcomm.com; s=google; t=1794506958; x=1795111758; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=pVWiYHdM6YKo6pteq5QLHcWbolKGnQxEQXcOHu3pPXg=;
- b=oQXGnhJz7E2BTDd+6TY+DVioCg1NS9MNFl59tZCA9bUNhPvj4Kxlb8L4EHf0gxwe8k
- ldZqk3LMbPEBP/yVyQ5zm0uYqZ/hKaSJ2pDgGgnNXKl1KOR24cKVQ2eTSAvdNPerTkQd
- mmAq1GPJRAUJ/JZhAttFHzrDNCNsj3ABzmXDNUONlsnFltGIlu99mraoXxb7tSQuXENS
- hL+M/Mxxt1R96QziBM69lpSzH3CvEw/V9311Mv602yOiW8+g1i2tYiB/M3cH20GUPtnK
- 2JKkOt2/sL1BPCfQ5YZTR4zFDp8sW6qjos8ZE7CT0VcvRgjCIwgeqACOARjCp45SoMg4
- t3VA==
+ bh=7BCKV5IVDk7vsjlvCYKKr9cyCqjoU/iBPzkhqVikM4I=;
+ b=TSLaR56VVsAc/6UFDTRQcIj0MY+W31Vj33nS1r2/kxRoYPcBLoRVB/oUpRYXnyP9+R
+ YdKC5hXbN343NKFefubtfl/kntFl2PshmVzVP1NvCcAEYMxvG2FAr/asA1pa8hEc7d0E
+ RiSQw28Mvip5LXUFi43N60tvaSC/e72DNNdgGfcm1ZA71fEEWNQwW7mC0XYkJLy5zNND
+ BWbB/VuD5ca03WYD4RN/ghW4lOMyTlDmx6JQiWZU4Z5xJqu8O/rUGnzwMEQu5h9Wdz3g
+ SpMKtJ6BebH1xzJtu4dniFOJaKOYLH22n2O6hUmPAUnNC2HXkHVg6YbD8dIyRKO+z3W8
+ 73mw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1794506958; x=1795111758;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=7BCKV5IVDk7vsjlvCYKKr9cyCqjoU/iBPzkhqVikM4I=;
+ b=IIoW0PmnCh1InCEfnHBUV3VNPEao6uqWjhkdLtHAUmCqTGKgo4awcDhN7uwFX09vh+
+ DQGA38ysBeMb/bkRMTB5vsMCV5tlc8Sj3/crMum0x3K6+YoqAwQuR4gmQkBxWPICDHzk
+ v1qYwgy5n86bnnD/sqm1aZsAmNE5K+o6BeGcGX4QsnIckp/5FCYH52VETCokgHjlZ1kF
+ iE1fCKl3IiNoB5RAaZjbXYPh+CbkHTMOw4trrcksp04wDrSPRSIB9waRedPJVosf+NXF
+ HGGKByUy/l2jSS2owKtlQy/BOShpz9QpTFw4ZYKiKwnmSP0vPneREjY2PdrgE4b7Kr9T
+ L+aw==
 X-Forwarded-Encrypted: i=1;
- AL+hErFYwlVnXhbra6hjG4xtXbZDfSVCXJq9jbL9N1/vh00ouclqkydw8w2bWM3Ar4io6eMgKgJrSHUjmA==@nongnu.org
-X-Gm-Message-State: APuU4Z+AOjjnfm+HSAGMzI7udf3xy1SmGGBxPF79dROIQcmNGoWArNjg
- Qt1JZ4Om7PnWb8oC+9T4FBHoEg3fbELuk2nxkJPynwUiMtlkN8kYpzRoIpXboVSNOATXv1v1/QI
- 5xVDPcQd9hxhSj/w381ZHTs4+KitP1b9iCII3EzBU4N4CfucO7Ck8C0E=
-X-Gm-Gg: AYBFou2k0p46nGmmvA/E137g3s81RmUj+pmJ3PifZuuWRMiY4jYN/ba4f34jJyl/x/k
- EmknKSEW+Uf4xXz0p3Fso6it4AK7Z/hBqCMxPOU915F8vY7SGH72nTRQwrkTag8TKpg2gEE5KfL
- iwm4rOVkaweW23Zz2f2reQAjtEDdwtVSs+wOBMc4PVVuhDiINtMz/4jYVQ2eSnaH3o1btfIsPCY
- 2M+dvw3DchasSbIjwsUhUVqGFBJnhET/L/RWOV7OOhagft0aWQHx/QCWkhhEo6n4YyOakilAnHT
- PbbHb172ABu9F7LG7jWdhWUnLZ7jzP+uCxZbrx650N/je8fzPFSwlNHtgGwTWXoiiQkJJDoYBZB
- Eb3Wt4MkV53ZikPLBtEvD/yR/8UfzdYVhFIG3o20WrSQFeLBBiyl2p0hrhwt66tKcY2n37QrMVO
- M8jC3SCGWSGHCQqQ==
-X-Received: by 2002:a05:6102:e0a:b0:7d5:c1e0:2482 with SMTP id
- ada2fe7eead31-7d64d69dca2mr7824137.11.1794506942556; 
- Thu, 12 Nov 2026 10:09:02 -0800 (PST)
-X-Received: by 2002:a05:6102:e0a:b0:7d5:c1e0:2482 with SMTP id
- ada2fe7eead31-7d64d69dca2mr7803137.11.1794506942015; 
- Thu, 12 Nov 2026 10:09:02 -0800 (PST)
+ AL+hErEkEZjqUBW/1HH1zfBqOMMKtpmMjq2hyp/F2mXGDtPaFShgYkDEzWD4RWaPTsCxNX8T+R+76ZtYaw==@nongnu.org
+X-Gm-Message-State: APuU4Z8DvbBLiq3twEGVrMj9ih25Rn7ow4TXjd3GZaVp2gEVJQOXbOuT
+ nY4Bz1bBlDoKmBqEE/SP7IPkeFwJ9hwfT457wEmnz3Fs87TAGwpBzZTuCHi5YLLsdzviGGkqgWA
+ Jp6mqghaUY3V13dOEN700qYYBz1h0FfCthMTOM+rFsBI6/rA4A9Yno0I=
+X-Gm-Gg: AYBFou194KMo9NHXkRqZL6RQ49eSl1bdWAPGstTvw558CoLhsTy59nXGCQu2VKu45FP
+ 1Jx8NEcN8hrpRGAOF9EP/7d3NebnXpRJhXQKAaf7um9oCSney4UdaTTH9r0OITUinDSUI28PkUV
+ eJLR2G8IGa7YgO6Ge32CxF6HnL1EGMO0aHrIA5Q2XG2h0+6R1zRqFrgmHKua3B6dbYK7J1W9sd3
+ AXfGXxXEYIyjabEvhWQNwdsJInD2dVFUNJhYEc6QmipOte8BEPQ8H3hydTJ61uL2VCxyYxD4py6
+ G9IeljtganLFRDmVyXNrwq80eV26eq48DKUX7G3Me2bSxUUTefA7mokU2XaBusUh1+RWXKLdxfV
+ MrgzY78U3+OZWnu+Uk4BKtzN/FrhLEg7dDKCe3zob76z/qB/c/QUq/9ljr4LEeSBl/tJYjMQ0wh
+ Z0qwCMywDxeYK8Yg==
+X-Received: by 2002:a05:6102:f10:b0:7cc:ccb:ce5a with SMTP id
+ ada2fe7eead31-7d505805529mr2476335137.28.1794506957749; 
+ Thu, 12 Nov 2026 10:09:17 -0800 (PST)
+X-Received: by 2002:a05:6102:f10:b0:7cc:ccb:ce5a with SMTP id
+ ada2fe7eead31-7d505805529mr2476319137.28.1794506957122; 
+ Thu, 12 Nov 2026 10:09:17 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-49c5f1c1797sm653492f8f.11.2026.11.12.10.09.00
+ 5b1f17b1804b1-4bb4e2adf53sm85347265e9.15.2026.11.12.10.09.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 12 Nov 2026 10:09:01 -0800 (PST)
+ Thu, 12 Nov 2026 10:09:16 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -100,51 +103,52 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org
-Subject: [PATCH-for-12.0 v2 00/12] linux-user/aarch64: Support both endianness
- at runtime
-Date: Thu, 12 Nov 2026 19:08:46 +0100
-Message-ID: <20261112180859.85380-1-philmd@oss.qualcomm.com>
+Subject: [PATCH-for-12.0 v2 02/12] tests/tcg/arm: Add BE8 and BE32 hello tests
+Date: Thu, 12 Nov 2026 19:08:48 +0100
+Message-ID: <20261112180859.85380-3-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261112180859.85380-1-philmd@oss.qualcomm.com>
+References: <20261112180859.85380-1-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=c6Q+0h9l c=1 sm=1 tr=0 ts=6af600bf cx=c_pps
- a=UbhLPJ621ZpgOD2l3yZY1w==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Proofpoint-GUID: qfMIJuwmWxQOjBrp3aZxmyXZ_LiRuy0Z
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX8REi9ElhtiAj
+ UNrs4q7RUxeTH88FhbDL9Kcuv/Mag7aeG34O9oBvKaKEq0zZaLyDgfft6iQCVUioZ32jlGRqE91
+ Qs9pHGOkJIurTvSsCrU08Bb4dSyMDg0=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfXxsnsaF7gL0EF
+ m3ppUNRWJ4sZM0HLhvPC6iGk5/ds8BnQo1KD9kZACwRYAuSEBtxLCIfq0E1Y3R1PsSwGC7ub/xY
+ bjPhQ8t2JrHxtsYM/Xc2XRUSmhlMyUrdDaie8j0y3uGgGipsUs4f1W2z4/8W/JD1+NuaVFqhx8L
+ YX2DZzp+TZZwh16mxAx7oHXDILlkkSHhy9JD3PAXd4D3/oDGyT+SwMewd9eMdttKvJsjqPI5ctA
+ dMl577xELjNlkHqPY6CB15wJm4BRbEumhe1hQoaj/jk8b0DzyunS1EVx02Ndm16S5TJSsC9Puyw
+ m5/695cpa4rjci/yhpJ8e91R61jbrgsISKZHenecTjHfxnqM+t658mU070txA63MVOgzOq9mb/K
+ PxhKwUEtYBsr+/HNN017mxdTFO5eoPyvk+Ott9eTTlJBO0TOhjgpTQAOo7O131zVtw5OZyOXUAA
+ yDDHLg1b7gsAT0DNx1Q==
+X-Proofpoint-ORIG-GUID: qfMIJuwmWxQOjBrp3aZxmyXZ_LiRuy0Z
+X-Authority-Analysis: v=2.4 cv=Gd+CDgXL c=1 sm=1 tr=0 ts=6af600ce cx=c_pps
+ a=ULNsgckmlI/WJG3HAyAuOQ==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=6IaHPsI2-x5WLNNLdMwA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=TOPH6uDL9cOC6tEoww4z:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: dsHcgtJTnvSrpYTwPSEAsPzALJkPcwEK
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX3+Dp1fr237ya
- 6P8K9nwD6c6/4vxx3RE/q/JQlxKQDoYbgCjQZwgYI20fV4YrYDsaud0wXZl12I3Qm9pwlDreq+X
- XpuUJqLzBhPZb+R+CS73k0dfIbCX8YPOmN2Eb79bdcehpEHeYh34lr8aYszkXHbrTg1fD1WOva7
- I2c7lsH+L2Ts9ks2MoY98kQbwFLOjBoAQKqTqdW39Zk1KStb65A7N4Z4G1k08nLtF/X7zEoMSut
- VusAT3AScF4vzvfDoCYJ8WcYjtak8dxJBAWck/MQQBfAaQH99F71Bt663teoXn8Drjs/DjEBEph
- kZwneef/IQ+BX1m65R1Dv30w6Q1lqi39o08fsC9t87RE7aQiwrvIPaslcr+Zzm4dOZxAVLheVeA
- c5aivF5S76S+ldgHeDfilpswio70ETtkfFhly0WReqwETHIEzxG80R+fx5qJSU4wYnSw6eGXCvJ
- LIIHRmZK6QSjgnf/+OQ==
-X-Proofpoint-ORIG-GUID: dsHcgtJTnvSrpYTwPSEAsPzALJkPcwEK
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX686Qqmv9JPdA
- y2iTKSmBU5qobWJFBc5jvg5sCd+Du0DKtVteTN9J6FuSQnRxjHP3mvjCnXQB8FlumuT33142oJW
- ZtdvEVDz0WCNC7Bh9NPX9+LS8gtjXmw=
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=EUspDBNiAAAA:8 a=GDvUlClSzrHbYYPi8DYA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=1WsBpfsz9X-RYQiigVTh:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-12_02,2026-11-11_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 bulkscore=0 suspectscore=0 priorityscore=1501 phishscore=0
- impostorscore=0 malwarescore=0 clxscore=1015 spamscore=0 lowpriorityscore=0
+ adultscore=0 lowpriorityscore=0 priorityscore=1501 spamscore=0 clxscore=1015
+ malwarescore=0 phishscore=0 suspectscore=0 impostorscore=0 bulkscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611120072
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,99 +160,109 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Since v1:
-- add ./configure error msg
-- cover ARM32
+arm-linux-user had no big-endian test coverage. Build the
+non-libc hello world with -mbig-endian (BE8 by default) and
+again with -mbe32 for legacy BE32 code/data ordering. The
+volatile length forces a data load, checking the CPU data
+byte order. Plumb both tests with the meson machinery.
 
-This series lets qemu-aarch64 run both little- and big-endian
-ELF binaries, retaining qemu-aarch64_be as a compatibility alias.
-
-The ELF loader selects the target byte order once, before execution.
-AArch64 CPU, signal, ABI and vDSO handling then use that selection.
-Fixed-endian targets and system emulation retain their existing
-accessors.
-
-Runtime-endian TargetInfo data is exposed const to readers, allowing
-target_big_endian() to be inlined without a separate boolean cache.
-The writable initializer remains outside LTO, preserving the boundary
-between ELF initialization and subsequent reads.
-
-I compared the complete series against its baseline, with normal and
-LTO builds and LE/BE guests and did not notice significative speed
-down.
-
-The inspiration comes from previous optimization intent from Richard:
-https://lore.kernel.org/qemu-devel/20260511190634.472174-1-richard.henderson@linaro.org/
-
-Philippe Mathieu-Daudé (12):
-  tests/tcg/aarch64_be: Check data byte order in hello
-  tests/tcg/arm: Add BE8 and BE32 hello tests
-  linux-user/aarch64: Move ELF/vDSO endian checks to runtime
-  linux-user/aarch64: Move CPU/signal endian checks to runtime
-  linux-user/arm: Move ELF/vDSO endian checks to runtime
-  linux-user/arm: Move CPU endian checks to runtime
-  target-info: Support runtime-endian Linux-user targets
-  linux-user: Honor runtime byte order in ABI accesses
-  linux-user: Select target byte order from the ELF header
-  meson: Support Linux-user executable aliases
-  linux-user/aarch64: Unify both endianness under qemu-aarch64
-  linux-user/arm: Unify both endianness under qemu-arm
-
- docs/about/deprecated.rst                 | 23 +++++++++++++
- docs/user/main.rst                        | 18 +++++++++--
- configure                                 | 12 ++++++-
- configs/targets/aarch64-linux-user.mak    |  2 ++
- configs/targets/aarch64_be-linux-user.mak | 10 ------
- configs/targets/arm-linux-user.mak        |  2 ++
- configs/targets/armeb-linux-user.mak      |  9 ------
- meson.build                               | 39 +++++++++++++++++++++--
- include/exec/tswap.h                      | 11 ++++---
- include/qemu/target-info-def.h            | 14 ++++++++
- include/qemu/target-info.h                | 20 ++++++++++++
- linux-user/aarch64/target_elf.h           |  6 +---
- linux-user/aarch64/target_syscall.h       |  6 +---
- linux-user/arm/target_proc.h              | 20 ++++--------
- linux-user/arm/target_syscall.h           |  6 +---
- linux-user/qemu.h                         | 17 +++++++++-
- linux-user/syscall_defs.h                 |  7 ----
- target/arm/cpu.h                          | 10 ++++--
- target/arm/internals.h                    |  2 +-
- linux-user/aarch64/cpu_loop.c             | 12 +++----
- linux-user/aarch64/elfload.c              | 10 +++++-
- linux-user/aarch64/signal.c               | 20 ++++--------
- linux-user/arm/cpu_loop.c                 |  2 +-
- linux-user/arm/elfload.c                  | 36 +++++++--------------
- linux-user/elfload.c                      |  6 +---
- linux-user/main.c                         | 26 +++++++++++++++
- linux-user/syscall.c                      |  6 ++--
- linux-user/uname.c                        | 13 ++------
- target-info-def.c                         | 19 +++++++++++
- target/arm/gdbstub64.c                    |  4 +--
- target/arm/tcg/translate-sve.c            |  2 +-
- tests/tcg/aarch64_be/hello.c              | 16 ++++++----
- tests/tcg/arm/hello-arm-be.c              | 34 ++++++++++++++++++++
- tests/tcg/arm/hello-arm-be32.c            |  4 +++
- .gitlab-ci.d/buildtest.yml                |  2 +-
- .gitlab-ci.d/crossbuild-template.yml      |  4 +--
- linux-user/aarch64/meson.build            | 10 +++---
- linux-user/arm/meson.build                |  4 ---
- tests/tcg/aarch64_be/meson.build          |  4 +--
- tests/tcg/arm/hello-arm.ref               |  1 +
- tests/tcg/arm/meson.build                 | 11 +++++++
- 41 files changed, 323 insertions(+), 157 deletions(-)
- delete mode 100644 configs/targets/aarch64_be-linux-user.mak
- delete mode 100644 configs/targets/armeb-linux-user.mak
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+---
+ tests/tcg/arm/hello-arm-be.c   | 34 ++++++++++++++++++++++++++++++++++
+ tests/tcg/arm/hello-arm-be32.c |  4 ++++
+ tests/tcg/arm/hello-arm.ref    |  1 +
+ tests/tcg/arm/meson.build      | 11 +++++++++++
+ 4 files changed, 50 insertions(+)
  create mode 100644 tests/tcg/arm/hello-arm-be.c
  create mode 100644 tests/tcg/arm/hello-arm-be32.c
  create mode 100644 tests/tcg/arm/hello-arm.ref
 
+diff --git a/tests/tcg/arm/hello-arm-be.c b/tests/tcg/arm/hello-arm-be.c
+new file mode 100644
+index 000000000000..6c2aa6637b93
+--- /dev/null
++++ b/tests/tcg/arm/hello-arm-be.c
+@@ -0,0 +1,34 @@
++/*
++ * Non-libc syscall hello world to exercise big-endian ARM Linux-user.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#define __NR_exit 1
++#define __NR_write 4
++
++static const char hello[] = "Hello World\n";
++/* Volatile forces a data load to check the CPU data byte order. */
++static volatile int len = sizeof(hello) - 1;
++
++static inline int write(int fd, const char *buf, int len)
++{
++    register int r0 __asm__("r0") = fd;
++    register const char *r1 __asm__("r1") = buf;
++    register int r2 __asm__("r2") = len;
++    register int r7 __asm__("r7") = __NR_write;
++
++    __asm__ volatile("svc 0" : "+r"(r0) : "r"(r1), "r"(r2), "r"(r7)
++                     : "memory");
++
++    return r0;
++}
++
++void _start(void)
++{
++    register int r0 __asm__("r0") = write(1, hello, len) != len;
++    register int r7 __asm__("r7") = __NR_exit;
++
++    __asm__ volatile("svc 0" : : "r"(r0), "r"(r7) : "memory");
++    __builtin_unreachable();
++}
+diff --git a/tests/tcg/arm/hello-arm-be32.c b/tests/tcg/arm/hello-arm-be32.c
+new file mode 100644
+index 000000000000..f639332a1aa2
+--- /dev/null
++++ b/tests/tcg/arm/hello-arm-be32.c
+@@ -0,0 +1,4 @@
++/* Rebuild the big-endian hello test with legacy BE32 code/data ordering. */
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#include "hello-arm-be.c"
+diff --git a/tests/tcg/arm/hello-arm.ref b/tests/tcg/arm/hello-arm.ref
+new file mode 100644
+index 000000000000..557db03de997
+--- /dev/null
++++ b/tests/tcg/arm/hello-arm.ref
+@@ -0,0 +1 @@
++Hello World
+diff --git a/tests/tcg/arm/meson.build b/tests/tcg/arm/meson.build
+index 6e498232f0d4..818447ae84d7 100644
+--- a/tests/tcg/arm/meson.build
++++ b/tests/tcg/arm/meson.build
+@@ -30,6 +30,17 @@ tests += {
+   'hello-arm.c': {
+     'cflags': ['-marm', '-nostdlib', '-ffreestanding', '-fno-stack-protector'],
+   },
++  # The cross compiler emits BE8 for -mbig-endian; test legacy BE32 too.
++  'hello-arm-be.c': {
++    'cflags': ['-marm', '-mbig-endian', '-nostdlib', '-static', '-ffreestanding',
++               '-fno-stack-protector'],
++    'expected_output': 'hello-arm.ref',
++  },
++  'hello-arm-be32.c': {
++    'cflags': ['-marm', '-mbig-endian', '-mbe32', '-nostdlib', '-static',
++               '-ffreestanding', '-fno-stack-protector'],
++    'expected_output': 'hello-arm.ref',
++  },
+   'fcvt.c': {
+     'cflags': ['-lm', '-march=armv8.2-a+fp16', '-mfpu=neon-fp-armv8'],
+     'expected_output': 'fcvt.ref',
 -- 
 2.55.0
 

@@ -1,92 +1,109 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D69C606A321
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 19:01:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77CB4606A32E
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 01:02:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=JIa+c/Yx
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=N4NGqQr9
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRa3B-0001RE-U4; Thu, 12 Nov 2026 14:01:34 -0500
+	id 1xRfg9-0002Lw-CO; Thu, 12 Nov 2026 20:02:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xRa38-0001Op-S8
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 14:01:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xRa36-0006CT-RF
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 14:01:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1794510088;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=STA116RLuNmF5LalXZD/71OGeWLq5zQuvErudwf1cvk=;
- b=JIa+c/YxofNx5AI+dHUYI6sbyjPBM8Hoi6ZRkLCFFsGpS8eFHM1mzzqjlQvE+ae2kj59Y2
- xDriyk5d/dakU45Z+pvzlVJdwauyNpPCzCG2DLYd7dqyFdZSI+BElXr+HCj8FqrpWHw9Cx
- eJWwKsAiPDG/H6WDb4puisoqCRKMIaE=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-523-CfjgYlsLNtyuZCJNrPxJyQ-1; Thu,
- 12 Nov 2026 14:01:23 -0500
-X-MC-Unique: CfjgYlsLNtyuZCJNrPxJyQ-1
-X-Mimecast-MFC-AGG-ID: CfjgYlsLNtyuZCJNrPxJyQ_1794510081
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 192A3195605B; Thu, 12 Nov 2026 19:01:21 +0000 (UTC)
-Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id ED43C1800495; Thu, 12 Nov 2026 19:01:17 +0000 (UTC)
-Date: Thu, 12 Nov 2026 19:01:15 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH v2 04/28] hw: mark all remaining virtio object types as
- secure
-Message-ID: <avYM-3jVbW65NYyk@redhat.com>
-References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-5-berrange@redhat.com>
- <fe7f7d29-8ca3-4ced-afcc-c768b84c4888@redhat.com>
- <CAMxuvazfhfGSZCiSi+viwJ7f7XDWAZfjmW39n3a7a-qQyw-YSA@mail.gmail.com>
- <au3mwO32b0-PSXKu@redhat.com>
- <CAMxuvayhYcOvH2QPptrKUQGFHoRxQcM1USF5OwuZYR_g2c4zgw@mail.gmail.com>
- <au4Pa4GFA4u-XQ7J@redhat.com>
+ (Exim 4.90_1) (envelope-from <patrick.lister.dev@gmail.com>)
+ id 1xReGw-00052S-QO
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 18:32:03 -0500
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <patrick.lister.dev@gmail.com>)
+ id 1xReGu-0000dR-9I
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 18:32:02 -0500
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-8b58d6f67a5so167905b3a.2
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 15:31:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1794526318; x=1795131118; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=kMzA7RdrHgK7flc6um3AlTABD686DqJETvpWPCal8Zw=;
+ b=N4NGqQr9NUMIdmGbRkPgiZTLnmeJAesm18hVVsE9fQvt/AMLu0wkQN3NvECepM687x
+ qx4DMzJa5qOJN1WMeraDGn9usQEXAXUNbtihAOp1LwAbg+aE/k6Kka1LW5GC9ObjtsvH
+ pRslC/NG/EqNFF8TirQpsJ3XMMkxX0TJJHGBfQaNfc0ixui2oaHxG+8BaRnS9Sr6lG3P
+ 8NvAueJhkYPutFKbS4Gzxq61t4YhtiP/q17wLG+a+jYxNS8Aumzs53Y0BRsBlHFSsxcQ
+ XBDhHA+2gReAuBYV7rs70WM4Ku0nwVLSvu0uzAoB4gxN6Uek3667zN6wENIW4vXtEE3Y
+ VOiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1794526318; x=1795131118;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=kMzA7RdrHgK7flc6um3AlTABD686DqJETvpWPCal8Zw=;
+ b=XRRw82JmcdWw5OQkQUc9pUqn7VAh82dow9G5bDh/mT9DXcebb1k9JPltlmI2wsMWHa
+ Y8HbCFqQAkYUcZKqrvhYOdmcov9t+OoQeLG0cIsEHRl92B+8VdYaGaiWm63k+VBLJ99F
+ sW3MMH5FAeWpLgkANCPqUv1DljKuNRFXvrdHlz0iCrOtXElVtikgebfSoPC5leIHahPi
+ rG1nug9aPAPhnDqkKHLeBP1+bOWCIkvn55TMIwLOLV5CRzXdPfp2pq6RxF57hYE2NULA
+ RnkCS+R2Oaqje1KSK9QsE2P2H9KFj4JKpGBkijwuKf96+abAOjF6+8PT3uaU3NtpzlOM
+ xvjA==
+X-Forwarded-Encrypted: i=1;
+ AL+hErFXQmrDcmm+4PnQxellNrrpr86kaLJ+boReVVRWTUY7EwnzWjtIlC3A4RPqrNmDc+r+PK5uRjln2g==@nongnu.org
+X-Gm-Message-State: APuU4Z9Xq1Fs6gBP//lUFc8EvK5cNR85xqyy5aPglGFJOqeRjtAC769Q
+ AKbSLgCDvpnKoLJoxrEwLZU8aw+20nDEv0xlwJU+Hxcehmu3xAU/WWQd
+X-Gm-Gg: AYBFou3b49PcvYOFwwvyG4hFQDisg0RqenIqw44VRSLZqU16WEn6s5idRHmIhMHcRck
+ hFZ1VeJfi103mTTeiEsxquUdEhX2rdzQIt8knp0weUrRdEa26rEnolR77JcJCXDko2H1rlHgDFu
+ L6PJSNqTNHOz4gjwsvbECM7xEYByGHnpLHndm1CRCVQYdBsOCP7AX8gs7XVHom8Vx00+zrI67DD
+ hfpyXU+J98X/tWIIzoK4JMeC5pkdBQfhT9063DW9eVtymS6f00vy/c8pS1J57w7ni9UOn3PND9/
+ trv6UhO/0t8G5jnnAyqaZ2rhysm7oUkfpD9TaZ8FooypV5vEbqFb3B4l5i8phosldLvm2QBPJf0
+ 5cAuE5SHsL9h6LLSeYats781X7asgBTrCy1jeiY8ekrzZ60g5sc6rr/j4AOpCjp3pJ2/0IqwNzC
+ 0yitAID3uDehvpru2mYSE65r/H0bTWwTZ5foL2txD4wcSmTw9k0iADCbwKqm3OPmpP3bO+rUtT+
+ gh/27j/1y3T4cknLcMt5dPNJ97gb9aGtrl2l61Of2NOYViSBA0OS4NSbAm/feQujOvUpE1paexT
+ 7/06Yqslie4sjVP/Uz5l3Zv1lycZzHkJtnyvZ5PRCYWLAQa6Q0aH95s6HEn+184tr7IfFqlQGzC
+ XRmM0qRMTcn3dSSHEzPrpTXz169b6
+X-Received: by 2002:a05:6a21:6f09:b0:3e8:b7fd:6265 with SMTP id
+ adf61e73a8af0-3f7a72ba1d5mr589620637.23.1794526318165; 
+ Thu, 12 Nov 2026 15:31:58 -0800 (PST)
+Received: from prox-debian13-dev.listerlab.win
+ (203-96-142-148.dsl-dynamic.connections.net.nz. [203.96.142.148])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-cddc18adce4sm317815a12.23.2026.11.12.15.31.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Nov 2026 15:31:57 -0800 (PST)
+Date: Fri, 13 Nov 2026 12:31:37 +1300
+From: Patrick Lister <patrick.lister.dev@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Russell King <linux@armlinux.org.uk>, Ard Biesheuvel <ardb@kernel.org>,
+ Linus Walleij <linusw@kernel.org>, Keith Packard <keithpac@amazon.com>,
+ Nicolas Pitre <nico@fluxnic.net>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, Nick Clifton <nickc@redhat.com>,
+ Richard Earnshaw <richard.earnshaw@arm.com>,
+ Ramana Radhakrishnan <ramanara@nvidia.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Riku Voipio <riku.voipio@iki.fi>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ luis.machado.foss@gmail.com, thiago.bauermann@linaro.org
+Subject: Re: [PATCH] ARM: nwfpe: use task_pt_regs() to find user registers
+Message-ID: <avZMWY2UBFdBLrqW@prox-debian13-dev.listerlab.win>
+References: <20261112025159.473997-1-patrick.lister.dev@gmail.com>
+ <0384a52a-31f6-4bbd-9de8-8efe73610e28@app.fastmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <au4Pa4GFA4u-XQ7J@redhat.com>
-User-Agent: Mutt/2.4.3 (2026-10-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 4lyaCQcSh0hFupK7sL-NVYjc9Emoq8OCd7Z-vKPp0iQ_1794510081
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <0384a52a-31f6-4bbd-9de8-8efe73610e28@app.fastmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=patrick.lister.dev@gmail.com; helo=mail-pf1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 12 Nov 2026 20:02:06 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,82 +113,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-2.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Alex, as the virtio-gpu* maintainer can you give your opinion
-on the discussion below about virtio-gpu security tagging
-vs our current security policy for "virtualization use case"
-to ack/nack the proposal.
+On Thu, Nov 12, 2026 at 08:58:53AM +0100, Arnd Bergmann wrote:
+> The patch looks fine, and it's clearly harmless to merge as there
+> are no users, so please add it to the patch tracker according to
+> the instructions at https://www.arm.linux.org.uk/developer/patches/info.php
 
-On Fri, Nov 06, 2026 at 05:33:31PM +0000, Daniel P. Berrangé wrote:
-> On Fri, Nov 06, 2026 at 06:52:27PM +0400, Marc-André Lureau wrote:
-> > Hi
-> > 
-> > On Fri, Nov 6, 2026 at 6:40 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
-> > >
-> > > On Fri, Nov 06, 2026 at 06:35:29PM +0400, Marc-André Lureau wrote:
-> > > > Hi
-> > > >
-> > > > On Fri, Nov 6, 2026 at 3:53 PM Thomas Huth <thuth@redhat.com> wrote:
-> > > > >
-> > > > > On 29/10/2026 14.12, Daniel P. Berrangé wrote:
-> > > > > > These are all intended for use in a virtualization scenario and must
-> > > > > > provide a security boundary.
-> > > > > >
-> > > > > > Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > > > > > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > > > > > ---
-> > > > > Reviewed-by: Thomas Huth <thuth@redhat.com>
-> > > > >
-> > > >
-> > > > I have a second thought about this, I'd like to exclude all
-> > > > gpu-accelerated paths for now. virgl/mesa/rutabaga expose a very large
-> > > > attack surface, so I'd like to drop them from the secure boundary
-> > >
-> > > Rather than repost, please see my response for patch 2:
-> > >
-> > >   https://lists.gnu.org/archive/html/qemu-devel/2026-11/msg01530.html
-> > >
-> > > TL;DR: we have already promised anything virtio related is in scope
-> > > for security handling for a long time, as they are all unambiguously
-> > > "virtualization use case".
-> > >
-> > 
-> > the value of a secure policy enforcement is low if we know those
-> > devices are unsecure and don't have the resources to make them secure.
-> 
-> It isn't a great situation to be in, but we're already there for any
-> virtio devices based on our existing policies for bug handling and
-> security triage. We can't promise we'll get fixes for all CVEs quickly,
-> but we will at least assign CVEs so that users are aware when there
-> are known problems.
-> 
-> This contrasts to other devices where problems will remain largely
-> hidden for view, as we treat them as normal bugs and never call our
-> security concerns when committing changes.
-> 
-> With regards,
-> Daniel
-> -- 
-> |: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-> |: https://libvirt.org          ~~          https://entangle-photo.org :|
-> |: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
-> 
-> 
-
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
-
+I have submitted patch 9527/1 as requested, thanks!
 

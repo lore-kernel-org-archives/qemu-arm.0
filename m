@@ -1,155 +1,107 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2470606A323
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:12:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2B78D60A263F
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:59:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=kVgi0CsD;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=NqaMWuiX
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=jCgnN1zD
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRZGW-0003We-02; Thu, 12 Nov 2026 13:11:16 -0500
+	id 1xRa17-0008HF-Qo; Thu, 12 Nov 2026 13:59:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZFv-0001XW-NV
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:47 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
+ id 1xRa10-00087K-PO
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:59:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZFt-0000t0-UU
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:39 -0500
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6ACFZTUu3841209
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 0lrvEWcZ2AvMr2EqzUiL5SpJkPzac2qhAJSLu8J1TIc=; b=kVgi0CsDkT+DwdRl
- hKYxDCXHjE5o6gSgYk6Comv5FolxcQyvfZpILQ52g8E5StWzxpH7L17JTLA1WkyX
- N8hRvSlANA1EcNqJuVS6pbnGZMi8/aGtjLMKENw8M/JY/sdaB2bb+utlFFRcnlss
- Iav6UrD69Xdok1Jkrwe5xyMm/d5GdVx6BcVjaz6Jc2ctxcMyl07ZSrGjkNgOd29q
- sjFdeeWCWlBNUw6f8LojSwK2QLOvlOFHsPxVrwS29E5HO5oc6JtHcfUaq4dbRTqv
- rXKnXa+PaCx9+dhfiZZak1LTDQ92j2LJvtKAF6s5ZDSOdNwnLyjThk9cz1DlYgL6
- ON/xog==
-Received: from mail-ua1-f70.google.com (mail-ua1-f70.google.com
- [209.85.222.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hw9e1abcv-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:35 +0000 (GMT)
-Received: by mail-ua1-f70.google.com with SMTP id
- a1e0cc1a2514c-9907539aff7so94487241.2
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:10:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794507035; x=1795111835; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=0lrvEWcZ2AvMr2EqzUiL5SpJkPzac2qhAJSLu8J1TIc=;
- b=NqaMWuiXB8Neo3WLaXzSSEKYST1ddXx+sxNYxBE6s/QpU8DU6tqefS4rFgq01uQ7kL
- Jl3NcYSXOVPeicyiY+3EDPJiTqCsJpJ1MaRrmAXgxNOYMqgJkXx9IAuubhm638NNIJ1K
- fFKK7MyWyRQ7CYUdD7ZKrMS5UoszAZOuMSsCFMij+zNSw+JbPeeqcrBpUf+k5eGk/0oD
- B5kJA0Tgxqqp7/QDL36s5fyB3dzuwLWeZVRLDzor8nla7iejaIm449P76r60mu+znp89
- 7PkBlaBsHD/FBmtHzjcxpMcsFPgE+aOG9/tTWr3qN6ToI3xdpbEBvkj3mptenB8WVwie
- cNzQ==
+ (Exim 4.90_1) (envelope-from <gromero@redhat.com>)
+ id 1xRa0y-0003MU-Ko
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:59:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1794509955;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=NtRBhOHjeOzTzWjg6DXPe7MhMpeEzOdFi3EEngytfa4=;
+ b=jCgnN1zDi83H84MA7iwzPIulJTb7dxxHVaYC5t56d0yWc+y0Bz5qe0wWD2+xST/db7vCv5
+ dApK96+ZmTRXiXhMRS4wEApOejFc4dTjsXRgmyChJToT1rv3gSz2WY0wQ/9gMqcN2T4FiL
+ 3ESuwREjH53tUs1fvsxMUzdUWGFeceU=
+Received: from mail-dl1-f69.google.com (mail-dl1-f69.google.com
+ [74.125.82.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-459-G7frDqQyMXW3O8FEB_J-OQ-1; Thu, 12 Nov 2026 13:59:12 -0500
+X-MC-Unique: G7frDqQyMXW3O8FEB_J-OQ-1
+X-Mimecast-MFC-AGG-ID: G7frDqQyMXW3O8FEB_J-OQ_1794509951
+Received: by mail-dl1-f69.google.com with SMTP id
+ a92af1059eb24-16bc6f3fdb1so23137c88.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:59:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794507035; x=1795111835;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ d=1e100.net; s=20260707; t=1794509951; x=1795114751;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=0lrvEWcZ2AvMr2EqzUiL5SpJkPzac2qhAJSLu8J1TIc=;
- b=w/9J6hj6pfkBIMEfftwJbtliMr2Qmh+RzgRwKUgHnnUVL4Ed0ZG767MwVsWbpMDylN
- 6Ghq0K57+eb40XmajsUhGkw2PHlHxUZlj8vQifOZrSn7urJihh0HLzlULz1gZnbnl0Un
- 8PZSWBGuqA8OFxZ2c6MngTc6ewXY25UyryC0d6d+9xxbhL4yLx9RmDqYP1vYcUzbrbja
- 0+niNsLcaCGlgI0UMYa8KzsQ8hvTFT2Jez5eBbBhze33rj+CyLIQjzuxMYxRxl0WjhKI
- Zj+1AE1d1AeUdMTYwdc93ig02Iqsva/a1E6c5CypNveqY/bk8G6T9Vk1Jbose2/87WF4
- rgJQ==
+ bh=NtRBhOHjeOzTzWjg6DXPe7MhMpeEzOdFi3EEngytfa4=;
+ b=BXTSxvw63cQRh2ct0xgTI9eMEEiZrHIC3a8fuNvA9btlivGa4G3H41H4futaiX71We
+ fCYeLTCbcpjTQHuO7rfwUuRaoU+AkIo12D4JLnzzoITRPTyzNotV1BFjzqSjX3dJy/gP
+ 5f9dmmA+fPk6AoaGJFlazl95U+VoHTQb9u1oIOHkOOzgbp+Mia7BcBLa57HBOdciRQxd
+ 3okXEFF88gzT7WIkiX2xxfEMOE6jRwuoEEMO+jvi110NN+C57mk/Zh7T+jkk3HrN4rzQ
+ YIXn+3td8sV+ABpY3dAgq1ZKlHKrJb4bzBq/t0U/yjdVNAwmu/WOjz9fToX+DWknXsqa
+ pR8g==
 X-Forwarded-Encrypted: i=1;
- AL+hErGwGX40JRTIjAmJED5ycrwxe8PFuuTTWJ6uiJzzu/oOUVknFzlgs59PquYlmEJBDOBPh1jYP4I+tQ==@nongnu.org
-X-Gm-Message-State: APuU4Z+EfI8xdmxQ9cxa34GR8dqp/aXkdz58Bp5e5x7E2vvUCe4HfgB4
- WxzPdedBSUPxF2QiXZUQWq4+sNjJ+rhHzbLuZPINk7HbZpH/EpENPYJtUqa1Eq5GMB4qAE1a9xo
- 5vtKDvtYMoXlmsdqkzLvxpgZsOv0KvTfouCrqEPu8ozjPE2ZPrc4524M=
-X-Gm-Gg: AYBFou3PNqPtWcQDxRHu3pHKlWUyz8SnZQfoM81zXZuEETuposdkvVEJW/x1o78zvJ0
- PvDr9IoUQ4jDLcSLGofh2ta8c6VuZkhgLjHAD7iC0BCmzOgTSQsI7/pq8Nc05VhiXquR+UwJbCv
- jnR9SZYM8f89kHUpbQjLhwfASBrNZiG+OOLFS1RTtWNdldHY6HZCgjwhftmllR21PMfa4c7dgCX
- rAa3JZE3SHZOiPjPesRSAfJHL30PxjF0KDBQSaSLXk0za6deI6D3QNl8bvdHFOaV9reuiJvgD8T
- X24osb8F2Fk3C/+vP6GlFwGeD7SF5zFbbtrBaHTdebtQqdCLDFF+9eSuYzzNO/nP/yisXrJCAo9
- yjuv4TbVw5uMPxO102jRrcLwSJFGQUJO0VwMs+n64C0IolFcA7Atdtkf/aB0lErHtz6dr8dbtUH
- gHvfzPEVbngNvMzQ==
-X-Received: by 2002:a05:6102:605c:b0:7c3:c0b9:8d50 with SMTP id
- ada2fe7eead31-7d64d80d28bmr92137.21.1794507034799; 
- Thu, 12 Nov 2026 10:10:34 -0800 (PST)
-X-Received: by 2002:a05:6102:605c:b0:7c3:c0b9:8d50 with SMTP id
- ada2fe7eead31-7d64d80d28bmr84137.21.1794507034203; 
- Thu, 12 Nov 2026 10:10:34 -0800 (PST)
-Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb4e25eb86sm76511025e9.8.2026.11.12.10.10.32
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 12 Nov 2026 10:10:33 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- devel@lists.libvirt.org, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Anton Johansson <anjo@rev.ng>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org
-Subject: [PATCH-for-12.0 v2 12/12] linux-user/arm: Unify both endianness under
- qemu-arm
-Date: Thu, 12 Nov 2026 19:08:58 +0100
-Message-ID: <20261112180859.85380-13-philmd@oss.qualcomm.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261112180859.85380-1-philmd@oss.qualcomm.com>
-References: <20261112180859.85380-1-philmd@oss.qualcomm.com>
+ AL+hErGktIpda6dBuJBagfW6hmYR1PutKEj97qFYnkHK3IAYRh6YW1fs1SV2HkDIyUY5aSJQFGPgsKMy4g==@nongnu.org
+X-Gm-Message-State: APuU4Z8+JWPWKIRc6JnixnY6Q1pgxCCqIfAN7nNd5HhZagUNdrNNR/y5
+ 844ykf944GPrJoSmacFKZ/Ki2fxkzjurykHwOj6u/iWrimlx0mb9FP3EC11sz6jF//HrvcXs5ur
+ 9ijlkejzCyPXLDGeW1G0vlaWz8HbM3HyJ0EmuCMWiococDPR6ieZr5Q==
+X-Gm-Gg: AYBFou25/u0wrwRQoy8uz9ei4XOFYT188JV7xT2rfYVJkqaT4B74mbutP79w633Zhtq
+ iI1mgtzdPSmGuDF8ETmh0vPlC9Y6HGE+U+fWn4OnLBv9F1+HLLcQ3ukuQTWHnlnYYgK4lYNqP6J
+ LUwcMWGPWyyaENhJyru228AT5VAKlRa6WWVuYHn8X8nyrG+5aXpQUVMfPY3k2jIWXjYrYgQT6Yd
+ +U8BiqWWb2SVTuX2mPVwOifSk43F0Ntz0CLHv2ddelgpQAaOXxOIynlBnD8POKSNfuv/HTwAyHj
+ 9aWh/TqqZ5JUPZzDH6of28e2ijPT0WYbib6hkK3nmGfsiHTVvxrrFW8oytGSW1iWjPiRbWJr2+C
+ jE7PqEIHk+GCbCAySlLjauGdNyagYxYQF
+X-Received: by 2002:a05:7022:3a87:b0:1a0:b8f5:872d with SMTP id
+ a92af1059eb24-1b5030683c8mr439742c88.4.1794509950800; 
+ Thu, 12 Nov 2026 10:59:10 -0800 (PST)
+X-Received: by 2002:a05:7022:3a87:b0:1a0:b8f5:872d with SMTP id
+ a92af1059eb24-1b5030683c8mr439715c88.4.1794509950112; 
+ Thu, 12 Nov 2026 10:59:10 -0800 (PST)
+Received: from x1 ([187.15.85.204]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-1b5031b2519sm718289c88.13.2026.11.12.10.59.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Nov 2026 10:59:09 -0800 (PST)
+Date: Thu, 12 Nov 2026 19:59:00 +0100
+From: Gustavo Romero <gromero@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org, 
+ Eric Auger <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+Subject: Re: [PATCH 2/2] hw/arm/sbsa-ref.c: Increase SMMU space for Root
+ registers
+Message-ID: <xl3axqq44u62xqw2gahgo4cehbapbirkywpbkyx547mdya7ycs@qekmzwnxmco7>
+References: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
+ <20261016-jmac-smmu-root-registers-v1-2-e78e8879d347@linaro.org>
+ <dxrwkmt76n62imxwycc6j2mcjihdhqmhukzc3ypojuepkprzsp@dm4yqcp75wrt>
+ <avSYUeEmFFBdVePq@linaro.org>
+ <47529a98-e02d-4cfe-a8b5-8b3f44bda15c@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX8kQpQOg018A+
- CUxFpHIgRJiNi2fdkkpcGrY+MDlkaX0VgC36eVO6XUrkY3XQP7KZuEv7CfR6/YobLsM+HrmawKy
- foIcR5hfMKGN5bRLDVf+Qi6Qx7PPqgBnT/7M2ZPCEcHUAut6iZSQXDoiAADplFBIm8KhgiegQDk
- T96GukU9fX8TBDKa/hOhmWgLDHTvPptlD5jIoQciBLLWKDYPxIR0jtDR+INsyz3qFdo3ycM/Vwu
- ypQ28qEzDkSLDkgkpswgX4xg8BCNSvi8Q9phhoqXnI5YR/iBlOc3oAfeHJ5oGSjP91CL57pDVsQ
- I7Bel69vR7li7ODacB6iHWDyPVbMe9XEyFZDXmzLwUDLsUvqzP4eAcFhzH475L+NVV2NYEcfE8p
- 2QvfVqNULv87+uFVtaE6amQf4xKOoKW9gkGZn32hfpCh72NuPnE5PHLD4e84G/HeEbi2KIlk0QG
- +y4gPqbD0R/7ebIv2sA==
-X-Proofpoint-GUID: 2P2LwJqDjyA6nOCZV2YCCio80-dIb_gQ
-X-Proofpoint-ORIG-GUID: 2P2LwJqDjyA6nOCZV2YCCio80-dIb_gQ
-X-Authority-Analysis: v=2.4 cv=F6fC5ahN c=1 sm=1 tr=0 ts=6af6011b cx=c_pps
- a=R6oCqFB+Yf/t2GF8e0/dFg==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=EUspDBNiAAAA:8 a=ras7m7bTOK-54pG4Za8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=TD8TdBvy0hsOASGTdmB-:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX+XbNC904n2fu
- tZSeMTeSb+N2TIAGQ4Y7bAGhQA3zURyXaZpzxZjjcq/4Dr+7w8KejW2BaWH7ZSxRyLNpnYq/ITn
- ASrNwouK07aM2fNKJ2glhLBwXSeF5cA=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-12_02,2026-11-11_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 impostorscore=0 malwarescore=0 spamscore=0 clxscore=1015
- bulkscore=0 phishscore=0 lowpriorityscore=0 adultscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611120072
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+In-Reply-To: <47529a98-e02d-4cfe-a8b5-8b3f44bda15c@oss.qualcomm.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: jAcT47szM_AP0trS80Hus7956dYeNkuLCKCsOAdGPNU_1794509951
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gromero@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -161,124 +113,219 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Enable runtime byte-order selection for arm-linux-user
-and retain qemu-armeb as a compatibility symlink.
-Deprecate the symlink since 12.0 and recommend qemu-arm
-for both ELF byte orders.
-Remove the separate armeb-linux-user build target and
-obsolete CI exclusions.
+Hi Jim and Pierrick,
 
-Run the existing big-endian hello test through qemu-arm
-while retaining its big-endian fixture toolchain. Document
-that executable name compatibility does not preserve the
-removed target-list spelling.
+On Wed, Nov 11, 2026 at 10:10:18AM -0800, Pierrick Bouvier wrote:
+> On 11/11/2026 8:31 AM, Jim MacArthur wrote:
+> > On Fri, Nov 06, 2026 at 11:21:12PM +0100, Gustavo Romero wrote:
+> >> Hi Jim,
+> >>
+> >> On Fri, Oct 16, 2026 at 10:40:52AM +0100, Jim MacArthur wrote:
+> >>> In our implementation, SMMU Root registers are directly after the
+> >>> non-optional SMMU registers. Realms registers will be added above the
+> >>> root registers later.
+> >>
+> >> nit: Root registers
+> > 
+> > Noted.
+> > 
+> >>
+> >>
+> >>>
+> >>> Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
+> >>> ---
+> >>>  hw/arm/sbsa-ref.c | 2 +-
+> >>>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>>
+> >>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> >>> index 158b461eb4..0747f5ca9f 100644
+> >>> --- a/hw/arm/sbsa-ref.c
+> >>> +++ b/hw/arm/sbsa-ref.c
+> >>> @@ -129,7 +129,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+> >>>      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
+> >>>      [SBSA_SECURE_UART] =        { 0x60030000, 0x00001000 },
+> >>>      [SBSA_SECURE_UART_MM] =     { 0x60040000, 0x00001000 },
+> >>> -    [SBSA_SMMU] =               { 0x60050000, 0x00020000 },
+> >>> +    [SBSA_SMMU] =               { 0x60050000, 0x00040000 },
+> >>
+> >> Why +0x20000 bytes here instead of +0x10000 bytes (1 x 64K page)?
+> > 
+> > Ultimately the plan is to add the Realm registers in here as well, and
+> > those have to be at a 128K-aligned offset from the SMMU base, so per the
+> > original plan they would have started at 0x40000. Now that you mention it
+> > though, it makes more sense to slot the Realm registers in at offset 0x20000
+> > and move the Root registers to 0x40000 when we do so - which means we still
+> > have space in the memory map for a second SMMU. So for now, I'll trim
+> > this back to +0x10000.
+> > 
+> >>
+> >> Most importantly, incresing the size of the SBSA_SMMU index is not enough, we
+> >> need to increase also the size of the "arm-smmuv3" container (memory region).
+> >>
+> >> With this change applied I still see:
+> >>
+> >> 0000000060050000-000000006006ffff (prio 0, i/o): arm-smmuv3
+> > 
+> > Thanks, I hadn't spotted that the actual allocation was specified separately;
+> > I'll fix that in the next version.
+> > 
+> >>
+> >> on (qemu) info mtree.
+> >>
+> >> 2 x 64K pages: Page 0 and Page 1. Rather we should see a range to fit 3 x 64K:
+> >>
+> >> 0000000060050000-000000006007ffff (prio 0, i/o): arm-smmuv3
+> >>
+> >> Another issue, afaics, is that the Root register page will be added to
+> >> every machine that uses the SMMUv3 device, right? Because we're not gating the
+> >> addition of Root registers based on the presence of RME.
+> >>
+> >> So I think we should add one boolean "x-root" property (flag) to the SMMUv3
+> >> device that will be used to increase the size of the "arm-smmuv3" if it's set
+> >> and let it by default set to "false".
+> >>
+> >> This "x-root" property would be set at the machine level, so via
+> >> object_property_set_bool() in create_smmu. For example:
+> >>
+> >> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> >> index 0747f5ca9f..36b0164510 100644
+> >> --- a/hw/arm/sbsa-ref.c
+> >> +++ b/hw/arm/sbsa-ref.c
+> >> @@ -630,6 +630,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
+> >>                               &error_abort);
+> >>      object_property_set_link(OBJECT(dev), "secure-memory", OBJECT(secure_sysmem),
+> >>                               &error_abort);
+> >> +    object_property_set_bool(OBJECT(dev), "x-root", true, &error_abort);
+> >>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> >>      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+> >>      for (i = 0; i < NUM_SMMU_IRQS; i++) {
+> >> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> >> index 9d9bc2601b..9912fbf920 100644
+> >> --- a/hw/arm/smmuv3.c
+> >> +++ b/hw/arm/smmuv3.c
+> >> @@ -2267,6 +2267,7 @@ static void smmu_realize(DeviceState *d, Error **errp)
+> >>      SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
+> >>      SysBusDevice *dev = SYS_BUS_DEVICE(d);
+> >>      Error *local_err = NULL;
+> >> +    uint64_t size = SMMUV3_REGS_SIZE;
+> >>  
+> >>      if (!smmu_validate_property(s, errp)) {
+> >>          return;
+> >> @@ -2291,8 +2292,12 @@ static void smmu_realize(DeviceState *d, Error **errp)
+> >>  
+> >>      qemu_mutex_init(&s->mutex);
+> >>  
+> >> +    if (s->has_root) {
+> >> +        size += SMMUV3_ROOT_PAGE_SIZE;
+> >> +    }
+> >> +
+> >>      memory_region_init_io(&sys->iomem, OBJECT(s),
+> >> -                          &smmu_mem_ops, sys, TYPE_ARM_SMMUV3, 0x20000);
+> >> +                          &smmu_mem_ops, sys, TYPE_ARM_SMMUV3, size);
+> >>  
+> >>      sys->mrtypename = TYPE_SMMUV3_IOMMU_MEMORY_REGION;
+> >>  
+> >> @@ -2382,6 +2387,7 @@ static const Property smmuv3_properties[] = {
+> >>      /* Identifier used for ACPI IORT SMMUv3 (and DSDT for CMDQV) generation */
+> >>      DEFINE_PROP_UINT8("identifier", SMMUv3State, identifier, 0),
+> >>      DEFINE_PROP_BOOL("accel", SMMUv3State, accel, false),
+> >> +    DEFINE_PROP_BOOL("x-root", SMMUv3State, has_root, false),
+> >>      /* GPA of MSI doorbell, for SMMUv3 accel use. */
+> >>      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
+> >>      /*
+> >> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
+> >> index a538334066..5d1cb759c3 100644
+> >> --- a/include/hw/arm/smmuv3-common.h
+> >> +++ b/include/hw/arm/smmuv3-common.h
+> >> @@ -411,7 +411,10 @@ REG32(EVENTQ_IRQ_CFG2,     0xbc)
+> >>  
+> >>  #define A_IDREGS           0xfd0
+> >>  
+> >> -#define SMMU_ROOT_REG_START 0x20000
+> >> +#define SMMUV3_PAGE_SIZE        0x10000
+> >> +#define SMMUV3_REGS_SIZE        (2 * SMMUV3_PAGE_SIZE) /* Page 0 and Page 1 */
+> >> +#define SMMUV3_ROOT_REG_OFFSET  0x20000
+> >> +#define SMMUV3_ROOT_PAGE_SIZE   SMMUV3_PAGE_SIZE
+> >>  
+> >>  REG32(ROOT_IDR0,            0x0)
+> >>      FIELD(ROOT_IDR0, ROOT_IMPL,   0,  1)
+> >> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> >> index e2708e13fe..a8b354438c 100644
+> >> --- a/include/hw/arm/smmuv3.h
+> >> +++ b/include/hw/arm/smmuv3.h
+> >> @@ -92,6 +92,7 @@ struct SMMUv3State {
+> >>      OnOffAuto cmdqv;
+> >>  
+> >>      Notifier machine_done;
+> >> +    bool has_root;
+> >>      SMMUv3RootRegBank root;
+> >>  };
+> >>
+> >>
+> >> Cheers,
+> >> Gustavo
+> > 
+> > Thank you for doing this. The only complication is that we'll probably want
+> > an x-realms flag as well later, and if we do the rearrangement of the map
+> > as above then SMMUV3_ROOT_REG_OFFSET will have to be variable. I'll handle
+> > that when we get to the Realm part.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- docs/about/deprecated.rst            | 10 ++++++++++
- docs/user/main.rst                   | 10 ++++++++--
- configure                            |  3 +++
- configs/targets/arm-linux-user.mak   |  2 ++
- configs/targets/armeb-linux-user.mak |  9 ---------
- 5 files changed, 23 insertions(+), 11 deletions(-)
- delete mode 100644 configs/targets/armeb-linux-user.mak
+@Jim Why would you need to rearrange the SMMUV3_ROOT_REG_OFFSET? I was expecting
+the Root registers would stay still at +0x20000, i.e., at the start of the
+"OPTIONAL pages", just after the "SMMU Register Page 1".
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 715a72d8b117..e85c9efdb4b5 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -451,6 +451,16 @@ Use ``qemu-aarch64`` instead for both little- and big-endian
- Linux ELF executables. The emulator selects the endianness from
- the ELF header, regardless of the executable name used to invoke it.
- 
-+.. _deprecated-qemu-armeb:
-+
-+``qemu-armeb`` executable name (since 12.0)
-+'''''''''''''''''''''''''''''''''''''''''''
-+
-+The ``qemu-armeb`` compatibility symlink is deprecated.
-+Use ``qemu-arm`` instead for both little- and big-endian Linux
-+ELF executables. The emulator selects the endianness from the
-+ELF header, regardless of the executable name used to invoke it.
-+
- linux-user mode CPUs
- --------------------
- 
-diff --git a/docs/user/main.rst b/docs/user/main.rst
-index c9b4204dcf9d..2e01233a9cd0 100644
---- a/docs/user/main.rst
-+++ b/docs/user/main.rst
-@@ -152,11 +152,17 @@ Other binaries
- 
- -  user mode (Arm)
- 
--   * ``qemu-armeb`` TODO.
-+   ``qemu-arm`` runs both little- and big-endian Linux ELF executables,
-+   selecting the byte order from the ELF header. ``qemu-armeb`` is a
-+   :ref:`deprecated compatibility symlink <deprecated-qemu-armeb>` to the
-+   same emulator; its name does not override the ELF byte order. Build both
-+   names with ``--target-list=arm-linux-user``; the separate
-+   ``armeb-linux-user`` build target is no longer supported.
- 
-    * ``qemu-arm`` is also capable of running Arm \"Angel\" semihosted ELF
-      binaries (as implemented by the arm-elf and arm-eabi Newlib/GDB
--     configurations), and arm-uclinux bFLT format binaries.
-+     configurations), and arm-uclinux bFLT format binaries. bFLT has no
-+     byte-order marker and uses the little-endian default.
- 
- -  user mode (ColdFire)
- 
-diff --git a/configure b/configure
-index 821a887a31c1..14b484908919 100755
---- a/configure
-+++ b/configure
-@@ -1111,6 +1111,9 @@ else
-                     aarch64_be-linux-user)
-                         error_exit "Target '$target' is no longer supported; use 'aarch64-linux-user' instead"
-                         ;;
-+                    armeb-linux-user)
-+                        error_exit "Target '$target' is no longer supported; use 'arm-linux-user' instead"
-+                        ;;
-                     *)
-                         error_exit "Unknown target name '$target'"
-                         ;;
-diff --git a/configs/targets/arm-linux-user.mak b/configs/targets/arm-linux-user.mak
-index 3793782d067b..e3203c848182 100644
---- a/configs/targets/arm-linux-user.mak
-+++ b/configs/targets/arm-linux-user.mak
-@@ -1,6 +1,8 @@
- TARGET_ARCH=arm
- TARGET_SYSTBL_ABI=common,oabi
- TARGET_SYSTBL=syscall.tbl
-+TARGET_RUNTIME_ENDIAN=y
-+TARGET_USER_ALIASES=armeb
- TARGET_XML_FILES= arm-core.xml arm-vfp.xml arm-vfp3.xml arm-vfp-sysregs.xml arm-neon.xml arm-m-profile.xml arm-m-profile-mve.xml
- TARGET_HAS_BFLT=y
- CONFIG_SEMIHOSTING=y
-diff --git a/configs/targets/armeb-linux-user.mak b/configs/targets/armeb-linux-user.mak
-deleted file mode 100644
-index 536bc95af71c..000000000000
---- a/configs/targets/armeb-linux-user.mak
-+++ /dev/null
-@@ -1,9 +0,0 @@
--TARGET_ARCH=arm
--TARGET_SYSTBL_ABI=common,oabi
--TARGET_SYSTBL=syscall.tbl
--TARGET_BIG_ENDIAN=y
--TARGET_XML_FILES= arm-core.xml arm-vfp.xml arm-vfp3.xml arm-vfp-sysregs.xml arm-neon.xml arm-m-profile.xml arm-m-profile-mve.xml
--TARGET_HAS_BFLT=y
--CONFIG_SEMIHOSTING=y
--CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
--TARGET_LONG_BITS=32
--- 
-2.55.0
+
+> 
+> The biggest different with realms is the presence of GPC, for which the
+> GPT has to be configured correctly to allow accesses.
+> However, in TF-A, this is gated behind cpu support for realms, which
+> also require setting up GPT.
+> 
+> ```
+> /* drivers/arm/smmu/smmu_v3.c */
+> 	if (is_feat_rme_present()) {
+> 		if ((mmio_read_32(smmu_base + SMMU_ROOT_IDR0) &
+> 				  SMMU_ROOT_IDR0_ROOT_IMPL) == 0U) {
+> 			WARN("Skip SMMU GPC configuration.\n");
+> 		} else {
+> 			uint64_t gpccr_el3 = read_gpccr_el3();
+> 			uint64_t gptbr_el3 = read_gptbr_el3();
+> 
+> 			/* SMMU_ROOT_GPT_BASE_CFG[16] is RES0. */
+> 			gpccr_el3 &= ~(1UL << 16);
+> 			mmio_write_32(smmu_base +SMMU_ROOT_GPT_BASE_CFG,
+> 				      gpccr_el3);
+> 			mmio_write_64(smmu_base + SMMU_ROOT_GPT_BASE,
+> 				      gptbr_el3 << 12);
+> 			mmio_setbits_32(smmu_base + SMMU_ROOT_CR0,
+> 					SMMU_ROOT_CR0_GPCEN);
+>                 }
+>         }
+> ```
+> 
+> As a result, once both will enabled (root + realm), I think we can
+> enable both by default, as they will be automatically depend on cpu
+> support for realms. For now, root only would have to be false by default
+> though.
+
+@Pierrick Thanks a lot for the pointer. So I think we can rename "x-root" flag
+with the introduction of the Realm Registers to something like "x-realm" and
+gate both Root and Realm register banks based on it. Also, I could not find out
+anything in the docs that contradicts it, so the Root registers are always
+present on SMMUs with RME.
+
+Yes, that's what I think too, for now the Root registers would not be exposed
+by default.
+
+
+Cheers,
+Gustavo
 
 

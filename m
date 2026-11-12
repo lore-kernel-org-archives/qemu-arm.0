@@ -1,95 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E9E35606A8AA
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:11:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2BCCC606A334
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:11:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=TrvGaz+o;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=B5q6D8e5
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=erdGgyOW;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=WZXNfiLG
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRZGI-0002Am-Hk; Thu, 12 Nov 2026 13:11:03 -0500
+	id 1xRZGK-0002Ik-OO; Thu, 12 Nov 2026 13:11:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZFJ-0000sM-G7
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:02 -0500
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1xRZFe-0001M8-BC
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:25 -0500
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZFH-0006Va-2Q
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:00 -0500
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+ id 1xRZFc-0008IA-Pm
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:22 -0500
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6ACFZqta657629
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:57 GMT
+ 6ACGRR0m1768187
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:20 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- T+BUoXt5tn4PGluBlPDbHpmyBXj6a91GEDmrMsa5S2Q=; b=TrvGaz+o9IFsmgFj
- ALfWU0btoVj1UXdgypacTtM2ZkBSu8X8UgEEuRwdWTcuCf/Byc2/E+UnUfW4sD5N
- i2sbaFt89PZDnQpeW1dQW7EpGWotPbK59UuVUwGoJzVeFgtlqQRlglqnlGeurS4C
- Q0ohHdI68DaD4HohYTQ7PZkc05Pu9pPVA8gCFdXNOmHKftj/dSabYp6cOinx2syH
- xR0Dq7rJ5IVTyn6xOESO9zbIPekhrTwjiI3BT6GOVhE2H8UkIcST4LFZxsO8iYDw
- 2eEPRjkpLkxWzFsOQ7P4iaLpQUoYH0nN84Br1Wcfbe7WC6W1CJv15sUJoxDJyq87
- tvPAYA==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hw6yujvjs-1
+ Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=; b=erdGgyOWXQpWjs+J
+ qtDxve+5y35dZOI9DF/Y2Iv4i6IZ+o42r2AGWkJhBMi+DEK8i5qO3H5arF4xqtQI
+ agONPZrq6MijPQWOLFPH0spMFAUyCkRAvDZwDezFs4Wx2uCOx7oNPeO5IUYg3WeD
+ QlRen6LNy8lL4WhHs8Nz9xzol6+U//o8jEOY2NsTTJjJeAYqCggF7PIhQxGYrgiz
+ BiXsQEgwCy37SESj0nS5eiOdCkRNJ4wa1rfVrdsN1V4AEuAAeBI355Yz1JvAkne5
+ DaX53V4+36A0y2wAECyHZRkXycsn3/nbdrVfDPtljJ/2CHUcX+e86j7YfGwyDHYT
+ NPbmEQ==
+Received: from mail-vs1-f70.google.com (mail-vs1-f70.google.com
+ [209.85.217.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwh0age5d-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:57 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-93caf7856ffso1469585a.3
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:09:57 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:19 +0000 (GMT)
+Received: by mail-vs1-f70.google.com with SMTP id
+ ada2fe7eead31-7d2ef6a9f18so5490137.2
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:10:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794506997; x=1795111797; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1794507019; x=1795111819; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=T+BUoXt5tn4PGluBlPDbHpmyBXj6a91GEDmrMsa5S2Q=;
- b=B5q6D8e5WBNNq1sTwqNWmC7HEBjLgoDc2OhgjbwgG4R+FQQEbty0GuJZIADdKKVL/2
- vT7FLnPLptSPin4iXM/BFRL9Wioun0t06DF/hFhb0onIqxUj17FUmh3eyGhdeUMeELux
- A9aYdGEN/CyGNqb5MmosvKmDS/jjrE+hzAe5wVAekv+VuTxYnganol9uaH3utdPxXTKm
- fzqj3Mhbjr/sVzGX8zk5fGwWuZGI7TE6hV518TVeCfzJjfE8NQ0O1j0Yfa/Rx9n4Qrju
- g9jnfi/3sZzy9EulytK/2x+bVWgIWYal39s5FXh0qyzCwxpcpsWuowlyDO79AeMyl7lr
- DmNg==
+ bh=Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=;
+ b=WZXNfiLGy6hWVRZKh9XDH5ne6gEv6SwuU87QK+lWv2NB1hjgQTPhb+rwxJMi/zr+XF
+ dMA3WybMtTxzxkmCBJUfo6TVYXtIIcD5Ptk+r99Vsiy9kSkC28Q/7sN22Jz/W4TbeVoT
+ 6f1a28nha4F25cEib3Arf5xsIl2wJ+r3GeLZojJ/JUhvsTUVnxgTpO92OkAPLbq8rKTV
+ eMZ6Z9/pdN4pXGN5HjVQ20ii6JRjp8ZVwL8e11rEqa6XDOU2ZImZAVJJGpv083PKk5CD
+ UEG17DQaEsZq9o1+g8BsTqcOe2WRTK7aW2t1lGJw+PxdJzinTIchIYdBn5+I6xLWvnit
+ tE+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794506997; x=1795111797;
+ d=1e100.net; s=20260707; t=1794507019; x=1795111819;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=T+BUoXt5tn4PGluBlPDbHpmyBXj6a91GEDmrMsa5S2Q=;
- b=s9/fvpsO24WCVDkFpTLMug8Clba5Txq8iOKOX5EIh3u0Txm9uDfjAc8sMEGRExmSZo
- 2mvbFJSdTZOwwsh7QglGp6EsEUAz0ffVXxeRD3XeQRaS+xZ9s4Qc6jP4S2++VXkUPzbw
- sPhZAxfUh/pyGLYUkt96ZTDukZIdmBHuFej1tvGwzhX6uTgGhtjcxxkjodDTQo3RLCLr
- 2Y+Z64CdseUdsIFe7k3pinZw/ZuTyjPBea5waJqnD+DpACFPOvcWmPQDUDRR8wUMRDM3
- ono3x2acJzLI2rB5l4U6gr9PpBlp1b5UzYEMIYaRTD2ZMqp1yaUgCgPuSu/Czgq+RgI6
- pqAA==
+ bh=Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=;
+ b=Uv0rcf5GgaehErDbACPWcm2bJ4rbTkgssjJAqAqWnB5L1YNyLgCIF9ECYYIvjGAhGq
+ fD6GcX5bu9fB8PGwQxzef2fkNkWPQq+lwcvYv9efMM2hrVMa2g9wMhzeD0N2+i43k/8W
+ Bw3G2ogg2IDj3W9doNWiBj22PM+ZYUgnYH22fJY5amUC3kboPjfS7WdM47ZxB/Qc1ky8
+ Qqoo0GnyUwP4KbcD48l4ZDHd+DzdTT9MT19YOF3mCzZ0YrF44OXz7FPjee9cgqD/9aX3
+ op7DfUn5Pko/bu3turagPd9LBdp6gWjoRey/7xOb9nlOjADFgpZvDWVu6CeNBVvL2QLP
+ oi3g==
 X-Forwarded-Encrypted: i=1;
- AL+hErEaDkhLLpArh9NN2SJ79GxMkTJVrATDF3awI1W+zqbJg9RCh3P29TBJVuWWhv4yzHE3onFdzlYfsA==@nongnu.org
-X-Gm-Message-State: APuU4Z80s8nZO20iJzfubwjwnodvOkisVkJqB4ccTRHyFTR00tkviPBx
- 78IYpnVXfLH/m+KBW5ua+xkxvSJtN81qxCMHdURqFCnxHgOvq+6ovxK8sJx0isbIRcBPXrFBdE/
- /cB/XEJhZ66gmSPkCETL97mB0mknryMH522N8Fm+A78KCDWrgl01Z26I=
-X-Gm-Gg: AYBFou0QTwWBoJgXZrFYRBshoog/Q23RNwVDZKZueGD9CvcGbGS7WcfPRsjcrM0vXjP
- 7lGgmrm08M4TyxZ/AWhFv+pzNdb5bSx7zrIEsMF7McwgmEv6Oqb0QePCegSbkuXxNb/a9irHaZw
- RIMplqIl/fPFGd0F6nNpDorW8WjyfMW/0hx1+MO32s2x5FRyhnYRlvMw2h1bN/JsAzqC/NqaE72
- 3rTPpKDoS1WUZd5QnplU7PARO5lFc9iSTXhTAB4ikU0z9BpiGdg3/egPaclANoccMlb99ZOQNWS
- K/Abu+NO26qwLAmxFz6orW46hbnm5VZkVAFvLZ4X+joMbJhBCK5U55Z5VTJk723Nb4GsWcqQrro
- RIz6z/crcuBgTb8GUg084TETtiO5ccfOn0qGU/e+TfHAea8r09eBnS3qGCIWsKGlE5SzsTxYLrd
- 5dcPTt4YbxVw+sGg==
-X-Received: by 2002:a05:620a:600e:b0:93c:8544:6ad8 with SMTP id
- af79cd13be357-9494bbb3d9fmr33848785a.28.1794506996562; 
- Thu, 12 Nov 2026 10:09:56 -0800 (PST)
-X-Received: by 2002:a05:620a:600e:b0:93c:8544:6ad8 with SMTP id
- af79cd13be357-9494bbb3d9fmr33842185a.28.1794506996044; 
- Thu, 12 Nov 2026 10:09:56 -0800 (PST)
+ AL+hErFCthcStryySKGlzA3+E9MOOGV2K/HCRTx2A+aGSclUzzXxOKWhdb3LCoG2QpGlg+gXx2CBud3Aqg==@nongnu.org
+X-Gm-Message-State: APuU4Z+2GECzjB9lL2F+saUVj4UbayrELUBvS0NlgMXwilVmrNu0FoF7
+ AvQ6ORzF7I+F4rNn8IDhiezrtnyp9IrUcxUSs4AeRqQ98NgrMrU2gs6COOs4Au4Z241GpsCaUIy
+ npjc+XVYbbKD21cWjkw/eelLDaY7dlX0d1Am98WiB9GrVhZdLTE41Rifvfn4asOavBw==
+X-Gm-Gg: AYBFou0cnnSAoa8FoUQwLjZvHbNtWkfDJeatiq4/xC600Q9kJuTNfOR1BoWXmnnYqP2
+ uhUfQEnaaSZgbyQ2NmYXz12mh2jW8LyUidhCPaO6aOJXGhXpCnmBTIHg7UnwIiilpS6goBGOIXH
+ WbIThdIvAyIINO7/s9J9j6L9PUprn+HyyKXD0UT8wNHvQTogVD4gj9+TxPtz+vFiW8Vkbt5UeRC
+ q45JtPXfJXDUXn0/hOZpLy5UKhR0dbo59Ox1DMp5C8dL8qL73vcnOSMZpZsoQ67eb0Ry539//Ry
+ kH05kTd44e1dLqqZ8Z4odY9eFYP8stEDxgiP3yNEaBIHs/1C/1G7fNFfX6nYQMZ8TkX8/hnLWLN
+ W/LXApfLTXM08Teg4hKca+c1yYo5BbY04V+SgQrtFxoB3h1tzR50LDeHwYMCVU3HVlnBzWdp7sj
+ PTvtgt9DWVNWwhjQ==
+X-Received: by 2002:a05:6102:84d3:b0:7a7:198a:c2bc with SMTP id
+ ada2fe7eead31-7d50624a2cfmr2480722137.36.1794507019100; 
+ Thu, 12 Nov 2026 10:10:19 -0800 (PST)
+X-Received: by 2002:a05:6102:84d3:b0:7a7:198a:c2bc with SMTP id
+ ada2fe7eead31-7d50624a2cfmr2480712137.36.1794507018661; 
+ Thu, 12 Nov 2026 10:10:18 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-49c60f8d615sm545588f8f.56.2026.11.12.10.09.54
+ 5b1f17b1804b1-4ba08e57504sm121259335e9.2.2026.11.12.10.10.16
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 12 Nov 2026 10:09:55 -0800 (PST)
+ Thu, 12 Nov 2026 10:10:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -103,10 +103,9 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org
-Subject: [PATCH-for-12.0 v2 07/12] target-info: Support runtime-endian
- Linux-user targets
-Date: Thu, 12 Nov 2026 19:08:53 +0100
-Message-ID: <20261112180859.85380-8-philmd@oss.qualcomm.com>
+Subject: [PATCH-for-12.0 v2 10/12] meson: Support Linux-user executable aliases
+Date: Thu, 12 Nov 2026 19:08:56 +0100
+Message-ID: <20261112180859.85380-11-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261112180859.85380-1-philmd@oss.qualcomm.com>
 References: <20261112180859.85380-1-philmd@oss.qualcomm.com>
@@ -114,36 +113,35 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: A8afLvcctuVrciLMSzFtuWIEY3shp04P
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX84IzUXwWO1DI
- U96496KMrm9dxOUiAszyVozVgFLQun03ygfuZpzzLcgxcVg7fTcrYlWitg5moshWWwQCQ37hoF/
- ziptJ+uazzhlcDsaqYQuJHq6qodjNFA=
-X-Proofpoint-ORIG-GUID: A8afLvcctuVrciLMSzFtuWIEY3shp04P
-X-Authority-Analysis: v=2.4 cv=d49gWhjE c=1 sm=1 tr=0 ts=6af600f5 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX/rXc3iRScw4U
+ fW3y0ebFqDnk4+gEJ+v8dTSjph97cKEwMKdnMztxtZfujZgrcdkj4GGV09U7oLQpSN49WGaTHuh
+ vIqlGZsiU45jIBYDHiLrxlzQRHDN8e8=
+X-Proofpoint-GUID: n4eu_Q9VLvfm0PcV4IOJ398o-rT7E7e9
+X-Authority-Analysis: v=2.4 cv=N+e8hG9B c=1 sm=1 tr=0 ts=6af6010b cx=c_pps
+ a=N1BjEkVkxJi3uNfLdpvX3g==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=oRXqm_aVrHWTxU2XlOwA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfXxkMtinQ8F5ms
- WFY8LQrOumcmW4Xc1W/O9DSgfJeyQUKW4n9FvuV0f4V6B5RGmFV27yPjS3ntqAMRR7PcI2eM5x9
- irVXPOzwlgNRjcCSz+6tk9gtfLElk8WaJ4AeKk4e2J6ierxRNEScfaXSBXqGBTdi0CbtZvN3hrs
- YzW1gza8pdbCJohfVfwmSM9V2lNoIdr0YvaPbbh2w5LjxEDFSaFj31z6B7ufdXE35lc90kCa0/S
- BGShzICLn4laqncss93/rf8bhB2MuCB/DfS9yGGdbaryA/g1X3t4ZcBO2Ie1EN82QtKek0xjSf4
- xl+qFwZXVevKIUBJkl0D9jZGNcUYPaXMd5DSemWiermIIqIJCQp3pSzuHXU6ccADWyhWVrVJ8WA
- js9PFCwTi4Y7I1TpGbLavRHmYIc+HaApXZ11crk0e0mkiqNV4v6rSJ5evdvF33yLFORe2890Bb5
- AvpmsTPY8tJHkmOGHrg==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=EUspDBNiAAAA:8 a=zs-5URzUCjn_2RNnlE4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=crWF4MFLhNY0qMRaF8an:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX2Bj+LfRfvKGL
+ 0qX030DHB1ITvoyPuCBGOvPN51vEcNJN9tseWZxFoKNAtt/M3cwUMeEgm0fdEcP26msM50zHQbc
+ hfOuyxF90crsagMr6ZzPgu2cfceWX29KtLAwKUY3D+J8odakF+lxRbr5KOmc0lNbkfaDNwI2227
+ 3IIzTpeTwGNbvlMDw4XnE4Kyw3KGmbcAJxsaxNeLx46yQJTDOfJr4J/az9FHuU6iv+M9anFnMeI
+ MwHyuHLUdf/QypMfmIOW5UGrtlymIAb5I42nBnjiE/vonUucyHWjmgbcBRy2oK9QqdDovIWKmIP
+ G9pGqKHNquHuWFtYfi4jZvw2qbcKjZqbKEV40RLGI4mbSjGVbKOZYDnDhORwTwJhgHOgrXtfhwF
+ WT/y25DBJa2Zuqh5nj3nL2c5zgmhkhtgo+RacVXJ8iEAhZZ7T0GQRIjjpw8MOWdXZQQVaqyCN30
+ qJd+NiDqgUPtYh1zxxw==
+X-Proofpoint-ORIG-GUID: n4eu_Q9VLvfm0PcV4IOJ398o-rT7E7e9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-12_02,2026-11-11_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 spamscore=0 malwarescore=0 clxscore=1015 suspectscore=0
- adultscore=0 lowpriorityscore=0 impostorscore=0 bulkscore=0
- priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
- definitions=main-2611120072
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ suspectscore=0 clxscore=1015 malwarescore=0 bulkscore=0 priorityscore=1501
+ phishscore=0 lowpriorityscore=0 impostorscore=0 adultscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611120072
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -165,212 +163,51 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add a write-once ABI byte-order setter for runtime-endian Linux-user
-targets.
+Accept TARGET_USER_ALIASES in target configurations and create relative
+symlinks in both the build and install trees. Depend on the canonical
+emulator instead of linking a second binary.
 
-Expose const data to readers and inline runtime endian checks, keeping
-its writable initializer outside LTO.
-
-Retain immutable data and compile-time byte swapping for fixed-endian
-targets. Restrict TARGET_RUNTIME_ENDIAN to Linux-user configurations.
-
-Inspired-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- meson.build                    | 26 ++++++++++++++++++++++++--
- include/exec/tswap.h           | 11 +++++++----
- include/qemu/target-info-def.h | 14 ++++++++++++++
- include/qemu/target-info.h     | 20 ++++++++++++++++++++
- target-info-def.c              | 19 +++++++++++++++++++
- 5 files changed, 84 insertions(+), 6 deletions(-)
+ meson.build | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index d7bcb581c181..04cf5d77f188 100644
+index 04cf5d77f188..86b942640abf 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -3342,6 +3342,11 @@ foreach target : target_dirs
+@@ -3297,7 +3297,7 @@ host_kconfig = \
+   (hv_balloon ? ['CONFIG_HV_BALLOON_POSSIBLE=y'] : []) + \
+   (have_rust ? ['CONFIG_HAVE_RUST=y'] : [])
  
-   config_target += keyval.load('configs/targets' / target + '.mak')
+-ignored = [ 'TARGET_XML_FILES', 'TARGET_ABI_DIR' ]
++ignored = [ 'TARGET_XML_FILES', 'TARGET_ABI_DIR', 'TARGET_USER_ALIASES' ]
  
-+  if 'TARGET_RUNTIME_ENDIAN' in config_target
-+    assert(target.endswith('linux-user'),
-+           'Runtime target endianness is only supported for Linux-user')
-+  endif
-+
-   target_kconfig = []
-   foreach sym: accelerators
-     if sym == 'CONFIG_TCG' or target in accelerator_targets.get(sym, [])
-@@ -4400,8 +4405,6 @@ foreach target : target_dirs
+ default_targets = 'CONFIG_DEFAULT_TARGETS' in config_host
+ actual_target_dirs = []
+@@ -4580,6 +4580,17 @@ foreach target : target_dirs
+       emulators += {exe['name']: emulator}
      endif
-   endif
  
--  arch_srcs += files('target-info-def.c')
--
-   if target_base_arch in target_arch
-     t = target_arch[target_base_arch].apply(config_target, strict: false)
-     arch_srcs += t.sources()
-@@ -4470,6 +4473,25 @@ foreach target : target_dirs
-     lib_deps += dep.partial_dependency(compile_args: true, includes: true)
-   endforeach
- 
-+  # Keep the writable runtime-endian definition opaque to const readers,
-+  # as for page-vary-common.c above.
-+  target_info = files('target-info-def.c')
-+  if get_option('b_lto') and 'TARGET_RUNTIME_ENDIAN' in config_target
-+    target_info_flags = ['-fno-lto']
-+    if get_option('cfi')
-+      target_info_flags += '-fno-sanitize=cfi-icall'
-+    endif
-+    target_info = static_library('target-info-' + target,
-+                                sources: target_info + genh + config_target_h[target],
-+                                dependencies: lib_deps,
-+                                include_directories: target_inc,
-+                                c_args: c_args + target_info_flags,
-+                                build_by_default: false)
-+    objects += target_info.extract_all_objects(recursive: false)
-+  else
-+    arch_srcs += target_info
-+  endif
++    foreach alias : config_target.get('TARGET_USER_ALIASES', '').split()
++      alias_name = 'qemu-' + alias
++      custom_target(alias_name,
++                    output: alias_name,
++                    depends: emulator,
++                    build_by_default: true,
++                    command: [find_program('ln'), '-sf', exe['name'], '@OUTPUT@'])
++      install_symlink(alias_name, pointing_to: exe['name'],
++                      install_dir: get_option('bindir'))
++    endforeach
 +
-   lib = static_library('qemu-' + target,
-                  sources: arch_srcs + genh,
-                  dependencies: lib_deps,
-diff --git a/include/exec/tswap.h b/include/exec/tswap.h
-index 17ac5444544d..869619bac314 100644
---- a/include/exec/tswap.h
-+++ b/include/exec/tswap.h
-@@ -13,14 +13,17 @@
- #include "hw/core/cpu.h"
- 
- /*
-- * If we're in target-specific code, we can hard-code the swapping
-- * condition, otherwise we have to do (slower) run-time checks.
-+ * For fixed-endian target-specific code, hard-code the swapping condition.
-+ * Otherwise use run-time checks.
-  */
- #ifdef COMPILING_PER_TARGET
-+#ifndef TARGET_RUNTIME_ENDIAN
- #define target_needs_bswap()  (HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN)
--#else
-+#endif
-+#endif
-+#ifndef target_needs_bswap
- #define target_needs_bswap()  (HOST_BIG_ENDIAN != target_big_endian())
--#endif /* COMPILING_PER_TARGET */
-+#endif
- 
- #if defined(CONFIG_USER_ONLY) \
-     || !defined(TARGET_NOT_USING_LEGACY_NATIVE_ENDIAN_API)
-diff --git a/include/qemu/target-info-def.h b/include/qemu/target-info-def.h
-index 8019d2c7196e..34058955edec 100644
---- a/include/qemu/target-info-def.h
-+++ b/include/qemu/target-info-def.h
-@@ -32,6 +32,20 @@ typedef struct TargetInfo {
-     bool page_bits_vary;
- } TargetInfo;
- 
-+#ifdef COMPILING_PER_TARGET
-+#ifdef TARGET_RUNTIME_ENDIAN
-+/*
-+ * Linux-user selects the ELF byte order before creating CPUs or guest threads.
-+ * The data is then immutable; its writable definition must stay outside LTO.
-+ */
-+#ifdef IN_TARGET_INFO_DEF
-+extern TargetInfo target_info_stub;
-+#else
-+extern const TargetInfo target_info_stub;
-+#endif
-+#endif
-+#endif
-+
- /**
-  * target_info:
-  *
-diff --git a/include/qemu/target-info.h b/include/qemu/target-info.h
-index 2cd4cc5671b5..6ed4cfda8d7b 100644
---- a/include/qemu/target-info.h
-+++ b/include/qemu/target-info.h
-@@ -9,6 +9,12 @@
- #ifndef QEMU_TARGET_INFO_H
- #define QEMU_TARGET_INFO_H
- 
-+#ifdef COMPILING_PER_TARGET
-+#ifdef TARGET_RUNTIME_ENDIAN
-+#include "qemu/target-info-def.h"
-+#endif
-+#endif
-+
- /**
-  * target_name:
-  *
-@@ -40,7 +46,21 @@ const char *target_cpu_type(void);
-  * the target, so please do *not* use this function unless you  know very
-  * well what you are doing!
-  */
-+#ifdef COMPILING_PER_TARGET
-+#ifdef TARGET_RUNTIME_ENDIAN
-+static inline bool target_big_endian(void)
-+{
-+    return target_info_stub.endianness == ENDIAN_MODE_BIG;
-+}
-+
-+/* Select the Linux-user ABI byte order once, before CPUs or guest threads. */
-+void target_set_big_endian(bool big_endian);
-+#else
- bool target_big_endian(void);
-+#endif
-+#else
-+bool target_big_endian(void);
-+#endif
- 
- /**
-  * target_heterogeneous:
-diff --git a/target-info-def.c b/target-info-def.c
-index bcf9cfe1e437..7580993e0bb3 100644
---- a/target-info-def.c
-+++ b/target-info-def.c
-@@ -6,6 +6,8 @@
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
-+#define IN_TARGET_INFO_DEF 1
-+
- #include "qemu/osdep.h"
- #include "qemu/target-info.h"
- #include "qemu/target-info-def.h"
-@@ -24,7 +26,12 @@ QEMU_BUILD_BUG_ON(offsetof(ArchCPU, env) != sizeof(CPUState));
- QEMU_BUILD_BUG_ON(TARGET_PAGE_BITS < TARGET_PAGE_BITS_MIN);
- #endif
- 
-+#ifdef TARGET_RUNTIME_ENDIAN
-+/* This writable definition must not be compiled with -flto. */
-+TargetInfo target_info_stub = {
-+#else
- static const TargetInfo target_info_stub = {
-+#endif
-     .target_name = TARGET_NAME,
-     .target_arch = glue(SYS_EMU_TARGET_, TARGET_ARCH_VARIANT),
-     .long_bits = TARGET_LONG_BITS,
-@@ -42,3 +49,15 @@ static const TargetInfo target_info_stub = {
- };
- 
- target_info_init(target_info_stub)
-+
-+#ifdef TARGET_RUNTIME_ENDIAN
-+void target_set_big_endian(bool big_endian)
-+{
-+    static bool endian_decided;
-+
-+    assert(!endian_decided);
-+    endian_decided = true;
-+    target_info_stub.endianness = big_endian ? ENDIAN_MODE_BIG
-+                                             : ENDIAN_MODE_LITTLE;
-+}
-+#endif
+     traceable += [{
+       'exe': exe['name'],
+       'probe-prefix': 'qemu.' + target_type + '.' + target_name,
 -- 
 2.55.0
 

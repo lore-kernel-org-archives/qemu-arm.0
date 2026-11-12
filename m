@@ -1,117 +1,108 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 60DDD606A327
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 11:52:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3284606A32E
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 13:10:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=abaUWxZG
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Gxfcb3M0
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRTKz-0006mz-3K; Thu, 12 Nov 2026 06:51:30 -0500
+	id 1xRUZ9-0005cO-Nb; Thu, 12 Nov 2026 08:10:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xRTKc-0005KX-4Z
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 06:51:11 -0500
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ id 1xRUZ7-0005SO-NW
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:10:09 -0500
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xRTKZ-0003In-VD
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 06:51:05 -0500
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-67be4f2f4d4so5312085d50.2
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 03:51:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794484263; cv=none;
+ id 1xRUZ6-0001L8-3N
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:10:09 -0500
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-67c6a0abc2eso2169872d50.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 05:10:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794489006; cv=none;
  d=google.com; s=arc-20260327;
- b=IopJHdVsphbLmmidzuGOCOnYU4OnN3S92/73su/JVZlyJ7Udf26bFe+li+H2H24RjU
- M1m8Y2h7l1Prxj1E3K5uGfXxFXRTCJL6nj9FR6FRFgXUS9Q1WGtD+WM9qZ7mfybJl9Mz
- 2I6zlv7oRNCGGGDXXKTdHvN7YuRIxDVhmN9V1tbyBVy8/7XyKhI1JyMP3Kio2LqYDKeP
- PfLu/ZIzuIfzCSvG/vHDuS11adAI2ql9PpocUP3nfWukvTEzC1EHCXlzl4CTomZRSdbe
- 9rVgdNXUmjh9qaMH9xdYao32oZ03jOdpFS549o7hl3n+PG7lzybkTUBRYcEZlXa9grfP
- mkag==
+ b=PhrCr9cquqAptEjcNvB0FNb6c0JKXxV1aSpqvbxZUGT6CJwz6KGsoU0VUiPlx95BUE
+ 5GYdwTBw6c57BbK808hXmwlEawh/49XTzkeWNkyTgrKGB1yy82LNpWrvABwQJNIu9LXo
+ 9x1xGwnl4in1Xh2pOiAktMQbbklljWTJfAshFccjWBZolsgCGiyZN8FA95zr8iIYA2O8
+ km6x6SKEHSW4tPyOiN0fT2k2MKtjVTjNK+r2QEAYNal5USdJeAUUey7Vu2t9dRdbIy1i
+ MyU4uGPZIuBcMt2oz17WypSV5J2pIFoBQ72XI8GSLVNR5LicOV9B+EHjXEckw3xE58Bg
+ ZKUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=Eq92dp7V42l6tWs0m/vtKLLV8TNAYBtM2Nh+ISG7lEk=;
- fh=KtSDU0BlmsG5Gu0rFS1mkEJygZSTO1gF1odaLvVdQo0=;
- b=ryC8EyiMZ1IGCbbqa2biFfX0qlsGoQe6U0sWnQC5eGw8EUgDFDb8T1s4O7oSYmPoEP
- h4/aPI8cqy41t7Q/VEezCjjqcLrCcNHjhwNrnttGWRAvBPaRSTYHkcIS0bE+qbm2Pa7G
- Gq2pJ8V1b1OxufDd35mUdPoJ7ncbF56OyLSO7klOeqpxKfyntQk70bmRNhrT7D/CTA3D
- dNLZIOaTPVnqXWZkKlZnDwRX5nNxwsCG4XaxNhqK7Y3s6J9tuqvO1nsPI5GWZFkL6Ggi
- ibBcRzGby1fXIFqEop1bZOIIGvrfy5DXb+tvaEGd7mpjDAsWNfu+MwVepyYeNN7/sGt/
- OWeQ==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=nMySanBpzNXfKjFd7aBQpGBvl+mNf1G+VUmyrU87fNY=;
+ fh=dObdA2GdvpwVIQnWd9zV/b9QPHv7wp9q6lWVF8RYyXg=;
+ b=Asmok/LxjhVqApFj4C6Z1KGdL5vsEXbnK1rvXrjB273qdnr7G6Y+elIK/actaxFGb7
+ TIicxp6m8uxFFHsKxFSZygFapGIqoTMTzZzUQEpT98egCWCu1cQPIb+HPmDJLqSDFQap
+ A52Eff2lWb4Zr7FKhHaohjSsstqnz/a9lW3uYQinNsX4XwEenkT9Y7LSuMilvy3x8pT/
+ Fba9nrRGyafwxHxF9gWigSDkfFvMlQ9BCGYwVMRQKmjQPlSk7OQsm1fchtrGLkRyW+zy
+ laBycFlJjulWVm0eo0kdaHsvPD+L8zK6iYW9oonreoIPGWp1j+iaKpshm603TnsWmNE3
+ 5jug==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794484263; x=1795089063; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=Eq92dp7V42l6tWs0m/vtKLLV8TNAYBtM2Nh+ISG7lEk=;
- b=abaUWxZGkdqSFTroODKnHjdWcl3q6aMJh3+kMnnFQRfzT46HaElIcHAYj62Sz4BuU/
- xtcBivfhRuxkgh/q4UmOW8OFo/wBBHjc97QgjFBlBXxYV9P4BzhDMN1o7xSNyi97cnjq
- n+YIK+6BhETHGHh9PW4fPK6e3JeaTy7k1U15nKrjb8qp30KyMuuWL0VHv6/02N9F2V/U
- 88HRnIz05S4VTFuSVGq5xg41neZWmbP4h1T+H5XSZONCA6vMILUT9kfAm9QUV9rI2f+J
- HMFgBEvt++r6/6Lem8NQPP6IjXNRradzUdRsjI4VqV3i7y/PNXJ+OqwYdrcsiGl7mT0a
- pLgQ==
+ d=linaro.org; s=google; t=1794489006; x=1795093806; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=nMySanBpzNXfKjFd7aBQpGBvl+mNf1G+VUmyrU87fNY=;
+ b=Gxfcb3M0qNg0nS6qw6JcrOsqJ1lJ/SPjMDROt1QMu2nfntK19mikC01ojlRziX9fzM
+ 6MR1+7oMo1TFOuWywaK0yPe1ilYIsr79NsJDx3KRGVyGI69ra+VJ7+e2Ko8G2o1UEHre
+ p/S9zBtz/i4rGa+LIZMTgNyK/5Z3mlXD+cxj/9PPw6jXelyvFvHGSY+Q4eyYlGk5V8nk
+ H/TqUT6lwwHec6XP/uZmsrGSPOweJI8wT08x6+8ZB+kDBXDnYhHm2gVDSsvKCvHKRmIH
+ Yqev3ZbCdZaazr3xLVn5DIMTsO/t/9UUP/HjeV+bYk3Tia/d55ZTLqPctv4VATXYnnGP
+ qK5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794484263; x=1795089063;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Eq92dp7V42l6tWs0m/vtKLLV8TNAYBtM2Nh+ISG7lEk=;
- b=Le5V1AyvBsib+UIvTMNGbkfvIn2LEpStuDXizc/FH/OTv0mgaFGONf/CBWoIaZR44W
- tY6RD6UtjfBq9tWPjMKonQEv6UUj8TBkBexxORMSwp4DKOZ17e9C+YwDiPcgOfzJkjyN
- Va0lfsNnQ6Sfl0rjudyLvw4id3qHeN7HEtUH5OLDHji07TyIX2Nd9EqcUFzkg2zEipum
- P9Q/sDzcH5lSbMXAz68HmwGjBXivgQ/hbW6Y7eKtICoHCvXyXgSn2QrNppO3rtxL6Are
- 2S+EGIY2VGa7NnI8IvxRWqHEycpYtOV8ADnH8YVhHl4xtXP6OGyfPvKD9QsHr5y4Ombg
- RQmg==
+ d=1e100.net; s=20260707; t=1794489006; x=1795093806;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=nMySanBpzNXfKjFd7aBQpGBvl+mNf1G+VUmyrU87fNY=;
+ b=rM8jiPwf/a8H36OXnfhliMYyNCvmOgUyYgUgFRk99ZKOkspJEEc71WtbLBC5sjel9y
+ mV5My/4vDZrjk1fE39qT1MQ1ra/rR0RnUrpck1vS89KGfBkCv+A+q6Q6YLRv074DAAPs
+ Ee6yuRADlv6+ExafHaqBdgMRZ42MFvQj7wzaO36Ej1ur3hZt2KS+aprdatxdNEq88Wjq
+ Fj3kr1Wnm1ohC0I7VMskmOnhxXHn1c1i1U0ksU1A7STaJ+YL/5gdIHutMpgc9jT/Xirp
+ bjvYniT2NXWRgNV52G4VoI+rBcAkWpqbdKr1OQuqZBaZ9DfDOMsSZmNLxgK8LqY8Q+sb
+ Kihg==
 X-Forwarded-Encrypted: i=1;
- AL+hErFgDkAQxzYGlKjgmUP8LkxdyE9y43cZboHSDagcyAoJjSeItabK6+yyYWeUwCiRRplFZMltrrWHPg==@nongnu.org
-X-Gm-Message-State: APuU4Z9GAw1e6XhoDiUhu1TyRAfWDBboYv8wv8/MPodd5Lt13FF6nmWA
- vdsXpQF+eJJijAG7EVpkcnQ5cRl/2+quhKb+b9SRnhu15qYdJb0eAgvzFWKqmFhKhlGzjSfiG3+
- zBnKCcjMxdSccHl12SM6Fu0PBfsb/sj0/M8Voao3iXA==
-X-Gm-Gg: AYBFou2IBS244daQT5c4/P76rrlAQSNT98h9JkcWrmjjkICIooCsXK7OJhsWF5MmRMW
- DxHkq0zO8HnkF5Q55ZZNUiAnQbCmjROQ2EBgg96zXFQWyV0+6vyd11rMf4iBklbLMHgw88pDtCn
- B64vQcrWrb3KA85HaCVX+XVKQor84LBIqeIDp/ll4FbFu0z2NsjmSOckS3d/4Onc9Y3xBdnva64
- XUf4mIgzgnUgbralrZkQ4sqB+eanbcwXxbQ5lINYbAVq4+FS/Xr8vYA0gNuhuXfS1ues+pj2+UO
- AJLG8Dags71ivR/ffsHsHoxncsOVhu+iZOqiehXxameTJS7Vipzk4MSTMt/GHij+XIyV2EHK3Xb
- G6rlwFVdqED/oXjB0dGo2Bxlu8DXFD9dozIFvfnyXVxEFQsKAHRjh2XNqZGW3pYU9prdCAd3H7j
- QSQTNuE9viWflG3VqM6BK2
-X-Received: by 2002:a05:690e:80b:10b0:67c:271e:c29b with SMTP id
- 956f58d0204a3-67c67eff337mr2342116d50.25.1794484262559; Thu, 12 Nov 2026
- 03:51:02 -0800 (PST)
+ AL+hErGOBL4my0kjSoeBc1guYJfCNL54g/A4A8nBAmrNMiehCFGv48ad0RiB0mXU/FugQRFGrRGnv7TLdw==@nongnu.org
+X-Gm-Message-State: APuU4Z+kLWfkO/EQ4EV24YgZlbqzsHd9JFrdn2zf7rIf4pd9dJ6WM6rt
+ Czr6Rq7ZB3EG+H3BL8w0PhbAQVbK4pqUjwbBz7eEAbYa3uEDyQR05qqztD6iIEaazCaJc4ZXVLc
+ hK+dvV5b3LXhe+5fvdg/5Wb2qsDRP7UDCF+5gqHcc3w==
+X-Gm-Gg: AYBFou2QP+3xjPzUUK55My++5Uk3m4uc3gkJEJfOjMG7llcXlL2MJLlKkVWUrTCdMPl
+ ER88FlMdpBpyxH+bUjRaWTvhqZdxYZDZ3WXU7iKJPs+m3tNx8L4su5mZMRswuc403KmKTMXNZ9z
+ tOCPzbDBqOFaeHd8QqUQgX3+DA7YZAqyjRU8UPrNtwLXM5OFMTFXGVmF/p1Ya7vP5n/MHoiRmHF
+ y8TROlU4X3/I55y2L3IfRxX/2b7NNPSXZlZVVaMP4PgRWGHjPRF1Eh1y8AWUS+5g5ufPBG47wCY
+ GqucnXJ/i8SyceWSxe9K6DNbznGFtzFhqoJ/PYY0XSibmyanH1B0KnyiJbbeTf1l0gt+AdRwP66
+ mmBMOhFGeDUsGpNVbmExmOdLa3BIgs9HUuff/vxZ2fReKxDJ/CrXvQQXcT6wv+hU2ATH99IVEd2
+ sQezrMe7+NDQWlkD6INy/Q
+X-Received: by 2002:a05:690e:12c6:b0:677:aee1:9f2b with SMTP id
+ 956f58d0204a3-67c67ca7a90mr3362603d50.12.1794489004820; Thu, 12 Nov 2026
+ 05:10:04 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261112112714.357297-2-marcandre.lureau@redhat.com>
-In-Reply-To: <20261112112714.357297-2-marcandre.lureau@redhat.com>
+References: <20261021065238.15220-1-conti.manuele@gmail.com>
+In-Reply-To: <20261021065238.15220-1-conti.manuele@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Nov 2026 11:50:51 +0000
-X-Gm-Features: AclHuK8ObP32nVe1LDv1Oqf7-VStzQ4vRhOPRfUktTXKC4SCUfvv3mqKZhQzgF0
-Message-ID: <CAFEAcA_wv2OKP+nV6ZuijL0j2LZ00Se48woVeS9xcmiaERHFTQ@mail.gmail.com>
-Subject: Re: [PATCH] tests/functional: update tuxrun kernel hashes
-To: marcandre.lureau@redhat.com
-Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Halil Pasic <pasic@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+Date: Thu, 12 Nov 2026 13:09:53 +0000
+X-Gm-Features: AclHuK91k_404xGNPKVDV0IIvjhlkMoTqmp0kq7EQAV1TyitwzdpdyAmAk6MtHY
+Message-ID: <CAFEAcA9=pt=81YWPXEZ+UEnL5iVbqFAjxbMYtH_aoJHy4iAf_A@mail.gmail.com>
+Subject: Re: [PATCH] hw/ssi/stm32f2xx_spi: avoid transferring data on DR reads
+To: Manuele Conti <conti.manuele@gmail.com>
+Cc: qemu-devel@nongnu.org, alistair@alistair23.me, qemu-arm@nongnu.org, 
+ farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,160 +114,35 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 12 Nov 2026 at 11:27, <marcandre.lureau@redhat.com> wrote:
+On Wed, 21 Oct 2026 at 07:52, Manuele Conti <conti.manuele@gmail.com> wrote:
 >
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Writing SPI_DR already performs the synchronous SSI transfer and stores
+> its response in spi_dr. Reading SPI_DR performs another transfer, using
+> the previous response as transmit data, and returns the new response.
+> Consequently a normal write/read pair clocks two frames on the bus and
+> can skip bytes in a peripheral's response.
 >
-> tuxboot rebuilt the 6.18.54 kernels, so the recorded hashes no longer
-> match and the tuxrun tests fail to fetch their assets. Update the
-> kernel and vmlinux hashes for x86_64, arm64 and s390. The buildroot
-> rootfs images are unchanged.
+> Return the response saved by the write and clear RXNE without starting
+> another transfer. Repeated reads then leave the peripheral state alone.
 >
-> We may want to go back to a fixed/time tagged version to avoid future
-> breakage.
-
-Yes, that seems like the right thing to me: the URLs without a datestamp
-will change, but we want immutable ones so we don't have problems with
-the test cases in stable branches. We're already doing that for the
-rootfs URLs.
-
-I've listed below the datestamp URLs for both the old and new images.
-I guess I favour continuing to use the same (old) image rather than
-implicitly updating to a new one, though it's not a big deal either way.
-
-Fixes: 8ac1aab21fca ("tests/functional: update arm64 tuxrun images")
-Fixes: 09961fafc5a0 ("tests/functional: update s390x tuxrun images")
-Fixes: 467c9eb7dd31 ("tests/functional: update x86_64 tuxrun images")
-
-We also have three riscv64 tests that refer to non-datestamp URLs:
-
-tests/functional/riscv64/test_milkv_duo.py:
-'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
-tests/functional/riscv64/test_milkv_duo.py:
-'https://storage.tuxboot.com/kernels/6.11.9/riscv64/dtbs.tar.xz',
-tests/functional/riscv64/test_tt_atlantis.py:
-'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
-tests/functional/riscv64/test_tuxrun.py:
-'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
-
-These should all be using
- https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/
-
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  tests/functional/aarch64/test_tuxrun.py | 4 ++--
->  tests/functional/s390x/test_tuxrun.py   | 4 ++--
->  tests/functional/x86_64/test_tuxrun.py  | 4 ++--
->  3 files changed, 6 insertions(+), 6 deletions(-)
+> Add a qtest using the upstream netduino2 machine and an M25P80 flash.
+> Check the JEDEC ID, RXNE clearing, and repeated DR reads. The test requires
+> no board changes and reproduces the unwanted extra transfers before the
+> fix.
 >
-> diff --git a/tests/functional/aarch64/test_tuxrun.py b/tests/functional/a=
-arch64/test_tuxrun.py
-> index 2ff321582d38..6c4367c8a20d 100755
-> --- a/tests/functional/aarch64/test_tuxrun.py
-> +++ b/tests/functional/aarch64/test_tuxrun.py
-> @@ -18,10 +18,10 @@ class TuxRunAarch64Test(TuxRunBaselineTest):
->
->      ASSET_ARM64_KERNEL =3D Asset(
->          'https://storage.tuxboot.com/kernels/6.18.54/arm64/Image.gz',
-> -        '39f4633bbcb444267d4d829bd28d8868a287c4c160cda64b0fd23fb090571c4=
-e')
-> +        'e297f12682af7e88735a0aae38e6fbd137192b516ab5f0fc1a81c4bcc3992e8=
-0')
+> Fixes: 5ae74402d1f ("STM32F2xx: Add the SPI device")
+> Signed-off-by: Manuele Conti <conti.manuele@gmail.com>
 
-If we want to keep using the same image file:
-https://storage.tuxboot.com/kernels/20260930/6.18.54/arm64/Image.gz
 
-If we want to upgrade to the new one (with the e297... hash):
-https://storage.tuxboot.com/kernels/20261110/6.18.54/arm64/Image.gz
 
-(plus matching change to the vmlinux.xz URLs)
+Applied to target-arm.next, thanks.
 
->      ASSET_ARM64_VMLINUX =3D Asset(
->          'https://storage.tuxboot.com/kernels/6.18.54/arm64/vmlinux.xz',
-> -        '6487eb113ef6e841aedab6cb6fa704006377d68f64dd544570aa42f462a52b8=
-5')
-> +        'aa9b984337e975528162ed873cf18a072b27be8e4f48e6cf0723e9b490c6317=
-1')
->      ASSET_ARM64_ROOTFS =3D Asset(
->          'https://storage.tuxboot.com/buildroot/20260924/arm64/rootfs.ext=
-4.zst',
->          '4ab8cec9d1e17dbb1abdf2ae1939ad4f9d0dc2466230f6a119a7c1845cdef0b=
-1')
-> diff --git a/tests/functional/s390x/test_tuxrun.py b/tests/functional/s39=
-0x/test_tuxrun.py
-> index 1dd662aaaf05..be38fcded2e9 100755
-> --- a/tests/functional/s390x/test_tuxrun.py
-> +++ b/tests/functional/s390x/test_tuxrun.py
-> @@ -18,10 +18,10 @@ class TuxRunS390xTest(TuxRunBaselineTest):
->
->      ASSET_S390X_KERNEL =3D Asset(
->          'https://storage.tuxboot.com/kernels/6.18.54/s390/bzImage',
-> -        '5efeb31754b211440e1595ab11355bb006fe78a2c0604ed0a8c55c4598b71ae=
-c')
-> +        'b5022f97e243b8ecd51fc7ce4290a15806ecc51a41edbe777fc0fcdda567269=
-e')
-
-Old image:
-https://storage.tuxboot.com/kernels/20260930/6.18.54/s390/bzImage
-
-New one:
-https://storage.tuxboot.com/kernels/20261110/6.18.54/s390/bzImage
-
-(and ditot for the vmlinux.xz)
-
->      ASSET_S390X_VMLINUX =3D Asset(
->          'https://storage.tuxboot.com/kernels/6.18.54/s390/vmlinux.xz',
-> -        '5bbd4d34e0950f88053a9bfd16078896df4b1ee1696fc2ad62488e681a6bdd8=
-e')
-> +        'cd70050ddb638e81c2f1b96a4629c224aedd36bf8ae3b56b264b070e94642e2=
-5')
->      ASSET_S390X_ROOTFS =3D Asset(
->          'https://storage.tuxboot.com/buildroot/20260924/s390/rootfs.ext4=
-.zst',
->          '5ba18c4d18831c50a0c743990f7bdee1d3b520629d423c55b668d8fbbac9c6f=
-5')
-> diff --git a/tests/functional/x86_64/test_tuxrun.py b/tests/functional/x8=
-6_64/test_tuxrun.py
-> index 1a1138d16aea..efe907bed820 100755
-> --- a/tests/functional/x86_64/test_tuxrun.py
-> +++ b/tests/functional/x86_64/test_tuxrun.py
-> @@ -18,10 +18,10 @@ class TuxRunX86Test(TuxRunBaselineTest):
->
->      ASSET_X86_64_KERNEL =3D Asset(
->          'https://storage.tuxboot.com/kernels/6.18.54/x86_64/bzImage',
-> -        '24a3ade610c2cc426ff821050de8a35930b0371357d94cc2c334abac6658552=
-b')
-> +        'ba98a8a07d5f3f3e20119341059c0f0096fda499d30e30049c1ea64553b7e7c=
-2')
-
-Old image:
-https://storage.tuxboot.com/kernels/20260930/6.18.54/x86_64/bzImage
-New image:
-https://storage.tuxboot.com/kernels/20261110/6.18.54/x86_64/bzImage
-
-(and similarly for vmlinux.xz)
-
->      ASSET_X86_64_VMLINUX =3D Asset(
->          'https://storage.tuxboot.com/kernels/6.18.54/x86_64/vmlinux.xz',
-> -        '77bf44cca48c9c1b9c142e16a2311d58b8ae3462b61bce44bcaf9243b5f2662=
-8')
-> +        'bc8af37608753c6ba47c6fe85f4034188b5f15bb757a0cbd79672c65122278a=
-b')
->      ASSET_X86_64_ROOTFS =3D Asset(
->          'https://storage.tuxboot.com/buildroot/20260924/x86_64/rootfs.ex=
-t4.zst',
->          '8e310455b0244414ccff29c507f7ccfd4032e3587cc405e49ab0322738e3e27=
-c')
-> --
-> 2.56.0.116.g6de20f6092dc
-
-thanks
 -- PMM
 

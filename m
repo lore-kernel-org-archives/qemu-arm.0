@@ -1,110 +1,94 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 002FB606A882
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 13:25:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7ACC6606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 13:35:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=QAaoUFu6
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=h5vkDKpi
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRUo3-0002sS-KD; Thu, 12 Nov 2026 08:25:35 -0500
+	id 1xRUxG-00021U-Gv; Thu, 12 Nov 2026 08:35:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xRUo0-0002nJ-82
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:25:32 -0500
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xRUny-0007pJ-EL
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:25:31 -0500
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-8b2d14968c9so46510427b3.0
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 05:25:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794489929; cv=none;
- d=google.com; s=arc-20260327;
- b=jb4r+LR0XYF+601hnMx4YQlP2/cEd/fT5DXr+6WNnxNAM/l6F9ayvb4yhECeqHxqOF
- 8/2ub+uHUFyo3IWZQ+7FY5Vd6d16vnhZ9pouh32YES4IKN9buIQuU322NrxQprqGRnTu
- A5az6P2hd7T6hHNtf3RSXV4GSiYtVc4CxlOd5qfrKoHrJULJlfhI80j5a3zJzfCyeyrm
- NMap7wMD6/y4zFfC1VHm9926NOocBXl4IZ167lls0TvvH5Lxpvc6SA0e9EiTRS8sy7ZG
- 39/Z+aGcJkpyUwtNVJ075iFqhM/nsF6k7PNJBvofreyGzh4yeT+L1WzLLnKXZK4Qi9fN
- q63Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=owGl/RB8+MhjCv0gdguTj+3UJocSFxqUClURhRfmHak=;
- fh=13D0RMeOSu+gdsNgMzfOznJPxENgXoGJcNlsfgeC/Jg=;
- b=RJyFldqhIcf0sE9dPSZdH/r7GRw2t16CRdKX7iJ8a/UuqWqO71cj4aNnS9V7ccZIUw
- pNyE9m8xYZx9yyVsgige89JlqBS9bjyk7H/mxzElVEcxrX9/ltdtsy8WSKAvPkRyd46J
- wrrCCCOVnOX37n1zxR+UZbtV2oapMAmMDZs8seEns6WUJrB7V3Y5RoxLeCZ4In4tdCc5
- wykY9npqWCoIJowhaMMMalZNUPfMb7tCjBfgjwnH7vjOQaFMfnKd3xb0O+06/v7jrJ/N
- ma7AKSJF6dpSgYdTz49BDPcdHZ4d8ddqBzdR+I+tkhmRWDJCQJKMInFYub3wcUJySv+u
- 55JA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794489929; x=1795094729; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=owGl/RB8+MhjCv0gdguTj+3UJocSFxqUClURhRfmHak=;
- b=QAaoUFu678tA+iL3HU6DkVkcGPt1QR7wb6YhiZWNhfrFfTCXJyWIvC2dKAQ14lZdlR
- ad0feHblF1x2S8UtuTq7upPg8U4txsOsnFPrCXkjo6HUVsPnwRbt7YLRTtcqTb3FeB7w
- 3kCMsw2xMjxovHpJlli0+iuZvjf4ihdDwlKDdVIfotSlwO5lbRcvidv8Rq84MsKZxkBd
- BV+U8kqm04bX6eSaGJM0NEpH8HdplZpKAeBOVzZvrsrMdSTQ4REQnKw0bw94Ymnl69n5
- 9atZaYvWWaIEzhHxS046xpQfl71OvZirwW6OiWUTUdyUliInt9cHDAJhOf/jPDmdYBSv
- yAsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794489929; x=1795094729;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=owGl/RB8+MhjCv0gdguTj+3UJocSFxqUClURhRfmHak=;
- b=EMJCsczTp7OPnlxAWp7GpD61JeB06c/JmGJGcxRLAvKDkW/56CQK95eR8/JaZko41l
- CaHfX8efAAvXSTwOqvVkCtFdAYJdtZUUzaOARmY4YC+hNqNDwpsgGcTxACjBpjOdOYzV
- eLnzcCP8Vw11Prz4uiM90TY2iUgPad5fVCIknKKZfEeffI9lcz+iRdvO7hcEuk3FW2Hl
- KlzvPEUTOjoLgJFyEpL0S/BbhBh4ZeRys+BvJrpsjGoyIyW5iouabMHqxLgKV9AdOAVH
- 6b+V4m0USJzw2YTyMZhD4E1JlOi7fAYp4BNmVIC46AxiYIWqYzjeYmmNfisUQfczahhv
- r9kA==
-X-Gm-Message-State: APuU4Z+QOUMSJa12D2WNPE+pzn6l5cL3Fr+K6yu90O3qdphO0KGe//+1
- tI7gDXusNTnT9a0JR1LlHzWcYzJ7Ik9TTjV5jSpzZITH4c0bhzN/yDCXcb8oLinKY11wNiBc1ee
- +32X3wqMvxFQnlttQtPuG+mtBUhf9ZxtBRmblBaGMHDkw24V+wyWV1v8=
-X-Gm-Gg: AYBFou1zcj8mPJ9WPp4J5p99nYxF7Nj1P07bEVPlWm6HkgRpxcMEMQFTuB0hvAFqqPI
- 9j4O8PL5opR/SbyleEfKbIPsws+GjW/aLyv+SAKO3nplTBzF4SQ//YokSn7PrgBKPrt6Kldg4oV
- nQ20o1rM2ABD1yZbDYSSWKd1P859/whj/483ilng9E0w4D9Uk/VIzP4a0MMS3LjKTlKkCEDjiTk
- NGSuC38PJ8W/Oa5RYhGtXb5HZjESVLTx5ULjYRIvjttY2RcET2lZbzH9PHU+WRFRdhbqs0o0jdA
- /1OHucD0X2msCf8aGSy9AojQr1yLHcatRhYZQNM3st+VZbyfD5bQvrdYw5rTYe5dn3kVI/3S58Q
- Xi9JI/tmKHsphDagqbHLL09bWBN1/f1K3wbNjSRqRr64Cq0PIOi+NhezlAr6It8W2LtlEvWn+aA
- hgdBkSCs53HDoDMCOyKfdv
-X-Received: by 2002:a05:690e:4853:b0:679:a8f4:afb8 with SMTP id
- 956f58d0204a3-67c68078b4emr2319843d50.114.1794489928798; Thu, 12 Nov 2026
- 05:25:28 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1xRUvn-0000AO-57
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:33:38 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1xRUvk-0008Rq-JJ
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:33:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1794490411;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=GFsiJ3FjikGncyyns1QRPNOP0x18dCdbyqgo90uDd+I=;
+ b=h5vkDKpiQhGsqvm4Gr4Ozl1TH8H4QrAzjC36vqLGBZnWzFau2s53SB+XMjH35Zi/iKjVwc
+ 32WtV78Oz7a3LONj07SIsf4li01nHFAMFvUKq0OyQRJrScKNrpMIAiI0frWdbntmX8q50C
+ TcBqEkq8tSu8eVQJjSANSElDeoMGOdw=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-343-K974BglRNlmN84lEwH5gAA-1; Thu,
+ 12 Nov 2026 08:33:28 -0500
+X-MC-Unique: K974BglRNlmN84lEwH5gAA-1
+X-Mimecast-MFC-AGG-ID: K974BglRNlmN84lEwH5gAA_1794490405
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7119E1956088; Thu, 12 Nov 2026 13:33:24 +0000 (UTC)
+Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 9B49D18004FE; Thu, 12 Nov 2026 13:33:22 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: alex.bennee@linaro.org, peter.maydell@linaro.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Kuan-Wei Chiu <visitorckw@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu@processmission.com>, Joel Stanley <joel@jms.id.au>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>,
+ Michael Ellerman <mpe@kernel.org>,
+ Portia Stephens <portias@oss.tenstorrent.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org
+Subject: [PATCH v2] tests/functional: use immutable tuxboot kernel URLs
+Date: Thu, 12 Nov 2026 17:33:20 +0400
+Message-ID: <20261112133320.418012-2-marcandre.lureau@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261106163657.3825938-1-peter.maydell@linaro.org>
-In-Reply-To: <20261106163657.3825938-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Nov 2026 13:25:15 +0000
-X-Gm-Features: AclHuK-BFHVld8JC-5-Tc6LJsYHos9GkH8dgMgcUSvXf3jdQU_3gkzlRu5RfZ4U
-Message-ID: <CAFEAcA9_pEwO9dotcMmKRJBjqHNqu1OzZWxVzEHHVBddvzBOxw@mail.gmail.com>
-Subject: Re: [PATCH v2 for-11.2 0/2] Fix 'version' arg of VMSTATE_PTIMER
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>, 
- Chao Liu <chao.liu@processmission.com>,
- Alistair Francis <alistair@alistair23.me>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Bernhard Beschow <shentey@gmail.com>, 
- Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: Yc1gsmCPIug2a8pbmdyuOHOd5T2Wx78fTJnJKrmTVTo_1794490405
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,31 +100,136 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, 6 Nov 2026 at 16:36, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The VMSTATE_PTIMER macro is defined to pass a 'version' argument of 1
-> to VMSTATE_STRUCT_POINTER_TEST_V.  This means that the field will
-> only be used in migration when the vmstate struct that uses
-> VMSTATE_PTIMER has a version_id of at least 1.  This doesn't match
-> how we define other VMSTATE_FOO which don't take an explicit
-> version_id, which is to use a version argument of 0 (e.g. all the
-> common macros like VMSTATE_UINT32 are written to pass 0 to their
-> VMSTATE_UINT32_V counterparts, and so on). It also doesn't match
-> how we define VMSTATE_PTIMER_ARRAY.
->
-> The practical effect of this is that users of VMSTATE_PTIMER in
-> vmstate structs which explicitly or implicitly have a version_id of 0
-> were actually not getting their ptimers migrated.
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-As these are both reviewed I'm going to take the series via
-target-arm.next.
+tuxboot rebuilds the 6.18.54 kernel images in place, so the URLs
+without a datestamp now serve content that does not match the recorded
+hashes and the tuxrun tests fail to fetch their assets. Point the
+x86_64, arm64 and s390 tests at the immutable 20260930 snapshots and
+keep the hashes that were recorded against them, instead of implicitly
+switching to the rebuilt images.
 
--- PMM
+Do the same for the riscv64 6.11.9 kernel assets, which still used
+non-datestamped URLs; their recorded hashes already match the 20241122
+snapshot.
+
+Fixes: 8ac1aab21fca ("tests/functional: update arm64 tuxrun images")
+Fixes: 09961fafc5a0 ("tests/functional: update s390x tuxrun images")
+Fixes: 467c9eb7dd31 ("tests/functional: update x86_64 tuxrun images")
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ tests/functional/aarch64/test_tuxrun.py      | 4 ++--
+ tests/functional/riscv64/test_milkv_duo.py   | 4 ++--
+ tests/functional/riscv64/test_tt_atlantis.py | 2 +-
+ tests/functional/riscv64/test_tuxrun.py      | 2 +-
+ tests/functional/s390x/test_tuxrun.py        | 4 ++--
+ tests/functional/x86_64/test_tuxrun.py       | 4 ++--
+ 6 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/tests/functional/aarch64/test_tuxrun.py b/tests/functional/aarch64/test_tuxrun.py
+index 2ff321582d38..035984d8e3e5 100755
+--- a/tests/functional/aarch64/test_tuxrun.py
++++ b/tests/functional/aarch64/test_tuxrun.py
+@@ -17,10 +17,10 @@
+ class TuxRunAarch64Test(TuxRunBaselineTest):
+ 
+     ASSET_ARM64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/arm64/Image.gz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/arm64/Image.gz',
+         '39f4633bbcb444267d4d829bd28d8868a287c4c160cda64b0fd23fb090571c4e')
+     ASSET_ARM64_VMLINUX = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/arm64/vmlinux.xz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/arm64/vmlinux.xz',
+         '6487eb113ef6e841aedab6cb6fa704006377d68f64dd544570aa42f462a52b85')
+     ASSET_ARM64_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20260924/arm64/rootfs.ext4.zst',
+diff --git a/tests/functional/riscv64/test_milkv_duo.py b/tests/functional/riscv64/test_milkv_duo.py
+index 6a7e2a5d1967..fdc83d7c8284 100755
+--- a/tests/functional/riscv64/test_milkv_duo.py
++++ b/tests/functional/riscv64/test_milkv_duo.py
+@@ -14,11 +14,11 @@ class MilkvDuoMachine(LinuxKernelTest):
+     timeout = 120
+ 
+     ASSET_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/Image',
+         '174f8bb87f08961e54fa3fcd954a8e31f4645f6d6af4dd43983d5e9841490fb0'
+     )
+     ASSET_DTBS = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/dtbs.tar.xz',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/dtbs.tar.xz',
+         '97e5e65a7e6c68303e53486af120c0846ee8df572e9c15f0c4dccb831d0cef4b'
+     )
+     ASSET_ROOTFS = Asset(
+diff --git a/tests/functional/riscv64/test_tt_atlantis.py b/tests/functional/riscv64/test_tt_atlantis.py
+index 48abd5cd27c2..7cd5234432d9 100755
+--- a/tests/functional/riscv64/test_tt_atlantis.py
++++ b/tests/functional/riscv64/test_tt_atlantis.py
+@@ -14,7 +14,7 @@
+ class TTAtlantis(LinuxKernelTest):
+ 
+     ASSET_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/Image',
+         '174f8bb87f08961e54fa3fcd954a8e31f4645f6d6af4dd43983d5e9841490fb0')
+     ASSET_ROOTFS = Asset(
+         ('https://github.com/groeck/linux-build-test/raw/'
+diff --git a/tests/functional/riscv64/test_tuxrun.py b/tests/functional/riscv64/test_tuxrun.py
+index 6203a45060ce..b470c05300a7 100755
+--- a/tests/functional/riscv64/test_tuxrun.py
++++ b/tests/functional/riscv64/test_tuxrun.py
+@@ -17,7 +17,7 @@
+ class TuxRunRiscV64Test(TuxRunBaselineTest):
+ 
+     ASSET_RISCV64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/Image',
+         '174f8bb87f08961e54fa3fcd954a8e31f4645f6d6af4dd43983d5e9841490fb0')
+     ASSET_RISCV64_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20241119/riscv64/rootfs.ext4.zst',
+diff --git a/tests/functional/s390x/test_tuxrun.py b/tests/functional/s390x/test_tuxrun.py
+index 1dd662aaaf05..420e7146bb10 100755
+--- a/tests/functional/s390x/test_tuxrun.py
++++ b/tests/functional/s390x/test_tuxrun.py
+@@ -17,10 +17,10 @@
+ class TuxRunS390xTest(TuxRunBaselineTest):
+ 
+     ASSET_S390X_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/s390/bzImage',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/s390/bzImage',
+         '5efeb31754b211440e1595ab11355bb006fe78a2c0604ed0a8c55c4598b71aec')
+     ASSET_S390X_VMLINUX = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/s390/vmlinux.xz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/s390/vmlinux.xz',
+         '5bbd4d34e0950f88053a9bfd16078896df4b1ee1696fc2ad62488e681a6bdd8e')
+     ASSET_S390X_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20260924/s390/rootfs.ext4.zst',
+diff --git a/tests/functional/x86_64/test_tuxrun.py b/tests/functional/x86_64/test_tuxrun.py
+index 1a1138d16aea..d2e6008ae708 100755
+--- a/tests/functional/x86_64/test_tuxrun.py
++++ b/tests/functional/x86_64/test_tuxrun.py
+@@ -17,10 +17,10 @@
+ class TuxRunX86Test(TuxRunBaselineTest):
+ 
+     ASSET_X86_64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/bzImage',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/x86_64/bzImage',
+         '24a3ade610c2cc426ff821050de8a35930b0371357d94cc2c334abac6658552b')
+     ASSET_X86_64_VMLINUX = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/vmlinux.xz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/x86_64/vmlinux.xz',
+         '77bf44cca48c9c1b9c142e16a2311d58b8ae3462b61bce44bcaf9243b5f26628')
+     ASSET_X86_64_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20260924/x86_64/rootfs.ext4.zst',
+-- 
+2.56.0.116.g6de20f6092dc
+
 

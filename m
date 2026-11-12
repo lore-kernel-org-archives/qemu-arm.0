@@ -1,95 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 52326606A323
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:10:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54915606A321
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:10:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=REaHkrgm;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=DQOkzYvY
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=A7IEuLMM;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=kDNLgKKI
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRZFA-0000q2-Sb; Thu, 12 Nov 2026 13:09:54 -0500
+	id 1xRZFJ-0000sL-AS; Thu, 12 Nov 2026 13:10:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZF3-0000l3-Os
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:47 -0500
+ id 1xRZFB-0000q9-G7
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:54 -0500
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZF1-0005Mf-L2
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:45 -0500
+ id 1xRZF9-00060s-P0
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:09:53 -0500
 Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6ACFa0EF012045
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:42 GMT
+ 6ACFZlxR011361
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:50 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- S/l24zL47yoc2vzyA8klzaXqJng2GJFFJTyIwtBzDck=; b=REaHkrgmUheH8oPr
- Zkr8cXX8b9PwOssg1+Fnr/aj9O6P60PZynBaIeuf7lZqDkggAOSzlbW4W8bKPmDG
- ubwUrcMj8FXJYK4Sb2eG8BWPv2RDaJEdgiPbWqmolO5jBUQAqVYU7bIQfobHbZt6
- JqemT+tIiSdcwMkJTXr5ZMLwPt3KcKuIIeHULt8bIKJVSzu3soUeBWyWJRBexHOY
- /e4tDkWfqdntV9ZW+zVND111PzdynAVBltlRGKlGykFf1hf/MFZIv1hxuR88ClM/
- rfFXPK/e8zFVoTOoDJq78UvD/QqoDo0w8K9NzAQ5gTrfvWxA9Y0OF2lBb3MFgXWQ
- 6vQnGg==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwg1b8q5k-1
+ 6fKbMKn68ezBHC8ou3dOXWEvUPDMjx21gRkA5jMNGU8=; b=A7IEuLMMOGCDV1pP
+ adeEcdWrWzS5FGSA/VAEII2kcyOH8ioUdObVaWp9YGrMqhKSMUBn5m9VblT3exbT
+ F4KHu+xwU3xUSISHWxV/JqYy//I6WcTolTK20kyIew5KAo+Uux+ky/qp1cu1VvH5
+ tUBgkQUj8xkLlfEWQ83JbcfbzVutxMpb8X2kiaF5Hp7Ftv6lMoCjvTwkyp7pLym5
+ wC3io2ZmUyxJLm3dT2hCH1xS5oZsDEY2UdYhEeqXizurtpZorMCaV3RMjPBpBBSy
+ MDoXLTKpj6UKdbIMWuP0Uu3nkiakJOsfyrtc4/zbZfCFsWAeXa8UNLaECcVZu9G2
+ I77V2w==
+Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
+ [209.85.222.72])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwg1b8q6e-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:41 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-93f2c0e6653so2547385a.1
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:09:41 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:09:50 +0000 (GMT)
+Received: by mail-ua1-f72.google.com with SMTP id
+ a1e0cc1a2514c-99b8fbf29a9so52642241.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:09:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794506981; x=1795111781; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1794506989; x=1795111789; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=S/l24zL47yoc2vzyA8klzaXqJng2GJFFJTyIwtBzDck=;
- b=DQOkzYvYa1NCe9L6Vt4devFI2DONUVLgSiiBFMWTa1HcYI1g9KrIpbzlhygfmRpxr5
- +GY2utBPvkg5N93MWIyG4+6nyW/C28IipJUugCOSMskNKo0fDXFjOZymkGAPHlh83klV
- IDQC29RRhKIYLTne7OPPqkotiXtK5OypypMtQ6jduZoweFt7P3p7gbH51dWeerGkXTYW
- 5KG8+bBFxy0qYLvZivqmWMVQEvjIl7a/uHVF7xv1D2JitWKfmC2U9sCZB4hSQHiVejaG
- hrYUxkrilPU7YjVvtSjAX6ouIzpYl9xhxsY8GcyznRLdaFGApUeaksZiG6wv4wCYRJBo
- 1VbQ==
+ bh=6fKbMKn68ezBHC8ou3dOXWEvUPDMjx21gRkA5jMNGU8=;
+ b=kDNLgKKIWf3Q9pLhqtEL9tlAWlnJ25YnkDWclDtMmGZpomhf5Q1+Y2Py9IPVOkpJhf
+ LBuKnzLs1tMdlS7aGZ2D9XdAsH+AzxxGjh1c6lMGttGTtdYr0S8ZHu9Jh/0CEJ0KkzWz
+ DLRdvq6JhppUroAmotTyTjvIkHkmD94UxhHXRCFsYFxkICop4LYy404LQjWGqIqE8vVx
+ 51Z/46/vDUnEUGKjGbjodtaQscLWmfT8XqUqaJmwzeXqF9v+CFEx/q4iRFzvhPlDil9x
+ wYnzLT+fy6M+mYxshRsiEhzvr/jxCzzHThQ2ltL6X+tttokwBjbmwTHoQ6r098iMjZoM
+ 37hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794506981; x=1795111781;
+ d=1e100.net; s=20260707; t=1794506989; x=1795111789;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=S/l24zL47yoc2vzyA8klzaXqJng2GJFFJTyIwtBzDck=;
- b=ZeSbfcE8XxNQ3uWfl2qyRn5ZseVnQ5WPN/VeJwvfhqqe4Yv7njcV6/Kzt+8g5OFRJw
- KeqzjYM2WjuwT6EWSSRRZQ9EQrVEagynAvtZbkJuDPtMlwsj2oNyXaBtdICKJbHqN1EL
- ezsgYVjr8y69AvXYW22RwyWewNT/d5p0NX2QxbSVh/3RT7ZBT2x6StIhvLGCt/9MShpR
- VgW/FqbjO7+Ld99U6Ki78kMiQppedwlsANYAOXyhamBVFAvEnRyl8aJa2BUKKDFFPCgt
- pqnJj8lryaTkvWxJRao1vRKhcUo05aFRNGsRq6rqnSs3kVJm6kG7fLXPhadhqP2rK42k
- PMcg==
+ bh=6fKbMKn68ezBHC8ou3dOXWEvUPDMjx21gRkA5jMNGU8=;
+ b=1O7ChVzcpGrW9Uz8J1IhTLNKOmxXl8kOlGEz2T0ff1m29VaRiL7MNcol7ae+J6DZhw
+ lgyVaYggi0J/bnBSnAFI/FabofSjNLfuAdZMwugnv2TH+WFt4ZDZUFvdM3lliBkcjFjr
+ /NSVrJCdQJ9B1M8gL457l+G0dJOFw6BRE2/gQyS/Miss7FW+yuRa5wxCy9+Q6rWDO153
+ q5Lljt2VTBhEscSW6woKXFJy8kx729Ka2xLGEpfEDTqdMnnuZcmfD7CcHvUbWKWvSfG2
+ JG1bdtjEK0Io3qpMRdFv/EbbKLBM/7kwSMcE5uq78htZjnXcfjhtbbff/Ahbq3W3Pf5M
+ 77ag==
 X-Forwarded-Encrypted: i=1;
- AL+hErF72/pUL6gpOe/T8L92Z5ZzzlRA5yg53N8z4PhVDRPweKhGY9hePH7yoom0kj/8yDrexWkUfzt4ew==@nongnu.org
-X-Gm-Message-State: APuU4Z/34n1o/6INFecxdWPnClh/pbEGfiEJc7nBm5PsMWuPG5YPhJK/
- IxGLIoJxCJQzHNxXzEW8LcOQMCvFvmrJv614Ct+CdcfAv8teMw4h3/MYQ2gQ7QZUVhfDpStNBnT
- 5zl2oT4A3QMevr0E9NFaPfml9Zsc+43TU7LuUkBkGIHrHqj9B4EAHJOs=
-X-Gm-Gg: AYBFou0+pfv8J6xZYPkTmgVJd7r7hYZCwQ4Ekv+dlc2CkWkFnRMa0SZsWM5XuGcX2Bs
- aCyxH4MqtCfL8HQJTVz8WXD+uZ5g+QiD1H83fo36mCkgAe4ma2fdj/Ss3TVfFGb1XbJ7+lJLJox
- dSHNU/HsfNm7E7gthCgKEBoDXk5cqkGCXCgOHAUyu+IWYqqMZCrT3cZrp0u62WyMSfG7Mi5acTB
- udJanVPLle10tSvWp0sQJ0URoWIxrP9doWbHokIiUxMy0Imco2aUVqt6ePwaUGp3PqO6Q9nwwwt
- FWxy+FWwsYTcqAUU6YTX3mgyCdKR+hsgRprdip32J076LhKQrsKs1oBGvQdMpVrBy+xY7SUQxsx
- /xd9MpElL90YKFmClUhQ83ZPspgYnWgvHYTrJVQomvR+2vNQazatYUGjG+uzX8+eT9PyUxiZczI
- HSlDnDi+VDYDf/lA==
-X-Received: by 2002:a05:620a:454f:b0:93f:e53:a55c with SMTP id
- af79cd13be357-9494bc03f91mr28770885a.78.1794506980841; 
- Thu, 12 Nov 2026 10:09:40 -0800 (PST)
-X-Received: by 2002:a05:620a:454f:b0:93f:e53:a55c with SMTP id
- af79cd13be357-9494bc03f91mr28766185a.78.1794506980348; 
- Thu, 12 Nov 2026 10:09:40 -0800 (PST)
+ AL+hErFJlLirV1D6lC23loNUqeJYYXh9zEqq0URkGs8rMqOzO6E9yaloVpI05TortsyUUsE2ESpze8XnlA==@nongnu.org
+X-Gm-Message-State: APuU4Z+eJ4h/pUK7qmbG87U466vKP1JQqdZTud019uSmfNSaiso0GsZG
+ qZin5JrWiUrCk0C5KSOy+twIgaOwMevfO5JYA2Xygs9OOUNdirshv/gQ/3HO+M+OIRI4ly8owjj
+ g4NrHGNcFfA2gChTyKaWyjEEUHtbtG3ihH9pIP0Wq8jr8nzHV+mFWcTI=
+X-Gm-Gg: AYBFou0r76v89FXXpsCwBmnh0mrxCbKdUdhvl1bvYol5BaZAvk+OGBzvMRfdiD3p5VX
+ xQKLUJrbHl8uNYM3UTghnRdiu98UATk6TTJNk9h7Fze6bHXXkVKEtL6S4D+/U4FrHtWWZn5njQq
+ SZjFI7Ao/n/ra9Y91c+4TLQoj2whGeT1KTazPxfsIq0S0yV06j+L+pr379d7iUKjo5QOnlJYbkY
+ akgmivhDgyv5q7y959ntu0P2q6hmDlOKvtnq0tPKpH8/OmvpfOZEOTucziTUaOvyn15XgQslUMZ
+ NIdG95GZM1e1AGEq8KIQQQDpr5xvodY2s03Y+dCb785cabKTqo4AM8KgPgy2/lTpolv4qpz+tGa
+ r8lX21meoDzvoVNJy+KoPa2FuDyk69uQeVhOXl6iyXIdrq36FuGFQb6DtOQno4xcI7KX+kHsxFY
+ 7vTv0au/sChzpniQ==
+X-Received: by 2002:a05:6102:5086:b0:7cc:174b:f7bc with SMTP id
+ ada2fe7eead31-7d64d784ec5mr994137.15.1794506989252; 
+ Thu, 12 Nov 2026 10:09:49 -0800 (PST)
+X-Received: by 2002:a05:6102:5086:b0:7cc:174b:f7bc with SMTP id
+ ada2fe7eead31-7d64d784ec5mr978137.15.1794506988651; 
+ Thu, 12 Nov 2026 10:09:48 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-49c60f8d66esm490864f8f.57.2026.11.12.10.09.38
+ ffacd0b85a97d-49c603f4d29sm532900f8f.35.2026.11.12.10.09.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 12 Nov 2026 10:09:39 -0800 (PST)
+ Thu, 12 Nov 2026 10:09:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -103,10 +103,10 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org
-Subject: [PATCH-for-12.0 v2 05/12] linux-user/arm: Move ELF/vDSO endian checks
- to runtime
-Date: Thu, 12 Nov 2026 19:08:51 +0100
-Message-ID: <20261112180859.85380-6-philmd@oss.qualcomm.com>
+Subject: [PATCH-for-12.0 v2 06/12] linux-user/arm: Move CPU endian checks to
+ runtime
+Date: Thu, 12 Nov 2026 19:08:52 +0100
+Message-ID: <20261112180859.85380-7-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261112180859.85380-1-philmd@oss.qualcomm.com>
 References: <20261112180859.85380-1-philmd@oss.qualcomm.com>
@@ -114,25 +114,25 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=c6Q+0h9l c=1 sm=1 tr=0 ts=6af600e6 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Authority-Analysis: v=2.4 cv=c6Q+0h9l c=1 sm=1 tr=0 ts=6af600ee cx=c_pps
+ a=ULNsgckmlI/WJG3HAyAuOQ==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=EUspDBNiAAAA:8 a=qCqlQNNpGRuE3uIUgOYA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=PEH46H7Ffwr30OY-TuGO:22
-X-Proofpoint-GUID: dAmyL7K-DLlVvQHJ3EgnFGX-nBrVjfB8
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX8JUlFEYu8IF9
- g9CFiG0oUegLTbVVyOVrca98PNfdgZlxX1uOlhPxW/Wiy/TVAvlq2PjIEsNzFMqH4h/i9a7il0q
- QQvjl88ftEVbUfn6YC1VezWiHuavC80FD/edsF5s8qPWLtXTHqVZqnTHkLqMWFuZk5D+NLZFqi7
- bqmfUlK7Z38vpUNGQM7bJy+vGQYQ/6kBELsnOtORJtRzPEnw1FAZTB1BRl7f7327chle3sLrs9U
- FC4ryaQJ75n9OJPRhnqcy/AWOB4aMxisdHRPG0JcLX3H5Y8tf0l04pUsNnJvvmKLAp4vb75pxeE
- 1RpvvzACOJg/N3GpHjqkR0kebLJtX8UczyIrOq5UQNdmQoCfW8qKu/e6W3WNwQzZRRm7+KNtadY
- K8XNc18yDu9FuThoOnlPOi8L93CONTQ6dmTGJdjpKF2ey1wkGinwg/z9ln3OCIbtj4pY43worYE
- 6HyFfLa9D5CDrtkNiSg==
-X-Proofpoint-ORIG-GUID: dAmyL7K-DLlVvQHJ3EgnFGX-nBrVjfB8
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX5RFo/i10PDdZ
- 4FTJzqq1I8qySd63CNt51GiWdvcasCk8Z3m/y7a6eHjdVp6nwXh6kHu3JAlAshgJg+RXWYljTCD
- 0E6VJp8IrMwkj5Zv3C+IAgxrKLyCERc=
+ a=EUspDBNiAAAA:8 a=iFU7bGKKkzA5f0XaDRsA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=1WsBpfsz9X-RYQiigVTh:22
+X-Proofpoint-GUID: wZYZVrvEb0m0qS5jWV6KlbjhacJgkpm4
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX6tX/AnjJe/kt
+ XWJ6lw0rEV1SZUX7jFPX8cmMdjN3e3V2d+HHLmtC6U6sGiKf4W6FHg/xFcy1Hqz8jboju8ZInkN
+ DAtMMb3vMmn/TFNElU8a/NnxD5xwusu862s1ZFUqsX1QQXWHxRbibJWDSZRD+6Q0wmrCwGLvGHj
+ dOpxwn6g86gvu2FMYkC3X33uoOcD6289Gv637ZCDKKjspKIBdhtgggvgDnj6dr8GphUWMUvqbcl
+ 2ggm+XDnTI2oJnol8jUWcyqAsJmSWrqfhpoWyvQVVFuDFvVm7uiAZ/WPJGTh6lFg6zqEI76DDUx
+ HAUpD3lPEwMA34UgvgfQkpUZONuRVfZSIZa/ENM0w5DBarIqWJDHLn3S3muE+nknhAnQreKApXt
+ gnl753vcV0hnSpvlcEprIN/5UeWxrDaT5RChtTElJ6F3xspNSatnww55tohKEJfgfZLIu7ipr09
+ KaiXY+rOlAbGeEPoGHw==
+X-Proofpoint-ORIG-GUID: wZYZVrvEb0m0qS5jWV6KlbjhacJgkpm4
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX5QUPtYNOBZ/G
+ QDuVV7LJPwedGWLiulNwm3+jXQgM6AtN8BzJLvbKoqLPKffoA6fpSEEoMnxibRxRKU+s8EL8uEU
+ e0wKoBpVKr34vsTHY5zVCQgJEWJqqgk=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-12_02,2026-11-11_03,2025-10-01_01
@@ -168,200 +168,60 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Use target_big_endian() for the platform name, uname machine,
-/proc/cpuinfo suffix and vDSO selection.
+Use target_big_endian() for BE8 code-order handling.
 
 Preserve the behavior of the existing fixed-endian targets.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- linux-user/arm/target_proc.h    | 18 +++++------------
- linux-user/arm/target_syscall.h |  6 +-----
- linux-user/arm/elfload.c        | 36 +++++++++++----------------------
- linux-user/uname.c              | 13 +++---------
- linux-user/arm/meson.build      |  4 ----
- 5 files changed, 21 insertions(+), 56 deletions(-)
+ target/arm/cpu.h          | 10 ++++++++--
+ linux-user/arm/cpu_loop.c |  2 +-
+ 2 files changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/linux-user/arm/target_proc.h b/linux-user/arm/target_proc.h
-index d3186ca655cf..d9e00371a4c7 100644
---- a/linux-user/arm/target_proc.h
-+++ b/linux-user/arm/target_proc.h
-@@ -18,12 +18,6 @@ static int open_cpuinfo(CPUArchState *cpu_env, int fd)
-     const char *elf_name;
-     int num_cpus, len_part, len_var;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b2f393f50184..7fb1726e8744 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -22,6 +22,7 @@
  
--#if TARGET_BIG_ENDIAN
--# define END_SUFFIX "b"
--#else
--# define END_SUFFIX "l"
--#endif
--
-     arch = 8;
-     elf_name = target_big_endian() ? "v8b" : "v8l";
-     midr_rev = FIELD_EX32(midr, MIDR_EL1, REVISION);
-@@ -41,29 +35,27 @@ static int open_cpuinfo(CPUArchState *cpu_env, int fd)
-             midr_var = (midr >> 16) & 0x7f;
-             len_var = 2;
-             if (arm_feature(&cpu->env, ARM_FEATURE_M)) {
--                elf_name = "armv7m" END_SUFFIX;
-+                elf_name = target_big_endian() ? "armv7mb" : "armv7ml";
-             } else {
--                elf_name = "armv7" END_SUFFIX;
-+                elf_name = target_big_endian() ? "armv7b" : "armv7l";
-             }
-         } else {
-             midr_part = midr >> 4;
-             len_part = 7;
-             if (arm_feature(&cpu->env, ARM_FEATURE_V6)) {
-                 arch = 6;
--                elf_name = "armv6" END_SUFFIX;
-+                elf_name = target_big_endian() ? "armv6b" : "armv6l";
-             } else if (arm_feature(&cpu->env, ARM_FEATURE_V5)) {
-                 arch = 5;
--                elf_name = "armv5t" END_SUFFIX;
-+                elf_name = target_big_endian() ? "armv5tb" : "armv5tl";
-             } else {
-                 arch = 4;
--                elf_name = "armv4" END_SUFFIX;
-+                elf_name = target_big_endian() ? "armv4b" : "armv4l";
-             }
-         }
-     }
- #endif
- 
--#undef END_SUFFIX
--
-     num_cpus = sysconf(_SC_NPROCESSORS_ONLN);
-     for (int i = 0; i < num_cpus; i++) {
-         dprintf(fd,
-diff --git a/linux-user/arm/target_syscall.h b/linux-user/arm/target_syscall.h
-index 8c4ddba71773..d344f614954c 100644
---- a/linux-user/arm/target_syscall.h
-+++ b/linux-user/arm/target_syscall.h
-@@ -10,11 +10,7 @@
- #define ARM_NR_set_tls	  (ARM_NR_BASE + 5)
- #define ARM_NR_get_tls    (ARM_NR_BASE + 6)
- 
--#if TARGET_BIG_ENDIAN
--#define UNAME_MACHINE "armv5teb"
--#else
--#define UNAME_MACHINE "armv5tel"
--#endif
-+#define UNAME_MACHINE (target_big_endian() ? "armv5teb" : "armv5tel")
- #define UNAME_MINIMUM_RELEASE "2.6.32"
- 
- #define TARGET_CLONE_BACKWARDS
-diff --git a/linux-user/arm/elfload.c b/linux-user/arm/elfload.c
-index ce69bf054273..baa04851caf2 100644
---- a/linux-user/arm/elfload.c
-+++ b/linux-user/arm/elfload.c
-@@ -179,29 +179,21 @@ const char *get_elf_platform(CPUState *cs)
+ #include "kvm-consts.h"
+ #include "qemu/cpu-float.h"
++#include "qemu/target-info.h"
+ #include "hw/core/registerfields.h"
+ #include "cpu-qom.h"
+ #include "exec/cpu-common.h"
+@@ -2660,11 +2661,16 @@ static inline int sme_vq(CPUARMState *env)
+ static inline bool bswap_code(bool sctlr_b)
  {
-     CPUARMState *env = cpu_env(cs);
- 
--#if TARGET_BIG_ENDIAN
--# define END  "b"
--#else
--# define END  "l"
--#endif
--
-     if (arm_feature(env, ARM_FEATURE_V8)) {
--        return "v8" END;
-+        return target_big_endian() ? "v8b" : "v8l";
-     } else if (arm_feature(env, ARM_FEATURE_V7)) {
-         if (arm_feature(env, ARM_FEATURE_M)) {
--            return "v7m" END;
-+            return target_big_endian() ? "v7mb" : "v7ml";
-         } else {
--            return "v7" END;
-+            return target_big_endian() ? "v7b" : "v7l";
-         }
-     } else if (arm_feature(env, ARM_FEATURE_V6)) {
--        return "v6" END;
-+        return target_big_endian() ? "v6b" : "v6l";
-     } else if (arm_feature(env, ARM_FEATURE_V5)) {
--        return "v5" END;
-+        return target_big_endian() ? "v5b" : "v5l";
-     } else {
--        return "v4" END;
-+        return target_big_endian() ? "v4b" : "v4l";
-     }
--
--#undef END
- }
- 
- bool init_guest_commpage(void)
-@@ -257,21 +249,17 @@ void elf_core_copy_regs(target_elf_gregset_t *r, const CPUARMState *env)
-     r->pt.orig_r0 = tswapal(env->regs[0]); /* FIXME */
- }
- 
--#if TARGET_BIG_ENDIAN
- # include "vdso-be8.c.inc"
- # include "vdso-be32.c.inc"
--#else
- # include "vdso-le.c.inc"
--#endif
- 
- const VdsoImageInfo *get_vdso_image_info(uint32_t elf_flags)
- {
--#if TARGET_BIG_ENDIAN
--    return (EF_ARM_EABI_VERSION(elf_flags) >= EF_ARM_EABI_VER4
--            && (elf_flags & EF_ARM_BE8)
--            ? &vdso_be8_image_info
--            : &vdso_be32_image_info);
--#else
-+    if (target_big_endian()) {
-+        return (EF_ARM_EABI_VERSION(elf_flags) >= EF_ARM_EABI_VER4
-+                && (elf_flags & EF_ARM_BE8)
-+                ? &vdso_be8_image_info
-+                : &vdso_be32_image_info);
-+    }
-     return &vdso_image_info;
--#endif
- }
-diff --git a/linux-user/uname.c b/linux-user/uname.c
-index 32f71f24920d..0f4658bff151 100644
---- a/linux-user/uname.c
-+++ b/linux-user/uname.c
-@@ -38,20 +38,13 @@ const char *cpu_to_uname_machine(CPUArchState *cpu_env)
-      * see arch/arm/kernel/setup.c: setup_processor()
+ #ifdef CONFIG_USER_ONLY
+-    /* BE8 (SCTLR.B = 0, TARGET_BIG_ENDIAN = 1) is mixed endian.
+-     * The invalid combination SCTLR.B=1/CPSR.E=1/TARGET_BIG_ENDIAN=0
++    /*
++     * BE8 (SCTLR.B = 0, big-endian target) is mixed endian.
++     * The invalid combination SCTLR.B=1/CPSR.E=1/little-endian target
+      * would also end up as a mixed-endian mode with BE code, LE data.
       */
++#ifdef TARGET_RUNTIME_ENDIAN
++    return target_big_endian() ^ sctlr_b;
++#else
+     return TARGET_BIG_ENDIAN ^ sctlr_b;
++#endif
+ #else
+     /* All code access in ARM is little endian, and there are no loaders
+      * doing swaps that need to be reversed
+diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+index 262ab5cc416d..6d19a9a8a070 100644
+--- a/linux-user/arm/cpu_loop.c
++++ b/linux-user/arm/cpu_loop.c
+@@ -505,7 +505,7 @@ void init_main_thread(CPUState *cs, struct image_info *info)
+         }
+     }
  
--    /* in theory, endianness is configurable on some ARM CPUs, but this isn't
--     * used in user mode emulation */
--#if TARGET_BIG_ENDIAN
--#define utsname_suffix "b"
--#else
--#define utsname_suffix "l"
--#endif
-     if (arm_feature(cpu_env, ARM_FEATURE_V7))
--        return "armv7" utsname_suffix;
-+        return target_big_endian() ? "armv7b" : "armv7l";
-     if (arm_feature(cpu_env, ARM_FEATURE_V6))
--        return "armv6" utsname_suffix;
-+        return target_big_endian() ? "armv6b" : "armv6l";
-     /* earliest emulated CPU is ARMv5TE; qemu can emulate the 1026, but not its
-      * Jazelle support */
--    return "armv5te" utsname_suffix;
-+    return target_big_endian() ? "armv5teb" : "armv5tel";
- #elif defined(TARGET_I386) && !defined(TARGET_X86_64)
-     /* see arch/x86/kernel/cpu/bugs.c: check_bugs(), 386, 486, 586, 686 */
-     CPUState *cpu = env_cpu(cpu_env);
-diff --git a/linux-user/arm/meson.build b/linux-user/arm/meson.build
-index 348ffb810d7f..47faf42eef6c 100644
---- a/linux-user/arm/meson.build
-+++ b/linux-user/arm/meson.build
-@@ -6,10 +6,6 @@ syscall_nr_generators += {
-                    output: '@BASENAME@_nr.h')
- }
- 
--# TARGET_BIG_ENDIAN is defined to 'n' for little-endian; which means it
--# is always true as far as source_set.apply() is concerned.  Always build
--# both header files and include the right one via #if.
--
- vdso_be8_inc = gen_vdso.process('vdso-be8.so',
-                                extra_args: ['-s', 'sigreturn_codes',
-                                             '-p', 'vdso_be8'])
+-    if (TARGET_BIG_ENDIAN) {
++    if (target_big_endian()) {
+         /* Enable BE8.  */
+         if (EF_ARM_EABI_VERSION(info->elf_flags) >= EF_ARM_EABI_VER4
+             && (info->elf_flags & EF_ARM_BE8)) {
 -- 
 2.55.0
 

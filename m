@@ -1,95 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2BCCC606A334
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:11:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2470606A323
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 18:12:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=erdGgyOW;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=WZXNfiLG
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=kVgi0CsD;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=NqaMWuiX
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRZGK-0002Ik-OO; Thu, 12 Nov 2026 13:11:04 -0500
+	id 1xRZGW-0003We-02; Thu, 12 Nov 2026 13:11:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZFe-0001M8-BC
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:25 -0500
+ id 1xRZFv-0001XW-NV
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:47 -0500
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xRZFc-0008IA-Pm
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:22 -0500
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1xRZFt-0000t0-UU
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 13:10:39 -0500
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6ACGRR0m1768187
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:20 GMT
+ 6ACFZTUu3841209
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:35 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=; b=erdGgyOWXQpWjs+J
- qtDxve+5y35dZOI9DF/Y2Iv4i6IZ+o42r2AGWkJhBMi+DEK8i5qO3H5arF4xqtQI
- agONPZrq6MijPQWOLFPH0spMFAUyCkRAvDZwDezFs4Wx2uCOx7oNPeO5IUYg3WeD
- QlRen6LNy8lL4WhHs8Nz9xzol6+U//o8jEOY2NsTTJjJeAYqCggF7PIhQxGYrgiz
- BiXsQEgwCy37SESj0nS5eiOdCkRNJ4wa1rfVrdsN1V4AEuAAeBI355Yz1JvAkne5
- DaX53V4+36A0y2wAECyHZRkXycsn3/nbdrVfDPtljJ/2CHUcX+e86j7YfGwyDHYT
- NPbmEQ==
-Received: from mail-vs1-f70.google.com (mail-vs1-f70.google.com
- [209.85.217.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwh0age5d-1
+ 0lrvEWcZ2AvMr2EqzUiL5SpJkPzac2qhAJSLu8J1TIc=; b=kVgi0CsDkT+DwdRl
+ hKYxDCXHjE5o6gSgYk6Comv5FolxcQyvfZpILQ52g8E5StWzxpH7L17JTLA1WkyX
+ N8hRvSlANA1EcNqJuVS6pbnGZMi8/aGtjLMKENw8M/JY/sdaB2bb+utlFFRcnlss
+ Iav6UrD69Xdok1Jkrwe5xyMm/d5GdVx6BcVjaz6Jc2ctxcMyl07ZSrGjkNgOd29q
+ sjFdeeWCWlBNUw6f8LojSwK2QLOvlOFHsPxVrwS29E5HO5oc6JtHcfUaq4dbRTqv
+ rXKnXa+PaCx9+dhfiZZak1LTDQ92j2LJvtKAF6s5ZDSOdNwnLyjThk9cz1DlYgL6
+ ON/xog==
+Received: from mail-ua1-f70.google.com (mail-ua1-f70.google.com
+ [209.85.222.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hw9e1abcv-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:19 +0000 (GMT)
-Received: by mail-vs1-f70.google.com with SMTP id
- ada2fe7eead31-7d2ef6a9f18so5490137.2
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:10:19 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 18:10:35 +0000 (GMT)
+Received: by mail-ua1-f70.google.com with SMTP id
+ a1e0cc1a2514c-9907539aff7so94487241.2
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 10:10:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794507019; x=1795111819; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1794507035; x=1795111835; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=;
- b=WZXNfiLGy6hWVRZKh9XDH5ne6gEv6SwuU87QK+lWv2NB1hjgQTPhb+rwxJMi/zr+XF
- dMA3WybMtTxzxkmCBJUfo6TVYXtIIcD5Ptk+r99Vsiy9kSkC28Q/7sN22Jz/W4TbeVoT
- 6f1a28nha4F25cEib3Arf5xsIl2wJ+r3GeLZojJ/JUhvsTUVnxgTpO92OkAPLbq8rKTV
- eMZ6Z9/pdN4pXGN5HjVQ20ii6JRjp8ZVwL8e11rEqa6XDOU2ZImZAVJJGpv083PKk5CD
- UEG17DQaEsZq9o1+g8BsTqcOe2WRTK7aW2t1lGJw+PxdJzinTIchIYdBn5+I6xLWvnit
- tE+w==
+ bh=0lrvEWcZ2AvMr2EqzUiL5SpJkPzac2qhAJSLu8J1TIc=;
+ b=NqaMWuiXB8Neo3WLaXzSSEKYST1ddXx+sxNYxBE6s/QpU8DU6tqefS4rFgq01uQ7kL
+ Jl3NcYSXOVPeicyiY+3EDPJiTqCsJpJ1MaRrmAXgxNOYMqgJkXx9IAuubhm638NNIJ1K
+ fFKK7MyWyRQ7CYUdD7ZKrMS5UoszAZOuMSsCFMij+zNSw+JbPeeqcrBpUf+k5eGk/0oD
+ B5kJA0Tgxqqp7/QDL36s5fyB3dzuwLWeZVRLDzor8nla7iejaIm449P76r60mu+znp89
+ 7PkBlaBsHD/FBmtHzjcxpMcsFPgE+aOG9/tTWr3qN6ToI3xdpbEBvkj3mptenB8WVwie
+ cNzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794507019; x=1795111819;
+ d=1e100.net; s=20260707; t=1794507035; x=1795111835;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Szxmyh6AHSFS/1ZMahHiUVQVJ6UFuz/SaFCJMKqS+LM=;
- b=Uv0rcf5GgaehErDbACPWcm2bJ4rbTkgssjJAqAqWnB5L1YNyLgCIF9ECYYIvjGAhGq
- fD6GcX5bu9fB8PGwQxzef2fkNkWPQq+lwcvYv9efMM2hrVMa2g9wMhzeD0N2+i43k/8W
- Bw3G2ogg2IDj3W9doNWiBj22PM+ZYUgnYH22fJY5amUC3kboPjfS7WdM47ZxB/Qc1ky8
- Qqoo0GnyUwP4KbcD48l4ZDHd+DzdTT9MT19YOF3mCzZ0YrF44OXz7FPjee9cgqD/9aX3
- op7DfUn5Pko/bu3turagPd9LBdp6gWjoRey/7xOb9nlOjADFgpZvDWVu6CeNBVvL2QLP
- oi3g==
+ bh=0lrvEWcZ2AvMr2EqzUiL5SpJkPzac2qhAJSLu8J1TIc=;
+ b=w/9J6hj6pfkBIMEfftwJbtliMr2Qmh+RzgRwKUgHnnUVL4Ed0ZG767MwVsWbpMDylN
+ 6Ghq0K57+eb40XmajsUhGkw2PHlHxUZlj8vQifOZrSn7urJihh0HLzlULz1gZnbnl0Un
+ 8PZSWBGuqA8OFxZ2c6MngTc6ewXY25UyryC0d6d+9xxbhL4yLx9RmDqYP1vYcUzbrbja
+ 0+niNsLcaCGlgI0UMYa8KzsQ8hvTFT2Jez5eBbBhze33rj+CyLIQjzuxMYxRxl0WjhKI
+ Zj+1AE1d1AeUdMTYwdc93ig02Iqsva/a1E6c5CypNveqY/bk8G6T9Vk1Jbose2/87WF4
+ rgJQ==
 X-Forwarded-Encrypted: i=1;
- AL+hErFCthcStryySKGlzA3+E9MOOGV2K/HCRTx2A+aGSclUzzXxOKWhdb3LCoG2QpGlg+gXx2CBud3Aqg==@nongnu.org
-X-Gm-Message-State: APuU4Z+2GECzjB9lL2F+saUVj4UbayrELUBvS0NlgMXwilVmrNu0FoF7
- AvQ6ORzF7I+F4rNn8IDhiezrtnyp9IrUcxUSs4AeRqQ98NgrMrU2gs6COOs4Au4Z241GpsCaUIy
- npjc+XVYbbKD21cWjkw/eelLDaY7dlX0d1Am98WiB9GrVhZdLTE41Rifvfn4asOavBw==
-X-Gm-Gg: AYBFou0cnnSAoa8FoUQwLjZvHbNtWkfDJeatiq4/xC600Q9kJuTNfOR1BoWXmnnYqP2
- uhUfQEnaaSZgbyQ2NmYXz12mh2jW8LyUidhCPaO6aOJXGhXpCnmBTIHg7UnwIiilpS6goBGOIXH
- WbIThdIvAyIINO7/s9J9j6L9PUprn+HyyKXD0UT8wNHvQTogVD4gj9+TxPtz+vFiW8Vkbt5UeRC
- q45JtPXfJXDUXn0/hOZpLy5UKhR0dbo59Ox1DMp5C8dL8qL73vcnOSMZpZsoQ67eb0Ry539//Ry
- kH05kTd44e1dLqqZ8Z4odY9eFYP8stEDxgiP3yNEaBIHs/1C/1G7fNFfX6nYQMZ8TkX8/hnLWLN
- W/LXApfLTXM08Teg4hKca+c1yYo5BbY04V+SgQrtFxoB3h1tzR50LDeHwYMCVU3HVlnBzWdp7sj
- PTvtgt9DWVNWwhjQ==
-X-Received: by 2002:a05:6102:84d3:b0:7a7:198a:c2bc with SMTP id
- ada2fe7eead31-7d50624a2cfmr2480722137.36.1794507019100; 
- Thu, 12 Nov 2026 10:10:19 -0800 (PST)
-X-Received: by 2002:a05:6102:84d3:b0:7a7:198a:c2bc with SMTP id
- ada2fe7eead31-7d50624a2cfmr2480712137.36.1794507018661; 
- Thu, 12 Nov 2026 10:10:18 -0800 (PST)
+ AL+hErGwGX40JRTIjAmJED5ycrwxe8PFuuTTWJ6uiJzzu/oOUVknFzlgs59PquYlmEJBDOBPh1jYP4I+tQ==@nongnu.org
+X-Gm-Message-State: APuU4Z+EfI8xdmxQ9cxa34GR8dqp/aXkdz58Bp5e5x7E2vvUCe4HfgB4
+ WxzPdedBSUPxF2QiXZUQWq4+sNjJ+rhHzbLuZPINk7HbZpH/EpENPYJtUqa1Eq5GMB4qAE1a9xo
+ 5vtKDvtYMoXlmsdqkzLvxpgZsOv0KvTfouCrqEPu8ozjPE2ZPrc4524M=
+X-Gm-Gg: AYBFou3PNqPtWcQDxRHu3pHKlWUyz8SnZQfoM81zXZuEETuposdkvVEJW/x1o78zvJ0
+ PvDr9IoUQ4jDLcSLGofh2ta8c6VuZkhgLjHAD7iC0BCmzOgTSQsI7/pq8Nc05VhiXquR+UwJbCv
+ jnR9SZYM8f89kHUpbQjLhwfASBrNZiG+OOLFS1RTtWNdldHY6HZCgjwhftmllR21PMfa4c7dgCX
+ rAa3JZE3SHZOiPjPesRSAfJHL30PxjF0KDBQSaSLXk0za6deI6D3QNl8bvdHFOaV9reuiJvgD8T
+ X24osb8F2Fk3C/+vP6GlFwGeD7SF5zFbbtrBaHTdebtQqdCLDFF+9eSuYzzNO/nP/yisXrJCAo9
+ yjuv4TbVw5uMPxO102jRrcLwSJFGQUJO0VwMs+n64C0IolFcA7Atdtkf/aB0lErHtz6dr8dbtUH
+ gHvfzPEVbngNvMzQ==
+X-Received: by 2002:a05:6102:605c:b0:7c3:c0b9:8d50 with SMTP id
+ ada2fe7eead31-7d64d80d28bmr92137.21.1794507034799; 
+ Thu, 12 Nov 2026 10:10:34 -0800 (PST)
+X-Received: by 2002:a05:6102:605c:b0:7c3:c0b9:8d50 with SMTP id
+ ada2fe7eead31-7d64d80d28bmr84137.21.1794507034203; 
+ Thu, 12 Nov 2026 10:10:34 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4ba08e57504sm121259335e9.2.2026.11.12.10.10.16
+ 5b1f17b1804b1-4bb4e25eb86sm76511025e9.8.2026.11.12.10.10.32
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 12 Nov 2026 10:10:17 -0800 (PST)
+ Thu, 12 Nov 2026 10:10:33 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -103,9 +103,10 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org
-Subject: [PATCH-for-12.0 v2 10/12] meson: Support Linux-user executable aliases
-Date: Thu, 12 Nov 2026 19:08:56 +0100
-Message-ID: <20261112180859.85380-11-philmd@oss.qualcomm.com>
+Subject: [PATCH-for-12.0 v2 12/12] linux-user/arm: Unify both endianness under
+ qemu-arm
+Date: Thu, 12 Nov 2026 19:08:58 +0100
+Message-ID: <20261112180859.85380-13-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261112180859.85380-1-philmd@oss.qualcomm.com>
 References: <20261112180859.85380-1-philmd@oss.qualcomm.com>
@@ -113,31 +114,31 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX/rXc3iRScw4U
- fW3y0ebFqDnk4+gEJ+v8dTSjph97cKEwMKdnMztxtZfujZgrcdkj4GGV09U7oLQpSN49WGaTHuh
- vIqlGZsiU45jIBYDHiLrxlzQRHDN8e8=
-X-Proofpoint-GUID: n4eu_Q9VLvfm0PcV4IOJ398o-rT7E7e9
-X-Authority-Analysis: v=2.4 cv=N+e8hG9B c=1 sm=1 tr=0 ts=6af6010b cx=c_pps
- a=N1BjEkVkxJi3uNfLdpvX3g==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX8kQpQOg018A+
+ CUxFpHIgRJiNi2fdkkpcGrY+MDlkaX0VgC36eVO6XUrkY3XQP7KZuEv7CfR6/YobLsM+HrmawKy
+ foIcR5hfMKGN5bRLDVf+Qi6Qx7PPqgBnT/7M2ZPCEcHUAut6iZSQXDoiAADplFBIm8KhgiegQDk
+ T96GukU9fX8TBDKa/hOhmWgLDHTvPptlD5jIoQciBLLWKDYPxIR0jtDR+INsyz3qFdo3ycM/Vwu
+ ypQ28qEzDkSLDkgkpswgX4xg8BCNSvi8Q9phhoqXnI5YR/iBlOc3oAfeHJ5oGSjP91CL57pDVsQ
+ I7Bel69vR7li7ODacB6iHWDyPVbMe9XEyFZDXmzLwUDLsUvqzP4eAcFhzH475L+NVV2NYEcfE8p
+ 2QvfVqNULv87+uFVtaE6amQf4xKOoKW9gkGZn32hfpCh72NuPnE5PHLD4e84G/HeEbi2KIlk0QG
+ +y4gPqbD0R/7ebIv2sA==
+X-Proofpoint-GUID: 2P2LwJqDjyA6nOCZV2YCCio80-dIb_gQ
+X-Proofpoint-ORIG-GUID: 2P2LwJqDjyA6nOCZV2YCCio80-dIb_gQ
+X-Authority-Analysis: v=2.4 cv=F6fC5ahN c=1 sm=1 tr=0 ts=6af6011b cx=c_pps
+ a=R6oCqFB+Yf/t2GF8e0/dFg==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=EUspDBNiAAAA:8 a=zs-5URzUCjn_2RNnlE4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=crWF4MFLhNY0qMRaF8an:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX2Bj+LfRfvKGL
- 0qX030DHB1ITvoyPuCBGOvPN51vEcNJN9tseWZxFoKNAtt/M3cwUMeEgm0fdEcP26msM50zHQbc
- hfOuyxF90crsagMr6ZzPgu2cfceWX29KtLAwKUY3D+J8odakF+lxRbr5KOmc0lNbkfaDNwI2227
- 3IIzTpeTwGNbvlMDw4XnE4Kyw3KGmbcAJxsaxNeLx46yQJTDOfJr4J/az9FHuU6iv+M9anFnMeI
- MwHyuHLUdf/QypMfmIOW5UGrtlymIAb5I42nBnjiE/vonUucyHWjmgbcBRy2oK9QqdDovIWKmIP
- G9pGqKHNquHuWFtYfi4jZvw2qbcKjZqbKEV40RLGI4mbSjGVbKOZYDnDhORwTwJhgHOgrXtfhwF
- WT/y25DBJa2Zuqh5nj3nL2c5zgmhkhtgo+RacVXJ8iEAhZZ7T0GQRIjjpw8MOWdXZQQVaqyCN30
- qJd+NiDqgUPtYh1zxxw==
-X-Proofpoint-ORIG-GUID: n4eu_Q9VLvfm0PcV4IOJ398o-rT7E7e9
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=EUspDBNiAAAA:8 a=ras7m7bTOK-54pG4Za8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=TD8TdBvy0hsOASGTdmB-:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MiBTYWx0ZWRfX+XbNC904n2fu
+ tZSeMTeSb+N2TIAGQ4Y7bAGhQA3zURyXaZpzxZjjcq/4Dr+7w8KejW2BaWH7ZSxRyLNpnYq/ITn
+ ASrNwouK07aM2fNKJ2glhLBwXSeF5cA=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-12_02,2026-11-11_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 clxscore=1015 malwarescore=0 bulkscore=0 priorityscore=1501
- phishscore=0 lowpriorityscore=0 impostorscore=0 adultscore=0 spamscore=0
+ priorityscore=1501 impostorscore=0 malwarescore=0 spamscore=0 clxscore=1015
+ bulkscore=0 phishscore=0 lowpriorityscore=0 adultscore=0 suspectscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611120072
 Received-SPF: pass client-ip=205.220.180.131;
@@ -168,46 +169,115 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Accept TARGET_USER_ALIASES in target configurations and create relative
-symlinks in both the build and install trees. Depend on the canonical
-emulator instead of linking a second binary.
+Enable runtime byte-order selection for arm-linux-user
+and retain qemu-armeb as a compatibility symlink.
+Deprecate the symlink since 12.0 and recommend qemu-arm
+for both ELF byte orders.
+Remove the separate armeb-linux-user build target and
+obsolete CI exclusions.
+
+Run the existing big-endian hello test through qemu-arm
+while retaining its big-endian fixture toolchain. Document
+that executable name compatibility does not preserve the
+removed target-list spelling.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- meson.build | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+ docs/about/deprecated.rst            | 10 ++++++++++
+ docs/user/main.rst                   | 10 ++++++++--
+ configure                            |  3 +++
+ configs/targets/arm-linux-user.mak   |  2 ++
+ configs/targets/armeb-linux-user.mak |  9 ---------
+ 5 files changed, 23 insertions(+), 11 deletions(-)
+ delete mode 100644 configs/targets/armeb-linux-user.mak
 
-diff --git a/meson.build b/meson.build
-index 04cf5d77f188..86b942640abf 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3297,7 +3297,7 @@ host_kconfig = \
-   (hv_balloon ? ['CONFIG_HV_BALLOON_POSSIBLE=y'] : []) + \
-   (have_rust ? ['CONFIG_HAVE_RUST=y'] : [])
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 715a72d8b117..e85c9efdb4b5 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -451,6 +451,16 @@ Use ``qemu-aarch64`` instead for both little- and big-endian
+ Linux ELF executables. The emulator selects the endianness from
+ the ELF header, regardless of the executable name used to invoke it.
  
--ignored = [ 'TARGET_XML_FILES', 'TARGET_ABI_DIR' ]
-+ignored = [ 'TARGET_XML_FILES', 'TARGET_ABI_DIR', 'TARGET_USER_ALIASES' ]
- 
- default_targets = 'CONFIG_DEFAULT_TARGETS' in config_host
- actual_target_dirs = []
-@@ -4580,6 +4580,17 @@ foreach target : target_dirs
-       emulators += {exe['name']: emulator}
-     endif
- 
-+    foreach alias : config_target.get('TARGET_USER_ALIASES', '').split()
-+      alias_name = 'qemu-' + alias
-+      custom_target(alias_name,
-+                    output: alias_name,
-+                    depends: emulator,
-+                    build_by_default: true,
-+                    command: [find_program('ln'), '-sf', exe['name'], '@OUTPUT@'])
-+      install_symlink(alias_name, pointing_to: exe['name'],
-+                      install_dir: get_option('bindir'))
-+    endforeach
++.. _deprecated-qemu-armeb:
 +
-     traceable += [{
-       'exe': exe['name'],
-       'probe-prefix': 'qemu.' + target_type + '.' + target_name,
++``qemu-armeb`` executable name (since 12.0)
++'''''''''''''''''''''''''''''''''''''''''''
++
++The ``qemu-armeb`` compatibility symlink is deprecated.
++Use ``qemu-arm`` instead for both little- and big-endian Linux
++ELF executables. The emulator selects the endianness from the
++ELF header, regardless of the executable name used to invoke it.
++
+ linux-user mode CPUs
+ --------------------
+ 
+diff --git a/docs/user/main.rst b/docs/user/main.rst
+index c9b4204dcf9d..2e01233a9cd0 100644
+--- a/docs/user/main.rst
++++ b/docs/user/main.rst
+@@ -152,11 +152,17 @@ Other binaries
+ 
+ -  user mode (Arm)
+ 
+-   * ``qemu-armeb`` TODO.
++   ``qemu-arm`` runs both little- and big-endian Linux ELF executables,
++   selecting the byte order from the ELF header. ``qemu-armeb`` is a
++   :ref:`deprecated compatibility symlink <deprecated-qemu-armeb>` to the
++   same emulator; its name does not override the ELF byte order. Build both
++   names with ``--target-list=arm-linux-user``; the separate
++   ``armeb-linux-user`` build target is no longer supported.
+ 
+    * ``qemu-arm`` is also capable of running Arm \"Angel\" semihosted ELF
+      binaries (as implemented by the arm-elf and arm-eabi Newlib/GDB
+-     configurations), and arm-uclinux bFLT format binaries.
++     configurations), and arm-uclinux bFLT format binaries. bFLT has no
++     byte-order marker and uses the little-endian default.
+ 
+ -  user mode (ColdFire)
+ 
+diff --git a/configure b/configure
+index 821a887a31c1..14b484908919 100755
+--- a/configure
++++ b/configure
+@@ -1111,6 +1111,9 @@ else
+                     aarch64_be-linux-user)
+                         error_exit "Target '$target' is no longer supported; use 'aarch64-linux-user' instead"
+                         ;;
++                    armeb-linux-user)
++                        error_exit "Target '$target' is no longer supported; use 'arm-linux-user' instead"
++                        ;;
+                     *)
+                         error_exit "Unknown target name '$target'"
+                         ;;
+diff --git a/configs/targets/arm-linux-user.mak b/configs/targets/arm-linux-user.mak
+index 3793782d067b..e3203c848182 100644
+--- a/configs/targets/arm-linux-user.mak
++++ b/configs/targets/arm-linux-user.mak
+@@ -1,6 +1,8 @@
+ TARGET_ARCH=arm
+ TARGET_SYSTBL_ABI=common,oabi
+ TARGET_SYSTBL=syscall.tbl
++TARGET_RUNTIME_ENDIAN=y
++TARGET_USER_ALIASES=armeb
+ TARGET_XML_FILES= arm-core.xml arm-vfp.xml arm-vfp3.xml arm-vfp-sysregs.xml arm-neon.xml arm-m-profile.xml arm-m-profile-mve.xml
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+diff --git a/configs/targets/armeb-linux-user.mak b/configs/targets/armeb-linux-user.mak
+deleted file mode 100644
+index 536bc95af71c..000000000000
+--- a/configs/targets/armeb-linux-user.mak
++++ /dev/null
+@@ -1,9 +0,0 @@
+-TARGET_ARCH=arm
+-TARGET_SYSTBL_ABI=common,oabi
+-TARGET_SYSTBL=syscall.tbl
+-TARGET_BIG_ENDIAN=y
+-TARGET_XML_FILES= arm-core.xml arm-vfp.xml arm-vfp3.xml arm-vfp-sysregs.xml arm-neon.xml arm-m-profile.xml arm-m-profile-mve.xml
+-TARGET_HAS_BFLT=y
+-CONFIG_SEMIHOSTING=y
+-CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+-TARGET_LONG_BITS=32
 -- 
 2.55.0
 

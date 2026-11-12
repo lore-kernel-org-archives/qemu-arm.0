@@ -1,101 +1,102 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3284606A32E
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 13:10:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA71F60A382B
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Nov 2026 13:14:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Gxfcb3M0
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=jylzZrpj
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRUZ9-0005cO-Nb; Thu, 12 Nov 2026 08:10:11 -0500
+	id 1xRUdA-0001Qb-RN; Thu, 12 Nov 2026 08:14:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xRUZ7-0005SO-NW
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:10:09 -0500
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ id 1xRUd2-0001Ks-EQ
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:14:12 -0500
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xRUZ6-0001L8-3N
- for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:10:09 -0500
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-67c6a0abc2eso2169872d50.0
- for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 05:10:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794489006; cv=none;
+ id 1xRUd0-0005cN-Q9
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2026 08:14:12 -0500
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-67c6a0abc2eso2174316d50.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Nov 2026 05:14:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794489249; cv=none;
  d=google.com; s=arc-20260327;
- b=PhrCr9cquqAptEjcNvB0FNb6c0JKXxV1aSpqvbxZUGT6CJwz6KGsoU0VUiPlx95BUE
- 5GYdwTBw6c57BbK808hXmwlEawh/49XTzkeWNkyTgrKGB1yy82LNpWrvABwQJNIu9LXo
- 9x1xGwnl4in1Xh2pOiAktMQbbklljWTJfAshFccjWBZolsgCGiyZN8FA95zr8iIYA2O8
- km6x6SKEHSW4tPyOiN0fT2k2MKtjVTjNK+r2QEAYNal5USdJeAUUey7Vu2t9dRdbIy1i
- MyU4uGPZIuBcMt2oz17WypSV5J2pIFoBQ72XI8GSLVNR5LicOV9B+EHjXEckw3xE58Bg
- ZKUw==
+ b=CdnCS/2kXllm0IoM0dcCnNSRTMMUs37hHiLvF7wSIJZZbp0gqL1l7H3QkYa5wepLHs
+ Uoc97v39voja52skt142UzPn14bxpi7KNUH76k2Pgpn+Lc9ENuPbwijAW4ZOnPGqMcaH
+ 1nxik5rS+2zJOQ1Y2r1/bYnxSYijySlS6bdTi0s1Bmzf1DBspqRSOZjDIG54b4WTGPsZ
+ qIEqdE7NdUcI/7wwQXm3cjRd2SnxFaIO+c7Ge5wxEgh0mw92UOvViEnZKYMG4JBz8DDX
+ 7imkCY12IFhrfl+8dHQMkdWK6UW+38oV+CtSO9nrqM4vW+fEnfJkmzGZ7HLxNyxAJT+u
+ 1joQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=nMySanBpzNXfKjFd7aBQpGBvl+mNf1G+VUmyrU87fNY=;
- fh=dObdA2GdvpwVIQnWd9zV/b9QPHv7wp9q6lWVF8RYyXg=;
- b=Asmok/LxjhVqApFj4C6Z1KGdL5vsEXbnK1rvXrjB273qdnr7G6Y+elIK/actaxFGb7
- TIicxp6m8uxFFHsKxFSZygFapGIqoTMTzZzUQEpT98egCWCu1cQPIb+HPmDJLqSDFQap
- A52Eff2lWb4Zr7FKhHaohjSsstqnz/a9lW3uYQinNsX4XwEenkT9Y7LSuMilvy3x8pT/
- Fba9nrRGyafwxHxF9gWigSDkfFvMlQ9BCGYwVMRQKmjQPlSk7OQsm1fchtrGLkRyW+zy
- laBycFlJjulWVm0eo0kdaHsvPD+L8zK6iYW9oonreoIPGWp1j+iaKpshm603TnsWmNE3
- 5jug==; darn=nongnu.org
+ bh=7LtHY++GitWTEfm8K9Joulk+ck8KRYsjJYmh6ZgpacE=;
+ fh=braYWlBofEntDsK4g3byQNbXwnWZ4MY/bToUDxts7Zk=;
+ b=pVXdbPG6N8PhPPGN88ZoShif2rn5eNbBMTTUH2tqLDec26LstP15+WrowkfIzBXaUY
+ pJVohRPJH19d201MRncoU46u7TOHZahXZWtKOrwxhYAhTfOA1cM0Uy+LsGOg1VE81Xs0
+ ce4B5Zv7QJw4bOlbEXN2eKbd173ViCPjK7DqQOgmPDhPJuqdiqrQnpdXdADQYO37fjw7
+ uDrAyspld7ZG+mBerTdW7/WIICb5x6khiIcUCxVHoU6w+r3w0533dZf2V00em+9Y6Fbp
+ Fh8AFlDtqjYOp9lZxvdM2lbcNvJ0F8P0vF2JNJmV0Nw6U05jlbyn6Po5+RfkINor/N+P
+ Zgww==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794489006; x=1795093806; darn=nongnu.org;
+ d=linaro.org; s=google; t=1794489249; x=1795094049; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=nMySanBpzNXfKjFd7aBQpGBvl+mNf1G+VUmyrU87fNY=;
- b=Gxfcb3M0qNg0nS6qw6JcrOsqJ1lJ/SPjMDROt1QMu2nfntK19mikC01ojlRziX9fzM
- 6MR1+7oMo1TFOuWywaK0yPe1ilYIsr79NsJDx3KRGVyGI69ra+VJ7+e2Ko8G2o1UEHre
- p/S9zBtz/i4rGa+LIZMTgNyK/5Z3mlXD+cxj/9PPw6jXelyvFvHGSY+Q4eyYlGk5V8nk
- H/TqUT6lwwHec6XP/uZmsrGSPOweJI8wT08x6+8ZB+kDBXDnYhHm2gVDSsvKCvHKRmIH
- Yqev3ZbCdZaazr3xLVn5DIMTsO/t/9UUP/HjeV+bYk3Tia/d55ZTLqPctv4VATXYnnGP
- qK5w==
+ :content-type; bh=7LtHY++GitWTEfm8K9Joulk+ck8KRYsjJYmh6ZgpacE=;
+ b=jylzZrpjjjcimekkD32uBTP5Kbzm4AVJFEuPznnXwnEnGKi53ZkXEBi/KYFrLzQSPZ
+ YCimYNc/H8/S7uAgiGW7Hj/ftmpbUFNWF6P8V28ttO1iPSCj3cZyOP+sicfwdVxmp8kg
+ fJavbS5qP2vFvMWTulR1rVzygsUoYWcy6LMe3lwssQK+TQxBfuE9JlYElOU136SNjFGC
+ s8cjJKnrsJWr2q3dHh7NcF3PVyFxCDuGBl5npCVauc8fAozkB2vQqm0dzR6U5K0DWv9b
+ vZXPcsU6EY12Ne4Gj8mxhr6aYMMnJkyjHWrYGYRwcYE6mBdUru15Z+vRT7j/MvX6FIrv
+ VDrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794489006; x=1795093806;
+ d=1e100.net; s=20260707; t=1794489249; x=1795094049;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=nMySanBpzNXfKjFd7aBQpGBvl+mNf1G+VUmyrU87fNY=;
- b=rM8jiPwf/a8H36OXnfhliMYyNCvmOgUyYgUgFRk99ZKOkspJEEc71WtbLBC5sjel9y
- mV5My/4vDZrjk1fE39qT1MQ1ra/rR0RnUrpck1vS89KGfBkCv+A+q6Q6YLRv074DAAPs
- Ee6yuRADlv6+ExafHaqBdgMRZ42MFvQj7wzaO36Ej1ur3hZt2KS+aprdatxdNEq88Wjq
- Fj3kr1Wnm1ohC0I7VMskmOnhxXHn1c1i1U0ksU1A7STaJ+YL/5gdIHutMpgc9jT/Xirp
- bjvYniT2NXWRgNV52G4VoI+rBcAkWpqbdKr1OQuqZBaZ9DfDOMsSZmNLxgK8LqY8Q+sb
- Kihg==
+ bh=7LtHY++GitWTEfm8K9Joulk+ck8KRYsjJYmh6ZgpacE=;
+ b=nl6vzM4amASwubV46+rguV+6FmGk67f5fmohIGXYWBsdv+miYIl8Si6y9DRorK4TDM
+ CM+YHepDWFY6HqciutgOzuxneHoePfNpv6GAYr8L6noer8UF1QXX4kl500oL4voPl6Pa
+ SxUWKwXPu2ZFnb+K0BcQX95BMIuEFVyghWK2z8P1sd/HQkfZeEwT6anpYQ9f/Xt2Wyya
+ 10n0gIHbR3Mge8TsDPBJnQWrN2RizW2Llog63sKXrln+No0eyAlKhiQcrWPeI9VsB6mC
+ mLtcLRp3QMqBoi6UFDUJjn/hJQizGOks0cJDo9bJFwD1UgDOmyuNI8nRddQTg2XCWe/N
+ R25Q==
 X-Forwarded-Encrypted: i=1;
- AL+hErGOBL4my0kjSoeBc1guYJfCNL54g/A4A8nBAmrNMiehCFGv48ad0RiB0mXU/FugQRFGrRGnv7TLdw==@nongnu.org
-X-Gm-Message-State: APuU4Z+kLWfkO/EQ4EV24YgZlbqzsHd9JFrdn2zf7rIf4pd9dJ6WM6rt
- Czr6Rq7ZB3EG+H3BL8w0PhbAQVbK4pqUjwbBz7eEAbYa3uEDyQR05qqztD6iIEaazCaJc4ZXVLc
- hK+dvV5b3LXhe+5fvdg/5Wb2qsDRP7UDCF+5gqHcc3w==
-X-Gm-Gg: AYBFou2QP+3xjPzUUK55My++5Uk3m4uc3gkJEJfOjMG7llcXlL2MJLlKkVWUrTCdMPl
- ER88FlMdpBpyxH+bUjRaWTvhqZdxYZDZ3WXU7iKJPs+m3tNx8L4su5mZMRswuc403KmKTMXNZ9z
- tOCPzbDBqOFaeHd8QqUQgX3+DA7YZAqyjRU8UPrNtwLXM5OFMTFXGVmF/p1Ya7vP5n/MHoiRmHF
- y8TROlU4X3/I55y2L3IfRxX/2b7NNPSXZlZVVaMP4PgRWGHjPRF1Eh1y8AWUS+5g5ufPBG47wCY
- GqucnXJ/i8SyceWSxe9K6DNbznGFtzFhqoJ/PYY0XSibmyanH1B0KnyiJbbeTf1l0gt+AdRwP66
- mmBMOhFGeDUsGpNVbmExmOdLa3BIgs9HUuff/vxZ2fReKxDJ/CrXvQQXcT6wv+hU2ATH99IVEd2
- sQezrMe7+NDQWlkD6INy/Q
-X-Received: by 2002:a05:690e:12c6:b0:677:aee1:9f2b with SMTP id
- 956f58d0204a3-67c67ca7a90mr3362603d50.12.1794489004820; Thu, 12 Nov 2026
- 05:10:04 -0800 (PST)
+ AL+hErG6bjz1w3MaPrJdJl9arVt5JO/4AtGd9dO9SoeDgkXllXFHrtheVScHVjTs/SFgrd1lLzv9uXaweA==@nongnu.org
+X-Gm-Message-State: APuU4Z/pMuuBFIdwFYmR4S+lFG4Y1bbo0HUNPjhvCHxqFknbajhVXSUO
+ I8X81DUMgGMGTxaJeS53nnGwljhs/kxoOLApNj8dH1lgLYMNZdhg7KkV5tpylhXevSIUyrI1zBy
+ apCfyw4ourA2+N4UvBssS7ZM0fjEjCz2ur8OR86I3/w==
+X-Gm-Gg: AYBFou25JNTJRyH0icIlvK9+A4HghgzFUcjHWvsEzNqOSLoKy4RmSoXjC2vcUzEMlw3
+ iufpvGRAvSOafxUZG+GrIXzW0hBFQYG8Vyr2vI/GL6oCAFxWXgoGvhveUoetubiQyMIpsleQGAt
+ ZQdijHRmC57umLPCzevUcLYxiM0CdPKYm77e13BcglGpJoDvXQzdConG9MMRPYyS5fjRR4Nj8uh
+ DzbAdofQRLccT/rjy38dq1C6c3J4j176N/pSVw78AgL0qVkwKQcP0+/VIebab6moDnpaPn86VDW
+ 9U28uhZbUeOCFCiSl+9CvDSajJ35JnsdY+mvT+X6V49500Il1ybX4YLVgtWn8EERsoCcjd5hs5/
+ 5Ieg0BeeWNHFs9vBDFXeBMQmdKVd7MuNTY3GZG87mPHmQ878wDGrr6ANPaEVNNNhbM5Um09lER1
+ Jcjn6Ne8vZBIoN523JZIKmBUfKGZx/2PRu7DvGUllfBQ==
+X-Received: by 2002:a05:690e:43c1:b0:67c:1d54:d59a with SMTP id
+ 956f58d0204a3-67c67f77193mr2534972d50.47.1794489248919; Thu, 12 Nov 2026
+ 05:14:08 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261021065238.15220-1-conti.manuele@gmail.com>
-In-Reply-To: <20261021065238.15220-1-conti.manuele@gmail.com>
+References: <20261109035234.722952-1-hywei787@gmail.com>
+In-Reply-To: <20261109035234.722952-1-hywei787@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Nov 2026 13:09:53 +0000
-X-Gm-Features: AclHuK91k_404xGNPKVDV0IIvjhlkMoTqmp0kq7EQAV1TyitwzdpdyAmAk6MtHY
-Message-ID: <CAFEAcA9=pt=81YWPXEZ+UEnL5iVbqFAjxbMYtH_aoJHy4iAf_A@mail.gmail.com>
-Subject: Re: [PATCH] hw/ssi/stm32f2xx_spi: avoid transferring data on DR reads
-To: Manuele Conti <conti.manuele@gmail.com>
-Cc: qemu-devel@nongnu.org, alistair@alistair23.me, qemu-arm@nongnu.org, 
- farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com
+Date: Thu, 12 Nov 2026 13:13:57 +0000
+X-Gm-Features: AclHuK8FbQHgTYgmpTC-r0WAoJXKqcEz_i60jjtZnOVDEcgnmKmALYn-_bniKRg
+Message-ID: <CAFEAcA8r7=nZCE03ekQeT=u3mXR6eDrsQ8RtyE9svFm8Ziif4Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/bcm2838: Route SPI0 interrupt to GIC
+To: Hanyu <hywei787@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Hanyu <hywei737@utexas.edu>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,31 +115,49 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_PASS,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, 21 Oct 2026 at 07:52, Manuele Conti <conti.manuele@gmail.com> wrote:
+On Mon, 9 Nov 2026 at 03:52, Hanyu <hywei787@gmail.com> wrote:
 >
-> Writing SPI_DR already performs the synchronous SSI transfer and stores
-> its response in spi_dr. Reading SPI_DR performs another transfer, using
-> the previous response as transmit data, and returns the new response.
-> Consequently a normal write/read pair clocks two frames on the bus and
-> can skip bytes in a peripheral's response.
+> From: Hanyu <hywei737@utexas.edu>
 >
-> Return the response saved by the write and clear RXNE without starting
-> another transfer. Repeated reads then leave the peripheral state alone.
+> On raspi4b, SPI0's interrupt is connected only to the legacy interrupt
+> controller. Linux guests whose device trees use the GIC therefore
+> can't detect an SPI0 interrupt.
 >
-> Add a qtest using the upstream netduino2 machine and an M25P80 flash.
-> Check the JEDEC ID, RXNE clearing, and repeated DR reads. The test requires
-> no board changes and reproduces the unwanted extra transfers before the
-> fix.
+> This patch adds a two-output IRQ splitter to deliver SPI0's interrupt
+> to both the legacy controller and GIC SPI 118. This follows commit
+> fb3e0557a4cb ("hw/arm/bcm2838: Route I2C interrupts to GIC").
 >
-> Fixes: 5ae74402d1f ("STM32F2xx: Add the SPI device")
-> Signed-off-by: Manuele Conti <conti.manuele@gmail.com>
+> Testing
+>
+> Add these options to the QEMU invocation:
+>
+>   -device m25p80,bus=spi,drive=flash0 \
+>   -blockdev node-name=flash0,driver=file,filename=flash.bin
+>
+> Before the change, probing fails and /proc/mtd contains no devices:
+>
+>   spi-nor spi0.0: SPI transfer timed out
+>   spi_master spi0: failed to transfer one message from queue
+>   spi-nor: probe of spi0.0 failed with error -2
+>
+> After the change, the flash is detected:
+>
+>   spi-nor spi0.0: m25p80 (1024 Kbytes)
+>   # cat /proc/mtd
+>   dev:    size   erasesize  name
+>   mtd0: 00100000 00010000 "spi0.0"
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3013
+> Signed-off-by: Hanyu <hywei737@utexas.edu>
+
+Thanks for fixing this; the patch looks good to me.
 
 
 

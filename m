@@ -1,68 +1,83 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB0B2606A880
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:55:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1CF7A606A339
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:56:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=BeyfcWSs
+	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=Rd6jGprI
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRrj5-0000zf-Br; Fri, 13 Nov 2026 08:53:59 -0500
+	id 1xRrj3-0000xF-7K; Fri, 13 Nov 2026 08:53:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dblanzeanu@linux.microsoft.com>)
- id 1xRqJK-00077i-11; Fri, 13 Nov 2026 07:23:18 -0500
-Received: from linux.microsoft.com ([13.77.154.182])
+ (Exim 4.90_1) (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
+ id 1xRnuo-00053w-Lz; Fri, 13 Nov 2026 04:49:51 -0500
+Received: from smtp47.tsinghua.edu.cn ([101.6.4.71] helo=tsinghua.edu.cn)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dblanzeanu@linux.microsoft.com>)
- id 1xRqJI-0003SD-0v; Fri, 13 Nov 2026 07:23:17 -0500
-Received: from linux.microsoft.com (unknown [52.164.204.246])
- by linux.microsoft.com (Postfix) with ESMTPSA id 4340920B7167;
- Fri, 13 Nov 2026 04:23:06 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 4340920B7167
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1794572589;
- bh=BKTmBLHvbGbmivoltfqA5ZRCI2wTzcYHV/ItVt4bTiQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=BeyfcWSsJet0MdzxT6ge8KyTpON9Ljb7T9fXH9V/2vyFkFGM088LQZsjCV3+bwp83
- 4BdavyN73FWaowrHZn/hcM4YAPQJdsmcOlno/tXQSdXkMRMNH0W/soIoc5aB6Jku8J
- K405AniI1TJkTUe7Q50gt7hwbQDTI5q0UDH9gZ5s=
-Date: Fri, 13 Nov 2026 14:23:05 +0200
-From: Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>
-To: Aastha Rawat <aastharawat@linux.microsoft.com>
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
+ id 1xRnum-0007HV-1q; Fri, 13 Nov 2026 04:49:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mails.tsinghua.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:
+ Date:Message-ID:In-Reply-To:References:MIME-Version:
+ Content-Transfer-Encoding; bh=viiGAP8e3z2TV5xJPIJjEvP2kcw6fenlIY
+ rS/5Ar4jw=; b=Rd6jGprIjhq0miBAc0vyC64tGn1UzEyBzQTEGXoX16ariMIhH5
+ C6pSupm1YHeSUuVp0UhLITbqE3KcLyUZ8LRx4wCbBzI1iY5t1HrMV7b6tzmmEieE
+ M8Mlxq1EPbPWAutVFSt5wVGQ+cI473SXXQWtHJN6P8RsmLVeJ2EU2dd4k=
+Received: from ubuntu (unknown [101.5.154.165])
+ by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S21;
+ Fri, 13 Nov 2026 17:49:39 +0800 (CST)
+From: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
+To: qemu-devel@nongnu.org
+Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, kvm@vger.kernel.org,
  Peter Maydell <peter.maydell@linaro.org>,
- Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: Re: [PATCH v6 04/14] meson, target/arm/mshv: Enable arm64 build &
- add initial MSHV support
-Message-ID: <avcBKaigaegTPyBV@linux.microsoft.com>
-References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Kuan-Wei Chiu <visitorckw@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ bin.meng@processmission.com, tangtao1634@phytium.com.cn,
+ Chao Liu <chao.liu@processmission.com>
+Subject: [RFC PATCH 19/20] tests/functional: add ROCK 5B boot tests
+Date: Fri, 13 Nov 2026 17:47:53 +0800
+Message-ID: <4be0c395b80a8d69b9ef975d157751fdabccb049.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
+References: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=dblanzeanu@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S21
+X-Coremail-Antispam: 1UD129KBjvJXoWxKw1rCw4UKr48CFy5tw1xGrg_yoWxXr4rpw
+ 4UCr1UKr4xGF18Jr1IkFs7uF4rAw4vkFW7Jr42grZa9wnxJF1Igry5Kr1Fka43Xr9Yvasa
+ kasYqr4xKFWUCaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUUHa14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+ rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
+ kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
+ z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F
+ 4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq
+ 3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0V
+ AKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1l
+ Ox8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErc
+ IFxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCY02Avz4vE14v_
+ GFWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
+ WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI
+ 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Xr0_Ar1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
+ 4UJVWxJr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r4j6F4U
+ MIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCTnIWIevJa73UjIFyTuYvjfUeVbkUU
+ UUU
+X-CM-SenderInfo: fzn1wj2s6ptxtovo32xlqjx3vdohv3gofq/
+Received-SPF: pass client-ip=101.6.4.71;
+ envelope-from=w-yf22@mails.tsinghua.edu.cn; helo=tsinghua.edu.cn
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:26 -0500
+X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:19 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,242 +88,185 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Oct 01, 2026 at 10:52:49AM +0000, Aastha Rawat wrote:
-> Enable the build of the MSHV accelerator for arm64 in the Meson build
-> system. Introduce initial files and stub implementations to support MSHV
-> for the ARM target.
-> 
-> Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
-> ---
->  accel/mshv/mshv-all.c       | 10 ++++--
->  hw/i386/mshv/clock.c        |  2 +-
->  include/system/mshv.h       |  2 +-
->  meson.build                 |  8 ++---
->  target/arm/meson.build      |  1 +
->  target/arm/mshv/meson.build |  7 ++++
->  target/arm/mshv/mshv-all.c  | 81 +++++++++++++++++++++++++++++++++++++++++++++
->  7 files changed, 103 insertions(+), 8 deletions(-)
-> 
-> diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-> index efe19a3914..f3f1825b0b 100644
-> --- a/accel/mshv/mshv-all.c
-> +++ b/accel/mshv/mshv-all.c
-> @@ -142,8 +142,10 @@ static int create_partition(int mshv_fd, int *vm_fd)
->  {
->      int ret;
->      uint64_t pt_flags, host_proc_features;
-> -    union hv_partition_processor_xsave_features disabled_xsave_features;
->      union hv_partition_processor_features disabled_partition_features = {0};
+From: Chao Liu <chao.liu@processmission.com>
 
-I think this should reside in an arch specific variant of `create_partition`.
+Add tests for both boot methods, direct Linux booting and firmware
+booting, and check that the boot flow works for each of them.
 
-> +#if defined(__x86_64__)
-> +    union hv_partition_processor_xsave_features disabled_xsave_features;
-> +#endif
->  
->      struct mshv_create_partition_v2 args = {0};
->  
-> @@ -155,7 +157,8 @@ static int create_partition(int mshv_fd, int *vm_fd)
->                 (1ULL << MSHV_PT_BIT_GPA_SUPER_PAGES) |
->                 (1ULL << MSHV_PT_BIT_CPU_AND_XSAVE_FEATURES);
->  
-> -    /* enable all */
-> +#if defined(__x86_64__)
-> +    /* enable all xsave features (0 = enabled) */
->      disabled_xsave_features.as_uint64 = 0;
->      /*
->       * AMX TILE XSAVE state (XTILE_DATA) is 8KB, which exceeds the
-> @@ -165,6 +168,7 @@ static int create_partition(int mshv_fd, int *vm_fd)
->      disabled_xsave_features.amx_bf16_support = 1;
->      disabled_xsave_features.amx_int8_support = 1;
->      disabled_xsave_features.amx_fp16_support = 1;
-> +#endif
->  
->      /*
->       * query host for supported processor features and disable unsupported
-> @@ -196,7 +200,9 @@ static int create_partition(int mshv_fd, int *vm_fd)
->      /* populate args structure */
->      args.pt_flags = pt_flags;
->      args.pt_isolation = MSHV_PT_ISOLATION_NONE;
-> +#if defined(__x86_64__)
->      args.pt_disabled_xsave = disabled_xsave_features.as_uint64;
-> +#endif
->      args.pt_num_cpu_fbanks = MSHV_NUM_CPU_FEATURES_BANKS;
->  
->      ret = ioctl(mshv_fd, MSHV_CREATE_PARTITION, &args);
-> diff --git a/hw/i386/mshv/clock.c b/hw/i386/mshv/clock.c
-> index 02c586503a..b7db382752 100644
-> --- a/hw/i386/mshv/clock.c
-> +++ b/hw/i386/mshv/clock.c
-> @@ -182,7 +182,7 @@ static const VMStateDescription vmstate_mshv_clock = {
->      },
->  };
->  
-> -void mshv_clock_init(void)
-> +void mshv_arch_clock_init(void)
->  {
->      vmstate_register(NULL, 0, &vmstate_mshv_clock, &mshv_clock);
->      qemu_add_vm_change_state_handler(mshv_clock_vm_state_change, &mshv_clock);
-> diff --git a/include/system/mshv.h b/include/system/mshv.h
-> index f98ddff9b5..114f065db5 100644
-> --- a/include/system/mshv.h
-> +++ b/include/system/mshv.h
-> @@ -58,7 +58,7 @@ DECLARE_INSTANCE_CHECKER(MshvState, MSHV_STATE,
->  extern MshvState *mshv_state;
->  
->  /* clock (partition reference time) */
-> -void mshv_clock_init(void);
-> +void mshv_arch_clock_init(void);
->  
->  /* interrupt */
->  int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
-> diff --git a/meson.build b/meson.build
-> index cae1591cd2..6a90a394a2 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -304,7 +304,8 @@ if cpu == 'aarch64'
->    accelerator_targets += {
->      'CONFIG_HVF': ['aarch64-softmmu'],
->      'CONFIG_NITRO': ['aarch64-softmmu'],
-> -    'CONFIG_WHPX': ['aarch64-softmmu']
-> +    'CONFIG_WHPX': ['aarch64-softmmu'],
-> +    'CONFIG_MSHV': ['aarch64-softmmu'],
->    }
->  elif cpu == 'x86_64'
->    accelerator_targets += {
-> @@ -884,10 +885,9 @@ if get_option('kvm').allowed() and host_os == 'linux'
->  endif
->  
->  if get_option('mshv').allowed() and host_os == 'linux'
-> -  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
-> -    error('mshv accelerator requires x64_64 host')
-> +  if host_machine.cpu() in [ 'x86_64', 'aarch64' ]
-> +    accelerators += 'CONFIG_MSHV'
->    endif
-> -  accelerators += 'CONFIG_MSHV'
->  endif
->  
->  if get_option('whpx').allowed() and host_os == 'windows'
-> diff --git a/target/arm/meson.build b/target/arm/meson.build
-> index 0369f96b4c..1ac2cef26b 100644
-> --- a/target/arm/meson.build
-> +++ b/target/arm/meson.build
-> @@ -63,6 +63,7 @@ arm_common_system_ss.add(files(
->  
->  subdir('hvf')
->  subdir('whpx')
-> +subdir('mshv')
->  
->  if 'CONFIG_TCG' in config_all_accel
->     subdir('tcg')
-> diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
-> new file mode 100644
-> index 0000000000..169643691e
-> --- /dev/null
-> +++ b/target/arm/mshv/meson.build
-> @@ -0,0 +1,7 @@
-> +arm_mshv_ss = ss.source_set()
-> +
-> +arm_mshv_ss.add(files(
-> +  'mshv-all.c',
-> +))
-> +
-> +arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
-> diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-> new file mode 100644
-> index 0000000000..00c54f5d66
-> --- /dev/null
-> +++ b/target/arm/mshv/mshv-all.c
-> @@ -0,0 +1,81 @@
-> +/*
-> + * QEMU MSHV support
-> + *
-> + * Copyright Microsoft, Corp. 2026
-> + *
-> + * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
-> + *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/arm/virt.h"
-> +#include "system/mshv.h"
-> +#include "system/mshv_int.h"
-> +
-> +static int load_regs(CPUState *cpu)
-> +{
-> +    return 0;
-> +}
-> +
-> +static int store_regs(const CPUState *cpu)
-> +{
-> +    return 0;
-> +}
-> +
-> +int mshv_arch_load_vcpu_state(CPUState *cpu)
-> +{
-> +    return load_regs(cpu);
-> +}
-> +
-> +int mshv_arch_store_vcpu_state(const CPUState *cpu)
-> +{
-> +    return store_regs(cpu);
-> +}
-> +
-> +int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
-> +{
-> +    return 0;
-> +}
-> +
-> +void mshv_arch_init_vcpu(CPUState *cpu)
-> +{
-> +
-> +}
-> +
-> +void mshv_arch_destroy_vcpu(CPUState *cpu)
-> +{
-> +
-> +}
-> +
-> +int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
-> +{
-> +    return 0;
-> +}
-> +
-> +void mshv_arch_amend_proc_features(
-> +    union hv_partition_synthetic_processor_features *features)
-> +{
-> +    /*
-> +     * TLB-flush hypercalls are an x86 enlightenment. ARM guests use
-> +     * broadcast TLBI instructions instead.
-> +     */
-> +    features->tb_flush_hypercalls = 0;
-> +}
-> +
-> +void mshv_arch_disable_partition_proc_features(
-> +    union hv_partition_processor_features *disabled_features)
-> +{
-> +    /* No processor features to disable on ARM */
-> +}
-> +
-> +int mshv_arch_post_init_vm(int vm_fd)
-> +{
-> +    return 0;
-> +}
-> +
-> +int mshv_arch_migration_init(MshvState *s)
-> +{
-> +    return 0;
-> +}
-> 
-> -- 
-> 2.45.4
+Signed-off-by: Chao Liu <chao.liu@processmission.com>
+Signed-off-by: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
+---
+ MAINTAINERS                              |   1 +
+ tests/functional/aarch64/meson.build     |   2 +
+ tests/functional/aarch64/test_rock_5b.py | 118 +++++++++++++++++++++++
+ 3 files changed, 121 insertions(+)
+ create mode 100755 tests/functional/aarch64/test_rock_5b.py
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 544d93c01d..6303b99755 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1074,6 +1074,7 @@ F: hw/timer/rockchip-hptimer.c
+ F: include/hw/arm/rk3588.h
+ F: include/hw/misc/rk3588-scmci.h
+ F: include/hw/timer/rockchip-hptimer.h
++F: tests/functional/aarch64/test_rock_5b.py
+ 
+ SABRELITE / i.MX6
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
+index f0881bed16..d6b79314e6 100644
+--- a/tests/functional/aarch64/meson.build
++++ b/tests/functional/aarch64/meson.build
+@@ -11,6 +11,7 @@ test_aarch64_timeouts = {
+   'reverse_debug' : 180,
+   'rme_virt' : 1200,
+   'rme_sbsaref' : 1200,
++  'rock_5b' : 180,
+   'sbsaref_alpine' : 1200,
+   'sbsaref_freebsd' : 720,
+   'smmu' : 720,
+@@ -45,6 +46,7 @@ tests_aarch64_system_thorough = [
+   'reverse_debug',
+   'rme_virt',
+   'rme_sbsaref',
++  'rock_5b',
+   'sbsaref',
+   'sbsaref_alpine',
+   'sbsaref_freebsd',
+diff --git a/tests/functional/aarch64/test_rock_5b.py b/tests/functional/aarch64/test_rock_5b.py
+new file mode 100755
+index 0000000000..5789cfb2c2
+--- /dev/null
++++ b/tests/functional/aarch64/test_rock_5b.py
+@@ -0,0 +1,118 @@
++# Functional test for ROCK 5B SPL, U-Boot and direct Linux boot
++#
++# Copyright (C) 2026 Process Mission
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import Asset, QemuSystemTest, skipIfMissingCommands
++from qemu_test import exec_command, exec_command_and_wait_for_pattern
++from qemu_test import wait_for_console_pattern
++
++
++class Rock5BMachine(QemuSystemTest):
++
++    ASSET_IMAGE = Asset(
++        ('https://github.com/processmission/qemu-machine-images/releases/'
++         'download/v1.2.0/aarch64-rock-5b-v1.2.0.tar.zst'),
++        'bbec789f25a5e87adb1aeabf58294551d2a26bbf076e0041935f307a9492ce6f')
++
++    UBOOT_PATTERNS = ('U-Boot SPL 2025.01',
++                      'Trying to boot from SPI',
++                      'U-Boot 2025.01',
++                      'SF: Detected xt25f128',
++                      'SF: 12582912 bytes @ 0x400000 Read: OK',
++                      'Starting kernel')
++    LINUX_PATTERNS = ('Booting Linux on physical CPU',)
++    LINUX_APPEND = ('console=ttyS2,1500000n8 '
++                    'earlycon=uart8250,mmio32,0xfeb50000 '
++                    'rdinit=/init')
++
++    def _extract_images(self) -> None:
++        self.require_accelerator('tcg')
++        self.set_machine('rock-5b')
++        archive = self.uncompress(self.ASSET_IMAGE, target='images.tar',
++                                  format='zstd')
++        self.archive_extract(archive, format='tar')
++
++    def _boot_and_login(self, patterns: tuple[str, ...]) -> None:
++        for pattern in patterns + ('rock5b login:',):
++            wait_for_console_pattern(self, pattern, 'Kernel panic')
++        exec_command_and_wait_for_pattern(self, 'root', '# ')
++
++    def _check_guest(self, command: str) -> None:
++        # Split the marker so an echoed command cannot satisfy the check.
++        exec_command_and_wait_for_pattern(
++            self,
++            command + " && printf '\\nROCK5B_%s\\n' OK"
++                      " || printf '\\nROCK5B_%s\\n' FAIL",
++            'ROCK5B_OK', 'ROCK5B_FAIL')
++        wait_for_console_pattern(self, '# ')
++
++    def _check_board(self) -> None:
++        self._check_guest('test "$(uname -m)" = aarch64')
++        self._check_guest('test "$(grep -c ^processor /proc/cpuinfo)" -eq 8')
++        self._check_guest('test -c /dev/ttyS2 && '
++                          'test -d /sys/devices/system/cpu/cpu7')
++        self._check_guest(
++            'test "$(tr -d \'\\000\' < /proc/device-tree/model)" '
++            '= \'Radxa ROCK 5B\'')
++        self._check_guest(
++            "tr '\\000' '\\n' < /proc/device-tree/compatible | "
++            "grep -qx 'radxa,rock-5b'")
++        self._check_guest(
++            "printf 'rock5b-boot\\n' > /root/boot-check && "
++            'test "$(cat /root/boot-check)" = rock5b-boot')
++
++    def _reboot_and_poweroff(self, patterns: tuple[str, ...]) -> None:
++        exec_command(self, 'reboot -f')
++        self._boot_and_login(patterns)
++        self._check_guest('test "$(grep -c ^processor /proc/cpuinfo)" -eq 8')
++        self._check_guest('test ! -e /root/boot-check')
++
++        exec_command_and_wait_for_pattern(self, 'poweroff -f',
++                                          'reboot: Power down')
++        self.vm.wait()
++        self.assertEqual(self.vm.exitcode(), 0)
++
++    @skipIfMissingCommands('zstd')
++    def test_flash_boot(self) -> None:
++        self._extract_images()
++        firmware = self.scratch_file('images', 'u-boot-spl.bin')
++        flash = self.scratch_file('images', 'spi-nor.img')
++
++        self.vm.set_console()
++        self.vm.add_args('-accel', 'tcg', '-m', '2G', '-smp', '8',
++                         '-bios', firmware,
++                         '-drive', f'if=mtd,index=0,file={flash},'
++                                   'format=raw,snapshot=on')
++        self.vm.launch()
++        self._boot_and_login(self.UBOOT_PATTERNS)
++        self._check_board()
++        self._reboot_and_poweroff(self.UBOOT_PATTERNS)
++
++    @skipIfMissingCommands('zstd')
++    def test_direct_boot(self) -> None:
++        self._extract_images()
++
++        self.vm.set_console()
++        # 5 GiB of RAM continues above the peripheral hole at 0x100000000.
++        self.vm.add_args('-accel', 'tcg', '-m', '5G', '-smp', '8',
++                         '-kernel', self.scratch_file('images', 'Image'),
++                         '-initrd',
++                         self.scratch_file('images', 'rootfs.cpio.gz'),
++                         '-dtb',
++                         self.scratch_file('images', 'rk3588-rock-5b.dtb'),
++                         '-append', self.LINUX_APPEND)
++        self.vm.launch()
++        self._boot_and_login(self.LINUX_PATTERNS)
++        self._check_board()
++        self._check_guest('grep -q rdinit=/init /proc/cmdline')
++        self._check_guest('test -d /proc/device-tree/memory@100000000')
++        # Low RAM ends at 0xf0000000, which is 3932160 KiB.
++        self._check_guest(
++            'test "$(awk \'/^MemTotal/ {print $2}\' /proc/meminfo)" '
++            '-gt 3932160')
++        self._reboot_and_poweroff(self.LINUX_PATTERNS)
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
+-- 
+2.53.0
+
 

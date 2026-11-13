@@ -1,81 +1,68 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07C8C606A33A
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:56:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A544606E0C9
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:57:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=TS019Okw
+	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=mm78s/wv
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRrjC-0001O5-L6; Fri, 13 Nov 2026 08:54:06 -0500
+	id 1xRrjS-0001jw-UA; Fri, 13 Nov 2026 08:54:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnnJ-0001sc-AG; Fri, 13 Nov 2026 04:42:05 -0500
-Received: from zg8tmja2lje4os43os4xodqa.icoremail.net ([206.189.79.184])
+ (Exim 4.90_1) (envelope-from <dblanzeanu@linux.microsoft.com>)
+ id 1xRqpx-0005Hj-Ke; Fri, 13 Nov 2026 07:57:02 -0500
+Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnnH-00022E-Gj; Fri, 13 Nov 2026 04:42:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mails.tsinghua.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:
- Date:Message-ID:In-Reply-To:References:MIME-Version:
- Content-Transfer-Encoding; bh=IcEUuNtag/5cwrbnt2gyrDZqhS2q2hpF7Q
- 8fIK4/Tsk=; b=TS019Okw8ePgw3y/FsPkJFzvf9shdBqC+Ci0K8ucDM7mBWrjZZ
- rkHTuUoPVPM0N+ZdwDWyncFFDxZefKYz3epOh6EBB3JrJ5LAXxFk5hVD9sf4XKgc
- N5K9BpdJgrg2dc582rKvOm78fqtX4jxLz0fVo1hVQ1TodhIq15+QOZhV0=
-Received: from ubuntu (unknown [101.5.154.165])
- by web1 (Coremail) with SMTP id yAQGZQDXRzhZ2_ZqWAhCAg--.45084S5;
- Fri, 13 Nov 2026 17:41:57 +0800 (CST)
-From: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
-To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, alistair@alistair23.me,
- kwolf@redhat.com, hreitz@redhat.com, clg@kaod.org,
- peter.maydell@linaro.org, jamin_lin@aspeedtech.com,
- kane_chen@aspeedtech.com, farosas@suse.de, lvivier@redhat.com,
- pbonzini@redhat.com, bin.meng@processmission.com,
- tangtao1634@phytium.com.cn, Chao Liu <chao.liu@processmission.com>,
- Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
-Subject: [PATCH 4/4] hw/block/m25p80: fix page program address wrap
-Date: Fri, 13 Nov 2026 17:41:43 +0800
-Message-ID: <a7056e87c660a2b32e115faee800284cca1a014f.1794558546.git.w-yf22@mails.tsinghua.edu.cn>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <cover.1794558546.git.w-yf22@mails.tsinghua.edu.cn>
-References: <cover.1794558546.git.w-yf22@mails.tsinghua.edu.cn>
+ (envelope-from <dblanzeanu@linux.microsoft.com>)
+ id 1xRqpn-0006iP-Qg; Fri, 13 Nov 2026 07:56:53 -0500
+Received: from linux.microsoft.com (unknown [52.164.184.190])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 27CD820B7166;
+ Fri, 13 Nov 2026 04:56:41 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 27CD820B7166
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1794574605;
+ bh=Mgbu8zIPWx7hnR+YUHakvK2oeo+6CHDNjKUq6b4AiP4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=mm78s/wvBLhoc+liGm0Gf1KGccrGE9UAX9oAOywUbyUxxLcsUGzNVBkDTyakpaW9S
+ xKPhZfpCo/zF1qKVNz+Exg5YHtZt2u8JAODhM1DF4pPd1NMBBzXHZslL2HTqLSgCc7
+ 3W6cBco4ga9X9j9hpvwUNsH0gTADZ32iOOnL74Jw=
+Date: Fri, 13 Nov 2026 14:56:37 +0200
+From: Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>
+To: Aastha Rawat <aastharawat@linux.microsoft.com>
+Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: Re: [PATCH v6 04/14] meson, target/arm/mshv: Enable arm64 build &
+ add initial MSHV support
+Message-ID: <avcJBaVOdK05xwwW@linux.microsoft.com>
+References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+ <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: yAQGZQDXRzhZ2_ZqWAhCAg--.45084S5
-X-Coremail-Antispam: 1UD129KBjvJXoWxGr15GrW3AFy8ur13ArykAFb_yoW5WF1rp3
- WDJ3Zay348WrnxXws7Arn2van8uFs3A342k343KF1YvFsFg3W5tryftr1q93yrAryrtws8
- KFsIyF48Ww48KrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUH014x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JrWl82xGYIkIc2
- x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2z4x0
- Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F4UJw
- A2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq3wAa
- c4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzV
- Aqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S
- 6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxw
- ACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVW8ZVWrXwCY02Avz4vE14v_GFWl
- 42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJV
- WUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI7VAK
- I48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26F4j6r
- 4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAI
- cVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7sRE2Q6DUUUUU==
-X-CM-SenderInfo: fzn1wj2s6ptxtovo32xlqjx3vdohv3gofq/
-Received-SPF: pass client-ip=206.189.79.184;
- envelope-from=w-yf22@mails.tsinghua.edu.cn;
- helo=zg8tmja2lje4os43os4xodqa.icoremail.net
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=dblanzeanu@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 13 Nov 2026 08:52:59 -0500
+X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:27 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,79 +73,243 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Chao Liu <chao.liu@processmission.com>
+On Thu, Oct 01, 2026 at 10:52:49AM +0000, Aastha Rawat wrote:
+> Enable the build of the MSHV accelerator for arm64 in the Meson build
+> system. Introduce initial files and stub implementations to support MSHV
+> for the ARM target.
+> 
+> Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+> ---
+>  accel/mshv/mshv-all.c       | 10 ++++--
+>  hw/i386/mshv/clock.c        |  2 +-
+>  include/system/mshv.h       |  2 +-
+>  meson.build                 |  8 ++---
+>  target/arm/meson.build      |  1 +
+>  target/arm/mshv/meson.build |  7 ++++
+>  target/arm/mshv/mshv-all.c  | 81 +++++++++++++++++++++++++++++++++++++++++++++
+>  7 files changed, 103 insertions(+), 8 deletions(-)
+> 
+> diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
+> index efe19a3914..f3f1825b0b 100644
+> --- a/accel/mshv/mshv-all.c
+> +++ b/accel/mshv/mshv-all.c
+> @@ -142,8 +142,10 @@ static int create_partition(int mshv_fd, int *vm_fd)
+>  {
+>      int ret;
+>      uint64_t pt_flags, host_proc_features;
+> -    union hv_partition_processor_xsave_features disabled_xsave_features;
+>      union hv_partition_processor_features disabled_partition_features = {0};
+> +#if defined(__x86_64__)
+> +    union hv_partition_processor_xsave_features disabled_xsave_features;
+> +#endif
+>  
+>      struct mshv_create_partition_v2 args = {0};
+>  
+> @@ -155,7 +157,8 @@ static int create_partition(int mshv_fd, int *vm_fd)
+>                 (1ULL << MSHV_PT_BIT_GPA_SUPER_PAGES) |
+>                 (1ULL << MSHV_PT_BIT_CPU_AND_XSAVE_FEATURES);
+>  
+> -    /* enable all */
+> +#if defined(__x86_64__)
+> +    /* enable all xsave features (0 = enabled) */
+>      disabled_xsave_features.as_uint64 = 0;
+>      /*
+>       * AMX TILE XSAVE state (XTILE_DATA) is 8KB, which exceeds the
+> @@ -165,6 +168,7 @@ static int create_partition(int mshv_fd, int *vm_fd)
+>      disabled_xsave_features.amx_bf16_support = 1;
+>      disabled_xsave_features.amx_int8_support = 1;
+>      disabled_xsave_features.amx_fp16_support = 1;
+> +#endif
+>  
+>      /*
+>       * query host for supported processor features and disable unsupported
+> @@ -196,7 +200,9 @@ static int create_partition(int mshv_fd, int *vm_fd)
+>      /* populate args structure */
+>      args.pt_flags = pt_flags;
+>      args.pt_isolation = MSHV_PT_ISOLATION_NONE;
+> +#if defined(__x86_64__)
+>      args.pt_disabled_xsave = disabled_xsave_features.as_uint64;
+> +#endif
+>      args.pt_num_cpu_fbanks = MSHV_NUM_CPU_FEATURES_BANKS;
+>  
+>      ret = ioctl(mshv_fd, MSHV_CREATE_PARTITION, &args);
+> diff --git a/hw/i386/mshv/clock.c b/hw/i386/mshv/clock.c
+> index 02c586503a..b7db382752 100644
+> --- a/hw/i386/mshv/clock.c
+> +++ b/hw/i386/mshv/clock.c
+> @@ -182,7 +182,7 @@ static const VMStateDescription vmstate_mshv_clock = {
+>      },
+>  };
+>  
+> -void mshv_clock_init(void)
+> +void mshv_arch_clock_init(void)
+>  {
+>      vmstate_register(NULL, 0, &vmstate_mshv_clock, &mshv_clock);
+>      qemu_add_vm_change_state_handler(mshv_clock_vm_state_change, &mshv_clock);
+> diff --git a/include/system/mshv.h b/include/system/mshv.h
+> index f98ddff9b5..114f065db5 100644
+> --- a/include/system/mshv.h
+> +++ b/include/system/mshv.h
+> @@ -58,7 +58,7 @@ DECLARE_INSTANCE_CHECKER(MshvState, MSHV_STATE,
+>  extern MshvState *mshv_state;
+>  
 
-The flash wraps page program addressing within the page when the write
-crosses the page boundary; otherwise a page-crossing program can
-corrupt the following page. Correct the affected devices' page sizes to
-ensure wrapping at the correct boundary.
+This renames the `mshv_clock_init`, but the place where it is called is not
+changed in this commit, which leads to a compilation issue on the x86 arch.
 
-Fixes: 82a2499011a7 ("m25p80: Initial implementation of SPI flash device")
-Signed-off-by: Chao Liu <chao.liu@processmission.com>
-Signed-off-by: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
----
- hw/block/m25p80.c | 25 +++++++++++++++++++------
- 1 file changed, 19 insertions(+), 6 deletions(-)
-
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 15aba33bce..7205c48b1a 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -194,8 +194,10 @@ static const FlashPartInfo known_devices[] = {
-      * Atmel EEPROMS - it is assumed, that don't care bit in command
-      * is set to 0. Block protection is not supported.
-      */
--    { INFO("at25128a-nonjedec", 0x0,     0,         1, 131072, EEPROM) },
--    { INFO("at25256a-nonjedec", 0x0,     0,         1, 262144, EEPROM) },
-+    { INFO("at25128a-nonjedec", 0x0,     0,         1, 131072, EEPROM),
-+      .page_size = 64 },
-+    { INFO("at25256a-nonjedec", 0x0,     0,         1, 262144, EEPROM),
-+      .page_size = 64 },
- 
-     /* EON -- en25xxx */
-     { INFO("en25f32",     0x1c3116,      0,  64 << 10,  64, ER_4K) },
-@@ -289,10 +291,13 @@ static const FlashPartInfo known_devices[] = {
-      */
-     { INFO("s25sl032p",   0x010215, 0x4d00,  64 << 10,  64, ER_4K) },
-     { INFO("s25sl064p",   0x010216, 0x4d00,  64 << 10, 128, ER_4K) },
--    { INFO("s25fl256s0",  0x010219, 0x4d00, 256 << 10, 128, 0) },
-+    { INFO("s25fl256s0",  0x010219, 0x4d00, 256 << 10, 128, 0),
-+      .page_size = 512 },
-     { INFO("s25fl256s1",  0x010219, 0x4d01,  64 << 10, 512, 0) },
--    { INFO6("s25fl512s",  0x010220, 0x4d0080, 256 << 10, 256, 0) },
--    { INFO6("s70fl01gs",  0x010221, 0x4d0080, 256 << 10, 512, 0) },
-+    { INFO6("s25fl512s",  0x010220, 0x4d0080, 256 << 10, 256, 0),
-+      .page_size = 512 },
-+    { INFO6("s70fl01gs",  0x010221, 0x4d0080, 256 << 10, 512, 0),
-+      .page_size = 512 },
-     { INFO("s25sl12800",  0x012018, 0x0300, 256 << 10,  64, 0) },
-     { INFO("s25sl12801",  0x012018, 0x0301,  64 << 10, 256, 0) },
-     { INFO("s25fl129p0",  0x012018, 0x4d00, 256 << 10,  64, 0) },
-@@ -1675,7 +1680,15 @@ static uint32_t m25p80_transfer8(SSIPeripheral *ss, uint32_t tx)
-     case STATE_PAGE_PROGRAM:
-         trace_m25p80_page_program(s, s->cur_addr, (uint8_t)tx);
-         flash_write8(s, s->cur_addr, (uint8_t)tx);
--        s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
-+        if (s->cmd_in_progress == AAI_WP) {
-+            s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
-+        } else {
-+            uint32_t page_size = s->pi->page_size;
-+            uint32_t page_offset = (s->cur_addr + 1) % page_size;
-+
-+            s->cur_addr -= s->cur_addr % page_size;
-+            s->cur_addr += page_offset;
-+        }
- 
-         if (get_man(s) == MAN_SST && s->aai_enable && s->cur_addr == 0) {
-             /*
--- 
-2.53.0
-
+>  /* clock (partition reference time) */
+> -void mshv_clock_init(void);
+> +void mshv_arch_clock_init(void);
+>  
+>  /* interrupt */
+>  int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
+> diff --git a/meson.build b/meson.build
+> index cae1591cd2..6a90a394a2 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -304,7 +304,8 @@ if cpu == 'aarch64'
+>    accelerator_targets += {
+>      'CONFIG_HVF': ['aarch64-softmmu'],
+>      'CONFIG_NITRO': ['aarch64-softmmu'],
+> -    'CONFIG_WHPX': ['aarch64-softmmu']
+> +    'CONFIG_WHPX': ['aarch64-softmmu'],
+> +    'CONFIG_MSHV': ['aarch64-softmmu'],
+>    }
+>  elif cpu == 'x86_64'
+>    accelerator_targets += {
+> @@ -884,10 +885,9 @@ if get_option('kvm').allowed() and host_os == 'linux'
+>  endif
+>  
+>  if get_option('mshv').allowed() and host_os == 'linux'
+> -  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
+> -    error('mshv accelerator requires x64_64 host')
+> +  if host_machine.cpu() in [ 'x86_64', 'aarch64' ]
+> +    accelerators += 'CONFIG_MSHV'
+>    endif
+> -  accelerators += 'CONFIG_MSHV'
+>  endif
+>  
+>  if get_option('whpx').allowed() and host_os == 'windows'
+> diff --git a/target/arm/meson.build b/target/arm/meson.build
+> index 0369f96b4c..1ac2cef26b 100644
+> --- a/target/arm/meson.build
+> +++ b/target/arm/meson.build
+> @@ -63,6 +63,7 @@ arm_common_system_ss.add(files(
+>  
+>  subdir('hvf')
+>  subdir('whpx')
+> +subdir('mshv')
+>  
+>  if 'CONFIG_TCG' in config_all_accel
+>     subdir('tcg')
+> diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
+> new file mode 100644
+> index 0000000000..169643691e
+> --- /dev/null
+> +++ b/target/arm/mshv/meson.build
+> @@ -0,0 +1,7 @@
+> +arm_mshv_ss = ss.source_set()
+> +
+> +arm_mshv_ss.add(files(
+> +  'mshv-all.c',
+> +))
+> +
+> +arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
+> diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
+> new file mode 100644
+> index 0000000000..00c54f5d66
+> --- /dev/null
+> +++ b/target/arm/mshv/mshv-all.c
+> @@ -0,0 +1,81 @@
+> +/*
+> + * QEMU MSHV support
+> + *
+> + * Copyright Microsoft, Corp. 2026
+> + *
+> + * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
+> + *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/arm/virt.h"
+> +#include "system/mshv.h"
+> +#include "system/mshv_int.h"
+> +
+> +static int load_regs(CPUState *cpu)
+> +{
+> +    return 0;
+> +}
+> +
+> +static int store_regs(const CPUState *cpu)
+> +{
+> +    return 0;
+> +}
+> +
+> +int mshv_arch_load_vcpu_state(CPUState *cpu)
+> +{
+> +    return load_regs(cpu);
+> +}
+> +
+> +int mshv_arch_store_vcpu_state(const CPUState *cpu)
+> +{
+> +    return store_regs(cpu);
+> +}
+> +
+> +int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
+> +{
+> +    return 0;
+> +}
+> +
+> +void mshv_arch_init_vcpu(CPUState *cpu)
+> +{
+> +
+> +}
+> +
+> +void mshv_arch_destroy_vcpu(CPUState *cpu)
+> +{
+> +
+> +}
+> +
+> +int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
+> +{
+> +    return 0;
+> +}
+> +
+> +void mshv_arch_amend_proc_features(
+> +    union hv_partition_synthetic_processor_features *features)
+> +{
+> +    /*
+> +     * TLB-flush hypercalls are an x86 enlightenment. ARM guests use
+> +     * broadcast TLBI instructions instead.
+> +     */
+> +    features->tb_flush_hypercalls = 0;
+> +}
+> +
+> +void mshv_arch_disable_partition_proc_features(
+> +    union hv_partition_processor_features *disabled_features)
+> +{
+> +    /* No processor features to disable on ARM */
+> +}
+> +
+> +int mshv_arch_post_init_vm(int vm_fd)
+> +{
+> +    return 0;
+> +}
+> +
+> +int mshv_arch_migration_init(MshvState *s)
+> +{
+> +    return 0;
+> +}
+> 
+> -- 
+> 2.45.4
 

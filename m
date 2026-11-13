@@ -1,84 +1,82 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 199F5606A323
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 876C6606A323
 	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:55:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=bS6YQ+CX
+	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=kvgjF4UL
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRrj2-0000vx-HX; Fri, 13 Nov 2026 08:53:56 -0500
+	id 1xRrjB-0001N2-Kz; Fri, 13 Nov 2026 08:54:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnug-0004yY-62; Fri, 13 Nov 2026 04:49:42 -0500
-Received: from smtp46.tsinghua.edu.cn ([101.6.4.70] helo=tsinghua.edu.cn)
+ id 1xRnnE-0001re-Ss; Fri, 13 Nov 2026 04:42:01 -0500
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnud-0007Fy-Pm; Fri, 13 Nov 2026 04:49:41 -0500
+ id 1xRnnB-00021R-DY; Fri, 13 Nov 2026 04:42:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=mails.tsinghua.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:
  Date:Message-ID:In-Reply-To:References:MIME-Version:
- Content-Transfer-Encoding; bh=TFBK+ruV+8TwHllPZXoQ269vGYbSb8v7MR
- chb9beKss=; b=bS6YQ+CXU9bmBRkSEGBwMrLIe1ET1IRUfg4zy3V2JP3k5emiFL
- XTHdR73HnKVbAUKJa5z4grg4SKx5Z2X5H9vxOr5os+2S5I+zpzNNoOOuRaSsZ8dM
- PNgf4k5f9IPEtrSsmkwCBVev5yjKCXhTh2LSECVrDRlnVcUmkWYC5mMEQ=
+ Content-Transfer-Encoding; bh=BhNMR/FRz2ZGwXKP9oUvq6S+TqUtEjfWRY
+ 0BsuDwE8g=; b=kvgjF4ULnsq4NPK0oz1gdXPxTiXucKfAIm3clr4rN58tgkF/rf
+ okiIarI5XumMZI4D46LK8Am7kEC3K0wKdx6Irzx1rvEWL16YhLW4fziCaUlZhRL0
+ Chjcx5Hm5aX29swj8ofSGqefIx+Oj3SGiIQO++JMEZf/zSvUQkrWea/5o=
 Received: from ubuntu (unknown [101.5.154.165])
- by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S19;
- Fri, 13 Nov 2026 17:49:34 +0800 (CST)
+ by web1 (Coremail) with SMTP id yAQGZQDXRzhZ2_ZqWAhCAg--.45084S2;
+ Fri, 13 Nov 2026 17:41:47 +0800 (CST)
 From: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 To: qemu-devel@nongnu.org
-Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Kuan-Wei Chiu <visitorckw@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- bin.meng@processmission.com, tangtao1634@phytium.com.cn,
- Chao Liu <chao.liu@processmission.com>
-Subject: [RFC PATCH 17/20] hw/arm/rock-5b: connect the XTX XT25F128 SPI NOR
- flash
-Date: Fri, 13 Nov 2026 17:47:51 +0800
-Message-ID: <4451c95e39bfe37a0587b11019798464d7215006.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
+Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, alistair@alistair23.me,
+ kwolf@redhat.com, hreitz@redhat.com, clg@kaod.org,
+ peter.maydell@linaro.org, jamin_lin@aspeedtech.com,
+ kane_chen@aspeedtech.com, farosas@suse.de, lvivier@redhat.com,
+ pbonzini@redhat.com, bin.meng@processmission.com,
+ tangtao1634@phytium.com.cn, Chao Liu <chao.liu@processmission.com>,
+ Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
+Subject: [PATCH 1/4] hw/block/m25p80: fix erase past the end of the flash
+ device
+Date: Fri, 13 Nov 2026 17:41:40 +0800
+Message-ID: <2b14e487c5719cb70f78515304293990c0abdccd.1794558546.git.w-yf22@mails.tsinghua.edu.cn>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
-References: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
+In-Reply-To: <cover.1794558546.git.w-yf22@mails.tsinghua.edu.cn>
+References: <cover.1794558546.git.w-yf22@mails.tsinghua.edu.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S19
-X-Coremail-Antispam: 1UD129KBjvJXoWxur1fuF1UAr15Jw1rWrWxZwb_yoW5XFy8pF
- 10kFZ8CrZ3G3WagrWayF4Sgw15Ww4vv3WUAr1fu3sYvFy7tFWDWrWxKw15CFyUWrZYy3yj
- 9r9xXF1rtF45ur7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUHa14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
- kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
- z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F
- 4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq
- 3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0V
- AKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1l
- Ox8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErc
- IFxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCY02Avz4vE14v_
- GFWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
- WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI
- 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Xr0_Ar1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
- 4UJVWxJr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r4j6F4U
- MIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCTnIWIevJa73UjIFyTuYvjfUeVbkUU
- UUU
+X-CM-TRANSID: yAQGZQDXRzhZ2_ZqWAhCAg--.45084S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Xw18KFy7Cr4Dtr1xAr1kXwb_yoW8JF45pr
+ 1kWF45JrnagF1xWa1Sv3WSqr97CFn7Ga98Jws2934Fy390ga4IgrZxKFy5G34DJr1Sk3WU
+ Zr90va1UCF95W3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUUP014x267AKxVW5JVWrJwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+ rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+ 1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
+ JVWxJr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
+ CE3s1lnxkEFVAIw20F6cxK64vIFxWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xv
+ F2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jrv_JF1lYx0Ex4A2jsIE14v26r1j6r
+ 4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I
+ 648v4I1lFIxGxcIEc7CjxVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_GFv_Wrylc2xSY4AK67
+ AK6r4fMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAF
+ wI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVW8ZVWrXwCIc4
+ 0Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AK
+ xVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr
+ 1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7sRE0tC7UU
+ UUU==
 X-CM-SenderInfo: fzn1wj2s6ptxtovo32xlqjx3vdohv3gofq/
-Received-SPF: pass client-ip=101.6.4.70;
- envelope-from=w-yf22@mails.tsinghua.edu.cn; helo=tsinghua.edu.cn
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=w-yf22@mails.tsinghua.edu.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:13 -0500
+X-Mailman-Approved-At: Fri, 13 Nov 2026 08:52:59 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,89 +96,41 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chao Liu <chao.liu@processmission.com>
 
-Connect an XT25F128 to chip select 0 of the ROCK 5B SFC. An optional
-if=mtd,index=0 drive provides the flash contents and must be exactly
-16 MiB; without a drive the flash starts erased.
+Erase commands are addressed at the containing erase unit; the flash
+ignores the low address bits, so an erase in the last erase unit of the
+device must not extend past the end of the backing store.
 
+Fixes: 82a2499011a7 ("m25p80: Initial implementation of SPI flash device")
 Signed-off-by: Chao Liu <chao.liu@processmission.com>
 Signed-off-by: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 ---
- hw/arm/Kconfig   |  1 +
- hw/arm/rock-5b.c | 29 +++++++++++++++++++++++++++++
- 2 files changed, 30 insertions(+)
+ hw/block/m25p80.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 40f7de823c..01ae699fee 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -789,3 +789,4 @@ config ROCK5B
-     default y
-     depends on TCG && AARCH64
-     select RK3588
-+    select SSI_M25P80
-diff --git a/hw/arm/rock-5b.c b/hw/arm/rock-5b.c
-index 7906d53175..abc898c50c 100644
---- a/hw/arm/rock-5b.c
-+++ b/hw/arm/rock-5b.c
-@@ -17,8 +17,12 @@
- #include "hw/arm/boot.h"
- #include "hw/arm/rk3588.h"
- #include "hw/core/boards.h"
-+#include "hw/core/qdev-properties.h"
- #include "hw/core/qdev-properties-system.h"
-+#include "hw/ssi/ssi.h"
- #include "system/address-spaces.h"
-+#include "system/block-backend.h"
-+#include "system/blockdev.h"
- #include "system/device_tree.h"
- #include "system/kvm.h"
- #include "system/qtest.h"
-@@ -37,6 +41,7 @@ static const MemMapEntry rock5b_memmap[] = {
-     [ROCK5B_HIGH_RAM] = { 0x100000000, 0x310000000 },
- };
- 
-+#define ROCK5B_FLASH_SIZE (16 * MiB)
- /* Match the low-memory reservation made by Rockchip U-Boot for BL31. */
- #define ROCK5B_FIRMWARE_RESERVED_SIZE (2 * MiB)
- /* UART2 drives the board's debug header. */
-@@ -70,6 +75,28 @@ static void rock5b_connect_serial(Rock5BMachineState *s)
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index baf798c6b5..2a882c392c 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -639,6 +639,19 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
+         abort();
      }
- }
  
-+static void rock5b_create_flash(Rock5BMachineState *s)
-+{
-+    DriveInfo *di = drive_get(IF_MTD, 0, 0);
-+    DeviceState *flash = qdev_new("xt25f128");
-+
-+    object_property_add_child(OBJECT(s), "spi-nor", OBJECT(flash));
-+    if (di) {
-+        BlockBackend *blk = blk_by_legacy_dinfo(di);
-+        int64_t length = blk_getlength(blk);
-+
-+        if (length != ROCK5B_FLASH_SIZE) {
-+            error_report("rock-5b: SPI NOR image must be exactly 16 MiB");
-+            exit(EXIT_FAILURE);
-+        }
-+        qdev_prop_set_drive_err(flash, "drive", blk, &error_fatal);
++    /*
++     * The flash ignores the low address bits of erase commands and erases
++     * the containing erase unit. Reject requests whose erase unit is not
++     * entirely within the device.
++     */
++    offset &= ~(len - 1);
++    if (offset + len > s->size) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "M25P80: erase at 0x%x for %u bytes is outside the "
++                      "device (size 0x%x)\n", offset, len, s->size);
++        return;
 +    }
-+    qdev_realize_and_unref(flash, qdev_get_child_bus(s->soc.sfc, "spi"),
-+                           &error_fatal);
-+    qdev_connect_gpio_out_named(s->soc.sfc, "cs", 0,
-+                                qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0));
-+}
 +
- /*
-  * arm_load_dtb() replaces the memory nodes with a single node for low RAM;
-  * add the RAM above the peripheral hole.
-@@ -168,6 +195,8 @@ static void rock5b_init(MachineState *ms)
-                                     &s->high_ram);
-     }
+     trace_m25p80_flash_erase(s, offset, len);
  
-+    rock5b_create_flash(s);
-+
-     rock5b_direct_boot(s);
- }
- 
+     if ((s->pi->flags & capa_to_assert) != capa_to_assert) {
 -- 
 2.53.0
 

@@ -1,32 +1,32 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 56620606A891
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D10A5606A893
 	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:59:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=hjlWd4vy
+	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=BTnM3zoD
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRrk1-0002nm-AI; Fri, 13 Nov 2026 08:54:57 -0500
+	id 1xRrjD-0001QH-Fi; Fri, 13 Nov 2026 08:54:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnte-0004NY-LJ; Fri, 13 Nov 2026 04:48:40 -0500
+ id 1xRntc-0004NE-Q2; Fri, 13 Nov 2026 04:48:37 -0500
 Received: from smtp46.tsinghua.edu.cn ([101.6.4.70] helo=tsinghua.edu.cn)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnta-00072k-OX; Fri, 13 Nov 2026 04:48:38 -0500
+ id 1xRnta-00072Q-7q; Fri, 13 Nov 2026 04:48:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=mails.tsinghua.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:
  Date:Message-ID:In-Reply-To:References:MIME-Version:
- Content-Transfer-Encoding; bh=iHEXveoXlZNOIJB/lih70MMBsZV1xP0a51
- vwPMDfNI0=; b=hjlWd4vyt13HiSdknOMCti9Qc2QLS5m0avEa5WcgeEvdvpWXc0
- VpPJtu3+lMmrKGqaF2j1F8sGiFqso8A0e4zILyLfgXbYba6qJ7ICJeHDzSXX5TNJ
- HueKMIWWJKYKuOZksvmwqmqc786kAseDjaQpJP6eFLAd4xj6o3gxXJ6RQ=
+ Content-Transfer-Encoding; bh=WrgiXMgDnLyn81IHw7OwTp99pe2tAXjTUQ
+ fDjOQj1WU=; b=BTnM3zoDav8SyH5Dzs2v+m6M03uItdlp6Gi1J3pbLdQsF/VVpa
+ 1XPtlWBamXxBup6HJK2aO3EFE0n5qwIQeHArjHsjfaYPcmDweddtDPibee4Oxxti
+ feLiBdRQa3Do0WcnSuCBXWhpBVTd12AigotoZEkRumg05NhqIBoRCF+FA=
 Received: from ubuntu (unknown [101.5.154.165])
- by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S6;
- Fri, 13 Nov 2026 17:48:30 +0800 (CST)
+ by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S4;
+ Fri, 13 Nov 2026 17:48:27 +0800 (CST)
 From: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 To: qemu-devel@nongnu.org
 Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
@@ -39,34 +39,33 @@ Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  bin.meng@processmission.com, tangtao1634@phytium.com.cn,
  Chao Liu <chao.liu@processmission.com>
-Subject: [RFC PATCH 04/20] target/arm: allow machines to handle SMC calls
-Date: Fri, 13 Nov 2026 17:47:38 +0800
-Message-ID: <d72cbcb46dab52d6a919d1212221b4202db2f4c3.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
+Subject: [RFC PATCH 02/20] hw/char/dw8250: expose the baudbase property
+Date: Fri, 13 Nov 2026 17:47:36 +0800
+Message-ID: <cd2f3b71699aa3785c99142f5288190a7a6eedef.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 References: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S6
-X-Coremail-Antispam: 1UD129KBjvJXoWxtF4fWw4kKF48Gr17JrWUurg_yoW7tw1fpF
- Z8Cr98ur4kKa4av34fCF17tF43Ca1kWrW0y39FgrWFyw17ZryFkr1Dta43KFW5Gr4UuF15
- ZF4Fvr4F93W5X37anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUHa14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
- kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
- z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F
- 4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq
- 3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0V
- AKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1l
- Ox8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErc
- IFxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCY02Avz4vE14v_
- GFWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
- WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI
- 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
- 4UJVWxJr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r4j6F4U
- MIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCTnIWIevJa73UjIFyTuYvjfUeVbkUU
- UUU
+X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S4
+X-Coremail-Antispam: 1UD129KBjvdXoWrtF45CFWxGFWDAFWDAr4xWFg_yoWDAwb_GF
+ y5uFykXrs5JF13KrW2kaykWrn8Cw1rJ3ZrtFn7KFZ8WrykW3yDXFy5CrnYvr47u3yDCrW3
+ J34kA34Ika45ujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbdAFF20E14v26rWj6s0DM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+ 6rWj6s0DM7CIcVAFz4kK6r1j6r18M28IrcIa0xkI8VA2jI8067AKxVWUXwA2048vs2IY02
+ 0Ec7CjxVAFwI0_Xr0E3s1l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xv
+ wVC0I7IYx2IY67AKxVWDJVCq3wA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UM2
+ 8EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s0DM2vY
+ z4IE04k24VAvwVAKI4IrM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c
+ 02F40Ex7xfMcIj6xIIjxv20xvE14v26r1Y6r17McIj6I8E87Iv67AKxVWUJVW8JwAm72CE
+ 4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4
+ IIrI8v6xkF7I0E8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxkIecxEwVAFwVW8uwCF
+ 04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r
+ 18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_GFv_WrylIxkGc2Ij64vI
+ r41lIxAIcVC0I7IYx2IY67AKxVWUCVW8JwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F
+ 4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAI
+ cVC2z280aVCY1x0267AKxVW8Jr0_Cr1UYxBIdaVFxhVjvjDU0xZFpf9x0JUhjjgUUUUU=
 X-CM-SenderInfo: fzn1wj2s6ptxtovo32xlqjx3vdohv3gofq/
 Received-SPF: pass client-ip=101.6.4.70;
  envelope-from=w-yf22@mails.tsinghua.edu.cn; helo=tsinghua.edu.cn
@@ -77,7 +76,7 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:01 -0500
+X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:03 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,193 +97,30 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chao Liu <chao.liu@processmission.com>
 
-Some machines model firmware services which use vendor SMC function IDs
-while QEMU provides PSCI through the same SMC conduit.  There is
-currently no way for such a machine to take over a call before the PSCI
-path handles it.
-
-Add a small registry for SMC function ID handlers.  Machines can
-register a handler which inspects the call and returns whether it was
-handled, without changing the behavior of existing callers.
+The RK3588 SoC clocks its UARTs at 24 MHz, so the embedded serial
+device needs a matching baud base to calculate the guest baud rate
+correctly. Alias the serial-mm baudbase property on the DW8250 device
+so that the SoC model can set it.
 
 Signed-off-by: Chao Liu <chao.liu@processmission.com>
 Signed-off-by: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 ---
- MAINTAINERS              |  1 +
- include/hw/arm/arm-smc.h | 31 ++++++++++++++++
- target/arm/helper.c      | 80 ++++++++++++++++++++++++++++++++++++++++
- target/arm/internals.h   |  3 ++
- 4 files changed, 115 insertions(+)
- create mode 100644 include/hw/arm/arm-smc.h
+ hw/char/dw8250.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index fa0c6d0c9b..db1a62a0cb 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -222,6 +222,7 @@ F: tests/tcg/arm/
- F: tests/tcg/aarch64/
- F: tests/qtest/arm-cpu-features.c
- F: hw/arm/
-+F: include/hw/arm/arm-smc.h
- F: hw/cpu/a*mpcore.c
- F: include/hw/cpu/a*mpcore.h
- F: docs/system/target-arm.rst
-diff --git a/include/hw/arm/arm-smc.h b/include/hw/arm/arm-smc.h
-new file mode 100644
-index 0000000000..e27d64218f
---- /dev/null
-+++ b/include/hw/arm/arm-smc.h
-@@ -0,0 +1,31 @@
-+/*
-+ * ARM SMC call dispatch
-+ *
-+ * Board and SoC models can register handlers for vendor or firmware
-+ * SMC calling convention function IDs. Under TCG, dispatch follows the
-+ * architectural trap checks and precedes exception delivery and QEMU's
-+ * PSCI emulation, so firmware services can share the SMC conduit with PSCI.
-+ *
-+ * Copyright (C) 2026 Process Mission
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_ARM_ARM_SMC_H
-+#define HW_ARM_ARM_SMC_H
-+
-+typedef bool (*ARMSCMCHandler)(const uint64_t args[8], uint64_t *ret,
-+                              void *opaque);
-+
-+/*
-+ * Register a handler for one SMCCC function ID.  The handler returns
-+ * true when it has handled the call and set *ret. args contains the
-+ * caller's x0-x7 or zero-extended r0-r7; the ARM dispatcher writes *ret
-+ * to x0/r0 and preserves the other registers. Returns 0 on success and
-+ * a negative value if the function ID is already registered.
-+ */
-+int arm_register_smc_handler(uint64_t func_id, ARMSCMCHandler handler,
-+                             void *opaque);
-+void arm_unregister_smc_handler(uint64_t func_id, ARMSCMCHandler handler);
-+
-+#endif /* HW_ARM_ARM_SMC_H */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f413b15eb7..61645fefa6 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -36,6 +36,7 @@
- #include "cpregs.h"
- #include "target/arm/gtimer.h"
- #include "qemu/plugin.h"
-+#include "hw/arm/arm-smc.h"
+diff --git a/hw/char/dw8250.c b/hw/char/dw8250.c
+index 4f9a8ea989..6fba0d66aa 100644
+--- a/hw/char/dw8250.c
++++ b/hw/char/dw8250.c
+@@ -117,6 +117,8 @@ static void dw8250_instance_init(Object *obj)
  
- static void switch_mode(CPUARMState *env, int mode);
- #ifndef CONFIG_USER_ONLY
-@@ -9815,6 +9816,78 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-                   new_el, env->pc, pstate_read(env));
+     object_initialize_child(obj, "serial-mm", &s->serial_mm, TYPE_SERIAL_MM);
+     object_property_add_alias(obj, "chardev", OBJECT(&s->serial_mm), "chardev");
++    object_property_add_alias(obj, "baudbase", OBJECT(&s->serial_mm),
++                              "baudbase");
  }
  
-+typedef struct ARMSCMCHandlerEntry {
-+    uint64_t func_id;
-+    ARMSCMCHandler handler;
-+    void *opaque;
-+    QTAILQ_ENTRY(ARMSCMCHandlerEntry) node;
-+} ARMSCMCHandlerEntry;
-+
-+static QTAILQ_HEAD(, ARMSCMCHandlerEntry) arm_smc_handlers =
-+    QTAILQ_HEAD_INITIALIZER(arm_smc_handlers);
-+
-+int arm_register_smc_handler(uint64_t func_id, ARMSCMCHandler handler,
-+                             void *opaque)
-+{
-+    ARMSCMCHandlerEntry *entry;
-+
-+    QTAILQ_FOREACH(entry, &arm_smc_handlers, node) {
-+        if (entry->func_id == func_id) {
-+            return -1;
-+        }
-+    }
-+
-+    entry = g_new0(ARMSCMCHandlerEntry, 1);
-+    entry->func_id = func_id;
-+    entry->handler = handler;
-+    entry->opaque = opaque;
-+    QTAILQ_INSERT_TAIL(&arm_smc_handlers, entry, node);
-+
-+    return 0;
-+}
-+
-+void arm_unregister_smc_handler(uint64_t func_id, ARMSCMCHandler handler)
-+{
-+    ARMSCMCHandlerEntry *entry, *next;
-+
-+    QTAILQ_FOREACH_SAFE(entry, &arm_smc_handlers, node, next) {
-+        if (entry->func_id == func_id && entry->handler == handler) {
-+            QTAILQ_REMOVE(&arm_smc_handlers, entry, node);
-+            g_free(entry);
-+            return;
-+        }
-+    }
-+}
-+
-+bool arm_smc_handle_call(ARMCPU *cpu)
-+{
-+    CPUARMState *env = &cpu->env;
-+    uint64_t func_id = is_a64(env) ? env->xregs[0] : env->regs[0];
-+    ARMSCMCHandlerEntry *entry;
-+
-+    QTAILQ_FOREACH(entry, &arm_smc_handlers, node) {
-+        uint64_t args[8], ret;
-+
-+        if (entry->func_id != func_id) {
-+            continue;
-+        }
-+        for (size_t i = 0; i < ARRAY_SIZE(args); i++) {
-+            args[i] = is_a64(env) ? env->xregs[i] : env->regs[i];
-+        }
-+        if (!entry->handler(args, &ret, entry->opaque)) {
-+            return false;
-+        }
-+        if (is_a64(env)) {
-+            env->xregs[0] = ret;
-+        } else {
-+            env->regs[0] = ret;
-+        }
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
- /*
-  * Do semihosting call and set the appropriate return value. All the
-  * permission and validity checks have been done at translate time.
-@@ -9873,6 +9946,13 @@ void arm_cpu_do_interrupt(CPUState *cs)
-                       env->exception.syndrome);
-     }
- 
-+    if (tcg_enabled() && cs->exception_index == EXCP_SMC &&
-+        arm_smc_handle_call(cpu)) {
-+        qemu_log_mask(CPU_LOG_INT, "...handled as SMC handler call\n");
-+        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
-+        return;
-+    }
-+
-     if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
-         arm_handle_psci_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 033d6d66da..4c6825b201 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -717,6 +717,9 @@ bool arm_is_psci_call(ARMCPU *cpu, int excp_type);
- /* Actually handle a PSCI call */
- void arm_handle_psci_call(ARMCPU *cpu);
- 
-+/* Dispatch a registered SMC handler call, if any. */
-+bool arm_smc_handle_call(ARMCPU *cpu);
-+
- /**
-  * arm_clear_exclusive: clear the exclusive monitor
-  * @env: CPU env
+ static void dw8250_realize(DeviceState *dev, Error **errp)
 -- 
 2.53.0
 

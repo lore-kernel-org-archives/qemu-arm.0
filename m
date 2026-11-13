@@ -1,32 +1,32 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A98F9606A32D
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:54:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5299F606A32D
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:54:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=ECdUQGLM
+	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=oiyd5pM4
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRrif-0000fK-Au; Fri, 13 Nov 2026 08:53:38 -0500
+	id 1xRrj1-0000ux-HN; Fri, 13 Nov 2026 08:53:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRntg-0004Nf-1q; Fri, 13 Nov 2026 04:48:40 -0500
+ id 1xRnui-00050A-BM; Fri, 13 Nov 2026 04:49:44 -0500
 Received: from smtp46.tsinghua.edu.cn ([101.6.4.70] helo=tsinghua.edu.cn)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRntd-000734-Ud; Fri, 13 Nov 2026 04:48:39 -0500
+ id 1xRnug-0007GO-1Z; Fri, 13 Nov 2026 04:49:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=mails.tsinghua.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:
  Date:Message-ID:In-Reply-To:References:MIME-Version:
- Content-Transfer-Encoding; bh=GVp50UHs0h4PoLHadKWOZlhpqKtvB0FTaF
- tOAgcyRHk=; b=ECdUQGLM5pUAwH+Sy6QW2o+QVUPo/IfCeWBGucbdydzVVmFyZw
- i4U1ExpP/l7sZv/Z6DN102+hKoGadWQPG51IwwuFkK+P//QxsBr+uNcMdzwzWox2
- YR7ajbSvYQ/IacnGg8nI31S5xiRXHTNUovNQLaaDSAR3kz3hjaFsmRwnQ=
+ Content-Transfer-Encoding; bh=K2iFNuflE9lh3ECoYs1e06mchhIrRlnlB7
+ /abMWYdVk=; b=oiyd5pM48fsYH10SMt857RroqrQjbDOQPE6MLs/RYGdfHHkzYN
+ fnU3Qw6ObPDkpRwwZk2BY5w/xeQ9LE/mukJPz/bf7vLWQdVonb0ctDWf19QIc2Gv
+ RrxvUXSokJKOZKyXZQY0R89QA+a4ArFrY1HOMQv+v2YLiLX51ZqSv5Bw8=
 Received: from ubuntu (unknown [101.5.154.165])
- by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S7;
- Fri, 13 Nov 2026 17:48:32 +0800 (CST)
+ by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S20;
+ Fri, 13 Nov 2026 17:49:37 +0800 (CST)
 From: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 To: qemu-devel@nongnu.org
 Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
@@ -39,19 +39,19 @@ Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  bin.meng@processmission.com, tangtao1634@phytium.com.cn,
  Chao Liu <chao.liu@processmission.com>
-Subject: [RFC PATCH 05/20] hw/block/m25p80: add the XTX XT25F128 SPI NOR flash
-Date: Fri, 13 Nov 2026 17:47:39 +0800
-Message-ID: <7b4f63fbe6a92de57d73be15d8bde33d08a27cf5.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
+Subject: [RFC PATCH 18/20] hw/arm/rock-5b: add firmware booting
+Date: Fri, 13 Nov 2026 17:47:52 +0800
+Message-ID: <a06832670c1efef012ec5a8f02cfa0d06faf15f8.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 References: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S7
-X-Coremail-Antispam: 1UD129KBjvJXoWxCryDZr4kXrWrCw13JrWUJwb_yoWrGF45pr
- 4DXan8Kr40qFy7Ca1fu3srZr1UZr9FgrWxKw4Fq34SgFy7Jwn8Zr1kCrW8KF929r9ay3Wr
- CFs8WrsxWa95Ja7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S20
+X-Coremail-Antispam: 1UD129KBjvJXoW3JryUJrWftw18XF1rur4fGrg_yoW7CF1DpF
+ 1DArs0krWfGFyagrW3AF42gw13Xw4vvay5Wr93G3sYyF17tr9rWr48K3s5uay7Wr4vvw45
+ Gr9xJrnYvFs8XrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
  9KBjDU0xBIdaVrnRJUUUHa14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
  rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
  kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
@@ -63,7 +63,7 @@ X-Coremail-Antispam: 1UD129KBjvJXoWxCryDZr4kXrWrCw13JrWUJwb_yoWrGF45pr
  IFxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCY02Avz4vE14v_
  GFWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
  WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI
- 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Gr0_Xr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
+ 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Xr0_Ar1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
  4UJVWxJr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r4j6F4U
  MIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCTnIWIevJa73UjIFyTuYvjfUeVbkUU
  UUU
@@ -77,7 +77,7 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:01 -0500
+X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:17 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,132 +97,179 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chao Liu <chao.liu@processmission.com>
 
-Add the 16 MiB XTX XT25F128 SPI NOR flash to m25p80 with JEDEC ID
-0b 40 18, 64 KiB sectors and 4 KiB erase. XTX parts handle the status
-registers, the quad enable bit and the read dummy cycles like Winbond
-parts.
+Load a raw U-Boot SPL image supplied with -bios at address zero and
+start it in non-secure EL2. SPL loads U-Boot proper from SPI NOR, and
+QEMU provides PSCI and SCMI services through SMC calls.
+
+Restore the SPI boot-source value in SRAM and the HPTIMER enable state
+on reset before entering SPL.
 
 Signed-off-by: Chao Liu <chao.liu@processmission.com>
 Signed-off-by: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 ---
- hw/block/m25p80.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ hw/arm/rock-5b.c | 98 ++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 83 insertions(+), 15 deletions(-)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index baf798c6b5..bad966d19a 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -356,6 +356,7 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("w25q32dw",    0xef6016,      0,  64 << 10,  64, ER_4K) },
-     { INFO("w25q33pw",    0xef6016,      0,  64 << 10,  64, ER_4K | ER_32K),
-       .sfdp_read = m25p80_sfdp_w25q33pw },
-+    { INFO("xt25f128",    0x0b4018,      0,  64 << 10, 256, ER_4K) },
-     { INFO("w25x64",      0xef3017,      0,  64 << 10, 128, ER_4K) },
-     { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
-     { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
-@@ -468,6 +469,7 @@ typedef enum {
-     MAN_MACRONIX,
-     MAN_NUMONYX,
-     MAN_WINBOND,
-+    MAN_XTX,
-     MAN_SST,
-     MAN_ISSI,
-     MAN_GENERIC,
-@@ -545,6 +547,8 @@ static inline Manufacturer get_man(Flash *s)
-         return MAN_NUMONYX;
-     case 0xEF:
-         return MAN_WINBOND;
-+    case 0x0B:
-+        return MAN_XTX;
-     case 0x01:
-         return MAN_SPANSION;
-     case 0xC2:
-@@ -652,6 +656,9 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
+diff --git a/hw/arm/rock-5b.c b/hw/arm/rock-5b.c
+index abc898c50c..c097e17c5c 100644
+--- a/hw/arm/rock-5b.c
++++ b/hw/arm/rock-5b.c
+@@ -10,6 +10,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/datadir.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "qemu/units.h"
+@@ -17,15 +18,18 @@
+ #include "hw/arm/boot.h"
+ #include "hw/arm/rk3588.h"
+ #include "hw/core/boards.h"
++#include "hw/core/loader.h"
+ #include "hw/core/qdev-properties.h"
+ #include "hw/core/qdev-properties-system.h"
+ #include "hw/ssi/ssi.h"
++#include "hw/timer/rockchip-hptimer.h"
+ #include "system/address-spaces.h"
+ #include "system/block-backend.h"
+ #include "system/blockdev.h"
+ #include "system/device_tree.h"
+ #include "system/kvm.h"
+ #include "system/qtest.h"
++#include "system/reset.h"
+ #include "system/system.h"
+ 
+ #define TYPE_ROCK5B_MACHINE MACHINE_TYPE_NAME("rock-5b")
+@@ -41,6 +45,10 @@ static const MemMapEntry rock5b_memmap[] = {
+     [ROCK5B_HIGH_RAM] = { 0x100000000, 0x310000000 },
+ };
+ 
++#define ROCK5B_SPL_ADDR   0x00000000
++#define ROCK5B_SPL_SIZE   (4 * MiB)
++#define ROCK5B_BOOTSOURCE_ADDR (RK3588_SRAM_BASE + 0x10)
++#define ROCK5B_BOOTSOURCE_ID  3 /* BROM_BOOTSOURCE_FSPI_M0 */
+ #define ROCK5B_FLASH_SIZE (16 * MiB)
+ /* Match the low-memory reservation made by Rockchip U-Boot for BL31. */
+ #define ROCK5B_FIRMWARE_RESERVED_SIZE (2 * MiB)
+@@ -58,6 +66,29 @@ struct Rock5BMachineState {
+     struct arm_boot_info binfo;
+ };
+ 
++static void rock5b_reset(void *opaque)
++{
++    Rock5BMachineState *s = opaque;
++
++    /* Restore the firmware handoff state before entering SPL at EL2. */
++    address_space_stl_le(&address_space_memory, ROCK5B_BOOTSOURCE_ADDR,
++                         ROCK5B_BOOTSOURCE_ID, MEMTXATTRS_UNSPECIFIED, NULL);
++    address_space_stl_le(&address_space_memory,
++                         RK3588_HPTIMER_BASE + ROCKCHIP_HPTIMER_CTRL,
++                         ROCKCHIP_HPTIMER_ENABLE, MEMTXATTRS_UNSPECIFIED, NULL);
++
++    for (unsigned int i = 0; i < RK3588_NUM_CPUS; i++) {
++        ARMCPU *cpu = &s->soc.cpu[i];
++
++        cpu_reset(CPU(cpu));
++        arm_emulate_firmware_reset(CPU(cpu), 2);
++        arm_rebuild_hflags(&cpu->env);
++        if (i == 0) {
++            cpu_set_pc(CPU(cpu), ROCK5B_SPL_ADDR);
++        }
++    }
++}
++
+ /*
+  * The first -serial option drives the debug console; further options
+  * connect to the remaining UARTs in index order.
+@@ -128,6 +159,35 @@ static void rock5b_modify_dtb(const struct arm_boot_info *binfo, void *fdt)
      }
-     memset(s->storage + offset, 0xff, len);
-     flash_sync_area(s, offset, len);
-+    if (get_man(s) == MAN_XTX) {
-+        s->write_enable = false;
+ }
+ 
++static void rock5b_firmware_boot(Rock5BMachineState *s)
++{
++    MachineState *ms = MACHINE(s);
++
++    for (unsigned int i = 0; i < RK3588_NUM_CPUS; i++) {
++        object_property_set_int(OBJECT(&s->soc.cpu[i]), "psci-conduit",
++                                QEMU_PSCI_CONDUIT_SMC, &error_abort);
++    }
++
++    if (ms->firmware) {
++        g_autofree char *filename = qemu_find_file(QEMU_FILE_TYPE_BIOS,
++                                                  ms->firmware);
++        ssize_t size;
++
++        if (!filename) {
++            error_report("rock-5b: cannot find SPL '%s'", ms->firmware);
++            exit(EXIT_FAILURE);
++        }
++        size = load_image_targphys(filename, ROCK5B_SPL_ADDR,
++                                   ROCK5B_SPL_SIZE, &error_fatal);
++        if (size <= 0) {
++            error_report("rock-5b: SPL image is empty");
++            exit(EXIT_FAILURE);
++        }
++    }
++    /* Restore the firmware handoff state after device reset. */
++    qemu_register_reset(rock5b_reset, s);
++}
++
+ /*
+  * arm_load_kernel() enters Linux at EL2, keeps the SMC PSCI conduit and
+  * registers the CPU reset handlers.
+@@ -157,20 +217,6 @@ static void rock5b_init(MachineState *ms)
+         exit(EXIT_FAILURE);
+     }
+ 
+-    if (ms->firmware) {
+-        error_report("rock-5b: -bios is not supported");
+-        exit(EXIT_FAILURE);
+-    }
+-    if (ms->kernel_filename) {
+-        if (!ms->dtb) {
+-            error_report("rock-5b: direct Linux boot requires -dtb");
+-            exit(EXIT_FAILURE);
+-        }
+-    } else if (!qtest_enabled()) {
+-        error_report("rock-5b: supply a Linux kernel with -kernel");
+-        exit(EXIT_FAILURE);
+-    }
+-
+     /* Initialize the SoC object. */
+     object_initialize_child(OBJECT(s), "soc", &s->soc, TYPE_RK3588_SOC);
+     object_property_set_link(OBJECT(&s->soc), "memory",
+@@ -197,7 +243,29 @@ static void rock5b_init(MachineState *ms)
+ 
+     rock5b_create_flash(s);
+ 
+-    rock5b_direct_boot(s);
++    if (ms->kernel_filename) {
++        if (ms->firmware) {
++            error_report("rock-5b: -bios and -kernel cannot be combined");
++            exit(EXIT_FAILURE);
++        }
++        if (!ms->dtb) {
++            error_report("rock-5b: direct Linux boot requires -dtb");
++            exit(EXIT_FAILURE);
++        }
++        rock5b_direct_boot(s);
++    } else {
++        if (!ms->firmware && !qtest_enabled()) {
++            error_report("rock-5b: supply a U-Boot SPL image with -bios "
++                         "or a Linux kernel with -kernel");
++            exit(EXIT_FAILURE);
++        }
++        if (ms->dtb) {
++            error_report("rock-5b: -dtb requires -kernel; U-Boot proper "
++                         "passes the device tree from the FIT");
++            exit(EXIT_FAILURE);
++        }
++        rock5b_firmware_boot(s);
 +    }
  }
  
- static inline void flash_sync_dirty(Flash *s, int64_t newpage)
-@@ -821,6 +828,7 @@ static void complete_collecting_data(Flash *s)
-             }
-             break;
-         case MAN_WINBOND:
-+        case MAN_XTX:
-             if (s->len > 1) {
-                 s->quad_enable = !!(s->data[1] & 0x02);
-             }
-@@ -835,6 +843,7 @@ static void complete_collecting_data(Flash *s)
-     case WRSR2:
-         switch (get_man(s)) {
-         case MAN_WINBOND:
-+        case MAN_XTX:
-             s->quad_enable = !!(s->data[0] & 0x02);
-             break;
-         default:
-@@ -1085,6 +1094,7 @@ static void decode_fast_read_cmd(Flash *s)
-         s->needed_bytes += 1;
-         break;
-     case MAN_WINBOND:
-+    case MAN_XTX:
-         s->needed_bytes += 1;
-         break;
-     case MAN_NUMONYX:
-@@ -1123,6 +1133,7 @@ static void decode_dio_read_cmd(Flash *s)
-     /* Dummy cycles modeled with bytes writes instead of bits */
-     switch (get_man(s)) {
-     case MAN_WINBOND:
-+    case MAN_XTX:
-         s->needed_bytes += WINBOND_CONTINUOUS_READ_MODE_CMD_LEN;
-         break;
-     case MAN_SPANSION:
-@@ -1159,6 +1170,7 @@ static void decode_qio_read_cmd(Flash *s)
-     /* Dummy cycles modeled with bytes writes instead of bits */
-     switch (get_man(s)) {
-     case MAN_WINBOND:
-+    case MAN_XTX:
-         s->needed_bytes += WINBOND_CONTINUOUS_READ_MODE_CMD_LEN;
-         s->needed_bytes += 2;
-         break;
-@@ -1337,6 +1349,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-             s->state = STATE_COLLECTING_VAR_LEN_DATA;
-             break;
-         case MAN_WINBOND:
-+        case MAN_XTX:
-             s->needed_bytes = 2;
-             s->state = STATE_COLLECTING_VAR_LEN_DATA;
-             break;
-@@ -1363,6 +1376,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
- 
-         switch (get_man(s)) {
-         case MAN_WINBOND:
-+        case MAN_XTX:
-             s->needed_bytes = 1;
-             s->state = STATE_COLLECTING_DATA;
-             s->pos = 0;
-@@ -1542,6 +1556,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-             s->quad_enable = true;
-             break;
-         case MAN_WINBOND:
-+        case MAN_XTX:
-             s->data[0] = (!!s->quad_enable) << 1;
-             s->pos = 0;
-             s->len = 1;
-@@ -1601,6 +1616,11 @@ static int m25p80_cs(SSIPeripheral *ss, bool select)
-         if (s->state == STATE_COLLECTING_VAR_LEN_DATA) {
-             complete_collecting_data(s);
-         }
-+        if (get_man(s) == MAN_XTX &&
-+            s->state == STATE_PAGE_PROGRAM &&
-+            s->cmd_in_progress != AAI_WP) {
-+            s->write_enable = false;
-+        }
-         s->len = 0;
-         s->pos = 0;
-         s->state = STATE_IDLE;
+ static void rock5b_class_init(ObjectClass *oc, const void *data)
 -- 
 2.53.0
 

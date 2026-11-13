@@ -1,32 +1,32 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B3391606B19D
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:55:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA9DC606B19E
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:55:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=mF4qN7YV
+	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=pGtlcxbA
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRrj3-0000xH-8P; Fri, 13 Nov 2026 08:53:57 -0500
+	id 1xRriy-0000qM-IX; Fri, 13 Nov 2026 08:53:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnuF-0004ak-RB; Fri, 13 Nov 2026 04:49:15 -0500
+ id 1xRntw-0004Sb-14; Fri, 13 Nov 2026 04:48:56 -0500
 Received: from smtp47.tsinghua.edu.cn ([101.6.4.71] helo=tsinghua.edu.cn)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnuD-0007B0-E3; Fri, 13 Nov 2026 04:49:15 -0500
+ id 1xRntt-00076Q-N7; Fri, 13 Nov 2026 04:48:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=mails.tsinghua.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:
  Date:Message-ID:In-Reply-To:References:MIME-Version:
- Content-Transfer-Encoding; bh=2SWNT7v3tEDFZOqDDAN47C5J5oQna6laFe
- goAVnZBPg=; b=mF4qN7YVywICM28lQ+AvQlSL0BPEEYs1/3m0bn7byAH7k/3kh/
- wj/kVRKjc+ImHJzp4J6qkfLg7ppnp2cl+CvB/FjjrNkbtl5t/7dkgWYvqTinEEA7
- TSw0IrkLuGoI7CzPT3Yx+dZ+qlddRRVqmvK33MTWFAfrYqcWVn5fAMwi8=
+ Content-Transfer-Encoding; bh=5CRnXK48rR3rkDlg5BdeQ3/9sHAFSz9US1
+ Ny/AUoQ94=; b=pGtlcxbAf0ds7TZ9rjxB14eQ7HUJIO+uuKlR+3+Su1/qVXzzIV
+ oRFBrbhKK4SLFU3v4N0HxWMDYojLh5YB0z7LS80z8LYAfx4YpsqwcCC0j/yYNDRh
+ +F1b+dI8gkbQ4q6O70jnOxH2tqmnQlRlGtrXvO23KRRIOyxm3KErMfAJ0=
 Received: from ubuntu (unknown [101.5.154.165])
- by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S12;
- Fri, 13 Nov 2026 17:48:53 +0800 (CST)
+ by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S11;
+ Fri, 13 Nov 2026 17:48:49 +0800 (CST)
 From: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 To: qemu-devel@nongnu.org
 Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
@@ -39,19 +39,19 @@ Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  bin.meng@processmission.com, tangtao1634@phytium.com.cn,
  Chao Liu <chao.liu@processmission.com>
-Subject: [RFC PATCH 10/20] hw/arm/rk3588: add the UARTs
-Date: Fri, 13 Nov 2026 17:47:44 +0800
-Message-ID: <05644155c3c21bcd3e95fff245ca52de8bfe1c50.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
+Subject: [RFC PATCH 09/20] hw/arm/rk3588: add the GICv3 interrupt controller
+Date: Fri, 13 Nov 2026 17:47:43 +0800
+Message-ID: <7df52c4e9a08741bbde7b4943cb83d0c7955eece.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 References: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S12
-X-Coremail-Antispam: 1UD129KBjvJXoWxtFy7ur15tFyfZFy5tr4ktFb_yoWxGw47pr
- 1DCrZ8GrWkGa13A3ySyr43KF43Jan2k34j9a4fKryDJayYqr1ktr12vFWjyFWxWrW7tr45
- JrZFqr4Yqa1UWaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S11
+X-Coremail-Antispam: 1UD129KBjvJXoW3Jr4DJr1xtr48KryrAr1fWFg_yoWxGFy5pr
+ 4kCFZ8GrWkGa1fCrWfZrnIgFnxJ3Z2g34j93yfuFy7Aasrt3s0yrWv9w47KFyxXrZ7Ww1U
+ WrZYqF4Ygr13JaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
  9KBjDU0xBIdaVrnRJUUUHa14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
  rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
  kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
@@ -91,120 +91,143 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Chao Liu <chao.liu@processmission.com>
 
-Instantiate DW8250 UARTs for UART1 through UART9. They start at
-0xfeb40000 with a 64 KiB stride, use GIC SPIs 332 through 340 and run
-from a 24 MHz reference clock. UART0 in the PMU power domain remains an
-unimplemented device.
-
-Expose each UART's chardev property on the SoC so that boards can
-connect their serial ports.
+Add a GICv3 interrupt controller with 512 interrupts and wire the
+architectural timer and maintenance interrupts to the CPUs.
 
 Signed-off-by: Chao Liu <chao.liu@processmission.com>
 Signed-off-by: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 ---
  hw/arm/Kconfig          |  1 +
- hw/arm/rk3588.c         | 69 +++++++++++++++++++++++++++++++++++------
- include/hw/arm/rk3588.h |  5 +++
- 3 files changed, 66 insertions(+), 9 deletions(-)
+ hw/arm/rk3588.c         | 86 +++++++++++++++++++++++++++++++++++++++--
+ include/hw/arm/rk3588.h |  2 +
+ 3 files changed, 86 insertions(+), 3 deletions(-)
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 73e1154040..b22d0ce4f6 100644
+index 55fdc78364..73e1154040 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -779,4 +779,5 @@ config RK3588
+@@ -777,5 +777,6 @@ config AXIADO_EVK
+ 
+ config RK3588
      bool
-     select ARM_GIC
++    select ARM_GIC
      select CPU_CLUSTER
-+    select DW8250
      select UNIMP
 diff --git a/hw/arm/rk3588.c b/hw/arm/rk3588.c
-index 3682cf275b..3dbd579806 100644
+index ecaaa09721..3682cf275b 100644
 --- a/hw/arm/rk3588.c
 +++ b/hw/arm/rk3588.c
-@@ -32,15 +32,39 @@
+@@ -15,18 +15,34 @@
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/arm/rk3588.h"
++#include "hw/arm/bsa.h"
+ #include "hw/core/qdev-properties.h"
+ #include "hw/core/sysbus.h"
+ #include "hw/cpu/cluster.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/timer/rockchip-hptimer.h"
+ #include "migration/vmstate.h"
++#include "qobject/qlist.h"
++#include "target/arm/gtimer.h"
  
- #define RK3588_GIC_NUM_IRQS          512
+ /* MPIDR Aff0 values per Aff1: 1 (one CPU per RK3588 cluster). */
+ #define RK3588_MPIDR_AFF0_PER_AFF1   (1)
  
-+/* UART1-UART9 are modeled; UART0 in the PMU power domain is unimplemented. */
-+#define RK3588_FIRST_UART            (1)
-+#define RK3588_UART1_SPI             332
-+#define RK3588_UART_CLOCK            24000000
-+#define RK3588_UART_BAUD_BASE        (RK3588_UART_CLOCK / 16)
+ #define RK3588_CNTFRQ                24000000
+ 
++#define RK3588_GIC_NUM_IRQS          512
 +
- enum {
-     RK3588_DEV_GIC_DIST,
-     RK3588_DEV_GIC_REDIST,
-+    RK3588_DEV_UART1,
-+    RK3588_DEV_UART2,
-+    RK3588_DEV_UART3,
-+    RK3588_DEV_UART4,
-+    RK3588_DEV_UART5,
-+    RK3588_DEV_UART6,
-+    RK3588_DEV_UART7,
-+    RK3588_DEV_UART8,
-+    RK3588_DEV_UART9,
- };
- 
- /* Memory map of the modeled peripherals. */
- static const MemMapEntry rk3588_memmap[] = {
-     [RK3588_DEV_GIC_DIST]   = { 0xfe600000, 0x00010000 },
-     [RK3588_DEV_GIC_REDIST] = { 0xfe680000, 0x00100000 },
-+    [RK3588_DEV_UART1]      = { 0xfeb40000, 0x00010000 },
-+    [RK3588_DEV_UART2]      = { 0xfeb50000, 0x00010000 },
-+    [RK3588_DEV_UART3]      = { 0xfeb60000, 0x00010000 },
-+    [RK3588_DEV_UART4]      = { 0xfeb70000, 0x00010000 },
-+    [RK3588_DEV_UART5]      = { 0xfeb80000, 0x00010000 },
-+    [RK3588_DEV_UART6]      = { 0xfeb90000, 0x00010000 },
-+    [RK3588_DEV_UART7]      = { 0xfeba0000, 0x00010000 },
-+    [RK3588_DEV_UART8]      = { 0xfebb0000, 0x00010000 },
-+    [RK3588_DEV_UART9]      = { 0xfebc0000, 0x00010000 },
- };
- 
++enum {
++    RK3588_DEV_GIC_DIST,
++    RK3588_DEV_GIC_REDIST,
++};
++
++/* Memory map of the modeled peripherals. */
++static const MemMapEntry rk3588_memmap[] = {
++    [RK3588_DEV_GIC_DIST]   = { 0xfe600000, 0x00010000 },
++    [RK3588_DEV_GIC_REDIST] = { 0xfe680000, 0x00100000 },
++};
++
  #define RK3588_UNIMPLEMENTED(name, base, size) \
-@@ -85,15 +109,6 @@ static const UnimplementedDeviceConfig rk3588_unimpl_devices[] = {
-     RK3588_UNIMPLEMENTED("timer-ns0", 0xfeae0000, 32 * KiB),
-     RK3588_UNIMPLEMENTED("wdt-ns", 0xfeaf0000, 64 * KiB),
-     RK3588_UNIMPLEMENTED("spi2", 0xfeb20000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart1", 0xfeb40000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart2", 0xfeb50000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart3", 0xfeb60000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart4", 0xfeb70000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart5", 0xfeb80000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart6", 0xfeb90000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart7", 0xfeba0000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart8", 0xfebb0000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("uart9", 0xfebc0000, 64 * KiB),
-     RK3588_UNIMPLEMENTED("gpio1", 0xfec20000, 64 * KiB),
-     RK3588_UNIMPLEMENTED("gpio2", 0xfec30000, 64 * KiB),
-     RK3588_UNIMPLEMENTED("gpio3", 0xfec40000, 64 * KiB),
-@@ -191,6 +206,28 @@ static bool rk3588_soc_create_gic(RK3588SoCState *s, Error **errp)
-     return true;
- }
+     { "unimpl-" name, "rk3588." name, base, size, -1000 }
  
-+static bool rk3588_soc_create_uart(RK3588SoCState *s, Error **errp)
+@@ -63,7 +79,6 @@ static const UnimplementedDeviceConfig rk3588_unimpl_devices[] = {
+     RK3588_UNIMPLEMENTED("sdio", 0xfe2d0000, 64 * KiB),
+     RK3588_UNIMPLEMENTED("emmc", 0xfe2e0000, 64 * KiB),
+     RK3588_UNIMPLEMENTED("trng-ns", 0xfe378000, 32 * KiB),
+-    RK3588_UNIMPLEMENTED("gic600", 0xfe600000, 4 * MiB),
+     RK3588_UNIMPLEMENTED("dmac0", 0xfea10000, 64 * KiB),
+     RK3588_UNIMPLEMENTED("dmac1", 0xfea30000, 64 * KiB),
+     RK3588_UNIMPLEMENTED("i2c4", 0xfeac0000, 64 * KiB),
+@@ -113,6 +128,69 @@ static const struct {
+ 
+ G_STATIC_ASSERT(ARRAY_SIZE(rk3588_cpu_clusters) == RK3588_CLUSTER_COUNT);
+ 
++static bool rk3588_soc_create_gic(RK3588SoCState *s, Error **errp)
 +{
-+    for (unsigned int i = RK3588_FIRST_UART; i < RK3588_NUM_UARTS; i++) {
-+        SysBusDevice *uart = SYS_BUS_DEVICE(&s->uart[i]);
-+        unsigned int n = i - RK3588_FIRST_UART;
++    DeviceState *gicdev = DEVICE(&s->gic);
++    SysBusDevice *gicsbd = SYS_BUS_DEVICE(gicdev);
++    QList *redist_region_count = qlist_new();
 +
-+        qdev_prop_set_uint32(DEVICE(uart), "baudbase", RK3588_UART_BAUD_BASE);
-+        if (!sysbus_realize(uart, errp)) {
-+            return false;
++    qdev_prop_set_uint32(gicdev, "num-cpu", RK3588_NUM_CPUS);
++    qdev_prop_set_uint32(gicdev, "num-irq", RK3588_GIC_NUM_IRQS);
++    qlist_append_int(redist_region_count, RK3588_NUM_CPUS);
++    qdev_prop_set_array(gicdev, "redist-region-count", redist_region_count);
++    object_property_set_link(OBJECT(gicdev), "sysmem",
++                             OBJECT(s->memory), &error_abort);
++
++    if (!sysbus_realize(gicsbd, errp)) {
++        return false;
++    }
++
++    memory_region_add_subregion(s->memory,
++        rk3588_memmap[RK3588_DEV_GIC_DIST].base,
++        sysbus_mmio_get_region(gicsbd, 0));
++    memory_region_add_subregion(s->memory,
++        rk3588_memmap[RK3588_DEV_GIC_REDIST].base,
++        sysbus_mmio_get_region(gicsbd, 1));
++
++    for (unsigned int i = 0; i < RK3588_NUM_CPUS; i++) {
++        DeviceState *cpudev = DEVICE(&s->cpu[i]);
++        int intidbase = RK3588_GIC_NUM_IRQS - GIC_INTERNAL + (i * GIC_INTERNAL);
++        static const int timer_irqs[] = {
++            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
++            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
++            [GTIMER_HYP] = ARCH_TIMER_NS_EL2_IRQ,
++            [GTIMER_SEC] = ARCH_TIMER_S_EL1_IRQ,
++            [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
++        };
++
++        for (unsigned int j = 0; j < ARRAY_SIZE(timer_irqs); j++) {
++            qdev_connect_gpio_out(cpudev, j,
++                                  qdev_get_gpio_in(gicdev,
++                                                   intidbase + timer_irqs[j]));
 +        }
 +
-+        memory_region_add_subregion(s->memory,
-+            rk3588_memmap[RK3588_DEV_UART1 + n].base,
-+            sysbus_mmio_get_region(uart, 0));
-+        sysbus_connect_irq(uart, 0,
-+                           qdev_get_gpio_in(DEVICE(&s->gic),
-+                                            RK3588_UART1_SPI + n));
++        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0,
++                                    qdev_get_gpio_in(gicdev,
++                                                     intidbase +
++                                                     ARCH_GIC_MAINT_IRQ));
++        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
++                                    qdev_get_gpio_in(gicdev,
++                                                     intidbase +
++                                                     VIRTUAL_PMU_IRQ));
++
++        sysbus_connect_irq(gicsbd, i,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
++        sysbus_connect_irq(gicsbd, i + RK3588_NUM_CPUS,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
++        sysbus_connect_irq(gicsbd, i + 2 * RK3588_NUM_CPUS,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
++        sysbus_connect_irq(gicsbd, i + 3 * RK3588_NUM_CPUS,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
 +    }
 +
 +    return true;
@@ -213,61 +236,45 @@ index 3682cf275b..3dbd579806 100644
  static bool rk3588_soc_create_hptimer(RK3588SoCState *s, Error **errp)
  {
      SysBusDevice *hptimer = SYS_BUS_DEVICE(s->hptimer);
-@@ -245,6 +282,11 @@ static void rk3588_soc_realize(DeviceState *dev, Error **errp)
-         !rk3588_soc_create_hptimer(s, errp)) {
+@@ -163,10 +241,10 @@ static void rk3588_soc_realize(DeviceState *dev, Error **errp)
+         }
+     }
+ 
+-    if (!rk3588_soc_create_hptimer(s, errp)) {
++    if (!rk3588_soc_create_gic(s, errp) ||
++        !rk3588_soc_create_hptimer(s, errp)) {
          return;
      }
-+
-+    if (!rk3588_soc_create_uart(s, errp)) {
-+        return;
-+    }
-+
+-
      create_unimplemented_devices(OBJECT(s), s->memory, rk3588_unimpl_devices);
  
      if (!memory_region_init_ram(&s->sram, OBJECT(s), "rk3588.sram",
-@@ -278,6 +320,15 @@ static void rk3588_soc_instance_init(Object *obj)
+@@ -198,6 +276,8 @@ static void rk3588_soc_instance_init(Object *obj)
+         }
+     }
  
-     object_initialize_child(obj, "gic", &s->gic, TYPE_ARM_GICV3);
- 
-+    for (unsigned int i = RK3588_FIRST_UART; i < RK3588_NUM_UARTS; i++) {
-+        g_autofree char *name = g_strdup_printf("uart%u", i);
-+        g_autofree char *alias = g_strdup_printf("uart%u-chardev", i);
-+
-+        object_initialize_child(obj, name, &s->uart[i], TYPE_DW8250);
-+        object_property_add_alias(obj, alias, OBJECT(&s->uart[i]),
-+                                  "chardev");
-+    }
++    object_initialize_child(obj, "gic", &s->gic, TYPE_ARM_GICV3);
 +
      s->hptimer = qdev_new(TYPE_ROCKCHIP_HPTIMER);
      object_property_add_child(obj, "hptimer", OBJECT(s->hptimer));
      object_unref(OBJECT(s->hptimer));
 diff --git a/include/hw/arm/rk3588.h b/include/hw/arm/rk3588.h
-index fcb9ef5964..61fa616795 100644
+index 8539d2e64d..fcb9ef5964 100644
 --- a/include/hw/arm/rk3588.h
 +++ b/include/hw/arm/rk3588.h
-@@ -15,6 +15,7 @@
- 
- #include "qom/object.h"
+@@ -17,6 +17,7 @@
  #include "target/arm/cpu.h"
-+#include "hw/char/dw8250.h"
  #include "hw/core/qdev.h"
  #include "hw/cpu/cluster.h"
- #include "hw/intc/arm_gicv3.h"
-@@ -36,6 +37,9 @@ typedef enum RK3588CpuClusterId {
- #define RK3588_NUM_CPUS (RK3588_A55_CPUS + \
-     RK3588_A76_CPUS_PER_CLUSTER * (RK3588_CLUSTER_COUNT - 1))
++#include "hw/intc/arm_gicv3.h"
+ #include "system/memory.h"
  
-+/* UART1-UART9 are modeled; UART0 in the PMU power domain is unimplemented. */
-+#define RK3588_NUM_UARTS             (10)
-+
- #define RK3588_SRAM_BASE             0xff000000
- #define RK3588_HPTIMER_BASE          0xfd8c8000
- 
-@@ -47,6 +51,7 @@ struct RK3588SoCState {
+ #define TYPE_RK3588_SOC "rockchip.rk3588.soc"
+@@ -45,6 +46,7 @@ struct RK3588SoCState {
+     /*< public >*/
      ARMCPU cpu[RK3588_NUM_CPUS];
      CPUClusterState cluster[RK3588_CLUSTER_COUNT];
-     GICv3State gic;
-+    DW8250State uart[RK3588_NUM_UARTS];
++    GICv3State gic;
      MemoryRegion *memory;
      MemoryRegion sram;
      DeviceState *hptimer;

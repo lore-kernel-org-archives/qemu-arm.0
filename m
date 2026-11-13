@@ -1,32 +1,32 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 471B9606A327
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:59:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51153606A881
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Nov 2026 13:59:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=jOLiYxfu
+	dkim=pass (1024-bit key) header.d=mails.tsinghua.edu.cn header.i=@mails.tsinghua.edu.cn header.a=rsa-sha256 header.s=dkim header.b=Cid1jVSO
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xRrju-0002Kc-Mz; Fri, 13 Nov 2026 08:54:50 -0500
+	id 1xRrkD-0003jy-Ab; Fri, 13 Nov 2026 08:55:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnuR-0004fA-Ol; Fri, 13 Nov 2026 04:49:28 -0500
+ id 1xRnup-000562-Sv; Fri, 13 Nov 2026 04:49:51 -0500
 Received: from smtp47.tsinghua.edu.cn ([101.6.4.71] helo=tsinghua.edu.cn)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <w-yf22@mails.tsinghua.edu.cn>)
- id 1xRnuP-0007Dm-1U; Fri, 13 Nov 2026 04:49:27 -0500
+ id 1xRnun-0007Hi-Jz; Fri, 13 Nov 2026 04:49:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=mails.tsinghua.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:
  Date:Message-ID:In-Reply-To:References:MIME-Version:
- Content-Transfer-Encoding; bh=z0wAaN14MrdTcq4vNRXtU+J3HaGg6LIxXo
- L1VlhxKq4=; b=jOLiYxfu1OrcLdkdrgm9GUEGNeARzLp460MevVgWWJjyOoU1F5
- r7+CPb53wTCV8gaZRBQ3ryQG5LZDu7kHo+iO72F5mrcYmgy+Ye9htMmzxLL7eYA2
- gEJ/9uQSwj2hefpFnARBasuXckFGSQ/yL7Yi8/WyTcbNKlw2ubxeW8uuQ=
+ Content-Transfer-Encoding; bh=MmyOStf5xcrVxt22llyhBMFjYeGiPmpNfp
+ Lc/K78E6k=; b=Cid1jVSO/xU6uXQYOfCLWR5A3pBVsPUOHWFHWfR6wURS1LWXYV
+ GqXztP3A+jw26YKbCurg9Sk6F4OzoyJj52+ROkrwYsG24doJeBimK8gmaij/j4C4
+ PvgFYhi0pLAUvVhF5043COI2py3eBV0LabjA43lVLcKfDEEnP/kP7OE8Q=
 Received: from ubuntu (unknown [101.5.154.165])
- by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S14;
- Fri, 13 Nov 2026 17:49:20 +0800 (CST)
+ by web1 (Coremail) with SMTP id yAQGZQA3qzvR3PZqgA5CAg--.9318S22;
+ Fri, 13 Nov 2026 17:49:45 +0800 (CST)
 From: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 To: qemu-devel@nongnu.org
 Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
@@ -39,34 +39,34 @@ Cc: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>, qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  bin.meng@processmission.com, tangtao1634@phytium.com.cn,
  Chao Liu <chao.liu@processmission.com>
-Subject: [RFC PATCH 12/20] hw/misc: add the RK3588 OTP controller
-Date: Fri, 13 Nov 2026 17:47:46 +0800
-Message-ID: <8215913c80e82187d194efc1f22e43528e0c4be6.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
+Subject: [RFC PATCH 20/20] docs/system/arm: document the Radxa ROCK 5B machine
+Date: Fri, 13 Nov 2026 17:47:54 +0800
+Message-ID: <b4391e55f4808e01db4636de67b2ab926ffa879b.1794555589.git.w-yf22@mails.tsinghua.edu.cn>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 References: <cover.1794555588.git.w-yf22@mails.tsinghua.edu.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S14
-X-Coremail-Antispam: 1UD129KBjvJXoWxtFyDAFWDZFykXFykuFyUJrb_yoWfCw15pr
- n5Cry5GrWkGF47ZrZ3tFnxtF45Jan7Ww1jv3yfAFyayFW7tFy5KF4qgayYyFZ7XrW8ur18
- u39Fg3yYqr47Xw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUHa14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+X-CM-TRANSID: yAQGZQA3qzvR3PZqgA5CAg--.9318S22
+X-Coremail-Antispam: 1UD129KBjvJXoWxAFWkXr15Xr4fuF1UWF4fGrg_yoWrCrWUpa
+ nIk34fKrZ7GFyfurs3GF4xXFy3J3Wvv3yUCr1xJ3s5AFsxAry8tw1DtF1Fka47WFWFkF4Y
+ vryIqFyUur4rWw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUUHI14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
  rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
  kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
- z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F
- 4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq
- 3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0V
- AKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1l
- Ox8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErc
- IFxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCY02Avz4vE14v_
- GFWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
- WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI
- 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Gr0_Xr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
- 4UJVWxJr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r4j6F4U
- MIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCTnIWIevJa73UjIFyTuYvjfUeVbkUU
- UUU
+ z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr1j6r
+ xdM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s0D
+ M2vYz4IE04k24VAvwVAKI4IrM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64
+ kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1Y6r17McIj6I8E87Iv67AKxVWUJVW8JwAm
+ 72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYx
+ C7M4IIrI8v6xkF7I0E8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxkIecxEwVAFwVW8
+ uwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r
+ 1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_GFv_WrylIxkGc2Ij
+ 64vIr41lIxAIcVC0I7IYx2IY67AKxVW5JVW7JwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr
+ 1j6F4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Gr0_Cr1l
+ IxAIcVC2z280aVCY1x0267AKxVW8Jr0_Cr1UYxBIdaVFxhVjvjDU0xZFpf9x0JUSfO7UUU
+ UU=
 X-CM-SenderInfo: fzn1wj2s6ptxtovo32xlqjx3vdohv3gofq/
 Received-SPF: pass client-ip=101.6.4.71;
  envelope-from=w-yf22@mails.tsinghua.edu.cn; helo=tsinghua.edu.cn
@@ -77,7 +77,7 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:09 -0500
+X-Mailman-Approved-At: Fri, 13 Nov 2026 08:53:21 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,280 +98,134 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chao Liu <chao.liu@processmission.com>
 
-Add a model of the RK3588 OTP automatic read interface that U-Boot uses
-for CPU identity and device-tree initialization. The OTP array starts
-unprogrammed: a read command fills up to four data registers with zero
-words and sets a write-one-to-clear completion status bit. Commands
-outside the 1024-word array are rejected as guest errors.
+Document the currently implemented RK3588 SoC and ROCK 5B board,
+covering the modeled hardware and the boot commands.
 
 Signed-off-by: Chao Liu <chao.liu@processmission.com>
 Signed-off-by: Yifan Wang <w-yf22@mails.tsinghua.edu.cn>
 ---
- MAINTAINERS             |   1 +
- hw/arm/rk3588.c         |  23 ++++++-
- hw/misc/meson.build     |   4 +-
- hw/misc/rockchip_otp.c  | 146 ++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/rk3588.h |   1 +
- 5 files changed, 173 insertions(+), 2 deletions(-)
- create mode 100644 hw/misc/rockchip_otp.c
+ MAINTAINERS                 |  1 +
+ docs/system/arm/rock-5b.rst | 86 +++++++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst  |  1 +
+ 3 files changed, 88 insertions(+)
+ create mode 100644 docs/system/arm/rock-5b.rst
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 2905276c7e..5a4ec869ea 100644
+index 6303b99755..3adebdcafa 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1066,6 +1066,7 @@ L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/rk3588.c
- F: hw/misc/rockchip_cru.c
-+F: hw/misc/rockchip_otp.c
- F: hw/timer/rockchip-hptimer.c
+@@ -1074,6 +1074,7 @@ F: hw/timer/rockchip-hptimer.c
  F: include/hw/arm/rk3588.h
+ F: include/hw/misc/rk3588-scmci.h
  F: include/hw/timer/rockchip-hptimer.h
-diff --git a/hw/arm/rk3588.c b/hw/arm/rk3588.c
-index 6e7cafea1c..acd9149933 100644
---- a/hw/arm/rk3588.c
-+++ b/hw/arm/rk3588.c
-@@ -42,6 +42,7 @@ enum {
-     RK3588_DEV_GIC_DIST,
-     RK3588_DEV_GIC_REDIST,
-     RK3588_DEV_CRU,
-+    RK3588_DEV_OTP,
-     RK3588_DEV_UART1,
-     RK3588_DEV_UART2,
-     RK3588_DEV_UART3,
-@@ -58,6 +59,7 @@ static const MemMapEntry rk3588_memmap[] = {
-     [RK3588_DEV_GIC_DIST]   = { 0xfe600000, 0x00010000 },
-     [RK3588_DEV_GIC_REDIST] = { 0xfe680000, 0x00100000 },
-     [RK3588_DEV_CRU]        = { 0xfd7c0000, 0x0005c000 },
-+    [RK3588_DEV_OTP]        = { 0xfecc0000, 0x00000400 },
-     [RK3588_DEV_UART1]      = { 0xfeb40000, 0x00010000 },
-     [RK3588_DEV_UART2]      = { 0xfeb50000, 0x00010000 },
-     [RK3588_DEV_UART3]      = { 0xfeb60000, 0x00010000 },
-@@ -111,7 +113,6 @@ static const UnimplementedDeviceConfig rk3588_unimpl_devices[] = {
-     RK3588_UNIMPLEMENTED("gpio4", 0xfec50000, 64 * KiB),
-     RK3588_UNIMPLEMENTED("i2c6", 0xfec80000, 64 * KiB),
-     RK3588_UNIMPLEMENTED("i2c7", 0xfec90000, 64 * KiB),
--    RK3588_UNIMPLEMENTED("otp-ns", 0xfecc0000, 64 * KiB),
-     RK3588_UNIMPLEMENTED("dmac2", 0xfed10000, 64 * KiB),
-     { }
- };
-@@ -217,6 +218,21 @@ static bool rk3588_soc_create_cru(RK3588SoCState *s, Error **errp)
-     return true;
- }
++F: docs/system/arm/rock-5b.rst
+ F: tests/functional/aarch64/test_rock_5b.py
  
-+static bool rk3588_soc_create_otp(RK3588SoCState *s, Error **errp)
-+{
-+    SysBusDevice *otp = SYS_BUS_DEVICE(s->otp);
-+
-+    if (!sysbus_realize(otp, errp)) {
-+        return false;
-+    }
-+
-+    memory_region_add_subregion(s->memory,
-+        rk3588_memmap[RK3588_DEV_OTP].base,
-+        sysbus_mmio_get_region(otp, 0));
-+
-+    return true;
-+}
-+
- static bool rk3588_soc_create_uart(RK3588SoCState *s, Error **errp)
- {
-     for (unsigned int i = RK3588_FIRST_UART; i < RK3588_NUM_UARTS; i++) {
-@@ -291,6 +307,7 @@ static void rk3588_soc_realize(DeviceState *dev, Error **errp)
- 
-     if (!rk3588_soc_create_gic(s, errp) ||
-         !rk3588_soc_create_cru(s, errp) ||
-+        !rk3588_soc_create_otp(s, errp) ||
-         !rk3588_soc_create_uart(s, errp) ||
-         !rk3588_soc_create_hptimer(s, errp)) {
-         return;
-@@ -342,6 +359,10 @@ static void rk3588_soc_instance_init(Object *obj)
-     object_property_add_child(obj, "cru", OBJECT(s->cru));
-     object_unref(OBJECT(s->cru));
- 
-+    s->otp = qdev_new("rockchip-otp");
-+    object_property_add_child(obj, "otp", OBJECT(s->otp));
-+    object_unref(OBJECT(s->otp));
-+
-     s->hptimer = qdev_new(TYPE_ROCKCHIP_HPTIMER);
-     object_property_add_child(obj, "hptimer", OBJECT(s->hptimer));
-     object_unref(OBJECT(s->hptimer));
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 374af9331b..51c09b056e 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -183,4 +183,6 @@ system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
- # Qualcomm Hexagon DSP subsystems
- system_ss.add(when: 'CONFIG_QCOM_QDSP6SS_CLK', if_true: files('qcom-qdsp6ss-clk.c'))
- 
--system_ss.add(when: 'CONFIG_RK3588', if_true: files('rockchip_cru.c'))
-+system_ss.add(when: 'CONFIG_RK3588', if_true: files(
-+  'rockchip_cru.c',
-+  'rockchip_otp.c'))
-diff --git a/hw/misc/rockchip_otp.c b/hw/misc/rockchip_otp.c
+ SABRELITE / i.MX6
+diff --git a/docs/system/arm/rock-5b.rst b/docs/system/arm/rock-5b.rst
 new file mode 100644
-index 0000000000..81e402fdcc
+index 0000000000..0de25cdb6d
 --- /dev/null
-+++ b/hw/misc/rockchip_otp.c
-@@ -0,0 +1,146 @@
-+/*
-+ * Rockchip OTP
-+ *
-+ * Copyright (C) 2026 Process Mission
-+ *
-+ * Authors:
-+ *    Chao Liu <chao.liu@processmission.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * The automatic read interface exposes a bank of unprogrammed OTP words.
-+ * Each read command fills the data registers and sets the read-done status;
-+ * the status is cleared by a write-one-to-clear acknowledgement.
-+ */
++++ b/docs/system/arm/rock-5b.rst
+@@ -0,0 +1,86 @@
++.. SPDX-License-Identifier: GPL-2.0-or-later
 +
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "qemu/module.h"
-+#include "qemu/log.h"
-+#include "hw/core/register.h"
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
++Radxa ROCK 5B (``rock-5b``)
++===========================
 +
-+#define TYPE_ROCKCHIP_OTP "rockchip-otp"
-+OBJECT_DECLARE_SIMPLE_TYPE(RockchipOTPState, ROCKCHIP_OTP)
++The ``rock-5b`` machine models the Radxa ROCK 5B single-board computer,
++which is built around the Rockchip RK3588 SoC.
 +
-+/* Size of the OTP window in the RK3588 address map. */
-+#define ROCKCHIP_OTP_SIZE 0x400
-+/* Highest byte address described by rockchip_otp_regs_info[]. */
-+#define ROCKCHIP_OTP_MAX_REG 0x84
-+#define ROCKCHIP_OTP_NUM_REGS \
-+    ((ROCKCHIP_OTP_MAX_REG / sizeof(uint32_t)) + 1)
-+/* Number of 32-bit words in the OTP array. */
-+#define ROCKCHIP_OTP_NUM_WORDS 1024
++Supported devices
++-----------------
 +
-+struct RockchipOTPState {
-+    SysBusDevice parent_obj;
++The ``rock-5b`` machine supports the following devices:
 +
-+    RegisterInfo regs_info[ROCKCHIP_OTP_NUM_REGS];
-+    uint32_t regs[ROCKCHIP_OTP_NUM_REGS];
-+};
++* 4 Cortex-A55 and 4 Cortex-A76 CPUs
++* GICv3 and the architectural timers
++* On-chip SRAM
++* HPTIMER boot control register (enable bit)
++* UART1 through UART9
++* Rockchip SFC with a 16 MiB SPI NOR flash
++* Clock and reset unit (CRU) registers
++* SCMI Base and Clock protocols over SMC (CPU and DSU clocks)
++* OTP controller
 +
-+REG32(AUTO_CTRL, 0x04)
-+REG32(AUTO_EN, 0x08)
-+REG32(DOUT0, 0x20)
-+REG32(DOUT1, 0x24)
-+REG32(DOUT2, 0x28)
-+REG32(DOUT3, 0x2c)
-+REG32(INT_STATUS, 0x84)
++The machine always uses all eight CPUs and supports 128 MiB to 16 GiB
++of RAM, with 2 GiB as the default.
 +
-+/* INT_STATUS: a read has finished. */
-+#define ROCKCHIP_OTP_INT_STATUS_READ_DONE BIT(1)
++Boot options
++------------
 +
-+static void rockchip_otp_auto_read(RegisterInfo *reg, uint64_t value)
-+{
-+    RockchipOTPState *s = ROCKCHIP_OTP(reg->opaque);
++The ``rock-5b`` machine boots U-Boot SPL when ``-bios`` is given and
++Linux directly when ``-kernel`` is given; one of the two is required.
++Both methods start the primary CPU in non-secure EL2 and provide PSCI
++through SMC calls. DRAM is assumed to be initialized;
++BootROM, DDR training firmware and BL31 are not modeled.
 +
-+    if (value & 1) {
-+        uint32_t control = s->regs[R_AUTO_CTRL];
-+        unsigned int address = control >> 16;
-+        unsigned int count = (control >> 8) & 0xff;
++U-Boot SPL is supplied as a raw binary with ``-bios``. QEMU loads it
++at ``0x00000000``; SPL loads U-Boot proper from SPI NOR. The device tree
++is taken from the Linux FIT image loaded by U-Boot, so ``-dtb`` cannot be
++used with this method.
 +
-+        s->regs[R_AUTO_EN] = 0;
-+        if (count == 0 || count > 4 ||
-+            address + count > ROCKCHIP_OTP_NUM_WORDS) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "rockchip-otp: invalid read command\n");
-+            return;
-+        }
-+        /* Unprogrammed fuse words read as zero. */
-+        for (unsigned int i = 0; i < count; i++) {
-+            s->regs[R_DOUT0 + i] = 0;
-+        }
-+        s->regs[R_INT_STATUS] |= ROCKCHIP_OTP_INT_STATUS_READ_DONE;
-+    }
-+}
++Direct Linux boot supplies an AArch64 Linux ``Image`` with ``-kernel``
++and a device tree with ``-dtb``; ``-initrd`` and ``-append`` are optional.
++QEMU does not generate a device tree for this machine.
 +
-+static const RegisterAccessInfo rockchip_otp_regs_info[] = {
-+    { .name = "AUTO_CTRL", .addr = A_AUTO_CTRL },
-+    { .name = "AUTO_EN", .addr = A_AUTO_EN,
-+      .ro = ~1U, .post_write = rockchip_otp_auto_read },
-+    { .name = "DOUT0", .addr = A_DOUT0, .ro = UINT32_MAX },
-+    { .name = "DOUT1", .addr = A_DOUT1, .ro = UINT32_MAX },
-+    { .name = "DOUT2", .addr = A_DOUT2, .ro = UINT32_MAX },
-+    { .name = "DOUT3", .addr = A_DOUT3, .ro = UINT32_MAX },
-+    { .name = "INT_STATUS", .addr = A_INT_STATUS,
-+      .ro = ~ROCKCHIP_OTP_INT_STATUS_READ_DONE,
-+      .w1c = ROCKCHIP_OTP_INT_STATUS_READ_DONE },
-+};
++Running
++-------
 +
-+static const MemoryRegionOps rockchip_otp_ops = {
-+    .read = register_read_memory,
-+    .write = register_write_memory,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
++The first ``-serial`` option connects to UART2, the debug console on
++the board's header; further ``-serial`` options connect to UART1 and
++UART3 through UART9 in that order.
 +
-+static void rockchip_otp_reset(DeviceState *dev)
-+{
-+    RockchipOTPState *s = ROCKCHIP_OTP(dev);
++U-Boot SPL boot
++~~~~~~~~~~~~~~~
 +
-+    for (int i = 0; i < ARRAY_SIZE(s->regs_info); i++) {
-+        register_reset(&s->regs_info[i]);
-+    }
-+}
++With ``u-boot-spl.bin`` and ``spi-nor.img``:
 +
-+static void rockchip_otp_init(Object *obj)
-+{
-+    RockchipOTPState *s = ROCKCHIP_OTP(obj);
-+    RegisterInfoArray *reg_array;
++.. code-block:: bash
 +
-+    reg_array = register_init_block32(
-+        DEVICE(obj), rockchip_otp_regs_info, ARRAY_SIZE(rockchip_otp_regs_info),
-+        s->regs_info, s->regs, &rockchip_otp_ops, false, ROCKCHIP_OTP_SIZE);
++   $ qemu-system-aarch64 \
++       -machine rock-5b -m 2G -smp 8 \
++       -display none -monitor none -serial stdio \
++       -bios u-boot-spl.bin \
++       -drive if=mtd,index=0,file=spi-nor.img,format=raw
 +
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &reg_array->mem);
-+}
++The SPI NOR image must be exactly 16 MiB. Add ``snapshot=on`` to the
++drive option to discard guest writes.
 +
-+static void rockchip_otp_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
++Direct Linux boot
++~~~~~~~~~~~~~~~~~
 +
-+    device_class_set_legacy_reset(dc, rockchip_otp_reset);
-+}
++With ``Image``, ``rootfs.cpio.gz`` and ``rk3588-rock-5b.dtb``:
 +
-+static const TypeInfo rockchip_otp_type_info = {
-+    .name = TYPE_ROCKCHIP_OTP,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RockchipOTPState),
-+    .instance_init = rockchip_otp_init,
-+    .class_init = rockchip_otp_class_init,
-+};
++.. code-block:: bash
 +
-+static void rockchip_otp_register_types(void)
-+{
-+    type_register_static(&rockchip_otp_type_info);
-+}
++   $ qemu-system-aarch64 \
++       -machine rock-5b -m 2G -smp 8 \
++       -display none -monitor none -serial stdio \
++       -kernel Image -initrd rootfs.cpio.gz -dtb rk3588-rock-5b.dtb \
++       -append "console=ttyS2,1500000n8 rdinit=/init"
 +
-+type_init(rockchip_otp_register_types)
-diff --git a/include/hw/arm/rk3588.h b/include/hw/arm/rk3588.h
-index 18c66b6bae..1f854043de 100644
---- a/include/hw/arm/rk3588.h
-+++ b/include/hw/arm/rk3588.h
-@@ -53,6 +53,7 @@ struct RK3588SoCState {
-     GICv3State gic;
-     DW8250State uart[RK3588_NUM_UARTS];
-     DeviceState *cru;
-+    DeviceState *otp;
-     MemoryRegion *memory;
-     MemoryRegion sram;
-     DeviceState *hptimer;
++Limitations
++-----------
++
++The machine is TCG-only; KVM is not supported. Only the devices listed
++above are modeled, and the remaining RK3588 peripherals are unimplemented.
++Migration and VM snapshots are unsupported.
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index 260cd7e4d6..f195f74ce2 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -95,6 +95,7 @@ Board-specific documentation
+    arm/mcimx7d-sabre
+    arm/imx8m
+    arm/orangepi
++   arm/rock-5b
+    arm/raspi
+    arm/collie
+    arm/sx1
 -- 
 2.53.0
 

@@ -1,26 +1,26 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08B57606A893
-	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 16:20:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26B6C606A330
+	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 16:20:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xSGUH-0001tU-0R; Sat, 14 Nov 2026 11:20:21 -0500
+	id 1xSGUJ-0002AZ-B7; Sat, 14 Nov 2026 11:20:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGTT-0000NN-Kx; Sat, 14 Nov 2026 11:19:33 -0500
+ id 1xSGU5-0000p7-JP; Sat, 14 Nov 2026 11:20:09 -0500
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGTS-0005gY-6i; Sat, 14 Nov 2026 11:19:31 -0500
+ id 1xSGU4-0008SK-2a; Sat, 14 Nov 2026 11:20:09 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwD3_8MMivhqhGAqBg--.63128S2; 
- Sun, 15 Nov 2026 00:19:24 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwD3_p41ivhqhWMqBg--.59773S2; 
+ Sun, 15 Nov 2026 00:20:05 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwjHUKivhq9Nv6AA--.29618S3;
- Sun, 15 Nov 2026 00:19:23 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwWXUxivhq_dv6AA--.26575S3;
+ Sun, 15 Nov 2026 00:20:02 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Eric Auger <eric.auger@redhat.com>,
@@ -32,25 +32,25 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  Jim MacArthur <jim.macarthur@linaro.org>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [PATCH v6 21/35] hw/arm/smmuv3: Make GERROR_IRQ_CFG registers RES0
- without MSI
-Date: Sun, 15 Nov 2026 00:19:22 +0800
-Message-Id: <20261114161922.3647707-1-tangtao1634@phytium.com.cn>
+Subject: [PATCH v6 32/35] hw/arm/smmuv3: Reject IOMMU notifiers for non-NS
+ devices
+Date: Sun, 15 Nov 2026 00:20:01 +0800
+Message-Id: <20261114162001.3648796-1-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
 References: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwjHUKivhq9Nv6AA--.29618S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBhgAAsj
+X-CM-TRANSID: AQAAf8DwWXUxivhq_dv6AA--.26575S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBlgAAsz
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxAry5Jw1kuFy8CFykGw4UArb_yoW5GFWxpr
- 93Awn0gw10ya1Igr9rAwn8Jw18ur93JFy3Kry5G3sxZw409rW5tF1jqFWSg34DWFykGw4D
- KF43urn7XrnYyw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
+X-Coremail-Antispam: 1Uk129KBjvdXoW7Jry8uw1xAr1DAF1fGr18AFb_yoWDKrgEvF
+ 4Fq3s5Ww47tF97G3ZIva1xZryFqw4rCrn8WF1xu3WxK3WDC34DXa4DA34vqa1xX34xCFy5
+ AFZ3uF13Jr9F9jkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8wcxFpf9Il3svdxBIdaVrnU
+ Uv73VFW2AGmfu7jjvjm3AaLaJ3UjIYCTnIWjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRUUUUU
+ UUUU=
 Received-SPF: pass client-ip=162.243.164.118;
  envelope-from=tangtao1634@phytium.com.cn;
  helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
@@ -78,83 +78,35 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The SMMUv3 model does not advertise MSI support, but writes to
-GERROR_IRQ_CFG0/1/2 were stored and could be read back. These registers
-must be RES0 when SMMU_IDR0.MSI is zero.
+VFIO and vhost IOMMU notifiers currently support only the Non-secure
+system-memory path. Reject notifier registration for non-NS devices
+instead of allowing an unsupported configuration.
 
-Make the Non-secure and Secure GERROR_IRQ_CFG0/1/2 registers read as
-zero and ignore writes. This includes both 64-bit accesses to
-GERROR_IRQ_CFG0 and accesses to its individual 32-bit halves.
-
-Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/arm/smmuv3.c | 24 +++++-------------------
- 1 file changed, 5 insertions(+), 19 deletions(-)
+ hw/arm/smmuv3.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 716520d5eb8..144993243eb 100644
+index 04955d0691b..9ca52a10a37 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1744,7 +1744,6 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+@@ -2663,6 +2663,13 @@ static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+     SMMUv3State *s3 = sdev->smmu;
+     SMMUState *s = &(s3->smmu_state);
  
-     switch (offset) {
-     case A_GERROR_IRQ_CFG0:
--        bank->gerror_irq_cfg0 = data;
-         return MEMTX_OK;
-     case A_STRTAB_BASE:
-         bank->strtab_base = data;
-@@ -1811,18 +1810,11 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-          */
-         smmuv3_cmdq_consume(s, &local_err, reg_sec_sid);
-         break;
--    case A_GERROR_IRQ_CFG0: /* 64b */
--        bank->gerror_irq_cfg0 = deposit64(bank->gerror_irq_cfg0, 0, 32, data);
--        break;
-+    case A_GERROR_IRQ_CFG0:
-     case A_GERROR_IRQ_CFG0 + 4:
--        bank->gerror_irq_cfg0 = deposit64(bank->gerror_irq_cfg0, 32, 32, data);
--        break;
-     case A_GERROR_IRQ_CFG1:
--        bank->gerror_irq_cfg1 = data;
--        break;
-     case A_GERROR_IRQ_CFG2:
--        bank->gerror_irq_cfg2 = data;
--        break;
-+        return MEMTX_OK;
-     case A_GBPA:
-         /*
-          * If UPDATE is not set, the write is ignored. This is the only
-@@ -1947,7 +1939,7 @@ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
- 
-     switch (offset) {
-     case A_GERROR_IRQ_CFG0:
--        *data = bank->gerror_irq_cfg0;
-+        *data = 0;
-         return MEMTX_OK;
-     case A_STRTAB_BASE:
-         *data = bank->strtab_base;
-@@ -2014,17 +2006,11 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-     case A_GERRORN:
-         *data = bank->gerrorn;
-         return MEMTX_OK;
--    case A_GERROR_IRQ_CFG0: /* 64b */
--        *data = extract64(bank->gerror_irq_cfg0, 0, 32);
--        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG0:
-     case A_GERROR_IRQ_CFG0 + 4:
--        *data = extract64(bank->gerror_irq_cfg0, 32, 32);
--        return MEMTX_OK;
-     case A_GERROR_IRQ_CFG1:
--        *data = bank->gerror_irq_cfg1;
--        return MEMTX_OK;
-     case A_GERROR_IRQ_CFG2:
--        *data = bank->gerror_irq_cfg2;
-+        *data = 0;
-         return MEMTX_OK;
-     case A_STRTAB_BASE: /* 64b */
-         *data = extract64(bank->strtab_base, 0, 32);
++    if (new != IOMMU_NOTIFIER_NONE && sdev->sec_sid != SMMU_SEC_SID_NS) {
++        error_setg(errp,
++                   "SMMUv3 does not support IOMMU notifiers for "
++                   "Secure devices");
++        return -EINVAL;
++    }
++
+     if (new & IOMMU_NOTIFIER_DEVIOTLB_UNMAP) {
+         error_setg(errp, "SMMUv3 does not support dev-iotlb yet");
+         return -EINVAL;
 -- 
 2.34.1
 

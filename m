@@ -1,26 +1,26 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0C1F606A329
-	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 16:21:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DC58606A327
+	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 16:21:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xSGUI-00025I-Bt; Sat, 14 Nov 2026 11:20:22 -0500
+	id 1xSGTD-0008P8-El; Sat, 14 Nov 2026 11:19:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGTx-0000b7-6a; Sat, 14 Nov 2026 11:20:08 -0500
+ id 1xSGSE-00078q-S5; Sat, 14 Nov 2026 11:18:22 -0500
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGTt-0007R8-Og; Sat, 14 Nov 2026 11:19:59 -0500
+ id 1xSGS8-0003E5-AT; Sat, 14 Nov 2026 11:18:14 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwCXj8MoivhqcGIqBg--.60519S2; 
- Sun, 15 Nov 2026 00:19:52 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwAXTaW4ifhqylkqBg--.44579S2; 
+ Sun, 15 Nov 2026 00:18:00 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwS3Ilivhq+9v6AA--.26908S3;
- Sun, 15 Nov 2026 00:19:50 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwOHSyifhq4Nv6AA--.29617S8;
+ Sun, 15 Nov 2026 00:17:59 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Eric Auger <eric.auger@redhat.com>,
@@ -32,23 +32,23 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  Jim MacArthur <jim.macarthur@linaro.org>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [PATCH v6 29/35] hw/arm/smmuv3: Harden security checks in MMIO
- handlers
-Date: Sun, 15 Nov 2026 00:19:49 +0800
-Message-Id: <20261114161949.3648535-1-tangtao1634@phytium.com.cn>
+Subject: [PATCH v6 15/35] hw/arm/smmuv3: Limit IOMMU notifications to
+ Non-secure targets
+Date: Sun, 15 Nov 2026 00:17:49 +0800
+Message-Id: <20261114161753.3645568-6-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
 References: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwS3Ilivhq+9v6AA--.26908S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBlAAAsx
+X-CM-TRANSID: AQAAf8DwOHSyifhq4Nv6AA--.29617S8
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBegAAsf
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxZryfCFWrKr15CFW3Gr15Arb_yoW5KFW3pr
- WkC34YgrWDG3W3Aa93tw4kAF1fK3ykWrnxJr93G34UuayUtr4rXF18C34YgFnrGFyUZan7
- Wr4fAr4fCw12y3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxWF4fKFyfZr15Jw1kXF48tFb_yoWrJFy8pr
+ 47KrZ5urZ8Aa93Ja12vw4UCFy3Xw1qkryrtrW5WF95t3WDJryaqFWkGryYkryDCr1UZrZ3
+ Z3yUWF43ua17t3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -78,105 +78,101 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This patch hardens the security validation within the main MMIO
-dispatcher functions (smmu_read_mmio and smmu_write_mmio).
+IOMMU notifiers are supported only for Non-secure devices. Add a wrapper
+for full invalidation notifications and filter range notifications by
+the target SEC_SID before walking the registered notifier list.
 
-First, accesses to the Secure register space are gated by whether
-SECURE_IMPL is enabled. When it is disabled, all SMMU_S_* registers are
-read-as-zero and write-ignored.
-
-Second, the check for the input stream's security is made more robust.
-It now validates not only the legacy MemTxAttrs.secure bit, but also
-the .space field. This improves compatibility with Arm security space
-handling.
+Keep the underlying common notifier helpers unchanged. Command handlers
+can then select whether to notify according to the invalidation target.
 
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- hw/arm/smmuv3.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+ hw/arm/smmuv3.c | 27 +++++++++++++++++++++------
+ 1 file changed, 21 insertions(+), 6 deletions(-)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 5c3d8b4bd98..0c367dc5221 100644
+index f7ca3859bc2..ce00461210b 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1455,6 +1455,12 @@ static bool smmu_strtab_base_writable(SMMUv3State *s, SMMUSecSID sec_sid)
-     return !smmu_enabled(s, sec_sid);
- }
- 
-+/* Check if the SMMU hardware itself implements Secure state features */
-+static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
-+{
-+    return FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SECURE_IMPL);
-+}
-+
- static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+@@ -1307,10 +1307,16 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+ /* invalidate an asid/vmid/iova range tuple in all mr's */
+ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
+                                       dma_addr_t iova, uint8_t tg,
+-                                      uint64_t num_pages, int stage)
++                                      uint64_t num_pages, int stage,
++                                      SMMUSecSID sec_sid)
  {
-     SMMUState *bs = ARM_SMMU(s);
-@@ -1771,6 +1777,37 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
-     return 0;
- }
+     SMMUDevice *sdev;
  
-+/*
-+ * Helper function for Secure register access validation.
-+ *
-+ * Follow S_IDR1.SECURE_IMPL accessibility rules for SMMU_S_*:
-+ *  - SECURE_IMPL == 0: Secure state is not implemented; SMMU_S_* are RAZ/WI to
-+ *    all accesses.
-+ *  - SECURE_IMPL == 1: Non-secure accesses to SMMU_S_* are RAZ/WI.
-+ */
-+static bool smmu_check_secure_access(SMMUv3State *s, MemTxAttrs attrs,
-+                                     hwaddr offset, bool is_read)
-+{
-+    /* Check if the access is Secure */
-+    if (!(attrs.space == ARMSS_Secure ||
-+          attrs.secure == 1)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: Non-secure %s at offset 0x%" PRIx64 "\n",
-+            __func__, is_read ? "read" : "write", offset);
-+        return false;
++    /* IOMMU notifiers are supported only for Non-secure devices. */
++    if (sec_sid != SMMU_SEC_SID_NS) {
++        return;
 +    }
 +
-+    /* Check if the Secure state is implemented. */
-+    if (!smmu_hw_secure_implemented(s)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: Secure %s at offset 0x%" PRIx64
-+            ": Secure state is not implemented\n",
-+            __func__, is_read ? "read" : "write", offset);
-+        return false;
+     QLIST_FOREACH(sdev, &s->devices_with_notifiers, next) {
+         IOMMUMemoryRegion *mr = &sdev->iommu;
+         IOMMUNotifier *n;
+@@ -1324,6 +1330,14 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
+     }
+ }
+ 
++static void smmuv3_inv_notifiers_all(SMMUState *s, SMMUSecSID sec_sid)
++{
++    /* IOMMU notifiers are supported only for Non-secure devices. */
++    if (sec_sid == SMMU_SEC_SID_NS) {
++        smmu_inv_notifiers_all(s);
 +    }
-+    return true;
 +}
 +
- static bool smmuv3_reg_is_raz_wi(hwaddr offset, SMMUSecSID reg_sec_sid)
+ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
+                                SMMUSecSID sec_sid)
  {
-     switch (offset) {
-@@ -2065,6 +2102,11 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-      * translate the Secure window to its bank-local register offsets.
-      */
-     if (offset >= SMMU_SECURE_REG_START) {
-+        if (!smmu_check_secure_access(s, attrs, offset, false)) {
-+            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
-+            /* WI */
-+            return MEMTX_OK;
-+        }
-         reg_sec_sid = SMMU_SEC_SID_S;
-         offset -= SMMU_SECURE_REG_START;
-     }
-@@ -2244,6 +2286,12 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
-     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
-     offset &= ~0x10000;
-     if (offset >= SMMU_SECURE_REG_START) {
-+        if (!smmu_check_secure_access(s, attrs, offset, true)) {
-+            /* RAZ */
-+            *data = 0;
-+            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
-+            return MEMTX_OK;
-+        }
-         reg_sec_sid = SMMU_SEC_SID_S;
-         offset -= SMMU_SECURE_REG_START;
-     }
+@@ -1352,7 +1366,8 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
+     if (!tg) {
+         trace_smmuv3_range_inval(sec_sid, vmid, asid, addr,
+                                  tg, 1, ttl, leaf, stage);
+-        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage);
++        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage,
++                                  sec_sid);
+         if (stage == SMMU_STAGE_1) {
+             smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl, sec_sid);
+         } else {
+@@ -1376,7 +1391,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
+         trace_smmuv3_range_inval(sec_sid, vmid, asid, addr, tg,
+                                  num_pages, ttl, leaf, stage);
+         smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg,
+-                                  num_pages, stage);
++                                  num_pages, stage, sec_sid);
+         if (stage == SMMU_STAGE_1) {
+             smmu_iotlb_inv_iova(s, asid, vmid, addr, tg,
+                                 num_pages, ttl, sec_sid);
+@@ -1530,7 +1545,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+             }
+ 
+             trace_smmuv3_cmdq_tlbi_nh_asid(sec_sid, asid);
+-            smmu_inv_notifiers_all(&s->smmu_state);
++            smmuv3_inv_notifiers_all(bs, sec_sid);
+             smmu_iotlb_inv_asid_vmid(bs, asid, vmid, sec_sid);
+             if (!smmuv3_accel_issue_inv_cmd(s, &cmd, NULL, errp)) {
+                 cmd_error = SMMU_CERROR_ILL;
+@@ -1561,7 +1576,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+         }
+         case SMMU_CMD_TLBI_NSNH_ALL:
+             trace_smmuv3_cmdq_tlbi_nsnh();
+-            smmu_inv_notifiers_all(&s->smmu_state);
++            smmuv3_inv_notifiers_all(bs, SMMU_SEC_SID_NS);
+             smmu_iotlb_inv_all(bs);
+             if (!smmuv3_accel_issue_inv_cmd(s, &cmd, NULL, errp)) {
+                 cmd_error = SMMU_CERROR_ILL;
+@@ -1590,7 +1605,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+             }
+ 
+             trace_smmuv3_cmdq_tlbi_s12_vmid(vmid);
+-            smmu_inv_notifiers_all(&s->smmu_state);
++            smmuv3_inv_notifiers_all(bs, SMMU_SEC_SID_NS);
+             smmu_iotlb_inv_vmid(bs, vmid, SMMU_SEC_SID_NS);
+             break;
+         }
 -- 
 2.34.1
 

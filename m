@@ -1,26 +1,26 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A38B606A32D
-	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 16:23:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85CDF606A323
+	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 16:23:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xSGUE-0001gT-Ry; Sat, 14 Nov 2026 11:20:19 -0500
+	id 1xSGUP-0002mZ-L3; Sat, 14 Nov 2026 11:20:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGTc-0000RL-LZ; Sat, 14 Nov 2026 11:19:47 -0500
+ id 1xSGUC-0001Pk-RH; Sat, 14 Nov 2026 11:20:17 -0500
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGTb-0006Q3-2u; Sat, 14 Nov 2026 11:19:40 -0500
+ id 1xSGUB-0000Vi-4y; Sat, 14 Nov 2026 11:20:16 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with UTF8SMTP id AQAAfwDnBN4YivhqyRoGAg--.42231S2; 
- Sun, 15 Nov 2026 00:19:36 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwBXX8M9ivhqLWQqBg--.60044S2; 
+ Sun, 15 Nov 2026 00:20:13 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwnnQWivhq99v6AA--.36131S3;
- Sun, 15 Nov 2026 00:19:34 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwOHQ6ivhq_9v6AA--.29619S3;
+ Sun, 15 Nov 2026 00:20:10 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Eric Auger <eric.auger@redhat.com>,
@@ -32,22 +32,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  Jim MacArthur <jim.macarthur@linaro.org>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [PATCH v6 24/35] hw/arm/smmuv3: Guard command queue register writes
-Date: Sun, 15 Nov 2026 00:19:34 +0800
-Message-Id: <20261114161934.3648016-1-tangtao1634@phytium.com.cn>
+Subject: [PATCH v6 35/35] hw/arm/smmuv3: Migrate the Secure register bank
+Date: Sun, 15 Nov 2026 00:20:10 +0800
+Message-Id: <20261114162010.3649075-1-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
 References: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwnnQWivhq99v6AA--.36131S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBjAAAsp
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAf8DwOHQ6ivhq_9v6AA--.29619S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBmgAAs-
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxXr4UKw1rAw48XFWfJFy8Grg_yoW5Xr43p3
- 97GrZ0grW2yrs3GF9xAay8Cr45uwn3Kry2vry7WFyrXw1UG3yYgF48Xa4fXF93XF9rAws5
- trsI9a4Dur48trJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxWF1UXrW5Aw18CFWDAr1rtFb_yoW5WF45pr
+ n8Gwn8GryDGr43Za13Jan5CFs5Cr48WF4Ykr9rCa93K3WkJ3yaqrnIy340g34kJrWUXw47
+ ZF1UuF9rGr47ArJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -77,80 +77,87 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-CMDQ_BASE and CMDQ_CONS can currently be modified while the command
-queue is enabled. Ignore these writes while CMDQEN is set, using the
-model's synchronous enable and acknowledgement state.
+Add the optional smmuv3/bank_s migration subsection when secure-impl is
+on. Serialize the Secure control, interrupt, error, stream table and
+queue state using dedicated register-bank and queue descriptions.
 
-Mask reserved CMDQ_BASE bits and update the queue size when writing its
-low half. Use the high-half mask for writes to CMDQ_BASE + 4.
+Leave the subsection absent when the Secure programming interface is
+disabled.
 
-Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- hw/arm/smmuv3.c | 28 +++++++++++++++++++++++++++-
- 1 file changed, 27 insertions(+), 1 deletion(-)
+ hw/arm/smmuv3.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 127be4ac8e9..e5f057113e1 100644
+index 6a00f6b99fa..a461da8759f 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1762,7 +1762,13 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
-         bank->strtab_base = data & SMMU_STRTAB_BASE_RESERVED;
-         return MEMTX_OK;
-     case A_CMDQ_BASE:
--        bank->cmdq.base = data;
-+        if (smmuv3_cmdq_enabled(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_BASE write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
+@@ -2568,6 +2568,54 @@ static const VMStateDescription vmstate_smmuv3_queue = {
+     },
+ };
+ 
++static const VMStateDescription vmstate_smmuv3_secure_bank = {
++    .name = "smmuv3_secure_bank",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(features, SMMUv3RegBank),
++        VMSTATE_UINT8(sid_split, SMMUv3RegBank),
++        VMSTATE_UINT32_ARRAY(cr, SMMUv3RegBank, 3),
++        VMSTATE_UINT32(cr0ack, SMMUv3RegBank),
++        VMSTATE_UINT32(gbpa, SMMUv3RegBank),
++        VMSTATE_UINT32(irq_ctrl, SMMUv3RegBank),
++        VMSTATE_UINT32(gerror, SMMUv3RegBank),
++        VMSTATE_UINT32(gerrorn, SMMUv3RegBank),
++        VMSTATE_UINT64(gerror_irq_cfg0, SMMUv3RegBank),
++        VMSTATE_UINT32(gerror_irq_cfg1, SMMUv3RegBank),
++        VMSTATE_UINT32(gerror_irq_cfg2, SMMUv3RegBank),
++        VMSTATE_UINT64(strtab_base, SMMUv3RegBank),
++        VMSTATE_UINT32(strtab_base_cfg, SMMUv3RegBank),
++        VMSTATE_UINT64(eventq_irq_cfg0, SMMUv3RegBank),
++        VMSTATE_UINT32(eventq_irq_cfg1, SMMUv3RegBank),
++        VMSTATE_UINT32(eventq_irq_cfg2, SMMUv3RegBank),
++        VMSTATE_STRUCT(cmdq, SMMUv3RegBank, 0,
++                       vmstate_smmuv3_queue, SMMUQueue),
++        VMSTATE_STRUCT(eventq, SMMUv3RegBank, 0,
++                       vmstate_smmuv3_queue, SMMUQueue),
++        VMSTATE_END_OF_LIST(),
++    },
++};
 +
-+        bank->cmdq.base = data & SMMU_QUEUE_BASE_RESERVED;
-         bank->cmdq.log2size = extract64(bank->cmdq.base, 0, 5);
-         if (bank->cmdq.log2size > SMMU_CMDQS) {
-             bank->cmdq.log2size = SMMU_CMDQS;
-@@ -1884,6 +1890,13 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-         }
-         break;
-     case A_CMDQ_BASE: /* 64b */
-+        if (smmuv3_cmdq_enabled(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_BASE write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
++static bool smmuv3_secure_bank_needed(void *opaque)
++{
++    SMMUv3State *s = opaque;
 +
-+        data &= SMMU_QUEUE_BASE_RESERVED;
-         bank->cmdq.base = deposit64(bank->cmdq.base, 0, 32, data);
-         bank->cmdq.log2size = extract64(bank->cmdq.base, 0, 5);
-         if (bank->cmdq.log2size > SMMU_CMDQS) {
-@@ -1891,6 +1904,13 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-         }
-         break;
-     case A_CMDQ_BASE + 4: /* 64b */
-+        if (smmuv3_cmdq_enabled(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_BASE + 4 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
++    return s->secure_impl == ON_OFF_AUTO_ON;
++}
 +
-+        data &= SMMU_QUEUE_BASE_RESERVED >> 32;
-         bank->cmdq.base = deposit64(bank->cmdq.base, 32, 32, data);
-         break;
-     case A_CMDQ_PROD:
-@@ -1898,6 +1918,12 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-         smmuv3_cmdq_consume(s, &local_err, reg_sec_sid);
-         break;
-     case A_CMDQ_CONS:
-+        if (smmuv3_cmdq_enabled(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_CONS write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
++static const VMStateDescription vmstate_smmuv3_bank_s = {
++    .name = "smmuv3/bank_s",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = smmuv3_secure_bank_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_STRUCT(bank[SMMU_SEC_SID_S], SMMUv3State, 0,
++                       vmstate_smmuv3_secure_bank, SMMUv3RegBank),
++        VMSTATE_END_OF_LIST(),
++    },
++};
 +
-         bank->cmdq.cons = data;
-         break;
-     case A_EVENTQ_BASE: /* 64b */
+ static bool smmuv3_gbpa_needed(void *opaque)
+ {
+     SMMUv3State *s = opaque;
+@@ -2622,6 +2670,7 @@ static const VMStateDescription vmstate_smmuv3 = {
+     },
+     .subsections = (const VMStateDescription * const []) {
+         &vmstate_gbpa,
++        &vmstate_smmuv3_bank_s,
+         NULL
+     }
+ };
 -- 
 2.34.1
 

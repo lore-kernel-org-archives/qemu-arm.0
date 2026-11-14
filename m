@@ -1,122 +1,64 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CDD58606A32D
-	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 10:50:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=V/akzFSv
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF809606A330
+	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 15:47:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xSBKs-0007SP-Ri; Sat, 14 Nov 2026 05:50:20 -0500
+	id 1xSFy6-0001mm-2L; Sat, 14 Nov 2026 10:47:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xSBKh-0007Jt-4Y
- for qemu-arm@nongnu.org; Sat, 14 Nov 2026 05:50:08 -0500
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xSBKf-0001aV-HL
- for qemu-arm@nongnu.org; Sat, 14 Nov 2026 05:50:06 -0500
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-67921b515a7so1947604d50.2
- for <qemu-arm@nongnu.org>; Sat, 14 Nov 2026 02:50:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794653404; cv=none;
- d=google.com; s=arc-20260327;
- b=KDfPC7cKDJQtpVX7AOXvGNfY9Rxl3OMnBAGLPvwrwT1571k9HP/AoRqV4tNuTepPTW
- vOuP+SHom+vuDempUaOTS1cqAX/VvQo1zpAeMxMH+2UhXTZxJokIp7BqBFudeZxWgAjf
- iJaJOPS5vzLVhRmvnCvP+q884LvZnAPCuHIcFX+YS+WfmX37lLYFkTDgLhKvKEdYK+yo
- RPnFS1c0f7gT5A22GVv9q58phMDLQun905gyt9vlI4pM+Sm1B3VyS+xQnYMrpyOXeVK0
- MTMk5mGXPbqmEJc9ur/FV9OuXZUxDT/ypfm5QRq3Q927DPwxtPMEqzsYbGxC3UGpL5G5
- 2CqA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=cGDymkR3cFc6weptlKP3igi3nbWKhlIh2JKy12OlpYU=;
- fh=+Of7jKsV2rhdjBK8yIRFsRozBS9RH6WMNhMbtLEwRHc=;
- b=pYtP5CxOUoVLV/Ed9izsmORx2kTMOWnUAaPvmzGAU+YZbbmRRhm40FJ9EpJPlDFKqb
- HWgMUkiYzo1XkZklx3iA8AZ5/KFcijouR90BHdE1wTYTQZIXbErpOb8UPehuEHDtryDH
- yX6R2tNczyHxoa3e8jvqhLffVyO5pD9D6B11cjTy3tlioGcc1zTChO6Qaezi+J05NBz6
- VyOf6HjEm5uqJ2umxFv64XoxfudzMNQpwQqg8BOT8psWXTQiHdE3Ykd1+Jj8R5ZGsUvM
- rCn61LtBmfxaBP+vCqyF5p2M1APnU3czYQzK1gXKJGSpfn2hZVSf2Sd1JO+RAjNo2qvC
- TixQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794653404; x=1795258204; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=cGDymkR3cFc6weptlKP3igi3nbWKhlIh2JKy12OlpYU=;
- b=V/akzFSvZr+dtNjjxSmQP1PfeNL/kuctkM4umtas8lsonJvrRe/b2SsvbEh27feHYj
- 6T1OzSkTvrwBnNBubiEYPJvCmjyiYvO3+JeXeBv8DfyMBjxv3KG9K/LfrBm0TnzpKv2q
- g9llbE9tPXxhgLjPDSNG4u+ki927IWYMLC0i7fmCWUj2J/jKUCIVLLpW1/v/tLFhQN68
- D0dGSJxrRhrQRRJrx4saxvh7FqJ/PAo0ZE5o4K2I8fZSdPA14dVKPY8mCTJW+PvatO9X
- kAgAn97ZNevI6RqkcWjTVaRRvem0sRUIjgdzPSn1nzNfADZjALUaMVL5K1dKo2GYgIul
- XmJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794653404; x=1795258204;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=cGDymkR3cFc6weptlKP3igi3nbWKhlIh2JKy12OlpYU=;
- b=hdyoPBB5xnkzERcqQmOO8aE7BSqwTLnEFPVkJID3HpA727TOayWmNEH4PQAYUdEl+k
- ok2Qwdi6uq4yT8+UZz8m+utU76E8f6fUr5X1boo4BA5fytMGJDaf+Ev1/7Fqg39KcLUV
- JQJKb+hYdFjkWAJVvn+RHdFXuuHBR452M16TjVbMIK588EVvWkhxlLf3A33B8RNPa9fU
- mwQKVvkV97KqXNfUjnq/NQcOlxk+YCTk3Wg0Ah8jKydShnGNRR6OSDtAgh5cnV1JUkPQ
- NmHG9kw90uER69R+RUKk3hFjnA2iewLbCXW5OWIV2XOcVW5Jte3ai9OBQ0Jcf16daBxk
- uu+A==
-X-Forwarded-Encrypted: i=1;
- AL+hErEsidqm2leBe5LEnFPvvhXwuwtouLKLCRqzJPzDL5oQp62d91L4OZMxRZiqRmsG24AYILdprrecOw==@nongnu.org
-X-Gm-Message-State: APuU4Z9uoBRwtRA03WUu4rLK/QAdHpq63ynpZKRw3sS7wHaMu8zte/9o
- Voxe5aDcWlV7it+nXdMMIcEcPdsttrB8lKpJ5JblobAiCK9Dw2B0DIQeH6u667jqjScNaNv/FFl
- +7TmjLJdYJqF82gbBj4IjKU023jEHBVW2FBYQl48OQw==
-X-Gm-Gg: AYBFou1QhMLVB5Vv/Y7RhJcCAVATF99sJbQTP/eDpb8HEyquFuYMI424okwuFxDpcoT
- iVKzduiErtVzOpvHNPCl9zgSrTv3NYppZ2YiQv5SZ1jsdI1ays8dsW6Ensem65ctlBNR27Ns1WG
- n4eEiR4NTre3R+MDu2BhLwP0wwFyT67ZXAju8Enh0nTXzdZMa7nT9axljAyBh4SZhELnD6vQUlO
- YjqTZ4oRqaeFGiH0xRsUS9m/s/L6IurkPesgXkfM8GXaNKoKC3IOkHbz9l6qpBuW4XZVkHNRxyg
- tCvyZBgO49swdTcs1BO5V6ibwKP1J6um4Y1yqTrFq5/SsY4MpuznbSBTAsS8gQTbYDXfHbCP3PJ
- Yff70meQjX+TvKOIRxaZSEEd/a7LtLRFecaxrAistqCy75XK9m4s3nuZGPDQ2vwnLgrlfkGH1/s
- RWvjJSy1KVn4g9ZrzLovXT
-X-Received: by 2002:a05:690e:1389:b0:67d:9a5e:8ec0 with SMTP id
- 956f58d0204a3-67d9a5e967cmr1509895d50.48.1794653404111; Sat, 14 Nov 2026
- 02:50:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1xSFy2-0001iy-Er; Sat, 14 Nov 2026 10:47:02 -0500
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1xSFxz-0005uH-QO; Sat, 14 Nov 2026 10:47:02 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with UTF8SMTP id AQAAfwAHD1tngvhqMgkGAg--.41682S2; 
+ Sat, 14 Nov 2026 23:46:47 +0800 (CST)
+Received: from phytium.com.cn (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAf8DwjHVhgvhqRdv6AA--.29616S3;
+ Sat, 14 Nov 2026 23:46:42 +0800 (CST)
+From: Tao Tang <tangtao1634@phytium.com.cn>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Eric Auger <eric.auger@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Zhao Liu <zhao1.liu@intel.com>
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Mostafa Saleh <smostafa@google.com>,
+ Chao Liu <chao.liu@processmission.com>,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Jim MacArthur <jim.macarthur@linaro.org>,
+ Tao Tang <tangtao1634@phytium.com.cn>
+Subject: [PATCH v6 00/35] hw/arm/smmuv3: Support Secure state for SMMUv3
+Date: Sat, 14 Nov 2026 23:46:23 +0800
+Message-Id: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
+X-Mailer: git-send-email 2.34.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <179449578952.8382.2790865629085512841-0@git.sr.ht>
- <179449578952.8382.2790865629085512841-3@git.sr.ht>
-In-Reply-To: <179449578952.8382.2790865629085512841-3@git.sr.ht>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 14 Nov 2026 10:49:52 +0000
-X-Gm-Features: AclHuK9ckxnBfEDfo_LyX-IbblHtB2BETK2N6sP8mZgn1-igdfXYK3CsS6VZnP0
-Message-ID: <CAFEAcA-jgooO51Lo7Mne+vOmf22nnFX+vASRdKfNFyUbPpMarw@mail.gmail.com>
-Subject: Re: [PATCH qemu 3/3] hw/arm: Add STM32L496G-DISCO machine
-To: "~mohammadodeh" <Mohammad.Odeh@exalt.ps>
-Cc: qemu-devel@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Samuel Tardieu <sam@rfc1149.net>, Alistair Francis <alistair@alistair23.me>,
- Kevin Wolf <kwolf@redhat.com>, 
- Hanna Reitz <hreitz@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Bernhard Beschow <shentey@gmail.com>, Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
- Jan Kiszka <jan.kiszka@web.de>, Bin Meng <bin.meng@processmission.com>, 
- Shameer Kolothum <skolothumtho@nvidia.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- qemu-arm@nongnu.org, qemu-block@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAf8DwjHVhgvhqRdv6AA--.29616S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBAgACsl
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW3JF13Aw4rJFy8tF15Jw13Arb_yoW7tr4kpa
+ yfC3sxKrWDCa47ZrWxJa1I9asxJan7J3WUtrnrGryrXr1jyryfJr4jy34rKFyDCFyUZF43
+ u3WIgan7Wr1jy3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,43 +71,152 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 12 Nov 2026 at 15:03, ~mohammadodeh <mohammadodeh@git.sr.ht> wrote:
->
-> From: Mohammad Odeh <mohammad.odeh@exalt.ps>
->
-> Add a machine model for the STM32L496G-DISCO Discovery kit.
->
-> Introduce the STM32L496xG SoC variant with its flash and SRAM sizes.
-> Attach the on-board MX25R6435F flash to the QuadSPI controller and add
-> qtests for identification, SFDP access, and data transfer.
->
-> Signed-off-by: Mohammad Odeh <zephyr@exalt.ps>
-> ---
->  MAINTAINERS                          |   8 +
->  docs/system/arm/stm32.rst            |   1 +
->  docs/system/arm/stm32l496g-disco.rst |  43 ++
->  docs/system/target-arm.rst           |   1 +
->  hw/arm/Kconfig                       |   7 +
->  hw/arm/meson.build                   |   1 +
->  hw/arm/stm32l496g-disco.c            |  95 ++++
->  hw/arm/stm32l4x5_soc.c               |  25 +-
->  include/hw/arm/stm32l4x5_soc.h       |   3 +
->  tests/qtest/meson.build              |   1 +
->  tests/qtest/stm32l496g-disco-test.c  | 693 +++++++++++++++++++++++++++
->  11 files changed, 874 insertions(+), 4 deletions(-)
->  create mode 100644 docs/system/arm/stm32l496g-disco.rst
->  create mode 100644 hw/arm/stm32l496g-disco.c
->  create mode 100644 tests/qtest/stm32l496g-disco-test.c
+Hi all,
 
-Put tests in a separate patch from the actual implementation, please.
+This is v6 of the Secure SMMUv3 series.
+
+Many thanks to everyone who reviewed the earlier versions. This version contains
+35 commits in total. Most of them are confined to the Arm SMMU model. But a few
+commits also touch the PCI device model, and the virt machine model.
+
+Secure Stage 2 is not implemented. Secure STEs which enable Stage 2 are
+rejected with C_BAD_STE. Realm and Root programming interfaces are outside the
+scope of this series.
 
 
--- PMM
+Commits layout:
+---------------
+The commits are roughly grouped as follows:
+
+1. (#30, hw/pci only) Add a PCIDevice "sec-sid" property so boards can mark a
+   device's SEC_SID (system integration knob).
+2. (#1-2, #31-35) Core data-structure and plumbing refactors.
+3. (#3-8) Introduce SEC_SID through caches, notifiers, and helpers.
+4. (#9-12) Page table walk related updates (e.g. NSCFG/PTE helpers).
+5. (#13-20) EVTQ/CMDQ handling and invalidation paths.
+6. (#21-29) MMIO/register access checks and architectural corner cases.
+
+
+Changes since v5:
+----------------
+- Split the invalidation and register-check patches, separate secure-impl
+  from migration, and move S2 walker changes into the page-table walk patch.
+- Add fixes for Secure S1 VMID tagging (#18) and ATC_INV checks (#20).
+- Validate sec-sid in the PCI setter, reject incompatible devices through
+  the PCI IOMMU check, and refresh SEC_SID on device reuse.
+- Wire Secure IRQs on virt and sbsa-ref, and update CMDQV IRQ indexing.
+- Document secure-impl and preserve the previous default for older
+  machine types.
+- Drop the temporary [NOT-MERGE] Hafnium bring-up patch.
+
+
+Testing notes:
+--------------
+- Testing MMIO accesses
+I also tested Secure-bank register reads and writes using Hafnium
+firmware as described in [1].
+
+- Testing DMA translation
+I integrated this series with the latest RFCing QTest memory-attribute
+extensions from [2]. The test integration also includes the iommu-testdev DMA
+readback fix and the SMMUv3 security-space tests. It is available in [3].
+
+All five SMMUv3 test cases passed:
+-- Non-secure Stage 1.
+-- Non-secure Stage 2.
+-- Non-secure nested translation.
+-- Secure Stage 1.
+-- Secure Stage 2 rejection with C_BAD_STE.
+
+The first three cases has upstreamed. For the last two cases:
+
+    QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
+      ./build/tests/qtest/iommu-smmuv3-test --tap -k \
+      -p /aarch64/iommu-testdev/translation/secure-s1-only
+
+    QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
+      ./build/tests/qtest/iommu-smmuv3-test --tap -k \
+      -p /aarch64/iommu-testdev/translation/secure-s2-only-bad-ste
+
+
+The patches also available at [4]. The CI [5] passed with warnings from two jobs,
+which also occured in upstream CI.
+
+Best regards,
+Tao
+
+[1] https://hnusdr.github.io/2025/08/09/Test-Secure-SMMU-with-Hafnium-ENG/
+[2] https://gitlab.com/TaoTang/qemu/-/tree/series/qtest-secure-v6
+[3] https://gitlab.com/TaoTang/qemu/-/tree/integration/secure-smmu-v6-qtest
+[4] https://gitlab.com/TaoTang/qemu/-/tree/series/secure-smmu-v6
+[5] https://gitlab.com/TaoTang/qemu/-/pipelines/3065596056
+
+Tao Tang (35):
+  hw/arm/smmuv3: Introduce Secure registers
+  hw/arm/smmuv3: Introduce banked registers for SMMUv3 state
+  hw/arm/smmuv3: Thread SEC_SID through helper APIs
+  hw/arm/smmuv3: Track SEC_SID in configs and events
+  hw/arm/smmu-common: Add security-aware address space selector
+  hw/arm/smmuv3: Plumb transaction attributes into config helpers
+  hw/arm/smmuv3: Reject Secure STEs with stage-2 enabled
+  hw/arm/smmu-common: Key configuration cache on SMMUDevice and SEC_SID
+  hw/arm/smmu: Add PTE NS/NSTable helpers
+  hw/arm/smmuv3: Store CD NSCFG in TT info
+  hw/arm/smmu-common: Implement Secure state handling in ptw
+  hw/arm/smmuv3: Tag IOTLB cache keys with SEC_SID
+  hw/arm/smmuv3: Pass sec_sid into cmdq consume path
+  hw/arm/smmuv3: Make evtq producer use SEC_SID
+  hw/arm/smmuv3: Limit IOMMU notifications to Non-secure targets
+  hw/arm/smmuv3: Scope configuration invalidation by SEC_SID
+  hw/arm/smmuv3: Scope IOTLB invalidation by SEC_SID
+  hw/arm/smmuv3: Fix VMID tagging for Secure stage 1
+  hw/arm/smmuv3: Keep accelerated invalidation Non-secure-only
+  hw/arm/smmuv3: Fix ATC invalidation command checks
+  hw/arm/smmuv3: Make GERROR_IRQ_CFG registers RES0 without MSI
+  hw/arm/smmuv3: Ignore CR2 writes while the SMMU is enabled
+  hw/arm/smmuv3: Guard stream table register writes
+  hw/arm/smmuv3: Guard command queue register writes
+  hw/arm/smmuv3: Guard event queue register writes
+  hw/arm/smmuv3: Determine register bank from MMIO offset
+  hw/arm/smmuv3: Route IRQ and GERROR handling by SEC_SID
+  hw/arm/smmuv3: Implement SMMU_S_INIT register
+  hw/arm/smmuv3: Harden security checks in MMIO handlers
+  hw/pci: Add sec-sid property to PCIDevice
+  hw/arm/smmuv3: Select sec-sid from PCI property and validate
+    SECURE_IMPL
+  hw/arm/smmuv3: Reject IOMMU notifiers for non-NS devices
+  hw/arm/smmuv3: Initialize the Secure register bank
+  hw/arm/smmuv3: Add the secure-impl property
+  hw/arm/smmuv3: Migrate the Secure register bank
+
+ docs/system/arm/virt.rst       |   11 +
+ hw/arm/smmu-internal.h         |   13 +
+ hw/arm/smmuv3-internal.h       |   39 +-
+ include/hw/arm/smmu-common.h   |   80 ++-
+ include/hw/arm/smmuv3-common.h |   71 +-
+ include/hw/arm/smmuv3.h        |   44 +-
+ include/hw/arm/virt.h          |    1 +
+ include/hw/pci/pci_device.h    |    3 +
+ hw/arm/sbsa-ref.c              |    8 +
+ hw/arm/smmu-common.c           |  426 ++++++++++--
+ hw/arm/smmuv3-accel.c          |   77 ++-
+ hw/arm/smmuv3.c                | 1184 +++++++++++++++++++++++---------
+ hw/arm/tegra241-cmdqv.c        |    6 +-
+ hw/arm/virt-acpi-build.c       |    3 +-
+ hw/arm/virt.c                  |    7 +
+ hw/core/machine.c              |    1 +
+ hw/pci/pci.c                   |   48 ++
+ hw/arm/trace-events            |   37 +-
+ 18 files changed, 1597 insertions(+), 462 deletions(-)
+
+--
+2.34.1
+
 

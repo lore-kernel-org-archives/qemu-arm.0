@@ -1,53 +1,49 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85CDF606A323
-	for <qemu-arm@archiver.kernel.org>; Sat, 14 Nov 2026 16:23:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32C74606A31E
+	for <qemu-arm@archiver.kernel.org>; Sun, 15 Nov 2026 07:46:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xSGUP-0002mZ-L3; Sat, 14 Nov 2026 11:20:29 -0500
+	id 1xSUwS-0008Tn-Id; Sun, 15 Nov 2026 02:46:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGUC-0001Pk-RH; Sat, 14 Nov 2026 11:20:17 -0500
+ id 1xSUwQ-0008TC-Ku; Sun, 15 Nov 2026 02:46:22 -0500
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSGUB-0000Vi-4y; Sat, 14 Nov 2026 11:20:16 -0500
+ id 1xSUwN-0004oE-7i; Sun, 15 Nov 2026 02:46:22 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwBXX8M9ivhqLWQqBg--.60044S2; 
- Sun, 15 Nov 2026 00:20:13 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwBHjeRFY_lqdpowBg--.997S2;
+ Sun, 15 Nov 2026 15:46:13 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwOHQ6ivhq_9v6AA--.29619S3;
- Sun, 15 Nov 2026 00:20:10 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwFnQ_Y_lqF+j6AA--.34770S3;
+ Sun, 15 Nov 2026 15:46:08 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eric Auger <eric.auger@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+To: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Mostafa Saleh <smostafa@google.com>,
- Chao Liu <chao.liu@processmission.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Chen Baozi <chenbaozi@phytium.com.cn>,
- Jim MacArthur <jim.macarthur@linaro.org>,
+ Chao Liu <chao.liu@processmission.com>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [PATCH v6 35/35] hw/arm/smmuv3: Migrate the Secure register bank
-Date: Sun, 15 Nov 2026 00:20:10 +0800
-Message-Id: <20261114162010.3649075-1-tangtao1634@phytium.com.cn>
+Subject: [PATCH v6 0/5] tests/qtest: Add memory-access attributes
+ (secure/space)
+Date: Sun, 15 Nov 2026 15:46:02 +0800
+Message-Id: <20261115074607.456045-1-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
-References: <20261114154623.3599750-1-tangtao1634@phytium.com.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwOHQ6ivhq_9v6AA--.29619S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWr3ZUsBmgAAs-
+X-CM-TRANSID: AQAAf8DwFnQ_Y_lqF+j6AA--.34770S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWr4tsgAbgAAsG
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxWF1UXrW5Aw18CFWDAr1rtFb_yoW5WF45pr
- n8Gwn8GryDGr43Za13Jan5CFs5Cr48WF4Ykr9rCa93K3WkJ3yaqrnIy340g34kJrWUXw47
- ZF1UuF9rGr47ArJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxCr48GFW3Cw1xWF1UGw1UAwb_yoWrAr47pF
+ W3A3W3Kr48JF1xJws3Ja10qa45Kan7CF17XFy7tryrurW5CFW7Ary2kryFqr9rGrWkXr1Y
+ k34qyFnxWrn8t3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -71,94 +67,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the optional smmuv3/bank_s migration subsection when secure-impl is
-on. Serialize the Secure control, interrupt, error, stream table and
-queue state using dedicated register-bank and queue descriptions.
+This is v6 of the qtest memory-access attributes series. Many thanks to whom
+reviewed previous versions and provided feedback.
 
-Leave the subsection absent when the Secure programming interface is
-disabled.
 
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
----
- hw/arm/smmuv3.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
+Changes since v5
+----------------
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 6a00f6b99fa..a461da8759f 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -2568,6 +2568,54 @@ static const VMStateDescription vmstate_smmuv3_queue = {
-     },
- };
- 
-+static const VMStateDescription vmstate_smmuv3_secure_bank = {
-+    .name = "smmuv3_secure_bank",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(features, SMMUv3RegBank),
-+        VMSTATE_UINT8(sid_split, SMMUv3RegBank),
-+        VMSTATE_UINT32_ARRAY(cr, SMMUv3RegBank, 3),
-+        VMSTATE_UINT32(cr0ack, SMMUv3RegBank),
-+        VMSTATE_UINT32(gbpa, SMMUv3RegBank),
-+        VMSTATE_UINT32(irq_ctrl, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerror, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerrorn, SMMUv3RegBank),
-+        VMSTATE_UINT64(gerror_irq_cfg0, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerror_irq_cfg1, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerror_irq_cfg2, SMMUv3RegBank),
-+        VMSTATE_UINT64(strtab_base, SMMUv3RegBank),
-+        VMSTATE_UINT32(strtab_base_cfg, SMMUv3RegBank),
-+        VMSTATE_UINT64(eventq_irq_cfg0, SMMUv3RegBank),
-+        VMSTATE_UINT32(eventq_irq_cfg1, SMMUv3RegBank),
-+        VMSTATE_UINT32(eventq_irq_cfg2, SMMUv3RegBank),
-+        VMSTATE_STRUCT(cmdq, SMMUv3RegBank, 0,
-+                       vmstate_smmuv3_queue, SMMUQueue),
-+        VMSTATE_STRUCT(eventq, SMMUv3RegBank, 0,
-+                       vmstate_smmuv3_queue, SMMUQueue),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static bool smmuv3_secure_bank_needed(void *opaque)
-+{
-+    SMMUv3State *s = opaque;
-+
-+    return s->secure_impl == ON_OFF_AUTO_ON;
-+}
-+
-+static const VMStateDescription vmstate_smmuv3_bank_s = {
-+    .name = "smmuv3/bank_s",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = smmuv3_secure_bank_needed,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_STRUCT(bank[SMMU_SEC_SID_S], SMMUv3State, 0,
-+                       vmstate_smmuv3_secure_bank, SMMUv3RegBank),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
- static bool smmuv3_gbpa_needed(void *opaque)
- {
-     SMMUv3State *s = opaque;
-@@ -2622,6 +2670,7 @@ static const VMStateDescription vmstate_smmuv3 = {
-     },
-     .subsections = (const VMStateDescription * const []) {
-         &vmstate_gbpa,
-+        &vmstate_smmuv3_bank_s,
-         NULL
-     }
- };
--- 
+- Move the raw command response helper before the attrs helpers patch.
+- Move the generic response assertions and typed failure helpers from the test
+  patch into the libqtest attrs helpers patch.
+- Check for TCG availability before running either attrs test program,
+  and return early when TCG is unavailable.
+
+This series is also available in a branch below:
+https://gitlab.com/TaoTang/qemu/-/tree/series/qtest-secure-v6
+
+The CI passed with warnings from two jobs, which also occured in upstream CI.
+https://gitlab.com/TaoTang/qemu/-/pipelines/3065518609
+
+
+
+Motivation
+----------
+
+IOMMU functional testing is always stack-heavy: for example, even for the
+Non-secure Arm SMMU model, end-to-end validation can require a fairly involved
+software stack. To keep the testing loop tight and reproducible, I previously
+proposed using iommu-testdev + QTest to validate IOMMU/SMMU behaviour without
+booting a guest [1].
+
+[1] https://www.qemu.org/docs/master/specs/iommu-testdev.html
+
+However, the current QTest interface cannot tag memory accesses with MemTxAttrs,
+so it is hard to write targeted tests for security-sensitive paths. This becomes
+a bigger issue for Secure SMMU work [2], and for future Arm
+RME-DA enablement.
+
+[2] https://lore.kernel.org/qemu-devel/20261114154623.3599750-1-tangtao1634@phytium.com.cn/
+
+This series therefore extends qtest memory access commands with an optional
+attrs argument, adds matching libqtest helpers, and introduces tests that
+exercise the new APIs against address spaces that actually differ by security
+context.
+
+In particular:
+- on Arm virt,secure=on, the test now uses the secure-only RAM window so the
+  requested attrs must select the correct AddressSpace
+- on x86 q35,smm=on, the API series covers normal RAM, and an extra NOT-MERGE
+  validation patch adds an SMM-only RAM window so the secure path can be
+  cross-checked against a location not visible from the default address space
+
+
+Compatibility
+-------------
+
+This series is additive for existing qtest users:
+- Existing qtest memory commands keep their current forms; attrs is an optional
+  extra argument
+- Existing libqtest memory helpers remain available and are kept as wrappers
+  passing NULL attrs
+- The first 4 patches are the upstreamable API and test additions
+- The 5th patch is explicitly marked NOT-MERGE and only provides extra x86
+  RFC coverage by wiring in a q35 test-only SMM RAM window
+
+One behavioural improvement is that memory access failures on the new paths are
+now reported consistently as ERR, which lets tests validate address-space
+selection failures directly.
+
+
+Testing
+-------
+
+The API series was exercised with:
+
+  meson test -C build \
+      "qtest-aarch64/qtest-attrs-test" \
+      "qtest-i386/qtest-attrs-test" \
+      "qtest-x86_64/qtest-attrs-test"
+
+The extra x86 cross-check from the NOT-MERGE patch was exercised with:
+
+  meson test -C build \
+      "qtest-i386/qtest-x86-attrs-test" \
+      "qtest-x86_64/qtest-x86-attrs-test"
+
+
+Tao Tang (5):
+  tests/qtest: Add attrs support to qtest server memory commands
+  tests/qtest: Add raw command response helper
+  tests/qtest: Add libqtest attrs helpers for memory accesses
+  tests/qtest: Add qtest-attrs-test for memory access attrs
+  [NOT-MERGE] tests/qtest: add q35 SMM-only x86 attrs coverage
+
+ include/hw/pci-host/q35.h          |   8 +
+ tests/qtest/libqtest-single.h      | 156 +++++++++++
+ tests/qtest/libqtest.h             | 288 +++++++++++++++++++++
+ hw/pci-host/q35.c                  |  27 ++
+ system/qtest.c                     | 349 +++++++++++++++++++++----
+ tests/qtest/libqtest.c             | 402 +++++++++++++++++++++++++----
+ tests/qtest/qtest-attrs-test.c     | 310 ++++++++++++++++++++++
+ tests/qtest/qtest-x86-attrs-test.c | 175 +++++++++++++
+ tests/qtest/meson.build            |   8 +-
+ 9 files changed, 1610 insertions(+), 113 deletions(-)
+ create mode 100644 tests/qtest/qtest-attrs-test.c
+ create mode 100644 tests/qtest/qtest-x86-attrs-test.c
+
+--
 2.34.1
 
 

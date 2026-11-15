@@ -1,26 +1,26 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32C74606A31E
-	for <qemu-arm@archiver.kernel.org>; Sun, 15 Nov 2026 07:46:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDC4A606A31D
+	for <qemu-arm@archiver.kernel.org>; Sun, 15 Nov 2026 07:46:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xSUwS-0008Tn-Id; Sun, 15 Nov 2026 02:46:26 -0500
+	id 1xSUwV-0008Ug-TE; Sun, 15 Nov 2026 02:46:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSUwQ-0008TC-Ku; Sun, 15 Nov 2026 02:46:22 -0500
+ id 1xSUwR-0008TZ-RU; Sun, 15 Nov 2026 02:46:23 -0500
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1xSUwN-0004oE-7i; Sun, 15 Nov 2026 02:46:22 -0500
+ id 1xSUwN-0004oD-8J; Sun, 15 Nov 2026 02:46:23 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwBHjeRFY_lqdpowBg--.997S2;
- Sun, 15 Nov 2026 15:46:13 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwDHz59HY_lqhpowBg--.2204S2;
+ Sun, 15 Nov 2026 15:46:15 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwFnQ_Y_lqF+j6AA--.34770S3;
- Sun, 15 Nov 2026 15:46:08 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwFnQ_Y_lqF+j6AA--.34770S5;
+ Sun, 15 Nov 2026 15:46:14 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
@@ -29,21 +29,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  Chao Liu <chao.liu@processmission.com>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [PATCH v6 0/5] tests/qtest: Add memory-access attributes
- (secure/space)
-Date: Sun, 15 Nov 2026 15:46:02 +0800
-Message-Id: <20261115074607.456045-1-tangtao1634@phytium.com.cn>
+Subject: [PATCH v6 2/5] tests/qtest: Add raw command response helper
+Date: Sun, 15 Nov 2026 15:46:04 +0800
+Message-Id: <20261115074607.456045-3-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261115074607.456045-1-tangtao1634@phytium.com.cn>
+References: <20261115074607.456045-1-tangtao1634@phytium.com.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwFnQ_Y_lqF+j6AA--.34770S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWr4tsgAbgAAsG
+X-CM-TRANSID: AQAAf8DwFnQ_Y_lqF+j6AA--.34770S5
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWr4tsgAcgAAsa
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxCr48GFW3Cw1xWF1UGw1UAwb_yoWrAr47pF
- W3A3W3Kr48JF1xJws3Ja10qa45Kan7CF17XFy7tryrurW5CFW7Ary2kryFqr9rGrWkXr1Y
- k34qyFnxWrn8t3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxAw4DCw4xGry8WF1fGF18Grg_yoW5Jw48pF
+ WkA3ZYyr4rJFyxWr43JF1DXF1rWr4xJr4DX3yxAr98JFZrJ34qqrs2yF1jgrn5XaykXrW5
+ Cw1qvF15GF1jvFJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -67,119 +68,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This is v6 of the qtest memory-access attributes series. Many thanks to whom
-reviewed previous versions and provided feedback.
+Extract response parsing from qtest_rsp_args() into qtest_rsp_words().
+Add qtest_raw_cmd() to send commands and return responses without
+requiring an OK status, so callers can inspect ERR and FAIL responses.
 
+Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+---
+ tests/qtest/libqtest.h | 13 +++++++++++++
+ tests/qtest/libqtest.c | 27 +++++++++++++++++++++++++--
+ 2 files changed, 38 insertions(+), 2 deletions(-)
 
-Changes since v5
-----------------
-
-- Move the raw command response helper before the attrs helpers patch.
-- Move the generic response assertions and typed failure helpers from the test
-  patch into the libqtest attrs helpers patch.
-- Check for TCG availability before running either attrs test program,
-  and return early when TCG is unavailable.
-
-This series is also available in a branch below:
-https://gitlab.com/TaoTang/qemu/-/tree/series/qtest-secure-v6
-
-The CI passed with warnings from two jobs, which also occured in upstream CI.
-https://gitlab.com/TaoTang/qemu/-/pipelines/3065518609
-
-
-
-Motivation
-----------
-
-IOMMU functional testing is always stack-heavy: for example, even for the
-Non-secure Arm SMMU model, end-to-end validation can require a fairly involved
-software stack. To keep the testing loop tight and reproducible, I previously
-proposed using iommu-testdev + QTest to validate IOMMU/SMMU behaviour without
-booting a guest [1].
-
-[1] https://www.qemu.org/docs/master/specs/iommu-testdev.html
-
-However, the current QTest interface cannot tag memory accesses with MemTxAttrs,
-so it is hard to write targeted tests for security-sensitive paths. This becomes
-a bigger issue for Secure SMMU work [2], and for future Arm
-RME-DA enablement.
-
-[2] https://lore.kernel.org/qemu-devel/20261114154623.3599750-1-tangtao1634@phytium.com.cn/
-
-This series therefore extends qtest memory access commands with an optional
-attrs argument, adds matching libqtest helpers, and introduces tests that
-exercise the new APIs against address spaces that actually differ by security
-context.
-
-In particular:
-- on Arm virt,secure=on, the test now uses the secure-only RAM window so the
-  requested attrs must select the correct AddressSpace
-- on x86 q35,smm=on, the API series covers normal RAM, and an extra NOT-MERGE
-  validation patch adds an SMM-only RAM window so the secure path can be
-  cross-checked against a location not visible from the default address space
-
-
-Compatibility
--------------
-
-This series is additive for existing qtest users:
-- Existing qtest memory commands keep their current forms; attrs is an optional
-  extra argument
-- Existing libqtest memory helpers remain available and are kept as wrappers
-  passing NULL attrs
-- The first 4 patches are the upstreamable API and test additions
-- The 5th patch is explicitly marked NOT-MERGE and only provides extra x86
-  RFC coverage by wiring in a q35 test-only SMM RAM window
-
-One behavioural improvement is that memory access failures on the new paths are
-now reported consistently as ERR, which lets tests validate address-space
-selection failures directly.
-
-
-Testing
--------
-
-The API series was exercised with:
-
-  meson test -C build \
-      "qtest-aarch64/qtest-attrs-test" \
-      "qtest-i386/qtest-attrs-test" \
-      "qtest-x86_64/qtest-attrs-test"
-
-The extra x86 cross-check from the NOT-MERGE patch was exercised with:
-
-  meson test -C build \
-      "qtest-i386/qtest-x86-attrs-test" \
-      "qtest-x86_64/qtest-x86-attrs-test"
-
-
-Tao Tang (5):
-  tests/qtest: Add attrs support to qtest server memory commands
-  tests/qtest: Add raw command response helper
-  tests/qtest: Add libqtest attrs helpers for memory accesses
-  tests/qtest: Add qtest-attrs-test for memory access attrs
-  [NOT-MERGE] tests/qtest: add q35 SMM-only x86 attrs coverage
-
- include/hw/pci-host/q35.h          |   8 +
- tests/qtest/libqtest-single.h      | 156 +++++++++++
- tests/qtest/libqtest.h             | 288 +++++++++++++++++++++
- hw/pci-host/q35.c                  |  27 ++
- system/qtest.c                     | 349 +++++++++++++++++++++----
- tests/qtest/libqtest.c             | 402 +++++++++++++++++++++++++----
- tests/qtest/qtest-attrs-test.c     | 310 ++++++++++++++++++++++
- tests/qtest/qtest-x86-attrs-test.c | 175 +++++++++++++
- tests/qtest/meson.build            |   8 +-
- 9 files changed, 1610 insertions(+), 113 deletions(-)
- create mode 100644 tests/qtest/qtest-attrs-test.c
- create mode 100644 tests/qtest/qtest-x86-attrs-test.c
-
---
+diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+index 20982d3fe8d..9c17da930e1 100644
+--- a/tests/qtest/libqtest.h
++++ b/tests/qtest/libqtest.h
+@@ -239,6 +239,19 @@ void qtest_qmp_send(QTestState *s, const char *fmt, ...)
+ void qtest_qmp_send_raw(QTestState *s, const char *fmt, ...)
+     G_GNUC_PRINTF(2, 3);
+ 
++/**
++ * qtest_raw_cmd:
++ * @s: #QTestState instance to operate on.
++ * @fmt: raw qtest protocol text to send, formatted like sprintf().
++ *
++ * Sends a raw qtest command and returns the response split on spaces.
++ * The response is not required to start with ``OK``; callers can inspect
++ * ``args[0]`` for ``OK``, ``ERR``, or ``FAIL`` and must free the returned
++ * vector with g_strfreev().
++ */
++gchar **qtest_raw_cmd(QTestState *s, const char *fmt, ...)
++    G_GNUC_PRINTF(2, 3);
++
+ /**
+  * qtest_socket_server:
+  * @socket_path: the UNIX domain socket path
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index 7f66c1bbb3b..3b2e31240e7 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -752,11 +752,10 @@ static GString *qtest_client_socket_recv_line(QTestState *s)
+     return line;
+ }
+ 
+-static gchar **qtest_rsp_args(QTestState *s, int expected_args)
++static gchar **qtest_rsp_words(QTestState *s)
+ {
+     GString *line;
+     gchar **words;
+-    int i;
+ 
+ redo:
+     line = s->ops.recv_line(s);
+@@ -788,6 +787,15 @@ redo:
+     }
+ 
+     g_assert(words[0] != NULL);
++
++    return words;
++}
++
++static gchar **qtest_rsp_args(QTestState *s, int expected_args)
++{
++    gchar **words = qtest_rsp_words(s);
++    int i;
++
+     g_assert_cmpstr(words[0], ==, "OK");
+ 
+     for (i = 0; i < expected_args; i++) {
+@@ -797,6 +805,21 @@ redo:
+     return words;
+ }
+ 
++gchar **qtest_raw_cmd(QTestState *s, const char *fmt, ...)
++{
++    va_list ap;
++    gchar *str;
++
++    va_start(ap, fmt);
++    str = g_strdup_vprintf(fmt, ap);
++    va_end(ap);
++
++    s->ops.send(s, str);
++    g_free(str);
++
++    return qtest_rsp_words(s);
++}
++
+ static void qtest_rsp(QTestState *s)
+ {
+     gchar **words = qtest_rsp_args(s, 0);
+-- 
 2.34.1
 
 

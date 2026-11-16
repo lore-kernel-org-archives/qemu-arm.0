@@ -1,100 +1,103 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B864606A339
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Nov 2026 18:57:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4FECA606A31C
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Nov 2026 19:31:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=qs+WuZSx
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=FDuWT/Yn
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xT1tb-0005SQ-GH; Mon, 16 Nov 2026 13:57:39 -0500
+	id 1xT2QJ-00073P-7n; Mon, 16 Nov 2026 14:31:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xT1ta-0005OK-3q
- for qemu-arm@nongnu.org; Mon, 16 Nov 2026 13:57:38 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xT2QH-00070z-1L
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2026 14:31:25 -0500
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xT1tX-0006Li-Bh
- for qemu-arm@nongnu.org; Mon, 16 Nov 2026 13:57:37 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-4a34ffd3e39so128773f8f.0
- for <qemu-arm@nongnu.org>; Mon, 16 Nov 2026 10:57:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xT2QE-0004JQ-2T
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2026 14:31:23 -0500
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-67c24619b19so2726331d50.2
+ for <qemu-arm@nongnu.org>; Mon, 16 Nov 2026 11:31:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794857480; cv=none;
+ d=google.com; s=arc-20260327;
+ b=Fieb8l1h5A9mKFJ7pQ3u1pnbJPTwNhyQnuk3sAX2S0fKE60qV9AwInEbZa8itS++A2
+ gpdjIV4Cy+STNiwPcLj+wHZ++5LYRV9ZwUTh+SJ4cFB90PIWyckfEHzA5csrZaSXtXus
+ BpK725k6Zl7zERKwdURPBURcvXAhl0nZ9mOVrkEEGdCJnyhVNcZNJgmvZDh/IbJ2H+IB
+ FEmcefPiNzTW8R1zuxpAadO9mKlLi7ROUtii+PauTFfZMctDwqEQJIKW1Tuk+uMRRCeL
+ 91cL/Js1vKj8XdZnm1QhlaBwkZIigzeLnbBFybsYO8SOAw/DKE2ZVi2cVDDVe4GMBKxe
+ BN+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=hvQ2sCg1HfdyVsyadHrWzZgE0Ls85Df2r0H9rHDaW50=;
+ fh=/vwv/v4BsxwLZmBgYfSYYsLKKo7yDmIi5Epzx+v+K5A=;
+ b=KrQedZNVWtcO4C0XqPo9sbtqtJcTAQn2LAdZR0MxmDy//Tnr8/6dP+fbe+JBuxUHyi
+ 4xJjVdF6Eam7lqIEgwB88UXlT7vMXAj29qV/gKEjgdCI4ogTHkuKnyIrR1aVPleZGbe3
+ aasGOXzyOJhcsEcS58ZBGVh94qiSWeJquyYqlOlr/0xUgfqLn/uapzhhYbfrWM/JME9R
+ v2iRVZb5lauopoF62omyZYkJdI/CRjjt9dEbEa/px7MXVah772d96K4PNpui30W9thMM
+ NmQnpASzO7tehj5YL9b2Iaz7rxagicCuPp2WOExaRITrGLA36lE3ceMeNBVpz4wdI4Th
+ XVzw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794855453; x=1795460253; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=RIC6/AdPDOweSTfySBAr8bYI/5fnqpqzSYxDbZyga2Y=;
- b=qs+WuZSxAMf0tMrjoRUrewh0DBhkMTKMnOOiKmoK7Iz6bI/p2kWPsi6UtMzVITYhnL
- TdFbR4UXk8KLV5Lr/kkDrX5/CLqgKUwzY0V3UjgatPxfQelCfqPS/Mcu0At8wE6c03DR
- AL3hRkzMLY2yQV0UcvljFzwQFafaY3qyth3dF9bpqABGsXK9FWzKtWkvEZpiIp4IzG7X
- NXwNATf8mcUsbCjVspEVZ2zcw5F3j3riAGvDsCuSjDVd3KJrzLmP+E+5pSQHQuMHpx3N
- Xx+GY2WrRjMWIi7N6JKJrE+RAUBKttncHRsOawtSeorYORYeFmNnk6MaCcaEYraoGK3H
- XBLg==
+ d=linaro.org; s=google; t=1794857480; x=1795462280; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=hvQ2sCg1HfdyVsyadHrWzZgE0Ls85Df2r0H9rHDaW50=;
+ b=FDuWT/Ynrr2xN7kLkwA0AK+DCixTe9kXdPidqLVnpQn5deUzZdZyqE3zJho6SSG5pL
+ /iA5VYTXoMo+MyeKPygCqO4GBHTabzidAF0duzW9i7KXB/dAX5ycIZc01l2aVIgiXm4r
+ VFeFSzxJTyGl4JYC56CZlU+BubkL1pecEo/V88HhGubwhxfs8SpN83W25m9nOC70ugoO
+ XHctzaALxTMQvWpVMzQ5JRNRp1tPrajHLWhRzA0QRMCxgn3qBPmwym9ej3MT4vRTJO8N
+ 3vHTI7uTqeSjjQaB7LNA2dDw2xc3/9NxpiBqohwcwcvCo9sqCvW6Nl8YD66JV2b/oPvV
+ TkTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794855453; x=1795460253;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=RIC6/AdPDOweSTfySBAr8bYI/5fnqpqzSYxDbZyga2Y=;
- b=Q6pdda72Kv/37uXHDQ8bdAo3N2F/bPSsioJjn2QlYddmqBjTGCi1uBS5SZXPP9elVc
- Uw+n49te73cs/e2xoh7ez8lKdah7gzUSCTb2PMe5ZoVTU/lkFqI/F4h2B25MfTNUU0mS
- 3xyCE1IpI4Fxh7+jgmwlYyXXW9C+4JFxK0jwcpZvSXrPWdReifc3eNr0ItHQnOllCsva
- cJpKL5Lh+RGPovbWkfNGFAvNe1OjF2BMPUZjJNNqW9VtIfG6phtFr7NK69V+v+qPOJdW
- yehH8+owBmU6IknzXcZ2nAg281VKWEAm8dfa+Wms55CMPIb6PgsDMzBEfQxlqR0LWWJF
- muJg==
+ d=1e100.net; s=20260707; t=1794857480; x=1795462280;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=hvQ2sCg1HfdyVsyadHrWzZgE0Ls85Df2r0H9rHDaW50=;
+ b=ylSYItdgAwTy5doCVLIVgbK+TYEGW6at3Zpb1IQJPKdywGFu/4V6tdPL3ol9miSY49
+ iVIPcg2bgHS11fKRM/vUQL+DRhjYKrg0xi5O1mt0Au6hX5ATnQbBOX8MhtqsXtSquuq7
+ Dozo8PoEGipGKSvrhV3w7lIKhMa80iXwULW1AhtVFOSJv9mm06xEHgIr2fIV2Oc9YHYp
+ sX31YA/hsFRQWGCYz+rFWIoUk4b8SqiUfKqHesq544icBNh6TQ6tzhgPO6v2L6E7zWrH
+ rLT/6Cg+H0Tr7CbBku/4GI3axq8/2th+pZ94zzOIbk0XYCIrd+VL5BjT6mF92Zi9f/Y4
+ +CsQ==
 X-Forwarded-Encrypted: i=1;
- AL+hErGjeZhWikNfmjqd0n/BZvnncWDvKcJFJGIp4hCXhObK4LdNpombxkFQLZi+gf6UOz5BDrVKyQ7EyQ==@nongnu.org
-X-Gm-Message-State: APuU4Z/l7DlRNAMoPL4lk+sjSN2UhxDKkAZmJCp7zdXBjngMIEZrALFS
- UotFB8yA7Lx5odkLZxqE2kcqiMJ8kL6OnGipLfWv/qvbe5XvVvkUhwl4c6BvE149TnE=
-X-Gm-Gg: AZFdTZfP+vYyE9NhAkZ8D8G4HTQPwKSVVlhEePCB7sV8oDtyqWB7whxjWYBTd+lwv2b
- zYnPiigHQVDZ3V9GOlZ0qD/GTxCfuZs3L5q86lnx7c8Rpno7kabmfQ0cg9lj0hXl20xOUZGhvGh
- OdnG9Gl3uygABN/A3WCps67nmgNRFE/1e+iLALBI0AWPH6hSpH3tIfUHQyHL3gpMvXiKwL0zV7Y
- roCTSR238K1cxykdrO8XSdCy3YCuKX7AiVo8V4TvZ91A3XKbIlhDM/1mIrdeQ8GfjgWxjSY+u94
- DY1YPMs+W/X5F0uqVM50y4I/Sz0Wjo1/MCb/91/Lj7f2UY+/SASyffvzePjr7bCAiiRfBbs3C5u
- azPoZxrTlKUcwMGdKmcK4H8ZP1tF4qAa2wnhLdnN2iPnrnaonhxANYKxZh3OhiVjoIvvBbDHK4Z
- ekBauqmxggHJ8m73+jn4us78Wza2UFhG9kWEQ+yDgrFvBXwtskuZGvw8QNTTj+uI0MnrcxKiu50
- FJGTFP875ttW8OnuUuMQINuBhNvw8vJ8IqPzMQ1UsSDATU4vSpPe6Sq9GitkzSgAXoeEBsojiyv
- rMIbnPrrmC7k7QvB8Jw8/Ydr7OIJ
-X-Received: by 2002:a05:6000:4024:b0:490:d197:bde8 with SMTP id
- ffacd0b85a97d-49c6b972aedmr28472431f8f.0.1794855453450; 
- Mon, 16 Nov 2026 10:57:33 -0800 (PST)
-Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-49c5f1c18b9sm19789038f8f.20.2026.11.16.10.57.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2026 10:57:32 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 8EB6F5F8FE;
- Mon, 16 Nov 2026 18:57:31 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org,
- qemu-arm@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Paolo
- Bonzini <pbonzini@redhat.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  qemu-ppc@nongnu.org,
- qemu-block@nongnu.org,  qemu-riscv@nongnu.org,  qemu-s390x@nongnu.org,
- Junjie Cao <junjie.cao@intel.com>
-Subject: Re: [PATCH v2 28/28] hw/usb: mark UHCI, OCHI & ECHI USB hosts as
- secure
-In-Reply-To: <1711cf10-2719-4d6a-93f2-b7a3a7554ecb@redhat.com> (Thomas Huth's
- message of "Fri, 6 Nov 2026 13:28:18 +0100")
-References: <20261029131241.2275706-1-berrange@redhat.com>
- <20261029131241.2275706-29-berrange@redhat.com>
- <1711cf10-2719-4d6a-93f2-b7a3a7554ecb@redhat.com>
-User-Agent: mu4e 1.14.5-pre1; emacs 30.1
-Date: Mon, 16 Nov 2026 18:57:31 +0000
-Message-ID: <87zev8ioys.fsf@draig.linaro.org>
+ AL+hErHsamI2+5hHT/ru5KVuQNUWKTGzoXvIJTkrRxObIGat1muQgicEek7TzYjgmvHOdR4QdhbvpF+VTA==@nongnu.org
+X-Gm-Message-State: APuU4Z9V+DV5VjL3fDYM7wSduqlIhsGxFq0C89TU3IdyIDX8DYt49g6Y
+ pNf6kfHpduDkjHrU8xH/gwMfQSvQlRjFwuB/wfOEkXTuip3OkzT8eFKMWFJeLcPyTfV6+pYNavG
+ dYzO7WKdjlwCD6OJUmGRmP8FlpuAtVlTG/tiveQgRBw==
+X-Gm-Gg: AZFdTZetTF3UpPif77UGQzhp+f69wEPaMH5745j7r9jiJS2z4ppcVBPfgEcqs7jFRlX
+ AsyBq1TBbpCuGYJ3mjJr3JDnOXyBvClpzHBkeJ8B1yWDpjNTEAvQO9/zdt4+7mhfG/CLee9wmxq
+ WWRnYQvNt3QCl1zWnSpgiM7K41TeKg21TLPA7p+itChF8lCTQR4+ocM/yiWfpQg7a640BNoN68I
+ E26RwEz65E3OI1kyb2kW3X3YL+Bzsllnn1yWLamob5trUoaPkbW9rZpQ+VxjPJPJ7r9+v22+gk+
+ Ui82SWSBHjIcDiRpIhtUuWOPJS0NbZJ7QSg+OCJxgYplT6ld0WOfnQIO+Y38EADWZSOEDx8fcfn
+ x7AMUkd9Y0kHG4RAkoCRACwRR1AVzL0VhDBFOZPzDjRs0dSAjVIi+YY7IDQjs7HTO6wG3BZPuV0
+ AZkldUR1hhgctKyXdzdfUA
+X-Received: by 2002:a05:690e:1688:b0:67d:babd:b80c with SMTP id
+ 956f58d0204a3-67dbabdc5aamr1889966d50.67.1794857479878; Mon, 16 Nov 2026
+ 11:31:19 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x432.google.com
+References: <20260821064032.49556-1-zhiwei_liu@linux.alibaba.com>
+In-Reply-To: <20260821064032.49556-1-zhiwei_liu@linux.alibaba.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Nov 2026 19:31:08 +0000
+X-Gm-Features: AclHuK86TOGoB8kRSwdXx4amVM7Dh5DygxvE65EO4LJUouj_so5MRTVNEi8304Q
+Message-ID: <CAFEAcA8Nmt_Nsvfm77en_oaE4orcQ3BdCBQWNAXmi0iqLgV7fw@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Fix RCsc store->load ordering of release stores
+To: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, 
+ palmer@dabbelt.com, alistair.francis@wdc.com, liwei1518@gmail.com, 
+ daniel.barboza@oss.qualcomm.com, chao.liu@processmission.com, 
+ richard.henderson@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,44 +116,57 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thomas Huth <thuth@redhat.com> writes:
-
-> On 29/10/2026 14.12, Daniel P. Berrang=C3=A9 wrote:
->> Modern virtualized guests are expected to be deployed with the
->> XHCI controller which supports all of USB 1, 2 and 3. The UHCI
->> OCHI and ECHI hosts, however, have all been widely used in
->> virtualization scenarios historically, especially on x86. Indeed
->> the -usb flag will enable UCHI by default.
->> So while these are undesirable hosts in general, this marks them
->> as secure for virtualization use cases.
->> Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->> ---
->>   hw/usb/hcd-ehci-pci.c    | 1 +
->>   hw/usb/hcd-ehci-sysbus.c | 7 +++++++
->>   hw/usb/hcd-ohci-pci.c    | 1 +
->>   hw/usb/hcd-ohci-sysbus.c | 1 +
->>   hw/usb/hcd-uhci.c        | 1 +
->>   5 files changed, 11 insertions(+)
-> I'd also rather drop this patch until we've got a proper USB
-> maintainer again. Otherwise we promise that these devices are secure,
-> but nobody really takes care of security related issues in the end.
-> (It's already exhausting enough to get XHCI into a proper shape again)
+On Fri, 21 Aug 2026 at 07:40, LIU Zhiwei <zhiwei_liu@linux.alibaba.com> wrote:
 >
+> Several guest architectures give their store-release instructions RCsc
+> semantics, which requires the store to be ordered not only after the
+> memory operations that precede it, but also before any subsequent
+> load-acquire with RCsc semantics.  The TCG translators, however, only
+> emit the leading barrier before the store, so under MTTCG nothing
+> prevents the host CPU from executing the load-acquire that follows a
+> store-release before the store has left its store buffer.  On an x86
+> host (TSO), store-load is the only reordering the hardware may
+> perform, and it is exactly the ordering that is missing, so the
+> architecturally forbidden [0,0] outcome of the Store Buffering litmus
+> test is easy to observe:
+>
+>     CPU 0                      CPU 1
+>     store-release X = 1        store-release Y = 1
+>     load-acquire  r0 = Y       load-acquire  r1 = X
+>
+> The affected instructions are the RISC-V Zalasr store-release
+> instructions and the Arm STLR, STLPUR and A32/T32 STL store-release
+> instructions.  Neither architecture defines an RCpc store, so every
+> store-release is RCsc (RVWMO preserved program order Rule 7; Arm
+> Architecture Reference Manual DDI 0487, section B2.3.8 "Acquire and
+> release semantics").
+>
+> Patch 1 fixes the RISC-V side and patch 2 the Arm side by emitting a
+> full barrier after the store as well.  Patch 3 fixes an inverted
+> barrier polarity found in the A32 LDA load-acquire translator while
+> auditing the load-acquire side.
 
-+1 - it's not like users can't use USB but the warning from failing with
-secure will at least make them go in with eyes open/look for
-alternatives.
+> LIU Zhiwei (3):
+>   target/riscv: Fix RCsc ordering of Zalasr store-release
+>   target/arm: Fix RCsc ordering of store-release instructions
+>   target/arm: Fix barrier polarity of A32 LDA load-acquire
 
->  Thomas
+This series seems to have been accidentally missed, possibly
+because it included both arm and riscv patches in the same
+patchset. RTH tells me that the Arm patches are correct, and
+Daniel has reviewed the riscv one.
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+riscv maintainers: are you OK with me queuing the whole set
+including the riscv patch in target-arm.next, or would you
+prefer to take the riscv patch yourself through your queue?
+
+thanks
+-- PMM
 

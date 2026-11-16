@@ -1,159 +1,124 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD81C606A323
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Nov 2026 16:32:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4FB9606A88B
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Nov 2026 16:54:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=UNU0Zlal;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=hrjaEW8o
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Gxzhy1Xf
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xSzcV-0003Kt-8B; Mon, 16 Nov 2026 11:31:51 -0500
+	id 1xSzxx-0003ZF-3Y; Mon, 16 Nov 2026 11:54:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xSzcN-0003KM-Mj
- for qemu-arm@nongnu.org; Mon, 16 Nov 2026 11:31:45 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1xSzcL-0004N2-Tl
- for qemu-arm@nongnu.org; Mon, 16 Nov 2026 11:31:43 -0500
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AGGIbmk154582
- for <qemu-arm@nongnu.org>; Mon, 16 Nov 2026 16:31:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- lboPQskACxY4qLfqt7rvseev/MINSGdPQDJPOOrlG7c=; b=UNU0Zlal1OSsM5sq
- X7FHJCoi888s2LBz+7ieopuDLunkmivnX31+8Rvfvg0kCW+RNzJiqmwTnppZRDQT
- RlLo1/l+/Uuw0XnSU+dnr8QDbzikcEOvLXoUT+fx2UfvmqEyhHQXY/kFh6WVzOmP
- WYto9S+Y21/T2TgIlRlQUve+IfOZQeEbLf7q6rLPy7TOyeTKXDJIbfQfnbbfWyH0
- ZpAe81E2Z1emP2F1+HVk3I7gBbH+2RO/Evg1OpQYiEMx/MfWdvKFJQs/BKopYQ7N
- QAWrZ3rNtVh99rmdhp8X2FprGOG0Q01yfYtUqIvTnqc0IqfckhfNvXo0F1WLdEAD
- KY7tlA==
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hyy6ghkv4-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 16 Nov 2026 16:31:39 +0000 (GMT)
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-2ed02a00b24so32064575ad.2
- for <qemu-arm@nongnu.org>; Mon, 16 Nov 2026 08:31:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xSzxv-0003Vp-BB
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2026 11:53:59 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xSzxt-0007mO-Cd
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2026 11:53:58 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-c45551fa84eso707318866b.3
+ for <qemu-arm@nongnu.org>; Mon, 16 Nov 2026 08:53:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794848035; cv=none;
+ d=google.com; s=arc-20260327;
+ b=k1TQMiZ60Uwx8chTDqbalqshGG2WeMVKT6idhMJpRAQVPMR1xRXR5azz/2MROc075b
+ o7Cnxev4a5U3K5DhDD++9sUulMN3ZnYFsadPskfxxIuj2iF4JmfeVrXt1oASi13x4gcJ
+ Lqj9CwSy2p2/SdJFgfmwlbLOR4TjZncLv+zK65ZVpH15lNceFSYFMyilhGjpPBxDlOfq
+ sQuQubsuw9AXmzMRVGG0ZooAvv+rI670Ii66JO21nGGvX3Cu2baC15IHmrXbSUuj/Zy7
+ w4m+eQWT87OWyAeNy35G5e0ngSc6ILhfU/X4DpN1mWARMFrk/UCBXwN3y1YM/2hyGx/6
+ 6N/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=FT+E1Vp3Esd1Hzvo9Hu0R33v6gMoSATWy3aSdvgNj88=;
+ fh=DhaOpPa2FVpSiQAvEaKhwCD+1+q99IMA8hmmHVNAI8Y=;
+ b=n9tm3HHnCQRxSwgugm1K+vi7CsuT8bg/fel3VpIHp2SznhXr9DH/OWWWI1NmcuaB3T
+ aEY0HCnoZYwLX+u+9ko+zbKXrpe7ImMBCoq9vnHNduwAAz7qTcqtO9M68rjFgzsFQYue
+ ZW5exTYvoRKYz/kru7l911dGPFdR70CZgT/iiLjb1VHJ/W+WPejyjZ2XwXQQIcFRW6XB
+ NZGPtMKxgCJTlbBu/6MxyFpdDVskBkaZhC1kuPiPdqxFmDSTizjIPpIJmj344IaxYAnh
+ D1WN1HTjMYF1EpYygs3tiribcqhE2ByQBlblQX6s4/btpvsLbuimgOGIIL8JI0M1KkrQ
+ CrdA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1794846699; x=1795451499; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=lboPQskACxY4qLfqt7rvseev/MINSGdPQDJPOOrlG7c=;
- b=hrjaEW8okyPH5uSLIYQuKjTK+3o4RalTKFZSwyVKnc14pkjc6fWA9Htp+VPzZfK3z8
- 8TD3F1tMM95fdkaYDoikSozOUnLkPWxiUCurhcIEpBfOQARjl2B5ZJ++ldZVuR7OHbZ3
- JJpdfwr0k2pXN4DzdXvOnZvVv/kGmcDoOKoKSHfuOMJ1PK6iTFWfxySzqfNdWg6pVd0t
- 6IzyyEIidJET8zkEuL96hk9G3t/SeoPWszIJCWoUIbIzvoJMTNmA4V4sA16+8SYLkKOz
- Qx2qiMYB4ubseXfP1rVfybJr+CohUCYd6N14Uttv+LRFvSQAkNOnIuThpl7wsX9CYaeu
- faIQ==
+ d=linaro.org; s=google; t=1794848035; x=1795452835; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=FT+E1Vp3Esd1Hzvo9Hu0R33v6gMoSATWy3aSdvgNj88=;
+ b=Gxzhy1XfH3EScoqRfM+HMTI6Q4QyCi4uSrc4W5JbJEQCfE9uVy6tfkelrxhDaqmizi
+ g9sph7/Ud2n7Ukxba2jjkNb25Hy4tgvv607dIf6tCgTJScDOqj/1M5xpCCRoh76NHXVU
+ diVsNdgkyII+ErWJr3jF+7LTbAFDMRYgwMpEl+655Urv3+O/uj4gmTIoTT4ZUoiykKkk
+ s2wrQurgwB07ffiF9aBtDxty4ouVgbMFqYrEF7aAMhxYoAn2ISL4I3OB8wKs6Vk2HVvJ
+ bg+5LkLB800eZ9tNIdRaCcvhpRKziNA7RwcVWtsA4/FhxAVjImaFUdlk+cKwzAti2tQj
+ GKcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794846699; x=1795451499;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=lboPQskACxY4qLfqt7rvseev/MINSGdPQDJPOOrlG7c=;
- b=ufz4ZHHE5pM69FHnXyTyeVwLyUCNxGaxxo+eQohLn797tCII0JrfmKqGETVPMOArgW
- 82x1O5qJK+82FfsnKg9JoHzm0OBtqXvXW0FR62Y24bfO2QoOuNgPpBvwcVQJfQiw3TCk
- 81aFJmI6gSxuVx6yomQozTgNFpe5D8nNji2BNE1vRaXEH8SG49vcVmYwauwvECB6t3jJ
- CWEpl3PMtFZLdGEo2A3CDyg/g9W7jr8MLC+NIoNvtUkBQboB88V9TFgB4IvpZpUjCE5v
- xf8m+BavubIHWV42kPelaZ1EvusAYHGGu1UeiP3bVWLJLqZLq9llqWwuPBEJqiRhxBSv
- zAgw==
+ d=1e100.net; s=20260707; t=1794848035; x=1795452835;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=FT+E1Vp3Esd1Hzvo9Hu0R33v6gMoSATWy3aSdvgNj88=;
+ b=Tr/D4uvu9YAYBrihwyAUzdVzHDBaZy43f6+T3IPg5ht5mF4BXKAnEYgUNAHb25mMlk
+ 2M0RCKRlT+Dk3DzayPEYFmkmDDSPsGUb3VvTpjJx0L80FXCK69eb5+lpFHTtYmaPnoIM
+ foRnmQD4XtPDeXOphKmZeC2o6jLhxSPDXeEu+R+8EpxtzFcdXRmsoCuznxE5xm0AD9PZ
+ 8evQv9wuy4/pbhN9zMr3ADmAT9WtP6NCXkSv+IUAcx8KZYD4uXYqhO1WliDAOCT2qhtq
+ W/igCkcnDylDgPLXcwtyjKfJqdhzTX2rdhiWoI9as4XKU+r3IsZN6mjLezY9Jy05h8Ih
+ uQ4A==
 X-Forwarded-Encrypted: i=1;
- AL+hErEd2/tq+zDtQXhXew/V2IF/u3OQLLyAfof4BxUUbqcmakv8TzH7Ztt4A23B12yI8zu9zhORu19IXQ==@nongnu.org
-X-Gm-Message-State: APuU4Z+Fj4LUPLhn8Dl1fI+J9AAfUPBm2eqv5OacSECIIx7lkhpD2zQn
- tgIayu/iO/Tqo/ekHd02dk6gwguVtkBHyc67fAHgjVvMTlGd4MeAh2oHyG8AZ2Etb3OZ80/DVG2
- J/zS3YPTNcTEHGAnaYn9QJUltvmaJ87Hl4jMTzfWMIJJOJ2FboI7Uf3I=
-X-Gm-Gg: AZFdTZc8FPYx4bXuiRbsCvmsbZdxl9OuPzaAfQNi/+811lbSlyWBx3Q/N0O8n8KLQ2J
- IHiEySeS7aCnn1rqx/V0wIirZJvI4FjoIaaCdFGpmquefpXvLcNpZI53c5umrUhtETQVhIgKxMg
- pzHRTkps9sZaXHbpdQR8+VgeAdwqUhnmCGsohQETiUn5RY1c3o1KlhMvf6PbizCeTfYc1o6H5nl
- AcIvjyQRPVWi8sza4QkRRcmQxCzOHo/85AYU9Sq0gxcc2k75H8kJ+F9Wcj/7/9yWFoxkzkKNe8w
- uhUqYJsNBFBes23hlx6W0jJjRhQ4cM8rPGxhQBWUN82hRmpDNpmwl2WP2eTAa2+5hDSoUYgPd82
- cPUIJYoxUh6oDdA4PVmB4qAIUorWhLmNAzX0Ug2AxeKCIHNUly1w5y/15w9eBVh/sm6W1ni8MuY
- Ps03BAquTSzCBVlqi4nDz5QRD+ysNCxK7Cr3c5IouKrxk=
-X-Received: by 2002:a17:903:908:b0:2e9:970c:2c9 with SMTP id
- d9443c01a7336-2ee0dc341bamr115252575ad.42.1794846698600; 
- Mon, 16 Nov 2026 08:31:38 -0800 (PST)
-X-Received: by 2002:a17:903:908:b0:2e9:970c:2c9 with SMTP id
- d9443c01a7336-2ee0dc341bamr115252295ad.42.1794846698043; 
- Mon, 16 Nov 2026 08:31:38 -0800 (PST)
-Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
- [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2efd7a583b4sm1740275ad.44.2026.11.16.08.31.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Nov 2026 08:31:37 -0800 (PST)
-Message-ID: <558f35d3-5a10-4652-8af4-4a88f382ca3d@oss.qualcomm.com>
-Date: Mon, 16 Nov 2026 08:31:36 -0800
+ AL+hErEsu4rqjQZ5JpfVWg4pxwu8aoChA/cEvrYMVTh8yH6aXtYvTkRwsYuz3MyTouWZ1/oF1cLZ0cN5pQ==@nongnu.org
+X-Gm-Message-State: APuU4Z/1iZF1TxXba6DUPpC7CBo9DmqT3WHXvN7AwPGoVCXJo1sGzzy6
+ HsBrmSEnFxMOhOxFNNp1lkPm+zBoqbuu5UYfYu6JpNeTiCSKcvv/RCO2o4OP/L1wVmwNPcqgFWV
+ 4IB4sVGFAWaEd6UfNVCY1mcVwxsWv03K2UgEphaUqtw==
+X-Gm-Gg: AYBFou0/VGHjsV2iBVWYXCrKAoHXx5RmzTHC1ahrMXG/0yAEKE1IzgypsadvvG6mt8A
+ eF4UV01EKTuA/HvCxK0koa1CXfMUirn4qO0oHaNwyT4CohjdE9Q7PJSqkVLQRb385/rtbvVweXW
+ BbgMfmIW1jlXrFofomSTcTkrlwiedlo8Qaewlr+ckMfiyAB4aqzt0jRCKI1jI6140d/ovcWTtz1
+ Kk6EiH3D35Rk1qnwprLMzOxS4ZY2GRZy/EO25qx6Qr1t7+ZWlGnSUHTo2Vx1tvwqHHmctIY9sOq
+ J6NfMZBDrlymuvY1+kWSRJ2aHiTNQUyJXt+kp1oqTTm5Sfkm1ZUjgXer8HXITosh4z/SXk7sWRu
+ qz1IDs51qG/xhKkKgQw6MTw4xq8H56AZou2oNP+C1xpUA+IB3zaUxZ6qG+jRKQ2/BPGcMZvIm+d
+ msi9H2k/NvHCK1GnC5ue0J
+X-Received: by 2002:a17:907:3e11:b0:c2d:bf61:24d1 with SMTP id
+ a640c23a62f3a-c5096199b77mr1022110666b.1.1794848035161; Mon, 16 Nov 2026
+ 08:53:55 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-12.0 v2 00/12] linux-user/aarch64: Support both
- endianness at runtime
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- devel@lists.libvirt.org, Paolo Bonzini <pbonzini@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Anton Johansson <anjo@rev.ng>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org
 References: <20261112180859.85380-1-philmd@oss.qualcomm.com>
  <9b64d3d9-736d-4878-80d7-4caa75eee778@linaro.org>
  <CAFEAcA8La+8TqFY0yCxRsXY2Ad9MA5Uu-sVEbysExZPkUXVawg@mail.gmail.com>
  <ccfcea11-ada8-4753-a71f-f59ed1bcb067@oss.qualcomm.com>
  <CAFEAcA9FE_dTUo5s2g7DMw9-ZhbjBUOfF0RJxdT7gMwm-rYuGQ@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA9FE_dTUo5s2g7DMw9-ZhbjBUOfF0RJxdT7gMwm-rYuGQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE2MDA2NCBTYWx0ZWRfX7GoXgHKIu1/n
- shnPVGaqxAX6O1pG4t2iZd8KjMQCd2Z/ABLv9cftXZDoO19PWdyt/tcIzog1H75zbSDtrait+xO
- JVo3zoVkv4Bo7H0/XZzedscOrJ5WL2PSFlY1qKb9lMWFMfL3TCu1SL+mJWPW4Q8m25I0QgDFQ+j
- 4DJREbWysmv/ZI+q4CtheY0+/cGKfuYCixvkOnUKMVEaBXE4Zx0r8zNwQ/PEBRTfh6U3mcR79q4
- OuMpZLCy10hzAVZfkVUEALtWDjmL0cSehSOX2bY/gu6PhvnJRVtiZGrvcjiS53vCoBw1KFh24Q/
- p2PVrjR1LAIDah5lqLXRsGSYy9hMPKqg0POsGG5sFipY0+6j+yKgCjrLxAFxQO85e8AUUK71GNP
- eqTebrhtKOCRjiDRBfuHdVrjLvH96mTD2o/OD0JdOROvLdQ4NMDuqnuEYeEzDmFl9eDASjkuovT
- kHNwgAj6Y6QMsyxtTHw==
-X-Proofpoint-GUID: kF2Kg874XJs6LQT1PMcDg1AT84d9Ol2Q
-X-Proofpoint-ORIG-GUID: kF2Kg874XJs6LQT1PMcDg1AT84d9Ol2Q
-X-Authority-Analysis: v=2.4 cv=D/DSufRj c=1 sm=1 tr=0 ts=6afb2feb cx=c_pps
- a=MTSHoo12Qbhz2p7MsH1ifg==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=EUspDBNiAAAA:8 a=Hxx5zoP2HA8tHVih_BIA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=GvdueXVYPmCkWapjIL-Q:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE2MDA2NCBTYWx0ZWRfXzgbbVqkczW8P
- F7ilKUC5GoyyCFw3hE4dOS6+ffPlAn2rgBK+pFNV8Yfp7zs7zZic23oJqA4dGS/47Y6QGqrAV1B
- ie4P9bKp0cpn0k3vh+dHT4tifb6FdRY=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-16_05,2026-11-16_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 spamscore=0 priorityscore=1501 lowpriorityscore=0 phishscore=0
- clxscore=1015 adultscore=0 malwarescore=0 impostorscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611160064
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ <558f35d3-5a10-4652-8af4-4a88f382ca3d@oss.qualcomm.com>
+In-Reply-To: <558f35d3-5a10-4652-8af4-4a88f382ca3d@oss.qualcomm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Nov 2026 16:53:41 +0000
+X-Gm-Features: AclHuK9q24K3FKH_3KXHIk_yRqiPKQ5lWqYWByzl4UcmlwuWl7WvzEyDrzaqkK4
+Message-ID: <CAFEAcA_gBzv7URWJNjXwjUbKOJuRQ=bd1NS9enpU_AW_tCZzvg@mail.gmail.com>
+Subject: Re: [PATCH-for-12.0 v2 00/12] linux-user/aarch64: Support both
+ endianness at runtime
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ devel@lists.libvirt.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Anton Johansson <anjo@rev.ng>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,78 +130,75 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/16/2026 2:00 AM, Peter Maydell wrote:
-> On Mon, 16 Nov 2026 at 08:53, Philippe Mathieu-Daudé
-> <philmd@oss.qualcomm.com> wrote:
->>
->> On 13/11/26 19:55, Peter Maydell wrote:
->>> As a more general question, is this something we would want
->>> for architectures where both endiannesses are relevant (e.g.
->>> mips, ppc64)? At the moment we consistently for all targets
->>> handle big vs little endian as "it's a separate target with
->>> its own executable". That's convenient because you can at
->>> compile time hardwire in things like variations in struct
->>> layout between the two. We could switch to doing that kind
->>> of thing at runtime, but what is the benefit we're aiming
->>> for by doing that?
->>
->> I did the other conversions (Microblaze, Xtensa, PPC, MIPS, SH4)
->> and wanted to test the water first where this would get more attention,
->> with the series involving less changes.
->>
->> My motivation is MIPS where we currently have 6 binaries and I'd like
->> to add binaries to cover more ABIs without having a combinatory
->> explosion and have 18 linux-user MIPS binaries. With this approach I
->> reduced the current MIPS set to 3 binaries and add 2 more, ending with
->> 5 covering more ABIs instead of currently 6.
->>
->> In order to get there I need the few core changes introduced in this
->> series, which affect all user binaries. I have the idea ARM users are
->> the first ones interested by no performance change thus is where
->> I started the benchmark to prove this approach have no impact in emulation.
->>
->> The TargetInfo structure change (one initializer LTO-protected and
->> all accessors via read-only exposed structure) is also what Richard
->> was very keen to have (page size support planned) instead of the
->> current approach.
->>
->> I'm thus returning the question as: why would we not want to do this?
-> 
-> Mostly because what we have today works, and the idea of "the
-> target ABI is known at compile-time" is quite deeply embedded in the
-> way the linux-user code is written (both in terms of ifdefs and
-> also C types being defined appropriately for one specific ABI).
+On Mon, 16 Nov 2026 at 16:31, Pierrick Bouvier
+<pierrick.bouvier@oss.qualcomm.com> wrote:
 >
+> On 11/16/2026 2:00 AM, Peter Maydell wrote:
+> > On Mon, 16 Nov 2026 at 08:53, Philippe Mathieu-Daud=C3=A9
+> > <philmd@oss.qualcomm.com> wrote:
+> >>
+> >> On 13/11/26 19:55, Peter Maydell wrote:
+> >>> As a more general question, is this something we would want
+> >>> for architectures where both endiannesses are relevant (e.g.
+> >>> mips, ppc64)? At the moment we consistently for all targets
+> >>> handle big vs little endian as "it's a separate target with
+> >>> its own executable". That's convenient because you can at
+> >>> compile time hardwire in things like variations in struct
+> >>> layout between the two. We could switch to doing that kind
+> >>> of thing at runtime, but what is the benefit we're aiming
+> >>> for by doing that?
+> >>
+> >> I did the other conversions (Microblaze, Xtensa, PPC, MIPS, SH4)
+> >> and wanted to test the water first where this would get more attention=
+,
+> >> with the series involving less changes.
+> >>
+> >> My motivation is MIPS where we currently have 6 binaries and I'd like
+> >> to add binaries to cover more ABIs without having a combinatory
+> >> explosion and have 18 linux-user MIPS binaries. With this approach I
+> >> reduced the current MIPS set to 3 binaries and add 2 more, ending with
+> >> 5 covering more ABIs instead of currently 6.
+> >>
+> >> In order to get there I need the few core changes introduced in this
+> >> series, which affect all user binaries. I have the idea ARM users are
+> >> the first ones interested by no performance change thus is where
+> >> I started the benchmark to prove this approach have no impact in emula=
+tion.
+> >>
+> >> The TargetInfo structure change (one initializer LTO-protected and
+> >> all accessors via read-only exposed structure) is also what Richard
+> >> was very keen to have (page size support planned) instead of the
+> >> current approach.
+> >>
+> >> I'm thus returning the question as: why would we not want to do this?
+> >
+> > Mostly because what we have today works, and the idea of "the
+> > target ABI is known at compile-time" is quite deeply embedded in the
+> > way the linux-user code is written (both in terms of ifdefs and
+> > also C types being defined appropriately for one specific ABI).
+> >
+>
+> The last part is what we had for system mode, and precisely what we have
+> been able to eliminate while working on the single-binary.
 
-The last part is what we had for system mode, and precisely what we have
-been able to eliminate while working on the single-binary.
-We could keep minimal wrappers to previous binaries in case we want to
-wait a few releases to completely remove them.
+Yes, but it's taken a lot of work to get to that point. For
+system mode we had some clear reasons why that work was
+necessary and worthwhile. For user-mode it's less clear to me.
+Keeping the zoo of MIPS ABIs under control seems the most
+promising reason.
 
-In this case, the benefit is that the same existing binary (without
-endianness variant) will be able to run "more things".
-Since we talk about user-mode, it's strictly dependent on the program
-passed in parameter, and we don't need to manually specify endianness
-anywhere.
+For aarch64 in particular I would prefer to deprecate-and-drop
+big-endian support (probably starting with the deprecation for
+12.0, rather than pushing it into 11.2), since the kernel just
+did that in 7.4.
 
-For the "how to make sure it works like before?", as usual, testing, and
-a small leap of faith are required.
-
-Overall, I think it would be a nice move for user-mode.
-
-> The idea of not having to have 18 different MIPS linux-user binaries
-> is pretty tempting, though.
-> 
-> thanks
-> -- PMM
-
-Regards,
-Pierrick
+thanks
+-- PMM
 

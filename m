@@ -1,91 +1,100 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C364606A884
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Nov 2026 19:32:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4CF0D606A31C
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Nov 2026 21:19:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Ca2PjarP
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=mYI3wWFX
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xTOus-0007Tf-Jh; Tue, 17 Nov 2026 14:32:30 -0500
+	id 1xTQa8-0007BU-Ci; Tue, 17 Nov 2026 16:19:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agarwaljayesh03@gmail.com>)
- id 1xTOuq-0007T3-TZ
- for qemu-arm@nongnu.org; Tue, 17 Nov 2026 14:32:28 -0500
-Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xTQZx-0007Ax-BC
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2026 16:19:01 -0500
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <agarwaljayesh03@gmail.com>)
- id 1xTOun-0002QO-Sj
- for qemu-arm@nongnu.org; Tue, 17 Nov 2026 14:32:27 -0500
-Received: by mail-dy1-x132e.google.com with SMTP id
- 5a478bee46e88-380c28f9e35so1466175eec.1
- for <qemu-arm@nongnu.org>; Tue, 17 Nov 2026 11:32:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1xTQZu-0001L5-L0
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2026 16:19:01 -0500
+Received: by mail-pg1-x535.google.com with SMTP id
+ 41be03b00d2f7-cd6028ff33fso208106a12.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Nov 2026 13:18:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1794943944; x=1795548744; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=HmYnR1KqHS4CMsKPXreIVS5wq+3xL0tziKeOsDFzLQs=;
- b=Ca2PjarPTddhWO8yec2GoDIUl3jmKEKE1RdNz9s/DEBKxkBBqAYUrFQHRbyp5RmNzo
- Sxkg9ICI3yBogQv06mVOq3hJvtAwxMF4eMbJz4UNAG+0IAAaIVUURL+uKIFxWJct1sYx
- ZVmJcs9kM5SgLfMVewfaGpiPaH+v2X9a0wRjyjVSfFQMR8xY2XN2gy0Q+PKI+hS0lUkP
- Owdo/uTBMCw6tS0ZgJ18w8fI7AH8mp5xv3/GBS7feuYh4gq6+uZWU30D7K4fbFghSk7I
- GiSpwKIR/hsnv0kX8fqgXe4YBzM0GFsQMUCr7dfqcRuKYUzhEHhGX6cY/f8CCoEkAOFP
- EYTA==
+ d=linaro.org; s=google; t=1794950336; x=1795555136; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=kRWQgkmxEPEAeCa1/fwqnfDxnDBHEGGQsHASXmQpjGM=;
+ b=mYI3wWFXbN5JhD7fc29SR0RJWhe5q1KptYTjuqIdv16np7wk5/wOBcmjkiYVamZw0k
+ v80Uza92tU7Peg0N8nc7DMlMfcFKKBVjuDcyv/P9lcnzpMAVy3OSqe/Ut2pyZtv6KSQ9
+ mC01ImEXunONWMIfPmJVAOBxxSlaFnl7r+u8nVGgkY1nIgHCuVQNNbK9Oqfqws9lmsv7
+ MvJC5I3rUw5Ijcy/yAqikjvGivd4fcy/GMgOeRkvrgYA645CQSOy2wy7w0Rd0MNCwZTz
+ U/1Yyo5pJoti17D5LIru44MM0Y9lK83mcYRh4yXQoHMP8yRTvbEOwd/OqEzD94+t0LqV
+ 36cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794943944; x=1795548744;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=HmYnR1KqHS4CMsKPXreIVS5wq+3xL0tziKeOsDFzLQs=;
- b=Cn6gjEtqvHOA35xIQNDj30vKdPwmLzormowtx734X3a9gZjMS2OpchCkVPTf5P9LxI
- xwlR2yE85q6ELlCKKfiHBiY8vRsKfqfcqjjMCQprF7rddHGFKeKukalOQT018KVIREXV
- HNaI7ljHEyvVeUrRpNEtKWumKtgKCuDFOo95VUO8Mn+6IGJA9Jmne65JClBBU9dsh/Z0
- ry3lZ+EHWva0SHs0/sH5oU4DqfVlbsRsOrsQsY1ZkNStE3Qzyr/FJmb0m7CWcQXKhi3g
- AGC8YRDex0DIejsOJOiTFxpVYYjlWrog2Lgx8ynIUNk+AoA5CjoF/mVzALmexlxYWLdm
- lXhw==
+ d=1e100.net; s=20260707; t=1794950336; x=1795555136;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=kRWQgkmxEPEAeCa1/fwqnfDxnDBHEGGQsHASXmQpjGM=;
+ b=e5KfIYAoUocE6lwCzBjoNQyvqPM2s6AfCtDkjSn0VilkHo/hUqjaFLkqdJiP27vk9l
+ /ui5lUNY5MX2u/k0u6TKtJ7sATSu1NavFw9B//fMdA3jVFR4wqo81nRE9cyBCQatA67a
+ Q53z153H13nDmVsR8g0WJNDXL0pVJgZuPA7OKz95mF8imyzNymiRQ+gzkbvYDR3EmaNL
+ Ot7AnviaeOBbWmitgAoKsVfl1Aqmdad3VGu8QdaS9eU8egtbYt1hfRn/PE4LrX8bCQOb
+ unHaMwhzDfVVzD0Hj8mCETgvBFjEo/vpCMhwozjSZk5/NUocc6GMJu8DKXvT0fjQMKZx
+ repA==
 X-Forwarded-Encrypted: i=1;
- AL+hErHxXoLzOz6fDfPTEToHkqC77Cu4DiAM82gp55gIsyTocfSXpsRUjh2FM54NeyH9ZzaO4crQyo/xHw==@nongnu.org
-X-Gm-Message-State: APuU4Z/EsgCVDLqKs7LjmlUs6XKukfE/9jirBh/BIbRlHqHKRAeCQIcQ
- eSBdA2DAHaZ571WNkCM4tFihjc1L5hJlfN1dpLePgMUjK+d8d/RSbuqg
-X-Gm-Gg: AYBFou0gFtvLhh81JsFQ4HQWQ3B6+dH6etB4pRGcD94ljXWUWNM+bAr88ei8Wx0GpFJ
- iLL1Dz6YIaPtibXQS1gEvOLclAgiiaMMgArVMBV56Y/9tVjSb5vDCSEBFM4mmBPNPAkOfw0A+/C
- IWGxZ2zXprdsfVirXU/S1qHKwei99gAYeaM0IXp000W4N89XGyyqe6TgsJzg4XT6U1NpEUPpRqh
- bb7l7ppzHp6A/Rhfm5RzIiQOggWrUmqi4AOGiUxQ4tjZtov9Sn5+RwoaEgiuU48wbfPEgngP84m
- 2pNqFp4uflOlvN6gJOAs/viEkdlQ1wUqVUytEimHWXu7HeaxHwiYvdVxIEMWzB1bSUKkR8iHXG8
- 1F2W8CLc3jxC1B5wZejoPX9Qut1W2mTQBSfnM/G/VkUUvojuNdYlnqZyMPmy/kNMOM9FZd6fuyq
- cv23F5AYIE3k7PWj74C2McSNfjdKFtAw5N+0XUdkkX7XFtmUIXorh+5/7Wfc7OsDcAKAVf89lQS
- PJ5wNXH/mYw/GEGL71+o/pLkhfNV3vl00XE1XJHBHcymAnlFpDv17XiRg+xlFcOh2R6K1MvZ1Ge
- v0LSvuNaj+TsFwmiVTh2Cgl3RGr0uQ/8lmRWRoR2TvQCBdCWg24h3vD8twREAEyu5efTyCKm4jo
- sCz1+niTrbw==
-X-Received: by 2002:a05:701b:4586:20b0:1ab:cbd0:1c96 with SMTP id
- a92af1059eb24-1b53a429876mr2719513c88.4.1794943943468; 
- Tue, 17 Nov 2026 11:32:23 -0800 (PST)
-Received: from LinuxMachine.bits-hyderabad.ac.in ([14.98.244.195])
+ AL+hErFi83/vJlyA/sZW6yDgzmnSg8as+8qMS2zodl0xaTmC+HwXWlHNcbWCffyIeVRLI5TldBAyUfhOfQ==@nongnu.org
+X-Gm-Message-State: APuU4Z/9J+xtDId1tZSUKisKT67d0Mcvz9TwvZ67hpsf6QJtvswTJAPJ
+ OIWjRy3QZO4J7Hgvzfxg7ZCq535mObsfeMSKmBXgHIdM/IV5arDHZPdqv4IXtRVpvTs=
+X-Gm-Gg: AZFdTZfD+/M5whLVUpNgIKD0KA/Ur1J78K7NFNCs/6vyCnXhUJGEQTVOjhrM1d4J850
+ iF9tuMJ/TAj6Kipii+px0YfoiC3vPscQsgsxQZWMILDlF/bhl4NY8GPGHf/574TCe8/q1Hc/mr7
+ xSH6asTKgdlHAbRhUJCQj7aPtuIa8Vb450/Pm8sr7stBoZBylWuV7TXImZX3xHpcJUnKWIx5TVL
+ 46imruwBAi2xG0rl44kNDkxdIVNVUtwNH+STjKvwpcDAVURccgpp6AFEvOSHy6vfaHnNBEzsBbc
+ FN6N/6qNCT3aOy5hDFI2N1ejQOp/s6sDoPZN2KrQ2vg1YG9sYs+8NN+/pvo4w4bd8DLSUUTsX6c
+ n7QgG7JUZtAUBJBsesfkMYfsgx7onEptYCzJV6aFDwsSC+RidAHFZOc5/4EVj6Ha8ZG8u0Q9IXP
+ 5NrRWruxIeFqHLQYYZ2P1pm3SQkT0XSC6WhOKE+J8iSehF0o8TaCPJW4CnQ48RGEKkiae2ogFXb
+ eqVzNweVBc58xmefI/wbn/Yg75RNmszMzAWt6Uc6amnadNIxjY2wdbWsO/6H9cO9ypLPRuPYFos
+ pO0D9shHefzT3/rryfZrk0Wt/ITwSXNvjg==
+X-Received: by 2002:a17:90b:3c81:b0:3ab:36c4:b4ff with SMTP id
+ 98e67ed59e1d1-3b3d07b80c7mr653282a91.24.1794950335671; 
+ Tue, 17 Nov 2026 13:18:55 -0800 (PST)
+Received: from p14s ([2604:3d09:148c:c800:61f7:13ac:b599:b52c])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-382a45274aesm159132eec.2.2026.11.17.11.32.20
+ 98e67ed59e1d1-3b3ac2b5ec6sm5783646a91.10.2026.11.17.13.18.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Nov 2026 11:32:22 -0800 (PST)
-From: Jayesh Agarwal <agarwaljayesh03@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, philmd@oss.qualcomm.com, qemu-arm@nongnu.org,
- s23adhik@csclub.uwaterloo.ca, Jayesh Agarwal <agarwaljayesh03@gmail.com>
-Subject: [PATCH] hw/arm/bcm2838: Route system timer interrupts to GIC
-Date: Wed, 18 Nov 2026 01:02:05 +0530
-Message-ID: <20261117193205.8236-1-agarwaljayesh03@gmail.com>
-X-Mailer: git-send-email 2.43.0
+ Tue, 17 Nov 2026 13:18:55 -0800 (PST)
+Date: Tue, 17 Nov 2026 15:18:52 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Kohei Enju <enju.kohei@fujitsu.com>
+Cc: Gavin Shan <gshan@redhat.com>, berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [RFC v4 00/24] Add Realm support to QEMU-VMM
+Message-ID: <avzEvGXSEcgVdytB@p14s>
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <7dea93a6-b119-4882-9c56-557a372b646a@redhat.com>
+ <atkokvqTHygpI8dt@p14s>
+ <5dba456f-26b4-4f05-9271-fb784736d581@redhat.com>
+ <atvCNKxpCRRSFL58@p14s> <avLM3UdwUcgUHLgP@FCCLS0092175.localdomain>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132e;
- envelope-from=agarwaljayesh03@gmail.com; helo=mail-dy1-x132e.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <avLM3UdwUcgUHLgP@FCCLS0092175.localdomain>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pg1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -99,170 +108,275 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The system timer interrupts are only routed to the legacy interrupt
-controller and not to the GIC, so a guest using the GIC (software that
-relies on the system timer interrupts through the GIC, such as bare
-metal programs or hobby kernels) never receives them.
+On Tue, Nov 10, 2026 at 05:01:14PM +0900, Kohei Enju wrote:
+> On 10/23 14:23, Mathieu Poirier wrote:
+> > On Fri, Oct 23, 2026 at 09:00:12PM +1000, Gavin Shan wrote:
+> > > Hi Mathieu,
+> > > 
+> > > On 10/22/26 7:03 AM, Mathieu Poirier wrote:
+> > > > Hi Gavin,
+> > > > 
+> > > > On Mon, Sep 21, 2026 at 02:05:19PM +1000, Gavin Shan wrote:
+> > > > > Hi Mathieu,
+> > > > > 
+> > > > > On 9/4/26 5:35 AM, Mathieu Poirier wrote:
+> > > > > > This patchset provides minimal functionality to start a Realm VM
+> > > > > > from an Arm RME capable host using the following command line:
+> > > > > > 
+> > > > > > qemu-system-aarch64 \
+> > > > > >    -M confidential-guest-support=rme0,memory-backend=ram0 \
+> > > > > >    -object rme-guest,id=rme0,convert-in-place=on \
+> > > > > >    -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
+> > > > > >    -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
+> > > > > > 
+> > > > > > It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
+> > > > > > back.  It is compatible with Steven Price's v16 revision [1] of his work adding
+> > > > > > CCA support to KVM.
+> > > > > > 
+> > > > > > This revision is based on Michael Roth's work on guest memfd in-place memory
+> > > > > > conversion [2], rebased to QEMU master.  I left out the AMD specific changes
+> > > > > > from Michael's work because I can't test the result.  Other than the
+> > > > > > modications to the linux headers, this series is identical to V3.
+> > > > > > 
+> > > > > > It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
+> > > > > > here [3], along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
+> > > > > > with Steven's v16 patchset).  The Repository for the kernel [6] is also
+> > > > > > available.  Note that for the latter, defines for
+> > > > > > KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES and KVM_CAP_ARM_RMI have been modified to
+> > > > > > follow QEMU master.
+> > > > > > 
+> > > > > > Instructions to compile and run the entire stack can be found here [7].
+> > > > > > 
+> > > > > > Device Assignment is not included.
+> > > > > > 
+> > > > > > Thanks,
+> > > > > > Mathieu
+> > > > > > 
+> > > > > > [1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
+> > > > > > [2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
+> > > > > > [3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v4?ref_type=heads
+> > > > > > [4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
+> > > > > > [5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
+> > > > > > [6]. https://gitlab.com/Linaro/cca-public/linux/-/tree/upstream-v4?ref_type=heads
+> > > > > > [7]. https://gitlab.com/Linaro/cca-public/build-instructions
+> > > > > > 
+> > > > > 
+> > > > > Give this series and (v19) arm/cca host series [1] a try, and found the following
+> > > > > issues. I'm sharing the found issues that I need take chance to look at them
+> > > > > closely in future.
+> > > > > 
+> > > > > [1] https://git.gitlab.arm.com/linux-arm/linux-cca.git  (branch: cca/cca-host/kvm-v19/integration)
+> > > > > 
+> > > > > Note that the host is emulated using qemu (TCG mode) via 'virt' platform, using
+> > > > > the following command lines
+> > > > > 
+> > > > > laptop$ /home/gshan/sandbox/cca/host/qemu/build/qemu-system-aarch64                 \
+> > > > >          -M virt,virtualization=on,secure=on,gic-version=3,acpi=off                  \
+> > > > >          -cpu max,x-rme=on -m 4G -smp 8                                              \
+> > > > >          -serial mon:stdio -monitor none -nographic -nodefaults                      \
+> > > > >          -bios /home/gshan/sandbox/cca/host/tf-a/flash.bin                           \
+> > > > >          -kernel /home/gshan/sandbox/cca/host/linux/arch/arm64/boot/Image            \
+> > > > >          -initrd /home/gshan/sandbox/cca/host/buildroot/output/images/rootfs.cpio.xz \
+> > > > >          -append kvm-arm.mode=rmm                                                    \
+> > > > >          -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                       \
+> > > > >          -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                       \
+> > > > >          -device pcie-root-port,bus=pcie.0,chassis=3,id=pcie.3                       \
+> > > > >          -device pcie-root-port,bus=pcie.0,chassis=4,id=pcie.4                       \
+> > > > >          -device virtio-9p-device,fsdev=shr0,mount_tag=shr0                          \
+> > > > >          -fsdev local,security_model=none,path=/home/gshan/sandbox/cca/guest,id=shr0 \
+> > > > >          -netdev tap,id=tap1,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown       \
+> > > > >          -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:80
+> > > > > 
+> > > > > The realm VM is started using the following command lines.
+> > > > > 
+> > > > > host$ qemu-system-aarch64 -enable-kvm -object rme-guest,id=rme0,convert-in-place=on \
+> > > > >        -machine virt,gic-version=3,confidential-guest-support=rme0 -m 2G -cpu host   \
+> > > > >        -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2                  \
+> > > > >        -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                   \
+> > > > >        -numa node,nodeid=0,cpus=0-3,memdev=mem0                                      \
+> > > > >        -serial mon:stdio -monitor none -nographic -nodefaults                        \
+> > > > >        -kernel /mnt/linux/arch/arm64/boot/Image                                      \
+> > > > >        -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                           \
+> > > > >        -append earlycon=pl011,mmio,0x10009000000
+> > > > > 
+> > > > > Found issues
+> > > > > ============
+> > > > 
+> > > > I was able to do the same manipulations on my side, but using the SBSA machine
+> > > > for system emulation, with results as described below:
+> > > > 
+> > > 
+> > > Thanks for double check on your side. Just a head up: I will re-run the broken test
+> > > cases with (RFCv5) qemu series and share the result. I expect we will have more
+> > > discussions on those broken test cases under RFCv5 series if you agree. I don't
+> > > know when I get a chance to try RFCv5 series, but hopefully next week or early
+> > > of the week after that.
+> > >
+> > 
+> > I omitted to mention that I used RFCv5 for my manipulations on SBSA, so I expect
+> > you'll find the same problems as with RFCv4.  No need to rush to do the test
+> > since my next revision will _not_ address any of those issues.  For RFCv6 I want
+> > to concentrate on the other comments you and Kohei made and keep the bigger
+> > issues (the ones you raised here) for future revision.  That way we make progess
+> > on this patchset and keep synchronized with the KVM patches Suzuki and Steven
+> > release.
+> > 
+> > We can discuss further at the KVM forum if you are there.
+> > 
+> > > Cheers,
+> > > Gavin
+> > > 
+> > > > > 
+> > > > > (1) qemu is terminiated on qmp command 'dump-guest-memory'
+> > > > > 
+> > > > > (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
+> > > > > **
+> > > > > ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
+> > > > > Bail out! ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
+> > > > > 
+> > > > 
+> > > > On my side this command causes the Realm to abort, as I expected it to be.
+> 
+> Hi Mathieu, Gavin.
+> 
+> I've tested RFC v5, and I reproduced issue (1) on my side as well:
+> 
+>     (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
+>     Failed to set KVM_REG_ARM_TIMER_CNT
+>     ./qemu-ram-realm.sh: line 21: 77580 Aborted                 (core dumped) $QEMU -no-reboot -M confidential-guest-support=rme0,memory-backend=ram0 ...
+> 
+> This was resolved by adding kvm-no-adjvtime=on.
+> 
+> > > > Realm memory should not be observable from the host.  There may be a debug mode
+> > > > to enable this kind of operation but I will have to look at the documentation
+> > > > for details.
+> > > > > (2) qemu emulation can't be stopped and resumed
+> > > > > 
+> > > > > (qemu) stop
+> > > > > (qemu) cont
+> > > > > Failed to set KVM_REG_ARM_TIMER_CNT
+> > > > > 
+> > > > 
+> > > > That too I was expecting.  Anything that can comprimise a Realm will cause the
+> > > > HW to abort.  I'll investigate the "Failed to set KVM_REG_ARM_TIMER_CNT" error
+> > > > message though.
+> 
+> kvm-no-adjvtime=on also resolved issue (2) above.
+> 
+> Setting KVM_REG_ARM_TIMER_CNT for Realm VMs is not allowed, so we should
+> either add this option or consider making it the default for Realm VMs
+> in the future. What do you think?
 
-A qemu_irq connection follows one output, one input. So also wiring the
-timer to the GIC would replace its connection to the legacy controller.
+Apologies for the late reply, I was away.  I'll look into the
+'kvm-no-adjvtime=on' tomorrow and will get back to you.
 
-Add a splitter per system-timer interrupt line so that each interrupt
-reaches both the legacy controller (output 0 of the splitters) and the
-GIC (output 1 of the splitters). The timer channel n goes to GIC SPI
-64+n, so channels 0-3 go to SPIs 64-67.
+Many thanks for the input,
+Mathieu
 
-Testing:
-The raspi4b machine started in the qtest mode:
-	qemu-system-aarch64 -M raspi4b -display none -accel qtest -qtest stdio
-
-Ran following commands:
-	irq_intercept_in /machine/soc/peripherals
-	readl 0xfe003004
-	writel 0xfe00300c 1000
-	writel 0xfe003010 2000
-	writel 0xfe003014 3000
-	writel 0xfe003018 4000
-	clock_step 5000000
-	readl 0xfe003000
-
-Before the fix:
-    clock_step 5000000
-    OK 5000000
-    readl 0xfe003000
-    OK 0x000000000000000f
-The alarm fires correctly (status flag outputs 0xf), but no IRQ raise
-64-67 reaches the GIC.
-
-After the fix:
-    clock_step 5000000
-    IRQ raise 64
-    IRQ raise 65
-    IRQ raise 66
-    IRQ raise 67
-    OK 5000000
-    readl 0xfe003000
-    OK 0x000000000000000f
-The alarm fires, and all the four channels reached GIC lines 64-67.
-
-Reported-by: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Jayesh Agarwal <agarwaljayesh03@gmail.com>
----
-This was picked up from Sourojeet's earlier patch, here is the link:
-https://lore.kernel.org/qemu-devel/3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca/
-
- hw/arm/bcm2835_peripherals.c         | 33 ++++++++++++++++++----------
- hw/arm/bcm2838.c                     |  7 ++++++
- include/hw/arm/bcm2835_peripherals.h |  1 +
- include/hw/arm/bcm2838_peripherals.h |  4 ++++
- 4 files changed, 33 insertions(+), 12 deletions(-)
-
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 558c180df9..f619beba33 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -95,6 +95,14 @@ static void raspi_peripherals_base_init(Object *obj)
-     /* SYS Timer */
-     object_initialize_child(obj, "systimer", &s->systmr,
-                             TYPE_BCM2835_SYSTIMER);
-+    /*
-+     * One splitter per system-timer interrupt line so that each interrupt
-+     * reaches both the legacy controller and the GIC.
-+     */
-+    for (int n = 0; n < BCM2835_SYSTIMER_COUNT; n++) {
-+        object_initialize_child(obj, "systmr-irq-splitter[*]",
-+                                &s->systmr_irq_splitter[n], TYPE_SPLIT_IRQ);
-+    }
- 
-     /* UART0 */
-     object_initialize_child(obj, "uart0", &s->uart0, TYPE_PL011);
-@@ -302,18 +310,19 @@ void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
-     }
-     memory_region_add_subregion(&s->peri_mr, ST_OFFSET,
-                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systmr), 0));
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 0,
--        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
--                               INTERRUPT_TIMER0));
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 1,
--        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
--                               INTERRUPT_TIMER1));
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 2,
--        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
--                               INTERRUPT_TIMER2));
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 3,
--        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
--                               INTERRUPT_TIMER3));
-+    for (n = 0; n < BCM2835_SYSTIMER_COUNT; n++) {
-+        qdev_prop_set_uint32(DEVICE(&s->systmr_irq_splitter[n]),
-+                "num-lines", 2);
-+        if (!qdev_realize(DEVICE(&s->systmr_irq_splitter[n]), NULL, errp)) {
-+            return;
-+        }
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), n,
-+                qdev_get_gpio_in(DEVICE(&s->systmr_irq_splitter[n]), 0));
-+        qdev_connect_gpio_out(DEVICE(&s->systmr_irq_splitter[n]), 0,
-+                qdev_get_gpio_in_named(DEVICE(&s->ic),
-+                    BCM2835_IC_GPU_IRQ,
-+                    INTERRUPT_TIMER0 + n));
-+    }
- 
-     /* UART0 */
-     qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hd(0));
-diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
-index 650b1fe8f4..d151c50f1e 100644
---- a/hw/arm/bcm2838.c
-+++ b/hw/arm/bcm2838.c
-@@ -188,6 +188,13 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
-     qdev_connect_gpio_out(DEVICE(&ps_base->orgated_i2c_irq_splitter), 1,
-                           qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_I2C));
- 
-+    /* Connect the system timer interrupts to the interrupt controller */
-+    for (int n = 0; n < BCM2835_SYSTIMER_COUNT; n++) {
-+        int int_n = GIC_SPI_INTERRUPT_SYS_TIMER0 + n;
-+        qdev_connect_gpio_out(DEVICE(&ps_base->systmr_irq_splitter[n]), 1,
-+                              qdev_get_gpio_in(gicdev, int_n));
-+    }
-+
-     /* Connect VC mailbox to the interrupt controller */
-     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->mboxes), 0,
-                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_MBOX));
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index 4f356f4643..bd41e0de92 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -54,6 +54,7 @@ struct BCMSocPeripheralBaseState {
-     qemu_irq irq, fiq;
- 
-     BCM2835SystemTimerState systmr;
-+    SplitIRQ systmr_irq_splitter[BCM2835_SYSTIMER_COUNT];
-     BCM2835MphiState mphi;
-     UnimplementedDeviceState txp;
-     UnimplementedDeviceState armtmr;
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 60bfacdce4..af2d3b2030 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -20,6 +20,10 @@
- /* SPI */
- #define GIC_SPI_INTERRUPT_MBOX         33
- #define GIC_SPI_INTERRUPT_MPHI         40
-+#define GIC_SPI_INTERRUPT_SYS_TIMER0   64
-+#define GIC_SPI_INTERRUPT_SYS_TIMER1   65
-+#define GIC_SPI_INTERRUPT_SYS_TIMER2   66
-+#define GIC_SPI_INTERRUPT_SYS_TIMER3   67
- #define GIC_SPI_INTERRUPT_DWC2         73
- #define GIC_SPI_INTERRUPT_DMA_0        80
- #define GIC_SPI_INTERRUPT_DMA_6        86
--- 
-2.43.0
-
+> 
+> Thanks,
+> Kohei
+> 
+> > > > 
+> > > > > (3) qemu is terminiated on qmp command 'system_reset'
+> > > > > 
+> > > > > (qemu) system_reset
+> > > > > cpus are not resettable, terminating
+> > > > > 
+> > > > > (4) 'reboot' from the guest doesn't work
+> > > > > 
+> > > > > root@guest:~# reboot
+> > > > >     :
+> > > > > Requesting system reboot
+> > > > > [  123.264893] reboot: Restarting system
+> > > > > qemu-system-aarch64: cpus are not resettable, terminating
+> > > > > 
+> > > > 
+> > > > I suspect 'system_reset' from the monitor and a 'reboot' from the command line
+> > > > will, at some point, end up following the same sequence.  I need to think about
+> > > > the 'reboot' use case further.
+> > > > 
+> > > > 
+> > > > > (5) Incompatible to virtio-iommu-pci. The realm guest doesn't boot up if a virtio-iommu-pci
+> > > > >      device is specified in the command lines
+> > > > > 
+> > > > > host$ qemu-system-aarch64 -enable-kvm                                          \
+> > > > > -object rme-guest,id=rme0,convert-in-place=on                                  \
+> > > > > -machine virt,gic-version=3,confidential-guest-support=rme0                    \
+> > > > > -m 2G -cpu host -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2   \
+> > > > > -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                    \
+> > > > > -numa node,nodeid=0,cpus=0-3,memdev=mem0                                       \
+> > > > > -serial mon:stdio -monitor none -nographic -nodefaults                         \
+> > > > > -kernel /mnt/linux/arch/arm64/boot/Image                                       \
+> > > > > -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                            \
+> > > > > -append earlycon=pl011,mmio,0x10009000000                                      \
+> > > > > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                          \
+> > > > > -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                          \
+> > > > > -device virtio-iommu-pci,bus=pcie.0                                            \
+> > > > > -drive file=/mnt/disk.qcow2,if=none,id=drive0                                  \
+> > > > > -device virtio-blk-pci,id=virtblk0,bus=pcie.1,drive=drive0,num-queues=4        \
+> > > > > -netdev tap,id=tap1,vhost=on,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
+> > > > > -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:c0
+> > > > 
+> > > > 
+> > > > I added the following to my Realm's boot command parameters:
+> > > > 
+> > > > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1 \
+> > > > -device virtio-iommu-pci,bus=pcie.0 \
+> > > > 
+> > > > 
+> > > > >       :
+> > > > > [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x000f0510]
+> > > > > [    0.000000] Linux version 7.2.0-rc5-gavin-gf5098b6bae76 (gshan@nvidia-grace-hopper-01.khw.eng.bos2.dc.redhat.com) (gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4), GNU ld version 2.41-65.el10) #47 SMP PREEMPT Mon Jul 27 02:29:03 EDT 2026
+> > > > > [    0.000000] KASLR enabled
+> > > > > [    0.000000] Machine model: linux,dummy-virt
+> > > > > [    0.000000] earlycon: pl11 at MMIO 0x0000010009000000 (options '')
+> > > > > [    0.000000] printk: legacy bootconsole [pl11] enabled
+> > > > > [    0.000000] efi: UEFI not found.
+> > > > > [    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+> > > > > [    0.000000] NODE_DATA(0) allocated [mem 0xbfbecb00-0xbfbf09bf]
+> > > > > [    0.000000] psci: probing for conduit method from DT.
+> > > > > [    0.000000] psci: PSCIv1.1 detected in firmware.
+> > > > > [    0.000000] psci: Using standard PSCI v0.2 function IDs
+> > > > > [    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+> > > > > [    0.000000] psci: SMC Calling Convention v1.2
+> > > > > [    0.000000] RME: Using RSI version 1.0
+> > > > > [    0.000000] Zone ranges:
+> > > > > [    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+> > > > > [    0.000000]   DMA32    empty
+> > > > > [    0.000000]   Normal   empty
+> > > > > [    0.000000] Movable zone start for each node
+> > > > >       :
+> > > > > [    6.664423] Serial: AMBA PL011 UART driver
+> > > > > [    7.151312] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
+> > > > > [    7.213181] printk: console [ttyAMA0] enabled
+> > > > > [    8.536454] HugeTLB: registered 1.00 Gi
+> > > > > <...The realm guest stops here, no output since then...>
+> > > > > 
+> > > > 
+> > > > On my side I get to user space but virtio-serial and virtio-net don't work.  I'm
+> > > > guessing virtio-iommu-pci does the same thing as this patch [1], but virtio
+> > > > devices are disrupted because it is not configured properly.  I need to
+> > > > investigate to find the best approach to follow, i.e implicitly use (and
+> > > > configure) a virtio-iommu-pci or make sure that [1] and a virtio-iommu-pci
+> > > > device can play nice together.
+> > > > 
+> > > > Thanks,
+> > > > Mathieu
+> > > > 
+> > > > [1]. [RFC v4 21/24] target/arm/kvm-rme: Add DMA remapping for the shared memory region
+> > > > 
+> > > > 
+> > > > > Thanks,
+> > > > > Gavin
+> > > > > 
+> > > > 
+> > > 
 

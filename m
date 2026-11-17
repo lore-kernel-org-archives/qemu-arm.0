@@ -1,118 +1,103 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB85C60A6F71
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Nov 2026 10:34:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B45EC606A333
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Nov 2026 13:17:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=mcqWfRoU
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=oA+AX4Wn
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xTGWA-0001np-5k; Tue, 17 Nov 2026 05:34:26 -0500
+	id 1xTJ3K-0006N4-TM; Tue, 17 Nov 2026 08:16:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xTGW8-0001nK-U7
- for qemu-arm@nongnu.org; Tue, 17 Nov 2026 05:34:25 -0500
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ (Exim 4.90_1) (envelope-from <kmehltretter@gmail.com>)
+ id 1xTC5z-0001Qo-DE
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2026 00:51:07 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xTGW6-0004z3-Vk
- for qemu-arm@nongnu.org; Tue, 17 Nov 2026 05:34:24 -0500
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-67da62357acso2786566d50.0
- for <qemu-arm@nongnu.org>; Tue, 17 Nov 2026 02:34:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794911661; cv=none;
- d=google.com; s=arc-20260327;
- b=J2PVeFpAoSYpk4zW9bDfIEsIRIrJmuHAN6grrXZR1chvsqHZfOAFS6e+4eBLBUdy/D
- qe0GnftLOAnMbk75qFkJvCkmahDosVX/JwAg/5aBW58/V6KZW/aKXyVtYxn4T0xKhNPo
- KOotVRTtP4wBR5PBOp3LLR16O2mKq2ClA1EO3sUL5jS5LaClh4alqP+kMxmj8n8H8H2A
- TPg2ZbtlVcBMIgCWJDc0sWldlFZmLmq8GCiq6mZi8gUsgR0SSSnpi/6HNuKY1/kTVGcb
- PZGHFMvxwWHJMsiTQ1bKTx19Z5iFKvYxG2XQw8TRTaJcdHWQo0paMdbogLzOQb8n0e/l
- yAbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=UuKlSkoymTDPg9TRp8wP0q3mBdMsqIqP7u05crQ915I=;
- fh=C8XhrYMzXQyjv3Osn6DiaLQx5tS21BCdx4oDoQz77LA=;
- b=jkDRgRiMDZvfSCw8YWwsJXMgU0U+LNebjuo3H+HXPECzJeuEk2PXaTSCqgFNtR5jAz
- ZWL+hxcHUOQk4jKgEJk6cux6FLQN5wixox3aGawOQPgToQTGlNo7eW5wf4IFUzdAktiS
- r4GrMcQdUDeV7PrelTUzqHhqVtolDdl1qpuTxnsVkzp87dzOqBGuj+Qs6CVYZd2vAVz/
- WdHUSrJKjVX8/tS7Jmq2lU4XVzIIMyKkvGZ31ins4uVaHS0JAcdfwhoHog7vEK+rbMR6
- 1GDH4dqwD9j4kbY0ypNjigl2OKKyND0qIvTchc0NT9YgHI3l+6EcVWtiqQ9Urk9AhS36
- CzPA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <kmehltretter@gmail.com>)
+ id 1xTC5x-0007C5-KT
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2026 00:51:07 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4a140e7405dso43547565e9.3
+ for <qemu-arm@nongnu.org>; Mon, 16 Nov 2026 21:51:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794911661; x=1795516461; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=UuKlSkoymTDPg9TRp8wP0q3mBdMsqIqP7u05crQ915I=;
- b=mcqWfRoU9ri7ZLF0Frxzzul3wnWT5S7ff8iY7n8CHIvRKC3hXoLu0mXxWfOcH724kG
- cDZi7yBqX/2t/GCYqRqA54GXgM1HzLaB4m9cd6oYUGDd7ABpHCWQNbsXyCxSEEkkpLSL
- 5unl8/WHYj/JBO9lyu8wZ43eXbghrKiax6CqepsffNW2Rc7RiD7TDdV3UtpyuFKZX4bP
- rVYJ8OYabGkxzCVukPABfngMJWHnirE+9YUPmEHmY3VR/ORpvAf9VK+H5PO+0igOwQYD
- wV4TWLaRW4xD0rYvgLnI3GIoqsIbgjbrMqvN8VJa0+Zh8Mb5iMPu3PyW1x5m0cJFRz4O
- 7NcQ==
+ d=gmail.com; s=20260707; t=1794894664; x=1795499464; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=xE0hZtAygoMZWedu8RkV57BFv0QFgxcv6Jo0h3lc6+Q=;
+ b=oA+AX4Wnk/7fW9vjXxc0ijlhKrpchrKiOCyOKH/8WqjP+ZRGtvmqZJm46ACCIlvsho
+ 3w1YqCZ8xuYWTXcryhVX1WkGd85nmXhwl0BphmMdKZaT+mWNxMD4pzKwjVJcHrNN6YJK
+ SCB36go8nnXZXjUjeVP5uQjiqbgDQXGAtqttwH8UVDo+KxWO66CFq3HWX8ir7lUoKY08
+ fGW/LF6oEy3+HfT8G8Sy8pVtsSnzem6o4Wu+l1z4rL1UG7V29k7NPxWxUgL9gMEYC9k7
+ QpLMSKBGG29bKt4KcH0rQUHT7hQH3RFJQi7CKx5Tv9sIpOjc0IRqjKtQMksmdMUYF27l
+ 1Azw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794911661; x=1795516461;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=UuKlSkoymTDPg9TRp8wP0q3mBdMsqIqP7u05crQ915I=;
- b=DEzOIN4PiZ8/SYTQ4pABhPbCzBTlXspQrKW//pBgLtsfBoZyB/ZSisVx69l62hyDPK
- YBcqUwXl7/f0190hgDWErooMKu7sIsKBEoXy72JJWkAyAN1VCXxPkEADGJK2UXQNub/B
- 6fe3HPKsMzzePo27T6uh88WHLZa+P791uj2XBrVRvppHsJ4PWEVX9e9h3tJAzBFXGV32
- DvuCEktuy/6uJwj1rPliKvongA+opf1GDS7qm6QkstvaqUVRokYnf96PuEM6WU8gkZ/u
- CsKwtmf0TkElJq0fG1L5foOhzBkI6e4Yu2dQOD/3UEPESufnb1kFOw6qkWHj3LIDyVRb
- qOBg==
+ d=1e100.net; s=20260707; t=1794894664; x=1795499464;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=xE0hZtAygoMZWedu8RkV57BFv0QFgxcv6Jo0h3lc6+Q=;
+ b=ZkFxRxbEJIQR041hSW+QYzp/qVhCIIwajAG2zKk7mUOzfxSl4DpxZ/szBGuUUNTKEY
+ B1XeTil8kQV4Qk5g4lSGzK2AozGly0+cpFdFp7j4zkMjmRv8w/kc+ReYDHF88JEfH8UD
+ nxCjmeBVJftWUsZV+efSeTLpb8fdPwbG9Cq3mER/+ECa8FjZ+sZVe5rOgnkT2ntqFWju
+ JTDf9/seiqKp9N+q0YIQFn8Hk1MI8MKgqqKZLmeskVP6oYhvuZw22DRkueRsdSod4VyT
+ Tm8uQoE75Zj2Un/H9OChGmbgSAozJRkED69SNmO6fzlB6uGTZHpl13NUs0Jf/9FKRTdq
+ wP5w==
 X-Forwarded-Encrypted: i=1;
- AL+hErEhyMdgPMGd7c5E81DL/akSUAkMs/qSOgYsJlkU3mc70EIyTufRA4vVkoeYjGLYWvUwoJyXSEr2JQ==@nongnu.org
-X-Gm-Message-State: APuU4Z8CY2ExyomOLnIL1CTV/JKfiyMFnSkjlhZZl4usZMPWh3XafVeL
- +pPiQEblGQEhJ6rNjCjK1tAK5ZPQ/E8ye5glD0zGiqVL0FDuF4D5K3S8s1tIOkvlN34a6MRvjqr
- eNOOq268heMpbM+IUAnHM0dqAtFTDI5MsWDrib1jPtQ==
-X-Gm-Gg: AZFdTZelBSVRNtT/OP8UKI5GFprv4tSwQ4N3WO3l/tB7EPLKGnGUkbW7g72gHHQEsDQ
- v0sYfOkc2X0U627pKqGPvmVb2963TGPmOcvk+eUVTBdGgEUf169B/jOs2JxDXQvAPlOHDe84b4M
- AjWZaoAz4jEkL8txg28VWzRRmvrs7rhE2Fs0x8mmHsZwCv0bq3MD+u1zcCF5pmtBTiOoKDJsL72
- caSenc3724Vuip9XTDedWLx8nIpNBqAiCZMdezFf4E0YrtFXT5O92q09sUXPPkgS+gOJfOULeSU
- zwo7s3+ZbFIo/WHa7xCMCXW+s+q5w175VNlKdAH/SZdnYy2jfIfx9PYxLYRHcXvHJNRN/T+WB+o
- pgUIONZsTaOK9fMW+5EHCpWTHexX6lYUgqX2buehO6fT4wDRK12EjkjjNqKQ+f1eNFptOoj/eah
- uW9oN4lxRuxS4g7JmjodL/
-X-Received: by 2002:a05:690e:1904:b0:67d:b5fe:1ce1 with SMTP id
- 956f58d0204a3-67db5fe1f42mr3789388d50.20.1794911661516; Tue, 17 Nov 2026
- 02:34:21 -0800 (PST)
+ AL+hErFRUjCMekIeg2QdxmsWVxeGhxozQ2UKUaYaqYYpSX06F/i6ZterxN5S2a9Omrwg78N9N3ybdwp/zg==@nongnu.org
+X-Gm-Message-State: APuU4Z8T/Ya4fIaar6174pGZFJTG3CwGTelA2CuQIOfeEcAXBz1S6hxW
+ fdGuHSSzLgX1s5MiPG5iROzKLUvEL5fvWjdvu+xmHzPoNL4Ccrp6/7ST
+X-Gm-Gg: AYBFou3+tAfqZYJEmeajtBg4zrU4Ljm01iNrs3urrcR9DolkG3b2H988cj68ia2QRiA
+ 2/4I6AfR0KvAoyrkssLzfjuuN1CFOOi3rLiaMugPl6UYqb0ADgQ1AYJk3rEQFHNwQ/fSYo/OIN5
+ ARMAywvxqo3JXOfjC8eeSeAsIaQdf4dgQZhOmbUkBLNNqKOuHjya8CRD1ruNjYcVhncE6W+ZxTY
+ SVtBpouBOHjvsLyiGue4Pq2yMdRqMZ4O7gYqyBqt+dzctAH14t0Ug4LgjCnzMwqHpv7hvQMBbf8
+ pN0GJ1v9oyKYy8EhAks26l8yLKi6qItVk0M1xYHN5NjB5cK96wveMEb5TR5TBOJvjpHS6m3vKfv
+ QdVoP6ZG/OG/nWbGG86Xcvby9IMTXBcf7ioA5P5je1Q7N2H392BfVn8mqNMhVa7XLG7v5mA+j+4
+ 4ME7UTAfUQKTR1m2vn+IkF66M0hYj4+IOormSmL5k88xZT7C0DAdkR0OIp6dK/FUgovEv+NrJ01
+ kJUPaGh5Bdz5HIXiVre71I+wMxTqOkEqUnVURDm4tH1VLmh/0QNZ2vf+Ifzcn7HfEfN+jG7brmC
+ W3gmEuzvVqlrai/K2QnKw2bWpF96UPqrSUdMOiaKJnDNdUxnwTOjV7uhIs1ph+yFbHm1Q3KIovs
+ UZO80SwbTKeaRXQMDSd/WTxffyXIp27KJoM4exVxt8+xXvmzr1n/HmWvXzAri7UD6OratkOS6tg
+ L78E8WclOQwoKQDjU8kg1cLZzf80TzuMycWG4vgi+lnrYdmA==
+X-Received: by 2002:a05:600c:670b:b0:4bb:7987:fbbc with SMTP id
+ 5b1f17b1804b1-4bb7987fdc3mr10916125e9.1.1794894663910; 
+ Mon, 16 Nov 2026 21:51:03 -0800 (PST)
+Received: from MacBook-Pro-von-Karl.localdomain
+ (dynamic-2a02-3100-b014-0b01-69e0-6cd4-9e72-ec17.310.pool.telefonica.de.
+ [2a02:3100:b014:b01:69e0:6cd4:9e72:ec17])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4bb783853b5sm41816735e9.2.2026.11.16.21.51.03
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 16 Nov 2026 21:51:03 -0800 (PST)
+From: Karl Mehltretter <kmehltretter@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Karl Mehltretter <kmehltretter@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
+Subject: Re: [PATCH for-11.2] hw/watchdog/wdt_imx2: Fix migration when
+ pretimeout-support not enabled
+Date: Tue, 17 Nov 2026 06:50:38 +0100
+Message-Id: <20261117055038.88311-1-kmehltretter@gmail.com>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+In-Reply-To: <20261116114641.1799526-1-peter.maydell@linaro.org>
+References: <20261116114641.1799526-1-peter.maydell@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260821064032.49556-1-zhiwei_liu@linux.alibaba.com>
- <CAFEAcA8Nmt_Nsvfm77en_oaE4orcQ3BdCBQWNAXmi0iqLgV7fw@mail.gmail.com>
- <c1df4a9e33b9e6a5e76cafa75a00d3c4a901fcbb.camel@wdc.com>
-In-Reply-To: <c1df4a9e33b9e6a5e76cafa75a00d3c4a901fcbb.camel@wdc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Nov 2026 10:34:09 +0000
-X-Gm-Features: AclHuK_uJUGhQbi8NOa4sDvJDIUTEXw1Pydh21dI-uBn-5Y6sriDNzWNC__EksQ
-Message-ID: <CAFEAcA-Pj_kfRyM97s-_z=uZDSuTAEsMuBBBCqezN7FWycUjNQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] Fix RCsc store->load ordering of release stores
-To: Alistair Francis <Alistair.Francis@wdc.com>
-Cc: "zhiwei_liu@linux.alibaba.com" <zhiwei_liu@linux.alibaba.com>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "daniel.barboza@oss.qualcomm.com" <daniel.barboza@oss.qualcomm.com>, 
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, 
- "chao.liu@processmission.com" <chao.liu@processmission.com>,
- "palmer@dabbelt.com" <palmer@dabbelt.com>, 
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "liwei1518@gmail.com" <liwei1518@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=kmehltretter@gmail.com; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 17 Nov 2026 08:16:50 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,72 +108,37 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 17 Nov 2026 at 02:31, Alistair Francis <Alistair.Francis@wdc.com> wrote:
+On Mon, 16 Nov 2026 at 11:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The wdt_imx2 device has optional support for pretimeouts, which are
+> present on most i.MX SoCs but not on i.MX31.  If the QOM property
+> 'pretimeout-support' is not set to true then we don't create the
+> ptimer associated with that feature.  However, the migration vmstate
+> unconditionally lists that ptimer, with the result that trying to
+> save the vmstate of an i.MX31-based machine like "kzm" will hit an
+> assertion.
 >
-> On Mon, 2026-11-16 at 19:31 +0000, Peter Maydell wrote:
-> > On Fri, 21 Aug 2026 at 07:40, LIU Zhiwei
-> > <zhiwei_liu@linux.alibaba.com> wrote:
-> > >
-> > > Several guest architectures give their store-release instructions
-> > > RCsc
-> > > semantics, which requires the store to be ordered not only after
-> > > the
-> > > memory operations that precede it, but also before any subsequent
-> > > load-acquire with RCsc semantics.  The TCG translators, however,
-> > > only
-> > > emit the leading barrier before the store, so under MTTCG nothing
-> > > prevents the host CPU from executing the load-acquire that follows
-> > > a
-> > > store-release before the store has left its store buffer.  On an
-> > > x86
-> > > host (TSO), store-load is the only reordering the hardware may
-> > > perform, and it is exactly the ordering that is missing, so the
-> > > architecturally forbidden [0,0] outcome of the Store Buffering
-> > > litmus
-> > > test is easy to observe:
-> > >
-> > >     CPU 0                      CPU 1
-> > >     store-release X = 1        store-release Y = 1
-> > >     load-acquire  r0 = Y       load-acquire  r1 = X
-> > >
-> > > The affected instructions are the RISC-V Zalasr store-release
-> > > instructions and the Arm STLR, STLPUR and A32/T32 STL store-release
-> > > instructions.  Neither architecture defines an RCpc store, so every
-> > > store-release is RCsc (RVWMO preserved program order Rule 7; Arm
-> > > Architecture Reference Manual DDI 0487, section B2.3.8 "Acquire and
-> > > release semantics").
-> > >
-> > > Patch 1 fixes the RISC-V side and patch 2 the Arm side by emitting
-> > > a
-> > > full barrier after the store as well.  Patch 3 fixes an inverted
-> > > barrier polarity found in the A32 LDA load-acquire translator while
-> > > auditing the load-acquire side.
-> >
-> > > LIU Zhiwei (3):
-> > >   target/riscv: Fix RCsc ordering of Zalasr store-release
-> > >   target/arm: Fix RCsc ordering of store-release instructions
-> > >   target/arm: Fix barrier polarity of A32 LDA load-acquire
-> >
-> > This series seems to have been accidentally missed, possibly
-> > because it included both arm and riscv patches in the same
-> > patchset. RTH tells me that the Arm patches are correct, and
-> > Daniel has reviewed the riscv one.
-> >
-> > riscv maintainers: are you OK with me queuing the whole set
-> > including the riscv patch in target-arm.next, or would you
-> > prefer to take the riscv patch yourself through your queue?
+> Move the migration of 'itimer' into its own subsection which we only
+> send when pretimeout support is enabled.
 >
-> Thanks for checking, this is fine to go via target-arm.next
+> Fixes: daca13d495a11 ("hw/watchdog: Implement full i.MX watchdog support")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4876
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-OK, I've queued it there. I added a cc:stable tag on all the
-patches since they look like bug fixes that deserve backporting.
+With this patch on master (97c88c61d45d), saving and loading a paused kzm
+machine exits 0 instead of aborting in vmstate_save_vmsd_v().
 
--- PMM
+Tested on Debian 13 x86_64.
+
+Tested-by: Karl Mehltretter <kmehltretter@gmail.com>
+
+Thanks,
+Karl
 

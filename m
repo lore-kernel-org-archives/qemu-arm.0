@@ -1,40 +1,40 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DCF8F606A31C
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Nov 2026 04:12:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC405606A330
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Nov 2026 07:33:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=huawei.com header.i=@huawei.com header.a=rsa-sha256 header.s=dkim header.b=WNUpFfX6
+	dkim=pass (1024-bit key) header.d=huawei.com header.i=@huawei.com header.a=rsa-sha256 header.s=dkim header.b=DqCtG7hq
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xTAYC-0007sQ-Rn; Mon, 16 Nov 2026 23:12:09 -0500
+	id 1xTDgu-0005wd-6N; Tue, 17 Nov 2026 02:33:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1xTAYB-0007gV-3l; Mon, 16 Nov 2026 23:12:07 -0500
-Received: from canpmsgout06.his.huawei.com ([113.46.200.221])
+ id 1xTDgr-0005vj-IP; Tue, 17 Nov 2026 02:33:18 -0500
+Received: from canpmsgout02.his.huawei.com ([113.46.200.217])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1xTAY7-0004Fy-5F; Mon, 16 Nov 2026 23:12:06 -0500
+ id 1xTDgo-00046Q-OG; Tue, 17 Nov 2026 02:33:17 -0500
 dkim-signature: v=1; a=rsa-sha256; d=huawei.com; s=dkim;
  c=relaxed/relaxed; q=dns/txt; h=From;
- bh=sGC0Kslhoz8cqlseYkp/DdVHedo5Bf18DLiBaolzj4E=;
- b=WNUpFfX6tUPTQneZ6Q04vKrcTXp3gRmj0Sb7BjAkOGY29ajIb6vHRFGFOrTzkK+EkWn6umUjm
- syO1YdQFJe65jCSdqWgIv5vI8KwaazT5C48IDY9Q30OtmRb/z50yjW6qZibENwI1vD9f2WDIqGb
- fGueULQunWo3wfnt6ttDPDA=
+ bh=gA0ZgtAJ8oXmGSPuDjrVpuafdDYhvArAj3DhVBD8quY=;
+ b=DqCtG7hqgLzq29WvjCd0yic8giwGTicFxAUwbqUEqF8iDXEVcwNGb9YNB9xcV9+YZHA4J6lwO
+ yNm4fQ7w+T/5v3KmWkV39jKORs2vONh8adQhTG4a+t8v6bq9UOcihhfo11h5VRPzIMukeANBSMd
+ WPVoDcDHAQLRwxBhj/JcjzQ=
 Received: from mail.maildlp.com (unknown [172.19.162.144])
- by canpmsgout06.his.huawei.com (SkyGuard) with ESMTPS id 4jTBB93mVZzRhWd;
- Tue, 17 Nov 2026 12:11:29 +0800 (CST)
+ by canpmsgout02.his.huawei.com (SkyGuard) with ESMTPS id 4jTGdl5BLszcbPS;
+ Tue, 17 Nov 2026 15:32:11 +0800 (CST)
 Received: from kwepemk200008.china.huawei.com (unknown [7.202.194.74])
- by mail.maildlp.com (Postfix) with ESMTPS id 59EB340679;
- Tue, 17 Nov 2026 12:11:43 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 50A1D40685;
+ Tue, 17 Nov 2026 15:33:02 +0800 (CST)
 Received: from [10.67.110.68] (10.67.110.68) by kwepemk200008.china.huawei.com
  (7.202.194.74) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Tue, 17 Nov
- 2026 12:11:42 +0800
-Message-ID: <1b0feffe-4a44-4d38-9088-df3afda01c9c@huawei.com>
-Date: Tue, 17 Nov 2026 12:11:41 +0800
+ 2026 15:33:01 +0800
+Message-ID: <4bcf10e0-23bf-4d1a-9ef7-1dbf98f78931@huawei.com>
+Date: Tue, 17 Nov 2026 15:33:00 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
@@ -51,10 +51,10 @@ From: Jinjie Ruan <ruanjinjie@huawei.com>
 In-Reply-To: <20261103000316.150d658d@jic23-hlaptop>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: kwepems200002.china.huawei.com (7.221.188.68) To
+X-ClientProxiedBy: kwepems100002.china.huawei.com (7.221.188.206) To
  kwepemk200008.china.huawei.com (7.202.194.74)
-Received-SPF: pass client-ip=113.46.200.221;
- envelope-from=ruanjinjie@huawei.com; helo=canpmsgout06.his.huawei.com
+Received-SPF: pass client-ip=113.46.200.217;
+ envelope-from=ruanjinjie@huawei.com; helo=canpmsgout02.his.huawei.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -88,14 +88,6 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 > Jinjie Ruan <2118537295@qq.com> wrote:
 > 
 >> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-Hi Jonathan,
-
-Sorry for the late reply. I've been busy with improving the quality and
-increasing coverage of the Linux MPAM mainline code and developing
-related features (the QEMU simulation for MPAM has made everything go
-very smoothly).
-
 >>
 >> Add the MPAM system registers for TCG: MPAMIDR_EL1 (RO) reporting 64
 >> PARTIDs and 4 PMGs, and MPAM0_EL1/MPAM1_EL1 (RW, of which only
@@ -133,9 +125,6 @@ very smoothly).
 > 
 > Similar to patch 2 (I reviewed them backwards) not sure why 
 > I ever set this to ARM_CP_ALIAS.
-
-I update them to ARM_CP_STATE_AA64 as other code done.
-
 > 
 >> +              .accessfn = access_tid3,
 > 
@@ -143,40 +132,11 @@ I update them to ARM_CP_STATE_AA64 as other code done.
 > have the appropriate EL2 registers in next patch should use a trap
 > on the relevant bits being set there.  Will want to swap the patches
 > around for that to work I think.  Also possibly needs the EL3 trap
-
-Yes, will make the EL2 register patch go first as below:
-
-3. target/arm: Add MPAMSM_EL1 register
-2. target/arm: Add support for MPAM CPU registers
-1. target/arm: Add MPAM2_EL2 and MPAMHCR_EL2 registers
-
-
 > register defined.
 
-Yes, we could use the EL2 and EL3 register to control the trap as below:
+Maybe we can first implement only EL2 to reduce the workload?
 
-+            { .name = "MPAM0_EL1", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0xa, .crm = 5, .opc2 = 1,
-+              .access = PL1_RW,
-+              .accessfn = access_mpam0,
-+              .fieldoffset = offsetof(CPUARMState, mpam0_el1),
-+              .resetvalue = 0 },
-
-+static CPAccessResult access_mpam0(CPUARMState *env,
-+                                   const ARMCPRegInfo *ri, bool isread)
-+{
-+    if (arm_current_el(env) < 2 && arm_is_el2_enabled(env) &&
-+        (env->mpam2_el2 & R_MPAM2_EL2_TRAPMPAM0EL1_MASK)) {
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+    return CP_ACCESS_OK;
-+}
-
-The EL3 is missing and I will try to add it.
-
-
-Best regards,
-Jinjie
+I believe that achieving EL1 and EL2 functions is basically sufficient.
 
 > 
 > 

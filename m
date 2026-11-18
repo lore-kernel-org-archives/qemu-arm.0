@@ -1,48 +1,48 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC858606A31C
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Nov 2026 12:31:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F075C606A31C
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Nov 2026 12:54:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=JL/60RH8
+	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=mjL4sIY7
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xTeoX-0004QY-Kq; Wed, 18 Nov 2026 07:31:01 -0500
+	id 1xTfBI-0001YP-1T; Wed, 18 Nov 2026 07:54:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xTeoW-0004QA-A0
- for qemu-arm@nongnu.org; Wed, 18 Nov 2026 07:31:00 -0500
-Received: from smtpout9.mo540.mail-out.ovh.net ([51.210.91.58])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xTfBG-0001YA-O7
+ for qemu-arm@nongnu.org; Wed, 18 Nov 2026 07:54:30 -0500
+Received: from smtpout10.mo540.mail-out.ovh.net ([51.210.91.59])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xTeoU-0000AK-CS
- for qemu-arm@nongnu.org; Wed, 18 Nov 2026 07:31:00 -0500
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net [79.137.60.221])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jV1Cy0zgvz48CF;
- Wed, 18 Nov 2026 12:30:53 +0000 (UTC)
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net. [127.0.0.1])
- by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Wed, 18 Nov 2026 12:30:53 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.85])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jV1Cx45CPz6Mf2; Wed, 18 Nov 2026 12:30:53 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xTfBD-0003fq-7H
+ for qemu-arm@nongnu.org; Wed, 18 Nov 2026 07:54:30 -0500
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4jV1l31rmTz46dJ;
+ Wed, 18 Nov 2026 12:54:23 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Wed, 18 Nov 2026 12:54:23 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.231.92])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4jV1l31Cmxz20Nw; Wed, 18 Nov 2026 12:54:23 +0000 (UTC)
 Received: from kaod.org (unknown [10.1.6.3])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 1AD311B44358;
- Wed, 18 Nov 2026 12:30:52 +0000 (UTC)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 2FADD12E435C;
+ Wed, 18 Nov 2026 12:54:21 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002e5967198-71d8-457a-8ba8-03ba1826720e,
+ (GARM-110S0040832b8eb-1d9d-4a14-a2df-6c6d37b53f7c,
  240B2D80E6D5B5AB1626C6D871A46C45E5CC6673) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <d75745df-6d12-48c8-92cf-f208eedc75f3@kaod.org>
-Date: Wed, 18 Nov 2026 13:30:51 +0100
+Message-ID: <c81acaea-2c43-4151-aee5-cd9f165d8235@kaod.org>
+Date: Wed, 18 Nov 2026 13:54:20 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 08/11] hw/misc/aspeed_scu: Add SCU support for SSP
- SDRAM remap
+Subject: Re: [PATCH v6 00/11] Add SSP/TSP power control and DRAM remap support
+ for AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -51,10 +51,8 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
- <20260723022300.4174471-9-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -99,30 +97,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260723022300.4174471-9-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 11132053857761274995
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 11528933572218104947
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTE+yYwPeOQUBpqCfX+NtzdrKpS8ih9orBm/pjP+tx2ZxppK1uLKgSxgRAeGTeVJ7mXbSUnE1sp0hwSeKBRONZjE31yL6v/QmXzxhc81jmDOzRDKr29bg6Tx9beH9up6BYsIRCcyDCexJU8vjkKWG8iP3hDxkk5nggV8EDYYETnR+FlAnmo1LSAa51Ia2URkLQBChDYQP/XlJ2Y1jiDP3HtZ25NJHFHm4dDQfoP2v2zxNu565IximcELaEdVHR4s9DIKuw62uh/7LuKKBCfKYh59qbjPW41g55oGlxYO7fS9qOCf9w4Y1PSc7R+6vhcwKdLNOTGQqnd+Me7KpWRT1g/2ch5M+BwoCKpV0ouBPvSXLmvsii9Gug+FMaMTn9r8HikDmmkPxs+BZOj3LTGfXES4Vzhh4HL8gMzODHwR3tC1wJIeckZprkSgS5MEPtLwSIUsGSq/XP9OJ/AnUmwM+8p3aswtrWo9+EUTvLyED3042WdmfCHorIXdESOHLTguWiX2KVCAtUauUncAHw0rDjtgdnJm1hPKcDz5W1icbQvHQfg7zycAXm49LKzed6F82mC+sByiM08qovroNI4WLuSI/SzJ2o9Tc7nuVi15RGyaUEhdyvpmXnRVjU4J3gUyPdXhy1l0dON01GuL1HjHPEmXGPi1dphwW/QCpsSVfAtplQ
-DKIM-Signature: a=rsa-sha256; bh=RpqjKO83VIn7jBkK/vgtZxAOiKKukaheSy1wFhwX1Bk=; 
+X-VR-SPAMCAUSE: dmFkZTFbi2z0xkPrrBV649DJhwHt0RuwPxPH3eG4hAoWtqeRQYsodMmNFsYgGmwflYVNlfscUx4KdHSgwKm26zF5P2dly9bxNhZPw2C3xzIOgsgKXvf43eeXk0QRMHx7FeB+yJBb7ZcWQ6U0DQ8U7ikML4yJEeIGt5uY+LHiLXQ9vU2md+ibz9vB0DBJanzfCyKrsn03FF0KLKHUaBBAbw4mn0KFwKRLotAneGT7ZeBeYbzleIQGp3iE5SD6O0cgyBOKWtQrYnuTPQ0IaWCPrDmZjbD4CNAY7l+a9SqImypoRrtCFRvoummLyaUf8OYf+vYklXjlGUljEnAzG8MvCeinMUdKQlLOPqfkKhSHV1AQiamElL9IKo6fSdmhv7QpyPKln/EICXqi3bfGoMktF7IT9kTLvXYxTeXaJXVPsTQvDvvoFLnp88Z31bTStqT8oVdzWlexyHrtsvCGKK43Q3MEOflASmNrN5M1aBszqCF38qQRb16MYd/rpvxooNshaUWUZBYn7T9um1xKVccTkYH+zp2ffanbUWq8o9p4M2DywHru3hkflV0+bccOzJg8mz9dHrKWSdmEV+earYIvYs0fjl49zdwEVp/1bPqUWhFijOdgs4dnsLhQ0HKcJDEcdwec49hiWqnEqsiy1xuo4cGNYuAsBkYLbkxO0KwxsTTQ40fYVQ
+DKIM-Signature: a=rsa-sha256; bh=Qv89hpfLxmtZjk+C1qnmFuz8v0CRsMtdLRak0Qenf/4=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1795005055; v=1;
- b=JL/60RH8hbqUnYHGoQX3oDHXN0DgAU9MHmnSAAj9bDtmUJC48XKzacxd7pSykj2a8SZe+FJR
- 6EGltKEjcE0z2Ko33nMtHY+AoDAUGbhGeD0HxeUhbcLTujkbFmHu5OX6SjzXWpJI80knxxE8cMk
- Uc+pYHwYDRbHM0pVa0Ed0oY0WszIthXkeyZ8QmpzZdvKUYr/McYs80UnVuMk0pdY0bZAcUAcwLu
- A/y5eeowpyy0A+ogz9REPZIya1glZJH/fxyTBsw/sv6X7m0tBgLpDTUhf+OkavjUuzf63HGFHmD
- 12Kj/uQDjpQJhGEW80NSAV2ld6HMHyBLmMGMYUVPiEz1Q==
-Received-SPF: pass client-ip=51.210.91.58; envelope-from=clg@kaod.org;
- helo=smtpout9.mo540.mail-out.ovh.net
+ t=1795006463; v=1;
+ b=mjL4sIY7IAbdnsif4uCUcV8QcdOFwOjMjYTrnAI3Q4f1JkEgYADGWANfeeeL2l/E8oikzlV6
+ 7WvN0CfnSSPI/fRanb/DOeNs/oUuENiy3EvXiakcIDmlGiEsBNIfbUQhUr5g01Buee+3R9HQN9h
+ 2lGtxhfxF850+NAailyb4sZ+O4JbH0GmCUKEyzSEzOk0Ck6xFk6A1GzTyQQnEsyt9MkNXHX6hiF
+ BP35GLODTl1kv4luJ02qf0UkADjhLxK/5hTZMiBxDAJmJwzA/5sWjZGro/H+P+w4y4aXLE3/A/z
+ UJfW1F3jDxlpkDzpr1LlQu0a2ABMr33EjC8qUIhZyGUMg==
+Received-SPF: pass client-ip=51.210.91.59; envelope-from=clg@kaod.org;
+ helo=smtpout10.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,150 +132,109 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Jamin,
+
 On 7/23/26 04:23, Jamin Lin wrote:
-> This commit adds SCU register support for SSP SDRAM remap control and runtime
-> activation. It introduces logic for the PSP to dynamically configure the mapping
-> of its own DRAM windows into SSP-visible SDRAM space, enabling shared memory
-> communication via memory region aliases.
+> This series improves AST2700 platform support by aligning SSP/TSP
+> power and reset behavior with hardware, and enabling DRAM remapping
+> required for proper firmware boot flow.
 > 
-> - coprocessor_sdram_remap[0]: maps PSP DRAM offset 0x400000000 (size: 0x1A77E000) to SSP SDRAM
->      offset 0x5880000
-> - coprocessor_sdram_remap[1]: maps PSP DRAM offset 0x42C000000 (size: 0x05880000) to SSP SDRAM
->      offset 0x0
+> This series depends on:
+> [v4,0/9] Refactor AST2700 SCU preparation for coprocessors
+> https://patchwork.kernel.org/project/qemu-devel/cover/20260717084559.3477061-1-jamin_lin@aspeedtech.com/
 > 
-> The SCU registers AST2700_SCU_SSP_CTRL_1/2 and
-> AST2700_SCU_SSP_REMAP_ADDR_{1,2} / REMAP_SIZE_{1,2} allow runtime reconfiguration
-> of alias offset, base, and size.
+> v1:
+>    1. The changes move DRAM/SDMC initialization earlier to support memory
+> aliasing, add DRAM aliases for SSP/TSP SDRAM remap, and implement
+> SSP/TSP reset, power-on, and remap controls via SCU registers.
+>    2. With these updates, SSP and TSP can be booted via PSP and load their
+> binaries from DRAM. Functional tests and documentation are updated
+> accordingly.
 > 
-> |------------------------------------------|         |----------------------------|
-> |               PSP DRAM                   |         |        SSP SDRAM           |
-> |------------------------------------------|         |----------------------------|
-> | 0x4_0000_0000 (SCU_124 << 4)             |     --> | 0x0000_0000                |
-> |   remap1 base                            |---| |   |  - SCU_150: target addr    |
-> |   size: 0x1A77E000 (SCU_14C)             |   | |   |    remap2                  |
-> |------------------------------------------|   | |   |----------------------------|
-> |                                          |   | |   |                            |
-> | 0x4_2C00_0000 (SCU_128 << 4)             |-----|   | 0x5880000                  |
-> |   remap2 base                            |   |     |  - SCU_148: target addr    |
-> |   size: 0x05880000 (SCU_154)             |   |---> |    remap1                  |
-> |------------------------------------------|         |----------------------------|
+> v2:
+>    Fix "make check" failure caused by both AST2700 and AST1700 realizing the same
+>    TYPE_AST2700_SCU model.
+>    
+> v3:
+>   1. Drop "Move DRAM and SDMC initialization earlier to support memory aliasing"
+>   2. Support SPI/FMC FIFO Mode
+>   3. Add unimplemented devices
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-> ---
->   hw/misc/aspeed_scu.c | 62 ++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 62 insertions(+)
+> v4:
+>   1. Introduce Aspeed2700SCU subclass and separate from generic SCU.
+>   2. Add separate reset handler for AST2700 SCUIO
+>   3. Add AST2700 SCUIO RNG control and data registers
+>   4. Share single SCUIO instance across PSP, SSP, and TSP
+>   5. Fix AST2700 FC hardware strap settings
 > 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index fdb1cf59b4..407c1743fc 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -146,6 +146,14 @@
+> v5:
+>   1. To speed up the review process, move the following patches into a separate
+>      patch series, as they are not directly related to the main topic of this series:
 >   
->   /* SSP TSP */
->   #define AST2700_SCU_SSP_CTRL_0          TO_REG(0x120)
-> +#define AST2700_SCU_SSP_CTRL_1          TO_REG(0x124)
-> +#define AST2700_SCU_SSP_CTRL_2          TO_REG(0x128)
-> +#define AST2700_SCU_SSP_REMAP_ADDR_0    TO_REG(0x140)
-> +#define AST2700_SCU_SSP_REMAP_SIZE_0    TO_REG(0x144)
-> +#define AST2700_SCU_SSP_REMAP_ADDR_1    TO_REG(0x148)
-> +#define AST2700_SCU_SSP_REMAP_SIZE_1    TO_REG(0x14C)
-> +#define AST2700_SCU_SSP_REMAP_ADDR_2    TO_REG(0x150)
-> +#define AST2700_SCU_SSP_REMAP_SIZE_2    TO_REG(0x154)
->   #define AST2700_SCU_TSP_CTRL_0          TO_REG(0x160)
->   #define AST2700_SSP_TSP_ENABLE          BIT(0)
->   #define AST2700_SSP_TSP_RST             BIT(1)
-> @@ -908,6 +916,7 @@ static void aspeed_ast2700_scu_write(void *opaque, hwaddr offset,
->   {
->       Aspeed2700SCUState *a = ASPEED_2700_SCU(opaque);
->       AspeedSCUState *s = ASPEED_SCU(opaque);
-> +    MemoryRegion *mr = NULL;
->       int reg = TO_REG(offset);
->       /* Truncate here so bitwise operations below behave as expected */
->       uint32_t data = data64;
-> @@ -965,6 +974,43 @@ static void aspeed_ast2700_scu_write(void *opaque, hwaddr offset,
->           data &= ~AST2700_SSP_TSP_ENABLE;
->           s->regs[reg] = (s->regs[reg] & ~0xff) | (data & 0xff);
->           return;
-> +    case AST2700_SCU_SSP_CTRL_1:
-> +    case AST2700_SCU_SSP_CTRL_2:
-> +        mr = (reg == AST2700_SCU_SSP_CTRL_1) ?
-> +             a->ssp_remap[0] : a->ssp_remap[1];
-> +        if (a->ssp_cpuid < 0 || mr == NULL) {
-> +            return;
-> +        }
-> +        data &= 0x7fffffff;
-> +        memory_region_transaction_begin();
-> +        memory_region_set_alias_offset(mr,
-> +                                       ((uint64_t) data << 4) & 0x3ffffffff);
-> +        memory_region_transaction_commit();
-> +        break;
-> +    case AST2700_SCU_SSP_REMAP_ADDR_1:
-> +    case AST2700_SCU_SSP_REMAP_ADDR_2:
-> +        mr = (reg == AST2700_SCU_SSP_REMAP_ADDR_1) ?
-> +             a->ssp_remap[0] : a->ssp_remap[1];
-> +        if (a->ssp_cpuid < 0 || mr == NULL) {
-> +            return;
-> +        }
-> +        data &= 0x3fffffff;
-> +        memory_region_transaction_begin();
-> +        memory_region_set_address(mr, data);
-> +        memory_region_transaction_commit();
-> +        break;
-> +    case AST2700_SCU_SSP_REMAP_SIZE_1:
-> +    case AST2700_SCU_SSP_REMAP_SIZE_2:
-> +        mr = (reg == AST2700_SCU_SSP_REMAP_SIZE_1) ?
-> +             a->ssp_remap[0] : a->ssp_remap[1];
-> +        if (a->ssp_cpuid < 0 || mr == NULL) {
-> +            return;
-> +        }
-> +        data &= 0x3fffffff;
-> +        memory_region_transaction_begin();
-> +        memory_region_set_size(mr, data);
-> +        memory_region_transaction_commit();
-> +        break;
->       case AST2700_SCU_SYS_RST_CTRL_1:
->           if (a->ssp_cpuid < 0) {
->               return;
-> @@ -1035,6 +1081,14 @@ static const uint32_t ast2700_a0_resets[ASPEED_AST2700_SCU_NR_REGS] = {
->       [AST2700_HW_STRAP1_SEC2]        = 0x00000000,
->       [AST2700_HW_STRAP1_SEC3]        = 0x1000408F,
->       [AST2700_SCU_SSP_CTRL_0]        = 0x000007FE,
-> +    [AST2700_SCU_SSP_CTRL_1]        = 0x40000000,
-> +    [AST2700_SCU_SSP_CTRL_2]        = 0x42C00000,
-> +    [AST2700_SCU_SSP_REMAP_ADDR_0]  = 0x1FFFE000,
-> +    [AST2700_SCU_SSP_REMAP_SIZE_0]  = 0x00002000,
-> +    [AST2700_SCU_SSP_REMAP_ADDR_1]  = 0x05880000,
-> +    [AST2700_SCU_SSP_REMAP_SIZE_1]  = 0x1A77E000,
-> +    [AST2700_SCU_SSP_REMAP_ADDR_2]  = 0x00000000,
-> +    [AST2700_SCU_SSP_REMAP_SIZE_2]  = 0x05880000,
->       [AST2700_SCU_TSP_CTRL_0]        = 0x000007FE,
->       [AST2700_SCU_SYS_RST_CTRL_1]    = 0xFFC37FDC,
->       [AST2700_SCU_SYS_RST_CTRL_2]    = 0x00001FFF,
-> @@ -1067,6 +1121,14 @@ static void aspeed_ast2700_scu_reset_hold(Object *obj, ResetType type)
->   
->       if (a->ssp_cpuid > 0) {>           arm_set_cpu_off(a->ssp_cpuid);
+>      [v4,01/21] hw/misc/aspeed_scu: Introduce Aspeed2700SCU subclass and separate from generic SCU
+>      [v4,02/21] hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO
+>      [v4,11/21] hw/arm/ast27x0: Share FMC controller with SSP and TSP
+>      [v4,12/21] hw/arm/aspeed_ast27x0: Add unimplemented Privilege Controller MMIO regions for SSP/TSP (Merged)
+>      [v4,13/21] hw/arm/aspeed_ast27x0: Add unimplemented OTP controller MMIO regions for SSP/TSP (Merged)
+>      [v4,14/21] hw/block/m25p80: Implement volatile status register write enable for Winbond
+>      [v4,15/21] hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for AST2700
+>      [v4,16/21] hw/misc/aspeed_scu: Drop noisy unhandled read logs for AST2700 SCU/SCUIO (Merged)
+>      [v4,17/21] hw/misc/aspeed_scu: Add AST2700 SCUIO RNG control and data registers (Merged)
+>      [v4,18/21] hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP
+>      [v4,19/21] hw/arm/aspeed_ast27x0-fc: Fix hardware strap settings (Merged)
+>      
+>    2. Add memory_region_transaction_begin() and memory_region_transaction_commit()
+>       to protect the transaction.
+> 
+> v6:
+>    1. Move the DRAM remap MemoryRegions from the SCU to the SSP/TSP
+>       coprocessor state itself.
+>    2. Set ssp_cpuid/tsp_cpuid directly once the SSP/TSP's armv7m core is
+>       realized, instead of pre-guessing them from board code via a QOM
+>       property.
+>    3. Correct AST2700 SCU to SCUIO to AST1700
+> 
+> Jamin Lin (11):
+>    hw/arm/aspeed_ast1700: Correct AST2700 SCU to SCUIO
+>    hw/arm/ast27x0: Start SSP in powered-off state to match hardware
+>      behavior
+>    hw/arm/ast27x0: Start TSP in powered-off state to match hardware
+>      behavior
+>    hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap
+>    hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
+>    hw/misc/aspeed_scu: Implement SSP reset and power-on control via SCU
+>      registers
+>    hw/misc/aspeed_scu: Implement TSP reset and power-on control via SCU
+>      registers
+>    hw/misc/aspeed_scu: Add SCU support for SSP SDRAM remap
+>    hw/misc/aspeed_scu: Add SCU support for TSP SDRAM remap
+>    tests/functional/aarch64/test_aspeed_ast2700fc: Boot SSP/TSP via PSP
+>      and load binaries from DRAM
+>    docs: Add support vbootrom and update Manual boot for ast2700fc
+> 
+>   docs/system/arm/aspeed.rst                    |  42 ++-
+>   include/hw/arm/aspeed_ast1700.h               |   2 +-
+>   include/hw/arm/aspeed_coprocessor.h           |   2 +
+>   include/hw/misc/aspeed_scu.h                  |   5 +
+>   hw/arm/aspeed_ast1700.c                       |  22 +-
+>   hw/arm/aspeed_ast27x0-fc.c                    |   4 +
+>   hw/arm/aspeed_ast27x0-ssp.c                   |  45 ++++
+>   hw/arm/aspeed_ast27x0-tsp.c                   |  37 +++
+>   hw/misc/aspeed_scu.c                          | 240 ++++++++++++++++++
+>   .../aarch64/test_aspeed_ast2700fc.py          |  29 ++-
+>   10 files changed, 396 insertions(+), 32 deletions(-)
+> 
 
-+        if (a->ssp_remap[0] && a->ssp_remap[1]) {
+The test passes. v7 should be fine for merge with the changes I proposed.
 
-> +        memory_region_transaction_begin();
-> +        memory_region_set_address(a->ssp_remap[0], 0x5880000);
-> +        memory_region_set_alias_offset(a->ssp_remap[0], 0);
-> +        memory_region_set_size(a->ssp_remap[0], 0x1a77e000);
-> +        memory_region_set_address(a->ssp_remap[1], 0);
-> +        memory_region_set_alias_offset(a->ssp_remap[1], 0x2c000000);
-> +        memory_region_set_size(a->ssp_remap[1], 0x5880000);
-> +        memory_region_transaction_commit();
->       }
->   
->       if (a->tsp_cpuid > 0) {
+Thanks,
 
+C.
 

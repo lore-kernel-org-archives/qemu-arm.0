@@ -1,100 +1,124 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4CF0D606A31C
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Nov 2026 21:19:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9DBA1606A339
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Nov 2026 06:30:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=mYI3wWFX
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=MnYx1yF5
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xTQa8-0007BU-Ci; Tue, 17 Nov 2026 16:19:13 -0500
+	id 1xTZBP-0000OC-GR; Wed, 18 Nov 2026 01:30:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xTQZx-0007Ax-BC
- for qemu-arm@nongnu.org; Tue, 17 Nov 2026 16:19:01 -0500
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xTZBO-0000Np-6E
+ for qemu-arm@nongnu.org; Wed, 18 Nov 2026 01:30:14 -0500
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xTQZu-0001L5-L0
- for qemu-arm@nongnu.org; Tue, 17 Nov 2026 16:19:01 -0500
-Received: by mail-pg1-x535.google.com with SMTP id
- 41be03b00d2f7-cd6028ff33fso208106a12.0
- for <qemu-arm@nongnu.org>; Tue, 17 Nov 2026 13:18:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xTZBL-0001Xe-QM
+ for qemu-arm@nongnu.org; Wed, 18 Nov 2026 01:30:13 -0500
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-67db5e13b0cso484302d50.3
+ for <qemu-arm@nongnu.org>; Tue, 17 Nov 2026 22:30:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794983410; cv=none;
+ d=google.com; s=arc-20260327;
+ b=j7ooWZdiPoFjyg8sCcpJA0gytch8fP2emupjhMpMCthXAVuBVjoitf2Hd/DIPpaXo7
+ XvW30wkVLO2Ws7hJIq9jKRSFwb0QbHZZTc/ZCIfBEeV0TO8Fy4e686jcMcFG6OqX4/+l
+ 3E8rZ7u1gnpVsXWTKFuT3cMxgkd0wDmD8K36yuf+DYBw2nTteXz+I2s8MoTVqPdcPBYo
+ EhShwhpHP5yWwTwM1b8sEBW4OExmR6rNfSyQqFDFMs4N8802ymgk1s0T7+BQCX+vyN4V
+ HhCtIVIjtouTgBrr2ZR3iSFg5j+vEPlbfpW/MlOZEN9fPVBSTKM4LrX7sMp3bhGsBSKG
+ 3uMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=dObmHyx/Pv5Xr/xtWtOqclRbq9XnNGQPsMJISpGNgsE=;
+ fh=BGdu5xCtQGSY6X22w2bFUaYc/7kAPb5dAhJsc21MGnY=;
+ b=fTq7DhS8/ZrIkBqBDiUbDu5KoFhgojSLGFfN/wOzTELrwFjEGNEX3fluOncM00hLvN
+ 1xCztoFqAXQlGhQ2PK92XH0w6+NhkZ3JzX8jWvbcsv6bFmBNywtedeUfjU1ZsXzUUAld
+ CBlEfPCEZSIeGm2VO7SQXhYuvbuZERRmLzfVifVHxSNa9aBQ9+dE9RTnNbuW9vjEiVYC
+ 1unHpFMJsb0SYh+GX4wQ4bkTOPGEy8l+xUb5+e3ycdsRzLe9VMYl0XBxih0dag9swGFT
+ 3hOkBLBSfMHEBu0HW3EVAoUrQGBH6rbYeUXDhZ91Am+KS/gORD9PVvawVPX0H6KhX9bo
+ T54w==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1794950336; x=1795555136; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ d=gmail.com; s=20260707; t=1794983410; x=1795588210; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=kRWQgkmxEPEAeCa1/fwqnfDxnDBHEGGQsHASXmQpjGM=;
- b=mYI3wWFXbN5JhD7fc29SR0RJWhe5q1KptYTjuqIdv16np7wk5/wOBcmjkiYVamZw0k
- v80Uza92tU7Peg0N8nc7DMlMfcFKKBVjuDcyv/P9lcnzpMAVy3OSqe/Ut2pyZtv6KSQ9
- mC01ImEXunONWMIfPmJVAOBxxSlaFnl7r+u8nVGgkY1nIgHCuVQNNbK9Oqfqws9lmsv7
- MvJC5I3rUw5Ijcy/yAqikjvGivd4fcy/GMgOeRkvrgYA645CQSOy2wy7w0Rd0MNCwZTz
- U/1Yyo5pJoti17D5LIru44MM0Y9lK83mcYRh4yXQoHMP8yRTvbEOwd/OqEzD94+t0LqV
- 36cg==
+ bh=dObmHyx/Pv5Xr/xtWtOqclRbq9XnNGQPsMJISpGNgsE=;
+ b=MnYx1yF5JhaVrsdUD+9aML05ojB/s20AxeSLt0oKjFVw7GeIscRh746RP/lNt9FTgr
+ GIZAwj1GlgQN4fuq4Bg6Y+EavSn6Muc2zQbi56Ov2mYIsjtoOKWVVzobKoMQ4xVioAeU
+ ICEjJpVCrXo1sJ1VozABxIJu+XTKg0nE42LCsucyp26s6mcgr+9VI+YbDoDwMQ9IDBd7
+ 92IPKJ2vL/ycUOcqQ5lcARFMfa7d9I0TbqdwrDTzr86uBrwMLaeH+ga9ih14cFx0DCwp
+ nFT39yxvkjwRRFO5Tt0ioM11OpvB9Hd/PioIb71ZpThNOEzKyMOJ7ClDVl/DIbn/Cfhm
+ FOEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1794950336; x=1795555136;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1794983410; x=1795588210;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=kRWQgkmxEPEAeCa1/fwqnfDxnDBHEGGQsHASXmQpjGM=;
- b=e5KfIYAoUocE6lwCzBjoNQyvqPM2s6AfCtDkjSn0VilkHo/hUqjaFLkqdJiP27vk9l
- /ui5lUNY5MX2u/k0u6TKtJ7sATSu1NavFw9B//fMdA3jVFR4wqo81nRE9cyBCQatA67a
- Q53z153H13nDmVsR8g0WJNDXL0pVJgZuPA7OKz95mF8imyzNymiRQ+gzkbvYDR3EmaNL
- Ot7AnviaeOBbWmitgAoKsVfl1Aqmdad3VGu8QdaS9eU8egtbYt1hfRn/PE4LrX8bCQOb
- unHaMwhzDfVVzD0Hj8mCETgvBFjEo/vpCMhwozjSZk5/NUocc6GMJu8DKXvT0fjQMKZx
- repA==
+ bh=dObmHyx/Pv5Xr/xtWtOqclRbq9XnNGQPsMJISpGNgsE=;
+ b=oFDF/yxfpFTXJzu8tn8xhhVnhUb2j25mhNSK9W8O/24aQUG9tSfe9/v6Oma83vdB2p
+ +ZdGUsslazvZAY6VLzSpR+eyexO6B8KC5dWu9e43nO9Ev7QgvN8WN4wRCNEyBLN14WFJ
+ Es0Gs9GqIQ4j/wg6yp/UsPHrBAXa1hAO9L4jX0E6zBpR1/UCcAcy0yEZyH/GiqdMbpuO
+ qMHSh61oD2rkoZV8rUYfkgDS4lWIuJXBwe7PvwhaTBF0I62aiL+0HQcT2S2jDgEl7jn9
+ jkUbuUSEs4djDa1TRpxJeM7hvKElWRQfrUzxCdaeiQHG7WtKWrdP6Rt0tFWubjiajLZz
+ XTbQ==
 X-Forwarded-Encrypted: i=1;
- AL+hErFi83/vJlyA/sZW6yDgzmnSg8as+8qMS2zodl0xaTmC+HwXWlHNcbWCffyIeVRLI5TldBAyUfhOfQ==@nongnu.org
-X-Gm-Message-State: APuU4Z/9J+xtDId1tZSUKisKT67d0Mcvz9TwvZ67hpsf6QJtvswTJAPJ
- OIWjRy3QZO4J7Hgvzfxg7ZCq535mObsfeMSKmBXgHIdM/IV5arDHZPdqv4IXtRVpvTs=
-X-Gm-Gg: AZFdTZfD+/M5whLVUpNgIKD0KA/Ur1J78K7NFNCs/6vyCnXhUJGEQTVOjhrM1d4J850
- iF9tuMJ/TAj6Kipii+px0YfoiC3vPscQsgsxQZWMILDlF/bhl4NY8GPGHf/574TCe8/q1Hc/mr7
- xSH6asTKgdlHAbRhUJCQj7aPtuIa8Vb450/Pm8sr7stBoZBylWuV7TXImZX3xHpcJUnKWIx5TVL
- 46imruwBAi2xG0rl44kNDkxdIVNVUtwNH+STjKvwpcDAVURccgpp6AFEvOSHy6vfaHnNBEzsBbc
- FN6N/6qNCT3aOy5hDFI2N1ejQOp/s6sDoPZN2KrQ2vg1YG9sYs+8NN+/pvo4w4bd8DLSUUTsX6c
- n7QgG7JUZtAUBJBsesfkMYfsgx7onEptYCzJV6aFDwsSC+RidAHFZOc5/4EVj6Ha8ZG8u0Q9IXP
- 5NrRWruxIeFqHLQYYZ2P1pm3SQkT0XSC6WhOKE+J8iSehF0o8TaCPJW4CnQ48RGEKkiae2ogFXb
- eqVzNweVBc58xmefI/wbn/Yg75RNmszMzAWt6Uc6amnadNIxjY2wdbWsO/6H9cO9ypLPRuPYFos
- pO0D9shHefzT3/rryfZrk0Wt/ITwSXNvjg==
-X-Received: by 2002:a17:90b:3c81:b0:3ab:36c4:b4ff with SMTP id
- 98e67ed59e1d1-3b3d07b80c7mr653282a91.24.1794950335671; 
- Tue, 17 Nov 2026 13:18:55 -0800 (PST)
-Received: from p14s ([2604:3d09:148c:c800:61f7:13ac:b599:b52c])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3b3ac2b5ec6sm5783646a91.10.2026.11.17.13.18.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Nov 2026 13:18:55 -0800 (PST)
-Date: Tue, 17 Nov 2026 15:18:52 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Kohei Enju <enju.kohei@fujitsu.com>
-Cc: Gavin Shan <gshan@redhat.com>, berrange@redhat.com, kchamart@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
- mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
- eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [RFC v4 00/24] Add Realm support to QEMU-VMM
-Message-ID: <avzEvGXSEcgVdytB@p14s>
-References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <7dea93a6-b119-4882-9c56-557a372b646a@redhat.com>
- <atkokvqTHygpI8dt@p14s>
- <5dba456f-26b4-4f05-9271-fb784736d581@redhat.com>
- <atvCNKxpCRRSFL58@p14s> <avLM3UdwUcgUHLgP@FCCLS0092175.localdomain>
+ AL+hErHMFb6IRLSQ1Ishiu2e3jCKquA4kxZzihO7coixfo1YQwp0s/A/vcFDYQzXPf80ksYzG9I0G5R9xA==@nongnu.org
+X-Gm-Message-State: APuU4Z8b7JYWXzF92f9Sn42ZIrkbZ5LbZ1evxnq/g1xW1gQzsuWNBp0H
+ F7js8g4vKhSA5c/SWV/UE9kH2UscPbm0EUMQr/IfpfMHnWs05UKAxy7XoOGGalyvkugoBmVVc8j
+ Zz/CFQkdQRF27cdkYcyhSu2oPTRe/Fys=
+X-Gm-Gg: AZFdTZetuj8QpTfPACFwuIKUM/TINigBnUjMru5h1Qj0gVU4CGbJQk1aw7rQ96a6y3q
+ uH7VQGdkcWxchi1bawk9FzshzxbJj9zw+z4VbmR+Zkiz26htckaRnyF38KSuYiA/fKsvUhzY5f0
+ 75EMBeBrHv3YDMSvWPV0eK7u/6esPeua06VNFhKAwkCAN5inqzOSGoHqNMzvLthbgl2l0KANAp/
+ HJJTLrEVqgQLT6VUsXJmIphtDHdKvxVz4kJHKVERGOgETzjJenhulIlDfibpB+4BKcUI5tnF1Qg
+ ltOv72MN/1/4hkHw08ptI8/wT+6jY4vdXA1AsWH+oTRTOMsRCMvE7Z8NUVcp/pfJRVnvWjmF2WS
+ vSLpoErTaEBHwoiY0BLPPmHEKVFgKJgmcxxS/Xed37EyT/bksOTurMicw5le2NHNMoXJ6m5WgRC
+ 2V
+X-Received: by 2002:a05:690e:4087:b0:67d:a224:6c0c with SMTP id
+ 956f58d0204a3-67dd3cf952cmr821917d50.12.1794983409894; Tue, 17 Nov 2026
+ 22:30:09 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <avLM3UdwUcgUHLgP@FCCLS0092175.localdomain>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pg1-x535.google.com
+References: <179449578952.8382.2790865629085512841-0@git.sr.ht>
+ <179449578952.8382.2790865629085512841-1@git.sr.ht>
+In-Reply-To: <179449578952.8382.2790865629085512841-1@git.sr.ht>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Wed, 18 Nov 2026 14:29:57 +0800
+X-Gm-Features: AclHuK84G1KFQKzG3XiXmkJBaMvkT6mwhzvQz7CaC8Mnwco4M3w0NKWlKjaQaKw
+Message-ID: <CAEUhbmXsaOhFCK07NTm2Q1DTmF923npUfsqSz3b1q+px1DFBWw@mail.gmail.com>
+Subject: Re: [PATCH qemu 1/3] hw/block: Add Macronix MX25R6435F flash
+To: "~mohammadodeh" <Mohammad.Odeh@exalt.ps>
+Cc: qemu-devel@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Samuel Tardieu <sam@rfc1149.net>, Alistair Francis <alistair@alistair23.me>,
+ Kevin Wolf <kwolf@redhat.com>, 
+ Hanna Reitz <hreitz@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Bernhard Beschow <shentey@gmail.com>, Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
+ Jan Kiszka <jan.kiszka@web.de>, Bin Meng <bin.meng@processmission.com>, 
+ Shameer Kolothum <skolothumtho@nvidia.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ qemu-arm@nongnu.org, qemu-block@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yx1-xb129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -108,275 +132,120 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Nov 10, 2026 at 05:01:14PM +0900, Kohei Enju wrote:
-> On 10/23 14:23, Mathieu Poirier wrote:
-> > On Fri, Oct 23, 2026 at 09:00:12PM +1000, Gavin Shan wrote:
-> > > Hi Mathieu,
-> > > 
-> > > On 10/22/26 7:03 AM, Mathieu Poirier wrote:
-> > > > Hi Gavin,
-> > > > 
-> > > > On Mon, Sep 21, 2026 at 02:05:19PM +1000, Gavin Shan wrote:
-> > > > > Hi Mathieu,
-> > > > > 
-> > > > > On 9/4/26 5:35 AM, Mathieu Poirier wrote:
-> > > > > > This patchset provides minimal functionality to start a Realm VM
-> > > > > > from an Arm RME capable host using the following command line:
-> > > > > > 
-> > > > > > qemu-system-aarch64 \
-> > > > > >    -M confidential-guest-support=rme0,memory-backend=ram0 \
-> > > > > >    -object rme-guest,id=rme0,convert-in-place=on \
-> > > > > >    -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
-> > > > > >    -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
-> > > > > > 
-> > > > > > It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
-> > > > > > back.  It is compatible with Steven Price's v16 revision [1] of his work adding
-> > > > > > CCA support to KVM.
-> > > > > > 
-> > > > > > This revision is based on Michael Roth's work on guest memfd in-place memory
-> > > > > > conversion [2], rebased to QEMU master.  I left out the AMD specific changes
-> > > > > > from Michael's work because I can't test the result.  Other than the
-> > > > > > modications to the linux headers, this series is identical to V3.
-> > > > > > 
-> > > > > > It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
-> > > > > > here [3], along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
-> > > > > > with Steven's v16 patchset).  The Repository for the kernel [6] is also
-> > > > > > available.  Note that for the latter, defines for
-> > > > > > KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES and KVM_CAP_ARM_RMI have been modified to
-> > > > > > follow QEMU master.
-> > > > > > 
-> > > > > > Instructions to compile and run the entire stack can be found here [7].
-> > > > > > 
-> > > > > > Device Assignment is not included.
-> > > > > > 
-> > > > > > Thanks,
-> > > > > > Mathieu
-> > > > > > 
-> > > > > > [1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
-> > > > > > [2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
-> > > > > > [3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v4?ref_type=heads
-> > > > > > [4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
-> > > > > > [5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
-> > > > > > [6]. https://gitlab.com/Linaro/cca-public/linux/-/tree/upstream-v4?ref_type=heads
-> > > > > > [7]. https://gitlab.com/Linaro/cca-public/build-instructions
-> > > > > > 
-> > > > > 
-> > > > > Give this series and (v19) arm/cca host series [1] a try, and found the following
-> > > > > issues. I'm sharing the found issues that I need take chance to look at them
-> > > > > closely in future.
-> > > > > 
-> > > > > [1] https://git.gitlab.arm.com/linux-arm/linux-cca.git  (branch: cca/cca-host/kvm-v19/integration)
-> > > > > 
-> > > > > Note that the host is emulated using qemu (TCG mode) via 'virt' platform, using
-> > > > > the following command lines
-> > > > > 
-> > > > > laptop$ /home/gshan/sandbox/cca/host/qemu/build/qemu-system-aarch64                 \
-> > > > >          -M virt,virtualization=on,secure=on,gic-version=3,acpi=off                  \
-> > > > >          -cpu max,x-rme=on -m 4G -smp 8                                              \
-> > > > >          -serial mon:stdio -monitor none -nographic -nodefaults                      \
-> > > > >          -bios /home/gshan/sandbox/cca/host/tf-a/flash.bin                           \
-> > > > >          -kernel /home/gshan/sandbox/cca/host/linux/arch/arm64/boot/Image            \
-> > > > >          -initrd /home/gshan/sandbox/cca/host/buildroot/output/images/rootfs.cpio.xz \
-> > > > >          -append kvm-arm.mode=rmm                                                    \
-> > > > >          -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                       \
-> > > > >          -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                       \
-> > > > >          -device pcie-root-port,bus=pcie.0,chassis=3,id=pcie.3                       \
-> > > > >          -device pcie-root-port,bus=pcie.0,chassis=4,id=pcie.4                       \
-> > > > >          -device virtio-9p-device,fsdev=shr0,mount_tag=shr0                          \
-> > > > >          -fsdev local,security_model=none,path=/home/gshan/sandbox/cca/guest,id=shr0 \
-> > > > >          -netdev tap,id=tap1,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown       \
-> > > > >          -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:80
-> > > > > 
-> > > > > The realm VM is started using the following command lines.
-> > > > > 
-> > > > > host$ qemu-system-aarch64 -enable-kvm -object rme-guest,id=rme0,convert-in-place=on \
-> > > > >        -machine virt,gic-version=3,confidential-guest-support=rme0 -m 2G -cpu host   \
-> > > > >        -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2                  \
-> > > > >        -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                   \
-> > > > >        -numa node,nodeid=0,cpus=0-3,memdev=mem0                                      \
-> > > > >        -serial mon:stdio -monitor none -nographic -nodefaults                        \
-> > > > >        -kernel /mnt/linux/arch/arm64/boot/Image                                      \
-> > > > >        -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                           \
-> > > > >        -append earlycon=pl011,mmio,0x10009000000
-> > > > > 
-> > > > > Found issues
-> > > > > ============
-> > > > 
-> > > > I was able to do the same manipulations on my side, but using the SBSA machine
-> > > > for system emulation, with results as described below:
-> > > > 
-> > > 
-> > > Thanks for double check on your side. Just a head up: I will re-run the broken test
-> > > cases with (RFCv5) qemu series and share the result. I expect we will have more
-> > > discussions on those broken test cases under RFCv5 series if you agree. I don't
-> > > know when I get a chance to try RFCv5 series, but hopefully next week or early
-> > > of the week after that.
-> > >
-> > 
-> > I omitted to mention that I used RFCv5 for my manipulations on SBSA, so I expect
-> > you'll find the same problems as with RFCv4.  No need to rush to do the test
-> > since my next revision will _not_ address any of those issues.  For RFCv6 I want
-> > to concentrate on the other comments you and Kohei made and keep the bigger
-> > issues (the ones you raised here) for future revision.  That way we make progess
-> > on this patchset and keep synchronized with the KVM patches Suzuki and Steven
-> > release.
-> > 
-> > We can discuss further at the KVM forum if you are there.
-> > 
-> > > Cheers,
-> > > Gavin
-> > > 
-> > > > > 
-> > > > > (1) qemu is terminiated on qmp command 'dump-guest-memory'
-> > > > > 
-> > > > > (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
-> > > > > **
-> > > > > ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
-> > > > > Bail out! ERROR:../system/memory_mapping.c:215:guest_phys_block_add_section: assertion failed: (predecessor->target_end <= target_start)
-> > > > > 
-> > > > 
-> > > > On my side this command causes the Realm to abort, as I expected it to be.
-> 
-> Hi Mathieu, Gavin.
-> 
-> I've tested RFC v5, and I reproduced issue (1) on my side as well:
-> 
->     (qemu) dump-guest-memory -p "/tmp/mem" 0x40000000 0x10000000
->     Failed to set KVM_REG_ARM_TIMER_CNT
->     ./qemu-ram-realm.sh: line 21: 77580 Aborted                 (core dumped) $QEMU -no-reboot -M confidential-guest-support=rme0,memory-backend=ram0 ...
-> 
-> This was resolved by adding kvm-no-adjvtime=on.
-> 
-> > > > Realm memory should not be observable from the host.  There may be a debug mode
-> > > > to enable this kind of operation but I will have to look at the documentation
-> > > > for details.
-> > > > > (2) qemu emulation can't be stopped and resumed
-> > > > > 
-> > > > > (qemu) stop
-> > > > > (qemu) cont
-> > > > > Failed to set KVM_REG_ARM_TIMER_CNT
-> > > > > 
-> > > > 
-> > > > That too I was expecting.  Anything that can comprimise a Realm will cause the
-> > > > HW to abort.  I'll investigate the "Failed to set KVM_REG_ARM_TIMER_CNT" error
-> > > > message though.
-> 
-> kvm-no-adjvtime=on also resolved issue (2) above.
-> 
-> Setting KVM_REG_ARM_TIMER_CNT for Realm VMs is not allowed, so we should
-> either add this option or consider making it the default for Realm VMs
-> in the future. What do you think?
+On Thu, Nov 12, 2026 at 11:52=E2=80=AFPM ~mohammadodeh <mohammadodeh@git.sr=
+.ht> wrote:
+>
+> From: Mohammad Odeh <mohammad.odeh@exalt.ps>
+>
+> Add the 64-Mbit Macronix MX25R6435F serial NOR flash model, its
+> SFDP data, and the 1-4-4 quad page-program command used by the
+> device.
+>
+> Signed-off-by: Mohammad Odeh <zephyr@exalt.ps>
 
-Apologies for the late reply, I was away.  I'll look into the
-'kvm-no-adjvtime=on' tomorrow and will get back to you.
+Two different email addresses being used here. They should be fixed to
+use the same one.
 
-Many thanks for the input,
-Mathieu
+> ---
+>  hw/block/m25p80.c      |  5 +++++
+>  hw/block/m25p80_sfdp.c | 20 ++++++++++++++++++++
+>  hw/block/m25p80_sfdp.h |  1 +
+>  3 files changed, 26 insertions(+)
+>
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index baf798c6b5..9b931f5861 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -243,6 +243,8 @@ static const FlashPartInfo known_devices[] =3D {
+>      { INFO6("mx25l25635f", 0xc22019,     0xc22019,  64 << 10, 512,
+>              ER_4K | ER_32K), .sfdp_read =3D m25p80_sfdp_mx25l25635f },
+>      { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+> +    { INFO("mx25r6435",   0xc22817,      0,  64 << 10, 128, ER_4K | ER_3=
+2K),
+> +      .sfdp_read =3D m25p80_sfdp_mx25r6435 },
+>      { INFO("mx66l51235f", 0xc2201a,      0,  64 << 10, 1024, ER_4K | ER_=
+32K) },
+>      { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_=
+32K) },
+>      { INFO("mx66u1g45g",  0xc2253b,      0,  64 << 10, 2048, ER_4K | ER_=
+32K) },
+> @@ -405,6 +407,7 @@ typedef enum {
+>      PP =3D 0x02,
+>      PP4 =3D 0x12,
+>      PP4_4 =3D 0x3e,
+> +    QPP_1_4_4 =3D 0x38,
+>      DPP =3D 0xa2,
+>      QPP =3D 0x32,
+>      QPP_4 =3D 0x34,
+> @@ -759,6 +762,7 @@ static void complete_collecting_data(Flash *s)
+>
+>      switch (s->cmd_in_progress) {
+>      case DPP:
+> +    case QPP_1_4_4:
+>      case QPP:
+>      case QPP_4:
+>      case PP:
+> @@ -1255,6 +1259,7 @@ static void decode_new_cmd(Flash *s, uint32_t value=
+)
+>                            "QIO mode\n", s->cmd_in_progress);
+>          }
+>          break;
+> +    case QPP_1_4_4:
+>      case QPP:
+>      case QPP_4:
+>      case PP4_4:
+> diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+> index 8ac603e212..29fc6aa5af 100644
+> --- a/hw/block/m25p80_sfdp.c
+> +++ b/hw/block/m25p80_sfdp.c
+> @@ -135,6 +135,26 @@ define_sfdp_read(mt35xu02g);
+>   * Matronix
+>   */
+>
+> +static const uint8_t sfdp_mx25r6435[] =3D {
+> +    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x00, 0xff,
+> +    0x00, 0x06, 0x01, 0x10, 0x10, 0x00, 0x00, 0xff,
+> +    0xe5, 0x20, 0xf1, 0xff, 0xff, 0xff, 0xff, 0x03,
+> +    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x04, 0xbb,
+> +    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff,
+> +    0xff, 0xff, 0x00, 0xff, 0x0c, 0x20, 0x0f, 0x52,
+> +    0x10, 0xd8, 0x00, 0xff, 0x23, 0x72, 0xf5, 0x00,
+> +    0x82, 0xed, 0x04, 0xcc, 0x44, 0x83, 0x68, 0x44,
+> +    0x30, 0xb0, 0x30, 0xb0, 0xf7, 0xc4, 0xd5, 0x5c,
+> +    0x00, 0xbe, 0x29, 0xff, 0xf0, 0xd0, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +};
+> +define_sfdp_read(mx25r6435)
+> +
+>  /* mx25l25635e. No 4B opcodes */
+>  static const uint8_t sfdp_mx25l25635e[] =3D {
+>      0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x01, 0xff,
+> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+> index 61544fb7cc..da3e7d74bc 100644
+> --- a/hw/block/m25p80_sfdp.h
+> +++ b/hw/block/m25p80_sfdp.h
+> @@ -19,6 +19,7 @@ uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+>  uint8_t m25p80_sfdp_mt35xu01g(uint32_t addr);
+>  uint8_t m25p80_sfdp_mt35xu02g(uint32_t addr);
+>
+> +uint8_t m25p80_sfdp_mx25r6435(uint32_t addr);
+>  uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
+>  uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
+>  uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
 
-> 
-> Thanks,
-> Kohei
-> 
-> > > > 
-> > > > > (3) qemu is terminiated on qmp command 'system_reset'
-> > > > > 
-> > > > > (qemu) system_reset
-> > > > > cpus are not resettable, terminating
-> > > > > 
-> > > > > (4) 'reboot' from the guest doesn't work
-> > > > > 
-> > > > > root@guest:~# reboot
-> > > > >     :
-> > > > > Requesting system reboot
-> > > > > [  123.264893] reboot: Restarting system
-> > > > > qemu-system-aarch64: cpus are not resettable, terminating
-> > > > > 
-> > > > 
-> > > > I suspect 'system_reset' from the monitor and a 'reboot' from the command line
-> > > > will, at some point, end up following the same sequence.  I need to think about
-> > > > the 'reboot' use case further.
-> > > > 
-> > > > 
-> > > > > (5) Incompatible to virtio-iommu-pci. The realm guest doesn't boot up if a virtio-iommu-pci
-> > > > >      device is specified in the command lines
-> > > > > 
-> > > > > host$ qemu-system-aarch64 -enable-kvm                                          \
-> > > > > -object rme-guest,id=rme0,convert-in-place=on                                  \
-> > > > > -machine virt,gic-version=3,confidential-guest-support=rme0                    \
-> > > > > -m 2G -cpu host -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2   \
-> > > > > -object memory-backend-guest-memfd,id=mem0,size=2G,share=on                    \
-> > > > > -numa node,nodeid=0,cpus=0-3,memdev=mem0                                       \
-> > > > > -serial mon:stdio -monitor none -nographic -nodefaults                         \
-> > > > > -kernel /mnt/linux/arch/arm64/boot/Image                                       \
-> > > > > -initrd /mnt/buildroot/output/images/rootfs.cpio.xz                            \
-> > > > > -append earlycon=pl011,mmio,0x10009000000                                      \
-> > > > > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                          \
-> > > > > -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                          \
-> > > > > -device virtio-iommu-pci,bus=pcie.0                                            \
-> > > > > -drive file=/mnt/disk.qcow2,if=none,id=drive0                                  \
-> > > > > -device virtio-blk-pci,id=virtblk0,bus=pcie.1,drive=drive0,num-queues=4        \
-> > > > > -netdev tap,id=tap1,vhost=on,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
-> > > > > -device virtio-net-pci,bus=pcie.2,netdev=tap1,mac=b8:3f:d2:1d:3e:c0
-> > > > 
-> > > > 
-> > > > I added the following to my Realm's boot command parameters:
-> > > > 
-> > > > -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1 \
-> > > > -device virtio-iommu-pci,bus=pcie.0 \
-> > > > 
-> > > > 
-> > > > >       :
-> > > > > [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x000f0510]
-> > > > > [    0.000000] Linux version 7.2.0-rc5-gavin-gf5098b6bae76 (gshan@nvidia-grace-hopper-01.khw.eng.bos2.dc.redhat.com) (gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4), GNU ld version 2.41-65.el10) #47 SMP PREEMPT Mon Jul 27 02:29:03 EDT 2026
-> > > > > [    0.000000] KASLR enabled
-> > > > > [    0.000000] Machine model: linux,dummy-virt
-> > > > > [    0.000000] earlycon: pl11 at MMIO 0x0000010009000000 (options '')
-> > > > > [    0.000000] printk: legacy bootconsole [pl11] enabled
-> > > > > [    0.000000] efi: UEFI not found.
-> > > > > [    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
-> > > > > [    0.000000] NODE_DATA(0) allocated [mem 0xbfbecb00-0xbfbf09bf]
-> > > > > [    0.000000] psci: probing for conduit method from DT.
-> > > > > [    0.000000] psci: PSCIv1.1 detected in firmware.
-> > > > > [    0.000000] psci: Using standard PSCI v0.2 function IDs
-> > > > > [    0.000000] psci: MIGRATE_INFO_TYPE not supported.
-> > > > > [    0.000000] psci: SMC Calling Convention v1.2
-> > > > > [    0.000000] RME: Using RSI version 1.0
-> > > > > [    0.000000] Zone ranges:
-> > > > > [    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
-> > > > > [    0.000000]   DMA32    empty
-> > > > > [    0.000000]   Normal   empty
-> > > > > [    0.000000] Movable zone start for each node
-> > > > >       :
-> > > > > [    6.664423] Serial: AMBA PL011 UART driver
-> > > > > [    7.151312] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
-> > > > > [    7.213181] printk: console [ttyAMA0] enabled
-> > > > > [    8.536454] HugeTLB: registered 1.00 Gi
-> > > > > <...The realm guest stops here, no output since then...>
-> > > > > 
-> > > > 
-> > > > On my side I get to user space but virtio-serial and virtio-net don't work.  I'm
-> > > > guessing virtio-iommu-pci does the same thing as this patch [1], but virtio
-> > > > devices are disrupted because it is not configured properly.  I need to
-> > > > investigate to find the best approach to follow, i.e implicitly use (and
-> > > > configure) a virtio-iommu-pci or make sure that [1] and a virtio-iommu-pci
-> > > > device can play nice together.
-> > > > 
-> > > > Thanks,
-> > > > Mathieu
-> > > > 
-> > > > [1]. [RFC v4 21/24] target/arm/kvm-rme: Add DMA remapping for the shared memory region
-> > > > 
-> > > > 
-> > > > > Thanks,
-> > > > > Gavin
-> > > > > 
-> > > > 
-> > > 
+Regards,
+Bin
 

@@ -1,46 +1,103 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7845860A2604
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Nov 2026 14:35:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1F0F606A31C
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Nov 2026 15:33:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=Ln5CPB/N
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=YIj8Mcj7;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=OAjarMXV
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xTgkv-0006E8-5q; Wed, 18 Nov 2026 09:35:27 -0500
+	id 1xThef-0004lK-GX; Wed, 18 Nov 2026 10:33:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xTgkP-00065u-7A; Wed, 18 Nov 2026 09:35:04 -0500
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xTheF-0004gh-2f
+ for qemu-arm@nongnu.org; Wed, 18 Nov 2026 10:32:35 -0500
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xTgkL-000872-7p; Wed, 18 Nov 2026 09:34:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1795012486; bh=NcFiA+dhP5i9p8TWr3SyRIutCyaFeO7yISqOtkZXiTM=;
- h=Date:Subject:From:To:Cc:References:In-Reply-To;
- b=Ln5CPB/NGFInQV56g6exPvWiLkXM9fN2ZgNQw5UZkh/sU0/qUK1eTzkTmRyer0BnW
- r9ZBRBbqIDifwOam5xQf1Ewqo6zVOXYM6URC9knU4YbsggipN/Luw3sIBcSXyOEQCv
- TPlwA2PGHa8bbfuOBHL99vfQ8+/0z3dnQ6rnKZE15TqlS/lb2I6QqRFhs3GIKVvTUv
- 9mecNLM6pz6bRMkKu2J5rIOxFaxIK1JYCmjXBjZkl3EaxpROZKsq97ETwJrQWekyqh
- htmofJPBnocE+fHp80TN1wcaJEM2jQZjXZ9DbtdfON9WwplfEkopbyaeZ5tkEAL8/0
- 5i7G1vpORErDQ==
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id E289C1E7B08;
- Wed, 18 Nov 2026 17:34:46 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id CB04C46110A;
- Wed, 18 Nov 2026 17:34:46 +0300 (MSK)
-Message-ID: <5f508944-1398-4163-9c72-ba7970640c6b@tls.msk.ru>
-Date: Wed, 18 Nov 2026 17:34:46 +0300
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xTheC-0002O5-9t
+ for qemu-arm@nongnu.org; Wed, 18 Nov 2026 10:32:34 -0500
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6AIDQBS5376582
+ for <qemu-arm@nongnu.org>; Wed, 18 Nov 2026 15:32:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ UheKrYAI9m42QIBsOVRlJRqrVVotx5ft7J9rdCw6tIY=; b=YIj8Mcj7UCfmWZW3
+ pxMl2rgPdLgWpl9zAr6PYnndm/JVMwxnOgNIGA6NXhHzeEc9vaCVqUOZxrCB//wD
+ +AZPt99xQX34xuql7gM6AQ4s1l66sCvJxB41nD7Y4fv+vmFoD6XrJW6ru+o4qfn8
+ wRRHV3H4tOtW32Am0Ny0rHIMt2Goopu0ymvxw4EAiKt1ponwPP0J+yChH1UVyiy4
+ /VlaqW7OTqDr7kyn334ky63NVrqKjKzdxq35coM8dTgsgps12bb6hFStzChkASpq
+ wU8Jqgp5QHuc8A0z+FA8aiMmZJBVkR+Be0k6h6nwhT3U6ua3a7enauYGt4Uu8l3t
+ mbJKlg==
+Received: from mail-yx1-f70.google.com (mail-yx1-f70.google.com
+ [74.125.224.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j0yv9kpwt-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 18 Nov 2026 15:32:30 +0000 (GMT)
+Received: by mail-yx1-f70.google.com with SMTP id
+ 956f58d0204a3-67935d0ddcdso1632211d50.3
+ for <qemu-arm@nongnu.org>; Wed, 18 Nov 2026 07:32:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1795015950; x=1795620750; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=UheKrYAI9m42QIBsOVRlJRqrVVotx5ft7J9rdCw6tIY=;
+ b=OAjarMXVK/8/uEBzEj5yhvGBuP1zM9/6p5ND5pgcLRMiJAaFW8hL3AiH1wqPdotcIT
+ MO9njXWrv8d9N3A+g1QiSxK4VuPumrMhjxyL+OpUEv//+VMcMF3rhWN+fbil5PuJ/Cas
+ /zVbTGKA1Zs8uBT6CSCTn3XewiaoCcSSKsPTOlJR+FwMBaHr6deHDUWf0XiZV+CbJFSg
+ Zze7xsLiNdKTAc+S3/OTtshGtU1XJor5oR7mdLG+AUUJqE34gNvPhQ2MD3xq+pXAIVks
+ FIw4q+FswyBfYYB2b3puy0xhAvi1xKaRgnCtRa1X7neJy4YHiO9uEnpcpqeiJwhsN16a
+ dUlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1795015950; x=1795620750;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=UheKrYAI9m42QIBsOVRlJRqrVVotx5ft7J9rdCw6tIY=;
+ b=swJZMAhFo0z+Kl5+/ExJaNBBRx1KnRjgYNBtZ8SGd+M/RTepWVkOCdhjbV1l/rRLkx
+ /CuDKq6L61wf3Avs+6kzgOew8YuZqIeaGu4aWsgZDSGqC/wZH7CKHjzwukAt5HHSRwAw
+ OkNxqJXYATKFqz2ajbf4OCeW0w5nX/rVSC443gsnYqmYQHqPtBl5TQzvpahGvLV+cw1s
+ 5GXeFahQE5CkYrKsfGxgAxeSfkfwZbIcizwtBBxRA5JYMsiirYA/n9yMn9+jMA0Eaxzn
+ yFq2e3TgBnwwTeQQzBdfzmf5nLyfJSix1dBAPK3n3zzA0V0tmJ+EuCj1gHhy4tMHcxB8
+ utqQ==
+X-Forwarded-Encrypted: i=1;
+ AL+hErHxE4PMaBbGWOaxocC7AKzqaZRj1S4AdMkz+oedqlSdKk0VZI/0Hr1zif1mfXtvJ7gNfYraPffJyw==@nongnu.org
+X-Gm-Message-State: APuU4Z83zGHc6kNCtX6hrjkzbWdw6SOwhuGxW76XaAmE5KhJr4zs0SYs
+ 4FRIoddxDbpqDvPutvTjkT2mLJbAOGzIfvNpOx1sqVsLXKL/mo2EnYe6OFHap7SV4zi+0jskmUJ
+ XrPUubR2cXwElA9isEjbosSZnnrFr83WVo1ifBFiYGuJ36LNv8dJS9ZY=
+X-Gm-Gg: AZFdTZcjEZmIjA03rrZcx7/Ik7Fj/6wahRYI7rsz48lQcFjRYR6qtrYdU/VU0Zss6RK
+ o3ZdFniYh7CbtqfB8A0JUfNvXhEy1QgQE3AUbafkv2M9dtKwBxYcFRHFTxhXhOUxnt1YOrkF4va
+ OZi6k3sq1yV0zgWjeA0fK0vksn71bZHjOzsk5zXR2djHFURoOhVT4JXFC6uVCXjB2nSr6t/Do2t
+ tNBDyDNUgnbdyZWmsvzc4JMzSr/fIUE/ixCzIxUHOZIkQTz5fCFcmuTsp2KOMtDCaJIXzMApddw
+ xf3dshf/UbBgSQ/DETQmBe8yGWH03ofoYINBCSj3tNhVpGgyDB8JC7EFWZ+gfNuO0tfU50EqfgP
+ FLIaRKrxHmVut2HeCd8HH1oMt1WuySJhTzImr5ahwVN4Qq3SsoKS25RfzDBKdWvbi09ck3qfQHv
+ rTH7frfBc=
+X-Received: by 2002:a05:690e:43cb:b0:67c:6a94:f104 with SMTP id
+ 956f58d0204a3-67dd3f8bf82mr878699d50.61.1795015949893; 
+ Wed, 18 Nov 2026 07:32:29 -0800 (PST)
+X-Received: by 2002:a05:690e:43cb:b0:67c:6a94:f104 with SMTP id
+ 956f58d0204a3-67dd3f8bf82mr878676d50.61.1795015949176; 
+ Wed, 18 Nov 2026 07:32:29 -0800 (PST)
+Received: from [192.168.69.234] (pmd666.hd.free.fr. [82.67.153.177])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4a656c11f1csm5868540f8f.53.2026.11.18.07.32.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Nov 2026 07:32:28 -0800 (PST)
+Message-ID: <74083d44-2bf2-4972-ad84-52c9b93f099e@oss.qualcomm.com>
+Date: Wed, 18 Nov 2026 16:32:27 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 0/6] tcg/riscv64: Fix vector immediate handling
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
+Content-Language: en-US
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
  Aurelien Jarno <aurelien@aurel32.net>,
@@ -51,18 +108,48 @@ Cc: qemu-riscv@nongnu.org,
  QEMU Stable <qemu-stable@nongnu.org>
 References: <20261028143330.6518-1-philmd@oss.qualcomm.com>
  <d16001a6-d66c-4af5-8e61-35484b24c37c@tls.msk.ru>
-Content-Language: en-US, ru-RU
-In-Reply-To: <d16001a6-d66c-4af5-8e61-35484b24c37c@tls.msk.ru>
+ <5f508944-1398-4163-9c72-ba7970640c6b@tls.msk.ru>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <5f508944-1398-4163-9c72-ba7970640c6b@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Proofpoint-GUID: BxCiw2ao3pVmjW6uLo17dIUqXGtCrnJg
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE4MDA2MSBTYWx0ZWRfX1giTBiB8iGfd
+ 4FcuuyLubWRa89QptRwdM/jL2pcD0Jvw9uiw/wcVFCUsiUKWje5vry3y63Ro8BaQ9rlC6uxFa3l
+ t2yZnnrzC+iJn01LpWB8rViTMN0VzwA=
+X-Proofpoint-ORIG-GUID: BxCiw2ao3pVmjW6uLo17dIUqXGtCrnJg
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE4MDA2MSBTYWx0ZWRfXzRDJ38U5GOHX
+ +AnU1T3JAaz05OwCu+okRkfec6hIHqM3GY4RaMVY5xh3fpU/ZeI7EHCaq2WwdyE2EsXUV4lxVlt
+ eNgssVYuuChvacQGyDmLNvRVMICvL+sREKdzq4YuK3Kl50+sbJ/41pguGWOpJCA8otERm01b2vD
+ HWjl1fyaF8wyUHaCNlIJchQCHtgDvSLtwNfnIOOjTu++CF40vv8eoRutjhb1/3ECyfyt5yk2al0
+ zyybOSksjcB4M3H7WTMERyyiMmXfex/6/it8uu9RJnr7n8xfTGEECXyeV5qa74IBeaq9oeLkc/G
+ 5/wO3UpW+BJEyGIGTjiwaRlQP+tGkPmuFIXmPzo0VF2napS0ra/8FHZFhm5KRFOSIVZpYFvjZzd
+ U7/Q5qSGZutqV+PTeOuaFPOMlfMN/hpVkQIhRrqY9tPlNWX/Eb1+bMuMlnKhwmSPD1LNyKul1Wz
+ le/vikdaGNF3xJJ8m9Q==
+X-Authority-Analysis: v=2.4 cv=RYIFmFtv c=1 sm=1 tr=0 ts=6afdc50e cx=c_pps
+ a=S/uc88zpIJVNbziUnJ6G4Q==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+ a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=VwQbUJbxAAAA:8 a=hXZgYZo4AAAA:8 a=X8Xlvf7YKcKku9pxmycA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=O8hF6Hzn-FEA:10 a=nd2WpGr1bMy9NW-iytEl:22
+ a=37BJPeUnzxYkbV1yBC-1:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-18_04,2026-11-16_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 spamscore=0 priorityscore=1501 phishscore=0 impostorscore=0
+ adultscore=0 suspectscore=0 bulkscore=0 lowpriorityscore=0 clxscore=1015
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611180061
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,57 +168,65 @@ X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/18/26 17:32, Michael Tokarev wrote:
-> On 10/28/26 17:33, Philippe Mathieu-Daudé wrote:
->> The riscv64 backend mishandles constant operands of RVV .vi forms:
+On 18/11/26 15:34, Michael Tokarev wrote:
+> On 11/18/26 17:32, Michael Tokarev wrote:
+>> On 10/28/26 17:33, Philippe Mathieu-Daudé wrote:
+>>> The riscv64 backend mishandles constant operands of RVV .vi forms:
+>>>
+>>> - logical ops apply the immediate at a stale SEW (wrong results,
+>>>    since v9.2);
+>>> - arithmetic, compare and select ops encode the whole replicated
+>>>    64-bit constant instead of one element;
+>>> - shifts take uimm5, but the encoder checks for simm5.
+>>>
+>>> 1-2: add a uimm5 encoder for shifts,
+>>> 3-4: extract one element (vec_imm()) for arithmetic and compare/select,
+>>> 5: follow rth suggestion of adding a new constraint to pick the smallest
+>>>     element size at which the constant replicates as a simm5, and the
+>>>     emitter switches SEW to it,
+>>> 6: AI-generated regression test.
+>>>
+>>> Tested with qemu-aarch64 built for a riscv64 host (debug-TCG), run
+>>> under qemu-riscv64 -cpu max: the new test fails or aborts before the
+>>> series, and passes with it at every SVE vector length.
+>>>
+>>> [1] https://lore.kernel.org/qemu-devel/20261010174742.3552498-1- 
+>>> aurelien@aurel32.net/
+>>> Supersedes: <20261010174742.3552498-1-aurelien@aurel32.net>
+>>>
+>>> Philippe Mathieu-Daudé (6):
+>>>    tcg/riscv64: Factor encode_vi_raw() out of encode_vi()
+>>>    tcg/riscv64: Use a uimm5 encoder for vector shift immediates
+>>>    tcg/riscv64: Extract elements for vector arithmetic immediates
+>>>    tcg/riscv64: Fix constant handling in vector comparisons and selects
+>>>    tcg/riscv64: Fix logical vector immediate matching and emission
+>>>    tests/tcg/aarch64: Add vector immediate regression tests
 >>
->> - logical ops apply the immediate at a stale SEW (wrong results,
->>    since v9.2);
->> - arithmetic, compare and select ops encode the whole replicated
->>    64-bit constant instead of one element;
->> - shifts take uimm5, but the encoder checks for simm5.
+>> Hi!
 >>
->> 1-2: add a uimm5 encoder for shifts,
->> 3-4: extract one element (vec_imm()) for arithmetic and compare/select,
->> 5: follow rth suggestion of adding a new constraint to pick the smallest
->>     element size at which the constant replicates as a simm5, and the
->>     emitter switches SEW to it,
->> 6: AI-generated regression test.
+>>  From this patchset, 5/6 "Fix logical vector immediate matching and 
+>> emission" is
+>> marked for-stable.  However, it uses a function (vec_imm) which is 
+>> introduced in
+>> 3/6  "Fix logical vector immediate matching and emission".  Obviously, 
+>> just 5/6
+>> alone wont work.
 >>
->> Tested with qemu-aarch64 built for a riscv64 host (debug-TCG), run
->> under qemu-riscv64 -cpu max: the new test fails or aborts before the
->> series, and passes with it at every SVE vector length.
->>
->> [1] https://lore.kernel.org/qemu-devel/20261010174742.3552498-1-aurelien@aurel32.net/
->> Supersedes: <20261010174742.3552498-1-aurelien@aurel32.net>
->>
->> Philippe Mathieu-Daudé (6):
->>    tcg/riscv64: Factor encode_vi_raw() out of encode_vi()
->>    tcg/riscv64: Use a uimm5 encoder for vector shift immediates
->>    tcg/riscv64: Extract elements for vector arithmetic immediates
->>    tcg/riscv64: Fix constant handling in vector comparisons and selects
->>    tcg/riscv64: Fix logical vector immediate matching and emission
->>    tests/tcg/aarch64: Add vector immediate regression tests
+>> However, it feels like whole patchset should be picked up for the 
+>> stable series,
+>> not just a single patch - because the whole thing fixes an assortment 
+>> of problems
+>> in this area.
 > 
-> Hi!
+> Aha, so the other patches fixes ussues introduced after the last qemu 
+> releases.
+> So..
 > 
->  From this patchset, 5/6 "Fix logical vector immediate matching and emission" is
-> marked for-stable.  However, it uses a function (vec_imm) which is introduced in
-> 3/6  "Fix logical vector immediate matching and emission".  Obviously, just 5/6
-> alone wont work.
+>> Alternatively I can pick just this function from 3/6, which does not 
+>> feel right.
 > 
-> However, it feels like whole patchset should be picked up for the stable series,
-> not just a single patch - because the whole thing fixes an assortment of problems
-> in this area.
+> This seems to be the right way to go.
 
-Aha, so the other patches fixes ussues introduced after the last qemu releases.
-So..
+If this isn't too much burden, sure. Otherwise I'll defer to Aurelien.
 
-> Alternatively I can pick just this function from 3/6, which does not feel right.
-
-This seems to be the right way to go.
-
-Thanks,
-
-/mjt
 

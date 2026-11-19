@@ -1,34 +1,34 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B4D8606A320
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Nov 2026 15:03:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BAC8E60A2609
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Nov 2026 15:09:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=s2VGFV5S
+	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=JNuZi1KQ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xU3fW-0000NQ-RN; Thu, 19 Nov 2026 10:03:22 -0500
+	id 1xU3lC-0003cS-Jb; Thu, 19 Nov 2026 10:09:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <magnuskulke@linux.microsoft.com>)
- id 1xU3Zu-000393-Mn; Thu, 19 Nov 2026 09:57:36 -0500
+ id 1xU3iR-0002UL-Ne; Thu, 19 Nov 2026 10:06:28 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <magnuskulke@linux.microsoft.com>)
- id 1xU3Zr-0007u4-86; Thu, 19 Nov 2026 09:57:34 -0500
+ id 1xU3iP-0001iC-6D; Thu, 19 Nov 2026 10:06:23 -0500
 Received: from example.com (unknown [167.220.208.76])
- by linux.microsoft.com (Postfix) with ESMTPSA id B613A20B716A;
- Thu, 19 Nov 2026 06:57:24 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com B613A20B716A
+ by linux.microsoft.com (Postfix) with ESMTPSA id 8CA1320B7169;
+ Thu, 19 Nov 2026 07:06:14 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 8CA1320B7169
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1795100248;
- bh=H4E2pt5Jzb29mE5WvYKWv8kXQcxb3SOEBPwaSH2tLaI=;
+ s=default; t=1795100777;
+ bh=lhki+DaTPRnWOksp1PiPaK2HEqg9Tt/WHms9hAH/xrE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=s2VGFV5SNvV6HwJEDa4bxv+AstzNCtRIIRCfN7SfdJAhWzxgWIt88gH/TQQsrV3j4
- QhhEoeMuYVJKt4pkF3ruYaGmgyXJmNzFjrVzoPr6XKywUuS1jxWQxr2SHViNQRLsmc
- HFnmi0ewog3h+gJlCOIXDqWZTqq/f7ISGFoai2dQ=
-Date: Thu, 19 Nov 2026 15:57:18 +0100
+ b=JNuZi1KQXWNMLuqJ/nH9oZ9NA8q5gH7wbj8YF9nP37Fd2T+PrkezNbW1xSV0GWGpB
+ hRWtP5XqT5QwGJOAhu/2v1aSKO0uplMelyyJp/wfFmc5j6XlOXtb/mGsNHLFPkC34Q
+ zuQnJDi0R2pUqvgmXsyJpnockrrp9h2790vICe8I=
+Date: Thu, 19 Nov 2026 16:06:13 +0100
 From: Magnus Kulke <magnuskulke@linux.microsoft.com>
 To: Aastha Rawat <aastharawat@linux.microsoft.com>
 Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
@@ -46,7 +46,7 @@ Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
 Subject: Re: [PATCH v6 02/14] accel/mshv: add arch-specific accelerator init
  hook
-Message-ID: <av8OTldUyqKQnppQ@example.com>
+Message-ID: <av8QZaVwh+rgKDX/@example.com>
 References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
  <20261001-mshv_accel_arm64_supp-v6-2-aefe5e76a0e3@linux.microsoft.com>
 X-Archived-By: <archiver.kernel.org>
@@ -113,8 +113,8 @@ On Thu, Oct 01, 2026 at 10:52:47AM +0000, Aastha Rawat wrote:
 > +    ret = mshv_arch_accel_init(as, ms, mshv_fd);
 > +    if (ret < 0) {
 
-now that this is fallible, we probably want to close the mshv_fd before
-returning.
+since this is now fallible, we probably want to close mshv_fd before
+returning here
 
 > +        return -1;
 > +    }

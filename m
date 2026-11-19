@@ -1,34 +1,34 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8652606A32F
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Nov 2026 16:17:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 525BA606A326
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Nov 2026 16:26:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=CdTizZPd
+	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=sYjr3QdE
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xU4oh-0000ag-HU; Thu, 19 Nov 2026 11:16:56 -0500
+	id 1xU4y1-00034Q-JW; Thu, 19 Nov 2026 11:26:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <magnuskulke@linux.microsoft.com>)
- id 1xU4nu-0000Pi-5x; Thu, 19 Nov 2026 11:16:11 -0500
+ id 1xU4xn-00030M-10; Thu, 19 Nov 2026 11:26:25 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <magnuskulke@linux.microsoft.com>)
- id 1xU4nr-0004W8-7S; Thu, 19 Nov 2026 11:16:04 -0500
+ id 1xU4xl-0005gd-AS; Thu, 19 Nov 2026 11:26:18 -0500
 Received: from example.com (unknown [167.220.208.76])
- by linux.microsoft.com (Postfix) with ESMTPSA id 788BF20B7169;
- Thu, 19 Nov 2026 08:15:54 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 788BF20B7169
+ by linux.microsoft.com (Postfix) with ESMTPSA id 9E5BA20B716A;
+ Thu, 19 Nov 2026 08:26:10 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 9E5BA20B716A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1795104957;
- bh=0G5fuYdCNK/rfg54tr6QJ2nnjuAg/gwKeq+nN0ZqCYY=;
+ s=default; t=1795105573;
+ bh=5ETSpBySVxmPxDOnQG2fOeCSn1nfpualyD5b+psxVO4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CdTizZPdBWnk0FEnrICCZ0rj3/6Jip33V12P2KDf9ls/+O+mRGXg0gx3GYGKn+10h
- vaeIE63RwjyQzIZOCnz0afkdhQk2lzOZqLW6/7dtLNDzXbqqVvYxkxYKc3TXwp6x1G
- ZUg7NPIgAmaTpamqfOcRe1biKw4Vf58vYx6tXX2Y=
-Date: Thu, 19 Nov 2026 17:15:53 +0100
+ b=sYjr3QdEB0YT00sBNRQHnaBbc834e3Jj1ja+7QqnSp4KmTtEUtehFRx3Tf9DrJL2c
+ 3vUcrE5Tep+l9u7WaM26wXifI/M8JBzoXNnfyThVau02g4nZdpLfNuhD7pvoTK3l+g
+ JBTaaf5QK/eGjPWJSfuPiiQuHj8NG+UCvFs7a840=
+Date: Thu, 19 Nov 2026 17:26:09 +0100
 From: Magnus Kulke <magnuskulke@linux.microsoft.com>
 To: Aastha Rawat <aastharawat@linux.microsoft.com>
 Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
@@ -44,16 +44,16 @@ Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: Re: [PATCH v6 05/14] target/arm/mshv: implement vcpu state
- operations for ARM64
-Message-ID: <av8guV6yQkrfIjFZ@example.com>
+Subject: Re: [PATCH v6 06/14] target/arm: convert host CPU feature ifdef
+ ladder to runtime checks
+Message-ID: <av8jIWEKN9QSc4pn@example.com>
 References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-5-aefe5e76a0e3@linux.microsoft.com>
+ <20261001-mshv_accel_arm64_supp-v6-6-aefe5e76a0e3@linux.microsoft.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-5-aefe5e76a0e3@linux.microsoft.com>
+In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-6-aefe5e76a0e3@linux.microsoft.com>
 Received-SPF: pass client-ip=13.77.154.182;
  envelope-from=magnuskulke@linux.microsoft.com; helo=linux.microsoft.com
 X-Spam_score_int: -26
@@ -80,237 +80,70 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Oct 01, 2026 at 10:52:50AM +0000, Aastha Rawat wrote:
-> Add support for reading and writing ARM64 CPU registers in the MSHV
-> accelerator. This includes functions to set and get registers,
-> initialize and destroy VCPU state, and manage register state
-> synchronization between QEMU and hypervisor.
+On Thu, Oct 01, 2026 at 10:52:51AM +0000, Aastha Rawat wrote:
+> Replace the compile-time #if/#elif preprocessor ladder in
+> aarch64_host_initfn() with runtime calls and add mshv_enabled() to it.
+> This ensures the correct accelerator is selected at runtime when
+> multiple accelerators are compiled in.
+> 
+> Add CONFIG_MSHV to the aarch64_cpus[] guard so that mshv accelerator can
+> register the "host" CPU type.
 > 
 > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 > ---
->  include/hw/hyperv/hvgdk_mini.h |  42 +++++++++++++++
->  target/arm/mshv/mshv-all.c     | 119 +++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 161 insertions(+)
+>  target/arm/cpu64.c | 25 +++++++++++++++----------
+>  1 file changed, 15 insertions(+), 10 deletions(-)
 > 
-> diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-> index a5527d49cf..b5bcea353a 100644
-> --- a/include/hw/hyperv/hvgdk_mini.h
-> +++ b/include/hw/hyperv/hvgdk_mini.h
-> @@ -32,6 +32,46 @@ typedef enum hv_register_name {
->      HV_REGISTER_PENDING_EVENT0       = 0x00010004,
->      HV_REGISTER_PENDING_EVENT1       = 0x00010005,
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index dcd0d698b3..a9e346049d 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -811,17 +811,21 @@ void aarch64_host_initfn(Object *obj)
+>      }
+>  #endif
 >  
-> +#if defined(__aarch64__)
+> +    if (mshv_enabled()) {
+> +        mshv_arm_set_cpu_features_from_host(cpu);
 
-do we need those ifdefs here (they create a checkpatch warning)? Since
-they have a clear prefix and all values are explicitly assigned we
-might not run into a conflict.
+as pointed out by Peter, we probably want to keep the defines, but
+this fn is also not present in this commit yet, so it might need a
+stub or reordering.
 
-> +    HV_ARM64_REGISTER_XZR   = 0x0002FFFE,
-> +    HV_ARM64_REGISTER_X0    = 0x00020000,
-> +    HV_ARM64_REGISTER_X1    = 0x00020001,
-> +    HV_ARM64_REGISTER_X2    = 0x00020002,
-> +    HV_ARM64_REGISTER_X3    = 0x00020003,
-> +    HV_ARM64_REGISTER_X4    = 0x00020004,
-> +    HV_ARM64_REGISTER_X5    = 0x00020005,
-> +    HV_ARM64_REGISTER_X6    = 0x00020006,
-> +    HV_ARM64_REGISTER_X7    = 0x00020007,
-> +    HV_ARM64_REGISTER_X8    = 0x00020008,
-> +    HV_ARM64_REGISTER_X9    = 0x00020009,
-> +    HV_ARM64_REGISTER_X10   = 0x0002000A,
-> +    HV_ARM64_REGISTER_X11   = 0x0002000B,
-> +    HV_ARM64_REGISTER_X12   = 0x0002000C,
-> +    HV_ARM64_REGISTER_X13   = 0x0002000D,
-> +    HV_ARM64_REGISTER_X14   = 0x0002000E,
-> +    HV_ARM64_REGISTER_X15   = 0x0002000F,
-> +    HV_ARM64_REGISTER_X16   = 0x00020010,
-> +    HV_ARM64_REGISTER_X17   = 0x00020011,
-> +    HV_ARM64_REGISTER_X18   = 0x00020012,
-> +    HV_ARM64_REGISTER_X19   = 0x00020013,
-> +    HV_ARM64_REGISTER_X20   = 0x00020014,
-> +    HV_ARM64_REGISTER_X21   = 0x00020015,
-> +    HV_ARM64_REGISTER_X22   = 0x00020016,
-> +    HV_ARM64_REGISTER_X23   = 0x00020017,
-> +    HV_ARM64_REGISTER_X24   = 0x00020018,
-> +    HV_ARM64_REGISTER_X25   = 0x00020019,
-> +    HV_ARM64_REGISTER_X26   = 0x0002001A,
-> +    HV_ARM64_REGISTER_X27   = 0x0002001B,
-> +    HV_ARM64_REGISTER_X28   = 0x0002001C,
-> +    HV_ARM64_REGISTER_FP    = 0x0002001D,
-> +    HV_ARM64_REGISTER_LR    = 0x0002001E,
-> +    HV_ARM64_REGISTER_PC    = 0x00020022,
-> +
-> +    /* AArch64 System Register Descriptions: General system control registers */
-> +    HV_ARM64_REGISTER_MIDR_EL1   = 0x00040051,
-> +    HV_ARM64_REGISTER_MPIDR_EL1  = 0x00040001,
-> +
-> +#elif defined(__x86_64__)
->      /* X64 User-Mode Registers */
->      HV_X64_REGISTER_RAX     = 0x00020000,
->      HV_X64_REGISTER_RCX     = 0x00020001,
-> @@ -188,6 +228,8 @@ typedef enum hv_register_name {
->      /* Other MSRs */
->      HV_X64_REGISTER_MSR_IA32_MISC_ENABLE = 0x000800A0,
->  
-> +#endif
-> +
->      /* Misc */
->      HV_X64_REGISTER_HYPERCALL       = 0x00090001,
->      HV_REGISTER_GUEST_OS_ID         = 0x00090002,
-> diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-> index 00c54f5d66..29dd45a123 100644
-> --- a/target/arm/mshv/mshv-all.c
-> +++ b/target/arm/mshv/mshv-all.c
-> @@ -10,17 +10,128 @@
->   */
->  
->  #include "qemu/osdep.h"
-> +#include <sys/ioctl.h>
-> +
-> +#include "qemu/error-report.h"
-> +#include "qemu/memalign.h"
->  #include "hw/arm/virt.h"
-> +
-> +#include "system/cpus.h"
-> +#include "target/arm/cpu.h"
-> +
->  #include "system/mshv.h"
->  #include "system/mshv_int.h"
-> +#include "hw/hyperv/hvgdk_mini.h"
-> +
-> +static const enum hv_register_name STANDARD_REGISTER_NAMES[32] = {
-> +    HV_ARM64_REGISTER_X0,
-> +    HV_ARM64_REGISTER_X1,
-> +    HV_ARM64_REGISTER_X2,
-> +    HV_ARM64_REGISTER_X3,
-> +    HV_ARM64_REGISTER_X4,
-> +    HV_ARM64_REGISTER_X5,
-> +    HV_ARM64_REGISTER_X6,
-> +    HV_ARM64_REGISTER_X7,
-> +    HV_ARM64_REGISTER_X8,
-> +    HV_ARM64_REGISTER_X9,
-> +    HV_ARM64_REGISTER_X10,
-> +    HV_ARM64_REGISTER_X11,
-> +    HV_ARM64_REGISTER_X12,
-> +    HV_ARM64_REGISTER_X13,
-> +    HV_ARM64_REGISTER_X14,
-> +    HV_ARM64_REGISTER_X15,
-> +    HV_ARM64_REGISTER_X16,
-> +    HV_ARM64_REGISTER_X17,
-> +    HV_ARM64_REGISTER_X18,
-> +    HV_ARM64_REGISTER_X19,
-> +    HV_ARM64_REGISTER_X20,
-> +    HV_ARM64_REGISTER_X21,
-> +    HV_ARM64_REGISTER_X22,
-> +    HV_ARM64_REGISTER_X23,
-> +    HV_ARM64_REGISTER_X24,
-> +    HV_ARM64_REGISTER_X25,
-> +    HV_ARM64_REGISTER_X26,
-> +    HV_ARM64_REGISTER_X27,
-> +    HV_ARM64_REGISTER_X28,
-> +    HV_ARM64_REGISTER_FP,
-> +    HV_ARM64_REGISTER_LR,
-> +    HV_ARM64_REGISTER_PC,
-> +};
-> +
-> +static int set_standard_regs(const CPUState *cpu)
-> +{
-> +    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
-> +    struct hv_register_assoc assocs[ARRAY_SIZE(STANDARD_REGISTER_NAMES)] = {};
-> +    int ret;
-> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
-> +    CPUARMState *env = &arm_cpu->env;
-> +
-> +    for (size_t i = 0; i < n_regs - 1; i++) {
-> +        assocs[i].name = STANDARD_REGISTER_NAMES[i];
-> +        assocs[i].value.reg64 = env->xregs[i];
+> +    } else if (kvm_enabled()) {
+>  #if defined(CONFIG_KVM)
+> -    kvm_arm_set_cpreg_mig_tolerances(cpu);
+> -    kvm_arm_set_cpu_features_from_host(cpu);
+> -    aarch64_add_sve_properties(obj);
+> -#elif defined(CONFIG_HVF)
+> -    hvf_arm_set_cpu_features_from_host(cpu);
+> -#elif defined(CONFIG_WHPX)
+> -    whpx_arm_set_cpu_features_from_host(cpu);
+> -#else
+> -    g_assert_not_reached();
+> +        kvm_arm_set_cpreg_mig_tolerances(cpu);
+>  #endif
+> +        kvm_arm_set_cpu_features_from_host(cpu);
+> +        aarch64_add_sve_properties(obj);
+> +    } else if (hvf_enabled()) {
+> +        hvf_arm_set_cpu_features_from_host(cpu);
+> +    } else if (whpx_enabled()) {
+> +        whpx_arm_set_cpu_features_from_host(cpu);
+> +    } else {
+> +        g_assert_not_reached();
 > +    }
-> +
-> +    /* Last register is the program counter */
-> +    assocs[n_regs - 1].name = STANDARD_REGISTER_NAMES[n_regs - 1];
-> +    assocs[n_regs - 1].value.reg64 = env->pc;
-> +
-> +    ret = mshv_set_generic_regs(cpu, assocs, n_regs);
-> +    if (ret < 0) {
-> +        error_report("failed to set standard registers");
-> +        return -1;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static int get_standard_regs(CPUState *cpu)
-> +{
-> +    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
-> +    struct hv_register_assoc assocs[ARRAY_SIZE(STANDARD_REGISTER_NAMES)] = {};
-> +    int ret;
-> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
-> +    CPUARMState *env = &arm_cpu->env;
-> +
-> +    for (size_t i = 0; i < n_regs; i++) {
-> +        assocs[i].name = STANDARD_REGISTER_NAMES[i];
-> +    }
-> +    ret = mshv_get_generic_regs(cpu, assocs, n_regs);
-> +    if (ret < 0) {
-> +        error_report("failed to get standard registers");
-> +        return -1;
-> +    }
-> +
-> +    for (size_t i = 0; i < n_regs - 1; i++) {
-> +        env->xregs[i] = assocs[i].value.reg64;
-> +    }
-> +    env->pc = assocs[n_regs - 1].value.reg64;
-> +
-> +    return 0;
-> +}
->  
->  static int load_regs(CPUState *cpu)
->  {
-> +    int ret;
-> +
-> +    ret = get_standard_regs(cpu);
-> +    if (ret < 0) {
-> +        error_report("Failed to load standard registers");
-> +        return -1;
-> +    }
-> +
->      return 0;
->  }
->  
->  static int store_regs(const CPUState *cpu)
->  {
-> +    int ret;
-> +
-> +    ret = set_standard_regs(cpu);
-> +    if (ret < 0) {
-> +        error_report("Failed to store standard registers");
-> +        return -1;
-> +    }
-> +
->      return 0;
->  }
->  
-> @@ -41,12 +152,20 @@ int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
->  
->  void mshv_arch_init_vcpu(CPUState *cpu)
->  {
-> +    AccelCPUState *state = cpu->accel;
->  
-> +    mshv_setup_hvcall_args(state);
->  }
->  
->  void mshv_arch_destroy_vcpu(CPUState *cpu)
->  {
-> +    AccelCPUState *state = cpu->accel;
-> +
-> +    if (state->hvcall_args.base) {
-> +        qemu_vfree(state->hvcall_args.base);
-> +    }
->  
-> +    state->hvcall_args = (MshvHvCallArgs){0};
->  }
->  
->  int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
+>      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>          aarch64_add_pauth_properties(obj);
+>      }
+> @@ -830,7 +834,8 @@ void aarch64_host_initfn(Object *obj)
+>  static const ARMCPUInfo aarch64_cpus[] = {
+>      { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
+>      { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
+> -#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || defined(CONFIG_WHPX)
+> +#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || \
+> +    defined(CONFIG_WHPX) || defined(CONFIG_MSHV)
+>      { .name = "host",               .initfn = aarch64_host_initfn },
+>  #endif
+>  };
 > 
 > -- 
 > 2.45.4

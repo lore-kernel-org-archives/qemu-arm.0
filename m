@@ -1,34 +1,34 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1C45606A65D
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Nov 2026 15:41:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8652606A32F
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Nov 2026 16:17:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=enDdF/ze
+	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=CdTizZPd
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xU4Fw-0002ej-Fh; Thu, 19 Nov 2026 10:41:01 -0500
+	id 1xU4oh-0000ag-HU; Thu, 19 Nov 2026 11:16:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <magnuskulke@linux.microsoft.com>)
- id 1xU4Fm-0002dq-Kl; Thu, 19 Nov 2026 10:40:52 -0500
+ id 1xU4nu-0000Pi-5x; Thu, 19 Nov 2026 11:16:11 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <magnuskulke@linux.microsoft.com>)
- id 1xU4Fk-0003kx-25; Thu, 19 Nov 2026 10:40:50 -0500
+ id 1xU4nr-0004W8-7S; Thu, 19 Nov 2026 11:16:04 -0500
 Received: from example.com (unknown [167.220.208.76])
- by linux.microsoft.com (Postfix) with ESMTPSA id 74C2520B716A;
- Thu, 19 Nov 2026 07:40:41 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 74C2520B716A
+ by linux.microsoft.com (Postfix) with ESMTPSA id 788BF20B7169;
+ Thu, 19 Nov 2026 08:15:54 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 788BF20B7169
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1795102844;
- bh=9vOU3hO3D8HOjD1AjNsESlAd5JZOhVEBLkDby4weziI=;
+ s=default; t=1795104957;
+ bh=0G5fuYdCNK/rfg54tr6QJ2nnjuAg/gwKeq+nN0ZqCYY=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=enDdF/zeQv2NpdWZEctA1ePt0QKtQBOz1LImxu4ueg2Ts6VNpTMqu85JgHurbHCgM
- hqO/2Lfkhwx9Rp7+qBwCW6pDvClk8R1UrJrH3YRB8UtVSDlcEQZyrTgAJIW28PfTXN
- wezdVALBAmD/qsaWCnqZ4y4QnJBhZqS0MKac4010=
-Date: Thu, 19 Nov 2026 16:40:40 +0100
+ b=CdTizZPdBWnk0FEnrICCZ0rj3/6Jip33V12P2KDf9ls/+O+mRGXg0gx3GYGKn+10h
+ vaeIE63RwjyQzIZOCnz0afkdhQk2lzOZqLW6/7dtLNDzXbqqVvYxkxYKc3TXwp6x1G
+ ZUg7NPIgAmaTpamqfOcRe1biKw4Vf58vYx6tXX2Y=
+Date: Thu, 19 Nov 2026 17:15:53 +0100
 From: Magnus Kulke <magnuskulke@linux.microsoft.com>
 To: Aastha Rawat <aastharawat@linux.microsoft.com>
 Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
@@ -44,16 +44,16 @@ Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: Re: [PATCH v6 04/14] meson, target/arm/mshv: Enable arm64 build &
- add initial MSHV support
-Message-ID: <av8YeOkE6Jay2St7@example.com>
+Subject: Re: [PATCH v6 05/14] target/arm/mshv: implement vcpu state
+ operations for ARM64
+Message-ID: <av8guV6yQkrfIjFZ@example.com>
 References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
+ <20261001-mshv_accel_arm64_supp-v6-5-aefe5e76a0e3@linux.microsoft.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
+In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-5-aefe5e76a0e3@linux.microsoft.com>
 Received-SPF: pass client-ip=13.77.154.182;
  envelope-from=magnuskulke@linux.microsoft.com; helo=linux.microsoft.com
 X-Spam_score_int: -26
@@ -80,238 +80,237 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Oct 01, 2026 at 10:52:49AM +0000, Aastha Rawat wrote:
-> Enable the build of the MSHV accelerator for arm64 in the Meson build
-> system. Introduce initial files and stub implementations to support MSHV
-> for the ARM target.
+On Thu, Oct 01, 2026 at 10:52:50AM +0000, Aastha Rawat wrote:
+> Add support for reading and writing ARM64 CPU registers in the MSHV
+> accelerator. This includes functions to set and get registers,
+> initialize and destroy VCPU state, and manage register state
+> synchronization between QEMU and hypervisor.
 > 
 > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 > ---
->  accel/mshv/mshv-all.c       | 10 ++++--
->  hw/i386/mshv/clock.c        |  2 +-
->  include/system/mshv.h       |  2 +-
->  meson.build                 |  8 ++---
->  target/arm/meson.build      |  1 +
->  target/arm/mshv/meson.build |  7 ++++
->  target/arm/mshv/mshv-all.c  | 81 +++++++++++++++++++++++++++++++++++++++++++++
->  7 files changed, 103 insertions(+), 8 deletions(-)
+>  include/hw/hyperv/hvgdk_mini.h |  42 +++++++++++++++
+>  target/arm/mshv/mshv-all.c     | 119 +++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 161 insertions(+)
 > 
-> diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-> index efe19a3914..f3f1825b0b 100644
-> --- a/accel/mshv/mshv-all.c
-> +++ b/accel/mshv/mshv-all.c
-> @@ -142,8 +142,10 @@ static int create_partition(int mshv_fd, int *vm_fd)
->  {
->      int ret;
->      uint64_t pt_flags, host_proc_features;
-> -    union hv_partition_processor_xsave_features disabled_xsave_features;
->      union hv_partition_processor_features disabled_partition_features = {0};
-> +#if defined(__x86_64__)
-> +    union hv_partition_processor_xsave_features disabled_xsave_features;
-> +#endif
+> diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
+> index a5527d49cf..b5bcea353a 100644
+> --- a/include/hw/hyperv/hvgdk_mini.h
+> +++ b/include/hw/hyperv/hvgdk_mini.h
+> @@ -32,6 +32,46 @@ typedef enum hv_register_name {
+>      HV_REGISTER_PENDING_EVENT0       = 0x00010004,
+>      HV_REGISTER_PENDING_EVENT1       = 0x00010005,
 >  
->      struct mshv_create_partition_v2 args = {0};
->  
-> @@ -155,7 +157,8 @@ static int create_partition(int mshv_fd, int *vm_fd)
->                 (1ULL << MSHV_PT_BIT_GPA_SUPER_PAGES) |
->                 (1ULL << MSHV_PT_BIT_CPU_AND_XSAVE_FEATURES);
->  
-> -    /* enable all */
-> +#if defined(__x86_64__)
-> +    /* enable all xsave features (0 = enabled) */
->      disabled_xsave_features.as_uint64 = 0;
->      /*
->       * AMX TILE XSAVE state (XTILE_DATA) is 8KB, which exceeds the
-> @@ -165,6 +168,7 @@ static int create_partition(int mshv_fd, int *vm_fd)
->      disabled_xsave_features.amx_bf16_support = 1;
->      disabled_xsave_features.amx_int8_support = 1;
->      disabled_xsave_features.amx_fp16_support = 1;
-> +#endif
->  
->      /*
->       * query host for supported processor features and disable unsupported
-> @@ -196,7 +200,9 @@ static int create_partition(int mshv_fd, int *vm_fd)
->      /* populate args structure */
->      args.pt_flags = pt_flags;
->      args.pt_isolation = MSHV_PT_ISOLATION_NONE;
-> +#if defined(__x86_64__)
->      args.pt_disabled_xsave = disabled_xsave_features.as_uint64;
-> +#endif
->      args.pt_num_cpu_fbanks = MSHV_NUM_CPU_FEATURES_BANKS;
->  
->      ret = ioctl(mshv_fd, MSHV_CREATE_PARTITION, &args);
-> diff --git a/hw/i386/mshv/clock.c b/hw/i386/mshv/clock.c
-> index 02c586503a..b7db382752 100644
-> --- a/hw/i386/mshv/clock.c
-> +++ b/hw/i386/mshv/clock.c
-> @@ -182,7 +182,7 @@ static const VMStateDescription vmstate_mshv_clock = {
->      },
->  };
->  
-> -void mshv_clock_init(void)
-> +void mshv_arch_clock_init(void)
->  {
->      vmstate_register(NULL, 0, &vmstate_mshv_clock, &mshv_clock);
->      qemu_add_vm_change_state_handler(mshv_clock_vm_state_change, &mshv_clock);
-> diff --git a/include/system/mshv.h b/include/system/mshv.h
-> index f98ddff9b5..114f065db5 100644
-> --- a/include/system/mshv.h
-> +++ b/include/system/mshv.h
-> @@ -58,7 +58,7 @@ DECLARE_INSTANCE_CHECKER(MshvState, MSHV_STATE,
->  extern MshvState *mshv_state;
->  
->  /* clock (partition reference time) */
-> -void mshv_clock_init(void);
-> +void mshv_arch_clock_init(void);
+> +#if defined(__aarch64__)
 
-the (x86) call site also needs to be changed to mshv_arch_clock_init()
+do we need those ifdefs here (they create a checkpatch warning)? Since
+they have a clear prefix and all values are explicitly assigned we
+might not run into a conflict.
 
->  
->  /* interrupt */
->  int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
-> diff --git a/meson.build b/meson.build
-> index cae1591cd2..6a90a394a2 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -304,7 +304,8 @@ if cpu == 'aarch64'
->    accelerator_targets += {
->      'CONFIG_HVF': ['aarch64-softmmu'],
->      'CONFIG_NITRO': ['aarch64-softmmu'],
-> -    'CONFIG_WHPX': ['aarch64-softmmu']
-> +    'CONFIG_WHPX': ['aarch64-softmmu'],
-> +    'CONFIG_MSHV': ['aarch64-softmmu'],
->    }
->  elif cpu == 'x86_64'
->    accelerator_targets += {
-> @@ -884,10 +885,9 @@ if get_option('kvm').allowed() and host_os == 'linux'
->  endif
->  
->  if get_option('mshv').allowed() and host_os == 'linux'
-> -  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
-> -    error('mshv accelerator requires x64_64 host')
-> +  if host_machine.cpu() in [ 'x86_64', 'aarch64' ]
-> +    accelerators += 'CONFIG_MSHV'
->    endif
-> -  accelerators += 'CONFIG_MSHV'
->  endif
->  
->  if get_option('whpx').allowed() and host_os == 'windows'
-> diff --git a/target/arm/meson.build b/target/arm/meson.build
-> index 0369f96b4c..1ac2cef26b 100644
-> --- a/target/arm/meson.build
-> +++ b/target/arm/meson.build
-> @@ -63,6 +63,7 @@ arm_common_system_ss.add(files(
->  
->  subdir('hvf')
->  subdir('whpx')
-> +subdir('mshv')
->  
->  if 'CONFIG_TCG' in config_all_accel
->     subdir('tcg')
-> diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
-> new file mode 100644
-> index 0000000000..169643691e
-> --- /dev/null
-> +++ b/target/arm/mshv/meson.build
-> @@ -0,0 +1,7 @@
-> +arm_mshv_ss = ss.source_set()
+> +    HV_ARM64_REGISTER_XZR   = 0x0002FFFE,
+> +    HV_ARM64_REGISTER_X0    = 0x00020000,
+> +    HV_ARM64_REGISTER_X1    = 0x00020001,
+> +    HV_ARM64_REGISTER_X2    = 0x00020002,
+> +    HV_ARM64_REGISTER_X3    = 0x00020003,
+> +    HV_ARM64_REGISTER_X4    = 0x00020004,
+> +    HV_ARM64_REGISTER_X5    = 0x00020005,
+> +    HV_ARM64_REGISTER_X6    = 0x00020006,
+> +    HV_ARM64_REGISTER_X7    = 0x00020007,
+> +    HV_ARM64_REGISTER_X8    = 0x00020008,
+> +    HV_ARM64_REGISTER_X9    = 0x00020009,
+> +    HV_ARM64_REGISTER_X10   = 0x0002000A,
+> +    HV_ARM64_REGISTER_X11   = 0x0002000B,
+> +    HV_ARM64_REGISTER_X12   = 0x0002000C,
+> +    HV_ARM64_REGISTER_X13   = 0x0002000D,
+> +    HV_ARM64_REGISTER_X14   = 0x0002000E,
+> +    HV_ARM64_REGISTER_X15   = 0x0002000F,
+> +    HV_ARM64_REGISTER_X16   = 0x00020010,
+> +    HV_ARM64_REGISTER_X17   = 0x00020011,
+> +    HV_ARM64_REGISTER_X18   = 0x00020012,
+> +    HV_ARM64_REGISTER_X19   = 0x00020013,
+> +    HV_ARM64_REGISTER_X20   = 0x00020014,
+> +    HV_ARM64_REGISTER_X21   = 0x00020015,
+> +    HV_ARM64_REGISTER_X22   = 0x00020016,
+> +    HV_ARM64_REGISTER_X23   = 0x00020017,
+> +    HV_ARM64_REGISTER_X24   = 0x00020018,
+> +    HV_ARM64_REGISTER_X25   = 0x00020019,
+> +    HV_ARM64_REGISTER_X26   = 0x0002001A,
+> +    HV_ARM64_REGISTER_X27   = 0x0002001B,
+> +    HV_ARM64_REGISTER_X28   = 0x0002001C,
+> +    HV_ARM64_REGISTER_FP    = 0x0002001D,
+> +    HV_ARM64_REGISTER_LR    = 0x0002001E,
+> +    HV_ARM64_REGISTER_PC    = 0x00020022,
 > +
-> +arm_mshv_ss.add(files(
-> +  'mshv-all.c',
-> +))
+> +    /* AArch64 System Register Descriptions: General system control registers */
+> +    HV_ARM64_REGISTER_MIDR_EL1   = 0x00040051,
+> +    HV_ARM64_REGISTER_MPIDR_EL1  = 0x00040001,
 > +
-> +arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
+> +#elif defined(__x86_64__)
+>      /* X64 User-Mode Registers */
+>      HV_X64_REGISTER_RAX     = 0x00020000,
+>      HV_X64_REGISTER_RCX     = 0x00020001,
+> @@ -188,6 +228,8 @@ typedef enum hv_register_name {
+>      /* Other MSRs */
+>      HV_X64_REGISTER_MSR_IA32_MISC_ENABLE = 0x000800A0,
+>  
+> +#endif
+> +
+>      /* Misc */
+>      HV_X64_REGISTER_HYPERCALL       = 0x00090001,
+>      HV_REGISTER_GUEST_OS_ID         = 0x00090002,
 > diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-> new file mode 100644
-> index 0000000000..00c54f5d66
-> --- /dev/null
+> index 00c54f5d66..29dd45a123 100644
+> --- a/target/arm/mshv/mshv-all.c
 > +++ b/target/arm/mshv/mshv-all.c
-> @@ -0,0 +1,81 @@
-> +/*
-> + * QEMU MSHV support
-> + *
-> + * Copyright Microsoft, Corp. 2026
-> + *
-> + * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
-> + *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
+> @@ -10,17 +10,128 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include <sys/ioctl.h>
 > +
-> +#include "qemu/osdep.h"
-> +#include "hw/arm/virt.h"
-> +#include "system/mshv.h"
-> +#include "system/mshv_int.h"
+> +#include "qemu/error-report.h"
+> +#include "qemu/memalign.h"
+>  #include "hw/arm/virt.h"
 > +
-> +static int load_regs(CPUState *cpu)
+> +#include "system/cpus.h"
+> +#include "target/arm/cpu.h"
+> +
+>  #include "system/mshv.h"
+>  #include "system/mshv_int.h"
+> +#include "hw/hyperv/hvgdk_mini.h"
+> +
+> +static const enum hv_register_name STANDARD_REGISTER_NAMES[32] = {
+> +    HV_ARM64_REGISTER_X0,
+> +    HV_ARM64_REGISTER_X1,
+> +    HV_ARM64_REGISTER_X2,
+> +    HV_ARM64_REGISTER_X3,
+> +    HV_ARM64_REGISTER_X4,
+> +    HV_ARM64_REGISTER_X5,
+> +    HV_ARM64_REGISTER_X6,
+> +    HV_ARM64_REGISTER_X7,
+> +    HV_ARM64_REGISTER_X8,
+> +    HV_ARM64_REGISTER_X9,
+> +    HV_ARM64_REGISTER_X10,
+> +    HV_ARM64_REGISTER_X11,
+> +    HV_ARM64_REGISTER_X12,
+> +    HV_ARM64_REGISTER_X13,
+> +    HV_ARM64_REGISTER_X14,
+> +    HV_ARM64_REGISTER_X15,
+> +    HV_ARM64_REGISTER_X16,
+> +    HV_ARM64_REGISTER_X17,
+> +    HV_ARM64_REGISTER_X18,
+> +    HV_ARM64_REGISTER_X19,
+> +    HV_ARM64_REGISTER_X20,
+> +    HV_ARM64_REGISTER_X21,
+> +    HV_ARM64_REGISTER_X22,
+> +    HV_ARM64_REGISTER_X23,
+> +    HV_ARM64_REGISTER_X24,
+> +    HV_ARM64_REGISTER_X25,
+> +    HV_ARM64_REGISTER_X26,
+> +    HV_ARM64_REGISTER_X27,
+> +    HV_ARM64_REGISTER_X28,
+> +    HV_ARM64_REGISTER_FP,
+> +    HV_ARM64_REGISTER_LR,
+> +    HV_ARM64_REGISTER_PC,
+> +};
+> +
+> +static int set_standard_regs(const CPUState *cpu)
 > +{
-> +    return 0;
-
-maybe the stubs should abort with an "umimplemented" message instead of
-returning to avoid silent failures (or g_assert_not_reached())
-
-> +}
+> +    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
+> +    struct hv_register_assoc assocs[ARRAY_SIZE(STANDARD_REGISTER_NAMES)] = {};
+> +    int ret;
+> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+> +    CPUARMState *env = &arm_cpu->env;
 > +
-> +static int store_regs(const CPUState *cpu)
-> +{
-> +    return 0;
-> +}
+> +    for (size_t i = 0; i < n_regs - 1; i++) {
+> +        assocs[i].name = STANDARD_REGISTER_NAMES[i];
+> +        assocs[i].value.reg64 = env->xregs[i];
+> +    }
 > +
-> +int mshv_arch_load_vcpu_state(CPUState *cpu)
-> +{
-> +    return load_regs(cpu);
-> +}
+> +    /* Last register is the program counter */
+> +    assocs[n_regs - 1].name = STANDARD_REGISTER_NAMES[n_regs - 1];
+> +    assocs[n_regs - 1].value.reg64 = env->pc;
 > +
-> +int mshv_arch_store_vcpu_state(const CPUState *cpu)
-> +{
-> +    return store_regs(cpu);
-> +}
+> +    ret = mshv_set_generic_regs(cpu, assocs, n_regs);
+> +    if (ret < 0) {
+> +        error_report("failed to set standard registers");
+> +        return -1;
+> +    }
 > +
-> +int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
-> +{
-> +    return 0;
-> +}
-> +
-> +void mshv_arch_init_vcpu(CPUState *cpu)
-> +{
-> +
-> +}
-> +
-> +void mshv_arch_destroy_vcpu(CPUState *cpu)
-> +{
-> +
-> +}
-> +
-> +int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
-> +{
-> +    return 0;
-> +}
-> +
-> +void mshv_arch_amend_proc_features(
-> +    union hv_partition_synthetic_processor_features *features)
-> +{
-> +    /*
-> +     * TLB-flush hypercalls are an x86 enlightenment. ARM guests use
-> +     * broadcast TLBI instructions instead.
-> +     */
-> +    features->tb_flush_hypercalls = 0;
-> +}
-> +
-> +void mshv_arch_disable_partition_proc_features(
-> +    union hv_partition_processor_features *disabled_features)
-> +{
-> +    /* No processor features to disable on ARM */
-> +}
-> +
-> +int mshv_arch_post_init_vm(int vm_fd)
-> +{
 > +    return 0;
 > +}
 > +
-> +int mshv_arch_migration_init(MshvState *s)
+> +static int get_standard_regs(CPUState *cpu)
 > +{
+> +    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
+> +    struct hv_register_assoc assocs[ARRAY_SIZE(STANDARD_REGISTER_NAMES)] = {};
+> +    int ret;
+> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+> +    CPUARMState *env = &arm_cpu->env;
+> +
+> +    for (size_t i = 0; i < n_regs; i++) {
+> +        assocs[i].name = STANDARD_REGISTER_NAMES[i];
+> +    }
+> +    ret = mshv_get_generic_regs(cpu, assocs, n_regs);
+> +    if (ret < 0) {
+> +        error_report("failed to get standard registers");
+> +        return -1;
+> +    }
+> +
+> +    for (size_t i = 0; i < n_regs - 1; i++) {
+> +        env->xregs[i] = assocs[i].value.reg64;
+> +    }
+> +    env->pc = assocs[n_regs - 1].value.reg64;
+> +
 > +    return 0;
 > +}
+>  
+>  static int load_regs(CPUState *cpu)
+>  {
+> +    int ret;
+> +
+> +    ret = get_standard_regs(cpu);
+> +    if (ret < 0) {
+> +        error_report("Failed to load standard registers");
+> +        return -1;
+> +    }
+> +
+>      return 0;
+>  }
+>  
+>  static int store_regs(const CPUState *cpu)
+>  {
+> +    int ret;
+> +
+> +    ret = set_standard_regs(cpu);
+> +    if (ret < 0) {
+> +        error_report("Failed to store standard registers");
+> +        return -1;
+> +    }
+> +
+>      return 0;
+>  }
+>  
+> @@ -41,12 +152,20 @@ int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
+>  
+>  void mshv_arch_init_vcpu(CPUState *cpu)
+>  {
+> +    AccelCPUState *state = cpu->accel;
+>  
+> +    mshv_setup_hvcall_args(state);
+>  }
+>  
+>  void mshv_arch_destroy_vcpu(CPUState *cpu)
+>  {
+> +    AccelCPUState *state = cpu->accel;
+> +
+> +    if (state->hvcall_args.base) {
+> +        qemu_vfree(state->hvcall_args.base);
+> +    }
+>  
+> +    state->hvcall_args = (MshvHvCallArgs){0};
+>  }
+>  
+>  int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
 > 
 > -- 
 > 2.45.4

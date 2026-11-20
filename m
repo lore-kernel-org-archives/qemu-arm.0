@@ -1,87 +1,67 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76588606A325
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 15:56:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F3AC606A333
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 16:26:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=Btfmtyct
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUQxb-0006U6-9e; Fri, 20 Nov 2026 10:55:35 -0500
+	id 1xURRB-0005Bv-Gk; Fri, 20 Nov 2026 11:26:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xUQxZ-0006TI-Gj
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 10:55:33 -0500
-Received: from mail-wm1-f45.google.com ([209.85.128.45])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xUQxW-0002Xr-HM
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 10:55:33 -0500
-Received: by mail-wm1-f45.google.com with SMTP id
- 5b1f17b1804b1-4bb666304fdso20113925e9.0
- for <qemu-arm@nongnu.org>; Fri, 20 Nov 2026 07:55:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795190128; x=1795794928;
- h=user-agent:content-transfer-encoding:content-type:mime-version
- :references:in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=OA3MyGy0zjHVqbUQ8ZkozuEhRkWZJUh7pHL0emEux5s=;
- b=Za++mwKv127/yU/fZVp/j9fEPRbEjUTd3ykSmkdA69DJO5ha3sUNcmqviEKSVWF6bd
- uUPSrI1mf80pf10CoQs0YCeVhyiKaq3vuSSS5FJCfDNKoM+TDu9JVyy9WsR7OFBwwI1v
- TbPuHKu5kqFDEpG0WRne1JjPh5kpSqIGlkVgFJT/FcHOVwn28Jros8HusdM1Hf3lo4/u
- FMrTUWflhcEFeWYEyF9wr4H1vSNAx0cOjnO1Rla+HiJD1QMAttWBIZcqrdJ3n6Qijlfh
- 4QmaYcVZ20nJOdA+ZIVuiOKi2eZYuEUzJK+GZIuhwG+ZwOIE8yVdmkdXOR9k1CNlERig
- IBYQ==
-X-Forwarded-Encrypted: i=1;
- AL+hErE4U8Ga/0Q7oryZhB0gRjNAzNmdWzLFJzF9oXQozjURuzcJOxJlQK9vHuA5oJZym+MW7tdQJAeqIQ==@nongnu.org
-X-Gm-Message-State: APuU4Z82bLPnWABO5F80TtFvA0zAukRzbBW2mvTLQYow2Izfo2MEjI2+
- Kgz3gobcwiH7zXj0qKEVv+JuxLr3hIBrtmgcK2404/MrqNL4tp6JkCQh
-X-Gm-Gg: AYBFou0XbQb0IdeqPCDgVeP1lf5ZHI7rNN1EeLTfbseHJw1Rky8IHEEodmpd/4+oHw/
- 9JP/a1OBWiwxy53CMZ1GNboMc+/xz/DWwl9mnjuuEZPrR0Mseu9aNx9/llJLj5aJqZhfynRRZ4g
- ge8GARH1OxoCvkt0YI2WfeJNjhPyf6WgaXo3TxZzQgx/xApeg7hKd28oHtBRpHJDOwV9eTXnr0x
- YsK53cchi/xxHgL0PgYM+TSsWaQr8+a2i3TycshNbHc2ldTlANRDOh0eMd34Qt00QTh6a9tjprV
- /g1OHei16/l24moZKgN3gPVg0u4hRiGqJOsBu8Xo1zGyBKjE5WCUaQgsgysTCSmWv4Q1qPF3VQ4
- 6TZN0TLIQkVWNPuTgNqf/uggkNiUf3XHaLuAecl95MImc1v2e8Fjo9GdLnKBDJwH3LLvF1JIIcw
- 82TanmbU1xMs3M9AlXQKaSStdm+OSag2P+Vp27cfvU/MGu4ZHyqjZINozG15WlRHK5mIylmRYNw
- zngMfeXhjO34HSAvJbRqlELy5jd6Xa3wJpvydIE4V1x1K0v4jznHT6z/EaZrvKGdROV7gBPvUJf
- 9r7t3G4he7cHQLAQMmA4zXhJapKTQoEmoq/8TLMfAM/GPTmVYny7OH7YOBkQAxda
-X-Received: by 2002:a05:600c:1d83:b0:4bb:687c:4fbe with SMTP id
- 5b1f17b1804b1-4bb88805c26mr70924715e9.8.1795190127371; 
- Fri, 20 Nov 2026 07:55:27 -0800 (PST)
-Received: from localhost (31-38-191-99.abo.bbox.fr. [31.38.191.99])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb8538b2c5sm123144735e9.5.2026.11.20.07.55.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2026 07:55:26 -0800 (PST)
-To: alexander.hansen@9elements.com
-Cc: qemu-devel@nongnu.org, eblot@meta.com, titusr@google.com, clg@kaod.org,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
+ (Exim 4.90_1) (envelope-from <magnuskulke@linux.microsoft.com>)
+ id 1xURR9-0005BX-NO; Fri, 20 Nov 2026 11:26:08 -0500
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <magnuskulke@linux.microsoft.com>)
+ id 1xURR5-0001MV-V7; Fri, 20 Nov 2026 11:26:07 -0500
+Received: from example.com (unknown [167.220.208.76])
+ by linux.microsoft.com (Postfix) with ESMTPSA id D3E9A20B716B;
+ Fri, 20 Nov 2026 08:25:55 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D3E9A20B716B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1795191959;
+ bh=10aP81BLI+DtakKFv8JFwm+/+Xq6Q7OLUXnjthRVg4o=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=BtfmtyctNge+LWbOcNIYmo9w9b1C78kq2qYocrGTl3NlxOH7AE+4eurKTV+X3lNbr
+ Nt4nHS+WSwagJLEKqcqYRIJHiHYpw0LcyX1XVr+hCyBmCOlLagOPfSK/q0w8WHQoct
+ syhvp4HhnVrlDcxbNhMeFIGiDAtgX7jedM6hkXBE=
+Date: Fri, 20 Nov 2026 17:25:55 +0100
+From: Magnus Kulke <magnuskulke@linux.microsoft.com>
+To: Aastha Rawat <aastharawat@linux.microsoft.com>
+Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
+ Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH v8 4/5] hw/sensor: MAX31790 support
-Date: Fri, 20 Nov 2026 15:48:49 +0000
-Message-ID: <reevu.1795189729.574001000.43540.0@free.fr>
-In-Reply-To: <20261013124649.194808-5-alexander.hansen@9elements.com>
-References: <20261013124649.194808-1-alexander.hansen@9elements.com>
- <20261013124649.194808-5-alexander.hansen@9elements.com>
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: Re: [PATCH v6 13/14] hw/intc,target/arm/mshv: add MSHV vGICv3
+ implementation
+Message-ID: <awB0k/A4En4wsz5H@example.com>
+References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+ <20261001-mshv_accel_arm64_supp-v6-13-aefe5e76a0e3@linux.microsoft.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-User-Agent: reevu/0.1.0
-Received-SPF: pass client-ip=209.85.128.45; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f45.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-13-aefe5e76a0e3@linux.microsoft.com>
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=magnuskulke@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,453 +72,473 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
-From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 13 Oct 2026 12:46:48 +0000, alexander.hansen@9elements.com wrote:
-> From: Alexander Hansen <alexander.hansen@9elements.com>
->
-> Product: [1]
-> Datasheet: [2]
->
-> MAX31790 Support:
-> - fan inputs are reading
-> - tach reading propertional to pwm setting from linux driver
-
-Nit: Typo: 'proportional'.
-
-> - fans do not show any fault
-> - 6 PWM registers influence 6 TACH registers
->
-> There is intentional stub behavior in some places and various functions
-> of the device are currently unsupported.
->
-> MAX31790 currently unsupported:
-> - slave address restriction
-> - fan dynamics
-> - spin-up configuration
-> - fault state / failure possibility
-> - rate-of-change control
-> - tach mode
-> - mixed layouts where number of fans != number of tachs
-> - see Figure 5.9 in [2] for example of mixed layout
->
-> Anyone could expand it in the future for more accurate emulation.
->
-> The reason for adding this device is to support Yosemite V4 emulation.
->
-> Tested: on yosemite 4 qemu
->
-> root@yosemite4:~# ls /sys/class/hwmon/hwmon2/
-> device	    fan2_fault   fan3_target  fan5_fault   fan6_target  pwm2	     pwm5
-> fan1_enable  fan2_input   fan4_enable  fan5_input   name	pwm2_enable  pwm5_enable
-> fan1_fault   fan2_target  fan4_fault   fan5_target  of_node	pwm3	     pwm6
-> fan1_input   fan3_enable  fan4_input   fan6_enable  power	pwm3_enable  pwm6_enable
-> fan1_target  fan3_fault   fan4_target  fan6_fault   pwm1	pwm4	     subsystem
-> fan2_enable  fan3_input   fan5_enable  fan6_input   pwm1_enable  pwm4_enable  uevent
-> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_input
-> 4551
-> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_enable
-> 1
-> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_fault
-> 0
-> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_target
-> 2048
-> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/pwm1
-> 178
-> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/name
-> max31790
->
-> Trace output:
-> max31790_realize i2c_addr: 0x20
-> max31790_realize i2c_addr: 0x2f
-> max31790_realize i2c_addr: 0x20
-> max31790_realize i2c_addr: 0x2f
-> max31790_event i2c_addr: 0x20, event: 0x01
-> max31790_send i2c_addr: 0x20, data: 0x02
-> max31790_event i2c_addr: 0x20, event: 0x00
-> max31790_recv i2c_addr: 0x20, reg_addr: 0x02
-
-This trace event (max31790_recv) seems to have been renamed (max31790_recv_return)
-
-> max31790_recv_return i2c_addr: 0x20, returns: 0x08
-> ...
->
-> References:
-> [1] https://www.analog.com/en/products/MAX31790.html
-> [2] https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31790.pdf
->
-> Cc: Emmanuel Blot <eblot@meta.com>
-> Cc: Titus Rwantare <titusr@google.com>
-> Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-> Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 1312bbd1bd..870152932c 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -4119,6 +4119,7 @@ S: Maintained
->  F: hw/i2c/pmbus_device.c
->  F: hw/sensor/adm1272.c
->  F: hw/sensor/isl_pmbus_vr.c
-> +F: hw/sensor/max31790.c
-
-It does not seem to be a PMBus device (vs. max31785)
-The .h file is tracked.
-I do not know if it is possible to assign a maintainer at this stage.
-
-> diff --git a/hw/sensor/max31790.c b/hw/sensor/max31790.c
+On Thu, Oct 01, 2026 at 10:52:58AM +0000, Aastha Rawat wrote:
+> From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+> 
+> Add in-kernel GICv3 support for the MSHV accelerator, following the
+> same approach as the KVM and WHPX vGIC backends. The implementation
+> handles IRQ injection via the HVCALL_ASSERT_VIRTUAL_INTERRUPT hypercall.
+> 
+> Introduce mshv_arch_pre_init_vm(), an arch-specific hook called after
+> VM creation but before VM initialization, used on arm64 to configure
+> GIC partition properties (GICD base, ITS translater base, timer and PMU
+> PPI numbers). The x86 side provides a no-op stub.
+> 
+> Update the virt machine to treat MSHV like WHPX for GIC version
+> selection (GICv3 only) and MSI controller finalization (no ITS support).
+> 
+> Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+> ---
+>  accel/mshv/mshv-all.c              |   5 +
+>  hw/arm/virt.c                      |   8 +-
+>  hw/intc/arm_gicv3_common.c         |   3 +
+>  hw/intc/arm_gicv3_mshv.c           | 181 +++++++++++++++++++++++++++++++++++++
+>  hw/intc/meson.build                |   2 +
+>  include/hw/hyperv/hvgdk_mini.h     |   2 +
+>  include/hw/hyperv/hvhdk_mini.h     |   6 ++
+>  include/hw/intc/arm_gicv3_common.h |   1 +
+>  include/system/mshv_int.h          |   1 +
+>  target/arm/mshv/mshv-all.c         |  61 +++++++++++++
+>  target/i386/mshv/mshv-all.c        |   5 +
+>  11 files changed, 273 insertions(+), 2 deletions(-)
+> 
+> diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
+> index 9603f0360e1..e1264952873 100644
+> --- a/accel/mshv/mshv-all.c
+> +++ b/accel/mshv/mshv-all.c
+> @@ -279,6 +279,11 @@ static int create_vm(int mshv_fd, int *vm_fd)
+>          return -1;
+>      }
+>  
+> +    ret = mshv_arch_pre_init_vm(*vm_fd);
+> +    if (ret < 0) {
+> +        return -1;
+> +    }
+> +
+>      ret = initialize_vm(*vm_fd);
+>      if (ret < 0) {
+>          return -1;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ee03a85f482..67a1f19190b 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2706,7 +2706,7 @@ static void finalize_gic_version(VirtMachineState *vms)
+>          /* KVM w/o kernel irqchip can only deal with GICv2 */
+>          gics_supported |= VIRT_GIC_VERSION_2_MASK;
+>          accel_name = "KVM with kernel-irqchip=off";
+> -    } else if (whpx_enabled()) {
+> +    } else if (whpx_enabled() || mshv_enabled()) {
+>          gics_supported |= VIRT_GIC_VERSION_3_MASK;
+>      } else if (hvf_enabled()) {
+>          if (!hvf_irqchip_in_kernel()) {
+> @@ -2760,7 +2760,7 @@ static void finalize_msi_controller(VirtMachineState *vms)
+>      if (vms->msi_controller == VIRT_MSI_CTRL_AUTO) {
+>          if (vms->gic_version == VIRT_GIC_VERSION_2) {
+>              vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
+> -        } else if (whpx_enabled()) {
+> +        } else if (whpx_enabled() || mshv_enabled()) {
+>              vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
+>          }  else if (hvf_enabled() && hvf_irqchip_in_kernel()) {
+>              vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
+> @@ -2790,6 +2790,10 @@ static void finalize_msi_controller(VirtMachineState *vms)
+>              error_report("ITS not supported on WHPX.");
+>              exit(1);
+>          }
+> +        if (mshv_enabled()) {
+> +            error_report("ITS not supported on MSHV.");
+> +            exit(1);
+> +        }
+>          if (hvf_enabled() && hvf_irqchip_in_kernel()) {
+>              error_report("ITS not supported on HVF when using the hardware vGIC.");
+>              exit(1);
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index f7ba74e6d52..fb34b6a942d 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -34,6 +34,7 @@
+>  #include "system/kvm.h"
+>  #include "system/whpx.h"
+>  #include "system/hvf.h"
+> +#include "system/mshv.h"
+>  
+>  
+>  static void gicv3_gicd_no_migration_shift_bug_post_load(GICv3State *cs)
+> @@ -662,6 +663,8 @@ const char *gicv3_class_name(void)
+>          return TYPE_WHPX_GICV3;
+>      } else if (hvf_enabled() && hvf_irqchip_in_kernel()) {
+>          return TYPE_HVF_GICV3;
+> +    } else if (mshv_enabled()) {
+> +        return TYPE_MSHV_GICV3;
+>      } else {
+>          if (kvm_enabled()) {
+>              error_report("Userspace GICv3 is not supported with KVM");
+> diff --git a/hw/intc/arm_gicv3_mshv.c b/hw/intc/arm_gicv3_mshv.c
 > new file mode 100644
-> index 0000000000..1aca05f35b
+> index 00000000000..a87819a5ba3
 > --- /dev/null
-> +++ b/hw/sensor/max31790.c
-> @@ -0,0 +1,508 @@
+> +++ b/hw/intc/arm_gicv3_mshv.c
+
+this is a new file that we should add to MAINTAINERS
+
+> @@ -0,0 +1,181 @@
 > +/*
-> + * Maxim MAX31790 PMBus 6-Channel Fan Controller
+> + * ARM Generic Interrupt Controller using MSHV in-kernel support
+> + *
+> + * Copyright Microsoft, Corp. 2026
+> + * Based on vGICv3 KVM code by Pavel Fedin
+> + *
+> + * Authors:
+> + *      Aastha Rawat <aastharawat@microsoft.com>
+> + *      Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/intc/arm_gicv3_common.h"
+> +#include "migration/blocker.h"
+> +#include "target/arm/cpregs.h"
+> +#include "hw/hyperv/hvgdk_mini.h"
+> +#include "system/mshv.h"
+> +#include "system/mshv_int.h"
+> +
+> +struct MSHVARMGICv3Class {
+> +    ARMGICv3CommonClass parent_class;
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+> +
+> +OBJECT_DECLARE_TYPE(GICv3State, MSHVARMGICv3Class, MSHV_GICV3)
+> +
+> +static void mshv_gicv3_get(GICv3State *s)
+> +{
+> +}
+> +
+> +static void mshv_gicv3_put(GICv3State *s)
+> +{
+> +}
+> +
+> +static void mshv_gicv3_reset_hold(Object *obj, ResetType type)
+> +{
+> +    GICv3State *s = ARM_GICV3_COMMON(obj);
+> +    MSHVARMGICv3Class *mgc = MSHV_GICV3_GET_CLASS(s);
+> +
+> +    if (mgc->parent_phases.hold) {
+> +        mgc->parent_phases.hold(obj, type);
+> +    }
+> +
+> +    mshv_gicv3_put(s);
+> +}
+> +
+> +static void mshv_gicv3_set_irq(void *opaque, int irq, int level)
+> +{
+> +    int ret;
+> +    GICv3State *s = (GICv3State *)opaque;
+> +    int vm_fd = mshv_state->vm;
+> +    struct hv_input_assert_virtual_interrupt arg = {0};
+> +    struct mshv_root_hvcall args = {0};
+> +    union hv_interrupt_control control = {
+> +        .interrupt_type = HV_ARM64_INTERRUPT_TYPE_FIXED,
+> +        .rsvd1 = 0,
+> +        .asserted = level,
+> +        .rsvd2 = 0
+> +    };
+> +
+> +    if (irq >= s->num_irq) {
 
-The MAX31790 is a plain I2C/SMBus device, not PMBus.
+I think we also need to consider the SGI + PPI range here:
 
-> +
-> +        g_assert(index < MAX31790_NUM_FANS);
-> +
-> +        s->outbuf[0] = s->fan_dynamics[index];
-> +        trace_max31790_fan_dynamics_read(s->i2c.address, index, s->outbuf[0]);
-> +        break;
-> +    case MAX31790_REG_FAN_FAULT_STATUS_1:
-> +    case MAX31790_REG_FAN_FAULT_STATUS_2:
-> +        /* we do not have any fan fault */
-> +        s->outbuf[0] = 0x00;
-> +        s->outbuf[1] = 0x00;
-> +        break;
-> +    case MAX31790_REG_TACH_COUNT_MSB(0)... MAX31790_REG_TACH_COUNT_LSB(11):
-> +        index = reg16_index(s->pointer, MAX31790_REG_TACH_COUNT_MSB(0));
-> +
-> +        g_assert(index < MAX31790_NUM_TACHS);
-> +
-> +        set_outbuf_16(s, even_reg, s->tach_count[index % MAX31790_NUM_TACHS]);
-> +        break;
-> +
-> +    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(0)... MAX31790_REG_PWM_DUTY_CYCLE_LSB(
+if (irq >= s->num_irq - GIC_INTERNAL)
 
-Nit: Line breaking is weird and a bit hard to read
-
-> +        5):
-> +        index = reg16_index(s->pointer, MAX31790_REG_PWM_DUTY_CYCLE_MSB(0));
+> +        return;
+> +    }
 > +
-> +        g_assert(index < MAX31790_NUM_FANS);
+> +    arg.control = control;
+> +    arg.vector = GIC_INTERNAL + irq;
 > +
-> +        set_outbuf_16(s, even_reg, s->pwm[index & MAX31790_NUM_FANS]);
-
-Is it not '%' rather than '&' here? (repeated below)
-
-> +        break;
+> +    args.code   = HVCALL_ASSERT_VIRTUAL_INTERRUPT;
+> +    args.in_sz  = sizeof(arg);
+> +    args.in_ptr = (uint64_t)&arg;
 > +
-> +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(
-> +        0)... MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
-> +        index = reg16_index(s->pointer, MAX31790_REG_TACH_TARGET_COUNT_MSB(0));
-> +
-> +        g_assert(index < MAX31790_NUM_FANS);
-> +
-> +        set_outbuf_16(s, even_reg, s->tach_target[index]);
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP, "%s: read of register %d\n", __func__,
-> +                      s->pointer);
-> +        break;
+> +    ret = mshv_hvcall(vm_fd, &args);
+> +    if (ret < 0) {
+> +        error_report("Failed to set GICv3 IRQ %d to level %d", irq, level);
 > +    }
 > +}
 > +
-> +static uint8_t max31790_get_speed_range(MAX31790State *s, size_t index)
+> +static void mshv_gicv3_realize(DeviceState *dev, Error **errp)
 > +{
-> +    g_assert(index < MAX31790_NUM_FANS);
-> +    const uint16_t value = (s->fan_dynamics[index] >> 5);
-
-Nit: not sure const is useful in C (vs C++), but should be fine
-
-> +    return (value > 5) ? 32 : 1 << value;
-> +}
+> +    ERRP_GUARD();
+> +    GICv3State *s = MSHV_GICV3(dev);
+> +    MSHVARMGICv3Class *mgc = MSHV_GICV3_GET_CLASS(s);
+> +    int i, ret;
 > +
-> +static void max31790_set_rpm(MAX31790State *s, size_t index, uint16_t rpm)
-> +{
-> +    trace_max31790_rpm_write(s->i2c.address, index, rpm);
-> +
-> +    /*
-> +     * (see page 11) NP = number of tachometer pulses per revolution.
-> +     * Most general-purpose brushless DC fans produce two tachometer
-> +     * pulses per revolution.
-> +     */
-> +    const uint64_t sr = max31790_get_speed_range(s, index);
-> +
-> +    /* page 11: tach_count = 60 * SR * 8192 / (NP * RPM) */
-> +
-> +    /* prevent division by 0 */
-> +    rpm = (rpm == 0) ? 1 : rpm;
-> +
-> +    /* (60 * 8192) / 2 */
-> +    const uint64_t tach_count_constant = 245760ULL;
-
-It might be better to use #define for true C constants
-
-> +
-> +    /* last 7 bits in register are 0 , 9 bits remaining */
-> +    const uint16_t pwm_real = s->pwm[index % MAX31790_NUM_FANS] >> 7;
-> +
-> +    /* maximum value will be 511 */
-> +
-> +    /*
-> +     * This formula has magic values which model the relationship
-> +     * of PWM input to a fan. Not derived from datasheet.
-> +     */
-> +    max31790_set_rpm(s, index, 100 + pwm_real * 20);
-> +}
-> +
-> +static void max31790_write_2_byte(MAX31790State *s)
-> +{
-> +    size_t index = 0;
-> +    const uint8_t value0 = s->buf[0];
-> +    const uint8_t value1 = s->buf[1];
-> +
-> +    switch (s->pointer) {
-> +    case MAX31790_REG_FAN_CONFIG(0)... MAX31790_REG_FAN_CONFIG(5):
-
-The datasheet says the register pointer auto-increments.
-It does not seem the emulation implements this feature.
-Supporting it might also simplify 2-byte special handling.
-
-> +    size_t index = 0;
-> +    uint16_t pwm = 0;
-> +    const uint8_t value = s->buf[0];
-> +    const bool is_msb = s->pointer % 2 == 0;
-> +
-> +    switch (s->pointer) {
-> +    case MAX31790_REG_FAN_CONFIG(0)... MAX31790_REG_FAN_CONFIG(5):
-> +        index = s->pointer - MAX31790_REG_FAN_CONFIG(0);
-> +
-> +        g_assert(index < MAX31790_NUM_FANS);
-> +
-> +        s->fan_config[index] = value;
-> +        trace_max31790_fan_config_write(s->i2c.address, index, value);
-> +        break;
-> +    case MAX31790_REG_FAN_DYNAMICS(0)... MAX31790_REG_FAN_DYNAMICS(5):
-> +        index = s->pointer - MAX31790_REG_FAN_DYNAMICS(0);
-> +
-> +        g_assert(index < MAX31790_NUM_FANS);
-> +
-> +        s->fan_dynamics[index] = value;
-> +        trace_max31790_fan_dynamics_write(s->i2c.address, index, value);
-
-Should not this update tach_count register as well? or rather, should not
-tach_count register value computed at read time, based on other values?
-
-> +        break;
-> +    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(
-> +        0)... MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):
-> +        index =
-> +            reg16_index(s->pointer, MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0));
-> +
-> +        g_assert(index < MAX31790_NUM_FANS);
-> +
-> +        pwm =
-> +            reg16_write_byte(s->pwm[index & MAX31790_NUM_FANS], is_msb, value);
-
-& vs. % issue?
-
-> +
-> +        max31790_pwm_write(s, index, pwm);
-> +        break;
-> +    case MAX31790_REG_TACH_TARGET_COUNT_MSB(
-> +        0)... MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
-> +        index = reg16_index(s->pointer, MAX31790_REG_TACH_TARGET_COUNT_MSB(0));
-> +
-> +        g_assert(index < MAX31790_NUM_FANS);
-> +
-> +        s->tach_target[index] =
-> +            reg16_write_byte(s->tach_target[index], is_msb, value);
-> +        break;
-> +    default:
-
-I think there should be a double error case here:
-1. Features that are not supported (such as user registers): LOG_UNIMP +
-   document them in the file header
-2. Addresses that are invalid: LOG_GUEST_ERROR
-Same remark for the read counterpart.
-
-> +
-> +static int max31790_send(I2CSlave *i2c, uint8_t data)
-> +{
-> +    MAX31790State *s = MAX31790(i2c);
-> +
-> +    trace_max31790_send(s->i2c.address, data);
-> +
-> +    if (s->len == 0) {
-> +        /* first byte is the register pointer for a read / write operation */
-> +        s->pointer = data;
-> +        s->len++;
-> +        return 0;
+> +    mgc->parent_realize(dev, errp);
+> +    if (*errp) {
+> +        return;
 > +    }
 > +
-> +    if (s->len > 2) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: write too many bytes\n", __func__);
-> +        return 1; /* NAK */
+> +    if (s->revision != 3) {
+> +        error_setg(errp, "unsupported GIC revision %d for platform GIC",
+> +                   s->revision);
+> +        return;
 > +    }
 > +
-> +    /* second / third byte is the data to write */
-> +    s->buf[s->len - 1] = data;
-
-Is is what the HW handles? From the datasheet:
-
-The device’s control registers are organized in rows of 8 bytes. The I2C
-master can read or write individual bytes, or canread or write multiple
-bytes. When writing consecutive bytes, all writes are to the same row.
-When the final byte in therow is reached, the next byte written is the
-row’s first byte. For example, a write that starts with 02h (Fan 1
-Configuration)can write to 02h, 03h, 04h, 05h, 06h, and 07h. If writes
-continue, the next byte written is 00h, and so on.
-
-I think the issue does not show up with Linux that only uses 1- and
-2-byte accesses if I'm not mistaken, but the device should work with
-other drivers.
-
-Moreover I think that it is valid from the HW device perspective to
-start a multibyte access on an odd address, but it is not supported
-here.
-
-> +    s->len++;
+> +    if (s->security_extn) {
+> +        error_setg(errp, "the platform vGICv3 does not implement the "
+> +                   "security extensions");
+> +        return;
+> +    }
 > +
-> +    if (s->len == 2) {
-> +        max31790_write_1_byte(s);
-> +    } else if (s->len == 3) {
-> +        max31790_write_2_byte(s);
+> +    if (s->nmi_support) {
+> +        error_setg(errp, "NMI is not supported with the platform GIC");
+> +        return;
+> +    }
+> +
+> +    if (s->nb_redist_regions > 1) {
+> +        error_setg(errp, "Multiple VGICv3 redistributor regions are not "
+> +                   "supported by MSHV");
+> +        error_append_hint(errp, "A maximum of %d VCPUs can be used",
+> +                          s->redist_region_count[0]);
+> +        return;
+> +    }
+> +
+> +    gicv3_init_irqs_and_mmio(s, mshv_gicv3_set_irq, NULL);
+> +
+> +    for (i = 0; i < s->num_cpu; i++) {
+> +        CPUState *cpu_state = qemu_get_cpu(i);
+> +
+> +        hv_register_assoc gicr_base = {
+> +            .name = HV_ARM64_REGISTER_GICR_BASE_GPA,
+> +            .value = {
+> +                .reg64 = 0x080A0000 + (GICV3_REDIST_SIZE * i)
+> +            }
+> +        };
+> +
+> +        ret = mshv_set_generic_regs(cpu_state, &gicr_base, 1);
+> +        if (ret < 0) {
+> +            error_setg(errp, "Failed to set GICR base for CPU %d", i);
+> +            return;
+> +        }
+> +    }
+> +
+> +    if (s->maint_irq) {
+> +        error_setg(errp,
+> +               "Nested virtualisation not currently supported by MSHV");
+> +        return;
+> +    }
+> +
+> +    error_setg(&s->migration_blocker,
+> +        "Live migration disabled because GIC state save/restore not supported on MSHV");
+> +    if (migrate_add_blocker(&s->migration_blocker, errp) < 0) {
+> +        error_report_err(*errp);
+
+err_report_err() will consume/free errp. AFAIU the call site owns the
+error, and we can just return here. otherwise we will probably have a
+double free of the error somewhere up in the callchain.
+
+> +    }
+> +}
+> +
+> +static void mshv_gicv3_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+> +    ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_CLASS(klass);
+> +    MSHVARMGICv3Class *mgc = MSHV_GICV3_CLASS(klass);
+> +
+> +    agcc->pre_save = mshv_gicv3_get;
+> +    agcc->post_load = mshv_gicv3_put;
+> +
+> +    device_class_set_parent_realize(dc, mshv_gicv3_realize,
+> +                                    &mgc->parent_realize);
+> +    resettable_class_set_parent_phases(rc, NULL, mshv_gicv3_reset_hold, NULL,
+> +                                       &mgc->parent_phases);
+> +}
+> +
+> +static const TypeInfo mshv_arm_gicv3_info = {
+> +    .name = TYPE_MSHV_GICV3,
+> +    .parent = TYPE_ARM_GICV3_COMMON,
+> +    .instance_size = sizeof(GICv3State),
+> +    .class_init = mshv_gicv3_class_init,
+> +    .class_size = sizeof(MSHVARMGICv3Class),
+> +};
+> +
+> +static void mshv_gicv3_register_types(void)
+> +{
+> +    type_register_static(&mshv_arm_gicv3_info);
+> +}
+> +
+> +type_init(mshv_gicv3_register_types)
+> diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+> index 0620b0792a1..e0047ab1c0f 100644
+> --- a/hw/intc/meson.build
+> +++ b/hw/intc/meson.build
+> @@ -49,6 +49,8 @@ specific_ss.add(when: ['CONFIG_WHPX', 'CONFIG_ARM_GICV3'], if_true: files('arm_g
+>  specific_ss.add(when: ['CONFIG_HVF', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_hvf.c'))
+>  stub_ss.add(files('arm_gicv3_hvf_stub.c'))
+>  specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
+> +specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
+> +specific_ss.add(when: ['CONFIG_MSHV', 'TARGET_AARCH64'], if_true: files('arm_gicv3_mshv.c'))
+
+Do we need 'CONFIG_ARM_GIC' here (like KVM)?
+
+>  arm_common_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
+>  specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
+>  specific_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic.c'))
+> diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
+> index d81c9816e7f..2b4b1406ab0 100644
+> --- a/include/hw/hyperv/hvgdk_mini.h
+> +++ b/include/hw/hyperv/hvgdk_mini.h
+> @@ -85,6 +85,8 @@ typedef enum hv_register_name {
+>      HV_ARM64_REGISTER_MIDR_EL1   = 0x00040051,
+>      HV_ARM64_REGISTER_MPIDR_EL1  = 0x00040001,
+>  
+> +    HV_ARM64_REGISTER_GICR_BASE_GPA       = 0x00063000,
+> +
+>  #elif defined(__x86_64__)
+>      /* X64 User-Mode Registers */
+>      HV_X64_REGISTER_RAX     = 0x00020000,
+> diff --git a/include/hw/hyperv/hvhdk_mini.h b/include/hw/hyperv/hvhdk_mini.h
+> index 9c2f3cf5aee..4d78fa06777 100644
+> --- a/include/hw/hyperv/hvhdk_mini.h
+> +++ b/include/hw/hyperv/hvhdk_mini.h
+> @@ -62,6 +62,12 @@ enum hv_partition_property_code {
+>      HV_PARTITION_PROPERTY_ISOLATION_POLICY                       = 0x00050014,
+>      HV_PARTITION_PROPERTY_UNIMPLEMENTED_MSR_ACTION               = 0x00050017,
+>      HV_PARTITION_PROPERTY_SEV_VMGEXIT_OFFLOADS                   = 0x00050022,
+> +    HV_PARTITION_PROPERTY_GICD_BASE_ADDRESS                      = 0x00050028,
+> +    HV_PARTITION_PROPERTY_GITS_TRANSLATER_BASE_ADDRESS           = 0x00050029,
+> +    HV_PARTITION_PROPERTY_GIC_LPI_INT_ID_BITS                    = 0x0005002A,
+> +    HV_PARTITION_PROPERTY_GIC_PPI_OVERFLOW_INTERRUPT_FROM_CNTV   = 0x0005002B,
+> +    HV_PARTITION_PROPERTY_GIC_PPI_OVERFLOW_INTERRUPT_FROM_CNTP   = 0x0005002C,
+> +    HV_PARTITION_PROPERTY_GIC_PPI_PERFORMANCE_MONITORS_INTERRUPT = 0x0005002D,
+>  
+>      /* Compatibility properties */
+>      HV_PARTITION_PROPERTY_PROCESSOR_VENDOR              = 0x00060000,
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+> index 03ab3e8f2ff..2ed456e654a 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -316,6 +316,7 @@ DECLARE_OBJ_CHECKERS(GICv3State, ARMGICv3CommonClass,
+>  /* Types for GICv3 kernel-irqchip */
+>  #define TYPE_WHPX_GICV3 "whpx-arm-gicv3"
+>  #define TYPE_HVF_GICV3 "hvf-arm-gicv3"
+> +#define TYPE_MSHV_GICV3 "mshv-arm-gicv3"
+>  
+>  struct ARMGICv3CommonClass {
+>      /*< private >*/
+> diff --git a/include/system/mshv_int.h b/include/system/mshv_int.h
+> index 31d2f4381c7..2dcfd11d8df 100644
+> --- a/include/system/mshv_int.h
+> +++ b/include/system/mshv_int.h
+> @@ -107,6 +107,7 @@ void mshv_arch_amend_proc_features(
+>  void mshv_arch_disable_partition_proc_features(
+>       union hv_partition_processor_features *disabled_features);
+>  int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd);
+> +int mshv_arch_pre_init_vm(int vm_fd);
+>  int mshv_arch_post_init_vm(int vm_fd);
+>  void mshv_setup_hvcall_args(AccelCPUState *state);
+>  int mshv_arch_migration_init(MshvState *s);
+> diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
+> index 786d815312b..8fa497c9a89 100644
+> --- a/target/arm/mshv/mshv-all.c
+> +++ b/target/arm/mshv/mshv-all.c
+> @@ -288,6 +288,67 @@ void mshv_arch_destroy_vcpu(CPUState *cpu)
+>      state->hvcall_args = (MshvHvCallArgs){0};
+>  }
+>  
+> +static int set_partition_prop(int vm_fd, uint32_t prop_code,
+> +                                uint64_t prop_value)
+> +{
+> +    int ret;
+> +    struct hv_input_set_partition_property in = {0};
+> +    in.property_code = prop_code;
+> +    in.property_value = prop_value;
+> +
+> +    struct mshv_root_hvcall args = {0};
+> +    args.code = HVCALL_SET_PARTITION_PROPERTY;
+> +    args.in_sz = sizeof(in);
+> +    args.in_ptr = (uint64_t)&in;
+> +
+> +    ret = mshv_hvcall(vm_fd, &args);
+> +    if (ret < 0) {
+> +        error_report("Failed to set partition property code %u", prop_code);
+> +        return -1;
 > +    }
 > +
 > +    return 0;
 > +}
 > +
-> +static uint8_t max31790_recv(I2CSlave *i2c)
+> +int mshv_arch_pre_init_vm(int vm_fd)
 > +{
-> +    MAX31790State *s = MAX31790(i2c);
+> +    int ret;
+> +    VirtMachineState *vms = VIRT_MACHINE(qdev_get_machine());
 > +
-> +    max31790_read(s);
-> +    s->len = 0;
-> +
-> +    if (s->outlen >= 2) {
-> +        /* error */
-
-From the datasheet:
-
-Consecutive reads are not subject to the single-row limitation. A read
-can start at any address and can continue throughFFh. If reads continue
-past FFh, they wrap around to 00h.
-
-> +            VMSTATE_UINT8(outlen, MAX31790State),
-> +            VMSTATE_UINT8_ARRAY(outbuf, MAX31790State, 2),
-> +            VMSTATE_UINT8(pointer, MAX31790State),
-> +            VMSTATE_I2C_SLAVE(i2c, MAX31790State), VMSTATE_END_OF_LIST() }
-> +};
-> +
-> +static void max31790_reset_enter(MAX31790State *s)
-> +{
-> +    trace_max31790_reset(s->i2c.address);
-> +
-> +    for (int i = 0; i < MAX31790_NUM_FANS; i++) {
-> +        /* POR-State 0b 0XX0 0000 */
-> +        s->fan_config[i] = 0x0;
-> +
-> +        /* same as POR-State */
-> +        s->tach_target[i] = 0x3c00;
-> +
-> +        /* same as POR-State */
-> +        s->fan_dynamics[i] = 0x4c;
+> +    ret = set_partition_prop(vm_fd,
+> +                            HV_PARTITION_PROPERTY_GICD_BASE_ADDRESS,
+> +                            vms->memmap[VIRT_GIC_DIST].base);
+> +    if (ret < 0) {
+> +        return ret;
 > +    }
 > +
-
-Tach count array is never initialized
-
-> +    /* this will set both pwm and tach count */
-> +    for (int i = 0; i < MAX31790_NUM_FANS; i++) {
-> +        max31790_pwm_write(s, i, 0x4444);
-
-Where does 0x4444 come from? It doesn't look like a datasheet POR value.
-In any case, a #define constant would be useful here.
-
+> +    ret = set_partition_prop(vm_fd,
+> +                        HV_PARTITION_PROPERTY_GITS_TRANSLATER_BASE_ADDRESS,
+> +                        vms->memmap[VIRT_GIC_ITS].base);
+> +    if (ret < 0) {
+> +        return ret;
 > +    }
+> +
+> +    ret = set_partition_prop(vm_fd,
+> +                        HV_PARTITION_PROPERTY_GIC_LPI_INT_ID_BITS,
+> +                        0);
+> +    if (ret < 0) {
+> +        return ret;
+> +    }
+> +
+> +    ret = set_partition_prop(vm_fd,
+> +                        HV_PARTITION_PROPERTY_GIC_PPI_OVERFLOW_INTERRUPT_FROM_CNTV,
+> +                        ARCH_TIMER_VIRT_IRQ);
+> +    if (ret < 0) {
+> +        return ret;
+> +    }
+> +
+> +    ret = set_partition_prop(vm_fd,
+> +                        HV_PARTITION_PROPERTY_GIC_PPI_PERFORMANCE_MONITORS_INTERRUPT,
+> +                        VIRTUAL_PMU_IRQ);
+> +
+> +    return ret;
+> +}
+>  
+>  static uint32_t mshv_arm_get_ipa_bit_size(int mshv_fd)
+>  {
+> diff --git a/target/i386/mshv/mshv-all.c b/target/i386/mshv/mshv-all.c
+> index 968fe2a4494..85dbacf98ff 100644
+> --- a/target/i386/mshv/mshv-all.c
+> +++ b/target/i386/mshv/mshv-all.c
+> @@ -39,6 +39,11 @@ int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
+>      return 0;
+>  }
+>  
+> +int mshv_arch_pre_init_vm(int vm_fd)
+> +{
+> +    return 0;
 > +}
 > +
-> +static void max31790_reset_hold(Object *obj, ResetType type)
-> +{
-> +    MAX31790State *s = MAX31790(obj);
-> +
-> +    max31790_reset_enter(s);
-
-This is a bit confusing with the Resettable API (enter/hold/exit).
-If the enter phase is used, why mapping it to the hold phase?
-
-> diff --git a/include/hw/sensor/max31790.h b/include/hw/sensor/max31790.h
-> new file mode 100644
-> index 0000000000..73b6375ae2
-> --- /dev/null
-> +++ b/include/hw/sensor/max31790.h
-> @@ -0,0 +1,7 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +#ifndef QEMU_MAX31790_H
-
-Maybe state the purpose of this file in the header (same as in the C
-file)
-
-> diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
-> index b6af9a21b7..be396f53bc 100755
-> --- a/tests/functional/arm/test_aspeed_fby4.py
-> +++ b/tests/functional/arm/test_aspeed_fby4.py
-> @@ -34,6 +35,52 @@ def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
->          # different from the other machines.
->          self.wait_for_console_pattern('yosemite4 login:')
->  
-> +        # perform login
-> +        exec_command_and_wait_for_pattern(self,
-> +                                          "root", "Password:");
-
-Python statements don't need trailing semicolons :-)
-
-> +
-> +        exec_command_and_wait_for_pattern(self, "0penBmc", "#");
-> +
-> +        # MAX31790 test
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/class/hwmon/hwmon3/name", "max31790");
-
-Hardcoding hwmon3 might be fragile: please consider the hwmon directory
-from the I2C device path
-(e.g. /sys/bus/i2c/devices/<bus>-0020/hwmon/hwmon*).
-
-> +
-> +        # this initial fan reading value is caused by services
-> +        # inside the image writing the pwm
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/class/hwmon/hwmon3/fan1_input", "7281");
-
-Maybe stop and sync with the service to ensure the value cannot be
-modified while this test is running?
-
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/class/hwmon/hwmon3/fan1_enable", "1");
-
-The console may echo the command, and the echo contains 'fan1_enable',
-so the pattern '1' matches before the command runs, in which case this
-check always passes.
-
-It might be worth testing other channels, to validate s->pwm array
-management.
-
-Emmanuel.
+>  /*
+>   * Default Microsoft Hypervisor behavior for unimplemented MSR is to send a
+>   * fault to the guest if it tries to access it. It is possible to override
+> 
+> -- 
+> 2.45.4
 

@@ -1,86 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1AF51606A320
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 17:46:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E825606A6D3
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 19:38:35 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=oQ9XLYKD
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUSh0-0007VI-MN; Fri, 20 Nov 2026 12:46:34 -0500
+	id 1xUURF-0000e9-GE; Fri, 20 Nov 2026 14:38:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xUSgy-0007Ud-Ft
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 12:46:32 -0500
-Received: from mail-wr1-f48.google.com ([209.85.221.48])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xUURD-0000cx-4p
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 14:38:23 -0500
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1xUSgv-00076E-Q3
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 12:46:32 -0500
-Received: by mail-wr1-f48.google.com with SMTP id
- ffacd0b85a97d-4a32576da88so688841f8f.3
- for <qemu-arm@nongnu.org>; Fri, 20 Nov 2026 09:46:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xUURB-0001KO-Jw
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 14:38:22 -0500
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2f048476ab9so7360845ad.0
+ for <qemu-arm@nongnu.org>; Fri, 20 Nov 2026 11:38:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1795203500; x=1795808300; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=Fs2cNi9kyfOFB/gS7nvdPDMv82g1W2K+mdiNT0R+w7M=;
+ b=oQ9XLYKDdnrni8E6SheKbEO1ldjATykFHqmZQCuJTnYlaDfHCtxU4eG2Qdkn0cE3k5
+ 6s8/vXg+m59uSLu7mGNufI/EosiCPJps+ykitr3mCRDn1z4M5+DcocAD44R9C9FBL5Fh
+ ZvXbjF92/d9EP4FLA6yx3O/x1GLz2HJ3HgboJ13uAEiwARNMk8fs2OHIzPnKfJjM2EOS
+ r52GkbTk25k/QcfGuebiAnKi6IUfMlJHF56xxXhUS0gOZBTSHeGri58Rvk/u/XDnS41O
+ eww1IfgvjXaeIlKUTox1IQNQDUAI15cKXblucGYpuSwHgLEGmqKFmkHS2CsOfFjZBiQ/
+ kWRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795196788; x=1795801588;
- h=user-agent:content-transfer-encoding:content-type:mime-version
- :references:in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=LaozFs58eFR06BZA/sbq+kzNLFB2/AKKGyEXybFcCHo=;
- b=Nl+MT9P8WPVp9WdzW6TVHTthedwReL6KEd8k2n6G08rM/2s9Azxft/l6qHN8s8Wi0K
- RxDotDQFwvyMBoRPPquVFZDFrQmoqow1TyJOsJQFHJOWodzoSd+QXmlilqCIUQM9dveg
- yjH9X5wLiE3XAqEpoK1c8butF6GUiJAByd5TAQYsnzKIW9eEsjlVdv4rzVpEnKjAFqhf
- dRe0bI8AHx0cqCXOnKgmjc3Hofu8u+gV08xjF98ed8hCBm2cKgfJExyRsO3BmWobZfKS
- 6OKZrc2UpiG+fes0DJSHAPC0jvn7ut2QNnFkYkYBQVBvDR86pCUcxv8g7IfolNmhIyHu
- fvUA==
+ d=1e100.net; s=20260707; t=1795203500; x=1795808300;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Fs2cNi9kyfOFB/gS7nvdPDMv82g1W2K+mdiNT0R+w7M=;
+ b=mZ9sd28wXPXVlvlvS7egWWAOiWgmtdmbDOW7EHIIYSl0g09PsUvxv9HXZ8uwrrUIH9
+ 5VsBSQzlCCjUpVlazSEaRo+UL592XqCEUPpvD8/fPRkBO6UeEhBwP35WvmkShQ6HVzhA
+ NvB+zwvKlHJEfcFRwi8k4oIN8CjhJdD4w9lZvY1ZooTkOwzqvpT2PccN/hn47vckobHC
+ KCMQyMfy+1EM9Sj5tx667Gg5SswWWXl14LvmO9oFtwJyAxIqyBfTrJMaigmqg8r/McGy
+ l0LrLWr3R3ClvAjkXRVK9LQMJEHkTWUm24qmjbRys8hpQ0AKMmFbtQGvw4pk2yhGLI8I
+ /2nw==
 X-Forwarded-Encrypted: i=1;
- AL+hErGAkB1CcwO2rEb0xoSgg2j4ztasTYd6CHDbWo4IAkYgm44+jbWNW1Ni0ob8myDT3w2AELk0vZgpGg==@nongnu.org
-X-Gm-Message-State: APuU4Z+pwuOvHe3GtEEruB2PlCJCEq1lBRTtW1xHbNijW1KwAdrLwzxA
- JL+YedG4dfKctjtxXs+Bwr9/7nzN2FKe0lq9ybhnTzAi/mYRKwY+HY+1
-X-Gm-Gg: AZFdTZeL5+v9M0F6Wf6Y1uPoh70fdncVvO57Cy6h2y6wo0trPDi8Kv55UVrYOgAQ4Av
- QM2m5Ju/zrdaE/lnuibe6h6jDc6EeWkZbSlOJwJAVBX+49XWf4u6gkZgGvko1VhKC3sv49hwYyT
- 3Zx2khO0AhP6MlqIX38VOlPXtvNIdk4bKO/IOrv0gGBtpQ0FAFLOaQ00eIJZfbFKiId9vr8oaSH
- ujN2J3hgI23jc3K3Zw7s8ovEk1UFADHMuTd69Gm+PVR6qUsuHkwFT+xI/zGFLam8+7+NXKZlUE/
- XJJNlH+yg7ho1d4iGDH/9Go5Enwp+Mq/yqlZ3zhQBpFhRq6hcrtmlpFbFXomn5AkN48rpmEaHE6
- ifEk3cR2njOhQdNftmd9EFRD+n6R7njqnWPiwBx4As2CeTD/mOAm2XrJey8D0d5SpvluHyLyUeM
- 5FIqUahR13pCK5tdleAG0n6JHMsL5izejBqTUoMiqqzLCiRUYsvira+59W8bWPRoiYq0f3mNMD1
- HpKbN4TTw4G0gAyoA1HuxEtudkSugq6FjMEcVi5MLgtyz2KVbZH6xhrqSHhMvQ090UNV5YFNnqZ
- bGi86yZBXth5uB1sKYgrU58ir8O4SJ+zgnYiePvt1TFGQ5FcaHZmMqAvQQmm/msi
-X-Received: by 2002:a05:6000:4809:b0:4aa:842f:5f78 with SMTP id
- ffacd0b85a97d-4abb759e947mr8062620f8f.46.1795196788033; 
- Fri, 20 Nov 2026 09:46:28 -0800 (PST)
-Received: from localhost (31-38-191-99.abo.bbox.fr. [31.38.191.99])
+ AL+hErH3g7O2rr/DydZdKNOArDVeD/wsCfA/xkJx2Zn6T9m99LZTiqZi6duD9E+hLlyp52VdsQ8VUmqUUA==@nongnu.org
+X-Gm-Message-State: APuU4Z8xDcFr+5m/+WgKujbHUxWKI/iEQOOn41YzGkRGPJUO5klY6HZH
+ SzsbDnA+qMLaZMbGXuLklxWLQXOEQR+RaawUzvMCCh3ceuOoMiVK4uQwSsqyUZEui4o=
+X-Gm-Gg: AZFdTZcMh2gcevtv4O5/Ywnh23IPWrM+6vukjr+9nbPty7hJIv6Mtbmki6/RhJT0Hft
+ wCx+6jsrWXtpxjlyuQtzWGPHyO8weyuCGSrnwMbUE+pt/0BMu1zpZY3u5nBox1qEHoyzBMnGaLo
+ y1rGT9k6arepolpDjiMTJ6FRLl8iSdr1aU0uNeZcsXhiIEG0EI4Ej6+DJ3sqsUnpW1l6zE/q2dN
+ 0eCKWHdBkfheHGzlK/tacMUSMz+HScFqqGxNP3I+otTglhtxFV4tafM0smjx9TOLYI9u8g9kF5A
+ RucoAhuWaOyWt4H8F96fh/uEbfIugaK4LiK3alnJuo7hm1g9sfj5nlNHmVw2P7xFstzQr4cG8uF
+ 66sMZvFiawsEgTEWgsj5Iq6yqAC9EoSTjscYEMBPWukG7j4qW+RNsjzbm1exllqu3i9tG5cgb7R
+ 2UKYp8ZUvrcTPG6xd3EzOMHETHGCF8t6zN0BDkenvqti7sgiPuv9/V7mxY7gBUkJakhsfv87der
+ NTnY3eWLITC7FAB88CzEr0ZpZbDEXrRccAm2NB1mzI3y2Tt6v6qnoihSiQ4XHWSfWqpxPb+l0Ow
+ qBabof8F/uZF0PHabzZfkaG9exOe9BZKlB7dBysXKQfDlswXR1CF4KoaO6X7q7dRoRy0QSw=
+X-Received: by 2002:a17:902:c408:b0:2f0:4df4:8985 with SMTP id
+ d9443c01a7336-2f04df48cadmr22117655ad.42.1795203499693; 
+ Fri, 20 Nov 2026 11:38:19 -0800 (PST)
+Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab69bf630esm7030212f8f.16.2026.11.20.09.46.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2026 09:46:27 -0800 (PST)
-To: alexander.hansen@9elements.com
-Cc: qemu-devel@nongnu.org, eblot@meta.com, titusr@google.com, clg@kaod.org,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v8 5/5] hw/sensor: support MAX11615
-Date: Fri, 20 Nov 2026 17:38:31 +0000
-Message-ID: <reevu.1795196311.957878000.15648.1@free.fr>
-In-Reply-To: <20261013124649.194808-6-alexander.hansen@9elements.com>
-References: <20261013124649.194808-1-alexander.hansen@9elements.com>
- <20261013124649.194808-6-alexander.hansen@9elements.com>
+ d9443c01a7336-2f03f14fc8csm18042615ad.74.2026.11.20.11.38.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Nov 2026 11:38:19 -0800 (PST)
+Message-ID: <7cca3a47-5a9d-429e-8049-004a8f258d00@linaro.org>
+Date: Fri, 20 Nov 2026 11:38:16 -0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/4] accel/tcg: Yield round-robin execution when
+ another vCPU wakes
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Ashish Anand
+ <ashish.a6@samsung.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20261119225514.4080-1-philmd@oss.qualcomm.com>
+ <20261119225514.4080-2-philmd@oss.qualcomm.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20261119225514.4080-2-philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-User-Agent: reevu/0.1.0
-Received-SPF: pass client-ip=209.85.221.48; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f48.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,443 +106,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
-From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 13 Oct 2026 12:46:49 +0000, alexander.hansen@9elements.com wrote:
-> From: Alexander Hansen <alexander.hansen@9elements.com>
->
-> Product: [1]
-> Datasheet: [2]
->
-> The ADC reads a pre-defined arbitrary value.
->
-> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/name
-> max11615
-> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage0_raw
-> 722
-> root@yosemite4:~# cat /sys/bus/iio/devices/iio:device2/in_voltage_scale
-> 0.500000000
->
-> trace:
-> less /tmp/qemu-trace.log | grep -i max116
-> max11615_realize i2c_addr: 0x33
-> max11615_realize i2c_addr: 0x33
-> max11615_event i2c_addr: 0x33, event: 0x01
-> max11615_write_setup i2c_addr: 0x33, data: 0xd2
-> max11615_write_config i2c_addr: 0x33, data: 0x0f
-> max11615_event i2c_addr: 0x33, event: 0x03
-> max11615_event i2c_addr: 0x33, event: 0x01
-> max11615_write_setup i2c_addr: 0x33, data: 0xd2
-> max11615_write_config i2c_addr: 0x33, data: 0x0f
-> max11615_event i2c_addr: 0x33, event: 0x03
-> max11615_event i2c_addr: 0x33, event: 0x01
-> max11615_write_setup i2c_addr: 0x33, data: 0xd2
-> max11615_write_config i2c_addr: 0x33, data: 0x61
-> max11615_event i2c_addr: 0x33, event: 0x03
-> max11615_event i2c_addr: 0x33, event: 0x00
-> max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-> max11615_recv_return i2c_addr: 0x33, returns: 0xfa
+On 11/19/26 14:55, Philippe Mathieu-Daudé wrote:
+> An interrupt or inline run_on_cpu callback can wake another CPU
+> that shares the sender's host thread. End the current slice in
+> both paths so the target can run promptly.
 
-Nit: is this trace in sync with the code?
+Why?  Isn't this going to interfere with icount/replay?
 
-> max11615_recv i2c_addr: 0x33, reg_addr: 0x00
-> max11615_recv_return i2c_addr: 0x33, returns: 0xd2
-> max11615_event i2c_addr: 0x33, event: 0x04
-> max11615_event i2c_addr: 0x33, event: 0x03
->
-> References:
-> [1] https://www.analog.com/en/products/MAX11615.html
-> [2] https://www.analog.com/media/en/technical-documentation/data-sheets/MAX11612-MAX11617.pdf
->
-> Cc: Emmanuel Blot <eblot@meta.com>
-> Cc: Titus Rwantare <titusr@google.com>
-> Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
-> Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org> (odd fixer:Overall sensors)
-> Cc: Paolo Bonzini <pbonzini@redhat.com> (maintainer:Kconfig)
-> Cc: Peter Maydell <peter.maydell@linaro.org> (supporter:ARM TCG CPUs)
-> Cc: qemu-devel@nongnu.org (open list:All patches CC here)
-> Cc: qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-> Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 870152932c..6bd06dd3ab 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -4119,6 +4119,7 @@ S: Maintained
->  F: hw/i2c/pmbus_device.c
->  F: hw/sensor/adm1272.c
->  F: hw/sensor/isl_pmbus_vr.c
-> +F: hw/sensor/max1161x.c
 
-The MAX11615 is a plain I2C ADC, not a PMBus device
-include/hw/sensor/max1161x.h is not listed
-I do not know if this new code can be assigned to a maintainer
+r~
 
-> diff --git a/hw/sensor/max1161x.c b/hw/sensor/max1161x.c
-> new file mode 100644
-> index 0000000000..69f7da0438
-> --- /dev/null
-> +++ b/hw/sensor/max1161x.c
-> @@ -0,0 +1,314 @@
-> +/*
-> + * Maxim MAX11615 Low-Power 12 bit ADC
-> + * Models MAX11612,MAX11613,MAX11614,MAX11615,MAX11616,MAX11617
-
-Only MAX11615 is registered, and class_init hardcodes the MAX11615
-parameters. The other parts differ.
-Maybe only keep 11615 reference for now, and add a note that document
-the same file could be used to support other variants? IOW, keep the
-'x' suffix for function prefixes, filenames and struct names, but only
-document '5' variant as currently supported.
-
-> + *
-> + * Datasheet:
-> + * https://www.analog.com/media/en/technical-documentation/data-sheets/MAX11612-MAX11617.pdf
-> + *
-> + * Copyright 2026 9elements
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/sensor/max1161x.h"
-> +#include "hw/i2c/i2c.h"
-> +#include "migration/vmstate.h"
-> +#include "qemu/log.h"
-> +#include "qemu/module.h"
-> +#include "trace.h"
-> +
-> +#define MAX11615_NUM_CHANNELS 8
-> +
-> +struct MAX11615State {
-
-Should be MAX1161xState I believe
-
-> +    I2CSlave i2c;
-> +
-> +    /* true: single-ended mode, false: differential mode */
-> +    bool single_ended;
-> +
-> +    /*
-> +     * Output data coding for the MAX11612–MAX11617 is
-> +     * binary in unipolar mode and two’s complement in bipolar mode
-> +     */
-> +    bool bipolar;
-> +
-> +    /* The MAX11613/MAX11615/MAX11617 feature a 2.048V internal reference */
-> +    uint16_t vref;
-
-I think you need to specify the unit here: mV
-
-> +
-> +    uint16_t channels[MAX11615_NUM_CHANNELS];
-
-What do channels actually store: RAW/output value or the real voltage?
-
-> +    I2CSlaveClass parent_class;
-> +
-> +    uint8_t channel_select_mask;
-> +    size_t n_channels;
-> +};
-> +
-> +OBJECT_DECLARE_TYPE(MAX11615State, MAX1161XClass, MAX11615)
-> +
-> +static void max1161x_reset(MAX11615State *s)
-> +{
-> +    trace_max11615_reset(s->i2c.address);
-> +
-> +    s->single_ended = true;
-> +    s->bipolar = false;
-> +    s->vref = 2048;
-> +    s->pointer = 0;
-> +    s->outlen = 0;
-> +
-> +    MAX1161XClass *mc = MAX11615_GET_CLASS(s);
-> +
-> +    for (int i = 0; i < mc->n_channels; i++) {
-
-signed int vs. unsigned (long) int comparison
-
-> +        s->channels[i] = 0x2d2;
-
-Why 0x2d2? I think it should rather be a C #define with some short doc.
-It would be nice to have dynamic object properties to change the values
-on the ADC input pins
-
-> +    }
-> +}
-> +
-> +static void max11615_set_outbuf(MAX11615State *s, uint16_t value)
-> +{
-> +    uint8_t msb = value >> 8;
-> +    uint8_t lsb = value & 0xff;
-> +    s->outbuf[0] = 0xf0 | (msb & 0xf);
-> +    s->outbuf[1] = lsb;
-> +}
-> +
-> +static void max11615_read_single_ended(MAX11615State *s)
-> +{
-> +    /* Table 3. Channel Selection in Single-Ended Mode */
-> +    /* read an ADC channel, first 4 bits must be high */
-> +    uint16_t value = s->channels[s->pointer];
-> +    /*
-> +     * In single-ended mode, the MAX11612–MAX11617 always
-> +     * operates in unipolar mode irrespective of BIP/UNI.
-> +     */
-> +    if (value > s->vref) {
-
-I think raw unit/output code and voltage in mV are mixed here. The
-actual voltage scaling is ignored: 1 LSB is 0.5 mv so 2048 raw value
-means ~ 1.024 volts. I would suggest to name the variables/constants
-(local and in MAX11615 state) to reflect the unit/type of data to avoid
-this kind of mistake, and help the reader.
-
-It is probably easier to store the actual voltage in mV and perform
-conversion to output value on read out
-
-> +}
-> +
-> +static int16_t max11615_differential_value(const MAX11615State *s)
-> +{
-> +    /* Table 4. Channel Selection in Differential Mode */
-> +    size_t i1 = s->pointer;
-> +    size_t i2 = (s->pointer % 2 == 0) ? s->pointer + 1 : s->pointer - 1;
-> +
-> +    const int16_t ch1 = s->channels[i1];
-> +    const int16_t ch2 = s->channels[i2];
-> +    return ch1 - ch2;
-> +}
-> +
-> +static void max11615_read_differential(MAX11615State *s)
-> +{
-> +    const int16_t value = max11615_differential_value(s);
-> +    uint16_t vu = value;
-> +
-> +    /* full-scale transition: Figure 12, Figure 13 */
-> +    if (s->bipolar) {
-> +        const uint16_t fs = s->vref / 2;
-
-Same unit mismatch here
-
-> +
-> +    max11615_set_outbuf(s, vu);
-> +}
-> +
-> +static void max11615_read(MAX11615State *s)
-> +{
-> +    if (s->single_ended) {
-> +        max11615_read_single_ended(s);
-> +    } else {
-> +        max11615_read_differential(s);
-> +    }
-> +}
-> +
-> +static void max11615_write_config_byte(MAX11615State *s, uint8_t data)
-> +{
-> +    trace_max11615_write_config(s->i2c.address, data);
-> +
-> +    uint8_t scan_select = (data >> 5) & 0x3;
-> +
-> +    if (scan_select != 0x3) {
-> +        qemu_log_mask(LOG_UNIMP, "%s: unimplemented scan select\n", __func__);
-
-Only SCAN=0b11 is supported here, which means "convert the selected
-channel" and do not scan, where as the management of 'pointer' makes the
-opposite and implements channel scanning.
-
-> +    }
-> +
-> +    const MAX1161XClass *mc = MAX11615_GET_CLASS(s);
-> +
-> +    uint8_t channel_select = (data >> 1) & mc->channel_select_mask;
-> +
-> +    /* Table 3. Channel Selection */
-> +    if (channel_select >= mc->n_channels) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid channel select\n",
-> +                      __func__);
-> +        channel_select = mc->n_channels - 1;
-> +    }
-> +    s->pointer = channel_select;
-> +    s->single_ended = data & 0x1;
-> +}
-> +
-> +static void max11615_write_setup_byte(MAX11615State *s, uint8_t data)
-> +{
-> +    trace_max11615_write_setup(s->i2c.address, data);
-> +    /* we ignore the setup byte, not implemented */
-
-This comment is out-of-sync, as the code below does handle RST, BIP/UNI
-and the reference select.
-
-SEL=00x (VDD as reference) is neither handled nor logged; vref stays at
-2048.
-
-> +
-> +    /* 1 = no action, 0 = resets the configuration register to default */
-> +    const bool rst = ((data >> 1) & 0x1) == 0x0;
-
-Nit: maybe registerfields.h REG8 macros could help, naming fields and
-writing if (! (data & R_SETUP_RST) ) or the like
-
-> +
-> +    if (rst) {
-> +        max1161x_reset(s);
-
-RST=0 resets only the configuration register (scan, CS, SGL/DIF) whereas
-the setup register stays as it is.
-
-max1161x_reset() also resets vref, bipolar and the simulated analog
-input values in channels[].
-
-The reset feature should be split (config-register reset vs. out of the
-device reset).
-
-> +
-> +    if (msb) {
-> +        max11615_write_setup_byte(s, data);
-> +    } else {
-> +        max11615_write_config_byte(s, data);
-> +    }
-> +
-> +    s->outlen = 0;
-> +    return 0;
-> +}
-> +
-> +static uint8_t max11615_recv(I2CSlave *i2c)
-> +{
-> +    MAX11615State *s = MAX11615(i2c);
-> +    trace_max11615_recv(s->i2c.address, s->pointer);
-> +
-> +    MAX1161XClass *mc = MAX11615_GET_CLASS(s);
-> +
-> +    if (s->outlen >= 2) {
-> +        /* MAX11615 supports multichannel scan with wraparound */
-> +        /* see datasheet page 17 */
-
-This depends on SCAN mode
-
-> +
-> +        s->outlen = 0;
-> +
-> +        s->pointer++;
-> +        if (s->pointer >= mc->n_channels) {
-> +            s->pointer = 0;
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> ---
+>   accel/tcg/tcg-accel-ops.c | 3 +++
+>   cpu-common.c              | 3 +++
+>   2 files changed, 6 insertions(+)
+> 
+> diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+> index 61e0051b53be..ec4e3577ead1 100644
+> --- a/accel/tcg/tcg-accel-ops.c
+> +++ b/accel/tcg/tcg-accel-ops.c
+> @@ -107,6 +107,9 @@ void tcg_handle_interrupt(CPUState *cpu, int mask)
+>           qemu_cpu_kick(cpu);
+>       } else {
+>           qatomic_set(&cpu->neg.icount_decr.u16.high, -1);
+> +        if (current_cpu && current_cpu != cpu) {
+> +            cpu_exit(current_cpu);
 > +        }
-> +    }
-> +
-> +    max11615_read(s);
-> +
-> +    const uint8_t data = s->outbuf[s->outlen++];
-> +
-> +    trace_max11615_recv_return(s->i2c.address, data);
-> +    return data;
-> +}
-> +
-> +static int max11615_event(I2CSlave *i2c, enum i2c_event event)
+>       }
+>   }
+>   
+> diff --git a/cpu-common.c b/cpu-common.c
+> index adb76b3a786c..d518d1f40e81 100644
+> --- a/cpu-common.c
+> +++ b/cpu-common.c
+> @@ -148,6 +148,9 @@ void do_run_on_cpu(CPUState *cpu, run_on_cpu_func func, run_on_cpu_data data,
+>   
+>       if (qemu_cpu_is_self(cpu)) {
+>           func(cpu, data);
+> +        if (current_cpu && current_cpu != cpu) {
+> +            cpu_exit(current_cpu);
+> +        }
+>           return;
+>       }
+>   
 
-There is a mix of max11615_ and max1161x_ prefixes
-
-> +{
-> +    MAX11615State *s = MAX11615(i2c);
-> +
-> +    trace_max11615_event(s->i2c.address, event);
-> +
-> +    switch (event) {
-> +    case I2C_START_RECV:
-> +        s->outlen = 0;
-
-outlen is reset but not pointer
-
-After a guest reads 4 bytes, pointer is 1. Every later read transaction
-then returns AIN1 although CS still selects AIN0. On real hardware each
-read starts a new conversion of the configured channel(s).
-
-> +        break;
-> +    default:
-> +        break;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static const VMStateDescription vmstate_max11615 = {
-> +    .name = TYPE_MAX11615,
-> +    .version_id = 0,
-> +    .minimum_version_id = 0,
-> +    .fields =
-> +        (const VMStateField[]){ VMSTATE_BOOL(single_ended, MAX11615State),
-
-I'm not sure this matches the usual QEMU format style
-
-> +                                VMSTATE_BOOL(bipolar, MAX11615State),
-> +                                VMSTATE_UINT16(vref, MAX11615State),
-> +                                VMSTATE_UINT16_ARRAY(channels, MAX11615State,
-> +                                                     MAX11615_NUM_CHANNELS),
-> +                                VMSTATE_UINT8(outlen, MAX11615State),
-> +                                VMSTATE_UINT8_ARRAY(outbuf, MAX11615State, 2),
-> +                                VMSTATE_UINT8(pointer, MAX11615State),
-> +                                VMSTATE_I2C_SLAVE(i2c, MAX11615State),
-> +                                VMSTATE_END_OF_LIST() }
-> +};
-> +
-> +static void max1161x_reset_hold(Object *obj, ResetType type)
-> +{
-> +    MAX11615State *s = MAX11615(obj);
-> +
-> +    max1161x_reset(s);
-
-At reset, the device uses SEL=0b000, that is VDD as the voltage
-reference, which is not internal Vref Either warn if a conversion is
-started without SEL being assigned Vref first, or implement Vref
-conversion. I would suggest the latter, as it could reveal unit
-conversion issues with some dedicated unit tests.
-
-> +}
-> +
-> +static void max11615_realize(DeviceState *dev, Error **errp)
-> +{
-> +    MAX11615State *s = MAX11615(dev);
-
-Drop this function since it does nothing (anymore?)
-
-> diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-> index 2041c91dd9..b0d46f3f01 100644
-> --- a/hw/sensor/trace-events
-> +++ b/hw/sensor/trace-events
-> @@ -25,3 +25,12 @@ max31790_fan_dynamics_read(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c
->  max31790_fan_dynamics_write(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
->  max31790_fan_config_read(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
->  max31790_fan_config_write(uint8_t i2c_addr, size_t channel, uint8_t value) "i2c_addr: 0x%02x, channel: %zu, value: 0x%02x"
-> +
-> +# max11615.c
-
-The file is named max1161x.c
-
-> diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
-> index be396f53bc..0d81638c82 100755
-> --- a/tests/functional/arm/test_aspeed_fby4.py
-> +++ b/tests/functional/arm/test_aspeed_fby4.py
-> @@ -81,6 +81,15 @@ def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
->          exec_command_and_wait_for_pattern(self,
->              "cat /sys/class/hwmon/hwmon3/fan1_input", "10347");
->  
-> +        # MAX11615 test
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/bus/i2c/devices/30-0033/iio:device*/name", "max11615");
-> +        # read the value configured in the machine emulation
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/bus/i2c/devices/30-0033/iio:device*/in_voltage0_raw", "722");
-> +        exec_command_and_wait_for_pattern(self,
-> +            "cat /sys/bus/i2c/devices/30-0033/iio:device*/in_voltage_scale", "0.500000000");
-
-Beware of line width, use checkpath.pl for guidance
-
-Emmanuel.
 

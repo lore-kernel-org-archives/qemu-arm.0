@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 915BE606A326
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 12:17:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98237606A320
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 12:17:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=bLeIyyhL
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=iGjZ/3IG
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUNXM-0006t6-Ua; Fri, 20 Nov 2026 07:16:17 -0500
+	id 1xUNXQ-00072n-Tv; Fri, 20 Nov 2026 07:16:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xUNWr-0006LT-N6
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:46 -0500
+ id 1xUNX0-0006S3-N6
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:54 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xUNWq-0006Hi-AE
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:45 -0500
+ id 1xUNWy-0006J0-G1
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1795176943;
+ s=mimecast20190719; t=1795176951;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Xe/ydVz9VVY5ySmBDtx+FQAdJ8Oqdg4Nb8cfOjgHsIk=;
- b=bLeIyyhLG23WjU3BjX5betpM1aQbFaP7yHr0J3Oa99i9Jo/ILWMxdkIXvI7ViLxTmWsJdb
- hnJBNPIMHHZ8U2hV3Gp8gIvcykToQdMIx/OnoBOnEE1B0rdBrKmI7aGEt4c64T7HoOzEoV
- gBOzF3JpN2rYgBKYo0psr9DZsACHofE=
+ bh=h0ghUw1GbywVItEb0FKlEZl2p1YXR4OkhuRFf0DLRkk=;
+ b=iGjZ/3IGitTB/LlgebSqGf3zyZ79ek+IeYstxHxZx4XUFox/ZBdf/IfVtSqqzpSKteJeCv
+ v+6mz8+eS454BjqvadWOzfBSRu3YoSk/gxgXITzCYlwUJFpE8Osb5Ju6iICeeGwT91IdmJ
+ 2k0CeZFpEZZ/oKgYn+hKHZYvsve/wy4=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-OtE5cpqcMH669p5-N1nIHw-1; Fri,
- 20 Nov 2026 12:15:37 +0000
-X-MC-Unique: OtE5cpqcMH669p5-N1nIHw-1
-X-Mimecast-MFC-AGG-ID: OtE5cpqcMH669p5-N1nIHw_1795176935
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-486-NJWLgm3QN4KTs_I0Nqmg8w-1; Fri,
+ 20 Nov 2026 12:15:46 +0000
+X-MC-Unique: NJWLgm3QN4KTs_I0Nqmg8w-1
+X-Mimecast-MFC-AGG-ID: NJWLgm3QN4KTs_I0Nqmg8w_1795176943
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D49871800551; Fri, 20 Nov 2026 12:15:34 +0000 (UTC)
+ id C30D31800544; Fri, 20 Nov 2026 12:15:43 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id ABEB330000E3; Fri, 20 Nov 2026 12:15:30 +0000 (UTC)
+ id D2B3630000E3; Fri, 20 Nov 2026 12:15:39 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -64,16 +64,15 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <th.huth+qemu@posteo.eu>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  Eric Farman <farman@linux.ibm.com>
-Subject: [PATCH 06/12] tests/functional: don't write timestamp unless
- successful
-Date: Fri, 20 Nov 2026 12:14:52 +0000
-Message-ID: <20261120121458.3723625-7-berrange@redhat.com>
+Subject: [PATCH 08/12] tests/functional: honour make jobs in precache
+Date: Fri, 20 Nov 2026 12:14:54 +0000
+Message-ID: <20261120121458.3723625-9-berrange@redhat.com>
 In-Reply-To: <20261120121458.3723625-1-berrange@redhat.com>
 References: <20261120121458.3723625-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: iU-wMS6SMVmXxjUUDp77BREeXKKhM2Pi1ChyuBFvf_c_1795176935
+X-Mimecast-MFC-PROC-ID: pDgUWR9CxAM_gE9n4MueJf_uTZ4II7BOsCgn6Bvci6A_1795176943
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -100,32 +99,31 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The current code creates the timestamp file before running
-the precache operation, so it remains on disk even after
-a download error. This prevents re-trying of downloads to
-get the missing files.
+Pass $(NINJAFLAGS) when running precache so that it does not
+run in parallel until the user requested a parallel make.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- tests/functional/qemu_test/asset.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/functional/qemu_test/asset.py b/tests/functional/qemu_test/asset.py
-index bb7c7d5bb8f..51c76993d07 100644
---- a/tests/functional/qemu_test/asset.py
-+++ b/tests/functional/qemu_test/asset.py
-@@ -307,5 +307,5 @@ def precache_suites(path, cache_tstamp):
-         loader = unittest.loader.defaultTestLoader
-         tests = loader.loadTestsFromNames([path], None)
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index a1f60802b9b..f983b1ae2dd 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -49,7 +49,7 @@ $(FUNCTIONAL_TARGETS):
  
--        with open(cache_tstamp, "w", encoding='utf-8'):
--            Asset.precache_suite(tests)
-+        Asset.precache_suite(tests)
-+        Path(cache_tstamp).touch()
+ .PHONY: check-functional-precache
+ check-functional-precache:
+-	@$(NINJA) precache-functional
++	@$(NINJA) $(NINJAFLAGS) precache-functional
+ 	@$(PYTHON) $(SRC_PATH)/scripts/clean_functional_cache.py
+ 
+ .PHONY: check-functional
 -- 
 2.56.1
 

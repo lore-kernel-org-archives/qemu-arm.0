@@ -1,81 +1,82 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B774606A6A3
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 20:44:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50167606A6EA
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 20:47:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=UwjrFGbe
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=iUTiqlG/
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUVT0-000868-KV; Fri, 20 Nov 2026 15:44:20 -0500
+	id 1xUVVV-0000XK-RS; Fri, 20 Nov 2026 15:46:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xUVSy-00085S-EU
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 15:44:16 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xUVVJ-0000TB-1j
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 15:46:41 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xUVSu-0000GL-JO
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 15:44:16 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1xUVVH-0000Zn-M8
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 15:46:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1795207450;
+ s=mimecast20190719; t=1795207598;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=PZxmtv74tpxvjKLd94BhgK799m2u8GX8OrKwlWaj6GM=;
- b=UwjrFGbeDxokcq8HE/zXg8DKHCLVPDsMt1NDJKK/f/sijahm9Pn9lruDM5F6DW1S1svG7R
- BQF9mF9u264Ib4qhnK0Gm+r0A3Gcqz9Ld4039nLz29Gh9O6+R/JJElp0vK8L7nap1XMp96
- n8TwpoAsyJGnJI88jorpMiRiQSvsaqM=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=2WBlKHOTSaEI5dELonacKhr/R5x87miUpAzzKYSDf34=;
+ b=iUTiqlG/UsMKg0KTOFQcSSvDQODGGH1jQv10V26vMAyA2Cds5L6wKTGPiOx/jo6WQiyq1l
+ T5rvOcAmg3N54QIDrVvvkY5fnajA9XXqVE2V/h16pMSvHUk2QuKmfgWADsb8m48SqNzB/N
+ luTfQxRIsxbzDSKyzaL9NCzb1nuZxyU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-211-FbG3uu1lOQmkqcrUAJHrLA-1; Fri, 20 Nov 2026 20:44:06 +0000
-X-MC-Unique: FbG3uu1lOQmkqcrUAJHrLA-1
-X-Mimecast-MFC-AGG-ID: FbG3uu1lOQmkqcrUAJHrLA_1795207445
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-48e4d1e29f3so1082477f8f.3
- for <qemu-arm@nongnu.org>; Fri, 20 Nov 2026 12:44:06 -0800 (PST)
+ us-mta-171-_Kl8-KAAMliQwVrM1qoZ_Q-1; Fri, 20 Nov 2026 20:46:36 +0000
+X-MC-Unique: _Kl8-KAAMliQwVrM1qoZ_Q-1
+X-Mimecast-MFC-AGG-ID: _Kl8-KAAMliQwVrM1qoZ_Q_1795207592
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-490d2ac331bso1034195f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 20 Nov 2026 12:46:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795207445; x=1795812245;
+ d=1e100.net; s=20260707; t=1795207592; x=1795812392;
  h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=PZxmtv74tpxvjKLd94BhgK799m2u8GX8OrKwlWaj6GM=;
- b=wUmfoa9iz/Yuku6WkcBXD4akRazeqJ4RwRzcb+Ffk53WHivl4qW0d27cSLaeAZ/HBr
- UIzgn33qBDejLj3kELWROXydCjNqtkxfhTyMhx+C5OctuP9PPk+Xvr/MpiiJKHr66yWL
- 13muiXRJdTJ+JiQvV3h0mKVqS735Mfogi8+Lyeicw1heOj08anTmrbuEgAgs28itTzia
- WRoyed+2v9nWAx1q/f62xMFz9gctodUb4tjWcIuHkqxx5thmLyiOVJyMf6N9RFZnRpNw
- BiNmKlE5Rh0ejd6Ib08zmOHwuTDxbtiokonBlB7N76sDrVD+08z3g6EakutgcPW7aoR8
- gW1g==
+ bh=2WBlKHOTSaEI5dELonacKhr/R5x87miUpAzzKYSDf34=;
+ b=myObVdWlg2yjCnfmny6atHi5XJbBXr7jB6ygMmpG46Y2qiYJkiTNvUsSbvPIxiqPsZ
+ GSrE2R8A+kNDc7UQ9gG8UeL9pcKCia5Wi/3thQUvqjmm7hudr1KDQT65TNFtGKWrNEBC
+ Oqa+2GGA2SJ+PTdtysh4AufNICYzzgMmVC8JuD58vyCnrbc/EfBWt2EXHJZIZEn0kpba
+ x1Br/XBzLz/rF7zFzmuwgeudy9aWPV21S4g9B+uk2S4O1gYhJztx6N+yanUVveglzd1U
+ Xvi2rDaslwDgrRRxD6MHG5QT/yKggeWVCziT428rYWhvpfSLJtrFRfal5dn0NnJ20Koj
+ Yp+g==
 X-Forwarded-Encrypted: i=1;
- AL+hErHsF7cRMALqeEdvtUyWVuz74lll0Bs2BDIZ0lZdd5VAB5PADmdUr6YmrCqFpGHsw11IR694FkfE3A==@nongnu.org
-X-Gm-Message-State: APuU4Z/ek4z0JfvNhjty6X3IfxGcl+l5fM46a+w6aplMV3CRRCc5y8qj
- 3uygVq1mtgU2GUx78topF4xjWzMaY/QTqbb9nzsoQAAh8G9fcxgYdlrQ63QPcgDvjbJWenoiaoi
- DJFWpQRcRe1W9s9JmaN7s6Sjd8511VEV19jRVatWycI4z9/Q1sgFipQ==
-X-Gm-Gg: AZFdTZegxVq5W7qDZiDFMmSTChKp1h/ri0Ta7xtmnr0ppPvsfwQMeK11o5hqcTDJDcO
- vr3GNywPOotCX3bVQN6nFY2wATwsaImaYRFleKkzKONJW42Pj0k3uP/45z5Cq+OWb3zxMSuTQ4b
- b3xkomhFGeqfCR/d3N3w3rIZBiA1fj2XpnuE5n328EuVxy8RK1RsP7JrkR/M6BYVRHM7Pn/T2qM
- MEnb1qC8xwQdZJyANYK4XmWcc6MrrdyLR3Shbm4WmbJi+3qN78D9eGZW443VbwOhKffXZfc2OST
- BzBRclCqYLhn0/zJwaoc1DF/WAtS0aOLVDz64RFGxdP0ic4M0cvIin8p/Ow74vZI+Wv+DsXVsSD
- CpVYq8Wt8VawBZhIU4LjYLCgfJo+ZhvIgjuH3+jfDAIRn
-X-Received: by 2002:a05:6000:490b:b0:491:8462:20be with SMTP id
- ffacd0b85a97d-4abb1baaad9mr8942429f8f.12.1795207444963; 
- Fri, 20 Nov 2026 12:44:04 -0800 (PST)
-X-Received: by 2002:a05:6000:490b:b0:491:8462:20be with SMTP id
- ffacd0b85a97d-4abb1baaad9mr8942396f8f.12.1795207444652; 
- Fri, 20 Nov 2026 12:44:04 -0800 (PST)
+ AL+hErHzIdT2jD+HtYL+NurPTYiwNLKnECjIzfXtwNBKJCvMDtwDyMIX4LHJ3FoWmibqraQUFTMkKEkFig==@nongnu.org
+X-Gm-Message-State: APuU4Z/e+P3JJee4uGzxkKQxV6cQnZ0l0CGiXCbrxlWYmkVCte5b5dII
+ P0FpoqrN66YLYPk9Kw8AIA/9gaiSN8d6XbJMoQigz2X4Pp8K4a0uyyIfku1Esw99/oIJ0nmSiHj
+ cnoTDrdVDKz+hFOvu6vUTwIHtbThY8ZDTkmGz0UTJ3h5rPeEEcZoYAg==
+X-Gm-Gg: AYBFou3eBlLrgNSjBuAAjaz+dg7rj4uNfIRv+vlSDvw4+lkVo0Mrq0q+swND46aFgGI
+ QZqUXXc/pj+wke9HqQwNbv1e9fWlNA6EobjadRV5KTwan4FfE23Y8+B1mBFOWXHumHkkH7uXwKk
+ xKvG8BzZm0YJ4XEy1lQAZdIZa7AXLi2nYsu932+7pEnR2xb6RwppYAv6hTIucevXNJ+wYv9KTlQ
+ RM3WAQ2eSH+GgP5MYZk3aMPp4jOHKpEIsKKduiDZYol1VpAmFM4N8ibUYaSVgQmfmyd2BmBDiG+
+ ieFOV72lNYXtBZaaNXnxeEsAkSoIOiBJDiwHksyB7g61vTrF9MtFw7U5pfC/AdbguV83+oI9ab5
+ h78wMWyQ6bjvMqXcQa2DKEuTejQOe1YduFvt/P/A3tGR/
+X-Received: by 2002:a05:600c:6749:b0:4bb:5f95:c014 with SMTP id
+ 5b1f17b1804b1-4bb8880f283mr101837575e9.19.1795207592665; 
+ Fri, 20 Nov 2026 12:46:32 -0800 (PST)
+X-Received: by 2002:a05:600c:6749:b0:4bb:5f95:c014 with SMTP id
+ 5b1f17b1804b1-4bb8880f283mr101837195e9.19.1795207592354; 
+ Fri, 20 Nov 2026 12:46:32 -0800 (PST)
 Received: from [192.168.0.9] ([47.65.243.90]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab69bf685asm7062925f8f.20.2026.11.20.12.44.02
+ ffacd0b85a97d-4ab6a67fe75sm8508504f8f.24.2026.11.20.12.46.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Nov 2026 12:44:03 -0800 (PST)
-Message-ID: <e3e73c68-7129-4371-aeae-c68eeeef08b8@redhat.com>
-Date: Fri, 20 Nov 2026 21:44:01 +0100
+ Fri, 20 Nov 2026 12:46:31 -0800 (PST)
+Message-ID: <442ca165-1609-4680-b9b1-81e7f6e64a7c@redhat.com>
+Date: Fri, 20 Nov 2026 21:46:29 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/12] tests/functional: update URL to rs6000 firmware
+Subject: Re: [PATCH 04/12] tests/functional: add Accept header when
+ downloading assets
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -91,7 +92,7 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <th.huth+qemu@posteo.eu>, =?UTF-8?Q?Herv=C3=A9_Poussineau?=
  <hpoussin@reactos.org>, Eric Farman <farman@linux.ibm.com>
 References: <20261120121458.3723625-1-berrange@redhat.com>
- <20261120121458.3723625-4-berrange@redhat.com>
+ <20261120121458.3723625-5-berrange@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -135,9 +136,9 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20261120121458.3723625-4-berrange@redhat.com>
+In-Reply-To: <20261120121458.3723625-5-berrange@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Ylewl5cm8F-Zqu4hCVPhIgTTjLJwQTZB-dCMGlctMKE_1795207445
+X-Mimecast-MFC-PROC-ID: 6LtJz9YpoSILtodKey_ETxlDqWSQeGBRIVmcb3DvV78_1795207592
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -162,38 +163,32 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-22.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 Am 20.11.26 um 13:14 schrieb Daniel P. Berrangé:
-> The current mirror URL is throwing permission denied errors,
-> so switch to an alternate site discoverd via Google.
+> elinux.org is currently triggering an Anubis challenge for requests
+> to download assets. After comparing the headers that curl sends, it
+> was narrowed down to the omission of an "Accept" header.
+> 
+> A missing "Accept" header is a rule that Anubis added a year ago
+> which is known to hit python's urllib:
+> 
+>    https://github.com/TecharoHQ/anubis/issues/1346
+> 
+> the bug indicates the rule was removed by default at that time,
+> however, rules have evolved further since then and look like they
+> are hitting our downloads. Adding the header is simple & harmless.
 > 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
->   tests/functional/ppc/test_40p.py | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/tests/functional/ppc/test_40p.py b/tests/functional/ppc/test_40p.py
-> index 4c1c9bad6ec..084fe4c4e54 100755
-> --- a/tests/functional/ppc/test_40p.py
-> +++ b/tests/functional/ppc/test_40p.py
-> @@ -17,8 +17,7 @@ class IbmPrep40pMachine(QemuSystemTest):
->       timeout = 60
->   
->       ASSET_BIOS = Asset(
-> -        ('http://ftpmirror.your.org/pub/misc/'
-> -         'ftp.software.ibm.com/rs6000/firmware/'
-> +        ('https://public.dhe.ibm.com/eserver/pseries/firmware/'
->            '7020-40p/P12H0456.IMG'),
->           'd957f79c73f760d1455d2286fcd901ed6d06167320eb73511b478a939be25b3f')
->       ASSET_NETBSD40 = Asset(
-
-Tested-by: Thomas Huth <thuth@redhat.com>
+>   tests/functional/qemu_test/asset.py | 11 ++++++++++-
+>   1 file changed, 10 insertions(+), 1 deletion(-)
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

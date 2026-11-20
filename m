@@ -1,113 +1,97 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BE14E606A325
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 07:08:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4B7A360A2628
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 11:44:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=KO+PetVV
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=zbCV0zNY
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUIjO-00064I-MY; Fri, 20 Nov 2026 02:08:24 -0500
+	id 1xUN1k-0005we-0v; Fri, 20 Nov 2026 06:43:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xUIjM-00063x-BF
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 02:08:20 -0500
-Received: from smtpout1.mo536.mail-out.ovh.net ([51.210.91.10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xUIjJ-0001YG-Nc
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 02:08:19 -0500
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net [79.137.60.223])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4jW5yY4nFRz82Qw;
- Fri, 20 Nov 2026 07:08:05 +0000 (UTC)
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net. [127.0.0.1])
- by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Fri, 20 Nov 2026 07:08:05 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.231.53])
- by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jW5yY1wxgz1xqq; Fri, 20 Nov 2026 07:08:05 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.1])
- (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A104A12E3C8B;
- Fri, 20 Nov 2026 07:08:04 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G0028b62c6e1-24bd-43b1-9a56-ce4553d17b38,
- A8AC08B692E79E5B467B93654C937DFAA6077A3F) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <00f62c2a-f094-4922-92c9-2d3c26a012d4@kaod.org>
-Date: Fri, 20 Nov 2026 08:08:04 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xUN1i-0005w6-CJ
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 06:43:34 -0500
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xUN1g-0005LW-8T
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 06:43:33 -0500
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-67bee1f693bso738639d50.1
+ for <qemu-arm@nongnu.org>; Fri, 20 Nov 2026 03:43:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795175010; cv=none;
+ d=google.com; s=arc-20260327;
+ b=CJRBp4GIwhN5tv82G5Fxo6ovYYWVV3nRHWqIlweCHhb7RBpx1dbLUggX50oOM7vopG
+ Xb4RZ7KofrOsAhVWsofa2wt4vjiWacSna/HcHvLuiYvjaeIp7GtR8nYzlQKVAep1eJtf
+ xdVj5QnyFu36P1Br1NT7q3MDs3gTaR6FovBwX7Yzp3i1d8Yv52elGewanF9/H4IVA+rb
+ xDhOpTYPk0RDP+fPy9jga2tabstlb77Rppxql5Kry1gdCoD6URWiq8BlEh5/r6Jt37lr
+ H8fHjrAsUV1uPR4gWFoFw2yv5Owc0x0MQa9EjJqs1uqtETA9+2cAfNhandtYePuoEtM3
+ ETRw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :dkim-signature;
+ bh=rIAhL2QRLoNu8jSsk6OmKcyR2LzJ9Hd6xE+H84MiAK4=;
+ fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+ b=YZQcgHfTrZ3yoZDZQr3dPheaC3jhN/5Xo1FzZh0XDcK33W+H+2cxgPxr7SyH+Nwizp
+ N81tUPVBhWPV66OGkhc7fPDD64GD2svaYfAUojS4OaiAVl36QsNysYLNBV+IeeDlkyV7
+ b85joW3k/JcqgrXBSruqAH73TwDDp6mlJQm3BQDppO4FCE6npDYeIcXlvLiNrGrhI4T1
+ x7WeJM+mtsfDbtNu9SyhpVPTYfVXBvWM6aXdf4xjL9ceOKs/x6OwBwYwRf7OAUf1wXiI
+ zMJatGv8nk8gD4ra/M8kjBtcgAYNJOSqSR+WEMQbKtF/Z9SBB7//pGfbLlX0diq873Jb
+ TeSQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1795175010; x=1795779810; darn=nongnu.org;
+ h=content-type:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=rIAhL2QRLoNu8jSsk6OmKcyR2LzJ9Hd6xE+H84MiAK4=;
+ b=zbCV0zNYLSJyalgViQ3jmuOVcH9hDZl4fPfOomTUQQzw8YYxA8SOt4s/1XCWFRZZgY
+ CWx8og2UNAwD+ksVRHs0Ntyi3+4boQrp7O2IpdHxPSvkCnezDPcQYDCY3DfynBwM5Hdl
+ jf+RwMsfV86YmAGLpmvrFwp4kGn3NHOKr8iOSZqEMseEWrfBcvBR8yL9nG3QRruIn83Z
+ +6lGfMeU1B29qR3dCzHpUdfjThq0CxR46vlGLjD/HPAl5XLVnrXwh2jxgU0JAMaMDWtH
+ mXDoqkRTZO34B1jx2jSolPH/Kxt6DHYadcAyY2bsKQ2FZ0xNKqWsJ9p713L0tiSTfPbB
+ msCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1795175010; x=1795779810;
+ h=content-type:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=rIAhL2QRLoNu8jSsk6OmKcyR2LzJ9Hd6xE+H84MiAK4=;
+ b=1g0gpeCGvLzlffiL95ENHzKITrxBa64w3vjUTLH1TjiDZx79WF41oN3fmO5ww+Ot6A
+ KjLsrcdrvVADAAtTIsl/QlPoAdyMfZDuDOQYiiUaFsMjPfcRBSdaZI2aNZDENcyQCprC
+ K+0wcawrZvH8s4nm6zJLFyhchKD8fR0gpXVhZ8tayUeMiK8Us8t3l58EYJ06H0swZ39D
+ S25mp99kmWsOlbqe4S3hZOJTdnB+axpvgeNCVtx2GG+8DmULqhKTIhXKVtpeZQsCxwn7
+ xeHVy3IyFiZIzlAa4zUBWaLfMttx/MAvC+J9UWHXXidlVhqJPoGWR+YdaavLVdVeGez4
+ WQNA==
+X-Gm-Message-State: APuU4Z9c3t8k4KgxX642hqmarLDjm2gvQffsnSxjoS9gB6cPad8+zGy3
+ qQex8psXeW1whFz7Qv0YB35TZMEYiOSkR2l5wHV8RA/Zd4yfb/tH9t61GF5yb/Q0Gb4KX7NkM61
+ fjHxXadj/n6GTA95QxLp5TUMtIkaB+JsSOSiAwwdLxoydF0Wu75Szs+U=
+X-Gm-Gg: AZFdTZcFKQ9Bg+uKgNH9P0ZIfSrioAXsvVqg7CWsK1PLD8XmsHr9Yt7mU9goHNTSQTo
+ fXsg9qvb7aS+vW5AcZCpJ3CMzQeu/hQjnl102KWe8nDAVCAr2EBz3Me8pGwdFaYT5YsRCheDbt2
+ njGCwBsUQ8UJ9OLevwM23btjz3pe5JPBptp+FyDKRpfWF95k5BRCL+wbCuQqKjN0ILAVF5/9DjG
+ nSlkzMOHPCY9b5NZwoSU4lQ+NPplRKKCztXfVzJVshKx9V678DHS+FUsv667ZmB3kAxGEqM7wdf
+ PgmvFeqmrZkQTwFi1LMpjPd8o5Hp+t20OCGecAnpnCR/wzH/RqHBV8a1mQIgitPu4tU8CspsGKh
+ ZNCM0Tk8LxBbBIvol+q5ymWOHYEGBhnlbpIuW/XQ2aI8KIOtHEBR9Yzo+m0S4yWcpuYjs8hfbCh
+ 9rYuwdxMnScismIwVb8fnN
+X-Received: by 2002:a05:690e:439b:b0:67d:b729:eee6 with SMTP id
+ 956f58d0204a3-67df448e155mr932899d50.85.1795175010397; Fri, 20 Nov 2026
+ 03:43:30 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-11.2] hw/ssi/aspeed_smc: Correct minimum_version_id in
- vmstate
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-References: <20261119171425.3186790-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20261119171425.3186790-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 17425834334236158987
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFbXugCwqKBGYKPy81Td7TMrXRxdxcqeZAuVxITn4Sk9OHnLtOMe3vCBu97ZXaF2c6jXliTyfHtb3J97Uikos0tT+ofOWvyRT3ggWWZgxY89OEoWF7++IFFqCzxkLyOJK5J3uc4ITVhpiHDj8SKXDXRiYSu7fJlxnnv3XEeYT/vKCqryU+1cIXXoxgeOYjQgvph2pY7p0cQ4KSJFFMOvuPypu1J8sqf3TPmEOaU6D07lE92zGvLPpt0g/iO3+VbRLhsxWGNyxk4c4jeJgVvZ8MUkH4zrqz8YoL7Oe7r3vZyEF6u/dUpYiaD/GTgmJSESpYQxBC2LnV/H6mqbCwWudUUEHA9MJnZzS7GkNb3g8Q3aYNU8zKtD0WlwTABpDXvGElUB94HdWg86kRNFx+Rf1Y2nQnL/x7RF7l1Hbw7vvLOst1P+gwY54zT1KUuSp3d9h8jM0YfBSaYD+da9xMAMqMBVplQW+vN68gzmPHD9L1BQZ7l+ydh3vCFp03FV+I5em7pfobmX07HMRPxtBZ1gWsTek/FwJmkDS/Qi1jzHqUguQxF/tUOQi1ag3iT0SLQiGc3n5K2cxCZa8NpL312c4/Js4pnLQFknWYCXoblsw1lIYilub7x+R8JfVM3csqA9abPGYywmT6vUxL+PI3zK6P2M/NRzJpJBMvAdk24byyH6g
-DKIM-Signature: a=rsa-sha256; bh=EZPlfnuj9EMsEIaMOwpOZFUT/rtkUopKDhm/Flw3xHw=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1795158486; v=1;
- b=KO+PetVVLnVbIz0dAj14Ui7TYoDt5D6XUei0GqY8SnR/qGFF/mmHwxp6bkSZqdl1CgSI7y0z
- 7Ee8uIzzKMqZ4dRqVSaVfPmfuyHUucBgnTyCflO1FM3toyKDnjoTsdtnGzRtKNidUUJq25p+uyu
- utZ7Y8swYb/KMSaIxzbLCKSEHhaymQVf/qc1gUJD/QJ6CxS8j1sy5xi/4gJ0E/tt3spczMxvgxK
- fO0buL1YLgzpGViJ1rvP/hZICga3HBD3jil8nxMeHUHVuLkLeHaHnpsA4lUOKlxWsE+LXADPFJn
- rQZsDZcfuPnzw7x+/jXi/VgZE7eV4I+Egv2Sy3av8qruA==
-Received-SPF: pass client-ip=51.210.91.10; envelope-from=clg@kaod.org;
- helo=smtpout1.mo536.mail-out.ovh.net
+References: <20261013083933.1024405-1-peter.maydell@linaro.org>
+In-Reply-To: <20261013083933.1024405-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Nov 2026 11:43:17 +0000
+X-Gm-Features: AclHuK8RBBchCvZA2BhzAKeH08qHmMqRGGesUMJD8ZwQAs0IQ_PH0soEx9Ls3HQ
+Message-ID: <CAFEAcA_He4P=0n2j_DL7P+gDd14jXgba3jRmE_1uBC976iFPTw@mail.gmail.com>
+Subject: Re: [PATCH 00/86] hw/intc/arm_gicv5: Implement virtualization support
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,73 +110,48 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-22.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/19/26 18:14, Peter Maydell wrote:
-> In commit 29139270d8ad70f2 we made an incompatible change to the
-> migration state for the aspeed_smc device, and bumped the version_id
-> and minimum_version_id: this is because we increased ASPEED_SMC_R_MAX
-> and so the regs array is bigger.
-> 
-> However, the old vmstate was handling migration from a range of
-> vmstate versions, with version_id = 3 and minimum_version_id = 1.
-> The change to ASPEED_SMC_R_MAX is (intentionally) not compatible with
-> any of those older versions, and so it should have moved
-> minimum_version_id up to 4 (matching the new version_id), not merely
-> increment it.
-> 
-> The effect of this is that trying a migration save on v11.1.3 and
-> then a load on the current head of git fails in a confusing way
-> ("Missing section footer for aspeed.smc") rather than clearly ("error
-> while loading state for instance 0x0 of device 'aspeed.smc':
-> aspeed.smc: incoming version_id 3 is too old for local minimum
-> version_id 5").
-> 
-> Since we now don't need to try to handle migration from versions 2
-> and 3 at all, we can drop the complications in the vmstate struct (an
-> unused field, and field only present in version 3 and up). Clean
-> these up and set the version_id and minimum_version_id to 5
-> accordingly.
-> 
-> Fixes: 29139270d8ad70f2 ("hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for AST2700")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4880
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/ssi/aspeed_smc.c | 7 +++----
->   1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index ec9ad0f747e..f82947e752e 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -1218,12 +1218,11 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
->   
->   static const VMStateDescription vmstate_aspeed_smc = {
->       .name = "aspeed.smc",
-> -    .version_id = 4,
-> -    .minimum_version_id = 2,
-> +    .version_id = 5,
-> +    .minimum_version_id = 5,
->       .fields = (const VMStateField[]) {
->           VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
-> -        VMSTATE_UNUSED_V(2, 2), /* was snoop_index/snoop_dummies */
-> -        VMSTATE_BOOL_V(unselect, AspeedSMCState, 3),
-> +        VMSTATE_BOOL(unselect, AspeedSMCState),
->           VMSTATE_END_OF_LIST()
->       }
->   };
+On Tue, 13 Oct 2026 at 09:39, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset adds virtualization support to our GICv5 model, and lets
+> the "virt" board use -machine gic-version=x-5,virtualization=on.
+>
+> Virtualization in the GICv5 is more complicated than it is in GICv3.
+> This is because in GICv3 virtualization is mostly delegated to software,
+> and only the CPU interface has hardware virtualization support. In
+> GICv5 the hardware does a lot more of the work, so virtualization
+> support is needed in both the CPU interface and the IRS.
+>
+> I've structured this patchset as:
+>  * initial preparatory and bug-fixing patches
+>  * add virt support to the cpu interface
+>  * add virt support to the IRS
+>  * remove the check in virt that stops the user enabling virt
 
+> Peter Maydell (86):
+>   hw/intc/arm_gicv5: Make IRS_IDR0 reads return actual value, not 0
+>   hw/intc/arm_gicv5: Ignore low bits in IRS_IST_BASER.ADDR
+>   hw/intc/arm_gicv5: Ignore low bits in L1_ISTE.L2_ADDR
+>   hw/intc/arm_gicv5: Regularize spacing in config_readl() switch
+>   hw/intc/arm_gicv5: Use cached IRS_IST_BASER.VALID state
+>   hw/intc/arm_gicv5: Free memory in finalize
+>   target/arm: GICv5 cpuif: Use arm_cpu_set_irq() to set IRQ/FIQ status
+>   target/arm: Only allow GICv5 on CPUs without AArch32 at EL1..3
+>   hw/intc/arm_gicv5: Pass CPU index to CPU interface
+>   hw/intc/arm_gicv5: Pass cpuidx rather than iaffid in gicv5_get_hppi()
+>   hw/intc/arm_gicv5: Use correct type for value in lpi_cache_get_hppi()
+>   hw/intc/arm_gicv5: Relax QEMU_GICV5_MIN_LPI_ID_BITS to 0
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Just a note that these first twelve patches are all now upstream. I
+think the rest of the series is still fit for further review, but I'm
+happy to do a respin of the series if that's helpful for anybody.
 
-Thanks,
-
-C.
-
+thanks
+-- PMM
 

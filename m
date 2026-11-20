@@ -1,52 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98237606A320
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 12:17:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59A92606A325
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Nov 2026 12:17:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=iGjZ/3IG
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=dvQcriw+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUNXQ-00072n-Tv; Fri, 20 Nov 2026 07:16:20 -0500
+	id 1xUNXP-00070s-Dx; Fri, 20 Nov 2026 07:16:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xUNX0-0006S3-N6
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xUNWl-0006J8-7Y
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xUNWy-0006J0-G1
- for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:53 -0500
+ id 1xUNWi-0006G3-7v
+ for qemu-arm@nongnu.org; Fri, 20 Nov 2026 07:15:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1795176951;
+ s=mimecast20190719; t=1795176935;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h0ghUw1GbywVItEb0FKlEZl2p1YXR4OkhuRFf0DLRkk=;
- b=iGjZ/3IGitTB/LlgebSqGf3zyZ79ek+IeYstxHxZx4XUFox/ZBdf/IfVtSqqzpSKteJeCv
- v+6mz8+eS454BjqvadWOzfBSRu3YoSk/gxgXITzCYlwUJFpE8Osb5Ju6iICeeGwT91IdmJ
- 2k0CeZFpEZZ/oKgYn+hKHZYvsve/wy4=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=TWwT9612ZW0vbY2P/IQBX7G3/db7VfF5dQu5dZHqZWI=;
+ b=dvQcriw+lPCB4HGSBQRrcv5/TJy3UDbL4LStis4T0Wt5Wq3vPF8p17xGjyTHf1nDlKpQYB
+ x3RhZFMatV1oo7Ifuw+XE/YwLEdGZxeO4VQ60PJwflqtuk/ASMc+c4rNu2Os4jTB329ZON
+ tWDY7FrLGxROs55p1Enut4cgdr9zHhQ=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-486-NJWLgm3QN4KTs_I0Nqmg8w-1; Fri,
- 20 Nov 2026 12:15:46 +0000
-X-MC-Unique: NJWLgm3QN4KTs_I0Nqmg8w-1
-X-Mimecast-MFC-AGG-ID: NJWLgm3QN4KTs_I0Nqmg8w_1795176943
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-297-414XcubEPyGRqf7SSj1Oog-1; Fri,
+ 20 Nov 2026 12:15:28 +0000
+X-MC-Unique: 414XcubEPyGRqf7SSj1Oog-1
+X-Mimecast-MFC-AGG-ID: 414XcubEPyGRqf7SSj1Oog_1795176926
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C30D31800544; Fri, 20 Nov 2026 12:15:43 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1DFCA18002CC; Fri, 20 Nov 2026 12:15:26 +0000 (UTC)
 Received: from berrange.csb (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D2B3630000E3; Fri, 20 Nov 2026 12:15:39 +0000 (UTC)
+ id C868830000E3; Fri, 20 Nov 2026 12:15:21 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -64,26 +64,27 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <th.huth+qemu@posteo.eu>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  Eric Farman <farman@linux.ibm.com>
-Subject: [PATCH 08/12] tests/functional: honour make jobs in precache
-Date: Fri, 20 Nov 2026 12:14:54 +0000
-Message-ID: <20261120121458.3723625-9-berrange@redhat.com>
+Subject: [PATCH 04/12] tests/functional: add Accept header when downloading
+ assets
+Date: Fri, 20 Nov 2026 12:14:50 +0000
+Message-ID: <20261120121458.3723625-5-berrange@redhat.com>
 In-Reply-To: <20261120121458.3723625-1-berrange@redhat.com>
 References: <20261120121458.3723625-1-berrange@redhat.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: pDgUWR9CxAM_gE9n4MueJf_uTZ4II7BOsCgn6Bvci6A_1795176943
+X-Mimecast-MFC-PROC-ID: 40AiOKJFiazIXM65so0iHkYW9c234qk76XscQ9wwv4o_1795176926
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,34 +97,54 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Pass $(NINJAFLAGS) when running precache so that it does not
-run in parallel until the user requested a parallel make.
+elinux.org is currently triggering an Anubis challenge for requests
+to download assets. After comparing the headers that curl sends, it
+was narrowed down to the omission of an "Accept" header.
+
+A missing "Accept" header is a rule that Anubis added a year ago
+which is known to hit python's urllib:
+
+  https://github.com/TecharoHQ/anubis/issues/1346
+
+the bug indicates the rule was removed by default at that time,
+however, rules have evolved further since then and look like they
+are hitting our downloads. Adding the header is simple & harmless.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- tests/Makefile.include | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/functional/qemu_test/asset.py | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index a1f60802b9b..f983b1ae2dd 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -49,7 +49,7 @@ $(FUNCTIONAL_TARGETS):
+diff --git a/tests/functional/qemu_test/asset.py b/tests/functional/qemu_test/asset.py
+index 0abd89e0a38..ffa01aba2fb 100644
+--- a/tests/functional/qemu_test/asset.py
++++ b/tests/functional/qemu_test/asset.py
+@@ -137,7 +137,16 @@ def _try_to_fetch(self, tmp_cache_file):
+         for _retries in range(3):
+             try:
+                 with tmp_cache_file.open("xb") as dst:
+-                    with urllib.request.urlopen(self.url) as resp:
++                    req = urllib.request.Request(
++                        self.url,
++                        headers={
++                            # Workaround Anubis challenge which some sites
++                            # trigger when Accept is missing:
++                            #  https://github.com/TecharoHQ/anubis/issues/1346
++                            "Accept": "*/*",
++                        }
++                    )
++                    with urllib.request.urlopen(req) as resp:
+                         copyfileobj(resp, dst)
+                         length_hdr = resp.getheader("Content-Length")
  
- .PHONY: check-functional-precache
- check-functional-precache:
--	@$(NINJA) precache-functional
-+	@$(NINJA) $(NINJAFLAGS) precache-functional
- 	@$(PYTHON) $(SRC_PATH)/scripts/clean_functional_cache.py
- 
- .PHONY: check-functional
 -- 
 2.56.1
 

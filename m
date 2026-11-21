@@ -1,96 +1,123 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47CE5606A320
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Nov 2026 14:03:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3A308606A320
+	for <qemu-arm@archiver.kernel.org>; Sat, 21 Nov 2026 15:31:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=iWG3lUtv
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=O9N1plTl
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUlg4-0002r1-JC; Sat, 21 Nov 2026 09:02:52 -0500
+	id 1xUn3c-0008VT-5W; Sat, 21 Nov 2026 10:31:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xUlg2-0002q7-Kh
- for qemu-arm@nongnu.org; Sat, 21 Nov 2026 09:02:50 -0500
-Received: from pv-2003h-snip6-11.eps.apple.com ([2a01:b747:3003:205::51]
- helo=outbound.pv.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1xUlg0-0007bj-55
- for qemu-arm@nongnu.org; Sat, 21 Nov 2026 09:02:50 -0500
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-3 (Postfix) with ESMTPS id
- 230061800362; Sat, 21 Nov 2026 14:02:44 +0000 (UTC)
-X-ICL-RepId: 01a1fe6a-a798-7255-af01-793527205911
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1795269767; x=1826805767;
- bh=meRts+4c2DtvafLoPOB2t1PMRGHTWUuFfoHRJUX3y9M=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=iWG3lUtvaSxTK9DmLJUTbIC8POKFjjQjIaFXOTab+R8fCZUIinSuK9Xly7tyZhUwrf+50J1jOhopAdvvdCBrrumb1c0GOMbGOImEB0HmXFTtCJbDNs6UIRk7lrsbNvBnycyKUxArUXtMcs2j+pErezxE0BkoA+70JC2xK8gEVjP8R17Eyn0coSfljgVUIBvCW7aSOZhHkwek1fUjhl4haY+QyDKlyVRDLCGrqhtWWr01QxfDi5RAp85G0Et/HPKq8KtX+1uKH5SHRA0TdTBD0z8FwklFg5jrb9fnQtXUJwtZsWj7cmQQq0VMjv6OT159IU3lm+iJlx/aPIt/2wyH4Q==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.156.192.29])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-3 (Postfix) with ESMTPSA id
- D11B718007F6; Sat, 21 Nov 2026 14:02:42 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xUn3Z-0008UV-Cf
+ for qemu-arm@nongnu.org; Sat, 21 Nov 2026 10:31:13 -0500
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xUn3W-0001k0-8W
+ for qemu-arm@nongnu.org; Sat, 21 Nov 2026 10:31:13 -0500
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-675617e81f9so2154987d50.3
+ for <qemu-arm@nongnu.org>; Sat, 21 Nov 2026 07:31:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795275068; cv=none;
+ d=google.com; s=arc-20260327;
+ b=Q6IjzI6EnvQEH7KQhgHGKUVFtvMcHBRZzEeC35hdMwW6AtJSET+0hcgEwwntf+Fi7l
+ SY0lJAOKyXK0uGq3dSRUDx8xJkSEk4AeLmxj5wM5xQa4kFHnDCmoV6ffsGllYsZS704b
+ XPhUgSJxmburlGZ7RoXMjVnEueRAoSWOxjfOKUjU/uRAouBCD9zGk26whSJKDo2rbUkl
+ CCw36l5lAZOqO0/fc1JXWc4e0AbhdZNAtY2olWecZlx/O84plAsiPz8E8jxRjTcSDvj/
+ wEafY5M/jPCiGX+0aLmHEacfiyDrfZL3Crczm8wsFueYvmd1fN9dA9gSWL05prn8Yxos
+ +RCg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=Ymh1U0QIx+ok+DwbBTAoaXzSeH80ixPkSzLNsRW/NP4=;
+ fh=VLYDCtod+l4XksWSUZ6JPsMtW4upo9rZm1bUOp4cT54=;
+ b=stywrD8x0auymj+vZ9905JrgZ2IwF/5hylsL7TbkY2wcFzi40KaasUA2dC6NQrlEBD
+ FaTw3QtJQlflGVxXgXdom/fozf5Bc0dOgEyx8rGeJe7xy8aqFkY1DTFk+r6c2VdHjexj
+ D9J1zGnsRYDML6hUWBl/RJFCGo3spL+PAv+eN+sM/fUlHxwDua+W2bSQAAJ8WGrAFTkG
+ vgtzofd175DjLlTpzSZ1F9woSG/6vnfn6GEszi7S6SFlO7+8PLXYP+SHkjelOhJ6VuQc
+ Qv1SSZuhbQ/CkrhNm1t3FJSZjfSauOb4AWAqtPT2/u5CJle/W8dXAfTNNZgKee2MYMvH
+ Kfpw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1795275068; x=1795879868; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=Ymh1U0QIx+ok+DwbBTAoaXzSeH80ixPkSzLNsRW/NP4=;
+ b=O9N1plTlIQQoIsptnQFYO/fGawCghmVC100umxbPOrFI2jBZYWH0p/rzJ+TpkktYw0
+ 5UCR5cFfmNFuiC52BsAklD5A8ZBkW1GUXN/i8TPxO9QVJVy40IOl9uKc0JcQMOo9pXs2
+ ZqC/SSsmiU2jpu5PJMMrC74C4u6ImAvUAsGOSVOii0SSC4fB8MaJxkvzn6fop4PhzAUV
+ uu7W8o4w//pQU+p4k6x4RuJyUo0Le5hFAL0l+5w9gKgVnKqB130k+fntoBKv7VqdDioo
+ Be9AUZDSPQNwDc8Jj+V28c4Z1BXXYEzG1JNK5RlFVpDJFuNPAxod//YrtF0Ntd70fwh+
+ wf1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1795275068; x=1795879868;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=Ymh1U0QIx+ok+DwbBTAoaXzSeH80ixPkSzLNsRW/NP4=;
+ b=xFfqUStkQDH2P7XHtMB8ckKlidFcIRjO79UdxVUW4G0B31PptQ9UhInJoRRUpAhifk
+ JCCOdAhgQHGkR/ggjaGbhTHws03VrmJO5L2vwFYOcJ6AwNBZ5/MYtV3S/5FpKT+2KTVx
+ DRd8PJP1YpHl5yFNxDZ6cb8JfJ0hRWfs9n2pA76tBGbz4GI007gMg5E2TgKmJDBg0cVz
+ J/V9ojDze8svXTjmPiJyiHJuAt8/ZQFAgbRRCw3Mr8RCdZDUtOHV6IvNANPHBk+aFw3+
+ T2hTvgaPHnFUMExfNkfghKCojQb9AneHjXXNayvZWfRrDc97COBgOkYROIe2eiAZ6q10
+ rhBQ==
+X-Forwarded-Encrypted: i=1;
+ AL+hErF8cjyjQIWifoNNlwoIZnoB2WCbq6mzFEcq0OiOdvWeZQnEv4yz8VG1HHyniVXQsQHqdFVFllHYlg==@nongnu.org
+X-Gm-Message-State: APuU4Z8riZIXrMlp6Fw6S5cdgAVNLG9Kvybe6F0D9IXLs868px1F1NWZ
+ jHJL+VStVBcqFBnNKp9E+KpTzADLWCBlRapqmZ0V/B7syrQ2k+x7PC2c47DINWF+3kinR1YkYBV
+ USBJuzQ7uUtKTYAbnK1QN7yUhug0YRfQ=
+X-Gm-Gg: AZFdTZdj61spmDEr/F2+DSgHBVBavCFQLkmNH5ZvSES3fJZAtQMwPX99maL/Gz85nlP
+ yurKH0Myc56Jm7DU9O1wEhZHo86OwKvGNNdRi3BFJE6NefJMgEjfJW4xQBYhqk9oMPMAwPVSm57
+ e+r40dH3v1yVNy0fMwuIaMvTWri7pFJ/A1JcRqqVRvTpumUHt4IwNDaiAmGpiZgIgoQ8oMpnFZh
+ uXA/wc8B8ZqFuLxZrryt6beGIxmMEueSlr1yonu8J/M57w65D/YdZCwXxoXPOePi9RPNbPwQAIV
+ mq//1KSsQYT9Mdf6+L+gZQ6nsSmYRR3vBHjqhcHPaJLxMxF6myooJYWlPf9LU0L46G2rhmFOz3b
+ OJCwlZN1Q7AX5JzaexGyQ79Put9ZPiRx6vnBLl1okUBW2B0/bhZB4dzxxmEYHeO6VfecvcNk=
+X-Received: by 2002:a05:690e:12c5:b0:67c:1dca:808 with SMTP id
+ 956f58d0204a3-67df43f6506mr3192394d50.40.1795275068633; Sat, 21 Nov 2026
+ 07:31:08 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
-Subject: Re: [PATCH 1/1] hw/arm/virt: add vhe option for nested virtualization
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20261121095636.289814-2-haseebashraf091@gmail.com>
-Date: Sat, 21 Nov 2026 15:02:32 +0100
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Haseeb Ashraf <haseeb.ashraf@siemens.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Volodymyr Babchuk <volodymyr.babchuk@epam.com>, qemu-devel@nongnu.org,
- kvm@vger.kernel.org
+MIME-Version: 1.0
+References: <20261104154207.641511-1-bin.meng@processmission.com>
+ <CAEUhbmW4u6sjkOtY_+Rm5SVz7Uxxx69=Q-5kSOWsSC=PfFLYfg@mail.gmail.com>
+In-Reply-To: <CAEUhbmW4u6sjkOtY_+Rm5SVz7Uxxx69=Q-5kSOWsSC=PfFLYfg@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sat, 21 Nov 2026 23:30:57 +0800
+X-Gm-Features: Aa3M54q5dQ7qxUjEgRs_XFF_wf_wOAr933o_dCzX0PcLbwkHPto4xrMLFmfvWgU
+Message-ID: <CAEUhbmVS6kEBHG29j4w+ftcjcKEoVMPbeKo+88oBZpUJ1W0E1g@mail.gmail.com>
+Subject: Re: [PATCH v5 00/26] hw/riscv: Restore Microchip PolarFire SoC Icicle
+ Kit firmware boot
+To: Bin Meng <bin.meng@processmission.com>
+Cc: QEMU <qemu-devel@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Chao Liu <chao.liu@processmission.com>, Conor Dooley <conor@kernel.org>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Sebastian Huber <sebastian.huber@embedded-brains.de>,
+ Weiwei Li <liwei1518@gmail.com>, 
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <5B0A91A9-656F-479F-963B-43AE8D23446B@unpredictable.fr>
-References: <20261121095636.289814-1-haseebashraf091@gmail.com>
- <20261121095636.289814-2-haseebashraf091@gmail.com>
-To: Haseeb Ashraf <haseebashraf091@gmail.com>
-X-Mailer: Apple Mail (2.3901.200.71.1.16)
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTIxMDA1NSBTYWx0ZWRfXwO884UxVRlZv
- fj7BDsT0QHpuEDAa5C+Ho3PiZ0aonqmepyLb9c5uDQEk4KDmvYQyDjqq+iQ2f5UE4VpB2AkmIJM
- 7Z+HvP4zmGSv9m9QW3wQns+9DTLiIUM=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTIxMDA1NSBTYWx0ZWRfX/PLwryFOnKDP
- M3cflE//VRVoTg71EupRFe4YRm/itDJxCz9YDsRHmj4HNQFLBsRVFLqpbMtstelPcE/lwyv9Ald
- 6mUG5+mpc29/nYFO7WqPkJFRP3sbJ7apbzn32E/OmJ8PKUHP6c9dGIHJezEwXa8+RuPNQQjCN3s
- OkAjyq74YK8I9f1O8QX7w73mZeRanpE5Xe7vr6sruBUpjML+hvf+q7H4q4+8c4dqNIYS/wlZu+X
- DByO9dIcyq/8J4AD/KwW+aWrcmlTVILDBeNfo8Slq2mcwl0W6xF+t+lWjURRsjlbg1OEbqOjbly
- +Y4yRKG+BM7wfOilUL7CgRJ7Q2yu6yz3H08GdT1pwPUk56tlUruoWjLqTQvcho=
-X-Authority-Info-Out: v=2.4 cv=Sfli5fRu c=1 sm=1 tr=0 ts=6b01a486
- cx=c_apl:c_pps:t_out a=aW9mcIavGNWWFvFFKOxBSA==:117
- a=aW9mcIavGNWWFvFFKOxBSA==:17 a=kj9zAlcOel0A:10 a=zJRp6_cAMcgA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=wbbCu9YnSpm8ZdSLOl1R:22 a=AAKO-It69yxVJjVG_j8g:22
- a=pGLkceISAAAA:8 a=a_U1oVfrAAAA:8 a=DBfv99YmAAAA:8 a=WP5zsaevAAAA:8
- a=tzMVfLCtRBOIxXHF2CQA:9 a=CjuIK1q_8ugA:10 a=t8Kx07QrZZTALmIZmm-o:22
-X-Proofpoint-ORIG-GUID: rxJVTbl4TJ-tfjGm6w1PfWqijERoq3yi
-X-Proofpoint-GUID: rxJVTbl4TJ-tfjGm6w1PfWqijERoq3yi
-X-JNJ: AAAAAAABEuEKYdTomu3v3MtBLSYI4FzCLYdn3X7zWmRYOwlBOvIRR1mbo6PTm0MgtsW3iD
- NEhdStWJUbm9rgIE9yqkEQh7tibDh52G/HwfxJPLqwSa2HzedBVnKBMSmL/1qLfCi0wkV3
- bwWclT+Hup9WVXaRAw481lJJVL9v+DObx6Vvj+50Z15YBLPUhulz+gw2JGaDo93FBdL5Nz
- LQbNqXTxKKWkJnhQE5bWtCVDCv/USRcl82gX4A+HlGBtfZMW6or0eRkzTfUDgvul+QICD0
- 7RnmKLBjH759CG4oxFn93jtLzy5FbAPsxrr8PWMdl5En8ouvEQ0QXAXH5+E4x82+0/rSmg
- Z2DfpUmbcX55HO8ZrgqsYgxA4A9O8/6F53S0aORZkYmiNsOhEAocGeC59KxdZIZjvFHgk2
- g9/NS4IvhTLjr/m4qGP4nTpY6h9nlnRRqzvuBOitwwInjiykQ38CWgpZSHCzGqZKgicBDV
- fh5lfFriLMXcteacuaNzCpp1KQ6m0dKxbMja8SIq4Xce02M/WWtaE3T6FCoDvLIGNrL+26
- ZoNJ5mjrksSHnnvSs9LNYjJibnJvOEQvQV0UyvtoXlmIzLKs9ajDsc8efCRsMTG9T0yhFh
- ixd6q0g3Fg0YlV1zsvd5eR/spL2R3pjboEQc5I4l5EkB+JvfnmlDFx0vJWmPIM05kO+HXK
- dsFtRbfi/N18kZI6uJTxerckB7HelMsYUyAyrKFbhZi9DvxyKGVtqg1kr0eTJIKOYsR3k1
- 1q9NEUtt2UZP8kR9OdABT/WNJROIu7cV+uogUesPKeV7rGOq38CBdFSICZwRfbPNlMu+rA
- D8opsUkyVfPVkVnXZxYkRxk4LBilu+csHtgEzvLRBbwWnQk52yVfFPdu
-Received-SPF: pass client-ip=2a01:b747:3003:205::51;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,395 +129,92 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_PASS,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On Mon, Nov 9, 2026 at 9:43=E2=80=AFAM Bin Meng <bmeng.cn@gmail.com> wrote:
+>
+> On Wed, Nov 4, 2026 at 11:42=E2=80=AFPM Bin Meng <bin.meng@processmission=
+.com> wrote:
+> >
+> > The microchip-icicle-kit machine was originally validated with an older
+> > Hart Software Services (HSS) firmware stack. HSS v2026.04.1 cannot boot
+> > through U-Boot to Linux because several firmware-visible parts of the
+> > PolarFire SoC are missing or incomplete.
+> >
+> > The first failure occurs before the UART is initialized because the L2
+> > zero window is not mapped. HSS then needs additional L2 cache controlle=
+r
+> > and DDR training behavior. Later boot stages exercise system services,
+> > the RTC, SDHC version 4 DMA, and high-capacity SD card block sizing,
+> > along with the complete DDR aliases. The existing models ither reject
+> > these accesses or expose behavior that does not match the hardware
+> > specifications.
+> >
+> > This series restores the complete firmware boot flow. With these
+> > changes, QEMU boots the HSS v2026.04.1 eNVM image, loads its U-Boot
+> > payload from an SD card, and reaches the Buildroot 2026.05 Linux
+> > login prompt.
+> >
+> > The changes are organized around the firmware boot sequence:
+> >
+> > * Correct the L2-LIM size, map the L2 zero window, and provide the DMC
+> >   status transitions required by HSS DDR initialization.
+> > * Model the documented L2CC Config, WayEnable, and WayMask registers,
+> >   and resize L2-LIM as cache ways are enabled.
+> > * Complete SDHCI version 4 support used by the Cadence controller,
+> >   including Host Control 2, SDMA system addressing, 64-bit ADMA2
+> >   descriptors, and SDMA boundary continuation.
+> > * Run ADMA from a bounded timer-driven engine instead of performing wor=
+k
+> >   from command or unrelated MMIO accesses.  This keeps DMA progress
+> >   independent of guest register traffic and avoids consuming a polling
+> >   deadline inside the command write.
+> > * Advertise the Cadence controller's 64-bit system bus support.
+> > * Add the PolarFire SoC serial-number system service and RTC, and honor
+> >   the system-service notification control bit.
+> > * Correct the DDR aliases and fix the board topology at its physical
+> >   configuration of 2 GiB of RAM and five harts.
+> > * Document direct and HSS boot, add focused qtests and a full firmware
+> >   functional test, and restore the machine's Supported maintainer
+> >   status.
+> >
+> > Testing performed:
+> >
+> > * Built qemu-system-riscv64 and the documentation.
+> > * Passed various newly added qtests.
+> > * Booted HSS v2026.04.1, U-Boot, and Buildroot 2026.05 Linux to
+> >   the login prompt using the functional-test image.
+> >
+> > The functional test uses the processmission/qemu-machine-images release
+> > v1.1.1 tarball:
+> >
+> > https://github.com/processmission/qemu-machine-images/releases/download=
+/
+> > v1.1.1/riscv64-microchip-icicle-kit-v1.1.1.tar.zst
+> >
+> > When restoring the HSS boot support, 3 potential bugs were identified i=
+n
+> > the upstream HSS source codes that either blocks the DDR training from
+> > succeed or traps in a multi-core race at the very beginning or after
+> > a succesfully DDR training but stuck at OpenSBI/U-Boot hand-off. There
+> > are already bug reports filed aginst various upstream projects.
+> >
+> > Changes in v5:
+> > - Select REGISTER to fix riscv32-softmmu link failures
+> > - Rebase onto origin/master
+> > - Drop the high-capacity SD block-size fix already merged upstream
+> >
+>
+> Patch 8/11/15/22/23 still doesn't have any RB/TB tags. Ping for review?
+>
 
+Only #10 needs a review or testing tag. Ping?
 
-> On 21. Nov 2026, at 10:56, Haseeb Ashraf <haseebashraf091@gmail.com> =
-wrote:
->=20
-> From: Haseeb Ashraf <haseeb.ashraf@siemens.com>
->=20
-> Add a vhe machine property for the virt board. When virtualization=3Don,=
-
-> VHE remains enabled by default, but vhe=3Doff allows nVHE/type-1 guest
-> hypervisors to run without VHE.
->=20
-> Propagate the setting to the ARM CPU, limit TCG to nVHE mode, and =
-request
-> the KVM_ARM_VCPU_HAS_EL2_E2H0 vCPU initialization flag when VHE is
-> disabled. Reject vhe=3Doff when the selected accelerator cannot =
-provide
-> the requested behavior. The option has no effect unless
-> virtualization=3Don is also set.
->=20
-> Document the option, and make the nested virtualization functional =
-test
-> pass a vhe setting matching the kernel mode.
->=20
-> Tested nested virtualization with KVM on arm64 hosts using L0 kernel
-> versions 6.18.29 and 7.2.11. A Linux 6.12.67 guest initialized KVM in
-> nVHE mode with vhe=3Doff and VHE mode with vhe=3Don. QNX Hypervisor =
-8.0.5
-> detected EL1 host hypervisor support with vhe=3Doff and EL2 host
-> hypervisor support with vhe=3Don. Xen booted dom0 to the login prompt =
-with
-> vhe=3Doff, but did not boot with vhe=3Don.
->=20
-> Tested with TCG on an AmpereOne A192-32X host. QNX Hypervisor 8.0.5
-> boots with both vhe settings, and Xen boots its dom0 with vhe=3Doff.
->=20
-> Suggested-by: Volodymyr Babchuk <volodymyr.babchuk@epam.com>
-> Signed-off-by: Haseeb Ashraf <haseeb.ashraf@siemens.com>
-
-Hi,
-
-> ---
-> docs/system/arm/virt.rst             | 10 ++++++++
-> hw/arm/virt.c                        | 37 ++++++++++++++++++++++++++++
-> include/hw/arm/virt.h                |  1 +
-> target/arm/cpu.c                     | 15 +++++++++++
-> target/arm/cpu.h                     |  2 ++
-> target/arm/kvm-stub.c                |  5 ++++
-> target/arm/kvm.c                     |  8 ++++++
-> target/arm/kvm_arm.h                 | 12 +++++++++
-> tests/functional/aarch64/test_kvm.py | 10 +++++---
-> 9 files changed, 97 insertions(+), 3 deletions(-)
->=20
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index 5f6dd17978..31f0878788 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -116,6 +116,16 @@ virtualization
->   Set ``on``/``off`` to enable/disable emulating a guest CPU which =
-implements the
->   Arm Virtualization Extensions. The default is ``off``.
->=20
-> +vhe
-> +  Set ``on``/``off`` to allow/disallow a guest hypervisor to use the =
-Arm
-> +  Virtualization Host Extensions (``FEAT_VHE``) when =
-``virtualization`` is
-> +  ``on``. The default is ``on``, which places no restriction on the =
-selected
-> +  CPU model (it does not add VHE to a CPU model which lacks it). =
-``off``
-> +  exposes EL2 in nVHE mode for a type-1 guest hypervisor: with TCG =
-this hides
-> +  ``FEAT_VHE``, with KVM it requires host ``E2H0`` support, and it is =
-not
-> +  supported with HVF. This option has no effect when =
-``virtualization`` is
-> +  ``off``.
-If going this machine property route:
-
-This should be a tristate: on/off/auto
-
-With auto being the default: both nVHE and VHE when the CPU supports =
-that, and
-neither with no EL2 exposed to the guest.
-
-> +
-> mte
->   Set ``on``/``off`` to enable/disable emulating a guest CPU which =
-implements the
->   Arm Memory Tagging Extensions. The default is ``off``.
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 0b11f7e328..1a987faa19 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -3025,6 +3025,12 @@ static void machvirt_init(MachineState =
-*machine)
->         exit(1);
->     }
->=20
-> +    if (vms->virt && !vms->vhe && hvf_enabled()) {
-> +        error_report("mach-virt: %s does not support disabling VHE",
-> +                     current_accel_name());
-> +        exit(1);
-> +    }
-
-Does not support enabling VHE. The (experimental) patch to enable VHE
-with HVF is elsewhere on this mailing list.
-
-Currently, Apple only ships nVHE with Hypervisor.framework, with VHE
-being a pre-release feature.
-
-> +
->     if (vms->mte && hvf_enabled()) {
->         error_report("mach-virt: %s does not support providing "
->                      "MTE to the guest CPU",
-> @@ -3069,6 +3075,10 @@ static void machvirt_init(MachineState =
-*machine)
->             object_property_set_bool(cpuobj, "has_el2", false, NULL);
->         }
->=20
-> +        if (vms->virt && object_property_find(cpuobj, "has_vhe")) {
-> +            object_property_set_bool(cpuobj, "has_vhe", vms->vhe, =
-NULL);
-> +        }
-> +
->         if (vmc->no_kvm_steal_time &&
->             object_property_find(cpuobj, "kvm-steal-time")) {
->             object_property_set_bool(cpuobj, "kvm-steal-time", false, =
-NULL);
-> @@ -3308,6 +3318,20 @@ static void virt_set_virt(Object *obj, bool =
-value, Error **errp)
->     hvf_nested_virt_enable(value);
-> }
->=20
-> +static bool virt_get_vhe(Object *obj, Error **errp)
-> +{
-> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-> +
-> +    return vms->vhe;
-> +}
-> +
-> +static void virt_set_vhe(Object *obj, bool value, Error **errp)
-> +{
-> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-> +
-> +    vms->vhe =3D value;
-> +}
-> +
-> static bool virt_get_highmem(Object *obj, Error **errp)
-> {
->     VirtMachineState *vms =3D VIRT_MACHINE(obj);
-> @@ -4235,6 +4259,13 @@ static void virt_machine_class_init(ObjectClass =
-*oc, const void *data)
->                                           "guest CPU which implements =
-the ARM "
->                                           "Virtualization =
-Extensions");
->=20
-> +    object_class_property_add_bool(oc, "vhe", virt_get_vhe,
-> +                                   virt_set_vhe);
-> +    object_class_property_set_description(oc, "vhe",
-> +                                          "Set on/off to =
-enable/disable the ARM "
-> +                                          "Virtualization Host =
-Extensions (applicable "
-> +                                          "only when =
-virtualization=3Don)");
-
-As said above, should be a tristate at least.
-
-> +
->     object_class_property_add_bool(oc, "highmem", virt_get_highmem,
->                                    virt_set_highmem);
->     object_class_property_set_description(oc, "highmem",
-> @@ -4375,6 +4406,12 @@ static void virt_instance_init(Object *obj)
->     /* EL2 is also disabled by default, for similar reasons */
->     vms->virt =3D false;
->=20
-> +    /*
-> +     * VHE is unrestricted by default when virtualization=3Don is =
-set.
-> +     * With vhe=3Doff, EL2 is limited to nVHE mode.
-> +     */
-> +    vms->vhe =3D true;
-> +
->     /* High memory is enabled by default */
->     vms->highmem =3D true;
->     vms->highmem_compact =3D !vmc->no_highmem_compact;
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 22e66d1a11..bd0065efb1 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -174,6 +174,7 @@ struct VirtMachineState {
->     bool highmem_redists;
->     bool tcg_its;
->     bool virt;
-> +    bool vhe;
->     bool ras;
->     bool mte;
->     bool dtb_randomness;
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index dde03ffdd6..4d272b5388 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1326,6 +1326,9 @@ static const Property =
-arm_cpu_reset_hivecs_property =3D
-> static const Property arm_cpu_has_el2_property =3D
->             DEFINE_PROP_BOOL("has_el2", ARMCPU, has_el2, true);
->=20
-> +static const Property arm_cpu_has_vhe_property =3D
-> +            DEFINE_PROP_BOOL("has_vhe", ARMCPU, has_vhe, true);
-> +
-> static const Property arm_cpu_has_el3_property =3D
->             DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
->=20
-> @@ -1622,6 +1625,7 @@ static void arm_cpu_post_init(Object *obj)
->=20
->     if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
->         qdev_property_add_static(DEVICE(obj), =
-&arm_cpu_has_el2_property);
-> +        qdev_property_add_static(DEVICE(obj), =
-&arm_cpu_has_vhe_property);
->     }
-> #endif
->=20
-> @@ -1872,6 +1876,13 @@ static void arm_cpu_realizefn(DeviceState *dev, =
-Error **errp)
->         return;
->     }
->=20
-> +    if (cpu->has_el2 && !cpu->has_vhe && kvm_enabled() &&
-> +        !kvm_arm_el2_e2h0_supported()) {
-> +        error_setg(errp, "KVM does not support disabling VHE (E2H0 "
-> +                   "unavailable)");
-> +        return;
-> +    }
-> +
-> #ifndef CONFIG_USER_ONLY
->     /* The NVIC and M-profile CPU are two halves of a single piece of
->      * hardware; trying to use one without the other is a command line
-> @@ -2246,6 +2257,10 @@ static void arm_cpu_realizefn(DeviceState *dev, =
-Error **errp)
->         unset_feature(env, ARM_FEATURE_EL2);
->     }
->=20
-> +    if (cpu->has_el2 && !cpu->has_vhe && tcg_enabled()) {
-> +        FIELD_DP64_IDREG(isar, ID_AA64MMFR1, VH, 0);
-> +    }
-> +
->     if (!cpu->has_pmu) {
->         unset_feature(env, ARM_FEATURE_PMU);
->     }
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index b2f393f501..2f94fdae7b 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1022,6 +1022,8 @@ struct ArchCPU {
->     bool has_el2;
->     /* CPU has security extension */
->     bool has_el3;
-> +    /* CPU has virtualization host extensions */
-> +    bool has_vhe;
->     /* CPU has PMU (Performance Monitor Unit) */
->     bool has_pmu;
->     /* CPU has VFP */
-> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-> index 88cbe8d85c..6eb9e1366a 100644
-> --- a/target/arm/kvm-stub.c
-> +++ b/target/arm/kvm-stub.c
-> @@ -42,6 +42,11 @@ bool kvm_arm_el2_supported(void)
->     return false;
-> }
->=20
-> +bool kvm_arm_el2_e2h0_supported(void)
-> +{
-> +    return false;
-> +}
-> +
-> /*
->  * These functions should never actually be called without KVM =
-support.
->  */
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index df86ad387c..6b95ed1da8 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -2003,6 +2003,11 @@ bool kvm_arm_el2_supported(void)
->     return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
-> }
->=20
-> +bool kvm_arm_el2_e2h0_supported(void)
-> +{
-> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2_E2H0);
-> +}
-> +
-> bool kvm_arm_mte_supported(void)
-> {
->     return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
-> @@ -2060,6 +2065,9 @@ static void =
-kvm_arm_vcpu_prepare_init_features(ARMCPU *cpu)
->     }
->     if (cpu->has_el2 && kvm_arm_el2_supported()) {
->         cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_HAS_EL2;
-> +        if (!cpu->has_vhe) {
-> +            cpu->kvm_init_features[0] |=3D 1 << =
-KVM_ARM_VCPU_HAS_EL2_E2H0;
-> +        }
->     }
-> }
->=20
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 9c7e7f654a..24828e9c07 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -182,6 +182,13 @@ bool kvm_arm_mte_supported(void);
->  * Returns true if KVM can enable EL2 and false otherwise.
->  */
-> bool kvm_arm_el2_supported(void);
-> +
-> +/**
-> + * kvm_arm_el2_e2h0_supported:
-> + *
-> + * Returns true if KVM supports limiting EL2 to E2H=3D0, and false =
-otherwise.
-> + */
-> +bool kvm_arm_el2_e2h0_supported(void);
-> #else
->=20
-> static inline bool kvm_arm_aarch32_supported(void)
-> @@ -198,6 +205,11 @@ static inline bool kvm_arm_el2_supported(void)
-> {
->     return false;
-> }
-> +
-> +static inline bool kvm_arm_el2_e2h0_supported(void)
-> +{
-> +    return false;
-> +}
-> #endif
->=20
-> /**
-> diff --git a/tests/functional/aarch64/test_kvm.py =
-b/tests/functional/aarch64/test_kvm.py
-> index c977e8c6d2..502060a109 100755
-> --- a/tests/functional/aarch64/test_kvm.py
-> +++ b/tests/functional/aarch64/test_kvm.py
-> @@ -40,7 +40,9 @@ def _launch_guest(self, kvm_mode=3D"nvhe"):
->                                f"console=3DttyAMA0 =
-kvm-arm.mode=3D{kvm_mode}")
->=20
->         self.vm.add_args("-cpu", "max")
-> -        self.vm.add_args("-machine", =
-"virt,gic-version=3D3,virtualization=3Don",
-> +        vhe =3D "on" if kvm_mode =3D=3D "vhe" else "off"
-> +        self.vm.add_args("-machine",
-> +                         =
-f"virt,gic-version=3D3,virtualization=3Don,vhe=3D{vhe}",
->                          '-kernel', kernel_path,
->                          '-append', kernel_command_line)
->         self.vm.add_args("-smp", "2", "-m", "320")
-> @@ -48,8 +50,10 @@ def _launch_guest(self, kvm_mode=3D"nvhe"):
->         try:
->             self.vm.launch()
->         except VMLaunchFailure as excp:
-> -            if "does not support providing Virtualization" in =
-excp.output:
-> -                self.skipTest("accelerator has no virtualization =
-support")
-> +            if ("does not support providing Virtualization" in =
-excp.output or
-> +                    "does not support disabling VHE" in excp.output):
-> +                self.skipTest("accelerator lacks the required =
-virtualization "
-> +                              "support")
->             else:
->                 self.log.info("unhandled launch failure: %s", =
-excp.output)
->                 raise excp
-> --=20
-> 2.34.1
->=20
->=20
-
+Regards,
+Bin
 

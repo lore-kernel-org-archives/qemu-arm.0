@@ -1,73 +1,73 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B21B0606A320
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Nov 2026 20:46:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C3DC606A332
+	for <qemu-arm@archiver.kernel.org>; Sat, 21 Nov 2026 20:46:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=FW6zivGt
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=iXWFe4tW
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUryS-0004Rw-JS; Sat, 21 Nov 2026 15:46:16 -0500
+	id 1xUryY-0004U1-LW; Sat, 21 Nov 2026 15:46:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haseebashraf091@gmail.com>)
- id 1xUryQ-0004Ra-R6
- for qemu-arm@nongnu.org; Sat, 21 Nov 2026 15:46:14 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1xUryX-0004TP-JU
+ for qemu-arm@nongnu.org; Sat, 21 Nov 2026 15:46:21 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haseebashraf091@gmail.com>)
- id 1xUryP-0005z9-4i
- for qemu-arm@nongnu.org; Sat, 21 Nov 2026 15:46:14 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4bb64ef5a00so15598645e9.3
- for <qemu-arm@nongnu.org>; Sat, 21 Nov 2026 12:46:12 -0800 (PST)
+ id 1xUryV-000649-Gi
+ for qemu-arm@nongnu.org; Sat, 21 Nov 2026 15:46:21 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4a210470b49so18092495e9.2
+ for <qemu-arm@nongnu.org>; Sat, 21 Nov 2026 12:46:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1795293971; x=1795898771; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1795293978; x=1795898778; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=6cw4bVM/elmiYBT/hpISiGamNAca35rw9WaolQpyJgc=;
- b=FW6zivGtYENpgMm2Irynn4BM+ylPkCGxwSwUb3nx7bXpH8R3QEEqE1gxDeVNMRZZ5h
- 2yJWLpP175XBm8vcRXeiZEEC85HfmkC681dJZnWlQGxtWWG+5/cBU/NxG5GZt+1YNWe8
- 1YP/FALcaIP0oSqe+5OU2SkABNMiSORHEUSZPsRfcSZcWaIPEN1BlWsJxF8TgPG1pxW9
- Fpn5ebG1/9GPe0e+GIbnW58EVNQGzQEcqpF0psEgEL/phmu6YMf1vm+c/lae3iywpf7G
- AGf29Ve8nfNYXILy5spBjAPeCMd86s7s85nFF+E9huqnMnOy7cin8bwV91/KX/KnaPH5
- VBpg==
+ bh=AaHxvjxuFM0ZGMpfN7ZubYdgVJfxHgv6fA2HEiSYIX0=;
+ b=iXWFe4tW3Q8x0UpVHDTxmp72AqFepQPVLBgozGCB6U3G4wqffMM1kyK/8wXhdZwWe9
+ U0U7aWGeltl2kgshqVtODII7/uzokkMgfs6lEwv3PXZIO8FD4qJOcRSappDNHwLS76j8
+ M6/LKLVWeiPRMqt9UHkRzRBF1J4NoHPAkQ0YSH4q3BQXKuot5G9elOqy2VrtpJusc88I
+ CiklkbkWQC/V2KYiy5KphlgUFH2r3AwmLqZyTXb4fNIM6/XsavowmVMrSzURlCdwAoVY
+ R4q5s2gnYGnVaaq/3MQA8wMKUu4cHgsbb/txxmXojRYIPP+snOSLRqppxOy7s5TVYIFP
+ xzcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795293971; x=1795898771;
+ d=1e100.net; s=20260707; t=1795293978; x=1795898778;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=6cw4bVM/elmiYBT/hpISiGamNAca35rw9WaolQpyJgc=;
- b=bCsx/Nz9WOSj0n/fUmTETYi1MMj88ipfnOwy0CjzKXqqboeLU9xWr2o4VKZPYjCgAX
- DV7eK07Tx8gLNziatYOZ6M6DQEwzhOmeF+xMRrdDzd0FshUxriOy6x82mL+5oUg+qXGa
- Mxgdcxbb3yV5TQGoyqhulgRR0Q61tmd95FS7cc/MuPsmeuFcOqK280h3tmIj6y2eoeFn
- DT9FgAN6hdzhuXim/uzBGmovx/q6HxjzwOAZ6bitfdd5FCIKRlI7tHX8Pubu9Y/ITQk5
- w54AKs4cP69Zc1i2ZO+XMbqIRZj85G7EDXOZTc5W+ir4S/+FO46jTI/Rd4sdKyl3s/FC
- 7LbQ==
+ bh=AaHxvjxuFM0ZGMpfN7ZubYdgVJfxHgv6fA2HEiSYIX0=;
+ b=ybHCzdmlKp123Ogjz1KK8oUrwHP1xRh+cgLzJWrAYIsy5Q1APoAfaapF6e+f2bqfkb
+ Z5M1SDOgPkRzDqTKb+tmSTFn/6ybPCaDEqb1gPjtSNt5a30gUrEd5NKenNBzUtKqO1qe
+ dsSuog9RRUG15Qg2aSTj/Ex+0mIBLtGej+l7FbbsY3Yi+vHrWYzDn+iGPDyqE9yes5oB
+ QnEKN8vwKbhqKHUESmtKCP80rRRjidCrt9JHKEo0a4nP1muWF7Z4r+HqiEmLH0JUpf7j
+ YCPfm1dixFXcVD7WREqf7dRNDm2m+GTAE4+tUxOsZRPr96ATZ6IJboYeg+6i1kQKnjhw
+ Eo2w==
 X-Forwarded-Encrypted: i=1;
- AL+hErHopFN2+n1HD7pmK8HQx01CN4ZYfc86MzW7zZBCxIjSoKAeyxpQrYiRHCo34PFUPMLnxgwuuiz82w==@nongnu.org
-X-Gm-Message-State: APuU4Z86IeFskIjuBJO3N3Oa8Ye5sQZo+gV8XJNft6I1DHoTkvph91kF
- 0rfrB0lCjoa/wRvQbSV0f2fW/HIWJKkTic8wgZZuXgDEUq1DO3pyi/vj
-X-Gm-Gg: AZFdTZdPVKMURJF0Yok5ALtXup4CLHwJ+Xf77jJrUIchXAwkCskJLuS5Jjq+D5gjbqZ
- wvo3dspNR6M+oEInczk0nEipzk4/WkPXglKdSnsSuwpBBpXaznoddiN2GmJBkbYnAXyq4SKxyG3
- blSMDYeDS/O1c6UmLQBoVD99Ux+KfcD1NShKo8JvIE8B1KZtzBtuegetzp39JcfIFoGmHyxphUG
- eeK1/qx0MW/JaWyQv6H3eqz4RjFR2DKkrYcBn4rj94mXfsDXGblYoMweZUiOZ00ckLIAD+3rSOC
- yV+lckPeNtkVd+cJ752azU945EmNyMf0sK2wJeilKiLeNk6rKY6hG0P0Q161XkDXRC1Afy5yC4F
- fIGsm7W8PhVpl74gsp4C+JnCbvBzhRXA1bl3/RxUlmxP9Q9qMoWOa2EZtXpYgle35MPYujyJR3p
- O1sp0KPDQDPh9uPm4sjKvRiBySO5Fcq2087b87VX0MOas7RBbhbj7zeFEtjOPzutWX9NO6E3LbT
- 1xaSGD2Kc0oxqppXO3O4l7BIDwfgky8tk+QXp+Y2a3IgP7LrhJbjHSQoPo9N2hY2oQA4hR6A5xt
- ALJCZK7rIhyvAzg9SgzHhY6OJdqOh2IT2UQ2/QREdgO7jdQvy5ba29Z/kiQNTAA3UPtwMTA0nfw
- FgUGBKHJC5XaeyqGG7o4A7ew=
-X-Received: by 2002:a05:600c:190d:b0:4ba:2bfc:c8b5 with SMTP id
- 5b1f17b1804b1-4bb888267aemr149715085e9.10.1795293971472; 
- Sat, 21 Nov 2026 12:46:11 -0800 (PST)
+ AL+hErEOMZvFlsud2/uQwrXaboGlpNuiEiBho4csW7GgEsOv7y/pTG5dKIV1NdsgcVfhVGmQUJuI2MJm+g==@nongnu.org
+X-Gm-Message-State: APuU4Z8ytUN3FVZ2d7gFV1vVzlDKf7D5b+6jtk2zI0Z/QyLErhLQAUPD
+ HOdLiaLIdoU8MxFo10GvITapQLSmSZGV1LLPV7FlJCgqVYssKSxD2Rwv
+X-Gm-Gg: AZFdTZc80YJigpeNY5drnCuuUzp7vAv03366smINZiLUouv7/HV15e0RbmRiu7iNl+B
+ Z9xDBArxdFo+R+NSlf4Bf4eG1Uq+X1C7hP5OKJ6yEJkSaNeXnqVCksRSryH0l5uxHJdTJppyctq
+ ogY5IQXfYbkIU3ijeOdDeNnzVznC0mK5MnfQrhN+N/Zi/RKD8a7qidkQcRsJB8qRebYyNycKArT
+ NIARA0sRYykUS4m4oVPTfafjF4y1Tp37rGraU4P14iE66nR3wXpZkakMmbC+0z0UBNUK88PEXOF
+ V9nsUHjTG0r6MWUIK4YWfm7ryNRGywgLmG+HlWh3qo9XQrAD2eBFBrYWpl95MaqelVyLLup7a1E
+ 9JZ2tJm3KM43vrmKzI6J1lA+proiDa6l319MhWgqxAxSRpV3PFVqe5BRbeazMNqKpLZyly+4kXt
+ 7XeA9YwdkT3IUW9Rzs6XmYVP8gAbjnDt4HaXg7jiCq/TSf0Jzy38g+UNq1k5lF2ybExfGZJ4RHv
+ 187SdkfhQ5r9xgh+EHAqsJHqPnJaWwtAxEiLViUKWkdUDJuUOU08A9CDLtVCKAwmlR7K6XkKD+g
+ cADb9TMvf/pvLfxSAuxPBD4Up97obv5OqnBrp/AY8CzB/VuLcwU705mjRtyW/uuf41wi5cWJpc/
+ tUpWastuudcgbIjQ9mTJJj8c=
+X-Received: by 2002:a05:600c:848d:b0:4bb:52d8:73ef with SMTP id
+ 5b1f17b1804b1-4bb88940f1bmr154944795e9.34.1795293978122; 
+ Sat, 21 Nov 2026 12:46:18 -0800 (PST)
 Received: from PKL-HASEEBA-LT.. ([39.36.59.78])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb884b39b6sm180652385e9.12.2026.11.21.12.46.08
+ 5b1f17b1804b1-4bb884b39b6sm180652385e9.12.2026.11.21.12.46.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Nov 2026 12:46:11 -0800 (PST)
+ Sat, 21 Nov 2026 12:46:17 -0800 (PST)
 From: Haseeb Ashraf <haseebashraf091@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org
@@ -78,9 +78,10 @@ Cc: Haseeb Ashraf <haseeb.ashraf@siemens.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>, qemu-devel@nongnu.org,
  kvm@vger.kernel.org
-Subject: [RFC PATCH v2 1/3] target/arm/kvm: Add kvm_arm_el2_e2h0_supported()
-Date: Sun, 22 Nov 2026 01:45:59 +0500
-Message-ID: <20261121204601.741616-2-haseebashraf091@gmail.com>
+Subject: [RFC PATCH v2 3/3] tests/functional: Add a KVM selftest for an
+ nVHE-only EL2
+Date: Sun, 22 Nov 2026 01:46:01 +0500
+Message-ID: <20261121204601.741616-4-haseebashraf091@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261121204601.741616-1-haseebashraf091@gmail.com>
 References: <20261121095636.289814-1-haseebashraf091@gmail.com>
@@ -88,8 +89,8 @@ References: <20261121095636.289814-1-haseebashraf091@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=haseebashraf091@gmail.com; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=haseebashraf091@gmail.com; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -119,83 +120,76 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Haseeb Ashraf <haseeb.ashraf@siemens.com>
 
-Add a helper reporting whether KVM can limit a nested guest to an
-nVHE-only EL2 (HCR_EL2.E2H RES0) through the
-KVM_ARM_VCPU_HAS_EL2_E2H0 vCPU feature.  KVM advertises this with
-KVM_CAP_ARM_EL2_E2H0.
-
-The next patch uses it to let the user select an nVHE-only EL2.
+Run the existing kvm-unit-tests smoke test with VHE hidden from the
+guest hypervisor through SYSREG_ID_AA64MMFR1_EL1_VH=0.  The SYSREG_*
+properties are available only for the host CPU model with KVM, so
+select the accelerator and CPU model explicitly, and check that the
+guest kernel initialized its hypervisor in nVHE mode.  The test is
+skipped when the host kernel cannot limit EL2 to nVHE.
 
 Signed-off-by: Haseeb Ashraf <haseeb.ashraf@siemens.com>
 ---
- target/arm/kvm-stub.c |  5 +++++
- target/arm/kvm.c      |  5 +++++
- target/arm/kvm_arm.h  | 13 +++++++++++++
- 3 files changed, 23 insertions(+)
 
-diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-index c9387f5c8c..88e35909c4 100644
---- a/target/arm/kvm-stub.c
-+++ b/target/arm/kvm-stub.c
-@@ -42,6 +42,11 @@ bool kvm_arm_el2_supported(void)
-     return false;
- }
+v2:
+ - Select KVM and the host CPU model explicitly.
+ - Verify the guest kernel reports nVHE mode.
+
+ tests/functional/aarch64/test_kvm.py | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/tests/functional/aarch64/test_kvm.py b/tests/functional/aarch64/test_kvm.py
+index c977e8c6d2..b7a4aceb66 100755
+--- a/tests/functional/aarch64/test_kvm.py
++++ b/tests/functional/aarch64/test_kvm.py
+@@ -30,7 +30,7 @@ class Aarch64VirtKVMTests(LinuxKernelTest):
+     # base of tests
+     KUT_BASE = "/usr/share/kvm-unit-tests/"
  
-+bool kvm_arm_el2_e2h0_supported(void)
-+{
-+    return false;
-+}
-+
- /*
-  * These functions should never actually be called without KVM support.
-  */
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 36a5faf537..8ef5597c68 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2178,6 +2178,11 @@ bool kvm_arm_el2_supported(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
- }
+-    def _launch_guest(self, kvm_mode="nvhe"):
++    def _launch_guest(self, kvm_mode="nvhe", cpu="max", accel=None):
  
-+bool kvm_arm_el2_e2h0_supported(void)
-+{
-+    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2_E2H0);
-+}
-+
- bool kvm_arm_mte_supported(void)
- {
-     return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 2e7e02e4a4..0916a5fdb4 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -200,6 +200,14 @@ bool kvm_arm_mte_supported(void);
-  * Returns true if KVM can enable EL2 and false otherwise.
-  */
- bool kvm_arm_el2_supported(void);
-+
-+/**
-+ * kvm_arm_el2_e2h0_supported:
-+ *
-+ * Returns true if KVM can limit EL2 to nVHE (HCR_EL2.E2H RES0) through
-+ * KVM_ARM_VCPU_HAS_EL2_E2H0, and false otherwise.
-+ */
-+bool kvm_arm_el2_e2h0_supported(void);
- #else
+         self.set_machine('virt')
+         kernel_path = self.ASSET_KVM_TEST_KERNEL.fetch()
+@@ -39,7 +39,9 @@ def _launch_guest(self, kvm_mode="nvhe"):
+         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+                                f"console=ttyAMA0 kvm-arm.mode={kvm_mode}")
  
- static inline bool kvm_arm_aarch32_supported(void)
-@@ -216,6 +224,11 @@ static inline bool kvm_arm_el2_supported(void)
- {
-     return false;
- }
-+
-+static inline bool kvm_arm_el2_e2h0_supported(void)
-+{
-+    return false;
-+}
- #endif
+-        self.vm.add_args("-cpu", "max")
++        if accel:
++            self.vm.add_args("-accel", accel)
++        self.vm.add_args("-cpu", cpu)
+         self.vm.add_args("-machine", "virt,gic-version=3,virtualization=on",
+                          '-kernel', kernel_path,
+                          '-append', kernel_command_line)
+@@ -50,6 +52,9 @@ def _launch_guest(self, kvm_mode="nvhe"):
+         except VMLaunchFailure as excp:
+             if "does not support providing Virtualization" in excp.output:
+                 self.skipTest("accelerator has no virtualization support")
++            elif ("SYSREG_ID_AA64MMFR1_EL1_VH" in excp.output and
++                  "not found" in excp.output):
++                self.skipTest("host KVM cannot limit EL2 to nVHE")
+             else:
+                 self.log.info("unhandled launch failure: %s", excp.output)
+                 raise excp
+@@ -73,5 +78,18 @@ def test_aarch64_vhe_selftest(self):
+         self._launch_guest("vhe")
+         self._smoketest_kvm()
  
- /**
++    def test_aarch64_nvhe_only_selftest(self):
++        # Hiding VHE from the guest hypervisor is a KVM feature: the
++        # SYSREG_* properties only exist for the host CPU model with KVM.
++        self.require_accelerator("kvm")
++        self._launch_guest("nvhe", "host,SYSREG_ID_AA64MMFR1_EL1_VH=0",
++                           accel="kvm")
++        # The guest kernel must run its hypervisor in nVHE mode
++        ec_and_wait(self, "dmesg | grep -Eq "
++                    "'Hyp (nVHE )?mode initialized successfully' && "
++                    "! dmesg | grep -q ' VHE mode initialized'",
++                    self.OK_CMD)
++        self._smoketest_kvm()
++
+ if __name__ == '__main__':
+     LinuxKernelTest.main()
 -- 
 2.34.1
 

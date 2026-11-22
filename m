@@ -1,101 +1,93 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECD60606A32A
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Nov 2026 20:47:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C95D9606A32A
+	for <qemu-arm@archiver.kernel.org>; Sun, 22 Nov 2026 07:33:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=iY8KY+di
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=wXRSBKDX
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xUryP-0004R3-OM; Sat, 21 Nov 2026 15:46:13 -0500
+	id 1xV245-0003Be-BI; Sun, 22 Nov 2026 02:32:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <haseebashraf091@gmail.com>)
- id 1xUryO-0004Qp-Nh
- for qemu-arm@nongnu.org; Sat, 21 Nov 2026 15:46:12 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
+ id 1xV23g-00036A-PD
+ for qemu-arm@nongnu.org; Sun, 22 Nov 2026 02:32:23 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <haseebashraf091@gmail.com>)
- id 1xUryM-0005yo-P1
- for qemu-arm@nongnu.org; Sat, 21 Nov 2026 15:46:12 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4a35ac4475dso15177835e9.2
- for <qemu-arm@nongnu.org>; Sat, 21 Nov 2026 12:46:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
+ id 1xV23f-0000Vf-5e
+ for qemu-arm@nongnu.org; Sun, 22 Nov 2026 02:32:20 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-4a511d8a394so258730f8f.3
+ for <qemu-arm@nongnu.org>; Sat, 21 Nov 2026 23:32:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1795293968; x=1795898768; darn=nongnu.org;
+ d=gmail.com; s=20260707; t=1795332737; x=1795937537; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=5CEcBG3blFgFIs0HQDqojA8cBNelrZOI2gSACkV84r0=;
- b=iY8KY+diuwaUD/A1X+TlaS14svjcxQ/20s0vVr19hHTokQBYTjWq/LyhI6KwkJPwC0
- x1hx54OtUh3EGCfkhhfmj/AmDDxr8PypZm1JcIFCjiaw/3hmetreRcZIHvZMLbv2xcKA
- O/HryrZKqUBqSB2bSe8XxMfu+HWRkiWl81b1AJh+eIK3tLD7x3luYAwihk8Izcn+b8xP
- iwYzxq/puxUxxUg6LDe3Xmpx9R6hdb2CQ1i9hQ4xFJ3J8SDoo5/uwI7i2r8QTAvbTCeg
- Txs6TA/KJ47/x4Ew/pcOuqzxGgDGq7IFVQad5IanWnnbwSxsWqS06Ss5AjsR3NjN5+Mg
- JLvg==
+ bh=e64S4WnlE/+ph5XDdDBmL08MSRlgGmdTbb7tW197pZw=;
+ b=wXRSBKDX2qS40Fb+9HaF8aOH/khqG+idYJn10cppAgyb/ETLtn92Kz6Wq2YWE6Ox2t
+ ZRLFJZZClIGgXHcNAbYf/KKZDdwtpcNPWPHNvBPi/aaIcfJZSD6Blhu/6rcZ8HA3t5Pa
+ gOu6vg3jTgocjWba43/Wz0oxSww7KglQoqD5eJk/W7dbVcBvCl+4NnKLWQ/DLKsREp+i
+ tle1ZBNApEkDToXsx14DGJ9Pqqcv8GwvUUDQDR8ntRo4Q/Mh+MsutanKGNYzWTJPpoL6
+ mH2g9qTHRzGQeXjbelN5qpaxDTsJCotQpgvnHK3a84R+2b50t0aKRexrcVAjUHkoyh8H
+ rp0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795293968; x=1795898768;
+ d=1e100.net; s=20260707; t=1795332737; x=1795937537;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=5CEcBG3blFgFIs0HQDqojA8cBNelrZOI2gSACkV84r0=;
- b=wzKH5eJchjx9/yPdLA/B87jwSjlqxpmxk3DMUmAMzHTSeu+Ne1jTHVlzoyJkWYKJDB
- PVA5iFI1FLkOAYlo1zde9n2iu7ALSkMug/7bIHzPi/Z6M92cqicxTX+5+nHoFTW40MD2
- DS+FZhRCBsmZ1puj3yCJlZPsuoKK8wStTwl6/YkgO8J/Pw89sPerKg2j6J9YcFkUNJzj
- 7s6MJiBgTT/Jq+7LbXJeZKkLU2qgv+azvnXsxAes8ZT5G7202fakhydo6DDUP24uuEJS
- n+9dFFlYUYtIBmijU2UH7j4zA11sBh7kTFc+ST1NkBSkhXJvFuXXuNWmnd85xUG4WJ2q
- ZNPg==
-X-Forwarded-Encrypted: i=1;
- AL+hErEbyqvzjXruS3a8cau0csBza56X8HPig1fYfMfHI7ciskJwZ2xBQVDH0QXpmtyjt4whjgzJxm9U2w==@nongnu.org
-X-Gm-Message-State: APuU4Z8lhF54el2LxyilbvJB4ouh/GhbdBVzlR5UBwqIQ/XELoDnmUUy
- tee762VY1ZK0UNMXMW+D2ckA9XZBdcY5yjAGZQJTOHgGe/9G9OsLaqup
-X-Gm-Gg: AZFdTZdG2u10z/KSfsG3m2U7Jr/rfIOfAb5ALOVthzJKd5+DrEuV27s8V6Mue01MR6G
- U9o+njsy5vdXQPb+8BGYtDo7AAbeKdG6wCnyM3/4xs6sBAg6H8yEsmShITxv/UGR3oOLf/NWnxm
- tW7CZ571ahi+kARKwlsS0dvz3Qv8JB4/b38WzZtFzGaAaDLB9y5jUixSDG8tGQt0wKwIN0lWACG
- 5aM7IKp/yhYOn/AkHOTQqaMp4N6U9sLhFD00sgXk+lyB2ntrSfg856vRDx/cdFuefjXaiohLCaD
- ycfFhP1D7ZEQfItebJlSLmA1trsxD+WxDyiSoeFgGofI3L3fCgRJUSIBp+alnXvMm5J2HbLL8l0
- 1E4O7DOGBDkyosHj/W0vEh7Pv3WJjXHsSenfwWwbj//itUWyC1bZpT7lTawQiTFeqkIvy99QE4r
- V2Xv/eTZAeA784b2CtJH0aT+qD36pCf1bo+VToilDmZPBDIJjoyFhUdy5wKfsQ8VtixXtJ2UPFS
- K9yJCHVHyGzC33F9SHyDG8+RJ2o8fLeDuM3MDkXvEbYTn3g+6Dg1dbOq8rCUGJig7bk9Ll+uGpJ
- NqC42Pe3900v4r5VKzFAUV9UAVmBVt8JZVRKY5RtfG9zvvf8WZ+CEnQE4r+srRHMQ4xP/nNO0hy
- ovnQaEKx+jMcahe8PYvth2og=
-X-Received: by 2002:a05:600c:19d4:b0:4a1:f377:5c6c with SMTP id
- 5b1f17b1804b1-4bb8880ac6amr157380645e9.10.1795293967927; 
- Sat, 21 Nov 2026 12:46:07 -0800 (PST)
-Received: from PKL-HASEEBA-LT.. ([39.36.59.78])
+ bh=e64S4WnlE/+ph5XDdDBmL08MSRlgGmdTbb7tW197pZw=;
+ b=ZTvTm1xb8FUI6WwwSp1wLQuMsV2fUOtfmkRBXckL8gcHKUahM8S5k8MqMVjdMYcMXQ
+ qHxgtV4E622Yby6OFxrjA8oBi5sLK8+5EbK/0Tk7IF9sBvCOI6ODZY97uFLGsOoBiQbi
+ tfTqMijNyQszze7QJ6ICTRpcEpDfwgN4EOHv3bU/MjzMnxpmVbvh3zAVilRoNbxsEgKU
+ NN+qKDCbED7WwkCI8rfvnYeVe99WA5KBYdP2jWrm1SQP4pZAC3ohXnKXUrXLVRLitCLk
+ +zoCF5cbv743/DvDeIcLklfkGEwDdUVw2pZfrrHhsKx67TpVsWeCGpMRJzcWoRiFrIwo
+ soXQ==
+X-Gm-Message-State: APuU4Z8SFP0eOgONURPxNIxmmRi3O8+jmSOVBpR8+wyVF+L15TC2zVmZ
+ 88Ybu2zjFyYuM0g7O4NVi+kv2m/MCKBGu/Bbcrkm1yll2Hns61R3m9Fu
+X-Gm-Gg: AZFdTZc9W4lj03GyeqLgDg9atDCTAUdtcnwccCjNMirisG0WF9WaStSQP67gIg4Iwi7
+ A8ETbTVUDUI8GmXm3fK1nn8P1v/L8qQLMYMiEKPez0SPIY0cvtAixHn/py3qa5DD2HsRzTgiiid
+ uzEVGlxdgdWdLdWiyrWuXc6vxMsp5ERM3qxPopPu7aF/zyb2/niuvPbmh7ZuYJ9T/avrnhAY9cH
+ P1j/yT2bASWShfszEvSCQRTtzh+lFwaYStG3aay9FkAMz+CuSibSdU8Z6blUkvhkkRTt/pGkkpo
+ RUE8msx66Nb2bwUTx64+XLcQqa8nSJ1MAEXWkVz3smZ/0Dc2hpAl7C+m+F/FDK8RiJoyQM6imGK
+ VqRVylqprBu0i/RwTVhkBF7owFpBLjUmPW006LkDoVKb9tkTfV/Na9TFSRTIgepDM0hVBUIIZCK
+ cvjqp2w+Z89gUmT+Nk4H4s8/FeMQvsq2uUbrVgBxN7/zGr3676DB/dPX6JGpI+XaFoAKzeLol2f
+ g7RRyRq8GO/AKfwIJGE8pmdJ9S7LYrAfIaQLgVMzLkOmllaiNoWNcwhcsp5YWIIvSVTVcqg5DSO
+ ImL1xokixcHKGLskGsJPm8dWVLnsdBqdaCtTpnlArRsVRKkotpU=
+X-Received: by 2002:a05:600c:8284:b0:4bb:6c01:de9c with SMTP id
+ 5b1f17b1804b1-4bb887f55c1mr155263005e9.2.1795332736521; 
+ Sat, 21 Nov 2026 23:32:16 -0800 (PST)
+Received: from L-P-ITAIH2-L-RF.rf.local ([193.169.70.108])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb884b39b6sm180652385e9.12.2026.11.21.12.46.03
+ 5b1f17b1804b1-4bb88402ce9sm188359425e9.0.2026.11.21.23.32.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Nov 2026 12:46:07 -0800 (PST)
-From: Haseeb Ashraf <haseebashraf091@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Cc: Haseeb Ashraf <haseeb.ashraf@siemens.com>,
- Eric Auger <eric.auger@redhat.com>, Marc Zyngier <maz@kernel.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>, qemu-devel@nongnu.org,
- kvm@vger.kernel.org
-Subject: [RFC PATCH v2 0/3] arm/kvm: select an nVHE-only EL2 with
- SYSREG_ID_AA64MMFR1_EL1_VH
-Date: Sun, 22 Nov 2026 01:45:58 +0500
-Message-ID: <20261121204601.741616-1-haseebashraf091@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261121095636.289814-1-haseebashraf091@gmail.com>
-References: <20261121095636.289814-1-haseebashraf091@gmail.com>
+ Sat, 21 Nov 2026 23:32:15 -0800 (PST)
+From: Itai Handler <itai.handler@gmail.com>
+To: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
+ peter.maydell@linaro.org, francisco.iglesias@amd.com,
+ edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
+ takahiro.nakata.wr@renesas.com
+Subject: Re: [PATCH 00/20] hw/core: Remote Port Memory Master
+Date: Sun, 22 Nov 2026 09:31:33 +0200
+Message-Id: <20261122073133.1940537-1-itai.handler@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=haseebashraf091@gmail.com; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=itai.handler@gmail.com; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -109,113 +101,52 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Haseeb Ashraf <haseeb.ashraf@siemens.com>
+Hi Ruslan,
 
-Hi,
+On 9/15/26 16:00, Ruslan Ruslichenko wrote:
 
-KVM presents a VHE-only EL2 (HCR_EL2.E2H RES1) to a nested guest unless
-KVM_ARM_VCPU_HAS_EL2_E2H0 is requested at vCPU initialization.  Guest
-hypervisors which only support nVHE, such as Xen, cannot run in that
-mode.  This series lets the user select an nVHE-only EL2 with:
+> This patch series introduces the Remote Port (RP) subsystem, a framework designed to connect QEMU with external simulation environments (such as SystemC models or RTL simulators).
 
-  -M virt,virtualization=on -accel kvm \
-      -cpu host,SYSREG_ID_AA64MMFR1_EL1_VH=0
+When a guest performs a memory access larger than 8 bytes through a
+MemoryRegion whole max_access_size is greater than 8 (e.g. the Remote
+Port memory master with RP_MAX_ACCESS_SIZE=4096), QEMU aborts with:
 
-Following Marc's feedback on v1, this is built on Eric Auger's
-SYSREG_<REG>_<FIELD> framework instead of a new machine or CPU
-property.  It is an RFC because that framework is not merged yet.
+  ERROR:.../include/qemu/bswap.h:487:ldn_he_p: code should not be reached
 
-Dependencies
-------------
+The root cause is in flatview_write_continue_step() and
+flatview_read_continue_step() in system/physmem.c. These functions call
+memory_access_size() to determine the access size, which returns
+pow2floot(1) - for l=4096 this returns 4096.  They then call
+ldn_he_p(buf, *l) / stn_he_p(buf, *l, val) with that size.
 
-The series applies on top of the remaining patches of Eric's v11 [1],
-which are on his arm-cpu-model-v11-rc branch [2], rebased on current
-master.  On current master those patches need two mechanical build
-fixes: object_property_add() now takes &uint64_type_info, and
-kvm_feature_idx_to_idregs_idx() must sit after kvm_arm_sve_get_vls()
-instead of inside it.  The fixes belong to Eric's series and are not
-part of these three patches.
+However, ldb_he_p() and stn_he_p() (defined via DO_STN_LDN_P(he) in
+include/qemu/bswap.h) only handle sizes 1, 2, 4 and 9.  Any other size
+hits g_assert_not_reached() and aborts.
 
-Questions
----------
+The normal dispatch path (memory_region_dispatch_read/write) does not
+hit this because it uses size_memop(op) which is always a power of 2
+(1, 2, 4, or 8).  But flatview_write_continue_step() and
+flatview_read_continue_step() call ldn_he_p()/stn_he_p() directly,
+bypassing the dispatch path.
 
- - KVM does not let userspace write ID_AA64MMFR1_EL1.VH, so the generic
-   "writable fields only" rule would not create the property.  Patch 2
-   treats VH as selected through a vCPU init feature and exposes it as
-   an exception.  Is that acceptable, or would you prefer a generic
-   representation of such fields in the framework?
- - Only VH is updated in QEMU's copy of the ID registers.  Other fields
-   which KVM derives from E2H0, for example ID_AA64MMFR4_EL1, are not
-   refreshed.  Is that acceptable, or should QEMU re-read the ID
-   registers after vCPU initialization?
+The fix is to limit RP_MAX_ACCESS_SIZE to 8, which is the maximum size
+that ldn_he_p()/stn_he_p() can handle.  The flatview_write_continue()
+and flatview_read_continue() loops will process remaining bytes in
+subsequent 8-byte iterations.
 
-Scope
------
+The RP_MAX_ACCESS_SIZE definition is currently duplicated in two
+patches in this series:
+  - "hw/core: Add Remote Port Memory Master object skeleton" (06/20)
+  - "hw/core: Imoplement Remote Port Memory Master bus transactions" (11/20)
 
-TCG and HVF are unchanged by design.  The property is available for the
-host (and max) CPU model with KVM, when the host kernel advertises
-KVM_CAP_ARM_EL2_E2H0.  Xen and QNX already boot with TCG, where
-HCR_EL2.E2H is under the control of the guest.
+I also recommend to move this duplicate definition into a common header.
 
-Changes since v1 [3]:
-
-  - Removed the dedicated virt machine and ARM CPU "vhe" properties.
-  - Switched to Eric's SYSREG ID-register framework and use
-    SYSREG_ID_AA64MMFR1_EL1_VH to select an nVHE-only EL2.
-  - Exposed the property only when KVM advertises
-    KVM_CAP_ARM_EL2_E2H0.
-  - Derived KVM_ARM_VCPU_HAS_EL2_E2H0 from VH and rejected VH=0 when
-    virtualization is disabled.
-  - Added documentation and a KVM functional selftest which verifies
-    that the guest hypervisor initializes in nVHE mode.
-
-Testing
--------
-
-Validation was performed on an AmpereOne A192-32X (Ampere-1a) running
-host kernel 6.18.29+3-arm64:
-
-  - TCG-only, KVM-only and aarch64-linux-user builds succeeded.
-  - TCG rejects SYSREG_ID_AA64MMFR1_EL1_VH because the property does not
-    exist for that accelerator.
-  - The existing AArch64 KVM nVHE and VHE selftests pass under TCG.
-  - The arm-cpu-features qtest passes.
-  - Linux 6.12.67 initialized KVM in nVHE mode with VH=0 and in VHE mode
-    with VH=1; both boots reached login.
-  - QNX Hypervisor 8.0.5 reached login with both values and reported the
-    corresponding ID register state.
-  - Xen dom0 reached login with VH=0.  With VH=1, Xen did not boot.
-  - The complete AArch64 KVM functional suite passed, including the new
-    nVHE-only selftest.
-
-Not tested: live migration, and hosts other than AmpereOne.
-
-[1] https://patchew.org/QEMU/20261030131406.461599-1-eric.auger@redhat.com/
-[2] https://github.com/eauger/qemu/commits/arm-cpu-model-v11-rc
-[3] https://patchew.org/QEMU/20261121095636.289814-1-haseebashraf091@gmail.com/
-
-Thanks,
-Haseeb
-
-Haseeb Ashraf (3):
-  target/arm/kvm: Add kvm_arm_el2_e2h0_supported()
-  target/arm/kvm: Let SYSREG_ID_AA64MMFR1_EL1_VH select an nVHE EL2
-  tests/functional: Add a KVM selftest for an nVHE-only EL2
-
- docs/system/arm/cpu-features.rst     | 22 ++++++++++++
- target/arm/cpu-idregs.h              | 31 +++++++++++++++++
- target/arm/cpu64.c                   | 51 ++++++++++++++++++++++------
- target/arm/kvm-stub.c                |  5 +++
- target/arm/kvm.c                     | 29 ++++++++++++++--
- target/arm/kvm_arm.h                 | 13 +++++++
- tests/functional/aarch64/test_kvm.py | 22 ++++++++++--
- 7 files changed, 157 insertions(+), 16 deletions(-)
+Itai
 

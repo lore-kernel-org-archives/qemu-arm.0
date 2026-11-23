@@ -1,67 +1,106 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A5F4606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 09:53:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9223F606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 11:33:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=ATGrYWS3
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=X775BE9q
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVQjw-0002cO-TD; Mon, 23 Nov 2026 04:53:37 -0500
+	id 1xVSI0-0004Fz-5N; Mon, 23 Nov 2026 06:32:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xVQju-0002b0-Bc; Mon, 23 Nov 2026 04:53:35 -0500
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xVQjs-0001kW-H4; Mon, 23 Nov 2026 04:53:34 -0500
-Received: by linux.microsoft.com (Postfix, from userid 1236)
- id A4A0920B7167; Mon, 23 Nov 2026 01:53:27 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com A4A0920B7167
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1795427607;
- bh=ejqw3eGoIb6VMc/GsDUyybUlzLaAFkWtkyC69ARBT3g=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ATGrYWS3nOc54WNVMkwAij1lV1YHWH/wjpAwlaaKkb75d8LE3IthpP8C9aHILv/QE
- En88SXt+WvnD1uMREDLUfruvPJW+/Y2iYpUolOiXoROntSaJ8T2PvtCOR3a1fULoWq
- WxkEnwudF+mLrfu2+EGrqAtIVb3S7yzxrOvsq9+Y=
-Date: Mon, 23 Nov 2026 01:53:27 -0800
-From: Aastha Rawat <aastharawat@linux.microsoft.com>
-To: Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: Re: [PATCH v6 04/14] meson, target/arm/mshv: Enable arm64 build &
- add initial MSHV support
-Message-ID: <awQNF24R6hMFT8Of@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
-References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
- <avcBKaigaegTPyBV@linux.microsoft.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xVSHE-00046M-DB
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:32:15 -0500
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xVSHC-0004Bt-2C
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:32:03 -0500
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-67c24619b19so2369950d50.2
+ for <qemu-arm@nongnu.org>; Mon, 23 Nov 2026 03:31:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795433518; cv=none;
+ d=google.com; s=arc-20260327;
+ b=d7TA6dXokPtoYHaWzUYXcfYfKaQsLH9u8CcVoeIGUBPnYMOfRrzE711L2V4Jh5rNXb
+ IwMDptfF0WfAi+3x1Nh0FKIzYsjAgQr/TYLXVMHYIa6ozV9atgwnV/+IAk8lEimX8FFh
+ a7qf/gOLDlpN3yuzhSr2G5ipq1G2OT7aeRood6c0hLkw0BXYDsaqxC4A3F31vBSNvDNS
+ 29VrgCUzSp0H9u0oYC950HVxA1msCjcANOe9TmKz+yDdSmFnAI5RZMXD/hSRFbvo9W2z
+ Jks2ffBcb8AGIsoTdrZ81JKpduWS+gXdiTWMlNGRxBONG7PdMDPr4dNVptGoR0NlcIry
+ 95FA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=TU370y7R5L29omjWNVlDL5In78ul3RsztEX0Ft93XdQ=;
+ fh=I8e+TbWc2TBwnymbsx2vdYnK4MYXBFda4o25nt/dEEA=;
+ b=pdLPFlayDoTNVxpk31LXdpJTSWKPTVWWJWCrVFVLRjp/eKrjUs6FTzBWjLZX00boKf
+ UsxQ1xErFP9Cy2Den2zoB/NijCn1qVG0RAqgEoYgCNlYIxUmfxnaSgMJ5SspId5Oa6kF
+ SNAKPHmHLWifT9OZs27ROl6C3itJILbyGRRJAizUe566cKr0jbbrET9SA7vyuifPeJsq
+ re4rY9kY0vS9Hi3krjyoEEW1DUMEH+uHJEfNTG6aAnbKz4RKcubvpk4yrfU5V6tb2hcc
+ Lw7GZachv6NlCyTjqgLG80HZ0r1ICZfJK4DG2oufvNc+BGZXkSxBEXFqEdLnrqa2ZkmS
+ Pr0g==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1795433518; x=1796038318; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=TU370y7R5L29omjWNVlDL5In78ul3RsztEX0Ft93XdQ=;
+ b=X775BE9qy6mioqDEEOQ2USPgsMmKR+4dS2d5dUEwLerjGpPArknDkfXn/fWS6cFCuf
+ k+PQ96Lzz45/InDSNXIdSRZRlGhmRSLpFAkU528CZ4aUK3OKCUjY/pRvoUmyF3H6X+xq
+ /c0uf8VOcqk8VKF0HKI/tllTats+hvo+UHb5pxxhHCEKd4PbAVxRYI0z48AEu+cNIJl3
+ Y6hp1IKB5JeaQFPEfLg91J9FgIqbL2KAUJBG3R0TGk4IgeJfPDouq6iaoIMRkbhs/21J
+ 85QRFZHiW6/KhyvLe+a23zM7DeEX1YFcy61V+HlLrZ2FZP39wnVH4sWUMG7OW6oGHybh
+ jTJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1795433518; x=1796038318;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=TU370y7R5L29omjWNVlDL5In78ul3RsztEX0Ft93XdQ=;
+ b=yv2SpZtd+3V48OEm9gnooGOiyp4+4fqJx9mnjYca7LKz3oKRxK8YaHguABZfr2MGEc
+ mL+WVeZOSMmT/LAOrATKT+wtKxm6ByhnIOIXZCI2gNDn6shfULdrUb+H/HoR2KoNMSRF
+ ZPQZDt3t2RmwLzClUCdg9RWKEGk9VsbChbl2qBBhYb0fECeLkkQhncZBLTjJGnsbiLPZ
+ 94YSLHonkAJs5Bg3TYneiWDSA7F4flaAdN+BSm3DpvnKkkP6xVyst06mMTny8V159gLa
+ B+uwi24BRTQo/Tp2bSPkb/qnbWrhKV31hOKR7XrnBTT7gsnMIYEoIzrSk+1nqCylZ2ZR
+ nfgQ==
+X-Gm-Message-State: APuU4Z+eq0CN5oo4u16QpyQFdnDLb081s9KEVMtiLtwFV5Vp34kwv2TJ
+ 5sB842RqBeefyaQLZcvX59H2QwAYOkoAUpiqbHERYCkNaJMKI+BM5AH4WRtewTd4qVfPqNTm/fC
+ FOE+2njhJMRVdIhRk3bxfbyE2RAndU5atAxhqnpTJsVWz2IH0MJmr
+X-Gm-Gg: AZFdTZc1ymYpgAPhwzr9uDFLPxyoXsqpmhnm744MI0apBQywUVu4AS4j7rJbt8+EsA7
+ qQ62bgOUDUTrsWAGwKw2W+hTcu5cwQBaPgVPsyc7OzObAcHsrK5Rfum5tqytl/tuR1nDmRhGFNf
+ 1Wfg5sBG23SHdM/UL9mKHd+v5pgDOs29cJQaoM+OFMMljvCR9+330AZhSQ0uEQ2JsVmlY9oRXpc
+ XKTsQNLQMC1J5YtcMKjU/ktJtGtqXvYH0ZHS8/p4COJIF9tprYbtHJqkh/bSZ9NJcJ2DF/03QlU
+ gJpETMz6IQSlDFPn7lUemC29rIZlFVgxwOI2A/UGhH682scAXU1QTmGgN0fXE1ihL82DmHbmPWz
+ 3VKLpJEJRAvtE9q1HRiS7m+M21N+7omj2RD4rXKbBo8n6Jc8FtvM17mIvdHDy9lHGF7aobJWrMn
+ 1OjfIZ7wbuQmR6a8mgW033
+X-Received: by 2002:a05:690e:47d9:20b0:679:b313:137f with SMTP id
+ 956f58d0204a3-67df44107aamr3263674d50.24.1795433518297; Mon, 23 Nov 2026
+ 03:31:58 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <avcBKaigaegTPyBV@linux.microsoft.com>
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+References: <20261116114641.1799526-1-peter.maydell@linaro.org>
+In-Reply-To: <20261116114641.1799526-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 23 Nov 2026 11:31:47 +0000
+X-Gm-Features: Aa3M54oZc21ZeJxN0KTDhbfO6CCXWLukZNzGqP0wU78Kqjb-7lYDlKLx8dUw_QY
+Message-ID: <CAFEAcA-Vns8Ho9h1B726=L31ug+Jht1jy9xtiEP1Bf4=E0=iXQ@mail.gmail.com>
+Subject: Re: [PATCH for-11.2] hw/watchdog/wdt_imx2: Fix migration when
+ pretimeout-support not enabled
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,247 +112,106 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Nov 13, 2026 at 02:23:05PM +0200, Doru Blânzeanu wrote:
-> On Thu, Oct 01, 2026 at 10:52:49AM +0000, Aastha Rawat wrote:
-> > Enable the build of the MSHV accelerator for arm64 in the Meson build
-> > system. Introduce initial files and stub implementations to support MSHV
-> > for the ARM target.
-> > 
-> > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
-> > ---
-> >  accel/mshv/mshv-all.c       | 10 ++++--
-> >  hw/i386/mshv/clock.c        |  2 +-
-> >  include/system/mshv.h       |  2 +-
-> >  meson.build                 |  8 ++---
-> >  target/arm/meson.build      |  1 +
-> >  target/arm/mshv/meson.build |  7 ++++
-> >  target/arm/mshv/mshv-all.c  | 81 +++++++++++++++++++++++++++++++++++++++++++++
-> >  7 files changed, 103 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-> > index efe19a3914..f3f1825b0b 100644
-> > --- a/accel/mshv/mshv-all.c
-> > +++ b/accel/mshv/mshv-all.c
-> > @@ -142,8 +142,10 @@ static int create_partition(int mshv_fd, int *vm_fd)
-> >  {
-> >      int ret;
-> >      uint64_t pt_flags, host_proc_features;
-> > -    union hv_partition_processor_xsave_features disabled_xsave_features;
-> >      union hv_partition_processor_features disabled_partition_features = {0};
-> 
-> I think this should reside in an arch specific variant of `create_partition`.
+Could I get a review on this, please? I'd quite like to be
+able to put it in the pullreq I intend to send for the next rc.
 
-Agreed, I'll introduce it in the next revision and move arm specific
-bits there. As discussed, it will also help us get rid of the
-checkpatch.pl warnings.
- 
-> > +#if defined(__x86_64__)
-> > +    union hv_partition_processor_xsave_features disabled_xsave_features;
-> > +#endif
-> >  
-> >      struct mshv_create_partition_v2 args = {0};
-> >  
-> > @@ -155,7 +157,8 @@ static int create_partition(int mshv_fd, int *vm_fd)
-> >                 (1ULL << MSHV_PT_BIT_GPA_SUPER_PAGES) |
-> >                 (1ULL << MSHV_PT_BIT_CPU_AND_XSAVE_FEATURES);
-> >  
-> > -    /* enable all */
-> > +#if defined(__x86_64__)
-> > +    /* enable all xsave features (0 = enabled) */
-> >      disabled_xsave_features.as_uint64 = 0;
-> >      /*
-> >       * AMX TILE XSAVE state (XTILE_DATA) is 8KB, which exceeds the
-> > @@ -165,6 +168,7 @@ static int create_partition(int mshv_fd, int *vm_fd)
-> >      disabled_xsave_features.amx_bf16_support = 1;
-> >      disabled_xsave_features.amx_int8_support = 1;
-> >      disabled_xsave_features.amx_fp16_support = 1;
-> > +#endif
-> >  
-> >      /*
-> >       * query host for supported processor features and disable unsupported
-> > @@ -196,7 +200,9 @@ static int create_partition(int mshv_fd, int *vm_fd)
-> >      /* populate args structure */
-> >      args.pt_flags = pt_flags;
-> >      args.pt_isolation = MSHV_PT_ISOLATION_NONE;
-> > +#if defined(__x86_64__)
-> >      args.pt_disabled_xsave = disabled_xsave_features.as_uint64;
-> > +#endif
-> >      args.pt_num_cpu_fbanks = MSHV_NUM_CPU_FEATURES_BANKS;
-> >  
-> >      ret = ioctl(mshv_fd, MSHV_CREATE_PARTITION, &args);
-> > diff --git a/hw/i386/mshv/clock.c b/hw/i386/mshv/clock.c
-> > index 02c586503a..b7db382752 100644
-> > --- a/hw/i386/mshv/clock.c
-> > +++ b/hw/i386/mshv/clock.c
-> > @@ -182,7 +182,7 @@ static const VMStateDescription vmstate_mshv_clock = {
-> >      },
-> >  };
-> >  
-> > -void mshv_clock_init(void)
-> > +void mshv_arch_clock_init(void)
-> >  {
-> >      vmstate_register(NULL, 0, &vmstate_mshv_clock, &mshv_clock);
-> >      qemu_add_vm_change_state_handler(mshv_clock_vm_state_change, &mshv_clock);
-> > diff --git a/include/system/mshv.h b/include/system/mshv.h
-> > index f98ddff9b5..114f065db5 100644
-> > --- a/include/system/mshv.h
-> > +++ b/include/system/mshv.h
-> > @@ -58,7 +58,7 @@ DECLARE_INSTANCE_CHECKER(MshvState, MSHV_STATE,
-> >  extern MshvState *mshv_state;
-> >  
-> >  /* clock (partition reference time) */
-> > -void mshv_clock_init(void);
-> > +void mshv_arch_clock_init(void);
-> >  
-> >  /* interrupt */
-> >  int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
-> > diff --git a/meson.build b/meson.build
-> > index cae1591cd2..6a90a394a2 100644
-> > --- a/meson.build
-> > +++ b/meson.build
-> > @@ -304,7 +304,8 @@ if cpu == 'aarch64'
-> >    accelerator_targets += {
-> >      'CONFIG_HVF': ['aarch64-softmmu'],
-> >      'CONFIG_NITRO': ['aarch64-softmmu'],
-> > -    'CONFIG_WHPX': ['aarch64-softmmu']
-> > +    'CONFIG_WHPX': ['aarch64-softmmu'],
-> > +    'CONFIG_MSHV': ['aarch64-softmmu'],
-> >    }
-> >  elif cpu == 'x86_64'
-> >    accelerator_targets += {
-> > @@ -884,10 +885,9 @@ if get_option('kvm').allowed() and host_os == 'linux'
-> >  endif
-> >  
-> >  if get_option('mshv').allowed() and host_os == 'linux'
-> > -  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
-> > -    error('mshv accelerator requires x64_64 host')
-> > +  if host_machine.cpu() in [ 'x86_64', 'aarch64' ]
-> > +    accelerators += 'CONFIG_MSHV'
-> >    endif
-> > -  accelerators += 'CONFIG_MSHV'
-> >  endif
-> >  
-> >  if get_option('whpx').allowed() and host_os == 'windows'
-> > diff --git a/target/arm/meson.build b/target/arm/meson.build
-> > index 0369f96b4c..1ac2cef26b 100644
-> > --- a/target/arm/meson.build
-> > +++ b/target/arm/meson.build
-> > @@ -63,6 +63,7 @@ arm_common_system_ss.add(files(
-> >  
-> >  subdir('hvf')
-> >  subdir('whpx')
-> > +subdir('mshv')
-> >  
-> >  if 'CONFIG_TCG' in config_all_accel
-> >     subdir('tcg')
-> > diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
-> > new file mode 100644
-> > index 0000000000..169643691e
-> > --- /dev/null
-> > +++ b/target/arm/mshv/meson.build
-> > @@ -0,0 +1,7 @@
-> > +arm_mshv_ss = ss.source_set()
-> > +
-> > +arm_mshv_ss.add(files(
-> > +  'mshv-all.c',
-> > +))
-> > +
-> > +arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
-> > diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-> > new file mode 100644
-> > index 0000000000..00c54f5d66
-> > --- /dev/null
-> > +++ b/target/arm/mshv/mshv-all.c
-> > @@ -0,0 +1,81 @@
-> > +/*
-> > + * QEMU MSHV support
-> > + *
-> > + * Copyright Microsoft, Corp. 2026
-> > + *
-> > + * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
-> > + *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "hw/arm/virt.h"
-> > +#include "system/mshv.h"
-> > +#include "system/mshv_int.h"
-> > +
-> > +static int load_regs(CPUState *cpu)
-> > +{
-> > +    return 0;
-> > +}
-> > +
-> > +static int store_regs(const CPUState *cpu)
-> > +{
-> > +    return 0;
-> > +}
-> > +
-> > +int mshv_arch_load_vcpu_state(CPUState *cpu)
-> > +{
-> > +    return load_regs(cpu);
-> > +}
-> > +
-> > +int mshv_arch_store_vcpu_state(const CPUState *cpu)
-> > +{
-> > +    return store_regs(cpu);
-> > +}
-> > +
-> > +int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
-> > +{
-> > +    return 0;
-> > +}
-> > +
-> > +void mshv_arch_init_vcpu(CPUState *cpu)
-> > +{
-> > +
-> > +}
-> > +
-> > +void mshv_arch_destroy_vcpu(CPUState *cpu)
-> > +{
-> > +
-> > +}
-> > +
-> > +int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
-> > +{
-> > +    return 0;
-> > +}
-> > +
-> > +void mshv_arch_amend_proc_features(
-> > +    union hv_partition_synthetic_processor_features *features)
-> > +{
-> > +    /*
-> > +     * TLB-flush hypercalls are an x86 enlightenment. ARM guests use
-> > +     * broadcast TLBI instructions instead.
-> > +     */
-> > +    features->tb_flush_hypercalls = 0;
-> > +}
-> > +
-> > +void mshv_arch_disable_partition_proc_features(
-> > +    union hv_partition_processor_features *disabled_features)
-> > +{
-> > +    /* No processor features to disable on ARM */
-> > +}
-> > +
-> > +int mshv_arch_post_init_vm(int vm_fd)
-> > +{
-> > +    return 0;
-> > +}
-> > +
-> > +int mshv_arch_migration_init(MshvState *s)
-> > +{
-> > +    return 0;
-> > +}
-> > 
-> > -- 
-> > 2.45.4
+thanks
+-- PMM
+
+On Mon, 16 Nov 2026 at 11:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> The wdt_imx2 device has optional support for pretimeouts, which are
+> present on most i.MX SoCs but not on i.MX31.  If the QOM property
+> 'pretimeout-support' is not set to true then we don't create the
+> ptimer associated with that feature.  However, the migration vmstate
+> unconditionally lists that ptimer, with the result that trying to
+> save the vmstate of an i.MX31-based machine like "kzm" will hit an
+> assertion.
+>
+> Move the migration of 'itimer' into its own subsection which we only
+> send when pretimeout support is enabled.
+>
+> This bug has existed in the code for a long time, but it was hidden
+> until commit d9abd0253be ("hw/watchdog/wdt_imx2: Remove redundant
+> attributes)" because a bug in the VMSTATE_PTIMER() macro together
+> with the fact that the vmstate_imx2_wdt version_id was 0 meant that
+> we weren't trying to migrate the device's ptimers at all, and so
+> we avoided the assertion (but didn't migrate correctly).
+>
+> This is a migration compatibility break for this device, but it isn't
+> used in any versioned machine types, and we've already decided to
+> break compat on it this release cycle.
+>
+> Fixes: daca13d495a11 ("hw/watchdog: Implement full i.MX watchdog support")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4876
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Based-on: 20261106163657.3825938-1-peter.maydell@linaro.org
+> ("Fix 'version' arg of VMSTATE_PTIMER")
+>  -- the patch in that which sets minimum_version_id to 1 in
+>     the wdt_imx2 vmstate would otherwise be a conflict
+> ---
+>  hw/watchdog/wdt_imx2.c | 28 +++++++++++++++++++++++++---
+>  1 file changed, 25 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+> index abb8edfae25..b4196de7021 100644
+> --- a/hw/watchdog/wdt_imx2.c
+> +++ b/hw/watchdog/wdt_imx2.c
+> @@ -221,13 +221,31 @@ static const MemoryRegionOps imx2_wdt_ops = {
+>      },
+>  };
+>
+> -static const VMStateDescription vmstate_imx2_wdt = {
+> -    .name = "imx2.wdt",
+> +static bool pretimeout_state_needed(void *opaque)
+> +{
+> +    /* The itimer is only present if pretimeout-support is enabled */
+> +    IMX2WdtState *s = opaque;
+> +
+> +    return s->pretimeout_support;
+> +}
+> +
+> +static const VMStateDescription vmstate_imx2_wdt_pretimeout = {
+> +    .name = "imx2.wdt/pretimeout",
+>      .version_id = 1,
+>      .minimum_version_id = 1,
+> +    .needed = pretimeout_state_needed,
+> +    .fields = (const VMStateField[]) {
+> +        VMSTATE_PTIMER(itimer, IMX2WdtState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static const VMStateDescription vmstate_imx2_wdt = {
+> +    .name = "imx2.wdt",
+> +    .version_id = 2,
+> +    .minimum_version_id = 2,
+>      .fields = (const VMStateField[]) {
+>          VMSTATE_PTIMER(timer, IMX2WdtState),
+> -        VMSTATE_PTIMER(itimer, IMX2WdtState),
+>          VMSTATE_BOOL(wicr_locked, IMX2WdtState),
+>          VMSTATE_BOOL(wcr_locked, IMX2WdtState),
+>          VMSTATE_UINT16(wcr, IMX2WdtState),
+> @@ -236,6 +254,10 @@ static const VMStateDescription vmstate_imx2_wdt = {
+>          VMSTATE_UINT16(wmcr, IMX2WdtState),
+>          VMSTATE_UINT16(wicr, IMX2WdtState),
+>          VMSTATE_END_OF_LIST()
+> +    },
+> +    .subsections = (const VMStateDescription * const []) {
+> +        &vmstate_imx2_wdt_pretimeout,
+> +        NULL
+>      }
+>  };
+>
+> --
+> 2.43.0
 

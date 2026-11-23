@@ -1,104 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 707A2606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 11:33:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 156B3606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 11:56:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=t2Gwq6oE
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=ul04TW2+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVSIw-00052F-89; Mon, 23 Nov 2026 06:33:51 -0500
+	id 1xVSeg-0008V1-Ks; Mon, 23 Nov 2026 06:56:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVSIq-0004yc-Hy
- for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:33:47 -0500
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ id 1xVSeW-0008UR-6y
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:56:08 -0500
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVSIn-0007vk-PB
- for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:33:44 -0500
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-67583c777abso3083487d50.1
- for <qemu-arm@nongnu.org>; Mon, 23 Nov 2026 03:33:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795433620; cv=none;
+ id 1xVSeU-0007SO-Hi
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:56:07 -0500
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-67db6d4054eso3471321d50.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Nov 2026 03:56:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795434965; cv=none;
  d=google.com; s=arc-20260327;
- b=fvXtnPATrnhS1BlwSRS3Goy2vd+xXntsJ4w+L/HjlR3hdMYLLLZwB5FnrJ6V2vqM/1
- WW/gABcCqgOhoq/T1/HJkZBjgiwmlqaxLayNwJ5fjrDmOQWjT0Qa8X9WHEdAzxXNLgCK
- BMgmsoX0rwDvcVbli3Kq/M0RNCxmpxvL+oUTZmq+gaFR5r5TMJMhfYi8Dg2c93Zh6WM2
- HPD3nUQS+C52VkrjohWkWgYEgBU0EQIrCbF/sd1HSScwZPZX/+K9GB6CH/NcqJInrv/L
- aXYcqM6/3Z1kD5A0ToXw4rBAsFlZcujVULmFZyG+T9pLHOrwFRsuVP6dajp3LqDfYtVg
- hrNg==
+ b=dr+QTk2rL8BXMXl1lzzW2bUkcBfUmxGk9Q7b2Hd7TtlUjePbCBznjJv0s6PAZsptT3
+ txm7ZanO9bwwGuR0tdjT9tpyxTkXsSayvnrHMn+H8ddAsvlfPDcEI63ptb0WUoJQ5Tvh
+ DEWq81++62bKkPYbiW6dA7MyS//mPQUMRSfZ3DYd4pdlMKkzsr1Gyz074DrQiSsUiB5p
+ sYsnJ2zt+3+Xg03ajQ/m5WSns5Pvdylkfnxida1csqo+YXIl0Rnf1BLecV8+cTerRhbf
+ Njo95goWseSVcIfBjA1Ud1leVafVRAmG0n3ZdDoPbxBPdbTKxBJspDt/DLsCY+XWjEC4
+ BxJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=EKkmkSylR03Y9B23WtbRqfh0zauSJ8Gp8q0rHWrMgss=;
- fh=0rJmLhybS9zgrhM1AZCkRbL+a2BBEOFv+VeA1WybGYY=;
- b=FnJMQp3b1gMR/gAaxuhilu6y4pYPjMfKV4uJ/NjyE1QNSBDkJRg0mDrxyKDDpMD4Xe
- CEaUQDx69ZnBeLP6p07KN8/JHPVW/NMbwyRAsmHYBASQmA16YqHygUZnIb5g0QQGAtRy
- tFFvRGTZvmr1IDF1j/7dOkRQJ0SYm+LECuoswi3/dV6YE6tkmGl/M3hu+uIiQBjrb421
- 7XDQdpQIufa7gFZjJymEdFZBorjItehRF1dW42TzMvujk7+0Ean6FQVnriJFtKOSXs+J
- mxKTy0ZlJ8obavblnEx3cEsMyh4OHmiKBoz7lBcK/xXtTtHo3uSPaH3b/7p1Kj4AHeGj
- pC4A==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=6zfdO2OzUreW8lGzz4kPeHrkisuJNtMzB/9BzM9B9mM=;
+ fh=y/ja5UMDl8OhCKt0AhFnt+a2JueinlVx8/LWeqYKWi8=;
+ b=Hn75S9UbrJJoxOjzjmrV/BbNJrC7eUU44AfeH/7YzUe+5N7ipfwqkN6oMTpeJCfLeD
+ cVOlW2LPLPw3x6dEVw2lyqDitYj6vQqYeVLTRYyEuRTrLDtSH4FOpp1UbT9mIQUkQGfD
+ eSTPSdi7tQ19DbcAqtOkURvJbhENjkpreLuNXsVncoAfa881fFUAxlQdY5kVGRq0rBbu
+ jeJTISX3Zzu0bPbw53ooUlcz+9A78cux012w/1ZPZbx/IcrlNvmZdZUp9qpYWBfKhlGO
+ ezhouANMkfbpYS1PouBPkzK3pbGEZhXLkB6aZTyyikoXvXU52istZq1+kUBjtOnL29Eu
+ 8psQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795433620; x=1796038420; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=EKkmkSylR03Y9B23WtbRqfh0zauSJ8Gp8q0rHWrMgss=;
- b=t2Gwq6oE9TT75BVFcmzzja1E3/0TMuOurMQZNY1Y/dB7sb6CW5PxI5ffcec6l2bpwW
- 5rgdBhpmhWIkoxDETL704UZFXmUC1mmUgPueXs+wSOZ8DxmwWqB0HUrdNhvH2OdseXQs
- aXIONGIx0QBE2ojLK1zi+E6X+HOtaKjNIZfkYsKww4e8QXwr79zJm21M6hFhTXCagnef
- 4zVAXC7IEXiSdwiJUA27UNAT94LA5vmLezNkI4g0IoVE7CA19C0bpKBbuQ71WCfIPw1n
- 8zKpxunEz2iRMHm3EWks1O+JZ2fhieWwmC52T2dI7db5gc+3OiFKkKXkU1Qcu+1qGG/6
- q8mA==
+ d=linaro.org; s=google; t=1795434965; x=1796039765; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=6zfdO2OzUreW8lGzz4kPeHrkisuJNtMzB/9BzM9B9mM=;
+ b=ul04TW2+fp/E8DUvvfk/uw/93u8LehVY/c5UjJtPHgDuj7MiK9FcWRHsjpL605hnLZ
+ aR6Xn8GiauPi+JPSfW+ibb6UUWo01pDcqDsnmLGN31D/blCEjIzSlVFYsuqnBsQ7ZLNC
+ +WoI6G3Fdd6fXcW287RKDtBflEaPXN2We7WAobq5JMtR+jk8BVcYfBZ+/Anr1uEyS3bf
+ 2rLSBMSAkilueElfmbpcS92eT+RPvtNfTHQ75zqEZQfX3bbcNm+CK3EGhgU5WLXf6nn2
+ MaEHlMAJQXXpnI9rLyJOovEyUerZr5hOOULOq5Myy1o0F/4U9653siAwLSqz9wrubtcG
+ 68xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795433620; x=1796038420;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=EKkmkSylR03Y9B23WtbRqfh0zauSJ8Gp8q0rHWrMgss=;
- b=MLDQrXBhWk2S872nuZwi41qlDsOc8nixvJVz3YAEyqC2p1EAh/Lo0RgZrN7+Qrj2LJ
- hNRjNFZRtLhnXMnd6gIvFzMgJMs4oJufb90Cy16StYQSO+0+utCZ82zi1mG2wMqcsg5V
- vynMXhayyKaoQpt7ZiqN59V4Mvy7CuGcuKuSszamJVAGEsH2K9lzLqNgcuUcR4v5V0uk
- QBZxT6Ur+ez0+FJ83A5q/yC5qm1sjm3bmNAGp3WYQZDzYMe+mMR8MVXZtbcOdEFpM9zu
- uvo+1b7DRiiYgKNapDMsbcWDRrenX2+NfIzJ9ovTOFnO6FkWpCG/6G2nWGUPV1IrpqRO
- zDmQ==
-X-Gm-Message-State: APuU4Z8+5r9J1zsImHbR0jiFvTbLDLvaKvYKaxRozUnKRmy7Gyo5TBIY
- xckg7xSJnGAZ8GXpxKQoXKg5oO404zsBC5E9SYAjVYoITdznB5iCux+fuUkdBKx8dVL6CcC+nFb
- buzHfDUzMDV46B3KA3BgkcRTlo6WJtblM3QueCnlYtA==
-X-Gm-Gg: AZFdTZcHttCTJfTcCJKRGPXBYM4LiBUZtz622/rDX1hk+3nENX90A0uX+LFiGacbAB2
- 7ckdKP12ce2AuDZ27BHQpLkiFKnsbype7pGMYINRfJpPyO+Nvc+WyyI6vO+Ss+Jpw+jgZx3zPAe
- WxVh3ifmgw8mTPPmqD650Ark8S4knUwgb/UlF/h57WPq1b9TpqlFGuUr2wAgGTNPvW9FMjbiezY
- uGBJJrFbLEa+6DEib15lh16O37w005Ub7zN2DCw1ezhXPPH92i0shnFUdFiCvgRuXYhbbQn3KEg
- t010ls7/mmq4ackS8VTpCF0P12ZSK2GkKtpAoXrZDmQPkppgt44pukDFTSrf9B0PtlDOycwKE21
- 55auZxOJeU7Xtj5sxjs956XSfrUVXyze98kCElcTGk5u6dWrArtya6aJKNjLF4B+75TiNHP7hzt
- FX/MB1bSLHtIK34CQ/MwF9
-X-Received: by 2002:a05:690e:e87:b0:677:c90f:46bf with SMTP id
- 956f58d0204a3-67dec4202b0mr4628300d50.17.1795433620401; Mon, 23 Nov 2026
- 03:33:40 -0800 (PST)
+ d=1e100.net; s=20260707; t=1795434965; x=1796039765;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=6zfdO2OzUreW8lGzz4kPeHrkisuJNtMzB/9BzM9B9mM=;
+ b=bB9D6N6wuiC8XRcSKRYwCka+eVv40NsTzN6KgL54Y5DVzD+4jf4FzuYQqMY/sh2kxL
+ YNpPctNOP8WtAoTqpFfPYBqV+mveXppf+eRue+mURYHkUyrr9yVzUTLs5J3RkqQ2ISSb
+ SkzJhPnA42+muRBBYaDUGZyEqsptJKQy0j4dvyaNVZVRZfxRIK3SeHxejsipOI++e+rP
+ DtK8cUa8GUShD+7+KYO0s4wjNaFj9FUmYha1qKmAArNTnFqDISappTXFOea2Cht6lppH
+ K/xiWfHLc05iCi77TC012GvumEPEn970UCtprMZFIkutnbChwj+w4aIHwi1UDvU838Xw
+ QluA==
+X-Forwarded-Encrypted: i=1;
+ AL+hErEsP27jzF3JOAHoKLEhWqo5jFGjr2uISg4YzxJAKxt8DuYUDetyNIYx85D7lPPx2XY5uqsY/0hq4Q==@nongnu.org
+X-Gm-Message-State: APuU4Z8nSkzWpGliXtia3bbxSeIFdOOIRsSJh9ivjOCixQo6vM8XD/IM
+ v2Oyhqgo9BDG5Lki4y1r6PUKec9fNto2VC4EevOPcVlJIpFsCl1QIWHKdzzqijWWV+6nM8kjlgQ
+ /kGYK8JgsRmF4LBM2eOtnlQ3HBnOieFCg6EZzZVzLUdeNyRmYgarc
+X-Gm-Gg: AZFdTZeOD+pkoeW1+lKF/hVup/HzV/kj7SoiOFoK+PLHfRlIpNINkAuIhSgMUL8EYlJ
+ zae/6YJwTO+t2rTU1zhQb9QFJyAWGnMdopOH6jxrP0CgYIM/nC2vFAf3/QEBqvw1rdj0Qtrsx43
+ WoTjeeGsZ9rCbbu2o/NtuZe2Z7kwEwfS5zNTkjD8YariQNxONR9KSlTbm50+fLOurlZy7o/Bcvf
+ i44AOAI4QuNKvO4IP1NECwmX6y2pkODUeaMg+vFQC3+E94ue3Sct7d0smETB6SPHMO/VZLXJiew
+ 5J4gUxR7pWUClwXUL2ap9HmD4ivgG+YmLFansg20ISSKtLTgKXBFcttYM1MvVQ0VCZYgt0UtlT6
+ QreZPHkOX1z5XteGvLrSDUUBR2tk5ErshRIZWAvUQWPkV2NWmD/QwmNyoBGva6yLmrGqJp8IprD
+ ABCKpULG/uNao1HhCplIYh
+X-Received: by 2002:a05:690e:a45:b0:67d:e867:89a0 with SMTP id
+ 956f58d0204a3-67df43ce3b5mr4534725d50.30.1795434964881; Mon, 23 Nov 2026
+ 03:56:04 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261119171425.3186790-1-peter.maydell@linaro.org>
- <00f62c2a-f094-4922-92c9-2d3c26a012d4@kaod.org>
-In-Reply-To: <00f62c2a-f094-4922-92c9-2d3c26a012d4@kaod.org>
+References: <20261117193205.8236-1-agarwaljayesh03@gmail.com>
+In-Reply-To: <20261117193205.8236-1-agarwaljayesh03@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Nov 2026 11:33:29 +0000
-X-Gm-Features: Aa3M54oDzgtNUMLgOZ7sO0mQ_a5gKfBubKT8eGfW0-_wnlfq_yBZ22Zyx0o-Zzs
-Message-ID: <CAFEAcA_mntTSsiZZRH1vOd9g4W2D=2AaNEEXvoucVDyf3ur1SA@mail.gmail.com>
-Subject: Re: [PATCH for-11.2] hw/ssi/aspeed_smc: Correct minimum_version_id in
- vmstate
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
+Date: Mon, 23 Nov 2026 11:55:53 +0000
+X-Gm-Features: Aa3M54qcfvLnmuQmOVFjmTs3WfpvouOrJyliMPqg8vjFnUH7_Br0-aVmcX4MCzU
+Message-ID: <CAFEAcA_4+PcP8f2DF+mtjkO5iO6eU6C6R6hjfBN7dg0o_TGPiw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/bcm2838: Route system timer interrupts to GIC
+To: Jayesh Agarwal <agarwaljayesh03@gmail.com>
+Cc: qemu-devel@nongnu.org, philmd@oss.qualcomm.com, qemu-arm@nongnu.org, 
+ s23adhik@csclub.uwaterloo.ca
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,77 +114,69 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, 20 Nov 2026 at 07:08, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Tue, 17 Nov 2026 at 19:32, Jayesh Agarwal <agarwaljayesh03@gmail.com> wrote:
 >
-> On 11/19/26 18:14, Peter Maydell wrote:
-> > In commit 29139270d8ad70f2 we made an incompatible change to the
-> > migration state for the aspeed_smc device, and bumped the version_id
-> > and minimum_version_id: this is because we increased ASPEED_SMC_R_MAX
-> > and so the regs array is bigger.
-> >
-> > However, the old vmstate was handling migration from a range of
-> > vmstate versions, with version_id =3D 3 and minimum_version_id =3D 1.
-> > The change to ASPEED_SMC_R_MAX is (intentionally) not compatible with
-> > any of those older versions, and so it should have moved
-> > minimum_version_id up to 4 (matching the new version_id), not merely
-> > increment it.
-> >
-> > The effect of this is that trying a migration save on v11.1.3 and
-> > then a load on the current head of git fails in a confusing way
-> > ("Missing section footer for aspeed.smc") rather than clearly ("error
-> > while loading state for instance 0x0 of device 'aspeed.smc':
-> > aspeed.smc: incoming version_id 3 is too old for local minimum
-> > version_id 5").
-> >
-> > Since we now don't need to try to handle migration from versions 2
-> > and 3 at all, we can drop the complications in the vmstate struct (an
-> > unused field, and field only present in version 3 and up). Clean
-> > these up and set the version_id and minimum_version_id to 5
-> > accordingly.
-> >
-> > Fixes: 29139270d8ad70f2 ("hw/ssi/aspeed_smc: Add Data FIFO-based flash =
-access support for AST2700")
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4880
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   hw/ssi/aspeed_smc.c | 7 +++----
-> >   1 file changed, 3 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> > index ec9ad0f747e..f82947e752e 100644
-> > --- a/hw/ssi/aspeed_smc.c
-> > +++ b/hw/ssi/aspeed_smc.c
-> > @@ -1218,12 +1218,11 @@ static void aspeed_smc_realize(DeviceState *dev=
-, Error **errp)
-> >
-> >   static const VMStateDescription vmstate_aspeed_smc =3D {
-> >       .name =3D "aspeed.smc",
-> > -    .version_id =3D 4,
-> > -    .minimum_version_id =3D 2,
-> > +    .version_id =3D 5,
-> > +    .minimum_version_id =3D 5,
-> >       .fields =3D (const VMStateField[]) {
-> >           VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
-> > -        VMSTATE_UNUSED_V(2, 2), /* was snoop_index/snoop_dummies */
-> > -        VMSTATE_BOOL_V(unselect, AspeedSMCState, 3),
-> > +        VMSTATE_BOOL(unselect, AspeedSMCState),
-> >           VMSTATE_END_OF_LIST()
-> >       }
-> >   };
+> The system timer interrupts are only routed to the legacy interrupt
+> controller and not to the GIC, so a guest using the GIC (software that
+> relies on the system timer interrupts through the GIC, such as bare
+> metal programs or hobby kernels) never receives them.
 >
+> A qemu_irq connection follows one output, one input. So also wiring the
+> timer to the GIC would replace its connection to the legacy controller.
 >
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Add a splitter per system-timer interrupt line so that each interrupt
+> reaches both the legacy controller (output 0 of the splitters) and the
+> GIC (output 1 of the splitters). The timer channel n goes to GIC SPI
+> 64+n, so channels 0-3 go to SPIs 64-67.
+>
+> Testing:
+> The raspi4b machine started in the qtest mode:
+>         qemu-system-aarch64 -M raspi4b -display none -accel qtest -qtest stdio
+>
+> Ran following commands:
+>         irq_intercept_in /machine/soc/peripherals
+>         readl 0xfe003004
+>         writel 0xfe00300c 1000
+>         writel 0xfe003010 2000
+>         writel 0xfe003014 3000
+>         writel 0xfe003018 4000
+>         clock_step 5000000
+>         readl 0xfe003000
+>
+> Before the fix:
+>     clock_step 5000000
+>     OK 5000000
+>     readl 0xfe003000
+>     OK 0x000000000000000f
+> The alarm fires correctly (status flag outputs 0xf), but no IRQ raise
+> 64-67 reaches the GIC.
+>
+> After the fix:
+>     clock_step 5000000
+>     IRQ raise 64
+>     IRQ raise 65
+>     IRQ raise 66
+>     IRQ raise 67
+>     OK 5000000
+>     readl 0xfe003000
+>     OK 0x000000000000000f
+> The alarm fires, and all the four channels reached GIC lines 64-67.
+>
+> Reported-by: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Jayesh Agarwal <agarwaljayesh03@gmail.com>
+> ---
+> This was picked up from Sourojeet's earlier patch, here is the link:
+> https://lore.kernel.org/qemu-devel/3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca/
 
-Thanks. I've applied this to target-arm.next as I plan to send
-a pullreq before the next rc.
+Thanks; applied to target-arm.next.
 
 -- PMM
 

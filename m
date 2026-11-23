@@ -1,99 +1,104 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9223F606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 11:33:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 707A2606A31A
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 11:33:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=X775BE9q
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=t2Gwq6oE
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVSI0-0004Fz-5N; Mon, 23 Nov 2026 06:32:52 -0500
+	id 1xVSIw-00052F-89; Mon, 23 Nov 2026 06:33:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVSHE-00046M-DB
- for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:32:15 -0500
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ id 1xVSIq-0004yc-Hy
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:33:47 -0500
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVSHC-0004Bt-2C
- for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:32:03 -0500
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-67c24619b19so2369950d50.2
- for <qemu-arm@nongnu.org>; Mon, 23 Nov 2026 03:31:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795433518; cv=none;
+ id 1xVSIn-0007vk-PB
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:33:44 -0500
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-67583c777abso3083487d50.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Nov 2026 03:33:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795433620; cv=none;
  d=google.com; s=arc-20260327;
- b=d7TA6dXokPtoYHaWzUYXcfYfKaQsLH9u8CcVoeIGUBPnYMOfRrzE711L2V4Jh5rNXb
- IwMDptfF0WfAi+3x1Nh0FKIzYsjAgQr/TYLXVMHYIa6ozV9atgwnV/+IAk8lEimX8FFh
- a7qf/gOLDlpN3yuzhSr2G5ipq1G2OT7aeRood6c0hLkw0BXYDsaqxC4A3F31vBSNvDNS
- 29VrgCUzSp0H9u0oYC950HVxA1msCjcANOe9TmKz+yDdSmFnAI5RZMXD/hSRFbvo9W2z
- Jks2ffBcb8AGIsoTdrZ81JKpduWS+gXdiTWMlNGRxBONG7PdMDPr4dNVptGoR0NlcIry
- 95FA==
+ b=fvXtnPATrnhS1BlwSRS3Goy2vd+xXntsJ4w+L/HjlR3hdMYLLLZwB5FnrJ6V2vqM/1
+ WW/gABcCqgOhoq/T1/HJkZBjgiwmlqaxLayNwJ5fjrDmOQWjT0Qa8X9WHEdAzxXNLgCK
+ BMgmsoX0rwDvcVbli3Kq/M0RNCxmpxvL+oUTZmq+gaFR5r5TMJMhfYi8Dg2c93Zh6WM2
+ HPD3nUQS+C52VkrjohWkWgYEgBU0EQIrCbF/sd1HSScwZPZX/+K9GB6CH/NcqJInrv/L
+ aXYcqM6/3Z1kD5A0ToXw4rBAsFlZcujVULmFZyG+T9pLHOrwFRsuVP6dajp3LqDfYtVg
+ hrNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=TU370y7R5L29omjWNVlDL5In78ul3RsztEX0Ft93XdQ=;
- fh=I8e+TbWc2TBwnymbsx2vdYnK4MYXBFda4o25nt/dEEA=;
- b=pdLPFlayDoTNVxpk31LXdpJTSWKPTVWWJWCrVFVLRjp/eKrjUs6FTzBWjLZX00boKf
- UsxQ1xErFP9Cy2Den2zoB/NijCn1qVG0RAqgEoYgCNlYIxUmfxnaSgMJ5SspId5Oa6kF
- SNAKPHmHLWifT9OZs27ROl6C3itJILbyGRRJAizUe566cKr0jbbrET9SA7vyuifPeJsq
- re4rY9kY0vS9Hi3krjyoEEW1DUMEH+uHJEfNTG6aAnbKz4RKcubvpk4yrfU5V6tb2hcc
- Lw7GZachv6NlCyTjqgLG80HZ0r1ICZfJK4DG2oufvNc+BGZXkSxBEXFqEdLnrqa2ZkmS
- Pr0g==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=EKkmkSylR03Y9B23WtbRqfh0zauSJ8Gp8q0rHWrMgss=;
+ fh=0rJmLhybS9zgrhM1AZCkRbL+a2BBEOFv+VeA1WybGYY=;
+ b=FnJMQp3b1gMR/gAaxuhilu6y4pYPjMfKV4uJ/NjyE1QNSBDkJRg0mDrxyKDDpMD4Xe
+ CEaUQDx69ZnBeLP6p07KN8/JHPVW/NMbwyRAsmHYBASQmA16YqHygUZnIb5g0QQGAtRy
+ tFFvRGTZvmr1IDF1j/7dOkRQJ0SYm+LECuoswi3/dV6YE6tkmGl/M3hu+uIiQBjrb421
+ 7XDQdpQIufa7gFZjJymEdFZBorjItehRF1dW42TzMvujk7+0Ean6FQVnriJFtKOSXs+J
+ mxKTy0ZlJ8obavblnEx3cEsMyh4OHmiKBoz7lBcK/xXtTtHo3uSPaH3b/7p1Kj4AHeGj
+ pC4A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795433518; x=1796038318; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=TU370y7R5L29omjWNVlDL5In78ul3RsztEX0Ft93XdQ=;
- b=X775BE9qy6mioqDEEOQ2USPgsMmKR+4dS2d5dUEwLerjGpPArknDkfXn/fWS6cFCuf
- k+PQ96Lzz45/InDSNXIdSRZRlGhmRSLpFAkU528CZ4aUK3OKCUjY/pRvoUmyF3H6X+xq
- /c0uf8VOcqk8VKF0HKI/tllTats+hvo+UHb5pxxhHCEKd4PbAVxRYI0z48AEu+cNIJl3
- Y6hp1IKB5JeaQFPEfLg91J9FgIqbL2KAUJBG3R0TGk4IgeJfPDouq6iaoIMRkbhs/21J
- 85QRFZHiW6/KhyvLe+a23zM7DeEX1YFcy61V+HlLrZ2FZP39wnVH4sWUMG7OW6oGHybh
- jTJw==
+ d=linaro.org; s=google; t=1795433620; x=1796038420; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=EKkmkSylR03Y9B23WtbRqfh0zauSJ8Gp8q0rHWrMgss=;
+ b=t2Gwq6oE9TT75BVFcmzzja1E3/0TMuOurMQZNY1Y/dB7sb6CW5PxI5ffcec6l2bpwW
+ 5rgdBhpmhWIkoxDETL704UZFXmUC1mmUgPueXs+wSOZ8DxmwWqB0HUrdNhvH2OdseXQs
+ aXIONGIx0QBE2ojLK1zi+E6X+HOtaKjNIZfkYsKww4e8QXwr79zJm21M6hFhTXCagnef
+ 4zVAXC7IEXiSdwiJUA27UNAT94LA5vmLezNkI4g0IoVE7CA19C0bpKBbuQ71WCfIPw1n
+ 8zKpxunEz2iRMHm3EWks1O+JZ2fhieWwmC52T2dI7db5gc+3OiFKkKXkU1Qcu+1qGG/6
+ q8mA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795433518; x=1796038318;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=TU370y7R5L29omjWNVlDL5In78ul3RsztEX0Ft93XdQ=;
- b=yv2SpZtd+3V48OEm9gnooGOiyp4+4fqJx9mnjYca7LKz3oKRxK8YaHguABZfr2MGEc
- mL+WVeZOSMmT/LAOrATKT+wtKxm6ByhnIOIXZCI2gNDn6shfULdrUb+H/HoR2KoNMSRF
- ZPQZDt3t2RmwLzClUCdg9RWKEGk9VsbChbl2qBBhYb0fECeLkkQhncZBLTjJGnsbiLPZ
- 94YSLHonkAJs5Bg3TYneiWDSA7F4flaAdN+BSm3DpvnKkkP6xVyst06mMTny8V159gLa
- B+uwi24BRTQo/Tp2bSPkb/qnbWrhKV31hOKR7XrnBTT7gsnMIYEoIzrSk+1nqCylZ2ZR
- nfgQ==
-X-Gm-Message-State: APuU4Z+eq0CN5oo4u16QpyQFdnDLb081s9KEVMtiLtwFV5Vp34kwv2TJ
- 5sB842RqBeefyaQLZcvX59H2QwAYOkoAUpiqbHERYCkNaJMKI+BM5AH4WRtewTd4qVfPqNTm/fC
- FOE+2njhJMRVdIhRk3bxfbyE2RAndU5atAxhqnpTJsVWz2IH0MJmr
-X-Gm-Gg: AZFdTZc1ymYpgAPhwzr9uDFLPxyoXsqpmhnm744MI0apBQywUVu4AS4j7rJbt8+EsA7
- qQ62bgOUDUTrsWAGwKw2W+hTcu5cwQBaPgVPsyc7OzObAcHsrK5Rfum5tqytl/tuR1nDmRhGFNf
- 1Wfg5sBG23SHdM/UL9mKHd+v5pgDOs29cJQaoM+OFMMljvCR9+330AZhSQ0uEQ2JsVmlY9oRXpc
- XKTsQNLQMC1J5YtcMKjU/ktJtGtqXvYH0ZHS8/p4COJIF9tprYbtHJqkh/bSZ9NJcJ2DF/03QlU
- gJpETMz6IQSlDFPn7lUemC29rIZlFVgxwOI2A/UGhH682scAXU1QTmGgN0fXE1ihL82DmHbmPWz
- 3VKLpJEJRAvtE9q1HRiS7m+M21N+7omj2RD4rXKbBo8n6Jc8FtvM17mIvdHDy9lHGF7aobJWrMn
- 1OjfIZ7wbuQmR6a8mgW033
-X-Received: by 2002:a05:690e:47d9:20b0:679:b313:137f with SMTP id
- 956f58d0204a3-67df44107aamr3263674d50.24.1795433518297; Mon, 23 Nov 2026
- 03:31:58 -0800 (PST)
+ d=1e100.net; s=20260707; t=1795433620; x=1796038420;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=EKkmkSylR03Y9B23WtbRqfh0zauSJ8Gp8q0rHWrMgss=;
+ b=MLDQrXBhWk2S872nuZwi41qlDsOc8nixvJVz3YAEyqC2p1EAh/Lo0RgZrN7+Qrj2LJ
+ hNRjNFZRtLhnXMnd6gIvFzMgJMs4oJufb90Cy16StYQSO+0+utCZ82zi1mG2wMqcsg5V
+ vynMXhayyKaoQpt7ZiqN59V4Mvy7CuGcuKuSszamJVAGEsH2K9lzLqNgcuUcR4v5V0uk
+ QBZxT6Ur+ez0+FJ83A5q/yC5qm1sjm3bmNAGp3WYQZDzYMe+mMR8MVXZtbcOdEFpM9zu
+ uvo+1b7DRiiYgKNapDMsbcWDRrenX2+NfIzJ9ovTOFnO6FkWpCG/6G2nWGUPV1IrpqRO
+ zDmQ==
+X-Gm-Message-State: APuU4Z8+5r9J1zsImHbR0jiFvTbLDLvaKvYKaxRozUnKRmy7Gyo5TBIY
+ xckg7xSJnGAZ8GXpxKQoXKg5oO404zsBC5E9SYAjVYoITdznB5iCux+fuUkdBKx8dVL6CcC+nFb
+ buzHfDUzMDV46B3KA3BgkcRTlo6WJtblM3QueCnlYtA==
+X-Gm-Gg: AZFdTZcHttCTJfTcCJKRGPXBYM4LiBUZtz622/rDX1hk+3nENX90A0uX+LFiGacbAB2
+ 7ckdKP12ce2AuDZ27BHQpLkiFKnsbype7pGMYINRfJpPyO+Nvc+WyyI6vO+Ss+Jpw+jgZx3zPAe
+ WxVh3ifmgw8mTPPmqD650Ark8S4knUwgb/UlF/h57WPq1b9TpqlFGuUr2wAgGTNPvW9FMjbiezY
+ uGBJJrFbLEa+6DEib15lh16O37w005Ub7zN2DCw1ezhXPPH92i0shnFUdFiCvgRuXYhbbQn3KEg
+ t010ls7/mmq4ackS8VTpCF0P12ZSK2GkKtpAoXrZDmQPkppgt44pukDFTSrf9B0PtlDOycwKE21
+ 55auZxOJeU7Xtj5sxjs956XSfrUVXyze98kCElcTGk5u6dWrArtya6aJKNjLF4B+75TiNHP7hzt
+ FX/MB1bSLHtIK34CQ/MwF9
+X-Received: by 2002:a05:690e:e87:b0:677:c90f:46bf with SMTP id
+ 956f58d0204a3-67dec4202b0mr4628300d50.17.1795433620401; Mon, 23 Nov 2026
+ 03:33:40 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261116114641.1799526-1-peter.maydell@linaro.org>
-In-Reply-To: <20261116114641.1799526-1-peter.maydell@linaro.org>
+References: <20261119171425.3186790-1-peter.maydell@linaro.org>
+ <00f62c2a-f094-4922-92c9-2d3c26a012d4@kaod.org>
+In-Reply-To: <00f62c2a-f094-4922-92c9-2d3c26a012d4@kaod.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Nov 2026 11:31:47 +0000
-X-Gm-Features: Aa3M54oZc21ZeJxN0KTDhbfO6CCXWLukZNzGqP0wU78Kqjb-7lYDlKLx8dUw_QY
-Message-ID: <CAFEAcA-Vns8Ho9h1B726=L31ug+Jht1jy9xtiEP1Bf4=E0=iXQ@mail.gmail.com>
-Subject: Re: [PATCH for-11.2] hw/watchdog/wdt_imx2: Fix migration when
- pretimeout-support not enabled
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
+Date: Mon, 23 Nov 2026 11:33:29 +0000
+X-Gm-Features: Aa3M54oDzgtNUMLgOZ7sO0mQ_a5gKfBubKT8eGfW0-_wnlfq_yBZ22Zyx0o-Zzs
+Message-ID: <CAFEAcA_mntTSsiZZRH1vOd9g4W2D=2AaNEEXvoucVDyf3ur1SA@mail.gmail.com>
+Subject: Re: [PATCH for-11.2] hw/ssi/aspeed_smc: Correct minimum_version_id in
+ vmstate
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,103 +120,74 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=unavailable
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Could I get a review on this, please? I'd quite like to be
-able to put it in the pullreq I intend to send for the next rc.
+On Fri, 20 Nov 2026 at 07:08, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 11/19/26 18:14, Peter Maydell wrote:
+> > In commit 29139270d8ad70f2 we made an incompatible change to the
+> > migration state for the aspeed_smc device, and bumped the version_id
+> > and minimum_version_id: this is because we increased ASPEED_SMC_R_MAX
+> > and so the regs array is bigger.
+> >
+> > However, the old vmstate was handling migration from a range of
+> > vmstate versions, with version_id =3D 3 and minimum_version_id =3D 1.
+> > The change to ASPEED_SMC_R_MAX is (intentionally) not compatible with
+> > any of those older versions, and so it should have moved
+> > minimum_version_id up to 4 (matching the new version_id), not merely
+> > increment it.
+> >
+> > The effect of this is that trying a migration save on v11.1.3 and
+> > then a load on the current head of git fails in a confusing way
+> > ("Missing section footer for aspeed.smc") rather than clearly ("error
+> > while loading state for instance 0x0 of device 'aspeed.smc':
+> > aspeed.smc: incoming version_id 3 is too old for local minimum
+> > version_id 5").
+> >
+> > Since we now don't need to try to handle migration from versions 2
+> > and 3 at all, we can drop the complications in the vmstate struct (an
+> > unused field, and field only present in version 3 and up). Clean
+> > these up and set the version_id and minimum_version_id to 5
+> > accordingly.
+> >
+> > Fixes: 29139270d8ad70f2 ("hw/ssi/aspeed_smc: Add Data FIFO-based flash =
+access support for AST2700")
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4880
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >   hw/ssi/aspeed_smc.c | 7 +++----
+> >   1 file changed, 3 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> > index ec9ad0f747e..f82947e752e 100644
+> > --- a/hw/ssi/aspeed_smc.c
+> > +++ b/hw/ssi/aspeed_smc.c
+> > @@ -1218,12 +1218,11 @@ static void aspeed_smc_realize(DeviceState *dev=
+, Error **errp)
+> >
+> >   static const VMStateDescription vmstate_aspeed_smc =3D {
+> >       .name =3D "aspeed.smc",
+> > -    .version_id =3D 4,
+> > -    .minimum_version_id =3D 2,
+> > +    .version_id =3D 5,
+> > +    .minimum_version_id =3D 5,
+> >       .fields =3D (const VMStateField[]) {
+> >           VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
+> > -        VMSTATE_UNUSED_V(2, 2), /* was snoop_index/snoop_dummies */
+> > -        VMSTATE_BOOL_V(unselect, AspeedSMCState, 3),
+> > +        VMSTATE_BOOL(unselect, AspeedSMCState),
+> >           VMSTATE_END_OF_LIST()
+> >       }
+> >   };
+>
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-thanks
+Thanks. I've applied this to target-arm.next as I plan to send
+a pullreq before the next rc.
+
 -- PMM
-
-On Mon, 16 Nov 2026 at 11:46, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The wdt_imx2 device has optional support for pretimeouts, which are
-> present on most i.MX SoCs but not on i.MX31.  If the QOM property
-> 'pretimeout-support' is not set to true then we don't create the
-> ptimer associated with that feature.  However, the migration vmstate
-> unconditionally lists that ptimer, with the result that trying to
-> save the vmstate of an i.MX31-based machine like "kzm" will hit an
-> assertion.
->
-> Move the migration of 'itimer' into its own subsection which we only
-> send when pretimeout support is enabled.
->
-> This bug has existed in the code for a long time, but it was hidden
-> until commit d9abd0253be ("hw/watchdog/wdt_imx2: Remove redundant
-> attributes)" because a bug in the VMSTATE_PTIMER() macro together
-> with the fact that the vmstate_imx2_wdt version_id was 0 meant that
-> we weren't trying to migrate the device's ptimers at all, and so
-> we avoided the assertion (but didn't migrate correctly).
->
-> This is a migration compatibility break for this device, but it isn't
-> used in any versioned machine types, and we've already decided to
-> break compat on it this release cycle.
->
-> Fixes: daca13d495a11 ("hw/watchdog: Implement full i.MX watchdog support")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4876
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Based-on: 20261106163657.3825938-1-peter.maydell@linaro.org
-> ("Fix 'version' arg of VMSTATE_PTIMER")
->  -- the patch in that which sets minimum_version_id to 1 in
->     the wdt_imx2 vmstate would otherwise be a conflict
-> ---
->  hw/watchdog/wdt_imx2.c | 28 +++++++++++++++++++++++++---
->  1 file changed, 25 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
-> index abb8edfae25..b4196de7021 100644
-> --- a/hw/watchdog/wdt_imx2.c
-> +++ b/hw/watchdog/wdt_imx2.c
-> @@ -221,13 +221,31 @@ static const MemoryRegionOps imx2_wdt_ops = {
->      },
->  };
->
-> -static const VMStateDescription vmstate_imx2_wdt = {
-> -    .name = "imx2.wdt",
-> +static bool pretimeout_state_needed(void *opaque)
-> +{
-> +    /* The itimer is only present if pretimeout-support is enabled */
-> +    IMX2WdtState *s = opaque;
-> +
-> +    return s->pretimeout_support;
-> +}
-> +
-> +static const VMStateDescription vmstate_imx2_wdt_pretimeout = {
-> +    .name = "imx2.wdt/pretimeout",
->      .version_id = 1,
->      .minimum_version_id = 1,
-> +    .needed = pretimeout_state_needed,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_PTIMER(itimer, IMX2WdtState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static const VMStateDescription vmstate_imx2_wdt = {
-> +    .name = "imx2.wdt",
-> +    .version_id = 2,
-> +    .minimum_version_id = 2,
->      .fields = (const VMStateField[]) {
->          VMSTATE_PTIMER(timer, IMX2WdtState),
-> -        VMSTATE_PTIMER(itimer, IMX2WdtState),
->          VMSTATE_BOOL(wicr_locked, IMX2WdtState),
->          VMSTATE_BOOL(wcr_locked, IMX2WdtState),
->          VMSTATE_UINT16(wcr, IMX2WdtState),
-> @@ -236,6 +254,10 @@ static const VMStateDescription vmstate_imx2_wdt = {
->          VMSTATE_UINT16(wmcr, IMX2WdtState),
->          VMSTATE_UINT16(wicr, IMX2WdtState),
->          VMSTATE_END_OF_LIST()
-> +    },
-> +    .subsections = (const VMStateDescription * const []) {
-> +        &vmstate_imx2_wdt_pretimeout,
-> +        NULL
->      }
->  };
->
-> --
-> 2.43.0
 

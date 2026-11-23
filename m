@@ -1,101 +1,100 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 156B3606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 11:56:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1E21606A32C
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 12:11:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=ul04TW2+
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=JdS14I6x
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVSeg-0008V1-Ks; Mon, 23 Nov 2026 06:56:19 -0500
+	id 1xVSte-0002fd-LX; Mon, 23 Nov 2026 07:11:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVSeW-0008UR-6y
- for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:56:08 -0500
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ id 1xVStd-0002at-0c
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 07:11:45 -0500
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVSeU-0007SO-Hi
- for qemu-arm@nongnu.org; Mon, 23 Nov 2026 06:56:07 -0500
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-67db6d4054eso3471321d50.1
- for <qemu-arm@nongnu.org>; Mon, 23 Nov 2026 03:56:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795434965; cv=none;
+ id 1xVStb-0004D8-A1
+ for qemu-arm@nongnu.org; Mon, 23 Nov 2026 07:11:44 -0500
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-67db1f6f50eso3163942d50.0
+ for <qemu-arm@nongnu.org>; Mon, 23 Nov 2026 04:11:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795435902; cv=none;
  d=google.com; s=arc-20260327;
- b=dr+QTk2rL8BXMXl1lzzW2bUkcBfUmxGk9Q7b2Hd7TtlUjePbCBznjJv0s6PAZsptT3
- txm7ZanO9bwwGuR0tdjT9tpyxTkXsSayvnrHMn+H8ddAsvlfPDcEI63ptb0WUoJQ5Tvh
- DEWq81++62bKkPYbiW6dA7MyS//mPQUMRSfZ3DYd4pdlMKkzsr1Gyz074DrQiSsUiB5p
- sYsnJ2zt+3+Xg03ajQ/m5WSns5Pvdylkfnxida1csqo+YXIl0Rnf1BLecV8+cTerRhbf
- Njo95goWseSVcIfBjA1Ud1leVafVRAmG0n3ZdDoPbxBPdbTKxBJspDt/DLsCY+XWjEC4
- BxJg==
+ b=mAylDWG1Fi1N8mFhSYB+290Ff2VIECSM66Sln+CyzQEg43mzI2uzml1is9onk/+HNP
+ 2et+9mEB+u3A6JbpqaveWAEmgprYliWzzrmBzdfawJvtbQUxZQFOfx4PNM35zMGEWOOk
+ +y31CcQXiP6PYCVlgMWmX2cHMDPQ0IbiiC/GyTlsq/2Qlp7XOwFFmAvkFqQLMUrPzIZ8
+ GJttQVY94G+7gb8poXiQJ98UNBYhKA5tGUXGukA+L1P5try5uJFsonnvynmdantzaA/3
+ yELiiOgSJ6Y4xXBKyun3CkUa85pTUhzfRTi0xu75OAXyD6NKxHteqOUxzcGQmYVo/wzo
+ U1gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=6zfdO2OzUreW8lGzz4kPeHrkisuJNtMzB/9BzM9B9mM=;
- fh=y/ja5UMDl8OhCKt0AhFnt+a2JueinlVx8/LWeqYKWi8=;
- b=Hn75S9UbrJJoxOjzjmrV/BbNJrC7eUU44AfeH/7YzUe+5N7ipfwqkN6oMTpeJCfLeD
- cVOlW2LPLPw3x6dEVw2lyqDitYj6vQqYeVLTRYyEuRTrLDtSH4FOpp1UbT9mIQUkQGfD
- eSTPSdi7tQ19DbcAqtOkURvJbhENjkpreLuNXsVncoAfa881fFUAxlQdY5kVGRq0rBbu
- jeJTISX3Zzu0bPbw53ooUlcz+9A78cux012w/1ZPZbx/IcrlNvmZdZUp9qpYWBfKhlGO
- ezhouANMkfbpYS1PouBPkzK3pbGEZhXLkB6aZTyyikoXvXU52istZq1+kUBjtOnL29Eu
- 8psQ==; darn=nongnu.org
+ bh=7bsd6MScyb/Cw9bSouzvpkrUzEybksY5A3VWBFLKcos=;
+ fh=UXZ0wD9r7iLCR1DsRrpgafzfKtyY6wW7r22Mz1B06w0=;
+ b=g0sQ1TRifDw3Emugg27Bml9Ly8OggAvusm8E2rvNpsG1jn/rjipZJiAd2lfaM5BiS2
+ uG6NEfSr+AcSrpg8Ir67Rq7eMqIdAsNzYblaJPu+Poy5zU/ggIgSYwiWZ8N556XOJD7J
+ QmF+I5aXc/U4DdljUqN52zM7kDqDmLMkUlZsYX5HhMIHjS3ObD99zkaCm08K+OVizTwH
+ xA1p7yHdNyA2AkGTMYSfBh3GLbDJbpP7MrznftzAwBMAuQnuMWN9gCVOnYGA/xeXmOyB
+ YFod/McKg+uMonkDINFc/N+WbX1Iug9I5Qu79oinAC1QjJGuVc6giGf18y05J6tUjce9
+ 3aAA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795434965; x=1796039765; darn=nongnu.org;
+ d=linaro.org; s=google; t=1795435902; x=1796040702; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=6zfdO2OzUreW8lGzz4kPeHrkisuJNtMzB/9BzM9B9mM=;
- b=ul04TW2+fp/E8DUvvfk/uw/93u8LehVY/c5UjJtPHgDuj7MiK9FcWRHsjpL605hnLZ
- aR6Xn8GiauPi+JPSfW+ibb6UUWo01pDcqDsnmLGN31D/blCEjIzSlVFYsuqnBsQ7ZLNC
- +WoI6G3Fdd6fXcW287RKDtBflEaPXN2We7WAobq5JMtR+jk8BVcYfBZ+/Anr1uEyS3bf
- 2rLSBMSAkilueElfmbpcS92eT+RPvtNfTHQ75zqEZQfX3bbcNm+CK3EGhgU5WLXf6nn2
- MaEHlMAJQXXpnI9rLyJOovEyUerZr5hOOULOq5Myy1o0F/4U9653siAwLSqz9wrubtcG
- 68xQ==
+ :content-type; bh=7bsd6MScyb/Cw9bSouzvpkrUzEybksY5A3VWBFLKcos=;
+ b=JdS14I6xMJB7zxtdhvjNFpQ91fpjba3mSA9Jha8GZqLpOeifjht85Y+wKKKrz3xChG
+ 66OyuoRvC4YC4lLdY06jcO1MDlPG9Yqv985h/KpGEkAT0EUEzTDFIyvBd8Cjv2ezURNQ
+ 4WMRpMRVDj9OIAXVFQN5v4OXiOlh+BorfHAKp3bKW7caa0T2CoHqp4L8NrT4vAI0Y1cj
+ 5LDbe+uSvNdbEVsCSmYH7vuE1PeFolS3UaMyo9by0sFPeB7CuNOQkJWbVJoiRHtsorU+
+ +a37+G7X5SmmdsPK6z+KbMPEcIVzQaUkem5MdSAxxPlI4+aQ/zPBb2HBXKWNF5hWcrUN
+ J9og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795434965; x=1796039765;
+ d=1e100.net; s=20260707; t=1795435902; x=1796040702;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=6zfdO2OzUreW8lGzz4kPeHrkisuJNtMzB/9BzM9B9mM=;
- b=bB9D6N6wuiC8XRcSKRYwCka+eVv40NsTzN6KgL54Y5DVzD+4jf4FzuYQqMY/sh2kxL
- YNpPctNOP8WtAoTqpFfPYBqV+mveXppf+eRue+mURYHkUyrr9yVzUTLs5J3RkqQ2ISSb
- SkzJhPnA42+muRBBYaDUGZyEqsptJKQy0j4dvyaNVZVRZfxRIK3SeHxejsipOI++e+rP
- DtK8cUa8GUShD+7+KYO0s4wjNaFj9FUmYha1qKmAArNTnFqDISappTXFOea2Cht6lppH
- K/xiWfHLc05iCi77TC012GvumEPEn970UCtprMZFIkutnbChwj+w4aIHwi1UDvU838Xw
- QluA==
-X-Forwarded-Encrypted: i=1;
- AL+hErEsP27jzF3JOAHoKLEhWqo5jFGjr2uISg4YzxJAKxt8DuYUDetyNIYx85D7lPPx2XY5uqsY/0hq4Q==@nongnu.org
-X-Gm-Message-State: APuU4Z8nSkzWpGliXtia3bbxSeIFdOOIRsSJh9ivjOCixQo6vM8XD/IM
- v2Oyhqgo9BDG5Lki4y1r6PUKec9fNto2VC4EevOPcVlJIpFsCl1QIWHKdzzqijWWV+6nM8kjlgQ
- /kGYK8JgsRmF4LBM2eOtnlQ3HBnOieFCg6EZzZVzLUdeNyRmYgarc
-X-Gm-Gg: AZFdTZeOD+pkoeW1+lKF/hVup/HzV/kj7SoiOFoK+PLHfRlIpNINkAuIhSgMUL8EYlJ
- zae/6YJwTO+t2rTU1zhQb9QFJyAWGnMdopOH6jxrP0CgYIM/nC2vFAf3/QEBqvw1rdj0Qtrsx43
- WoTjeeGsZ9rCbbu2o/NtuZe2Z7kwEwfS5zNTkjD8YariQNxONR9KSlTbm50+fLOurlZy7o/Bcvf
- i44AOAI4QuNKvO4IP1NECwmX6y2pkODUeaMg+vFQC3+E94ue3Sct7d0smETB6SPHMO/VZLXJiew
- 5J4gUxR7pWUClwXUL2ap9HmD4ivgG+YmLFansg20ISSKtLTgKXBFcttYM1MvVQ0VCZYgt0UtlT6
- QreZPHkOX1z5XteGvLrSDUUBR2tk5ErshRIZWAvUQWPkV2NWmD/QwmNyoBGva6yLmrGqJp8IprD
- ABCKpULG/uNao1HhCplIYh
-X-Received: by 2002:a05:690e:a45:b0:67d:e867:89a0 with SMTP id
- 956f58d0204a3-67df43ce3b5mr4534725d50.30.1795434964881; Mon, 23 Nov 2026
- 03:56:04 -0800 (PST)
+ bh=7bsd6MScyb/Cw9bSouzvpkrUzEybksY5A3VWBFLKcos=;
+ b=uRwmd7uIMd0/cH2Ny5qhd9AwXjRi99EGQuZaqc8rf5YXB1BWQNi4oBIa0TsexEj1a7
+ vl+59PwLmhgmJKpsTTC9nnMit2NvxZu+jumpZJz9oqnG864/OvndPqqHwf3mjcQTwFqr
+ wWeXAx+l4ipUTGCvXYN34WwmApeGCSmLJlyHiuJI/dlfganZL0vIR8FRCzKCd9E9lG/+
+ GGXFwzZatRnahQLx1hF5e9LyJJAqOa1EQEmAIJcDbcIsK9M9sCpnfgzIt6WsY28lypM3
+ fXFtkE/KbWmzOT4fQhzRYPuHwICI+7Z7ncQstZQ24iKhhtEWC91RvX+L1FB4hA7ZUOSG
+ ExiA==
+X-Gm-Message-State: APuU4Z/gH4b6pbA+BQkFFmolaJE+vjGdicgJLvMNg/TmqaX775gNRDSc
+ 6FfKMvA6ve18wMV6NkJOoXpVO1qR50X+EYphrw1SHuS2GRmFH/+BbwJZ6lFZdswWBI8Phfg03I1
+ NQr/8WiZao7SmbHy5Sl7OVeZYWF8w5a1obO9s02s+0w==
+X-Gm-Gg: AZFdTZfif+pofW7WVZcK+vMcdUmCO42k6zz35VL9qTJ0tizYwgD9qGD3QjrgmrdEMP2
+ 8KxAhMvkfWrq5Btsf/N1VU1IWGdjvfZnH7NFj59MscjLaxMV8gUHGyek9i+l930YvyZV7zNbLJu
+ dMcdegbtY0EJQqnSJTHeJ5ov5Wv2lTGsVvpQUt9WS44X269vT6R6zbsKH7LnOo4LUUSagHDiHr0
+ pLNM6YXLnXLgwynUSmChF0XuSB5FoXbA0l2QXX9pxkkfE1xoT2/z9aZjPeZctcrUM8lze9gi4EK
+ X+v1vBXirhHaKIzyfhxsa9aQQPcbEVgxug0JTui5T/XpEWl0DpauPL7i4NR+08UvaUnKffoWDig
+ 1CbPO9tnoEssB1yM3xymN4OpxXQYjZNC/Qw4Q1dVJ0FAPe1d8q4vq/ULx6DU9HQkTgKdSzaAygl
+ DsI8WCcRX0N8OXaoKTOWyR
+X-Received: by 2002:a05:690e:13cb:b0:66f:c1be:a64f with SMTP id
+ 956f58d0204a3-67df4444c30mr5051365d50.65.1795435901705; Mon, 23 Nov 2026
+ 04:11:41 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261117193205.8236-1-agarwaljayesh03@gmail.com>
-In-Reply-To: <20261117193205.8236-1-agarwaljayesh03@gmail.com>
+References: <20261119091922.1380805-1-fuad.tabba@linux.dev>
+In-Reply-To: <20261119091922.1380805-1-fuad.tabba@linux.dev>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Nov 2026 11:55:53 +0000
-X-Gm-Features: Aa3M54qcfvLnmuQmOVFjmTs3WfpvouOrJyliMPqg8vjFnUH7_Br0-aVmcX4MCzU
-Message-ID: <CAFEAcA_4+PcP8f2DF+mtjkO5iO6eU6C6R6hjfBN7dg0o_TGPiw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/bcm2838: Route system timer interrupts to GIC
-To: Jayesh Agarwal <agarwaljayesh03@gmail.com>
-Cc: qemu-devel@nongnu.org, philmd@oss.qualcomm.com, qemu-arm@nongnu.org, 
- s23adhik@csclub.uwaterloo.ca
+Date: Mon, 23 Nov 2026 12:11:29 +0000
+X-Gm-Features: Aa3M54rpluT39izReyFJiIZcPDUpABTDZz_S3j63cL7aubt1aEvxAtxAxp_Umg8
+Message-ID: <CAFEAcA9mkWC5re8NfCPQzgB5de+0DYC5TbQV9TXweEtMKzdi7Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/arm_gicv3_cpuif: Don't count a virtual EOI in
+ EOImode 1
+To: Fuad Tabba <fuad.tabba@linux.dev>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org, 
+ tabba@google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,69 +113,44 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 17 Nov 2026 at 19:32, Jayesh Agarwal <agarwaljayesh03@gmail.com> wrote:
+On Thu, 19 Nov 2026 at 09:19, Fuad Tabba <fuad.tabba@linux.dev> wrote:
 >
-> The system timer interrupts are only routed to the legacy interrupt
-> controller and not to the GIC, so a guest using the GIC (software that
-> relies on the system timer interrupts through the GIC, such as bare
-> metal programs or hobby kernels) never receives them.
+> icv_eoir_write() increments ICH_HCR_EL2.EOIcount for a virtual EOI with
+> no matching list register, in either EOImode. The VirtualWriteEOIR0()
+> and VirtualWriteEOIR1() pseudocode in the GICv3 architecture
+> specification only does so in EOImode 0 (ICH_VMCR_EL2.VEOIM clear),
+> since in EOImode 1 the DIR write increments EOIcount instead.
 >
-> A qemu_irq connection follows one output, one input. So also wiring the
-> timer to the GIC would replace its connection to the legacy controller.
+> In EOImode 1 an interrupt with no list register is therefore counted
+> twice, and KVM running under TCG deactivates an interrupt that its guest
+> has yet to deactivate.
 >
-> Add a splitter per system-timer interrupt line so that each interrupt
-> reaches both the legacy controller (output 0 of the splitters) and the
-> GIC (output 1 of the splitters). The timer channel n goes to GIC SPI
-> 64+n, so channels 0-3 go to SPIs 64-67.
+> Increment EOIcount on EOIR only when EOImode is 0.
 >
-> Testing:
-> The raspi4b machine started in the qtest mode:
->         qemu-system-aarch64 -M raspi4b -display none -accel qtest -qtest stdio
->
-> Ran following commands:
->         irq_intercept_in /machine/soc/peripherals
->         readl 0xfe003004
->         writel 0xfe00300c 1000
->         writel 0xfe003010 2000
->         writel 0xfe003014 3000
->         writel 0xfe003018 4000
->         clock_step 5000000
->         readl 0xfe003000
->
-> Before the fix:
->     clock_step 5000000
->     OK 5000000
->     readl 0xfe003000
->     OK 0x000000000000000f
-> The alarm fires correctly (status flag outputs 0xf), but no IRQ raise
-> 64-67 reaches the GIC.
->
-> After the fix:
->     clock_step 5000000
->     IRQ raise 64
->     IRQ raise 65
->     IRQ raise 66
->     IRQ raise 67
->     OK 5000000
->     readl 0xfe003000
->     OK 0x000000000000000f
-> The alarm fires, and all the four channels reached GIC lines 64-67.
->
-> Reported-by: Sourojeet Adhikari <s23adhik@csclub.uwaterloo.ca>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Jayesh Agarwal <agarwaljayesh03@gmail.com>
+> Fixes: b3b48f529fe8 ("hw/intc/arm_gicv3: Implement ICV_ registers EOIR and IAR")
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Fuad Tabba <fuad.tabba@linux.dev>
 > ---
-> This was picked up from Sourojeet's earlier patch, here is the link:
-> https://lore.kernel.org/qemu-devel/3cca4eb3-09d1-4467-81fd-27a5bfe19a3e@csclub.uwaterloo.ca/
+>
+> Notes:
+>     Tested with a local reproducer that runs a KVM guest in EOImode 1
+>     under TCG, with more interrupts pending than list registers. Without
+>     this patch the guest sees an interrupt deactivated before its DIR,
+>     and with it the reproducer passes.
+>
+>  hw/intc/arm_gicv3_cpuif.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 
-Thanks; applied to target-arm.next.
+
+
+Applied to target-arm.next, thanks.
 
 -- PMM
 

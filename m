@@ -1,95 +1,125 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C95D9606A32A
-	for <qemu-arm@archiver.kernel.org>; Sun, 22 Nov 2026 07:33:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0208C606A331
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 01:44:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=wXRSBKDX
+	dkim=pass (2048-bit key, unprotected) header.d=alistair23.me header.i=@alistair23.me header.a=rsa-sha256 header.s=fm3 header.b=ErkA/NR5;
+	dkim=pass (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=RveuEgDn
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xV245-0003Be-BI; Sun, 22 Nov 2026 02:32:49 -0500
+	id 1xVJ6S-0000Lj-Hh; Sun, 22 Nov 2026 20:44:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
- id 1xV23g-00036A-PD
- for qemu-arm@nongnu.org; Sun, 22 Nov 2026 02:32:23 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <itai.handler@gmail.com>)
- id 1xV23f-0000Vf-5e
- for qemu-arm@nongnu.org; Sun, 22 Nov 2026 02:32:20 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-4a511d8a394so258730f8f.3
- for <qemu-arm@nongnu.org>; Sat, 21 Nov 2026 23:32:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1795332737; x=1795937537; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=e64S4WnlE/+ph5XDdDBmL08MSRlgGmdTbb7tW197pZw=;
- b=wXRSBKDX2qS40Fb+9HaF8aOH/khqG+idYJn10cppAgyb/ETLtn92Kz6Wq2YWE6Ox2t
- ZRLFJZZClIGgXHcNAbYf/KKZDdwtpcNPWPHNvBPi/aaIcfJZSD6Blhu/6rcZ8HA3t5Pa
- gOu6vg3jTgocjWba43/Wz0oxSww7KglQoqD5eJk/W7dbVcBvCl+4NnKLWQ/DLKsREp+i
- tle1ZBNApEkDToXsx14DGJ9Pqqcv8GwvUUDQDR8ntRo4Q/Mh+MsutanKGNYzWTJPpoL6
- mH2g9qTHRzGQeXjbelN5qpaxDTsJCotQpgvnHK3a84R+2b50t0aKRexrcVAjUHkoyh8H
- rp0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795332737; x=1795937537;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=e64S4WnlE/+ph5XDdDBmL08MSRlgGmdTbb7tW197pZw=;
- b=ZTvTm1xb8FUI6WwwSp1wLQuMsV2fUOtfmkRBXckL8gcHKUahM8S5k8MqMVjdMYcMXQ
- qHxgtV4E622Yby6OFxrjA8oBi5sLK8+5EbK/0Tk7IF9sBvCOI6ODZY97uFLGsOoBiQbi
- tfTqMijNyQszze7QJ6ICTRpcEpDfwgN4EOHv3bU/MjzMnxpmVbvh3zAVilRoNbxsEgKU
- NN+qKDCbED7WwkCI8rfvnYeVe99WA5KBYdP2jWrm1SQP4pZAC3ohXnKXUrXLVRLitCLk
- +zoCF5cbv743/DvDeIcLklfkGEwDdUVw2pZfrrHhsKx67TpVsWeCGpMRJzcWoRiFrIwo
- soXQ==
-X-Gm-Message-State: APuU4Z8SFP0eOgONURPxNIxmmRi3O8+jmSOVBpR8+wyVF+L15TC2zVmZ
- 88Ybu2zjFyYuM0g7O4NVi+kv2m/MCKBGu/Bbcrkm1yll2Hns61R3m9Fu
-X-Gm-Gg: AZFdTZc9W4lj03GyeqLgDg9atDCTAUdtcnwccCjNMirisG0WF9WaStSQP67gIg4Iwi7
- A8ETbTVUDUI8GmXm3fK1nn8P1v/L8qQLMYMiEKPez0SPIY0cvtAixHn/py3qa5DD2HsRzTgiiid
- uzEVGlxdgdWdLdWiyrWuXc6vxMsp5ERM3qxPopPu7aF/zyb2/niuvPbmh7ZuYJ9T/avrnhAY9cH
- P1j/yT2bASWShfszEvSCQRTtzh+lFwaYStG3aay9FkAMz+CuSibSdU8Z6blUkvhkkRTt/pGkkpo
- RUE8msx66Nb2bwUTx64+XLcQqa8nSJ1MAEXWkVz3smZ/0Dc2hpAl7C+m+F/FDK8RiJoyQM6imGK
- VqRVylqprBu0i/RwTVhkBF7owFpBLjUmPW006LkDoVKb9tkTfV/Na9TFSRTIgepDM0hVBUIIZCK
- cvjqp2w+Z89gUmT+Nk4H4s8/FeMQvsq2uUbrVgBxN7/zGr3676DB/dPX6JGpI+XaFoAKzeLol2f
- g7RRyRq8GO/AKfwIJGE8pmdJ9S7LYrAfIaQLgVMzLkOmllaiNoWNcwhcsp5YWIIvSVTVcqg5DSO
- ImL1xokixcHKGLskGsJPm8dWVLnsdBqdaCtTpnlArRsVRKkotpU=
-X-Received: by 2002:a05:600c:8284:b0:4bb:6c01:de9c with SMTP id
- 5b1f17b1804b1-4bb887f55c1mr155263005e9.2.1795332736521; 
- Sat, 21 Nov 2026 23:32:16 -0800 (PST)
-Received: from L-P-ITAIH2-L-RF.rf.local ([193.169.70.108])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb88402ce9sm188359425e9.0.2026.11.21.23.32.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Nov 2026 23:32:15 -0800 (PST)
-From: Itai Handler <itai.handler@gmail.com>
-To: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- peter.maydell@linaro.org, francisco.iglesias@amd.com,
- edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
- takahiro.nakata.wr@renesas.com
-Subject: Re: [PATCH 00/20] hw/core: Remote Port Memory Master
-Date: Sun, 22 Nov 2026 09:31:33 +0200
-Message-Id: <20261122073133.1940537-1-itai.handler@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
-References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1xVJ6O-0000LE-Tt
+ for qemu-arm@nongnu.org; Sun, 22 Nov 2026 20:44:17 -0500
+Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1xVJ6L-0005aI-FN
+ for qemu-arm@nongnu.org; Sun, 22 Nov 2026 20:44:16 -0500
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+ by mailfout.stl.internal (Postfix) with ESMTP id 345401D00404
+ for <qemu-arm@nongnu.org>; Sun, 22 Nov 2026 20:44:11 -0500 (EST)
+Received: from phl-frontend-04 ([10.202.2.163])
+ by phl-compute-02.internal (MEProxy); Sun, 22 Nov 2026 20:44:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:subject:subject:to:to; s=fm3;
+ t=1795398249; x=1795484649; bh=0N47pa0CQjHEhwV5WpubYnmKQtn8e8kZ
+ 09+cOgvlCdQ=; b=ErkA/NR59rHi4N4qLMZc2XHNNk3xnfR1Ino0mUVyXvo2ota/
+ 7Mq1IqJElRfjr8x8GtwJDeKnTBRb3lS6Lj8TchjOV8J22Gy+5boQMPhMcA4k8aE0
+ aDTgUlYKHw4xWfmL0fY88zBUUTfEMsfZpQAxBAMbsmuNUxw9rd5nO/Ev3JjTcLHD
+ IRePYuPZiS2EtdCwIpnZg6sSmU7Inapb2CbWtXzSZRShtVhga6ncNwL7fMSGwzJw
+ SQNu64oSOsXfOVOdDZVjYs57hK8vkXUyU5yMqtcnG1PIT+ySxrkaM68VWles1i/a
+ funpboHjwxeCduiFMuGgEvVk+sTan8Hep78kJQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1795398249; x=
+ 1795484649; bh=0N47pa0CQjHEhwV5WpubYnmKQtn8e8kZ09+cOgvlCdQ=; b=R
+ veuEgDnBAGzFuJFb7QW0fjC9s9mprk3ui10t8DJMvIofKfFSekSDFMkzj/LXmgC4
+ Cvb8N3II7vJcSyIENDZFZbt0IQlnzIANZlFuxzRUXSjwi52K68yvcT/823YClwDP
+ O51Six9+U0dDZyuy+EGc9dYtCtkzMn6EU4qYZbMzvkoqmkfTXQ/JqZiDCOsmfYit
+ edPxvZ5y9L3mP1ujcglDZjPJ4uHDouI5IXHFJsDHtUDfMH3VnEyYjr25bZmaYUou
+ 1trn8aMq+jhuxHm73DXBxopQaVqY8RHcb53NCS99WaVrwwNb2TqDJUPfLqOS6JcI
+ Z7ljWpE1BAcBpVVaQIxFQ==
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+ repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+ action=sign d=alistair23.me a=rsa-sha256;
+DKIM2-Signature: i=1; m=1; t=1795398249; d=alistair23.me;
+ mf=PGFsaXN0YWlyQGFsaXN0YWlyMjMubWU+;
+ rt=PHFlbXUtYXJtQG5vbmdudS5vcmc+;
+ s=fm3:rsa-sha256:WYNZoF/JrgnGfdM5eNIbL6z/hUPyhw8+9TUd7mE2iySg59Z
+ WMBidsQS416I/5EILLXHcSDfmVnfokDNh2ScNHCE6P8N8p4faKehntKgh9a5DRQg
+ UzcAPkzjPwFoR2EsO+m5iBLCqiVdnwr5P8CrpmVRMSwCIbKLgU5ZBtuot1OeEhC0
+ CCYNWW+TPjvnoEXE89JehPXQ+h7HUe2wgLMAYcryMbxL2SoyISEgNxnRfHJet1us
+ dy4NKcyJaaQyDbCwy3/OjO4rwtax2uAY9HAvvsyBNkhdeqIsexlnhJn58K321qcT
+ lwqVkUB07M65bssLfZna0kzk9vNoKSRF/S6cBIg==;
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+ repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+ action=mi-m=1; hc=13;
+ hn=cc,content-transfer-encoding,content-type,date,feedback-id,
+ from,in-reply-to,message-id,mime-version,references,subject,to,
+ user-agent;
+Message-Instance: m=1;
+ h=sha256:WmTzPmHBq/tlRwbQOy5OkF4ZWrbJOi77UkzCqYrgmYc=:0N47pa0CQjHEhwV5WpubYnmKQtn8e8kZ09+cOgvlCdQ=;
+X-ME-Sender: <xms:aJoDa0IJmluuQLKFbVLTNuKvY7EFVYn9pAiIwwVcxi6KWZ4lZFPnvw>
+ <xme:aJoDa6i7KXw5zHdLdHwm3wbTKd1_bs_yGz4G_lS5Szi9trHp3TOWSaire0XlShur9
+ OPHKrpH0xec99ck2qDJyGwCF5IcdVOJpFujfvMXBpvK_fRl0wu5PjxY>
+X-ME-Received: <xmr:aJoDaw_4LYjGtdwHOOwFr3N8YgeG_APYMK1u7OgupEvK4MnQUYfPFER-sZM5zWoD1W6yh8E6SoZE5wNrFCQ2C_r8Lo4>
+X-ME-Proxy-Cause: dmFkZTGLH5SQJgb9SFf8Rq/ZS0DtnyyK7iJy/Km2vXfT2HQZtpxHRrJog/06eowC7TYk5b
+ 3B2XpN7ydriB4miW7P4cehpsxxbyRhB8E8WsJuzAEoA4Dx4UPUg39q8vO9h4DJhOBkZF8t
+ VRbliJSP4vVH+MJCbjkqUz+TFkZYqlwj8j38OzzUTy2mw6oGhSGT7pJkaU3HCW7BqCPXld
+ V/1R2qfsl5Lyfnavk6zK7n1V0JLc2aHiZ4cV673iMpVjQBO2xx+UK4zFDQD1quoS8aAWZp
+ 52Q1X5v+B0PVjO+5liieLSwvYB52FUVkweQNmRDpPIo7Cg37wDTgzdUG7vo4fRKIamqDJY
+ yViPNeh7CYmOS+8ciPSRj2EsbGWl6N7v9im1q5/K2xba8Ma5oAhJp11N+xnNT0M4cxHnN4
+ XT4JeosKGo60mzL/C/heQA5bieOfQqT7z0xMRLKwgorhHJhEifcXZ3r2Jo2HtoC+X5JSSt
+ 7DPcRt4YBJ1DDl2Ci3YqZ9cLYeh5L7LQ/YelCw83mQVMyWNA0EzzNwri93k1LSG3MHYE2Y
+ 4d607tQXQCbQyKtG0TBM1jJq6xh/Ruzwd7xPxpDvyeUzLzzF8C676ynT9x+G9UHpH548ta
+ 75C31JGEz4Vcx/E6qUUlo9U9HDSEI2ZzpGSEpyDbBGjaDLL+CX1Xcr9/VIVw
+X-ME-Proxy: <xmx:aJoDa_O3sV2nUlqj8M1meV-y7mrFvsejUaVxmx9YGpEhXYW6Vi5T3Q>
+ <xmx:aJoDa0Cv3XYJMW9A18ot2iJeblhWzUyPEAN0CnsaYmUD38iXsUatQg>
+ <xmx:aJoDazNqgeTJmQehVvIk2p2NamvZ24TQoGluyFe1ljwZF2Kir5o3kw>
+ <xmx:aJoDa7fsdSto3kIEIE-IIdXX1rNFmx2a8BGqWltJ34Gz0nIPxcKY8g>
+ <xmx:aZoDa4O5M0IAvhDn72rkb2EstafZs2SHyaevtd6ARqpPOrll-LGQJgQF>
+Feedback-ID: ifd214418:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
+ 22 Nov 2026 20:44:04 -0500 (EST)
+Message-ID: <eccb67cf4495cc3578123bd2cebf89ce9d9e6894.camel@alistair23.me>
+Subject: Re: [PATCH 0/2] m25p80: Clear write enable latch (WEL) at the end
+ of SPI operations
+From: Alistair <alistair@alistair23.me>
+To: Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>, 
+ qemu-devel@nongnu.org
+Cc: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell	
+ <peter.maydell@linaro.org>, Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen
+ <kane_chen@aspeedtech.com>, Fabiano Rosas <farosas@suse.de>, Laurent
+ Vivier	 <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org,  Kevin Wolf <kwolf@redhat.com>, Hanna Reitz
+ <hreitz@redhat.com>, qemu-block@nongnu.org
+Date: Mon, 23 Nov 2026 11:44:01 +1000
+In-Reply-To: <20261110-m25p80_write_enable_fix-v1-0-3a2abc0072b0@oss.tenstorrent.com>
+References: <20261110-m25p80_write_enable_fix-v1-0-3a2abc0072b0@oss.tenstorrent.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.62.1 (by Flathub.org) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=itai.handler@gmail.com; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=202.12.124.147;
+ envelope-from=alistair@alistair23.me; helo=fout-b4-smtp.messagingengine.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,52 +131,52 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Ruslan,
+On Tue, 2026-11-10 at 12:11 -0600, Anirudh Srinivasan wrote:
+> The m25p80 model in qemu doesn't deassert the write enable latch
+> (WEL)
+> at the end page program and erase operations. This series contains a
+> fix
+> for that, to match real hardware behaviour.
+>=20
+> This series also has a fix to the aspeed_smc tests. These tests
+> exercise
+> the m25p80 flash model by sending page program (PP) ops, but do not
+> send
+> write enable (WREN) before each PP op as the spec requires. The test
+> is
+> updated to do so.
+>=20
+> Signed-off-by: Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>
+> ---
+> Anirudh Srinivasan (2):
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test/qtest/aspeed_smc-test: Send write ena=
+ble before each page
+> program command
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 m25p80: Clear write_enable after page prog=
+ram and flash erase
+> operation
 
-On 9/15/26 16:00, Ruslan Ruslichenko wrote:
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-> This patch series introduces the Remote Port (RP) subsystem, a framework designed to connect QEMU with external simulation environments (such as SystemC models or RTL simulators).
+Alistair
 
-When a guest performs a memory access larger than 8 bytes through a
-MemoryRegion whole max_access_size is greater than 8 (e.g. the Remote
-Port memory master with RP_MAX_ACCESS_SIZE=4096), QEMU aborts with:
-
-  ERROR:.../include/qemu/bswap.h:487:ldn_he_p: code should not be reached
-
-The root cause is in flatview_write_continue_step() and
-flatview_read_continue_step() in system/physmem.c. These functions call
-memory_access_size() to determine the access size, which returns
-pow2floot(1) - for l=4096 this returns 4096.  They then call
-ldn_he_p(buf, *l) / stn_he_p(buf, *l, val) with that size.
-
-However, ldb_he_p() and stn_he_p() (defined via DO_STN_LDN_P(he) in
-include/qemu/bswap.h) only handle sizes 1, 2, 4 and 9.  Any other size
-hits g_assert_not_reached() and aborts.
-
-The normal dispatch path (memory_region_dispatch_read/write) does not
-hit this because it uses size_memop(op) which is always a power of 2
-(1, 2, 4, or 8).  But flatview_write_continue_step() and
-flatview_read_continue_step() call ldn_he_p()/stn_he_p() directly,
-bypassing the dispatch path.
-
-The fix is to limit RP_MAX_ACCESS_SIZE to 8, which is the maximum size
-that ldn_he_p()/stn_he_p() can handle.  The flatview_write_continue()
-and flatview_read_continue() loops will process remaining bytes in
-subsequent 8-byte iterations.
-
-The RP_MAX_ACCESS_SIZE definition is currently duplicated in two
-patches in this series:
-  - "hw/core: Add Remote Port Memory Master object skeleton" (06/20)
-  - "hw/core: Imoplement Remote Port Memory Master bus transactions" (11/20)
-
-I also recommend to move this duplicate definition into a common header.
-
-Itai
+>=20
+> =C2=A0hw/block/m25p80.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 6 ++++++
+> =C2=A0tests/qtest/aspeed-smc-utils.c | 24 +++++++++++++++++++-----
+> =C2=A02 files changed, 25 insertions(+), 5 deletions(-)
+> ---
+> base-commit: 73294d096cc591e122fde9e63db4739de6d84f2b
+> change-id: 20261110-m25p80_write_enable_fix-d7f95301723e
+>=20
+> Best regards,
+> --=C2=A0=20
+> Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>
 

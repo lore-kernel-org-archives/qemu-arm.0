@@ -1,124 +1,66 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D38F606A31A
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 07:13:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD7A2606DB7C
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Nov 2026 08:06:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=jT+4lQ5W
+	dkim=pass (1024-bit key, unprotected) header.d=huawei.com header.i=@huawei.com header.a=rsa-sha256 header.s=dkim header.b=jgbtdDdR
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVOFL-0004Jh-3X; Mon, 23 Nov 2026 02:13:51 -0500
+	id 1xVP40-0006aI-9g; Mon, 23 Nov 2026 03:06:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xVOFI-0004IA-7b; Mon, 23 Nov 2026 02:13:48 -0500
-Received: from smtpout5.mo537.mail-out.ovh.net ([51.210.91.24])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1xVP3y-0006Zi-2E; Mon, 23 Nov 2026 03:06:10 -0500
+Received: from canpmsgout06.his.huawei.com ([113.46.200.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1xVOFC-000838-G6; Mon, 23 Nov 2026 02:13:44 -0500
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4jXxxQ24ktz403q;
- Mon, 23 Nov 2026 07:13:30 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alistair@alistair23.me>; Mon, 23 Nov 2026 07:13:30 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.147])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jXxxQ0y15z1xnp; Mon, 23 Nov 2026 07:13:30 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.2])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id E3C731B44372;
- Mon, 23 Nov 2026 07:13:27 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004c2ce8ae8-b942-47be-93f6-3c06bc4a629b,
- B6C8A908DA241A829C2EE32824EAF31EC75DFE0A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 159.26.105.2
-Message-ID: <39176a72-7756-477a-842b-e277ec07d321@kaod.org>
-Date: Mon, 23 Nov 2026 08:13:27 +0100
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1xVP3t-0004F3-RI; Mon, 23 Nov 2026 03:06:09 -0500
+dkim-signature: v=1; a=rsa-sha256; d=huawei.com; s=dkim;
+ c=relaxed/relaxed; q=dns/txt; h=From;
+ bh=c01I33I+83vMc753z973gwZ1aF8sMhxFCCFQwV1PCmw=;
+ b=jgbtdDdRGZR41Yim0FJYS/4BiK5SskAceHe7MLkIgw18WHjGgH01fIiYuaJJ0XsxejL/8+J9L
+ UcvTFRfoH3X5s3bign1OFq/8T0A03Vy8ksIC2cRt6Y1/ynJa2w8M2F7oaWmZ0FNgmpswLSWPkPl
+ dSEB5fFP0nXbkymWaNbHnmU=
+Received: from mail.maildlp.com (unknown [172.19.162.223])
+ by canpmsgout06.his.huawei.com (SkyGuard) with ESMTPS id 4jXz5J2tntzRhRC;
+ Mon, 23 Nov 2026 16:05:24 +0800 (CST)
+Received: from kwepemk200008.china.huawei.com (unknown [7.202.194.74])
+ by mail.maildlp.com (Postfix) with ESMTPS id D39CD40575;
+ Mon, 23 Nov 2026 16:05:41 +0800 (CST)
+Received: from [10.67.110.68] (10.67.110.68) by kwepemk200008.china.huawei.com
+ (7.202.194.74) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Mon, 23 Nov
+ 2026 16:05:41 +0800
+Message-ID: <ce20db62-82ea-45bd-b758-94c9e9a35c8c@huawei.com>
+Date: Mon, 23 Nov 2026 16:05:40 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] m25p80: Clear write_enable after page program and
- flash erase operation
-To: Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
-References: <20261110-m25p80_write_enable_fix-v1-0-3a2abc0072b0@oss.tenstorrent.com>
- <20261110-m25p80_write_enable_fix-v1-2-3a2abc0072b0@oss.tenstorrent.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20261110-m25p80_write_enable_fix-v1-2-3a2abc0072b0@oss.tenstorrent.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 16688651370230230061
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFL1YKstmikY/X0MbgcgAFyYbipXDYws8jjC7gM5NrccUKXT4PzO09mVxwTSlDmo0Ms+mfViiLde4Pjhu3EyiIbIyL+QPGsCjW5Pmu1eS0Ua36GioMShMQLi2whT8d+vj4hJTZY9Hnuw3qdKJ5WwLr/e1svXEIPCHtqQCiaiNRtlYwz45NvCkICzW/cSZUP+6WE0/iwKsTVNsSCa+29bnD68I7aE5j5gUIfizJ0ZBUkmsLa3NS5JxUc6IWBJe0Op9bJ0qYz+KBcB0eLBo1CQuFIjV547H4DCCWoc9LB65C0whWme7PF3lvbFRJr4JXuQKs2D8WPpT+/FadidY1HSK5QWPfPO1F3JIpJyK5cqhG6bvsLGcwVJtF3wqDahcysTBDZ68154Sx9iPknbd0ZslJdAiVJ+llKDi+fWfqAx679AJuvIGO0rg7o/JE75qSPZnG+T3Ap3MBzgvsI1aYUj7cBFG4ucNwk0ltaL3RIsHMAUbruWvvOZXhyBWMhnTuwH2q+fhV8GKL6hRZuVX4gdYahtQmdsxE+9tPDhT2YzRkCPxK+4dxm9tCdYP6I+UVb+dCshdQebVNG8XKeSa8l6D575wJ6o4IHPZidryLHYrLvQ3BoOJqgGjIzD3EGLObeq7uSMe80ZOCOT9IUNiXpSu+pm1GMsx/cJshoaz7r0rmGcw
-DKIM-Signature: a=rsa-sha256; bh=XLipqwcUZygTRa9Tf1DQDiVbFLYGHS/bUTy2BF7+SX0=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1795418010; v=1;
- b=jT+4lQ5WaZA6fXwI6/3EeZG8YjnDRLxGYv3kxwq9me0531kg8y1IkvqkMEQjjTkwJZiUgDxm
- lqAik3liqZW1pQkZECxVlgmZyp1Zk4a21iawjCuopKWOH1kt4fZew0WT/o4YZljRaoCLt482A+N
- YwFz3WpjA2e7y3/OgcRKXSa34WRuVFQWTrtMAT0Snb2d7SQ1E+FujjUMFSgJzni9JjKYUY056JY
- dc2nIbOVbkwDmLUX7NpKiTKJFibhqDhroG7t9c7XmL8YX8Lr9Ak63WwZWUB9SVI1vSE5J55FTjl
- bqOFuegIwvKzxNDO0FWQJ908i2phaC6KfTtrmQrLOOe6w==
-Received-SPF: pass client-ip=51.210.91.24; envelope-from=clg@kaod.org;
- helo=smtpout5.mo537.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Subject: Re: [PATCH 05/37] hw/arm/mpam: Add MPAM MSC register map
+To: Jonathan Cameron <jic23@kernel.org>, Jinjie Ruan <2118537295@qq.com>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <eblake@redhat.com>,
+ <imammedo@redhat.com>, <michael.roth@amd.com>, <mst@redhat.com>,
+ <pbonzini@redhat.com>, <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>
+References: <20261016094733.1898485-1-2118537295@qq.com>
+ <tencent_25A9B619D0E3909582B4CF096744805B6107@qq.com>
+ <20261103003352.42e05890@jic23-hlaptop>
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+In-Reply-To: <20261103003352.42e05890@jic23-hlaptop>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: kwepems100002.china.huawei.com (7.221.188.206) To
+ kwepemk200008.china.huawei.com (7.202.194.74)
+Received-SPF: pass client-ip=113.46.200.221;
+ envelope-from=ruanjinjie@huawei.com; helo=canpmsgout06.his.huawei.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,67 +73,227 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-22.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/10/26 19:11, Anirudh Srinivasan wrote:
-> NOR flash drivers in EDK2[1] and its forks[2] poll for write enable
-> (WEL) to be deasserted at the end of a SPI operation to indicate that
-> the operation has been completed. The m25p80 spec[3] indicates that real
-> hardware would desassert WEL at the end of page program and erase
-> operations.
+
+
+在 2026/11/3 8:33, Jonathan Cameron 写道:
+> On Fri, 16 Oct 2026 17:46:59 +0800
+> Jinjie Ruan <2118537295@qq.com> wrote:
 > 
-> The m25p80 model does not deassert WEL at the end of these operations.
-> Update the model to do so to match hardware behaviour.
+>> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>>
+>> Add the MMIO register map of an MPAM 1.1 Memory System Component
+>> (IHI 0099 sections 4-6) as registerfields definitions:
+>> - The feature IDRs (MPAMF_IDR, IIDR/AIDR, CPOR/CCAP/MBW/PRI/PARTID_NRW,
+>>   MSMON family)
+>> - The error registers (ERR_MSI block, ECR, ESR)
+>> - The configuration registers (PART_SEL, CMAX/CMIN/CASSOC,
+>>   MBW_MIN/MAX/PBM/PROP, PRI, INTPARTID, CPBM/MBW_PBM arrays) and their
+>>   write masks
+>> - The portion-width constants of this model.
+>>
+>> Based on an RFC series by Jonathan Cameron.
 > 
-> [1] https://github.com/tianocore/edk2/blob/3c890c11dfdb5908dcbc84f977dddc6c6d43789f/MdeModulePkg/Bus/Spi/SpiNorFlashJedecSfdp/SpiNorFlash.c#L987
-> [2] https://github.com/spacemit-com/edk2-platforms/blob/0b8b7182d8a20a771b97a487d0e6f4ab89fb3492/Silicon/Spacemit/Drivers/Spi/SpiNorFlashDxe/SpiNorFlashDxe.c#L532
-> [3] https://www.alldatasheet.com/datasheet-pdf/download/22807/STMICROELECTRONICS/M25P80.html
+> Maybe a link tag to that old piece of garbage - might be more useful
+> than referring to it like this.
+
+Yes, you are right! A link will be more clear.
+
 > 
-> Signed-off-by: Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>
-
-
-If this change is to be merged in QEMU 11.2, could you please provide
-a Fixes: tag ?
-
-Thanks,
-
-C.
-
-
-> ---
->   hw/block/m25p80.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+> A few typos in here that should be tidied up. I clearly
+> didn't check this closely enough at the time. Nothing major
+> but need tidying up.
 > 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 545e0b5728..cedfec67a2 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -650,6 +650,8 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
->       }
->       memset(s->storage + offset, 0xff, len);
->       flash_sync_area(s, offset, len);
-> +
-> +    s->write_enable = false;
->   }
->   
->   static inline void flash_sync_dirty(Flash *s, int64_t newpage)
-> @@ -1599,6 +1601,10 @@ static int m25p80_cs(SSIPeripheral *ss, bool select)
->           if (s->state == STATE_COLLECTING_VAR_LEN_DATA) {
->               complete_collecting_data(s);
->           }
-> +        /* Deassert WEL at the end of a non-AAI page program */
-> +        if (s->state == STATE_PAGE_PROGRAM && !s->aai_enable) {
-> +            s->write_enable = false;
-> +        }
->           s->len = 0;
->           s->pos = 0;
->           s->state = STATE_IDLE;
+> Also, an LLM pointed out that some of the write masks are more
+> complex that this implies as depend on other register values.
+> Maybe add comments where that is true as enforcement will be
+> needed in the writing code - what we have here just acts as
+> some sort of worst case masking.  I guess you could define
+> some macros to create the masks here.
+> 
+> Thanks,
+> 
+> Jonathan
+> 
+>>
+>> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+> 
+>> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+>> index bcc068d..42ca75b 100644
+>> --- a/hw/arm/meson.build
+>> +++ b/hw/arm/meson.build
+>> @@ -106,6 +106,7 @@ arm_common_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
+>>  arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
+>>  arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
+>>  arm_common_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
+>> +arm_common_ss.add(when: 'CONFIG_MPAM', if_true: files('mpam.c'))
+>>  arm_common_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+>>  arm_common_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
+>>  arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
+>> diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
+>> new file mode 100644
+>> index 0000000..772a120
+>> --- /dev/null
+>> +++ b/hw/arm/mpam.c
+>> @@ -0,0 +1,223 @@
+>> +/*
+>> + * ARM MPAM emulation
+>> + *
+>> + * Copyright (c) 2023 Huawei
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#include "qemu/osdep.h"
+>> +#include "qapi/error.h"
+>> +#include "qemu/log.h"
+>> +#include "hw/core/irq.h"
+>> +#include "hw/core/qdev-properties.h"
+>> +#include "hw/core/registerfields.h"
+>> +#include "hw/core/sysbus.h"
+>> +#include "qom/object.h"
+>> +#include "hw/arm/mpam.h"
+>> +
+>> +REG64(MPAMF_IDR, 0)
+>> +    FIELD(MPAMF_IDR, PART_ID_MAX, 0, 16)
+> 
+> Maybe call it PARTID_MAX given spec naming.
+
+Yes, the spec naming is PARTID_MAX.
+
+> 
+>> +    FIELD(MPAMF_IDR, PMG_MAX, 16, 8)
+>> +    FIELD(MPAMF_IDR, HAS_CCAP_PART, 24, 1)
+>> +    FIELD(MPAMF_IDR, HAS_CPOR_PART, 25, 1)
+>> +    FIELD(MPAMF_IDR, HAS_MBW_PART, 26, 1)
+>> +    FIELD(MPAMF_IDR, HAS_PRI_PART, 27, 1)
+>> +    FIELD(MPAMF_IDR, EXT, 28, 1)
+>> +    FIELD(MPAMF_IDR, HAS_IMPL_IDR, 29, 1)
+>> +    FIELD(MPAMF_IDR, HAS_MSMON, 30, 1)
+>> +    FIELD(MPAMF_IDR, HAS_PARTID_NRW, 31, 1)
+>> +    FIELD(MPAMF_IDR, HAS_RIS, 32, 1)
+>> +    FIELD(MPAMF_IDR, NO_IMPL_PART, 36, 1)
+>> +    FIELD(MPAMF_IDR, NO_IMPL_MSMON, 37, 1)
+>> +    FIELD(MPAMF_IDR, HAS_EXTD_ESR, 38, 1)
+>> +    FIELD(MPAMF_IDR, HAS_ESR, 39, 1)
+>> +    FIELD(MPAMF_IDR, HAS_ERR_MS, 40, 1)
+>> +    FIELD(MPAMF_IDR, SP4, 41, 1)
+>> +    FIELD(MPAMF_IDR, HAS_ENDIS, 42, 1)
+>> +    FIELD(MPAMF_IDR, HAS_NFU, 43, 1)
+>> +    FIELD(MPAMF_IDR, RIS_MAX, 56, 4)
+> 
+> 
+> 
+>> +
+>> +REG32(MPAMF_MSMON_IDR, 0x080)
+> 
+> An LLM pointed out I was really inconsistent in numbers of
+> digits.  0x0080
+
+Yes, it is 0x0080 in the spec.
+
+> Ah the heady days of copying typing specs.
+> 
+>> +    FIELD(MPAMF_MSMON_IDR, MSMON_CSU, 16, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, MSMON_MBWU, 17, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, HAS_OFLOW_SR, 28, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, HAS_OFLW_MS, 29, 1)
+> _MSI
+
+Right, will fix them.
+
+> 
+>> +    FIELD(MPAMF_MSMON_IDR, NO_OFLW_INTR, 30, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, HAS_LOCAL_CAPT_EVNT, 31, 1)
+> ...
+> 
+>> +REG32(MPAMF_MPAMCFG_WINWD, 0x0220)
+>> +    FIELD(MPAMF_MPAMCFG_WINWD, US_FRAC, 0, 8)
+>> +    FIELD(MPAMF_MPAMCFG_WINWD, US_INT, 8, 16)
+>> +#define MPAMF_MPAMCFG_WINWD_WRITE_MASK ( \
+>> +    R_MPAMF_MPAMCFG_WINWD_US_FRAC | \
+>> +    R_MPAMF_MPAMCFG_WINWD_US_INT)
+> 
+> Those need _MASK suffix.
+> 
+>> +
+>> +REG32(MPAMF_MPAMCFG_EN, 0x0300)
+>> +    FIELD(MPAMF_MPAMCFG_EN, PARTID, 0, 16)
+>> +#define MPAMF_MPAMCFG_EN_WRITE_MASK ( \
+>> +    R_MPAMF_MPAMCFG_EN_PARTID_MASK)
+>> +
+>> +REG32(MPAMF_MPAMCFG_DIS, 0x0310) /* WHat is this for? */
+>> +    FIELD(MPAMF_MPAMCFG_DIS, PARTID, 0, 16)
+>> +    FIELD(MPAMF_MPAMCFG_DIS, NFU, 31, 1)
+>> +#define MPAMF_MPAMCFG_DIS_WRITE_MASK ( \
+>> +    R_MPAMF_MPAMCFG_DIS_PARTID_MASK | \
+>> +    R_MPAMF_MPAMCFG_DIS_NFU)
+> 
+> Needs a _MASK suffic.
+
+OK
+
+> 
+>> +
+>> +REG32(MPAMF_MPAMCFG_EN_FLAGS, 0x320)
+> 
+> Lots of 3 digit addresses scattered through here that
+> should all be 4 digits.
+
+Will fix them all.
+
+> 
+>> +
+>> +#define TYPE_MPAM_MSC "mpam-msc"
+>> +/*
+>> + * Max number of portions this model exposes for the cache-portion (CPOR)
+>> + * bitmap and the memory-bandwidth-portion (MBW_PBM) bitmap.  IHI 0099
+>> + * dimensions CPBM_WD/BWPBM_WD by these widths (see MPAMF_CPOR/MBW_IDR).
+>> + */
+>> +#define MPAM_MBW_PART 4
+>> +#define MPAM_CACHE_PART 32
+>> +/* MPAMF_IIDR.IMPLEMENTER: ARM JEP106 code for Huawei (0x736). */
+>> +#define MPAM_IIDR_IMPLEMENTER 0x736
+>> diff --git a/include/hw/arm/mpam.h b/include/hw/arm/mpam.h
+>> new file mode 100644
+>> index 0000000..e7557a9
+>> --- /dev/null
+>> +++ b/include/hw/arm/mpam.h
+>> @@ -0,0 +1,20 @@
+>> +/*
+>> + * QEMU MPAM emulation
+> Come to think of it, why have QEMU in a QEMU header.
+> 
+> MPAM emulation.
+
+OK.
+
+> 
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#ifndef _MPAM_H_
+>> +#define _MPAM_H_
+>> +
+>> +#include "qom/object.h"
+>> +
+>> +#define TYPE_MPAM_MSC_MEM "mpam-msc-mem"
+>> +#define TYPE_MPAM_MSC_CACHE "mpam-msc-cache"
+>> +
+>> +/*
+>> + * MMIO window of one MSC: IHI 0099 places the register block in a 16 KiB
+>> + * region (0x4000).  The virt board reserves a 1 MiB slot for up to 256 MSCs.
+>> + */
+>> +#define MPAM_SIZE 0x4000
+>> +
+>> +#endif /* _MPAM_H_ */
 > 
 
 

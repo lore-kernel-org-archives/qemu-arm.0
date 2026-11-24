@@ -1,59 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EBDF5606A321
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 05:57:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0AEF1606A321
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 05:57:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=Jrb8JJfi
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=d3aQJ2d7
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVjVF-00041c-0o; Tue, 24 Nov 2026 00:55:41 -0500
+	id 1xVjVP-00045L-FV; Tue, 24 Nov 2026 00:55:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xVjUx-0003v0-O5; Tue, 24 Nov 2026 00:55:27 -0500
-Received: from mail-japaneastazon11023108.outbound.protection.outlook.com
- ([52.101.127.108] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ id 1xVjVM-00044p-8D; Tue, 24 Nov 2026 00:55:48 -0500
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xVjUv-0002KK-Aj; Tue, 24 Nov 2026 00:55:23 -0500
+ id 1xVjVK-0003F1-Il; Tue, 24 Nov 2026 00:55:47 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fLAhgimWHtuDuTCgm86lI/sEj+7qrYBWSVrhJJQxFmTPwpewiCQy7f6Gv4ZWTnzNM7MYgo3+OWFrivFwCCKOD4u/XhICk6J8J/KEpe07kZoxqpJaMQ5sHUCBr1brqGlu//QPSnqjMzdo8N2RCGsKjxwGirubVlLasMrMj5Ad/8/LiIXaKF8plkkAsY/uX51Wb4KNA0zxcRuHWA/p3UZc6GMedivi1NywP8/4Zp1D2xrriRCqf/YLdFFRTe4UKQAAmIXssp4ubznXFyMQhKWvknzQ4T9NAwOAZSxFwbiupBP7NX1blJHhI+hJmQylkR2+PU/Qojt9lw/6Sbv2irCE/Q==
+ b=sssWP/+mbKUtHl8H4vmElbZmPhFKHfHX6M9JYzkkdhiOGLnrDYKZV0FJxuj8eq8jpI89Yw4T+gnIXa8E13m0glY+jQnic8gOX0IlHM5q/C+1u7GbQsz4w+f4fkvRWn8WudimTBVvvQ4mDxlHovgiSz42FMJeppGNIEtkAE5A0Jz9x4Ogfgv9emjB6fs8JXwsoX2xjWWaxwgHT8El7GXJgpyX/yvj5uSH40PdY+zkWT6Mez8C49urCW2S1Oz6BOtYVO5q4n0hasUDwYyRwiPmUNR/MZfx/UvYltcfElwHozrSrcRhbdJpCJlrq0u/HXfR+bd9qJT5NRbN8rg751z8hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hYE+i5aujLwD82orOO+yoiusVxGmvcDVQw+XtQMQWw4=;
- b=AdEmvRYBzyciSp9ZlZboSKzifz3hMtWyWR4B20W4f6Mov3hxdz9jOw96UDlEf4WwpoCVtgz3nUhbw8MOPssBbxttdw9BaPmV8HxooCCfSO1pR5FywiVzMagYeP9BwQ11fb+2LHVVQ7ZCqLE1niFQVvog2wBek1e9Ov6W+XX7XVyn7ObmJ4xot3xSATSeMd7FXhGrigvKit4yuYnZLjmHQIJzW3ipQFtdrSUp4Km2wEy1O/JcjW9pZjW15Y2ryqJ0UfsTCawblj09EjzSJcs1yo6mEqnkCriHIoGb2dyAeOFeVPw2kCBpMonGtO1ma0o9sw4r0T6WrEfjvzhyPqoOcQ==
+ bh=GgfFswja/aUGLrLQ/Fp8Mw53b5cJU17OnF2fcbtAhjw=;
+ b=f1tz5cFQXNBTslu1oJSWjmhoBiFV9k/WAqyRbGhqF7FPGVLuI/NdaB9tdTxmtX4CddlcI0D2Cbazva23Y8wEs23CEIgI/Nt6Zg+QnkipW3OtHb0oyKoJbZgQV76mNONmsIxVvQNo5fH8t5CtQG7YKQQAsmaDXsj6FTYWPjiI5vQU+q2EULs/W0v+Mx+H/xvXRNIdxDevV9/DkOCEInzU0w7tN2CiFNV1k8uq2dlF4JG7USWh8nVkbNNg5mA8JQP2Qznifsg/Jf/opwYtm50HDw451Td669IIxzzx7WI10+5faxG5XazbQYIvo+SUnzTmaS19wR4Fu6ZbkYPY/Oecew==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hYE+i5aujLwD82orOO+yoiusVxGmvcDVQw+XtQMQWw4=;
- b=Jrb8JJfi4wUxc4580W9g60vI/8GiKTq94L3K+9We8kYnkV44U9MlzUerJ0E84DaI1181Rogn7G7Gc99lBuOKGHwNcnBB8WapF0YSc1Qu0R/1LZmujC0VvUDs3T+scpb8qZrVUaWXyXu9fgvbGcq5OV51vsy3v+LeZ/Wr58E3R44CSZqWMGbxneKrdb1L+TcpXOx40S94QqT/vVxW5U+ZCoNWwhwUj1dzSwbBFOXvL1Bb7bXwBVCSBjv9pWm3RCwF387bGePmxDn30awiFaf1UFdClN3VtuODUrZ0RUsWH8KVp+eWgUoO/9gmgNP8puqDheWhAjW93mB10431s5rw1Q==
+ bh=GgfFswja/aUGLrLQ/Fp8Mw53b5cJU17OnF2fcbtAhjw=;
+ b=d3aQJ2d79L9D588TFJvxMznV8sWDcoz/jaVE07eCw721yyQVMsiYqy5rGxBDlpFNh7WNCy0sNmDnbne1ptkHkNLfb9PGGKee5iUPZVvGvaGX9s/WtVwjJEjEOSdsBeOwiuMiARgQ8TBKmfi8jT7ZpbQTTlq6Z1tDb2Thecu2RvY0Fgawe52PESj+J35El1mWgiXHRiZtosNtYR2kQpwUlz2c6XTjCDYJdj84lz3W06wf+lqFC243jwTutXHZV4lVaMWPSXquqET5bNDuKKrIg94LfBSxxtapHUGPYZ9qNFSy+cB4T7vFzAhnNVjEol6ZuXJDTMkzZqn5FDkTWF/mIg==
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by TY8PR06MB9293.apcprd06.prod.outlook.com with HTTP via P2P;
- Tue, 24 Nov 2026 05:51:56 +0000
+ by TYZPR06MB6497.apcprd06.prod.outlook.com with HTTP via P2P;
+ Tue, 24 Nov 2026 05:51:52 +0000
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0662.001; Tue, 24 Nov 2026
- 05:51:56 +0000
+ 05:51:52 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Kane Chen <kane_chen@aspeedtech.com>, Pierrick
  Bouvier <pierrick.bouvier@oss.qualcomm.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v7 05/11] hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
-Thread-Topic: [PATCH v7 05/11] hw/arm/ast27x0: Add DRAM alias for TSP SDRAM
- remap
-Thread-Index: AQHde9fpCVPv2Z7R4k+THYueohbAEQ==
-Date: Tue, 24 Nov 2026 05:51:56 +0000
-Message-ID: <20261124055150.1328856-6-jamin_lin@aspeedtech.com>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v7 01/11] hw/arm/aspeed_ast1700: Correct AST2700 SCU to SCUIO
+Thread-Topic: [PATCH v7 01/11] hw/arm/aspeed_ast1700: Correct AST2700 SCU to
+ SCUIO
+Thread-Index: AQHde9fn0gbI6lxI3kCad50UaUS7RQ==
+Date: Tue, 24 Nov 2026 05:51:52 +0000
+Message-ID: <20261124055150.1328856-2-jamin_lin@aspeedtech.com>
 References: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -62,52 +61,52 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TY8PR06MB9293:EE_
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TYZPR06MB6497:EE_
 x-ms-publictraffictype: Email
-client-request-id: 4f59b436-b0ed-46be-8289-02db3935375f
-request-id: 82c83a6d-83e6-4ada-1ec3-08df49ef0c6c
-x-ms-office365-filtering-correlation-id: 82c83a6d-83e6-4ada-1ec3-08df49ef0c6c
+client-request-id: 15124880-f5e3-4900-8503-1c63c1cd938c
+request-id: 8bbcaa39-fadf-4b27-1f4b-08df49ef09f2
+x-ms-office365-filtering-correlation-id: 8bbcaa39-fadf-4b27-1f4b-08df49ef09f2
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|1800799024|366016|376014|22082099003|18002099003|6133799003|261009223027099003|260925021911599003|56012099006|261021121427099003|261026121527099003|261022075727099003|260925021311599003|261102123227099003|38070700021|260925022911599003|10067099003;
-x-microsoft-antispam-message-info: kH4BLXKWznOLe8wu0sIkR0bFxRTsutwjOB/FclPyoQCDmy6NbpMG9anhJ4FVVwcNXpOJB3GXxI4SuUx1/XXnX5DWTuwPnbVJRxYwxcZAlw9kN9mEpVkmQSjqQtaldLjejTspslAeP2chVg7Rwyg7Bcj52El18vfjeEpppykvQZgXQczVfvSy48e2gEuDfXbrE7ZtmtSHSjG8FBKriflBbq2Q9TNVs3l0fxWjx693bUlD5iCirvQ5h3DpO1onlAZMuIEpffkzP4pmlHAnLMZpOpZFHsHSsgh+aEK6NND/8Um2XeKi/hQpp7CiryivRf3gU862MwbORXOjqVtfoCBmJN5AL9IeP1ei4mWteM5Yd+kH71foUH5cqq9JQABPQwYcxMLp/fu8CivkAt+LW+fNtutz7kRc/u8jYac/81ZUeEca7+K2OhH1yOsMppqmM+Xd6WiENtNTpEB2E6XMkMPqvxqzaN7kvqgZBkeGukU0SjZ15WFbu7lnUAI2AsJIoC195DWPtarFAEYxUV3ysP4ab8XZXCMHkstGVsDOz9pcNDyhBDQtdY5aeJKPzWV5dEGOaCumzLtwP6i2J1HMM2uooZBWZxwlvARjpDR8h7opmLoYOAVPf5gF0bY0BVoGYhXrKhwV5P7zQC23IBsmD6Az34zVbMc3iOivoS5bSueMUNA8thybkz0vDBzJL4eQQz4q3BwZRDxQ0NVRZlMOGPWupA+I+jQPMYsXUyW2vLdzAIA=
+ ARA:13230040|23010399003|1800799024|376014|366016|261021121427099003|261021123027099003|261102123227099003|38070700021|56012099006|10067099003|18002099003|22082099003|261009221727099003|261009223027099003|261009221227099003|261009220027099003|261009223327099003;
+x-microsoft-antispam-message-info: IdIA4hH88rLuUSNMJi1gSsQO+uisNaSASKF3uYw28b4e6JBABf2gONtd8kvlivZOVnDoa0ej9ZmQdRZYZ3zl0WTZQ6ow5y8VNEb/sDLjMTKGtVxOYqKhnGqpltininglSSXRCG9p8xWf/fUAY9AtCjBLJITeYOKlx3HaGsBr/+nLYIxaD9gQ89d4ylW7LLcaByESknTODa81crJ5+mPWeU2p/KgfJt4CPEDKs5q0LxqIZwlQhfnuPrU58JaboK1Mn43+V8CGJrPhJ2ll5IKsbdl1u2odL5Xm1xUtZ7sc6yyLIQndEZXaew2H5DWbrcBmvWdHZPq36iv6jTiAVc0HXoGmxO0d6DZHhVAQJLTabYElouexBHpZWp2wXran5x2vzNwC6LEVwbNofapj8Vj84mpTnVYvRQmiDyJA5qcGF50R4SEKW1WXUGRsOotLLnrvFNy/ru//WMx6NZ8JfI0TE5nI7b974gqfeG3/f4UOd+eYAs0iz1rdbWHR5yluzydDjY8S0kHM0957j2deTUefCyqeg6VnIPwEQmpEi9XynY6Mdm0brf5DlwJCjw3sqcC8lHoe1LjNzy+6DipzVRDOhPFU1UmxubT7JP742bGIEIB0lGZQwMfpNZyWO89VN0Mx+Eko7Fher0ZKBqlU2sl9h1yYh/vXUtIma1Ix/WP5RC+VN89Yu+Ovncyuj+RQ8lJCaSolcTAwOalNayc8GkjESFThglhpzSEMPbaqVQtxPZA=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(1800799024)(366016)(376014)(22082099003)(18002099003)(6133799003)(261009223027099003)(260925021911599003)(56012099006)(261021121427099003)(261026121527099003)(261022075727099003)(260925021311599003)(261102123227099003)(38070700021)(260925022911599003)(10067099003);
+ SFS:(13230040)(23010399003)(1800799024)(376014)(366016)(261021121427099003)(261021123027099003)(261102123227099003)(38070700021)(56012099006)(10067099003)(18002099003)(22082099003)(261009221727099003)(261009223027099003)(261009221227099003)(261009220027099003)(261009223327099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?CkNWZBii+PMEq8Ujzz7kh6xGf1D9/fdFFIJf5S6QPn0oKjaFzUvJGfKZxU?=
- =?iso-8859-1?Q?qI7z31CJqjxz8+zhITNr77FAhPCspHlfKrCxsQ0ZrDzF2Sc5qk87yhu+kF?=
- =?iso-8859-1?Q?x8X9ypOcJRT58/CUIWAEzF9tew7SQ98TNft+PqHrDaxaKcPx8iBvN6mpjz?=
- =?iso-8859-1?Q?I9TodkXKc1eE5WDlHuaGZL38HIGdV3mIM7DMBPiiLyFgaF3bsQ+Kp+9CQb?=
- =?iso-8859-1?Q?9AogDOBeXMyGQFuqtSPBT4B2WyGj+m6QJNYyWHC3BdfvPjN7ftNR34G6HU?=
- =?iso-8859-1?Q?drSkPB9tNUGS0HnbYrUsfNDpYuGLEOYLIk+MeaM7AVHeiCMQFsDJu7QhfC?=
- =?iso-8859-1?Q?0MlUzM0VNlELOYwUDWQBCkXjzWNO+UERThtAjdSEZ3wbpG7ZRdjTXS6tSm?=
- =?iso-8859-1?Q?ylWL5lxPk0z01SVhx6sPrZSDOrJYmcn7LMCDLOkc6znCl0lgMLGRYrDJbe?=
- =?iso-8859-1?Q?foqWZQ14IjY/CrH0hAWteICMqYShfuQ1OVwlPUKH13v0vaAqHfBbx++uiE?=
- =?iso-8859-1?Q?SxhLDPW+Ksrlp3bjtdSSZD9lwK/veDUczFS7Z2p+v/zySFHyBvDE0C17a2?=
- =?iso-8859-1?Q?v41spoeJJoWK1ZN+iWq1Os4oAbX/4+O6lfVWkDtKYy/i4QltA8XImIR0KD?=
- =?iso-8859-1?Q?Yx6o+8wOfvwplNR45ZEkNVRsd15yfCC75hIFClU/9lQitSvaCena1lPoYV?=
- =?iso-8859-1?Q?fyJ372LmSSmDjTTg+upoMCTkcY4etApdvt+57JhWIY5BdpQt3EObZ5ahub?=
- =?iso-8859-1?Q?+/owcxyVAXE3ojFjHtex/LzQzX+ckVzWdHboPKkd7PiRQou7AUAyPiNPX9?=
- =?iso-8859-1?Q?3aJjEKKS4rmKTkmZIyqmBjI6Ukizd0t7PGSg+Rk2uqR87Qlgv6DBSWeosA?=
- =?iso-8859-1?Q?JZtIZfBgygip0/G1bYEZsZe152d7UzlribIPEQSyzu0zErEd5glAvyIRDC?=
- =?iso-8859-1?Q?ZDnkmnOU5AEhc6q8HEFGwQYcnmPa0wcwZ5Zw1KPAkC0PAECLjJT/6KmBhN?=
- =?iso-8859-1?Q?gNSd4/2gMX/Cd14BwmNPasfPdqilb8xfT8ROOGv1vbIpZQePn4jIA0Lo6I?=
- =?iso-8859-1?Q?hywZUVx8cNy1xU3tdK3pKlioD7nZmWkowvPpw1HBASuzPoK7wvEtjKAFj0?=
- =?iso-8859-1?Q?8BX7PUZGfzVRuiZXexwfsB/+gbhNzqxZpaIHikH1CGClEP2CK+QZ6Z2vKK?=
- =?iso-8859-1?Q?kC0RvCJu6WDJWdWG9E9oYXUPWXLADJ/N3Q3gQc7vTEExaKBJRrysS3CBM+?=
- =?iso-8859-1?Q?3W+/N9rYfgV5aJ/Zy6YOGKlh9zpVQf5kKzTOPM/JHuKFd5Z5S80wWoXk31?=
- =?iso-8859-1?Q?C0YrriflQ/DY+Lm/YMgEhIh57nAEyiCICTvAN2zyGEqeY2qVk3/SIzrJUa?=
- =?iso-8859-1?Q?0DRhYsOaHfMw3cGbylZSqowWMTwtlfrIlzlX1YH0ab+3eToSjw0AOrWubU?=
- =?iso-8859-1?Q?Ve6bZR3XgGAUk+98yFqARVjoleWsjVQSar4Oaf7ocg8l5tXsxf1bQBNN8I?=
- =?iso-8859-1?Q?mi8sVYW0dItGAuyXATTGLmcXcOeShTzxKnc8YDb8VKTikwwWKvvYcNaH9l?=
- =?iso-8859-1?Q?dFweGnCcs8STW2U42uiqHkORWjWUt9r1JZ3+FOqXkq/Tg8eV0mmeiQy62F?=
- =?iso-8859-1?Q?GbJSc+9omeYHrntDSPf0Z91V/tpmQuzzoDcShBKWnMlmzE3amvEdtz84uo?=
- =?iso-8859-1?Q?RqBjipjafdb2/Dop6R0QWgiiFgInggzmlOsSwscL+RqgP7S7TlSpuywCcZ?=
- =?iso-8859-1?Q?0/orxWqkn7s3WZbRwf9azxEbTBm8sZftiKr2dRgfgVqyeA5eUkpbfSAu40?=
- =?iso-8859-1?Q?+37EjnbkGQ=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?sss9/OoG/zzS2iXcJa4qK9tCO0SC5pBPL1IS1j7QCoKtHj74o64AOIsrFy?=
+ =?iso-8859-1?Q?4qcKfE1B5tZ97YrVVFxWJgSFfrRm20kxZxw6cBXTyxjp7zj+CHfkezYaKu?=
+ =?iso-8859-1?Q?fOPHS4Bl3tHoPfojBdNviUEZuahKzlV9yn/VR6kHXh+AAHF39V/8kmLdWc?=
+ =?iso-8859-1?Q?FQxO6EH+QBeV5bO7QQiX1ZC/N9idlhB6VCD9W/lk6OsjbKvHkSOMsK9UTL?=
+ =?iso-8859-1?Q?evylfrVtsxNQEkYvnLAcmLMl3UjQ27nzLZp+ggCHxdn+gMDF85xa3OI1/V?=
+ =?iso-8859-1?Q?rFrTmOQRPaf0e5FULlRq12RK89KW6U9MvVHXI22hdtKLI+4S7NsPQYcPUK?=
+ =?iso-8859-1?Q?YmuT5nds/B7/JdN3RPdDqSCkxSzNkS+etjt4SOb+w2MHQEp1sfFrUgkW6J?=
+ =?iso-8859-1?Q?wT3ET7081kMBH2KlZ5xc7BLBDtQ5R7ArdPpq0DhNa+gWwr8Sq76LuhrpDJ?=
+ =?iso-8859-1?Q?JA/a+YprQ5n07l0pmU0z9sG9zQJ6PTG+dOpApEaYbcxIgr5J2JM1pNuHya?=
+ =?iso-8859-1?Q?wdJz+bD2N3eIX9eGW09cxYputrORIDlJ/Hv221SMS2IKC3CtFegz68IZyk?=
+ =?iso-8859-1?Q?C892pETPJ8vt1KNq46i/Zx8To0qzV6dbNFjo7TckcSknahf516ylQmHy36?=
+ =?iso-8859-1?Q?uKK/skWGERSOnE/OTLj0MAbt5zc/5jzyyYpVQRD5lAeoZI73h+7oWOKcz4?=
+ =?iso-8859-1?Q?B4VHl+8AV9nw+Vq5ekuWfMD+NFkQsKCjdYdjJ39AvBR4D7YGgpoecql2xa?=
+ =?iso-8859-1?Q?K4VJPI/CzCkzROy81EgfVE8sNwIEoV4a5fU7wRZhSaowxefEh3++em4vs1?=
+ =?iso-8859-1?Q?0Un8YuXTvaKQSzY25RGNhh7XRnMrcsAe2j9IjeOISOHInhTuc6b1Xdo8+b?=
+ =?iso-8859-1?Q?VBqwdG9no9nUw9eqqjcSSK/O+y+x2BwJNXyfd6cqQH8r97fIGnkxHYxBcu?=
+ =?iso-8859-1?Q?p3kbDLO80ZLDSxTKMPpE26xmV0VlLU6QgcodZnSVpSIZU+2wAsNe4O+UIm?=
+ =?iso-8859-1?Q?PwHt9LBUU706dM9dtdvCn/JxEho3i62FAOEwWyWdjc7LD+hUTvh4HQ5T49?=
+ =?iso-8859-1?Q?fpKBEkdQswd8isJXaFZk+ZMitbI7Mp9qh0glyoCMyNNjmS9dJeG7db7JUz?=
+ =?iso-8859-1?Q?Gk6wIZiwqFYzrU9ssxMOdPK7idTPdTebHn+fjBQePW4KADgjSL71mvJT+K?=
+ =?iso-8859-1?Q?tV/cI97vpDZ8rkWhMZSBip/XAf3dXisVKp9FauUAjjlfYlSsfAZw+IvlJl?=
+ =?iso-8859-1?Q?nDrVqK7xj7kHwVIkC1kcKc/je+xO2CQtjKbLhJxbolcylbKxBSJvQGsn28?=
+ =?iso-8859-1?Q?srzcubunqemPhCz6N21eyCLZVtNNU9cTi+s5heJMbCJ7RSaU37sxNQqDxX?=
+ =?iso-8859-1?Q?buS5Y/7s1lf705rL+5AlMWWdUzrFQ5/mjQsV6yeyGayz7p5Z/1QRK8Ax+g?=
+ =?iso-8859-1?Q?o99cAXEgnmlGG68FFWB349/tcdxADMZp9Yeid6myhzr0ow1kuZhFgVDQZK?=
+ =?iso-8859-1?Q?tRy/616WfA593B73E7A1aIyqh1gp/mxhtbSNS2nz5aKrn56Z4kA4Kva7kM?=
+ =?iso-8859-1?Q?Bo20+0tZWXce3MC2XVLL3C3maKSspa8ETqqFM4fhnMWGsRRNmrHzUCuvXi?=
+ =?iso-8859-1?Q?bnXNfXYPOBBjMtzw8R0++8WaJSvWHUtWdoRIQum+cXv1fpGbvwKD4Cn2u5?=
+ =?iso-8859-1?Q?/WWyl291oF3D0aq8jObAuz6S6FfgBbiqmy7DJwoj4QbbxT4ykI+uiNze/6?=
+ =?iso-8859-1?Q?I69PVD3+cRIgQKjw0e+5q+FrrxRZDd28YBvWjJBKpx0r2xpiKiG/TDgU3H?=
+ =?iso-8859-1?Q?BOZVM0sr9A=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
@@ -115,22 +114,21 @@ MIME-Version: 1.0
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 82c83a6d-83e6-4ada-1ec3-08df49ef0c6c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2026 05:51:56.3961 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8bbcaa39-fadf-4b27-1f4b-08df49ef09f2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2026 05:51:52.1703 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4v301ra11MwwKunOwTb1q7S8Kc5eFwMmiGYaY5pXeN0+pqf33gr5cstG2qzTvOqEdflIcEdeA/gEH/qcOFaCUQd6D20F3alV16+0FFc6sH8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY8PR06MB9293
-Received-SPF: pass client-ip=52.101.127.108;
+X-MS-Exchange-CrossTenant-userprincipalname: wpCZciNK2x3koAVjMmq9G4CYgQ+nGXB6HnpzjrBdSn6dLqzZrrBAh1NSwRTq2neGuMt7OgopIdaqpCPbVRFNnBUt7gP7Wzgkuaepm1IUipM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB6497
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+ helo=SEYPR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -150,152 +148,112 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This commit adds a MemoryRegion alias to support PSP access to=0A=
-TSP SDRAM through shared memory remapping.=0A=
+Per the AST1700 datasheet, its SCU register layout matches the AST2700=0A=
+SCUIO (I/O-die SCU), not the AST2700 SCU. Correct the I/O expander to=0A=
+instantiate TYPE_ASPEED_2700_SCUIO instead of TYPE_ASPEED_2700_SCU, and=0A=
+rename the "scu" field/property to "scuio" throughout=0A=
+aspeed_ast1700.c/h so the type change is clear at every call site.=0A=
 =0A=
-The TSP coprocessor exposes one DRAM alias:=0A=
-- remap maps PSP DRAM at 0x42E000000 to TSP SDRAM offset 0x0=0A=
-=0A=
-These mappings follow the default SCU register configuration used by=0A=
-the ASPEED SDK firmware, which defines the memory window mapping=0A=
-between PSP and TSP.=0A=
-=0A=
-The alias MemoryRegion belongs to the TSP coprocessor state itself=0A=
-(Aspeed27x0CoprocessorState), mirroring the SSP remap; the SCU only=0A=
-holds a pointer to it (tsp_remap) so its control registers can=0A=
-reposition/resize the alias at runtime. The pointer is exposed as the=0A=
-SCU's "tsp-remap" link property and is wired up by the board once the=0A=
-TSP is realized, so the TSP does not need to reach into the shared SCU.=0A=
-=0A=
-The TSP cpu_index is only known once the TSP's armv7m core is=0A=
-realized, so the board also sets it in the SCU at that point. Its=0A=
-"not wired up" default of -1 is set in the SCU's instance_init().=0A=
-=0A=
+Fixes: b500ab00552da06566a505a397255f4c031670aa ("hw/arm/aspeed: Attach SCU=
+ device to AST1700 model")=0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Tested-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
+Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>=0A=
 ---=0A=
- include/hw/misc/aspeed_scu.h |  2 ++=0A=
- hw/arm/aspeed_ast27x0-fc.c   |  7 +++++++=0A=
- hw/arm/aspeed_ast27x0-tsp.c  | 17 +++++++++++++++++=0A=
- hw/misc/aspeed_scu.c         |  4 ++++=0A=
- 4 files changed, 30 insertions(+)=0A=
+ include/hw/arm/aspeed_ast1700.h |  2 +-=0A=
+ hw/arm/aspeed_ast1700.c         | 22 +++++++++++-----------=0A=
+ 2 files changed, 12 insertions(+), 12 deletions(-)=0A=
 =0A=
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h=0A=
-index d4a5fa43d0..4ad3bb2308 100644=0A=
---- a/include/hw/misc/aspeed_scu.h=0A=
-+++ b/include/hw/misc/aspeed_scu.h=0A=
-@@ -46,7 +46,9 @@ struct Aspeed2700SCUState {=0A=
-     AspeedSCUState parent_obj;=0A=
- =0A=
-     MemoryRegion *ssp_remap[2];=0A=
-+    MemoryRegion *tsp_remap;=0A=
-     int ssp_cpuid;=0A=
-+    int tsp_cpuid;=0A=
- };=0A=
- =0A=
- #define AST2400_A1_SILICON_REV   0x02010303U=0A=
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c=0A=
-index 2ad1ad39f3..0da9608933 100644=0A=
---- a/hw/arm/aspeed_ast27x0-fc.c=0A=
-+++ b/hw/arm/aspeed_ast27x0-fc.c=0A=
-@@ -196,6 +196,8 @@ static bool ast2700fc_tsp_init(Ast2700FCState *s, Aspee=
-dSoCState *psp,=0A=
-                             &error_abort);=0A=
-     object_property_set_link(OBJECT(&s->tsp), "sram",=0A=
-                              OBJECT(&psp->sram), &error_abort);=0A=
-+    object_property_set_link(OBJECT(&s->tsp), "dram",=0A=
-+                             OBJECT(psp->dram_mr), &error_abort);=0A=
-     object_property_set_link(OBJECT(&s->tsp), "scu",=0A=
-                              OBJECT(&s->ca35.scu), &error_abort);=0A=
-     object_property_set_link(OBJECT(&s->tsp), "scuio",=0A=
-@@ -206,6 +208,11 @@ static bool ast2700fc_tsp_init(Ast2700FCState *s, Aspe=
-edSoCState *psp,=0A=
-         return false;=0A=
-     }=0A=
- =0A=
-+    /* The remap alias and cpu_index only exist once the TSP is realized. =
-*/=0A=
-+    object_property_set_link(OBJECT(&s->ca35.scu), "tsp-remap",=0A=
-+                             OBJECT(&s->tsp.dram_remap[0]), &error_abort);=
+diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast170=
+0.h=0A=
+index d30483c88a..878d9d5420 100644=0A=
+--- a/include/hw/arm/aspeed_ast1700.h=0A=
++++ b/include/hw/arm/aspeed_ast1700.h=0A=
+@@ -41,7 +41,7 @@ struct AspeedAST1700SoCState {=0A=
+     MemoryRegion sram;=0A=
+     AspeedSMCState spi;=0A=
+     AspeedADCState adc;=0A=
+-    Aspeed2700SCUState scu;=0A=
++    AspeedSCUState scuio;=0A=
+     AspeedGPIOState gpio;=0A=
+     AspeedSGPIOState sgpiom[AST1700_SGPIO_NUM];=0A=
+     AspeedI2CState i2c;=0A=
+diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c=0A=
+index e5d5bf4056..d92d9ee46c 100644=0A=
+--- a/hw/arm/aspeed_ast1700.c=0A=
++++ b/hw/arm/aspeed_ast1700.c=0A=
+@@ -21,7 +21,7 @@ enum {=0A=
+     ASPEED_AST1700_DEV_PWM,=0A=
+     ASPEED_AST1700_DEV_SRAM,=0A=
+     ASPEED_AST1700_DEV_ADC,=0A=
+-    ASPEED_AST1700_DEV_SCU,=0A=
++    ASPEED_AST1700_DEV_SCUIO,=0A=
+     ASPEED_AST1700_DEV_GPIO,=0A=
+     ASPEED_AST1700_DEV_SGPIOM0,=0A=
+     ASPEED_AST1700_DEV_SGPIOM1,=0A=
+@@ -38,7 +38,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] =3D {=0A=
+     [ASPEED_AST1700_DEV_PWM]       =3D  0x000C0000,=0A=
+     [ASPEED_AST1700_DEV_SRAM]      =3D  0x00BC0000,=0A=
+     [ASPEED_AST1700_DEV_ADC]       =3D  0x00C00000,=0A=
+-    [ASPEED_AST1700_DEV_SCU]       =3D  0x00C02000,=0A=
++    [ASPEED_AST1700_DEV_SCUIO]     =3D  0x00C02000,=0A=
+     [ASPEED_AST1700_DEV_GPIO]      =3D  0x00C0B000,=0A=
+     [ASPEED_AST1700_DEV_SGPIOM0]   =3D  0x00C0C000,=0A=
+     [ASPEED_AST1700_DEV_SGPIOM1]   =3D  0x00C0D000,=0A=
+@@ -112,15 +112,15 @@ static void aspeed_ast1700_realize(DeviceState *dev, =
+Error **errp)=0A=
+                         aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_ADC],=
 =0A=
-+    s->ca35.scu.tsp_cpuid =3D CPU(s->tsp.armv7m.cpu)->cpu_index;=0A=
-+=0A=
-     return true;=0A=
- }=0A=
+                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->adc), 0)=
+);=0A=
  =0A=
-diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c=0A=
-index 7348834458..a67823fc47 100644=0A=
---- a/hw/arm/aspeed_ast27x0-tsp.c=0A=
-+++ b/hw/arm/aspeed_ast27x0-tsp.c=0A=
-@@ -181,6 +181,12 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
+-    /* SCU */=0A=
+-    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",=0A=
++    /* SCUIO */=0A=
++    qdev_prop_set_uint32(DEVICE(&s->scuio), "silicon-rev",=0A=
+                          s->silicon_rev);=0A=
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {=0A=
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scuio), errp)) {=0A=
          return;=0A=
      }=0A=
- =0A=
-+    if (!a->dram) {=0A=
-+        error_setg(errp, TYPE_ASPEED27X0TSP_COPROCESSOR=0A=
-+                   ": 'dram' link is not set");=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-     /* AST27X0 TSP Core */=0A=
-     armv7m =3D DEVICE(&a->armv7m);=0A=
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
-@@ -229,6 +235,15 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState =
-*dev_soc, Error **errp)=0A=
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCUIO],=
+     memory_region_add_subregion(&s->iomem,=0A=
+-                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SCU],=
 =0A=
-                                 &a->scuio_alias);=0A=
+-                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->scu), 0)=
+);=0A=
++                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SCUIO]=
+,=0A=
++                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->scuio), =
+0));=0A=
  =0A=
-+    /*=0A=
-+     * DRAM remap alias used by PSP to access TSP SDRAM:=0A=
-+     * - remap maps PSP DRAM at 0x42E000000 (size: 32MB) to TSP SDRAM=0A=
-+     *   offset 0x0=0A=
-+     */=0A=
-+    memory_region_init_alias(&a->dram_remap[0], OBJECT(a), "tsp.dram.remap=
-",=0A=
-+                             a->dram, 0x2e000000, 32 * MiB);=0A=
-+    memory_region_add_subregion(&s->sdram, 0, &a->dram_remap[0]);=0A=
-+=0A=
-     /* INTC */=0A=
-     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {=0A=
-         return;=0A=
-@@ -298,6 +313,8 @@ static const Property aspeed_27x0_coprocessor_propertie=
-s[] =3D {=0A=
-                      TYPE_ASPEED_SCU, AspeedSCUState *),=0A=
-     DEFINE_PROP_LINK("fmc", Aspeed27x0CoprocessorState, fmc, TYPE_ASPEED_S=
-MC,=0A=
-                      AspeedSMCState *),=0A=
-+    DEFINE_PROP_LINK("dram", Aspeed27x0CoprocessorState, dram,=0A=
-+                     TYPE_MEMORY_REGION, MemoryRegion *),=0A=
- };=0A=
+     /* GPIO */=0A=
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {=0A=
+@@ -175,7 +175,7 @@ static void aspeed_ast1700_realize(DeviceState *dev, Er=
+ror **errp)=0A=
+         hwaddr wdt_offset =3D aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_=
+WDT] +=0A=
+                             i * awc->iosize;=0A=
  =0A=
- static void aspeed_soc_ast27x0tsp_class_init(ObjectClass *klass,=0A=
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c=0A=
-index 1568b74964..f31545a126 100644=0A=
---- a/hw/misc/aspeed_scu.c=0A=
-+++ b/hw/misc/aspeed_scu.c=0A=
-@@ -952,6 +952,7 @@ static void aspeed_2700_scu_instance_init(Object *obj)=
+-        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu=
+),=0A=
++        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu=
+io),=0A=
+                                  errp);=0A=
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {=0A=
+             return;=0A=
+@@ -206,9 +206,9 @@ static void aspeed_ast1700_instance_init(Object *obj)=
 =0A=
-     Aspeed2700SCUState *a =3D ASPEED_2700_SCU(obj);=0A=
+     object_initialize_child(obj, "ioexp-adc", &s->adc,=0A=
+                             "aspeed.adc-ast2700");=0A=
  =0A=
-     a->ssp_cpuid =3D -1;=0A=
-+    a->tsp_cpuid =3D -1;=0A=
+-    /* SCU */=0A=
+-    object_initialize_child(obj, "ioexp-scu", &s->scu,=0A=
+-                            TYPE_ASPEED_2700_SCU);=0A=
++    /* SCUIO */=0A=
++    object_initialize_child(obj, "ioexp-scu", &s->scuio,=0A=
++                            TYPE_ASPEED_2700_SCUIO);=0A=
  =0A=
-     object_property_add_link(obj, "ssp-remap0", TYPE_MEMORY_REGION,=0A=
-                              (Object **)&a->ssp_remap[0],=0A=
-@@ -959,6 +960,9 @@ static void aspeed_2700_scu_instance_init(Object *obj)=
-=0A=
-     object_property_add_link(obj, "ssp-remap1", TYPE_MEMORY_REGION,=0A=
-                              (Object **)&a->ssp_remap[1],=0A=
-                              object_property_allow_set_link, 0);=0A=
-+    object_property_add_link(obj, "tsp-remap", TYPE_MEMORY_REGION,=0A=
-+                             (Object **)&a->tsp_remap,=0A=
-+                             object_property_allow_set_link, 0);=0A=
- }=0A=
- =0A=
- static void aspeed_2700_scu_class_init(ObjectClass *klass, const void *dat=
-a)=0A=
+     /* GPIO */=0A=
+     object_initialize_child(obj, "ioexp-gpio", &s->gpio,=0A=
 -- =0A=
 2.53.0=0A=
 

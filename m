@@ -1,124 +1,67 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74A0D606A326
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 10:36:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2AA1C606A32C
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 10:58:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=dgcCxzbG
+	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=VBu8uN0g
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVnsG-0001j3-9h; Tue, 24 Nov 2026 05:35:44 -0500
+	id 1xVoDZ-0007uR-Fv; Tue, 24 Nov 2026 05:57:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xVnsE-0001iC-2N
- for qemu-arm@nongnu.org; Tue, 24 Nov 2026 05:35:42 -0500
-Received: from smtpout8.mo539.mail-out.ovh.net ([51.210.91.47])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xVns9-0003Di-Nc
- for qemu-arm@nongnu.org; Tue, 24 Nov 2026 05:35:40 -0500
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4jYfN56HKqz4Dxs;
- Tue, 24 Nov 2026 10:35:33 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue, 24 Nov 2026 10:35:33 +0000 (UTC)
-Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.50])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4jYfN41rQXz1ySW; Tue, 24 Nov 2026 10:35:32 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
- (Authenticated sender: clg@kaod.org)
- by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 534BF192434D; Tue, 24 Nov 2026 10:35:31 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-112S006fd1a8db2-ac81-471c-994e-842e0cd17772,
- 8999D460E3350DC70288BFBB7677D99C31D99569) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <2dd9fcd2-8fec-4b38-8900-24566d5ff3f7@kaod.org>
-Date: Tue, 24 Nov 2026 11:35:30 +0100
+ (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xVoDW-0007u8-9V; Tue, 24 Nov 2026 05:57:42 -0500
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xVoDS-0005oh-8m; Tue, 24 Nov 2026 05:57:40 -0500
+Received: by linux.microsoft.com (Postfix, from userid 1236)
+ id 8363A20B7166; Tue, 24 Nov 2026 02:57:30 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 8363A20B7166
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1795517850;
+ bh=qkVDBtNxl0BBWoJBMy5M+Y17aBBLJjTX/ygpHn5wwt8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=VBu8uN0gI2pLY/EXmP4vUGoKpRkod5MEY7CzwiSgY1L+XF1XpDqjJ0NW04mzPTM9Z
+ Qt/WHVz/S//mmLJsSlhI8b3pQEEBR5CEPAEHwsb7IpV24zF5hQ3qphpJD+p4aoPJzo
+ fg8hjJYcGGBgiYb5E3j31FfBs8CJ7y5iPKOQagwU=
+Date: Tue, 24 Nov 2026 02:57:30 -0800
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
+To: Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>
+Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: Re: [PATCH v6 04/14] meson, target/arm/mshv: Enable arm64 build &
+ add initial MSHV support
+Message-ID: <awVtmkD8BiNlNJ2k@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
+References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+ <20261001-mshv_accel_arm64_supp-v6-4-aefe5e76a0e3@linux.microsoft.com>
+ <avcJBaVOdK05xwwW@linux.microsoft.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 00/11] Add SSP/TSP power control and DRAM remap support
- for AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 7526640879377820787
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEBPVgqrFemnpC8Revg92emahnBkFOgLtot8y3vVtEA/+R+WRwIPWPkIlB7S2wC9TB4RITTxZD5nFWCszet8I8iqGevlhYDnWJxJMNg4Qm/gwBhaM1RK9ZiID+XkQbpduu4gd73FCg+rTbPo+wpwroS9eStnj3RmT4XigGVkC5rGgpEtIuzTbMSs0RnTbwAjK/XtAknVu1DfcQ6SfLZGucu82wwivBT0OXJq9cTMm8nY9Pl1cHo5e3f1cXnhM419G6yJfkHpOCws68u+kDkrTvSw20DDqvj5CA3yUx6hgKD+knHXWrpdVrfjDEZ2MTxApS8wutA7sDq4SJH1oCB0IkHY3FKvy8cIoQ18Ml/FWsqzc/xJUdbvvirhfphVbvlNaj+TpGYY69HHgbNdse5p/eylm7A5lBpXgmTbNKE+Fh45Y7YX1nePoSfxFOGBMWKDWtj9Q3YnRADmuAK6clCyU7DUSAIqOWQ6Qo7rSnJozKN3QtOZUH35balehsM10Qz7PYMNx9qGiZdWfuLiMLliW/tlwNu9Y/bR9zA7sTYTwobTLPIfM2ZcCaxnU/PIBzT8IbIae0/Y6gYTfEXFCianyzdabd4Du5VZKeysN50wiG+SeF3SxGHFxdH2S6rigsPLgyPQhx2GbknN9n+L8d1CCoiKRMKG+GONHR7SveMrZINwg
-DKIM-Signature: a=rsa-sha256; bh=BV4BLuEJ2Ojuun4FlEPEEBMAX7vVBg05v654ZmGzoLg=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1795516534; v=1;
- b=dgcCxzbGFmUZRIB1ndAw+fNLcbVy8k9e4v1NDo/Butn9TsPoByigFFbiXHZy1+T9hLp2NAGj
- 4TwDtET/qeX7C4iyJ+0D2b/vIvbg+aZOImo77+Z6OsqUf/fiXRfwGm/quOkr2e2EFATjz4BDhd1
- Pf/VYTrMxLn39JL5DyFdOm6II+5724IU6Ed33PkgUuufqGAbaFX1nPB4hQHXZ2v9WjrmK64gbSr
- XW4uZD6IBHyuLVmOu2tCfK6K+rsy93qJ0+c+xkdEWOoyEEwK8OV32RZc+7h16zbMvArOF6cgKXG
- B8WslgEmed7GotZCsz5ABiziXLy5GMWbiFwhQVrh613pg==
-Received-SPF: pass client-ip=51.210.91.47; envelope-from=clg@kaod.org;
- helo=smtpout8.mo539.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <avcJBaVOdK05xwwW@linux.microsoft.com>
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,114 +73,250 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/24/26 06:51, Jamin Lin wrote:
-> This series improves AST2700 platform support by aligning SSP/TSP
-> power and reset behavior with hardware, and enabling DRAM remapping
-> required for proper firmware boot flow.
+On Fri, Nov 13, 2026 at 02:56:37PM +0200, Doru Blânzeanu wrote:
+> On Thu, Oct 01, 2026 at 10:52:49AM +0000, Aastha Rawat wrote:
+> > Enable the build of the MSHV accelerator for arm64 in the Meson build
+> > system. Introduce initial files and stub implementations to support MSHV
+> > for the ARM target.
+> > 
+> > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+> > ---
+> >  accel/mshv/mshv-all.c       | 10 ++++--
+> >  hw/i386/mshv/clock.c        |  2 +-
+> >  include/system/mshv.h       |  2 +-
+> >  meson.build                 |  8 ++---
+> >  target/arm/meson.build      |  1 +
+> >  target/arm/mshv/meson.build |  7 ++++
+> >  target/arm/mshv/mshv-all.c  | 81 +++++++++++++++++++++++++++++++++++++++++++++
+> >  7 files changed, 103 insertions(+), 8 deletions(-)
+> > 
+> > diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
+> > index efe19a3914..f3f1825b0b 100644
+> > --- a/accel/mshv/mshv-all.c
+> > +++ b/accel/mshv/mshv-all.c
+> > @@ -142,8 +142,10 @@ static int create_partition(int mshv_fd, int *vm_fd)
+> >  {
+> >      int ret;
+> >      uint64_t pt_flags, host_proc_features;
+> > -    union hv_partition_processor_xsave_features disabled_xsave_features;
+> >      union hv_partition_processor_features disabled_partition_features = {0};
+> > +#if defined(__x86_64__)
+> > +    union hv_partition_processor_xsave_features disabled_xsave_features;
+> > +#endif
+> >  
+> >      struct mshv_create_partition_v2 args = {0};
+> >  
+> > @@ -155,7 +157,8 @@ static int create_partition(int mshv_fd, int *vm_fd)
+> >                 (1ULL << MSHV_PT_BIT_GPA_SUPER_PAGES) |
+> >                 (1ULL << MSHV_PT_BIT_CPU_AND_XSAVE_FEATURES);
+> >  
+> > -    /* enable all */
+> > +#if defined(__x86_64__)
+> > +    /* enable all xsave features (0 = enabled) */
+> >      disabled_xsave_features.as_uint64 = 0;
+> >      /*
+> >       * AMX TILE XSAVE state (XTILE_DATA) is 8KB, which exceeds the
+> > @@ -165,6 +168,7 @@ static int create_partition(int mshv_fd, int *vm_fd)
+> >      disabled_xsave_features.amx_bf16_support = 1;
+> >      disabled_xsave_features.amx_int8_support = 1;
+> >      disabled_xsave_features.amx_fp16_support = 1;
+> > +#endif
+> >  
+> >      /*
+> >       * query host for supported processor features and disable unsupported
+> > @@ -196,7 +200,9 @@ static int create_partition(int mshv_fd, int *vm_fd)
+> >      /* populate args structure */
+> >      args.pt_flags = pt_flags;
+> >      args.pt_isolation = MSHV_PT_ISOLATION_NONE;
+> > +#if defined(__x86_64__)
+> >      args.pt_disabled_xsave = disabled_xsave_features.as_uint64;
+> > +#endif
+> >      args.pt_num_cpu_fbanks = MSHV_NUM_CPU_FEATURES_BANKS;
+> >  
+> >      ret = ioctl(mshv_fd, MSHV_CREATE_PARTITION, &args);
+> > diff --git a/hw/i386/mshv/clock.c b/hw/i386/mshv/clock.c
+> > index 02c586503a..b7db382752 100644
+> > --- a/hw/i386/mshv/clock.c
+> > +++ b/hw/i386/mshv/clock.c
+> > @@ -182,7 +182,7 @@ static const VMStateDescription vmstate_mshv_clock = {
+> >      },
+> >  };
+> >  
+> > -void mshv_clock_init(void)
+> > +void mshv_arch_clock_init(void)
+> >  {
+> >      vmstate_register(NULL, 0, &vmstate_mshv_clock, &mshv_clock);
+> >      qemu_add_vm_change_state_handler(mshv_clock_vm_state_change, &mshv_clock);
+> > diff --git a/include/system/mshv.h b/include/system/mshv.h
+> > index f98ddff9b5..114f065db5 100644
+> > --- a/include/system/mshv.h
+> > +++ b/include/system/mshv.h
+> > @@ -58,7 +58,7 @@ DECLARE_INSTANCE_CHECKER(MshvState, MSHV_STATE,
+> >  extern MshvState *mshv_state;
+> >  
 > 
-> This series depends on:
-> [v4,0/9] Refactor AST2700 SCU preparation for coprocessors
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg1209540.html
-> 
-> v1:
->    1. The changes move DRAM/SDMC initialization earlier to support memory
-> aliasing, add DRAM aliases for SSP/TSP SDRAM remap, and implement
-> SSP/TSP reset, power-on, and remap controls via SCU registers.
->    2. With these updates, SSP and TSP can be booted via PSP and load their
-> binaries from DRAM. Functional tests and documentation are updated
-> accordingly.
-> 
-> v2:
->    Fix "make check" failure caused by both AST2700 and AST1700 realizing the same
->    TYPE_AST2700_SCU model.
->    
-> v3:
->   1. Drop "Move DRAM and SDMC initialization earlier to support memory aliasing"
->   2. Support SPI/FMC FIFO Mode
->   3. Add unimplemented devices
-> 
-> v4:
->   1. Introduce Aspeed2700SCU subclass and separate from generic SCU.
->   2. Add separate reset handler for AST2700 SCUIO
->   3. Add AST2700 SCUIO RNG control and data registers
->   4. Share single SCUIO instance across PSP, SSP, and TSP
->   5. Fix AST2700 FC hardware strap settings
-> 
-> v5:
->   1. To speed up the review process, move the following patches into a separate
->      patch series, as they are not directly related to the main topic of this series:
->   
->      [v4,01/21] hw/misc/aspeed_scu: Introduce Aspeed2700SCU subclass and separate from generic SCU
->      [v4,02/21] hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO
->      [v4,11/21] hw/arm/ast27x0: Share FMC controller with SSP and TSP
->      [v4,12/21] hw/arm/aspeed_ast27x0: Add unimplemented Privilege Controller MMIO regions for SSP/TSP (Merged)
->      [v4,13/21] hw/arm/aspeed_ast27x0: Add unimplemented OTP controller MMIO regions for SSP/TSP (Merged)
->      [v4,14/21] hw/block/m25p80: Implement volatile status register write enable for Winbond
->      [v4,15/21] hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for AST2700
->      [v4,16/21] hw/misc/aspeed_scu: Drop noisy unhandled read logs for AST2700 SCU/SCUIO (Merged)
->      [v4,17/21] hw/misc/aspeed_scu: Add AST2700 SCUIO RNG control and data registers (Merged)
->      [v4,18/21] hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP
->      [v4,19/21] hw/arm/aspeed_ast27x0-fc: Fix hardware strap settings (Merged)
->      
->    2. Add memory_region_transaction_begin() and memory_region_transaction_commit()
->       to protect the transaction.
-> 
-> v6:
->    1. Move the DRAM remap MemoryRegions from the SCU to the SSP/TSP
->       coprocessor state itself.
->    2. Set ssp_cpuid/tsp_cpuid directly once the SSP/TSP's armv7m core is
->       realized, instead of pre-guessing them from board code via a QOM
->       property.
->    3. Correct AST2700 SCU to SCUIO to AST1700
-> 
-> v7:
->    1. SSP/TSP no longer write into the SCU; the board wires the remap
->       aliases and cpu_index after realize.
->    2. Drop the redundant AST2700 SCU realize wrapper.
-> 
-> Jamin Lin (11):
->    hw/arm/aspeed_ast1700: Correct AST2700 SCU to SCUIO
->    hw/arm/ast27x0: Start SSP in powered-off state to match hardware
->      behavior
->    hw/arm/ast27x0: Start TSP in powered-off state to match hardware
->      behavior
->    hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap
->    hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
->    hw/misc/aspeed_scu: Implement SSP reset and power-on control via SCU
->      registers
->    hw/misc/aspeed_scu: Implement TSP reset and power-on control via SCU
->      registers
->    hw/misc/aspeed_scu: Add SCU support for SSP SDRAM remap
->    hw/misc/aspeed_scu: Add SCU support for TSP SDRAM remap
->    tests/functional/aarch64/test_aspeed_ast2700fc: Boot SSP/TSP via PSP
->      and load binaries from DRAM
->    docs: Add support vbootrom and update Manual boot for ast2700fc
-> 
->   docs/system/arm/aspeed.rst                    |  42 ++-
->   include/hw/arm/aspeed_ast1700.h               |   2 +-
->   include/hw/arm/aspeed_coprocessor.h           |   2 +
->   include/hw/misc/aspeed_scu.h                  |   5 +
->   hw/arm/aspeed_ast1700.c                       |  22 +-
->   hw/arm/aspeed_ast27x0-fc.c                    |  16 ++
->   hw/arm/aspeed_ast27x0-ssp.c                   |  31 +++
->   hw/arm/aspeed_ast27x0-tsp.c                   |  24 ++
->   hw/misc/aspeed_scu.c                          | 259 +++++++++++++++++-
->   .../aarch64/test_aspeed_ast2700fc.py          |  29 +-
->   10 files changed, 397 insertions(+), 35 deletions(-)
-> 
+> This renames the `mshv_clock_init`, but the place where it is called is not
+> changed in this commit, which leads to a compilation issue on the x86 arch.
 
-Reviewed-by: CÃ©dric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
+Right. There is a naming mismatch which leads to this, but I want to
+re-consider making this function arch neutral now because for ARM,
+architectural timer migration happens per-vcpu. I will wire it into ARM
+migration later if partition wide handling is needed. Having
+"mshv_arch_vm_state_init()" seems to be enough for now.
+ 
+> >  /* clock (partition reference time) */
+> > -void mshv_clock_init(void);
+> > +void mshv_arch_clock_init(void);
+> >  
+> >  /* interrupt */
+> >  int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
+> > diff --git a/meson.build b/meson.build
+> > index cae1591cd2..6a90a394a2 100644
+> > --- a/meson.build
+> > +++ b/meson.build
+> > @@ -304,7 +304,8 @@ if cpu == 'aarch64'
+> >    accelerator_targets += {
+> >      'CONFIG_HVF': ['aarch64-softmmu'],
+> >      'CONFIG_NITRO': ['aarch64-softmmu'],
+> > -    'CONFIG_WHPX': ['aarch64-softmmu']
+> > +    'CONFIG_WHPX': ['aarch64-softmmu'],
+> > +    'CONFIG_MSHV': ['aarch64-softmmu'],
+> >    }
+> >  elif cpu == 'x86_64'
+> >    accelerator_targets += {
+> > @@ -884,10 +885,9 @@ if get_option('kvm').allowed() and host_os == 'linux'
+> >  endif
+> >  
+> >  if get_option('mshv').allowed() and host_os == 'linux'
+> > -  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
+> > -    error('mshv accelerator requires x64_64 host')
+> > +  if host_machine.cpu() in [ 'x86_64', 'aarch64' ]
+> > +    accelerators += 'CONFIG_MSHV'
+> >    endif
+> > -  accelerators += 'CONFIG_MSHV'
+> >  endif
+> >  
+> >  if get_option('whpx').allowed() and host_os == 'windows'
+> > diff --git a/target/arm/meson.build b/target/arm/meson.build
+> > index 0369f96b4c..1ac2cef26b 100644
+> > --- a/target/arm/meson.build
+> > +++ b/target/arm/meson.build
+> > @@ -63,6 +63,7 @@ arm_common_system_ss.add(files(
+> >  
+> >  subdir('hvf')
+> >  subdir('whpx')
+> > +subdir('mshv')
+> >  
+> >  if 'CONFIG_TCG' in config_all_accel
+> >     subdir('tcg')
+> > diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
+> > new file mode 100644
+> > index 0000000000..169643691e
+> > --- /dev/null
+> > +++ b/target/arm/mshv/meson.build
+> > @@ -0,0 +1,7 @@
+> > +arm_mshv_ss = ss.source_set()
+> > +
+> > +arm_mshv_ss.add(files(
+> > +  'mshv-all.c',
+> > +))
+> > +
+> > +arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
+> > diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
+> > new file mode 100644
+> > index 0000000000..00c54f5d66
+> > --- /dev/null
+> > +++ b/target/arm/mshv/mshv-all.c
+> > @@ -0,0 +1,81 @@
+> > +/*
+> > + * QEMU MSHV support
+> > + *
+> > + * Copyright Microsoft, Corp. 2026
+> > + *
+> > + * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
+> > + *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
+> > + *
+> > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "hw/arm/virt.h"
+> > +#include "system/mshv.h"
+> > +#include "system/mshv_int.h"
+> > +
+> > +static int load_regs(CPUState *cpu)
+> > +{
+> > +    return 0;
+> > +}
+> > +
+> > +static int store_regs(const CPUState *cpu)
+> > +{
+> > +    return 0;
+> > +}
+> > +
+> > +int mshv_arch_load_vcpu_state(CPUState *cpu)
+> > +{
+> > +    return load_regs(cpu);
+> > +}
+> > +
+> > +int mshv_arch_store_vcpu_state(const CPUState *cpu)
+> > +{
+> > +    return store_regs(cpu);
+> > +}
+> > +
+> > +int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
+> > +{
+> > +    return 0;
+> > +}
+> > +
+> > +void mshv_arch_init_vcpu(CPUState *cpu)
+> > +{
+> > +
+> > +}
+> > +
+> > +void mshv_arch_destroy_vcpu(CPUState *cpu)
+> > +{
+> > +
+> > +}
+> > +
+> > +int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
+> > +{
+> > +    return 0;
+> > +}
+> > +
+> > +void mshv_arch_amend_proc_features(
+> > +    union hv_partition_synthetic_processor_features *features)
+> > +{
+> > +    /*
+> > +     * TLB-flush hypercalls are an x86 enlightenment. ARM guests use
+> > +     * broadcast TLBI instructions instead.
+> > +     */
+> > +    features->tb_flush_hypercalls = 0;
+> > +}
+> > +
+> > +void mshv_arch_disable_partition_proc_features(
+> > +    union hv_partition_processor_features *disabled_features)
+> > +{
+> > +    /* No processor features to disable on ARM */
+> > +}
+> > +
+> > +int mshv_arch_post_init_vm(int vm_fd)
+> > +{
+> > +    return 0;
+> > +}
+> > +
+> > +int mshv_arch_migration_init(MshvState *s)
+> > +{
+> > +    return 0;
+> > +}
+> > 
+> > -- 
+> > 2.45.4
 

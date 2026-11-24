@@ -1,141 +1,127 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54246606A31E
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 02:42:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 25D4A606A321
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 05:55:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=DhZGYz7N
+	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=BGk1iZys
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVgUY-00056Y-6a; Mon, 23 Nov 2026 21:42:46 -0500
+	id 1xVjUp-0003rg-BP; Tue, 24 Nov 2026 00:55:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xVgUM-000547-08; Mon, 23 Nov 2026 21:42:37 -0500
+ id 1xVjUm-0003qo-BM; Tue, 24 Nov 2026 00:55:12 -0500
 Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
  ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xVgUJ-0002Ms-Ba; Mon, 23 Nov 2026 21:42:33 -0500
+ id 1xVjUH-00010V-7g; Tue, 24 Nov 2026 00:55:12 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LI7RrA9fzU6LWecoIXg5surqorjHbBBt6OrJiT0DesXTgSbdFEvesnC7M4lF9k9zy6g2xFJsxMEGgAVf3HG0KHoP10XnpesZhdGbmUgC9FjdyieZkG+LxvkNOvaY/rZpWFQ2j58GCmDwl8PUXFWrDtdZIFtalXZmUnUFdspvG+AkElSiOf8Vvj1s2Tsz7p6+JvUTx0Qo+qNzJ7Y6ezRYevcr18YUMp0WAH8ws1WiGGOgqbPFoz3yNavgUxymqMPEliZggjXEJRFHC++BR8OqkJbgO/LrrkWuFh4ORtxM24q5Hno05OE64RKoYBzKo+z+qlubZHStVh/hjClrsAZQuw==
+ b=lKNbuPvJekhIIUsfpFkIkypIK5I0qjrTlMAOM/MpzX/XuyIYwrWo9AXcaQUHWTmFrobC9sXLgWtytxZ5AzaftkT6KKBZcIXZ9n5jrqcdh+AS0zurztoET3XkxV1UINBtBAwscekuPqS3k84YktG4WlPvZJRW+6TQp+X59UaWcE7LS+rM9oPLk7HQVzQu5rDDBn78hI/zsCRCfeLc1BjbXa2jcJ4gv8U+HJhU5816ZGtZqiV5alGdcj9JuzNYFpL9Z/k3pignwWCylmHJcKAPkr36+tFcD+0/s4Wcx/JvrQUuo7TrkOz3IgSCk5ZcJAzbKydYKeTbbNmpWXA5akkyCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VFYQowfl9rSP5QpPYO6BxWHEzhUyy0Wdiys8LGCH+Gc=;
- b=ku5HWBjmr1PqNKBNphNRe5VgvxkfAqKEmej2xJ0ITQ+YoDfkdHmIETGdx6p38AQ8k3ue8Q2wcbEGpSIYjX/w5nKmNbWjkjvzWmmBarm+Ev49zmTyLd14Q0Ysu0enlUdBa2s3kzpcKqxe0cTFgnoKGwKu/UiPVa1XG07zmBfno7ruasGuOx2o2RPyqvkg2oi4M2nOtYMXFkPXO9UF9DZGXlFGVPgVb3roRXSm1BrsEhFTLPJaUlXg18paUZxaY9GZtxtdm5lzlkALU+9+2lvXQEhFhM+8BkzSX6kF1Hvcf9lfogrAguVcQpxkqU08aPAuAYdy7hJDI3UiRHb1DyuWKA==
+ bh=avviC1efFBHVt2rS/qz8yVn+X+rZ5TaQYdFvSyiqI9o=;
+ b=KtG5E1mR65q3hm4O50QanENIOaKxhOl7HWdPwCvu2QdSvI2rFOupWdF1PQR7IYTA20rPwsIyHZWhoZM41sI8Ce0VSPZv4bMjB/o994z1CQVp2tJOCuIPTh7KJl5lhwsn681nIiBwWFf/Wp/rLcXIRopbAEqxblkXat9UU5GOF5iLf0BwVDo+vR/RfnW/a3tSXzFyADpCBgC95DY41BBjMMPiEnBSyzFmwwJczETEUnub8CG6aZVm1bLAqLOahScY3Mg99OD1ha77yW3EpXrjNH7m4eWLgItn3NXL9q4DEytxQpqx1QdK9oxf2osEj9vwF3jH1kHDvskNPBUGNrH5cQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VFYQowfl9rSP5QpPYO6BxWHEzhUyy0Wdiys8LGCH+Gc=;
- b=DhZGYz7NnqO/MKYhe1KJqDr+zTwqGQiI53iBglRehHRIJUMy0n604b+qIKzpmkf/VswX/mmVUu7zGHgD7TWiAhRVlbFBxUTnpT7bTeq1YXBIcF/BYyiD6TQ30cadcyv96BV/2rr4ezqEzkZpPJUUIDgX4ylJ60dORhmdI216ch+bYxsugwcJo4cgX3VqqhTI03zdxvZWLynYW8quOgsxQJjAhN+KPrsamFMjfy1/huOqXOpRzikwQEPfpnjnzPVvQbXAuMYKHJBqSQ67d/reZQ04JTceateRayeeFwKB4p8IOJyAqBEshmJYKBZYXhGAsAE42BHo7VjJ4C9PCpcaXg==
+ bh=avviC1efFBHVt2rS/qz8yVn+X+rZ5TaQYdFvSyiqI9o=;
+ b=BGk1iZys8DsXVosoboO8dqaw64JBMtHyRmoXnzikzjbkvaL2i82y920zw3kN7eVRCl2oEqtgspsYsULLuA3pFKRR3U8DDEvb96d75/ALI6ZCSf9pKcKE6ksqcVaCeGj/iocUm7d8DEl7TjUfEvSCjZgg0jBO21DcRVC7ESfw5iV4btn/DQnOq9BHxIdaiu5SAmQ4O0OtFwTllDJPpXtPAQsM00Nf/sWo7POAe46wI/hTgvkw80r1QA2LjQWIeS0MGETX/I/mUp2QHKI5L0KOmWwtR1cxJnOkC9Ggor4djcca+WI5NuO+16A8vToWLIZdPvGFUm6lT5SpN7BaIfHjBQ==
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by TYPPR06MB8243.apcprd06.prod.outlook.com with HTTP via P2P;
- Tue, 24 Nov 2026 02:42:24 +0000
+ by KUZPR06MB8060.apcprd06.prod.outlook.com with HTTP via P2P;
+ Tue, 24 Nov 2026 05:51:55 +0000
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0662.001; Tue, 24 Nov 2026
- 02:42:24 +0000
+ 05:51:55 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Pierrick
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Kane Chen <kane_chen@aspeedtech.com>, Pierrick
  Bouvier <pierrick.bouvier@oss.qualcomm.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>,
- =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@oss.qualcomm.com>
-Subject: RE: [PATCH v6 08/11] hw/misc/aspeed_scu: Add SCU support for SSP
- SDRAM remap
-Thread-Topic: [PATCH v6 08/11] hw/misc/aspeed_scu: Add SCU support for SSP
- SDRAM remap
-Thread-Index: AQHdd1itt+qdkoUWska2iuL4jZIRgrc8jABA
-Date: Tue, 24 Nov 2026 02:42:24 +0000
-Message-ID: <SEZPR06MB73626936F7201E3E34CEA3C9FC442@SEZPR06MB7362.apcprd06.prod.outlook.com>
-References: <20260723022300.4174471-1-jamin_lin@aspeedtech.com>
- <20260723022300.4174471-9-jamin_lin@aspeedtech.com>
- <d75745df-6d12-48c8-92cf-f208eedc75f3@kaod.org>
-In-Reply-To: <d75745df-6d12-48c8-92cf-f208eedc75f3@kaod.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH v7 04/11] hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap
+Thread-Topic: [PATCH v7 04/11] hw/arm/ast27x0: Add DRAM alias for SSP SDRAM
+ remap
+Thread-Index: AQHde9fpzrU/GsehrUaAdkQgtLPCXw==
+Date: Tue, 24 Nov 2026 05:51:55 +0000
+Message-ID: <20261124055150.1328856-5-jamin_lin@aspeedtech.com>
+References: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
+Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TYPPR06MB8243:EE_
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|KUZPR06MB8060:EE_
 x-ms-publictraffictype: Email
-client-request-id: e28abbb0-60eb-4743-a51c-299e453a865d
-request-id: 5f0055cd-0a4f-4b15-f468-08df49d4925b
-x-ms-office365-filtering-correlation-id: 5f0055cd-0a4f-4b15-f468-08df49d4925b
+client-request-id: 94da663f-33a4-4991-bd83-62ce4bf31f1c
+request-id: ca9e9e58-391d-41f1-832a-08df49ef0bc5
+x-ms-office365-filtering-correlation-id: ca9e9e58-391d-41f1-832a-08df49ef0bc5
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|376014|1800799024|366016|261026121527099003|261022075727099003|261021135927099003|261021121427099003|921020|38070700021|261102123227099003|4143699003|56012099006|10067099003|18002099003|261009221227099003|261009223327099003|261009223027099003|261009220027099003|261009221727099003|6133799003|22082099003;
-x-microsoft-antispam-message-info: 8zEwJPDIzy2PCmV1r+TWBA9i7dAje5fQ8RjzumOf0HpwEbo/vOI3xcZLjBspvAG1DQCg/z1N8TaOo/OM3MQhzo3uzq2MvGgn+N469Nf1thH2VUoCd8pt/QbcWpAbepMl5CXudx9MWvEYPyg5BCBW2Tq04SdOpmaqNtsEdwoNHmYy6N9McNKAwofM4yiT+Kp3D/A8XIkUTUQdSrE7SCUiV7V/xpnCW7C+FvEqOLtqk/N3iyrfgSIWfOGjxam9J7DhIEiXTmdqdZ7xp27/uqUr8f/wXFok6b8UvmHyN75YnRygxLNzg/PsEW9q8bjxuIH3fTptbeTWq/PGgGjllXrHozO/F4st0t0mu15RH8DG/E8jMWJVqfgAZ0a9k95tNA1TAmy1MhWzyuKm+lNhoaTaZS9MalDLFGjLZT6klw+qIyYF+E19TZeCLREM0f0cyWvuOFZNe5IN9LT6JFmrXHp4wOuEkUUUK/a7IZAM8BXfx3+ZxDm7Cr1EuSHmOfaHLdKPA7QMpOCrzPDz1eNHNtg5BmMd9O4g7MaiPwO0KFrayXovFYtJSTdKK8x+72ncsCuiG1SEchpuTKTcyuQTZJpaEMPB6h5WVqwul2CsJ6QLMRS0jhmWKFntUKMgSII+d4nsAhNQfWRr4q576QQQXHtXSTUwdAC2z4jYx898ei9EBJUK3BJEtNS2r3Nsi50rndpURgntpumhCaRWi+kSWh77Dfl+tizV3R1b5aNsjSm+8aRFELQfLqc1Ncm5i0v8+9DR
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(261026121527099003)(261022075727099003)(261021135927099003)(261021121427099003)(921020)(38070700021)(261102123227099003)(4143699003)(56012099006)(10067099003)(18002099003)(261009221227099003)(261009223327099003)(261009223027099003)(261009220027099003)(261009221727099003)(6133799003)(22082099003);
+ ARA:13230040|1800799024|23010399003|376014|366016|261102123227099003|38070700021|10067099003|261026121527099003|261022075727099003|261021123027099003|261021121427099003|56012099006|261009223027099003|22082099003|18002099003|6133799003;
+x-microsoft-antispam-message-info: tY5Gk3k7j+t3uWGzNmbsHFmJLeSfr/SBggjMRoFbJGV4HXzmmz29/NtvqBsoxtE7zSpQR2WARWSOWnI1nIZJytrFjl8s2EIm81cS1+HrZSpdaZXxRv615u4PFQPvYIM+KztsE8i5e0kBl2DfE7aD5V+P6B7o04myMWHvJtezdgHYohvUqsCSoTsTQQHGawecZTHCaLJxTNyis+zsv8ue/dqqMbrIhPqKLa1FFgij6CbV6kss+knDukY+DHN3Irha/JnoPhOe2b20ZMoXQsilI5cYm/D9lYXTYMCbfryme9umajVBeEluzYwwLI5A5IvRr6AOpUP03xJRLMn7Ai8KX6cj9tkP+8CYBzuENGpPzm/q1QIus0dlIp4M5h6EwmbURYgFxkMOMkBBqEuDZeoz4kNdxIqV8nHqAO4MuDwwwsDc1AySQmvJlkb+pS9QApHq3oLJxqPIFSFr1ul2Q8FTI4gAAQ8Z3mebioQ44UUJwKiHWjxiLc5HONCdW3ralIVBjHq26G6mCajfhZy1/V5qmhwQJozMpKpSYFK+atRuNHjBK0xGpVNt/DOFIayG+BXPwNogqklwXLLVdBdOAG+VvSdwEmkcS63+63dBspS2LTk5WTUNEHKllYodfqoIYw34sDpT3I/iCHFb86oo4MOC20K5RxCrMCdzffa6IcOlhj5utmXLdmvY+AeD/SnVl3ZrUtB7daXeMnefNyInLQ65X1RNvImi6b3zzmniysaEFeA=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(23010399003)(376014)(366016)(261102123227099003)(38070700021)(10067099003)(261026121527099003)(261022075727099003)(261021123027099003)(261021121427099003)(56012099006)(261009223027099003)(22082099003)(18002099003)(6133799003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?N1dxSHZQOVdwNzkvVVU3YUw5a0dOU2g4QjZNUzBzbXNqZ2JScHNoYUY5L3lV?=
- =?utf-8?B?YUVyOWIzR3YzeGFKcG1vYjBzV1JCWVI4Uld4RnA5L0xRQk5VQkx1b21ZZTdw?=
- =?utf-8?B?WFlpY3JRbEM3cm5WaFFZSU9mNWxkTlhvcmpXTVl5VFdiM2Q1aWgxM0t1dTJo?=
- =?utf-8?B?c1lXeVdRSTFmbUYyY09LTkNSRmFMbzhVUVlhVHUzL1JzSm1qY0VZRVhJSjFG?=
- =?utf-8?B?OUtJYmwwamxibEgza3ZTdEhSN0x2bk5USGg3Y09xbG8xQVo0VDdVa2MzKzFL?=
- =?utf-8?B?c29DNjVKTzNUQXFpT2FRUWMzUWpaNmc4YmhsNVRVa3hoYlVQY3g4RzNtUkFj?=
- =?utf-8?B?YUNiWGhnMkxUK24xdk9wVm83YUxKMjF3L01kdnNVTEd1MUw2NHRrS3N5MldM?=
- =?utf-8?B?VTdPd2dvMk9vaHlLK2hPRGRSWXo1enBZU2dwNEhPZVBBc1pjU2ZNOFRZSXo2?=
- =?utf-8?B?bXUzVWppYStSbWlVTk4xREZyT1dRL0VFNC9XR2dyZUZrMVFqVXB2VSsvR2hl?=
- =?utf-8?B?OENpZitiWlg3Z2JiekJjcVZNblFRcWFOZDYzbGFQcTBkbUZzTXg3dG9ocVZN?=
- =?utf-8?B?Mnk3RTJHM3d6V25UMzZCWjQzaHZrNXExdXFKdElUWThUcnBkSkVXc05NTitz?=
- =?utf-8?B?NUxrZDZYdTAyaTRTSnFXYWt4RWJCbjNhdXBhUFVrR2xacnlScWhJYWtDUkVh?=
- =?utf-8?B?UWs1MkpaZjZudmJjQmtaeU5TSk9tY3FFL0JRd1dWMldDT0htaG05RUFNVUI5?=
- =?utf-8?B?UEpOeW9uMWdaOVZvZ0RlMDUxR2IvQVh1Yk5ML3dvUGxYOWZPVHBXZmRQUDRK?=
- =?utf-8?B?OVRIMGRhRzNPOTdObEQ2c1B4QzJwRk9zSWtPUllZblBMYXVPd0NqRzJyRDZw?=
- =?utf-8?B?Si84NFhKWHhuZU9hWUVSWEVQanhxSDRFTEo3S3ZJMzZjdlBRZTBiTE9GdDE2?=
- =?utf-8?B?YjJvcGlwMGlJYm5oY2NkR0o2WStrVHk2OU9hSVh4ckJCY0x6YVBnU0tYUWtj?=
- =?utf-8?B?WW04aFl5a0E4VlJjdUVOcWJGL09DZk5iV1E5TTJuRjJGcnB3MVU0OEhhN2Vi?=
- =?utf-8?B?R2Q0Vm1uT05jajlxbWF2VXBHWDJHUVg1SDJtVTdHL3VZVGdnWDJRZFpkODhN?=
- =?utf-8?B?Wm52cGFOem1zaDR6b2VNUmVqWUpKZW5SSW9rRkp1ZWg4WUNyQ2J3aXF4aVpy?=
- =?utf-8?B?VmF5eFJhaE12ejR3RjZYUWNvK2VwU0M5RmV0c3M3em9ZV200d2JDamdzbXVH?=
- =?utf-8?B?TUl0UDZreDFmYWdQOW9TSlJIZGJLTGhzTWNORW5xeDJvS0FYQW5sclRpNWcy?=
- =?utf-8?B?QTBuVk9oVkZxeVkyMldLTWNrSXdId3UvM2UwVmYyeGx3YkZRb0JQZis3Rnhq?=
- =?utf-8?B?K0FqVkZOLzFMWUlqd3BvSzJwY0hVTUNXYVM0Q3JveFd1aXlvWGRLdVM2SENY?=
- =?utf-8?B?bS9nZk9WdmJ4dk1lUk9CMWx2STk2VHRxbk85dEtpeVpGQm1VOHRtMnZRZzgz?=
- =?utf-8?B?cUtaQng5YjJJanJ1UWJUdkF3RE1vdWNjSEVTRlBEZUptSGtqL3RCU3hraXJn?=
- =?utf-8?B?OEFadysyaFBzZWpMSnFFOHgydmVINldkbzN0ZUMvMjJnUk9GYjIxOGFXUnFP?=
- =?utf-8?B?VE1aejhLMWh3WVNQOWpKK044RTMvOVlzS2tyNHF5UTVBSVRlcWxzT21DZnBl?=
- =?utf-8?B?bWFTSEY0c0hZZFNSclF4T1ZXZk9hYjB2czhkWFREa1YrOUF2a3lRRjNUaUR2?=
- =?utf-8?B?Q29zVzhFTVNmK0Y2YkxtNklxckk4d21GaFRjWG8wbk90bEhzRDBUR1E0NDZ4?=
- =?utf-8?B?NzZvN1ZHSXZXSENsQlpUWlk5VkVjdjRQVkFmcUNxT1hGd0Q0QVNET1ZkdjUx?=
- =?utf-8?B?dUNxVGx1cmRldjNDR1RKY2RaNm1jNDBXd0dUQU9xaGtiTFgyVzJXSkxxVlpH?=
- =?utf-8?B?Z25CcloxWWpOSDZpZWFtckNhR2pmYU92TVdsaW1LTjhOWDRwZlpLYU1vUGVh?=
- =?utf-8?B?Q2NKRWM2TkdidTB4VzUvT0Zpb0pSRVdDL2JBVzkyVkRicXZ5V3VZTnVEYWhk?=
- =?utf-8?B?K1Z5RlNPMnlRclp2dTVJZEU2NXdBTVdsa0NjYmx6cHZEb3NEeHZoaDUxUHVX?=
- =?utf-8?B?R21vbXdKS2xWaWRVWUlxckFHQm5BUUppKzljTE5pajNNRFk5WnErSVVQM2xw?=
- =?utf-8?B?eHNKM2VGOXc2RGx3WGZjRUhzUE4vNE5UVkQvRkpmNDJXNzFYaXRsTTA4OE5W?=
- =?utf-8?B?NkliUWhncjBaMTA2K2NjMHJzcGRWd25YdEpXZzhDTGFEdjFLOERzLy9DeUpo?=
- =?utf-8?B?dDMzN3h3M1FCS2pQMnVGQW4wdDRhdElBanFDbmYxV1R2QTdMQXR1QT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Vd9i/Bu7kijx1Yh+mA8/7LU8OLO4CzETV3BZ4s5uygpBuoRdorDH+wo4lv?=
+ =?iso-8859-1?Q?8vsmO67s1pOeqBOrQWU22X1y2uLWZ3dPsZtdD7WlJH5MNfP+2p1YyI4VdE?=
+ =?iso-8859-1?Q?I8QPtIS3rO2Q003JVQGlNerDsD4B2TsaL9Jz8DqybAaNYRM8T/Wa0CTCKr?=
+ =?iso-8859-1?Q?dWrI1m1DYfhrAZJb9AAnXPGL1iGUVtc5pAx68eRB7EULH3jHDwPB2N3XNP?=
+ =?iso-8859-1?Q?xzHvcpq8Me6ydIfc31A7lQCN4AT6gFf8VOm+WKUmNZub2pw5MzGiy2NF4+?=
+ =?iso-8859-1?Q?0sx1Mh7i9PPowi8XnQwtLJ1tdy+TuT6OI/a3bJh9neOCAgiqwCLBquaLEB?=
+ =?iso-8859-1?Q?mmdr11hzVtIe8PP8vkXp/OwMeL6lMRUz5DWDTkZqJooL2zholV1HIBleaL?=
+ =?iso-8859-1?Q?X5lFaWk60o1XQmP0UI2o0dgpaIDK1C+CBpW/f8q5xcTcusn0BtEMO8OvHh?=
+ =?iso-8859-1?Q?pkb4t7tYXOsF4pr8aP6TRIWQI7P34LSDiyf9mgEUg1dIguCdWbeZ13shZM?=
+ =?iso-8859-1?Q?QCycRCRCX407gC+qdm+TUOhVWRI5gJ5zkPZAdd/J5o5pVY1u6Dd5bLU3HR?=
+ =?iso-8859-1?Q?pg46pOGbYWt2uXWeyVvW+LpEgWx6xq/fiLymybyju7STJXUE/T3+kJOP5F?=
+ =?iso-8859-1?Q?sXBAHKI7L/sks7j6vlIi/rOaNkIYtpTN+KuGn6BtQYF78qQFYnxIaBDcZL?=
+ =?iso-8859-1?Q?dGWVjSyjIEZECsUCNW1TBn+xG91C05EdbnOt7m2PQh101tC6ys7BFgHrOg?=
+ =?iso-8859-1?Q?z1ej97plDlL3NQEnj8WQbZWHOwRnLG5ap4PUTKG0ivdmBjMhk9u6DrcYUC?=
+ =?iso-8859-1?Q?4O4HHiqwpS3f1dlLjhg6EhhDWIh5l8DLWBDMCNOd25zsFsAOaYCPrURj2z?=
+ =?iso-8859-1?Q?ByXsqCjZObSouw9ZCFRoWsjBbw4oYD7GsWFUIlGlRHdNkoBNUIzk8Q+PX8?=
+ =?iso-8859-1?Q?n7UFkMzS2Fd8MwL24pr/E8E+i7RNf5R9NlQhuYahspeTKFiyDwH5H3hnH0?=
+ =?iso-8859-1?Q?qwQj5SB1YBJ9Eoy6f0Kwb5jOowhGM96iXghcpYDVt51edSWrfrTaVyI+08?=
+ =?iso-8859-1?Q?RhdochpqaZlQIC3ifYTOOgqUM7GQKMNC/tFc9OMo90eEZ482JBWxuCMLbQ?=
+ =?iso-8859-1?Q?LAVlT4WxYGYXd2q61BKCYE0ZMy1TaA83epmlnPGTcxd3DxsF0P8VW6ygH3?=
+ =?iso-8859-1?Q?3r9BG/TifsDwduVBpYfzpBnKhjtW2tc1JD228XkA3zkyiyigI2+/NlUIE5?=
+ =?iso-8859-1?Q?oh+TwqXujrZ1rxSSjKxtsGMyx4a9wiFLnQan/ZdAT9Zf6PdHJXrvYjrwDs?=
+ =?iso-8859-1?Q?BcZhmpP5SHDz/0WfnqipMuz9psgyV4tIca4inQj9nVUBi/OY9/gN4BdTgy?=
+ =?iso-8859-1?Q?DkSkQc1urBdfnLd6dLL9rpAIhbLG2OmOPzUnO3Z7EQOurPKDCXBeFUz7pU?=
+ =?iso-8859-1?Q?eSWS8lCFsb2t6K/PbueILDwiREGgbO9bC52yu052I3SiUTTf7qLL5otg7x?=
+ =?iso-8859-1?Q?5D2ROmN3fV2wWzAWIZoBSMUdRHTxaNYQ4K9gkOgaqgrTTaMU67QXRpHYuV?=
+ =?iso-8859-1?Q?hPNOpfNoeSKG3GM5kYamjWpzYzlttkd2BRju8s6xLBd4g+1kE2wgftZo+z?=
+ =?iso-8859-1?Q?oUj/oinlJj1YbrYPNh1RFxSZOr4Lec7OA5ETeXAz2s/KjNHAK5rxpw7LLP?=
+ =?iso-8859-1?Q?g1dX0QwAgNmC2wiw/WdYTDAMS/nCKYTOLNaP28qPSnWUUYQpOWWHN7+a8v?=
+ =?iso-8859-1?Q?MgzQOrKoA0RkZEpFfkLylEwjvGe9lrFAAihrVVzDausVQkVt68infNaUcI?=
+ =?iso-8859-1?Q?Z/BtNmRNyg=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: mj6CJuKBQOQaaKEUdqC/8CrUekXUAOFx2YSRcmM7ghnn8AEZcICFDP0zw6GlAe482yleasQqueziV/vILbPCJA85ReS37siTNYyL28n0K/NaGkg2EIyrrm0bDGeomMlwLtkXD4G3HLrivxGsRe7mg0Xb5qdPbMcaQ6UzQRYSIUA6y9D9s49xBVxw/1IJavYq5FXfN0cfD+9AlV+3C+/mNGF3ZQWXgqs7Zc75zOt4q/orxcUUc9HhkxgfGB5rXEhBuBFr2uPZ6gWfA+o4F0Dm6IebuqBggcy6QhSZv1spyNMwDl8gHFK+jHTJhrmsl33yohkhO7OuiA0Y91yRJ5ASPA==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5f0055cd-0a4f-4b15-f468-08df49d4925b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2026 02:42:24.6845 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ca9e9e58-391d-41f1-832a-08df49ef0bc5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2026 05:51:55.3255 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9OZBabbyi1kK66xfSt3YMUVFbmNCD22wN0fV/ZGotukeX8aRguQpaVojAzv2yWVtrjgs9itUsqSJ+gijsF8m9ftmfNdqm/EApqTbtPpR/9M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYPPR06MB8243
+X-MS-Exchange-CrossTenant-userprincipalname: bxfmI9v5aqNqgcshnCSAjAfdRR64rqoekjkDCTrfMy5X04oxQQMb+RSjCw1SgEsTU/SpLMjj+noPIDcjvb6KOOjsiwyqXZkRzsRTGR2WbQI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR06MB8060
 Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=jamin_lin@aspeedtech.com;
  helo=TYPPR03CU001.outbound.protection.outlook.com
@@ -164,135 +150,203 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjYgMDgvMTFdIGh3L21pc2MvYXNw
-ZWVkX3NjdTogQWRkIFNDVSBzdXBwb3J0IGZvciBTU1ANCj4gU0RSQU0gcmVtYXANCj4gDQo+IE9u
-IDcvMjMvMjYgMDQ6MjMsIEphbWluIExpbiB3cm90ZToNCj4gPiBUaGlzIGNvbW1pdCBhZGRzIFND
-VSByZWdpc3RlciBzdXBwb3J0IGZvciBTU1AgU0RSQU0gcmVtYXAgY29udHJvbCBhbmQNCj4gPiBy
-dW50aW1lIGFjdGl2YXRpb24uIEl0IGludHJvZHVjZXMgbG9naWMgZm9yIHRoZSBQU1AgdG8gZHlu
-YW1pY2FsbHkNCj4gPiBjb25maWd1cmUgdGhlIG1hcHBpbmcgb2YgaXRzIG93biBEUkFNIHdpbmRv
-d3MgaW50byBTU1AtdmlzaWJsZSBTRFJBTQ0KPiA+IHNwYWNlLCBlbmFibGluZyBzaGFyZWQgbWVt
-b3J5IGNvbW11bmljYXRpb24gdmlhIG1lbW9yeSByZWdpb24gYWxpYXNlcy4NCj4gPg0KPiA+IC0g
-Y29wcm9jZXNzb3Jfc2RyYW1fcmVtYXBbMF06IG1hcHMgUFNQIERSQU0gb2Zmc2V0IDB4NDAwMDAw
-MDAwIChzaXplOg0KPiAweDFBNzdFMDAwKSB0byBTU1AgU0RSQU0NCj4gPiAgICAgIG9mZnNldCAw
-eDU4ODAwMDANCj4gPiAtIGNvcHJvY2Vzc29yX3NkcmFtX3JlbWFwWzFdOiBtYXBzIFBTUCBEUkFN
-IG9mZnNldCAweDQyQzAwMDAwMCAoc2l6ZToNCj4gMHgwNTg4MDAwMCkgdG8gU1NQIFNEUkFNDQo+
-ID4gICAgICBvZmZzZXQgMHgwDQo+ID4NCj4gPiBUaGUgU0NVIHJlZ2lzdGVycyBBU1QyNzAwX1ND
-VV9TU1BfQ1RSTF8xLzIgYW5kDQo+ID4gQVNUMjcwMF9TQ1VfU1NQX1JFTUFQX0FERFJfezEsMn0g
-LyBSRU1BUF9TSVpFX3sxLDJ9IGFsbG93IHJ1bnRpbWUNCj4gPiByZWNvbmZpZ3VyYXRpb24gb2Yg
-YWxpYXMgb2Zmc2V0LCBiYXNlLCBhbmQgc2l6ZS4NCj4gPg0KPiA+IHwtLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS18DQo+ID4gfC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLXwgfC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiA+IHwtLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS18IC0tLS18DQo+ID4gfCAgICAg
-ICAgICAgICAgIFBTUCBEUkFNICAgICAgICAgICAgICAgICAgIHwgICAgICAgICB8DQo+IFNTUCBT
-RFJBTSAgICAgICAgICAgfA0KPiA+IHwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS18DQo+ID4gfC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LXwgfC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiA+IHwtLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS18IC0tLS18DQo+ID4gfCAweDRfMDAwMF8wMDAwIChTQ1VfMTI0
-IDw8IDQpICAgICAgICAgICAgIHwgICAgIC0tPiB8IDB4MDAwMF8wMDAwDQo+IHwNCj4gPiB8ICAg
-cmVtYXAxIGJhc2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgfC0tLXwgfCAgIHwgIC0gU0NV
-XzE1MDoNCj4gdGFyZ2V0IGFkZHIgICAgfA0KPiA+IHwgICBzaXplOiAweDFBNzdFMDAwIChTQ1Vf
-MTRDKSAgICAgICAgICAgICB8ICAgfCB8ICAgfCAgICByZW1hcDINCj4gfA0KPiA+IHwtLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS18ICAgfCB8ICAgfC0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS18DQo+ID4gfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHwgICB8IHwgICB8DQo+IHwNCj4gPiB8IDB4NF8yQzAwXzAwMDAgKFNDVV8xMjgg
-PDwgNCkgICAgICAgICAgICAgfC0tLS0tfCAgIHwgMHg1ODgwMDAwDQo+IHwNCj4gPiB8ICAgcmVt
-YXAyIGJhc2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIHwgICAgIHwgIC0NCj4gU0NV
-XzE0ODogdGFyZ2V0IGFkZHIgICAgfA0KPiA+IHwgICBzaXplOiAweDA1ODgwMDAwIChTQ1VfMTU0
-KSAgICAgICAgICAgICB8ICAgfC0tLT4gfCAgICByZW1hcDENCj4gfA0KPiA+IHwtLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS18DQo+ID4gfC0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLXwgfC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiA+
-IHwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS18IC0tLS18DQo+ID4N
-Cj4gPiBTaWduZWQtb2ZmLWJ5OiBKYW1pbiBMaW4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNvbT4N
-Cj4gPiBUZXN0ZWQtYnk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAb3NzLnF1YWxj
-b21tLmNvbT4NCj4gPiAtLS0NCj4gPiAgIGh3L21pc2MvYXNwZWVkX3NjdS5jIHwgNjINCj4gKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysNCj4gPiAgIDEgZmlsZSBj
-aGFuZ2VkLCA2MiBpbnNlcnRpb25zKCspDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcvbWlzYy9h
-c3BlZWRfc2N1LmMgYi9ody9taXNjL2FzcGVlZF9zY3UuYyBpbmRleA0KPiA+IGZkYjFjZjU5YjQu
-LjQwN2MxNzQzZmMgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvbWlzYy9hc3BlZWRfc2N1LmMNCj4gPiAr
-KysgYi9ody9taXNjL2FzcGVlZF9zY3UuYw0KPiA+IEBAIC0xNDYsNiArMTQ2LDE0IEBADQo+ID4N
-Cj4gPiAgIC8qIFNTUCBUU1AgKi8NCj4gPiAgICNkZWZpbmUgQVNUMjcwMF9TQ1VfU1NQX0NUUkxf
-MCAgICAgICAgICBUT19SRUcoMHgxMjApDQo+ID4gKyNkZWZpbmUgQVNUMjcwMF9TQ1VfU1NQX0NU
-UkxfMSAgICAgICAgICBUT19SRUcoMHgxMjQpDQo+ID4gKyNkZWZpbmUgQVNUMjcwMF9TQ1VfU1NQ
-X0NUUkxfMiAgICAgICAgICBUT19SRUcoMHgxMjgpDQo+ID4gKyNkZWZpbmUgQVNUMjcwMF9TQ1Vf
-U1NQX1JFTUFQX0FERFJfMCAgICBUT19SRUcoMHgxNDApDQo+ID4gKyNkZWZpbmUgQVNUMjcwMF9T
-Q1VfU1NQX1JFTUFQX1NJWkVfMCAgICBUT19SRUcoMHgxNDQpDQo+ID4gKyNkZWZpbmUgQVNUMjcw
-MF9TQ1VfU1NQX1JFTUFQX0FERFJfMSAgICBUT19SRUcoMHgxNDgpDQo+ID4gKyNkZWZpbmUgQVNU
-MjcwMF9TQ1VfU1NQX1JFTUFQX1NJWkVfMSAgICBUT19SRUcoMHgxNEMpDQo+ID4gKyNkZWZpbmUg
-QVNUMjcwMF9TQ1VfU1NQX1JFTUFQX0FERFJfMiAgICBUT19SRUcoMHgxNTApDQo+ID4gKyNkZWZp
-bmUgQVNUMjcwMF9TQ1VfU1NQX1JFTUFQX1NJWkVfMiAgICBUT19SRUcoMHgxNTQpDQo+ID4gICAj
-ZGVmaW5lIEFTVDI3MDBfU0NVX1RTUF9DVFJMXzAgICAgICAgICAgVE9fUkVHKDB4MTYwKQ0KPiA+
-ICAgI2RlZmluZSBBU1QyNzAwX1NTUF9UU1BfRU5BQkxFICAgICAgICAgIEJJVCgwKQ0KPiA+ICAg
-I2RlZmluZSBBU1QyNzAwX1NTUF9UU1BfUlNUICAgICAgICAgICAgIEJJVCgxKQ0KPiA+IEBAIC05
-MDgsNiArOTE2LDcgQEAgc3RhdGljIHZvaWQgYXNwZWVkX2FzdDI3MDBfc2N1X3dyaXRlKHZvaWQg
-Km9wYXF1ZSwNCj4gaHdhZGRyIG9mZnNldCwNCj4gPiAgIHsNCj4gPiAgICAgICBBc3BlZWQyNzAw
-U0NVU3RhdGUgKmEgPSBBU1BFRURfMjcwMF9TQ1Uob3BhcXVlKTsNCj4gPiAgICAgICBBc3BlZWRT
-Q1VTdGF0ZSAqcyA9IEFTUEVFRF9TQ1Uob3BhcXVlKTsNCj4gPiArICAgIE1lbW9yeVJlZ2lvbiAq
-bXIgPSBOVUxMOw0KPiA+ICAgICAgIGludCByZWcgPSBUT19SRUcob2Zmc2V0KTsNCj4gPiAgICAg
-ICAvKiBUcnVuY2F0ZSBoZXJlIHNvIGJpdHdpc2Ugb3BlcmF0aW9ucyBiZWxvdyBiZWhhdmUgYXMg
-ZXhwZWN0ZWQgKi8NCj4gPiAgICAgICB1aW50MzJfdCBkYXRhID0gZGF0YTY0Ow0KPiA+IEBAIC05
-NjUsNiArOTc0LDQzIEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9hc3QyNzAwX3NjdV93cml0ZSh2b2lk
-DQo+ICpvcGFxdWUsIGh3YWRkciBvZmZzZXQsDQo+ID4gICAgICAgICAgIGRhdGEgJj0gfkFTVDI3
-MDBfU1NQX1RTUF9FTkFCTEU7DQo+ID4gICAgICAgICAgIHMtPnJlZ3NbcmVnXSA9IChzLT5yZWdz
-W3JlZ10gJiB+MHhmZikgfCAoZGF0YSAmIDB4ZmYpOw0KPiA+ICAgICAgICAgICByZXR1cm47DQo+
-ID4gKyAgICBjYXNlIEFTVDI3MDBfU0NVX1NTUF9DVFJMXzE6DQo+ID4gKyAgICBjYXNlIEFTVDI3
-MDBfU0NVX1NTUF9DVFJMXzI6DQo+ID4gKyAgICAgICAgbXIgPSAocmVnID09IEFTVDI3MDBfU0NV
-X1NTUF9DVFJMXzEpID8NCj4gPiArICAgICAgICAgICAgIGEtPnNzcF9yZW1hcFswXSA6IGEtPnNz
-cF9yZW1hcFsxXTsNCj4gPiArICAgICAgICBpZiAoYS0+c3NwX2NwdWlkIDwgMCB8fCBtciA9PSBO
-VUxMKSB7DQo+ID4gKyAgICAgICAgICAgIHJldHVybjsNCj4gPiArICAgICAgICB9DQo+ID4gKyAg
-ICAgICAgZGF0YSAmPSAweDdmZmZmZmZmOw0KPiA+ICsgICAgICAgIG1lbW9yeV9yZWdpb25fdHJh
-bnNhY3Rpb25fYmVnaW4oKTsNCj4gPiArICAgICAgICBtZW1vcnlfcmVnaW9uX3NldF9hbGlhc19v
-ZmZzZXQobXIsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICgo
-dWludDY0X3QpIGRhdGEgPDwgNCkgJg0KPiAweDNmZmZmZmZmZik7DQo+ID4gKyAgICAgICAgbWVt
-b3J5X3JlZ2lvbl90cmFuc2FjdGlvbl9jb21taXQoKTsNCj4gPiArICAgICAgICBicmVhazsNCj4g
-PiArICAgIGNhc2UgQVNUMjcwMF9TQ1VfU1NQX1JFTUFQX0FERFJfMToNCj4gPiArICAgIGNhc2Ug
-QVNUMjcwMF9TQ1VfU1NQX1JFTUFQX0FERFJfMjoNCj4gPiArICAgICAgICBtciA9IChyZWcgPT0g
-QVNUMjcwMF9TQ1VfU1NQX1JFTUFQX0FERFJfMSkgPw0KPiA+ICsgICAgICAgICAgICAgYS0+c3Nw
-X3JlbWFwWzBdIDogYS0+c3NwX3JlbWFwWzFdOw0KPiA+ICsgICAgICAgIGlmIChhLT5zc3BfY3B1
-aWQgPCAwIHx8IG1yID09IE5VTEwpIHsNCj4gPiArICAgICAgICAgICAgcmV0dXJuOw0KPiA+ICsg
-ICAgICAgIH0NCj4gPiArICAgICAgICBkYXRhICY9IDB4M2ZmZmZmZmY7DQo+ID4gKyAgICAgICAg
-bWVtb3J5X3JlZ2lvbl90cmFuc2FjdGlvbl9iZWdpbigpOw0KPiA+ICsgICAgICAgIG1lbW9yeV9y
-ZWdpb25fc2V0X2FkZHJlc3MobXIsIGRhdGEpOw0KPiA+ICsgICAgICAgIG1lbW9yeV9yZWdpb25f
-dHJhbnNhY3Rpb25fY29tbWl0KCk7DQo+ID4gKyAgICAgICAgYnJlYWs7DQo+ID4gKyAgICBjYXNl
-IEFTVDI3MDBfU0NVX1NTUF9SRU1BUF9TSVpFXzE6DQo+ID4gKyAgICBjYXNlIEFTVDI3MDBfU0NV
-X1NTUF9SRU1BUF9TSVpFXzI6DQo+ID4gKyAgICAgICAgbXIgPSAocmVnID09IEFTVDI3MDBfU0NV
-X1NTUF9SRU1BUF9TSVpFXzEpID8NCj4gPiArICAgICAgICAgICAgIGEtPnNzcF9yZW1hcFswXSA6
-IGEtPnNzcF9yZW1hcFsxXTsNCj4gPiArICAgICAgICBpZiAoYS0+c3NwX2NwdWlkIDwgMCB8fCBt
-ciA9PSBOVUxMKSB7DQo+ID4gKyAgICAgICAgICAgIHJldHVybjsNCj4gPiArICAgICAgICB9DQo+
-ID4gKyAgICAgICAgZGF0YSAmPSAweDNmZmZmZmZmOw0KPiA+ICsgICAgICAgIG1lbW9yeV9yZWdp
-b25fdHJhbnNhY3Rpb25fYmVnaW4oKTsNCj4gPiArICAgICAgICBtZW1vcnlfcmVnaW9uX3NldF9z
-aXplKG1yLCBkYXRhKTsNCj4gPiArICAgICAgICBtZW1vcnlfcmVnaW9uX3RyYW5zYWN0aW9uX2Nv
-bW1pdCgpOw0KPiA+ICsgICAgICAgIGJyZWFrOw0KPiA+ICAgICAgIGNhc2UgQVNUMjcwMF9TQ1Vf
-U1lTX1JTVF9DVFJMXzE6DQo+ID4gICAgICAgICAgIGlmIChhLT5zc3BfY3B1aWQgPCAwKSB7DQo+
-ID4gICAgICAgICAgICAgICByZXR1cm47DQo+ID4gQEAgLTEwMzUsNiArMTA4MSwxNCBAQCBzdGF0
-aWMgY29uc3QgdWludDMyX3QNCj4gYXN0MjcwMF9hMF9yZXNldHNbQVNQRUVEX0FTVDI3MDBfU0NV
-X05SX1JFR1NdID0gew0KPiA+ICAgICAgIFtBU1QyNzAwX0hXX1NUUkFQMV9TRUMyXSAgICAgICAg
-PSAweDAwMDAwMDAwLA0KPiA+ICAgICAgIFtBU1QyNzAwX0hXX1NUUkFQMV9TRUMzXSAgICAgICAg
-PSAweDEwMDA0MDhGLA0KPiA+ICAgICAgIFtBU1QyNzAwX1NDVV9TU1BfQ1RSTF8wXSAgICAgICAg
-PSAweDAwMDAwN0ZFLA0KPiA+ICsgICAgW0FTVDI3MDBfU0NVX1NTUF9DVFJMXzFdICAgICAgICA9
-IDB4NDAwMDAwMDAsDQo+ID4gKyAgICBbQVNUMjcwMF9TQ1VfU1NQX0NUUkxfMl0gICAgICAgID0g
-MHg0MkMwMDAwMCwNCj4gPiArICAgIFtBU1QyNzAwX1NDVV9TU1BfUkVNQVBfQUREUl8wXSAgPSAw
-eDFGRkZFMDAwLA0KPiA+ICsgICAgW0FTVDI3MDBfU0NVX1NTUF9SRU1BUF9TSVpFXzBdICA9IDB4
-MDAwMDIwMDAsDQo+ID4gKyAgICBbQVNUMjcwMF9TQ1VfU1NQX1JFTUFQX0FERFJfMV0gID0gMHgw
-NTg4MDAwMCwNCj4gPiArICAgIFtBU1QyNzAwX1NDVV9TU1BfUkVNQVBfU0laRV8xXSAgPSAweDFB
-NzdFMDAwLA0KPiA+ICsgICAgW0FTVDI3MDBfU0NVX1NTUF9SRU1BUF9BRERSXzJdICA9IDB4MDAw
-MDAwMDAsDQo+ID4gKyAgICBbQVNUMjcwMF9TQ1VfU1NQX1JFTUFQX1NJWkVfMl0gID0gMHgwNTg4
-MDAwMCwNCj4gPiAgICAgICBbQVNUMjcwMF9TQ1VfVFNQX0NUUkxfMF0gICAgICAgID0gMHgwMDAw
-MDdGRSwNCj4gPiAgICAgICBbQVNUMjcwMF9TQ1VfU1lTX1JTVF9DVFJMXzFdICAgID0gMHhGRkMz
-N0ZEQywNCj4gPiAgICAgICBbQVNUMjcwMF9TQ1VfU1lTX1JTVF9DVFJMXzJdICAgID0gMHgwMDAw
-MUZGRiwNCj4gPiBAQCAtMTA2Nyw2ICsxMTIxLDE0IEBAIHN0YXRpYyB2b2lkDQo+ID4gYXNwZWVk
-X2FzdDI3MDBfc2N1X3Jlc2V0X2hvbGQoT2JqZWN0ICpvYmosIFJlc2V0VHlwZSB0eXBlKQ0KPiA+
-DQo+ID4gICAgICAgaWYgKGEtPnNzcF9jcHVpZCA+IDApIHs+ICAgICAgICAgICBhcm1fc2V0X2Nw
-dV9vZmYoYS0+c3NwX2NwdWlkKTsNCj4gDQo+ICsgICAgICAgIGlmIChhLT5zc3BfcmVtYXBbMF0g
-JiYgYS0+c3NwX3JlbWFwWzFdKSB7DQo+IA0KVGhhbmtzIGZvciB0aGUgcmV2aWV3IGFuZCBzdWdn
-ZXN0aW9uLg0KV2lsbCBkbw0KSmFtaW4NCj4gPiArICAgICAgICBtZW1vcnlfcmVnaW9uX3RyYW5z
-YWN0aW9uX2JlZ2luKCk7DQo+ID4gKyAgICAgICAgbWVtb3J5X3JlZ2lvbl9zZXRfYWRkcmVzcyhh
-LT5zc3BfcmVtYXBbMF0sIDB4NTg4MDAwMCk7DQo+ID4gKyAgICAgICAgbWVtb3J5X3JlZ2lvbl9z
-ZXRfYWxpYXNfb2Zmc2V0KGEtPnNzcF9yZW1hcFswXSwgMCk7DQo+ID4gKyAgICAgICAgbWVtb3J5
-X3JlZ2lvbl9zZXRfc2l6ZShhLT5zc3BfcmVtYXBbMF0sIDB4MWE3N2UwMDApOw0KPiA+ICsgICAg
-ICAgIG1lbW9yeV9yZWdpb25fc2V0X2FkZHJlc3MoYS0+c3NwX3JlbWFwWzFdLCAwKTsNCj4gPiAr
-ICAgICAgICBtZW1vcnlfcmVnaW9uX3NldF9hbGlhc19vZmZzZXQoYS0+c3NwX3JlbWFwWzFdLCAw
-eDJjMDAwMDAwKTsNCj4gPiArICAgICAgICBtZW1vcnlfcmVnaW9uX3NldF9zaXplKGEtPnNzcF9y
-ZW1hcFsxXSwgMHg1ODgwMDAwKTsNCj4gPiArICAgICAgICBtZW1vcnlfcmVnaW9uX3RyYW5zYWN0
-aW9uX2NvbW1pdCgpOw0KPiA+ICAgICAgIH0NCj4gPg0KPiA+ICAgICAgIGlmIChhLT50c3BfY3B1
-aWQgPiAwKSB7DQoNCg==
+This commit adds two MemoryRegion aliases to support PSP access to=0A=
+SSP SDRAM through shared memory remapping.=0A=
+=0A=
+The SSP exposes two DRAM aliases:=0A=
+  - remap1 maps PSP DRAM at 0x400000000 to SSP SDRAM offset 0x5880000=0A=
+  - remap2 maps PSP DRAM at 0x42C000000 to SSP SDRAM offset 0x0=0A=
+=0A=
+These mappings follow the default SCU register configuration used by=0A=
+the ASPEED SDK firmware, which defines the memory window mapping=0A=
+between PSP and the SSP.=0A=
+=0A=
+The alias MemoryRegions belong to the SSP coprocessor state itself=0A=
+(Aspeed27x0CoprocessorState), since that is what they represent; the=0A=
+SCU only holds pointers to them (ssp_remap[0]/ssp_remap[1]) so its=0A=
+control registers can reposition/resize the aliases at runtime. The=0A=
+pointers are exposed as the SCU's "ssp-remap0"/"ssp-remap1" link=0A=
+properties and are wired up by the board once the SSP is realized, so=0A=
+the SSP does not need to reach into the shared SCU.=0A=
+=0A=
+The SSP cpu_index is only known once the SSP's armv7m core is=0A=
+realized, so the board also sets it in the SCU at that point. Its=0A=
+"not wired up" default of -1 is set in the SCU's instance_init().=0A=
+=0A=
+Since the default is no longer set in realize(), the AST2700 SCU's=0A=
+realize handler only forwards to aspeed_scu_realize(). Drop it and=0A=
+inherit realize from the parent class, like the other SCU models.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+Tested-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
+---=0A=
+ include/hw/arm/aspeed_coprocessor.h |  2 ++=0A=
+ include/hw/misc/aspeed_scu.h        |  3 +++=0A=
+ hw/arm/aspeed_ast27x0-fc.c          |  9 +++++++++=0A=
+ hw/arm/aspeed_ast27x0-ssp.c         | 24 ++++++++++++++++++++++++=0A=
+ hw/misc/aspeed_scu.c                | 15 ++++++++++++---=0A=
+ 5 files changed, 50 insertions(+), 3 deletions(-)=0A=
+=0A=
+diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_co=
+processor.h=0A=
+index b0d72f9163..2939ac1b1c 100644=0A=
+--- a/include/hw/arm/aspeed_coprocessor.h=0A=
++++ b/include/hw/arm/aspeed_coprocessor.h=0A=
+@@ -54,6 +54,8 @@ struct Aspeed27x0CoprocessorState {=0A=
+     MemoryRegion scu_alias;=0A=
+     MemoryRegion scuio_alias;=0A=
+     MemoryRegion fmc_alias;=0A=
++    MemoryRegion dram_remap[2];=0A=
++    MemoryRegion *dram;=0A=
+     Aspeed2700SCUState *scu;=0A=
+     AspeedSCUState *scuio;=0A=
+     AspeedSMCState *fmc;=0A=
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h=0A=
+index a7014e43f2..d4a5fa43d0 100644=0A=
+--- a/include/hw/misc/aspeed_scu.h=0A=
++++ b/include/hw/misc/aspeed_scu.h=0A=
+@@ -44,6 +44,9 @@ struct AspeedSCUState {=0A=
+ =0A=
+ struct Aspeed2700SCUState {=0A=
+     AspeedSCUState parent_obj;=0A=
++=0A=
++    MemoryRegion *ssp_remap[2];=0A=
++    int ssp_cpuid;=0A=
+ };=0A=
+ =0A=
+ #define AST2400_A1_SILICON_REV   0x02010303U=0A=
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c=0A=
+index 73362b60d2..2ad1ad39f3 100644=0A=
+--- a/hw/arm/aspeed_ast27x0-fc.c=0A=
++++ b/hw/arm/aspeed_ast27x0-fc.c=0A=
+@@ -153,6 +153,8 @@ static bool ast2700fc_ssp_init(Ast2700FCState *s, Aspee=
+dSoCState *psp,=0A=
+                             &error_abort);=0A=
+     object_property_set_link(OBJECT(&s->ssp), "sram",=0A=
+                              OBJECT(&psp->sram), &error_abort);=0A=
++    object_property_set_link(OBJECT(&s->ssp), "dram",=0A=
++                             OBJECT(psp->dram_mr), &error_abort);=0A=
+     object_property_set_link(OBJECT(&s->ssp), "scu",=0A=
+                              OBJECT(&s->ca35.scu), &error_abort);=0A=
+     object_property_set_link(OBJECT(&s->ssp), "scuio",=0A=
+@@ -163,6 +165,13 @@ static bool ast2700fc_ssp_init(Ast2700FCState *s, Aspe=
+edSoCState *psp,=0A=
+         return false;=0A=
+     }=0A=
+ =0A=
++    /* The remap aliases and cpu_index only exist once the SSP is realized=
+. */=0A=
++    object_property_set_link(OBJECT(&s->ca35.scu), "ssp-remap0",=0A=
++                             OBJECT(&s->ssp.dram_remap[0]), &error_abort);=
+=0A=
++    object_property_set_link(OBJECT(&s->ca35.scu), "ssp-remap1",=0A=
++                             OBJECT(&s->ssp.dram_remap[1]), &error_abort);=
+=0A=
++    s->ca35.scu.ssp_cpuid =3D CPU(s->ssp.armv7m.cpu)->cpu_index;=0A=
++=0A=
+     return true;=0A=
+ }=0A=
+ =0A=
+diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c=0A=
+index 8d333ef3c1..db296ad9dc 100644=0A=
+--- a/hw/arm/aspeed_ast27x0-ssp.c=0A=
++++ b/hw/arm/aspeed_ast27x0-ssp.c=0A=
+@@ -181,6 +181,12 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState =
+*dev_soc, Error **errp)=0A=
+         return;=0A=
+     }=0A=
+ =0A=
++    if (!a->dram) {=0A=
++        error_setg(errp, TYPE_ASPEED27X0SSP_COPROCESSOR=0A=
++                   ": 'dram' link is not set");=0A=
++        return;=0A=
++    }=0A=
++=0A=
+     /* AST27X0 SSP Core */=0A=
+     armv7m =3D DEVICE(&a->armv7m);=0A=
+     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
+@@ -229,6 +235,22 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState =
+*dev_soc, Error **errp)=0A=
+     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCUIO],=
+=0A=
+                                 &a->scuio_alias);=0A=
+ =0A=
++    /*=0A=
++     * DRAM remap aliases used by PSP to access SSP SDRAM:=0A=
++     * - remap[0] maps PSP DRAM at 0x400000000 (size: 0x1A77E000) to=0A=
++     *   SSP SDRAM offset 0x5880000=0A=
++     * - remap[1] maps PSP DRAM at 0x42C000000 (size: 0x05880000) to=0A=
++     *   SSP SDRAM offset 0x0=0A=
++     */=0A=
++    memory_region_init_alias(&a->dram_remap[0], OBJECT(a), "ssp.dram.remap=
+1",=0A=
++                             a->dram, 0, 0x1a77e000);=0A=
++    memory_region_init_alias(&a->dram_remap[1], OBJECT(a), "ssp.dram.remap=
+2",=0A=
++                             a->dram, 0x2c000000, 0x05880000);=0A=
++    memory_region_add_subregion(&s->sdram, 0, &a->dram_remap[1]);=0A=
++    memory_region_add_subregion(&s->sdram,=0A=
++                                memory_region_size(&a->dram_remap[1]),=0A=
++                                &a->dram_remap[0]);=0A=
++=0A=
+     /* INTC */=0A=
+     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {=0A=
+         return;=0A=
+@@ -298,6 +320,8 @@ static const Property aspeed_27x0_coprocessor_propertie=
+s[] =3D {=0A=
+                      TYPE_ASPEED_SCU, AspeedSCUState *),=0A=
+     DEFINE_PROP_LINK("fmc", Aspeed27x0CoprocessorState, fmc, TYPE_ASPEED_S=
+MC,=0A=
+                      AspeedSMCState *),=0A=
++    DEFINE_PROP_LINK("dram", Aspeed27x0CoprocessorState, dram,=0A=
++                     TYPE_MEMORY_REGION, MemoryRegion *),=0A=
+ };=0A=
+ =0A=
+ static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass,=0A=
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c=0A=
+index df26dd0ef4..1568b74964 100644=0A=
+--- a/hw/misc/aspeed_scu.c=0A=
++++ b/hw/misc/aspeed_scu.c=0A=
+@@ -947,9 +947,18 @@ static void aspeed_ast2700_scu_reset_hold(Object *obj,=
+ ResetType type)=0A=
+     s->regs[AST2700_HW_STRAP1] =3D s->hw_strap1;=0A=
+ }=0A=
+ =0A=
+-static void aspeed_2700_scu_realize(DeviceState *dev, Error **errp)=0A=
++static void aspeed_2700_scu_instance_init(Object *obj)=0A=
+ {=0A=
+-    aspeed_scu_realize(dev, errp);=0A=
++    Aspeed2700SCUState *a =3D ASPEED_2700_SCU(obj);=0A=
++=0A=
++    a->ssp_cpuid =3D -1;=0A=
++=0A=
++    object_property_add_link(obj, "ssp-remap0", TYPE_MEMORY_REGION,=0A=
++                             (Object **)&a->ssp_remap[0],=0A=
++                             object_property_allow_set_link, 0);=0A=
++    object_property_add_link(obj, "ssp-remap1", TYPE_MEMORY_REGION,=0A=
++                             (Object **)&a->ssp_remap[1],=0A=
++                             object_property_allow_set_link, 0);=0A=
+ }=0A=
+ =0A=
+ static void aspeed_2700_scu_class_init(ObjectClass *klass, const void *dat=
+a)=0A=
+@@ -959,7 +968,6 @@ static void aspeed_2700_scu_class_init(ObjectClass *kla=
+ss, const void *data)=0A=
+     AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);=0A=
+ =0A=
+     dc->desc =3D "ASPEED 2700 System Control Unit";=0A=
+-    dc->realize =3D aspeed_2700_scu_realize;=0A=
+     rc->phases.hold =3D aspeed_ast2700_scu_reset_hold;=0A=
+     asc->resets =3D ast2700_a0_resets;=0A=
+     asc->calc_hpll =3D aspeed_2600_scu_calc_hpll;=0A=
+@@ -1196,6 +1204,7 @@ static const TypeInfo aspeed_scu_types[] =3D {=0A=
+         .name =3D TYPE_ASPEED_2700_SCU,=0A=
+         .parent =3D TYPE_ASPEED_SCU,=0A=
+         .instance_size =3D sizeof(Aspeed2700SCUState),=0A=
++        .instance_init =3D aspeed_2700_scu_instance_init,=0A=
+         .class_init =3D aspeed_2700_scu_class_init,=0A=
+     },=0A=
+     {=0A=
+-- =0A=
+2.53.0=0A=
 

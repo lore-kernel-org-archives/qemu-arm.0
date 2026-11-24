@@ -1,146 +1,67 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB7AE606A31E
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 12:14:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4C6C8606A326
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 12:42:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=XJ+uIdKX;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=aAnuw9A9
+	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=jZyiPZNP
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVpPL-0002yD-6D; Tue, 24 Nov 2026 07:13:59 -0500
+	id 1xVpq5-0003SR-PZ; Tue, 24 Nov 2026 07:41:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xVpPJ-0002xj-Rl
- for qemu-arm@nongnu.org; Tue, 24 Nov 2026 07:13:57 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xVpPI-000752-B5
- for qemu-arm@nongnu.org; Tue, 24 Nov 2026 07:13:57 -0500
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AOAutc3749671
- for <qemu-arm@nongnu.org>; Tue, 24 Nov 2026 12:13:55 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- c5VpHWiFoK/H27Lbql3AFfyumLEtodqfBmX5nCBLmhs=; b=XJ+uIdKXh9JMfzek
- rTGphFk0KQHpgI5RMw9qiSDe0ZkIzS9NQ5Q/9Ry/jlCsUen/j1GuHrcek/frFt15
- aKw0K8IdpfSAg90JfgyDH23W/A7XzgdDXGSc1kDjBID5p99zjqie8pg1wwm8zRXV
- BlkGQ8vP5r7T/9ml/zYdKCS/+b4adjC17oBBaMr8OeQ/a3UUR7BDbD2cFo+r32JK
- HTwjtPX/o3Pk56Qf3VIsa6KuIJiT5abecuTOTw1pa8uV/4CJgyTvHeN+wGEF0Irg
- nvHPRcXvsy3eosDEhXYqwQivtPnzpUC4ARI8WId4LCnbFaT5XvAOKgKp0dKsYVEo
- /qTwPQ==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j4yvb2myh-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 24 Nov 2026 12:13:54 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-9495af07676so697574585a.2
- for <qemu-arm@nongnu.org>; Tue, 24 Nov 2026 04:13:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795522433; x=1796127233; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=c5VpHWiFoK/H27Lbql3AFfyumLEtodqfBmX5nCBLmhs=;
- b=aAnuw9A9q7rgLjy3hUdkNkz5GfnANUGG1yhpPi8lV3X8sQjoKbYjfDKbCCkwmXLX+h
- jjsTS6dFhcRm9CXyGdpnP1nuVldc350P//mu+0zHDaJcsni61TPw1cfTdllSK+thuA8r
- kCxJOtTaP7iDPXu1ZqSaBz32poc9m6/taVLhHy3yPRvhV1aDY1AVJZM3YU87+y1zZ48l
- EHvi827DW3lax5s7Qm+JkL1ELtGsRU3x7CQJJi9VBja/pHVCytaLJ5JhWUxCn0c8wP8l
- ZTVnP0iIJQBONwNtsOjkInBJcUU3bpGTYLrjK59NLahrTAvKz56c95wy/CsWCgvvbgXS
- nQcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795522433; x=1796127233;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=c5VpHWiFoK/H27Lbql3AFfyumLEtodqfBmX5nCBLmhs=;
- b=teTNGvTTlHmGOyjO8BCt2J4xfLaxV2WEJ8c7AaD0pf+sp23/jVrLelCitjk5+ssMOB
- N8FZPSekA+H4Kl/q/O05aIFQgvf6bdSj0Zb7DXw1qERDIjuH+w15MNQW8jKgWetupN95
- tH5BOEsglux2LCKX5FsTAFFUif6mFQBA8JQbv88fnHcjTtRolC9+Hcti1XIgISJRulG1
- OF4xUi3xG1mOaSScE/fYGDOL+aTPN/Iz37+/Dq8cY6hHBPJ/we5ZzBCAmWvgtFS6QLK3
- OuL9nu3qSwA5HLv/xULsQv7LtIhjUMBDzvwpveH+gqtK43Nkv07EdDnK4STw0E8MNnDu
- 8pOw==
-X-Forwarded-Encrypted: i=1;
- AL+hErFh8hiMuaXVIvSFC/x+1zrj2eqJQSl7EiepCUPfp+zLAAcsEUSY1RkQ9jOGVcuuG/qhQJjtnCRjlA==@nongnu.org
-X-Gm-Message-State: APuU4Z9Lh9uhnJAklPHllN0LdWn4U7McwmdQTWmQdo5dJMd6LRiYSrqN
- TWKi3muC3Dm5obQRRcLjvHM2rXcLac0bBAAmXMVyCh+gQWT7w3d29uWeR0HPD8p6YFdCwfbNLIG
- /3aiVPGZmnneFSZbumv7aAbYnHJ7Y/9sGSW8L6KX512EjQqEJN8aRxdN26qJNKwYT0Q==
-X-Gm-Gg: AZFdTZeOTQVz11AIWMRRwfgs1PKY9mzEaYpmy9lgoPJq7L46Gidb1A2htF/I8EcaBIY
- 8T47Qqr8b380bzciX1qq5XEbTlooBjVTMVKeZgMjijbdpp3U48g/7a3tB3pdy/nVamHcf8ETeWb
- cDwfZI7ZHPL0eWAEdYH87UcTAB9hL6nmcEfejt3thagLiJkq1fvoq+YDhLhpbiFUEHe+XbiNg3V
- LwnGtiO5Vzl0IeiSejAavKhPxj/wmIUdtfYz5kPld6PZjmy2Ym61vuLQ+7831TobPn56ZIDZHcO
- jrRO4DtXCkyb+pY6e3S81Xx+GVjMbtg/pOeZZJY4nRpDRzTCkM4wVkwWzE013lRfXZq3RJxtiU7
- bFOf1FyCKNThwO529g4EyFVeikPI3nIlXdvugSYVJw2nHwdBU91tWXw784MVfdjsu1SuRrCeXqX
- lq1wxPr5Q=
-X-Received: by 2002:a05:620a:44c2:b0:945:dd80:75d7 with SMTP id
- af79cd13be357-949ba9a5803mr2576037785a.41.1795522433325; 
- Tue, 24 Nov 2026 04:13:53 -0800 (PST)
-X-Received: by 2002:a05:620a:44c2:b0:945:dd80:75d7 with SMTP id
- af79cd13be357-949ba9a5803mr2576032785a.41.1795522432816; 
- Tue, 24 Nov 2026 04:13:52 -0800 (PST)
-Received: from [192.168.69.234] (pmd666.hd.free.fr. [82.67.153.177])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb906817ccsm228311165e9.5.2026.11.24.04.13.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Nov 2026 04:13:52 -0800 (PST)
-Message-ID: <648356a5-eade-4f18-b0c6-2a4800a1686f@oss.qualcomm.com>
-Date: Tue, 24 Nov 2026 13:13:51 +0100
+ (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xVpq2-0003S9-U7; Tue, 24 Nov 2026 07:41:34 -0500
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xVpq0-0005Xd-UJ; Tue, 24 Nov 2026 07:41:34 -0500
+Received: by linux.microsoft.com (Postfix, from userid 1236)
+ id B50BF20B7166; Tue, 24 Nov 2026 04:41:26 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com B50BF20B7166
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1795524086;
+ bh=RV/ke6LzkeDpVnaTfQ16Iade1VVd6/Q02w3Yauu/hU4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jZyiPZNPs+/U1IrHJAoUpnULi7pUZ3QjTYHPRYXilmTdx+LHkFLC6S/d4V5y4GePY
+ nY/DiZ6WrphuXPJLpKxTSH6a8xakF03RQkAw957XAErR9/qsXxq5JP+MbGQQbcFHxm
+ TkPCUMSY1SNhjtPx4TpH9QJRK8xJJjiOenLZ0WWI=
+Date: Tue, 24 Nov 2026 04:41:26 -0800
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
+To: Magnus Kulke <magnuskulke@linux.microsoft.com>
+Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
+ Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: Re: [PATCH v6 08/14] accel/mshv: Add access_vp_regs synthetic proc
+ features
+Message-ID: <awWF9qhfluCzaZbM@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
+References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+ <20261001-mshv_accel_arm64_supp-v6-8-aefe5e76a0e3@linux.microsoft.com>
+ <awBMp+6l6DWP2EpA@example.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/intc/arm_gicv5: Fix value of the IRS_DEVARCH register
-Content-Language: en-US
-To: Zenghui Yu <zenghui.yu@linux.dev>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org
-References: <20261124120509.19746-1-zenghui.yu@linux.dev>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20261124120509.19746-1-zenghui.yu@linux.dev>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=aJ1lOr9m c=1 sm=1 tr=0 ts=6b057f82 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=EUspDBNiAAAA:8 a=nYj6kyQ59m4fXELB2ioA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-ORIG-GUID: F3dllgpYhfEBa91MF0i4uC3cW1GrrhOf
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI0MDA0NyBTYWx0ZWRfXwy3XcgCCjtii
- SlO6pRYZI2GVhxEXFBJdSMyVFBhT/H0GXQMAy3hYypkJOfZyTFsS3PyGD8rFdOd9EuezZQMPgrf
- KKzxQoS7hOxwA45TNXTl+4189+i0uso=
-X-Proofpoint-GUID: F3dllgpYhfEBa91MF0i4uC3cW1GrrhOf
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI0MDA0NyBTYWx0ZWRfX6Dy0Af7X4XEo
- J7/OqGA49gL+tANyeU7zvp7TJDdCi7160rwN8lGoqoCvyW061LPW3HaNGYenuVtotX0GuhuVR08
- 3TqfMIyzwOPwesOHMxqTBO9E+CPm45CAmwsdIFlYcIEfMkqjAQV2PSbS6OBMpZosZRy9/dPLbSu
- uxG5ezLEjtE4kdvn1bTyKS0yxm9070+QpLcVi1XwgIbBsKJ0Nu0542s6hUU6s3l+GLjVVKWqSDW
- 7JIY+eWsOF7LBzGP6s7s4uReJspvz63NMWxc2mwSwLD9q07MbecRcF62wO/K4TFTon+FK1JwDZT
- X0oDwKvBJaeuSGYh8JxcjpO1Y45JXKCkcZmlr7vT+R1CXO3mxfVCAv8eeb4CZ9aAp8N4fnkCMHt
- nDIzO4FJNuKZyHkqlwrwqkP5rlN4P1pku4OhHKhikmB7VALiEviyz4GI2GB9CueJjHiTQrEmXWu
- b4kmOy3Z3O/r9cX6mBA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-24_02,2026-11-23_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 phishscore=0 clxscore=1015 priorityscore=1501 malwarescore=0
- adultscore=0 bulkscore=0 suspectscore=0 impostorscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611240047
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <awBMp+6l6DWP2EpA@example.com>
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -152,24 +73,181 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 24/11/26 13:05, Zenghui Yu wrote:
-> The GICv5 spec says bits [31:21] of IRS_DEVARCH are 0x23b. We wrongly
-> shifted it by 31 instead of 21, so guests read 0x80105a19 rather than
-> 0x47705a19.
+On Fri, Nov 20, 2026 at 02:35:35PM +0100, Magnus Kulke wrote:
+> On Thu, Oct 01, 2026 at 10:52:53AM +0000, Aastha Rawat wrote:
+> > Enable access_vp_regs feature for regs. In arm64, this feature bit
+> > allows the guest to set VP registers using hypercall. This wasn't
+> > required for x86 because such registers are set using wrmsr instead of
+> > hypercall.
+> > 
+> > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+> > ---
+> >  accel/mshv/mshv-all.c     |  1 +
+> >  include/hw/hyperv/hvhdk.h | 91 ++++++++++++++++++++++++++++++++++++++++++++++-
+> >  2 files changed, 91 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
+> > index f3f1825b0b..9603f0360e 100644
+> > --- a/accel/mshv/mshv-all.c
+> > +++ b/accel/mshv/mshv-all.c
+> > @@ -235,6 +235,7 @@ static int set_synthetic_proc_features(int vm_fd)
+> >      features.tb_flush_hypercalls = 1;
+> >      features.synthetic_cluster_ipi = 1;
+> >      features.direct_synthetic_timers = 1;
+> > +    features.access_vp_regs = 1;
 > 
-> Fixes: 22232793ecb8 ("hw/intc/arm_gicv5: Implement CoreSight ID registers")
-> Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
-> ---
->   hw/intc/arm_gicv5.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> is this safe to use on x86_64? if not/unsure we can use the
+> mshv_arch_amend_proc_features to only set this bit on arm64
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+This is unconditionally enabled for MSHV in cloud-hypervisor so I
+believe it to be safe for x86.
+ 
+> >  
+> >      mshv_arch_amend_proc_features(&features);
+> >  
+> > diff --git a/include/hw/hyperv/hvhdk.h b/include/hw/hyperv/hvhdk.h
+> > index 9e6dcb22f6..d0adbea0c7 100644
+> > --- a/include/hw/hyperv/hvhdk.h
+> > +++ b/include/hw/hyperv/hvhdk.h
+> > @@ -94,11 +94,16 @@ union hv_partition_synthetic_processor_features {
+> >           */
+> >          uint64_t access_partition_reference_tsc:1;
+> >  
+> > +#if defined(__x86_64__)
+> 
+> Maybe we can use the `HOST_x86_64/AARCH64` qemu equivalent here.
+> 
+> > +
+> >          /*
+> >           * Partition has access to the guest idle reg. Corresponds to
+> >           * access_guest_idle_reg privilege.
+> >           */
+> >          uint64_t access_guest_idle_reg:1;
+> > +#else
+> > +        uint64_t reserved_z10:1;
+> > +#endif
+> >  
+> >          /*
+> >           * Partition has access to frequency regs. corresponds to
+> > @@ -110,11 +115,16 @@ union hv_partition_synthetic_processor_features {
+> >          uint64_t reserved_z13:1; /* Reserved for access_root_scheduler_reg */
+> >          uint64_t reserved_z14:1; /* Reserved for access_tsc_invariant_controls */
+> >  
+> > +#if defined(__x86_64__)
+> > +
+> >          /*
+> >           * Extended GVA ranges for HvCallFlushVirtualAddressList hypercall.
+> >           * Corresponds to privilege.
+> >           */
+> >          uint64_t enable_extended_gva_ranges_for_flush_virtual_address_list:1;
+> > +#else
+> > +        uint64_t reserved_z15:1;
+> > +#endif
+> >  
+> >          uint64_t reserved_z16:1; /* Reserved for access_vsm. */
+> >          uint64_t reserved_z17:1; /* Reserved for access_vp_registers. */
+> > @@ -161,13 +171,92 @@ union hv_partition_synthetic_processor_features {
+> >          /* HvCallRetargetDeviceInterrupt is supported. */
+> >          uint64_t retarget_device_interrupt:1;
+> >  
+> > +#if defined(__x86_64__)
+> >          /* HvCallRestorePartitionTime is supported. */
+> >          uint64_t restore_time:1;
+> >  
+> >          /* EnlightenedVmcs nested enlightenment is supported. */
+> >          uint64_t enlightened_vmcs:1;
+> >  
+> > -        uint64_t reserved:30;
+> > +        uint64_t nested_debug_ctl:1;
+> > +        uint64_t synthetic_time_unhalted_timer:1;
+> > +        uint64_t idle_spec_ctrl:1;
+> > +
+> > +#else
+> > +        uint64_t reserved_z31:1;
+> > +        uint64_t reserved_z32:1;
+> > +        uint64_t reserved_z33:1;
+> > +        uint64_t reserved_z34:1;
+> > +        uint64_t reserved_z35:1;
+> > +#endif
+> > +
+> > +#if defined(__aarch64__)
+> > +        /*
+> > +         * Register intercepts supported in V1. As more registers are supported
+> > +         * in future releases, new bits will be added here to prevent migration
+> > +         * between incompatible hosts.
+> > +         *
+> > +         * List of registers supported in V1:
+> > +         * 1. TPIDRRO_EL0
+> > +         * 2. TPIDR_EL1
+> > +         * 3. SCTLR_EL1 - Supports write intercept mask.
+> > +         * 4. VBAR_EL1
+> > +         * 5. TCR_EL1 - Supports write intercept mask.
+> > +         * 6. MAIR_EL1 - Supports write intercept mask.
+> > +         * 7. CPACR_EL1 - Supports write intercept mask.
+> > +         * 8. CONTEXTIDR_EL1
+> > +         * 9. PAuth keys (total 10 registers)
+> > +         * 10. HvArm64RegisterSyntheticException
+> > +         */
+> > +        uint64_t register_intercepts_v1:1;
+> > +#else
+> > +        uint64_t reserved_z36:1;
+> > +#endif
+> > +
+> > +        /* HvCallWakeVps is supported */
+> > +        uint64_t wake_vps:1;
+> > +
+> > +        /*
+> > +         * HvCallGet/SetVpRegisters is supported.
+> > +         * Corresponds to AccessVpRegisters privilege.
+> > +         * This feature only affects exo partitions.
+> > +         */
+> > +        uint64_t access_vp_regs:1;
+> > +
+> > +#if defined(__aarch64__)
+> > +        /* HvCallSyncContext/Ex is supported. */
+> > +        uint64_t sync_context:1;
+> > +#else
+> > +        uint64_t reserved_z39:1;
+> > +#endif /* __aarch64__ */
+> > +
+> > +        /*
+> > +         * Management VTL synic support is allowed.
+> > +         * Corresponds to the ManagementVtlSynicSupport privilege.
+> > +         */
+> > +        uint64_t management_vtl_synic_support:1;
+> > +
+> > +#if defined(__x86_64__)
+> > +        /*
+> > +         * Hypervisor supports guest mechanism to signal pending interrupts to
+> > +         * paravisor.
+> > +         */
+> > +        uint64_t proxy_interrupt_doorbell_support:1;
+> > +#else
+> > +        uint64_t reserved_z41:1;
+> > +#endif
+> > +
+> > +#if defined(__aarch64__)
+> > +        /* InterceptSystemResetAvailable is exposed. */
+> > +        uint64_t intercept_system_reset:1;
+> > +#else
+> > +        uint64_t reserved_z42:1;
+> > +#endif
+> > +
+> > +        /* Hypercalls for host MMIO operations are available. */
+> > +        uint64_t mmio_hypercalls:1;
+> > +
+> > +        uint64_t reserved:20;
+> >      };
+> >  };
+> >  
+> > 
+> > -- 
+> > 2.45.4
 

@@ -1,108 +1,124 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E2B6606A321
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 09:01:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74A0D606A326
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 10:36:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=rbEkfW65
+	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=dgcCxzbG
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVmP1-0005Bt-RC; Tue, 24 Nov 2026 04:01:28 -0500
+	id 1xVnsG-0001j3-9h; Tue, 24 Nov 2026 05:35:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVmOj-00057y-CZ
- for qemu-arm@nongnu.org; Tue, 24 Nov 2026 04:01:09 -0500
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xVmOf-0002BL-PN
- for qemu-arm@nongnu.org; Tue, 24 Nov 2026 04:01:07 -0500
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-6767d92cde6so4586809d50.0
- for <qemu-arm@nongnu.org>; Tue, 24 Nov 2026 01:01:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795510862; cv=none;
- d=google.com; s=arc-20260327;
- b=kkZSJfYb0TqEWp1pIOuiEoCOmNxfpZB1hbYJQgJchx/Ooe8r9LPMhYE07Zp8xTf50x
- n6WkgX7QMC7zgcg5kw8nRV/CRedOuMWB81a+cJ2EJ1m8/znJsr7Op/o5BTeFdtNyuxSl
- FCiYObEyoIJ1G5H9sNcv4s3KNL3uxAWt3QWFJkIYZcR9oUpsDfTZ42BtBusxd4vYfZb2
- WTfsEDR3gHzAIHd6asr150xNykzrwAshMM10efJlb34hf995VMCUx4b4JqgaEHxyd02w
- r4f17GG1RVlW0ubquUQck+VEr0YS+x7S8Nw6V6Juomed/u8qe7u/0mXPp3SuEInssjq5
- 5kFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=f7J2Bb6ofoI2IDgrYAe7OxCTHbHfMsQPF/z0Y+0Aw3M=;
- fh=AmFKx/kz3ED4pX6GaJjNUjwNCMHB9GC8hJ6HvGdBJmk=;
- b=k+2TxvI850eURjO35qH1KGkDiUygK6wim4flQ2+FOjD0kaeOSDlNpe6o70/qwURtsT
- 2eAJlBytsMDjQ+mfw9KuwvM+IsIXlwhj7GhX5HborEG9MBEWOUhM7RLuPgMywkWfWkQJ
- FAyFnwXryo7iTCOw2qDm9Ew137Bw16IZFs5EP0j3RLqBIcnoqsdiTbbkvL2K1r6Oy6db
- WiKA1DxSgEDjHLdIN1iQOJWdlKNEXQwoaDAz8X1Oet4Mc0+B5dNiVJQLmfKpdKGOvMPU
- Q1FCgexnc6b/y0KRmCdYyXlKMjs0DRd++n1hPMYe6ayhmxAUtXAY+EjFOjWSKMnOiWj2
- TBlQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795510862; x=1796115662; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=f7J2Bb6ofoI2IDgrYAe7OxCTHbHfMsQPF/z0Y+0Aw3M=;
- b=rbEkfW65WACfabb7fdiesT78yRXBPzjhn9mIZMSDd/v1HfsAjWTtRSqGWAxw2LW44p
- Ls+CgAUWZ+02BwglGsdhR+HimM4/UJxpT0QYQvojPZDL6e6jJkZfK5Vulk8bjG99532T
- 3Vj6QQd6NS/HNf3yb0Lc26CHDWQkLXPe137arTGBRm4/+lrqrGhIeh+EuZdtbqBOD4n2
- oR08k082hvnMv1Y5T1jeGc5B1PReuJFSA/5WKSfFsgWJ01sLbmpykGBm9w6++Me/SLmW
- CIdPvIjM44jUzdFL27iMG+gGarIQ0AZASPCDaTWM4W446P3sSPHKAGwlhInUuJmWQH43
- K5PQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795510862; x=1796115662;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=f7J2Bb6ofoI2IDgrYAe7OxCTHbHfMsQPF/z0Y+0Aw3M=;
- b=gKkadP4wnrYSkYVz2QdZGuU1fuGDpOLOOl2x2o69ennMDkREw1AiPkDzkPCybcv9xp
- JJQD6XalYXHsXjxppk5UQ4fbXRwfda6fIz5y4L3IYer6GxSV0AckKus2z1Vilx0+Gpcp
- nrQ5369w64Maqa1Yp3WRRC5/SLFfZMjUNxKdyBuA1yylLHrizeGF/47RfEFTTCl/1ZEF
- j0Lb7AbifB6lUL0pz/SKOdYjWA8FNRnzs0E2ia/PpodXFfaWhvLnj0EMEMvnOp1NAONM
- jka87um/PEswtNLSlbEz9/uaZcQ+BQPhmVSjq38Nq8IZnD7gWhLrS2SCRcd9J2gURf8r
- mwzA==
-X-Gm-Message-State: APuU4Z857iPOZ2p0I6CG+sWK/6PZ6y0kM7oGtYhax/QFcEaeXfTPSuf0
- DMTBd7drwnYOxNDdElfjwjybDXK98iL02ANjZb6/JCQK6sK38EDwSXap6Fona1XMLmoxzaz8PvB
- 43dDp/kW3mj0COoAhcX3SXZUjD6QpSxnbLHd4hdMrdcZnMv3VY8Dv
-X-Gm-Gg: AZFdTZcscFvzy3Vi8Qh+kCCbre+vdt5rpXoK2mZJzlN21YMAVtCeTueTCi93/XVwkje
- /ty/ABWW+0yy6pXQsKI5+yBK2jMXsdMSiiMOcqMRIO58eIEGnEWAPO/G+6d5vU1SWbUeI9TmVqP
- 8RFURLpi1pva6VBBQGH87k6zf9bRpHn+zuHxxS1RdJRB8xPilv68mwiFKhn6hrVftLJNU0WXk4S
- TBCs3JqWyGk2xfG0OshweUDMyd63P1yNzgBexKNwBEFNOU8xyW0TVw/Mnwj5rw06EMJdaE484OP
- nqAejTRZAxM9w7/55mKFD33/BDguPXv4xjpcj19m38dQsWmKBx4pkRtq3wR8pGp+kv8FjzcWidf
- c9Kl+EsWAK7LdSqNtAMZGKXuQxREAy4bmampB942GsgxPXS9bcm3PS8jP8VC6xiruHd/Qr08yP5
- 21lxRK3ybSkvSHwCKI+2aW
-X-Received: by 2002:a05:690e:1185:b0:67d:e36c:6beb with SMTP id
- 956f58d0204a3-67e03d05eebmr4224825d50.96.1795510861655; Tue, 24 Nov 2026
- 01:01:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xVnsE-0001iC-2N
+ for qemu-arm@nongnu.org; Tue, 24 Nov 2026 05:35:42 -0500
+Received: from smtpout8.mo539.mail-out.ovh.net ([51.210.91.47])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xVns9-0003Di-Nc
+ for qemu-arm@nongnu.org; Tue, 24 Nov 2026 05:35:40 -0500
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4jYfN56HKqz4Dxs;
+ Tue, 24 Nov 2026 10:35:33 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 24 Nov 2026 10:35:33 +0000 (UTC)
+Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.50])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4jYfN41rQXz1ySW; Tue, 24 Nov 2026 10:35:32 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.0])
+ (Authenticated sender: clg@kaod.org)
+ by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 534BF192434D; Tue, 24 Nov 2026 10:35:31 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-112S006fd1a8db2-ac81-471c-994e-842e0cd17772,
+ 8999D460E3350DC70288BFBB7677D99C31D99569) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <2dd9fcd2-8fec-4b38-8900-24566d5ff3f7@kaod.org>
+Date: Tue, 24 Nov 2026 11:35:30 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261119165546.3050013-1-peter.maydell@linaro.org>
- <20261124062150.75285-1-kmehltretter@gmail.com>
-In-Reply-To: <20261124062150.75285-1-kmehltretter@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Nov 2026 09:00:49 +0000
-X-Gm-Features: Aa3M54rAY9w6g9b6dmqzSs9hdoXVXBEQZ3JVccFVLHYCk5KFRo1jd4ymZ5s5qZE
-Message-ID: <CAFEAcA8kLHD9MXqYVma8mpHNL4eN2DoizXJtuYiSb638XNLtaQ@mail.gmail.com>
-Subject: Re: [PATCH for-11.2] target/arm: Handle "PMU disabled" in migration
- validate functions
-To: Karl Mehltretter <kmehltretter@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>, 
- Jim MacArthur <jim.macarthur@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 00/11] Add SSP/TSP power control and DRAM remap support
+ for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20261124055150.1328856-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 7526640879377820787
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEBPVgqrFemnpC8Revg92emahnBkFOgLtot8y3vVtEA/+R+WRwIPWPkIlB7S2wC9TB4RITTxZD5nFWCszet8I8iqGevlhYDnWJxJMNg4Qm/gwBhaM1RK9ZiID+XkQbpduu4gd73FCg+rTbPo+wpwroS9eStnj3RmT4XigGVkC5rGgpEtIuzTbMSs0RnTbwAjK/XtAknVu1DfcQ6SfLZGucu82wwivBT0OXJq9cTMm8nY9Pl1cHo5e3f1cXnhM419G6yJfkHpOCws68u+kDkrTvSw20DDqvj5CA3yUx6hgKD+knHXWrpdVrfjDEZ2MTxApS8wutA7sDq4SJH1oCB0IkHY3FKvy8cIoQ18Ml/FWsqzc/xJUdbvvirhfphVbvlNaj+TpGYY69HHgbNdse5p/eylm7A5lBpXgmTbNKE+Fh45Y7YX1nePoSfxFOGBMWKDWtj9Q3YnRADmuAK6clCyU7DUSAIqOWQ6Qo7rSnJozKN3QtOZUH35balehsM10Qz7PYMNx9qGiZdWfuLiMLliW/tlwNu9Y/bR9zA7sTYTwobTLPIfM2ZcCaxnU/PIBzT8IbIae0/Y6gYTfEXFCianyzdabd4Du5VZKeysN50wiG+SeF3SxGHFxdH2S6rigsPLgyPQhx2GbknN9n+L8d1CCoiKRMKG+GONHR7SveMrZINwg
+DKIM-Signature: a=rsa-sha256; bh=BV4BLuEJ2Ojuun4FlEPEEBMAX7vVBg05v654ZmGzoLg=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1795516534; v=1;
+ b=dgcCxzbGFmUZRIB1ndAw+fNLcbVy8k9e4v1NDo/Butn9TsPoByigFFbiXHZy1+T9hLp2NAGj
+ 4TwDtET/qeX7C4iyJ+0D2b/vIvbg+aZOImo77+Z6OsqUf/fiXRfwGm/quOkr2e2EFATjz4BDhd1
+ Pf/VYTrMxLn39JL5DyFdOm6II+5724IU6Ed33PkgUuufqGAbaFX1nPB4hQHXZ2v9WjrmK64gbSr
+ XW4uZD6IBHyuLVmOu2tCfK6K+rsy93qJ0+c+xkdEWOoyEEwK8OV32RZc+7h16zbMvArOF6cgKXG
+ B8WslgEmed7GotZCsz5ABiziXLy5GMWbiFwhQVrh613pg==
+Received-SPF: pass client-ip=51.210.91.47; envelope-from=clg@kaod.org;
+ helo=smtpout8.mo539.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,28 +130,114 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 24 Nov 2026 at 06:21, Karl Mehltretter <kmehltretter@gmail.com> wrote:
->
-> On Thu, 19 Nov 2026 at 16:55, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > @@ -693,14 +694,16 @@ static bool s_rnr_vmstate_validate(void *opaque, int version_id)
-> >  {
-> >      ARMCPU *cpu = opaque;
-> >
-> > -    return cpu->env.pmsav7.rnr[M_REG_S] < cpu->pmsav7_dregion;
-> > +    return cpu->env.pmsav7.rnr[M_REG_S] < cpu->pmsav7_dregion ||
-> > +        (cpu->pmsav7_dregion == 0 && cpu->env.pmsav7.rnr[M_REG_NS] == 0);
-> >  }
->
-> the second clause checks rnr[M_REG_NS] == 0. Should this be M_REG_S too ?
+On 11/24/26 06:51, Jamin Lin wrote:
+> This series improves AST2700 platform support by aligning SSP/TSP
+> power and reset behavior with hardware, and enabling DRAM remapping
+> required for proper firmware boot flow.
+> 
+> This series depends on:
+> [v4,0/9] Refactor AST2700 SCU preparation for coprocessors
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg1209540.html
+> 
+> v1:
+>    1. The changes move DRAM/SDMC initialization earlier to support memory
+> aliasing, add DRAM aliases for SSP/TSP SDRAM remap, and implement
+> SSP/TSP reset, power-on, and remap controls via SCU registers.
+>    2. With these updates, SSP and TSP can be booted via PSP and load their
+> binaries from DRAM. Functional tests and documentation are updated
+> accordingly.
+> 
+> v2:
+>    Fix "make check" failure caused by both AST2700 and AST1700 realizing the same
+>    TYPE_AST2700_SCU model.
+>    
+> v3:
+>   1. Drop "Move DRAM and SDMC initialization earlier to support memory aliasing"
+>   2. Support SPI/FMC FIFO Mode
+>   3. Add unimplemented devices
+> 
+> v4:
+>   1. Introduce Aspeed2700SCU subclass and separate from generic SCU.
+>   2. Add separate reset handler for AST2700 SCUIO
+>   3. Add AST2700 SCUIO RNG control and data registers
+>   4. Share single SCUIO instance across PSP, SSP, and TSP
+>   5. Fix AST2700 FC hardware strap settings
+> 
+> v5:
+>   1. To speed up the review process, move the following patches into a separate
+>      patch series, as they are not directly related to the main topic of this series:
+>   
+>      [v4,01/21] hw/misc/aspeed_scu: Introduce Aspeed2700SCU subclass and separate from generic SCU
+>      [v4,02/21] hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO
+>      [v4,11/21] hw/arm/ast27x0: Share FMC controller with SSP and TSP
+>      [v4,12/21] hw/arm/aspeed_ast27x0: Add unimplemented Privilege Controller MMIO regions for SSP/TSP (Merged)
+>      [v4,13/21] hw/arm/aspeed_ast27x0: Add unimplemented OTP controller MMIO regions for SSP/TSP (Merged)
+>      [v4,14/21] hw/block/m25p80: Implement volatile status register write enable for Winbond
+>      [v4,15/21] hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for AST2700
+>      [v4,16/21] hw/misc/aspeed_scu: Drop noisy unhandled read logs for AST2700 SCU/SCUIO (Merged)
+>      [v4,17/21] hw/misc/aspeed_scu: Add AST2700 SCUIO RNG control and data registers (Merged)
+>      [v4,18/21] hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP
+>      [v4,19/21] hw/arm/aspeed_ast27x0-fc: Fix hardware strap settings (Merged)
+>      
+>    2. Add memory_region_transaction_begin() and memory_region_transaction_commit()
+>       to protect the transaction.
+> 
+> v6:
+>    1. Move the DRAM remap MemoryRegions from the SCU to the SSP/TSP
+>       coprocessor state itself.
+>    2. Set ssp_cpuid/tsp_cpuid directly once the SSP/TSP's armv7m core is
+>       realized, instead of pre-guessing them from board code via a QOM
+>       property.
+>    3. Correct AST2700 SCU to SCUIO to AST1700
+> 
+> v7:
+>    1. SSP/TSP no longer write into the SCU; the board wires the remap
+>       aliases and cpu_index after realize.
+>    2. Drop the redundant AST2700 SCU realize wrapper.
+> 
+> Jamin Lin (11):
+>    hw/arm/aspeed_ast1700: Correct AST2700 SCU to SCUIO
+>    hw/arm/ast27x0: Start SSP in powered-off state to match hardware
+>      behavior
+>    hw/arm/ast27x0: Start TSP in powered-off state to match hardware
+>      behavior
+>    hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap
+>    hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
+>    hw/misc/aspeed_scu: Implement SSP reset and power-on control via SCU
+>      registers
+>    hw/misc/aspeed_scu: Implement TSP reset and power-on control via SCU
+>      registers
+>    hw/misc/aspeed_scu: Add SCU support for SSP SDRAM remap
+>    hw/misc/aspeed_scu: Add SCU support for TSP SDRAM remap
+>    tests/functional/aarch64/test_aspeed_ast2700fc: Boot SSP/TSP via PSP
+>      and load binaries from DRAM
+>    docs: Add support vbootrom and update Manual boot for ast2700fc
+> 
+>   docs/system/arm/aspeed.rst                    |  42 ++-
+>   include/hw/arm/aspeed_ast1700.h               |   2 +-
+>   include/hw/arm/aspeed_coprocessor.h           |   2 +
+>   include/hw/misc/aspeed_scu.h                  |   5 +
+>   hw/arm/aspeed_ast1700.c                       |  22 +-
+>   hw/arm/aspeed_ast27x0-fc.c                    |  16 ++
+>   hw/arm/aspeed_ast27x0-ssp.c                   |  31 +++
+>   hw/arm/aspeed_ast27x0-tsp.c                   |  24 ++
+>   hw/misc/aspeed_scu.c                          | 259 +++++++++++++++++-
+>   .../aarch64/test_aspeed_ast2700fc.py          |  29 +-
+>   10 files changed, 397 insertions(+), 35 deletions(-)
+> 
 
-Yikes, thanks for catching that cut-and-paste error.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
--- PMM
+Thanks,
+
+C.
+
 

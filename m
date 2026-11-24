@@ -1,68 +1,126 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 13BBA606A333
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 13:08:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76B4F606A31E
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 15:03:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=MLnpRZpm
+	dkim=pass (2048-bit key, unprotected) header.d=kaod.org header.i=@kaod.org header.a=rsa-sha256 header.s=ovhmo393970-selector1 header.b=WPi8GN4A
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVqFv-0006S5-Nw; Tue, 24 Nov 2026 08:08:19 -0500
+	id 1xVs3O-0004zY-ML; Tue, 24 Nov 2026 10:03:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xVqFt-0006Rn-E6; Tue, 24 Nov 2026 08:08:17 -0500
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xVqFn-0001lG-Eh; Tue, 24 Nov 2026 08:08:16 -0500
-Received: by linux.microsoft.com (Postfix, from userid 1236)
- id 97BC420B7166; Tue, 24 Nov 2026 05:08:05 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 97BC420B7166
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1795525685;
- bh=A1NIEVYLNQFyJDw66BCXNCtb7KiovPrl90uyB2LIVFE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MLnpRZpm84klkcWcaFZcJ2Di0+ZfSNWDHsjBju2q8JgqllSPVGcG4SAUh6qmtOa6M
- Nw1snV1nKBNGFvHqMmOabwp9Lzjqb+ixW/VQs5hevpaiIE1Sz/LZGpuv2+7Tx+oRQ4
- w04i3rltKTNgJfNrWYZIhPYckCc3ObSARuadBD5g=
-Date: Tue, 24 Nov 2026 05:08:05 -0800
-From: Aastha Rawat <aastharawat@linux.microsoft.com>
-To: Magnus Kulke <magnuskulke@linux.microsoft.com>
-Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
- Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Anirudh Rayabharam <anirudh@anirudhrb.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
-Subject: Re: [PATCH v6 08/14] accel/mshv: Add access_vp_regs synthetic proc
- features
-Message-ID: <awWMNQ2r9HWaze8u@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
-References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
- <20261001-mshv_accel_arm64_supp-v6-8-aefe5e76a0e3@linux.microsoft.com>
- <awBMp+6l6DWP2EpA@example.com>
- <awWF9qhfluCzaZbM@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xVs2s-0004hX-7e
+ for qemu-arm@nongnu.org; Tue, 24 Nov 2026 10:02:58 -0500
+Received: from smtpout3.mo536.mail-out.ovh.net ([51.210.91.12])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xVs2e-0007V4-VJ
+ for qemu-arm@nongnu.org; Tue, 24 Nov 2026 10:02:48 -0500
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [79.137.60.225])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4jYmJJ3MBsz8Cwg;
+ Tue, 24 Nov 2026 15:02:40 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alistair@alistair23.me>; Tue, 24 Nov 2026 15:02:40 +0000 (UTC)
+Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.13])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4jYmJJ2Gwjz6Mct; Tue, 24 Nov 2026 15:02:40 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.5])
+ (Authenticated sender: clg@kaod.org)
+ by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 891CF192434E; Tue, 24 Nov 2026 15:02:38 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R00167194db8-a23b-4247-aaf0-6c7b13e87c66,
+ 8999D460E3350DC70288BFBB7677D99C31D99569) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <766971bd-722c-4c25-bea0-dd2040a8c862@kaod.org>
+Date: Tue, 24 Nov 2026 16:02:37 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <awWF9qhfluCzaZbM@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] test/qtest/aspeed_smc-test: Send write enable
+ before each page program command
+To: Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org,
+ qemu-stable@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
+References: <20261123-m25p80_write_enable_fix-v2-0-0ac94f99e91f@oss.tenstorrent.com>
+ <20261123-m25p80_write_enable_fix-v2-1-0ac94f99e91f@oss.tenstorrent.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20261123-m25p80_write_enable_fix-v2-1-0ac94f99e91f@oss.tenstorrent.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 12038121805666626569
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGYSW5YyaWiQR9ynU6/phIMvr/+pl1OhkG1oEiyEQVGqRmxQ461yaBwg2e3w9Xgf+A1dCuLBbbcKG8uZsZ7fFyBO22euCYLPzhPxuHlwktgkyWKa9SvdlnyjhKMT61eKdDNEm0Og5EkQn2WpCh46WOG64osffeGh6C3TsfjegEh2C0O3IJkoRcs3Yl4x1DpyHlS+GlpBPR5XST4UbNVLsx59P2Mw+ffvkVn474VB5UwoXSIoKxWfqpthbc3CTHJMuj/EEuwfolNkMoZQZOoA4MgbLMI2G+ZpUPYAZvovNrW9Mhgz8XvIaoYxAQVHqKqEKzTyyQQzQis3zLZ8UolxR5HKGR0/LRx/0WRZ3SUDZKrvE7Qv4cncq2kFnzi0K1WyFuojdu0u9SUpabmOdEG8oWGKFIqe0iupKO8Zu7lqTCHsTia/nJcMskDfdezxlebyVrib/NO9pzLJenR2tZ4R3HB7GFZC6pQJReAgmXDHFfHiD646pxNT0bE2AIV9GAyyBIyXEcpAdv82VaEJXgaDFiLXTtEJdmIi4xb8JMNYa8P1Ww3S8JwXqPrNN9ioK7sIlLBkwyeKgzIY7laDV12IvP/RVMJInKwpjQMbHWuiRByCh6gZfm0esZEa/H1gvb4yPpPnHWj8Im/Br5fLuek2jX5QjPWV0gOvnGb1NHzqtl8GQ
+DKIM-Signature: a=rsa-sha256; bh=Jx3htNZVUdHWtBdyZLaq+qK5T0dO4pElSAkXYEBfbD8=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1795532561; v=1;
+ b=WPi8GN4APunRaQj+Vr876SHPILVfP6NzEy2k7N31DsbjynJQgl67ZBitZyMc/65gyPVaDHHh
+ KfcbYXnb7959pbg81sM1eZuJck/XSkHhhl+4D8h0ok8MmEzN4eVv2K9a5p5G0L6ZV8NG03XRxUq
+ Sf0UMpyK/chxZYKB6XoVS53vkquMSOfyxImBnDTy2fDLYplYsKxiJgGOG1H6+BNEzQwo2r6Regn
+ lYjpfv3rE4MPqRas4gMcVBM8k2pw0Ed7gmYcWws7bwWr3cucWFuxloNK0m5c+sDRHGthzRV404J
+ bCc4IAIAfcUQ44XY/VhbGc+5jyOFKNMKwmMwiUHlD3P6g==
+Received-SPF: pass client-ip=51.210.91.12; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo536.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,187 +132,116 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Nov 24, 2026 at 04:41:26AM -0800, Aastha Rawat wrote:
-> On Fri, Nov 20, 2026 at 02:35:35PM +0100, Magnus Kulke wrote:
-> > On Thu, Oct 01, 2026 at 10:52:53AM +0000, Aastha Rawat wrote:
-> > > Enable access_vp_regs feature for regs. In arm64, this feature bit
-> > > allows the guest to set VP registers using hypercall. This wasn't
-> > > required for x86 because such registers are set using wrmsr instead of
-> > > hypercall.
-> > > 
-> > > Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
-> > > ---
-> > >  accel/mshv/mshv-all.c     |  1 +
-> > >  include/hw/hyperv/hvhdk.h | 91 ++++++++++++++++++++++++++++++++++++++++++++++-
-> > >  2 files changed, 91 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-> > > index f3f1825b0b..9603f0360e 100644
-> > > --- a/accel/mshv/mshv-all.c
-> > > +++ b/accel/mshv/mshv-all.c
-> > > @@ -235,6 +235,7 @@ static int set_synthetic_proc_features(int vm_fd)
-> > >      features.tb_flush_hypercalls = 1;
-> > >      features.synthetic_cluster_ipi = 1;
-> > >      features.direct_synthetic_timers = 1;
-> > > +    features.access_vp_regs = 1;
-> > 
-> > is this safe to use on x86_64? if not/unsure we can use the
-> > mshv_arch_amend_proc_features to only set this bit on arm64
+On 11/23/26 16:21, Anirudh Srinivasan wrote:
+> The M25P80 specification [1] dictates that a write enable (WREN) must
+> be sent before a page program (PP), and that the write enable latch
+> (WEL) is reset at some point before the PP command has finished.
 > 
-> This is unconditionally enabled for MSHV in cloud-hypervisor so I
-> believe it to be safe for x86.
->  
-> > >  
-> > >      mshv_arch_amend_proc_features(&features);
-> > >  
-> > > diff --git a/include/hw/hyperv/hvhdk.h b/include/hw/hyperv/hvhdk.h
-> > > index 9e6dcb22f6..d0adbea0c7 100644
-> > > --- a/include/hw/hyperv/hvhdk.h
-> > > +++ b/include/hw/hyperv/hvhdk.h
-> > > @@ -94,11 +94,16 @@ union hv_partition_synthetic_processor_features {
-> > >           */
-> > >          uint64_t access_partition_reference_tsc:1;
-> > >  
-> > > +#if defined(__x86_64__)
-> > 
-> > Maybe we can use the `HOST_x86_64/AARCH64` qemu equivalent here.
+> The current tests that make use of page program send WREN only once at
+> the beginning, before issuing multiple PP commands. The m25p80
+> implementation in QEMU doesn't deassert WEL at the end of each PP
+> operation (so this isn't an issue currently), but real hardware would
+> unset WEL at the end of the first PP command the second PP command would
+> fail. Update the tests to send WREN before each PP command.
+> 
+> The current m25p80 model does not reset the WEL at the end of each PP
+> command. This is a bug, and a subsequent commit will fix this.
+> 
+> [1] https://www.alldatasheet.com/datasheet-pdf/download/22807/STMICROELECTRONICS/M25P80.html
+> 
+> Fixes: 3e62a32ddb89 ("test/qtest: Introduce a new aspeed-smc-utils.c to place common testcases")
+> Cc: qemu-stable@nongnu.org
+> Acked-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>
+> ---
+>   tests/qtest/aspeed-smc-utils.c | 24 +++++++++++++++++++-----
+>   1 file changed, 19 insertions(+), 5 deletions(-)
+> 
+> diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.c
+> index 146332240d..85e883d0b8 100644
+> --- a/tests/qtest/aspeed-smc-utils.c
+> +++ b/tests/qtest/aspeed-smc-utils.c
+> @@ -218,12 +218,23 @@ static void read_page_mem(const AspeedSMCTestData *data, uint32_t addr,
+>   typedef void (*read_page_mem_fn)(const AspeedSMCTestData *data,
+>                                    uint32_t addr, uint32_t *page);
+>   
+> +static void flash_write_enable(const AspeedSMCTestData *data)
+> +{
+> +    spi_ctrl_start_user(data);
+> +    flash_writeb(data, 0, WREN);
+> +    spi_ctrl_stop_user(data);
+> +}
+> +
+>   static void write_page_mem(const AspeedSMCTestData *data, uint32_t addr,
+>                              uint32_t write_value)
+>   {
+> -    spi_ctrl_setmode(data, CTRL_WRITEMODE, PP);
+> -
+>       for (int i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+> +        /* Send write enable before each Page Program */
+> +        flash_write_enable(data);
 
-Replying to the second point I missed in my last message...
+aspeed_smc_test_write_page_mem() calls :
 
-Yes, using HOST_X86_64/HOST_AARCH64 also removes the checkpatch.pl
-warnings. Will do.
+       flash_writeb(test_data, 0, WREN);
 
-> > > +
-> > >          /*
-> > >           * Partition has access to the guest idle reg. Corresponds to
-> > >           * access_guest_idle_reg privilege.
-> > >           */
-> > >          uint64_t access_guest_idle_reg:1;
-> > > +#else
-> > > +        uint64_t reserved_z10:1;
-> > > +#endif
-> > >  
-> > >          /*
-> > >           * Partition has access to frequency regs. corresponds to
-> > > @@ -110,11 +115,16 @@ union hv_partition_synthetic_processor_features {
-> > >          uint64_t reserved_z13:1; /* Reserved for access_root_scheduler_reg */
-> > >          uint64_t reserved_z14:1; /* Reserved for access_tsc_invariant_controls */
-> > >  
-> > > +#if defined(__x86_64__)
-> > > +
-> > >          /*
-> > >           * Extended GVA ranges for HvCallFlushVirtualAddressList hypercall.
-> > >           * Corresponds to privilege.
-> > >           */
-> > >          uint64_t enable_extended_gva_ranges_for_flush_virtual_address_list:1;
-> > > +#else
-> > > +        uint64_t reserved_z15:1;
-> > > +#endif
-> > >  
-> > >          uint64_t reserved_z16:1; /* Reserved for access_vsm. */
-> > >          uint64_t reserved_z17:1; /* Reserved for access_vp_registers. */
-> > > @@ -161,13 +171,92 @@ union hv_partition_synthetic_processor_features {
-> > >          /* HvCallRetargetDeviceInterrupt is supported. */
-> > >          uint64_t retarget_device_interrupt:1;
-> > >  
-> > > +#if defined(__x86_64__)
-> > >          /* HvCallRestorePartitionTime is supported. */
-> > >          uint64_t restore_time:1;
-> > >  
-> > >          /* EnlightenedVmcs nested enlightenment is supported. */
-> > >          uint64_t enlightened_vmcs:1;
-> > >  
-> > > -        uint64_t reserved:30;
-> > > +        uint64_t nested_debug_ctl:1;
-> > > +        uint64_t synthetic_time_unhalted_timer:1;
-> > > +        uint64_t idle_spec_ctrl:1;
-> > > +
-> > > +#else
-> > > +        uint64_t reserved_z31:1;
-> > > +        uint64_t reserved_z32:1;
-> > > +        uint64_t reserved_z33:1;
-> > > +        uint64_t reserved_z34:1;
-> > > +        uint64_t reserved_z35:1;
-> > > +#endif
-> > > +
-> > > +#if defined(__aarch64__)
-> > > +        /*
-> > > +         * Register intercepts supported in V1. As more registers are supported
-> > > +         * in future releases, new bits will be added here to prevent migration
-> > > +         * between incompatible hosts.
-> > > +         *
-> > > +         * List of registers supported in V1:
-> > > +         * 1. TPIDRRO_EL0
-> > > +         * 2. TPIDR_EL1
-> > > +         * 3. SCTLR_EL1 - Supports write intercept mask.
-> > > +         * 4. VBAR_EL1
-> > > +         * 5. TCR_EL1 - Supports write intercept mask.
-> > > +         * 6. MAIR_EL1 - Supports write intercept mask.
-> > > +         * 7. CPACR_EL1 - Supports write intercept mask.
-> > > +         * 8. CONTEXTIDR_EL1
-> > > +         * 9. PAuth keys (total 10 registers)
-> > > +         * 10. HvArm64RegisterSyntheticException
-> > > +         */
-> > > +        uint64_t register_intercepts_v1:1;
-> > > +#else
-> > > +        uint64_t reserved_z36:1;
-> > > +#endif
-> > > +
-> > > +        /* HvCallWakeVps is supported */
-> > > +        uint64_t wake_vps:1;
-> > > +
-> > > +        /*
-> > > +         * HvCallGet/SetVpRegisters is supported.
-> > > +         * Corresponds to AccessVpRegisters privilege.
-> > > +         * This feature only affects exo partitions.
-> > > +         */
-> > > +        uint64_t access_vp_regs:1;
-> > > +
-> > > +#if defined(__aarch64__)
-> > > +        /* HvCallSyncContext/Ex is supported. */
-> > > +        uint64_t sync_context:1;
-> > > +#else
-> > > +        uint64_t reserved_z39:1;
-> > > +#endif /* __aarch64__ */
-> > > +
-> > > +        /*
-> > > +         * Management VTL synic support is allowed.
-> > > +         * Corresponds to the ManagementVtlSynicSupport privilege.
-> > > +         */
-> > > +        uint64_t management_vtl_synic_support:1;
-> > > +
-> > > +#if defined(__x86_64__)
-> > > +        /*
-> > > +         * Hypervisor supports guest mechanism to signal pending interrupts to
-> > > +         * paravisor.
-> > > +         */
-> > > +        uint64_t proxy_interrupt_doorbell_support:1;
-> > > +#else
-> > > +        uint64_t reserved_z41:1;
-> > > +#endif
-> > > +
-> > > +#if defined(__aarch64__)
-> > > +        /* InterceptSystemResetAvailable is exposed. */
-> > > +        uint64_t intercept_system_reset:1;
-> > > +#else
-> > > +        uint64_t reserved_z42:1;
-> > > +#endif
-> > > +
-> > > +        /* Hypercalls for host MMIO operations are available. */
-> > > +        uint64_t mmio_hypercalls:1;
-> > > +
-> > > +        uint64_t reserved:20;
-> > >      };
-> > >  };
-> > >  
-> > > 
-> > > -- 
-> > > 2.45.4
+
+Should we keep it ?
+
+> +
+> +        /* move out USER mode to use direct writes to the AHB bus */
+
+why ?
+
+> +        spi_ctrl_setmode(data, CTRL_WRITEMODE, PP);
+> +
+>           flash_writel(data, addr + i * 4, write_value);
+>       }
+>   }
+> @@ -468,10 +479,13 @@ void aspeed_smc_test_write_page_mem(const void *data)
+>       flash_writeb(test_data, 0, WREN);
+>       spi_ctrl_stop_user(test_data);
+>   
+> -    /* move out USER mode to use direct writes to the AHB bus */
+> -    spi_ctrl_setmode(test_data, CTRL_WRITEMODE, PP);
+> -
+>       for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+> +        /* Send write enable before each Page Program */
+> +        flash_write_enable(test_data);
+> +
+> +        /* move out USER mode to use direct writes to the AHB bus */
+> +        spi_ctrl_setmode(test_data, CTRL_WRITEMODE, PP);
+> +
+>           flash_writel(test_data, my_page_addr + i * 4,
+>                  make_be32(my_page_addr + i * 4));
+
+Can't we call write_page_mem() instead ? If possible, the helper
+flash_write_enable() becomes useless then.
+
+Anyhow why isn't flash_write_enable() used elsewhere ?
+
+Also, all these routines  :
+
+	aspeed_smc_test_erase_sector()
+	aspeed_smc_test_erase_all()
+	test_write_page()
+	test_read_page_mem()
+	aspeed_smc_test_write_page_qpi()
+	aspeed_smc_test_write_page_datafifo()
+	aspeed_smc_test_read_page_datafifo()
+
+call the page program OP. Probably PP is called only once and the
+routines are immune to the WEL clear in patch 2. Are we sure of that ?
+
+Thanks,
+
+C.
 

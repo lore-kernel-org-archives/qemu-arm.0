@@ -1,37 +1,38 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2D23A606A322
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 11:32:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 43C61606A321
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Nov 2026 11:56:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=g0cwfmOL
+	dkim=pass (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=Y4FA9muY
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xVokn-0001HX-Lo; Tue, 24 Nov 2026 06:32:05 -0500
+	id 1xVp8S-0000KN-8E; Tue, 24 Nov 2026 06:56:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xVokm-0001HF-3i; Tue, 24 Nov 2026 06:32:04 -0500
+ id 1xVp8O-0000Jx-Oa; Tue, 24 Nov 2026 06:56:29 -0500
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xVokk-0005E1-0y; Tue, 24 Nov 2026 06:32:03 -0500
+ id 1xVp8M-0000nz-LJ; Tue, 24 Nov 2026 06:56:28 -0500
 Received: by linux.microsoft.com (Postfix, from userid 1236)
- id 85F3A20B7166; Tue, 24 Nov 2026 03:31:56 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 85F3A20B7166
+ id 0A7F520B7166; Tue, 24 Nov 2026 03:56:21 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 0A7F520B7166
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1795519916;
- bh=EOIzA7m0tQ2JfceIvpN6nTEHE+CgjAHwQ1CVKdw3K5M=;
+ s=default; t=1795521381;
+ bh=aiicujEDZYmx2arVeXVVt3SQuCIELZVhCwDebRn76Dc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=g0cwfmOLzhViASqyaHtb8hDX9Q5RbJY2fX4hMXyHdcdXPaxI4vRmGkdChqfXRZics
- jL4PsE4lnBw619ihK8Yk8ogMddUYSjL1VuPux1uZTtNUZivOMw6A2bJJNsixmGeli5
- tG4FeTH0hYR7Dsg17xFTT7u3GK/TTSobDW7405uE=
-Date: Tue, 24 Nov 2026 03:31:56 -0800
+ b=Y4FA9muY1FiP5eIy2SRAJW6EXDT5/Zj0xsOi0gB5YdcsoLGHPak5DT3s2+Y5FwZwE
+ +kwMULQHk8v8qHaNmUXfdOsNOMVZIh0Wv2hF9nYO4v3ki5PyWaIZljxlViRJB93SQ2
+ MvbUh4siobNYTM+041nTPxUfbaZr3dJu7xvjRRD0=
+Date: Tue, 24 Nov 2026 03:56:21 -0800
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-To: Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+To: Magnus Kulke <magnuskulke@linux.microsoft.com>
+Cc: qemu-devel@nongnu.org, Wei Liu <wei.liu@kernel.org>,
+ Doru =?iso-8859-1?Q?Bl=E2nzeanu?= <dblanzeanu@linux.microsoft.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
  Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
@@ -44,16 +45,15 @@ Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
 Subject: Re: [PATCH v6 05/14] target/arm/mshv: implement vcpu state
  operations for ARM64
-Message-ID: <awV1rAD8P2fKBy3M@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
+Message-ID: <awV7ZXgN2+6kuEVw@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
 References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
  <20261001-mshv_accel_arm64_supp-v6-5-aefe5e76a0e3@linux.microsoft.com>
- <avcnMV0isGvRNhyE@linux.microsoft.com>
+ <av8guV6yQkrfIjFZ@example.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <avcnMV0isGvRNhyE@linux.microsoft.com>
+In-Reply-To: <av8guV6yQkrfIjFZ@example.com>
 Received-SPF: pass client-ip=13.77.154.182;
  envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
 X-Spam_score_int: -26
@@ -80,7 +80,7 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Nov 13, 2026 at 05:05:21PM +0200, Doru Blânzeanu wrote:
+On Thu, Nov 19, 2026 at 05:15:53PM +0100, Magnus Kulke wrote:
 > On Thu, Oct 01, 2026 at 10:52:50AM +0000, Aastha Rawat wrote:
 > > Add support for reading and writing ARM64 CPU registers in the MSHV
 > > accelerator. This includes functions to set and get registers,
@@ -102,6 +102,14 @@ On Fri, Nov 13, 2026 at 05:05:21PM +0200, Doru Blânzeanu wrote:
 > >      HV_REGISTER_PENDING_EVENT1       = 0x00010005,
 > >  
 > > +#if defined(__aarch64__)
+> 
+> do we need those ifdefs here (they create a checkpatch warning)? Since
+> they have a clear prefix and all values are explicitly assigned we
+> might not run into a conflict.
+
+I believe it should be fine to get rid of the ifdefs, we won't run into
+any problems as long as we're writing architecture-specific code.
+ 
 > > +    HV_ARM64_REGISTER_XZR   = 0x0002FFFE,
 > > +    HV_ARM64_REGISTER_X0    = 0x00020000,
 > > +    HV_ARM64_REGISTER_X1    = 0x00020001,
@@ -273,17 +281,6 @@ On Fri, Nov 13, 2026 at 05:05:21PM +0200, Doru Blânzeanu wrote:
 > >      return 0;
 > >  }
 > >  
-> 
-> I see that only these general purpose registers are synchronized after an exit,
-> reset or init.
-> At a glance, KVM also handles registers such as PSTATE and SP_EL0/SP_EL1.
-> Should this implementation handle those as well?
-
-For the current enablement scope, handling PSTATE and SP_EL0/SP_EL1
-isn't required. KVM provides full vCPU synchronization. I plan to
-introduce these with migration support when we actually need complete
-state transfer.
- 
 > >  static int store_regs(const CPUState *cpu)
 > >  {
 > > +    int ret;

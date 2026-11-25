@@ -1,85 +1,84 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DBEAB606A326
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA127606A321
 	for <qemu-arm@archiver.kernel.org>; Wed, 25 Nov 2026 17:40:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=p8vnysjr
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=fZjCK+7T
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWGxs-00063l-BK; Wed, 25 Nov 2026 12:39:30 -0500
+	id 1xWGxu-00064L-Fr; Wed, 25 Nov 2026 12:39:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xWGxh-00060R-Q5
- for qemu-arm@nongnu.org; Wed, 25 Nov 2026 12:39:17 -0500
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1xWGxj-00061B-KA
+ for qemu-arm@nongnu.org; Wed, 25 Nov 2026 12:39:20 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xWGxf-0007XE-OZ
- for qemu-arm@nongnu.org; Wed, 25 Nov 2026 12:39:17 -0500
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-c515319dd89so116488566b.1
- for <qemu-arm@nongnu.org>; Wed, 25 Nov 2026 09:39:15 -0800 (PST)
+ id 1xWGxh-0007XP-2d
+ for qemu-arm@nongnu.org; Wed, 25 Nov 2026 12:39:19 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-c50cc7540b7so860493466b.0
+ for <qemu-arm@nongnu.org>; Wed, 25 Nov 2026 09:39:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795628354; x=1796233154; darn=nongnu.org;
- h=cc:to:content-transfer-encoding:content-type:mime-version
- :message-id:date:subject:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=C4inDwYSdZ6rSu6NlBqf+MwdZX9DKjxbN5xxNIe/N2k=;
- b=p8vnysjr0hOoz7CEwFDxFd33dOrpO+ASeqLlNJqKQWuPDTw9bcvn/DxBr8tpyClSmk
- dzmRGUdnb/aDBViQFJAS+72fW+ooXBF1tX+uelNFzeLnNqe1XS0qbiQKYyIbMprsajrT
- zIYpfPbXuw1nZHHIKKD6MtJ8lgNDg9fKeF385DLSUhzFzyhJipgakaY67xREtVQkj70X
- 0AV079YfH3SRdfY9QUiIgchfqjGYGEM2B1eDYk0dyk8kgRbI11KYAmNt78IroY3kwgjP
- +k4p2ebZNbGOLH7FO85HRcbiK8uq0n+dO6d8pI+po+dQ7YtP7tVWgDg/xfcaTUfMXj4n
- tDLQ==
+ d=linaro.org; s=google; t=1795628355; x=1796233155; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=AFrkTTdU0uL1ydL3C0b22nVCVsxyrBmTvEDBgY2tI5w=;
+ b=fZjCK+7TKrEe3O4lktlneV9uOCRKacyvs2Uqs0N73Ks/h4D64pxPAOcPwpxtzNjYO7
+ ytgAXGFCgezzWKF+YVnN1Xxh7gsrDGzHFMWRdexJPC1Eq+hbzJgjLTj2zNgJybsuobbG
+ BabLXk1yPfErX3Avef6kH50JS0mZYySQZ4AW+aZAzut4WZbkyl+LPVEG8Bn0DYsLN6GN
+ 9vxEeIPb0zVSxU6yVuqNpPLpB6GCWUbYtgp5+CUtwk8JZ010nIWJlnMhNNeP6a3ahy8h
+ GmzoUAxB3Wx94Zn7FeEorCD+By9otMkk2AOPRhzqDS+IaMoZ7K9KFMlDhWifuvaYp2Pv
+ 5YdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795628354; x=1796233154;
- h=cc:to:content-transfer-encoding:content-type:mime-version
- :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=C4inDwYSdZ6rSu6NlBqf+MwdZX9DKjxbN5xxNIe/N2k=;
- b=hx2PZ5WGhsC0HDDfTMqD1diQw8gFnHyJLmBo3klCvNekUkiJK8Xu8NWxPHXg+JVvkz
- Lvyb7dK/1+S3U4B41Czf2O2rWZwRW0WXMxV/Igtx2j4kpYk8E4G56b+Baiv8zj6HrWDs
- gcVEo1Nf1/Lq6Osc5U8M1SZzlGjnXZuqD7AugEotBw5FfuIZgOH41bLo52QC4RLQ2cLK
- 4xWr3koxSPGqRcP3QU+fb09mgw6e+VwuJbmRLx3NJ65nFIXxI3hjZVhEqCdgv8/Kf9M0
- 79leTnfTECLr7Jr8GMNift9wRjMA9KsydfEVKIPiBmuUtibCGZ3eTljY3zw5CsvvlfT0
- IphQ==
+ d=1e100.net; s=20260707; t=1795628355; x=1796233155;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=AFrkTTdU0uL1ydL3C0b22nVCVsxyrBmTvEDBgY2tI5w=;
+ b=08wlwBaLGjj8EnlA/vqnzCNbk/Gs5//b0osUeeO36W7rTM/vX46OP/0v6MprC9QVwY
+ Bsq5XwP8HLvG8gY+j1I/dcUGlBP410onUJqpndFubnS2MvpXidLfPwWcobDEX7ZSUrIy
+ TIF16L3QEJXN31TFrlaLJyuJ6K+2FCYqYb2WL67dioUjFtO5m2RJ5UAtpgjMoParzI9D
+ OREW2d2onREyVxTPKuzSCfowzTYR4l0jjSqEMnTnK80NRWHvWoATuFCSao30SuyfuB/f
+ i52Y6ocLfzORbhkct5K6h3A3vs7BIxRI/gOBtkMkcglp8cEjgKbp66d1Vb9+joaDtSQ0
+ aYww==
 X-Forwarded-Encrypted: i=1;
- AL+hErG3JAnTUxcAC1KAThMJjYdhbtysoE6eKfTnfSJq2HkFada3vBQNkEIZHxsGZd3Cb6sqMLzskOfm+A==@nongnu.org
-X-Gm-Message-State: APuU4Z/iqhqnXxP7pY9+wTvSSYT7uoOdBKWt5lq1eJfXYzJbsDjHx5V+
- 0uEACl8qT99zSExwZXFImBMJN6sgelXozq3EtnCwFNfe6D01Gnwyz1LuZ2EozDxh3w4=
-X-Gm-Gg: AZFdTZcKxRn/yh1F7WH0IVYBS88OyXOBAOWDGcr7R+xwuiIMEcSNn4/+/EAzmYCQYR3
- GDlVz8aQVL9tBuYIONWGiezXxSOXnRY0FH8782DHiXqAhg5gxKyv8+dOGde1oWBX72+ifjmIlKJ
- rxX82tK3QBaZlmoPcAoG/DoDemPo2BKwpvdj0DG2577mpoHt9GSQAUwLSisGJwWF543wrgaQS0O
- gOs+b92e3ot8FEttdd6SE2jmesNXtOigyKJDtXXxPyndcaEpInoyuo8BsU5NaF8ExWWLQGzQ8ox
- ofpTzKwYia44uu1tp9P/chdTXm8xi+BDbtPIhDTj3xLMfueQta4iIG3ka5tWtcIjzFcOvW9m/aW
- eThGiC1iDaaKfJSwgmQAxXKUst25f53BjWhen46jjufL2kpOWweWo4YMSA45SRsOTcxeXrXABms
- JUbFDPYhG899UvG1h4kLo77WiL6wAE4PkaSn5st2kXCWTw+u+FzTa6V/o0JkcFPMRHjOiVgod+K
- kLqnHy2i601VSssFP/BK7lALjtv704HeRMRTt7hlRQ30+Z2NDXW1UlJlYOSJzTRXgWPXVwt1Pj7
- wBd3x+FVpOkdL1lrtGAG4D3iYTa+Lvnu
-X-Received: by 2002:a17:907:a890:b0:c4c:b4fe:ca01 with SMTP id
- a640c23a62f3a-c513aad51b7mr1657996266b.37.1795628353872; 
- Wed, 25 Nov 2026 09:39:13 -0800 (PST)
+ AL+hErGMcYNH80OFD2XKd75Vcan8U84S8Wx99CmDc1k/SJ1faib/ewsEV4unC0Q8NPcTnPK5S8qOOVOChQ==@nongnu.org
+X-Gm-Message-State: APuU4Z9e7F8TwQ4qdp9OnUAE3kiNY1K+3a/Gf1XVtRqV6VeI+fEP4djL
+ mC/3maoQ+53Eb2aJxHoD1GVkFzWB7ozY1PPt0MzpXrEj3ryCTlE+EsG/d/eKYs+PIzU=
+X-Gm-Gg: AZFdTZd55hQwyWYnUytEoMc1C76qdOeU6KA1v8IHtNsU7V5nZxWTGVgwAuZy4ayT78p
+ ePHwHBzOOLMpMc+Fq0kwLbzwruDJlPj1zi3tL1RTQ3indcUR4PvCqFNkZPPJ8C4XsmSMWP1QZtq
+ wpIY8CR6Ooswez4JNK54MzEibz2H1vUp1EkACgaAUDZjgF7OgN5LSf9b2SF20WULh08Z1miqj2B
+ fuUT2FVaNxIoYfgZfxrz0xy4QweSgCnvMfOnL2OMyrlbqpCcnix0XcZag4x4pQ8ZZcjVKQyPb9g
+ JIWKBImDhGL5ogWbXjn7rTaenelsvc9XddUA66pifpaiaXMkxNSYS+cy5sNNqDLEG2Haqb9iktO
+ txcSfvUsRa2nahMI0uesQl8LqhJR8CUGzjnEhKIrjGbNjcCofhL4OGsnuiGnRGVPKtr/ccaTQkS
+ YzYXJoqYSP5bN2lC0qK1rolYEMd1ZiXty9Vu2dAVkiqhcXBulgNaBGpXSSGVzffi7C+j+5xJITX
+ ksU4QJn6LRsL/N4uf/XE06h0vLdbihdS9+s9A1v7VfIzcpYaCa4TNAyPgp8Wba6fVp9fZwdotZT
+ Z/zAHs+Cjbn2UH5hUZicLNj9pk5fHx55
+X-Received: by 2002:a17:906:c14b:b0:c35:babe:ab44 with SMTP id
+ a640c23a62f3a-c513a1e0076mr1848966566b.0.1795628354842; 
+ Wed, 25 Nov 2026 09:39:14 -0800 (PST)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:82ba:bf15:3b4:e45b])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c513acfeda1sm709675566b.6.2026.11.25.09.39.13
+ a640c23a62f3a-c513acfeda1sm709675566b.6.2026.11.25.09.39.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Nov 2026 09:39:13 -0800 (PST)
+ Wed, 25 Nov 2026 09:39:14 -0800 (PST)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Subject: [PATCH v2 0/2] Add SMMUv3 Root registers
-Date: Wed, 25 Nov 2026 17:39:08 +0000
-Message-Id: <20261125-jmac-smmu-root-registers-v2-0-9ce0f6aa5097@linaro.org>
+Date: Wed, 25 Nov 2026 17:39:09 +0000
+Subject: [PATCH v2 1/2] hw/arm/smmuv3: define Root registers and x-root
+ flag
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIADwdB2sC/3WNyw6CMBBFf4XM2jG0PHXlfxgWpQxQIq2ZAtEQ/
- t2CcenyJPees4InNuThGq3AtBhvnA0gTxHoXtmO0DSBQcYyF7HIcBiVRj+OM7JzEzJ1xk/EHhu
- dtoKkypM6g3B/MrXmdajv1Zf9XA+kp923L/rwdPw+2ovYd79M/j+zCIyRipLKsrg0SVrcHsYqd
- mfHHVTbtn0Aio9mcNMAAAA=
-X-Change-ID: 20261015-jmac-smmu-root-registers-dc4f1e2a63b5
+Message-Id: <20261125-jmac-smmu-root-registers-v2-1-9ce0f6aa5097@linaro.org>
+References: <20261125-jmac-smmu-root-registers-v2-0-9ce0f6aa5097@linaro.org>
+In-Reply-To: <20261125-jmac-smmu-root-registers-v2-0-9ce0f6aa5097@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eric Auger <eric.auger@redhat.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
@@ -89,8 +88,8 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Jim MacArthur <jim.macarthur@linaro.org>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 X-Mailer: b4 0.17-dev-6be7c
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=jim.macarthur@linaro.org; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,50 +111,405 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This is preparatory work for further SMMUv3.3 features including RME-DA.
-We are adding in patches originally authored by Pierrick Bouvier 
-<pierrick.bouvier@linaro.org> and Gustavo Romero <gustavo.romero@linaro.org>
-in a way that will avoid conflicts with Tao Tang's current SMMUv3 Secure
-state patches. Since Root registers do not use the banking system, this
-should only conflict around the offset check near smmu_write_mmio and
-smmu_read_mmio.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+
+Adds all the non-optional SMMUv3.3 Root registers. These registers
+do nothing at the moment, but accessors are provided for future
+use.
+
+The extra space will only be allocated if x-root is set to true. This
+is off by default, and in most machines the Root registers will be
+outside the SMMU register space and hence inaccessible.
+
+Based on original work by Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
-Changes in v2:
-- More named constants for SMMUv3 register layout.
-- x-root flag for Root registers; off by default, forced on for sbsa-ref
-  machine.
-  This controls the allocation of the extra 64KB page for Root registers.
-  (Thanks to gromero@redhat.com for the example code)
-- Root registers are cleared on SMMU reset.
-- smmu_read_mmio_root renamed to smmu_read_root, similar for write.
-- A couple of other typos raised by the review of V1.
-- Link to v1: https://lore.kernel.org/qemu-devel/20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org
-
----
-Jim MacArthur (1):
-      hw/arm/sbsa-ref.c: Increase SMMU space for Root registers
-
-Pierrick Bouvier (1):
-      hw/arm/smmuv3: define Root registers and x-root flag
-
- hw/arm/sbsa-ref.c              |   3 +-
  hw/arm/smmuv3.c                | 241 ++++++++++++++++++++++++++++++++++++++++-
  include/hw/arm/smmuv3-common.h |  30 +++++
  include/hw/arm/smmuv3.h        |  14 +++
- 4 files changed, 286 insertions(+), 2 deletions(-)
----
-base-commit: 6bf90d4fc5027567cb704d7888f5ec792b4ed75a
-change-id: 20261015-jmac-smmu-root-registers-dc4f1e2a63b5
+ 3 files changed, 284 insertions(+), 1 deletion(-)
 
-Best regards,
---  
-Jim MacArthur <jim.macarthur@linaro.org>
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 2a9721b87e..70aecb92ea 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -316,6 +316,14 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
+     s->aidr = 0x1;
+     smmuv3_accel_idr_override(s);
++
++    /*
++     * Initialize Root bank. This register is inaccessible if we don't have
++     * Root, so the value can be 1 in all cases.
++     */
++    s->root.idr0 = FIELD_DP32(s->root.idr0, ROOT_IDR0, ROOT_IMPL, 1);
++    /* Set this to 1 when SMMU Realms are implemented */
++    s->root.idr0 = FIELD_DP32(s->root.idr0, ROOT_IDR0, REALM_IMPL, 0);
+ }
+ 
+ bool smmuv3_ats_enabled(SMMUv3State *s)
+@@ -343,6 +351,11 @@ static void smmuv3_reset(SMMUv3State *s)
+     s->gerrorn = 0;
+     s->statusr = 0;
+     s->gbpa = SMMU_GBPA_RESET_VAL;
++
++    s->root.cr0 = 0;
++    s->root.cr0ack = 0;
++    s->root.gpf_far = 0;
++    s->root.gpt_cfg_far = 0;
+ }
+ 
+ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
+@@ -1769,6 +1782,110 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+     return MEMTX_OK;
+ }
+ 
++/*
++ * Check we are from the Root PA space to read from or write to the
++ * SMMU Root register area.
++ */
++static bool smmu_check_root_access(SMMUv3State *s, MemTxAttrs attrs,
++                                   hwaddr offset, bool is_read)
++{
++    /* Check if the access is from Root PA */
++    if (attrs.space != ARMSS_Root) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++            "%s: Non-root %s attempt at offset 0x%" PRIx64 " (%s)\n",
++            __func__, is_read ? "read" : "write", offset,
++            is_read ? "RAZ" : "WI");
++        return false;
++    }
++    return true;
++}
++
++static MemTxResult smmu_root_writel(SMMUv3State *s, hwaddr offset,
++                                    uint64_t data, MemTxAttrs attrs)
++{
++    switch (offset) {
++    case A_ROOT_IDR0:
++    case A_ROOT_IIDR:
++    case A_ROOT_CR0ACK:
++        /* RO registers, write ignored */
++        return MEMTX_OK;
++    case A_ROOT_TLBI_CTRL:
++        /* Optional, not implemented. Present if IDR0.RGPTM == 1 */
++        return MEMTX_OK;
++    case A_ROOT_GPT_BASE_UPDATE:
++        /* Unimplemented at present; has side effects */
++        return MEMTX_OK;
++    case A_ROOT_CR0:
++        s->root.cr0 = data;
++        s->root.cr0ack = s->root.cr0;
++        return MEMTX_OK;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s unhandled 32-bit access at 0x%"PRIx64" (WI)\n",
++                      __func__, offset);
++        /*
++         * Locations not associated with a register (including registers that we
++         * have not implemented yet) are RES0, and will follow RAZ/WI behaviour.
++         */
++        return MEMTX_OK;
++    }
++}
++
++static MemTxResult smmu_root_writell(SMMUv3State *s, hwaddr offset,
++                                     uint64_t data, MemTxAttrs attrs)
++{
++    switch (offset) {
++    case A_ROOT_GPT_BASE:
++        s->root.gpt_base = data;
++        return MEMTX_OK;
++    case A_ROOT_GPT_BASE_CFG:
++        s->root.gpt_base_cfg = data;
++        return MEMTX_OK;
++    case A_ROOT_GPF_FAR:
++        s->root.gpf_far = data;
++        return MEMTX_OK;
++    case A_ROOT_GPT_CFG_FAR:
++        s->root.gpt_cfg_far = data;
++        return MEMTX_OK;
++    case A_ROOT_TLBI:
++        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
++        return MEMTX_OK;
++    case A_ROOT_GPT_BASE2:
++        s->root.gpt_base2 = data;
++        return MEMTX_OK;
++    case A_ROOT_GPCBW:
++        /* Optional, not implemented. Present if ROOT_IDR0.GPTS == 1 */
++        return MEMTX_OK;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s unhandled 64-bit access at 0x%"PRIx64" (WI)\n",
++                      __func__, offset);
++        /* RES0; See smmu_root_writel */
++        return MEMTX_OK;
++    }
++}
++
++static MemTxResult smmu_write_root(SMMUv3State *s, hwaddr offset, uint64_t data,
++                                   unsigned size, MemTxAttrs attrs)
++{
++    MemTxResult r;
++
++    switch (size) {
++    case 8:
++        r = smmu_root_writell(s, offset, data, attrs);
++        break;
++    case 4:
++        r = smmu_root_writel(s, offset, data, attrs);
++        break;
++    default:
++        r = MEMTX_ERROR;
++        break;
++    }
++
++    trace_smmuv3_write_mmio(offset, data, size, r);
++    return r;
++}
++
+ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+                                    unsigned size, MemTxAttrs attrs)
+ {
+@@ -1776,6 +1893,18 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+     SMMUv3State *s = ARM_SMMUV3(sys);
+     MemTxResult r;
+ 
++    if (offset >= SMMUV3_ROOT_REG_OFFSET) {
++        if (!smmu_check_root_access(s, attrs, offset, false)) {
++            /*
++             * As per 6.2.8, accesses in any PA space other
++             * than Root are completed as RAZ/WI.
++             */
++            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
++            return MEMTX_OK;
++        }
++        return smmu_write_root(s, offset, data, size, attrs);
++    }
++
+     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
+     offset &= ~0x10000;
+ 
+@@ -1918,6 +2047,99 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
+     }
+ }
+ 
++static MemTxResult smmu_root_readl(SMMUv3State *s, hwaddr offset,
++                                   uint64_t *data, MemTxAttrs attrs)
++{
++    switch (offset) {
++    case A_ROOT_IDR0:
++        *data = s->root.idr0;
++        return MEMTX_OK;
++    case A_ROOT_IIDR:
++        *data = s->root.iidr;
++        return MEMTX_OK;
++    case A_ROOT_TLBI_CTRL:
++        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
++        *data = 0;
++        return MEMTX_OK;
++    case A_ROOT_GPT_BASE_UPDATE:
++        /* Not a regular register; reads as 0 once update is complete */
++        *data = 0;
++        return MEMTX_OK;
++    case A_ROOT_CR0:
++        *data = s->root.cr0;
++        return MEMTX_OK;
++    case A_ROOT_CR0ACK:
++        *data = s->root.cr0ack;
++        return MEMTX_OK;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s unhandled 32-bit access at 0x%"PRIx64" (RAZ)\n",
++                      __func__, offset);
++        *data = 0;
++        /* RES0; See smmu_root_writel */
++        return MEMTX_OK;
++    }
++}
++
++static MemTxResult smmu_root_readll(SMMUv3State *s, hwaddr offset,
++                                    uint64_t *data, MemTxAttrs attrs)
++{
++    switch (offset) {
++    case A_ROOT_GPT_BASE:
++        *data = s->root.gpt_base;
++        return MEMTX_OK;
++    case A_ROOT_GPT_BASE_CFG:
++        *data = s->root.gpt_base_cfg;
++        return MEMTX_OK;
++    case A_ROOT_GPF_FAR:
++        *data = s->root.gpf_far;
++        return MEMTX_OK;
++    case A_ROOT_GPT_CFG_FAR:
++        *data = s->root.gpt_cfg_far;
++        return MEMTX_OK;
++    case A_ROOT_TLBI:
++        /* Optional, not implemented. Present if ROOT_IDR0.RGPTM == 1 */
++        *data = 0;
++        return MEMTX_OK;
++    case A_ROOT_GPT_BASE2:
++        *data = s->root.gpt_base2;
++        return MEMTX_OK;
++    case A_ROOT_GPCBW:
++        /* Optional, not implemented. Present if ROOT_IDR0.GPTS == 1 */
++        *data = 0;
++        return MEMTX_OK;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s unhandled 64-bit access at 0x%"PRIx64" (RAZ)\n",
++                      __func__, offset);
++        *data = 0;
++        /* RES0; See smmu_root_writel */
++        return MEMTX_OK;
++    }
++}
++
++static MemTxResult smmu_read_root(SMMUv3State *s, hwaddr offset, uint64_t *data,
++                                  unsigned size, MemTxAttrs attrs)
++{
++    MemTxResult r;
++
++    switch (size) {
++    case 8:
++        r = smmu_root_readll(s, offset, data, attrs);
++        break;
++    case 4:
++        r = smmu_root_readl(s, offset, data, attrs);
++        break;
++    default:
++        r = MEMTX_ERROR;
++        break;
++    }
++
++    trace_smmuv3_read_mmio(offset, *data, size, r);
++    return r;
++}
++
++
+ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+                                   unsigned size, MemTxAttrs attrs)
+ {
+@@ -1925,6 +2147,19 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+     SMMUv3State *s = ARM_SMMUV3(sys);
+     MemTxResult r;
+ 
++    if (offset >= SMMUV3_ROOT_REG_OFFSET) {
++        if (!smmu_check_root_access(s, attrs, offset, true)) {
++            /*
++             * As per 6.2.8, accesses in any PA space other
++             * than Root are completed as RAZ/WI.
++             */
++            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
++            return MEMTX_OK;
++        }
++
++        return smmu_read_root(s, offset, data, size, attrs);
++    }
++
+     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
+     offset &= ~0x10000;
+ 
+@@ -2063,7 +2298,9 @@ static void smmu_realize(DeviceState *d, Error **errp)
+     qemu_mutex_init(&s->mutex);
+ 
+     memory_region_init_io(&sys->iomem, OBJECT(s),
+-                          &smmu_mem_ops, sys, TYPE_ARM_SMMUV3, 0x20000);
++                          &smmu_mem_ops, sys, TYPE_ARM_SMMUV3,
++                          s->has_root ? SMMUV3_REGS_SIZE + SMMUV3_ROOT_PAGE_SIZE
++                                      : SMMUV3_REGS_SIZE);
+ 
+     sys->mrtypename = TYPE_SMMUV3_IOMMU_MEMORY_REGION;
+ 
+@@ -2153,6 +2390,8 @@ static const Property smmuv3_properties[] = {
+     /* Identifier used for ACPI IORT SMMUv3 (and DSDT for CMDQV) generation */
+     DEFINE_PROP_UINT8("identifier", SMMUv3State, identifier, 0),
+     DEFINE_PROP_BOOL("accel", SMMUv3State, accel, false),
++    DEFINE_PROP_BOOL("x-root", SMMUv3State, has_root, false),
++
+     /* GPA of MSI doorbell, for SMMUv3 accel use. */
+     DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
+     /*
+diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
+index 4609975edf..a8919d5be6 100644
+--- a/include/hw/arm/smmuv3-common.h
++++ b/include/hw/arm/smmuv3-common.h
+@@ -411,6 +411,36 @@ REG32(EVENTQ_IRQ_CFG2,     0xbc)
+ 
+ #define A_IDREGS           0xfd0
+ 
++/*
++ * SMMUV3_ROOT_REG_OFFSET is implementation dependent. QEMU fixes this at one
++ * address for now, but this may need to vary at some point to suit actual
++ * hardware implementations.
++ */
++#define SMMUV3_PAGE_SIZE        0x10000
++#define SMMUV3_REGS_SIZE        (2 * SMMUV3_PAGE_SIZE) /* Page 0 and Page 1 */
++#define SMMUV3_ROOT_REG_OFFSET  0x20000
++#define SMMUV3_ROOT_PAGE_SIZE   SMMUV3_PAGE_SIZE
++
++REG32(ROOT_IDR0,            0x0)
++    FIELD(ROOT_IDR0, ROOT_IMPL,   0,  1)
++    FIELD(ROOT_IDR0, BGTPM,       1,  1)
++    FIELD(ROOT_IDR0, RGPTM,       2,  1)
++    FIELD(ROOT_IDR0, REALM_IMPL,  3,  1)
++    FIELD(ROOT_IDR0, BA_REALM,   22, 10)
++
++REG32(ROOT_IIDR,             0x8)
++REG32(ROOT_CR0,             0x20)
++REG32(ROOT_CR0ACK,          0x24)
++REG64(ROOT_GPT_BASE,        0x28)
++REG64(ROOT_GPT_BASE_CFG,    0x30)
++REG64(ROOT_GPF_FAR,         0x38)
++REG64(ROOT_GPT_CFG_FAR,     0x40)
++REG64(ROOT_TLBI,            0x50)
++REG32(ROOT_TLBI_CTRL,       0x58)
++REG64(ROOT_GPT_BASE2,       0x60)
++REG32(ROOT_GPT_BASE_UPDATE, 0x68)
++REG32(ROOT_GPCBW,           0x70)
++
+ /* Commands */
+ 
+ typedef enum SMMUCommandType {
+diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+index d39fe8850b..a8b354438c 100644
+--- a/include/hw/arm/smmuv3.h
++++ b/include/hw/arm/smmuv3.h
+@@ -34,6 +34,18 @@ typedef struct SMMUQueue {
+      uint8_t log2size;
+ } SMMUQueue;
+ 
++typedef struct SMMUv3RootRegBank {
++    uint32_t idr0;
++    uint32_t iidr;
++    uint32_t cr0;
++    uint32_t cr0ack;
++    uint64_t gpt_base;
++    uint64_t gpt_base_cfg;
++    uint64_t gpf_far;
++    uint64_t gpt_cfg_far;
++    uint64_t gpt_base2;
++} SMMUv3RootRegBank;
++
+ struct SMMUv3State {
+     SMMUState     smmu_state;
+ 
+@@ -80,6 +92,8 @@ struct SMMUv3State {
+     OnOffAuto cmdqv;
+ 
+     Notifier machine_done;
++    bool has_root;
++    SMMUv3RootRegBank root;
+ };
+ 
+ typedef enum {
+
+-- 
+2.43.0
 
 

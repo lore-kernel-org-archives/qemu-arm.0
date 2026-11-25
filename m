@@ -1,104 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E9A8606A323
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Nov 2026 10:28:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CABCE606A321
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Nov 2026 12:36:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=zdS8uJzI
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=rNllw+F+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWAF9-0000FY-7i; Wed, 25 Nov 2026 05:28:52 -0500
+	id 1xWCE4-0001sR-78; Wed, 25 Nov 2026 07:35:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xWAEv-0000Df-VQ
- for qemu-arm@nongnu.org; Wed, 25 Nov 2026 05:28:39 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
+ id 1xW8G3-0003kY-1T
+ for qemu-arm@nongnu.org; Wed, 25 Nov 2026 03:21:39 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1xWAEs-0006Zf-Tz
- for qemu-arm@nongnu.org; Wed, 25 Nov 2026 05:28:36 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4bb64ef5a00so44414355e9.3
- for <qemu-arm@nongnu.org>; Wed, 25 Nov 2026 02:28:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
+ id 1xW8G0-0003w5-Ql
+ for qemu-arm@nongnu.org; Wed, 25 Nov 2026 03:21:38 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4a3517554f7so49811225e9.2
+ for <qemu-arm@nongnu.org>; Wed, 25 Nov 2026 00:21:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795602511; x=1796207311; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=omOClHHY+dYH7llh3BJ/W2C937+rEw5ySaFTFmPP8Cw=;
- b=zdS8uJzIy1oj28TD7t+vsSuOJbGux1ihUz7FzaKu4vEcDbcC9JbRuqZvWw335Eesao
- HkEE6X8IvVqD7uVagXl8i4HiUaL7Kat9a/ZTcAFRhj8l7NCvd+3E/EX/8LlLQ8GM8iqr
- PdR1krfwxT6DMXFmds6wU6TYW87+1A1raD/nIsrneSmdEUzVQyvVvXkOot+fs+ayksCU
- PWLaJ0qVzOrGf/cItugwc8Jo7J4+pLLdDwdqMhkRJpKijjjmlD5I/3r07XkPUsk4wQsP
- 0Hz7IZmTPxRYkkdDeSK5NQXmCdj4Fyqr5K41l/mSn7uXG8Xyeqlta2lb2mhDw42ll/t2
- uUoA==
+ d=gmail.com; s=20260707; t=1795594895; x=1796199695; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=symwZBZ61XeKaeVFDmNwmXcdpmRLL/s8bbZFLFLU37A=;
+ b=rNllw+F+KvNPzy46NgohPFSoFQOeU8tBjG/TqOG74QO6uHaTOwsqut6LTBzbp9OYWm
+ v1ZO6nSaQFS3ReOyrzqI3UFHXpGMjkOb3SSqGsVkEbfDhCN9BuZQuTch58oHgrszryWG
+ Mh52T9FNMGCVrJAfd19qTy29T2d/8Kt9S0/r5QOExmx1dbFcuB2tshiE32xoEgsLWPx/
+ qbFixsgWvWsk9gXZeRnDNGJFGylVFl0cTeiswt4KxTPOn2PmFzvAFnac7CYzSLuqiE2L
+ FY/a0La0b4EEbYsAyjNCobQ3MAQnXX8kmIa09XRrzXTBpeczMY5MFnoVg889mRHQaa2F
+ k0gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795602511; x=1796207311;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=omOClHHY+dYH7llh3BJ/W2C937+rEw5ySaFTFmPP8Cw=;
- b=cPz9sfJvA+4QmpTJrwPT1JDUq9YFGBR6hvz8NT1D1eRaVmUA/f/VXdYvWAxUE5I3KX
- wuPy7oV908u/CpNG8sZgWrRfQqDTdj+4p57txZJ4MWYNEZt0fDqEjqJpdKOQtBDrBoma
- cvP8HzaQC2p+AmXYN7ueKgsi+K8DU0qmfpyotEtd6YgVJbk47fmiNU0WqP1spa8PtYKO
- K7TD9JAzWGiD+z/5qWddZZ8oDlG91g3h4VnjioY/MHWhR9hzuHh2AM3Owhwmpq6Mu6kV
- Aq9Ve4FI5YdMb12ngepOX/GK3uvC+sQQAc51mbSSqXqZ05scDOU6gK2mLTs06ZYTro3a
- RYDA==
-X-Forwarded-Encrypted: i=1;
- AL+hErG8ZU5bH2+poRxRJMKDGmZVxSh93zNoFPZASRdBoIC/KR4ws8QkHKowhXtAmDYmhKQRkQVuOvhGAg==@nongnu.org
-X-Gm-Message-State: APuU4Z9TIWcddulA1XFu50WKWxPp8dbjJs7u0urjexPKxeKoeAt3r2Di
- bfugJooIUtOdUHncjgR5R0MeRrefJcSt4C35V4tfweU6Hws4b3ij1G+C3ZETnmN4okw=
-X-Gm-Gg: AZFdTZfrZt7nfC4EZUM66VxsLxU1c0kxn/6yKAL8+hZ+nkonhIA2CjBM/F31P2T/UMs
- LLyv0ky6gnnoabgtltjdsqRkSu6xf4hPcfuFJgub6uTbR6tHYDwW+KdK5qt/djDTBzPUn1Yu7tB
- oZtBJ2YpF27Dv4Mu9M8ly7G9ARMSi9OCqrwdRHeYuxq3vmjZvDQLq/9PSOkOY1MZTk4MNQnabT3
- mq54rYKffDDfQhBA3RRAnEdWGHrqHHPZFl9Q3ve01YBEzDeTQk6YJ+Dq7AfU/wQyZ3myRh7tG1D
- dlr5VrTTc/C2+8Cdoa3PcJBq0IsgPEkY2gnwbNoNm9aMLkhprr6FLWbB6XeoArxU1JiZ+/N1gYS
- dRLfaEL9XgYcpTQHdheyM3ejMkJkB4Fom4emuJAc7MuZ01Xq5oPnkvLHUxUH5/LSIi4cNM+j/2S
- EoZZBcNYjSbyWx0njjb8cj88nQJCBaEA9UrvCP76YKVqT/oQPBUQju0mlSr4xkogw5clSRsN9H/
- TC7lUvQXHuVnoKGoJNzXleaG+SHqo3bCHvBwQYy49VqxW6vbfyyiRoYFayxf9+2LJFul4koQn/t
- C/bSPKfxMg6u1BFUFsLUj7Iaf4YSEYE=
-X-Received: by 2002:a05:600c:8b11:b0:4a2:a9:ed5a with SMTP id
- 5b1f17b1804b1-4bb88826835mr347159575e9.8.1795602511032; 
- Wed, 25 Nov 2026 02:28:31 -0800 (PST)
-Received: from linaro.org ([2a10:d582:31e:0:82ba:bf15:3b4:e45b])
+ d=1e100.net; s=20260707; t=1795594895; x=1796199695;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=symwZBZ61XeKaeVFDmNwmXcdpmRLL/s8bbZFLFLU37A=;
+ b=dxPUrvb2YrwpvtBlZ1QvJRr7i7lsaBFPO3lCV371BocTlv21xbVuM1VGcl2iAL0qrd
+ Q15iKOrICb3Nce8JryHPNnc+FE58wponPpO331b+PaN8krZEyprYLn4cAsIiFKB8YVjL
+ bpJYD8ocaZebFrjKSTcDZPmUpLCOvbz+28lSrCS5tXdfW/FxB0kFfvQHPlWQbjPVFmMx
+ /tcutzgDcUkXae/kExnA+mZOW24TvILJ1UCf23oTF0gsIsjgKPGsOnei2tfW5CSyFyiA
+ 9KYG2GfLjwukl+biUg5Molcg+rnfY19lhZmIfUSZnpvryWKTY9wTM8/NLfOwQTmytXMu
+ uO1Q==
+X-Gm-Message-State: APuU4Z/oGR+Njyw3QZAuX4YyEIJOK6SXT/4f5ZdFjc1zNkLycM/g7g1d
+ Sz8WZlhIE/a3/ugdkxYCOzO5La6BQMPvvpE+2qQSAHzsdt8ctfjMHwew
+X-Gm-Gg: AZFdTZd1E6zCEo6ym4Qy3k6kTCcSb9f4uBv7GKEKFvpsvGVhk/VJqsa3vcFqpQ1rU4+
+ R7vTeXoUWizcgGwOyAhuoOzun8YFXOt8QXCvZhFMywPP7xY6kNH/+PLanoXQq8U5uYvhzUmZ6dW
+ Roiu9rCJCiT2YsGxa8GsinF48Y9PoTeutmrWZE1vEu30i1vQ5MR4uqR3Phv9xfmbc8MD1W1OV4O
+ pQgSjedFPj0c1s6xgCt35viBWNF3S2jQ9iYNDeaiSOijLDXzJH1ufCgQ64YpSeAJe+0Wvbkqwtr
+ YWMoexslCbOKXuxRTt8h4E9s4dwMcOG5ryx5I1j/OPnDQWgp/erxZ4kXl4jPZ0d6G8Dbr3/s9au
+ L6tC03usFVSH/AtVwD4w7wrKwvqmp+K/8/dcCyOXEPFGu6M7aGm31jjjgKy/ILjrL7nH5pkhpgt
+ bhJpNzrsr+58YK69isCTaKrsjNngprHtwAIOug8I2KUgQeMRXu39ob4bfar5cOMKwvRAUhf3tKW
+ WfwsA+OGXG7XkukeK/I55OSZKIQLM3Ax8Wn/baB/js6SWzEMaGpK7tV/nf1SS9nREHd1f5tprEp
+ SwRc1RQxVoI4zXl1KCCY97yIpsBfgwenmCookxj+Bzo3khZhJwNrJwQu9mFtrCF5Pll+Biv3Wyq
+ 1m5L1bMu91BTos5cl2HVPX3HYZfgRypJx9iPta4ci
+X-Received: by 2002:a05:600c:64c9:b0:4bb:8701:bb14 with SMTP id
+ 5b1f17b1804b1-4bb88804d1cmr376845795e9.5.1795594894773; 
+ Wed, 25 Nov 2026 00:21:34 -0800 (PST)
+Received: from noys4.dd1.int.kernkonzept.com
+ (ip-178-026-066-148.vkd85.pools.vodafone-ip.de. [178.26.66.148])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb853b2437sm724982925e9.13.2026.11.25.02.28.30
+ 5b1f17b1804b1-4bb884b7515sm688795785e9.13.2026.11.25.00.21.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Nov 2026 02:28:30 -0800 (PST)
-Date: Wed, 25 Nov 2026 10:28:29 +0000
-From: Jim MacArthur <jim.macarthur@linaro.org>
-To: Gustavo Romero <gromero@redhat.com>
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-Subject: Re: [PATCH 2/2] hw/arm/sbsa-ref.c: Increase SMMU space for Root
- registers
-Message-ID: <awa4TeIZmS4c_udY@linaro.org>
-References: <20261016-jmac-smmu-root-registers-v1-0-e78e8879d347@linaro.org>
- <20261016-jmac-smmu-root-registers-v1-2-e78e8879d347@linaro.org>
- <dxrwkmt76n62imxwycc6j2mcjihdhqmhukzc3ypojuepkprzsp@dm4yqcp75wrt>
- <avSYUeEmFFBdVePq@linaro.org>
- <47529a98-e02d-4cfe-a8b5-8b3f44bda15c@oss.qualcomm.com>
- <xl3axqq44u62xqw2gahgo4cehbapbirkywpbkyx547mdya7ycs@qekmzwnxmco7>
+ Wed, 25 Nov 2026 00:21:34 -0800 (PST)
+From: Frank Mehnert <frank.mehnert@gmail.com>
+X-Google-Original-From: Frank Mehnert <frank.mehnert@kernkonzept.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
+ Frank Mehnert <frank.mehnert@kernkonzept.com>
+Subject: [PATCH for-11.2] target/arm: set the event register on a failed
+ store-exclusive
+Date: Wed, 25 Nov 2026 09:21:26 +0100
+Message-ID: <20261125082126.49911-1-frank.mehnert@kernkonzept.com>
+X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <xl3axqq44u62xqw2gahgo4cehbapbirkywpbkyx547mdya7ycs@qekmzwnxmco7>
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x336.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=frank.mehnert@gmail.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 25 Nov 2026 07:35:44 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,29 +100,87 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 12, 2026 at 07:59:00PM +0100, Gustavo Romero wrote:
-> Hi Jim and Pierrick,
-> 
-> > > Thank you for doing this. The only complication is that we'll probably want
-> > > an x-realms flag as well later, and if we do the rearrangement of the map
-> > > as above then SMMUV3_ROOT_REG_OFFSET will have to be variable. I'll handle
-> > > that when we get to the Realm part.
-> 
-> @Jim Why would you need to rearrange the SMMUV3_ROOT_REG_OFFSET? I was expecting
-> the Root registers would stay still at +0x20000, i.e., at the start of the
-> "OPTIONAL pages", just after the "SMMU Register Page 1".
+Since WFE may sleep on A-profile, a WFE executed outside an exclusive
+region halts the vCPU until an event arrives. Lock code commonly
+branches back to WFE after a failed store-exclusive, for example:
 
-I was thinking of a configuration of Realms SMMU registers without the Root
-SMMU registers, but as you said later this is probably invalid and in any
-case not something we need to support, so that's fine - we can keep
-SMMUV3_ROOT_REG_OFFSET as a fixed 0x20000.
+  1: wfe
+     ldaxr  w1, [x0]
+     cbnz   w1, 1b
+     stxr   w2, w3, [x0]
+     cbnz   w2, 1b
 
-Jim
+The store-exclusive clears exclusive_addr, so the following WFE sleeps.
+On hardware, the store by another PE that made the store-exclusive fail
+cleared the global monitor of this PE, and clearing the global monitor
+sets the Event Register (Arm ARM D1.6.1, R_XRZRK). The WFE then
+completes immediately. QEMU does not model this, so with interrupts
+masked and no event stream the vCPU sleeps until another PE executes
+SEV, which such lock code never does.
+
+Set the Event Register when a store-exclusive fails, in both the
+AArch64 and the AArch32 translator. A failure for another reason causes
+a spurious wakeup, which the architecture permits.
+
+Fixes: 01b223f895a7 ("target/arm: enable WFE sleeping for A-profile")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/4938
+Signed-off-by: Frank Mehnert <frank.mehnert@kernkonzept.com>
+---
+ target/arm/tcg/translate-a64.c | 7 ++++++-
+ target/arm/tcg/translate.c     | 7 ++++++-
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 49472f7d97..45f3b3df03 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -3531,10 +3531,15 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+         tcg_gen_setcond_i64(TCG_COND_NE, tmp, tmp, cpu_exclusive_val);
+     }
+     tcg_gen_mov_i64(cpu_reg(s, rd), tmp);
+-    tcg_gen_br(done_label);
++    tcg_gen_brcondi_i64(TCG_COND_EQ, tmp, 0, done_label);
+ 
+     gen_set_label(fail_label);
+     tcg_gen_movi_i64(cpu_reg(s, rd), 1);
++    /*
++     * A failing store-exclusive means the global monitor was cleared, which
++     * generates a WFE wakeup event.
++     */
++    gen_event_reg();
+     gen_set_label(done_label);
+     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
+ }
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 442c34ce84..2eef2ceef2 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -2137,10 +2137,15 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+         tcg_gen_setcond_i32(TCG_COND_NE, t0, t0, t2);
+     }
+     tcg_gen_mov_i32(cpu_R[rd], t0);
+-    tcg_gen_br(done_label);
++    tcg_gen_brcondi_i32(TCG_COND_EQ, t0, 0, done_label);
+ 
+     gen_set_label(fail_label);
+     tcg_gen_movi_i32(cpu_R[rd], 1);
++    /*
++     * A failing store-exclusive means the global monitor was cleared, which
++     * generates a WFE wakeup event.
++     */
++    gen_event_reg();
+     gen_set_label(done_label);
+     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
+ }
+-- 
+2.55.0
+
 

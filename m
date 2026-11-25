@@ -1,95 +1,107 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CABCE606A321
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Nov 2026 12:36:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1F70606A321
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Nov 2026 16:48:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=rNllw+F+
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=iTeaP/Wq
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWCE4-0001sR-78; Wed, 25 Nov 2026 07:35:58 -0500
+	id 1xWGAe-0000k6-1f; Wed, 25 Nov 2026 11:48:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
- id 1xW8G3-0003kY-1T
- for qemu-arm@nongnu.org; Wed, 25 Nov 2026 03:21:39 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <lroby74@gmail.com>) id 1xWFKE-0006Pn-E7
+ for qemu-arm@nongnu.org; Wed, 25 Nov 2026 10:54:27 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
- id 1xW8G0-0003w5-Ql
- for qemu-arm@nongnu.org; Wed, 25 Nov 2026 03:21:38 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4a3517554f7so49811225e9.2
- for <qemu-arm@nongnu.org>; Wed, 25 Nov 2026 00:21:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <lroby74@gmail.com>) id 1xWFKC-0001XF-8V
+ for qemu-arm@nongnu.org; Wed, 25 Nov 2026 10:54:26 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-49d05d51553so42857555e9.2
+ for <qemu-arm@nongnu.org>; Wed, 25 Nov 2026 07:54:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795622060; cv=none;
+ d=google.com; s=arc-20260327;
+ b=pUtjXcnk4Zrr9pQ7BPZiYPydYFex7gmp6TBnALqe60wYNz4XO2oF1zy2a4ueNqXBPm
+ 2mtwf/UnrYr+mOk1gxZwMZuCoTL4rbfVpdjO86Bu1u9RDRrYMwR7tH8jZaLyaqaxPKuo
+ qr7D9gyVMdomCS0PLL/l5DkbIle3/pBfPqhh561MTb0F+sX+uHnDqbFhEtFFF4mKBEED
+ b5uQB/d9QONmQXzWv6fXVq+qOWrpHM5Z9mSJ+U8gY6joeg965PvvGd1Mq9bXZ8w1vNVb
+ Qn0nxpN4DxKtQaOmtP08e9BMFlH/D3fEH8DTK93xFuq6KPKciqxjh/01i53Icyc6kbAd
+ aTSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+ bh=30hCZdVhKR3Rb3CgU09Xc9wfjFwBj/fz9t/nbpHlmaM=;
+ fh=S+43fxOu7jLJAjtb2B9QSBqItrDLI+7r2JyzdVMOfgA=;
+ b=PrHb9+kBcWHKq3gibR2DOm5CBm2c6/s5Xj5526fhvPaY6nAyrqL/d/vzxPcy5UMddN
+ 67+gekmwFTYBXKw/a+Yn6tDMLV1dzbECU4LiUZxn0THZPpm50+6gvtAwYRCAR8GCQh7s
+ ajCkziCJZ8cb88AZ1tMbmX4d/9wIeAC/7Q2vWBev6uxw1tI+yEab1QA6BRwrwlF5cI+4
+ pgPnRIP0Hp42puPCskCd9cfgZ7h/x4frCtHNeHZkLt9G7tNEEqB9JbIp9DCkAEhu3wvm
+ z9LkAkbJHHPWpUb/ZbGY3eGFQGXP/9BD8PU3FwfjcXl6JPUTLaaAGX9x9/Ka5D04cLkw
+ kwiA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1795594895; x=1796199695; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=symwZBZ61XeKaeVFDmNwmXcdpmRLL/s8bbZFLFLU37A=;
- b=rNllw+F+KvNPzy46NgohPFSoFQOeU8tBjG/TqOG74QO6uHaTOwsqut6LTBzbp9OYWm
- v1ZO6nSaQFS3ReOyrzqI3UFHXpGMjkOb3SSqGsVkEbfDhCN9BuZQuTch58oHgrszryWG
- Mh52T9FNMGCVrJAfd19qTy29T2d/8Kt9S0/r5QOExmx1dbFcuB2tshiE32xoEgsLWPx/
- qbFixsgWvWsk9gXZeRnDNGJFGylVFl0cTeiswt4KxTPOn2PmFzvAFnac7CYzSLuqiE2L
- FY/a0La0b4EEbYsAyjNCobQ3MAQnXX8kmIa09XRrzXTBpeczMY5MFnoVg889mRHQaa2F
- k0gg==
+ d=gmail.com; s=20260707; t=1795622060; x=1796226860; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:mime-version:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=30hCZdVhKR3Rb3CgU09Xc9wfjFwBj/fz9t/nbpHlmaM=;
+ b=iTeaP/WqwElIkcCsmC7MJQfN90AeuA/QnJsLo5l+mkBvWte7Q2EY6m6xLcb4ds6RvO
+ ueUn0ab/h5fyuZgh+aYEYMBCiOwIbaMmPg4FZXO/MxDNbKu4ojrLCNYr79u6oUgQdCHs
+ jVLkr1wrZKwhhEf9CmxjDrjUs0BNUbzBgB99uQzCh6lGqg4o8WOAlkQpI9et4LbGVTcU
+ MtCC07VevPFI1js0wLWPIZSmN/oQj66CqryEA5wS3k8R2xH2AWbN3NK5YfaxhxgXRSyY
+ nFF7wKimFChJQalNipyL7uSGtyyrbZDWnUPmgmxPyEAaQJjvpMlD7X5o47vjxIjz97N8
+ LcLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795594895; x=1796199695;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=symwZBZ61XeKaeVFDmNwmXcdpmRLL/s8bbZFLFLU37A=;
- b=dxPUrvb2YrwpvtBlZ1QvJRr7i7lsaBFPO3lCV371BocTlv21xbVuM1VGcl2iAL0qrd
- Q15iKOrICb3Nce8JryHPNnc+FE58wponPpO331b+PaN8krZEyprYLn4cAsIiFKB8YVjL
- bpJYD8ocaZebFrjKSTcDZPmUpLCOvbz+28lSrCS5tXdfW/FxB0kFfvQHPlWQbjPVFmMx
- /tcutzgDcUkXae/kExnA+mZOW24TvILJ1UCf23oTF0gsIsjgKPGsOnei2tfW5CSyFyiA
- 9KYG2GfLjwukl+biUg5Molcg+rnfY19lhZmIfUSZnpvryWKTY9wTM8/NLfOwQTmytXMu
- uO1Q==
-X-Gm-Message-State: APuU4Z/oGR+Njyw3QZAuX4YyEIJOK6SXT/4f5ZdFjc1zNkLycM/g7g1d
- Sz8WZlhIE/a3/ugdkxYCOzO5La6BQMPvvpE+2qQSAHzsdt8ctfjMHwew
-X-Gm-Gg: AZFdTZd1E6zCEo6ym4Qy3k6kTCcSb9f4uBv7GKEKFvpsvGVhk/VJqsa3vcFqpQ1rU4+
- R7vTeXoUWizcgGwOyAhuoOzun8YFXOt8QXCvZhFMywPP7xY6kNH/+PLanoXQq8U5uYvhzUmZ6dW
- Roiu9rCJCiT2YsGxa8GsinF48Y9PoTeutmrWZE1vEu30i1vQ5MR4uqR3Phv9xfmbc8MD1W1OV4O
- pQgSjedFPj0c1s6xgCt35viBWNF3S2jQ9iYNDeaiSOijLDXzJH1ufCgQ64YpSeAJe+0Wvbkqwtr
- YWMoexslCbOKXuxRTt8h4E9s4dwMcOG5ryx5I1j/OPnDQWgp/erxZ4kXl4jPZ0d6G8Dbr3/s9au
- L6tC03usFVSH/AtVwD4w7wrKwvqmp+K/8/dcCyOXEPFGu6M7aGm31jjjgKy/ILjrL7nH5pkhpgt
- bhJpNzrsr+58YK69isCTaKrsjNngprHtwAIOug8I2KUgQeMRXu39ob4bfar5cOMKwvRAUhf3tKW
- WfwsA+OGXG7XkukeK/I55OSZKIQLM3Ax8Wn/baB/js6SWzEMaGpK7tV/nf1SS9nREHd1f5tprEp
- SwRc1RQxVoI4zXl1KCCY97yIpsBfgwenmCookxj+Bzo3khZhJwNrJwQu9mFtrCF5Pll+Biv3Wyq
- 1m5L1bMu91BTos5cl2HVPX3HYZfgRypJx9iPta4ci
-X-Received: by 2002:a05:600c:64c9:b0:4bb:8701:bb14 with SMTP id
- 5b1f17b1804b1-4bb88804d1cmr376845795e9.5.1795594894773; 
- Wed, 25 Nov 2026 00:21:34 -0800 (PST)
-Received: from noys4.dd1.int.kernkonzept.com
- (ip-178-026-066-148.vkd85.pools.vodafone-ip.de. [178.26.66.148])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb884b7515sm688795785e9.13.2026.11.25.00.21.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Nov 2026 00:21:34 -0800 (PST)
-From: Frank Mehnert <frank.mehnert@gmail.com>
-X-Google-Original-From: Frank Mehnert <frank.mehnert@kernkonzept.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
- Frank Mehnert <frank.mehnert@kernkonzept.com>
-Subject: [PATCH for-11.2] target/arm: set the event register on a failed
- store-exclusive
-Date: Wed, 25 Nov 2026 09:21:26 +0100
-Message-ID: <20261125082126.49911-1-frank.mehnert@kernkonzept.com>
-X-Mailer: git-send-email 2.55.0
+ d=1e100.net; s=20260707; t=1795622060; x=1796226860;
+ h=content-type:cc:to:subject:message-id:date:from:mime-version
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=30hCZdVhKR3Rb3CgU09Xc9wfjFwBj/fz9t/nbpHlmaM=;
+ b=ASNBESP8uJrMmvHzcyrz0cyG9yWHKwMFEiPhpwt5aGlqAVsT0NNOO1zw9dwaulA1CM
+ QOaEcaO1GAwNc8d2+2/POgoyTr9AF8Xu0ETywMyUOq+4yNLMLuyLOfIQBUkCeNYkjhkn
+ nlnkO+dcOVqLg1KXlcgEaV5km7C9qVwO16XBwlc1/CPUG5MybpK8d7+CK92fKLExQX5V
+ idc0Ukh50J5Nw3QUKNKYdVNWIExtQjNoeZwxQSpCt+Tg3al8UWS0EFlKDmE1MO0pqcYl
+ y22JfrK2jsEd8cMAo639aXzo+RS/ORJ6qbiMC1a5j/x8ssBd1ZRcMROjhieQSbCbcNOy
+ ttEg==
+X-Forwarded-Encrypted: i=1;
+ AL+hErFcIz3btQ9Ci8ysGnf4hG8R6KkAr/RaPhm0Rrv1hyjbzRHC/tQynnlTG20nOB7bSmz9J1LEUMPq/g==@nongnu.org
+X-Gm-Message-State: APuU4Z+ISYnf3LZctsAxxsABwgo8HMBjj3x/iAcQ6t4dAHTX0xyDRfSV
+ beqTRlQ9EZAbmy4ej0rH5AJ6e5R2VC+kxugTOz5XhGeFuc5tBwVI6yHvWiIAxzVBhrPYjo4amKb
+ CXNIl/GStsPiE7zX32TUmFcLuCVm6Cw==
+X-Gm-Gg: AZFdTZehg9ZNma4u+WdIjEvU0kBdI3sGmnjs8BwSUgYFyR02D1M7tY+gTnSwOQFhTHp
+ Azwi+Ye1r90OySLNlAu0iOojx+WR7soxfguz3dKuM/yaMwQ2F4ikyArxg8otW2gpa1K6/eKPo0L
+ u7enLyOTO5BHMRB6Rij4uNK/tEzc8l3AlQJlPyfumn0ELLORo58P/J225E5rdfWnYvKIVhYHdtm
+ 1Kl3rQY8Fua3Cje3inQce3ZtJCbrqSsI0st3AAVh9FFj1kcrXUVImOaePNrQYrkviqTm5zdhcIr
+ nAccI4G3Qd1L5J1q/0ehCPncItCrjS9Av4yL2X8lAasLbwxlsI5TQHPwGP/Uyadr5UV6mqBYYYj
+ FITDwcgkQvMODmtSX78Tk0d+6T5i5KHWYLc/8ouOygG6tKyeS4tWPfnHcgjZAL0QH
+X-Received: by 2002:a05:600c:1547:b0:4a2:397:73f6 with SMTP id
+ 5b1f17b1804b1-4bb8880974amr413936815e9.8.1795622059758; Wed, 25 Nov 2026
+ 07:54:19 -0800 (PST)
+Received: from 101988054943 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 25 Nov 2026 09:54:19 -0600
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=frank.mehnert@gmail.com; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+From: Roberto Lari <lroby74@gmail.com>
+Date: Wed, 25 Nov 2026 09:54:19 -0600
+X-Gm-Features: Aa3M54rYcBIDfLzFHJVXc2WwIZjXPTI9Ipp5PoOHVrBiuypaaIUgrzdiQQK39OU
+Message-ID: <CAF01csnadSrqFHG=qvZXZ7JCkNv9vtiF_hsmas3SmiofgTSYrg@mail.gmail.com>
+Subject: [BUG] target/arm: WFE sleeps forever after a failed STXR (ARM ARM
+ K10.3.1 spinlock)
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, alex.bennee@linaro.org
+Content-Type: multipart/alternative; boundary="00000000000005d92006611bd7e1"
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=lroby74@gmail.com; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 25 Nov 2026 07:35:44 -0500
+X-Mailman-Approved-At: Wed, 25 Nov 2026 11:48:32 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,87 +112,104 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-4.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,HTML_MESSAGE,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Since WFE may sleep on A-profile, a WFE executed outside an exclusive
-region halts the vCPU until an event arrives. Lock code commonly
-branches back to WFE after a failed store-exclusive, for example:
+--00000000000005d92006611bd7e1
+Content-Type: text/plain; charset="UTF-8"
 
-  1: wfe
-     ldaxr  w1, [x0]
-     cbnz   w1, 1b
-     stxr   w2, w3, [x0]
-     cbnz   w2, 1b
+Hello,
 
-The store-exclusive clears exclusive_addr, so the following WFE sleeps.
-On hardware, the store by another PE that made the store-exclusive fail
-cleared the global monitor of this PE, and clearing the global monitor
-sets the Event Register (Arm ARM D1.6.1, R_XRZRK). The WFE then
-completes immediately. QEMU does not model this, so with interrupts
-masked and no event stream the vCPU sleeps until another PE executes
-SEV, which such lock code never does.
+since commit 01b223f895 ("target/arm: enable WFE sleeping for
+A-profile"), a bare-metal AArch64 guest sometimes hangs at boot on
+raspi3b and raspi4b with current master (v11.2.0-rc1-67-g6bf90d4fc5,
+TCG). We have not seen it with 10.2, where WFE is a yield.
 
-Set the Event Register when a store-exclusive fails, in both the
-AArch64 and the AArch32 translator. A failure for another reason causes
-a spurious wakeup, which the architecture permits.
+The guest is built on Circle (
+https://www.google.com/url?q=https://github.com/rsta2/circle&source=gmail&ust=1795708458928000&sa=E).
+Its
+spinlock is the example of the ARMv8-A ARM (section K10.3.1, as cited
+in Circle's source):
 
-Fixes: 01b223f895a7 ("target/arm: enable WFE sleeping for A-profile")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/4938
-Signed-off-by: Frank Mehnert <frank.mehnert@kernkonzept.com>
----
- target/arm/tcg/translate-a64.c | 7 ++++++-
- target/arm/tcg/translate.c     | 7 ++++++-
- 2 files changed, 12 insertions(+), 2 deletions(-)
+sevl
+1: wfe
+ldaxr w3, [x1]
+cbnz w3, 1b
+stxr w3, w2, [x1]
+cbnz w3, 1b
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 49472f7d97..45f3b3df03 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -3531,10 +3531,15 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
-         tcg_gen_setcond_i64(TCG_COND_NE, tmp, tmp, cpu_exclusive_val);
-     }
-     tcg_gen_mov_i64(cpu_reg(s, rd), tmp);
--    tcg_gen_br(done_label);
-+    tcg_gen_brcondi_i64(TCG_COND_EQ, tmp, 0, done_label);
- 
-     gen_set_label(fail_label);
-     tcg_gen_movi_i64(cpu_reg(s, rd), 1);
-+    /*
-+     * A failing store-exclusive means the global monitor was cleared, which
-+     * generates a WFE wakeup event.
-+     */
-+    gen_event_reg();
-     gen_set_label(done_label);
-     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
- }
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 442c34ce84..2eef2ceef2 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -2137,10 +2137,15 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
-         tcg_gen_setcond_i32(TCG_COND_NE, t0, t0, t2);
-     }
-     tcg_gen_mov_i32(cpu_R[rd], t0);
--    tcg_gen_br(done_label);
-+    tcg_gen_brcondi_i32(TCG_COND_EQ, t0, 0, done_label);
- 
-     gen_set_label(fail_label);
-     tcg_gen_movi_i32(cpu_R[rd], 1);
-+    /*
-+     * A failing store-exclusive means the global monitor was cleared, which
-+     * generates a WFE wakeup event.
-+     */
-+    gen_event_reg();
-     gen_set_label(done_label);
-     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
- }
--- 
-2.55.0
+and the unlock is a plain "stlr wzr, [x1]" without SEV, as in that
+example.
 
+About 1 boot in 4 hangs (raspi3b: 6 of 16, raspi4b: 2 of 16). In
+every hang, "info registers -a" shows the same secondary core with
+its PC on the instruction after that wfe (CSpinLock::Acquire + 0x38 in
+the three kernels we tried), and the boot never goes on. Nothing wakes
+that core up at that point: the lock holder releases with STLR, Circle
+routes all GIC interrupts to core 0, and it does not enable the
+generic timer event stream.
+
+As far as we can tell, WFE does not sleep while the PE is in the
+exclusive region (env->exclusive_addr != -1), but when the STXR fails
+because another PE took the lock between our LDAXR and STXR,
+gen_store_exclusive() has already set exclusive_addr to -1, so the
+branch back to the wfe really sleeps. On hardware the STXR fails
+precisely because another observer wrote the location, and the
+clearing of the global monitor for the PE is one of the WFE wake-up
+events, so that wfe does not sleep.
+
+In our tests, setting the Event Register when a store-exclusive fails
+makes the hang go away: 0 hangs in 64 boots of the same kernels
+(raspi3b 24, raspi4b 40). We are not sending a patch: the analysis was
+done with the help of an AI assistant, so, following
+docs/devel/code-provenance.rst, we leave the fix to you. We are happy
+to test one on these kernels.
+
+Best regards,
+Roberto Lari
+
+--00000000000005d92006611bd7e1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body><div dir=3D"auto">Hello,<br><br>since commit 01b223f895 (&quot;=
+target/arm: enable WFE sleeping for<br>A-profile&quot;), a bare-metal AArch=
+64 guest sometimes hangs at boot on<br>raspi3b and raspi4b with current mas=
+ter (v11.2.0-rc1-67-g6bf90d4fc5,<br>TCG). We have not seen it with 10.2, wh=
+ere WFE is a yield.<br><br>The guest is built on Circle (<a href=3D"https:/=
+/www.google.com/url?q=3Dhttps://github.com/rsta2/circle&amp;source=3Dgmail&=
+amp;ust=3D1795708458928000&amp;sa=3DE">https://www.google.com/url?q=3Dhttps=
+://github.com/rsta2/circle&amp;source=3Dgmail&amp;ust=3D1795708458928000&am=
+p;sa=3DE</a>). Its<br>spinlock is the example of the ARMv8-A ARM (section K=
+10.3.1, as cited<br>in Circle&#39;s source):<br><br>        sevl<br>    1: =
+ wfe<br>        ldaxr   w3, [x1]<br>        cbnz    w3, 1b<br>        stxr =
+   w3, w2, [x1]<br>        cbnz    w3, 1b<br><br>and the unlock is a plain =
+&quot;stlr wzr, [x1]&quot; without SEV, as in that<br>example.<br><br>About=
+ 1 boot in 4 hangs (raspi3b: 6 of 16, raspi4b: 2 of 16). In<br>every hang, =
+&quot;info registers -a&quot; shows the same secondary core with<br>its PC =
+on the instruction after that wfe (CSpinLock::Acquire + 0x38 in<br>the thre=
+e kernels we tried), and the boot never goes on. Nothing wakes<br>that core=
+ up at that point: the lock holder releases with STLR, Circle<br>routes all=
+ GIC interrupts to core 0, and it does not enable the<br>generic timer even=
+t stream.<br><br>As far as we can tell, WFE does not sleep while the PE is =
+in the<br>exclusive region (env-&gt;exclusive_addr !=3D -1), but when the S=
+TXR fails<br>because another PE took the lock between our LDAXR and STXR,<b=
+r>gen_store_exclusive() has already set exclusive_addr to -1, so the<br>bra=
+nch back to the wfe really sleeps. On hardware the STXR fails<br>precisely =
+because another observer wrote the location, and the<br>clearing of the glo=
+bal monitor for the PE is one of the WFE wake-up<br>events, so that wfe doe=
+s not sleep.<br><br>In our tests, setting the Event Register when a store-e=
+xclusive fails<br>makes the hang go away: 0 hangs in 64 boots of the same k=
+ernels<br>(raspi3b 24, raspi4b 40). We are not sending a patch: the analysi=
+s was<br>done with the help of an AI assistant, so, following<br>docs/devel=
+/code-provenance.rst, we leave the fix to you. We are happy<br>to test one =
+on these kernels.<br><br>Best regards,<br>Roberto Lari<br></div></body></ht=
+ml>
+
+--00000000000005d92006611bd7e1--
 

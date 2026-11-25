@@ -1,132 +1,66 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 01D46606A31E
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Nov 2026 03:13:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06F3B606A31E
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Nov 2026 03:45:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=aspeedtech.com header.i=@aspeedtech.com header.a=rsa-sha256 header.s=selector1 header.b=S4/KeMe6
+	dkim=pass (1024-bit key, unprotected) header.d=huawei.com header.i=@huawei.com header.a=rsa-sha256 header.s=dkim header.b=pv/MeWBg
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xW3R4-0004qk-FQ; Tue, 24 Nov 2026 22:12:42 -0500
+	id 1xW3wl-0006Pf-O2; Tue, 24 Nov 2026 22:45:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xW3R2-0004ph-6i; Tue, 24 Nov 2026 22:12:40 -0500
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1xW3wk-0006PO-8E; Tue, 24 Nov 2026 22:45:26 -0500
+Received: from canpmsgout10.his.huawei.com ([113.46.200.225])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xW3Qz-0006xi-VF; Tue, 24 Nov 2026 22:12:39 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HhhFHS+vYm+qKxuWxCvnqf7NL/Pwse4H+QPnCWLjWw9AyUYKksBLxNlAuzwrhnZLNS7VTg9HFwHURfIeqXu00nn/Pb35EOv+xpqrCw//PoMFr+5hZbV4qp1UYin1rVCbhX0JiOcPWeGb3CyjaeIP1yxOJgQLPEmZd6tJcDIk0etHDffdSRJLdADrEEihif0vmStXnkQkmySPOVEzjQP1K8GZwhIW5hJ9Ko7XE7Q0CatMS+/U2GvCFVTpvMzpTawqmBxoyGJu6VPxcCAOQQ/WAXDuCt/0CUyba6n4itRZenNg6lPsWxm/bGrEWi+6OdHx1ps35lADQ8IdwgQ0AKPCGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Sd6Qw2uqI90+AQH3F7Hm2Ot6V5/jcf0gC/d61q7v9bo=;
- b=yagAZ87l3zLtIs1/2jKRMH4GtKkOBXnB+DPpOzBQAIHab33XFhyS0y2dX57Ry4DdG/fhf/xeEFWl/3AXF5YvrfZ5zapWNPi5OeyCB4wOIAv2fS0uFRfOcTamSr1NnxDFMWcZfWRCYgZumXmKVqzSdSL76wRmUjsBSMUxteX0Q0rlwH5/ISKM1PQp/6D8nzaTv6grKSFYUHHB2v27R6yUIvd9GdU6syuEI/1vDLM2YG8wzr3s2ryRobu0wBMgeVHMXgnQgmrSZNavCteL7VFszenygNrlhXnIQq9rg0aVhZpwtR9fHcn9F5ws60tOEIeVmJMTndBeFXpNJzxx8TXFQQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Sd6Qw2uqI90+AQH3F7Hm2Ot6V5/jcf0gC/d61q7v9bo=;
- b=S4/KeMe63AAAoXDh4GpM+PNoTFlujMKXG53kjJon8ad+vJSFvi2/AnNY4kgvfXC6n0o72Lh0/KyEJfI8i8rDoDvqRVqf85x8kuKC7g71sAQFdukADV38TJcdqzdu1bHNppWGQpjbY2AFhdtIlAA+7voW+J2OgqrhiID0WhlL6F+ik5HAnHN4nPZf4xlXLfhK4tJk7umpvforoajpleIyAoUCotKi4dXifb0LbIqO4Pp2kSNLBe5dBNDES+IlunHLVfEdQa/h5InJOq8i+iwj1kpmgkdMEFbrBQ2Gl6KxXDTYE4KPrts25Kcr/7wccvYXOW0HHa0r0cd1WzFdtg5kyw==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by KUZPR06MB8895.apcprd06.prod.outlook.com with HTTP via P2P;
- Wed, 25 Nov 2026 03:12:28 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0662.001; Wed, 25 Nov 2026
- 03:12:28 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Kane Chen <kane_chen@aspeedtech.com>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 1/3] hw/pci-host/aspeed_pcie: Fix lost INTx interrupts
-Thread-Topic: [PATCH v1 1/3] hw/pci-host/aspeed_pcie: Fix lost INTx interrupts
-Thread-Index: AQHdfIrNAAUN2lc2n0GKOgsZNWDhbA==
-Date: Wed, 25 Nov 2026 03:12:27 +0000
-Message-ID: <20261125031225.3810653-2-jamin_lin@aspeedtech.com>
-References: <20261125031225.3810653-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20261125031225.3810653-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|KUZPR06MB8895:EE_
-x-ms-publictraffictype: Email
-client-request-id: 27ac14e2-da8c-4919-881e-14c6fc0189fe
-request-id: bb1fb046-b380-4b36-0a84-08df4aa1ef9b
-x-ms-office365-filtering-correlation-id: bb1fb046-b380-4b36-0a84-08df4aa1ef9b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|23010399003|376014|1800799024|18002099003|22082099003|261009223327099003|261009220027099003|261009221227099003|261009221727099003|261009223027099003|10067099003|56012099006|261102123227099003|261026140227099003|261022075727099003|261022105027099003|261028144727099003|261021123027099003|261026121527099003|261021121427099003|38070700021;
-x-microsoft-antispam-message-info: 9kbUv1e8/uckpS2Pi0l65zFy1Z6iTBY92cMk6NC2OgJzEOyiMQBPhzUqG2fvKYTw3KNCfPdMq44LWcDLbfsQahKDpW7/Rv4eCS7LacO3Mymiu4Hy6AB+2+TIgzFSyceIW5hq2mCCuRkTruwZN5h4dTw+i+y1DU9vvQJH/AljfswEkZw01t5072C3vQgTsjGOprE9nle9ekTNY/aTBzQu8pXsxOwfta6UpQHIcbQm7twu+oYdrAwmod0b0jKrpFPo731torXGzl8QooITYXNDf/BN/JEeMmw8m1szIkCVkqwCzZlsN5k+UyDGKRTB8i06MxrWDEdXkqkbiKqHIGobv8PfNeAmLZDKgkNdtcucIH5WyuWdhUAPVM80QZ1EJID0rKbGmHsakwOSfAOtmI8Kq6aY4zhbZothk5N2DKDEWDdBKes7Y5FLg3xUjLN5+USNMebkTdVuO+2FaRlhsjKXS3vkWiU7jmwLm6UihWmFMwI+8TFWxuedYIQAPijuoeGk+Gy4ZKA5VSswQMDBhtCeyFZJxWGa344ySOTsfbKV5PmdBaozjd9dvNbS1JfTGAOknFet8zWCHOoTMFeYsSv3q4e4AVYRIdpa69JOmW1uNLtsxexd0/sVLQ46N5AIZApUFz3SeWsvia3/4d5Y+r+UawThLiQhS64RJiRJTOl93fuxbTJmZSWyC7Hu1Vvsq7HpsR87jfi35tlfW30rRzMcuMBw7p0rAipc1zVtTTW09yU=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(23010399003)(376014)(1800799024)(18002099003)(22082099003)(261009223327099003)(261009220027099003)(261009221227099003)(261009221727099003)(261009223027099003)(10067099003)(56012099006)(261102123227099003)(261026140227099003)(261022075727099003)(261022105027099003)(261028144727099003)(261021123027099003)(261026121527099003)(261021121427099003)(38070700021);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?B7R0NqQHvFRU2uayoggAXxIuh+9R9KINJMrTMOP51NJK/NWhhjVpO6pQ6k?=
- =?iso-8859-1?Q?9ZBM/j5THvCi23aWlfmKDM3GF2MpOapoJa3GHm5vOY6+OgiOQDSFI/jKJ7?=
- =?iso-8859-1?Q?2FxiL4o5oPn1uyahHmEdeqlKrvxYFEbzqeNYhdZSrpIBtDNWyNGR5kz/gS?=
- =?iso-8859-1?Q?dJgGFwik+kPXLftgBYjcMUB0Trz1lOCU22khbjrOTjVkvZzkpNDlO09rvM?=
- =?iso-8859-1?Q?KLD0HL2G1tnlEi4j5TCk31q7J3NKcTHzuUScHGh0aBQuU/jA1AkDMhb99k?=
- =?iso-8859-1?Q?on3pikoxzvZ1s5VLhNLT8WXe2wgFdO8/BW3/IFY3fDorI/9kNNQjdtcsV0?=
- =?iso-8859-1?Q?NdZ+GbdnZ4yLQQsOFwrGXvoEFRGgcGoND/MQMPBQnpTmi4SnUlXe8gPTxx?=
- =?iso-8859-1?Q?QC3cBnxOXWzl6MWSqXQ+J2u4VU+0AhFBdW1aazM1kopcJXQWYIYTP4ontL?=
- =?iso-8859-1?Q?uxC2DYk8D8u2aTxbt/hobI5bY64msVgW4jvt5WTrcaKaVRGf/AR7UYDr3P?=
- =?iso-8859-1?Q?a2uqh/Dl6TCoamwtdJwY13m5Jrh0tjGgZN6urLmAmub9zqFvBebrQZO8Bu?=
- =?iso-8859-1?Q?smIslr3iwTC9bSsLL6jjB+TWedq5u0QFFVMSA2eafVx2O82hIzpwYtfUba?=
- =?iso-8859-1?Q?DRc9FwTkukzyi7zRtM1WuXCEInlMoBAf7THp3ScfMtAnB3ngWaur2CulBd?=
- =?iso-8859-1?Q?g2l0EZEeCF3Y5vWiLVCfIaM0tSO8S6Bu8PyMob/SXiTMqoIr+qsmNFw+HH?=
- =?iso-8859-1?Q?0XDs5zSDHx4CCFZkP4qBiFLUYgCrIzbf4mxSOkLKaGkEWmIybOIWUgB6xP?=
- =?iso-8859-1?Q?+QDqqJilfmyMUREk5nZpmp1X9pDW2kpGF4WG5+5I6OEpF5StWAhZsFRFGG?=
- =?iso-8859-1?Q?gdYPR1wg6jNdKcdun5ffn5tmKQ1+DlMIz73XUbdeOsR87FEkOSEjVAUIez?=
- =?iso-8859-1?Q?byCoElhXjkS6UQwfKv4/cYjQ+ftVXooqLOSNEFGM/VO6HqGBcA8cQ15kQ6?=
- =?iso-8859-1?Q?IwgQFbPIkyXW30bOdRyH/JhC/amAO8zFEye3Z0SlyLGYl4LaZLTOE/FSA7?=
- =?iso-8859-1?Q?ZhJMgISwPlsseILNewnE9naOlqUeSgMahxUUck8oHoeyCjogJGfJzTLI2G?=
- =?iso-8859-1?Q?74ep9FFDrvSIloQ6ep+bQ/xKu5hyc2LiM65h3V/gmoaKU2Sjt8KsQK/myS?=
- =?iso-8859-1?Q?BclzdE8WxIHDwgdse/s6aZxzKw4gTri/IqlC2A6cknunevQ4KT6d+Bka3X?=
- =?iso-8859-1?Q?CTGDoL+HS1RIT5WW7hzQo3SlqxqsxJw5Wk/0oA37Ay2VXzpzFXGtx4IFWQ?=
- =?iso-8859-1?Q?L5aDCdWcsxUMA+ci6t+udxsEAobDMDvBPKKzp2Tm/Quq9V0HjILu9t25Hj?=
- =?iso-8859-1?Q?jTxKL1bGTiPmcYv63DJ4QoS2q1I+RnTPWIO3WAdzEQU2xpEUQk8fdBVq5+?=
- =?iso-8859-1?Q?WId1OKRjP3ufDqrU75QBslUZ0O8V3Jxjuipzl651GGIpZN9NpbNfHQH7dA?=
- =?iso-8859-1?Q?atfKcXcA9Tpdc9omr2jmxbFjc/9aY2nlSbmsBRUvA9nS39O56vYn9Gx/Zb?=
- =?iso-8859-1?Q?2jVWxb1P8uZY6WlxbXUgONBYFiePk/veYRYqh7MW5Q2NibmdyA4Ht0cqIg?=
- =?iso-8859-1?Q?kgT39OMQbW+Q9+mAe6CcTdQldmjVP2l1wwjIDI0v2be34nRiDtP/HavCjV?=
- =?iso-8859-1?Q?9VXn18TELcL9RhzVWAnbJr57b3OAIu3GEu4OPYJz2ZQwb0PSdb6Pb9SUVM?=
- =?iso-8859-1?Q?FsGg9IEvp4ZwTX9ZLX8q4/v2jW7EUL1tkHBGX9r7+YxiLN+TVb4h4vaGXk?=
- =?iso-8859-1?Q?mW4CvXvUrQ=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1xW3wg-0008G5-Jh; Tue, 24 Nov 2026 22:45:25 -0500
+dkim-signature: v=1; a=rsa-sha256; d=huawei.com; s=dkim;
+ c=relaxed/relaxed; q=dns/txt; h=From;
+ bh=wezf7vBRFL5/+0ATASU+jIOoMTNGW17Dl9rcqImwmNU=;
+ b=pv/MeWBgqb3R4trjNRWpokQ3JRnEC+uBhjE5jWJgnJWg4W/HGKqEE01odtWEQ8r1/TsAPxh97
+ ZNPQlINE9gYlabx/HahPqY3VrqXGZvNlwqUMXWKDimEndCV5dgpBh++JDYEFggjlVCg0X+nrTjL
+ 8va7jUUdjGbOW5fUm7Bqyzo=
+Received: from mail.maildlp.com (unknown [172.19.163.214])
+ by canpmsgout10.his.huawei.com (SkyGuard) with ESMTPS id 4jZ5Cb57Ppz1K99k;
+ Wed, 25 Nov 2026 11:44:43 +0800 (CST)
+Received: from kwepemk200008.china.huawei.com (unknown [7.202.194.74])
+ by mail.maildlp.com (Postfix) with ESMTPS id 8A78B4057C;
+ Wed, 25 Nov 2026 11:45:01 +0800 (CST)
+Received: from [10.67.110.68] (10.67.110.68) by kwepemk200008.china.huawei.com
+ (7.202.194.74) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Wed, 25 Nov
+ 2026 11:45:00 +0800
+Message-ID: <1acf1f61-b201-476b-91dc-a2906723fef3@huawei.com>
+Date: Wed, 25 Nov 2026 11:45:00 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bb1fb046-b380-4b36-0a84-08df4aa1ef9b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Nov 2026 03:12:27.9019 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: jpFXzGTzYAAXu2evQHtqzKTvwpP2lzIlXPi0IsNq16QLSPCETrOacS78wcJbpc65lo2b3SOjhE6gr4lXACAdkyaA3BkWA+6xyxzD4ZZ2KKs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR06MB8895
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/37] hw/arm/mpam: Add MPAM MSC register map
+To: Jonathan Cameron <jic23@kernel.org>, Jinjie Ruan <2118537295@qq.com>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <eblake@redhat.com>,
+ <imammedo@redhat.com>, <michael.roth@amd.com>, <mst@redhat.com>,
+ <pbonzini@redhat.com>, <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>
+References: <20261016094733.1898485-1-2118537295@qq.com>
+ <tencent_25A9B619D0E3909582B4CF096744805B6107@qq.com>
+ <20261103003352.42e05890@jic23-hlaptop>
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+In-Reply-To: <20261103003352.42e05890@jic23-hlaptop>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
+ kwepemk200008.china.huawei.com (7.202.194.74)
+Received-SPF: pass client-ip=113.46.200.225;
+ envelope-from=ruanjinjie@huawei.com; helo=canpmsgout10.his.huawei.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,193 +73,218 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The RC has one interrupt line for both INTx and MSI. It should be high=0A=
-when (INT_STS & INT_EN) !=3D 0 or an MSI is pending.=0A=
-=0A=
-The model only updates the line when a device raises or lowers its=0A=
-INTx. A write to INT_EN does not update it. The guest firmware masks an=0A=
-INTx while the handler runs, so an INTx that comes in during the=0A=
-handler is lost.=0A=
-=0A=
-For example, with INTD (bit 3, 0x8):=0A=
-=0A=
-  1. The device raises INTD.=0A=
-  2. The guest firmware masks INTD.=0A=
-  3. The device lowers INTD.=0A=
-  4. The device raises INTD again.=0A=
-  5. The guest firmware unmasks INTD.=0A=
-=0A=
-  step  INT_EN  INT_STS  line=0A=
-  1     0x8     0x8      1=0A=
-  2     0x0     0x8      1=0A=
-  3     0x0     0x0      0=0A=
-  4     0x0     0x8      0=0A=
-  5     0x8     0x8      0    (should be 1)=0A=
-=0A=
-The guest never sees the interrupt from step 4.=0A=
-=0A=
-INTx and MSI also overwrite each other on the line. If an MSI is=0A=
-pending (MSI_STS0 =3D 0x1) and a device lowers INTD, the line drops to 0.=
-=0A=
-If INTD is pending (INT_STS =3D 0x8) and the guest clears the last MSI,=0A=
-the line drops to 0 as well.=0A=
-=0A=
-Compute the line in one place, aspeed_pcie_rc_update_irq(), and call=0A=
-it on INTx changes, MSI changes and INT_EN writes.=0A=
-=0A=
-Fixes: f002aa35f320 ("hw/pci-host/aspeed: Add AST2600 PCIe config space and=
- host bridge")=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
----=0A=
- hw/pci-host/aspeed_pcie.c | 41 +++++++++++++++++++++++++++++----------=0A=
- hw/pci-host/trace-events  |  6 +++---=0A=
- 2 files changed, 34 insertions(+), 13 deletions(-)=0A=
-=0A=
-diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c=0A=
-index ceb010f213..2362409ab7 100644=0A=
---- a/hw/pci-host/aspeed_pcie.c=0A=
-+++ b/hw/pci-host/aspeed_pcie.c=0A=
-@@ -89,12 +89,29 @@ static void aspeed_pcie_root_port_class_init(ObjectClas=
-s *klass,=0A=
- =0A=
- #define ASPEED_PCIE_CFG_RC_MAX_MSI 64=0A=
- =0A=
-+/*=0A=
-+ * INTx and MSI share one RC interrupt line. Compute it from both, so one=
-=0A=
-+ * does not lower the line while the other is still pending.=0A=
-+ */=0A=
-+static void aspeed_pcie_rc_update_irq(AspeedPCIECfgState *cfg)=0A=
-+{=0A=
-+    uint32_t msi_sts0 =3D cfg->regs[cfg->rc_regs->msi_sts0_reg];=0A=
-+    uint32_t msi_sts1 =3D cfg->regs[cfg->rc_regs->msi_sts1_reg];=0A=
-+    uint32_t int_sts =3D cfg->regs[cfg->rc_regs->int_sts_reg];=0A=
-+    uint32_t int_en =3D cfg->regs[cfg->rc_regs->int_en_reg];=0A=
-+    bool level;=0A=
-+=0A=
-+    level =3D (int_sts & int_en) || msi_sts0 || msi_sts1;=0A=
-+    trace_aspeed_pcie_rc_update_irq(cfg->id, int_sts, int_en, msi_sts0,=0A=
-+                                    msi_sts1, level);=0A=
-+    qemu_set_irq(cfg->rc.irq, level);=0A=
-+}=0A=
-+=0A=
- static void aspeed_pcie_rc_set_irq(void *opaque, int irq, int level)=0A=
- {=0A=
-     AspeedPCIERcState *rc =3D (AspeedPCIERcState *) opaque;=0A=
-     AspeedPCIECfgState *cfg =3D=0A=
-         container_of(rc, AspeedPCIECfgState, rc);=0A=
--    bool intx;=0A=
- =0A=
-     assert(irq < PCI_NUM_PINS);=0A=
- =0A=
-@@ -104,10 +121,8 @@ static void aspeed_pcie_rc_set_irq(void *opaque, int i=
-rq, int level)=0A=
-         cfg->regs[cfg->rc_regs->int_sts_reg] &=3D ~BIT(irq);=0A=
-     }=0A=
- =0A=
--    intx =3D !!(cfg->regs[cfg->rc_regs->int_sts_reg] &=0A=
--              cfg->regs[cfg->rc_regs->int_en_reg]);=0A=
--    trace_aspeed_pcie_rc_intx_set_irq(cfg->id, irq, intx);=0A=
--    qemu_set_irq(rc->irq, intx);=0A=
-+    trace_aspeed_pcie_rc_intx_set_irq(cfg->id, irq, level);=0A=
-+    aspeed_pcie_rc_update_irq(cfg);=0A=
- }=0A=
- =0A=
- static int aspeed_pcie_rc_map_irq(PCIDevice *pci_dev, int irq_num)=0A=
-@@ -129,7 +144,7 @@ static void aspeed_pcie_rc_msi_notify(AspeedPCIERcState=
- *rc, uint64_t data)=0A=
-     cfg->regs[reg] |=3D BIT(data % 32);=0A=
- =0A=
-     trace_aspeed_pcie_rc_msi_set_irq(cfg->id, data, 1);=0A=
--    qemu_set_irq(rc->irq, 1);=0A=
-+    aspeed_pcie_rc_update_irq(cfg);=0A=
- }=0A=
- =0A=
- static void aspeed_pcie_rc_msi_write(void *opaque, hwaddr addr, uint64_t d=
-ata,=0A=
-@@ -541,6 +556,10 @@ static void aspeed_pcie_cfg_write(void *opaque, hwaddr=
- addr, uint64_t data,=0A=
-             s->regs[R_H2X_TX_STS] |=3D R_H2X_TX_STS_IDLE_MASK;=0A=
-         }=0A=
-         break;=0A=
-+    case R_H2X_RC_H_INT_EN:=0A=
-+        s->regs[reg] =3D data;=0A=
-+        aspeed_pcie_rc_update_irq(s);=0A=
-+        break;=0A=
-     /* preserve INTx status */=0A=
-     case R_H2X_RC_H_INT_STS:=0A=
-         if (data & H2X_RC_INT_INTDONE_MASK) {=0A=
-@@ -567,8 +586,7 @@ static void aspeed_pcie_cfg_write(void *opaque, hwaddr =
-addr, uint64_t data,=0A=
- =0A=
-         if (!s->regs[R_H2X_RC_H_MSI_STS0] &&=0A=
-             !s->regs[R_H2X_RC_H_MSI_STS1]) {=0A=
--            trace_aspeed_pcie_rc_msi_clear_irq(s->id, 0);=0A=
--            qemu_set_irq(s->rc.irq, 0);=0A=
-+            aspeed_pcie_rc_update_irq(s);=0A=
-         }=0A=
-         break;=0A=
-     default:=0A=
-@@ -718,6 +736,10 @@ static void aspeed_2700_pcie_cfg_write(void *opaque, h=
-waddr addr,=0A=
-         }=0A=
-         break;=0A=
- =0A=
-+    case R_H2X_INT_EN:=0A=
-+        s->regs[reg] =3D data;=0A=
-+        aspeed_pcie_rc_update_irq(s);=0A=
-+        break;=0A=
-     case R_H2X_INT_STS:=0A=
-         s->regs[reg] &=3D ~data | R_H2X_INT_STS_INTX_MASK;=0A=
-         break;=0A=
-@@ -740,8 +762,7 @@ static void aspeed_2700_pcie_cfg_write(void *opaque, hw=
-addr addr,=0A=
- =0A=
-         if (!s->regs[R_H2X_MSI_STS0] &&=0A=
-             !s->regs[R_H2X_MSI_STS1]) {=0A=
--            trace_aspeed_pcie_rc_msi_clear_irq(s->id, 0);=0A=
--            qemu_set_irq(s->rc.irq, 0);=0A=
-+            aspeed_pcie_rc_update_irq(s);=0A=
-         }=0A=
-         break;=0A=
-     default:=0A=
-diff --git a/hw/pci-host/trace-events b/hw/pci-host/trace-events=0A=
-index a6fd88c2c4..26730beafc 100644=0A=
---- a/hw/pci-host/trace-events=0A=
-+++ b/hw/pci-host/trace-events=0A=
-@@ -1,10 +1,10 @@=0A=
- # See docs/devel/tracing.rst for syntax documentation.=0A=
- =0A=
- # aspeed_pcie.c=0A=
--aspeed_pcie_rc_intx_set_irq(uint32_t id, int num, int level) "%d: num %d s=
-et IRQ leve %d"=0A=
-+aspeed_pcie_rc_update_irq(uint32_t id, uint32_t int_sts, uint32_t int_en, =
-uint32_t msi_sts0, uint32_t msi_sts1, int level) "%d: INT_STS 0x%x INT_EN 0=
-x%x MSI_STS0 0x%x MSI_STS1 0x%x level %d"=0A=
-+aspeed_pcie_rc_intx_set_irq(uint32_t id, int num, int level) "%d: INTx %d =
-level %d"=0A=
- aspeed_pcie_rc_msi_notify(uint32_t id, uint64_t addr, uint64_t data) "%d: =
-0x%" PRIx64 " data 0x%" PRIx64=0A=
--aspeed_pcie_rc_msi_set_irq(uint32_t id, uint64_t unm, int level) "%d: num =
-0x%" PRIx64 " set IRQ level %d"=0A=
--aspeed_pcie_rc_msi_clear_irq(uint32_t id, int level) "%d: clear IRQ level =
-%d"=0A=
-+aspeed_pcie_rc_msi_set_irq(uint32_t id, uint64_t num, int level) "%d: num =
-0x%" PRIx64 " set IRQ level %d"=0A=
- aspeed_pcie_cfg_read(uint32_t id, uint64_t addr, uint32_t value) "%d: addr=
- 0x%" PRIx64 " value 0x%" PRIx32=0A=
- aspeed_pcie_cfg_write(uint32_t id, uint64_t addr, uint32_t value) "%d: add=
-r 0x%" PRIx64 " value 0x%" PRIx32=0A=
- aspeed_pcie_cfg_rw(uint32_t id, const char *dir, uint8_t bus, uint8_t devf=
-n, uint64_t addr, uint64_t data) "%d: %s bus:0x%x devfn:0x%x addr 0x%" PRIx=
-64 " data 0x%" PRIx64=0A=
--- =0A=
-2.53.0=0A=
+
+
+在 2026/11/3 8:33, Jonathan Cameron 写道:
+> On Fri, 16 Oct 2026 17:46:59 +0800
+> Jinjie Ruan <2118537295@qq.com> wrote:
+> 
+>> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+Hi Jonathan,
+
+>>
+>> Add the MMIO register map of an MPAM 1.1 Memory System Component
+>> (IHI 0099 sections 4-6) as registerfields definitions:
+>> - The feature IDRs (MPAMF_IDR, IIDR/AIDR, CPOR/CCAP/MBW/PRI/PARTID_NRW,
+>>   MSMON family)
+>> - The error registers (ERR_MSI block, ECR, ESR)
+>> - The configuration registers (PART_SEL, CMAX/CMIN/CASSOC,
+>>   MBW_MIN/MAX/PBM/PROP, PRI, INTPARTID, CPBM/MBW_PBM arrays) and their
+>>   write masks
+>> - The portion-width constants of this model.
+>>
+>> Based on an RFC series by Jonathan Cameron.
+> 
+> Maybe a link tag to that old piece of garbage - might be more useful
+> than referring to it like this.
+> 
+> A few typos in here that should be tidied up. I clearly
+> didn't check this closely enough at the time. Nothing major
+> but need tidying up.
+> 
+> Also, an LLM pointed out that some of the write masks are more
+> complex that this implies as depend on other register values.
+> Maybe add comments where that is true as enforcement will be
+> needed in the writing code - what we have here just acts as
+> some sort of worst case masking.  I guess you could define
+> some macros to create the masks here.
+> 
+> Thanks,
+> 
+> Jonathan
+> 
+>>
+>> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+> 
+>> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+>> index bcc068d..42ca75b 100644
+>> --- a/hw/arm/meson.build
+>> +++ b/hw/arm/meson.build
+>> @@ -106,6 +106,7 @@ arm_common_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
+>>  arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
+>>  arm_common_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
+>>  arm_common_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
+>> +arm_common_ss.add(when: 'CONFIG_MPAM', if_true: files('mpam.c'))
+>>  arm_common_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+>>  arm_common_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
+>>  arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
+>> diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
+>> new file mode 100644
+>> index 0000000..772a120
+>> --- /dev/null
+>> +++ b/hw/arm/mpam.c
+>> @@ -0,0 +1,223 @@
+>> +/*
+>> + * ARM MPAM emulation
+>> + *
+>> + * Copyright (c) 2023 Huawei
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#include "qemu/osdep.h"
+>> +#include "qapi/error.h"
+>> +#include "qemu/log.h"
+>> +#include "hw/core/irq.h"
+>> +#include "hw/core/qdev-properties.h"
+>> +#include "hw/core/registerfields.h"
+>> +#include "hw/core/sysbus.h"
+>> +#include "qom/object.h"
+>> +#include "hw/arm/mpam.h"
+>> +
+>> +REG64(MPAMF_IDR, 0)
+>> +    FIELD(MPAMF_IDR, PART_ID_MAX, 0, 16)
+> 
+> Maybe call it PARTID_MAX given spec naming.
+
+Many spec MPAMCFG_* are named as MPAMF_MPAMCFG_*, such as MPAMCFG_CASSOC
+and MPAMCFG_MBW_MIN.
+
+I will correct all of them.
+
+Thanks,
+Jinjie
+
+> 
+>> +    FIELD(MPAMF_IDR, PMG_MAX, 16, 8)
+>> +    FIELD(MPAMF_IDR, HAS_CCAP_PART, 24, 1)
+>> +    FIELD(MPAMF_IDR, HAS_CPOR_PART, 25, 1)
+>> +    FIELD(MPAMF_IDR, HAS_MBW_PART, 26, 1)
+>> +    FIELD(MPAMF_IDR, HAS_PRI_PART, 27, 1)
+>> +    FIELD(MPAMF_IDR, EXT, 28, 1)
+>> +    FIELD(MPAMF_IDR, HAS_IMPL_IDR, 29, 1)
+>> +    FIELD(MPAMF_IDR, HAS_MSMON, 30, 1)
+>> +    FIELD(MPAMF_IDR, HAS_PARTID_NRW, 31, 1)
+>> +    FIELD(MPAMF_IDR, HAS_RIS, 32, 1)
+>> +    FIELD(MPAMF_IDR, NO_IMPL_PART, 36, 1)
+>> +    FIELD(MPAMF_IDR, NO_IMPL_MSMON, 37, 1)
+>> +    FIELD(MPAMF_IDR, HAS_EXTD_ESR, 38, 1)
+>> +    FIELD(MPAMF_IDR, HAS_ESR, 39, 1)
+>> +    FIELD(MPAMF_IDR, HAS_ERR_MS, 40, 1)
+>> +    FIELD(MPAMF_IDR, SP4, 41, 1)
+>> +    FIELD(MPAMF_IDR, HAS_ENDIS, 42, 1)
+>> +    FIELD(MPAMF_IDR, HAS_NFU, 43, 1)
+>> +    FIELD(MPAMF_IDR, RIS_MAX, 56, 4)
+> 
+> 
+> 
+>> +
+>> +REG32(MPAMF_MSMON_IDR, 0x080)
+> 
+> An LLM pointed out I was really inconsistent in numbers of
+> digits.  0x0080
+> Ah the heady days of copying typing specs.
+> 
+>> +    FIELD(MPAMF_MSMON_IDR, MSMON_CSU, 16, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, MSMON_MBWU, 17, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, HAS_OFLOW_SR, 28, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, HAS_OFLW_MS, 29, 1)
+> _MSI
+> 
+>> +    FIELD(MPAMF_MSMON_IDR, NO_OFLW_INTR, 30, 1)
+>> +    FIELD(MPAMF_MSMON_IDR, HAS_LOCAL_CAPT_EVNT, 31, 1)
+> ...
+> 
+>> +REG32(MPAMF_MPAMCFG_WINWD, 0x0220)
+>> +    FIELD(MPAMF_MPAMCFG_WINWD, US_FRAC, 0, 8)
+>> +    FIELD(MPAMF_MPAMCFG_WINWD, US_INT, 8, 16)
+>> +#define MPAMF_MPAMCFG_WINWD_WRITE_MASK ( \
+>> +    R_MPAMF_MPAMCFG_WINWD_US_FRAC | \
+>> +    R_MPAMF_MPAMCFG_WINWD_US_INT)
+> 
+> Those need _MASK suffix.
+> 
+>> +
+>> +REG32(MPAMF_MPAMCFG_EN, 0x0300)
+>> +    FIELD(MPAMF_MPAMCFG_EN, PARTID, 0, 16)
+>> +#define MPAMF_MPAMCFG_EN_WRITE_MASK ( \
+>> +    R_MPAMF_MPAMCFG_EN_PARTID_MASK)
+>> +
+>> +REG32(MPAMF_MPAMCFG_DIS, 0x0310) /* WHat is this for? */
+>> +    FIELD(MPAMF_MPAMCFG_DIS, PARTID, 0, 16)
+>> +    FIELD(MPAMF_MPAMCFG_DIS, NFU, 31, 1)
+>> +#define MPAMF_MPAMCFG_DIS_WRITE_MASK ( \
+>> +    R_MPAMF_MPAMCFG_DIS_PARTID_MASK | \
+>> +    R_MPAMF_MPAMCFG_DIS_NFU)
+> 
+> Needs a _MASK suffic.
+> 
+>> +
+>> +REG32(MPAMF_MPAMCFG_EN_FLAGS, 0x320)
+> 
+> Lots of 3 digit addresses scattered through here that
+> should all be 4 digits.
+> 
+>> +
+>> +#define TYPE_MPAM_MSC "mpam-msc"
+>> +/*
+>> + * Max number of portions this model exposes for the cache-portion (CPOR)
+>> + * bitmap and the memory-bandwidth-portion (MBW_PBM) bitmap.  IHI 0099
+>> + * dimensions CPBM_WD/BWPBM_WD by these widths (see MPAMF_CPOR/MBW_IDR).
+>> + */
+>> +#define MPAM_MBW_PART 4
+>> +#define MPAM_CACHE_PART 32
+>> +/* MPAMF_IIDR.IMPLEMENTER: ARM JEP106 code for Huawei (0x736). */
+>> +#define MPAM_IIDR_IMPLEMENTER 0x736
+>> diff --git a/include/hw/arm/mpam.h b/include/hw/arm/mpam.h
+>> new file mode 100644
+>> index 0000000..e7557a9
+>> --- /dev/null
+>> +++ b/include/hw/arm/mpam.h
+>> @@ -0,0 +1,20 @@
+>> +/*
+>> + * QEMU MPAM emulation
+> Come to think of it, why have QEMU in a QEMU header.
+> 
+> MPAM emulation.
+> 
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#ifndef _MPAM_H_
+>> +#define _MPAM_H_
+>> +
+>> +#include "qom/object.h"
+>> +
+>> +#define TYPE_MPAM_MSC_MEM "mpam-msc-mem"
+>> +#define TYPE_MPAM_MSC_CACHE "mpam-msc-cache"
+>> +
+>> +/*
+>> + * MMIO window of one MSC: IHI 0099 places the register block in a 16 KiB
+>> + * region (0x4000).  The virt board reserves a 1 MiB slot for up to 256 MSCs.
+>> + */
+>> +#define MPAM_SIZE 0x4000
+>> +
+>> +#endif /* _MPAM_H_ */
+> 
+
 

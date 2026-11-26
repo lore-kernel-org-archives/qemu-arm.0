@@ -1,107 +1,105 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31C89606A323
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:40:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D01F8606A31E
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:40:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=YoA4ihgq;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=Osjc9Sdq
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=Kz69ImYQ;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=dlUH0vax
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWj4A-0003ft-8s; Thu, 26 Nov 2026 18:39:52 -0500
+	id 1xWj51-000595-DI; Thu, 26 Nov 2026 18:40:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj3X-00035Z-2c
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:39:12 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1xWj3u-0003Ut-Lx
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:39:41 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj3T-0001Gm-C0
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:39:10 -0500
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1xWj3r-0001Lh-Ij
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:39:34 -0500
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AQJwmS2162587
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:56 GMT
+ 6AQJvpQW1010037
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:39:20 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- UgHeI5HKxGDMHp/30iu+FcDW1BImaAv//42V+y+PM9o=; b=YoA4ihgqXNoq5Upd
- xhFY7zH8mlpd37OX4/NZtP0LCa+mgB9ynf5XsUg8p6KDkqnnF/0dxHy0aoLAiVR1
- buOEWUUYCxEyNf9sTxCifOUmuoXpN/iid+fpW4Kv1AJflSmknNrkDoUmR76Y++/t
- DtFEFCPyPOTmfImhSc7WgNTaqEoYX9sZJVnAZC0EjbV/fkCQQsX/3tC+F9FvEkE0
- 5W7+IYXdi5V944P8P244IzSbeJOOl7AILW5rBfOhPZSBIDXhvRQtdOUlDQpk649x
- c4lTKDx2DlU3ZjaYULUkGEiVXMzj1qTTW4fFpUaIpjtaKYUVAqOwjZHrb0TtfojV
- 7pY0Yg==
+ Qj7MJJu/ul1fwdHBgKBE67XMkmj67eYZHGt59rGlEe4=; b=Kz69ImYQUuNAAlCO
+ EVdzWkXyvDIr/W9JJpvi0wuOE0mPsXLkWnAPscjnT8e5Josj9CgTP3JagOGG8vMH
+ UGAlJk+FihlJnu5lCEpnvt3hGiht7sMryuMwLQwLIDrk6srEdr5nxHqPDcNEs6Ru
+ DSRLECCjZMgcKvgA5T5r1hItBub0ZxI5gp1nswRLeLXZqXgyOtOvrz1wGMKPGtYg
+ +6fBRbJxFsxU3JkVQtera8LT6Ux+HsdioSUY7sJjxhUeAxSKT2Yym2eiFUtfNLZ3
+ AGnpIbuMA+kt7csxjf35MjqFWvMxBaJPD5EQcAIEUNy8oaun93UNJsvC+WdIHQ7J
+ ElfSuw==
 Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
  [209.85.222.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6h7garkv-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6rf910f2-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:56 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:39:19 +0000 (GMT)
 Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-949b0d322fcso1242941085a.2
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:38:56 -0800 (PST)
+ af79cd13be357-93f32050e72so1627537885a.1
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:39:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795736336; x=1796341136; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1795736359; x=1796341159; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=UgHeI5HKxGDMHp/30iu+FcDW1BImaAv//42V+y+PM9o=;
- b=Osjc9SdqCwjpdlx4yyVger9RZtkfiF1h74TxNikpMZtWp9Fd27YeFu6woDkiO8WRvC
- rh+LhfhLkRW4YWEcp+NZYZ5d143VEMynWGJK3YIFKygsG3k9SSOGig9qOhgLWC5fmYUj
- ON5eJ7Kuk2Rff1v66CU9k1yNoFmSkKJ0qjxnRC0RrZzzD1Te9Bz+SgDY0WH8RBLweM0A
- Ait00jC6dkHD+9qa54BMSyWP5TPC+kdG1K7YuhFhX0HfcK/ST17PTyEBGIQyQUKlR2wQ
- jf1iyEXbadwmMWeTLglPVAiAh2ZxHGAztt8WnCL5f4zaPMTXY94OIHhNVppXMOaUzDeJ
- XQpw==
+ bh=Qj7MJJu/ul1fwdHBgKBE67XMkmj67eYZHGt59rGlEe4=;
+ b=dlUH0vaxKjQ1IhKOiNgZ8hKSlA0xNXOTJuI9yaQQyZ5UuAawZyOpTsKcQAOtk3Cu0D
+ z5owzMy8iurCxd2aIIMGy080UH1YptLwXSnAGNeHBQp+imetv2n/7SeL0nn7yXZ0dOhI
+ qACMRJy0rkHC0ullRBSTu+Um29iiP0WBL/5fNE4GQ8Q2+PHwevS3AWIp2wdFKXJ0Q6gS
+ 3sgIdgYLANkEiQ2Asr5JoodR0sDrhE2zP1TrRBdf/gW0pDuwE+PFKRvAJHQgrEbxXiTW
+ T2GJ1n6nHW+Hc5xCrNbJ7xpafUjrjaubv5DjHqHXaOgnPiC6TbDqvKniFjl7cGExNyMS
+ BieA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795736336; x=1796341136;
+ d=1e100.net; s=20260707; t=1795736359; x=1796341159;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=UgHeI5HKxGDMHp/30iu+FcDW1BImaAv//42V+y+PM9o=;
- b=iovxWFqTFimrydc9G4PuYONJRSnFrjEveV2Z7DX+PH42fQjl7uvW9KhaetHKcLDjXl
- 5CfYur1tDCW8NkaV8S/l1p2dDz+Rk+KNR/7Z9VJ1mTOx7ChkqB+/fvLQa/cLy357Dedp
- 2uk1OtR4jGkdvlSFD7UWRSDgO+gxTTmHY0OcZ/hz19wRrfdxceh1vUZH2FO592MTI4KZ
- TI9bM1ouHwKWz//b4rST0GDbWZDwE7ZBhj+i/EVimWPofTdhBqLWQN4LTPDuWKgh8pfR
- oC8MYoQfgbCsPtWCcPI7qHixKCM4rrc+1+HQ3Vse5CKz+WrQwc+Gz7MC2JZmlmIUdHDb
- L/Vg==
+ bh=Qj7MJJu/ul1fwdHBgKBE67XMkmj67eYZHGt59rGlEe4=;
+ b=HAKeT95gA28b99Wv4ye5sUlSVz+rf+DeR2+jyGJrCJEIxxgCSsNLymjy6XsA9w+w2h
+ zLjSw6IFiYbvhX0Xnkzly3r5WSH3SmAgur54xn9SqM6Yw9mE98Z0rKLICxflFgreRcE0
+ RL90SdqkJBeESsnuujdS0o8Ci9+jY/7rzqmRW2N4jy1HVwg6tDiOZpCNHkDop8NkpSsn
+ pXCbmxvQNfplp4hetsD4LQtaHjoKPP6lLIJUVvdwkKqLHiQNszsQrPuK0uH8t8m38bVq
+ rESPIobDKyZePU9Y9LVJLcWLA2LKLHG/lYUJpJvgbxA3EKRAaThhdeHOo9NOYH16voT5
+ 81xQ==
 X-Forwarded-Encrypted: i=1;
- AL+hErFkQFAKf/2ORTsWPOaKV8EM6sYJgU4QO3c7c/vwx2NkU+c6Mk+OpvHS7C7KcBv3cpPOdotqs/SMWQ==@nongnu.org
-X-Gm-Message-State: APuU4Z80iwHCLdO/Ms6YW8l2IqU+k5HcqO9iUxW6zYDdU8+oQ8p7CVyh
- FCx/eqbU2g2+TRI/vY6Oy7u6O5DTz12kBIii6cBf3WUQyZKpoLcG8PDQowikyz6rqdu9qiy+3Jk
- 0/MdC1r3xTGeyRBnjF8WyFOuhtsKyZCPQxswFmtkSEHzYbP2Ejs3tOcw=
-X-Gm-Gg: AZFdTZeIK3OswRJ6BuMWWrZrdx7p4dGTrdqD8TrdnTLsMGhSH8/OzB5SSrVWq2VIHDk
- h0B1hOStq1CQuy7GUbw5NZOgW+mtSjojFxnC9r9A9aYawijw+CkE5LUHsc8YxJ7UDJl+3PA51no
- PVMlQLLI6NlFUleqS53xkse5WRQzzfvuTYMBI1Oe7NxW+Qz+wWuYuKSwZeHC0Zw7D82FC16ZuIw
- oOC91L2efqSsfOElJ5wZVHlpYg5llXr98c4XR9HfBo5L5TTDX4EiGHjacOwtIHyBc4QTXqidsSh
- iJlJpeTZL4ZY/Mk/72JPNl/lA53jgCafmY6+d1EiFPdJCMtRVlqmnG8PKuVQOj/jLGAtpFXkp7z
- iXlKxDQ2bhKdVfpn8tRF4SftpZEIcOpFI+eiPp2u3559KXuZENribc+SuSQ/Xr6YlmfjAUQOOCz
- yJceX0fKx9NViEcw==
-X-Received: by 2002:a05:620a:19a5:b0:93c:8881:8df3 with SMTP id
- af79cd13be357-949ba9cbe9amr4077295385a.46.1795736335777; 
- Thu, 26 Nov 2026 15:38:55 -0800 (PST)
-X-Received: by 2002:a05:620a:19a5:b0:93c:8881:8df3 with SMTP id
- af79cd13be357-949ba9cbe9amr4077290685a.46.1795736335267; 
- Thu, 26 Nov 2026 15:38:55 -0800 (PST)
+ AL+hErGI1Y+kUGN+7NdieIkIWJObkePUnB7mLWQWt1EQZ8lwDCi67kU2I2iNqlo11soIeAE8xdqsGiueaA==@nongnu.org
+X-Gm-Message-State: APuU4Z/ampG97yXHJi6KxsXF3N4eQDS2ZctmRl5sxrHU7B1/lNhZ8657
+ b74+ed8OwVw6SdsSVRuQ6XZhNOwRmnxlxBPbG9ZSNcRB3ywhQHYrKy3gN/gbAvTO1JeQ6bPjgtR
+ qSfo9eXnOQMSZKt1C6Bn3AHH5RUqIm0YjNMkYRktZzX0RnkGX/+Y5OLc=
+X-Gm-Gg: AZFdTZcJvWdCToGEP+LarN7AhwThH+MkoUJ9vQm/OZl/qnL8c4QcrBb91zpKucdJFSu
+ Q4O8jA+y1eaMH6IakVFBGznVF9I0UiPO6XWJXhKLbg0xc3kNPyMMNibT3QspDc3qFsGEdUliXd5
+ Xdd2AOQ5NxLD91mRhyqQbQj2LlXgMmJhY1/XPpql7+DOr0dO7OVWzpA6HKY+F+hdeTZuMLCHIDK
+ bXwEqLJD9HgC1JFtZif6tuRNBuspNY1xdr633PQcYTxtkjtSj7+3lOZFSm+nsPyqBLTv8aGIwLU
+ AVPXLUKUnoa1KuDquEiBVrFrokqRu13pwBrOCtQqEVFekL7vGHgtl30gRdhuR7Yt6w5eoY7Cz5x
+ uvM2rhJa24zVa7KnGUjf8BhKhTt7yoBF9oNezIn+iKXY95VIvj0n62x7BvThZi7xQpKirdmEcNe
+ 1Nx6kLqM6UBOTAYw==
+X-Received: by 2002:a05:620a:6496:b0:93f:5519:5e87 with SMTP id
+ af79cd13be357-949ba8483edmr3531244785a.4.1795736359009; 
+ Thu, 26 Nov 2026 15:39:19 -0800 (PST)
+X-Received: by 2002:a05:620a:6496:b0:93f:5519:5e87 with SMTP id
+ af79cd13be357-949ba8483edmr3531242885a.4.1795736358486; 
+ Thu, 26 Nov 2026 15:39:18 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab69bf685asm43933900f8f.20.2026.11.26.15.38.52
+ ffacd0b85a97d-4ab9cf005f2sm35990857f8f.45.2026.11.26.15.39.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 26 Nov 2026 15:38:53 -0800 (PST)
+ Thu, 26 Nov 2026 15:39:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Anton Johansson <anjo@rev.ng>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PATCH 21/24] target/sparc: Use 64-bit TB flags
-Date: Fri, 27 Nov 2026 00:35:59 +0100
-Message-ID: <20261126233604.67722-22-philmd@oss.qualcomm.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH 24/24] accel/tcg: Update TranslationBlock::cs_base description
+Date: Fri, 27 Nov 2026 00:36:02 +0100
+Message-ID: <20261126233604.67722-25-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261126233604.67722-1-philmd@oss.qualcomm.com>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
@@ -109,35 +107,35 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: FsjDil4YnaHWl_vJou5gf6CeSXTURkSU
-X-Proofpoint-GUID: FsjDil4YnaHWl_vJou5gf6CeSXTURkSU
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX5Umh4RTdrTDT
- 495o2NMw8kSYij/wtPXhu0muIij+5W+Jdgy6lMX6EesNpsNodf7gCt58UqZNZ8esIg2Y0hfG9dO
- Y7b+9U9WXvTmZyReyZcR/kGYXlGtk6ghRwIV8jILSSs5KyDUG67qp7rpaUHK76YHOIeRZFT87iQ
- bBIf5CjFmm7abfIf2bgUlYyGpiITpMLmhMR5t46bzrfOIvyesoO33eWqgqcsHGSgL4FnhYuh2ZI
- T5eIkH8pP/4kou97YHDwb8THu7oe53cU4bKth8+pmQsubxm83Kd7tEQerGJiLxY1mcmMQ6DxVpb
- bDsZ1JHcb0dT7Imhu+enYHkNppKOh5aJldITy7YmD3qEe4/qJUXIWsmVMoemJpTAaZo9rrIzHYk
- 9hbdQpVaDgYGnhHKXoybBqBhsl9PxK7ieIgcHs6jcSX4z3vlTf1jBHnP7LppUBpdb0i8/kP0nuu
- 9FZdS/GdgVnzolL0Hjw==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX4k6im45gVGb7
- dCV7gS9Yoz9Y9zerrjMLeSWMFpQPwgZthkxXkzyW9R4vDNsbS4JZ2p4cH5Vk0KxJ52L7rlPri6W
- XFv9n+1yhV3NOpT03lDzQ4/XbrEmP8M=
-X-Authority-Analysis: v=2.4 cv=L4GI0OT8 c=1 sm=1 tr=0 ts=6b08c310 cx=c_pps
+X-Proofpoint-ORIG-GUID: Vrgzh_E2TthaI_AA8cqdywpiVRHY8eUI
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfXzEHeAvLmQaRn
+ gfHRA4ZfYHnxv1lOOzQuYBvW7RoGo/uz4EPRkutWMWAhZW2tUWiI53G9GEvhy8dtSXfPk400CLq
+ RtB0z/5fGUGTtHhSgKpSFnJibBkK8QXTfChRKULe5HNR8uSEMCCxX+tvBWsngtPEFgWzRz3FJEY
+ /aBonzLPO5kexnW+PKVrimWsm3KLaXvWHJQsIpL3J8IipqXfewscAw97BYnUn17FVKRj2U6ep/s
+ 4KEJTZDbolxmzm3ijJfTWw+W7sTqX245fJnWEpM8yCW/jSWZceV+3CxEJVxsc5BODVkafqChIiL
+ DgCF5NWQhKAZMKGdy49lxc8yy25b7gwd9kyUmLZUKZ367CHL90URoALL08hVk6HLf8Z/ATjDuTg
+ yTViWkHm9mA24vT5OL102SO8RnKhSgEXnqNo5HUsfuGoS1pllhtOrOkq7JdhHSlzUs5Ashd/Jqo
+ HOYq/wqcNWGaeLvSFOg==
+X-Authority-Analysis: v=2.4 cv=cpkOAF4i c=1 sm=1 tr=0 ts=6b08c327 cx=c_pps
  a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=EUspDBNiAAAA:8 a=Z3QnZVSG-XGvYK7FhJ4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=EUspDBNiAAAA:8 a=hPUV5sZZM_X0ifaUgZ8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
  a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfXy9MzBAPwoy+q
+ 4PuGT2+0LtbO73kmdD7/FON5x2+hDa/aWKDXxtahFkLQ96XO26lYzkXpFhnsXw9aT6DSlnLhqRo
+ q43xcCKFdl3mb0cW7x97+/DLxlqWBWA=
+X-Proofpoint-GUID: Vrgzh_E2TthaI_AA8cqdywpiVRHY8eUI
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-26_05,2026-11-26_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 bulkscore=0 suspectscore=0 malwarescore=0 lowpriorityscore=0
- clxscore=1015 spamscore=0 impostorscore=0 phishscore=0 priorityscore=1501
+ clxscore=1015 adultscore=0 priorityscore=1501 spamscore=0 phishscore=0
+ suspectscore=0 malwarescore=0 lowpriorityscore=0 impostorscore=0 bulkscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611260093
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -159,63 +157,58 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-TranslationBlock::flags and TCGTBCPUState::flags are now
-64-bit, use matching types for the values derived from them.
+Describe the current TranslationBlock::cs_base users.
+
+Commits that introduced target use of cs_base:
+  arm:        a378206a205a target/arm: Move mode specific TB flags to tb->cs_base
+  hppa:       c301f34e798e target/hppa: Implement IASQ
+              ebd0e151149a target/hppa: Include priv level in user-only iaoq
+  microblaze: d7ecb757d199 target/microblaze: Ensure imm constant is always available
+  riscv:      55b490b58fbf target/riscv: Record misa_ext in TCGTBCPUState.cs_base
+              1c88ab9e77bd target/riscv: Use the tb->cs_base as the extend tb flags
+  s390x:      303c681a8f50 target/s390x: Implement EXECUTE via new TranslationBlock
+  sh4:        4bfa602bc222 target/sh4: Handle user-space atomics
+  sparc:      b453b70bd8e6 sparc fixes (first commit matching cs_base = env->npc)
+  xtensa:     5d630cef4f91 target/xtensa: rework zero overhead loops implementation
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- target/sparc/cpu.h | 4 ++--
- target/sparc/cpu.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ include/exec/translation-block.h | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 3c1ba223eb25..4ac6e95307a4 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -742,7 +742,7 @@ trap_state* cpu_tsptr(CPUSPARCState* env);
- #define TB_FLAG_FSR_QNE      (1 << 8)
- #define TB_FLAG_ASI_SHIFT    24
+diff --git a/include/exec/translation-block.h b/include/exec/translation-block.h
+index 491de24d71b9..8fca1bd92267 100644
+--- a/include/exec/translation-block.h
++++ b/include/exec/translation-block.h
+@@ -60,12 +60,19 @@ struct TranslationBlock {
+     vaddr pc;
  
--static inline bool tb_fpu_enabled(int tb_flags)
-+static inline bool tb_fpu_enabled(uint64_t tb_flags)
- {
- #if defined(CONFIG_USER_ONLY)
-     return true;
-@@ -751,7 +751,7 @@ static inline bool tb_fpu_enabled(int tb_flags)
- #endif
- }
+     /*
+-     * Target-specific data associated with the TranslationBlock, e.g.:
+-     * x86: the original user, the Code Segment virtual base,
+-     * arm: an extension of tb->flags,
++     * cs_base: target-specific data associated with the TranslationBlock,
++     * as returned by cpu_get_tb_cpu_state() and part of the lookup key.
++     *
++     * Targets using it:
++     * x86: the Code Segment virtual base (0 in 64-bit mode),
++     * arm: an extension of tb->flags (CPUARMTBFlags::flags2),
++     * hppa: the CS_BASE_DIFF* bits and the IAOQ_B page offset,
++     * microblaze: the IMM prefix value,
++     * riscv: misa_ext (lookup key only, not read by the translator),
+      * s390x: instruction data for EXECUTE,
++     * sh4: r0 (gUSA region end) when in a gUSA sequence (user-only),
+      * sparc: the next pc of the instruction queue (for delay slots),
+-     * riscv: misa_ext.
++     * xtensa: zero-overhead loop end distance and loop begin offset.
+      */
+     uint64_t cs_base;
  
--static inline bool tb_am_enabled(int tb_flags)
-+static inline bool tb_am_enabled(uint64_t tb_flags)
- {
- #ifndef TARGET_SPARC64
-     return false;
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index 77294136988b..436e1ada97eb 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -723,7 +723,7 @@ static void sparc_cpu_synchronize_from_tb(CPUState *cs,
- static TCGTBCPUState sparc_get_tb_cpu_state(CPUState *cs)
- {
-     CPUSPARCState *env = cpu_env(cs);
--    uint32_t flags = cpu_mmu_index(cs, false);
-+    uint64_t flags = cpu_mmu_index(cs, false);
- 
- #ifndef CONFIG_USER_ONLY
-     if (cpu_supervisor_mode(env)) {
-@@ -742,7 +742,7 @@ static TCGTBCPUState sparc_get_tb_cpu_state(CPUState *cs)
-     if ((env->pstate & PS_PEF) && (env->fprs & FPRS_FEF)) {
-         flags |= TB_FLAG_FPU_ENABLED;
-     }
--    flags |= env->asi << TB_FLAG_ASI_SHIFT;
-+    flags |= (uint64_t)env->asi << TB_FLAG_ASI_SHIFT;
- #else
-     if (env->psref) {
-         flags |= TB_FLAG_FPU_ENABLED;
 -- 
 2.55.0
 

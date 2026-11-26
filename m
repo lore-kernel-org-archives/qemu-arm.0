@@ -1,95 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4630C606A32E
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:39:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0236A606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:39:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=PlfjhT/I;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=L22AZBya
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=WjI9q8s+;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=H6/3+bys
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWj3B-0001H4-Cl; Thu, 26 Nov 2026 18:38:49 -0500
+	id 1xWj32-0000I6-5W; Thu, 26 Nov 2026 18:38:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj37-0000sA-UJ
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:45 -0500
+ id 1xWj2b-0006Sr-DR
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:17 -0500
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj35-00019q-8c
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:45 -0500
+ id 1xWj2Z-0000zr-Ds
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:13 -0500
 Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AQJw8DU3340041
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:32 GMT
+ 6AQJwAu93340049
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:00 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- kQiYOe2ljrnpQFopM9IZYgv5ZftHEmKXEj6HZt8HEmY=; b=PlfjhT/I9k6pHK2B
- UAzTcztrO1cU53C4Hk8c1nkihfV9ElHyCvadEA9ALD/Acl1oqoBoHLMQ3CryhoLM
- VGsnLsjtZNe/E1vICfgirl1MgIgLszo2333eg2OYhJnBWyJt51mXyz4aNIWKedGQ
- PPItomzibVDPN2/GJALi2N97QaNdzu7kFl8tD86BLr/NLICUmYKdP6s7h0Se9FeP
- E9lhyPjh9cla6vZGhww0VK0GOz+9xbYEYdE8VUuEPveRmN3nd3LzzVyhLer7E00a
- VuT5UAFDniyoIn0qFlQIl0eh/cnP94VplJWnOFU7Zoiz7+9l5zUmysObbt1exRWw
- n1IOQQ==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6pgqhdvc-1
+ 7kt79fvDhIa2kukOary4enRgWJaprasUUJIC1+U8yBE=; b=WjI9q8s+dCV3GpmR
+ 3r8yNAnUL2GajNE4XwQFsQ/TGHlw0pGhrypxmMm+fpNTQBFX3M124l/T+uGRDTCn
+ TZzzLQOc5Gu3pTuejeObYKnGAndlofVV5b91KUN6xYiNlp940isTmH8TQtEtdTqv
+ RUqHhL1mrZFMFzgHJL3eCv6pSrW1hDP5OPwXWD0HSsfqt8Sw9Q+94YArMi38g0IE
+ I0xv4F+k5vkOVYPJpPV9r75qwuj9uZduUEpTyrgjFg2L6p1KiUEJxR6cEdW+f/EO
+ KXe29jsZrcgb+X2jXb18jByqEWftIjUE7sAVXPrzm1tQOGcBEXuNTHWVTnkVkR9R
+ z1495g==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6pgqhdu0-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:31 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-93f20addba1so1108638985a.1
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:38:31 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:37:59 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-93f26dd2165so1794332785a.3
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:37:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795736311; x=1796341111; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1795736279; x=1796341079; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=kQiYOe2ljrnpQFopM9IZYgv5ZftHEmKXEj6HZt8HEmY=;
- b=L22AZByaDf1JC8X3OuHJv5AE4CwxhPTmoGLc0p0XixNi3srMXBDB6drjwteHr9nNLD
- 4RNt7JRD3o1i62ziJ/7M0scvDA2vnHDw8cFea/lHEKKbs5NRDaxTOCMvYPzNI+AABLN+
- gfQ9ziXyZhPxv+QQ6y3l+Rrd8/RTddwTFgJxnnuuVmZQ2nYpRe7M7S3lqH1VxVNFiaEh
- 5+1eosGMC99YoS6L9nQWoKCT6+0om54IflXH7omz3o4+wkq21LDV9Ss2X54lsR4Uu+Fd
- WKvnVNZ406m1wO9h9I/jZ11ST9HsqZUm9rbKm8QR5JO1+R9lDP3wYUwIGky/vCaC3kNA
- PxHQ==
+ bh=7kt79fvDhIa2kukOary4enRgWJaprasUUJIC1+U8yBE=;
+ b=H6/3+bysyNMySqVEHGrX1AnciBVip/bwTtV0EqnP5SkY+wNNfJ3xUIjlI+pZ0Cxhuw
+ VF9p8SBgae+n6p9GzhDxlQ9ZoZ8rhsbjmXA3OQ1uuHh36lLJSub/P/aw504BX8uNGCLW
+ T6gSZl0R55dNM/OWKIfmspS9XdEcGAPt4haG9SunDNLDxIh7kiMPG+YMvrMqbz8I+EvS
+ FcAtdX1W3LZqASNyX8Uf/rNnZwcLF6V7bI2d7mOoO+GpaHKOyGZ1MSaXZLp7CMaT8UAC
+ l5AZJzAJFzDWz28Smz0BkNvnoD3e8zbgk51b2cEe2U4CeDZDnWx3/xeXZhe+a0N/xSYt
+ ebMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795736311; x=1796341111;
+ d=1e100.net; s=20260707; t=1795736279; x=1796341079;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=kQiYOe2ljrnpQFopM9IZYgv5ZftHEmKXEj6HZt8HEmY=;
- b=KKelJckGRoiygqVwy8HqqtrjO4Ve+Wc/WfwjWiuNDI3ktSjOI+avjdQbarwrpjqx53
- AeWbEzGSLMcdxwZ3S4x4aJHGiIvQkgK4YgRjixVy9j00bDtCTGDGRODYxOi1tYLVXhFJ
- RTApSEYkII/YkJwZotzYmKU9Gyew+hgYCAWG5EAL39Po8u8ypLOBzU4eDU0E3Rcch932
- J+lBAX3U0iUKPktcBjOC1prqwMru4hlgrA5UEk8XI+uQyoSqOWhGUmqhMuvfZRn5ioF0
- yDwnI1TCBlzMzTbmKZlBP6xBC8DoU+iFkvKEXqaELn5qkAvLQXSvTschU6mv6sXX5bjC
- JBgA==
+ bh=7kt79fvDhIa2kukOary4enRgWJaprasUUJIC1+U8yBE=;
+ b=bxGS0kjpwQO686ha69BBxgVBIpFmQ1ZiZRKfitk16jJ/FiimJVfYai02Fj6TBQmzGg
+ xeaeBpKW1j+xGaqR4/l8bdWPc6cFHAViEI7nAON6cRgpsH2lM4SQ8U29pVXEaZuna4FB
+ MyZ1YMoqc1vr6Xlr/Joewvr6rn2ZXdF+E7cT7+weIcDRSzLvUXDmqYx9BM84MdaBkXtM
+ OTjJHGKXx2J7YXOdCPdJteoB2B5U5HKe7Q1rFxiX2sGb0x+Mf2LmawOsRq+6LdNEygM5
+ Z6mYbK+jEuzFWXW9VCmVOyN7eG1Ay8cDRlz9jNlNnOYZVExyQMblAIni1p+pw/0TiqTQ
+ +zqg==
 X-Forwarded-Encrypted: i=1;
- AL+hErFpq9rdLxjWDLWw8zuiAgCNHnf86gK3CddGu4y750lYyMLRrO6yNLa00MTTDffRakTzL9Vp+4CE7g==@nongnu.org
-X-Gm-Message-State: APuU4Z9QoorUQRXwFcxrl7CRHKgg72vRHpIahRiof+miVhV8CReVZVIm
- /Ac/JbC7zR6WbZriQadz7mcwEnajaaCrc7OCqyI0Jixe1Iv241bkUK3H5TWELStLlUAtodonBdl
- /Fj6r2/sDEr+RJSZdvCy1wy46o8Sw9TbJrmnk1FSkxTMHT+xK9a8a95U=
-X-Gm-Gg: AZFdTZdxw9DwC57pnNo0E7GiqLpOlM4R5YLjPxG8R9HfbmC4OsKJWajVutx6eJcnu/u
- DwzCS/eBSVVkeJbx0PR7QugstiTlb4lLAwWACREYKfFAd7p7RKqKVOMQI+73NwJbaRm9YyAkhW5
- Dl+gFzJvcZ/BCraHIS5dgVP7JUlf+qoFFmdcrZIhlVgSczKTcwyGywQZ/PWBRrW8qQiV61WosuQ
- 2mgH8gFrbSoHVuaVP+FGitzRQWToeSHemncoQnD+1NREh2bQz/wJ4SjuNPzsh8nuxtiNFsv85rz
- vzpQ6flYtlxKDpNB5W4tu3DxmzjCgc+7iI3ftyugSK8Ij7pNhB8mq6X66WvZWPaydbIrgO67EMk
- xrpdDKCQ71i2Yva8WJ6wCAvTTfnOiAUo2lL57sU0cQIA5eJ9mpf/AUy+h82M9wGHw+pxVDn7Bo3
- vR2xOoiXsaxu7hsA==
-X-Received: by 2002:a05:620a:6892:b0:947:7691:7316 with SMTP id
- af79cd13be357-949bab3d3bemr3929338885a.81.1795736310836; 
- Thu, 26 Nov 2026 15:38:30 -0800 (PST)
-X-Received: by 2002:a05:620a:6892:b0:947:7691:7316 with SMTP id
- af79cd13be357-949bab3d3bemr3929335585a.81.1795736310383; 
- Thu, 26 Nov 2026 15:38:30 -0800 (PST)
+ AL+hErH8++8j9ZSGttQqd0iDz5JLZzFkC7Kec7TfkPIzjDptTUkSOVy9xVGT+3oNy2IDiuJgWEEXFSnsAA==@nongnu.org
+X-Gm-Message-State: APuU4Z9CV5plgzVI9vV4FeRUqiNUiYZ1uYFqZXjA4GuQzbtpzhuWxjNa
+ KQ6yLIQxymW4r+JZzPF/LkLSpfJcTfkzHEZEZ+X/e22tzcb9E37yOID5Eecg6Yj8yE9K+YCCvBj
+ AYtbcRsqjGHEyhsRetYwIW7JjMq1bF91DiTbs1Eq7Gj1gvpXsxQMncDA=
+X-Gm-Gg: AZFdTZfxF9Aeor3FtsZnlLd/uhxaFbhIfWnA9uz4BexeMVXnZdR8IQo11H+/HMWXU8H
+ ujX9qqUiACjd74JXtQbkoTvxtq8cPT+AIi8PJR0EzZTXsl6THd06lE3foQLf9xNmqHOgLJMxJLq
+ 6jG6bft71TK2UEXqpcIxnU/McH/aV0senXt6qWHxp2LqEhnFUmdKsBNRADFEAKAkQsNTfbgbRFw
+ BOvAA3aJMkIaJi650Q/J63CC0UjEuNQsNTi89viA2vOQfvut8PIKwRlw4tOO8XMIMyXC7W4MOXn
+ 9tIMJmom+JULhIcvCMMbNVx0+izpOYC8Q/LIUVZcyavyUAZLV9J+7Xy7CHr9seOcQvQPKrHU8O1
+ y3fEgHVmB6PXN5S4AM439KgrGZi1uHM/adqHv5O82J89Pyw0QwZyX99+SrDX7Vt5cWgt50RQ/e1
+ y8rLJfsCl7bzLbBQ==
+X-Received: by 2002:a05:620a:6f02:b0:93b:bc51:b40 with SMTP id
+ af79cd13be357-949ba84ac50mr3784225985a.2.1795736278980; 
+ Thu, 26 Nov 2026 15:37:58 -0800 (PST)
+X-Received: by 2002:a05:620a:6f02:b0:93b:bc51:b40 with SMTP id
+ af79cd13be357-949ba84ac50mr3784223885a.2.1795736278558; 
+ Thu, 26 Nov 2026 15:37:58 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb8538b2c5sm629921625e9.5.2026.11.26.15.38.28
+ ffacd0b85a97d-4ab6b9add26sm43951183f8f.44.2026.11.26.15.37.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 26 Nov 2026 15:38:29 -0800 (PST)
+ Thu, 26 Nov 2026 15:37:57 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
@@ -97,10 +97,10 @@ Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  Anton Johansson <anjo@rev.ng>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>
-Subject: [PATCH 18/24] target/rx: Use 64-bit TB flags
-Date: Fri, 27 Nov 2026 00:35:56 +0100
-Message-ID: <20261126233604.67722-19-philmd@oss.qualcomm.com>
+ Stafford Horne <shorne@gmail.com>
+Subject: [PATCH 14/24] target/or1k: Use 64-bit TB flags
+Date: Fri, 27 Nov 2026 00:35:52 +0100
+Message-ID: <20261126233604.67722-15-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261126233604.67722-1-philmd@oss.qualcomm.com>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
@@ -108,25 +108,25 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: m3IOtXJ-TNe4Y4bLlUDvFIb47W34O4gr
-X-Proofpoint-ORIG-GUID: m3IOtXJ-TNe4Y4bLlUDvFIb47W34O4gr
-X-Authority-Analysis: v=2.4 cv=A7H5rKWG c=1 sm=1 tr=0 ts=6b08c2f7 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Proofpoint-GUID: uGMEB1sxbCacT-KniJPz3SNFmoBm1SB0
+X-Proofpoint-ORIG-GUID: uGMEB1sxbCacT-KniJPz3SNFmoBm1SB0
+X-Authority-Analysis: v=2.4 cv=A7H5rKWG c=1 sm=1 tr=0 ts=6b08c2d7 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=EUspDBNiAAAA:8 a=xyxvAluZajSoLEIRtJ4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfXyLeaWuzrEoHy
- ibwNCi4zwsKgzBUoSN5782/kEP/0JvWzKJq3+VIh/c6Z8MGbKnXQhJ8YiEDdzptVYm2eDYW9G+D
- B17SBFlmby+Luu+/tgelTlMoGbsTjvQ=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX9JpOWW5u7kEH
- Fjy5p+I3gXDy3xvQzVip4PnYH0UhUlQsaOgtOFnP2R40yShhu4EUad7KsZPnpey2tyMsAZ/5oj7
- Z0uNCeR31CAm+SsKqYEumH1KtU0wg/pfMqvZGZM1beFdUN/cZ6+1eHaG0IaYzxQQ7N11WYlVdXD
- 2eOoB/u0+Oo1LvzBx5PwVQIaKdnBJocV9mDYB85mQqianeH3Pf9+B8Gr2MI+oVZw4KoYFouvPjs
- sTHNew23Y1OAY3H3l23GWT/CTHwSrIWsqBLJls+B6gnY2/ksx4BsPqGhciycb8o8Itpt9Ysp38m
- YJheXJv3ha+nb+Da9Q1Ku7LNRegiwL1dUatWqJhMuVXxe4PyLmCcQHiUxoiJI/Ljv4GS0/ROc12
- yBGyoIb/0yFEidWY+h5y45OaX1lfzeOvSDgXkhHxBGJhrGlzmi6iDYpvg2ynRktigbd7U5jeZii
- F6sMZkcbDqYHde2/aug==
+ a=EUspDBNiAAAA:8 a=M-hA8jIEZbjr0ZWk8n8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX6+eI3hllNpzC
+ Zjav25BJ3nutWn1dSU8pKHByITZDaRjcdI1u6dY/GBwn9LZx06LyuIpE2LHF8zwtC6rEwXJpf9w
+ duXM9wMXLGv3uU0PESSJEZfnCuNCo0E=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfXxKpIz5YMbQrY
+ 8uBbJqygfaAEgd1Mkb1ng4xxOYO38NosrtftNfzQhaleGs2K47Rc2IKeemagK07hDcmAnk9SXUk
+ Jba8cZmtfzqe76yOgdpVVYAr+1y7riPLeIcg3HiCSSfT9+UipkS4ZZtMmiVAv7IMXGt/1O+0vtP
+ d2+zzjPjuFcVR8f1yOrcgPKi6WKeQmNTHrycAxbWqAjv86VxVtwEFoQxM0ID/mW/Dvz7xiqKJhz
+ tsLtauNcsa0l9+4Z6wbQDvN+pm1BGD6/+2zhuR6460ppQm1hjjdPQChVaqsW6kyrVF2OsPK5dwu
+ su2NdbszjO6eKwZAfVb2QFOLNgjtblKKkVsFTks7HgdDycDCgfYdPEqpMSQ0mjaH504ABqsRxOW
+ EewZnQ/PsbTSXu7OZX3hm9/0A5sx7h7cPmo7DIlSjroJnFu5F/hYzY6yEi36BF3chHTXmUWRScJ
+ sACjSLzo8v/e0SWYUrg==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-26_05,2026-11-26_02,2025-10-01_01
@@ -168,97 +168,22 @@ TranslationBlock::flags and TCGTBCPUState::flags are now
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- target/rx/cpu.c       |  6 +++---
- target/rx/translate.c | 16 ++++++++--------
- 2 files changed, 11 insertions(+), 11 deletions(-)
+ target/or1k/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-index c35a98f7cefa..dba253bda9b1 100644
---- a/target/rx/cpu.c
-+++ b/target/rx/cpu.c
-@@ -47,10 +47,10 @@ static vaddr rx_cpu_get_pc(CPUState *cs)
- static TCGTBCPUState rx_get_tb_cpu_state(CPUState *cs)
- {
-     CPURXState *env = cpu_env(cs);
--    uint32_t flags = 0;
-+    uint64_t flags = 0;
- 
--    flags = FIELD_DP32(flags, PSW, PM, env->psw_pm);
--    flags = FIELD_DP32(flags, PSW, U, env->psw_u);
-+    flags = FIELD_DP64(flags, PSW, PM, env->psw_pm);
-+    flags = FIELD_DP64(flags, PSW, U, env->psw_u);
- 
-     return (TCGTBCPUState){ .pc = env->pc, .flags = flags };
- }
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index 1bacc7adf929..69547c83cc05 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -36,7 +36,7 @@ typedef struct DisasContext {
+diff --git a/target/or1k/translate.c b/target/or1k/translate.c
+index e00ef45b9b76..e656301642d8 100644
+--- a/target/or1k/translate.c
++++ b/target/or1k/translate.c
+@@ -45,7 +45,7 @@
+ typedef struct DisasContext {
      DisasContextBase base;
-     CPURXState *env;
-     uint32_t pc;
+     uint32_t mem_idx;
 -    uint32_t tb_flags;
 +    uint64_t tb_flags;
- } DisasContext;
- 
- typedef struct DisasCompare {
-@@ -243,7 +243,7 @@ static TCGv_i32 rx_load_source(DisasContext *ctx, TCGv_i32 mem,
- /* Processor mode check */
- static int is_privileged(DisasContext *ctx, int is_exception)
- {
--    if (FIELD_EX32(ctx->tb_flags, PSW, PM)) {
-+    if (FIELD_EX64(ctx->tb_flags, PSW, PM)) {
-         if (is_exception) {
-             gen_helper_raise_privilege_violation(tcg_env);
-         }
-@@ -332,7 +332,7 @@ static void move_from_cr(DisasContext *ctx, TCGv_i32 ret, int cr, uint32_t pc)
-         tcg_gen_movi_i32(ret, pc);
-         break;
-     case 2:     /* USP */
--        if (FIELD_EX32(ctx->tb_flags, PSW, U)) {
-+        if (FIELD_EX64(ctx->tb_flags, PSW, U)) {
-             tcg_gen_mov_i32(ret, cpu_sp);
-         } else {
-             tcg_gen_mov_i32(ret, cpu_usp);
-@@ -348,7 +348,7 @@ static void move_from_cr(DisasContext *ctx, TCGv_i32 ret, int cr, uint32_t pc)
-         tcg_gen_mov_i32(ret, cpu_bpc);
-         break;
-     case 10:    /* ISP */
--        if (FIELD_EX32(ctx->tb_flags, PSW, U)) {
-+        if (FIELD_EX64(ctx->tb_flags, PSW, U)) {
-             tcg_gen_mov_i32(ret, cpu_isp);
-         } else {
-             tcg_gen_mov_i32(ret, cpu_sp);
-@@ -386,7 +386,7 @@ static void move_to_cr(DisasContext *ctx, TCGv_i32 val, int cr)
-         break;
-     /* case 1: to PC not supported */
-     case 2:     /* USP */
--        if (FIELD_EX32(ctx->tb_flags, PSW, U)) {
-+        if (FIELD_EX64(ctx->tb_flags, PSW, U)) {
-             tcg_gen_mov_i32(cpu_sp, val);
-         } else {
-             tcg_gen_mov_i32(cpu_usp, val);
-@@ -402,7 +402,7 @@ static void move_to_cr(DisasContext *ctx, TCGv_i32 val, int cr)
-         tcg_gen_mov_i32(cpu_bpc, val);
-         break;
-     case 10:    /* ISP */
--        if (FIELD_EX32(ctx->tb_flags, PSW, U)) {
-+        if (FIELD_EX64(ctx->tb_flags, PSW, U)) {
-             tcg_gen_mov_i32(cpu_isp, val);
-         } else {
-             tcg_gen_mov_i32(cpu_sp, val);
-@@ -2080,8 +2080,8 @@ static void clrsetpsw(DisasContext *ctx, int cb, int val)
-             ctx->base.is_jmp = DISAS_UPDATE;
-             break;
-         case PSW_U:
--            if (FIELD_EX32(ctx->tb_flags, PSW, U) != val) {
--                ctx->tb_flags = FIELD_DP32(ctx->tb_flags, PSW, U, val);
-+            if (FIELD_EX64(ctx->tb_flags, PSW, U) != val) {
-+                ctx->tb_flags = FIELD_DP64(ctx->tb_flags, PSW, U, val);
-                 tcg_gen_movi_i32(cpu_psw_u, val);
-                 tcg_gen_mov_i32(val ? cpu_isp : cpu_usp, cpu_sp);
-                 tcg_gen_mov_i32(cpu_sp, val ? cpu_usp : cpu_isp);
+     uint32_t delayed_branch;
+     uint32_t cpucfgr;
+     uint32_t avr;
 -- 
 2.55.0
 

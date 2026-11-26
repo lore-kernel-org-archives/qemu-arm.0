@@ -1,91 +1,89 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7B16606A686
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 14:33:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4EFE5606A33C
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 14:33:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=h3OjWx/B
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=I7YQz6x9
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWaXb-0003ej-T0; Thu, 26 Nov 2026 09:33:41 -0500
+	id 1xWaXj-0003v3-9q; Thu, 26 Nov 2026 09:33:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
- id 1xWaXR-0003EC-SB
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:33:31 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1xWaXa-0003bF-Hb
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:33:39 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
- id 1xWaXI-0001Aj-Qa
+ id 1xWaXO-0001B1-BC
  for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:33:29 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4bb6adaf0f1so61624705e9.0
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 06:33:07 -0800 (PST)
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4bb77a462c6so58693325e9.1
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 06:33:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1795703586; x=1796308386; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=Cd5vkrrSWcpZ7F3e4D1cM7AMS3lJGeo3zC6MUWO6l04=;
- b=h3OjWx/BD4YGu9+xuQ3YUTvAiWwEsPtnmxu9482gFYkBfAMVNZYFV2SZ+zfgvxIMjw
- fzM3CXLbmpUGB6WQ3nbw8QIZbU5jywx/kkA1u2clkVrRGM+xvNLoNmYRBLumBEMbue7y
- cQtmjc+bx0zNF6Dw825OWgs3CWHZpw6OBW0SRA9zH65l7p7ld2E/FU3UoLaUXMXWTdZo
- Ui5BDWuo9YibII99o5/lmcx90EEI637CUNY4APm1key/EYCC3avFgGyvySyJDNHAhFX+
- JxbTF/SID7UABUbw37ZYfmcLZHUFpg2smjvS0d9+88gNbPTpLd5F+IZSryC0U6O903Ca
- EXfQ==
+ d=gmail.com; s=20260707; t=1795703588; x=1796308388; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=hSzWdqovOS7zanPgxojJ0emViJPJpi0/B9Bvq88rSEI=;
+ b=I7YQz6x92Aks03iT1yg8eZLqg8KIctKrP7+SIsm6xd7U2NztmLchDO3f8BHsGZrUk7
+ g/vae0by+TqbZNTWmQRWxNdbx5DOwZpT8XnLu00R8ruj8bP9u4DFhTT7ne+7KC/7j3wm
+ Go5EcNF/zcz5EIE2KR/QKrJEQqGZHtRvF+VGNhmwbcd8lv0f2FZNH14rpgIIsyNDwEhs
+ 0liouKRi9iY5QN/1qB4RYuLxrGBy+k86lj6xd1OQwHyZ89ShXmYVmaKMUcAGJru5AGTj
+ 6/kn+iclrI1BKVdoFyyvpytoccvmZcu5KAlm1+JULfY+X0u+1xUpaueHdB7FfeFw3vPF
+ 08vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795703586; x=1796308386;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Cd5vkrrSWcpZ7F3e4D1cM7AMS3lJGeo3zC6MUWO6l04=;
- b=fudTsmR2as2VkDJiEIQ2rFeTGxO6pwLxC7akKSRp+wc73RntSA2Nf+UzJbPW5YztnB
- 5Pb7Ie/5cAXdo8JnicF9VLLvZg2xsTlljZLn/Oi9ZwesO8ghP3XK7EhhXI9N2l8VEOj5
- gUCv0AJEuidFpmpXqCBJIK4IJehf6wIlQpo4FystQP5IDsaGdl25bI5tSuQTq34uSSeN
- 1x0AGPJUQVYWKsS9kJMmfyGf1CGj8S3SXmv6hcWQycuZO4DSX9se+9s9kvlQ4FyyQIIW
- Z61U7h8gXjH/K9LBDr6vWfSGS3MhILlG90HvJ1UvhcILeDbFf4T8H20B7wRX5VS0jhMQ
- R1dg==
-X-Gm-Message-State: APuU4Z+7wrcAwaQKTi7IlHSpyRv0bkqBY+6Z6Oc0GS1a0GqA27vBZSBg
- KJL+aQeNh51faWtENeXN5xJXp7YX/gZzDavhgkjRutiJpa5oAnd6JPR8
-X-Gm-Gg: AZFdTZd+T0GaLALbCId6V2Cvu8h4Xse2X25IB1zR6uVL6YG9e9CdAO1XMTkwxsr0Z9G
- Bv8F35n/8G0KciyeDDc2R7HySA6Iay4yffmAEOvCXYJGb25VJNKSb0Dv1jYtQeI6Oy0efkMzSYi
- sQMf68u6SZOQLCsNwNS5Bmwrb7XSvZOYpdMBeJsAG00qzSKEUYFFkipQJuC+6faihOQkebzcJdV
- F/uWDmmrTL29rTI7U0rxBZhc8nbi21kjugK5UGJIxrbh0cLa0wHVG/1wxinBRQ1st/Lh62jW/kh
- Z3fU76/Fr6kSwv8FQoUiXKqrXzZa9ckXC8LeGFgaygkqX6OTiLAfJ5+f+cTxtUA+pcMuaQyTapN
- vyZMdEtEcvvJqE3eSPKrMIjYkpLS8fIdSQo3Kl5ohW1MraFNhVs/4NHVR8qYxGfng4eXNT18IAu
- AuKBnw5OjFytpMc7ZOsTN7/kGLtzL6sLQisw58nBrxdRyKnLM9GD47S/IA2sNmTGdeeRJmv2J9T
- YMDg8YEY84LoVMF9CeLIMWvWtSfo2pXkMgar2TFKqX14hVcJZE+24j8imjrmZsbs5sKYDGTYpfW
- uGfOX6h8KgPA9N/HSYM8PNXL+bIkpj2nuxge+uW8J7IYdpPehHQYiHbzEXudyoNWnNpd+LgxaNV
- xpiSJpIPnYgZzCb2zC+B46iiGl4DloMj/zDP6yBFr
-X-Received: by 2002:a05:600c:1d0a:b0:4a2:59:f568 with SMTP id
- 5b1f17b1804b1-4bb8880ef6amr458687955e9.14.1795703585903; 
- Thu, 26 Nov 2026 06:33:05 -0800 (PST)
+ d=1e100.net; s=20260707; t=1795703588; x=1796308388;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=hSzWdqovOS7zanPgxojJ0emViJPJpi0/B9Bvq88rSEI=;
+ b=OYYEvghC5XG1JIA3BaTUisLI+bb6MRYS3i2QGXlRwWGuKz/eW+Q9DuPM9TGIBZ+FuV
+ A58vXnLEBm29dhboaTKKMfvuv5yvIJ9Yn5urKdGTDX/4cvB4dDD2rNhSJmTjVAU8MqtJ
+ UJMxeVV8zg4VmEDHGtMKkWhmoGWeecHNvZMzFWwZB3Ah/KOzBlX7qYOwH/pk1oZd8/PY
+ tXRNFMO7VvmMdAu7NA3akPkdlb18N5YwiKPWTpiHa0m676tYEvYh45gaQ68qGmHpcVCh
+ IUEuyM9lXd1XylzFwzzRgZn3Z2QuiVHrnk0pgQUSknDwDhKeD7z2HlNm41/EIKhLQLlT
+ Hd5Q==
+X-Gm-Message-State: APuU4Z8SwUiaXixH9xmD7WMvEngZ560SdMOtwViDxpzAyYLVZLyJSkVA
+ RRJfufHMWjQM1bLtIn/wqDBkA5HWZ3RKwuxj3B1TdtuKBq27tH3hjujz
+X-Gm-Gg: AZFdTZeuxDYdsJY2XOXjaislmml4JS010+qE0COr8EwcgW9Z2HK1ThfaUIqYLID1UrM
+ pRZ4mg/MmbVc569RwiFYDXPEEJUimqVEgjKX9avBJSXMABT5iCPy7mYN141lMRn4VbiSy40sFS5
+ mb1bFBo48i0YyAyi70LLd2k5IVdR1glh+J9GRz5REw3RFkPoTevNo1RnktPWL2qYXafg1wlnbjq
+ 8/v+c9jhFAb/nQUeKXXb7MZqRAeRN/gMD6E2Tk4ycqKwx3iLZFupojzBpT/k8F6LNPdjcQ/0Z3i
+ WOcxAS6EHgT0LciJ/+OPVV+ICuIFjQGac3uIED9rD15FwSbMFp9mK8J4EvbWaNw/uSJFkdpu7ya
+ iIwhitL8syKXIM6ut0FRaGlvU0xT0YvijYC5Fgc782kZrGUgktd4LWpAvDBi4SRZZCCrbtFWgtK
+ VAscsL85y/V3UwqxqlKwnrjUdK2pLlgUoadIxMqyCf8wCf0z5CJtqkGnHUYrBbmfJo0vwem50FJ
+ b5ghlWltpmSovUCPyHKqrQbAQf8GA6XzqiZMB9GeKxHVTfBjim6JfZ9gaiXZq6fpW+wh5JOR5Uj
+ nhYkp6gp3pyADrSKtObYQBiDSrIrtnmHoSdm8d3+7572eXKuNO7ubPatfr5huRl1Bwf5HhHjz79
+ njJ7eo6br8mq/sufpSXcyISslGD34mSAfYE3fVZmgzA==
+X-Received: by 2002:a05:600c:828e:b0:4a2:526b:d40f with SMTP id
+ 5b1f17b1804b1-4bb88785898mr442947595e9.0.1795703587785; 
+ Thu, 26 Nov 2026 06:33:07 -0800 (PST)
 Received: from noys4.dd1.int.kernkonzept.com
  (ip-178-026-066-148.vkd85.pools.vodafone-ip.de. [178.26.66.148])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb853b2437sm849925415e9.13.2026.11.26.06.33.04
+ 5b1f17b1804b1-4bb853b2437sm849925415e9.13.2026.11.26.06.33.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Nov 2026 06:33:04 -0800 (PST)
+ Thu, 26 Nov 2026 06:33:07 -0800 (PST)
 From: Frank Mehnert <frank.mehnert@gmail.com>
 X-Google-Original-From: Frank Mehnert <frank.mehnert@kernkonzept.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
  Frank Mehnert <frank.mehnert@kernkonzept.com>
-Subject: [PATCH for-11.2 v2 1/2] target/arm: set the event register on a
- failed store-exclusive
-Date: Thu, 26 Nov 2026 15:32:57 +0100
-Message-ID: <20261126143258.1056688-2-frank.mehnert@kernkonzept.com>
+Subject: [PATCH for-11.2 v2 2/2] tests/tcg/aarch64: test WFE after a failed
+ store-exclusive
+Date: Thu, 26 Nov 2026 15:32:58 +0100
+Message-ID: <20261126143258.1056688-3-frank.mehnert@kernkonzept.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261126143258.1056688-1-frank.mehnert@kernkonzept.com>
 References: <20261126143258.1056688-1-frank.mehnert@kernkonzept.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=frank.mehnert@gmail.com; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=frank.mehnert@gmail.com; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,86 +102,171 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-20.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Since WFE may sleep on A-profile, a WFE executed outside an exclusive
-region halts the vCPU until an event arrives. Lock code commonly
-branches back to WFE after a failed store-exclusive, for example:
+Add a test case for the common spin lock pattern "WFE, load-exclusive,
+store-exclusive, on failure back to WFE", where the lock is released by
+a plain store and without SEV.
 
-  1: wfe
-     ldaxr  w1, [x0]
-     cbnz   w1, 1b
-     stxr   w2, w3, [x0]
-     cbnz   w2, 1b
+CPU 0 executes LDAXR on the free lock, then CPU 1 takes the lock with
+a plain store. The following STXR of CPU 0 must fail, and the WFE after
+it must complete at once because the store of CPU 1 cleared the global
+monitor of CPU 0, which generates a WFE wakeup event. The virtual
+timer interrupt, 1s out, ends a WFE that misses the event, so the test
+fails instead of hanging.
 
-The store-exclusive clears exclusive_addr, so the following WFE sleeps.
-On hardware, the store by another PE that made the store-exclusive fail
-cleared the global monitor of this PE, and clearing the global monitor
-sets the Event Register (Arm ARM D1.6.1, R_XRZRK). The WFE then
-completes immediately. QEMU does not model this, so with interrupts
-masked and no event stream the vCPU sleeps until another PE executes
-SEV, which such lock code never does.
+The test starts CPU 1 through PSCI and therefore needs two CPUs.
 
-Set the Event Register when a store-exclusive fails, in both the
-AArch64 and the AArch32 translator. A failure for another reason causes
-a spurious wakeup, which the architecture permits.
-
-Fixes: 01b223f895a7 ("target/arm: enable WFE sleeping for A-profile")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/4938
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Frank Mehnert <frank.mehnert@kernkonzept.com>
 ---
- target/arm/tcg/translate-a64.c | 7 ++++++-
- target/arm/tcg/translate.c     | 7 ++++++-
- 2 files changed, 12 insertions(+), 2 deletions(-)
+ tests/tcg/aarch64/system/meson.build |   2 +-
+ tests/tcg/aarch64/system/wfxt.c      | 103 ++++++++++++++++++++++++++-
+ 2 files changed, 103 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 49472f7d97..45f3b3df03 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -3531,10 +3531,15 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
-         tcg_gen_setcond_i64(TCG_COND_NE, tmp, tmp, cpu_exclusive_val);
-     }
-     tcg_gen_mov_i64(cpu_reg(s, rd), tmp);
--    tcg_gen_br(done_label);
-+    tcg_gen_brcondi_i64(TCG_COND_EQ, tmp, 0, done_label);
- 
-     gen_set_label(fail_label);
-     tcg_gen_movi_i64(cpu_reg(s, rd), 1);
-+    /*
-+     * A failing store-exclusive means the global monitor was cleared, which
-+     * generates a WFE wakeup event.
-+     */
-+    gen_event_reg();
-     gen_set_label(done_label);
-     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
+diff --git a/tests/tcg/aarch64/system/meson.build b/tests/tcg/aarch64/system/meson.build
+index 8710ebfdad..a3cc77c1a0 100644
+--- a/tests/tcg/aarch64/system/meson.build
++++ b/tests/tcg/aarch64/system/meson.build
+@@ -75,7 +75,7 @@ tests += {
+   'wfxt.c': {
+     'cflags': cflags,
+     'qemu_args': ['-M', 'virt,virtualization=on,gic-version=2',
+-                  '-cpu', 'max', '-smp', '1',
++                  '-cpu', 'max', '-smp', '2',
+                   '-semihosting-config', 'enable=on,arg=2',
+                   qemu_base_args]
+   },
+diff --git a/tests/tcg/aarch64/system/wfxt.c b/tests/tcg/aarch64/system/wfxt.c
+index 9d50590a68..2cec6cfbbe 100644
+--- a/tests/tcg/aarch64/system/wfxt.c
++++ b/tests/tcg/aarch64/system/wfxt.c
+@@ -1,5 +1,5 @@
+ /*
+- * WFIT/WFET timeout test
++ * WFIT/WFET timeout test, WFE wakeup after a failed store-exclusive
+  *
+  * Copyright (c) 2026 Google LLC
+  * Author: Fuad Tabba <fuad.tabba@linux.dev>
+@@ -91,6 +91,106 @@ static int test_one(const char *name, void (*wait)(uint64_t), uint64_t freq)
+     return 0;
  }
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 442c34ce84..2eef2ceef2 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -2137,10 +2137,15 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
-         tcg_gen_setcond_i32(TCG_COND_NE, t0, t0, t2);
-     }
-     tcg_gen_mov_i32(cpu_R[rd], t0);
--    tcg_gen_br(done_label);
-+    tcg_gen_brcondi_i32(TCG_COND_EQ, t0, 0, done_label);
  
-     gen_set_label(fail_label);
-     tcg_gen_movi_i32(cpu_R[rd], 1);
-+    /*
-+     * A failing store-exclusive means the global monitor was cleared, which
-+     * generates a WFE wakeup event.
-+     */
-+    gen_event_reg();
-     gen_set_label(done_label);
-     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
++/*
++ * At EL2 with virtualization enabled, QEMU's PSCI implementation uses the
++ * SMC conduit.
++ */
++#define PSCI_CPU_ON 0xc4000003UL
++
++static uint64_t psci_cpu_on(uint64_t mpidr, uint64_t entry)
++{
++    register uint64_t x0 asm("x0") = PSCI_CPU_ON;
++    register uint64_t x1 asm("x1") = mpidr;
++    register uint64_t x2 asm("x2") = entry;
++    register uint64_t x3 asm("x3") = 0;
++
++    asm volatile("smc #0" : "+r" (x0) : "r" (x1), "r" (x2), "r" (x3)
++                 : "memory");
++    return x0;
++}
++
++static uint32_t lock_word;
++static uint32_t lock_step;
++
++asm(".pushsection .bss\n"
++    ".balign 16\n"
++    "secondary_stack:\n"
++    ".space 4096\n"
++    "secondary_stack_end:\n"
++    ".popsection\n"
++    ".global secondary_entry\n"
++    "secondary_entry:\n"
++    "adrp x0, secondary_stack_end\n"
++    "add x0, x0, :lo12:secondary_stack_end\n"
++    "mov sp, x0\n"
++    "b secondary_main\n");
++
++/* CPU 1 takes the lock while CPU 0 is between LDAXR and STXR. */
++static void __attribute__((used)) secondary_main(void)
++{
++    while (__atomic_load_n(&lock_step, __ATOMIC_ACQUIRE) != 1) {
++    }
++    __atomic_store_n(&lock_word, 1, __ATOMIC_RELAXED);
++    __atomic_store_n(&lock_step, 2, __ATOMIC_RELEASE);
++
++    for (;;) {
++        asm volatile("wfi");
++    }
++}
++
++/*
++ * Spin lock pattern: "LDAXR, STXR, on failure WFE" with a lock released
++ * by a plain store and without SEV. The store-exclusive fails because
++ * another CPU took the lock. That store cleared the global monitor of
++ * this CPU, which generates a WFE wakeup event, so the following WFE
++ * must complete at once.
++ */
++static int test_wfe_lock(uint64_t freq)
++{
++    uint64_t entry, now, elapsed;
++    uint32_t val, status;
++
++    asm("adrp %0, secondary_entry\n"
++        "add %0, %0, :lo12:secondary_entry" : "=r" (entry));
++    if (psci_cpu_on(1, entry) != 0) {
++        ml_printf("FAIL: cannot start CPU 1\n");
++        return 1;
++    }
++
++    /* Clear the event register */
++    asm volatile("sevl; wfe");
++
++    asm volatile("ldaxr %w0, [%1]" : "=r" (val) : "r" (&lock_word)
++                 : "memory");
++    __atomic_store_n(&lock_step, 1, __ATOMIC_RELEASE);
++    while (__atomic_load_n(&lock_step, __ATOMIC_ACQUIRE) != 2) {
++    }
++    asm volatile("stxr %w0, %w2, [%1]" : "=&r" (status)
++                 : "r" (&lock_word), "r" (1) : "memory");
++
++    if (val != 0 || status == 0) {
++        ml_printf("FAIL: store-exclusive succeeded on a taken lock\n");
++        return 1;
++    }
++
++    /* The virtual timer interrupt, 1s out, wakes the CPU if WFE sleeps */
++    now = read_sysreg(cntvct_el0);
++    write_sysreg(cntv_cval_el0, now + freq);
++    write_sysreg(cntv_ctl_el0, 1);
++
++    asm volatile("wfe");
++
++    elapsed = read_sysreg(cntvct_el0) - now;
++    write_sysreg(cntv_ctl_el0, 0);
++
++    ml_printf("wfe after failed stxr: woke after %ld ticks\n", elapsed);
++    if (elapsed > freq / 2) {
++        ml_printf("FAIL: wfe missed the event of the failed stxr\n");
++        return 1;
++    }
++    return 0;
++}
++
+ int main(void)
+ {
+     uint64_t freq;
+@@ -113,6 +213,7 @@ int main(void)
+ 
+     ret = test_one("wfit", wfit, freq);
+     ret |= test_one("wfet", wfet, freq);
++    ret |= test_wfe_lock(freq);
+ 
+     return ret;
  }
 -- 
 2.55.0

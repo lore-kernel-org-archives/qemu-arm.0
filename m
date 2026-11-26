@@ -1,94 +1,116 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4EFE5606A33C
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 14:33:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E1C66606A333
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 14:36:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=I7YQz6x9
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=PgvxOaVC
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWaXj-0003v3-9q; Thu, 26 Nov 2026 09:33:47 -0500
+	id 1xWaaH-0007jo-Qk; Thu, 26 Nov 2026 09:36:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
- id 1xWaXa-0003bF-Hb
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:33:39 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xWaa6-0007Z3-VF
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:36:15 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frank.mehnert@gmail.com>)
- id 1xWaXO-0001B1-BC
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:33:29 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4bb77a462c6so58693325e9.1
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 06:33:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1xWaa3-0001f0-JT
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:36:14 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4bb64ef5a14so70473825e9.1
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 06:36:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20260707; t=1795703588; x=1796308388; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=hSzWdqovOS7zanPgxojJ0emViJPJpi0/B9Bvq88rSEI=;
- b=I7YQz6x92Aks03iT1yg8eZLqg8KIctKrP7+SIsm6xd7U2NztmLchDO3f8BHsGZrUk7
- g/vae0by+TqbZNTWmQRWxNdbx5DOwZpT8XnLu00R8ruj8bP9u4DFhTT7ne+7KC/7j3wm
- Go5EcNF/zcz5EIE2KR/QKrJEQqGZHtRvF+VGNhmwbcd8lv0f2FZNH14rpgIIsyNDwEhs
- 0liouKRi9iY5QN/1qB4RYuLxrGBy+k86lj6xd1OQwHyZ89ShXmYVmaKMUcAGJru5AGTj
- 6/kn+iclrI1BKVdoFyyvpytoccvmZcu5KAlm1+JULfY+X0u+1xUpaueHdB7FfeFw3vPF
- 08vA==
+ d=linaro.org; s=google; t=1795703770; x=1796308570; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=iR1BSxwzUUC40vPPolihTYt7JyJYZPIAe4hYeiisekU=;
+ b=PgvxOaVCwd3/eUEdEMqR1k7mDI9/XxqslsowWAbvDWY8SSWZUAjeyyZQ1SoyvoZxdB
+ iCvoxDSoBVCNYNHGWXEFCVCAx4HR1SMZmbNlIoIhWE+t3ODw7opMUVptM9QjqRCmv626
+ DybvinuCoSaCTIAnFrUlQht3323iNSkw1gYpa4ZvPVci3rKP+abCGBJr/ur4v1JC0mcf
+ RZtejYslVRhYurkqhAQFYQCrBkPsFjCI5H2OaZlcbf/nAyVu+TrKHCk99H+aKJvM45GA
+ XV4QHFWCC/2fC1a6Ezil6x8eJ2/fCUexQEHk9wzBuZZ3QsxzLmSF8YQBc2envPImIyaR
+ saSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795703588; x=1796308388;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=hSzWdqovOS7zanPgxojJ0emViJPJpi0/B9Bvq88rSEI=;
- b=OYYEvghC5XG1JIA3BaTUisLI+bb6MRYS3i2QGXlRwWGuKz/eW+Q9DuPM9TGIBZ+FuV
- A58vXnLEBm29dhboaTKKMfvuv5yvIJ9Yn5urKdGTDX/4cvB4dDD2rNhSJmTjVAU8MqtJ
- UJMxeVV8zg4VmEDHGtMKkWhmoGWeecHNvZMzFWwZB3Ah/KOzBlX7qYOwH/pk1oZd8/PY
- tXRNFMO7VvmMdAu7NA3akPkdlb18N5YwiKPWTpiHa0m676tYEvYh45gaQ68qGmHpcVCh
- IUEuyM9lXd1XylzFwzzRgZn3Z2QuiVHrnk0pgQUSknDwDhKeD7z2HlNm41/EIKhLQLlT
- Hd5Q==
-X-Gm-Message-State: APuU4Z8SwUiaXixH9xmD7WMvEngZ560SdMOtwViDxpzAyYLVZLyJSkVA
- RRJfufHMWjQM1bLtIn/wqDBkA5HWZ3RKwuxj3B1TdtuKBq27tH3hjujz
-X-Gm-Gg: AZFdTZeuxDYdsJY2XOXjaislmml4JS010+qE0COr8EwcgW9Z2HK1ThfaUIqYLID1UrM
- pRZ4mg/MmbVc569RwiFYDXPEEJUimqVEgjKX9avBJSXMABT5iCPy7mYN141lMRn4VbiSy40sFS5
- mb1bFBo48i0YyAyi70LLd2k5IVdR1glh+J9GRz5REw3RFkPoTevNo1RnktPWL2qYXafg1wlnbjq
- 8/v+c9jhFAb/nQUeKXXb7MZqRAeRN/gMD6E2Tk4ycqKwx3iLZFupojzBpT/k8F6LNPdjcQ/0Z3i
- WOcxAS6EHgT0LciJ/+OPVV+ICuIFjQGac3uIED9rD15FwSbMFp9mK8J4EvbWaNw/uSJFkdpu7ya
- iIwhitL8syKXIM6ut0FRaGlvU0xT0YvijYC5Fgc782kZrGUgktd4LWpAvDBi4SRZZCCrbtFWgtK
- VAscsL85y/V3UwqxqlKwnrjUdK2pLlgUoadIxMqyCf8wCf0z5CJtqkGnHUYrBbmfJo0vwem50FJ
- b5ghlWltpmSovUCPyHKqrQbAQf8GA6XzqiZMB9GeKxHVTfBjim6JfZ9gaiXZq6fpW+wh5JOR5Uj
- nhYkp6gp3pyADrSKtObYQBiDSrIrtnmHoSdm8d3+7572eXKuNO7ubPatfr5huRl1Bwf5HhHjz79
- njJ7eo6br8mq/sufpSXcyISslGD34mSAfYE3fVZmgzA==
-X-Received: by 2002:a05:600c:828e:b0:4a2:526b:d40f with SMTP id
- 5b1f17b1804b1-4bb88785898mr442947595e9.0.1795703587785; 
- Thu, 26 Nov 2026 06:33:07 -0800 (PST)
-Received: from noys4.dd1.int.kernkonzept.com
- (ip-178-026-066-148.vkd85.pools.vodafone-ip.de. [178.26.66.148])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb853b2437sm849925415e9.13.2026.11.26.06.33.06
+ d=1e100.net; s=20260707; t=1795703770; x=1796308570;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=iR1BSxwzUUC40vPPolihTYt7JyJYZPIAe4hYeiisekU=;
+ b=L0phimBEwX6+UHVUCm1/5nDeGLF/9AZum/86q1fb4n50Pncux0J6CIShTDqzL5O8r9
+ 3DsYBTNQ667UnQfD+etEato9qvEfkG3qbRVgnN52otVYVp+LZvO62TO26VLPIsjWb0NG
+ VRMh7Qc0uIWD1ZR0ZmM5R0r3Pg5kB57ONC9gnZRIlO1Kux95n/hlBuV7fRJ5h9ZGd4Hk
+ JH2bpSobtUvT/223sDQRuNdTuQYwXdVXfEvRdpJgMXAmlC5RnsFxiuJINPFEjsC/eJej
+ /gcuaCy58BfU4Dm2wH+cQ+IeyqRjskdxeHb3GARUfgOSdFxE64ztMwe2fcXJm32db0J7
+ l57A==
+X-Forwarded-Encrypted: i=1;
+ AL+hErGm5Nq6h5O65DzzX3MQdNpPq9fgIqvodJCxFP4givn5RD1NfduufJ2GoKmdXYMUc6dI5m0cYTTbAg==@nongnu.org
+X-Gm-Message-State: APuU4Z/67ouY0BZrb3OgpO4mMg4wUb9GcmzwdDX3t93gAoM0T3jf+dfm
+ n35E1A7WGVZE0EZXVwpIpq/oRPHZQFZvhxWy5jdTS+mq9CGSC2ORdoJXaoWdP4SkMYI=
+X-Gm-Gg: AZFdTZeqXnR97ShEG68L9zkWm5RUPY+MhEGeUn/zQM6HWK+DfqzWrMraQGzP1Yx0wF+
+ 603xlFgHd3Nd0unM9RhaIhf0nSELWJmOquqNUOdDmhp08OWeKU3HjFPdYYT7SCrDkic+8fF0hNi
+ F0WlY/NeVxPyug3lWjOEDIdFrD7zUm/w6M+jHGa7umNaB0rgYZR2mFkdA4E/YrjcEH5QpD1m8tx
+ JB5PaYvjniUayL7Y/olrsmzXth7lVv8i42nbyKDESIogq9bJLiqUVewYWZeCSIfz+PbID67yBVk
+ jiUNAYXLOBSN0ja1+rT9o3dR0DEW7ZYUlJ7V+WIBXKzcr/pK+Mh1XfeGH76KGrkWa2H9IoPPp4C
+ UQi6utILM7dfRyKXi2ZgwrUMRo/2gjcAlC3/0Buq5Y1bRIfSIHAPKShYNMksRjo5Q7lDYwVp8VL
+ Kad6G5JWeqg6vQMDy2n/z+5NwRtaIPKN9Mt6go3ae1eViYQG/JGfg3xAfCmKoocwdhwMC6JP38e
+ rpWcijZXrEKf1RmlIPz9FmRQGTxsYOjZYvp9hwHW3n2InNFyWIIs0ZkQbM8z79UI9U42hcvSNVY
+ iCu4JpqtyQxLiwHX8l1wYpNhps0B
+X-Received: by 2002:a05:600c:5493:b0:4a2:8c5:5e5 with SMTP id
+ 5b1f17b1804b1-4bb8881c734mr456826815e9.7.1795703769705; 
+ Thu, 26 Nov 2026 06:36:09 -0800 (PST)
+Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4ab6b110c50sm40545967f8f.37.2026.11.26.06.36.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Nov 2026 06:33:07 -0800 (PST)
-From: Frank Mehnert <frank.mehnert@gmail.com>
-X-Google-Original-From: Frank Mehnert <frank.mehnert@kernkonzept.com>
+ Thu, 26 Nov 2026 06:36:08 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id A4C1B5F9DF;
+ Thu, 26 Nov 2026 14:36:07 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
- Frank Mehnert <frank.mehnert@kernkonzept.com>
-Subject: [PATCH for-11.2 v2 2/2] tests/tcg/aarch64: test WFE after a failed
- store-exclusive
-Date: Thu, 26 Nov 2026 15:32:58 +0100
-Message-ID: <20261126143258.1056688-3-frank.mehnert@kernkonzept.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261126143258.1056688-1-frank.mehnert@kernkonzept.com>
-References: <20261126143258.1056688-1-frank.mehnert@kernkonzept.com>
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+ LIU Zhiwei <zhiwei_liu@linux.alibaba.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, qemu-arm@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>,
+ Portia Stephens <portias@oss.tenstorrent.com>,
+ Halil Pasic <pasic@linux.ibm.com>, qemu-riscv@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Chao Liu <chao.liu@processmission.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Michael Ellerman <mpe@kernel.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Weiwei Li <liwei1518@gmail.com>, Kuan-Wei Chiu <visitorckw@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>
+Subject: [PATCH 2/8] MAINTAINERS: make LIU's entries consistent
+Date: Thu, 26 Nov 2026 14:36:01 +0000
+Message-ID: <20261126143607.2374676-3-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20261126143607.2374676-1-alex.bennee@linaro.org>
+References: <20261126143607.2374676-1-alex.bennee@linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=frank.mehnert@gmail.com; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -102,173 +124,37 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add a test case for the common spin lock pattern "WFE, load-exclusive,
-store-exclusive, on failure back to WFE", where the lock is released by
-a plain store and without SEV.
+All the commits and s-o-b's use capitalised entries.
 
-CPU 0 executes LDAXR on the free lock, then CPU 1 takes the lock with
-a plain store. The following STXR of CPU 0 must fail, and the WFE after
-it must complete at once because the store of CPU 1 cleared the global
-monitor of CPU 0, which generates a WFE wakeup event. The virtual
-timer interrupt, 1s out, ends a WFE that misses the event, so the test
-fails instead of hanging.
-
-The test starts CPU 1 through PSCI and therefore needs two CPUs.
-
-Signed-off-by: Frank Mehnert <frank.mehnert@kernkonzept.com>
+Cc: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+Message-ID: <20261120200511.822573-21-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/aarch64/system/meson.build |   2 +-
- tests/tcg/aarch64/system/wfxt.c      | 103 ++++++++++++++++++++++++++-
- 2 files changed, 103 insertions(+), 2 deletions(-)
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/aarch64/system/meson.build b/tests/tcg/aarch64/system/meson.build
-index 8710ebfdad..a3cc77c1a0 100644
---- a/tests/tcg/aarch64/system/meson.build
-+++ b/tests/tcg/aarch64/system/meson.build
-@@ -75,7 +75,7 @@ tests += {
-   'wfxt.c': {
-     'cflags': cflags,
-     'qemu_args': ['-M', 'virt,virtualization=on,gic-version=2',
--                  '-cpu', 'max', '-smp', '1',
-+                  '-cpu', 'max', '-smp', '2',
-                   '-semihosting-config', 'enable=on,arg=2',
-                   qemu_base_args]
-   },
-diff --git a/tests/tcg/aarch64/system/wfxt.c b/tests/tcg/aarch64/system/wfxt.c
-index 9d50590a68..2cec6cfbbe 100644
---- a/tests/tcg/aarch64/system/wfxt.c
-+++ b/tests/tcg/aarch64/system/wfxt.c
-@@ -1,5 +1,5 @@
- /*
-- * WFIT/WFET timeout test
-+ * WFIT/WFET timeout test, WFE wakeup after a failed store-exclusive
-  *
-  * Copyright (c) 2026 Google LLC
-  * Author: Fuad Tabba <fuad.tabba@linux.dev>
-@@ -91,6 +91,106 @@ static int test_one(const char *name, void (*wait)(uint64_t), uint64_t freq)
-     return 0;
- }
- 
-+/*
-+ * At EL2 with virtualization enabled, QEMU's PSCI implementation uses the
-+ * SMC conduit.
-+ */
-+#define PSCI_CPU_ON 0xc4000003UL
-+
-+static uint64_t psci_cpu_on(uint64_t mpidr, uint64_t entry)
-+{
-+    register uint64_t x0 asm("x0") = PSCI_CPU_ON;
-+    register uint64_t x1 asm("x1") = mpidr;
-+    register uint64_t x2 asm("x2") = entry;
-+    register uint64_t x3 asm("x3") = 0;
-+
-+    asm volatile("smc #0" : "+r" (x0) : "r" (x1), "r" (x2), "r" (x3)
-+                 : "memory");
-+    return x0;
-+}
-+
-+static uint32_t lock_word;
-+static uint32_t lock_step;
-+
-+asm(".pushsection .bss\n"
-+    ".balign 16\n"
-+    "secondary_stack:\n"
-+    ".space 4096\n"
-+    "secondary_stack_end:\n"
-+    ".popsection\n"
-+    ".global secondary_entry\n"
-+    "secondary_entry:\n"
-+    "adrp x0, secondary_stack_end\n"
-+    "add x0, x0, :lo12:secondary_stack_end\n"
-+    "mov sp, x0\n"
-+    "b secondary_main\n");
-+
-+/* CPU 1 takes the lock while CPU 0 is between LDAXR and STXR. */
-+static void __attribute__((used)) secondary_main(void)
-+{
-+    while (__atomic_load_n(&lock_step, __ATOMIC_ACQUIRE) != 1) {
-+    }
-+    __atomic_store_n(&lock_word, 1, __ATOMIC_RELAXED);
-+    __atomic_store_n(&lock_step, 2, __ATOMIC_RELEASE);
-+
-+    for (;;) {
-+        asm volatile("wfi");
-+    }
-+}
-+
-+/*
-+ * Spin lock pattern: "LDAXR, STXR, on failure WFE" with a lock released
-+ * by a plain store and without SEV. The store-exclusive fails because
-+ * another CPU took the lock. That store cleared the global monitor of
-+ * this CPU, which generates a WFE wakeup event, so the following WFE
-+ * must complete at once.
-+ */
-+static int test_wfe_lock(uint64_t freq)
-+{
-+    uint64_t entry, now, elapsed;
-+    uint32_t val, status;
-+
-+    asm("adrp %0, secondary_entry\n"
-+        "add %0, %0, :lo12:secondary_entry" : "=r" (entry));
-+    if (psci_cpu_on(1, entry) != 0) {
-+        ml_printf("FAIL: cannot start CPU 1\n");
-+        return 1;
-+    }
-+
-+    /* Clear the event register */
-+    asm volatile("sevl; wfe");
-+
-+    asm volatile("ldaxr %w0, [%1]" : "=r" (val) : "r" (&lock_word)
-+                 : "memory");
-+    __atomic_store_n(&lock_step, 1, __ATOMIC_RELEASE);
-+    while (__atomic_load_n(&lock_step, __ATOMIC_ACQUIRE) != 2) {
-+    }
-+    asm volatile("stxr %w0, %w2, [%1]" : "=&r" (status)
-+                 : "r" (&lock_word), "r" (1) : "memory");
-+
-+    if (val != 0 || status == 0) {
-+        ml_printf("FAIL: store-exclusive succeeded on a taken lock\n");
-+        return 1;
-+    }
-+
-+    /* The virtual timer interrupt, 1s out, wakes the CPU if WFE sleeps */
-+    now = read_sysreg(cntvct_el0);
-+    write_sysreg(cntv_cval_el0, now + freq);
-+    write_sysreg(cntv_ctl_el0, 1);
-+
-+    asm volatile("wfe");
-+
-+    elapsed = read_sysreg(cntvct_el0) - now;
-+    write_sysreg(cntv_ctl_el0, 0);
-+
-+    ml_printf("wfe after failed stxr: woke after %ld ticks\n", elapsed);
-+    if (elapsed > freq / 2) {
-+        ml_printf("FAIL: wfe missed the event of the failed stxr\n");
-+        return 1;
-+    }
-+    return 0;
-+}
-+
- int main(void)
- {
-     uint64_t freq;
-@@ -113,6 +213,7 @@ int main(void)
- 
-     ret = test_one("wfit", wfit, freq);
-     ret |= test_one("wfet", wfet, freq);
-+    ret |= test_wfe_lock(freq);
- 
-     return ret;
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8c5a40a6929..048ea6a5034 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -367,7 +367,7 @@ M: Palmer Dabbelt <palmer@dabbelt.com>
+ M: Alistair Francis <alistair.francis@wdc.com>
+ R: Weiwei Li <liwei1518@gmail.com>
+ R: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+-R: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
++R: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+ R: Chao Liu <chao.liu@processmission.com>
+ L: qemu-riscv@nongnu.org
+ S: Supported
 -- 
-2.55.0
+2.47.3
 
 

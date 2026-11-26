@@ -1,147 +1,103 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3550606A327
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 22:41:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16B32606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 22:47:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=MR0fktjx;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=EirbH8kG
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=MkEk7YtP
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWi8c-0007Ih-1w; Thu, 26 Nov 2026 17:40:22 -0500
+	id 1xWiFD-0001Z0-Fc; Thu, 26 Nov 2026 17:47:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWi8a-0007EV-Fj
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 17:40:20 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xWiF6-0001Y8-Bc
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 17:47:04 -0500
+Received: from st-2006a-snip6-11.eps.apple.com ([2a01:b747:3001:203::b]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWi8Y-0001JE-Q6
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 17:40:20 -0500
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AQJw6WE781812
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 22:40:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- f9WDtWtBeo94ep8Aj19VaL1/nZ7SEVEBE2xVCDh3ihA=; b=MR0fktjxl17nfZ+L
- 5fv1RDv0aivWSX1FjGAGFOV1tQCG6gv/LrHeWH7rgtE3LZ+NfUHEU5FJlc41UhCK
- IiwPMm/3VlSgDnzbtjkMGUwahVUbl+UoZAoJD8Mp2xRjpAkfd1kSEA+scuf9KKFe
- n52QBkWY7R1PKys3cHP6vyxVliDORhMQvPCUCAQYmK/ajtH90hxC69HSRj923RTP
- 3I7op7af6x8JGNViVimjGuYYlD3gxB64YOsZyrOHQQhahqVPZuiVU0yVae5Nz0+G
- a8M+/rSRHMXAUzDkb5XGGvmMjuyTnzbMfjpjRaqaZNGTwTD12+XVNYtbh7PW75QN
- wXRzhw==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6hm82hcw-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 22:40:17 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-93f6f4fe531so1116294585a.0
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 14:40:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795732817; x=1796337617; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=f9WDtWtBeo94ep8Aj19VaL1/nZ7SEVEBE2xVCDh3ihA=;
- b=EirbH8kGWaeTuAz57Pu8CRfK902/viIVURMKw5dxzwdY3B5CHK0vReXRtYtH7udq6q
- 35iTlTQO+hZsqXC2sYgMY5//HVdHbN3cjHh2qh36TdRgCn1PWdjLSyrPibSYYWoLyofU
- VCsckSaRaXkYPToIR7BBAM2HkJsJPPX+Wn3U4iRwPq//jJceDRd/p7SSpi8b5c9nzirD
- CAzR6JnEGu+kvcj5fSXcv02HtQG1//hmdxBL31bKxHDeSFZwc2rfHQiQc8mfKq8CkS9z
- 2DdVX7U4z6IRoyPSHEctrTwAk6eZFwnoMEy00g8F5rOkSSm448t3tyz+MBmX1cxCZyze
- KtWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795732817; x=1796337617;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=f9WDtWtBeo94ep8Aj19VaL1/nZ7SEVEBE2xVCDh3ihA=;
- b=yWlUNpZRN8HjT/NCip0DzktoM2zQnEKQhD9mwiX5jFpmYBrRPA9qIPGAGA59AGmyCq
- u24tBNgtib9//8f9bzojy/p+4HcjRdhljBNTW7Js1tKYFaMo3mVrpvem2/uOuWLmr3Mw
- SnhPrJEHcNiUUi4BvooVVaXLC3L3pS2kgGSPY7bdK4F/eyLFKfuOsT8TtXaGwh3jp/m5
- JvtIge69OAGIUosJDrw5u2JFYn2UJknOEGsAZUL2L5TRo17Wbi8uxQl6QgzjKo7fUn/2
- e7rF9jS8uZChpDTPbS262ostosCsP54sBVxLcAizr2LcJYKnY80IFh1KAsnEl/QJ2I5r
- BTxg==
-X-Forwarded-Encrypted: i=1;
- AL+hErFgT5t7DcM6G51hfXt9mRxmD91V1+qbbBjyItZA3h8yQeLZZwbGIENyDbQsSibC6R7Hp/s4JKZX1A==@nongnu.org
-X-Gm-Message-State: APuU4Z8o5uOPyDT/wXCh8G+6XX2GNzTWUyUQh9LaswkGy0ycqt9vZtst
- 7k/SDwEbGCWLdqPwuFGcNgx5F7BGKBi4E2IvmpjhM+38efxRJN9ZJ2O07MwfDK4EODD0hH/QX38
- CMh4rXvZSVkf8JCbJgPEMRc84WjWAyh/x3ZUnuDzA8n6OsALhYjyg+N0=
-X-Gm-Gg: AZFdTZdNMPoa55vgu7Ok03PYTEtCWW+gsJ06lHrBi/nGJO9cQZOSIE/MlksVNpl0Vch
- dyWsPp++BSCkbVLwfvbRjD2wyeP52Xsei5KxgwcSfrQkxymIyXUYOvpYXxg386NaZxNlOxjXMUF
- VlMTzaxc80bOun0STWTFNRqy+7mFKG9TlSA12UEJu1KWPGi/ZWZcBZusybBFgHtp2J1Kymnuvzw
- Bt8RSS7tGYKXD34c3fuJULQpxC5AB4tDlXd7O3diRQa8IEaKz0Z8iEBOiGR5Kxgi22YLHljzPMw
- mSX94F3a290vYOaNSYnhPkWLp/LiAffn8ingO0efl4I8FfCRHcqPEtTXiEc+dZoQ3Nx+yat5PFH
- PsYwIQU2k+Wv41/4gGr9tEdlGVBJa2Eff87mNpqbH0/Pern5ihb3NHRL/+YZwjez82pLzxF0WI2
- XtfhDj6jlKevi0Rg==
-X-Received: by 2002:a05:620a:8081:b0:93b:d7a3:45cf with SMTP id
- af79cd13be357-949ba9e882fmr3861743285a.56.1795732817070; 
- Thu, 26 Nov 2026 14:40:17 -0800 (PST)
-X-Received: by 2002:a05:620a:8081:b0:93b:d7a3:45cf with SMTP id
- af79cd13be357-949ba9e882fmr3861740085a.56.1795732816668; 
- Thu, 26 Nov 2026 14:40:16 -0800 (PST)
-Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb853a12acsm667908685e9.8.2026.11.26.14.40.15
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 26 Nov 2026 14:40:16 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH 2/2] target/arm: Read generic timer counters without the BQL
-Date: Thu, 26 Nov 2026 23:39:59 +0100
-Message-ID: <20261126223959.62899-3-philmd@oss.qualcomm.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261126223959.62899-1-philmd@oss.qualcomm.com>
-References: <20261126223959.62899-1-philmd@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xWiF2-0001ej-Fl
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 17:47:04 -0500
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-5 (Postfix) with ESMTPS id
+ C78BE1800198; Thu, 26 Nov 2026 22:46:46 +0000 (UTC)
+X-ICL-RepId: 01a21a0a-36c2-7b61-a7e7-b1e9de21cb9d
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1795733209; x=1827269209;
+ bh=r6NoNXR5+3O5cjqWQmKXRnjfLW3IHXMe3iEOodEYPGM=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=MkEk7YtPCHq+Q7i55xkxjR3vS3glVTay7R3KpzzXsDbhBK8T1jJ24zaZ+BKO35RBYH412jFzpkhWseYmLWD0ANryMDLzqmIp0SpSB/n6LfFPgSr7AEX2rh7XAml0ob04MRMl6gky59LMIaZ0oL41a6HO/htgfQ60eIpcXt+X2lyYwOsVq2qP14i0ozlp0rDoo9vz1dRuuZ5jeYcmyVrC4/k2+o8EuZjzUjIGN9FApX/AkTBLGuBcxJsAUU9qH/BmaDChCgnMJvft8HYiYfqoDzN90x/WsVhnQfnMlEhpFMCJJ5OW6Z+kszpZQgtMvq5wecV1aZi73AwKEO6ckhs1CQ==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.156.216.30])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-5 (Postfix) with ESMTPSA id
+ 1D5B01800439; Thu, 26 Nov 2026 22:46:45 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: Md73Itx4qTmeykSATJHb7usITcExpSeV
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA4OSBTYWx0ZWRfX5959GTrac73l
- bRk9WQf6CTr6XhHmzLFMb9x9xVoPomFwyht3nZObAAE8FCOMdtcG00EbUIqxPja9YOzXiNh4DdO
- ENLNhkd5r0cqagEKYBen2CKXh9kvhj4=
-X-Proofpoint-GUID: Md73Itx4qTmeykSATJHb7usITcExpSeV
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA4OSBTYWx0ZWRfXwauKOo1hY1Xo
- b81ISMemBcVgQbxanZ5KU6GWii20D8v6lIGTaqK8p05Rf4BXqbNH2JbV+QHNdc8NKFgSx8JLJ7C
- FzaCNIMZo6/NmqNwBqcp5QOm+kuhNtwO8KqVsEK6Y59IqlFO5SFhGZrOjLMGQE4Jl5YMWN5QsvV
- REI6nizfv8ZBw8ZZVJyr2+mI7G+W+vbHF2jn8qy9vQIJxsPH5ievqwl+wsQIpG0JEhBwjn0t2Xs
- 3XxVQoSOGAEciQovLVfAcuh3u7OdYcsUewNqeYgvG9DSK5Y4vKqFg3ZiD/rjoTwnSFJSEwvFMOw
- ZwQVhqPLuC1LViVC/jTU2FabcxXmbQzr30UMTO8+qXNtgVKUxzOrnZ4GNkiN2Apm3S7+QbRwZyW
- B3c8FbJhfJBVdUAkRHKFs3hTDIYezL4QE+b9x5vGoTky2WiCxTsv4H2PFRznf/9bSHWd/fYQaX/
- VmXafZUK2SbZud+v/7A==
-X-Authority-Analysis: v=2.4 cv=O/usLx9W c=1 sm=1 tr=0 ts=6b08b551 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=EUspDBNiAAAA:8 a=h59-2o0vKUX5x5sfU90A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-26_05,2026-11-26_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 priorityscore=1501 bulkscore=0 adultscore=0 clxscore=1015
- impostorscore=0 lowpriorityscore=0 phishscore=0 suspectscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611260089
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
+Subject: Re: [PATCH 1/2] target/arm: Split ARM_CP_IO as ARM_CP_IO_ENDTB +
+ ARM_CP_IO_BQL
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20261126223959.62899-2-philmd@oss.qualcomm.com>
+Date: Thu, 26 Nov 2026 23:46:32 +0100
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <33E9DD67-CFB7-4CC5-8B51-78B61F838020@unpredictable.fr>
+References: <20261126223959.62899-1-philmd@oss.qualcomm.com>
+ <20261126223959.62899-2-philmd@oss.qualcomm.com>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+X-Mailer: Apple Mail (2.3901.200.71.1.16)
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA4OSBTYWx0ZWRfX0i3ycfLDBoxi
+ 2RYun1GvRj8hkPy5u899AET2jgL/grHM8cU7oo52dxyeQ0fij1lRSns0lIQ1K9gLJ+jpqyNUCgt
+ CxpBXCD7ANa9OIOjAbv1hLMoMe6hQWo=
+X-Proofpoint-ORIG-GUID: INOnggC7VNMriuO-pNzRlMrkewp5c_ic
+X-Authority-Info-Out: v=2.4 cv=Dq/Da2/+ c=1 sm=1 tr=0 ts=6b08b6d7
+ cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
+ a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=wbbCu9YnSpm8ZdSLOl1R:22 a=871Mr51So83XRmefo0B0:22
+ a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=g0UTid85SeQCHO8TUEQA:9 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: INOnggC7VNMriuO-pNzRlMrkewp5c_ic
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA4OSBTYWx0ZWRfX8YukFmcgR/9T
+ tyaMl25Vmn9c3+AKG8jFFjj2GJHSdlUyBj4EDC4wWPCtRKEv/ck524+WDfX7ps3bYqCJY7hSHBR
+ 2OYr9qLNh4H6AW0Q9ZocOwmPi9gtaehTFO9X3i0pyIFgO6GVCxoZoAh280MgXZxZB/SSNKKAETe
+ 1I+F6SSArtf/EuQJRKU/CqE2P2VTMcLdnZpVlqMQnIf5wT40cQbpxmvfjj2OGZ7Llso42co8RVb
+ NVN9r+LsuQjtujR7oH+bB5l/BXTRMuaqY908OMl6FnjVGtqAstQuQ6/qj424mycmAbk0kLFMfce
+ xs/mqg6c2W0Tbnd5E0C1qr2/F6HS9UIYNVc5fnK4O7p6xRQ4TaxhlayaFb8dPQ=
+X-JNJ: AAAAAAABu+fcV1ieVS9GXyXVPBi+BjvR2yomdFkt3fyTSGCfDK6TpWJxpArEXf05nWVvtx
+ TWrTUFSazi/0b+Ffmsn5vqvWS4Fe4HltPVJuVYYw74aiiOh6zyxwLaq65DDn+PEe7hs5j+
+ KupBNvZ8jVgltgAp88OjPms33knNdAPHT7nVqz2vWeWDLwfxrusa/lZK4ZLlbk2FAVHwMN
+ 7jg080yfKcMwkfsFOfFCFzgEaga2ws6mPOspEnBVS+H2S8Mr5bRzmuqQSEF6eB69C2WNxs
+ qvmou4XXouy2OKm7r37TYylBHzhITXmXBKEydA4ykQ3tKpYvYnPQFySmkX2EaLjtK013Nl
+ dA9qevl0qGZjp5AVXbZV8+V+qgE/XWWUTbHnDxszIKZw2NAfhYrc/TqMtus6/OggXRUcqS
+ vsF8N6leZJeagFX7EqTO9oFMAC//aXW9sHrfEdVk9TQxG9VZuF8JJ6vkiWhzdKSDQcx2O5
+ XVexULeD0K2Rz+ZBtzZQ5MFH2ZiFLzk//uPt9FMWPlTjmhZgQ5giJerfoLTMiDXwM7dVzx
+ v67UIAjSEfGpFAPtmt3zG/LbGQ3jayBNOLzpSgmhy2/MkV4tyEMsIHuZL5xGLJR/nyIz/g
+ 945qezAYdOWnJB7dD9iNP989ioM8D5fmc3Ip6I5JLlH1GA0/wFAGpNSKvk9K95ZVxr9s5f
+ 4HOb5cZSKjr8ujOKpzi5Wkj3ifmKlDovPBbOu3LkG8XKKO9q4jVrDGsRmGhAcquvozFSlh
+ v0jdMp5I/HoFFe/jMOlXufM7vzim/CNRWLQDVwbYcQFFZa5CK1ZiFV5MtA5W7dCvwXpLdy
+ 4rdO3v88Sg88gHXVyiTdnQ4sj1Va/W0qoIT5ttEQcV6e2dg8wItQuhK/i2I1ptp7y6mAu2
+ +mECngUIU1d6S79aHDTJrlXWL1rAroyy8EysC24MpfhOqUgFNy0Sp6iAwAzlSHpG49W3e7
+ DSjZkWgGHM30o8+kZuPX2CPTHL6bLuOXvQ4Ju2emyWoSou1YjbLLGCRvUQ97h+o2XZCMew
+ dKCd65d9uF+fi+XdX0ld4NyoaLUxKB5Qy+BBEVBDSBTV40afErpn7wF7NFNcQUlk+iB45u
+ kGXjIZ2RVLVzdisOBeFNQaORLwrUHQOMkdVKswv+ZfJCMHXji62xySaY17Vv7VYXrSOpYP
+ +vm10r8JbdLPFwSsR/5L8vWr5+0GJM409WRsDfScna5GoeU0hws1ALkX3+thoBKDNqi+Vp
+ luqUe7cigoyMIm0KqEpyTS+aXePY/iyWVUbl9u3UyOrEytXmP/sIYeDiBPD3mia7GjC49V
+ ApvcIeIvFzRxQKmGpqkUdNwUxG8AKi33U849pBGHvWp27YrOiUrTN9D0e6M/TZ28GpEiCf
+ BVtSk/ls7QlLEXB4Cp0KQdAfKRRmzVXRoB806Qnyl2125RRhC71lYiNprbAgj27sPzp7XT
+ X7g02n710mdc00tg==
+Received-SPF: pass client-ip=2a01:b747:3001:203::b;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,105 +109,210 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-CNTPCT, CNTVCT and their self-synchronized variants are read-only;
-their readfn uses per-CPU state and QEMU_CLOCK_VIRTUAL, which reads
-through the timers_state seqlock (cpu_get_clock() or icount_get()).
-Mark them ARM_CP_IO_ENDTB only, so MTTCG vCPUs reading the counter
-do not contend on the BQL.
 
-Suggested-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- target/arm/helper.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 198ffc69aeac..cdac27858feb 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2333,23 +2333,23 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     },
-     /* The counter itself */
-     { .name = "CNTPCT", .cp = 15, .crm = 14, .opc1 = 0,
--      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_pct_access,
-       .readfn = gt_cnt_read,
-     },
-     { .name = "CNTPCT_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 1,
--      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_pct_access, .readfn = gt_cnt_read,
-     },
-     { .name = "CNTVCT", .cp = 15, .crm = 14, .opc1 = 1,
--      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_vct_access,
-       .readfn = gt_virt_cnt_read,
-     },
-     { .name = "CNTVCT_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 2,
--      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_vct_access, .readfn = gt_virt_cnt_read,
-     },
-     /* Comparison value, indicating when the timer goes off */
-@@ -2434,23 +2434,23 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-  */
- static const ARMCPRegInfo gen_timer_ecv_cp_reginfo[] = {
-     { .name = "CNTVCTSS", .cp = 15, .crm = 14, .opc1 = 9,
--      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_vct_access,
-       .readfn = gt_virt_cnt_read,
-     },
-     { .name = "CNTVCTSS_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 6,
--      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_vct_access, .readfn = gt_virt_cnt_read,
-     },
-     { .name = "CNTPCTSS", .cp = 15, .crm = 14, .opc1 = 8,
--      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_pct_access,
-       .readfn = gt_cnt_read,
-     },
-     { .name = "CNTPCTSS_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 5,
--      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .accessfn = gt_pct_access, .readfn = gt_cnt_read,
-     },
- };
-@@ -2512,7 +2512,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     },
-     { .name = "CNTVCT_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 2,
--      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .readfn = gt_virt_cnt_read,
-     },
- };
-@@ -2524,7 +2524,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
- static const ARMCPRegInfo gen_timer_ecv_cp_reginfo[] = {
-     { .name = "CNTVCTSS_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 6,
--      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-+      .access = PL0_R, .type = ARM_CP_NO_RAW | ARM_CP_IO_ENDTB,
-       .readfn = gt_virt_cnt_read,
-     },
- };
--- 
-2.55.0
+> On 26. Nov 2026, at 23:39, Philippe Mathieu-Daud=C3=A9 =
+<philmd@oss.qualcomm.com> wrote:
+>=20
+> ARM_CP_IO both ends the TB at translation and takes the BQL
+> around the read/write hooks. Split it into two flags so a
+> register can end the TB without taking the BQL. ARM_CP_IO is
+> now their union, so existing users are unchanged. Update
+> multi-thread-tcg.rst document. No functional change.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
+> ---
+> docs/devel/multi-thread-tcg.rst |  8 +++++---
+> target/arm/cpregs.h             | 11 ++++++++++-
+> target/arm/helper.c             |  4 ++--
+> target/arm/tcg/op_helper.c      |  8 ++++----
+> target/arm/tcg/translate-a64.c  |  2 +-
+> target/arm/tcg/translate.c      |  2 +-
+> 6 files changed, 23 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/docs/devel/multi-thread-tcg.rst =
+b/docs/devel/multi-thread-tcg.rst
+> index da9a1530c9fa..22d760ce3729 100644
+> --- a/docs/devel/multi-thread-tcg.rst
+> +++ b/docs/devel/multi-thread-tcg.rst
+> @@ -240,9 +240,11 @@ minimise contention.
+> (Current solution)
+>=20
+> MMIO access automatically serialises hardware emulation by way of the
+> -BQL. Currently Arm targets serialise all ARM_CP_IO register accesses
+> -and also defer the reset/startup of vCPUs to the vCPU context by way
+> -of async_run_on_cpu().
+> +BQL. Currently Arm targets serialise all ARM_CP_IO_BQL register
+> +accesses (included in ARM_CP_IO) and also defer the reset/startup of
+> +vCPUs to the vCPU context by way of async_run_on_cpu(). Registers =
+only
+> +marked ARM_CP_IO_ENDTB, such as the generic timer counters, end the =
+TB
+> +but run their accessors without the BQL, so these must be =
+thread-safe.
+>=20
+> Updates to interrupt state are also protected by the BQL as they can
+> often be cross vCPU.
+> diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+> index ce651a4faa60..d9efb9fd6b75 100644
+> --- a/target/arm/cpregs.h
+> +++ b/target/arm/cpregs.h
+> @@ -82,8 +82,10 @@ enum {
+>      * Flag: Register does I/O and therefore its accesses need to be =
+marked
+>      * with translator_io_start() and also end the TB. In particular,
+>      * registers which implement clocks or timers require this.
+> +     * Without ARM_CP_IO_BQL, the read and write hooks run without =
+the BQL
+> +     * and must be thread-safe.
+>      */
+> -    ARM_CP_IO                    =3D 1 << 9,
+> +    ARM_CP_IO_ENDTB              =3D 1 << 9,
+>     /*
+>      * Flag: Register has no underlying state and does not support raw =
+access
+>      * for state saving/loading; it will not be used for either =
+migration or
+> @@ -154,6 +156,13 @@ enum {
+>      * ARM pseudocode function CheckFPMREnabled().
+>      */
+>     ARM_CP_FPMR                  =3D 1 << 23,
+> +    /*
+> +     * Flag: The read and write hooks are called with the BQL held, =
+e.g.
+> +     * because they touch timers, interrupt lines or other cross-vCPU =
+state.
+
+Not including reading the timers if the next patch is any indication=E2=80=
+=A6
+
+> +     */
+> +    ARM_CP_IO_BQL                =3D 1 << 24,
+> +    /* Flags: Register does I/O and its hooks need the BQL */
+> +    ARM_CP_IO                    =3D ARM_CP_IO_ENDTB | ARM_CP_IO_BQL,
+> };
+
+Hi,
+
+Is it worthwhile to add an assert somewhere in case somebody does =
+ARM_CP_IO_BQL
+_without_ ARM_CP_IO_ENDTB by mistake?
+
+Apart from that:
+
+Reviewed-by: Mohamed Mediouni <mohamed.mediouni@linaro.org>
+
+>=20
+> /*
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index f413b15eb747..198ffc69aeac 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -3976,7 +3976,7 @@ static void do_hcr_write(CPUARMState *env, =
+uint64_t value, uint64_t valid_mask)
+>      * virtual interrupts, which are the logical OR of these bits
+>      * and the state of the input lines from the GIC. (This requires
+>      * that we have the BQL, which is done by marking the
+> -     * reginfo structs as ARM_CP_IO.)
+> +     * reginfo structs as ARM_CP_IO_BQL.)
+>      * Note that if a write to HCR pends a VIRQ or VFIQ or VINMI or
+>      * VFNMI, it is never possible for it to be taken immediately
+>      * because VIRQ, VFIQ, VINMI and VFNMI are masked unless running
+> @@ -4179,7 +4179,7 @@ static void hcrx_write(CPUARMState *env, const =
+ARMCPRegInfo *ri,
+>      * virtual NMI, which are the logical OR of these bits
+>      * and the state of the input lines from the GIC. (This requires
+>      * that we have the BQL, which is done by marking the
+> -     * reginfo structs as ARM_CP_IO.)
+> +     * reginfo structs as ARM_CP_IO_BQL.)
+>      * Note that if a write to HCRX pends a VINMI or VFNMI it is never
+>      * possible for it to be taken immediately, because VINMI and
+>      * VFNMI are masked unless running at EL0 or EL1, and HCRX
+> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+> index c2fdad7411db..c070aeee0f32 100644
+> --- a/target/arm/tcg/op_helper.c
+> +++ b/target/arm/tcg/op_helper.c
+> @@ -1244,7 +1244,7 @@ void HELPER(set_cp_reg)(CPUARMState *env, const =
+void *rip, uint32_t value)
+> {
+>     const ARMCPRegInfo *ri =3D rip;
+>=20
+> -    if (ri->type & ARM_CP_IO) {
+> +    if (ri->type & ARM_CP_IO_BQL) {
+>         bql_lock();
+>         ri->writefn(env, ri, value);
+>         bql_unlock();
+> @@ -1258,7 +1258,7 @@ uint32_t HELPER(get_cp_reg)(CPUARMState *env, =
+const void *rip)
+>     const ARMCPRegInfo *ri =3D rip;
+>     uint32_t res;
+>=20
+> -    if (ri->type & ARM_CP_IO) {
+> +    if (ri->type & ARM_CP_IO_BQL) {
+>         bql_lock();
+>         res =3D ri->readfn(env, ri);
+>         bql_unlock();
+> @@ -1273,7 +1273,7 @@ void HELPER(set_cp_reg64)(CPUARMState *env, =
+const void *rip, uint64_t value)
+> {
+>     const ARMCPRegInfo *ri =3D rip;
+>=20
+> -    if (ri->type & ARM_CP_IO) {
+> +    if (ri->type & ARM_CP_IO_BQL) {
+>         bql_lock();
+>         ri->writefn(env, ri, value);
+>         bql_unlock();
+> @@ -1287,7 +1287,7 @@ uint64_t HELPER(get_cp_reg64)(CPUARMState *env, =
+const void *rip)
+>     const ARMCPRegInfo *ri =3D rip;
+>     uint64_t res;
+>=20
+> -    if (ri->type & ARM_CP_IO) {
+> +    if (ri->type & ARM_CP_IO_BQL) {
+>         bql_lock();
+>         res =3D ri->readfn(env, ri);
+>         bql_unlock();
+> diff --git a/target/arm/tcg/translate-a64.c =
+b/target/arm/tcg/translate-a64.c
+> index 14888202bada..7006f2c8ae8c 100644
+> --- a/target/arm/tcg/translate-a64.c
+> +++ b/target/arm/tcg/translate-a64.c
+> @@ -3236,7 +3236,7 @@ static void handle_sys(DisasContext *s, bool =
+isread,
+>         g_assert_not_reached();
+>     }
+>=20
+> -    if (ri->type & ARM_CP_IO) {
+> +    if (ri->type & ARM_CP_IO_ENDTB) {
+>         /* I/O operations must end the TB here (whether read or write) =
+*/
+>         need_exit_tb =3D translator_io_start(&s->base);
+>     }
+> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+> index 9d80294c9bb2..92762a813b5f 100644
+> --- a/target/arm/tcg/translate.c
+> +++ b/target/arm/tcg/translate.c
+> @@ -1893,7 +1893,7 @@ static void do_coproc_insn(DisasContext *s, int =
+cpnum, int is64,
+>         g_assert_not_reached();
+>     }
+>=20
+> -    if (ri->type & ARM_CP_IO) {
+> +    if (ri->type & ARM_CP_IO_ENDTB) {
+>         /* I/O operations must end the TB here (whether read or write) =
+*/
+>         need_exit_tb =3D translator_io_start(&s->base);
+>     }
+> --=20
+> 2.55.0
+>=20
+>=20
 
 

@@ -1,95 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58CC5606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:38:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B197606A321
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:38:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=L/7z1utR;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=gGbYltEZ
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=a5DMCXqW;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=XW7lINDt
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWj1e-0004na-HU; Thu, 26 Nov 2026 18:37:14 -0500
+	id 1xWj2w-0008An-Qv; Thu, 26 Nov 2026 18:38:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj1c-0004ll-CA
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:37:12 -0500
+ id 1xWj2q-0007Sy-CJ
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:28 -0500
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj1a-0006Ng-RS
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:37:12 -0500
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ id 1xWj2n-00015R-Ui
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:28 -0500
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AQJwEPS3990401
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:37:10 GMT
+ 6AQJwdP2162424
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:15 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- om4N5O1FLJz7xduBeJcXUAQPPUkAoSRPIsSLAiB1kzI=; b=L/7z1utRFFuVk2kg
- txpjkQwhXTicxB2VMvI1QSJppZ5C319iZDmIy+VrQqyD7adJzTW7z8sXzF+g55/t
- Ri5Rf2wtG8sxqH1jkZGo2T/R8WJ0fitckDOpdOSEfgjZGoVwQlTi20zIUz0ITZcU
- SH4CvbYknhsE+/MVvWzKS87SwBTmdM67j/7zf/Aj3mHDU2SJCkudpGhkxda9yMZA
- VU/J+zqXx+SqGKiX1WcR1CZMi3wSGcBrk7SbAv05mLqEHlk1fSPVc1KYOf93xqps
- /ZBdZXmnpik77nad1GuW817+IieOe5J54R3clyO0FiPPBPbjIG4NYQ3Xo6r83L1K
- e4S84g==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6ak042rf-1
+ g5XI5jXSYtDdcGSE+cnkE29fdLOtqCwMQF6Z8XMfBgg=; b=a5DMCXqWg8zC1gt0
+ v1lWwS6KriA7IhUo3H4KQUDm2xGPAmeLA6qmLe2wmlXdut093AxPhYRsLp7S4+ZE
+ 9Hxq3KemKiSfA70AdJoJ+EvOZt0ZQmCMGAglp27cZmY6JxWWU7imWOSKcPCvsvTp
+ Kh1e/LPDXgretHLbDpJ2x3JpJuanFiyLjkQ4/a9VKJl0rC3l1j8MxAj6ZNnQfRcd
+ pndCeqex3erhEntx9tYXa2qi8aHqpuHfWZu9Em9tBs/LK6mtmS9jH4ImSYXMHPi6
+ 1/Xul/lX6iRhSsZ9LQw11k/KR6OMxrOREea7Mo6+VcbPNijVNtm0r7vCD8DIJ1Nv
+ JhxEBw==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6h7garh7-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:37:09 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-947a607ec40so748362485a.3
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:37:09 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:14 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-93f5844e383so1109387885a.1
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:38:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795736229; x=1796341029; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1795736294; x=1796341094; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=om4N5O1FLJz7xduBeJcXUAQPPUkAoSRPIsSLAiB1kzI=;
- b=gGbYltEZIA2D7m/aUmPl8nfjkU3RHn8dqxU/naDDmz7g89Q1kj8tpp1rc5oA/C0xU7
- t07M+A1x9IX6uVWfQg51OHTSNesdTec5HIgXen7+xKa8fTPYTMV+2uCuGwQXGWnrCvkc
- QHdoMdcubYPVhYe6sbzm0Et4iFeF8FkZnh3y5+JAdxilPirkoNkyCoeywNPYnY5zIVRf
- N8gH6DSch6tNhnjIWNKA4SqitnhYYTbysnVz6GFxSp05BOKY4dJhe0erbLZq+622V27L
- 5Rr+ytWT+5J/SUH2cCbq7WV665J0sy6lBPfImUeQN5L4vORGjssy6PxBzP5Vu07+omGf
- pXWg==
+ bh=g5XI5jXSYtDdcGSE+cnkE29fdLOtqCwMQF6Z8XMfBgg=;
+ b=XW7lINDt1CFZgCylfxWE58aa7n7etYpGXmiEb0SLcn+ncqAKJ06BJd1A/enG3SqNcY
+ IMbqoGyx1zwqMImD43DAdmIjnvwWboYpAmC/yuVFRP8wti91puGSY86lZy+kauO/z+MI
+ 7L7SltcDEkq4pHAofxoEtJ4y1+y78YjeIIeqljklUz9LLmUhvZ1KhJg+rwZFpidD5Cic
+ kgXgp+s941pTL80j/c6hzZDyEIKlb5UUT0ruq47qmRcUJtvZQMhdUkPRvURS1eod2EEF
+ QmVhcZn44LZJUp7tIKRRDnK9NUI2HXMl3esOjklLztMeMyh36FNjbXBqGEt0rUJxm33J
+ mn2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795736229; x=1796341029;
+ d=1e100.net; s=20260707; t=1795736294; x=1796341094;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=om4N5O1FLJz7xduBeJcXUAQPPUkAoSRPIsSLAiB1kzI=;
- b=CavA+W007gnAhSRTwuyfA/SJdhXI4jMjDUDO3NMNCZmPD3QKVhwEnM8A97JDihHhKL
- bPgjpGwN7BymGPNazA3y3Bi7eT4if0RNSUGBgxm/ar4wJ8si9h2DKfr/VIg6FWrhUlzP
- xbW57UsqaI/KHZeM/XcisxiupVW8Nr/UWm4bqZ4OcygVWb6xFlxI0b49NjaFcpwpCm2H
- NkQ6Og/HPQ7txxxIT0MYhxS+eOEFeQD0GhXnrOQgIC0dxKmL1z+tBDHVopIOE6fs0Et9
- 7U2XS2FD1n3MP8ys+ziFM+i1U9s5wyV8ciCUKYPJvZpHtqjZfLBSGo2b37K1Pw1/0Da8
- FoAg==
+ bh=g5XI5jXSYtDdcGSE+cnkE29fdLOtqCwMQF6Z8XMfBgg=;
+ b=VJNfMkpBfZJHc5mZ95uK2TovydSiBXyWd1hvWFRG9EpMANVuLVY2Ekfxrb0cdqVVEQ
+ IjxKguQsfVY5SVdw2actXloNQGJm+5mMuKCP+G85t3kjV/C7C7DHq8nMrpVlSbvvX7fG
+ iu9+1piIoyovfyhT/GEFRZ5i9xFSrMsGzecKeDz5Dj8SqoUjbVHca6c2+UdzfpiRuUhr
+ lotT8m7sYdhi0l0WaWoy8qgX5RJRRLn2ZtiykZAE3kD3Ccy9A6noW0tWvmOQb2yFOqdm
+ OH5hEfZzOSyWogW0VIjA5iRUsQ22OfAmrCLP1diOlWQhwMis/l+odQr6NecnBm0vpabE
+ Ntmw==
 X-Forwarded-Encrypted: i=1;
- AL+hErFgrVpWI/s34uxciE2MLWs90r0AtDU1j7uCZRYCUrZnRFWOTcS5AB24Pqj/m36ZQDxdbSTmfLk1aQ==@nongnu.org
-X-Gm-Message-State: APuU4Z90SxygxQ1oxZ07An0k1o0o2jPfVowvehE9l0PBx3+VZetsFd6c
- eMCKOMfs1SOwE8TB0ffVnKS22cExkf/I8IeV3F+8PUDkHtBjLTZuBXXm9VKMjlGYkCS+LpatyCP
- dUMm+3lDi1tqdofpXlG+sJfQqNJsuQHKSc6QqGDtGf9Ent53QujP2nc0=
-X-Gm-Gg: AZFdTZcWnt0SqMIccufcjKtH28MpZEenDUGxhooPMyiZg5Ii90rKU4aULC4v9Qc6vWQ
- tZ9WPDI2yG6Om6Xl4IB7jFTEotWrX12xk0N9N5Yk+/zx6NZc5m/kG9qg8lGwXEPBQk969BI0WKi
- 1nOVG9RpbFYM4CLtbTnq6slOERFn4NAqppKbLZ7QKmU1VD05CCRUuZnfZcye1mFFKFuoQtU/MOY
- zi7urEyuboOCTFCD5h+ulIQWq0/ikLcPccSlFvcJMJWjoyzehfrV6OUfFEZqpmkT1FcoFNqaeTa
- m8qD3MVvrRiIsP1pHheA2Ip9t/ReLUwca5wgnsBh3E6A1bS3Isw/P2NDytlqY6GTQzepmZDSC9y
- kYo2tNnX1b7rCe4RtAooGoNTyYe7i18u4/kFYL1Edqi5EIjyrLHYem0QocO/rnrdYR7Cey8fzhx
- TpjE1wJMRdBUw9UA==
-X-Received: by 2002:a05:620a:2a02:b0:93e:c12c:fbd0 with SMTP id
- af79cd13be357-949bac7c677mr3979822985a.76.1795736229086; 
- Thu, 26 Nov 2026 15:37:09 -0800 (PST)
-X-Received: by 2002:a05:620a:2a02:b0:93e:c12c:fbd0 with SMTP id
- af79cd13be357-949bac7c677mr3979820085a.76.1795736228598; 
- Thu, 26 Nov 2026 15:37:08 -0800 (PST)
+ AL+hErEze7rp/bdAZ3wQWWCtUfTO852VtXtuMnfiq4Zy4JCkQFFl26RFYM6pGfcKsBxojEEzwV8iuAl4Dw==@nongnu.org
+X-Gm-Message-State: APuU4Z85Y15jvAiMfMGMmU7nF9/LDmAEopmNUtWJYnCMYW0hAyrqT1Cn
+ GOfgl5kA+bhE+rsRFnjQuVNBSWMzH4yOt+/DN7tFdPULgYeuuRc/VM3/e9ho9A5bLl4DNyrLRla
+ JzeGEe3srjnLX2iDp0iWxukCeMCeQOyiQaq9gjhnvFd66u0KgMG3x3EE=
+X-Gm-Gg: AZFdTZcd6WDS9WMqui8Wg/QEIyNYo9gZfkBXlwu0sZVBieDWyjm6rml4gaUUTfXw67f
+ XZaRkIaKZmXSe+AnXOnk23GbYz0Abd1FP/wdXL+hsCnqxAJmWREU8xiQehLyustmh5svqgFuRp/
+ bpfPZSFjXHE5XsF/ZSF3Cs/THEAly0wrYMxlI3ARCQRSdKQxrxaN14y15NJpnLlWduc7A9LY+Uw
+ YePnI/eOAjLbQFW1yfoL4o18Bw52Bh8s/y6+UQACmToyHG1BBFHZq+Bpqy4UFD/fNoateyWCxsF
+ +1JcvEO8EeYDmzM/rhbcrT9oesr3efQp4oU31iNIFXlTRGLhG3XBRJs5D7p0zeYld4b0AiyimtJ
+ qkxzvnrKvNQmQCRjixX+1gDRoPVTabNmGrrTEUyCgYEHCcXuZpzRp3mxG/X9ELk8JYYX6h5x5Z7
+ hJJwUNF7qhjM9kdg==
+X-Received: by 2002:a05:620a:450e:b0:949:75de:b222 with SMTP id
+ af79cd13be357-949ba965bdamr4432341885a.26.1795736294299; 
+ Thu, 26 Nov 2026 15:38:14 -0800 (PST)
+X-Received: by 2002:a05:620a:450e:b0:949:75de:b222 with SMTP id
+ af79cd13be357-949ba965bdamr4432337985a.26.1795736293830; 
+ Thu, 26 Nov 2026 15:38:13 -0800 (PST)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb884b39b6sm592173735e9.12.2026.11.26.15.37.06
+ 5b1f17b1804b1-4bb8533579csm553612915e9.2.2026.11.26.15.38.12
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 26 Nov 2026 15:37:07 -0800 (PST)
+ Thu, 26 Nov 2026 15:38:13 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
@@ -97,10 +97,15 @@ Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  Anton Johansson <anjo@rev.ng>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Helge Deller <deller@gmx.de>
-Subject: [PATCH 08/24] target/hppa: Use 64-bit TB flags
-Date: Fri, 27 Nov 2026 00:35:46 +0100
-Message-ID: <20261126233604.67722-9-philmd@oss.qualcomm.com>
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu@processmission.com>
+Subject: [PATCH 16/24] target/riscv: Use 64-bit TB flags
+Date: Fri, 27 Nov 2026 00:35:54 +0100
+Message-ID: <20261126233604.67722-17-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261126233604.67722-1-philmd@oss.qualcomm.com>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
@@ -108,31 +113,31 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=T4oZ3PKQ c=1 sm=1 tr=0 ts=6b08c2a5 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Proofpoint-ORIG-GUID: Qb-U4SjcweEGJidt302-EctU5n7pDPxf
+X-Proofpoint-GUID: Qb-U4SjcweEGJidt302-EctU5n7pDPxf
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfXxRz8OKoeYtst
+ Yf4CFSf7oodhxhHTod88Wl4z8nlEr3ZTcMu8IToKfr2H0Lyj8yd0k01gPRgNmRqc6Qj+OPfAIv1
+ 3xu8QxLvXM4tta2LILaHesWuOjR6Wk5e0+Pj1+rt93sloaeOlpuzGfpiz1yMpgwXmvxsXP4hn2I
+ HDS6Q4BHZE6XWFLL3In+IeYrhgr/jaTxy7oC6FPaKkRWg/xsERQrglP65X5eWrqbPgwAu9gYvkD
+ 0yijfX4fU9Yorqj+9iAOMEbk1DHSY8kN87Ne4uZrywgLvcv0QP5U5fGKvaq3lNZ3sjMfDW+Sm8M
+ PqzX41LrGhVf1SPczPCfyE9WdHkCTjP9rmHjghf0e0OfSmj7x5jeT7DVc28IZMq6el0mOil2XjM
+ THaIbz5zbZRGwGkf1p3d/M3m6OYGoAgOHkvc+RUbG/QxvBjhJlqPC4JaxvPpsKr0QpiEIILRti/
+ 1Tb6122hyjAe4c2koJA==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX+4G5wfQ8gdO2
+ gjGSI7Xby6C8J6LUE3n+Ut6cGhh94ZEJNtOkhKPE/SxGx9s+BT0nUaqwKX4LX8Eg1qe6z2u/CAa
+ r+6a2T1HNlo0YVZSqZt8gQTDsSspU+M=
+X-Authority-Analysis: v=2.4 cv=L4GI0OT8 c=1 sm=1 tr=0 ts=6b08c2e6 cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=EUspDBNiAAAA:8 a=bB0c2MIPfoLSnOdUAGAA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=IoWCM6iH3mJn3m4BftBB:22
-X-Proofpoint-ORIG-GUID: 0hP0Ay5O9xcgQ-yIKmuWfbhwRw4_KeIc
-X-Proofpoint-GUID: 0hP0Ay5O9xcgQ-yIKmuWfbhwRw4_KeIc
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfXxNsJZ1MWdvRc
- CKJQap12opyuxoXjI0Q66yaRUjMtQKkZaGNuxInaAyHR1mllXGHJj6JFVkLuPGCuDccHTYMtbj6
- TOS8gdKQcwNYpqoF9hi2UqkU539z8zRQCgA8QyxwbJYkJVqJlzHhY9G5XmflqEWZL2EKjnpYKAG
- xN6cZUFRCShsnPd2fAKDUVW41Jky7uWlt7YI5SltO/SBZCr2jpegyU21cllW8WsstS6jQt8cJXQ
- JQCsfkKWGOg2asyLD/Qf0jNIzVk6SJfwbZG9n1R4mdYNLjFgl7R/V9Cie7wF0UReP2Yfh1Irm/C
- +dVbecMWkCD1O5aiepTOgfMhDC7tuuhyFvgssnHiRmtGvwVsp5zwScA7lfNqnJNYntpPKaFPA/2
- SzvZR+dgOMU2Chlrc0xRjkjQV6k0g2Haf18sG9S/T69FjAYd1mHL2zw7gIADgH+IxrvAh41c6kd
- lO65moLdVQMc2hQ0ReA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX9HV5K0vHyEix
- GBqJOPI7+Ism0olBIWAwCCtXgNbVHF8rprfcRHloYn6uDyh72Ya3Ol3F5BNGvFUmSMCUx4p87Hq
- sGuZkcnfa8Hd1jg4wcjVJeW+S62SDpg=
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=EUspDBNiAAAA:8 a=LY2AvKqd-hjfOO1We7EA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=PEH46H7Ffwr30OY-TuGO:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-26_05,2026-11-26_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 priorityscore=1501 spamscore=0 suspectscore=0 phishscore=0
- lowpriorityscore=0 bulkscore=0 malwarescore=0 impostorscore=0 adultscore=0
+ adultscore=0 bulkscore=0 suspectscore=0 malwarescore=0 lowpriorityscore=0
+ clxscore=1015 spamscore=0 impostorscore=0 phishscore=0 priorityscore=1501
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611260093
 Received-SPF: pass client-ip=205.220.180.131;
@@ -167,36 +172,196 @@ TranslationBlock::flags and TCGTBCPUState::flags are now
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- target/hppa/cpu.c       | 2 +-
- target/hppa/translate.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ target/riscv/tcg/tcg-cpu.c   | 46 ++++++++++++++++++------------------
+ target/riscv/tcg/translate.c | 42 ++++++++++++++++----------------
+ 2 files changed, 44 insertions(+), 44 deletions(-)
 
-diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-index 83104ae0c70f..2e30451f85ad 100644
---- a/target/hppa/cpu.c
-+++ b/target/hppa/cpu.c
-@@ -56,7 +56,7 @@ static vaddr hppa_cpu_get_pc(CPUState *cs)
- static TCGTBCPUState hppa_get_tb_cpu_state(CPUState *cs)
- {
-     CPUHPPAState *env = cpu_env(cs);
+diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
+index 5834ec1524f1..362471d7c8e4 100644
+--- a/target/riscv/tcg/tcg-cpu.c
++++ b/target/riscv/tcg/tcg-cpu.c
+@@ -104,7 +104,7 @@ static TCGTBCPUState riscv_get_tb_cpu_state(CPUState *cs)
+     CPURISCVState *env = cpu_env(cs);
+     RISCVCPU *cpu = env_archcpu(env);
+     RISCVExtStatus fs, vs;
 -    uint32_t flags = 0;
 +    uint64_t flags = 0;
-     uint64_t cs_base = 0;
-     vaddr pc;
+     uint64_t ext_flags = 0;
+     bool pm_signext = riscv_cpu_virt_mem_enabled(env, false);
  
-diff --git a/target/hppa/translate.c b/target/hppa/translate.c
-index ab3505f9c973..16bd0808bb40 100644
---- a/target/hppa/translate.c
-+++ b/target/hppa/translate.c
-@@ -82,7 +82,7 @@ typedef struct DisasContext {
-     TCGv_i64 zero;
+@@ -126,19 +126,19 @@ static TCGTBCPUState riscv_get_tb_cpu_state(CPUState *cs)
+         uint32_t maxsz = vlmax << vsew;
+         bool vl_eq_vlmax = (env->vstart == 0) && (vlmax == env->vl) &&
+                            (maxsz >= 8);
+-        flags = FIELD_DP32(flags, TB_FLAGS, VILL, env->vill);
+-        flags = FIELD_DP32(flags, TB_FLAGS, SEW, vsew);
+-        flags = FIELD_DP32(flags, TB_FLAGS, LMUL,
++        flags = FIELD_DP64(flags, TB_FLAGS, VILL, env->vill);
++        flags = FIELD_DP64(flags, TB_FLAGS, SEW, vsew);
++        flags = FIELD_DP64(flags, TB_FLAGS, LMUL,
+                            FIELD_EX64(env->vtype, VTYPE, VLMUL));
+-        flags = FIELD_DP32(flags, TB_FLAGS, VL_EQ_VLMAX, vl_eq_vlmax);
+-        flags = FIELD_DP32(flags, TB_FLAGS, VTA,
++        flags = FIELD_DP64(flags, TB_FLAGS, VL_EQ_VLMAX, vl_eq_vlmax);
++        flags = FIELD_DP64(flags, TB_FLAGS, VTA,
+                            FIELD_EX64(env->vtype, VTYPE, VTA));
+-        flags = FIELD_DP32(flags, TB_FLAGS, VMA,
++        flags = FIELD_DP64(flags, TB_FLAGS, VMA,
+                            FIELD_EX64(env->vtype, VTYPE, VMA));
+-        flags = FIELD_DP32(flags, TB_FLAGS, VSTART_EQ_ZERO, env->vstart == 0);
++        flags = FIELD_DP64(flags, TB_FLAGS, VSTART_EQ_ZERO, env->vstart == 0);
+         ext_flags = FIELD_DP64(ext_flags, EXT_TB_FLAGS, ALTFMT, altfmt);
+     } else {
+-        flags = FIELD_DP32(flags, TB_FLAGS, VILL, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, VILL, 1);
+     }
  
-     uint32_t insn;
--    uint32_t tb_flags;
-+    uint64_t tb_flags;
-     int mmu_idx;
-     int privilege;
-     uint32_t psw_xb;
+     if (cpu_get_fcfien(env)) {
+@@ -147,26 +147,26 @@ static TCGTBCPUState riscv_get_tb_cpu_state(CPUState *cs)
+          * the start of the block is tracked via env->elp. env->elp
+          * is turned on during jalr translation.
+          */
+-        flags = FIELD_DP32(flags, TB_FLAGS, FCFI_LP_EXPECTED, env->elp);
+-        flags = FIELD_DP32(flags, TB_FLAGS, FCFI_ENABLED, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, FCFI_LP_EXPECTED, env->elp);
++        flags = FIELD_DP64(flags, TB_FLAGS, FCFI_ENABLED, 1);
+     }
+ 
+     if (cpu_get_bcfien(env)) {
+-        flags = FIELD_DP32(flags, TB_FLAGS, BCFI_ENABLED, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, BCFI_ENABLED, 1);
+     }
+ 
+ #ifdef CONFIG_USER_ONLY
+     fs = EXT_STATUS_DIRTY;
+     vs = EXT_STATUS_DIRTY;
+ #else
+-    flags = FIELD_DP32(flags, TB_FLAGS, PRIV, env->priv);
++    flags = FIELD_DP64(flags, TB_FLAGS, PRIV, env->priv);
+ 
+     flags |= riscv_env_mmu_index(env, 0);
+     fs = get_field(env->mstatus, MSTATUS_FS);
+     vs = get_field(env->mstatus, MSTATUS_VS);
+ 
+     if (env->virt_enabled) {
+-        flags = FIELD_DP32(flags, TB_FLAGS, VIRT_ENABLED, 1);
++        flags = FIELD_DP64(flags, TB_FLAGS, VIRT_ENABLED, 1);
+         /*
+          * Merge DISABLED and !DIRTY states using MIN.
+          * We will set both fields when dirtying.
+@@ -183,16 +183,16 @@ static TCGTBCPUState riscv_get_tb_cpu_state(CPUState *cs)
+ 
+     if ((cpu->cfg.debug || cpu->cfg.ext_sdtrig)
+         && !icount_enabled()) {
+-        flags = FIELD_DP32(flags, TB_FLAGS, ITRIGGER, env->itrigger_enabled);
++        flags = FIELD_DP64(flags, TB_FLAGS, ITRIGGER, env->itrigger_enabled);
+     }
+ #endif
+ 
+-    flags = FIELD_DP32(flags, TB_FLAGS, FS, fs);
+-    flags = FIELD_DP32(flags, TB_FLAGS, VS, vs);
+-    flags = FIELD_DP32(flags, TB_FLAGS, XL, env->xl);
+-    flags = FIELD_DP32(flags, TB_FLAGS, AXL, cpu_address_xl(env));
+-    flags = FIELD_DP32(flags, TB_FLAGS, PM_PMM, riscv_pm_get_pmm(env));
+-    flags = FIELD_DP32(flags, TB_FLAGS, PM_SIGNEXTEND, pm_signext);
++    flags = FIELD_DP64(flags, TB_FLAGS, FS, fs);
++    flags = FIELD_DP64(flags, TB_FLAGS, VS, vs);
++    flags = FIELD_DP64(flags, TB_FLAGS, XL, env->xl);
++    flags = FIELD_DP64(flags, TB_FLAGS, AXL, cpu_address_xl(env));
++    flags = FIELD_DP64(flags, TB_FLAGS, PM_PMM, riscv_pm_get_pmm(env));
++    flags = FIELD_DP64(flags, TB_FLAGS, PM_SIGNEXTEND, pm_signext);
+ 
+     ext_flags = FIELD_DP64(ext_flags, EXT_TB_FLAGS, MISA_EXT, env->misa_ext);
+     ext_flags = FIELD_DP64(ext_flags, EXT_TB_FLAGS, BIG_ENDIAN,
+@@ -216,7 +216,7 @@ static void riscv_cpu_synchronize_from_tb(CPUState *cs,
+     if (!(tb_cflags(tb) & CF_PCREL)) {
+         RISCVCPU *cpu = RISCV_CPU(cs);
+         CPURISCVState *env = &cpu->env;
+-        RISCVMXL xl = FIELD_EX32(tb->flags, TB_FLAGS, XL);
++        RISCVMXL xl = FIELD_EX64(tb->flags, TB_FLAGS, XL);
+ 
+         tcg_debug_assert(!tcg_cflags_has(cs, CF_PCREL));
+ 
+@@ -234,7 +234,7 @@ static void riscv_restore_state_to_opc(CPUState *cs,
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+-    RISCVMXL xl = FIELD_EX32(tb->flags, TB_FLAGS, XL);
++    RISCVMXL xl = FIELD_EX64(tb->flags, TB_FLAGS, XL);
+     target_ulong pc;
+ 
+     if (tb_cflags(tb) & CF_PCREL) {
+diff --git a/target/riscv/tcg/translate.c b/target/riscv/tcg/translate.c
+index 79b0f444efbd..255433593dd9 100644
+--- a/target/riscv/tcg/translate.c
++++ b/target/riscv/tcg/translate.c
+@@ -1323,45 +1323,45 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+     CPURISCVState *env = cpu_env(cs);
+     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
+     RISCVCPU *cpu = RISCV_CPU(cs);
+-    uint32_t tb_flags = ctx->base.tb->flags;
++    uint64_t tb_flags = ctx->base.tb->flags;
+     uint64_t ext_tb_flags = ctx->base.tb->cs_base;
+ 
+     ctx->pc_save = ctx->base.pc_first;
+-    ctx->priv = FIELD_EX32(tb_flags, TB_FLAGS, PRIV);
+-    ctx->mem_idx = FIELD_EX32(tb_flags, TB_FLAGS, MEM_IDX);
+-    ctx->mstatus_fs = FIELD_EX32(tb_flags, TB_FLAGS, FS);
+-    ctx->mstatus_vs = FIELD_EX32(tb_flags, TB_FLAGS, VS);
++    ctx->priv = FIELD_EX64(tb_flags, TB_FLAGS, PRIV);
++    ctx->mem_idx = FIELD_EX64(tb_flags, TB_FLAGS, MEM_IDX);
++    ctx->mstatus_fs = FIELD_EX64(tb_flags, TB_FLAGS, FS);
++    ctx->mstatus_vs = FIELD_EX64(tb_flags, TB_FLAGS, VS);
+     ctx->priv_ver = env->priv_ver;
+-    ctx->virt_enabled = FIELD_EX32(tb_flags, TB_FLAGS, VIRT_ENABLED);
++    ctx->virt_enabled = FIELD_EX64(tb_flags, TB_FLAGS, VIRT_ENABLED);
+     ctx->misa_ext = env->misa_ext;
+     ctx->frm = -1;  /* unknown rounding mode */
+     ctx->cfg_ptr = &(cpu->cfg);
+-    ctx->vill = FIELD_EX32(tb_flags, TB_FLAGS, VILL);
+-    ctx->sew = FIELD_EX32(tb_flags, TB_FLAGS, SEW);
+-    ctx->lmul = sextract32(FIELD_EX32(tb_flags, TB_FLAGS, LMUL), 0, 3);
+-    ctx->vta = FIELD_EX32(tb_flags, TB_FLAGS, VTA) && cpu->cfg.rvv_ta_all_1s;
+-    ctx->vma = FIELD_EX32(tb_flags, TB_FLAGS, VMA) && cpu->cfg.rvv_ma_all_1s;
++    ctx->vill = FIELD_EX64(tb_flags, TB_FLAGS, VILL);
++    ctx->sew = FIELD_EX64(tb_flags, TB_FLAGS, SEW);
++    ctx->lmul = sextract32(FIELD_EX64(tb_flags, TB_FLAGS, LMUL), 0, 3);
++    ctx->vta = FIELD_EX64(tb_flags, TB_FLAGS, VTA) && cpu->cfg.rvv_ta_all_1s;
++    ctx->vma = FIELD_EX64(tb_flags, TB_FLAGS, VMA) && cpu->cfg.rvv_ma_all_1s;
+     ctx->cfg_vta_all_1s = cpu->cfg.rvv_ta_all_1s;
+-    ctx->vstart_eq_zero = FIELD_EX32(tb_flags, TB_FLAGS, VSTART_EQ_ZERO);
+-    ctx->vl_eq_vlmax = FIELD_EX32(tb_flags, TB_FLAGS, VL_EQ_VLMAX);
++    ctx->vstart_eq_zero = FIELD_EX64(tb_flags, TB_FLAGS, VSTART_EQ_ZERO);
++    ctx->vl_eq_vlmax = FIELD_EX64(tb_flags, TB_FLAGS, VL_EQ_VLMAX);
+     ctx->altfmt = FIELD_EX64(ext_tb_flags, EXT_TB_FLAGS, ALTFMT);
+     ctx->misa_mxl_max = mcc->def->misa_mxl_max;
+-    ctx->xl = FIELD_EX32(tb_flags, TB_FLAGS, XL);
+-    ctx->address_xl = FIELD_EX32(tb_flags, TB_FLAGS, AXL);
++    ctx->xl = FIELD_EX64(tb_flags, TB_FLAGS, XL);
++    ctx->address_xl = FIELD_EX64(tb_flags, TB_FLAGS, AXL);
+     ctx->cs = cs;
+     if (get_xl(ctx) == MXL_RV32) {
+         ctx->addr_xl = 32;
+         ctx->addr_signed = false;
+     } else {
+-        int pm_pmm = FIELD_EX32(tb_flags, TB_FLAGS, PM_PMM);
++        int pm_pmm = FIELD_EX64(tb_flags, TB_FLAGS, PM_PMM);
+         ctx->addr_xl = 64 - riscv_pm_get_pmlen(pm_pmm);
+-        ctx->addr_signed = FIELD_EX32(tb_flags, TB_FLAGS, PM_SIGNEXTEND);
++        ctx->addr_signed = FIELD_EX64(tb_flags, TB_FLAGS, PM_SIGNEXTEND);
+     }
+     ctx->ztso = cpu->cfg.ext_ztso;
+-    ctx->itrigger = FIELD_EX32(tb_flags, TB_FLAGS, ITRIGGER);
+-    ctx->bcfi_enabled = FIELD_EX32(tb_flags, TB_FLAGS, BCFI_ENABLED);
+-    ctx->fcfi_lp_expected = FIELD_EX32(tb_flags, TB_FLAGS, FCFI_LP_EXPECTED);
+-    ctx->fcfi_enabled = FIELD_EX32(tb_flags, TB_FLAGS, FCFI_ENABLED);
++    ctx->itrigger = FIELD_EX64(tb_flags, TB_FLAGS, ITRIGGER);
++    ctx->bcfi_enabled = FIELD_EX64(tb_flags, TB_FLAGS, BCFI_ENABLED);
++    ctx->fcfi_lp_expected = FIELD_EX64(tb_flags, TB_FLAGS, FCFI_LP_EXPECTED);
++    ctx->fcfi_enabled = FIELD_EX64(tb_flags, TB_FLAGS, FCFI_ENABLED);
+     ctx->sdext_step = FIELD_EX64(ext_tb_flags, EXT_TB_FLAGS, SDEXT_STEP);
+     ctx->zero = tcg_constant_tl(0);
+     ctx->virt_inst_excp = false;
 -- 
 2.55.0
 

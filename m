@@ -1,74 +1,74 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 55AA6606A323
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 14:36:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 64091606A326
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 14:37:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=IweyB/vh
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=P+rOlg9O
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWaaG-0007hf-Kb; Thu, 26 Nov 2026 09:36:24 -0500
+	id 1xWaac-00082q-9x; Thu, 26 Nov 2026 09:36:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xWaa8-0007bH-Mk
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:36:16 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1xWaaE-0007fs-W2
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:36:24 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xWaa3-0001fF-UZ
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:36:16 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-4a358881793so3733992f8f.0
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 06:36:11 -0800 (PST)
+ id 1xWaa8-0001i7-Jk
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 09:36:22 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4a9a8d6cea8so91497295e9.1
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 06:36:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795703770; x=1796308570; darn=nongnu.org;
+ d=linaro.org; s=google; t=1795703775; x=1796308575; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=s5FIW1S8JienHPB43I581nzquH/YZHCRU8EYQF6o6UU=;
- b=IweyB/vhZ6Nti90YczIlOGwj6fs9tM375maT42/LSC4ZcIFo2oxGF/CYqknGQZLAPG
- J6jHJdU3a/51sm5mN/9QrJ7N+5HOnofQNjfJi5HNbWmFnFBeqEbRbdpI/tQAkk8kqVNO
- etmVSvml+hM+MnQUyPFXwyh3fvgMrk8436FJZdG4Ad02+iWJy6NjLmLF7DJ871Ozwkaw
- 4pUZtn7RFrRZTUYlQk5v0icjvXf7/XAXfThNHLstSSJg4tkkATgf3ZLyjrpieaK/7dlc
- TdpRF/ffC4lFp+BW6Tb6z6UyxoWJ6pr3Twz9Gv/MMu0dC0nzkj2zETltokLeSqHD7jTG
- 4nzA==
+ bh=eEscgXF99ld8shnMdvdJBGyWeRugvNpmyFH04KfioNQ=;
+ b=P+rOlg9OVIR9AWiVYh9yr7++yb1hvzt0WhfLRazJOz4cu4P669C62PPap1iF3mwgJR
+ iR9DPGy4hl3pvqT6p4mMT5nB/twDcy+Ll8INXuLejA+ewdGpCf9PciUoRhdJhL5/M0hY
+ CeV83E/WSpC6qNKHpsI8rMvLLH2OLX89lEr7gZQ5HBf+p28Cjn1S1qCkMNtQtJdvhRkX
+ ADtjp3F4/vRXcQNVnVWb8EH+uhkvvlBaTsqmGA1UERnHrvcLOvuFeHobOhhyebF42pdN
+ SYjJubY0i6v3kkXwZiL5jyT8w+FvcTXEF0nY5dag2b2krGFGAtn8Xrxe9yVJy0T1p0jd
+ /VqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795703770; x=1796308570;
+ d=1e100.net; s=20260707; t=1795703775; x=1796308575;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=s5FIW1S8JienHPB43I581nzquH/YZHCRU8EYQF6o6UU=;
- b=hHxeP4mJz8V58fZUTl8Fibscu+hoyZ/05wvChBeqo+mwHX8vtk/fC7pdZg2QK3JlWj
- aD7f2LdFzfSqjquy3KqC9Qp4AETSFm0HawG+qCZJkHk88lin2BwgI8kgamQFn7Q/dFtR
- jJsCn5D44yu002ZjcNoCWIm4F9vPnrrg6VISzhXDMx0f43GlP6EGNKU53b35I8O3U9pR
- 7LgYiuF9yf3OkRpgcMgzX/O2Ya7odQ6lne/X7UUW34lLDwmmBHmodlH4/JfM7yDVDsFu
- w+FoCOn0bOPS81WwqNVSkLuj2p4riYy31hGHlJA1Hf2S1stP8lfcMcgyumWT3IEUw1xM
- kK0g==
+ bh=eEscgXF99ld8shnMdvdJBGyWeRugvNpmyFH04KfioNQ=;
+ b=f59jmTzFvGwb+KSm5U8MfZKpFmG6/Uj31Yjx088oHvn1VSr+oF+KOS2H3xG3xulyXY
+ SUeUS1n5jSUc1hJYNpb/CtF4p5NJFc6BqfFCCKPLlgh1wo9cc4kBv2/cXOFOpMiDzlK2
+ WJMlBXnprTcRlNHdSMFTMk3XT2Dkp5IL9xG0xjjrUz4IQbrhnwzZ9nSQ+Ytsb8TBeGLq
+ 8KjaFwXeVDUaI5uwon/jNPu6gQu7pEw/T6+2XyIiRpzUgTjtr3V1hJMohnL3lxdLhJr/
+ iYDgQyBF3+s5LWRe0Yo6DDhuwQTFJ1GaEaQnGf+BCHIjz2Z0CwczygaMdKtu3qJHG4jL
+ jOaQ==
 X-Forwarded-Encrypted: i=1;
- AL+hErHIJ/fkD7Sl+RlEuAngdZ1bLTk6l/Z25COpe28THpzONS+PtsbmJRMmB5E4kEE+JYJSxTSH3+sxtw==@nongnu.org
-X-Gm-Message-State: APuU4Z/f9M/IbYLnf3dU1MC5J14P2IqlAKqyLs8UJUgXCT/osmQ+LAS0
- FXl0ZS4bvK7CyUHUOl6nW7hjh44cN5b+EC6BGeGN6Uq/iY70pX/wGzXVtFNF8TXV0pc=
-X-Gm-Gg: AZFdTZcjYUph6UsOIF2S8nB7IUyPDeX3h7Wel0F+LVcmJVzPYyNzoHIHr8+XTKSHBk0
- 5tvs8G89oBgTL53qCHenzt8upYUlEfNa1YyMH72WTWeEl+IzTd1RQ0NvHrMdC2zLJuYq+oB4zpO
- H7ZtxUd8XH/7IuR9SdhMOzbsbMpJdJvR9mA6t1SLPB0mluZdZo0nofUfIutgkLR1iQQFnd0SWFq
- kfTuA15Lf6OtX20MNihTKsrsauAuDfQx6nxE2KjbXNCSSZjGCF5tXFOVuMq7E7E/eKIt3Nw9Fby
- GWmNKqTzSuTGhuJD+mnuZpUTHK9WQHLoDzR/f/5GNLiZKaeVc3qd2BUFxJcWbEu9668heekK9k0
- 8KNpmqkho+qOIfVVHNAbbBeBY7Tm0TjDg8k1cFGfalWzurQsmbsEGEBKG2d7u7ul+O4UWg63gwb
- 13cfl8sCn+oSE2hVmfc5YeAki05k0GFDc+d6RpPK9ZU3SAtYgEcIV+RjgiQv5LUpzvQPidpgQNq
- 5TgntL81GYcbuZmESE1pL3gzTui/SYTgv+A0vEZbSPG6OlhGsxQZ1xJUtwmW0JCBjYagthqk1um
- 3j6N+oMw8tDJx3e4B6LJYiy5cjRY
-X-Received: by 2002:a05:6000:40ca:b0:4a3:976e:27a2 with SMTP id
- ffacd0b85a97d-4abb5146238mr41469209f8f.34.1795703770266; 
- Thu, 26 Nov 2026 06:36:10 -0800 (PST)
+ AL+hErGkj8AsO2zkBQWW5oLcsvdqisgxx8x2/PuveTIoa6Fwq6ROW8UzzWzfJj/x1xyfxE2MkH5GpNYNFw==@nongnu.org
+X-Gm-Message-State: APuU4Z8FPFFluaZbImgzumA2uL6GJIIHgDdipK6ixb/ll2jincMozmyO
+ M0Ljd1fF0MEWCPsONJImIXDhKTunMMzgEZQNldadM49GF/mTmCVNSrTpLJPNcPC4dGI=
+X-Gm-Gg: AZFdTZcwuvt6/jiwWy2YGMAN/imm85G/8pMUjPmPOmPskHWjzk7b/NXvoJ6e6gX2UDx
+ 0ctzwJfZnlOHGIXzdT14jKFzo/MlNoIKLx3JhM3YjfTZy0WrNOtbNEV+aNa9wjnznAxRF26QBci
+ jP8wUdW0SjbF8dMGbTL6LtuW83M01YN8u3CNSXBOP24kUWJUtW69dn0ZHb9zPvVrmfu5M8VBp2N
+ FVr8KXWI7op0F164ICPfvw9LLesg4+6X8NIKByw3TQhJB5FTf3ACMphF5/cC0RE4t+tn20wbb7I
+ WjmX/t5v0VALi7ipusbd41eHzMYJFFNHWX4clIV8jW5QBvsJy7vjlyCqs23MNCr+Szhj4cdp690
+ y4gry9gIznXdP/gJBrmCyrRE/LYgCHczuR36n52IUmr1OfWlU41e7YesWUj+fesmhpjT9lwf64W
+ aPW4U3Nf+KaM3Q0zSyVj9KKUJ3SbsXzFn9ORHcBQzfQIAAhe3YzZUetIGJ0AkLF0OM6nxaKPuAW
+ 9vY6atvlMd/fjfokCp7W8Ji9cjzwywbj8fNW0QooxJrZzk7byQR7R1cFMUuSPxsDAAefQHZUhyY
+ aBSpWi4F0jTs9y3SZmf4LpMmnUbP
+X-Received: by 2002:a05:600c:6749:b0:4bb:5d38:259f with SMTP id
+ 5b1f17b1804b1-4bb8881099cmr409445515e9.12.1795703774997; 
+ Thu, 26 Nov 2026 06:36:14 -0800 (PST)
 Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab6b110c50sm40545969f8f.37.2026.11.26.06.36.08
+ 5b1f17b1804b1-4bb906640a2sm340780515e9.0.2026.11.26.06.36.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Nov 2026 06:36:08 -0800 (PST)
+ Thu, 26 Nov 2026 06:36:11 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id BC4495FA1A;
+ by draig.lan (Postfix) with ESMTP id F225B5FA55;
  Thu, 26 Nov 2026 14:36:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -93,10 +93,12 @@ Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Weiwei Li <liwei1518@gmail.com>, Kuan-Wei Chiu <visitorckw@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>
-Subject: [PATCH 3/8] MAINTAINERS: use consistent capitalisation for Alistair
-Date: Thu, 26 Nov 2026 14:36:02 +0000
-Message-ID: <20261126143607.2374676-4-alex.bennee@linaro.org>
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 5/8] tests/functional: use immutable tuxboot kernel URLs
+Date: Thu, 26 Nov 2026 14:36:04 +0000
+Message-ID: <20261126143607.2374676-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261126143607.2374676-1-alex.bennee@linaro.org>
 References: <20261126143607.2374676-1-alex.bennee@linaro.org>
@@ -104,8 +106,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,86 +126,142 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The last emails with capitalisation where in 2019, make it consistent.
-We can also tweak .mailmap so this sticks in history as well.
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Cc: Alistair Francis <alistair.francis@wdc.com>
+tuxboot rebuilds the 6.18.54 kernel images in place, so the URLs
+without a datestamp now serve content that does not match the recorded
+hashes and the tuxrun tests fail to fetch their assets. Point the
+x86_64, arm64 and s390 tests at the immutable 20260930 snapshots and
+keep the hashes that were recorded against them, instead of implicitly
+switching to the rebuilt images.
+
+Do the same for the riscv64 6.11.9 kernel assets, which still used
+non-datestamped URLs; their recorded hashes already match the 20241122
+snapshot.
+
+Fixes: 8ac1aab21fca ("tests/functional: update arm64 tuxrun images")
+Fixes: 09961fafc5a0 ("tests/functional: update s390x tuxrun images")
+Fixes: 467c9eb7dd31 ("tests/functional: update x86_64 tuxrun images")
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Kuan-Wei Chiu <visitorckw@gmail.com>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-ID: <20261120200511.822573-22-alex.bennee@linaro.org>
+Message-ID: <20261112133320.418012-2-marcandre.lureau@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- MAINTAINERS | 10 +++++-----
- .mailmap    |  1 +
- 2 files changed, 6 insertions(+), 5 deletions(-)
+ tests/functional/aarch64/test_tuxrun.py      | 4 ++--
+ tests/functional/riscv64/test_milkv_duo.py   | 4 ++--
+ tests/functional/riscv64/test_tt_atlantis.py | 2 +-
+ tests/functional/riscv64/test_tuxrun.py      | 2 +-
+ tests/functional/s390x/test_tuxrun.py        | 4 ++--
+ tests/functional/x86_64/test_tuxrun.py       | 4 ++--
+ 6 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 048ea6a5034..cf701b11cf1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -878,7 +878,7 @@ F: tests/functional/arm/test_canona1100.py
- F: docs/system/arm/digic.rst
+diff --git a/tests/functional/aarch64/test_tuxrun.py b/tests/functional/aarch64/test_tuxrun.py
+index 2ff321582d3..035984d8e3e 100755
+--- a/tests/functional/aarch64/test_tuxrun.py
++++ b/tests/functional/aarch64/test_tuxrun.py
+@@ -17,10 +17,10 @@
+ class TuxRunAarch64Test(TuxRunBaselineTest):
  
- Goldfish RTC
--M: Alistair Francis <Alistair.Francis@wdc.com>
-+M: Alistair Francis <alistair.francis@wdc.com>
- L: qemu-riscv@nongnu.org
- S: Maintained
- F: hw/rtc/goldfish_rtc.c
-@@ -1807,7 +1807,7 @@ F: tests/functional/ppc64/test_fadump.py
- RISC-V Machines
- ---------------
- OpenTitan
--M: Alistair Francis <Alistair.Francis@wdc.com>
-+M: Alistair Francis <alistair.francis@wdc.com>
- L: qemu-riscv@nongnu.org
- S: Supported
- F: hw/riscv/opentitan.c
-@@ -1845,7 +1845,7 @@ F: include/hw/riscv/shakti_c.h
- F: include/hw/char/shakti_uart.h
+     ASSET_ARM64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/arm64/Image.gz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/arm64/Image.gz',
+         '39f4633bbcb444267d4d829bd28d8868a287c4c160cda64b0fd23fb090571c4e')
+     ASSET_ARM64_VMLINUX = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/arm64/vmlinux.xz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/arm64/vmlinux.xz',
+         '6487eb113ef6e841aedab6cb6fa704006377d68f64dd544570aa42f462a52b85')
+     ASSET_ARM64_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20260924/arm64/rootfs.ext4.zst',
+diff --git a/tests/functional/riscv64/test_milkv_duo.py b/tests/functional/riscv64/test_milkv_duo.py
+index 6a7e2a5d196..fdc83d7c828 100755
+--- a/tests/functional/riscv64/test_milkv_duo.py
++++ b/tests/functional/riscv64/test_milkv_duo.py
+@@ -14,11 +14,11 @@ class MilkvDuoMachine(LinuxKernelTest):
+     timeout = 120
  
- SiFive Machines
--M: Alistair Francis <Alistair.Francis@wdc.com>
-+M: Alistair Francis <alistair.francis@wdc.com>
- M: Palmer Dabbelt <palmer@dabbelt.com>
- L: qemu-riscv@nongnu.org
- S: Supported
-@@ -4242,7 +4242,7 @@ F: hw/i386/amd_iommu*
- F: tests/qtest/amd-iommu-test.c
+     ASSET_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/Image',
+         '174f8bb87f08961e54fa3fcd954a8e31f4645f6d6af4dd43983d5e9841490fb0'
+     )
+     ASSET_DTBS = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/dtbs.tar.xz',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/dtbs.tar.xz',
+         '97e5e65a7e6c68303e53486af120c0846ee8df572e9c15f0c4dccb831d0cef4b'
+     )
+     ASSET_ROOTFS = Asset(
+diff --git a/tests/functional/riscv64/test_tt_atlantis.py b/tests/functional/riscv64/test_tt_atlantis.py
+index 48abd5cd27c..7cd5234432d 100755
+--- a/tests/functional/riscv64/test_tt_atlantis.py
++++ b/tests/functional/riscv64/test_tt_atlantis.py
+@@ -14,7 +14,7 @@
+ class TTAtlantis(LinuxKernelTest):
  
- OpenSBI Firmware
--M: Alistair Francis <Alistair.Francis@wdc.com>
-+M: Alistair Francis <alistair.francis@wdc.com>
- R: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
- L: qemu-riscv@nongnu.org
- S: Supported
-@@ -4343,7 +4343,7 @@ F: tcg/ppc64/
+     ASSET_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/Image',
+         '174f8bb87f08961e54fa3fcd954a8e31f4645f6d6af4dd43983d5e9841490fb0')
+     ASSET_ROOTFS = Asset(
+         ('https://github.com/groeck/linux-build-test/raw/'
+diff --git a/tests/functional/riscv64/test_tuxrun.py b/tests/functional/riscv64/test_tuxrun.py
+index 6203a45060c..b470c05300a 100755
+--- a/tests/functional/riscv64/test_tuxrun.py
++++ b/tests/functional/riscv64/test_tuxrun.py
+@@ -17,7 +17,7 @@
+ class TuxRunRiscV64Test(TuxRunBaselineTest):
  
- RISC-V TCG target
- M: Palmer Dabbelt <palmer@dabbelt.com>
--M: Alistair Francis <Alistair.Francis@wdc.com>
-+M: Alistair Francis <alistair.francis@wdc.com>
- R: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
- L: qemu-riscv@nongnu.org
- S: Maintained
-diff --git a/.mailmap b/.mailmap
-index bd8bf07feb7..c44990fd3d6 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -80,6 +80,7 @@ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> <arikalo@wavecomp.com>
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> <aleksandar.rikalo@rt-rk.com>
- Alex Williamson <alex@shazbot.org> <alex.williamson@redhat.com>
- Alexander Graf <agraf@csgraf.de> <agraf@suse.de>
-+Alistair Francis <alistair.francis@wdc.com> <Alistair.Francis@wdc.com>
- Andrew Jones <andrew.jones@oss.qualcomm.com> <ajones@ventanamicro.com>
- Andrew Jones <andrew.jones@oss.qualcomm.com> <drjones@redhat.com>
- Ani Sinha <anisinha@redhat.com> <ani@anisinha.ca>
+     ASSET_RISCV64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.11.9/riscv64/Image',
++        'https://storage.tuxboot.com/kernels/20241122/6.11.9/riscv64/Image',
+         '174f8bb87f08961e54fa3fcd954a8e31f4645f6d6af4dd43983d5e9841490fb0')
+     ASSET_RISCV64_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20241119/riscv64/rootfs.ext4.zst',
+diff --git a/tests/functional/s390x/test_tuxrun.py b/tests/functional/s390x/test_tuxrun.py
+index 1dd662aaaf0..420e7146bb1 100755
+--- a/tests/functional/s390x/test_tuxrun.py
++++ b/tests/functional/s390x/test_tuxrun.py
+@@ -17,10 +17,10 @@
+ class TuxRunS390xTest(TuxRunBaselineTest):
+ 
+     ASSET_S390X_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/s390/bzImage',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/s390/bzImage',
+         '5efeb31754b211440e1595ab11355bb006fe78a2c0604ed0a8c55c4598b71aec')
+     ASSET_S390X_VMLINUX = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/s390/vmlinux.xz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/s390/vmlinux.xz',
+         '5bbd4d34e0950f88053a9bfd16078896df4b1ee1696fc2ad62488e681a6bdd8e')
+     ASSET_S390X_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20260924/s390/rootfs.ext4.zst',
+diff --git a/tests/functional/x86_64/test_tuxrun.py b/tests/functional/x86_64/test_tuxrun.py
+index 1a1138d16ae..d2e6008ae70 100755
+--- a/tests/functional/x86_64/test_tuxrun.py
++++ b/tests/functional/x86_64/test_tuxrun.py
+@@ -17,10 +17,10 @@
+ class TuxRunX86Test(TuxRunBaselineTest):
+ 
+     ASSET_X86_64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/bzImage',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/x86_64/bzImage',
+         '24a3ade610c2cc426ff821050de8a35930b0371357d94cc2c334abac6658552b')
+     ASSET_X86_64_VMLINUX = Asset(
+-        'https://storage.tuxboot.com/kernels/6.18.54/x86_64/vmlinux.xz',
++        'https://storage.tuxboot.com/kernels/20260930/6.18.54/x86_64/vmlinux.xz',
+         '77bf44cca48c9c1b9c142e16a2311d58b8ae3462b61bce44bcaf9243b5f26628')
+     ASSET_X86_64_ROOTFS = Asset(
+         'https://storage.tuxboot.com/buildroot/20260924/x86_64/rootfs.ext4.zst',
 -- 
 2.47.3
 

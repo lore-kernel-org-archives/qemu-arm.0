@@ -1,114 +1,113 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 64020606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 17:14:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2E0F606A323
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 17:57:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=S6p0MV28
+	dkim=pass (2048-bit key, unprotected) header.d=unpredictable.fr header.i=@unpredictable.fr header.a=rsa-sha256 header.s=sig1 header.b=Q73iIjc5
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWd2T-0007vw-5f; Thu, 26 Nov 2026 12:13:42 -0500
+	id 1xWdhm-0007Im-TR; Thu, 26 Nov 2026 12:56:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1xWd2O-0007vG-6z
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 12:13:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xWdhf-0007Hq-LE
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 12:56:16 -0500
+Received: from mr-2002a-snip6-1.eps.apple.com ([2a01:b747:3000:201::10]
+ helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1xWd2M-0005wv-EC
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 12:13:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1795713212;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=07kpCWT8Avv4yyzlDHWjKwxBansiZJpIXtC8+j4BF9Y=;
- b=S6p0MV28imiCrjQO+128lxjixaad1j41FbMTidXsSpKDMMkhhcHDI/6nJHBMsqjZfi6mu2
- SNjixEda7pldlVrJBHaSROntwTw539PBWHx2HrMb5rwFaUqujU3PTAi+9x6BoDJnYjoJc/
- 221WYE1M9ZClF5rtuOt0W/rBvpN6X+k=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-90-DtHPfeULMIW2pgSzY9C6dg-1; Thu, 26 Nov 2026 17:13:30 +0000
-X-MC-Unique: DtHPfeULMIW2pgSzY9C6dg-1
-X-Mimecast-MFC-AGG-ID: DtHPfeULMIW2pgSzY9C6dg_1795713209
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-48e00f3929bso4230906f8f.0
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 09:13:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795713209; x=1796318009;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=Mb8Bhbqxu6oM0N1y8b2BBJmbdRvDKKI8uFyOuRtNW2w=;
- b=kCYgcf1G60xBtz0DkK1fC/ouOZq5qcbX+bDml3wn+YsoamafzWYUSIP5j4IRn9pz4S
- DbwkG8inYkusGaI1AXTSS6oYSvZMshrgpymjbMbQo9nlkp5mhipf6UDrMwlCGj2lTkfW
- Rnr/woCi3eZJ41gZCHyMKLd4pgLgicFRDxJTCTrLBu34kk/o4fpKQDbMoEMLbPvnE7LQ
- 4uOLG9SfbX9c4fyTyplkis6G3UG61tSmOPhdOc2fP6lD6HbGaGY+CLYd+JavFCQvNHch
- yuVACMuv9icPmzfV4Pm2aq9U+1BKzf9IQIqvqNmubigok2MSppebSUV+VSjSHA54AIQs
- 8opg==
-X-Forwarded-Encrypted: i=1;
- AL+hErFenFPD0Nm7+kpJ1Lvwq3Wc0DTpDDMlzQYwCqiCHd2kFdu2mDtWKlEQa25DGrJsY+A5ZYNfFeP67g==@nongnu.org
-X-Gm-Message-State: APuU4Z8fb6dqmdsDeT9zXLkaCI8QBQ6sY0jPNwxcII3CvGzjYs3N1QJd
- 4EQ4+GqFqPhspgRuBfCT/t6grsKeq0LODfDIz/cC37W8w4yVJvwuXwvWrP7tN2r0haRHhnWreXE
- lRcCyqVTnpNiDD7WsyI5XOaMvDfDRpkkfJgDSN8bBhXM2Hg7CCPtJzw==
-X-Gm-Gg: AZFdTZfg7hThv1fTdINAmxvFDO1Gt/Ksb7EWEmMKdjEfUrjO96gXLgh9nXgPqnyCz4Q
- gNTPQUNAj5dHXEyKjpSMC3vwD/duOLcwD1vLF6F4dq4/9L+v6Jqt+yOPnqkSdFUUZOJEVo4EjpR
- 0U/hSMelzjEamtjgrfNENRg038PR4+S54h5p8E5HsXp/3D+HWEQaik7PshVT06Nyh55BG2YKjB5
- JcCXtl2Jw5XvrkCAmf4f/5DPHj4SPQtNwf7cljHtw1HrV8QUfiHfVQK4o1UGLnu5rVyUldM8rSs
- Qopu4LNYvbuib8/rc+dazLHAmXntMXE2vAWH7J0Ov6PX9RGxo2KoUytP8O+8/sTg3OQIPJWqskD
- T4sOPxJBKgIV5G6rW6kAncQcMcHLo0gCDsujltlKwyozi3s6QdkgGVoqWqVlGAOjy2bHTNlmO71
- RfRykzHC62o4qB2+l4
-X-Received: by 2002:a05:600c:80c1:b0:4a2:10d:5e0d with SMTP id
- 5b1f17b1804b1-4bb8615a739mr336371085e9.14.1795713209210; 
- Thu, 26 Nov 2026 09:13:29 -0800 (PST)
-X-Received: by 2002:a05:600c:80c1:b0:4a2:10d:5e0d with SMTP id
- 5b1f17b1804b1-4bb8615a739mr336370715e9.14.1795713208866; 
- Thu, 26 Nov 2026 09:13:28 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:af16:8320:54ea:4bc9?
- ([2a01:e0a:f0e:9070:af16:8320:54ea:4bc9])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab6a67fe48sm38213038f8f.23.2026.11.26.09.13.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Nov 2026 09:13:28 -0800 (PST)
-Message-ID: <fa7522a1-1d0e-4bdf-aad9-767c08878cd1@redhat.com>
-Date: Thu, 26 Nov 2026 18:13:26 +0100
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xWdhd-0008A0-SZ
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 12:56:15 -0500
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-1 (Postfix) with ESMTPS id
+ 3299818001E6; Thu, 26 Nov 2026 17:56:04 +0000 (UTC)
+X-ICL-RepId: 01a21900-12a2-730b-91ea-54ed01ff9dc2
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1795715767; x=1827251767;
+ bh=8fhhChzAZkPvLNecmDufydiFYxuMhL8zNn1PPLXOhbY=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=Q73iIjc599PelmS50qJUJzS2UtE8KGvibHV3jFcXc3el2aMMRODweAarLEmleMJu8x+/RgFk0D0Zj4FmbU/7v7lv+Qm1XR1auR16ZsvV+B8IgBXuxePiLQlhLmLRSqEMT3chF1bYLgj6PlYW+2oE+kiTthrgw0QXsM0KiaHIi9ooDTX7XFQAOf1+svNIGCyZt9AVEm3dJv9YYWmzHKxd4a7+fby9gUguihhJSIQRdUF6J7EVhh6lHFM4wsZrzHKucaCk9g2JaSMvlbSORerSDf4tyCmaJLyOnz5DLU07MhGj3MtiRz8vLB/cdp7K5pXqbjZKo/MRCHM1I+yJNXrJyA==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.156.200.36])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-1 (Postfix) with ESMTPSA id
+ 47E341800328; Thu, 26 Nov 2026 17:56:02 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
 Subject: Re: [RFC PATCH v3 0/3] arm/kvm: select an nVHE-only EL2 with
  SYSREG_ID_AA64MMFR1_EL1_VH
-To: Haseeb Ashraf <haseebashraf091@gmail.com>,
- Khushit Shah <khushit.shah@nutanix.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <fa7522a1-1d0e-4bdf-aad9-767c08878cd1@redhat.com>
+Date: Thu, 26 Nov 2026 18:55:50 +0100
+Cc: Haseeb Ashraf <haseebashraf091@gmail.com>,
+ Khushit Shah <khushit.shah@nutanix.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, kvm@vger.kernel.org,
- Haseeb Ashraf <haseeb.ashraf@siemens.com>, Eric Auger
- <eric.auger@redhat.com>, Marc Zyngier <maz@kernel.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Haseeb Ashraf <haseeb.ashraf@siemens.com>,
+ Eric Auger <eric.auger@redhat.com>, Marc Zyngier <maz@kernel.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <9746F4BB-6688-4B39-AC6E-DC0295599927@unpredictable.fr>
 References: <8A57A0C8-9E85-4BAC-803A-DAFC6DBD6612@nutanix.com>
  <20261126062002.136401-1-haseebashraf091@gmail.com>
-From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <20261126062002.136401-1-haseebashraf091@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: YAO-mxJe8wppS6166NbDXGJKfnub_niFGzy4FWD_UzU_1795713209
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ <fa7522a1-1d0e-4bdf-aad9-767c08878cd1@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+X-Mailer: Apple Mail (2.3901.200.71.1.16)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA3MCBTYWx0ZWRfXzZ9U33Bqmp+N
+ VP4we7rMqG8j480doLR0COMOd/dTzgwtduQJiFvy3qU2iwxEEqaIHSqV1aWMmXJJeJvibx4lImk
+ /pD9B016Ws1dv2a18npL8SRBna9i7GjNFRi6W34dR1vnpDDvrMhJeKdj8tXJ6/pDd/pC3TJO8rv
+ m+YYcI4ZDCQqD5hrGD0Hk0/A8NLqnfiVPOftehuX+wH4hbH8nYGZsRaV/3/CoYgwPJsUNPPNM4W
+ y/V8asB0qR7LaggpuLUiDeaakn7v3psSUUgfXkq+gKNxI5xPy+j9qGMab46mOngzTNw2bL4tS+/
+ uQCQhqFAnCgSQS3bSGmGEZhbONaIUwPDMUbYggPzholscr3ZeBLhcX1TT4uWPA=
+X-Proofpoint-GUID: R24cERRUtmaM3jZFPe9MfxytT2fD3nwH
+X-Proofpoint-ORIG-GUID: R24cERRUtmaM3jZFPe9MfxytT2fD3nwH
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA3MCBTYWx0ZWRfX3stmnvbP/ky3
+ fCgEMqRBs2NZtqb3lstKjTlDlHodONGsMi1+dLMzicpcL9PmV7lv8OwqUEzynvfo/RXHUvwN4yQ
+ Y92ce4eu3YgIyYG1SRERQTrqKp0oUNg=
+X-Authority-Info-Out: v=2.4 cv=XZAcX455 c=1 sm=1 tr=0 ts=6b0872b6
+ cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
+ a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=wbbCu9YnSpm8ZdSLOl1R:22 a=_mclknXjrhVi08tC7Eh6:22
+ a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=20KFwNOVAAAA:8 a=aMxLMesAV-4Bx-ERIwIA:9
+ a=QEXdDO2ut3YA:10
+X-JNJ: AAAAAAABJo+6C+pgujg2X+Of6/SxSPUScWOJG1a2iAjDB60Eni78lwFoODYGAFSc4BUc4f
+ Q7AZfnBj1V8gwv5dLB0ph1uO46wKzKMUNLoRYgcMqSDMTW6+2+t1C7SWmc3iC4F9z4LQR4
+ jey0tk3eFlj6zuqUC9u2LLTKCXK5e6DXAIeCiqogIOLZ7ZfN6/lQisl89I++GqYf7VBR0p
+ mUWClCr4Kjfl0upVHzO2pbvvjASAOHyIUc4eHL/UBzSZkSt6TebXJ7jtJEDVmeW+IQQaSD
+ Ct7aT+I8SJ0RYY3Cei/EjaThDfOb566uxObISJeV43VL5huHY2Iyt+UeKqhDcaajF84jJA
+ IK1xCwLAAgUJDsHGHmojigds9s9610tZJPoXXTBO/byr314LPk5/pI9N+X3Xo6EvtsT7nR
+ Em9S6hghIpzJxddwnFkc2fiM6s93lKoaFtpa8ctSItrK0ZDTtoP+XWqyoRyd4M8CLcg+cb
+ T7/Cwlw8vDr+Ndv7FgZFIoN7VZiCc98QXsRxJGP2KCQ7WYH0zfAWssltHHc9JjfKrv2sCX
+ d1BFPuwErgebHyxfRiVUi9+JoYIHpPopzc7x7QP/bwYw+alD8aOb8/0QSYOpTLZXDVjYxU
+ 3ToOmuvYNxMe8LhJd3lKC6WkdHYM1f7M59WL6F1AhXga9meI4aZskhKoQ7QnVOVOBU0XyE
+ 6cT7zA/bMlLz+mDJ0DhkMRVkCvVwp0ynA0uno8DAk1xdpZn+D7bW8N46mftLuHz56MDFRj
+ JgD6eX1E2N0OFVwuvHdNBoeCcKB5Hd8cA5QNDdCyAlPN/ZTSDc5G4OS5nx5tf7Z/bxOGjT
+ G2apf51+UZzbzcfIlU9FM10Y7o7+vRRfvdvXpZN1jLm9sj4gQkvw+ACw0PySocc71onbIq
+ SoN1sfHt38AZG6oeLwZh0ip+I+M7msmzKSoGqaX6TxqGi9wt1RyGG7rnIl6QS3ZGDvAGpr
+ Vs8cKT9HrbFiNwE0wkyP+HuO45lE08JnzDPl3tBkwKlq5k/VZC/lBuwMZY4oBWS2RHJS7e
+ nWbtanNJVPfDugCo40a1xfFsaiOAf9a/ln6U0q/e+JJcgi5/5e+1WBs329tect8gQ0MUp/
+ eJCQs0XcRHPjHRGrAyj/Lrt3I5N8v3UofcsRelgzI819CHu3QVX98inxEsE9VwnEYzFrSD
+ uDlIQvzcACarZz57YRRHBL98KU3aL930YwRjWc05sFX0hUJtW8YOclh70tqn8fQPNu+CS3
+ uhImCbruf48dt8xlcInaK0rEDztd5XYemhkyi3BDOb6S21GMt67EmTlQN1de+WaiIpWzS8
+ uXFO2mBc9xt97VAIHwKMoQMhtYFgwrZNUPG4AMNLmje0VNwn2GRn+ibS+HfN2XDQ4ktBtF
+ CGHBFGJHyVsAyvLIBX/KjrCbJJH6tdtVRZ0dtKaVgrYGRe41ex3cM1gD+7CSPhPknlt+XP
+ NiBj5WwVeKgUaG9Apndzuj+I+JWmB66614P2M96c1pZlhggJCeE9y2Wjle3DQ/gJ0d9pYb
+ mMylHdedyYUps6fX1wNSvGF7+y5Wd6XoJGNChtT2cTmqiySUp0nbbjAwVj/SyEIa0e4Owy
+ UlrVlFTbylOcwDImtmj0f2fg+AV6Fb8Td/hnlwP4ubOzutB0Cjj/b281QYmreTdt+asmTL
+ vC4=
+Received-SPF: pass client-ip=2a01:b747:3000:201::10;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,55 +119,73 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Haseeb, Khushit,
 
-On 11/26/26 7:20 AM, Haseeb Ashraf wrote:
-> Hi Khushit,
->=20
-> On 26/11/26 11:38, Khushit Shah wrote:
->=20
->> There are many such fields like PAuth (APA, GPA, =E2=80=A6) and SVE. The=
-y are
->> not part of the SYSREG_ framework as there already exists boolean
->> properties for them.
->> (Another way to do this is having -cpu =E2=80=A6,vhe=3Don/off property)
->=20
-> The v1 series was closer to what you are suggesting: it added a
-> standalone `vhe=3Don/off` property and used it to select the
-> requested KVM vCPU initialization mode.
->=20
-> Could you please also review the v1 implementation?
->=20
-> https://lore.kernel.org/qemu-devel/20261121095636.289814-1-haseebashraf09=
-1@gmail.com/
 
-It is a valid point to question the addition of new vcpu properties (especi=
-ally low level ones like this one) while we plan to introduce those SYSREG =
-low level properties. For composite properties which stand at higher level =
-(tweaking several knobs at KVM VCPU init or IDREG field level) it still mak=
-es sense though.
-
-Until now we have proposed for the host vcpu to expose SYSREG props only fo=
-r KVM writable ID reg fields. On the other hand, named vcpu models require =
-to have ALL ID reg fields exposed. If we were to extend this infra to other=
- archs or TCG, we may also need to expose ALL fields and just have differen=
-t implementation for setters/getters depending on the writability mode (REG=
- WRITE or VCPU init or anything else).=20
-
-Thanks
-
-Eric>=20
-> I changed direction for v2 following Marc's feedback against adding a
-> separate property.
+> On 26. Nov 2026, at 18:13, Eric Auger <eauger@redhat.com> wrote:
 >=20
-> Thanks,
-> Haseeb
+> Hi Haseeb, Khushit,
+>=20
+> On 11/26/26 7:20 AM, Haseeb Ashraf wrote:
+>> Hi Khushit,
+>>=20
+>> On 26/11/26 11:38, Khushit Shah wrote:
+>>=20
+>>> There are many such fields like PAuth (APA, GPA, =E2=80=A6) and SVE. =
+They are
+>>> not part of the SYSREG_ framework as there already exists boolean
+>>> properties for them.
+>>> (Another way to do this is having -cpu =E2=80=A6,vhe=3Don/off =
+property)
+>>=20
+>> The v1 series was closer to what you are suggesting: it added a
+>> standalone `vhe=3Don/off` property and used it to select the
+>> requested KVM vCPU initialization mode.
+>>=20
+>> Could you please also review the v1 implementation?
+>>=20
+>> =
+https://lore.kernel.org/qemu-devel/20261121095636.289814-1-haseebashraf091=
+@gmail.com/
+>=20
+> It is a valid point to question the addition of new vcpu properties =
+(especially low level ones like this one) while we plan to introduce =
+those SYSREG low level properties. For composite properties which stand =
+at higher level (tweaking several knobs at KVM VCPU init or IDREG field =
+level) it still makes sense though.
+>=20
+> Until now we have proposed for the host vcpu to expose SYSREG props =
+only for KVM writable ID reg fields. On the other hand, named vcpu =
+models require to have ALL ID reg fields exposed. If we were to extend =
+this infra to other archs or TCG, we may also need to expose ALL fields =
+and just have different implementation for setters/getters depending on =
+the writability mode (REG WRITE or VCPU init or anything else).
+
+Hi,
+
+Given that for HVF we need to say whether it=E2=80=99s VHE or nVHE =
+before vCPU creation time, I think
+that maybe bolting it on as a vCPU property isn=E2=80=99t the best =
+idea=E2=80=A6
+
+Thank you,
+-Mohamed
+>=20
+> Thanks
+>=20
+> Eric>
+>> I changed direction for v2 following Marc's feedback against adding a
+>> separate property.
+>>=20
+>> Thanks,
+>> Haseeb
+>=20
+>=20
 
 

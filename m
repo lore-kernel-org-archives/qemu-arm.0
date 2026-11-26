@@ -1,166 +1,118 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5EE33606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 15:46:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98503606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 17:03:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=PgMrAIhQ;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=FXCzTGqR
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=AX9umsG+
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWbgP-0007EG-Q2; Thu, 26 Nov 2026 10:46:50 -0500
+	id 1xWcqv-0004XU-7U; Thu, 26 Nov 2026 12:01:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWbg2-0006xx-1R
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 10:46:30 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1xWcpr-0004EQ-5p
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 12:00:54 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWbfz-0008IX-8y
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 10:46:25 -0500
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AQEVYHd3298799
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:46:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- a/U9xVMFUIgN7644JNssHaN59LVzIuUQ0CN+in6JWnU=; b=PgMrAIhQcpVPgUJO
- Qao7/zKx6y99zbbgN8m9jtyGHEguJRldVOcKMkFDgCW/d22+GMbo3SubLcvUN5z8
- LIYOeJPKwGlRJv4zgPnPp75vQEnZbC/q+L4RP+x0/UGyRDBo3MEG3CifVJMM/ou4
- 5LQd7hdcf75r34JAZimaflhbxeitO5b0u1w15uygqRWW0RQ0X3XcIvZe5ePDKPgw
- bJd9PsKBWHHkZNb5IAf3QpOFaauzi6A7v/dUaVc1lwWUaPnsKsGXo2/Dkc8A4Qi7
- MS0fMhJlVwCozWKMUv6TKQKUP+GbZUZmiy0SJuayu4fRxgVL5gyCPpYnNnd0bnUt
- kotR3w==
-Received: from mail-yw1-f197.google.com (mail-yw1-f197.google.com
- [209.85.128.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6ak02wc7-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:46:21 +0000 (GMT)
-Received: by mail-yw1-f197.google.com with SMTP id
- 00721157ae682-8b155f4eb8eso91052467b3.1
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 07:46:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795707981; x=1796312781; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=a/U9xVMFUIgN7644JNssHaN59LVzIuUQ0CN+in6JWnU=;
- b=FXCzTGqR4UAn+2s0HR7CJrtdbXrrNYEGv0HvShCDqNCQCltI64mk/QeOZfWpfoilNq
- MZ59cNogZAsHanNiA3u9hvZ+oiCypEpZ8p7rZsDFJlThv6H9q1+wTwsCy2JbCHMf+dS3
- Olp7TLal47zlWqXVK3KgYZdJqz4dTuHv/grkUSsNpUKZZzTpJYcwJRJpjsAFGlPIMuTT
- l+IkjkFlDO8eEZu8op7VOsCGv4CjQiowtpvPt6PtDp0LDahlGBrZjuHsjd1z0THkSmDb
- wHRTYRPK6Kt/P7slH8TgRyJe65j0WzwOUgPsDPMTU5OFgrGecdGbpROXQ5Z5JnuhM0xN
- GmbA==
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1xWcpo-0000Dd-86
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 12:00:38 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1795712434;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KXlbjIA+MRcjOoKiiiyAU8RrrbdV+zioe9lkskXW8KU=;
+ b=AX9umsG+IGNfiChbulz7MykhEOWkdkTpXIy3Z/3eJUvQuW3b2Jt4gZwK6oDyLSkoLEbp4I
+ zSIfXkjpYAz32FgFam0LqtjsxALmL8COqNLG9WMijpONRs8+X/ArIMgHtQTwoXpoSVwzfL
+ tZYxBKTcrYJn2GLskKleENHRAWTELmQ=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-441-8df7iKb6NB6AZ-bcK4JBnQ-1; Thu, 26 Nov 2026 17:00:32 +0000
+X-MC-Unique: 8df7iKb6NB6AZ-bcK4JBnQ-1
+X-Mimecast-MFC-AGG-ID: 8df7iKb6NB6AZ-bcK4JBnQ_1795712431
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-48e00f3929bso4225240f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 09:00:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795707981; x=1796312781;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20260707; t=1795712431; x=1796317231;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=a/U9xVMFUIgN7644JNssHaN59LVzIuUQ0CN+in6JWnU=;
- b=0TtJwmfx9Lf6zpVYwQ96PjMDlCwY2YY/+WOWDmEycviic0YnSf9HC5mLM7bVqRtnsj
- puaX+plYt2hWjWDfcGmf+rpD291LoIvE7d/VvrFInL6y0l84wvtwqGde8wQJ/qCHQKGK
- 7WTzqGtMkOO7O9naQUseNRV8NCuRfIOG681uBNFhbKirAu5/yg6IQnrju/EG/45/CqMp
- FrzOdpc+EGFeZKgrSC4GIJh2TV4Tp4w4mxmXBxi4SMwjRh25E/1lDNbxbLE+mP1Ce64B
- aYOUwfb40JwEPdVF16ySnOCuNp2vHz9RUMrRMwdhgbQM3KTrEQMLK95OchGLi7g72JC5
- 6Hqg==
+ bh=CNjCOS8vDJEZBDE7+EdkAsSR8TKTXPOARGUmWVsbcMc=;
+ b=wDtjA3pCpMjBh2JQNI4H+qbJFikRLkgTXhnbLdeXJUv8gCdjK6B3Kt4aOHG8383OlW
+ b3iJHDMzMAJd3CjAvEHk47Z6urrH4tD8Hs9jzrbCsqij8ujcr6aqdEgCq0Xccq6vfzDk
+ vBW6slviSeqiFCUlLPrzgxfqRu5EyLzRDM2Gg123p+QfmaO1AFAkrudg9WLBSCEzfStw
+ gycE/ILqmFIPtW7u1OJo8yqvhSyiDiYMzYTcvn8xX72nCiiifuBXzTeR1FKD5F0p6oVi
+ fiEY5KpUvQZcvfyzHu30FW0Hj4pJ6K8PVDPRPWWaQ2ogFf4T9jgXVqzchWT/QBnrgUwX
+ v52w==
 X-Forwarded-Encrypted: i=1;
- AL+hErHpSjb3SMCRgXP8q9TqnMVdXVZAILFZDHRsBcgSpzss0BNerjhZ1cj0Rki3P1AkCUjYhLEMLrNSpA==@nongnu.org
-X-Gm-Message-State: APuU4Z8ucGE9kVXCqiWs1+O70c54Qzx8Y7B6oDPHR5aoJ0/fIy/6JAFW
- eOq2gsn/ERJcaPkHHHROZX4rFTUdhCcARPn/vsLXbuAMwJeV64CXAr5eBWKDa8N+lQYQoq/P/xA
- nXGj4q7GEi99tQ1LMVZ9IeFYkg+9+q2F7eRr/eTzYF7aiDu0OEaX/34Y=
-X-Gm-Gg: AZFdTZdAav4g7+2olGtymtSSarabCx/fmoEaSYhqZo75GPGur8/zUW/NO00tvfwAYSV
- oLM6dhrU3r5Q53bz9FLsk4ZT+K5YxicAEtLAB7L6e+jEYzN11Y/05hI4NFsEp/MCleggEeqBAhq
- yUmgwp3FUecoeSV+4LOhJSFHunmFA922fRDdqbxn+pP4yoyzMEaoQ1jI9063Yt1ek4wZyeBgDGM
- L6xT7qXze6T1FOHiin0IHPxLtqT2VnB+R8JUsCxslgV4kC0+Z/fuPV6Y1+nj6pizADm1HOT3l/0
- 9UbqZUOkWh0zQYoOPi5SV6vGqbDT5e0KGmAezHK+forJMII9wMIXNcLNnE8GMpbZ/Wv0Yqb/NAK
- aelzanQ6Mx0uNGT78Su4uhsX1mf+Xu/uquc1JezW8jwiNy2TPUPt5lVZOKgHuEMVyQoWdKL1kmh
- UTXK7G4tE=
-X-Received: by 2002:a05:690c:4485:b0:8b4:f2bc:7c39 with SMTP id
- 00721157ae682-8b52042ee4dmr62693837b3.15.1795707981432; 
- Thu, 26 Nov 2026 07:46:21 -0800 (PST)
-X-Received: by 2002:a05:690c:4485:b0:8b4:f2bc:7c39 with SMTP id
- 00721157ae682-8b52042ee4dmr62693627b3.15.1795707980726; 
- Thu, 26 Nov 2026 07:46:20 -0800 (PST)
-Received: from [192.168.69.202] (pmd666.hd.free.fr. [82.67.153.177])
+ AL+hErFw4t19NIUz1GmyK7vPIaYRigEJF1ycfOgXm83cZbBb0DTWrd6w+N7+nOPRASjQVEWVAqLpyZBk2Q==@nongnu.org
+X-Gm-Message-State: APuU4Z/DFeKC2WbaVq8HkBi6IvwhJIFVyS2gfgPWlXhWs8CWbzUsb8VP
+ Xm1jiX+N2B0Dpz/kGftUhZxwZbtoDywtAlA3w49F/eL9CNmTREa8ygrpAYsODP6F+c4HKJNRIbT
+ IMvOvLhQey6nMaZs3trW+fdtejmrQC5tMsHeEcXZXKy9Ox3ZRH3g5lw==
+X-Gm-Gg: AZFdTZcWNgWkPvD3+lOCs+GzOiD9p9ZKXMDdYVa0rVXDLeZzjOoiB5XNB53jkXfwU0n
+ omdDCUAi04Rab6GSsJsMYoRFfAupk4KmRB59wVY3koU5ydSOQf84WCBHryEhPPgMYHAVPqMefjf
+ cxby0NmFDxcK9kN/18hoeJHW/oOC/ReefEN5w9ST2BRnlx2076Xstv6Z44bluyJox72/RrcYSjf
+ ZCQ9KQKMX6jaHIpSqjwummJLY0FnZWLdDZ1VljXf9FNt+vLWIGQiN9hSZ7AYR0R6DP+vid5gmX6
+ CPw+U35OFEySGkdKwMjQnEUrt1Ujo2ChNtqEM+P1gZl3sCgmCw+yFw7qoLQDeMHIzfb9m0D1iyc
+ MoyRt7z4p7y74uZxJ1DA6GrYrPKs8aYa8XJDPN4g6w4mG7a1kKmmJF/E8KeAkjeSgpjRFMh+iHs
+ Q/uHx8lzdxLaBs+TdR
+X-Received: by 2002:a05:600c:4e0b:b0:49e:65f2:db64 with SMTP id
+ 5b1f17b1804b1-4bb887fb66cmr454532025e9.5.1795712430720; 
+ Thu, 26 Nov 2026 09:00:30 -0800 (PST)
+X-Received: by 2002:a05:600c:4e0b:b0:49e:65f2:db64 with SMTP id
+ 5b1f17b1804b1-4bb887fb66cmr454530965e9.5.1795712430155; 
+ Thu, 26 Nov 2026 09:00:30 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:af16:8320:54ea:4bc9?
+ ([2a01:e0a:f0e:9070:af16:8320:54ea:4bc9])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab6a67f1b2sm38305753f8f.25.2026.11.26.07.46.18
+ 5b1f17b1804b1-4bb853a9846sm724300475e9.11.2026.11.26.09.00.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Nov 2026 07:46:20 -0800 (PST)
-Message-ID: <80cee4a1-80ed-47bb-99aa-d2ad65303211@oss.qualcomm.com>
-Date: Thu, 26 Nov 2026 16:46:18 +0100
+ Thu, 26 Nov 2026 09:00:29 -0800 (PST)
+Message-ID: <c96d22b8-c344-496d-9e08-e00e89c8708a@redhat.com>
+Date: Thu, 26 Nov 2026 18:00:27 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 7/8] accel/tcg: update stale comment for cpu_io_recompile
+Subject: Re: [RFC PATCH v3 2/3] target/arm/kvm: Let SYSREG_ID_AA64MMFR1_EL1_VH
+ select an nVHE EL2
+To: Khushit Shah <khushit.shah@nutanix.com>,
+ Haseeb Ashraf <haseebashraf091@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Haseeb Ashraf <haseeb.ashraf@siemens.com>, Eric Auger
+ <eric.auger@redhat.com>, Marc Zyngier <maz@kernel.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>
+References: <20261121204601.741616-1-haseebashraf091@gmail.com>
+ <20261126052741.90607-1-haseebashraf091@gmail.com>
+ <20261126052741.90607-3-haseebashraf091@gmail.com>
+ <6BB40C51-1983-4760-BDFD-500351A7B0C9@nutanix.com>
+From: Eric Auger <eauger@redhat.com>
+In-Reply-To: <6BB40C51-1983-4760-BDFD-500351A7B0C9@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 9e7Ct53rADh36LOreLk5su12ROdV6_VSzCPhC9Cyd2s_1795712431
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- LIU Zhiwei <zhiwei_liu@linux.alibaba.com>, Zhao Liu <zhao1.liu@intel.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Palmer Dabbelt
- <palmer@dabbelt.com>, Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>,
- Portia Stephens <portias@oss.tenstorrent.com>,
- Halil Pasic <pasic@linux.ibm.com>, qemu-riscv@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Chao Liu <chao.liu@processmission.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Michael Ellerman <mpe@kernel.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin
- <npiggin@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
- Kuan-Wei Chiu <visitorckw@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>
-References: <20261126143607.2374676-1-alex.bennee@linaro.org>
- <20261126143607.2374676-8-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20261126143607.2374676-8-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=T4oZ3PKQ c=1 sm=1 tr=0 ts=6b08544e cx=c_pps
- a=0mLRTIufkjop4KoA/9S1MA==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=ZJAeW4rM5LkjTApEfjwA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=WgItmB6HBUc_1uVUp3mg:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: zfiF7KrqG1Oeas__LljexK0xKs8wp9fB
-X-Proofpoint-GUID: zfiF7KrqG1Oeas__LljexK0xKs8wp9fB
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA2MSBTYWx0ZWRfXyqd899fCAmiW
- jJwE6OvYqri3u/5T61Z3iMTeW93AZ/FKRiwx5g70KuOkN24c2eY3wkcacMxVCIz7m/nY+KMOMXJ
- LTJNJ5c4FLs6kzlLC6QOcau9Sz49Jni1JLgK4+JOZEMf7NFz0C52tMOODlSjylPHjyWZrA8k/0v
- 8ONSc6outjoNxusOTUQColsy2BfV2X7t9WBvRpgFbkWFfG8OSVwzRjhxKfptU7FhYMp9+knFxdw
- qocfQfo94YFo3XYcvMmY7rbI5AiyYws3DZsX+bU6h+0PDZsD2FjftC2YFwZ8CtX+aPPYSwiBFHV
- ZBCEcCQRDRcTykrqyWJovIvP5/E+Ica4XYMzL7Qzt5+00dLwAk692wGaAd9/ZmEbY+WgSJ6ESSd
- DniM74v54T01eMFJT4r9xVhj3B4pxxYTlv+5kqFSlIa4MN1UmBvOkUc4IYsY2CKKeGXuz4QNAhC
- DA46Sq9n0sPGg2BJU8Q==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA2MSBTYWx0ZWRfX6eHih651XKQh
- EPh5UWp7FnNyvsNsA51Kmyf/2IiNS0JUa4d+6rsG9oq/Nu2Pr3FBRV12ATBu/vsNaYcWCYxfes9
- UFmFvMnuCWw71VC1Q5N8ADpaAWiehF0=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-26_03,2026-11-26_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 priorityscore=1501 spamscore=0 suspectscore=0 phishscore=0
- lowpriorityscore=0 bulkscore=0 malwarescore=0 impostorscore=0 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611260061
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -172,46 +124,486 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
 	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 26/11/26 15:36, Alex BennÃ©e wrote:
-> since 18a536f1f8d6 ("accel/tcg: Always require can_do_io") we always
-> trigger a recompile when we detect i/o mid-block. Update the comment
-> to reflect that.
-> 
-> Fixes: 18a536f1f8d6 ("accel/tcg: Always require can_do_io")
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   accel/tcg/translate-all.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-> index ea8257935ed..59991339620 100644
-> --- a/accel/tcg/translate-all.c
-> +++ b/accel/tcg/translate-all.c
-> @@ -566,8 +566,10 @@ void tb_check_watchpoint(CPUState *cpu, uintptr_t retaddr)
->   
->   #ifndef CONFIG_USER_ONLY
->   /*
-> - * In deterministic execution mode, instructions doing device I/Os
-> - * must be at the end of the TB.
-> + * Instructions doing device I/Os must happen at the end
-> + * of the TB as they can change system state affecting following
-> + * instructions. When we detect mid-block IO we trigger a re-compile
-> + * with cflags
+Hi Khushit,
 
-"with the TB cflags."
+On 11/26/26 7:21 AM, Khushit Shah wrote:
+>=20
+>=20
+>> On 26 Nov 2026, at 10:57=E2=80=AFAM, Haseeb Ashraf <haseebashraf091@gmai=
+l.com> wrote:
+>>
+>> !-------------------------------------------------------------------|
+>>  CAUTION: External Email
+>>
+>> |-------------------------------------------------------------------!
+>>
+>> From: Haseeb Ashraf <haseeb.ashraf@siemens.com>
+>>
+>> KVM runs a nested guest with a VHE-only EL2 (HCR_EL2.E2H RES1) unless
+>> KVM_ARM_VCPU_HAS_EL2_E2H0 is requested at KVM_ARM_VCPU_INIT time. With
+>> that feature FEAT_VHE is hidden: ID_AA64MMFR1_EL1.VH reads 0 and
+>> HCR_EL2.E2H is RES0. Guest hypervisors which only support nVHE, such as
+>> Xen, can only run in the latter mode.
+>>
+>> Do not add a dedicated machine or CPU option for it.  Derive the vCPU
+>> init feature from the ID register field selected by the user instead:
+>> SYSREG_ID_AA64MMFR1_EL1_VH=3D0 requests KVM_ARM_VCPU_HAS_EL2_E2H0.
+>>
+>> KVM does not let userspace write ID_AA64MMFR1_EL1.VH, so the generic
+>> "writable fields only" rule would not create the property. Expose it
+>> explicitly when the host supports KVM_CAP_ARM_EL2_E2H0. Apply this
+>> init-driven property before creating the scratch vCPU and use it when
+>> initializing real vCPUs. Setting VH=3D0 without virtualization=3Don is
+>> rejected.
+>>
+>> KVM derives other ID register fields from the selected init mode. Re-rea=
+d
+>> ID_AA64MMFR1_EL1 and ID_AA64MMFR4_EL1 after vCPU initialization so QEMU'=
+s
+>> cached CPU model and query-cpu-model-expansion agree with the values the
+>> guest sees.
+>>
+>> Suggested-by: Marc Zyngier <maz@kernel.org>
+>> Suggested-by: Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>
+>> Signed-off-by: Haseeb Ashraf <haseeb.ashraf@siemens.com>
+>> ---
+>>
+>> v3:
+>> - Apply init-driven properties before creating the scratch vCPU.
+>> - Refresh MMFR1 and MMFR4 from KVM after vCPU initialization.
+>> docs/system/arm/cpu-features.rst | 22 ++++++++++++
+>> target/arm/arm-qmp-cmds.c        | 38 +++++++++++++++++++++
+>> target/arm/cpu-idregs.h          | 31 +++++++++++++++++
+>> target/arm/cpu64.c               | 51 ++++++++++++++++++++++------
+>> target/arm/kvm-stub.c            |  5 +++
+>> target/arm/kvm.c                 | 58 ++++++++++++++++++++++++++++++--
+>> target/arm/kvm_arm.h             |  8 +++++
+>> 7 files changed, 199 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-feat=
+ures.rst
+>> index 13454783cf..cde26c04b9 100644
+>> --- a/docs/system/arm/cpu-features.rst
+>> +++ b/docs/system/arm/cpu-features.rst
+>> @@ -579,6 +579,28 @@ either not writable with the specific host kernel, =
+unknown to this QEMU
+>> build, or intentionally not exposed because it overlaps a legacy composi=
+te
+>> option.
+>>
+>> +Selecting an nVHE-only EL2
+>> +--------------------------
+>> +
+>> +With ``-machine virt,virtualization=3Don``, KVM presents a VHE-only EL2=
+ to
+>> +the guest (``HCR_EL2.E2H`` is RES1) by default.  A guest hypervisor whi=
+ch
+>> +only supports nVHE, such as a type-1 hypervisor like Xen, needs VHE to =
+be
+>> +hidden. This is done by setting ``ID_AA64MMFR1_EL1.VH`` to 0::
+>> +
+>> +  $ qemu-system-aarch64 -M virt,virtualization=3Don -accel kvm \
+>> +        -cpu host,SYSREG_ID_AA64MMFR1_EL1_VH=3D0
+>> +
+>> +QEMU then requests ``KVM_ARM_VCPU_HAS_EL2_E2H0`` when initializing the
+>> +vCPUs, so that ``HCR_EL2.E2H`` is RES0 for the guest. Leaving the
+>> +property unset, or setting it to 1, keeps the default VHE-only EL2.
+>> +Setting it to 0 requires ``virtualization=3Don``.
+>> +
+>> +KVM does not allow userspace to write ``ID_AA64MMFR1_EL1.VH`` directly,=
+ so
+>> +this is an exception to the rule that only writable fields get a
+>> +property: the ``SYSREG_ID_AA64MMFR1_EL1_VH`` property is exposed when t=
+he
+>> +host kernel supports ``KVM_CAP_ARM_EL2_E2H0``. Without this support the
+>> +property does not exist.
+>> +
+>> A note on compatibility
+>> -----------------------
+>>
+>> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+>> index 9a0258a3d6..b8e6c212a8 100644
+>> --- a/target/arm/arm-qmp-cmds.c
+>> +++ b/target/arm/arm-qmp-cmds.c
+>> @@ -98,6 +98,7 @@ qmp_query_arm_cpu_model_expansion(CpuModelExpansionTyp=
+e type,
+>>     Visitor *visitor =3D NULL;
+>>     Error *err =3D NULL;
+>>     bool scratch_created =3D false;
+>> +    bool e2h0_requested =3D false;
+>>     const char *name;
+>>     int fdarray[3];
+>>     int fd =3D -1;
+>> @@ -173,6 +174,38 @@ qmp_query_arm_cpu_model_expansion(CpuModelExpansion=
+Type type,
+>>             goto bail_out;
+>>         }
+>>
+>> +        /*
+>> +         * Init-driven SYSREG properties must be visible while the scra=
+tch
+>> +         * vCPU is initialized, not only when the remaining properties =
+are
+>> +         * applied below.
+>> +         */
+>> +        for (const QDictEntry *entry =3D qdict_first(qdict_in);
+>> +                 entry !=3D NULL; entry =3D qdict_next(qdict_in, entry)=
+) {
+>> +            const char *key =3D qdict_entry_key(entry);
+>> +            QObject *val_obj =3D qdict_entry_value(entry);
+>> +            Visitor *v;
+>> +            uint64_t value;
+>> +
+>> +            if (!strcmp(key, "SYSREG_ID_AA64MMFR1_EL1_VH")) {
+>> +                v =3D qobject_input_visitor_new(val_obj);
+>> +                if (!visit_type_uint64(v, key, &value, errp)) {
+>> +                    visit_free(v);
+>> +                    goto bail_out;
+>> +                }
+>> +                visit_free(v);
+>> +                e2h0_requested =3D value =3D=3D 0;
+>> +            } else {
+>> +                continue;
+>> +            }
+>> +
+>> +            v =3D qobject_input_visitor_new(val_obj);
+>> +            if (!object_property_set(obj, key, v, errp)) {
+>> +                visit_free(v);
+>> +                goto bail_out;
+>> +            }
+>> +            visit_free(v);
+>> +        }
+>> +
+>>         /**
+>>          * Test SYSREG option settings
+>>          * In full mode, build a scratch vcpu that reflects composite le=
+gacy
+>> @@ -237,6 +270,11 @@ qmp_query_arm_cpu_model_expansion(CpuModelExpansion=
+Type type,
+>>             visit_free(v);
+>>         }
+>>
+>> +        if (scratch_created && e2h0_requested &&
+>> +            kvm_arm_refresh_e2h0_idregs(ARM_CPU(obj), fd, errp)) {
+>> +            goto bail_out;
+>> +        }
+>> +
+>>         visit_check_struct(visitor, &err);
+>>         if (err) {
+>>             goto bail_out;
+>> diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
+>> index 465ec83c97..76d7b94858 100644
+>> --- a/target/arm/cpu-idregs.h
+>> +++ b/target/arm/cpu-idregs.h
+>> @@ -73,4 +73,35 @@ int arm_cpu_apply_sysreg_props(ARMCPU *cpu, ARMSysreg=
+PropApplyFn accel_apply_fn,
+>> bool arm_cpu_validate_sysreg_prop(ARMCPU *cpu, ARM64SysRegField *field,
+>>                                   uint64_t value, Error **errp);
+>>
+>> +/**
+>> + * arm_cpu_sysreg_prop_get:
+>> + *
+>> + * Look up the value the user set through a SYSREG_<IDREG>_<FIELD>
+>> + * property, before it is applied to the vcpu.  Accelerators use it to
+>> + * derive vcpu init settings from the requested ID register values.
+>> + *
+>> + * @cpu: vcpu the property belongs to
+>> + * @reg_idx: ID register index (<REG>_EL1_IDX)
+>> + * @shift: lowest bit of the field
+>> + * @value: set to the requested field value when the property was set
+>> + *
+>> + * returns true if the property was set by the user
+>> + */
+>> +bool arm_cpu_sysreg_prop_get(ARMCPU *cpu, int reg_idx, int shift,
+>> +                             uint64_t *value);
+>> +
+>> +/**
+>> + * arm_cpu_sysreg_field_init_driven:
+>> + *
+>> + * Some fields cannot be written with the accelerator once the vcpu exi=
+sts
+>> + * but are selected through a vcpu init feature instead (for instance
+>> + * ID_AA64MMFR1_EL1.VH with KVM_ARM_VCPU_HAS_EL2_E2H0).  Their SYSREG
+>> + * property is exposed even if the field is not writable.
+>> + *
+>> + * @field: ID register field
+>> + *
+>> + * returns true if @field is selected at vcpu init time on this host
+>> + */
+>> +bool arm_cpu_sysreg_field_init_driven(ARM64SysRegField *field);
+>> +
+>> #endif
+>> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+>> index c08eba7010..1fc3a4bb7c 100644
+>> --- a/target/arm/cpu64.c
+>> +++ b/target/arm/cpu64.c
+>> @@ -835,6 +835,21 @@ static ARM64SysRegField *arm_sysreg_get_field(ARM64=
+SysReg *reg, int bit)
+>>     return NULL;
+>> }
+>>
+>> +bool arm_cpu_sysreg_prop_get(ARMCPU *cpu, int reg_idx, int shift,
+>> +                             uint64_t *value)
+>> +{
+>> +    gpointer value_ptr;
+>> +    uint64_t key =3D IDREG_FIELD_KEY(reg_idx, shift);
+>> +
+>> +    if (!g_hash_table_lookup_extended(cpu->sysreg_props,
+>> +                                      GUINT_TO_POINTER(key), NULL,
+>> +                                      &value_ptr)) {
+>> +        return false;
+>> +    }
+>> +    *value =3D GPOINTER_TO_UINT(value_ptr);
+>> +    return true;
+>> +}
+>> +
+>> /**
+>>  * arm_cpu_validate_sysreg_prop:
+>>  *
+>> @@ -879,6 +894,13 @@ bool arm_cpu_validate_sysreg_prop(ARMCPU *cpu, ARM6=
+4SysRegField *field,
+>>             error_setg(errp, "%s is non null whereas pmu is unset", prop=
+name);
+>>             return false;
+>>         }
+>> +    /* nVHE-only EL2, selected at vcpu init time */
+>> +    } else if (!strcmp(propname, "SYSREG_ID_AA64MMFR1_EL1_VH")) {
+>> +        if (value =3D=3D 0 && !cpu->has_el2) {
+>> +            error_setg(errp, "%s=3D0 requires -machine virtualization=
+=3Don",
+>> +                       propname);
+>> +            return false;
+>> +        }
+>>     /* aarch64=3Doff */
+>>     } else if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>>         if ((!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL0") ||
+>> @@ -988,17 +1010,9 @@ static void get_sysreg_prop(Object *obj, Visitor *=
+v,
+>>     int index =3D field->index;
+>>     int lower =3D field->shift;
+>>     int length =3D field->length;
+>> -    gpointer value_ptr;
+>>     uint64_t value;
+>> -    uint64_t key =3D IDREG_FIELD_KEY(index, lower);
+>> -    gboolean exists;
+>> -
+>> -    exists =3D g_hash_table_lookup_extended(cpu->sysreg_props,
+>> -                                          GUINT_TO_POINTER(key), NULL,
+>> -                                          &value_ptr);
+>> -    if (exists) {
+>> -        value =3D GPOINTER_TO_UINT(value_ptr);
+>> -    } else {
+>> +
+>> +    if (!arm_cpu_sysreg_prop_get(cpu, index, lower, &value)) {
+>>         uint64_t mask =3D MAKE_64BIT_MASK(lower, length);
+>>         uint64_t *idregs =3D cpu->isar.idregs;
+>>
+>> @@ -1028,6 +1042,20 @@ static const char * const aarch64_sysreg_prop_ski=
+p_list[] =3D {
+>>     "SYSREG_ID_AA64ISAR2_EL1_GPA3",
+>> };
+>>
+>> +/*
+>> + * Fields which KVM does not let userspace write with KVM_SET_ONE_REG,
+>> + * but which QEMU can still select through a vcpu init feature, see
+>> + * kvm_arm_vcpu_prepare_init_features().  ID_AA64MMFR1_EL1.VH is hidden
+>> + * by KVM_ARM_VCPU_HAS_EL2_E2H0, which requests an nVHE-only EL2.
+>> + */
+>> +bool arm_cpu_sysreg_field_init_driven(ARM64SysRegField *field)
+>> +{
+>> +    /* Compare the field first: this runs for every ID register field *=
+/
+>> +    return field->index =3D=3D ID_AA64MMFR1_EL1_IDX &&
+>> +           field->shift =3D=3D R_ID_AA64MMFR1_VH_SHIFT &&
+>> +           kvm_enabled() && kvm_arm_el2_e2h0_supported();
+>> +}
+>> +
+>> static bool aarch64_sysreg_prop_skipped(const char *prop_name)
+>> {
+>>     for (int i =3D 0; i < ARRAY_SIZE(aarch64_sysreg_prop_skip_list); i++=
+) {
+>> @@ -1084,7 +1112,8 @@ aarch64_add_one_idreg_properties(Object *obj, ARM6=
+4SysReg *reg,
+>>         }
+>>         map =3D map & ~field_mask;
+>>
+>> -        if (writable_only && !field_writable_mask) {
+>> +        if (writable_only && !field_writable_mask &&
+>> +            !arm_cpu_sysreg_field_init_driven(field)) {
+>>             continue;
+>>         }
+>>
+>> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+>> index 88e35909c4..75e82887d6 100644
+>> --- a/target/arm/kvm-stub.c
+>> +++ b/target/arm/kvm-stub.c
+>> @@ -47,6 +47,11 @@ bool kvm_arm_el2_e2h0_supported(void)
+>>     return false;
+>> }
+>>
+>> +int kvm_arm_refresh_e2h0_idregs(ARMCPU *cpu, int fd, Error **errp)
+>> +{
+>> +    return 0;
+>> +}
+>> +
+>> /*
+>>  * These functions should never actually be called without KVM support.
+>>  */
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 8ef5597c68..2a72f52c44 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -1324,9 +1324,15 @@ bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, in=
+t cpufd,
+>>         return false;
+>>     }
+>>
+>> -    ret =3D kvm_arm_override_idreg_field(cpufd, field, newfv, errp);
+>> -    if (ret) {
+>> -        return false;
+>> +    /*
+>> +     * Init-driven fields (e.g. VH) are selected through a vcpu init
+>> +     * feature, which the scratch vcpu may not have: do not write them.
+>> +     */
+>> +    if (!arm_cpu_sysreg_field_init_driven(field)) {
+>> +        ret =3D kvm_arm_override_idreg_field(cpufd, field, newfv, errp)=
+;
+>> +        if (ret) {
+>> +            return false;
+>> +        }
+>>     }
+>>
+>>     cpu->isar.idregs[field->index] =3D
+>> @@ -2183,6 +2189,30 @@ bool kvm_arm_el2_e2h0_supported(void)
+>>     return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2_E2H0);
+>> }
+>>
+>> +int kvm_arm_refresh_e2h0_idregs(ARMCPU *cpu, int fd, Error **errp)
+>> +{
+>> +    static const ARMIDRegisterIdx indices[] =3D {
+>> +        ID_AA64MMFR1_EL1_IDX,
+>> +        ID_AA64MMFR4_EL1_IDX,
+>> +    };
+>> +
+>> +    for (int i =3D 0; i < ARRAY_SIZE(indices); i++) {
+>> +        ARMIDRegisterIdx index =3D indices[i];
+>> +        int ret;
+>> +
+>> +        ret =3D read_sys_reg64(fd, &cpu->isar.idregs[index],
+>> +                             idregs_sysreg_to_kvm_reg(
+>> +                                 id_register_sysreg[index]));
+>> +        if (ret) {
+>> +            error_setg(errp, "failed to refresh %s after vCPU init",
+>> +                       arm64_id_regs[index].name);
+>> +            return ret;
+>> +        }
+>> +    }
+>> +
+>> +    return 0;
+>> +}
+>> +
+>> bool kvm_arm_mte_supported(void)
+>> {
+>>     return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
+>> @@ -2239,7 +2269,19 @@ static void kvm_arm_vcpu_prepare_init_features(AR=
+MCPU *cpu)
+>>                                       1 << KVM_ARM_VCPU_PTRAUTH_GENERIC)=
+;
+>>     }
+>>     if (cpu->has_el2 && kvm_arm_el2_supported()) {
+>> +        uint64_t vh;
+>> +
+>>         cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_HAS_EL2;
+>> +        /*
+>> +         * KVM exposes a VHE-only EL2 by default.  An nVHE-only EL2 can
+>> +         * only be selected at vcpu init time, so derive it from the
+>> +         * requested ID_AA64MMFR1_EL1.VH value.
+>> +         */
+>> +        if (arm_cpu_sysreg_prop_get(cpu, ID_AA64MMFR1_EL1_IDX,
+>> +                                    R_ID_AA64MMFR1_VH_SHIFT, &vh) &&
+>> +            vh =3D=3D 0) {
+>> +            cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_HAS_EL2_E2=
+H0;
+>> +        }
+>>     }
+>> }
+>>
+>> @@ -2286,6 +2328,16 @@ int kvm_arch_init_vcpu(CPUState *cs, Error **errp=
+)
+>>         return ret;
+>>     }
+>>
+>> +    uint64_t vh;
+>> +    if (arm_cpu_sysreg_prop_get(cpu, ID_AA64MMFR1_EL1_IDX,
+>> +                                R_ID_AA64MMFR1_VH_SHIFT, &vh) &&
+>> +        vh =3D=3D 0) {
+>> +        ret =3D kvm_arm_refresh_e2h0_idregs(cpu, CPU(cpu)->kvm_fd, errp=
+);
+>> +        if (ret) {
+>> +            return ret;
+>> +        }
+>> +    }
+>> +
+>=20
+> There should not be a need to explicitly refreshing this specific registe=
+rs.
+>=20
+> I think this should be handled by Eric=E2=80=99s series by refreshing all=
+ the ID=20
+> registers after write-back.
+>=20
+> Eric, what is your view on this?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+yes effectivity the value read for isar.idregs[] corresponding to not expli=
+citly set SYSREG props might be the one read from the "max" scratch vcpu an=
+d not the final one.
+So I think we need to fix that
 
->    *
->    * Called by softmmu_template.h, with iothread mutex not held.
->    */
+Thanks
+
+Eric> >=20
+> Thanks,
+> Khushit
+>>     if (cpu_isar_feature(aa64_sve, cpu)) {
+>>         ret =3D kvm_arm_sve_set_vls(cpu);
+>>         if (ret) {
+>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+>> index 0916a5fdb4..670b410a1a 100644
+>> --- a/target/arm/kvm_arm.h
+>> +++ b/target/arm/kvm_arm.h
+>> @@ -208,6 +208,8 @@ bool kvm_arm_el2_supported(void);
+>>  * KVM_ARM_VCPU_HAS_EL2_E2H0, and false otherwise.
+>>  */
+>> bool kvm_arm_el2_e2h0_supported(void);
+>> +
+>> +int kvm_arm_refresh_e2h0_idregs(ARMCPU *cpu, int fd, Error **errp);
+>> #else
+>>
+>> static inline bool kvm_arm_aarch32_supported(void)
+>> @@ -229,6 +231,12 @@ static inline bool kvm_arm_el2_e2h0_supported(void)
+>> {
+>>     return false;
+>> }
+>> +
+>> +static inline int kvm_arm_refresh_e2h0_idregs(ARMCPU *cpu, int fd,
+>> +                                              Error **errp)
+>> +{
+>> +    return 0;
+>> +}
+>> #endif
+>>
+>> /**
+>> --=20
+>> 2.34.1
+>>
+>=20
 
 

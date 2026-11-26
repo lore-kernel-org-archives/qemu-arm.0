@@ -1,103 +1,150 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8A604606A31C
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:17:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78060606A31C
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:26:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=Nrx0DTNf
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=P5Pffu5u;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=EkhzEmu3
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWii1-0008Ga-OB; Thu, 26 Nov 2026 18:16:57 -0500
+	id 1xWirW-0007me-Kr; Thu, 26 Nov 2026 18:26:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1xWihx-0008Ar-CW
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:16:53 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xWirV-0007m5-Jm
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:26:45 -0500
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1xWihv-00064N-JH
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:16:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1795735011;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Pemxv6+p2jbO1Ze6odVJgmKdnHXIU402L1Ae0wQ+2iw=;
- b=Nrx0DTNfjFzn22+QU8syg/cwVRm2SH4rtIoSlO+ArvojLTLeCR9swj9NNgQLklkh6QZArE
- fmQ1LVKFMkNOD6YlFrLnNShZS2Bs4/VVO7DmDudNasGRDBHSkUgT5fcTyB0lbdJSRbeSKd
- /bXCnpLMFMrFARDbcS4bkOK5UblpWtw=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-650-DTpZza7BPJSTd5ceM4mfsw-1; Thu, 26 Nov 2026 23:16:49 +0000
-X-MC-Unique: DTpZza7BPJSTd5ceM4mfsw-1
-X-Mimecast-MFC-AGG-ID: DTpZza7BPJSTd5ceM4mfsw_1795735009
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-921246186bfso142408976d6.0
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:16:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1xWirQ-0002FJ-3O
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:26:44 -0500
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6AQJw8xG3990014
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:26:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ XRXYRRCqMdaJaqcEqo3g2mU/t6yHIVGrW0dxlCVs9jE=; b=P5Pffu5um1w0OlQM
+ N5ErctICfa168LyuLTh7S24uO+2pV8AVZ37mWrEk2mwNRJypMBh8B/8qr5VwSjsc
+ Rp8B9RjgcajjHE3bHIxPwg0g8n7/4AM0mt4ScpB39Li3xB/GsOcWGo3jUe6LTXtL
+ 4Ymup7vPTJdhNlVaRzyy44IB24SoyEivVg4SEDQVGhMnHhxbcw9YqngeAClnh7Wb
+ zrosARMaDlJtUJ0daDi4yj7eNhexrG1VPcQDA17Cj/FobvmZDVYGn2ZXELz4HIjX
+ dGv3p42DslRWo5cE83d3RYLqbJ/Fkh4XR8xQQlW/+3Bbld2X5hCQYuyt0uSxDRbZ
+ 91IVbg==
+Received: from mail-dy1-f198.google.com (mail-dy1-f198.google.com
+ [74.125.82.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6ak0427f-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:26:30 +0000 (GMT)
+Received: by mail-dy1-f198.google.com with SMTP id
+ 5a478bee46e88-3869accaac2so4486489eec.1
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:26:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1795735590; x=1796340390; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=XRXYRRCqMdaJaqcEqo3g2mU/t6yHIVGrW0dxlCVs9jE=;
+ b=EkhzEmu3TkvqmKk9iRtBg402g2RcnYl+ulPmIc+uqVZDC3gr/XSEJ6P7hoXHapFpNM
+ TMDWwiak4ZPt63fb1NCWN0A5xj/mf0GCChfaGmHxoFjl3MMf1JN47voboLFZB7Hb6NNN
+ DFLJTMrgXr/Q3QA8jjWDiUYnp3DrvAKTaPQunCGygspFQCCOiERAF9PjLlwhUAESh0Wo
+ O5MY/9MoDmZ1jJKfbJe6n6c8h4mBF/PWllJWMzsiLwwWvOpQacuuRa7Cj/CYH4u013k/
+ thbwkiEu2qjB+MV5rV8MkfusqdAxZZWC2rVAuTV9+VH/oVJnUc0IjPFUssSSY5yePgth
+ oJUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795735009; x=1796339809;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Pemxv6+p2jbO1Ze6odVJgmKdnHXIU402L1Ae0wQ+2iw=;
- b=KAKiz83vOsLW1lK2ugYLxXnKKPUr6dg1Dz/qs42ETLC8YSyvL1fTGzdzWWiRgG3L8l
- SMbea0/1eVflgEGlOienDriQyW5GZb/IyjBda5asiYkLr0QYGCfMmUbgmzRmcYO5kRXJ
- RaOO5N4n6PyveOn/2KZW9msan0pGtMIgSRExo8IarWTX2UKEUxn5JUHeg1c1ocy0V5PT
- J7cqhzPNy5aHM3AAssdV2VUjKrFhbRCq3DKWOly/B8bqT+vQhE+u/W0rEfDnaQduzRZO
- Ych0pWyLfZMYyJFZ/WLOOgy1HWyfHblinADRiQVdH2ZZIKwqImEtKK8qfy5r6iibEj+3
- PUOg==
+ d=1e100.net; s=20260707; t=1795735590; x=1796340390;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=XRXYRRCqMdaJaqcEqo3g2mU/t6yHIVGrW0dxlCVs9jE=;
+ b=qfgLxV6cz6SDL128w9xzTky0vpQuwo8GDM2Dak1xuTLgLWMpz/Yf/ZUK0nTAw/Ngck
+ hFEjjD4PsuyrIwUi6EAdd1GgQqOGbXl41rAa1NuzhKGxmv5D4Xez4t24Vs0ctI2kzUIM
+ brr2Nup3DrnwaqiMMV8/WMAVMtZH3Oa1DEGwmeiNRdgoPHYkDAzQSzIloA1yhqwMj6qC
+ NWthRDnTOZ25VZ/jA3rdV2rpo6JUOmiPf/6yg526UcnuxW//8q5275GXDU7vhbXZyFCT
+ rlQqmiIsdIIOPtgthQ4iIvqhRPiETI4V7mNLlQuM45lkpusucv74nDUtN3pZ5X7yL8qK
+ U3Tw==
 X-Forwarded-Encrypted: i=1;
- AL+hErFrTePhVTqtXWxqDnfs0qkSGuSv3y0e8qD9L7ZIFk8jMaczwoGcCD5d7up0QOvXpu8GZv+dhIk6eQ==@nongnu.org
-X-Gm-Message-State: APuU4Z+cgq6Cdn8Ig9QIOuIJfBtcm+s/1/jfpfREqE4jDD/DJpTyUjkH
- laMUp0kirHQcwVNmzCjhpcmauyvig9U0Xr9F6JG6yYeVippfgpfi1CbcbDYenHZ22IDXh3nsXN5
- 1/pzXk0t3g8TTjwVr03w1I+YGZKXbP0yNYde3KBQZkOJc51juDgKHkA2t0Z4f6A==
-X-Gm-Gg: AZFdTZfRZbxummgbmd4rKBTRN3MdPKnyxIZ+IwSuvBN+ZBLaf3RbWtlx9e/ULFeqxos
- 57jMW45lqByeEZd5mtYvtrzoYYsXoXZE4M2XWjbcK2aIQtfeJZwlo8kophkvgtxQtxpxWdWGQ4A
- lAZ6LZSl5KHBOfefqbcZpfbnsXYM+FwSTZF3J22VjrXCAOv8T9CnsOxxMERiEANTF0aJqDTFMLs
- wEN/P2NuUDBI3psdKBQc5yf8TOAr9yxUbpSf8tHAy2VxIUi4MZr4bkDWdJ2BTGB7DLJXSUxJ6WM
- wiU6mqYsEuhehSEy2h5l21glQB/qxXxu9Fs+a/hapSXNjaW5o9o0mwCXuLDsrNpXlV0VH3may2F
- TXoofjQLzdC2PjE0N5+gjZuoZ7i9cMMZDPmd45Pl+M0p1
-X-Received: by 2002:a05:620a:2417:10b0:949:7bf4:3b47 with SMTP id
- af79cd13be357-949bbb8d5b2mr3048262185a.27.1795735008597; 
- Thu, 26 Nov 2026 15:16:48 -0800 (PST)
-X-Received: by 2002:a05:620a:2417:10b0:949:7bf4:3b47 with SMTP id
- af79cd13be357-949bbb8d5b2mr3048257685a.27.1795735007991; 
- Thu, 26 Nov 2026 15:16:47 -0800 (PST)
-Received: from localhost ([142.188.212.246]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-949bb3c2abesm1675207385a.26.2026.11.26.15.16.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Nov 2026 15:16:47 -0800 (PST)
-From: Peter Xu <peterx@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Juraj Marcin <jmarcin@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, peterx@redhat.com,
- Fabiano Rosas <farosas@suse.de>, Gavin Shan <gshan@redhat.com>,
- qemu-arm@nongnu.org
-Subject: [PATCH for-12.0 v2 8/9] arm/machine: Move all VMSTATE_VALIDATE()
- usages into post_load
-Date: Thu, 26 Nov 2026 18:16:30 -0500
-Message-ID: <20261126231631.3392756-9-peterx@redhat.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <20261126231631.3392756-1-peterx@redhat.com>
-References: <20261126231631.3392756-1-peterx@redhat.com>
+ AL+hErGJrMz/JKr7ZTc4b+jKw7IwHOiqqJ/cidhDBYOiw0trAoXXOuv0rjP0Vr3E+PGBU6/MnbvETj0hmg==@nongnu.org
+X-Gm-Message-State: APuU4Z/FkrKsY1UG6luGCIdQCAjGDaazmv/6JnaUS0zjUtVg98vrJyrw
+ GE5RIj9ub5XKkBJYwcfSwDxDQURlSwxJQHBlTnCVN4dent0gcq3b17YAX/C7zJMENdilvu4tYx8
+ fLc12cyg0nG1uyrNXryzEMjdFhwrRzqI1cw6Kypk9qVW5YPUo9YKIMFE=
+X-Gm-Gg: AZFdTZftosjf9JNpv2Ex1vuk10iaoe0jh0xRk5ZwtrNuXkfCGCNwmMX0XfXnKqzcnW0
+ YD6V/lUDC26hJZgZLFhe7Xw+ivYlFem7v21r7KnlCvpn2cEB+R8aH3tCgyMoSIJ56A3nKGL51Zj
+ FKJwUQS9CIWQkFPzIE1so5A5DG1d2cIK3JtpXO9Ni5jOlO8PnMlFFWkLk558EdgflLX9BKDP4Hf
+ yLwWAM4okUGzbVfkrWerU5+vGPw5yyHK+8muMYfRxRCEvkxT3gNhMtkmgcdftP17Vm9JrMUWVPf
+ i0+BEcyj4U7+o35NII9dxkwNoI9fxl0cEK9XXDXFJXrJhvXagPX1oBeLDZ6187K+CZ8kDqHaAur
+ EfxVptpq9HV9lntorDvBrmiy5Yf9XJWiLYNI5/82qCMojVt4ChffteYbBlvR6cjPKq17xj5XiuP
+ +A0oFDF3WQNf1dZBU0qe6C15RJrLtc8Km3GTKdqphSYyI=
+X-Received: by 2002:a05:693c:6395:20b0:375:6fed:8e71 with SMTP id
+ 5a478bee46e88-384b3986edamr23208465eec.7.1795735589579; 
+ Thu, 26 Nov 2026 15:26:29 -0800 (PST)
+X-Received: by 2002:a05:693c:6395:20b0:375:6fed:8e71 with SMTP id
+ 5a478bee46e88-384b3986edamr23208440eec.7.1795735589027; 
+ Thu, 26 Nov 2026 15:26:29 -0800 (PST)
+Received: from [192.168.1.199] (192-80-163-190.dyn.novuscom.net.
+ [192.80.163.190]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-386b1965c02sm33756662eec.27.2026.11.26.15.26.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 26 Nov 2026 15:26:28 -0800 (PST)
+Message-ID: <ee8de7d1-ed91-4e70-bac3-860c78bf5f3e@oss.qualcomm.com>
+Date: Thu, 26 Nov 2026 15:26:27 -0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: zvfBT_KJvErHTPzZYo6V4qlLfCzDAdp7jGvrFWni4lk_1795735009
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] target/arm: Split ARM_CP_IO as ARM_CP_IO_ENDTB +
+ ARM_CP_IO_BQL
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+References: <20261126223959.62899-1-philmd@oss.qualcomm.com>
+ <20261126223959.62899-2-philmd@oss.qualcomm.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20261126223959.62899-2-philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+X-Authority-Analysis: v=2.4 cv=T4oZ3PKQ c=1 sm=1 tr=0 ts=6b08c026 cx=c_pps
+ a=wEP8DlPgTf/vqF+yE6f9lg==:117 a=9852oil1ID9t5xBSyQ/BEA==:17
+ a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=EUspDBNiAAAA:8 a=haWXIRxN-KZGYTMq2MYA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=bBxd6f-gb0O0v-kibOvt:22
+X-Proofpoint-ORIG-GUID: JDo3flxVbKkstUy37r85qt387E8C1MuU
+X-Proofpoint-GUID: JDo3flxVbKkstUy37r85qt387E8C1MuU
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MiBTYWx0ZWRfX75V0/rmF6yYv
+ 5L34gBGJQj6ub2vx0INvNj51FFldmYVYbdSnGUKPm31YgCxcC3pCS+OFMGp8Dq283yXOlb0HRDd
+ 1WgrDhKH1CLDLi1aLI/LWknTkjWK4QfREiNltXmqPQnQmFl3ICUbUmyAEURKMySMDNlUBb2qR/Q
+ BD7cHLYqr578PpFRio7yGQCuLfRaot9whKltE+EeHUPSNq5qQiicTRiBlkA7vv3Ydwe/fAc4K5u
+ veKrgKIN8orTRnv2rcwmUPtKQfxWx+xw++pWIZal/nQTBhlyJozwQBpxxH+oj02nZSli6XImVjL
+ R7GwxcEvLKpqMKjODV/NyAIw2jzbqBYXJqAKqSHHuxYsY1RjImaMlFkiRqG7lviilvAJ+VRgBAQ
+ RYUZZrB4wBqeN6FM5mc4ti620BKwqCorPAqy6XyKCnSSJE8GGrZWlOvym5fdux7P3qNydzwR0nw
+ j2E3Ar5t0RRJVzS3WmQ==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MiBTYWx0ZWRfX5RUiov8/pGLs
+ gaH36tCRSIi32+4+ip0KkLvuOsu6ol0BaioOdfiOkFsuSl8xnfTJZ9kyT5e9J7qSyg0Qj00ET7W
+ iBedIc2b4kd6KgaGk4Q5+6dsUYTjqAc=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-26_05,2026-11-26_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 priorityscore=1501 spamscore=0 suspectscore=0 phishscore=0
+ lowpriorityscore=0 bulkscore=0 malwarescore=0 impostorscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611260092
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,186 +156,44 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-To pave way removing VMSTATE_VALIDATE(), move all four such uses into a
-post_load hook instead.
+On 11/26/2026 2:39 PM, Philippe Mathieu-Daudé wrote:
+> ARM_CP_IO both ends the TB at translation and takes the BQL
+> around the read/write hooks. Split it into two flags so a
+> register can end the TB without taking the BQL. ARM_CP_IO is
+> now their union, so existing users are unchanged. Update
+> multi-thread-tcg.rst document. No functional change.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> ---
+>  docs/devel/multi-thread-tcg.rst |  8 +++++---
+>  target/arm/cpregs.h             | 11 ++++++++++-
+>  target/arm/helper.c             |  4 ++--
+>  target/arm/tcg/op_helper.c      |  8 ++++----
+>  target/arm/tcg/translate-a64.c  |  2 +-
+>  target/arm/tcg/translate.c      |  2 +-
+>  6 files changed, 23 insertions(+), 12 deletions(-)
+> 
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Peter Xu <peterx@redhat.com>
----
- target/arm/machine.c | 90 ++++++++++++++++++--------------------------
- 1 file changed, 37 insertions(+), 53 deletions(-)
+After our conversation, looks good to split both cases.
 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index e86fa85a9b..b401593496 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -407,14 +407,6 @@ static const VMStateDescription vmstate_m_faultmask_primask = {
-  * just non-secure, we transfer both banks here rather than putting
-  * the secure banked version in the m-security subsection.
-  */
--static bool csselr_vmstate_validate(void *opaque, int version_id)
--{
--    ARMCPU *cpu = opaque;
--
--    return cpu->env.v7m.csselr[M_REG_NS] <= R_V7M_CSSELR_INDEX_MASK
--        && cpu->env.v7m.csselr[M_REG_S] <= R_V7M_CSSELR_INDEX_MASK;
--}
--
- static bool m_csselr_needed(void *opaque)
- {
-     ARMCPU *cpu = opaque;
-@@ -429,7 +421,6 @@ static const VMStateDescription vmstate_m_csselr = {
-     .needed = m_csselr_needed,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(env.v7m.csselr, ARMCPU, M_REG_NUM_BANKS),
--        VMSTATE_VALIDATE("CSSELR is valid", csselr_vmstate_validate),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -590,18 +581,6 @@ static bool pmsav7_needed(void *opaque)
-            !arm_feature(env, ARM_FEATURE_V8);
- }
- 
--static bool pmsav7_rgnr_vmstate_validate(void *opaque, int version_id)
--{
--    ARMCPU *cpu = opaque;
--
--    /*
--     * Check MPU_RNR in-bounds. If no MPU, we still migrate this field
--     * but number of regions == 0 and MPU_RNR is RAZ/WI so also 0
--     */
--    return cpu->env.pmsav7.rnr[M_REG_NS] < cpu->pmsav7_dregion ||
--        (cpu->pmsav7_dregion == 0 && cpu->env.pmsav7.rnr[M_REG_NS] == 0);
--}
--
- static const VMStateDescription vmstate_pmsav7 = {
-     .name = "cpu/pmsav7",
-     .version_id = 1,
-@@ -614,7 +593,6 @@ static const VMStateDescription vmstate_pmsav7 = {
-                               vmstate_info_uint32, uint32_t),
-         VMSTATE_VARRAY_UINT32(env.pmsav7.dracr, ARMCPU, pmsav7_dregion, 0,
-                               vmstate_info_uint32, uint32_t),
--        VMSTATE_VALIDATE("rgnr is valid", pmsav7_rgnr_vmstate_validate),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -695,31 +673,6 @@ static const VMStateDescription vmstate_pmsav8 = {
-     }
- };
- 
--static bool s_rnr_vmstate_validate(void *opaque, int version_id)
--{
--    ARMCPU *cpu = opaque;
--
--    /*
--     * Check MPU_RNR in-bounds. If no MPU, we still migrate this field
--     * but number of regions == 0 and MPU_RNR is RAZ/WI so also 0
--     */
--    return cpu->env.pmsav7.rnr[M_REG_S] < cpu->pmsav7_dregion ||
--        (cpu->pmsav7_dregion == 0 && cpu->env.pmsav7.rnr[M_REG_S] == 0);
--}
--
--static bool sau_rnr_vmstate_validate(void *opaque, int version_id)
--{
--    ARMCPU *cpu = opaque;
--
--    /*
--     * Check SAU_RNR in-bounds. If no SAU regions are implemented,
--     * we still migrate this field, but number of regions == 0 and
--     * SAU_RNR is RAZ/WI so also 0
--     */
--    return cpu->env.sau.rnr < cpu->sau_sregion ||
--        (cpu->sau_sregion == 0 && cpu->env.sau.rnr == 0);
--}
--
- static bool m_security_needed(void *opaque)
- {
-     ARMCPU *cpu = opaque;
-@@ -749,7 +702,6 @@ static const VMStateDescription vmstate_m_security = {
-         VMSTATE_VARRAY_UINT32(env.pmsav8.rlar[M_REG_S], ARMCPU, pmsav7_dregion,
-                               0, vmstate_info_uint32, uint32_t),
-         VMSTATE_UINT32(env.pmsav7.rnr[M_REG_S], ARMCPU),
--        VMSTATE_VALIDATE("secure MPU_RNR is valid", s_rnr_vmstate_validate),
-         VMSTATE_UINT32(env.v7m.mpu_ctrl[M_REG_S], ARMCPU),
-         VMSTATE_UINT32(env.v7m.ccr[M_REG_S], ARMCPU),
-         VMSTATE_UINT32(env.v7m.mmfar[M_REG_S], ARMCPU),
-@@ -761,7 +713,6 @@ static const VMStateDescription vmstate_m_security = {
-         VMSTATE_VARRAY_UINT32(env.sau.rlar, ARMCPU, sau_sregion, 0,
-                               vmstate_info_uint32, uint32_t),
-         VMSTATE_UINT32(env.sau.rnr, ARMCPU),
--        VMSTATE_VALIDATE("SAU_RNR is valid", sau_rnr_vmstate_validate),
-         VMSTATE_UINT32(env.sau.ctrl, ARMCPU),
-         VMSTATE_UINT32(env.v7m.scr[M_REG_S], ARMCPU),
-         /* AIRCR is not secure-only, but our implementation is R/O if the
-@@ -1177,11 +1128,48 @@ static bool cpu_post_load(void *opaque, int version_id, Error **errp)
-     ARMCPU *cpu = opaque;
-     CPUARMState *env = &cpu->env;
-     bool ignore_s_regs;
-+    bool valid;
-     int i, v;
- 
-     trace_cpu_post_load(cpu->cpreg_vmstate_array_len,
-                         cpu->cpreg_array_len);
- 
-+    if (env->v7m.csselr[M_REG_NS] > R_V7M_CSSELR_INDEX_MASK ||
-+        env->v7m.csselr[M_REG_S] > R_V7M_CSSELR_INDEX_MASK) {
-+        error_setg(errp, "CSSELR is invalid");
-+        return false;
-+    }
-+
-+    /*
-+     * Check MPU_RNR in-bounds. If no MPU, we still migrate these fields
-+     * but number of regions == 0 and MPU_RNR is RAZ/WI so also 0
-+     */
-+    valid = env->pmsav7.rnr[M_REG_NS] < cpu->pmsav7_dregion ||
-+        (cpu->pmsav7_dregion == 0 && env->pmsav7.rnr[M_REG_NS] == 0);
-+    if (!valid) {
-+        error_setg(errp, "rgnr is invalid");
-+        return false;
-+    }
-+
-+    valid = env->pmsav7.rnr[M_REG_S] < cpu->pmsav7_dregion ||
-+        (cpu->pmsav7_dregion == 0 && env->pmsav7.rnr[M_REG_S] == 0);
-+    if (!valid) {
-+        error_setg(errp, "secure MPU_RNR is invalid");
-+        return false;
-+    }
-+
-+    /*
-+     * Check SAU_RNR in-bounds. If no SAU regions are implemented,
-+     * we still migrate this field, but number of regions == 0 and
-+     * SAU_RNR is RAZ/WI so also 0
-+     */
-+    valid = env->sau.rnr < cpu->sau_sregion ||
-+        (cpu->sau_sregion == 0 && env->sau.rnr == 0);
-+    if (!valid) {
-+        error_setg(errp, "SAU_RNR is invalid");
-+        return false;
-+    }
-+
-     /*
-      * Handle migration compatibility from old QEMU which didn't
-      * send the irq-line-state subsection. A QEMU without it did not
-@@ -1426,10 +1414,6 @@ const VMStateDescription vmstate_arm_cpu = {
-         &vmstate_vfp,
-         &vmstate_m,
-         &vmstate_thumb2ee,
--        /* pmsav7_rnr must come before pmsav7 so that we have the
--         * region number before we test it in the VMSTATE_VALIDATE
--         * in vmstate_pmsav7.
--         */
-         &vmstate_pmsav7_rnr,
-         &vmstate_pmsav7,
-         &vmstate_pmsav8,
--- 
-2.56.0
+If I'm correct, we probably want to make sure there are no write
+function on those registers, no?
 
+It seems that all registers in next patch have only read access.
+
+For the naming and bikeshedding, I would favor to keep IO (as the
+default BQL version), and introduce CP_IO_NO_BQL (or CP_IO_BQL_FREE).
+The ENDTB thing does not really makes clear it's supposed to be
+thread_safe, out of its documentation.
+
+Regards,
+Pierrick
 

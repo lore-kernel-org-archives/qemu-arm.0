@@ -1,58 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B5F9606A31C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:06:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3122C606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:08:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=mBxsr5e2;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=q5qhF119
+	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=nDNEJQR0;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=YinvqJTG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nongnu.org;
 	 s=lists1p-gnu-org; h=From:In-Reply-To:MIME-Version:References:Subject:To:
-	Date; bh=NyJeqzWW+t/SEyfv5SxCWC3ourgNCAxFARKeag04br8=; b=mBxsr5e2VGBO/EDLiTKD
-	PXhZ7t6ePKYivLhdxER1G/8NQW8fCjTmHlEqtV05ZFLsSvMXlhVR2jdJdxVn149b+a+fZmIZBXVrV
-	b3nJsuNjFywPIivSU6NnqUONhS9wAs1LZyQgQhq30Nzg9eRNU4YuDEUV5Tn2qfgVr4PlI33u8ve1y
-	Z/Q69ZyxXE7Pii0OEntGN3t3FP7kmXy7Aqoqy7bA++Ep7hAx/Dta4IEhj1tVBIYPqcrGKV/+iQPoG
-	gw0US0y+cD3SZxYYFkGO2DU+JzDjRQNYioa9xzXEsX03uDELJ83ktg4Sm1xcYVWtiJoM+v5wl7ZNf
-	UYi7EJMYG6XN/A==;
+	Date; bh=sXZBIsSSj7xhSEsl87gkJUnoxihhymWMO6udIHtBDWk=; b=nDNEJQR06M7sza2Xs9w2
+	KJmxuMxZfL6VFai3olVxSWfl/09zDFGn+X9oPjJukibqExCCkSVm1AaoU+g+zDxv1ADDJ+czHDfas
+	tYe/IbZRthakkq4UR3plSEmwBOp8AoOg0N79WnHIHY0wn5PuXb3pymsN7r9ScC1BnKEDoOw44fBc+
+	MeKlUhCO6JXNgdSGYW9aF/1LXxYW865p21cUmnjLPGzG3BK4Qi7Zb8PnD2hkh5GcGH8NPbpof+8kZ
+	r3xzd2slhuSlGel3VvyQhi/rjngYberkvbhH1bbwL8xmAG8UZHxYfBCY5gmj//ezGA2uDleHQqjsT
+	wQLDndm70JYClw==;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWtmy-0006p1-Tu; Fri, 27 Nov 2026 06:06:48 -0500
+	id 1xWtoB-0008T8-RM; Fri, 27 Nov 2026 06:08:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtme-0006dj-RA; Fri, 27 Nov 2026 06:06:28 -0500
+ id 1xWto3-00083I-WA; Fri, 27 Nov 2026 06:07:56 -0500
 Received: from rev.ng ([94.130.142.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtmb-0005Lf-8l; Fri, 27 Nov 2026 06:06:27 -0500
+ id 1xWto2-0006Cs-GB; Fri, 27 Nov 2026 06:07:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
  s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
- List-Help; bh=NyJeqzWW+t/SEyfv5SxCWC3ourgNCAxFARKeag04br8=; b=q5qhF119HiQ5Ezd
- vbzablZafG5JXE9h7xFVItT0xHWQNdMDchQZ+0MNdElqo8esgebblv2qgJYyD4XNi6Shqv8lYwh3B
- hYMtA6CBVeSwB1gZZk4MmNN6zy82jZHUequgPK1QkPR8M49+0JMj8JMRVaTtoWAFG1zoYnJjc68gq
- +8=;
-Date: Fri, 27 Nov 2026 12:12:47 +0100
+ List-Help; bh=sXZBIsSSj7xhSEsl87gkJUnoxihhymWMO6udIHtBDWk=; b=YinvqJTGMxYwMH3
+ s5DbQDT3yEFu+RUfmrsSrv5Ct1Yy8yw7EPgC8w6m0e+jvh1x8dYS9EwCdCid0HdjEjzEc/JpIrUfw
+ ujPpqgq3r81zruF/R6S8sI8IDsyB1vm0QLqb/JOkns8tUQLDkovS/maIfGLNSYQ7kqXmB/NZtc/oS
+ us=;
+Date: Fri, 27 Nov 2026 12:14:18 +0100
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Michael Rolnik <mrolnik@gmail.com>
-Subject: Re: [PATCH 06/24] target/avr: Use 64-bit TB flags
-Message-ID: <awllq9m6qMNoEQI8@hive.localdomain>
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 09/24] target/i386: Use 64-bit TB flags
+Message-ID: <awll95bByooTc7BW@hive.localdomain>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-7-philmd@oss.qualcomm.com>
+ <20261126233604.67722-10-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261126233604.67722-7-philmd@oss.qualcomm.com>
+In-Reply-To: <20261126233604.67722-10-philmd@oss.qualcomm.com>
 Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
  helo=rev.ng
 X-Spam_score_int: -20
@@ -76,8 +76,8 @@ From:  Anton Johansson via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
@@ -87,38 +87,49 @@ On 27/11/26, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > ---
->  target/avr/cpu.c       | 2 +-
->  target/avr/translate.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  target/i386/tcg/tcg-cpu.c   | 3 ++-
+>  target/i386/tcg/translate.c | 4 ++--
+>  2 files changed, 4 insertions(+), 3 deletions(-)
 > 
-> diff --git a/target/avr/cpu.c b/target/avr/cpu.c
-> index 83710f565182..689d3f6ac5f5 100644
-> --- a/target/avr/cpu.c
-> +++ b/target/avr/cpu.c
-> @@ -58,7 +58,7 @@ static int avr_cpu_mmu_index(CPUState *cs, bool ifetch)
->  static TCGTBCPUState avr_get_tb_cpu_state(CPUState *cs)
+> diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
+> index 167ff7695ae6..bdfd08107d6a 100644
+> --- a/target/i386/tcg/tcg-cpu.c
+> +++ b/target/i386/tcg/tcg-cpu.c
+> @@ -53,7 +53,8 @@ static void x86_cpu_exec_exit(CPUState *cs)
+>  static TCGTBCPUState x86_get_tb_cpu_state(CPUState *cs)
 >  {
->      CPUAVRState *env = cpu_env(cs);
-> -    uint32_t flags = 0;
-> +    uint64_t flags = 0;
+>      CPUX86State *env = cpu_env(cs);
+> -    uint32_t flags, cs_base;
+> +    uint64_t flags;
+> +    uint32_t cs_base;
+>      vaddr pc;
 >  
->      if (env->fullacc) {
->          flags |= TB_FLAGS_FULL_ACCESS;
-> diff --git a/target/avr/translate.c b/target/avr/translate.c
-> index 3c5760609702..6a4e36f326af 100644
-> --- a/target/avr/translate.c
-> +++ b/target/avr/translate.c
-> @@ -2660,7 +2660,7 @@ static bool canonicalize_skip(DisasContext *ctx)
->  static void avr_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+>      flags = env->hflags |
+> diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
+> index 719771032ff5..af98125cd718 100644
+> --- a/target/i386/tcg/translate.c
+> +++ b/target/i386/tcg/translate.c
+> @@ -122,7 +122,7 @@ typedef struct DisasContext {
+>  
+>      CCOp cc_op;  /* current CC operation */
+>      int mem_index; /* select memory access functions */
+> -    uint32_t flags; /* all execution flags */
+> +    uint64_t flags; /* all execution flags */
+>      int cpuid_features;
+>      int cpuid_ext_features;
+>      int cpuid_ext2_features;
+> @@ -3535,7 +3535,7 @@ static void i386_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cpu)
 >  {
->      DisasContext *ctx = container_of(dcbase, DisasContext, base);
-> -    uint32_t tb_flags = ctx->base.tb->flags;
-> +    uint64_t tb_flags = ctx->base.tb->flags;
->  
->      ctx->cs = cs;
->      ctx->env = cpu_env(cs);
+>      DisasContext *dc = container_of(dcbase, DisasContext, base);
+>      CPUX86State *env = cpu_env(cpu);
+> -    uint32_t flags = dc->base.tb->flags;
+> +    uint64_t flags = dc->base.tb->flags;
+>      uint32_t cflags = tb_cflags(dc->base.tb);
+>      int cpl = (flags >> HF_CPL_SHIFT) & 3;
+>      int iopl = (flags >> IOPL_SHIFT) & 3;
 > -- 
 > 2.55.0
+> 
 > 
 
 Reviewed-by: Anton Johansson <anjo@rev.ng>

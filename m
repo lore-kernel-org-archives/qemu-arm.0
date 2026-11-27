@@ -1,146 +1,143 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7D130606A31E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 12:11:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 96EB0606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 12:30:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=VZYdlOQ4;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=HqS04aBo
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=Fc+VMftG;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=cOnwmgxp
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWumd-00042M-FP; Fri, 27 Nov 2026 07:10:31 -0500
+	id 1xWv5j-0004b0-In; Fri, 27 Nov 2026 07:30:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWuly-0003eM-FG
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 07:09:56 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1xWv5h-0004Zt-ON
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 07:30:13 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWulu-0006P6-Lq
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 07:09:50 -0500
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ id 1xWv5e-0006Nu-MR
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 07:30:13 -0500
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6ARAsNZi3610402
- for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 12:09:45 GMT
+ 6ARApLU7273499
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 12:30:08 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- bfCHy1aGwvGQoIT9FaQIWSQLz57DDUsdUsnvI1uV63U=; b=VZYdlOQ47dz8J7cr
- Jy8I/quOoRtLYGSl2X2JMq8NnKvnXB6VM3xUEBeve/qPoddhaH6Oueom24KchKRg
- MK4ybHitMh0KqHqu8C+rIOJvKUGEWYFq8GXgvOQ9HIDy59UxcxZzK0Bg5V+u4YjX
- Gxz6LUd9wScnfkJ1HcZoFToWxSvQgKlzZBoVmbtcpP5S8l9iMHY3CBbPvvQ/vnWd
- JmKlnSUFUu29asOOmdK1BREtTPd/8Cexk4dxf1fYpgD54JoivyN+lp2TPO/9+yZi
- /nQh3u0RbLaLU7b83sLAO1Hg6tqstz4M+p4DFQp5E4t46/8hZsuNdNKVENzXV75T
- 8exmmQ==
-Received: from mail-yw1-f200.google.com (mail-yw1-f200.google.com
- [209.85.128.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j73dh9hvu-1
+ k7JqZatHZnHEIGwwjJrjx0rXYDJvA5LRez0gYS0yY20=; b=Fc+VMftGlGzZYWpa
+ e4Fk0GEcIT76GMBsvR6vtSSrjocybOS3WwLkqk2PhC4e538GL6LTZdlDEHohZy6N
+ 5/VwjWCG5p2TkD+J1TB2JYuo/Z6zqFBQw/6Xoo8WKfSc0GRuQHxmy6QnrBAeqNKF
+ +/dWs+478s2o9kNV73dU6Du+KfL66TwLfzKW+sUCOCfhR63+4xKo98NXR/WomC/A
+ 58uSpwOXaTkf0XvINkzmraKTLmfJfXWAe1HfKX0mAPwCvP4bK6okgI4FtLBzK/Bz
+ Pa/ahvlavPqS3tPxHwGl7DSUFZp3FrubTSpD1daW3r/y68bZcACVP2cLWndE+UID
+ QM5qBQ==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6u49aymp-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 12:09:45 +0000 (GMT)
-Received: by mail-yw1-f200.google.com with SMTP id
- 00721157ae682-8b4bfc0b441so99615657b3.2
- for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 04:09:45 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 12:30:08 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-91b937ecbb4so129666906d6.2
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 04:30:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795781384; x=1796386184; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ d=oss.qualcomm.com; s=google; t=1795782607; x=1796387407; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=bfCHy1aGwvGQoIT9FaQIWSQLz57DDUsdUsnvI1uV63U=;
- b=HqS04aBo7fEBYeXjWxhFr4697Oi1JV9XmWYJGmC1Gf6CY/XOK2a/2SR65KDmVT/ExA
- etjranJT7hpIJxJOqPyD/wp1pByV4eG3B87zGJCLkSZoVwAG5Nfs7aey28T8BxnG9lj8
- h1xMGno8dWw51/z83G2/SjmzBAWdF+fscoJjc56pRmv3NBxfdY3aoasv5oYioyQS16ru
- N77rA/PfCOlOq0cR0KN5qAji2Jztx1KfVK8aK2evmrYBQ7Jm30Kbfhtcs81+a5l1p4cg
- P5NxG/lAcVAdGJD0g+FSpadM5QUILiPyi227+R+gIzN2XvZaAPni8I6ZOjzB7ngpwtsJ
- 6mRg==
+ bh=k7JqZatHZnHEIGwwjJrjx0rXYDJvA5LRez0gYS0yY20=;
+ b=cOnwmgxpMnDzak+SpD1WGJzfPbP7zbCnwpeR91IHJyjjNO1dq5glIjN6fEoOP8aLub
+ 6rvJOrBw83yCYgqoEXf5l979xAvO84s6Nf52BihLe7vgqBcPWan+EcFna0mdRPt2XISG
+ 3Xkdubl640BZh8LUEkkYzof63bWBoGfJfNublUxdkSNcPXB0A0BE9Cn6ZZETgeogFhVV
+ q2gn/6pAHcX2GbcT3DNKsCRUJ2SbX5v5vFQfat+Z+bNJyfnSkiKWnB+IXKg1hZUsZr6i
+ 0vx3mXaRJOug0gE9QnJSXP46e8PR3o53F40NX2ReW9HGzLK492VZodV+t38r67LTj2A2
+ eYhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795781384; x=1796386184;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ d=1e100.net; s=20260707; t=1795782607; x=1796387407;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=bfCHy1aGwvGQoIT9FaQIWSQLz57DDUsdUsnvI1uV63U=;
- b=Av2afI9nCgSLMKW0XVVe8jy4AUn7IXDFWcVT9loojfKPDfkSB5IYwV1w6P3kWQLOFC
- Mw8H0M0annnMAii+OtApOhDbGjrJyZyCdClTGJtzmhneRxNClSjtHQ3Zzm4wHqQatK50
- i9FABJPpJD/j+PpJFgN9QKKMRbAG7DJmHhENzLkbSnEsQvE6RSIKj/gnjSwF11B/EbPQ
- MvJnw2absRbWsYya0f4JcIc1prM8IOYX1zd3ViczuYAoqHuGJlVx5ClmcG4AudseU8cd
- rdGU5oEtPirsglkZc8argT1uzX9TQIGSDwKuaZbO3atgj4/lCvAc+5SwPCwe2Udfc+hr
- kOVQ==
+ bh=k7JqZatHZnHEIGwwjJrjx0rXYDJvA5LRez0gYS0yY20=;
+ b=jKbGRpXyBi6MFkk5KHefFOsw/6yLDmTNw6mrYmXgEu9hpgBVHfLCLU3fDO3hZCrns7
+ Edqn3OcHYyFwXv9A9ign8dAw9/fBMtFXLFLBUtKY9bDjf73t2IavPhGXtD5hz2YOgnwl
+ 5n+QU/Iux0nk16SQ3z3NPOuy8/NivPh7ihf3yOItUukw+BoB/PrPthBiUgtmKAuB3Tg7
+ jgxQ8FKZ3GPilnTrGywxEeF8cZO3BQNxd6+4j8IoK+E3N+/5EtTDZDB7VtjmC/IVL9p8
+ 7RH7b05hPGsQo5Zmv4zzOJ5fNRMmhRw6LXjbJC2eoHUzIVdcHtqOghF16w0rR56HK9mk
+ fzlg==
 X-Forwarded-Encrypted: i=1;
- AL+hErFtRS091Rtbl6VxxzZVa2XwnGB8qcB4laLy2WdYPn6V330U9GoLA8PbiKP++2RrRgRRqGuu/eVw8w==@nongnu.org
-X-Gm-Message-State: APuU4Z/021snhaXabPOXq43F8Vo93t0hKelsoD12sssXDy1aESfpCyRe
- HzSdFa+AImJxHcW+Y69w7RGrOraqrv/BhFVpqf2ERjuansn86sHP4YYrd6x2obXyyyNIUbCxHHA
- G7FyshmqHsuYeHeNg8NeUXgh8erwxcUNMh0OM38qaqMkawSN0usuFL+I=
-X-Gm-Gg: AZFdTZe3ylb1BeUHPNwVzEdO5nWT+4zN8Fp8gsgRLfeyAfhC5Ah4B3t4kmFuTDvBo+A
- AzlWa0w7t4fMmCtyJ7huA3FjQ8Q0USK/f7lIYct0eRB2CSyebq/TySypT+/y395VzwxKCHbz797
- uFveKtHeAdgbO3ekbCZtWji/WH5y/iPTg0/YXBBuSN8MB8vsH7IBHCFumuy5HLE18EgLRpge1uA
- i3YvrlbzvXa6nQIN7Mnv5VRv5Txt+GZL7eeimvGIKtL/of7TIpbJjE2tDvWYnW5Y6cKKw/oNEEV
- XMZdiQT2FdUZls1L+avhYC3iOf3ommxYBqkGyRovplA2OzNaJF0GZT/dLWcRfhMUpd+F7WzH8eQ
- MJ0yE/iyHibh0Cz+GHSKkO9KFB3vFtBlTd4q8dOW+6rF6QwfRP499D7Pc4UdqE+642S/k09RGcT
- l3TBU54Lk=
-X-Received: by 2002:a05:690c:6887:b0:8b4:c1ef:a7a6 with SMTP id
- 00721157ae682-8b52043f895mr95357187b3.12.1795781383524; 
- Fri, 27 Nov 2026 04:09:43 -0800 (PST)
-X-Received: by 2002:a05:690c:6887:b0:8b4:c1ef:a7a6 with SMTP id
- 00721157ae682-8b52043f895mr95356897b3.12.1795781383099; 
- Fri, 27 Nov 2026 04:09:43 -0800 (PST)
+ AL+hErGXPkXa8doPi1l8GNzHSfJ6GsDVO9q4KoqKN6HDfQ64g0JzXSwjCHjyp/LBYXQf/X+ZyayzkqQtPQ==@nongnu.org
+X-Gm-Message-State: APuU4Z/AXbgwZ/B9EaKdtfN8I1IeEamUve6edVsku0zIyGqAf0vJFpFJ
+ e0d92kTN8hs/gM36KveuZbE1WDydubKLR17/elO5/ocW/iY2Mj9MqEPA9xq6oOfIlTlcvnsplkX
+ McIpE7KUgixCwoc0tSEhLWKM4R8uEmbq1FE5JEciuwNDnt5I94EoWpl4=
+X-Gm-Gg: AZFdTZcIGAE7Wf7vtF0y4UpNrgKCAjMptbzIaf1afF9X+ZHlNjJKzPQYXfQXKp0F1Hg
+ NofviqKmpYHD9W3/MLSBKDFjWo+kj4hMd7bpeyGEJdeYUqhNWtwVTWi/N6qGVNUQPMx3/cygWkN
+ 46vjEi3ZFjI7sQF/M/b/D/wKHD/aSFO9ALBH3+nsN+JJDC42J+cMg4xyAS3EnelGSBUdZMIypGx
+ bTI9W9dDgX4pLiBo+fI3SMmKRowgFrSfuxITf54fgTFQUdLnzvHASk8kAthqnp5iR0ZEkzniAwr
+ UWMvtERmGCAcMekyKrd7OnldlmLEQO5cs9IbxM6JS1rcV7XRMHIgB/r8TapjqOa6nXnMN034qt0
+ UYynWy2TvLOtSFlKsuUoWhvZTq2a1d6RSm1l/2nMsupYSfF9UWOFaJbUxyzAWp+rYV2NgilnPtY
+ tPLLEHnrA=
+X-Received: by 2002:a05:620a:460e:b0:949:7792:1106 with SMTP id
+ af79cd13be357-949ba823b70mr4232239585a.1.1795782607182; 
+ Fri, 27 Nov 2026 04:30:07 -0800 (PST)
+X-Received: by 2002:a05:620a:460e:b0:949:7792:1106 with SMTP id
+ af79cd13be357-949ba823b70mr4232230585a.1.1795782606497; 
+ Fri, 27 Nov 2026 04:30:06 -0800 (PST)
 Received: from [192.168.69.202] (pmd666.hd.free.fr. [82.67.153.177])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab658e2c8csm47824160f8f.2.2026.11.27.04.09.41
+ 5b1f17b1804b1-4bb905f1489sm448989185e9.0.2026.11.27.04.30.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Nov 2026 04:09:42 -0800 (PST)
-Message-ID: <4ec0f721-e206-4891-8987-87ec298bd81a@oss.qualcomm.com>
-Date: Fri, 27 Nov 2026 13:09:41 +0100
+ Fri, 27 Nov 2026 04:30:05 -0800 (PST)
+Message-ID: <2f8ed23c-8994-4ce5-9bbb-4ffc333c98b5@oss.qualcomm.com>
+Date: Fri, 27 Nov 2026 13:30:04 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/24] target/ppc: Use 64-bit TB flags
-To: Chinmay Rath <rathc@linux.ibm.com>, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Anton Johansson <anjo@rev.ng>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Nicholas Piggin <npiggin@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>
-References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-16-philmd@oss.qualcomm.com>
- <60270254-3b7e-4d83-8549-7b8f64845adf@linux.ibm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: Re: [PATCH 03/24] accel/tcg: Widen TranslationBlock::flags to 64 bits
 Content-Language: en-US
-In-Reply-To: <60270254-3b7e-4d83-8549-7b8f64845adf@linux.ibm.com>
+To: Anton Johansson <anjo@rev.ng>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
+ <20261126233604.67722-4-philmd@oss.qualcomm.com>
+ <awlUl2by0PPZ2K7N@hive.localdomain>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <awlUl2by0PPZ2K7N@hive.localdomain>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI3MDA0OCBTYWx0ZWRfXx/L41zyK15d9
- 6UmBbP91j8WOl2DjuTzhxDBR6bcGDK1jeziGcr7qHHFZUykgopthi2n3ywlOQEI9e/KJ1qnNGnd
- re/H6h4TX9t5oQuepaWDx4LkNGAmZS+t9imG8SBHRjAdmSauxTEaNVAT0vgsoDiBse9K++jnQxq
- d0cSu2JIDXsARMJFiUB6fnwrlQ7XkGMBZaruixD+qMhjhwEye1tAJokEykFm/DYGctF+vd94haT
- FmuNNMRWzAkqkQJqtoF9Gw1ikuA4tcZ9JvMuFNlXs+FWBp3MyT6Q5GZ2m3r7p2IDPRmL2Yq5z/U
- 6yYhK4ptf2duGU+LNQjopyCfNlyFH0tSJ1xYVPGivEkTPlbYY3k8rsCc4qT5H8vVjKqb3F59IkW
- ERoou4sGwKH3sQrCv5Uq6VU41BcHWRx4Hsf053e3lbFLTrOFPfT7zMFM2fGZej8upO+iJE/MnRx
- Xz4YuEbmON50Kt4Il3Q==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI3MDA0OCBTYWx0ZWRfXzoZ7oTiJx1pD
- DSqA68fIbUDUu73tOYLbM8Whwq49tLDf0pRqBogZ9SlDZ+1vZvnTz7aK+IIZYNcYI4RaOEUGWJm
- 82IMLgK8iK/izDah4iGD99nBwTolxMk=
-X-Authority-Analysis: v=2.4 cv=FfiiV5+6 c=1 sm=1 tr=0 ts=6b097309 cx=c_pps
- a=NMvoxGxYzVyQPkMeJjVPKg==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
+X-Proofpoint-GUID: XHb7Dtoilp4KJmD8xc5s3qG_IqK8U0Up
+X-Proofpoint-ORIG-GUID: XHb7Dtoilp4KJmD8xc5s3qG_IqK8U0Up
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI3MDA0OSBTYWx0ZWRfX40eYN5wgU6v9
+ R0difClg2facdqnFtg9crqKA0pUqtYfZcHf0et3hh1TP53e4k5uXSS8VVvK6HQFs+IJ1qdBzO+t
+ c3OxrKCJi44fDa985WS21BKv6m0Sc3s=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI3MDA0OSBTYWx0ZWRfX7G127w8Dtw/2
+ nRaD9QXyel+RkKL3NqKln726hQ4pCU6Wctc35aXZyEvJw7Dy2lNZZ3sK/vgIg1/CzPSmJCiEVgr
+ oIhlPwoDdiDbMD0OIFNvqNOjFBPmLuq2tyrsnsXU1MbdVG+eTO4EujZ4fDNsgl/owcxxRf3G0En
+ i5cWqPdEeyQWYnExpn4MYxMkWZ8YxJyUM9TUjb28g6oop3Xc4yO30t2z4rFoXA/BJTafCM6FT24
+ YXEMtmOvt5JYMe4rIbGlXA1RpBfayzNyEKUkdDUSIcNA7vHTmwF6lKBt3uX0G1WLxywYRuy13Da
+ tOVL6Eb5QmR47k8xMPoZ9CTg6k/YZG3PrbkxSB51+mt6iJupypJOVWUL9wHHcAq1wku3jwyFRqC
+ b9FDI2OtQ1T1BtqM8VSXJnQaSb8X0vOxxOHKj5TnC5N7xjYLKjoVs/RsMh0H11mrzCCYa4jWfMK
+ uLS/gqt+yoFYnR/M2ZA==
+X-Authority-Analysis: v=2.4 cv=A875rKWG c=1 sm=1 tr=0 ts=6b0977d0 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
  a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
- a=EUspDBNiAAAA:8 a=VnNF1IyMAAAA:8 a=OCz7AubN24_iuOGhtk4A:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=kLokIza1BN8a-hAJ3hfR:22
-X-Proofpoint-GUID: 1VjF_XKbbZevHBN0YIQGAeMId9WmluWI
-X-Proofpoint-ORIG-GUID: 1VjF_XKbbZevHBN0YIQGAeMId9WmluWI
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=EUspDBNiAAAA:8 a=KnPQmDxLMlpLnhrb3zkA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=1HOtulTD9v-eNWfpl4qZ:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-27_02,2026-11-26_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 priorityscore=1501 suspectscore=0 lowpriorityscore=0
- clxscore=1015 spamscore=0 impostorscore=0 adultscore=0 bulkscore=0
- malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
- definitions=main-2611270048
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ phishscore=0 spamscore=0 lowpriorityscore=0 bulkscore=0 malwarescore=0
+ priorityscore=1501 adultscore=0 clxscore=1015 suspectscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611270049
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -167,109 +164,65 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 27/11/26 08:57, Chinmay Rath wrote:
-> 
-> On 11/27/26 05:05, Philippe Mathieu-Daudé wrote:
->> TranslationBlock::flags and TCGTBCPUState::flags are now
->> 64-bit, use matching types for the values derived from them.
+On 27/11/26 12:03, Anton Johansson via qemu development wrote:
+> On 27/11/26, Philippe Mathieu-Daudé wrote:
+>> 32-bit host support was removed in v11.0.0 (with commit 372ec46b9f
+>> "meson: Reject 32-bit hosts"), so there is no reason to keep the TB
+>> flags 32-bit. The wider field fills the 4-byte hole between icount
+>> and tc, leaving sizeof(TranslationBlock) unchanged. Widen
+>> TCGTBCPUState::flags too.
+>>
+>> Feed the upper 32 bits into the TB hash, and adapt format string.
 >>
 >> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-> Hi Philippe,
-> Few months back I was wondering why cs_base was used as an extension 
-> instead of extending flags to 64 bits. With this series, now I 
-> understand that it was to support 32 bit hosts. Thanks for that!
+>> ---
+>>   accel/tcg/tb-hash.h              | 5 +++--
+>>   include/accel/tcg/tb-cpu-state.h | 2 +-
+>>   include/exec/translation-block.h | 2 +-
+>>   accel/tcg/cpu-exec.c             | 2 +-
+>>   4 files changed, 6 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/accel/tcg/tb-hash.h b/accel/tcg/tb-hash.h
+>> index f7b159f04cb6..819b594618aa 100644
+>> --- a/accel/tcg/tb-hash.h
+>> +++ b/accel/tcg/tb-hash.h
+>> @@ -63,9 +63,10 @@ static inline unsigned int tb_jmp_cache_hash_func(vaddr pc)
+>>   
+>>   static inline
+>>   uint32_t tb_hash_func(tb_page_addr_t phys_pc, vaddr pc,
+>> -                      uint32_t flags, uint64_t flags2, uint32_t cf_mask)
+>> +                      uint64_t flags, uint64_t flags2, uint32_t cf_mask)
+>>   {
+>> -    return qemu_xxhash8(phys_pc, pc, flags2, flags, cf_mask);
+>> +    /* Fold the upper flag bits into the cf_mask slot. */
+>> +    return qemu_xxhash8(phys_pc, pc, flags2, flags, cf_mask ^ (flags >> 32));
+>>   }
 > 
-> I was wondering if PPC env's internal hflags should also be extended to 
-> 64 bits with this, but I guess that can wait for when we actually have 
-> more than 32 bits needed there.
-> With that,
+>  From what I can tell, while cf_mask ^ (flags >> 32) does increase the
+> probability for hash collisions it should still be extremely rare.
+> Currently the only possibility for extra collision is with the riscv ALTFMT,
+> BIG_ENDIAN, SDEXT_STEP fields and CF_COUNT_MASK, from what I can tell.
+
+Hmm qemu_xxhash8() takes 256 bits, but the lookup key needs 288.
+
+IIUC your analysis, better to hash the upper 32-bit flags and xor them,
+so they don't share slot with cflags, as:
+
+    return qemu_xxhash8(phys_pc, pc, flags2, flags, cflags)
+           ^ qemu_xxhash2(flags >> 32).
+
+?
+
+Cost is of one extra xxhash32 on a tb_jmp_cache miss.
+
+I'll rename the misleading 'cf_mask' argument upon respin, we pass
+the full cflags since bf253ac606de ("accel/tcg: drop the use of
+CF_HASH_MASK and rename params").
+
+> IMO, for the time being this wouldn't cause any real performance issues
+> compared to say adding an extra word to qemu_xxhash8().
 > 
-> Reviewed-by: Chinmay Rath <rathc@linux.ibm.com>
+> Reviewed-by: Anton Johansson <anjo@rev.ng>
+> 
 
-Thanks!
-
-Easy enough:
-
--- >8 --
-Author: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Date:   Fri Nov 27 12:59:28 2026 +0100
-
-     target/ppc: Widen CPUPPCState::hflags to 64 bits
-
-     env->hflags uses almost all 32 bits: HFLAGS_DMMU_IDX is
-     bit 29, and the composite dmmu_idx occupies bits 29..31.
-     Widen CPUPPCState::hflags and the helpers accessing it to
-     64 bits (adapting format strings), so more hflags can be
-     added.
-
-     Suggested-by: Chinmay Rath <rathc@linux.ibm.com>
-     Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 0f44096bad77..c8c9578f413f 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1436,3 +1436,3 @@ struct CPUArchState {
-      /* These resources are used only in TCG */
--    uint32_t hflags;
-+    uint64_t hflags;
-      target_ulong hflags_compat_nmsr; /* for migration compatibility */
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 7f3036d903ea..8675a8d772f4 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7610,3 +7610,3 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, int 
-flags)
-      qemu_fprintf(f, "MSR " TARGET_FMT_lx " HID0 " TARGET_FMT_lx "  HF "
--                 "%08x iidx %d didx %d\n",
-+                 "%016" PRIx64 " iidx %d didx %d\n",
-                   env->msr, env->spr[SPR_HID0], env->hflags,
-diff --git a/target/ppc/helper_regs.c b/target/ppc/helper_regs.c
-index acf74c543a17..0ed188c4d70b 100644
---- a/target/ppc/helper_regs.c
-+++ b/target/ppc/helper_regs.c
-@@ -83,5 +83,5 @@ static bool hreg_check_bhrb_enable(CPUPPCState *env)
-
--static uint32_t hreg_compute_pmu_hflags_value(CPUPPCState *env)
-+static uint64_t hreg_compute_pmu_hflags_value(CPUPPCState *env)
-  {
--    uint32_t hflags = 0;
-+    uint64_t hflags = 0;
-  #if defined(TARGET_PPC64)
-@@ -116,5 +116,5 @@ static uint32_t 
-hreg_compute_pmu_hflags_value(CPUPPCState *env)
-  /* Mask of all PMU hflags */
--static uint32_t hreg_compute_pmu_hflags_mask(CPUPPCState *env)
-+static uint64_t hreg_compute_pmu_hflags_mask(CPUPPCState *env)
-  {
--    uint32_t hflags_mask = 0;
-+    uint64_t hflags_mask = 0;
-  #if defined(TARGET_PPC64)
-@@ -130,3 +130,3 @@ static uint32_t 
-hreg_compute_pmu_hflags_mask(CPUPPCState *env)
-
--static uint32_t hreg_compute_hflags_value(CPUPPCState *env)
-+static uint64_t hreg_compute_hflags_value(CPUPPCState *env)
-  {
-@@ -134,3 +134,3 @@ static uint32_t 
-hreg_compute_hflags_value(CPUPPCState *env)
-      uint32_t ppc_flags = env->flags;
--    uint32_t hflags = 0;
-+    uint64_t hflags = 0;
-      uint32_t msr_mask;
-@@ -266,9 +266,10 @@ TCGTBCPUState ppc_get_tb_cpu_state(CPUState *cs)
-      CPUPPCState *env = cpu_env(cs);
--    uint32_t hflags_current = env->hflags;
-+    uint64_t hflags_current = env->hflags;
-
-  #ifdef CONFIG_DEBUG_TCG
--    uint32_t hflags_rebuilt = hreg_compute_hflags_value(env);
-+    uint64_t hflags_rebuilt = hreg_compute_hflags_value(env);
-      if (unlikely(hflags_current != hflags_rebuilt)) {
-          cpu_abort(env_cpu(env),
--                  "TCG hflags mismatch (current:0x%08x rebuilt:0x%08x)\n",
-+                  "TCG hflags mismatch "
-+                  "(current:0x%016" PRIx64 " rebuilt:0x%016" PRIx64 ")\n",
-                    hflags_current, hflags_rebuilt);
----
 

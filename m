@@ -1,95 +1,95 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1344606A32D
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 17:21:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B7FF606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 17:32:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=ovq1T8UV
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=hBA9PWHk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWzdW-00011s-JT; Fri, 27 Nov 2026 12:21:26 -0500
+	id 1xWznP-0007Z0-3d; Fri, 27 Nov 2026 12:31:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xWzdU-0000zQ-SU
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:21:24 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1xWznD-0007Rs-8t
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:31:30 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xWzdS-0006bg-Ip
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:21:24 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4a2153c8525so67984145e9.3
- for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 09:21:22 -0800 (PST)
+ id 1xWzn8-0001jV-Ve
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:31:24 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4bb6057b333so41094205e9.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 09:31:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795800081; x=1796404881; darn=nongnu.org;
+ d=linaro.org; s=google; t=1795800681; x=1796405481; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=DmB8Ngrm60cArqmJc2FvpzPwFdkZqNBDPG+fqVqHD4c=;
- b=ovq1T8UVqo7KyV/YQDG0ID9+7EFaRI4qlNDSlS6XisBMeO0OXU7n5eqiyQH4pdjSjr
- syKNvEkDIOwD7Exg04JUo+7weae1fv7Pf6Z23eUFugeLMgQnSuaAUoIyYxs1/x+PfY6F
- ROzWCMcyq0jR330vH3Pt337+tUVzrCfbYJF3S7KoTbfbpc8lJbotM5AooZPhM3F/4viG
- puWzQy8XJT2XGggYzwXx7o8+f4CPg+Wpk6ByEpUSO9Lqlf4/GpbhducQI4XfCAdorQui
- sTyGMupFwtUOjjsvNTa+GKgtK88rmTMGsWv/zEAFd33v5Qp0JNl/1yGcWUocUcdRGmyt
- OYOQ==
+ bh=lobLpy3S0LVwWdkajhsOIiqDpjfok6+aOoN6TPxNluI=;
+ b=hBA9PWHkwN2ZiOwUBksNKe9ntJx0FzpiFt+F9ekgp/gzN4vJJIadJ4gI3v/sJpBBU/
+ 89ChcqXf0cA53EHJNzKUrF1RdGtZ7FNxD7r+vPK+ydO6lsrf0CTzaIxniLwLlVH1xRcZ
+ GyUWXeTd4jgtZSgGIeoOisi7ZlRi26UjiDr856DNEd5ZRY01vy8iankr+mI3cy7qP+/a
+ NWYkvgUeeWc+tTUxSxs6nXsXSRyheHlXTvaYmkPUIWzl3opsK227eU9xHBOpGcfvSgYV
+ 2VSgXBT0JVVQ24NMFBrH+VR9C254qDxCJdh0iVmZFRpikSxdlmL6ZNr81WzDbN4b2Ih7
+ GbEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795800081; x=1796404881;
+ d=1e100.net; s=20260707; t=1795800681; x=1796405481;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=DmB8Ngrm60cArqmJc2FvpzPwFdkZqNBDPG+fqVqHD4c=;
- b=qWZF6wT1ZLdZBVB7xQhO3YJxWous2Cio4UezHTgnjaFF3jENsVdlykOJNvNeeAQZC4
- ngRLjw5mlvRdBkiaorJBjdtxpGKBnzdA5xw6lQXHp3KOa/NqcAn+wmn+MUlMSrCOMfEq
- CnESwm5Dc6SnnFkA7CjLxFKd4JGcACev2eJKIASoq0rWIag3X1ZnoKoSTTEErzD3IQ1O
- Uf3oQ5PsCX/o7k1WrGzcf1f+yMAYswZ6TIWBD9ijaZrmoPlLMC2kFb5uyaUr3oqgiGff
- TuLhKsJFaJorJpLMpq3QxCzRuP8Y1y4WQEnKQJ+hgzryn0F5TChRAysfChlR27uM+/kr
- GJEQ==
+ bh=lobLpy3S0LVwWdkajhsOIiqDpjfok6+aOoN6TPxNluI=;
+ b=JUK7YKKELopupWaYo3dMN2tzY4G+UkBPJ/oPAXU+78brStOfoUzs0ntY4YLMIF+PDF
+ 3OKC5b6F7HOuOMhVkI9bZyub8BqQx00VeI1IOLBhXS13AFNzeKrRQzdc8sq4XrNx6pqo
+ 27lAAHodHO/a2yS/RS88i+L9jOZEbocpR/0rJgMg8fFEDpHvXG0I0UoInFWzqdFofnqy
+ AygKepOwkJeNewWoVqLp94uve8LyH3cm7W0LbIO4SevMn0lFbPpyJSSaeeM42UgOFHRO
+ vF6Bu5juSe1OhudYwf68bNrj5YNXsLOkyfmJugOqAWWjO6PEuyy4T+aQqnlawUxjcdQU
+ idXA==
 X-Forwarded-Encrypted: i=1;
- AL+hErE5PHxOEfCrisMxM/yspM4bgVVe7lxuiWJm6GTr8UsUFGo2QhYBHBbVrqlRv01/3j7czXujzpFmmQ==@nongnu.org
-X-Gm-Message-State: APuU4Z9UeeadIq6Z2N3DUs1HDXug9WLuNv+1Qqd8A/gLAaJ6MviYsI+U
- jO9sWB1GyDWdSti5yfzY/p/P9432UWcSjTBn6iLrZkjMA5/bazrGk+PAII9DG6BUo4s=
-X-Gm-Gg: AZFdTZdqqsxSR4A2ppz00ew3OLhgbcsuQZp5zHy26gpuW7cXiiURDlLUaoHu1KNdKXV
- vLDkxiofhbV5vcqTQOt4z9DsmgYuIRkM8+ntaXANT4CPc8R4JQms0QktA8avseio+8WZIBvA41g
- VPcJRk+WGl0LzEiDq2jT3n0N+EBGsUEKntTRdqTybS/AUChrOZ58nghlGQYN1+ehti2b2bl++2b
- +mFdHeXRiE07C/OMi+SC9KDL6duN2pDqSNtsE8LDMy52U0Z5tul13xKUNX8sNR3XZ6HjEqJbXjo
- JSkCAY11SbNx4JoqFTmoB+yubD61iA2IkADaI27ZX55RRwxWWdF5jpAVeall1d4+26NFKQrA1UL
- agp+0zMIEwP9psdu/MMCj6xr1Oqi+vWZMjWLbOpVnzFzTA5Wlgyl2mTaptL5VIYzt/soHo2pN1b
- 068sJj4Frx+G6ZT5OJRG4EzFUW0Dpcq6IPo0seEMLva3QURZWxG6cLbgg+HfTreuZrPaYjgQV9E
- EGn83mS/I3fRnGkTyXC0ocjFpQmrb3AqyAtwa4WFEdOaD4PKLSovmodCrCTUwOKmVr7Eg6DBi5s
- YTzb4fs6cx4SO50azBgm96trs4Rnx0RXpn07W29G+MD2Wx5eRQ==
-X-Received: by 2002:a05:600c:a11:b0:4a2:e0c:2b0a with SMTP id
- 5b1f17b1804b1-4bb888120famr517529795e9.16.1795800080792; 
- Fri, 27 Nov 2026 09:21:20 -0800 (PST)
+ AL+hErFSppF266LZwqqoIeNhPSS3iB/qrc1FESwvrBTPzGc3M5xujPVSOswS0sInIxexq5sIAkKkfgEEDA==@nongnu.org
+X-Gm-Message-State: APuU4Z+c8GneHAEf4FumLi8PNkrSY5KLN5kWJ9QSbKTVyFZJKy1xXv4i
+ KizRY+4to990arzzHosQEGz+6GJaCcC433BS3kUVk88LiIYV2SjfrUbXR0EQZ+jkZOE=
+X-Gm-Gg: AZFdTZdeZhvMt1YOV4dfUUpuvwBsoOMEGOIJPNx5TT2kFZKNOvMkGS6CuRuESYS/A+t
+ GnfQqWwIxL9tOP6nbRHRJKweBvz4mdyAjj8l4ohgmynKlVTSEtkHn7RW++awNa4FrqcXbJ5elLb
+ KTpazHD/40mIjpOXpuK92x8DSooEJmTQAkIFzDnVMTxaNOhmCH+uKOzNC3EwDFmEY0ZOgN7IZ1F
+ fg4VirhoGJeca/zLRxoGI+sks6VZZsm29B9pmuY29WTzmVmxGeMEXthCQvbZEwcOeHq9zFa3x5A
+ dC1Lh0EkoiHq+U23E35Bzs7Vi1pvjITg4euscdzYqE+/TWEv64Zsc847ouRJ7E/kl3CtaU+6Jja
+ JtvLWjZdepitBw45HdY7WW0WFT0TnKglPHy0EVZJ2ZB7vMjMaKR8JdwFXM9YDCrlgKWlpbguIM/
+ TvudC3GizSuZ0Aq1g1kExyVSMLmsYTZ/+KwuXsJl8ZhB7XEM4wXu+sboBoX5JvoAtNXYYLhNamb
+ yzj+e/B5OWCQj6r+NHsoFR8IzMi1IMyDyu0UHDqEC2BCXxBj3CbKFTkwLBOy7egB2N9+VcOYAF9
+ cNtq/x33qLAqz6qdUrNRFx7HXavd
+X-Received: by 2002:a05:600c:3e1a:b0:4bb:6814:7391 with SMTP id
+ 5b1f17b1804b1-4bb8881921cmr507788735e9.25.1795800681223; 
+ Fri, 27 Nov 2026 09:31:21 -0800 (PST)
 Received: from draig.lan ([185.124.0.158]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4bb884865a2sm735619755e9.3.2026.11.27.09.21.19
+ ffacd0b85a97d-4ab6ae2dd55sm46961171f8f.30.2026.11.27.09.31.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Nov 2026 09:21:19 -0800 (PST)
+ Fri, 27 Nov 2026 09:31:20 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B766F5F8CD;
- Fri, 27 Nov 2026 17:21:18 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 5AEFF5F8CD;
+ Fri, 27 Nov 2026 17:31:19 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Maximilian Zimmermann <maxz@spacecubics.com>
 Cc: qemu-devel@nongnu.org,  Pierrick Bouvier
  <pierrick.bouvier@oss.qualcomm.com>,  Peter Maydell
  <peter.maydell@linaro.org>,  Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm@nongnu.org
-Subject: Re: [PATCH 3/3] tests/functional/arm: Add SC-OBC Module A1 test
-In-Reply-To: <20261127-add-scobc-a1-board-v1-3-b572280dcde1@spacecubics.com>
- (Maximilian Zimmermann's message of "Fri, 27 Nov 2026 11:13:36 +0900")
+Subject: Re: [PATCH 2/3] hw/arm/scobc_a1: Add mission bus UARTs
+In-Reply-To: <20261127-add-scobc-a1-board-v1-2-b572280dcde1@spacecubics.com>
+ (Maximilian Zimmermann's message of "Fri, 27 Nov 2026 11:13:35 +0900")
 References: <20261127-add-scobc-a1-board-v1-0-b572280dcde1@spacecubics.com>
- <20261127-add-scobc-a1-board-v1-3-b572280dcde1@spacecubics.com>
+ <20261127-add-scobc-a1-board-v1-2-b572280dcde1@spacecubics.com>
 User-Agent: mu4e 1.14.5-pre2; emacs 30.1
-Date: Fri, 27 Nov 2026 17:21:18 +0000
-Message-ID: <87a4mutckx.fsf@draig.linaro.org>
+Date: Fri, 27 Nov 2026 17:31:19 +0000
+Message-ID: <87y0aerxjs.fsf@draig.linaro.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,102 +108,27 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 Maximilian Zimmermann <maxz@spacecubics.com> writes:
 
-> Add a functional test for the scobc-a1 machine, so that regressions in
-> the board or its console UART are caught.
+> The default FPGA image provides six Xilinx UART Lite instances on the
+> mission bus, which firmware uses to talk to devices on the base I/O
+> board and the rest of the spacecraft.
 >
-> The test boots the Zephyr v4.5.0 hello_world sample built for the
-> scobc_a1 board directly into HRMEM and waits for the boot banner and the
-> greeting on the console UART.
+> Replace the unimplemented devices with UART Lite models at 0x5000_0000
+> to 0x5005_0000, connected to IRQ 16 to 21. Factor out the UART creation
+> into a helper shared with the console UART. The mission UARTs are
+> connected to serial1 to serial6, after the console UART on serial0.
 >
 > Signed-off-by: Maximilian Zimmermann <maxz@spacecubics.com>
-> ---
->  MAINTAINERS                           |  1 +
->  tests/functional/arm/meson.build      |  1 +
->  tests/functional/arm/test_scobc_a1.py | 30 ++++++++++++++++++++++++++++++
->  3 files changed, 32 insertions(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index bc02f6e1be..3bea382cf4 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1104,6 +1104,7 @@ L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/arm/scobc_a1.c
->  F: docs/system/arm/scobc-a1.rst
-> +F: tests/functional/arm/test_scobc_a1.py
->=20=20
->  Stellaris
->  M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meso=
-n.build
-> index 72c7afc84a..88e567e90e 100644
-> --- a/tests/functional/arm/meson.build
-> +++ b/tests/functional/arm/meson.build
-> @@ -70,6 +70,7 @@ tests_arm_system_thorough =3D [
->    'realview',
->    'replay',
->    'sabrelite',
-> +  'scobc_a1',
->    'smdkc210',
->    'stellaris',
->    'sx1',
-> diff --git a/tests/functional/arm/test_scobc_a1.py b/tests/functional/arm=
-/test_scobc_a1.py
-> new file mode 100755
-> index 0000000000..41d18cfef0
-> --- /dev/null
-> +++ b/tests/functional/arm/test_scobc_a1.py
-> @@ -0,0 +1,30 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that boots Zephyr on the Space Cubics SC-OBC Module A1
-> +#
-> +# Copyright (c) 2026 Space Cubics Inc.
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +from qemu_test import QemuSystemTest, Asset, wait_for_console_pattern
-> +
-> +
-> +class ScobcA1Machine(QemuSystemTest):
-> +
-> +    ASSET_HELLO_WORLD =3D Asset(
-> +        'https://downloads.spacecubics.com/development/scobc-a1/qemu/'
-> +        'zephyr-v4.5.0-hello_world.elf',
-> +        '1578aebe742e4b3fc10af22994de4cd7feda3b54be19486a2efe42c099734c6=
-0')
-
-It would be useful to include a manifest/config in the directory and the
-reference hash of the zephyr checkout in case people want to
-re-create/expand the binary.
-
-But otherwise thanks for providing an image for the board model :-)
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-> +
-> +    def test_scobc_a1_hello_world(self):
-> +        self.set_machine('scobc-a1')
-> +        kernel_path =3D self.ASSET_HELLO_WORLD.fetch()
-> +        self.vm.set_console()
-> +        self.vm.add_args('-kernel', kernel_path)
-> +        self.vm.launch()
-> +        wait_for_console_pattern(self, '*** Booting Zephyr OS build v4.5=
-.0 ***')
-> +        wait_for_console_pattern(self, 'Hello World! scobc_a1')
-> +
-> +
-> +if __name__ =3D=3D '__main__':
-> +    QemuSystemTest.main()
 
 --=20
 Alex Benn=C3=A9e

@@ -1,121 +1,115 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98265606A31E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 07:58:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 936F2606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 08:57:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=hOwlIkDT
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=KsZWHmFi
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWqqK-000406-Ny; Fri, 27 Nov 2026 02:58:05 -0500
+	id 1xWrl0-0008CL-VZ; Fri, 27 Nov 2026 03:56:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rathc@linux.ibm.com>)
- id 1xWqq6-0003se-EO; Fri, 27 Nov 2026 02:57:50 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1xWrkz-0008AZ-FG
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 03:56:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rathc@linux.ibm.com>)
- id 1xWqq4-000474-Q3; Fri, 27 Nov 2026 02:57:50 -0500
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AR7Yekq2458177; Fri, 27 Nov 2026 07:57:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=chTF8k
- LgdJqxHCG5j0elQLiNDTQHPpBtWYkQHfJ6hlo=; b=hOwlIkDTZlpmGqYdfjVTFc
- c6fK4zQ11P2MmiLbNbizIK7AiSyDNXclRWyUqsdPP/oj1biND7Gv7kscIAxYnZ2E
- RqgzRvVBV9GkVz9kr8YMkt1sS5WHIlxb+7baOpLuASd9qdLHKgW78JawzTMFHjGC
- P5ClFSGc24LL+oieGCzKmHjqK4c1JQO/sUP67veSiU94j4SGAkk6qbXschOzdSOd
- pTvP6PAS4BlVO71SwiQev8EczguLfaSAJF0YR8mJCpKAanXntBIt+HnUG1vJX7i0
- 0A4BEY7nMdAKdPBVtPAAIyDaS+3YM+KA4KZAYZr9ts0RpumycVaIY4cRqe2WoBtQ
- ==
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4j34gvm4vc-1
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Fri, 27 Nov 2026 07:57:41 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AR7K20l2385215; Fri, 27 Nov 2026 07:57:40 GMT
-Received: from smtprelay03.wdc07v.mail.ibm.com ([172.16.1.70])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4j5kfa9dmf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 27 Nov 2026 07:57:40 +0000 (GMT)
-Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
- [10.241.53.101])
- by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 6AR7ukkb17302078
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 27 Nov 2026 07:56:47 GMT
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 64B1B5805C;
- Fri, 27 Nov 2026 07:57:38 +0000 (GMT)
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1A9A258051;
- Fri, 27 Nov 2026 07:57:34 +0000 (GMT)
-Received: from [9.111.0.137] (unknown [9.111.0.137])
- by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Fri, 27 Nov 2026 07:57:33 +0000 (GMT)
-Message-ID: <60270254-3b7e-4d83-8549-7b8f64845adf@linux.ibm.com>
-Date: Fri, 27 Nov 2026 13:27:32 +0530
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1xWrkx-0006fK-VJ
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 03:56:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1795769794;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BuV+QA+s84l8Poq1BBJXJ4FOVTjIgdvHVM0F0eT+wqg=;
+ b=KsZWHmFiUowYGT/dztBPy/QNjF8QA21KoStNopHhdrcxySE1n7xGM6JZPlKqZJCfNdd+0+
+ 4dcB+PehQ3tCZZ/SeQC4txg2elIuZGjuGNdoM1G4F7KxtX6Ae/6KKFcOcm8u38duw/3aiw
+ 7/2gTjSjwp41rubwdoShdWQDQKKOU9I=
+X-MC-Rep: binary re single
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-86-rC2IkGxbMm2AH4VxK0-s8g-1; Fri, 27 Nov 2026 08:56:31 +0000
+X-MC-Unique: rC2IkGxbMm2AH4VxK0-s8g-1
+X-Mimecast-MFC-AGG-ID: rC2IkGxbMm2AH4VxK0-s8g_1795769791
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4bb680f0ac4so55101675e9.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 00:56:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1795769790; x=1796374590;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=BuV+QA+s84l8Poq1BBJXJ4FOVTjIgdvHVM0F0eT+wqg=;
+ b=slSFLDy5NByncFTiYCoNsHrZ9wV03u5up72GK1vZ6FWe4u8n/eagefizWcdh9Xp2wh
+ gDU5vjYz312TX0HEPI5hFhqDPEuAY6spDQjMoFI2D/wfhSd7Kj7Xk6KCCAYzGZ/OtVQ7
+ t9FVXolXR+q2IEmAGmkdkLqYr/QBmU/0SZt/e/TY2a2n4Gw3qWYF6DD4SmSs4qfgREwz
+ QEac+Xv/FvByg+bRZFDU+pE40uy21sFkdkNH8cCjXGzWrzLDBk4kqPYJ/u8lCGYRw3nQ
+ v55dqOj1kov9Tgp4kysBXBj25PqbKnOKhUy22vpzwz4g3jPQpoSWRJXCg0E+KE9d8j0d
+ mLvA==
+X-Forwarded-Encrypted: i=1;
+ AL+hErECFb9pgpAY9NgxiWWIh1QtvA4h0pqcBzSsGdx7SDGEbd+Bpqh+w4HFIgEaPnVs8Dib7PvkeObcDg==@nongnu.org
+X-Gm-Message-State: APuU4Z9tDUdbZQaXFz5wOpC1S/lilNDsHb1YX9h4hcBxRzkIER7z7krv
+ kw7gQJEFbOiScKiCQ6x7nxMu3VLz38UGrYnhyINQ2y2Sgv30F+sba8LgaqJYhSgKemTr3HVth3s
+ wf5zBmqzvDCAzQ8ke4Lpxn6LAAgxAymC/Fso9yI+njrgp4qqkhr2KbQ==
+X-Gm-Gg: AZFdTZfFR/fDPTRY7noPFOQmUEEbPdBUlsJ5FcBWNw1Xil3Ef7rQoKjwmw0PkCVx46S
+ bwBa9QL7h1d5MVW7/d5bNz1tbUCOHvZMYFWYtfbG0GHVCKcI4RPn0xbV0gGI+QhZhuXYY2PA801
+ Yqa5Ixp2hzuWrA0NVLZOYOQAklxn7ONX9ynPZ26nKzkIeVUUD/7Ny+xgrzkgifJegEzucKvSgDT
+ k+00dZPuRMy5nSEm5Cc5vpJJcdrUeTVvLUfrTDykzXVe0l/Hn6KsISJtMEeY5XEv/ZT5YJZo62p
+ Ddmg/95FpizmgvRu+FgXrTljfHow6J7qT+1g4Dm3oRhIp0Ff8NKFaoxMOARnEekhw8kFI33pZHk
+ zQ2hCWu08jbmDh5D871f7w03iDl510Zs56pkW6ZgA/fNzKXx7gPI6cM14QSsgzlblGDJTkq89D7
+ OfBC7cVkE/XvteuLpF
+X-Received: by 2002:a05:600c:530f:b0:4a2:677:ad8e with SMTP id
+ 5b1f17b1804b1-4bb8892a21amr442437655e9.34.1795769790717; 
+ Fri, 27 Nov 2026 00:56:30 -0800 (PST)
+X-Received: by 2002:a05:600c:530f:b0:4a2:677:ad8e with SMTP id
+ 5b1f17b1804b1-4bb8892a21amr442437225e9.34.1795769790357; 
+ Fri, 27 Nov 2026 00:56:30 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:af16:8320:54ea:4bc9?
+ ([2a01:e0a:f0e:9070:af16:8320:54ea:4bc9])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4bb8526cbd0sm894279635e9.0.2026.11.27.00.56.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 27 Nov 2026 00:56:29 -0800 (PST)
+Message-ID: <bb8b3f0b-0948-4509-be89-d896ec94d7e8@redhat.com>
+Date: Fri, 27 Nov 2026 09:56:28 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/24] target/ppc: Use 64-bit TB flags
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Anton Johansson <anjo@rev.ng>,
+Subject: Re: [RFC PATCH v2 0/3] arm/kvm: select an nVHE-only EL2 with
+ SYSREG_ID_AA64MMFR1_EL1_VH
+To: Haseeb Ashraf <haseebashraf091@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ Haseeb Ashraf <haseeb.ashraf@siemens.com>, Eric Auger
+ <eric.auger@redhat.com>, Marc Zyngier <maz@kernel.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Nicholas Piggin <npiggin@gmail.com>, Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>
-References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-16-philmd@oss.qualcomm.com>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>,
+ Khushit Shah <khushit.shah@nutanix.com>
+References: <63fcaf35-5d3f-42fb-868f-9fcd644bf494@redhat.com>
+ <20261125175005.805533-1-haseebashraf091@gmail.com>
+From: Eric Auger <eauger@redhat.com>
+In-Reply-To: <20261125175005.805533-1-haseebashraf091@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Rn4Ov4WpU23TtwOJiv_z72Ylu2vEDHUfai6SjWnCx_4_1795769791
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Chinmay Rath <rathc@linux.ibm.com>
-In-Reply-To: <20261126233604.67722-16-philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Authority-Analysis: v=2.4 cv=CYCdd7rl c=1 sm=1 tr=0 ts=6b0937f5 cx=c_pps
- a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=Y2IxJ9c9Rs8Kov3niI8_:22 a=EUspDBNiAAAA:8
- a=VnNF1IyMAAAA:8 a=g5kLG7U5x2I9u7WagioA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI3MDAzMCBTYWx0ZWRfX7NoTpgTb4MFp
- YBB8GAe5YMwNPzCLt5uowWRcxEVOJDpsGaT/R4KzRHAa1AoeMiWuNmNyLMA/m4CLmr79GuM9ItD
- S7W1ZVxXksDkceeOA/wsIHV0AIbbDpE=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI3MDAzMCBTYWx0ZWRfX2H2fHjwSsceI
- Pq1O+PQsV98vJt2WudkgtSOKfaSAAjb2IajRgtHzbSyWLZf1i+cJb09qwM9HpP0iVf/jKORvEeM
- p6kiqEWD153V7SXkZpV7UVsEgcgPV7HS2gGaUAxkxXkPYG6E9VttlQMYcImsuOXlzU/B6wqmnw/
- GpHGofCWEXy5a97H06+QA6ygb05Mr2g93zdYCmNdWYO3ZQDRLJhnsm7mvlCMIWiL2NbM2oZlqPa
- CAgrBOo2OyTu2LA6Sf0gvXm4TYReG1HI+tL5RY9HzLqTzgIBw6IU1S21COOJRtPH6S+SULDLRN+
- 4fNsiGUtM90mSgrff+xU1v1MS3Uv60d7b9SCKdkThih6FoaN3ozNrvD6qQ5TR2CEa0XsUpk775g
- hybCbq5TQeA9qre6+XhGhG++t3yxJlE0HXeszwCHkJjV7346dGC+jgLIM4UfK0n0Wg0C6F0BjT7
- GbacEPLUUyOPJTvR+lw==
-X-Proofpoint-ORIG-GUID: omwIiMNtYamDerThTfKL_Ol42WerOnVY
-X-Proofpoint-GUID: qUa1LPpo45OCo4LMTfdua5pcPNFB0ZzD
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-27_01,2026-11-26_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 malwarescore=0 priorityscore=1501 lowpriorityscore=0
- clxscore=1011 spamscore=0 bulkscore=0 impostorscore=0 adultscore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
- definitions=main-2611270030
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=rathc@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,45 +121,41 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi Haseeb,
 
-On 11/27/26 05:05, Philippe Mathieu-Daudé wrote:
-> TranslationBlock::flags and TCGTBCPUState::flags are now
-> 64-bit, use matching types for the values derived from them.
->
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Hi Philippe,
-Few months back I was wondering why cs_base was used as an extension 
-instead of extending flags to 64 bits. With this series, now I 
-understand that it was to support 32 bit hosts. Thanks for that!
+On 11/25/26 6:50 PM, Haseeb Ashraf wrote:
+> Hi Eric,
+> 
+> Thanks for the feedback.
+> 
+> I agree that exposing VH as an exception is appropriate for now. KVM
+> does not expose VH through its writable ID-register interface; it is
+> selected by KVM_ARM_VCPU_HAS_EL2_E2H0 during vCPU initialization.
+> Keeping this explicit avoids prematurely adding a generic framework
+> mechanism for which no other field currently has a requirement.
+> 
+> On the second point, my wording was imprecise. KVM updates the
+> guest-visible ID registers automatically after vCPU initialization, and
+> the guest sees the derived ID_AA64MMFR4_EL1 value. I referred only to
+> QEMU's cached isar.idregs[] copy, where the framework currently deposits
+> the explicitly requested VH field but does not re-read fields derived
+> by KVM.
 
-I was wondering if PPC env's internal hflags should also be extended to 
-64 bits with this, but I guess that can wait for when we actually have 
-more than 32 bits needed there.
-With that,
+Effectively get_host_cpu_idregs() is called on the "max" scratch vcpu, ie. the scratch vcpu initialized with all possible features. Then we update isar.idregs[] only for fields which are explicitly set using SYSREG props. 
 
-Reviewed-by: Chinmay Rath <rathc@linux.ibm.com>
-> ---
->   target/ppc/translate.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-> index dccae25bb4ec..e7bb0e4d4667 100644
-> --- a/target/ppc/translate.c
-> +++ b/target/ppc/translate.c
-> @@ -4996,7 +4996,7 @@ static void ppc_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
->   {
->       DisasContext *ctx = container_of(dcbase, DisasContext, base);
->       CPUPPCState *env = cpu_env(cs);
-> -    uint32_t hflags = ctx->base.tb->flags;
-> +    uint64_t hflags = ctx->base.tb->flags;
->   
->       ctx->spr_cb = env->spr_cb;
->       ctx->pr = (hflags >> HFLAGS_PR) & 1;
+Thanks
+
+Eric
+
+> 
+> Thanks,
+> Haseeb
+
 

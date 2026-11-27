@@ -1,60 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A1D0606A31C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:22:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F0DB606A321
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:23:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=hr4AfLMN;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=fpWfgtHK
+	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=ef3PJ7JP;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=V1Ab6gho
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nongnu.org;
 	 s=lists1p-gnu-org; h=From:In-Reply-To:MIME-Version:References:Subject:To:
-	Date; bh=+qpX3wJDR5S6loiinTy/b4SlnrKKBnn3wqRdd/zs3Q0=; b=hr4AfLMNAwGJQFPsID5l
-	FT1AJ/MeS3IxuKklqXYm4nzlPi/cfY6nI9oCOpT/cbO7ppvcjh6c1dBed5q4OSqYzaEJhCBceMf2N
-	I0E/+Ahstn6Xqs2QLuZnTAOZnkrqDPD4l2A0eka8Hxb4Fweij/2CGg38dtdId/+jP7C/0XczkbIm9
-	3KfosH5v4wy3Z0jd1uP9kwl7jokcqc5p/Vrweu++C3t5C2H5Z4xa++zEr12VhPf2iRFl8ZUyPK+g5
-	PVqMaTblz1Qh7PzYHI3ZMEsPrpKMmV3Clzbwz1vspnRJBYiBcaS0yxhoBsdE88XWXNWKrMHcnPSwX
-	TIVRiZARWlYTMw==;
+	Date; bh=ckdohR7rWt343522hN+pyTukHWTmhoGpVlXaDdHvlEo=; b=ef3PJ7JPfRg38Sieew3r
+	AohBfLTO+cBpR1XenvoPzqqJtL+j+t8mXIBJN6tCa+YFkQwnxCUCNKvAHR6hFdHXBXensMklcA3i+
+	kxjY9hoELQJ7LsguDr1NzG5hEtcffrFGKomHVRH7MmMurnYh/AMrqS4kaRuNczyzFwrfVn4ep6Upm
+	LuBGF4PornaylZUoxTJCwk2hzh5F9fRW42if6DGiIVfjYIyV0XECai0ijmlWzUkIZLXem8CM7gR9h
+	bs6MbhVmJxSgywntSCVAnggHrzYQKlJNhFAo1/ZY/5L8/Fe++xusp9JCdd5bw+eUc2RBTcmKdTrJE
+	W06wb+7nAK0b7A==;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWu1o-0002EG-8B; Fri, 27 Nov 2026 06:22:08 -0500
+	id 1xWu32-0004Zu-Bo; Fri, 27 Nov 2026 06:23:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWu1C-0001Z3-PE; Fri, 27 Nov 2026 06:21:32 -0500
+ id 1xWu2z-0004WV-7F; Fri, 27 Nov 2026 06:23:21 -0500
 Received: from rev.ng ([94.130.142.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWu1B-0001ni-E1; Fri, 27 Nov 2026 06:21:30 -0500
+ id 1xWu2x-0004eD-QZ; Fri, 27 Nov 2026 06:23:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
  s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
- List-Help; bh=+qpX3wJDR5S6loiinTy/b4SlnrKKBnn3wqRdd/zs3Q0=; b=fpWfgtHKM8uTMLT
- s8V2I+UkS3LdRn4D94U+DQgzhKqBfiG1VfcA1lM1VE8DcCiMr2Xvf/Z4b16RC8UwkvR1i01XZV7fk
- dZ/RNSWOHMJlF7ewooLHFCsfEsCG9DtIUrmHVm+a4x448Gro4Vk+XApSYrKWEryS5JazHRlezJbEF
- ys=;
-Date: Fri, 27 Nov 2026 12:27:52 +0100
+ List-Help; bh=ckdohR7rWt343522hN+pyTukHWTmhoGpVlXaDdHvlEo=; b=V1Ab6ghoDYkC/D6
+ 2zC1XOuJs0Cknuj0rn30XLh9Wco2lAd4+KvZwz8V3dh/wtYdvGu7ygioMTJVJmIfoq1mo5zmZPQP0
+ v8mjzNhrfpqTa99FrA/P1Nv4X4XM58sKnfqdvg2irAkRANLvsESL8++uu2DgUYBQpAdw3dzUoSb4I
+ kY=;
+Date: Fri, 27 Nov 2026 12:29:42 +0100
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, 
- David Hildenbrand <david@kernel.org>, Cornelia Huck <cohuck@redhat.com>, 
- Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH 19/24] target/s390x: Use 64-bit TB flags
-Message-ID: <awlpJxjHx7f7DUBB@hive.localdomain>
+ Yoshinori Sato <yoshinori.sato@nifty.com>
+Subject: Re: [PATCH 20/24] target/sh4: Use 64-bit TB flags
+Message-ID: <awlpl8yXC1O6dXLE@hive.localdomain>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-20-philmd@oss.qualcomm.com>
+ <20261126233604.67722-21-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261126233604.67722-20-philmd@oss.qualcomm.com>
+In-Reply-To: <20261126233604.67722-21-philmd@oss.qualcomm.com>
 Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
  helo=rev.ng
 X-Spam_score_int: -20
@@ -78,8 +76,8 @@ From:  Anton Johansson via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
@@ -89,25 +87,47 @@ On 27/11/26, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > ---
->  target/s390x/cpu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/sh4/cpu.c       | 2 +-
+>  target/sh4/translate.c | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-> index d1250945d489..c6564974c50e 100644
-> --- a/target/s390x/cpu.c
-> +++ b/target/s390x/cpu.c
-> @@ -319,7 +319,7 @@ static int s390x_cpu_mmu_index(CPUState *cs, bool ifetch)
->  static TCGTBCPUState s390x_get_tb_cpu_state(CPUState *cs)
+> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+> index 17731935779e..90e3e4d52b82 100644
+> --- a/target/sh4/cpu.c
+> +++ b/target/sh4/cpu.c
+> @@ -47,7 +47,7 @@ static vaddr superh_cpu_get_pc(CPUState *cs)
+>  static TCGTBCPUState superh_get_tb_cpu_state(CPUState *cs)
 >  {
->      CPUS390XState *env = cpu_env(cs);
+>      CPUSH4State *env = cpu_env(cs);
 > -    uint32_t flags;
 > +    uint64_t flags;
 >  
->      if (env->psw.addr & 1) {
->          /*
+>      flags = env->flags
+>              | (env->fpscr & TB_FLAG_FPSCR_MASK)
+> diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+> index 5729a757f191..0f43a5dced14 100644
+> --- a/target/sh4/translate.c
+> +++ b/target/sh4/translate.c
+> @@ -36,7 +36,7 @@
+>  typedef struct DisasContext {
+>      DisasContextBase base;
+>  
+> -    uint32_t tbflags;  /* should stay unmodified during the TB translation */
+> +    uint64_t tbflags;  /* should stay unmodified during the TB translation */
+>      uint32_t envflags; /* should stay in sync with env->flags using TCG ops */
+>      int memidx;
+>      int gbank;
+> @@ -2177,7 +2177,7 @@ static void decode_gusa(DisasContext *ctx, CPUSH4State *env)
+>  static void sh4_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+>  {
+>      DisasContext *ctx = container_of(dcbase, DisasContext, base);
+> -    uint32_t tbflags;
+> +    uint64_t tbflags;
+>      int bound;
+>  
+>      ctx->tbflags = tbflags = ctx->base.tb->flags;
 > -- 
 > 2.55.0
-> 
 > 
 
 Reviewed-by: Anton Johansson <anjo@rev.ng>

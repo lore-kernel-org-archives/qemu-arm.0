@@ -1,152 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A2CC606A31E
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Nov 2026 23:41:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A75B606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 04:07:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=beGGu0XU;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=IWfgHVFs
+	dkim=pass (2048-bit key, unprotected) header.d=spacecubics-com.20260707.gappssmtp.com header.i=@spacecubics-com.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=NINi8ODW
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWj3K-0002Cl-It; Thu, 26 Nov 2026 18:38:58 -0500
+	id 1xWnEc-0002LV-O3; Thu, 26 Nov 2026 23:06:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj3G-0001s8-8h
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:54 -0500
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xWj3D-0001Cq-Qm
- for qemu-arm@nongnu.org; Thu, 26 Nov 2026 18:38:53 -0500
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AQJvrBg3339622
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- cqmwO8eUXokHwY7k+6o8UrAjVE1mFGN4V/zMu8vhll0=; b=beGGu0XUNAd3y6D5
- 1y8bnIEIUIpHGh6RqGPcwyGI1UFqii2cXGxkV9gtp9PGVnSLdWwAcj2mfP0PjX4p
- A8ms/CARJCkeCyD1PR6ik8CmeCuU1jWMmrTKgxTrI9hTjUbQK7F8NNdL88oZNBcb
- FMarzp4N4uoZ2ZoD6I+4OMvYnia+HULJe3O1OMs/204VnN3uNhKUGgzE00EgvfdP
- h3MQ26e1TUI69ihQ4NL0HAaRH8p9FKidLCfmPRVG3TeVCRcpu47VgXgZYp87goXv
- SZR+pKnB6yX0EPHv8Et1Oh2dOVttwrhq4wXL2OofFO2JdDHqoXb/yaFP490sXhLZ
- Q+/9rg==
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j6pgqhdvq-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 23:38:40 +0000 (GMT)
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-9210a12765eso104063746d6.0
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 15:38:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <maxz@spacecubics.com>)
+ id 1xWlTZ-0001qA-Kl
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 21:14:15 -0500
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <maxz@spacecubics.com>)
+ id 1xWlTX-0001Hq-L4
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2026 21:14:13 -0500
+Received: by mail-pg1-x534.google.com with SMTP id
+ 41be03b00d2f7-cdece95eca4so98062a12.1
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2026 18:14:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795736319; x=1796341119; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=cqmwO8eUXokHwY7k+6o8UrAjVE1mFGN4V/zMu8vhll0=;
- b=IWfgHVFs4HxmY81063GfCpBUI113V/H6K7kbFV+NLTTs0wN2KRkpmHyhQovUBtae69
- 1Sa0bBwsBgiykd24j8k4XLDACVRkVtKnaiEJ9z0K2cyCOR/XgbTx+uClo0+BfbI9IJG0
- Jg/VHQ47CmlOClpAj7E9Dyw6F+TWN/K5Xvt32RjQ+beJy07lsEdVOaV+tiS3XZfxcbLZ
- uGof9O9sa+zbHKr6KMfsjLZF7s4xPPoQlP+yzPgnSf1uSGN7dL24bESLvVgO2OHDUvUY
- w9zAWNbnsZ1Nt6tjkSdaLUUy5BbhKJwV74sRiw/qsXByec6gFOtQEjl0U1m83lLHtjD1
- MJvw==
+ d=spacecubics-com.20260707.gappssmtp.com; s=20260707; t=1795745650;
+ x=1796350450; darn=nongnu.org; 
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=arc4fQYrPi85JZTY7m7ZVwa59Sx4cfTLrYOonvv8yNY=;
+ b=NINi8ODWEPANOXDQ11Im8ZxUYo4Kfea3gTWSVyol/2aHrisWIXLdNTEDdeIxyoifmr
+ WoceGtBOLuXK2qM7Yiglz7DcehITo1NI+fUhQpBLUehiuVg59vs0oajsl1eyDIgIAx1h
+ 6dXwLQKdYAT8QUcHVLHEcrtS+NYxzSy5ZxzntKPKsk0paYY4pRhZimyXbLK+bxyVwTfS
+ My7uSQr2S8e5WxQQzNnHFnJH5AVejtxSjpiv80lDxhFRZAoRYTMTSUtrkes5swvWC845
+ RH1w+19DQZjPUifvgqnVeyfQI1SRV9L1oiHb7zJ/w71Ju0vIdlU+4ZycRTaoWOjAR/uY
+ aT0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795736319; x=1796341119;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ d=1e100.net; s=20260707; t=1795745650; x=1796350450;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=cqmwO8eUXokHwY7k+6o8UrAjVE1mFGN4V/zMu8vhll0=;
- b=0kimgVTdGzNsccNtJBO7TJB0HQlZy/dudCtkgLtqIi0QEGlEJ/P1X1tOvov18oyM/+
- NsmamjlIHCh6BeJ86XDdRb52chv0MMHo0cAxmJtqiAfmAWSeFvgSnHyKVS1my1dtSm8Z
- sHKc4QaiubhGoNAE6VB9bvGjYgQamI5EaoIou/ix1o1dSUwQM8fTZkQG1TODkQPURWOA
- A9ODWwlLMx/t8RFdfn7zeqN/jyjFBfQChPe9fZKk7upI6nuyYu1NTKv/bJZzmXP8aCnG
- VRnyIDvzyh7SG2OAEcqOoKFwP5P/VVnmsxfa7PoetIM8Y0CbMD+2H4u+ww+OrLSfkfc7
- i47g==
+ bh=arc4fQYrPi85JZTY7m7ZVwa59Sx4cfTLrYOonvv8yNY=;
+ b=zHKBX+GN/6LxHfSSE8zs/TCF4sXFT+13TypgAMeWdsBn9bZgggbdn0eMuK4kIaTfuV
+ S7Oa6/hiIbDRwNKYNdM9xZugVIgGCtV026mDNClPzxXd3QyeyRIOb6gRY4PmKNc4MHEF
+ 6N8dsFJTHJJzor2aw5UZ68l91cagrcpIQ9303IyniK4NfT3FYXQDYcjBo7uo0PfNtteL
+ 0A52pb47Rj/5s6UmRMK0izcM0ZLhXd1y/S+AOhQs+AyYhpb0p0dbnKL0GxdFsBR0RoLF
+ Qd968rVrURl5nopZWdCDHs81BCdBj9vllGelyfRIcDfGs0Nu/6n0DJDbcocJmG9WwVt7
+ JhiQ==
 X-Forwarded-Encrypted: i=1;
- AL+hErE1iWVAbckcWICpX3dnbnbDXf0jSW7na0H9FSEbEwLX1NuW3cWeS6Ilb3jJ+lkZaiwVa8pYSEJ86A==@nongnu.org
-X-Gm-Message-State: APuU4Z8uboQWzm/FrVSpnBN1JjzlRBY++brGWXFzYzVS4eFzGvyEggpR
- 1GOrWdEGW9/r525b5dXQ+fMVuu7RH7/sSiNhrZv4gH5M8Jfpw9Jwew0tZ+wJ/AB8XW6rDlPUAS1
- h3xl5+3DYiHR/7g1erE2QSNsG58A3dKTAJQ8JuKcqHivVZStJtbQ34ts=
-X-Gm-Gg: AZFdTZc5dDh9POh92tu2NBz+z8wmpJ2t7Ng+YseKgKbmAeXrIMkXPJKiypacr6cg7Dp
- JoxH9onuvwc1UuZ+f30Sb3l3nGuz2Zmi2iWG6XT61dUDDNRaAE6PJ5vcF/OoAUS1C8uf0JW272C
- p4Ftyu83cmY8psc9105u1A1LMjMZY8qg7jJ7Q8ahi5OI7yLbO8LG/HfsMzCwbPmcOfvCHFHxhfX
- oioh7B3NHrVj/60+31KzYpbHROBuDxOXU7vdzWGATyhZ0dcP3/i7kgIvqGQ3lghkZXKgZqiUecr
- q2JPuas9jep3kMCBJ0JFreIjarPssWhD+hOWegr6OMiKRVCgmS8KpCw3GCGtIEjTBSRAAti7w7w
- a3RptqWy+sZ0vF4/BVb/k7AQk5aN/jEQbF9zKGLk83wdb/r39u82WqIFrvgI6d5nriACQH+ISwJ
- iCDeKuezTpvvG+qg==
-X-Received: by 2002:a05:620a:2912:b0:947:81e0:bd0b with SMTP id
- af79cd13be357-949ba99cb28mr3822467085a.20.1795736319400; 
- Thu, 26 Nov 2026 15:38:39 -0800 (PST)
-X-Received: by 2002:a05:620a:2912:b0:947:81e0:bd0b with SMTP id
- af79cd13be357-949ba99cb28mr3822465385a.20.1795736318999; 
- Thu, 26 Nov 2026 15:38:38 -0800 (PST)
-Received: from localhost.localdomain (pmd666.hd.free.fr. [82.67.153.177])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4ab6a67fe48sm39611286f8f.23.2026.11.26.15.38.36
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 26 Nov 2026 15:38:37 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Anton Johansson <anjo@rev.ng>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: [PATCH 19/24] target/s390x: Use 64-bit TB flags
-Date: Fri, 27 Nov 2026 00:35:57 +0100
-Message-ID: <20261126233604.67722-20-philmd@oss.qualcomm.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261126233604.67722-1-philmd@oss.qualcomm.com>
-References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
+ AL+hErGTohByd8x6JzqpA5Loj0p2ZQ2FcwHzxcBQlGupLJgLPq1wrDK9C3CJ+HwNdUaqjN71Y4g8+X1g8w==@nongnu.org
+X-Gm-Message-State: APuU4Z8hPQgTeU42bIDJ2Ny1n6t8AKEDj5fHXnHVe/UOzKoNP9v3Yoay
+ x1LQKlNCXrBVjpbK7BJ0//Uazqm4Xx5EGDzc4Jf1oMAmzQsXOzJXZnFwYIvS9t+vlXl7DAVIp1u
+ PgS1c89A=
+X-Gm-Gg: AZFdTZeEiyUXX0lr456kToZbi3InQZ6pNbRh7OYMcYtAIimA/27gHVe5cc1fceTak+m
+ jub2kFD/kpOisNQF7mCHDerpFWUNmrE/Ie5rgJNbSYVXeGs71Gv1r6s2/EmCObYiXycIzfOzUQB
+ jFNEWn7xi9MmKIhjEJ9gUEfDiUG/NX7FwEycYcKTDOKmjrqTlWkW4Cfq6mOsqNvEfxsZs4Dd77O
+ uF1UseT1byL5VOcKQBDXrtiw50lihukFvV1BdFoWyXbhJCoTQvQ2yTiJnkH1PigdbEQ/yXGhbeX
+ oOe+Rg2AI3+epkRgYMVsPeKbSfEzfOybZ+aAC/7kwCrCs0amIWzvwD9YZGKyUnaPfIWpAp/lPez
+ PYMUPrDdY3d98/W6WRF8INOWYzrgnKTLxf633kOFeCzO0wvfBtiClTOj98Uh5bhCqzhNSVuYelD
+ 62Ix8WsmJ9cvKLidP45StZ7/aw170MskfwghK0Yl8J+zdnzKaA7xZyfZFxs3XzXUnK6zYgdIZQY
+ Bxw4SzNl+6CFWZpT6J5xChC9W2KwUcS0wTAATFd31sI0MjQLmC0HApJ4meuedlG0NqmuKxYfYDz
+ Mhz2s2GHdQdSHpmc+LaInzG6ByUSam3ZKJikJbHCGfFUke8yo6AEIOaFJQgrtzj9ow==
+X-Received: by 2002:a17:90b:4a06:b0:3a4:9dd7:296f with SMTP id
+ 98e67ed59e1d1-3b41caec8a1mr21263215a91.40.1795745650002; 
+ Thu, 26 Nov 2026 18:14:10 -0800 (PST)
+Received: from [127.0.0.2] (182-166-200-88f1.hyg1.eonet.ne.jp.
+ [182.166.200.88]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3b53479b149sm1368372a91.6.2026.11.26.18.14.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Nov 2026 18:14:09 -0800 (PST)
+From: Maximilian Zimmermann <maxz@spacecubics.com>
+Date: Fri, 27 Nov 2026 11:13:35 +0900
+Subject: [PATCH 2/3] hw/arm/scobc_a1: Add mission bus UARTs
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: H7v126zKgzsvzeyfpx-ZmkWF_sLXU8Md
-X-Proofpoint-ORIG-GUID: H7v126zKgzsvzeyfpx-ZmkWF_sLXU8Md
-X-Authority-Analysis: v=2.4 cv=A7H5rKWG c=1 sm=1 tr=0 ts=6b08c300 cx=c_pps
- a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=nz36NW0qrpeEijYxj/H2Ew==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=EUspDBNiAAAA:8 a=vHQHl_Q7FjuyMDeck6EA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=pJ04lnu7RYOZP9TFuWaZ:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX4dddNPEjcQIk
- neehVgsh7J01X8cfZ5qxCL0q4u4xmzDDdFKHbHyaADYdIAWpQxrOFEDdP1eFp4o8+OQVdwjy55O
- u/GG9dhjYA/NHfqXafFQZZqJelNQW/0=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTI2MDA5MyBTYWx0ZWRfX0G/mGisewzkG
- 0PIGSJRVOWPsaO0ZEzQ5VVQCewxMHFL/mLysauHM5J4bojl3EYHoBiRnwQlUJB87Q7o8C4Naau0
- FY3VlgxePUwD0lw6J21OQEy35N/XvWmZnYKP0sVDuPMP+eoa70QdEUkIvKh+GNIJTk1UXIjKSCG
- JY/EQhlVBwRsO/uc3Sa5Z6M/3nRNhQOfps5n2rUoA8OdcQoK47PXCACiAAC9ZtiP69smzzgbPEd
- rCbrQmKd6H/Kg6Lhcy/SkGYOUmDUIqH5aCiNbx9eLwHvr8C5PguumFjveUZYES8cSmF7eQkQIu2
- 1EqiAOf/ef4GXOHeOZ/PfT5bI3TU8a2OVQPbHlQWfreNfNQaFxjZ8uwQ0UhZ+PNPJ1g0rN/A9VP
- PjlnKzDlEc9Gt47f8A6B+cI/FFxI4Tj756NJTnb0KGHHJFLascmFdu/gz2HORbGJZTiQK+kEY3d
- eM/eycsGqLIlpVhez/A==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-26_05,2026-11-26_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 lowpriorityscore=0 clxscore=1015 bulkscore=0
- priorityscore=1501 malwarescore=0 phishscore=0 spamscore=0 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611260093
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261127-add-scobc-a1-board-v1-2-b572280dcde1@spacecubics.com>
+References: <20261127-add-scobc-a1-board-v1-0-b572280dcde1@spacecubics.com>
+In-Reply-To: <20261127-add-scobc-a1-board-v1-0-b572280dcde1@spacecubics.com>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+ Maximilian Zimmermann <maxz@spacecubics.com>
+X-Mailer: b4 0.15.2
+Received-SPF: none client-ip=2607:f8b0:4864:20::534;
+ envelope-from=maxz@spacecubics.com; helo=mail-pg1-x534.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 26 Nov 2026 23:06:53 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,35 +106,131 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_GIT,WEIRD_QUOTING autolearn=ham autolearn_force=no
 	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-TranslationBlock::flags and TCGTBCPUState::flags are now
-64-bit, use matching types for the values derived from them.
+The default FPGA image provides six Xilinx UART Lite instances on the
+mission bus, which firmware uses to talk to devices on the base I/O
+board and the rest of the spacecraft.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Replace the unimplemented devices with UART Lite models at 0x5000_0000
+to 0x5005_0000, connected to IRQ 16 to 21. Factor out the UART creation
+into a helper shared with the console UART. The mission UARTs are
+connected to serial1 to serial6, after the console UART on serial0.
+
+Signed-off-by: Maximilian Zimmermann <maxz@spacecubics.com>
 ---
- target/s390x/cpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/system/arm/scobc-a1.rst | 12 +++++++++++-
+ hw/arm/scobc_a1.c            | 42 ++++++++++++++++++++++++++++--------------
+ 2 files changed, 39 insertions(+), 15 deletions(-)
 
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index d1250945d489..c6564974c50e 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -319,7 +319,7 @@ static int s390x_cpu_mmu_index(CPUState *cs, bool ifetch)
- static TCGTBCPUState s390x_get_tb_cpu_state(CPUState *cs)
- {
-     CPUS390XState *env = cpu_env(cs);
--    uint32_t flags;
-+    uint64_t flags;
+diff --git a/docs/system/arm/scobc-a1.rst b/docs/system/arm/scobc-a1.rst
+index 0f4f3a757a..68c46af05e 100644
+--- a/docs/system/arm/scobc-a1.rst
++++ b/docs/system/arm/scobc-a1.rst
+@@ -21,6 +21,7 @@ Supported devices
+ - 4 MiB HRMEM main memory
+ - HRMEM mirror (``0x6000_0000``)
+ - Xilinx UART Lite console UART (``0x4f01_0000``)
++- 6 Xilinx UART Lite mission bus UARTs (``0x5000_0000`` - ``0x5005_0000``)
  
-     if (env->psw.addr & 1) {
-         /*
+ Missing devices
+ """""""""""""""
+@@ -35,7 +36,16 @@ The following devices are present in the memory map but not implemented:
+ - System monitor (FPGA watchdog, SEM controller, XADC and board health
+   monitor)
+ - General purpose timer
+-- Mission bus UARTs, I2C, SPI and GPIO controllers
++- Mission bus I2C, SPI and GPIO controllers
++
++Serial ports
++""""""""""""
++
++The UARTs are connected to the ``-serial`` options in the following order:
++
++- ``serial0``: console UART (``0x4f01_0000``)
++- ``serial1`` - ``serial6``: mission bus UART 1 - 6 (``0x5000_0000`` -
++  ``0x5005_0000``)
+ 
+ Boot options
+ """"""""""""
+diff --git a/hw/arm/scobc_a1.c b/hw/arm/scobc_a1.c
+index 877bc2e41f..e7bec640a4 100644
+--- a/hw/arm/scobc_a1.c
++++ b/hw/arm/scobc_a1.c
+@@ -43,11 +43,29 @@ OBJECT_DECLARE_SIMPLE_TYPE(SCOBCA1MachineState, SCOBC_A1_MACHINE)
+ #define SCOBC_A1_UART_BASE    0x4f010000
+ #define SCOBC_A1_UART_IRQ     0
+ 
++/* Mission bus UARTs of the default FPGA image */
++#define SCOBC_A1_NUM_MISSION_UARTS 6
++#define SCOBC_A1_MISSION_UART_BASE 0x50000000
++#define SCOBC_A1_MISSION_UART_IRQ  16
++
++static void scobc_a1_create_uart(DeviceState *armv7m, hwaddr base, int irq,
++                                 Chardev *chr)
++{
++    DeviceState *uart;
++
++    uart = qdev_new(TYPE_XILINX_UARTLITE);
++    qdev_prop_set_enum(uart, "endianness", ENDIAN_MODE_LITTLE);
++    qdev_prop_set_chr(uart, "chardev", chr);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(uart), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(uart), 0, base);
++    sysbus_connect_irq(SYS_BUS_DEVICE(uart), 0,
++                       qdev_get_gpio_in(armv7m, irq));
++}
++
+ static void scobc_a1_init(MachineState *machine)
+ {
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+     SCOBCA1MachineState *s = SCOBC_A1_MACHINE(machine);
+-    DeviceState *uart;
+ 
+     /* Check the amount of memory is compatible with the board */
+     if (machine->ram_size != mc->default_ram_size) {
+@@ -79,13 +97,9 @@ static void scobc_a1_init(MachineState *machine)
+                              OBJECT(get_system_memory()), &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), &error_fatal);
+ 
+-    uart = qdev_new(TYPE_XILINX_UARTLITE);
+-    qdev_prop_set_enum(uart, "endianness", ENDIAN_MODE_LITTLE);
+-    qdev_prop_set_chr(uart, "chardev", serial_hd(0));
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(uart), &error_fatal);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(uart), 0, SCOBC_A1_UART_BASE);
+-    sysbus_connect_irq(SYS_BUS_DEVICE(uart), 0,
+-                       qdev_get_gpio_in(DEVICE(&s->armv7m), SCOBC_A1_UART_IRQ));
++    /* Console UART */
++    scobc_a1_create_uart(DEVICE(&s->armv7m), SCOBC_A1_UART_BASE,
++                         SCOBC_A1_UART_IRQ, serial_hd(0));
+ 
+     /* System peripherals */
+     create_unimplemented_device("scobc-a1.qspi-config", 0x40000000, 0x10000);
+@@ -99,12 +113,12 @@ static void scobc_a1_init(MachineState *machine)
+     create_unimplemented_device("scobc-a1.timer", 0x4f050000, 0x10000);
+ 
+     /* Mission AXI bus peripherals (as defined in standard FPGA image) */
+-    create_unimplemented_device("scobc-a1.uartlite1", 0x50000000, 0x10000);
+-    create_unimplemented_device("scobc-a1.uartlite2", 0x50010000, 0x10000);
+-    create_unimplemented_device("scobc-a1.uartlite3", 0x50020000, 0x10000);
+-    create_unimplemented_device("scobc-a1.uartlite4", 0x50030000, 0x10000);
+-    create_unimplemented_device("scobc-a1.uartlite5", 0x50040000, 0x10000);
+-    create_unimplemented_device("scobc-a1.uartlite6", 0x50050000, 0x10000);
++    for (int i = 0; i < SCOBC_A1_NUM_MISSION_UARTS; i++) {
++        scobc_a1_create_uart(DEVICE(&s->armv7m),
++                             SCOBC_A1_MISSION_UART_BASE + i * 0x10000,
++                             SCOBC_A1_MISSION_UART_IRQ + i,
++                             serial_hd(1 + i));
++    }
+     create_unimplemented_device("scobc-a1.i2c1", 0x50060000, 0x10000);
+     create_unimplemented_device("scobc-a1.i2c2", 0x50070000, 0x10000);
+     create_unimplemented_device("scobc-a1.qspi", 0x50080000, 0x10000);
+
 -- 
 2.55.0
 

@@ -1,101 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57C24606A31E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 16:56:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BEC9606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 16:59:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=wNA93Fil
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=jnmP5mg8
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWzEm-0004Nu-MJ; Fri, 27 Nov 2026 11:55:54 -0500
+	id 1xWzIE-0005oU-Of; Fri, 27 Nov 2026 11:59:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xWzEh-0004Ju-4L
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 11:55:47 -0500
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ id 1xWzIC-0005oE-VF
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 11:59:24 -0500
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xWzEf-0006ZG-8r
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 11:55:46 -0500
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-67c6a0abc2eso8713377d50.0
- for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 08:55:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795798535; cv=none;
+ id 1xWzIA-0001p8-EB
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 11:59:23 -0500
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-67be1e468a8so7930433d50.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 08:59:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795798761; cv=none;
  d=google.com; s=arc-20260327;
- b=Mts+mZ0yMxXVswoQT6pUoEUS3vGWcqIBon9sHKmGmjnMRlc7smK/tY0zGgJRa2S0D2
- /I3oriR1teN6LYXaDrNKK4o0iEEAGGjdFxEgukkuWw5zseANEK0Vuszp2Cg59StjYkQp
- 7klxiJbmO1kd18CdK1+5UF7MyU80adZ1lNdavITOkirYJKLTgKMuUmqTQiasAwP28Kll
- xwQWNCQpEfyxYRcHGqy6E1Rt2S60u/eRsV+7kFoxGWCgEU+lI1A5QCUOeDRtKGyzMWGk
- 6P4UH/nGcHRbLyrpwa2ZbyiNrsk4eS3nCHIA/9rLDJdSy0iPi9Y/7jCviR7EANF2sIf+
- fuVA==
+ b=Kf+KGxzP7Ft3y7RQvtKRcDaRuuGcI7fSnCasVn8nChHjIBjHgLIKKPw3eSsyIW7/KT
+ ZKksDMwKeMEb6fRXBQf9AHh5PTxp3l5YJ9rQK4kzgVh/BzaV1vMo+6+CfBXSMnbNvz9m
+ CwI6gipoC1ceRwkBnpH/+JcOu/O+zBUXTfIE/hno0X2HfF+OqMyPSp8+GXduQj9+Lqyn
+ H1MZghSijMBXkPPuND2zXQZwmin+gFLaCUXLMP48n93bsycXsblfvxkzeAEp/dY0ouxw
+ Vwq3tazeQiuRyhFWnuReZHrVwhTRVjTjVnWh47LVCVQHTL312+YOKvDI4h7sDMTKkvyS
+ VR3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=2b+WA3m5mvi9l8IPTEQke84rbNOd9dJMOetYnkSU9c8=;
- fh=Q57b2PRXbE6kpul9p+p3GsAIVcR30O8y8HjTZ7JRQBo=;
- b=bx9lWN4bc14OydVC0Qu6CdUyVK+qGy8QwwnGW01lwDYsYT5cqTCAZKu6nxISEXD3IE
- HfooldetGNUHbQ7Be8EyFGWM6AQSJl5X9Byo3aIUUpcAzVR+nLsesy+kxhTlRFAs/Ula
- lc2fw2pxdMBVMeojVOm6FUsVvChywsZtStwPnemjTQN7Tak5530ncMFKTGO5CGWsFexz
- AZOhVL/IDnxuEyoaoAAZU0U0qT2jKNjdv2QaYGyPv9wigaDEmLgAJqOCfT2u4BaDHerH
- ijMA5iQlKUX07vnggKWGqkYXYgEbryP11VtPeMq1Zs5aAGTDEGnD4+tHY6x5KLrao5s4
- 3jcw==; darn=nongnu.org
+ bh=GeFLhbqwzoVWy/zuAQkq6ufr7qnIgWRpiaAOFkp4eqs=;
+ fh=2GI/aZAADYkUgYy7nSlsWPcKP+ZC7NmUn/5uq6SV6ew=;
+ b=hrD8DgCAOFlJ6SYAE+SoqlWcBa9i6sUyu/Va/02Bh34POl4gk6i1fzupcHlZiNhHgd
+ UREite+pq8Ev9QFI4qFK7oeBKTofEbjtIfb04OBg5+s6Uf2/rrY9HzaElskLjF4RP3JN
+ ES2dI7jutZEo5pipG2Xw6ssA7wggxOK40vmiVrJVajgQ/MYI75dnJVJeNkya4qjq+lZj
+ wTbwMGiWYiThaGH5egeE2WjIeXMASbMqZu1JYiJCBVq58sXZnk/TetlCja5L6Rs2U7JM
+ tlUJ3qdLRitLHOcHDngrt8hdcJ8bVr3+Q21Z9eKya8ZoaRWjBFhecoXq4VJXkQJr9ATs
+ a2EA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795798535; x=1796403335; darn=nongnu.org;
+ d=linaro.org; s=google; t=1795798761; x=1796403561; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=2b+WA3m5mvi9l8IPTEQke84rbNOd9dJMOetYnkSU9c8=;
- b=wNA93FilKk0KJxMLGdXpoufXrrfGcxnDPBKezZCMFjwgeAFWwAbWxAoxanOn2EF12E
- z7ssOZf5cFT7w5+V0OcbaHzx5prXJUVVqEC6kI5yOGwJMzh5uhA917HSglN10w6mTYSg
- cd2OR0as/PxKT5p4mgVdwNxVE8HGOFOIrSLPeuy7luX2XXdGuFsvFd+7L08GtnjHYeDn
- xlEGM8JlTNUMuBJSolTqdcfNI5z9w5yi7sFMo2iyMt1G9u+YI+p4pp2tz0op2kseQLgf
- 8+GmpgqeLsrEnZ8CVTm9nF6TXuil8hPIqCLxsWQ5qW2MYDf5JmQXX4EuEJiG4AVQ7BLj
- 8cew==
+ :content-type; bh=GeFLhbqwzoVWy/zuAQkq6ufr7qnIgWRpiaAOFkp4eqs=;
+ b=jnmP5mg8tdDeGhnMj1br2J0IAtPAg/bwQUmrELIR+fzRZ1FvA8iN8NYdIWqqQwKZ5o
+ G/6m0mUwfEr/Cn8SetCrzGmcdvHyORgDMMZVK0zRb1Pj3EAMMyiShMXids9V28Ibe4r4
+ LzUJdcjGQPDAY+SdMVVnSKya3tD7M0D/Nz6PVZ2H6Mkk/ABFwlBlft0KAA85CupVu5YD
+ KM1n7/SKXLwNMMlgt3XTfr3xhkOp8PsdWYs/6pSPqWu+iU1ZcBtYpBk4QdJyha9NYzdl
+ WhvXv+3TVR2NB7E6zL+FQ1dX/q76H9D2sXz9xaWodM+Avr4unwQJZjB6wXsl6H0TixT9
+ sxpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795798535; x=1796403335;
+ d=1e100.net; s=20260707; t=1795798761; x=1796403561;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=2b+WA3m5mvi9l8IPTEQke84rbNOd9dJMOetYnkSU9c8=;
- b=hr3HsM+Cygm/7X1RJhuIup2sPCDHwTcm9QD9UECLwDdfEpFixIKw6LK3qGeICA1BEN
- XzkUBr0ALkf5Ak6szYXDI0H4dtRPVyOzTc/Ed3RsEY0VVRedQJLbYwx7C4XaJtxxqoIh
- h/bpPlNqz8xUIxK6gxVyZ6krFkMdN7j1TxAV+j38OdScK3stGSwbnIfroOEoRsbYxeSp
- rHpH2oJT/smV9ms+Ac/zlltUlKbHp5V9U9sXDun/EZ41xzI1tAJs6kj2gLB4RzTRP7bC
- T/mNAS5nnRyTIFbfpfKkaeXgw/OwB9v+ODpehYYIzY08noMceIpcaSZ2IvyMe/qyvN2t
- qvPw==
+ bh=GeFLhbqwzoVWy/zuAQkq6ufr7qnIgWRpiaAOFkp4eqs=;
+ b=sFh5MOPWa+AC7lBmHQjIFW4Pk/MN6Hdt4F7m3OshhT/yds6Exgtm22zSOtD45gcPXK
+ fB5iXBHQ2KCb6pIU0JxkgkXRwbXFociUIQRjiGnlEB3YLWwzBxy0ZCtgZ2J0QBXfUCLA
+ MKYKq+IooeSPv9JaGkIZFnDWpkxwr5fbP07q8g9aO6tS3mxKw6TiPMMX+c5WXZxtAtuw
+ ZDiKhSXSCe2WhUd40/OJsj0k9UhOjus/4uLULeH+6TUY2/WShPkb4AZuiJYZTyCfBy3M
+ XbU24Tr4v5UNnlQdwNOCNh0jtUHAkkZbFuJoD6dMLiZmM/SNA3YscLoxvXM+uGMOOb61
+ fcpA==
 X-Forwarded-Encrypted: i=1;
- AL+hErEmHoytqOTnAXeXykWZ/r4A6+4EzWPMH6kz7170F4UQHSpB87Qvk65CFxJTQ3XXoaq5YJ8m5GMpvA==@nongnu.org
-X-Gm-Message-State: APuU4Z8sFs8HLL3bhQqcXZxO0ESfblPJTnQ0HCD0mOEeHmIksGa49cRX
- p6o6aDO50HzeIM9CJ4FoHHYsV+KlT5gRMrPPbbejOjESCLTjPb4o/CSbtYC5eF2EB+jmBg33aE0
- VOac+iMAcKLHOiVLO5RsNthtah455Cs7BgGpod+W6BA==
-X-Gm-Gg: AZFdTZfa4MhpYOlFDcGpBF9M/1ssfo9j8KfK0jJeyfaN5grN28vEDZwOTdr5LHvLzNx
- 72c4Ln7FR0/vynGhCmOp3PDmKnU9Wkp96gWSZbVSaLvNp+7CmHUnDrKJ2rz9OQv8NCWpgdIv0tb
- BpH54EgPNnEYC8aMmxr6/c5kgRgKBbKnufHpuurlU+kT0bKJ/Gbs3QWJu2MQtk9aJQrnuqtz/xY
- 4u6a9LCKJgdELeU/TwI1ygF/rXVv1Tx/dIqeJk4LI46lBiMHtMW6sU4Ali4vPzd3y9TIoGCeiq8
- lCFQsx6Pd26QVK2wS68CU11hNv/8t3VL3pnFVnBPT2FywflSKaGU7UnsntGI2d77f4e4rE/ldCD
- WCYdUdL5+Qi1jpayBDRwZLnnpCmlUfrRn+zfyGF3zb9CT/c7JTooFltREK/1x9SP5n41kL6EF0L
- 39756GppKqGWzjiDIJl4gvGzJmGHK4P8E4bkbk4b8ieg==
-X-Received: by 2002:a05:690e:43d3:b0:672:9f72:7c0b with SMTP id
- 956f58d0204a3-67df45165a6mr5261749d50.109.1795798535355; Fri, 27 Nov 2026
- 08:55:35 -0800 (PST)
+ AL+hErFb5dsHYkeo6deWPlzmvsS0OLk3L/JCojPtmhLyUHP3Kessuq//E0fKeQQWqPrdWdLe7OheCuY71w==@nongnu.org
+X-Gm-Message-State: APuU4Z+2k9v0lyp9PV9msebfAXNHi8O4R3UxWho5VPXhsZJqiqU3uwCf
+ Et9xTIO8GiLC2Qbb4TmIvRM+KdjblC37nR+FJVdMbO//EK5vnqKn0P/5LuHE6E1+Hh9Pe0NUNBv
+ bi46FhtkmmAhen0ap/RSt895lTIZu1GdvcigevD7V3xTSkDvuz5LL
+X-Gm-Gg: AZFdTZc36wiH9fSRKECurNqyyGokOAB1t8D8+GbtE59YhsHJo4s+PBg1EGlha3f2tvW
+ c+UbSTeO3F99dkfUEWqhZXFRpU21mCHyEafBF2/yxzghSD8yoBzzkb5fGQofZlCDyuco0tn9oVG
+ kflHySrwlw0KCWLbSgZwJFzdzWUiV3gu/Y/iyptOP3h7nsa/XOUisaIZc0VUyx+teKGG6BCrdbS
+ clZuSJBcqEumzGxap/ekFOko0GDtlkVub2rw/WHffQPGcynfcgGASpcotZ5VsE1M1aymm7FZZIi
+ miY4O5zHAEpJHBpDV+FasI52DJK1vkXceJzDInytvvWHzWnof55EEr4btO8X09hqhKx6SEhu09P
+ qrOKz+V1r2W4x4cybB0M/Ra5vnhmoZBtdFuHLVZiBlO5Rko8RsZ9/lRB+8JldA1BIbVcZcMuXFb
+ K/O7AQkmRMvlSredjN8W7H
+X-Received: by 2002:a05:690e:bca:b0:67c:2b1:dd40 with SMTP id
+ 956f58d0204a3-67df4464afcmr9958304d50.85.1795798760874; Fri, 27 Nov 2026
+ 08:59:20 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 References: <20261030194318.319310-1-richard.henderson@linaro.org>
- <20261030194318.319310-8-richard.henderson@linaro.org>
-In-Reply-To: <20261030194318.319310-8-richard.henderson@linaro.org>
+ <20261030194318.319310-9-richard.henderson@linaro.org>
+In-Reply-To: <20261030194318.319310-9-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Nov 2026 16:55:23 +0000
-X-Gm-Features: Aa3M54otA0wjTcv396cKdSb0A-anRAScMb5hkL-TuqHLKHgAx29yS4hOUhszqHY
-Message-ID: <CAFEAcA8CezC2fr3c=PMpG+h_5+wNTh7rAprgTzCK42ZFoi7m6Q@mail.gmail.com>
-Subject: Re: [PATCH 7/9] target/arm: Use DISAS_TOO_MANY for simple TB breaks
+Date: Fri, 27 Nov 2026 16:59:09 +0000
+X-Gm-Features: Aa3M54o2Aeodkzqcb9opwOqCo4DeMdZ_tkg1aQvdSp6N8FPLdjUI1G5nw63PLOA
+Message-ID: <CAFEAcA8FjMNokA_9dKeR=qKR7YFOrsrEPmjL7368tfjyTzhMGQ@mail.gmail.com>
+Subject: Re: [PATCH 8/9] target/arm: Rework gen_goto_tb to gen_direct_branch
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,51 +114,21 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, 30 Oct 2026 at 19:44, Richard Henderson
+On Fri, 30 Oct 2026 at 19:45, Richard Henderson
 <richard.henderson@linaro.org> wrote:
+>
+> The only remaining uses are true direct branches, or
+> simple chaining from one TB to the next via fallthru.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/tcg/translate-a64.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-> index e66ccdff6f..0f6331a695 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -2420,8 +2420,7 @@ static bool trans_ISB(DisasContext *s, arg_ISB *a)
->       * self-modifying code correctly and also to take
->       * any pending interrupts immediately.
->       */
-> -    reset_btype(s);
-> -    gen_goto_tb(s, 0, 4);
-> +    s->base.is_jmp = DISAS_TOO_MANY;
->      return true;
->  }
->
-> @@ -2435,7 +2434,7 @@ static bool trans_SB(DisasContext *s, arg_SB *a)
->       * MB and end the TB instead.
->       */
->      tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
-> -    gen_goto_tb(s, 0, 4);
-> +    s->base.is_jmp = DISAS_TOO_MANY;
->      return true;
->  }
-
-We already use DISAS_TOO_MANY for some other kinds of "just break
-the TB" (e.g. various trans_MSR_* insns) so this should be fine.
-
-I notice that the end-of-tb code will do a gen_goto_tb(s, 1, 4)
-where here we have (s, 0, 4) but I assume there's no requirement
-to not use TB slot index 1 unless you're using slot index 0, or
-we'd have seen it causing problems on the existing uses.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

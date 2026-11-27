@@ -1,59 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59417606A31C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:13:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F103A606A31F
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:14:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=Ymz0wSI2;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=klEmT1/H
+	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=l87GwlIL;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=TDuPX4f2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nongnu.org;
 	 s=lists1p-gnu-org; h=From:In-Reply-To:MIME-Version:References:Subject:To:
-	Date; bh=npcAvr7cF9G1HEnFq0gosMpLCC5sZPtl0ZZsIriLY54=; b=Ymz0wSI286MHTspZZ3+o
-	Oa2R6dpyMbMcgFZfUX/fFtfVHklMlQEvndvbCQHzbzVqAu0gSPM+/KilBqocMpvmo8r9ftADeq3Pu
-	WrybuxUYkPViVGz187Ib6r01HTo59KJbZRHoyYkU9DnVP+FNM2rJOk0bWTsq10YcQ/OQUNRQBztNH
-	ma/L4RNNZ5W+79ZznlAHQzxp1YhXVwVExMBzLcKgPa+62upMpha6xBvtIMEEvJ5yMo5CdcXYrvCsi
-	SKS6fV4W/Aw6L/kV32W5r7r28ghmRWvBIsIms/6eHzPzys+tK9DenC2EPpuetihEFCQYHQOitDPxp
-	b2ESTbGTIjMfbg==;
+	Date; bh=1T7/7nww0/4/79z0jy9uTnKIXpmgKwoKwH7hVl+Ne/I=; b=l87GwlILLlmJ8xhN/Hyy
+	bTO78rR1se7XDhlBQO3OhfcpkzzDQn/x6JAZQYVIRiIakPJgfeEUKwdPggpQYp/CHw53ViQr284sR
+	uiZYihl5g1uZy07zohGhXBVcQ11+H6tYY7g+1b87/Sak62uVHVAhP0ITiiZpmzb8CA7GyWAYDRzP8
+	/C6X3uo3AWRdzryyLuAehG/WV7tR1bf+QNrMz+VcXuufntklGx+whsQtPHovbw0thvZ2/EGnhT20I
+	KshPalS5ew5mRS2iwKnkwlt814J8hTExNNOmeFwJHTWJ6yuL1/Vm1giTySvnCBInFaIjCa5/ush8y
+	K0MKC1s6MwWKng==;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWttV-0005Sv-1g; Fri, 27 Nov 2026 06:13:33 -0500
+	id 1xWtuW-0006p9-O9; Fri, 27 Nov 2026 06:14:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWttR-0005Or-Rj; Fri, 27 Nov 2026 06:13:29 -0500
+ id 1xWtuP-0006gy-1p; Fri, 27 Nov 2026 06:14:29 -0500
 Received: from rev.ng ([94.130.142.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWttQ-0000Ob-F5; Fri, 27 Nov 2026 06:13:29 -0500
+ id 1xWtuM-0003oe-OY; Fri, 27 Nov 2026 06:14:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
  s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
- List-Help; bh=npcAvr7cF9G1HEnFq0gosMpLCC5sZPtl0ZZsIriLY54=; b=klEmT1/HB5eSTlF
- n2VtCulYIRfK/tZXStb0kz4WduNiNrma3f5HtdczQH2QRwse7YT/S/yk04Hwo2sqMzWG4XswYj3gb
- UqAjKt1sOpkrvMhqACx3pwTUUGDRZPjKmNR5qZ0CJ9rq8o+597O6Fz9ooy2v2q7DNGBb2QSrygYQE
+ List-Help; bh=1T7/7nww0/4/79z0jy9uTnKIXpmgKwoKwH7hVl+Ne/I=; b=TDuPX4f25D+RIk6
+ EEF7BcVsiaxRSESXdTIBjy69KFAm28BVjJFrmYFf590KPxxZaoNJ6iwrCgOUuuUaveW+hxHTjndmD
+ xkaT7yXhGuId/M2wrg1zUppUhF1CDOQcoxDAYzd9Xt/PgnxpWNr+MLKbO2Ji4kN46VAYRCcTAix5H
  I4=;
-Date: Fri, 27 Nov 2026 12:19:50 +0100
+Date: Fri, 27 Nov 2026 12:20:50 +0100
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Aurelien Jarno <aurelien@aurel32.net>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <arikalo@gmail.com>
-Subject: Re: [PATCH 13/24] target/mips: Use 64-bit TB flags
-Message-ID: <awlm13RC0s-WW3yC@hive.localdomain>
+ Stafford Horne <shorne@gmail.com>
+Subject: Re: [PATCH 14/24] target/or1k: Use 64-bit TB flags
+Message-ID: <awlndRBeVJl8zvWo@hive.localdomain>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-14-philmd@oss.qualcomm.com>
+ <20261126233604.67722-15-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261126233604.67722-14-philmd@oss.qualcomm.com>
+In-Reply-To: <20261126233604.67722-15-philmd@oss.qualcomm.com>
 Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
  helo=rev.ng
 X-Spam_score_int: -20
@@ -88,39 +87,24 @@ On 27/11/26, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > ---
->  target/mips/cpu.c           | 2 +-
->  target/mips/tcg/translate.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  target/or1k/translate.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-> index 324e5989cca1..fb2ece5c9a46 100644
-> --- a/target/mips/cpu.c
-> +++ b/target/mips/cpu.c
-> @@ -682,7 +682,7 @@ static int mips_cpu_mmu_index(CPUState *cs, bool ifunc)
->  static TCGTBCPUState mips_get_tb_cpu_state(CPUState *cs)
->  {
->      CPUMIPSState *env = cpu_env(cs);
-> -    uint32_t flags = env->hflags & MIPS_HFLAG_TB_MASK;
-> +    uint64_t flags = env->hflags & MIPS_HFLAG_TB_MASK;
->  
->  #ifdef CONFIG_USER_ONLY
->      if (!cs->prctl_unalign_sigbus) {
-> diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-> index bbcccbbb467f..9c76f1bc00ec 100644
-> --- a/target/mips/tcg/translate.c
-> +++ b/target/mips/tcg/translate.c
-> @@ -15127,7 +15127,7 @@ static void mips_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
->  {
->      DisasContext *ctx = container_of(dcbase, DisasContext, base);
->      CPUMIPSState *env = cpu_env(cs);
-> -    uint32_t tb_flags = ctx->base.tb->flags;
-> +    uint64_t tb_flags = ctx->base.tb->flags;
->  
->      ctx->page_start = ctx->base.pc_first & TARGET_PAGE_MASK;
->      ctx->saved_pc = -1;
+> diff --git a/target/or1k/translate.c b/target/or1k/translate.c
+> index e00ef45b9b76..e656301642d8 100644
+> --- a/target/or1k/translate.c
+> +++ b/target/or1k/translate.c
+> @@ -45,7 +45,7 @@
+>  typedef struct DisasContext {
+>      DisasContextBase base;
+>      uint32_t mem_idx;
+> -    uint32_t tb_flags;
+> +    uint64_t tb_flags;
+>      uint32_t delayed_branch;
+>      uint32_t cpucfgr;
+>      uint32_t avr;
 > -- 
 > 2.55.0
-> 
 > 
 
 Reviewed-by: Anton Johansson <anjo@rev.ng>

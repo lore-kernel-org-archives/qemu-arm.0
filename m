@@ -1,59 +1,58 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6043606A31C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:10:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2BFA606A31E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:10:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=Vd4Ji37u;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=cCWTAr/Z
+	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=LLo4riYP;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=kWyUOQ4U
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nongnu.org;
 	 s=lists1p-gnu-org; h=From:In-Reply-To:MIME-Version:References:Subject:To:
-	Date; bh=/jWbCUSFaITpYbtoQ7Fp34oCAAJQ+ponPQbBiEO4Gi4=; b=Vd4Ji37u/7VBet0+z0lt
-	S8cmxWJ3qmbEIkI63t72BQ12D5JI43L3LmJRHHiNRc4tJTOHNifDjNFoQCWnIyHwsNqfzIOuETh1t
-	xm8hOa3OdLIfjg26thsAsyx7T7tMiQjYonp3uYHEy5juZpF9G1v5BiJLyCBPW1ImPqKfjNsae+JZn
-	2G9LVppNxYC4lmjpo2OdJbwaaM6P78VdVxYsO5p6aTL1oM0ZJesEhoN99hRBEgzSrp2djbBpgGqa0
-	OFLM8mMu7LQr/f9G6UVz+Z1k6QzO0gIcuMuS4Ie1xYhbhzE01OoFzA/WIvKzbn3NgRuyuFzmV/CDq
-	J1HJmOs3wgBOvw==;
+	Date; bh=GPVouLGevLSWxqLjw8NiOPwOwcncssKQsT+NsrjFUoI=; b=LLo4riYPgTteIsXl/RAE
+	9YYu8NCHEQs12iHvJXZSiec1HD8UvbYfD6O/azHfKviJKhfyQkmy2cSPIJjF4Mf1m6KYKhzGJgN5k
+	Gb/ct/BjvlYlU9UOdvn3qkGmXzldiJ3WNoT5t/clg16zAhoAPRXqixHJJFhB815jswJr3jeBD4DgF
+	MEdcu+J9RrJN8+rDt/po/FbRB3B2wdgRNnXGaJ+DRI8B6pFvEVFUaIJaLspXK492xxTXkBZzg+XlH
+	O8+iWYHgVQibm8HWQ0QluMeBivklX0s2nTBVCibn7WaM2m5eCvKcHJNKk5EZutnhd+5qRphZEwM91
+	8YRWHSrhRBKjrg==;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWtq2-0001bh-P1; Fri, 27 Nov 2026 06:09:59 -0500
+	id 1xWtqz-00031p-LA; Fri, 27 Nov 2026 06:10:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtpj-0001Z6-Bm; Fri, 27 Nov 2026 06:09:39 -0500
+ id 1xWtqw-0002uQ-88; Fri, 27 Nov 2026 06:10:54 -0500
 Received: from rev.ng ([94.130.142.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtph-0008UK-ST; Fri, 27 Nov 2026 06:09:39 -0500
+ id 1xWtqu-0003en-PR; Fri, 27 Nov 2026 06:10:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
  s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
- List-Help; bh=/jWbCUSFaITpYbtoQ7Fp34oCAAJQ+ponPQbBiEO4Gi4=; b=cCWTAr/ZTIn5zIb
- 7G6JCjeYvDA0wXfpyJcHbyBImDRBzC7jCuqZqdcXbHMcfUblZKaaNfG+ig/Emp7BqpWY+HbZJnt+2
- XuyvzzyYDB1EHkGHK6Ocamb1ZMgMcaSjFotomWY+y0ME74PloLSII3GfkqUPRAbe2Drlp6hNcuofR
- R8=;
-Date: Fri, 27 Nov 2026 12:16:01 +0100
+ List-Help; bh=GPVouLGevLSWxqLjw8NiOPwOwcncssKQsT+NsrjFUoI=; b=kWyUOQ4U6I6k5gM
+ QuopY2iHZlgUGFRzMfTqc6EVdE//cIMKw3cgaVSUcYp/TpZaBgyzALwzJIx5MFEahkgA+e36b0RO7
+ xqZD2sVXIIdlo//miC+/fudDOagkBj7VEiON0OGLuNfeo+TEZWdsHfcCB26aVjrQsplAcoquwoN22
+ VU=;
+Date: Fri, 27 Nov 2026 12:17:12 +0100
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>, 
- Xianglai Li <lixianglai@loongson.cn>
-Subject: Re: [PATCH 10/24] target/loongarch: Use 64-bit TB flags
-Message-ID: <awlmKtpoPIEltn0g@hive.localdomain>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [PATCH 12/24] target/microblaze: Use 64-bit TB flags
+Message-ID: <awlmnoGFV3Pj-0r4@hive.localdomain>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-11-philmd@oss.qualcomm.com>
+ <20261126233604.67722-13-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261126233604.67722-11-philmd@oss.qualcomm.com>
+In-Reply-To: <20261126233604.67722-13-philmd@oss.qualcomm.com>
 Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
  helo=rev.ng
 X-Spam_score_int: -20
@@ -88,24 +87,36 @@ On 27/11/26, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > ---
->  target/loongarch/tcg/tcg_cpu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/microblaze/translate.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/target/loongarch/tcg/tcg_cpu.c b/target/loongarch/tcg/tcg_cpu.c
-> index 0549506035f3..743b682f1fb0 100644
-> --- a/target/loongarch/tcg/tcg_cpu.c
-> +++ b/target/loongarch/tcg/tcg_cpu.c
-> @@ -236,7 +236,7 @@ static TCGTBCPUState loongarch_get_tb_cpu_state(CPUState *cs)
->  {
->      CPULoongArchState *env = cpu_env(cs);
->      CPUSysState *sys = env_sys(env);
-> -    uint32_t flags;
-> +    uint64_t flags;
+> diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+> index 8b219afb5dd4..4c869f77f5c0 100644
+> --- a/target/microblaze/translate.c
+> +++ b/target/microblaze/translate.c
+> @@ -68,8 +68,8 @@ typedef struct DisasContext {
 >  
->      flags = sys->CSR_CRMD & (R_CSR_CRMD_PLV_MASK | R_CSR_CRMD_PG_MASK);
->      flags |= FIELD_EX64(sys->CSR_EUEN, CSR_EUEN, FPE) * HW_FLAGS_EUEN_FPE;
+>      /* Decoder.  */
+>      uint32_t ext_imm;
+> -    unsigned int tb_flags;
+> -    unsigned int tb_flags_to_set;
+> +    uint64_t tb_flags;
+> +    uint64_t tb_flags_to_set;
+>      int mem_index;
+>  
+>      /* Condition under which to jump, including NEVER and ALWAYS. */
+> @@ -1668,7 +1668,7 @@ static void mb_tr_translate_insn(DisasContextBase *dcb, CPUState *cs)
+>          /*
+>           * Finish any return-from branch.
+>           */
+> -        uint32_t rt_ibe = dc->tb_flags & (DRTI_FLAG | DRTB_FLAG | DRTE_FLAG);
+> +        uint64_t rt_ibe = dc->tb_flags & (DRTI_FLAG | DRTB_FLAG | DRTE_FLAG);
+>          if (unlikely(rt_ibe != 0)) {
+>              dc->tb_flags &= ~(DRTI_FLAG | DRTB_FLAG | DRTE_FLAG);
+>              if (rt_ibe & DRTI_FLAG) {
 > -- 
 > 2.55.0
+> 
 > 
 
 Reviewed-by: Anton Johansson <anjo@rev.ng>

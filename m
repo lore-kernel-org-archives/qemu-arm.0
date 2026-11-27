@@ -1,58 +1,62 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F103A606A31F
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:14:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EFD7606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:17:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=l87GwlIL;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=TDuPX4f2
+	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=JHc3X0QO;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=sYv64kOj
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nongnu.org;
 	 s=lists1p-gnu-org; h=From:In-Reply-To:MIME-Version:References:Subject:To:
-	Date; bh=1T7/7nww0/4/79z0jy9uTnKIXpmgKwoKwH7hVl+Ne/I=; b=l87GwlILLlmJ8xhN/Hyy
-	bTO78rR1se7XDhlBQO3OhfcpkzzDQn/x6JAZQYVIRiIakPJgfeEUKwdPggpQYp/CHw53ViQr284sR
-	uiZYihl5g1uZy07zohGhXBVcQ11+H6tYY7g+1b87/Sak62uVHVAhP0ITiiZpmzb8CA7GyWAYDRzP8
-	/C6X3uo3AWRdzryyLuAehG/WV7tR1bf+QNrMz+VcXuufntklGx+whsQtPHovbw0thvZ2/EGnhT20I
-	KshPalS5ew5mRS2iwKnkwlt814J8hTExNNOmeFwJHTWJ6yuL1/Vm1giTySvnCBInFaIjCa5/ush8y
-	K0MKC1s6MwWKng==;
+	Date; bh=d//VpwksDrxJHiN1WT8vojAA6eFXgPF/FYpf5Pda8mI=; b=JHc3X0QOE9L2m48scnqo
+	6lh5udNKoOi4sddVkrEnfidQxXyoZmE/7N+/ppifI/GRXxZl3G8OQ3nzPVivHn3kz3aCKYiTpqYqr
+	jkqc25251cLTHpvIXVFN8l19NaaijAS82Nq5TX7hvpM5OtnDgQF3yycdgiPFclxXZj/iY2IJYfMql
+	fMNGmk3dPbmP8JNy4FbvPmex217UQ00r2RtlaArrNTA/IgjhXuZvU5BLTCri4PzkfsqBs8b1PrL+b
+	yjAIjsgsx5i4SPQkFXFYzYN7MixkAb0Bxks4pnUrKIJ2+l+5fnttnk+8taCKNrFyc0gN7woz9zoEG
+	NON78cn/kcjn/w==;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWtuW-0006p9-O9; Fri, 27 Nov 2026 06:14:38 -0500
+	id 1xWtx1-0008Mc-BG; Fri, 27 Nov 2026 06:17:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtuP-0006gy-1p; Fri, 27 Nov 2026 06:14:29 -0500
+ id 1xWtwy-0008KZ-4h; Fri, 27 Nov 2026 06:17:09 -0500
 Received: from rev.ng ([94.130.142.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtuM-0003oe-OY; Fri, 27 Nov 2026 06:14:28 -0500
+ id 1xWtww-0006rs-Gv; Fri, 27 Nov 2026 06:17:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
  s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
- List-Help; bh=1T7/7nww0/4/79z0jy9uTnKIXpmgKwoKwH7hVl+Ne/I=; b=TDuPX4f25D+RIk6
- EEF7BcVsiaxRSESXdTIBjy69KFAm28BVjJFrmYFf590KPxxZaoNJ6iwrCgOUuuUaveW+hxHTjndmD
- xkaT7yXhGuId/M2wrg1zUppUhF1CDOQcoxDAYzd9Xt/PgnxpWNr+MLKbO2Ji4kN46VAYRCcTAix5H
- I4=;
-Date: Fri, 27 Nov 2026 12:20:50 +0100
+ List-Help; bh=d//VpwksDrxJHiN1WT8vojAA6eFXgPF/FYpf5Pda8mI=; b=sYv64kOjwnXetfy
+ TcLhugV3DDy79a1LreopLexXsOB3R+4n0oT6IG2Au78AcQxo4Um790kfGotlCjrS9nLf9vCuPeVk7
+ 1xLW1LvOlMEuuyKac9NxfN/gRGmjSQKSnhdFhssswOLErPngTvxmIzwSiKdr8S0bxywvNrjfhWVEb
+ 88=;
+Date: Fri, 27 Nov 2026 12:23:30 +0100
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Stafford Horne <shorne@gmail.com>
-Subject: Re: [PATCH 14/24] target/or1k: Use 64-bit TB flags
-Message-ID: <awlndRBeVJl8zvWo@hive.localdomain>
+ Palmer Dabbelt <palmer@dabbelt.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Chao Liu <chao.liu@processmission.com>
+Subject: Re: [PATCH 16/24] target/riscv: Use 64-bit TB flags
+Message-ID: <awln93rvy6I9IDbH@hive.localdomain>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-15-philmd@oss.qualcomm.com>
+ <20261126233604.67722-17-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261126233604.67722-15-philmd@oss.qualcomm.com>
+In-Reply-To: <20261126233604.67722-17-philmd@oss.qualcomm.com>
 Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
  helo=rev.ng
 X-Spam_score_int: -20
@@ -87,25 +91,9 @@ On 27/11/26, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > ---
->  target/or1k/translate.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/or1k/translate.c b/target/or1k/translate.c
-> index e00ef45b9b76..e656301642d8 100644
-> --- a/target/or1k/translate.c
-> +++ b/target/or1k/translate.c
-> @@ -45,7 +45,7 @@
->  typedef struct DisasContext {
->      DisasContextBase base;
->      uint32_t mem_idx;
-> -    uint32_t tb_flags;
-> +    uint64_t tb_flags;
->      uint32_t delayed_branch;
->      uint32_t cpucfgr;
->      uint32_t avr;
-> -- 
-> 2.55.0
-> 
+>  target/riscv/tcg/tcg-cpu.c   | 46 ++++++++++++++++++------------------
+>  target/riscv/tcg/translate.c | 42 ++++++++++++++++----------------
+>  2 files changed, 44 insertions(+), 44 deletions(-)
 
 Reviewed-by: Anton Johansson <anjo@rev.ng>
 

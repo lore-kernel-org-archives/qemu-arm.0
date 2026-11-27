@@ -1,101 +1,101 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07FD0606A326
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 17:17:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9549E606A31C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 17:18:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=yrn6u2cF
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Id8NcrQe
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWzZb-0004tw-Qz; Fri, 27 Nov 2026 12:17:23 -0500
+	id 1xWzb2-00067F-OW; Fri, 27 Nov 2026 12:18:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xWzZa-0004tY-Gi
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:17:22 -0500
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ id 1xWzb1-00065Z-As
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:18:51 -0500
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xWzZY-0002p2-IC
- for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:17:22 -0500
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-67dae7d3f7dso9741147d50.2
- for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 09:17:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795799839; cv=none;
+ id 1xWzaz-0006qt-QC
+ for qemu-arm@nongnu.org; Fri, 27 Nov 2026 12:18:51 -0500
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-675617e81f9so9514951d50.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 09:18:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795799928; cv=none;
  d=google.com; s=arc-20260327;
- b=dvA8ZeO7xElc25UYO2oWkgr9yRfIsXa41/Oc4/TB2Qk5Xke8ysb/CifyerpTIjcmc4
- VW7/jBjcHTskYOgXsk+O/AwieNNMBxvUWqTCxyxS9R/OwBvUnH5uRhDhnpsX69jruccf
- fJATYA4OxJnoyWKrETc71U5pvm8tBrJPkHvN12ORTqETDzAs1megLbO5Pli0AWANdWuH
- NS+64EvJS35o0djhuVjZysXIGGsWxQpIZUO1xzbmy6KIi/cwzlVpNqnzc1FNMmMgRSqf
- tEiAIubuM34pm3MeYWmmruwhQCPP89k3NUa0eeiS3JDgKY3y4+q99Jy2Qq98GYCEZVZQ
- 5GQQ==
+ b=nhg5AaRZQn+EyCvmz37Udburn9TwSvjDfvuuoFzJv/58eobfqfEKHbdpF5qS5UUNFZ
+ DkHgP+mypMzYICOMPTed/foMu/GhJ9ReCC2ZkAkUkdxCL7Kja7Hq8bafCYWyzhtIo30h
+ SXZGIavZeM6CTgEFpixCpft9/s/riH5lBn5n90IHR/Pk0MLwYLM2aoLals1ldpJKMtTe
+ 0+Usr2ov6ngPbOFBz3vERU9H59xBTC8cWamWyuirwIuyoO5hfoyGkvSJDojdh+Sq+5a5
+ VeRysA9QUHO80yr5DcdvveJq0rBbikom6qZppXOp65Zx1jZbmGzRQ0yBrPsjBKjDdC50
+ rIQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=zqYWPvCQdhC8VkAwyAD3mqAxOAAIJTq9mssUMtc/L/8=;
- fh=sskA5hOBFmZnNz4sQlOts4tR+1/MFpCSF8i6CsomFco=;
- b=BiJTxGXaI0+zlESH+deSRjuwJVZW8cBMhEVIEohtul5n9QRILHTyIzvsnJCovaOnuT
- jpkBZMO3fXXhKoiqcW9Da83AFSkWk5fANjjVKmKGRtM/htJn7nGKxmN5wiTLg32aKSnx
- Zaatr+24Ps0EHVIRAhDCR6VutM0/7D9jzwTyAKsThQPMEHtlHcJswWxZJs9NdUvkt5+d
- b9N8dCWjKmmYBu93qb2IDlFdZ+4e1Y2r2cArDb6VGa49d0PiTHA5wG7iOacTDafHF6mO
- 9Xyby2+MW7dI3cFFAo/TJ46U3sqRpjPbbKvOTfFA3MucyzoGKFQgVSoPqhw38iCzy4Rl
- yMCA==; darn=nongnu.org
+ bh=DkExGWsAVhbP89rZ5UXR8iSrPhkB24HeUdkibJZMJfo=;
+ fh=cqSTVsA3YKnBAMQJZiVjGWjXryNDAHn4MQ92z7TXBWE=;
+ b=DqNgHWf2w4HQrF8+QaRvCzbrY2QCrbLGePR4dL3Pwjo+vP7KT6gw1QMpiRFiXc8mDA
+ nE23JQvUl8MYxBfn6zUdXkaoiepiI0fSzeE5iMWZWtcALaAt86mdZF4C6etdZqIfX1ck
+ h+anIKPkroBh8pVPcioLRSLShtPpcqd5D4GinATNPyaVO8h+bEq1tb+O1gXEkmc16a0B
+ biSFPFYxui8y5g5l26uSWMg1XuAMy5q4maHXumN50WqJPwC2hE6XSMXmHKt4bj6Xn/B6
+ ZlN+ZHfnd0zURTaTGJLRudTlLHL+fx/jR9SF3SM9mYSAvaidCVDyyzkxGdoFroflrWbm
+ 19tQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1795799839; x=1796404639; darn=nongnu.org;
+ d=linaro.org; s=google; t=1795799928; x=1796404728; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=zqYWPvCQdhC8VkAwyAD3mqAxOAAIJTq9mssUMtc/L/8=;
- b=yrn6u2cFV+a0/ZZf0BXe6CJpvQKIXu3IWBN1a9I2iUR6sItRBXXUcUfrmBnzPQ3t7l
- qD/9+AiRvcqjM2i15T8qglHAJ/kePkZOmlJUBHR5XuX1dPPw9NaPLTKQfyNxNtQbj4ZY
- ljVz3c+q69JqDozby0GdQ2I2uayv/tV2JDTm0/169xR3CesRboawofpqUaCXJgH0RmKE
- GlU+5OWJjrPo/rk0cQRR6St+INxatB80Q30aP/gMgJOGDpstlCdKNBYXVRqSp4QMj4F1
- nSSwFEWZp3t53xf4sJovdOfFgpTNKGR9p+n8Lg0QaVzHQaiUbJAxa5uiUkoMEIo0q+pu
- SJ7g==
+ :content-type; bh=DkExGWsAVhbP89rZ5UXR8iSrPhkB24HeUdkibJZMJfo=;
+ b=Id8NcrQek0do8eSylcpA9AD3lHg3ORo8VH/KMQrVJ7iq61JtRZbxUfuzLbdWDrvTes
+ wBh8Q2R/Kl3jv3JZywJZc4mxBEK8/4QOUP245kcPMDQ3xuuNCCmHhspUDMyTEVw3mMhP
+ A4N7MjNM2iapYOLpvoZIIq+yKdX//4Uf0gb3rHl7dU7OrxEfuLfFD58hZqfVJ7woXPU/
+ CdMfsfk+NtLyjMMZOw7+pqtmr6o08XMs0KL1fTiBtBjM/kubYiL1ZWbFOqKw4M7xHIF2
+ R3jvKivHIICVWtEmSvyfyHdKfDSHD82SkJYWXfbUtLH05rH03oTSQ6Bj6fgckM2Wr3GE
+ 0K3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795799839; x=1796404639;
+ d=1e100.net; s=20260707; t=1795799928; x=1796404728;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=zqYWPvCQdhC8VkAwyAD3mqAxOAAIJTq9mssUMtc/L/8=;
- b=22OD9J/xDtXkyQl8Qf1k8on/p9XRDlKFLOK9VrtW9BrFtSQpALpjnJ+J+az1YuRjHs
- 2pughRZg2v+L9Y4BytSV8Cpz02sDe/fcVWrVr161YeYtNn6gD9p0G5G/G5kV6N/EyYIi
- MWpUNUtEusKCMvye7UKq6p8OgrWHNyDLDrLzprTbi2lxLivK0Y/VU0xVFn9/wZVbJpNw
- ecW2XftcoLpmzpcJUT06pwv1rvT4nPs5OOFhpVJUeE9Y3zrF3wsehejOvfhxtDSgIl5B
- 9MGqI5MpcavJaaNSH/rCIsxor+nXAfL0LkRP1mTORWUEJX9ru3+OLMBGImUp/2/dJA6x
- qIqQ==
+ bh=DkExGWsAVhbP89rZ5UXR8iSrPhkB24HeUdkibJZMJfo=;
+ b=bbo9qtoGQlAXOnkDPBaG/yUPsGw7CW8iXEUsMVQi1K63cSRfQsfRC8ezSdezfKwLa9
+ 7+xNg+aB/WfIuYssGHSXMg6kxjaBY0pmTfnjOr7TTlyEpkd7JzKeXYROLXGEsWNT/IdU
+ q+vtKkKX0VYQP0k12Mq97cIJ93VDwxkEHXZPjoB0EFriOI5q1W3HzlqRDZBuwR8K0Ags
+ ObCtRICWah1yG58XnfXs6bRKrqpM7SqLhLBVfnFj0HxPIofskoYuGSdYpYw1aMonrm3W
+ Hyqgjw22r09t9+CEvmKjSWDM2rxkvYZdzGNkdznyNxL3BMP/9vyvWWMh6PuMba8tv9oq
+ 4mjA==
 X-Forwarded-Encrypted: i=1;
- AL+hErHVJyUxd0Qj6oZAmst+VZBur9UZf17Wzxk4X/0hQh/M66cKQfiyjLbD/9Nv89y15ZHng6QVnamK1g==@nongnu.org
-X-Gm-Message-State: APuU4Z9YLHuvnroynsxNJtbTvgQ0Zf3np7hJFYv7qj18RaXiB04hqmp9
- STdqfbTbGAPLvyf3rhuFZ1R5qzEdyh0vmh2+XMm8iAX6b5krItu6QTydiLswP3XiT2kMbZGXd6L
- pFpcQgQYOe4rnp6BQx1SDCXGw8U69pdqJ7ep//nhlSA==
-X-Gm-Gg: AZFdTZdp2NqOscOHeJADVq8f0hItyL91Q/4WaTgOSRxCw4AaIwadegSYXvJ3D0ir/pg
- WaYK7Fp5guVe+wucT30y4NwWbC5YWXFlbjru3tuSoJ7azNzQyWp0qQrE8ycI46iLZz8UASw3Qe2
- B97Jgn7xTTgEcbBGcW0iv7VClxte9sQ2dEWrDwmwTrAtoIa5UiZZ1EUMDNrH+WRXWiElS7h5wnn
- 7SDtLMD5LjF+MbbMzrZTl3DbRMcyFdx6Nrm36hsE180CZ4Vh+A0WT2JVAlvBrIN1F8EvnC/CHgq
- QkdFAWJBYSSiSoiPxWCAIdn+A6DKQ4NIi6c16quupUnk7IqN2YXy83/ehpMmKfAZhTiAkGriZ59
- sYIXmfWPjMDWjlwytHjYQcVBO1MLgqjqssQAJ8k5veJeFzlo7DgdkFOK/uX5qyYgcWv0kmWIk/X
- kvBfoERu5KZTJViIDEx24k
-X-Received: by 2002:a05:690e:190c:b0:67e:58f:5736 with SMTP id
- 956f58d0204a3-67e058f5a79mr7310752d50.77.1795799838936; Fri, 27 Nov 2026
- 09:17:18 -0800 (PST)
+ AL+hErHFFwq2cfW3bW0yQcrTnh63+j3IBFj/tCIfmAIFxLIME+ILv8kX3feh9R00k9X1D2bUrocRgT+yNA==@nongnu.org
+X-Gm-Message-State: APuU4Z/1HD1sxS+BXBMWyDcDOcnb/LKcbvvkOxjvSzXvoMlKyrY3suI5
+ 6cQcaGScUm+vYwNt4fBx3C6+lQGnDScenDM2vxojRsoUIAopSvlGvKDnZJOYe7I/DE7SMsMgRwH
+ GY4nF3RIILWotyRAxc14hUnTEKPaFVeM12PqFqXD9lA==
+X-Gm-Gg: AZFdTZcW+joi3SkHIFxR7+FvmTKLIsHEhQVBnQDoDynHcFPEF9rrXlIpoM4T2JGAKYj
+ OOgk2PoWhrwG/XJYPHHv8FCKh05iNkv4eTcF2N8ME6nSPd+vU08mtn/MF5rOyAmUW50FZ80StDs
+ VsUSJMe9XBhxP+uyiDN/X5UaMPvLca9zycEm1muf0x0xYqkkUaqbCCuS/cLji/MNMviHDioaqm2
+ z5e0bLwbZ6j7PH7/WXYsmVfsmdfM/h/c/sGURPj3OpIk9BKN3lY4X5pQ9MLSwkq5hT1TH8unbc6
+ l5Pt8GgEGcB3KKiM6CUuE/YlsHPKCTmXiCL+zAnhYMw5xudOuwGM0da++aV1Sq4NnwTIe+DIgyk
+ KoJhG0byyj6q19UiNsuSfSVel1oJOq/rkJ84opkExS/IZVhMvY0rQ8uE1W1qoz59lD91+DWceMi
+ MHJq7Izbbjkkm6HMGSbIs4
+X-Received: by 2002:a05:690e:169b:b0:67c:1ebe:3850 with SMTP id
+ 956f58d0204a3-67df42bb2dcmr11115904d50.12.1795799928447; Fri, 27 Nov 2026
+ 09:18:48 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 References: <20261030194318.319310-1-richard.henderson@linaro.org>
- <20261030194318.319310-3-richard.henderson@linaro.org>
-In-Reply-To: <20261030194318.319310-3-richard.henderson@linaro.org>
+ <20261030194318.319310-10-richard.henderson@linaro.org>
+In-Reply-To: <20261030194318.319310-10-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Nov 2026 17:17:06 +0000
-X-Gm-Features: Aa3M54r8hSrW6uZe_zdKxjwKFun8OgkGk39dqVUmWGrhFUoCGdV5jF5gnlLf-Y4
-Message-ID: <CAFEAcA-fgXkrRfN_pTNxoD7h+b=pr1X9OaGJzAiBkhE4PKW=LQ@mail.gmail.com>
-Subject: Re: [PATCH 2/9] target/arm: Retain btype in DisasContext.tbflags
+Date: Fri, 27 Nov 2026 17:18:36 +0000
+X-Gm-Features: Aa3M54rxGfqHeCqJI5HNjHlsMvrEjtYkP6DYPk23C0_ilfzP6TLxhR_jlyXQKxI
+Message-ID: <CAFEAcA_s9K3rwbA15CGJ9TFJnhDWGt5JNEQ+1479wu97oi14Yg@mail.gmail.com>
+Subject: Re: [PATCH 9/9] target/arm: Use tcg_gen_goto_jc3_i64 for aa64 branches
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,32 +114,42 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, 30 Oct 2026 at 19:43, Richard Henderson
+On Fri, 30 Oct 2026 at 19:44, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Replace btype = -1 with btype_set = true.  This is both
-> less confusing and keeps the state separate from the
-> per-insn iteration.  Set tbflags_invalid when we need
-> to read the btype from the page tables and therefore
-> we cannot keep DisasContext.tbflags up to date.
+> Assuming FEAT_BTI hasn't needed a page-table lookup to
+> determine the BTYPE for the destination, we can compute
+> the tbflags for the target.  Pass all that to goto_jc3.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
+>  target/arm/tcg/translate-a64.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+> index edbf67b03c..4a56fa70b7 100644
+> --- a/target/arm/tcg/translate-a64.c
+> +++ b/target/arm/tcg/translate-a64.c
+> @@ -566,8 +566,11 @@ static bool gen_indirect_branch(DisasContext *s)
+>  {
+>      if (s->ss_active) {
+>          gen_step_complete_exception(s);
+> -    } else {
+> +    } else if (s->tbflags_invalid) {
+>          tcg_gen_lookup_and_goto_ptr();
+> +    } else {
+> +        tcg_gen_goto_jc3_i64(cpu_pc, tcg_constant_i64(s->tbflags.flags2),
+> +                             s->tbflags.flags);
 
-This looks OK, but how can we know when a TBFLAGS flag is like
-btype (must be kept in s->tbflags and update s->tbflags_invalid
-if we emit something that changes it) versus it being like most
-of the TBFLAGS (OK to extract and keep in a more convenient form
-in some other s->whatever field, no need to worry about updating
-s->tbflags) ?
+Why does tcg_gen_goto_jc3_i64() take "flags2, flags" rather than
+the more intuitive "flags, flags2" order ?
 
-thanks
 -- PMM
 

@@ -1,59 +1,57 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9255C606A334
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:04:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36B35606A31E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Nov 2026 11:05:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=ElO4EV7C;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=uxRDWakK
+	dkim=pass (2048-bit key) header.d=nongnu.org header.i=@nongnu.org header.a=rsa-sha256 header.s=lists1p-gnu-org header.b=QYvTKCHa;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rev.ng header.i=@rev.ng header.a=rsa-sha256 header.s=dkim header.b=LdMEqSHK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nongnu.org;
 	 s=lists1p-gnu-org; h=From:In-Reply-To:MIME-Version:References:Subject:To:
-	Date; bh=IWGYz5X+A50hBBqhIB3/pXYwW+JOrOFw+RQ4kYRLyvA=; b=ElO4EV7Ce2mJwhSo+pTM
-	gU8lfoYtjyqvfHlpQ2rTaYW1vjqWwd5L8xRf1Cx5uczfb06IqKsTO/BOR1PuRhn+tnvQNgQlgMfsd
-	/MiJYCC+Wai4vp6HvkZUKviTV1iRrpLwBzEFYOPLqLJFfenKS7+u8d2SvISjK7JAljdXpGOgpNLhm
-	hwjeK6/JoSiOeZF52a7PMl537FnrclLeQXxg4Y2tYwXv0AlVBZIwv900Gzt/8IvNdGtoNzl8e8/vs
-	kKKwrgKen2PtQoupK3DbNO3PDQDo6U2ERvdaN1aiHHBasM4JRgWMHUs2tkjHU2ounWGowYiUpkoA2
-	hRV0TUTBgsESkQ==;
+	Date; bh=KY5XRnqV7FSwOF5k+fUV+96e4uDQfafIB1ZnrcABPvU=; b=QYvTKCHa4n8H4GeoovQ3
+	nwFIcd5H5yEToogjHqN/idxHh2jLazvf+CfVUhn5w76unQ0eJ5d5rUAsjEmkNa0I/LqyfAM/7T4wt
+	aJY07WnRlk7kDGgLg8Go3xunYWvOdqTOrHhO+26I1SFStNlxFHoCmw0BoZvs4BIZowSnIBKObFMFt
+	wMDyTxChZT20mVERwUwFg1PWfT27K/mQPbIOg7HespJ6NOUOOKJHvvo+WcOIqk3Vrb4qdZ/P4/D0u
+	2PvosuldgSWLYpM2F7KTfxX6IuB/r7qNX26lcnWmDRHynQWZZ5NWgNDT2Ak80ssmUnaVe6ERw+3+E
+	ug1nS5ws5DSVjw==;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xWtjn-0001MG-KF; Fri, 27 Nov 2026 06:03:31 -0500
+	id 1xWtlh-0004Xx-7u; Fri, 27 Nov 2026 06:05:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtjl-0001I7-LQ; Fri, 27 Nov 2026 06:03:29 -0500
+ id 1xWtle-0004Rw-2y; Fri, 27 Nov 2026 06:05:26 -0500
 Received: from rev.ng ([94.130.142.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1xWtjk-0002RF-56; Fri, 27 Nov 2026 06:03:29 -0500
+ id 1xWtlX-0002kq-Gr; Fri, 27 Nov 2026 06:05:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
  s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
- List-Help; bh=IWGYz5X+A50hBBqhIB3/pXYwW+JOrOFw+RQ4kYRLyvA=; b=uxRDWakKdIre4Gy
- 7aHQhVkGNhNwfV5mtFrZmVXqZb+X6TKjHRJyeP6INUEjKHgJZXOO2Fdelf4i+knVPD7/OMWsSQQW9
- z4yTWujbznmn1zV/jeQZaudawngY4PsO5B/bAe6Bk5UQb1mVjSnSXXx7r3orVlBm4ssD7Neu9H4F6
- bU=;
-Date: Fri, 27 Nov 2026 12:09:51 +0100
+ List-Help; bh=KY5XRnqV7FSwOF5k+fUV+96e4uDQfafIB1ZnrcABPvU=; b=LdMEqSHKSo/9Md5
+ vUXPSHB5wsge9ndYqNkKquI0/BVlXyFgNgZxjDhQZEikkvvDEneeY579hAhX4DLGZuzpi+cRzl/14
+ 6eKUulYxNwYDbRODYTttve15BaW4SS0uQbyHgyZLzRKcIQYacxUWK220rJOTGnSnQcE1JQngR4LcT
+ fg=;
+Date: Fri, 27 Nov 2026 12:11:40 +0100
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 04/24] target/arm: Update TB flags split comment for
- 64-bit tb->flags
-Message-ID: <awlk-bkO9MeBjGf1@hive.localdomain>
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: Re: [PATCH 05/24] target/alpha: Use 64-bit TB flags
+Message-ID: <awllFhxAWxEufoCk@hive.localdomain>
 References: <20261126233604.67722-1-philmd@oss.qualcomm.com>
- <20261126233604.67722-5-philmd@oss.qualcomm.com>
+ <20261126233604.67722-6-philmd@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261126233604.67722-5-philmd@oss.qualcomm.com>
+In-Reply-To: <20261126233604.67722-6-philmd@oss.qualcomm.com>
 Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
  helo=rev.ng
 X-Spam_score_int: -20
@@ -77,40 +75,49 @@ From:  Anton Johansson via <qemu-arm@nongnu.org>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 27/11/26, Philippe Mathieu-Daudé wrote:
-> TranslationBlock::flags is now 64-bit, but AArch64 needs
-> TBFLAG_ANY (15 bits) plus TBFLAG_A64 (51 bits), so the split
-> with tb->cs_base is still required.
+> TranslationBlock::flags and TCGTBCPUState::flags are now
+> 64-bit, use matching types for the values derived from them.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > ---
->  target/arm/cpu.h | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  target/alpha/cpu.c       | 2 +-
+>  target/alpha/translate.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 5ee9ebf352fb..59e44b76a08a 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2484,8 +2484,9 @@ static inline bool arm_sctlr_b(const CPUARMState *env)
->  uint64_t arm_sctlr(CPUARMState *env, int el);
+> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+> index fd099c8e70f9..de452c881172 100644
+> --- a/target/alpha/cpu.c
+> +++ b/target/alpha/cpu.c
+> @@ -44,7 +44,7 @@ static vaddr alpha_cpu_get_pc(CPUState *cs)
+>  static TCGTBCPUState alpha_get_tb_cpu_state(CPUState *cs)
+>  {
+>      CPUAlphaState *env = cpu_env(cs);
+> -    uint32_t flags = env->flags & ENV_FLAG_TB_MASK;
+> +    uint64_t flags = env->flags & ENV_FLAG_TB_MASK;
 >  
->  /*
-> - * We have more than 32-bits worth of state per TB, so we split the data
-> - * between tb->flags and tb->cs_base, which is otherwise unused for ARM.
-> + * We have more than 64-bits worth of state per TB (AArch64 needs
-> + * TBFLAG_ANY (15 bits) plus TBFLAG_A64 (51 bits)), so we split the data
-> + * between tb->flags and tb->cs_base.
->   * We collect these two parts in CPUARMTBFlags where they are named
->   * flags and flags2 respectively.
->   *
+>  #ifdef CONFIG_USER_ONLY
+>      flags |= TB_FLAG_UNALIGN * !cs->prctl_unalign_sigbus;
+> diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+> index 6f18b8d1af62..2063abf3ce5a 100644
+> --- a/target/alpha/translate.c
+> +++ b/target/alpha/translate.c
+> @@ -48,7 +48,7 @@ struct DisasContext {
+>  #ifdef CONFIG_USER_ONLY
+>      MemOp unalign;
+>  #endif
+> -    uint32_t tbflags;
+> +    uint64_t tbflags;
+>      int mem_idx;
+>  
+>      /* True if generating pc-relative code.  */
 > -- 
 > 2.55.0
-> 
 > 
 
 Reviewed-by: Anton Johansson <anjo@rev.ng>

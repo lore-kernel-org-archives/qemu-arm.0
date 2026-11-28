@@ -1,66 +1,103 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 67012606A31C
-	for <qemu-arm@archiver.kernel.org>; Sat, 28 Nov 2026 03:25:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CBA8C606A31C
+	for <qemu-arm@archiver.kernel.org>; Sat, 28 Nov 2026 06:27:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=huawei.com header.i=@huawei.com header.a=rsa-sha256 header.s=dkim header.b=rgNxuOtZ
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=wMal4bYy
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xX93X-0005Co-GR; Fri, 27 Nov 2026 22:24:56 -0500
+	id 1xXBuC-0004W3-2A; Sat, 28 Nov 2026 01:27:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1xX93U-0005CI-Az; Fri, 27 Nov 2026 22:24:53 -0500
-Received: from canpmsgout07.his.huawei.com ([113.46.200.222])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1xX93Q-0008Be-5J; Fri, 27 Nov 2026 22:24:51 -0500
-dkim-signature: v=1; a=rsa-sha256; d=huawei.com; s=dkim;
- c=relaxed/relaxed; q=dns/txt; h=From;
- bh=V/3FPi9m+7x24PoPBRnUvZIed469ft8VSze0pSw116E=;
- b=rgNxuOtZ9xQvMcOPinPZP5q04+xFC2IuInyH1XE/mWdlpE5fcH10UAOsJP3uGhb3gfaRTSzlj
- fEMGSR9exILvx/AHS8pwJ4mh23zYKWIgF/K1PtXjAg/Wi0+aGHRlUSzQ5t3VUh2OgP/oeVR9lYo
- lMzuhtFOF5hBWN049CQ9tPM=
-Received: from mail.maildlp.com (unknown [172.19.163.163])
- by canpmsgout07.his.huawei.com (SkyGuard) with ESMTPS id 4jbwcL0hCzzLlTq;
- Sat, 28 Nov 2026 11:24:02 +0800 (CST)
-Received: from kwepemk200008.china.huawei.com (unknown [7.202.194.74])
- by mail.maildlp.com (Postfix) with ESMTPS id B075A4057A;
- Sat, 28 Nov 2026 11:24:27 +0800 (CST)
-Received: from [10.67.110.68] (10.67.110.68) by kwepemk200008.china.huawei.com
- (7.202.194.74) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Sat, 28 Nov
- 2026 11:24:26 +0800
-Message-ID: <a2538a8c-dce4-40d4-9659-99192556838d@huawei.com>
-Date: Sat, 28 Nov 2026 11:24:23 +0800
+ (Exim 4.90_1) (envelope-from <haseebashraf091@gmail.com>)
+ id 1xXBuA-0004TV-Hx
+ for qemu-arm@nongnu.org; Sat, 28 Nov 2026 01:27:27 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <haseebashraf091@gmail.com>)
+ id 1xXBu9-0001tY-2q
+ for qemu-arm@nongnu.org; Sat, 28 Nov 2026 01:27:26 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4bba5e17cbeso32703125e9.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Nov 2026 22:27:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20260707; t=1795847243; x=1796452043; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=wcZBeuMIMZGh5V5Nkisgmrflj3EBBSr6rcajrufM/Cw=;
+ b=wMal4bYyhw9L2rLHaTHSiHHr0Pq4jmtpj4dSgaaYAhBbUdl9TX3bJnr2oWAsyNKyMk
+ cUN7K/Zt+6PfOMtgbJs39d0/E4T/XuogKSUg1veQ+9fAGTc7apm9B90RnXLJtv0wqd2j
+ Babx+dnn+5SfVFXBKkeZ+5QCiCUKtvm4YgkxhMwnEPiWCf9Uk8wOxq0djFftE9iQh5J3
+ Jx8ealg7bksFb48T5zDPwCwOPlWZYdra9seNEmNUg++zZvBJgxhv/GsqMIGan3R6qU9d
+ 4dJoiS+zXueXSAnXNYYkKdkZ+E78O5X96BegHN62JVQV12jKQGOAJQ957PbBK/cWwPk0
+ pZzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1795847243; x=1796452043;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=wcZBeuMIMZGh5V5Nkisgmrflj3EBBSr6rcajrufM/Cw=;
+ b=mI01BUo/HDI/0zD01NxlZ4KNqCoXnhbaFDXzxzNd2vTOGoFSY5TWdJNYTBHoBn/0Hw
+ voAUy11JigpAy1w19JzrGFEPK6a9rES53EK5zQrnktelRrnBszpTUi34nciaIqL2c/Xe
+ qsuIt6jnZm2e4gedrw9YapVrY4noP4f0sSrfsyscmEY6qaNSTBI+4gnEx3b1JNeKqAhr
+ DBoUI7vSdQWNtJifAjMA6okt2rGXlnbbgRhQpyWNvptC8F5ob4VSjwQoTK5x/3P8KjfN
+ NlvAFMRsvbGDknDOrcXi2wIJikHNIR1JvmCTAYjzMehe5tIPRIGfMVCqC/oJQCCEbCKp
+ nhvw==
+X-Forwarded-Encrypted: i=1;
+ AL+hErG/GfizzgwDeoAJMVQgCFJHAYqghXRqpdyEBm/gS1WTXHclMdSLouCCId5v67m9DARKRhV1H3Rhww==@nongnu.org
+X-Gm-Message-State: APuU4Z/GBoacQl8VlWUTtRKIM3f1KwZbM0hBQGxDkfiQRZec0TRJ/LuV
+ WqKOi27FyHZxjyl3lBnVp1EpwM6eBXC0S8yTjcuXqG7j0nW+aSdE7S24
+X-Gm-Gg: AZFdTZc8SfbJOisDq0+YlozbRIO53NP/U6hf/o0EKJjFAXHPjwK8pdWKEI3FsL3oZlK
+ MVwoplByrRGh+D9kyQ5ShNeoTT3FeXNaDwG1v6rJ2lz/0GYXhI0erMmsGTLxuXK+h5VKoIZyUoi
+ FBhvo0g5P3O3EyGmxK8HcR8FfZUNh+pY9oGlGKnGBOKUxB1hzySm3G7+nODkzjBnU88OsmOZz8k
+ aFop012pkhOaQyKEvol5K3vS9nKxc3HLrR7nb1DoA4r417PGClrwPgRORSX753PxQsT6CBUqI48
+ GIpnbNLc6kbPMt8fvgiDK0GbH9M3G5WY2C/3botsnbhcxrK1e87sBxGL5swF9pLRjA8fcEdj69T
+ /2gbt6Q7k1cYBtputqhUxcczZlRKN2KQfJne9BHKuC/QEHxNUj/L8vwb+C+1mHYdOaMlHMSDw+G
+ BF4gHWE5EkM8ZTKmFCAwAzrhLR4NBQCCoio3g/gTAYxcB4BAq05SvJFwCVv4rO150pP9TRqqU/m
+ HStyIWvuoVWZDr0N+aR06I8aKuos7/80K7QCSyV6l8C8AfKGay6SmkzzdEZgrD1YV8QvGS1AJr2
+ fAr7QgJO+a1qsjNUMnKRq2EDMkDHLF5tVPdajlEMEJ9GmBcEgei1f0ySc3aWS/6D8OeC/DLuLlS
+ QKCnrc4pXfpG9BmkXegfAnzaE
+X-Received: by 2002:a05:600c:1d8c:b0:4a1:c5eb:b445 with SMTP id
+ 5b1f17b1804b1-4bb88820436mr553100495e9.35.1795847242750; 
+ Fri, 27 Nov 2026 22:27:22 -0800 (PST)
+Received: from PKL-HASEEBA-LT.. ([39.36.25.192])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4bb884a15absm685756885e9.9.2026.11.27.22.27.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 27 Nov 2026 22:27:22 -0800 (PST)
+From: Haseeb Ashraf <haseebashraf091@gmail.com>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: Haseeb Ashraf <haseebashraf091@gmail.com>, Eric Auger <eauger@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Khushit Shah <khushit.shah@nutanix.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ Haseeb Ashraf <haseeb.ashraf@siemens.com>, Marc Zyngier <maz@kernel.org>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>
+Subject: Re: [RFC PATCH v3 0/3] arm/kvm: select an nVHE-only EL2 with
+ SYSREG_ID_AA64MMFR1_EL1_VH
+Date: Sat, 28 Nov 2026 11:27:15 +0500
+Message-ID: <20261128062715.130056-1-haseebashraf091@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <9746F4BB-6688-4B39-AC6E-DC0295599927@unpredictable.fr>
+References: <9746F4BB-6688-4B39-AC6E-DC0295599927@unpredictable.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/37] hw/arm/mpam: Add MPAM MSC base device
-To: Jonathan Cameron <jic23@kernel.org>, Jinjie Ruan <2118537295@qq.com>
-CC: <anisinha@redhat.com>, <armbru@redhat.com>, <eblake@redhat.com>,
- <imammedo@redhat.com>, <michael.roth@amd.com>, <mst@redhat.com>,
- <pbonzini@redhat.com>, <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>
-References: <20261016094733.1898485-1-2118537295@qq.com>
- <tencent_8C2C6D66A20C91FD7641EA7206ED18672505@qq.com>
- <20261103005218.7d0a4a06@jic23-hlaptop>
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-In-Reply-To: <20261103005218.7d0a4a06@jic23-hlaptop>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: kwepems500002.china.huawei.com (7.221.188.17) To
- kwepemk200008.china.huawei.com (7.202.194.74)
-Received-SPF: pass client-ip=113.46.200.222;
- envelope-from=ruanjinjie@huawei.com; helo=canpmsgout07.his.huawei.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=haseebashraf091@gmail.com; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -73,207 +110,49 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi all,
 
+Thanks for the feedback.
 
-在 2026/11/3 8:52, Jonathan Cameron 写道:
-> On Fri, 16 Oct 2026 17:47:00 +0800
-> Jinjie Ruan <2118537295@qq.com> wrote:
-> 
->> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+For the ID-register cache, I can drop
+kvm_arm_refresh_e2h0_idregs() from this series and let Eric's SYSREG
+series refresh the affected ID registers generically after property
+write-back. Please let me know if that is preferred.
 
-Hi Jonathan,
+Regarding the interface, there appear to be two possible directions:
 
->>
->> Add the mpam-msc sysbus device core:
->> - Per-RIS register storage(Mpamf)
->> - The device state (selector state, num-ris/num-partid/
->>   num-int-partid properties), realize with the per-RIS allocation
->>   and the MMIO region (MPAM_SIZE window).
->> - The MMIO handlers covering the identification registers (MPAMF_IDR
->>   with its 64-bit EXT view IIDR, AIDR, IMPL_IDR, PARTID_NRW_IDR
->>   and the MSMON IDRs that read as zero until monitoring is implemented).
->>
->> The base type registers no features; the mpam-msc-mem and
->> mpam-msc-cache subtypes assemble their feature IDR fields.
->>
->> Based on an RFC series by Jonathan Cameron.
->>
->> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-> 
-> A few trivial things inline.
+1. Keep VH in the SYSREG framework with an explicit init-time
+   exception, as in the current RFC; or
 
-Should we consider migration now?
+2. Introduce a higher-level CPU property:
 
-> 
->> ---
->>  hw/arm/mpam.c | 171 ++++++++++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 171 insertions(+)
->>
->> diff --git a/hw/arm/mpam.c b/hw/arm/mpam.c
->> index 772a120..b1d6472 100644
->> --- a/hw/arm/mpam.c
->> +++ b/hw/arm/mpam.c
->> @@ -221,3 +221,174 @@ REG32(MPAMF_MPAMCFG_MBW_PBM0, 0x2000)
->>  #define MPAM_CACHE_PART 32
->>  /* MPAMF_IIDR.IMPLEMENTER: ARM JEP106 code for Huawei (0x736). */
->>  #define MPAM_IIDR_IMPLEMENTER 0x736
->> +
->> +typedef struct Mpamf {
->> +    uint64_t idr;
->> +    uint32_t iidr;
->> +    uint32_t aidr;
->> +    uint32_t impl_idr;
->> +    uint32_t cpor_idr;
->> +    uint32_t ccap_idr;
->> +    uint32_t mbw_idr;
->> +    uint32_t pri_idr;
->> +    uint32_t partid_nrw_idr;
->> +    uint32_t msmon_idr;
->> +    uint32_t csumon_idr;
->> +    uint32_t mbwumon_idr;
->> +    uint32_t err_msi_mpam;
->> +    uint32_t err_msi_addr_l;
->> +    uint32_t err_msi_addr_h;
->> +    uint32_t err_msi_data;
->> +    uint32_t err_msi_attr;
->> +    uint32_t ecr;
->> +    uint32_t esr;
->> +    uint32_t cfg_part_sel;
->> +} Mpamf;
->> +
->> +typedef struct MPAMMSCState {
->> +    SysBusDevice parent_obj;
->> +
->> +    Mpamf *mpamf;
->> +
->> +    uint8_t ris;
->> +    uint16_t part_sel; /* Technically per ris, but in same reg */
->> +    bool internal_part_sel;
->> +    struct MemoryRegion mr;
->> +    uint32_t num_partid;
->> +    uint32_t num_int_partid;
->> +    uint8_t num_ris;
->> +
-> 
-> Blank line seems pointless. Probably belongs in some later patch.
+     -cpu host,vhe=on|off|auto
 
-Has delete the blank line.
+   Here, on would require VHE, off would require nVHE/E2H=0, and auto
+   would retain the accelerator's default behavior.
 
-> 
->> +} MPAMMSCState;
->> +
->> +DECLARE_INSTANCE_CHECKER(MPAMMSCState, MPAM_MSC_DEVICE, TYPE_MPAM_MSC);
->> +
->> +static uint64_t mpam_msc_read_reg(void *opaque, hwaddr offset,
->> +                                  unsigned size)
->> +{
->> +    MPAMMSCState *s = MPAM_MSC_DEVICE(opaque);
->> +    Mpamf *mpamf = &s->mpamf[s->ris];
->> +
->> +    switch (offset) {
->> +    case A_MPAMF_IDR:
->> +        switch (size) {
->> +        case 4:
->> +            return mpamf->idr & 0xffffffff;
-> 
-> Maybe use MAKE_64BIT_MASK(0, 32) from qemu/bitops.h
+The first approach follows the SYSREG_<REG>_<FIELD> model, but VH
+differs from ordinary writable ID-register fields because its selection
+takes effect during vCPU initialization. The second approach keeps that
+implementation detail out of the SYSREG interface and lets each
+accelerator evaluate the requested mode before vCPU creation. That may
+also make future HVF support less awkward, as Mohamed noted.
 
-Will use  MAKE_64BIT_MASK(0, 32).
+Since v1 used the separate-property approach and Marc objected to it,
+while the current approach adds an init-time exception to Eric's
+framework, I would appreciate guidance from the maintainers on which
+direction they prefer.
 
-> 
-> 
->> +        case 8:
->> +            return mpamf->idr;
->> +        default:
->> +            qemu_log_mask(LOG_UNIMP, "MPAM: Unexpected read size\n");
->> +            return 0;
->> +        }
->> +    case A_MPAMF_IDR + 0x04:
->> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, EXT)) {
->> +            qemu_log_mask(LOG_UNIMP, "MPAM: Unexpected read of top of IDR\n");
->> +            return 0;
->> +        }
->> +        switch (size) {
->> +        case 4:
->> +            return mpamf->idr >> 32;
->> +        default:
->> +            qemu_log_mask(LOG_UNIMP, "MPAM: Unexpected read size\n");
->> +            return 0;
->> +        }
->> +    case A_MPAMF_IIDR:
-> 
-> Not sure why I allowed 1 byte reads. Probably want to check each of
-> the read widths for 4 or 8 though as appropriate.
+For now, I will wait for that design decision before posting v4 and
+will adjust the implementation accordingly.
 
-OK, will  add the check.
-
-> 
->> +        return mpamf->iidr;
->> +    case A_MPAMF_AIDR:
->> +        return mpamf->aidr;
->> +    case A_MPAMF_IMPL_IDR:
->> +        if (!FIELD_EX32(mpamf->idr, MPAMF_IDR, HAS_IMPL_IDR)) {
->> +            qemu_log_mask(LOG_UNIMP,
->> +                "MPAM: Accessing IMPL_IDR which isn't suported\n");
->> +            return 0;
->> +        }
->> +        return mpamf->impl_idr;
->> +    case A_MPAMF_PARTID_NRW_IDR: {
->> +        return mpamf->partid_nrw_idr;
->> +    }
->> +    case A_MPAMF_MSMON_IDR:
->> +        return mpamf->msmon_idr;
->> +    case A_MPAMF_CSUMON_IDR:
->> +        return mpamf->csumon_idr;
->> +    case A_MPAMF_MBWUMON_IDR:
->> +        return mpamf->mbwumon_idr;
->> +    default:
->> +        qemu_log_mask(LOG_UNIMP,
->> +                      "MPAM: Unexpected read of %lx\n", offset);
->> +        return 0x0;
->> +    }
->> +}
-> 
->> +
->> +static void mpam_msc_realize(DeviceState *dev, Error **errp)
->> +{
->> +    MPAMMSCState *s = MPAM_MSC_DEVICE(dev);
->> +
->> +    /* IHI 0099: MPAMF_CFG_PART_SEL.RIS is 4 bits, so at most 16 RIS. */
-> 
-> Hmm. I wonder if this changed name.  The spec now has MPAMCFG_PART_SEL.
-> Should match that naming I suppose.
-
-OK, has updated it.
-
-> 
-> 
->> +    if (s->num_ris > 16) {
->> +        error_setg(errp, "num-ris must be <= 16");
->> +        return;
->> +    }
->> +    if (s->num_partid == 0) {
->> +        error_setg(errp, "num-ris must be <= 16");
->> +        return;
->> +    }
->> +    if (s->num_int_partid == 0) {
->> +        s->num_int_partid = s->num_partid;
->> +    }
->> +
->> +    s->mpamf = g_new0(Mpamf, s->num_ris);
->> +    memory_region_init_io(&s->mr, OBJECT(s), &mpam_msc_ops, s, "mpam_msc",
->> +                          MPAM_SIZE);
->> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
->> +}
-> 
-
+Thanks,
+Haseeb
 
